@@ -26,12 +26,19 @@ CENSUS = [
     "hst_vote06.xlsx", "hst_vote07.xlsx", "hst_vote08.xlsx",
     "hst_vote09.xlsx", "hst_vote10.xlsx",
 ]
+ELECTION_DIRECTORIES = {
+    2000: "542", 2002: "552", 2004: "556", 2006: "557", 2008: "562-rv",
+    2010: "voting-registration-2010-election", 2012: "568", 2014: "577",
+    2016: "580", 2018: "583", 2020: "585", 2022: "586", 2024: "587",
+}
 
 
-def atomic_json(path, value):
+def atomic_json(path, value, compact=False):
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".part")
-    temporary.write_text(json.dumps(value, indent=2, ensure_ascii=True) + "\n")
+    temporary.write_text(json.dumps(value, indent=None if compact else 2,
+                                    separators=(",", ":") if compact else None,
+                                    ensure_ascii=True) + "\n")
     temporary.replace(path)
 
 
@@ -52,6 +59,8 @@ def download(spec):
             content = response.content
             if path.suffix in {".zip", ".xlsx"} and not content.startswith(b"PK"):
                 raise ValueError("Expected ZIP/XLSX, received a different format")
+            if path.suffix == ".xls" and not content.startswith(bytes.fromhex("D0CF11E0A1B11AE1")):
+                raise ValueError("Expected a legacy Excel workbook")
             if path.suffix == ".geojson":
                 payload = response.json()
                 if payload.get("type") != "FeatureCollection" or not payload.get("features"):
@@ -98,6 +107,32 @@ def main():
                 atomic_json(manifest_path, {"sources": sorted(results.values(), key=lambda s: s["path"])})
 
     collect(specs)
+    catalogs = [
+        {"url": f"https://www2.census.gov/programs-surveys/cps/tables/p20/{directory}/",
+         "path": f"data/raw/pages/cps_{year}.html", "kind": "cps_election_catalog", "year": year}
+        for year, directory in ELECTION_DIRECTORIES.items()
+    ]
+    collect([dict(existing.get(s["path"], {}), **s) for s in catalogs])
+    election_tables = []
+    for spec in catalogs:
+        page = ROOT / spec["path"]
+        if not page.exists():
+            continue
+        links = re.findall(r'href="([^"]+\.(?:xlsx|xls))"', page.read_text())
+        for table in [1, 5]:
+            candidates = []
+            for link in links:
+                name = link.rsplit("/", 1)[-1]
+                numbers = [int(n) for n in re.findall(r"\d+", name) if int(n) < 1900]
+                if numbers in ([table], [table, 1]) and re.fullmatch(r"(?:table|tab|vote)[\d_-]+\.(?:xlsx|xls)", name):
+                    candidates.append(link)
+            if len(candidates) != 1:
+                raise ValueError(f"{spec['year']}: cannot uniquely identify Census table {table}: {candidates}")
+            link = candidates[0]
+            job = {"url": spec["url"] + link, "path": f"data/raw/census/elections/{spec['year']}/{link}",
+                   "kind": "cps_election_table", "year": spec["year"], "table": table}
+            election_tables.append(dict(existing.get(job["path"], {}), **job))
+    collect(election_tables)
     nc_specs = []
     for name in ["nc_history", "nc_registration"]:
         page = ROOT / f"data/raw/pages/{name}.html"
