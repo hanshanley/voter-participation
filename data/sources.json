@@ -4,7 +4,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/a5a.xlsx",
       "path": "data/raw/census/a5a.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 19336,
       "sha256": "bc69c17d33322851d333f1d50a1f5eb0416942ab265f5213a38c064a848d214d",
       "retrieved_at": "2026-11-03T20:28:42.940043+00:00"
@@ -13,7 +13,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/a5b.xlsx",
       "path": "data/raw/census/a5b.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 19436,
       "sha256": "0b20cb9af5a96858c20a381c55c314c4d84a82d45de231d1a991bdde660948d5",
       "retrieved_at": "2026-11-03T20:28:43.090533+00:00"
@@ -22,7 +22,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote01.xlsx",
       "path": "data/raw/census/hst_vote01.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 43643,
       "sha256": "175d5ba32190aa65035b24a5404243db1abbcf089ffe8339c65119543354a9d6",
       "retrieved_at": "2026-11-03T20:28:42.697108+00:00"
@@ -31,7 +31,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote02.xlsx",
       "path": "data/raw/census/hst_vote02.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 16490,
       "sha256": "aaa3c2682f26f4c29e2388a1b284ebb75b34ce4e3a4d0b512fddf709ddfb44dd",
       "retrieved_at": "2026-11-03T20:28:42.825512+00:00"
@@ -40,7 +40,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote03a.xlsx",
       "path": "data/raw/census/hst_vote03a.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 18533,
       "sha256": "6b8fdb7243032f28cf0170b4ef0ed2b12670676173755123fca7b1da757e8fa3",
       "retrieved_at": "2026-11-03T20:28:42.694033+00:00"
@@ -49,7 +49,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote03b.xlsx",
       "path": "data/raw/census/hst_vote03b.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 18530,
       "sha256": "4bd9695438681304fee8f2132efbe84e03463d6fe31dffc10db9e7bff5c1f1bd",
       "retrieved_at": "2026-11-03T20:28:42.909678+00:00"
@@ -58,7 +58,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote04.xlsx",
       "path": "data/raw/census/hst_vote04.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 14236,
       "sha256": "f5602e2b35758240f539fd0d26345d60fca279609bab2e6937430dc319085b6b",
       "retrieved_at": "2026-11-03T20:28:43.099273+00:00"
@@ -67,7 +67,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote06.xlsx",
       "path": "data/raw/census/hst_vote06.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 14688,
       "sha256": "ad62e2beb0d38d89de0faa8ae569e507060f7f8ef75a7022234a2f5381ec7c13",
       "retrieved_at": "2026-11-03T20:28:42.977152+00:00"
@@ -76,7 +76,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote07.xlsx",
       "path": "data/raw/census/hst_vote07.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 15514,
       "sha256": "78e8d19a098bbd15913a853e2d8f8a1d5feef4807539dde7c1a8a91cade74b4c",
       "retrieved_at": "2026-11-03T20:28:43.003976+00:00"
@@ -85,7 +85,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote08.xlsx",
       "path": "data/raw/census/hst_vote08.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 15551,
       "sha256": "9f6d8985336e063dae9594b5b44d6d72002bf502e724b66a5fb5ae7b731b0b1e",
       "retrieved_at": "2026-11-03T20:28:43.031016+00:00"
@@ -94,7 +94,7 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote09.xlsx",
       "path": "data/raw/census/hst_vote09.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 16312,
       "sha256": "d7470013949f26d0c754985cf8ad4c51d4010ee8d503ca68535af12b76394b11",
       "retrieved_at": "2026-11-03T20:28:43.300067+00:00"
@@ -103,16 +103,111 @@
       "url": "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/hst_vote10.xlsx",
       "path": "data/raw/census/hst_vote10.xlsx",
       "kind": "census_workbook",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 15962,
       "sha256": "ddc45e242b2e34d66d0c1b367a95e54aa4ed7fe9302e8d7de26308c938a52357",
       "retrieved_at": "2026-11-03T20:28:43.092692+00:00"
     },
     {
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ShapeFiles/Precinct/Precincts2006Gen.zip",
+      "path": "data/raw/geometry/Precincts2006Gen.zip",
+      "kind": "nc_geometry",
+      "year": 2006,
+      "vintage": "Precincts2006Gen",
+      "status": "cached",
+      "bytes": 7733965,
+      "sha256": "d099f9ec8f37d404dd986a6e1f6f4343c5ae2b610603634a4bd499bfc3febd49",
+      "retrieved_at": "2026-11-03T20:29:47.495970+00:00"
+    },
+    {
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ShapeFiles/Precinct/SBE_PRECINCTS_20120901.zip",
+      "path": "data/raw/geometry/SBE_PRECINCTS_20120901.zip",
+      "kind": "nc_geometry",
+      "year": 2012,
+      "vintage": "SBE_PRECINCTS_20120901",
+      "status": "cached",
+      "bytes": 19398769,
+      "sha256": "9f7da99d4fcb1503a46efa4a97a0e1c8c109f8904dad6959425321c1afdaac6e",
+      "retrieved_at": "2026-11-03T20:29:48.247185+00:00"
+    },
+    {
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ShapeFiles/Precinct/SBE_PRECINCTS_20141016.zip",
+      "path": "data/raw/geometry/SBE_PRECINCTS_20141016.zip",
+      "kind": "nc_geometry",
+      "year": 2014,
+      "vintage": "SBE_PRECINCTS_20141016",
+      "status": "cached",
+      "bytes": 19344880,
+      "sha256": "53ddb20c47b2b382b05d5eec5e1dcb733a022d20efdee727253de6d7cf1ac44e",
+      "retrieved_at": "2026-11-03T20:29:46.270567+00:00"
+    },
+    {
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ShapeFiles/Precinct/SBE_PRECINCTS_20161004.zip",
+      "path": "data/raw/geometry/SBE_PRECINCTS_20161004.zip",
+      "kind": "nc_geometry",
+      "year": 2016,
+      "vintage": "SBE_PRECINCTS_20161004",
+      "status": "cached",
+      "bytes": 19254674,
+      "sha256": "4739d58fe4681ec93d37771073b4b7c661bedc36180e57cd48f3f245972aeb63",
+      "retrieved_at": "2026-11-03T20:29:46.618319+00:00"
+    },
+    {
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ShapeFiles/Precinct/SBE_PRECINCTS_20201018.zip",
+      "path": "data/raw/geometry/SBE_PRECINCTS_20201018.zip",
+      "kind": "nc_geometry",
+      "year": 2020,
+      "vintage": "SBE_PRECINCTS_20201018",
+      "status": "cached",
+      "bytes": 24689107,
+      "sha256": "a31a68aab8761ce579ad853690eeef2845dccf8655d9638237ef3845e2405f5b",
+      "retrieved_at": "2026-11-03T20:29:47.626628+00:00"
+    },
+    {
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ShapeFiles/Precinct/SBE_PRECINCTS_20220831.zip",
+      "path": "data/raw/geometry/SBE_PRECINCTS_20220831.zip",
+      "kind": "nc_geometry",
+      "year": 2022,
+      "vintage": "SBE_PRECINCTS_20220831",
+      "status": "cached",
+      "bytes": 24684504,
+      "sha256": "100e3171a14e0d8f6b5a827e8102101ff80abc554e24d7dd3be321fd204f982e",
+      "retrieved_at": "2026-11-03T20:29:47.567117+00:00"
+    },
+    {
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ShapeFiles/Precinct/SBE_PRECINCTS_20240723.zip",
+      "path": "data/raw/geometry/SBE_PRECINCTS_20240723.zip",
+      "kind": "nc_geometry",
+      "year": 2024,
+      "vintage": "SBE_PRECINCTS_20240723",
+      "status": "cached",
+      "bytes": 22091618,
+      "sha256": "bd9d37ac1f59ca77c55ce94cb3fe10c7c42cf7fc00f4dece7c841afe2cfb03b9",
+      "retrieved_at": "2026-11-03T20:29:48.187798+00:00"
+    },
+    {
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/?list-type=2&prefix=ShapeFiles/Precinct/",
+      "path": "data/raw/geometry/nc_catalog.xml",
+      "kind": "boundary_catalog",
+      "status": "cached",
+      "bytes": 50048,
+      "sha256": "f40337b0b1dabc4bab12fa1e5ed80b9625feec711c42ef9a5e258e7f14c7aea9",
+      "retrieved_at": "2026-11-03T20:29:45.393620+00:00"
+    },
+    {
+      "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/Generalized_ACS2024/State_County/MapServer/9/query?where=1%3D1&outFields=NAME%2CSTATE%2CSTUSAB&outSR=4326&geometryPrecision=4&f=geojson",
+      "path": "data/raw/geometry/states.geojson",
+      "kind": "state_geometry",
+      "status": "cached",
+      "bytes": 269313,
+      "sha256": "4c6369fea9b2b25ab9988994e8a50acd5b0e7dffbc4e93effef47b00ac331394",
+      "retrieved_at": "2026-11-03T20:30:14.652544+00:00"
+    },
+    {
       "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/layout_history_stats.txt",
       "path": "data/raw/layouts/layout_history_stats.txt",
       "kind": "nc_layout",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 2362,
       "sha256": "8291177b746fbfecdba7a4c20ba7d8f519cec4d9ac23aae342cf9bcb7ecb40bb",
       "retrieved_at": "2026-11-03T20:28:43.282709+00:00"
@@ -121,7 +216,7 @@
       "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/layout_voter_stats.txt",
       "path": "data/raw/layouts/layout_voter_stats.txt",
       "kind": "nc_layout",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 3361,
       "sha256": "63349cf6090b9717d088556d2f1389ef34519b417c10d93a8050e963ba22597d",
       "retrieved_at": "2026-11-03T20:28:43.288122+00:00"
@@ -132,7 +227,7 @@
       "kind": "nc_history",
       "year": 2000,
       "election_date": "2000-11-07",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 134,
       "sha256": "39a2c3dd2b7b5fc987fddc2123b2a7b7ae80c1304ee9b62aa79ee57b71af4f21",
       "retrieved_at": "2026-11-03T20:28:43.475559+00:00"
@@ -143,7 +238,7 @@
       "kind": "nc_history",
       "year": 2002,
       "election_date": "2002-11-05",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 2402657,
       "sha256": "fbeedaffdf3335b9c1c348012c47b748ac360d122c123116cff24ed0a943c21f",
       "retrieved_at": "2026-11-03T20:28:43.638930+00:00"
@@ -154,7 +249,7 @@
       "kind": "nc_history",
       "year": 2004,
       "election_date": "2004-11-02",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 5915794,
       "sha256": "7844e75da528d06f5f621691eb3cde195b2c9a8b0e7ef450af32f5cd3f479972",
       "retrieved_at": "2026-11-03T20:28:44.311759+00:00"
@@ -165,7 +260,7 @@
       "kind": "nc_history",
       "year": 2006,
       "election_date": "2006-11-07",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 1359361,
       "sha256": "8aec9c81bd1de0ea3e5f4678bdea732587931e98b6ccf65cb361c12ca46ef058",
       "retrieved_at": "2026-11-03T20:28:43.605526+00:00"
@@ -176,7 +271,7 @@
       "kind": "nc_history",
       "year": 2008,
       "election_date": "2008-11-04",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 3021055,
       "sha256": "ec679907d631ac049b99065834f15084ba19adabacfca3ee95e40b28c0e4d60f",
       "retrieved_at": "2026-11-03T20:28:44.743515+00:00"
@@ -187,7 +282,7 @@
       "kind": "nc_history",
       "year": 2010,
       "election_date": "2010-11-02",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 4852344,
       "sha256": "e45543457679a9df9fd431a6e4ff2c8b415cbd2339fceb2949fd01bd633849ae",
       "retrieved_at": "2026-11-03T20:28:44.038462+00:00"
@@ -198,7 +293,7 @@
       "kind": "nc_history",
       "year": 2012,
       "election_date": "2012-11-06",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 3316538,
       "sha256": "c4230e764352a0da430268ea216657103ba5a7de323f5eb02d141f2f7075b485",
       "retrieved_at": "2026-11-03T20:28:43.963474+00:00"
@@ -209,7 +304,7 @@
       "kind": "nc_history",
       "year": 2014,
       "election_date": "2014-11-04",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 5801926,
       "sha256": "01a85ac3f6a72ef4e15acf00a8a3f70c5278b9f241ee00883043a45ce49a9368",
       "retrieved_at": "2026-11-03T20:28:44.383346+00:00"
@@ -220,7 +315,7 @@
       "kind": "nc_history",
       "year": 2016,
       "election_date": "2016-11-08",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 3670186,
       "sha256": "f3df01e36c89e58cb87fe95b58f243f8f0c216963a7168580fa7a990f8def2e8",
       "retrieved_at": "2026-11-03T20:28:44.381638+00:00"
@@ -231,7 +326,7 @@
       "kind": "nc_history",
       "year": 2018,
       "election_date": "2018-11-06",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 3052602,
       "sha256": "f0877a95e84265a38cee25c5481ed5a3b989b91b276fbbe18273733a3f43731b",
       "retrieved_at": "2026-11-03T20:28:44.608370+00:00"
@@ -242,7 +337,7 @@
       "kind": "nc_history",
       "year": 2020,
       "election_date": "2020-11-03",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 12189465,
       "sha256": "6012132cbec3d641003c6ef93b76eca98a4db540d7f46dc8ff2caaabe0ac8b40",
       "retrieved_at": "2026-11-03T20:28:44.964436+00:00"
@@ -253,7 +348,7 @@
       "kind": "nc_history",
       "year": 2022,
       "election_date": "2022-11-08",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 3331233,
       "sha256": "a24f7be44301bd214a51a47868eb5925fbb331a061a9b3d05d5dd88ed8a5fd3e",
       "retrieved_at": "2026-11-03T20:28:45.083965+00:00"
@@ -264,7 +359,7 @@
       "kind": "nc_history",
       "year": 2024,
       "election_date": "2024-11-05",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 4715895,
       "sha256": "56305c7b7c84a2a58702e87e4a5dcd176ce50281f62b894b24af0b162a008085",
       "retrieved_at": "2026-11-03T20:28:44.988803+00:00"
@@ -275,7 +370,7 @@
       "kind": "nc_registration",
       "year": 2000,
       "election_date": "2000-11-07",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 174359,
       "sha256": "f64ed3f67089a83f24983a44e1556edd235bf857e8d48eff6ef8cf6869fa84ed",
       "retrieved_at": "2026-11-03T20:28:45.006507+00:00"
@@ -286,7 +381,7 @@
       "kind": "nc_registration",
       "year": 2002,
       "election_date": "2002-11-05",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 2061392,
       "sha256": "894517aee6c9f355d945b69f1515466471e8ac3d97d5cb97c0d806cfa2d2b090",
       "retrieved_at": "2026-11-03T20:28:45.389750+00:00"
@@ -297,7 +392,7 @@
       "kind": "nc_registration",
       "year": 2004,
       "election_date": "2004-11-02",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 1576247,
       "sha256": "484745c992e4d248a632f48ae29eb1290ba35dff6c15a5ae522bdbfb5710756d",
       "retrieved_at": "2026-11-03T20:28:45.279268+00:00"
@@ -308,7 +403,7 @@
       "kind": "nc_registration",
       "year": 2006,
       "election_date": "2006-11-07",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 1950106,
       "sha256": "556999a24fd8f5b151d01b337fe4514ea996729179d1636b30db64f549ecde17",
       "retrieved_at": "2026-11-03T20:28:45.279400+00:00"
@@ -319,7 +414,7 @@
       "kind": "nc_registration",
       "year": 2008,
       "election_date": "2008-11-04",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 1847940,
       "sha256": "bad8d8dd77ced5f05ee0f6a84eaff38d3806d69a27c59d9009a91a83013de1ba",
       "retrieved_at": "2026-11-03T20:28:45.369627+00:00"
@@ -330,7 +425,7 @@
       "kind": "nc_registration",
       "year": 2010,
       "election_date": "2010-11-02",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 1956709,
       "sha256": "cef925b0451b58e731e4c5f5e5a850a7a8baf8feffbb330f7753fd6c352ce590",
       "retrieved_at": "2026-11-03T20:28:45.551309+00:00"
@@ -341,7 +436,7 @@
       "kind": "nc_registration",
       "year": 2012,
       "election_date": "2012-11-06",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 2333883,
       "sha256": "62b1798f3732354b1fa072c986e17689104b534bab5bbe70ebff89f1b3508c26",
       "retrieved_at": "2026-11-03T20:28:45.535818+00:00"
@@ -352,7 +447,7 @@
       "kind": "nc_registration",
       "year": 2014,
       "election_date": "2014-11-04",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 2397761,
       "sha256": "91ce1158ab4a9cb7a200c5e33727f5411cd38f2407a2ed598bf79087358429c9",
       "retrieved_at": "2026-11-03T20:28:45.650986+00:00"
@@ -363,7 +458,7 @@
       "kind": "nc_registration",
       "year": 2016,
       "election_date": "2016-11-08",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 5176607,
       "sha256": "931a9320a935de8496ab6358e6b1b262032f7f36bd8f6df916a19a0f08da476a",
       "retrieved_at": "2026-11-03T20:28:45.745433+00:00"
@@ -374,7 +469,7 @@
       "kind": "nc_registration",
       "year": 2018,
       "election_date": "2018-11-06",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 5417935,
       "sha256": "92d08c329bf415b12035b0590744ddb631ac0a8c2cebdb8fbda2e6ea1e618e34",
       "retrieved_at": "2026-11-03T20:28:45.901488+00:00"
@@ -385,7 +480,7 @@
       "kind": "nc_registration",
       "year": 2020,
       "election_date": "2020-11-03",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 6265859,
       "sha256": "c0d111d7650dcee373e813b6d423e3fac1d39c806a1ed25e643541e425cc0079",
       "retrieved_at": "2026-11-03T20:28:46.155570+00:00"
@@ -396,7 +491,7 @@
       "kind": "nc_registration",
       "year": 2022,
       "election_date": "2022-11-08",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 5905755,
       "sha256": "61e98e61cb9cd3f529c82fbfdd7ac17f7267a68475f25024331a90d25e969346",
       "retrieved_at": "2026-11-03T20:28:46.106570+00:00"
@@ -407,7 +502,7 @@
       "kind": "nc_registration",
       "year": 2024,
       "election_date": "2024-11-05",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 6522548,
       "sha256": "48685b14b1a58e07417fb8756778a8faf3e4d536228b4a9651d156be4a39fe6c",
       "retrieved_at": "2026-11-03T20:28:46.240228+00:00"
@@ -416,7 +511,7 @@
       "url": "https://www.ncsbe.gov/results-data/voting-maps-redistricting",
       "path": "data/raw/pages/nc_geometry.html",
       "kind": "source_catalog",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 74683,
       "sha256": "1f56e97daa555a85cdfff8d7379d285eda38723722032496bc294c4f6378fe0b",
       "retrieved_at": "2026-11-03T20:28:43.161278+00:00"
@@ -425,7 +520,7 @@
       "url": "https://www.ncsbe.gov/results-data/voter-history-data",
       "path": "data/raw/pages/nc_history.html",
       "kind": "source_catalog",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 106997,
       "sha256": "ceb60e2bc51375e90844a0747997b8fb9489cb9bff5caaa424326ea68a096bf0",
       "retrieved_at": "2026-11-03T20:28:43.154292+00:00"
@@ -434,10 +529,19 @@
       "url": "https://www.ncsbe.gov/results-data/voter-registration-data",
       "path": "data/raw/pages/nc_registration.html",
       "kind": "source_catalog",
-      "status": "downloaded",
+      "status": "cached",
       "bytes": 106648,
       "sha256": "c1ea114dd12a550fb9e3cbe9714f838e39ce669e41ca2cd255bbf9ef34b04ad7",
       "retrieved_at": "2026-11-03T20:28:43.157824+00:00"
+    },
+    {
+      "url": "https://www.ncsbe.gov/results-data/voter-turnout",
+      "path": "data/raw/pages/nc_turnout.html",
+      "kind": "source_catalog",
+      "status": "downloaded",
+      "bytes": 83014,
+      "sha256": "2f9184a18d834684535f815db8fdb02bfc4589f7c2d6b86897ea3e60eeaf9c5c",
+      "retrieved_at": "2026-11-03T20:34:12.280225+00:00"
     }
   ]
 }

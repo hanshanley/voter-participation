@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 import time
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -17,6 +18,7 @@ PAGES = {
     "nc_history": "https://www.ncsbe.gov/results-data/voter-history-data",
     "nc_registration": "https://www.ncsbe.gov/results-data/voter-registration-data",
     "nc_geometry": "https://www.ncsbe.gov/results-data/voting-maps-redistricting",
+    "nc_turnout": "https://www.ncsbe.gov/results-data/voter-turnout",
 }
 CENSUS = [
     "hst_vote01.xlsx", "hst_vote02.xlsx", "hst_vote03a.xlsx",
@@ -50,6 +52,10 @@ def download(spec):
             content = response.content
             if path.suffix in {".zip", ".xlsx"} and not content.startswith(b"PK"):
                 raise ValueError("Expected ZIP/XLSX, received a different format")
+            if path.suffix == ".geojson":
+                payload = response.json()
+                if payload.get("type") != "FeatureCollection" or not payload.get("features"):
+                    raise ValueError("Expected a nonempty GeoJSON FeatureCollection")
             temporary = path.with_suffix(path.suffix + ".part")
             temporary.write_bytes(content)
             temporary.replace(path)
@@ -83,7 +89,7 @@ def main():
         specs.append({"url": NC + "ENRS/" + filename,
                       "path": "data/raw/layouts/" + filename, "kind": "nc_layout"})
     specs = [dict(existing.get(s["path"], {}), **s) for s in specs]
-    results = {}
+    results = dict(existing)
 
     def collect(jobs):
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
@@ -110,6 +116,43 @@ def main():
             }
             nc_specs.append(dict(existing.get(spec["path"], {}), **spec))
     collect(nc_specs)
+    geometry_specs = [{
+        "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/Generalized_ACS2024/State_County/MapServer/9/query"
+               "?where=1%3D1&outFields=NAME%2CSTATE%2CSTUSAB&outSR=4326&geometryPrecision=4&f=geojson",
+        "path": "data/raw/geometry/states.geojson", "kind": "state_geometry",
+    }, {
+        "url": NC + "?list-type=2&prefix=ShapeFiles/Precinct/",
+        "path": "data/raw/geometry/nc_catalog.xml", "kind": "boundary_catalog",
+    }]
+    geometry_jobs = []
+    for spec in geometry_specs:
+        old = existing.get(spec["path"], {})
+        geometry_jobs.append(dict(old if old.get("url") == spec["url"] else {}, **spec))
+    collect(geometry_jobs)
+    catalog = ROOT / "data/raw/geometry/nc_catalog.xml"
+    if catalog.exists():
+        root = ET.fromstring(catalog.read_bytes())
+        namespace = {"s": "http://s3.amazonaws.com/doc/2006-03-01/"}
+        keys = {x.text for x in root.findall("s:Contents/s:Key", namespace)}
+        selected = {
+            2006: "Precincts2006Gen.zip",
+            2012: "SBE_PRECINCTS_20120901.zip",
+            2014: "SBE_PRECINCTS_20141016.zip",
+            2016: "SBE_PRECINCTS_20161004.zip",
+            2020: "SBE_PRECINCTS_20201018.zip",
+            2022: "SBE_PRECINCTS_20220831.zip",
+            2024: "SBE_PRECINCTS_20240723.zip",
+        }
+        jobs = []
+        for year, filename in selected.items():
+            key = "ShapeFiles/Precinct/" + filename
+            if key not in keys:
+                continue
+            spec = {"url": NC + key, "path": "data/raw/geometry/" + filename,
+                    "kind": "nc_geometry", "year": year,
+                    "vintage": filename.removesuffix(".zip")}
+            jobs.append(dict(existing.get(spec["path"], {}), **spec))
+        collect(jobs)
     failures = [r for r in results.values() if r["status"] == "failed"]
     print(f"Sources: {len(results)}; failures: {len(failures)}", flush=True)
     if failures:

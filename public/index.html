@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voter participation | Historical research</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <div><p class="eyebrow">Historical election research</p><h1>Who participates?</h1>
+    <p class="intro">Turnout across elections, populations, and places. No candidate preferences.</p></div>
+    <span class="status">Local research preview &middot; not deployed</span>
+  </header>
+  <nav aria-label="Analysis views">
+    <button data-view="national" class="active">National trends</button>
+    <button data-view="states">State turnout</button>
+    <button data-view="precincts">Precinct participation</button>
+    <button data-view="coverage">Coverage audit</button>
+  </nav>
+  <main>
+    <section class="controls" aria-label="Data filters">
+      <label>Election type<select id="type"><option value="all">Presidential + midterm</option><option value="presidential">Presidential</option><option value="midterm">Midterm</option></select></label>
+      <label>Election year<select id="year"></select></label>
+      <label id="basis-label">Population denominator<select id="basis"><option value="cvap">Adult citizens (CPS)</option><option value="vap">All adult residents (CPS)</option></select></label>
+      <label id="dimension-label">Compare<select id="dimension"></select></label>
+      <label id="group-label">Group<select id="group"></select></label>
+      <label id="minimum-label" hidden>Minimum registrations<select id="minimum"><option value="1">1</option><option value="25" selected>25</option><option value="100">100</option></select></label>
+    </section>
+    <p id="measure" class="measure"></p>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section class="panel">
+      <div class="panel-heading"><div><p id="subtitle" class="eyebrow"></p><h2 id="title"></h2></div><div id="key"></div></div>
+      <div id="visualization" aria-live="polite"></div>
+      <p id="caption" class="caption"></p>
+    </section>
+    <section class="panel" id="table-panel">
+      <div class="panel-heading"><h2>Underlying observations</h2><label>Search <input id="search" type="search" placeholder="State, county, precinct, or group"></label></div>
+      <div class="table-wrap"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div>
+      <p id="table-note" class="caption"></p>
+    </section>
+    <section class="downloads"><h2>Download the actual data</h2>
+      <p>Complete observations, not metadata-only exports. Source workbooks and raw archive backups are in the repository.</p>
+      <a href="data/complete-analysis.zip" download>Complete analysis + geometry (ZIP)</a>
+      <a href="data/national.csv" download>National series (CSV)</a>
+      <a href="data/states.csv" download>State series (CSV)</a>
+      <a href="data/coverage.csv" download>Coverage audit (CSV)</a>
+      <a id="nc-download" href="data/nc/2024.csv" download>NC precinct observations (CSV)</a>
+      <a href="data/sources.json" download>Source URLs + checksums</a>
+    </section>
+    <details class="panel"><summary>Methods, definitions, and limitations</summary><div id="methods"></div>
+      <p>Sources: U.S. Census Bureau historical CPS voting tables; North Carolina State Board of Elections historical aggregate voter history, registration statistics, and archived precinct shapefiles. Candidate votes are never substituted for participant counts.</p>
+      <p><a href="https://www.census.gov/data/tables/time-series/demo/voting-and-registration/voting-historical-time-series.html" rel="noreferrer">Census historical tables</a> &middot;
+      <a href="https://www.ncsbe.gov/results-data/voter-history-data" rel="noreferrer">NC participation sources</a> &middot;
+      <a href="https://github.com/hanshanley/voter-participation" rel="noreferrer">Research repository</a></p>
+    </details>
+  </main>
+  <footer>Coverage gaps are not zero turnout. A matching precinct ID is not a fixed-boundary historical panel.</footer>
+  <div id="tooltip" role="tooltip" hidden></div>
+</body>
+</html>

@@ -14,8 +14,8 @@ The analysis keeps three measures separate:
 ## Reproduce
 
 ```sh
-python3 scripts/download.py
-python3 scripts/build.py
+python3 -m scripts.download
+python3 -m scripts.build
 python3 -m pytest
 python3 -m http.server 8765 --bind 127.0.0.1 --directory public
 ```
