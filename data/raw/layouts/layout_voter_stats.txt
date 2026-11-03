@@ -1,0 +1,86 @@
+/* *******************************************************************************
+* name:     voter_stats_layout.txt
+* purpose:  Voter statistics export file data Layout
+* updated:  01/27/2024
+* format:   tab delimited
+******************************************************************************* */
+
+------------------------------------------------------------------------------------
+name                    data type          description
+------------------------------------------------------------------------------------
+county_desc		char(20)	County name/description	
+precinct_abbrv		char(15)	Precinct abbreviation
+vtd_abbrv		char(6)		Voter tabulation district abreviation
+age			char(50)	Age group
+party_cd		char(10)	Party of the registered voter
+race_code		char(1)		Race code
+ethnic_code		char(2)		Ethnic code
+sex_code		char(1)		Sex code
+total_voters		char(4)		Count of total voters (in grouping)
+election_date		char(10)	Election date (MM/DD/YYYY)
+stats_type		char(10)	Type of voter statistic
+update_date		char(10)	Date stats updated
+-- ------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------
+Age Groups
+------------------------------------------------------------------------------------
+name                   description
+-- -----------------------------------
+Age < 18 Or Invalid Birth Dates
+Age 18 - 25
+Age 26 - 40
+Age 41 - 65
+Age Over 66
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+Party 
+------------------------------------------------------------------------------------
+code  description
+----  -----------------------------------
+CST   CONSTITUTION
+DEM   DEMOCRATIC
+GRE   GREEN
+LIB   LIBERTARIAN
+NLB   NO LABELS
+REP   REPUBLICAN
+UNA   UNAFFILIATED
+----  ------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+Race 
+------------------------------------------------------------------------------------
+code  description
+----  -----------------------------------
+A     ASIAN
+B     BLACK or AFRICAN AMERICAN
+I     INDIAN AMERICAN or ALASKA NATIVE
+M     TWO or MORE RACES
+O     OTHER
+P     NATIVE HAWAIIAN or PACIFIC ISLANDER
+U     UNDESIGNATED
+W     WHITE
+----  ------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+Ethnicity
+------------------------------------------------------------------------------------
+code  description
+----  -----------------------------------
+HL    HISPANIC or LATINO
+NL    NOT HISPANIC or NOT LATINO
+UN    UNDESIGNATED
+----  ------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+Sex/gender
+------------------------------------------------------------------------------------
+code  description
+----  -----------------------------------
+F     FEMALE
+M     MALE
+U     UNDESIGNATED
+----  ------------------------------------------------------------------------------
+ 
