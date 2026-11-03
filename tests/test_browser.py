@@ -29,9 +29,13 @@ def test_local_explorer_filters_maps_and_offline_assets():
             page.locator("#visualization svg").wait_for()
             assert page.locator("#year").input_value() == "2024"
             page.select_option("#dimension", "education")
+            page.locator("#visualization svg").wait_for()
+            assert "not available" not in page.locator("#notice").inner_text()
+            page.select_option("#year", "1998")
             assert "not available" in page.locator("#notice").inner_text()
             page.select_option("#basis", "vap")
             page.locator("#visualization svg").wait_for()
+            page.select_option("#year", "2024")
             page.click("button[data-view='states']")
             assert page.locator(".map-feature").count() == 51
             page.select_option("#type", "midterm")
@@ -40,12 +44,20 @@ def test_local_explorer_filters_maps_and_offline_assets():
             page.click("button[data-view='precincts']")
             page.locator(".map-feature").first.wait_for()
             assert page.locator(".map-feature").count() > 2000
+            page.select_option("#type", "all")
+            page.select_option("#year", "2024")
+            page.wait_for_function(
+                "document.querySelector('#title').textContent.includes('2024')"
+            )
+            page.locator(".map-feature").first.wait_for()
+            assert page.locator(".map-feature").count() > 2000
             page.select_option("#dimension", "race")
             page.select_option("#group", "Black")
             page.wait_for_function("document.querySelector('#title').textContent.includes('Black')")
-            page.select_option("#type", "all")
             page.select_option("#year", "2004")
-            assert "not been validated" in page.locator("#notice").inner_text()
+            page.wait_for_function(
+                "document.querySelector('#notice').textContent.includes('We do not substitute a different year')"
+            )
             assert page.locator(".map-feature").count() == 0
             page.click("button[data-view='coverage']")
             assert page.locator(".map-feature").count() == 51

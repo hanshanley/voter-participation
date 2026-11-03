@@ -11,6 +11,7 @@ from pathlib import Path
 
 import openpyxl
 import shapefile
+import xlrd
 from pyproj import CRS, Transformer
 
 from scripts.download import ROOT, atomic_json
@@ -49,6 +50,88 @@ def warnings_for(year, dimension, basis):
     if dimension == "education" and year < 1992:
         notes.append("Historical educational attainment categories require caution across the 1992 CPS change.")
     return notes
+
+
+def election_demographics():
+    observations = []
+    for spec in META["sources"]:
+        if spec["kind"] != "cps_election_table" or spec["table"] != 5:
+            continue
+        path = ROOT / spec["path"]
+        if path.suffix == ".xls":
+            sheet = xlrd.open_workbook(path).sheet_by_index(0)
+            rows = [sheet.row_values(i) for i in range(sheet.nrows)]
+        else:
+            rows = list(openpyxl.load_workbook(path, data_only=True).active.values)
+        headings = next((row for row in rows[:12]
+                         if any(str(v).strip().lower() == "total citizen population" for v in row)), None)
+        if headings:
+            citizen_col = next(i for i, v in enumerate(headings)
+                               if str(v).strip().lower() == "total citizen population")
+            voted_col = next(i for i, v in enumerate(headings)
+                             if str(v).strip().lower() == "reported voted")
+        else:
+            if not any(str(row[10]).strip().lower() == "u.s. citizen" for row in rows[:12]):
+                raise ValueError(f"Unrecognized citizen-population header: {path}")
+            citizen_col, voted_col = None, 6
+        label_col = 1 if citizen_col == 3 else 0
+        sex, pending = None, ""
+        education, sexes = {}, {}
+        for row_number, row in enumerate(rows, 1):
+            first = str(row[0] or "").strip(" .")
+            if re.search(r"margins? of error", first, re.I):
+                break
+            if sex and re.match(r"\d+.*years", first, re.I):
+                break
+            if first.lower() in ["both sexes", "male", "female"]:
+                sex = first.lower()
+                pending = ""
+            if sex is None:
+                continue
+            label = str(row[label_col] or "").strip(" .")
+            if not numeric(row[voted_col]):
+                if label and label.lower() not in ["both sexes", "male", "female"]:
+                    pending += label + " "
+                continue
+            label = (pending + label).lower()
+            pending = ""
+            citizen = row[citizen_col] if citizen_col is not None else row[10] + row[11]
+            voted = row[voted_col]
+            if not numeric(citizen) or not 0 <= voted <= citizen or citizen <= 0:
+                raise ValueError(f"Invalid citizen turnout counts: {path}:{row_number}")
+            counts = (voted, citizen, row_number)
+            if label == "total" and sex in ["male", "female"]:
+                sexes[sex.title()] = counts
+            if sex == "both sexes":
+                for prefix, group in [
+                    ("less than 9th", "Less than 9th grade"),
+                    ("9th", "9th–12th grade, no diploma"),
+                    ("high school", "High school / GED"),
+                    ("some college", "Some college / associate's degree"),
+                    ("bachelor", "Bachelor"), ("advanced", "Advanced"),
+                ]:
+                    if label.startswith(prefix):
+                        education[group] = counts
+                        break
+        if len(education) != 6 or len(sexes) != 2:
+            raise ValueError(f"Incomplete adult demographic block: {path}")
+        grouped = [("education", group, [counts]) for group, counts in education.items()
+                   if group not in ["Bachelor", "Advanced"]]
+        grouped.append(("education", "Bachelor's degree or more",
+                        [education["Bachelor"], education["Advanced"]]))
+        grouped.extend(("sex", group, [counts]) for group, counts in sexes.items())
+        for dimension, group, parts in grouped:
+            voted, citizen = sum(p[0] for p in parts), sum(p[1] for p in parts)
+            observations.append({
+                "year": spec["year"], "election_type": "presidential" if spec["year"] % 4 == 0 else "midterm",
+                "age_group": "All ages", "dimension": dimension, "group": group,
+                "denominator": "cvap", "turnout_pct": round(100 * voted / citizen, 3),
+                "source": str(path.relative_to(ROOT / "data/raw/census")),
+                "source_row": [p[2] for p in parts],
+                "warnings": ["Calculated from published thousand-person counts; rounding can differ from published percentages."],
+                "participants_thousands": voted, "citizen_population_thousands": citizen,
+            })
+    return observations
 
 
 def census_data():
@@ -122,6 +205,10 @@ def census_data():
                         "turnout_pct": row[index], "source": name, "source_row": row_number,
                         "warnings": warnings_for(year, "overall", basis),
                     })
+    national.extend(election_demographics())
+    for record in national:
+        record.setdefault("participants_thousands", None)
+        record.setdefault("citizen_population_thousands", None)
     atomic_json(OUT / "national.json", national)
     atomic_json(OUT / "states.json", states)
     write_csv(OUT / "national.csv", national)
@@ -238,13 +325,15 @@ def nc_data():
             summaries.append({"year": year, "status": "source_unavailable", "reason": str(error)})
             continue
         counties_with_history = {k[0] for k, v in participants.items() if k[2] == "overall" and v > 0}
+        precincts_with_history = {(k[0], k[1]) for k, v in participants.items()
+                                  if k[2] == "overall" and v > 0}
         records = []
         grouped = defaultdict(lambda: [0, 0])
         for county, precinct, dimension, group in sorted(set(participants) | set(registered)):
             key = county, precinct, dimension, group
             voted, reg = participants.get(key, 0), registered.get(key, 0)
             record = {"county": county, "precinct": precinct, "dimension": dimension, "group": group}
-            record.update(rate_record(voted, reg, county in counties_with_history))
+            record.update(rate_record(voted, reg, (county, precinct) in precincts_with_history))
             records.append(record)
             grouped[(dimension, group)][0] += voted
             grouped[(dimension, group)][1] += reg
@@ -266,7 +355,7 @@ def nc_data():
             "denominator": "registered", "measure": "voter_history_participation",
             "source_cleaning": {"history": history_audit, "registration": registration_audit},
         }
-        atomic_json(OUT / f"nc/{year}.json", {"summary": summary, "records": records})
+        atomic_json(OUT / f"nc/{year}.json", {"summary": summary, "records": records}, compact=True)
         write_csv(OUT / f"nc/{year}.csv", [{"year": year, **r} for r in records])
         summaries.append(summary)
         print(f"  {total_voted:,} participants / {total_registered:,} registrations; "
@@ -381,7 +470,7 @@ def geometry_data():
             "type": "FeatureCollection", "features": features,
             "source": spec["url"], "vintage": spec["vintage"],
             "note": "Published pre-election snapshot; ID joins checked, boundary changes not independently certified.",
-        })
+        }, compact=True)
         data = json.loads((OUT / f"nc/{year}.json").read_text())
         overall = [r for r in data["records"] if r["dimension"] == "overall"]
         matched = [r for r in overall if (r["county"], r["precinct"]) in seen]
@@ -439,12 +528,12 @@ def build():
             "Do not interpret precinct demographics as an individual's participation or candidate preference.",
             "NC records are public aggregate participation and registration counts, not ballots cast totals.",
             "Race and ethnicity categories overlap; age bands differ between CPS and NC.",
-            "Rates above 100%, zero denominators, and missing county participation are flagged, never clipped.",
+            "Rates above 100%, zero denominators, and precincts lacking participation records are flagged, never clipped or assigned zero turnout.",
             "Published precinct snapshots are not a fixed-boundary panel; no precinct trend claim across changing boundaries.",
             "A matching precinct identifier is not proof of an unchanged or election-certified boundary.",
             "Some NC participants have blank or unmatched precincts; counts remain in the downloadable analysis.",
             "2000 NC history source contains 'Data Unavailable'; no participation rate is inferred.",
-            "National historical education and sex series use VAP; CVAP is not inferred from them.",
+            "Historical education and sex VAP series remain separate from 2000–2024 CVAP rates calculated using election-specific Census citizen counts.",
             "Archived NC history/registration totals differ from official ballots/eligible counts in some years; see the reconciliation download.",
             "2026 general-election data are intentionally excluded; this project ends with finalized 2024 sources.",
         ],

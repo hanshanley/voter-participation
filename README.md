@@ -14,9 +14,12 @@ The analysis keeps three measures separate:
 ## Reproduce
 
 ```sh
-python3 -m scripts.download
-python3 -m scripts.build
-python3 -m pytest
+python3 -m venv .venv
+.venv/bin/python -m pip install -e '.[test]'
+.venv/bin/python -m playwright install chromium
+.venv/bin/python -m scripts.download
+.venv/bin/python -m scripts.build
+.venv/bin/python -m pytest
 python3 -m http.server 8765 --bind 127.0.0.1 --directory public
 ```
 
@@ -33,6 +36,37 @@ provide a first administrative precinct series. Other states are marked
 unassessed until their numerator, denominator, and historical geometry have
 actually been checked.
 
+Current outputs include national demographic turnout from 1964–2024 and state
+turnout from 1972–2024, with availability and population definitions varying by
+series. Election-specific Census tables add citizen-denominator education and sex
+rates for every election from 2000–2024; older education and sex series retain
+their all-adult-resident denominator. Calculated rates retain their published
+thousand-person numerator, citizen denominator, and source rows. Bachelor's and
+advanced degrees are combined using counts, never an average of percentages.
+
+The NC precinct series covers 2002–2024. Election-year boundary snapshots are
+available for 2006, 2012, 2014, 2016, 2020, 2022, and 2024. Maps use those snapshots
+only, not a modern boundary substituted for earlier elections. Joining an ID
+does not certify election-day boundaries or create a constant-precinct panel.
+Missing participation records, inconsistent counts, and zero denominators are
+flagged and have no displayed rate. NC education is not available.
+
+The 561-row nationwide coverage matrix explicitly marks the other 50
+jurisdictions **not assessed**: this is an initial inventory, not a completed
+nationwide precinct-source audit. Nationwide state estimates are not precinct
+estimates. NC archive participation/registration totals are separately compared
+with the official ballots/eligible-count table; source discrepancies and the
+official 2010 percentage/count inconsistency are preserved, not silently fixed.
+
 Raw ZIP files are retained locally and backed up as GitHub release assets;
 normalized datasets, source manifests, analysis, and application code are
 versioned in Git. These data backups are not a deployment.
+
+To restore the exact archived NC and boundary sources after cloning, authenticate
+the GitHub CLI and run `.venv/bin/python -m scripts.restore`. This downloads
+missing originals from release `data-snapshot-2026-11-03` and verifies every
+SHA-256 against `data/sources.json`, without overwriting existing files.
+`data/backups.json` records the release-asset checksum verification. Census
+workbooks, source catalogs, and layouts are versioned directly in Git. The
+explorer's complete-analysis ZIP contains all observations and geometry, not
+just metadata; raw originals are preserved separately.

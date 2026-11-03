@@ -1,0 +1,2409 @@
+[
+  {
+    "year": 2000,
+    "status": "source_unavailable",
+    "reason": "history_stats_20001107.zip: no unique tabular participation file (source may be unavailable)"
+  },
+  {
+    "year": 2002,
+    "election_type": "midterm",
+    "status": "aggregated",
+    "participants": 2349966,
+    "registered": 5045586,
+    "history_rows": 221436,
+    "registration_rows": 217408,
+    "counties_with_history": 100,
+    "precincts": 2835,
+    "invalid_rates": 822,
+    "unassigned_participants": 2882,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age  < 18 Or Invalid Birth Dates",
+        "participants": 17810,
+        "registered": 36748,
+        "turnout_pct": 48.465,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 100729,
+        "registered": 498140,
+        "turnout_pct": 20.221,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 513227,
+        "registered": 1539155,
+        "turnout_pct": 33.345,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 1215511,
+        "registered": 2155765,
+        "turnout_pct": 56.384,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 502689,
+        "registered": 815778,
+        "turnout_pct": 61.621,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 1211,
+        "registered": 3819,
+        "turnout_pct": 31.71,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 2292545,
+        "registered": 4935524,
+        "turnout_pct": 46.45,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 56210,
+        "registered": 106243,
+        "turnout_pct": 52.907,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 2349966,
+        "registered": 5045586,
+        "turnout_pct": 46.575,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 10441,
+        "registered": 42954,
+        "turnout_pct": 24.307,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 920,
+        "registered": 2129,
+        "turnout_pct": 43.213,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 397806,
+        "registered": 972866,
+        "turnout_pct": 40.89,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 19020,
+        "registered": 69613,
+        "turnout_pct": 27.322,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 441,
+        "registered": 813,
+        "turnout_pct": 54.244,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 7187,
+        "registered": 17855,
+        "turnout_pct": 40.252,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race ()",
+        "participants": 0,
+        "registered": 1677,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race (?)",
+        "participants": 1,
+        "registered": 3,
+        "turnout_pct": 33.333,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 1914150,
+        "registered": 3937676,
+        "turnout_pct": 48.611,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 1271558,
+        "registered": 2764374,
+        "turnout_pct": 45.998,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 1075582,
+        "registered": 2273503,
+        "turnout_pct": 47.309,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 2826,
+        "registered": 7709,
+        "turnout_pct": 36.658,
+        "quality": []
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2002_11_05/history_stats_20021105.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2002_11_05/voter_stats_20021105.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 0
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2004,
+    "election_type": "presidential",
+    "status": "aggregated",
+    "participants": 3570560,
+    "registered": 5527413,
+    "history_rows": 1699272,
+    "registration_rows": 302899,
+    "counties_with_history": 100,
+    "precincts": 3011,
+    "invalid_rates": 11414,
+    "unassigned_participants": 142402,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age  < 18 Or Invalid Birth Dates",
+        "participants": 37696,
+        "registered": 26222,
+        "turnout_pct": null,
+        "quality": [
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 335202,
+        "registered": 618622,
+        "turnout_pct": 54.185,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 919060,
+        "registered": 1617004,
+        "turnout_pct": 56.837,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 1683895,
+        "registered": 2388889,
+        "turnout_pct": 70.489,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 594707,
+        "registered": 876676,
+        "turnout_pct": 67.837,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 16235,
+        "registered": 24569,
+        "turnout_pct": 66.079,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 3243975,
+        "registered": 5090573,
+        "turnout_pct": 63.725,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 310350,
+        "registered": 408211,
+        "turnout_pct": 76.027,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Unknown ethnicity ()",
+        "participants": 0,
+        "registered": 4060,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 3570560,
+        "registered": 5527413,
+        "turnout_pct": 64.597,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 20674,
+        "registered": 47308,
+        "turnout_pct": 43.701,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 12325,
+        "registered": 14951,
+        "turnout_pct": 82.436,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 665392,
+        "registered": 1114798,
+        "turnout_pct": 59.687,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 35802,
+        "registered": 78740,
+        "turnout_pct": 45.469,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 7738,
+        "registered": 9253,
+        "turnout_pct": 83.627,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 23880,
+        "registered": 35821,
+        "turnout_pct": 66.665,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race ()",
+        "participants": 94,
+        "registered": 19,
+        "turnout_pct": null,
+        "quality": [
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race (?)",
+        "participants": 0,
+        "registered": 50,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 2804655,
+        "registered": 4226473,
+        "turnout_pct": 66.359,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 1983020,
+        "registered": 3021379,
+        "turnout_pct": 65.633,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 1576177,
+        "registered": 2488016,
+        "turnout_pct": 63.351,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 11357,
+        "registered": 18018,
+        "turnout_pct": 63.031,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex ()",
+        "participants": 4,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex (N)",
+        "participants": 1,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex (R)",
+        "participants": 1,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2004_11_02/history_stats_20041102.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2004_11_02/voter_stats_20041102.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 0
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2006,
+    "election_type": "midterm",
+    "status": "aggregated",
+    "participants": 2050105,
+    "registered": 5497879,
+    "history_rows": 283684,
+    "registration_rows": 312321,
+    "counties_with_history": 100,
+    "precincts": 2892,
+    "invalid_rates": 2382,
+    "unassigned_participants": 30814,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age  < 18 Or Invalid Birth Dates",
+        "participants": 0,
+        "registered": 1316,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 62304,
+        "registered": 577635,
+        "turnout_pct": 10.786,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 344694,
+        "registered": 1523629,
+        "turnout_pct": 22.623,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 1108433,
+        "registered": 2464915,
+        "turnout_pct": 44.968,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 534674,
+        "registered": 930384,
+        "turnout_pct": 57.468,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 6252,
+        "registered": 35339,
+        "turnout_pct": 17.692,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 1902306,
+        "registered": 4989352,
+        "turnout_pct": 38.127,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 141547,
+        "registered": 473188,
+        "turnout_pct": 29.913,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 2050105,
+        "registered": 5497879,
+        "turnout_pct": 37.289,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 8672,
+        "registered": 41625,
+        "turnout_pct": 20.834,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 4526,
+        "registered": 22276,
+        "turnout_pct": 20.318,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 317217,
+        "registered": 1103099,
+        "turnout_pct": 28.757,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 15969,
+        "registered": 80683,
+        "turnout_pct": 19.792,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 2626,
+        "registered": 11822,
+        "turnout_pct": 22.213,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 11113,
+        "registered": 40000,
+        "turnout_pct": 27.782,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race ()",
+        "participants": 30000,
+        "registered": 17,
+        "turnout_pct": null,
+        "quality": [
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 1659982,
+        "registered": 4198357,
+        "turnout_pct": 39.539,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 1064755,
+        "registered": 3001665,
+        "turnout_pct": 35.472,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 980743,
+        "registered": 2477783,
+        "turnout_pct": 39.581,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 4607,
+        "registered": 18431,
+        "turnout_pct": 24.996,
+        "quality": []
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2006_11_07/history_stats_20061107.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2006_11_07/voter_stats_20061107.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 0
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2008,
+    "election_type": "presidential",
+    "status": "aggregated",
+    "participants": 4337786,
+    "registered": 6080103,
+    "history_rows": 584995,
+    "registration_rows": 384713,
+    "counties_with_history": 100,
+    "precincts": 2863,
+    "invalid_rates": 5244,
+    "unassigned_participants": 0,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age  < 18 Or Invalid Birth Dates",
+        "participants": 0,
+        "registered": 92,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 467229,
+        "registered": 730701,
+        "turnout_pct": 63.943,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 1058336,
+        "registered": 1637772,
+        "turnout_pct": 64.62,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 2071061,
+        "registered": 2691246,
+        "turnout_pct": 76.955,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 66 Over",
+        "participants": 741147,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "age",
+        "group": "Age < 18 Or Invalid Birth Dates",
+        "participants": 13,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 0,
+        "registered": 1020292,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 42238,
+        "registered": 63985,
+        "turnout_pct": 66.012,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 3565733,
+        "registered": 5066657,
+        "turnout_pct": 70.376,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 729815,
+        "registered": 949461,
+        "turnout_pct": 76.866,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 4337786,
+        "registered": 6080103,
+        "turnout_pct": 71.344,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 25060,
+        "registered": 46714,
+        "turnout_pct": 53.646,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 26571,
+        "registered": 40021,
+        "turnout_pct": 66.393,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 963530,
+        "registered": 1318670,
+        "turnout_pct": 73.068,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 54772,
+        "registered": 95982,
+        "turnout_pct": 57.065,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 17185,
+        "registered": 24576,
+        "turnout_pct": 69.926,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 72321,
+        "registered": 80945,
+        "turnout_pct": 89.346,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 3178347,
+        "registered": 4473195,
+        "turnout_pct": 71.053,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 2384521,
+        "registered": 3293702,
+        "turnout_pct": 72.396,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 1915846,
+        "registered": 2742241,
+        "turnout_pct": 69.864,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 37411,
+        "registered": 44160,
+        "turnout_pct": 84.717,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex ()",
+        "participants": 3,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex (N)",
+        "participants": 4,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex (R)",
+        "participants": 1,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2008_11_04/history_stats_20081104.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2008_11_04/voter_stats_20081104.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 0
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2010,
+    "election_type": "midterm",
+    "status": "aggregated",
+    "participants": 2693125,
+    "registered": 6207063,
+    "history_rows": 385343,
+    "registration_rows": 408728,
+    "counties_with_history": 100,
+    "precincts": 2840,
+    "invalid_rates": 328,
+    "unassigned_participants": 140,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age  < 18 Or Invalid Birth Dates",
+        "participants": 0,
+        "registered": 98,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 123213,
+        "registered": 706134,
+        "turnout_pct": 17.449,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 473645,
+        "registered": 1634881,
+        "turnout_pct": 28.971,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 1445066,
+        "registered": 2778551,
+        "turnout_pct": 52.008,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 651201,
+        "registered": 1087399,
+        "turnout_pct": 59.886,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 15565,
+        "registered": 78886,
+        "turnout_pct": 19.731,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 2327323,
+        "registered": 5117617,
+        "turnout_pct": 45.477,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 350237,
+        "registered": 1010560,
+        "turnout_pct": 34.658,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 2693125,
+        "registered": 6207063,
+        "turnout_pct": 43.388,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 13398,
+        "registered": 48436,
+        "turnout_pct": 27.661,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 10197,
+        "registered": 44487,
+        "turnout_pct": 22.921,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 539287,
+        "registered": 1340590,
+        "turnout_pct": 40.228,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 24452,
+        "registered": 106684,
+        "turnout_pct": 22.92,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 6266,
+        "registered": 25767,
+        "turnout_pct": 24.318,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 30487,
+        "registered": 103324,
+        "turnout_pct": 29.506,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 2069038,
+        "registered": 4537775,
+        "turnout_pct": 45.596,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 1441673,
+        "registered": 3352856,
+        "turnout_pct": 42.998,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 1234419,
+        "registered": 2799605,
+        "turnout_pct": 44.093,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 17033,
+        "registered": 54602,
+        "turnout_pct": 31.195,
+        "quality": []
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2010_11_02/history_stats_20101102.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2010_11_02/voter_stats_20101102.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 0
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2012,
+    "election_type": "presidential",
+    "status": "aggregated",
+    "participants": 4532494,
+    "registered": 6655302,
+    "history_rows": 631734,
+    "registration_rows": 458824,
+    "counties_with_history": 100,
+    "precincts": 2835,
+    "invalid_rates": 309,
+    "unassigned_participants": 641,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age  < 18 Or Invalid Birth Dates",
+        "participants": 0,
+        "registered": 151,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 468789,
+        "registered": 847669,
+        "turnout_pct": 55.303,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 984965,
+        "registered": 1696812,
+        "turnout_pct": 58.048,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 2197524,
+        "registered": 2950462,
+        "turnout_pct": 74.481,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 881216,
+        "registered": 1160208,
+        "turnout_pct": 75.953,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 61464,
+        "registered": 113958,
+        "turnout_pct": 53.936,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 3662857,
+        "registered": 5328580,
+        "turnout_pct": 68.74,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 808173,
+        "registered": 1212764,
+        "turnout_pct": 66.639,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 4532494,
+        "registered": 6655302,
+        "turnout_pct": 68.104,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 27189,
+        "registered": 53510,
+        "turnout_pct": 50.811,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 35212,
+        "registered": 59771,
+        "turnout_pct": 58.912,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 1045252,
+        "registered": 1493969,
+        "turnout_pct": 69.965,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 66165,
+        "registered": 129020,
+        "turnout_pct": 51.283,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 22141,
+        "registered": 37634,
+        "turnout_pct": 58.832,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 97406,
+        "registered": 149440,
+        "turnout_pct": 65.181,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 3239129,
+        "registered": 4731958,
+        "turnout_pct": 68.452,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 2484196,
+        "registered": 3575713,
+        "turnout_pct": 69.474,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 1999194,
+        "registered": 3003393,
+        "turnout_pct": 66.565,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 49104,
+        "registered": 76196,
+        "turnout_pct": 64.444,
+        "quality": []
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2012_11_06/history_stats_20121106.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2012_11_06/voter_stats_20121106.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 0
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2014,
+    "election_type": "midterm",
+    "status": "aggregated",
+    "participants": 2937828,
+    "registered": 6628584,
+    "history_rows": 455196,
+    "registration_rows": 472868,
+    "counties_with_history": 100,
+    "precincts": 2801,
+    "invalid_rates": 494,
+    "unassigned_participants": 206,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 145662,
+        "registered": 806664,
+        "turnout_pct": 18.057,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 478485,
+        "registered": 1655306,
+        "turnout_pct": 28.906,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 1526475,
+        "registered": 2916190,
+        "turnout_pct": 52.345,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 787206,
+        "registered": 1250424,
+        "turnout_pct": 62.955,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 26036,
+        "registered": 127253,
+        "turnout_pct": 20.46,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 2470335,
+        "registered": 5274366,
+        "turnout_pct": 46.837,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 441457,
+        "registered": 1226965,
+        "turnout_pct": 35.98,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 2937828,
+        "registered": 6628584,
+        "turnout_pct": 44.321,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 15629,
+        "registered": 54031,
+        "turnout_pct": 28.926,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 17412,
+        "registered": 64653,
+        "turnout_pct": 26.931,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 629059,
+        "registered": 1491264,
+        "turnout_pct": 42.183,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 32624,
+        "registered": 140128,
+        "turnout_pct": 23.282,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 9711,
+        "registered": 39098,
+        "turnout_pct": 24.838,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 46852,
+        "registered": 164480,
+        "turnout_pct": 28.485,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 2186541,
+        "registered": 4674930,
+        "turnout_pct": 46.772,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 1585960,
+        "registered": 3545959,
+        "turnout_pct": 44.726,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 1323423,
+        "registered": 2984627,
+        "turnout_pct": 44.341,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 28445,
+        "registered": 97998,
+        "turnout_pct": 29.026,
+        "quality": []
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2014_11_04/history_stats_20141104.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2014_11_04/voter_stats_20141104.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 0
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2016,
+    "election_type": "presidential",
+    "status": "aggregated",
+    "participants": 4768079,
+    "registered": 6924296,
+    "history_rows": 734126,
+    "registration_rows": 514848,
+    "counties_with_history": 100,
+    "precincts": 2774,
+    "invalid_rates": 804,
+    "unassigned_participants": 0,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 459718,
+        "registered": 868779,
+        "turnout_pct": 52.915,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 1012711,
+        "registered": 1731904,
+        "turnout_pct": 58.474,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 2242958,
+        "registered": 2967524,
+        "turnout_pct": 75.583,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age < 18 Or Invalid Birth Dates",
+        "participants": 1,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 1052691,
+        "registered": 1356089,
+        "turnout_pct": 77.627,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 96452,
+        "registered": 167111,
+        "turnout_pct": 57.717,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 3781375,
+        "registered": 5391230,
+        "turnout_pct": 70.139,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 890252,
+        "registered": 1365955,
+        "turnout_pct": 65.174,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 4768079,
+        "registered": 6924296,
+        "turnout_pct": 68.86,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 29090,
+        "registered": 56661,
+        "turnout_pct": 51.34,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 51516,
+        "registered": 81210,
+        "turnout_pct": 63.436,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 987538,
+        "registered": 1536677,
+        "turnout_pct": 64.265,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 90961,
+        "registered": 166529,
+        "turnout_pct": 54.622,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 27026,
+        "registered": 47560,
+        "turnout_pct": 56.825,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 148821,
+        "registered": 233217,
+        "turnout_pct": 63.812,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race ()",
+        "participants": 0,
+        "registered": 3,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 3433127,
+        "registered": 4802439,
+        "turnout_pct": 71.487,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 2592124,
+        "registered": 3666664,
+        "turnout_pct": 70.694,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 2077205,
+        "registered": 3099304,
+        "turnout_pct": 67.022,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 98742,
+        "registered": 158328,
+        "turnout_pct": 62.365,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex ()",
+        "participants": 7,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex (N)",
+        "participants": 1,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2016_11_08/history_stats_20161108.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2016_11_08/voter_stats_20161108.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 30024
+      },
+      "registration": {
+        "nul_bytes_removed": 1137
+      }
+    }
+  },
+  {
+    "year": 2018,
+    "election_type": "midterm",
+    "status": "aggregated",
+    "participants": 3754102,
+    "registered": 7095102,
+    "history_rows": 630441,
+    "registration_rows": 538372,
+    "counties_with_history": 100,
+    "precincts": 2774,
+    "invalid_rates": 668,
+    "unassigned_participants": 0,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 253729,
+        "registered": 863931,
+        "turnout_pct": 29.369,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 683948,
+        "registered": 1772120,
+        "turnout_pct": 38.595,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 1810581,
+        "registered": 2987675,
+        "turnout_pct": 60.602,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age < 18 Or Invalid Birth Dates",
+        "participants": 2,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 1005842,
+        "registered": 1471376,
+        "turnout_pct": 68.361,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 68949,
+        "registered": 197115,
+        "turnout_pct": 34.979,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 3008409,
+        "registered": 5483524,
+        "turnout_pct": 54.863,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 676744,
+        "registered": 1414463,
+        "turnout_pct": 47.845,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 3754102,
+        "registered": 7095102,
+        "turnout_pct": 52.911,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 21977,
+        "registered": 58287,
+        "turnout_pct": 37.705,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 40982,
+        "registered": 92945,
+        "turnout_pct": 44.093,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 753229,
+        "registered": 1557970,
+        "turnout_pct": 48.347,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 68287,
+        "registered": 194576,
+        "turnout_pct": 35.095,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 18759,
+        "registered": 48573,
+        "turnout_pct": 38.62,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 127036,
+        "registered": 286735,
+        "turnout_pct": 44.304,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race ()",
+        "participants": 0,
+        "registered": 2,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 2723832,
+        "registered": 4856014,
+        "turnout_pct": 56.092,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 2011311,
+        "registered": 3730490,
+        "turnout_pct": 53.915,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 1658001,
+        "registered": 3164284,
+        "turnout_pct": 52.397,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 84777,
+        "registered": 200328,
+        "turnout_pct": 42.319,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex ()",
+        "participants": 12,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex (N)",
+        "participants": 1,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2018_11_06/history_stats_20181106.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2018_11_06/voter_stats_20181106.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 31557
+      },
+      "registration": {
+        "nul_bytes_removed": 1073
+      }
+    }
+  },
+  {
+    "year": 2020,
+    "election_type": "presidential",
+    "status": "aggregated",
+    "participants": 5544018,
+    "registered": 7378587,
+    "history_rows": 946304,
+    "registration_rows": 592717,
+    "counties_with_history": 100,
+    "precincts": 2706,
+    "invalid_rates": 492,
+    "unassigned_participants": 0,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 587340,
+        "registered": 980240,
+        "turnout_pct": 59.918,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 1194333,
+        "registered": 1846508,
+        "turnout_pct": 64.681,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 2447884,
+        "registered": 2989040,
+        "turnout_pct": 81.895,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age < 18 Or Invalid Birth Dates",
+        "participants": 6,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 1314455,
+        "registered": 1562798,
+        "turnout_pct": 84.109,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Invalid Birth Dates",
+        "participants": 0,
+        "registered": 1,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 134568,
+        "registered": 228233,
+        "turnout_pct": 58.961,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 3995811,
+        "registered": 5221764,
+        "turnout_pct": 76.522,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 1413639,
+        "registered": 1928590,
+        "turnout_pct": 73.299,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 5544018,
+        "registered": 7378587,
+        "turnout_pct": 75.137,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 35221,
+        "registered": 56152,
+        "turnout_pct": 62.724,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 75060,
+        "registered": 104516,
+        "turnout_pct": 71.817,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 1038375,
+        "registered": 1520368,
+        "turnout_pct": 68.298,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Native Hawaiian / Pacific Islander",
+        "participants": 356,
+        "registered": 381,
+        "turnout_pct": 93.438,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 119125,
+        "registered": 199326,
+        "turnout_pct": 59.764,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 28449,
+        "registered": 47208,
+        "turnout_pct": 60.263,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 548968,
+        "registered": 746356,
+        "turnout_pct": 73.553,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race ()",
+        "participants": 0,
+        "registered": 2,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 3698464,
+        "registered": 4704278,
+        "turnout_pct": 78.619,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 2796056,
+        "registered": 3657630,
+        "turnout_pct": 76.444,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 2293078,
+        "registered": 3109587,
+        "turnout_pct": 73.742,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 454878,
+        "registered": 611370,
+        "turnout_pct": 74.403,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Unknown sex ()",
+        "participants": 6,
+        "registered": 0,
+        "turnout_pct": null,
+        "quality": [
+          "missing_or_zero_denominator",
+          "participation_exceeds_registration"
+        ]
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2020_11_03/history_stats_20201103.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2020_11_03/voter_stats_20201103.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 30516
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2022,
+    "election_type": "midterm",
+    "status": "aggregated",
+    "participants": 3786905,
+    "registered": 7422396,
+    "history_rows": 697799,
+    "registration_rows": 626928,
+    "counties_with_history": 100,
+    "precincts": 2696,
+    "invalid_rates": 170,
+    "unassigned_participants": 195,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 233441,
+        "registered": 968290,
+        "turnout_pct": 24.109,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 629299,
+        "registered": 1841623,
+        "turnout_pct": 34.171,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 1743544,
+        "registered": 2956704,
+        "turnout_pct": 58.969,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 1180621,
+        "registered": 1655779,
+        "turnout_pct": 71.303,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 68071,
+        "registered": 264233,
+        "turnout_pct": 25.762,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 2879538,
+        "registered": 5224631,
+        "turnout_pct": 55.115,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 839296,
+        "registered": 1933532,
+        "turnout_pct": 43.407,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 3786905,
+        "registered": 7422396,
+        "turnout_pct": 51.02,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 20148,
+        "registered": 54509,
+        "turnout_pct": 36.963,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 45352,
+        "registered": 116174,
+        "turnout_pct": 39.038,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 629920,
+        "registered": 1507359,
+        "turnout_pct": 41.79,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Native Hawaiian / Pacific Islander",
+        "participants": 208,
+        "registered": 608,
+        "turnout_pct": 34.211,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 68956,
+        "registered": 235714,
+        "turnout_pct": 29.254,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 14665,
+        "registered": 42768,
+        "turnout_pct": 34.29,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 211146,
+        "registered": 644393,
+        "turnout_pct": 32.767,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race ()",
+        "participants": 0,
+        "registered": 1,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 2796510,
+        "registered": 4820870,
+        "turnout_pct": 58.008,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 1945131,
+        "registered": 3712087,
+        "turnout_pct": 52.4,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 1652200,
+        "registered": 3159461,
+        "turnout_pct": 52.294,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 189574,
+        "registered": 550848,
+        "turnout_pct": 34.415,
+        "quality": []
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2022_11_08/history_stats_20221108.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2022_11_08/voter_stats_20221108.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 2
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  },
+  {
+    "year": 2024,
+    "election_type": "presidential",
+    "status": "aggregated",
+    "participants": 5705861,
+    "registered": 7854464,
+    "history_rows": 987529,
+    "registration_rows": 685049,
+    "counties_with_history": 100,
+    "precincts": 2703,
+    "invalid_rates": 94,
+    "unassigned_participants": 157,
+    "statewide": [
+      {
+        "dimension": "age",
+        "group": "Age 18 - 25",
+        "participants": 599900,
+        "registered": 1045719,
+        "turnout_pct": 57.367,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 26 - 40",
+        "participants": 1208084,
+        "registered": 1976655,
+        "turnout_pct": 61.118,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age 41 - 65",
+        "participants": 2400621,
+        "registered": 3032324,
+        "turnout_pct": 79.168,
+        "quality": []
+      },
+      {
+        "dimension": "age",
+        "group": "Age Over 66",
+        "participants": 1497256,
+        "registered": 1799766,
+        "turnout_pct": 83.192,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Hispanic / Latino",
+        "participants": 184002,
+        "registered": 327319,
+        "turnout_pct": 56.215,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Not Hispanic / Latino",
+        "participants": 3919492,
+        "registered": 5170145,
+        "turnout_pct": 75.81,
+        "quality": []
+      },
+      {
+        "dimension": "ethnicity",
+        "group": "Undesignated ethnicity",
+        "participants": 1602367,
+        "registered": 2357000,
+        "turnout_pct": 67.983,
+        "quality": []
+      },
+      {
+        "dimension": "overall",
+        "group": "All",
+        "participants": 5705861,
+        "registered": 7854464,
+        "turnout_pct": 72.645,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "American Indian / Alaska Native",
+        "participants": 36016,
+        "registered": 57452,
+        "turnout_pct": 62.689,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Asian",
+        "participants": 92886,
+        "registered": 136891,
+        "turnout_pct": 67.854,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Black",
+        "participants": 1018521,
+        "registered": 1542598,
+        "turnout_pct": 66.026,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Native Hawaiian / Pacific Islander",
+        "participants": 635,
+        "registered": 1087,
+        "turnout_pct": 58.418,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Other race",
+        "participants": 180669,
+        "registered": 310405,
+        "turnout_pct": 58.204,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Two or more races",
+        "participants": 24519,
+        "registered": 41188,
+        "turnout_pct": 59.529,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Undesignated race",
+        "participants": 447637,
+        "registered": 768758,
+        "turnout_pct": 58.229,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "Unknown race ()",
+        "participants": 0,
+        "registered": 1,
+        "turnout_pct": 0.0,
+        "quality": []
+      },
+      {
+        "dimension": "race",
+        "group": "White",
+        "participants": 3904978,
+        "registered": 4996084,
+        "turnout_pct": 78.161,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Female",
+        "participants": 2912586,
+        "registered": 3861290,
+        "turnout_pct": 75.43,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Male",
+        "participants": 2371079,
+        "registered": 3292738,
+        "turnout_pct": 72.009,
+        "quality": []
+      },
+      {
+        "dimension": "sex",
+        "group": "Undesignated sex",
+        "participants": 422196,
+        "registered": 700436,
+        "turnout_pct": 60.276,
+        "quality": []
+      }
+    ],
+    "history_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2024_11_05/history_stats_20241105.zip",
+    "registration_source": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2024_11_05/voter_stats_20241105.zip",
+    "denominator": "registered",
+    "measure": "voter_history_participation",
+    "source_cleaning": {
+      "history": {
+        "nul_bytes_removed": 15
+      },
+      "registration": {
+        "nul_bytes_removed": 0
+      }
+    }
+  }
+]

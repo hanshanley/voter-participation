@@ -142,12 +142,14 @@ function nationalView() {
   $("measure").textContent = `Percent of ${basis === "cvap" ? "adult citizens" : "all adult residents, including noncitizens"} who reported voting. Presidential and midterm observations are explicitly labeled.`;
   $("caption").textContent = "Circles: presidential elections. Squares: midterms. Lines connect elections of the same type only; gaps are not interpolated. The vertical line marks the selected year.";
   if (!rows.length) {
-    notice("This demographic series is not available for the selected population denominator. Sex and education in these historical workbooks use all adult residents, not adult citizens.");
+    notice("This demographic series is not available for the selected population denominator.");
     $("visualization").innerHTML = '<p class="empty">No comparable series for this denominator.</p>';
     setTable([], [["year", "Election"], ["series", "Group"], ["turnout_pct", "Turnout"]]);
     return;
   }
   const issues = unique(rows.flatMap(row => row.warnings));
+  if (!rows.some(row => row.year === Number($("year").value)))
+    issues.unshift("This demographic series is not available for the selected year and population denominator; available years remain shown.");
   notice(issues.join(" "));
   const chart = svg(1100, 480), x = year => 60 + (year - 1964) / 60 * 1010, y = rate => 410 - rate * 3.6;
   for (let tick = 0; tick <= 100; tick += 20) {
@@ -245,6 +247,10 @@ function statesView() {
 }
 async function precinctsView(generation) {
   const year = Number($("year").value);
+  $("visualization").innerHTML = '<p class="empty">Loading historical precinct observations…</p>';
+  $("title").textContent = `${year} precinct participation`;
+  $("subtitle").textContent = "North Carolina · administrative voter-history pilot";
+  setTable([], []);
   if (!state.nc.has(year)) state.nc.set(year, await get(`nc/${year}.json`));
   if (generation !== state.generation) return;
   const data = state.nc.get(year), dimension = $("dimension").value, group = $("group").value;
