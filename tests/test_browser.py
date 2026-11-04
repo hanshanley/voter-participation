@@ -27,6 +27,20 @@ def test_local_explorer_filters_maps_and_offline_assets():
                     if not request.url.startswith("http://127.0.0.1:") else None)
             page.goto(f"http://127.0.0.1:{server.server_port}")
             page.locator("#visualization svg").wait_for()
+            page.locator("#participation-model summary").click()
+            page.wait_for_function("!document.querySelector('#model-dimension').disabled")
+            page.select_option("#model-dimension", "race")
+            page.wait_for_function(
+                "document.querySelector('#model-summary').textContent.includes('Race / ethnicity')"
+            )
+            assert page.locator("#model-rows tr").count() == 5
+            page.select_option("#model-dimension", "education")
+            page.wait_for_function(
+                "document.querySelector('#model-summary').textContent.includes('Education')"
+            )
+            assert page.locator("#model-rows tr").count() == 7
+            assert "No modeled 2026" in page.locator("#participation-model").inner_text()
+            page.locator("#participation-model summary").click()
             page.locator("#nc-current-chart li").first.wait_for()
             assert page.locator("#nc-current-county option").count() == 101
             assert page.locator("#nc-current-chart li").count() == 8

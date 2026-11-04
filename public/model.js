@@ -38,7 +38,9 @@
       render();
     } catch (error) {
       const status = root.querySelector("#model-error");
-      status.textContent = error.message + ". The saved validation table and complete downloads remain available.";
+      status.textContent = error.message + (root.querySelector("#model-rows").children.length
+        ? ". The saved validation table and complete downloads remain available."
+        : ". Use the complete downloads below.");
       status.hidden = false;
     }
   }
