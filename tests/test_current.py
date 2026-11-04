@@ -148,3 +148,44 @@ def test_current_rebundle_keeps_all_observations_without_rebuilding_history(tmp_
         assert "current/old/complete-snapshot.zip" not in names
         assert not any(name.endswith(".part") for name in names)
     assert (data / "current/old/complete-snapshot.zip").exists()
+
+
+def test_failed_capture_preserves_raw_evidence_without_replacing_latest(tmp_path, monkeypatch):
+    import scripts.current as module
+    pointer = tmp_path / "public/data/current/latest.json"
+    pointer.parent.mkdir(parents=True)
+    pointer.write_bytes(b'{"snapshot_id":"last-valid"}')
+    catalog = (
+        b"https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_counts_state_20261104.csv "
+        b"https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_counts_county_20261104.csv"
+    )
+
+    class Response:
+        content = catalog
+        headers = {}
+
+        def raise_for_status(self):
+            pass
+
+    class Session:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def get(self, url, **kwargs):
+            if url == module.SPECS["absentee-catalog.html"]:
+                return Response()
+            raise module.requests.HTTPError("simulated source failure")
+
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+    monkeypatch.setattr(module.requests, "Session", Session)
+    with pytest.raises(module.requests.HTTPError, match="simulated"):
+        module.refresh()
+    assert pointer.read_bytes() == b'{"snapshot_id":"last-valid"}'
+    raw = next((tmp_path / "data/raw/current").iterdir())
+    assert (raw / "absentee-catalog.html").read_bytes() == catalog
+    manifest = json.loads((raw / "manifest.json").read_text())
+    assert manifest["status"] == "rejected"
+    assert manifest["sources"][0]["sha256"] == hashlib.sha256(catalog).hexdigest()
