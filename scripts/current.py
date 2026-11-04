@@ -202,6 +202,11 @@ def update_downloads(root=ROOT):
     if pointer.exists():
         report["current_snapshot"] = json.loads(pointer.read_text())
         latest = report["current_snapshot"]["snapshot_id"]
+    national_pointer = data / "nationwide/latest.json"
+    national_latest = None
+    if national_pointer.exists():
+        report["nationwide_snapshot"] = json.loads(national_pointer.read_text())
+        national_latest = report["nationwide_snapshot"]["snapshot_id"]
     atomic_json(report_path, report)
     destination = data / "complete-analysis.zip"
     temporary = data / "complete-analysis.zip.part"
@@ -211,8 +216,10 @@ def update_downloads(root=ROOT):
                 continue
             relative = path.relative_to(data)
             # Keep every observation, but do not repeatedly bundle older raw-source ZIPs.
-            if (len(relative.parts) == 3 and relative.parts[0] == "current"
-                    and path.name == "complete-snapshot.zip" and relative.parts[1] != latest):
+            latest_for_folder = {"current": latest, "nationwide": national_latest}
+            if (len(relative.parts) == 3 and relative.parts[0] in latest_for_folder
+                    and path.name == "complete-snapshot.zip"
+                    and relative.parts[1] != latest_for_folder[relative.parts[0]]):
                 continue
             archive.write(path, relative)
     temporary.replace(destination)

@@ -100,6 +100,11 @@ commits the originals, checksums, complete observations and ZIPs to `main` as
 sources and error manifest without replacing the last valid public snapshot;
 the workflow fails visibly. This workflow does not deploy a website.
 
+The same workflow now captures **nationwide** sources independently, not only NC.
+It requests a refresh every 15 minutes on November 4–5 UTC and hourly on
+November 6–19 UTC; those are requested schedules, not guaranteed collection times.
+Every snapshot displays its actual retrieval time and each source's own data date.
+
 The complete-analysis ZIP contains every saved normalized observation and the
 latest complete-source snapshot ZIP. Superseded original-source ZIPs remain
 individually downloadable in their immutable snapshot directories, rather than
@@ -124,3 +129,44 @@ counts use a different update time and do not include Election Day in-person
 voting. These overlapping feeds must never be added together. No matched group
 registration denominator, 2026 CPS estimates, education, age, or precinct-level
 demographic turnout is inferred. The historical 1964–2024 series stays unchanged.
+
+## Nationwide 2026 updates
+
+```sh
+.venv/bin/python -m scripts.nationwide --update-downloads
+```
+
+The collector checks all 50 states and DC against civicAPI's public early-vote
+capability endpoint, then saves in-person early and returned-mail counts, all
+available source-region observations, and reported race, ethnicity, gender and
+age breakdowns. Party registration is summed out; requested ballots and candidate
+votes are never substituted for votes cast. civicAPI permits public reuse with
+attribution; its original responses and source dates are preserved, not described
+as certified state-government turnout.
+
+Separate verified administrative adapters currently cover Alabama, North Carolina,
+North Dakota and Oregon. They read ballots, not candidate contest totals.
+Registered voters (AL), active/inactive registrations (NC), active registrations
+(OR), and estimated eligible voters (ND) are explicitly different denominators.
+ND's rounded published percentage does not establish an exact eligible denominator.
+
+`data/raw/nationwide/<UTC snapshot>/` preserves every attempted response, including
+404/error responses, and URL/retrieval/header/checksum manifests.
+`public/data/nationwide/<UTC snapshot>/` contains the full JSON, early-voting,
+demographic, administrative and 51-jurisdiction coverage CSVs, plus a complete
+original-source ZIP. If a previously valid source fails, its observations and
+original source bytes remain in the next complete ZIP, marked retained/stale with
+the original dates and the new failure. Other states continue updating.
+The full-analysis ZIP retains all normalized snapshots and the latest complete
+source ZIP from each collector; old source ZIPs remain separately downloadable.
+
+Coverage is evidence about **assessed sources**, not a claim that missing states
+have no data anywhere. Undated responses are rejected; observed zeros remain
+counts, not zero turnout. A demographic total can differ from its corresponding
+mode total/date and is flagged accordingly. State group definitions and age bins
+are not pooled into a nationwide demographic percentage, and no matched group
+denominator or 2026 education/precinct turnout is invented.
+
+The requested NYT 2026 national tracker is recorded as a reference, but automated
+access returns a denial; none of its figures or methodology is represented as
+extracted. The interactive analysis uses the attributed public alternatives above.
