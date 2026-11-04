@@ -69,6 +69,56 @@ shifted their participation in the current election. Failed screens stay public.
 
 ## Next model: two distinct denominator tracks
 
+### Public joint-demographic inputs now acquired
+
+`python -m scripts.cps --download` acquires the Census November 2022 and 2024
+public-use Voting and Registration survey ZIPs, technical documentation and
+original source catalogs. `python -m scripts.cps` verifies their saved hashes and
+rebuilds the audit offline. These are anonymized public survey responses, not
+commercial voter files, registration records or a publisher's modeled estimates.
+The source-specific fixed-width layouts and final weight PWSSWGT (four implied
+decimal places) are checked against both years' documentation, attachments 6/7.
+
+The universe is age 18+, citizenship codes 1-4 and civilian person type 2.
+Observed joint cells cross state, native age bins, sex, education and a mutually
+exclusive race/Hispanic-origin partition. Published all-race and Hispanic-origin
+marginals overlap and remain separate comparison series. No joint cell is
+fabricated by multiplying marginal shares. Every included observation contributes
+to exactly one joint cell; all exclusive partitions reconcile to the national
+count and weighted population.
+
+PES1 yes, no, don't know, refused, no response, and supplement noninterviews
+remain distinct. Reported voting is weighted "yes" divided by all civilian adult
+citizens, matching the published-table denominator, not only supplement
+respondents. A yes-only respondent denominator is not used. The output also
+retains respondent-only sensitivity and a logical range assigning unknown
+outcomes no/yes. That range is **not a confidence interval**, does not resolve
+over-reporting, and does not include people outside the sampled universe.
+Weight-only effective sample size is diagnostic, not design-based precision.
+
+All matching archived national age, race, sex, education and overall rates must
+reconcile within 0.15 percentage points before promotion; that tolerance allows
+published rounding and public-use revisions, not calibration to external modeled
+results. The published references, exact differences and all source hashes remain
+downloadable. These checks audit input handling, not predictive reliability.
+Most fine joint cells have small samples: their research counts are retained,
+not presented as precise subgroup turnout estimates.
+
+`public/data/cps/` contains every observed joint cell, every projected marginal,
+all published comparisons, complete audit JSON and a ZIP with **all** observations,
+original public survey ZIPs, documentation, catalogs and comparison inputs.
+No household/person identifiers or individual records are projected into the
+website tables. The untouched public Census originals remain in the full research
+download for reproducibility.
+
+This is the input stage of the next model, not a fitted hierarchical model or an
+improvement claim on the first experiment. Replicate weights/design-based
+uncertainty, compatible ACS joint population inputs, additional training years and
+a prospectively frozen confirmation specification are still required.
+It produces no 2026 rates and does not retune the existing backtests.
+
+### Denominator-specific estimation
+
 1. **Registered-voter administrative track.** Where official aggregate
    participation and registration counts cover the same election, geography,
    demographic bins and registration-status universe, calculate direct rates.

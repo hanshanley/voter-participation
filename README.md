@@ -204,4 +204,35 @@ carry-forward. It is not a validated 2026 estimator. Outputs explicitly withhold
 2026 predictions: matched current inputs, uncertainty estimates and independent
 confirmation after model selection are still required. Historical education/sex
 and race/age bins are not relabeled to resemble the NYT bins. A proposed richer
-public-microdata model is documented, not presented as already implemented.
+public-microdata model is documented, not presented as already fitted.
+
+### Joint-demographic survey inputs
+
+The next step now has independently acquired **2022 and 2024 public Census CPS
+survey files**, original technical documentation, source catalogs and checksums.
+They are anonymized public survey responses, not commercial or administrative
+individual voter records. No NYT estimates are used.
+
+```sh
+.venv/bin/python -m scripts.cps --download
+.venv/bin/python -m scripts.cps
+.venv/bin/python -m pytest -q tests/test_cps.py
+```
+
+The first command acquires/cache-verifies inputs; the second rebuilds offline.
+Age-18+ civilian citizen records are weighted using the documented final weight.
+Observed joint cells cross state, age, sex, education and an exclusive
+race/Hispanic-origin partition; they are never synthesized from marginal shares.
+Unknown participation responses and supplement noninterviews remain separate
+from reported nonvoters. Most fine joint cells have small samples and are
+research inputs, not precise subgroup turnout estimates.
+
+`public/data/cps/` includes **every** observed cell and projected marginal,
+all published-rate comparisons, audit JSON and a complete ZIP with original
+public survey files, documentation, catalogs and comparison inputs.
+No person/household identifiers are projected into website tables.
+The published-table comparisons audit input handling, not predictive reliability.
+The earlier failed model stays unchanged. Replicate-weight uncertainty,
+compatible population inputs, more training years and a frozen confirmation
+specification are still needed before the richer model can be fit and assessed.
+No 2026 demographic turnout is estimated from these historical files.

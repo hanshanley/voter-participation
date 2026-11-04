@@ -7165,5 +7165,15 @@
     "historical_gate_passed": false,
     "release_2026_allowed": false,
     "input_sha256": "af4c43575acb64a6985eea9c47e4b1ba7bebc8f7befd3497c04baedff41fe3e5"
+  },
+  "independent_cps_inputs": {
+    "path": "cps/inputs.json",
+    "status": "historical_inputs_only_not_a_2026_estimate",
+    "years": [
+      2022,
+      2024
+    ],
+    "published_comparisons_passed": true,
+    "release_2026_allowed": false
   }
 }

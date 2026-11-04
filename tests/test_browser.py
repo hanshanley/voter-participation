@@ -41,6 +41,16 @@ def test_local_explorer_filters_maps_and_offline_assets():
             assert page.locator("#model-rows tr").count() == 7
             assert "No modeled 2026" in page.locator("#participation-model").inner_text()
             page.locator("#participation-model summary").click()
+            page.locator("#participation-cps summary").click()
+            page.wait_for_function("!document.querySelector('#cps-dimension').disabled")
+            assert page.locator("#cps-rows tr").count() == 2
+            assert "14.12%" in page.locator("#cps-rows").inner_text()
+            page.select_option("#cps-dimension", "race_ethnicity")
+            assert page.locator("#cps-rows tr").count() == 10
+            assert "White, non-Hispanic" in page.locator("#cps-rows").inner_text()
+            page.select_option("#cps-dimension", "education")
+            assert page.locator("#cps-rows tr").count() == 10
+            page.locator("#participation-cps summary").click()
             page.locator("#nc-current-chart li").first.wait_for()
             assert page.locator("#nc-current-county option").count() == 101
             assert page.locator("#nc-current-chart li").count() == 8

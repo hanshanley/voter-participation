@@ -216,6 +216,14 @@ def update_downloads(root=ROOT):
             "release_2026_allowed": validation["release_2026"]["allowed"],
             "input_sha256": validation["input"]["sha256"],
         }
+    cps_path = data / "cps/inputs.json"
+    if cps_path.exists():
+        inputs = json.loads(cps_path.read_text())
+        report["independent_cps_inputs"] = {
+            "path": "cps/inputs.json", "status": inputs["status"], "years": inputs["years"],
+            "published_comparisons_passed": inputs["published_comparisons_passed"],
+            "release_2026_allowed": inputs["release_2026_allowed"],
+        }
     atomic_json(report_path, report)
     destination = data / "complete-analysis.zip"
     temporary = data / "complete-analysis.zip.part"

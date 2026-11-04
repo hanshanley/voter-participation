@@ -9,6 +9,7 @@
   <script src="current.js" defer></script>
   <script src="nationwide.js" defer></script>
   <script src="model.js" defer></script>
+  <script src="cps.js" defer></script>
 </head>
 <body>
   <header>
@@ -55,6 +56,36 @@
         <a href="data/model/backtests.csv" download>Every prediction and error (CSV)</a> ·
         <a href="data/model/validation.json" download>Full validation (JSON)</a> ·
         <a href="data/model/complete-validation.zip" download>Complete validation + input tables (ZIP)</a></p>
+    </details>
+    <details class="panel" id="participation-cps" data-data-root="data/">
+      <summary>Building the next model: independent survey inputs</summary>
+      <p>We have acquired and audited the public 2022 and 2024 Census voting surveys.
+        Joint demographics come from actual anonymized survey records, not multiplied
+        marginal shares. The richer model is not yet fitted; the earlier failed experiment is unchanged.</p>
+      <p id="cps-summary" aria-live="polite">Historical survey inputs only, not a 2026 estimate.
+        Full input audits and observations are downloadable below.</p>
+      <div class="controls"><label>Input diagnostic<select id="cps-dimension" disabled>
+        <option value="overall">Overall</option><option value="age">Age</option>
+        <option value="race_ethnicity">Exclusive race / Hispanic origin</option>
+        <option value="sex">Sex</option><option value="education">Education</option>
+      </select></label></div>
+      <p id="cps-error" role="status" hidden></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Independent survey input audit">
+        <table><caption>Reported voting among all civilian adult citizens. Unknown responses are not reported nonvoters.</caption>
+          <thead><tr><th scope="col">Year</th><th scope="col">Group</th>
+            <th scope="col">Survey observations</th><th scope="col">Reported voting</th>
+            <th scope="col">Unknown outcome</th></tr></thead><tbody id="cps-rows"></tbody>
+        </table>
+      </div>
+      <p>Unknown includes supplement noninterviews, don't know and refused responses.
+        Reported voting and unknown shares use the same all-adult-citizen denominator.
+        These are historical self-reports, not validated turnout. Fine joint cells can be sparse;
+        replicate-weight uncertainty and compatible population inputs remain outstanding.</p>
+      <p><a href="data/cps/joint-cells.csv" download>Every observed joint cell (CSV)</a> ·
+        <a href="data/cps/marginals.csv" download>All projected marginals (CSV)</a> ·
+        <a href="data/cps/published-comparisons.csv" download>All published-rate checks (CSV)</a> ·
+        <a href="data/cps/inputs.json" download>Complete input audit (JSON)</a> ·
+        <a href="data/cps/complete-inputs.zip" download>All observations + original public survey files (ZIP)</a></p>
     </details>
     <section class="panel" id="nationwide-participation" data-data-root="data/">
       <p class="eyebrow">November 3, 2026 · nationwide · preliminary</p>
