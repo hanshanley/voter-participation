@@ -167,6 +167,41 @@ mode total/date and is flagged accordingly. State group definitions and age bins
 are not pooled into a nationwide demographic percentage, and no matched group
 denominator or 2026 education/precinct turnout is invented.
 
-The requested NYT 2026 national tracker is recorded as a reference, but automated
-access returns a denial; none of its figures or methodology is represented as
-extracted. The interactive analysis uses the attributed public alternatives above.
+The requested NYT tracker is a methodological reference only. Its modeled
+figures, supplied article tables and proprietary inputs are not ingested,
+republished or used to train our work. The interactive analysis uses attributed,
+independently acquired public inputs.
+
+## Independent participation methodology
+
+See [METHODOLOGY.md](METHODOLOGY.md) for the participation-only research protocol,
+public primary references, proposed administrative/survey tracks, denominator
+rules and publication gates. We do not recreate candidate-preference estimates.
+
+```sh
+.venv/bin/python -m scripts.model
+.venv/bin/python -m pytest tests/test_model.py
+```
+
+The implemented first experiment uses archived Census citizen-denominator rates,
+never NYT outcomes. It carries forward national turnout from the last election of
+the same type and transfers the group's average log-odds turnout gap from the
+preceding three same-type elections. Each historical target is withheld from
+training and compared with simple group-rate carry-forward. Presidential and
+midterm tests, native demographic bins, source rows and failed checks remain
+visible. This is a retrospective year holdout using current archived tables,
+not an as-of-release-vintage forecast or validation against individual records.
+
+`public/data/model/` includes every prediction/error, per-year/type/dimension
+scores, input hashes, full CSV/JSON downloads, the method and a ZIP containing all
+observations and input tables. The complete-analysis ZIP includes these files.
+The normal historical build regenerates the experiment; frequent current-data
+refreshes preserve it without fitting to incomplete 2026 feeds.
+
+The first candidate **does not pass** the prespecified historical screen.
+Its 98 tests have 4.22 percentage-point mean absolute error, versus 4.17 for
+carry-forward. It is not a validated 2026 estimator. Outputs explicitly withhold
+2026 predictions: matched current inputs, uncertainty estimates and independent
+confirmation after model selection are still required. Historical education/sex
+and race/age bins are not relabeled to resemble the NYT bins. A proposed richer
+public-microdata model is documented, not presented as already implemented.

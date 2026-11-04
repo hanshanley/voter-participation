@@ -8,6 +8,7 @@
   <script src="app.js" defer></script>
   <script src="current.js" defer></script>
   <script src="nationwide.js" defer></script>
+  <script src="model.js" defer></script>
 </head>
 <body>
   <header>
@@ -22,6 +23,39 @@
     <button data-view="coverage">Coverage audit</button>
   </nav>
   <main>
+    <details class="panel" id="participation-model" data-data-root="data/">
+      <summary>Our independent method and reliability tests</summary>
+      <p>We use independently acquired public Census and administrative inputs, not NYT model
+        estimates, commercial voter files or candidate preferences. The first historical
+        prototype did not beat a simple baseline. <strong>No modeled 2026 demographic turnout
+        rates are released.</strong></p>
+      <p>The prototype transfers each group’s average log-odds turnout gap from three earlier
+        same-type elections, using only earlier national turnout. Carry-forward uses the
+        group’s last same-type turnout rate. Presidential and midterm elections stay separate.</p>
+      <div class="controls"><label>Validation category<select id="model-dimension" disabled>
+        <option value="all">All categories</option><option value="age">Age</option>
+        <option value="race">Race / ethnicity</option><option value="sex">Sex</option>
+        <option value="education">Education</option>
+      </select></label></div>
+      <p id="model-summary" aria-live="polite">98 historical tests: candidate average error 4.22 percentage points;
+        carry-forward 4.17. Lower is better. Historical reliability screen: not passed.</p>
+      <p id="model-error" role="status" hidden></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Independent-model historical tests">
+        <table><caption>Mean absolute error in percentage points, not uncertainty intervals.</caption>
+          <thead><tr><th scope="col">Held-out year</th><th scope="col">Election</th>
+            <th scope="col">Tests</th><th scope="col">Candidate error</th>
+            <th scope="col">Carry-forward error</th></tr></thead><tbody id="model-rows"></tbody>
+        </table>
+      </div>
+      <p>These are retrospective year holdouts using current archived CPS tables, not verified historical
+        release vintages. Comparison targets are self-reported, not validated turnout. Overlapping
+        demographic groups are not independent samples. Current matched inputs and uncertainty
+        estimates remain missing; historical patterns alone cannot identify 2026 participation shifts.</p>
+      <p><a href="data/model/methodology.md" download>Independent methodology</a> ·
+        <a href="data/model/backtests.csv" download>Every prediction and error (CSV)</a> ·
+        <a href="data/model/validation.json" download>Full validation (JSON)</a> ·
+        <a href="data/model/complete-validation.zip" download>Complete validation + input tables (ZIP)</a></p>
+    </details>
     <section class="panel" id="nationwide-participation" data-data-root="data/">
       <p class="eyebrow">November 3, 2026 · nationwide · preliminary</p>
       <h2>Participation updates across states</h2>

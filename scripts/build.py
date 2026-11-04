@@ -554,6 +554,8 @@ def build():
     if (OUT / "current/latest.json").exists():
         report["current_snapshot"] = json.loads((OUT / "current/latest.json").read_text())
     atomic_json(OUT / "analysis.json", report)
+    from scripts.model import export as export_model
+    export_model(ROOT, rebundle=False)
     from scripts.current import update_downloads
     update_downloads(ROOT)
     print(json.dumps({k: v for k, v in report.items() if k not in ["nc_summaries", "geometry_audit", "official_reconciliation"]}, indent=2))

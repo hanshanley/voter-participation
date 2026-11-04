@@ -68,7 +68,7 @@ jobs:
         id: validate
         continue-on-error: true
         run: |
-          python -m pytest -q tests/test_current.py tests/test_nationwide.py
+          python -m pytest -q tests/test_current.py tests/test_nationwide.py tests/test_model.py
           python -c "from scripts.current import update_downloads; update_downloads()"
 
       - name: Preserve source captures and validated publication data

@@ -8,3 +8,4 @@
 .nc-current-chart li { display: grid; grid-template-columns: 1fr auto; margin: .7rem 0; gap: .3rem 1rem; font-size: .8rem; }
 .nc-current-chart strong { font-variant-numeric: tabular-nums; }
 .nc-current-chart i { grid-column: 1 / -1; height: 5px; background: #256e70; }
+#participation-model th[scope="row"] { position: static; background: none; font-weight: 400; }

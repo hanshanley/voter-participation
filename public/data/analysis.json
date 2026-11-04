@@ -7158,5 +7158,12 @@
         "sha256": "f5c2aad3a0b0fade0e71a23b7d15e3b68bda784158411f5d0a959a4b57e0401b"
       }
     ]
+  },
+  "independent_model_validation": {
+    "path": "model/validation.json",
+    "status": "research_only_not_a_2026_estimate",
+    "historical_gate_passed": false,
+    "release_2026_allowed": false,
+    "input_sha256": "af4c43575acb64a6985eea9c47e4b1ba7bebc8f7befd3497c04baedff41fe3e5"
   }
 }

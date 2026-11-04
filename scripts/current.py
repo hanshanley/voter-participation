@@ -207,6 +207,15 @@ def update_downloads(root=ROOT):
     if national_pointer.exists():
         report["nationwide_snapshot"] = json.loads(national_pointer.read_text())
         national_latest = report["nationwide_snapshot"]["snapshot_id"]
+    model_path = data / "model/validation.json"
+    if model_path.exists():
+        validation = json.loads(model_path.read_text())
+        report["independent_model_validation"] = {
+            "path": "model/validation.json", "status": validation["status"],
+            "historical_gate_passed": validation["historical_gate_passed"],
+            "release_2026_allowed": validation["release_2026"]["allowed"],
+            "input_sha256": validation["input"]["sha256"],
+        }
     atomic_json(report_path, report)
     destination = data / "complete-analysis.zip"
     temporary = data / "complete-analysis.zip.part"
