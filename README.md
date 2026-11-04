@@ -80,6 +80,31 @@ Refresh a separate, immutable NC snapshot, then rebuild the complete download:
 .venv/bin/python -m scripts.build
 ```
 
+For frequent election-night refreshes, use the lightweight command instead:
+
+```sh
+.venv/bin/python -m scripts.current --update-downloads
+```
+
+It updates the current pointer and complete download using the already saved
+historical data; it does not download historical archives or recompute them.
+The absentee URLs follow the official catalog's current daily files rather than
+remaining hardcoded to November 3.
+
+GitHub Actions runs `.github/workflows/election-night.yml` every 15 minutes
+(minutes 7, 22, 37, 52) on November 4–5 UTC, 2026: November 3 at 7 p.m.
+through November 5 at 7 p.m. Eastern. GitHub may delay scheduled starts.
+Manual `workflow_dispatch` remains available afterward. Every valid refresh
+commits the originals, checksums, complete observations and ZIPs to `main` as
+`hanshanley`, without Copilot attribution. Failed captures retain their raw
+sources and error manifest without replacing the last valid public snapshot;
+the workflow fails visibly. This workflow does not deploy a website.
+
+The complete-analysis ZIP contains every saved normalized observation and the
+latest complete-source snapshot ZIP. Superseded original-source ZIPs remain
+individually downloadable in their immutable snapshot directories, rather than
+being duplicated inside every new full-analysis ZIP.
+
 The updater retrieves the official election-night county feed (`bct` ballots cast,
 `rtl` registered voters, and precinct reporting counts), not candidate totals.
 It separately retrieves aggregate absentee/early-voting demographic CSVs, sums out

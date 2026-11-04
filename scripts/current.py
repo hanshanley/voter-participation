@@ -1,5 +1,6 @@
 """Preserve unofficial 2026 NC reporting separately from historical turnout."""
 
+import argparse
 import csv
 import hashlib
 import io
@@ -175,6 +176,48 @@ def digest(content):
     return hashlib.sha256(content).hexdigest()
 
 
+def source_specs(catalog):
+    links = re.findall(
+        r"https://s3\.amazonaws\.com/dl\.ncsbe\.gov/ENRS/2026_11_03/"
+        r"absentee_counts_(state|county)_(\d{8})\.csv",
+        catalog.decode("utf-8"),
+    )
+    dates = {kind: {date for key, date in links if key == kind} for kind in ("state", "county")}
+    if not dates["state"] or dates["state"] != dates["county"]:
+        raise ValueError("Catalog lacks matching statewide/county aggregate file dates")
+    date = max(dates["state"])
+    specs = dict(SPECS)
+    for kind, name in [("state", "absentee-state.csv"), ("county", "absentee-counties.csv")]:
+        specs[name] = BASE + f"2026_11_03/absentee_counts_{kind}_{date}.csv"
+    return specs
+
+
+def update_downloads(root=ROOT):
+    """Rebundle saved data without downloading or rebuilding historical sources."""
+    data = root / "public/data"
+    report_path = data / "analysis.json"
+    report = json.loads(report_path.read_text())
+    pointer = data / "current/latest.json"
+    latest = None
+    if pointer.exists():
+        report["current_snapshot"] = json.loads(pointer.read_text())
+        latest = report["current_snapshot"]["snapshot_id"]
+    atomic_json(report_path, report)
+    destination = data / "complete-analysis.zip"
+    temporary = data / "complete-analysis.zip.part"
+    with zipfile.ZipFile(temporary, "w", zipfile.ZIP_DEFLATED) as archive:
+        for path in sorted(data.rglob("*")):
+            if not path.is_file() or path == destination or path.name.endswith(".part"):
+                continue
+            relative = path.relative_to(data)
+            # Keep every observation, but do not repeatedly bundle older raw-source ZIPs.
+            if (len(relative.parts) == 3 and relative.parts[0] == "current"
+                    and path.name == "complete-snapshot.zip" and relative.parts[1] != latest):
+                continue
+            archive.write(path, relative)
+    temporary.replace(destination)
+
+
 def refresh():
     started = datetime.now(timezone.utc)
     snapshot_id = started.strftime("%Y%m%dT%H%M%SZ")
@@ -183,7 +226,11 @@ def refresh():
     raw, sources = {}, []
     try:
         with requests.Session() as session:
-            for name, url in SPECS.items():
+            specs = {"absentee-catalog.html": SPECS["absentee-catalog.html"]}
+            pending = list(specs)
+            while pending:
+                name = pending.pop(0)
+                url = specs[name]
                 response = session.get(url, timeout=(15, 90), headers={"Cache-Control": "no-cache"})
                 response.raise_for_status()
                 content = response.content
@@ -195,6 +242,9 @@ def refresh():
                     "last_modified": response.headers.get("Last-Modified"),
                     "etag": response.headers.get("ETag"),
                 })
+                if name == "absentee-catalog.html":
+                    specs = source_specs(content)
+                    pending.extend(key for key in specs if key != name)
         snapshot = normalize(raw, sources, snapshot_id, datetime.now(timezone.utc).isoformat())
         if snapshot["audit"]["county_count"] != 100:
             raise ValueError("Expected all 100 NC counties")
@@ -225,4 +275,10 @@ def refresh():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--update-downloads", action="store_true",
+                        help="Update the saved analysis pointer and complete download without rebuilding history")
+    args = parser.parse_args()
     refresh()
+    if args.update_downloads:
+        update_downloads()

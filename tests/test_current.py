@@ -4,7 +4,7 @@ import zipfile
 
 import pytest
 
-from scripts.current import ROOT, absentee_counts, normalize, reporting_counts
+from scripts.current import ROOT, absentee_counts, normalize, reporting_counts, source_specs, update_downloads
 
 
 def counts(county=False, value=4):
@@ -108,3 +108,43 @@ def test_saved_snapshot_preserves_complete_observations_and_original_sources():
             assert content == (raw / source["file"]).read_bytes()
             assert hashlib.sha256(content).hexdigest() == source["sha256"]
         assert json.loads(archive.read("sources/manifest.json"))["status"] == "validated"
+
+
+def test_daily_aggregate_urls_follow_the_official_election_catalog():
+    catalog = (
+        b"https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_counts_state_20261104.csv "
+        b"https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_counts_county_20261104.csv "
+        b"https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2024_11_05/absentee_counts_state_20241105.csv"
+    )
+    specs = source_specs(catalog)
+    assert specs["absentee-state.csv"].endswith("state_20261104.csv")
+    assert specs["absentee-counties.csv"].endswith("county_20261104.csv")
+    with pytest.raises(ValueError, match="matching"):
+        source_specs(catalog.replace(b"county_20261104", b"county_20261103"))
+
+
+def test_current_rebundle_keeps_all_observations_without_rebuilding_history(tmp_path):
+    data = tmp_path / "public/data"
+    data.mkdir(parents=True)
+    (data / "analysis.json").write_text('{"national_years":[2024]}')
+    (data / "national.csv").write_bytes(b"unchanged historical observations")
+    for identifier in ["old", "new"]:
+        directory = data / "current" / identifier
+        directory.mkdir(parents=True)
+        (directory / "demographics.csv").write_text(identifier + " complete demographic rows")
+        (directory / "reporting.csv").write_text(identifier + " complete reporting rows")
+        (directory / "complete-snapshot.zip").write_bytes(identifier.encode())
+    (data / "current/latest.json").write_text('{"snapshot_id":"new"}')
+    (data / "incomplete.part").write_text("unfinished")
+    update_downloads(tmp_path)
+    assert (data / "national.csv").read_bytes() == b"unchanged historical observations"
+    assert json.loads((data / "analysis.json").read_text())["current_snapshot"]["snapshot_id"] == "new"
+    with zipfile.ZipFile(data / "complete-analysis.zip") as archive:
+        names = archive.namelist()
+        for identifier in ["old", "new"]:
+            assert archive.read(f"current/{identifier}/demographics.csv") == (identifier + " complete demographic rows").encode()
+            assert archive.read(f"current/{identifier}/reporting.csv") == (identifier + " complete reporting rows").encode()
+        assert "current/new/complete-snapshot.zip" in names
+        assert "current/old/complete-snapshot.zip" not in names
+        assert not any(name.endswith(".part") for name in names)
+    assert (data / "current/old/complete-snapshot.zip").exists()

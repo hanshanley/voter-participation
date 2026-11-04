@@ -554,10 +554,8 @@ def build():
     if (OUT / "current/latest.json").exists():
         report["current_snapshot"] = json.loads((OUT / "current/latest.json").read_text())
     atomic_json(OUT / "analysis.json", report)
-    with zipfile.ZipFile(OUT / "complete-analysis.zip", "w", zipfile.ZIP_DEFLATED) as archive:
-        for path in sorted(OUT.rglob("*")):
-            if path.is_file() and path.name != "complete-analysis.zip":
-                archive.write(path, path.relative_to(OUT))
+    from scripts.current import update_downloads
+    update_downloads(ROOT)
     print(json.dumps({k: v for k, v in report.items() if k not in ["nc_summaries", "geometry_audit", "official_reconciliation"]}, indent=2))
 
 
