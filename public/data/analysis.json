@@ -7083,5 +7083,33 @@
     ],
     "other_states": "not_assessed"
   },
-  "deployment": "Not authorized; local-only."
+  "deployment": "Not authorized; local-only.",
+  "current_snapshot": {
+    "snapshot_id": "20261104T020104Z",
+    "election_date": "2026-11-03",
+    "status": "preliminary",
+    "retrieved_at": "2026-11-04T02:01:05.368417+00:00",
+    "files": [
+      {
+        "path": "current/20261104T020104Z/complete-snapshot.zip",
+        "bytes": 1159254,
+        "sha256": "95f3741ddd617cdf8beedc12abed4f7090dc009bd968846f8351db1608f17220"
+      },
+      {
+        "path": "current/20261104T020104Z/demographics.csv",
+        "bytes": 405420,
+        "sha256": "ff9941e27a321063911977bc5187497d5fc68d322b4de21989a65c332ed276d2"
+      },
+      {
+        "path": "current/20261104T020104Z/reporting.csv",
+        "bytes": 10624,
+        "sha256": "0e91a93257591324a9386a6bd5691de1a6ab545284fae703d15f0609f3410146"
+      },
+      {
+        "path": "current/20261104T020104Z/snapshot.json",
+        "bytes": 1712886,
+        "sha256": "f5e989ba1e9036e96be799cc0747dea88db5530307857f5b9b0bab05a695e4f9"
+      }
+    ]
+  }
 }

@@ -6,6 +6,7 @@
   <title>Voter participation | Historical research</title>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
+  <script src="current.js" defer></script>
 </head>
 <body>
   <header>
@@ -20,6 +21,36 @@
     <button data-view="coverage">Coverage audit</button>
   </nav>
   <main>
+    <section class="panel nc-current" id="current-participation" data-data-root="data/" hidden>
+      <p class="eyebrow">November 3, 2026 · North Carolina · unofficial</p>
+      <h2>Election-night participation reporting</h2>
+      <p id="nc-current-asof"></p><p id="nc-current-reporting-time"></p>
+      <p id="nc-current-error" role="status" hidden></p>
+      <div class="controls">
+        <label>Reporting geography<select id="nc-current-county"></select></label>
+        <label>Demographic counts<select id="nc-current-dimension"><option value="race">Race</option><option value="ethnicity">Ethnicity</option><option value="sex">Sex</option></select></label>
+        <label>Absentee request type<select id="nc-current-method"></select></label>
+      </div>
+      <dl class="nc-current-stats">
+        <div><dt>Ballots reported so far</dt><dd id="nc-current-ballots"></dd></div>
+        <div><dt>Reported ballots / registered voters</dt><dd id="nc-current-fraction"></dd></div>
+        <div><dt>Precincts reporting / total</dt><dd id="nc-current-precincts"></dd></div>
+      </dl>
+      <p id="nc-current-county-note"></p>
+      <p>These are incomplete reporting counts, not final turnout. Precinct reporting is not the fraction of all ballots counted.</p>
+      <h3>Earlier absentee / early-voting demographic counts</h3>
+      <p id="nc-current-absentee-time"></p>
+      <ul class="nc-current-chart" id="nc-current-chart" aria-label="Reported absentee and early-voting ballot counts"></ul>
+      <p id="nc-current-group-note"></p>
+      <p>The feeds overlap and have different update times: never add them together.
+        No matched group denominator is available here; race, ethnicity and sex counts
+        are not turnout rates. No age, education, or precinct-level 2026 turnout is inferred.</p>
+      <p><a id="nc-current-complete" download>Complete snapshot + original aggregate sources (ZIP)</a> ·
+        <a id="nc-current-demographics" download>All demographic observations (CSV)</a> ·
+        <a id="nc-current-reporting-download" download>All reporting observations (CSV)</a></p>
+    </section>
+    <noscript><p>2026 preliminary snapshots are in <a href="data/current/latest.json">the current snapshot manifest</a>.
+      Historical observations and full downloads below remain available without JavaScript.</p></noscript>
     <section class="controls" aria-label="Data filters">
       <label>Election type<select id="type"><option value="all">Presidential + midterm</option><option value="presidential">Presidential</option><option value="midterm">Midterm</option></select></label>
       <label>Election year<select id="year"></select></label>

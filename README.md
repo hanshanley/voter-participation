@@ -70,3 +70,32 @@ SHA-256 against `data/sources.json`, without overwriting existing files.
 workbooks, source catalogs, and layouts are versioned directly in Git. The
 explorer's complete-analysis ZIP contains all observations and geometry, not
 just metadata; raw originals are preserved separately.
+
+## November 3, 2026 preliminary reporting
+
+Refresh a separate, immutable NC snapshot, then rebuild the complete download:
+
+```sh
+.venv/bin/python -m scripts.current
+.venv/bin/python -m scripts.build
+```
+
+The updater retrieves the official election-night county feed (`bct` ballots cast,
+`rtl` registered voters, and precinct reporting counts), not candidate totals.
+It separately retrieves aggregate absentee/early-voting demographic CSVs, sums out
+party affiliation, and reconciles every statewide cell against county sums.
+The source's unusual count-column header `0` is handled explicitly, not guessed.
+No individual voter files are downloaded.
+
+Every successful refresh keeps original bytes, source update/retrieval timestamps,
+checksums, and a complete snapshot ZIP under `data/raw/current/<UTC snapshot>/`
+and `public/data/current/<UTC snapshot>/`. Earlier snapshots are never overwritten.
+Rejected snapshots retain an error manifest and cannot replace the last valid
+`current/latest.json`. Commit and push new snapshots to preserve them.
+
+Election-night ballots/registrations are a **partial reporting fraction**, not
+final turnout. An unreported county is not assigned 0% turnout. Absentee group
+counts use a different update time and do not include Election Day in-person
+voting. These overlapping feeds must never be added together. No matched group
+registration denominator, 2026 CPS estimates, education, age, or precinct-level
+demographic turnout is inferred. The historical 1964–2024 series stays unchanged.

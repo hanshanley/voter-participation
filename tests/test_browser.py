@@ -27,6 +27,19 @@ def test_local_explorer_filters_maps_and_offline_assets():
                     if not request.url.startswith("http://127.0.0.1:") else None)
             page.goto(f"http://127.0.0.1:{server.server_port}")
             page.locator("#visualization svg").wait_for()
+            page.locator("#nc-current-chart li").first.wait_for()
+            assert page.locator("#nc-current-county option").count() == 101
+            assert page.locator("#nc-current-chart li").count() == 8
+            assert "Not a live feed" in page.locator("#nc-current-asof").inner_text()
+            page.select_option("#nc-current-county", "WAKE")
+            page.select_option("#nc-current-dimension", "sex")
+            page.select_option("#nc-current-method", "EARLY VOTING")
+            assert page.locator("#nc-current-chart li").count() == 3
+            assert "WAKE" in page.locator("#nc-current-county-note").inner_text()
+            assert "not demographic turnout rates" in page.locator("#nc-current-group-note").inner_text()
+            response = page.request.get(page.locator("#nc-current-complete").evaluate("element => element.href"))
+            assert response.ok
+            assert response.body().startswith(b"PK")
             assert page.locator("#year").input_value() == "2024"
             page.select_option("#dimension", "education")
             page.locator("#visualization svg").wait_for()

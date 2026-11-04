@@ -1,0 +1,68 @@
+{
+  "status": "validated",
+  "sources": [
+    {
+      "file": "reporting.json",
+      "url": "https://er.ncsbe.gov/enr/20261103/data/county.txt",
+      "bytes": 26628,
+      "sha256": "3eedc35e81d23a0e2f5670484a6264b1c19683d1243a22a0e2360c61b2dec289",
+      "retrieved_at": "2026-11-04T02:01:04.598819+00:00",
+      "last_modified": "Wed, 04 Nov 2026 02:00:17 GMT",
+      "etag": "W/\"4b727b4c21f18e8ea6ff355641c54d03\""
+    },
+    {
+      "file": "absentee-state.csv",
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_counts_state_20261103.csv",
+      "bytes": 204369,
+      "sha256": "fc558b2d8331ebf5f9b7e3fef6b766ec305e0d20f08180d34580f8fce7b3e4cc",
+      "retrieved_at": "2026-11-04T02:01:04.729661+00:00",
+      "last_modified": "Tue, 03 Nov 2026 09:41:58 GMT",
+      "etag": "\"0300393096e3758324caeacde89f6143\""
+    },
+    {
+      "file": "absentee-counties.csv",
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2026_11_03/absentee_counts_county_20261103.csv",
+      "bytes": 22917247,
+      "sha256": "e0e7907d5cf7962f7540dacbcba51b9a0f3c568743d66eccc26a76ba1aeb6e06",
+      "retrieved_at": "2026-11-04T02:01:05.156168+00:00",
+      "last_modified": "Tue, 03 Nov 2026 09:41:54 GMT",
+      "etag": "\"5610ed6ee7c98a62f1782f5f054fe23e-3\""
+    },
+    {
+      "file": "absentee-layout.txt",
+      "url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/layout_absentee_counts_state.txt",
+      "bytes": 932,
+      "sha256": "af94d47e45e148647f52078ce33ba9143fa4cfa11490a978f0ccf58756a4e38f",
+      "retrieved_at": "2026-11-04T02:01:05.214698+00:00",
+      "last_modified": "Thu, 10 Sep 2020 18:37:28 GMT",
+      "etag": "\"b931a0751ea895243364d5e111eb19f9\""
+    },
+    {
+      "file": "absentee-catalog.html",
+      "url": "https://www.ncsbe.gov/results-data/absentee-and-provisional-data",
+      "bytes": 138079,
+      "sha256": "47afe7da96d428d49aaada5ae6b6a712e3dae87e7e682d1ac547ec41f611bbde",
+      "retrieved_at": "2026-11-04T02:01:05.326110+00:00",
+      "last_modified": "Wed, 04 Nov 2026 00:28:44 GMT",
+      "etag": "\"1793752124\""
+    },
+    {
+      "file": "history-catalog.html",
+      "url": "https://www.ncsbe.gov/results-data/voter-history-data",
+      "bytes": 106997,
+      "sha256": "1a50a047beb607ff630ac0d57efbfd300557b8c4263a49b78fe6c92cb910259b",
+      "retrieved_at": "2026-11-04T02:01:05.340922+00:00",
+      "last_modified": "Wed, 04 Nov 2026 00:27:03 GMT",
+      "etag": "\"1793752023\""
+    },
+    {
+      "file": "reporting-portal.html",
+      "url": "https://er.ncsbe.gov/",
+      "bytes": 81837,
+      "sha256": "4aedd3b22d656c502dd1c4c3aae1591684a5494b7ba84d1e1cdaa38141b843ed",
+      "retrieved_at": "2026-11-04T02:01:05.367832+00:00",
+      "last_modified": "Wed, 30 Sep 2026 18:55:13 GMT",
+      "etag": null
+    }
+  ]
+}

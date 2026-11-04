@@ -535,7 +535,7 @@ def build():
             "2000 NC history source contains 'Data Unavailable'; no participation rate is inferred.",
             "Historical education and sex VAP series remain separate from 2000–2024 CVAP rates calculated using election-specific Census citizen counts.",
             "Archived NC history/registration totals differ from official ballots/eligible counts in some years; see the reconciliation download.",
-            "2026 general-election data are intentionally excluded; this project ends with finalized 2024 sources.",
+            "Historical trend series end in 2024. Separate 2026 NC snapshots are unofficial and incomplete; they are never spliced into historical demographic turnout.",
         ],
     }
     atomic_json(OUT / "methodology.json", notes)
@@ -551,6 +551,8 @@ def build():
                      "other_states": "not_assessed"},
         "deployment": "Not authorized; local-only.",
     }
+    if (OUT / "current/latest.json").exists():
+        report["current_snapshot"] = json.loads((OUT / "current/latest.json").read_text())
     atomic_json(OUT / "analysis.json", report)
     with zipfile.ZipFile(OUT / "complete-analysis.zip", "w", zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(OUT.rglob("*")):
