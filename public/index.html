@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
   <script src="current.js" defer></script>
+  <script src="nationwide.js" defer></script>
 </head>
 <body>
   <header>
@@ -21,6 +22,32 @@
     <button data-view="coverage">Coverage audit</button>
   </nav>
   <main>
+    <section class="panel" id="nationwide-participation" data-data-root="data/">
+      <p class="eyebrow">November 3, 2026 · nationwide · preliminary</p>
+      <h2>Participation updates across states</h2>
+      <p id="national-current-asof">Source-specific dates are in the complete snapshot.</p>
+      <p id="national-current-summary">All 50 states and DC are assessed; coverage is not nationwide final turnout.</p>
+      <p id="national-current-error" role="status" hidden></p>
+      <div class="controls">
+        <label>State<select id="national-current-state"></select></label>
+        <label>Voting mode<select id="national-current-mode"><option value="in_person_early">In-person early voting</option><option value="mail_returned">Returned mail ballots</option></select></label>
+        <label>Demographic counts<select id="national-current-dimension"></select></label>
+      </div>
+      <h3 id="national-current-selection"></h3>
+      <p id="national-current-total"></p><p id="national-current-mode-note"></p>
+      <ul class="nc-current-chart" id="national-current-chart" aria-label="Reported demographic ballot counts"></ul>
+      <p id="national-current-group-note"></p><p id="national-current-official"></p>
+      <p>No matched group population denominator is available. These are counts, not demographic turnout
+        rates. Early-voting feeds overlap official ballot totals: never add them. No candidate preferences,
+        2026 education or national precinct turnout are inferred.</p>
+      <p>Source: <a href="https://www.civicapi.org/early-vote">civicAPI</a> and verified state election-office
+        administrative reports. Missing from an assessed provider does not mean unavailable everywhere.</p>
+      <p><a id="national-current-complete" href="data/complete-analysis.zip" download>Complete nationwide snapshot + original sources (ZIP)</a> ·
+        <a id="national-current-early" download>All early-voting observations (CSV)</a> ·
+        <a id="national-current-demographics" download>All demographic observations (CSV)</a> ·
+        <a id="national-current-reporting" download>All administrative ballots (CSV)</a> ·
+        <a id="national-current-coverage" download>All 51 jurisdictions (CSV)</a></p>
+    </section>
     <section class="panel nc-current" id="current-participation" data-data-root="data/" hidden>
       <p class="eyebrow">November 3, 2026 · North Carolina · unofficial</p>
       <h2>Election-night participation reporting</h2>

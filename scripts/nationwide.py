@@ -266,6 +266,9 @@ def refresh(root=ROOT, fetch=requests.get, now=None):
             if response.status_code != 200:
                 raise ValueError(f"Source returned HTTP {response.status_code}")
             data = parser(content)
+            prior_data = previous.get(key, {}).get("data") or {}
+            if data.get("date") and prior_data.get("date") and data["date"] < prior_data["date"]:
+                raise ValueError("Source data date regressed; retained the later saved observation")
             return {"state": state, "kind": kind, "status": "reported", "data": data,
                     "source": source, "error": None, "attempt_url": url}
         except Exception as error:
@@ -303,11 +306,10 @@ def refresh(root=ROOT, fetch=requests.get, now=None):
             entries[f"{state}-official"] = capture(
                 state, "official", OFFICIAL[state], lambda body: parse_official(body, state))
         # A failed capability probe must not silently erase previously saved observations.
-        if caps["status"] == "retained_after_failure":
-            for key, entry in previous.items():
-                if entry["state"] == state and key not in entries and entry.get("data") is not None:
-                    entries[key] = {**copy.deepcopy(entry), "status": "retained_after_failure",
-                                    "error": "Capability probe failed; retained previous source"}
+        for key, entry in previous.items():
+            if entry["state"] == state and key not in entries and entry.get("data") is not None:
+                entries[key] = {**copy.deepcopy(entry), "status": "retained_after_failure",
+                                "error": "Previously published dataset no longer advertised by capability probe"}
         return entries
 
     datasets = {}

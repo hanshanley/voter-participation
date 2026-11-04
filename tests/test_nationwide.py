@@ -152,6 +152,23 @@ def test_failed_initial_collection_preserves_evidence_without_promoting_empty_da
     assert len(manifest["sources"]) == 55
 
 
+def test_source_date_regression_and_disappearing_capabilities_retain_prior_data(tmp_path):
+    first = refresh(root=tmp_path, fetch=fake_fetch(), now=datetime(2026, 11, 4, 2, tzinfo=timezone.utc))
+
+    def regressed(url, **kwargs):
+        response = fake_fetch()(url, **kwargs)
+        if "/GA/" in url and "/inperson" in url:
+            response.content = response.content.replace(b"2026-11-03", b"2026-11-02")
+        if "/CO/capabilities" in url:
+            response.content = json.dumps({"state": "CO", "categories": {"returned": {"race": False}}}).encode()
+        return response
+
+    second = refresh(root=tmp_path, fetch=regressed, now=datetime(2026, 11, 4, 3, tzinfo=timezone.utc))
+    for key in ["GA-inperson", "GA-inperson-race", "CO-inperson", "CO-inperson-race"]:
+        assert second["datasets"][key]["status"] == "retained_after_failure"
+        assert second["datasets"][key]["source"]["snapshot_id"] == first["snapshot_id"]
+
+
 def test_saved_nationwide_snapshot_has_all_sources_and_no_demographic_rates():
     public = ROOT / "public/data/nationwide"
     if not (public / "latest.json").exists():
