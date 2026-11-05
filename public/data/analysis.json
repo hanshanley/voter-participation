@@ -7085,37 +7085,37 @@
   },
   "deployment": "Not authorized; local-only.",
   "current_snapshot": {
-    "snapshot_id": "20261104T225150Z",
+    "snapshot_id": "20261105T105400Z",
     "election_date": "2026-11-03",
     "status": "preliminary",
-    "retrieved_at": "2026-11-04T22:51:52.234429+00:00",
+    "retrieved_at": "2026-11-05T10:54:01.690080+00:00",
     "files": [
       {
-        "path": "current/20261104T225150Z/complete-snapshot.zip",
-        "bytes": 1160790,
-        "sha256": "6457eb79c2e1cfaad3a48d808f40c50e0c2d9fd65270ddbc0e8822ef19a72376"
+        "path": "current/20261105T105400Z/complete-snapshot.zip",
+        "bytes": 1160879,
+        "sha256": "dac97ab8590d1e71d699b8928906978d18488f17b1407a6d2a7bb15ed731c3e2"
       },
       {
-        "path": "current/20261104T225150Z/demographics.csv",
-        "bytes": 405540,
-        "sha256": "57b86e6bb5c1be520fa58294a51ff1dba200ea61308ea57e5d469cde8c7c7011"
+        "path": "current/20261105T105400Z/demographics.csv",
+        "bytes": 405543,
+        "sha256": "d0b5b912a70f72805b9a66fbee39180e256158251e0d85283bf848527893484d"
       },
       {
-        "path": "current/20261104T225150Z/reporting.csv",
+        "path": "current/20261105T105400Z/reporting.csv",
         "bytes": 7511,
         "sha256": "2878c737131a0d67e5137d82ec1c7327ed31ad51e591954bd75cff6ed15000b2"
       },
       {
-        "path": "current/20261104T225150Z/snapshot.json",
-        "bytes": 1708735,
-        "sha256": "e614175e96667ffde4d706717bf8a17ad94a4c871c496da23058fa1ae59ed96d"
+        "path": "current/20261105T105400Z/snapshot.json",
+        "bytes": 1708738,
+        "sha256": "7b167538673f4d935fec89051dd3a4224a75fd59a4552cc1da46d1e78dd0ee2a"
       }
     ]
   },
   "nationwide_snapshot": {
-    "snapshot_id": "20261104T225154Z",
+    "snapshot_id": "20261105T105405Z",
     "election_date": "2026-11-03",
-    "retrieved_at": "2026-11-04T22:51:54.688115+00:00",
+    "retrieved_at": "2026-11-05T10:54:05.464543+00:00",
     "status": "preliminary",
     "audit": {
       "jurisdictions_assessed": 51,
@@ -7128,34 +7128,34 @@
     },
     "files": [
       {
-        "path": "nationwide/20261104T225154Z/complete-snapshot.zip",
-        "bytes": 420145,
-        "sha256": "2946e61d26b90b32ea7e1b264c7833b11a269849110f1ccd465a1d54eb7b3ead"
+        "path": "nationwide/20261105T105405Z/complete-snapshot.zip",
+        "bytes": 420093,
+        "sha256": "f892b207c6b9d1b037206e47a9d363dc39ede2ddcb9f3b5e581f7adcbcd835a9"
       },
       {
-        "path": "nationwide/20261104T225154Z/coverage.csv",
+        "path": "nationwide/20261105T105405Z/coverage.csv",
         "bytes": 6999,
         "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
       },
       {
-        "path": "nationwide/20261104T225154Z/demographics.csv",
-        "bytes": 32170,
-        "sha256": "e8d832a6ebccb0cb3b2b526af009aefb9575c2dcc3ab163000e8f467e912a66c"
+        "path": "nationwide/20261105T105405Z/demographics.csv",
+        "bytes": 31512,
+        "sha256": "2ba002b61c57fd546a4091e813aff4636dd176843d634bb71f57967cc1fd7cf1"
       },
       {
-        "path": "nationwide/20261104T225154Z/early_voting.csv",
-        "bytes": 1156534,
-        "sha256": "a665eac985b81f84c2a20e7b4a7c822c7a52be45acf47913c33de33bf2a61848"
+        "path": "nationwide/20261105T105405Z/early_voting.csv",
+        "bytes": 1156583,
+        "sha256": "b9ad4315949902163ac797586bfd46c1364279e9189bc850804afe5ed3293f6e"
       },
       {
-        "path": "nationwide/20261104T225154Z/reporting.csv",
-        "bytes": 1169,
-        "sha256": "d625e6758592f7cfd8ed7be4689fbe1ca3faaf364935976b30fda2b730564b6a"
+        "path": "nationwide/20261105T105405Z/reporting.csv",
+        "bytes": 1168,
+        "sha256": "692012d142fb9fb84c1def50b293b079a4afda110d8812ad6125bdd86b4dafed"
       },
       {
-        "path": "nationwide/20261104T225154Z/snapshot.json",
-        "bytes": 4066219,
-        "sha256": "a699c596e8a6a40d514ecfb50c8420ec7d7e57c4498e99ecf3a7c96c7ca3412f"
+        "path": "nationwide/20261105T105405Z/snapshot.json",
+        "bytes": 4065489,
+        "sha256": "60545dc12b84bf363896e8fc4898507d0689652a324806fb1e1e72219baa283d"
       }
     ]
   },
