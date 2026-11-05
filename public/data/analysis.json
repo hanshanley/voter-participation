@@ -7085,37 +7085,37 @@
   },
   "deployment": "Not authorized; local-only.",
   "current_snapshot": {
-    "snapshot_id": "20261105T105400Z",
+    "snapshot_id": "20261105T184203Z",
     "election_date": "2026-11-03",
     "status": "preliminary",
-    "retrieved_at": "2026-11-05T10:54:01.690080+00:00",
+    "retrieved_at": "2026-11-05T18:42:04.494636+00:00",
     "files": [
       {
-        "path": "current/20261105T105400Z/complete-snapshot.zip",
-        "bytes": 1160879,
-        "sha256": "dac97ab8590d1e71d699b8928906978d18488f17b1407a6d2a7bb15ed731c3e2"
+        "path": "current/20261105T184203Z/complete-snapshot.zip",
+        "bytes": 1161253,
+        "sha256": "5df9012465dd215450b215087bf992ec0a9507a79518996005e02ee321295d8d"
       },
       {
-        "path": "current/20261105T105400Z/demographics.csv",
+        "path": "current/20261105T184203Z/demographics.csv",
         "bytes": 405543,
         "sha256": "d0b5b912a70f72805b9a66fbee39180e256158251e0d85283bf848527893484d"
       },
       {
-        "path": "current/20261105T105400Z/reporting.csv",
-        "bytes": 7511,
-        "sha256": "2878c737131a0d67e5137d82ec1c7327ed31ad51e591954bd75cff6ed15000b2"
+        "path": "current/20261105T184203Z/reporting.csv",
+        "bytes": 7510,
+        "sha256": "52419835504d65ae78b5fa7ccb36d815f4a29507550879a690b0a3a6749093a4"
       },
       {
-        "path": "current/20261105T105400Z/snapshot.json",
-        "bytes": 1708738,
-        "sha256": "7b167538673f4d935fec89051dd3a4224a75fd59a4552cc1da46d1e78dd0ee2a"
+        "path": "current/20261105T184203Z/snapshot.json",
+        "bytes": 1708737,
+        "sha256": "e2db6423cf0a8a2354e166cc13be87f2386bbd5682dfab713783aa9b35f1f5bd"
       }
     ]
   },
   "nationwide_snapshot": {
-    "snapshot_id": "20261105T105405Z",
+    "snapshot_id": "20261105T184206Z",
     "election_date": "2026-11-03",
-    "retrieved_at": "2026-11-05T10:54:05.464543+00:00",
+    "retrieved_at": "2026-11-05T18:42:06.544129+00:00",
     "status": "preliminary",
     "audit": {
       "jurisdictions_assessed": 51,
@@ -7128,34 +7128,34 @@
     },
     "files": [
       {
-        "path": "nationwide/20261105T105405Z/complete-snapshot.zip",
-        "bytes": 420093,
-        "sha256": "f892b207c6b9d1b037206e47a9d363dc39ede2ddcb9f3b5e581f7adcbcd835a9"
+        "path": "nationwide/20261105T184206Z/complete-snapshot.zip",
+        "bytes": 420575,
+        "sha256": "34a2f93d2a27a7d2a427f078fe22e1dc9fccedc1831e37703bbe225ac628c22d"
       },
       {
-        "path": "nationwide/20261105T105405Z/coverage.csv",
+        "path": "nationwide/20261105T184206Z/coverage.csv",
         "bytes": 6999,
         "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
       },
       {
-        "path": "nationwide/20261105T105405Z/demographics.csv",
+        "path": "nationwide/20261105T184206Z/demographics.csv",
         "bytes": 31512,
-        "sha256": "2ba002b61c57fd546a4091e813aff4636dd176843d634bb71f57967cc1fd7cf1"
+        "sha256": "f03b5bd2acf5d168fb0be08999d7353ff4310980e4fe83d78ce18a3ffb16552c"
       },
       {
-        "path": "nationwide/20261105T105405Z/early_voting.csv",
-        "bytes": 1156583,
-        "sha256": "b9ad4315949902163ac797586bfd46c1364279e9189bc850804afe5ed3293f6e"
+        "path": "nationwide/20261105T184206Z/early_voting.csv",
+        "bytes": 1156585,
+        "sha256": "2327d9bc2587feba74653c1acdca0c8ece6e895d1e8a6e29f508ca87858e1ad2"
       },
       {
-        "path": "nationwide/20261105T105405Z/reporting.csv",
-        "bytes": 1168,
-        "sha256": "692012d142fb9fb84c1def50b293b079a4afda110d8812ad6125bdd86b4dafed"
+        "path": "nationwide/20261105T184206Z/reporting.csv",
+        "bytes": 1169,
+        "sha256": "895a35d3f5e151fd3e19a06194c6de99687db557a55c2845b913b0e384090989"
       },
       {
-        "path": "nationwide/20261105T105405Z/snapshot.json",
-        "bytes": 4065489,
-        "sha256": "60545dc12b84bf363896e8fc4898507d0689652a324806fb1e1e72219baa283d"
+        "path": "nationwide/20261105T184206Z/snapshot.json",
+        "bytes": 4065495,
+        "sha256": "e52a48a99e4bdb618510873ddcf5b5d679a020d3563d8e15e259610fa6122eec"
       }
     ]
   },
