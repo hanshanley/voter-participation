@@ -1,7 +1,7 @@
 {
-  "snapshot_id": "20261106T071632Z",
+  "snapshot_id": "20261106T152024Z",
   "election_date": "2026-11-03",
-  "retrieved_at": "2026-11-06T07:16:32.157660+00:00",
+  "retrieved_at": "2026-11-06T15:20:24.184403+00:00",
   "status": "preliminary",
   "audit": {
     "jurisdictions_assessed": 51,
@@ -14,34 +14,34 @@
   },
   "files": [
     {
-      "path": "nationwide/20261106T071632Z/complete-snapshot.zip",
-      "bytes": 420682,
-      "sha256": "1a15b344a6a6c4a9092a008fd64e0613c1e4b4def09a4102c833f154b0b2607a"
+      "path": "nationwide/20261106T152024Z/complete-snapshot.zip",
+      "bytes": 420882,
+      "sha256": "8ac879c1d23d00c4f510ff165b90851c06f7ffa25f4f7feea0725932d21ea38c"
     },
     {
-      "path": "nationwide/20261106T071632Z/coverage.csv",
+      "path": "nationwide/20261106T152024Z/coverage.csv",
       "bytes": 6999,
       "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
     },
     {
-      "path": "nationwide/20261106T071632Z/demographics.csv",
-      "bytes": 31512,
-      "sha256": "059d5c6a18c16fe573a9e9039650d82ed915fce851673628c285ce6475262c12"
+      "path": "nationwide/20261106T152024Z/demographics.csv",
+      "bytes": 32170,
+      "sha256": "a1167f66145d85703da369b46fc4a2146d7a72766c419fdea0292f1cc2bfacda"
     },
     {
-      "path": "nationwide/20261106T071632Z/early_voting.csv",
-      "bytes": 1156593,
-      "sha256": "e999e660a15b92d461de90314befb0066845a9ab57c0c72699f5e01fffd3acd3"
+      "path": "nationwide/20261106T152024Z/early_voting.csv",
+      "bytes": 1156598,
+      "sha256": "de5db635683b5602e041595fdcc34eb7f14a65b12ca0e01a76e7ab3c98f53c77"
     },
     {
-      "path": "nationwide/20261106T071632Z/reporting.csv",
-      "bytes": 1170,
-      "sha256": "6088058c566e4c1e2ed256dee4a96af2963cb9ac66b463ce4d3e32aa9936d299"
+      "path": "nationwide/20261106T152024Z/reporting.csv",
+      "bytes": 1169,
+      "sha256": "1d0f58e634ea08adbc8795d5ac820b0d7f76be6abcae1ecd35fbf72784b392a7"
     },
     {
-      "path": "nationwide/20261106T071632Z/snapshot.json",
-      "bytes": 4065567,
-      "sha256": "027311e3bcd701f7e58155305ab1a32a94e99fabf831b259a185d6be6ab87cfb"
+      "path": "nationwide/20261106T152024Z/snapshot.json",
+      "bytes": 4066401,
+      "sha256": "ab79ac5f6a59951fb5215cf88ef9f581e5705d6367046da93b0da6381af4911d"
     }
   ]
 }
