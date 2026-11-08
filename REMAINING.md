@@ -47,7 +47,7 @@ every comparison or redistribution is approved.
 | 4. Build the actual 2024-to-2026 House panel | Exact source-count join computed, independently verified and published | Complete 3,152-county/5,192-fragment query, including all 2,639 positive pairs and 2,228 known-screen passes. Preserve all exclusions; same district labels do not establish matched boundaries. Next qualify remaining source/control and boundary exceptions and use the exact contest context alongside actual participation controls, not as measured turnout. |
 | 5. Finish five-wave survey numerical outputs | Computed, selected packages published, Civic/AP views live and verified | Civic plus AP 2018/2020/2022/2024 tables exist. AP native verification covers 532,866 source and 12,024 aggregate rows, with 132,196 checks. Its selected public package has 602 rows and all 710 broad-query decisions, eight tests, 29,172 cached-selection/rate checks and byte-identical offline reproduction under two seeds. The historical view is live; every one of the 602 rows passed production checks. Preserve the 2018 qualifier, 2022 DE/WV holds and absent 2022 RACETH5. Do not repeat completed reductions or publication campaigns. |
 | 6. Reconstruct the margin-change components | Civic computed and independently verified | Both 2024-President-to-modeled-2026-House and 2022-House-to-modeled-2026-House have switching, modeled nonparticipation, no-prior-contest-vote entry, other, unresolved and denominator components. All 714 separate demographic partitions reconcile. Do not call these original-coalition population or causal persuasion estimates. |
-| 7. Tie returns and participation controls to estimates | Expanded MN/HI/WY source increment verified and published | All 51 state/D.C. rows, 15 native observations, nine selected state references and six conditional registration-frame scenarios are persistent. HI adds a statewide summary and one conditional scenario; WY adds reconciled statewide ballots but no registration denominator. MN's 2,490/4,105 reported statistics units remain partial, never statewide-scaled. AL/HI/NC/OR have cast-ballot measure comparisons; CA/CO retain different native numerator meanings. The NC duplicate is not added; four county controls remain unallocated. Twelve tests, 5,530 independent checks and two byte-identical offline reproductions passed. Next extend genuinely additional whole-state/same-frame controls and historical matches, not these completed reductions. |
+| 7. Tie returns and participation controls to estimates | Both held-source expansion increments verified and published | All 51 state/D.C. rows, 19 native observations, 13 selected state references and eight conditional registration-frame scenarios are persistent. VT and RI add scenarios after native-frame review; ID remains ballot-only and DC has no Civic sample. RI's declared parent registration is 794,266, not a repair of Federal-unit zero registration; its parent ballot zero is not statewide zero. MN remains partial, WY registration null, and HI's six-ballot discrepancy retained. AL/HI/NC/OR/RI have cast-ballot measure comparisons; CA/CO/VT retain other native numerator meanings. Sixteen tests, 1,953 new independent checks and two byte-identical offline reproductions passed, preserving the previous six scenarios and all 15 controls. Next extend supported historical matches and genuinely new whole-state controls, not these completed reductions. |
 | 8. Integrate and verify supported estimates | Civic and historical AP views live and exact-production verified | Latest accepted main `3827eb4`, Pages `42441500031`, attempt 1, fresh artifact `13601962258`: uploaded/deployed identity and actual 997,463,197-byte payload/999,976,960-byte tar pass. All 14 production modes passed, including every AP row, strong changed-byte checksum failure, no-JavaScript, existing Civic and folded research behavior. All 3,055 prior links and IDs remain; five AP assets bring complete downloads to 1,057. HTML, scripts and source pointers match the exact build. Civic/AP complete immutable packages are available; no new homepage card. |
 | 9. Close statewide historical/2026 holes | Ongoing, alongside estimates | Actual ballots-cast controls, group denominators, histories and matched geography. Do not wait for universal administrative validation to produce explicitly assumption-labeled estimates. |
 | 10. Add additional source-supported precinct detail | Secondary to national/state work | Reuse existing Minnesota/Hawaii/Wyoming originals first; get missing whole-state releases/layouts rather than restarting county-by-county research. Local leads below are useful additions, not the critical path. |
@@ -111,13 +111,14 @@ two blocked-network, byte-identical offline reproductions passed.
 The remaining single additional count difference is not reconciled away;
 Maine write-ins, round qualifications and earlier source-count exceptions remain.
 
-The [expanded conditional state-control package](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-02)
-is a 14,976,527-byte, 17-member ZIP plus all five full query/summary supplements.
+The [expanded conditional state-control package](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-03)
+is a 20,124,248-byte, 20-member ZIP plus all six full query/summary supplements.
 Maintained `scripts/participation_controls.py` uses verified public Civic
 aggregates, the frozen nationwide snapshot `20261108T023946Z`, the eight reviewed
 2026 observations, UF initial estimates, exact state House context and the
-already-held qualified Hawaii/Wyoming/Minnesota source versions.
-The six `R*p`/`R*(1-p)` scenarios (AL/CA/CO/HI/NC/OR) explicitly assume
+already-held qualified Hawaii/Wyoming/Minnesota/Vermont/Idaho/Rhode Island/D.C.
+source versions.
+The eight `R*p`/`R*(1-p)` scenarios (AL/CA/CO/HI/NC/OR/RI/VT) explicitly assume
 exchangeability of each state's survey propensity to that particular native
 registered denominator. This is not validated; weight target/calibration and
 field period remain unqualified. Source-defined, active, active-and-inactive,
@@ -141,13 +142,32 @@ turnout or a state survey allocation target. No blocked endpoint or completed
 font recovery was retried. The archive retains all sufficient public aggregate
 inputs and original sources without acquisition session headers.
 
-All six release assets were fully verified before and after immutable
-publication. Twelve tests and 5,530 independent checks passed, including
-preservation of the five old scenarios, 49 unaffected state rows and all 12
-original controls. Two network/DNS/external-command blocked reproductions
-matched every member and the complete ZIP. The initial version remains
-immutable. The new outputs are published research downloads; no new website
-view, build or deployment is claimed.
+The next four-state increment retains all 247 Vermont municipalities, 986
+Idaho units, 40 Rhode Island localities and 144 D.C. precincts. Vermont's
+506,512 registrations support a conditional scenario, but its source-labeled
+311,009 "Votes Cast" remain distinct from qualified cast ballots; all six
+municipal rate holds and the 311,429 House accounting total remain.
+Rhode Island's native parent `totalVoters` is explicitly 794,266 and equals
+the sum of all locality registration fields. Use that parent denominator,
+not inferred registration for its Federal unit (756 ballots, zero native
+registration). All 39 municipalities plus that separate unit supply 364,082
+ballots; the native parent ballot zero is not statewide zero. Its clock
+differs from the older 755-vote Senate snapshot. Idaho's 731,980 separate
+ballots cover 44 counties; Twin Falls registration (41,878 workbook vs 42,990
+API), seven House/ballot-report differences and pooled-unit holds remain.
+No state registration denominator is adopted. D.C.'s independently reconciled
+185,086 ballots and 457,371 registrations do not create a Civic sample.
+
+All seven version-03 assets were fully verified before and after immutable
+publication. Sixteen tests and 1,953 new independent checks passed, including
+preservation of the preceding six scenarios, 47 unaffected state rows and all
+15 preceding controls. Two network/DNS/external-command blocked reproductions
+matched every member and the complete ZIP. The initial and MN/HI/WY versions
+remain immutable, with their earlier verification proofs intact. The new
+outputs are published research downloads; no new website view, build or
+deployment is claimed. Continue matched historical ballot/registration
+controls from already-held sources alongside earlier-year demographic data;
+the cumulative CES access hold is not a reason to stop the other work.
 
 The accepted Pages tar has only 23,040 bytes of headroom under the strict
 1,000,000,000-byte cap. A later automatic research snapshot has legitimately

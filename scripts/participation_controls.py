@@ -24,11 +24,17 @@ EVIDENCE = {
     "hi-2026-held-state-summary-report-3": ("HI", "state", "reported_cast_ballots", "registered_voters_source_definition"),
     "wy-2026-held-reconciled-county-ballots": ("WY", "state", "reported_cast_ballots", "registered_denominator_not_supplied"),
     "mn-2026-held-partial-precinct-statistics": ("MN", "partial_state_reporting_units", "reported_cast_ballots", "partial_precinct_registered_at_open_plus_election_day_registrations"),
+    "vt-2026-held-municipal-registration": ("VT", "state", "native_municipal_Votes_Cast_not_qualified_ballots", "municipal_source_registered_voters_active_inactive_unspecified"),
+    "id-2026-held-separate-ballot-report": ("ID", "state", "reported_cast_ballots", "unqualified_county_registration_disagreement"),
+    "ri-2026-held-all-locality-ballots": ("RI", "state", "reported_cast_ballots", "native_state_totalVoters_registration_definition_unqualified"),
+    "dc-2026-held-citywide-ballots": ("DC", "state", "reported_cast_ballots", "registered_voters_source_definition"),
 }
 REGISTERED = {
     "registered_voters_source_definition", "active_and_inactive_registered_voters",
     "active_registered_voters", "eligible_registered_including_election_day_preregistrants",
     "native_totalRegisteredVoters_definition_unqualified",
+    "municipal_source_registered_voters_active_inactive_unspecified",
+    "native_state_totalVoters_registration_definition_unqualified",
 }
 HOUSE_OFFICE = "U.S. House district contests aggregated within state"
 INPUTS = {
@@ -37,6 +43,7 @@ INPUTS = {
     "house-state-party-totals.csv.gz",
 }
 HELD_INPUT = "held-precinct-participation-controls.zip"
+ADDITIONAL_INPUTS = {"additional-reviewed-state-observations.json", "additional-state-control-sources.zip"}
 
 
 def json_bytes(value):
@@ -343,6 +350,9 @@ def build(civic, uf, reporting, evidence, house):
             "Partial-state precinct statistics are retained separately, never used as statewide controls or survey allocation targets.",
             "Hawaii uses its declared statewide summary, not the differing native-unit ballot sum; precinct rates remain withheld.",
             "Wyoming's whole-state ballot count supplies no registration denominator or conditional population scenario.",
+            "Vermont native Votes Cast remains distinct from qualified cast ballots; its source municipal registration frame is not harmonized.",
+            "Idaho registration disagreements remain a denominator hold. Rhode Island uses its explicit parent registration total, not a repair of Federal-unit zero registration.",
+            "D.C. citywide counts do not create a nonexistent Civic sample or conditional survey scenario.",
             "UF initial ballot/VEP estimates remain estimates. VEP is not used as a registered denominator.",
             "House candidate vote sums are office-specific context, not ballots or unique voters.",
             "Missing registered controls remain null, including North Dakota's unsupplied eligible denominator.",
@@ -362,7 +372,8 @@ def export(inputs, output):
     if output.exists():
         raise ValueError("Refusing to overwrite an existing analysis")
     manifest = json.loads((inputs / "source-manifest.json").read_bytes())
-    if (set(manifest["inputs"]) not in (INPUTS, INPUTS | {HELD_INPUT})
+    if (set(manifest["inputs"]) not in (
+            INPUTS, INPUTS | {HELD_INPUT}, INPUTS | {HELD_INPUT} | ADDITIONAL_INPUTS)
             or manifest.get("original_raw_survey_or_voter_records_included") is not False):
         raise ValueError("Unapproved or nonpublic aggregate input set")
     native = {}
@@ -380,12 +391,24 @@ def export(inputs, output):
     if HELD_INPUT in native:
         observations, reconciliation = held_controls(native[HELD_INPUT])
         evidence["observations"].extend(observations)
+    additional = None
+    if ADDITIONAL_INPUTS <= native.keys():
+        additional = json.loads(native["additional-reviewed-state-observations.json"])
+        if (additional.get("raw_individual_records_included") is not False
+                or {r["id"] for r in additional["observations"]} != {
+                    "vt-2026-held-municipal-registration", "id-2026-held-separate-ballot-report",
+                    "ri-2026-held-all-locality-ballots", "dc-2026-held-citywide-ballots"}
+                or len(additional["observations"]) != 4):
+            raise ValueError("Changed additional reviewed state-control contract")
+        evidence["observations"].extend(additional["observations"])
     files, summary = build(
         json.loads(native["civic-selected-aggregates.json"]), json.loads(native["uf-turnout.json"]),
         json.loads(native["published-reporting-controls.json"]),
         evidence, house)
     if reconciliation is not None:
         files["complete-held-source-reconciliation.json"] = json_bytes(reconciliation)
+    if additional is not None:
+        files["complete-additional-state-source-reconciliation.json"] = json_bytes(additional["reconciliation"])
     files.update({"inputs/" + name: content for name, content in native.items()})
     files["inputs/source-manifest.json"] = json_bytes(manifest)
     files["scripts/participation_controls.py"] = Path(__file__).read_bytes()

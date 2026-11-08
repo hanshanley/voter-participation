@@ -337,6 +337,46 @@ to the public research export merely because this ledger records them.
   preservation/archive checks passed. Both blocked-network/DNS/external-
   command reproductions matched every member and the whole ZIP. Version 01
   remains immutable; no new website deployment is claimed for version 02.
+- Additional held-source version
+  `state-participation-control-comparison-20261108-05` is published in
+  [immutable version 03](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-03/complete-analysis.zip),
+  native release `438022113`. Its 20-member ZIP is 20,124,248 bytes, SHA-256
+  `bbc3e125b1cfb53e7b482673c5eacff78150909e53f7e56e890d6548df9d332e`.
+  All seven assets were fully byte-verified before and after publication.
+  Complete outputs now retain 51 state/D.C. rows, 19 observations, 13 state
+  references and eight conditional scenarios. The new 42-member sufficient-
+  source bundle uses the already-held VT/ID/RI/DC count reviews in website
+  revision `3827eb47a72f9152aec8805742fee2c6d9c86688`, with original aggregate
+  JSON/XLSX/PDF/XML/CSV, native qualified units and source-frame definitions;
+  no acquisition session headers or compiled publisher app code is exported.
+  Vermont's 247 municipalities supply 506,512 source registrations and
+  311,009 native "Votes Cast." The latter are not silently promoted to cast
+  ballots. Its 311,429 House accounting total, five municipal accounting
+  differences and Colchester's split-scope difference remain.
+  Rhode Island's explicit parent `totalVoters` is 794,266, independently equal
+  to its 40 locality registration fields and the native registration table.
+  Its parent `ballotsCast` is zero while all 39 municipalities plus the Federal
+  unit total 364,082 ballots: do not use that parent zero as statewide turnout.
+  The Federal unit's 756 ballots and zero registration remain unchanged.
+  Native active/inactive semantics stay unqualified; no Federal registration
+  is fabricated or votes geographically allocated. This source clock is
+  distinct from the earlier 755-vote Senate observation.
+  Idaho's separate ballot report supplies 731,980 ballots across 44 counties/
+  986 units. Its 1,055,089 native registration-unit sum remains context, not a
+  state denominator: Twin Falls workbook/API counts 41,878/42,990 disagree.
+  Seven House/ballot-report differences, eight pooled reporting units and
+  all rate holds remain. D.C.'s 144 precinct rows sum to independently reported
+  citywide 185,086 ballots and 457,371 registrations, with outstanding ballots,
+  registration-date qualification and local-contest accounting differences
+  retained. There is no D.C. Civic estimate or survey allocation.
+  New conditional scenarios are RI and VT; all six preceding scenarios,
+  47 unaffected state rows and all 15 preceding controls remain unchanged.
+  Sixteen tests and 1,953 new independent source/Fraction/scope/preservation/
+  archive checks passed. Both network/DNS/external-command blocked reproductions
+  matched every member and the full ZIP. Prior versions and their proofs remain
+  immutable. Version 05 supersedes the private preliminary version 04, which
+  withheld RI registration before the explicit parent field was checked.
+  No new website deployment is claimed.
 - Complete private outputs/receipts and executed code remain in the active
   session artifact workspace under those versioned names and
   `survey-reconstruction-all-states-20261108-01`. They are not already published

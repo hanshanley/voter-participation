@@ -184,6 +184,65 @@ class ParticipationControlsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Minnesota partial-reporting scope"):
             held_controls(held_archive(mn_all_reported=True))
 
+    def test_vermont_native_votes_cast_not_turned_into_ballots(self):
+        civic, uf, reporting, evidence, house = data()
+        evidence["observations"] = [dict(
+            id="vt-2026-held-municipal-registration", scope="statewide municipal source frame",
+            jurisdiction="Vermont", source_url="https://official.example/vt", measure="Votes Cast",
+            numerator=500, denominator=1000, denominator_label="municipal registered",
+            source_time_label="native-clock", status="unofficial")]
+        files, _ = build(civic, uf, reporting, evidence, house)
+        row = next(r for r in read(files["complete-conditional-registered-scenarios.csv"])
+                   if r["state_code"] == "VT")
+        self.assertEqual(row["native_registered_denominator"], "1000")
+        self.assertEqual(row["conditional_modeled_voter_count"], "600.0")
+        self.assertEqual(row["reported_cast_ballot_measure_control"], "")
+
+    def test_missing_additional_denominators_never_scale_native_sums(self):
+        civic, uf, reporting, evidence, house = data()
+        evidence["observations"] = [dict(
+            id=identifier, scope="statewide native source", jurisdiction=state,
+            source_url="https://official.example/" + state, measure="ballots",
+            numerator=500, denominator=None, denominator_label="native denominator unqualified",
+            source_time_label="native-clock", status="unofficial")
+            for identifier, state in (("id-2026-held-separate-ballot-report", "ID"),
+                                      ("ri-2026-held-all-locality-ballots", "RI"))]
+        files, _ = build(civic, uf, reporting, evidence, house)
+        for row in read(files["complete-state-control-query.csv"]):
+            if row["state_code"] in {"ID", "RI"}:
+                self.assertEqual(row["reported_cast_ballots"], "500")
+                self.assertEqual(row["control_registered_denominator"], "")
+                self.assertEqual(row["conditional_registered_frame_scenario_available"], "False")
+
+    def test_dc_citywide_registration_does_not_create_civic_sample(self):
+        civic, uf, reporting, evidence, house = data()
+        evidence["observations"] = [dict(
+            id="dc-2026-held-citywide-ballots", scope="statewide citywide native summary",
+            jurisdiction="District of Columbia", source_url="https://official.example/dc",
+            measure="ballots", numerator=500, denominator=1000, denominator_label="native registered",
+            source_time_label="native-clock", status="unofficial")]
+        files, _ = build(civic, uf, reporting, evidence, house)
+        row = next(r for r in read(files["complete-state-control-query.csv"]) if r["state_code"] == "DC")
+        self.assertEqual(row["reported_cast_ballots"], "500")
+        self.assertEqual(row["control_registered_denominator"], "1000")
+        self.assertEqual(row["civic_source_n"], "")
+        self.assertEqual(row["conditional_registered_frame_scenario_available"], "False")
+
+    def test_explicit_rhode_island_parent_registration_supports_its_own_scenario(self):
+        civic, uf, reporting, evidence, house = data()
+        evidence["observations"] = [dict(
+            id="ri-2026-held-all-locality-ballots", scope="statewide declared parent registered frame",
+            jurisdiction="Rhode Island", source_url="https://official.example/ri",
+            measure="ballots", numerator=500, denominator=1000, denominator_label="native totalVoters",
+            source_time_label="native-clock", status="unofficial",
+            scope_notes="Native Federal registration zero retained; no allocation or source-field repair.")]
+        files, _ = build(civic, uf, reporting, evidence, house)
+        row = next(r for r in read(files["complete-conditional-registered-scenarios.csv"])
+                   if r["state_code"] == "RI")
+        self.assertEqual(row["native_registered_denominator"], "1000")
+        self.assertEqual(row["reported_cast_ballot_measure_control"], "500")
+        self.assertEqual(row["conditional_modeled_voter_count"], "600.0")
+
 
 if __name__ == "__main__":
     unittest.main()

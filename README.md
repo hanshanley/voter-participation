@@ -110,16 +110,16 @@ fields.
 
 ## Conditional current-registration controls
 
-The [complete expanded state/control comparison](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-02/complete-analysis.zip)
-contains all 51 state/D.C. rows, 15 native control observations and six
-conditional current-register scenarios for AL, CA, CO, HI, NC and OR.
+The [complete expanded state/control comparison](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-03/complete-analysis.zip)
+contains all 51 state/D.C. rows, 19 native control observations and eight
+conditional current-register scenarios for AL, CA, CO, HI, NC, OR, RI and VT.
 `R*p` and `R*(1-p)` split each native registration denominator using its state's
 source-weighted modeled participation share. **Exchangeability to that exact
 registration frame is an unvalidated assumption**, not measured staying home,
 independent model validation or an original-coalition population estimate.
 
 Active, all-registered, eligible/pre-registered and source-undefined denominators
-remain distinct. Only AL, HI, NC and OR have cast-ballot measure comparisons.
+remain distinct. Only AL, HI, NC, OR and RI have cast-ballot measure comparisons.
 Colorado returned/processed ballots and California native `voterTurnout` are
 not relabeled as cast-ballot observations; missing registration totals are not
 filled with UF's estimated VEP. Native dates, unsupported states, the duplicate
@@ -132,13 +132,23 @@ null. Minnesota's 4,105-row statistics file has only 2,490 units flagged reporte
 and 15 ballot-mode discrepancies: its sums are retained, never treated as
 statewide controls or allocated statewide survey estimates.
 
-The 17-member archive includes complete permitted sufficient inputs, original
-aggregate sources, all queries, code, 12 tests and offline reproduction
-instructions. Independent verification passed 5,530 checks and two byte-identical
-offline reproductions. The original five scenarios, 49 unaffected state rows
-and all 12 old controls remain unchanged; the
+Rhode Island's explicitly declared statewide registration count is 794,266.
+Its zero parent ballot field is not statewide zero: all 39 municipalities plus
+the Federal unit report 364,082 ballots. The Federal unit's zero registration
+remains unchanged. Vermont supplies 506,512 municipal registrations; its native
+311,009 "Votes Cast" are not relabeled qualified ballots. Idaho supplies 731,980
+ballots but no qualified registration denominator because of a retained source
+disagreement. D.C.'s 185,086 ballots and 457,371 registrations do not create a
+nonexistent Civic sample.
+
+The 20-member archive includes complete permitted sufficient inputs, original
+aggregate sources, all queries, code, 16 tests and offline reproduction
+instructions. This increment passed 1,953 independent checks and two
+byte-identical offline reproductions. All six preceding scenarios, 47 unaffected
+state rows and all 15 preceding controls remain unchanged; the
 [initial version](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-01)
-is preserved immutably. These new control outputs are research downloads, not
+and [Hawaii/Wyoming/Minnesota version](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-02)
+are preserved immutably. These new control outputs are research downloads, not
 an additional deployed website view.
 
 ## Reproduce
