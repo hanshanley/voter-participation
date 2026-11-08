@@ -7085,37 +7085,37 @@
   },
   "deployment": "Not authorized; local-only.",
   "current_snapshot": {
-    "snapshot_id": "20261108T023939Z",
+    "snapshot_id": "20261108T104310Z",
     "election_date": "2026-11-03",
     "status": "preliminary",
-    "retrieved_at": "2026-11-08T02:39:42.689863+00:00",
+    "retrieved_at": "2026-11-08T10:43:11.856334+00:00",
     "files": [
       {
-        "path": "current/20261108T023939Z/complete-snapshot.zip",
-        "bytes": 1161438,
-        "sha256": "df59170659270c6c7f198dbe3e4ce71589b1aaf59ec8ceea5268a4f913838ec4"
+        "path": "current/20261108T104310Z/complete-snapshot.zip",
+        "bytes": 1161436,
+        "sha256": "65ffe60e1b7a88ddcc6e37533741092f23cf73785fb2231c7d4e1111081b71eb"
       },
       {
-        "path": "current/20261108T023939Z/demographics.csv",
+        "path": "current/20261108T104310Z/demographics.csv",
         "bytes": 405548,
-        "sha256": "f1f5fd1086d145af8c7178a1ad77d9490b621ead31c90c3280465e29989f137a"
+        "sha256": "a92afae063726288347f06f0d4b0cfce260e7a8a319d01bd0e225dc127b71277"
       },
       {
-        "path": "current/20261108T023939Z/reporting.csv",
+        "path": "current/20261108T104310Z/reporting.csv",
         "bytes": 7510,
         "sha256": "a1b2ad9c9f32ec4201048b094c7fab4127f09aaf9a72d46c95b26d0b427b1244"
       },
       {
-        "path": "current/20261108T023939Z/snapshot.json",
+        "path": "current/20261108T104310Z/snapshot.json",
         "bytes": 1708742,
-        "sha256": "a46709b9b1b27d3f63236dd2851a901debcfeceb50dfeecea2db646865cc9b3d"
+        "sha256": "ba983aa92d5573eff99efb64a4e6cd636682c5654509d14a6f335bb71a571fec"
       }
     ]
   },
   "nationwide_snapshot": {
-    "snapshot_id": "20261108T023946Z",
+    "snapshot_id": "20261108T104314Z",
     "election_date": "2026-11-03",
-    "retrieved_at": "2026-11-08T02:39:46.437182+00:00",
+    "retrieved_at": "2026-11-08T10:43:14.187884+00:00",
     "status": "preliminary",
     "audit": {
       "jurisdictions_assessed": 51,
@@ -7128,34 +7128,34 @@
     },
     "files": [
       {
-        "path": "nationwide/20261108T023946Z/complete-snapshot.zip",
-        "bytes": 420844,
-        "sha256": "578f934a83653772d4939f4f9db6523fc95ccbb6a5b62b7f8a200125e025fbfd"
+        "path": "nationwide/20261108T104314Z/complete-snapshot.zip",
+        "bytes": 420774,
+        "sha256": "dadfadfa111ddf6d760a19de9c6361a20fcd0f4ad3bbc97b29a05187827cdf28"
       },
       {
-        "path": "nationwide/20261108T023946Z/coverage.csv",
+        "path": "nationwide/20261108T104314Z/coverage.csv",
         "bytes": 6999,
         "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
       },
       {
-        "path": "nationwide/20261108T023946Z/demographics.csv",
+        "path": "nationwide/20261108T104314Z/demographics.csv",
         "bytes": 31512,
-        "sha256": "711f90bdcbb57f55960c94eba0c8f299d87198f5df4b3a4b4e786e3e264cdf07"
+        "sha256": "8e8c173ae2fb37d5d000cd5fb17c9eb17982997b2b8cb1cc7e681463e2fe50ea"
       },
       {
-        "path": "nationwide/20261108T023946Z/early_voting.csv",
+        "path": "nationwide/20261108T104314Z/early_voting.csv",
         "bytes": 1156610,
-        "sha256": "edb348fb38088e3177c9cc99b91f88272ce2a586a6403945c50c20486497809a"
+        "sha256": "31683038d11622b0a02140ddca14db020cbe9699974320885305aaab8dc0395b"
       },
       {
-        "path": "nationwide/20261108T023946Z/reporting.csv",
+        "path": "nationwide/20261108T104314Z/reporting.csv",
         "bytes": 1169,
-        "sha256": "12fa881f575dbef79a32ca4d60dd432f177dad137ef477e285db9dfce0ba0664"
+        "sha256": "80abf10a6b0557720f31e37c406adfd0499d85bc8f8a979355d1c52e8466fea5"
       },
       {
-        "path": "nationwide/20261108T023946Z/snapshot.json",
+        "path": "nationwide/20261108T104314Z/snapshot.json",
         "bytes": 4065599,
-        "sha256": "21b79262c4795f780ec5e617af47a267d532ee18282e7c87398d8a9d9d17d10c"
+        "sha256": "9ee0c7a45aa316276fa39c76ee97f1e480a06a225574e3f556a13217c8337b88"
       }
     ]
   },
