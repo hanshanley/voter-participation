@@ -41,6 +41,12 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Every state is the required scope, not Florida-only additions.** A complete
+2022/2024 demographic package is now published for all 50 states plus D.C.
+The next step is its state-selectable integration into the existing Demographics
+tab. Nationwide 2026 demographic and precinct coverage remains unfinished;
+no state survey estimate is allocated to local geography.
+
 **Methods/documentation increment complete:** the website's short estimation
 overview and organized GitHub guides are published and exact-production verified.
 Accepted website revision is `96d7257`; the earlier `5e11695` repair remains a
@@ -51,6 +57,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| Every-state demographic participation | Complete historical package published; interface integration active | Release `438552376`: all 51 jurisdictions in both 2022/2024; 1,734 state/year/group queries, 1,733 positive-source estimates and one absent Idaho group, all 11,906 source decisions, 5,202 nonresponse scenarios and 6,120 partitions. Seven full assets, 582,345 independent checks, six focused tests and two exact offline reproductions verify the 26,243,365-byte ZIP. Small-sample diagnostics and native categories stay explicit. Add supported state filters to the existing Demographics tab, preserve national histories and all source frames/downloads, then verify the exact new deployment. This is not complete 2026 demographic or nationwide precinct coverage. |
 | Extend statewide native registration frames: Florida | Published numerical package; complete reproducible code included | Version 04 / release `438515810` adds one Florida whole-state conditional scenario and a separate native participant/model comparison. Full query: 51 states/D.C., 20 controls, 14 selected references, nine scenarios; all 50 unaffected rows, 19 prior controls and eight scenarios identical. Native TOTAL 8,335,497 / 13,704,495; conditional model units 7,475,648.38 / 6,228,846.62 under unvalidated register exchangeability. Source clocks null, statewide flags blank, 60 provisional / 64 overseas county holds preserved; generic cast fields remain null for Florida. All nine full assets verified; 21 tests, 4,165 independent checks and two byte-identical offline reproductions pass the 23-member / 20,157,249-byte ZIP. No new source acquisition, demographic/local allocation, observed staying-home or website view. Broader denominator/geography gaps remain; do not repeat this completed numerical/publication work. |
 | Short website Methods overview | Complete; exact-production verified | Live `96d7257`, Pages `42517487539`, artifact `13632291877`. A 106-word estimation overview links directly to GitHub methods; archive hidden by default. All 24 production modes, 51 targeted Node tests, four build tests and credential checks pass. Actual downloaded artifact content 981,248,921 / tar 983,756,800 bytes; all 3,107 old links, 263 IDs, 436 complete relocations and pinned data preserved. Governing `methods-overview-production-acceptance-01.json`. No new estimates or sources. |
 | Organized GitHub methods | Complete; published and remotely verified | Concise README and current METHODOLOGY, separate data/reproduction guides, indexed source ledger, preserved package notes and original protocol; initial revision `4546524`. All 64 documentation links/anchors, reader/test names and 11 complete immutable download assets verified. Methods explain actual estimators and conditional assumptions; proposed/failed models stay explicit. Both old local HEADs/indices/unrelated files preserved. No need to repeat this documentation reorganization. |

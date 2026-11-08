@@ -8,7 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
-| Historical demographic/state frames | [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
+| Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
@@ -24,6 +24,33 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## Every-state historical demographic participation
+
+[Complete results and reproducible inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-state-demographics-20261108-01/complete-analysis.zip):
+all 50 states plus D.C., 2022 midterm and 2024 presidential frames, with
+1,734 state/year/group rows. The 1,733 positive-source estimates aggregate
+already-held public CPS joint cells directly. Idaho's 2022 Black non-Hispanic
+group has no source cell, not zero participation. Age, sex, education and the
+exclusive race/Hispanic-origin partition retain native categories.
+
+The denominator is all source-weighted civilian noninstitutionalized adult
+citizens, including every unknown/noninterview class. Known-response-only rates
+are separate. The 256 raw-n-under-30 flags are small-sample diagnostics, not
+precision guarantees. The 5,202 unknown-assignment scenarios are not confidence
+intervals or actual-turnout bounds. No legal-eligibility/register fabrication,
+2026 forecast, observed staying-home or county/precinct allocation is supplied.
+
+Maintained `scripts/cps_state_groups.py` and six tests reproduce every query.
+All 11,906 source decisions, 6,120 partitions and 102 native state comparisons
+are included; state overall rates differ by less than 0.05 percentage points
+without adjustment. This audits input handling, not independent validation.
+The immutable release `438552376` has seven full byte-verified assets;
+26,243,365-byte ZIP SHA-256
+`4e5bb73ce17229474eb3f2a549ddb0dced20a4569dd6b13e8fbbb11677788756`.
+Independent verification passed 582,345 checks and two exact blocked-network/
+external-execution reproductions. Both complete input bundles include their
+originals/provenance. Website integration is a separate acceptance step.
 
 ## Florida statewide registration-frame comparison
 
