@@ -216,10 +216,13 @@ python3 -m scripts.historical_participation_controls --inputs inputs --output re
 
 The [selected administrative-history view](https://www.themarginoferror.com/voter-participation/#participation-native-history)
 is live inside the existing folded research section. The first source-specific
-view passed all 19 production browser modes; every old link and ID remains.
-The update selecting the separate Wyoming statewide source is being validated
-with all previous complete downloads retained. This is selected-source context,
-not nationwide administrative coverage or a fixed historical cohort.
+view and the update selecting the separate Wyoming statewide source both
+passed all 19 production browser modes. Current website revision `24b89a9`
+preserves all 3,066 previous links, 258 IDs and six first-version downloads.
+The seven new full assets bring sitewide complete-download links to 1,070.
+The actual deployed artifact and served HTML/scripts/source pointers are
+verified; no client script was added. This is selected-source context, not
+nationwide administrative coverage or a fixed historical cohort.
 
 ## Reproduce
 

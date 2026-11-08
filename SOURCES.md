@@ -119,20 +119,28 @@ harmonization, fixed-cohort participation, demographic allocation, causal
 decomposition or confidence interval is inferred. Eligibility/death/migration
 remain unknown.
 
-The administrative-history context is now live in website revision
-`fbb6d1da242ad42dd3b9a1ce27a01a5aea91cd4e`, actual Pages run `42447654869`,
-attempt 1, fresh artifact `13603888690`. The uploaded/deployed artifact identity
-matches; its actual payload is 997,469,013 bytes and tar 999,976,960 bytes,
-both strictly below 1 GB. All 19 production modes passed, including all seven
-source-matched administrative rows, every 602-row AP selection and existing
-Civic/folded-research behavior. All 3,060 prior links and 256 IDs remain;
-six full external assets bring complete download links to 1,063. Only the
-intended HTML changed, by 5,816 bytes; no client script was added, and served
-scripts/source pointers match the exact build. Main/review credential scans
-passed. Governing receipt: active session
-`historical-controls-production-acceptance-01.json`.
+The administrative-history context, including the separate Wyoming statewide
+source selection, is live in website revision
+`24b89a991f149714068e54fbb91048ae1d2d5e02`, actual Pages run `42449476639`,
+attempt 1, fresh artifact `13604789540`. The uploaded/deployed artifact identity
+matches; its actual payload is 997,471,168 bytes and tar 999,987,200 bytes,
+both strictly below 1 GB, with 12,800 bytes of tar headroom.
+Artifact digest:
+`sha256:8e34522c529779225b6232557bc4864f7344e362e58406a6f9c2695887a33d52`.
+All 19 production modes passed, including all seven source-matched
+administrative rows, every 602-row AP selection and existing Civic/folded-
+research behavior. All 3,066 prior links, 258 IDs and six first-version assets
+remain; the seven new full assets bring complete download links to 1,070.
+Only the intended HTML changed, by 2,155 bytes; no client script was added,
+and served scripts/source pointers match the exact build.
+HTML SHA-256:
+`0c602438c2f4fb111c7a416bb0fa5c6e4f303e45e959b415054a809787de087f`.
+Main/review credential runs `42449476675` / `42449392752` passed.
+Governing receipt: active-session
+`historical-controls-production-acceptance-02.json`; first-version acceptance
+`historical-controls-production-acceptance-01.json` remains preserved.
 
-**New separately qualified Wyoming source, not yet substituted into version 01:**
+**Separate Wyoming primary source, selected in version 02:**
 the held `2022_General_Statewide_Total_Ballots_Cast_Summary.pdf` and
 `2022_General_Summaries_Results.xlsx` both explicitly report 198,198 statewide
 ballots and 22,955 for Natrona. All 23 county rows match the native precinct
@@ -156,8 +164,10 @@ rows, all modeled shares and 16 conditional scenarios, the other ten time
 comparisons, all 18 mode rows and all six previous inputs remain unchanged.
 The original held aggregate and printed 22,957 county figure are preserved.
 The immutable first release and its earlier verification remain available.
-The version-02 website update is being validated separately; the exact
-production acceptance above describes the first source-specific view.
+The version-02 website source-selection update is live and exact-production
+verified as described above; all first-version complete downloads remain
+available. Its distinct state-level qualification does not resolve the held
+county/precinct approval, registration or boundary questions.
 
 ## Status and source classes
 
