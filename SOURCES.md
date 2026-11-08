@@ -52,7 +52,16 @@ checks and two exact blocked-network/external-execution reproductions pass.
 Maintained `scripts/civic_state_groups.py` reproduces all public queries.
 Original 113,020-case verification is reused, not rerun. No raw respondents,
 private fine cells or choice tables. Website integration and the requested
-post-integration project audit are pending.
+post-integration project audit are now complete for this increment.
+
+Live website `5005b2e` / Pages `42534719520` / artifact `13638962850` /
+deployment `7643472553` passes all 36 production configurations. Every 1,530
+2026 decision and 1,734 historical state/group rate is checked on desktop/mobile.
+All prior links, IDs, 436 complete routes, native preview and source pin survive.
+Actual downloaded content/tar: 981,327,119 / 983,838,720 bytes, both below the
+strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks,
+including positive-cell complementary suppression and ten source absences.
+Broader observed-demographic, population-frame and precinct gaps remain open.
 
 ## Every-state historical demographic participation
 

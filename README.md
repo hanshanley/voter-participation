@@ -39,6 +39,13 @@ Geography. All 50 states plus D.C. have source-weighted age, sex, education and
 exclusive race/Hispanic-origin queries, with unknown responses and small-sample
 diagnostics retained. [Complete reproducible data](docs/DATA.md).
 
+**2026 state models:** select Demographics, 2026, and Civic modeled participation.
+All 50 survey states have an overall model estimate; 671 supported group
+estimates are available across age, education, source sex, race/Hispanic origin,
+native income and county context. D.C. and held groups remain explicitly
+unavailable. These are source model shares, **not observed 2026 turnout**.
+[Current release audit](docs/AUDIT.md) | [Complete query downloads](docs/DATA.md).
+
 **Limits:** These sources do not form one linked electorate. Missing data are not
 zero, modeled nonparticipation is not observed staying home, and repeated survey
 waves do not identify individual switching. Broad 2026 group denominators and
@@ -53,6 +60,7 @@ The website keeps Methods short; details live here.
 | [Methods](METHODOLOGY.md) | Estimands, weighted rates, conditional counts, historical tests and uncertainty. |
 | [Data catalog](docs/DATA.md) | Choose a complete, versioned analysis download. |
 | [Reproduction guide](docs/REPRODUCING.md) | Run a saved analysis without reacquiring its inputs. |
+| [Current release audit](docs/AUDIT.md) | Verified coverage, disclosure, downloads and live-interface limits. |
 | [Source ledger](SOURCES.md) | Technical provenance, native definitions, access holds and verification records. |
 | [Remaining work](REMAINING.md) | Current research gaps and execution queue. |
 
