@@ -151,6 +151,41 @@ and [Hawaii/Wyoming/Minnesota version](https://github.com/hanshanley/margin_of_e
 are preserved immutably. These new control outputs are research downloads, not
 an additional deployed website view.
 
+## Historical administrative comparisons
+
+The [complete historical control analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-01/complete-analysis.zip)
+retains all 255 state/D.C.-year combinations for 2018, 2020, 2022, 2024 and 2026,
+including missing controls, plus 434 separate AP/Civic study-and-weight rows.
+Hawaii's four historical statewide ballot/registration totals reconcile native
+summaries and separate PDFs. The query contains 18 source references, of which
+14 are qualified cast-ballot measures, three retain other native meanings and
+one Wyoming historical reference remains held. No nationwide historical
+administrative coverage is claimed.
+
+The 16 conditional registration-frame rows are not observed staying home or
+independent model validation; final survey weights may already use outcome
+calibration. All 11 administrative comparisons retain native status/cutoffs.
+Unfinished 2026 snapshots do not establish final-count turnout declines.
+Wyoming's 2022 native workbook sum of 198,198 remains held because Natrona's
+printed county total is two ballots higher than its precinct/statewide values;
+no approved cast-ballot change or missing registration is inferred.
+The 18 native mode rows retain changing CSV/PDF labels separately.
+
+The 16-member ZIP contains all sufficient public aggregate inputs, original
+sources, full queries, portable code and eight focused tests. Independent
+verification passed 4,570 checks, including a second PDF engine, and both
+blocked-network reproductions matched all members and the full ZIP. All 50
+current Civic shares and eight earlier scenario counts remain unchanged.
+After unpacking:
+
+```sh
+python3 -m unittest discover -s tests -p test_historical_participation_controls.py
+python3 -m scripts.historical_participation_controls --inputs inputs --output reproduced
+```
+
+The compact administrative-history website integration is being tested
+separately; publication of the research download is not a website-live claim.
+
 ## Reproduce
 
 ```sh

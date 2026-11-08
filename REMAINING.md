@@ -49,7 +49,7 @@ every comparison or redistribution is approved.
 | 6. Reconstruct the margin-change components | Civic computed and independently verified | Both 2024-President-to-modeled-2026-House and 2022-House-to-modeled-2026-House have switching, modeled nonparticipation, no-prior-contest-vote entry, other, unresolved and denominator components. All 714 separate demographic partitions reconcile. Do not call these original-coalition population or causal persuasion estimates. |
 | 7. Tie returns and participation controls to estimates | Both held-source expansion increments verified and published | All 51 state/D.C. rows, 19 native observations, 13 selected state references and eight conditional registration-frame scenarios are persistent. VT and RI add scenarios after native-frame review; ID remains ballot-only and DC has no Civic sample. RI's declared parent registration is 794,266, not a repair of Federal-unit zero registration; its parent ballot zero is not statewide zero. MN remains partial, WY registration null, and HI's six-ballot discrepancy retained. AL/HI/NC/OR/RI have cast-ballot measure comparisons; CA/CO/VT retain other native numerator meanings. Sixteen tests, 1,953 new independent checks and two byte-identical offline reproductions passed, preserving the previous six scenarios and all 15 controls. Next extend supported historical matches and genuinely new whole-state controls, not these completed reductions. |
 | 8. Integrate and verify supported estimates | Civic and historical AP views live and exact-production verified | Latest accepted main `3827eb4`, Pages `42441500031`, attempt 1, fresh artifact `13601962258`: uploaded/deployed identity and actual 997,463,197-byte payload/999,976,960-byte tar pass. All 14 production modes passed, including every AP row, strong changed-byte checksum failure, no-JavaScript, existing Civic and folded research behavior. All 3,055 prior links and IDs remain; five AP assets bring complete downloads to 1,057. HTML, scripts and source pointers match the exact build. Civic/AP complete immutable packages are available; no new homepage card. |
-| 9. Close statewide historical/2026 holes | Ongoing, alongside estimates | Actual ballots-cast controls, group denominators, histories and matched geography. Do not wait for universal administrative validation to produce explicitly assumption-labeled estimates. |
+| 9. Close statewide historical/2026 holes | Historical control increment computed, verified and published; website integration underway | Complete 255 state/year query, 434 study/weight comparisons, 18 source references (14 qualified cast, three other measures, one held Wyoming reference), 16 conditional registration-frame rows, 11 native comparisons and 18 mode rows. Hawaii 2018/2020/2022/2024 statewide totals reconcile separate summaries/PDFs; Wyoming 2022 Natrona +2 conflict remains held. Eight historical/24 combined tests, 4,570 independent checks and two byte-identical offline reproductions passed. Complete immutable research package is public; compact website context is being validated, not claimed live. Broader group denominators, histories and geography remain ongoing. |
 | 10. Add additional source-supported precinct detail | Secondary to national/state work | Reuse existing Minnesota/Hawaii/Wyoming originals first; get missing whole-state releases/layouts rather than restarting county-by-county research. Local leads below are useful additions, not the critical path. |
 
 No delegated collector/reconstruction output is currently assumed complete.
@@ -168,6 +168,22 @@ outputs are published research downloads; no new website view, build or
 deployment is claimed. Continue matched historical ballot/registration
 controls from already-held sources alongside earlier-year demographic data;
 the cumulative CES access hold is not a reason to stop the other work.
+
+The [complete historical participation package](https://github.com/hanshanley/margin_of_error/releases/tag/participation-historical-controls-20261108-01)
+is public and fully byte-verified, with maintained
+`scripts/historical_participation_controls.py`. Hawaii historical native
+ballots/registrations are 398,657/756,751 (2018), 579,784/832,466 (2020),
+419,363/861,358 (2022) and 522,236/860,868 (2024). These reconcile separate
+summaries and PDFs; registration definitions and voting-mode labels are not
+silently harmonized. Wyoming's 198,198 native 2022 workbook sum remains held:
+Natrona precinct/statewide 22,955 versus printed county 22,957. No registered
+denominator or approved cast-ballot change is inferred. All 255 state/year
+combinations remain in the query, so these selected histories do not imply
+nationwide administrative coverage. AP and Civic remain separate source-
+weighted model constructs, not a harmonized panel. The existing current
+estimates are preserved. The next immediate work is actual validation,
+size measurement and authorized exact-production verification of the compact
+administrative-history context in the existing folded research section.
 
 The accepted Pages tar has only 23,040 bytes of headroom under the strict
 1,000,000,000-byte cap. A later automatic research snapshot has legitimately

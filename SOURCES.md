@@ -12,6 +12,61 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Historical administrative participation comparison
+
+Maintained `scripts/historical_participation_controls.py` now joins the approved
+public AP/Civic aggregates to source-specific state-year controls without
+reconstructing private respondents. The
+[complete immutable historical analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-01/complete-analysis.zip)
+is release `438027911`: 4,969,563 bytes, 16 ZIP members, SHA-256
+`6d4fe13ddb5772ca6a9986ad83ec1b2eb31a03b537979300a25797e2fc6ce9c0`.
+All six complete assets were authenticated-draft and anonymous-published
+byte-verified. It retains all 255 state/D.C.-year combinations, 434 separate
+survey/weight rows, 18 source references, 16 conditional registration-frame
+rows, 11 administrative comparisons and 18 literal native mode rows.
+Only 14 references qualify as cast-ballot measures; three retain other native
+meanings and one historical Wyoming reference remains held.
+
+The already-held Hawaii original archive supplies historical statewide
+`histatewide.pdf` and `summary.txt`, not reused 2026 layouts:
+
+| Year | Native total turnout | Native total registration | Native print clock |
+|---|---:|---:|---|
+| 2018 | 398,657 | 756,751 | November 15, 2018, 5:13:49 p.m. |
+| 2020 | 579,784 | 832,466 | November 19, 2020, 10:21:05 a.m. |
+| 2022 | 419,363 | 861,358 | November 22, 2022, 12:39:46 p.m. |
+| 2024 | 522,236 | 860,868 | November 13, 2024, 6:51:06 p.m. |
+
+These are source-labeled final reports, not independently certified outcomes.
+Native UTF-8/UTF-16 encodings, quoted multiline records, omitted trailing
+header fields and repeated registration values are handled explicitly.
+PDF turnout modes independently sum to the same statewide totals, while
+legacy CSV/PDF mode labels remain separate and unharmonized. Hawaii 2022
+`Counted Precincts=0` is preserved, not interpreted as zero ballots.
+No raw voter/survey records, acquisition session headers or compiled publisher
+app code is included. Source-bound PDF text and all sufficient original
+aggregate files are included for package-only offline reproduction.
+
+The qualified native Wyoming 2022 review has 439 units in 23 counties, but
+its ballot approval is **withheld**: Natrona's precinct and statewide values
+are 22,955, while its printed county total is 22,957. The 198,198 workbook sum
+remains a held native measure, not an approved statewide cast-ballot control.
+Its -6,510 native-sum difference to the 2026 snapshot is not promoted to an
+approved cast-ballot change. Both Wyoming registration denominators remain
+null, and changing precinct sets are not linked by reused labels.
+
+Eight focused historical tests, 24 combined historical/current tests and 4,570
+independent Fraction/source/scope/preservation/archive checks passed.
+A second PDF engine independently verified all four Hawaii historical totals.
+Both blocked-network/DNS/external-command reproductions matched every member
+and the complete ZIP; all 50 current Civic shares and eight current scenarios
+remain unchanged. AP poll-close/final weights remain separate and may already
+reflect outcome calibration. No source-model independence, AP/Civic construct
+harmonization, fixed-cohort participation, demographic allocation, causal
+decomposition or confidence interval is inferred. Eligibility/death/migration
+remain unknown. The website integration is in an isolated validation worktree;
+the existing live website is not yet claimed to include this addition.
+
 ## Status and source classes
 
 | Class | Meaning |
