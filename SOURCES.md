@@ -279,6 +279,30 @@ to the public research export merely because this ledger records them.
   the ZIP with network/DNS/external commands blocked. The Maine 882-write-in
   gap, Alaska/Connecticut geography exceptions and original count/round
   differences remain explicit, not allocated or silently replaced.
+- Conditional current-register control comparison
+  `state-participation-control-comparison-20261108-02` uses only verified public
+  Civic aggregates, the pinned published `20261108T023946Z` nationwide reporting
+  snapshot, eight reviewed 2026 observations, UF initial estimates and exact
+  House state context. The
+  [complete immutable control/scenario ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-01/complete-analysis.zip)
+  has 15 members, 447,129 bytes, SHA-256
+  `f7693b54cee3d3e05b809bee92433fc179545c88beedfbadf95858075d5c2482`.
+  All five release assets were authenticated-draft and anonymous-published
+  byte-verified. It retains all 51 state/D.C. query rows and all 12 native
+  control observations, selects seven state references without double-adding
+  the NC source, and excludes four county controls from state model allocation.
+  Five `R*p`/`R*(1-p)` registration-frame scenarios (AL/CA/CO/NC/OR) are
+  explicitly conditional on unvalidated survey/frame exchangeability.
+  Only AL/NC/OR have reported cast-ballot measure comparisons; CO returned/
+  processed and CA native `voterTurnout` remain different measures. UF's
+  estimated VEP never fills a registered denominator, and House candidate
+  votes remain context rather than ballots. Source weight target/calibration
+  and field period remain unqualified; no national/original-cohort population,
+  measured staying-home, partisan fitting or confidence interval is inferred.
+  Eligibility/death/migration remain null. Seven tests and 439 independent
+  Fraction/scope/archive checks passed, and two blocked-network/DNS/external-
+  command reproductions matched all members and the full ZIP. Maintained code:
+  `scripts/participation_controls.py`.
 - Complete private outputs/receipts and executed code remain in the active
   session artifact workspace under those versioned names and
   `survey-reconstruction-all-states-20261108-01`. They are not already published

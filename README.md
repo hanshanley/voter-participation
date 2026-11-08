@@ -108,6 +108,25 @@ six tests and offline reproduction instructions. The derived `resolved_fips`
 and `fips_resolution` columns do not overwrite original identifier/eligibility
 fields.
 
+## Conditional current-registration controls
+
+The [complete state/control comparison](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-01/complete-analysis.zip)
+contains all 51 state/D.C. rows, 12 native control observations and five
+conditional current-register scenarios for AL, CA, CO, NC and OR.
+`R*p` and `R*(1-p)` split each native registration denominator using its state's
+source-weighted modeled participation share. **Exchangeability to that exact
+registration frame is an unvalidated assumption**, not measured staying home,
+independent model validation or an original-coalition population estimate.
+
+Active, all-registered, eligible/pre-registered and source-undefined denominators
+remain distinct. Only AL, NC and OR have cast-ballot measure comparisons.
+Colorado returned/processed ballots and California native `voterTurnout` are
+not relabeled as cast-ballot observations; missing registration totals are not
+filled with UF's estimated VEP. Native dates, unsupported states, the duplicate
+NC source and all county-only observations remain in the full query.
+The archive includes every permitted aggregate input, code, tests and offline
+reproduction instructions.
+
 ## Reproduce
 
 ```sh

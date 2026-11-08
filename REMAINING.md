@@ -47,7 +47,7 @@ every comparison or redistribution is approved.
 | 4. Build the actual 2024-to-2026 House panel | Exact source-count join computed, independently verified and published | Complete 3,152-county/5,192-fragment query, including all 2,639 positive pairs and 2,228 known-screen passes. Preserve all exclusions; same district labels do not establish matched boundaries. Next qualify remaining source/control and boundary exceptions and use the exact contest context alongside actual participation controls, not as measured turnout. |
 | 5. Finish five-wave survey numerical outputs | Computed, selected packages published, Civic/AP views live and verified | Civic plus AP 2018/2020/2022/2024 tables exist. AP native verification covers 532,866 source and 12,024 aggregate rows, with 132,196 checks. Its selected public package has 602 rows and all 710 broad-query decisions, eight tests, 29,172 cached-selection/rate checks and byte-identical offline reproduction under two seeds. The historical view is live; every one of the 602 rows passed production checks. Preserve the 2018 qualifier, 2022 DE/WV holds and absent 2022 RACETH5. Do not repeat completed reductions or publication campaigns. |
 | 6. Reconstruct the margin-change components | Civic computed and independently verified | Both 2024-President-to-modeled-2026-House and 2022-House-to-modeled-2026-House have switching, modeled nonparticipation, no-prior-contest-vote entry, other, unresolved and denominator components. All 714 separate demographic partitions reconcile. Do not call these original-coalition population or causal persuasion estimates. |
-| 7. Tie returns and participation controls to estimates | Next estimation increment; inputs/estimates already held | Join held state/control observations, preliminary UF estimates and the verified survey statistics with explicit election, geography, cutoff, measure and denominator fields. Keep actual ballots, credited participation, registered frames, VEP denominators and House contest votes distinct. Produce complete matched/unmatched queries and assumption-labeled comparisons or conditional scaling where supported, not false original-cohort certification or fitting away discrepancies. |
+| 7. Tie returns and participation controls to estimates | First complete control/scenario increment verified and published; extend matched inputs next | All 51 state/D.C. rows, 12 native observations, seven selected state references and five conditional registration-frame scenarios are persistent. AL/NC/OR have cast-ballot measure comparisons; CA/CO retain different native numerator meanings. The NC duplicate is not added; four county controls remain unallocated. Seven tests, 439 independent arithmetic/scope/archive checks and two byte-identical offline reproductions passed. Extend genuinely held MN/HI/WY whole-state controls and additional same-frame inputs before creating more population scenarios. |
 | 8. Integrate and verify supported estimates | Civic and historical AP views live and exact-production verified | Latest accepted main `3827eb4`, Pages `42441500031`, attempt 1, fresh artifact `13601962258`: uploaded/deployed identity and actual 997,463,197-byte payload/999,976,960-byte tar pass. All 14 production modes passed, including every AP row, strong changed-byte checksum failure, no-JavaScript, existing Civic and folded research behavior. All 3,055 prior links and IDs remain; five AP assets bring complete downloads to 1,057. HTML, scripts and source pointers match the exact build. Civic/AP complete immutable packages are available; no new homepage card. |
 | 9. Close statewide historical/2026 holes | Ongoing, alongside estimates | Actual ballots-cast controls, group denominators, histories and matched geography. Do not wait for universal administrative validation to produce explicitly assumption-labeled estimates. |
 | 10. Add additional source-supported precinct detail | Secondary to national/state work | Reuse existing Minnesota/Hawaii/Wyoming originals first; get missing whole-state releases/layouts rather than restarting county-by-county research. Local leads below are useful additions, not the critical path. |
@@ -110,6 +110,22 @@ complete queries, code and tests. Six tests, 69,225 independent checks and
 two blocked-network, byte-identical offline reproductions passed.
 The remaining single additional count difference is not reconciled away;
 Maine write-ins, round qualifications and earlier source-count exceptions remain.
+
+The [complete conditional state-control package](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-01)
+is a 447,129-byte, 15-member ZIP plus full state/control/scenario CSVs.
+Maintained `scripts/participation_controls.py` uses verified public Civic
+aggregates, the frozen nationwide snapshot `20261108T023946Z`, the eight reviewed
+2026 observations, UF initial estimates and exact state House context.
+The five `R*p`/`R*(1-p)` scenarios (AL/CA/CO/NC/OR) explicitly assume
+exchangeability of each state's survey propensity to that particular native
+registered denominator. This is not validated; weight target/calibration and
+field period remain unqualified. Source-defined, active, active-and-inactive,
+eligible/pre-registered and native-undefined registration frames are not
+harmonized. No independent outcome or original-coalition validation is claimed.
+The source-weighted model's nonvoters are not administratively observed people
+staying home; eligibility/death/migration stay null. Georgia's unqualified
+registration total and North Dakota's unsupplied eligible denominator remain
+null, not derived from UF VEP or a printed percentage.
 
 The accepted Pages tar has only 23,040 bytes of headroom under the strict
 1,000,000,000-byte cap. A later automatic research snapshot has legitimately
