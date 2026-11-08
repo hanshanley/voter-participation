@@ -35,6 +35,31 @@ all 9,718 Texas 2024 result shapes and 4,105 Minnesota 2026 participation rows.
 All previous links, IDs, original data and complete downloads remain available.
 Coverage is still source-specific and partial, not nationwide precinct turnout.
 
+## Historical CPS demographic frames
+
+The [complete historical CPS group package](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-group-frames-20261108-01/complete-analysis.zip)
+adds 3,203 native age/sex/education count rows for 2000-2024 and 2,573
+registration/voting percentage rows across 31 elections in 1964-2024.
+The historical percentage series also covers race/ethnicity, region and
+labor-force groups; missing registration years and native unavailable cells
+remain explicit. It includes 3,792 voting-nonresponse assignment scenarios,
+2,407 same-election-type comparisons and every source-row and survey-frame
+decision, not an inventory alone.
+
+All 28 original government workbooks, complete source caches, queries, code
+and tests are in the immutable 43-member download. Nine tests, 221,990
+independent checks and two byte-identical offline reproductions passed.
+Margins of error never become population counts. Older merged unknown/no
+responses remain merged, and marginal vote/register ratios are not measured
+registered-voter turnout. The response assignments are not administrative
+turnout bounds or confidence intervals. No national AP population scaling or
+county/precinct allocation is inferred from unmatched source frames.
+
+```sh
+python3 -m unittest discover -s tests -p test_cps_group_frames.py
+python3 -m scripts.cps_group_frames --inputs inputs --output reproduced
+```
+
 ## Historical EAC controls and registration-frame scenarios
 
 The [complete historical EAC package](https://github.com/hanshanley/margin_of_error/releases/download/participation-eac-state-controls-20261108-01/complete-analysis.zip)

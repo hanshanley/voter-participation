@@ -12,6 +12,61 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Historical CPS group registration and response frames
+
+Maintained `scripts/cps_group_frames.py` now uses all 26 already-held native
+election tables 1/5 for 2000-2024 plus the two full historical workbooks
+`hst_vote01.xlsx` and `hst_vote02.xlsx`. Their original bytes, source clocks,
+all worksheet cells, headers, notes and margins remain included. No new source
+requests were made. Estimate sheets are selected by their native contents,
+not the workbook's active tab: some 2016-2020 files open on margins-of-error
+sheets. Table 5's inline margins sections are also explicitly held.
+
+The native 2006/2008 citizen headers still use merged `Not Registered` /
+`Did Not Vote` classes. The 2010-2014 `Reported did not vote` label is a
+different header variant with separately reported nonresponse. All literal
+counts and their population scopes are retained, not repaired. The legacy
+citizen population is a declared sum only where its two native citizen
+registration components supply it; citizen registration is not confused
+with total-resident nonregistration. Published weighted thousand-person
+counts are not administrative voter/register totals.
+
+| Complete query | Actual rows |
+|---|---|
+| Native age/sex/education group counts, 2000-2024 | 3,203 |
+| Historical registration/voting percentage frames, 1964-2024 | 2,573 across all 31 elections; native `N` and absent registration years remain |
+| Original election-workbook row decisions | 4,540, including every held margin/header/note row |
+| Separate native voting-nonresponse assignments | 3,792, never a split of old merged unknown classes |
+| Same presidential/midterm-type snapshot comparisons | 2,407, preserving age/race/citizenship/education breaks |
+| Public AP source/frame decisions | All 602, without unqualified national population scaling |
+
+The historical series also preserves region/labor-force/education percentages
+and race/ethnicity/sex by native age groups. Overlapping parent, child and
+demographic groups are not added or multiplied. Source voting/registration
+marginal ratios do not identify individual registered-voter participation.
+Unknown-response assignments vary only the explicit native unknown count,
+using the full citizen denominator; they neither correct self-report error
+nor bound actual administrative turnout. No confidence interval, observed
+staying home, retention/switching, new eligibility or local allocation is
+inferred. AP `US50_SOURCE`, native demographic meanings and CPS U.S. resident
+population frames remain unmatched for population scaling; gender is not
+silently recoded to native CPS sex.
+
+The [complete immutable CPS release](https://github.com/hanshanley/margin_of_error/releases/tag/participation-cps-group-frames-20261108-01)
+is `438418451`, with all ten full assets independently compared before and
+after publication. Its complete ZIP is 1,289,064 bytes / 43 members, SHA-256
+`1655df1430d09c5206f6ad1f7e582277f02b81cf43be135b6508bd7e142485fb`.
+All 28 government originals, full sufficient caches/metadata/selected public
+aggregate inputs, all queries, code and tests are included. There are no
+raw survey microdata, voter identifiers or private fine cells.
+Nine focused tests, 221,990 independent original-cell/full-query/member
+checks and two blocked-network/external-command byte-identical reproductions
+passed under seeds 3 and 97. Governing session receipts:
+`cps-group-frames-immutable-release-01.json`,
+`cps-group-frames-independent-verification-01.json` and
+`cps-group-frames-offline-reproduction-01-A.json` / `-B.json`.
+No new website view or deployment is claimed.
+
 ## Held EAC historical state controls: complete verified publication
 
 Maintained `scripts/eac_state_controls.py` now uses the already-held November 4
