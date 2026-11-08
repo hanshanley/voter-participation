@@ -186,6 +186,15 @@ to the public research export merely because this ledger records them.
 
 ### Current derived analyses and remaining reconciliation
 
+- AP 2018/2020/2022/2024 numerical estimates are computed from 532,866 source
+  records: 12,024 full-frame aggregate rows, preserving poll-close/final and
+  state/national weights. An independent native reader passed 132,196 checks.
+  Maintained code is `scripts/ap_votecast_estimates.py`; private outputs are
+  version `ap-votecast-participation-estimates-05`. Native 2018 CSV uses
+  Windows-1252; other waves use UTF-8. State labels carry postal prefixes,
+  not FIPS. Documented `RACETH5` is absent from the released 2022 CSV and is
+  explicitly withheld, not reconstructed from another field. The `weight_field`
+  source-variable name is distinct from numeric `weight` mass.
 - The supplied Civic file now has actual private numerical outputs for all
   50 states plus a separately labeled pooled-source scope: 1,954 participation
   rows, 97,700 complete joint cells, 3,908 margin decompositions and 30,782
@@ -206,7 +215,10 @@ to the public research export merely because this ledger records them.
 - Complete private outputs/receipts and executed code remain in the active
   session artifact workspace under those versioned names and
   `survey-reconstruction-all-states-20261108-01`. They are not already published
-  website assets. Maintained code is now `scripts/civic_estimates.py` with focused
+  website assets. The complete permitted 98,019-byte ZIP and four CSV supplements
+  are now published in immutable companion release
+  `participation-civic-estimates-20261108-01`; the page integration is still under
+  verification. Maintained code is now `scripts/civic_estimates.py` with focused
   tests; it refuses fine-grained output inside Git repositories. The original
   executed source/test/verifier bytes are preserved with the private result.
   Aggregate/UI integration remains a next deliverable in

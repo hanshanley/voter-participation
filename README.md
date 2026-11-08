@@ -35,6 +35,19 @@ reported/intended choices are not administratively observed staying home or
 certified population estimates. See `SOURCES.md` and `REMAINING.md` for the
 weights, frame, geographic and remaining integration limitations.
 
+The historical AP VoteCast reader uses the privately qualified four-wave contract:
+
+```sh
+.venv/bin/python -m scripts.ap_votecast_estimates \
+  --contract "$AP_PRIVATE_CONTRACT" --output "$PRIVATE_AP_ANALYSIS_DIRECTORY"
+```
+
+It preserves all four poll-close/final state/national weight frames, nonvoters,
+unknown demographics, native encodings and inference exclusions. Repeated
+cross-sections are not a linked panel. `--years 2022 2024` can run selected waves
+without repeating successful reductions. The full-frame weight total is named
+`weight`; the distinct source weight variable is `weight_field`.
+
 ## Reproduce
 
 ```sh
