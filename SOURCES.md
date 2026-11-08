@@ -25,6 +25,43 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Florida statewide registration-frame comparison
+
+The [complete version-04 control package](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-04/complete-analysis.zip)
+adds the already-held immutable Florida numerical source to the complete
+51-state/D.C. query. All 50 unaffected state rows, 19 prior controls and eight
+prior scenarios remain identical. There are now 20 native observations,
+14 selected references and nine conditional statewide registration frames.
+
+Florida's separate native TOTAL reconciles all 67 counties and 680 cells:
+8,335,497 reported participants / 13,704,495 eligible active registrations,
+native 60.82%. The register is the source October 5 deadline/report-generation
+frame; native update time/timezone and statewide completion flags remain null.
+Sixty counties retain unfinished provisional and 64 unfinished overseas flags.
+Native Voter Turnout remains reported participants, not an automatically
+qualified generic cast-ballot counter. Original generic/map approval stays false.
+
+Existing Civic weights (4,180 Florida cases; 54.5488788613% modeled share)
+give **7,475,648.38 conditional modeled participant register units** and
+**6,228,846.62 modeled nonparticipant units**. Native-minus-model is
+859,848.62, separately labeled. Exchangeability to this register is unvalidated;
+these are not observed staying home, demographic populations, independent
+population validation or county/precinct allocations. No source reweighting,
+outcome fit or confidence interval is applied.
+
+Immutable release `438515810`, tag `participation-state-controls-20261108-04`,
+has nine complete assets verified against full authenticated draft and anonymous
+published bytes. ZIP 20,157,249 bytes / 23 members, SHA-256
+`99bad46c6c8142c8a92dd0a60f1863929b9ecaf930b290a0aec9fd3f3d3ae101`.
+All sufficient permitted inputs, native numerical source, complete queries,
+code and 21 tests are included. Independent verification passed 4,165 checks;
+two network/external-execution-blocked reproductions byte-match every member
+and the full ZIP. Receipts: `florida-state-controls-immutable-release-01.json`
+and `florida-state-controls-independent-verification-01.json`.
+The recorded DOS generic turnout-index 403 remains stopped; no new acquisition,
+private records, acquisition headers or compiled publisher app code.
+This is a research download, not a new website view; accepted `96d7257` remains.
+
 ## Website Methods and GitHub documentation
 
 The website's Methods tab is now a **106-word estimation overview**, not a

@@ -21,7 +21,7 @@ are not automatically compatible populations.
 
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
-| Current state controls | All state/D.C. decisions, native denominators and qualified conditional scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-03/complete-analysis.zip) |
+| Current state controls | All state/D.C. decisions, native denominators and conditional scenarios, including the separate Florida participant comparison | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-04/complete-analysis.zip) |
 | Historical administrative controls | Source-specific 2018-2026 comparisons, holds and registration-frame scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip) |
 | Historical EAC state controls | Complete state/year grid, selected native references and separate Alaska scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-eac-state-controls-20261108-01/complete-analysis.zip) |
 | Wyoming statistics | Native 1978-2026 primary/general statistics and same-type comparisons | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-wyoming-statistics-20261108-01/complete-analysis.zip) |
@@ -44,6 +44,7 @@ redistributed. Their public packages use reviewed aggregate inputs.
 Current links above select reviewed versions, not replacements of older releases.
 The earlier state-control [version 01](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-01)
 and [version 02](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-02),
+state-control [version 03](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-03),
 and historical-control [version 01](https://github.com/hanshanley/margin_of_error/releases/tag/participation-historical-controls-20261108-01),
 remain available.
 

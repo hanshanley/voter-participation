@@ -3,7 +3,7 @@
 import argparse
 from collections import Counter, defaultdict
 import csv
-from decimal import Decimal, localcontext
+from decimal import Decimal, ROUND_HALF_UP, localcontext
 import gzip
 import hashlib
 import io
@@ -28,6 +28,9 @@ EVIDENCE = {
     "id-2026-held-separate-ballot-report": ("ID", "state", "reported_cast_ballots", "unqualified_county_registration_disagreement"),
     "ri-2026-held-all-locality-ballots": ("RI", "state", "reported_cast_ballots", "native_state_totalVoters_registration_definition_unqualified"),
     "dc-2026-held-citywide-ballots": ("DC", "state", "reported_cast_ballots", "registered_voters_source_definition"),
+    "fl-2026-held-statewide-eligible-active-register": (
+        "FL", "state", "native_reported_participants_ballot_defined",
+        "eligible_active_registered_voters_deadline_20261005_report_frame"),
 }
 REGISTERED = {
     "registered_voters_source_definition", "active_and_inactive_registered_voters",
@@ -35,6 +38,7 @@ REGISTERED = {
     "native_totalRegisteredVoters_definition_unqualified",
     "municipal_source_registered_voters_active_inactive_unspecified",
     "native_state_totalVoters_registration_definition_unqualified",
+    "eligible_active_registered_voters_deadline_20261005_report_frame",
 }
 HOUSE_OFFICE = "U.S. House district contests aggregated within state"
 INPUTS = {
@@ -44,6 +48,126 @@ INPUTS = {
 }
 HELD_INPUT = "held-precinct-participation-controls.zip"
 ADDITIONAL_INPUTS = {"additional-reviewed-state-observations.json", "additional-state-control-sources.zip"}
+FLORIDA_INPUT = "florida-complete-native-query.zip"
+
+
+def florida_control(content):
+    with zipfile.ZipFile(io.BytesIO(content)) as archive:
+        expected = {
+            "source-qualification.json", "methods.json", "review-counties.py", "test_review_counties.py",
+            "county-participation.csv", "statewide-participation.csv", "native-county-catalog.csv",
+            "source-native-cells.csv", "audit.json", "checksums.json",
+        }
+        if set(archive.namelist()) != expected or len(archive.namelist()) != len(expected):
+            raise ValueError("Changed complete Florida public numerical input set")
+        native = {name: archive.read(name) for name in expected}
+    checksums = json.loads(native["checksums.json"])["files"]
+    if {row["path"] for row in checksums} != expected - {"checksums.json"}:
+        raise ValueError("Incomplete Florida native checksums")
+    for row in checksums:
+        raw = native[row["path"]]
+        if len(raw) != row["bytes"] or hashlib.sha256(raw).hexdigest() != row["sha256"]:
+            raise ValueError("Changed Florida native input bytes")
+    source = json.loads(native["source-qualification.json"])
+    if (source["election_date"] != "2026-11-03"
+            or source["source_as_of"] is not None or source["source_timezone"] is not None
+            or any(source[key] is not False for key in
+                   ("generic_turnout_approved", "county_fips_join_approved", "map_approved", "certified"))
+            or source["headers"][1:4] != [
+                "Voter Turnout", "Eligible Active Registered Voters", "Turnout Percentage"]
+            or source["source_definition"]["native_registration_deadline_date"] != "2026-10-05"):
+        raise ValueError("Changed Florida native frame, clock or approval contract")
+
+    def rows(name):
+        return list(csv.DictReader(io.StringIO(native[name].decode())))
+
+    counties, statewide = rows("county-participation.csv"), rows("statewide-participation.csv")
+    cells, catalog = rows("source-native-cells.csv"), rows("native-county-catalog.csv")
+    source_rows = source["county_rows"] + [source["statewide_row"]]
+    if (len(counties) != 67 or len(statewide) != 1 or len(cells) != 680 or len(catalog) != 67
+            or len(source_rows) != 68 or statewide[0]["native_county"] != "TOTAL"
+            or len({row["native_county"] for row in counties}) != 67
+            or {row["county_literal"] for row in catalog} != {row["native_county"] for row in counties}):
+        raise ValueError("Changed complete Florida county/state inventory")
+    completion = []
+    flag_fields = (
+        "native_precincts_completed", "native_vote_by_mail_completed", "native_early_voting_completed",
+        "native_provisional_completed", "native_10_day_overseas_completed",
+    )
+    for ordinal, (row, source_row) in enumerate(zip(counties + statewide, source_rows)):
+        if len(source_row) != 10 or source_row[0]["text"] != row["native_county"]:
+            raise ValueError("Changed Florida native row identity")
+        participant, registered = (int(source_row[index]["text"].replace(",", "")) for index in (1, 2))
+        if (participant != int(row["reported_participants"])
+                or registered != int(row["eligible_active_registered_voters"])
+                or registered <= 0 or not 0 <= participant <= registered
+                or row["source_as_of"] or row["source_timezone"] or row["native_fips"]
+                or row["analysis_rate_approved"] != "False" or row["map_approved"] != "False"):
+            raise ValueError("Changed Florida native counts, missingness or approvals")
+        with localcontext() as context:
+            context.prec = 80
+            percentage = 100 * Decimal(participant) / registered
+            if percentage.quantize(Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(
+                    source_row[3]["text"].rstrip("%")):
+                raise ValueError("Florida native percentage/count disagreement")
+        flags = []
+        for column, cell in enumerate(source_row):
+            frozen = cells[ordinal * 10 + column]
+            if (int(frozen["source_row_ordinal"]) != ordinal or int(frozen["column_ordinal"]) != column
+                    or frozen["literal_text"] != cell["text"]
+                    or json.loads(frozen["native_span_classes"]) != cell["span_classes"]
+                    or json.loads(frozen["declared_hrefs"]) != cell["hrefs"]):
+                raise ValueError("Changed Florida native cell or status")
+            if column >= 5:
+                classes = cell["span_classes"]
+                if ordinal < 67:
+                    if classes not in ([["Y"]], [["N"]]):
+                        raise ValueError("Invalid Florida literal completion flag")
+                    flag = classes[0][0]
+                else:
+                    if classes not in ([], [[]]):
+                        raise ValueError("Do not invent Florida statewide completion")
+                    flag = None
+                key = flag_fields[column - 5]
+                if row[key] != (flag or ""):
+                    raise ValueError("Changed Florida native completion query")
+                flags.append(flag)
+        if ordinal < 67:
+            completion.append(dict(county=row["native_county"], flags=flags))
+    total = statewide[0]
+    numerator, denominator = int(total["reported_participants"]), int(total["eligible_active_registered_voters"])
+    if (sum(int(row["reported_participants"]) for row in counties) != numerator
+            or sum(int(row["eligible_active_registered_voters"]) for row in counties) != denominator):
+        raise ValueError("Florida county sums differ from separate statewide total")
+    with localcontext() as context:
+        context.prec = 80
+        rate = str(100 * Decimal(numerator) / denominator)
+    reconciliation = dict(
+        state_code="FL", year=2026, native_counties=67, native_cells=680,
+        native_reported_participants=numerator, native_eligible_active_registered=denominator,
+        native_turnout_percentage=total["native_turnout_percentage"],
+        native_participants_per_eligible_active_registered_pct=rate,
+        native_source_as_of=None, native_source_timezone=None,
+        source_registration_definition=source["source_definition"],
+        source_status=source["source_status"], county_completion_flags=completion,
+        native_statewide_completion_flags=[None] * 5,
+        county_sums_equal_separate_statewide_total=True,
+        native_generic_turnout_approval=False, native_map_approval=False,
+        participants_not_relabelled_as_generic_cast_ballot_counter=True,
+        county_survey_allocations=0,
+    )
+    observation = dict(
+        id="fl-2026-held-statewide-eligible-active-register", jurisdiction="Florida",
+        scope="statewide separate native TOTAL; all 67 county sums reconcile",
+        numerator=numerator, denominator=denominator,
+        measure="native Voter Turnout reported participants; FAQ ballot definition retained",
+        denominator_label="Eligible Active Registered Voters; source deadline October 5, 2026 at report generation",
+        source_time_label="Native update time/timezone missing; held November 6 snapshot, not an as-of clock",
+        source_url=source["source_url"], status=source["source_status"],
+        scope_notes="Native statewide completion flags are blank; provisional/overseas county reporting unfinished."
+        " Current-report registration frame is not final or independently matched to Civic."
+        " Generic/map approval remains false; no county or demographic survey allocation.")
+    return observation, reconciliation
 
 
 def json_bytes(value):
@@ -373,7 +497,8 @@ def export(inputs, output):
         raise ValueError("Refusing to overwrite an existing analysis")
     manifest = json.loads((inputs / "source-manifest.json").read_bytes())
     if (set(manifest["inputs"]) not in (
-            INPUTS, INPUTS | {HELD_INPUT}, INPUTS | {HELD_INPUT} | ADDITIONAL_INPUTS)
+            INPUTS, INPUTS | {HELD_INPUT}, INPUTS | {HELD_INPUT} | ADDITIONAL_INPUTS,
+            INPUTS | {HELD_INPUT} | ADDITIONAL_INPUTS | {FLORIDA_INPUT})
             or manifest.get("original_raw_survey_or_voter_records_included") is not False):
         raise ValueError("Unapproved or nonpublic aggregate input set")
     native = {}
@@ -401,6 +526,10 @@ def export(inputs, output):
                 or len(additional["observations"]) != 4):
             raise ValueError("Changed additional reviewed state-control contract")
         evidence["observations"].extend(additional["observations"])
+    florida = None
+    if FLORIDA_INPUT in native:
+        observation, florida = florida_control(native[FLORIDA_INPUT])
+        evidence["observations"].append(observation)
     files, summary = build(
         json.loads(native["civic-selected-aggregates.json"]), json.loads(native["uf-turnout.json"]),
         json.loads(native["published-reporting-controls.json"]),
@@ -409,6 +538,44 @@ def export(inputs, output):
         files["complete-held-source-reconciliation.json"] = json_bytes(reconciliation)
     if additional is not None:
         files["complete-additional-state-source-reconciliation.json"] = json_bytes(additional["reconciliation"])
+    if florida is not None:
+        files["complete-florida-native-source-reconciliation.json"] = json_bytes(florida)
+        scenario = next(row for row in csv.DictReader(io.StringIO(
+            files["complete-conditional-registered-scenarios.csv"].decode())) if row["state_code"] == "FL")
+        with localcontext() as context:
+            context.prec = 80
+            comparison = dict(
+                year=2026, state_code="FL", control_id=scenario["control_id"],
+                native_measure="Voter Turnout; source-defined reported participants",
+                native_reported_participants=florida["native_reported_participants"],
+                native_eligible_active_registered=florida["native_eligible_active_registered"],
+                native_turnout_percentage=florida["native_turnout_percentage"],
+                native_participants_per_eligible_active_registered_pct=(
+                    florida["native_participants_per_eligible_active_registered_pct"]),
+                native_source_as_of=None, native_source_timezone=None,
+                native_registration_deadline="2026-10-05",
+                native_statewide_completion_qualified=False,
+                native_participants_are_generic_cast_ballot_counter=False,
+                civic_source_n=scenario["civic_source_n"], civic_weight=scenario["civic_weight"],
+                civic_modeled_voter_weight=scenario["civic_modeled_voter_weight"],
+                civic_modeled_nonvoter_weight=scenario["civic_modeled_nonvoter_weight"],
+                conditional_modeled_voter_count=scenario["conditional_modeled_voter_count"],
+                conditional_modeled_nonvoter_count=scenario["conditional_modeled_nonvoter_count"],
+                native_participants_minus_conditional_modeled_voter_count=str(
+                    Decimal(florida["native_reported_participants"])
+                    - Decimal(scenario["conditional_modeled_voter_count"])),
+                assumption_validated=False, independent_population_validation=False,
+                observed_staying_home=False, demographic_or_local_survey_allocation=False,
+            )
+        files["complete-florida-native-state-comparison.csv"] = csv_bytes([comparison])
+        summary["florida_native_participant_comparison_rows"] = 1
+        summary["notes"].append(
+            "Florida's native Voter Turnout and eligible-active register are retained with "
+            "the source October 5 deadline/report-generation frame, missing native clock and "
+            "unfinished county ballot flags. Native participant/model comparison is separate "
+            "from generic cast-ballot controls; no map, certification, group population or "
+            "independent Civic-frame qualification is granted.")
+        files["summary.json"] = json_bytes(summary)
     files.update({"inputs/" + name: content for name, content in native.items()})
     files["inputs/source-manifest.json"] = json_bytes(manifest)
     files["scripts/participation_controls.py"] = Path(__file__).read_bytes()

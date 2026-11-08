@@ -1,5 +1,6 @@
 import csv
 import gzip
+import hashlib
 import io
 import json
 from pathlib import Path
@@ -7,7 +8,7 @@ import tempfile
 import unittest
 import zipfile
 
-from scripts.participation_controls import HOUSE_OFFICE, build, export, held_controls
+from scripts.participation_controls import HOUSE_OFFICE, build, export, florida_control, held_controls
 
 
 STATES = "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY".split()
@@ -71,7 +72,99 @@ def held_archive(hi_pdf_ballots=600, wy_registration="", mn_all_reported=False):
     return output.getvalue()
 
 
+def florida_archive(clock=None, state_flag=None, first_count=10):
+    headers = [
+        "County SOE Website", "Voter Turnout", "Eligible Active Registered Voters",
+        "Turnout Percentage", "Precincts Reporting", "Precincts Completed",
+        "Vote-by-Mail Ballots Completed", "Early Voting Ballots Completed",
+        "Provisional Ballots Completed", "10-day Overseas Vote-by-Mail Completed",
+    ]
+    source_rows, query, cells, catalog = [], [], [], []
+    flags = ("native_precincts_completed", "native_vote_by_mail_completed",
+             "native_early_voting_completed", "native_provisional_completed",
+             "native_10_day_overseas_completed")
+    for ordinal in range(68):
+        county = ordinal < 67
+        name = "county-" + str(ordinal) if county else "TOTAL"
+        count = (first_count if ordinal == 0 else 10) if county else 670
+        register = 100 if county else 6700
+        status = ["Y", "Y", "Y", "N", "N"] if county else [state_flag] * 5
+        texts = [name, format(count, ","), format(register, ","), f"{count}%" if county else "10%",
+                 "100%", "", "", "", "", ""]
+        source_row = [dict(text=text, hrefs=[], span_classes=(
+            [[status[column - 5]]] if column >= 5 and status[column - 5] else []))
+            for column, text in enumerate(texts)]
+        source_rows.append(source_row)
+        row = dict(native_county=name, native_county_code="ABC" if county else "",
+                   reported_participants=count, eligible_active_registered_voters=register,
+                   native_turnout_percentage=texts[3], independently_derived_registered_fraction_percent="unused",
+                   native_precincts_reporting="100%", **dict(zip(flags, status)),
+                   source_as_of=None, source_timezone=None, native_fips=None,
+                   analysis_rate_approved=False, map_approved=False)
+        query.append(row)
+        if county:
+            catalog.append(dict(county_literal=name))
+        for column, cell in enumerate(source_row):
+            cells.append(dict(
+                source_row_ordinal=ordinal, column_ordinal=column, literal_text=cell["text"],
+                native_span_classes=json.dumps(cell["span_classes"]),
+                declared_hrefs=json.dumps(cell["hrefs"])))
+
+    def csv_content(rows):
+        output = io.StringIO(newline="")
+        writer = csv.DictWriter(output, fieldnames=list(rows[0]), lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+        return output.getvalue().encode()
+
+    source = dict(
+        election_date="2026-11-03", source_as_of=clock, source_timezone=None,
+        generic_turnout_approved=False, county_fips_join_approved=False,
+        map_approved=False, certified=False, headers=headers,
+        source_definition=dict(native_registration_deadline_date="2026-10-05"),
+        county_rows=source_rows[:67], statewide_row=source_rows[67],
+        source_url="https://official.example/florida", source_status="Unofficial Election Night Results",
+    )
+    files = {name: b"{}" for name in ("methods.json", "audit.json",
+                                     "review-counties.py", "test_review_counties.py")}
+    files.update({
+        "source-qualification.json": json.dumps(source).encode(),
+        "county-participation.csv": csv_content(query[:67]),
+        "statewide-participation.csv": csv_content(query[67:]),
+        "source-native-cells.csv": csv_content(cells),
+        "native-county-catalog.csv": csv_content(catalog),
+    })
+    files["checksums.json"] = json.dumps(dict(files=[
+        dict(path=name, bytes=len(raw), sha256=hashlib.sha256(raw).hexdigest())
+        for name, raw in files.items()])).encode()
+    output = io.BytesIO()
+    with zipfile.ZipFile(output, "w") as archive:
+        for name, raw in files.items():
+            archive.writestr(name, raw)
+    return output.getvalue()
+
+
 class ParticipationControlsTests(unittest.TestCase):
+    def test_florida_native_parser_preserves_clock_and_unfinished_flags(self):
+        observation, reconciliation = florida_control(florida_archive())
+        self.assertEqual(observation["numerator"], 670)
+        self.assertEqual(observation["denominator"], 6700)
+        self.assertIsNone(reconciliation["native_source_as_of"])
+        self.assertEqual(reconciliation["native_statewide_completion_flags"], [None] * 5)
+        self.assertTrue(all(row["flags"][-2:] == ["N", "N"]
+                            for row in reconciliation["county_completion_flags"]))
+        self.assertFalse(reconciliation["native_generic_turnout_approval"])
+
+    def test_florida_native_parser_rejects_invented_clock_or_state_completion(self):
+        for content in (florida_archive(clock="new-clock"), florida_archive(state_flag="Y")):
+            with self.subTest():
+                with self.assertRaises(ValueError):
+                    florida_control(content)
+
+    def test_florida_native_parser_does_not_repair_conflicting_county_and_state_totals(self):
+        with self.assertRaisesRegex(ValueError, "county sums differ"):
+            florida_control(florida_archive(first_count=11))
+
     def test_conditional_counts_reconcile_and_observed_difference_not_fitted_away(self):
         files, summary = build(*data())
         row = read(files["complete-conditional-registered-scenarios.csv"])[0]
@@ -91,6 +184,40 @@ class ParticipationControlsTests(unittest.TestCase):
         self.assertEqual(row["uf_vep_estimate"], "900")
         self.assertEqual(row["control_registered_denominator"], "")
         self.assertEqual(row["conditional_registered_frame_scenario_available"], "False")
+
+    def test_florida_native_participants_support_only_a_conditional_register_scenario(self):
+        civic, uf, reporting, evidence, house = data()
+        evidence["observations"] = [dict(
+            id="fl-2026-held-statewide-eligible-active-register", scope="statewide native TOTAL",
+            jurisdiction="Florida", source_url="https://official.example/florida",
+            measure="native Voter Turnout", numerator=650, denominator=1000,
+            denominator_label="Eligible Active Registered Voters; source deadline frame",
+            source_time_label="Native update time missing", status="unofficial")]
+        files, summary = build(civic, uf, reporting, evidence, house)
+        row = next(row for row in read(files["complete-conditional-registered-scenarios.csv"])
+                   if row["state_code"] == "FL")
+        self.assertEqual(row["conditional_modeled_voter_count"], "600.0")
+        self.assertEqual(row["conditional_modeled_nonvoter_count"], "400.0")
+        self.assertEqual(row["reported_cast_ballot_measure_control"], "")
+        self.assertEqual(row["reported_cast_minus_conditional_modeled_voter_count"], "")
+        self.assertEqual(row["control_native_status"], "unofficial")
+        self.assertEqual(row["assumption_validated"], "False")
+        state = next(row for row in read(files["complete-state-control-query.csv"])
+                     if row["state_code"] == "FL")
+        self.assertEqual(state["control_native_numerator"], "650")
+        self.assertEqual(state["reported_cast_ballots"], "")
+        self.assertEqual(state["reported_ballots_per_native_registered_denominator_pct"], "")
+        self.assertNotIn("FL", summary["official_cast_control_states"])
+
+    def test_florida_zero_register_never_creates_a_scenario(self):
+        civic, uf, reporting, evidence, house = data()
+        evidence["observations"] = [dict(
+            id="fl-2026-held-statewide-eligible-active-register", scope="statewide native TOTAL",
+            jurisdiction="Florida", source_url="https://official.example/florida",
+            measure="native Voter Turnout", numerator=0, denominator=0,
+            denominator_label="Eligible active register", source_time_label="Missing", status="unofficial")]
+        with self.assertRaisesRegex(ValueError, "Invalid native registration denominator"):
+            build(civic, uf, reporting, evidence, house)
 
     def test_same_north_carolina_source_not_added_twice(self):
         civic, uf, reporting, evidence, house = data()
