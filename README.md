@@ -41,6 +41,8 @@ some historical/local coverage remain unresolved.
 
 ## Documentation
 
+The website keeps Methods short; details live here.
+
 | Read | Purpose |
 |---|---|
 | [Methods](METHODOLOGY.md) | Estimands, weighted rates, conditional counts, historical tests and uncertainty. |

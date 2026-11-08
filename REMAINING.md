@@ -41,17 +41,18 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
-**Immediate user priority:** finish the short website estimation overview and
-the organized GitHub methods documentation before another data increment.
-The website candidate is locally tested but not yet deployed. Preserve the
-accepted `5e11695` production baseline until exact replacement acceptance.
-The GitHub overview, methods, data catalog and reproduction guide are separate
-from the detailed source ledger and dated package notes.
+**Methods/documentation increment complete:** the website's short estimation
+overview and organized GitHub guides are published and exact-production verified.
+Accepted website revision is `96d7257`; the earlier `5e11695` repair remains a
+preserved baseline. Resume genuinely unresolved statewide/group denominator,
+return-reconciliation and election-year geography evidence below. Do not repeat
+the completed Methods build/publication or prior successful research packages.
+The broader project remains open; the single 15-minute continuation stays active.
 
 | Priority / task | Status | Required result |
 |---|---|---|
-| Short website Methods overview | In progress; publication pending | Explain weighted rates, matched denominators, historical checks and supported geography in under 180 words, with a direct GitHub methods link. Keep the legacy archive hidden by default and preserve every existing result, anchor, complete download and tab selection. Require exact fresh Pages artifact and desktop/mobile/no-JavaScript production checks; do not claim local work is live. |
-| Organized GitHub methods | Documentation prepared; scoped publication pending | Concise README and current METHODOLOGY, separate data/reproduction guides, indexed source ledger, preserved prior package notes and original research protocol. Explain actual estimators and conditional assumptions; proposed/failed models remain clearly identified. Verify scoped remote files and all documentation links before the website points to them. |
+| Short website Methods overview | Complete; exact-production verified | Live `96d7257`, Pages `42517487539`, artifact `13632291877`. A 106-word estimation overview links directly to GitHub methods; archive hidden by default. All 24 production modes, 51 targeted Node tests, four build tests and credential checks pass. Actual downloaded artifact content 981,248,921 / tar 983,756,800 bytes; all 3,107 old links, 263 IDs, 436 complete relocations and pinned data preserved. Governing `methods-overview-production-acceptance-01.json`. No new estimates or sources. |
+| Organized GitHub methods | Complete; published and remotely verified | Concise README and current METHODOLOGY, separate data/reproduction guides, indexed source ledger, preserved package notes and original protocol; initial revision `4546524`. All 64 documentation links/anchors, reader/test names and 11 complete immutable download assets verified. Methods explain actual estimators and conditional assumptions; proposed/failed models stay explicit. Both old local HEADs/indices/unrelated files preserved. No need to repeat this documentation reorganization. |
 | User-reported website navigation and missing-detail repair | Complete and exact-production verified | Live revision `5e11695`, Pages `42502356194`, artifact `13625184708`. Per-tab selections persist; Precincts uses loaded multistate coverage and retains NC specialization; missing participation detail exposes separate county candidate counts; Methods is grouped. All seven tab/failure/no-JS configurations, three fallback configurations, existing survey/landing checks, 62 outline checks and exact 9,718 TX / 4,105 MN precinct-value checks pass. All old links, IDs, full downloads and data remain. Do not repeat this completed repair; resume the held EAC historical controls below. |
 | 1. Download Pushbuild national CSV snapshot | Acquired and byte-verified | Complete pinned archive and all 40 state CSVs held; proceed to candidate/count/geography controls. File presence is not county coverage. |
 | 2. Acquire all declared Senate race files | Acquired | All 70 race responses plus national index, original comparison CSV and receipts held. No more duplicate acquisition is needed for this snapshot. |

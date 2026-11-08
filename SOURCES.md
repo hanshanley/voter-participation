@@ -13,7 +13,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
-| Website acceptance records | [Source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+| Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
 
 This is the canonical **source-family ledger** for the research project and its
 [companion website](https://github.com/hanshanley/margin_of_error). It includes
@@ -24,6 +24,31 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## Website Methods and GitHub documentation
+
+The website's Methods tab is now a **106-word estimation overview**, not a
+source inventory. It explains weighted rates, matching denominators, historical
+checks and supported geography, with a direct link to `METHODOLOGY.md`.
+Legacy detailed anchors remain accessible, but normal Methods navigation hides
+the archive. GitHub now separates the concise README and current methods from
+the data catalog, reproduction guide, indexed source ledger, dated package
+notes and original research protocol. Initial documentation revision `4546524`
+preserves all previous complete-download links.
+
+Accepted website revision `96d725787aeaab4ac611a2eecaf47f212a16b57e`, Pages
+`42517487539`, deployed artifact `13632291877`: the downloaded ZIP hash and
+streamed native tar verify actual content **981,248,921 bytes** and tar
+**983,756,800 bytes**. All 24 production browser modes pass, including desktop,
+mobile, no-JavaScript, legacy links, source failures and every AP public row.
+All 3,107 prior links, 263 IDs, 436 complete relocations, pinned data and the
+original preview remain. Both credential workflows pass; old dirty local HEADs,
+real indices and unrelated files are preserved. No estimates, source data or
+release assets changed. Governing receipts:
+`methods-overview-production-acceptance-01.json`,
+`methods-overview-native-pages-artifact-proof-01.json` and
+`methods-research-docs-push-01.json`. This increment is complete; broader research
+remains open under the existing single 15-minute continuation.
 
 ## Historical CPS group registration and response frames
 
