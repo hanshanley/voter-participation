@@ -29,6 +29,7 @@ This document itself does not install a cron job or enable a website workflow.
 | Both exact Senate feeds | All 35 civicAPI and all 35 CNN files acquired successfully, plus the full Transparency Cascade CSV. Initial candidate-count checks below are computed, not merely planned. |
 | Civic numerical estimates | Computed for all 50 states plus a separately labeled pooled-source scope: 1,954 participation rows, 97,700 complete joint cells, 3,908 signed decompositions, and 30,782 separate likelihood cells. Independent native verification passed 246,204 checks. These remain private exploratory/source-weighted estimates, not administratively validated turnout. |
 | New descriptive House comparison | Complete 3,143-row query saved; 3,083 positive-vote pairs, 2,776 comparisons after known-source screens. Native exact Pushbuild House subset: 8,509 candidate rows in 35 states; 702 candidate county sums match their source state control. Rounded-share comparisons and exact candidate counts remain separate. |
+| Exact historical/current House join | Computed from actual county-district-candidate inputs: 3,152 county records, 2,639 positive-count pairs, 2,228 passing known-source screens in 38 states, and 5,192 county-district records. Independent native verification passed 124,804 checks. The complete 1,466,353-byte, 18-member ZIP and all seven supplements are published immutably; nine tests and two network-blocked, byte-identical reproductions passed. |
 | Existing current counts | National preliminary state turnout estimates, a 49-state exact county House snapshot, and selected primary state/local participation observations already exist. Reuse them. |
 | Existing live maps/safeguards | Reported state-outline/map fixes and unsupported-population-estimate safeguards are already live. Do not reopen completed map work as a substitute for research. |
 
@@ -43,11 +44,11 @@ every comparison or redistribution is approved.
 | 1. Download Pushbuild national CSV snapshot | Acquired and byte-verified | Complete pinned archive and all 40 state CSVs held; proceed to candidate/count/geography controls. File presence is not county coverage. |
 | 2. Acquire all declared Senate race files | Acquired | All 70 race responses plus national index, original comparison CSV and receipts held. No more duplicate acquisition is needed for this snapshot. |
 | 3. Reconcile exact 2026 returns | Initial Senate checks computed; gaps open | 34,492 native candidate-unit rows retained. Civic county/parish/city selection yields 2,442 records/34 states, six missing FIPS; 7,165 cross-source candidate counts equal, 215 differ. Four RI gaps resolve to the explicit 755-vote Overseas/Federal unit, not county allocation. Of 234 civic candidate controls, 229 now reconcile, four AK noncounty controls are held, and the ME 882-write-in county gap remains. Preserve all unmatched keys/clocks. |
-| 4. Build the actual 2024-to-2026 House panel | Descriptive comparison computed; exact historical join next | County-first 2,776 screened share comparisons and full exclusion query are saved. Next join existing exact 2024/MEDSL counts to qualified 2026 county/district pieces, preserving contested/redistricting/geography exceptions rather than inferring exact counts from shares. |
+| 4. Build the actual 2024-to-2026 House panel | Exact source-count join computed, independently verified and published | Complete 3,152-county/5,192-fragment query, including all 2,639 positive pairs and 2,228 known-screen passes. Preserve all exclusions; same district labels do not establish matched boundaries. Next qualify remaining source/control and boundary exceptions and use the exact contest context alongside actual participation controls, not as measured turnout. |
 | 5. Finish five-wave survey numerical outputs | Computed and independently verified | Civic plus AP 2018/2020/2022/2024 tables now exist. AP covers 532,866 native rows and 12,024 aggregate rows across all four source weight frames; 132,196 independent count/weight/rate checks passed. Preserve the 2018 inference qualifier, 2022 DE/WV holds and absent 2022 RACETH5. Historical public selection/presentation remains next; do not re-download or repeat these successful reductions. |
 | 6. Reconstruct the margin-change components | Civic computed and independently verified | Both 2024-President-to-modeled-2026-House and 2022-House-to-modeled-2026-House have switching, modeled nonparticipation, no-prior-contest-vote entry, other, unresolved and denominator components. All 714 separate demographic partitions reconcile. Do not call these original-coalition population or causal persuasion estimates. |
 | 7. Tie returns and participation controls to estimates | Pending panel and survey outputs | Compare source-weighted survey estimates with observed contest/participation counts without pretending outcome calibration is independent validation. Report unmatched scopes, conditional scaling and sensitivity instead of fitting away discrepancies. |
-| 8. Integrate and verify supported estimates | Complete Civic aggregate release published; website verification active | Maintained Civic/AP code is in the research source tree. Civic complete 98,019-byte aggregate ZIP and four CSV supplements are published immutably; the existing folded research view is implemented on a review branch, built successfully and under browser verification. Actual main publication/live checks are still required. Do not add front-page experimental clutter. |
+| 8. Integrate and verify supported estimates | Civic main published and actual Pages deployment passed; production-browser verification active | Maintained Civic/AP code is in the research source tree. Civic complete 98,019-byte aggregate ZIP and four CSV supplements are published immutably. Main `96cc899` deployed with actual payload 997,445,043 bytes and tar 999,956,480 bytes; production HTML matches the exact tested candidate. Finish actual browser/artifact acceptance before claiming full live verification. Historical AP public selection/presentation remains next. Do not add front-page experimental clutter. |
 | 9. Close statewide historical/2026 holes | Ongoing, alongside estimates | Actual ballots-cast controls, group denominators, histories and matched geography. Do not wait for universal administrative validation to produce explicitly assumption-labeled estimates. |
 | 10. Add additional source-supported precinct detail | Secondary to national/state work | Reuse existing Minnesota/Hawaii/Wyoming originals first; get missing whole-state releases/layouts rather than restarting county-by-county research. Local leads below are useful additions, not the critical path. |
 
@@ -68,6 +69,19 @@ The corrected four-wave AP numerical outputs are
 `ap-votecast-participation-estimates-05/`, with independent proof
 `ap-votecast-four-wave-independent-verification-01.json`; earlier AP drafts are
 preserved but are not the current verified schema.
+
+The exact House result is `house-exact-panel-20261108-03/`; `01` and `02`
+are preserved predecessors. All seven numerical query files are byte-identical
+to the independently verified `02` result; `03` adds the complete offline
+reproduction interface. The full public download is
+[immutable House release](https://github.com/hanshanley/margin_of_error/releases/tag/participation-house-exact-panel-20261108-01),
+not a metadata-only inventory. `scripts/house_panel.py` preserves all 11,782
+historical source rows (including six withheld), all 12,405 current county
+candidate rows, 34 historical no-ballot records and all 1,418 current candidate
+controls. Of those controls, 1,375 match arithmetically within the same source,
+18 have differing located/district scopes, seven lack located county rows,
+and 18 lack a matching provider district candidate. These are not independent
+outcome validation. All affected county comparisons remain screened out.
 
 ## Reconciliation holes that must remain visible
 

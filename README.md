@@ -48,6 +48,29 @@ cross-sections are not a linked panel. `--years 2022 2024` can run selected wave
 without repeating successful reductions. The full-frame weight total is named
 `weight`; the distinct source weight variable is `weight_field`.
 
+## Exact House source-count comparison
+
+The [complete versioned House analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-exact-panel-20261108-01/complete-analysis.zip)
+contains all pinned aggregate inputs, complete county and county-district
+queries, candidate controls, exclusions, code and tests. It includes 3,152 county
+records, 2,639 positive-count pairs and 2,228 comparisons passing known-source
+screens in 38 states. These are candidate contest votes, not ballots, turnout or
+individual switching. Passing the screens does not certify complete coverage or
+matched district boundaries.
+
+After unpacking, reproduce without network access or additional packages:
+
+```sh
+python3 -m unittest discover -s tests -p test_house_panel.py
+python3 -m scripts.house_panel --inputs . --output reproduced
+```
+
+For a new source snapshot, use `--website-root "$EXACT_WEBSITE_CHECKOUT"`
+instead of `--inputs`. The reader verifies each input against that checkout's
+actual Git commit and refuses to overwrite an existing analysis. Missing counts,
+historical no-ballot races, withheld source rows, literal-party/fusion ambiguities
+and differing current candidate-control scopes remain explicit.
+
 ## Reproduce
 
 ```sh

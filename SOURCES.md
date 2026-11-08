@@ -206,6 +206,25 @@ to the public research export merely because this ledger records them.
   the known Alaska/Connecticut/uncontested screens. Its separate exact
   Pushbuild House query contains 8,509 candidate rows in 35 states; no exact
   candidate counts are inferred from the combined JSON's rounded shares.
+- Exact House join `house-exact-panel-20261108-03` separately uses the actual
+  reviewed 2024 MEDSL-origin candidate lines and 2026 county-district-candidate
+  counts from companion snapshot `20261107T125502Z`, pinned to website commit
+  `96cc899f6b1266baf6316a923ad9117cd5526e97`. Its complete query has 3,152 county
+  records, 2,639 positive-count pairs, 2,228 known-screen passes in 38 states,
+  5,192 county-district rows and all 1,418 candidate controls. It preserves six
+  withheld historical candidate rows, 34 historical unopposed/no-ballot records,
+  literal-party/group mismatches, fusion labels and unknown district boundaries.
+  The independent SQLite/Fraction verifier passed 124,804 native checks.
+  Maintained `scripts/house_panel.py` has nine focused tests; the complete
+  [immutable House ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-exact-panel-20261108-01/complete-analysis.zip)
+  is 1,466,353 bytes, 18 members, SHA-256
+  `8203d46e5ff10ce894aca498deb2558f783d261a116f2dac0311e58e8563c567`.
+  It includes all six pinned aggregate inputs, full queries, exclusions, code
+  and tests; all eight release assets were authenticated-draft and
+  anonymous-published byte-verified, and the published release is immutable.
+  Offline reproduction blocks network/DNS/external commands and byte-matches
+  every member and the complete ZIP under two hash seeds. Exact contest counts
+  are not ballots, turnout, individual switching or complete-source certification.
 - Senate initial controls retain every native candidate unit. The follow-up
   `senate-cross-source-reconciliation-02` explains four Rhode Island gaps with
   its explicit 755-vote Overseas/Federal bucket. This is not a county allocation.
@@ -279,6 +298,7 @@ No current-voter raking back to historical partisan composition.
 | Newly acquired MIT national snapshots | Private `medsl-2022-national-baseline-01/` and `medsl-2024-national-baseline-01/acquisition-01/` receipts, parsers and complete derived queries; migrate only public-safe artifacts after qualification |
 | Supplied survey capability/weight contracts | Private `user-provided-survey-readiness-01/` and per-study codebook/source receipts; raw files remain private |
 | New 2026 exact-count comparisons | Private `senate-civic-exact-20261108-01/`, `senate-cnn-exact-20261108-01/`, `pushbuild-national-2026-01/`, `user-2026-county-comparison-01/` |
+| Exact historical/current House join | `python3 -m scripts.house_panel --website-root "$EXACT_WEBSITE_CHECKOUT" --output "$NEW_OUTPUT"`; or unpack the complete immutable release and use `--inputs .` for offline reproduction. Full inputs, query/dispositions/control tables and source manifest are included. |
 
 ### Exact additional links supplied by the user
 
