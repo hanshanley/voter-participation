@@ -177,6 +177,38 @@ python3 -m unittest discover -s tests -p test_wyoming_participation_statistics.p
 python3 -m scripts.wyoming_participation_statistics --inputs inputs --output reproduced
 ```
 
+## Wyoming registration-snapshot scenarios
+
+The [complete registration/control analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-wyoming-registration-20261108-01/complete-analysis.zip)
+contains all 360 native county/state rows from 15 dated snapshots, 105
+county/state accounting checks, 24 registration-snapshot changes, two
+source-specific ballot comparisons, three conditional statewide scenarios
+and all 681 public-survey dispositions. All eight full assets are immutable
+and byte-verified. Seven tests, 4,885 independent checks and two network-blocked
+reproductions matched all 20 members and the complete ZIP.
+
+The general-election-labeled registers report 297,639 for November 8, 2022
+and 281,219 for November 3, 2026. **These are not qualified final election-time
+denominators.** Native party categories are retained only for source accounting,
+not inferred voting behavior. County counts receive no survey allocation.
+AP's 2022 final and poll-close weights remain separate from Civic 2026.
+Under unvalidated exchangeability to the exact 2026 register snapshot,
+Civic's approximately 69.39% modeled participation gives about 195,143
+modeled participants and 86,076 modeled nonparticipants. Those are conditional
+scenarios, not observed staying home or a cross-study turnout trend.
+Existing registration nulls, model shares and prior scenarios stay unchanged.
+
+After unpacking:
+
+```sh
+python3 -m unittest discover -s tests -p test_wyoming_registration_controls.py
+python3 -m scripts.wyoming_registration_controls --inputs inputs --output reproduced
+```
+
+These are complete research downloads. Integration of the three separately
+labeled scenarios into the existing folded view is the next bounded step;
+no new deployed view is claimed yet.
+
 ## Historical administrative comparisons
 
 The [complete historical control analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip)

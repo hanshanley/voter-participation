@@ -12,6 +12,64 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Wyoming declared registration reports and source-weighted scenarios
+
+Both newly acquired primary PDFs returned HTTP 200 on November 8, 2026,
+at 05:23 UTC:
+
+| Native report | Held bytes / SHA-256 | Scope |
+|---|---|---|
+| [November 3, 2026 register](https://sos.wyo.gov/Elections/Docs/VRStats/2026/26Nov3_GeneralElection_VR_Stats.pdf) | 106,133 / `1efb8228fa33e7a34c8b0754e5720f2fcad3e9e63869f28adfe579757e2c2d40` | One general-election-labeled snapshot, 23 counties and a separately declared state total of 281,219. |
+| [2022 annual report](https://sos.wyo.gov/Elections/Docs/VRStats/2022VR_stats.pdf) | 381,890 / `de446008b82813cfdd1427c8a03a7164a702683183ed5bebb4b0c0a88a4ed3ca` | Fourteen dated pages: 12 monthly, August 16 primary and November 8 general; the last reports 297,639. |
+
+Both PDF engines independently select the same 360 county/state records.
+Every row's six literal registration-party categories sum to its native total,
+and all 105 county-to-state column checks reconcile. Parents are never added
+to children. Native `Other*` and its former-party footnote remain source
+accounting, not a vote-choice alias or party-specific participation estimate.
+The general-election tables were also reviewed as rendered originals.
+Nonbreaking spaces in two monthly county labels are whitespace, not new units.
+
+Neither PDF declares active/inactive scope or inclusion of Election Day
+registrants. The 2022 general count equals the separate profile's explicitly
+day-before register, but equality is not independent validation or proof of a
+final electorate frame. The 2026 native HTTP Last-Modified is November 3 at
+13:36:20 UTC; this is a transport timestamp, not an asserted native count
+cutoff. Existing election-time registration denominators remain null.
+Ballot/register snapshot ratios are labeled arithmetic context, not
+registered-voter turnout. The -16,420 state registration-snapshot difference
+does not identify original-cohort loss, eligibility, deaths or migration.
+
+Maintained `scripts/wyoming_registration_controls.py` joins only whole-state
+overall published aggregates to their same-year general-registration snapshot.
+It preserves AP 2022 `FINALVOTE_STATE_WEIGHT` and `POLLCLOSE_STATE_WEIGHT`
+as two different frames, plus Civic 2026. Civic's modeled share
+0.693917633232253022 yields conditional counts 195,142.82 / 86,076.18
+on the native 281,219 register. Exchangeability to that exact snapshot is
+unvalidated; model nonvoter is not administratively observed staying home.
+All model mass, including unknowns, stays in the denominator. No county or
+precinct gets a state survey propensity, no cross-study model-count change
+or false confidence interval is inferred, and final weights may already use
+election outcomes. The positive-case support screen for AP and source-case
+screen for Civic are not a precision or privacy guarantee.
+
+The [complete immutable analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-wyoming-registration-20261108-01/complete-analysis.zip)
+is release `438053365`: 642,261 bytes, 20 members, SHA-256
+`0c1181e6106516c8b37eda7a10d0b2861a6c478d2de816280fa38d34dce1f273`.
+All eight full assets were authenticated-draft and anonymous-published
+byte-verified. It includes all originals used, both source-bound text
+selections, full unchanged public reference/survey inputs, all 360 native
+rows, 105 accounting rows, 24 snapshot changes, two source comparisons,
+three conditional rows and 681 public-aggregate dispositions, code and tests.
+Seven focused tests and 4,885 independent native/Fraction/source/archive
+checks passed. Both network/external-command-blocked reproductions matched
+every member and the complete ZIP. Prior inputs, weights, scenarios, source
+selections, registration nulls and immutable releases remain unchanged.
+Governing active-session receipts: `wyoming-registration-controls-verification-01.json`
+and `wyoming-registration-controls-immutable-release-01.json`.
+These outputs are published research downloads; a new folded-view integration
+has not yet passed production acceptance.
+
 ## Wyoming official historical statistics and registration-frame qualification
 
 The distinct primary [voter registration and turnout table](https://sos.wyo.gov/Elections/Docs/VoterProfile.pdf)
@@ -58,10 +116,10 @@ This is a research download; no new website view is claimed.
 Governing active-session receipts: `wyoming-statistics-verification-01.json`
 and `wyoming-statistics-immutable-release-01.json`.
 
-The index also declares a November 3, 2026 registration PDF and the 2022 annual
-registration report. Those links are leads, not acquired or qualified files.
-Review their native cutoffs/frames before any new denominator use; the
-historical table does not resolve final registration or precinct denominators.
+The index's November 3, 2026 registration PDF and 2022 annual report have now
+been acquired and qualified as distinct registration snapshots, as recorded
+above. Neither that increment nor the historical table resolves final
+registration or precinct denominators.
 
 ## Historical administrative participation comparison
 
