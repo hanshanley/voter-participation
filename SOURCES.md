@@ -67,8 +67,24 @@ every member and the complete ZIP. Prior inputs, weights, scenarios, source
 selections, registration nulls and immutable releases remain unchanged.
 Governing active-session receipts: `wyoming-registration-controls-verification-01.json`
 and `wyoming-registration-controls-immutable-release-01.json`.
-These outputs are published research downloads; a new folded-view integration
-has not yet passed production acceptance.
+The [three-frame folded view](https://www.themarginoferror.com/voter-participation/#participation-wyoming-registration)
+is now live in website revision `37f2c47bab5b915f18edde2075053d2679ed6b61`,
+actual Pages run `42451862788`, attempt 1, fresh artifact `13605868963`.
+Uploaded and deployed artifact IDs match; actual payload is 997,476,489 bytes,
+tar 999,987,200 bytes, with 12,800 bytes of strict tar headroom.
+Artifact digest:
+`sha256:6d9c1fc96553d2ecbe1ab893052ac2a98099fc7dddb5bb6ea5876b03a4e0c221`.
+All 24 production modes passed: the three new source-matched scenarios,
+seven native observations, every 602-row AP selection and existing Civic/
+landing/failure behavior. Four direct-link configurations also pass on desktop
+and mobile, with and without JavaScript. All 3,073 old links, 258 IDs and
+previous complete assets remain; eight new links bring complete downloads
+to 1,078. Only HTML changed (+5,321 bytes), SHA-256
+`38e0fc04c041596ce021b55b750f573ee1a958d5690e4800e78ae4583ddd70ef`.
+All other prepared bytes and served scripts/source pointers match; no client
+script, stylesheet or homepage card was added. Main/review credential runs
+`42451862725` / `42451774078` passed. Governing active-session receipt:
+`wyoming-registration-production-acceptance-01.json`.
 
 ## Wyoming official historical statistics and registration-frame qualification
 
@@ -177,8 +193,7 @@ harmonization, fixed-cohort participation, demographic allocation, causal
 decomposition or confidence interval is inferred. Eligibility/death/migration
 remain unknown.
 
-The administrative-history context, including the separate Wyoming statewide
-source selection, is live in website revision
+The separate Wyoming statewide source-selection update was accepted in website revision
 `24b89a991f149714068e54fbb91048ae1d2d5e02`, actual Pages run `42449476639`,
 attempt 1, fresh artifact `13604789540`. The uploaded/deployed artifact identity
 matches; its actual payload is 997,471,168 bytes and tar 999,987,200 bytes,
@@ -226,6 +241,41 @@ The version-02 website source-selection update is live and exact-production
 verified as described above; all first-version complete downloads remain
 available. Its distinct state-level qualification does not resolve the held
 county/precinct approval, registration or boundary questions.
+
+## Reusing already-held EAC originals for the next historical controls
+
+The existing November 4 acquisition predates the later denied native URL
+requests recorded below. Its saved `participation-methods/20261104T183000Z`
+source index and complete original-source archive hold the 2008-2024 EAVS
+inputs, including the 2018 CSV and 2020/2022/2024 ZIPs. The separate
+`participation-local/20261104T220000Z` export has 67,525 complete local
+observations and exact-identity registration joins. **Do not reacquire those
+files or retry the later denied URLs.** Their possession is not new proof
+of statewide completeness or source/model independence.
+
+The already-held jurisdiction time-series workbook is 135,971,213 bytes,
+SHA-256 `3fec2bbcb03fd32148d7213e04a6bdfc3ff38b0b83236824d4a5c7945451b169`,
+with the official guide also held. Its large workbook inspection is complete;
+reuse `eac-held-native-inspection-01.txt` / `eac-held-native-discovery-01.json`
+in the active session rather than repeating it. The exploratory zero-padding
+filter also accepts missing IDs: its count of 527 is **not qualified
+statewide coverage**. Use original IDs and native scope, not padded zeros.
+
+The existing local export has only 15 statewide-unit flags: Alaska's eleven
+2004-2024 rows, D.C. 2008, New Hampshire/Rhode Island 2008 and Maine 2014.
+Critically, Maine's state-labeled 776 count explicitly covers **UOCAVA only**;
+it must remain visible and held, never promoted to whole-state turnout.
+The guide also warns that the separate county-collapsed product divides
+cross-county jurisdiction counts equally. That product is not a native
+county panel and is not the jurisdiction-level input selected here.
+Counted-ballot, participation, registration and source-year definitions
+remain separate. No state survey propensity is allocated to local units.
+
+Next qualify the native rows, scope and denominator definitions against their
+bound originals, then produce complete matched/unmatched historical state-year
+queries and supported whole-state survey-frame scenarios. No new EAC
+statewide control, aggregation or conditional estimate is certified by this
+discovery alone.
 
 ## Status and source classes
 

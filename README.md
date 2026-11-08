@@ -205,9 +205,13 @@ python3 -m unittest discover -s tests -p test_wyoming_registration_controls.py
 python3 -m scripts.wyoming_registration_controls --inputs inputs --output reproduced
 ```
 
-These are complete research downloads. Integration of the three separately
-labeled scenarios into the existing folded view is the next bounded step;
-no new deployed view is claimed yet.
+The [three-frame view](https://www.themarginoferror.com/voter-participation/#participation-wyoming-registration)
+is live inside the existing folded historical research section. Website revision
+`37f2c47` passed all 24 production browser modes and four desktop/mobile
+direct-link configurations, including without JavaScript. All 3,073 prior
+links and 258 IDs remain, alongside all eight new full downloads. No client
+script, stylesheet or homepage card was added. These remain conditional
+source-frame scenarios, not observed participation or a harmonized trend.
 
 ## Historical administrative comparisons
 
