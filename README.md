@@ -37,6 +37,23 @@ Coverage is still source-specific and partial, not nationwide precinct turnout.
 
 ## Historical CPS demographic frames
 
+The [complete state-level CPS package](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-state-frames-20261108-01/complete-analysis.zip)
+pairs voting and registration percentages for all 51 states/D.C. across
+1972-2024, including both presidential and midterm elections. Its 2,754
+state/year/population rows preserve native unavailability and 153 absent
+early citizen columns. It adds 768 separate AP state-frame diagnostics and
+all 1,204 matched/unmatched query decisions, without inventing population
+counts or calling marginal ratios administrative turnout.
+
+All four government originals, the unchanged 2,503-row prior voting query,
+sufficient inputs, complete CSVs, code and tests are included. Seven tests,
+80,133 independent checks and two byte-identical offline reproductions passed:
+
+```sh
+python3 -m unittest discover -s tests -p test_cps_state_frames.py
+python3 -m scripts.cps_state_frames --inputs inputs --output reproduced
+```
+
 The [complete historical CPS group package](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-group-frames-20261108-01/complete-analysis.zip)
 adds 3,203 native age/sex/education count rows for 2000-2024 and 2,573
 registration/voting percentage rows across 31 elections in 1964-2024.

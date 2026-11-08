@@ -14,6 +14,50 @@ list of thousands of county URLs, are the inputs for future automation.
 
 ## Historical CPS group registration and response frames
 
+### Native state voting/registration pairs and AP diagnostics
+
+Maintained `scripts/cps_state_frames.py` now uses the already-held native
+`a5a.xlsx` / `a5b.xlsx` presidential voting/registration tables for 1972-2024
+and `hst_vote03a.xlsx` / `hst_vote03b.xlsx` congressional tables for 1974-2022.
+These are complementary election types, not old/new copies. All original
+bytes, titles, cells, population headers, source rows, notes and acquisition
+clocks remain included. The entire existing 2,503-row public voting query is
+preserved and independently bound to the original cells, not recomputed or
+replaced by a new vintage.
+
+The complete state query contains 5,202 native percentage cells and 2,754
+state/year/population pairs for every state plus D.C. There are 2,503
+supported native marginal ratios, 153 absent early citizen columns and
+2,550 same-election-type comparisons. Original unavailable `N` cells are
+not zero: 1972/1974 report only the largest 15 states, 1976 only the largest
+25. Citizen measurement before 1996 remains explicitly cautioned; crossing
+that definition boundary is held rather than harmonized.
+
+All 768 supported AP state-weight comparisons keep poll-close/final frames,
+the full source weight and unknown mass separate. All 1,204 query/population
+decisions, including national/demographic/support/unavailability holds, are
+included. CPS vote/register ratios of self-reported percentages are not an
+individual registered-voter joint or administrative turnout. These are
+source-specific diagnostics, not independent validation, population
+transport, retention/switching or observed staying home. No percent is
+multiplied by VEP/CVAP to fabricate a registration total; no local or
+demographic allocation is performed.
+
+The [complete immutable state-frame release](https://github.com/hanshanley/margin_of_error/releases/tag/participation-cps-state-frames-20261108-01)
+is `438432114`, with nine full assets verified against authenticated draft
+and anonymous published bytes. The complete ZIP is 368,608 bytes / 19
+members, SHA-256
+`bda083bac82cd4ac43a7f50e99a02a1c0d15113da9cb0341e9e5a1908a77152e`.
+It includes all originals, sufficient caches/metadata, preserved voting
+observations, selected public aggregates, every query, code and tests.
+Seven focused tests, 80,133 independent original-cell/full-query/member
+checks and two network/external-command-blocked byte-identical reproductions
+passed under seeds 3 and 97. Session proofs:
+`cps-state-frames-immutable-release-01.json`,
+`cps-state-frames-independent-verification-01.json` and
+`cps-state-frames-offline-reproduction-01-A.json` / `-B.json`.
+This is a research publication, not a new website view or deployment.
+
 Maintained `scripts/cps_group_frames.py` now uses all 26 already-held native
 election tables 1/5 for 2000-2024 plus the two full historical workbooks
 `hst_vote01.xlsx` and `hst_vote02.xlsx`. Their original bytes, source clocks,
