@@ -17,6 +17,24 @@ The analysis keeps three measures separate:
 3. Precinct coverage and boundary availability. Election returns alone are not
    treated as ballots cast or demographic participation.
 
+## Private survey reconstruction
+
+The separate Civic 2026 estimator computes source-weighted participation,
+prior/current-choice tables and exactly reconciled margin components:
+
+```sh
+.venv/bin/python -m scripts.civic_estimates \
+  --csv "$CIVIC_CSV" --codebook "$CIVIC_CODEBOOK_ZIP" \
+  --output "$PRIVATE_ANALYSIS_DIRECTORY"
+```
+
+Use the already supplied, hash-qualified files; do not download another copy.
+The output directory must be new and outside any Git repository. The command
+does not publish its fine-grained queries. Its modeled nonparticipation and
+reported/intended choices are not administratively observed staying home or
+certified population estimates. See `SOURCES.md` and `REMAINING.md` for the
+weights, frame, geographic and remaining integration limitations.
+
 ## Reproduce
 
 ```sh

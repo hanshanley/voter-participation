@@ -47,7 +47,7 @@ every comparison or redistribution is approved.
 | 5. Finish five-wave survey numerical outputs | Civic complete; historical AP numerical extension pending | Current all-state/native-demographic Civic estimates are computed and independently checked. Next produce source-specific AP 2018/2020/2022/2024 numerical tables from already supplied archives, with correct full-frame weights and state exclusions; do not re-download or repeat qualification. |
 | 6. Reconstruct the margin-change components | Civic computed and independently verified | Both 2024-President-to-modeled-2026-House and 2022-House-to-modeled-2026-House have switching, modeled nonparticipation, no-prior-contest-vote entry, other, unresolved and denominator components. All 714 separate demographic partitions reconcile. Do not call these original-coalition population or causal persuasion estimates. |
 | 7. Tie returns and participation controls to estimates | Pending panel and survey outputs | Compare source-weighted survey estimates with observed contest/participation counts without pretending outcome calibration is independent validation. Report unmatched scopes, conditional scaling and sensitivity instead of fitting away discrepancies. |
-| 8. Integrate and verify supported estimates | Pending outputs above | Existing research view/filters and county-first comparisons; complete permitted aggregate downloads; focused tests and actual deployment checks for UI changes. Do not add front-page experimental clutter. |
+| 8. Integrate and verify supported estimates | Maintained Civic code implemented; aggregate/UI integration next | `scripts/civic_estimates.py` and focused tests now live in the research source tree, with a guard against writing fine-grained outputs into Git. Next disclosure-reviewed complete aggregate packages and existing research view/filters, followed by actual UI tests/deployment checks. Do not wait for all historical extensions or add front-page experimental clutter. |
 | 9. Close statewide historical/2026 holes | Ongoing, alongside estimates | Actual ballots-cast controls, group denominators, histories and matched geography. Do not wait for universal administrative validation to produce explicitly assumption-labeled estimates. |
 | 10. Add additional source-supported precinct detail | Secondary to national/state work | Reuse existing Minnesota/Hawaii/Wyoming originals first; get missing whole-state releases/layouts rather than restarting county-by-county research. Local leads below are useful additions, not the critical path. |
 
@@ -61,8 +61,8 @@ The newest complete private outputs are `survey-reconstruction-all-states-202611
 `national-house-comparison-20261108-02/`, and
 `senate-cross-source-reconciliation-02/` in the active session artifact workspace.
 The House `01` draft and initial Senate `01` queries are preserved; use the stated
-successors. The next integration step includes moving the tested portable code
-and disclosure-reviewed aggregates into the project, not leaving them stranded.
+successors. The tested portable Civic code is now maintained in the project;
+disclosure-reviewed aggregate delivery and UI integration remain next.
 
 ## Reconciliation holes that must remain visible
 

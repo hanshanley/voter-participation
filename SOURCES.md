@@ -206,7 +206,10 @@ to the public research export merely because this ledger records them.
 - Complete private outputs/receipts and executed code remain in the active
   session artifact workspace under those versioned names and
   `survey-reconstruction-all-states-20261108-01`. They are not already published
-  website assets. Portable-code/aggregate integration is a next deliverable in
+  website assets. Maintained code is now `scripts/civic_estimates.py` with focused
+  tests; it refuses fine-grained output inside Git repositories. The original
+  executed source/test/verifier bytes are preserved with the private result.
+  Aggregate/UI integration remains a next deliverable in
   [REMAINING.md](REMAINING.md), not a claim that the project is finished.
 
 ## Access, methodology and paid/reference-only leads
