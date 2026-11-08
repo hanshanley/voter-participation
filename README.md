@@ -183,8 +183,12 @@ python3 -m unittest discover -s tests -p test_historical_participation_controls.
 python3 -m scripts.historical_participation_controls --inputs inputs --output reproduced
 ```
 
-The compact administrative-history website integration is being tested
-separately; publication of the research download is not a website-live claim.
+The [selected administrative-history view](https://www.themarginoferror.com/voter-participation/#participation-native-history)
+is live inside the existing folded research section. Its seven source-bound
+rows work without JavaScript and retain the held Wyoming aggregate and missing
+registration. All 19 production browser modes passed, including existing AP
+and Civic views; every old link and ID remains. This is selected-source context,
+not nationwide administrative coverage or a fixed historical cohort.
 
 ## Reproduce
 

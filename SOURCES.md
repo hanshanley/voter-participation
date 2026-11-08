@@ -64,8 +64,36 @@ remain unchanged. AP poll-close/final weights remain separate and may already
 reflect outcome calibration. No source-model independence, AP/Civic construct
 harmonization, fixed-cohort participation, demographic allocation, causal
 decomposition or confidence interval is inferred. Eligibility/death/migration
-remain unknown. The website integration is in an isolated validation worktree;
-the existing live website is not yet claimed to include this addition.
+remain unknown.
+
+The administrative-history context is now live in website revision
+`fbb6d1da242ad42dd3b9a1ce27a01a5aea91cd4e`, actual Pages run `42447654869`,
+attempt 1, fresh artifact `13603888690`. The uploaded/deployed artifact identity
+matches; its actual payload is 997,469,013 bytes and tar 999,976,960 bytes,
+both strictly below 1 GB. All 19 production modes passed, including all seven
+source-matched administrative rows, every 602-row AP selection and existing
+Civic/folded-research behavior. All 3,060 prior links and 256 IDs remain;
+six full external assets bring complete download links to 1,063. Only the
+intended HTML changed, by 5,816 bytes; no client script was added, and served
+scripts/source pointers match the exact build. Main/review credential scans
+passed. Governing receipt: active session
+`historical-controls-production-acceptance-01.json`.
+
+**New separately qualified Wyoming source, not yet substituted into version 01:**
+the held `2022_General_Statewide_Total_Ballots_Cast_Summary.pdf` and
+`2022_General_Summaries_Results.xlsx` both explicitly report 198,198 statewide
+ballots and 22,955 for Natrona. All 23 county rows match the native precinct
+sums; both constitutional-amendment notes independently state 198,198 and a
+99,100-vote majority. PDF SHA-256:
+`51ad76bbc0baa0851c008ca42eca7f7eb40e3c4cab6e983f38889544d1807b2d`;
+native summary workbook SHA-256:
+`230ee0bcf9a2d9d3a9373dfba7e771d74e1daa9a22f4eec81e5e26181a5c25a4`.
+This permits a separately identified primary statewide ballot reference,
+without changing the original held unit-aggregate approval, the conflicting
+22,957 county print, registration unknowns or geography/rate holds. The next
+version must retain both observations and explicit source selection rather
+than mutate the immutable first package. Qualification receipt:
+`wyoming-2022-direct-statewide-reference-qualification-01.json`.
 
 ## Status and source classes
 
