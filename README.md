@@ -17,6 +17,24 @@ The analysis keeps three measures separate:
 3. Precinct coverage and boundary availability. Election returns alone are not
    treated as ballots cast or demographic participation.
 
+## Website navigation and source coverage
+
+The [published explorer](https://www.themarginoferror.com/voter-participation/)
+now retains each tab's supported selections when switching between States,
+Demographics, Precincts and Methods. Precinct state/year choices come from the
+loaded source coverage rather than a North Carolina-only selector; NC's
+specific county search, demographic counts and historical tools remain.
+Unsupported participation detail exposes available county candidate counts
+separately, with an explicit red/blue-results control, not invented turnout.
+Methods is organized into definitions, current sources, research and full data.
+
+The exact live repair passed seven navigation/failure/no-JavaScript
+configurations, three county-fallback configurations, existing survey and
+landing checks, 62 state-outline checks and source-matched precinct checks for
+all 9,718 Texas 2024 result shapes and 4,105 Minnesota 2026 participation rows.
+All previous links, IDs, original data and complete downloads remain available.
+Coverage is still source-specific and partial, not nationwide precinct turnout.
+
 ## Private survey reconstruction
 
 The separate Civic 2026 estimator computes source-weighted participation,

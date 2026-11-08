@@ -12,6 +12,58 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Website repair: source-backed navigation and precinct coverage
+
+The user-reported empty state selection, inconsistent tab defaults,
+North Carolina-only Precincts selector and unstructured Methods area are fixed
+in live website revision `5e11695ed8d5e81cf1634a737829ec8c6cd9a287`.
+The repair preserves the intervening automatic county refreshes; it does not
+replace those snapshots or change the pinned participation research source.
+Each tab retains supported state/year/group/measure choices, and precinct
+choices are derived from the actual loaded coverage. NC's specialized
+historical controls remain. Where county/precinct participation is unavailable,
+available candidate counts are shown with a separate explicit results-color
+control; they are never relabeled turnout. Methods now groups definitions,
+2026 sources, research and complete-data access.
+
+Actual Pages run `42502356194`, attempt 1, deployed fresh artifact
+`13625184708`: uploaded/deployed IDs match, actual payload 981,247,039 bytes,
+tar 983,756,800 bytes, with 16,243,200 bytes of strict tar headroom.
+Artifact digest:
+`sha256:17a62519f30c9296a36756c6a415ddc721d2609f02b2eb836898dd763a7c541b`.
+Main/review credential runs `42502356263` / `42502253300` passed.
+HTML SHA-256:
+`b4c17fe8e0850ffd1a898de6df26c1224047281c9d62ca883161284ba96b48ce`.
+Actual served HTML, CSS, scripts, source pointers and relocation manifest
+match the reviewed build. All 3,103 prior link occurrences and 260 IDs remain;
+the revised page has 3,107 links and 263 IDs, with no additional script URLs.
+The native preview remains byte-identical to the previous deployment.
+
+Seven tab/source-failure/deep-link/no-JavaScript configurations, three
+county-fallback configurations, 14 existing landing/AP/Civic modes, two
+51-state turnout-navigation modes and 62 outline checks passed on production.
+Independent drawn-value checks match every key, contest count and margin
+for 9,718 Texas 2024 precinct shapes, and every ballot, registration and rate
+for 4,105 Minnesota 2026 rows. Minnesota's 2,370 observed and 1,735 held or
+unavailable rates remain distinct; partial reporting is not completed turnout.
+Every one of the 602 public AP rows still passes the source-matched view checks.
+
+The only new data relocation covers four complete November 4 archived
+nationwide snapshots at the unchanged pinned source revision `792e3d`.
+All 16,260,811 bytes were individually verified against their originals,
+including browser-origin CORS and JSON parsing, before removing only redundant
+build copies. All 432 previous full-file receipts are unchanged; the manifest
+now contains 436 complete relocations. No original input, current snapshot,
+complete archive or source frame was reduced. The standalone compatibility
+renderer uses the same routing, and its export retains every original data byte.
+Local/native gzip differences were verified as OS-header byte 9 only; decoded
+data and all other compressed bytes agree.
+
+Governing active-session proof: `website-repair-production-acceptance-01.json`;
+native source-value proof: `participation-precinct-source-values-production-01.json`.
+The broader historical/group denominator and source-coverage work below
+remains open. This completed UI repair is not completion of the research project.
+
 ## Wyoming declared registration reports and source-weighted scenarios
 
 Both newly acquired primary PDFs returned HTTP 200 on November 8, 2026,
