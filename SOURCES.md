@@ -50,7 +50,19 @@ The immutable release `438552376` has seven full byte-verified assets;
 `4e5bb73ce17229474eb3f2a549ddb0dced20a4569dd6b13e8fbbb11677788756`.
 Independent verification passed 582,345 checks and two exact blocked-network/
 external-execution reproductions. Both complete input bundles include their
-originals/provenance. Website integration is a separate acceptance step.
+originals/provenance.
+
+The existing Demographics tab is now live at website revision `ca883d0`,
+Pages `42530121113`, artifact `13637596097`. All 30 production browser
+configurations pass, including every 1,734 state/group value on desktop/mobile,
+102 no-JavaScript overall rows, source failures, tab/URL state and the preserved
+AP/Civic views. Choose 2022 or 2024, then Geography. Missing Idaho stays absent;
+sparse rates are descriptive, not precise or design-qualified. The 106-word
+Methods overview, all 3,119 previous links, 265 IDs, 436 complete routes, native
+preview and old source pin remain. Downloaded native content is 981,301,627
+bytes / tar 983,808,000 bytes; both strict limits pass. Governing receipt:
+`all-state-demographics-production-acceptance-01.json`. This completes the
+historical all-state increment, not nationwide 2026 demographic/precinct coverage.
 
 ## Florida statewide registration-frame comparison
 

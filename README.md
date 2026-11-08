@@ -34,6 +34,11 @@ supported election-year counts and geography, not state rates spread across a ma
 | Administrative participation | Source-defined counts and rates, with reporting status and denominator identified. |
 | Precinct maps | Participation where supported; candidate results are a separate layer. Coverage is partial. |
 
+**Every-state demographics:** select Demographics, then 2022 or 2024 and a
+Geography. All 50 states plus D.C. have source-weighted age, sex, education and
+exclusive race/Hispanic-origin queries, with unknown responses and small-sample
+diagnostics retained. [Complete reproducible data](docs/DATA.md).
+
 **Limits:** These sources do not form one linked electorate. Missing data are not
 zero, modeled nonparticipation is not observed staying home, and repeated survey
 waves do not identify individual switching. Broad 2026 group denominators and
