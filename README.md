@@ -151,6 +151,32 @@ and [Hawaii/Wyoming/Minnesota version](https://github.com/hanshanley/margin_of_e
 are preserved immutably. These new control outputs are research downloads, not
 an additional deployed website view.
 
+## Native Wyoming statistics, 1978-2026
+
+The [complete primary/general statistics package](https://github.com/hanshanley/margin_of_error/releases/download/participation-wyoming-statistics-20261108-01/complete-analysis.zip)
+contains all 50 election-type/year rows, 50 selected-control comparisons and
+48 same-election-type changes from the official August 2026 table. It includes
+the original aggregate PDF, both independently qualified text extractions,
+complete queries, frozen reference input, portable code and seven tests.
+All five full assets are immutable and byte-verified; 1,220 independent checks
+and two network-blocked, byte-identical reproductions passed.
+
+Registration is explicitly **day-before-election, excluding Election Day
+registrants**. It does not fill the missing election-time denominator.
+Computed turnout/VAP ratios are not eligible-citizen or registered-voter
+turnout. Native `Voter Turnout` is not automatically qualified cast ballots.
+The 2026 general-election cells remain blank; its primary results are separate.
+The printed 2024 primary registration percentage remains 54%, with the
+count-implied approximately 49.7% retained as a source disagreement.
+This is a research download, not a new website view or demographic estimate.
+
+After unpacking:
+
+```sh
+python3 -m unittest discover -s tests -p test_wyoming_participation_statistics.py
+python3 -m scripts.wyoming_participation_statistics --inputs inputs --output reproduced
+```
+
 ## Historical administrative comparisons
 
 The [complete historical control analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip)

@@ -1,6 +1,6 @@
 # Voter-participation source ledger
 
-Last reviewed: 2026-11-08 UTC (2026-11-07 U.S. Eastern).
+Last reviewed: 2026-11-08 UTC.
 
 This is the canonical **source-family ledger** for the research project and its
 [companion website](https://github.com/hanshanley/margin_of_error). It includes
@@ -11,6 +11,57 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## Wyoming official historical statistics and registration-frame qualification
+
+The distinct primary [voter registration and turnout table](https://sos.wyo.gov/Elections/Docs/VoterProfile.pdf)
+and [declared registration index](https://sos.wyo.gov/Elections/VRStats.aspx)
+were acquired directly with HTTP 200 on November 8, 2026, at 05:09 UTC.
+The actual 101,792-byte PDF is revised **08/2026**, SHA-256
+`aea5863d565d3f6831e56ee9c6fe9f3d439e625cb8a681bcd5d201ebf2170568`;
+the older search-index text is not the acquired source version.
+All 25 even years, 1978-2026, are retained separately for primary and general
+elections. The 2026 general cells are blank; the populated 2026 fields concern
+the primary election. The native PDF and two independent text extractions
+agree, and the original rendered table was reviewed.
+
+The registration footnote excludes Election Day registrations: these are
+day-before counts, not a qualified election-time registered-voter denominator.
+Seven general-election turnout counts exceed the corresponding pre-election
+register; this does not establish a registered-turnout rate or a count of
+Election Day registrants. Native voting-age population is estimated VAP,
+not citizen VAP or eligible voters. Native `Voter Turnout` remains distinct
+from separately qualified cast-ballot observations. The 2022 general count
+198,198 agrees with the primary statewide ballot summary, but is not
+independent validation. No existing registration null or held aggregate changes.
+
+The source prints 54% for 2024 primary registration despite its counts
+226,062 / 454,508 implying approximately 49.7%. Both values remain in the
+complete query with `source_disagreement`; no native correction is made.
+All other printed registration/turnout percentages pass their stated display
+precision. Blank 2026 general cells remain unknown rather than zero.
+
+Maintained `scripts/wyoming_participation_statistics.py` produces 50 complete
+primary/general rows, 50 matched/unmatched selected-control comparisons and
+48 same-election-type changes. The
+[complete immutable analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-wyoming-statistics-20261108-01/complete-analysis.zip)
+is release `438048192`, 114,978 bytes, 13 members, SHA-256
+`e670e9d2e781d34e734156fb2a2c60223c06dcddd30ba686a63f59b7670ce91a`.
+All five full assets were authenticated-draft and anonymous-published
+byte-verified. Seven focused tests, 1,220 independent native/Fraction/source/
+archive checks and two network/external-command-blocked reproductions passed;
+every member and the complete ZIP match exactly. It includes the native
+aggregate PDF, both source-bound text extractions, sanitized receipt, complete
+255-row reference input, all queries, code and tests. Existing modeled shares,
+conditional scenarios and historical source selections are unchanged.
+This is a research download; no new website view is claimed.
+Governing active-session receipts: `wyoming-statistics-verification-01.json`
+and `wyoming-statistics-immutable-release-01.json`.
+
+The index also declares a November 3, 2026 registration PDF and the 2022 annual
+registration report. Those links are leads, not acquired or qualified files.
+Review their native cutoffs/frames before any new denominator use; the
+historical table does not resolve final registration or precinct denominators.
 
 ## Historical administrative participation comparison
 
