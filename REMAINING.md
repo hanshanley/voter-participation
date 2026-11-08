@@ -48,7 +48,7 @@ every comparison or redistribution is approved.
 | 5. Finish five-wave survey numerical outputs | Computed and independently verified | Civic plus AP 2018/2020/2022/2024 tables now exist. AP covers 532,866 native rows and 12,024 aggregate rows across all four source weight frames; 132,196 independent count/weight/rate checks passed. Preserve the 2018 inference qualifier, 2022 DE/WV holds and absent 2022 RACETH5. Historical public selection/presentation remains next; do not re-download or repeat these successful reductions. |
 | 6. Reconstruct the margin-change components | Civic computed and independently verified | Both 2024-President-to-modeled-2026-House and 2022-House-to-modeled-2026-House have switching, modeled nonparticipation, no-prior-contest-vote entry, other, unresolved and denominator components. All 714 separate demographic partitions reconcile. Do not call these original-coalition population or causal persuasion estimates. |
 | 7. Tie returns and participation controls to estimates | Pending panel and survey outputs | Compare source-weighted survey estimates with observed contest/participation counts without pretending outcome calibration is independent validation. Report unmatched scopes, conditional scaling and sensitivity instead of fitting away discrepancies. |
-| 8. Integrate and verify supported estimates | Civic main published and actual Pages deployment passed; production-browser verification active | Maintained Civic/AP code is in the research source tree. Civic complete 98,019-byte aggregate ZIP and four CSV supplements are published immutably. Main `96cc899` deployed with actual payload 997,445,043 bytes and tar 999,956,480 bytes; production HTML matches the exact tested candidate. Finish actual browser/artifact acceptance before claiming full live verification. Historical AP public selection/presentation remains next. Do not add front-page experimental clutter. |
+| 8. Integrate and verify supported estimates | Civic live and exact-production verified; historical AP presentation next | Maintained Civic/AP code is in the research source tree. Civic complete 98,019-byte aggregate ZIP and four CSV supplements are published immutably. Main `96cc899`, Pages run `42438745610`, attempt 1 and fresh artifact `13600852929` passed exact uploaded/deployed identity; actual payload is 997,445,043 bytes and tar is 999,956,480 bytes. All 13 production browser modes passed; HTML, served scripts and county/precinct/source-review pointers match the tested build. All 1,047 prior downloads and IDs remain, plus five full Civic assets. Historical AP public selection/presentation remains next. Do not add front-page experimental clutter. |
 | 9. Close statewide historical/2026 holes | Ongoing, alongside estimates | Actual ballots-cast controls, group denominators, histories and matched geography. Do not wait for universal administrative validation to produce explicitly assumption-labeled estimates. |
 | 10. Add additional source-supported precinct detail | Secondary to national/state work | Reuse existing Minnesota/Hawaii/Wyoming originals first; get missing whole-state releases/layouts rather than restarting county-by-county research. Local leads below are useful additions, not the critical path. |
 
@@ -64,7 +64,8 @@ The newest complete private outputs are `survey-reconstruction-all-states-202611
 The House `01` draft and initial Senate `01` queries are preserved; use the stated
 successors. The tested portable Civic code is now maintained in the project;
 disclosure-reviewed Civic aggregate delivery is now published as immutable release
-`participation-civic-estimates-20261108-01`. Website live verification remains open.
+`participation-civic-estimates-20261108-01`. Its integration into the existing
+default-closed research view is now live and exact-production verified.
 The corrected four-wave AP numerical outputs are
 `ap-votecast-participation-estimates-05/`, with independent proof
 `ap-votecast-four-wave-independent-verification-01.json`; earlier AP drafts are
@@ -82,6 +83,14 @@ controls. Of those controls, 1,375 match arithmetically within the same source,
 18 have differing located/district scopes, seven lack located county rows,
 and 18 lack a matching provider district candidate. These are not independent
 outcome validation. All affected county comparisons remain screened out.
+
+The accepted Pages tar has only 43,520 bytes of headroom under the strict
+1,000,000,000-byte cap. A later automatic research snapshot has legitimately
+advanced the underlying source repository; it was preserved in the House
+source-only publication rather than reset. The next website increment must
+measure its actual full build against current source context, keep large
+complete downloads external and preserve every old route. The accepted Civic
+artifact is not a size guarantee for a future build.
 
 ## Reconciliation holes that must remain visible
 

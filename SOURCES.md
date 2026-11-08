@@ -236,12 +236,19 @@ to the public research export merely because this ledger records them.
   `survey-reconstruction-all-states-20261108-01`. They are not already published
   website assets. The complete permitted 98,019-byte ZIP and four CSV supplements
   are now published in immutable companion release
-  `participation-civic-estimates-20261108-01`; the page integration is still under
-  verification. Maintained code is now `scripts/civic_estimates.py` with focused
+  `participation-civic-estimates-20261108-01`. The existing folded research view
+  is live at website main `96cc899f6b1266baf6316a923ad9117cd5526e97`,
+  Pages run `42438745610`, attempt 1, fresh artifact `13600852929`.
+  Native uploaded/deployed artifact identity, both strict actual payload/tar
+  caps, all 13 production browser modes, full Civic downloads and served
+  HTML/scripts/source pointers passed. All 1,047 old complete links and IDs
+  remain, with five complete Civic assets added. Maintained code is now
+  `scripts/civic_estimates.py` with focused
   tests; it refuses fine-grained output inside Git repositories. The original
   executed source/test/verifier bytes are preserved with the private result.
-  Aggregate/UI integration remains a next deliverable in
-  [REMAINING.md](REMAINING.md), not a claim that the project is finished.
+  Historical AP public presentation and matched participation controls remain
+  in [REMAINING.md](REMAINING.md); this increment is not a claim that the
+  nationwide project is finished.
 
 ## Access, methodology and paid/reference-only leads
 
