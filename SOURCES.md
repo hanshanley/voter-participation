@@ -2,6 +2,19 @@
 
 Last reviewed: 2026-11-08 UTC.
 
+**Start here:** [Overview](README.md) | [Estimation methods](METHODOLOGY.md) |
+[Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
+This document is the detailed reference ledger, not the methods introduction.
+
+| Reference area | Jump to |
+|---|---|
+| Historical demographic/state frames | [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
+| Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
+| Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
+| Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
+| Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
+| Website acceptance records | [Source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
 This is the canonical **source-family ledger** for the research project and its
 [companion website](https://github.com/hanshanley/margin_of_error). It includes
 primary data, official compilations, academic harmonizations, secondary feeds,
