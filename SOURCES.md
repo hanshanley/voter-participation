@@ -212,7 +212,16 @@ to the public research export merely because this ledger records them.
   cases only, not unrecorded per-outcome raw counts or a precision/anonymity
   guarantee. Native group definitions and four weight frames remain separate;
   2018 state inference qualifications, 2022 DE/WV holds and absent 2022 RACETH5
-  are retained. The complete historical website view is not yet live.
+  are retained. The historical view is now live in the existing folded research:
+  website main `3827eb47a72f9152aec8805742fee2c6d9c86688`, Pages run
+  `42441500031`, attempt 1, fresh artifact `13601962258`. All 14 production
+  modes passed, including every public AP row and the valid-JSON changed-byte
+  checksum failure. Native uploaded/deployed identity, actual 997,463,197-byte
+  payload and 999,976,960-byte tar, full asset bytes, served HTML/scripts and
+  source pointers passed. All 3,055 prior links/IDs remain; complete downloads
+  total 1,057. The 339,721-byte public viewer JSON is pinned to research commit
+  `3a9d85994e59a6112d3756ef1f7f0ea15038a135`, has verified CORS support and
+  is checksum-verified before client use. No private fine cells are fetched.
 - The supplied Civic file now has actual private numerical outputs for all
   50 states plus a separately labeled pooled-source scope: 1,954 participation
   rows, 97,700 complete joint cells, 3,908 margin decompositions and 30,782
@@ -249,23 +258,45 @@ to the public research export merely because this ledger records them.
   There are now 229 matching candidate controls, four Alaska noncounty holds,
   and one Maine write-in control with 882 state votes but zero in the supplied
   county vectors. Preserve that unresolved scope instead of filling counties.
+- The six source-missing county IDs are now separately reference-joined by
+  `scripts/senate_geography.py`: MN `27073`, `27077`, `27085`; MT `30049`;
+  OK `40079`; SD `46102`. Held Census-backed House namespace records and
+  CNN declared county IDs corroborate each join, and all named Senate
+  candidate identities agree. The reference derives from the previously
+  checked complete [2026 TIGER county release](https://www2.census.gov/geo/tiger/TIGER2026/COUNTY/);
+  it was reused, not downloaded again. Original blanks remain in `fips`;
+  `resolved_fips` and `fips_resolution` identify the derived references.
+  All 34,492 source rows/fields/votes/clocks are unchanged, with 26 civic
+  candidate rows receiving reference IDs. Of 23 additional named-count pairs,
+  22 agree and one difference remains. This is not independent outcome or
+  same-round validation. The
+  [complete immutable Senate identifier ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-senate-identifiers-20261108-01/complete-analysis.zip)
+  has 12 members, 956,205 bytes, SHA-256
+  `1c3938ea0d933d7e9fd628d07b0d3244c76fa795a18ac1bb21692a11a771d7ef`.
+  All five release assets were authenticated-draft and anonymous-published
+  byte-verified. Six tests, 69,225 independent preservation/reference checks,
+  and offline reproduction under two hash seeds matched every member and
+  the ZIP with network/DNS/external commands blocked. The Maine 882-write-in
+  gap, Alaska/Connecticut geography exceptions and original count/round
+  differences remain explicit, not allocated or silently replaced.
 - Complete private outputs/receipts and executed code remain in the active
   session artifact workspace under those versioned names and
   `survey-reconstruction-all-states-20261108-01`. They are not already published
   website assets. The complete permitted 98,019-byte ZIP and four CSV supplements
   are now published in immutable companion release
-  `participation-civic-estimates-20261108-01`. The existing folded research view
-  is live at website main `96cc899f6b1266baf6316a923ad9117cd5526e97`,
+  `participation-civic-estimates-20261108-01`. Its initial accepted folded
+  research revision was `96cc899f6b1266baf6316a923ad9117cd5526e97`,
   Pages run `42438745610`, attempt 1, fresh artifact `13600852929`.
   Native uploaded/deployed artifact identity, both strict actual payload/tar
   caps, all 13 production browser modes, full Civic downloads and served
   HTML/scripts/source pointers passed. All 1,047 old complete links and IDs
-  remain, with five complete Civic assets added. Maintained code is now
+  remain, with five complete Civic assets added. The newer accepted AP revision
+  preserves this component and rechecks its four production modes. Maintained code is now
   `scripts/civic_estimates.py` with focused
   tests; it refuses fine-grained output inside Git repositories. The original
   executed source/test/verifier bytes are preserved with the private result.
-  Historical AP public presentation and matched participation controls remain
-  in [REMAINING.md](REMAINING.md); this increment is not a claim that the
+  Matched participation controls and remaining source exceptions are tracked
+  in [REMAINING.md](REMAINING.md); these increments are not a claim that the
   nationwide project is finished.
 
 ## Access, methodology and paid/reference-only leads

@@ -64,6 +64,10 @@ python3 -m scripts.ap_public_aggregates --inputs selected-aggregates.json --outp
 These are source-weighted modeled participation shares, not administrative
 turnout or a linked panel. Source definitions differ across years, and joining
 these rows to Civic does not identify a cross-study turnout change.
+The [historical study view](https://www.themarginoferror.com/voter-participation/#participation-ap-history)
+is live inside the existing folded research section. Its eight national fallback
+rows work without JavaScript; selected state/national-group views use a
+checksum-verified public snapshot rather than private fine cells.
 
 ## Exact House source-count comparison
 
@@ -87,6 +91,22 @@ instead of `--inputs`. The reader verifies each input against that checkout's
 actual Git commit and refuses to overwrite an existing analysis. Missing counts,
 historical no-ballot races, withheld source rows, literal-party/fusion ambiguities
 and differing current candidate-control scopes remain explicit.
+
+## Senate county identifier joins
+
+The [complete Senate identifier package](https://github.com/hanshanley/margin_of_error/releases/download/participation-senate-identifiers-20261108-01/complete-analysis.zip)
+retains all 34,492 original candidate-unit rows and adds separately labeled
+reference IDs for six counties. Native blank FIPS, counts, parties and clocks
+remain unchanged. The joins use held Census-backed House namespace records and
+CNN declared IDs, not names or vote equality alone. All 23 additional named
+candidate identities match; 22 counts agree and one difference remains.
+Same-round or independent outcome validation is not implied. The Maine write-in
+gap and Alaska/Connecticut scope exceptions are not repaired by these joins.
+
+The archive includes all sufficient aggregate inputs, complete outputs, code,
+six tests and offline reproduction instructions. The derived `resolved_fips`
+and `fips_resolution` columns do not overwrite original identifier/eligibility
+fields.
 
 ## Reproduce
 
