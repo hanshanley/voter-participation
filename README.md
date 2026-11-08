@@ -48,6 +48,23 @@ cross-sections are not a linked panel. `--years 2022 2024` can run selected wave
 without repeating successful reductions. The full-frame weight total is named
 `weight`; the distinct source weight variable is `weight_field`.
 
+The [complete selected historical AP package](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-history-20261108-01/complete-analysis.zip)
+now contains 602 broad participation rows and every one of the 710 requested
+broad-query selection decisions. It includes all permitted selected inputs,
+full CSVs, viewer JSON, source hashes, code and tests, not raw respondents or
+state demographic cells. The four weight frames remain separate; 2018 state
+inference qualifications, 2022 DE/WV holds and the absent 2022 race field remain
+explicit. After unpacking, reproduce offline:
+
+```sh
+python3 -m unittest discover -s tests -p test_ap_public_aggregates.py
+python3 -m scripts.ap_public_aggregates --inputs selected-aggregates.json --output reproduced
+```
+
+These are source-weighted modeled participation shares, not administrative
+turnout or a linked panel. Source definitions differ across years, and joining
+these rows to Civic does not identify a cross-study turnout change.
+
 ## Exact House source-count comparison
 
 The [complete versioned House analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-exact-panel-20261108-01/complete-analysis.zip)

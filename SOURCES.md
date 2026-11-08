@@ -195,6 +195,24 @@ to the public research export merely because this ledger records them.
   not FIPS. Documented `RACETH5` is absent from the released 2022 CSV and is
   explicitly withheld, not reconstructed from another field. The `weight_field`
   source-variable name is distinct from numeric `weight` mass.
+- Public AP selection `data/ap-votecast-aggregates/20261108-01/` uses only those
+  already verified cached statistics, not another native reduction. Its
+  [immutable complete AP ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-history-20261108-01/complete-analysis.zip)
+  has 9 members, 236,316 bytes and SHA-256
+  `dbab5b50a99882780ae8febe76f564acebc3b1acaf7ef23f3b21aa0693a58190`.
+  All five release assets were authenticated-draft and anonymous-published
+  byte-verified; the published release is immutable. It includes 602 selected
+  participation rows (218 national, 384 whole-state overall), all 710 broad-query
+  dispositions, every permitted selected input, viewer JSON, source hashes,
+  code and tests. Eight focused tests and 29,172 independent cached-selection
+  and Fraction-rate checks passed; blocked-network/DNS/external-command
+  reproduction under two hash seeds byte-matched every member and the ZIP.
+  Private state demographic cells, respondent records and identifiers remain
+  excluded. The whole-state/national support screens use total positive-weight
+  cases only, not unrecorded per-outcome raw counts or a precision/anonymity
+  guarantee. Native group definitions and four weight frames remain separate;
+  2018 state inference qualifications, 2022 DE/WV holds and absent 2022 RACETH5
+  are retained. The complete historical website view is not yet live.
 - The supplied Civic file now has actual private numerical outputs for all
   50 states plus a separately labeled pooled-source scope: 1,954 participation
   rows, 97,700 complete joint cells, 3,908 margin decompositions and 30,782

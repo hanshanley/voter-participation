@@ -45,10 +45,10 @@ every comparison or redistribution is approved.
 | 2. Acquire all declared Senate race files | Acquired | All 70 race responses plus national index, original comparison CSV and receipts held. No more duplicate acquisition is needed for this snapshot. |
 | 3. Reconcile exact 2026 returns | Initial Senate checks computed; gaps open | 34,492 native candidate-unit rows retained. Civic county/parish/city selection yields 2,442 records/34 states, six missing FIPS; 7,165 cross-source candidate counts equal, 215 differ. Four RI gaps resolve to the explicit 755-vote Overseas/Federal unit, not county allocation. Of 234 civic candidate controls, 229 now reconcile, four AK noncounty controls are held, and the ME 882-write-in county gap remains. Preserve all unmatched keys/clocks. |
 | 4. Build the actual 2024-to-2026 House panel | Exact source-count join computed, independently verified and published | Complete 3,152-county/5,192-fragment query, including all 2,639 positive pairs and 2,228 known-screen passes. Preserve all exclusions; same district labels do not establish matched boundaries. Next qualify remaining source/control and boundary exceptions and use the exact contest context alongside actual participation controls, not as measured turnout. |
-| 5. Finish five-wave survey numerical outputs | Computed and independently verified | Civic plus AP 2018/2020/2022/2024 tables now exist. AP covers 532,866 native rows and 12,024 aggregate rows across all four source weight frames; 132,196 independent count/weight/rate checks passed. Preserve the 2018 inference qualifier, 2022 DE/WV holds and absent 2022 RACETH5. Historical public selection/presentation remains next; do not re-download or repeat these successful reductions. |
+| 5. Finish five-wave survey numerical outputs | Computed; selected AP package published and independently verified | Civic plus AP 2018/2020/2022/2024 tables exist. AP native verification covers 532,866 source and 12,024 aggregate rows, with 132,196 checks. Its selected public package now includes 602 rows and all 710 broad-query selection decisions, eight tests, 29,172 additional cached-selection/rate checks and byte-identical offline reproduction under two hash seeds. Preserve the 2018 inference qualifier, 2022 DE/WV holds and absent 2022 RACETH5. Historical page presentation remains next; do not repeat native reductions. |
 | 6. Reconstruct the margin-change components | Civic computed and independently verified | Both 2024-President-to-modeled-2026-House and 2022-House-to-modeled-2026-House have switching, modeled nonparticipation, no-prior-contest-vote entry, other, unresolved and denominator components. All 714 separate demographic partitions reconcile. Do not call these original-coalition population or causal persuasion estimates. |
 | 7. Tie returns and participation controls to estimates | Pending panel and survey outputs | Compare source-weighted survey estimates with observed contest/participation counts without pretending outcome calibration is independent validation. Report unmatched scopes, conditional scaling and sensitivity instead of fitting away discrepancies. |
-| 8. Integrate and verify supported estimates | Civic live and exact-production verified; historical AP presentation next | Maintained Civic/AP code is in the research source tree. Civic complete 98,019-byte aggregate ZIP and four CSV supplements are published immutably. Main `96cc899`, Pages run `42438745610`, attempt 1 and fresh artifact `13600852929` passed exact uploaded/deployed identity; actual payload is 997,445,043 bytes and tar is 999,956,480 bytes. All 13 production browser modes passed; HTML, served scripts and county/precinct/source-review pointers match the tested build. All 1,047 prior downloads and IDs remain, plus five full Civic assets. Historical AP public selection/presentation remains next. Do not add front-page experimental clutter. |
+| 8. Integrate and verify supported estimates | Civic live and exact-production verified; AP complete download published, page presentation next | Maintained Civic/AP code is in the research source tree. Civic complete 98,019-byte aggregate ZIP and four CSV supplements are published immutably. Main `96cc899`, Pages run `42438745610`, attempt 1 and fresh artifact `13600852929` passed exact uploaded/deployed identity; actual payload is 997,445,043 bytes and tar is 999,956,480 bytes. All 13 production browser modes passed; HTML, served scripts and county/precinct/source-review pointers match the tested build. All 1,047 prior downloads and IDs remain, plus five full Civic assets. AP's selected full 236,316-byte archive and all four supplements are immutable and byte-verified; compact historical presentation in the existing research view is next. Do not add front-page experimental clutter. |
 | 9. Close statewide historical/2026 holes | Ongoing, alongside estimates | Actual ballots-cast controls, group denominators, histories and matched geography. Do not wait for universal administrative validation to produce explicitly assumption-labeled estimates. |
 | 10. Add additional source-supported precinct detail | Secondary to national/state work | Reuse existing Minnesota/Hawaii/Wyoming originals first; get missing whole-state releases/layouts rather than restarting county-by-county research. Local leads below are useful additions, not the critical path. |
 
@@ -71,6 +71,20 @@ The corrected four-wave AP numerical outputs are
 `ap-votecast-four-wave-independent-verification-01.json`; earlier AP drafts are
 preserved but are not the current verified schema.
 
+AP's reviewed public package is versioned at
+`data/ap-votecast-aggregates/20261108-01/`, with maintained
+`scripts/ap_public_aggregates.py`. Its
+[complete immutable AP download](https://github.com/hanshanley/margin_of_error/releases/tag/participation-ap-history-20261108-01)
+contains 218 national and 384 whole-state overall rows. The 710 broad-query
+dispositions retain 64 nonresponse/disclosure holds, 30 support holds,
+10 absent-2022-RACETH5 queries and four DE/WV state holds. No private state
+demographic cells or raw source records are exported. The support screen uses
+total positive-weight cases (500 whole-state, 1,000 national), not a minimum
+per modeled-outcome class, which the cached statistics do not contain.
+It is not a precision or anonymity guarantee. All unknowns remain in the full
+overall denominators. Native group labels, four separate weight frames and the
+2018 47-state inference qualifier remain intact.
+
 The exact House result is `house-exact-panel-20261108-03/`; `01` and `02`
 are preserved predecessors. All seven numerical query files are byte-identical
 to the independently verified `02` result; `03` adds the complete offline
@@ -90,7 +104,10 @@ advanced the underlying source repository; it was preserved in the House
 source-only publication rather than reset. The next website increment must
 measure its actual full build against current source context, keep large
 complete downloads external and preserve every old route. The accepted Civic
-artifact is not a size guarantee for a future build.
+artifact is not a size guarantee for a future build. The current website
+workflow explicitly pins research source `792e3d`; the later automatic research
+snapshot does not automatically change those staged website inputs. Preserve
+that verified pin rather than changing it just because research main advanced.
 
 ## Reconciliation holes that must remain visible
 
