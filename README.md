@@ -3,6 +3,12 @@
 Historical voter participation, not candidate preference. This is a local-only
 research project; deployment requires the owner's explicit approval.
 
+See [SOURCES.md](SOURCES.md) for the primary and secondary source ledger,
+download/update rules, collection inventories and source-specific caveats, and
+[REMAINING.md](REMAINING.md) for the active acquisition-to-estimation work queue.
+It also tracks separately reviewed private survey inputs; recording a source
+does not authorize publishing respondent data or change the public collectors' scope.
+
 The analysis keeps three measures separate:
 
 1. Census survey-reported turnout among all adult residents or adult citizens.
