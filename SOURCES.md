@@ -25,6 +25,35 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 statewide demographic participation models
+
+[Complete 2026 state/group inputs, code and results](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-state-demographics-20261108-01/complete-analysis.zip):
+671 coarse source-weighted model estimates and all 1,530 query decisions.
+All 50 Civic source states have an overall estimate; D.C. has no source sample.
+Age, education, source sex, race/Hispanic origin, native income and source
+county context are separate dimensions. The native LIKELYVOTER classification
+is a model, not administrative turnout, observed staying home or a 2024 CPS
+projection. No registered/eligible group populations or local allocations.
+
+Full CHEP_WEIGHT group denominators are retained, without fitting or scaling.
+Unknowns stay in the statewide frame. Sparse and complementary cells are held
+within states and across states, preserving the prior pooled-source release.
+No isolated race code88 or small GENDER3 cells are exported. Source-support
+screens are not precision/anonymity guarantees; design intervals, field period,
+population calibration and state representativeness remain unqualified.
+Income is not independently qualified household income; RUCC is county context,
+not individual residence.
+
+Immutable release `438581821` has four full byte-verified assets; ZIP
+276,432 bytes / nine members / SHA-256
+`59c0745c5975642be580d95511eecb8520637b34a7de83423232780f6bb7f227`.
+Five tests, 28,496 independent native-aggregate/Fraction/disclosure/package
+checks and two exact blocked-network/external-execution reproductions pass.
+Maintained `scripts/civic_state_groups.py` reproduces all public queries.
+Original 113,020-case verification is reused, not rerun. No raw respondents,
+private fine cells or choice tables. Website integration and the requested
+post-integration project audit are pending.
+
 ## Every-state historical demographic participation
 
 [Complete results and reproducible inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-state-demographics-20261108-01/complete-analysis.zip):

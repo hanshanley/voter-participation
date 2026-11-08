@@ -41,6 +41,13 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Latest priority: 2026, then an audit.** The new statewide Civic demographic
+package is published: 671 supported model shares across all 50 survey states,
+with complete source/disclosure holds and explicit D.C. absence. Integrate it
+into the existing 2026 Demographics controls without relabeling models as
+reported ballots, then audit numbers, frames, privacy, downloads and interface.
+Older 2002 selection is paused; do not restart completed historical batches.
+
 **Every state is the required scope, not Florida-only additions.** A complete
 2022/2024 demographic package is now published for all 50 states plus D.C.
 The state-selectable integration is live and exact-production verified at
@@ -58,6 +65,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| 2026 statewide demographic models | Complete package published; interface and requested audit active next | Immutable `438581821`: 671 coarse source-weighted model estimates / all 1,530 state/group queries. All 50 source states, explicit D.C. absence, native/coarsened categories, full weights/unknowns and within/across-state disclosure holds. Five tests, 28,496 independent checks and two exact offline reproductions pass the nine-member ZIP. Integrate as a separate 2026 model measure, preserving reported counts and 2022/2024 Census histories; then audit the current project and repair meaningful issues. Not certified demographic turnout, observed staying-home or nationwide precinct estimates. |
 | Every-state demographic participation | Complete historical package and live interface verified | Release `438552376`: all 51 jurisdictions in both 2022/2024; 1,734 state/year/group queries, 1,733 positive-source estimates and one absent Idaho group, all 11,906 source decisions, 5,202 nonresponse scenarios and 6,120 partitions. Seven full assets, 582,345 independent checks, six focused tests and two exact offline reproductions verify the 26,243,365-byte ZIP. Website `ca883d0` / Pages `42530121113` / native artifact `13637596097` passes all 30 production configurations and strict content/tar limits (981,301,627 / 983,808,000 bytes), preserving all old links, IDs, 436 complete routes and 106-word Methods. State filters retain national histories, native categories, full unknowns, sparse diagnostics and missing-not-zero. Do not rerun this completed increment; nationwide 2026 demographic/precinct evidence remains unresolved. |
 | Extend statewide native registration frames: Florida | Published numerical package; complete reproducible code included | Version 04 / release `438515810` adds one Florida whole-state conditional scenario and a separate native participant/model comparison. Full query: 51 states/D.C., 20 controls, 14 selected references, nine scenarios; all 50 unaffected rows, 19 prior controls and eight scenarios identical. Native TOTAL 8,335,497 / 13,704,495; conditional model units 7,475,648.38 / 6,228,846.62 under unvalidated register exchangeability. Source clocks null, statewide flags blank, 60 provisional / 64 overseas county holds preserved; generic cast fields remain null for Florida. All nine full assets verified; 21 tests, 4,165 independent checks and two byte-identical offline reproductions pass the 23-member / 20,157,249-byte ZIP. No new source acquisition, demographic/local allocation, observed staying-home or website view. Broader denominator/geography gaps remain; do not repeat this completed numerical/publication work. |
 | Short website Methods overview | Complete; exact-production verified | Live `96d7257`, Pages `42517487539`, artifact `13632291877`. A 106-word estimation overview links directly to GitHub methods; archive hidden by default. All 24 production modes, 51 targeted Node tests, four build tests and credential checks pass. Actual downloaded artifact content 981,248,921 / tar 983,756,800 bytes; all 3,107 old links, 263 IDs, 436 complete relocations and pinned data preserved. Governing `methods-overview-production-acceptance-01.json`. No new estimates or sources. |

@@ -12,6 +12,7 @@ are not automatically compatible populations.
 
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
+| 2026 statewide demographic models | 671 source-weighted model shares, all 1,530 state/group query decisions, explicit sparse/disclosure holds and D.C. absence | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-state-demographics-20261108-01/complete-analysis.zip) |
 | Every-state demographic participation | Complete 2022/2024 state age, sex, education and exclusive race/Hispanic-origin rates, all outcome classes and small-sample diagnostics | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-state-demographics-20261108-01/complete-analysis.zip) |
 | Historical demographic CPS frames | Native group counts, percentages, nonresponse scenarios and same-type histories | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-group-frames-20261108-01/complete-analysis.zip) |
 | Historical state CPS frames | State voting/registration pairs and separate AP frame diagnostics | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-state-frames-20261108-01/complete-analysis.zip) |
