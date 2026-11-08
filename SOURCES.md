@@ -12,6 +12,66 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Held EAC historical state controls: complete verified publication
+
+Maintained `scripts/eac_state_controls.py` now uses the already-held November 4
+EAVS archive and complete 67,525-row local query. No new request was made to
+later-denied EAC routes. Thirteen 2008-2024 F1 selections retain their exact
+native source dictionaries, sheets, row numbers, hashes and retrieval clocks;
+the two earlier Alaska observations remain unqualified inventory.
+Eleven registration rows are joined by exact state, ID and jurisdiction name
+against native A tables, including the separately held 2010/2012 workbooks.
+Their values match the frozen local query; neither count equality nor a
+statewide label substitutes for geographic or denominator qualification.
+Native instrument labels are independently checked against included worksheet
+cells. Original filenames, including the XLS-labeled 2010 XLSX bytes, are retained.
+
+| Full output | Rows / disposition |
+|---|---|
+| Complete state/year grid, 2004-2024 | 561, including every missing state/year |
+| Complete native or held observation ledger | 15; ten selected source references, nine qualified source-defined participation references |
+| Separate AP/register scenarios | Six Alaska frames: 2020, 2022 and 2024 final/poll-close; no absent 2018 state row invented |
+| Complete public survey-query decisions | All 602 supplied selected public aggregates, including every unmatched/support/frame disposition |
+| Adjacent native snapshot comparisons | Ten; seven source-defined, unharmonized differences and three held endpoint comparisons |
+
+Alaska's 2018/2020/2022/2024 A1 total equals active plus inactive records.
+These are particular native registration frames, not eligible/citizen
+population denominators. The 2024 native `f2_4=1` marks a highest-office
+participation proxy: its rate and conditional-minus-native diagnostic stay
+null. Maine's 2014 total 776 is explicitly UOCAVA-only. NH/RI 2008 source
+labels do not establish whole-electorate scope. All native zeros, unavailable
+flags, source comments and unknown mass remain; early time-series rows do not
+inherit modern qualification. No count is silently relabeled ballots cast.
+
+`R*p`, `R*(1-p)` and any unknown mass retain the full source denominator.
+Exchangeability to the native total register is unvalidated. AP final/poll-close
+weights remain separate views of the same sample and may already calibrate
+outcomes; conditional differences are not independent validation. Native
+question meanings and adjacent presidential/midterm electorates are not
+harmonized. No demographic/local allocation, administrative staying home,
+individual retention or eligibility/death/migration counts are inferred.
+
+The [complete immutable release](https://github.com/hanshanley/margin_of_error/releases/tag/participation-eac-state-controls-20261108-01)
+is release `438401507`, with all nine full assets. Its 21-member ZIP is
+192,220,123 bytes, SHA-256
+`2575491662c9909f77ca18ac88e7bfd620b75b490024155b83758b0684d0f6ee`.
+It includes the complete 44,477,301-byte government source archive,
+3,922,371-byte full local query, 135,971,213-byte earlier time-series original,
+supplemental registration originals, guide/instruments, source-bound caches,
+all sufficient selected public survey inputs, all queries, code and tests.
+It is not a metadata-only download and contains no raw survey respondents
+or voter identifiers. The earlier original remains included but unqualified.
+
+Ten focused tests and 11,326 independent native-cell, definition, source,
+full-query and archive-member checks passed. Two standard-library
+reproductions with network and external-process execution blocked match
+every member and the entire ZIP under seeds 3 and 97. All nine assets match
+their authenticated draft and anonymous published full bytes.
+Governing session proofs: `eac-state-controls-immutable-release-01.json`,
+`eac-state-controls-independent-verification-01.json` and
+`eac-state-controls-offline-reproduction-01-A.json` / `-B.json`.
+No new website view or deployment is claimed by this research release.
+
 ## Website repair: source-backed navigation and precinct coverage
 
 The user-reported empty state selection, inconsistent tab defaults,

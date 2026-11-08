@@ -35,6 +35,42 @@ all 9,718 Texas 2024 result shapes and 4,105 Minnesota 2026 participation rows.
 All previous links, IDs, original data and complete downloads remain available.
 Coverage is still source-specific and partial, not nationwide precinct turnout.
 
+## Historical EAC controls and registration-frame scenarios
+
+The [complete historical EAC package](https://github.com/hanshanley/margin_of_error/releases/download/participation-eac-state-controls-20261108-01/complete-analysis.zip)
+adds a complete 561-row state/year grid for 2004-2024, all 15 native or held
+observations, six separate Alaska AP/register scenarios, all 602 survey-query
+dispositions and ten adjacent native snapshot comparisons. Nine source-defined
+participation references are qualified: Alaska in 2008-2022 and D.C. in 2008.
+This is not nationwide observed historical turnout; missing states remain missing.
+
+The 192,220,123-byte, 21-member ZIP includes the complete already-held
+government aggregate originals, instruments, supplemental registration files,
+the full earlier time-series workbook, selected public survey inputs, code,
+tests and every query. All nine release assets were checked against their
+full authenticated draft and anonymous published bytes. Ten focused tests,
+11,326 independent checks and two network-blocked, byte-identical offline
+reproductions passed.
+
+After unpacking, reproduce with Python's standard library:
+
+```sh
+python3 -m unittest discover -s tests -p test_eac_state_controls.py
+python3 -m scripts.eac_state_controls --inputs inputs --output reproduced
+```
+
+Alaska's recent native total register includes active and inactive records.
+Its 2024 participation figure is a highest-office proxy and remains held out
+of rate and participation-difference diagnostics; a separate conditional
+register scenario does not qualify that numerator. Maine 2014 is UOCAVA-only,
+NH/RI's 2008 statewide labels do not prove full-electorate scope, and the two
+earlier Alaska rows remain unqualified inventory. Adjacent snapshot differences
+do not harmonize changing questions or presidential/midterm electorates.
+The six 2020/2022/2024 final/poll-close scenarios assume unvalidated
+exchangeability to the particular native register. They are not observed
+staying home, original-cohort retention or local demographic counts.
+No state survey rate is allocated to counties or precincts.
+
 ## Private survey reconstruction
 
 The separate Civic 2026 estimator computes source-weighted participation,
