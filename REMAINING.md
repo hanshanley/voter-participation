@@ -216,7 +216,7 @@ Use the actual supplied files now, with their source-specific limitations:
 | Source / hole | Next action |
 |---|---|
 | MIT county presidential DOI `10.7910/DVN/VOQCHQ` | Recorded native denied route stays stopped. Keep this specific acquisition gap explicit; use distinct already held official/MEDSL sources where suitable, not a bypass. |
-| CES cumulative DOI `10.7910/DVN/II2DB6` | Qualify native metadata/guide and earlier-year participation/choice fields before extending pre-2018 survey history. Reuse already held CES common/panel inputs for their existing years. |
+| CES cumulative DOI `10.7910/DVN/II2DB6` | Native metadata request returned HTTP 403 on November 8, 2026 at 03:54:39 UTC; exact route stopped. No dataset/guide acquired and no alternate-client/cache/mirror bypass. Qualification awaits permitted source access or supplied originals. Continue using already held CES common/panel inputs and distinct historical sources for their supported years. |
 | 2026 CES | Record the actual published team delivery schedule and public-release status; do not wait for a future file before using Civic 2026 now. |
 | ANES cumulative file | Separately supplied historical lead; review permitted native access and measurement/weight definitions. Earlier denied ANES route is not permission to bypass it. |
 | Minnesota statewide precinct House + turnout + layout | Deduplicate against current saved MN packages; acquire only missing/new whole-state originals and reconcile precinct/counties/ballots separately from House votes. |
