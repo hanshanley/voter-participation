@@ -49,7 +49,7 @@ every comparison or redistribution is approved.
 | 6. Reconstruct the margin-change components | Civic computed and independently verified | Both 2024-President-to-modeled-2026-House and 2022-House-to-modeled-2026-House have switching, modeled nonparticipation, no-prior-contest-vote entry, other, unresolved and denominator components. All 714 separate demographic partitions reconcile. Do not call these original-coalition population or causal persuasion estimates. |
 | 7. Tie returns and participation controls to estimates | Both held-source expansion increments verified and published | All 51 state/D.C. rows, 19 native observations, 13 selected state references and eight conditional registration-frame scenarios are persistent. VT and RI add scenarios after native-frame review; ID remains ballot-only and DC has no Civic sample. RI's declared parent registration is 794,266, not a repair of Federal-unit zero registration; its parent ballot zero is not statewide zero. MN remains partial, WY registration null, and HI's six-ballot discrepancy retained. AL/HI/NC/OR/RI have cast-ballot measure comparisons; CA/CO/VT retain other native numerator meanings. Sixteen tests, 1,953 new independent checks and two byte-identical offline reproductions passed, preserving the previous six scenarios and all 15 controls. Next extend supported historical matches and genuinely new whole-state controls, not these completed reductions. |
 | 8. Integrate and verify supported estimates | Civic, AP and selected administrative histories live and exact-production verified | Latest accepted main `fbb6d1d`, Pages `42447654869`, attempt 1, fresh artifact `13603888690`: uploaded/deployed identity and actual 997,469,013-byte payload/999,976,960-byte tar pass. All 19 production modes passed, including seven native administrative rows, all 602 AP rows, strong changed-byte checksum failure, no-JavaScript, existing Civic and folded research behavior. All 3,060 prior links and 256 IDs remain; six historical assets bring complete downloads to 1,063. HTML, scripts and source pointers match the exact build. No new homepage card or client script. |
-| 9. Close statewide historical/2026 holes | Historical control increment and website context verified; separate Wyoming statewide source qualified next | Complete 255 state/year query, 434 study/weight comparisons, 18 source references (14 qualified cast, three other measures, one held Wyoming reference), 16 conditional registration-frame rows, 11 native comparisons and 18 mode rows. Hawaii historical totals reconcile separate summaries/PDFs; the published Wyoming unit aggregate remains held for Natrona +2. A distinct primary statewide PDF/workbook now independently supports 198,198, without changing that held observation. Next add it as a separate source-selected state reference in a new complete version, preserving originals and unknown R. Eight historical/24 combined tests, 4,570 independent checks and both byte-identical offline reproductions remain valid; seven-row context is live. Broader group denominators, histories and geography remain ongoing. |
+| 9. Close statewide historical/2026 holes | Direct Wyoming statewide reference now in immutable version 02; website update being validated | Complete 255 state/year query, 434 study/weight comparisons, 18 selected references (15 qualified cast and three other measures), 16 conditional rows, 11 comparisons and 18 mode rows. The complete 25-observation ledger retains the original held Wyoming unit aggregate and Natrona +2 conflict, while separately selecting the explicit primary state PDF/workbook total 198,198. No R or geography is inferred. Ten historical/26 combined tests, 1,973 new independent checks and two byte-identical offline reproductions passed; all unaffected and modeled outputs remain unchanged. Version 01 stays immutable and its first context is live; validate the updated source-selection view with every old download retained. Broader group denominators, histories and geography remain ongoing. |
 | 10. Add additional source-supported precinct detail | Secondary to national/state work | Reuse existing Minnesota/Hawaii/Wyoming originals first; get missing whole-state releases/layouts rather than restarting county-by-county research. Local leads below are useful additions, not the critical path. |
 
 No delegated collector/reconstruction output is currently assumed complete.
@@ -169,7 +169,7 @@ deployment is claimed. Continue matched historical ballot/registration
 controls from already-held sources alongside earlier-year demographic data;
 the cumulative CES access hold is not a reason to stop the other work.
 
-The [complete historical participation package](https://github.com/hanshanley/margin_of_error/releases/tag/participation-historical-controls-20261108-01)
+The [complete historical participation package](https://github.com/hanshanley/margin_of_error/releases/tag/participation-historical-controls-20261108-02)
 is public and fully byte-verified, with maintained
 `scripts/historical_participation_controls.py`. Hawaii historical native
 ballots/registrations are 398,657/756,751 (2018), 579,784/832,466 (2020),
@@ -177,7 +177,8 @@ ballots/registrations are 398,657/756,751 (2018), 579,784/832,466 (2020),
 summaries and PDFs; registration definitions and voting-mode labels are not
 silently harmonized. Wyoming's 198,198 native 2022 workbook sum remains held:
 Natrona precinct/statewide 22,955 versus printed county 22,957. No registered
-denominator or approved cast-ballot change is inferred. All 255 state/year
+denominator or approved cast-ballot change is inferred from that held
+aggregate. All 255 state/year
 combinations remain in the query, so these selected histories do not imply
 nationwide administrative coverage. AP and Civic remain separate source-
 weighted model constructs, not a harmonized panel. The existing current
@@ -188,8 +189,10 @@ statewide reference: its original statewide ballot PDF and native summary
 workbook both print 198,198, and their 23 county values match the native
 precinct sums. The two-ballot Natrona county-print conflict and original held
 aggregate stay intact; no registration or boundary approval is inferred.
-Add the direct state observation in a new complete version rather than
-relabeling or overwriting the immutable first output.
+The direct state observation is now selected in complete immutable version 02,
+with both observations and every selection disposition in the 25-row ledger.
+The next step is actual validation and production acceptance of the updated
+context, retaining all first-version downloads rather than replacing them.
 
 The accepted Pages tar has only 23,040 bytes of headroom under the strict
 1,000,000,000-byte cap. A later automatic research snapshot has legitimately

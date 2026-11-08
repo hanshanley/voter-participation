@@ -153,29 +153,34 @@ an additional deployed website view.
 
 ## Historical administrative comparisons
 
-The [complete historical control analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-01/complete-analysis.zip)
+The [complete historical control analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip)
 retains all 255 state/D.C.-year combinations for 2018, 2020, 2022, 2024 and 2026,
 including missing controls, plus 434 separate AP/Civic study-and-weight rows.
 Hawaii's four historical statewide ballot/registration totals reconcile native
 summaries and separate PDFs. The query contains 18 source references, of which
-14 are qualified cast-ballot measures, three retain other native meanings and
-one Wyoming historical reference remains held. No nationwide historical
-administrative coverage is claimed.
+15 are qualified cast-ballot measures and three retain other native meanings.
+The complete 25-observation source ledger separately retains the held Wyoming
+unit aggregate, unselected alongside its qualified primary statewide reference.
+No nationwide historical administrative coverage is claimed.
 
 The 16 conditional registration-frame rows are not observed staying home or
 independent model validation; final survey weights may already use outcome
 calibration. All 11 administrative comparisons retain native status/cutoffs.
 Unfinished 2026 snapshots do not establish final-count turnout declines.
-Wyoming's 2022 native workbook sum of 198,198 remains held because Natrona's
-printed county total is two ballots higher than its precinct/statewide values;
-no approved cast-ballot change or missing registration is inferred.
+Wyoming's 2022 native unit aggregate remains held because Natrona's printed
+county total is two ballots higher than its precinct/statewide values.
+A distinct statewide ballot PDF and native summary workbook both explicitly
+report 198,198, with all 23 county rows matching. That separate state source
+is selected without repairing the held aggregate or inferring registration.
 The 18 native mode rows retain changing CSV/PDF labels separately.
 
-The 16-member ZIP contains all sufficient public aggregate inputs, original
-sources, full queries, portable code and eight focused tests. Independent
-verification passed 4,570 checks, including a second PDF engine, and both
-blocked-network reproductions matched all members and the full ZIP. All 50
-current Civic shares and eight earlier scenario counts remain unchanged.
+The 18-member ZIP contains all sufficient public aggregate inputs, original
+sources, full queries, portable code and ten focused tests. The statewide
+source-selection increment passed 1,973 new independent checks and both
+blocked-network reproductions matched all members and the full ZIP. All
+modeled shares, 16 scenarios and unaffected outputs remain unchanged.
+The [first version](https://github.com/hanshanley/margin_of_error/releases/tag/participation-historical-controls-20261108-01)
+and its earlier 4,570-check proof remain immutable.
 After unpacking:
 
 ```sh
@@ -184,10 +189,10 @@ python3 -m scripts.historical_participation_controls --inputs inputs --output re
 ```
 
 The [selected administrative-history view](https://www.themarginoferror.com/voter-participation/#participation-native-history)
-is live inside the existing folded research section. Its seven source-bound
-rows work without JavaScript and retain the held Wyoming aggregate and missing
-registration. All 19 production browser modes passed, including existing AP
-and Civic views; every old link and ID remains. This is selected-source context,
+is live inside the existing folded research section. The first source-specific
+view passed all 19 production browser modes; every old link and ID remains.
+The update selecting the separate Wyoming statewide source is being validated
+with all previous complete downloads retained. This is selected-source context,
 not nationwide administrative coverage or a fixed historical cohort.
 
 ## Reproduce

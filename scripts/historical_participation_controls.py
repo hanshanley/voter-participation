@@ -26,6 +26,7 @@ INPUTS = {
     "current-state-controls.csv", "current-native-controls.csv", "ap-selected-aggregates.json",
     "civic-selected-aggregates.json", "hawaii-historical-sources.zip", "wyoming-2022-sources.zip",
 }
+PRIMARY_INPUT = "wyoming-2022-primary-statewide.json"
 
 
 def json_bytes(value):
@@ -162,12 +163,53 @@ def wyoming(rows, audit):
     )
 
 
+def wyoming_statewide(primary, held):
+    if (primary["year"] != 2022 or primary["state_code"] != "WY"
+            or "Wyoming General Election - November 8, 2022" not in primary["native_pdf_text"]):
+        raise ValueError("Wrong direct Wyoming statewide source identity")
+    counties = primary["workbook_counties"]
+    total = primary["workbook_total"]
+    if (len(counties) != 23 or any(type(v) is not int or v < 0 for v in counties.values())
+            or sum(counties.values()) != total or total != held["native_numerator"]):
+        raise ValueError("Direct statewide and retained native sums differ")
+    extracted = {int(v.replace(",", "")) for v in re.findall(
+        r"(?m)^\s*([0-9][0-9,]*)\s*Total\s*$", primary["native_pdf_text"])}
+    if extracted != {total}:
+        raise ValueError("Direct statewide PDF total differs")
+    for county, value in counties.items():
+        values = {int(v.replace(",", "")) for v in re.findall(
+            re.escape(county) + r"\s+([0-9][0-9,]*)", primary["native_pdf_text"])}
+        if values != {value}:
+            raise ValueError("Direct statewide PDF county vector differs")
+    notes = primary["native_ballot_issue_notes"]
+    if (len(notes) != 2 or any(
+            f"The total ballots cast is {total:,}." not in note or
+            f"{total//2+1:,}" not in note for note in notes)):
+        raise ValueError("Direct statewide ballot-issue notes differ")
+    return dict(
+        year=2022, state_code="WY", control_id="wy-native-general-2022-statewide",
+        control_measure="reported_cast_ballots", native_measure="Total Ballots Cast: native statewide summary",
+        native_numerator=total, reported_cast_ballots=total, registered=None,
+        registration_basis="registered_denominator_not_supplied",
+        source_time_label="2022 native statewide summary; no print/update clock supplied",
+        source_url=primary["source_pdf_url"],
+        source_report_status="native_statewide_summary_no_independent_certification",
+        source_labeled_final=False, native_total_units=23, native_counted_units=None,
+        counted_field_not_used_to_infer_zero_ballots=True,
+        source_scope_notes="Explicit statewide PDF and summary workbook totals; all 23 county values match. "
+                           "The separately held unit aggregate and Natrona printed county conflict remain unchanged.",
+        selected_state_reference=True,
+        selection_disposition="separate_primary_statewide_summary_selected_not_county_conflict_repair",
+    )
+
+
 def build(current, native, historical, modes, ap, civic):
     if len(current) != 51 or {r["state_code"] for r in current} != set(STATES):
         raise ValueError("Changed complete current state/DC query")
     observations = {r["id"]: r for r in native}
-    controls = {(r["state_code"], int(r["year"])): r for r in historical}
-    if len(controls) != len(historical):
+    selected = [r for r in historical if r.get("selected_state_reference", True)]
+    controls = {(r["state_code"], int(r["year"])): r for r in selected}
+    if len(controls) != len(selected):
         raise ValueError("Duplicate historical state-year")
     for row in current:
         if not row["control_id"]:
@@ -302,6 +344,33 @@ def build(current, native, historical, modes, ap, civic):
                     same_registration_definition_independently_verified=False,
                     individual_retention_or_switching_inferred=False,
                     eligibility=None, deaths=None, migration=None))
+    source_selection = []
+    if any("selected_state_reference" in r for r in historical):
+        for row in native:
+            source_selection.append(dict(
+                observation_id=row["id"], year=int(row["year"]), state_code=row["state_code"],
+                geographic_level=row["geographic_level"], measure=row["measure"],
+                native_numerator=count(row["numerator"]),
+                native_denominator=count(row["denominator"]) if row["denominator"] else None,
+                selected_state_reference=row["selected_state_reference"] == "True",
+                disposition=row["disposition"], native_aggregate_ballot_approval=None,
+                source_url=row["source_url"], source_time_label=row["source_time_label"],
+                scope_notes=row["scope_notes"]))
+        for row in historical:
+            source_selection.append(dict(
+                observation_id=row["control_id"], year=row["year"], state_code=row["state_code"],
+                geographic_level=("state_native_unit_aggregate" if
+                                  row["control_measure"] == "native_workbook_ballot_sum_printed_conflict_held"
+                                  else "state"),
+                measure=row["control_measure"], native_numerator=row["native_numerator"],
+                native_denominator=row["registered"],
+                selected_state_reference=row.get("selected_state_reference", True),
+                disposition=row.get("selection_disposition", "historical_native_state_summary_selected"),
+                native_aggregate_ballot_approval=(
+                    "withheld" if row["control_measure"] == "native_workbook_ballot_sum_printed_conflict_held"
+                    else None),
+                source_url=row["source_url"], source_time_label=row["source_time_label"],
+                scope_notes=row.get("source_scope_notes", "")))
     summary = dict(
         state_year_query_rows=len(state_query), years=list(YEARS),
         state_year_controls=sum(r["control_present"] for r in state_query),
@@ -320,7 +389,10 @@ def build(current, native, historical, modes, ap, civic):
             "Hawaii 2022 Counted Precincts=0 does not turn its positive final-report counts into zero or missing votes.",
             "Historical source-labeled final does not establish independent certification.",
             "Wyoming 2022 and 2026 registrations remain null; no VEP or candidate sum replaces ballots or registration.",
-            "Wyoming 2022 native workbook sum remains held for the Natrona printed-total conflict; its native change is not an approved cast-ballot change.",
+            ("Wyoming 2022 native unit aggregate stays held; the separate primary statewide summary "
+             "is selected without repairing county prints, registration or geography."
+             if source_selection else
+             "Wyoming 2022 native workbook sum remains held for the Natrona printed-total conflict; its native change is not an approved cast-ballot change."),
             "2026 controls are held unofficial snapshots, not final-count turnout declines versus historical finals.",
             "Raw registration-frame fractions are source-defined, not harmonized eligibility rates.",
             "AP poll-close/final state weights remain separate and may already use outcome calibration; no independent prediction validation.",
@@ -329,20 +401,28 @@ def build(current, native, historical, modes, ap, civic):
             "No cross-study model-share change, individual transition, partisan fitting, causal turnout decomposition or confidence interval.",
             "Eligibility, death and migration remain unknown, not zero.",
         ])
-    return {
+    files = {
         "complete-state-year-controls.csv": csv_bytes(state_query),
         "complete-source-specific-survey-comparison.csv": csv_bytes(comparison),
         "complete-administrative-time-comparisons.csv": csv_bytes(transitions),
         "complete-native-mode-accounting.csv": csv_bytes(modes),
         "summary.json": json_bytes(summary),
-    }, summary
+    }
+    if source_selection:
+        summary["complete_native_source_observations"] = len(source_selection)
+        summary["retained_held_native_unit_observations"] = sum(
+            r["native_aggregate_ballot_approval"] == "withheld" for r in source_selection)
+        files["complete-native-source-selection.csv"] = csv_bytes(source_selection)
+        files["summary.json"] = json_bytes(summary)
+    return files, summary
 
 
 def export(inputs, output):
     if output.exists():
         raise ValueError("Refusing to overwrite an existing analysis")
     manifest = json.loads((inputs / "source-manifest.json").read_bytes())
-    if set(manifest["inputs"]) != INPUTS or manifest["raw_individual_records_included"] is not False:
+    if (set(manifest["inputs"]) not in (INPUTS, INPUTS | {PRIMARY_INPUT})
+            or manifest["raw_individual_records_included"] is not False):
         raise ValueError("Unapproved historical sufficient-input set")
     native = {}
     for name, receipt in manifest["inputs"].items():
@@ -363,8 +443,23 @@ def export(inputs, output):
             historical.append(row)
             modes.extend(accounting)
     with zipfile.ZipFile(io.BytesIO(native["wyoming-2022-sources.zip"])) as archive:
-        historical.append(wyoming(read_csv(archive.read("precinct-counts.csv")),
-                                  json.loads(archive.read("counts-review.json"))))
+        held = wyoming(read_csv(archive.read("precinct-counts.csv")),
+                       json.loads(archive.read("counts-review.json")))
+        if PRIMARY_INPUT in native:
+            primary = json.loads(native[PRIMARY_INPUT])
+            pdf = gzip.decompress(archive.read(
+                "originals/2022/2022_General_Statewide_Total_Ballots_Cast_Summary.pdf.gz"))
+            workbook_zip = gzip.decompress(archive.read("originals/2022/2022_Wyoming_General_Results.zip.gz"))
+            with zipfile.ZipFile(io.BytesIO(workbook_zip)) as workbooks:
+                workbook = workbooks.read("2022_General_Summaries_Results.xlsx")
+            if (hashlib.sha256(pdf).hexdigest() != primary["source_pdf_sha256"]
+                    or hashlib.sha256(workbook).hexdigest() != primary["source_workbook_sha256"]):
+                raise ValueError("Changed original statewide Wyoming source bytes")
+            state = wyoming_statewide(primary, held)
+            held["selected_state_reference"] = False
+            held["selection_disposition"] = "original_held_native_unit_aggregate_retained_not_promoted"
+            historical.append(state)
+        historical.append(held)
     files, summary = build(
         read_csv(native["current-state-controls.csv"]), read_csv(native["current-native-controls.csv"]),
         historical, modes, json.loads(native["ap-selected-aggregates.json"]),

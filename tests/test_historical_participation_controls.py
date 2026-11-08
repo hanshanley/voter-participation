@@ -3,7 +3,7 @@ from decimal import Decimal
 import io
 import unittest
 
-from scripts.historical_participation_controls import ANCHORS, DATES, STATES, build, hawaii, wyoming
+from scripts.historical_participation_controls import ANCHORS, DATES, STATES, build, hawaii, wyoming, wyoming_statewide
 
 
 def hi_source(year=2022):
@@ -50,8 +50,13 @@ def fixture():
                        control_registered_denominator="1000" if row["state_code"] == "HI" else "",
                        control_denominator_basis="native-frame", control_native_time="2026-source-clock",
                        control_source_url="https://official.example/current")
-    native = [dict(id=state.lower()+"-current", native_status="unofficial", native_measure="ballots",
-                   numerator="500" if state == "HI" else "200") for state in ("HI", "WY")]
+    native = [dict(
+        id=state.lower()+"-current", year="2026", state_code=state, geographic_level="state",
+        measure="reported_cast_ballots", native_status="unofficial", native_measure="ballots",
+        numerator="500" if state == "HI" else "200", denominator="1000" if state == "HI" else "",
+        selected_state_reference="True", disposition="selected_state_reference_not_independent_validation",
+        source_url="https://official.example/current", source_time_label="2026-source-clock", scope_notes="")
+        for state in ("HI", "WY")]
     ap = dict(selected_rows=[dict(
         scope="HI", dimension="overall", group="all", weight_field="FINALVOTE_STATE_WEIGHT",
         positive_weight_n="1000", n="1000", year="2022", weight="100", modeled_voter_weight="60",
@@ -65,6 +70,18 @@ def fixture():
 
 def read(content):
     return list(csv.DictReader(io.StringIO(content.decode())))
+
+
+def primary_fixture():
+    counties = {f"county-{i}": 10 for i in range(23)}
+    return dict(
+        year=2022, state_code="WY", workbook_counties=counties, workbook_total=230,
+        native_pdf_text="Wyoming General Election - November 8, 2022\n"
+                        + "\n".join(f"{county} {total}" for county, total in counties.items()) + "\n230Total\n",
+        native_ballot_issue_notes=[
+            "The total ballots cast is 230. The majority needed is 116.",
+            "The total ballots cast is 230. The majority needed is 116."],
+        source_pdf_url="https://official.example/statewide.pdf")
 
 
 class HistoricalParticipationControlsTests(unittest.TestCase):
@@ -152,6 +169,42 @@ class HistoricalParticipationControlsTests(unittest.TestCase):
         args[-2]["selected_rows"][0]["weight_field"] = "FINALVOTE_NATIONAL_WEIGHT"
         with self.assertRaisesRegex(ValueError, "state survey aggregate"):
             build(*args)
+
+    def test_direct_state_summary_selected_without_promoting_original_held_units(self):
+        primary = primary_fixture()
+        held = dict(
+            year=2022, state_code="WY", control_id="wy-native-general-2022",
+            control_measure="native_workbook_ballot_sum_printed_conflict_held",
+            native_measure="native unit aggregate", native_numerator=230, reported_cast_ballots=None,
+            registered=None, registration_basis="not supplied", source_time_label="native-clock",
+            source_url="https://official.example/units", source_report_status="held",
+            source_labeled_final=False, native_total_units=23, native_counted_units=None,
+            source_scope_notes="Original conflicting printed county figure remains.")
+        state = wyoming_statewide(primary, held)
+        held["selected_state_reference"] = False
+        args = fixture()
+        args[2].extend([held, state])
+        files, _ = build(*args)
+        selected = next(r for r in read(files["complete-state-year-controls.csv"])
+                        if r["state_code"] == "WY" and r["year"] == "2022")
+        self.assertEqual(selected["control_id"], "wy-native-general-2022-statewide")
+        self.assertEqual(selected["reported_cast_ballots"], "230")
+        self.assertEqual(selected["native_registered"], "")
+        ledger = next(r for r in read(files["complete-native-source-selection.csv"])
+                      if r["observation_id"] == "wy-native-general-2022")
+        self.assertEqual(ledger["selected_state_reference"], "False")
+        self.assertEqual(ledger["native_aggregate_ballot_approval"], "withheld")
+        self.assertEqual(ledger["native_numerator"], "230")
+        self.assertIsNone(held["reported_cast_ballots"])
+
+    def test_direct_state_pdf_total_and_county_changes_require_new_review(self):
+        primary = primary_fixture()
+        with self.assertRaisesRegex(ValueError, "PDF total"):
+            wyoming_statewide(dict(primary, native_pdf_text=primary["native_pdf_text"].replace(
+                "230Total", "231Total")), dict(native_numerator=230))
+        with self.assertRaisesRegex(ValueError, "county vector"):
+            wyoming_statewide(dict(primary, native_pdf_text=primary["native_pdf_text"].replace(
+                "county-0 10", "county-0 11")), dict(native_numerator=230))
 
 
 if __name__ == "__main__":

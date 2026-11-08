@@ -17,15 +17,16 @@ list of thousands of county URLs, are the inputs for future automation.
 Maintained `scripts/historical_participation_controls.py` now joins the approved
 public AP/Civic aggregates to source-specific state-year controls without
 reconstructing private respondents. The
-[complete immutable historical analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-01/complete-analysis.zip)
-is release `438027911`: 4,969,563 bytes, 16 ZIP members, SHA-256
-`6d4fe13ddb5772ca6a9986ad83ec1b2eb31a03b537979300a25797e2fc6ce9c0`.
-All six complete assets were authenticated-draft and anonymous-published
+[complete immutable historical analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip)
+is release `438041499`: 4,976,404 bytes, 18 ZIP members, SHA-256
+`e2cc5cfdf19220a20204405fd10329f2f38bb1c3822c06667e3b1513c53407c0`.
+All seven complete assets were authenticated-draft and anonymous-published
 byte-verified. It retains all 255 state/D.C.-year combinations, 434 separate
 survey/weight rows, 18 source references, 16 conditional registration-frame
 rows, 11 administrative comparisons and 18 literal native mode rows.
-Only 14 references qualify as cast-ballot measures; three retain other native
-meanings and one historical Wyoming reference remains held.
+Fifteen selected references qualify as cast-ballot measures; three retain other
+native meanings. A separate complete 25-observation source ledger retains the
+unselected, held Wyoming unit aggregate alongside the direct state source.
 
 The already-held Hawaii original archive supplies historical statewide
 `histatewide.pdf` and `summary.txt`, not reused 2026 layouts:
@@ -47,12 +48,13 @@ No raw voter/survey records, acquisition session headers or compiled publisher
 app code is included. Source-bound PDF text and all sufficient original
 aggregate files are included for package-only offline reproduction.
 
-The qualified native Wyoming 2022 review has 439 units in 23 counties, but
-its ballot approval is **withheld**: Natrona's precinct and statewide values
+The native Wyoming 2022 unit review has 439 units in 23 counties, and its
+original aggregate approval remains **withheld**: Natrona's precinct and statewide values
 are 22,955, while its printed county total is 22,957. The 198,198 workbook sum
-remains a held native measure, not an approved statewide cast-ballot control.
-Its -6,510 native-sum difference to the 2026 snapshot is not promoted to an
-approved cast-ballot change. Both Wyoming registration denominators remain
+remains a held native measure. Version 02 separately selects the primary
+statewide ballot summary described below, not that held aggregate. Its
+-6,510 difference to the 2026 source is a reported state snapshot difference,
+not final-count turnout decline. Both Wyoming registration denominators remain
 null, and changing precinct sets are not linked by reused labels.
 
 Eight focused historical tests, 24 combined historical/current tests and 4,570
@@ -88,12 +90,23 @@ sums; both constitutional-amendment notes independently state 198,198 and a
 `51ad76bbc0baa0851c008ca42eca7f7eb40e3c4cab6e983f38889544d1807b2d`;
 native summary workbook SHA-256:
 `230ee0bcf9a2d9d3a9373dfba7e771d74e1daa9a22f4eec81e5e26181a5c25a4`.
-This permits a separately identified primary statewide ballot reference,
+Version 02 uses a separately identified primary statewide ballot reference,
 without changing the original held unit-aggregate approval, the conflicting
-22,957 county print, registration unknowns or geography/rate holds. The next
-version must retain both observations and explicit source selection rather
-than mutate the immutable first package. Qualification receipt:
+22,957 county print, registration unknowns or geography/rate holds. The new
+version retains both observations and explicit source selection rather
+than mutating the immutable first package. Qualification receipt:
 `wyoming-2022-direct-statewide-reference-qualification-01.json`.
+
+The new source-selection increment passed ten historical/26 combined tests,
+1,973 independent preservation/source-selection/archive checks, and two
+blocked-network/DNS/external-command reproductions matching all 18 members
+and the full ZIP. All 254 unaffected state/year rows, 432 unaffected survey
+rows, all modeled shares and 16 conditional scenarios, the other ten time
+comparisons, all 18 mode rows and all six previous inputs remain unchanged.
+The original held aggregate and printed 22,957 county figure are preserved.
+The immutable first release and its earlier verification remain available.
+The version-02 website update is being validated separately; the exact
+production acceptance above describes the first source-specific view.
 
 ## Status and source classes
 
