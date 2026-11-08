@@ -303,6 +303,40 @@ to the public research export merely because this ledger records them.
   Fraction/scope/archive checks passed, and two blocked-network/DNS/external-
   command reproductions matched all members and the full ZIP. Maintained code:
   `scripts/participation_controls.py`.
+- Expanded state/control comparison
+  `state-participation-control-comparison-20261108-03` reuses those six frozen
+  public inputs and a complete 74-member source bundle from already-held
+  Minnesota/Hawaii/Wyoming releases. Its
+  [complete immutable version 02 ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-02/complete-analysis.zip)
+  has 17 members, 14,976,527 bytes, SHA-256
+  `500ba05dcaa88dea80b543f76479b7590605fa008744c699868b9b7c8b394019`.
+  All six assets in immutable release `438017771` were authenticated-draft
+  and anonymous-published byte-verified. All 51 state/D.C. rows, 15 native
+  observations, nine state references and six scenarios are retained.
+  Hawaii uses the explicit statewide PDF/text summary: 365,897 ballots,
+  853,399 registrations, REPORT 3, printed November 4, 2026 at 09:09:04 a.m.,
+  uncertified. The 496 native units sum to 365,903 ballots; the six-ballot
+  difference, zero native registrations and precinct rate holds remain.
+  State registration repeats across contest rows and is never added.
+  Wyoming's separate 191,688 ballots reconcile across 23 counties and 432
+  precincts, but no registration denominator or common statewide update
+  clock is invented. Its retained Washakie candidate-category conflict does
+  not alter ballot counts. Minnesota's held `20261105-expansion-01` file
+  contains 4,105 native statistics rows, only 2,490 flagged reported, and 15
+  ballot-mode discrepancies. The complete 1,224,405-ballot and 3,986,420-
+  registration-unit sums remain explicitly partial, never statewide controls
+  or state survey allocation targets. Source clocks are not acquisition times.
+  The sufficient-source bundle retains original aggregate files and public
+  source-bound qualified units; acquisition HTTP session headers are excluded.
+  Its native provenance pins are HI `b01c32e84cb6346e6478f80c404eb82ec3e6bc7b`,
+  WY `6ff31fc2cf9a4be6757db120b8ab2df3a08f7cb5` and
+  MN `a81e721f4a013d5bd00e4e65825b101f501c9503`.
+  Hawaii adds the sixth conditional scenario; Wyoming remains ballot-only.
+  The prior five scenarios, 49 unaffected state rows and 12 old controls
+  remain unchanged. Twelve tests and 5,530 independent Fraction/source/scope/
+  preservation/archive checks passed. Both blocked-network/DNS/external-
+  command reproductions matched every member and the whole ZIP. Version 01
+  remains immutable; no new website deployment is claimed for version 02.
 - Complete private outputs/receipts and executed code remain in the active
   session artifact workspace under those versioned names and
   `survey-reconstruction-all-states-20261108-01`. They are not already published

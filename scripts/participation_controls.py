@@ -21,6 +21,9 @@ EVIDENCE = {
     "oh-butler-2026-recorded-credit-20261107": ("OH", "county", "current_record_participation_credits", "current_county_registration_records"),
     "tx-harris-2026-counted-ballots-20261104": ("TX", "county", "counted_ballots", "county_registered_source_definition"),
     "ca-2026-native-voter-turnout-20261106": ("CA", "state", "native_voterTurnout_not_qualified_ballots", "native_totalRegisteredVoters_definition_unqualified"),
+    "hi-2026-held-state-summary-report-3": ("HI", "state", "reported_cast_ballots", "registered_voters_source_definition"),
+    "wy-2026-held-reconciled-county-ballots": ("WY", "state", "reported_cast_ballots", "registered_denominator_not_supplied"),
+    "mn-2026-held-partial-precinct-statistics": ("MN", "partial_state_reporting_units", "reported_cast_ballots", "partial_precinct_registered_at_open_plus_election_day_registrations"),
 }
 REGISTERED = {
     "registered_voters_source_definition", "active_and_inactive_registered_voters",
@@ -33,6 +36,7 @@ INPUTS = {
     "published-reporting-controls.json", "published-reporting-complete-snapshot.zip",
     "house-state-party-totals.csv.gz",
 }
+HELD_INPUT = "held-precinct-participation-controls.zip"
 
 
 def json_bytes(value):
@@ -49,6 +53,126 @@ def csv_bytes(rows):
     return stream.getvalue().encode()
 
 
+def held_controls(content):
+    with zipfile.ZipFile(io.BytesIO(content)) as archive:
+        def load(name):
+            raw = archive.read(name)
+            return json.loads(gzip.decompress(raw) if name.endswith(".gz") else raw)
+
+        hi_audit = load("HI/audit.json")
+        hi_pdf = load("HI/pdf-observations.json.gz")["histatewide.pdf"]
+        hi_units = load("HI/participation.json.gz")
+        text = gzip.decompress(archive.read("HI/originals/summary.txt.gz")).decode("utf-8-sig")
+        hi_rows = list(csv.DictReader(io.StringIO(text.split("\n", 1)[1]), delimiter="\t"))
+        wy_audit = load("WY/counts-review.json")
+        wy_rows = list(csv.DictReader(io.StringIO(archive.read("WY/precinct-counts.csv").decode())))
+        mn_audit = load("MN/participation-audit.json")
+        mn_rows = list(csv.reader(io.StringIO(archive.read("MN/pctstats.txt").decode()), delimiter=";"))
+
+    if hi_audit["year"] != 2026 or hi_audit["state_code"] != "HI" or hi_audit["source_certified"]:
+        raise ValueError("Changed Hawaii held-election contract")
+    hi_house = [row for row in hi_rows if row["Contest Title"] in
+                {"U.S. Representative, Dist I", "U.S. Representative, Dist II"}]
+    registration = {int(row["Registered Voters"]) for row in hi_house}
+    contests = defaultdict(list)
+    for row in hi_house:
+        contests[row["Contest Title"]].append(row)
+    if len(contests) != 2 or len(registration) != 1:
+        raise ValueError("Hawaii statewide registration or House scope changed")
+    hi_ballots = 0
+    fields = [mode + " " + category for mode in ("Mail", "In-Person")
+              for category in ("Blank Votes", "Over Votes", "Invalid Votes")]
+    for rows in contests.values():
+        accounting = {tuple(int(row[field]) for field in fields) for row in rows}
+        if len(accounting) != 1 or len({row["Candidate ID"] for row in rows}) != len(rows):
+            raise ValueError("Hawaii repeated accounting or candidate identity changed")
+        if any(int(r["Total Votes"]) != int(r["Mail Votes"]) + int(r["In-Person Votes"]) for r in rows):
+            raise ValueError("Hawaii native candidate mode counts differ")
+        hi_ballots += sum(int(row["Total Votes"]) for row in rows) + sum(next(iter(accounting)))
+    hi_registered = registration.pop()
+    pdf_counts = hi_pdf["records"][0]["participation"]
+    hi_unit_ballots = sum(row["ballots"] for row in hi_units)
+    if (hi_ballots != pdf_counts["TOTAL TURNOUT"] or hi_registered != pdf_counts["TOTAL REGISTRATION"]
+            or hi_ballots != hi_audit["source_summary_ballots"]
+            or hi_unit_ballots != hi_audit["ballots"] or len(hi_units) != hi_audit["reporting_units"]
+            or sum(row["registered"] for row in hi_units) != hi_registered):
+        raise ValueError("Hawaii source-bound statewide/precinct reconciliation changed")
+
+    wy_counties = defaultdict(int)
+    wy_review = {row["county"]: row for row in wy_audit["counties"]}
+    identities = set()
+    for row in wy_rows:
+        key = row["county"], row["precinct"]
+        if (row["year"] != "2026" or row["state_code"] != "WY" or key in identities
+                or row["registered_voters"] or row["turnout_rate"]
+                or int(row["ballots"]) != sum(int(row[name]) for name in wy_audit["category_labels"])):
+            raise ValueError("Wyoming native ballot scope or missing registration changed")
+        identities.add(key)
+        wy_counties[row["county"]] += int(row["ballots"])
+    if (wy_audit["year"] != 2026 or wy_audit["state_code"] != "WY" or len(wy_counties) != 23
+            or set(wy_counties) != set(wy_review) or len(wy_rows) != wy_audit["units"]
+            or sum(wy_counties.values()) != wy_audit["statewide_ballots"]
+            or any(total != wy_review[county]["printed_county_ballots"]
+                   for county, total in wy_counties.items())):
+        raise ValueError("Wyoming complete county/precinct ballot reconciliation changed")
+
+    mn_reported = mn_ballots = mn_registered = mn_mismatches = 0
+    identities = set()
+    for row in mn_rows:
+        if len(row) != 12 or row[0] != "MN" or row[4] not in {"0", "1"} or tuple(row[1:3]) in identities:
+            raise ValueError("Minnesota held precinct identity/reporting contract changed")
+        identities.add(tuple(row[1:3]))
+        values = [int(value) for value in row[5:]]
+        if min(values) < 0:
+            raise ValueError("Minnesota missing/negative native statistics need explicit review")
+        mn_registered += values[0] + values[1]
+        mn_ballots += values[-1]
+        mn_reported += row[4] == "1"
+        mn_mismatches += values[-1] != sum(values[2:6])
+    if (len(mn_rows) != mn_audit["rows"] or mn_reported == len(mn_rows)
+            or mn_mismatches != mn_audit["ballot_mode_discrepancies"]):
+        raise ValueError("Minnesota partial-reporting scope changed")
+
+    reconciliation = dict(
+        HI=dict(state_summary_ballots=hi_ballots, statewide_registered=hi_registered,
+                native_unit_ballots=hi_unit_ballots, native_units=len(hi_units),
+                unit_minus_summary_ballots=hi_unit_ballots-hi_ballots,
+                precinct_rates_remain_withheld=True, registration_repeated_not_added=True),
+        WY=dict(counties=len(wy_counties), native_units=len(wy_rows),
+                statewide_ballots=sum(wy_counties.values()), registered_denominator=None,
+                candidate_conflicts_retained=wy_audit["candidate_county_state_conflicts"]),
+        MN=dict(native_units=len(mn_rows), reported_units=mn_reported,
+                native_ballots_sum=mn_ballots, native_registered_sum=mn_registered,
+                ballot_mode_discrepancies=mn_mismatches, statewide_control_qualified=False,
+                native_update_time_supplied=False),
+    )
+    observations = []
+    for identifier, jurisdiction, scope, numerator, denominator, clock, url, notes in [
+        ("hi-2026-held-state-summary-report-3", "Hawaii", "statewide native summary",
+         hi_ballots, hi_registered, hi_pdf["printed_on"],
+         "https://elections.hawaii.gov/wp-content/results/2026%20General/histatewide.pdf",
+         "REPORT 3, uncertified. Native unit ballots exceed the state summary by "
+         + str(hi_unit_ballots-hi_ballots)
+         + "; precinct registrations/rates remain unrepaired and withheld. State registration is repeated across contest rows, not added."),
+        ("wy-2026-held-reconciled-county-ballots", "Wyoming", "statewide all 23 counties",
+         sum(wy_counties.values()), None,
+         "Held November 5, 2026 snapshot; county-native clocks retained, no common statewide clock qualified",
+         "https://sos.wyo.gov/Elections/Docs/2026/2026GeneralResults.aspx",
+         "Separate native ballots reconcile across all counties. Registration remains null; the Washakie candidate-category conflict is retained."),
+        ("mn-2026-held-partial-precinct-statistics", "Minnesota", "partial statewide precinct statistics",
+         mn_ballots, mn_registered,
+         "Held 20261105-expansion-01 snapshot; no native update time supplied in the statistics file",
+         "https://electionresultsfiles.sos.mn.gov/20261103/pctstats.txt",
+         f"Only {mn_reported}/{len(mn_rows)} units flagged reported; {mn_mismatches} ballot-mode discrepancies."
+         " Sums retain every native row, including zeros. Not statewide turnout or a state registration control."),
+    ]:
+        observations.append(dict(
+            id=identifier, jurisdiction=jurisdiction, scope=scope, numerator=numerator, denominator=denominator,
+            measure="native reported ballots", denominator_label=EVIDENCE[identifier][3],
+            source_time_label=clock, source_url=url, status="unofficial_held_snapshot", scope_notes=notes))
+    return observations, reconciliation
+
+
 def controls(reporting, evidence):
     result = []
     for row in reporting:
@@ -62,6 +186,7 @@ def controls(reporting, evidence):
             denominator_basis=row["denominator_basis"], denominator_label=row["denominator_basis"],
             source_time_label=row["source_update_label"], source_url=row["source_url"],
             native_status=row["status"], source_kind="published_reporting_snapshot",
+            scope_notes="",
             selected_state_reference=False, disposition="pending_scope_review",
         ))
     for row in evidence["observations"]:
@@ -77,12 +202,14 @@ def controls(reporting, evidence):
             denominator_basis=basis, denominator_label=row["denominator_label"],
             source_time_label=row["source_time_label"], source_url=row["source_url"],
             native_status=row["status"], source_kind="reviewed_public_observation",
+            scope_notes=row.get("scope_notes", ""),
             selected_state_reference=False, disposition="pending_scope_review",
         ))
     families = defaultdict(list)
     for row in result:
         if row["geographic_level"] != "state":
-            row["disposition"] = "county_only_no_state_survey_allocation"
+            row["disposition"] = ("county_only_no_state_survey_allocation" if row["geographic_level"] == "county"
+                                  else "partial_state_no_state_survey_allocation")
             continue
         families[row["state_code"], row["source_family"], row["measure"]].append(row)
     for rows in families.values():
@@ -197,6 +324,8 @@ def build(civic, uf, reporting, evidence, house):
         exact_same_source_duplicates_not_added=sum(
             r["disposition"] == "same_source_same_counts_duplicate_not_added" for r in observed),
         county_controls_retained_not_allocated=sum(r["geographic_level"] == "county" for r in observed),
+        partial_state_controls_retained_not_allocated=sum(
+            r["geographic_level"] == "partial_state_reporting_units" for r in observed),
         conditional_registered_frame_scenarios=len(scenarios),
         scenarios_with_reported_cast_ballot_comparison=sum(
             r["reported_cast_ballot_measure_control"] is not None for r in scenarios),
@@ -211,6 +340,9 @@ def build(civic, uf, reporting, evidence, house):
             "Colorado returned/processed and California source-labeled voterTurnout do not become cast-ballot controls.",
             "The duplicate North Carolina source is retained but never added twice.",
             "County-only controls remain separate; no state survey estimate is allocated to a county.",
+            "Partial-state precinct statistics are retained separately, never used as statewide controls or survey allocation targets.",
+            "Hawaii uses its declared statewide summary, not the differing native-unit ballot sum; precinct rates remain withheld.",
+            "Wyoming's whole-state ballot count supplies no registration denominator or conditional population scenario.",
             "UF initial ballot/VEP estimates remain estimates. VEP is not used as a registered denominator.",
             "House candidate vote sums are office-specific context, not ballots or unique voters.",
             "Missing registered controls remain null, including North Dakota's unsupplied eligible denominator.",
@@ -230,7 +362,8 @@ def export(inputs, output):
     if output.exists():
         raise ValueError("Refusing to overwrite an existing analysis")
     manifest = json.loads((inputs / "source-manifest.json").read_bytes())
-    if set(manifest["inputs"]) != INPUTS or manifest.get("original_raw_survey_or_voter_records_included") is not False:
+    if (set(manifest["inputs"]) not in (INPUTS, INPUTS | {HELD_INPUT})
+            or manifest.get("original_raw_survey_or_voter_records_included") is not False):
         raise ValueError("Unapproved or nonpublic aggregate input set")
     native = {}
     for name, receipt in manifest["inputs"].items():
@@ -242,10 +375,17 @@ def export(inputs, output):
         native[name] = content
     with gzip.open(io.BytesIO(native["house-state-party-totals.csv.gz"]), "rt", newline="") as stream:
         house = list(csv.DictReader(stream))
+    evidence = json.loads(native["reviewed-2026-observations.json"])
+    reconciliation = None
+    if HELD_INPUT in native:
+        observations, reconciliation = held_controls(native[HELD_INPUT])
+        evidence["observations"].extend(observations)
     files, summary = build(
         json.loads(native["civic-selected-aggregates.json"]), json.loads(native["uf-turnout.json"]),
         json.loads(native["published-reporting-controls.json"]),
-        json.loads(native["reviewed-2026-observations.json"]), house)
+        evidence, house)
+    if reconciliation is not None:
+        files["complete-held-source-reconciliation.json"] = json_bytes(reconciliation)
     files.update({"inputs/" + name: content for name, content in native.items()})
     files["inputs/source-manifest.json"] = json_bytes(manifest)
     files["scripts/participation_controls.py"] = Path(__file__).read_bytes()

@@ -110,22 +110,36 @@ fields.
 
 ## Conditional current-registration controls
 
-The [complete state/control comparison](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-01/complete-analysis.zip)
-contains all 51 state/D.C. rows, 12 native control observations and five
-conditional current-register scenarios for AL, CA, CO, NC and OR.
+The [complete expanded state/control comparison](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-02/complete-analysis.zip)
+contains all 51 state/D.C. rows, 15 native control observations and six
+conditional current-register scenarios for AL, CA, CO, HI, NC and OR.
 `R*p` and `R*(1-p)` split each native registration denominator using its state's
 source-weighted modeled participation share. **Exchangeability to that exact
 registration frame is an unvalidated assumption**, not measured staying home,
 independent model validation or an original-coalition population estimate.
 
 Active, all-registered, eligible/pre-registered and source-undefined denominators
-remain distinct. Only AL, NC and OR have cast-ballot measure comparisons.
+remain distinct. Only AL, HI, NC and OR have cast-ballot measure comparisons.
 Colorado returned/processed ballots and California native `voterTurnout` are
 not relabeled as cast-ballot observations; missing registration totals are not
 filled with UF's estimated VEP. Native dates, unsupported states, the duplicate
 NC source and all county-only observations remain in the full query.
-The archive includes every permitted aggregate input, code, tests and offline
-reproduction instructions.
+Hawaii's declared statewide summary reports 365,897 ballots and 853,399
+registrations. Its native unit ballot sum is six higher; that discrepancy and
+precinct registration/rate holds remain visible. Wyoming's separate 191,688
+ballots reconcile across all 23 counties, but its registration denominator stays
+null. Minnesota's 4,105-row statistics file has only 2,490 units flagged reported
+and 15 ballot-mode discrepancies: its sums are retained, never treated as
+statewide controls or allocated statewide survey estimates.
+
+The 17-member archive includes complete permitted sufficient inputs, original
+aggregate sources, all queries, code, 12 tests and offline reproduction
+instructions. Independent verification passed 5,530 checks and two byte-identical
+offline reproductions. The original five scenarios, 49 unaffected state rows
+and all 12 old controls remain unchanged; the
+[initial version](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-01)
+is preserved immutably. These new control outputs are research downloads, not
+an additional deployed website view.
 
 ## Reproduce
 

@@ -1,11 +1,13 @@
 import csv
+import gzip
 import io
 import json
 from pathlib import Path
 import tempfile
 import unittest
+import zipfile
 
-from scripts.participation_controls import HOUSE_OFFICE, build, export
+from scripts.participation_controls import HOUSE_OFFICE, build, export, held_controls
 
 
 STATES = "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY".split()
@@ -24,6 +26,49 @@ def data():
 
 def read(content):
     return list(csv.DictReader(io.StringIO(content.decode())))
+
+
+def held_archive(hi_pdf_ballots=600, wy_registration="", mn_all_reported=False):
+    fields = ["Contest Title", "Candidate ID", "Registered Voters", "Total Votes", "Mail Votes",
+              "In-Person Votes", "Mail Blank Votes", "In-Person Blank Votes", "Mail Over Votes",
+              "In-Person Over Votes", "Mail Invalid Votes", "In-Person Invalid Votes"]
+    stream = io.StringIO(newline="")
+    stream.write("#FormatVersion 1\n")
+    writer = csv.writer(stream, delimiter="\t", lineterminator="\n")
+    writer.writerow(fields)
+    for contest in ("I", "II"):
+        writer.writerow(["U.S. Representative, Dist " + contest, "1", 1000, 200, 190, 10, 100, 0, 0, 0, 0, 0])
+    files = {
+        "HI/originals/summary.txt.gz": gzip.compress(stream.getvalue().encode(), mtime=0),
+        "HI/audit.json": json.dumps(dict(
+            year=2026, state_code="HI", source_certified=False, reporting_units=2,
+            source_summary_ballots=600, ballots=606)).encode(),
+        "HI/pdf-observations.json.gz": gzip.compress(json.dumps({"histatewide.pdf": dict(
+            printed_on="native-clock", records=[dict(participation={
+                "TOTAL TURNOUT": hi_pdf_ballots, "TOTAL REGISTRATION": 1000})])}).encode(), mtime=0),
+        "HI/participation.json.gz": gzip.compress(json.dumps([
+            dict(ballots=400, registered=1000), dict(ballots=206, registered=0)]).encode(), mtime=0),
+        "MN/participation-audit.json": json.dumps(dict(rows=2, ballot_mode_discrepancies=0)).encode(),
+        "MN/pctstats.txt": ("MN;01;1;reported;1;100;2;30;20;0;0;50\n"
+                            f"MN;01;2;not-reported;{int(mn_all_reported)};200;0;0;0;0;0;0\n").encode(),
+    }
+    rows = [dict(year=2026, state_code="WY", county=f"county-{i}", precinct="1",
+                 candidate=10, ballots=10, registered_voters=wy_registration, turnout_rate="")
+            for i in range(23)]
+    stream = io.StringIO(newline="")
+    writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(rows)
+    files["WY/precinct-counts.csv"] = stream.getvalue().encode()
+    files["WY/counts-review.json"] = json.dumps(dict(
+        year=2026, state_code="WY", units=23, statewide_ballots=230, category_labels=["candidate"],
+        counties=[dict(county=r["county"], printed_county_ballots=10) for r in rows],
+        candidate_county_state_conflicts=[dict(county="unresolved-native-conflict")])).encode()
+    output = io.BytesIO()
+    with zipfile.ZipFile(output, "w") as archive:
+        for name, value in files.items():
+            archive.writestr(name, value)
+    return output.getvalue()
 
 
 class ParticipationControlsTests(unittest.TestCase):
@@ -98,6 +143,46 @@ class ParticipationControlsTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Unapproved or nonpublic"):
                 export(root, root / "output")
             self.assertFalse((root / "output").exists())
+
+    def test_held_hawaii_registration_not_multiplied_and_ballot_difference_preserved(self):
+        observations, reconciliation = held_controls(held_archive())
+        civic, uf, reporting, evidence, house = data()
+        evidence["observations"] = observations
+        files, _ = build(civic, uf, reporting, evidence, house)
+        row = next(r for r in read(files["complete-conditional-registered-scenarios.csv"])
+                   if r["state_code"] == "HI")
+        self.assertEqual(row["native_registered_denominator"], "1000")
+        self.assertEqual(row["reported_cast_ballot_measure_control"], "600")
+        self.assertEqual(reconciliation["HI"]["unit_minus_summary_ballots"], 6)
+        self.assertTrue(reconciliation["HI"]["precinct_rates_remain_withheld"])
+
+    def test_held_partial_minnesota_and_missing_wyoming_registration_not_scaled(self):
+        observations, reconciliation = held_controls(held_archive())
+        civic, uf, reporting, evidence, house = data()
+        evidence["observations"] = observations
+        files, summary = build(civic, uf, reporting, evidence, house)
+        rows = {r["state_code"]: r for r in read(files["complete-state-control-query.csv"])}
+        self.assertEqual(rows["WY"]["reported_cast_ballots"], "230")
+        self.assertEqual(rows["WY"]["control_registered_denominator"], "")
+        self.assertEqual(rows["WY"]["conditional_registered_frame_scenario_available"], "False")
+        self.assertEqual(rows["MN"]["reported_cast_ballots"], "")
+        self.assertEqual(rows["MN"]["control_registered_denominator"], "")
+        self.assertEqual(summary["partial_state_controls_retained_not_allocated"], 1)
+        self.assertEqual(reconciliation["MN"]["reported_units"], 1)
+        self.assertEqual(reconciliation["MN"]["native_units"], 2)
+        self.assertEqual(len(reconciliation["WY"]["candidate_conflicts_retained"]), 1)
+
+    def test_held_hawaii_text_and_pdf_disagreement_requires_review(self):
+        with self.assertRaisesRegex(ValueError, "Hawaii source-bound"):
+            held_controls(held_archive(hi_pdf_ballots=601))
+
+    def test_held_wyoming_new_registration_is_not_silently_adopted(self):
+        with self.assertRaisesRegex(ValueError, "Wyoming native ballot scope"):
+            held_controls(held_archive(wy_registration="100"))
+
+    def test_changed_minnesota_complete_reporting_requires_new_scope_review(self):
+        with self.assertRaisesRegex(ValueError, "Minnesota partial-reporting scope"):
+            held_controls(held_archive(mn_all_reported=True))
 
 
 if __name__ == "__main__":
