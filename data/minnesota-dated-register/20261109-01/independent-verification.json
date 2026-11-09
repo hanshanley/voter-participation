@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "independent_checks": 1351,
+  "native_registered_parent": 3927036,
+  "native_preregistered_excluded": 94621,
+  "native_snapshot_date": "2026-11-02",
+  "conditional_model_participant_units": "2937408.5661001029507688743102315755120202924433606496682989452792771603744897847",
+  "conditional_model_nonparticipant_units": "989627.43389989704923112568976842448797970755663935033170105472072283962551021534",
+  "all267_native_cells_and176_counts_87_counties_and_both_totals_verified": true,
+  "preregistered_adolescents_not_added_or_projected_into_model": true,
+  "montana_visible_test_banner_verified_no_test_counts_selected": true,
+  "all50_other_states_40_prior_controls_28_scenarios_preserved": true,
+  "complete_state_query_rows": 51,
+  "source_control_records": 41,
+  "conditional_scenarios": 29,
+  "focused_tests": 10,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 15,
+  "archive_bytes": 105390921,
+  "archive_sha256": "13a0fecb05d650f1013bf74c79fb630ac83b0dc1554ceed4a9d933aca0662ecd"
+}

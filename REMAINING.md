@@ -51,6 +51,22 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Minnesota registered-only snapshot integrated:** version23 adds
+3,927,036 Registered Voters as of the native November 2 table caption,
+excluding the separate 94,621 preregistrants aged16/17. The current
+table is not assigned the older linked workbook dates. All 87 counties /
+267 cells / 176 counts and both separate population totals are verified
+by independent parsers. Ten tests, 1,351 checks and two exact offline
+reproductions pass. Conditional registered-only units remain unvalidated,
+not observed participation, legal eligibility or election-time population.
+All fifty other state rows, 40 prior controls and 28 scenarios survive;
+now 41 dispositions / 29 scenarios. Prior partial MN results stay held.
+A distinct MT results-export page returned200 with a visible TEST banner:
+unqualified, no test count selected or modeled. Its separate denied
+registration-index route remains stopped. Complete factual inputs/code/
+tests/queries are downloadable. No new website view, ballots/residual,
+rates/maps, group/local allocation or population validation.
+
 **Idaho dated register integrated separately:** version22 adds the
 official 2026-11 Total 1,056,803. The actual published selector values
 and CSV template were followed, not guessed. All three original views /

@@ -25,6 +25,48 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Minnesota registered-only snapshot and test-source exclusion
+
+[Complete version-23 controls and inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/complete-analysis.zip)
+add the [official current county table](https://www.sos.mn.gov/election-administration-campaigns/data-maps/voter-registration-counts/).
+Its native caption says **November 2, 2026**: **3,927,036 Registered
+Voters**, separately **94,621 Pre-Registered Voters**. The latter are
+source-defined 16/17-year-olds and are **not added or age-projected into
+the model denominator**. This date belongs to the current table, not
+the older May/June workbook links or acquisition clock.
+
+All 87 counties plus TOTAL / 267 cells / 176 count slots are retained.
+Independent standard-library HTMLParser and lxml/libxml2 views agree;
+both county sums reconcile to their distinct explicit parents.
+Missing values are not zero, and county names are not inferred FIPS.
+Exact time, timezone and active/inactive status remain unknown.
+Registration is not independent legal-eligibility certification.
+
+Conditional **2,937,408.57 participant / 989,627.43 nonparticipant
+registered-only units** assume unvalidated statewide Civic transport,
+not observed people or staying home. The earlier partial Minnesota
+election observation is unchanged, not blended with the dated register.
+All fifty other state rows, 40 prior controls and 28 scenarios survive;
+version23 contains 41 dispositions and 29 scenarios, not 29 distinct states.
+
+A distinct Montana election-results export page returned HTTP200 but
+has a visible **TEST** header banner. It remains unqualified; no test
+turnout/registration/candidate count is an administrative benchmark or
+model input. Its test-status receipt is retained, not mislabelled403.
+The earlier denied Montana registration-index route stays stopped.
+Full test-page/session-form/app-code/contact material stays local.
+
+Ten tests, 1,351 independent checks and two exact blocked offline
+reproductions pass. Immutable release `438886468` has eight full assets,
+authenticated-draft and anonymous-published byte-verified. Its
+105,390,921-byte / fifteen-member ZIP includes the complete byte-exact
+factual table, independent view, typed age/date facts, receipts/test hold,
+entire version22 baseline, reader/extractor/shared code, tests and every
+query. SHA-256:
+`13a0fecb05d650f1013bf74c79fb630ac83b0dc1554ceed4a9d933aca0662ecd`.
+No new website view, ballots/residual, rates/maps, population validation,
+local/group allocation or fabricated intervals; earlier releases unchanged.
+
 ## Idaho month-labelled registration, separate from the ballot report
 
 [Complete version-22 controls and inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-22/complete-analysis.zip)

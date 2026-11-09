@@ -1,0 +1,48 @@
+{
+  "active_inactive_status_qualified": false,
+  "all267_native_cells_and176_counts_preserved": true,
+  "certification_approved": false,
+  "counting_completion_approved": false,
+  "design_confidence_interval": null,
+  "full_index_app_code_contacts_session_forms_and_test_counts_not_redistributed": true,
+  "group_or_local_survey_allocation": false,
+  "independent_legal_eligibility_certification": false,
+  "maps_approved": false,
+  "missing_imputed_zero": false,
+  "montana_registration_403_route_stays_stopped": true,
+  "montana_results_counts_used_for_model": false,
+  "montana_results_test_banner_observed": true,
+  "native_accounting_checks": [
+    {
+      "difference": 0,
+      "native_parent": 3927036,
+      "observed_county_sum": 3927036,
+      "population_label": "Registered Voters"
+    },
+    {
+      "difference": 0,
+      "native_parent": 94621,
+      "observed_county_sum": 94621,
+      "population_label": "Pre-Registered Voters"
+    }
+  ],
+  "native_accounting_discrepancies": [],
+  "native_county_codes_not_inferred_fips": true,
+  "native_minus_model": null,
+  "native_preregistered_ages": [
+    16,
+    17
+  ],
+  "native_preregistered_parent_excluded": 94621,
+  "native_registered_parent": 3927036,
+  "native_snapshot_date": "2026-11-02",
+  "native_statewide_ballots": null,
+  "native_time": null,
+  "native_timezone": null,
+  "observed_staying_home": null,
+  "old_partial_election_observation_unchanged": true,
+  "preregistered_not_added_or_age_projected_into_model": true,
+  "rates_approved": false,
+  "source_activation_age": 18,
+  "source_population_transport_validated": false
+}

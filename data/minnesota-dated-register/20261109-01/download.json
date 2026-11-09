@@ -1,0 +1,105 @@
+{
+  "schema": "minnesota-dated-registered-only-v1",
+  "version": "20261109-01",
+  "release_id": 438886468,
+  "release_tag": "participation-state-controls-20261108-23",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/complete-analysis.zip",
+      "bytes": 105390921,
+      "sha256": "13a0fecb05d650f1013bf74c79fb630ac83b0dc1554ceed4a9d933aca0662ecd",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726762739",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/complete-conditional-registered-scenarios.csv",
+      "bytes": 26297,
+      "sha256": "3d77f59e1be662c580f1c111d594013e49bcfb92260e72355041d98a8bb5d53c",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726762741",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-minnesota-registered-only-frame.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/complete-minnesota-registered-only-frame.csv",
+      "bytes": 509,
+      "sha256": "9d37b510759f303bc4e5aa0e93eea062726d3fa6f1523d4c20407fe620358cf8",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726762766",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/complete-native-control-dispositions.csv",
+      "bytes": 37074,
+      "sha256": "00a4fa7dd06e55ca611766834808f0aa7c5ced808002723cb35ee3a9d5381c26",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726762736",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-registered-preregistered-accounting.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/complete-native-registered-preregistered-accounting.csv",
+      "bytes": 9667,
+      "sha256": "d2d8aa5576101ed3723af98a5e73518e61282e626a4f1f7e2f81482fe031973b",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726762742",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/complete-state-control-query.csv",
+      "bytes": 24708,
+      "sha256": "55873f69d8e2407a02384454c29e0f7066acb28e3ebf8b20e5388674f8efc380",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726762735",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/source-qualification.json",
+      "bytes": 1604,
+      "sha256": "6ceea0b0635606d12b0ec886e28893d146374c167fe2be2ed37c2d9448c5c342",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726762763",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/summary.json",
+      "bytes": 443,
+      "sha256": "23fb9ca48bc92452a19b1b0c979d42be34a3963b49e98fdf892c1ccb93471e7f",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726762765",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_state_query_rows": 51,
+  "source_control_records": 41,
+  "conditional_scenarios": 29,
+  "native_snapshot_date": "2026-11-02",
+  "native_registered_parent": 3927036,
+  "native_preregistered_parent_excluded": 94621,
+  "preregistered_source_ages": [
+    16,
+    17
+  ],
+  "preregistered_not_added_or_age_projected_into_model": true,
+  "native_time": null,
+  "native_timezone": null,
+  "active_inactive_status_qualified": false,
+  "independent_legal_eligibility_certification": false,
+  "native_county_rows": 87,
+  "native_raw_cells": 267,
+  "native_count_slots": 176,
+  "old_partial_election_observation_and_all50_other_states_40_controls_28_scenarios_preserved": true,
+  "montana_http200_results_visible_TEST_banner_hold_recorded": true,
+  "montana_test_counts_not_qualified_or_used_for_model": true,
+  "earlier_montana_registration_403_route_stays_stopped": true,
+  "full_app_code_contacts_session_forms_and_personal_records_excluded": true,
+  "research_downloads_only_no_new_website_view": true
+}
