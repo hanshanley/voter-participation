@@ -25,6 +25,52 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 source-reported already-voted profiles
+
+[Complete reported-stage study](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-reported-stage-20261109-01/complete-analysis.zip)
+reuses the verified private LVB reduction without repeating original
+survey acquisition/reduction. All **306 overall/age profile decisions**
+and **612 stage-cell queries** include 182 holds.
+
+| Selected source profiles | Count |
+|---|---:|
+| Statewide | 46 |
+| State/age | 78 |
+| Total profiles across 49 source states | **124**, not 124 states |
+
+Native **LVB5, Already voted** is a labelled response, not an
+administratively verified ballot. The **opaque other/unresolved** block
+combines future voting intentions, explicit nonintentions and unknown/
+skipped/refused responses; it is **not nonvoting or staying home**.
+Unknowns remain in full source denominators. Field period, common
+interview cutoff and weight target/calibration remain unqualified:
+these profiles are not a timestamped early-vote curve or population turnout.
+
+Existing public-parent selection, n100 parents/n30 positive stage cells,
+small-difference guards against published model margins and age-complement
+checks apply. One extra whole-age-profile hold protects complements.
+Held stage counts/weights stay NULL. No separate native1/2/3/4/99 masses,
+pooled/national profile, individual LVB/model intersection, party fitting
+or prior-voter cohort restriction. All prior-response categories were summed.
+All 1,530 model-query bytes, native28, age-register study and website survive.
+
+Sixteen tests, **20,712 independent checks** and two exact offline
+reproductions pass. Immutable release `439297970` has eight full
+byte-verified assets. The **308,015-byte / 13-member ZIP** includes complete
+permitted numeric stage primitives/masks, full public parent inputs,
+definitions, preserved queries, safe receipts, standard-library extraction/
+analysis code/tests and every query/result. Private fine reductions,
+respondent identifiers and denied app bodies are excluded. SHA-256:
+`a5d3f21a799a02635b73b229172f0111344cf1950e615cc52b993c5514a4c314`.
+
+**Distinct access follow-ups:** the
+[two-observation ledger](data/registration-access/20261109-09/observations.json)
+records Ohio's primary-certification announcement403 (1,253,339 bytes) and
+Iowa's primary-results index403 (5,558 bytes). Both routes stopped without
+another client/cache/mirror or cached count promoted to analysis.
+The old Ohio aggregate portal was not retried. Broader independent
+administrative demographic/precinct participation gaps remain open.
+
 ## 2026 same-age registration-frame source units
 
 [Complete age-frame study](https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-analysis.zip)

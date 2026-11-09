@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "independent_checks": 20712,
+  "focused_tests": 16,
+  "profile_decisions": 306,
+  "complete_stage_cell_queries": 612,
+  "supported_profiles": 124,
+  "supported_overall_profiles": 46,
+  "supported_age_profiles": 78,
+  "supported_source_states": 49,
+  "held_profiles": 182,
+  "complementary_age_profile_holds": 1,
+  "private_original30782_row_aggregation_and_Fraction_math_agree": true,
+  "all_prior_responses_aggregated_no_party_or_prior_voter_selection": true,
+  "coarse_other_includes_future_intention_nonintention_unknown_not_nonvoters": true,
+  "source_already_response_not_verified_ballot_or_common_cutoff": true,
+  "no_individual_LVB_model_joint_or_pooled_profile_inferred": true,
+  "legacy_model_margin_difference_and_age_complement_guards_pass": true,
+  "old1530_model_query_bytes_preserved": true,
+  "private_fine_rows_identifiers_and_denied_bodies_not_redistributed": true,
+  "source_OH_IA403_routes_stopped_no_cached_registered_counts_used": true,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 13,
+  "archive_bytes": 308015,
+  "archive_sha256": "a5d3f21a799a02635b73b229172f0111344cf1950e615cc52b993c5514a4c314"
+}

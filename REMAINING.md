@@ -51,6 +51,22 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Reported already-voted profiles completed:** new use of the held LVB
+reduction gives 124 disclosure-qualified profiles across 49 source states
+(46 overall / 78 age), with all 306 decisions and 612 stage cells retained.
+Native LVB5 is an Already voted response, not an administratively verified
+ballot. Other/unresolved combines future intentions, nonintentions and
+unknowns, NOT nonvoters/staying home. Field period/calibration unqualified;
+no common-date early-vote curve, pooled/national profile or model joint.
+Old parent masks, n100/n30, legacy marginal-difference and age-complement
+guards retain 182 holds, including one extra whole-age-profile hold.
+Sixteen tests, 20,712 checks and two exact offline reproductions pass;
+complete safe inputs/code/tests/query/results published without private
+fine cells. Ohio's distinct primary-certification release and Iowa's
+primary-results index returned403 and remain stopped; no cached count
+or denied body used. Native28, age study, old 1,530 model-query bytes and
+website unchanged; broader 49 independent administrative gaps remain open.
+
 **New same-age registration-frame scenario completed:** already-held SC
 65-Up Female/Male/Unknown-gender cells give a complete derived 1,045,477
 registration units, not a printed age parent. The accepted public Civic
