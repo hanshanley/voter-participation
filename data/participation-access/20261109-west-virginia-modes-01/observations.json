@@ -27,9 +27,33 @@
     "existing_gzip_responses_decoded_without_reacquisition": true
   },
   "qualified_independent_all_method_parents": [
-    {"county_fips": "54107", "county": "Wood", "Ballots_Cast": 22935, "native_clock": "11/03/2026 10:40PM", "timezone": null, "status": "UNOFFICIAL RESULTS", "reporting": "69 of 69 counters; not certification"},
-    {"county_fips": "54039", "county": "Kanawha", "Ballots_Cast": 48729, "native_clock": "11/03/2026 10:00PM", "timezone": null, "status": "UNOFFICIAL RESULTS", "reporting": "183 of 183 counters; not certification"},
-    {"county_fips": "54061", "county": "Monongalia", "Ballots_Cast": 28614, "native_clock": "11/03/2026 8:36PM", "timezone": null, "status": "UNOFFICIAL RESULTS", "reporting": "43 reported, 0 complete, 43 partially reported"}
+    {
+      "county_fips": "54107",
+      "county": "Wood",
+      "Ballots_Cast": 22935,
+      "native_clock": "11/03/2026 10:40PM",
+      "timezone": null,
+      "status": "UNOFFICIAL RESULTS",
+      "reporting": "69 of 69 counters; not certification"
+    },
+    {
+      "county_fips": "54039",
+      "county": "Kanawha",
+      "Ballots_Cast": 48729,
+      "native_clock": "11/03/2026 10:00PM",
+      "timezone": null,
+      "status": "UNOFFICIAL RESULTS",
+      "reporting": "183 of 183 counters; not certification"
+    },
+    {
+      "county_fips": "54061",
+      "county": "Monongalia",
+      "Ballots_Cast": 28614,
+      "native_clock": "11/03/2026 8:36PM",
+      "timezone": null,
+      "status": "UNOFFICIAL RESULTS",
+      "reporting": "43 reported, 0 complete, 43 partially reported"
+    }
   ],
   "Monongalia_declared_report": {
     "literal_backslash_URL_status": 404,
@@ -79,12 +103,30 @@
     "clock_and_timezone": null
   },
   "stopped_products": [
-    {"url": "https://results.enr.clarityelections.com/WV/127496/web.345435/", "disposition": "State general-results verification challenge; product stopped"},
-    {"url": "https://results.enr.clarityelections.com/WV/Fayette/112684", "http_status": 403},
-    {"url": "https://results.enr.clarityelections.com/WV/Marion/122790/web.345435/", "http_status": 403},
-    {"url": "https://results.enr.clarityelections.com/WV/Wood/127550/web.345435/", "http_status": 403},
-    {"url": "https://results.enr.clarityelections.com//WV/Wyoming/127551/?v=383649", "http_status": 403},
-    {"url": "https://results.enr.clarityelections.com/WV/Jefferson/127515/web.345435/#/summary?v=382828%2F", "http_status": 403}
+    {
+      "url": "https://results.enr.clarityelections.com/WV/127496/web.345435/",
+      "disposition": "State general-results verification challenge; product stopped"
+    },
+    {
+      "url": "https://results.enr.clarityelections.com/WV/Fayette/112684",
+      "http_status": 403
+    },
+    {
+      "url": "https://results.enr.clarityelections.com/WV/Marion/122790/web.345435/",
+      "http_status": 403
+    },
+    {
+      "url": "https://results.enr.clarityelections.com/WV/Wood/127550/web.345435/",
+      "http_status": 403
+    },
+    {
+      "url": "https://results.enr.clarityelections.com//WV/Wyoming/127551/?v=383649",
+      "http_status": 403
+    },
+    {
+      "url": "https://results.enr.clarityelections.com/WV/Jefferson/127515/web.345435/#/summary?v=382828%2F",
+      "http_status": 403
+    }
   ],
   "another_client_cache_mirror_or_app_data_retry": false,
   "candidate_votes_substituted": false,
@@ -92,5 +134,10 @@
   "analysis_rates_approved": false,
   "precinct_maps_approved": false,
   "statewide_full_election_parent_qualified": false,
-  "whole_project_complete": false
+  "whole_project_complete": false,
+  "actual_production_acceptance_pending": false,
+  "actual_website_commit": "cb79d841af3bdf5a3b353399699bb1b774a376db",
+  "actual_pages_run_id": 42717017978,
+  "actual_native_artifact_id": 13717918487,
+  "actual_production_desktop_mobile_native_values_verified": true
 }

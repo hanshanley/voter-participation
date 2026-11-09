@@ -42,6 +42,10 @@
   "local_desktop_mobile_all64values_and_methods_roundtrips": true,
   "sufficient_originals_full_reference_code_queries_results_in_archive": true,
   "acquisition_session_headers_or_compiled_publisher_appcode_included": false,
-  "actual_production_acceptance_pending": true,
-  "whole_project_complete": false
+  "actual_production_acceptance_pending": false,
+  "whole_project_complete": false,
+  "actual_website_commit": "cb79d841af3bdf5a3b353399699bb1b774a376db",
+  "actual_pages_run_id": 42717017978,
+  "actual_native_artifact_id": 13717918487,
+  "actual_production_desktop_mobile_native_values_verified": true
 }

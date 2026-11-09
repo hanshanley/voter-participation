@@ -51,9 +51,15 @@ package passes 402 further checks and two exact blocked-network Node/Python
 reproductions, and 156 focused/frozen/page tests pass. Astro has no errors or
 warnings; desktop/mobile checks verify every count, original mode record,
 source clock, archive link and Methods roundtrip. Combined website source
-`cb79d84` is submitted for native deployment; actual production is not yet
-accepted. The deployment-only successor changes the sync timeout, not numerical
-inputs or the immutable release.
+`cb79d84` is **live and actual-production verified**. Pages `42717017978` and
+credential guard `42717018339` succeeded. Native artifact `13717918487` is
+**988,185,251 payload / 990,709,760 tar bytes**; both strict limits pass.
+All 16 checked production files match the artifact, including CO/WV/IN/MD/MI
+APIs, scripts and earlier archives. Every CO/WV native count, desktop/mobile
+Methods and source recovery, and all 51 geographic interactions pass without
+valid-source overrides. All 436 earlier complete routes survive. The
+deployment-only successor changes the sync timeout, not numerical inputs or
+the immutable release. See the [combined acceptance record](data/participation-access/20261109-county-modes-01/website-publication.json).
 
 ## 2026 West Virginia: separate county participation measures
 
@@ -91,8 +97,11 @@ limits: **988,163,667 payload / 990,689,280 tar bytes**. Pages `42713872385`
 built successfully but timed out during file synchronization; a deploy-only
 retry was cancelled. No successful build, archive or source acquisition was
 repeated. Source `cb79d84` combines this unchanged integration with Colorado
-and increases the deployment sync window. Actual production acceptance remains
-pending; do not treat artifact verification as a live-site claim.
+and increases the deployment sync window. The successor is now live: its
+actual artifact, unqueried production bytes, both native views and all-state
+interactions pass as recorded above. The default WV all-method frame still
+has only three county counts; early/returned completeness is not full-election
+turnout completeness.
 
 The [access ledger](data/participation-access/20261109-west-virginia-modes-01/observations.json)
 records the full 55-county query, directory-identity problems and six stopped

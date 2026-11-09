@@ -42,14 +42,14 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Current deployment queue:** website `cb79d84` contains the tested West Virginia
-and complete Colorado county integrations. Both full numerical releases are
-immutable and anonymously verified before activation. The earlier WV build
-succeeded and its real artifact passes strict payload/tar limits, but Pages
-timed out while syncing files; a deploy-only retry was cancelled. The new
-successor increases the sync window without dropping downloads. Finish this
-exact native deployment and actual-production acceptance; do not rerun
-successful acquisitions, packages, builds or offline checks for activity.
+**Accepted live:** website `cb79d84` connects West Virginia's separate county
+modes and all 64 Colorado returned-and-processed counts. Pages `42717017978`,
+guard `42717018339` and native artifact `13717918487` pass. Actual payload is
+**988,185,251 / tar 990,709,760 bytes**. All 16 checked production files match
+the artifact; desktop/mobile native values, Methods/source recovery and all
+51 geographic interactions pass. All 436 earlier complete routes remain.
+The deployment sync timeout is resolved. Do not repeat these successful
+acquisitions, packages, builds, releases or acceptance checks for activity.
 
 Colorado's already-held original workbook now supports **all 64 county
 returned-and-processed counts**. Complete release `439743253` includes the
@@ -68,19 +68,20 @@ All six complete assets, original workbook cells, 687 independent checks, two
 blocked-network reproductions, 152 tests and local desktop/mobile/all-51
 interactions pass. All-method counts are never replaced with early/returned
 counts, modes are never added, and all rates remain withheld. Native Pages and
-production acceptance is in progress; do not declare nationwide completion.
-Native artifact `13716648981` is **988,163,667 payload / 990,689,280 tar bytes**;
-actual deployment/production acceptance is still pending. The five newly
+actual-production acceptance passed in the combined successor above; do not
+declare nationwide completion. The five newly
 denied county results products and the statewide challenge
 remain stopped. Reuse these originals and the full source package, not another
 county crawl or a repeat acquisition.
 
-After acceptance, continue the remaining county gaps. Four already-held Hawaii
+Continue the remaining county gaps. Four already-held Hawaii
 county PDFs have passed independent full-PDF-reader checks; preserve their
-literal TOTAL TURNOUT values and separate clocks. Resolve the Maui/Kalawao
-administrative-scope issue before mapping those parents. Do not allocate a
-county total, use candidate sums, erase the existing state/unit discrepancy or
-restart a completed historical-control family.
+literal TOTAL TURNOUT values and separate clocks. The official counting manual
+confirms that Maui includes Kalawao for elections. A valid union of the held
+2026 Census Maui/Kalawao components is possible without repairs or allocation;
+review and label four election administrations rather than inventing five
+Census-county totals. Do not use candidate sums, erase the existing state/unit
+discrepancy or restart a completed historical-control family.
 
 Indiana's complete numerical/source package is now immutable at release
 `439670388`: all 93 original statistics rows, 92 county decisions, 24 independent
@@ -95,7 +96,7 @@ checks and two exact blocked-network reproductions are verified. Website
 unqueried production files, desktop/mobile native values/source recovery and all
 51 county/precinct interactions pass. All 436 old complete routes remain.
 Do not repeat this successful acquisition, package, deployment or acceptance.
-Continue the 19 contest-only states, Maine and within-state gaps. West Virginia's
+Continue the 17 contest-only states, Maine and within-state gaps. West Virginia's
 declared general-results product reaches robot verification and is stopped;
 follow independently published county originals, not another client or state
 survey/candidate allocation. Its separate historical-results page lacks a
@@ -118,10 +119,11 @@ reproductions, 131 tests and actual production desktop/mobile/native-value and
 All old links, short Methods and 436 complete-download routes are preserved.
 
 **Still not nationwide observed turnout:** source county observations now cover
-28 states plus D.C. (some only one or two counties), including Maryland's separate
-Cards Cast measure and Indiana's mixed native snapshot labels, with separate
-RI/VT municipalities. This is not 28-state complete voter/ballot coverage.
-Nineteen states retain explicitly labelled
+30 states plus D.C. (some only one or two counties), including Maryland's separate
+Cards Cast measure, Indiana's mixed labels, Colorado's returned/processed counts
+and West Virginia's separate source modes, with separate RI/VT municipalities.
+This is not 30-state complete voter/ballot coverage.
+Seventeen states retain explicitly labelled
 contest-count fallbacks and Maine has no county layer. Mapped precinct
 participation remains partial in seven states
 (ID, ND, MN, MI, NM, VA, IN) plus D.C.
