@@ -25,6 +25,52 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Same-type state source-model contrasts, not turnout-change estimates
+
+[Complete comparison package](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-contrasts-20261109-01/complete-analysis.zip)
+uses only the unchanged, already-public AP state-group inputs. It computes
+2018-to-2022 **midterm** and 2020-to-2024 **presidential** source-model
+share arithmetic: **505 distinct state/group/pair contrasts**, each
+with separate poll-close/final views, including 413 non-overall contrasts.
+All **6,426 comparison decisions** and holds are retained; two weight
+views are not independent samples.
+
+Both endpoints must already be public and supported, with identical
+native variable/code/label. Full native group weights and unknown model
+mass remain in the denominators. Exact rational voter/nonvoter/unknown
+percentage-point differences reconcile to zero. No private source,
+new fine cell or suppressed statistic is introduced.
+
+These are **not observed turnout changes** or validated survey-model,
+measurement or population comparisons. Repeated cross-sections do not
+track the same people or fixed demographic memberships; final-weight
+outcome calibration is not validation. Age/education/income labels do
+not prove measurement equivalence; income bins are nominal source
+categories, not independently qualified household income. Sex/gender
+and race comparisons remain held rather than harmonized. The 2018
+inference caveat, 2022 DE/WV and absent-RACETH5 holds, D.C. absence,
+unknowns and all prior support/disclosure decisions remain explicit.
+No causal/individual-retention/population-change claim or fabricated CI.
+
+Ten tests, 183,662 independent checks and two exact blocked offline
+reproductions pass. Native reductions and earlier qualified campaigns
+were not rerun. Immutable release `438910558` has four full assets,
+authenticated-draft and anonymous-published byte-verified. Its
+1,221,147-byte / ten-member ZIP includes the complete prior public
+package, all comparison queries/holds, unchanged source definitions,
+new code/tests/results and checksums. SHA-256:
+`314119ecc91494e52ba3c09c7db82ced4631830f292f97224bc9dae730f01498`.
+Current state controls23 and the accepted website are unchanged.
+
+**New distinct access holds:** the
+[two-observation receipt ledger](data/registration-access/20261109-03/observations.json)
+records Missouri's registration-index403 (4,550 denied bytes) and Ohio's
+aggregate-portal403 (1,253,339 denied bytes). Both routes are stopped,
+without another client/cache/mirror or promotion of cached counts.
+Full denied bodies/app material stay local; no individual voter files
+were downloaded. The automatic snapshot commit is preserved as parent;
+unrelated dirty-root data are not overwritten.
+
 ## Minnesota registered-only snapshot and test-source exclusion
 
 [Complete version-23 controls and inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-23/complete-analysis.zip)

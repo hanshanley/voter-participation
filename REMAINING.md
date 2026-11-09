@@ -51,6 +51,24 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Same-type historical model arithmetic delivered:** the new public AP
+comparison package retains all 6,426 decisions and computes 505 supported
+state/group/pair contrasts, each with two separate native weight views.
+Pairs are 2018-to-2022 midterms and 2020-to-2024 presidential elections.
+Only already-public supported endpoints and exact native code/label
+matches enter the arithmetic. Full denominators/unknown model masses
+are retained; sex/gender and race contrasts remain held.
+Ten tests, 183,662 checks and two exact offline reproductions pass.
+This is not observed turnout change, validated model/population
+equivalence, a fixed cohort, individual switching or a causal estimate.
+No original reduction or old public campaign was rerun.
+Complete prior public inputs/queries/code/tests/results are downloadable;
+current controls23 and website remain unchanged. New MO registration-index
+and OH aggregate-portal403 routes are stopped, with actual byte/hash
+receipts, no cached counts or individual voter downloads. The new
+automatic snapshot parent is preserved; broader native evidence gaps
+remain open.
+
 **Minnesota registered-only snapshot integrated:** version23 adds
 3,927,036 Registered Voters as of the native November 2 table caption,
 excluding the separate 94,621 preregistrants aged16/17. The current

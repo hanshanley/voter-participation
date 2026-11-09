@@ -1,0 +1,29 @@
+{
+  "complete_comparison_decisions": 6426,
+  "disposition_counts": {
+    "held_native_sex_gender_measurement_not_matched": 1100,
+    "held_prior_source_support_inference_or_disclosure": 2190,
+    "held_race_membership_not_harmonized_or_dimension_absent": 1400,
+    "held_unknown_or_disclosure_removed_source_group": 600,
+    "no_dc_source_sample": 126,
+    "selected_same_type_source_model_arithmetic": 1010
+  },
+  "new_private_source_or_raw_respondent_data": false,
+  "no_new_website_view": true,
+  "pairs": [
+    {
+      "election_type": "midterm",
+      "from_year": 2018,
+      "to_year": 2022
+    },
+    {
+      "election_type": "presidential",
+      "from_year": 2020,
+      "to_year": 2024
+    }
+  ],
+  "schema": "ap-same-type-state-model-contrasts-v1",
+  "selected_nonoverall_weight_view_contrasts": 826,
+  "selected_weight_view_contrasts": 1010,
+  "source_only_model_arithmetic_not_observed_turnout_change": true
+}

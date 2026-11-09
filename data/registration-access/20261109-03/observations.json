@@ -1,0 +1,30 @@
+{
+  "schema": "registration-source-access-observations-v1",
+  "numerical_state_controls_or_estimates_changed": false,
+  "observations": [
+    {
+      "state_code": "MO",
+      "requested_url": "https://www.sos.mo.gov/elections/registeredvoters",
+      "status": 403,
+      "source_original_acquired": false,
+      "error_body_bytes": 4550,
+      "error_body_sha256": "a9f45e7c5c0e6cf22f5262a92fb7a5c3b1f1791d3c4d786bf2235c6d00ce49ce",
+      "retrieved_at_utc": "2026-11-09T08:52:30.784899+00:00",
+      "disposition": "stop_route_no_alternate_client_cache_or_mirror",
+      "no_cached_counts_or_personal_voter_files_used": true,
+      "full_denied_body_app_code_and_contacts_locally_held_not_redistributed": true
+    },
+    {
+      "state_code": "OH",
+      "requested_url": "https://data.ohiosos.gov/portal/",
+      "status": 403,
+      "source_original_acquired": false,
+      "error_body_bytes": 1253339,
+      "error_body_sha256": "9231d709acdda7812f2e8606b0bd1304e060949116604ea1e426bc22ba68e034",
+      "retrieved_at_utc": "2026-11-09T08:52:30.930065+00:00",
+      "disposition": "stop_route_no_alternate_client_cache_or_mirror",
+      "no_cached_counts_or_personal_voter_files_used": true,
+      "full_denied_body_app_code_and_contacts_locally_held_not_redistributed": true
+    }
+  ]
+}
