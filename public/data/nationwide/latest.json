@@ -1,7 +1,7 @@
 {
-  "snapshot_id": "20261109T083731Z",
+  "snapshot_id": "20261109T195854Z",
   "election_date": "2026-11-03",
-  "retrieved_at": "2026-11-09T08:37:31.857436+00:00",
+  "retrieved_at": "2026-11-09T19:58:54.151058+00:00",
   "status": "preliminary",
   "audit": {
     "jurisdictions_assessed": 51,
@@ -14,34 +14,34 @@
   },
   "files": [
     {
-      "path": "nationwide/20261109T083731Z/complete-snapshot.zip",
-      "bytes": 428299,
-      "sha256": "3e1ebed0bc3c555670361374a753055c77d869142467e73c489394021c834de0"
+      "path": "nationwide/20261109T195854Z/complete-snapshot.zip",
+      "bytes": 428133,
+      "sha256": "b5aceb3d605393ddb2712de146b12dcfef09bfac34e8abf39cc81b46df4930ae"
     },
     {
-      "path": "nationwide/20261109T083731Z/coverage.csv",
+      "path": "nationwide/20261109T195854Z/coverage.csv",
       "bytes": 6999,
       "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
     },
     {
-      "path": "nationwide/20261109T083731Z/demographics.csv",
+      "path": "nationwide/20261109T195854Z/demographics.csv",
       "bytes": 31512,
-      "sha256": "6f6e2b514527998202b573c135ed3b45e9cb36203d19a86fe44361ddbfa69503"
+      "sha256": "2d50e05a1c77490b8aa94ed108846eb9d7a71d343f61e3cb8f53bf2025246a8b"
     },
     {
-      "path": "nationwide/20261109T083731Z/early_voting.csv",
+      "path": "nationwide/20261109T195854Z/early_voting.csv",
       "bytes": 1197602,
-      "sha256": "07461338dfeb805bc74deb16f6abd4be85a4f1e2fd1dd5e08e5e5f62383682eb"
+      "sha256": "f38d19689c53c5bb2df22e978b7665b3df5d81d077fd7e7e2d3fb0ce09b7dc79"
     },
     {
-      "path": "nationwide/20261109T083731Z/reporting.csv",
-      "bytes": 1170,
-      "sha256": "a53dd27d8788ae6e67b3fd9bd00efd365b284e5c6487f71471d1fc07a7d4f65e"
+      "path": "nationwide/20261109T195854Z/reporting.csv",
+      "bytes": 1171,
+      "sha256": "378efc2a01466f25605ac0a6d1528b004aedf95ca9e0ac253ab8a1d6301145ab"
     },
     {
-      "path": "nationwide/20261109T083731Z/snapshot.json",
-      "bytes": 4197959,
-      "sha256": "4bcec0e7a6af3395c6e142148c5102a0f8621c77469baa690316bc56e9b34c62"
+      "path": "nationwide/20261109T195854Z/snapshot.json",
+      "bytes": 4197961,
+      "sha256": "2ca192a8831773345cef8e0ce5d72994d083628b064d99c6883e3932e983190e"
     }
   ]
 }
