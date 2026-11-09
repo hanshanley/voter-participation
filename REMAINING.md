@@ -58,10 +58,12 @@ reproductions, 131 tests and actual production desktop/mobile/native-value and
 `13696510311`: actual payload **983,878,341** / tar **986,388,480** bytes.
 All old links, short Methods and 436 complete-download routes are preserved.
 
-**Still not nationwide observed turnout:** native county observations now cover
-25 states plus D.C. (some only one county), with separate RI/VT municipalities;
-22 states retain explicitly labelled contest-count fallbacks and Maine has no
-county layer. Mapped precinct participation remains partial in six states
+**Still not nationwide observed turnout:** source county observations now cover
+27 states plus D.C. (some only one or two counties), including Maryland's separate
+Cards Cast measure, with separate RI/VT municipalities. This is not 27-state
+complete voter/ballot coverage. Twenty states retain explicitly labelled
+contest-count fallbacks and Maine has no county layer. Mapped precinct
+participation remains partial in six states
 (ID, ND, MN, MI, NM, VA) plus D.C.
 Website `a218d82` now exposes the already-held **523 Alaska / 496 Hawaii**
 source-unit observations as selectable/searchable counts, without pretending
@@ -88,11 +90,36 @@ succeeded; native artifact `13701385628` has **984,130,264 payload /
 old downloads and short Methods preserved. This supersedes the earlier D.C.
 executions that failed inside GitHub before building.
 
-Next qualify the already-held Bay/Isabella native county parents for Michigan,
-not more registration-frame scenarios. Preserve Bay's 43 reporting counter
-versus 35 report sections and Isabella's 22-ballot election/House-scope difference.
-Do not substitute House votes or allocate pooled ballots. Source rates remain
-held; any new county join needs its own 2026 reference and complete-query proof.
+**Whole-state 2026 participation is the current priority, not another navigation
+or registration-frame exercise.** Real default-page state clicks reproduce the
+remaining gap: Texas/New York/Michigan previously showed county candidate counts,
+not participation. Passing navigation tests or drawing polygons is not coverage.
+
+Website `51f8010` is live and connects the complete 24-county-equivalent Maryland
+**Cards Cast** report, explicitly not qualified cast ballots or unique voters.
+Every rate/denominator stays withheld; all 25 native county/state records and the
+full original PDF survive in its complete 633,225-byte download. It also includes
+the preserved Bay/Isabella explicit ballot parents and unchanged 63 source units;
+the other 81 Michigan counties remain missing. Both complete archives, 2026 county
+references, exact offline reproductions, 139 focused/page/context tests, four build
+tests, Astro checks, desktop/mobile source values/retries and all 51 geographic
+selections pass on actual production. Pages `42687510890` succeeded; actual native
+artifact `13706930410` has 987,714,304 payload /990,238,720 tar bytes. Scripts, both
+complete archives, generated MD/MI APIs and all 436 old full routes match the
+verified deployment. The generated JSON is byte-identical across platforms;
+only gzip's platform byte differs locally. Both bounded integrations are accepted,
+not nationwide completion. Do not reacquire or repackage successful sources.
+
+The complete Ohio 88-report attempt returned88 exact-route403s and no PDFs/counts.
+Ohio/New York statewide roots and Michigan's dashboard also returned403, while
+South Carolina's declared general-results link reaches a verification challenge.
+All remain stopped; no alternative-client/cache/mirror promotion. The source-access
+ledger preserves every query without pretending metadata are a numerical release.
+Texas's candidate-table "Ballots Cast" and New York's governor-vote proxy remain
+excluded. Continue distinct permitted whole-state participation publications or
+held originals, starting with the remaining large gaps, then test actual integration
+and publication. Do not allocate surveys, candidate votes or district totals.
+
 Alaska's encoded portal geometry still has unresolved topology; Delaware's
 41 district observations cannot be apportioned to counties. Keep Texas
 registration-frame research paused; do not substitute another research release

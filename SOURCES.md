@@ -25,6 +25,56 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 county source counts: Maryland and Michigan
+
+Website `51f8010dd5f030bcec5d922f519f62031bb74ed3` is live and verified:
+
+| Source scope | Displayed count | Retained limits |
+|---|---|---|
+| All 24 Maryland county-equivalents | Native **Cards Cast**, not qualified cast ballots or unique voters | November 8, 2026, 7:44 p.m.; timezone absent; every analysis rate/denominator withheld |
+| Bay and Isabella, Michigan | Explicit native ballot parents: 50,246 and 26,288 | Other 81 counties missing; all 63 earlier unit rows unchanged; rates withheld |
+
+Both use separately checksum-verified full **2026 Census county references**,
+not certified precinct boundaries. Baltimore city and county remain distinct;
+Saint Mary's / St. Mary's has one explicit alias and unchanged native labels.
+Maryland's MIB2 title, 25 county/state records, native Eligible Voters/percentages
+and non-precinct reporting counters survive. Michigan retains Bay's 43 reporting
+counter versus 35 report sections and Isabella's 22-ballot election/House-scope
+difference. No candidate votes, state estimates or pooled ballots are allocated.
+
+The [complete Maryland download](https://www.themarginoferror.com/participation-county-cards/20261109-01/complete-analysis.zip)
+is **633,225 bytes / 17 members**, SHA-256
+`11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6`;
+[Michigan's complete download](https://www.themarginoferror.com/participation-county-parents/20261109-02/complete-analysis.zip)
+is **2,937,769 bytes / 38 members**, SHA-256
+`75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c`.
+Both retain sufficient originals, every query/hold, full references and offline
+code, not metadata-only. The frozen default reader and old archives are unchanged.
+139 focused/page/context tests, four build tests, Astro checks, exact offline
+reproductions, desktop/mobile native-value/retry checks and all 51 geographic
+selections pass locally and on actual production. Pages `42687510890` and
+source-check `42687510495` succeeded. The actual downloaded native artifact
+`13706930410` contains **987,714,304 payload /990,238,720 tar bytes**.
+Committed scripts, both complete archives, generated MD/MI data and the unchanged
+436-route manifest match production. The two generated gzip files differ from
+macOS only in their platform-header byte; every decompressed JSON byte matches,
+and production's compressed files match the Linux artifact exactly. No valid
+source was overridden in the native-value acceptance checks.
+
+The [source-access ledger](data/participation-access/20261109-whole-state-county-01/observations.json)
+and [complete 88-county Ohio query dispositions](data/participation-access/20261109-whole-state-county-01/ohio-county-report-queries.json)
+record zero new numerical inputs. All 88 candidate report routes returned403;
+their existence/publication scope was not established. Ohio/New York statewide
+roots and the Michigan dashboard are stopped, and the declared South Carolina
+general-results link reaches a verification challenge. No other-client/cache/
+mirror retry or cached numerical promotion is allowed. Texas's accessible
+candidate-table "Ballots Cast" column and the New York governor-vote proxy are
+not full-election participation. These are access records, not an analysis release
+or substitutes for complete numerical downloads. The production audit still
+finds 20 states with contest-only county fallbacks and no Maine county layer.
+Other source-count states can have only one or two counties; Maryland cards are
+not unique-voter coverage. Nationwide county/precinct participation stays open.
+
 ## 2026 source-unit counts: accessible without invented maps
 
 Website `a218d8266b597de7eede26b7f3c24d6bdcb056a4` exposes all **523 Alaska**

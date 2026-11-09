@@ -1,0 +1,80 @@
+{
+  "observed_date_utc": "2026-11-09",
+  "native_numerical_inputs_qualified": 0,
+  "observations": [
+    {
+      "url": "https://www.michigan.gov/sos/elections/election-results-and-data/voter-participation-dashboard",
+      "http_status": 403,
+      "original_response_body_captured": false,
+      "bytes": null,
+      "sha256": null,
+      "disposition": "stop_route_no_other_client_cache_or_mirror"
+    },
+    {
+      "url": "https://www.ohiosos.gov/office/media-center/categories/week-in-review/week-in-review-2026-11-06",
+      "http_status": 403,
+      "original_response_body_captured": false,
+      "bytes": null,
+      "sha256": null,
+      "disposition": "stop_route_no_other_client_cache_or_mirror"
+    },
+    {
+      "url": "https://liveresults.ohiosos.gov/",
+      "http_status": 403,
+      "transport": "ordinary_chromium",
+      "original_response_body_captured": false,
+      "bytes": null,
+      "sha256": null,
+      "disposition": "stop_route_no_other_client_cache_or_mirror"
+    },
+    {
+      "url": "https://nyenr.elections.ny.gov/",
+      "http_status": 403,
+      "transport": "ordinary_chromium",
+      "original_response_body_captured": false,
+      "bytes": null,
+      "sha256": null,
+      "disposition": "stop_route_no_other_client_cache_or_mirror"
+    }
+  ],
+  "separate_texas_results_observation": {
+    "url": "https://electionresults.sos.state.tx.us/results.html",
+    "http_status": 200,
+    "election": "2026 NOVEMBER GENERAL ELECTION",
+    "measure": "candidate_table_column_labeled_Ballots_Cast",
+    "not_qualified_as_whole_election_participation": true
+  },
+  "separate_county_acquisition": "Ohio county BOE original precinct reports are separate county publications, not mirrors of the denied statewide portal.",
+  "not_a_download_replacement": true,
+  "source_access_ledger_only": true,
+  "not_a_complete_analysis_download": true,
+  "ohio_county_report_query_set": {
+    "file": "ohio-county-report-queries.json",
+    "queries": 88,
+    "http_403_stopped": 88,
+    "originals_acquired": 0,
+    "native_numerical_inputs_qualified": 0,
+    "candidate_paths_not_verified_publications": true,
+    "disposition": "stop_exact_routes_no_other_client_cache_or_mirror"
+  },
+  "additional_leads": [
+    {
+      "url": "https://www.enr-scvotes.org/SC/127300/web.345435/",
+      "declared_by": "https://scvotes.gov/elections-statistics/election-results/",
+      "http_status": null,
+      "challenge_detected": true,
+      "original_response_body_preserved": false,
+      "native_numerical_inputs_qualified": 0,
+      "disposition": "stop_verification_challenge_no_bypass"
+    },
+    {
+      "url": "https://github.com/opoliticsguru/November-2026-Live-Turnout",
+      "commit": "fbc40dcae07988bf5b2421c5eac1866f4998786b",
+      "inspected_file": "data/County_1.js",
+      "county_features": 19,
+      "whole_state_coverage_established": false,
+      "native_numerical_inputs_qualified": 0,
+      "disposition": "not_a_complete_88_county_input_no_numerical_promotion"
+    }
+  ]
+}
