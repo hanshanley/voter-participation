@@ -63,6 +63,39 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## New Jersey dated total-registration frame
+
+[Complete version-15 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-15/complete-analysis.zip)
+add the [official General Election Day county registration report](https://www.nj.gov/state/elections/election-information-svrs.shtml).
+The native statewide `total` is **6,747,375**, dated **November 3, 2026**.
+Active/inactive status and time-of-day/timezone are unspecified. An
+election-day report date does not independently validate the survey/cohort
+transport or an eligible population. All 21 counties, ten native party-code
+columns and total remain intact. Affiliation is registration accounting,
+not party voting; source codes are not reinterpreted.
+
+Conditional 3,153,315.91 participant / 3,594,059.09 nonparticipant
+**dated-registration units** assume unvalidated Civic exchangeability.
+No observed staying-home claim, statewide ballot reference, residual,
+group/local allocation or new rate/map approval. All fifty unaffected
+state rows, nineteen prior frames and thirty controls are preserved:
+version15 has 51 state/D.C. rows, 31 dispositions and twenty scenarios.
+
+Ten tests, 507 independent checks, a third PDF extractor and two exact
+blocked offline reproductions pass. All 242 count cells, source row
+equations and county-to-state sums reconcile. Only extraction-layout
+whitespace is normalized in label comparison, not substantive aliases
+or counts; both full original extractions remain available.
+
+The complete 102,493,352-byte / sixteen-member ZIP includes the original
+48,054-byte PDF, both frozen extractions, receipts, version14 baseline,
+maintained code, optional PDF refresh, shared helpers, tests and all queries.
+SHA-256:
+`182f8b721da13b98207de1b0f408104a77ee70f16c594ccd53aa4506c22eb132`.
+New York and Maryland's distinct declared originals returned 403; both
+routes are stopped and no cached counts are promoted. Prior downloads
+and the accepted website remain unchanged.
+
 ## Connecticut dated active-registration frame
 
 [Complete version-14 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-analysis.zip)
@@ -1425,6 +1458,16 @@ to the public research export merely because this ledger records them.
   nationwide project is finished.
 
 ## Access, methodology and paid/reference-only leads
+
+**New York/Maryland registration originals, November 9, 2026 UTC:**
+[actual receipts](data/new-jersey-register/20261109-01/access-holds.json)
+record 403 for New York's declared November 1 county workbook and Maryland's
+declared October PDF. New York's body was not captured; no bytes/hash are
+invented. Maryland's captured 17-byte error body has SHA-256
+`2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c`.
+Both routes are stopped, without another client/cache/mirror or using
+web-parser/search-snippet counts as acquired native data. The separate
+successful New Jersey report above does not resolve these holds.
 
 **Distinct registration follow-ups, November 9, 2026 UTC:**
 [four recorded access/link observations](data/source-access/20261109-01/register-followups.json)

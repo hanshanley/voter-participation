@@ -1,0 +1,31 @@
+{
+  "observations": [
+    {
+      "state_code": "NY",
+      "requested_url": "https://elections.ny.gov/voters-registered-county-11012026",
+      "declared_index_url": "https://elections.ny.gov/enrollment-county",
+      "observed_date_utc": "2026-11-09",
+      "access_method": "ordinary urllib request after web tool unsupported spreadsheet content type",
+      "status": 403,
+      "original_source_acquired": false,
+      "error_body_captured": false,
+      "bytes": null,
+      "sha256": null,
+      "disposition": "stop_declared_workbook_route_no_alternate_client_cache_mirror_or_guessed_asset",
+      "native_registered_denominator": null
+    },
+    {
+      "state_code": "MD",
+      "requested_url": "https://elections.maryland.gov/pdf/vrar/2026/MSR-2026-10.pdf",
+      "declared_index_url": "https://elections.maryland.gov/voter_registration/stats.html",
+      "status": 403,
+      "source_original_acquired": false,
+      "error_body_bytes": 17,
+      "error_body_sha256": "2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c",
+      "disposition": "stop_route_no_alternate_client_cache_or_mirror",
+      "retrieved_at_utc": "2026-11-09T04:16:03.174765+00:00"
+    }
+  ],
+  "both_routes_stopped_no_alternate_client_cache_or_mirror": true,
+  "no_cached_search_or_web_parser_counts_promoted_to_native_data": true
+}

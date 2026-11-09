@@ -51,6 +51,20 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**New Jersey dated total-registration frame integrated:** version15 adds
+the native total 6,747,375 dated November 3, 2026. All 21 counties / 242
+count cells and original party codes are preserved as registration
+accounting, not votes. Active/inactive status and exact clock are
+unspecified; election-day dating is not independent cohort/population
+validation. Ten tests, 507 independent checks and two exact offline
+reproductions pass. The complete query has 51 state/D.C. rows, 31 control
+dispositions and twenty conditional frames; all fifty unaffected states,
+nineteen prior frames and thirty controls survive. State ballots/residual
+remain null, with no local allocation or new rate/map/website view.
+New York's November workbook and Maryland's October PDF returned 403
+on direct acquisition; both routes are stopped and no cached counts used.
+Full successful native inputs, receipts, code, tests and queries are downloadable.
+
 **Connecticut dated active-register frame integrated:** version14 adds the
 native October 19 active-registration parent 2,255,397, not election-time
 population or a replacement for partial results registrations. All 169 towns,
