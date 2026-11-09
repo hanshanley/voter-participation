@@ -7085,37 +7085,37 @@
   },
   "deployment": "Not authorized; local-only.",
   "current_snapshot": {
-    "snapshot_id": "20261108T212022Z",
+    "snapshot_id": "20261109T011016Z",
     "election_date": "2026-11-03",
     "status": "preliminary",
-    "retrieved_at": "2026-11-08T21:20:25.737560+00:00",
+    "retrieved_at": "2026-11-09T01:10:18.916644+00:00",
     "files": [
       {
-        "path": "current/20261108T212022Z/complete-snapshot.zip",
-        "bytes": 1161448,
-        "sha256": "c04ba75235e8009584efee1ee0ffcd1dae4e0df295c38cbc6f219793ae9d22c6"
+        "path": "current/20261109T011016Z/complete-snapshot.zip",
+        "bytes": 1161446,
+        "sha256": "a50ff07cb371d84c75ab9397bb8104e82e7d080081d6e721d05985ca121559a0"
       },
       {
-        "path": "current/20261108T212022Z/demographics.csv",
+        "path": "current/20261109T011016Z/demographics.csv",
         "bytes": 405548,
         "sha256": "a92afae063726288347f06f0d4b0cfce260e7a8a319d01bd0e225dc127b71277"
       },
       {
-        "path": "current/20261108T212022Z/reporting.csv",
+        "path": "current/20261109T011016Z/reporting.csv",
         "bytes": 7510,
         "sha256": "1a1fe392ee2791fab49f6865cb56655a015a9136cf02e49088451c253b1831aa"
       },
       {
-        "path": "current/20261108T212022Z/snapshot.json",
+        "path": "current/20261109T011016Z/snapshot.json",
         "bytes": 1708742,
-        "sha256": "3b641733e185ae5432ddf17eb90ddd90a36e8063e32a5f68ece84a1e85e79c25"
+        "sha256": "170ca3fd003965773e84a6a06aae788e3e7fe2b7899e6dbdc88078da75991c72"
       }
     ]
   },
   "nationwide_snapshot": {
-    "snapshot_id": "20261108T212029Z",
+    "snapshot_id": "20261109T011022Z",
     "election_date": "2026-11-03",
-    "retrieved_at": "2026-11-08T21:20:29.436642+00:00",
+    "retrieved_at": "2026-11-09T01:10:22.618392+00:00",
     "status": "preliminary",
     "audit": {
       "jurisdictions_assessed": 51,
@@ -7128,34 +7128,34 @@
     },
     "files": [
       {
-        "path": "nationwide/20261108T212029Z/complete-snapshot.zip",
-        "bytes": 420910,
-        "sha256": "39832abb7d234fa713ce1b3c2fd6f09113e1475aa5ea4a88f06b2307087fec9d"
+        "path": "nationwide/20261109T011022Z/complete-snapshot.zip",
+        "bytes": 420797,
+        "sha256": "6a572ef757d7cb9ccd793a1c6f0b2d8fc3e6183f80fc980a985f302e09be9191"
       },
       {
-        "path": "nationwide/20261108T212029Z/coverage.csv",
+        "path": "nationwide/20261109T011022Z/coverage.csv",
         "bytes": 6999,
         "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
       },
       {
-        "path": "nationwide/20261108T212029Z/demographics.csv",
+        "path": "nationwide/20261109T011022Z/demographics.csv",
         "bytes": 31512,
-        "sha256": "c1b08ce243dac1108efed0a30e7fa3da1695d5733e33b789f5aef9e1979c47ef"
+        "sha256": "76960284835fbdaed6dbe6e4d1a7f6c8cf481afbf042a5757b7bdf4ed01c6b0f"
       },
       {
-        "path": "nationwide/20261108T212029Z/early_voting.csv",
+        "path": "nationwide/20261109T011022Z/early_voting.csv",
         "bytes": 1156610,
-        "sha256": "d1b6493f7524fd50d6d22218acc4980c6835e1edec2160196a8294a4d2de8b18"
+        "sha256": "2c9a62442dd9ea7432f63b2986d189067fc2d4f7b1a81f904428f772de8330b9"
       },
       {
-        "path": "nationwide/20261108T212029Z/reporting.csv",
+        "path": "nationwide/20261109T011022Z/reporting.csv",
         "bytes": 1169,
-        "sha256": "73dea89ba8ef8ee2374ba0b9347d4aec5e1b98c43fe0c5c8356040bbeebe1b51"
+        "sha256": "aed0c01c4f563b117062b3af140033eb054e188ec54e15d626ea096bb4b937ac"
       },
       {
-        "path": "nationwide/20261108T212029Z/snapshot.json",
+        "path": "nationwide/20261109T011022Z/snapshot.json",
         "bytes": 4065599,
-        "sha256": "3b393c90864a5938252426436fb2648ccc6b70a531ff1d1428a27a3098773425"
+        "sha256": "57edb4679bdf78dd73372ca3fce229e525f4a4820ce48753986ebc6221f5835f"
       }
     ]
   },
