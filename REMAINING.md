@@ -42,6 +42,46 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
+**Current deployment queue:** website `cb79d84` contains the tested West Virginia
+and complete Colorado county integrations. Both full numerical releases are
+immutable and anonymously verified before activation. The earlier WV build
+succeeded and its real artifact passes strict payload/tar limits, but Pages
+timed out while syncing files; a deploy-only retry was cancelled. The new
+successor increases the sync window without dropping downloads. Finish this
+exact native deployment and actual-production acceptance; do not rerun
+successful acquisitions, packages, builds or offline checks for activity.
+
+Colorado's already-held original workbook now supports **all 64 county
+returned-and-processed counts**. Complete release `439743253` includes the
+original, seven worksheets' cells, all three native mode frames, full 2026 county
+reference, code and results. Its 1,023,255-byte / 16-member ZIP, six full assets,
+612 source checks, 402 further checks, two blocked-network reproductions,
+156 tests and desktop/mobile native-value checks pass. No county rates,
+cast-ballot relabeling or precinct coverage is inferred. Do not reacquire this
+source or publish another research-only proposal instead of finishing the view.
+
+West Virginia's complete **220 county/mode decisions** are now published in
+immutable release `439728452`, targeting website source `d0371e8`. It preserves
+three independent county ballot snapshots (52 held), separate **55-county early
+and 55-county returned** frames, and 55 download-only request records.
+All six complete assets, original workbook cells, 687 independent checks, two
+blocked-network reproductions, 152 tests and local desktop/mobile/all-51
+interactions pass. All-method counts are never replaced with early/returned
+counts, modes are never added, and all rates remain withheld. Native Pages and
+production acceptance is in progress; do not declare nationwide completion.
+Native artifact `13716648981` is **988,163,667 payload / 990,689,280 tar bytes**;
+actual deployment/production acceptance is still pending. The five newly
+denied county results products and the statewide challenge
+remain stopped. Reuse these originals and the full source package, not another
+county crawl or a repeat acquisition.
+
+After acceptance, continue the remaining county gaps. Four already-held Hawaii
+county PDFs have passed independent full-PDF-reader checks; preserve their
+literal TOTAL TURNOUT values and separate clocks. Resolve the Maui/Kalawao
+administrative-scope issue before mapping those parents. Do not allocate a
+county total, use candidate sums, erase the existing state/unit discrepancy or
+restart a completed historical-control family.
+
 Indiana's complete numerical/source package is now immutable at release
 `439670388`: all 93 original statistics rows, 92 county decisions, 24 independent
 follow-ups and 103 Monroe reporting units. It supports **75 county counts /

@@ -25,6 +25,81 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 Colorado: complete county returned-and-processed counts
+
+The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-county-colorado-returned-20261109-01/complete-analysis.zip)
+contains **all 64 county decisions**, the original aggregate workbook, all seven
+worksheets' cells, three native county/party/mode frames, explicit state parents,
+the full 2026 Census county reference, and offline code/results.
+Release `439743253` targets source `944d846`; all six assets are anonymously
+byte-verified. ZIP: 1,023,255 bytes / 16 members, SHA-256
+`3551b8f7035000f047a1b9c98c19e521bb4cccd8c459b3263b26218e2fc5a9b1`.
+
+The native **ALL RETURNED BALLOTS - MAIL AND IN PERSON COMBINED** parent is
+**2,761,449**; separate mail and in-person parents are **2,618,985 / 142,464**.
+The map uses the source's all-returned total, not a researcher mode sum.
+These are **returned/processed**, not cast, accepted, counted, certified, final
+or unique people. Source period: **11:59 p.m., November 5, 2026**; publication:
+November 6; timezone absent. No county denominators are supplied, so all county
+rates remain withheld. Native party categories are registration affiliation,
+not candidate choices. Earlier November 4 provider modes are unchanged.
+
+A separate exact-name review matches all 64 native county identities to the
+complete, hash-verified **2026 Census** reference; no precinct map or geometry
+repair is claimed. Independent OOXML/source review passes 612 checks, the full
+package passes 402 further checks and two exact blocked-network Node/Python
+reproductions, and 156 focused/frozen/page tests pass. Astro has no errors or
+warnings; desktop/mobile checks verify every count, original mode record,
+source clock, archive link and Methods roundtrip. Combined website source
+`cb79d84` is submitted for native deployment; actual production is not yet
+accepted. The deployment-only successor changes the sync timeout, not numerical
+inputs or the immutable release.
+
+## 2026 West Virginia: separate county participation measures
+
+The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-county-west-virginia-modes-20261109-01/complete-analysis.zip)
+contains **220 county/mode decisions**, sufficient original workbooks/reports,
+the full 2026 county reference, and offline code/results. Release `439728452`
+targets website source `d0371e8`; all six assets are anonymously byte-verified.
+The ZIP is 1,165,420 bytes / 25 members, SHA-256
+`6c7656675b751b662162c29d0a282b667980c5412c1db707d7bc6fe1e2221c66`.
+
+| Separate source frame | Qualified county scope | Meaning and limit |
+|---|---|---|
+| Independent November 3 ballot reports | Wood 22,935; Kanawha 48,729; Monongalia 28,614; other 52 counties held | Native **Ballots Cast**, separate clocks and unofficial snapshots, not a researcher statewide total |
+| Early in-person workbook | All 55 counties; explicit source parent 162,349 | Source **TOTAL VOTERS**, early period October 21–31, not full-election turnout |
+| Absentee-returned workbook | All 55 counties; explicit source parent 7,001 | Returned, not qualified cast or accepted ballots |
+| Absentee-requested workbook | All 55 counties; explicit source parent 9,735 | Requests, download-only rather than a participation-map mode |
+
+The official November 2 release declares all three workbooks. Preserve every
+county/party cell, native zero, state parent and the empty extra worksheet.
+The seven native party categories are **not candidate choices**; their
+operational affiliation definition is unqualified. Never add modes or promote
+the article's mixed-mode 169,350 figure to cast ballots. Native mode clocks and
+timezones are absent; all analysis rates, denominators and unique-person claims
+remain withheld. Monongalia's **0 complete / 43 partially reported** remains
+literal, not repaired. No new precinct map is approved.
+
+Independent workbook review passes 1,598 cell checks; the complete package
+passes 687 further checks and two exact network-blocked Node/Python
+reproductions. All 152 focused/frozen/page tests, Astro checks, local
+desktop/mobile mode/value/Methods/retry checks and all 51 geographic selections
+pass. The existing measure selector keeps early, returned and all-method frames
+separate; an incomplete selected mode is rejected rather than silently replaced.
+Native artifact `13716648981` passes exact source/API checks and both strict
+limits: **988,163,667 payload / 990,689,280 tar bytes**. Pages `42713872385`
+built successfully but timed out during file synchronization; a deploy-only
+retry was cancelled. No successful build, archive or source acquisition was
+repeated. Source `cb79d84` combines this unchanged integration with Colorado
+and increases the deployment sync window. Actual production acceptance remains
+pending; do not treat artifact verification as a live-site claim.
+
+The [access ledger](data/participation-access/20261109-west-virginia-modes-01/observations.json)
+records the full 55-county query, directory-identity problems and six stopped
+state/county results products. Denials are not retried through another client,
+cache, mirror or app-data endpoint. Independently published originals supplied
+the counts; no candidate-vote substitution or geographic allocation was used.
+
 ## 2026 Indiana county statistics and Monroe reporting units
 
 The [complete immutable source package](https://github.com/hanshanley/margin_of_error/releases/download/voter-county-indiana-voter-statistics-20261109-01/complete-analysis.zip)
