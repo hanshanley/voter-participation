@@ -63,6 +63,43 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Connecticut dated active-registration frame
+
+[Complete version-14 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-analysis.zip)
+add the [official October 19 registration report](https://portal.ct.gov/sots/election-services/statistics-and-data/voter-registration-and-enrollment-statistics).
+Its native statewide `Totals Active` parent is **2,255,397**; inactive
+234,553 and combined total 2,489,950 remain separate. This is a dated
+snapshot, **not an election-time denominator** or a population validation.
+All 169 towns, 15 count columns and eleven minor-party legend entries are
+preserved. Affiliation is registration accounting, not party voting.
+Source county/district literals do not establish geographic crosswalks.
+
+The separate results feed's reported registration total 2,102,250 still
+includes thirteen zero-registration / fourteen zero-voted towns. Both
+52337/52338 versions and their original bytes remain unchanged. Agreement
+with reported town sums does not resolve coverage or registry/mode semantics;
+zeros are not zero populations. The October 19 snapshot does not repair
+these results. Native statewide ballots/residual and new rate/map approval
+remain withheld.
+
+Conditional 1,229,441.05 participant / 1,025,955.95 nonparticipant
+**dated-active units** assume unvalidated Civic-to-snapshot transport, not
+observed staying home or town/group populations. Version14 retains all
+51 state/D.C. rows, 30 control dispositions and nineteen scenarios.
+Eleven tests, 4,651 independent checks, a third PDF extractor and two
+byte-identical blocked offline reproductions pass. All 2,550 count cells,
+town sums and native row equations reconcile; all fifty unaffected states,
+eighteen prior frames and 29 prior controls are preserved.
+
+The complete 102,374,460-byte / sixteen-member ZIP includes the original PDF,
+both frozen independent extractions, selected factual results originals,
+version13 baseline, maintained readers, optional extraction-refresh code,
+tests, queries and checksums. PDF refresh requires PyMuPDF/pypdf; frozen-input
+analysis is standard-library offline. Compiled application code and private
+respondents are excluded. SHA-256:
+`96c223b86f535d11c73d2134e3788a3451d820aef1003bef1e918af8c3f9e4f7`.
+Earlier releases and the accepted website remain unchanged.
+
 ## Utah dated active-registration frame
 
 [Complete version-13 controls and sufficient numerical inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-analysis.zip)

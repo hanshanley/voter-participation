@@ -51,6 +51,20 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Connecticut dated active-register frame integrated:** version14 adds the
+native October 19 active-registration parent 2,255,397, not election-time
+population or a replacement for partial results registrations. All 169 towns,
+2,550 count cells, source literals and native arithmetic are preserved.
+Separate results versions and thirteen zero-registration / fourteen
+zero-voted towns remain held; zeros are not zero populations.
+Eleven tests, 4,651 independent checks and two exact offline reproductions pass.
+The complete 51-state/D.C. query now has thirty control dispositions and
+nineteen conditional scenarios; all fifty unaffected states, eighteen prior
+frames and 29 prior controls survive. Native statewide ballots/residual,
+population validation, local/group allocation and new rate/map approval
+remain withheld. Full native inputs, code, tests and numerical queries are
+downloadable; no website view changed.
+
 **Utah dated active-register frame integrated:** immutable `438718321`
 adds the native November 2 active parent, not an election-time denominator
 or a replacement for county-report registrations. Version13 has 51 state/D.C.
