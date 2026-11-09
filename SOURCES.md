@@ -63,6 +63,58 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## West Virginia preliminary agency participation reference
+
+[Complete version-18 controls and permitted factual inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/complete-analysis.zip)
+add the [official November 6 release](https://sos.wv.gov/article/wv-secretary-state-kris-warner-announces-canvassing-will-start-monday-november-9).
+It reports preliminary statewide **463,912 ballots cast / 1,210,385
+registered**, with native printed **38.33%**. The publication date is not
+the count snapshot or registration cutoff; those clocks/timezone and
+active/inactive status remain unknown. Canvass was pending at publication,
+with further provisional/absentee review. No complete-count, all-55-reporting,
+unique-voter or certification claim.
+
+Early cast 162,349 and absentee **received** 7,001 remain distinct,
+nonadditive facts; received is not relabelled cast. Four historical
+percentages remain unmatched source context, without denominator/scope
+qualification or trend fitting. The source-defined reference follows the
+prior native-scope treatment: generic cast-ballot/rate fields remain null.
+
+Conditional 476,060.13 participant / 734,324.87 nonparticipant
+**same-release registered units** assume unvalidated Civic transport.
+The native-minus-model contrast is -12,148.13, not population validation
+or observed staying home. No fit to ballots, invented intervals, local/
+group allocation or new map approval.
+Version18 retains 51 state/D.C. rows, 35 control dispositions and 24
+conditional scenarios; all fifty unaffected states, 23 prior frames and
+34 prior controls survive.
+
+Ten tests, 199 independent original-page/semantic/Fraction/package checks
+and two exact blocked offline reproductions pass. The complete
+103,190,172-byte / fourteen-member ZIP includes all nine relevant factual
+numerical observations, twelve words of short factual fragments,
+full-original byte provenance, version17 baseline, maintained extractor/
+analysis/shared helpers, tests and every query. The full raw page is
+retained locally, not redistributed: full article prose, compiled page
+code, contact details and session headers are excluded. This remains
+complete permitted numerical input data, not a metadata-only export.
+SHA-256:
+`c615e4533315fe9814d3c89eb6d50507552c8828fad261c86297a0f20a79ebb7`.
+Earlier releases/access holds and the accepted website are unchanged.
+
+## South Carolina registration workbook: acquired, qualification pending
+
+The [official registration index](https://scvotes.gov/elections-statistics/voter-participation/)
+declares a November 2 county/race/gender/age workbook. Its original
+76,263 bytes were acquired once (SHA-256
+`04067e0bacdbc0b9e04d41e4f088d6a1371ceeb821fb2d3cc4a1e1b9f5271b7b`).
+Nine worksheets and native county/state rows are held, but full cell-level
+qualification and downstream estimates are pending. It is not a version18
+input, turnout result, approved cross-source demographic match or map.
+Preserve blank unknown-gender cells, native race/Hispanic coding and
+separate age bins; do not allocate survey probabilities locally or reacquire
+the successful original.
+
 ## Kansas dated workbook registration frame
 
 [Complete version-17 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-17/complete-analysis.zip)

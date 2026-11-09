@@ -51,6 +51,28 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**West Virginia preliminary source reference integrated:** version18 adds
+the agency's 463,912 ballots cast / 1,210,385 registered / printed38.33%
+from its November 6 release. Publication is not the count or registration
+cutoff; clocks/timezone remain unknown. Counts were preliminary before
+canvass, not complete/certified/generic turnout. Early cast and absentee
+received stay nonadditive; historical percentages remain unmatched context.
+Ten tests, 199 independent checks and two exact offline reproductions pass.
+The complete query has 51 state/D.C. rows, 35 dispositions and 24 conditional
+scenarios; all fifty unaffected states, 23 prior frames and 34 controls
+survive. Native-minus-model is not validation or observed staying home.
+All permitted factual numerical inputs/code/tests/queries are downloadable;
+full page prose/app code/contact details stay outside the release.
+No new rate/map/website view.
+
+**Next acquired source: South Carolina registration workbook.** The
+actually declared November 2 XLSX is held (76,263 bytes, SHA04067e0b...),
+not yet independently qualified. Process all nine county/race/gender/age
+sheets through full native cell/missingness checks and supported numerical
+estimates; do not reacquire it. Preserve blank unknown-gender fields and
+native category definitions. Registration is not participation, and source
+race/Hispanic categories are not automatically CPS/Civic-equivalent.
+
 **Kansas dated workbook frame integrated:** version17 adds the native
 October 1 Grand Total 2,027,520. All four worksheets / 105 counties /
 169 districts / four repeated state parents survive; the repeated

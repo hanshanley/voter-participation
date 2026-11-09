@@ -1,0 +1,86 @@
+{
+  "schema": "preliminary-source-defined-participation-reference-v1",
+  "version": "20261109-01",
+  "release_id": 438775746,
+  "release_tag": "participation-state-controls-20261108-18",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/complete-analysis.zip",
+      "bytes": 103190172,
+      "sha256": "c615e4533315fe9814d3c89eb6d50507552c8828fad261c86297a0f20a79ebb7",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/complete-conditional-registered-scenarios.csv",
+      "bytes": 21412,
+      "sha256": "2be5ab8a99eae091034af075d7a8979788410b7a41bd8e81e0e7697bb674c93b",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/complete-native-control-dispositions.csv",
+      "bytes": 30455,
+      "sha256": "885dc7c5cb319c1aee80e24dfb3c2c866ed0863992955b9fa983251756d3e2e3",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-participation-facts.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/complete-native-participation-facts.csv",
+      "bytes": 769,
+      "sha256": "35d6991d3ba139d1b07130bbb6c21ad8c49923bdde6a31084b4f4c5eefa44a9c",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-source-participation-comparison.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/complete-source-participation-comparison.csv",
+      "bytes": 872,
+      "sha256": "36b93734fb3f11d818b74ebaf7c51e5db3d5b0944c927bc5f63b4e968f226435",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/complete-state-control-query.csv",
+      "bytes": 23511,
+      "sha256": "52beabbbb73a44ea0ebbdd0bc9765a36e323e74181257315b6ca5bb93934dadc",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/source-qualification.json",
+      "bytes": 1592,
+      "sha256": "09bc520464f8ed4d46a9877b99caecddd2d94badc1d213c76d031e28810b1668",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726361536",
+      "anonymous_verification_accept": "application/octet-stream",
+      "canonical_browser_url_transient_504_observed": true,
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/summary.json",
+      "bytes": 390,
+      "sha256": "e74183a6f50e890c7a03044a2db6854b29a3e3cc85344b74c86e31146269357b",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726361542",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_state_query_rows": 51,
+  "source_control_records": 35,
+  "conditional_scenarios": 24,
+  "conditional_registration_frame_added": 1,
+  "native_source_defined_ballot_reference_added": 1,
+  "generic_cast_ballot_controls_added": 0,
+  "source_publication_date": "2026-11-06",
+  "native_count_and_registration_cutoffs_unknown": true,
+  "preliminary_not_certified": true,
+  "native_ballots_cast": 463912,
+  "native_registered_parent": 1210385,
+  "same_statement_source_defined_percent_not_final_turnout": "38.33",
+  "previous_fifty_state_rows_twenty_three_scenarios_and_thirty_four_controls_preserved": true,
+  "complete_permitted_numerical_inputs_no_full_prose_appcode_contacts": true,
+  "native_mode_counts_not_added_received_not_relabelled_cast": true,
+  "native_minus_model_not_population_validation_or_observed_staying_home": true
+}
