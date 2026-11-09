@@ -25,6 +25,43 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Mississippi multiyear registration frames and conditional signals
+
+[Complete 2022/2024/2026 package](https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-analysis.zip)
+adds the exact declared October 2022 and 2024 reports, reusing the completed
+2026 inputs unchanged. Derived all-82-county ACTIVE stocks are **1,926,538 /
+1,965,611 / 1,888,362**, respectively. None is a printed statewide parent
+or independent benchmark; actual cutoff/day/clock/timezone remain unknown.
+Three registration-stock comparisons are not turnout, retention, new
+voters, migration, deaths, eligibility or demographic change.
+
+Two historical scenarios multiply October active stock by each year's
+published CPS CVAP voted-to-registered percentage ratio: **46.4/72.6 in
+2022**, **68.9/81 in 2024**. Rounded marginal ratios are not individual
+registered-voter joints. Date/status/registry/population transport is
+**unvalidated**; complements do not identify reported nonvoters or
+unknown responses. Decimal arithmetic does not supply sampling precision.
+The existing 2026 Civic model is a different measurement, reused exactly.
+All nine year/source decisions and three held model comparisons remain
+explicit; even the 2022-to-2026 midterm pair is not a validated turnout trend.
+
+All nine pages / 246 county rows / 984 factual cells / 492 counts / 246
+percentages are retained, including eight percentages above100.
+CVAP vintages/headers/asterisks stay native, never a model denominator.
+Layout-aware extraction preserves 2024's split Carroll text; original
+2022 cross-reference warnings and bytes are not silently repaired.
+Independent coordinate readers and original CPS cells agree.
+
+Nineteen tests, 4,433 independent checks and two exact offline reproductions
+pass. Immutable release `439058337` has ten full byte-verified assets.
+The **1,706,238-byte / seventeen-member ZIP** contains every sufficient
+original, public aggregate, complete original CPS package, code, test,
+query/result and checksum, without unrelated nested baselines. SHA-256:
+`5c4c69a370715d8e758ede707da7cb1bfc374b8de8173bb394715acbc772c17e`.
+No private reduction or successful 2026 acquisition/recovery was repeated.
+Current native27 controls, prior releases/holds/models and the accepted
+website remain unchanged; no group/local allocation or new rate/map/view.
+
 ## Mississippi October active-registration frame
 
 [Complete version-27 analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-27/complete-analysis.zip)

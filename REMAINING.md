@@ -51,6 +51,20 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Mississippi multiyear frames completed as a separate package:** new
+October2022/2024 reports extend the held2026 frame to three dated ACTIVE
+stocks and three registration-stock comparisons, not turnout/retention.
+Two separate historical CPS rounded CVAP marginal-ratio scenarios have
+unvalidated date/status/registry transport; complements do not identify
+reported nonvoters or unknown responses. Existing2026 Civic units are
+reused exactly, with all three cross-year model comparisons held.
+All nine year/source decisions, 246 county rows / 492 counts / 246
+percentages survive. Nineteen tests, 4,433 independent checks and two
+exact offline reproductions pass; complete sufficient originals/public
+inputs/code/tests/queries/results are published. Native27's51state
+decisions/51dispositions/33scenarios and website remain unchanged.
+No new local/group allocation or rate/map/view; broader gaps stay open.
+
 **Mississippi active-register frame integrated conditionally:** version27
 adds October's derived all-82-county sum of 1,888,362 ACTIVE registrations,
 not a printed statewide parent or qualified November population.
