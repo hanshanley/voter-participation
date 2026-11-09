@@ -51,6 +51,23 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**South Carolina registration workbook integrated:** version19 adds the
+explicit overall state parent 3,470,220. November 2 is the declared report
+label, not an embedded registration cutoff/clock; status/timezone remain
+unknown. All nine views / 46 counties per view / 14,121 cells / 6,768
+registration slots and 945 missing count cells are preserved without
+zero filling or complement recovery. Ten tests, 87,960 independent checks
+and two exact offline reproductions pass. All 2,588 accounting equations
+were evaluated; fully observed ones reconcile and incomplete ones remain
+incomplete. The complete query has 51 state/D.C. rows, 36 dispositions
+and 25 conditional scenarios; all fifty unaffected states, 24 prior
+frames and 35 controls survive. Native demographic margins describe
+registration stocks, not participating voters or CPS/Civic-equivalent
+groups. No group/local probability allocation, observed staying-home
+claim, native ballots/residual or new rate/map/website view.
+Full original/sufficient inputs/code/tests/queries are downloadable.
+Successful acquisition and frozen independent snapshot were reused.
+
 **West Virginia preliminary source reference integrated:** version18 adds
 the agency's 463,912 ballots cast / 1,210,385 registered / printed38.33%
 from its November 6 release. Publication is not the count or registration
@@ -64,14 +81,6 @@ survive. Native-minus-model is not validation or observed staying home.
 All permitted factual numerical inputs/code/tests/queries are downloadable;
 full page prose/app code/contact details stay outside the release.
 No new rate/map/website view.
-
-**Next acquired source: South Carolina registration workbook.** The
-actually declared November 2 XLSX is held (76,263 bytes, SHA04067e0b...),
-not yet independently qualified. Process all nine county/race/gender/age
-sheets through full native cell/missingness checks and supported numerical
-estimates; do not reacquire it. Preserve blank unknown-gender fields and
-native category definitions. Registration is not participation, and source
-race/Hispanic categories are not automatically CPS/Civic-equivalent.
 
 **Kansas dated workbook frame integrated:** version17 adds the native
 October 1 Grand Total 2,027,520. All four worksheets / 105 counties /

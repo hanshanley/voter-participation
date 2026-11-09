@@ -63,6 +63,47 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## South Carolina registration stocks and native demographic margins
+
+[Complete version-19 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-analysis.zip)
+reuse the successfully acquired [official registration workbook](https://scvotes.gov/elections-statistics/voter-participation/).
+Its explicit `RP0040 / Race: All / TOTAL / All Total` is **3,470,220
+registrations**, not participating voters. **November 2, 2026 is the
+declared report label**, not an embedded registration cutoff or clock.
+Those fields/timezone and active/inactive status remain unknown.
+
+All nine views, each with 46 native county rows and a state parent, are
+preserved: overall plus eight source race categories, administrative
+Female/Male/Unknown and four native age bins. The overall view and its
+race views are not nine populations. County codes are not inferred FIPS.
+Native race/Hispanic, gender and age categories are not automatically
+CPS/Civic-equivalent; no crosswalk, group turnout or local probability
+allocation is inferred. These group counts describe registration stocks.
+
+All **14,121 cells / 6,768 registration slots**, including **945 missing
+count cells**, retain their original distinctions. Numeric zeros remain
+observed zeros; blanks are not zero or complement recoveries. All
+2,588 accounting checks were independently evaluated. Fully observed
+equations reconcile; incomplete equations remain incomplete.
+
+Conditional 1,938,414.24 participant / 1,531,805.76 nonparticipant
+**overall registration units** assume unvalidated Civic transport, not
+observed staying home or validated group populations. Native ballots/
+residual, population validation and new rate/map approval remain withheld.
+Version19 retains 51 state/D.C. rows, 36 control dispositions and 25
+conditional scenarios; all fifty unaffected states, 24 prior frames
+and 35 prior controls survive.
+
+Ten tests, 87,960 independent checks and two exact blocked offline
+reproductions pass. The complete 103,538,706-byte / sixteen-member ZIP
+includes the original 76,263-byte workbook, full frozen independent
+snapshot/receipt/reduction-code provenance, version18 baseline,
+maintained standard-library original-OOXML reader/shared helpers,
+tests and every query. Successful acquisition and independent snapshot
+were reused, not repeated. SHA-256:
+`bb13c57bba29b96329af131ef490b5043cc376297a659027f84be5580a4598f9`.
+Earlier releases/access holds and the accepted website remain unchanged.
+
 ## West Virginia preliminary agency participation reference
 
 [Complete version-18 controls and permitted factual inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-18/complete-analysis.zip)
@@ -101,19 +142,6 @@ complete permitted numerical input data, not a metadata-only export.
 SHA-256:
 `c615e4533315fe9814d3c89eb6d50507552c8828fad261c86297a0f20a79ebb7`.
 Earlier releases/access holds and the accepted website are unchanged.
-
-## South Carolina registration workbook: acquired, qualification pending
-
-The [official registration index](https://scvotes.gov/elections-statistics/voter-participation/)
-declares a November 2 county/race/gender/age workbook. Its original
-76,263 bytes were acquired once (SHA-256
-`04067e0bacdbc0b9e04d41e4f088d6a1371ceeb821fb2d3cc4a1e1b9f5271b7b`).
-Nine worksheets and native county/state rows are held, but full cell-level
-qualification and downstream estimates are pending. It is not a version18
-input, turnout result, approved cross-source demographic match or map.
-Preserve blank unknown-gender cells, native race/Hispanic coding and
-separate age bins; do not allocate survey probabilities locally or reacquire
-the successful original.
 
 ## Kansas dated workbook registration frame
 
