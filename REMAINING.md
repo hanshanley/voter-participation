@@ -51,6 +51,23 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Reported demographic-frame arithmetic published:** the new provider
+package covers all 408 state/mode/dimension decisions and 511 group/held
+rows, with 135 source-native counts / 32 demographic views in 11 states.
+Percentages use each demographic response's own total, not a population
+or larger mode denominator. All Unknown/Undesignated/native-bin labels
+and twelve zeros survive. Twelve parent-total discrepancies remain
+explicit; no residual-to-unknown imputation. Matching dates/totals do not
+validate equivalent frames. Provider404s for AL/DC/MA/NH are source-specific
+holds, not zero voting. These are partial provider count compositions,
+NOT group turnout, accepted/cast/unique-person certification, survey
+projection or independent official validation. All 376 other scope
+decisions remain held. Twelve tests, 13,997 checks and two exact offline
+reproductions pass; complete sufficient source inputs/code/tests/queries/
+results are published. Existing captured reductions were reused without
+new acquisition or collector rerun. Native controls25, all survey models,
+source403 holds and website remain unchanged; broader gaps stay open.
+
 **D.C. native references integrated without survey projection:** version25
 adds September 30 registrations and four separate voting-mode reports.
 All 13 pages / 20 factual grids / 4,517 raw slots / 1,515 count slots

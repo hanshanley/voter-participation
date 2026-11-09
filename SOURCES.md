@@ -25,6 +25,49 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Provider partial demographic counts and own-frame compositions
+
+[Complete source-frame arithmetic package](https://github.com/hanshanley/margin_of_error/releases/download/participation-provider-demographic-frames-20261109-01/complete-analysis.zip)
+reuses the held `20261109T083731Z` CivicAPI early-vote capture:
+**408 state/mode/dimension decisions**, all **511 group/held rows**,
+and **135 source-native group counts in 32 demographic views / 11 states**.
+The API count feed is not the supplied Civic survey, and these are
+**compositions within reported frames, not group turnout rates**.
+Native source dates October 31-November 8 differ from the November 9
+collector retrieval. Election context is collector-defined, not an
+independently qualified native election identifier.
+
+Each percentage uses its **own demographic-response total**, retaining
+Unknown/Undesignated labels and all twelve source zero counts. Twelve
+views differ from their mode totals: for example, Colorado age counts
+are lower by 7,211 early / 664 mail units; Georgia early race differs
+by 86,201. Signed discrepancies and dates remain explicit, not repaired
+or imputed as unknown people. Twenty views have matching dates/totals;
+that arithmetic does not validate equivalent populations or coverage.
+No native-bin harmonization or pooling across modes, dimensions or states.
+
+All 51 jurisdictions remain in the query. The provider's four capability
+404s for AL/DC/MA/NH are source-specific absences, not zero voting or
+data absence everywhere. All 376 held scopes have no invented groups or
+statistics. There is no matched group registered/eligible denominator,
+accepted/cast/unique-person certification, group or full-election turnout
+rate, survey projection, causal/retention estimate or fabricated interval.
+Official state403 holds remain stopped; provider counts are not substitutes
+for independent official benchmarks.
+
+Twelve tests, 13,997 independent checks and two exact blocked offline
+reproductions pass. Immutable release `438975418` has six full
+authenticated-draft/anonymous-published byte-verified assets. The
+74,355-byte / eleven-member ZIP includes an 86-member sufficient-input
+archive: all 83 raw capability/demographic responses, 79 unlabeled
+native mode-parent vectors, reused reduced captures and original
+byte/hash/clock/source provenance; plus reader/freezer, tests, every query/
+result and checksums. County regions, party labels/colors, web bodies
+and personal records are excluded. No new acquisition or completed
+collector campaign rerun. SHA-256:
+`8a8c2502e889ebf741955492c9a9e1bdda1e69850292f740105340a6dffe4bfc`.
+Native controls25, all survey models, previous releases and website remain unchanged.
+
 ## D.C. dated registration and separate native voting-mode reports
 
 [Complete version-25 controls and factual inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-25/complete-analysis.zip)

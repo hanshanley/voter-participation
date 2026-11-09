@@ -21,6 +21,12 @@ are not automatically compatible populations.
 | Same-type AP source-model contrasts | 505 state/group/pair arithmetic contrasts for 2018–2022 midterms and 2020–2024 presidential elections; all 6,426 decisions, not observed turnout changes | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-contrasts-20261109-01/complete-analysis.zip) |
 | Civic 2026 estimates | Reviewed broad source-weighted participation and transition outputs | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-estimates-20261108-01/complete-analysis.zip) |
 
+## Partial reported counts, not group turnout
+
+| Analysis | What it provides | Complete ZIP |
+|---|---|---|
+| 2026 provider demographic frames | All 408 state/mode/dimension decisions, 135 native group counts, own-frame compositions and explicit parent mismatches; no population turnout denominator | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-provider-demographic-frames-20261109-01/complete-analysis.zip) |
+
 ## Administrative controls and conditional counts
 
 | Analysis | What it provides | Complete ZIP |
