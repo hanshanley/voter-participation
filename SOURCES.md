@@ -25,6 +25,47 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Maryland dated registers and unofficial card references: native28
+
+[Complete native28 package](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-analysis.zip)
+adds three exact, declared Maryland general-election statistical originals.
+Both indexes and all originals returned HTTP200. The distinct, stopped
+October monthly-registration PDF was not retried.
+
+| Native reference | Count | Source clock |
+|---|---:|---|
+| ACTIVE precinct register | 4,293,322 | As of October 18, 2026 |
+| INACTIVE precinct register, kept separate | 283,680 | As of October 18, 2026 |
+| UNOFFICIAL Cards Cast | 2,079,801 | Run November 8, 2026, 7:44 p.m.; timezone unspecified |
+
+All 350 registration-party count cells, 25 card references and 66 accounting
+rows are retained. Every 24-county sum reconciles to its printed parent.
+The card report's 4,293,322 Eligible Voters match the active roster and
+give the displayed 48.44% reference: same-agency corroboration, not
+independent population validation. Registration stocks are **not
+participation by party**; cards are not certified unique voters/ballots.
+Reporting counters are not precinct records or final-canvass certification.
+The actual title includes MIB2 despite the index/election-night filename.
+A web preview showed an older November 2 zero snapshot; the exact archived
+PDF was rendered locally and matches the November 8 counts. No preview or
+cached count supplied numerical input.
+
+One unchanged statewide Civic propensity transported to the ACTIVE frame
+yields 2,315,995.67 participant / 1,977,326.33 nonparticipant **source units**,
+with UNVALIDATED date/status/registry-frame exchangeability. No inactive/SDR
+addition, staying-home/card-minus-model residual, group/local model
+allocation, eligibility certification, interval, rate/map or website view.
+All 50 other states, 51 prior dispositions and 33 scenarios remain exact;
+native28 has 51 state/D.C. rows, 52 dispositions and 34 scenarios, not 34 states.
+
+Fourteen tests, 4,006 independent checks and two exact offline reproductions
+pass. Immutable release `439195403` has nine full byte-verified assets.
+The **106,571,158-byte / 17-member ZIP** includes the originals, safe receipts,
+independent grids, accepted Civic parent, complete native27, code/dependencies,
+tests and every query/result. SHA-256:
+`74cf1dd932be643b8a408c0fbfbd9d589297e07363c242e817a0c7be1af987fe`.
+Broader independent demographic/precinct participation gaps remain open.
+
 ## Every-state CPS frames across four elections
 
 [Complete 2018/2020/2022/2024 package](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-four-year-frames-20261109-01/complete-analysis.zip)

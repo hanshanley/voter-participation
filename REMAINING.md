@@ -51,6 +51,23 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Maryland general-election references completed; native28:** exact declared
+workbooks give 4,293,322 ACTIVE and 283,680 INACTIVE registrations as of
+October 18, 2026, kept separate. The distinct unofficial PDF reports 2,079,801
+Cards Cast / 4,293,322 Eligible Voters, 48.44%, run November 8 at 7:44 p.m.,
+timezone unspecified; actual title includes MIB2. These are not certified
+unique voters/ballots or complete canvass. All 350 stock cells, 25 card
+references and 66 accounting rows reconcile; same-agency products are not
+independent population validation. No participation-by-party joint or
+precinct records. One unvalidated statewide ACTIVE-frame transport adds
+a scenario without fitting to cards; all 50 other states / 51 prior
+dispositions / 33 scenarios remain exact. Current native28 has 51 state/D.C.
+rows, 52 dispositions and 34 scenarios, NOT 34 states. Fourteen tests,
+4,006 checks and two exact offline reproductions pass; complete sufficient
+inputs/code/tests/queries/results published. The stopped October monthly
+PDF was not retried; an older web preview was not a numerical input.
+Existing CPS/2026 models/website unchanged; broader 49 independent gaps open.
+
 **Four-election, every-state CPS histories published:** newly acquired
 2018/2020 originals add 1,734 group snapshots, extending the complete
 query to3,468 rows across2018/2020/2022/2024. All1,734 accepted2022/2024

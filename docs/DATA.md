@@ -35,7 +35,7 @@ are not automatically compatible populations.
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
 | California dated registration evidence | Complete county/age/preregistration accounting, dated reference and all prior state estimates preserved; not group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-california-register-frame-20261108-01/complete-analysis.zip) |
-| Current state controls | All state/D.C. decisions, a separate unvalidated Mississippi October active-register frame, 33 conditional scenarios and complete earlier baselines | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-27/complete-analysis.zip) |
+| Current state controls | All state/D.C. decisions, separate Maryland dated registers/unofficial card references, 34 unvalidated conditional scenarios and complete earlier baselines; not 34 states or group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-analysis.zip) |
 | Mississippi multiyear frames | October2022/2024/2026 registration stocks, two unvalidated historical CPS marginal-ratio scenarios, all source decisions and held CPS/Civic comparisons | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-analysis.zip) |
 | Historical administrative controls | Source-specific 2018-2026 comparisons, holds and registration-frame scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip) |
 | Historical EAC state controls | Complete state/year grid, selected native references and separate Alaska scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-eac-state-controls-20261108-01/complete-analysis.zip) |
@@ -87,6 +87,8 @@ the separate D.C. native references [version 25](https://github.com/hanshanley/m
 ([complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-25/complete-analysis.zip)),
 the Indiana primary-context [version 26](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-26)
 ([complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-analysis.zip)),
+the Mississippi October active-register [version 27](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-27)
+([complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-27/complete-analysis.zip)),
 and historical-control [version 01](https://github.com/hanshanley/margin_of_error/releases/tag/participation-historical-controls-20261108-01),
 remain available.
 
