@@ -25,6 +25,47 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Oregon monthly registration and held returned-envelope context
+
+[Complete version-21 controls and originals](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-21/complete-analysis.zip)
+add a distinct [monthly registration report](https://sos.oregon.gov/elections/Documents/Registration/2026-November.pdf)
+already held locally. Its explicit county **Total is 3,112,307**,
+corroborated by congressional, Senate and representative parents.
+The native **November 3, 2026 preparation date is not a qualified
+registration cutoff**; status and timezone remain unspecified.
+
+All seven pages / 2,220 data slots preserve 2,146 count slots, 44 observed
+zeros and 74 printed percentages. All 298 accounting equations reconcile.
+The 36 counties, 49 congressional fragments/six subtotals, 30 Senate and
+60 representative districts are repeated registration margins, not extra
+populations. Native party affiliation and monthly stock changes are not
+vote choice, participation or first-time registration.
+
+Conditional **2,085,480.05 participant / 1,026,826.95 nonparticipant
+monthly-register units** assume unvalidated statewide Civic transport.
+The existing November 7 Oregon primary reference and **all 51 prior
+state-query rows remain byte-identical**. Every earlier control/scenario
+survives; version21 has 39 dispositions and 27 conditional scenarios.
+
+The separate returned-envelope report explicitly warns against formal
+analysis. Its 2,028,213 returned envelopes and October 16 active snapshot
+3,117,439 are **held context only**, never new model/calibration inputs
+or cast-ballot substitutes. Report generation on November 6 is not its
+registration clock; timezone remains unknown. Legacy fine-cell
+blank-to-zero transformations and county-day/party CSVs are not reused.
+No new rates, maps, group/local allocations, population validation,
+observed staying home or fabricated intervals.
+
+Ten tests, 9,907 independent checks, a third original-PDF reader and two
+exact blocked offline reproductions pass. Successful acquisitions and old
+reductions were not repeated. Immutable release `438849204` has eight
+full authenticated-draft/anonymous-published byte-verified assets.
+Its 105,213,231-byte / fifteen-member ZIP includes both original PDFs,
+new full independent views, declarations/receipts, version20 baseline,
+maintained reader/extractor/shared code, tests and every query. SHA-256:
+`f721fb06dc9e4f28e9d392065a4858ccfc316c0696419d1faa93393d09d7a9e6`.
+Historical AP downloads and the accepted website are unchanged.
+
 ## Historical state-group VoteCast model shares
 
 [Complete historical state-group package](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-demographics-20261109-01/complete-analysis.zip)

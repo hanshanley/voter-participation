@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "independent_checks": 9907,
+  "native_monthly_registration_parent": 3112307,
+  "conditional_model_participant_units": "2085480.0452260722889023358389752461592857406703515431942289985331759541031835892",
+  "conditional_model_nonparticipant_units": "1026826.9547739277110976641610247538407142593296484568057710014668240458968164108",
+  "all_2220_slots_44_zeros_74_percentages_and_298_equations_verified": true,
+  "independent_original_third_library_pypdf_reader_not_estimator_import": true,
+  "source_formal_analysis_warning_respected_return_report_not_model_input": true,
+  "all_51_state_rows_byte_identical_37_prior_controls_26_prior_scenarios_preserved": true,
+  "complete_state_query_rows": 51,
+  "source_control_records": 39,
+  "conditional_scenarios": 27,
+  "focused_tests": 10,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 15,
+  "archive_bytes": 105213231,
+  "archive_sha256": "f721fb06dc9e4f28e9d392065a4858ccfc316c0696419d1faa93393d09d7a9e6"
+}

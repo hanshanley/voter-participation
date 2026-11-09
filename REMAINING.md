@@ -51,6 +51,22 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Oregon monthly register integrated separately:** version21 adds the
+native 3,112,307 monthly Total, prepared November 3, not a qualified
+registration cutoff or active-only status. All seven pages / 2,220
+slots retain 44 observed zeros and 74 percentages; 298 equations
+reconcile. Ten tests, 9,907 independent checks and two exact offline
+reproductions pass. Conditional monthly-register units remain unvalidated,
+not observed participation/staying home. Every prior state row is
+byte-identical; 37 prior controls and 26 scenarios survive, with
+39 dispositions / 27 scenarios now available.
+The distinct returned-envelope report's formal-analysis warning is
+respected: held context only, no model/calibration use or cast substitute.
+Legacy fine-cell zero-filling is not reused. Full originals/new views/
+sufficient inputs/code/tests/queries are downloadable. No new website
+view, matched group rates, population validation or local allocation.
+Broader independent participation and precinct gaps remain open.
+
 **Historical state-group models extended:** the new AP/NORC package
 provides 1,603 supported non-overall state/year/group cells across
 2018/2020/2022/2024, each with two separately labelled weight views.

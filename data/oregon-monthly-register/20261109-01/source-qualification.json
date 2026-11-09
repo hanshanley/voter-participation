@@ -1,0 +1,1828 @@
+{
+  "active_inactive_status_qualified": false,
+  "all_seven_pages_and_native_count_zeros_preserved": true,
+  "certification_approved": false,
+  "counting_completion_approved": false,
+  "design_confidence_interval": null,
+  "group_or_local_survey_allocation": false,
+  "group_registration_or_monthly_change_not_group_turnout_or_first_time_registration": true,
+  "held_return_context": {
+    "cast_ballot_equivalence_qualified": false,
+    "native_active_snapshot": 3117439,
+    "native_active_snapshot_clock": "2026-10-16 7:00 AM",
+    "native_report_clock": "11/6/2026 3:36 PM",
+    "native_returned_envelopes": 2028213,
+    "source_formal_analysis_warning": true,
+    "timezone": null,
+    "used_for_model_or_calibration": false
+  },
+  "held_return_report_used_for_new_model": false,
+  "legacy_fine_cell_blank_to_zero_parser_not_reused": true,
+  "maps_approved": false,
+  "matched_party_denominators_qualified": false,
+  "missing_imputed_zero": false,
+  "native_accounting_checks": [
+    {
+      "difference": 0,
+      "native_parent": 12860,
+      "observed_child_sum": 12860,
+      "scope": "county:None:Baker"
+    },
+    {
+      "difference": 0,
+      "native_parent": 61304,
+      "observed_child_sum": 61304,
+      "scope": "county:None:Benton"
+    },
+    {
+      "difference": 0,
+      "native_parent": 322768,
+      "observed_child_sum": 322768,
+      "scope": "county:None:Clackamas"
+    },
+    {
+      "difference": 0,
+      "native_parent": 31678,
+      "observed_child_sum": 31678,
+      "scope": "county:None:Clatsop"
+    },
+    {
+      "difference": 0,
+      "native_parent": 42256,
+      "observed_child_sum": 42256,
+      "scope": "county:None:Columbia"
+    },
+    {
+      "difference": 0,
+      "native_parent": 49790,
+      "observed_child_sum": 49790,
+      "scope": "county:None:Coos"
+    },
+    {
+      "difference": 0,
+      "native_parent": 21874,
+      "observed_child_sum": 21874,
+      "scope": "county:None:Crook"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18972,
+      "observed_child_sum": 18972,
+      "scope": "county:None:Curry"
+    },
+    {
+      "difference": 0,
+      "native_parent": 169458,
+      "observed_child_sum": 169458,
+      "scope": "county:None:Deschutes"
+    },
+    {
+      "difference": 0,
+      "native_parent": 89488,
+      "observed_child_sum": 89488,
+      "scope": "county:None:Douglas"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1449,
+      "observed_child_sum": 1449,
+      "scope": "county:None:Gilliam"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5501,
+      "observed_child_sum": 5501,
+      "scope": "county:None:Grant"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5637,
+      "observed_child_sum": 5637,
+      "scope": "county:None:Harney"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17027,
+      "observed_child_sum": 17027,
+      "scope": "county:None:Hood River"
+    },
+    {
+      "difference": 0,
+      "native_parent": 165278,
+      "observed_child_sum": 165278,
+      "scope": "county:None:Jackson"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17869,
+      "observed_child_sum": 17869,
+      "scope": "county:None:Jefferson"
+    },
+    {
+      "difference": 0,
+      "native_parent": 70392,
+      "observed_child_sum": 70392,
+      "scope": "county:None:Josephine"
+    },
+    {
+      "difference": 0,
+      "native_parent": 50909,
+      "observed_child_sum": 50909,
+      "scope": "county:None:Klamath"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5632,
+      "observed_child_sum": 5632,
+      "scope": "county:None:Lake"
+    },
+    {
+      "difference": 0,
+      "native_parent": 282837,
+      "observed_child_sum": 282837,
+      "scope": "county:None:Lane"
+    },
+    {
+      "difference": 0,
+      "native_parent": 40327,
+      "observed_child_sum": 40327,
+      "scope": "county:None:Lincoln"
+    },
+    {
+      "difference": 0,
+      "native_parent": 101363,
+      "observed_child_sum": 101363,
+      "scope": "county:None:Linn"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18698,
+      "observed_child_sum": 18698,
+      "scope": "county:None:Malheur"
+    },
+    {
+      "difference": 0,
+      "native_parent": 231298,
+      "observed_child_sum": 231298,
+      "scope": "county:None:Marion"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7367,
+      "observed_child_sum": 7367,
+      "scope": "county:None:Morrow"
+    },
+    {
+      "difference": 0,
+      "native_parent": 594778,
+      "observed_child_sum": 594778,
+      "scope": "county:None:Multnomah"
+    },
+    {
+      "difference": 0,
+      "native_parent": 65059,
+      "observed_child_sum": 65059,
+      "scope": "county:None:Polk"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1466,
+      "observed_child_sum": 1466,
+      "scope": "county:None:Sherman"
+    },
+    {
+      "difference": 0,
+      "native_parent": 21850,
+      "observed_child_sum": 21850,
+      "scope": "county:None:Tillamook"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51442,
+      "observed_child_sum": 51442,
+      "scope": "county:None:Umatilla"
+    },
+    {
+      "difference": 0,
+      "native_parent": 19602,
+      "observed_child_sum": 19602,
+      "scope": "county:None:Union"
+    },
+    {
+      "difference": 0,
+      "native_parent": 6383,
+      "observed_child_sum": 6383,
+      "scope": "county:None:Wallowa"
+    },
+    {
+      "difference": 0,
+      "native_parent": 19103,
+      "observed_child_sum": 19103,
+      "scope": "county:None:Wasco"
+    },
+    {
+      "difference": 0,
+      "native_parent": 411138,
+      "observed_child_sum": 411138,
+      "scope": "county:None:Washington"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1039,
+      "observed_child_sum": 1039,
+      "scope": "county:None:Wheeler"
+    },
+    {
+      "difference": 0,
+      "native_parent": 78415,
+      "observed_child_sum": 78415,
+      "scope": "county:None:Yamhill"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "county:None:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 31678,
+      "observed_child_sum": 31678,
+      "scope": "congressional:1st:Clatsop"
+    },
+    {
+      "difference": 0,
+      "native_parent": 42256,
+      "observed_child_sum": 42256,
+      "scope": "congressional:1st:Columbia"
+    },
+    {
+      "difference": 0,
+      "native_parent": 127993,
+      "observed_child_sum": 127993,
+      "scope": "congressional:1st:Multnomah"
+    },
+    {
+      "difference": 0,
+      "native_parent": 21850,
+      "observed_child_sum": 21850,
+      "scope": "congressional:1st:Tillamook"
+    },
+    {
+      "difference": 0,
+      "native_parent": 285692,
+      "observed_child_sum": 285692,
+      "scope": "congressional:1st:Washington"
+    },
+    {
+      "difference": 0,
+      "native_parent": 509469,
+      "observed_child_sum": 509469,
+      "scope": "congressional:1st:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 12860,
+      "observed_child_sum": 12860,
+      "scope": "congressional:2nd:Baker"
+    },
+    {
+      "difference": 0,
+      "native_parent": 0,
+      "observed_child_sum": 0,
+      "scope": "congressional:2nd:Clackamas"
+    },
+    {
+      "difference": 0,
+      "native_parent": 21874,
+      "observed_child_sum": 21874,
+      "scope": "congressional:2nd:Crook"
+    },
+    {
+      "difference": 0,
+      "native_parent": 0,
+      "observed_child_sum": 0,
+      "scope": "congressional:2nd:Curry"
+    },
+    {
+      "difference": 0,
+      "native_parent": 22395,
+      "observed_child_sum": 22395,
+      "scope": "congressional:2nd:Deschutes"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18736,
+      "observed_child_sum": 18736,
+      "scope": "congressional:2nd:Douglas"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1449,
+      "observed_child_sum": 1449,
+      "scope": "congressional:2nd:Gilliam"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5501,
+      "observed_child_sum": 5501,
+      "scope": "congressional:2nd:Grant"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5637,
+      "observed_child_sum": 5637,
+      "scope": "congressional:2nd:Harney"
+    },
+    {
+      "difference": 0,
+      "native_parent": 165278,
+      "observed_child_sum": 165278,
+      "scope": "congressional:2nd:Jackson"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17852,
+      "observed_child_sum": 17852,
+      "scope": "congressional:2nd:Jefferson"
+    },
+    {
+      "difference": 0,
+      "native_parent": 70392,
+      "observed_child_sum": 70392,
+      "scope": "congressional:2nd:Josephine"
+    },
+    {
+      "difference": 0,
+      "native_parent": 50909,
+      "observed_child_sum": 50909,
+      "scope": "congressional:2nd:Klamath"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5632,
+      "observed_child_sum": 5632,
+      "scope": "congressional:2nd:Lake"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18698,
+      "observed_child_sum": 18698,
+      "scope": "congressional:2nd:Malheur"
+    },
+    {
+      "difference": 0,
+      "native_parent": 0,
+      "observed_child_sum": 0,
+      "scope": "congressional:2nd:Marion"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7367,
+      "observed_child_sum": 7367,
+      "scope": "congressional:2nd:Morrow"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1466,
+      "observed_child_sum": 1466,
+      "scope": "congressional:2nd:Sherman"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51442,
+      "observed_child_sum": 51442,
+      "scope": "congressional:2nd:Umatilla"
+    },
+    {
+      "difference": 0,
+      "native_parent": 19602,
+      "observed_child_sum": 19602,
+      "scope": "congressional:2nd:Union"
+    },
+    {
+      "difference": 0,
+      "native_parent": 6383,
+      "observed_child_sum": 6383,
+      "scope": "congressional:2nd:Wallowa"
+    },
+    {
+      "difference": 0,
+      "native_parent": 19103,
+      "observed_child_sum": 19103,
+      "scope": "congressional:2nd:Wasco"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1039,
+      "observed_child_sum": 1039,
+      "scope": "congressional:2nd:Wheeler"
+    },
+    {
+      "difference": 0,
+      "native_parent": 523615,
+      "observed_child_sum": 523615,
+      "scope": "congressional:2nd:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 67386,
+      "observed_child_sum": 67386,
+      "scope": "congressional:3rd:Clackamas"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17027,
+      "observed_child_sum": 17027,
+      "scope": "congressional:3rd:Hood River"
+    },
+    {
+      "difference": 0,
+      "native_parent": 428092,
+      "observed_child_sum": 428092,
+      "scope": "congressional:3rd:Multnomah"
+    },
+    {
+      "difference": 0,
+      "native_parent": 512505,
+      "observed_child_sum": 512505,
+      "scope": "congressional:3rd:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 61304,
+      "observed_child_sum": 61304,
+      "scope": "congressional:4th:Benton"
+    },
+    {
+      "difference": 0,
+      "native_parent": 49790,
+      "observed_child_sum": 49790,
+      "scope": "congressional:4th:Coos"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18972,
+      "observed_child_sum": 18972,
+      "scope": "congressional:4th:Curry"
+    },
+    {
+      "difference": 0,
+      "native_parent": 70752,
+      "observed_child_sum": 70752,
+      "scope": "congressional:4th:Douglas"
+    },
+    {
+      "difference": 0,
+      "native_parent": 282837,
+      "observed_child_sum": 282837,
+      "scope": "congressional:4th:Lane"
+    },
+    {
+      "difference": 0,
+      "native_parent": 40327,
+      "observed_child_sum": 40327,
+      "scope": "congressional:4th:Lincoln"
+    },
+    {
+      "difference": 0,
+      "native_parent": 928,
+      "observed_child_sum": 928,
+      "scope": "congressional:4th:Linn"
+    },
+    {
+      "difference": 0,
+      "native_parent": 524910,
+      "observed_child_sum": 524910,
+      "scope": "congressional:4th:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 227087,
+      "observed_child_sum": 227087,
+      "scope": "congressional:5th:Clackamas"
+    },
+    {
+      "difference": 0,
+      "native_parent": 147063,
+      "observed_child_sum": 147063,
+      "scope": "congressional:5th:Deschutes"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17,
+      "observed_child_sum": 17,
+      "scope": "congressional:5th:Jefferson"
+    },
+    {
+      "difference": 0,
+      "native_parent": 100435,
+      "observed_child_sum": 100435,
+      "scope": "congressional:5th:Linn"
+    },
+    {
+      "difference": 0,
+      "native_parent": 39608,
+      "observed_child_sum": 39608,
+      "scope": "congressional:5th:Marion"
+    },
+    {
+      "difference": 0,
+      "native_parent": 38693,
+      "observed_child_sum": 38693,
+      "scope": "congressional:5th:Multnomah"
+    },
+    {
+      "difference": 0,
+      "native_parent": 552903,
+      "observed_child_sum": 552903,
+      "scope": "congressional:5th:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 28295,
+      "observed_child_sum": 28295,
+      "scope": "congressional:6th:Clackamas"
+    },
+    {
+      "difference": 0,
+      "native_parent": 191690,
+      "observed_child_sum": 191690,
+      "scope": "congressional:6th:Marion"
+    },
+    {
+      "difference": 0,
+      "native_parent": 65059,
+      "observed_child_sum": 65059,
+      "scope": "congressional:6th:Polk"
+    },
+    {
+      "difference": 0,
+      "native_parent": 125446,
+      "observed_child_sum": 125446,
+      "scope": "congressional:6th:Washington"
+    },
+    {
+      "difference": 0,
+      "native_parent": 78415,
+      "observed_child_sum": 78415,
+      "scope": "congressional:6th:Yamhill"
+    },
+    {
+      "difference": 0,
+      "native_parent": 488905,
+      "observed_child_sum": 488905,
+      "scope": "congressional:6th:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "congressional:None:Grand Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 114718,
+      "observed_child_sum": 114718,
+      "scope": "senate:1:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 112909,
+      "observed_child_sum": 112909,
+      "scope": "senate:2:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 102252,
+      "observed_child_sum": 102252,
+      "scope": "senate:3:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 96222,
+      "observed_child_sum": 96222,
+      "scope": "senate:4:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 111304,
+      "observed_child_sum": 111304,
+      "scope": "senate:5:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 112589,
+      "observed_child_sum": 112589,
+      "scope": "senate:6:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 106316,
+      "observed_child_sum": 106316,
+      "scope": "senate:7:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 96830,
+      "observed_child_sum": 96830,
+      "scope": "senate:8:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 106510,
+      "observed_child_sum": 106510,
+      "scope": "senate:9:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 98829,
+      "observed_child_sum": 98829,
+      "scope": "senate:10:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 84944,
+      "observed_child_sum": 84944,
+      "scope": "senate:11:11"
+    },
+    {
+      "difference": 0,
+      "native_parent": 106180,
+      "observed_child_sum": 106180,
+      "scope": "senate:12:12"
+    },
+    {
+      "difference": 0,
+      "native_parent": 101420,
+      "observed_child_sum": 101420,
+      "scope": "senate:13:13"
+    },
+    {
+      "difference": 0,
+      "native_parent": 100805,
+      "observed_child_sum": 100805,
+      "scope": "senate:14:14"
+    },
+    {
+      "difference": 0,
+      "native_parent": 90891,
+      "observed_child_sum": 90891,
+      "scope": "senate:15:15"
+    },
+    {
+      "difference": 0,
+      "native_parent": 113794,
+      "observed_child_sum": 113794,
+      "scope": "senate:16:16"
+    },
+    {
+      "difference": 0,
+      "native_parent": 99519,
+      "observed_child_sum": 99519,
+      "scope": "senate:17:17"
+    },
+    {
+      "difference": 0,
+      "native_parent": 97076,
+      "observed_child_sum": 97076,
+      "scope": "senate:18:18"
+    },
+    {
+      "difference": 0,
+      "native_parent": 103887,
+      "observed_child_sum": 103887,
+      "scope": "senate:19:19"
+    },
+    {
+      "difference": 0,
+      "native_parent": 104165,
+      "observed_child_sum": 104165,
+      "scope": "senate:20:20"
+    },
+    {
+      "difference": 0,
+      "native_parent": 112934,
+      "observed_child_sum": 112934,
+      "scope": "senate:21:21"
+    },
+    {
+      "difference": 0,
+      "native_parent": 108039,
+      "observed_child_sum": 108039,
+      "scope": "senate:22:22"
+    },
+    {
+      "difference": 0,
+      "native_parent": 103454,
+      "observed_child_sum": 103454,
+      "scope": "senate:23:23"
+    },
+    {
+      "difference": 0,
+      "native_parent": 93129,
+      "observed_child_sum": 93129,
+      "scope": "senate:24:24"
+    },
+    {
+      "difference": 0,
+      "native_parent": 92439,
+      "observed_child_sum": 92439,
+      "scope": "senate:25:25"
+    },
+    {
+      "difference": 0,
+      "native_parent": 110383,
+      "observed_child_sum": 110383,
+      "scope": "senate:26:26"
+    },
+    {
+      "difference": 0,
+      "native_parent": 117384,
+      "observed_child_sum": 117384,
+      "scope": "senate:27:27"
+    },
+    {
+      "difference": 0,
+      "native_parent": 109819,
+      "observed_child_sum": 109819,
+      "scope": "senate:28:28"
+    },
+    {
+      "difference": 0,
+      "native_parent": 95303,
+      "observed_child_sum": 95303,
+      "scope": "senate:29:29"
+    },
+    {
+      "difference": 0,
+      "native_parent": 108263,
+      "observed_child_sum": 108263,
+      "scope": "senate:30:30"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "senate:None:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 57781,
+      "observed_child_sum": 57781,
+      "scope": "representative:1:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 56937,
+      "observed_child_sum": 56937,
+      "scope": "representative:2:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 55305,
+      "observed_child_sum": 55305,
+      "scope": "representative:3:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 57604,
+      "observed_child_sum": 57604,
+      "scope": "representative:4:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 53573,
+      "observed_child_sum": 53573,
+      "scope": "representative:5:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 48679,
+      "observed_child_sum": 48679,
+      "scope": "representative:6:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51719,
+      "observed_child_sum": 51719,
+      "scope": "representative:7:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 44503,
+      "observed_child_sum": 44503,
+      "scope": "representative:8:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 54773,
+      "observed_child_sum": 54773,
+      "scope": "representative:9:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 56531,
+      "observed_child_sum": 56531,
+      "scope": "representative:10:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 55785,
+      "observed_child_sum": 55785,
+      "scope": "representative:11:11"
+    },
+    {
+      "difference": 0,
+      "native_parent": 56804,
+      "observed_child_sum": 56804,
+      "scope": "representative:12:12"
+    },
+    {
+      "difference": 0,
+      "native_parent": 55195,
+      "observed_child_sum": 55195,
+      "scope": "representative:13:13"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51121,
+      "observed_child_sum": 51121,
+      "scope": "representative:14:14"
+    },
+    {
+      "difference": 0,
+      "native_parent": 55348,
+      "observed_child_sum": 55348,
+      "scope": "representative:15:15"
+    },
+    {
+      "difference": 0,
+      "native_parent": 41482,
+      "observed_child_sum": 41482,
+      "scope": "representative:16:16"
+    },
+    {
+      "difference": 0,
+      "native_parent": 52502,
+      "observed_child_sum": 52502,
+      "scope": "representative:17:17"
+    },
+    {
+      "difference": 0,
+      "native_parent": 54008,
+      "observed_child_sum": 54008,
+      "scope": "representative:18:18"
+    },
+    {
+      "difference": 0,
+      "native_parent": 48040,
+      "observed_child_sum": 48040,
+      "scope": "representative:19:19"
+    },
+    {
+      "difference": 0,
+      "native_parent": 50789,
+      "observed_child_sum": 50789,
+      "scope": "representative:20:20"
+    },
+    {
+      "difference": 0,
+      "native_parent": 45417,
+      "observed_child_sum": 45417,
+      "scope": "representative:21:21"
+    },
+    {
+      "difference": 0,
+      "native_parent": 39527,
+      "observed_child_sum": 39527,
+      "scope": "representative:22:22"
+    },
+    {
+      "difference": 0,
+      "native_parent": 54753,
+      "observed_child_sum": 54753,
+      "scope": "representative:23:23"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51427,
+      "observed_child_sum": 51427,
+      "scope": "representative:24:24"
+    },
+    {
+      "difference": 0,
+      "native_parent": 50289,
+      "observed_child_sum": 50289,
+      "scope": "representative:25:25"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51131,
+      "observed_child_sum": 51131,
+      "scope": "representative:26:26"
+    },
+    {
+      "difference": 0,
+      "native_parent": 47635,
+      "observed_child_sum": 47635,
+      "scope": "representative:27:27"
+    },
+    {
+      "difference": 0,
+      "native_parent": 53170,
+      "observed_child_sum": 53170,
+      "scope": "representative:28:28"
+    },
+    {
+      "difference": 0,
+      "native_parent": 46229,
+      "observed_child_sum": 46229,
+      "scope": "representative:29:29"
+    },
+    {
+      "difference": 0,
+      "native_parent": 44662,
+      "observed_child_sum": 44662,
+      "scope": "representative:30:30"
+    },
+    {
+      "difference": 0,
+      "native_parent": 58144,
+      "observed_child_sum": 58144,
+      "scope": "representative:31:31"
+    },
+    {
+      "difference": 0,
+      "native_parent": 55650,
+      "observed_child_sum": 55650,
+      "scope": "representative:32:32"
+    },
+    {
+      "difference": 0,
+      "native_parent": 54185,
+      "observed_child_sum": 54185,
+      "scope": "representative:33:33"
+    },
+    {
+      "difference": 0,
+      "native_parent": 45334,
+      "observed_child_sum": 45334,
+      "scope": "representative:34:34"
+    },
+    {
+      "difference": 0,
+      "native_parent": 41283,
+      "observed_child_sum": 41283,
+      "scope": "representative:35:35"
+    },
+    {
+      "difference": 0,
+      "native_parent": 55793,
+      "observed_child_sum": 55793,
+      "scope": "representative:36:36"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51082,
+      "observed_child_sum": 51082,
+      "scope": "representative:37:37"
+    },
+    {
+      "difference": 0,
+      "native_parent": 52805,
+      "observed_child_sum": 52805,
+      "scope": "representative:38:38"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51053,
+      "observed_child_sum": 51053,
+      "scope": "representative:39:39"
+    },
+    {
+      "difference": 0,
+      "native_parent": 53112,
+      "observed_child_sum": 53112,
+      "scope": "representative:40:40"
+    },
+    {
+      "difference": 0,
+      "native_parent": 55396,
+      "observed_child_sum": 55396,
+      "scope": "representative:41:41"
+    },
+    {
+      "difference": 0,
+      "native_parent": 57538,
+      "observed_child_sum": 57538,
+      "scope": "representative:42:42"
+    },
+    {
+      "difference": 0,
+      "native_parent": 56361,
+      "observed_child_sum": 56361,
+      "scope": "representative:43:43"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51678,
+      "observed_child_sum": 51678,
+      "scope": "representative:44:44"
+    },
+    {
+      "difference": 0,
+      "native_parent": 53192,
+      "observed_child_sum": 53192,
+      "scope": "representative:45:45"
+    },
+    {
+      "difference": 0,
+      "native_parent": 50262,
+      "observed_child_sum": 50262,
+      "scope": "representative:46:46"
+    },
+    {
+      "difference": 0,
+      "native_parent": 45333,
+      "observed_child_sum": 45333,
+      "scope": "representative:47:47"
+    },
+    {
+      "difference": 0,
+      "native_parent": 47796,
+      "observed_child_sum": 47796,
+      "scope": "representative:48:48"
+    },
+    {
+      "difference": 0,
+      "native_parent": 45136,
+      "observed_child_sum": 45136,
+      "scope": "representative:49:49"
+    },
+    {
+      "difference": 0,
+      "native_parent": 47303,
+      "observed_child_sum": 47303,
+      "scope": "representative:50:50"
+    },
+    {
+      "difference": 0,
+      "native_parent": 57388,
+      "observed_child_sum": 57388,
+      "scope": "representative:51:51"
+    },
+    {
+      "difference": 0,
+      "native_parent": 52995,
+      "observed_child_sum": 52995,
+      "scope": "representative:52:52"
+    },
+    {
+      "difference": 0,
+      "native_parent": 60644,
+      "observed_child_sum": 60644,
+      "scope": "representative:53:53"
+    },
+    {
+      "difference": 0,
+      "native_parent": 56740,
+      "observed_child_sum": 56740,
+      "scope": "representative:54:54"
+    },
+    {
+      "difference": 0,
+      "native_parent": 57818,
+      "observed_child_sum": 57818,
+      "scope": "representative:55:55"
+    },
+    {
+      "difference": 0,
+      "native_parent": 52001,
+      "observed_child_sum": 52001,
+      "scope": "representative:56:56"
+    },
+    {
+      "difference": 0,
+      "native_parent": 43870,
+      "observed_child_sum": 43870,
+      "scope": "representative:57:57"
+    },
+    {
+      "difference": 0,
+      "native_parent": 51433,
+      "observed_child_sum": 51433,
+      "scope": "representative:58:58"
+    },
+    {
+      "difference": 0,
+      "native_parent": 59879,
+      "observed_child_sum": 59879,
+      "scope": "representative:59:59"
+    },
+    {
+      "difference": 0,
+      "native_parent": 48384,
+      "observed_child_sum": 48384,
+      "scope": "representative:60:60"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "representative:None:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1002494,
+      "observed_child_sum": 1002494,
+      "scope": "county:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 740084,
+      "observed_child_sum": 740084,
+      "scope": "county:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1145741,
+      "observed_child_sum": 1145741,
+      "scope": "county:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 156277,
+      "observed_child_sum": 156277,
+      "scope": "county:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18753,
+      "observed_child_sum": 18753,
+      "scope": "county:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 10373,
+      "observed_child_sum": 10373,
+      "scope": "county:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7836,
+      "observed_child_sum": 7836,
+      "scope": "county:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 4781,
+      "observed_child_sum": 4781,
+      "scope": "county:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 8633,
+      "observed_child_sum": 8633,
+      "scope": "county:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17335,
+      "observed_child_sum": 17335,
+      "scope": "county:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "county:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1002494,
+      "observed_child_sum": 1002494,
+      "scope": "senate:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 740084,
+      "observed_child_sum": 740084,
+      "scope": "senate:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1145741,
+      "observed_child_sum": 1145741,
+      "scope": "senate:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 156277,
+      "observed_child_sum": 156277,
+      "scope": "senate:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18753,
+      "observed_child_sum": 18753,
+      "scope": "senate:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 10373,
+      "observed_child_sum": 10373,
+      "scope": "senate:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7836,
+      "observed_child_sum": 7836,
+      "scope": "senate:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 4781,
+      "observed_child_sum": 4781,
+      "scope": "senate:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 8633,
+      "observed_child_sum": 8633,
+      "scope": "senate:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17335,
+      "observed_child_sum": 17335,
+      "scope": "senate:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "senate:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1002494,
+      "observed_child_sum": 1002494,
+      "scope": "representative:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 740084,
+      "observed_child_sum": 740084,
+      "scope": "representative:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1145741,
+      "observed_child_sum": 1145741,
+      "scope": "representative:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 156277,
+      "observed_child_sum": 156277,
+      "scope": "representative:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18753,
+      "observed_child_sum": 18753,
+      "scope": "representative:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 10373,
+      "observed_child_sum": 10373,
+      "scope": "representative:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7836,
+      "observed_child_sum": 7836,
+      "scope": "representative:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 4781,
+      "observed_child_sum": 4781,
+      "scope": "representative:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 8633,
+      "observed_child_sum": 8633,
+      "scope": "representative:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17335,
+      "observed_child_sum": 17335,
+      "scope": "representative:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "representative:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 195387,
+      "observed_child_sum": 195387,
+      "scope": "1st:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 83460,
+      "observed_child_sum": 83460,
+      "scope": "1st:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 196489,
+      "observed_child_sum": 196489,
+      "scope": "1st:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 23481,
+      "observed_child_sum": 23481,
+      "scope": "1st:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 2971,
+      "observed_child_sum": 2971,
+      "scope": "1st:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1654,
+      "observed_child_sum": 1654,
+      "scope": "1st:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1402,
+      "observed_child_sum": 1402,
+      "scope": "1st:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1036,
+      "observed_child_sum": 1036,
+      "scope": "1st:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1411,
+      "observed_child_sum": 1411,
+      "scope": "1st:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 2178,
+      "observed_child_sum": 2178,
+      "scope": "1st:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 509469,
+      "observed_child_sum": 509469,
+      "scope": "1st:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 100733,
+      "observed_child_sum": 100733,
+      "scope": "2nd:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 185124,
+      "observed_child_sum": 185124,
+      "scope": "2nd:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 198730,
+      "observed_child_sum": 198730,
+      "scope": "2nd:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 27603,
+      "observed_child_sum": 27603,
+      "scope": "2nd:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3447,
+      "observed_child_sum": 3447,
+      "scope": "2nd:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1992,
+      "observed_child_sum": 1992,
+      "scope": "2nd:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 895,
+      "observed_child_sum": 895,
+      "scope": "2nd:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 414,
+      "observed_child_sum": 414,
+      "scope": "2nd:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1054,
+      "observed_child_sum": 1054,
+      "scope": "2nd:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3623,
+      "observed_child_sum": 3623,
+      "scope": "2nd:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 523615,
+      "observed_child_sum": 523615,
+      "scope": "2nd:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 221959,
+      "observed_child_sum": 221959,
+      "scope": "3rd:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 68586,
+      "observed_child_sum": 68586,
+      "scope": "3rd:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 187654,
+      "observed_child_sum": 187654,
+      "scope": "3rd:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 20740,
+      "observed_child_sum": 20740,
+      "scope": "3rd:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 2487,
+      "observed_child_sum": 2487,
+      "scope": "3rd:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1714,
+      "observed_child_sum": 1714,
+      "scope": "3rd:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1845,
+      "observed_child_sum": 1845,
+      "scope": "3rd:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1170,
+      "observed_child_sum": 1170,
+      "scope": "3rd:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 2862,
+      "observed_child_sum": 2862,
+      "scope": "3rd:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3488,
+      "observed_child_sum": 3488,
+      "scope": "3rd:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 512505,
+      "observed_child_sum": 512505,
+      "scope": "3rd:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 166187,
+      "observed_child_sum": 166187,
+      "scope": "4th:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 132601,
+      "observed_child_sum": 132601,
+      "scope": "4th:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 185985,
+      "observed_child_sum": 185985,
+      "scope": "4th:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 28100,
+      "observed_child_sum": 28100,
+      "scope": "4th:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3320,
+      "observed_child_sum": 3320,
+      "scope": "4th:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1960,
+      "observed_child_sum": 1960,
+      "scope": "4th:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1624,
+      "observed_child_sum": 1624,
+      "scope": "4th:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 823,
+      "observed_child_sum": 823,
+      "scope": "4th:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1148,
+      "observed_child_sum": 1148,
+      "scope": "4th:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3162,
+      "observed_child_sum": 3162,
+      "scope": "4th:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 524910,
+      "observed_child_sum": 524910,
+      "scope": "4th:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 170588,
+      "observed_child_sum": 170588,
+      "scope": "5th:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 148652,
+      "observed_child_sum": 148652,
+      "scope": "5th:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 191659,
+      "observed_child_sum": 191659,
+      "scope": "5th:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 30905,
+      "observed_child_sum": 30905,
+      "scope": "5th:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3487,
+      "observed_child_sum": 3487,
+      "scope": "5th:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1602,
+      "observed_child_sum": 1602,
+      "scope": "5th:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1158,
+      "observed_child_sum": 1158,
+      "scope": "5th:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 684,
+      "observed_child_sum": 684,
+      "scope": "5th:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1158,
+      "observed_child_sum": 1158,
+      "scope": "5th:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3010,
+      "observed_child_sum": 3010,
+      "scope": "5th:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 552903,
+      "observed_child_sum": 552903,
+      "scope": "5th:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 147640,
+      "observed_child_sum": 147640,
+      "scope": "6th:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 121661,
+      "observed_child_sum": 121661,
+      "scope": "6th:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 185224,
+      "observed_child_sum": 185224,
+      "scope": "6th:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 25448,
+      "observed_child_sum": 25448,
+      "scope": "6th:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3041,
+      "observed_child_sum": 3041,
+      "scope": "6th:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1451,
+      "observed_child_sum": 1451,
+      "scope": "6th:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 912,
+      "observed_child_sum": 912,
+      "scope": "6th:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 654,
+      "observed_child_sum": 654,
+      "scope": "6th:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1000,
+      "observed_child_sum": 1000,
+      "scope": "6th:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1874,
+      "observed_child_sum": 1874,
+      "scope": "6th:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 488905,
+      "observed_child_sum": 488905,
+      "scope": "6th:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1002494,
+      "observed_child_sum": 1002494,
+      "scope": "congressional:component:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 740084,
+      "observed_child_sum": 740084,
+      "scope": "congressional:component:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1145741,
+      "observed_child_sum": 1145741,
+      "scope": "congressional:component:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 156277,
+      "observed_child_sum": 156277,
+      "scope": "congressional:component:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 18753,
+      "observed_child_sum": 18753,
+      "scope": "congressional:component:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 10373,
+      "observed_child_sum": 10373,
+      "scope": "congressional:component:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7836,
+      "observed_child_sum": 7836,
+      "scope": "congressional:component:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 4781,
+      "observed_child_sum": 4781,
+      "scope": "congressional:component:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 8633,
+      "observed_child_sum": 8633,
+      "scope": "congressional:component:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17335,
+      "observed_child_sum": 17335,
+      "scope": "congressional:component:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "congressional:component:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3112307,
+      "observed_child_sum": 3112307,
+      "scope": "monthly_comparison:0"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3103265,
+      "observed_child_sum": 3103265,
+      "scope": "monthly_comparison:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3072107,
+      "observed_child_sum": 3072107,
+      "scope": "monthly_comparison:3"
+    }
+  ],
+  "native_accounting_discrepancies": [],
+  "native_minus_model": null,
+  "native_monthly_registration_parent": 3112307,
+  "native_prepared_date": "11/3/2026",
+  "native_registration_cutoff": null,
+  "native_statewide_ballots": null,
+  "native_timezone": null,
+  "observed_staying_home": null,
+  "preparation_date_not_promoted_to_registration_cutoff": true,
+  "prior_37_controls_and_26_scenarios_preserved": true,
+  "prior_primary_state_rows_byte_identical": true,
+  "rates_approved": false,
+  "repeated_geographic_margins_counted_once": true,
+  "source_population_transport_validated": false
+}
