@@ -1,0 +1,15 @@
+{
+  "administratively_observed_group_participation": false,
+  "civic_source_group_n": 553,
+  "complete_state_age_decisions": 255,
+  "conditional_nonparticipant_source_units": "16522.041753334017978411233061204973033615158789249494893000026597674646811091385",
+  "conditional_participant_source_units": "1028954.9582466659820215887669387950269663848412107505051069999734023253531889086",
+  "derived_native_65plus_register": 1045477,
+  "held_decisions": 254,
+  "new_website_view": false,
+  "original_native28_and_all1530_public_model_queries_unchanged": true,
+  "selected_group": "65_plus",
+  "selected_scenarios": 1,
+  "selected_state": "SC",
+  "source_population_frame_exchangeability_validated": false
+}

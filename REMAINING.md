@@ -51,6 +51,22 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**New same-age registration-frame scenario completed:** already-held SC
+65-Up Female/Male/Unknown-gender cells give a complete derived 1,045,477
+registration units, not a printed age parent. The accepted public Civic
+SC 65+ group has 553 cases and native model classes 518/35. Its own
+propensity transported to that stock yields 1,028,954.96 participant /
+16,522.04 nonparticipant SOURCE UNITS, not observed voters or staying home.
+Boundary labels match; population/status/field-period/age-clock
+exchangeability stays UNVALIDATED. The November 2 report label is not a
+known cutoff/clock/timezone. All 255 state/age decisions include 254 holds;
+other states lack selected age inputs here, not a claim of world absence.
+No CA 66+ substitution, bin splitting, unknown recovery, under-65 complement,
+statewide probability allocation or local estimates. Fifteen tests,
+1,963 checks and two exact offline reproductions pass; complete sufficient
+inputs/code/tests/queries/results published. All 1,530 existing model
+queries/native28/website unchanged; broader 49 independent gaps remain open.
+
 **Maryland general-election references completed; native28:** exact declared
 workbooks give 4,293,322 ACTIVE and 283,680 INACTIVE registrations as of
 October 18, 2026, kept separate. The distinct unofficial PDF reports 2,079,801

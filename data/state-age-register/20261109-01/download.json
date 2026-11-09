@@ -1,0 +1,107 @@
+{
+  "schema": "same-age-register-source-unit-scenarios-v1",
+  "version": "20261109-01",
+  "release_id": 439239428,
+  "release_tag": "participation-age-register-frames-20261109-01",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-age-boundary-decisions.csv",
+      "asset_id": 727797463,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-age-boundary-decisions.csv",
+      "bytes": 1240,
+      "sha256": "42a563716e8374079ec5cb54dd20919bc2dd65149a52a1c75bedfe0a6a8cb0dc",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-analysis.zip",
+      "asset_id": 727797417,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-analysis.zip",
+      "bytes": 491844,
+      "sha256": "4fef5edd5ea6c874e5fbf60faef619e578f95ce69036a7cab2bd7c5be1820ce1",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-age-accounting.csv",
+      "asset_id": 727797465,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-native-age-accounting.csv",
+      "bytes": 346,
+      "sha256": "6820781cbf265437d77afd92f87c0a602caec897b54e7115bc29ba895dd731ee",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-state-age-cells.csv",
+      "asset_id": 727797411,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-native-state-age-cells.csv",
+      "bytes": 950,
+      "sha256": "bb764b31fe0a9987fe3d8d6efc753ebcc224b738ea910c30d8600baedabe17fc",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-state-age-stocks.csv",
+      "asset_id": 727797408,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-native-state-age-stocks.csv",
+      "bytes": 429,
+      "sha256": "1e8b624110941679ae5e8a214e95f42969d39e97ce77202ad26623af467deb0d",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-selected-age-register-scenarios.csv",
+      "asset_id": 727797409,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-selected-age-register-scenarios.csv",
+      "bytes": 1204,
+      "sha256": "31990321fb53d6015a83a9016ca117f68d94aafa0924a25571f6e5b7e4c3771c",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-age-register-query.csv",
+      "asset_id": 727797415,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-state-age-register-query.csv",
+      "bytes": 69622,
+      "sha256": "594c768031e1e7fab9be507736cb66f7fb5278ac9ebabddbabba0b316309525b",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "asset_id": 727797464,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/source-qualification.json",
+      "bytes": 1715,
+      "sha256": "cd3450b8fa78f8d746a92f4684cdfeb55ff6562a02a1fc6b85a70c7248fcc58c",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "asset_id": 727797466,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/summary.json",
+      "bytes": 705,
+      "sha256": "7542c4fdeb59105f5776d6b382ba508221d8ccca31ebc5d2b9155f59c3c5fdef",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_age_state_queries": 255,
+  "selected_conditional_age_frames": 1,
+  "held_decisions": 254,
+  "state": "SC",
+  "group": "65_plus",
+  "source_group_n": 553,
+  "native_model_class_cases": [
+    518,
+    35
+  ],
+  "native_derived_age_register": 1045477,
+  "printed_all_gender_age_parent": null,
+  "native_unknown_gender_included_count": 150,
+  "native_state_age_cells": 12,
+  "native_state_age_stocks": 4,
+  "native_accounting_rows": 4,
+  "boundary_queries": 10,
+  "report_label": "2026-11-02",
+  "registration_cutoff_date": null,
+  "source_age_reference_dates_harmonized": false,
+  "source_population_frame_exchangeability_validated": false,
+  "native28_and_all1530_public_Civic_query_bytes_preserved": true,
+  "no_statewide_or_pooled_probability_allocated_to_groups_or_localities": true,
+  "no_held_stat_recovery_age_bin_split_under65_complement_or_local_allocation": true,
+  "no_new_acquisition_or_completed_native_survey_campaign_rerun": true,
+  "no_raw_respondent_identifiers_private_fine_cells_new_website_view_or_population_certification": true
+}

@@ -1,0 +1,5 @@
+state_code,native_age_label,source_gender_cells,observed_registered_subtotal,missing_gender_cells,derived_all_gender_age_register,printed_all_gender_age_parent,derived_not_printed,unknown_gender_included,partial_subtotal_not_promoted_to_total
+SC,18 - 24,3,272505,0,272505,,True,True,True
+SC,25 - 44,3,1043879,0,1043879,,True,True,True
+SC,45 - 64,3,1108359,0,1108359,,True,True,True
+SC,65 - Up,3,1045477,0,1045477,,True,True,True

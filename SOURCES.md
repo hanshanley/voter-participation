@@ -25,6 +25,47 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 same-age registration-frame source units
+
+[Complete age-frame study](https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-analysis.zip)
+answers a new, bounded question using already-held native stocks and
+already-qualified public Civic model weights. All **255 state/age decisions**
+are retained: one conditional SC 65+ scenario and 254 holds, not nationwide
+observed age-group turnout. Other states have no native age frame selected
+in this package; this is not a claim that no such source exists.
+
+| SC 65+ reference | Source quantity |
+|---|---:|
+| Derived registered stock: Female + Male + Unknown gender | 580,268 + 465,059 + 150 = **1,045,477** |
+| Civic source cases, native model classes | 553 cases; 518 / 35 |
+| Source-weighted native model participant share | 98.41966473% |
+| Conditional participant / nonparticipant source units | **1,028,954.96 / 16,522.04** |
+
+The register is RP0040 / Race:All / statewide TOTAL, cells N58/T58/AA58.
+Its age total is **derived, not a printed parent**; Unknown gender is
+included without mapping administrative gender to Civic sex. November 2,
+2026 is the report label, not a known cutoff, age-reference day, clock or
+timezone. Status, survey field period and population/age-clock
+exchangeability remain **UNVALIDATED**. Compatible 65+ boundary labels
+do not establish full construct or population equivalence.
+
+This uses the matching state/age group's own full propensity, not statewide
+or pooled probability allocated to a group or locality. No observed voters,
+staying home, ballot residual or design interval is inferred. CA 66+ is not
+65+; other native bins are not split, unknown/held cells are not recovered,
+and no under-65 complement or statewide age-standardized total is supplied.
+All 1,530 previous model queries and native28 references remain byte-identical.
+No new acquisition, completed native/survey campaign or website build.
+
+Fifteen tests, **1,963 independent checks** and two exact offline reproductions
+pass. Immutable release `439239428` has nine full byte-verified assets.
+The **491,844-byte / 18-member ZIP** includes original SC and CA age
+workbooks, independent snapshot/provenance, complete public Civic weight
+primitives, preserved reference queries, source scope, standard-library
+code/tests and every new query/result. SHA-256:
+`4fef5edd5ea6c874e5fbf60faef619e578f95ce69036a7cab2bd7c5be1820ce1`.
+Broader independent demographic/precinct participation gaps remain open.
+
 ## Maryland dated registers and unofficial card references: native28
 
 [Complete native28 package](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-analysis.zip)

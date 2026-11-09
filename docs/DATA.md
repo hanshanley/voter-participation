@@ -34,6 +34,7 @@ are not automatically compatible populations.
 
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
+| 2026 same-age registration-frame source units | All 255 state/age decisions, one unvalidated SC 65+ group-specific model/stock scenario, native boundary and missingness holds; not observed group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-analysis.zip) |
 | California dated registration evidence | Complete county/age/preregistration accounting, dated reference and all prior state estimates preserved; not group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-california-register-frame-20261108-01/complete-analysis.zip) |
 | Current state controls | All state/D.C. decisions, separate Maryland dated registers/unofficial card references, 34 unvalidated conditional scenarios and complete earlier baselines; not 34 states or group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-analysis.zip) |
 | Mississippi multiyear frames | October2022/2024/2026 registration stocks, two unvalidated historical CPS marginal-ratio scenarios, all source decisions and held CPS/Civic comparisons | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-analysis.zip) |
