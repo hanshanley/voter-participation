@@ -1426,6 +1426,18 @@ to the public research export merely because this ledger records them.
 
 ## Access, methodology and paid/reference-only leads
 
+**Distinct registration follow-ups, November 9, 2026 UTC:**
+[four recorded access/link observations](data/source-access/20261109-01/register-followups.json)
+hold Texas's advertised November registration page and both Maine
+active/inactive workbooks after HTTP403. All three routes are stopped:
+no other client, cache or mirror, and no search-snippet count promotion.
+Louisiana's official statewide link contains an unresolved `--environment--`
+hostname and returned 502; no production hostname was guessed.
+Maine's index labels its files March 7, not November; the separate layout
+example is not workbook/date qualification. Original response bodies were
+not captured by the web tool, so no body sizes/hashes are invented.
+No new frame, observed turnout or change to complete version14 downloads.
+
 **Washington direct access holds, November 9, 2026 UTC:** the
 [official elections index](https://www.sos.wa.gov/elections) and distinct
 [official results product](https://results.votewa.gov/) each returned HTTP403

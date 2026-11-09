@@ -65,6 +65,15 @@ population validation, local/group allocation and new rate/map approval
 remain withheld. Full native inputs, code, tests and numerical queries are
 downloadable; no website view changed.
 
+**Following registration-source screening:** Texas's November page and
+Maine's separately advertised March active/inactive workbooks returned 403;
+all three routes are stopped, without another client/cache/mirror or
+search-snippet denominator. Louisiana's declared statewide link contains an
+unresolved environment hostname and returned 502; no target was guessed.
+These are source-access/link holds, not evidence that the underlying
+populations are zero or that no data exist. Four observations are recorded
+in the source ledger; complete version14 analyses/downloads are unchanged.
+
 **Utah dated active-register frame integrated:** immutable `438718321`
 adds the native November 2 active parent, not an election-time denominator
 or a replacement for county-report registrations. Version13 has 51 state/D.C.
