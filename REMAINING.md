@@ -41,6 +41,34 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Current priority: actual 2026 county/precinct coverage on the website.**
+The navigation repair is live at website `9513311`: state/year/measure
+selections are retained, absent data is explicit and failed sources can be
+retried. Website `2694065` then replaced contest-count fallbacks with explicit
+native ballot parents for all **44 Idaho and 53 North Dakota counties**.
+Idaho has 43 reviewed source-registration fractions; Twin Falls stays held.
+North Dakota's 53 rates and denominators stay held. All 1,344 earlier
+reporting-unit rows and their precinct holds survive. Both states use
+separately hash-verified **2026 Census county references**, not older precincts.
+
+The complete 97-query download includes every selected/held result, sufficient
+originals, geometry and offline code. Original-workbook/API checks, two exact
+reproductions, 131 tests and actual production desktop/mobile/native-value and
+51-jurisdiction interaction audits pass. Pages `42663520237`, native artifact
+`13696510311`: actual payload **983,878,341** / tar **986,388,480** bytes.
+All old links, short Methods and 436 complete-download routes are preserved.
+
+**Still not nationwide observed turnout:** native county observations now cover
+25 states plus D.C. (some only one county), with separate RI/VT municipalities;
+22 states retain explicitly labelled contest-count fallbacks and Maine has no
+county layer. Mapped precinct participation remains partial in five states.
+Next expose the already-held **Alaska523 / Hawaii496** source-unit observations
+as counts where supported, without pretending held boundaries or rates exist.
+Alaska's encoded portal geometry still has unresolved topology; Delaware's
+41 district observations cannot be apportioned to counties. Keep Texas
+registration-frame research paused; do not substitute another research release
+or a repeated completed source campaign for this live geographic integration.
+
 **Latest priority: 2026, then an audit.** The new statewide Civic demographic
 package is published: 671 supported model shares across all 50 survey states,
 with complete source/disclosure holds and explicit D.C. absence. Its existing

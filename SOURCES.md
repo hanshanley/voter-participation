@@ -25,6 +25,38 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 native county parents: live geographic integration
+
+Website `269406570805a8f9a030f4f01d1ff49f608cc9d5` connects held official
+county parents rather than inferring turnout from House candidate votes.
+
+| Source | Native county ballots | County queries | Analysis fractions |
+|---|---:|---:|---|
+| Idaho, November 4 county snapshots | 731,980 | 44 | 43 source-registration fractions; Twin Falls held |
+| North Dakota, native v75 / November 5, 2026 UTC | 239,057 | 53 | All withheld; API field is not promoted to registrations |
+
+Idaho's explicit `ballotsCast` parents independently match the original
+ballot-report workbook. Twin Falls retains the 42,990 county/API versus
+41,878 workbook registration disagreement. North Dakota's `TotalBallotsCast`
+parents reconcile to its independent turnout API, all 358 unit observations
+and state parents; explicit zero buckets are not replaced by missing-as-zero.
+All 986 Idaho and 358 North Dakota unit rows and existing precinct holds remain.
+Complete state/county identities and compressed **2026 Census reference**
+hashes are checked before mapping; these are not certified precinct boundaries.
+
+[Complete 97-query sufficient-input download](https://www.themarginoferror.com/participation-county-parents/20261109-01/complete-analysis.zip):
+**2,513,817 bytes /21 members**, SHA-256
+`0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915`.
+It contains all 43 selected/54 held queries, sufficient original inputs,
+reference geometry and a dependency-free offline reproduction. 280 independent
+checks, two exact reproductions, 131 tests and live desktop/mobile/all-state
+browser checks pass, including rejecting corrupted geometry and successful retry.
+Old contextual exports reproduce through the unchanged legacy reader; the live
+reader explicitly opts into the new parents. No original counts or earlier
+archives were replaced. Native artifact `13696510311` has **983,878,341 payload /
+986,388,480 tar bytes**, with all 436 old complete-download routes preserved.
+Broader county/precinct and demographic evidence gaps remain open.
+
 ## 2026 source-reported already-voted profiles
 
 [Complete reported-stage study](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-reported-stage-20261109-01/complete-analysis.zip)
