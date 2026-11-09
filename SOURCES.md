@@ -63,6 +63,46 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Virginia registration-only parent and partial locality scopes
+
+[Complete version-10 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-10/complete-analysis.zip)
+reuse the held [native Virginia query](https://github.com/hanshanley/margin_of_error/releases/tag/voter-precinct-virginia-locality-counts-20261105).
+The API explicitly reports statewide `totalVoters=6,494,441`; all 133 locality
+and registration totals agree, including native active/inactive arithmetic.
+The source-defined parent is not inferred from locality or precinct sums;
+component reconciliation does not establish survey/population exchangeability.
+
+The state `ballotsCast=0` conflicts with the locality sum 3,593,781. The original
+zero stays in the source query; selected statewide ballots, turnout and
+native-minus-model remain null. No locality sum repairs state ballots.
+Every locality clock and native reporting-status vector is retained separately.
+All 2,529 earlier precinct observation rows remain byte-identical: their
+2,798,626 native turnout subtotal is partial, not statewide all-mode turnout.
+All 69 locality/House residual scopes remain unallocated; rate/map/completion
+holds are unchanged.
+
+Unofficial native UTC clocks stay distinct: asOf
+`2026-11-05T02:19:25.4373295Z`, lastUpdated `2026-11-04T23:28:02.0027742Z`
+and publishDate `2026-11-05T02:19:26.5289707Z`, not acquisition times.
+Conditional register units are 3,762,883.24 modeled participants /
+2,731,557.76 nonparticipants under unvalidated Civic-to-register exchangeability.
+Register definitions, survey calibration, field period and population transport
+remain unqualified. No observed staying home, group populations or design
+interval is claimed.
+
+Immutable release `438683276` has nine full byte-verified assets. The
+98,816,162-byte / 16-member ZIP contains the complete 73,948,518-byte native
+query archive, accepted version-09 baseline, every new query, maintained code,
+unchanged Washington shared helpers and seven focused tests. 1,612 independent
+parent/component/clock/Fraction/preservation/package checks and two blocked,
+byte-identical offline reproductions pass. Maintained
+`scripts/virginia_register_control.py` exports 51 state/D.C. rows, 26
+source-control disposition records and fifteen conditional frames. The new
+record is registration-only, **not an observed statewide ballot reference**.
+All 50 unaffected states, fourteen prior frames and 25 prior controls survive.
+No source acquisition, completed candidate/precinct/mode/geometry/private-survey
+reduction or website campaign was repeated.
+
 ## Arizona registration-only parent and component conflicts
 
 [Complete version-09 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-09/complete-analysis.zip)

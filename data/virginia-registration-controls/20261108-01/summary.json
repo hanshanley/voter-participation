@@ -1,0 +1,14 @@
+{
+  "all_fifty_unaffected_states_fourteen_frames_and_twenty_five_controls_preserved": true,
+  "conditional_scenarios": 15,
+  "explicit_native_registered_parent": 6494441,
+  "native_control_records": 26,
+  "native_localities": 133,
+  "native_precinct_observation_rows": 2529,
+  "no_new_website_view": true,
+  "registration_components_match_totals": true,
+  "registration_only_controls_added": 1,
+  "reported_state_ballot_controls_added": 0,
+  "selected_statewide_ballots": null,
+  "state_and_dc_rows": 51
+}
