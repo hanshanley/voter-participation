@@ -46,22 +46,34 @@ succeeded; native artifact `13699406690` contains **984,124,912 payload /
 unit IDs and edge cases, full download links, checksum rejection/retry and
 51-jurisdiction geographic selections pass. This adds count access, not precinct maps.
 
-## D.C. precinct map: published candidate, not yet accepted live
+## D.C. and Virginia precinct maps: live verified
 
-Website `33922ee` connects the existing **144 native D.C. precinct** ballot
+Website `965fbc2` includes the existing **144 native D.C. precinct** ballot
 and registration observations to the reference already selected by the official
 2026 app. Fractions remain provisional election-night shares, not final,
 population or demographic turnout. The app's 2019-named reference attribution,
 withheld overlapping strips, whole-precinct counts, native clock and complete
 original ZIP remain explicit. Every native value, desktop/mobile state-sidebar
-navigation, retry, all-state navigation, build and size check passes locally.
+navigation and retry checks pass on the actual production site.
 
-Pages `42673645311` failed twice before starting jobs with GitHub's internal
-server error. Fresh same-commit dispatch `42674283986` is pending; there is no
-new native artifact or production acceptance. The live source-unit integration
-above remains accepted. Next, Virginia's 710 existing mapped counts independently
-match native `ballotsCast`, including 260 where `voterTurnout` differs. No source
-replacement is needed; retain the 1,819 exclusions and withhold all rates.
+It also exposes **710 Virginia precinct** native `ballotsCast` counts, including
+260 where the distinct `voterTurnout` field differs. Every value, label,
+registration field and native UUID join independently matches the held locality
+originals. The browser checks the compressed map checksum before decoding and
+withholds every rate. No source was regenerated or replaced; all 1,819 exclusions,
+separate source clocks, current-reference attribution and complete original ZIP
+remain intact. Current references are not certified election-day boundaries.
+
+The integration passes 36 focused tests, four build tests, Astro checks,
+desktop/mobile checks of all 854 new map values, checksum failure/retry and the
+51-jurisdiction production browser sweep. Pages `42675737057` succeeded.
+Actual downloaded native artifact `13701385628` contains **984,130,264 payload /
+986,644,480 tar bytes**; its scripts, source pointer, full new CSV inputs,
+native-county archive and all 436 complete-download routes match the reviewed
+bytes. Exact production scripts/pointer and every new native value pass without
+source overrides. Old IDs, links and the short Methods overview survive.
+Earlier D.C. runs `42673645311` and `42674283986` failed inside GitHub before
+building; the combined deployment supersedes those failures.
 
 ## 2026 native county parents: live geographic integration
 
