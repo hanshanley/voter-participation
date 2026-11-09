@@ -51,6 +51,22 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Idaho dated register integrated separately:** version22 adds the
+official 2026-11 Total 1,056,803. The actual published selector values
+and CSV template were followed, not guessed. All three original views /
+44 counties / 35 legislative / two congressional districts preserve
+609 raw cells and 504 count slots; 102 equations reconcile.
+Ten tests, 3,051 independent checks and two exact offline reproductions
+pass. The index's November 2 update is not a qualified registry cutoff,
+clock or active-only status. Conditional registry units remain unvalidated.
+The primary 731,980 ballot count and registration disagreement are not
+repaired; its primary denominator/rate remain null. Only separate-scenario
+availability changes in the state query. All fifty other states, 39 prior
+controls and 27 scenarios survive; now 40 dispositions / 28 scenarios.
+Complete originals/inputs/code/tests/queries are downloadable. No new
+website view, matched ballot/model residual, local/group allocation or
+observed-staying-home/population claim. Broader gaps remain open.
+
 **Oregon monthly register integrated separately:** version21 adds the
 native 3,112,307 monthly Total, prepared November 3, not a qualified
 registration cutoff or active-only status. All seven pages / 2,220

@@ -1,0 +1,645 @@
+{
+  "active_inactive_status_qualified": false,
+  "affiliation_not_vote_choice": true,
+  "all_504_count_slots_preserved": true,
+  "all_609_raw_cells_including_headers_spaces_and_labels_independently_preserved": true,
+  "certification_approved": false,
+  "counting_completion_approved": false,
+  "design_confidence_interval": null,
+  "group_or_local_survey_allocation": false,
+  "index_update_not_registry_cutoff_or_live_clock": true,
+  "maps_approved": false,
+  "missing_imputed_zero": false,
+  "mixed_source_primary_turnout_rate_approved": false,
+  "native_accounting_checks": [
+    {
+      "difference": 0,
+      "native_parent": 311783,
+      "observed_child_sum": 311783,
+      "scope": "County:ADA"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3136,
+      "observed_child_sum": 3136,
+      "scope": "County:ADAMS"
+    },
+    {
+      "difference": 0,
+      "native_parent": 46701,
+      "observed_child_sum": 46701,
+      "scope": "County:BANNOCK"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3829,
+      "observed_child_sum": 3829,
+      "scope": "County:BEAR LAKE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 6179,
+      "observed_child_sum": 6179,
+      "scope": "County:BENEWAH"
+    },
+    {
+      "difference": 0,
+      "native_parent": 23928,
+      "observed_child_sum": 23928,
+      "scope": "County:BINGHAM"
+    },
+    {
+      "difference": 0,
+      "native_parent": 15328,
+      "observed_child_sum": 15328,
+      "scope": "County:BLAINE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5960,
+      "observed_child_sum": 5960,
+      "scope": "County:BOISE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 34875,
+      "observed_child_sum": 34875,
+      "scope": "County:BONNER"
+    },
+    {
+      "difference": 0,
+      "native_parent": 65773,
+      "observed_child_sum": 65773,
+      "scope": "County:BONNEVILLE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 8457,
+      "observed_child_sum": 8457,
+      "scope": "County:BOUNDARY"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1633,
+      "observed_child_sum": 1633,
+      "scope": "County:BUTTE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 829,
+      "observed_child_sum": 829,
+      "scope": "County:CAMAS"
+    },
+    {
+      "difference": 0,
+      "native_parent": 119756,
+      "observed_child_sum": 119756,
+      "scope": "County:CANYON"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3951,
+      "observed_child_sum": 3951,
+      "scope": "County:CARIBOU"
+    },
+    {
+      "difference": 0,
+      "native_parent": 10641,
+      "observed_child_sum": 10641,
+      "scope": "County:CASSIA"
+    },
+    {
+      "difference": 0,
+      "native_parent": 385,
+      "observed_child_sum": 385,
+      "scope": "County:CLARK"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5001,
+      "observed_child_sum": 5001,
+      "scope": "County:CLEARWATER"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3030,
+      "observed_child_sum": 3030,
+      "scope": "County:CUSTER"
+    },
+    {
+      "difference": 0,
+      "native_parent": 12591,
+      "observed_child_sum": 12591,
+      "scope": "County:ELMORE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7940,
+      "observed_child_sum": 7940,
+      "scope": "County:FRANKLIN"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7761,
+      "observed_child_sum": 7761,
+      "scope": "County:FREMONT"
+    },
+    {
+      "difference": 0,
+      "native_parent": 12400,
+      "observed_child_sum": 12400,
+      "scope": "County:GEM"
+    },
+    {
+      "difference": 0,
+      "native_parent": 6768,
+      "observed_child_sum": 6768,
+      "scope": "County:GOODING"
+    },
+    {
+      "difference": 0,
+      "native_parent": 11299,
+      "observed_child_sum": 11299,
+      "scope": "County:IDAHO"
+    },
+    {
+      "difference": 0,
+      "native_parent": 17733,
+      "observed_child_sum": 17733,
+      "scope": "County:JEFFERSON"
+    },
+    {
+      "difference": 0,
+      "native_parent": 9323,
+      "observed_child_sum": 9323,
+      "scope": "County:JEROME"
+    },
+    {
+      "difference": 0,
+      "native_parent": 114708,
+      "observed_child_sum": 114708,
+      "scope": "County:KOOTENAI"
+    },
+    {
+      "difference": 0,
+      "native_parent": 24116,
+      "observed_child_sum": 24116,
+      "scope": "County:LATAH"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5536,
+      "observed_child_sum": 5536,
+      "scope": "County:LEMHI"
+    },
+    {
+      "difference": 0,
+      "native_parent": 2239,
+      "observed_child_sum": 2239,
+      "scope": "County:LEWIS"
+    },
+    {
+      "difference": 0,
+      "native_parent": 2239,
+      "observed_child_sum": 2239,
+      "scope": "County:LINCOLN"
+    },
+    {
+      "difference": 0,
+      "native_parent": 21302,
+      "observed_child_sum": 21302,
+      "scope": "County:MADISON"
+    },
+    {
+      "difference": 0,
+      "native_parent": 8716,
+      "observed_child_sum": 8716,
+      "scope": "County:MINIDOKA"
+    },
+    {
+      "difference": 0,
+      "native_parent": 22517,
+      "observed_child_sum": 22517,
+      "scope": "County:NEZ PERCE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 2863,
+      "observed_child_sum": 2863,
+      "scope": "County:ONEIDA"
+    },
+    {
+      "difference": 0,
+      "native_parent": 5761,
+      "observed_child_sum": 5761,
+      "scope": "County:OWYHEE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 13823,
+      "observed_child_sum": 13823,
+      "scope": "County:PAYETTE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 3404,
+      "observed_child_sum": 3404,
+      "scope": "County:POWER"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7355,
+      "observed_child_sum": 7355,
+      "scope": "County:SHOSHONE"
+    },
+    {
+      "difference": 0,
+      "native_parent": 7993,
+      "observed_child_sum": 7993,
+      "scope": "County:TETON"
+    },
+    {
+      "difference": 0,
+      "native_parent": 42323,
+      "observed_child_sum": 42323,
+      "scope": "County:TWIN FALLS"
+    },
+    {
+      "difference": 0,
+      "native_parent": 8557,
+      "observed_child_sum": 8557,
+      "scope": "County:VALLEY"
+    },
+    {
+      "difference": 0,
+      "native_parent": 6361,
+      "observed_child_sum": 6361,
+      "scope": "County:WASHINGTON"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1056803,
+      "observed_child_sum": 1056803,
+      "scope": "County:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 4190,
+      "observed_child_sum": 4190,
+      "scope": "County:component:CON"
+    },
+    {
+      "difference": 0,
+      "native_parent": 127786,
+      "observed_child_sum": 127786,
+      "scope": "County:component:DEM"
+    },
+    {
+      "difference": 0,
+      "native_parent": 10961,
+      "observed_child_sum": 10961,
+      "scope": "County:component:LIB"
+    },
+    {
+      "difference": 0,
+      "native_parent": 654220,
+      "observed_child_sum": 654220,
+      "scope": "County:component:REP"
+    },
+    {
+      "difference": 0,
+      "native_parent": 259646,
+      "observed_child_sum": 259646,
+      "scope": "County:component:UNA"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1056803,
+      "observed_child_sum": 1056803,
+      "scope": "County:component:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 38676,
+      "observed_child_sum": 38676,
+      "scope": "Legislative:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 34927,
+      "observed_child_sum": 34927,
+      "scope": "Legislative:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 39140,
+      "observed_child_sum": 39140,
+      "scope": "Legislative:3"
+    },
+    {
+      "difference": 0,
+      "native_parent": 30053,
+      "observed_child_sum": 30053,
+      "scope": "Legislative:4"
+    },
+    {
+      "difference": 0,
+      "native_parent": 33779,
+      "observed_child_sum": 33779,
+      "scope": "Legislative:5"
+    },
+    {
+      "difference": 0,
+      "native_parent": 32711,
+      "observed_child_sum": 32711,
+      "scope": "Legislative:6"
+    },
+    {
+      "difference": 0,
+      "native_parent": 30596,
+      "observed_child_sum": 30596,
+      "scope": "Legislative:7"
+    },
+    {
+      "difference": 0,
+      "native_parent": 30138,
+      "observed_child_sum": 30138,
+      "scope": "Legislative:8"
+    },
+    {
+      "difference": 0,
+      "native_parent": 29811,
+      "observed_child_sum": 29811,
+      "scope": "Legislative:9"
+    },
+    {
+      "difference": 0,
+      "native_parent": 41533,
+      "observed_child_sum": 41533,
+      "scope": "Legislative:10"
+    },
+    {
+      "difference": 0,
+      "native_parent": 21095,
+      "observed_child_sum": 21095,
+      "scope": "Legislative:11"
+    },
+    {
+      "difference": 0,
+      "native_parent": 26786,
+      "observed_child_sum": 26786,
+      "scope": "Legislative:12"
+    },
+    {
+      "difference": 0,
+      "native_parent": 25824,
+      "observed_child_sum": 25824,
+      "scope": "Legislative:13"
+    },
+    {
+      "difference": 0,
+      "native_parent": 40460,
+      "observed_child_sum": 40460,
+      "scope": "Legislative:14"
+    },
+    {
+      "difference": 0,
+      "native_parent": 29280,
+      "observed_child_sum": 29280,
+      "scope": "Legislative:15"
+    },
+    {
+      "difference": 0,
+      "native_parent": 28591,
+      "observed_child_sum": 28591,
+      "scope": "Legislative:16"
+    },
+    {
+      "difference": 0,
+      "native_parent": 27906,
+      "observed_child_sum": 27906,
+      "scope": "Legislative:17"
+    },
+    {
+      "difference": 0,
+      "native_parent": 28998,
+      "observed_child_sum": 28998,
+      "scope": "Legislative:18"
+    },
+    {
+      "difference": 0,
+      "native_parent": 39496,
+      "observed_child_sum": 39496,
+      "scope": "Legislative:19"
+    },
+    {
+      "difference": 0,
+      "native_parent": 33175,
+      "observed_child_sum": 33175,
+      "scope": "Legislative:20"
+    },
+    {
+      "difference": 0,
+      "native_parent": 31023,
+      "observed_child_sum": 31023,
+      "scope": "Legislative:21"
+    },
+    {
+      "difference": 0,
+      "native_parent": 35744,
+      "observed_child_sum": 35744,
+      "scope": "Legislative:22"
+    },
+    {
+      "difference": 0,
+      "native_parent": 30162,
+      "observed_child_sum": 30162,
+      "scope": "Legislative:23"
+    },
+    {
+      "difference": 0,
+      "native_parent": 27110,
+      "observed_child_sum": 27110,
+      "scope": "Legislative:24"
+    },
+    {
+      "difference": 0,
+      "native_parent": 22810,
+      "observed_child_sum": 22810,
+      "scope": "Legislative:25"
+    },
+    {
+      "difference": 0,
+      "native_parent": 26890,
+      "observed_child_sum": 26890,
+      "scope": "Legislative:26"
+    },
+    {
+      "difference": 0,
+      "native_parent": 22220,
+      "observed_child_sum": 22220,
+      "scope": "Legislative:27"
+    },
+    {
+      "difference": 0,
+      "native_parent": 28225,
+      "observed_child_sum": 28225,
+      "scope": "Legislative:28"
+    },
+    {
+      "difference": 0,
+      "native_parent": 27059,
+      "observed_child_sum": 27059,
+      "scope": "Legislative:29"
+    },
+    {
+      "difference": 0,
+      "native_parent": 25561,
+      "observed_child_sum": 25561,
+      "scope": "Legislative:30"
+    },
+    {
+      "difference": 0,
+      "native_parent": 31415,
+      "observed_child_sum": 31415,
+      "scope": "Legislative:31"
+    },
+    {
+      "difference": 0,
+      "native_parent": 27784,
+      "observed_child_sum": 27784,
+      "scope": "Legislative:32"
+    },
+    {
+      "difference": 0,
+      "native_parent": 24191,
+      "observed_child_sum": 24191,
+      "scope": "Legislative:33"
+    },
+    {
+      "difference": 0,
+      "native_parent": 21302,
+      "observed_child_sum": 21302,
+      "scope": "Legislative:34"
+    },
+    {
+      "difference": 0,
+      "native_parent": 32332,
+      "observed_child_sum": 32332,
+      "scope": "Legislative:35"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1056803,
+      "observed_child_sum": 1056803,
+      "scope": "Legislative:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 4190,
+      "observed_child_sum": 4190,
+      "scope": "Legislative:component:CON"
+    },
+    {
+      "difference": 0,
+      "native_parent": 127786,
+      "observed_child_sum": 127786,
+      "scope": "Legislative:component:DEM"
+    },
+    {
+      "difference": 0,
+      "native_parent": 10961,
+      "observed_child_sum": 10961,
+      "scope": "Legislative:component:LIB"
+    },
+    {
+      "difference": 0,
+      "native_parent": 654220,
+      "observed_child_sum": 654220,
+      "scope": "Legislative:component:REP"
+    },
+    {
+      "difference": 0,
+      "native_parent": 259646,
+      "observed_child_sum": 259646,
+      "scope": "Legislative:component:UNA"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1056803,
+      "observed_child_sum": 1056803,
+      "scope": "Legislative:component:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 566985,
+      "observed_child_sum": 566985,
+      "scope": "Congressional:1"
+    },
+    {
+      "difference": 0,
+      "native_parent": 489818,
+      "observed_child_sum": 489818,
+      "scope": "Congressional:2"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1056803,
+      "observed_child_sum": 1056803,
+      "scope": "Congressional:Total"
+    },
+    {
+      "difference": 0,
+      "native_parent": 4190,
+      "observed_child_sum": 4190,
+      "scope": "Congressional:component:CON"
+    },
+    {
+      "difference": 0,
+      "native_parent": 127786,
+      "observed_child_sum": 127786,
+      "scope": "Congressional:component:DEM"
+    },
+    {
+      "difference": 0,
+      "native_parent": 10961,
+      "observed_child_sum": 10961,
+      "scope": "Congressional:component:LIB"
+    },
+    {
+      "difference": 0,
+      "native_parent": 654220,
+      "observed_child_sum": 654220,
+      "scope": "Congressional:component:REP"
+    },
+    {
+      "difference": 0,
+      "native_parent": 259646,
+      "observed_child_sum": 259646,
+      "scope": "Congressional:component:UNA"
+    },
+    {
+      "difference": 0,
+      "native_parent": 1056803,
+      "observed_child_sum": 1056803,
+      "scope": "Congressional:component:Total"
+    }
+  ],
+  "native_accounting_discrepancies": [],
+  "native_ballots_linked_to_dated_register": null,
+  "native_index_update_date": "2026-11-02",
+  "native_minus_model": null,
+  "native_month_label": "2026-11",
+  "native_registration_parent": 1056803,
+  "native_registry_cutoff": null,
+  "native_timezone": null,
+  "observed_staying_home": null,
+  "only_idaho_scenario_availability_flag_changed_in_state_query": true,
+  "primary_ballot_registered_denominator_still_null": true,
+  "primary_ballot_report_731980_and_native_registration_conflict_preserved": true,
+  "published_selector_values_and_explicit_url_template_not_guessed": true,
+  "rates_approved": false,
+  "repeated_geographic_margins_counted_once": true,
+  "source_geography_not_inferred_fips": true,
+  "source_population_transport_validated": false
+}

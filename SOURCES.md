@@ -25,6 +25,45 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Idaho month-labelled registration, separate from the ballot report
+
+[Complete version-22 controls and inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-22/complete-analysis.zip)
+add the [official November registration archive](https://voteidaho.gov/data-and-dashboards/voter-registration-totals/).
+The acquired index explicitly selects 2026 / November and declares its
+County, Legislative and Congressional CSV template; no filenames were
+guessed. All three original CSVs were successfully acquired once.
+Their identical native **Total is 1,056,803 registrations**.
+
+The index's **November 2, 2026 update label is not an independently
+qualified registration cutoff or live clock**. Status and timezone
+remain unspecified. All 44 counties, 35 legislative districts, two
+congressional districts and three state parents are retained. The views
+are repeated margins, not three populations. All **609 raw cells /
+504 count slots**, including headers and native cell spaces, match the
+independent CSV reader; all 102 equations reconcile. No blank-to-zero
+imputation, inferred FIPS or party-vote interpretation.
+
+Conditional **756,202.53 participant / 300,600.47 nonparticipant
+monthly-register units** assume unvalidated statewide Civic transport,
+not observed people or staying home. Idaho's existing 731,980 separate
+ballot-report count and Twin Falls registration disagreement
+(41,878 versus 42,990) are unchanged. Its primary registered denominator
+and rate stay null: the dated register is **not substituted beneath the
+ballot count**. Only separate-scenario availability changes in the state
+query; all fifty other rows, 39 earlier controls and 27 scenarios survive.
+Version22 contains 40 dispositions and 28 scenarios, not 28 distinct states.
+
+Ten tests, 3,051 independent checks and two exact blocked offline
+reproductions pass. Immutable release `438865406` has eight full assets,
+authenticated-draft and anonymous-published byte-verified. Its
+105,305,071-byte / fifteen-member ZIP includes all three original CSVs,
+full independent snapshot, factual declaration/receipts, entire version21
+baseline, reader/extractor/shared code, tests and every query. SHA-256:
+`b464688086fa16bbde73381932f414f459779efe4c3c509e8216515de226db03`.
+Full index app code/contact details and personal records are excluded.
+No new website view, local/group allocation, rate/map/population approval
+or fabricated intervals; earlier releases and source holds remain intact.
+
 ## Oregon monthly registration and held returned-envelope context
 
 [Complete version-21 controls and originals](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-21/complete-analysis.zip)

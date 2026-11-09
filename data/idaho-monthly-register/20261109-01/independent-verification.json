@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "independent_checks": 3051,
+  "native_monthly_registration_parent": 1056803,
+  "conditional_model_participant_units": "756202.52577827870891208484085716274061175894759319077606241493065323571445962703",
+  "conditional_model_nonparticipant_units": "300600.47422172129108791515914283725938824105240680922393758506934676428554037297",
+  "all_609_raw_cells_504_count_slots_and_102_equations_verified": true,
+  "native_whitespace_headers_geographic_labels_and_party_codes_preserved": true,
+  "primary_ballot_report_and_registration_conflict_preserved_not_repaired": true,
+  "only_idaho_scenario_availability_flag_changed_all50_other_states_39_controls_27_scenarios_preserved": true,
+  "complete_state_query_rows": 51,
+  "source_control_records": 40,
+  "conditional_scenarios": 28,
+  "focused_tests": 10,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 15,
+  "archive_bytes": 105305071,
+  "archive_sha256": "b464688086fa16bbde73381932f414f459779efe4c3c509e8216515de226db03"
+}
