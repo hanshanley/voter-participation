@@ -23,6 +23,7 @@ are not automatically compatible populations.
 
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
+| California dated registration evidence | Complete county/age/preregistration accounting, dated reference and all prior state estimates preserved; not group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-california-register-frame-20261108-01/complete-analysis.zip) |
 | Current state controls | All state/D.C. decisions, native denominators and conditional scenarios, including the separate Florida participant comparison | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-04/complete-analysis.zip) |
 | Historical administrative controls | Source-specific 2018-2026 comparisons, holds and registration-frame scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip) |
 | Historical EAC state controls | Complete state/year grid, selected native references and separate Alaska scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-eac-state-controls-20261108-01/complete-analysis.zip) |

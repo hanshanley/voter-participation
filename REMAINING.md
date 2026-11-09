@@ -51,6 +51,15 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**California registration corroboration complete:** immutable `438609932`
+retains all 58 county/age/preregistration vectors and preserves every prior
+state row and nine scenarios byte-identically. It adds dated native evidence,
+not another estimate or a group turnout rate. Preregistration overlap and
+incompatible age bins remain explicit; do not repeat the completed acquisition
+or numerical/reproduction checks. Georgia's three new direct403 holds remain
+stopped. Continue distinct supported whole-state sources, not alternate clients
+or inferred denominators.
+
 **Every state is the required scope, not Florida-only additions.** A complete
 2022/2024 demographic package is now published for all 50 states plus D.C.
 The state-selectable integration is live and exact-production verified at
@@ -68,6 +77,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| Native California 2026 register corroboration | Published and fully verified; estimates unchanged | Release `438609932`: all eight originals, 58 counties/separate totals, native age and overlapping preregistration frames; complete 51-state query. Six tests, 2,256 independent checks and two exact offline reproductions pass the 24-member ZIP. The 23,273,590 count matches the existing CA denominator; all nine scenarios remain byte-identical. No population/age transport, group turnout or new website view. Broader native evidence gaps remain. |
 | 2026 statewide demographic models | Complete package, live interface and requested audit verified | Immutable `438581821`: 671 models / all 1,530 state/group decisions, 50 source states and explicit D.C. absence. Five tests, 28,496 independent checks and two exact offline reproductions pass. Website `5005b2e`, Pages `42534719520` and actual artifact `13638962850` pass all 36 production configurations; all 1,734 historical values and 436 complete routes survive. The post-integration audit adds 9,092 checks of exact fractions, held statistics, positive-cell complements and complete archives. No new source/runtime defect found; the legacy landing-checker baseline was corrected without runtime changes. Observed demographic turnout, population frames and nationwide precinct participation remain unresolved. Do not repeat this completed increment. |
 | Every-state demographic participation | Complete historical package and live interface verified | Release `438552376`: all 51 jurisdictions in both 2022/2024; 1,734 state/year/group queries, 1,733 positive-source estimates and one absent Idaho group, all 11,906 source decisions, 5,202 nonresponse scenarios and 6,120 partitions. Seven full assets, 582,345 independent checks, six focused tests and two exact offline reproductions verify the 26,243,365-byte ZIP. Website `ca883d0` / Pages `42530121113` / native artifact `13637596097` passes all 30 production configurations and strict content/tar limits (981,301,627 / 983,808,000 bytes), preserving all old links, IDs, 436 complete routes and 106-word Methods. State filters retain national histories, native categories, full unknowns, sparse diagnostics and missing-not-zero. Do not rerun this completed increment; nationwide 2026 demographic/precinct evidence remains unresolved. |
 | Extend statewide native registration frames: Florida | Published numerical package; complete reproducible code included | Version 04 / release `438515810` adds one Florida whole-state conditional scenario and a separate native participant/model comparison. Full query: 51 states/D.C., 20 controls, 14 selected references, nine scenarios; all 50 unaffected rows, 19 prior controls and eight scenarios identical. Native TOTAL 8,335,497 / 13,704,495; conditional model units 7,475,648.38 / 6,228,846.62 under unvalidated register exchangeability. Source clocks null, statewide flags blank, 60 provisional / 64 overseas county holds preserved; generic cast fields remain null for Florida. All nine full assets verified; 21 tests, 4,165 independent checks and two byte-identical offline reproductions pass the 23-member / 20,157,249-byte ZIP. No new source acquisition, demographic/local allocation, observed staying-home or website view. Broader denominator/geography gaps remain; do not repeat this completed numerical/publication work. |

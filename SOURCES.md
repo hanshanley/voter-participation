@@ -63,6 +63,37 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## California official 2026 registration reference
+
+[Complete originals, native queries and preserved all-state results](https://github.com/hanshanley/margin_of_error/releases/download/participation-california-register-frame-20261108-01/complete-analysis.zip)
+qualify the October 19, 2026 Report of Registration. All 58 counties and separate
+state totals reconcile across county, six native age bins and preregistration
+tables. The 23,273,590 registrations corroborate the existing CA denominator;
+all 51 prior state rows and nine scenarios remain byte-identical. No duplicate
+scenario or changed estimate. Equal counts do not prove results-system lineage,
+matching survey populations or transport.
+
+The separate 124,180 preregistrations overlap active registrations; they are
+never added or subtracted as a disjoint population. The youngest native age bin
+is `17.5* - 25`, including activated 17-year-olds for an upcoming election.
+Civic bins are incompatible and never split. The printed eligible-population
+estimate is unofficial, not registration. Party columns remain registration
+accounting, not candidate behavior or demographic turnout.
+
+Immutable release `438609932` has ten full byte-verified assets. The
+59,145,983-byte / 24-member ZIP includes all eight originals and the complete
+permitted baseline. Six tests, 2,256 independent checks (all 1,652 PDF count
+cells), all 2,901 native workbook cells and two blocked, byte-identical offline
+reproductions pass. Maintained `scripts/california_registration.py` reproduces
+the complete query. This is source evidence, not a new website view.
+
+**Georgia follow-up access hold, November 8, 2026:** a newer official results
+API retrieval returned HTTP403; distinct official registration-hub and active
+report pages also returned403 on direct retrieval. All three routes are stopped,
+without another client, cache or mirror. The saved159-county ballot query and
+two missing registration fields remain unchanged. Do not adopt modeled
+third-party registration totals or infer the missing county values.
+
 ## Every-state historical demographic participation
 
 [Complete results and reproducible inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-state-demographics-20261108-01/complete-analysis.zip):

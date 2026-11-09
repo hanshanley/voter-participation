@@ -1,0 +1,74 @@
+[
+  {
+    "file": "complete-ror.pdf",
+    "url": "https://elections.cdn.sos.ca.gov/ror/15day-gen-2026/complete-ror.pdf",
+    "status": 200,
+    "bytes": 39203652,
+    "sha256": "c7cd9cff17a1fabc9407c6a81eae08bf5eff0fe958953033d02afe315f807c86",
+    "content_type": "application/pdf",
+    "retrieved_at_utc": "2026-11-08T23:46:11.321397+00:00"
+  },
+  {
+    "file": "historical-reg-stats.pdf",
+    "url": "https://elections.cdn.sos.ca.gov/ror/15day-gen-2026/historical-reg-stats.pdf",
+    "status": 200,
+    "bytes": 126029,
+    "sha256": "99846307d08b1719f5fd9e000692a8a494d32839a1b484ffbb53f89b02ecf12b",
+    "content_type": "application/pdf",
+    "retrieved_at_utc": "2026-11-08T23:46:11.601818+00:00"
+  },
+  {
+    "file": "county.xlsx",
+    "url": "https://elections.cdn.sos.ca.gov/ror/15day-gen-2026/county.xlsx",
+    "status": 200,
+    "bytes": 30388,
+    "sha256": "0321b3291aeacf9fca6f1998ea74986effc675a0e52a8e055be2dbc81efd79e6",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "retrieved_at_utc": "2026-11-08T23:46:11.871578+00:00"
+  },
+  {
+    "file": "county.pdf",
+    "url": "https://elections.cdn.sos.ca.gov/ror/15day-gen-2026/county.pdf",
+    "status": 200,
+    "bytes": 139261,
+    "sha256": "7bf3c55457a4e4fcbca96e4dfcfc7f6b086aaadacc2c2c9aa085f279c4817a44",
+    "content_type": "application/pdf",
+    "retrieved_at_utc": "2026-11-08T23:46:12.285439+00:00"
+  },
+  {
+    "file": "age.xlsx",
+    "url": "https://elections.cdn.sos.ca.gov/ror/15day-gen-2026/age.xlsx",
+    "status": 200,
+    "bytes": 23710,
+    "sha256": "5811386f75cf8b04d25b298570a3bcc9cc06a7ae0d6521c344246ce04fbb99c1",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "retrieved_at_utc": "2026-11-08T23:46:12.556654+00:00"
+  },
+  {
+    "file": "age.pdf",
+    "url": "https://elections.cdn.sos.ca.gov/ror/15day-gen-2026/age.pdf",
+    "status": 200,
+    "bytes": 137428,
+    "sha256": "f1036cba3adefd48579a5a44da6272015e9d96d561363b97568fe14c3ab1da54",
+    "content_type": "application/pdf",
+    "retrieved_at_utc": "2026-11-08T23:46:13.260442+00:00"
+  },
+  {
+    "file": "pre-reg.xlsx",
+    "url": "https://elections.cdn.sos.ca.gov/ror/15day-gen-2026/pre-reg.xlsx",
+    "status": 200,
+    "bytes": 23229,
+    "sha256": "77c0980bb8e39ee7bd33c0c19c83072446a100b79940b7b335c588060bf1ee94",
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "retrieved_at_utc": "2026-11-08T23:46:13.593310+00:00"
+  },
+  {
+    "file": "pre-reg.pdf",
+    "url": "https://elections.cdn.sos.ca.gov/ror/15day-gen-2026/pre-reg.pdf",
+    "status": 200,
+    "bytes": 144931,
+    "sha256": "ee6c05d48fbe0b465872cc8ce3e3fb33c384136e05a5181104ccf0a84e1b32b1",
+    "content_type": "application/pdf",
+    "retrieved_at_utc": "2026-11-08T23:46:14.038771+00:00"
+  }
+]
