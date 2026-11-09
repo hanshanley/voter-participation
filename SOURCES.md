@@ -63,6 +63,56 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Nebraska source-filtered registration count
+
+[Complete version-20 controls and inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-20/complete-analysis.zip)
+add the [official November registration-system report](https://sos.nebraska.gov/elections/voter-registration-statistics).
+Its native **"Count of Voters Eligible to Vote" / Grand Total is
+1,265,022**. This is a source-filtered administrative registry count,
+**not estimated VEP**, active-only registration, independently certified
+legal eligibility or observed participation. Filter criteria and
+population transport remain unqualified.
+
+Native **Processed: November 1, 2026, 2:00 AM** and **Printed:
+November 2, 2026, 8:27 AM** remain distinct. Neither independently
+establishes a registration cutoff or live update; timezone is unknown.
+All seven pages / 93 counties plus state parent / eight count columns /
+752 slots are preserved, including **126 blank slots**. Those blanks
+remain unknown, not zero or complement recoveries. Coordinate mapping
+prevents left-shifting counts across blank minor-party columns. Native
+party affiliations are not votes; literal `Mcpherson` and raw header
+glyph artifacts are retained rather than fuzzy-corrected.
+
+Two independent coordinate readers agree. A separate original-PDF
+ruled-cell-border extraction checks every slot without reusing the
+maintained word grid. All 102 accounting checks are evaluated: 29
+fully observed equations reconcile; 73 incomplete ones remain incomplete.
+Conditional **778,723.61 participant / 486,298.39 nonparticipant registry
+units** assume unvalidated statewide Civic transport, not observed
+people or staying home. Native ballots/residual, rates, maps and
+local/group allocation remain withheld.
+
+Version20 contains 51 state/D.C. rows, 37 dispositions and 26 scenarios;
+all fifty unaffected states, 36 prior controls and 25 prior scenarios
+survive. Twelve tests, 5,018 independent checks and two exact blocked
+offline reproductions pass. Immutable release `438806513` has eight
+full authenticated-draft/anonymous-published byte-verified assets.
+Its 104,086,275-byte / fifteen-member ZIP includes the original PDF,
+complete coordinate/text views, receipts, version19 baseline, maintained
+reader/extraction helper/shared code, tests and every query. SHA-256:
+`c8b3b6664507bebea9e8d3fc7cecbe19f8182510d748f298961e787887b68893`.
+No new website view or replacement of earlier releases.
+
+**Distinct access follow-ups:** Montana's officially linked
+`https://sosmt.gov/elections/regvotercounty/` returned **HTTP 403**:
+8,237 denied-body bytes, SHA-256
+`1f5da60ac7945d49f52c0441962910da414e65bac5ba375a872e065e7a62a837`.
+The receipt is included; full denied bytes are locally held, not
+redistributed. That route is stopped, without another client/cache/mirror
+or a guessed embed URL. Nevada's registration-statistics web index
+yielded only an unqualified iframe: no native numerical input acquired,
+no actual HTTP 403 status claimed and no bypass attempted.
+
 ## South Carolina registration stocks and native demographic margins
 
 [Complete version-19 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-analysis.zip)

@@ -51,6 +51,26 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Nebraska filtered registry report integrated:** version20 adds its
+explicit 1,265,022 Grand Total, not estimated VEP or legal-eligibility
+certification. Native processed November 1 / printed November 2 clocks
+are distinct, not independently qualified registration cutoffs or live
+updates; timezone, active/inactive status and filter criteria remain
+unknown. All 93 counties / 752 count slots preserve 126 blanks without
+zero filling or shifted columns. Twelve tests, 5,018 independent checks
+and two exact offline reproductions pass. All 102 accounting checks
+are evaluated; 29 complete equations reconcile, 73 remain incomplete.
+The complete query has 51 state/D.C. rows, 37 dispositions and 26
+conditional scenarios; fifty unaffected states, 36 prior controls and
+25 prior scenarios survive. Conditional filtered registry units are
+not observed participation/staying home; no ballots/residual, population
+validation, rate/map, local/group allocation or new website view.
+Full original/sufficient inputs/code/tests/queries are downloadable.
+Montana's distinct registration index returned 403 and is stopped;
+Nevada remains iframe-only unqualified discovery, not an actual 403
+or acquired native numerical input. Broader independent demographic
+participation and precinct-coverage gaps remain open.
+
 **South Carolina registration workbook integrated:** version19 adds the
 explicit overall state parent 3,470,220. November 2 is the declared report
 label, not an embedded registration cutoff/clock; status/timezone remain
