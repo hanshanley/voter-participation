@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "independent_checks": 197,
+  "native_dated_active_parent": 1784255,
+  "conditional_modeled_participant_units": "1133689.6177328591085179345688695490960233517411554775007512818216523648182054023",
+  "conditional_modeled_nonparticipant_units": "650565.38226714089148206543113045090397664825884452249924871817834763518179459768",
+  "source_date": "2026-11-02",
+  "election_time_denominator_qualified": false,
+  "native_combined_total_discrepancy_preserved_not_repaired": true,
+  "no_party_votes_or_group_turnout_inferred_from_affiliation": true,
+  "selected_native_statewide_ballots": null,
+  "native_minus_model": null,
+  "complete_state_query_rows": 51,
+  "source_control_records": 29,
+  "conditional_scenarios": 18,
+  "dated_active_frame_added": 1,
+  "native_statewide_ballot_controls_added": 0,
+  "all_50_unaffected_state_rows_seventeen_prior_frames_and_twenty_eight_controls_preserved": true,
+  "original_10_state_228_county_affiliation_and_29_participation_csv_bytes_preserved": true,
+  "county_report_denominators_withholds_missing_reports_and_backend_zero_holds_unchanged": true,
+  "unchanged_maintained_washington_shared_helpers_included": true,
+  "old_pdf_ocr_workbook_and_private_survey_reductions_reused_not_repeated": true,
+  "focused_tests": 8,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 17,
+  "archive_bytes": 101997925,
+  "archive_sha256": "b4b940c75cf0879ac2959fa2654202f8afa0d1981ddaf8de23a74933beffcce6"
+}

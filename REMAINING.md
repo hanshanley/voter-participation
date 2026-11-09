@@ -51,6 +51,19 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Utah dated active-register frame integrated:** immutable `438718321`
+adds the native November 2 active parent, not an election-time denominator
+or a replacement for county-report registrations. Version13 has 51 state/D.C.
+rows, 29 source-control disposition records and eighteen conditional frames.
+Native arithmetic discrepancies, all ten state / 228 county affiliation rows,
+29 county participation rows and all prior counting/denominator holds remain.
+Eight tests, 197 independent checks and two exact offline reproductions pass;
+all 50 unaffected states, seventeen prior frames and 28 prior controls survive.
+Native statewide ballots/residual remain null; no party-vote inference,
+population validation, new state rate/map or website view. Raw operational/
+personnel worksheets remain excluded; complete permitted numerical inputs
+and queries are downloadable.
+
 **South Dakota derived complete-county frame integrated:** immutable
 `438706606` adds a clearly labeled 66-county registration aggregate, not a
 native statewide parent. Version12 has 51 state/D.C. rows, 28 source-control
@@ -171,6 +184,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| Utah dated native active-register parent | Complete numerical integration and fully verified research publication | Release `438718321`: native Totalactive1784255 dated11/02/2026, NOT election-timeR or county-report denominator substitute. ConditionalDATED ACTIVE1133689.62/650565.38 units under unvalidated exchangeability. Inactive314971/combinedtotal2099225 arithmeticdiscrepancy1 retained, not repaired. All10state/228county affiliationrows are registrationaccounting, notpartyvotes;29priorcounty participationbytes/26reports/19counted+18paired/sixholds+fourmissing/oldDavis/Wayne/backend-zero holds preserved. Version13: 51 rows, 29 source records, eighteen frames. Eighttests/197 independentchecks/two blocked exact reproductions pass; all50 unaffectedstates/seventeen priorframes/28controls intact. Native statewide ballots/residualNULL; no acquisition, old PDF/OCR/workbook reduction, denominator substitution, rate/map/population approval or website view. |
 | South Dakota derived complete-county frame | Complete numerical integration and fully verified research publication | Release `438706606`: derived sum628563 from66 unique native countyVoters parents, NOT native statewide field; conditional296578.40/331984.60 units under unvalidated exchangeability. CountycalcVoterTurnout310298 diagnosticonly; native statewide ballots/residualNULL. Repeated registrations at12vote-center counties ignored; exact native IDs/literal suffixes matched. CurrentDateTime semantics/timezone unqualified, not updateclock. Original671unitgzipbytes/596available+75held rate decisions/duplicates preserved. Version12: 51 rows, 28 source records, seventeen frames. Eighttests/1280 independentchecks/two blocked exact reproductions pass; all50 unaffected states/sixteen priorframes/27controls intact. No native statewide parent, acquisition, old candidate/workbook/HTML reduction, new state rate/map/population approval or website view. |
 | Held Alaska native federal parent | Complete numerical integration and fully verified research publication | Release `438694717`: b215906 native federal ballots/v605433 registered, not t213009 candidate selections. Conditional291012.21/314420.79 units and native-minus -75106.21 remain unvalidated source contrasts. Governor215776/604611 differs exactly federaloverseas130/822; no scopeblend. Native400/403 reporting, uncertified, timezoneabsent, schemaformat2024 not electionyear2026. All523 originalunit gzipbytes/402geo/120pooled/1federal and221accounting/63ballots>registration holds preserved. Version11: 51 rows, 27 disposition records, sixteen frames. Eighttests/615 independentchecks/two blocked exact reproductions pass; all50 unaffected states/fifteen priorframes/26controls intact. Genericcast/rate/map/finalRCV/population approval stays withheld; no acquisition or old candidate/CSV/geometry reduction. |
 | Held Virginia registration-only parent | Complete numerical integration and fully verified research publication | Release `438683276`: explicit state totalVoters6494441, conditional units3762883.24/2731557.76 under unvalidated exchangeability. All133 locality/registration totals and native active+inactive components agree; definitions remain unqualified. State ballotsCast0 retained raw, selected statewide ballots/turnout/native-minus-model NULL; locality3593781 not substituted. All133 clocks/statuses and2529 priorprecinct rows preserved; precinct2798626 partial, all69 locality/House residual scopes unallocated. Version10: 51 rows, 26 disposition records, fifteen frames. Seven tests/1612 independent checks/two blocked exact reproductions pass; all50 unaffected states/fourteen prior frames/25 controls survive. No acquisition, old candidate/precinct/geometry reduction, rate/map/population approval or website view. |

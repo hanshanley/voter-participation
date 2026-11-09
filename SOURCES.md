@@ -63,6 +63,48 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Utah dated active-registration frame
+
+[Complete version-13 controls and sufficient numerical inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-analysis.zip)
+reuse the held [Utah numerical query](https://github.com/hanshanley/margin_of_error/releases/tag/voter-county-utah-native-statistics-20261106-01).
+The native statewide `Total active` parent is 1,784,255, dated
+**November 2, 2026**, with no time or timezone. This is a dated active-register
+scenario, not an election-time denominator for November 3 or a replacement
+for any separate county-report denominator.
+
+Native inactive 314,971 and combined total 2,099,225 remain unchanged:
+active plus inactive exceeds the printed combined total by one. Both native
+parent arithmetic discrepancies are preserved, not repaired or allocated.
+All ten state and 228 county affiliation rows remain registration accounting,
+not party votes, party turnout or modeled group participation.
+
+All 29 prior county participation rows and their denominators remain
+byte-identical. The 26 reports, nineteen counted-ballot snapshots (eighteen
+with same-report registrations), six scope holds, four missing reports,
+distinct Davis snapshots, Wayne
+discrepancy and unqualified backend-zero fields remain in the full input.
+No dated registration is substituted into those county observations.
+Native statewide ballots and native-minus-model remain null; no state rate,
+map, counting completion or population validation is approved.
+
+Conditional dated-active units are 1,133,689.62 modeled participants /
+650,565.38 nonparticipants under unvalidated snapshot/Civic exchangeability,
+not election-time people or observed staying home. Register/cohort timing,
+survey calibration and field period remain unqualified; no demographic
+populations, local allocation or design interval is claimed.
+
+Immutable release `438718321` has ten full byte-verified assets. The
+101,997,925-byte / 17-member ZIP contains the complete permitted native
+**numerical** input package, accepted version-12 baseline, every new query,
+maintained code, unchanged Washington shared helpers and eight focused tests.
+Raw operational/personnel worksheets remain excluded. 197 independent dated-
+parent/Fraction/preservation/package checks and two blocked, byte-identical
+offline reproductions pass. Maintained `scripts/utah_dated_register.py`
+exports 51 state/D.C. rows, 29 source-control disposition records and eighteen
+conditional frames. All 50 unaffected states, seventeen prior frames and 28
+prior controls survive. No source acquisition, completed PDF/OCR/workbook/
+private-survey reduction or website campaign was repeated.
+
 ## South Dakota derived complete-county registration frame
 
 [Complete version-12 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-analysis.zip)
