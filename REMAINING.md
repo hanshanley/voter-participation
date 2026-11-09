@@ -51,6 +51,20 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Four-election, every-state CPS histories published:** newly acquired
+2018/2020 originals add 1,734 group snapshots, extending the complete
+query to3,468 rows across2018/2020/2022/2024. All1,734 accepted2022/2024
+registered queries/rates remain exact. The1,734 same-type comparison
+decisions preserve three registered and one citizen missing-endpoint
+holds; arithmetic is not harmonized population or causal change.
+Older1018-character records lack PRSUPINT; native-9 is not invented
+noninterview status, and the2018literal question-date placeholder stays.
+Unknown registration/voting and sparse diagnostics survive. Fifteen
+tests,550,090 checks and two exact offline reproductions pass; complete
+sufficient inputs/codebooks/code/tests/queries/results are published
+without raw respondent identifiers. Native27/2026 models/website unchanged;
+broader independent2026 demographic/precinct/population gaps remain open.
+
 **2026 retrospective-response classifications published:** separate
 nonpartisan package reuses held Civic joints for77 supported tables
 (33 recalled2022House /44 recalled2024President), not77states.

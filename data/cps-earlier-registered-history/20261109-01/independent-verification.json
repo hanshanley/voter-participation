@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "independent_checks": 550090,
+  "focused_tests": 15,
+  "new_earlier_queries": 1734,
+  "complete_four_year_queries": 3468,
+  "same_type_comparison_decisions": 1734,
+  "new_earlier_coarse_pairs": 13731,
+  "new_earlier_registration_class_rows": 5202,
+  "earlier_exclusive_partition_checks": 6520,
+  "earlier_native_CPS_comparisons": 204,
+  "earlier_sparse_registered_under30_diagnostics": 362,
+  "held_registered_comparisons": 3,
+  "held_citizen_comparisons": 1,
+  "later1734_registered_query_bytes_and_rates_preserved": true,
+  "independent_2018_2020_original_reduction_agrees": true,
+  "native_1018char_layout_absent_PR_SUPINT_and2018_literal_date_placeholder_preserved": true,
+  "no_respondent_identifiers_raw_survey_archives_or_private_fine_cells_redistributed": true,
+  "no_2026_projection_administrative_or_cohort_population_change_certification": true,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 18,
+  "archive_bytes": 10207451,
+  "archive_sha256": "cbff5470e9153e38095859413a9ad379f535021cbcb172282982b5596e868d69"
+}

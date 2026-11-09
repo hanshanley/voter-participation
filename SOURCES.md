@@ -25,6 +25,46 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Every-state CPS frames across four elections
+
+[Complete 2018/2020/2022/2024 package](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-four-year-frames-20261109-01/complete-analysis.zip)
+adds newly acquired, exact declared Census originals for 2018 and 2020.
+All fifty states and D.C. have **3,468 state/year/group queries** covering
+citizen and registration-supported respondent frames. The 1,734 accepted
+2022/2024 registered queries and rates are reused exactly; their entire
+original query is included byte-for-byte, not re-estimated.
+
+All **1,734 same-election-type comparison decisions** cover 2018-to-2022
+midterms and 2020-to-2024 presidential elections. Three registered-frame
+comparisons and one citizen-frame comparison remain held for missing
+endpoints. Differences are source-specific percentage-point arithmetic,
+not harmonized population turnout change, causal effects or matched-person
+retention. Weight targets and response subclasses are not harmonized.
+No new/returning-voter, deaths/migration/eligibility or 2026 population
+projection; sparse flags are not precision guarantees.
+
+The older native layout is different: 1,018-character records, PES1 at
+1001-1002 and PES2 at1003-1004, without PRSUPINT. Native `-9` remains
+undistinguished no response, not an invented noninterview flag.
+The 2018 questionnaire's literal `November X, XXXX` placeholder is
+preserved; year/month come from the index and actual records.
+Unknown registration stays separate; voting unknowns within supported
+registered frames remain in the full denominator. Source registration
+support is not independently validated registry membership or eligibility,
+including for North Dakota.
+
+All 13,731 new coarse pairs, 5,202 registration-class rows, 6,520 exclusive
+partition checks and 204 original-cell CPS comparisons are retained.
+Fifteen tests, **550,090 independent checks** and two exact offline
+reproductions pass. Immutable release `439157433` has ten full
+byte-verified assets. The **10,207,451-byte / eighteen-member ZIP**
+includes complete sufficient aggregates, original codebooks/references,
+the complete earlier package, receipts, code/dependencies, tests and every
+query/result/checksum. Raw survey records and identifiers remain local.
+SHA-256: `cbff5470e9153e38095859413a9ad379f535021cbcb172282982b5596e868d69`.
+Native27, existing 2026 models, earlier releases/access holds and website
+remain unchanged; no new rate/map/view.
+
 ## 2026 model classifications by recalled prior-contest response
 
 [Complete nonpartisan classification package](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-history-classifications-20261109-01/complete-analysis.zip)
