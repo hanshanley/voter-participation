@@ -51,6 +51,24 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Alabama monthly active/combined frames integrated separately:** version24
+adds October's 3,390,357 active and 3,853,181 combined registrations,
+not November inferred from the URL directory. Exact cutoff day/clock/
+timezone remain unknown. The overlapping frames are never added;
+462,824 inactive registrations do not establish nonparticipation or
+ineligibility. All ten month sheets / 15,400 slots / 14,280 count slots
+preserve 2,293 blanks and 666 formula caches without execution or zero
+filling. Independent readers agree; 911 complete equations reconcile,
+1,339 remain incomplete. Ten tests, 164,529 checks and two exact offline
+reproductions pass. All 51 prior state rows, 41 controls and 29 scenarios
+remain byte-identical, including Alabama's existing election denominator/
+count/rate/scenario. Two new conditional statewide source-register frames
+are unvalidated, not observed turnout or staying home; no local/group
+allocation, linked ballot residual, rate/map/website approval. Now 43
+dispositions / 31 scenarios, not 31 states. The complete original/input/
+code/test/query/result package is published; prior releases/holds survive.
+Broader independent demographic participation and precinct gaps remain open.
+
 **Same-type historical model arithmetic delivered:** the new public AP
 comparison package retains all 6,426 decisions and computes 505 supported
 state/group/pair contrasts, each with two separate native weight views.

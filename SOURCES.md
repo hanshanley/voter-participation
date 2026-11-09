@@ -25,6 +25,49 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Alabama monthly active and combined registration frames
+
+[Complete version-24 controls and originals](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-24/complete-analysis.zip)
+add the [official 2026 workbook](https://www.sos.alabama.gov/sites/default/files/election-data/2026-11/ALVR-2026.xlsx),
+obtained from its explicit [registration-index link](https://www.sos.alabama.gov/node/3616).
+Both originals returned200. The latest native sheet is **October**, not
+the November URL directory: **3,390,357 active / 462,824 inactive /
+3,853,181 combined registrations**. Exact cutoff day, clock and timezone
+remain unknown. Active and combined frames overlap; never add them or
+interpret inactive registration as ineligibility or nonparticipation.
+
+All ten month sheets / 670 county-month rows / 15,400 grid slots /
+14,280 count slots match independent XML and openpyxl views. All **2,293
+blank counts remain unknown**. Native formulas and cached values are
+preserved, never executed or recalculated. All 2,250 accounting equations
+are evaluated: 911 complete equations reconcile; 1,339 remain incomplete.
+Native race/federally-registered-any-race categories are not harmonized
+or used as demographic participation groups.
+
+Separate conditional **active 1,565,208.30 / 1,825,148.70** and
+**combined 1,778,877.82 / 2,074,303.18** participant/nonparticipant source
+units assume unvalidated statewide Civic transport. They are not observed
+people, staying home, legal-eligibility certification or election-time
+populations. No linked ballot/model residual, local/group allocation,
+fabricated interval or new rate/map/website view.
+
+Every prior state row, all 41 controls and 29 scenarios are byte-identical,
+including Alabama's separate 3,852,947 election-reporting denominator,
+1,693,621 count, rate and scenario. No substitution or repair.
+Version24 has **51 state/D.C. rows, 43 dispositions and 31 scenarios**,
+not 31 distinct states.
+
+Ten tests, 164,529 independent checks and two exact blocked offline
+reproductions pass. The standard-library mock/SSL harness import order
+was fixed without changing source inputs, estimator, tests or blocking
+probes. Immutable release `438922459` has ten full authenticated-draft/
+anonymous-published byte-verified assets. Its 105,764,822-byte /
+seventeen-member ZIP includes the entire original workbook, independent
+grid, factual declaration/receipts, complete version23 baseline, portable
+reader/shared code, tests, every query/result and checksums. SHA-256:
+`5fe02b9da970fb3d1a5abc01a9751f3b8e9885a4e1b2d2d048284bc1da9a65cf`.
+Earlier releases, access holds and accepted website remain unchanged.
+
 ## Same-type state source-model contrasts, not turnout-change estimates
 
 [Complete comparison package](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-contrasts-20261109-01/complete-analysis.zip)
