@@ -51,6 +51,15 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Delaware held statewide frame integrated:** immutable `438634132` adds the
+previously published separate ALL/41-district source to complete version06:
+51 state/D.C. rows, 22 controls and eleven conditional frames. Missing turnout
+clock/timezone, unapproved native rate/map/completion flags and separate
+candidate context remain unchanged. Six tests, 327 independent checks and two
+exact offline reproductions pass; all 50 unaffected state rows and ten prior
+frames are preserved. No new source acquisition, candidate reconstruction,
+population validation or website view. Do not repeat this completed increment.
+
 **New Mexico native state reference complete:** immutable `438620865` adds
 33 counties and 2,204 source precincts, independently reconciled and retained
 in the complete 51-state query. Version05 now has 21 native controls and ten
@@ -88,6 +97,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| Held Delaware statewide register frame | Complete numerical integration and fully verified research publication | Release `438634132`: separate384862 BallotsCast/810407 RegVoters and all41 House districts, complete51-state query/22controls/11frames. Conditional397682.55/412724.45 units preserve unvalidated source-register exchangeability; no observed staying-home claim. Clock/timezone absent, native approvalsfalse, no countyallocation or candidateclock substitution. Six tests/327 independent checks/two blocked exact reproductions pass; all50 unaffectedstates/ten priorframes/21controls preserved. Existing native/candidate/survey verification reused, notrerun. |
 | New Mexico native2026 participation | Complete numerical package; fully verified research publication | Release `438620865`: all 33county/2204precinct native counts, registered denominator1469718, nativeparticipants731209/49.75%; full51-state query,21controls/ten scenarios. Conditional units765694.90/704023.10 retain unvalidated exchangeability. The separate1462993 October30 register never repairs the election denominator; zeroR has no analyticrate. All50 unaffected rows/nine prior scenarios preserved; six tests/9018 independent checks/two blocked exact reproductions pass. No new websiteview, generic cast-ballot relabeling or cohort/population certification. |
 | Native California 2026 register corroboration | Published and fully verified; estimates unchanged | Release `438609932`: all eight originals, 58 counties/separate totals, native age and overlapping preregistration frames; complete 51-state query. Six tests, 2,256 independent checks and two exact offline reproductions pass the 24-member ZIP. The 23,273,590 count matches the existing CA denominator; all nine scenarios remain byte-identical. No population/age transport, group turnout or new website view. Broader native evidence gaps remain. |
 | 2026 statewide demographic models | Complete package, live interface and requested audit verified | Immutable `438581821`: 671 models / all 1,530 state/group decisions, 50 source states and explicit D.C. absence. Five tests, 28,496 independent checks and two exact offline reproductions pass. Website `5005b2e`, Pages `42534719520` and actual artifact `13638962850` pass all 36 production configurations; all 1,734 historical values and 436 complete routes survive. The post-integration audit adds 9,092 checks of exact fractions, held statistics, positive-cell complements and complete archives. No new source/runtime defect found; the legacy landing-checker baseline was corrected without runtime changes. Observed demographic turnout, population frames and nationwide precinct participation remain unresolved. Do not repeat this completed increment. |

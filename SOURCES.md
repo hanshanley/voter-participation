@@ -63,6 +63,38 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Delaware held statewide registration frame
+
+[Complete version-06 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-06/complete-analysis.zip)
+integrate the already-published [native state/district query](https://github.com/hanshanley/margin_of_error/releases/tag/voter-state-delaware-native-participation-20261106-01),
+not a new acquisition. The separate ALL row has 384,862 Ballots Cast /
+810,407 Reg Voters / printed 47.49%; all 41 House-district sums reconcile.
+Candidate selections, including the distinct 378,111 Senate total, remain
+separate and are not participation counts.
+
+Turnout clock, timezone and native FIPS are absent. The candidate clock and
+client-generated cache key never fill that gap. Native rate/map/all-mode/
+certification approvals remain false; no district counts are apportioned to
+counties. This adds a conditional source-register frame, not approval of a
+generic turnout rate or population match.
+
+Conditional source units are 397,682.55 modeled participants / 412,724.45
+nonparticipants under unvalidated Civic-to-register exchangeability. The
+separate native-minus-model difference is -12,820.55 units, not observed
+staying home or a cohort change. Native register status/timing, survey field
+period, calibration and population transport remain unqualified; no design
+interval is fabricated.
+
+Immutable release `438634132` has eight complete byte-verified assets. The
+21,218,192-byte / 14-member ZIP includes the complete native query, accepted
+version-05 baseline, every new query, maintained code and six tests.
+327 independent native-frame/Fraction/preservation/package checks and two
+blocked, byte-identical offline reproductions pass. Existing native candidate
+and private survey reductions are reused, not repeated. Maintained
+`scripts/delaware_registration_control.py` exports 51 state/D.C. rows, 22
+controls and eleven conditional frames, preserving the 50 unaffected states,
+ten prior frames and 21 prior controls. No new website view is claimed.
+
 ## New Mexico source-defined 2026 participation
 
 [Complete version-05 state controls and native originals](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-analysis.zip)
