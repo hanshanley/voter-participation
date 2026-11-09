@@ -51,6 +51,25 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Indiana primary-context register integrated conditionally:** version26
+adds its explicit 4,713,746 Registered Voters from the 2026 PRIMARY report,
+not November election-time population or an inferred registration date.
+One separate scenario transports the general Civic propensity to that
+primary stock under unvalidated cross-election/frame assumptions.
+Conditional units are not observed people or staying home. Native primary
+807,059 Total Voters / 553,110 Election Day / 253,949 Absentee are context
+only, never general ballots, model validation/calibration or a matched
+residual. All 92 counties / 665 cells / 372 counts / 186 source percentages
+are retained; 97 equations and all rounding diagnostics pass. Raw percentage
+binary lexemes are preserved; voter counts stay exact. Thirteen tests,
+6,164 checks and two exact offline reproductions pass. All fifty other
+state rows, 48 controls and 31 scenarios survive; now 50 dispositions /
+32 scenarios, not 32 states. Complete original/inputs/code/tests/queries/
+results are published; no new rate/map/website view. Illinois's two
+HTTP200 navigation pages remain unqualified numerical discovery, not403/
+paid-only/global absence; no purchase, personal voter file or guessed report.
+Earlier source holds/releases/models and the provider-frame package survive.
+
 **Reported demographic-frame arithmetic published:** the new provider
 package covers all 408 state/mode/dimension decisions and 511 group/held
 rows, with 135 source-native counts / 32 demographic views in 11 states.

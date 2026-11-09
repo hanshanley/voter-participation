@@ -1,0 +1,142 @@
+{
+  "schema": "indiana-primary-register-general-propensity-context-v1",
+  "version": "20261109-01",
+  "release_id": 439007659,
+  "release_tag": "participation-state-controls-20261108-26",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-analysis.zip",
+      "bytes": 106031433,
+      "sha256": "32d68a849e97d834272e3813a736c2bdbb2157bfe3d62e960d7195acd643772e",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115562",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-conditional-registered-scenarios.csv",
+      "bytes": 29200,
+      "sha256": "6de2dfa7c77324360f81fbdf3eecf227da92d3926e82a05e7f33f9811850d840",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115564",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-indiana-native-accounting.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-indiana-native-accounting.csv",
+      "bytes": 9900,
+      "sha256": "939dc6349034e169a41d5b0edb2eec8fe36c2e6a013e52f2826f77d5eef8fd34",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115590",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-indiana-native-percent-diagnostics.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-indiana-native-percent-diagnostics.csv",
+      "bytes": 43948,
+      "sha256": "446cdbd69578e91cb563870cf66d68e930e0ce7a23db26d90ee42a4ed379b37a",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115595",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-indiana-native-workbook-cells.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-indiana-native-workbook-cells.csv",
+      "bytes": 33375,
+      "sha256": "0f9af80b4df0f4b36039770ba93518f233f8207f754ab1e9b0d87915098d57ff",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115560",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-indiana-primary-context.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-indiana-primary-context.csv",
+      "bytes": 8257,
+      "sha256": "77ea0bae7553c6cd92f78966469e92501d867a37b4118229b9fc78d9e7e5b83b",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115589",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-indiana-primary-register-frame.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-indiana-primary-register-frame.csv",
+      "bytes": 687,
+      "sha256": "99f53a92a92dee133d4c7ef294648ee396645533185889d188297e5d1a1cc535",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115592",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-native-control-dispositions.csv",
+      "bytes": 47030,
+      "sha256": "6114e149b97be12a05378511ff8b165cdfd9b810eb20461cb0f6539338187a02",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115565",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-state-control-query.csv",
+      "bytes": 25100,
+      "sha256": "e375196a8788d48d603b0838a56e57e26b865bba67c7752bb47906ac27a472ed",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115569",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/source-qualification.json",
+      "bytes": 1618,
+      "sha256": "b35b241b1baccc3ee7b360da61ada1ebf14cd1a06250f59cad222daa56870b40",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115620",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/summary.json",
+      "bytes": 569,
+      "sha256": "fc0725157cb3f8ef3d51cee6a277d8e306aae419c301a494d61210ef918262d0",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727115622",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_state_query_rows": 51,
+  "source_control_records": 50,
+  "conditional_scenarios": 32,
+  "native_election_context": "2026 Primary",
+  "model_propensity_context": "2026 General Civic",
+  "native_registered_parent": 4713746,
+  "native_primary_Total_Voters_context": 807059,
+  "native_primary_Election_Day_context": 553110,
+  "native_primary_Absentee_context": 253949,
+  "cross_election_registry_frame_transport_validated": false,
+  "primary_total_voters_not_general_ballots_or_model_validation_calibration": true,
+  "registration_cutoff_date": null,
+  "exact_clock": null,
+  "timezone": null,
+  "active_inactive_status_qualified": false,
+  "native_county_rows": 92,
+  "native_grid_slots": 665,
+  "native_count_slots": 372,
+  "native_percentage_slots": 186,
+  "native_unknown_count_slots": 0,
+  "native_observed_zero_count_slots": 0,
+  "native_percentage_binary_lexeme_cells_preserved": 27,
+  "native_count_peer_comparison_exact_not_relaxed": true,
+  "percent_peer_comparison_numeric_semantics_raw_lexemes_and0percent_display_preserved": true,
+  "complete_equations": 97,
+  "incomplete_equations": 0,
+  "native_accounting_discrepancies": 0,
+  "native_percent_rounding_disagreements": 0,
+  "rounding_not_a_confidence_interval": true,
+  "all50_other_states_and48_prior_controls_31_scenarios_preserved": true,
+  "no_observed_people_staying_home_legal_certification_matched_residual_local_allocation_or_fake_interval": true,
+  "illinois_http200_discovery_not403_numeric_acquisition_purchase_or_world_absence": true,
+  "provider_frames438975418_all_survey_models_official403_holds_and_prior_downloads_unchanged": true,
+  "research_downloads_only_no_new_website_view": true
+}

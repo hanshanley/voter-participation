@@ -25,6 +25,55 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Indiana primary-register context, not a November population
+
+[Complete version-26 controls and original](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-analysis.zip)
+add the [official 2026 primary workbook](https://www.in.gov/dA/21e5da4ae7/2026-Primary-Registration-and-Turnout-Data.xlsx?language_id=1),
+selected from its declared registration/turnout index. It reports
+**4,713,746 Registered Voters in a PRIMARY context**, not a qualified
+November general-election stock. The title does not establish a
+registration cutoff, day, clock, timezone or active/inactive status.
+
+One separate scenario applies the general-election Civic source-model
+propensity to this primary registered stock: **2,061,059.39 participant /
+2,652,686.61 nonparticipant source units**. Cross-election registry-frame
+exchangeability is **unvalidated**. These are not observed people,
+staying home, legal-eligibility certification or validated November counts.
+Native primary **Total Voters 807,059 / Election Day 553,110 /
+Absentee 253,949** remain context only: never November ballots,
+general-model validation/calibration or a matched model residual.
+Absentee is not independently qualified mail-only.
+
+All 92 counties plus Statewide / 665 grid slots / 372 counts / 186
+percentage fractions are preserved. All 97 component/county equations
+reconcile. Twenty-seven stored percentage lexemes have binary artifacts;
+their raw values remain exact, peer percentage comparisons use numeric
+semantics, and the declared `0%` format supplies whole-percent displays.
+Voter-count comparisons remain exact. All 186 rounding diagnostics pass;
+rounding granularity is not a confidence interval. No missing/zero count
+cells in this source; no formulas executed or percentages repaired.
+
+Thirteen tests, 6,164 independent checks and two exact blocked offline
+reproductions pass. All fifty other state rows, 48 controls and 31
+scenarios survive; now **51 state/D.C. rows, 50 dispositions and 32
+scenarios**, not 32 states. General ballot/rate/residual fields remain
+null, with no local/group allocation or new rate/map/website view.
+Immutable release `439007659` has eleven full authenticated-draft/
+anonymous-published byte-verified assets. The 106,031,433-byte /
+eighteen-member ZIP includes the entire original, independent grid/
+formats, typed primary/general scope, receipts/discovery observations,
+complete version25 baseline, reader/extractor/shared code, tests, every
+query/result and checksums. SHA-256:
+`32d68a849e97d834272e3813a736c2bdbb2157bfe3d62e960d7195acd643772e`.
+
+[Illinois discovery receipts](data/registration-access/20261109-05/observations.json)
+record two HTTP200 navigation pages without a selected numerical report.
+This is not403, paid-only qualification or global data absence.
+No voter-file purchase, personal records or guessed statistics filename.
+The older Indiana county-count link explicitly says2025 and is not
+relabelled2026 or used here. Provider-frame downloads, earlier releases,
+all survey models, official403 holds and the accepted website are unchanged.
+
 ## Provider partial demographic counts and own-frame compositions
 
 [Complete source-frame arithmetic package](https://github.com/hanshanley/margin_of_error/releases/download/participation-provider-demographic-frames-20261109-01/complete-analysis.zip)
