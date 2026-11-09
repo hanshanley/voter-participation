@@ -51,6 +51,21 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Every-state CPS registration-supported groups published:** new
+PES1/PES2 joint analysis covers all 1,734 state/year/group queries for
+2022/2024, with 1,731 conditional estimates, three empty frames and383
+sparse registered-case flags. Routed voters and explicit registration-yes
+responses define the source frame, not independently validated registry
+membership. Unknown registration stays outside it; voting unknowns within
+it stay in the full denominator. All 1,734 prior citizen-frame totals
+remain exact. Fifteen tests, 234,228 checks and two exact offline
+reproductions pass; complete sufficient inputs/code/tests/queries/results
+are published without respondent identifiers or private fine cells.
+No administrative population, 2026 projection, local allocation or new
+rate/map/view. Louisiana's facts/parish routes yield context/unresolved
+host only; Nevada's news route is200/challenge, NOT403/statistical input.
+Current native27, website and broader49 independent evidence gaps unchanged.
+
 **Mississippi multiyear frames completed as a separate package:** new
 October2022/2024 reports extend the held2026 frame to three dated ACTIVE
 stocks and three registration-stock comparisons, not turnout/retention.

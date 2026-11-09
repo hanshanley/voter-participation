@@ -1,0 +1,18 @@
+{
+  "absent_registered_frame_rows": 3,
+  "administrative_population_counts_or_2026_projections": 0,
+  "complete_state_group_queries": 1734,
+  "exact_citizen_baseline_preservation_rows": 1734,
+  "exclusive_partition_checks": 11896,
+  "native_CPS_registration_comparisons": 102,
+  "native_coarse_response_pair_rows": 13624,
+  "new_website_view": false,
+  "registration_class_rows": 5202,
+  "sparse_registered_frame_under30_diagnostics": 383,
+  "states_and_dc": 51,
+  "supported_registered_frame_rows": 1731,
+  "years": [
+    2022,
+    2024
+  ]
+}

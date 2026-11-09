@@ -25,6 +25,47 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Every-state CPS registration-supported demographic participation
+
+[Complete 2022/2024 package](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-registered-groups-20261109-01/complete-analysis.zip)
+adds a distinct registration/voting joint analysis, not a repeat of the
+citizen-frame calculation. All 50 states and D.C. / 1,734 state/year/group
+queries include **1,731 supported conditional estimates**, three empty
+frames and 383 under-30 registered-case diagnostics.
+
+The native question routing matters: PES2 is asked when PES1 is
+`2,-2,-3,-9`. The registration-supported frame therefore includes reported
+voters routed out of PES2 **or** explicit PES2 registration-yes responses.
+Voters' routed `-1` is not nonregistration, and not every member directly
+answered registration-yes. Noninterviews and unknown registration remain
+separate. Unknown voting among frame members stays in the full denominator;
+known-voting-response-only percentages are separate diagnostics.
+These are source-conditional self-reports, not independently validated
+registry membership, administrative turnout, staying home or 2026 projections.
+
+All 13,624 coarse native response pairs, 5,202 registration-class rows,
+11,896 exclusive-partition checks and 102 same-source published CPS
+registration comparisons are retained. All 1,734 accepted citizen-frame
+case/weight/outcome totals remain exact. Sparse flags are not precision
+guarantees; no design interval or local/group population allocation.
+
+Fifteen tests, 234,228 independent checks and two exact offline
+reproductions pass. Immutable release `439088807` has nine full
+byte-verified assets. The **5,097,068-byte / seventeen-member ZIP**
+includes complete sufficient coarse public aggregates, Census codebooks
+and native reference originals, code/dependencies, tests and every query.
+No raw respondents, survey identifiers or private fine cells are redistributed.
+SHA-256: `94da447edd1217ed07fc04eb996332ad322a699ceb7674d276de5e445a4bdbfb`.
+
+[New source observations](data/registration-access/20261109-07/observations.json)
+hold Louisiana's context-only election facts and unresolved environment
+parish-registration embed without guessing a host. Nevada's independent
+news route returned **HTTP200/challenge**, not403 or a statistical original:
+stopped without challenge execution, alternate client/cache/mirror or
+cached numbers. Full contact/app/challenge bodies stay local.
+No zero voters/global absence inferred. Native27, prior models/releases/
+access holds and the accepted website remain unchanged.
+
 ## Mississippi multiyear registration frames and conditional signals
 
 [Complete 2022/2024/2026 package](https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-analysis.zip)
