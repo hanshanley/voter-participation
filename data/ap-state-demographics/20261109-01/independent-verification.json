@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "independent_checks": 243257,
+  "complete_query_decisions": 12138,
+  "selected_weight_views": 3590,
+  "nonoverall_weight_views": 3206,
+  "distinct_selected_state_year_group_cells": 1795,
+  "distinct_nonoverall_state_year_group_cells": 1603,
+  "by_year": {
+    "2018": {
+      "selected_weight_views": 820,
+      "nonoverall_weight_views": 722,
+      "distinct_states_with_group_views": 45
+    },
+    "2020": {
+      "selected_weight_views": 972,
+      "nonoverall_weight_views": 882,
+      "distinct_states_with_group_views": 44
+    },
+    "2022": {
+      "selected_weight_views": 780,
+      "nonoverall_weight_views": 684,
+      "distinct_states_with_group_views": 40
+    },
+    "2024": {
+      "selected_weight_views": 1018,
+      "nonoverall_weight_views": 918,
+      "distinct_states_with_group_views": 46
+    }
+  },
+  "all_selected_cached_aggregate_counts_labels_weights_and_fractions_verified": true,
+  "all_2114_within_and_across_state_positive_cell_partitions_checked": true,
+  "both_weight_stage_masks_identical_no_false_independence": true,
+  "all_602_prior_public_rows_preserved_in_complete_baseline": true,
+  "original_532866_native_row_132196_check_verification_reused_not_rerun": true,
+  "no_private_held_statistics_raw_records_party_choices_or_fake_class_support": true,
+  "focused_tests": 14,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 10,
+  "archive_bytes": 1044743,
+  "archive_sha256": "22caef437af4e8126bd611a1d3ae0f98d3bc8920d81b7dd0e3e70487029e2372"
+}

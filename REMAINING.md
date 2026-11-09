@@ -51,6 +51,23 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Historical state-group models extended:** the new AP/NORC package
+provides 1,603 supported non-overall state/year/group cells across
+2018/2020/2022/2024, each with two separately labelled weight views.
+All 12,138 query decisions and sparse/source/disclosure holds remain.
+Group views are supported in 45/44/40/46 states, not all groups everywhere.
+Fourteen tests, 243,257 new independent checks and two exact blocked
+offline reproductions pass; all 2,114 positive-cell partitions are checked
+with synchronized weight-stage masks. The successful original native
+reductions/verification were reused, not repeated.
+These are source-weighted registered-frame models, not administrative
+turnout or validated populations. Native categories, 2018 inference caveat,
+2022 DE/WV and absent-RACETH5 holds, and D.C. absence remain explicit.
+No class-case support or design interval is fabricated. Complete permitted
+inputs/code/tests/queries/prior AP package are downloadable; no new
+website view. Version20 controls and the broader independent administrative
+participation/precinct gaps remain open.
+
 **Further registration-source holds:** direct acquisition of Iowa's
 separately declared November registration PDF and preliminary participation
 release returned403, as did Wisconsin's statistics page, Massachusetts's

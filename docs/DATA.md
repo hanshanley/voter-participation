@@ -17,6 +17,7 @@ are not automatically compatible populations.
 | Historical demographic CPS frames | Native group counts, percentages, nonresponse scenarios and same-type histories | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-group-frames-20261108-01/complete-analysis.zip) |
 | Historical state CPS frames | State voting/registration pairs and separate AP frame diagnostics | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-state-frames-20261108-01/complete-analysis.zip) |
 | Historical AP participation | Selected 2018/2020/2022/2024 broad source-weighted shares and every selection decision | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-history-20261108-01/complete-analysis.zip) |
+| Historical AP state-group models | 1,603 supported state/year/group cells with separate poll-close/final views; all 12,138 query decisions, native-category and source/disclosure holds | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-demographics-20261109-01/complete-analysis.zip) |
 | Civic 2026 estimates | Reviewed broad source-weighted participation and transition outputs | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-estimates-20261108-01/complete-analysis.zip) |
 
 ## Administrative controls and conditional counts

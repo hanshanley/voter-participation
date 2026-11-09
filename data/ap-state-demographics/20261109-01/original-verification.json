@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "waves": [
+    {
+      "year": "2018",
+      "native_rows": 138929,
+      "aggregate_rows": 3164,
+      "native_count_weight_checks": 34756,
+      "output_sha256": "7d20d6aa950325c21c911e885938e3405adf01c85ac6b8230d11389d3847f06c",
+      "documented_RACETH5_not_fabricated_in_2022": true
+    },
+    {
+      "year": "2020",
+      "native_rows": 133103,
+      "aggregate_rows": 3042,
+      "native_count_weight_checks": 33458,
+      "output_sha256": "e2becf5210298f67131072ddf9a1469dc9b30d4a8735afc696e8695b0466530a",
+      "documented_RACETH5_not_fabricated_in_2022": true
+    },
+    {
+      "year": "2022",
+      "native_rows": 120896,
+      "aggregate_rows": 2582,
+      "native_count_weight_checks": 28394,
+      "output_sha256": "405a3c664798c3bdf1fea1aabad0c809c01a8a62a0c954a82f4d4a66c4975228",
+      "documented_RACETH5_not_fabricated_in_2022": true
+    },
+    {
+      "year": "2024",
+      "native_rows": 139938,
+      "aggregate_rows": 3236,
+      "native_count_weight_checks": 35588,
+      "output_sha256": "bb33ef3f8ec0db392f0b0c963cf0a3b3322d2a39fbe2b8458c4bf5f773e22f7b",
+      "documented_RACETH5_not_fabricated_in_2022": true
+    }
+  ],
+  "total_native_rows": 532866,
+  "total_aggregate_rows": 12024,
+  "total_independent_checks": 132196,
+  "estimator_imported": false,
+  "native_reader": "pandas; Decimal80",
+  "population_or_administrative_validation": false
+}

@@ -1,0 +1,15 @@
+{
+  "administrative_turnout_validation": false,
+  "both_native_weight_stage_masks_synchronized": true,
+  "complementary_suppression_within_and_across_states": true,
+  "design_confidence_interval": null,
+  "native_source_aggregate_verification_reused_not_rerun": true,
+  "no_harmonization_or_cps_civic_projection": true,
+  "no_per_model_class_case_support_claim": true,
+  "no_raw_respondents_private_fine_cells_or_party_choice_tables": true,
+  "prior_public_overall_and_national_package_preserved": true,
+  "registered_or_eligible_group_population": null,
+  "source_weight_units_are_people": false,
+  "support_threshold_not_precision_or_anonymity_guarantee": true,
+  "unknown_and_removed_codes_retained_only_in_full_denominators": true
+}

@@ -25,6 +25,48 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Historical state-group VoteCast model shares
+
+[Complete historical state-group package](https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-demographics-20261109-01/complete-analysis.zip)
+extends the already-verified AP/NORC 2018/2020/2022/2024 aggregate cache.
+All **12,138 query decisions** cover 51 jurisdictions and both native
+state-weight stages. The **3,206 non-overall group/weight views** describe
+**1,603 distinct state/year/group cells**, each with poll-close and final
+views of the **same sample**, not two independent estimates. Supported
+group views occur in 45 / 44 / 40 / 46 states, respectively; all remaining
+holds are retained. The complete package also retains 384 overall views
+and the unchanged earlier 602-row national/state-overall package.
+
+These are `LIKELYVOTER` source-weighted **model shares in a registered
+survey frame**, not administratively observed group turnout, population
+counts, staying home, a linked panel or a cross-study causal trend.
+Final-weight outcome calibration is not independent outcome validation.
+Native age, education, income, SEX/GENDER and RACETH5 labels are not
+harmonized: the broader 2024 Asian/Pacific category remains distinct.
+The 2018 state rows retain the publisher's 47-inference-state caveat
+despite all fifty sampled. D.C. has no sample; 2022 DE/WV state inference
+and the absent 2022 RACETH5 dimension remain held, not reconstructed.
+
+Positive-weight support must reach 500. That is neither a precision nor
+an anonymity guarantee, and the cache lacks per-model-class case counts:
+no class-support threshold or design interval is claimed. Unknown/removed
+groups remain in full denominators. Positive-cell complementary holds
+apply within/across states, with synchronized poll-close/final masks;
+all 2,114 relevant partitions are independently checked. No raw cases,
+private held statistics, fine RACETH state cells or party-choice tables
+are exported.
+
+Four full assets in immutable release `438827134` are authenticated-draft
+and anonymous-published byte-verified. Fourteen tests, **243,257 new
+checks** and two exact blocked offline reproductions pass. The original
+532,866-row / 132,196-check native verification was reused, not repeated.
+The 1,044,743-byte / ten-member ZIP contains permitted selected inputs,
+all held-query decisions, full prior AP package, verification provenance,
+maintained selection/reader code, tests, results and checksums. SHA-256:
+`22caef437af4e8126bd611a1d3ae0f98d3bc8920d81b7dd0e3e70487029e2372`.
+Current state-control version20, earlier releases and the accepted website
+remain unchanged. This adds research downloads, not a new deployed view.
+
 ## 2026 statewide demographic participation models
 
 [Complete 2026 state/group inputs, code and results](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-state-demographics-20261108-01/complete-analysis.zip):
