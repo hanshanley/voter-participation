@@ -51,6 +51,22 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Mississippi active-register frame integrated conditionally:** version27
+adds October's derived all-82-county sum of 1,888,362 ACTIVE registrations,
+not a printed statewide parent or qualified November population.
+One unvalidated dated/status-specific frame scenario uses full Civic
+weights; conditional units are not observed people or staying home.
+All 328 factual cells / 164 counts / 82 percentages are preserved.
+Mixed CVAP vintages and three percentages above100 remain context, never
+turnout, a model denominator or evidence of illegal voting.
+Fourteen tests, 2,384 checks and two exact offline reproductions pass;
+the complete original/input/code/test/query/result package is published.
+All fifty other state rows / fifty controls / 32 scenarios survive;
+now 51 dispositions / 33 scenarios, not33states. No new rate/map/view.
+New Hampshire's homepage403 is stopped; Illinois's declared totals page
+is200/application error, not403. Neither yields numerical evidence or
+global absence. Broader independent demographic/precinct gaps remain open.
+
 **Indiana primary-context register integrated conditionally:** version26
 adds its explicit 4,713,746 Registered Voters from the 2026 PRIMARY report,
 not November election-time population or an inferred registration date.

@@ -25,6 +25,46 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Mississippi October active-registration frame
+
+[Complete version-27 analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-27/complete-analysis.zip)
+adds the [official October report](https://www.sos.ms.gov/sites/default/files/active-voter-count-reports/2026October%20Voter%20Count%20Red.pdf),
+selected from its declared active-voter-count index. The **1,888,362**
+active registrations are our derived sum of all 82 county rows, **not a
+printed statewide parent or independently benchmarked total**. October
+comes from the index label; actual cutoff/day/clock/timezone remain unknown.
+The index's general first-Monday policy is not an observed cutoff.
+
+One separate scenario applies the full 1,443-case state Civic propensity
+to that active stock: **928,335.68 participant / 960,026.32 nonparticipant
+source units**, under **unvalidated** date/status/registry-frame transport.
+These are not observed people, staying home, general ballots or legal
+eligibility. No matched ballot residual, calibration or local/group allocation.
+
+All three pages / 82 counties / 328 factual cells / 164 counts / 82
+percentages are preserved. Independent text and word-coordinate readers
+agree. CVAP mixes native 2023 ACS 5-year and thirteen asterisked 2020
+Census references; it is context, not the model denominator or turnout.
+Three percentages above 100 remain unclipped, not evidence of illegal
+voting or fraud. All percentage-rounding diagnostics pass.
+
+Fourteen tests, 2,384 independent checks and two exact offline reproductions
+pass. All fifty other state rows, fifty prior controls and 32 scenarios
+survive: now **51 state/D.C. decisions, 51 dispositions and 33 scenarios**,
+not 33 states. Immutable release `439034403` has ten full byte-verified
+assets. The 106,402,266-byte / seventeen-member ZIP includes the original,
+sufficient independent inputs, complete version26 baseline, code, tests
+and every query/result. SHA-256:
+`92b66d3881d87b2742309eeec5d0bdd176170ba4e4b64f87cda580ec964b42bb`.
+
+[New access observations](data/registration-access/20261109-06/observations.json)
+distinguish New Hampshire's homepage403 (route stopped) from Illinois's
+declared totals page **HTTP200/application error**, with no numerical input.
+Neither establishes global data absence. Full error/contact/app bodies
+remain local; no alternate client/cache/mirror or guessed parameters.
+All prior releases, survey/provider models, source holds and accepted
+website remain unchanged. Broader demographic/precinct evidence gaps stay open.
+
 ## Indiana primary-register context, not a November population
 
 [Complete version-26 controls and original](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-26/complete-analysis.zip)
