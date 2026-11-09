@@ -1,6 +1,6 @@
 # Remaining work: participation and election-transition estimates
 
-Updated: 2026-11-08 UTC. Source catalog: [SOURCES.md](SOURCES.md).
+Updated: 2026-11-09 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 **The project is not finished when the files are downloaded.** Acquisition and
 reconciliation must feed the participation, switching, modeled/reported
@@ -51,6 +51,17 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**New Mexico native state reference complete:** immutable `438620865` adds
+33 counties and 2,204 source precincts, independently reconciled and retained
+in the complete 51-state query. Version05 now has 21 native controls and ten
+conditional frames. All 50 unaffected states and nine previous scenarios are
+preserved. Native sign-in/Votes Cast semantics, unofficial status, distinct
+October30 registration snapshot and zero-denominator hold remain explicit.
+Six tests, 9,018 independent checks and two exact offline reproductions pass.
+No new website view or demographic/local survey allocation is claimed. Continue
+genuinely missing state/group frames; do not repeat this completed acquisition,
+reduction, reproduction or release.
+
 **California registration corroboration complete:** immutable `438609932`
 retains all 58 county/age/preregistration vectors and preserves every prior
 state row and nine scenarios byte-identically. It adds dated native evidence,
@@ -77,6 +88,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| New Mexico native2026 participation | Complete numerical package; fully verified research publication | Release `438620865`: all 33county/2204precinct native counts, registered denominator1469718, nativeparticipants731209/49.75%; full51-state query,21controls/ten scenarios. Conditional units765694.90/704023.10 retain unvalidated exchangeability. The separate1462993 October30 register never repairs the election denominator; zeroR has no analyticrate. All50 unaffected rows/nine prior scenarios preserved; six tests/9018 independent checks/two blocked exact reproductions pass. No new websiteview, generic cast-ballot relabeling or cohort/population certification. |
 | Native California 2026 register corroboration | Published and fully verified; estimates unchanged | Release `438609932`: all eight originals, 58 counties/separate totals, native age and overlapping preregistration frames; complete 51-state query. Six tests, 2,256 independent checks and two exact offline reproductions pass the 24-member ZIP. The 23,273,590 count matches the existing CA denominator; all nine scenarios remain byte-identical. No population/age transport, group turnout or new website view. Broader native evidence gaps remain. |
 | 2026 statewide demographic models | Complete package, live interface and requested audit verified | Immutable `438581821`: 671 models / all 1,530 state/group decisions, 50 source states and explicit D.C. absence. Five tests, 28,496 independent checks and two exact offline reproductions pass. Website `5005b2e`, Pages `42534719520` and actual artifact `13638962850` pass all 36 production configurations; all 1,734 historical values and 436 complete routes survive. The post-integration audit adds 9,092 checks of exact fractions, held statistics, positive-cell complements and complete archives. No new source/runtime defect found; the legacy landing-checker baseline was corrected without runtime changes. Observed demographic turnout, population frames and nationwide precinct participation remain unresolved. Do not repeat this completed increment. |
 | Every-state demographic participation | Complete historical package and live interface verified | Release `438552376`: all 51 jurisdictions in both 2022/2024; 1,734 state/year/group queries, 1,733 positive-source estimates and one absent Idaho group, all 11,906 source decisions, 5,202 nonresponse scenarios and 6,120 partitions. Seven full assets, 582,345 independent checks, six focused tests and two exact offline reproductions verify the 26,243,365-byte ZIP. Website `ca883d0` / Pages `42530121113` / native artifact `13637596097` passes all 30 production configurations and strict content/tar limits (981,301,627 / 983,808,000 bytes), preserving all old links, IDs, 436 complete routes and 106-word Methods. State filters retain national histories, native categories, full unknowns, sparse diagnostics and missing-not-zero. Do not rerun this completed increment; nationwide 2026 demographic/precinct evidence remains unresolved. |

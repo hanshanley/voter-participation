@@ -1,6 +1,6 @@
 # Voter-participation source ledger
 
-Last reviewed: 2026-11-08 UTC.
+Last reviewed: 2026-11-09 UTC.
 
 **Start here:** [Overview](README.md) | [Estimation methods](METHODOLOGY.md) |
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
@@ -62,6 +62,40 @@ Actual downloaded content/tar: 981,327,119 / 983,838,720 bytes, both below the
 strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks,
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
+
+## New Mexico source-defined 2026 participation
+
+[Complete version-05 state controls and native originals](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-analysis.zip)
+add a previously absent state reference: all 33 counties and 2,204 native
+precincts reconcile to 731,209 native participants / 1,469,718 registered voters,
+printed 49.75%. The [ordinary official export](https://electionresults.sos.nm.gov/VoterTurnoutDetails.aspx?map=TURN) explicitly labels Registered
+Voters and Votes Cast; the webpage says Ballots Cast, and its general-election
+definition refers to voters signing in. Those literal meanings are retained,
+not silently promoted to the generic cast-ballot field.
+
+The source is unofficial, updated November 6, 2026 at 9:55 AM MT. Full precinct
+reporting is not certification or completed counting. The download's literal
+November 8 clock has no declared timezone. Sandoval PCT051 retains zero
+registration and printed 0.00%, but its analytic rate is null. Geometry and
+demographic survey allocation remain unapproved.
+
+The new conditional register frame supplies 765,694.90 modeled participant
+units and 704,023.10 nonparticipant units, assuming unvalidated Civic-to-register
+exchangeability. Native-minus-model is separately -34,485.90 units. These are
+not observed staying home or independent population validation. The separate
+October 30 registration report totals 1,462,993; its 6,725 difference remains
+a dated source comparison, not a repaired denominator or cohort movement.
+Party columns describe registration accounting, not voting behavior.
+
+Immutable release `438620865` has twelve complete byte-verified assets.
+The 21,147,874-byte / 22-member ZIP includes all sufficient originals, complete
+baseline, code, six tests and dependencies. Independent verification passed
+9,018 checks, including every native precinct counter in HTML and XLSX, exact
+fractions, preserved outputs and two blocked byte-identical offline reproductions.
+Maintained `scripts/new_mexico_participation.py` exports all 51 state/D.C. rows,
+21 controls and ten conditional frames, preserving the 50 unaffected states
+and nine prior scenarios. No original private respondent reduction, new website
+view, group-rate fabrication or source-count calibration.
 
 ## California official 2026 registration reference
 

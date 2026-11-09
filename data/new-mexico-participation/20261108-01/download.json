@@ -1,0 +1,96 @@
+{
+  "schema": "complete-native-participation-controls-v1",
+  "version": "20261108-01",
+  "release_id": 438620865,
+  "release_tag": "participation-state-controls-20261108-05",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-analysis.zip",
+      "bytes": 21147874,
+      "sha256": "80b13e010d99fb607922039af8b74480aeb7fe166de1a4dbdc0d16fb629ed0c2",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-conditional-registered-scenarios.csv",
+      "bytes": 8251,
+      "sha256": "b531fd2d49f9d304733cbb96c607e405322bea854ffd387739e6dfee115d2f67",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-dated-registration-comparisons.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-dated-registration-comparisons.csv",
+      "bytes": 1517,
+      "sha256": "2e9c4c4a084600714978e44d2fdafb08cd2761ad47ec4a3cacaabbea43bbab87",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-dated-registration-reference.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-dated-registration-reference.csv",
+      "bytes": 1667,
+      "sha256": "64cb0119945a86074debc31969993048845391c721576266c9660c5d7dad190a",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-native-control-dispositions.csv",
+      "bytes": 15285,
+      "sha256": "5c3ed080df5b228b1b2764efe434ea988b86999754fb027606f485c13d64f39e",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-new-mexico-native-counties.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-new-mexico-native-counties.csv",
+      "bytes": 5971,
+      "sha256": "2a818c9c1055736522cc0e26ec9d7da70001d100e078da129dfecbedf210de39",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-new-mexico-native-model-comparison.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-new-mexico-native-model-comparison.csv",
+      "bytes": 833,
+      "sha256": "12b7b83988b0884da9cd47818424f5d2ca77c85c6cc1f8d302e59cc8d9025c8c",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-new-mexico-native-precincts.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-new-mexico-native-precincts.csv",
+      "bytes": 394064,
+      "sha256": "7fff55c2cdc9bb80072b949d3934d1171714b2907cb8db2538b5cfd1c897727a",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-new-mexico-native-state.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-new-mexico-native-state.csv",
+      "bytes": 440,
+      "sha256": "ea0c66507a8fd5788182de73b98f4d9816f5b5fa0a9312fbda95fbc945db27fd",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/complete-state-control-query.csv",
+      "bytes": 17886,
+      "sha256": "4dffdcbf9cbabc5f1ee133a3e647f95f49b65c7be56bd2a02f5c5af7d43c3fef",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/source-qualification.json",
+      "bytes": 1118,
+      "sha256": "fc4d62c13b8b9178f1fa52f9852f4adea4d7b1437076f1c0e7fad41c548c1186",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-05/summary.json",
+      "bytes": 463,
+      "sha256": "85b5b4b4b48ba3ae124dc5629f28ee08c065a7bed027f8341fa26f2d758d2fe2",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "state_query_rows": 51,
+  "previous_fifty_states_and_nine_scenarios_preserved": true,
+  "source_defined_native_turnout_not_generic_ballot_certification": true
+}

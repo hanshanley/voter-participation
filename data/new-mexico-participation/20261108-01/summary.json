@@ -1,0 +1,14 @@
+{
+  "all_50_unaffected_state_rows_and_nine_prior_scenarios_preserved": true,
+  "conditional_scenarios": 10,
+  "native_controls": 21,
+  "native_counties": 33,
+  "native_general_votes_cast_not_generic_cast_ballot_measure": true,
+  "native_precincts": 2204,
+  "native_printed_pct": "49.75%",
+  "native_registered": 1469718,
+  "native_reported_participants": 731209,
+  "state_and_dc_rows": 51,
+  "statewide_survey_allocations": 0,
+  "zero_denominator_precincts": 1
+}
