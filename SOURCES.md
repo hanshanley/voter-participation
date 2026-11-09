@@ -25,6 +25,44 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 source-unit counts: accessible without invented maps
+
+Website `a218d8266b597de7eede26b7f3c24d6bdcb056a4` exposes all **523 Alaska**
+and **496 Hawaii** reporting units in the precinct view, with search, selection,
+native counts, source clocks and complete original downloads. Pooled, federal,
+overseas and VSC units stay distinct. Hawaii's six-ballot source discrepancy
+and zero VSC registration fields remain unchanged. No rates or boundary joins
+are enabled. Pages `42666789732` succeeded; exact production script/index,
+desktop/mobile source checks and all 51 geographic interactions pass.
+Native artifact `13696424148`: **983,885,957 payload /986,398,720 tar bytes**.
+
+Website `23f0a33cf83a865e37cdb4b81161d4884ae0ed11` additionally exposes all
+**4,963** already-held native CSV rows for Arizona, Arkansas and Wyoming,
+including **83 missing ballot totals**, every original field and real zeros.
+All 19,852 independent field checks pass. No statewide/all-mode total, registration
+denominator or old boundary substitution is inferred. Pages `42670805978`
+succeeded; native artifact `13699406690` contains **984,124,912 payload /
+986,644,480 tar bytes**. Exact production script/index, all 5,982 desktop/mobile
+unit IDs and edge cases, full download links, checksum rejection/retry and
+51-jurisdiction geographic selections pass. This adds count access, not precinct maps.
+
+## D.C. precinct map: published candidate, not yet accepted live
+
+Website `33922ee` connects the existing **144 native D.C. precinct** ballot
+and registration observations to the reference already selected by the official
+2026 app. Fractions remain provisional election-night shares, not final,
+population or demographic turnout. The app's 2019-named reference attribution,
+withheld overlapping strips, whole-precinct counts, native clock and complete
+original ZIP remain explicit. Every native value, desktop/mobile state-sidebar
+navigation, retry, all-state navigation, build and size check passes locally.
+
+Pages `42673645311` failed twice before starting jobs with GitHub's internal
+server error. Fresh same-commit dispatch `42674283986` is pending; there is no
+new native artifact or production acceptance. The live source-unit integration
+above remains accepted. Next, Virginia's 710 existing mapped counts independently
+match native `ballotsCast`, including 260 where `voterTurnout` differs. No source
+replacement is needed; retain the 1,819 exclusions and withhold all rates.
+
 ## 2026 native county parents: live geographic integration
 
 Website `269406570805a8f9a030f4f01d1ff49f608cc9d5` connects held official

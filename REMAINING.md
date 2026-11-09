@@ -62,8 +62,29 @@ All old links, short Methods and 436 complete-download routes are preserved.
 25 states plus D.C. (some only one county), with separate RI/VT municipalities;
 22 states retain explicitly labelled contest-count fallbacks and Maine has no
 county layer. Mapped precinct participation remains partial in five states.
-Next expose the already-held **Alaska523 / Hawaii496** source-unit observations
-as counts where supported, without pretending held boundaries or rates exist.
+Website `a218d82` now exposes the already-held **523 Alaska / 496 Hawaii**
+source-unit observations as selectable/searchable counts, without pretending
+held boundaries or rates exist. Pages `42666789732` succeeded; exact live
+script/index, desktop/mobile source checks and all 51 navigation checks pass.
+Website `23f0a33` additionally exposes **1,763 Arizona / 2,768 Arkansas /
+432 Wyoming** complete native CSV records. All 4,963 records and 83 missing ballot
+totals survive; missing counts are not zeros and all rates/maps remain held.
+Pages `42670805978`, native artifact `13699406690`: actual **984,124,912 payload /
+986,644,480 tar bytes**. Exact production script/index, all 5,982 source-unit IDs,
+desktop/mobile missing/zero/deeplink/download/retry checks and all 51 geographic
+selections pass. The current map integration, website `33922ee`, connects D.C.'s already-reviewed
+144 native precinct ballot/registration records and official-app reference,
+with provisional-source fractions and explicit older-reference provenance.
+Its local native-value/browser/build/size checks pass. Both attempts of Pages
+`42673645311` failed before jobs with GitHub's internal server error, not a
+source/build failure. Fresh same-commit dispatch `42674283986` is pending.
+D.C. is not yet accepted live.
+
+Next expose Virginia's 710 existing reference joins as counts only. All 710
+mapped ballot values independently match the native `ballotsCast` field,
+including 260 where the distinct `voterTurnout` field differs. The basis text
+names the `voterTurnout` object, not a substituted count. Reuse the unchanged
+source/map package; retain all 1,819 exclusions and withhold all rates.
 Alaska's encoded portal geometry still has unresolved topology; Delaware's
 41 district observations cannot be apportioned to counties. Keep Texas
 registration-frame research paused; do not substitute another research release
