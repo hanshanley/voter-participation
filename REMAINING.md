@@ -51,6 +51,22 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Kansas dated workbook frame integrated:** version17 adds the native
+October 1 Grand Total 2,027,520. All four worksheets / 105 counties /
+169 districts / four repeated state parents survive; the repeated
+geographic margins are counted once, not as four populations. All
+2,645 cells and 1,946 accounting slots retain 299 blank/empty values,
+without zero filling, missing-party complements or formula execution.
+Date-only cells do not establish a midnight clock. Ten tests, 24,725
+independent checks and two exact offline reproductions pass.
+The complete query has 51 state/D.C. rows, 34 control dispositions and
+23 conditional frames; all fifty unaffected states, 22 prior frames
+and 33 controls are preserved. Party affiliation is not votes;
+active/inactive status and population transport remain unqualified.
+No native ballots/residual, local allocation or new rate/map/website view.
+Full original workbook, sufficient inputs, code, tests and queries are
+downloadable. November/December index entries were unlinked, not guessed.
+
 **Oklahoma/Pennsylvania source-registration frames integrated:** version16
 adds two explicit native parents: Oklahoma 2,455,735, declared as of
 November 1 with a separate printed clock / absent timezone; Pennsylvania

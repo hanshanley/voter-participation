@@ -63,6 +63,47 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Kansas dated workbook registration frame
+
+[Complete version-17 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-17/complete-analysis.zip)
+add the actually declared October workbook from the
+[official registration index](https://sos.ks.gov/elections/voter-registration-statistics.html).
+Its native `By County / Grand Total` is **2,027,520**, with
+**October 1, 2026** in every data row's `Date` column.
+The date-only Excel style is not an observed midnight clock; time/timezone
+and active/inactive status remain unknown. November/December index entries
+were unlinked, so no later file was guessed.
+
+All four worksheets are preserved: 105 counties, four U.S. House,
+125 Kansas House and forty Kansas Senate districts, plus four repeated
+Grand Total parents. These are repeated geographic margins, not four
+populations or independent benchmarks; the state parent is counted once.
+All 2,645 workbook cells and 1,946 party/total slots survive, including
+299 missing/empty values. No Labels Kansas blanks and native United Kansas
+empty strings remain unknown, not zero or complement recoveries. Matching
+observed subtotals do not establish exhaustive party partitions. Affiliation
+is registration accounting, not voting behavior.
+
+Conditional 1,140,329.95 participant / 887,190.05 nonparticipant
+**dated-registration units** assume unvalidated Civic exchangeability,
+not observed staying home or group/local populations. Native ballots/
+residual, population validation and new rate/map approval remain withheld.
+Version17 retains 51 state/D.C. rows, 34 control dispositions and 23
+conditional scenarios; all fifty unaffected states, 22 prior frames and
+33 controls remain unchanged.
+
+Ten tests, 24,725 independent checks and two exact blocked offline
+reproductions pass. The standard-library numerical reader decodes the
+original workbook itself and compares every cell with an independent
+openpyxl view. Raw types/styles/shared formula text, attributes and cached
+labels remain preserved without formula execution.
+The complete 103,117,422-byte / seventeen-member ZIP includes the original
+46,886-byte workbook, independent snapshot/receipt, version16 baseline,
+maintained code, optional refresh, shared helpers, tests and every query.
+SHA-256:
+`0df62bcce6d586ffff6e3fcc052a6b4634ddcb6e25ec63b9374ec33d599956ef`.
+Earlier releases, source/access holds and accepted website remain unchanged.
+
 ## Oklahoma and Pennsylvania source-registration frames
 
 [Complete version-16 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-16/complete-analysis.zip)

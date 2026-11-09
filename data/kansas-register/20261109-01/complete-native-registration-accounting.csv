@@ -1,0 +1,1947 @@
+sheet,source_row,native_date,geography_literal,native_column_label,cell,native_cell_kind,native_value,native_count,missing_is_zero,repeated_geographic_margins_not_additive
+By County,2,2026-10-01,Allen,Democratic,D2,number,1282,1282,False,True
+By County,2,2026-10-01,Allen,Libertarian,E2,number,105,105,False,True
+By County,2,2026-10-01,Allen,No Labels Kansas,F2,blank,,,False,True
+By County,2,2026-10-01,Allen,Republican,G2,number,4759,4759,False,True
+By County,2,2026-10-01,Allen,United Kansas,H2,number,5,5,False,True
+By County,2,2026-10-01,Allen,Unaffiliated,I2,number,2735,2735,False,True
+By County,2,2026-10-01,Allen,Total,J2,number,8886,8886,False,True
+By County,3,2026-10-01,Anderson,Democratic,D3,number,874,874,False,True
+By County,3,2026-10-01,Anderson,Libertarian,E3,number,68,68,False,True
+By County,3,2026-10-01,Anderson,No Labels Kansas,F3,blank,,,False,True
+By County,3,2026-10-01,Anderson,Republican,G3,number,3319,3319,False,True
+By County,3,2026-10-01,Anderson,United Kansas,H3,number,2,2,False,True
+By County,3,2026-10-01,Anderson,Unaffiliated,I3,number,1585,1585,False,True
+By County,3,2026-10-01,Anderson,Total,J3,number,5848,5848,False,True
+By County,4,2026-10-01,Atchison,Democratic,D4,number,2278,2278,False,True
+By County,4,2026-10-01,Atchison,Libertarian,E4,number,66,66,False,True
+By County,4,2026-10-01,Atchison,No Labels Kansas,F4,blank,,,False,True
+By County,4,2026-10-01,Atchison,Republican,G4,number,5035,5035,False,True
+By County,4,2026-10-01,Atchison,United Kansas,H4,number,3,3,False,True
+By County,4,2026-10-01,Atchison,Unaffiliated,I4,number,3809,3809,False,True
+By County,4,2026-10-01,Atchison,Total,J4,number,11191,11191,False,True
+By County,5,2026-10-01,Barber,Democratic,D5,number,256,256,False,True
+By County,5,2026-10-01,Barber,Libertarian,E5,number,23,23,False,True
+By County,5,2026-10-01,Barber,No Labels Kansas,F5,blank,,,False,True
+By County,5,2026-10-01,Barber,Republican,G5,number,2248,2248,False,True
+By County,5,2026-10-01,Barber,United Kansas,H5,text,,,False,True
+By County,5,2026-10-01,Barber,Unaffiliated,I5,number,330,330,False,True
+By County,5,2026-10-01,Barber,Total,J5,number,2857,2857,False,True
+By County,6,2026-10-01,Barton,Democratic,D6,number,2242,2242,False,True
+By County,6,2026-10-01,Barton,Libertarian,E6,number,113,113,False,True
+By County,6,2026-10-01,Barton,No Labels Kansas,F6,blank,,,False,True
+By County,6,2026-10-01,Barton,Republican,G6,number,10302,10302,False,True
+By County,6,2026-10-01,Barton,United Kansas,H6,number,13,13,False,True
+By County,6,2026-10-01,Barton,Unaffiliated,I6,number,4470,4470,False,True
+By County,6,2026-10-01,Barton,Total,J6,number,17140,17140,False,True
+By County,7,2026-10-01,Bourbon,Democratic,D7,number,2156,2156,False,True
+By County,7,2026-10-01,Bourbon,Libertarian,E7,number,109,109,False,True
+By County,7,2026-10-01,Bourbon,No Labels Kansas,F7,blank,,,False,True
+By County,7,2026-10-01,Bourbon,Republican,G7,number,6413,6413,False,True
+By County,7,2026-10-01,Bourbon,United Kansas,H7,number,4,4,False,True
+By County,7,2026-10-01,Bourbon,Unaffiliated,I7,number,4115,4115,False,True
+By County,7,2026-10-01,Bourbon,Total,J7,number,12797,12797,False,True
+By County,8,2026-10-01,Brown,Democratic,D8,number,964,964,False,True
+By County,8,2026-10-01,Brown,Libertarian,E8,number,67,67,False,True
+By County,8,2026-10-01,Brown,No Labels Kansas,F8,blank,,,False,True
+By County,8,2026-10-01,Brown,Republican,G8,number,3878,3878,False,True
+By County,8,2026-10-01,Brown,United Kansas,H8,number,3,3,False,True
+By County,8,2026-10-01,Brown,Unaffiliated,I8,number,1720,1720,False,True
+By County,8,2026-10-01,Brown,Total,J8,number,6632,6632,False,True
+By County,9,2026-10-01,Butler,Democratic,D9,number,7998,7998,False,True
+By County,9,2026-10-01,Butler,Libertarian,E9,number,689,689,False,True
+By County,9,2026-10-01,Butler,No Labels Kansas,F9,blank,,,False,True
+By County,9,2026-10-01,Butler,Republican,G9,number,27491,27491,False,True
+By County,9,2026-10-01,Butler,United Kansas,H9,number,23,23,False,True
+By County,9,2026-10-01,Butler,Unaffiliated,I9,number,14438,14438,False,True
+By County,9,2026-10-01,Butler,Total,J9,number,50639,50639,False,True
+By County,10,2026-10-01,Chase,Democratic,D10,number,263,263,False,True
+By County,10,2026-10-01,Chase,Libertarian,E10,number,16,16,False,True
+By County,10,2026-10-01,Chase,No Labels Kansas,F10,blank,,,False,True
+By County,10,2026-10-01,Chase,Republican,G10,number,1342,1342,False,True
+By County,10,2026-10-01,Chase,United Kansas,H10,text,,,False,True
+By County,10,2026-10-01,Chase,Unaffiliated,I10,number,255,255,False,True
+By County,10,2026-10-01,Chase,Total,J10,number,1876,1876,False,True
+By County,11,2026-10-01,Chautauqua,Democratic,D11,number,186,186,False,True
+By County,11,2026-10-01,Chautauqua,Libertarian,E11,number,15,15,False,True
+By County,11,2026-10-01,Chautauqua,No Labels Kansas,F11,blank,,,False,True
+By County,11,2026-10-01,Chautauqua,Republican,G11,number,1697,1697,False,True
+By County,11,2026-10-01,Chautauqua,United Kansas,H11,number,2,2,False,True
+By County,11,2026-10-01,Chautauqua,Unaffiliated,I11,number,408,408,False,True
+By County,11,2026-10-01,Chautauqua,Total,J11,number,2308,2308,False,True
+By County,12,2026-10-01,Cherokee,Democratic,D12,number,2808,2808,False,True
+By County,12,2026-10-01,Cherokee,Libertarian,E12,number,146,146,False,True
+By County,12,2026-10-01,Cherokee,No Labels Kansas,F12,blank,,,False,True
+By County,12,2026-10-01,Cherokee,Republican,G12,number,7760,7760,False,True
+By County,12,2026-10-01,Cherokee,United Kansas,H12,number,6,6,False,True
+By County,12,2026-10-01,Cherokee,Unaffiliated,I12,number,5094,5094,False,True
+By County,12,2026-10-01,Cherokee,Total,J12,number,15814,15814,False,True
+By County,13,2026-10-01,Cheyenne,Democratic,D13,number,159,159,False,True
+By County,13,2026-10-01,Cheyenne,Libertarian,E13,number,16,16,False,True
+By County,13,2026-10-01,Cheyenne,No Labels Kansas,F13,blank,,,False,True
+By County,13,2026-10-01,Cheyenne,Republican,G13,number,1487,1487,False,True
+By County,13,2026-10-01,Cheyenne,United Kansas,H13,number,3,3,False,True
+By County,13,2026-10-01,Cheyenne,Unaffiliated,I13,number,353,353,False,True
+By County,13,2026-10-01,Cheyenne,Total,J13,number,2018,2018,False,True
+By County,14,2026-10-01,Clark,Democratic,D14,number,160,160,False,True
+By County,14,2026-10-01,Clark,Libertarian,E14,number,14,14,False,True
+By County,14,2026-10-01,Clark,No Labels Kansas,F14,blank,,,False,True
+By County,14,2026-10-01,Clark,Republican,G14,number,1054,1054,False,True
+By County,14,2026-10-01,Clark,United Kansas,H14,number,1,1,False,True
+By County,14,2026-10-01,Clark,Unaffiliated,I14,number,239,239,False,True
+By County,14,2026-10-01,Clark,Total,J14,number,1468,1468,False,True
+By County,15,2026-10-01,Clay,Democratic,D15,number,631,631,False,True
+By County,15,2026-10-01,Clay,Libertarian,E15,number,61,61,False,True
+By County,15,2026-10-01,Clay,No Labels Kansas,F15,blank,,,False,True
+By County,15,2026-10-01,Clay,Republican,G15,number,4187,4187,False,True
+By County,15,2026-10-01,Clay,United Kansas,H15,text,,,False,True
+By County,15,2026-10-01,Clay,Unaffiliated,I15,number,1206,1206,False,True
+By County,15,2026-10-01,Clay,Total,J15,number,6085,6085,False,True
+By County,16,2026-10-01,Cloud,Democratic,D16,number,707,707,False,True
+By County,16,2026-10-01,Cloud,Libertarian,E16,number,58,58,False,True
+By County,16,2026-10-01,Cloud,No Labels Kansas,F16,blank,,,False,True
+By County,16,2026-10-01,Cloud,Republican,G16,number,3810,3810,False,True
+By County,16,2026-10-01,Cloud,United Kansas,H16,number,2,2,False,True
+By County,16,2026-10-01,Cloud,Unaffiliated,I16,number,1188,1188,False,True
+By County,16,2026-10-01,Cloud,Total,J16,number,5765,5765,False,True
+By County,17,2026-10-01,Coffey,Democratic,D17,number,737,737,False,True
+By County,17,2026-10-01,Coffey,Libertarian,E17,number,69,69,False,True
+By County,17,2026-10-01,Coffey,No Labels Kansas,F17,blank,,,False,True
+By County,17,2026-10-01,Coffey,Republican,G17,number,4042,4042,False,True
+By County,17,2026-10-01,Coffey,United Kansas,H17,number,4,4,False,True
+By County,17,2026-10-01,Coffey,Unaffiliated,I17,number,1210,1210,False,True
+By County,17,2026-10-01,Coffey,Total,J17,number,6062,6062,False,True
+By County,18,2026-10-01,Comanche,Democratic,D18,number,105,105,False,True
+By County,18,2026-10-01,Comanche,Libertarian,E18,number,15,15,False,True
+By County,18,2026-10-01,Comanche,No Labels Kansas,F18,blank,,,False,True
+By County,18,2026-10-01,Comanche,Republican,G18,number,872,872,False,True
+By County,18,2026-10-01,Comanche,United Kansas,H18,text,,,False,True
+By County,18,2026-10-01,Comanche,Unaffiliated,I18,number,138,138,False,True
+By County,18,2026-10-01,Comanche,Total,J18,number,1130,1130,False,True
+By County,19,2026-10-01,Cowley,Democratic,D19,number,3938,3938,False,True
+By County,19,2026-10-01,Cowley,Libertarian,E19,number,212,212,False,True
+By County,19,2026-10-01,Cowley,No Labels Kansas,F19,blank,,,False,True
+By County,19,2026-10-01,Cowley,Republican,G19,number,10638,10638,False,True
+By County,19,2026-10-01,Cowley,United Kansas,H19,number,5,5,False,True
+By County,19,2026-10-01,Cowley,Unaffiliated,I19,number,5862,5862,False,True
+By County,19,2026-10-01,Cowley,Total,J19,number,20655,20655,False,True
+By County,20,2026-10-01,Crawford,Democratic,D20,number,6967,6967,False,True
+By County,20,2026-10-01,Crawford,Libertarian,E20,number,281,281,False,True
+By County,20,2026-10-01,Crawford,No Labels Kansas,F20,blank,,,False,True
+By County,20,2026-10-01,Crawford,Republican,G20,number,10552,10552,False,True
+By County,20,2026-10-01,Crawford,United Kansas,H20,number,13,13,False,True
+By County,20,2026-10-01,Crawford,Unaffiliated,I20,number,10258,10258,False,True
+By County,20,2026-10-01,Crawford,Total,J20,number,28071,28071,False,True
+By County,21,2026-10-01,Decatur,Democratic,D21,number,194,194,False,True
+By County,21,2026-10-01,Decatur,Libertarian,E21,number,22,22,False,True
+By County,21,2026-10-01,Decatur,No Labels Kansas,F21,blank,,,False,True
+By County,21,2026-10-01,Decatur,Republican,G21,number,1475,1475,False,True
+By County,21,2026-10-01,Decatur,United Kansas,H21,text,,,False,True
+By County,21,2026-10-01,Decatur,Unaffiliated,I21,number,340,340,False,True
+By County,21,2026-10-01,Decatur,Total,J21,number,2031,2031,False,True
+By County,22,2026-10-01,Dickinson,Democratic,D22,number,1708,1708,False,True
+By County,22,2026-10-01,Dickinson,Libertarian,E22,number,142,142,False,True
+By County,22,2026-10-01,Dickinson,No Labels Kansas,F22,blank,,,False,True
+By County,22,2026-10-01,Dickinson,Republican,G22,number,8603,8603,False,True
+By County,22,2026-10-01,Dickinson,United Kansas,H22,number,9,9,False,True
+By County,22,2026-10-01,Dickinson,Unaffiliated,I22,number,3470,3470,False,True
+By County,22,2026-10-01,Dickinson,Total,J22,number,13932,13932,False,True
+By County,23,2026-10-01,Doniphan,Democratic,D23,number,527,527,False,True
+By County,23,2026-10-01,Doniphan,Libertarian,E23,number,21,21,False,True
+By County,23,2026-10-01,Doniphan,No Labels Kansas,F23,blank,,,False,True
+By County,23,2026-10-01,Doniphan,Republican,G23,number,3219,3219,False,True
+By County,23,2026-10-01,Doniphan,United Kansas,H23,text,,,False,True
+By County,23,2026-10-01,Doniphan,Unaffiliated,I23,number,1277,1277,False,True
+By County,23,2026-10-01,Doniphan,Total,J23,number,5044,5044,False,True
+By County,24,2026-10-01,Douglas,Democratic,D24,number,36810,36810,False,True
+By County,24,2026-10-01,Douglas,Libertarian,E24,number,977,977,False,True
+By County,24,2026-10-01,Douglas,No Labels Kansas,F24,blank,,,False,True
+By County,24,2026-10-01,Douglas,Republican,G24,number,20138,20138,False,True
+By County,24,2026-10-01,Douglas,United Kansas,H24,number,47,47,False,True
+By County,24,2026-10-01,Douglas,Unaffiliated,I24,number,23013,23013,False,True
+By County,24,2026-10-01,Douglas,Total,J24,number,80985,80985,False,True
+By County,25,2026-10-01,Edwards,Democratic,D25,number,221,221,False,True
+By County,25,2026-10-01,Edwards,Libertarian,E25,number,10,10,False,True
+By County,25,2026-10-01,Edwards,No Labels Kansas,F25,blank,,,False,True
+By County,25,2026-10-01,Edwards,Republican,G25,number,1258,1258,False,True
+By County,25,2026-10-01,Edwards,United Kansas,H25,text,,,False,True
+By County,25,2026-10-01,Edwards,Unaffiliated,I25,number,351,351,False,True
+By County,25,2026-10-01,Edwards,Total,J25,number,1840,1840,False,True
+By County,26,2026-10-01,Elk,Democratic,D26,number,181,181,False,True
+By County,26,2026-10-01,Elk,Libertarian,E26,number,16,16,False,True
+By County,26,2026-10-01,Elk,No Labels Kansas,F26,blank,,,False,True
+By County,26,2026-10-01,Elk,Republican,G26,number,1368,1368,False,True
+By County,26,2026-10-01,Elk,United Kansas,H26,text,,,False,True
+By County,26,2026-10-01,Elk,Unaffiliated,I26,number,324,324,False,True
+By County,26,2026-10-01,Elk,Total,J26,number,1889,1889,False,True
+By County,27,2026-10-01,Ellis,Democratic,D27,number,3633,3633,False,True
+By County,27,2026-10-01,Ellis,Libertarian,E27,number,228,228,False,True
+By County,27,2026-10-01,Ellis,No Labels Kansas,F27,blank,,,False,True
+By County,27,2026-10-01,Ellis,Republican,G27,number,11055,11055,False,True
+By County,27,2026-10-01,Ellis,United Kansas,H27,number,10,10,False,True
+By County,27,2026-10-01,Ellis,Unaffiliated,I27,number,5694,5694,False,True
+By County,27,2026-10-01,Ellis,Total,J27,number,20620,20620,False,True
+By County,28,2026-10-01,Ellsworth,Democratic,D28,number,589,589,False,True
+By County,28,2026-10-01,Ellsworth,Libertarian,E28,number,25,25,False,True
+By County,28,2026-10-01,Ellsworth,No Labels Kansas,F28,blank,,,False,True
+By County,28,2026-10-01,Ellsworth,Republican,G28,number,2393,2393,False,True
+By County,28,2026-10-01,Ellsworth,United Kansas,H28,number,2,2,False,True
+By County,28,2026-10-01,Ellsworth,Unaffiliated,I28,number,833,833,False,True
+By County,28,2026-10-01,Ellsworth,Total,J28,number,3842,3842,False,True
+By County,29,2026-10-01,Finney,Democratic,D29,number,4647,4647,False,True
+By County,29,2026-10-01,Finney,Libertarian,E29,number,240,240,False,True
+By County,29,2026-10-01,Finney,No Labels Kansas,F29,blank,,,False,True
+By County,29,2026-10-01,Finney,Republican,G29,number,8856,8856,False,True
+By County,29,2026-10-01,Finney,United Kansas,H29,number,26,26,False,True
+By County,29,2026-10-01,Finney,Unaffiliated,I29,number,7223,7223,False,True
+By County,29,2026-10-01,Finney,Total,J29,number,20992,20992,False,True
+By County,30,2026-10-01,Ford,Democratic,D30,number,4096,4096,False,True
+By County,30,2026-10-01,Ford,Libertarian,E30,number,208,208,False,True
+By County,30,2026-10-01,Ford,No Labels Kansas,F30,blank,,,False,True
+By County,30,2026-10-01,Ford,Republican,G30,number,7000,7000,False,True
+By County,30,2026-10-01,Ford,United Kansas,H30,number,28,28,False,True
+By County,30,2026-10-01,Ford,Unaffiliated,I30,number,5849,5849,False,True
+By County,30,2026-10-01,Ford,Total,J30,number,17181,17181,False,True
+By County,31,2026-10-01,Franklin,Democratic,D31,number,3378,3378,False,True
+By County,31,2026-10-01,Franklin,Libertarian,E31,number,254,254,False,True
+By County,31,2026-10-01,Franklin,No Labels Kansas,F31,blank,,,False,True
+By County,31,2026-10-01,Franklin,Republican,G31,number,10603,10603,False,True
+By County,31,2026-10-01,Franklin,United Kansas,H31,number,7,7,False,True
+By County,31,2026-10-01,Franklin,Unaffiliated,I31,number,5248,5248,False,True
+By County,31,2026-10-01,Franklin,Total,J31,number,19490,19490,False,True
+By County,32,2026-10-01,Geary,Democratic,D32,number,4314,4314,False,True
+By County,32,2026-10-01,Geary,Libertarian,E32,number,315,315,False,True
+By County,32,2026-10-01,Geary,No Labels Kansas,F32,blank,,,False,True
+By County,32,2026-10-01,Geary,Republican,G32,number,7361,7361,False,True
+By County,32,2026-10-01,Geary,United Kansas,H32,number,13,13,False,True
+By County,32,2026-10-01,Geary,Unaffiliated,I32,number,7195,7195,False,True
+By County,32,2026-10-01,Geary,Total,J32,number,19198,19198,False,True
+By County,33,2026-10-01,Gove,Democratic,D33,number,159,159,False,True
+By County,33,2026-10-01,Gove,Libertarian,E33,number,5,5,False,True
+By County,33,2026-10-01,Gove,No Labels Kansas,F33,blank,,,False,True
+By County,33,2026-10-01,Gove,Republican,G33,number,1383,1383,False,True
+By County,33,2026-10-01,Gove,United Kansas,H33,number,1,1,False,True
+By County,33,2026-10-01,Gove,Unaffiliated,I33,number,349,349,False,True
+By County,33,2026-10-01,Gove,Total,J33,number,1897,1897,False,True
+By County,34,2026-10-01,Graham,Democratic,D34,number,176,176,False,True
+By County,34,2026-10-01,Graham,Libertarian,E34,number,9,9,False,True
+By County,34,2026-10-01,Graham,No Labels Kansas,F34,blank,,,False,True
+By County,34,2026-10-01,Graham,Republican,G34,number,1384,1384,False,True
+By County,34,2026-10-01,Graham,United Kansas,H34,number,1,1,False,True
+By County,34,2026-10-01,Graham,Unaffiliated,I34,number,249,249,False,True
+By County,34,2026-10-01,Graham,Total,J34,number,1819,1819,False,True
+By County,35,2026-10-01,Grant,Democratic,D35,number,465,465,False,True
+By County,35,2026-10-01,Grant,Libertarian,E35,number,39,39,False,True
+By County,35,2026-10-01,Grant,No Labels Kansas,F35,blank,,,False,True
+By County,35,2026-10-01,Grant,Republican,G35,number,2374,2374,False,True
+By County,35,2026-10-01,Grant,United Kansas,H35,number,6,6,False,True
+By County,35,2026-10-01,Grant,Unaffiliated,I35,number,922,922,False,True
+By County,35,2026-10-01,Grant,Total,J35,number,3806,3806,False,True
+By County,36,2026-10-01,Gray,Democratic,D36,number,377,377,False,True
+By County,36,2026-10-01,Gray,Libertarian,E36,number,35,35,False,True
+By County,36,2026-10-01,Gray,No Labels Kansas,F36,blank,,,False,True
+By County,36,2026-10-01,Gray,Republican,G36,number,2184,2184,False,True
+By County,36,2026-10-01,Gray,United Kansas,H36,number,1,1,False,True
+By County,36,2026-10-01,Gray,Unaffiliated,I36,number,710,710,False,True
+By County,36,2026-10-01,Gray,Total,J36,number,3307,3307,False,True
+By County,37,2026-10-01,Greeley,Democratic,D37,number,43,43,False,True
+By County,37,2026-10-01,Greeley,Libertarian,E37,number,3,3,False,True
+By County,37,2026-10-01,Greeley,No Labels Kansas,F37,blank,,,False,True
+By County,37,2026-10-01,Greeley,Republican,G37,number,690,690,False,True
+By County,37,2026-10-01,Greeley,United Kansas,H37,text,,,False,True
+By County,37,2026-10-01,Greeley,Unaffiliated,I37,number,111,111,False,True
+By County,37,2026-10-01,Greeley,Total,J37,number,847,847,False,True
+By County,38,2026-10-01,Greenwood,Democratic,D38,number,483,483,False,True
+By County,38,2026-10-01,Greenwood,Libertarian,E38,number,36,36,False,True
+By County,38,2026-10-01,Greenwood,No Labels Kansas,F38,blank,,,False,True
+By County,38,2026-10-01,Greenwood,Republican,G38,number,2843,2843,False,True
+By County,38,2026-10-01,Greenwood,United Kansas,H38,number,2,2,False,True
+By County,38,2026-10-01,Greenwood,Unaffiliated,I38,number,1267,1267,False,True
+By County,38,2026-10-01,Greenwood,Total,J38,number,4631,4631,False,True
+By County,39,2026-10-01,Hamilton,Democratic,D39,number,122,122,False,True
+By County,39,2026-10-01,Hamilton,Libertarian,E39,number,12,12,False,True
+By County,39,2026-10-01,Hamilton,No Labels Kansas,F39,blank,,,False,True
+By County,39,2026-10-01,Hamilton,Republican,G39,number,888,888,False,True
+By County,39,2026-10-01,Hamilton,United Kansas,H39,text,,,False,True
+By County,39,2026-10-01,Hamilton,Unaffiliated,I39,number,290,290,False,True
+By County,39,2026-10-01,Hamilton,Total,J39,number,1312,1312,False,True
+By County,40,2026-10-01,Harper,Democratic,D40,number,458,458,False,True
+By County,40,2026-10-01,Harper,Libertarian,E40,number,36,36,False,True
+By County,40,2026-10-01,Harper,No Labels Kansas,F40,blank,,,False,True
+By County,40,2026-10-01,Harper,Republican,G40,number,2581,2581,False,True
+By County,40,2026-10-01,Harper,United Kansas,H40,number,4,4,False,True
+By County,40,2026-10-01,Harper,Unaffiliated,I40,number,788,788,False,True
+By County,40,2026-10-01,Harper,Total,J40,number,3867,3867,False,True
+By County,41,2026-10-01,Harvey,Democratic,D41,number,5569,5569,False,True
+By County,41,2026-10-01,Harvey,Libertarian,E41,number,246,246,False,True
+By County,41,2026-10-01,Harvey,No Labels Kansas,F41,blank,,,False,True
+By County,41,2026-10-01,Harvey,Republican,G41,number,11732,11732,False,True
+By County,41,2026-10-01,Harvey,United Kansas,H41,number,15,15,False,True
+By County,41,2026-10-01,Harvey,Unaffiliated,I41,number,5682,5682,False,True
+By County,41,2026-10-01,Harvey,Total,J41,number,23244,23244,False,True
+By County,42,2026-10-01,Haskell,Democratic,D42,number,231,231,False,True
+By County,42,2026-10-01,Haskell,Libertarian,E42,number,12,12,False,True
+By County,42,2026-10-01,Haskell,No Labels Kansas,F42,blank,,,False,True
+By County,42,2026-10-01,Haskell,Republican,G42,number,1501,1501,False,True
+By County,42,2026-10-01,Haskell,United Kansas,H42,text,,,False,True
+By County,42,2026-10-01,Haskell,Unaffiliated,I42,number,493,493,False,True
+By County,42,2026-10-01,Haskell,Total,J42,number,2237,2237,False,True
+By County,43,2026-10-01,Hodgeman,Democratic,D43,number,121,121,False,True
+By County,43,2026-10-01,Hodgeman,Libertarian,E43,number,4,4,False,True
+By County,43,2026-10-01,Hodgeman,No Labels Kansas,F43,blank,,,False,True
+By County,43,2026-10-01,Hodgeman,Republican,G43,number,942,942,False,True
+By County,43,2026-10-01,Hodgeman,United Kansas,H43,text,,,False,True
+By County,43,2026-10-01,Hodgeman,Unaffiliated,I43,number,206,206,False,True
+By County,43,2026-10-01,Hodgeman,Total,J43,number,1273,1273,False,True
+By County,44,2026-10-01,Jackson,Democratic,D44,number,1634,1634,False,True
+By County,44,2026-10-01,Jackson,Libertarian,E44,number,69,69,False,True
+By County,44,2026-10-01,Jackson,No Labels Kansas,F44,blank,,,False,True
+By County,44,2026-10-01,Jackson,Republican,G44,number,5097,5097,False,True
+By County,44,2026-10-01,Jackson,United Kansas,H44,number,5,5,False,True
+By County,44,2026-10-01,Jackson,Unaffiliated,I44,number,2480,2480,False,True
+By County,44,2026-10-01,Jackson,Total,J44,number,9285,9285,False,True
+By County,45,2026-10-01,Jefferson,Democratic,D45,number,2591,2591,False,True
+By County,45,2026-10-01,Jefferson,Libertarian,E45,number,178,178,False,True
+By County,45,2026-10-01,Jefferson,No Labels Kansas,F45,blank,,,False,True
+By County,45,2026-10-01,Jefferson,Republican,G45,number,7367,7367,False,True
+By County,45,2026-10-01,Jefferson,United Kansas,H45,number,5,5,False,True
+By County,45,2026-10-01,Jefferson,Unaffiliated,I45,number,4073,4073,False,True
+By County,45,2026-10-01,Jefferson,Total,J45,number,14214,14214,False,True
+By County,46,2026-10-01,Jewell,Democratic,D46,number,170,170,False,True
+By County,46,2026-10-01,Jewell,Libertarian,E46,number,25,25,False,True
+By County,46,2026-10-01,Jewell,No Labels Kansas,F46,blank,,,False,True
+By County,46,2026-10-01,Jewell,Republican,G46,number,1620,1620,False,True
+By County,46,2026-10-01,Jewell,United Kansas,H46,number,1,1,False,True
+By County,46,2026-10-01,Jewell,Unaffiliated,I46,number,412,412,False,True
+By County,46,2026-10-01,Jewell,Total,J46,number,2228,2228,False,True
+By County,47,2026-10-01,Johnson,Democratic,D47,number,159036,159036,False,True
+By County,47,2026-10-01,Johnson,Libertarian,E47,number,5616,5616,False,True
+By County,47,2026-10-01,Johnson,No Labels Kansas,F47,blank,,,False,True
+By County,47,2026-10-01,Johnson,Republican,G47,number,187057,187057,False,True
+By County,47,2026-10-01,Johnson,United Kansas,H47,number,274,274,False,True
+By County,47,2026-10-01,Johnson,Unaffiliated,I47,number,123049,123049,False,True
+By County,47,2026-10-01,Johnson,Total,J47,number,475032,475032,False,True
+By County,48,2026-10-01,Kearny,Democratic,D48,number,249,249,False,True
+By County,48,2026-10-01,Kearny,Libertarian,E48,number,14,14,False,True
+By County,48,2026-10-01,Kearny,No Labels Kansas,F48,blank,,,False,True
+By County,48,2026-10-01,Kearny,Republican,G48,number,1418,1418,False,True
+By County,48,2026-10-01,Kearny,United Kansas,H48,number,2,2,False,True
+By County,48,2026-10-01,Kearny,Unaffiliated,I48,number,519,519,False,True
+By County,48,2026-10-01,Kearny,Total,J48,number,2202,2202,False,True
+By County,49,2026-10-01,Kingman,Democratic,D49,number,649,649,False,True
+By County,49,2026-10-01,Kingman,Libertarian,E49,number,45,45,False,True
+By County,49,2026-10-01,Kingman,No Labels Kansas,F49,blank,,,False,True
+By County,49,2026-10-01,Kingman,Republican,G49,number,3778,3778,False,True
+By County,49,2026-10-01,Kingman,United Kansas,H49,number,2,2,False,True
+By County,49,2026-10-01,Kingman,Unaffiliated,I49,number,1200,1200,False,True
+By County,49,2026-10-01,Kingman,Total,J49,number,5674,5674,False,True
+By County,50,2026-10-01,Kiowa,Democratic,D50,number,134,134,False,True
+By County,50,2026-10-01,Kiowa,Libertarian,E50,number,14,14,False,True
+By County,50,2026-10-01,Kiowa,No Labels Kansas,F50,blank,,,False,True
+By County,50,2026-10-01,Kiowa,Republican,G50,number,1155,1155,False,True
+By County,50,2026-10-01,Kiowa,United Kansas,H50,text,,,False,True
+By County,50,2026-10-01,Kiowa,Unaffiliated,I50,number,210,210,False,True
+By County,50,2026-10-01,Kiowa,Total,J50,number,1513,1513,False,True
+By County,51,2026-10-01,Labette,Democratic,D51,number,2662,2662,False,True
+By County,51,2026-10-01,Labette,Libertarian,E51,number,120,120,False,True
+By County,51,2026-10-01,Labette,No Labels Kansas,F51,blank,,,False,True
+By County,51,2026-10-01,Labette,Republican,G51,number,6387,6387,False,True
+By County,51,2026-10-01,Labette,United Kansas,H51,number,6,6,False,True
+By County,51,2026-10-01,Labette,Unaffiliated,I51,number,4553,4553,False,True
+By County,51,2026-10-01,Labette,Total,J51,number,13728,13728,False,True
+By County,52,2026-10-01,Lane,Democratic,D52,number,85,85,False,True
+By County,52,2026-10-01,Lane,Libertarian,E52,number,9,9,False,True
+By County,52,2026-10-01,Lane,No Labels Kansas,F52,blank,,,False,True
+By County,52,2026-10-01,Lane,Republican,G52,number,855,855,False,True
+By County,52,2026-10-01,Lane,United Kansas,H52,text,,,False,True
+By County,52,2026-10-01,Lane,Unaffiliated,I52,number,173,173,False,True
+By County,52,2026-10-01,Lane,Total,J52,number,1122,1122,False,True
+By County,53,2026-10-01,Leavenworth,Democratic,D53,number,13182,13182,False,True
+By County,53,2026-10-01,Leavenworth,Libertarian,E53,number,730,730,False,True
+By County,53,2026-10-01,Leavenworth,No Labels Kansas,F53,blank,,,False,True
+By County,53,2026-10-01,Leavenworth,Republican,G53,number,25076,25076,False,True
+By County,53,2026-10-01,Leavenworth,United Kansas,H53,number,37,37,False,True
+By County,53,2026-10-01,Leavenworth,Unaffiliated,I53,number,19559,19559,False,True
+By County,53,2026-10-01,Leavenworth,Total,J53,number,58584,58584,False,True
+By County,54,2026-10-01,Lincoln,Democratic,D54,number,213,213,False,True
+By County,54,2026-10-01,Lincoln,Libertarian,E54,number,38,38,False,True
+By County,54,2026-10-01,Lincoln,No Labels Kansas,F54,blank,,,False,True
+By County,54,2026-10-01,Lincoln,Republican,G54,number,1517,1517,False,True
+By County,54,2026-10-01,Lincoln,United Kansas,H54,number,1,1,False,True
+By County,54,2026-10-01,Lincoln,Unaffiliated,I54,number,346,346,False,True
+By County,54,2026-10-01,Lincoln,Total,J54,number,2115,2115,False,True
+By County,55,2026-10-01,Linn,Democratic,D55,number,963,963,False,True
+By County,55,2026-10-01,Linn,Libertarian,E55,number,66,66,False,True
+By County,55,2026-10-01,Linn,No Labels Kansas,F55,blank,,,False,True
+By County,55,2026-10-01,Linn,Republican,G55,number,4904,4904,False,True
+By County,55,2026-10-01,Linn,United Kansas,H55,number,3,3,False,True
+By County,55,2026-10-01,Linn,Unaffiliated,I55,number,1937,1937,False,True
+By County,55,2026-10-01,Linn,Total,J55,number,7873,7873,False,True
+By County,56,2026-10-01,Logan,Democratic,D56,number,132,132,False,True
+By County,56,2026-10-01,Logan,Libertarian,E56,number,10,10,False,True
+By County,56,2026-10-01,Logan,No Labels Kansas,F56,blank,,,False,True
+By County,56,2026-10-01,Logan,Republican,G56,number,1415,1415,False,True
+By County,56,2026-10-01,Logan,United Kansas,H56,number,1,1,False,True
+By County,56,2026-10-01,Logan,Unaffiliated,I56,number,361,361,False,True
+By County,56,2026-10-01,Logan,Total,J56,number,1919,1919,False,True
+By County,57,2026-10-01,Lyon,Democratic,D57,number,5057,5057,False,True
+By County,57,2026-10-01,Lyon,Libertarian,E57,number,214,214,False,True
+By County,57,2026-10-01,Lyon,No Labels Kansas,F57,blank,,,False,True
+By County,57,2026-10-01,Lyon,Republican,G57,number,8472,8472,False,True
+By County,57,2026-10-01,Lyon,United Kansas,H57,number,24,24,False,True
+By County,57,2026-10-01,Lyon,Unaffiliated,I57,number,7016,7016,False,True
+By County,57,2026-10-01,Lyon,Total,J57,number,20783,20783,False,True
+By County,58,2026-10-01,Marion,Democratic,D58,number,1015,1015,False,True
+By County,58,2026-10-01,Marion,Libertarian,E58,number,71,71,False,True
+By County,58,2026-10-01,Marion,No Labels Kansas,F58,blank,,,False,True
+By County,58,2026-10-01,Marion,Republican,G58,number,5284,5284,False,True
+By County,58,2026-10-01,Marion,United Kansas,H58,number,4,4,False,True
+By County,58,2026-10-01,Marion,Unaffiliated,I58,number,1775,1775,False,True
+By County,58,2026-10-01,Marion,Total,J58,number,8149,8149,False,True
+By County,59,2026-10-01,Marshall,Democratic,D59,number,1174,1174,False,True
+By County,59,2026-10-01,Marshall,Libertarian,E59,number,46,46,False,True
+By County,59,2026-10-01,Marshall,No Labels Kansas,F59,blank,,,False,True
+By County,59,2026-10-01,Marshall,Republican,G59,number,4087,4087,False,True
+By County,59,2026-10-01,Marshall,United Kansas,H59,number,5,5,False,True
+By County,59,2026-10-01,Marshall,Unaffiliated,I59,number,1934,1934,False,True
+By County,59,2026-10-01,Marshall,Total,J59,number,7246,7246,False,True
+By County,60,2026-10-01,McPherson,Democratic,D60,number,2965,2965,False,True
+By County,60,2026-10-01,McPherson,Libertarian,E60,number,228,228,False,True
+By County,60,2026-10-01,McPherson,No Labels Kansas,F60,blank,,,False,True
+By County,60,2026-10-01,McPherson,Republican,G60,number,11548,11548,False,True
+By County,60,2026-10-01,McPherson,United Kansas,H60,number,13,13,False,True
+By County,60,2026-10-01,McPherson,Unaffiliated,I60,number,4878,4878,False,True
+By County,60,2026-10-01,McPherson,Total,J60,number,19632,19632,False,True
+By County,61,2026-10-01,Meade,Democratic,D61,number,294,294,False,True
+By County,61,2026-10-01,Meade,Libertarian,E61,number,23,23,False,True
+By County,61,2026-10-01,Meade,No Labels Kansas,F61,blank,,,False,True
+By County,61,2026-10-01,Meade,Republican,G61,number,2154,2154,False,True
+By County,61,2026-10-01,Meade,United Kansas,H61,number,1,1,False,True
+By County,61,2026-10-01,Meade,Unaffiliated,I61,number,718,718,False,True
+By County,61,2026-10-01,Meade,Total,J61,number,3190,3190,False,True
+By County,62,2026-10-01,Miami,Democratic,D62,number,4593,4593,False,True
+By County,62,2026-10-01,Miami,Libertarian,E62,number,314,314,False,True
+By County,62,2026-10-01,Miami,No Labels Kansas,F62,blank,,,False,True
+By County,62,2026-10-01,Miami,Republican,G62,number,14432,14432,False,True
+By County,62,2026-10-01,Miami,United Kansas,H62,number,11,11,False,True
+By County,62,2026-10-01,Miami,Unaffiliated,I62,number,7087,7087,False,True
+By County,62,2026-10-01,Miami,Total,J62,number,26437,26437,False,True
+By County,63,2026-10-01,Mitchell,Democratic,D63,number,415,415,False,True
+By County,63,2026-10-01,Mitchell,Libertarian,E63,number,21,21,False,True
+By County,63,2026-10-01,Mitchell,No Labels Kansas,F63,blank,,,False,True
+By County,63,2026-10-01,Mitchell,Republican,G63,number,3053,3053,False,True
+By County,63,2026-10-01,Mitchell,United Kansas,H63,number,1,1,False,True
+By County,63,2026-10-01,Mitchell,Unaffiliated,I63,number,723,723,False,True
+By County,63,2026-10-01,Mitchell,Total,J63,number,4213,4213,False,True
+By County,64,2026-10-01,Montgomery,Democratic,D64,number,3733,3733,False,True
+By County,64,2026-10-01,Montgomery,Libertarian,E64,number,236,236,False,True
+By County,64,2026-10-01,Montgomery,No Labels Kansas,F64,blank,,,False,True
+By County,64,2026-10-01,Montgomery,Republican,G64,number,12018,12018,False,True
+By County,64,2026-10-01,Montgomery,United Kansas,H64,number,2,2,False,True
+By County,64,2026-10-01,Montgomery,Unaffiliated,I64,number,5411,5411,False,True
+By County,64,2026-10-01,Montgomery,Total,J64,number,21400,21400,False,True
+By County,65,2026-10-01,Morris,Democratic,D65,number,564,564,False,True
+By County,65,2026-10-01,Morris,Libertarian,E65,number,40,40,False,True
+By County,65,2026-10-01,Morris,No Labels Kansas,F65,blank,,,False,True
+By County,65,2026-10-01,Morris,Republican,G65,number,2504,2504,False,True
+By County,65,2026-10-01,Morris,United Kansas,H65,number,4,4,False,True
+By County,65,2026-10-01,Morris,Unaffiliated,I65,number,934,934,False,True
+By County,65,2026-10-01,Morris,Total,J65,number,4046,4046,False,True
+By County,66,2026-10-01,Morton,Democratic,D66,number,207,207,False,True
+By County,66,2026-10-01,Morton,Libertarian,E66,number,12,12,False,True
+By County,66,2026-10-01,Morton,No Labels Kansas,F66,blank,,,False,True
+By County,66,2026-10-01,Morton,Republican,G66,number,1431,1431,False,True
+By County,66,2026-10-01,Morton,United Kansas,H66,number,1,1,False,True
+By County,66,2026-10-01,Morton,Unaffiliated,I66,number,409,409,False,True
+By County,66,2026-10-01,Morton,Total,J66,number,2060,2060,False,True
+By County,67,2026-10-01,Nemaha,Democratic,D67,number,907,907,False,True
+By County,67,2026-10-01,Nemaha,Libertarian,E67,number,49,49,False,True
+By County,67,2026-10-01,Nemaha,No Labels Kansas,F67,blank,,,False,True
+By County,67,2026-10-01,Nemaha,Republican,G67,number,5029,5029,False,True
+By County,67,2026-10-01,Nemaha,United Kansas,H67,number,5,5,False,True
+By County,67,2026-10-01,Nemaha,Unaffiliated,I67,number,1487,1487,False,True
+By County,67,2026-10-01,Nemaha,Total,J67,number,7477,7477,False,True
+By County,68,2026-10-01,Neosho,Democratic,D68,number,1774,1774,False,True
+By County,68,2026-10-01,Neosho,Libertarian,E68,number,126,126,False,True
+By County,68,2026-10-01,Neosho,No Labels Kansas,F68,blank,,,False,True
+By County,68,2026-10-01,Neosho,Republican,G68,number,5847,5847,False,True
+By County,68,2026-10-01,Neosho,United Kansas,H68,number,9,9,False,True
+By County,68,2026-10-01,Neosho,Unaffiliated,I68,number,3334,3334,False,True
+By County,68,2026-10-01,Neosho,Total,J68,number,11090,11090,False,True
+By County,69,2026-10-01,Ness,Democratic,D69,number,168,168,False,True
+By County,69,2026-10-01,Ness,Libertarian,E69,number,10,10,False,True
+By County,69,2026-10-01,Ness,No Labels Kansas,F69,blank,,,False,True
+By County,69,2026-10-01,Ness,Republican,G69,number,1454,1454,False,True
+By County,69,2026-10-01,Ness,United Kansas,H69,number,2,2,False,True
+By County,69,2026-10-01,Ness,Unaffiliated,I69,number,332,332,False,True
+By County,69,2026-10-01,Ness,Total,J69,number,1966,1966,False,True
+By County,70,2026-10-01,Norton,Democratic,D70,number,304,304,False,True
+By County,70,2026-10-01,Norton,Libertarian,E70,number,27,27,False,True
+By County,70,2026-10-01,Norton,No Labels Kansas,F70,blank,,,False,True
+By County,70,2026-10-01,Norton,Republican,G70,number,2433,2433,False,True
+By County,70,2026-10-01,Norton,United Kansas,H70,number,3,3,False,True
+By County,70,2026-10-01,Norton,Unaffiliated,I70,number,697,697,False,True
+By County,70,2026-10-01,Norton,Total,J70,number,3464,3464,False,True
+By County,71,2026-10-01,Osage,Democratic,D71,number,1835,1835,False,True
+By County,71,2026-10-01,Osage,Libertarian,E71,number,133,133,False,True
+By County,71,2026-10-01,Osage,No Labels Kansas,F71,blank,,,False,True
+By County,71,2026-10-01,Osage,Republican,G71,number,6791,6791,False,True
+By County,71,2026-10-01,Osage,United Kansas,H71,number,1,1,False,True
+By County,71,2026-10-01,Osage,Unaffiliated,I71,number,3416,3416,False,True
+By County,71,2026-10-01,Osage,Total,J71,number,12176,12176,False,True
+By County,72,2026-10-01,Osborne,Democratic,D72,number,287,287,False,True
+By County,72,2026-10-01,Osborne,Libertarian,E72,number,18,18,False,True
+By County,72,2026-10-01,Osborne,No Labels Kansas,F72,blank,,,False,True
+By County,72,2026-10-01,Osborne,Republican,G72,number,1672,1672,False,True
+By County,72,2026-10-01,Osborne,United Kansas,H72,number,1,1,False,True
+By County,72,2026-10-01,Osborne,Unaffiliated,I72,number,595,595,False,True
+By County,72,2026-10-01,Osborne,Total,J72,number,2573,2573,False,True
+By County,73,2026-10-01,Ottawa,Democratic,D73,number,351,351,False,True
+By County,73,2026-10-01,Ottawa,Libertarian,E73,number,38,38,False,True
+By County,73,2026-10-01,Ottawa,No Labels Kansas,F73,blank,,,False,True
+By County,73,2026-10-01,Ottawa,Republican,G73,number,2841,2841,False,True
+By County,73,2026-10-01,Ottawa,United Kansas,H73,number,3,3,False,True
+By County,73,2026-10-01,Ottawa,Unaffiliated,I73,number,679,679,False,True
+By County,73,2026-10-01,Ottawa,Total,J73,number,3912,3912,False,True
+By County,74,2026-10-01,Pawnee,Democratic,D74,number,460,460,False,True
+By County,74,2026-10-01,Pawnee,Libertarian,E74,number,32,32,False,True
+By County,74,2026-10-01,Pawnee,No Labels Kansas,F74,blank,,,False,True
+By County,74,2026-10-01,Pawnee,Republican,G74,number,2363,2363,False,True
+By County,74,2026-10-01,Pawnee,United Kansas,H74,number,3,3,False,True
+By County,74,2026-10-01,Pawnee,Unaffiliated,I74,number,726,726,False,True
+By County,74,2026-10-01,Pawnee,Total,J74,number,3584,3584,False,True
+By County,75,2026-10-01,Phillips,Democratic,D75,number,251,251,False,True
+By County,75,2026-10-01,Phillips,Libertarian,E75,number,21,21,False,True
+By County,75,2026-10-01,Phillips,No Labels Kansas,F75,blank,,,False,True
+By County,75,2026-10-01,Phillips,Republican,G75,number,2970,2970,False,True
+By County,75,2026-10-01,Phillips,United Kansas,H75,number,1,1,False,True
+By County,75,2026-10-01,Phillips,Unaffiliated,I75,number,752,752,False,True
+By County,75,2026-10-01,Phillips,Total,J75,number,3995,3995,False,True
+By County,76,2026-10-01,Pottawatomie,Democratic,D76,number,2689,2689,False,True
+By County,76,2026-10-01,Pottawatomie,Libertarian,E76,number,214,214,False,True
+By County,76,2026-10-01,Pottawatomie,No Labels Kansas,F76,blank,,,False,True
+By County,76,2026-10-01,Pottawatomie,Republican,G76,number,12243,12243,False,True
+By County,76,2026-10-01,Pottawatomie,United Kansas,H76,number,12,12,False,True
+By County,76,2026-10-01,Pottawatomie,Unaffiliated,I76,number,4161,4161,False,True
+By County,76,2026-10-01,Pottawatomie,Total,J76,number,19319,19319,False,True
+By County,77,2026-10-01,Pratt,Democratic,D77,number,760,760,False,True
+By County,77,2026-10-01,Pratt,Libertarian,E77,number,63,63,False,True
+By County,77,2026-10-01,Pratt,No Labels Kansas,F77,blank,,,False,True
+By County,77,2026-10-01,Pratt,Republican,G77,number,3885,3885,False,True
+By County,77,2026-10-01,Pratt,United Kansas,H77,number,4,4,False,True
+By County,77,2026-10-01,Pratt,Unaffiliated,I77,number,1009,1009,False,True
+By County,77,2026-10-01,Pratt,Total,J77,number,5721,5721,False,True
+By County,78,2026-10-01,Rawlins,Democratic,D78,number,152,152,False,True
+By County,78,2026-10-01,Rawlins,Libertarian,E78,number,17,17,False,True
+By County,78,2026-10-01,Rawlins,No Labels Kansas,F78,blank,,,False,True
+By County,78,2026-10-01,Rawlins,Republican,G78,number,1457,1457,False,True
+By County,78,2026-10-01,Rawlins,United Kansas,H78,text,,,False,True
+By County,78,2026-10-01,Rawlins,Unaffiliated,I78,number,331,331,False,True
+By County,78,2026-10-01,Rawlins,Total,J78,number,1957,1957,False,True
+By County,79,2026-10-01,Reno,Democratic,D79,number,7706,7706,False,True
+By County,79,2026-10-01,Reno,Libertarian,E79,number,496,496,False,True
+By County,79,2026-10-01,Reno,No Labels Kansas,F79,blank,,,False,True
+By County,79,2026-10-01,Reno,Republican,G79,number,21834,21834,False,True
+By County,79,2026-10-01,Reno,United Kansas,H79,number,40,40,False,True
+By County,79,2026-10-01,Reno,Unaffiliated,I79,number,11805,11805,False,True
+By County,79,2026-10-01,Reno,Total,J79,number,41881,41881,False,True
+By County,80,2026-10-01,Republic,Democratic,D80,number,351,351,False,True
+By County,80,2026-10-01,Republic,Libertarian,E80,number,35,35,False,True
+By County,80,2026-10-01,Republic,No Labels Kansas,F80,blank,,,False,True
+By County,80,2026-10-01,Republic,Republican,G80,number,2468,2468,False,True
+By County,80,2026-10-01,Republic,United Kansas,H80,number,1,1,False,True
+By County,80,2026-10-01,Republic,Unaffiliated,I80,number,650,650,False,True
+By County,80,2026-10-01,Republic,Total,J80,number,3505,3505,False,True
+By County,81,2026-10-01,Rice,Democratic,D81,number,815,815,False,True
+By County,81,2026-10-01,Rice,Libertarian,E81,number,101,101,False,True
+By County,81,2026-10-01,Rice,No Labels Kansas,F81,blank,,,False,True
+By County,81,2026-10-01,Rice,Republican,G81,number,3997,3997,False,True
+By County,81,2026-10-01,Rice,United Kansas,H81,number,5,5,False,True
+By County,81,2026-10-01,Rice,Unaffiliated,I81,number,1678,1678,False,True
+By County,81,2026-10-01,Rice,Total,J81,number,6596,6596,False,True
+By County,82,2026-10-01,Riley,Democratic,D82,number,11370,11370,False,True
+By County,82,2026-10-01,Riley,Libertarian,E82,number,736,736,False,True
+By County,82,2026-10-01,Riley,No Labels Kansas,F82,blank,,,False,True
+By County,82,2026-10-01,Riley,Republican,G82,number,16062,16062,False,True
+By County,82,2026-10-01,Riley,United Kansas,H82,number,38,38,False,True
+By County,82,2026-10-01,Riley,Unaffiliated,I82,number,12423,12423,False,True
+By County,82,2026-10-01,Riley,Total,J82,number,40629,40629,False,True
+By County,83,2026-10-01,Rooks,Democratic,D83,number,309,309,False,True
+By County,83,2026-10-01,Rooks,Libertarian,E83,number,25,25,False,True
+By County,83,2026-10-01,Rooks,No Labels Kansas,F83,blank,,,False,True
+By County,83,2026-10-01,Rooks,Republican,G83,number,2622,2622,False,True
+By County,83,2026-10-01,Rooks,United Kansas,H83,number,2,2,False,True
+By County,83,2026-10-01,Rooks,Unaffiliated,I83,number,631,631,False,True
+By County,83,2026-10-01,Rooks,Total,J83,number,3589,3589,False,True
+By County,84,2026-10-01,Rush,Democratic,D84,number,209,209,False,True
+By County,84,2026-10-01,Rush,Libertarian,E84,number,16,16,False,True
+By County,84,2026-10-01,Rush,No Labels Kansas,F84,blank,,,False,True
+By County,84,2026-10-01,Rush,Republican,G84,number,1535,1535,False,True
+By County,84,2026-10-01,Rush,United Kansas,H84,text,,,False,True
+By County,84,2026-10-01,Rush,Unaffiliated,I84,number,449,449,False,True
+By County,84,2026-10-01,Rush,Total,J84,number,2209,2209,False,True
+By County,85,2026-10-01,Russell,Democratic,D85,number,503,503,False,True
+By County,85,2026-10-01,Russell,Libertarian,E85,number,39,39,False,True
+By County,85,2026-10-01,Russell,No Labels Kansas,F85,blank,,,False,True
+By County,85,2026-10-01,Russell,Republican,G85,number,3128,3128,False,True
+By County,85,2026-10-01,Russell,United Kansas,H85,number,1,1,False,True
+By County,85,2026-10-01,Russell,Unaffiliated,I85,number,950,950,False,True
+By County,85,2026-10-01,Russell,Total,J85,number,4621,4621,False,True
+By County,86,2026-10-01,Saline,Democratic,D86,number,7277,7277,False,True
+By County,86,2026-10-01,Saline,Libertarian,E86,number,563,563,False,True
+By County,86,2026-10-01,Saline,No Labels Kansas,F86,blank,,,False,True
+By County,86,2026-10-01,Saline,Republican,G86,number,18247,18247,False,True
+By County,86,2026-10-01,Saline,United Kansas,H86,number,33,33,False,True
+By County,86,2026-10-01,Saline,Unaffiliated,I86,number,11671,11671,False,True
+By County,86,2026-10-01,Saline,Total,J86,number,37791,37791,False,True
+By County,87,2026-10-01,Scott,Democratic,D87,number,271,271,False,True
+By County,87,2026-10-01,Scott,Libertarian,E87,number,30,30,False,True
+By County,87,2026-10-01,Scott,No Labels Kansas,F87,blank,,,False,True
+By County,87,2026-10-01,Scott,Republican,G87,number,2392,2392,False,True
+By County,87,2026-10-01,Scott,United Kansas,H87,number,1,1,False,True
+By County,87,2026-10-01,Scott,Unaffiliated,I87,number,800,800,False,True
+By County,87,2026-10-01,Scott,Total,J87,number,3494,3494,False,True
+By County,88,2026-10-01,Sedgwick,Democratic,D88,number,90047,90047,False,True
+By County,88,2026-10-01,Sedgwick,Libertarian,E88,number,4905,4905,False,True
+By County,88,2026-10-01,Sedgwick,No Labels Kansas,F88,blank,,,False,True
+By County,88,2026-10-01,Sedgwick,Republican,G88,number,140023,140023,False,True
+By County,88,2026-10-01,Sedgwick,United Kansas,H88,number,336,336,False,True
+By County,88,2026-10-01,Sedgwick,Unaffiliated,I88,number,114518,114518,False,True
+By County,88,2026-10-01,Sedgwick,Total,J88,number,349829,349829,False,True
+By County,89,2026-10-01,Seward,Democratic,D89,number,2637,2637,False,True
+By County,89,2026-10-01,Seward,Libertarian,E89,number,162,162,False,True
+By County,89,2026-10-01,Seward,No Labels Kansas,F89,blank,,,False,True
+By County,89,2026-10-01,Seward,Republican,G89,number,4473,4473,False,True
+By County,89,2026-10-01,Seward,United Kansas,H89,number,31,31,False,True
+By County,89,2026-10-01,Seward,Unaffiliated,I89,number,4180,4180,False,True
+By County,89,2026-10-01,Seward,Total,J89,number,11483,11483,False,True
+By County,90,2026-10-01,Shawnee,Democratic,D90,number,35880,35880,False,True
+By County,90,2026-10-01,Shawnee,Libertarian,E90,number,1310,1310,False,True
+By County,90,2026-10-01,Shawnee,No Labels Kansas,F90,blank,,,False,True
+By County,90,2026-10-01,Shawnee,Republican,G90,number,44198,44198,False,True
+By County,90,2026-10-01,Shawnee,United Kansas,H90,number,76,76,False,True
+By County,90,2026-10-01,Shawnee,Unaffiliated,I90,number,36194,36194,False,True
+By County,90,2026-10-01,Shawnee,Total,J90,number,117658,117658,False,True
+By County,91,2026-10-01,Sheridan,Democratic,D91,number,134,134,False,True
+By County,91,2026-10-01,Sheridan,Libertarian,E91,number,3,3,False,True
+By County,91,2026-10-01,Sheridan,No Labels Kansas,F91,blank,,,False,True
+By County,91,2026-10-01,Sheridan,Republican,G91,number,1384,1384,False,True
+By County,91,2026-10-01,Sheridan,United Kansas,H91,text,,,False,True
+By County,91,2026-10-01,Sheridan,Unaffiliated,I91,number,312,312,False,True
+By County,91,2026-10-01,Sheridan,Total,J91,number,1833,1833,False,True
+By County,92,2026-10-01,Sherman,Democratic,D92,number,331,331,False,True
+By County,92,2026-10-01,Sherman,Libertarian,E92,number,32,32,False,True
+By County,92,2026-10-01,Sherman,No Labels Kansas,F92,blank,,,False,True
+By County,92,2026-10-01,Sherman,Republican,G92,number,2622,2622,False,True
+By County,92,2026-10-01,Sherman,United Kansas,H92,number,2,2,False,True
+By County,92,2026-10-01,Sherman,Unaffiliated,I92,number,716,716,False,True
+By County,92,2026-10-01,Sherman,Total,J92,number,3703,3703,False,True
+By County,93,2026-10-01,Smith,Democratic,D93,number,272,272,False,True
+By County,93,2026-10-01,Smith,Libertarian,E93,number,11,11,False,True
+By County,93,2026-10-01,Smith,No Labels Kansas,F93,blank,,,False,True
+By County,93,2026-10-01,Smith,Republican,G93,number,2111,2111,False,True
+By County,93,2026-10-01,Smith,United Kansas,H93,text,,,False,True
+By County,93,2026-10-01,Smith,Unaffiliated,I93,number,455,455,False,True
+By County,93,2026-10-01,Smith,Total,J93,number,2849,2849,False,True
+By County,94,2026-10-01,Stafford,Democratic,D94,number,264,264,False,True
+By County,94,2026-10-01,Stafford,Libertarian,E94,number,16,16,False,True
+By County,94,2026-10-01,Stafford,No Labels Kansas,F94,blank,,,False,True
+By County,94,2026-10-01,Stafford,Republican,G94,number,1845,1845,False,True
+By County,94,2026-10-01,Stafford,United Kansas,H94,number,2,2,False,True
+By County,94,2026-10-01,Stafford,Unaffiliated,I94,number,510,510,False,True
+By County,94,2026-10-01,Stafford,Total,J94,number,2637,2637,False,True
+By County,95,2026-10-01,Stanton,Democratic,D95,number,120,120,False,True
+By County,95,2026-10-01,Stanton,Libertarian,E95,number,10,10,False,True
+By County,95,2026-10-01,Stanton,No Labels Kansas,F95,blank,,,False,True
+By County,95,2026-10-01,Stanton,Republican,G95,number,710,710,False,True
+By County,95,2026-10-01,Stanton,United Kansas,H95,text,,,False,True
+By County,95,2026-10-01,Stanton,Unaffiliated,I95,number,160,160,False,True
+By County,95,2026-10-01,Stanton,Total,J95,number,1000,1000,False,True
+By County,96,2026-10-01,Stevens,Democratic,D96,number,302,302,False,True
+By County,96,2026-10-01,Stevens,Libertarian,E96,number,36,36,False,True
+By County,96,2026-10-01,Stevens,No Labels Kansas,F96,blank,,,False,True
+By County,96,2026-10-01,Stevens,Republican,G96,number,2398,2398,False,True
+By County,96,2026-10-01,Stevens,United Kansas,H96,number,3,3,False,True
+By County,96,2026-10-01,Stevens,Unaffiliated,I96,number,626,626,False,True
+By County,96,2026-10-01,Stevens,Total,J96,number,3365,3365,False,True
+By County,97,2026-10-01,Sumner,Democratic,D97,number,2508,2508,False,True
+By County,97,2026-10-01,Sumner,Libertarian,E97,number,169,169,False,True
+By County,97,2026-10-01,Sumner,No Labels Kansas,F97,blank,,,False,True
+By County,97,2026-10-01,Sumner,Republican,G97,number,8963,8963,False,True
+By County,97,2026-10-01,Sumner,United Kansas,H97,number,3,3,False,True
+By County,97,2026-10-01,Sumner,Unaffiliated,I97,number,4043,4043,False,True
+By County,97,2026-10-01,Sumner,Total,J97,number,15686,15686,False,True
+By County,98,2026-10-01,Thomas,Democratic,D98,number,522,522,False,True
+By County,98,2026-10-01,Thomas,Libertarian,E98,number,36,36,False,True
+By County,98,2026-10-01,Thomas,No Labels Kansas,F98,blank,,,False,True
+By County,98,2026-10-01,Thomas,Republican,G98,number,3717,3717,False,True
+By County,98,2026-10-01,Thomas,United Kansas,H98,number,2,2,False,True
+By County,98,2026-10-01,Thomas,Unaffiliated,I98,number,1179,1179,False,True
+By County,98,2026-10-01,Thomas,Total,J98,number,5456,5456,False,True
+By County,99,2026-10-01,Trego,Democratic,D99,number,257,257,False,True
+By County,99,2026-10-01,Trego,Libertarian,E99,number,11,11,False,True
+By County,99,2026-10-01,Trego,No Labels Kansas,F99,blank,,,False,True
+By County,99,2026-10-01,Trego,Republican,G99,number,1452,1452,False,True
+By County,99,2026-10-01,Trego,United Kansas,H99,number,1,1,False,True
+By County,99,2026-10-01,Trego,Unaffiliated,I99,number,367,367,False,True
+By County,99,2026-10-01,Trego,Total,J99,number,2088,2088,False,True
+By County,100,2026-10-01,Wabaunsee,Democratic,D100,number,732,732,False,True
+By County,100,2026-10-01,Wabaunsee,Libertarian,E100,number,47,47,False,True
+By County,100,2026-10-01,Wabaunsee,No Labels Kansas,F100,blank,,,False,True
+By County,100,2026-10-01,Wabaunsee,Republican,G100,number,3400,3400,False,True
+By County,100,2026-10-01,Wabaunsee,United Kansas,H100,number,1,1,False,True
+By County,100,2026-10-01,Wabaunsee,Unaffiliated,I100,number,1161,1161,False,True
+By County,100,2026-10-01,Wabaunsee,Total,J100,number,5341,5341,False,True
+By County,101,2026-10-01,Wallace,Democratic,D101,number,51,51,False,True
+By County,101,2026-10-01,Wallace,Libertarian,E101,number,5,5,False,True
+By County,101,2026-10-01,Wallace,No Labels Kansas,F101,blank,,,False,True
+By County,101,2026-10-01,Wallace,Republican,G101,number,912,912,False,True
+By County,101,2026-10-01,Wallace,United Kansas,H101,text,,,False,True
+By County,101,2026-10-01,Wallace,Unaffiliated,I101,number,200,200,False,True
+By County,101,2026-10-01,Wallace,Total,J101,number,1168,1168,False,True
+By County,102,2026-10-01,Washington,Democratic,D102,number,232,232,False,True
+By County,102,2026-10-01,Washington,Libertarian,E102,number,22,22,False,True
+By County,102,2026-10-01,Washington,No Labels Kansas,F102,blank,,,False,True
+By County,102,2026-10-01,Washington,Republican,G102,number,2697,2697,False,True
+By County,102,2026-10-01,Washington,United Kansas,H102,number,1,1,False,True
+By County,102,2026-10-01,Washington,Unaffiliated,I102,number,326,326,False,True
+By County,102,2026-10-01,Washington,Total,J102,number,3278,3278,False,True
+By County,103,2026-10-01,Wichita,Democratic,D103,number,120,120,False,True
+By County,103,2026-10-01,Wichita,Libertarian,E103,number,7,7,False,True
+By County,103,2026-10-01,Wichita,No Labels Kansas,F103,blank,,,False,True
+By County,103,2026-10-01,Wichita,Republican,G103,number,843,843,False,True
+By County,103,2026-10-01,Wichita,United Kansas,H103,number,2,2,False,True
+By County,103,2026-10-01,Wichita,Unaffiliated,I103,number,266,266,False,True
+By County,103,2026-10-01,Wichita,Total,J103,number,1238,1238,False,True
+By County,104,2026-10-01,Wilson,Democratic,D104,number,513,513,False,True
+By County,104,2026-10-01,Wilson,Libertarian,E104,number,45,45,False,True
+By County,104,2026-10-01,Wilson,No Labels Kansas,F104,blank,,,False,True
+By County,104,2026-10-01,Wilson,Republican,G104,number,3430,3430,False,True
+By County,104,2026-10-01,Wilson,United Kansas,H104,number,2,2,False,True
+By County,104,2026-10-01,Wilson,Unaffiliated,I104,number,1052,1052,False,True
+By County,104,2026-10-01,Wilson,Total,J104,number,5042,5042,False,True
+By County,105,2026-10-01,Woodson,Democratic,D105,number,219,219,False,True
+By County,105,2026-10-01,Woodson,Libertarian,E105,number,27,27,False,True
+By County,105,2026-10-01,Woodson,No Labels Kansas,F105,blank,,,False,True
+By County,105,2026-10-01,Woodson,Republican,G105,number,1498,1498,False,True
+By County,105,2026-10-01,Woodson,United Kansas,H105,text,,,False,True
+By County,105,2026-10-01,Woodson,Unaffiliated,I105,number,516,516,False,True
+By County,105,2026-10-01,Woodson,Total,J105,number,2260,2260,False,True
+By County,106,2026-10-01,Wyandotte,Democratic,D106,number,42849,42849,False,True
+By County,106,2026-10-01,Wyandotte,Libertarian,E106,number,1020,1020,False,True
+By County,106,2026-10-01,Wyandotte,No Labels Kansas,F106,blank,,,False,True
+By County,106,2026-10-01,Wyandotte,Republican,G106,number,18530,18530,False,True
+By County,106,2026-10-01,Wyandotte,United Kansas,H106,number,107,107,False,True
+By County,106,2026-10-01,Wyandotte,Unaffiliated,I106,number,32380,32380,False,True
+By County,106,2026-10-01,Wyandotte,Total,J106,number,94886,94886,False,True
+By County,107,2026-10-01,Grand Total,Democratic,D107,number,521669,521669,False,True
+By County,107,2026-10-01,Grand Total,Libertarian,E107,number,23840,23840,False,True
+By County,107,2026-10-01,Grand Total,No Labels Kansas,F107,blank,,,False,True
+By County,107,2026-10-01,Grand Total,Republican,G107,number,901822,901822,False,True
+By County,107,2026-10-01,Grand Total,United Kansas,H107,number,1398,1398,False,True
+By County,107,2026-10-01,Grand Total,Unaffiliated,I107,number,578791,578791,False,True
+By County,107,2026-10-01,Grand Total,Total,J107,number,2027520,2027520,False,True
+By Congressional District,2,2026-10-01,U.S. Representative 1,Democratic,C2,number,100758,100758,False,True
+By Congressional District,2,2026-10-01,U.S. Representative 1,Libertarian,D2,number,5376,5376,False,True
+By Congressional District,2,2026-10-01,U.S. Representative 1,No Labels Kansas,E2,blank,,,False,True
+By Congressional District,2,2026-10-01,U.S. Representative 1,Republican,F2,number,247083,247083,False,True
+By Congressional District,2,2026-10-01,U.S. Representative 1,United Kansas,G2,number,365,365,False,True
+By Congressional District,2,2026-10-01,U.S. Representative 1,Unaffiliated,H2,number,126946,126946,False,True
+By Congressional District,2,2026-10-01,U.S. Representative 1,Total,I2,number,480528,480528,False,True
+By Congressional District,3,2026-10-01,U.S. Representative 2,Democratic,C3,number,125957,125957,False,True
+By Congressional District,3,2026-10-01,U.S. Representative 2,Libertarian,D3,number,5231,5231,False,True
+By Congressional District,3,2026-10-01,U.S. Representative 2,No Labels Kansas,E3,blank,,,False,True
+By Congressional District,3,2026-10-01,U.S. Representative 2,Republican,F3,number,207618,207618,False,True
+By Congressional District,3,2026-10-01,U.S. Representative 2,United Kansas,G3,number,315,315,False,True
+By Congressional District,3,2026-10-01,U.S. Representative 2,Unaffiliated,H3,number,151790,151790,False,True
+By Congressional District,3,2026-10-01,U.S. Representative 2,Total,I3,number,490911,490911,False,True
+By Congressional District,4,2026-10-01,U.S. Representative 3,Democratic,C4,number,180951,180951,False,True
+By Congressional District,4,2026-10-01,U.S. Representative 3,Libertarian,D4,number,6703,6703,False,True
+By Congressional District,4,2026-10-01,U.S. Representative 3,No Labels Kansas,E4,blank,,,False,True
+By Congressional District,4,2026-10-01,U.S. Representative 3,Republican,F4,number,223556,223556,False,True
+By Congressional District,4,2026-10-01,U.S. Representative 3,United Kansas,G4,number,318,318,False,True
+By Congressional District,4,2026-10-01,U.S. Representative 3,Unaffiliated,H4,number,148575,148575,False,True
+By Congressional District,4,2026-10-01,U.S. Representative 3,Total,I4,number,560103,560103,False,True
+By Congressional District,5,2026-10-01,U.S. Representative 4,Democratic,C5,number,114003,114003,False,True
+By Congressional District,5,2026-10-01,U.S. Representative 4,Libertarian,D5,number,6530,6530,False,True
+By Congressional District,5,2026-10-01,U.S. Representative 4,No Labels Kansas,E5,blank,,,False,True
+By Congressional District,5,2026-10-01,U.S. Representative 4,Republican,F5,number,223565,223565,False,True
+By Congressional District,5,2026-10-01,U.S. Representative 4,United Kansas,G5,number,400,400,False,True
+By Congressional District,5,2026-10-01,U.S. Representative 4,Unaffiliated,H5,number,151480,151480,False,True
+By Congressional District,5,2026-10-01,U.S. Representative 4,Total,I5,number,495978,495978,False,True
+By Congressional District,6,2026-10-01,Grand Total,Democratic,C6,number,521669,521669,False,True
+By Congressional District,6,2026-10-01,Grand Total,Libertarian,D6,number,23840,23840,False,True
+By Congressional District,6,2026-10-01,Grand Total,No Labels Kansas,E6,blank,,,False,True
+By Congressional District,6,2026-10-01,Grand Total,Republican,F6,number,901822,901822,False,True
+By Congressional District,6,2026-10-01,Grand Total,United Kansas,G6,number,1398,1398,False,True
+By Congressional District,6,2026-10-01,Grand Total,Unaffiliated,H6,number,578791,578791,False,True
+By Congressional District,6,2026-10-01,Grand Total,Total,I6,number,2027520,2027520,False,True
+By KS House,2,2026-10-01,Kansas Representative 1,Democratic,C2,number,3244,3244,False,True
+By KS House,2,2026-10-01,Kansas Representative 1,Libertarian,D2,number,167,167,False,True
+By KS House,2,2026-10-01,Kansas Representative 1,No Labels Kansas,E2,blank,,,False,True
+By KS House,2,2026-10-01,Kansas Representative 1,Republican,F2,number,9476,9476,False,True
+By KS House,2,2026-10-01,Kansas Representative 1,United Kansas,G2,number,6,6,False,True
+By KS House,2,2026-10-01,Kansas Representative 1,Unaffiliated,H2,number,6005,6005,False,True
+By KS House,2,2026-10-01,Kansas Representative 1,Total,I2,number,18898,18898,False,True
+By KS House,3,2026-10-01,Kansas Representative 2,Democratic,C3,number,3678,3678,False,True
+By KS House,3,2026-10-01,Kansas Representative 2,Libertarian,D3,number,158,158,False,True
+By KS House,3,2026-10-01,Kansas Representative 2,No Labels Kansas,E3,blank,,,False,True
+By KS House,3,2026-10-01,Kansas Representative 2,Republican,F3,number,8078,8078,False,True
+By KS House,3,2026-10-01,Kansas Representative 2,United Kansas,G3,number,8,8,False,True
+By KS House,3,2026-10-01,Kansas Representative 2,Unaffiliated,H3,number,5449,5449,False,True
+By KS House,3,2026-10-01,Kansas Representative 2,Total,I3,number,17371,17371,False,True
+By KS House,4,2026-10-01,Kansas Representative 3,Democratic,C4,number,4146,4146,False,True
+By KS House,4,2026-10-01,Kansas Representative 3,Libertarian,D4,number,182,182,False,True
+By KS House,4,2026-10-01,Kansas Representative 3,No Labels Kansas,E4,blank,,,False,True
+By KS House,4,2026-10-01,Kansas Representative 3,Republican,F4,number,5592,5592,False,True
+By KS House,4,2026-10-01,Kansas Representative 3,United Kansas,G4,number,8,8,False,True
+By KS House,4,2026-10-01,Kansas Representative 3,Unaffiliated,H4,number,6402,6402,False,True
+By KS House,4,2026-10-01,Kansas Representative 3,Total,I4,number,16330,16330,False,True
+By KS House,5,2026-10-01,Kansas Representative 4,Democratic,C5,number,3025,3025,False,True
+By KS House,5,2026-10-01,Kansas Representative 4,Libertarian,D5,number,173,173,False,True
+By KS House,5,2026-10-01,Kansas Representative 4,No Labels Kansas,E5,blank,,,False,True
+By KS House,5,2026-10-01,Kansas Representative 4,Republican,F5,number,10848,10848,False,True
+By KS House,5,2026-10-01,Kansas Representative 4,United Kansas,G5,number,7,7,False,True
+By KS House,5,2026-10-01,Kansas Representative 4,Unaffiliated,H5,number,5890,5890,False,True
+By KS House,5,2026-10-01,Kansas Representative 4,Total,I5,number,19943,19943,False,True
+By KS House,6,2026-10-01,Kansas Representative 5,Democratic,C6,number,3833,3833,False,True
+By KS House,6,2026-10-01,Kansas Representative 5,Libertarian,D6,number,260,260,False,True
+By KS House,6,2026-10-01,Kansas Representative 5,No Labels Kansas,E6,blank,,,False,True
+By KS House,6,2026-10-01,Kansas Representative 5,Republican,F6,number,9025,9025,False,True
+By KS House,6,2026-10-01,Kansas Representative 5,United Kansas,G6,number,10,10,False,True
+By KS House,6,2026-10-01,Kansas Representative 5,Unaffiliated,H6,number,5005,5005,False,True
+By KS House,6,2026-10-01,Kansas Representative 5,Total,I6,number,18133,18133,False,True
+By KS House,7,2026-10-01,Kansas Representative 6,Democratic,C7,number,3083,3083,False,True
+By KS House,7,2026-10-01,Kansas Representative 6,Libertarian,D7,number,213,213,False,True
+By KS House,7,2026-10-01,Kansas Representative 6,No Labels Kansas,E7,blank,,,False,True
+By KS House,7,2026-10-01,Kansas Representative 6,Republican,F7,number,9845,9845,False,True
+By KS House,7,2026-10-01,Kansas Representative 6,United Kansas,G7,number,7,7,False,True
+By KS House,7,2026-10-01,Kansas Representative 6,Unaffiliated,H7,number,4723,4723,False,True
+By KS House,7,2026-10-01,Kansas Representative 6,Total,I7,number,17871,17871,False,True
+By KS House,8,2026-10-01,Kansas Representative 7,Democratic,C8,number,3143,3143,False,True
+By KS House,8,2026-10-01,Kansas Representative 7,Libertarian,D8,number,166,166,False,True
+By KS House,8,2026-10-01,Kansas Representative 7,No Labels Kansas,E8,blank,,,False,True
+By KS House,8,2026-10-01,Kansas Representative 7,Republican,F8,number,7400,7400,False,True
+By KS House,8,2026-10-01,Kansas Representative 7,United Kansas,G8,number,12,12,False,True
+By KS House,8,2026-10-01,Kansas Representative 7,Unaffiliated,H8,number,5383,5383,False,True
+By KS House,8,2026-10-01,Kansas Representative 7,Total,I8,number,16104,16104,False,True
+By KS House,9,2026-10-01,Kansas Representative 8,Democratic,C9,number,4866,4866,False,True
+By KS House,9,2026-10-01,Kansas Representative 8,Libertarian,D9,number,159,159,False,True
+By KS House,9,2026-10-01,Kansas Representative 8,No Labels Kansas,E9,blank,,,False,True
+By KS House,9,2026-10-01,Kansas Representative 8,Republican,F9,number,8300,8300,False,True
+By KS House,9,2026-10-01,Kansas Representative 8,United Kansas,G9,number,11,11,False,True
+By KS House,9,2026-10-01,Kansas Representative 8,Unaffiliated,H9,number,4454,4454,False,True
+By KS House,9,2026-10-01,Kansas Representative 8,Total,I9,number,17790,17790,False,True
+By KS House,10,2026-10-01,Kansas Representative 9,Democratic,C10,number,2498,2498,False,True
+By KS House,10,2026-10-01,Kansas Representative 9,Libertarian,D10,number,187,187,False,True
+By KS House,10,2026-10-01,Kansas Representative 9,No Labels Kansas,E10,blank,,,False,True
+By KS House,10,2026-10-01,Kansas Representative 9,Republican,F10,number,9396,9396,False,True
+By KS House,10,2026-10-01,Kansas Representative 9,United Kansas,G10,number,7,7,False,True
+By KS House,10,2026-10-01,Kansas Representative 9,Unaffiliated,H10,number,4850,4850,False,True
+By KS House,10,2026-10-01,Kansas Representative 9,Total,I10,number,16938,16938,False,True
+By KS House,11,2026-10-01,Kansas Representative 10,Democratic,C11,number,7690,7690,False,True
+By KS House,11,2026-10-01,Kansas Representative 10,Libertarian,D11,number,191,191,False,True
+By KS House,11,2026-10-01,Kansas Representative 10,No Labels Kansas,E11,blank,,,False,True
+By KS House,11,2026-10-01,Kansas Representative 10,Republican,F11,number,2439,2439,False,True
+By KS House,11,2026-10-01,Kansas Representative 10,United Kansas,G11,number,11,11,False,True
+By KS House,11,2026-10-01,Kansas Representative 10,Unaffiliated,H11,number,4388,4388,False,True
+By KS House,11,2026-10-01,Kansas Representative 10,Total,I11,number,14719,14719,False,True
+By KS House,12,2026-10-01,Kansas Representative 11,Democratic,C12,number,2932,2932,False,True
+By KS House,12,2026-10-01,Kansas Representative 11,Libertarian,D12,number,161,161,False,True
+By KS House,12,2026-10-01,Kansas Representative 11,No Labels Kansas,E12,blank,,,False,True
+By KS House,12,2026-10-01,Kansas Representative 11,Republican,F12,number,8366,8366,False,True
+By KS House,12,2026-10-01,Kansas Representative 11,United Kansas,G12,number,1,1,False,True
+By KS House,12,2026-10-01,Kansas Representative 11,Unaffiliated,H12,number,4028,4028,False,True
+By KS House,12,2026-10-01,Kansas Representative 11,Total,I12,number,15488,15488,False,True
+By KS House,13,2026-10-01,Kansas Representative 12,Democratic,C13,number,1996,1996,False,True
+By KS House,13,2026-10-01,Kansas Representative 12,Libertarian,D13,number,196,196,False,True
+By KS House,13,2026-10-01,Kansas Representative 12,No Labels Kansas,E13,blank,,,False,True
+By KS House,13,2026-10-01,Kansas Representative 12,Republican,F13,number,10998,10998,False,True
+By KS House,13,2026-10-01,Kansas Representative 12,United Kansas,G13,number,4,4,False,True
+By KS House,13,2026-10-01,Kansas Representative 12,Unaffiliated,H13,number,3699,3699,False,True
+By KS House,13,2026-10-01,Kansas Representative 12,Total,I13,number,16893,16893,False,True
+By KS House,14,2026-10-01,Kansas Representative 13,Democratic,C14,number,1881,1881,False,True
+By KS House,14,2026-10-01,Kansas Representative 13,Libertarian,D14,number,131,131,False,True
+By KS House,14,2026-10-01,Kansas Representative 13,No Labels Kansas,E14,blank,,,False,True
+By KS House,14,2026-10-01,Kansas Representative 13,Republican,F14,number,9818,9818,False,True
+By KS House,14,2026-10-01,Kansas Representative 13,United Kansas,G14,number,7,7,False,True
+By KS House,14,2026-10-01,Kansas Representative 13,Unaffiliated,H14,number,3585,3585,False,True
+By KS House,14,2026-10-01,Kansas Representative 13,Total,I14,number,15422,15422,False,True
+By KS House,15,2026-10-01,Kansas Representative 14,Democratic,C15,number,6329,6329,False,True
+By KS House,15,2026-10-01,Kansas Representative 14,Libertarian,D15,number,243,243,False,True
+By KS House,15,2026-10-01,Kansas Representative 14,No Labels Kansas,E15,blank,,,False,True
+By KS House,15,2026-10-01,Kansas Representative 14,Republican,F15,number,8804,8804,False,True
+By KS House,15,2026-10-01,Kansas Representative 14,United Kansas,G15,number,10,10,False,True
+By KS House,15,2026-10-01,Kansas Representative 14,Unaffiliated,H15,number,4922,4922,False,True
+By KS House,15,2026-10-01,Kansas Representative 14,Total,I15,number,20308,20308,False,True
+By KS House,16,2026-10-01,Kansas Representative 15,Democratic,C16,number,4020,4020,False,True
+By KS House,16,2026-10-01,Kansas Representative 15,Libertarian,D16,number,192,192,False,True
+By KS House,16,2026-10-01,Kansas Representative 15,No Labels Kansas,E16,blank,,,False,True
+By KS House,16,2026-10-01,Kansas Representative 15,Republican,F16,number,4521,4521,False,True
+By KS House,16,2026-10-01,Kansas Representative 15,United Kansas,G16,number,17,17,False,True
+By KS House,16,2026-10-01,Kansas Representative 15,Unaffiliated,H16,number,3556,3556,False,True
+By KS House,16,2026-10-01,Kansas Representative 15,Total,I16,number,12306,12306,False,True
+By KS House,17,2026-10-01,Kansas Representative 16,Democratic,C17,number,6291,6291,False,True
+By KS House,17,2026-10-01,Kansas Representative 16,Libertarian,D17,number,233,233,False,True
+By KS House,17,2026-10-01,Kansas Representative 16,No Labels Kansas,E17,blank,,,False,True
+By KS House,17,2026-10-01,Kansas Representative 16,Republican,F17,number,7420,7420,False,True
+By KS House,17,2026-10-01,Kansas Representative 16,United Kansas,G17,number,8,8,False,True
+By KS House,17,2026-10-01,Kansas Representative 16,Unaffiliated,H17,number,4501,4501,False,True
+By KS House,17,2026-10-01,Kansas Representative 16,Total,I17,number,18453,18453,False,True
+By KS House,18,2026-10-01,Kansas Representative 17,Democratic,C18,number,6524,6524,False,True
+By KS House,18,2026-10-01,Kansas Representative 17,Libertarian,D18,number,199,199,False,True
+By KS House,18,2026-10-01,Kansas Representative 17,No Labels Kansas,E18,blank,,,False,True
+By KS House,18,2026-10-01,Kansas Representative 17,Republican,F18,number,7329,7329,False,True
+By KS House,18,2026-10-01,Kansas Representative 17,United Kansas,G18,number,11,11,False,True
+By KS House,18,2026-10-01,Kansas Representative 17,Unaffiliated,H18,number,4683,4683,False,True
+By KS House,18,2026-10-01,Kansas Representative 17,Total,I18,number,18746,18746,False,True
+By KS House,19,2026-10-01,Kansas Representative 18,Democratic,C19,number,6358,6358,False,True
+By KS House,19,2026-10-01,Kansas Representative 18,Libertarian,D19,number,202,202,False,True
+By KS House,19,2026-10-01,Kansas Representative 18,No Labels Kansas,E19,blank,,,False,True
+By KS House,19,2026-10-01,Kansas Representative 18,Republican,F19,number,6349,6349,False,True
+By KS House,19,2026-10-01,Kansas Representative 18,United Kansas,G19,number,10,10,False,True
+By KS House,19,2026-10-01,Kansas Representative 18,Unaffiliated,H19,number,5058,5058,False,True
+By KS House,19,2026-10-01,Kansas Representative 18,Total,I19,number,17977,17977,False,True
+By KS House,20,2026-10-01,Kansas Representative 19,Democratic,C20,number,8204,8204,False,True
+By KS House,20,2026-10-01,Kansas Representative 19,Libertarian,D20,number,174,174,False,True
+By KS House,20,2026-10-01,Kansas Representative 19,No Labels Kansas,E20,blank,,,False,True
+By KS House,20,2026-10-01,Kansas Representative 19,Republican,F20,number,7752,7752,False,True
+By KS House,20,2026-10-01,Kansas Representative 19,United Kansas,G20,number,6,6,False,True
+By KS House,20,2026-10-01,Kansas Representative 19,Unaffiliated,H20,number,4597,4597,False,True
+By KS House,20,2026-10-01,Kansas Representative 19,Total,I20,number,20733,20733,False,True
+By KS House,21,2026-10-01,Kansas Representative 20,Democratic,C21,number,7237,7237,False,True
+By KS House,21,2026-10-01,Kansas Representative 20,Libertarian,D21,number,209,209,False,True
+By KS House,21,2026-10-01,Kansas Representative 20,No Labels Kansas,E21,blank,,,False,True
+By KS House,21,2026-10-01,Kansas Representative 20,Republican,F21,number,8904,8904,False,True
+By KS House,21,2026-10-01,Kansas Representative 20,United Kansas,G21,number,8,8,False,True
+By KS House,21,2026-10-01,Kansas Representative 20,Unaffiliated,H21,number,4379,4379,False,True
+By KS House,21,2026-10-01,Kansas Representative 20,Total,I21,number,20737,20737,False,True
+By KS House,22,2026-10-01,Kansas Representative 21,Democratic,C22,number,8298,8298,False,True
+By KS House,22,2026-10-01,Kansas Representative 21,Libertarian,D22,number,210,210,False,True
+By KS House,22,2026-10-01,Kansas Representative 21,No Labels Kansas,E22,blank,,,False,True
+By KS House,22,2026-10-01,Kansas Representative 21,Republican,F22,number,6033,6033,False,True
+By KS House,22,2026-10-01,Kansas Representative 21,United Kansas,G22,number,6,6,False,True
+By KS House,22,2026-10-01,Kansas Representative 21,Unaffiliated,H22,number,4857,4857,False,True
+By KS House,22,2026-10-01,Kansas Representative 21,Total,I22,number,19404,19404,False,True
+By KS House,23,2026-10-01,Kansas Representative 22,Democratic,C23,number,6742,6742,False,True
+By KS House,23,2026-10-01,Kansas Representative 22,Libertarian,D23,number,255,255,False,True
+By KS House,23,2026-10-01,Kansas Representative 22,No Labels Kansas,E23,blank,,,False,True
+By KS House,23,2026-10-01,Kansas Representative 22,Republican,F23,number,4803,4803,False,True
+By KS House,23,2026-10-01,Kansas Representative 22,United Kansas,G23,number,10,10,False,True
+By KS House,23,2026-10-01,Kansas Representative 22,Unaffiliated,H23,number,4863,4863,False,True
+By KS House,23,2026-10-01,Kansas Representative 22,Total,I23,number,16673,16673,False,True
+By KS House,24,2026-10-01,Kansas Representative 23,Democratic,C24,number,6264,6264,False,True
+By KS House,24,2026-10-01,Kansas Representative 23,Libertarian,D24,number,246,246,False,True
+By KS House,24,2026-10-01,Kansas Representative 23,No Labels Kansas,E24,blank,,,False,True
+By KS House,24,2026-10-01,Kansas Representative 23,Republican,F24,number,5124,5124,False,True
+By KS House,24,2026-10-01,Kansas Representative 23,United Kansas,G24,number,10,10,False,True
+By KS House,24,2026-10-01,Kansas Representative 23,Unaffiliated,H24,number,4730,4730,False,True
+By KS House,24,2026-10-01,Kansas Representative 23,Total,I24,number,16374,16374,False,True
+By KS House,25,2026-10-01,Kansas Representative 24,Democratic,C25,number,7209,7209,False,True
+By KS House,25,2026-10-01,Kansas Representative 24,Libertarian,D25,number,223,223,False,True
+By KS House,25,2026-10-01,Kansas Representative 24,No Labels Kansas,E25,blank,,,False,True
+By KS House,25,2026-10-01,Kansas Representative 24,Republican,F25,number,4609,4609,False,True
+By KS House,25,2026-10-01,Kansas Representative 24,United Kansas,G25,number,13,13,False,True
+By KS House,25,2026-10-01,Kansas Representative 24,Unaffiliated,H25,number,5238,5238,False,True
+By KS House,25,2026-10-01,Kansas Representative 24,Total,I25,number,17292,17292,False,True
+By KS House,26,2026-10-01,Kansas Representative 25,Democratic,C26,number,8888,8888,False,True
+By KS House,26,2026-10-01,Kansas Representative 25,Libertarian,D26,number,198,198,False,True
+By KS House,26,2026-10-01,Kansas Representative 25,No Labels Kansas,E26,blank,,,False,True
+By KS House,26,2026-10-01,Kansas Representative 25,Republican,F26,number,6428,6428,False,True
+By KS House,26,2026-10-01,Kansas Representative 25,United Kansas,G26,number,7,7,False,True
+By KS House,26,2026-10-01,Kansas Representative 25,Unaffiliated,H26,number,5042,5042,False,True
+By KS House,26,2026-10-01,Kansas Representative 25,Total,I26,number,20563,20563,False,True
+By KS House,27,2026-10-01,Kansas Representative 26,Democratic,C27,number,5353,5353,False,True
+By KS House,27,2026-10-01,Kansas Representative 26,Libertarian,D27,number,286,286,False,True
+By KS House,27,2026-10-01,Kansas Representative 26,No Labels Kansas,E27,blank,,,False,True
+By KS House,27,2026-10-01,Kansas Representative 26,Republican,F27,number,9898,9898,False,True
+By KS House,27,2026-10-01,Kansas Representative 26,United Kansas,G27,number,12,12,False,True
+By KS House,27,2026-10-01,Kansas Representative 26,Unaffiliated,H27,number,5607,5607,False,True
+By KS House,27,2026-10-01,Kansas Representative 26,Total,I27,number,21156,21156,False,True
+By KS House,28,2026-10-01,Kansas Representative 27,Democratic,C28,number,5574,5574,False,True
+By KS House,28,2026-10-01,Kansas Representative 27,Libertarian,D28,number,210,210,False,True
+By KS House,28,2026-10-01,Kansas Representative 27,No Labels Kansas,E28,blank,,,False,True
+By KS House,28,2026-10-01,Kansas Representative 27,Republican,F28,number,10440,10440,False,True
+By KS House,28,2026-10-01,Kansas Representative 27,United Kansas,G28,number,7,7,False,True
+By KS House,28,2026-10-01,Kansas Representative 27,Unaffiliated,H28,number,5245,5245,False,True
+By KS House,28,2026-10-01,Kansas Representative 27,Total,I28,number,21476,21476,False,True
+By KS House,29,2026-10-01,Kansas Representative 28,Democratic,C29,number,5632,5632,False,True
+By KS House,29,2026-10-01,Kansas Representative 28,Libertarian,D29,number,170,170,False,True
+By KS House,29,2026-10-01,Kansas Representative 28,No Labels Kansas,E29,blank,,,False,True
+By KS House,29,2026-10-01,Kansas Representative 28,Republican,F29,number,7997,7997,False,True
+By KS House,29,2026-10-01,Kansas Representative 28,United Kansas,G29,number,10,10,False,True
+By KS House,29,2026-10-01,Kansas Representative 28,Unaffiliated,H29,number,4369,4369,False,True
+By KS House,29,2026-10-01,Kansas Representative 28,Total,I29,number,18178,18178,False,True
+By KS House,30,2026-10-01,Kansas Representative 29,Democratic,C30,number,6901,6901,False,True
+By KS House,30,2026-10-01,Kansas Representative 29,Libertarian,D30,number,233,233,False,True
+By KS House,30,2026-10-01,Kansas Representative 29,No Labels Kansas,E30,blank,,,False,True
+By KS House,30,2026-10-01,Kansas Representative 29,Republican,F30,number,6051,6051,False,True
+By KS House,30,2026-10-01,Kansas Representative 29,United Kansas,G30,number,14,14,False,True
+By KS House,30,2026-10-01,Kansas Representative 29,Unaffiliated,H30,number,4833,4833,False,True
+By KS House,30,2026-10-01,Kansas Representative 29,Total,I30,number,18032,18032,False,True
+By KS House,31,2026-10-01,Kansas Representative 30,Democratic,C31,number,5451,5451,False,True
+By KS House,31,2026-10-01,Kansas Representative 30,Libertarian,D31,number,179,179,False,True
+By KS House,31,2026-10-01,Kansas Representative 30,No Labels Kansas,E31,blank,,,False,True
+By KS House,31,2026-10-01,Kansas Representative 30,Republican,F31,number,6977,6977,False,True
+By KS House,31,2026-10-01,Kansas Representative 30,United Kansas,G31,number,12,12,False,True
+By KS House,31,2026-10-01,Kansas Representative 30,Unaffiliated,H31,number,4457,4457,False,True
+By KS House,31,2026-10-01,Kansas Representative 30,Total,I31,number,17076,17076,False,True
+By KS House,32,2026-10-01,Kansas Representative 31,Democratic,C32,number,6119,6119,False,True
+By KS House,32,2026-10-01,Kansas Representative 31,Libertarian,D32,number,169,169,False,True
+By KS House,32,2026-10-01,Kansas Representative 31,No Labels Kansas,E32,blank,,,False,True
+By KS House,32,2026-10-01,Kansas Representative 31,Republican,F32,number,2118,2118,False,True
+By KS House,32,2026-10-01,Kansas Representative 31,United Kansas,G32,number,11,11,False,True
+By KS House,32,2026-10-01,Kansas Representative 31,Unaffiliated,H32,number,4521,4521,False,True
+By KS House,32,2026-10-01,Kansas Representative 31,Total,I32,number,12938,12938,False,True
+By KS House,33,2026-10-01,Kansas Representative 32,Democratic,C33,number,4220,4220,False,True
+By KS House,33,2026-10-01,Kansas Representative 32,Libertarian,D33,number,83,83,False,True
+By KS House,33,2026-10-01,Kansas Representative 32,No Labels Kansas,E33,blank,,,False,True
+By KS House,33,2026-10-01,Kansas Representative 32,Republican,F33,number,1110,1110,False,True
+By KS House,33,2026-10-01,Kansas Representative 32,United Kansas,G33,number,19,19,False,True
+By KS House,33,2026-10-01,Kansas Representative 32,Unaffiliated,H33,number,3728,3728,False,True
+By KS House,33,2026-10-01,Kansas Representative 32,Total,I33,number,9160,9160,False,True
+By KS House,34,2026-10-01,Kansas Representative 33,Democratic,C34,number,5385,5385,False,True
+By KS House,34,2026-10-01,Kansas Representative 33,Libertarian,D34,number,237,237,False,True
+By KS House,34,2026-10-01,Kansas Representative 33,No Labels Kansas,E34,blank,,,False,True
+By KS House,34,2026-10-01,Kansas Representative 33,Republican,F34,number,4972,4972,False,True
+By KS House,34,2026-10-01,Kansas Representative 33,United Kansas,G34,number,10,10,False,True
+By KS House,34,2026-10-01,Kansas Representative 33,Unaffiliated,H34,number,5477,5477,False,True
+By KS House,34,2026-10-01,Kansas Representative 33,Total,I34,number,16081,16081,False,True
+By KS House,35,2026-10-01,Kansas Representative 34,Democratic,C35,number,5948,5948,False,True
+By KS House,35,2026-10-01,Kansas Representative 34,Libertarian,D35,number,102,102,False,True
+By KS House,35,2026-10-01,Kansas Representative 34,No Labels Kansas,E35,blank,,,False,True
+By KS House,35,2026-10-01,Kansas Representative 34,Republican,F35,number,1145,1145,False,True
+By KS House,35,2026-10-01,Kansas Representative 34,United Kansas,G35,number,18,18,False,True
+By KS House,35,2026-10-01,Kansas Representative 34,Unaffiliated,H35,number,4129,4129,False,True
+By KS House,35,2026-10-01,Kansas Representative 34,Total,I35,number,11342,11342,False,True
+By KS House,36,2026-10-01,Kansas Representative 35,Democratic,C36,number,7176,7176,False,True
+By KS House,36,2026-10-01,Kansas Representative 35,Libertarian,D36,number,128,128,False,True
+By KS House,36,2026-10-01,Kansas Representative 35,No Labels Kansas,E36,blank,,,False,True
+By KS House,36,2026-10-01,Kansas Representative 35,Republican,F36,number,1374,1374,False,True
+By KS House,36,2026-10-01,Kansas Representative 35,United Kansas,G36,number,22,22,False,True
+By KS House,36,2026-10-01,Kansas Representative 35,Unaffiliated,H36,number,4557,4557,False,True
+By KS House,36,2026-10-01,Kansas Representative 35,Total,I36,number,13257,13257,False,True
+By KS House,37,2026-10-01,Kansas Representative 36,Democratic,C37,number,7804,7804,False,True
+By KS House,37,2026-10-01,Kansas Representative 36,Libertarian,D37,number,159,159,False,True
+By KS House,37,2026-10-01,Kansas Representative 36,No Labels Kansas,E37,blank,,,False,True
+By KS House,37,2026-10-01,Kansas Representative 36,Republican,F37,number,4497,4497,False,True
+By KS House,37,2026-10-01,Kansas Representative 36,United Kansas,G37,number,14,14,False,True
+By KS House,37,2026-10-01,Kansas Representative 36,Unaffiliated,H37,number,4844,4844,False,True
+By KS House,37,2026-10-01,Kansas Representative 36,Total,I37,number,17318,17318,False,True
+By KS House,38,2026-10-01,Kansas Representative 37,Democratic,C38,number,5709,5709,False,True
+By KS House,38,2026-10-01,Kansas Representative 37,Libertarian,D38,number,133,133,False,True
+By KS House,38,2026-10-01,Kansas Representative 37,No Labels Kansas,E38,blank,,,False,True
+By KS House,38,2026-10-01,Kansas Representative 37,Republican,F38,number,2762,2762,False,True
+By KS House,38,2026-10-01,Kansas Representative 37,United Kansas,G38,number,13,13,False,True
+By KS House,38,2026-10-01,Kansas Representative 37,Unaffiliated,H38,number,4746,4746,False,True
+By KS House,38,2026-10-01,Kansas Representative 37,Total,I38,number,13363,13363,False,True
+By KS House,39,2026-10-01,Kansas Representative 38,Democratic,C39,number,4472,4472,False,True
+By KS House,39,2026-10-01,Kansas Representative 38,Libertarian,D39,number,204,204,False,True
+By KS House,39,2026-10-01,Kansas Representative 38,No Labels Kansas,E39,blank,,,False,True
+By KS House,39,2026-10-01,Kansas Representative 38,Republican,F39,number,9229,9229,False,True
+By KS House,39,2026-10-01,Kansas Representative 38,United Kansas,G39,number,10,10,False,True
+By KS House,39,2026-10-01,Kansas Representative 38,Unaffiliated,H39,number,5772,5772,False,True
+By KS House,39,2026-10-01,Kansas Representative 38,Total,I39,number,19687,19687,False,True
+By KS House,40,2026-10-01,Kansas Representative 39,Democratic,C40,number,5451,5451,False,True
+By KS House,40,2026-10-01,Kansas Representative 39,Libertarian,D40,number,214,214,False,True
+By KS House,40,2026-10-01,Kansas Representative 39,No Labels Kansas,E40,blank,,,False,True
+By KS House,40,2026-10-01,Kansas Representative 39,Republican,F40,number,7625,7625,False,True
+By KS House,40,2026-10-01,Kansas Representative 39,United Kansas,G40,number,6,6,False,True
+By KS House,40,2026-10-01,Kansas Representative 39,Unaffiliated,H40,number,4778,4778,False,True
+By KS House,40,2026-10-01,Kansas Representative 39,Total,I40,number,18074,18074,False,True
+By KS House,41,2026-10-01,Kansas Representative 40,Democratic,C41,number,4052,4052,False,True
+By KS House,41,2026-10-01,Kansas Representative 40,Libertarian,D41,number,217,217,False,True
+By KS House,41,2026-10-01,Kansas Representative 40,No Labels Kansas,E41,blank,,,False,True
+By KS House,41,2026-10-01,Kansas Representative 40,Republican,F41,number,6305,6305,False,True
+By KS House,41,2026-10-01,Kansas Representative 40,United Kansas,G41,number,15,15,False,True
+By KS House,41,2026-10-01,Kansas Representative 40,Unaffiliated,H41,number,5991,5991,False,True
+By KS House,41,2026-10-01,Kansas Representative 40,Total,I41,number,16580,16580,False,True
+By KS House,42,2026-10-01,Kansas Representative 41,Democratic,C42,number,2984,2984,False,True
+By KS House,42,2026-10-01,Kansas Representative 41,Libertarian,D42,number,189,189,False,True
+By KS House,42,2026-10-01,Kansas Representative 41,No Labels Kansas,E42,blank,,,False,True
+By KS House,42,2026-10-01,Kansas Representative 41,Republican,F42,number,4569,4569,False,True
+By KS House,42,2026-10-01,Kansas Representative 41,United Kansas,G42,number,8,8,False,True
+By KS House,42,2026-10-01,Kansas Representative 41,Unaffiliated,H42,number,5186,5186,False,True
+By KS House,42,2026-10-01,Kansas Representative 41,Total,I42,number,12936,12936,False,True
+By KS House,43,2026-10-01,Kansas Representative 42,Democratic,C43,number,4147,4147,False,True
+By KS House,43,2026-10-01,Kansas Representative 42,Libertarian,D43,number,246,246,False,True
+By KS House,43,2026-10-01,Kansas Representative 42,No Labels Kansas,E43,blank,,,False,True
+By KS House,43,2026-10-01,Kansas Representative 42,Republican,F43,number,8306,8306,False,True
+By KS House,43,2026-10-01,Kansas Representative 42,United Kansas,G43,number,7,7,False,True
+By KS House,43,2026-10-01,Kansas Representative 42,Unaffiliated,H43,number,5199,5199,False,True
+By KS House,43,2026-10-01,Kansas Representative 42,Total,I43,number,17905,17905,False,True
+By KS House,44,2026-10-01,Kansas Representative 43,Democratic,C44,number,3840,3840,False,True
+By KS House,44,2026-10-01,Kansas Representative 43,Libertarian,D44,number,265,265,False,True
+By KS House,44,2026-10-01,Kansas Representative 43,No Labels Kansas,E44,blank,,,False,True
+By KS House,44,2026-10-01,Kansas Representative 43,Republican,F44,number,7353,7353,False,True
+By KS House,44,2026-10-01,Kansas Representative 43,United Kansas,G44,number,8,8,False,True
+By KS House,44,2026-10-01,Kansas Representative 43,Unaffiliated,H44,number,4660,4660,False,True
+By KS House,44,2026-10-01,Kansas Representative 43,Total,I44,number,16126,16126,False,True
+By KS House,45,2026-10-01,Kansas Representative 44,Democratic,C45,number,8581,8581,False,True
+By KS House,45,2026-10-01,Kansas Representative 44,Libertarian,D45,number,199,199,False,True
+By KS House,45,2026-10-01,Kansas Representative 44,No Labels Kansas,E45,blank,,,False,True
+By KS House,45,2026-10-01,Kansas Representative 44,Republican,F45,number,3667,3667,False,True
+By KS House,45,2026-10-01,Kansas Representative 44,United Kansas,G45,number,11,11,False,True
+By KS House,45,2026-10-01,Kansas Representative 44,Unaffiliated,H45,number,4808,4808,False,True
+By KS House,45,2026-10-01,Kansas Representative 44,Total,I45,number,17266,17266,False,True
+By KS House,46,2026-10-01,Kansas Representative 45,Democratic,C46,number,8457,8457,False,True
+By KS House,46,2026-10-01,Kansas Representative 45,Libertarian,D46,number,195,195,False,True
+By KS House,46,2026-10-01,Kansas Representative 45,No Labels Kansas,E46,blank,,,False,True
+By KS House,46,2026-10-01,Kansas Representative 45,Republican,F46,number,4755,4755,False,True
+By KS House,46,2026-10-01,Kansas Representative 45,United Kansas,G46,number,8,8,False,True
+By KS House,46,2026-10-01,Kansas Representative 45,Unaffiliated,H46,number,5291,5291,False,True
+By KS House,46,2026-10-01,Kansas Representative 45,Total,I46,number,18706,18706,False,True
+By KS House,47,2026-10-01,Kansas Representative 46,Democratic,C47,number,6788,6788,False,True
+By KS House,47,2026-10-01,Kansas Representative 46,Libertarian,D47,number,132,132,False,True
+By KS House,47,2026-10-01,Kansas Representative 46,No Labels Kansas,E47,blank,,,False,True
+By KS House,47,2026-10-01,Kansas Representative 46,Republican,F47,number,1539,1539,False,True
+By KS House,47,2026-10-01,Kansas Representative 46,United Kansas,G47,number,9,9,False,True
+By KS House,47,2026-10-01,Kansas Representative 46,Unaffiliated,H47,number,3318,3318,False,True
+By KS House,47,2026-10-01,Kansas Representative 46,Total,I47,number,11786,11786,False,True
+By KS House,48,2026-10-01,Kansas Representative 47,Democratic,C48,number,3535,3535,False,True
+By KS House,48,2026-10-01,Kansas Representative 47,Libertarian,D48,number,196,196,False,True
+By KS House,48,2026-10-01,Kansas Representative 47,No Labels Kansas,E48,blank,,,False,True
+By KS House,48,2026-10-01,Kansas Representative 47,Republican,F48,number,8964,8964,False,True
+By KS House,48,2026-10-01,Kansas Representative 47,United Kansas,G48,number,7,7,False,True
+By KS House,48,2026-10-01,Kansas Representative 47,Unaffiliated,H48,number,5112,5112,False,True
+By KS House,48,2026-10-01,Kansas Representative 47,Total,I48,number,17814,17814,False,True
+By KS House,49,2026-10-01,Kansas Representative 48,Democratic,C49,number,5767,5767,False,True
+By KS House,49,2026-10-01,Kansas Representative 48,Libertarian,D49,number,161,161,False,True
+By KS House,49,2026-10-01,Kansas Representative 48,No Labels Kansas,E49,blank,,,False,True
+By KS House,49,2026-10-01,Kansas Representative 48,Republican,F49,number,7329,7329,False,True
+By KS House,49,2026-10-01,Kansas Representative 48,United Kansas,G49,number,13,13,False,True
+By KS House,49,2026-10-01,Kansas Representative 48,Unaffiliated,H49,number,4520,4520,False,True
+By KS House,49,2026-10-01,Kansas Representative 48,Total,I49,number,17790,17790,False,True
+By KS House,50,2026-10-01,Kansas Representative 49,Democratic,C50,number,5693,5693,False,True
+By KS House,50,2026-10-01,Kansas Representative 49,Libertarian,D50,number,208,208,False,True
+By KS House,50,2026-10-01,Kansas Representative 49,No Labels Kansas,E50,blank,,,False,True
+By KS House,50,2026-10-01,Kansas Representative 49,Republican,F50,number,7174,7174,False,True
+By KS House,50,2026-10-01,Kansas Representative 49,United Kansas,G50,number,17,17,False,True
+By KS House,50,2026-10-01,Kansas Representative 49,Unaffiliated,H50,number,4712,4712,False,True
+By KS House,50,2026-10-01,Kansas Representative 49,Total,I50,number,17804,17804,False,True
+By KS House,51,2026-10-01,Kansas Representative 50,Democratic,C51,number,3682,3682,False,True
+By KS House,51,2026-10-01,Kansas Representative 50,Libertarian,D51,number,149,149,False,True
+By KS House,51,2026-10-01,Kansas Representative 50,No Labels Kansas,E51,blank,,,False,True
+By KS House,51,2026-10-01,Kansas Representative 50,Republican,F51,number,8674,8674,False,True
+By KS House,51,2026-10-01,Kansas Representative 50,United Kansas,G51,number,7,7,False,True
+By KS House,51,2026-10-01,Kansas Representative 50,Unaffiliated,H51,number,4846,4846,False,True
+By KS House,51,2026-10-01,Kansas Representative 50,Total,I51,number,17358,17358,False,True
+By KS House,52,2026-10-01,Kansas Representative 51,Democratic,C52,number,2992,2992,False,True
+By KS House,52,2026-10-01,Kansas Representative 51,Libertarian,D52,number,220,220,False,True
+By KS House,52,2026-10-01,Kansas Representative 51,No Labels Kansas,E52,blank,,,False,True
+By KS House,52,2026-10-01,Kansas Representative 51,Republican,F52,number,9881,9881,False,True
+By KS House,52,2026-10-01,Kansas Representative 51,United Kansas,G52,number,9,9,False,True
+By KS House,52,2026-10-01,Kansas Representative 51,Unaffiliated,H52,number,4185,4185,False,True
+By KS House,52,2026-10-01,Kansas Representative 51,Total,I52,number,17287,17287,False,True
+By KS House,53,2026-10-01,Kansas Representative 52,Democratic,C53,number,4828,4828,False,True
+By KS House,53,2026-10-01,Kansas Representative 52,Libertarian,D53,number,160,160,False,True
+By KS House,53,2026-10-01,Kansas Representative 52,No Labels Kansas,E53,blank,,,False,True
+By KS House,53,2026-10-01,Kansas Representative 52,Republican,F53,number,8373,8373,False,True
+By KS House,53,2026-10-01,Kansas Representative 52,United Kansas,G53,number,5,5,False,True
+By KS House,53,2026-10-01,Kansas Representative 52,Unaffiliated,H53,number,4695,4695,False,True
+By KS House,53,2026-10-01,Kansas Representative 52,Total,I53,number,18061,18061,False,True
+By KS House,54,2026-10-01,Kansas Representative 53,Democratic,C54,number,5199,5199,False,True
+By KS House,54,2026-10-01,Kansas Representative 53,Libertarian,D54,number,168,168,False,True
+By KS House,54,2026-10-01,Kansas Representative 53,No Labels Kansas,E54,blank,,,False,True
+By KS House,54,2026-10-01,Kansas Representative 53,Republican,F54,number,5747,5747,False,True
+By KS House,54,2026-10-01,Kansas Representative 53,United Kansas,G54,number,6,6,False,True
+By KS House,54,2026-10-01,Kansas Representative 53,Unaffiliated,H54,number,4615,4615,False,True
+By KS House,54,2026-10-01,Kansas Representative 53,Total,I54,number,15735,15735,False,True
+By KS House,55,2026-10-01,Kansas Representative 54,Democratic,C55,number,3150,3150,False,True
+By KS House,55,2026-10-01,Kansas Representative 54,Libertarian,D55,number,218,218,False,True
+By KS House,55,2026-10-01,Kansas Representative 54,No Labels Kansas,E55,blank,,,False,True
+By KS House,55,2026-10-01,Kansas Representative 54,Republican,F55,number,8650,8650,False,True
+By KS House,55,2026-10-01,Kansas Representative 54,United Kansas,G55,number,4,4,False,True
+By KS House,55,2026-10-01,Kansas Representative 54,Unaffiliated,H55,number,4871,4871,False,True
+By KS House,55,2026-10-01,Kansas Representative 54,Total,I55,number,16893,16893,False,True
+By KS House,56,2026-10-01,Kansas Representative 55,Democratic,C56,number,5308,5308,False,True
+By KS House,56,2026-10-01,Kansas Representative 55,Libertarian,D56,number,189,189,False,True
+By KS House,56,2026-10-01,Kansas Representative 55,No Labels Kansas,E56,blank,,,False,True
+By KS House,56,2026-10-01,Kansas Representative 55,Republican,F56,number,3904,3904,False,True
+By KS House,56,2026-10-01,Kansas Representative 55,United Kansas,G56,number,15,15,False,True
+By KS House,56,2026-10-01,Kansas Representative 55,Unaffiliated,H56,number,4695,4695,False,True
+By KS House,56,2026-10-01,Kansas Representative 55,Total,I56,number,14111,14111,False,True
+By KS House,57,2026-10-01,Kansas Representative 56,Democratic,C57,number,5233,5233,False,True
+By KS House,57,2026-10-01,Kansas Representative 56,Libertarian,D57,number,190,190,False,True
+By KS House,57,2026-10-01,Kansas Representative 56,No Labels Kansas,E57,blank,,,False,True
+By KS House,57,2026-10-01,Kansas Representative 56,Republican,F57,number,5677,5677,False,True
+By KS House,57,2026-10-01,Kansas Representative 56,United Kansas,G57,number,10,10,False,True
+By KS House,57,2026-10-01,Kansas Representative 56,Unaffiliated,H57,number,5128,5128,False,True
+By KS House,57,2026-10-01,Kansas Representative 56,Total,I57,number,16238,16238,False,True
+By KS House,58,2026-10-01,Kansas Representative 57,Democratic,C58,number,4262,4262,False,True
+By KS House,58,2026-10-01,Kansas Representative 57,Libertarian,D58,number,154,154,False,True
+By KS House,58,2026-10-01,Kansas Representative 57,No Labels Kansas,E58,blank,,,False,True
+By KS House,58,2026-10-01,Kansas Representative 57,Republican,F58,number,3364,3364,False,True
+By KS House,58,2026-10-01,Kansas Representative 57,United Kansas,G58,number,14,14,False,True
+By KS House,58,2026-10-01,Kansas Representative 57,Unaffiliated,H58,number,4458,4458,False,True
+By KS House,58,2026-10-01,Kansas Representative 57,Total,I58,number,12252,12252,False,True
+By KS House,59,2026-10-01,Kansas Representative 58,Democratic,C59,number,5140,5140,False,True
+By KS House,59,2026-10-01,Kansas Representative 58,Libertarian,D59,number,154,154,False,True
+By KS House,59,2026-10-01,Kansas Representative 58,No Labels Kansas,E59,blank,,,False,True
+By KS House,59,2026-10-01,Kansas Representative 58,Republican,F59,number,3116,3116,False,True
+By KS House,59,2026-10-01,Kansas Representative 58,United Kansas,G59,number,15,15,False,True
+By KS House,59,2026-10-01,Kansas Representative 58,Unaffiliated,H59,number,4673,4673,False,True
+By KS House,59,2026-10-01,Kansas Representative 58,Total,I59,number,13098,13098,False,True
+By KS House,60,2026-10-01,Kansas Representative 59,Democratic,C60,number,2999,2999,False,True
+By KS House,60,2026-10-01,Kansas Representative 59,Libertarian,D60,number,216,216,False,True
+By KS House,60,2026-10-01,Kansas Representative 59,No Labels Kansas,E60,blank,,,False,True
+By KS House,60,2026-10-01,Kansas Representative 59,Republican,F60,number,9283,9283,False,True
+By KS House,60,2026-10-01,Kansas Representative 59,United Kansas,G60,number,4,4,False,True
+By KS House,60,2026-10-01,Kansas Representative 59,Unaffiliated,H60,number,4647,4647,False,True
+By KS House,60,2026-10-01,Kansas Representative 59,Total,I60,number,17149,17149,False,True
+By KS House,61,2026-10-01,Kansas Representative 60,Democratic,C61,number,3821,3821,False,True
+By KS House,61,2026-10-01,Kansas Representative 60,Libertarian,D61,number,168,168,False,True
+By KS House,61,2026-10-01,Kansas Representative 60,No Labels Kansas,E61,blank,,,False,True
+By KS House,61,2026-10-01,Kansas Representative 60,Republican,F61,number,5156,5156,False,True
+By KS House,61,2026-10-01,Kansas Representative 60,United Kansas,G61,number,17,17,False,True
+By KS House,61,2026-10-01,Kansas Representative 60,Unaffiliated,H61,number,5082,5082,False,True
+By KS House,61,2026-10-01,Kansas Representative 60,Total,I61,number,14244,14244,False,True
+By KS House,62,2026-10-01,Kansas Representative 61,Democratic,C62,number,2594,2594,False,True
+By KS House,62,2026-10-01,Kansas Representative 61,Libertarian,D62,number,158,158,False,True
+By KS House,62,2026-10-01,Kansas Representative 61,No Labels Kansas,E62,blank,,,False,True
+By KS House,62,2026-10-01,Kansas Representative 61,Republican,F62,number,9636,9636,False,True
+By KS House,62,2026-10-01,Kansas Representative 61,United Kansas,G62,number,13,13,False,True
+By KS House,62,2026-10-01,Kansas Representative 61,Unaffiliated,H62,number,3851,3851,False,True
+By KS House,62,2026-10-01,Kansas Representative 61,Total,I62,number,16252,16252,False,True
+By KS House,63,2026-10-01,Kansas Representative 62,Democratic,C63,number,2196,2196,False,True
+By KS House,63,2026-10-01,Kansas Representative 62,Libertarian,D63,number,138,138,False,True
+By KS House,63,2026-10-01,Kansas Representative 62,No Labels Kansas,E63,blank,,,False,True
+By KS House,63,2026-10-01,Kansas Representative 62,Republican,F63,number,10510,10510,False,True
+By KS House,63,2026-10-01,Kansas Representative 62,United Kansas,G63,number,8,8,False,True
+By KS House,63,2026-10-01,Kansas Representative 62,Unaffiliated,H63,number,3743,3743,False,True
+By KS House,63,2026-10-01,Kansas Representative 62,Total,I63,number,16595,16595,False,True
+By KS House,64,2026-10-01,Kansas Representative 63,Democratic,C64,number,2805,2805,False,True
+By KS House,64,2026-10-01,Kansas Representative 63,Libertarian,D64,number,87,87,False,True
+By KS House,64,2026-10-01,Kansas Representative 63,No Labels Kansas,E64,blank,,,False,True
+By KS House,64,2026-10-01,Kansas Representative 63,Republican,F64,number,8254,8254,False,True
+By KS House,64,2026-10-01,Kansas Representative 63,United Kansas,G64,number,3,3,False,True
+By KS House,64,2026-10-01,Kansas Representative 63,Unaffiliated,H64,number,5086,5086,False,True
+By KS House,64,2026-10-01,Kansas Representative 63,Total,I64,number,16235,16235,False,True
+By KS House,65,2026-10-01,Kansas Representative 64,Democratic,C65,number,1836,1836,False,True
+By KS House,65,2026-10-01,Kansas Representative 64,Libertarian,D65,number,177,177,False,True
+By KS House,65,2026-10-01,Kansas Representative 64,No Labels Kansas,E65,blank,,,False,True
+By KS House,65,2026-10-01,Kansas Representative 64,Republican,F65,number,9063,9063,False,True
+By KS House,65,2026-10-01,Kansas Representative 64,United Kansas,G65,number,4,4,False,True
+By KS House,65,2026-10-01,Kansas Representative 64,Unaffiliated,H65,number,3141,3141,False,True
+By KS House,65,2026-10-01,Kansas Representative 64,Total,I65,number,14221,14221,False,True
+By KS House,66,2026-10-01,Kansas Representative 65,Democratic,C66,number,2978,2978,False,True
+By KS House,66,2026-10-01,Kansas Representative 65,Libertarian,D66,number,207,207,False,True
+By KS House,66,2026-10-01,Kansas Representative 65,No Labels Kansas,E66,blank,,,False,True
+By KS House,66,2026-10-01,Kansas Representative 65,Republican,F66,number,4931,4931,False,True
+By KS House,66,2026-10-01,Kansas Representative 65,United Kansas,G66,number,8,8,False,True
+By KS House,66,2026-10-01,Kansas Representative 65,Unaffiliated,H66,number,4953,4953,False,True
+By KS House,66,2026-10-01,Kansas Representative 65,Total,I66,number,13077,13077,False,True
+By KS House,67,2026-10-01,Kansas Representative 66,Democratic,C67,number,3719,3719,False,True
+By KS House,67,2026-10-01,Kansas Representative 66,Libertarian,D67,number,236,236,False,True
+By KS House,67,2026-10-01,Kansas Representative 66,No Labels Kansas,E67,blank,,,False,True
+By KS House,67,2026-10-01,Kansas Representative 66,Republican,F67,number,3277,3277,False,True
+By KS House,67,2026-10-01,Kansas Representative 66,United Kansas,G67,number,16,16,False,True
+By KS House,67,2026-10-01,Kansas Representative 66,Unaffiliated,H67,number,3607,3607,False,True
+By KS House,67,2026-10-01,Kansas Representative 66,Total,I67,number,10855,10855,False,True
+By KS House,68,2026-10-01,Kansas Representative 67,Democratic,C68,number,4910,4910,False,True
+By KS House,68,2026-10-01,Kansas Representative 67,Libertarian,D68,number,264,264,False,True
+By KS House,68,2026-10-01,Kansas Representative 67,No Labels Kansas,E68,blank,,,False,True
+By KS House,68,2026-10-01,Kansas Representative 67,Republican,F68,number,6871,6871,False,True
+By KS House,68,2026-10-01,Kansas Representative 67,United Kansas,G68,number,11,11,False,True
+By KS House,68,2026-10-01,Kansas Representative 67,Unaffiliated,H68,number,4776,4776,False,True
+By KS House,68,2026-10-01,Kansas Representative 67,Total,I68,number,16832,16832,False,True
+By KS House,69,2026-10-01,Kansas Representative 68,Democratic,C69,number,2340,2340,False,True
+By KS House,69,2026-10-01,Kansas Representative 68,Libertarian,D69,number,203,203,False,True
+By KS House,69,2026-10-01,Kansas Representative 68,No Labels Kansas,E69,blank,,,False,True
+By KS House,69,2026-10-01,Kansas Representative 68,Republican,F69,number,5862,5862,False,True
+By KS House,69,2026-10-01,Kansas Representative 68,United Kansas,G69,number,11,11,False,True
+By KS House,69,2026-10-01,Kansas Representative 68,Unaffiliated,H69,number,4174,4174,False,True
+By KS House,69,2026-10-01,Kansas Representative 68,Total,I69,number,12590,12590,False,True
+By KS House,70,2026-10-01,Kansas Representative 69,Democratic,C70,number,3088,3088,False,True
+By KS House,70,2026-10-01,Kansas Representative 69,Libertarian,D70,number,224,224,False,True
+By KS House,70,2026-10-01,Kansas Representative 69,No Labels Kansas,E70,blank,,,False,True
+By KS House,70,2026-10-01,Kansas Representative 69,Republican,F70,number,7419,7419,False,True
+By KS House,70,2026-10-01,Kansas Representative 69,United Kansas,G70,number,14,14,False,True
+By KS House,70,2026-10-01,Kansas Representative 69,Unaffiliated,H70,number,5221,5221,False,True
+By KS House,70,2026-10-01,Kansas Representative 69,Total,I70,number,15966,15966,False,True
+By KS House,71,2026-10-01,Kansas Representative 70,Democratic,C71,number,2121,2121,False,True
+By KS House,71,2026-10-01,Kansas Representative 70,Libertarian,D71,number,165,165,False,True
+By KS House,71,2026-10-01,Kansas Representative 70,No Labels Kansas,E71,blank,,,False,True
+By KS House,71,2026-10-01,Kansas Representative 70,Republican,F71,number,10663,10663,False,True
+By KS House,71,2026-10-01,Kansas Representative 70,United Kansas,G71,number,10,10,False,True
+By KS House,71,2026-10-01,Kansas Representative 70,Unaffiliated,H71,number,4139,4139,False,True
+By KS House,71,2026-10-01,Kansas Representative 70,Total,I71,number,17098,17098,False,True
+By KS House,72,2026-10-01,Kansas Representative 71,Democratic,C72,number,3405,3405,False,True
+By KS House,72,2026-10-01,Kansas Representative 71,Libertarian,D72,number,265,265,False,True
+By KS House,72,2026-10-01,Kansas Representative 71,No Labels Kansas,E72,blank,,,False,True
+By KS House,72,2026-10-01,Kansas Representative 71,Republican,F72,number,9102,9102,False,True
+By KS House,72,2026-10-01,Kansas Representative 71,United Kansas,G72,number,15,15,False,True
+By KS House,72,2026-10-01,Kansas Representative 71,Unaffiliated,H72,number,5021,5021,False,True
+By KS House,72,2026-10-01,Kansas Representative 71,Total,I72,number,17808,17808,False,True
+By KS House,73,2026-10-01,Kansas Representative 72,Democratic,C73,number,4019,4019,False,True
+By KS House,73,2026-10-01,Kansas Representative 72,Libertarian,D73,number,163,163,False,True
+By KS House,73,2026-10-01,Kansas Representative 72,No Labels Kansas,E73,blank,,,False,True
+By KS House,73,2026-10-01,Kansas Representative 72,Republican,F73,number,7729,7729,False,True
+By KS House,73,2026-10-01,Kansas Representative 72,United Kansas,G73,number,12,12,False,True
+By KS House,73,2026-10-01,Kansas Representative 72,Unaffiliated,H73,number,4023,4023,False,True
+By KS House,73,2026-10-01,Kansas Representative 72,Total,I73,number,15946,15946,False,True
+By KS House,74,2026-10-01,Kansas Representative 73,Democratic,C74,number,2512,2512,False,True
+By KS House,74,2026-10-01,Kansas Representative 73,Libertarian,D74,number,168,168,False,True
+By KS House,74,2026-10-01,Kansas Representative 73,No Labels Kansas,E74,blank,,,False,True
+By KS House,74,2026-10-01,Kansas Representative 73,Republican,F74,number,8770,8770,False,True
+By KS House,74,2026-10-01,Kansas Representative 73,United Kansas,G74,number,10,10,False,True
+By KS House,74,2026-10-01,Kansas Representative 73,Unaffiliated,H74,number,3898,3898,False,True
+By KS House,74,2026-10-01,Kansas Representative 73,Total,I74,number,15358,15358,False,True
+By KS House,75,2026-10-01,Kansas Representative 74,Democratic,C75,number,2564,2564,False,True
+By KS House,75,2026-10-01,Kansas Representative 74,Libertarian,D75,number,186,186,False,True
+By KS House,75,2026-10-01,Kansas Representative 74,No Labels Kansas,E75,blank,,,False,True
+By KS House,75,2026-10-01,Kansas Representative 74,Republican,F75,number,9148,9148,False,True
+By KS House,75,2026-10-01,Kansas Representative 74,United Kansas,G75,number,8,8,False,True
+By KS House,75,2026-10-01,Kansas Representative 74,Unaffiliated,H75,number,3527,3527,False,True
+By KS House,75,2026-10-01,Kansas Representative 74,Total,I75,number,15433,15433,False,True
+By KS House,76,2026-10-01,Kansas Representative 75,Democratic,C76,number,2667,2667,False,True
+By KS House,76,2026-10-01,Kansas Representative 75,Libertarian,D76,number,219,219,False,True
+By KS House,76,2026-10-01,Kansas Representative 75,No Labels Kansas,E76,blank,,,False,True
+By KS House,76,2026-10-01,Kansas Representative 75,Republican,F76,number,9309,9309,False,True
+By KS House,76,2026-10-01,Kansas Representative 75,United Kansas,G76,number,9,9,False,True
+By KS House,76,2026-10-01,Kansas Representative 75,Unaffiliated,H76,number,4345,4345,False,True
+By KS House,76,2026-10-01,Kansas Representative 75,Total,I76,number,16549,16549,False,True
+By KS House,77,2026-10-01,Kansas Representative 76,Democratic,C77,number,2483,2483,False,True
+By KS House,77,2026-10-01,Kansas Representative 76,Libertarian,D77,number,169,169,False,True
+By KS House,77,2026-10-01,Kansas Representative 76,No Labels Kansas,E77,blank,,,False,True
+By KS House,77,2026-10-01,Kansas Representative 76,Republican,F77,number,10137,10137,False,True
+By KS House,77,2026-10-01,Kansas Representative 76,United Kansas,G77,number,9,9,False,True
+By KS House,77,2026-10-01,Kansas Representative 76,Unaffiliated,H77,number,4278,4278,False,True
+By KS House,77,2026-10-01,Kansas Representative 76,Total,I77,number,17076,17076,False,True
+By KS House,78,2026-10-01,Kansas Representative 77,Democratic,C78,number,2744,2744,False,True
+By KS House,78,2026-10-01,Kansas Representative 77,Libertarian,D78,number,246,246,False,True
+By KS House,78,2026-10-01,Kansas Representative 77,No Labels Kansas,E78,blank,,,False,True
+By KS House,78,2026-10-01,Kansas Representative 77,Republican,F78,number,9874,9874,False,True
+By KS House,78,2026-10-01,Kansas Representative 77,United Kansas,G78,number,7,7,False,True
+By KS House,78,2026-10-01,Kansas Representative 77,Unaffiliated,H78,number,5402,5402,False,True
+By KS House,78,2026-10-01,Kansas Representative 77,Total,I78,number,18273,18273,False,True
+By KS House,79,2026-10-01,Kansas Representative 78,Democratic,C79,number,5162,5162,False,True
+By KS House,79,2026-10-01,Kansas Representative 78,Libertarian,D79,number,210,210,False,True
+By KS House,79,2026-10-01,Kansas Representative 78,No Labels Kansas,E79,blank,,,False,True
+By KS House,79,2026-10-01,Kansas Representative 78,Republican,F79,number,7510,7510,False,True
+By KS House,79,2026-10-01,Kansas Representative 78,United Kansas,G79,number,11,11,False,True
+By KS House,79,2026-10-01,Kansas Representative 78,Unaffiliated,H79,number,4496,4496,False,True
+By KS House,79,2026-10-01,Kansas Representative 78,Total,I79,number,17389,17389,False,True
+By KS House,80,2026-10-01,Kansas Representative 79,Democratic,C80,number,2832,2832,False,True
+By KS House,80,2026-10-01,Kansas Representative 79,Libertarian,D80,number,140,140,False,True
+By KS House,80,2026-10-01,Kansas Representative 79,No Labels Kansas,E80,blank,,,False,True
+By KS House,80,2026-10-01,Kansas Representative 79,Republican,F80,number,8242,8242,False,True
+By KS House,80,2026-10-01,Kansas Representative 79,United Kansas,G80,number,1,1,False,True
+By KS House,80,2026-10-01,Kansas Representative 79,Unaffiliated,H80,number,4248,4248,False,True
+By KS House,80,2026-10-01,Kansas Representative 79,Total,I80,number,15463,15463,False,True
+By KS House,81,2026-10-01,Kansas Representative 80,Democratic,C81,number,2715,2715,False,True
+By KS House,81,2026-10-01,Kansas Representative 80,Libertarian,D81,number,180,180,False,True
+By KS House,81,2026-10-01,Kansas Representative 80,No Labels Kansas,E81,blank,,,False,True
+By KS House,81,2026-10-01,Kansas Representative 80,Republican,F81,number,7239,7239,False,True
+By KS House,81,2026-10-01,Kansas Representative 80,United Kansas,G81,number,6,6,False,True
+By KS House,81,2026-10-01,Kansas Representative 80,Unaffiliated,H81,number,4185,4185,False,True
+By KS House,81,2026-10-01,Kansas Representative 80,Total,I81,number,14325,14325,False,True
+By KS House,82,2026-10-01,Kansas Representative 81,Democratic,C82,number,2895,2895,False,True
+By KS House,82,2026-10-01,Kansas Representative 81,Libertarian,D82,number,203,203,False,True
+By KS House,82,2026-10-01,Kansas Representative 81,No Labels Kansas,E82,blank,,,False,True
+By KS House,82,2026-10-01,Kansas Representative 81,Republican,F82,number,5742,5742,False,True
+By KS House,82,2026-10-01,Kansas Representative 81,United Kansas,G82,number,6,6,False,True
+By KS House,82,2026-10-01,Kansas Representative 81,Unaffiliated,H82,number,5089,5089,False,True
+By KS House,82,2026-10-01,Kansas Representative 81,Total,I82,number,13935,13935,False,True
+By KS House,83,2026-10-01,Kansas Representative 82,Democratic,C83,number,3047,3047,False,True
+By KS House,83,2026-10-01,Kansas Representative 82,Libertarian,D83,number,213,213,False,True
+By KS House,83,2026-10-01,Kansas Representative 82,No Labels Kansas,E83,blank,,,False,True
+By KS House,83,2026-10-01,Kansas Representative 82,Republican,F83,number,8228,8228,False,True
+By KS House,83,2026-10-01,Kansas Representative 82,United Kansas,G83,number,5,5,False,True
+By KS House,83,2026-10-01,Kansas Representative 82,Unaffiliated,H83,number,5376,5376,False,True
+By KS House,83,2026-10-01,Kansas Representative 82,Total,I83,number,16869,16869,False,True
+By KS House,84,2026-10-01,Kansas Representative 83,Democratic,C84,number,4840,4840,False,True
+By KS House,84,2026-10-01,Kansas Representative 83,Libertarian,D84,number,203,203,False,True
+By KS House,84,2026-10-01,Kansas Representative 83,No Labels Kansas,E84,blank,,,False,True
+By KS House,84,2026-10-01,Kansas Representative 83,Republican,F84,number,3782,3782,False,True
+By KS House,84,2026-10-01,Kansas Representative 83,United Kansas,G84,number,23,23,False,True
+By KS House,84,2026-10-01,Kansas Representative 83,Unaffiliated,H84,number,4933,4933,False,True
+By KS House,84,2026-10-01,Kansas Representative 83,Total,I84,number,13781,13781,False,True
+By KS House,85,2026-10-01,Kansas Representative 84,Democratic,C85,number,6495,6495,False,True
+By KS House,85,2026-10-01,Kansas Representative 84,Libertarian,D85,number,189,189,False,True
+By KS House,85,2026-10-01,Kansas Representative 84,No Labels Kansas,E85,blank,,,False,True
+By KS House,85,2026-10-01,Kansas Representative 84,Republican,F85,number,2715,2715,False,True
+By KS House,85,2026-10-01,Kansas Representative 84,United Kansas,G85,number,22,22,False,True
+By KS House,85,2026-10-01,Kansas Representative 84,Unaffiliated,H85,number,4958,4958,False,True
+By KS House,85,2026-10-01,Kansas Representative 84,Total,I85,number,14379,14379,False,True
+By KS House,86,2026-10-01,Kansas Representative 85,Democratic,C86,number,4960,4960,False,True
+By KS House,86,2026-10-01,Kansas Representative 85,Libertarian,D86,number,218,218,False,True
+By KS House,86,2026-10-01,Kansas Representative 85,No Labels Kansas,E86,blank,,,False,True
+By KS House,86,2026-10-01,Kansas Representative 85,Republican,F86,number,8333,8333,False,True
+By KS House,86,2026-10-01,Kansas Representative 85,United Kansas,G86,number,8,8,False,True
+By KS House,86,2026-10-01,Kansas Representative 85,Unaffiliated,H86,number,5664,5664,False,True
+By KS House,86,2026-10-01,Kansas Representative 85,Total,I86,number,19183,19183,False,True
+By KS House,87,2026-10-01,Kansas Representative 86,Democratic,C87,number,4395,4395,False,True
+By KS House,87,2026-10-01,Kansas Representative 86,Libertarian,D87,number,207,207,False,True
+By KS House,87,2026-10-01,Kansas Representative 86,No Labels Kansas,E87,blank,,,False,True
+By KS House,87,2026-10-01,Kansas Representative 86,Republican,F87,number,3220,3220,False,True
+By KS House,87,2026-10-01,Kansas Representative 86,United Kansas,G87,number,20,20,False,True
+By KS House,87,2026-10-01,Kansas Representative 86,Unaffiliated,H87,number,5322,5322,False,True
+By KS House,87,2026-10-01,Kansas Representative 86,Total,I87,number,13164,13164,False,True
+By KS House,88,2026-10-01,Kansas Representative 87,Democratic,C88,number,4613,4613,False,True
+By KS House,88,2026-10-01,Kansas Representative 87,Libertarian,D88,number,224,224,False,True
+By KS House,88,2026-10-01,Kansas Representative 87,No Labels Kansas,E88,blank,,,False,True
+By KS House,88,2026-10-01,Kansas Representative 87,Republican,F88,number,7662,7662,False,True
+By KS House,88,2026-10-01,Kansas Representative 87,United Kansas,G88,number,10,10,False,True
+By KS House,88,2026-10-01,Kansas Representative 87,Unaffiliated,H88,number,5192,5192,False,True
+By KS House,88,2026-10-01,Kansas Representative 87,Total,I88,number,17701,17701,False,True
+By KS House,89,2026-10-01,Kansas Representative 88,Democratic,C89,number,4736,4736,False,True
+By KS House,89,2026-10-01,Kansas Representative 88,Libertarian,D89,number,214,214,False,True
+By KS House,89,2026-10-01,Kansas Representative 88,No Labels Kansas,E89,blank,,,False,True
+By KS House,89,2026-10-01,Kansas Representative 88,Republican,F89,number,5312,5312,False,True
+By KS House,89,2026-10-01,Kansas Representative 88,United Kansas,G89,number,15,15,False,True
+By KS House,89,2026-10-01,Kansas Representative 88,Unaffiliated,H89,number,6075,6075,False,True
+By KS House,89,2026-10-01,Kansas Representative 88,Total,I89,number,16352,16352,False,True
+By KS House,90,2026-10-01,Kansas Representative 89,Democratic,C90,number,6269,6269,False,True
+By KS House,90,2026-10-01,Kansas Representative 89,Libertarian,D90,number,190,190,False,True
+By KS House,90,2026-10-01,Kansas Representative 89,No Labels Kansas,E90,blank,,,False,True
+By KS House,90,2026-10-01,Kansas Representative 89,Republican,F90,number,4122,4122,False,True
+By KS House,90,2026-10-01,Kansas Representative 89,United Kansas,G90,number,24,24,False,True
+By KS House,90,2026-10-01,Kansas Representative 89,Unaffiliated,H90,number,4875,4875,False,True
+By KS House,90,2026-10-01,Kansas Representative 89,Total,I90,number,15480,15480,False,True
+By KS House,91,2026-10-01,Kansas Representative 90,Democratic,C91,number,3080,3080,False,True
+By KS House,91,2026-10-01,Kansas Representative 90,Libertarian,D91,number,248,248,False,True
+By KS House,91,2026-10-01,Kansas Representative 90,No Labels Kansas,E91,blank,,,False,True
+By KS House,91,2026-10-01,Kansas Representative 90,Republican,F91,number,10166,10166,False,True
+By KS House,91,2026-10-01,Kansas Representative 90,United Kansas,G91,number,16,16,False,True
+By KS House,91,2026-10-01,Kansas Representative 90,Unaffiliated,H91,number,5310,5310,False,True
+By KS House,91,2026-10-01,Kansas Representative 90,Total,I91,number,18820,18820,False,True
+By KS House,92,2026-10-01,Kansas Representative 91,Democratic,C92,number,4081,4081,False,True
+By KS House,92,2026-10-01,Kansas Representative 91,Libertarian,D92,number,248,248,False,True
+By KS House,92,2026-10-01,Kansas Representative 91,No Labels Kansas,E92,blank,,,False,True
+By KS House,92,2026-10-01,Kansas Representative 91,Republican,F92,number,9140,9140,False,True
+By KS House,92,2026-10-01,Kansas Representative 91,United Kansas,G92,number,11,11,False,True
+By KS House,92,2026-10-01,Kansas Representative 91,Unaffiliated,H92,number,5765,5765,False,True
+By KS House,92,2026-10-01,Kansas Representative 91,Total,I92,number,19245,19245,False,True
+By KS House,93,2026-10-01,Kansas Representative 92,Democratic,C93,number,5288,5288,False,True
+By KS House,93,2026-10-01,Kansas Representative 92,Libertarian,D93,number,263,263,False,True
+By KS House,93,2026-10-01,Kansas Representative 92,No Labels Kansas,E93,blank,,,False,True
+By KS House,93,2026-10-01,Kansas Representative 92,Republican,F93,number,4639,4639,False,True
+By KS House,93,2026-10-01,Kansas Representative 92,United Kansas,G93,number,19,19,False,True
+By KS House,93,2026-10-01,Kansas Representative 92,Unaffiliated,H93,number,4986,4986,False,True
+By KS House,93,2026-10-01,Kansas Representative 92,Total,I93,number,15195,15195,False,True
+By KS House,94,2026-10-01,Kansas Representative 93,Democratic,C94,number,2498,2498,False,True
+By KS House,94,2026-10-01,Kansas Representative 93,Libertarian,D94,number,229,229,False,True
+By KS House,94,2026-10-01,Kansas Representative 93,No Labels Kansas,E94,blank,,,False,True
+By KS House,94,2026-10-01,Kansas Representative 93,Republican,F94,number,9457,9457,False,True
+By KS House,94,2026-10-01,Kansas Representative 93,United Kansas,G94,number,8,8,False,True
+By KS House,94,2026-10-01,Kansas Representative 93,Unaffiliated,H94,number,4734,4734,False,True
+By KS House,94,2026-10-01,Kansas Representative 93,Total,I94,number,16926,16926,False,True
+By KS House,95,2026-10-01,Kansas Representative 94,Democratic,C95,number,3663,3663,False,True
+By KS House,95,2026-10-01,Kansas Representative 94,Libertarian,D95,number,213,213,False,True
+By KS House,95,2026-10-01,Kansas Representative 94,No Labels Kansas,E95,blank,,,False,True
+By KS House,95,2026-10-01,Kansas Representative 94,Republican,F95,number,8882,8882,False,True
+By KS House,95,2026-10-01,Kansas Representative 94,United Kansas,G95,number,9,9,False,True
+By KS House,95,2026-10-01,Kansas Representative 94,Unaffiliated,H95,number,4586,4586,False,True
+By KS House,95,2026-10-01,Kansas Representative 94,Total,I95,number,17353,17353,False,True
+By KS House,96,2026-10-01,Kansas Representative 95,Democratic,C96,number,3852,3852,False,True
+By KS House,96,2026-10-01,Kansas Representative 95,Libertarian,D96,number,237,237,False,True
+By KS House,96,2026-10-01,Kansas Representative 95,No Labels Kansas,E96,blank,,,False,True
+By KS House,96,2026-10-01,Kansas Representative 95,Republican,F96,number,3642,3642,False,True
+By KS House,96,2026-10-01,Kansas Representative 95,United Kansas,G96,number,25,25,False,True
+By KS House,96,2026-10-01,Kansas Representative 95,Unaffiliated,H96,number,5185,5185,False,True
+By KS House,96,2026-10-01,Kansas Representative 95,Total,I96,number,12941,12941,False,True
+By KS House,97,2026-10-01,Kansas Representative 96,Democratic,C97,number,3307,3307,False,True
+By KS House,97,2026-10-01,Kansas Representative 96,Libertarian,D97,number,207,207,False,True
+By KS House,97,2026-10-01,Kansas Representative 96,No Labels Kansas,E97,blank,,,False,True
+By KS House,97,2026-10-01,Kansas Representative 96,Republican,F97,number,3570,3570,False,True
+By KS House,97,2026-10-01,Kansas Representative 96,United Kansas,G97,number,17,17,False,True
+By KS House,97,2026-10-01,Kansas Representative 96,Unaffiliated,H97,number,5215,5215,False,True
+By KS House,97,2026-10-01,Kansas Representative 96,Total,I97,number,12316,12316,False,True
+By KS House,98,2026-10-01,Kansas Representative 97,Democratic,C98,number,3647,3647,False,True
+By KS House,98,2026-10-01,Kansas Representative 97,Libertarian,D98,number,247,247,False,True
+By KS House,98,2026-10-01,Kansas Representative 97,No Labels Kansas,E98,blank,,,False,True
+By KS House,98,2026-10-01,Kansas Representative 97,Republican,F98,number,6144,6144,False,True
+By KS House,98,2026-10-01,Kansas Representative 97,United Kansas,G98,number,20,20,False,True
+By KS House,98,2026-10-01,Kansas Representative 97,Unaffiliated,H98,number,5346,5346,False,True
+By KS House,98,2026-10-01,Kansas Representative 97,Total,I98,number,15404,15404,False,True
+By KS House,99,2026-10-01,Kansas Representative 98,Democratic,C99,number,3013,3013,False,True
+By KS House,99,2026-10-01,Kansas Representative 98,Libertarian,D99,number,197,197,False,True
+By KS House,99,2026-10-01,Kansas Representative 98,No Labels Kansas,E99,blank,,,False,True
+By KS House,99,2026-10-01,Kansas Representative 98,Republican,F99,number,4935,4935,False,True
+By KS House,99,2026-10-01,Kansas Representative 98,United Kansas,G99,number,17,17,False,True
+By KS House,99,2026-10-01,Kansas Representative 98,Unaffiliated,H99,number,5283,5283,False,True
+By KS House,99,2026-10-01,Kansas Representative 98,Total,I99,number,13445,13445,False,True
+By KS House,100,2026-10-01,Kansas Representative 99,Democratic,C100,number,3564,3564,False,True
+By KS House,100,2026-10-01,Kansas Representative 99,Libertarian,D100,number,225,225,False,True
+By KS House,100,2026-10-01,Kansas Representative 99,No Labels Kansas,E100,blank,,,False,True
+By KS House,100,2026-10-01,Kansas Representative 99,Republican,F100,number,9858,9858,False,True
+By KS House,100,2026-10-01,Kansas Representative 99,United Kansas,G100,number,11,11,False,True
+By KS House,100,2026-10-01,Kansas Representative 99,Unaffiliated,H100,number,5745,5745,False,True
+By KS House,100,2026-10-01,Kansas Representative 99,Total,I100,number,19403,19403,False,True
+By KS House,101,2026-10-01,Kansas Representative 100,Democratic,C101,number,4070,4070,False,True
+By KS House,101,2026-10-01,Kansas Representative 100,Libertarian,D101,number,239,239,False,True
+By KS House,101,2026-10-01,Kansas Representative 100,No Labels Kansas,E101,blank,,,False,True
+By KS House,101,2026-10-01,Kansas Representative 100,Republican,F101,number,8524,8524,False,True
+By KS House,101,2026-10-01,Kansas Representative 100,United Kansas,G101,number,16,16,False,True
+By KS House,101,2026-10-01,Kansas Representative 100,Unaffiliated,H101,number,4910,4910,False,True
+By KS House,101,2026-10-01,Kansas Representative 100,Total,I101,number,17759,17759,False,True
+By KS House,102,2026-10-01,Kansas Representative 101,Democratic,C102,number,2706,2706,False,True
+By KS House,102,2026-10-01,Kansas Representative 101,Libertarian,D102,number,254,254,False,True
+By KS House,102,2026-10-01,Kansas Representative 101,No Labels Kansas,E102,blank,,,False,True
+By KS House,102,2026-10-01,Kansas Representative 101,Republican,F102,number,11178,11178,False,True
+By KS House,102,2026-10-01,Kansas Representative 101,United Kansas,G102,number,15,15,False,True
+By KS House,102,2026-10-01,Kansas Representative 101,Unaffiliated,H102,number,4334,4334,False,True
+By KS House,102,2026-10-01,Kansas Representative 101,Total,I102,number,18487,18487,False,True
+By KS House,103,2026-10-01,Kansas Representative 102,Democratic,C103,number,3247,3247,False,True
+By KS House,103,2026-10-01,Kansas Representative 102,Libertarian,D103,number,210,210,False,True
+By KS House,103,2026-10-01,Kansas Representative 102,No Labels Kansas,E103,blank,,,False,True
+By KS House,103,2026-10-01,Kansas Representative 102,Republican,F103,number,5403,5403,False,True
+By KS House,103,2026-10-01,Kansas Representative 102,United Kansas,G103,number,20,20,False,True
+By KS House,103,2026-10-01,Kansas Representative 102,Unaffiliated,H103,number,5514,5514,False,True
+By KS House,103,2026-10-01,Kansas Representative 102,Total,I103,number,14394,14394,False,True
+By KS House,104,2026-10-01,Kansas Representative 103,Democratic,C104,number,3545,3545,False,True
+By KS House,104,2026-10-01,Kansas Representative 103,Libertarian,D104,number,187,187,False,True
+By KS House,104,2026-10-01,Kansas Representative 103,No Labels Kansas,E104,blank,,,False,True
+By KS House,104,2026-10-01,Kansas Representative 103,Republican,F104,number,2063,2063,False,True
+By KS House,104,2026-10-01,Kansas Representative 103,United Kansas,G104,number,19,19,False,True
+By KS House,104,2026-10-01,Kansas Representative 103,Unaffiliated,H104,number,4777,4777,False,True
+By KS House,104,2026-10-01,Kansas Representative 103,Total,I104,number,10591,10591,False,True
+By KS House,105,2026-10-01,Kansas Representative 104,Democratic,C105,number,3035,3035,False,True
+By KS House,105,2026-10-01,Kansas Representative 104,Libertarian,D105,number,171,171,False,True
+By KS House,105,2026-10-01,Kansas Representative 104,No Labels Kansas,E105,blank,,,False,True
+By KS House,105,2026-10-01,Kansas Representative 104,Republican,F105,number,10321,10321,False,True
+By KS House,105,2026-10-01,Kansas Representative 104,United Kansas,G105,number,13,13,False,True
+By KS House,105,2026-10-01,Kansas Representative 104,Unaffiliated,H105,number,3860,3860,False,True
+By KS House,105,2026-10-01,Kansas Representative 104,Total,I105,number,17400,17400,False,True
+By KS House,106,2026-10-01,Kansas Representative 105,Democratic,C106,number,3966,3966,False,True
+By KS House,106,2026-10-01,Kansas Representative 105,Libertarian,D106,number,248,248,False,True
+By KS House,106,2026-10-01,Kansas Representative 105,No Labels Kansas,E106,blank,,,False,True
+By KS House,106,2026-10-01,Kansas Representative 105,Republican,F106,number,6099,6099,False,True
+By KS House,106,2026-10-01,Kansas Representative 105,United Kansas,G106,number,9,9,False,True
+By KS House,106,2026-10-01,Kansas Representative 105,Unaffiliated,H106,number,5149,5149,False,True
+By KS House,106,2026-10-01,Kansas Representative 105,Total,I106,number,15471,15471,False,True
+By KS House,107,2026-10-01,Kansas Representative 106,Democratic,C107,number,1927,1927,False,True
+By KS House,107,2026-10-01,Kansas Representative 106,Libertarian,D107,number,128,128,False,True
+By KS House,107,2026-10-01,Kansas Representative 106,No Labels Kansas,E107,blank,,,False,True
+By KS House,107,2026-10-01,Kansas Representative 106,Republican,F107,number,10872,10872,False,True
+By KS House,107,2026-10-01,Kansas Representative 106,United Kansas,G107,number,8,8,False,True
+By KS House,107,2026-10-01,Kansas Representative 106,Unaffiliated,H107,number,3322,3322,False,True
+By KS House,107,2026-10-01,Kansas Representative 106,Total,I107,number,16257,16257,False,True
+By KS House,108,2026-10-01,Kansas Representative 107,Democratic,C108,number,2111,2111,False,True
+By KS House,108,2026-10-01,Kansas Representative 107,Libertarian,D108,number,174,174,False,True
+By KS House,108,2026-10-01,Kansas Representative 107,No Labels Kansas,E108,blank,,,False,True
+By KS House,108,2026-10-01,Kansas Representative 107,Republican,F108,number,10235,10235,False,True
+By KS House,108,2026-10-01,Kansas Representative 107,United Kansas,G108,number,10,10,False,True
+By KS House,108,2026-10-01,Kansas Representative 107,Unaffiliated,H108,number,3728,3728,False,True
+By KS House,108,2026-10-01,Kansas Representative 107,Total,I108,number,16258,16258,False,True
+By KS House,109,2026-10-01,Kansas Representative 108,Democratic,C109,number,6750,6750,False,True
+By KS House,109,2026-10-01,Kansas Representative 108,Libertarian,D109,number,259,259,False,True
+By KS House,109,2026-10-01,Kansas Representative 108,No Labels Kansas,E109,blank,,,False,True
+By KS House,109,2026-10-01,Kansas Representative 108,Republican,F109,number,6392,6392,False,True
+By KS House,109,2026-10-01,Kansas Representative 108,United Kansas,G109,number,14,14,False,True
+By KS House,109,2026-10-01,Kansas Representative 108,Unaffiliated,H109,number,5059,5059,False,True
+By KS House,109,2026-10-01,Kansas Representative 108,Total,I109,number,18474,18474,False,True
+By KS House,110,2026-10-01,Kansas Representative 109,Democratic,C110,number,1864,1864,False,True
+By KS House,110,2026-10-01,Kansas Representative 109,Libertarian,D110,number,131,131,False,True
+By KS House,110,2026-10-01,Kansas Representative 109,No Labels Kansas,E110,blank,,,False,True
+By KS House,110,2026-10-01,Kansas Representative 109,Republican,F110,number,10821,10821,False,True
+By KS House,110,2026-10-01,Kansas Representative 109,United Kansas,G110,number,5,5,False,True
+By KS House,110,2026-10-01,Kansas Representative 109,Unaffiliated,H110,number,3179,3179,False,True
+By KS House,110,2026-10-01,Kansas Representative 109,Total,I110,number,16000,16000,False,True
+By KS House,111,2026-10-01,Kansas Representative 110,Democratic,C111,number,1594,1594,False,True
+By KS House,111,2026-10-01,Kansas Representative 110,Libertarian,D111,number,115,115,False,True
+By KS House,111,2026-10-01,Kansas Representative 110,No Labels Kansas,E111,blank,,,False,True
+By KS House,111,2026-10-01,Kansas Representative 110,Republican,F111,number,11767,11767,False,True
+By KS House,111,2026-10-01,Kansas Representative 110,United Kansas,G111,number,8,8,False,True
+By KS House,111,2026-10-01,Kansas Representative 110,Unaffiliated,H111,number,3323,3323,False,True
+By KS House,111,2026-10-01,Kansas Representative 110,Total,I111,number,16807,16807,False,True
+By KS House,112,2026-10-01,Kansas Representative 111,Democratic,C112,number,3079,3079,False,True
+By KS House,112,2026-10-01,Kansas Representative 111,Libertarian,D112,number,195,195,False,True
+By KS House,112,2026-10-01,Kansas Representative 111,No Labels Kansas,E112,blank,,,False,True
+By KS House,112,2026-10-01,Kansas Representative 111,Republican,F112,number,8697,8697,False,True
+By KS House,112,2026-10-01,Kansas Representative 111,United Kansas,G112,number,9,9,False,True
+By KS House,112,2026-10-01,Kansas Representative 111,Unaffiliated,H112,number,4700,4700,False,True
+By KS House,112,2026-10-01,Kansas Representative 111,Total,I112,number,16680,16680,False,True
+By KS House,113,2026-10-01,Kansas Representative 112,Democratic,C113,number,2018,2018,False,True
+By KS House,113,2026-10-01,Kansas Representative 112,Libertarian,D113,number,101,101,False,True
+By KS House,113,2026-10-01,Kansas Representative 112,No Labels Kansas,E113,blank,,,False,True
+By KS House,113,2026-10-01,Kansas Representative 112,Republican,F113,number,8896,8896,False,True
+By KS House,113,2026-10-01,Kansas Representative 112,United Kansas,G113,number,12,12,False,True
+By KS House,113,2026-10-01,Kansas Representative 112,Unaffiliated,H113,number,3999,3999,False,True
+By KS House,113,2026-10-01,Kansas Representative 112,Total,I113,number,15026,15026,False,True
+By KS House,114,2026-10-01,Kansas Representative 113,Democratic,C114,number,1886,1886,False,True
+By KS House,114,2026-10-01,Kansas Representative 113,Libertarian,D114,number,174,174,False,True
+By KS House,114,2026-10-01,Kansas Representative 113,No Labels Kansas,E114,blank,,,False,True
+By KS House,114,2026-10-01,Kansas Representative 113,Republican,F114,number,10638,10638,False,True
+By KS House,114,2026-10-01,Kansas Representative 113,United Kansas,G114,number,11,11,False,True
+By KS House,114,2026-10-01,Kansas Representative 113,Unaffiliated,H114,number,3702,3702,False,True
+By KS House,114,2026-10-01,Kansas Representative 113,Total,I114,number,16411,16411,False,True
+By KS House,115,2026-10-01,Kansas Representative 114,Democratic,C115,number,2051,2051,False,True
+By KS House,115,2026-10-01,Kansas Representative 114,Libertarian,D115,number,148,148,False,True
+By KS House,115,2026-10-01,Kansas Representative 114,No Labels Kansas,E115,blank,,,False,True
+By KS House,115,2026-10-01,Kansas Representative 114,Republican,F115,number,10580,10580,False,True
+By KS House,115,2026-10-01,Kansas Representative 114,United Kansas,G115,number,7,7,False,True
+By KS House,115,2026-10-01,Kansas Representative 114,Unaffiliated,H115,number,3700,3700,False,True
+By KS House,115,2026-10-01,Kansas Representative 114,Total,I115,number,16486,16486,False,True
+By KS House,116,2026-10-01,Kansas Representative 115,Democratic,C116,number,2054,2054,False,True
+By KS House,116,2026-10-01,Kansas Representative 115,Libertarian,D116,number,125,125,False,True
+By KS House,116,2026-10-01,Kansas Representative 115,No Labels Kansas,E116,blank,,,False,True
+By KS House,116,2026-10-01,Kansas Representative 115,Republican,F116,number,9736,9736,False,True
+By KS House,116,2026-10-01,Kansas Representative 115,United Kansas,G116,number,12,12,False,True
+By KS House,116,2026-10-01,Kansas Representative 115,Unaffiliated,H116,number,3513,3513,False,True
+By KS House,116,2026-10-01,Kansas Representative 115,Total,I116,number,15440,15440,False,True
+By KS House,117,2026-10-01,Kansas Representative 116,Democratic,C117,number,1892,1892,False,True
+By KS House,117,2026-10-01,Kansas Representative 116,Libertarian,D117,number,160,160,False,True
+By KS House,117,2026-10-01,Kansas Representative 116,No Labels Kansas,E117,blank,,,False,True
+By KS House,117,2026-10-01,Kansas Representative 116,Republican,F117,number,11152,11152,False,True
+By KS House,117,2026-10-01,Kansas Representative 116,United Kansas,G117,number,8,8,False,True
+By KS House,117,2026-10-01,Kansas Representative 116,Unaffiliated,H117,number,2773,2773,False,True
+By KS House,117,2026-10-01,Kansas Representative 116,Total,I117,number,15985,15985,False,True
+By KS House,118,2026-10-01,Kansas Representative 117,Democratic,C118,number,5697,5697,False,True
+By KS House,118,2026-10-01,Kansas Representative 117,Libertarian,D118,number,256,256,False,True
+By KS House,118,2026-10-01,Kansas Representative 117,No Labels Kansas,E118,blank,,,False,True
+By KS House,118,2026-10-01,Kansas Representative 117,Republican,F118,number,9277,9277,False,True
+By KS House,118,2026-10-01,Kansas Representative 117,United Kansas,G118,number,13,13,False,True
+By KS House,118,2026-10-01,Kansas Representative 117,Unaffiliated,H118,number,5214,5214,False,True
+By KS House,118,2026-10-01,Kansas Representative 117,Total,I118,number,20457,20457,False,True
+By KS House,119,2026-10-01,Kansas Representative 118,Democratic,C119,number,1369,1369,False,True
+By KS House,119,2026-10-01,Kansas Representative 118,Libertarian,D119,number,88,88,False,True
+By KS House,119,2026-10-01,Kansas Representative 118,No Labels Kansas,E119,blank,,,False,True
+By KS House,119,2026-10-01,Kansas Representative 118,Republican,F119,number,11868,11868,False,True
+By KS House,119,2026-10-01,Kansas Representative 118,United Kansas,G119,number,8,8,False,True
+By KS House,119,2026-10-01,Kansas Representative 118,Unaffiliated,H119,number,3071,3071,False,True
+By KS House,119,2026-10-01,Kansas Representative 118,Total,I119,number,16404,16404,False,True
+By KS House,120,2026-10-01,Kansas Representative 119,Democratic,C120,number,2947,2947,False,True
+By KS House,120,2026-10-01,Kansas Representative 119,Libertarian,D120,number,150,150,False,True
+By KS House,120,2026-10-01,Kansas Representative 119,No Labels Kansas,E120,blank,,,False,True
+By KS House,120,2026-10-01,Kansas Representative 119,Republican,F120,number,3355,3355,False,True
+By KS House,120,2026-10-01,Kansas Representative 119,United Kansas,G120,number,19,19,False,True
+By KS House,120,2026-10-01,Kansas Representative 119,Unaffiliated,H120,number,4075,4075,False,True
+By KS House,120,2026-10-01,Kansas Representative 119,Total,I120,number,10546,10546,False,True
+By KS House,121,2026-10-01,Kansas Representative 120,Democratic,C121,number,1409,1409,False,True
+By KS House,121,2026-10-01,Kansas Representative 120,Libertarian,D121,number,128,128,False,True
+By KS House,121,2026-10-01,Kansas Representative 120,No Labels Kansas,E121,blank,,,False,True
+By KS House,121,2026-10-01,Kansas Representative 120,Republican,F121,number,11670,11670,False,True
+By KS House,121,2026-10-01,Kansas Representative 120,United Kansas,G121,number,7,7,False,True
+By KS House,121,2026-10-01,Kansas Representative 120,Unaffiliated,H121,number,3119,3119,False,True
+By KS House,121,2026-10-01,Kansas Representative 120,Total,I121,number,16333,16333,False,True
+By KS House,122,2026-10-01,Kansas Representative 121,Democratic,C122,number,5153,5153,False,True
+By KS House,122,2026-10-01,Kansas Representative 121,Libertarian,D122,number,231,231,False,True
+By KS House,122,2026-10-01,Kansas Representative 121,No Labels Kansas,E122,blank,,,False,True
+By KS House,122,2026-10-01,Kansas Representative 121,Republican,F122,number,7487,7487,False,True
+By KS House,122,2026-10-01,Kansas Representative 121,United Kansas,G122,number,12,12,False,True
+By KS House,122,2026-10-01,Kansas Representative 121,Unaffiliated,H122,number,4536,4536,False,True
+By KS House,122,2026-10-01,Kansas Representative 121,Total,I122,number,17419,17419,False,True
+By KS House,123,2026-10-01,Kansas Representative 122,Democratic,C123,number,1961,1961,False,True
+By KS House,123,2026-10-01,Kansas Representative 122,Libertarian,D123,number,125,125,False,True
+By KS House,123,2026-10-01,Kansas Representative 122,No Labels Kansas,E123,blank,,,False,True
+By KS House,123,2026-10-01,Kansas Representative 122,Republican,F123,number,6565,6565,False,True
+By KS House,123,2026-10-01,Kansas Representative 122,United Kansas,G123,number,16,16,False,True
+By KS House,123,2026-10-01,Kansas Representative 122,Unaffiliated,H123,number,3593,3593,False,True
+By KS House,123,2026-10-01,Kansas Representative 122,Total,I123,number,12260,12260,False,True
+By KS House,124,2026-10-01,Kansas Representative 123,Democratic,C124,number,3152,3152,False,True
+By KS House,124,2026-10-01,Kansas Representative 123,Libertarian,D124,number,137,137,False,True
+By KS House,124,2026-10-01,Kansas Representative 123,No Labels Kansas,E124,blank,,,False,True
+By KS House,124,2026-10-01,Kansas Representative 123,Republican,F124,number,5199,5199,False,True
+By KS House,124,2026-10-01,Kansas Representative 123,United Kansas,G124,number,12,12,False,True
+By KS House,124,2026-10-01,Kansas Representative 123,Unaffiliated,H124,number,4494,4494,False,True
+By KS House,124,2026-10-01,Kansas Representative 123,Total,I124,number,12994,12994,False,True
+By KS House,125,2026-10-01,Kansas Representative 124,Democratic,C125,number,1447,1447,False,True
+By KS House,125,2026-10-01,Kansas Representative 124,Libertarian,D125,number,121,121,False,True
+By KS House,125,2026-10-01,Kansas Representative 124,No Labels Kansas,E125,blank,,,False,True
+By KS House,125,2026-10-01,Kansas Representative 124,Republican,F125,number,9302,9302,False,True
+By KS House,125,2026-10-01,Kansas Representative 124,United Kansas,G125,number,10,10,False,True
+By KS House,125,2026-10-01,Kansas Representative 124,Unaffiliated,H125,number,2900,2900,False,True
+By KS House,125,2026-10-01,Kansas Representative 124,Total,I125,number,13780,13780,False,True
+By KS House,126,2026-10-01,Kansas Representative 125,Democratic,C126,number,2774,2774,False,True
+By KS House,126,2026-10-01,Kansas Representative 125,Libertarian,D126,number,176,176,False,True
+By KS House,126,2026-10-01,Kansas Representative 125,No Labels Kansas,E126,blank,,,False,True
+By KS House,126,2026-10-01,Kansas Representative 125,Republican,F126,number,4992,4992,False,True
+By KS House,126,2026-10-01,Kansas Representative 125,United Kansas,G126,number,31,31,False,True
+By KS House,126,2026-10-01,Kansas Representative 125,Unaffiliated,H126,number,4452,4452,False,True
+By KS House,126,2026-10-01,Kansas Representative 125,Total,I126,number,12425,12425,False,True
+By KS House,127,2026-10-01,Grand Total,Democratic,C127,number,521669,521669,False,True
+By KS House,127,2026-10-01,Grand Total,Libertarian,D127,number,23840,23840,False,True
+By KS House,127,2026-10-01,Grand Total,No Labels Kansas,E127,blank,,,False,True
+By KS House,127,2026-10-01,Grand Total,Republican,F127,number,901822,901822,False,True
+By KS House,127,2026-10-01,Grand Total,United Kansas,G127,number,1398,1398,False,True
+By KS House,127,2026-10-01,Grand Total,Unaffiliated,H127,number,578791,578791,False,True
+By KS House,127,2026-10-01,Grand Total,Total,I127,number,2027520,2027520,False,True
+By KS Senate,2,2026-10-01,Kansas Senate 1,Democratic,C2,number,8132,8132,False,True
+By KS Senate,2,2026-10-01,Kansas Senate 1,Libertarian,D2,number,381,381,False,True
+By KS Senate,2,2026-10-01,Kansas Senate 1,No Labels Kansas,E2,blank,,,False,True
+By KS Senate,2,2026-10-01,Kansas Senate 1,Republican,F2,number,28875,28875,False,True
+By KS Senate,2,2026-10-01,Kansas Senate 1,United Kansas,G2,number,21,21,False,True
+By KS Senate,2,2026-10-01,Kansas Senate 1,Unaffiliated,H2,number,13968,13968,False,True
+By KS Senate,2,2026-10-01,Kansas Senate 1,Total,I2,number,51377,51377,False,True
+By KS Senate,3,2026-10-01,Kansas Senate 2,Democratic,C3,number,23893,23893,False,True
+By KS Senate,3,2026-10-01,Kansas Senate 2,Libertarian,D3,number,553,553,False,True
+By KS Senate,3,2026-10-01,Kansas Senate 2,No Labels Kansas,E3,blank,,,False,True
+By KS Senate,3,2026-10-01,Kansas Senate 2,Republican,F3,number,7784,7784,False,True
+By KS Senate,3,2026-10-01,Kansas Senate 2,United Kansas,G3,number,31,31,False,True
+By KS Senate,3,2026-10-01,Kansas Senate 2,Unaffiliated,H3,number,13022,13022,False,True
+By KS Senate,3,2026-10-01,Kansas Senate 2,Total,I3,number,45283,45283,False,True
+By KS Senate,4,2026-10-01,Kansas Senate 3,Democratic,C4,number,14114,14114,False,True
+By KS Senate,4,2026-10-01,Kansas Senate 3,Libertarian,D4,number,654,654,False,True
+By KS Senate,4,2026-10-01,Kansas Senate 3,No Labels Kansas,E4,blank,,,False,True
+By KS Senate,4,2026-10-01,Kansas Senate 3,Republican,F4,number,25308,25308,False,True
+By KS Senate,4,2026-10-01,Kansas Senate 3,United Kansas,G4,number,26,26,False,True
+By KS Senate,4,2026-10-01,Kansas Senate 3,Unaffiliated,H4,number,15384,15384,False,True
+By KS Senate,4,2026-10-01,Kansas Senate 3,Total,I4,number,55486,55486,False,True
+By KS Senate,5,2026-10-01,Kansas Senate 4,Democratic,C5,number,19696,19696,False,True
+By KS Senate,5,2026-10-01,Kansas Senate 4,Libertarian,D5,number,359,359,False,True
+By KS Senate,5,2026-10-01,Kansas Senate 4,No Labels Kansas,E5,blank,,,False,True
+By KS Senate,5,2026-10-01,Kansas Senate 4,Republican,F5,number,4795,4795,False,True
+By KS Senate,5,2026-10-01,Kansas Senate 4,United Kansas,G5,number,56,56,False,True
+By KS Senate,5,2026-10-01,Kansas Senate 4,Unaffiliated,H5,number,13229,13229,False,True
+By KS Senate,5,2026-10-01,Kansas Senate 4,Total,I5,number,38135,38135,False,True
+By KS Senate,6,2026-10-01,Kansas Senate 5,Democratic,C6,number,14986,14986,False,True
+By KS Senate,6,2026-10-01,Kansas Senate 5,Libertarian,D6,number,629,629,False,True
+By KS Senate,6,2026-10-01,Kansas Senate 5,No Labels Kansas,E6,blank,,,False,True
+By KS Senate,6,2026-10-01,Kansas Senate 5,Republican,F6,number,19128,19128,False,True
+By KS Senate,6,2026-10-01,Kansas Senate 5,United Kansas,G6,number,43,43,False,True
+By KS Senate,6,2026-10-01,Kansas Senate 5,Unaffiliated,H6,number,18095,18095,False,True
+By KS Senate,6,2026-10-01,Kansas Senate 5,Total,I6,number,52881,52881,False,True
+By KS Senate,7,2026-10-01,Kansas Senate 6,Democratic,C7,number,17019,17019,False,True
+By KS Senate,7,2026-10-01,Kansas Senate 6,Libertarian,D7,number,465,465,False,True
+By KS Senate,7,2026-10-01,Kansas Senate 6,No Labels Kansas,E7,blank,,,False,True
+By KS Senate,7,2026-10-01,Kansas Senate 6,Republican,F7,number,8026,8026,False,True
+By KS Senate,7,2026-10-01,Kansas Senate 6,United Kansas,G7,number,38,38,False,True
+By KS Senate,7,2026-10-01,Kansas Senate 6,Unaffiliated,H7,number,13946,13946,False,True
+By KS Senate,7,2026-10-01,Kansas Senate 6,Total,I7,number,39494,39494,False,True
+By KS Senate,8,2026-10-01,Kansas Senate 7,Democratic,C8,number,26132,26132,False,True
+By KS Senate,8,2026-10-01,Kansas Senate 7,Libertarian,D8,number,644,644,False,True
+By KS Senate,8,2026-10-01,Kansas Senate 7,No Labels Kansas,E8,blank,,,False,True
+By KS Senate,8,2026-10-01,Kansas Senate 7,Republican,F8,number,19873,19873,False,True
+By KS Senate,8,2026-10-01,Kansas Senate 7,United Kansas,G8,number,25,25,False,True
+By KS Senate,8,2026-10-01,Kansas Senate 7,Unaffiliated,H8,number,15593,15593,False,True
+By KS Senate,8,2026-10-01,Kansas Senate 7,Total,I8,number,62267,62267,False,True
+By KS Senate,9,2026-10-01,Kansas Senate 8,Democratic,C9,number,21882,21882,False,True
+By KS Senate,9,2026-10-01,Kansas Senate 8,Libertarian,D9,number,729,729,False,True
+By KS Senate,9,2026-10-01,Kansas Senate 8,No Labels Kansas,E9,blank,,,False,True
+By KS Senate,9,2026-10-01,Kansas Senate 8,Republican,F9,number,20273,20273,False,True
+By KS Senate,9,2026-10-01,Kansas Senate 8,United Kansas,G9,number,34,34,False,True
+By KS Senate,9,2026-10-01,Kansas Senate 8,Unaffiliated,H9,number,14599,14599,False,True
+By KS Senate,9,2026-10-01,Kansas Senate 8,Total,I9,number,57517,57517,False,True
+By KS Senate,10,2026-10-01,Kansas Senate 9,Democratic,C10,number,15244,15244,False,True
+By KS Senate,10,2026-10-01,Kansas Senate 9,Libertarian,D10,number,800,800,False,True
+By KS Senate,10,2026-10-01,Kansas Senate 9,No Labels Kansas,E10,blank,,,False,True
+By KS Senate,10,2026-10-01,Kansas Senate 9,Republican,F10,number,25810,25810,False,True
+By KS Senate,10,2026-10-01,Kansas Senate 9,United Kansas,G10,number,29,29,False,True
+By KS Senate,10,2026-10-01,Kansas Senate 9,Unaffiliated,H10,number,15855,15855,False,True
+By KS Senate,10,2026-10-01,Kansas Senate 9,Total,I10,number,57738,57738,False,True
+By KS Senate,11,2026-10-01,Kansas Senate 10,Democratic,C11,number,19578,19578,False,True
+By KS Senate,11,2026-10-01,Kansas Senate 10,Libertarian,D11,number,665,665,False,True
+By KS Senate,11,2026-10-01,Kansas Senate 10,No Labels Kansas,E11,blank,,,False,True
+By KS Senate,11,2026-10-01,Kansas Senate 10,Republican,F11,number,25541,25541,False,True
+By KS Senate,11,2026-10-01,Kansas Senate 10,United Kansas,G11,number,28,28,False,True
+By KS Senate,11,2026-10-01,Kansas Senate 10,Unaffiliated,H11,number,16468,16468,False,True
+By KS Senate,11,2026-10-01,Kansas Senate 10,Total,I11,number,62280,62280,False,True
+By KS Senate,12,2026-10-01,Kansas Senate 11,Democratic,C12,number,18142,18142,False,True
+By KS Senate,12,2026-10-01,Kansas Senate 11,Libertarian,D12,number,544,544,False,True
+By KS Senate,12,2026-10-01,Kansas Senate 11,No Labels Kansas,E12,blank,,,False,True
+By KS Senate,12,2026-10-01,Kansas Senate 11,Republican,F12,number,27303,27303,False,True
+By KS Senate,12,2026-10-01,Kansas Senate 11,United Kansas,G12,number,26,26,False,True
+By KS Senate,12,2026-10-01,Kansas Senate 11,Unaffiliated,H12,number,14268,14268,False,True
+By KS Senate,12,2026-10-01,Kansas Senate 11,Total,I12,number,60283,60283,False,True
+By KS Senate,13,2026-10-01,Kansas Senate 12,Democratic,C13,number,6987,6987,False,True
+By KS Senate,13,2026-10-01,Kansas Senate 12,Libertarian,D13,number,542,542,False,True
+By KS Senate,13,2026-10-01,Kansas Senate 12,No Labels Kansas,E13,blank,,,False,True
+By KS Senate,13,2026-10-01,Kansas Senate 12,Republican,F13,number,27436,27436,False,True
+By KS Senate,13,2026-10-01,Kansas Senate 12,United Kansas,G13,number,21,21,False,True
+By KS Senate,13,2026-10-01,Kansas Senate 12,Unaffiliated,H13,number,12551,12551,False,True
+By KS Senate,13,2026-10-01,Kansas Senate 12,Total,I13,number,47537,47537,False,True
+By KS Senate,14,2026-10-01,Kansas Senate 13,Democratic,C14,number,11931,11931,False,True
+By KS Senate,14,2026-10-01,Kansas Senate 13,Libertarian,D14,number,536,536,False,True
+By KS Senate,14,2026-10-01,Kansas Senate 13,No Labels Kansas,E14,blank,,,False,True
+By KS Senate,14,2026-10-01,Kansas Senate 13,Republican,F14,number,24725,24725,False,True
+By KS Senate,14,2026-10-01,Kansas Senate 13,United Kansas,G14,number,23,23,False,True
+By KS Senate,14,2026-10-01,Kansas Senate 13,Unaffiliated,H14,number,19467,19467,False,True
+By KS Senate,14,2026-10-01,Kansas Senate 13,Total,I14,number,56682,56682,False,True
+By KS Senate,15,2026-10-01,Kansas Senate 14,Democratic,C15,number,8060,8060,False,True
+By KS Senate,15,2026-10-01,Kansas Senate 14,Libertarian,D15,number,636,636,False,True
+By KS Senate,15,2026-10-01,Kansas Senate 14,No Labels Kansas,E15,blank,,,False,True
+By KS Senate,15,2026-10-01,Kansas Senate 14,Republican,F15,number,33931,33931,False,True
+By KS Senate,15,2026-10-01,Kansas Senate 14,United Kansas,G15,number,28,28,False,True
+By KS Senate,15,2026-10-01,Kansas Senate 14,Unaffiliated,H15,number,13861,13861,False,True
+By KS Senate,15,2026-10-01,Kansas Senate 14,Total,I15,number,56516,56516,False,True
+By KS Senate,16,2026-10-01,Kansas Senate 15,Democratic,C16,number,8536,8536,False,True
+By KS Senate,16,2026-10-01,Kansas Senate 15,Libertarian,D16,number,513,513,False,True
+By KS Senate,16,2026-10-01,Kansas Senate 15,No Labels Kansas,E16,blank,,,False,True
+By KS Senate,16,2026-10-01,Kansas Senate 15,Republican,F16,number,27317,27317,False,True
+By KS Senate,16,2026-10-01,Kansas Senate 15,United Kansas,G16,number,19,19,False,True
+By KS Senate,16,2026-10-01,Kansas Senate 15,Unaffiliated,H16,number,14030,14030,False,True
+By KS Senate,16,2026-10-01,Kansas Senate 15,Total,I16,number,50415,50415,False,True
+By KS Senate,17,2026-10-01,Kansas Senate 16,Democratic,C17,number,12799,12799,False,True
+By KS Senate,17,2026-10-01,Kansas Senate 16,Libertarian,D17,number,733,733,False,True
+By KS Senate,17,2026-10-01,Kansas Senate 16,No Labels Kansas,E17,blank,,,False,True
+By KS Senate,17,2026-10-01,Kansas Senate 16,Republican,F17,number,29755,29755,False,True
+By KS Senate,17,2026-10-01,Kansas Senate 16,United Kansas,G17,number,32,32,False,True
+By KS Senate,17,2026-10-01,Kansas Senate 16,Unaffiliated,H17,number,17260,17260,False,True
+By KS Senate,17,2026-10-01,Kansas Senate 16,Total,I17,number,60579,60579,False,True
+By KS Senate,18,2026-10-01,Kansas Senate 17,Democratic,C18,number,9935,9935,False,True
+By KS Senate,18,2026-10-01,Kansas Senate 17,Libertarian,D18,number,569,569,False,True
+By KS Senate,18,2026-10-01,Kansas Senate 17,No Labels Kansas,E18,blank,,,False,True
+By KS Senate,18,2026-10-01,Kansas Senate 17,Republican,F18,number,18337,18337,False,True
+By KS Senate,18,2026-10-01,Kansas Senate 17,United Kansas,G18,number,41,41,False,True
+By KS Senate,18,2026-10-01,Kansas Senate 17,Unaffiliated,H18,number,15145,15145,False,True
+By KS Senate,18,2026-10-01,Kansas Senate 17,Total,I18,number,44027,44027,False,True
+By KS Senate,19,2026-10-01,Kansas Senate 18,Democratic,C19,number,10509,10509,False,True
+By KS Senate,19,2026-10-01,Kansas Senate 18,Libertarian,D19,number,586,586,False,True
+By KS Senate,19,2026-10-01,Kansas Senate 18,No Labels Kansas,E19,blank,,,False,True
+By KS Senate,19,2026-10-01,Kansas Senate 18,Republican,F19,number,29330,29330,False,True
+By KS Senate,19,2026-10-01,Kansas Senate 18,United Kansas,G19,number,27,27,False,True
+By KS Senate,19,2026-10-01,Kansas Senate 18,Unaffiliated,H19,number,14527,14527,False,True
+By KS Senate,19,2026-10-01,Kansas Senate 18,Total,I19,number,54979,54979,False,True
+By KS Senate,20,2026-10-01,Kansas Senate 19,Democratic,C20,number,17052,17052,False,True
+By KS Senate,20,2026-10-01,Kansas Senate 19,Libertarian,D20,number,491,491,False,True
+By KS Senate,20,2026-10-01,Kansas Senate 19,No Labels Kansas,E20,blank,,,False,True
+By KS Senate,20,2026-10-01,Kansas Senate 19,Republican,F20,number,10597,10597,False,True
+By KS Senate,20,2026-10-01,Kansas Senate 19,United Kansas,G20,number,46,46,False,True
+By KS Senate,20,2026-10-01,Kansas Senate 19,Unaffiliated,H20,number,14572,14572,False,True
+By KS Senate,20,2026-10-01,Kansas Senate 19,Total,I20,number,42758,42758,False,True
+By KS Senate,21,2026-10-01,Kansas Senate 20,Democratic,C21,number,14393,14393,False,True
+By KS Senate,21,2026-10-01,Kansas Senate 20,Libertarian,D21,number,577,577,False,True
+By KS Senate,21,2026-10-01,Kansas Senate 20,No Labels Kansas,E21,blank,,,False,True
+By KS Senate,21,2026-10-01,Kansas Senate 20,Republican,F21,number,22929,22929,False,True
+By KS Senate,21,2026-10-01,Kansas Senate 20,United Kansas,G21,number,15,15,False,True
+By KS Senate,21,2026-10-01,Kansas Senate 20,Unaffiliated,H21,number,14744,14744,False,True
+By KS Senate,21,2026-10-01,Kansas Senate 20,Total,I21,number,52658,52658,False,True
+By KS Senate,22,2026-10-01,Kansas Senate 21,Democratic,C22,number,20560,20560,False,True
+By KS Senate,22,2026-10-01,Kansas Senate 21,Libertarian,D22,number,719,719,False,True
+By KS Senate,22,2026-10-01,Kansas Senate 21,No Labels Kansas,E22,blank,,,False,True
+By KS Senate,22,2026-10-01,Kansas Senate 21,Republican,F22,number,17679,17679,False,True
+By KS Senate,22,2026-10-01,Kansas Senate 21,United Kansas,G22,number,39,39,False,True
+By KS Senate,22,2026-10-01,Kansas Senate 21,Unaffiliated,H22,number,14905,14905,False,True
+By KS Senate,22,2026-10-01,Kansas Senate 21,Total,I22,number,53902,53902,False,True
+By KS Senate,23,2026-10-01,Kansas Senate 22,Democratic,C23,number,11370,11370,False,True
+By KS Senate,23,2026-10-01,Kansas Senate 22,Libertarian,D23,number,736,736,False,True
+By KS Senate,23,2026-10-01,Kansas Senate 22,No Labels Kansas,E23,blank,,,False,True
+By KS Senate,23,2026-10-01,Kansas Senate 22,Republican,F23,number,16062,16062,False,True
+By KS Senate,23,2026-10-01,Kansas Senate 22,United Kansas,G23,number,38,38,False,True
+By KS Senate,23,2026-10-01,Kansas Senate 22,Unaffiliated,H23,number,12423,12423,False,True
+By KS Senate,23,2026-10-01,Kansas Senate 22,Total,I23,number,40629,40629,False,True
+By KS Senate,24,2026-10-01,Kansas Senate 23,Democratic,C24,number,15517,15517,False,True
+By KS Senate,24,2026-10-01,Kansas Senate 23,Libertarian,D24,number,717,717,False,True
+By KS Senate,24,2026-10-01,Kansas Senate 23,No Labels Kansas,E24,blank,,,False,True
+By KS Senate,24,2026-10-01,Kansas Senate 23,Republican,F24,number,20953,20953,False,True
+By KS Senate,24,2026-10-01,Kansas Senate 23,United Kansas,G24,number,46,46,False,True
+By KS Senate,24,2026-10-01,Kansas Senate 23,Unaffiliated,H24,number,14265,14265,False,True
+By KS Senate,24,2026-10-01,Kansas Senate 23,Total,I24,number,51498,51498,False,True
+By KS Senate,25,2026-10-01,Kansas Senate 24,Democratic,C25,number,8985,8985,False,True
+By KS Senate,25,2026-10-01,Kansas Senate 24,Libertarian,D25,number,705,705,False,True
+By KS Senate,25,2026-10-01,Kansas Senate 24,No Labels Kansas,E25,blank,,,False,True
+By KS Senate,25,2026-10-01,Kansas Senate 24,Republican,F25,number,26850,26850,False,True
+By KS Senate,25,2026-10-01,Kansas Senate 24,United Kansas,G25,number,42,42,False,True
+By KS Senate,25,2026-10-01,Kansas Senate 24,Unaffiliated,H25,number,15141,15141,False,True
+By KS Senate,25,2026-10-01,Kansas Senate 24,Total,I25,number,51723,51723,False,True
+By KS Senate,26,2026-10-01,Kansas Senate 25,Democratic,C26,number,13560,13560,False,True
+By KS Senate,26,2026-10-01,Kansas Senate 25,Libertarian,D26,number,682,682,False,True
+By KS Senate,26,2026-10-01,Kansas Senate 25,No Labels Kansas,E26,blank,,,False,True
+By KS Senate,26,2026-10-01,Kansas Senate 25,Republican,F26,number,10998,10998,False,True
+By KS Senate,26,2026-10-01,Kansas Senate 25,United Kansas,G26,number,62,62,False,True
+By KS Senate,26,2026-10-01,Kansas Senate 25,Unaffiliated,H26,number,15842,15842,False,True
+By KS Senate,26,2026-10-01,Kansas Senate 25,Total,I26,number,41144,41144,False,True
+By KS Senate,27,2026-10-01,Kansas Senate 26,Democratic,C27,number,9341,9341,False,True
+By KS Senate,27,2026-10-01,Kansas Senate 26,Libertarian,D27,number,745,745,False,True
+By KS Senate,27,2026-10-01,Kansas Senate 26,No Labels Kansas,E27,blank,,,False,True
+By KS Senate,27,2026-10-01,Kansas Senate 26,Republican,F27,number,28595,28595,False,True
+By KS Senate,27,2026-10-01,Kansas Senate 26,United Kansas,G27,number,44,44,False,True
+By KS Senate,27,2026-10-01,Kansas Senate 26,Unaffiliated,H27,number,15213,15213,False,True
+By KS Senate,27,2026-10-01,Kansas Senate 26,Total,I27,number,53938,53938,False,True
+By KS Senate,28,2026-10-01,Kansas Senate 27,Democratic,C28,number,12122,12122,False,True
+By KS Senate,28,2026-10-01,Kansas Senate 27,Libertarian,D28,number,716,716,False,True
+By KS Senate,28,2026-10-01,Kansas Senate 27,No Labels Kansas,E28,blank,,,False,True
+By KS Senate,28,2026-10-01,Kansas Senate 27,Republican,F28,number,25056,25056,False,True
+By KS Senate,28,2026-10-01,Kansas Senate 27,United Kansas,G28,number,38,38,False,True
+By KS Senate,28,2026-10-01,Kansas Senate 27,Unaffiliated,H28,number,15495,15495,False,True
+By KS Senate,28,2026-10-01,Kansas Senate 27,Total,I28,number,53427,53427,False,True
+By KS Senate,29,2026-10-01,Kansas Senate 28,Democratic,C29,number,10241,10241,False,True
+By KS Senate,29,2026-10-01,Kansas Senate 28,Libertarian,D29,number,676,676,False,True
+By KS Senate,29,2026-10-01,Kansas Senate 28,No Labels Kansas,E29,blank,,,False,True
+By KS Senate,29,2026-10-01,Kansas Senate 28,Republican,F29,number,14526,14526,False,True
+By KS Senate,29,2026-10-01,Kansas Senate 28,United Kansas,G29,number,47,47,False,True
+By KS Senate,29,2026-10-01,Kansas Senate 28,Unaffiliated,H29,number,16531,16531,False,True
+By KS Senate,29,2026-10-01,Kansas Senate 28,Total,I29,number,42021,42021,False,True
+By KS Senate,30,2026-10-01,Kansas Senate 29,Democratic,C30,number,16985,16985,False,True
+By KS Senate,30,2026-10-01,Kansas Senate 29,Libertarian,D30,number,582,582,False,True
+By KS Senate,30,2026-10-01,Kansas Senate 29,No Labels Kansas,E30,blank,,,False,True
+By KS Senate,30,2026-10-01,Kansas Senate 29,Republican,F30,number,7716,7716,False,True
+By KS Senate,30,2026-10-01,Kansas Senate 29,United Kansas,G30,number,70,70,False,True
+By KS Senate,30,2026-10-01,Kansas Senate 29,Unaffiliated,H30,number,15006,15006,False,True
+By KS Senate,30,2026-10-01,Kansas Senate 29,Total,I30,number,40359,40359,False,True
+By KS Senate,31,2026-10-01,Kansas Senate 30,Democratic,C31,number,12520,12520,False,True
+By KS Senate,31,2026-10-01,Kansas Senate 30,Libertarian,D31,number,663,663,False,True
+By KS Senate,31,2026-10-01,Kansas Senate 30,No Labels Kansas,E31,blank,,,False,True
+By KS Senate,31,2026-10-01,Kansas Senate 30,Republican,F31,number,21623,21623,False,True
+By KS Senate,31,2026-10-01,Kansas Senate 30,United Kansas,G31,number,32,32,False,True
+By KS Senate,31,2026-10-01,Kansas Senate 30,Unaffiliated,H31,number,17075,17075,False,True
+By KS Senate,31,2026-10-01,Kansas Senate 30,Total,I31,number,51913,51913,False,True
+By KS Senate,32,2026-10-01,Kansas Senate 31,Democratic,C32,number,11814,11814,False,True
+By KS Senate,32,2026-10-01,Kansas Senate 31,Libertarian,D32,number,683,683,False,True
+By KS Senate,32,2026-10-01,Kansas Senate 31,No Labels Kansas,E32,blank,,,False,True
+By KS Senate,32,2026-10-01,Kansas Senate 31,Republican,F32,number,26269,26269,False,True
+By KS Senate,32,2026-10-01,Kansas Senate 31,United Kansas,G32,number,38,38,False,True
+By KS Senate,32,2026-10-01,Kansas Senate 31,Unaffiliated,H32,number,14808,14808,False,True
+By KS Senate,32,2026-10-01,Kansas Senate 31,Total,I32,number,53612,53612,False,True
+By KS Senate,33,2026-10-01,Kansas Senate 32,Democratic,C33,number,8315,8315,False,True
+By KS Senate,33,2026-10-01,Kansas Senate 32,Libertarian,D33,number,537,537,False,True
+By KS Senate,33,2026-10-01,Kansas Senate 32,No Labels Kansas,E33,blank,,,False,True
+By KS Senate,33,2026-10-01,Kansas Senate 32,Republican,F33,number,27406,27406,False,True
+By KS Senate,33,2026-10-01,Kansas Senate 32,United Kansas,G33,number,16,16,False,True
+By KS Senate,33,2026-10-01,Kansas Senate 32,Unaffiliated,H33,number,13467,13467,False,True
+By KS Senate,33,2026-10-01,Kansas Senate 32,Total,I33,number,49741,49741,False,True
+By KS Senate,34,2026-10-01,Kansas Senate 33,Democratic,C34,number,5967,5967,False,True
+By KS Senate,34,2026-10-01,Kansas Senate 33,Libertarian,D34,number,415,415,False,True
+By KS Senate,34,2026-10-01,Kansas Senate 33,No Labels Kansas,E34,blank,,,False,True
+By KS Senate,34,2026-10-01,Kansas Senate 33,Republican,F34,number,31059,31059,False,True
+By KS Senate,34,2026-10-01,Kansas Senate 33,United Kansas,G34,number,31,31,False,True
+By KS Senate,34,2026-10-01,Kansas Senate 33,Unaffiliated,H34,number,10706,10706,False,True
+By KS Senate,34,2026-10-01,Kansas Senate 33,Total,I34,number,48178,48178,False,True
+By KS Senate,35,2026-10-01,Kansas Senate 34,Democratic,C35,number,8611,8611,False,True
+By KS Senate,35,2026-10-01,Kansas Senate 34,Libertarian,D35,number,564,564,False,True
+By KS Senate,35,2026-10-01,Kansas Senate 34,No Labels Kansas,E35,blank,,,False,True
+By KS Senate,35,2026-10-01,Kansas Senate 34,Republican,F35,number,27860,27860,False,True
+By KS Senate,35,2026-10-01,Kansas Senate 34,United Kansas,G35,number,42,42,False,True
+By KS Senate,35,2026-10-01,Kansas Senate 34,Unaffiliated,H35,number,13335,13335,False,True
+By KS Senate,35,2026-10-01,Kansas Senate 34,Total,I35,number,50412,50412,False,True
+By KS Senate,36,2026-10-01,Kansas Senate 35,Democratic,C36,number,17421,17421,False,True
+By KS Senate,36,2026-10-01,Kansas Senate 35,Libertarian,D36,number,630,630,False,True
+By KS Senate,36,2026-10-01,Kansas Senate 35,No Labels Kansas,E36,blank,,,False,True
+By KS Senate,36,2026-10-01,Kansas Senate 35,Republican,F36,number,27013,27013,False,True
+By KS Senate,36,2026-10-01,Kansas Senate 35,United Kansas,G36,number,29,29,False,True
+By KS Senate,36,2026-10-01,Kansas Senate 35,Unaffiliated,H36,number,14919,14919,False,True
+By KS Senate,36,2026-10-01,Kansas Senate 35,Total,I36,number,60012,60012,False,True
+By KS Senate,37,2026-10-01,Kansas Senate 36,Democratic,C37,number,5204,5204,False,True
+By KS Senate,37,2026-10-01,Kansas Senate 36,Libertarian,D37,number,428,428,False,True
+By KS Senate,37,2026-10-01,Kansas Senate 36,No Labels Kansas,E37,blank,,,False,True
+By KS Senate,37,2026-10-01,Kansas Senate 36,Republican,F37,number,35614,35614,False,True
+By KS Senate,37,2026-10-01,Kansas Senate 36,United Kansas,G37,number,16,16,False,True
+By KS Senate,37,2026-10-01,Kansas Senate 36,Unaffiliated,H37,number,9672,9672,False,True
+By KS Senate,37,2026-10-01,Kansas Senate 36,Total,I37,number,50934,50934,False,True
+By KS Senate,38,2026-10-01,Kansas Senate 37,Democratic,C38,number,13298,13298,False,True
+By KS Senate,38,2026-10-01,Kansas Senate 37,Libertarian,D38,number,742,742,False,True
+By KS Senate,38,2026-10-01,Kansas Senate 37,No Labels Kansas,E38,blank,,,False,True
+By KS Senate,38,2026-10-01,Kansas Senate 37,Republican,F38,number,24300,24300,False,True
+By KS Senate,38,2026-10-01,Kansas Senate 37,United Kansas,G38,number,32,32,False,True
+By KS Senate,38,2026-10-01,Kansas Senate 37,Unaffiliated,H38,number,14209,14209,False,True
+By KS Senate,38,2026-10-01,Kansas Senate 37,Total,I38,number,52581,52581,False,True
+By KS Senate,39,2026-10-01,Kansas Senate 38,Democratic,C39,number,7916,7916,False,True
+By KS Senate,39,2026-10-01,Kansas Senate 38,Libertarian,D39,number,458,458,False,True
+By KS Senate,39,2026-10-01,Kansas Senate 38,No Labels Kansas,E39,blank,,,False,True
+By KS Senate,39,2026-10-01,Kansas Senate 38,Republican,F39,number,19308,19308,False,True
+By KS Senate,39,2026-10-01,Kansas Senate 38,United Kansas,G39,number,62,62,False,True
+By KS Senate,39,2026-10-01,Kansas Senate 38,Unaffiliated,H39,number,12395,12395,False,True
+By KS Senate,39,2026-10-01,Kansas Senate 38,Total,I39,number,40139,40139,False,True
+By KS Senate,40,2026-10-01,Kansas Senate 39,Democratic,C40,number,6631,6631,False,True
+By KS Senate,40,2026-10-01,Kansas Senate 39,Libertarian,D40,number,412,412,False,True
+By KS Senate,40,2026-10-01,Kansas Senate 39,No Labels Kansas,E40,blank,,,False,True
+By KS Senate,40,2026-10-01,Kansas Senate 39,Republican,F40,number,22855,22855,False,True
+By KS Senate,40,2026-10-01,Kansas Senate 39,United Kansas,G40,number,41,41,False,True
+By KS Senate,40,2026-10-01,Kansas Senate 39,Unaffiliated,H40,number,11499,11499,False,True
+By KS Senate,40,2026-10-01,Kansas Senate 39,Total,I40,number,41438,41438,False,True
+By KS Senate,41,2026-10-01,Kansas Senate 40,Democratic,C41,number,6271,6271,False,True
+By KS Senate,41,2026-10-01,Kansas Senate 40,Libertarian,D41,number,424,424,False,True
+By KS Senate,41,2026-10-01,Kansas Senate 40,No Labels Kansas,E41,blank,,,False,True
+By KS Senate,41,2026-10-01,Kansas Senate 40,Republican,F41,number,33007,33007,False,True
+By KS Senate,41,2026-10-01,Kansas Senate 40,United Kansas,G41,number,24,24,False,True
+By KS Senate,41,2026-10-01,Kansas Senate 40,Unaffiliated,H41,number,11301,11301,False,True
+By KS Senate,41,2026-10-01,Kansas Senate 40,Total,I41,number,51027,51027,False,True
+By KS Senate,42,2026-10-01,Grand Total,Democratic,C42,number,521669,521669,False,True
+By KS Senate,42,2026-10-01,Grand Total,Libertarian,D42,number,23840,23840,False,True
+By KS Senate,42,2026-10-01,Grand Total,No Labels Kansas,E42,blank,,,False,True
+By KS Senate,42,2026-10-01,Grand Total,Republican,F42,number,901822,901822,False,True
+By KS Senate,42,2026-10-01,Grand Total,United Kansas,G42,number,1398,1398,False,True
+By KS Senate,42,2026-10-01,Grand Total,Unaffiliated,H42,number,578791,578791,False,True
+By KS Senate,42,2026-10-01,Grand Total,Total,I42,number,2027520,2027520,False,True

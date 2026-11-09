@@ -1,0 +1,2646 @@
+sheet,cell,kind,value,physical,stored_type,style_id,raw_value,formula_present,formula_text,formula_attributes
+By County,A1,text,Date,True,s,,119,False,,{}
+By County,B1,text,County,True,s,,0,False,,{}
+By County,C1,text,Column1,True,s,,23,False,,{}
+By County,D1,text,Democratic,True,s,,1,False,,{}
+By County,E1,text,Libertarian,True,s,,2,False,,{}
+By County,F1,text,No Labels Kansas,True,s,,114,False,,{}
+By County,G1,text,Republican,True,s,,3,False,,{}
+By County,H1,text,United Kansas,True,s,2,4,False,,{}
+By County,I1,text,Unaffiliated,True,s,2,5,False,,{}
+By County,J1,text,Total,True,s,2,288,False,,{}
+By County,A2,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B2,text,Allen,True,s,,7,False,,{}
+By County,C2,text,"Allen County, KS",True,str,,"Allen County, KS",True," CONCATENATE(B2, "" County, KS"")","{""ref"": ""C2:C33"", ""si"": ""0"", ""t"": ""shared"", ""{http://www.w3.org/XML/1998/namespace}space"": ""preserve""}"
+By County,D2,number,1282,True,n,,1282,False,,{}
+By County,E2,number,105,True,n,2,105,False,,{}
+By County,F2,blank,,False,,,,False,,{}
+By County,G2,number,4759,True,n,,4759,False,,{}
+By County,H2,number,5,True,n,2,5,False,,{}
+By County,I2,number,2735,True,n,2,2735,False,,{}
+By County,J2,number,8886,True,n,2,8886,False,,{}
+By County,A3,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B3,text,Anderson,True,s,,8,False,,{}
+By County,C3,text,"Anderson County, KS",True,str,,"Anderson County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D3,number,874,True,n,,874,False,,{}
+By County,E3,number,68,True,n,2,68,False,,{}
+By County,F3,blank,,False,,,,False,,{}
+By County,G3,number,3319,True,n,,3319,False,,{}
+By County,H3,number,2,True,n,2,2,False,,{}
+By County,I3,number,1585,True,n,2,1585,False,,{}
+By County,J3,number,5848,True,n,2,5848,False,,{}
+By County,A4,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B4,text,Atchison,True,s,,9,False,,{}
+By County,C4,text,"Atchison County, KS",True,str,,"Atchison County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D4,number,2278,True,n,,2278,False,,{}
+By County,E4,number,66,True,n,2,66,False,,{}
+By County,F4,blank,,False,,,,False,,{}
+By County,G4,number,5035,True,n,,5035,False,,{}
+By County,H4,number,3,True,n,2,3,False,,{}
+By County,I4,number,3809,True,n,2,3809,False,,{}
+By County,J4,number,11191,True,n,2,11191,False,,{}
+By County,A5,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B5,text,Barber,True,s,,10,False,,{}
+By County,C5,text,"Barber County, KS",True,str,,"Barber County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D5,number,256,True,n,,256,False,,{}
+By County,E5,number,23,True,n,2,23,False,,{}
+By County,F5,blank,,False,,,,False,,{}
+By County,G5,number,2248,True,n,,2248,False,,{}
+By County,H5,text,,True,s,2,11,False,,{}
+By County,I5,number,330,True,n,2,330,False,,{}
+By County,J5,number,2857,True,n,2,2857,False,,{}
+By County,A6,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B6,text,Barton,True,s,,12,False,,{}
+By County,C6,text,"Barton County, KS",True,str,,"Barton County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D6,number,2242,True,n,,2242,False,,{}
+By County,E6,number,113,True,n,2,113,False,,{}
+By County,F6,blank,,False,,,,False,,{}
+By County,G6,number,10302,True,n,,10302,False,,{}
+By County,H6,number,13,True,n,2,13,False,,{}
+By County,I6,number,4470,True,n,2,4470,False,,{}
+By County,J6,number,17140,True,n,2,17140,False,,{}
+By County,A7,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B7,text,Bourbon,True,s,,13,False,,{}
+By County,C7,text,"Bourbon County, KS",True,str,,"Bourbon County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D7,number,2156,True,n,,2156,False,,{}
+By County,E7,number,109,True,n,2,109,False,,{}
+By County,F7,blank,,False,,,,False,,{}
+By County,G7,number,6413,True,n,,6413,False,,{}
+By County,H7,number,4,True,n,2,4,False,,{}
+By County,I7,number,4115,True,n,2,4115,False,,{}
+By County,J7,number,12797,True,n,2,12797,False,,{}
+By County,A8,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B8,text,Brown,True,s,,14,False,,{}
+By County,C8,text,"Brown County, KS",True,str,,"Brown County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D8,number,964,True,n,,964,False,,{}
+By County,E8,number,67,True,n,2,67,False,,{}
+By County,F8,blank,,False,,,,False,,{}
+By County,G8,number,3878,True,n,,3878,False,,{}
+By County,H8,number,3,True,n,2,3,False,,{}
+By County,I8,number,1720,True,n,2,1720,False,,{}
+By County,J8,number,6632,True,n,2,6632,False,,{}
+By County,A9,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B9,text,Butler,True,s,,15,False,,{}
+By County,C9,text,"Butler County, KS",True,str,,"Butler County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D9,number,7998,True,n,,7998,False,,{}
+By County,E9,number,689,True,n,2,689,False,,{}
+By County,F9,blank,,False,,,,False,,{}
+By County,G9,number,27491,True,n,,27491,False,,{}
+By County,H9,number,23,True,n,2,23,False,,{}
+By County,I9,number,14438,True,n,2,14438,False,,{}
+By County,J9,number,50639,True,n,2,50639,False,,{}
+By County,A10,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B10,text,Chase,True,s,,16,False,,{}
+By County,C10,text,"Chase County, KS",True,str,,"Chase County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D10,number,263,True,n,,263,False,,{}
+By County,E10,number,16,True,n,2,16,False,,{}
+By County,F10,blank,,False,,,,False,,{}
+By County,G10,number,1342,True,n,,1342,False,,{}
+By County,H10,text,,True,s,2,11,False,,{}
+By County,I10,number,255,True,n,2,255,False,,{}
+By County,J10,number,1876,True,n,2,1876,False,,{}
+By County,A11,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B11,text,Chautauqua,True,s,,17,False,,{}
+By County,C11,text,"Chautauqua County, KS",True,str,,"Chautauqua County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D11,number,186,True,n,,186,False,,{}
+By County,E11,number,15,True,n,2,15,False,,{}
+By County,F11,blank,,False,,,,False,,{}
+By County,G11,number,1697,True,n,,1697,False,,{}
+By County,H11,number,2,True,n,2,2,False,,{}
+By County,I11,number,408,True,n,2,408,False,,{}
+By County,J11,number,2308,True,n,2,2308,False,,{}
+By County,A12,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B12,text,Cherokee,True,s,,18,False,,{}
+By County,C12,text,"Cherokee County, KS",True,str,,"Cherokee County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D12,number,2808,True,n,,2808,False,,{}
+By County,E12,number,146,True,n,2,146,False,,{}
+By County,F12,blank,,False,,,,False,,{}
+By County,G12,number,7760,True,n,,7760,False,,{}
+By County,H12,number,6,True,n,2,6,False,,{}
+By County,I12,number,5094,True,n,2,5094,False,,{}
+By County,J12,number,15814,True,n,2,15814,False,,{}
+By County,A13,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B13,text,Cheyenne,True,s,,19,False,,{}
+By County,C13,text,"Cheyenne County, KS",True,str,,"Cheyenne County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D13,number,159,True,n,,159,False,,{}
+By County,E13,number,16,True,n,2,16,False,,{}
+By County,F13,blank,,False,,,,False,,{}
+By County,G13,number,1487,True,n,,1487,False,,{}
+By County,H13,number,3,True,n,2,3,False,,{}
+By County,I13,number,353,True,n,2,353,False,,{}
+By County,J13,number,2018,True,n,2,2018,False,,{}
+By County,A14,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B14,text,Clark,True,s,,20,False,,{}
+By County,C14,text,"Clark County, KS",True,str,,"Clark County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D14,number,160,True,n,,160,False,,{}
+By County,E14,number,14,True,n,2,14,False,,{}
+By County,F14,blank,,False,,,,False,,{}
+By County,G14,number,1054,True,n,,1054,False,,{}
+By County,H14,number,1,True,n,2,1,False,,{}
+By County,I14,number,239,True,n,2,239,False,,{}
+By County,J14,number,1468,True,n,2,1468,False,,{}
+By County,A15,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B15,text,Clay,True,s,,21,False,,{}
+By County,C15,text,"Clay County, KS",True,str,,"Clay County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D15,number,631,True,n,,631,False,,{}
+By County,E15,number,61,True,n,2,61,False,,{}
+By County,F15,blank,,False,,,,False,,{}
+By County,G15,number,4187,True,n,,4187,False,,{}
+By County,H15,text,,True,s,2,11,False,,{}
+By County,I15,number,1206,True,n,2,1206,False,,{}
+By County,J15,number,6085,True,n,2,6085,False,,{}
+By County,A16,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B16,text,Cloud,True,s,,22,False,,{}
+By County,C16,text,"Cloud County, KS",True,str,,"Cloud County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D16,number,707,True,n,,707,False,,{}
+By County,E16,number,58,True,n,2,58,False,,{}
+By County,F16,blank,,False,,,,False,,{}
+By County,G16,number,3810,True,n,,3810,False,,{}
+By County,H16,number,2,True,n,2,2,False,,{}
+By County,I16,number,1188,True,n,2,1188,False,,{}
+By County,J16,number,5765,True,n,2,5765,False,,{}
+By County,A17,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B17,text,Coffey,True,s,,39,False,,{}
+By County,C17,text,"Coffey County, KS",True,str,,"Coffey County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D17,number,737,True,n,,737,False,,{}
+By County,E17,number,69,True,n,2,69,False,,{}
+By County,F17,blank,,False,,,,False,,{}
+By County,G17,number,4042,True,n,,4042,False,,{}
+By County,H17,number,4,True,n,2,4,False,,{}
+By County,I17,number,1210,True,n,2,1210,False,,{}
+By County,J17,number,6062,True,n,2,6062,False,,{}
+By County,A18,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B18,text,Comanche,True,s,,40,False,,{}
+By County,C18,text,"Comanche County, KS",True,str,,"Comanche County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D18,number,105,True,n,,105,False,,{}
+By County,E18,number,15,True,n,2,15,False,,{}
+By County,F18,blank,,False,,,,False,,{}
+By County,G18,number,872,True,n,,872,False,,{}
+By County,H18,text,,True,s,2,11,False,,{}
+By County,I18,number,138,True,n,2,138,False,,{}
+By County,J18,number,1130,True,n,2,1130,False,,{}
+By County,A19,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B19,text,Cowley,True,s,,41,False,,{}
+By County,C19,text,"Cowley County, KS",True,str,,"Cowley County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D19,number,3938,True,n,,3938,False,,{}
+By County,E19,number,212,True,n,2,212,False,,{}
+By County,F19,blank,,False,,,,False,,{}
+By County,G19,number,10638,True,n,,10638,False,,{}
+By County,H19,number,5,True,n,2,5,False,,{}
+By County,I19,number,5862,True,n,2,5862,False,,{}
+By County,J19,number,20655,True,n,2,20655,False,,{}
+By County,A20,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B20,text,Crawford,True,s,,42,False,,{}
+By County,C20,text,"Crawford County, KS",True,str,,"Crawford County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D20,number,6967,True,n,,6967,False,,{}
+By County,E20,number,281,True,n,2,281,False,,{}
+By County,F20,blank,,False,,,,False,,{}
+By County,G20,number,10552,True,n,,10552,False,,{}
+By County,H20,number,13,True,n,2,13,False,,{}
+By County,I20,number,10258,True,n,2,10258,False,,{}
+By County,J20,number,28071,True,n,2,28071,False,,{}
+By County,A21,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B21,text,Decatur,True,s,,43,False,,{}
+By County,C21,text,"Decatur County, KS",True,str,,"Decatur County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D21,number,194,True,n,,194,False,,{}
+By County,E21,number,22,True,n,2,22,False,,{}
+By County,F21,blank,,False,,,,False,,{}
+By County,G21,number,1475,True,n,,1475,False,,{}
+By County,H21,text,,True,s,2,11,False,,{}
+By County,I21,number,340,True,n,2,340,False,,{}
+By County,J21,number,2031,True,n,2,2031,False,,{}
+By County,A22,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B22,text,Dickinson,True,s,,44,False,,{}
+By County,C22,text,"Dickinson County, KS",True,str,,"Dickinson County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D22,number,1708,True,n,,1708,False,,{}
+By County,E22,number,142,True,n,2,142,False,,{}
+By County,F22,blank,,False,,,,False,,{}
+By County,G22,number,8603,True,n,,8603,False,,{}
+By County,H22,number,9,True,n,2,9,False,,{}
+By County,I22,number,3470,True,n,2,3470,False,,{}
+By County,J22,number,13932,True,n,2,13932,False,,{}
+By County,A23,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B23,text,Doniphan,True,s,,45,False,,{}
+By County,C23,text,"Doniphan County, KS",True,str,,"Doniphan County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D23,number,527,True,n,,527,False,,{}
+By County,E23,number,21,True,n,2,21,False,,{}
+By County,F23,blank,,False,,,,False,,{}
+By County,G23,number,3219,True,n,,3219,False,,{}
+By County,H23,text,,True,s,2,11,False,,{}
+By County,I23,number,1277,True,n,2,1277,False,,{}
+By County,J23,number,5044,True,n,2,5044,False,,{}
+By County,A24,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B24,text,Douglas,True,s,,46,False,,{}
+By County,C24,text,"Douglas County, KS",True,str,,"Douglas County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D24,number,36810,True,n,,36810,False,,{}
+By County,E24,number,977,True,n,2,977,False,,{}
+By County,F24,blank,,False,,,,False,,{}
+By County,G24,number,20138,True,n,,20138,False,,{}
+By County,H24,number,47,True,n,2,47,False,,{}
+By County,I24,number,23013,True,n,2,23013,False,,{}
+By County,J24,number,80985,True,n,2,80985,False,,{}
+By County,A25,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B25,text,Edwards,True,s,,47,False,,{}
+By County,C25,text,"Edwards County, KS",True,str,,"Edwards County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D25,number,221,True,n,,221,False,,{}
+By County,E25,number,10,True,n,2,10,False,,{}
+By County,F25,blank,,False,,,,False,,{}
+By County,G25,number,1258,True,n,,1258,False,,{}
+By County,H25,text,,True,s,2,11,False,,{}
+By County,I25,number,351,True,n,2,351,False,,{}
+By County,J25,number,1840,True,n,2,1840,False,,{}
+By County,A26,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B26,text,Elk,True,s,,48,False,,{}
+By County,C26,text,"Elk County, KS",True,str,,"Elk County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D26,number,181,True,n,,181,False,,{}
+By County,E26,number,16,True,n,2,16,False,,{}
+By County,F26,blank,,False,,,,False,,{}
+By County,G26,number,1368,True,n,,1368,False,,{}
+By County,H26,text,,True,s,2,11,False,,{}
+By County,I26,number,324,True,n,2,324,False,,{}
+By County,J26,number,1889,True,n,2,1889,False,,{}
+By County,A27,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B27,text,Ellis,True,s,,49,False,,{}
+By County,C27,text,"Ellis County, KS",True,str,,"Ellis County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D27,number,3633,True,n,,3633,False,,{}
+By County,E27,number,228,True,n,2,228,False,,{}
+By County,F27,blank,,False,,,,False,,{}
+By County,G27,number,11055,True,n,,11055,False,,{}
+By County,H27,number,10,True,n,2,10,False,,{}
+By County,I27,number,5694,True,n,2,5694,False,,{}
+By County,J27,number,20620,True,n,2,20620,False,,{}
+By County,A28,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B28,text,Ellsworth,True,s,,50,False,,{}
+By County,C28,text,"Ellsworth County, KS",True,str,,"Ellsworth County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D28,number,589,True,n,,589,False,,{}
+By County,E28,number,25,True,n,2,25,False,,{}
+By County,F28,blank,,False,,,,False,,{}
+By County,G28,number,2393,True,n,,2393,False,,{}
+By County,H28,number,2,True,n,2,2,False,,{}
+By County,I28,number,833,True,n,2,833,False,,{}
+By County,J28,number,3842,True,n,2,3842,False,,{}
+By County,A29,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B29,text,Finney,True,s,,51,False,,{}
+By County,C29,text,"Finney County, KS",True,str,,"Finney County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D29,number,4647,True,n,,4647,False,,{}
+By County,E29,number,240,True,n,2,240,False,,{}
+By County,F29,blank,,False,,,,False,,{}
+By County,G29,number,8856,True,n,,8856,False,,{}
+By County,H29,number,26,True,n,2,26,False,,{}
+By County,I29,number,7223,True,n,2,7223,False,,{}
+By County,J29,number,20992,True,n,2,20992,False,,{}
+By County,A30,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B30,text,Ford,True,s,,52,False,,{}
+By County,C30,text,"Ford County, KS",True,str,,"Ford County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D30,number,4096,True,n,,4096,False,,{}
+By County,E30,number,208,True,n,2,208,False,,{}
+By County,F30,blank,,False,,,,False,,{}
+By County,G30,number,7000,True,n,,7000,False,,{}
+By County,H30,number,28,True,n,2,28,False,,{}
+By County,I30,number,5849,True,n,2,5849,False,,{}
+By County,J30,number,17181,True,n,2,17181,False,,{}
+By County,A31,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B31,text,Franklin,True,s,,53,False,,{}
+By County,C31,text,"Franklin County, KS",True,str,,"Franklin County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D31,number,3378,True,n,,3378,False,,{}
+By County,E31,number,254,True,n,2,254,False,,{}
+By County,F31,blank,,False,,,,False,,{}
+By County,G31,number,10603,True,n,,10603,False,,{}
+By County,H31,number,7,True,n,2,7,False,,{}
+By County,I31,number,5248,True,n,2,5248,False,,{}
+By County,J31,number,19490,True,n,2,19490,False,,{}
+By County,A32,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B32,text,Geary,True,s,,24,False,,{}
+By County,C32,text,"Geary County, KS",True,str,,"Geary County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D32,number,4314,True,n,,4314,False,,{}
+By County,E32,number,315,True,n,2,315,False,,{}
+By County,F32,blank,,False,,,,False,,{}
+By County,G32,number,7361,True,n,,7361,False,,{}
+By County,H32,number,13,True,n,2,13,False,,{}
+By County,I32,number,7195,True,n,2,7195,False,,{}
+By County,J32,number,19198,True,n,2,19198,False,,{}
+By County,A33,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B33,text,Gove,True,s,,25,False,,{}
+By County,C33,text,"Gove County, KS",True,str,,"Gove County, KS",True,,"{""si"": ""0"", ""t"": ""shared""}"
+By County,D33,number,159,True,n,,159,False,,{}
+By County,E33,number,5,True,n,2,5,False,,{}
+By County,F33,blank,,False,,,,False,,{}
+By County,G33,number,1383,True,n,,1383,False,,{}
+By County,H33,number,1,True,n,2,1,False,,{}
+By County,I33,number,349,True,n,2,349,False,,{}
+By County,J33,number,1897,True,n,2,1897,False,,{}
+By County,A34,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B34,text,Graham,True,s,,26,False,,{}
+By County,C34,text,"Graham County, KS",True,str,,"Graham County, KS",True," CONCATENATE(B34, "" County, KS"")","{""ref"": ""C34:C65"", ""si"": ""1"", ""t"": ""shared"", ""{http://www.w3.org/XML/1998/namespace}space"": ""preserve""}"
+By County,D34,number,176,True,n,,176,False,,{}
+By County,E34,number,9,True,n,2,9,False,,{}
+By County,F34,blank,,False,,,,False,,{}
+By County,G34,number,1384,True,n,,1384,False,,{}
+By County,H34,number,1,True,n,2,1,False,,{}
+By County,I34,number,249,True,n,2,249,False,,{}
+By County,J34,number,1819,True,n,2,1819,False,,{}
+By County,A35,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B35,text,Grant,True,s,,27,False,,{}
+By County,C35,text,"Grant County, KS",True,str,,"Grant County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D35,number,465,True,n,,465,False,,{}
+By County,E35,number,39,True,n,2,39,False,,{}
+By County,F35,blank,,False,,,,False,,{}
+By County,G35,number,2374,True,n,,2374,False,,{}
+By County,H35,number,6,True,n,2,6,False,,{}
+By County,I35,number,922,True,n,2,922,False,,{}
+By County,J35,number,3806,True,n,2,3806,False,,{}
+By County,A36,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B36,text,Gray,True,s,,28,False,,{}
+By County,C36,text,"Gray County, KS",True,str,,"Gray County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D36,number,377,True,n,,377,False,,{}
+By County,E36,number,35,True,n,2,35,False,,{}
+By County,F36,blank,,False,,,,False,,{}
+By County,G36,number,2184,True,n,,2184,False,,{}
+By County,H36,number,1,True,n,2,1,False,,{}
+By County,I36,number,710,True,n,2,710,False,,{}
+By County,J36,number,3307,True,n,2,3307,False,,{}
+By County,A37,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B37,text,Greeley,True,s,,29,False,,{}
+By County,C37,text,"Greeley County, KS",True,str,,"Greeley County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D37,number,43,True,n,,43,False,,{}
+By County,E37,number,3,True,n,2,3,False,,{}
+By County,F37,blank,,False,,,,False,,{}
+By County,G37,number,690,True,n,,690,False,,{}
+By County,H37,text,,True,s,2,11,False,,{}
+By County,I37,number,111,True,n,2,111,False,,{}
+By County,J37,number,847,True,n,2,847,False,,{}
+By County,A38,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B38,text,Greenwood,True,s,,30,False,,{}
+By County,C38,text,"Greenwood County, KS",True,str,,"Greenwood County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D38,number,483,True,n,,483,False,,{}
+By County,E38,number,36,True,n,2,36,False,,{}
+By County,F38,blank,,False,,,,False,,{}
+By County,G38,number,2843,True,n,,2843,False,,{}
+By County,H38,number,2,True,n,2,2,False,,{}
+By County,I38,number,1267,True,n,2,1267,False,,{}
+By County,J38,number,4631,True,n,2,4631,False,,{}
+By County,A39,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B39,text,Hamilton,True,s,,31,False,,{}
+By County,C39,text,"Hamilton County, KS",True,str,,"Hamilton County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D39,number,122,True,n,,122,False,,{}
+By County,E39,number,12,True,n,2,12,False,,{}
+By County,F39,blank,,False,,,,False,,{}
+By County,G39,number,888,True,n,,888,False,,{}
+By County,H39,text,,True,s,2,11,False,,{}
+By County,I39,number,290,True,n,2,290,False,,{}
+By County,J39,number,1312,True,n,2,1312,False,,{}
+By County,A40,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B40,text,Harper,True,s,,32,False,,{}
+By County,C40,text,"Harper County, KS",True,str,,"Harper County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D40,number,458,True,n,,458,False,,{}
+By County,E40,number,36,True,n,2,36,False,,{}
+By County,F40,blank,,False,,,,False,,{}
+By County,G40,number,2581,True,n,,2581,False,,{}
+By County,H40,number,4,True,n,2,4,False,,{}
+By County,I40,number,788,True,n,2,788,False,,{}
+By County,J40,number,3867,True,n,2,3867,False,,{}
+By County,A41,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B41,text,Harvey,True,s,,33,False,,{}
+By County,C41,text,"Harvey County, KS",True,str,,"Harvey County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D41,number,5569,True,n,,5569,False,,{}
+By County,E41,number,246,True,n,2,246,False,,{}
+By County,F41,blank,,False,,,,False,,{}
+By County,G41,number,11732,True,n,,11732,False,,{}
+By County,H41,number,15,True,n,2,15,False,,{}
+By County,I41,number,5682,True,n,2,5682,False,,{}
+By County,J41,number,23244,True,n,2,23244,False,,{}
+By County,A42,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B42,text,Haskell,True,s,,34,False,,{}
+By County,C42,text,"Haskell County, KS",True,str,,"Haskell County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D42,number,231,True,n,,231,False,,{}
+By County,E42,number,12,True,n,2,12,False,,{}
+By County,F42,blank,,False,,,,False,,{}
+By County,G42,number,1501,True,n,,1501,False,,{}
+By County,H42,text,,True,s,2,11,False,,{}
+By County,I42,number,493,True,n,2,493,False,,{}
+By County,J42,number,2237,True,n,2,2237,False,,{}
+By County,A43,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B43,text,Hodgeman,True,s,,35,False,,{}
+By County,C43,text,"Hodgeman County, KS",True,str,,"Hodgeman County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D43,number,121,True,n,,121,False,,{}
+By County,E43,number,4,True,n,2,4,False,,{}
+By County,F43,blank,,False,,,,False,,{}
+By County,G43,number,942,True,n,,942,False,,{}
+By County,H43,text,,True,s,2,11,False,,{}
+By County,I43,number,206,True,n,2,206,False,,{}
+By County,J43,number,1273,True,n,2,1273,False,,{}
+By County,A44,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B44,text,Jackson,True,s,,36,False,,{}
+By County,C44,text,"Jackson County, KS",True,str,,"Jackson County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D44,number,1634,True,n,,1634,False,,{}
+By County,E44,number,69,True,n,2,69,False,,{}
+By County,F44,blank,,False,,,,False,,{}
+By County,G44,number,5097,True,n,,5097,False,,{}
+By County,H44,number,5,True,n,2,5,False,,{}
+By County,I44,number,2480,True,n,2,2480,False,,{}
+By County,J44,number,9285,True,n,2,9285,False,,{}
+By County,A45,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B45,text,Jefferson,True,s,,37,False,,{}
+By County,C45,text,"Jefferson County, KS",True,str,,"Jefferson County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D45,number,2591,True,n,,2591,False,,{}
+By County,E45,number,178,True,n,2,178,False,,{}
+By County,F45,blank,,False,,,,False,,{}
+By County,G45,number,7367,True,n,,7367,False,,{}
+By County,H45,number,5,True,n,2,5,False,,{}
+By County,I45,number,4073,True,n,2,4073,False,,{}
+By County,J45,number,14214,True,n,2,14214,False,,{}
+By County,A46,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B46,text,Jewell,True,s,,38,False,,{}
+By County,C46,text,"Jewell County, KS",True,str,,"Jewell County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D46,number,170,True,n,,170,False,,{}
+By County,E46,number,25,True,n,2,25,False,,{}
+By County,F46,blank,,False,,,,False,,{}
+By County,G46,number,1620,True,n,,1620,False,,{}
+By County,H46,number,1,True,n,2,1,False,,{}
+By County,I46,number,412,True,n,2,412,False,,{}
+By County,J46,number,2228,True,n,2,2228,False,,{}
+By County,A47,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B47,text,Johnson,True,s,,54,False,,{}
+By County,C47,text,"Johnson County, KS",True,str,,"Johnson County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D47,number,159036,True,n,,159036,False,,{}
+By County,E47,number,5616,True,n,2,5616,False,,{}
+By County,F47,blank,,False,,,,False,,{}
+By County,G47,number,187057,True,n,,187057,False,,{}
+By County,H47,number,274,True,n,2,274,False,,{}
+By County,I47,number,123049,True,n,2,123049,False,,{}
+By County,J47,number,475032,True,n,2,475032,False,,{}
+By County,A48,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B48,text,Kearny,True,s,,55,False,,{}
+By County,C48,text,"Kearny County, KS",True,str,,"Kearny County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D48,number,249,True,n,,249,False,,{}
+By County,E48,number,14,True,n,2,14,False,,{}
+By County,F48,blank,,False,,,,False,,{}
+By County,G48,number,1418,True,n,,1418,False,,{}
+By County,H48,number,2,True,n,2,2,False,,{}
+By County,I48,number,519,True,n,2,519,False,,{}
+By County,J48,number,2202,True,n,2,2202,False,,{}
+By County,A49,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B49,text,Kingman,True,s,,56,False,,{}
+By County,C49,text,"Kingman County, KS",True,str,,"Kingman County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D49,number,649,True,n,,649,False,,{}
+By County,E49,number,45,True,n,2,45,False,,{}
+By County,F49,blank,,False,,,,False,,{}
+By County,G49,number,3778,True,n,,3778,False,,{}
+By County,H49,number,2,True,n,2,2,False,,{}
+By County,I49,number,1200,True,n,2,1200,False,,{}
+By County,J49,number,5674,True,n,2,5674,False,,{}
+By County,A50,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B50,text,Kiowa,True,s,,57,False,,{}
+By County,C50,text,"Kiowa County, KS",True,str,,"Kiowa County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D50,number,134,True,n,,134,False,,{}
+By County,E50,number,14,True,n,2,14,False,,{}
+By County,F50,blank,,False,,,,False,,{}
+By County,G50,number,1155,True,n,,1155,False,,{}
+By County,H50,text,,True,s,2,11,False,,{}
+By County,I50,number,210,True,n,2,210,False,,{}
+By County,J50,number,1513,True,n,2,1513,False,,{}
+By County,A51,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B51,text,Labette,True,s,,58,False,,{}
+By County,C51,text,"Labette County, KS",True,str,,"Labette County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D51,number,2662,True,n,,2662,False,,{}
+By County,E51,number,120,True,n,2,120,False,,{}
+By County,F51,blank,,False,,,,False,,{}
+By County,G51,number,6387,True,n,,6387,False,,{}
+By County,H51,number,6,True,n,2,6,False,,{}
+By County,I51,number,4553,True,n,2,4553,False,,{}
+By County,J51,number,13728,True,n,2,13728,False,,{}
+By County,A52,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B52,text,Lane,True,s,,59,False,,{}
+By County,C52,text,"Lane County, KS",True,str,,"Lane County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D52,number,85,True,n,,85,False,,{}
+By County,E52,number,9,True,n,2,9,False,,{}
+By County,F52,blank,,False,,,,False,,{}
+By County,G52,number,855,True,n,,855,False,,{}
+By County,H52,text,,True,s,2,11,False,,{}
+By County,I52,number,173,True,n,2,173,False,,{}
+By County,J52,number,1122,True,n,2,1122,False,,{}
+By County,A53,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B53,text,Leavenworth,True,s,,60,False,,{}
+By County,C53,text,"Leavenworth County, KS",True,str,,"Leavenworth County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D53,number,13182,True,n,,13182,False,,{}
+By County,E53,number,730,True,n,2,730,False,,{}
+By County,F53,blank,,False,,,,False,,{}
+By County,G53,number,25076,True,n,,25076,False,,{}
+By County,H53,number,37,True,n,2,37,False,,{}
+By County,I53,number,19559,True,n,2,19559,False,,{}
+By County,J53,number,58584,True,n,2,58584,False,,{}
+By County,A54,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B54,text,Lincoln,True,s,,61,False,,{}
+By County,C54,text,"Lincoln County, KS",True,str,,"Lincoln County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D54,number,213,True,n,,213,False,,{}
+By County,E54,number,38,True,n,2,38,False,,{}
+By County,F54,blank,,False,,,,False,,{}
+By County,G54,number,1517,True,n,,1517,False,,{}
+By County,H54,number,1,True,n,2,1,False,,{}
+By County,I54,number,346,True,n,2,346,False,,{}
+By County,J54,number,2115,True,n,2,2115,False,,{}
+By County,A55,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B55,text,Linn,True,s,,62,False,,{}
+By County,C55,text,"Linn County, KS",True,str,,"Linn County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D55,number,963,True,n,,963,False,,{}
+By County,E55,number,66,True,n,2,66,False,,{}
+By County,F55,blank,,False,,,,False,,{}
+By County,G55,number,4904,True,n,,4904,False,,{}
+By County,H55,number,3,True,n,2,3,False,,{}
+By County,I55,number,1937,True,n,2,1937,False,,{}
+By County,J55,number,7873,True,n,2,7873,False,,{}
+By County,A56,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B56,text,Logan,True,s,,63,False,,{}
+By County,C56,text,"Logan County, KS",True,str,,"Logan County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D56,number,132,True,n,,132,False,,{}
+By County,E56,number,10,True,n,2,10,False,,{}
+By County,F56,blank,,False,,,,False,,{}
+By County,G56,number,1415,True,n,,1415,False,,{}
+By County,H56,number,1,True,n,2,1,False,,{}
+By County,I56,number,361,True,n,2,361,False,,{}
+By County,J56,number,1919,True,n,2,1919,False,,{}
+By County,A57,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B57,text,Lyon,True,s,,64,False,,{}
+By County,C57,text,"Lyon County, KS",True,str,,"Lyon County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D57,number,5057,True,n,,5057,False,,{}
+By County,E57,number,214,True,n,2,214,False,,{}
+By County,F57,blank,,False,,,,False,,{}
+By County,G57,number,8472,True,n,,8472,False,,{}
+By County,H57,number,24,True,n,2,24,False,,{}
+By County,I57,number,7016,True,n,2,7016,False,,{}
+By County,J57,number,20783,True,n,2,20783,False,,{}
+By County,A58,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B58,text,Marion,True,s,,65,False,,{}
+By County,C58,text,"Marion County, KS",True,str,,"Marion County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D58,number,1015,True,n,,1015,False,,{}
+By County,E58,number,71,True,n,2,71,False,,{}
+By County,F58,blank,,False,,,,False,,{}
+By County,G58,number,5284,True,n,,5284,False,,{}
+By County,H58,number,4,True,n,2,4,False,,{}
+By County,I58,number,1775,True,n,2,1775,False,,{}
+By County,J58,number,8149,True,n,2,8149,False,,{}
+By County,A59,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B59,text,Marshall,True,s,,66,False,,{}
+By County,C59,text,"Marshall County, KS",True,str,,"Marshall County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D59,number,1174,True,n,,1174,False,,{}
+By County,E59,number,46,True,n,2,46,False,,{}
+By County,F59,blank,,False,,,,False,,{}
+By County,G59,number,4087,True,n,,4087,False,,{}
+By County,H59,number,5,True,n,2,5,False,,{}
+By County,I59,number,1934,True,n,2,1934,False,,{}
+By County,J59,number,7246,True,n,2,7246,False,,{}
+By County,A60,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B60,text,McPherson,True,s,,67,False,,{}
+By County,C60,text,"McPherson County, KS",True,str,,"McPherson County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D60,number,2965,True,n,,2965,False,,{}
+By County,E60,number,228,True,n,2,228,False,,{}
+By County,F60,blank,,False,,,,False,,{}
+By County,G60,number,11548,True,n,,11548,False,,{}
+By County,H60,number,13,True,n,2,13,False,,{}
+By County,I60,number,4878,True,n,2,4878,False,,{}
+By County,J60,number,19632,True,n,2,19632,False,,{}
+By County,A61,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B61,text,Meade,True,s,,68,False,,{}
+By County,C61,text,"Meade County, KS",True,str,,"Meade County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D61,number,294,True,n,,294,False,,{}
+By County,E61,number,23,True,n,2,23,False,,{}
+By County,F61,blank,,False,,,,False,,{}
+By County,G61,number,2154,True,n,,2154,False,,{}
+By County,H61,number,1,True,n,2,1,False,,{}
+By County,I61,number,718,True,n,2,718,False,,{}
+By County,J61,number,3190,True,n,2,3190,False,,{}
+By County,A62,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B62,text,Miami,True,s,,69,False,,{}
+By County,C62,text,"Miami County, KS",True,str,,"Miami County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D62,number,4593,True,n,,4593,False,,{}
+By County,E62,number,314,True,n,2,314,False,,{}
+By County,F62,blank,,False,,,,False,,{}
+By County,G62,number,14432,True,n,,14432,False,,{}
+By County,H62,number,11,True,n,2,11,False,,{}
+By County,I62,number,7087,True,n,2,7087,False,,{}
+By County,J62,number,26437,True,n,2,26437,False,,{}
+By County,A63,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B63,text,Mitchell,True,s,,70,False,,{}
+By County,C63,text,"Mitchell County, KS",True,str,,"Mitchell County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D63,number,415,True,n,,415,False,,{}
+By County,E63,number,21,True,n,2,21,False,,{}
+By County,F63,blank,,False,,,,False,,{}
+By County,G63,number,3053,True,n,,3053,False,,{}
+By County,H63,number,1,True,n,2,1,False,,{}
+By County,I63,number,723,True,n,2,723,False,,{}
+By County,J63,number,4213,True,n,2,4213,False,,{}
+By County,A64,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B64,text,Montgomery,True,s,,71,False,,{}
+By County,C64,text,"Montgomery County, KS",True,str,,"Montgomery County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D64,number,3733,True,n,,3733,False,,{}
+By County,E64,number,236,True,n,2,236,False,,{}
+By County,F64,blank,,False,,,,False,,{}
+By County,G64,number,12018,True,n,,12018,False,,{}
+By County,H64,number,2,True,n,2,2,False,,{}
+By County,I64,number,5411,True,n,2,5411,False,,{}
+By County,J64,number,21400,True,n,2,21400,False,,{}
+By County,A65,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B65,text,Morris,True,s,,72,False,,{}
+By County,C65,text,"Morris County, KS",True,str,,"Morris County, KS",True,,"{""si"": ""1"", ""t"": ""shared""}"
+By County,D65,number,564,True,n,,564,False,,{}
+By County,E65,number,40,True,n,2,40,False,,{}
+By County,F65,blank,,False,,,,False,,{}
+By County,G65,number,2504,True,n,,2504,False,,{}
+By County,H65,number,4,True,n,2,4,False,,{}
+By County,I65,number,934,True,n,2,934,False,,{}
+By County,J65,number,4046,True,n,2,4046,False,,{}
+By County,A66,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B66,text,Morton,True,s,,73,False,,{}
+By County,C66,text,"Morton County, KS",True,str,,"Morton County, KS",True," CONCATENATE(B66, "" County, KS"")","{""ref"": ""C66:C97"", ""si"": ""2"", ""t"": ""shared"", ""{http://www.w3.org/XML/1998/namespace}space"": ""preserve""}"
+By County,D66,number,207,True,n,,207,False,,{}
+By County,E66,number,12,True,n,2,12,False,,{}
+By County,F66,blank,,False,,,,False,,{}
+By County,G66,number,1431,True,n,,1431,False,,{}
+By County,H66,number,1,True,n,2,1,False,,{}
+By County,I66,number,409,True,n,2,409,False,,{}
+By County,J66,number,2060,True,n,2,2060,False,,{}
+By County,A67,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B67,text,Nemaha,True,s,,74,False,,{}
+By County,C67,text,"Nemaha County, KS",True,str,,"Nemaha County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D67,number,907,True,n,,907,False,,{}
+By County,E67,number,49,True,n,2,49,False,,{}
+By County,F67,blank,,False,,,,False,,{}
+By County,G67,number,5029,True,n,,5029,False,,{}
+By County,H67,number,5,True,n,2,5,False,,{}
+By County,I67,number,1487,True,n,2,1487,False,,{}
+By County,J67,number,7477,True,n,2,7477,False,,{}
+By County,A68,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B68,text,Neosho,True,s,,75,False,,{}
+By County,C68,text,"Neosho County, KS",True,str,,"Neosho County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D68,number,1774,True,n,,1774,False,,{}
+By County,E68,number,126,True,n,2,126,False,,{}
+By County,F68,blank,,False,,,,False,,{}
+By County,G68,number,5847,True,n,,5847,False,,{}
+By County,H68,number,9,True,n,2,9,False,,{}
+By County,I68,number,3334,True,n,2,3334,False,,{}
+By County,J68,number,11090,True,n,2,11090,False,,{}
+By County,A69,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B69,text,Ness,True,s,,76,False,,{}
+By County,C69,text,"Ness County, KS",True,str,,"Ness County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D69,number,168,True,n,,168,False,,{}
+By County,E69,number,10,True,n,2,10,False,,{}
+By County,F69,blank,,False,,,,False,,{}
+By County,G69,number,1454,True,n,,1454,False,,{}
+By County,H69,number,2,True,n,2,2,False,,{}
+By County,I69,number,332,True,n,2,332,False,,{}
+By County,J69,number,1966,True,n,2,1966,False,,{}
+By County,A70,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B70,text,Norton,True,s,,77,False,,{}
+By County,C70,text,"Norton County, KS",True,str,,"Norton County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D70,number,304,True,n,,304,False,,{}
+By County,E70,number,27,True,n,2,27,False,,{}
+By County,F70,blank,,False,,,,False,,{}
+By County,G70,number,2433,True,n,,2433,False,,{}
+By County,H70,number,3,True,n,2,3,False,,{}
+By County,I70,number,697,True,n,2,697,False,,{}
+By County,J70,number,3464,True,n,2,3464,False,,{}
+By County,A71,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B71,text,Osage,True,s,,78,False,,{}
+By County,C71,text,"Osage County, KS",True,str,,"Osage County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D71,number,1835,True,n,,1835,False,,{}
+By County,E71,number,133,True,n,2,133,False,,{}
+By County,F71,blank,,False,,,,False,,{}
+By County,G71,number,6791,True,n,,6791,False,,{}
+By County,H71,number,1,True,n,2,1,False,,{}
+By County,I71,number,3416,True,n,2,3416,False,,{}
+By County,J71,number,12176,True,n,2,12176,False,,{}
+By County,A72,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B72,text,Osborne,True,s,,79,False,,{}
+By County,C72,text,"Osborne County, KS",True,str,,"Osborne County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D72,number,287,True,n,,287,False,,{}
+By County,E72,number,18,True,n,2,18,False,,{}
+By County,F72,blank,,False,,,,False,,{}
+By County,G72,number,1672,True,n,,1672,False,,{}
+By County,H72,number,1,True,n,2,1,False,,{}
+By County,I72,number,595,True,n,2,595,False,,{}
+By County,J72,number,2573,True,n,2,2573,False,,{}
+By County,A73,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B73,text,Ottawa,True,s,,80,False,,{}
+By County,C73,text,"Ottawa County, KS",True,str,,"Ottawa County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D73,number,351,True,n,,351,False,,{}
+By County,E73,number,38,True,n,2,38,False,,{}
+By County,F73,blank,,False,,,,False,,{}
+By County,G73,number,2841,True,n,,2841,False,,{}
+By County,H73,number,3,True,n,2,3,False,,{}
+By County,I73,number,679,True,n,2,679,False,,{}
+By County,J73,number,3912,True,n,2,3912,False,,{}
+By County,A74,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B74,text,Pawnee,True,s,,81,False,,{}
+By County,C74,text,"Pawnee County, KS",True,str,,"Pawnee County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D74,number,460,True,n,,460,False,,{}
+By County,E74,number,32,True,n,2,32,False,,{}
+By County,F74,blank,,False,,,,False,,{}
+By County,G74,number,2363,True,n,,2363,False,,{}
+By County,H74,number,3,True,n,2,3,False,,{}
+By County,I74,number,726,True,n,2,726,False,,{}
+By County,J74,number,3584,True,n,2,3584,False,,{}
+By County,A75,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B75,text,Phillips,True,s,,82,False,,{}
+By County,C75,text,"Phillips County, KS",True,str,,"Phillips County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D75,number,251,True,n,,251,False,,{}
+By County,E75,number,21,True,n,2,21,False,,{}
+By County,F75,blank,,False,,,,False,,{}
+By County,G75,number,2970,True,n,,2970,False,,{}
+By County,H75,number,1,True,n,2,1,False,,{}
+By County,I75,number,752,True,n,2,752,False,,{}
+By County,J75,number,3995,True,n,2,3995,False,,{}
+By County,A76,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B76,text,Pottawatomie,True,s,,83,False,,{}
+By County,C76,text,"Pottawatomie County, KS",True,str,,"Pottawatomie County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D76,number,2689,True,n,,2689,False,,{}
+By County,E76,number,214,True,n,2,214,False,,{}
+By County,F76,blank,,False,,,,False,,{}
+By County,G76,number,12243,True,n,,12243,False,,{}
+By County,H76,number,12,True,n,2,12,False,,{}
+By County,I76,number,4161,True,n,2,4161,False,,{}
+By County,J76,number,19319,True,n,2,19319,False,,{}
+By County,A77,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B77,text,Pratt,True,s,,84,False,,{}
+By County,C77,text,"Pratt County, KS",True,str,,"Pratt County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D77,number,760,True,n,,760,False,,{}
+By County,E77,number,63,True,n,2,63,False,,{}
+By County,F77,blank,,False,,,,False,,{}
+By County,G77,number,3885,True,n,,3885,False,,{}
+By County,H77,number,4,True,n,2,4,False,,{}
+By County,I77,number,1009,True,n,2,1009,False,,{}
+By County,J77,number,5721,True,n,2,5721,False,,{}
+By County,A78,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B78,text,Rawlins,True,s,,85,False,,{}
+By County,C78,text,"Rawlins County, KS",True,str,,"Rawlins County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D78,number,152,True,n,,152,False,,{}
+By County,E78,number,17,True,n,2,17,False,,{}
+By County,F78,blank,,False,,,,False,,{}
+By County,G78,number,1457,True,n,,1457,False,,{}
+By County,H78,text,,True,s,2,11,False,,{}
+By County,I78,number,331,True,n,2,331,False,,{}
+By County,J78,number,1957,True,n,2,1957,False,,{}
+By County,A79,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B79,text,Reno,True,s,,86,False,,{}
+By County,C79,text,"Reno County, KS",True,str,,"Reno County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D79,number,7706,True,n,,7706,False,,{}
+By County,E79,number,496,True,n,2,496,False,,{}
+By County,F79,blank,,False,,,,False,,{}
+By County,G79,number,21834,True,n,,21834,False,,{}
+By County,H79,number,40,True,n,2,40,False,,{}
+By County,I79,number,11805,True,n,2,11805,False,,{}
+By County,J79,number,41881,True,n,2,41881,False,,{}
+By County,A80,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B80,text,Republic,True,s,,87,False,,{}
+By County,C80,text,"Republic County, KS",True,str,,"Republic County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D80,number,351,True,n,,351,False,,{}
+By County,E80,number,35,True,n,2,35,False,,{}
+By County,F80,blank,,False,,,,False,,{}
+By County,G80,number,2468,True,n,,2468,False,,{}
+By County,H80,number,1,True,n,2,1,False,,{}
+By County,I80,number,650,True,n,2,650,False,,{}
+By County,J80,number,3505,True,n,2,3505,False,,{}
+By County,A81,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B81,text,Rice,True,s,,88,False,,{}
+By County,C81,text,"Rice County, KS",True,str,,"Rice County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D81,number,815,True,n,,815,False,,{}
+By County,E81,number,101,True,n,2,101,False,,{}
+By County,F81,blank,,False,,,,False,,{}
+By County,G81,number,3997,True,n,,3997,False,,{}
+By County,H81,number,5,True,n,2,5,False,,{}
+By County,I81,number,1678,True,n,2,1678,False,,{}
+By County,J81,number,6596,True,n,2,6596,False,,{}
+By County,A82,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B82,text,Riley,True,s,,89,False,,{}
+By County,C82,text,"Riley County, KS",True,str,,"Riley County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D82,number,11370,True,n,,11370,False,,{}
+By County,E82,number,736,True,n,2,736,False,,{}
+By County,F82,blank,,False,,,,False,,{}
+By County,G82,number,16062,True,n,,16062,False,,{}
+By County,H82,number,38,True,n,2,38,False,,{}
+By County,I82,number,12423,True,n,2,12423,False,,{}
+By County,J82,number,40629,True,n,2,40629,False,,{}
+By County,A83,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B83,text,Rooks,True,s,,90,False,,{}
+By County,C83,text,"Rooks County, KS",True,str,,"Rooks County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D83,number,309,True,n,,309,False,,{}
+By County,E83,number,25,True,n,2,25,False,,{}
+By County,F83,blank,,False,,,,False,,{}
+By County,G83,number,2622,True,n,,2622,False,,{}
+By County,H83,number,2,True,n,2,2,False,,{}
+By County,I83,number,631,True,n,2,631,False,,{}
+By County,J83,number,3589,True,n,2,3589,False,,{}
+By County,A84,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B84,text,Rush,True,s,,91,False,,{}
+By County,C84,text,"Rush County, KS",True,str,,"Rush County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D84,number,209,True,n,,209,False,,{}
+By County,E84,number,16,True,n,2,16,False,,{}
+By County,F84,blank,,False,,,,False,,{}
+By County,G84,number,1535,True,n,,1535,False,,{}
+By County,H84,text,,True,s,2,11,False,,{}
+By County,I84,number,449,True,n,2,449,False,,{}
+By County,J84,number,2209,True,n,2,2209,False,,{}
+By County,A85,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B85,text,Russell,True,s,,92,False,,{}
+By County,C85,text,"Russell County, KS",True,str,,"Russell County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D85,number,503,True,n,,503,False,,{}
+By County,E85,number,39,True,n,2,39,False,,{}
+By County,F85,blank,,False,,,,False,,{}
+By County,G85,number,3128,True,n,,3128,False,,{}
+By County,H85,number,1,True,n,2,1,False,,{}
+By County,I85,number,950,True,n,2,950,False,,{}
+By County,J85,number,4621,True,n,2,4621,False,,{}
+By County,A86,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B86,text,Saline,True,s,,93,False,,{}
+By County,C86,text,"Saline County, KS",True,str,,"Saline County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D86,number,7277,True,n,,7277,False,,{}
+By County,E86,number,563,True,n,2,563,False,,{}
+By County,F86,blank,,False,,,,False,,{}
+By County,G86,number,18247,True,n,,18247,False,,{}
+By County,H86,number,33,True,n,2,33,False,,{}
+By County,I86,number,11671,True,n,2,11671,False,,{}
+By County,J86,number,37791,True,n,2,37791,False,,{}
+By County,A87,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B87,text,Scott,True,s,,94,False,,{}
+By County,C87,text,"Scott County, KS",True,str,,"Scott County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D87,number,271,True,n,,271,False,,{}
+By County,E87,number,30,True,n,2,30,False,,{}
+By County,F87,blank,,False,,,,False,,{}
+By County,G87,number,2392,True,n,,2392,False,,{}
+By County,H87,number,1,True,n,2,1,False,,{}
+By County,I87,number,800,True,n,2,800,False,,{}
+By County,J87,number,3494,True,n,2,3494,False,,{}
+By County,A88,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B88,text,Sedgwick,True,s,,95,False,,{}
+By County,C88,text,"Sedgwick County, KS",True,str,,"Sedgwick County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D88,number,90047,True,n,,90047,False,,{}
+By County,E88,number,4905,True,n,2,4905,False,,{}
+By County,F88,blank,,False,,,,False,,{}
+By County,G88,number,140023,True,n,,140023,False,,{}
+By County,H88,number,336,True,n,2,336,False,,{}
+By County,I88,number,114518,True,n,2,114518,False,,{}
+By County,J88,number,349829,True,n,2,349829,False,,{}
+By County,A89,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B89,text,Seward,True,s,,96,False,,{}
+By County,C89,text,"Seward County, KS",True,str,,"Seward County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D89,number,2637,True,n,,2637,False,,{}
+By County,E89,number,162,True,n,2,162,False,,{}
+By County,F89,blank,,False,,,,False,,{}
+By County,G89,number,4473,True,n,,4473,False,,{}
+By County,H89,number,31,True,n,2,31,False,,{}
+By County,I89,number,4180,True,n,2,4180,False,,{}
+By County,J89,number,11483,True,n,2,11483,False,,{}
+By County,A90,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B90,text,Shawnee,True,s,,97,False,,{}
+By County,C90,text,"Shawnee County, KS",True,str,,"Shawnee County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D90,number,35880,True,n,,35880,False,,{}
+By County,E90,number,1310,True,n,2,1310,False,,{}
+By County,F90,blank,,False,,,,False,,{}
+By County,G90,number,44198,True,n,,44198,False,,{}
+By County,H90,number,76,True,n,2,76,False,,{}
+By County,I90,number,36194,True,n,2,36194,False,,{}
+By County,J90,number,117658,True,n,2,117658,False,,{}
+By County,A91,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B91,text,Sheridan,True,s,,98,False,,{}
+By County,C91,text,"Sheridan County, KS",True,str,,"Sheridan County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D91,number,134,True,n,,134,False,,{}
+By County,E91,number,3,True,n,2,3,False,,{}
+By County,F91,blank,,False,,,,False,,{}
+By County,G91,number,1384,True,n,,1384,False,,{}
+By County,H91,text,,True,s,2,11,False,,{}
+By County,I91,number,312,True,n,2,312,False,,{}
+By County,J91,number,1833,True,n,2,1833,False,,{}
+By County,A92,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B92,text,Sherman,True,s,,99,False,,{}
+By County,C92,text,"Sherman County, KS",True,str,,"Sherman County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D92,number,331,True,n,,331,False,,{}
+By County,E92,number,32,True,n,2,32,False,,{}
+By County,F92,blank,,False,,,,False,,{}
+By County,G92,number,2622,True,n,,2622,False,,{}
+By County,H92,number,2,True,n,2,2,False,,{}
+By County,I92,number,716,True,n,2,716,False,,{}
+By County,J92,number,3703,True,n,2,3703,False,,{}
+By County,A93,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B93,text,Smith,True,s,,100,False,,{}
+By County,C93,text,"Smith County, KS",True,str,,"Smith County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D93,number,272,True,n,,272,False,,{}
+By County,E93,number,11,True,n,2,11,False,,{}
+By County,F93,blank,,False,,,,False,,{}
+By County,G93,number,2111,True,n,,2111,False,,{}
+By County,H93,text,,True,s,2,11,False,,{}
+By County,I93,number,455,True,n,2,455,False,,{}
+By County,J93,number,2849,True,n,2,2849,False,,{}
+By County,A94,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B94,text,Stafford,True,s,,101,False,,{}
+By County,C94,text,"Stafford County, KS",True,str,,"Stafford County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D94,number,264,True,n,,264,False,,{}
+By County,E94,number,16,True,n,2,16,False,,{}
+By County,F94,blank,,False,,,,False,,{}
+By County,G94,number,1845,True,n,,1845,False,,{}
+By County,H94,number,2,True,n,2,2,False,,{}
+By County,I94,number,510,True,n,2,510,False,,{}
+By County,J94,number,2637,True,n,2,2637,False,,{}
+By County,A95,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B95,text,Stanton,True,s,,102,False,,{}
+By County,C95,text,"Stanton County, KS",True,str,,"Stanton County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D95,number,120,True,n,,120,False,,{}
+By County,E95,number,10,True,n,2,10,False,,{}
+By County,F95,blank,,False,,,,False,,{}
+By County,G95,number,710,True,n,,710,False,,{}
+By County,H95,text,,True,s,2,11,False,,{}
+By County,I95,number,160,True,n,2,160,False,,{}
+By County,J95,number,1000,True,n,2,1000,False,,{}
+By County,A96,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B96,text,Stevens,True,s,,103,False,,{}
+By County,C96,text,"Stevens County, KS",True,str,,"Stevens County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D96,number,302,True,n,,302,False,,{}
+By County,E96,number,36,True,n,2,36,False,,{}
+By County,F96,blank,,False,,,,False,,{}
+By County,G96,number,2398,True,n,,2398,False,,{}
+By County,H96,number,3,True,n,2,3,False,,{}
+By County,I96,number,626,True,n,2,626,False,,{}
+By County,J96,number,3365,True,n,2,3365,False,,{}
+By County,A97,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B97,text,Sumner,True,s,,104,False,,{}
+By County,C97,text,"Sumner County, KS",True,str,,"Sumner County, KS",True,,"{""si"": ""2"", ""t"": ""shared""}"
+By County,D97,number,2508,True,n,,2508,False,,{}
+By County,E97,number,169,True,n,2,169,False,,{}
+By County,F97,blank,,False,,,,False,,{}
+By County,G97,number,8963,True,n,,8963,False,,{}
+By County,H97,number,3,True,n,2,3,False,,{}
+By County,I97,number,4043,True,n,2,4043,False,,{}
+By County,J97,number,15686,True,n,2,15686,False,,{}
+By County,A98,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B98,text,Thomas,True,s,,105,False,,{}
+By County,C98,text,"Thomas County, KS",True,str,,"Thomas County, KS",True," CONCATENATE(B98, "" County, KS"")","{""ref"": ""C98:C107"", ""si"": ""3"", ""t"": ""shared"", ""{http://www.w3.org/XML/1998/namespace}space"": ""preserve""}"
+By County,D98,number,522,True,n,,522,False,,{}
+By County,E98,number,36,True,n,2,36,False,,{}
+By County,F98,blank,,False,,,,False,,{}
+By County,G98,number,3717,True,n,,3717,False,,{}
+By County,H98,number,2,True,n,2,2,False,,{}
+By County,I98,number,1179,True,n,2,1179,False,,{}
+By County,J98,number,5456,True,n,2,5456,False,,{}
+By County,A99,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B99,text,Trego,True,s,,106,False,,{}
+By County,C99,text,"Trego County, KS",True,str,,"Trego County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D99,number,257,True,n,,257,False,,{}
+By County,E99,number,11,True,n,2,11,False,,{}
+By County,F99,blank,,False,,,,False,,{}
+By County,G99,number,1452,True,n,,1452,False,,{}
+By County,H99,number,1,True,n,2,1,False,,{}
+By County,I99,number,367,True,n,2,367,False,,{}
+By County,J99,number,2088,True,n,2,2088,False,,{}
+By County,A100,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B100,text,Wabaunsee,True,s,,107,False,,{}
+By County,C100,text,"Wabaunsee County, KS",True,str,,"Wabaunsee County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D100,number,732,True,n,,732,False,,{}
+By County,E100,number,47,True,n,2,47,False,,{}
+By County,F100,blank,,False,,,,False,,{}
+By County,G100,number,3400,True,n,,3400,False,,{}
+By County,H100,number,1,True,n,2,1,False,,{}
+By County,I100,number,1161,True,n,2,1161,False,,{}
+By County,J100,number,5341,True,n,2,5341,False,,{}
+By County,A101,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B101,text,Wallace,True,s,,108,False,,{}
+By County,C101,text,"Wallace County, KS",True,str,,"Wallace County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D101,number,51,True,n,,51,False,,{}
+By County,E101,number,5,True,n,2,5,False,,{}
+By County,F101,blank,,False,,,,False,,{}
+By County,G101,number,912,True,n,,912,False,,{}
+By County,H101,text,,True,s,2,11,False,,{}
+By County,I101,number,200,True,n,2,200,False,,{}
+By County,J101,number,1168,True,n,2,1168,False,,{}
+By County,A102,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B102,text,Washington,True,s,,109,False,,{}
+By County,C102,text,"Washington County, KS",True,str,,"Washington County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D102,number,232,True,n,,232,False,,{}
+By County,E102,number,22,True,n,2,22,False,,{}
+By County,F102,blank,,False,,,,False,,{}
+By County,G102,number,2697,True,n,,2697,False,,{}
+By County,H102,number,1,True,n,2,1,False,,{}
+By County,I102,number,326,True,n,2,326,False,,{}
+By County,J102,number,3278,True,n,2,3278,False,,{}
+By County,A103,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B103,text,Wichita,True,s,,110,False,,{}
+By County,C103,text,"Wichita County, KS",True,str,,"Wichita County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D103,number,120,True,n,,120,False,,{}
+By County,E103,number,7,True,n,2,7,False,,{}
+By County,F103,blank,,False,,,,False,,{}
+By County,G103,number,843,True,n,,843,False,,{}
+By County,H103,number,2,True,n,2,2,False,,{}
+By County,I103,number,266,True,n,2,266,False,,{}
+By County,J103,number,1238,True,n,2,1238,False,,{}
+By County,A104,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B104,text,Wilson,True,s,,111,False,,{}
+By County,C104,text,"Wilson County, KS",True,str,,"Wilson County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D104,number,513,True,n,,513,False,,{}
+By County,E104,number,45,True,n,2,45,False,,{}
+By County,F104,blank,,False,,,,False,,{}
+By County,G104,number,3430,True,n,,3430,False,,{}
+By County,H104,number,2,True,n,2,2,False,,{}
+By County,I104,number,1052,True,n,2,1052,False,,{}
+By County,J104,number,5042,True,n,2,5042,False,,{}
+By County,A105,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B105,text,Woodson,True,s,,112,False,,{}
+By County,C105,text,"Woodson County, KS",True,str,,"Woodson County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D105,number,219,True,n,,219,False,,{}
+By County,E105,number,27,True,n,2,27,False,,{}
+By County,F105,blank,,False,,,,False,,{}
+By County,G105,number,1498,True,n,,1498,False,,{}
+By County,H105,text,,True,s,2,11,False,,{}
+By County,I105,number,516,True,n,2,516,False,,{}
+By County,J105,number,2260,True,n,2,2260,False,,{}
+By County,A106,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B106,text,Wyandotte,True,s,,113,False,,{}
+By County,C106,text,"Wyandotte County, KS",True,str,,"Wyandotte County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D106,number,42849,True,n,,42849,False,,{}
+By County,E106,number,1020,True,n,2,1020,False,,{}
+By County,F106,blank,,False,,,,False,,{}
+By County,G106,number,18530,True,n,,18530,False,,{}
+By County,H106,number,107,True,n,2,107,False,,{}
+By County,I106,number,32380,True,n,2,32380,False,,{}
+By County,J106,number,94886,True,n,2,94886,False,,{}
+By County,A107,date,2026-10-01,True,n,1,46296,False,,{}
+By County,B107,text,Grand Total,True,s,,6,False,,{}
+By County,C107,text,"Grand Total County, KS",True,str,,"Grand Total County, KS",True,,"{""si"": ""3"", ""t"": ""shared""}"
+By County,D107,number,521669,True,n,,521669,False,,{}
+By County,E107,number,23840,True,n,2,23840,False,,{}
+By County,F107,blank,,False,,,,False,,{}
+By County,G107,number,901822,True,n,,901822,False,,{}
+By County,H107,number,1398,True,n,2,1398,False,,{}
+By County,I107,number,578791,True,n,2,578791,False,,{}
+By County,J107,number,2027520,True,n,2,2027520,False,,{}
+By Congressional District,A1,text,Date,True,s,4,119,False,,{}
+By Congressional District,B1,text,U.S. Congressional District,True,s,4,115,False,,{}
+By Congressional District,C1,text,Democratic,True,s,2,1,False,,{}
+By Congressional District,D1,text,Libertarian,True,s,2,2,False,,{}
+By Congressional District,E1,text,No Labels Kansas,True,s,2,114,False,,{}
+By Congressional District,F1,text,Republican,True,s,2,3,False,,{}
+By Congressional District,G1,text,United Kansas,True,s,2,4,False,,{}
+By Congressional District,H1,text,Unaffiliated,True,s,2,5,False,,{}
+By Congressional District,I1,text,Total,True,s,2,288,False,,{}
+By Congressional District,A2,date,2026-10-01,True,n,3,46296,False,,{}
+By Congressional District,B2,text,U.S. Representative 1,True,s,4,126,False,,{}
+By Congressional District,C2,number,100758,True,n,5,100758,False,,{}
+By Congressional District,D2,number,5376,True,n,5,5376,False,,{}
+By Congressional District,E2,blank,,True,n,5,,False,,{}
+By Congressional District,F2,number,247083,True,n,5,247083,False,,{}
+By Congressional District,G2,number,365,True,n,5,365,False,,{}
+By Congressional District,H2,number,126946,True,n,5,126946,False,,{}
+By Congressional District,I2,number,480528,True,n,5,480528,False,,{}
+By Congressional District,A3,date,2026-10-01,True,n,3,46296,False,,{}
+By Congressional District,B3,text,U.S. Representative 2,True,s,4,116,False,,{}
+By Congressional District,C3,number,125957,True,n,5,125957,False,,{}
+By Congressional District,D3,number,5231,True,n,5,5231,False,,{}
+By Congressional District,E3,blank,,True,n,5,,False,,{}
+By Congressional District,F3,number,207618,True,n,5,207618,False,,{}
+By Congressional District,G3,number,315,True,n,5,315,False,,{}
+By Congressional District,H3,number,151790,True,n,5,151790,False,,{}
+By Congressional District,I3,number,490911,True,n,5,490911,False,,{}
+By Congressional District,A4,date,2026-10-01,True,n,3,46296,False,,{}
+By Congressional District,B4,text,U.S. Representative 3,True,s,4,117,False,,{}
+By Congressional District,C4,number,180951,True,n,5,180951,False,,{}
+By Congressional District,D4,number,6703,True,n,5,6703,False,,{}
+By Congressional District,E4,blank,,True,n,5,,False,,{}
+By Congressional District,F4,number,223556,True,n,5,223556,False,,{}
+By Congressional District,G4,number,318,True,n,5,318,False,,{}
+By Congressional District,H4,number,148575,True,n,5,148575,False,,{}
+By Congressional District,I4,number,560103,True,n,5,560103,False,,{}
+By Congressional District,A5,date,2026-10-01,True,n,3,46296,False,,{}
+By Congressional District,B5,text,U.S. Representative 4,True,s,4,118,False,,{}
+By Congressional District,C5,number,114003,True,n,5,114003,False,,{}
+By Congressional District,D5,number,6530,True,n,5,6530,False,,{}
+By Congressional District,E5,blank,,True,n,5,,False,,{}
+By Congressional District,F5,number,223565,True,n,5,223565,False,,{}
+By Congressional District,G5,number,400,True,n,5,400,False,,{}
+By Congressional District,H5,number,151480,True,n,5,151480,False,,{}
+By Congressional District,I5,number,495978,True,n,5,495978,False,,{}
+By Congressional District,A6,date,2026-10-01,True,n,3,46296,False,,{}
+By Congressional District,B6,text,Grand Total,True,s,4,6,False,,{}
+By Congressional District,C6,number,521669,True,n,5,521669,False,,{}
+By Congressional District,D6,number,23840,True,n,5,23840,False,,{}
+By Congressional District,E6,blank,,True,n,5,,False,,{}
+By Congressional District,F6,number,901822,True,n,5,901822,False,,{}
+By Congressional District,G6,number,1398,True,n,5,1398,False,,{}
+By Congressional District,H6,number,578791,True,n,5,578791,False,,{}
+By Congressional District,I6,number,2027520,True,n,5,2027520,False,,{}
+By KS House,A1,text,Date,True,s,,119,False,,{}
+By KS House,B1,text,Kansas State House of Representatives,True,s,,127,False,,{}
+By KS House,C1,text,Democratic,True,s,2,1,False,,{}
+By KS House,D1,text,Libertarian,True,s,2,2,False,,{}
+By KS House,E1,text,No Labels Kansas,True,s,2,114,False,,{}
+By KS House,F1,text,Republican,True,s,5,3,False,,{}
+By KS House,G1,text,United Kansas,True,s,5,4,False,,{}
+By KS House,H1,text,Unaffiliated,True,s,5,5,False,,{}
+By KS House,I1,text,Total,True,s,5,288,False,,{}
+By KS House,A2,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B2,text,Kansas Representative 1,True,s,,128,False,,{}
+By KS House,C2,number,3244,True,n,6,3244,False,,{}
+By KS House,D2,number,167,True,n,5,167,False,,{}
+By KS House,E2,blank,,True,n,6,,False,,{}
+By KS House,F2,number,9476,True,n,6,9476,False,,{}
+By KS House,G2,number,6,True,n,6,6,False,,{}
+By KS House,H2,number,6005,True,n,6,6005,False,,{}
+By KS House,I2,number,18898,True,n,6,18898,False,,{}
+By KS House,A3,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B3,text,Kansas Representative 2,True,s,,129,False,,{}
+By KS House,C3,number,3678,True,n,6,3678,False,,{}
+By KS House,D3,number,158,True,n,5,158,False,,{}
+By KS House,E3,blank,,True,n,6,,False,,{}
+By KS House,F3,number,8078,True,n,6,8078,False,,{}
+By KS House,G3,number,8,True,n,6,8,False,,{}
+By KS House,H3,number,5449,True,n,6,5449,False,,{}
+By KS House,I3,number,17371,True,n,6,17371,False,,{}
+By KS House,A4,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B4,text,Kansas Representative 3,True,s,,130,False,,{}
+By KS House,C4,number,4146,True,n,6,4146,False,,{}
+By KS House,D4,number,182,True,n,5,182,False,,{}
+By KS House,E4,blank,,True,n,6,,False,,{}
+By KS House,F4,number,5592,True,n,6,5592,False,,{}
+By KS House,G4,number,8,True,n,6,8,False,,{}
+By KS House,H4,number,6402,True,n,6,6402,False,,{}
+By KS House,I4,number,16330,True,n,6,16330,False,,{}
+By KS House,A5,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B5,text,Kansas Representative 4,True,s,,131,False,,{}
+By KS House,C5,number,3025,True,n,6,3025,False,,{}
+By KS House,D5,number,173,True,n,5,173,False,,{}
+By KS House,E5,blank,,True,n,6,,False,,{}
+By KS House,F5,number,10848,True,n,6,10848,False,,{}
+By KS House,G5,number,7,True,n,6,7,False,,{}
+By KS House,H5,number,5890,True,n,6,5890,False,,{}
+By KS House,I5,number,19943,True,n,6,19943,False,,{}
+By KS House,A6,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B6,text,Kansas Representative 5,True,s,,132,False,,{}
+By KS House,C6,number,3833,True,n,6,3833,False,,{}
+By KS House,D6,number,260,True,n,5,260,False,,{}
+By KS House,E6,blank,,True,n,6,,False,,{}
+By KS House,F6,number,9025,True,n,6,9025,False,,{}
+By KS House,G6,number,10,True,n,6,10,False,,{}
+By KS House,H6,number,5005,True,n,6,5005,False,,{}
+By KS House,I6,number,18133,True,n,6,18133,False,,{}
+By KS House,A7,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B7,text,Kansas Representative 6,True,s,,133,False,,{}
+By KS House,C7,number,3083,True,n,6,3083,False,,{}
+By KS House,D7,number,213,True,n,5,213,False,,{}
+By KS House,E7,blank,,True,n,6,,False,,{}
+By KS House,F7,number,9845,True,n,6,9845,False,,{}
+By KS House,G7,number,7,True,n,6,7,False,,{}
+By KS House,H7,number,4723,True,n,6,4723,False,,{}
+By KS House,I7,number,17871,True,n,6,17871,False,,{}
+By KS House,A8,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B8,text,Kansas Representative 7,True,s,,134,False,,{}
+By KS House,C8,number,3143,True,n,6,3143,False,,{}
+By KS House,D8,number,166,True,n,5,166,False,,{}
+By KS House,E8,blank,,True,n,6,,False,,{}
+By KS House,F8,number,7400,True,n,6,7400,False,,{}
+By KS House,G8,number,12,True,n,6,12,False,,{}
+By KS House,H8,number,5383,True,n,6,5383,False,,{}
+By KS House,I8,number,16104,True,n,6,16104,False,,{}
+By KS House,A9,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B9,text,Kansas Representative 8,True,s,,135,False,,{}
+By KS House,C9,number,4866,True,n,6,4866,False,,{}
+By KS House,D9,number,159,True,n,5,159,False,,{}
+By KS House,E9,blank,,True,n,6,,False,,{}
+By KS House,F9,number,8300,True,n,6,8300,False,,{}
+By KS House,G9,number,11,True,n,6,11,False,,{}
+By KS House,H9,number,4454,True,n,6,4454,False,,{}
+By KS House,I9,number,17790,True,n,6,17790,False,,{}
+By KS House,A10,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B10,text,Kansas Representative 9,True,s,,136,False,,{}
+By KS House,C10,number,2498,True,n,6,2498,False,,{}
+By KS House,D10,number,187,True,n,5,187,False,,{}
+By KS House,E10,blank,,True,n,6,,False,,{}
+By KS House,F10,number,9396,True,n,6,9396,False,,{}
+By KS House,G10,number,7,True,n,6,7,False,,{}
+By KS House,H10,number,4850,True,n,6,4850,False,,{}
+By KS House,I10,number,16938,True,n,6,16938,False,,{}
+By KS House,A11,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B11,text,Kansas Representative 10,True,s,,137,False,,{}
+By KS House,C11,number,7690,True,n,6,7690,False,,{}
+By KS House,D11,number,191,True,n,5,191,False,,{}
+By KS House,E11,blank,,True,n,6,,False,,{}
+By KS House,F11,number,2439,True,n,6,2439,False,,{}
+By KS House,G11,number,11,True,n,6,11,False,,{}
+By KS House,H11,number,4388,True,n,6,4388,False,,{}
+By KS House,I11,number,14719,True,n,6,14719,False,,{}
+By KS House,A12,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B12,text,Kansas Representative 11,True,s,,138,False,,{}
+By KS House,C12,number,2932,True,n,6,2932,False,,{}
+By KS House,D12,number,161,True,n,5,161,False,,{}
+By KS House,E12,blank,,True,n,6,,False,,{}
+By KS House,F12,number,8366,True,n,6,8366,False,,{}
+By KS House,G12,number,1,True,n,6,1,False,,{}
+By KS House,H12,number,4028,True,n,6,4028,False,,{}
+By KS House,I12,number,15488,True,n,6,15488,False,,{}
+By KS House,A13,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B13,text,Kansas Representative 12,True,s,,139,False,,{}
+By KS House,C13,number,1996,True,n,6,1996,False,,{}
+By KS House,D13,number,196,True,n,5,196,False,,{}
+By KS House,E13,blank,,True,n,6,,False,,{}
+By KS House,F13,number,10998,True,n,6,10998,False,,{}
+By KS House,G13,number,4,True,n,6,4,False,,{}
+By KS House,H13,number,3699,True,n,6,3699,False,,{}
+By KS House,I13,number,16893,True,n,6,16893,False,,{}
+By KS House,A14,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B14,text,Kansas Representative 13,True,s,,140,False,,{}
+By KS House,C14,number,1881,True,n,6,1881,False,,{}
+By KS House,D14,number,131,True,n,5,131,False,,{}
+By KS House,E14,blank,,True,n,6,,False,,{}
+By KS House,F14,number,9818,True,n,6,9818,False,,{}
+By KS House,G14,number,7,True,n,6,7,False,,{}
+By KS House,H14,number,3585,True,n,6,3585,False,,{}
+By KS House,I14,number,15422,True,n,6,15422,False,,{}
+By KS House,A15,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B15,text,Kansas Representative 14,True,s,,141,False,,{}
+By KS House,C15,number,6329,True,n,6,6329,False,,{}
+By KS House,D15,number,243,True,n,5,243,False,,{}
+By KS House,E15,blank,,True,n,6,,False,,{}
+By KS House,F15,number,8804,True,n,6,8804,False,,{}
+By KS House,G15,number,10,True,n,6,10,False,,{}
+By KS House,H15,number,4922,True,n,6,4922,False,,{}
+By KS House,I15,number,20308,True,n,6,20308,False,,{}
+By KS House,A16,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B16,text,Kansas Representative 15,True,s,,142,False,,{}
+By KS House,C16,number,4020,True,n,6,4020,False,,{}
+By KS House,D16,number,192,True,n,5,192,False,,{}
+By KS House,E16,blank,,True,n,6,,False,,{}
+By KS House,F16,number,4521,True,n,6,4521,False,,{}
+By KS House,G16,number,17,True,n,6,17,False,,{}
+By KS House,H16,number,3556,True,n,6,3556,False,,{}
+By KS House,I16,number,12306,True,n,6,12306,False,,{}
+By KS House,A17,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B17,text,Kansas Representative 16,True,s,,143,False,,{}
+By KS House,C17,number,6291,True,n,6,6291,False,,{}
+By KS House,D17,number,233,True,n,5,233,False,,{}
+By KS House,E17,blank,,True,n,6,,False,,{}
+By KS House,F17,number,7420,True,n,6,7420,False,,{}
+By KS House,G17,number,8,True,n,6,8,False,,{}
+By KS House,H17,number,4501,True,n,6,4501,False,,{}
+By KS House,I17,number,18453,True,n,6,18453,False,,{}
+By KS House,A18,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B18,text,Kansas Representative 17,True,s,,144,False,,{}
+By KS House,C18,number,6524,True,n,6,6524,False,,{}
+By KS House,D18,number,199,True,n,5,199,False,,{}
+By KS House,E18,blank,,True,n,6,,False,,{}
+By KS House,F18,number,7329,True,n,6,7329,False,,{}
+By KS House,G18,number,11,True,n,6,11,False,,{}
+By KS House,H18,number,4683,True,n,6,4683,False,,{}
+By KS House,I18,number,18746,True,n,6,18746,False,,{}
+By KS House,A19,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B19,text,Kansas Representative 18,True,s,,145,False,,{}
+By KS House,C19,number,6358,True,n,6,6358,False,,{}
+By KS House,D19,number,202,True,n,5,202,False,,{}
+By KS House,E19,blank,,True,n,6,,False,,{}
+By KS House,F19,number,6349,True,n,6,6349,False,,{}
+By KS House,G19,number,10,True,n,6,10,False,,{}
+By KS House,H19,number,5058,True,n,6,5058,False,,{}
+By KS House,I19,number,17977,True,n,6,17977,False,,{}
+By KS House,A20,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B20,text,Kansas Representative 19,True,s,,146,False,,{}
+By KS House,C20,number,8204,True,n,6,8204,False,,{}
+By KS House,D20,number,174,True,n,5,174,False,,{}
+By KS House,E20,blank,,True,n,6,,False,,{}
+By KS House,F20,number,7752,True,n,6,7752,False,,{}
+By KS House,G20,number,6,True,n,6,6,False,,{}
+By KS House,H20,number,4597,True,n,6,4597,False,,{}
+By KS House,I20,number,20733,True,n,6,20733,False,,{}
+By KS House,A21,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B21,text,Kansas Representative 20,True,s,,147,False,,{}
+By KS House,C21,number,7237,True,n,6,7237,False,,{}
+By KS House,D21,number,209,True,n,5,209,False,,{}
+By KS House,E21,blank,,True,n,6,,False,,{}
+By KS House,F21,number,8904,True,n,6,8904,False,,{}
+By KS House,G21,number,8,True,n,6,8,False,,{}
+By KS House,H21,number,4379,True,n,6,4379,False,,{}
+By KS House,I21,number,20737,True,n,6,20737,False,,{}
+By KS House,A22,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B22,text,Kansas Representative 21,True,s,,148,False,,{}
+By KS House,C22,number,8298,True,n,6,8298,False,,{}
+By KS House,D22,number,210,True,n,5,210,False,,{}
+By KS House,E22,blank,,True,n,6,,False,,{}
+By KS House,F22,number,6033,True,n,6,6033,False,,{}
+By KS House,G22,number,6,True,n,6,6,False,,{}
+By KS House,H22,number,4857,True,n,6,4857,False,,{}
+By KS House,I22,number,19404,True,n,6,19404,False,,{}
+By KS House,A23,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B23,text,Kansas Representative 22,True,s,,149,False,,{}
+By KS House,C23,number,6742,True,n,6,6742,False,,{}
+By KS House,D23,number,255,True,n,5,255,False,,{}
+By KS House,E23,blank,,True,n,6,,False,,{}
+By KS House,F23,number,4803,True,n,6,4803,False,,{}
+By KS House,G23,number,10,True,n,6,10,False,,{}
+By KS House,H23,number,4863,True,n,6,4863,False,,{}
+By KS House,I23,number,16673,True,n,6,16673,False,,{}
+By KS House,A24,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B24,text,Kansas Representative 23,True,s,,150,False,,{}
+By KS House,C24,number,6264,True,n,6,6264,False,,{}
+By KS House,D24,number,246,True,n,5,246,False,,{}
+By KS House,E24,blank,,True,n,6,,False,,{}
+By KS House,F24,number,5124,True,n,6,5124,False,,{}
+By KS House,G24,number,10,True,n,6,10,False,,{}
+By KS House,H24,number,4730,True,n,6,4730,False,,{}
+By KS House,I24,number,16374,True,n,6,16374,False,,{}
+By KS House,A25,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B25,text,Kansas Representative 24,True,s,,151,False,,{}
+By KS House,C25,number,7209,True,n,6,7209,False,,{}
+By KS House,D25,number,223,True,n,5,223,False,,{}
+By KS House,E25,blank,,True,n,6,,False,,{}
+By KS House,F25,number,4609,True,n,6,4609,False,,{}
+By KS House,G25,number,13,True,n,6,13,False,,{}
+By KS House,H25,number,5238,True,n,6,5238,False,,{}
+By KS House,I25,number,17292,True,n,6,17292,False,,{}
+By KS House,A26,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B26,text,Kansas Representative 25,True,s,,152,False,,{}
+By KS House,C26,number,8888,True,n,6,8888,False,,{}
+By KS House,D26,number,198,True,n,5,198,False,,{}
+By KS House,E26,blank,,True,n,6,,False,,{}
+By KS House,F26,number,6428,True,n,6,6428,False,,{}
+By KS House,G26,number,7,True,n,6,7,False,,{}
+By KS House,H26,number,5042,True,n,6,5042,False,,{}
+By KS House,I26,number,20563,True,n,6,20563,False,,{}
+By KS House,A27,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B27,text,Kansas Representative 26,True,s,,153,False,,{}
+By KS House,C27,number,5353,True,n,6,5353,False,,{}
+By KS House,D27,number,286,True,n,5,286,False,,{}
+By KS House,E27,blank,,True,n,6,,False,,{}
+By KS House,F27,number,9898,True,n,6,9898,False,,{}
+By KS House,G27,number,12,True,n,6,12,False,,{}
+By KS House,H27,number,5607,True,n,6,5607,False,,{}
+By KS House,I27,number,21156,True,n,6,21156,False,,{}
+By KS House,A28,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B28,text,Kansas Representative 27,True,s,,154,False,,{}
+By KS House,C28,number,5574,True,n,6,5574,False,,{}
+By KS House,D28,number,210,True,n,5,210,False,,{}
+By KS House,E28,blank,,True,n,6,,False,,{}
+By KS House,F28,number,10440,True,n,6,10440,False,,{}
+By KS House,G28,number,7,True,n,6,7,False,,{}
+By KS House,H28,number,5245,True,n,6,5245,False,,{}
+By KS House,I28,number,21476,True,n,6,21476,False,,{}
+By KS House,A29,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B29,text,Kansas Representative 28,True,s,,155,False,,{}
+By KS House,C29,number,5632,True,n,6,5632,False,,{}
+By KS House,D29,number,170,True,n,5,170,False,,{}
+By KS House,E29,blank,,True,n,6,,False,,{}
+By KS House,F29,number,7997,True,n,6,7997,False,,{}
+By KS House,G29,number,10,True,n,6,10,False,,{}
+By KS House,H29,number,4369,True,n,6,4369,False,,{}
+By KS House,I29,number,18178,True,n,6,18178,False,,{}
+By KS House,A30,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B30,text,Kansas Representative 29,True,s,,156,False,,{}
+By KS House,C30,number,6901,True,n,6,6901,False,,{}
+By KS House,D30,number,233,True,n,5,233,False,,{}
+By KS House,E30,blank,,True,n,6,,False,,{}
+By KS House,F30,number,6051,True,n,6,6051,False,,{}
+By KS House,G30,number,14,True,n,6,14,False,,{}
+By KS House,H30,number,4833,True,n,6,4833,False,,{}
+By KS House,I30,number,18032,True,n,6,18032,False,,{}
+By KS House,A31,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B31,text,Kansas Representative 30,True,s,,157,False,,{}
+By KS House,C31,number,5451,True,n,6,5451,False,,{}
+By KS House,D31,number,179,True,n,5,179,False,,{}
+By KS House,E31,blank,,True,n,6,,False,,{}
+By KS House,F31,number,6977,True,n,6,6977,False,,{}
+By KS House,G31,number,12,True,n,6,12,False,,{}
+By KS House,H31,number,4457,True,n,6,4457,False,,{}
+By KS House,I31,number,17076,True,n,6,17076,False,,{}
+By KS House,A32,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B32,text,Kansas Representative 31,True,s,,158,False,,{}
+By KS House,C32,number,6119,True,n,6,6119,False,,{}
+By KS House,D32,number,169,True,n,5,169,False,,{}
+By KS House,E32,blank,,True,n,6,,False,,{}
+By KS House,F32,number,2118,True,n,6,2118,False,,{}
+By KS House,G32,number,11,True,n,6,11,False,,{}
+By KS House,H32,number,4521,True,n,6,4521,False,,{}
+By KS House,I32,number,12938,True,n,6,12938,False,,{}
+By KS House,A33,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B33,text,Kansas Representative 32,True,s,,159,False,,{}
+By KS House,C33,number,4220,True,n,6,4220,False,,{}
+By KS House,D33,number,83,True,n,5,83,False,,{}
+By KS House,E33,blank,,True,n,6,,False,,{}
+By KS House,F33,number,1110,True,n,6,1110,False,,{}
+By KS House,G33,number,19,True,n,6,19,False,,{}
+By KS House,H33,number,3728,True,n,6,3728,False,,{}
+By KS House,I33,number,9160,True,n,6,9160,False,,{}
+By KS House,A34,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B34,text,Kansas Representative 33,True,s,,160,False,,{}
+By KS House,C34,number,5385,True,n,6,5385,False,,{}
+By KS House,D34,number,237,True,n,5,237,False,,{}
+By KS House,E34,blank,,True,n,6,,False,,{}
+By KS House,F34,number,4972,True,n,6,4972,False,,{}
+By KS House,G34,number,10,True,n,6,10,False,,{}
+By KS House,H34,number,5477,True,n,6,5477,False,,{}
+By KS House,I34,number,16081,True,n,6,16081,False,,{}
+By KS House,A35,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B35,text,Kansas Representative 34,True,s,,161,False,,{}
+By KS House,C35,number,5948,True,n,6,5948,False,,{}
+By KS House,D35,number,102,True,n,5,102,False,,{}
+By KS House,E35,blank,,True,n,6,,False,,{}
+By KS House,F35,number,1145,True,n,6,1145,False,,{}
+By KS House,G35,number,18,True,n,6,18,False,,{}
+By KS House,H35,number,4129,True,n,6,4129,False,,{}
+By KS House,I35,number,11342,True,n,6,11342,False,,{}
+By KS House,A36,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B36,text,Kansas Representative 35,True,s,,162,False,,{}
+By KS House,C36,number,7176,True,n,6,7176,False,,{}
+By KS House,D36,number,128,True,n,5,128,False,,{}
+By KS House,E36,blank,,True,n,6,,False,,{}
+By KS House,F36,number,1374,True,n,6,1374,False,,{}
+By KS House,G36,number,22,True,n,6,22,False,,{}
+By KS House,H36,number,4557,True,n,6,4557,False,,{}
+By KS House,I36,number,13257,True,n,6,13257,False,,{}
+By KS House,A37,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B37,text,Kansas Representative 36,True,s,,163,False,,{}
+By KS House,C37,number,7804,True,n,6,7804,False,,{}
+By KS House,D37,number,159,True,n,5,159,False,,{}
+By KS House,E37,blank,,True,n,6,,False,,{}
+By KS House,F37,number,4497,True,n,6,4497,False,,{}
+By KS House,G37,number,14,True,n,6,14,False,,{}
+By KS House,H37,number,4844,True,n,6,4844,False,,{}
+By KS House,I37,number,17318,True,n,6,17318,False,,{}
+By KS House,A38,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B38,text,Kansas Representative 37,True,s,,164,False,,{}
+By KS House,C38,number,5709,True,n,6,5709,False,,{}
+By KS House,D38,number,133,True,n,5,133,False,,{}
+By KS House,E38,blank,,True,n,6,,False,,{}
+By KS House,F38,number,2762,True,n,6,2762,False,,{}
+By KS House,G38,number,13,True,n,6,13,False,,{}
+By KS House,H38,number,4746,True,n,6,4746,False,,{}
+By KS House,I38,number,13363,True,n,6,13363,False,,{}
+By KS House,A39,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B39,text,Kansas Representative 38,True,s,,165,False,,{}
+By KS House,C39,number,4472,True,n,6,4472,False,,{}
+By KS House,D39,number,204,True,n,5,204,False,,{}
+By KS House,E39,blank,,True,n,6,,False,,{}
+By KS House,F39,number,9229,True,n,6,9229,False,,{}
+By KS House,G39,number,10,True,n,6,10,False,,{}
+By KS House,H39,number,5772,True,n,6,5772,False,,{}
+By KS House,I39,number,19687,True,n,6,19687,False,,{}
+By KS House,A40,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B40,text,Kansas Representative 39,True,s,,166,False,,{}
+By KS House,C40,number,5451,True,n,6,5451,False,,{}
+By KS House,D40,number,214,True,n,5,214,False,,{}
+By KS House,E40,blank,,True,n,6,,False,,{}
+By KS House,F40,number,7625,True,n,6,7625,False,,{}
+By KS House,G40,number,6,True,n,6,6,False,,{}
+By KS House,H40,number,4778,True,n,6,4778,False,,{}
+By KS House,I40,number,18074,True,n,6,18074,False,,{}
+By KS House,A41,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B41,text,Kansas Representative 40,True,s,,167,False,,{}
+By KS House,C41,number,4052,True,n,6,4052,False,,{}
+By KS House,D41,number,217,True,n,5,217,False,,{}
+By KS House,E41,blank,,True,n,6,,False,,{}
+By KS House,F41,number,6305,True,n,6,6305,False,,{}
+By KS House,G41,number,15,True,n,6,15,False,,{}
+By KS House,H41,number,5991,True,n,6,5991,False,,{}
+By KS House,I41,number,16580,True,n,6,16580,False,,{}
+By KS House,A42,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B42,text,Kansas Representative 41,True,s,,168,False,,{}
+By KS House,C42,number,2984,True,n,6,2984,False,,{}
+By KS House,D42,number,189,True,n,5,189,False,,{}
+By KS House,E42,blank,,True,n,6,,False,,{}
+By KS House,F42,number,4569,True,n,6,4569,False,,{}
+By KS House,G42,number,8,True,n,6,8,False,,{}
+By KS House,H42,number,5186,True,n,6,5186,False,,{}
+By KS House,I42,number,12936,True,n,6,12936,False,,{}
+By KS House,A43,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B43,text,Kansas Representative 42,True,s,,169,False,,{}
+By KS House,C43,number,4147,True,n,6,4147,False,,{}
+By KS House,D43,number,246,True,n,5,246,False,,{}
+By KS House,E43,blank,,True,n,6,,False,,{}
+By KS House,F43,number,8306,True,n,6,8306,False,,{}
+By KS House,G43,number,7,True,n,6,7,False,,{}
+By KS House,H43,number,5199,True,n,6,5199,False,,{}
+By KS House,I43,number,17905,True,n,6,17905,False,,{}
+By KS House,A44,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B44,text,Kansas Representative 43,True,s,,170,False,,{}
+By KS House,C44,number,3840,True,n,6,3840,False,,{}
+By KS House,D44,number,265,True,n,5,265,False,,{}
+By KS House,E44,blank,,True,n,6,,False,,{}
+By KS House,F44,number,7353,True,n,6,7353,False,,{}
+By KS House,G44,number,8,True,n,6,8,False,,{}
+By KS House,H44,number,4660,True,n,6,4660,False,,{}
+By KS House,I44,number,16126,True,n,6,16126,False,,{}
+By KS House,A45,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B45,text,Kansas Representative 44,True,s,,171,False,,{}
+By KS House,C45,number,8581,True,n,6,8581,False,,{}
+By KS House,D45,number,199,True,n,5,199,False,,{}
+By KS House,E45,blank,,True,n,6,,False,,{}
+By KS House,F45,number,3667,True,n,6,3667,False,,{}
+By KS House,G45,number,11,True,n,6,11,False,,{}
+By KS House,H45,number,4808,True,n,6,4808,False,,{}
+By KS House,I45,number,17266,True,n,6,17266,False,,{}
+By KS House,A46,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B46,text,Kansas Representative 45,True,s,,172,False,,{}
+By KS House,C46,number,8457,True,n,6,8457,False,,{}
+By KS House,D46,number,195,True,n,5,195,False,,{}
+By KS House,E46,blank,,True,n,6,,False,,{}
+By KS House,F46,number,4755,True,n,6,4755,False,,{}
+By KS House,G46,number,8,True,n,6,8,False,,{}
+By KS House,H46,number,5291,True,n,6,5291,False,,{}
+By KS House,I46,number,18706,True,n,6,18706,False,,{}
+By KS House,A47,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B47,text,Kansas Representative 46,True,s,,173,False,,{}
+By KS House,C47,number,6788,True,n,6,6788,False,,{}
+By KS House,D47,number,132,True,n,5,132,False,,{}
+By KS House,E47,blank,,True,n,6,,False,,{}
+By KS House,F47,number,1539,True,n,6,1539,False,,{}
+By KS House,G47,number,9,True,n,6,9,False,,{}
+By KS House,H47,number,3318,True,n,6,3318,False,,{}
+By KS House,I47,number,11786,True,n,6,11786,False,,{}
+By KS House,A48,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B48,text,Kansas Representative 47,True,s,,174,False,,{}
+By KS House,C48,number,3535,True,n,6,3535,False,,{}
+By KS House,D48,number,196,True,n,5,196,False,,{}
+By KS House,E48,blank,,True,n,6,,False,,{}
+By KS House,F48,number,8964,True,n,6,8964,False,,{}
+By KS House,G48,number,7,True,n,6,7,False,,{}
+By KS House,H48,number,5112,True,n,6,5112,False,,{}
+By KS House,I48,number,17814,True,n,6,17814,False,,{}
+By KS House,A49,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B49,text,Kansas Representative 48,True,s,,175,False,,{}
+By KS House,C49,number,5767,True,n,6,5767,False,,{}
+By KS House,D49,number,161,True,n,5,161,False,,{}
+By KS House,E49,blank,,True,n,6,,False,,{}
+By KS House,F49,number,7329,True,n,6,7329,False,,{}
+By KS House,G49,number,13,True,n,6,13,False,,{}
+By KS House,H49,number,4520,True,n,6,4520,False,,{}
+By KS House,I49,number,17790,True,n,6,17790,False,,{}
+By KS House,A50,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B50,text,Kansas Representative 49,True,s,,176,False,,{}
+By KS House,C50,number,5693,True,n,6,5693,False,,{}
+By KS House,D50,number,208,True,n,5,208,False,,{}
+By KS House,E50,blank,,True,n,6,,False,,{}
+By KS House,F50,number,7174,True,n,6,7174,False,,{}
+By KS House,G50,number,17,True,n,6,17,False,,{}
+By KS House,H50,number,4712,True,n,6,4712,False,,{}
+By KS House,I50,number,17804,True,n,6,17804,False,,{}
+By KS House,A51,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B51,text,Kansas Representative 50,True,s,,177,False,,{}
+By KS House,C51,number,3682,True,n,6,3682,False,,{}
+By KS House,D51,number,149,True,n,5,149,False,,{}
+By KS House,E51,blank,,True,n,6,,False,,{}
+By KS House,F51,number,8674,True,n,6,8674,False,,{}
+By KS House,G51,number,7,True,n,6,7,False,,{}
+By KS House,H51,number,4846,True,n,6,4846,False,,{}
+By KS House,I51,number,17358,True,n,6,17358,False,,{}
+By KS House,A52,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B52,text,Kansas Representative 51,True,s,,178,False,,{}
+By KS House,C52,number,2992,True,n,6,2992,False,,{}
+By KS House,D52,number,220,True,n,5,220,False,,{}
+By KS House,E52,blank,,True,n,6,,False,,{}
+By KS House,F52,number,9881,True,n,6,9881,False,,{}
+By KS House,G52,number,9,True,n,6,9,False,,{}
+By KS House,H52,number,4185,True,n,6,4185,False,,{}
+By KS House,I52,number,17287,True,n,6,17287,False,,{}
+By KS House,A53,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B53,text,Kansas Representative 52,True,s,,179,False,,{}
+By KS House,C53,number,4828,True,n,6,4828,False,,{}
+By KS House,D53,number,160,True,n,5,160,False,,{}
+By KS House,E53,blank,,True,n,6,,False,,{}
+By KS House,F53,number,8373,True,n,6,8373,False,,{}
+By KS House,G53,number,5,True,n,6,5,False,,{}
+By KS House,H53,number,4695,True,n,6,4695,False,,{}
+By KS House,I53,number,18061,True,n,6,18061,False,,{}
+By KS House,A54,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B54,text,Kansas Representative 53,True,s,,180,False,,{}
+By KS House,C54,number,5199,True,n,6,5199,False,,{}
+By KS House,D54,number,168,True,n,5,168,False,,{}
+By KS House,E54,blank,,True,n,6,,False,,{}
+By KS House,F54,number,5747,True,n,6,5747,False,,{}
+By KS House,G54,number,6,True,n,6,6,False,,{}
+By KS House,H54,number,4615,True,n,6,4615,False,,{}
+By KS House,I54,number,15735,True,n,6,15735,False,,{}
+By KS House,A55,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B55,text,Kansas Representative 54,True,s,,181,False,,{}
+By KS House,C55,number,3150,True,n,6,3150,False,,{}
+By KS House,D55,number,218,True,n,5,218,False,,{}
+By KS House,E55,blank,,True,n,6,,False,,{}
+By KS House,F55,number,8650,True,n,6,8650,False,,{}
+By KS House,G55,number,4,True,n,6,4,False,,{}
+By KS House,H55,number,4871,True,n,6,4871,False,,{}
+By KS House,I55,number,16893,True,n,6,16893,False,,{}
+By KS House,A56,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B56,text,Kansas Representative 55,True,s,,182,False,,{}
+By KS House,C56,number,5308,True,n,6,5308,False,,{}
+By KS House,D56,number,189,True,n,5,189,False,,{}
+By KS House,E56,blank,,True,n,6,,False,,{}
+By KS House,F56,number,3904,True,n,6,3904,False,,{}
+By KS House,G56,number,15,True,n,6,15,False,,{}
+By KS House,H56,number,4695,True,n,6,4695,False,,{}
+By KS House,I56,number,14111,True,n,6,14111,False,,{}
+By KS House,A57,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B57,text,Kansas Representative 56,True,s,,183,False,,{}
+By KS House,C57,number,5233,True,n,6,5233,False,,{}
+By KS House,D57,number,190,True,n,5,190,False,,{}
+By KS House,E57,blank,,True,n,6,,False,,{}
+By KS House,F57,number,5677,True,n,6,5677,False,,{}
+By KS House,G57,number,10,True,n,6,10,False,,{}
+By KS House,H57,number,5128,True,n,6,5128,False,,{}
+By KS House,I57,number,16238,True,n,6,16238,False,,{}
+By KS House,A58,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B58,text,Kansas Representative 57,True,s,,184,False,,{}
+By KS House,C58,number,4262,True,n,6,4262,False,,{}
+By KS House,D58,number,154,True,n,5,154,False,,{}
+By KS House,E58,blank,,True,n,6,,False,,{}
+By KS House,F58,number,3364,True,n,6,3364,False,,{}
+By KS House,G58,number,14,True,n,6,14,False,,{}
+By KS House,H58,number,4458,True,n,6,4458,False,,{}
+By KS House,I58,number,12252,True,n,6,12252,False,,{}
+By KS House,A59,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B59,text,Kansas Representative 58,True,s,,185,False,,{}
+By KS House,C59,number,5140,True,n,6,5140,False,,{}
+By KS House,D59,number,154,True,n,5,154,False,,{}
+By KS House,E59,blank,,True,n,6,,False,,{}
+By KS House,F59,number,3116,True,n,6,3116,False,,{}
+By KS House,G59,number,15,True,n,6,15,False,,{}
+By KS House,H59,number,4673,True,n,6,4673,False,,{}
+By KS House,I59,number,13098,True,n,6,13098,False,,{}
+By KS House,A60,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B60,text,Kansas Representative 59,True,s,,186,False,,{}
+By KS House,C60,number,2999,True,n,6,2999,False,,{}
+By KS House,D60,number,216,True,n,5,216,False,,{}
+By KS House,E60,blank,,True,n,6,,False,,{}
+By KS House,F60,number,9283,True,n,6,9283,False,,{}
+By KS House,G60,number,4,True,n,6,4,False,,{}
+By KS House,H60,number,4647,True,n,6,4647,False,,{}
+By KS House,I60,number,17149,True,n,6,17149,False,,{}
+By KS House,A61,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B61,text,Kansas Representative 60,True,s,,187,False,,{}
+By KS House,C61,number,3821,True,n,6,3821,False,,{}
+By KS House,D61,number,168,True,n,5,168,False,,{}
+By KS House,E61,blank,,True,n,6,,False,,{}
+By KS House,F61,number,5156,True,n,6,5156,False,,{}
+By KS House,G61,number,17,True,n,6,17,False,,{}
+By KS House,H61,number,5082,True,n,6,5082,False,,{}
+By KS House,I61,number,14244,True,n,6,14244,False,,{}
+By KS House,A62,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B62,text,Kansas Representative 61,True,s,,188,False,,{}
+By KS House,C62,number,2594,True,n,6,2594,False,,{}
+By KS House,D62,number,158,True,n,5,158,False,,{}
+By KS House,E62,blank,,True,n,6,,False,,{}
+By KS House,F62,number,9636,True,n,6,9636,False,,{}
+By KS House,G62,number,13,True,n,6,13,False,,{}
+By KS House,H62,number,3851,True,n,6,3851,False,,{}
+By KS House,I62,number,16252,True,n,6,16252,False,,{}
+By KS House,A63,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B63,text,Kansas Representative 62,True,s,,189,False,,{}
+By KS House,C63,number,2196,True,n,6,2196,False,,{}
+By KS House,D63,number,138,True,n,5,138,False,,{}
+By KS House,E63,blank,,True,n,6,,False,,{}
+By KS House,F63,number,10510,True,n,6,10510,False,,{}
+By KS House,G63,number,8,True,n,6,8,False,,{}
+By KS House,H63,number,3743,True,n,6,3743,False,,{}
+By KS House,I63,number,16595,True,n,6,16595,False,,{}
+By KS House,A64,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B64,text,Kansas Representative 63,True,s,,190,False,,{}
+By KS House,C64,number,2805,True,n,6,2805,False,,{}
+By KS House,D64,number,87,True,n,5,87,False,,{}
+By KS House,E64,blank,,True,n,6,,False,,{}
+By KS House,F64,number,8254,True,n,6,8254,False,,{}
+By KS House,G64,number,3,True,n,6,3,False,,{}
+By KS House,H64,number,5086,True,n,6,5086,False,,{}
+By KS House,I64,number,16235,True,n,6,16235,False,,{}
+By KS House,A65,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B65,text,Kansas Representative 64,True,s,,191,False,,{}
+By KS House,C65,number,1836,True,n,6,1836,False,,{}
+By KS House,D65,number,177,True,n,5,177,False,,{}
+By KS House,E65,blank,,True,n,6,,False,,{}
+By KS House,F65,number,9063,True,n,6,9063,False,,{}
+By KS House,G65,number,4,True,n,6,4,False,,{}
+By KS House,H65,number,3141,True,n,6,3141,False,,{}
+By KS House,I65,number,14221,True,n,6,14221,False,,{}
+By KS House,A66,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B66,text,Kansas Representative 65,True,s,,192,False,,{}
+By KS House,C66,number,2978,True,n,6,2978,False,,{}
+By KS House,D66,number,207,True,n,5,207,False,,{}
+By KS House,E66,blank,,True,n,6,,False,,{}
+By KS House,F66,number,4931,True,n,6,4931,False,,{}
+By KS House,G66,number,8,True,n,6,8,False,,{}
+By KS House,H66,number,4953,True,n,6,4953,False,,{}
+By KS House,I66,number,13077,True,n,6,13077,False,,{}
+By KS House,A67,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B67,text,Kansas Representative 66,True,s,,193,False,,{}
+By KS House,C67,number,3719,True,n,6,3719,False,,{}
+By KS House,D67,number,236,True,n,5,236,False,,{}
+By KS House,E67,blank,,True,n,6,,False,,{}
+By KS House,F67,number,3277,True,n,6,3277,False,,{}
+By KS House,G67,number,16,True,n,6,16,False,,{}
+By KS House,H67,number,3607,True,n,6,3607,False,,{}
+By KS House,I67,number,10855,True,n,6,10855,False,,{}
+By KS House,A68,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B68,text,Kansas Representative 67,True,s,,194,False,,{}
+By KS House,C68,number,4910,True,n,6,4910,False,,{}
+By KS House,D68,number,264,True,n,5,264,False,,{}
+By KS House,E68,blank,,True,n,6,,False,,{}
+By KS House,F68,number,6871,True,n,6,6871,False,,{}
+By KS House,G68,number,11,True,n,6,11,False,,{}
+By KS House,H68,number,4776,True,n,6,4776,False,,{}
+By KS House,I68,number,16832,True,n,6,16832,False,,{}
+By KS House,A69,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B69,text,Kansas Representative 68,True,s,,195,False,,{}
+By KS House,C69,number,2340,True,n,6,2340,False,,{}
+By KS House,D69,number,203,True,n,5,203,False,,{}
+By KS House,E69,blank,,True,n,6,,False,,{}
+By KS House,F69,number,5862,True,n,6,5862,False,,{}
+By KS House,G69,number,11,True,n,6,11,False,,{}
+By KS House,H69,number,4174,True,n,6,4174,False,,{}
+By KS House,I69,number,12590,True,n,6,12590,False,,{}
+By KS House,A70,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B70,text,Kansas Representative 69,True,s,,196,False,,{}
+By KS House,C70,number,3088,True,n,6,3088,False,,{}
+By KS House,D70,number,224,True,n,5,224,False,,{}
+By KS House,E70,blank,,True,n,6,,False,,{}
+By KS House,F70,number,7419,True,n,6,7419,False,,{}
+By KS House,G70,number,14,True,n,6,14,False,,{}
+By KS House,H70,number,5221,True,n,6,5221,False,,{}
+By KS House,I70,number,15966,True,n,6,15966,False,,{}
+By KS House,A71,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B71,text,Kansas Representative 70,True,s,,197,False,,{}
+By KS House,C71,number,2121,True,n,6,2121,False,,{}
+By KS House,D71,number,165,True,n,5,165,False,,{}
+By KS House,E71,blank,,True,n,6,,False,,{}
+By KS House,F71,number,10663,True,n,6,10663,False,,{}
+By KS House,G71,number,10,True,n,6,10,False,,{}
+By KS House,H71,number,4139,True,n,6,4139,False,,{}
+By KS House,I71,number,17098,True,n,6,17098,False,,{}
+By KS House,A72,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B72,text,Kansas Representative 71,True,s,,198,False,,{}
+By KS House,C72,number,3405,True,n,6,3405,False,,{}
+By KS House,D72,number,265,True,n,5,265,False,,{}
+By KS House,E72,blank,,True,n,6,,False,,{}
+By KS House,F72,number,9102,True,n,6,9102,False,,{}
+By KS House,G72,number,15,True,n,6,15,False,,{}
+By KS House,H72,number,5021,True,n,6,5021,False,,{}
+By KS House,I72,number,17808,True,n,6,17808,False,,{}
+By KS House,A73,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B73,text,Kansas Representative 72,True,s,,199,False,,{}
+By KS House,C73,number,4019,True,n,6,4019,False,,{}
+By KS House,D73,number,163,True,n,5,163,False,,{}
+By KS House,E73,blank,,True,n,6,,False,,{}
+By KS House,F73,number,7729,True,n,6,7729,False,,{}
+By KS House,G73,number,12,True,n,6,12,False,,{}
+By KS House,H73,number,4023,True,n,6,4023,False,,{}
+By KS House,I73,number,15946,True,n,6,15946,False,,{}
+By KS House,A74,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B74,text,Kansas Representative 73,True,s,,200,False,,{}
+By KS House,C74,number,2512,True,n,6,2512,False,,{}
+By KS House,D74,number,168,True,n,5,168,False,,{}
+By KS House,E74,blank,,True,n,6,,False,,{}
+By KS House,F74,number,8770,True,n,6,8770,False,,{}
+By KS House,G74,number,10,True,n,6,10,False,,{}
+By KS House,H74,number,3898,True,n,6,3898,False,,{}
+By KS House,I74,number,15358,True,n,6,15358,False,,{}
+By KS House,A75,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B75,text,Kansas Representative 74,True,s,,201,False,,{}
+By KS House,C75,number,2564,True,n,6,2564,False,,{}
+By KS House,D75,number,186,True,n,5,186,False,,{}
+By KS House,E75,blank,,True,n,6,,False,,{}
+By KS House,F75,number,9148,True,n,6,9148,False,,{}
+By KS House,G75,number,8,True,n,6,8,False,,{}
+By KS House,H75,number,3527,True,n,6,3527,False,,{}
+By KS House,I75,number,15433,True,n,6,15433,False,,{}
+By KS House,A76,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B76,text,Kansas Representative 75,True,s,,202,False,,{}
+By KS House,C76,number,2667,True,n,6,2667,False,,{}
+By KS House,D76,number,219,True,n,5,219,False,,{}
+By KS House,E76,blank,,True,n,6,,False,,{}
+By KS House,F76,number,9309,True,n,6,9309,False,,{}
+By KS House,G76,number,9,True,n,6,9,False,,{}
+By KS House,H76,number,4345,True,n,6,4345,False,,{}
+By KS House,I76,number,16549,True,n,6,16549,False,,{}
+By KS House,A77,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B77,text,Kansas Representative 76,True,s,,203,False,,{}
+By KS House,C77,number,2483,True,n,6,2483,False,,{}
+By KS House,D77,number,169,True,n,5,169,False,,{}
+By KS House,E77,blank,,True,n,6,,False,,{}
+By KS House,F77,number,10137,True,n,6,10137,False,,{}
+By KS House,G77,number,9,True,n,6,9,False,,{}
+By KS House,H77,number,4278,True,n,6,4278,False,,{}
+By KS House,I77,number,17076,True,n,6,17076,False,,{}
+By KS House,A78,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B78,text,Kansas Representative 77,True,s,,204,False,,{}
+By KS House,C78,number,2744,True,n,6,2744,False,,{}
+By KS House,D78,number,246,True,n,5,246,False,,{}
+By KS House,E78,blank,,True,n,6,,False,,{}
+By KS House,F78,number,9874,True,n,6,9874,False,,{}
+By KS House,G78,number,7,True,n,6,7,False,,{}
+By KS House,H78,number,5402,True,n,6,5402,False,,{}
+By KS House,I78,number,18273,True,n,6,18273,False,,{}
+By KS House,A79,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B79,text,Kansas Representative 78,True,s,,205,False,,{}
+By KS House,C79,number,5162,True,n,6,5162,False,,{}
+By KS House,D79,number,210,True,n,5,210,False,,{}
+By KS House,E79,blank,,True,n,6,,False,,{}
+By KS House,F79,number,7510,True,n,6,7510,False,,{}
+By KS House,G79,number,11,True,n,6,11,False,,{}
+By KS House,H79,number,4496,True,n,6,4496,False,,{}
+By KS House,I79,number,17389,True,n,6,17389,False,,{}
+By KS House,A80,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B80,text,Kansas Representative 79,True,s,,206,False,,{}
+By KS House,C80,number,2832,True,n,6,2832,False,,{}
+By KS House,D80,number,140,True,n,5,140,False,,{}
+By KS House,E80,blank,,True,n,6,,False,,{}
+By KS House,F80,number,8242,True,n,6,8242,False,,{}
+By KS House,G80,number,1,True,n,6,1,False,,{}
+By KS House,H80,number,4248,True,n,6,4248,False,,{}
+By KS House,I80,number,15463,True,n,6,15463,False,,{}
+By KS House,A81,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B81,text,Kansas Representative 80,True,s,,207,False,,{}
+By KS House,C81,number,2715,True,n,6,2715,False,,{}
+By KS House,D81,number,180,True,n,5,180,False,,{}
+By KS House,E81,blank,,True,n,6,,False,,{}
+By KS House,F81,number,7239,True,n,6,7239,False,,{}
+By KS House,G81,number,6,True,n,6,6,False,,{}
+By KS House,H81,number,4185,True,n,6,4185,False,,{}
+By KS House,I81,number,14325,True,n,6,14325,False,,{}
+By KS House,A82,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B82,text,Kansas Representative 81,True,s,,208,False,,{}
+By KS House,C82,number,2895,True,n,6,2895,False,,{}
+By KS House,D82,number,203,True,n,5,203,False,,{}
+By KS House,E82,blank,,True,n,6,,False,,{}
+By KS House,F82,number,5742,True,n,6,5742,False,,{}
+By KS House,G82,number,6,True,n,6,6,False,,{}
+By KS House,H82,number,5089,True,n,6,5089,False,,{}
+By KS House,I82,number,13935,True,n,6,13935,False,,{}
+By KS House,A83,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B83,text,Kansas Representative 82,True,s,,209,False,,{}
+By KS House,C83,number,3047,True,n,6,3047,False,,{}
+By KS House,D83,number,213,True,n,5,213,False,,{}
+By KS House,E83,blank,,True,n,6,,False,,{}
+By KS House,F83,number,8228,True,n,6,8228,False,,{}
+By KS House,G83,number,5,True,n,6,5,False,,{}
+By KS House,H83,number,5376,True,n,6,5376,False,,{}
+By KS House,I83,number,16869,True,n,6,16869,False,,{}
+By KS House,A84,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B84,text,Kansas Representative 83,True,s,,210,False,,{}
+By KS House,C84,number,4840,True,n,6,4840,False,,{}
+By KS House,D84,number,203,True,n,5,203,False,,{}
+By KS House,E84,blank,,True,n,6,,False,,{}
+By KS House,F84,number,3782,True,n,6,3782,False,,{}
+By KS House,G84,number,23,True,n,6,23,False,,{}
+By KS House,H84,number,4933,True,n,6,4933,False,,{}
+By KS House,I84,number,13781,True,n,6,13781,False,,{}
+By KS House,A85,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B85,text,Kansas Representative 84,True,s,,211,False,,{}
+By KS House,C85,number,6495,True,n,6,6495,False,,{}
+By KS House,D85,number,189,True,n,5,189,False,,{}
+By KS House,E85,blank,,True,n,6,,False,,{}
+By KS House,F85,number,2715,True,n,6,2715,False,,{}
+By KS House,G85,number,22,True,n,6,22,False,,{}
+By KS House,H85,number,4958,True,n,6,4958,False,,{}
+By KS House,I85,number,14379,True,n,6,14379,False,,{}
+By KS House,A86,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B86,text,Kansas Representative 85,True,s,,212,False,,{}
+By KS House,C86,number,4960,True,n,6,4960,False,,{}
+By KS House,D86,number,218,True,n,5,218,False,,{}
+By KS House,E86,blank,,True,n,6,,False,,{}
+By KS House,F86,number,8333,True,n,6,8333,False,,{}
+By KS House,G86,number,8,True,n,6,8,False,,{}
+By KS House,H86,number,5664,True,n,6,5664,False,,{}
+By KS House,I86,number,19183,True,n,6,19183,False,,{}
+By KS House,A87,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B87,text,Kansas Representative 86,True,s,,213,False,,{}
+By KS House,C87,number,4395,True,n,6,4395,False,,{}
+By KS House,D87,number,207,True,n,5,207,False,,{}
+By KS House,E87,blank,,True,n,6,,False,,{}
+By KS House,F87,number,3220,True,n,6,3220,False,,{}
+By KS House,G87,number,20,True,n,6,20,False,,{}
+By KS House,H87,number,5322,True,n,6,5322,False,,{}
+By KS House,I87,number,13164,True,n,6,13164,False,,{}
+By KS House,A88,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B88,text,Kansas Representative 87,True,s,,214,False,,{}
+By KS House,C88,number,4613,True,n,6,4613,False,,{}
+By KS House,D88,number,224,True,n,5,224,False,,{}
+By KS House,E88,blank,,True,n,6,,False,,{}
+By KS House,F88,number,7662,True,n,6,7662,False,,{}
+By KS House,G88,number,10,True,n,6,10,False,,{}
+By KS House,H88,number,5192,True,n,6,5192,False,,{}
+By KS House,I88,number,17701,True,n,6,17701,False,,{}
+By KS House,A89,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B89,text,Kansas Representative 88,True,s,,215,False,,{}
+By KS House,C89,number,4736,True,n,6,4736,False,,{}
+By KS House,D89,number,214,True,n,5,214,False,,{}
+By KS House,E89,blank,,True,n,6,,False,,{}
+By KS House,F89,number,5312,True,n,6,5312,False,,{}
+By KS House,G89,number,15,True,n,6,15,False,,{}
+By KS House,H89,number,6075,True,n,6,6075,False,,{}
+By KS House,I89,number,16352,True,n,6,16352,False,,{}
+By KS House,A90,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B90,text,Kansas Representative 89,True,s,,216,False,,{}
+By KS House,C90,number,6269,True,n,6,6269,False,,{}
+By KS House,D90,number,190,True,n,5,190,False,,{}
+By KS House,E90,blank,,True,n,6,,False,,{}
+By KS House,F90,number,4122,True,n,6,4122,False,,{}
+By KS House,G90,number,24,True,n,6,24,False,,{}
+By KS House,H90,number,4875,True,n,6,4875,False,,{}
+By KS House,I90,number,15480,True,n,6,15480,False,,{}
+By KS House,A91,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B91,text,Kansas Representative 90,True,s,,217,False,,{}
+By KS House,C91,number,3080,True,n,6,3080,False,,{}
+By KS House,D91,number,248,True,n,5,248,False,,{}
+By KS House,E91,blank,,True,n,6,,False,,{}
+By KS House,F91,number,10166,True,n,6,10166,False,,{}
+By KS House,G91,number,16,True,n,6,16,False,,{}
+By KS House,H91,number,5310,True,n,6,5310,False,,{}
+By KS House,I91,number,18820,True,n,6,18820,False,,{}
+By KS House,A92,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B92,text,Kansas Representative 91,True,s,,218,False,,{}
+By KS House,C92,number,4081,True,n,6,4081,False,,{}
+By KS House,D92,number,248,True,n,5,248,False,,{}
+By KS House,E92,blank,,True,n,6,,False,,{}
+By KS House,F92,number,9140,True,n,6,9140,False,,{}
+By KS House,G92,number,11,True,n,6,11,False,,{}
+By KS House,H92,number,5765,True,n,6,5765,False,,{}
+By KS House,I92,number,19245,True,n,6,19245,False,,{}
+By KS House,A93,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B93,text,Kansas Representative 92,True,s,,219,False,,{}
+By KS House,C93,number,5288,True,n,6,5288,False,,{}
+By KS House,D93,number,263,True,n,5,263,False,,{}
+By KS House,E93,blank,,True,n,6,,False,,{}
+By KS House,F93,number,4639,True,n,6,4639,False,,{}
+By KS House,G93,number,19,True,n,6,19,False,,{}
+By KS House,H93,number,4986,True,n,6,4986,False,,{}
+By KS House,I93,number,15195,True,n,6,15195,False,,{}
+By KS House,A94,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B94,text,Kansas Representative 93,True,s,,220,False,,{}
+By KS House,C94,number,2498,True,n,6,2498,False,,{}
+By KS House,D94,number,229,True,n,5,229,False,,{}
+By KS House,E94,blank,,True,n,6,,False,,{}
+By KS House,F94,number,9457,True,n,6,9457,False,,{}
+By KS House,G94,number,8,True,n,6,8,False,,{}
+By KS House,H94,number,4734,True,n,6,4734,False,,{}
+By KS House,I94,number,16926,True,n,6,16926,False,,{}
+By KS House,A95,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B95,text,Kansas Representative 94,True,s,,221,False,,{}
+By KS House,C95,number,3663,True,n,6,3663,False,,{}
+By KS House,D95,number,213,True,n,5,213,False,,{}
+By KS House,E95,blank,,True,n,6,,False,,{}
+By KS House,F95,number,8882,True,n,6,8882,False,,{}
+By KS House,G95,number,9,True,n,6,9,False,,{}
+By KS House,H95,number,4586,True,n,6,4586,False,,{}
+By KS House,I95,number,17353,True,n,6,17353,False,,{}
+By KS House,A96,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B96,text,Kansas Representative 95,True,s,,222,False,,{}
+By KS House,C96,number,3852,True,n,6,3852,False,,{}
+By KS House,D96,number,237,True,n,5,237,False,,{}
+By KS House,E96,blank,,True,n,6,,False,,{}
+By KS House,F96,number,3642,True,n,6,3642,False,,{}
+By KS House,G96,number,25,True,n,6,25,False,,{}
+By KS House,H96,number,5185,True,n,6,5185,False,,{}
+By KS House,I96,number,12941,True,n,6,12941,False,,{}
+By KS House,A97,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B97,text,Kansas Representative 96,True,s,,223,False,,{}
+By KS House,C97,number,3307,True,n,6,3307,False,,{}
+By KS House,D97,number,207,True,n,5,207,False,,{}
+By KS House,E97,blank,,True,n,6,,False,,{}
+By KS House,F97,number,3570,True,n,6,3570,False,,{}
+By KS House,G97,number,17,True,n,6,17,False,,{}
+By KS House,H97,number,5215,True,n,6,5215,False,,{}
+By KS House,I97,number,12316,True,n,6,12316,False,,{}
+By KS House,A98,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B98,text,Kansas Representative 97,True,s,,224,False,,{}
+By KS House,C98,number,3647,True,n,6,3647,False,,{}
+By KS House,D98,number,247,True,n,5,247,False,,{}
+By KS House,E98,blank,,True,n,6,,False,,{}
+By KS House,F98,number,6144,True,n,6,6144,False,,{}
+By KS House,G98,number,20,True,n,6,20,False,,{}
+By KS House,H98,number,5346,True,n,6,5346,False,,{}
+By KS House,I98,number,15404,True,n,6,15404,False,,{}
+By KS House,A99,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B99,text,Kansas Representative 98,True,s,,225,False,,{}
+By KS House,C99,number,3013,True,n,6,3013,False,,{}
+By KS House,D99,number,197,True,n,5,197,False,,{}
+By KS House,E99,blank,,True,n,6,,False,,{}
+By KS House,F99,number,4935,True,n,6,4935,False,,{}
+By KS House,G99,number,17,True,n,6,17,False,,{}
+By KS House,H99,number,5283,True,n,6,5283,False,,{}
+By KS House,I99,number,13445,True,n,6,13445,False,,{}
+By KS House,A100,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B100,text,Kansas Representative 99,True,s,,226,False,,{}
+By KS House,C100,number,3564,True,n,6,3564,False,,{}
+By KS House,D100,number,225,True,n,5,225,False,,{}
+By KS House,E100,blank,,True,n,6,,False,,{}
+By KS House,F100,number,9858,True,n,6,9858,False,,{}
+By KS House,G100,number,11,True,n,6,11,False,,{}
+By KS House,H100,number,5745,True,n,6,5745,False,,{}
+By KS House,I100,number,19403,True,n,6,19403,False,,{}
+By KS House,A101,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B101,text,Kansas Representative 100,True,s,,227,False,,{}
+By KS House,C101,number,4070,True,n,6,4070,False,,{}
+By KS House,D101,number,239,True,n,5,239,False,,{}
+By KS House,E101,blank,,True,n,6,,False,,{}
+By KS House,F101,number,8524,True,n,6,8524,False,,{}
+By KS House,G101,number,16,True,n,6,16,False,,{}
+By KS House,H101,number,4910,True,n,6,4910,False,,{}
+By KS House,I101,number,17759,True,n,6,17759,False,,{}
+By KS House,A102,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B102,text,Kansas Representative 101,True,s,,228,False,,{}
+By KS House,C102,number,2706,True,n,6,2706,False,,{}
+By KS House,D102,number,254,True,n,5,254,False,,{}
+By KS House,E102,blank,,True,n,6,,False,,{}
+By KS House,F102,number,11178,True,n,6,11178,False,,{}
+By KS House,G102,number,15,True,n,6,15,False,,{}
+By KS House,H102,number,4334,True,n,6,4334,False,,{}
+By KS House,I102,number,18487,True,n,6,18487,False,,{}
+By KS House,A103,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B103,text,Kansas Representative 102,True,s,,229,False,,{}
+By KS House,C103,number,3247,True,n,6,3247,False,,{}
+By KS House,D103,number,210,True,n,5,210,False,,{}
+By KS House,E103,blank,,True,n,6,,False,,{}
+By KS House,F103,number,5403,True,n,6,5403,False,,{}
+By KS House,G103,number,20,True,n,6,20,False,,{}
+By KS House,H103,number,5514,True,n,6,5514,False,,{}
+By KS House,I103,number,14394,True,n,6,14394,False,,{}
+By KS House,A104,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B104,text,Kansas Representative 103,True,s,,230,False,,{}
+By KS House,C104,number,3545,True,n,6,3545,False,,{}
+By KS House,D104,number,187,True,n,5,187,False,,{}
+By KS House,E104,blank,,True,n,6,,False,,{}
+By KS House,F104,number,2063,True,n,6,2063,False,,{}
+By KS House,G104,number,19,True,n,6,19,False,,{}
+By KS House,H104,number,4777,True,n,6,4777,False,,{}
+By KS House,I104,number,10591,True,n,6,10591,False,,{}
+By KS House,A105,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B105,text,Kansas Representative 104,True,s,,231,False,,{}
+By KS House,C105,number,3035,True,n,6,3035,False,,{}
+By KS House,D105,number,171,True,n,5,171,False,,{}
+By KS House,E105,blank,,True,n,6,,False,,{}
+By KS House,F105,number,10321,True,n,6,10321,False,,{}
+By KS House,G105,number,13,True,n,6,13,False,,{}
+By KS House,H105,number,3860,True,n,6,3860,False,,{}
+By KS House,I105,number,17400,True,n,6,17400,False,,{}
+By KS House,A106,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B106,text,Kansas Representative 105,True,s,,232,False,,{}
+By KS House,C106,number,3966,True,n,6,3966,False,,{}
+By KS House,D106,number,248,True,n,5,248,False,,{}
+By KS House,E106,blank,,True,n,6,,False,,{}
+By KS House,F106,number,6099,True,n,6,6099,False,,{}
+By KS House,G106,number,9,True,n,6,9,False,,{}
+By KS House,H106,number,5149,True,n,6,5149,False,,{}
+By KS House,I106,number,15471,True,n,6,15471,False,,{}
+By KS House,A107,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B107,text,Kansas Representative 106,True,s,,233,False,,{}
+By KS House,C107,number,1927,True,n,6,1927,False,,{}
+By KS House,D107,number,128,True,n,5,128,False,,{}
+By KS House,E107,blank,,True,n,6,,False,,{}
+By KS House,F107,number,10872,True,n,6,10872,False,,{}
+By KS House,G107,number,8,True,n,6,8,False,,{}
+By KS House,H107,number,3322,True,n,6,3322,False,,{}
+By KS House,I107,number,16257,True,n,6,16257,False,,{}
+By KS House,A108,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B108,text,Kansas Representative 107,True,s,,234,False,,{}
+By KS House,C108,number,2111,True,n,6,2111,False,,{}
+By KS House,D108,number,174,True,n,5,174,False,,{}
+By KS House,E108,blank,,True,n,6,,False,,{}
+By KS House,F108,number,10235,True,n,6,10235,False,,{}
+By KS House,G108,number,10,True,n,6,10,False,,{}
+By KS House,H108,number,3728,True,n,6,3728,False,,{}
+By KS House,I108,number,16258,True,n,6,16258,False,,{}
+By KS House,A109,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B109,text,Kansas Representative 108,True,s,,235,False,,{}
+By KS House,C109,number,6750,True,n,6,6750,False,,{}
+By KS House,D109,number,259,True,n,5,259,False,,{}
+By KS House,E109,blank,,True,n,6,,False,,{}
+By KS House,F109,number,6392,True,n,6,6392,False,,{}
+By KS House,G109,number,14,True,n,6,14,False,,{}
+By KS House,H109,number,5059,True,n,6,5059,False,,{}
+By KS House,I109,number,18474,True,n,6,18474,False,,{}
+By KS House,A110,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B110,text,Kansas Representative 109,True,s,,236,False,,{}
+By KS House,C110,number,1864,True,n,6,1864,False,,{}
+By KS House,D110,number,131,True,n,5,131,False,,{}
+By KS House,E110,blank,,True,n,6,,False,,{}
+By KS House,F110,number,10821,True,n,6,10821,False,,{}
+By KS House,G110,number,5,True,n,6,5,False,,{}
+By KS House,H110,number,3179,True,n,6,3179,False,,{}
+By KS House,I110,number,16000,True,n,6,16000,False,,{}
+By KS House,A111,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B111,text,Kansas Representative 110,True,s,,237,False,,{}
+By KS House,C111,number,1594,True,n,6,1594,False,,{}
+By KS House,D111,number,115,True,n,5,115,False,,{}
+By KS House,E111,blank,,True,n,6,,False,,{}
+By KS House,F111,number,11767,True,n,6,11767,False,,{}
+By KS House,G111,number,8,True,n,6,8,False,,{}
+By KS House,H111,number,3323,True,n,6,3323,False,,{}
+By KS House,I111,number,16807,True,n,6,16807,False,,{}
+By KS House,A112,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B112,text,Kansas Representative 111,True,s,,238,False,,{}
+By KS House,C112,number,3079,True,n,6,3079,False,,{}
+By KS House,D112,number,195,True,n,5,195,False,,{}
+By KS House,E112,blank,,True,n,6,,False,,{}
+By KS House,F112,number,8697,True,n,6,8697,False,,{}
+By KS House,G112,number,9,True,n,6,9,False,,{}
+By KS House,H112,number,4700,True,n,6,4700,False,,{}
+By KS House,I112,number,16680,True,n,6,16680,False,,{}
+By KS House,A113,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B113,text,Kansas Representative 112,True,s,,239,False,,{}
+By KS House,C113,number,2018,True,n,6,2018,False,,{}
+By KS House,D113,number,101,True,n,5,101,False,,{}
+By KS House,E113,blank,,True,n,6,,False,,{}
+By KS House,F113,number,8896,True,n,6,8896,False,,{}
+By KS House,G113,number,12,True,n,6,12,False,,{}
+By KS House,H113,number,3999,True,n,6,3999,False,,{}
+By KS House,I113,number,15026,True,n,6,15026,False,,{}
+By KS House,A114,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B114,text,Kansas Representative 113,True,s,,240,False,,{}
+By KS House,C114,number,1886,True,n,6,1886,False,,{}
+By KS House,D114,number,174,True,n,5,174,False,,{}
+By KS House,E114,blank,,True,n,6,,False,,{}
+By KS House,F114,number,10638,True,n,6,10638,False,,{}
+By KS House,G114,number,11,True,n,6,11,False,,{}
+By KS House,H114,number,3702,True,n,6,3702,False,,{}
+By KS House,I114,number,16411,True,n,6,16411,False,,{}
+By KS House,A115,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B115,text,Kansas Representative 114,True,s,,241,False,,{}
+By KS House,C115,number,2051,True,n,6,2051,False,,{}
+By KS House,D115,number,148,True,n,5,148,False,,{}
+By KS House,E115,blank,,True,n,6,,False,,{}
+By KS House,F115,number,10580,True,n,6,10580,False,,{}
+By KS House,G115,number,7,True,n,6,7,False,,{}
+By KS House,H115,number,3700,True,n,6,3700,False,,{}
+By KS House,I115,number,16486,True,n,6,16486,False,,{}
+By KS House,A116,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B116,text,Kansas Representative 115,True,s,,242,False,,{}
+By KS House,C116,number,2054,True,n,6,2054,False,,{}
+By KS House,D116,number,125,True,n,5,125,False,,{}
+By KS House,E116,blank,,True,n,6,,False,,{}
+By KS House,F116,number,9736,True,n,6,9736,False,,{}
+By KS House,G116,number,12,True,n,6,12,False,,{}
+By KS House,H116,number,3513,True,n,6,3513,False,,{}
+By KS House,I116,number,15440,True,n,6,15440,False,,{}
+By KS House,A117,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B117,text,Kansas Representative 116,True,s,,243,False,,{}
+By KS House,C117,number,1892,True,n,6,1892,False,,{}
+By KS House,D117,number,160,True,n,5,160,False,,{}
+By KS House,E117,blank,,True,n,6,,False,,{}
+By KS House,F117,number,11152,True,n,6,11152,False,,{}
+By KS House,G117,number,8,True,n,6,8,False,,{}
+By KS House,H117,number,2773,True,n,6,2773,False,,{}
+By KS House,I117,number,15985,True,n,6,15985,False,,{}
+By KS House,A118,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B118,text,Kansas Representative 117,True,s,,244,False,,{}
+By KS House,C118,number,5697,True,n,6,5697,False,,{}
+By KS House,D118,number,256,True,n,5,256,False,,{}
+By KS House,E118,blank,,True,n,6,,False,,{}
+By KS House,F118,number,9277,True,n,6,9277,False,,{}
+By KS House,G118,number,13,True,n,6,13,False,,{}
+By KS House,H118,number,5214,True,n,6,5214,False,,{}
+By KS House,I118,number,20457,True,n,6,20457,False,,{}
+By KS House,A119,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B119,text,Kansas Representative 118,True,s,,245,False,,{}
+By KS House,C119,number,1369,True,n,6,1369,False,,{}
+By KS House,D119,number,88,True,n,5,88,False,,{}
+By KS House,E119,blank,,True,n,6,,False,,{}
+By KS House,F119,number,11868,True,n,6,11868,False,,{}
+By KS House,G119,number,8,True,n,6,8,False,,{}
+By KS House,H119,number,3071,True,n,6,3071,False,,{}
+By KS House,I119,number,16404,True,n,6,16404,False,,{}
+By KS House,A120,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B120,text,Kansas Representative 119,True,s,,246,False,,{}
+By KS House,C120,number,2947,True,n,6,2947,False,,{}
+By KS House,D120,number,150,True,n,5,150,False,,{}
+By KS House,E120,blank,,True,n,6,,False,,{}
+By KS House,F120,number,3355,True,n,6,3355,False,,{}
+By KS House,G120,number,19,True,n,6,19,False,,{}
+By KS House,H120,number,4075,True,n,6,4075,False,,{}
+By KS House,I120,number,10546,True,n,6,10546,False,,{}
+By KS House,A121,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B121,text,Kansas Representative 120,True,s,,247,False,,{}
+By KS House,C121,number,1409,True,n,6,1409,False,,{}
+By KS House,D121,number,128,True,n,5,128,False,,{}
+By KS House,E121,blank,,True,n,6,,False,,{}
+By KS House,F121,number,11670,True,n,6,11670,False,,{}
+By KS House,G121,number,7,True,n,6,7,False,,{}
+By KS House,H121,number,3119,True,n,6,3119,False,,{}
+By KS House,I121,number,16333,True,n,6,16333,False,,{}
+By KS House,A122,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B122,text,Kansas Representative 121,True,s,,248,False,,{}
+By KS House,C122,number,5153,True,n,6,5153,False,,{}
+By KS House,D122,number,231,True,n,5,231,False,,{}
+By KS House,E122,blank,,True,n,6,,False,,{}
+By KS House,F122,number,7487,True,n,6,7487,False,,{}
+By KS House,G122,number,12,True,n,6,12,False,,{}
+By KS House,H122,number,4536,True,n,6,4536,False,,{}
+By KS House,I122,number,17419,True,n,6,17419,False,,{}
+By KS House,A123,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B123,text,Kansas Representative 122,True,s,,249,False,,{}
+By KS House,C123,number,1961,True,n,6,1961,False,,{}
+By KS House,D123,number,125,True,n,5,125,False,,{}
+By KS House,E123,blank,,True,n,6,,False,,{}
+By KS House,F123,number,6565,True,n,6,6565,False,,{}
+By KS House,G123,number,16,True,n,6,16,False,,{}
+By KS House,H123,number,3593,True,n,6,3593,False,,{}
+By KS House,I123,number,12260,True,n,6,12260,False,,{}
+By KS House,A124,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B124,text,Kansas Representative 123,True,s,,250,False,,{}
+By KS House,C124,number,3152,True,n,6,3152,False,,{}
+By KS House,D124,number,137,True,n,5,137,False,,{}
+By KS House,E124,blank,,True,n,6,,False,,{}
+By KS House,F124,number,5199,True,n,6,5199,False,,{}
+By KS House,G124,number,12,True,n,6,12,False,,{}
+By KS House,H124,number,4494,True,n,6,4494,False,,{}
+By KS House,I124,number,12994,True,n,6,12994,False,,{}
+By KS House,A125,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B125,text,Kansas Representative 124,True,s,,251,False,,{}
+By KS House,C125,number,1447,True,n,6,1447,False,,{}
+By KS House,D125,number,121,True,n,5,121,False,,{}
+By KS House,E125,blank,,True,n,6,,False,,{}
+By KS House,F125,number,9302,True,n,6,9302,False,,{}
+By KS House,G125,number,10,True,n,6,10,False,,{}
+By KS House,H125,number,2900,True,n,6,2900,False,,{}
+By KS House,I125,number,13780,True,n,6,13780,False,,{}
+By KS House,A126,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B126,text,Kansas Representative 125,True,s,,252,False,,{}
+By KS House,C126,number,2774,True,n,6,2774,False,,{}
+By KS House,D126,number,176,True,n,5,176,False,,{}
+By KS House,E126,blank,,True,n,6,,False,,{}
+By KS House,F126,number,4992,True,n,6,4992,False,,{}
+By KS House,G126,number,31,True,n,6,31,False,,{}
+By KS House,H126,number,4452,True,n,6,4452,False,,{}
+By KS House,I126,number,12425,True,n,6,12425,False,,{}
+By KS House,A127,date,2026-10-01,True,n,1,46296,False,,{}
+By KS House,B127,text,Grand Total,True,s,,6,False,,{}
+By KS House,C127,number,521669,True,n,6,521669,False,,{}
+By KS House,D127,number,23840,True,n,5,23840,False,,{}
+By KS House,E127,blank,,True,n,6,,False,,{}
+By KS House,F127,number,901822,True,n,6,901822,False,,{}
+By KS House,G127,number,1398,True,n,6,1398,False,,{}
+By KS House,H127,number,578791,True,n,6,578791,False,,{}
+By KS House,I127,number,2027520,True,n,6,2027520,False,,{}
+By KS Senate,A1,text,Date,True,s,,119,False,,{}
+By KS Senate,B1,text,Kansas Senate District,True,s,,120,False,,{}
+By KS Senate,C1,text,Democratic,True,s,2,1,False,,{}
+By KS Senate,D1,text,Libertarian,True,s,2,2,False,,{}
+By KS Senate,E1,text,No Labels Kansas,True,s,2,114,False,,{}
+By KS Senate,F1,text,Republican,True,s,2,3,False,,{}
+By KS Senate,G1,text,United Kansas,True,s,2,4,False,,{}
+By KS Senate,H1,text,Unaffiliated,True,s,2,5,False,,{}
+By KS Senate,I1,text,Total,True,s,2,288,False,,{}
+By KS Senate,A2,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B2,text,Kansas Senate 1,True,s,,125,False,,{}
+By KS Senate,C2,number,8132,True,n,5,8132,False,,{}
+By KS Senate,D2,number,381,True,n,5,381,False,,{}
+By KS Senate,E2,blank,,True,n,5,,False,,{}
+By KS Senate,F2,number,28875,True,n,5,28875,False,,{}
+By KS Senate,G2,number,21,True,n,5,21,False,,{}
+By KS Senate,H2,number,13968,True,n,5,13968,False,,{}
+By KS Senate,I2,number,51377,True,n,5,51377,False,,{}
+By KS Senate,A3,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B3,text,Kansas Senate 2,True,s,,253,False,,{}
+By KS Senate,C3,number,23893,True,n,5,23893,False,,{}
+By KS Senate,D3,number,553,True,n,5,553,False,,{}
+By KS Senate,E3,blank,,True,n,5,,False,,{}
+By KS Senate,F3,number,7784,True,n,5,7784,False,,{}
+By KS Senate,G3,number,31,True,n,5,31,False,,{}
+By KS Senate,H3,number,13022,True,n,5,13022,False,,{}
+By KS Senate,I3,number,45283,True,n,5,45283,False,,{}
+By KS Senate,A4,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B4,text,Kansas Senate 3,True,s,,254,False,,{}
+By KS Senate,C4,number,14114,True,n,5,14114,False,,{}
+By KS Senate,D4,number,654,True,n,5,654,False,,{}
+By KS Senate,E4,blank,,True,n,5,,False,,{}
+By KS Senate,F4,number,25308,True,n,5,25308,False,,{}
+By KS Senate,G4,number,26,True,n,5,26,False,,{}
+By KS Senate,H4,number,15384,True,n,5,15384,False,,{}
+By KS Senate,I4,number,55486,True,n,5,55486,False,,{}
+By KS Senate,A5,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B5,text,Kansas Senate 4,True,s,,255,False,,{}
+By KS Senate,C5,number,19696,True,n,5,19696,False,,{}
+By KS Senate,D5,number,359,True,n,5,359,False,,{}
+By KS Senate,E5,blank,,True,n,5,,False,,{}
+By KS Senate,F5,number,4795,True,n,5,4795,False,,{}
+By KS Senate,G5,number,56,True,n,5,56,False,,{}
+By KS Senate,H5,number,13229,True,n,5,13229,False,,{}
+By KS Senate,I5,number,38135,True,n,5,38135,False,,{}
+By KS Senate,A6,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B6,text,Kansas Senate 5,True,s,,256,False,,{}
+By KS Senate,C6,number,14986,True,n,5,14986,False,,{}
+By KS Senate,D6,number,629,True,n,5,629,False,,{}
+By KS Senate,E6,blank,,True,n,5,,False,,{}
+By KS Senate,F6,number,19128,True,n,5,19128,False,,{}
+By KS Senate,G6,number,43,True,n,5,43,False,,{}
+By KS Senate,H6,number,18095,True,n,5,18095,False,,{}
+By KS Senate,I6,number,52881,True,n,5,52881,False,,{}
+By KS Senate,A7,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B7,text,Kansas Senate 6,True,s,,257,False,,{}
+By KS Senate,C7,number,17019,True,n,5,17019,False,,{}
+By KS Senate,D7,number,465,True,n,5,465,False,,{}
+By KS Senate,E7,blank,,True,n,5,,False,,{}
+By KS Senate,F7,number,8026,True,n,5,8026,False,,{}
+By KS Senate,G7,number,38,True,n,5,38,False,,{}
+By KS Senate,H7,number,13946,True,n,5,13946,False,,{}
+By KS Senate,I7,number,39494,True,n,5,39494,False,,{}
+By KS Senate,A8,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B8,text,Kansas Senate 7,True,s,,258,False,,{}
+By KS Senate,C8,number,26132,True,n,5,26132,False,,{}
+By KS Senate,D8,number,644,True,n,5,644,False,,{}
+By KS Senate,E8,blank,,True,n,5,,False,,{}
+By KS Senate,F8,number,19873,True,n,5,19873,False,,{}
+By KS Senate,G8,number,25,True,n,5,25,False,,{}
+By KS Senate,H8,number,15593,True,n,5,15593,False,,{}
+By KS Senate,I8,number,62267,True,n,5,62267,False,,{}
+By KS Senate,A9,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B9,text,Kansas Senate 8,True,s,,259,False,,{}
+By KS Senate,C9,number,21882,True,n,5,21882,False,,{}
+By KS Senate,D9,number,729,True,n,5,729,False,,{}
+By KS Senate,E9,blank,,True,n,5,,False,,{}
+By KS Senate,F9,number,20273,True,n,5,20273,False,,{}
+By KS Senate,G9,number,34,True,n,5,34,False,,{}
+By KS Senate,H9,number,14599,True,n,5,14599,False,,{}
+By KS Senate,I9,number,57517,True,n,5,57517,False,,{}
+By KS Senate,A10,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B10,text,Kansas Senate 9,True,s,,260,False,,{}
+By KS Senate,C10,number,15244,True,n,5,15244,False,,{}
+By KS Senate,D10,number,800,True,n,5,800,False,,{}
+By KS Senate,E10,blank,,True,n,5,,False,,{}
+By KS Senate,F10,number,25810,True,n,5,25810,False,,{}
+By KS Senate,G10,number,29,True,n,5,29,False,,{}
+By KS Senate,H10,number,15855,True,n,5,15855,False,,{}
+By KS Senate,I10,number,57738,True,n,5,57738,False,,{}
+By KS Senate,A11,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B11,text,Kansas Senate 10,True,s,,121,False,,{}
+By KS Senate,C11,number,19578,True,n,5,19578,False,,{}
+By KS Senate,D11,number,665,True,n,5,665,False,,{}
+By KS Senate,E11,blank,,True,n,5,,False,,{}
+By KS Senate,F11,number,25541,True,n,5,25541,False,,{}
+By KS Senate,G11,number,28,True,n,5,28,False,,{}
+By KS Senate,H11,number,16468,True,n,5,16468,False,,{}
+By KS Senate,I11,number,62280,True,n,5,62280,False,,{}
+By KS Senate,A12,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B12,text,Kansas Senate 11,True,s,,122,False,,{}
+By KS Senate,C12,number,18142,True,n,5,18142,False,,{}
+By KS Senate,D12,number,544,True,n,5,544,False,,{}
+By KS Senate,E12,blank,,True,n,5,,False,,{}
+By KS Senate,F12,number,27303,True,n,5,27303,False,,{}
+By KS Senate,G12,number,26,True,n,5,26,False,,{}
+By KS Senate,H12,number,14268,True,n,5,14268,False,,{}
+By KS Senate,I12,number,60283,True,n,5,60283,False,,{}
+By KS Senate,A13,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B13,text,Kansas Senate 12,True,s,,123,False,,{}
+By KS Senate,C13,number,6987,True,n,5,6987,False,,{}
+By KS Senate,D13,number,542,True,n,5,542,False,,{}
+By KS Senate,E13,blank,,True,n,5,,False,,{}
+By KS Senate,F13,number,27436,True,n,5,27436,False,,{}
+By KS Senate,G13,number,21,True,n,5,21,False,,{}
+By KS Senate,H13,number,12551,True,n,5,12551,False,,{}
+By KS Senate,I13,number,47537,True,n,5,47537,False,,{}
+By KS Senate,A14,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B14,text,Kansas Senate 13,True,s,,124,False,,{}
+By KS Senate,C14,number,11931,True,n,5,11931,False,,{}
+By KS Senate,D14,number,536,True,n,5,536,False,,{}
+By KS Senate,E14,blank,,True,n,5,,False,,{}
+By KS Senate,F14,number,24725,True,n,5,24725,False,,{}
+By KS Senate,G14,number,23,True,n,5,23,False,,{}
+By KS Senate,H14,number,19467,True,n,5,19467,False,,{}
+By KS Senate,I14,number,56682,True,n,5,56682,False,,{}
+By KS Senate,A15,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B15,text,Kansas Senate 14,True,s,,261,False,,{}
+By KS Senate,C15,number,8060,True,n,5,8060,False,,{}
+By KS Senate,D15,number,636,True,n,5,636,False,,{}
+By KS Senate,E15,blank,,True,n,5,,False,,{}
+By KS Senate,F15,number,33931,True,n,5,33931,False,,{}
+By KS Senate,G15,number,28,True,n,5,28,False,,{}
+By KS Senate,H15,number,13861,True,n,5,13861,False,,{}
+By KS Senate,I15,number,56516,True,n,5,56516,False,,{}
+By KS Senate,A16,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B16,text,Kansas Senate 15,True,s,,262,False,,{}
+By KS Senate,C16,number,8536,True,n,5,8536,False,,{}
+By KS Senate,D16,number,513,True,n,5,513,False,,{}
+By KS Senate,E16,blank,,True,n,5,,False,,{}
+By KS Senate,F16,number,27317,True,n,5,27317,False,,{}
+By KS Senate,G16,number,19,True,n,5,19,False,,{}
+By KS Senate,H16,number,14030,True,n,5,14030,False,,{}
+By KS Senate,I16,number,50415,True,n,5,50415,False,,{}
+By KS Senate,A17,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B17,text,Kansas Senate 16,True,s,,263,False,,{}
+By KS Senate,C17,number,12799,True,n,5,12799,False,,{}
+By KS Senate,D17,number,733,True,n,5,733,False,,{}
+By KS Senate,E17,blank,,True,n,5,,False,,{}
+By KS Senate,F17,number,29755,True,n,5,29755,False,,{}
+By KS Senate,G17,number,32,True,n,5,32,False,,{}
+By KS Senate,H17,number,17260,True,n,5,17260,False,,{}
+By KS Senate,I17,number,60579,True,n,5,60579,False,,{}
+By KS Senate,A18,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B18,text,Kansas Senate 17,True,s,,264,False,,{}
+By KS Senate,C18,number,9935,True,n,5,9935,False,,{}
+By KS Senate,D18,number,569,True,n,5,569,False,,{}
+By KS Senate,E18,blank,,True,n,5,,False,,{}
+By KS Senate,F18,number,18337,True,n,5,18337,False,,{}
+By KS Senate,G18,number,41,True,n,5,41,False,,{}
+By KS Senate,H18,number,15145,True,n,5,15145,False,,{}
+By KS Senate,I18,number,44027,True,n,5,44027,False,,{}
+By KS Senate,A19,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B19,text,Kansas Senate 18,True,s,,265,False,,{}
+By KS Senate,C19,number,10509,True,n,5,10509,False,,{}
+By KS Senate,D19,number,586,True,n,5,586,False,,{}
+By KS Senate,E19,blank,,True,n,5,,False,,{}
+By KS Senate,F19,number,29330,True,n,5,29330,False,,{}
+By KS Senate,G19,number,27,True,n,5,27,False,,{}
+By KS Senate,H19,number,14527,True,n,5,14527,False,,{}
+By KS Senate,I19,number,54979,True,n,5,54979,False,,{}
+By KS Senate,A20,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B20,text,Kansas Senate 19,True,s,,266,False,,{}
+By KS Senate,C20,number,17052,True,n,5,17052,False,,{}
+By KS Senate,D20,number,491,True,n,5,491,False,,{}
+By KS Senate,E20,blank,,True,n,5,,False,,{}
+By KS Senate,F20,number,10597,True,n,5,10597,False,,{}
+By KS Senate,G20,number,46,True,n,5,46,False,,{}
+By KS Senate,H20,number,14572,True,n,5,14572,False,,{}
+By KS Senate,I20,number,42758,True,n,5,42758,False,,{}
+By KS Senate,A21,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B21,text,Kansas Senate 20,True,s,,267,False,,{}
+By KS Senate,C21,number,14393,True,n,5,14393,False,,{}
+By KS Senate,D21,number,577,True,n,5,577,False,,{}
+By KS Senate,E21,blank,,True,n,5,,False,,{}
+By KS Senate,F21,number,22929,True,n,5,22929,False,,{}
+By KS Senate,G21,number,15,True,n,5,15,False,,{}
+By KS Senate,H21,number,14744,True,n,5,14744,False,,{}
+By KS Senate,I21,number,52658,True,n,5,52658,False,,{}
+By KS Senate,A22,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B22,text,Kansas Senate 21,True,s,,268,False,,{}
+By KS Senate,C22,number,20560,True,n,5,20560,False,,{}
+By KS Senate,D22,number,719,True,n,5,719,False,,{}
+By KS Senate,E22,blank,,True,n,5,,False,,{}
+By KS Senate,F22,number,17679,True,n,5,17679,False,,{}
+By KS Senate,G22,number,39,True,n,5,39,False,,{}
+By KS Senate,H22,number,14905,True,n,5,14905,False,,{}
+By KS Senate,I22,number,53902,True,n,5,53902,False,,{}
+By KS Senate,A23,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B23,text,Kansas Senate 22,True,s,,269,False,,{}
+By KS Senate,C23,number,11370,True,n,5,11370,False,,{}
+By KS Senate,D23,number,736,True,n,5,736,False,,{}
+By KS Senate,E23,blank,,True,n,5,,False,,{}
+By KS Senate,F23,number,16062,True,n,5,16062,False,,{}
+By KS Senate,G23,number,38,True,n,5,38,False,,{}
+By KS Senate,H23,number,12423,True,n,5,12423,False,,{}
+By KS Senate,I23,number,40629,True,n,5,40629,False,,{}
+By KS Senate,A24,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B24,text,Kansas Senate 23,True,s,,270,False,,{}
+By KS Senate,C24,number,15517,True,n,5,15517,False,,{}
+By KS Senate,D24,number,717,True,n,5,717,False,,{}
+By KS Senate,E24,blank,,True,n,5,,False,,{}
+By KS Senate,F24,number,20953,True,n,5,20953,False,,{}
+By KS Senate,G24,number,46,True,n,5,46,False,,{}
+By KS Senate,H24,number,14265,True,n,5,14265,False,,{}
+By KS Senate,I24,number,51498,True,n,5,51498,False,,{}
+By KS Senate,A25,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B25,text,Kansas Senate 24,True,s,,271,False,,{}
+By KS Senate,C25,number,8985,True,n,5,8985,False,,{}
+By KS Senate,D25,number,705,True,n,5,705,False,,{}
+By KS Senate,E25,blank,,True,n,5,,False,,{}
+By KS Senate,F25,number,26850,True,n,5,26850,False,,{}
+By KS Senate,G25,number,42,True,n,5,42,False,,{}
+By KS Senate,H25,number,15141,True,n,5,15141,False,,{}
+By KS Senate,I25,number,51723,True,n,5,51723,False,,{}
+By KS Senate,A26,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B26,text,Kansas Senate 25,True,s,,272,False,,{}
+By KS Senate,C26,number,13560,True,n,5,13560,False,,{}
+By KS Senate,D26,number,682,True,n,5,682,False,,{}
+By KS Senate,E26,blank,,True,n,5,,False,,{}
+By KS Senate,F26,number,10998,True,n,5,10998,False,,{}
+By KS Senate,G26,number,62,True,n,5,62,False,,{}
+By KS Senate,H26,number,15842,True,n,5,15842,False,,{}
+By KS Senate,I26,number,41144,True,n,5,41144,False,,{}
+By KS Senate,A27,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B27,text,Kansas Senate 26,True,s,,273,False,,{}
+By KS Senate,C27,number,9341,True,n,5,9341,False,,{}
+By KS Senate,D27,number,745,True,n,5,745,False,,{}
+By KS Senate,E27,blank,,True,n,5,,False,,{}
+By KS Senate,F27,number,28595,True,n,5,28595,False,,{}
+By KS Senate,G27,number,44,True,n,5,44,False,,{}
+By KS Senate,H27,number,15213,True,n,5,15213,False,,{}
+By KS Senate,I27,number,53938,True,n,5,53938,False,,{}
+By KS Senate,A28,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B28,text,Kansas Senate 27,True,s,,274,False,,{}
+By KS Senate,C28,number,12122,True,n,5,12122,False,,{}
+By KS Senate,D28,number,716,True,n,5,716,False,,{}
+By KS Senate,E28,blank,,True,n,5,,False,,{}
+By KS Senate,F28,number,25056,True,n,5,25056,False,,{}
+By KS Senate,G28,number,38,True,n,5,38,False,,{}
+By KS Senate,H28,number,15495,True,n,5,15495,False,,{}
+By KS Senate,I28,number,53427,True,n,5,53427,False,,{}
+By KS Senate,A29,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B29,text,Kansas Senate 28,True,s,,275,False,,{}
+By KS Senate,C29,number,10241,True,n,5,10241,False,,{}
+By KS Senate,D29,number,676,True,n,5,676,False,,{}
+By KS Senate,E29,blank,,True,n,5,,False,,{}
+By KS Senate,F29,number,14526,True,n,5,14526,False,,{}
+By KS Senate,G29,number,47,True,n,5,47,False,,{}
+By KS Senate,H29,number,16531,True,n,5,16531,False,,{}
+By KS Senate,I29,number,42021,True,n,5,42021,False,,{}
+By KS Senate,A30,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B30,text,Kansas Senate 29,True,s,,276,False,,{}
+By KS Senate,C30,number,16985,True,n,5,16985,False,,{}
+By KS Senate,D30,number,582,True,n,5,582,False,,{}
+By KS Senate,E30,blank,,True,n,5,,False,,{}
+By KS Senate,F30,number,7716,True,n,5,7716,False,,{}
+By KS Senate,G30,number,70,True,n,5,70,False,,{}
+By KS Senate,H30,number,15006,True,n,5,15006,False,,{}
+By KS Senate,I30,number,40359,True,n,5,40359,False,,{}
+By KS Senate,A31,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B31,text,Kansas Senate 30,True,s,,277,False,,{}
+By KS Senate,C31,number,12520,True,n,5,12520,False,,{}
+By KS Senate,D31,number,663,True,n,5,663,False,,{}
+By KS Senate,E31,blank,,True,n,5,,False,,{}
+By KS Senate,F31,number,21623,True,n,5,21623,False,,{}
+By KS Senate,G31,number,32,True,n,5,32,False,,{}
+By KS Senate,H31,number,17075,True,n,5,17075,False,,{}
+By KS Senate,I31,number,51913,True,n,5,51913,False,,{}
+By KS Senate,A32,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B32,text,Kansas Senate 31,True,s,,278,False,,{}
+By KS Senate,C32,number,11814,True,n,5,11814,False,,{}
+By KS Senate,D32,number,683,True,n,5,683,False,,{}
+By KS Senate,E32,blank,,True,n,5,,False,,{}
+By KS Senate,F32,number,26269,True,n,5,26269,False,,{}
+By KS Senate,G32,number,38,True,n,5,38,False,,{}
+By KS Senate,H32,number,14808,True,n,5,14808,False,,{}
+By KS Senate,I32,number,53612,True,n,5,53612,False,,{}
+By KS Senate,A33,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B33,text,Kansas Senate 32,True,s,,279,False,,{}
+By KS Senate,C33,number,8315,True,n,5,8315,False,,{}
+By KS Senate,D33,number,537,True,n,5,537,False,,{}
+By KS Senate,E33,blank,,True,n,5,,False,,{}
+By KS Senate,F33,number,27406,True,n,5,27406,False,,{}
+By KS Senate,G33,number,16,True,n,5,16,False,,{}
+By KS Senate,H33,number,13467,True,n,5,13467,False,,{}
+By KS Senate,I33,number,49741,True,n,5,49741,False,,{}
+By KS Senate,A34,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B34,text,Kansas Senate 33,True,s,,280,False,,{}
+By KS Senate,C34,number,5967,True,n,5,5967,False,,{}
+By KS Senate,D34,number,415,True,n,5,415,False,,{}
+By KS Senate,E34,blank,,True,n,5,,False,,{}
+By KS Senate,F34,number,31059,True,n,5,31059,False,,{}
+By KS Senate,G34,number,31,True,n,5,31,False,,{}
+By KS Senate,H34,number,10706,True,n,5,10706,False,,{}
+By KS Senate,I34,number,48178,True,n,5,48178,False,,{}
+By KS Senate,A35,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B35,text,Kansas Senate 34,True,s,,281,False,,{}
+By KS Senate,C35,number,8611,True,n,5,8611,False,,{}
+By KS Senate,D35,number,564,True,n,5,564,False,,{}
+By KS Senate,E35,blank,,True,n,5,,False,,{}
+By KS Senate,F35,number,27860,True,n,5,27860,False,,{}
+By KS Senate,G35,number,42,True,n,5,42,False,,{}
+By KS Senate,H35,number,13335,True,n,5,13335,False,,{}
+By KS Senate,I35,number,50412,True,n,5,50412,False,,{}
+By KS Senate,A36,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B36,text,Kansas Senate 35,True,s,,282,False,,{}
+By KS Senate,C36,number,17421,True,n,5,17421,False,,{}
+By KS Senate,D36,number,630,True,n,5,630,False,,{}
+By KS Senate,E36,blank,,True,n,5,,False,,{}
+By KS Senate,F36,number,27013,True,n,5,27013,False,,{}
+By KS Senate,G36,number,29,True,n,5,29,False,,{}
+By KS Senate,H36,number,14919,True,n,5,14919,False,,{}
+By KS Senate,I36,number,60012,True,n,5,60012,False,,{}
+By KS Senate,A37,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B37,text,Kansas Senate 36,True,s,,283,False,,{}
+By KS Senate,C37,number,5204,True,n,5,5204,False,,{}
+By KS Senate,D37,number,428,True,n,5,428,False,,{}
+By KS Senate,E37,blank,,True,n,5,,False,,{}
+By KS Senate,F37,number,35614,True,n,5,35614,False,,{}
+By KS Senate,G37,number,16,True,n,5,16,False,,{}
+By KS Senate,H37,number,9672,True,n,5,9672,False,,{}
+By KS Senate,I37,number,50934,True,n,5,50934,False,,{}
+By KS Senate,A38,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B38,text,Kansas Senate 37,True,s,,284,False,,{}
+By KS Senate,C38,number,13298,True,n,5,13298,False,,{}
+By KS Senate,D38,number,742,True,n,5,742,False,,{}
+By KS Senate,E38,blank,,True,n,5,,False,,{}
+By KS Senate,F38,number,24300,True,n,5,24300,False,,{}
+By KS Senate,G38,number,32,True,n,5,32,False,,{}
+By KS Senate,H38,number,14209,True,n,5,14209,False,,{}
+By KS Senate,I38,number,52581,True,n,5,52581,False,,{}
+By KS Senate,A39,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B39,text,Kansas Senate 38,True,s,,285,False,,{}
+By KS Senate,C39,number,7916,True,n,5,7916,False,,{}
+By KS Senate,D39,number,458,True,n,5,458,False,,{}
+By KS Senate,E39,blank,,True,n,5,,False,,{}
+By KS Senate,F39,number,19308,True,n,5,19308,False,,{}
+By KS Senate,G39,number,62,True,n,5,62,False,,{}
+By KS Senate,H39,number,12395,True,n,5,12395,False,,{}
+By KS Senate,I39,number,40139,True,n,5,40139,False,,{}
+By KS Senate,A40,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B40,text,Kansas Senate 39,True,s,,286,False,,{}
+By KS Senate,C40,number,6631,True,n,5,6631,False,,{}
+By KS Senate,D40,number,412,True,n,5,412,False,,{}
+By KS Senate,E40,blank,,True,n,5,,False,,{}
+By KS Senate,F40,number,22855,True,n,5,22855,False,,{}
+By KS Senate,G40,number,41,True,n,5,41,False,,{}
+By KS Senate,H40,number,11499,True,n,5,11499,False,,{}
+By KS Senate,I40,number,41438,True,n,5,41438,False,,{}
+By KS Senate,A41,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B41,text,Kansas Senate 40,True,s,,287,False,,{}
+By KS Senate,C41,number,6271,True,n,5,6271,False,,{}
+By KS Senate,D41,number,424,True,n,5,424,False,,{}
+By KS Senate,E41,blank,,True,n,5,,False,,{}
+By KS Senate,F41,number,33007,True,n,5,33007,False,,{}
+By KS Senate,G41,number,24,True,n,5,24,False,,{}
+By KS Senate,H41,number,11301,True,n,5,11301,False,,{}
+By KS Senate,I41,number,51027,True,n,5,51027,False,,{}
+By KS Senate,A42,date,2026-10-01,True,n,1,46296,False,,{}
+By KS Senate,B42,text,Grand Total,True,s,,6,False,,{}
+By KS Senate,C42,number,521669,True,n,5,521669,False,,{}
+By KS Senate,D42,number,23840,True,n,5,23840,False,,{}
+By KS Senate,E42,blank,,True,n,5,,False,,{}
+By KS Senate,F42,number,901822,True,n,5,901822,False,,{}
+By KS Senate,G42,number,1398,True,n,5,1398,False,,{}
+By KS Senate,H42,number,578791,True,n,5,578791,False,,{}
+By KS Senate,I42,number,2027520,True,n,5,2027520,False,,{}
