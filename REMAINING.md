@@ -51,6 +51,19 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**South Dakota derived complete-county frame integrated:** immutable
+`438706606` adds a clearly labeled 66-county registration aggregate, not a
+native statewide parent. Version12 has 51 state/D.C. rows, 28 source-control
+disposition records and seventeen conditional frames. Each county is counted
+once; repeated vote-center registrations, unqualified `CurrentDateTime`,
+all 671 original unit bytes and 596 available / 75 held rate decisions remain
+unchanged. Eight tests, 1,280 independent checks and two exact offline
+reproductions pass; all 50 unaffected states, sixteen prior frames and 27
+prior controls survive. Native statewide ballots/residual remain null; no
+native parent, population validation, new state rate/map or website view.
+This supersedes the older screening-only note without promoting a county
+sum to a native statewide source field.
+
 **Alaska native federal frame integrated:** immutable `438694717` adds
 explicit federal ballots/registration parents, not candidate totals or
 generalized statewide turnout. Version11 has 51 state/D.C. rows, 27
@@ -158,6 +171,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| South Dakota derived complete-county frame | Complete numerical integration and fully verified research publication | Release `438706606`: derived sum628563 from66 unique native countyVoters parents, NOT native statewide field; conditional296578.40/331984.60 units under unvalidated exchangeability. CountycalcVoterTurnout310298 diagnosticonly; native statewide ballots/residualNULL. Repeated registrations at12vote-center counties ignored; exact native IDs/literal suffixes matched. CurrentDateTime semantics/timezone unqualified, not updateclock. Original671unitgzipbytes/596available+75held rate decisions/duplicates preserved. Version12: 51 rows, 28 source records, seventeen frames. Eighttests/1280 independentchecks/two blocked exact reproductions pass; all50 unaffected states/sixteen priorframes/27controls intact. No native statewide parent, acquisition, old candidate/workbook/HTML reduction, new state rate/map/population approval or website view. |
 | Held Alaska native federal parent | Complete numerical integration and fully verified research publication | Release `438694717`: b215906 native federal ballots/v605433 registered, not t213009 candidate selections. Conditional291012.21/314420.79 units and native-minus -75106.21 remain unvalidated source contrasts. Governor215776/604611 differs exactly federaloverseas130/822; no scopeblend. Native400/403 reporting, uncertified, timezoneabsent, schemaformat2024 not electionyear2026. All523 originalunit gzipbytes/402geo/120pooled/1federal and221accounting/63ballots>registration holds preserved. Version11: 51 rows, 27 disposition records, sixteen frames. Eighttests/615 independentchecks/two blocked exact reproductions pass; all50 unaffected states/fifteen priorframes/26controls intact. Genericcast/rate/map/finalRCV/population approval stays withheld; no acquisition or old candidate/CSV/geometry reduction. |
 | Held Virginia registration-only parent | Complete numerical integration and fully verified research publication | Release `438683276`: explicit state totalVoters6494441, conditional units3762883.24/2731557.76 under unvalidated exchangeability. All133 locality/registration totals and native active+inactive components agree; definitions remain unqualified. State ballotsCast0 retained raw, selected statewide ballots/turnout/native-minus-model NULL; locality3593781 not substituted. All133 clocks/statuses and2529 priorprecinct rows preserved; precinct2798626 partial, all69 locality/House residual scopes unallocated. Version10: 51 rows, 26 disposition records, fifteen frames. Seven tests/1612 independent checks/two blocked exact reproductions pass; all50 unaffected states/fourteen prior frames/25 controls survive. No acquisition, old candidate/precinct/geometry reduction, rate/map/population approval or website view. |
 | Held Arizona registration-only parent | Complete numerical integration and fully verified research publication | Release `438672280`: explicit state totalVoters4374827, conditional units2195821.90/2179005.10 under unvalidated exchangeability. Active/inactive components remain inconsistent; registration totals never repaired. State ballotsCast0 retained raw, selected statewide ballots/turnout/native-minus-model NULL; county2248900 not substituted. All15county/1763precinct CSV bytes and missing Mohave virtual observation intact. Version09: 51 rows, 25 disposition records, fourteen frames; no observed statewide ballot reference added. Seven tests/295 independent checks/two blocked exact reproductions pass; all50 unaffected states/thirteen prior frames/24 controls survive. No acquisition, old candidate/precinct reduction, rate/map/population approval or website view. |

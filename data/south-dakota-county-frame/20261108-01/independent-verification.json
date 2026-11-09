@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "independent_checks": 1280,
+  "derived_complete_county_registered_frame": 628563,
+  "conditional_modeled_participant_units": "296578.40442125404372393900614893180892754410844057263842811341423675680426096809",
+  "conditional_modeled_nonparticipant_units": "331984.59557874595627606099385106819107245589155942736157188658576324319573903191",
+  "explicitly_derived_not_native_statewide_field": true,
+  "all_66_source_county_parents_counted_once": true,
+  "repeated_vote_center_or_precinct_registrations_not_summed": true,
+  "selected_native_statewide_ballots": null,
+  "native_minus_model": null,
+  "native_CurrentDateTime_not_promoted_to_qualified_update_clock": true,
+  "complete_state_query_rows": 51,
+  "source_control_records": 28,
+  "conditional_scenarios": 17,
+  "derived_registration_frame_added": 1,
+  "native_statewide_ballot_controls_added": 0,
+  "all_50_unaffected_state_rows_sixteen_prior_frames_and_twenty_seven_controls_preserved": true,
+  "original_671_reporting_unit_gzip_bytes_and_prior_596_available_75_held_rate_decisions_preserved": true,
+  "unchanged_maintained_washington_shared_helpers_included": true,
+  "old_native_candidate_workbook_html_and_private_survey_reductions_reused_not_repeated": true,
+  "focused_tests": 8,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 16,
+  "archive_bytes": 101893785,
+  "archive_sha256": "828409e756b42800f3278a0313268384ceb8b63e56437e19702f2892e8f7a4c8"
+}

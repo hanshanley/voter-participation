@@ -63,6 +63,45 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## South Dakota derived complete-county registration frame
+
+[Complete version-12 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-analysis.zip)
+reuse the held [native South Dakota query](https://github.com/hanshanley/margin_of_error/releases/tag/voter-precinct-south-dakota-20261105).
+The 628,563 registration frame is **derived from all 66 county API parents**,
+not a native statewide field. Each county's `Voters` is counted once, with
+exact county-ID and literal-label coverage against the official cached
+2026 turnout facts. The 12 declared `(Vote Center)` suffixes are retained,
+not fuzzy aliases. Repeated vote-center/precinct registrations are not summed.
+
+The separate county `calcVoterTurnout` sum 310,298 is diagnostic, not a selected
+native statewide ballot reference. Native statewide ballots, turnout and
+native-minus-model remain null. All 671 earlier reporting-unit gzip bytes,
+596 available / 75 held unit-rate decisions, duplicate labels and vote-center
+qualifications are unchanged; no new state rate or map is approved.
+Native county `CurrentDateTime` is retained literally, but its clock meaning
+and timezone are unqualified. County reported flags do not certify completed
+counting; neither retrieval time nor that field becomes an update clock.
+
+Conditional derived-register units are 296,578.40 modeled participants /
+331,984.60 nonparticipants under unvalidated county-frame/Civic exchangeability.
+The denominator basis, scenario units and source kind explicitly identify the
+derived frame, despite retaining the legacy `native_registered_denominator`
+CSV column for compatibility. Register status/cutoff, survey calibration,
+field period and population transport remain unqualified. No observed staying
+home, group populations, local allocation or design interval is claimed.
+
+Immutable release `438706606` has nine full byte-verified assets. The
+101,893,785-byte / 16-member ZIP contains the complete native query, accepted
+version-11 baseline, every new query, maintained code, unchanged Washington
+shared helpers and eight focused tests. 1,280 independent county/clock/
+Fraction/preservation/package checks and two blocked, byte-identical offline
+reproductions pass. Maintained `scripts/south_dakota_county_frame.py` exports
+51 state/D.C. rows, 28 source-control disposition records and seventeen
+conditional frames. No native statewide parent or ballot reference is added.
+All 50 unaffected states, sixteen prior frames and 27 prior controls survive.
+No source acquisition, completed candidate/workbook/HTML/private-survey
+reduction or website campaign was repeated.
+
 ## Alaska native federal participation and overseas scope
 
 [Complete version-11 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-analysis.zip)

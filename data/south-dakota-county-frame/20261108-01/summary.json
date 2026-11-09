@@ -1,0 +1,13 @@
+{
+  "all_fifty_unaffected_states_sixteen_frames_and_twenty_seven_controls_preserved": true,
+  "conditional_scenarios": 17,
+  "derived_complete_county_registration_frame_added": 1,
+  "derived_registered_frame": 628563,
+  "is_native_statewide_field": false,
+  "native_county_parents": 66,
+  "native_statewide_ballot_controls_added": 0,
+  "no_new_website_view": true,
+  "prior_reporting_unit_rows": 671,
+  "source_control_records": 28,
+  "state_and_dc_rows": 51
+}
