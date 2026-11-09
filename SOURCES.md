@@ -25,6 +25,43 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 Hawaii: four election administrations, five Census-county decisions
+
+The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-county-hawaii-administrations-20261109-01/complete-analysis.zip)
+reuses the held original reports: **Honolulu 228,487; Hawaii 62,453; Kauai 24,635;
+Maui including Kalawao 50,324**, preserving the literal **TOTAL TURNOUT**.
+Release `439767310` targets source `56c6252`; all six assets are anonymously
+byte-verified. ZIP: 413,466 bytes / 24 members, SHA-256
+`accb723320f22522ae6cd84206f0a84af11cd98fffb1745e8fd5fe26140a19bf`.
+
+The [official counting manual, page 37](https://elections.hawaii.gov/wp-content/uploads/2024-Elections-Audit.pdf)
+includes Kalawao in Maui for election reporting. Four reporting areas therefore
+use four **administration IDs, not invented FIPS**, grouping the five complete
+2026 Census county components. Maui/Kalawao polygons are united without clipping,
+repair or count allocation. The download also preserves five separate
+Census-county decisions: three single-component counts and **two held separate
+Maui/Kalawao totals**. The map never duplicates 50,324 onto both counties.
+These are derived reporting areas, not certified election-day precincts.
+
+The original registrations, mail/in-person fields, printed sections and separate
+November 4 REPORT 3 clocks remain; no timezone is inferred. All analysis rates
+and denominators stay null, and TOTAL TURNOUT is not promoted to certified cast
+ballots or unique people. State summary **365,897**, source-unit total
+**365,903** and four separate administration snapshots summing **365,899** remain
+distinct; the latter is diagnostic, not a researcher statewide control.
+All 496 earlier unit observations and their missingness survive unchanged.
+
+Source `56c6252` is **live and actual-production verified**. Pages `42721367937`
+and guard `42721367517` succeeded; artifact `13721431268` has
+**988,250,714 payload / 990,781,440 tar bytes**, both strict limits passing.
+All 18 checked production files match the artifact. Every native area count,
+desktop/mobile/Methods, invalid-component rejection/retry and all 51 geographic
+interactions pass. All 436 old complete routes remain. The full package passes
+51 independent member/value/union checks, two exact network-blocked query and
+geometry reproductions, 160 focused/frozen/page tests, Astro and build checks.
+See the [source ledger](data/participation-access/20261109-hawaii-administrations-01/observations.json)
+and [actual acceptance](data/participation-access/20261109-hawaii-administrations-01/website-acceptance.json).
+
 ## 2026 Colorado: complete county returned-and-processed counts
 
 The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-county-colorado-returned-20261109-01/complete-analysis.zip)

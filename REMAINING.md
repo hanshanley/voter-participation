@@ -42,6 +42,29 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
+**Latest accepted live:** Hawaii source `56c6252` connects the four native
+election administrations, with Maui including Kalawao, not five invented
+Census-county totals. Complete release `439767310` has sufficient original
+reports, all nine geographic decisions, 496 unchanged unit records, full
+original/grouped reference inputs and offline code/results. All six full assets,
+160 tests, two exact blocked-network reproductions and actual desktop/mobile/
+source-retry/all-51 interactions pass. Pages `42721367937`, guard `42721367517`,
+artifact `13721431268`: **988,250,714 payload / 990,781,440 tar bytes**.
+All 18 checked production files and all 436 earlier complete routes pass.
+Do not repeat this completed acquisition/review/package/deployment/acceptance.
+
+**Next integration priority:** the already-held November 4 early-count snapshot
+has 6,371 source-region observations. The first complete name/parent review
+finds **61 frames in 38 states / 4,581 county-region observations** matching
+whole county sets and their explicit source totals. Inspect the retained raw
+provider JSON and approve exact identities/definitions before connecting
+these source-mode maps in a batch. Preserve native dates, category `votes`
+fields and collector-versus-native election context; these are provider-reported
+early activity, not full-election turnout, certified ballots or unique people.
+Do not add early/mail frames, replace stronger native snapshots, or allocate
+state totals. Noncounty/mixed jurisdictions and unmatched frames remain explicit.
+No new batch map is live or approved yet; reuse the complete held snapshot.
+
 **Accepted live:** website `cb79d84` connects West Virginia's separate county
 modes and all 64 Colorado returned-and-processed counts. Pages `42717017978`,
 guard `42717018339` and native artifact `13717918487` pass. Actual payload is
@@ -74,14 +97,11 @@ denied county results products and the statewide challenge
 remain stopped. Reuse these originals and the full source package, not another
 county crawl or a repeat acquisition.
 
-Continue the remaining county gaps. Four already-held Hawaii
-county PDFs have passed independent full-PDF-reader checks; preserve their
-literal TOTAL TURNOUT values and separate clocks. The official counting manual
-confirms that Maui includes Kalawao for elections. A valid union of the held
-2026 Census Maui/Kalawao components is possible without repairs or allocation;
-review and label four election administrations rather than inventing five
-Census-county totals. Do not use candidate sums, erase the existing state/unit
-discrepancy or restart a completed historical-control family.
+Continue the remaining county gaps using held inputs first. Hawaii's
+administration integration is complete above; do not restart it or a completed
+historical-control family. Delaware's held candidate JSON contains no native
+participation fields. Its separate 41-House-district native turnout query is
+already published, but those counts are not allocated to the three counties.
 
 Indiana's complete numerical/source package is now immutable at release
 `439670388`: all 93 original statistics rows, 92 county decisions, 24 independent
@@ -96,7 +116,7 @@ checks and two exact blocked-network reproductions are verified. Website
 unqueried production files, desktop/mobile native values/source recovery and all
 51 county/precinct interactions pass. All 436 old complete routes remain.
 Do not repeat this successful acquisition, package, deployment or acceptance.
-Continue the 17 contest-only states, Maine and within-state gaps. West Virginia's
+Continue the 16 contest-only states, Maine and within-state gaps. West Virginia's
 declared general-results product reaches robot verification and is stopped;
 follow independently published county originals, not another client or state
 survey/candidate allocation. Its separate historical-results page lacks a
@@ -119,11 +139,12 @@ reproductions, 131 tests and actual production desktop/mobile/native-value and
 All old links, short Methods and 436 complete-download routes are preserved.
 
 **Still not nationwide observed turnout:** source county observations now cover
-30 states plus D.C. (some only one or two counties), including Maryland's separate
+31 states plus D.C. (some only one or two counties), including Maryland's separate
 Cards Cast measure, Indiana's mixed labels, Colorado's returned/processed counts
-and West Virginia's separate source modes, with separate RI/VT municipalities.
-This is not 30-state complete voter/ballot coverage.
-Seventeen states retain explicitly labelled
+West Virginia's separate source modes and Hawaii's four native reporting
+administrations, with separate RI/VT municipalities.
+This is not 31-state complete voter/ballot coverage.
+Sixteen states retain explicitly labelled
 contest-count fallbacks and Maine has no county layer. Mapped precinct
 participation remains partial in seven states
 (ID, ND, MN, MI, NM, VA, IN) plus D.C.
