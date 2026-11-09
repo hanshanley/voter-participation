@@ -51,6 +51,18 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Washington registration-only frame integrated:** immutable `438661685`
+adds the held explicit state `totalVoters` parent, not a repaired state ballot
+count. Version08 has 51 state/D.C. rows, 24 source-control disposition records
+and thirteen conditional frames; the new record is registration-only, not an
+observed statewide ballot reference. Literal state zero, missing analytic
+state ballots/residual, 39 county / 9,588 unit rows and King's unallocated
+ballots remain intact. Seven tests, 419 independent checks and two exact
+offline reproductions pass; all 50 unaffected state rows, twelve prior frames
+and 23 prior controls survive. Both denied routes remain stopped. No new
+acquisition, completed native-unit reduction, population validation or website
+view. Continue genuinely missing source frames, not this completed increment.
+
 **Arkansas explicit parent frame integrated:** immutable `438650649` adds
 the held native state/75-county registration parents, not a reconstruction
 of incomplete precinct registrations. Version07 has all 51 state/D.C. rows,
@@ -109,6 +121,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| Held Washington registration-only parent | Complete numerical integration and fully verified research publication | Release `438661685`: explicit state totalVoters5170951, conditional units3431936.67/1739014.33 under unvalidated exchangeability. State ballotsCast0 retained raw, selected statewide ballots/turnout/native-minus-model NULL; county2266746 never substitutes. All39county/9588unit CSV bytes and King601199 unallocated ballots preserved. Version08: 51 rows, 24 disposition records, thirteen frames; one register-only record and no observed statewide ballot reference added. Seven tests/419 independent checks/two blocked exact reproductions pass; all50 unaffected states/twelve prior frames/23 controls survive. No new acquisition, old unit reduction, rate/map/population approval or website view. |
 | Held Arkansas state/county parent frame | Complete numerical integration and fully verified research publication | Release `438650649`: explicit 1856404 registeredVoters / 893026 totalBallotsCast, all 75 county parents and unchanged 2768 precinct records. Version07: 51 state/D.C. rows, 23 controls, twelve conditional frames. Native v173 UTC clock and unofficial partial reporting retained; missing leaf fields never imputed. Conditional units are not observed staying home or validated populations. Six tests, 579 independent checks and two blocked exact reproductions pass; all 50 unaffected state rows, eleven prior frames and 22 prior controls preserved. No new acquisition, candidate reduction, rate/map approval or website view. |
 | Held Delaware statewide register frame | Complete numerical integration and fully verified research publication | Release `438634132`: separate384862 BallotsCast/810407 RegVoters and all41 House districts, complete51-state query/22controls/11frames. Conditional397682.55/412724.45 units preserve unvalidated source-register exchangeability; no observed staying-home claim. Clock/timezone absent, native approvalsfalse, no countyallocation or candidateclock substitution. Six tests/327 independent checks/two blocked exact reproductions pass; all50 unaffectedstates/ten priorframes/21controls preserved. Existing native/candidate/survey verification reused, notrerun. |
 | New Mexico native2026 participation | Complete numerical package; fully verified research publication | Release `438620865`: all 33county/2204precinct native counts, registered denominator1469718, nativeparticipants731209/49.75%; full51-state query,21controls/ten scenarios. Conditional units765694.90/704023.10 retain unvalidated exchangeability. The separate1462993 October30 register never repairs the election denominator; zeroR has no analyticrate. All50 unaffected rows/nine prior scenarios preserved; six tests/9018 independent checks/two blocked exact reproductions pass. No new websiteview, generic cast-ballot relabeling or cohort/population certification. |

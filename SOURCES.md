@@ -63,6 +63,43 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Washington registration-only parent frame
+
+[Complete version-08 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-08/complete-analysis.zip)
+reuse the already-held [39-county numerical snapshot](https://github.com/hanshanley/margin_of_error/releases/tag/voter-county-washington-participation-20261106-01).
+The native state `totalVoters` parent explicitly supplies 5,170,951,
+corroborated by county headers and the completed `voterRegistration` audit.
+It is a source-defined registration frame, not an inferred county sum,
+eligible population or independently validated survey population.
+
+The state `ballotsCast=0` conflicts with the county sum 2,266,746. The original
+zero stays in the source query, but selected statewide ballots, turnout and
+native-minus-model are null. No county sum repairs the state result. All
+39 county and 9,588 unit CSV rows remain byte-identical; King's 601,199 county
+ballots stay unallocated despite its unit zeros. Native rate/map/completion
+holds and absent state reporting status remain unchanged.
+
+Native UTC clocks remain distinct: asOf `2026-11-05T04:01:31.3211464Z`,
+lastUpdated `2026-11-05T03:57:41.6823065Z` and publishDate
+`2026-11-05T04:07:12.8391684Z`. Active/inactive definition, survey calibration,
+field period and population exchangeability remain unqualified. Conditional
+units are 3,431,936.67 modeled participants / 1,739,014.33 nonparticipants,
+not observed staying home or group populations; no design interval is supplied.
+Both newer denied Washington routes remain stopped; no source is reacquired.
+
+New immutable release `438661685` has nine full byte-verified assets. The
+29,915,909-byte / 15-member ZIP includes the complete native query, accepted
+version-07 baseline, every new query, maintained code and seven focused tests.
+419 independent parent/Fraction/preservation/package checks and two blocked,
+byte-identical offline reproductions pass. Maintained
+`scripts/washington_register_control.py` exports 51 state/D.C. rows, 24
+source-control disposition records and thirteen conditional frames. The new
+record is registration-only, **not an observed statewide ballot reference**.
+All 50 unaffected states, twelve prior frames and 23 prior controls survive.
+Earlier native snapshot guarantees remain checksum/never-overwrite, not a
+retroactive host-lock claim. No completed native-unit/private-survey reduction
+or website campaign was repeated.
+
 ## Arkansas explicit parent registration frame
 
 [Complete version-07 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-07/complete-analysis.zip)
@@ -1165,6 +1202,8 @@ values are `2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c`.
 Both routes are stopped, without another client, cache or mirror. This is an
 access hold, not evidence that statewide data do not exist; no county sum or
 earlier-election register substitutes for a missing statewide source frame.
+The separate already-held snapshot above supplies an explicit registration
+parent only; it does not reopen these routes or supply observed state ballots.
 
 | ID | Source | Role / rule |
 |---|---|---|

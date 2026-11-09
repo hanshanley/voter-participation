@@ -24,7 +24,7 @@ are not automatically compatible populations.
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
 | California dated registration evidence | Complete county/age/preregistration accounting, dated reference and all prior state estimates preserved; not group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-california-register-frame-20261108-01/complete-analysis.zip) |
-| Current state controls | All state/D.C. decisions, explicit Arkansas parent frame, twelve conditional scenarios and complete earlier baselines | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-07/complete-analysis.zip) |
+| Current state controls | All state/D.C. decisions, Washington registration-only frame (no observed statewide ballots), thirteen conditional scenarios and complete earlier baselines | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-08/complete-analysis.zip) |
 | Historical administrative controls | Source-specific 2018-2026 comparisons, holds and registration-frame scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip) |
 | Historical EAC state controls | Complete state/year grid, selected native references and separate Alaska scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-eac-state-controls-20261108-01/complete-analysis.zip) |
 | Wyoming statistics | Native 1978-2026 primary/general statistics and same-type comparisons | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-wyoming-statistics-20261108-01/complete-analysis.zip) |
@@ -51,6 +51,7 @@ state-control [version 03](https://github.com/hanshanley/margin_of_error/release
 and [version 04](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-04),
 the New Mexico [version 05](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-05),
 the Delaware [version 06](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-06),
+the Arkansas [version 07](https://github.com/hanshanley/margin_of_error/releases/tag/participation-state-controls-20261108-07),
 and historical-control [version 01](https://github.com/hanshanley/margin_of_error/releases/tag/participation-historical-controls-20261108-01),
 remain available.
 
