@@ -63,6 +63,38 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Arkansas explicit parent registration frame
+
+[Complete version-07 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-07/complete-analysis.zip)
+reuse the held [native Arkansas query](https://github.com/hanshanley/margin_of_error/releases/tag/voter-precinct-arkansas-native-counts-20261105).
+The explicit state parent has 1,856,404 registeredVoters and 893,026
+totalBallotsCast / printed 48.11%. Both election/turnout API headers and all
+75 county-parent sums agree. This is not a sum of partial leaf registrations.
+
+The native snapshot is unofficial v173, lastUpdated
+`2026-11-04T21:21:28.2891014Z`: 2,761 reporting and seven partial precincts,
+not certified or completed counting. The full 2,768-row leaf query retains
+1,108 missing registrations and 82 missing ballot totals byte-for-byte.
+No missing values are filled or residuals allocated. Native rate/map holds,
+including the earlier denied precinct asset and unqualified geometry, remain.
+
+Conditional source-register units are 945,578.92 modeled participants /
+910,825.08 nonparticipants; native-minus-model is separately -52,552.92.
+Active/inactive register definition, survey calibration, field period and
+population exchangeability remain unqualified. These are not observed
+staying home, group populations or independent validation; generic cast-ballot
+comparison fields remain blank and no design interval is supplied.
+
+Immutable release `438650649` has nine full byte-verified assets. The
+29,480,699-byte / 15-member ZIP includes the complete native query, accepted
+version-06 baseline, every new query, maintained code and six focused tests.
+579 independent parent/leaf/Fraction/preservation/package checks and two
+blocked, byte-identical offline reproductions pass. Maintained
+`scripts/arkansas_state_control.py` exports 51 state/D.C. rows, 23 controls
+and twelve conditional frames, preserving all 50 unaffected states, eleven
+prior frames and 22 prior controls. No completed candidate/private-survey
+reduction, source acquisition or website campaign was repeated.
+
 ## Delaware held statewide registration frame
 
 [Complete version-06 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-06/complete-analysis.zip)
@@ -1123,6 +1155,16 @@ to the public research export merely because this ledger records them.
   nationwide project is finished.
 
 ## Access, methodology and paid/reference-only leads
+
+**Washington direct access holds, November 9, 2026 UTC:** the
+[official elections index](https://www.sos.wa.gov/elections) and distinct
+[official results product](https://results.votewa.gov/) each returned HTTP403
+with a 17-byte plain-text body. Saved receipt times are
+01:13:08.738162+00:00 and 01:13:58.791834+00:00 respectively; both body SHA-256
+values are `2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c`.
+Both routes are stopped, without another client, cache or mirror. This is an
+access hold, not evidence that statewide data do not exist; no county sum or
+earlier-election register substitutes for a missing statewide source frame.
 
 | ID | Source | Role / rule |
 |---|---|---|
