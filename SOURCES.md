@@ -25,6 +25,68 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 Indiana county statistics and Monroe reporting units
+
+The [complete immutable source package](https://github.com/hanshanley/margin_of_error/releases/download/voter-county-indiana-voter-statistics-20261109-01/complete-analysis.zip)
+contains **93 original statistics rows, 92 county decisions, all 24 independent
+county follow-ups and all 103 Monroe reporting-unit counts**. It is
+28,598,360 bytes / 133 members, SHA-256
+`a8afc335f530edf0bf60e76eeed71a3f416de19df41629d0192689be2757a30a`.
+All eight complete assets are anonymously byte-verified; release `439670388`
+is immutable and targets website source `9377b8c`.
+
+The official `statewideTurnout_B.json` supplies 68 positive **VotersVoting**
+counts. Its 24 zero records conflict with positive native Secretary of State
+votes: retain every original zero, withhold the contradictory selected value,
+and never replace it with candidate votes. Seven independently reviewed
+county snapshots raise usable county counts to **75 of 92**, with **17 held**.
+Cass/Fulton are literal native turnout numerators, not cast ballots; the other
+county snapshots retain their ballot labels and separate source clocks/status
+conflicts. LaPorte's undefined PUBLIC COUNT remains held.
+
+The original state subtotal **1,055,902** stays unchanged and partial, not a
+mixed-source statewide turnout estimate. Statistics clock
+`2026-11-09T15:03:29.353`, candidate-control clock `15:03:39.467` and settings
+clock `15:04:55.92` are separate November 9 native clocks with no timezone.
+InPerson/Absentee keep their definitions; Absentee is not mail received.
+All analysis denominators/rates and unique-voter claims remain withheld.
+County identities use the complete, hash-verified **2026 Census** reference,
+not the source application's default 2013 map.
+
+Monroe's publisher-defined **Total Ballots Cast** indicator is **42,766**.
+All 103 native rows and raw registration/percentage/status fields survive.
+Only **83** nonoverlapping official-app current-reference polygons are mapped;
+the federal carrier (241 ballots) and 19 overlapping split polygons stay
+table-only. No clipping, repair or count allocation. Every row says
+Partially Reporting; source clock is absent and copied primary-instruction
+text conflicts with the general-election heading/service. The app-selected
+reference is not independently certified election-day legal geography.
+
+The archive includes sufficient permitted originals, full reference inputs,
+all queries/holds, numerical controls, evidence and offline code/results,
+excluding compiled dashboard code, contacts and acquisition session headers.
+4,425 independent checks and two exact network-blocked reproductions pass.
+146 focused/page/frozen-reader tests, the full build, Astro checks,
+desktop/mobile native-value/retry checks and all 51 geographic interactions
+pass locally and on **actual production**, without valid-source overrides.
+Website `9377b8c` is live and accepted: Pages `42703763791` and credential guard
+`42703763711` succeeded. Native artifact `13712737717` contains
+**988,132,436 payload / 990,658,560 tar bytes**; both strict limits pass.
+Every new script/pointer/reference, IN/MD/MI generated API and prior complete
+archive matches production. The only local/generated-gzip difference is the
+platform-header byte; every decompressed JSON byte matches. All **436 earlier
+complete routes** and the short, default-closed Methods survive.
+This adds partial Indiana coverage, not statewide completion or nationwide turnout.
+
+The [source-access ledger](data/participation-access/20261109-indiana-expansion-01/observations.json)
+retains the two stopped Indiana script routes and four unsuccessful filename
+queries, Tennessee/New Hampshire/Kansas denials, the governor-vote proxy
+exclusion, and West Virginia's declared general-results verification challenge.
+No other-client/cache/mirror retry, challenge solving or cached number promotion.
+These access records are not a numerical download; the complete numerical
+release is linked above. Independently declared county publications remain
+separate legitimate leads.
+
 ## 2026 county source counts: Maryland and Michigan
 
 Website `51f8010dd5f030bcec5d922f519f62031bb74ed3` is live and verified:
@@ -70,8 +132,9 @@ general-results link reaches a verification challenge. No other-client/cache/
 mirror retry or cached numerical promotion is allowed. Texas's accessible
 candidate-table "Ballots Cast" column and the New York governor-vote proxy are
 not full-election participation. These are access records, not an analysis release
-or substitutes for complete numerical downloads. The production audit still
-finds 20 states with contest-only county fallbacks and no Maine county layer.
+or substitutes for complete numerical downloads. That deployment's audit found
+20 states with contest-only county fallbacks; Indiana above reduces the current
+number to 19. Maine still has no county layer.
 Other source-count states can have only one or two counties; Maryland cards are
 not unique-voter coverage. Nationwide county/precinct participation stays open.
 

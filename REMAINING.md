@@ -42,6 +42,25 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
+Indiana's complete numerical/source package is now immutable at release
+`439670388`: all 93 original statistics rows, 92 county decisions, 24 independent
+follow-ups and 103 Monroe reporting units. It supports **75 county counts /
+17 held** and **83 current-reference mapped units / 20 geometry holds**.
+Every original zero, literal measure, separate clock/status conflict and the
+unchanged partial state subtotal survive; no rates or candidate substitutions.
+The 28,598,360-byte / 133-member full archive, all eight assets, 4,425 independent
+checks and two exact blocked-network reproductions are verified. Website
+`9377b8c` is **live and production-verified**: Pages `42703763791`, native artifact
+`13712737717`, actual payload **988,132,436 / tar 990,658,560 bytes**. Exact
+unqueried production files, desktop/mobile native values/source recovery and all
+51 county/precinct interactions pass. All 436 old complete routes remain.
+Do not repeat this successful acquisition, package, deployment or acceptance.
+Continue the 19 contest-only states, Maine and within-state gaps. West Virginia's
+declared general-results product reaches robot verification and is stopped;
+follow independently published county originals, not another client or state
+survey/candidate allocation. Its separate historical-results page lacks a
+2026 general link, but the elections index declares the challenged product.
+
 The navigation repair is live at website `9513311`: state/year/measure
 selections are retained, absent data is explicit and failed sources can be
 retried. Website `2694065` then replaced contest-count fallbacks with explicit
@@ -59,12 +78,13 @@ reproductions, 131 tests and actual production desktop/mobile/native-value and
 All old links, short Methods and 436 complete-download routes are preserved.
 
 **Still not nationwide observed turnout:** source county observations now cover
-27 states plus D.C. (some only one or two counties), including Maryland's separate
-Cards Cast measure, with separate RI/VT municipalities. This is not 27-state
-complete voter/ballot coverage. Twenty states retain explicitly labelled
+28 states plus D.C. (some only one or two counties), including Maryland's separate
+Cards Cast measure and Indiana's mixed native snapshot labels, with separate
+RI/VT municipalities. This is not 28-state complete voter/ballot coverage.
+Nineteen states retain explicitly labelled
 contest-count fallbacks and Maine has no county layer. Mapped precinct
-participation remains partial in six states
-(ID, ND, MN, MI, NM, VA) plus D.C.
+participation remains partial in seven states
+(ID, ND, MN, MI, NM, VA, IN) plus D.C.
 Website `a218d82` now exposes the already-held **523 Alaska / 496 Hawaii**
 source-unit observations as selectable/searchable counts, without pretending
 held boundaries or rates exist. Pages `42666789732` succeeded; exact live
