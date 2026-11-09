@@ -1,0 +1,2216 @@
+{
+  "election": {
+    "asOf": "2026-11-05T01:56:20.7372053Z",
+    "ballotsCast": 0.0,
+    "electionDate": "2026-11-03",
+    "groupReportingStatus": [
+      {
+        "groupName": [
+          {
+            "languageId": "en",
+            "text": "Election Day"
+          },
+          {
+            "languageId": "1",
+            "text": "D\u00eda de la Elecci\u00f3n"
+          }
+        ],
+        "order": 2,
+        "reportingStatusClientTextKey": "reporting-status-not-reported",
+        "value": null
+      },
+      {
+        "groupName": [
+          {
+            "languageId": "en",
+            "text": "Early Voting"
+          },
+          {
+            "languageId": "1",
+            "text": "Votaci\u00f3n Anticipada"
+          }
+        ],
+        "order": 3,
+        "reportingStatusClientTextKey": "reporting-status-not-reported",
+        "value": null
+      },
+      {
+        "groupName": [
+          {
+            "languageId": "en",
+            "text": "Provisional"
+          },
+          {
+            "languageId": "1",
+            "text": "Provisional"
+          }
+        ],
+        "order": 4,
+        "reportingStatusClientTextKey": "reporting-status-not-reported",
+        "value": null
+      },
+      {
+        "groupName": [
+          {
+            "languageId": "en",
+            "text": "Early A.R.S. 16-579"
+          },
+          {
+            "languageId": "1",
+            "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+          }
+        ],
+        "order": 5,
+        "reportingStatusClientTextKey": "reporting-status-not-reported",
+        "value": null
+      },
+      {
+        "groupName": [
+          {
+            "languageId": "en",
+            "text": "Late Early*"
+          },
+          {
+            "languageId": "1",
+            "text": "Tarde temprano"
+          }
+        ],
+        "order": 6,
+        "reportingStatusClientTextKey": "reporting-status-not-reported",
+        "value": null
+      }
+    ],
+    "id": "01000000-3e48-04ed-11b1-08df1107098b",
+    "isOfficialResults": false,
+    "isPrimary": false,
+    "jurisdictionId": "01000000-0496-9e5d-0291-08dbda35db79",
+    "lastUpdated": "2026-11-05T01:56:17.3000739Z",
+    "precinctReportingStatus": null,
+    "publishDate": "2026-11-05T03:50:35.7268964Z",
+    "publishVersionId": "75c8f94a-2339-4d88-9d7c-66ad422a3e55",
+    "totalVoters": 4374827.0
+  },
+  "jurisdiction": {
+    "id": "01000000-0496-9e5d-0291-08dbda35db79",
+    "shortName": "Arizona"
+  },
+  "localityElections": [
+    {
+      "asOf": "2026-11-05T01:56:20.3711324Z",
+      "ballotsCast": 24087.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        }
+      ],
+      "id": "01000000-14c1-2be1-684b-08df263fba15",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-8720-08dbda36ae85",
+      "lastUpdated": "2026-11-05T00:08:14.5303725Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 44
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 53295.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.3941295Z",
+      "ballotsCast": 41018.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        }
+      ],
+      "id": "01000000-415d-6c47-6bf8-08df29429af4",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-604a-08dbda36ae89",
+      "lastUpdated": "2026-11-04T05:49:15.0565147Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 55
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 82634.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.4172798Z",
+      "ballotsCast": 47178.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        }
+      ],
+      "id": "01000000-a38f-36be-636c-08df19c586a1",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-f29e-08dbda36ae8a",
+      "lastUpdated": "2026-11-05T00:31:13.0184835Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 56
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 88175.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.4419048Z",
+      "ballotsCast": 16988.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        }
+      ],
+      "id": "01000000-970b-7da5-9634-08df2b1759c6",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-e1ca-08dbda36ae8b",
+      "lastUpdated": "2026-11-05T00:09:24.6274203Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 39
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 34245.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.4646612Z",
+      "ballotsCast": 10421.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": null
+        }
+      ],
+      "id": "01000000-c08d-fe75-b96f-08df200b0f60",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-d553-08dbda36ae8c",
+      "lastUpdated": "2026-11-05T01:56:14.7800978Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 23
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 20623.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.48733Z",
+      "ballotsCast": 2088.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": null
+        }
+      ],
+      "id": "01000000-85aa-a19e-a778-08df1d7edff0",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-991f-08dbda36ae8e",
+      "lastUpdated": "2026-11-04T22:15:10.7543431Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 6
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 4611.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.5085479Z",
+      "ballotsCast": 4640.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        }
+      ],
+      "id": "01000000-f598-4ade-8695-08df23f309a9",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-d168-08dbda36ae8f",
+      "lastUpdated": "2026-11-04T04:53:42.0143482Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 11
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 11338.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.5384382Z",
+      "ballotsCast": 1362745.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        }
+      ],
+      "id": "01000000-85aa-a19e-777e-08df1d82e5fc",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-9eb9-08dbda36ae91",
+      "lastUpdated": "2026-11-05T01:27:50.8253575Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 940
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 16
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 2589827.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.5780679Z",
+      "ballotsCast": 70543.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        }
+      ],
+      "id": "01000000-168a-2187-1fc6-08df2653e9dc",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-cc92-08dbda36ae92",
+      "lastUpdated": "2026-11-04T08:32:09.6788002Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 24
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 146942.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.6038179Z",
+      "ballotsCast": 34815.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        }
+      ],
+      "id": "01000000-90ce-e1e9-d262-08df1a824358",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-f590-08dbda36ae93",
+      "lastUpdated": "2026-11-04T08:05:39.3163322Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 19
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 73154.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.6290406Z",
+      "ballotsCast": 343064.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        }
+      ],
+      "id": "01000000-c08d-fe75-59ca-08df200eb4c7",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-f471-08dbda36ae94",
+      "lastUpdated": "2026-11-05T00:38:06.8615768Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 265
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 657885.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.6570288Z",
+      "ballotsCast": 137050.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        }
+      ],
+      "id": "01000000-d225-a699-68ff-08df1f098281",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-d66a-08dbda36ae95",
+      "lastUpdated": "2026-11-05T01:23:12.3184705Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 1
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 135
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 291682.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.6812182Z",
+      "ballotsCast": 12454.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        }
+      ],
+      "id": "01000000-1076-caa1-a2d5-08df2a4d0221",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-aff3-08dbda36ae96",
+      "lastUpdated": "2026-11-04T09:00:41.0531398Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 24
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 32952.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.7059124Z",
+      "ballotsCast": 112650.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        }
+      ],
+      "id": "01000000-7d83-0fba-d69e-08df1e60cfa9",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-1def-08dbda36ae98",
+      "lastUpdated": "2026-11-05T01:12:19.9669335Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 55
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 2
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 175542.0
+    },
+    {
+      "asOf": "2026-11-05T01:56:20.7287968Z",
+      "ballotsCast": 29159.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Election Day"
+            },
+            {
+              "languageId": "1",
+              "text": "D\u00eda de la Elecci\u00f3n"
+            }
+          ],
+          "order": 2,
+          "reportingStatusClientTextKey": "reporting-status-election-night-complete",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early Voting"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n Anticipada"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Provisional"
+            },
+            {
+              "languageId": "1",
+              "text": "Provisional"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Early A.R.S. 16-579"
+            },
+            {
+              "languageId": "1",
+              "text": "Votaci\u00f3n anticipada A.R.S. 16-579"
+            }
+          ],
+          "order": 5,
+          "reportingStatusClientTextKey": "reporting-status-not-participating",
+          "value": null
+        },
+        {
+          "groupName": [
+            {
+              "languageId": "en",
+              "text": "Late Early*"
+            },
+            {
+              "languageId": "1",
+              "text": "Tarde temprano"
+            }
+          ],
+          "order": 6,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": null
+        }
+      ],
+      "id": "01000000-c099-693d-2933-08df1a95e1ff",
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "jurisdictionId": "01000000-0496-9e5d-12e0-08dbda36ae99",
+      "lastUpdated": "2026-11-04T08:20:05.9219455Z",
+      "precinctReportingStatus": [
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Fully Reported"
+            }
+          ],
+          "order": 1,
+          "reportingStatusClientTextKey": "reporting-status-fully-reported",
+          "value": 0
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Partially Reported"
+            }
+          ],
+          "order": 3,
+          "reportingStatusClientTextKey": "reporting-status-partially-reported",
+          "value": 47
+        },
+        {
+          "groupName": [
+            {
+              "languageId": null,
+              "text": "Not Reported"
+            }
+          ],
+          "order": 4,
+          "reportingStatusClientTextKey": "reporting-status-not-reported",
+          "value": 0
+        }
+      ],
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 111922.0
+    }
+  ],
+  "voterRegistration": [
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-8720-08dbda36ae85",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Apache County"
+        },
+        {
+          "languageId": "1",
+          "text": "Apache County"
+        }
+      ],
+      "total": 53295
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-604a-08dbda36ae89",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Cochise County"
+        },
+        {
+          "languageId": "1",
+          "text": "Cochise County"
+        }
+      ],
+      "total": 82634
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-f29e-08dbda36ae8a",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Coconino County"
+        },
+        {
+          "languageId": "1",
+          "text": "Condado de Coconino"
+        }
+      ],
+      "total": 88175
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-e1ca-08dbda36ae8b",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Gila County"
+        },
+        {
+          "languageId": "1",
+          "text": "Gila County"
+        }
+      ],
+      "total": 34245
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-d553-08dbda36ae8c",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Graham County"
+        },
+        {
+          "languageId": "1",
+          "text": "Graham County"
+        }
+      ],
+      "total": 20623
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-991f-08dbda36ae8e",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Greenlee County"
+        },
+        {
+          "languageId": "1",
+          "text": "Greenlee County"
+        }
+      ],
+      "total": 4611
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-d168-08dbda36ae8f",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "La Paz County"
+        },
+        {
+          "languageId": "1",
+          "text": "La Paz County"
+        }
+      ],
+      "total": 11338
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-9eb9-08dbda36ae91",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Maricopa County"
+        },
+        {
+          "languageId": "1",
+          "text": "Maricopa County"
+        }
+      ],
+      "total": 2589827
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-cc92-08dbda36ae92",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Mohave County"
+        },
+        {
+          "languageId": "1",
+          "text": "Mohave County"
+        }
+      ],
+      "total": 146942
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-f590-08dbda36ae93",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Navajo County"
+        },
+        {
+          "languageId": "1",
+          "text": "Navajo County"
+        }
+      ],
+      "total": 73154
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-f471-08dbda36ae94",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Pima County"
+        },
+        {
+          "languageId": "1",
+          "text": "Pima County"
+        }
+      ],
+      "total": 657885
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-d66a-08dbda36ae95",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Pinal County"
+        },
+        {
+          "languageId": "1",
+          "text": "Pinal County"
+        }
+      ],
+      "total": 291682
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-aff3-08dbda36ae96",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Santa Cruz County"
+        },
+        {
+          "languageId": "1",
+          "text": "Santa Cruz County"
+        }
+      ],
+      "total": 32952
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-1def-08dbda36ae98",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Yavapai County"
+        },
+        {
+          "languageId": "1",
+          "text": "Yavapai County"
+        }
+      ],
+      "total": 175542
+    },
+    {
+      "activeVoters": 0,
+      "id": "01000000-0496-9e5d-12e0-08dbda36ae99",
+      "inactiveVoters": 0,
+      "localityName": [
+        {
+          "languageId": "en",
+          "text": "Yuma County"
+        },
+        {
+          "languageId": "1",
+          "text": "Yuma County"
+        }
+      ],
+      "total": 111922
+    }
+  ]
+}

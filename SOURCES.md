@@ -63,6 +63,42 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Arizona registration-only parent and component conflicts
+
+[Complete version-09 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-09/complete-analysis.zip)
+reuse the held [native Arizona query](https://github.com/hanshanley/margin_of_error/releases/tag/voter-precinct-arizona-native-counts-20261105).
+The API explicitly reports statewide `totalVoters=4,374,827`; all 15 locality
+and registration totals agree. The native active/inactive components do not
+explain those totals. Every component and its signed discrepancy is retained,
+not used to repair the parent or invent an active/inactive definition.
+
+The state `ballotsCast=0` conflicts with the county sum 2,248,900. The original
+zero stays in the source query, while selected statewide ballots, turnout and
+native-minus-model remain null. No county sum substitutes for state ballots.
+All 15 county and 1,763 precinct inventory rows remain byte-identical.
+Mohave's virtual `225_Non-Resident Property Owners` participation remains
+missing, not zero. Native rate/map/completion holds remain unchanged.
+
+The unofficial API's UTC clocks stay distinct: asOf
+`2026-11-05T01:56:20.7372053Z`, lastUpdated `2026-11-05T01:56:17.3000739Z`
+and publishDate `2026-11-05T03:50:35.7268964Z`; these are not acquisition times.
+Conditional register units are 2,195,821.90 modeled participants /
+2,179,005.10 nonparticipants under unvalidated Civic-to-register exchangeability.
+Survey calibration, field period and population transport remain unqualified:
+no observed staying home, demographic populations or design interval is claimed.
+
+Immutable release `438672280` has ten full byte-verified assets. The
+36,582,026-byte / 17-member ZIP contains the complete native query, accepted
+version-08 baseline, every new query, maintained code, unchanged Washington
+shared helpers and seven focused tests. 295 independent parent/component/
+Fraction/preservation/package checks and two blocked, byte-identical offline
+reproductions pass. Maintained `scripts/arizona_register_control.py` exports
+51 state/D.C. rows, 25 source-control disposition records and fourteen
+conditional frames. The new record is registration-only, **not an observed
+statewide ballot reference**. All 50 unaffected states, thirteen prior frames
+and 24 prior controls survive. No source acquisition, completed candidate/
+precinct/private-survey reduction or website campaign was repeated.
+
 ## Washington registration-only parent frame
 
 [Complete version-08 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-08/complete-analysis.zip)

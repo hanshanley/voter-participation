@@ -51,6 +51,19 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Arizona registration-only frame integrated:** immutable `438672280`
+adds the explicit native state registration parent without repairing its
+inconsistent active/inactive components or statewide ballot zero. Version09
+has 51 state/D.C. rows, 25 source-control disposition records and fourteen
+conditional frames; the new record is not an observed statewide ballot
+reference. All 15 county / 1,763 precinct rows and the missing virtual
+observation remain intact. Seven tests, 295 independent checks and two exact
+offline reproductions pass; all 50 unaffected states, thirteen prior frames
+and 24 prior controls survive. Native state ballots/turnout/residual stay
+analytically null. No new acquisition, old candidate/precinct reduction,
+population validation or website view. Continue genuinely missing supported
+frames, not this completed integration.
+
 **Washington registration-only frame integrated:** immutable `438661685`
 adds the held explicit state `totalVoters` parent, not a repaired state ballot
 count. Version08 has 51 state/D.C. rows, 24 source-control disposition records
@@ -121,6 +134,7 @@ The broader project remains open; the single 15-minute continuation stays active
 
 | Priority / task | Status | Required result |
 |---|---|---|
+| Held Arizona registration-only parent | Complete numerical integration and fully verified research publication | Release `438672280`: explicit state totalVoters4374827, conditional units2195821.90/2179005.10 under unvalidated exchangeability. Active/inactive components remain inconsistent; registration totals never repaired. State ballotsCast0 retained raw, selected statewide ballots/turnout/native-minus-model NULL; county2248900 not substituted. All15county/1763precinct CSV bytes and missing Mohave virtual observation intact. Version09: 51 rows, 25 disposition records, fourteen frames; no observed statewide ballot reference added. Seven tests/295 independent checks/two blocked exact reproductions pass; all50 unaffected states/thirteen prior frames/24 controls survive. No acquisition, old candidate/precinct reduction, rate/map/population approval or website view. |
 | Held Washington registration-only parent | Complete numerical integration and fully verified research publication | Release `438661685`: explicit state totalVoters5170951, conditional units3431936.67/1739014.33 under unvalidated exchangeability. State ballotsCast0 retained raw, selected statewide ballots/turnout/native-minus-model NULL; county2266746 never substitutes. All39county/9588unit CSV bytes and King601199 unallocated ballots preserved. Version08: 51 rows, 24 disposition records, thirteen frames; one register-only record and no observed statewide ballot reference added. Seven tests/419 independent checks/two blocked exact reproductions pass; all50 unaffected states/twelve prior frames/23 controls survive. No new acquisition, old unit reduction, rate/map/population approval or website view. |
 | Held Arkansas state/county parent frame | Complete numerical integration and fully verified research publication | Release `438650649`: explicit 1856404 registeredVoters / 893026 totalBallotsCast, all 75 county parents and unchanged 2768 precinct records. Version07: 51 state/D.C. rows, 23 controls, twelve conditional frames. Native v173 UTC clock and unofficial partial reporting retained; missing leaf fields never imputed. Conditional units are not observed staying home or validated populations. Six tests, 579 independent checks and two blocked exact reproductions pass; all 50 unaffected state rows, eleven prior frames and 22 prior controls preserved. No new acquisition, candidate reduction, rate/map approval or website view. |
 | Held Delaware statewide register frame | Complete numerical integration and fully verified research publication | Release `438634132`: separate384862 BallotsCast/810407 RegVoters and all41 House districts, complete51-state query/22controls/11frames. Conditional397682.55/412724.45 units preserve unvalidated source-register exchangeability; no observed staying-home claim. Clock/timezone absent, native approvalsfalse, no countyallocation or candidateclock substitution. Six tests/327 independent checks/two blocked exact reproductions pass; all50 unaffectedstates/ten priorframes/21controls preserved. Existing native/candidate/survey verification reused, notrerun. |

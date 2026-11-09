@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "independent_checks": 295,
+  "native_registered_parent": 4374827,
+  "conditional_modeled_participant_units": "2195821.8994776256237676114255436364795872901409608064120986208007311998187992656",
+  "conditional_modeled_nonparticipant_units": "2179005.1005223743762323885744563635204127098590391935879013791992688001812007344",
+  "native_state_ballot_zero_preserved_not_used_as_observed_zero": true,
+  "county_sum_not_substituted_and_missing_virtual_record_preserved": true,
+  "component_conflicts_retained_registration_totals_not_repaired": true,
+  "selected_statewide_ballots": null,
+  "native_minus_model": null,
+  "complete_state_query_rows": 51,
+  "native_control_records": 25,
+  "conditional_scenarios": 14,
+  "registration_only_controls_added": 1,
+  "reported_state_ballot_controls_added": 0,
+  "all_50_unaffected_state_rows_thirteen_prior_frames_and_twenty_four_controls_preserved": true,
+  "original_15_county_and_1763_precinct_csv_bytes_preserved": true,
+  "unchanged_maintained_washington_shared_helpers_included": true,
+  "old_native_candidate_precinct_and_private_survey_reductions_reused_not_repeated": true,
+  "focused_tests": 7,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 17,
+  "archive_bytes": 36582026,
+  "archive_sha256": "acbdea7ae4d4d0c060f2b3ce94537bd63b8a169af7ef8e2fc300aeab948e1b6d"
+}
