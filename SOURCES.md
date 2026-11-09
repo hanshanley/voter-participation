@@ -25,6 +25,54 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## D.C. dated registration and separate native voting-mode reports
+
+[Complete version-25 controls and factual inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-25/complete-analysis.zip)
+retain five separate reports linked by the [official board](https://dcboe.org/):
+**453,471 registrations as of September 30**, the early-vote-center
+report's **27,118**, **72,903 Election Day in-person**, **53,736 drop-box
+mail ballots received**, and **45,376 USPS mail ballots received**.
+Different measures and cutoffs are **not added into all-mode cast ballots
+or unique people**. Received mail is not independently qualified accepted/
+cast ballots. Vote-center/drop-box location wards are not voter residence;
+the dated register is not a matched election-report denominator.
+
+The complete 13-page / 20-grid factual views preserve all 4,517 raw
+slots, 1,515 count slots, 23 unknown counts and seven printed zero literals.
+All eight wards / 144 native registration precincts are retained, not
+relabelled as precinct voting results. Printed ward headers, not page
+ordinals, identify registration geography. Merged detention-center cells
+retain their day columns; drop-box ward blanks are not filled from a
+printed daily total of zero, and USPS November 7-13 blanks remain unknown.
+All 342 equations are evaluated: 326 complete reconcile, 16 remain incomplete.
+
+**D.C. still has no Civic sample.** Registration does not create one:
+no pooled-state projection, new conditional model, local/group allocation,
+matched model residual, staying-home claim or fabricated interval.
+The existing separate 185,086 ballot / 457,371 registration reference,
+rate and all 51 prior state rows remain byte-identical. All 43 controls
+and 31 scenarios survive; now 48 dispositions / 31 scenarios, not 31 states.
+No new rate, map, all-mode count or website view.
+
+Twelve tests, 31,661 independent checks and two exact blocked offline
+reproductions pass. An unpublished page-ordinal draft was superseded
+before publication. Immutable release `438945282` has twelve full
+authenticated-draft/anonymous-published byte-verified assets. The
+105,905,422-byte / nineteen-member ZIP includes both complete factual
+reader views, native external parents/ward labels, typed scope, original
+receipts/digests, complete version24 baseline, optional PDF extractor,
+portable reader/shared code, tests, every query/result and checksums.
+Full original contact prose, web bodies and compiled app code stay local.
+SHA-256:
+`8ee46200c534b07ccc570dd589908b5d011af67f8debb45f3cc36656ddebfb9a`.
+
+[New stopped-route receipts](data/registration-access/20261109-04/observations.json)
+record Michigan's statistics-index403 (427 bytes) and Tennessee's
+election-index403 (919 bytes): no alternate client/cache/mirror or
+web-parsed numerical substitutes. The current D.C. results response was
+an app shell without new all-mode counts; it did not replace the earlier
+qualified citywide reference. Earlier releases and access holds survive.
+
 ## Alabama monthly active and combined registration frames
 
 [Complete version-24 controls and originals](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-24/complete-analysis.zip)

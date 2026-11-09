@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "independent_checks": 31661,
+  "focused_tests": 12,
+  "state_and_dc_rows": 51,
+  "source_control_records": 48,
+  "conditional_scenarios": 31,
+  "all51_prior_state_rows_and31_scenarios_byte_identical_all43_prior_controls_preserved": true,
+  "native_pages": 13,
+  "native_tables": 20,
+  "native_grid_slots": 4517,
+  "native_registration_records": 161,
+  "native_unique_precincts": 144,
+  "native_mode_count_slots": 549,
+  "native_count_slots": 1515,
+  "native_unknown_count_slots": 23,
+  "native_observed_zero_literals": 7,
+  "registration_ward_identity_from_printed_headers_not_page_ordinals": true,
+  "complete_equations": 326,
+  "incomplete_equations": 16,
+  "native_accounting_discrepancies": 0,
+  "native_report_parents": {
+    "DC-september-registration": 453471,
+    "DC-early": 27118,
+    "DC-election-day": 72903,
+    "DC-dropbox": 53736,
+    "DC-usps": 45376
+  },
+  "no_dc_survey_projection_allmode_crossmode_sum_paired_denominator_residence_rate_or_fake_interval": true,
+  "prior_dc185086_ballots_and457371_denominator_preserved": true,
+  "mi_and_tn_new403_receipts_original_body_hashes_checked_routes_stopped": true,
+  "full_contact_prose_original_web_bodies_compiled_app_code_and_denied_bodies_not_redistributed": true,
+  "independent_native_reader_freezes_reused_not_reduced_again": true,
+  "unpublished_ordinal_draft_preserved_and_superseded_before_publication": true,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 19,
+  "archive_bytes": 105905422,
+  "archive_sha256": "8ee46200c534b07ccc570dd589908b5d011af67f8debb45f3cc36656ddebfb9a"
+}

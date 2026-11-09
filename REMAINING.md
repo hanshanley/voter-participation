@@ -51,6 +51,25 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**D.C. native references integrated without survey projection:** version25
+adds September 30 registrations and four separate voting-mode reports.
+All 13 pages / 20 factual grids / 4,517 raw slots / 1,515 count slots
+preserve 23 unknowns and seven printed zeros. Printed ward headers, not
+page order, identify all eight wards / 144 registration precincts.
+Merged detention cells do not shift dates; blank mail-report days are
+not filled or treated as cutoffs. The 326 complete equations reconcile;
+16 remain incomplete. Twelve tests, 31,661 checks and two exact offline
+reproductions pass. No cross-mode generic cast/unique-person sum,
+received-to-cast promotion, residence-ward rate or matched September
+denominator. D.C.'s Civic sample stays absent: no projected model or
+extra conditional scenario. The prior 185,086 ballot / 457,371 register
+reference, all 51 state rows, 43 controls and 31 scenarios survive
+byte-identically; now 48 dispositions / 31 scenarios, not 31 states.
+Complete permitted factual inputs/code/tests/queries/results are published;
+no new website view. Michigan's statistics index and Tennessee's election
+index returned403 and are stopped without alternate clients/caches/mirrors
+or cached counts. Broader independent group/precinct evidence gaps remain.
+
 **Alabama monthly active/combined frames integrated separately:** version24
 adds October's 3,390,357 active and 3,853,181 combined registrations,
 not November inferred from the URL directory. Exact cutoff day/clock/
