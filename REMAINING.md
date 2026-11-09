@@ -51,6 +51,19 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Further registration-source holds:** direct acquisition of Iowa's
+separately declared November registration PDF and preliminary participation
+release returned403, as did Wisconsin's statistics page, Massachusetts's
+distinct modern statistics hub and Kentucky's registration index.
+All five routes are stopped without alternate clients/caches/mirrors,
+guessed files or promotion of web-parsed counts. The six-observation
+machine ledger also preserves Iowa's separate legacy-index404.
+Actual body sizes/hashes are recorded where available; Wisconsin's
+unexposed body fields remain null. Native numerical inputs were not
+acquired, so version20 controls/estimates/complete downloads are unchanged.
+Pursue genuinely distinct permitted products or already-held numerical
+evidence; do not loop through these routes.
+
 **Nebraska filtered registry report integrated:** version20 adds its
 explicit 1,265,022 Grand Total, not estimated VEP or legal-eligibility
 certification. Native processed November 1 / printed November 2 clocks

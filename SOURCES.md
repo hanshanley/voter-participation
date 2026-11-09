@@ -63,6 +63,27 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Further registration-source access observations
+
+The [complete six-observation receipt ledger](data/registration-access/20261109-02/observations.json)
+records five new HTTP403 holds: Iowa's separately declared November
+registration PDF and preliminary participation release, Wisconsin's
+statistics page, Massachusetts's distinct modern statistics hub and
+Kentucky's registration index. The denied response bodies are held
+locally; their actual byte lengths/hashes are recorded where exposed.
+Wisconsin's web-tool body was unavailable, so its byte/hash fields are
+null, not fabricated.
+
+All five routes are stopped: no alternate client, cache, mirror or
+guessed file. Web-parsed Iowa counts and discovery of a modern 2026
+Massachusetts product are not native analysis inputs. Iowa's legacy
+registration index separately returned404; its declared modern
+Research and Data navigation led to the subsequently denied originals.
+These are source-access holds, not zero populations or proof that
+the data do not exist. Version20 numerical estimates and all complete
+downloads remain unchanged. Continue distinct permitted or already-held
+evidence rather than retrying these routes.
+
 ## Nebraska source-filtered registration count
 
 [Complete version-20 controls and inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-20/complete-analysis.zip)
