@@ -25,6 +25,45 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 model classifications by recalled prior-contest response
+
+[Complete nonpartisan classification package](https://github.com/hanshanley/margin_of_error/releases/download/participation-civic-history-classifications-20261109-01/complete-analysis.zip)
+reuses the verified Civic joint reductions without rerunning the survey
+reduction or model campaign. All 102 current-state/prior-contest decisions,
+408 cell queries and 204 conditional-rate queries are retained:
+**77 supported tables** (33 recalled 2022 House / 44 recalled 2024
+presidential) and 25 holds including D.C. absence, not 77 states.
+
+The prior blocks are recalled candidate choice, including Other candidate,
+and an **opaque other/unresolved response** block retaining explicit
+no-prior-contest-vote and unknown responses together. The latter is not
+classified prior nonvoting. Neither component is separately disclosed or
+imputed. Current candidate-choice unknown remains a model participant
+when the native model says voter. No party-choice table is released.
+
+These are classifications within the 2026 source frame. Its state is not
+verified prior residence; its weights are not the 2022/2024 population.
+No historical turnout, original-cohort retention, first-ever/new/returning
+voter population, staying home, eligibility or geographic allocation.
+Each selected parent has at least100 cases; each positive coarse cell
+has at least30. Whole unsupported tables stay null, with complementary
+state holds. All fifty current model parents remain exact across both
+prior contests, giving 100 preservation checks.
+
+Fifteen tests, 4,652 independent checks and two exact offline
+reproductions pass. Immutable release `439121934` has seven full
+byte-verified assets. The **67,954-byte / fourteen-member ZIP** includes
+all permitted sufficient coarse inputs, code, tests, every query/result,
+source contract/receipts and checksums; no private fine cells or raw records.
+SHA-256: `1fcbcc597323158d7c92b7b3022fbf8926f876305e1ca3f82d214940d5949dcc`.
+
+[New York reporting receipt](data/registration-access/20261109-08/observations.json)
+records actual403 / 5,462 bytes from the distinct HomeNoJS product.
+That route is stopped without alternate client/cache/mirror or promoting
+a cached search count; the older November1 workbook hold also remains.
+No New York registration denominator is added. Native27, prior models/
+releases/holds and website remain unchanged; no new rate/map/view.
+
 ## Every-state CPS registration-supported demographic participation
 
 [Complete 2022/2024 package](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-registered-groups-20261109-01/complete-analysis.zip)

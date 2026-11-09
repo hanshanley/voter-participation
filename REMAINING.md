@@ -51,6 +51,20 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**2026 retrospective-response classifications published:** separate
+nonpartisan package reuses held Civic joints for77 supported tables
+(33 recalled2022House /44 recalled2024President), not77states.
+All102 state/contest decisions /408cell queries /204conditional-rate
+queries include25holds. Other/unresolved prior responses retain explicit
+nonvote AND unknown together, never classified as prior nonvoters.
+Current-state/source weights do not certify prior residence/population,
+observed2026turnout or new/returning voters. Existing100current-parent
+checks remain exact; no source reduction/model campaign rerun.
+Fifteen tests,4,652checks and two exact offline reproductions pass;
+complete sufficient safe inputs/code/tests/queries/results are published.
+NYHomeNoJS returned403 and is stopped; no cached count promoted.
+Native27, existing model outputs and website unchanged; broader gaps open.
+
 **Every-state CPS registration-supported groups published:** new
 PES1/PES2 joint analysis covers all 1,734 state/year/group queries for
 2022/2024, with 1,731 conditional estimates, three empty frames and383
