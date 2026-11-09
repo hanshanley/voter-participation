@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "independent_checks": 615,
+  "native_federal_ballots": 215906,
+  "native_registered_parent": 605433,
+  "conditional_modeled_participant_units": "291012.21001600903719507182960259205964504779720366495593375262552891843931481796",
+  "conditional_modeled_nonparticipant_units": "314420.78998399096280492817039740794035495220279633504406624737447108156068518204",
+  "native_minus_conditional_participant_units": "-75106.21001600903719507182960259205964504779720366495593375262552891843931481796",
+  "federal_overseas_and_governor_scopes_not_blended": true,
+  "candidate_selections_not_used_as_ballots": true,
+  "source_clock_timezone_legacy_format_and_reporting_counts_preserved": true,
+  "complete_state_query_rows": 51,
+  "native_control_records": 27,
+  "conditional_scenarios": 16,
+  "native_federal_participation_control_added": 1,
+  "generic_cast_ballot_controls_added": 0,
+  "all_50_unaffected_state_rows_fifteen_prior_frames_and_twenty_six_controls_preserved": true,
+  "original_523_reporting_unit_gzip_bytes_and_all_quality_holds_preserved": true,
+  "all_76_native_contest_headers_complete_other_headers_not_additive_or_approved": true,
+  "unchanged_maintained_washington_shared_helpers_included": true,
+  "old_native_candidate_csv_geometry_and_private_survey_reductions_reused_not_repeated": true,
+  "focused_tests": 8,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 16,
+  "archive_bytes": 100091036,
+  "archive_sha256": "807201daef6a86bffd42f76d90ba5fff8c76a7b273bd6fff2d6bf8e0184e0ae4"
+}

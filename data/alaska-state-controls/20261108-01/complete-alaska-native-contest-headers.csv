@@ -1,0 +1,77 @@
+native_contest_index,office,native_ballots_b,native_candidate_selections_t,native_registered_v,native_precincts_expected_p,native_precincts_reported_r,disposition
+0,U.S. Senator,215906,213733,605433,403,400,federal_scope_header_corroboration_only
+1,U.S. Representative,215906,213009,605433,403,400,selected_native_federal_parent
+2,Governor / Lieutenant Governor,215776,211337,604611,402,399,different_scope_header_only_not_additive
+3,BM#2 24ESEG,215776,204500,604611,402,399,unreviewed_other_contest_header_not_additive
+4,BM#3 25USCV,215776,205327,604611,402,399,unreviewed_other_contest_header_not_additive
+5,Supreme Court - Pate,215776,178109,604611,402,399,unreviewed_other_contest_header_not_additive
+6,Senate District A,9149,7023,31289,25,25,unreviewed_other_contest_header_not_additive
+7,Senate District C,11957,10576,32460,21,21,unreviewed_other_contest_header_not_additive
+8,Senate District E,13451,11605,31578,15,15,unreviewed_other_contest_header_not_additive
+9,Senate District G,9309,8407,29870,12,12,unreviewed_other_contest_header_not_additive
+10,Senate District I,6710,4968,26418,12,12,unreviewed_other_contest_header_not_additive
+11,Senate District K,9841,7252,30149,9,9,unreviewed_other_contest_header_not_additive
+12,Senate District M,14239,13659,34509,14,14,unreviewed_other_contest_header_not_additive
+13,Senate District O,12289,11658,35425,21,21,unreviewed_other_contest_header_not_additive
+14,Senate District Q,12605,12228,32576,14,14,unreviewed_other_contest_header_not_additive
+15,Senate District S,5863,5574,20697,59,56,unreviewed_other_contest_header_not_additive
+16,House District 1,4708,4578,15263,10,10,unreviewed_other_contest_header_not_additive
+17,House District 2,4441,4162,16026,15,15,unreviewed_other_contest_header_not_additive
+18,House District 3,6295,6138,16880,10,10,unreviewed_other_contest_header_not_additive
+19,House District 4,5785,4599,15116,8,8,unreviewed_other_contest_header_not_additive
+20,House District 5,4028,3889,13893,12,12,unreviewed_other_contest_header_not_additive
+21,House District 6,7929,7790,18567,9,9,unreviewed_other_contest_header_not_additive
+22,House District 7,6522,6261,17091,6,6,unreviewed_other_contest_header_not_additive
+23,House District 8,7068,6656,17816,11,11,unreviewed_other_contest_header_not_additive
+24,House District 9,7616,7373,16398,9,9,unreviewed_other_contest_header_not_additive
+25,House District 10,5835,4406,15180,6,6,unreviewed_other_contest_header_not_additive
+26,House District 11,6323,6171,15314,7,7,unreviewed_other_contest_header_not_additive
+27,House District 12,5293,5087,15180,6,6,unreviewed_other_contest_header_not_additive
+28,House District 13,4734,3240,15359,5,5,unreviewed_other_contest_header_not_additive
+29,House District 14,4575,4091,14511,7,7,unreviewed_other_contest_header_not_additive
+30,House District 15,6226,6106,15508,6,6,unreviewed_other_contest_header_not_additive
+31,House District 16,6306,6126,15762,7,7,unreviewed_other_contest_header_not_additive
+32,House District 17,5070,4809,14853,7,7,unreviewed_other_contest_header_not_additive
+33,House District 18,1640,1588,11565,5,5,unreviewed_other_contest_header_not_additive
+34,House District 19,3366,2522,13186,5,5,unreviewed_other_contest_header_not_additive
+35,House District 20,4604,4284,14085,5,5,unreviewed_other_contest_header_not_additive
+36,House District 21,6235,6041,15867,5,5,unreviewed_other_contest_header_not_additive
+37,House District 22,3606,3463,14282,4,4,unreviewed_other_contest_header_not_additive
+38,House District 23,6879,6713,16676,6,6,unreviewed_other_contest_header_not_additive
+39,House District 24,6729,6006,15926,7,7,unreviewed_other_contest_header_not_additive
+40,House District 25,7588,7231,17458,7,7,unreviewed_other_contest_header_not_additive
+41,House District 26,6651,6404,17051,7,7,unreviewed_other_contest_header_not_additive
+42,House District 27,5806,5267,17402,5,5,unreviewed_other_contest_header_not_additive
+43,House District 28,6259,6003,16381,7,7,unreviewed_other_contest_header_not_additive
+44,House District 29,6715,6419,17410,9,9,unreviewed_other_contest_header_not_additive
+45,House District 30,5574,5394,18015,12,12,unreviewed_other_contest_header_not_additive
+46,House District 31,4606,4514,14153,4,4,unreviewed_other_contest_header_not_additive
+47,House District 32,3167,2381,11710,4,4,unreviewed_other_contest_header_not_additive
+48,House District 33,6004,5854,16626,6,6,unreviewed_other_contest_header_not_additive
+49,House District 34,6601,6467,15950,8,8,unreviewed_other_contest_header_not_additive
+50,House District 35,6982,6824,15640,8,8,unreviewed_other_contest_header_not_additive
+51,House District 36,6032,5715,16170,40,40,unreviewed_other_contest_header_not_additive
+52,House District 37,3010,2827,9899,35,35,unreviewed_other_contest_header_not_additive
+53,House District 38,2853,2754,10798,24,21,unreviewed_other_contest_header_not_additive
+54,House District 39,3578,3447,10583,28,28,unreviewed_other_contest_header_not_additive
+55,House District 40,2537,2384,9061,20,20,unreviewed_other_contest_header_not_additive
+56,Superior Court JD1 - Carpeneti,21229,17901,63285,43,43,unreviewed_other_contest_header_not_additive
+57,Superior Court JD1 - Doty,21229,17373,63285,43,43,unreviewed_other_contest_header_not_additive
+58,Superior Court JD1 - Lybrand,21229,17423,63285,43,43,unreviewed_other_contest_header_not_additive
+59,Superior Court JD2 - Roghair,5077,4699,15489,37,37,unreviewed_other_contest_header_not_additive
+60,Superior Court JD3 - Hartz,152062,123173,420529,212,212,unreviewed_other_contest_header_not_additive
+61,Superior Court JD3 - Lamoureux,152062,122615,420529,212,212,unreviewed_other_contest_header_not_additive
+62,Superior Court JD3 - Lawson,152062,122381,420529,212,212,unreviewed_other_contest_header_not_additive
+63,Superior Court JD3 - McKenna,152062,122465,420529,212,212,unreviewed_other_contest_header_not_additive
+64,Superior Court JD3 - Nesbett,152062,122404,420529,212,212,unreviewed_other_contest_header_not_additive
+65,Superior Court JD3 - Rankin,152062,122220,420529,212,212,unreviewed_other_contest_header_not_additive
+66,Superior Court JD3 - Reigh,152062,121645,420529,212,212,unreviewed_other_contest_header_not_additive
+67,Superior Court JD3 - Wheeles,152062,121334,420529,212,212,unreviewed_other_contest_header_not_additive
+68,Superior Court JD3 - Woodman,152062,121620,420529,212,212,unreviewed_other_contest_header_not_additive
+69,District Court JD3 - Darnall,152062,121059,420529,212,212,unreviewed_other_contest_header_not_additive
+70,District Court JD3 - Fallon,152062,120593,420529,212,212,unreviewed_other_contest_header_not_additive
+71,District Court JD3 - Traini,152062,118966,420529,212,212,unreviewed_other_contest_header_not_additive
+72,Superior Court JD4 - Peters,37408,32550,105308,110,107,unreviewed_other_contest_header_not_additive
+73,Superior Court JD4 - Schwalm,37408,32480,105308,110,107,unreviewed_other_contest_header_not_additive
+74,Superior Court JD4 - Welch,37408,32485,105308,110,107,unreviewed_other_contest_header_not_additive
+75,District Court JD4 - Seekins,37408,33079,105308,110,107,unreviewed_other_contest_header_not_additive

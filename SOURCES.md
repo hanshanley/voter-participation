@@ -63,6 +63,45 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Alaska native federal participation and overseas scope
+
+[Complete version-11 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-analysis.zip)
+reuse the held [native Alaska query](https://github.com/hanshanley/margin_of_error/releases/tag/voter-precinct-alaska-20261105).
+The explicit federal House parent reports `b=215,906` ballots and `v=605,433`
+registered; `t=213,009` candidate selections are not ballots. Senate `b/v`
+agree. Governor headers have 215,776 ballots / 604,611 registered: the
+130-ballot / 822-registration difference exactly matches the retained federal
+overseas unit, not an inferred cohort or a reason to blend election scopes.
+
+The source is uncertified, updated `11/04/2026 2:11 PM`, timezone undeclared.
+Native `p=403` expected / `r=400` reported are counts, not percentages.
+Export `format="2024"` is a schema marker, not the election year; the literal
+election identity is Alaska 2026 General Election. All 523 reporting-unit gzip
+bytes remain unchanged: 402 geographic, 120 pooled district and one federal.
+All 221 ballot-accounting discrepancies and 63 ballots-exceed-registration
+flags remain. No pooled/federal allocation, precinct rate, map, completed
+counting or final ranked-choice outcome is approved.
+
+Conditional source-register units are 291,012.21 modeled participants /
+314,420.79 nonparticipants; native-minus-model is separately -75,106.21.
+The numerical contrast assumes unvalidated Civic-to-register exchangeability,
+not observed staying home or independent population validation. Register
+status definitions, survey calibration, field period and population transport
+remain unqualified. Generic cast-ballot/rate fields stay blank; no group
+populations or design intervals are supplied.
+
+Immutable release `438694717` has nine full byte-verified assets. The
+100,091,036-byte / 16-member ZIP contains the complete native query, accepted
+version-10 baseline, all 76 native contest headers, every new query, maintained
+code, unchanged Washington shared helpers and eight focused tests. Other
+contest headers remain unreviewed and nonadditive. 615 independent native/
+scope/Fraction/preservation/package checks and two blocked, byte-identical
+offline reproductions pass. Maintained `scripts/alaska_state_control.py`
+exports 51 state/D.C. rows, 27 source-control disposition records and sixteen
+conditional frames. All 50 unaffected states, fifteen prior frames and 26
+prior controls survive. No source acquisition, completed candidate/CSV/
+geometry/private-survey reduction or website campaign was repeated.
+
 ## Virginia registration-only parent and partial locality scopes
 
 [Complete version-10 controls and sufficient native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-10/complete-analysis.zip)
