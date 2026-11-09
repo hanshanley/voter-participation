@@ -1,0 +1,731 @@
+state_code,county_code_literal,county_literal,source_page,native_column_position,native_column_label,native_count
+OK,01,ADAIR,1,1,(1) Republican,6888
+OK,01,ADAIR,1,2,(2) Democrat,2882
+OK,01,ADAIR,1,3,(3) Libertarian,94
+OK,01,ADAIR,1,4,(4) Independent,1948
+OK,01,ADAIR,1,5,Total,11812
+OK,02,ALFALFA,1,1,(1) Republican,2361
+OK,02,ALFALFA,1,2,(2) Democrat,312
+OK,02,ALFALFA,1,3,(3) Libertarian,25
+OK,02,ALFALFA,1,4,(4) Independent,330
+OK,02,ALFALFA,1,5,Total,3028
+OK,03,ATOKA,1,1,(1) Republican,5407
+OK,03,ATOKA,1,2,(2) Democrat,1960
+OK,03,ATOKA,1,3,(3) Libertarian,57
+OK,03,ATOKA,1,4,(4) Independent,1004
+OK,03,ATOKA,1,5,Total,8428
+OK,04,BEAVER,1,1,(1) Republican,2477
+OK,04,BEAVER,1,2,(2) Democrat,297
+OK,04,BEAVER,1,3,(3) Libertarian,23
+OK,04,BEAVER,1,4,(4) Independent,402
+OK,04,BEAVER,1,5,Total,3199
+OK,05,BECKHAM,1,1,(1) Republican,8035
+OK,05,BECKHAM,1,2,(2) Democrat,1875
+OK,05,BECKHAM,1,3,(3) Libertarian,90
+OK,05,BECKHAM,1,4,(4) Independent,1902
+OK,05,BECKHAM,1,5,Total,11902
+OK,06,BLAINE,1,1,(1) Republican,3712
+OK,06,BLAINE,1,2,(2) Democrat,1058
+OK,06,BLAINE,1,3,(3) Libertarian,40
+OK,06,BLAINE,1,4,(4) Independent,825
+OK,06,BLAINE,1,5,Total,5635
+OK,07,BRYAN,1,1,(1) Republican,17630
+OK,07,BRYAN,1,2,(2) Democrat,6540
+OK,07,BRYAN,1,3,(3) Libertarian,285
+OK,07,BRYAN,1,4,(4) Independent,6292
+OK,07,BRYAN,1,5,Total,30747
+OK,08,CADDO,1,1,(1) Republican,7588
+OK,08,CADDO,1,2,(2) Democrat,4310
+OK,08,CADDO,1,3,(3) Libertarian,107
+OK,08,CADDO,1,4,(4) Independent,2445
+OK,08,CADDO,1,5,Total,14450
+OK,09,CANADIAN,1,1,(1) Republican,65534
+OK,09,CANADIAN,1,2,(2) Democrat,22904
+OK,09,CANADIAN,1,3,(3) Libertarian,1313
+OK,09,CANADIAN,1,4,(4) Independent,23999
+OK,09,CANADIAN,1,5,Total,113750
+OK,10,CARTER,1,1,(1) Republican,18221
+OK,10,CARTER,1,2,(2) Democrat,7127
+OK,10,CARTER,1,3,(3) Libertarian,279
+OK,10,CARTER,1,4,(4) Independent,6173
+OK,10,CARTER,1,5,Total,31800
+OK,11,CHEROKEE,1,1,(1) Republican,13561
+OK,11,CHEROKEE,1,2,(2) Democrat,9152
+OK,11,CHEROKEE,1,3,(3) Libertarian,277
+OK,11,CHEROKEE,1,4,(4) Independent,5967
+OK,11,CHEROKEE,1,5,Total,28957
+OK,12,CHOCTAW,1,1,(1) Republican,5249
+OK,12,CHOCTAW,1,2,(2) Democrat,2514
+OK,12,CHOCTAW,1,3,(3) Libertarian,56
+OK,12,CHOCTAW,1,4,(4) Independent,1441
+OK,12,CHOCTAW,1,5,Total,9260
+OK,13,CIMARRON,1,1,(1) Republican,1074
+OK,13,CIMARRON,1,2,(2) Democrat,148
+OK,13,CIMARRON,1,3,(3) Libertarian,4
+OK,13,CIMARRON,1,4,(4) Independent,123
+OK,13,CIMARRON,1,5,Total,1349
+OK,14,CLEVELAND,1,1,(1) Republican,86446
+OK,14,CLEVELAND,1,2,(2) Democrat,52457
+OK,14,CLEVELAND,1,3,(3) Libertarian,1988
+OK,14,CLEVELAND,1,4,(4) Independent,41968
+OK,14,CLEVELAND,1,5,Total,182859
+OK,15,COAL,1,1,(1) Republican,2255
+OK,15,COAL,1,2,(2) Democrat,1097
+OK,15,COAL,1,3,(3) Libertarian,19
+OK,15,COAL,1,4,(4) Independent,500
+OK,15,COAL,1,5,Total,3871
+OK,16,COMANCHE,1,1,(1) Republican,27961
+OK,16,COMANCHE,1,2,(2) Democrat,18450
+OK,16,COMANCHE,1,3,(3) Libertarian,724
+OK,16,COMANCHE,1,4,(4) Independent,16421
+OK,16,COMANCHE,1,5,Total,63556
+OK,17,COTTON,1,1,(1) Republican,2546
+OK,17,COTTON,1,2,(2) Democrat,755
+OK,17,COTTON,1,3,(3) Libertarian,22
+OK,17,COTTON,1,4,(4) Independent,496
+OK,17,COTTON,1,5,Total,3819
+OK,18,CRAIG,1,1,(1) Republican,5172
+OK,18,CRAIG,1,2,(2) Democrat,2141
+OK,18,CRAIG,1,3,(3) Libertarian,55
+OK,18,CRAIG,1,4,(4) Independent,1245
+OK,18,CRAIG,1,5,Total,8613
+OK,19,CREEK,1,1,(1) Republican,29217
+OK,19,CREEK,1,2,(2) Democrat,8330
+OK,19,CREEK,1,3,(3) Libertarian,407
+OK,19,CREEK,1,4,(4) Independent,8307
+OK,19,CREEK,1,5,Total,46261
+OK,20,CUSTER,1,1,(1) Republican,9678
+OK,20,CUSTER,1,2,(2) Democrat,3257
+OK,20,CUSTER,1,3,(3) Libertarian,152
+OK,20,CUSTER,1,4,(4) Independent,2735
+OK,20,CUSTER,1,5,Total,15822
+OK,21,DELAWARE,1,1,(1) Republican,18115
+OK,21,DELAWARE,1,2,(2) Democrat,5171
+OK,21,DELAWARE,1,3,(3) Libertarian,221
+OK,21,DELAWARE,1,4,(4) Independent,5106
+OK,21,DELAWARE,1,5,Total,28613
+OK,22,DEWEY,1,1,(1) Republican,2338
+OK,22,DEWEY,1,2,(2) Democrat,396
+OK,22,DEWEY,1,3,(3) Libertarian,10
+OK,22,DEWEY,1,4,(4) Independent,313
+OK,22,DEWEY,1,5,Total,3057
+OK,23,ELLIS,1,1,(1) Republican,1966
+OK,23,ELLIS,1,2,(2) Democrat,275
+OK,23,ELLIS,1,3,(3) Libertarian,13
+OK,23,ELLIS,1,4,(4) Independent,283
+OK,23,ELLIS,1,5,Total,2537
+OK,24,GARFIELD,1,1,(1) Republican,21642
+OK,24,GARFIELD,1,2,(2) Democrat,5700
+OK,24,GARFIELD,1,3,(3) Libertarian,339
+OK,24,GARFIELD,1,4,(4) Independent,6847
+OK,24,GARFIELD,1,5,Total,34528
+OK,25,GARVIN,1,1,(1) Republican,10622
+OK,25,GARVIN,1,2,(2) Democrat,3388
+OK,25,GARVIN,1,3,(3) Libertarian,125
+OK,25,GARVIN,1,4,(4) Independent,2545
+OK,25,GARVIN,1,5,Total,16680
+OK,26,GRADY,1,1,(1) Republican,24808
+OK,26,GRADY,1,2,(2) Democrat,6189
+OK,26,GRADY,1,3,(3) Libertarian,335
+OK,26,GRADY,1,4,(4) Independent,6135
+OK,26,GRADY,1,5,Total,37467
+OK,27,GRANT,1,1,(1) Republican,2211
+OK,27,GRANT,1,2,(2) Democrat,354
+OK,27,GRANT,1,3,(3) Libertarian,24
+OK,27,GRANT,1,4,(4) Independent,333
+OK,27,GRANT,1,5,Total,2922
+OK,28,GREER,1,1,(1) Republican,1735
+OK,28,GREER,1,2,(2) Democrat,683
+OK,28,GREER,1,3,(3) Libertarian,21
+OK,28,GREER,1,4,(4) Independent,491
+OK,28,GREER,1,5,Total,2930
+OK,29,HARMON,1,1,(1) Republican,810
+OK,29,HARMON,1,2,(2) Democrat,375
+OK,29,HARMON,1,3,(3) Libertarian,14
+OK,29,HARMON,1,4,(4) Independent,206
+OK,29,HARMON,1,5,Total,1405
+OK,30,HARPER,2,1,(1) Republican,1485
+OK,30,HARPER,2,2,(2) Democrat,226
+OK,30,HARPER,2,3,(3) Libertarian,5
+OK,30,HARPER,2,4,(4) Independent,195
+OK,30,HARPER,2,5,Total,1911
+OK,31,HASKELL,2,1,(1) Republican,4501
+OK,31,HASKELL,2,2,(2) Democrat,1841
+OK,31,HASKELL,2,3,(3) Libertarian,40
+OK,31,HASKELL,2,4,(4) Independent,725
+OK,31,HASKELL,2,5,Total,7107
+OK,32,HUGHES,2,1,(1) Republican,4162
+OK,32,HUGHES,2,2,(2) Democrat,1891
+OK,32,HUGHES,2,3,(3) Libertarian,49
+OK,32,HUGHES,2,4,(4) Independent,1103
+OK,32,HUGHES,2,5,Total,7205
+OK,33,JACKSON,2,1,(1) Republican,7990
+OK,33,JACKSON,2,2,(2) Democrat,2553
+OK,33,JACKSON,2,3,(3) Libertarian,176
+OK,33,JACKSON,2,4,(4) Independent,2896
+OK,33,JACKSON,2,5,Total,13615
+OK,34,JEFFERSON,2,1,(1) Republican,2279
+OK,34,JEFFERSON,2,2,(2) Democrat,745
+OK,34,JEFFERSON,2,3,(3) Libertarian,28
+OK,34,JEFFERSON,2,4,(4) Independent,506
+OK,34,JEFFERSON,2,5,Total,3558
+OK,35,JOHNSTON,2,1,(1) Republican,3853
+OK,35,JOHNSTON,2,2,(2) Democrat,1492
+OK,35,JOHNSTON,2,3,(3) Libertarian,50
+OK,35,JOHNSTON,2,4,(4) Independent,882
+OK,35,JOHNSTON,2,5,Total,6277
+OK,36,KAY,2,1,(1) Republican,15675
+OK,36,KAY,2,2,(2) Democrat,5026
+OK,36,KAY,2,3,(3) Libertarian,225
+OK,36,KAY,2,4,(4) Independent,5451
+OK,36,KAY,2,5,Total,26377
+OK,37,KINGFISHER,2,1,(1) Republican,7141
+OK,37,KINGFISHER,2,2,(2) Democrat,1222
+OK,37,KINGFISHER,2,3,(3) Libertarian,69
+OK,37,KINGFISHER,2,4,(4) Independent,1123
+OK,37,KINGFISHER,2,5,Total,9555
+OK,38,KIOWA,2,1,(1) Republican,2892
+OK,38,KIOWA,2,2,(2) Democrat,1194
+OK,38,KIOWA,2,3,(3) Libertarian,29
+OK,38,KIOWA,2,4,(4) Independent,796
+OK,38,KIOWA,2,5,Total,4911
+OK,39,LATIMER,2,1,(1) Republican,3530
+OK,39,LATIMER,2,2,(2) Democrat,1805
+OK,39,LATIMER,2,3,(3) Libertarian,33
+OK,39,LATIMER,2,4,(4) Independent,844
+OK,39,LATIMER,2,5,Total,6212
+OK,40,LEFLORE,2,1,(1) Republican,18696
+OK,40,LEFLORE,2,2,(2) Democrat,6403
+OK,40,LEFLORE,2,3,(3) Libertarian,256
+OK,40,LEFLORE,2,4,(4) Independent,5214
+OK,40,LEFLORE,2,5,Total,30569
+OK,41,LINCOLN,2,1,(1) Republican,15044
+OK,41,LINCOLN,2,2,(2) Democrat,3615
+OK,41,LINCOLN,2,3,(3) Libertarian,216
+OK,41,LINCOLN,2,4,(4) Independent,3441
+OK,41,LINCOLN,2,5,Total,22316
+OK,42,LOGAN,2,1,(1) Republican,22763
+OK,42,LOGAN,2,2,(2) Democrat,6367
+OK,42,LOGAN,2,3,(3) Libertarian,381
+OK,42,LOGAN,2,4,(4) Independent,6776
+OK,42,LOGAN,2,5,Total,36287
+OK,43,LOVE,2,1,(1) Republican,3966
+OK,43,LOVE,2,2,(2) Democrat,1541
+OK,43,LOVE,2,3,(3) Libertarian,52
+OK,43,LOVE,2,4,(4) Independent,1322
+OK,43,LOVE,2,5,Total,6881
+OK,44,MCCLAIN,2,1,(1) Republican,20867
+OK,44,MCCLAIN,2,2,(2) Democrat,4953
+OK,44,MCCLAIN,2,3,(3) Libertarian,271
+OK,44,MCCLAIN,2,4,(4) Independent,5106
+OK,44,MCCLAIN,2,5,Total,31197
+OK,45,MCCURTAIN,2,1,(1) Republican,11165
+OK,45,MCCURTAIN,2,2,(2) Democrat,4209
+OK,45,MCCURTAIN,2,3,(3) Libertarian,106
+OK,45,MCCURTAIN,2,4,(4) Independent,2430
+OK,45,MCCURTAIN,2,5,Total,17910
+OK,46,MCINTOSH,2,1,(1) Republican,7113
+OK,46,MCINTOSH,2,2,(2) Democrat,3838
+OK,46,MCINTOSH,2,3,(3) Libertarian,79
+OK,46,MCINTOSH,2,4,(4) Independent,1969
+OK,46,MCINTOSH,2,5,Total,12999
+OK,47,MAJOR,2,1,(1) Republican,3738
+OK,47,MAJOR,2,2,(2) Democrat,374
+OK,47,MAJOR,2,3,(3) Libertarian,32
+OK,47,MAJOR,2,4,(4) Independent,532
+OK,47,MAJOR,2,5,Total,4676
+OK,48,MARSHALL,2,1,(1) Republican,6614
+OK,48,MARSHALL,2,2,(2) Democrat,2047
+OK,48,MARSHALL,2,3,(3) Libertarian,81
+OK,48,MARSHALL,2,4,(4) Independent,1876
+OK,48,MARSHALL,2,5,Total,10618
+OK,49,MAYES,2,1,(1) Republican,16092
+OK,49,MAYES,2,2,(2) Democrat,5316
+OK,49,MAYES,2,3,(3) Libertarian,216
+OK,49,MAYES,2,4,(4) Independent,4241
+OK,49,MAYES,2,5,Total,25865
+OK,50,MURRAY,2,1,(1) Republican,5059
+OK,50,MURRAY,2,2,(2) Democrat,2276
+OK,50,MURRAY,2,3,(3) Libertarian,78
+OK,50,MURRAY,2,4,(4) Independent,1369
+OK,50,MURRAY,2,5,Total,8782
+OK,51,MUSKOGEE,2,1,(1) Republican,19452
+OK,51,MUSKOGEE,2,2,(2) Democrat,12082
+OK,51,MUSKOGEE,2,3,(3) Libertarian,319
+OK,51,MUSKOGEE,2,4,(4) Independent,7172
+OK,51,MUSKOGEE,2,5,Total,39025
+OK,52,NOBLE,2,1,(1) Republican,4707
+OK,52,NOBLE,2,2,(2) Democrat,1269
+OK,52,NOBLE,2,3,(3) Libertarian,56
+OK,52,NOBLE,2,4,(4) Independent,1026
+OK,52,NOBLE,2,5,Total,7058
+OK,53,NOWATA,2,1,(1) Republican,4477
+OK,53,NOWATA,2,2,(2) Democrat,1198
+OK,53,NOWATA,2,3,(3) Libertarian,65
+OK,53,NOWATA,2,4,(4) Independent,1077
+OK,53,NOWATA,2,5,Total,6817
+OK,54,OKFUSKEE,2,1,(1) Republican,3527
+OK,54,OKFUSKEE,2,2,(2) Democrat,1713
+OK,54,OKFUSKEE,2,3,(3) Libertarian,42
+OK,54,OKFUSKEE,2,4,(4) Independent,937
+OK,54,OKFUSKEE,2,5,Total,6219
+OK,55,OKLAHOMA,2,1,(1) Republican,192896
+OK,55,OKLAHOMA,2,2,(2) Democrat,160569
+OK,55,OKLAHOMA,2,3,(3) Libertarian,4926
+OK,55,OKLAHOMA,2,4,(4) Independent,114602
+OK,55,OKLAHOMA,2,5,Total,472993
+OK,56,OKMULGEE,2,1,(1) Republican,11662
+OK,56,OKMULGEE,2,2,(2) Democrat,6319
+OK,56,OKMULGEE,2,3,(3) Libertarian,192
+OK,56,OKMULGEE,2,4,(4) Independent,4172
+OK,56,OKMULGEE,2,5,Total,22345
+OK,57,OSAGE,2,1,(1) Republican,17315
+OK,57,OSAGE,2,2,(2) Democrat,7497
+OK,57,OSAGE,2,3,(3) Libertarian,269
+OK,57,OSAGE,2,4,(4) Independent,5184
+OK,57,OSAGE,2,5,Total,30265
+OK,58,OTTAWA,2,1,(1) Republican,10451
+OK,58,OTTAWA,2,2,(2) Democrat,4426
+OK,58,OTTAWA,2,3,(3) Libertarian,159
+OK,58,OTTAWA,2,4,(4) Independent,3877
+OK,58,OTTAWA,2,5,Total,18913
+OK,59,PAWNEE,3,1,(1) Republican,6586
+OK,59,PAWNEE,3,2,(2) Democrat,1901
+OK,59,PAWNEE,3,3,(3) Libertarian,96
+OK,59,PAWNEE,3,4,(4) Independent,1669
+OK,59,PAWNEE,3,5,Total,10252
+OK,60,PAYNE,3,1,(1) Republican,24522
+OK,60,PAYNE,3,2,(2) Democrat,11069
+OK,60,PAYNE,3,3,(3) Libertarian,513
+OK,60,PAYNE,3,4,(4) Independent,9620
+OK,60,PAYNE,3,5,Total,45724
+OK,61,PITTSBURG,3,1,(1) Republican,16250
+OK,61,PITTSBURG,3,2,(2) Democrat,6636
+OK,61,PITTSBURG,3,3,(3) Libertarian,224
+OK,61,PITTSBURG,3,4,(4) Independent,4663
+OK,61,PITTSBURG,3,5,Total,27773
+OK,62,PONTOTOC,3,1,(1) Republican,12830
+OK,62,PONTOTOC,3,2,(2) Democrat,6394
+OK,62,PONTOTOC,3,3,(3) Libertarian,239
+OK,62,PONTOTOC,3,4,(4) Independent,4380
+OK,62,PONTOTOC,3,5,Total,23843
+OK,63,POTTAWATOMIE,3,1,(1) Republican,26045
+OK,63,POTTAWATOMIE,3,2,(2) Democrat,9526
+OK,63,POTTAWATOMIE,3,3,(3) Libertarian,446
+OK,63,POTTAWATOMIE,3,4,(4) Independent,8346
+OK,63,POTTAWATOMIE,3,5,Total,44363
+OK,64,PUSHMATAHA,3,1,(1) Republican,4469
+OK,64,PUSHMATAHA,3,2,(2) Democrat,1750
+OK,64,PUSHMATAHA,3,3,(3) Libertarian,44
+OK,64,PUSHMATAHA,3,4,(4) Independent,1011
+OK,64,PUSHMATAHA,3,5,Total,7274
+OK,65,ROGER MILLS,3,1,(1) Republican,1720
+OK,65,ROGER MILLS,3,2,(2) Democrat,409
+OK,65,ROGER MILLS,3,3,(3) Libertarian,11
+OK,65,ROGER MILLS,3,4,(4) Independent,240
+OK,65,ROGER MILLS,3,5,Total,2380
+OK,66,ROGERS,3,1,(1) Republican,43871
+OK,66,ROGERS,3,2,(2) Democrat,11652
+OK,66,ROGERS,3,3,(3) Libertarian,635
+OK,66,ROGERS,3,4,(4) Independent,11535
+OK,66,ROGERS,3,5,Total,67693
+OK,67,SEMINOLE,3,1,(1) Republican,6960
+OK,67,SEMINOLE,3,2,(2) Democrat,3321
+OK,67,SEMINOLE,3,3,(3) Libertarian,110
+OK,67,SEMINOLE,3,4,(4) Independent,2441
+OK,67,SEMINOLE,3,5,Total,12832
+OK,68,SEQUOYAH,3,1,(1) Republican,14870
+OK,68,SEQUOYAH,3,2,(2) Democrat,5695
+OK,68,SEQUOYAH,3,3,(3) Libertarian,175
+OK,68,SEQUOYAH,3,4,(4) Independent,4439
+OK,68,SEQUOYAH,3,5,Total,25179
+OK,69,STEPHENS,3,1,(1) Republican,18747
+OK,69,STEPHENS,3,2,(2) Democrat,4842
+OK,69,STEPHENS,3,3,(3) Libertarian,203
+OK,69,STEPHENS,3,4,(4) Independent,4412
+OK,69,STEPHENS,3,5,Total,28204
+OK,70,TEXAS,3,1,(1) Republican,5524
+OK,70,TEXAS,3,2,(2) Democrat,1532
+OK,70,TEXAS,3,3,(3) Libertarian,85
+OK,70,TEXAS,3,4,(4) Independent,1999
+OK,70,TEXAS,3,5,Total,9140
+OK,71,TILLMAN,3,1,(1) Republican,2290
+OK,71,TILLMAN,3,2,(2) Democrat,1049
+OK,71,TILLMAN,3,3,(3) Libertarian,31
+OK,71,TILLMAN,3,4,(4) Independent,663
+OK,71,TILLMAN,3,5,Total,4033
+OK,72,TULSA,3,1,(1) Republican,192366
+OK,72,TULSA,3,2,(2) Democrat,117217
+OK,72,TULSA,3,3,(3) Libertarian,4237
+OK,72,TULSA,3,4,(4) Independent,90858
+OK,72,TULSA,3,5,Total,404678
+OK,73,WAGONER,3,1,(1) Republican,35164
+OK,73,WAGONER,3,2,(2) Democrat,11007
+OK,73,WAGONER,3,3,(3) Libertarian,508
+OK,73,WAGONER,3,4,(4) Independent,9838
+OK,73,WAGONER,3,5,Total,56517
+OK,74,WASHINGTON,3,1,(1) Republican,21550
+OK,74,WASHINGTON,3,2,(2) Democrat,6159
+OK,74,WASHINGTON,3,3,(3) Libertarian,340
+OK,74,WASHINGTON,3,4,(4) Independent,7030
+OK,74,WASHINGTON,3,5,Total,35079
+OK,75,WASHITA,3,1,(1) Republican,4550
+OK,75,WASHITA,3,2,(2) Democrat,1190
+OK,75,WASHITA,3,3,(3) Libertarian,54
+OK,75,WASHITA,3,4,(4) Independent,995
+OK,75,WASHITA,3,5,Total,6789
+OK,76,WOODS,3,1,(1) Republican,3619
+OK,76,WOODS,3,2,(2) Democrat,734
+OK,76,WOODS,3,3,(3) Libertarian,43
+OK,76,WOODS,3,4,(4) Independent,682
+OK,76,WOODS,3,5,Total,5078
+OK,77,WOODWARD,3,1,(1) Republican,7971
+OK,77,WOODWARD,3,2,(2) Democrat,1394
+OK,77,WOODWARD,3,3,(3) Libertarian,91
+OK,77,WOODWARD,3,4,(4) Independent,1728
+OK,77,WOODWARD,3,5,Total,11184
+OK,,Grand Total,3,1,(1) Republican,1304275
+OK,,Grand Total,3,2,(2) Democrat,627581
+OK,,Grand Total,3,3,(3) Libertarian,23704
+OK,,Grand Total,3,4,(4) Independent,500175
+OK,,Grand Total,3,5,Total,2455735
+PA,,Adams,1,1,Democratic,19388
+PA,,Adams,1,2,Republican,44133
+PA,,Adams,1,3,Libertarian,510
+PA,,Adams,1,4,Other Parties,13132
+PA,,Adams,1,5,All Parties,77163
+PA,,Allegheny,1,1,Democratic,508722
+PA,,Allegheny,1,2,Republican,263192
+PA,,Allegheny,1,3,Libertarian,4924
+PA,,Allegheny,1,4,Other Parties,148891
+PA,,Allegheny,1,5,All Parties,925729
+PA,,Armstrong,1,1,Democratic,10666
+PA,,Armstrong,1,2,Republican,27732
+PA,,Armstrong,1,3,Libertarian,262
+PA,,Armstrong,1,4,Other Parties,5077
+PA,,Armstrong,1,5,All Parties,43737
+PA,,Beaver,1,1,Democratic,45928
+PA,,Beaver,1,2,Republican,51999
+PA,,Beaver,1,3,Libertarian,660
+PA,,Beaver,1,4,Other Parties,16016
+PA,,Beaver,1,5,All Parties,114603
+PA,,Bedford,1,1,Democratic,5276
+PA,,Bedford,1,2,Republican,24584
+PA,,Bedford,1,3,Libertarian,126
+PA,,Bedford,1,4,Other Parties,3093
+PA,,Bedford,1,5,All Parties,33079
+PA,,Berks,1,1,Democratic,105087
+PA,,Berks,1,2,Republican,118153
+PA,,Berks,1,3,Libertarian,1779
+PA,,Berks,1,4,Other Parties,50920
+PA,,Berks,1,5,All Parties,275939
+PA,,Blair,1,1,Democratic,19943
+PA,,Blair,1,2,Republican,50662
+PA,,Blair,1,3,Libertarian,411
+PA,,Blair,1,4,Other Parties,10830
+PA,,Blair,1,5,All Parties,81846
+PA,,Bradford,1,1,Democratic,7858
+PA,,Bradford,1,2,Republican,25704
+PA,,Bradford,1,3,Libertarian,248
+PA,,Bradford,1,4,Other Parties,5238
+PA,,Bradford,1,5,All Parties,39048
+PA,,Bucks,1,1,Democratic,195535
+PA,,Bucks,1,2,Republican,201956
+PA,,Bucks,1,3,Libertarian,2682
+PA,,Bucks,1,4,Other Parties,87212
+PA,,Bucks,1,5,All Parties,487385
+PA,,Butler,1,1,Democratic,39693
+PA,,Butler,1,2,Republican,83164
+PA,,Butler,1,3,Libertarian,886
+PA,,Butler,1,4,Other Parties,20802
+PA,,Butler,1,5,All Parties,144545
+PA,,Cambria,1,1,Democratic,29448
+PA,,Cambria,1,2,Republican,46570
+PA,,Cambria,1,3,Libertarian,404
+PA,,Cambria,1,4,Other Parties,9764
+PA,,Cambria,1,5,All Parties,86186
+PA,,Cameron,1,1,Democratic,662
+PA,,Cameron,1,2,Republican,1842
+PA,,Cameron,1,3,Libertarian,12
+PA,,Cameron,1,4,Other Parties,369
+PA,,Cameron,1,5,All Parties,2885
+PA,,Carbon,1,1,Democratic,14120
+PA,,Carbon,1,2,Republican,23939
+PA,,Carbon,1,3,Libertarian,287
+PA,,Carbon,1,4,Other Parties,7522
+PA,,Carbon,1,5,All Parties,45868
+PA,,Centre,1,1,Democratic,42269
+PA,,Centre,1,2,Republican,41898
+PA,,Centre,1,3,Libertarian,575
+PA,,Centre,1,4,Other Parties,18528
+PA,,Centre,1,5,All Parties,103270
+PA,,Chester,1,1,Democratic,162997
+PA,,Chester,1,2,Republican,151754
+PA,,Chester,1,3,Libertarian,2094
+PA,,Chester,1,4,Other Parties,75459
+PA,,Chester,1,5,All Parties,392304
+PA,,Clarion,1,1,Democratic,5077
+PA,,Clarion,1,2,Republican,15504
+PA,,Clarion,1,3,Libertarian,115
+PA,,Clarion,1,4,Other Parties,2610
+PA,,Clarion,1,5,All Parties,23306
+PA,,Clearfield,1,1,Democratic,12091
+PA,,Clearfield,1,2,Republican,31514
+PA,,Clearfield,1,3,Libertarian,275
+PA,,Clearfield,1,4,Other Parties,5847
+PA,,Clearfield,1,5,All Parties,49727
+PA,,Clinton,1,1,Democratic,6127
+PA,,Clinton,1,2,Republican,13278
+PA,,Clinton,1,3,Libertarian,125
+PA,,Clinton,1,4,Other Parties,3067
+PA,,Clinton,1,5,All Parties,22597
+PA,,Columbia,1,1,Democratic,11855
+PA,,Columbia,1,2,Republican,22516
+PA,,Columbia,1,3,Libertarian,244
+PA,,Columbia,1,4,Other Parties,6187
+PA,,Columbia,1,5,All Parties,40802
+PA,,Crawford,1,1,Democratic,14483
+PA,,Crawford,1,2,Republican,31818
+PA,,Crawford,1,3,Libertarian,267
+PA,,Crawford,1,4,Other Parties,6548
+PA,,Crawford,1,5,All Parties,53116
+PA,,Cumberland,1,1,Democratic,62771
+PA,,Cumberland,1,2,Republican,88406
+PA,,Cumberland,1,3,Libertarian,1145
+PA,,Cumberland,1,4,Other Parties,33216
+PA,,Cumberland,1,5,All Parties,185538
+PA,,Dauphin,1,1,Democratic,87514
+PA,,Dauphin,1,2,Republican,75909
+PA,,Dauphin,1,3,Libertarian,1199
+PA,,Dauphin,1,4,Other Parties,38332
+PA,,Dauphin,1,5,All Parties,202954
+PA,,Delaware,1,1,Democratic,205169
+PA,,Delaware,1,2,Republican,142459
+PA,,Delaware,1,3,Libertarian,1705
+PA,,Delaware,1,4,Other Parties,64541
+PA,,Delaware,1,5,All Parties,413874
+PA,,Elk,1,1,Democratic,5800
+PA,,Elk,1,2,Republican,12156
+PA,,Elk,1,3,Libertarian,86
+PA,,Elk,1,4,Other Parties,2491
+PA,,Elk,1,5,All Parties,20533
+PA,,Erie,1,1,Democratic,76842
+PA,,Erie,1,2,Republican,70812
+PA,,Erie,1,3,Libertarian,1003
+PA,,Erie,1,4,Other Parties,26686
+PA,,Erie,1,5,All Parties,175343
+PA,,Fayette,1,1,Democratic,29492
+PA,,Fayette,1,2,Republican,41353
+PA,,Fayette,1,3,Libertarian,357
+PA,,Fayette,1,4,Other Parties,8487
+PA,,Fayette,1,5,All Parties,79689
+PA,,Forest,1,1,Democratic,792
+PA,,Forest,1,2,Republican,2073
+PA,,Forest,1,3,Libertarian,10
+PA,,Forest,1,4,Other Parties,399
+PA,,Forest,1,5,All Parties,3274
+PA,,Franklin,1,1,Democratic,23791
+PA,,Franklin,1,2,Republican,64391
+PA,,Franklin,1,3,Libertarian,621
+PA,,Franklin,1,4,Other Parties,17134
+PA,,Franklin,1,5,All Parties,105937
+PA,,Fulton,1,1,Democratic,1476
+PA,,Fulton,1,2,Republican,7491
+PA,,Fulton,1,3,Libertarian,48
+PA,,Fulton,1,4,Other Parties,1140
+PA,,Fulton,1,5,All Parties,10155
+PA,,Greene,1,1,Democratic,7323
+PA,,Greene,1,2,Republican,12207
+PA,,Greene,1,3,Libertarian,85
+PA,,Greene,1,4,Other Parties,2192
+PA,,Greene,1,5,All Parties,21807
+PA,,Huntingdon,1,1,Democratic,6062
+PA,,Huntingdon,1,2,Republican,18875
+PA,,Huntingdon,1,3,Libertarian,113
+PA,,Huntingdon,1,4,Other Parties,2893
+PA,,Huntingdon,1,5,All Parties,27943
+PA,,Indiana,1,1,Democratic,13952
+PA,,Indiana,1,2,Republican,28868
+PA,,Indiana,1,3,Libertarian,272
+PA,,Indiana,1,4,Other Parties,6162
+PA,,Indiana,1,5,All Parties,49254
+PA,,Jefferson,2,1,Democratic,5478
+PA,,Jefferson,2,2,Republican,19487
+PA,,Jefferson,2,3,Libertarian,158
+PA,,Jefferson,2,4,Other Parties,3103
+PA,,Jefferson,2,5,All Parties,28226
+PA,,Juniata,2,1,Democratic,2546
+PA,,Juniata,2,2,Republican,10034
+PA,,Juniata,2,3,Libertarian,60
+PA,,Juniata,2,4,Other Parties,1462
+PA,,Juniata,2,5,All Parties,14102
+PA,,Lackawanna,2,1,Democratic,77583
+PA,,Lackawanna,2,2,Republican,52340
+PA,,Lackawanna,2,3,Libertarian,695
+PA,,Lackawanna,2,4,Other Parties,20397
+PA,,Lackawanna,2,5,All Parties,151015
+PA,,Lancaster,2,1,Democratic,114499
+PA,,Lancaster,2,2,Republican,183926
+PA,,Lancaster,2,3,Libertarian,2252
+PA,,Lancaster,2,4,Other Parties,66086
+PA,,Lancaster,2,5,All Parties,366763
+PA,,Lawrence,2,1,Democratic,19730
+PA,,Lawrence,2,2,Republican,30147
+PA,,Lawrence,2,3,Libertarian,268
+PA,,Lawrence,2,4,Other Parties,7325
+PA,,Lawrence,2,5,All Parties,57470
+PA,,Lebanon,2,1,Democratic,25754
+PA,,Lebanon,2,2,Republican,52743
+PA,,Lebanon,2,3,Libertarian,553
+PA,,Lebanon,2,4,Other Parties,15681
+PA,,Lebanon,2,5,All Parties,94731
+PA,,Lehigh,2,1,Democratic,113557
+PA,,Lehigh,2,2,Republican,89561
+PA,,Lehigh,2,3,Libertarian,1396
+PA,,Lehigh,2,4,Other Parties,52316
+PA,,Lehigh,2,5,All Parties,256830
+PA,,Luzerne,2,1,Democratic,86733
+PA,,Luzerne,2,2,Republican,90823
+PA,,Luzerne,2,3,Libertarian,1163
+PA,,Luzerne,2,4,Other Parties,30784
+PA,,Luzerne,2,5,All Parties,209503
+PA,,Lycoming,2,1,Democratic,18393
+PA,,Lycoming,2,2,Republican,43775
+PA,,Lycoming,2,3,Libertarian,429
+PA,,Lycoming,2,4,Other Parties,10412
+PA,,Lycoming,2,5,All Parties,73009
+PA,,McKean,2,1,Democratic,5362
+PA,,McKean,2,2,Republican,16211
+PA,,McKean,2,3,Libertarian,160
+PA,,McKean,2,4,Other Parties,3648
+PA,,McKean,2,5,All Parties,25381
+PA,,Mercer,2,1,Democratic,23245
+PA,,Mercer,2,2,Republican,38428
+PA,,Mercer,2,3,Libertarian,390
+PA,,Mercer,2,4,Other Parties,10175
+PA,,Mercer,2,5,All Parties,72238
+PA,,Mifflin,2,1,Democratic,5409
+PA,,Mifflin,2,2,Republican,18675
+PA,,Mifflin,2,3,Libertarian,123
+PA,,Mifflin,2,4,Other Parties,3022
+PA,,Mifflin,2,5,All Parties,27229
+PA,,Monroe,2,1,Democratic,49274
+PA,,Monroe,2,2,Republican,43504
+PA,,Monroe,2,3,Libertarian,744
+PA,,Monroe,2,4,Other Parties,25296
+PA,,Monroe,2,5,All Parties,118818
+PA,,Montgomery,2,1,Democratic,308473
+PA,,Montgomery,2,2,Republican,207776
+PA,,Montgomery,2,3,Libertarian,3172
+PA,,Montgomery,2,4,Other Parties,108910
+PA,,Montgomery,2,5,All Parties,628331
+PA,,Montour,2,1,Democratic,3797
+PA,,Montour,2,2,Republican,6573
+PA,,Montour,2,3,Libertarian,67
+PA,,Montour,2,4,Other Parties,1981
+PA,,Montour,2,5,All Parties,12418
+PA,,Northampton,2,1,Democratic,97703
+PA,,Northampton,2,2,Republican,87135
+PA,,Northampton,2,3,Libertarian,1401
+PA,,Northampton,2,4,Other Parties,48595
+PA,,Northampton,2,5,All Parties,234834
+PA,,Northumberland,2,1,Democratic,15413
+PA,,Northumberland,2,2,Republican,31972
+PA,,Northumberland,2,3,Libertarian,332
+PA,,Northumberland,2,4,Other Parties,7823
+PA,,Northumberland,2,5,All Parties,55540
+PA,,Perry,2,1,Democratic,6058
+PA,,Perry,2,2,Republican,20969
+PA,,Perry,2,3,Libertarian,213
+PA,,Perry,2,4,Other Parties,4151
+PA,,Perry,2,5,All Parties,31391
+PA,,Philadelphia,2,1,Democratic,787858
+PA,,Philadelphia,2,2,Republican,131424
+PA,,Philadelphia,2,3,Libertarian,4420
+PA,,Philadelphia,2,4,Other Parties,180666
+PA,,Philadelphia,2,5,All Parties,1104368
+PA,,Pike,2,1,Democratic,13719
+PA,,Pike,2,2,Republican,23197
+PA,,Pike,2,3,Libertarian,273
+PA,,Pike,2,4,Other Parties,10452
+PA,,Pike,2,5,All Parties,47641
+PA,,Potter,2,1,Democratic,1754
+PA,,Potter,2,2,Republican,8015
+PA,,Potter,2,3,Libertarian,50
+PA,,Potter,2,4,Other Parties,1222
+PA,,Potter,2,5,All Parties,11041
+PA,,Schuylkill,2,1,Democratic,25527
+PA,,Schuylkill,2,2,Republican,53259
+PA,,Schuylkill,2,3,Libertarian,564
+PA,,Schuylkill,2,4,Other Parties,13515
+PA,,Schuylkill,2,5,All Parties,92865
+PA,,Snyder,2,1,Democratic,4981
+PA,,Snyder,2,2,Republican,15995
+PA,,Snyder,2,3,Libertarian,143
+PA,,Snyder,2,4,Other Parties,2936
+PA,,Snyder,2,5,All Parties,24055
+PA,,Somerset,2,1,Democratic,10516
+PA,,Somerset,2,2,Republican,32826
+PA,,Somerset,2,3,Libertarian,243
+PA,,Somerset,2,4,Other Parties,4993
+PA,,Somerset,2,5,All Parties,48578
+PA,,Sullivan,2,1,Democratic,1072
+PA,,Sullivan,2,2,Republican,2879
+PA,,Sullivan,2,3,Libertarian,20
+PA,,Sullivan,2,4,Other Parties,529
+PA,,Sullivan,2,5,All Parties,4500
+PA,,Susquehanna,2,1,Democratic,6173
+PA,,Susquehanna,2,2,Republican,17295
+PA,,Susquehanna,2,3,Libertarian,159
+PA,,Susquehanna,2,4,Other Parties,3878
+PA,,Susquehanna,2,5,All Parties,27505
+PA,,Tioga,2,1,Democratic,4963
+PA,,Tioga,2,2,Republican,18125
+PA,,Tioga,2,3,Libertarian,165
+PA,,Tioga,2,4,Other Parties,3633
+PA,,Tioga,2,5,All Parties,26886
+PA,,Union,2,1,Democratic,7955
+PA,,Union,2,2,Republican,14374
+PA,,Union,2,3,Libertarian,124
+PA,,Union,2,4,Other Parties,4166
+PA,,Union,2,5,All Parties,26619
+PA,,Venango,2,1,Democratic,8066
+PA,,Venango,2,2,Republican,20187
+PA,,Venango,2,3,Libertarian,217
+PA,,Venango,2,4,Other Parties,4500
+PA,,Venango,2,5,All Parties,32970
+PA,,Warren,2,1,Democratic,6376
+PA,,Warren,2,2,Republican,15237
+PA,,Warren,2,3,Libertarian,128
+PA,,Warren,2,4,Other Parties,3747
+PA,,Warren,2,5,All Parties,25488
+PA,,Washington,2,1,Democratic,52924
+PA,,Washington,2,2,Republican,72943
+PA,,Washington,2,3,Libertarian,750
+PA,,Washington,2,4,Other Parties,19181
+PA,,Washington,2,5,All Parties,145798
+PA,,Wayne,2,1,Democratic,8795
+PA,,Wayne,2,2,Republican,21787
+PA,,Wayne,2,3,Libertarian,208
+PA,,Wayne,2,4,Other Parties,6095
+PA,,Wayne,2,5,All Parties,36885
+PA,,Westmoreland,2,1,Democratic,87147
+PA,,Westmoreland,2,2,Republican,130985
+PA,,Westmoreland,2,3,Libertarian,1380
+PA,,Westmoreland,2,4,Other Parties,32013
+PA,,Westmoreland,2,5,All Parties,251525
+PA,,Wyoming,2,1,Democratic,4766
+PA,,Wyoming,2,2,Republican,11307
+PA,,Wyoming,2,3,Libertarian,75
+PA,,Wyoming,2,4,Other Parties,2420
+PA,,Wyoming,2,5,All Parties,18568
+PA,,York,2,1,Democratic,97657
+PA,,York,2,2,Republican,168578
+PA,,York,2,3,Libertarian,2342
+PA,,York,2,4,Other Parties,61561
+PA,,York,2,5,All Parties,330138
+PA,,Total,2,1,Democratic,3887465
+PA,,Total,2,2,Republican,3639404
+PA,,Total,2,3,Libertarian,48367
+PA,,Total,2,4,Other Parties,1477459
+PA,,Total,2,5,All Parties,9052695

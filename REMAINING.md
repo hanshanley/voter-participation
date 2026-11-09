@@ -51,6 +51,21 @@ demographic, denominator and election-year geography evidence, not this
 completed calculation, publication, interface or audit.
 Older 2002 selection is paused; do not restart completed historical batches.
 
+**Oklahoma/Pennsylvania source-registration frames integrated:** version16
+adds two explicit native parents: Oklahoma 2,455,735, declared as of
+November 1 with a separate printed clock / absent timezone; Pennsylvania
+9,052,695, labelled for the November 3 general election but with registration
+cutoff/time/timezone unknown. Do not turn the election label into a registry
+date. All 144 counties, two state parents and 730 native count cells reconcile.
+Ten tests, 3,021 independent checks and two exact offline reproductions pass.
+The complete 51-state/D.C. query has 33 dispositions and 22 conditional
+frames; all 49 unaffected state rows, twenty prior frames and 31 controls
+survive. Party affiliation remains registration accounting, not votes;
+active/inactive status and population transport are unqualified. Ballots/
+residual, local allocation and new rate/map/website view remain withheld.
+Both full originals, sufficient inputs, code, tests and numerical queries
+are downloadable. Earlier access holds and releases remain intact.
+
 **New Jersey dated total-registration frame integrated:** version15 adds
 the native total 6,747,375 dated November 3, 2026. All 21 counties / 242
 count cells and original party codes are preserved as registration

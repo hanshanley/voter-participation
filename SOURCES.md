@@ -63,6 +63,45 @@ strict limit. The [concise audit](docs/AUDIT.md) records 9,092 additional checks
 including positive-cell complementary suppression and ten source absences.
 Broader observed-demographic, population-frame and precinct gaps remain open.
 
+## Oklahoma and Pennsylvania source-registration frames
+
+[Complete version-16 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-16/complete-analysis.zip)
+add two distinct official registration reports, not ballot counts.
+[Oklahoma's index](https://oklahoma.gov/elections/voter-registration/voter-registration-statistics.html)
+declares November 1, 2026; its native `Grand Total` is **2,455,735** and
+the PDF prints **11/1/2026 3:05 AM**, timezone absent. The printed report
+clock is not a live update or independently matched survey cutoff.
+[Pennsylvania's archived general-election report](https://www.pa.gov/agencies/dos/resources/voting-and-elections-resources/voting-and-election-statistics)
+has native `Total / All Parties` **9,052,695**. **November 3, 2026 General
+Election is an election label, not a registration cutoff.** The latter
+remains unknown; no report time or timezone is invented.
+
+All 77 Oklahoma / 67 Pennsylvania counties, both native state parents,
+source labels/codes and 730 count cells are preserved. Native county codes
+are not inferred FIPS. Party affiliation is registration accounting, not
+votes; active/inactive status is unspecified. Notes about a separate
+weekly party-change product do not qualify Pennsylvania's archive report.
+
+Conditional participant / nonparticipant source-registration units are
+1,176,234.68 / 1,279,500.32 for Oklahoma and
+5,270,583.03 / 3,782,111.97 for Pennsylvania. These assume unvalidated
+Civic exchangeability, not observed staying home or independently established
+populations. Native ballots/residual, group/local allocation and new
+rate/map approval remain withheld.
+
+Version16 retains 51 state/D.C. rows, 33 control dispositions and 22
+conditional scenarios. Ten tests, 3,021 independent checks, a third PDF
+extractor and two exact blocked offline reproductions pass. All 730 cells,
+native row equations and county-to-state column sums reconcile. All 49
+unaffected state rows, twenty prior frames and 31 controls are preserved.
+
+The complete 102,937,191-byte / fifteen-member ZIP includes both original
+PDFs, full independent frozen extractions, receipts, version15 baseline,
+maintained readers/optional refresh/shared helpers, tests and every query.
+SHA-256:
+`d4d0d4ca4baf0c326ef84e0c98ffd7f122d83870eabf037ea5271e0642e17cc7`.
+Earlier releases, access holds and accepted website remain unchanged.
+
 ## New Jersey dated total-registration frame
 
 [Complete version-15 controls and native inputs](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-15/complete-analysis.zip)
