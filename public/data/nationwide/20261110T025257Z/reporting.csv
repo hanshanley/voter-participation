@@ -1,0 +1,5 @@
+state_code,state,source_date,source_update_label,source_retrieved_at,status,source_url,source_snapshot,quality,reported_units,total_units,reporting_unit,ballots,denominator,denominator_basis,published_pct,validated_pct
+AL,Alabama,,11/04/2026 11:16:06 AM,2026-11-10T02:52:58.485479+00:00,reported,https://www2.alabamavotes.gov/electionNight/statewideResultsByContest.aspx?ecode=1001305,20261110T025257Z,[],67,67,counties,1693621,3852947,registered_voters_source_definition,43.96,43.957
+NC,North Carolina,,"November 9, 2026 3:37 pm",2026-11-10T02:53:02.235336+00:00,reported,https://er.ncsbe.gov/enr/20261103/data/county.txt,20261110T025257Z,[],2626,2626,precincts,4223295,7885046,active_and_inactive_registered_voters,53.56,53.561
+ND,North Dakota,,"Tuesday, November 3, 2026 - 11:30pm",2026-11-10T02:53:01.905646+00:00,reported,https://www.sos.nd.gov/news/398-voter-turnout-north-dakota-general-election,20261110T025257Z,[],,,,239057,,eligible_voters_source_estimate,39.8,
+OR,Oregon,,11/9/2026 | 6:45 PM PT,2026-11-10T02:53:02.163718+00:00,reported,https://results.oregonvotes.gov/?ID=39,20261110T025257Z,[],,,,1898302,3109084,active_registered_voters,61.06,61.057
