@@ -42,7 +42,43 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: all-state source-mode separation.**
+**Latest accepted live: Nevada distinct native county snapshots.**
+Source `3e20b0d` / immutable **440439566** adds Clark 745,317, Churchill 9,685
+and White Pine 3,077 native participation counts, while retaining Washoe
+191,830 and its earlier clock unchanged. Four separate unofficial snapshots,
+not a state sum; 13 county counts/registers remain unknown and all rates null.
+All 18 sufficient inputs, two full PDFs / 23 pages, all 147 Clark numerical
+tables, full held Washoe facts/queries, all 17 references / 136 pairs, code
+and exact offline reproduction are in the **1,539,042-byte / 53-member** ZIP.
+All 12 full assets were anonymously verified before main. Six Python /
+205 Node checks, Astro/build, actual desktop/mobile Nevada interactions,
+all204 controls, all51 navigation and preserved AL67 pass; 351 independent
+checks and two exact blocked-network reproductions pass.
+Actual Pages **42830450810 attempt 2** / main guard **42830450991** passed:
+artifact **13771252796**, **995,761,527 payload / 998,338,560 tar bytes**.
+All 51 exact unqueried production paths, 436 old full routes and eleven
+production suites pass: Nevada17 desktop/mobile/all204 controls/AL67/
+MN84/4105/MA307/NH37/IL102/AK81/ME480/HI4/all51. Valid source requests
+were not overridden. First-attempt deployment and built-in retry timed out
+while syncing files; failed-job-only attempt 2 reused the same artifact
+and passed, without rebuilding, reuploading or creating another artifact.
+Do not repeat the successful acquisition, freeze, preparation, packet,
+replays, build or actual local/native/production acceptance.
+
+**Next genuine evidence: Minnesota's formerly unknown rows now report.**
+The newly acquired native November 10, 8:08 AM snapshot explicitly reports
+all 4,105 rows / 87 counties, including all 26 former holds; timezone unknown.
+Full originals and all native comparison/qualification queries are retained.
+The derived complete Total Number Voted sum is 2,852,618; 73 county source
+registration fractions qualify under existing rules. All 60 component
+conflicts, six precinct electorate excesses and 32 reported zeros survive.
+The separate Estimated Voters display now equals that sum but is never
+used to fill the counts. Complete-count integration is in an isolated
+worktree, not yet claimed live; the accepted Minnesota view remains the
+earlier 84-complete / three-partial snapshot below. Reuse unchanged full
+native coordinates and 13,619 pair reviews; no new geometry campaign.
+
+**Earlier accepted live: all-state source-mode separation.**
 Source `fbbaef9` / immutable **440383617** includes the full **4,001,794-byte /
 86-member** packet, all 58 sufficient inputs and complete 204-decision review.
 All eight full assets were anonymously verified before main. Full merged
@@ -65,7 +101,7 @@ production all51 audit has nonempty county/locality context in every
 jurisdiction. Alaska's county layer explicitly shows contest counts, not
 participation; its native precinct counts are a separate layer. Native county
 observations remain partial in Iowa (1/99), Kentucky (1/120), Michigan (2/83),
-Missouri (1/115), Nevada (1/17), New Jersey (19/21), Pennsylvania (43/67),
+Missouri (1/115), Nevada (4/17), New Jersey (19/21), Pennsylvania (43/67),
 Utah (19/29) and Wisconsin (1/72). Shape counts are not observed-count coverage,
 and provider early/returned activity is not complete-election participation.
 Continue these real source/within-state gaps and qualified precinct joins

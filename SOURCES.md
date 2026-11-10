@@ -9,7 +9,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Reference area | Jump to |
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
-| Latest local integration | [Source-mode frame review](#2026-local-source-mode-frame-review), [Alabama county counts](#2026-alabama-native-county-ballots-cast), [Minnesota native follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
+| Latest local integration | [Nevada county snapshots](#2026-nevada-distinct-county-participation-snapshots), [source-mode frame review](#2026-local-source-mode-frame-review), [Alabama county counts](#2026-alabama-native-county-ballots-cast), [Minnesota native follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
 | Local activity snapshots | [Direct MA city references](#2026-massachusetts-direct-city-precinct-references), [earlier MA counts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
@@ -26,6 +26,50 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Nevada distinct county participation snapshots
+
+Source `3e20b0d` adds three distinct official reports and reuses Washoe unchanged.
+The [complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/complete-analysis.zip)
+contains all **18 sufficient inputs / 53 members / 1,539,042 bytes**: two full
+PDFs / 23 pages, all 147 Clark numerical tables and factual text, every held
+Washoe sufficient file including its full 23-page numerical text, all 17
+unchanged county references, all 136 pair decisions, queries, code and tests.
+Immutable **440439566** / all 12 full assets were anonymously verified before main.
+
+| County | Native participation count | Literal source clock; timezone unknown |
+|---|---:|---|
+| Clark | 745,317 Total Turnout | Page updated 11/09/26 06:46 PM |
+| Churchill | 9,685 Voters Cast | PDF generated 11/5/2026 10:56:17 AM |
+| White Pine | 3,077 Voters Cast | PDF generated 11/3/2026 7:48:47 PM |
+| Washoe, held unchanged | 191,830 Voters Cast | PDF generated 11/4/2026 6:13:35 PM |
+
+These are **four separate unofficial snapshots, not a statewide total**.
+Thirteen county counts and registrations remain unknown, not zero or candidate
+votes. Native registers and printed percentages survive; all analysis rates
+stay null. Churchill's separate House District 4 Times Cast 1 / register 0 /
+N/A remains literal, never a county denominator. Counting groups are not
+precincts; existing provider early/returned frames remain separate and unchanged.
+The 2026 Census county context is not certified election precinct geography.
+State SilverState/VIVID security-challenge routes remain stopped, without
+another client, cache, mirror or key.
+
+All 205 affected Node checks, six Python checks, Astro/build and real
+desktop/mobile Nevada clicks, 13 unknowns, Methods/modes, rejection/retry,
+all204 mode controls, all51 navigation and preserved AL67 pass locally.
+Independent verification passes **351 checks and two exact network-blocked
+reproductions**, each with six Python and two Node tests. Actual native
+Pages **42830450810 attempt 2** / main guard **42830450991** passed:
+artifact **13771252796**, **995,761,527 payload / 998,338,560 tar bytes**.
+All 51 exact unqueried production files and eleven suites pass: Nevada17
+desktop/mobile, all204 controls, AL67, MN84/4105, MA307, NH37, IL102, AK81,
+ME480, HI4 and all51 geography. No valid source request was overridden.
+The first attempt's deployment and built-in retry timed out during file
+sync; failed-job-only recovery reused the same artifact and passed, with
+no rebuild, reupload or new artifact. All 436 old full routes are unchanged.
+The [source record](data/participation-access/20261110-nevada-native-counties-01/observations.json)
+and [website status](data/participation-access/20261110-nevada-native-counties-01/website-acceptance.json)
+retain the actual proofs. Broader county/precinct and population gaps remain open.
 
 ## 2026 local source-mode frame review
 

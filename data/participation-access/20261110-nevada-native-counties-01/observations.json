@@ -1,0 +1,3279 @@
+{
+  "observed_date_utc": "2026-11-10",
+  "purpose": "Add distinct official county participation snapshots while retaining unknowns and separate source frames",
+  "source_commit": "3e20b0d0512ccb0aa075f3ba7e5f68412175baaa",
+  "complete_numerical_release": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/complete-analysis.zip",
+  "immutable_release": {
+    "status": "PASS_immutable_all12_full_assets_anonymous_BEFORE_main",
+    "source_commit": "3e20b0d0512ccb0aa075f3ba7e5f68412175baaa",
+    "source_guard_run_id": 42830251798,
+    "release_id": 440439566,
+    "tag": "voter-nevada-native-counties-20261110-01",
+    "published_at": "2026-11-10T14:04:28Z",
+    "immutable": true,
+    "verified_before_main_activation": true,
+    "assets": {
+      "NV-full-county-reference.geojson.gz": {
+        "bytes": 257169,
+        "sha256": "d77d017973187fd7a42204c58301daf804594c39394b85a888633d304f46d511",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/NV-full-county-reference.geojson.gz"
+      },
+      "README.txt": {
+        "bytes": 3003,
+        "sha256": "519c6fc57d3799379cbf314c7d4e7f427f60241d200dc75391cf85e5ac2691d6",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/README.txt"
+      },
+      "all136-county-reference-pairs.csv": {
+        "bytes": 2251,
+        "sha256": "88292f2eadcd48fdc19d49be59972db0199fc3be076b6bab9f98b3ebb38c0d22",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/all136-county-reference-pairs.csv"
+      },
+      "all147-Clark-native-numerical-tables.json": {
+        "bytes": 82224,
+        "sha256": "6a25003e4609f70ce38734669c1286d7908495ff04550950f6d5a2adf76310f7",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/all147-Clark-native-numerical-tables.json"
+      },
+      "all17-county-decisions.csv": {
+        "bytes": 19547,
+        "sha256": "0713cf4a6a29d723717ad5ca7ad21f5b47dcde9022fb968c8cee405e79771539",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/all17-county-decisions.csv"
+      },
+      "all19-native-counting-groups.csv": {
+        "bytes": 785,
+        "sha256": "dde23b5730867edf71210a6f6862be671176b541bc3cfe3e12ae50c5062342ba",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/all19-native-counting-groups.csv"
+      },
+      "complete-analysis.zip": {
+        "bytes": 1539042,
+        "sha256": "bb03bc024a7bde66d096813045a9e5080fac80e60c9f9503c6b26908b2793cff",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/complete-analysis.zip"
+      },
+      "full-Churchill-native-report.pdf": {
+        "bytes": 245796,
+        "sha256": "b70cc64c3669a1d5f8f211e1a336ca8e66759a97d23114816c68bdc62e3f50e8",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/full-Churchill-native-report.pdf"
+      },
+      "full-White-Pine-native-report.pdf": {
+        "bytes": 214933,
+        "sha256": "4f02a379ea619d91ec445626c57074dd4c74f88db203b09ee88f8b8be3a98711",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/full-White-Pine-native-report.pdf"
+      },
+      "manifest.json": {
+        "bytes": 10005,
+        "sha256": "fc80961f5a3cbddb0bb8a3e0d5d83b21e26b601c51440a84a2d56430b004ba7c",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/manifest.json"
+      },
+      "queries.json": {
+        "bytes": 83102,
+        "sha256": "9e28854a541f8698e887d267264849c5b16eafff3ad658aad8faa8f6b890c9e9",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/queries.json"
+      },
+      "requirements.txt": {
+        "bytes": 154,
+        "sha256": "0cdcde1c92aa2f490fa00b399861eb748620e41b29e236f6a62ae01d845c5211",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/requirements.txt"
+      }
+    },
+    "archive_members": 53,
+    "sufficient_inputs": 18
+  },
+  "complete_archive": {
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-nevada-native-counties-20261110-01/complete-analysis.zip",
+    "bytes": 1539042,
+    "sha256": "bb03bc024a7bde66d096813045a9e5080fac80e60c9f9503c6b26908b2793cff",
+    "members": 53,
+    "sufficient_inputs": 18,
+    "standalone_full_assets": 12,
+    "reference_counties": 17,
+    "observed_counties": 4,
+    "unknown_counties": 13,
+    "newly_acquired_counties": 3,
+    "native_counting_groups": 19,
+    "complete_reference_pairs": 136,
+    "new_precinct_coverage_approved": false,
+    "state_total_inferred": false,
+    "analysis_rates_approved": false,
+    "source_counts_repaired": false,
+    "candidate_votes_used_as_ballots": false
+  },
+  "sufficient_inputs": {
+    "NV-full-county-reference.geojson.gz": {
+      "bytes": 257169,
+      "sha256": "d77d017973187fd7a42204c58301daf804594c39394b85a888633d304f46d511"
+    },
+    "access-holds.json": {
+      "bytes": 578,
+      "sha256": "04fb0bc404a96a8d5ddba436bfab8f62a9fdb07166487aa0b8a4d35517587075"
+    },
+    "county-reference.json": {
+      "bytes": 482,
+      "sha256": "519ed018c1f0c4630f248974dd462a8a7e66bcc0afd99d5d7f8d94f6c25488e0"
+    },
+    "held-washoe/audit.json": {
+      "bytes": 586,
+      "sha256": "abdd90fa77df7dbd28a68b33a8707a89370178fb6d3b54b514f2ae67f55b06d2"
+    },
+    "held-washoe/checksums.json": {
+      "bytes": 959,
+      "sha256": "34d407df58871c0f5025f410877b8e952cc7f6c9a2b1e0907fb83cd34aa8cf96"
+    },
+    "held-washoe/counting-group-participation.csv": {
+      "bytes": 599,
+      "sha256": "e5958c1e43cc1decad08464104408e7d03cb2e2d813481ae7a639d09d750ee45"
+    },
+    "held-washoe/county-participation.csv": {
+      "bytes": 625,
+      "sha256": "8bbf968543dde6d4178b18b5a0016741205a0dde1c6ed5271323fe8efbd073d9"
+    },
+    "held-washoe/house-candidate-votes.csv": {
+      "bytes": 610,
+      "sha256": "e242f1b0dcc5856ca00b5a57d9b2df0e6d1aa2c7c8510e22d7a0bb7cbd0b77b4"
+    },
+    "held-washoe/review-washoe-county-participation.py": {
+      "bytes": 11114,
+      "sha256": "35e015743177648a9fafe73a3b8e08ebdb197eae537a8ad2e1572de6350aad37"
+    },
+    "held-washoe/source-receipt.json": {
+      "bytes": 545,
+      "sha256": "e47d951eeac0a1f994172ed4ce396a3fa64d446ca124523a24efb6d9b099b713"
+    },
+    "held-washoe/source-records.json.gz": {
+      "bytes": 7798,
+      "sha256": "b955b2c4262e03e302fea40fb86469575f6ecae9c6b49ac57cd8c58be55d8d6f"
+    },
+    "originals/churchill-complete-numerical-facts.json": {
+      "bytes": 15649,
+      "sha256": "3d643ef4fc4447409cce945c52b2a63d507ea9bae86007cdaf88de565a318db7"
+    },
+    "originals/churchill-original.pdf": {
+      "bytes": 245796,
+      "sha256": "b70cc64c3669a1d5f8f211e1a336ca8e66759a97d23114816c68bdc62e3f50e8"
+    },
+    "originals/clark-complete-numerical-facts.json": {
+      "bytes": 82224,
+      "sha256": "6a25003e4609f70ce38734669c1286d7908495ff04550950f6d5a2adf76310f7"
+    },
+    "originals/white-pine-complete-numerical-facts.json": {
+      "bytes": 10199,
+      "sha256": "d884c0ed64677f707745efb61bcb85eea0717862a03c7ed14e40bfd0ca072d60"
+    },
+    "originals/white-pine-original.pdf": {
+      "bytes": 214933,
+      "sha256": "4f02a379ea619d91ec445626c57074dd4c74f88db203b09ee88f8b8be3a98711"
+    },
+    "reference-review.json": {
+      "bytes": 18766,
+      "sha256": "cc094dd768233f5051cbf515b0f7d4d5b33b9336b5816999a675e13da061f9f0"
+    },
+    "source-receipts-without-headers.json": {
+      "bytes": 1470,
+      "sha256": "42e14afab2c3951a089b1dad3253405681bd2566b098803df7c3e12d6c88142e"
+    }
+  },
+  "qualification": {
+    "reference_counties": 17,
+    "observed_counties": 4,
+    "unknown_counties": 13,
+    "newly_acquired_counties": 3,
+    "held_counties_reused": 1,
+    "native_counting_group_rows": 19,
+    "source_counts": {
+      "Clark": 745317,
+      "Churchill": 9685,
+      "White Pine": 3077,
+      "Washoe": 191830
+    },
+    "state_ballots": null,
+    "state_registration": null,
+    "approved_analysis_rates": 0,
+    "new_precinct_counts": 0,
+    "new_demographic_estimates": 0,
+    "county_counts_not_added_across_different_source_clocks": true,
+    "candidate_votes_used_as_ballots": false,
+    "source_counts_repaired": false
+  },
+  "new_sources_retried": false,
+  "source_access_holds_bypassed": false,
+  "private_raw_voter_or_survey_data_published": false,
+  "verification": {
+    "affected_Node_checks": 205,
+    "focused_Python_checks": 6,
+    "astro_errors": 0,
+    "astro_warnings": 0,
+    "astro_existing_hints": 8,
+    "full_build": true,
+    "independent": {
+      "status": "PASS_independent_native_four_counties_all17_decisions_136_pairs_two_exact_blocked_replays",
+      "checks": 351,
+      "archive_members": 53,
+      "package_bytes": 1539042,
+      "package_sha256": "bb03bc024a7bde66d096813045a9e5080fac80e60c9f9503c6b26908b2793cff",
+      "sufficient_inputs": 18,
+      "observed_counties": 4,
+      "unknown_counties": 13,
+      "native_counting_groups": 19,
+      "both_full_PDFs_independently_read": true,
+      "all147_Clark_numerical_tables_preserved": true,
+      "all_held_Washoe_sufficient_inputs_preserved": true,
+      "source_counts_repaired": false,
+      "state_total_or_rates_inferred": false,
+      "both_replays": [
+        {
+          "network_blocked_and_probed": true,
+          "exact_query_sha256": "9e28854a541f8698e887d267264849c5b16eafff3ad658aad8faa8f6b890c9e9",
+          "python_tests": 6,
+          "node_tests": 2
+        },
+        {
+          "network_blocked_and_probed": true,
+          "exact_query_sha256": "9e28854a541f8698e887d267264849c5b16eafff3ad658aad8faa8f6b890c9e9",
+          "python_tests": 6,
+          "node_tests": 2
+        }
+      ]
+    },
+    "local_size": {
+      "status": "PASS_local_exact_436_bulk_bytes_and_manifest_preserved_NOT_native_Pages_acceptance",
+      "payload_bytes": 986025176,
+      "tar_bytes": 988559360,
+      "unchanged_complete_download_routes": 436,
+      "manifest_sha256": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade",
+      "prior_anonymous_immutable_asset_acceptance_reused": true
+    },
+    "local_NV17": {
+      "status": "PASS_NV17_context_four_native_counts_thirteen_unknown_no_rates",
+      "base_url": "http://127.0.0.1:4387",
+      "cases": [
+        {
+          "mobile": false,
+          "all17_native_map_values_and_selector_roundtrips": true,
+          "four_observed_thirteen_unknown": true,
+          "real_county_map_clicks": 5,
+          "all_rates_withheld": true,
+          "distinct_native_clocks_and_printed_percentages_retained": true,
+          "methods_and_mode_roundtrips": true,
+          "existing_both_provider_frames_preserved": true
+        },
+        {
+          "mobile": true,
+          "all17_native_map_values_and_selector_roundtrips": true,
+          "four_observed_thirteen_unknown": true,
+          "real_county_map_clicks": 5,
+          "all_rates_withheld": true,
+          "distinct_native_clocks_and_printed_percentages_retained": true,
+          "methods_and_mode_roundtrips": true,
+          "existing_both_provider_frames_preserved": true
+        }
+      ],
+      "substituted_candidate_count_rejected": true,
+      "actual_retry_restores_native_counties": true,
+      "valid_reference_requests_overridden": false,
+      "held_Washoe_count_clock_and_identity_preserved": true,
+      "new_precinct_map_claim": false,
+      "statewide_total_or_independently_unique_people_claim": false,
+      "nationwide_project_complete": false
+    },
+    "local_all204": {
+      "status": "PASS_all51_complete204_actual_mode_decisions_desktop_mobile_no_source_substitution",
+      "base_url": "http://127.0.0.1:4387",
+      "cases": [
+        {
+          "mobile": false,
+          "complete204_actual_control_decisions": [
+            {
+              "state_code": "AL",
+              "mode": "available",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "AL",
+              "mode": "official",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "AL",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AL",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AK",
+              "mode": "available",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AK",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AK",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AK",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AZ",
+              "mode": "available",
+              "selected_rows": 15,
+              "changed": false
+            },
+            {
+              "state_code": "AZ",
+              "mode": "official",
+              "selected_rows": 15,
+              "changed": false
+            },
+            {
+              "state_code": "AZ",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "AZ",
+              "mode": "mail_returned",
+              "selected_rows": 15,
+              "changed": false
+            },
+            {
+              "state_code": "AR",
+              "mode": "available",
+              "selected_rows": 75,
+              "changed": false
+            },
+            {
+              "state_code": "AR",
+              "mode": "official",
+              "selected_rows": 75,
+              "changed": false
+            },
+            {
+              "state_code": "AR",
+              "mode": "in_person_early",
+              "selected_rows": 75,
+              "changed": false
+            },
+            {
+              "state_code": "AR",
+              "mode": "mail_returned",
+              "selected_rows": 75,
+              "changed": false
+            },
+            {
+              "state_code": "CA",
+              "mode": "available",
+              "selected_rows": 58,
+              "changed": false
+            },
+            {
+              "state_code": "CA",
+              "mode": "official",
+              "selected_rows": 58,
+              "changed": false
+            },
+            {
+              "state_code": "CA",
+              "mode": "in_person_early",
+              "selected_rows": 58,
+              "changed": false
+            },
+            {
+              "state_code": "CA",
+              "mode": "mail_returned",
+              "selected_rows": 58,
+              "changed": false
+            },
+            {
+              "state_code": "CO",
+              "mode": "available",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "CO",
+              "mode": "official",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "CO",
+              "mode": "in_person_early",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "CO",
+              "mode": "mail_returned",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "CT",
+              "mode": "available",
+              "selected_rows": 169,
+              "changed": false
+            },
+            {
+              "state_code": "CT",
+              "mode": "official",
+              "selected_rows": 169,
+              "changed": false
+            },
+            {
+              "state_code": "CT",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "CT",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "DE",
+              "mode": "available",
+              "selected_rows": 3,
+              "changed": false
+            },
+            {
+              "state_code": "DE",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "DE",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "DE",
+              "mode": "mail_returned",
+              "selected_rows": 3,
+              "changed": false
+            },
+            {
+              "state_code": "DC",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "DC",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "DC",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "DC",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "FL",
+              "mode": "available",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "FL",
+              "mode": "official",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "FL",
+              "mode": "in_person_early",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "FL",
+              "mode": "mail_returned",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "GA",
+              "mode": "available",
+              "selected_rows": 159,
+              "changed": false
+            },
+            {
+              "state_code": "GA",
+              "mode": "official",
+              "selected_rows": 159,
+              "changed": false
+            },
+            {
+              "state_code": "GA",
+              "mode": "in_person_early",
+              "selected_rows": 159,
+              "changed": false
+            },
+            {
+              "state_code": "GA",
+              "mode": "mail_returned",
+              "selected_rows": 159,
+              "changed": false
+            },
+            {
+              "state_code": "HI",
+              "mode": "available",
+              "selected_rows": 4,
+              "changed": false
+            },
+            {
+              "state_code": "HI",
+              "mode": "official",
+              "selected_rows": 4,
+              "changed": false
+            },
+            {
+              "state_code": "HI",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "HI",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "ID",
+              "mode": "available",
+              "selected_rows": 44,
+              "changed": false
+            },
+            {
+              "state_code": "ID",
+              "mode": "official",
+              "selected_rows": 44,
+              "changed": false
+            },
+            {
+              "state_code": "ID",
+              "mode": "in_person_early",
+              "selected_rows": 44,
+              "changed": false
+            },
+            {
+              "state_code": "ID",
+              "mode": "mail_returned",
+              "selected_rows": 44,
+              "changed": false
+            },
+            {
+              "state_code": "IL",
+              "mode": "available",
+              "selected_rows": 102,
+              "changed": false
+            },
+            {
+              "state_code": "IL",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "IL",
+              "mode": "in_person_early",
+              "selected_rows": 102,
+              "changed": false
+            },
+            {
+              "state_code": "IL",
+              "mode": "mail_returned",
+              "selected_rows": 102,
+              "changed": false
+            },
+            {
+              "state_code": "IN",
+              "mode": "available",
+              "selected_rows": 92,
+              "changed": false
+            },
+            {
+              "state_code": "IN",
+              "mode": "official",
+              "selected_rows": 92,
+              "changed": false
+            },
+            {
+              "state_code": "IN",
+              "mode": "in_person_early",
+              "selected_rows": 92,
+              "changed": false
+            },
+            {
+              "state_code": "IN",
+              "mode": "mail_returned",
+              "selected_rows": 92,
+              "changed": false
+            },
+            {
+              "state_code": "IA",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "IA",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "IA",
+              "mode": "in_person_early",
+              "selected_rows": 99,
+              "changed": false
+            },
+            {
+              "state_code": "IA",
+              "mode": "mail_returned",
+              "selected_rows": 99,
+              "changed": false
+            },
+            {
+              "state_code": "KS",
+              "mode": "available",
+              "selected_rows": 105,
+              "changed": false
+            },
+            {
+              "state_code": "KS",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "KS",
+              "mode": "in_person_early",
+              "selected_rows": 105,
+              "changed": false
+            },
+            {
+              "state_code": "KS",
+              "mode": "mail_returned",
+              "selected_rows": 105,
+              "changed": false
+            },
+            {
+              "state_code": "KY",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "KY",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "KY",
+              "mode": "in_person_early",
+              "selected_rows": 120,
+              "changed": false
+            },
+            {
+              "state_code": "KY",
+              "mode": "mail_returned",
+              "selected_rows": 120,
+              "changed": false
+            },
+            {
+              "state_code": "LA",
+              "mode": "available",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "LA",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "LA",
+              "mode": "in_person_early",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "LA",
+              "mode": "mail_returned",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "ME",
+              "mode": "available",
+              "selected_rows": 480,
+              "changed": false
+            },
+            {
+              "state_code": "ME",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "ME",
+              "mode": "in_person_early",
+              "selected_rows": 480,
+              "changed": false
+            },
+            {
+              "state_code": "ME",
+              "mode": "mail_returned",
+              "selected_rows": 480,
+              "changed": false
+            },
+            {
+              "state_code": "MD",
+              "mode": "available",
+              "selected_rows": 24,
+              "changed": false
+            },
+            {
+              "state_code": "MD",
+              "mode": "official",
+              "selected_rows": 24,
+              "changed": false
+            },
+            {
+              "state_code": "MD",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "MD",
+              "mode": "mail_returned",
+              "selected_rows": 24,
+              "changed": false
+            },
+            {
+              "state_code": "MA",
+              "mode": "available",
+              "selected_rows": 2,
+              "changed": false
+            },
+            {
+              "state_code": "MA",
+              "mode": "official",
+              "selected_rows": 2,
+              "changed": false
+            },
+            {
+              "state_code": "MA",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MA",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MI",
+              "mode": "available",
+              "selected_rows": 2,
+              "changed": false
+            },
+            {
+              "state_code": "MI",
+              "mode": "official",
+              "selected_rows": 2,
+              "changed": false
+            },
+            {
+              "state_code": "MI",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "MI",
+              "mode": "mail_returned",
+              "selected_rows": 83,
+              "changed": false
+            },
+            {
+              "state_code": "MN",
+              "mode": "available",
+              "selected_rows": 87,
+              "changed": false
+            },
+            {
+              "state_code": "MN",
+              "mode": "official",
+              "selected_rows": 87,
+              "changed": false
+            },
+            {
+              "state_code": "MN",
+              "mode": "in_person_early",
+              "selected_rows": 87,
+              "changed": false
+            },
+            {
+              "state_code": "MN",
+              "mode": "mail_returned",
+              "selected_rows": 87,
+              "changed": false
+            },
+            {
+              "state_code": "MS",
+              "mode": "available",
+              "selected_rows": 82,
+              "changed": false
+            },
+            {
+              "state_code": "MS",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MS",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MS",
+              "mode": "mail_returned",
+              "selected_rows": 82,
+              "changed": false
+            },
+            {
+              "state_code": "MO",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "MO",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "MO",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "MO",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "MT",
+              "mode": "available",
+              "selected_rows": 56,
+              "changed": false
+            },
+            {
+              "state_code": "MT",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MT",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MT",
+              "mode": "mail_returned",
+              "selected_rows": 56,
+              "changed": false
+            },
+            {
+              "state_code": "NE",
+              "mode": "available",
+              "selected_rows": 93,
+              "changed": false
+            },
+            {
+              "state_code": "NE",
+              "mode": "official",
+              "selected_rows": 93,
+              "changed": false
+            },
+            {
+              "state_code": "NE",
+              "mode": "in_person_early",
+              "selected_rows": 93,
+              "changed": false
+            },
+            {
+              "state_code": "NE",
+              "mode": "mail_returned",
+              "selected_rows": 93,
+              "changed": false
+            },
+            {
+              "state_code": "NV",
+              "mode": "available",
+              "selected_rows": 17,
+              "changed": false
+            },
+            {
+              "state_code": "NV",
+              "mode": "official",
+              "selected_rows": 17,
+              "changed": false
+            },
+            {
+              "state_code": "NV",
+              "mode": "in_person_early",
+              "selected_rows": 17,
+              "changed": false
+            },
+            {
+              "state_code": "NV",
+              "mode": "mail_returned",
+              "selected_rows": 17,
+              "changed": false
+            },
+            {
+              "state_code": "NH",
+              "mode": "available",
+              "selected_rows": 4,
+              "changed": false
+            },
+            {
+              "state_code": "NH",
+              "mode": "official",
+              "selected_rows": 4,
+              "changed": false
+            },
+            {
+              "state_code": "NH",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "NH",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "NJ",
+              "mode": "available",
+              "selected_rows": 19,
+              "changed": false
+            },
+            {
+              "state_code": "NJ",
+              "mode": "official",
+              "selected_rows": 19,
+              "changed": false
+            },
+            {
+              "state_code": "NJ",
+              "mode": "in_person_early",
+              "selected_rows": 21,
+              "changed": false
+            },
+            {
+              "state_code": "NJ",
+              "mode": "mail_returned",
+              "selected_rows": 21,
+              "changed": false
+            },
+            {
+              "state_code": "NM",
+              "mode": "available",
+              "selected_rows": 33,
+              "changed": false
+            },
+            {
+              "state_code": "NM",
+              "mode": "official",
+              "selected_rows": 33,
+              "changed": false
+            },
+            {
+              "state_code": "NM",
+              "mode": "in_person_early",
+              "selected_rows": 33,
+              "changed": false
+            },
+            {
+              "state_code": "NM",
+              "mode": "mail_returned",
+              "selected_rows": 33,
+              "changed": false
+            },
+            {
+              "state_code": "NY",
+              "mode": "available",
+              "selected_rows": 62,
+              "changed": false
+            },
+            {
+              "state_code": "NY",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "NY",
+              "mode": "in_person_early",
+              "selected_rows": 62,
+              "changed": false
+            },
+            {
+              "state_code": "NY",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "NC",
+              "mode": "available",
+              "selected_rows": 100,
+              "changed": false
+            },
+            {
+              "state_code": "NC",
+              "mode": "official",
+              "selected_rows": 100,
+              "changed": false
+            },
+            {
+              "state_code": "NC",
+              "mode": "in_person_early",
+              "selected_rows": 100,
+              "changed": false
+            },
+            {
+              "state_code": "NC",
+              "mode": "mail_returned",
+              "selected_rows": 100,
+              "changed": false
+            },
+            {
+              "state_code": "ND",
+              "mode": "available",
+              "selected_rows": 53,
+              "changed": false
+            },
+            {
+              "state_code": "ND",
+              "mode": "official",
+              "selected_rows": 53,
+              "changed": false
+            },
+            {
+              "state_code": "ND",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "ND",
+              "mode": "mail_returned",
+              "selected_rows": 53,
+              "changed": false
+            },
+            {
+              "state_code": "OH",
+              "mode": "available",
+              "selected_rows": 88,
+              "changed": false
+            },
+            {
+              "state_code": "OH",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "OH",
+              "mode": "in_person_early",
+              "selected_rows": 88,
+              "changed": false
+            },
+            {
+              "state_code": "OH",
+              "mode": "mail_returned",
+              "selected_rows": 88,
+              "changed": false
+            },
+            {
+              "state_code": "OK",
+              "mode": "available",
+              "selected_rows": 77,
+              "changed": false
+            },
+            {
+              "state_code": "OK",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "OK",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "OK",
+              "mode": "mail_returned",
+              "selected_rows": 77,
+              "changed": false
+            },
+            {
+              "state_code": "OR",
+              "mode": "available",
+              "selected_rows": 36,
+              "changed": false
+            },
+            {
+              "state_code": "OR",
+              "mode": "official",
+              "selected_rows": 36,
+              "changed": false
+            },
+            {
+              "state_code": "OR",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "OR",
+              "mode": "mail_returned",
+              "selected_rows": 36,
+              "changed": false
+            },
+            {
+              "state_code": "PA",
+              "mode": "available",
+              "selected_rows": 43,
+              "changed": false
+            },
+            {
+              "state_code": "PA",
+              "mode": "official",
+              "selected_rows": 43,
+              "changed": false
+            },
+            {
+              "state_code": "PA",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "PA",
+              "mode": "mail_returned",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "RI",
+              "mode": "available",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "RI",
+              "mode": "official",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "RI",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "RI",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "SC",
+              "mode": "available",
+              "selected_rows": 46,
+              "changed": false
+            },
+            {
+              "state_code": "SC",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "SC",
+              "mode": "in_person_early",
+              "selected_rows": 46,
+              "changed": false
+            },
+            {
+              "state_code": "SC",
+              "mode": "mail_returned",
+              "selected_rows": 46,
+              "changed": false
+            },
+            {
+              "state_code": "SD",
+              "mode": "available",
+              "selected_rows": 66,
+              "changed": false
+            },
+            {
+              "state_code": "SD",
+              "mode": "official",
+              "selected_rows": 66,
+              "changed": false
+            },
+            {
+              "state_code": "SD",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "SD",
+              "mode": "mail_returned",
+              "selected_rows": 66,
+              "changed": false
+            },
+            {
+              "state_code": "TN",
+              "mode": "available",
+              "selected_rows": 95,
+              "changed": false
+            },
+            {
+              "state_code": "TN",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "TN",
+              "mode": "in_person_early",
+              "selected_rows": 95,
+              "changed": false
+            },
+            {
+              "state_code": "TN",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "TX",
+              "mode": "available",
+              "selected_rows": 254,
+              "changed": false
+            },
+            {
+              "state_code": "TX",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "TX",
+              "mode": "in_person_early",
+              "selected_rows": 254,
+              "changed": false
+            },
+            {
+              "state_code": "TX",
+              "mode": "mail_returned",
+              "selected_rows": 254,
+              "changed": false
+            },
+            {
+              "state_code": "UT",
+              "mode": "available",
+              "selected_rows": 29,
+              "changed": false
+            },
+            {
+              "state_code": "UT",
+              "mode": "official",
+              "selected_rows": 29,
+              "changed": false
+            },
+            {
+              "state_code": "UT",
+              "mode": "in_person_early",
+              "selected_rows": 29,
+              "changed": false
+            },
+            {
+              "state_code": "UT",
+              "mode": "mail_returned",
+              "selected_rows": 29,
+              "changed": false
+            },
+            {
+              "state_code": "VT",
+              "mode": "available",
+              "selected_rows": 247,
+              "changed": false
+            },
+            {
+              "state_code": "VT",
+              "mode": "official",
+              "selected_rows": 247,
+              "changed": false
+            },
+            {
+              "state_code": "VT",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "VT",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "VA",
+              "mode": "available",
+              "selected_rows": 133,
+              "changed": false
+            },
+            {
+              "state_code": "VA",
+              "mode": "official",
+              "selected_rows": 133,
+              "changed": false
+            },
+            {
+              "state_code": "VA",
+              "mode": "in_person_early",
+              "selected_rows": 133,
+              "changed": false
+            },
+            {
+              "state_code": "VA",
+              "mode": "mail_returned",
+              "selected_rows": 133,
+              "changed": false
+            },
+            {
+              "state_code": "WA",
+              "mode": "available",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "WA",
+              "mode": "official",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "WA",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "WA",
+              "mode": "mail_returned",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "WV",
+              "mode": "available",
+              "selected_rows": 55,
+              "changed": false
+            },
+            {
+              "state_code": "WV",
+              "mode": "official",
+              "selected_rows": 55,
+              "changed": false
+            },
+            {
+              "state_code": "WV",
+              "mode": "in_person_early",
+              "selected_rows": 55,
+              "changed": false
+            },
+            {
+              "state_code": "WV",
+              "mode": "mail_returned",
+              "selected_rows": 55,
+              "changed": false
+            },
+            {
+              "state_code": "WI",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "WI",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "WI",
+              "mode": "in_person_early",
+              "selected_rows": 72,
+              "changed": false
+            },
+            {
+              "state_code": "WI",
+              "mode": "mail_returned",
+              "selected_rows": 72,
+              "changed": false
+            },
+            {
+              "state_code": "WY",
+              "mode": "available",
+              "selected_rows": 23,
+              "changed": false
+            },
+            {
+              "state_code": "WY",
+              "mode": "official",
+              "selected_rows": 23,
+              "changed": false
+            },
+            {
+              "state_code": "WY",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "WY",
+              "mode": "mail_returned",
+              "selected_rows": 23,
+              "changed": false
+            }
+          ],
+          "all102_available_official_decisions_preserved": false,
+          "all100_unaffected_available_official_decisions_preserved": true,
+          "Nevada_new_native_followup_qualified": true,
+          "all67_qualified_mode_decisions_preserved": true,
+          "all23_unqualified_other_frame_selections_withheld": true,
+          "genuine_source_counts_sampled_without_reallocation": true,
+          "DC_existing_available_count_retained": true,
+          "methods_roundtrips_preserve_selected_state_and_mode": true,
+          "missing_mode_explained_not_false_zero_or_false_missing_ingestion": true
+        },
+        {
+          "mobile": true,
+          "complete204_actual_control_decisions": [
+            {
+              "state_code": "AL",
+              "mode": "available",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "AL",
+              "mode": "official",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "AL",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AL",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AK",
+              "mode": "available",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AK",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AK",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AK",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "AZ",
+              "mode": "available",
+              "selected_rows": 15,
+              "changed": false
+            },
+            {
+              "state_code": "AZ",
+              "mode": "official",
+              "selected_rows": 15,
+              "changed": false
+            },
+            {
+              "state_code": "AZ",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "AZ",
+              "mode": "mail_returned",
+              "selected_rows": 15,
+              "changed": false
+            },
+            {
+              "state_code": "AR",
+              "mode": "available",
+              "selected_rows": 75,
+              "changed": false
+            },
+            {
+              "state_code": "AR",
+              "mode": "official",
+              "selected_rows": 75,
+              "changed": false
+            },
+            {
+              "state_code": "AR",
+              "mode": "in_person_early",
+              "selected_rows": 75,
+              "changed": false
+            },
+            {
+              "state_code": "AR",
+              "mode": "mail_returned",
+              "selected_rows": 75,
+              "changed": false
+            },
+            {
+              "state_code": "CA",
+              "mode": "available",
+              "selected_rows": 58,
+              "changed": false
+            },
+            {
+              "state_code": "CA",
+              "mode": "official",
+              "selected_rows": 58,
+              "changed": false
+            },
+            {
+              "state_code": "CA",
+              "mode": "in_person_early",
+              "selected_rows": 58,
+              "changed": false
+            },
+            {
+              "state_code": "CA",
+              "mode": "mail_returned",
+              "selected_rows": 58,
+              "changed": false
+            },
+            {
+              "state_code": "CO",
+              "mode": "available",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "CO",
+              "mode": "official",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "CO",
+              "mode": "in_person_early",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "CO",
+              "mode": "mail_returned",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "CT",
+              "mode": "available",
+              "selected_rows": 169,
+              "changed": false
+            },
+            {
+              "state_code": "CT",
+              "mode": "official",
+              "selected_rows": 169,
+              "changed": false
+            },
+            {
+              "state_code": "CT",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "CT",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "DE",
+              "mode": "available",
+              "selected_rows": 3,
+              "changed": false
+            },
+            {
+              "state_code": "DE",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "DE",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "DE",
+              "mode": "mail_returned",
+              "selected_rows": 3,
+              "changed": false
+            },
+            {
+              "state_code": "DC",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "DC",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "DC",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "DC",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "FL",
+              "mode": "available",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "FL",
+              "mode": "official",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "FL",
+              "mode": "in_person_early",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "FL",
+              "mode": "mail_returned",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "GA",
+              "mode": "available",
+              "selected_rows": 159,
+              "changed": false
+            },
+            {
+              "state_code": "GA",
+              "mode": "official",
+              "selected_rows": 159,
+              "changed": false
+            },
+            {
+              "state_code": "GA",
+              "mode": "in_person_early",
+              "selected_rows": 159,
+              "changed": false
+            },
+            {
+              "state_code": "GA",
+              "mode": "mail_returned",
+              "selected_rows": 159,
+              "changed": false
+            },
+            {
+              "state_code": "HI",
+              "mode": "available",
+              "selected_rows": 4,
+              "changed": false
+            },
+            {
+              "state_code": "HI",
+              "mode": "official",
+              "selected_rows": 4,
+              "changed": false
+            },
+            {
+              "state_code": "HI",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "HI",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "ID",
+              "mode": "available",
+              "selected_rows": 44,
+              "changed": false
+            },
+            {
+              "state_code": "ID",
+              "mode": "official",
+              "selected_rows": 44,
+              "changed": false
+            },
+            {
+              "state_code": "ID",
+              "mode": "in_person_early",
+              "selected_rows": 44,
+              "changed": false
+            },
+            {
+              "state_code": "ID",
+              "mode": "mail_returned",
+              "selected_rows": 44,
+              "changed": false
+            },
+            {
+              "state_code": "IL",
+              "mode": "available",
+              "selected_rows": 102,
+              "changed": false
+            },
+            {
+              "state_code": "IL",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "IL",
+              "mode": "in_person_early",
+              "selected_rows": 102,
+              "changed": false
+            },
+            {
+              "state_code": "IL",
+              "mode": "mail_returned",
+              "selected_rows": 102,
+              "changed": false
+            },
+            {
+              "state_code": "IN",
+              "mode": "available",
+              "selected_rows": 92,
+              "changed": false
+            },
+            {
+              "state_code": "IN",
+              "mode": "official",
+              "selected_rows": 92,
+              "changed": false
+            },
+            {
+              "state_code": "IN",
+              "mode": "in_person_early",
+              "selected_rows": 92,
+              "changed": false
+            },
+            {
+              "state_code": "IN",
+              "mode": "mail_returned",
+              "selected_rows": 92,
+              "changed": false
+            },
+            {
+              "state_code": "IA",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "IA",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "IA",
+              "mode": "in_person_early",
+              "selected_rows": 99,
+              "changed": false
+            },
+            {
+              "state_code": "IA",
+              "mode": "mail_returned",
+              "selected_rows": 99,
+              "changed": false
+            },
+            {
+              "state_code": "KS",
+              "mode": "available",
+              "selected_rows": 105,
+              "changed": false
+            },
+            {
+              "state_code": "KS",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "KS",
+              "mode": "in_person_early",
+              "selected_rows": 105,
+              "changed": false
+            },
+            {
+              "state_code": "KS",
+              "mode": "mail_returned",
+              "selected_rows": 105,
+              "changed": false
+            },
+            {
+              "state_code": "KY",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "KY",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "KY",
+              "mode": "in_person_early",
+              "selected_rows": 120,
+              "changed": false
+            },
+            {
+              "state_code": "KY",
+              "mode": "mail_returned",
+              "selected_rows": 120,
+              "changed": false
+            },
+            {
+              "state_code": "LA",
+              "mode": "available",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "LA",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "LA",
+              "mode": "in_person_early",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "LA",
+              "mode": "mail_returned",
+              "selected_rows": 64,
+              "changed": false
+            },
+            {
+              "state_code": "ME",
+              "mode": "available",
+              "selected_rows": 480,
+              "changed": false
+            },
+            {
+              "state_code": "ME",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "ME",
+              "mode": "in_person_early",
+              "selected_rows": 480,
+              "changed": false
+            },
+            {
+              "state_code": "ME",
+              "mode": "mail_returned",
+              "selected_rows": 480,
+              "changed": false
+            },
+            {
+              "state_code": "MD",
+              "mode": "available",
+              "selected_rows": 24,
+              "changed": false
+            },
+            {
+              "state_code": "MD",
+              "mode": "official",
+              "selected_rows": 24,
+              "changed": false
+            },
+            {
+              "state_code": "MD",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "MD",
+              "mode": "mail_returned",
+              "selected_rows": 24,
+              "changed": false
+            },
+            {
+              "state_code": "MA",
+              "mode": "available",
+              "selected_rows": 2,
+              "changed": false
+            },
+            {
+              "state_code": "MA",
+              "mode": "official",
+              "selected_rows": 2,
+              "changed": false
+            },
+            {
+              "state_code": "MA",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MA",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MI",
+              "mode": "available",
+              "selected_rows": 2,
+              "changed": false
+            },
+            {
+              "state_code": "MI",
+              "mode": "official",
+              "selected_rows": 2,
+              "changed": false
+            },
+            {
+              "state_code": "MI",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "MI",
+              "mode": "mail_returned",
+              "selected_rows": 83,
+              "changed": false
+            },
+            {
+              "state_code": "MN",
+              "mode": "available",
+              "selected_rows": 87,
+              "changed": false
+            },
+            {
+              "state_code": "MN",
+              "mode": "official",
+              "selected_rows": 87,
+              "changed": false
+            },
+            {
+              "state_code": "MN",
+              "mode": "in_person_early",
+              "selected_rows": 87,
+              "changed": false
+            },
+            {
+              "state_code": "MN",
+              "mode": "mail_returned",
+              "selected_rows": 87,
+              "changed": false
+            },
+            {
+              "state_code": "MS",
+              "mode": "available",
+              "selected_rows": 82,
+              "changed": false
+            },
+            {
+              "state_code": "MS",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MS",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MS",
+              "mode": "mail_returned",
+              "selected_rows": 82,
+              "changed": false
+            },
+            {
+              "state_code": "MO",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "MO",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "MO",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "MO",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "MT",
+              "mode": "available",
+              "selected_rows": 56,
+              "changed": false
+            },
+            {
+              "state_code": "MT",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MT",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "MT",
+              "mode": "mail_returned",
+              "selected_rows": 56,
+              "changed": false
+            },
+            {
+              "state_code": "NE",
+              "mode": "available",
+              "selected_rows": 93,
+              "changed": false
+            },
+            {
+              "state_code": "NE",
+              "mode": "official",
+              "selected_rows": 93,
+              "changed": false
+            },
+            {
+              "state_code": "NE",
+              "mode": "in_person_early",
+              "selected_rows": 93,
+              "changed": false
+            },
+            {
+              "state_code": "NE",
+              "mode": "mail_returned",
+              "selected_rows": 93,
+              "changed": false
+            },
+            {
+              "state_code": "NV",
+              "mode": "available",
+              "selected_rows": 17,
+              "changed": false
+            },
+            {
+              "state_code": "NV",
+              "mode": "official",
+              "selected_rows": 17,
+              "changed": false
+            },
+            {
+              "state_code": "NV",
+              "mode": "in_person_early",
+              "selected_rows": 17,
+              "changed": false
+            },
+            {
+              "state_code": "NV",
+              "mode": "mail_returned",
+              "selected_rows": 17,
+              "changed": false
+            },
+            {
+              "state_code": "NH",
+              "mode": "available",
+              "selected_rows": 4,
+              "changed": false
+            },
+            {
+              "state_code": "NH",
+              "mode": "official",
+              "selected_rows": 4,
+              "changed": false
+            },
+            {
+              "state_code": "NH",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "NH",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "NJ",
+              "mode": "available",
+              "selected_rows": 19,
+              "changed": false
+            },
+            {
+              "state_code": "NJ",
+              "mode": "official",
+              "selected_rows": 19,
+              "changed": false
+            },
+            {
+              "state_code": "NJ",
+              "mode": "in_person_early",
+              "selected_rows": 21,
+              "changed": false
+            },
+            {
+              "state_code": "NJ",
+              "mode": "mail_returned",
+              "selected_rows": 21,
+              "changed": false
+            },
+            {
+              "state_code": "NM",
+              "mode": "available",
+              "selected_rows": 33,
+              "changed": false
+            },
+            {
+              "state_code": "NM",
+              "mode": "official",
+              "selected_rows": 33,
+              "changed": false
+            },
+            {
+              "state_code": "NM",
+              "mode": "in_person_early",
+              "selected_rows": 33,
+              "changed": false
+            },
+            {
+              "state_code": "NM",
+              "mode": "mail_returned",
+              "selected_rows": 33,
+              "changed": false
+            },
+            {
+              "state_code": "NY",
+              "mode": "available",
+              "selected_rows": 62,
+              "changed": false
+            },
+            {
+              "state_code": "NY",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "NY",
+              "mode": "in_person_early",
+              "selected_rows": 62,
+              "changed": false
+            },
+            {
+              "state_code": "NY",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "NC",
+              "mode": "available",
+              "selected_rows": 100,
+              "changed": false
+            },
+            {
+              "state_code": "NC",
+              "mode": "official",
+              "selected_rows": 100,
+              "changed": false
+            },
+            {
+              "state_code": "NC",
+              "mode": "in_person_early",
+              "selected_rows": 100,
+              "changed": false
+            },
+            {
+              "state_code": "NC",
+              "mode": "mail_returned",
+              "selected_rows": 100,
+              "changed": false
+            },
+            {
+              "state_code": "ND",
+              "mode": "available",
+              "selected_rows": 53,
+              "changed": false
+            },
+            {
+              "state_code": "ND",
+              "mode": "official",
+              "selected_rows": 53,
+              "changed": false
+            },
+            {
+              "state_code": "ND",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "ND",
+              "mode": "mail_returned",
+              "selected_rows": 53,
+              "changed": false
+            },
+            {
+              "state_code": "OH",
+              "mode": "available",
+              "selected_rows": 88,
+              "changed": false
+            },
+            {
+              "state_code": "OH",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "OH",
+              "mode": "in_person_early",
+              "selected_rows": 88,
+              "changed": false
+            },
+            {
+              "state_code": "OH",
+              "mode": "mail_returned",
+              "selected_rows": 88,
+              "changed": false
+            },
+            {
+              "state_code": "OK",
+              "mode": "available",
+              "selected_rows": 77,
+              "changed": false
+            },
+            {
+              "state_code": "OK",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "OK",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "OK",
+              "mode": "mail_returned",
+              "selected_rows": 77,
+              "changed": false
+            },
+            {
+              "state_code": "OR",
+              "mode": "available",
+              "selected_rows": 36,
+              "changed": false
+            },
+            {
+              "state_code": "OR",
+              "mode": "official",
+              "selected_rows": 36,
+              "changed": false
+            },
+            {
+              "state_code": "OR",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "OR",
+              "mode": "mail_returned",
+              "selected_rows": 36,
+              "changed": false
+            },
+            {
+              "state_code": "PA",
+              "mode": "available",
+              "selected_rows": 43,
+              "changed": false
+            },
+            {
+              "state_code": "PA",
+              "mode": "official",
+              "selected_rows": 43,
+              "changed": false
+            },
+            {
+              "state_code": "PA",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "PA",
+              "mode": "mail_returned",
+              "selected_rows": 67,
+              "changed": false
+            },
+            {
+              "state_code": "RI",
+              "mode": "available",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "RI",
+              "mode": "official",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "RI",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "RI",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "SC",
+              "mode": "available",
+              "selected_rows": 46,
+              "changed": false
+            },
+            {
+              "state_code": "SC",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "SC",
+              "mode": "in_person_early",
+              "selected_rows": 46,
+              "changed": false
+            },
+            {
+              "state_code": "SC",
+              "mode": "mail_returned",
+              "selected_rows": 46,
+              "changed": false
+            },
+            {
+              "state_code": "SD",
+              "mode": "available",
+              "selected_rows": 66,
+              "changed": false
+            },
+            {
+              "state_code": "SD",
+              "mode": "official",
+              "selected_rows": 66,
+              "changed": false
+            },
+            {
+              "state_code": "SD",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "SD",
+              "mode": "mail_returned",
+              "selected_rows": 66,
+              "changed": false
+            },
+            {
+              "state_code": "TN",
+              "mode": "available",
+              "selected_rows": 95,
+              "changed": false
+            },
+            {
+              "state_code": "TN",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "TN",
+              "mode": "in_person_early",
+              "selected_rows": 95,
+              "changed": false
+            },
+            {
+              "state_code": "TN",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "TX",
+              "mode": "available",
+              "selected_rows": 254,
+              "changed": false
+            },
+            {
+              "state_code": "TX",
+              "mode": "official",
+              "selected_rows": 0,
+              "changed": false
+            },
+            {
+              "state_code": "TX",
+              "mode": "in_person_early",
+              "selected_rows": 254,
+              "changed": false
+            },
+            {
+              "state_code": "TX",
+              "mode": "mail_returned",
+              "selected_rows": 254,
+              "changed": false
+            },
+            {
+              "state_code": "UT",
+              "mode": "available",
+              "selected_rows": 29,
+              "changed": false
+            },
+            {
+              "state_code": "UT",
+              "mode": "official",
+              "selected_rows": 29,
+              "changed": false
+            },
+            {
+              "state_code": "UT",
+              "mode": "in_person_early",
+              "selected_rows": 29,
+              "changed": false
+            },
+            {
+              "state_code": "UT",
+              "mode": "mail_returned",
+              "selected_rows": 29,
+              "changed": false
+            },
+            {
+              "state_code": "VT",
+              "mode": "available",
+              "selected_rows": 247,
+              "changed": false
+            },
+            {
+              "state_code": "VT",
+              "mode": "official",
+              "selected_rows": 247,
+              "changed": false
+            },
+            {
+              "state_code": "VT",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "VT",
+              "mode": "mail_returned",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "VA",
+              "mode": "available",
+              "selected_rows": 133,
+              "changed": false
+            },
+            {
+              "state_code": "VA",
+              "mode": "official",
+              "selected_rows": 133,
+              "changed": false
+            },
+            {
+              "state_code": "VA",
+              "mode": "in_person_early",
+              "selected_rows": 133,
+              "changed": false
+            },
+            {
+              "state_code": "VA",
+              "mode": "mail_returned",
+              "selected_rows": 133,
+              "changed": false
+            },
+            {
+              "state_code": "WA",
+              "mode": "available",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "WA",
+              "mode": "official",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "WA",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "WA",
+              "mode": "mail_returned",
+              "selected_rows": 39,
+              "changed": false
+            },
+            {
+              "state_code": "WV",
+              "mode": "available",
+              "selected_rows": 55,
+              "changed": false
+            },
+            {
+              "state_code": "WV",
+              "mode": "official",
+              "selected_rows": 55,
+              "changed": false
+            },
+            {
+              "state_code": "WV",
+              "mode": "in_person_early",
+              "selected_rows": 55,
+              "changed": false
+            },
+            {
+              "state_code": "WV",
+              "mode": "mail_returned",
+              "selected_rows": 55,
+              "changed": false
+            },
+            {
+              "state_code": "WI",
+              "mode": "available",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "WI",
+              "mode": "official",
+              "selected_rows": 1,
+              "changed": false
+            },
+            {
+              "state_code": "WI",
+              "mode": "in_person_early",
+              "selected_rows": 72,
+              "changed": false
+            },
+            {
+              "state_code": "WI",
+              "mode": "mail_returned",
+              "selected_rows": 72,
+              "changed": false
+            },
+            {
+              "state_code": "WY",
+              "mode": "available",
+              "selected_rows": 23,
+              "changed": false
+            },
+            {
+              "state_code": "WY",
+              "mode": "official",
+              "selected_rows": 23,
+              "changed": false
+            },
+            {
+              "state_code": "WY",
+              "mode": "in_person_early",
+              "selected_rows": 0,
+              "changed": true
+            },
+            {
+              "state_code": "WY",
+              "mode": "mail_returned",
+              "selected_rows": 23,
+              "changed": false
+            }
+          ],
+          "all102_available_official_decisions_preserved": false,
+          "all100_unaffected_available_official_decisions_preserved": true,
+          "Nevada_new_native_followup_qualified": true,
+          "all67_qualified_mode_decisions_preserved": true,
+          "all23_unqualified_other_frame_selections_withheld": true,
+          "genuine_source_counts_sampled_without_reallocation": true,
+          "DC_existing_available_count_retained": true,
+          "methods_roundtrips_preserve_selected_state_and_mode": true,
+          "missing_mode_explained_not_false_zero_or_false_missing_ingestion": true
+        }
+      ],
+      "valid_source_requests_overridden": false,
+      "source_counts_changed": false,
+      "new_population_or_normalized_mode_claim": false,
+      "Nevada_new_source_snapshot": "20261110-nevada-native-counties-01",
+      "nationwide_project_complete": false
+    },
+    "local_all51": {
+      "status": "PASS_2026_geographic_drilldowns",
+      "base_url": "http://127.0.0.1:4387",
+      "script_sha256": "69a1cb766cf7a4e9b0aad58f803459f3b5762d422cba81b2c48ed6aa1a4a9e97",
+      "cases": [
+        {
+          "case": "actual_state_click",
+          "state": "California",
+          "county_shapes": 58,
+          "native_participation": true,
+          "provider_activity": false,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "Florida",
+          "county_shapes": 67,
+          "native_participation": true,
+          "provider_activity": false,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "Texas",
+          "county_shapes": 254,
+          "native_participation": false,
+          "provider_activity": true,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "New York",
+          "county_shapes": 62,
+          "native_participation": false,
+          "provider_activity": true,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "Connecticut",
+          "county_shapes": 169,
+          "native_participation": true,
+          "provider_activity": false,
+          "native_town_scope": true,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "Alaska",
+          "county_shapes": 30,
+          "native_participation": false,
+          "provider_activity": false,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "all_state_county_drilldowns",
+          "states": [
+            {
+              "state": "Alabama",
+              "shapes": 67,
+              "coverage": "Alabama \u00b7 67 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 67 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Alaska",
+              "shapes": 30,
+              "coverage": "Alaska \u00b7 30 county contest counts, not turnout.  Select a county to inspect its total. No state turnout estimate is allocated to counties."
+            },
+            {
+              "state": "Arizona",
+              "shapes": 15,
+              "coverage": "Arizona \u00b7 15 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 15 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Arkansas",
+              "shapes": 75,
+              "coverage": "Arkansas \u00b7 75 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 75 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "California",
+              "shapes": 58,
+              "coverage": "California \u00b7 58 county observations \u00b7 58 reviewed county rates on 2024 Census reference boundaries; 58 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Colorado",
+              "shapes": 64,
+              "coverage": "Colorado \u00b7 64 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 64 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Connecticut",
+              "shapes": 169,
+              "coverage": "Connecticut \u00b7 169 native town observations \u00b7 2024 contextual municipality shapes \u00b7 no analysis rates. Not nine county totals or certified 2026 precincts. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Delaware",
+              "shapes": 3,
+              "coverage": "Delaware \u00b7 3 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 3 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "District of Columbia",
+              "shapes": 1,
+              "coverage": "District of Columbia \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Florida",
+              "shapes": 67,
+              "coverage": "Florida \u00b7 67 county observations \u00b7 67 reviewed county rates on 2024 Census reference boundaries; 67 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Georgia",
+              "shapes": 159,
+              "coverage": "Georgia \u00b7 159 county observations \u00b7 157 reviewed county rates on 2024 Census reference boundaries; 159 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Hawaii",
+              "shapes": 4,
+              "coverage": "Hawaii \u00b7 4 election administrations \u00b7 5 Census county components \u00b7 no analysis rates. Maui includes Kalawao; no separate totals are invented. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Idaho",
+              "shapes": 44,
+              "coverage": "Idaho \u00b7 44 county observations \u00b7 43 reviewed county rates on 2026 Census reference boundaries; 44 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Illinois",
+              "shapes": 102,
+              "coverage": "Illinois \u00b7 102 county-named source records on county context \u00b7 six city-named records per mode remain separate and unallocated. Not whole-county totals or qualified source-authority territories; all rates withheld. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Indiana",
+              "shapes": 92,
+              "coverage": "Indiana \u00b7 92 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 92 reviewed county identity joins. 75 available participation counts; 17 source totals are withheld, not zero turnout. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Iowa",
+              "shapes": 99,
+              "coverage": "Iowa \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Kansas",
+              "shapes": 105,
+              "coverage": "Kansas \u00b7 105 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 105 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Kentucky",
+              "shapes": 120,
+              "coverage": "Kentucky \u00b7 1 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Louisiana",
+              "shapes": 64,
+              "coverage": "Louisiana \u00b7 64 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 64 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Maine",
+              "shapes": 528,
+              "coverage": "Maine \u00b7 480 mapped local source counts \u00b7 528 full 2024 contextual areas \u00b7 104 source regions / 48 reference areas held per mode \u00b7 no rates. Missing is not zero; no county or precinct allocation. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Maryland",
+              "shapes": 24,
+              "coverage": "Maryland \u00b7 24 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 24 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Massachusetts",
+              "shapes": 350,
+              "coverage": "Massachusetts \u00b7 2 native city sources \u00b7 307 reporting rows \u00b7 350 valid municipal references of 351 originals. Every reporting unit has a direct reference; invalid Wayland municipal geometry remains held. No county allocation, source repair, unique-person claim or analysis rate. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Michigan",
+              "shapes": 83,
+              "coverage": "Michigan \u00b7 2 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 2 reviewed county identity joins. Only 2 of 83 counties have native parents in this source; other counties are missing, not zero. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Minnesota",
+              "shapes": 87,
+              "coverage": "Minnesota \u00b7 87 county observations \u00b7 71 reviewed county rates on 2026 Census reference boundaries; 87 reviewed county identity joins. 84 available participation counts; 3 source totals are withheld, not zero turnout. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Mississippi",
+              "shapes": 82,
+              "coverage": "Mississippi \u00b7 82 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 82 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Missouri",
+              "shapes": 115,
+              "coverage": "Missouri \u00b7 1 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Montana",
+              "shapes": 56,
+              "coverage": "Montana \u00b7 56 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 56 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Nebraska",
+              "shapes": 93,
+              "coverage": "Nebraska \u00b7 93 county observations \u00b7 93 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Nevada",
+              "shapes": 17,
+              "coverage": "Nevada \u00b7 17 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 17 reviewed county identity joins. 4 available participation counts; 13 source totals are withheld, not zero turnout. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "New Hampshire",
+              "shapes": 259,
+              "coverage": "New Hampshire \u00b7 4 native city source counts \u00b737 native ward rows \u00b7259 full2024 contextual municipalities \u00b7255 unknown source areas. No county/precinct allocation, federal-only addition, source repair or analysis rate. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "New Jersey",
+              "shapes": 21,
+              "coverage": "New Jersey \u00b7 19 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 19 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "New Mexico",
+              "shapes": 33,
+              "coverage": "New Mexico \u00b7 33 county observations \u00b7 33 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "New York",
+              "shapes": 62,
+              "coverage": "New York \u00b7 62 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 62 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "North Carolina",
+              "shapes": 100,
+              "coverage": "North Carolina \u00b7 100 county observations \u00b7 100 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "North Dakota",
+              "shapes": 53,
+              "coverage": "North Dakota \u00b7 53 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 53 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Ohio",
+              "shapes": 88,
+              "coverage": "Ohio \u00b7 88 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 88 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Oklahoma",
+              "shapes": 77,
+              "coverage": "Oklahoma \u00b7 77 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 77 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Oregon",
+              "shapes": 36,
+              "coverage": "Oregon \u00b7 36 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 36 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Pennsylvania",
+              "shapes": 67,
+              "coverage": "Pennsylvania \u00b7 43 county observations \u00b7 40 reviewed county rates on 2024 Census reference boundaries; 43 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Rhode Island",
+              "shapes": 39,
+              "coverage": "Rhode Island \u00b7 39 municipality observations on 2024 Census reference boundaries \u00b7 0 approved rates. Color shows ballot counts, not a rate. Select a municipality for native ballots and registrations. No municipal count or registration is assigned to a precinct; Federal/limited-only units remain unallocated."
+            },
+            {
+              "state": "South Carolina",
+              "shapes": 46,
+              "coverage": "South Carolina \u00b7 46 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 46 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "South Dakota",
+              "shapes": 66,
+              "coverage": "South Dakota \u00b7 66 county observations \u00b7 66 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Tennessee",
+              "shapes": 95,
+              "coverage": "Tennessee \u00b7 95 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 95 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Texas",
+              "shapes": 254,
+              "coverage": "Texas \u00b7 254 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 254 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Utah",
+              "shapes": 29,
+              "coverage": "Utah \u00b7 19 county observations \u00b7 18 reviewed county rates on 2024 Census reference boundaries; 19 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Vermont",
+              "shapes": 247,
+              "coverage": "Vermont \u00b7 247 municipality observations on VCGI BNDHASH town reference polygons; data edited May 2, 2025 \u00b7 241 approved rates. Gray is withheld, not zero. Select a municipality for native ballots and registrations. No municipal count or registration is assigned to a precinct; Federal/limited-only units remain unallocated."
+            },
+            {
+              "state": "Virginia",
+              "shapes": 133,
+              "coverage": "Virginia \u00b7 133 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 133 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Washington",
+              "shapes": 39,
+              "coverage": "Washington \u00b7 39 county observations \u00b7 39 reviewed county rates on 2024 Census reference boundaries; 39 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "West Virginia",
+              "shapes": 55,
+              "coverage": "West Virginia \u00b7 55 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 55 reviewed county identity joins. 3 available participation counts; 52 source totals are withheld, not zero turnout. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Wisconsin",
+              "shapes": 72,
+              "coverage": "Wisconsin \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Wyoming",
+              "shapes": 23,
+              "coverage": "Wyoming \u00b7 23 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 23 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            }
+          ]
+        },
+        {
+          "case": "all_state_precinct_selections",
+          "states": 51,
+          "retained_2026": true,
+          "no_silent_metric_switch": true
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Idaho",
+          "shapes": 448
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "North Dakota",
+          "shapes": 338
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Minnesota",
+          "shapes": 4105
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Michigan",
+          "shapes": 58
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "New Mexico",
+          "shapes": 2177
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "District of Columbia",
+          "shapes": 144
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Virginia",
+          "shapes": 710
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Indiana",
+          "shapes": 83
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Alaska",
+          "shapes": 81
+        },
+        {
+          "case": "state_county_recovery_and_tab_roundtrips",
+          "page_errors": []
+        },
+        {
+          "case": "coverage_navigation",
+          "mobile": false,
+          "no_overflow": true
+        },
+        {
+          "case": "coverage_navigation",
+          "mobile": true,
+          "no_overflow": true
+        },
+        {
+          "case": "failed_source_retry",
+          "context_retained": true,
+          "recovered": true
+        },
+        {
+          "case": "failed_county_retry",
+          "context_retained": true,
+          "recovered": true
+        }
+      ]
+    },
+    "local_preserved_AL67": {
+      "status": "PASS_AL67_native_county_counts_no_rates_or_precinct_inference",
+      "base_url": "http://127.0.0.1:4387",
+      "cases": [
+        {
+          "mobile": false,
+          "all67_native_map_values_and_selector_roundtrips": true,
+          "real_county_map_clicks": [
+            "Jefferson",
+            "Mobile",
+            "Montgomery",
+            "Autauga"
+          ],
+          "all_rates_withheld": true,
+          "native_clocks_and_printed_percentages_retained": true,
+          "source_ordinals_not_FIPS": true,
+          "methods_and_mode_roundtrips": true,
+          "unsupported_early_returned_not_filled_by_all_method_counts": true
+        },
+        {
+          "mobile": true,
+          "all67_native_map_values_and_selector_roundtrips": true,
+          "real_county_map_clicks": [
+            "Jefferson",
+            "Mobile",
+            "Montgomery",
+            "Autauga"
+          ],
+          "all_rates_withheld": true,
+          "native_clocks_and_printed_percentages_retained": true,
+          "source_ordinals_not_FIPS": true,
+          "methods_and_mode_roundtrips": true,
+          "unsupported_early_returned_not_filled_by_all_method_counts": true
+        }
+      ],
+      "substituted_count_rejected": true,
+      "actual_retry_restores_native_counties": true,
+      "valid_reference_requests_overridden": false,
+      "old_county_ids_and_counts_preserved": true,
+      "new_precinct_map_claim": false,
+      "independently_unique_people_claim": false,
+      "nationwide_project_complete": false
+    }
+  },
+  "publication": {
+    "status": "live_verified_NV17_four_native_counts_thirteen_unknowns_and_preserved_coverage",
+    "main_commit": "3e20b0d0512ccb0aa075f3ba7e5f68412175baaa",
+    "pages_run_id": 42830450810,
+    "main_guard_run_id": 42830450991,
+    "deployment_attempt": 2,
+    "artifact_id": 13771252796,
+    "actual_native_artifact_accepted": true,
+    "exact_production_accepted": true,
+    "actual_payload_bytes": 995761527,
+    "actual_tar_bytes": 998338560,
+    "exact_unqueried_production_files": 51,
+    "unchanged_complete_download_routes": 436,
+    "bounded_same_artifact_deploy_retry": {
+      "status": "PASS_actual_bounded_same_artifact_deploy_workflow",
+      "commit": "3e20b0d0512ccb0aa075f3ba7e5f68412175baaa",
+      "run_id": 42830450810,
+      "artifact_id": 13771252796,
+      "run_attempt": 2,
+      "deployment_steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-10T14:34:52Z",
+          "completed_at": "2026-11-10T14:34:53Z"
+        },
+        {
+          "name": "Deploy site",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-10T14:34:53Z",
+          "completed_at": "2026-11-10T14:36:35Z"
+        },
+        {
+          "name": "Retry deployment with the same verified artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 3,
+          "started_at": "2026-11-10T14:36:35Z",
+          "completed_at": "2026-11-10T14:36:35Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-10T14:36:35Z",
+          "completed_at": "2026-11-10T14:36:35Z"
+        }
+      ],
+      "same_artifact_retry_ran": false
+    },
+    "failed_job_only_same_artifact_recovery": {
+      "status": "PASS_failed_deploy_job_only_recovered_same_verified_artifact",
+      "commit": "3e20b0d0512ccb0aa075f3ba7e5f68412175baaa",
+      "pages_run_id": 42830450810,
+      "previous_attempt": 1,
+      "requested_attempt": 2,
+      "observed_queued_run_attempt": 1,
+      "artifact_id": 13771252796,
+      "rebuild": false,
+      "reupload": false,
+      "new_artifact_download": false,
+      "reason": "Built-in retry timed out while syncing_files",
+      "actual_accepted_attempt": 2,
+      "actual_run_conclusion": "success",
+      "first_attempt_built_in_retry_timed_out": true,
+      "new_artifact_created": false,
+      "exact_production_files": 51,
+      "production_browser_suites": 11
+    },
+    "nationwide_project_complete": false
+  }
+}
