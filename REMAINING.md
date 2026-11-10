@@ -7,7 +7,8 @@ reconciliation must feed the participation, switching, modeled/reported
 nonparticipation and new/returning-voter estimates, then their tested integration
 into the existing project. Do not stop at an inventory or another audit.
 
-The user explicitly restored a 15-minute assistant continuation on this date.
+The user changed the single assistant continuation to **45 minutes** on this date
+(schedule 120; the previous schedule 119 is stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
@@ -42,6 +43,16 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Latest direct priorities: modeled 2026 effects and resident demographic context.**
+The linked switching/nonparticipation maps and removal of the redundant Precincts
+top tab are implemented at website source **3389e1f**, but **not verified live**.
+The original artifact **13791856780** passes 996,076,846 payload / 998,656,000
+tar bytes and 436 preserved routes. Pages **42875076282 attempts 1 and 2**
+both timed out in deployment, including their bounded same-artifact retries;
+the original build succeeded and was not repeated. Both verifiers exited.
+Recover deployment using that retained artifact, then finish the actual
+56-file, 59 geography/drilldown, 32 layout, six linked-map and 113-record checks.
+Do not claim the new maps or tab removal are live or launch another full build.
+
 The latest UI corrections are **verified live at b30339e**: a primary
 2026-swings tab, organized supporting studies, exact county-footprint
 borders and functional sourced-precinct search/filtering. Pages
@@ -79,19 +90,40 @@ voter characteristics or group turnout. Start from official 2020–2024 ACS
 five-year public summary files and approved geography. Preserve native MOEs,
 source years and missingness; precinct estimates need qualified crosswalks,
 not state allocations or averages of median incomes.
-All five full national originals are held (462,776,851 bytes). The common
-adapter and five focused tests pass: 3,144 native counties across all 51
-jurisdictions, 3,143 observed medians and one missing median. Loaded-map joins,
-precinct crosswalks, complete packages and the demographic interface are
-still in progress; acquisition and county reduction alone are not live context.
+County context is now **published independently**, not yet shown by the website
+reader. Immutable release **440794066** has all nine anonymously verified assets.
+Its **159,566,534-byte / 142-member** complete packet contains all five full ACS
+originals (462,776,851 bytes), the complete Gazetteer original, all 51 unchanged
+approved county references, native/runtime queries and maintained code/tests.
+All **2,247,960 independent checks**, 32 packaged tests and two fresh
+network/DNS-blocked reproductions pass; all 52 runtime files reproduce exactly.
+There are **3,144 counties / 51 jurisdictions**, 3,143 observed income medians
+and one unavailable median (35011).
+
+The shared publisher actually activated dataset version **496a4245fae2** on
+the separate `participation-data` ref, catalog commit **f120331a**.
+All 53 immutable files and the catalog were checked anonymously; website main,
+the source worktree HEAD/index and the Pages run list were unchanged.
+This proves one real data-only publication, **not** an active website reader
+or a subsequent update of the same dataset. Complete the generic reader,
+coverage dashboard and actual subsequent-update acceptance.
+
+Conditional context now covers 6,847 valid held references across MN, NM,
+MI, IN, AK, NH and MA; one invalid Michigan reference remains held. A shared-edge
+test exposed projected-chord tie misclassification in the unpublished pilot.
+The corrected common rule uses unchanged native geographic edges and retains
+all per-block decisions; all 33 backend tests pass. Prior outputs are preserved,
+no originals or geometries reacquired, no source geometry repaired.
+These new precinct estimates still need independent acceptance, complete
+packages and publication before any website activation.
 The native small-area index now retains **239,742 block groups** across all
 51 jurisdictions, with exactly matching identities in all five ACS tables.
 Eight focused tests pass. A separate complete public Census 2020 block
 query holds **8,132,968 blocks**, population 331,449,281 and 140,498,736
 housing units, with all native count controls and observed zeros retained.
-These are population/housing proxy inputs, not precinct estimates or voter
-characteristics; housing units are not occupied households. Weighted
-crosswalks, complete packages and demographic publication remain open.
+These are population/housing proxy inputs, not voter characteristics; housing
+units are not occupied households. Precinct verification/publication and
+demographic interface integration remain open.
 
 **Continuing architecture priority: replace active one-off intake.**
 Use one validated source contract, direct adapters, hash-based incremental
@@ -1303,7 +1335,7 @@ Accepted website revision is `96d7257`; the earlier `5e11695` repair remains a
 preserved baseline. Resume genuinely unresolved statewide/group denominator,
 return-reconciliation and election-year geography evidence below. Do not repeat
 the completed Methods build/publication or prior successful research packages.
-The broader project remains open; the single 15-minute continuation stays active.
+The broader project remains open; the single 45-minute continuation stays active.
 
 | Priority / task | Status | Required result |
 |---|---|---|

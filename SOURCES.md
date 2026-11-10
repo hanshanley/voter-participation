@@ -27,6 +27,49 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Direct county resident context and independent data publication
+
+The common backend source **01adfc2** reduces the complete public **2020-2024
+ACS five-year** B19013, B03002, B19001, B15003 and B01001 tables into income,
+exclusive race/Hispanic-origin, age and education context for **3,144 native
+Census counties / 51 jurisdictions**. All 3,143 observed income medians remain
+literal; the unavailable median for 35011 remains unavailable. Native MOEs,
+special codes, source periods and 2024-dollar income definitions are preserved.
+No voter profile, demographic turnout, averaged median or derived MOE is inferred.
+
+Immutable release **440794066**, tag `participation-resident-counties-20261110-01`,
+has **nine anonymously byte/hash-verified full assets**. The complete
+**159,566,534-byte / 142-member** packet includes all five full ACS originals
+(462,776,851 bytes), the complete native Gazetteer original, all 51 approved
+unchanged county references, full native/runtime queries, code, tests and
+checksums. **2,247,960 independent checks**, 32 packaged tests and two fresh
+network/DNS-blocked reproductions pass; every native query and all 52 runtime
+files reproduce exactly.
+
+The common publisher activated content-addressed runtime version
+`496a4245fae201722492a4396a36f05a04600476a662d0974480a5e59cb3fb3a`
+on the separate `participation-data` ref, catalog commit **f120331a**.
+All 53 immutable files and the catalog were verified anonymously. Website main,
+source worktree HEAD/index and Pages run IDs were unchanged: **zero builds**.
+The website reader is not activated; a subsequent same-dataset update and
+the replacement intake/coverage interface remain unfinished. Full records:
+`data/participation-access/20261110-resident-counties-01/`.
+
+## Linked swing maps: deployment still pending
+
+Source **3389e1f** replaces the bar list with linked state maps for switching and
+modeled nonparticipation, retains House/Senate/governor selection and full
+seven-term detail, and removes only the redundant Precincts top navigation.
+All 113 model records, States drilldowns, old URLs and downloads are preserved.
+Desktop/mobile local map, legacy-drilldown and 32 layout checks pass.
+
+Native artifact **13791856780** passes **996,076,846 payload / 998,656,000
+tar bytes**, 56 pinned assets and 436 unchanged download routes. Pages
+**42875076282 attempts 1 and 2** both timed out in deployment, including their
+bounded retries. The successful build and artifact were reused, not repeated.
+The new map/tab UI is **not production-verified live**; both original
+verification workers exited and deployment recovery remains open.
+
 ## 2026 modeled NORC and returns bridge
 
 The new experimental bridge reuses the already-reduced whole-state NORC
@@ -2617,7 +2660,7 @@ release assets changed. Governing receipts:
 `methods-overview-production-acceptance-01.json`,
 `methods-overview-native-pages-artifact-proof-01.json` and
 `methods-research-docs-push-01.json`. This increment is complete; broader research
-remains open under the existing single 15-minute continuation.
+remains open under the existing single 45-minute continuation.
 
 ## Historical CPS group registration and response frames
 

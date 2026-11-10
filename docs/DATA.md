@@ -66,6 +66,7 @@ are not automatically compatible populations.
 
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
+| County resident context, all states and D.C. | All 3,144 native county profiles, all five full ACS originals, complete Gazetteer, 51 unchanged references, native/runtime queries, maintained code/tests and exact offline reproduction; resident context, not voter composition or turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/complete-analysis.zip) |
 | Exact House comparison | County/county-district candidate counts, source screens and complete exclusions | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-exact-panel-20261108-01/complete-analysis.zip) |
 | Senate identifiers | Native candidate-unit records with separately qualified reference identifiers | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-senate-identifiers-20261108-01/complete-analysis.zip) |
 
