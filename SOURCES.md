@@ -9,7 +9,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Reference area | Jump to |
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
-| Latest local integration | [Four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
+| Latest local integration | [Minnesota native follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
 | Local activity snapshots | [Direct MA city references](#2026-massachusetts-direct-city-precinct-references), [earlier MA counts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
@@ -26,6 +26,38 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Minnesota native county and precinct follow-up
+
+Source `7ff1c82` connects the already-held native follow-up: **84 complete
+counties and all 4,105 full-native reference joins**. The
+[complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-minnesota-native-county-followup-20261110-02/complete-analysis.zip)
+contains all 34 sufficient inputs, full current/previous statistics and three
+full native geometry pages, queries, code, tests and offline reproduction;
+50,849,478 bytes / 80 members. Immutable **440301764** / all 17 full assets and
+the external native map were anonymously hash-verified before main activation.
+
+| Scope | Treatment |
+|---|---|
+| Counts | 4,079 reported Total Number Voted rows; 26 unknowns in Fillmore, Hubbard and Wright remain unknown. The 2,827,091 subtotal is not an exact statewide count or the separate Estimated Voters 2,852,528. |
+| Denominators | 71 qualified county fractions use native 7AM plus Election Day registrations. Preserve 60 component conflicts and seven precinct electorate excesses; no precinct analysis rates. The November 2 registered-only snapshot stays separate. |
+| Identity and references | Native countycode/pctcode and separate VTD/FIPS control all 4,105 joins; county IDs are not FIPS. Preserve both names in 1,723 differing-name joins. Full native September 18, 2026 references are not certified election-day legal boundaries. |
+| Geometry and clocks | All full native shapes are valid; all 13,619 bbox-candidate pairs have zero positive overlap. Older 16 invalid generalizations remain unrepaired and unused. Native results-page update 11/07/26 5:18 PM has unknown timezone; file receipts are not update clocks. |
+
+All 219 affected Node checks, four Python tests, Astro/build and local real
+desktop/mobile county/precinct navigation pass. Independent verification passes
+82,069 checks and two exact network-blocked count/reference reproductions.
+The [source record](data/participation-access/20261110-minnesota-followup-02/observations.json)
+and [website status](data/participation-access/20261110-minnesota-followup-02/website-acceptance.json)
+separate those proofs from deployment. **Actual native production acceptance
+passed:** Pages **42811573387 attempt 1** / main guard **42811573411**, artifact
+**13762990964**, **995,727,090 payload / 998,307,840 tar bytes**. All 49 exact
+unqueried production paths and eight browser suites pass: MN84 desktop/mobile,
+MA307, NH37, Illinois102, Alaska81, Maine480, Hawaii4 and all51 navigation.
+The map uses the actual immutable external reference, not a local override.
+Deployment succeeded first try; the bounded same-artifact retry was skipped.
+Every earlier release and all 436 old complete-download routes are preserved.
+Nationwide precinct completeness remains open.
 
 ## 2026 native ward counts in four New Hampshire cities
 
