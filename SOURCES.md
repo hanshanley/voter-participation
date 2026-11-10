@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
-| County activity snapshots | [Held provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
+| Local activity snapshots | [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -25,6 +25,51 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 project: Maine partial locality activity
+
+The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/complete-analysis.zip)
+connects held **civicAPI source activity**, not the Civic/NORC survey or certified
+government turnout. Both separate early/returned frames retain all **584 native
+regions**. Each has **480 one-to-one contextual identities**, while **104 native
+regions and 48 of the full 528 reference areas remain held**.
+
+| Selection | Treatment |
+|---|---|
+| Identity basis | 441 already-qualified 2024 identity links plus 39 unambiguous literal Twp/Plt name matches per mode |
+| Historical data | Complete held identity export included; historical voting counts, rates and electorate stocks are never transferred |
+| Ambiguity | Explicit Lincoln/Rangeley/Unity/Washington town links do not assign their ambiguous Plt/Twp counterparts by elimination |
+| Measure | Sum literal source-category `votes` within one activity frame; preserve Other/Unknown/Unspecified and zeros, not candidate choice |
+| Time | Native November 2, 2026 dates remain; collector 2026 context is not an independently qualified native election identifier |
+| Geography | Full original 2024 municipality reference is byte-identical; not native FIPS, county totals or certified 2026 precincts |
+| Missingness | Unmatched shapes remain unknown, not zero; selecting one clears previous detail rather than retaining stale counts |
+
+All analysis denominators/rates and generic cast/unique-person claims remain
+withheld. Modes are never added, source counts are not allocated to counties or
+unorganized areas, and no new original or geometry acquisition occurred.
+
+Release `439851515` targets source `f6a9e98`; **all eight full assets were
+anonymously verified before main activation**. The ZIP is **665,845 bytes /
+19 members**, SHA-256
+`f597ea56a5a4f10184629a1d829710b993efe8cd6cbcc8c21bbb3eef3214d890`.
+It contains **1,168 native queries, 1,056 reference decisions, two complete
+frame decisions and 960 selected observations**, all sufficient original/
+reference/identity inputs, code, tests and results. **11,438 independent
+checks**, two exact network-blocked reproductions, 174 affected tests, Astro
+and full build pass. Local desktop/mobile verifies every count/hold, both modes,
+stale-detail clearing, failure/retry, CT169 and all51 navigation.
+
+Source `f6a9e98` is **live and actual-production verified**. Pages `42738234318`
+and guard `42738234642` succeeded; artifact `13727918651` has **988,975,450
+payload / 991,528,960 tar bytes**, both strict limits passing. All 27 checked
+unqueried production files match. Every mapped count and unknown area passes
+on desktop/mobile in both modes, including stale-detail clearing, failure/retry,
+CT169, all61 provider frames, native HI4/WV priority and all51 navigation.
+All 436 older complete-download routes remain unchanged. The remaining default
+contest-only fallbacks are AK/IL/MA/NH; Maine's partial local activity does not
+establish county totals or nationwide native precinct completion.
+See the [source ledger](data/participation-access/20261110-maine-locality-activity-01/observations.json)
+and [actual acceptance](data/participation-access/20261110-maine-locality-activity-01/website-acceptance.json).
 
 ## 2026 Connecticut: native town counts, not county or precinct totals
 

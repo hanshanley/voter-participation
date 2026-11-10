@@ -1,0 +1,1562 @@
+{
+  "status": "PASS_ME480_actual_production_accepted",
+  "accepted_website_commit": "f6a9e98d2cfdc7e2b376cceefd30f47b26348cfa",
+  "pages_run_id": 42738234318,
+  "main_guard_run_id": 42738234642,
+  "complete_numerical_release": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/complete-analysis.zip",
+  "release_id": 439851515,
+  "native_pages_artifact": {
+    "status": "PASS_exact_pages_publication",
+    "commit": "f6a9e98d2cfdc7e2b376cceefd30f47b26348cfa",
+    "run_id": 42738234318,
+    "artifact_id": 13727918651,
+    "payload_bytes": 988975450,
+    "tar_bytes": 991528960,
+    "files": 2933,
+    "verified_sha256": {
+      "participation-local/DE.json.gz": "bc87368e21231588d69702b476e902f2c6a618cd744393d78dc791534e1efc83",
+      "participation-local/WV.json.gz": "d811b5ee63cde1d4f357c1564360fd51569afc6fa8eebc136c9f4fcd6a121eff",
+      "participation-local/NY.json.gz": "b92b2cce72bd454a4c412d222eca48649a6e90353fe8c422c3803d0724be4666",
+      "participation-local/MI.json.gz": "2cd9fe1316560807757f383ae87b9d8ccfd09762921b4c059de19ccfa7344c9b",
+      "participation-local/ME.json.gz": "4f5641cb16d14e64600f129deb4a98d0a1f7a694473f289a994ebc392261fd1b",
+      "participation-local/MD.json.gz": "18c1c857a3345026f250b87a44560ba7a7febac53834e5ce6351cf4d6f42295a",
+      "participation-local/TX.json.gz": "69134413356ba245e04236f2db2e4e9807fce24d9ffdf93895303e6261fea7f8",
+      "participation-local/CO.json.gz": "4c4d0c9bd46100512449239dcd196d3207c06305f10472c99c2cc08e22931cb9",
+      "participation-local/AR.json.gz": "6e334f7a4c7769f6fc23affea90aec91dd046f78459d4ed76a8d3adf64b3361a",
+      "participation-local/IN.json.gz": "5757d2364db98de5fcd7acc589edb5d877c7063b8ea0c45a603856411134720d",
+      "participation-local/HI.json.gz": "5f7a24ae10c13244f372fcd960ae16aee3d07891a9801dd65e85b48d0649a9e3",
+      "participation-local/CT.json.gz": "a64535e7c9baa22220c95a5cb633e92a48cd0c8d2779d5ac5202e84686dfa320",
+      "participation-precincts/20261109-indiana-monroe-01/index.json": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650",
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281",
+      "participation-downloads.json": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade",
+      "participation-county-parents/20261109-02/complete-analysis.zip": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c",
+      "participation-county-parents/20261109-01/complete-analysis.zip": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915",
+      "participation-county-cards/20261109-01/complete-analysis.zip": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6",
+      "participation-county-administrations/20261109-hawaii-01/HI.geojson.gz": "b5973c0a59c892d8619ed60b9c72cbc874a206b04fe4689c2428ca883c61b6d0",
+      "county-results.json": "3b5755aa3f2ad414c8c79dc52a3a53fa01ef0ce10aba4906dff5fb81f9925ad7",
+      "participation-town-reports/20261110-connecticut-01/CT.geojson.gz": "f8ff12fc121ae0d4cd9fd5a89eaf9b7af44ea1eca4fea8008bf7156282dd7eea",
+      "participation-locality-activity/20261110-maine-01/ME.geojson.gz": "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc",
+      "scripts/participation-explorer.js": "19294b7240ba27227a0efab689321808b5d05d0ee0ac8003f19e8f15268029a7",
+      "scripts/provider-county-scopes.js": "32db206ded3bc8d6242d2a47c39ac5acb9dd52ea789291cb464af0bc77cfb99c",
+      "scripts/participation-geography.js": "b4aa9258825e86ddf42f9cc03325c8b3935cbf00b12ff0a7eb2e4413744145be",
+      "participation-precincts.json": "d97329822d3fd1b9eee7550b2526642a5f88ad3649e06aa2048f0398988504bb",
+      "participation-reporting-units.json": "fe52276f89aceda8b47d8c508125d4217effcf064bd37f210ce58257226dc335"
+    },
+    "unchanged_complete_download_routes": 436,
+    "generated_gzip_platform_headers": {
+      "participation-local/DE.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8",
+        "artifact_compressed_sha256": "bc87368e21231588d69702b476e902f2c6a618cd744393d78dc791534e1efc83",
+        "exact_decompressed_sha256": "cd95e92e1e148fe03fe7a0329263ba296788161017295edf1776b9856e63a35d",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/WV.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "004b9de8fc8d63e27af3e6df7ca7147d586fb6a46cf528eb911b28887182a94d",
+        "artifact_compressed_sha256": "d811b5ee63cde1d4f357c1564360fd51569afc6fa8eebc136c9f4fcd6a121eff",
+        "exact_decompressed_sha256": "4923b8b9c84e2e9b4f3a347eaa966d8bc602e757ab744ea116077b0c5309af76",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/NY.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "9d07f3f07c64b34ec3c2ae791a6f0e7d48b2ea09467f1e1b93571cc578604473",
+        "artifact_compressed_sha256": "b92b2cce72bd454a4c412d222eca48649a6e90353fe8c422c3803d0724be4666",
+        "exact_decompressed_sha256": "2e2e394292f363cdd1d9fd0b3a689c5d71f62b56c4695653c262d26024d24bf7",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/MI.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "5a6c9ce644a6e53a3509d627cf58fd39f033c2ca464638c3a83c0d530cf1bac3",
+        "artifact_compressed_sha256": "2cd9fe1316560807757f383ae87b9d8ccfd09762921b4c059de19ccfa7344c9b",
+        "exact_decompressed_sha256": "4505378db7b1c20b1b5ad97564cc5471ae1d60b426c76f26f1b33cacb343a32f",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/ME.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "f2d5254853fff5418711e90876cbef6c4eabfe89442667b0701521279865aec4",
+        "artifact_compressed_sha256": "4f5641cb16d14e64600f129deb4a98d0a1f7a694473f289a994ebc392261fd1b",
+        "exact_decompressed_sha256": "7020372a2184ae27008109e405db103c232e5ef8f01e05d4a95e8690716d3252",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/MD.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "63aa859e66119a6347902941249eafa23952bbf359d5ecb859b0d8fa89102b5a",
+        "artifact_compressed_sha256": "18c1c857a3345026f250b87a44560ba7a7febac53834e5ce6351cf4d6f42295a",
+        "exact_decompressed_sha256": "51633e4acb9bc446ccd58d92242a369ac5abb86d18f88e257320cff3d18a0efc",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/TX.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "61b15dcde164789942832363d3b0a84ac8d26edc399dcf3499ce4ebc2c0e8cb1",
+        "artifact_compressed_sha256": "69134413356ba245e04236f2db2e4e9807fce24d9ffdf93895303e6261fea7f8",
+        "exact_decompressed_sha256": "cbc96bd6813687c7e171d4ec84139f9b4617a4fb6f43733d526ccfb7c15dd556",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/CO.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "a4810b0da93bfc5edd23a87f53abd96e2e49ce276d15256663587b6194485376",
+        "artifact_compressed_sha256": "4c4d0c9bd46100512449239dcd196d3207c06305f10472c99c2cc08e22931cb9",
+        "exact_decompressed_sha256": "eea04e5938540c81e7a5db6b6f1c7c2747b83820f69c2fcf50d9efd08ab548fe",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/AR.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "83684327edaccd72bd9e70147bb78c2354932b8b603137873db7c8283faedd7b",
+        "artifact_compressed_sha256": "6e334f7a4c7769f6fc23affea90aec91dd046f78459d4ed76a8d3adf64b3361a",
+        "exact_decompressed_sha256": "794b8de6043b5daa359834179344e3c65da6a5a1f83832fac0eab2e4181cc6b2",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/IN.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "74dace208fc054e1c68f1d20e3e23f6b52adde7f8868ed152b47e7d944287b24",
+        "artifact_compressed_sha256": "5757d2364db98de5fcd7acc589edb5d877c7063b8ea0c45a603856411134720d",
+        "exact_decompressed_sha256": "8d91f6a4d53a5602aa0fa481661685ea72ff0335153bd07a39f25834e0e8ceb7",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/HI.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "e7677d3d50356056ce4973606ce889667a639b35c1c7fa69121fa6ca0a31e9d3",
+        "artifact_compressed_sha256": "5f7a24ae10c13244f372fcd960ae16aee3d07891a9801dd65e85b48d0649a9e3",
+        "exact_decompressed_sha256": "85e533fdcf513247a378cbdde2a997351ebaf70186eecff0848a0dfef7f802e2",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/CT.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "f60eb5119332c7d87eb1a5be2ce58442cb776ea6d6e0a43aedce04605949aef1",
+        "artifact_compressed_sha256": "a64535e7c9baa22220c95a5cb633e92a48cd0c8d2779d5ac5202e84686dfa320",
+        "exact_decompressed_sha256": "d7996582e7dd1573ed03e09b93607c36b559ad007a06c8beb5c368b9e7d20dc6",
+        "all_other_compressed_bytes_identical": true
+      }
+    }
+  },
+  "production_bytes": {
+    "status": "PASS_exact_unqueried_ME_production_bytes",
+    "commit": "f6a9e98d2cfdc7e2b376cceefd30f47b26348cfa",
+    "run_id": 42738234318,
+    "source_guard_run_id": 42738234642,
+    "artifact_id": 13727918651,
+    "files": {
+      "participation-local/DE.json.gz": {
+        "bytes": 1549,
+        "sha256": "bc87368e21231588d69702b476e902f2c6a618cd744393d78dc791534e1efc83"
+      },
+      "participation-local/WV.json.gz": {
+        "bytes": 11870,
+        "sha256": "d811b5ee63cde1d4f357c1564360fd51569afc6fa8eebc136c9f4fcd6a121eff"
+      },
+      "participation-local/NY.json.gz": {
+        "bytes": 4435,
+        "sha256": "b92b2cce72bd454a4c412d222eca48649a6e90353fe8c422c3803d0724be4666"
+      },
+      "participation-local/MI.json.gz": {
+        "bytes": 13485,
+        "sha256": "2cd9fe1316560807757f383ae87b9d8ccfd09762921b4c059de19ccfa7344c9b"
+      },
+      "participation-local/ME.json.gz": {
+        "bytes": 49306,
+        "sha256": "4f5641cb16d14e64600f129deb4a98d0a1f7a694473f289a994ebc392261fd1b"
+      },
+      "participation-local/MD.json.gz": {
+        "bytes": 5432,
+        "sha256": "18c1c857a3345026f250b87a44560ba7a7febac53834e5ce6351cf4d6f42295a"
+      },
+      "participation-local/TX.json.gz": {
+        "bytes": 23975,
+        "sha256": "69134413356ba245e04236f2db2e4e9807fce24d9ffdf93895303e6261fea7f8"
+      },
+      "participation-local/CO.json.gz": {
+        "bytes": 18351,
+        "sha256": "4c4d0c9bd46100512449239dcd196d3207c06305f10472c99c2cc08e22931cb9"
+      },
+      "participation-local/AR.json.gz": {
+        "bytes": 14894,
+        "sha256": "6e334f7a4c7769f6fc23affea90aec91dd046f78459d4ed76a8d3adf64b3361a"
+      },
+      "participation-local/IN.json.gz": {
+        "bytes": 26731,
+        "sha256": "5757d2364db98de5fcd7acc589edb5d877c7063b8ea0c45a603856411134720d"
+      },
+      "participation-local/HI.json.gz": {
+        "bytes": 1979,
+        "sha256": "5f7a24ae10c13244f372fcd960ae16aee3d07891a9801dd65e85b48d0649a9e3"
+      },
+      "participation-local/CT.json.gz": {
+        "bytes": 16937,
+        "sha256": "a64535e7c9baa22220c95a5cb633e92a48cd0c8d2779d5ac5202e84686dfa320"
+      },
+      "participation-precincts/20261109-indiana-monroe-01/index.json": {
+        "bytes": 1065,
+        "sha256": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650"
+      },
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": {
+        "bytes": 380087,
+        "sha256": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281"
+      },
+      "participation-downloads.json": {
+        "bytes": 189615,
+        "sha256": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade"
+      },
+      "participation-county-parents/20261109-02/complete-analysis.zip": {
+        "bytes": 2937769,
+        "sha256": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c"
+      },
+      "participation-county-parents/20261109-01/complete-analysis.zip": {
+        "bytes": 2513817,
+        "sha256": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915"
+      },
+      "participation-county-cards/20261109-01/complete-analysis.zip": {
+        "bytes": 633225,
+        "sha256": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6"
+      },
+      "participation-county-administrations/20261109-hawaii-01/HI.geojson.gz": {
+        "bytes": 57585,
+        "sha256": "b5973c0a59c892d8619ed60b9c72cbc874a206b04fe4689c2428ca883c61b6d0"
+      },
+      "county-results.json": {
+        "bytes": 29435,
+        "sha256": "3b5755aa3f2ad414c8c79dc52a3a53fa01ef0ce10aba4906dff5fb81f9925ad7"
+      },
+      "participation-town-reports/20261110-connecticut-01/CT.geojson.gz": {
+        "bytes": 50919,
+        "sha256": "f8ff12fc121ae0d4cd9fd5a89eaf9b7af44ea1eca4fea8008bf7156282dd7eea"
+      },
+      "participation-locality-activity/20261110-maine-01/ME.geojson.gz": {
+        "bytes": 191891,
+        "sha256": "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc"
+      },
+      "scripts/participation-explorer.js": {
+        "bytes": 243276,
+        "sha256": "19294b7240ba27227a0efab689321808b5d05d0ee0ac8003f19e8f15268029a7"
+      },
+      "scripts/provider-county-scopes.js": {
+        "bytes": 3691,
+        "sha256": "32db206ded3bc8d6242d2a47c39ac5acb9dd52ea789291cb464af0bc77cfb99c"
+      },
+      "scripts/participation-geography.js": {
+        "bytes": 13185,
+        "sha256": "b4aa9258825e86ddf42f9cc03325c8b3935cbf00b12ff0a7eb2e4413744145be"
+      },
+      "participation-precincts.json": {
+        "bytes": 416,
+        "sha256": "d97329822d3fd1b9eee7550b2526642a5f88ad3649e06aa2048f0398988504bb"
+      },
+      "participation-reporting-units.json": {
+        "bytes": 5326,
+        "sha256": "fe52276f89aceda8b47d8c508125d4217effcf064bd37f210ce58257226dc335"
+      }
+    },
+    "unchanged_complete_download_routes": 436,
+    "valid_sources_overridden": false
+  },
+  "ME480_browser": {
+    "status": "PASS_ME_partial_locality_activity_not_county_or_precinct_turnout",
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "mobile": false,
+        "source_modes": 2,
+        "all_mapped_values_checked": true,
+        "mapped_per_mode": 480,
+        "reference_shapes": 528,
+        "source_held_per_mode": 104,
+        "reference_held_per_mode": 48,
+        "true_contextual_year": 2024,
+        "official_not_provider": true,
+        "unknown_clears_stale_detail": true,
+        "methods_roundtrip": true,
+        "no_rates": true
+      },
+      {
+        "mobile": true,
+        "source_modes": 2,
+        "all_mapped_values_checked": true,
+        "mapped_per_mode": 480,
+        "reference_shapes": 528,
+        "source_held_per_mode": 104,
+        "reference_held_per_mode": 48,
+        "true_contextual_year": 2024,
+        "official_not_provider": true,
+        "unknown_clears_stale_detail": true,
+        "methods_roundtrip": true,
+        "no_rates": true
+      }
+    ],
+    "invalid_frame_rejected": true,
+    "actual_retry_recovered": true,
+    "valid_source_overrides": false
+  },
+  "CT169_browser": {
+    "status": "PASS_CT169_native_towns_separate_Total_older_context_not_precincts",
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "mobile": false,
+        "native_town_counts": 169,
+        "all_native_cells_preserved": true,
+        "native_sum_without_Total": 1150127,
+        "blank_reporting_counters": 13,
+        "real_boundary_year": 2024,
+        "no_county_or_precinct_inference": true,
+        "no_rates": true,
+        "tab_and_precinct_recovery": true
+      },
+      {
+        "mobile": true,
+        "native_town_counts": 169,
+        "all_native_cells_preserved": true,
+        "native_sum_without_Total": 1150127,
+        "blank_reporting_counters": 13,
+        "real_boundary_year": 2024,
+        "no_county_or_precinct_inference": true,
+        "no_rates": true,
+        "tab_and_precinct_recovery": true
+      }
+    ],
+    "false_reference_year_rejected": true,
+    "actual_retry_recovered": true,
+    "valid_source_overrides": false
+  },
+  "provider_allframes_browser": {
+    "status": "PASS_provider_county_activity_frames_separate_from_native_turnout",
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "mobile": false,
+        "source_frames": [
+          {
+            "state_code": "AR",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 75
+          },
+          {
+            "state_code": "AR",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 75
+          },
+          {
+            "state_code": "AZ",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 15
+          },
+          {
+            "state_code": "CA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 58
+          },
+          {
+            "state_code": "CA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 58
+          },
+          {
+            "state_code": "CO",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 64
+          },
+          {
+            "state_code": "CO",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 64
+          },
+          {
+            "state_code": "DE",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 3
+          },
+          {
+            "state_code": "FL",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 67
+          },
+          {
+            "state_code": "FL",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 67
+          },
+          {
+            "state_code": "GA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 159
+          },
+          {
+            "state_code": "GA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 159
+          },
+          {
+            "state_code": "IA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 99
+          },
+          {
+            "state_code": "IA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 99
+          },
+          {
+            "state_code": "ID",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 44
+          },
+          {
+            "state_code": "ID",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 44
+          },
+          {
+            "state_code": "IN",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 92
+          },
+          {
+            "state_code": "IN",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 92
+          },
+          {
+            "state_code": "KS",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 105
+          },
+          {
+            "state_code": "KS",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 105
+          },
+          {
+            "state_code": "KY",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 120
+          },
+          {
+            "state_code": "KY",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 120
+          },
+          {
+            "state_code": "LA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 64
+          },
+          {
+            "state_code": "LA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 64
+          },
+          {
+            "state_code": "MD",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 24
+          },
+          {
+            "state_code": "MI",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 83
+          },
+          {
+            "state_code": "MN",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 87
+          },
+          {
+            "state_code": "MN",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 87
+          },
+          {
+            "state_code": "MS",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 82
+          },
+          {
+            "state_code": "MT",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 56
+          },
+          {
+            "state_code": "NC",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 100
+          },
+          {
+            "state_code": "NC",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 100
+          },
+          {
+            "state_code": "ND",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 53
+          },
+          {
+            "state_code": "NE",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 93
+          },
+          {
+            "state_code": "NE",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 93
+          },
+          {
+            "state_code": "NJ",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 21
+          },
+          {
+            "state_code": "NJ",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 21
+          },
+          {
+            "state_code": "NM",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 33
+          },
+          {
+            "state_code": "NM",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 33
+          },
+          {
+            "state_code": "NV",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 17
+          },
+          {
+            "state_code": "NV",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 17
+          },
+          {
+            "state_code": "NY",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 62
+          },
+          {
+            "state_code": "OH",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 88
+          },
+          {
+            "state_code": "OH",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 88
+          },
+          {
+            "state_code": "OK",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 77
+          },
+          {
+            "state_code": "OR",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 36
+          },
+          {
+            "state_code": "PA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 67
+          },
+          {
+            "state_code": "SC",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 46
+          },
+          {
+            "state_code": "SC",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 46
+          },
+          {
+            "state_code": "SD",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 66
+          },
+          {
+            "state_code": "TN",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 95
+          },
+          {
+            "state_code": "TX",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 254
+          },
+          {
+            "state_code": "TX",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 254
+          },
+          {
+            "state_code": "UT",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 29
+          },
+          {
+            "state_code": "UT",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 29
+          },
+          {
+            "state_code": "VA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 133
+          },
+          {
+            "state_code": "VA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 133
+          },
+          {
+            "state_code": "WA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 39
+          },
+          {
+            "state_code": "WI",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 72
+          },
+          {
+            "state_code": "WI",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 72
+          },
+          {
+            "state_code": "WY",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 23
+          }
+        ],
+        "provider_frames": 61,
+        "source_county_values": 4621,
+        "available_fallback_states": 11,
+        "official_mode_not_provider": true,
+        "native_HI_and_WV_priority_preserved": true,
+        "methods_roundtrip": true
+      },
+      {
+        "mobile": true,
+        "source_frames": [
+          {
+            "state_code": "AR",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 75
+          },
+          {
+            "state_code": "AR",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 75
+          },
+          {
+            "state_code": "AZ",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 15
+          },
+          {
+            "state_code": "CA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 58
+          },
+          {
+            "state_code": "CA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 58
+          },
+          {
+            "state_code": "CO",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 64
+          },
+          {
+            "state_code": "CO",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 64
+          },
+          {
+            "state_code": "DE",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 3
+          },
+          {
+            "state_code": "FL",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 67
+          },
+          {
+            "state_code": "FL",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 67
+          },
+          {
+            "state_code": "GA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 159
+          },
+          {
+            "state_code": "GA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 159
+          },
+          {
+            "state_code": "IA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 99
+          },
+          {
+            "state_code": "IA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 99
+          },
+          {
+            "state_code": "ID",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 44
+          },
+          {
+            "state_code": "ID",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 44
+          },
+          {
+            "state_code": "IN",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 92
+          },
+          {
+            "state_code": "IN",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 92
+          },
+          {
+            "state_code": "KS",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 105
+          },
+          {
+            "state_code": "KS",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 105
+          },
+          {
+            "state_code": "KY",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 120
+          },
+          {
+            "state_code": "KY",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 120
+          },
+          {
+            "state_code": "LA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 64
+          },
+          {
+            "state_code": "LA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 64
+          },
+          {
+            "state_code": "MD",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 24
+          },
+          {
+            "state_code": "MI",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 83
+          },
+          {
+            "state_code": "MN",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 87
+          },
+          {
+            "state_code": "MN",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 87
+          },
+          {
+            "state_code": "MS",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 82
+          },
+          {
+            "state_code": "MT",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 56
+          },
+          {
+            "state_code": "NC",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 100
+          },
+          {
+            "state_code": "NC",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 100
+          },
+          {
+            "state_code": "ND",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 53
+          },
+          {
+            "state_code": "NE",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 93
+          },
+          {
+            "state_code": "NE",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 93
+          },
+          {
+            "state_code": "NJ",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 21
+          },
+          {
+            "state_code": "NJ",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 21
+          },
+          {
+            "state_code": "NM",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 33
+          },
+          {
+            "state_code": "NM",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 33
+          },
+          {
+            "state_code": "NV",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 17
+          },
+          {
+            "state_code": "NV",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 17
+          },
+          {
+            "state_code": "NY",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 62
+          },
+          {
+            "state_code": "OH",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 88
+          },
+          {
+            "state_code": "OH",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 88
+          },
+          {
+            "state_code": "OK",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 77
+          },
+          {
+            "state_code": "OR",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 36
+          },
+          {
+            "state_code": "PA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 67
+          },
+          {
+            "state_code": "SC",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 46
+          },
+          {
+            "state_code": "SC",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 46
+          },
+          {
+            "state_code": "SD",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 66
+          },
+          {
+            "state_code": "TN",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 95
+          },
+          {
+            "state_code": "TX",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 254
+          },
+          {
+            "state_code": "TX",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 254
+          },
+          {
+            "state_code": "UT",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 29
+          },
+          {
+            "state_code": "UT",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 29
+          },
+          {
+            "state_code": "VA",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 133
+          },
+          {
+            "state_code": "VA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 133
+          },
+          {
+            "state_code": "WA",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 39
+          },
+          {
+            "state_code": "WI",
+            "mode": "in_person_early",
+            "all_raw_values": true,
+            "counties": 72
+          },
+          {
+            "state_code": "WI",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 72
+          },
+          {
+            "state_code": "WY",
+            "mode": "mail_returned",
+            "all_raw_values": true,
+            "counties": 23
+          }
+        ],
+        "provider_frames": 61,
+        "source_county_values": 4621,
+        "available_fallback_states": 11,
+        "official_mode_not_provider": true,
+        "native_HI_and_WV_priority_preserved": true,
+        "methods_roundtrip": true
+      }
+    ],
+    "invalid_frame_rejected_without_full_count_fallback": true,
+    "actual_source_retry_recovered": true,
+    "valid_source_overrides": false
+  },
+  "native_hawaii_browser": {
+    "status": "PASS_HI4_native_administrations_no_Census_count_allocation",
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "mobile": false,
+        "native_checks": [
+          {
+            "mode": "available",
+            "all4native_values": true,
+            "no_rates": true,
+            "no_separate_Maui_Kalawao_allocation": true,
+            "methods_roundtrip": true
+          },
+          {
+            "mode": "official",
+            "all4native_values": true,
+            "no_rates": true,
+            "no_separate_Maui_Kalawao_allocation": true,
+            "methods_roundtrip": true
+          },
+          {
+            "mode": "available",
+            "all4native_values": true,
+            "no_rates": true,
+            "no_separate_Maui_Kalawao_allocation": true,
+            "methods_roundtrip": true
+          }
+        ],
+        "all_original_records_retained": true
+      },
+      {
+        "mobile": true,
+        "native_checks": [
+          {
+            "mode": "available",
+            "all4native_values": true,
+            "no_rates": true,
+            "no_separate_Maui_Kalawao_allocation": true,
+            "methods_roundtrip": true
+          },
+          {
+            "mode": "official",
+            "all4native_values": true,
+            "no_rates": true,
+            "no_separate_Maui_Kalawao_allocation": true,
+            "methods_roundtrip": true
+          },
+          {
+            "mode": "available",
+            "all4native_values": true,
+            "no_rates": true,
+            "no_separate_Maui_Kalawao_allocation": true,
+            "methods_roundtrip": true
+          }
+        ],
+        "all_original_records_retained": true
+      }
+    ],
+    "invalid_component_scope_rejected": true,
+    "actual_source_retry_recovered": true,
+    "valid_source_overrides": false
+  },
+  "all_state_geography_browser": {
+    "status": "PASS_2026_geographic_drilldowns",
+    "base_url": "https://www.themarginoferror.com",
+    "script_sha256": "19294b7240ba27227a0efab689321808b5d05d0ee0ac8003f19e8f15268029a7",
+    "cases": [
+      {
+        "case": "actual_state_click",
+        "state": "California",
+        "county_shapes": 58,
+        "native_participation": true,
+        "provider_activity": false,
+        "native_town_scope": false,
+        "no_invented_rates": true
+      },
+      {
+        "case": "actual_state_click",
+        "state": "Florida",
+        "county_shapes": 67,
+        "native_participation": true,
+        "provider_activity": false,
+        "native_town_scope": false,
+        "no_invented_rates": true
+      },
+      {
+        "case": "actual_state_click",
+        "state": "Texas",
+        "county_shapes": 254,
+        "native_participation": false,
+        "provider_activity": true,
+        "native_town_scope": false,
+        "no_invented_rates": true
+      },
+      {
+        "case": "actual_state_click",
+        "state": "New York",
+        "county_shapes": 62,
+        "native_participation": false,
+        "provider_activity": true,
+        "native_town_scope": false,
+        "no_invented_rates": true
+      },
+      {
+        "case": "actual_state_click",
+        "state": "Connecticut",
+        "county_shapes": 169,
+        "native_participation": true,
+        "provider_activity": false,
+        "native_town_scope": true,
+        "no_invented_rates": true
+      },
+      {
+        "case": "actual_state_click",
+        "state": "Alaska",
+        "county_shapes": 30,
+        "native_participation": false,
+        "provider_activity": false,
+        "native_town_scope": false,
+        "no_invented_rates": true
+      },
+      {
+        "case": "all_state_county_drilldowns",
+        "states": [
+          {
+            "state": "Alabama",
+            "shapes": 67,
+            "coverage": "Alabama \u00b7 67 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 67 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Alaska",
+            "shapes": 30,
+            "coverage": "Alaska \u00b7 30 county contest counts, not turnout.  Select a county to inspect its total. No state turnout estimate is allocated to counties."
+          },
+          {
+            "state": "Arizona",
+            "shapes": 15,
+            "coverage": "Arizona \u00b7 15 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 15 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Arkansas",
+            "shapes": 75,
+            "coverage": "Arkansas \u00b7 75 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 75 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "California",
+            "shapes": 58,
+            "coverage": "California \u00b7 58 county observations \u00b7 58 reviewed county rates on 2024 Census reference boundaries; 58 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Colorado",
+            "shapes": 64,
+            "coverage": "Colorado \u00b7 64 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 64 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Connecticut",
+            "shapes": 169,
+            "coverage": "Connecticut \u00b7 169 native town observations \u00b7 2024 contextual municipality shapes \u00b7 no analysis rates. Not nine county totals or certified 2026 precincts. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Delaware",
+            "shapes": 3,
+            "coverage": "Delaware \u00b7 3 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 3 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "District of Columbia",
+            "shapes": 1,
+            "coverage": "District of Columbia \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Florida",
+            "shapes": 67,
+            "coverage": "Florida \u00b7 67 county observations \u00b7 67 reviewed county rates on 2024 Census reference boundaries; 67 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Georgia",
+            "shapes": 159,
+            "coverage": "Georgia \u00b7 159 county observations \u00b7 157 reviewed county rates on 2024 Census reference boundaries; 159 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Hawaii",
+            "shapes": 4,
+            "coverage": "Hawaii \u00b7 4 election administrations \u00b7 5 Census county components \u00b7 no analysis rates. Maui includes Kalawao; no separate totals are invented. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Idaho",
+            "shapes": 44,
+            "coverage": "Idaho \u00b7 44 county observations \u00b7 43 reviewed county rates on 2026 Census reference boundaries; 44 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Illinois",
+            "shapes": 102,
+            "coverage": "Illinois \u00b7 102 county contest counts, not turnout.  Select a county to inspect its total. No state turnout estimate is allocated to counties."
+          },
+          {
+            "state": "Indiana",
+            "shapes": 92,
+            "coverage": "Indiana \u00b7 92 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 92 reviewed county identity joins. 75 available participation counts; 17 source totals are withheld, not zero turnout. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Iowa",
+            "shapes": 99,
+            "coverage": "Iowa \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Kansas",
+            "shapes": 105,
+            "coverage": "Kansas \u00b7 105 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 105 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Kentucky",
+            "shapes": 120,
+            "coverage": "Kentucky \u00b7 1 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Louisiana",
+            "shapes": 64,
+            "coverage": "Louisiana \u00b7 64 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 64 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Maine",
+            "shapes": 528,
+            "coverage": "Maine \u00b7 480 mapped local source counts \u00b7 528 full 2024 contextual areas \u00b7 104 source regions / 48 reference areas held per mode \u00b7 no rates. Missing is not zero; no county or precinct allocation. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Maryland",
+            "shapes": 24,
+            "coverage": "Maryland \u00b7 24 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 24 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Massachusetts",
+            "shapes": 14,
+            "coverage": "Massachusetts \u00b7 14 county contest counts, not turnout.  Select a county to inspect its total. No state turnout estimate is allocated to counties."
+          },
+          {
+            "state": "Michigan",
+            "shapes": 83,
+            "coverage": "Michigan \u00b7 2 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 2 reviewed county identity joins. Only 2 of 83 counties have native parents in this source; other counties are missing, not zero. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Minnesota",
+            "shapes": 87,
+            "coverage": "Minnesota \u00b7 75 county observations \u00b7 64 reviewed county rates on 2024 Census reference boundaries; 75 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Mississippi",
+            "shapes": 82,
+            "coverage": "Mississippi \u00b7 82 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 82 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Missouri",
+            "shapes": 115,
+            "coverage": "Missouri \u00b7 1 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Montana",
+            "shapes": 56,
+            "coverage": "Montana \u00b7 56 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 56 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Nebraska",
+            "shapes": 93,
+            "coverage": "Nebraska \u00b7 93 county observations \u00b7 93 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Nevada",
+            "shapes": 17,
+            "coverage": "Nevada \u00b7 1 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "New Hampshire",
+            "shapes": 10,
+            "coverage": "New Hampshire \u00b7 10 county contest counts, not turnout.  Select a county to inspect its total. No state turnout estimate is allocated to counties."
+          },
+          {
+            "state": "New Jersey",
+            "shapes": 21,
+            "coverage": "New Jersey \u00b7 19 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 19 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "New Mexico",
+            "shapes": 33,
+            "coverage": "New Mexico \u00b7 33 county observations \u00b7 33 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "New York",
+            "shapes": 62,
+            "coverage": "New York \u00b7 62 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 62 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "North Carolina",
+            "shapes": 100,
+            "coverage": "North Carolina \u00b7 100 county observations \u00b7 100 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "North Dakota",
+            "shapes": 53,
+            "coverage": "North Dakota \u00b7 53 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 53 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Ohio",
+            "shapes": 88,
+            "coverage": "Ohio \u00b7 88 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 88 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Oklahoma",
+            "shapes": 77,
+            "coverage": "Oklahoma \u00b7 77 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 77 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Oregon",
+            "shapes": 36,
+            "coverage": "Oregon \u00b7 36 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 36 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Pennsylvania",
+            "shapes": 67,
+            "coverage": "Pennsylvania \u00b7 43 county observations \u00b7 40 reviewed county rates on 2024 Census reference boundaries; 43 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Rhode Island",
+            "shapes": 39,
+            "coverage": "Rhode Island \u00b7 39 municipality observations on 2024 Census reference boundaries \u00b7 0 approved rates. Color shows ballot counts, not a rate. Select a municipality for native ballots and registrations. No municipal count or registration is assigned to a precinct; Federal/limited-only units remain unallocated."
+          },
+          {
+            "state": "South Carolina",
+            "shapes": 46,
+            "coverage": "South Carolina \u00b7 46 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 46 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "South Dakota",
+            "shapes": 66,
+            "coverage": "South Dakota \u00b7 66 county observations \u00b7 66 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Tennessee",
+            "shapes": 95,
+            "coverage": "Tennessee \u00b7 95 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 95 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Texas",
+            "shapes": 254,
+            "coverage": "Texas \u00b7 254 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 254 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Utah",
+            "shapes": 29,
+            "coverage": "Utah \u00b7 19 county observations \u00b7 18 reviewed county rates on 2024 Census reference boundaries; 19 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Vermont",
+            "shapes": 247,
+            "coverage": "Vermont \u00b7 247 municipality observations on VCGI BNDHASH town reference polygons; data edited May 2, 2025 \u00b7 241 approved rates. Gray is withheld, not zero. Select a municipality for native ballots and registrations. No municipal count or registration is assigned to a precinct; Federal/limited-only units remain unallocated."
+          },
+          {
+            "state": "Virginia",
+            "shapes": 133,
+            "coverage": "Virginia \u00b7 133 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 133 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Washington",
+            "shapes": 39,
+            "coverage": "Washington \u00b7 39 county observations \u00b7 39 reviewed county rates on 2024 Census reference boundaries; 39 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "West Virginia",
+            "shapes": 55,
+            "coverage": "West Virginia \u00b7 55 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 55 reviewed county identity joins. 3 available participation counts; 52 source totals are withheld, not zero turnout. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Wisconsin",
+            "shapes": 72,
+            "coverage": "Wisconsin \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          },
+          {
+            "state": "Wyoming",
+            "shapes": 23,
+            "coverage": "Wyoming \u00b7 23 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 23 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+          }
+        ]
+      },
+      {
+        "case": "all_state_precinct_selections",
+        "states": 51,
+        "retained_2026": true,
+        "no_silent_metric_switch": true
+      },
+      {
+        "case": "supported_2026_precincts",
+        "state": "Idaho",
+        "shapes": 448
+      },
+      {
+        "case": "supported_2026_precincts",
+        "state": "North Dakota",
+        "shapes": 338
+      },
+      {
+        "case": "supported_2026_precincts",
+        "state": "Minnesota",
+        "shapes": 4105
+      },
+      {
+        "case": "supported_2026_precincts",
+        "state": "Michigan",
+        "shapes": 58
+      },
+      {
+        "case": "supported_2026_precincts",
+        "state": "New Mexico",
+        "shapes": 2177
+      },
+      {
+        "case": "supported_2026_precincts",
+        "state": "District of Columbia",
+        "shapes": 144
+      },
+      {
+        "case": "supported_2026_precincts",
+        "state": "Virginia",
+        "shapes": 710
+      },
+      {
+        "case": "supported_2026_precincts",
+        "state": "Indiana",
+        "shapes": 83
+      },
+      {
+        "case": "state_county_recovery_and_tab_roundtrips",
+        "page_errors": []
+      },
+      {
+        "case": "coverage_navigation",
+        "mobile": false,
+        "no_overflow": true
+      },
+      {
+        "case": "coverage_navigation",
+        "mobile": true,
+        "no_overflow": true
+      },
+      {
+        "case": "failed_source_retry",
+        "context_retained": true,
+        "recovered": true
+      },
+      {
+        "case": "failed_county_retry",
+        "context_retained": true,
+        "recovered": true
+      }
+    ]
+  },
+  "remaining_default_contest_fallbacks": [
+    "Alaska",
+    "Illinois",
+    "Massachusetts",
+    "New Hampshire"
+  ],
+  "old_complete_download_routes": 436,
+  "nationwide_project_complete": false,
+  "source_regions_mapped_per_mode": 480,
+  "source_regions_held_per_mode": 104,
+  "reference_areas_held_per_mode": 48,
+  "contextual_boundary_year": 2024,
+  "native_election_id_qualified": false
+}

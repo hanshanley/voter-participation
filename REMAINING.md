@@ -42,7 +42,19 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live:** Connecticut town reports under `4d26889` (numerical
+**Latest accepted live:** Maine partial locality activity under `f6a9e98`.
+Both modes retain all 584 source regions: 480 mapped and 104 native / 48
+reference areas held per mode, on the full 528-area 2024 contextual reference.
+Complete immutable release `439851515` includes every source/reference/frame
+decision, originals, identity inputs and offline code/results. All eight assets,
+174 tests, 11,438 independent checks and two blocked exact replays pass.
+Pages `42738234318`, guard `42738234642`, artifact `13727918651` pass:
+**988,975,450 payload / 991,528,960 tar bytes**. All 27 checked production files,
+both-mode desktop/mobile/all values and holds/stale-detail/retry, CT169,
+providerall61/HI4/WV priority/all51 pass. All 436 old complete routes remain.
+Do not repeat this completed review/build/package/release/acceptance.
+
+**Previous native increment:** Connecticut town reports under `4d26889` (numerical
 source `5e8e75b`) expose all 169 native VV counts / 1,150,127, with the separate
 Total excluded from the map sum. Immutable release `439819338`, all seven
 assets, 169 tests, 1,460 independent checks and two exact offline replays pass.
@@ -97,7 +109,17 @@ The fresh `ct-native-supported-timeout-production-acceptance-01` completed
 successfully and was read. Exact native artifact/caps/production acceptance is
 recorded above; do not duplicate its successful build, download or checks.
 
-**Next held-input lead:** Maine's two 584-region provider frames each have
+**Accepted source:** Maine `f6a9e98` is live; immutable release
+`439851515` has all eight complete assets anonymously verified before activation.
+The 665,845-byte / 19-member ZIP preserves every source/reference/frame decision,
+all sufficient held originals and exact offline code/results. 11,438 checks,
+two network-blocked reproductions, 174 tests/Astro/build/local desktop/mobile
+both modes/stale-detail clearing/retry/CT169/all51 pass. ONE
+`maine-production-acceptance-01` completed successfully and was read. Exact
+native artifact/caps/production acceptance is recorded above; do not duplicate
+the successful artifact download or browser checks.
+
+Maine's two 584-region provider frames each have
 480 one-to-one matches to full held 2024 municipality shapes: 441 already-
 qualified historical identity links and 39 unambiguous Twp/Plt aliases. No
 historical voting counts/rates are transferred. Lincoln/Rangeley/Unity/
@@ -107,9 +129,9 @@ Native source-category parent totals reconcile. The immutable input builder
 has run once; complete 1,168 native / 1,056 reference / two mode decisions and
 four focused tests pass. Adapter/renderer/strict-reference edits now
 pass 25 focused tests and Astro with zero errors/warnings; a dedicated browser
-check and complete-package script are written but unrun. CT acceptance is
-complete: proceed with a separate Maine branch, full build/caps/browser checks,
-complete archive/offline checks and actual authorized publication. A separately labeled partial local
+check and complete-package script now pass locally and offline; the source
+and complete release are published. Actual production acceptance has passed;
+continue the remaining county/precinct gaps. This separately labeled partial local
 activity layer may use only proved matches, retaining all original records and
 holds; do not aggregate into counties or invent full coverage/native election
 IDs. No new geometry acquisition is needed for those held inputs.
@@ -119,10 +141,21 @@ context. Activity is not full-election turnout, certified ballots or unique
 people. Do not add early/mail modes, replace native positive/zero/partial
 snapshots, allocate state totals or promote held jurisdictions. Explicit
 Official never substitutes provider data. Actual production default county audit finds
-only **AK/IL/MA/NH contest fallbacks plus Maine without a county layer**;
+only **AK/IL/MA/NH contest fallbacks**; Maine now has partial locality activity,
+not inferred county totals;
 eleven former contest-only states have uniform source-activity counts.
 Pursue these remaining scope-specific gaps using held inputs first. This does
 not complete nationwide native precinct coverage.
+
+**Next held Alaska review:** complete native 2026 app-shape delta decoding
+produces all 402 topology decisions without new acquisition or repairs.
+81 paths are valid as OGC polygons without repairs; 321 retain source
+self-intersection/topology holds. All map approvals remain false until native
+ring/display semantics and election-vintage qualifications are independently
+checked. Reuse the already-reconciled 523 reporting-unit counts, including
+402 geographic, 120 pooled district and one federal-overseas unit. Do not
+repair source paths, allocate pooled/federal counts, infer rates or substitute
+locator repairs just to force a map.
 
 **Accepted live:** website `cb79d84` connects West Virginia's separate county
 modes and all 64 Colorado returned-and-processed counts. Pages `42717017978`,
