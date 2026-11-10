@@ -41,7 +41,33 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
-**Current priority: replace active one-off intake and finish the margin fix.**
+**Latest direct priorities: modeled 2026 effects and resident demographic context.**
+The first NORC/returns bridge computes 113 conditional office/state estimates:
+50 House aggregates, 35 Senate races and 28 governor source frames, with
+55 office-specific switching tables and 1,017 declared strength scenarios.
+Five focused tests, 10,565 independent rational-arithmetic checks and two exact
+network-blocked reproductions pass. The complete 749,940-byte / 14-member
+packet is built, but the new estimates and coloured chart are **not yet
+published or verified live**. Keep the 2024 presidential-recall baseline,
+cross-office assumptions, unknowns, denominator and unallocated frame gap
+explicit; these are not causal or administrative staying-home estimates.
+
+The shared margin fix and compact sidebar are verified live. Website
+`e7ddf5f` / Pages **42850112990 attempt 2** / artifact **13781711302**
+passes **995,790,625 payload / 998,369,280 tar bytes**, 54 exact production
+files and all 436 old complete-download routes. All 102 live state/viewport
+cases pass, including all 50 loaded count selectors; all 51 jurisdictions
+avoid duplicate long button lists. Real map clicks, selected-place details
+and 32 margin/tab checks pass. The retry retained the same original artifact.
+Do not rebuild or repeat accepted sidebar verification merely for activity.
+
+Add income, race/ethnicity, age and education as **resident context**, not
+voter characteristics or group turnout. Start from official 2020–2024 ACS
+five-year public summary files and approved geography. Preserve native MOEs,
+source years and missingness; precinct estimates need qualified crosswalks,
+not state allocations or averages of median incomes.
+
+**Continuing architecture priority: replace active one-off intake.**
 Use one validated source contract, direct adapters, hash-based incremental
 processing, approved reference reuse, full reproducible downloads and data-only
 publication with truthful coverage. Do not start another bespoke state importer

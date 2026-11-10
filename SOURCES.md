@@ -27,6 +27,35 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 modeled NORC and returns bridge — publication in progress
+
+The new experimental bridge reuses the already-reduced whole-state NORC
+moments, held House district controls, 35 native Senate vectors, all 2,014
+supplied governor factual county records and 55 qualified office-specific
+main switching tables. It computes **113 conditional estimates / 1,017
+strength scenarios** without rerunning the successful original survey reduction.
+Private fine joint/demographic cells and respondent records are not selected.
+
+Five tests, **10,565 independent Fraction checks** and two exact network-blocked
+reproductions pass. A complete **749,940-byte / 14-member** packet contains all
+sufficient selected numerical inputs, full queries, code, tests and checksums.
+It is **not yet anonymously published or claimed live**. The
+[methods note](docs/RETURN_ATTRIBUTION.md) distinguishes source-frame contrasts,
+transport, the exact denominator term and the unallocated return/frame gap.
+The baseline is recalled 2024 President, not automatically a prior election
+for the same office; modeled nonparticipation is not measured staying home.
+
+## All-state map interface
+
+Website `e7ddf5f` removes unfiltered county-button lists generically, not just
+for Florida. Actual Pages **42850112990 attempt 2** / artifact **13781711302**
+passes **995,790,625 payload / 998,369,280 tar bytes**, 54 exact unqueried
+production files and 436 unchanged full-download routes. All **102 live
+state/viewport cases** pass, including all 50 loaded local-count selectors;
+actual map clicks, compact selection, selected details and 32 shared-margin
+checks remain intact. The failed deployment was recovered with the same
+original artifact, not another build or upload.
+
 ## 2026 Minnesota complete native statistics
 
 Source `592c7df` uses the genuinely new **November 10, 8:08 AM** native
