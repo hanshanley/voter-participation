@@ -1,5 +1,42 @@
 # 2026 modeled margin contributions
 
+## Reported-swing correction: version 20261110-02
+
+The primary maps now distinguish the **reported same-office swing** from
+modeled switching, modeled nonparticipation, and **other / unallocated**.
+The three contribution maps add to the reported total wherever a qualified
+historical comparison exists. All margins use `100 * (D - R) / (D + R)`.
+
+All original 113 models and their sensitivity ranges remain unchanged.
+Their seven terms explain a recalled-presidential survey-frame contrast,
+not the observed earlier same-office margin. An eighth, explicitly unallocated
+baseline-alignment term closes that difference without fitting earlier
+partisan composition or calling the residual persuasion or staying home.
+
+For example, the held Texas House counts imply **+25.16363563924734 pp**:
+switching **+3.5983884082676587**, modeled nonparticipation
+**-0.8468238317922675**, and other/unallocated **+22.41207106277195**.
+The new baseline alignment alone is **+14.62083777048145 pp**.
+
+There are 89 qualified comparisons: 35 House aggregates, 26 Senate races and
+28 supplied governor frames. Missing comparisons remain unavailable; the
+original conditional components are not hidden or relabelled as totals.
+House requires exact Census county identities, known prior/current counts
+and agreement with complete held current candidate controls. Competition
+screens remain qualifications, not reasons to discard actual recorded votes.
+Senate uses the FEC 2020 regular-seat results, with Georgia's full-term
+January 2021 runoff separate from its other seat. Minnesota DFL is an explicit
+party-code alias; independent/fusion/unmapped affiliations remain Other.
+Unresolved more recent specials, missing prior seats and unqualified party
+pairs are withheld. Governor comparisons retain their supplied matched
+2022/2026 county frames and are not certified complete statewide results.
+
+The new complete packet contains both entire predecessor analysis packets,
+the full FEC workbook, the full Census Gazetteer original, inputs, code, tests,
+queries and hashes. Its offline reproduction rebuilds both predecessor
+analyses and byte-compares every new comparison. Prior immutable numerical
+versions and complete downloads remain intact.
+
 These are **conditional source-weighted estimates**, not observed individual
 switching, administrative staying home or causal persuasion.
 

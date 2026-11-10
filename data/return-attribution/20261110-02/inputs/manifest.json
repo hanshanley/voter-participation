@@ -1,0 +1,27 @@
+{
+  "original-viewer.json": {
+    "bytes": 183778,
+    "sha256": "462200ed303136bbe2066513d3e06f55a32da4fda70bd57f384fc401e2f7a719",
+    "held_source": "research-observed-swing-build-01/data/return-attribution/20261110-01/viewer-data.json"
+  },
+  "model-inputs.json": {
+    "bytes": 1730457,
+    "sha256": "361853e7c4d86530bd5267d8302f02d8869b6d7f34744bc9a54962e97319445e",
+    "held_source": "research-observed-swing-build-01/data/return-attribution/20261110-01/model-inputs.json"
+  },
+  "house-county-panel.csv": {
+    "bytes": 971818,
+    "sha256": "18b81179ba71aef496f9cf12d4c9cb89e8f562834ebf4993729bf6cb0550188d",
+    "held_source": "house-exact-panel-20261108-03/county-panel.csv"
+  },
+  "fec-2020.xlsx": {
+    "bytes": 6251110,
+    "sha256": "5073b6d2c76c86c941508dfb1a11cc497e8529b0068c5132aceb0f385c19352e",
+    "held_source": "historical-backtest-native-01/declared-inputs/fec-2020.xlsx"
+  },
+  "gazetteer-counties.zip": {
+    "bytes": 141679,
+    "sha256": "3c337402b5c6e8d5aa26b4278ccf4edc8989f2683765b3ffbf22296cdb2df3a0",
+    "held_source": "Verified county science packet, complete 2024 Census Gazetteer original"
+  }
+}
