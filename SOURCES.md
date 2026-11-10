@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
-| Local activity snapshots | [Manchester/Concord wards](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester version](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
+| Local activity snapshots | [Three-city wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -25,6 +25,42 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 native ward counts in three New Hampshire cities
+
+Source `a7cd4a5` adds nine Nashua ward references to Manchester's 12 and
+Concord's 10. **Complete download and live website acceptance verified.**
+The [complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-new-hampshire-native-ward-reference-20261110-03/complete-analysis.zip)
+contains **17 full PDFs / 219 pages**, 140 sufficient inputs, code, tests,
+results, all 31 reference decisions, 36 Nashua pair decisions and six Dover holds.
+
+| Scope | Treatment |
+|---|---|
+| Counts | Nashua's nine printed ward totals sum to 33,849, not a separately printed city total. The component sum of 33,847 is not substituted. |
+| Source disagreements | Ward 3/4/8 differences of +1/-2/-1 and printed amendments remain; federal-only 92 stays separate, never added. |
+| Reference | City-linked adopted Ward polygon layer 7, effective December 28, 2021; not proposed wards, polling points, blocks or parcels. The current map's October 2026 revision is a separate clock. |
+| Geometry | All 8,256 new vertices verified; nine valid, untouched shapes and all 36 pair decisions, with no native overlaps. |
+| Limits | Six Dover wards remain table-only. Municipal display references are not certified 2026 legal precincts; no geographic allocation, analysis rates or unique-person claims. |
+
+The **97,907,540-byte / 184-member** ZIP has SHA-256
+`5802a9a7f17a67bd045b39447db30e44b359ab4ce2c8cc4ca782fe38524c3963`.
+All 242 earlier source fields, 37 ward rows, 22 features and 436 complete-download
+routes remain exact. Verification passes 202 focused checks, build and local
+desktop/mobile navigation, plus 1,067 independent checks and two exact
+network-blocked reproductions. Private app code, keys and unrelated feature
+data are excluded. The independently declared adopted source does not replace
+the recorded failure of the original NewGIS backend.
+
+Release **440041905** targets `a7cd4a5`; all 13 full assets were anonymously
+verified before main. Pages **42773036449 attempt 1** and main guard
+**42773036375** succeeded. Actual artifact **13742538594** passes both caps:
+**989,504,509 payload / 992,071,680 tar bytes**. All 38 exact unqueried production
+files and live NH31 desktop/mobile, Illinois102, Alaska81, Maine480, Hawaii4
+and all51 browser checks pass. No national precinct-completeness claim is made.
+The [source record](data/participation-access/20261110-new-hampshire-ward-reference-03/observations.json)
+and [website status](data/participation-access/20261110-new-hampshire-ward-reference-03/website-acceptance.json)
+retain that distinction. The earlier accepted 22-ward version and every full
+immutable release remain unchanged.
 
 ## 2026 native ward counts in Manchester and Concord
 

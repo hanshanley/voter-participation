@@ -42,7 +42,26 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: four city sources and22 Manchester/Concord wards:**
+**Latest accepted live: four city sources and 31 mapped wards.** `a7cd4a5`
+adds nine adopted Nashua ward references to Manchester's 12 and Concord's 10.
+All earlier counts, source disagreements, separate federal-only counts and
+436 complete-download routes are unchanged. Release **440041905** includes
+the full 97,907,540-byte archive, 17 PDFs / 219 pages, 140 sufficient inputs
+and every mapped/held decision; all 13 assets were verified before main.
+Local tests/build/browser checks and two independent offline reproductions pass.
+Pages **42773036449 attempt 1** / main guard **42773036375** succeeded.
+Actual artifact **13742538594** passes **989,504,509 payload / 992,071,680 tar
+bytes**; all 38 exact unqueried production files and NH31 desktop/mobile,
+Illinois102, Alaska81, Maine480, Hawaii4 and all51 browser checks pass.
+**Do not repeat the successful package, build, release or acceptance.**
+Six Dover wards remain table-only; do not use keys, parcel allocation or
+unsupported boundaries. Native precinct coverage nationwide remains open.
+Next, review the independently city-published Boston/Somerville originals for
+Massachusetts, the remaining contest-only fallback. Its denied state statistics
+hub and absent provider product remain stopped; native dates, count definitions,
+source disagreements and geography must qualify before any integration.
+
+**Earlier accepted snapshot: four city sources and 22 wards:**
 `d7e6664` adds ten direct Concord ward joins summing to printed19,234 while
 preserving all242 source fields /37 ward rows /12 Manchester features.
 The complete **97,239,222-byte /160-member** package has all17 PDFs /219 pages,
@@ -61,14 +80,8 @@ both-city tab selection/zoom/resize/Methods/source guards/retry,
 Illinois102/Alaska81/Maine480/Hawaii4/all51 production browsers pass.
 All436 old complete routes remain. **Do not repeat this successful package,
 source, build, release or production acceptance.**
-Nashua9 remain held for native query-backend failure; Dover6 for no qualified
-feature source. Do not use keys, parcel allocation or unsupported boundaries.
-Next: the independently city-linked Nashua public portal has an explicitly
-adopted December28,2021 Ward polygon layer7, distinct from proposed wards,
-polling points, census blocks and parcels. All nine count/ID/geographic/native
-originals were acquired with only `OBJECTID,Ward,Wardtxt`, but still need
-numerical/topology/coordinate qualification and a separate tested publication.
-Keep the failed original backend and the accepted22-ward release unchanged.
+That snapshot's nine Nashua holds are resolved in the separate 31-ward source
+above; keep its original failed backend record and immutable release unchanged.
 
 **Earlier accepted live: four New Hampshire cities and12 Manchester wards:**
 `5fd7549` retains all four city sources and adds 12 native Manchester ward
