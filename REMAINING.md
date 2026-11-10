@@ -42,7 +42,32 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Four-city New Hampshire source published; deployment blocked:** source `9b922c4`
+**Latest accepted live: four New Hampshire cities and 12 Manchester wards:**
+`5fd7549` retains all four city sources and adds 12 native Manchester ward
+totals on current official municipal context (2022 GIS / lines effective
+December 21, 2021), not certified 2026 legal precincts. Other 25 ward rows
+remain in tables; the default state view is still four-city context.
+The complete **94,979,235-byte / 122-member** ZIP retains all16 PDFs /218 pages,
+93 input pins, all242 prior fields/37 rows and every native count/reference/
+overlap/hold decision. Immutable **439988155**, all11 assets anonymously
+verified before main, is published. All198 tests, post-viewport-fix143UI/
+Astro/build, actual desktop/mobile counts/zoom/resize/tab selection/Methods/
+source guards/retry and finalall51 pass. Independent4,506checks / two exact
+network-blocked reproductions verify all3,789 vertices and unchanged prior
+queries. Fresh Pages **42763626040 attempt1** / main guard **42763626097**
+succeeded. Actual artifact **13738453245** passes **989,164,442 payload /
+991,733,760 tar bytes**, all34 selected and exact unqueried production files.
+Actual NH four-city/12-ward desktop/mobile counts/zoom/resize/tab selection/
+Methods/source guards/retry, Illinois102/Alaska81/Maine480/Hawaii4/all51
+production browsers pass. All436 old complete routes remain unchanged.
+**Do not repeat this successful package/build/release/acceptance.**
+The earlier four-city-only failed run below remains historical; its website
+outcome is now satisfied by this distinct combined publication, not an old retry.
+Continue the 25 remaining already-held ward rows through separately qualified
+current references; never substitute unqualified boundaries or infer rates.
+Nationwide native precinct coverage remains open.
+
+**Historical four-city-only deployment failure:** source `9b922c4`
 adds already-acquired Nashua/Dover to the accepted Manchester/Concord view:
 four cities, 37 table-only wards, 242 source fields and 255 unknown contextual
 areas. The complete **93,099,445-byte / 91-member** package retains every
@@ -57,12 +82,13 @@ context shapes are valid unrepaired/interior-disjoint. Main guard
 **989,109,680 payload / 991,672,320 tar bytes** and 32 selected-file checks.
 Pages `42756293558` failed three deployment-only attempts at its actual
 ten-minute timeout, retaining the same successful build/artifact/native ZIP.
-The exact unqueried public script/NH data still match the accepted two-city
-`452e4c9` version. **No four-city live claim or production acceptance.**
+At that failure, exact unqueried public script/NH data still matched the
+accepted two-city `452e4c9` version. **That run has no production acceptance;**
+the later combined publication above is now live under its distinct source/run.
 Retries are stopped; preserve the artifact/proofs. Do not repeat successful
 sources, freezes, packages, builds or local tests for activity.
 
-**Latest accepted live: New Hampshire** source `452e4c9`
+**Earlier accepted live: New Hampshire** source `452e4c9`
 connects Manchester's 12 ward packets and Concord's native city report:
 two city snapshots and 22 table-only wards on full 259-area 2024 municipality
 context; 257 unknown areas remain unknown. Manchester's derived 38,562 sum

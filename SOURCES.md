@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
-| Local activity snapshots | [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
+| Local activity snapshots | [Manchester wards](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -26,11 +26,58 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 Manchester native ward counts on current municipal context
+
+Source `5fd7549` preserves the four New Hampshire city sources and adds
+Manchester's **12 literal ward totals** on current official municipal ward
+context. **Full numerical release and actual live website acceptance verified.**
+The [complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-manchester-native-ward-reference-20261110-01/complete-analysis.zip)
+contains **16 full PDFs / 218 pages**, all 93 sufficient input pins, original
+projected/geographic geometry, code, tests and every mapped/held decision.
+
+| Question | Treatment |
+|---|---|
+| What is mapped? | Twelve native November 3, 2026 Manchester ward totals; derived sum 38,562, not a separately printed city parent |
+| Which boundaries? | Current official `Wards_2022` municipal reference; clerk/map corroborate lines effective December 21, 2021, not newly certified 2026 legal precincts |
+| How are identities matched? | Literal city and ward number/label; REST polygon layer **3**, not WMS layer 0 or REST layer 0's unrelated points |
+| What remains unaltered? | Ward 7 prints 2,712 against components 2,797; the 85-ballot disagreement and separate federal-only 76 remain; six small native boundary overlaps are not clipped/repaired |
+| What is not mapped? | Other 25 ward source rows remain in tables; default state navigation retains four-city municipality context, not a Manchester-only statewide substitute |
+| What is not estimated? | No analysis denominator/rate, unique-voter count, geographic allocation or legal-boundary certification |
+
+The **94,979,235-byte / 122-member** ZIP has SHA-256
+`d2c4f2c666eeb2e696c7997d3d0d7910deaf553baa0512e2bed7cdbb670e9194`.
+All earlier **242 source fields and 37 ward rows** reproduce exactly.
+Independent verification passes **4,506 checks**, checks all **3,789 native
+vertices**, and reproduces both new and prior city queries exactly in two
+network-blocked extractions, with 14 packaged tests each. All 198 affected
+tests pass; the viewport fix additionally passes 143 UI tests, Astro and full
+build. Actual desktop/mobile counts, unknown areas, zoom/pan/resize, tab
+selection, Methods, checksum rejection/retry and wrong-layer rejection pass;
+the final all51 navigation audit passes. Private app configuration, compiled
+publisher code and personal/population attributes are excluded.
+
+Immutable release **439988155** targets `5fd7549`; all **11 complete assets**
+were anonymously verified before main activation. Source guard `42763474498`
+passes. Fresh Pages **42763626040 attempt 1** and main guard **42763626097**
+succeeded. Actual native artifact **13738453245** passes **989,164,442 payload /
+991,733,760 tar bytes** and all34 selected-file checks. All34 exact unqueried
+production files, NH four-city/12-ward desktop/mobile counts, source conflicts,
+zoom/resize/tab selection, Methods, source guards/retry, and Illinois102 /
+Alaska81 / Maine480 / Hawaii4 / all51 production browsers pass. All436 old
+complete-download routes remain unchanged. This distinct combined publication
+also satisfies the earlier four-city website outcome; the old failed run is
+not relabeled successful or retried. National precinct completeness is not claimed.
+The [source record](data/participation-access/20261110-manchester-ward-reference-01/observations.json)
+and [website status](data/participation-access/20261110-manchester-ward-reference-01/website-acceptance.json)
+retain that distinction and the earlier blocked deployment history.
+
 ## 2026 New Hampshire: four city sources, not state/county or precinct turnout
 
 Source `9b922c4` adds Nashua and Dover while preserving every original value
 from Manchester/Concord. **Complete source release published; four-city
-website deployment is blocked after three syncing-file timeouts.**
+four-city-only deployment failed after three syncing-file timeouts.**
+That historical failure remains below; the distinct combined `5fd7549`
+publication above now provides the live four-city view and Manchester ward map.
 The [complete package](https://github.com/hanshanley/margin_of_error/releases/download/voter-new-hampshire-native-cities-20261110-02/complete-analysis.zip)
 contains all 15 full PDFs / 217 pages, exact native readings/crops, safe
 receipts, full unchanged municipality reference, code, tests and every query.
@@ -68,8 +115,9 @@ Actual artifact **13735453505** passes **989,109,680 payload / 991,672,320 tar
 bytes**, all 32 selected-file checks and all 436 old complete-download mappings.
 Pages `42756293558` timed out in **three deployment-only attempts**; the successful
 build, same artifact and native ZIP were retained. No further retry loop or
-successful build/package repetition is running. Exact unqueried production
-probes still match `452e4c9`'s two-city script/data, not the four-city source.
+successful build/package repetition is running. At that failure, exact unqueried
+production probes still matched `452e4c9`'s two-city script/data. The later
+combined `5fd7549` publication above is now separately accepted live.
 The [source ledger](data/participation-access/20261110-new-hampshire-cities-02/observations.json)
 and [blocked publication record](data/participation-access/20261110-new-hampshire-cities-02/website-acceptance.json)
 distinguish published numerical results/local acceptance from absent live acceptance.
