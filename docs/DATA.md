@@ -29,6 +29,7 @@ are not automatically compatible populations.
 
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
+| Connecticut native town counts | All 169 native town VV observations plus separate Total, eight native column comparisons, both source versions and full held 2024 contextual shapes; no rates or county/precinct allocation | [Download](https://github.com/hanshanley/margin_of_error/releases/download/voter-connecticut-native-towns-20261110-01/complete-analysis.zip) |
 | County early/returned activity | All 102 state/mode decisions and 6,371 regional queries; 63 complete county frames in 39 states, originals/references/code; separate source activity, not full-election turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip) |
 | 2026 provider demographic frames | All 408 state/mode/dimension decisions, 135 native group counts, own-frame compositions and explicit parent mismatches; no population turnout denominator | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-provider-demographic-frames-20261109-01/complete-analysis.zip) |
 

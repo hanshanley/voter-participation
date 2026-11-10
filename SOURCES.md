@@ -26,6 +26,54 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 Connecticut: native town counts, not county or precinct totals
+
+The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-connecticut-native-towns-20261110-01/complete-analysis.zip)
+reuses the held native **election 108**, explicitly identified as November 3,
+2026. All **169 town VV cells sum to 1,150,127**; the separate native **Total
+is not an extra town**. All eight numeric columns reconcile to that Total.
+Native election-parent BC/RV, town EV, mode cells, printed TO and statuses remain
+literal. Thirteen town PR cells are blank, not zero; a reporting counter does
+not create 776 precinct observations.
+
+| Scope | Treatment |
+|---|---|
+| Mapped count | Literal native town `VV`, not candidate choice or generic certified cast/unique-person counts |
+| Other cells | EV, ABR/ABC, EBR/EBC, EDR/EDC and TO retained; mode/denominator definitions are not silently inferred |
+| Geometry | All 169 names match the full held **2024 contextual municipality reference**, with original coordinates unchanged |
+| Identities | Derived CT-TOWN IDs retain native town IDs and separate contextual reference keys; no invented FIPS or nine county totals |
+| Time | Versions 52337/52338 have identical complete turnout payloads; tokens are not clocks, and retrieval is not a counting cutoff |
+| Holds | All analysis rates/denominators remain null; no certified 2026 geography, mode sums or precinct allocation |
+
+Release `439819338` targets source `5e8e75b`. Seven complete assets were
+anonymously verified before main activation. ZIP: **175,231 bytes / 23
+members**, SHA-256
+`2793746307ae6aac600f515b7350196546fc9d6289bc97e1bf0b0531217b6030`.
+It includes both native versions, complete town/Total queries, all eight
+accounting checks, full original/derived reference inputs and offline code/tests.
+**1,460 independent checks**, two exact network-blocked reproductions, 169
+integration tests, Astro and build checks pass. Local desktop/mobile verifies
+every count/raw cell, Methods, contextual year, bad-reference rejection/retry
+and all 51 geographic interactions.
+
+The town view is **live and actual-production verified** under workflow-only
+successor `4d26889`. Pages `42735904153` and guard `42735903986` succeeded;
+artifact `13727556269` has **988,726,858 payload / 991,283,200 tar bytes**.
+All 25 checked unqueried production files match. Every native town count/raw
+cell, desktop/mobile/Methods, bad-reference rejection/retry and all51 navigation
+pass. All 61 provider frames, native Hawaii and West Virginia priority survive;
+the 436-route complete-download manifest is unchanged.
+The first Pages attempt built successfully but timed out during `syncing_files`.
+Its action log confirms that `deploy-pages@v5` clamps the configured 1,800,000
+milliseconds to 600,000; the earlier requested value did not establish a longer
+effective window. One deployment-only retry retained artifact `13725048820`
+but also timed out during syncing. The workflow-only successor `4d26889`
+corrects the value to the supported cap, without changing numerical inputs,
+the complete source package or Connecticut code. Its actual deployment and
+production acceptance passed; do not repeat the successful build or release.
+See the [source ledger](data/participation-access/20261110-connecticut-towns-01/observations.json)
+and [actual acceptance](data/participation-access/20261110-connecticut-towns-01/website-acceptance.json).
+
 ## 2026 project: held county activity frames
 
 The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip)

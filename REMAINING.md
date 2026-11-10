@@ -42,7 +42,17 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live:** provider batch `5fc4f81` connects held activity in
+**Latest accepted live:** Connecticut town reports under `4d26889` (numerical
+source `5e8e75b`) expose all 169 native VV counts / 1,150,127, with the separate
+Total excluded from the map sum. Immutable release `439819338`, all seven
+assets, 169 tests, 1,460 independent checks and two exact offline replays pass.
+Pages `42735904153`, guard `42735903986`, artifact `13727556269` pass:
+**988,726,858 payload / 991,283,200 tar bytes**. All 25 checked production files,
+CT169 desktop/mobile/raw cells/retry, all61 provider frames, HI4/WV priority
+and all51 navigation pass. All 436 old complete-download routes survive.
+Town boundaries remain explicitly contextual 2024, not certified 2026 precincts.
+
+**Previous accepted batch:** provider `5fc4f81` connects held activity in
 38 states: 61 provider frames / 4,621 source-county counts, with two stronger
 native West Virginia modes retaining priority. Complete immutable release
 `439800051` includes all 102 frame decisions, 6,371 regional queries, 79 raw
@@ -66,23 +76,50 @@ artifact `13721431268`: **988,250,714 payload / 990,781,440 tar bytes**.
 All 18 checked production files and all 436 earlier complete routes pass.
 Do not repeat this completed acquisition/review/package/deployment/acceptance.
 
-**Next integration priority:** Connecticut's already-held official election
-108 inputs contain 169 town rows plus a separate native Total. All eight
-numeric fields reconcile to that Total; native town VV sums **1,150,127**
-without adding the Total again. Native election metadata identifies November
-3, 2026. All 169 names match the held full **2024 contextual municipality**
-reference. Review native field labels, empty reporting counters and original
-versions, then connect source-specific town observations, not nine invented
-county totals or 776 inferred precinct records. Preserve all mode/EV/printed
-rate cells and source clocks; withhold analysis rates and generic cast/unique
-claims. No new acquisition or repeated state-control research is needed.
+**Accepted native source:** Connecticut `5e8e75b` and complete immutable
+release `439819338` connect 169 native town VV counts / **1,150,127**, with the
+separate Total never added again. All eight native columns balance; 13 blank
+PR counters, EV/mode/printed cells and source statuses survive. Native election
+108 identifies November 3, 2026; both 52337/52338 payloads remain unchanged.
+Full held **2024 contextual municipality** shapes are not certified 2026
+boundaries, nine county totals or 776 precinct observations. All analysis rates,
+denominators and generic cast/unique claims remain withheld; other mode fields
+are not assigned inferred definitions. Complete 175,231-byte / 23-member ZIP,
+all seven anonymous assets, 1,460 independent checks, two blocked exact replays,
+169 tests/Astro/build/local desktop/mobile+all51 pass.
+Original Pages `42731735479` built successfully, then both its first deployment
+and one deployment-only retry timed out during `syncing_files`. The original
+artifact `13725048820` remains; neither failed watcher downloaded it.
+`deploy-pages@v5` explicitly clamps 1,800,000 to 600,000 milliseconds; do not
+repeat the mistaken longer-window assumption. Workflow-only successor `4d26889`
+corrects that value without changing numerical inputs, CT code or its release.
+The fresh `ct-native-supported-timeout-production-acceptance-01` completed
+successfully and was read. Exact native artifact/caps/production acceptance is
+recorded above; do not duplicate its successful build, download or checks.
+
+**Next held-input lead:** Maine's two 584-region provider frames each have
+480 one-to-one matches to full held 2024 municipality shapes: 441 already-
+qualified historical identity links and 39 unambiguous Twp/Plt aliases. No
+historical voting counts/rates are transferred. Lincoln/Rangeley/Unity/
+Washington town identities are explicit; their ambiguous Plt/Twp counterparts
+stay held. Each mode retains **104 native regions / 48 reference areas held**.
+Native source-category parent totals reconcile. The immutable input builder
+has run once; complete 1,168 native / 1,056 reference / two mode decisions and
+four focused tests pass. Adapter/renderer/strict-reference edits now
+pass 25 focused tests and Astro with zero errors/warnings; a dedicated browser
+check and complete-package script are written but unrun. CT acceptance is
+complete: proceed with a separate Maine branch, full build/caps/browser checks,
+complete archive/offline checks and actual authorized publication. A separately labeled partial local
+activity layer may use only proved matches, retaining all original records and
+holds; do not aggregate into counties or invent full coverage/native election
+IDs. No new geometry acquisition is needed for those held inputs.
 
 Preserve native dates, category `votes` and collector-versus-native election
 context. Activity is not full-election turnout, certified ballots or unique
 people. Do not add early/mail modes, replace native positive/zero/partial
 snapshots, allocate state totals or promote held jurisdictions. Explicit
 Official never substitutes provider data. Actual production default county audit finds
-only **AK/CT/IL/MA/NH contest fallbacks plus Maine without a county layer**;
+only **AK/IL/MA/NH contest fallbacks plus Maine without a county layer**;
 eleven former contest-only states have uniform source-activity counts.
 Pursue these remaining scope-specific gaps using held inputs first. This does
 not complete nationwide native precinct coverage.
