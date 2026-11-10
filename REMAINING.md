@@ -1,6 +1,6 @@
 # Remaining work: participation and election-transition estimates
 
-Updated: 2026-11-09 UTC. Source catalog: [SOURCES.md](SOURCES.md).
+Updated: 2026-11-10 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 **The project is not finished when the files are downloaded.** Acquisition and
 reconciliation must feed the participation, switching, modeled/reported
@@ -42,7 +42,38 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live:** Maine partial locality activity under `f6a9e98`.
+**Latest accepted live:** Alaska `3bba8bb` connects 81 native
+geographic House-unit counts / 38,672 `b` ballots to valid unrepaired official
+26GENR app-reference shapes. All 402 shape decisions and 523 count records
+remain; 321 topology holds, 120 pooled district units and one federal-overseas
+unit are never repaired or allocated. This reference is not certified legal
+geography and no full-election precinct turnout rate is inferred.
+The complete 1,385,095-byte / 32-member supplement passes 10,055 independent
+checks, two exact network-blocked reproductions, 176 affected JS/four Python
+tests, Astro/build, desktop/mobile81 and all51 navigation. All 436 older
+complete-download mappings remain exact. Immutable release439872282/all eight
+assets were anonymously verified before main. Pages `42742241487` attempt2 and
+guard `42742241464` succeeded. Actual artifact `13729439177` passes
+**989,017,669 payload / 991,580,160 tar bytes**, 29 exact unqueried production
+files, Alaska81 desktop/mobile/all values/source clocks/failure-retry,
+Maine480/Hawaii4/all51 navigation. Deployment1 timed out in `syncing_files`;
+only its failed deployment was retried, with the original artifact retained.
+Do not repeat the successful build, archive, downloads or acceptance.
+
+**Next held-data integration:** Illinois has 108 source regions per separate
+early/returned mode: 102 county-named candidates and six city-named regions.
+All source-category parents reconcile; cities are not automatically county
+counts or assigned to a single county. Qualify an explicitly contextual
+source-region display without whole-county claims, or independent source
+hierarchy; keep every city record and all holds. The two official
+ElectionAuthorities.aspx / ElectionAuthoritiesPrint.aspx routes returned403
+on November10 and are stopped, with no alternate client/cache/mirror.
+MA/NH provider responses are absent in this held snapshot; Alaska's provider
+responses are state-only. Do not invent regional values from them.
+Default county contest-only fallbacks remain AK/IL/MA/NH; Alaska now separately
+has the partial native precinct map. Nationwide native precinct coverage remains open.
+
+**Previous accepted increment:** Maine partial locality activity under `f6a9e98`.
 Both modes retain all 584 source regions: 480 mapped and 104 native / 48
 reference areas held per mode, on the full 528-area 2024 contextual reference.
 Complete immutable release `439851515` includes every source/reference/frame

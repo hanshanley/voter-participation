@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
-| Local activity snapshots | [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
+| Local activity snapshots | [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -25,6 +25,54 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Alaska native geographic ballots: partial app reference
+
+The [complete query supplement](https://github.com/hanshanley/margin_of_error/releases/download/voter-alaska-native-display-20261110-01/complete-analysis.zip)
+joins held native geographic-unit **House `b` ballots**, not candidate selections,
+to a partial unrepaired reference selected by the official **26GENR** app.
+
+| Scope | Treatment |
+|---|---|
+| Complete counts | All 523 qualified records: 402 geographic, 120 pooled district and one federal-overseas; native ballot parent 215,906 |
+| Partial display | 81 geographic units / 38,672 native ballots; all 321 other native shapes retain topology holds |
+| Native paths | Independently confirmed longitude/latitude deltas; the 81 selected shapes each have one closed path per polygon, valid unrepaired geometry and no mutual interior overlaps |
+| Reference qualification | Official 2026 election-app-selected display reference, not certified legal boundaries; no repaired locator substitution |
+| Ballot modes | No assignment of pooled absentee/early/question or overseas ballots to residential precincts |
+| Rates and clocks | All analysis denominators/rates null; native `11/04/2026 2:11 PM`, timezone unspecified, unofficial |
+
+The **1,385,095-byte / 32-member** supplement retains all 402 shape decisions,
+all 523 source-count queries, all 81 mapped observations and exact geometry,
+six complete official originals, safe receipts, prior qualification inputs,
+independent implementation, tests and results. Its SHA-256 is
+`81952502eabda1a238b3a3c56e58dae39cac2fab2ce14390161202ecc683a7d2`.
+Compiled publisher code, HTML credentials and acquisition headers are excluded.
+No new count acquisition, candidate reduction, clipping or geometry repair occurred.
+
+Source `3bba8bb` passes **176 affected JavaScript tests, four focused Python
+tests, Astro and full build**, desktop/mobile exact81 values/source clocks/
+Methods/state roundtrips/checksum failure and retry, and all51 navigation.
+**10,055 independent checks**, all 9,309 selected source vertices and two
+byte-identical network-blocked reproductions pass. All 436 old complete
+download mappings remain byte-identical.
+
+Immutable release **439872282** was published at **2026-11-10T02:21:48Z**.
+All eight full assets were anonymously byte-verified before main activation.
+Pages `42742241487` built successfully; artifact `13729439177` is retained.
+The actual native artifact passes **989,017,669 payload / 991,580,160 tar
+bytes**, 29 pinned files and the unchanged 436-download manifest.
+Deployment attempt 1 timed out in `syncing_files` at the supported 600,000 ms
+limit. **Attempt 2 succeeded**, retrying only the failed deployment and retaining
+the exact artifact; no numerical source, release or successful build was repeated.
+Source `3bba8bb` is **live and actual-production verified**: all 29 unqueried
+files match, every mapped value passes on desktop/mobile, failed-source retry
+works, and Maine480/Hawaii4/all51 navigation remain intact. Indiana83, Connecticut
+169 and the other supported precinct/local layers pass the broad navigation
+audit. All 436 old complete-download mappings survive. The machine-readable
+[source record](data/participation-access/20261110-alaska-native-display-01/observations.json)
+and [acceptance](data/participation-access/20261110-alaska-native-display-01/website-acceptance.json)
+retain the evidence. This is partial native geographic-unit activity, not
+nationwide precinct completion or a qualified full-election turnout rate.
 
 ## 2026 project: Maine partial locality activity
 
