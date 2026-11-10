@@ -42,7 +42,28 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: four city sources and 31 mapped wards.** `a7cd4a5`
+**Latest accepted live: Massachusetts native local counts and references.**
+`5432c4a` adds Boston/Somerville native counts, all 307 reporting rows and 303
+unchanged reference joins. Four split-parent count joins stay table-only;
+350 of 351 original municipal shapes are valid, with Wayland held unrepaired.
+Distinct count fields, zero registers, source disagreements and status labels
+remain literal; no unique-person count, county allocation or rate is inferred.
+The complete 21,432,354-byte / 100-member ZIP contains four full PDFs / 648
+pages, all 67 sufficient inputs and 99,484 pair decisions. Immutable
+**440115869** / all 14 full assets were anonymously verified before main.
+All 205 tests/build/local desktop/mobile/all51/preserved-NH31 checks and two
+exact blocked-network reproductions pass. Actual Pages **42784448706 attempt 2**
+/ main guard **42784448671** succeeded. Artifact **13748107256** passes both
+caps: **995,165,787 payload / 997,734,400 tar bytes**. All 43 exact unqueried
+production files and MA desktop/mobile, NH31, Illinois102, Alaska81, Maine480,
+Hawaii4 and all51 browser suites pass. The first file-sync timeout is retained;
+failed-job-only recovery reused the same verified artifact, with no rebuild or
+redownload. **Do not repeat the successful package, build, release or acceptance.**
+Resolve the four split-parent joins only from qualified independent native
+boundaries; no clipping or invented remainders. Nationwide precinct coverage
+remains open, and little Pages payload headroom remains.
+
+**Earlier accepted live: four city sources and 31 mapped wards.** `a7cd4a5`
 adds nine adopted Nashua ward references to Manchester's 12 and Concord's 10.
 All earlier counts, source disagreements, separate federal-only counts and
 436 complete-download routes are unchanged. Release **440041905** includes
@@ -56,10 +77,9 @@ Illinois102, Alaska81, Maine480, Hawaii4 and all51 browser checks pass.
 **Do not repeat the successful package, build, release or acceptance.**
 Six Dover wards remain table-only; do not use keys, parcel allocation or
 unsupported boundaries. Native precinct coverage nationwide remains open.
-Next, review the independently city-published Boston/Somerville originals for
-Massachusetts, the remaining contest-only fallback. Its denied state statistics
-hub and absent provider product remain stopped; native dates, count definitions,
-source disagreements and geography must qualify before any integration.
+Massachusetts's independently city-published sources are now qualified in the
+separate publication above. Its denied state statistics hub and absent provider
+product remain stopped.
 
 **Earlier accepted snapshot: four city sources and 22 wards:**
 `d7e6664` adds ten direct Concord ward joins summing to printed19,234 while

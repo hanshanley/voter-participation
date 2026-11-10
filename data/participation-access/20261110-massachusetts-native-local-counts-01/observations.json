@@ -1,0 +1,1042 @@
+{
+  "observed_date_utc": "2026-11-10",
+  "purpose": "Complete native numerical source and verification record, not a metadata-only download",
+  "source_commit": "5432c4af853ef68135252b351982f78cef6ffd40",
+  "complete_numerical_release": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/complete-analysis.zip",
+  "immutable_release": {
+    "status": "PASS_immutable_complete_MA_release_all14full_assets_anonymous",
+    "source_commit": "5432c4af853ef68135252b351982f78cef6ffd40",
+    "source_guard_run_id": 42784177403,
+    "release_id": 440115869,
+    "tag": "voter-massachusetts-native-local-counts-20261110-01",
+    "published_at": "2026-11-10T08:40:07Z",
+    "immutable": true,
+    "verified_before_main_activation": true,
+    "assets": {
+      "complete-analysis.zip": {
+        "bytes": 21432354,
+        "sha256": "ab8248dffc6667b6f5e1f28f4b2d7937d6b2c3fcc528f51be328b5f56790e896",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/complete-analysis.zip"
+      },
+      "queries.json": {
+        "bytes": 995167,
+        "sha256": "3057d31913ad73cb87c9328198ed4eb00cbcc95a0626d099beaccc59dda7f7a5",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/queries.json"
+      },
+      "all307-native-reporting-unit-counts.csv": {
+        "bytes": 202767,
+        "sha256": "743cfdb26da0d39cab4ece9f2a8a3c67787337f7e360219a6e635a55cd095f7b",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all307-native-reporting-unit-counts.csv"
+      },
+      "all307-reporting-reference-decisions.csv": {
+        "bytes": 51512,
+        "sha256": "3c888c2b3f77e0e8d4738cc97c759022cc8a22c4dbf427b07fa61dd2463901bb",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all307-reporting-reference-decisions.csv"
+      },
+      "all351-native-municipality-decisions.csv": {
+        "bytes": 207710,
+        "sha256": "a6d6078544cfa04d29f2e741d49fd1abf51a670b2455a9c8f3c055225e4fffd4",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all351-native-municipality-decisions.csv"
+      },
+      "all275-Boston-native-summary-rows.csv": {
+        "bytes": 20171,
+        "sha256": "880af33242f1bb975d1b93a44468bf671abe87db4a5a7becb9d8fd32ca340ccd",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all275-Boston-native-summary-rows.csv"
+      },
+      "all5775-native-Times-Cast-context-rows.csv": {
+        "bytes": 601705,
+        "sha256": "79b060f3343f1de5fc50374ef9f33e3178a2b19a2feddc69d4d7f4c6fd35e430",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all5775-native-Times-Cast-context-rows.csv"
+      },
+      "all40-Somerville-native-count-rows.csv": {
+        "bytes": 3235,
+        "sha256": "12452a9ee125be3b96fb51e3bdeb12def59a27eed81033c8d1f07561730cef0f",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all40-Somerville-native-count-rows.csv"
+      },
+      "all16-Somerville-native-accounting-decisions.csv": {
+        "bytes": 766,
+        "sha256": "d696fb5d0bc362981be205548d2a4eccb5971b00e5401f42ffdd9fcf067a6960",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all16-Somerville-native-accounting-decisions.csv"
+      },
+      "all99484-native-reference-pair-decisions.csv": {
+        "bytes": 9683372,
+        "sha256": "856a7cf1d278d0774ccd4a176c02baf330449f96d0285d5502a548acd2c35538",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all99484-native-reference-pair-decisions.csv"
+      },
+      "all4-held-split-parent-count-joins.csv": {
+        "bytes": 1089,
+        "sha256": "74e07d3a91da7e94ef936b8883bc39f5dd4c2832474675f3deca9ae6874aa16b",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/all4-held-split-parent-count-joins.csv"
+      },
+      "requirements.txt": {
+        "bytes": 68,
+        "sha256": "bd7c246a6bd47c6480a3f28697db6b75463db6424b10c5cef43fda0a55adc5d0",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/requirements.txt"
+      },
+      "README.txt": {
+        "bytes": 3353,
+        "sha256": "10d6358f0dfe27d4673e502640ac92f52d060aa431cd3c7fa65e719541ce18ca",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/README.txt"
+      },
+      "manifest.json": {
+        "bytes": 23573,
+        "sha256": "1385895666787a7180c309865cbd5e0b9b7f49f63c7e5fd2bbd99856bdc4e28f",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/manifest.json"
+      }
+    },
+    "archive_members": 100,
+    "full_PDFs": 4,
+    "full_pages": 648,
+    "originals_reacquired": false
+  },
+  "complete_archive": {
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/complete-analysis.zip",
+    "bytes": 21432354,
+    "sha256": "ab8248dffc6667b6f5e1f28f4b2d7937d6b2c3fcc528f51be328b5f56790e896",
+    "members": 100,
+    "sufficient_inputs": 67,
+    "full_PDFs": 4,
+    "full_pages": 648,
+    "full_original_PDF_bytes": 7175614,
+    "native_reporting_rows": 307,
+    "mapped_reporting_references": 303,
+    "municipal_reference_decisions": 351,
+    "invalid_municipal_geometry_holds": 1,
+    "split_parent_holds": 4,
+    "complete_pair_decisions": 99484,
+    "source_counts_repaired": false,
+    "geometry_clipped": false,
+    "analysis_rates_approved": false
+  },
+  "sufficient_inputs": {
+    "boston-declaring-page.private.html": {
+      "bytes": 21449,
+      "sha256": "937c947465bf21ca5f7f7cfd4c1819885073b7cc738636958fe4de72eec871fe"
+    },
+    "code/review-massachusetts-native-counts-01.py": {
+      "bytes": 9613,
+      "sha256": "230274efa2f654bba0e9b69fbca241d9fd4ccc397c4701461ca35721facddaa0"
+    },
+    "code/review-massachusetts-native-geometry-01.py": {
+      "bytes": 6978,
+      "sha256": "804b09a71ac544b71263445044609d62158f602f5ddb14264767df87fb085416"
+    },
+    "code/review-massachusetts-reference-extension-01.py": {
+      "bytes": 10153,
+      "sha256": "84f7acd138029881582e4096f4d8802453ca2698319227e9b687abaff6ef3cfd"
+    },
+    "code/verify-massachusetts-native-counts-01.py": {
+      "bytes": 6055,
+      "sha256": "6ee9d27e23781e06d095ca1e16ae5bc780c9c2711f93f630772648faf11d4749"
+    },
+    "declared-results-01/boston-2026-Unofficial-Statement-Of-Votes-Cast.pdf": {
+      "bytes": 2761513,
+      "sha256": "df0501d565dafedd17448bc0e4380a320548efc8c25e3150860cb5d265fad4b9"
+    },
+    "declared-results-01/boston-2026-Unofficial-Statement-Of-Votes-Cast.pdf.receipt.json": {
+      "bytes": 1960,
+      "sha256": "91e901f3cf89f6f0aeb68540c807641d3fa8d9893270af18cfaae7589e3bd8c3"
+    },
+    "declared-results-01/boston-20261103-Election-Night-Reporting-FAQs.pdf": {
+      "bytes": 62623,
+      "sha256": "d6172d5950d36e0c50c947f2e5c761e960470aeaf1828fdfe35ec76fb6881957"
+    },
+    "declared-results-01/boston-20261103-Election-Night-Reporting-FAQs.pdf.receipt.json": {
+      "bytes": 3110,
+      "sha256": "0a0a2d44f9f5c45e47d524341ef76056f0a52c11a2e8696c27893d068fa7aa72"
+    },
+    "declared-results-01/boston-UNOFFICIAL-CENTRAL-TABULATION-RESULTS-11.03.26.pdf": {
+      "bytes": 4097653,
+      "sha256": "26f08dab2914800e4f5555c924353b3a4bd164615964cab017d0695d9d11846e"
+    },
+    "declared-results-01/boston-UNOFFICIAL-CENTRAL-TABULATION-RESULTS-11.03.26.pdf.receipt.json": {
+      "bytes": 2303,
+      "sha256": "80ab1a5140aea47ad1e05e8ee67a9b1f18ab3d2156af85feaca49225c84ac206"
+    },
+    "declared-results-01/somerville-election-results-preliminary-20261103.pdf": {
+      "bytes": 253825,
+      "sha256": "bedb2b2bf9d2d0a5b293f6eb0335f9f6c7d7004551536a1df938d9361a44bae8"
+    },
+    "declared-results-01/somerville-election-results-preliminary-20261103.pdf.receipt.json": {
+      "bytes": 4399,
+      "sha256": "2f2f331098f9d370b03a1bdee3222edc2e17184f6fe553ab20de346ce71a32e5"
+    },
+    "geometry-discovery-01/boston-declared-precinct-item.safe-receipt.json": {
+      "bytes": 1244,
+      "sha256": "5d96d589a8f31ad28f0bd73132792f7c43b656c73cbe4a8d6ec9928e5e97f086"
+    },
+    "geometry-discovery-01/boston-precinct-layer0.safe-receipt.json": {
+      "bytes": 5084,
+      "sha256": "af96df6af52b3536a3a0f5c789286a788a2625972251812de1f500755697f65f"
+    },
+    "geometry-discovery-01/boston-precinct-service-parent.safe-receipt.json": {
+      "bytes": 855,
+      "sha256": "66dbdb643feda39f8e306c720ce0574689f401b35f5b096c60c925169324c438"
+    },
+    "geometry-discovery-01/massachusetts-municipality-layer0.safe-receipt.json": {
+      "bytes": 6420,
+      "sha256": "e15ecffb34ad4f362df83f8aaf25aaa08146d3875723b40da89637f31e38d13a"
+    },
+    "geometry-discovery-01/massachusetts-municipality-service-parent.safe-receipt.json": {
+      "bytes": 818,
+      "sha256": "b167a92ca23929684d9a61665c24262ae8797139ff8a0cf12f207cad31f66096"
+    },
+    "geometry-discovery-01/massgis-declared-26986-4326-transformations.private.json": {
+      "bytes": 539,
+      "sha256": "c670c59e54a3f249acc456a9b4d574e65da9c5e99bd72628519487d8225c76f0"
+    },
+    "geometry-discovery-01/massgis-declared-26986-4326-transformations.safe-receipt.json": {
+      "bytes": 1347,
+      "sha256": "329f05adee49165757cd2459a3ca4ae1f6d70fc8a8b5712e695ac177c2e07b40"
+    },
+    "geometry-discovery-01/massgis-declared-subprecinct-feature-item.safe-receipt.json": {
+      "bytes": 581,
+      "sha256": "3240f24ff8b8162774395fc08d986af322f1c1ca0d38884aab3b856008673f1e"
+    },
+    "geometry-discovery-01/massgis-independent-declared-datum-operations.json": {
+      "bytes": 13649,
+      "sha256": "c437aec541dd969de0836ed9f08666353d34b6d3490dc59951e3bd7362d0eb95"
+    },
+    "geometry-discovery-01/massgis-subprecinct-layer0.safe-receipt.json": {
+      "bytes": 7915,
+      "sha256": "46a8c366ebc49f55d0ab197688efca49363f6f25777dbb3ea0a4bb78c5d88052"
+    },
+    "geometry-discovery-01/massgis-subprecinct-service-parent.safe-receipt.json": {
+      "bytes": 1512,
+      "sha256": "560ad452b58ad1d3c3d3210934e7a7706cf9715d569598148bb05a75c275a14f"
+    },
+    "geometry-discovery-01/somerville-parent-precinct-layer0.safe-receipt.json": {
+      "bytes": 4597,
+      "sha256": "87428d95eac03be92d129ba692de878380602207e6ec74cb8e6352eabf3e61d5"
+    },
+    "geometry-discovery-01/somerville-parent-precinct-service-parent.safe-receipt.json": {
+      "bytes": 976,
+      "sha256": "97c5cb34653da67191e0cd8da502ed0793660854aee188d7b6f657af05044c78"
+    },
+    "native-count-review-01/boston-all-native-times-cast.csv": {
+      "bytes": 601705,
+      "sha256": "79b060f3343f1de5fc50374ef9f33e3178a2b19a2feddc69d4d7f4c6fd35e430"
+    },
+    "native-count-review-01/boston-summary-native.csv": {
+      "bytes": 20171,
+      "sha256": "880af33242f1bb975d1b93a44468bf671abe87db4a5a7becb9d8fd32ca340ccd"
+    },
+    "native-count-review-01/complete-native-count-queries.json": {
+      "bytes": 2628132,
+      "sha256": "2d1702a8cc2f0948417c4c61036507167cd0472c99dc5684b03f3870f37f6852"
+    },
+    "native-count-review-01/independent-native-verification.json": {
+      "bytes": 10316,
+      "sha256": "d31944608dc4b001197e903d137fbafefad1056d655504b413a8ab597c72fe51"
+    },
+    "native-count-review-01/somerville-native-counts.csv": {
+      "bytes": 3235,
+      "sha256": "12452a9ee125be3b96fb51e3bdeb12def59a27eed81033c8d1f07561730cef0f"
+    },
+    "native-geometry-review-01/complete-native-reference-queries.json": {
+      "bytes": 11582473,
+      "sha256": "0c54105b52ec34fd709742bb131fde73d8995b8410d538963c3ec3e636e4bd74"
+    },
+    "native-reference-extension-review-01/complete-reference-extension-queries.json.gz": {
+      "bytes": 229496,
+      "sha256": "b867490a5502f0304e618be893e5f4eac563de288e564c08e9effe448b5d306d"
+    },
+    "native-reference-extension-review-01/summary.json": {
+      "bytes": 830,
+      "sha256": "6e811ceb38b3d86f3b1c8b2988f362239d15476fa4356e980260fc5fdf138e39"
+    },
+    "safe-city-source-declarations.json": {
+      "bytes": 1324,
+      "sha256": "2f46dd1c8c4f95a7ca76b1c86e3a0e978a55a28568a7a68fd8cd8daaa5ed633d"
+    },
+    "selected-native-geometry-01/boston-full-geographic-original.geojson": {
+      "bytes": 874852,
+      "sha256": "1db54793610541aacf36855b61a9621e78bb3c286b052e0130bda389067ec298"
+    },
+    "selected-native-geometry-01/boston-full-geographic-original.geojson.receipt.json": {
+      "bytes": 691,
+      "sha256": "236ca3f3a5ac120a9dd64ef60678e4dd6b79a3c2fd5f378da01cdd835945ad31"
+    },
+    "selected-native-geometry-01/boston-full-native-projected-original.json": {
+      "bytes": 680600,
+      "sha256": "fb6e8865f73820504c0ea8634676a484265fb1e1d4c90a5fe21f34a5a8e21a59"
+    },
+    "selected-native-geometry-01/boston-full-native-projected-original.json.receipt.json": {
+      "bytes": 685,
+      "sha256": "72e9dc70ef1fa8b05d47d5853d7dc05fedc99bd6199ed431b9a3565e212b2f51"
+    },
+    "selected-native-geometry-01/boston-native-count.json": {
+      "bytes": 13,
+      "sha256": "ae772305d5f38fde0ad484d0beec8743b653ab6c9049143d612fb5a61baba79b"
+    },
+    "selected-native-geometry-01/boston-native-count.json.receipt.json": {
+      "bytes": 577,
+      "sha256": "50dd78aa5e61c3987c525d139c1a97520325fc4a3993ce74a642b2c0cc925cee"
+    },
+    "selected-native-geometry-01/boston-native-ids.json": {
+      "bytes": 1033,
+      "sha256": "c525a4da89540e808b5af6ae448bf1b96fbf179e092d80fcd31f7149a8445905"
+    },
+    "selected-native-geometry-01/boston-native-ids.json.receipt.json": {
+      "bytes": 575,
+      "sha256": "3162a71445b3b054dcb37ae25f026e48ec0fd3e1aff440b2cdf77e35afe15ca7"
+    },
+    "selected-native-geometry-01/somerville-subprecincts-full-geographic-original.geojson": {
+      "bytes": 13303,
+      "sha256": "4107efdf8581917fc70060e477024918faf1b970ae6fc635df90b17ded4cfc73"
+    },
+    "selected-native-geometry-01/somerville-subprecincts-full-geographic-original.geojson.receipt.json": {
+      "bytes": 758,
+      "sha256": "de6480055945d21e269d50f7feabe29e61c63ae96096810d3f8c5813a254e2ff"
+    },
+    "selected-native-geometry-01/somerville-subprecincts-full-native-projected-original.json": {
+      "bytes": 13246,
+      "sha256": "4ea1dc1fe9ac720f15f26184d2193e431628c9810b6b46d58194cdd97e0a0f6e"
+    },
+    "selected-native-geometry-01/somerville-subprecincts-full-native-projected-original.json.receipt.json": {
+      "bytes": 754,
+      "sha256": "088738867d73d4122dad48e35237316bfc8064850bfe6a46e4ad57aafcabd98b"
+    },
+    "selected-native-geometry-01/somerville-subprecincts-native-count.json": {
+      "bytes": 11,
+      "sha256": "a5fb8eb97856970b61d9f466deb64f7659e835ee8ec5497003b78438fe888cad"
+    },
+    "selected-native-geometry-01/somerville-subprecincts-native-count.json.receipt.json": {
+      "bytes": 623,
+      "sha256": "9204a114124bdc1422e37a7519abb5b4c3c04b5cee95bda1cf6b5e4e4b1c1d42"
+    },
+    "selected-native-geometry-01/somerville-subprecincts-native-ids.json": {
+      "bytes": 62,
+      "sha256": "d263eca898c7235a11ee4f4d5bb837b70cf86393317bb01193addc43c96ce7c6"
+    },
+    "selected-native-geometry-01/somerville-subprecincts-native-ids.json.receipt.json": {
+      "bytes": 619,
+      "sha256": "89b157942c0556bd3fe8daf87aa68820e3fef7305591311df4acfb69588e7390"
+    },
+    "selected-native-geometry-02/massachusetts-municipalities-full-geographic-original.geojson": {
+      "bytes": 14881055,
+      "sha256": "dd79817fa581801c5617e51f213119c277edd9ad9a9a71a7675881f74687a97c"
+    },
+    "selected-native-geometry-02/massachusetts-municipalities-full-geographic-original.geojson.receipt.json": {
+      "bytes": 743,
+      "sha256": "6317e221925e8cf5cf83ec31ecbbf36882b659ae65e86fb0808f9442ec160e10"
+    },
+    "selected-native-geometry-02/massachusetts-municipalities-full-native-projected-original.json": {
+      "bytes": 13785737,
+      "sha256": "b176e4e5eee678316199f0dcc57c665fd6f5e42028b3486ff145021af944efe6"
+    },
+    "selected-native-geometry-02/massachusetts-municipalities-full-native-projected-original.json.receipt.json": {
+      "bytes": 739,
+      "sha256": "6aa16814a4193ca10a14a8901f1b2ffd3304393cf8ab107d229fcf9d1488aa78"
+    },
+    "selected-native-geometry-02/massachusetts-municipalities-native-count.json": {
+      "bytes": 13,
+      "sha256": "da9c336cad5ea0dfb7c62738aaa42bc74564941c9d18cd8d00837e1b630abea4"
+    },
+    "selected-native-geometry-02/massachusetts-municipalities-native-count.json.receipt.json": {
+      "bytes": 597,
+      "sha256": "9a1d46db05b1818555800c8a35b3bd87b51f5f5d8c7d9f1b8d72da6440475e71"
+    },
+    "selected-native-geometry-02/massachusetts-municipalities-native-ids.json": {
+      "bytes": 1342,
+      "sha256": "5224525cbfafa599a7170ca287ab0fffc044350a2a894c73ca7030c4d2445db9"
+    },
+    "selected-native-geometry-02/massachusetts-municipalities-native-ids.json.receipt.json": {
+      "bytes": 595,
+      "sha256": "1e7af8a7647f96b346b9959ea268e18df67540f61f8566c46117855d5f6630fd"
+    },
+    "selected-native-geometry-02/somerville-parent-precincts-full-geographic-original.geojson": {
+      "bytes": 100296,
+      "sha256": "43dba48aed14d2d99fe49b915e6f17d64c554208fb34fa2ca659d580257c5274"
+    },
+    "selected-native-geometry-02/somerville-parent-precincts-full-geographic-original.geojson.receipt.json": {
+      "bytes": 773,
+      "sha256": "ddd500d99ff25de3f82839c60bc8d5265b18b3608fbbc91aa97a15d8f7b746e9"
+    },
+    "selected-native-geometry-02/somerville-parent-precincts-full-native-projected-original.json": {
+      "bytes": 97116,
+      "sha256": "c7b53d9b31dd910f9d9b6a873377759720510289b56be6ddadb5b543fd9c5bf5"
+    },
+    "selected-native-geometry-02/somerville-parent-precincts-full-native-projected-original.json.receipt.json": {
+      "bytes": 768,
+      "sha256": "28e9c984a79c09b2e9bd66aa85a1079bd6103b713ea255c80bc9109361a05322"
+    },
+    "selected-native-geometry-02/somerville-parent-precincts-native-count.json": {
+      "bytes": 12,
+      "sha256": "48270895c6bf4f32f711afaaa3b45131564a9c92240e6ed2400fa43e2c414d7c"
+    },
+    "selected-native-geometry-02/somerville-parent-precincts-native-count.json.receipt.json": {
+      "bytes": 627,
+      "sha256": "0a22ae662dd779934affec116a8006357b7277b0512cd6f0b0a30a15db0da7ce"
+    },
+    "selected-native-geometry-02/somerville-parent-precincts-native-ids.json": {
+      "bytes": 158,
+      "sha256": "79ed5e9614e2e856332436355376db3ec2aa9848dabadae2b0ecbe9e21b4373b"
+    },
+    "selected-native-geometry-02/somerville-parent-precincts-native-ids.json.receipt.json": {
+      "bytes": 624,
+      "sha256": "138c8a4578cb89dd82d62fd113c9d187cff7afb8a3ea87b8ba93ea40c3b2da31"
+    }
+  },
+  "qualification": {
+    "native_count_election_date": "2026-11-03",
+    "native_city_sources": [
+      "Boston",
+      "Somerville"
+    ],
+    "raw_reporting_rows": 307,
+    "mapped_reporting_references": 303,
+    "Boston_native_Times_Cast_and_selected_web_Ballots_Cast": 185569,
+    "Boston_full_native_contexts": 44,
+    "Boston_Times_Cast_rows": 5775,
+    "Boston_separate_summary_Voters_Cast": 556369,
+    "Boston_summary_registered_literal": 0,
+    "Boston_summary_printed_fraction_literal": "N/A",
+    "Boston_Q5_through_Q8_context_counts": 185348,
+    "Boston_Q9_context_count": 185452,
+    "Boston_all44_context_sums_match_own_native_web_field": true,
+    "Boston_six_statewide_contexts_match_all275_native_units": true,
+    "Somerville_native_BALLOTS_CAST_TOTAL": 64597,
+    "Somerville_native_REGISTERED_VOTERS_TOTAL": 56008,
+    "Somerville_reporting_rows": 32,
+    "Somerville_ward_parents": 7,
+    "Somerville_page_status_literal": "Official",
+    "Somerville_PDF_status_literal": "UnOfficial",
+    "Somerville_all_native_parent_accounting_matches": true,
+    "split_parent_count_holds": [
+      "Somerville:Ward:1:Precinct:4",
+      "Somerville:Ward:2:Precinct:1",
+      "Somerville:Ward:4:Precinct:2",
+      "Somerville:Ward:6:Precinct:3"
+    ],
+    "source_native_city_counts_are_not_county_or_state_totals": true,
+    "source_defined_accepted_ballot_definition_independently_qualified": false,
+    "unique_voter_count_qualified": false,
+    "analysis_denominator": null,
+    "analysis_rate": null,
+    "source_counts_repaired": false,
+    "candidate_votes_summed": false,
+    "modes_added": false,
+    "Central_Tabulation_separate_partial_source_never_added": true,
+    "Boston_reference_adopted_year": 2022,
+    "Boston_reference_purpose_literal": "planning and visualization",
+    "native_municipal_reference_decisions": 351,
+    "valid_municipal_display_references": 350,
+    "invalid_municipal_reference_hold": {
+      "name": "WAYLAND",
+      "native_town_id": 315,
+      "native_object_id": 221
+    },
+    "Boston_native_reporting_references": 275,
+    "Somerville_native_reporting_references": 28,
+    "source_native_vertices_verified": 428276,
+    "complete_native_pair_decisions": 99484,
+    "retained_Boston_native_overlap_pairs": 2,
+    "invalid_Wayland_pair_holds": 350,
+    "Somerville_parent_datum_operation": {
+      "authority": "ESRI",
+      "code": 108190,
+      "direction": "inverse"
+    },
+    "other_26986_products_datum_operation": {
+      "authority": "EPSG",
+      "code": 1188
+    },
+    "wrong_parent_null_offset_rejected": true,
+    "projection_tolerance_degrees": 1e-09,
+    "geometry_repaired_or_clipped": false,
+    "source_native_overlaps_preserved": true,
+    "legal_2026_election_boundary_certification": false,
+    "raw_person_population_address_or_officeholder_features_requested": false,
+    "private_keys_app_configs_contacts_and_compiled_page_code_excluded": true
+  },
+  "verification": {
+    "affected_focused_tests": 205,
+    "existing_source_guard_tests": 6,
+    "astro_errors": 0,
+    "astro_warnings": 0,
+    "astro_existing_hints": 12,
+    "full_build": true,
+    "independent": {
+      "status": "PASS_complete_MA_archive_independent_checks_and_two_exact_network_blocked_replays",
+      "checks": 2720,
+      "archive_bytes": 21432354,
+      "archive_sha256": "ab8248dffc6667b6f5e1f28f4b2d7937d6b2c3fcc528f51be328b5f56790e896",
+      "members": 100,
+      "sufficient_inputs": 67,
+      "full_PDFs": 4,
+      "full_pages": 648,
+      "independently_checked_Boston_vertices": 22699,
+      "maximum_independent_mercator_error_degrees": 9.664426065637204e-14,
+      "both_replays": [
+        {
+          "exact_reader_outputs": 8,
+          "exact_normalized_queries": true,
+          "packaged_tests": 4,
+          "Python_and_Node_network_blocked": true
+        },
+        {
+          "exact_reader_outputs": 8,
+          "exact_normalized_queries": true,
+          "packaged_tests": 4,
+          "Python_and_Node_network_blocked": true
+        }
+      ],
+      "full_originals_and_queries_retained": true,
+      "source_counts_repaired": false,
+      "maps_claimed_live": false,
+      "nationwide_project_complete": false
+    },
+    "local_desktop_mobile": {
+      "status": "PASS_MA_two_city_sources307rows303native_references350valid_municipalities",
+      "base_url": "http://127.0.0.1:4387",
+      "cases": [
+        {
+          "mobile": false,
+          "native_city_sources": 2,
+          "all_source_reporting_rows": 307,
+          "mapped_reporting_references": 303,
+          "municipal_display_references": 350,
+          "invalid_Wayland_held": true,
+          "split_parent_holds": 4,
+          "literal_zeros_preserved": true,
+          "native_field_disagreements_retained": true,
+          "no_rates": true,
+          "unsupported_modes_not_substituted": true,
+          "unknown_clears_previous_detail": true,
+          "methods_roundtrip": true,
+          "both_city_selection_roundtrips": true,
+          "native_subprecinct_labels_preserved": true,
+          "zoom_pan_resize_preserved": true
+        },
+        {
+          "mobile": true,
+          "native_city_sources": 2,
+          "all_source_reporting_rows": 307,
+          "mapped_reporting_references": 303,
+          "municipal_display_references": 350,
+          "invalid_Wayland_held": true,
+          "split_parent_holds": 4,
+          "literal_zeros_preserved": true,
+          "native_field_disagreements_retained": true,
+          "no_rates": true,
+          "unsupported_modes_not_substituted": true,
+          "unknown_clears_previous_detail": true,
+          "methods_roundtrip": true,
+          "both_city_selection_roundtrips": true,
+          "native_subprecinct_labels_preserved": true,
+          "zoom_pan_resize_preserved": true
+        }
+      ],
+      "false_reference_rejected": true,
+      "actual_city_retry_restores_selectors": true,
+      "source_checksum_rejected_and_retry_restores_map": true,
+      "wrong_reference_role_rejected_after_valid_checksum": true,
+      "complete_native_inputs_retained": true,
+      "source_counts_repaired": false,
+      "legal_2026_precinct_certification": false,
+      "nationwide_project_complete": false
+    },
+    "local_all51": {
+      "status": "PASS_2026_geographic_drilldowns",
+      "base_url": "http://127.0.0.1:4387",
+      "script_sha256": "d052860543b3b84d617e1d2aa636fdbdd0e09532bcc2ee08ef0742130d3851d8",
+      "cases": [
+        {
+          "case": "actual_state_click",
+          "state": "California",
+          "county_shapes": 58,
+          "native_participation": true,
+          "provider_activity": false,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "Florida",
+          "county_shapes": 67,
+          "native_participation": true,
+          "provider_activity": false,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "Texas",
+          "county_shapes": 254,
+          "native_participation": false,
+          "provider_activity": true,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "New York",
+          "county_shapes": 62,
+          "native_participation": false,
+          "provider_activity": true,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "Connecticut",
+          "county_shapes": 169,
+          "native_participation": true,
+          "provider_activity": false,
+          "native_town_scope": true,
+          "no_invented_rates": true
+        },
+        {
+          "case": "actual_state_click",
+          "state": "Alaska",
+          "county_shapes": 30,
+          "native_participation": false,
+          "provider_activity": false,
+          "native_town_scope": false,
+          "no_invented_rates": true
+        },
+        {
+          "case": "all_state_county_drilldowns",
+          "states": [
+            {
+              "state": "Alabama",
+              "shapes": 67,
+              "coverage": "Alabama \u00b7 67 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 67 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Alaska",
+              "shapes": 30,
+              "coverage": "Alaska \u00b7 30 county contest counts, not turnout.  Select a county to inspect its total. No state turnout estimate is allocated to counties."
+            },
+            {
+              "state": "Arizona",
+              "shapes": 15,
+              "coverage": "Arizona \u00b7 15 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 15 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Arkansas",
+              "shapes": 75,
+              "coverage": "Arkansas \u00b7 75 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 75 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "California",
+              "shapes": 58,
+              "coverage": "California \u00b7 58 county observations \u00b7 58 reviewed county rates on 2024 Census reference boundaries; 58 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Colorado",
+              "shapes": 64,
+              "coverage": "Colorado \u00b7 64 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 64 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Connecticut",
+              "shapes": 169,
+              "coverage": "Connecticut \u00b7 169 native town observations \u00b7 2024 contextual municipality shapes \u00b7 no analysis rates. Not nine county totals or certified 2026 precincts. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Delaware",
+              "shapes": 3,
+              "coverage": "Delaware \u00b7 3 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 3 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "District of Columbia",
+              "shapes": 1,
+              "coverage": "District of Columbia \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Florida",
+              "shapes": 67,
+              "coverage": "Florida \u00b7 67 county observations \u00b7 67 reviewed county rates on 2024 Census reference boundaries; 67 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Georgia",
+              "shapes": 159,
+              "coverage": "Georgia \u00b7 159 county observations \u00b7 157 reviewed county rates on 2024 Census reference boundaries; 159 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Hawaii",
+              "shapes": 4,
+              "coverage": "Hawaii \u00b7 4 election administrations \u00b7 5 Census county components \u00b7 no analysis rates. Maui includes Kalawao; no separate totals are invented. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Idaho",
+              "shapes": 44,
+              "coverage": "Idaho \u00b7 44 county observations \u00b7 43 reviewed county rates on 2026 Census reference boundaries; 44 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Illinois",
+              "shapes": 102,
+              "coverage": "Illinois \u00b7 102 county-named source records on county context \u00b7 six city-named records per mode remain separate and unallocated. Not whole-county totals or qualified source-authority territories; all rates withheld. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Indiana",
+              "shapes": 92,
+              "coverage": "Indiana \u00b7 92 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 92 reviewed county identity joins. 75 available participation counts; 17 source totals are withheld, not zero turnout. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Iowa",
+              "shapes": 99,
+              "coverage": "Iowa \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Kansas",
+              "shapes": 105,
+              "coverage": "Kansas \u00b7 105 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 105 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Kentucky",
+              "shapes": 120,
+              "coverage": "Kentucky \u00b7 1 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Louisiana",
+              "shapes": 64,
+              "coverage": "Louisiana \u00b7 64 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 64 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Maine",
+              "shapes": 528,
+              "coverage": "Maine \u00b7 480 mapped local source counts \u00b7 528 full 2024 contextual areas \u00b7 104 source regions / 48 reference areas held per mode \u00b7 no rates. Missing is not zero; no county or precinct allocation. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Maryland",
+              "shapes": 24,
+              "coverage": "Maryland \u00b7 24 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 24 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Massachusetts",
+              "shapes": 350,
+              "coverage": "Massachusetts \u00b7 2 native city sources \u00b7 307 reporting rows \u00b7 350 valid municipal references of 351 originals. Four split-parent count joins and invalid Wayland geometry stay held. No county allocation, source repair, unique-person claim or analysis rate. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Michigan",
+              "shapes": 83,
+              "coverage": "Michigan \u00b7 2 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 2 reviewed county identity joins. Only 2 of 83 counties have native parents in this source; other counties are missing, not zero. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Minnesota",
+              "shapes": 87,
+              "coverage": "Minnesota \u00b7 75 county observations \u00b7 64 reviewed county rates on 2024 Census reference boundaries; 75 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Mississippi",
+              "shapes": 82,
+              "coverage": "Mississippi \u00b7 82 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 82 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Missouri",
+              "shapes": 115,
+              "coverage": "Missouri \u00b7 1 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Montana",
+              "shapes": 56,
+              "coverage": "Montana \u00b7 56 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 56 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Nebraska",
+              "shapes": 93,
+              "coverage": "Nebraska \u00b7 93 county observations \u00b7 93 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Nevada",
+              "shapes": 17,
+              "coverage": "Nevada \u00b7 1 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "New Hampshire",
+              "shapes": 259,
+              "coverage": "New Hampshire \u00b7 4 native city source counts \u00b737 native ward rows \u00b7259 full2024 contextual municipalities \u00b7255 unknown source areas. No county/precinct allocation, federal-only addition, source repair or analysis rate. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "New Jersey",
+              "shapes": 21,
+              "coverage": "New Jersey \u00b7 19 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 19 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "New Mexico",
+              "shapes": 33,
+              "coverage": "New Mexico \u00b7 33 county observations \u00b7 33 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "New York",
+              "shapes": 62,
+              "coverage": "New York \u00b7 62 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 62 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "North Carolina",
+              "shapes": 100,
+              "coverage": "North Carolina \u00b7 100 county observations \u00b7 100 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "North Dakota",
+              "shapes": 53,
+              "coverage": "North Dakota \u00b7 53 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 53 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Ohio",
+              "shapes": 88,
+              "coverage": "Ohio \u00b7 88 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 88 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Oklahoma",
+              "shapes": 77,
+              "coverage": "Oklahoma \u00b7 77 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 77 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Oregon",
+              "shapes": 36,
+              "coverage": "Oregon \u00b7 36 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 36 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Pennsylvania",
+              "shapes": 67,
+              "coverage": "Pennsylvania \u00b7 43 county observations \u00b7 40 reviewed county rates on 2024 Census reference boundaries; 43 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Rhode Island",
+              "shapes": 39,
+              "coverage": "Rhode Island \u00b7 39 municipality observations on 2024 Census reference boundaries \u00b7 0 approved rates. Color shows ballot counts, not a rate. Select a municipality for native ballots and registrations. No municipal count or registration is assigned to a precinct; Federal/limited-only units remain unallocated."
+            },
+            {
+              "state": "South Carolina",
+              "shapes": 46,
+              "coverage": "South Carolina \u00b7 46 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 46 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "South Dakota",
+              "shapes": 66,
+              "coverage": "South Dakota \u00b7 66 county observations \u00b7 66 reviewed county rates on 2024 Census reference boundaries; 0 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Tennessee",
+              "shapes": 95,
+              "coverage": "Tennessee \u00b7 95 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 95 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Texas",
+              "shapes": 254,
+              "coverage": "Texas \u00b7 254 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 254 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Utah",
+              "shapes": 29,
+              "coverage": "Utah \u00b7 19 county observations \u00b7 18 reviewed county rates on 2024 Census reference boundaries; 19 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Vermont",
+              "shapes": 247,
+              "coverage": "Vermont \u00b7 247 municipality observations on VCGI BNDHASH town reference polygons; data edited May 2, 2025 \u00b7 241 approved rates. Gray is withheld, not zero. Select a municipality for native ballots and registrations. No municipal count or registration is assigned to a precinct; Federal/limited-only units remain unallocated."
+            },
+            {
+              "state": "Virginia",
+              "shapes": 133,
+              "coverage": "Virginia \u00b7 133 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 133 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Washington",
+              "shapes": 39,
+              "coverage": "Washington \u00b7 39 county observations \u00b7 39 reviewed county rates on 2024 Census reference boundaries; 39 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "West Virginia",
+              "shapes": 55,
+              "coverage": "West Virginia \u00b7 55 county observations \u00b7 0 reviewed county rates on 2026 Census reference boundaries; 55 reviewed county identity joins. 3 available participation counts; 52 source totals are withheld, not zero turnout. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Wisconsin",
+              "shapes": 72,
+              "coverage": "Wisconsin \u00b7 1 county observations \u00b7 1 reviewed county rates on 2024 Census reference boundaries; 1 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            },
+            {
+              "state": "Wyoming",
+              "shapes": 23,
+              "coverage": "Wyoming \u00b7 23 county observations \u00b7 0 reviewed county rates on 2024 Census reference boundaries; 23 reviewed county identity joins. Gray does not mean zero participation; select a county to inspect its actual counts and missingness. Precinct mapping uses a separate, source-specific layer; use the sidebar where a qualified 2026 layer is available. "
+            }
+          ]
+        },
+        {
+          "case": "all_state_precinct_selections",
+          "states": 51,
+          "retained_2026": true,
+          "no_silent_metric_switch": true
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Idaho",
+          "shapes": 448
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "North Dakota",
+          "shapes": 338
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Minnesota",
+          "shapes": 4105
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Michigan",
+          "shapes": 58
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "New Mexico",
+          "shapes": 2177
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "District of Columbia",
+          "shapes": 144
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Virginia",
+          "shapes": 710
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Indiana",
+          "shapes": 83
+        },
+        {
+          "case": "supported_2026_precincts",
+          "state": "Alaska",
+          "shapes": 81
+        },
+        {
+          "case": "state_county_recovery_and_tab_roundtrips",
+          "page_errors": []
+        },
+        {
+          "case": "coverage_navigation",
+          "mobile": false,
+          "no_overflow": true
+        },
+        {
+          "case": "coverage_navigation",
+          "mobile": true,
+          "no_overflow": true
+        },
+        {
+          "case": "failed_source_retry",
+          "context_retained": true,
+          "recovered": true
+        },
+        {
+          "case": "failed_county_retry",
+          "context_retained": true,
+          "recovered": true
+        }
+      ]
+    },
+    "preserved_NH31_desktop_mobile": {
+      "status": "PASS_NH_four_native_city_sources_37ward_rows_on2024_context_NOT_county_or_precinct_totals",
+      "base_url": "http://127.0.0.1:4387",
+      "cases": [
+        {
+          "mobile": false,
+          "native_city_counts": 4,
+          "native_ward_rows": 37,
+          "full_context_areas": 259,
+          "unknown_not_zero": 255,
+          "source_conflicts_retained": true,
+          "federal_only_not_added": true,
+          "no_rates": true,
+          "no_old_shapes_as_2026_wards": true,
+          "native_registers_and_percent_separate": true,
+          "unsupported_modes_not_substituted": true,
+          "dover_native_date_not_filename": true,
+          "nashua_source_amendments_retained": true,
+          "native_manchester_ward_counts": 12,
+          "native_concord_ward_counts": 10,
+          "native_nashua_ward_counts": 9,
+          "nashua_adopted_not_proposed_or_point_parcel_geometry": true,
+          "concord_vintage_not_inferred_from_2020_service_name": true,
+          "ward_reference_year": 2022,
+          "no_certified2026_legal_precinct_claim": true,
+          "native_ward_source_conflict_preserved": true,
+          "methods_roundtrip": true,
+          "ward_zoom_pan_and_resize_preserved": true
+        },
+        {
+          "mobile": true,
+          "native_city_counts": 4,
+          "native_ward_rows": 37,
+          "full_context_areas": 259,
+          "unknown_not_zero": 255,
+          "source_conflicts_retained": true,
+          "federal_only_not_added": true,
+          "no_rates": true,
+          "no_old_shapes_as_2026_wards": true,
+          "native_registers_and_percent_separate": true,
+          "unsupported_modes_not_substituted": true,
+          "dover_native_date_not_filename": true,
+          "nashua_source_amendments_retained": true,
+          "native_manchester_ward_counts": 12,
+          "native_concord_ward_counts": 10,
+          "native_nashua_ward_counts": 9,
+          "nashua_adopted_not_proposed_or_point_parcel_geometry": true,
+          "concord_vintage_not_inferred_from_2020_service_name": true,
+          "ward_reference_year": 2022,
+          "no_certified2026_legal_precinct_claim": true,
+          "native_ward_source_conflict_preserved": true,
+          "methods_roundtrip": true,
+          "ward_zoom_pan_and_resize_preserved": true
+        }
+      ],
+      "false_reference_rejected": true,
+      "actual_retry_restores_selectors": true,
+      "ward_checksum_rejected_and_retry_restores_map": true,
+      "wrong_rest_layer_rejected_after_valid_checksum": true,
+      "valid_source_overrides": false
+    },
+    "local_size_NOT_native_acceptance": {
+      "status": "PASS_local_exact_436_bulk_bytes_and_manifest_preserved_NOT_native_Pages_acceptance",
+      "payload_bytes": 985429436,
+      "tar_bytes": 987965440,
+      "unchanged_complete_download_routes": 436,
+      "manifest_sha256": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade",
+      "prior_anonymous_immutable_asset_acceptance_reused": true
+    },
+    "unchanged_complete_download_routes": 436,
+    "old_source_registry_entries_preserved": 4,
+    "new_source_registry_entries": 1
+  },
+  "publication": {
+    "status": "live_verified_MA_two_city_sources307rows303native_references350valid_municipalities",
+    "main_commit": "5432c4af853ef68135252b351982f78cef6ffd40",
+    "pages_run_id": 42784448706,
+    "main_guard_run_id": 42784448671,
+    "deployment_attempt": 2,
+    "artifact_id": 13748107256,
+    "actual_native_artifact_accepted": true,
+    "exact_production_accepted": true,
+    "actual_payload_bytes": 995165787,
+    "actual_tar_bytes": 997734400,
+    "exact_unqueried_production_files": 43,
+    "unchanged_complete_download_routes": 436,
+    "prior_deployment_attempts": [
+      {
+        "status": "FAILED_deployment_syncing_files_timeout_native_build_and_caps_PASS",
+        "run_id": 42784448706,
+        "deployment_attempt": 1,
+        "commit": "5432c4af853ef68135252b351982f78cef6ffd40",
+        "artifact_id": 13748107256,
+        "payload_bytes": 995165787,
+        "tar_bytes": 997734400,
+        "failed_job_id": 129724835922,
+        "all_scientific_inputs_and_release_unchanged": true,
+        "local_native_transport_retained": true,
+        "no_live_claim": true,
+        "recovery": "One failed-job-only rerun, same verified artifact; no rebuild/republication"
+      }
+    ],
+    "same_native_artifact_reused_without_rebuild": true,
+    "nationwide_project_complete": false
+  },
+  "previous_accepted_native_source_record": "../20261110-new-hampshire-ward-reference-03/website-acceptance.json"
+}

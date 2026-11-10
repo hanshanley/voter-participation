@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
-| Local activity snapshots | [Three-city wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
+| Local activity snapshots | [Massachusetts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -25,6 +25,43 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Massachusetts native reporting counts
+
+Source `5432c4a` connects Boston and Somerville while preserving every earlier
+source and complete download. **Complete analysis and live website acceptance
+verified.** The
+[complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-native-local-counts-20261110-01/complete-analysis.zip)
+contains **four full PDFs / 648 pages**, 67 sufficient inputs, all count/reference
+queries, code, tests and exact offline reproduction; 21,432,354 bytes / 100 members.
+
+| Scope | Treatment |
+|---|---|
+| Boston | Native Times Cast 185,569 agrees across six complete statewide contexts and their web fields. Separate summary Voters Cast 556,369 / registered 0 / N/A stays literal. All 44 contexts and 5,775 rows remain distinct. |
+| Somerville | Printed ballots 64,597 and registrations 56,008 reconcile to 32 reporting rows; counts above registers and Official-page/UnOfficial-PDF labels are retained, not repaired or treated as unique people. |
+| Reporting references | Boston 275 / Somerville 28 mapped references; four split-parent count joins stay table-only, with no clipping or invented remainders. All 307 source rows remain. |
+| Municipal context | All 351 original decisions retained; 350 valid shapes display. Invalid Wayland and native Boston overlaps are not repaired. Not whole-state/county turnout or certified 2026 legal precincts. |
+
+Per-product declared datum operations preserve the strict coordinate tolerance.
+No candidate sums, Central Tabulation addition, population/geographic allocation
+or analysis rates. Private page/app code, keys, contacts and unrelated feature
+data are excluded. All 436 earlier complete-download routes remain unchanged.
+
+All 205 focused tests, Astro/build, actual desktop/mobile maps and navigation,
+Methods/selection/zoom/resize/source guards/retry, all51 navigation and preserved
+NH31 checks pass locally. Independent verification passes 2,720 archive checks
+and two exact network-blocked reproductions, with four packaged tests each.
+Immutable **440115869** targets `5432c4a`; all 14 full assets were verified
+anonymously before main. Pages **42784448706 attempt 2** / main guard
+**42784448671** succeeded. Actual artifact **13748107256** passes both caps:
+**995,165,787 payload / 997,734,400 tar bytes**. All 43 exact unqueried production
+files and MA desktop/mobile, NH31, Illinois102, Alaska81, Maine480, Hawaii4
+and all51 browser suites pass. Attempt 1 timed out at file sync; the
+failed-job-only recovery reused the same verified artifact, without rebuilding
+or redownloading it.
+The [source record](data/participation-access/20261110-massachusetts-native-local-counts-01/observations.json)
+and [website status](data/participation-access/20261110-massachusetts-native-local-counts-01/website-acceptance.json)
+separate source publication from live acceptance. Nationwide completeness is not claimed.
 
 ## 2026 native ward counts in three New Hampshire cities
 
