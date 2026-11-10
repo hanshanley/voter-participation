@@ -9,6 +9,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Reference area | Jump to |
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
+| Latest local integration | [Four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
 | Local activity snapshots | [Direct MA city references](#2026-massachusetts-direct-city-precinct-references), [earlier MA counts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
@@ -25,6 +26,38 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 native ward counts in four New Hampshire cities
+
+Source `128c867` adds six direct Dover references while preserving all 31
+earlier features, 242 source fields and 37 native ward rows. **Full source,
+offline reproduction and live website acceptance verified.**
+The [complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-new-hampshire-native-ward-reference-20261110-04/complete-analysis.zip)
+contains all 160 sufficient inputs, 17 full PDFs / 219 pages, full numerical
+queries, code, tests and five-generation offline reproduction; 98,854,240 bytes /
+233 members. Earlier complete releases and public routes remain unchanged.
+
+| Scope | Treatment |
+|---|---|
+| Counts | Manchester12, Concord10, Nashua9 and Dover6; Dover's six literal totals sum to printed15,941. Source registers, percentages, disagreements and separate federal-only fields remain literal, not analysis rates. |
+| References | State-published2022 NHGRANIT layer11, not oldlayer5, private app keys or parcels. Literal Dover district labels, not FID-as-ward or nativeFIPS17010-as-county, control joins. |
+| Precision and limits | Native3437/declared inverseESRI108190 preserves all1,987 vertices/cyclic edges at strict1e-9degree tolerance;15 native Dover pairs have zero overlap. All earlier shapes/overlaps remain unrepaired. Four cities, not whole-state/county totals or certified2026 legal precincts. |
+
+All 213 affected tests, Astro/build, actual NH desktop/mobile six-ward clicks,
+Methods/navigation/zoom/source guards/retry, preserved MA307 and all51 navigation
+pass locally. Independent verification passes 3,031 checks and two exact
+network-blocked reproductions of five generations, with16 Python/16 Node tests
+each. Source release and actual native Pages/production acceptance are recorded
+separately in the [source record](data/participation-access/20261110-new-hampshire-ward-reference-04/observations.json)
+and [website status](data/participation-access/20261110-new-hampshire-ward-reference-04/website-acceptance.json).
+Immutable **440231597** / all14 full assets were anonymously verified before
+main. Pages **42801350131 attempt1** / main guard **42801349742** succeeded;
+artifact **13756916795** passes **995,709,635 payload /998,287,360 tar bytes**.
+All47 exact unqueried production files and NH37 desktop/mobile, preservedMA307,
+Illinois102, Alaska81, Maine480, Hawaii4 andall51 browser suites pass. Deployment
+succeeded on its first step; the bounded same-artifact retry was correctly
+skipped, not exercised. All436 earlier full-download routes are unchanged.
+Nationwide precinct completeness remains open.
 
 ## 2026 Massachusetts direct city precinct references
 

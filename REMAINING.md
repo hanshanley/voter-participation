@@ -42,7 +42,29 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: 307 direct Massachusetts reporting references.**
+**Latest accepted live: all37 native ward references in four NH cities.** Source `128c867`
+preserves every earlier count/feature and adds six direct state-published2022
+ward references, without repairs, allocations or rates. Full17 PDFs/219 pages,
+all160 sufficient inputs and every earlier184 archive member remain in the
+98,854,240-byte /233-member complete packet. All213 tests/Astro/build, actual
+NH desktop/mobile all-six-ward clicks/Methods/tabs/zoom/source guards/retry,
+preservedMA307 andall51 navigation pass. Independent3,031checks/two exact
+network-blocked five-generation reproductions pass, including16Python/16Node
+tests each. Immutable **440231597** / all14 full assets were anonymously
+verified before main. Actual Pages **42801350131 attempt1** / guard
+**42801349742** succeeded; artifact **13756916795** passes **995,709,635 payload /
+998,287,360 tar bytes**. All47 exact unqueried production files and NH37
+desktop/mobile, preservedMA307, Illinois102, Alaska81, Maine480, Hawaii4 and
+all51 browser suites pass; all436 full-download routes remain unchanged.
+Deployment succeeded first try; its bounded same-artifact retry was skipped.
+**Do not rerun successful acquisition, preparation, packet, build or acceptance.**
+Next, integrate the already-held Minnesota follow-up in a separate new version:
+84 complete counties, three partial subtotals and26 unreported native precinct
+rows. Preserve the native November7 clock, unknown timezone, component conflicts
+and separate Estimated Voters figure; no new acquisition or exact statewide
+total is needed or approved. Nationwide precinct completeness remains open.
+
+**Earlier accepted live: 307 direct Massachusetts reporting references.**
 `f0156f8` retains every native count and uses all 32 original city-declared
 Somerville polygons to close four former holds without clipping. Exact native
 WKT, duplicate IDs and source metadata2023/2020 Census basis remain explicit,
@@ -61,8 +83,8 @@ desktop/mobile, NH31, Illinois102, Alaska81, Maine480, Hawaii4 and all51 browser
 suites pass. First file-sync timeout retained; failed-job-only recovery reused
 the same verified artifact with no rebuild or redownload. **Do not repeat the
 successful acquisition, package, build, release or production acceptance.**
-Next, integrate six separately qualified direct Dover ward references without
-changing native counts or repairing geometry. Nationwide precinct coverage
+The six separately qualified direct Dover references are now accepted above.
+Nationwide precinct coverage
 remains open; do not treat this two-city increment as statewide completion.
 
 **Earlier accepted live: Massachusetts native local counts and references.**
