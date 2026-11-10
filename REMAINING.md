@@ -42,7 +42,20 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live:** Hawaii source `56c6252` connects the four native
+**Latest accepted live:** provider batch `5fc4f81` connects held activity in
+38 states: 61 provider frames / 4,621 source-county counts, with two stronger
+native West Virginia modes retaining priority. Complete immutable release
+`439800051` includes all 102 frame decisions, 6,371 regional queries, 79 raw
+originals and 63 qualified frames in 39 states; seven assets were anonymously
+verified before main. ZIP: 52,460,406 bytes / 144 members. 71,197 independent
+checks, two exact network-blocked reproductions, 165 tests and Astro/build pass.
+Pages `42727767147`, guard `42727766817`, artifact `13723313458` pass:
+**988,580,213 payload / 991,129,600 tar bytes**. All 23 checked production files,
+all 61 desktop/mobile frames, native HI4/WV priority, source retry and all51
+geographic interactions pass. All 436 old complete-download routes remain.
+Do not repeat this completed collection review/package/release/build/acceptance.
+
+**Previous accepted native increment:** Hawaii source `56c6252` connects the four native
 election administrations, with Maui including Kalawao, not five invented
 Census-county totals. Complete release `439767310` has sufficient original
 reports, all nine geographic decisions, 496 unchanged unit records, full
@@ -53,17 +66,26 @@ artifact `13721431268`: **988,250,714 payload / 990,781,440 tar bytes**.
 All 18 checked production files and all 436 earlier complete routes pass.
 Do not repeat this completed acquisition/review/package/deployment/acceptance.
 
-**Next integration priority:** the already-held November 4 early-count snapshot
-has 6,371 source-region observations. The first complete name/parent review
-finds **61 frames in 38 states / 4,581 county-region observations** matching
-whole county sets and their explicit source totals. Inspect the retained raw
-provider JSON and approve exact identities/definitions before connecting
-these source-mode maps in a batch. Preserve native dates, category `votes`
-fields and collector-versus-native election context; these are provider-reported
-early activity, not full-election turnout, certified ballots or unique people.
-Do not add early/mail frames, replace stronger native snapshots, or allocate
-state totals. Noncounty/mixed jurisdictions and unmatched frames remain explicit.
-No new batch map is live or approved yet; reuse the complete held snapshot.
+**Next integration priority:** Connecticut's already-held official election
+108 inputs contain 169 town rows plus a separate native Total. All eight
+numeric fields reconcile to that Total; native town VV sums **1,150,127**
+without adding the Total again. Native election metadata identifies November
+3, 2026. All 169 names match the held full **2024 contextual municipality**
+reference. Review native field labels, empty reporting counters and original
+versions, then connect source-specific town observations, not nine invented
+county totals or 776 inferred precinct records. Preserve all mode/EV/printed
+rate cells and source clocks; withhold analysis rates and generic cast/unique
+claims. No new acquisition or repeated state-control research is needed.
+
+Preserve native dates, category `votes` and collector-versus-native election
+context. Activity is not full-election turnout, certified ballots or unique
+people. Do not add early/mail modes, replace native positive/zero/partial
+snapshots, allocate state totals or promote held jurisdictions. Explicit
+Official never substitutes provider data. Actual production default county audit finds
+only **AK/CT/IL/MA/NH contest fallbacks plus Maine without a county layer**;
+eleven former contest-only states have uniform source-activity counts.
+Pursue these remaining scope-specific gaps using held inputs first. This does
+not complete nationwide native precinct coverage.
 
 **Accepted live:** website `cb79d84` connects West Virginia's separate county
 modes and all 64 Colorado returned-and-processed counts. Pages `42717017978`,

@@ -1,6 +1,6 @@
 # Voter-participation source ledger
 
-Last reviewed: 2026-11-09 UTC.
+Last reviewed: 2026-11-10 UTC.
 
 **Start here:** [Overview](README.md) | [Estimation methods](METHODOLOGY.md) |
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
@@ -10,6 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
+| County activity snapshots | [Held provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -24,6 +25,55 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 project: held county activity frames
+
+The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip)
+connects already-held **civicAPI** activity, not the Civic/NORC survey or a
+certified government turnout series. It preserves all **102 state/mode
+decisions, 79 original responses and 6,371 regional queries**, including holds.
+Exact complete county inventories and source-category parents qualify
+**63 frames in 39 states / 4,731 county observations**. The reviewed Arkansas
+`St Francis` spelling accounts for the two frames omitted by the initial review.
+Two stronger official West Virginia frames keep priority, so the website uses
+**61 provider frames in 38 states / 4,621 source-county counts**.
+
+| Interpretation | Rule |
+|---|---|
+| Literal measure | Sum the native category `votes` cells within one early in-person or returned frame; not candidate choice |
+| Time | Preserve October 23-November 4, 2026 source dates; collector election context is not an independently qualified native election identifier |
+| Geography | Match full county inventories to separate 2026 Census references; do not promote towns, mixed jurisdictions or partial sets to county totals |
+| Priority | Native positive and zero counts, including partial native snapshots, remain preferred; Best available uses one uniform activity frame only where native county counts are absent |
+| Holds | All rates/denominators remain null; no cast/accepted/unique-person certification, mode addition, population allocation or fake intervals |
+
+Original category buckets, colors, Other/Unknown/Unspecified and zeros remain.
+Missing is not zero. All state-only, mixed, town and partial frames remain in the
+complete queries; their `county_fips` is null, while `candidate_county_fips`
+records only an unapproved name match. The one-second difference between
+dataset directory `20261104T220424Z` and source snapshot `20261104T220425Z`
+is preserved, not repaired. No original source was reacquired.
+
+Release `439800051`, targeting source `5fc4f81`, has **seven complete assets
+anonymously byte-verified before main activation**. The ZIP is **52,460,406
+bytes / 144 members**, SHA-256
+`0ef503144a4992f89cc541206f920dc02d038ab4a3eca4dfee06169d2b60b18a`.
+It includes every sufficient original/reference, full CSVs, code/tests/results
+and dependency-free reproduction. **71,197 independent checks**, two exact
+network-blocked reproductions, 165 integration tests, Astro and build checks
+pass. Desktop/mobile checks verify all 61 provider frames, native priority,
+Methods and source rejection/retry; all 51 local geographic interactions pass.
+
+Source `5fc4f81` is **live and actual-production verified**. Pages `42727767147`
+and guard `42727766817` pass; artifact `13723313458` contains **988,580,213
+payload / 991,129,600 tar bytes**, both strict limits passing. All 23 checked
+unqueried production files match. Every provider frame/count passes on desktop
+and mobile, alongside native Hawaii, West Virginia priority, rejection/retry
+and all 51 geographic interactions. The 436-route complete-download manifest
+is byte-identical to the accepted prior release. Production still has five
+contest-only county fallbacks (AK/CT/IL/MA/NH) and no Maine county layer;
+this is not nationwide native precinct completion.
+See the [source ledger](data/participation-access/20261110-provider-county-frames-01/observations.json)
+and [actual acceptance](data/participation-access/20261110-provider-county-frames-01/website-acceptance.json).
 
 ## 2026 Hawaii: four election administrations, five Census-county decisions
 
