@@ -42,7 +42,29 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: Minnesota native county and precinct follow-up.** Source
+**Latest accepted live: Alabama native county Ballots Cast.** Source
+`2a33e0e` / immutable **440343462** connects the held 67 native county counts
+to full 2026 county references. All nine full assets and the runtime reference
+were anonymously verified before main. Complete **2,475,620-byte / 43-member**
+packet retains all 11 sufficient inputs and full workbook; 222 affected Node
+checks, eight Python checks, Astro/build, actual desktop/mobile/all51/preserved
+MN84 tests and 65,062 independent checks/two exact blocked-network reproductions
+pass. Actual Pages **42817335682 attempt 1** / main guard **42817335689**
+succeeded; artifact **13765632795** passes **995,748,414 payload /
+998,328,320 tar bytes**, all 50 exact unqueried production paths and nine
+production suites (AL67 desktop/mobile, MN84/4105, preserved MA307/NH37/
+IL102/AK81/ME480/HI4/all51). Valid source requests were not overridden.
+First deployment succeeded; its bounded same-artifact retry was skipped.
+Keep native fields, old county IDs and withheld rates; never fill unsupported
+early/returned modes with all-method counts. Do not repeat the successful
+acquisition, preparation, packet, build or acceptance.
+**Next review:** the complete 102-decision/all51 read-only mode audit flags
+19 non-explicit-frame selections across 13 states. Qualify those literal
+source meanings and correct unsupported-mode reuse without changing counts,
+inventing normalized modes or replacing missing observations with zero.
+This is a website-frame review, not another source acquisition or certification.
+
+**Earlier accepted live: Minnesota native county and precinct follow-up.** Source
 `7ff1c82` / immutable **440301764** preserves all 34 sufficient inputs in a
 50,849,478-byte / 80-member full packet, with all 17 full assets and the external
 native map anonymously verified before main. All local checks and 82,069
@@ -57,16 +79,10 @@ Do not repeat acquisition, preparation, packet, build or accepted checks.
 Supported scope: 84 complete counties, three partial counties, 4,079 reported
 counts and 26 unknowns across 4,105 full native reference joins. Keep native
 clocks/conflicts/denominators and Estimated Voters separate; no precinct rate.
-**Next held-data integration: Alabama's 67 native county counts.** The current
-export already holds all 67 observations but no approved county joins.
-Preflight verifies all 76 inherited source pins, exact native-name joins to
-the complete 2026 county reference, all 67 valid unrepaired shapes and all
-2,211 pairs with zero positive overlap. Native codes are ordinals (01 is
-Jefferson, not FIPS01001). The 1,693,621 source Ballots Cast and separate
-3,852,947 registrations reconcile to the retained native state fields.
-Reuse successful original parses; complete new sufficient-input packaging,
-code, tests and actual deployment acceptance are still required. No Alabama
-new live-map, precinct, analysis-rate or certification claim is made.
+The Alabama follow-up is separately live-verified above; do not repeat
+its completed acquisition, preparation, packet, local build or offline checks.
+Other whole-county and native precinct gaps remain open; source possession
+is not nationwide completion.
 
 **Earlier accepted live: all37 native ward references in four NH cities.** Source `128c867`
 preserves every earlier count/feature and adds six direct state-published2022

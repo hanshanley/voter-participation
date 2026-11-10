@@ -9,7 +9,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Reference area | Jump to |
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
-| Latest local integration | [Minnesota native follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
+| Latest local integration | [Alabama county counts](#2026-alabama-native-county-ballots-cast), [Minnesota native follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
 | Local activity snapshots | [Direct MA city references](#2026-massachusetts-direct-city-precinct-references), [earlier MA counts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
@@ -26,6 +26,41 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Alabama native county Ballots Cast
+
+Source `2a33e0e` connects all **67 already-held native county counts** to
+explicit, full 2026 Census county references. The
+[complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-alabama-native-county-counts-20261110-02/complete-analysis.zip)
+contains all 11 sufficient inputs, the full original workbook, selected
+county/state factual fields, all 67 county and 2,211 pair queries, code, tests
+and exact offline reproduction; **2,475,620 bytes / 43 members**.
+Immutable **440343462** / all nine full assets and the runtime county reference
+were anonymously hash-verified before main activation.
+
+| Scope | Treatment |
+|---|---|
+| Native counts | Ballots Cast 1,693,621 and separate registrations 3,852,947 reconcile across all 67 counties. Original percentages and county clocks stay literal; timezone is unknown. All analysis rates remain withheld. |
+| Identity | Source codes are election ordinals, not FIPS: 01 Jefferson joins 01073, not 01001. Preserve both source/reference names, old county IDs and counts. All 67 reference shapes are valid and all 2,211 pairs have zero positive overlap, without repairs. |
+| Limits and modes | Source reporting is not certification or independently deduplicated people. No new precinct or demographic participation claim. All-method counts never fill unsupported early/returned frames. Frozen legacy reads remain unchanged. |
+
+All 222 affected Node checks, eight Python checks, Astro/build and real
+desktop/mobile all-67-value/selector tests pass, including native fields,
+Methods/modes, genuine map clicks and rejected-count recovery. All51 and
+preserved MN84/4105 navigation pass using the real published reference.
+Independent verification passes **65,062 checks and two exact network-blocked
+reproductions**, each with four Python and two standalone Node tests.
+The [source record](data/participation-access/20261110-alabama-native-county-counts-02/observations.json)
+and [website status](data/participation-access/20261110-alabama-native-county-counts-02/website-acceptance.json)
+separate those proofs from deployment. **Actual native production acceptance
+passed:** Pages **42817335682 attempt 1** / main guard **42817335689**, artifact
+**13765632795**, **995,748,414 payload / 998,328,320 tar bytes**. All 50 exact
+unqueried production paths and nine browser suites pass: AL67 desktop/mobile,
+MN84/4105, MA307, NH37, Illinois102, Alaska81, Maine480, Hawaii4 and all51
+navigation. Valid source requests were not overridden. Deployment succeeded
+first try; the bounded same-artifact retry was skipped. All earlier releases
+and 436 full-download routes are preserved. Nationwide county/precinct
+completeness remains open.
 
 ## 2026 Minnesota native county and precinct follow-up
 
