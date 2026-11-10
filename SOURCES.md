@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
-| Local activity snapshots | [Massachusetts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
+| Local activity snapshots | [Direct MA city references](#2026-massachusetts-direct-city-precinct-references), [earlier MA counts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -25,6 +25,41 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Massachusetts direct city precinct references
+
+Source `f0156f8` closes four geographic joins with actual city polygons, not
+clipped parent remainders. **Full source/download and live website acceptance
+verified.** The
+[complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-massachusetts-city-precinct-reference-20261110-02/complete-analysis.zip)
+contains **84 sufficient inputs, four full PDFs / 648 pages**, the full
+eight-member city ZIP, all 99,980 pair decisions, queries, code and exact
+reproduction; 22,398,610 bytes / 146 members.
+
+| Scope | Treatment |
+|---|---|
+| Joins | Boston 275 stays unchanged; all 32 Somerville units use original city polygons. Duplicate native IDs stay distinct by literal Ward/Precinct. |
+| Source meaning | Counts, zero registers, differing Boston fields and Official/UnOfficial labels remain literal. Two city snapshots, not statewide/county totals, unique people or analysis rates. |
+| Precision | All 2,697 new vertices and cyclic edges pass strict 1e-9-degree checking; retain exact survey-feet WKT/inverse ESRI108190, not rounded EPSG2249 or arbitrary vertex sorting. |
+| Clocks and limits | City metadata September 22, 2023 / 2020 Census basis is not a certified 2026 boundary vintage. Municipal 350/351 context, invalid Wayland and Boston's two overlaps remain unchanged. |
+
+All 211 affected checks, Astro/build and real MA desktop/mobile four-join clicks,
+Methods/navigation/zoom/source guards/retry, all51 and preserved NH31 pass locally.
+Independent verification passes 3,194 checks with a different binary reader
+and two exact network-blocked reproductions: 11 reader outputs, two normalized
+queries, 11 CSVs and eight packaged tests each. All earlier releases and 436
+complete-download routes remain intact; no acquisition or source repair was repeated.
+
+Immutable **440187428** targets `f0156f8`; all 16 full assets were anonymously
+verified before main. Pages **42794958168 attempt 2** / main guard
+**42794958425** succeeded. Actual artifact **13751979967** passes both caps:
+**995,458,357 payload / 998,031,360 tar bytes**. All 45 exact unqueried production
+files and MA307 desktop/mobile, NH31, Illinois102, Alaska81, Maine480, Hawaii4
+and all51 browser suites pass. The first file-sync timeout remains recorded;
+failed-job-only recovery reused the same verified artifact without rebuilding
+or redownloading it. The [source record](data/participation-access/20261110-massachusetts-city-precinct-reference-02/observations.json)
+and [website status](data/participation-access/20261110-massachusetts-city-precinct-reference-02/website-acceptance.json)
+keep that distinction explicit. Nationwide precinct completeness is not claimed.
 
 ## 2026 Massachusetts native reporting counts
 

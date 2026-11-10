@@ -42,7 +42,30 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: Massachusetts native local counts and references.**
+**Latest accepted live: 307 direct Massachusetts reporting references.**
+`f0156f8` retains every native count and uses all 32 original city-declared
+Somerville polygons to close four former holds without clipping. Exact native
+WKT, duplicate IDs and source metadata2023/2020 Census basis remain explicit,
+not rounded EPSG2249 or certified2026 geometry. Boston275 and the reused
+350 valid municipal shapes/Wayland hold are unchanged. The full
+22,398,610-byte /146-member ZIP contains all84 sufficient inputs, four full
+PDFs/648 pages, full cityZIP, all99,980 pairs and exact offline code.
+Immutable **440187428** / all16 full assets were anonymously verified before
+main. All211 affected tests/Astro/build/actual MA desktop-mobile four-join
+clicks/navigation/Methods/zoom/source guards/retry/all51/NH31 and3,194
+independent checks/two exact offline reproductions pass.
+Actual Pages **42794958168 attempt 2** / main guard **42794958425** succeeded.
+Artifact **13751979967** passes both caps: **995,458,357 payload /
+998,031,360 tar bytes**. All45 exact unqueried production files and MA307
+desktop/mobile, NH31, Illinois102, Alaska81, Maine480, Hawaii4 and all51 browser
+suites pass. First file-sync timeout retained; failed-job-only recovery reused
+the same verified artifact with no rebuild or redownload. **Do not repeat the
+successful acquisition, package, build, release or production acceptance.**
+Next, integrate six separately qualified direct Dover ward references without
+changing native counts or repairing geometry. Nationwide precinct coverage
+remains open; do not treat this two-city increment as statewide completion.
+
+**Earlier accepted live: Massachusetts native local counts and references.**
 `5432c4a` adds Boston/Somerville native counts, all 307 reporting rows and 303
 unchanged reference joins. Four split-parent count joins stay table-only;
 350 of 351 original municipal shapes are valid, with Wayland held unrepaired.
@@ -59,9 +82,9 @@ production files and MA desktop/mobile, NH31, Illinois102, Alaska81, Maine480,
 Hawaii4 and all51 browser suites pass. The first file-sync timeout is retained;
 failed-job-only recovery reused the same verified artifact, with no rebuild or
 redownload. **Do not repeat the successful package, build, release or acceptance.**
-Resolve the four split-parent joins only from qualified independent native
-boundaries; no clipping or invented remainders. Nationwide precinct coverage
-remains open, and little Pages payload headroom remains.
+The four split-parent joins are resolved in the separate accepted source above.
+Nationwide precinct coverage remains open,
+and little Pages payload headroom remains.
 
 **Earlier accepted live: four city sources and 31 mapped wards.** `a7cd4a5`
 adds nine adopted Nashua ward references to Manchester's 12 and Concord's 10.
