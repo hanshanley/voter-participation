@@ -42,7 +42,35 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: four New Hampshire cities and 12 Manchester wards:**
+**Latest accepted live: four city sources and22 Manchester/Concord wards:**
+`d7e6664` adds ten direct Concord ward joins summing to printed19,234 while
+preserving all242 source fields /37 ward rows /12 Manchester features.
+The complete **97,239,222-byte /160-member** package has all17 PDFs /219 pages,
+124 sufficient pins, all22 reference decisions,45 Concord pair decisions and
+15 remaining ward holds. Immutable **440018547** / all12 full assets were
+anonymously verified before main; source guard42769025074 passes.
+All200 focused checks/Astro/build/local desktop/mobile/both-city selection/
+zoom/resize/Methods/source guards/retry/all51 and934 independent checks/two
+exact blocked-network three-generation reproductions pass. Current municipal
+context, not certified2026 legal precincts; source counts/overlaps unchanged,
+no rates or geographic allocation. Fresh Pages **42769170439 attempt1** /
+main guard **42769170432** succeeded. Actual artifact **13740844615**
+passes **989,278,818 payload /991,846,400 tar bytes** and all36 selected/exact
+unqueried production files. Actual NH four-city/22-ward desktop/mobile,
+both-city tab selection/zoom/resize/Methods/source guards/retry,
+Illinois102/Alaska81/Maine480/Hawaii4/all51 production browsers pass.
+All436 old complete routes remain. **Do not repeat this successful package,
+source, build, release or production acceptance.**
+Nashua9 remain held for native query-backend failure; Dover6 for no qualified
+feature source. Do not use keys, parcel allocation or unsupported boundaries.
+Next: the independently city-linked Nashua public portal has an explicitly
+adopted December28,2021 Ward polygon layer7, distinct from proposed wards,
+polling points, census blocks and parcels. All nine count/ID/geographic/native
+originals were acquired with only `OBJECTID,Ward,Wardtxt`, but still need
+numerical/topology/coordinate qualification and a separate tested publication.
+Keep the failed original backend and the accepted22-ward release unchanged.
+
+**Earlier accepted live: four New Hampshire cities and12 Manchester wards:**
 `5fd7549` retains all four city sources and adds 12 native Manchester ward
 totals on current official municipal context (2022 GIS / lines effective
 December 21, 2021), not certified 2026 legal precincts. Other 25 ward rows
