@@ -42,6 +42,26 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
+**Four-city New Hampshire source published; deployment blocked:** source `9b922c4`
+adds already-acquired Nashua/Dover to the accepted Manchester/Concord view:
+four cities, 37 table-only wards, 242 source fields and 255 unknown contextual
+areas. The complete **93,099,445-byte / 91-member** package retains every
+earlier value/original and all15 PDFs /217 pages, plus all28 accounting /
+18 printed-basis /259 reference decisions. Immutable release `439947616`,
+all ten assets anonymously verified before main, is published.
+All192 tests/Astro/build/local desktop/mobile/source conflicts/native-date/
+register definitions/mode exclusions/Methods/retry/all51, 1,006 independent
+checks and two exact network-blocked reproductions pass. All four selected
+context shapes are valid unrepaired/interior-disjoint. Main guard
+`42756293648` passes. Actual artifact `13735453505` passes
+**989,109,680 payload / 991,672,320 tar bytes** and 32 selected-file checks.
+Pages `42756293558` failed three deployment-only attempts at its actual
+ten-minute timeout, retaining the same successful build/artifact/native ZIP.
+The exact unqueried public script/NH data still match the accepted two-city
+`452e4c9` version. **No four-city live claim or production acceptance.**
+Retries are stopped; preserve the artifact/proofs. Do not repeat successful
+sources, freezes, packages, builds or local tests for activity.
+
 **Latest accepted live: New Hampshire** source `452e4c9`
 connects Manchester's 12 ward packets and Concord's native city report:
 two city snapshots and 22 table-only wards on full 259-area 2024 municipality
@@ -118,8 +138,7 @@ the partial native precinct map, and New Hampshire's two-city integration
 remains partial rather than statewide coverage.
 Nationwide native precinct coverage remains open.
 
-**Next supported source work:** extend the two-city New Hampshire view using
-the already-acquired complete Nashua and Dover reports. Nashua: 29 pages /
+**Source work already completed for the current extension:** Nashua: 29 pages /
 8,349,293 bytes, all nine wards' 36 native fields directly reviewed; retain
 three source-accounting disagreements, literal red amendments and separate
 federal-only counts. Dover: one page / 125,447 bytes, all 99 fields independently
@@ -129,13 +148,35 @@ Its filename says2025 but the actual report identifies November3,2026.
 The canonical official `www` page and declared file succeeded with normal TLS;
 the failed bare-host certificate observation is retained, not overridden.
 Registration-affiliation stocks are not ballot choice or group turnout.
-Build a separate complete package and tested integration; never alter or
-rebuild the frozen two-city release. Do not reacquire those successful PDFs.
+The separate complete four-city package and local tested integration are
+already finished as above; its three deployment failures are explicitly
+recorded, not treated as live acceptance. Never alter/rebuild the frozen
+releases or reacquire those successful PDFs.
 Rochester's independently published official city news is reachable,
 but its linked full-results page returned403 and stays stopped.
 Worcester remains contest-only, not inferred ballots. Existing state-route
 holds stay stopped; private discovery HTML/session state is excluded from
 public packages. Nationwide native precinct coverage is open.
+
+**Next active implementation: Manchester native ward reference.** An independent
+worktree based on `9b922c4` avoids modifying the four-city acceptance snapshot.
+The city-declared service's actual REST Ward layer is3, not WMS ordinal0;
+complete native count/IDs and all12 aggregate polygons are held. No personal
+official fields or old population attribute was requested. Current clerk
+declaration and complete citywide map identify lines effective December21,2021;
+the native GIS layer is `Wards_2022`. All3,789 vertices match the server's
+geographic output; all12 single-ring polygons are valid without repair.
+Six native boundary overlaps, at most16.6606 projected square metres
+(2.65335e-6 of the smaller source ward area), remain explicit and unrepaired.
+All12 literal ward count joins total38,562, retaining Ward7's85 discrepancy
+and separate federal-only76; no denominator is inferred.
+Ninety-three sufficient inputs are frozen once; four focused Python tests
+pass. The 47,443-byte ward display gzip and additive source registry are
+prepared locally, **not committed, UI-tested, packaged or live**. Finish
+strict ward-reference guards/labels, browser acceptance, complete originals/
+code/queries/results and authorized publication. Label current municipal
+ward context, not newly certified2026 legal precincts; other25 source wards
+remain table-only. Do not loop failed old deployments.
 
 **Previous accepted increment:** Maine partial locality activity under `f6a9e98`.
 Both modes retain all 584 source regions: 480 mapped and 104 native / 48
