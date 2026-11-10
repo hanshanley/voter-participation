@@ -42,7 +42,36 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: Alabama native county Ballots Cast.** Source
+**Latest accepted live: all-state source-mode separation.**
+Source `fbbaef9` / immutable **440383617** includes the full **4,001,794-byte /
+86-member** packet, all 58 sufficient inputs and complete 204-decision review.
+All eight full assets were anonymously verified before main. Full merged
+inputs identify **23 unsupported selections across 16 jurisdictions**, not
+just the preliminary 19 across 13. All 102 Available/official and 67 qualified
+mode decisions remain unchanged; no source counts, registrations or clocks
+are modified. All 225 Node checks/Astro/build/actual all204 desktop-mobile
+controls/all51 geography/preserved AL67 and 1,242 independent checks/two exact
+blocked-network reproductions pass. Actual Pages **42822734036 attempt 1** /
+main guard **42822734054** succeeded; artifact **13767698882** passes
+**995,749,311 payload / 998,328,320 tar bytes**, all 50 exact unqueried production
+paths and ten suites: all204 controls desktop/mobile, AL67, MN84/4105,
+preserved MA307/NH37/IL102/AK81/ME480/HI4/all51 geography. No valid source
+request was overridden. First deployment succeeded; its bounded same-artifact
+retry was skipped. All 436 old full routes remain unchanged. Do not repeat
+the successful freeze, preparation, packet, replay, build or acceptance.
+
+**Actual remaining coverage, not raw-flag inference:** the last accepted
+production all51 audit has nonempty county/locality context in every
+jurisdiction. Alaska's county layer explicitly shows contest counts, not
+participation; its native precinct counts are a separate layer. Native county
+observations remain partial in Iowa (1/99), Kentucky (1/120), Michigan (2/83),
+Missouri (1/115), Nevada (1/17), New Jersey (19/21), Pennsylvania (43/67),
+Utah (19/29) and Wisconsin (1/72). Shape counts are not observed-count coverage,
+and provider early/returned activity is not complete-election participation.
+Continue these real source/within-state gaps and qualified precinct joins
+using held originals first, without another blank-map or inventory-only loop.
+
+**Earlier accepted live: Alabama native county Ballots Cast.** Source
 `2a33e0e` / immutable **440343462** connects the held 67 native county counts
 to full 2026 county references. All nine full assets and the runtime reference
 were anonymously verified before main. Complete **2,475,620-byte / 43-member**
@@ -58,11 +87,13 @@ First deployment succeeded; its bounded same-artifact retry was skipped.
 Keep native fields, old county IDs and withheld rates; never fill unsupported
 early/returned modes with all-method counts. Do not repeat the successful
 acquisition, preparation, packet, build or acceptance.
-**Next review:** the complete 102-decision/all51 read-only mode audit flags
-19 non-explicit-frame selections across 13 states. Qualify those literal
-source meanings and correct unsupported-mode reuse without changing counts,
-inventing normalized modes or replacing missing observations with zero.
-This is a website-frame review, not another source acquisition or certification.
+The source-mode review is separately published above. Its complete merged
+inputs include reviewed D.C./PA/SD rows, unlike the preliminary export-only
+audit. Do not repeat its successful freeze, preparation, packet, local build
+or numerical verification. Actual native and production acceptance are verified.
+Continue remaining observed county/precinct gaps from actual accepted view
+evidence; do not infer a blank map just from a raw `maps_approved` field when
+an independently reviewed contextual layer may already be displayed.
 
 **Earlier accepted live: Minnesota native county and precinct follow-up.** Source
 `7ff1c82` / immutable **440301764** preserves all 34 sufficient inputs in a

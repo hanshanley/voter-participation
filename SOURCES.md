@@ -9,7 +9,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Reference area | Jump to |
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
-| Latest local integration | [Alabama county counts](#2026-alabama-native-county-ballots-cast), [Minnesota native follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
+| Latest local integration | [Source-mode frame review](#2026-local-source-mode-frame-review), [Alabama county counts](#2026-alabama-native-county-ballots-cast), [Minnesota native follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
 | Local activity snapshots | [Direct MA city references](#2026-massachusetts-direct-city-precinct-references), [earlier MA counts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
@@ -26,6 +26,41 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 local source-mode frame review
+
+Source `fbbaef9` prevents unsupported local early/returned selections from
+reusing unrelated observations. The
+[complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-native-mode-frames-20261110-01/complete-analysis.zip)
+contains all **58 sufficient inputs**, 49 complete local exports, shared native
+inputs, all 464 reviewed county observations, original selectors and all
+**204 before/after decisions** with full selected-observation queries, code,
+tests and exact reproduction; **4,001,794 bytes / 86 members**.
+Immutable **440383617** / all eight full assets were anonymously verified
+before main activation.
+
+| Scope | Treatment |
+|---|---|
+| Corrected selection | 23 unsupported choices across 16 jurisdictions no longer expose all-method ballots, town VV, TOTAL TURNOUT, Cards Cast or other unqualified frames. Missing mode qualification is explained, not treated as zero or missing ingestion. |
+| Preserved evidence | All 102 Available/official decisions and 67 qualified requested-mode decisions remain unchanged. Every native input count, registration, clock and printed percentage is retained; no normalized mode, population or demographic participation is inferred. |
+| Full merged context | Reviewed D.C./PA/SD rows add four cases beyond the preliminary 19-case audit. D.C.'s existing 185,086 Available/official count stays; no separate export is not proof of source absence. Native precinct paths remain separately mode-gated. |
+
+All 225 affected Node checks, Astro/build and actual desktop/mobile **all204**
+control outcomes pass, including Methods/state/mode retention, all51 geography
+and preserved AL67 count/negative/retry tests. Independent Python verification
+passes **1,242 checks and two exact network-blocked reproductions**, each with
+three Node tests. Complete CSV query fields are retained without truncation.
+The [source record](data/participation-access/20261110-native-mode-frames-01/observations.json)
+and [website status](data/participation-access/20261110-native-mode-frames-01/website-acceptance.json)
+separate those proofs from deployment. **Actual native production acceptance
+passed:** Pages **42822734036 attempt 1** / main guard **42822734054**, artifact
+**13767698882**, **995,749,311 payload / 998,328,320 tar bytes**. All 50 exact
+unqueried production paths and ten browser suites pass: all204 controls on
+desktop/mobile, AL67, MN84/4105, MA307, NH37, Illinois102, Alaska81, Maine480,
+Hawaii4 and all51 geography. Valid source requests were not overridden.
+Deployment succeeded first try; the bounded same-artifact retry was skipped.
+Every earlier release and all 436 old full-download routes are preserved.
+This review does not close nationwide county/precinct or population-validation gaps.
 
 ## 2026 Alabama native county Ballots Cast
 
