@@ -42,7 +42,27 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live:** Alaska `3bba8bb` connects 81 native
+**Latest accepted live:** Illinois `09eff27` adds
+explicitly contextual activity for all 102 county-named source records per
+mode, without whole-county or source-authority-territory claims. All six
+city-named records remain separate and visible, never assigned or added into
+counties. Native early/returned parents reconcile independently; no rates or
+native election-ID qualification are inferred.
+Complete immutable release `439900272` is 1,102,066 bytes / 19 members, with
+all216source/all204reference/twoframe decisions, both originals, full unchanged
+reference/code/tests/results. All eight assets were anonymously verified
+before main. 2,814 independent checks/two exact EPERM-blocked reproductions,
+182 affected tests/Astro/build/local desktop/mobile/both-mode102/sixcities/
+Official exclusion/scope guards/Methods/retry/all51 pass. The retry fix restores
+source selectors as well as geometry after a malformed frame.
+Pages `42747433131` attempt1 / guard `42747433393` succeeded; actual native
+artifact `13731489436` passes **989,037,557 payload / 991,600,640 tar bytes**.
+All 30 exact unqueried production files, desktop/mobile/both-mode102 and six
+city records, whole-county rejection/retry/selectors/Official exclusion/
+Methods, Alaska81/Maine480/Hawaii4/all51 navigation pass. All 436 old complete
+routes remain. Do not repeat this successful package/build/release/acceptance.
+
+**Previous accepted increment:** Alaska `3bba8bb` connects 81 native
 geographic House-unit counts / 38,672 `b` ballots to valid unrepaired official
 26GENR app-reference shapes. All 402 shape decisions and 523 count records
 remain; 321 topology holds, 120 pooled district units and one federal-overseas
@@ -60,7 +80,7 @@ Maine480/Hawaii4/all51 navigation. Deployment1 timed out in `syncing_files`;
 only its failed deployment was retried, with the original artifact retained.
 Do not repeat the successful build, archive, downloads or acceptance.
 
-**Next held-data integration:** Illinois has 108 source regions per separate
+**Illinois source-scope qualification:** The held feed has 108 source regions per separate
 early/returned mode: 102 county-named candidates and six city-named regions.
 All source-category parents reconcile; cities are not automatically county
 counts or assigned to a single county. Qualify an explicitly contextual
@@ -70,8 +90,21 @@ ElectionAuthorities.aspx / ElectionAuthoritiesPrint.aspx routes returned403
 on November10 and are stopped, with no alternate client/cache/mirror.
 MA/NH provider responses are absent in this held snapshot; Alaska's provider
 responses are state-only. Do not invent regional values from them.
-Default county contest-only fallbacks remain AK/IL/MA/NH; Alaska now separately
-has the partial native precinct map. Nationwide native precinct coverage remains open.
+Accepted county contest-only fallbacks remain AK/MA/NH; Illinois now has
+explicitly limited source-region activity and Alaska separately has the partial native precinct map.
+Nationwide native precinct coverage remains open.
+
+**Next supported source work:** the held Worcester report is explicitly
+contest counts, not inferred ballots. No NH native participation audit is
+held and no MA/NH provider response exists in the held snapshot. Distinct,
+independent Manchester/Concord official city indexes were fetched normally
+on November10 without revisiting the blocked NH state routes. Manchester's
+actual November3,2026 section declares all12 ward paperwork PDFs; Ward1
+was acquired (16 scanned pages,9,310,710bytes). Concord's declared general
+archive PDF was acquired (4pages,175,306bytes); initial text is contest counts,
+not a qualified ballot measure. Review literal participation fields before
+acquiring the remaining Manchester ward files or making any map/rate claim.
+Private discovery HTML/session state is excluded from public packages.
 
 **Previous accepted increment:** Maine partial locality activity under `f6a9e98`.
 Both modes retain all 584 source regions: 480 mapped and 104 native / 48

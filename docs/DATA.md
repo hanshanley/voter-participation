@@ -29,6 +29,7 @@ are not automatically compatible populations.
 
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
+| Illinois source-region county context | All 216 source queries / 204 context decisions / two frames; 102 county-named records and six unallocated city records per mode, not whole-county counts or qualified authority territories | [Download](https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/complete-analysis.zip) |
 | Alaska partial native geographic ballots | All 402 shape decisions and 523 count queries; 81 valid unrepaired app-reference shapes, 321 topology holds; pooled/overseas units unallocated and all rates withheld | [Download](https://github.com/hanshanley/margin_of_error/releases/download/voter-alaska-native-display-20261110-01/complete-analysis.zip) |
 | Maine partial locality activity | All 1,168 source-region / 1,056 contextual-reference queries and two frames; 480 mapped, 104 source and 48 reference holds per mode; no county/precinct allocation or historical-count transfer | [Download](https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/complete-analysis.zip) |
 | Connecticut native town counts | All 169 native town VV observations plus separate Total, eight native column comparisons, both source versions and full held 2024 contextual shapes; no rates or county/precinct allocation | [Download](https://github.com/hanshanley/margin_of_error/releases/download/voter-connecticut-native-towns-20261110-01/complete-analysis.zip) |

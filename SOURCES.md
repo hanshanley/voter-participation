@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
-| Local activity snapshots | [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
+| Local activity snapshots | [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -25,6 +25,52 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Illinois source-region activity, not whole-county totals
+
+The [complete immutable query package](https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/complete-analysis.zip)
+retains both held civicAPI responses and every source-region decision. This
+provider is not the Civic/NORC survey.
+
+| Scope | Treatment |
+|---|---|
+| Literal records | 108 source regions per separate mode: 102 county-named and six city-named |
+| Map meaning | County shapes locate the 102 source labels; they are not qualified electoral-authority territories or whole-county totals |
+| City records | Bloomington, Chicago, Danville, East St Louis, Galesburg and Rockford remain separate, visible and unallocated; no single-county assumption |
+| Native sums | Early 1,162,828 = 915,498 county-named + 247,330 city; returned 892,086 = 759,410 + 132,676; modes never added |
+| Definitions | Literal native category `votes`, including Unspecified; not candidate choice, certified cast ballots, unique people or demographic turnout |
+| Time and rates | Native November 4, 2026 date, absent clock/timezone; native election ID unqualified, analysis denominators/rates null |
+
+The full **102-area 2026 Census contextual reference is byte-identical**.
+Contextual FIPS are derived reference keys, not native source geography IDs.
+No authority-boundary certification, city allocation, clipping or geometry
+repair occurs. Both official authority-directory routes returned403 and remain
+stopped; no alternate client, cache or mirror was used.
+
+Release **439900272** targets source `09eff27`; all eight full assets were
+anonymously verified before main activation. The ZIP is **1,102,066 bytes /
+19 members**, SHA-256
+`3e55e0f9b30ca7f1c326553133e7968b5a580661aad3e8da87ef747737e76bd4`.
+It contains all **216 source queries, 204 context decisions, two frames and
+204 contextual observations**, both full originals, full reference, code,
+tests and results. **2,814 independent checks** and two exact network-blocked
+reproductions pass. All 182 affected tests, Astro and full build pass.
+
+Desktop/mobile verifies both modes/all102 counts, all six separate city
+records, scope labels, Official exclusion, Methods and all51 navigation;
+focused tests preserve native-zero priority. A real retry defect was fixed: recovery now restores source
+selectors as well as the map. The original source tables/downloads remain.
+Source `09eff27` is **live and actual-production verified**. Pages
+`42747433131` attempt1 and guard `42747433393` succeeded; native artifact
+`13731489436` passes **989,037,557 payload / 991,600,640 tar bytes**.
+All **30 unqueried production files** match. Illinois102 desktop/mobile,
+both modes/all counts, all six city records, scope rejection, restored retry
+selectors, Official exclusion and Methods pass. Alaska81/Maine480/Hawaii4/
+all51 navigation pass; all 436 old complete-download mappings survive.
+The [source record](data/participation-access/20261110-illinois-county-context-01/observations.json)
+and [acceptance](data/participation-access/20261110-illinois-county-context-01/website-acceptance.json)
+retain the evidence. This does not qualify whole-county turnout or nationwide
+native precinct completion.
 
 ## 2026 Alaska native geographic ballots: partial app reference
 
