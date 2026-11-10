@@ -50,7 +50,28 @@ transport, the exact denominator term and the unallocated return/frame gap.
 The baseline is recalled 2024 President, not automatically a prior election
 for the same office; modeled nonparticipation is not measured staying home.
 
-## All-state map interface
+## Clear swing comparisons and local maps
+
+Website **b30339e** makes **2026 swings** a primary tab, with state links
+and separate House, Senate and governor controls. The original 113 model
+records are unchanged. Supporting studies now have three default-closed,
+purpose-labeled groups rather than an undifferentiated component list.
+
+The selected border follows the exact displayed county footprint, not a
+coarser state outline. All **49 county-result states** and six mobile cases
+pass. Precinct views add source-unit search, county/locality filtering,
+loaded-footprint fit and actual count/rate totals. A real Minnesota zero,
+unsupported 2026 selections and North Carolina's 2024 history are checked.
+No counts, clocks, original shapes or qualifications are repaired.
+
+Actual Pages **42867075038 attempt 1** / artifact **13787703374** passes
+**996,064,265 payload / 998,645,760 tar bytes**, exact production assets,
+59 border/precinct cases, 40 width/tab layouts, six office interactions and
+exact equality of all 113 embedded records. All **436** old complete-download
+routes remain available. Full machine records are under
+`data/participation-access/20261110-clear-views-01/`.
+
+### Earlier all-state sidebar fix
 
 Website `e7ddf5f` removes unfiltered county-button lists generically, not just
 for Florida. Actual Pages **42850112990 attempt 2** / artifact **13781711302**

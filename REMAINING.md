@@ -42,6 +42,15 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Latest direct priorities: modeled 2026 effects and resident demographic context.**
+The latest UI corrections are **verified live at b30339e**: a primary
+2026-swings tab, organized supporting studies, exact county-footprint
+borders and functional sourced-precinct search/filtering. Pages
+42867075038 attempt 1 / artifact 13787703374 passes 996,064,265 payload /
+998,645,760 tar bytes, 59 border/precinct cases, 40 responsive layouts,
+six office interactions, all 113 embedded records and 436 old routes.
+These corrections are closed; do not repeat them instead of finishing the
+resident context and canonical intake.
+
 The first NORC/returns bridge computes 113 conditional office/state estimates:
 50 House aggregates, 35 Senate races and 28 governor source frames, with
 55 office-specific switching tables and 1,017 declared strength scenarios.
@@ -75,6 +84,14 @@ adapter and five focused tests pass: 3,144 native counties across all 51
 jurisdictions, 3,143 observed medians and one missing median. Loaded-map joins,
 precinct crosswalks, complete packages and the demographic interface are
 still in progress; acquisition and county reduction alone are not live context.
+The native small-area index now retains **239,742 block groups** across all
+51 jurisdictions, with exactly matching identities in all five ACS tables.
+Eight focused tests pass. A separate complete public Census 2020 block
+query holds **8,132,968 blocks**, population 331,449,281 and 140,498,736
+housing units, with all native count controls and observed zeros retained.
+These are population/housing proxy inputs, not precinct estimates or voter
+characteristics; housing units are not occupied households. Weighted
+crosswalks, complete packages and demographic publication remain open.
 
 **Continuing architecture priority: replace active one-off intake.**
 Use one validated source contract, direct adapters, hash-based incremental
