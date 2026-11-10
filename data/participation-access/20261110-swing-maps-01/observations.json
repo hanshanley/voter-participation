@@ -1,0 +1,37 @@
+{
+  "observed_date_utc": "2026-11-10",
+  "status": "verified_live_linked_swing_maps_without_redundant_precinct_tab",
+  "website_commit": "ecd0aca171955679f647cfc87f80526391b58e09",
+  "pages_run_id": 42884589720,
+  "main_guard_run_id": 42884589710,
+  "source_guard_run_id": 42874829280,
+  "UI_source_files": 9,
+  "UI_source_commit": "3389e1f45d6e90422f9b666c6136e434c452d982",
+  "concurrent_publication_preserved": true,
+  "earlier_deployment_run": 42875076282,
+  "earlier_deployment_attempts_failed": [
+    1,
+    2
+  ],
+  "changes": [
+    "Two linked state choropleths replace the ranked bar list: switching and modeled nonparticipation.",
+    "House, Senate and governor controls share a signed percentage-point scale across both maps.",
+    "State selection links both maps and complete seven-term accounting; missing source frames are not zeros.",
+    "Precincts top navigation removed; States drilldowns, old URLs, data and complete downloads retained.",
+    "Existing projection utilities shared without changing the historical atlas projection."
+  ],
+  "scientific_model_or_count_changes": 0,
+  "state_models_allocated_to_local_geographies": false,
+  "modeled_nonparticipation_is_measured_staying_home": false,
+  "source_geometry_repaired": false,
+  "source_clocks_unchanged": true,
+  "earlier_complete_download_routes": 436,
+  "demographic_context_activated": false,
+  "one_off_intake_replacement_activated": false,
+  "continuation": {
+    "schedule_id": 120,
+    "interval_minutes": 45,
+    "superseded_schedule_id": 119
+  },
+  "whole_project_complete": false
+}

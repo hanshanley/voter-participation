@@ -44,16 +44,17 @@ every comparison or redistribution is approved.
 
 **Latest direct priorities: modeled 2026 effects and resident demographic context.**
 The linked switching/nonparticipation maps and removal of the redundant Precincts
-top tab are implemented at website source **3389e1f**, but **not verified live**.
-The original artifact **13791856780** passes 996,076,846 payload / 998,656,000
-tar bytes and 436 preserved routes. Pages **42875076282 attempts 1 and 2**
-both timed out in deployment, including their bounded same-artifact retries;
-the original build succeeded and was not repeated. Both verifiers exited.
-Recover deployment using that retained artifact, then finish the actual
-56-file, 59 geography/drilldown, 32 layout, six linked-map and 113-record checks.
-Do not claim the new maps or tab removal are live or launch another full build.
+top tab are **verified live at ecd0aca**. Pages **42884589720 attempt 1** /
+guard **42884589710** / artifact **13794714671** passes **996,077,623 payload /
+998,656,000 tar bytes**, 56 exact production files, 59 geography/drilldown cases,
+32 layouts, six linked-map cases and exact equality of all 113 records.
+All **436** old download routes remain. Desktop and phone screenshots were
+inspected. The earlier 3389 deployment attempts failed; a separately authorized
+UK publication picked up the unchanged participation code. Its actual artifact
+and production were verified without queuing a competing build. These two UI
+tasks are closed; do not repeat their build or acceptance.
 
-The latest UI corrections are **verified live at b30339e**: a primary
+Earlier UI corrections remain preserved from **b30339e**: a primary
 2026-swings tab, organized supporting studies, exact county-footprint
 borders and functional sourced-precinct search/filtering. Pages
 42867075038 attempt 1 / artifact 13787703374 passes 996,064,265 payload /
@@ -112,10 +113,13 @@ Conditional context now covers 6,847 valid held references across MN, NM,
 MI, IN, AK, NH and MA; one invalid Michigan reference remains held. A shared-edge
 test exposed projected-chord tie misclassification in the unpublished pilot.
 The corrected common rule uses unchanged native geographic edges and retains
-all per-block decisions; all 33 backend tests pass. Prior outputs are preserved,
+all per-block decisions; all 33 backend tests pass at source **d9f1c09**.
+Independent scalar native-coordinate membership and exact-Fraction verification
+passes **3,884,575 checks**, every **933,012** block decision, all 6,847 valid
+reference profiles and the one Michigan hold. Prior outputs are preserved,
 no originals or geometries reacquired, no source geometry repaired.
-These new precinct estimates still need independent acceptance, complete
-packages and publication before any website activation.
+These new precinct estimates still need complete packages, blocked-network
+reproduction and publication before any website activation.
 The native small-area index now retains **239,742 block groups** across all
 51 jurisdictions, with exactly matching identities in all five ACS tables.
 Eight focused tests pass. A separate complete public Census 2020 block

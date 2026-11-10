@@ -55,20 +55,45 @@ The website reader is not activated; a subsequent same-dataset update and
 the replacement intake/coverage interface remain unfinished. Full records:
 `data/participation-access/20261110-resident-counties-01/`.
 
-## Linked swing maps: deployment still pending
+## Linked swing maps and compact navigation: verified live
 
-Source **3389e1f** replaces the bar list with linked state maps for switching and
+Participation source **3389e1f** replaces the bar list with linked state maps for switching and
 modeled nonparticipation, retains House/Senate/governor selection and full
 seven-term detail, and removes only the redundant Precincts top navigation.
 All 113 model records, States drilldowns, old URLs and downloads are preserved.
 Desktop/mobile local map, legacy-drilldown and 32 layout checks pass.
 
-Native artifact **13791856780** passes **996,076,846 payload / 998,656,000
-tar bytes**, 56 pinned assets and 436 unchanged download routes. Pages
-**42875076282 attempts 1 and 2** both timed out in deployment, including their
-bounded retries. The successful build and artifact were reused, not repeated.
-The new map/tab UI is **not production-verified live**; both original
-verification workers exited and deployment recovery remains open.
+Actual source **ecd0aca**, Pages **42884589720 attempt 1** / main guard
+**42884589710** / artifact **13794714671**, passes **996,077,623 payload /
+998,656,000 tar bytes**, 56 exact production files and all 436 old download
+routes. All 59 geography/legacy-drilldown cases, 32 layouts, six linked-map
+office/viewport cases and every field of the 113 model records pass.
+Desktop and phone production screenshots were inspected.
+
+The earlier Pages **42875076282 attempts 1 and 2** timed out despite their
+bounded retries. A concurrent authorized UK publication advanced main and
+picked up the unchanged participation code. That actual new artifact and
+production were accepted; no competing rebuild was queued and the other
+publication's workflow changes were preserved. Full records:
+`data/participation-access/20261110-swing-maps-01/`.
+
+### Conditional local resident context remains unpublished
+
+The corrected common source **d9f1c09** applies local ACS cells to **6,847**
+valid references across MN/NM and the supported portions of MI/IN/AK/NH/MA;
+one invalid Michigan reference stays held. A native shared-edge regression
+exposed projected-chord misclassification in the unpublished pilot. The fix
+tests untouched geographic-coordinate edges and holds every boundary tie.
+All 33 backend tests and both remote source checks pass.
+
+Independent scalar membership and exact-Fraction checks pass **3,884,575**
+checks across **933,012** complete block decisions and every saved profile.
+No reference is repaired, no original reacquired, no source ballot count
+allocated and no median income averaged. 2020 proxy placement, 2024 block-group
+code equivalence and within-group composition remain explicit assumptions.
+Complete precinct packaging, offline reproduction, publication and the
+website demographic reader remain open; the county-only catalog is not
+silently treated as these new precinct estimates.
 
 ## 2026 modeled NORC and returns bridge
 
