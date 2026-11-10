@@ -75,22 +75,39 @@ default-closed **below the map**, not another long sidebar. Six focused tests,
 66 unpublished-local-data fixture cases, 55 integrated real-public-county cases,
 late-response/corrupt-shard isolation, desktop/phone visuals and year-change
 checks pass. These local fixture results do not publish precinct estimates.
-The actual catalog still contains county-only version **496a**; prepared **23a**
-is not activated.
+The actual reader was first verified against public county-only **496a**, then
+**23a** was activated and verified live without a new website build.
 
 The superseded multi-map code build **42914262055** was intentionally cancelled
 while building at the user's one-map request. Its reader work is preserved.
 Latest **21d3d60** passes 13 focused tests, Astro check/build, **24**
 office/view/viewport combinations, 32 layouts, native drilldown smoke and all
-436 unchanged full downloads. Local payload/tar are **986,501,943 / 989,040,640**
-bytes. Actual new Pages **42916341779** / main guard **42916341788** are pending;
-`single-map-native-production-01` owns the sole native/publication acceptance.
-Do not call the map or reader live before that proof passes.
+436 unchanged full downloads. Actual Pages **42916341779 attempt 1** /
+main guard **42916341788** / artifact **13810247294** are **verified live**:
+**996,264,664 payload / 998,850,560 tar bytes**, 58 exact unqueried production
+assets, all 113 records, 24 one-map cases, 55 real-public county cases,
+59 geography/native cases and 32 layouts pass. Desktop/phone production
+screenshots were inspected. That acceptance worker completed successfully;
+do not repeat its accepted build or validation.
 
-After code acceptance, publish the already-reproduced complete local resident
-bundle and promote **496a -> 23a without another site build**, verifying real
-profiles through the reader. Active canonical count-reader replacement and the
-coverage dashboard remain unfinished. The user's demographic/geographic
+Immutable resident science **441018651** has all **11** full assets anonymously
+verified, including the **322,942,792-byte** complete bundle. The shared
+publisher then promoted **496a -> 23a**, staged commit **373c3de2** / catalog
+**bb4dafa0**. All 53 immutable files and catalog passed; website main, source
+HEAD/index and Pages run IDs were unchanged: **zero builds**. The first
+post-promotion browser received an old cached catalog; after natural propagation,
+all **66 actual production cases** passed with **no fixture**. All 3,144 native
+county profiles and 6,847 qualified local reference profiles are available;
+one invalid Michigan reference and all unsupported contexts stay explicit.
+The production desktop/phone demographic screenshots were inspected.
+
+The canonical intake **backend component** is complete at **3814854**: all 35
+tests/both source checks, full public native intake packet and exact 4,192-row
+pilot/incremental no-op are recorded. The active legacy count-reader chain is
+**not** replaced. Next finish that migration and the coverage dashboard,
+and keep pursuing separately qualified geographic/data gaps. Do not restart
+completed acquisitions, spatial reductions, packages or accepted UI checks.
+The user's demographic/geographic
 keep/switch/nonparticipation simulation, using `pre1870_pop` as a methods
 reference, is explicitly deferred until the existing agreed work is complete.
 

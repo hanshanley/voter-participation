@@ -72,9 +72,15 @@ full-width resident disclosure below the atlas. Reader checks pass all 51
 jurisdictions, native county missingness, exact conditional-reference hashes,
 late-response/error isolation and election-year changes. Current county catalog
 **496a** is genuinely public; local **23a** browser fixtures are not publication.
-Actual Pages **42916341779** / guard **42916341788** and exact production
-acceptance remain pending. Current state:
-`data/participation-access/20261110-single-map-reader-01/publication-state.json`.
+Actual Pages **42916341779 attempt 1** / guard **42916341788** /
+artifact **13810247294** are verified live: **996,264,664 payload /
+998,850,560 tar bytes**, 58 exact unqueried assets, all 113 model records,
+24 office/view/viewport cases, 55 actual-public county cases, 59
+geography/native cases, 32 layouts and all 436 old complete downloads.
+Production desktop/phone images were inspected. Final records supersede
+the earlier pending state:
+`data/participation-access/20261110-single-map-reader-01/observations.json`
+and `website-acceptance.json`.
 
 ## Direct county resident context and independent data publication
 
@@ -100,8 +106,9 @@ The common publisher activated content-addressed runtime version
 on the separate `participation-data` ref, catalog commit **f120331a**.
 All 53 immutable files and the catalog were verified anonymously. Website main,
 source worktree HEAD/index and Pages run IDs were unchanged: **zero builds**.
-The website reader is not activated; a subsequent same-dataset update and
-the replacement intake/coverage interface remain unfinished. Full records:
+That first county-only publication was followed by actual live reader
+activation at **21d3d60** and a second same-dataset update to **23a** below.
+The replacement canonical count reader and coverage interface remain unfinished. Full records:
 `data/participation-access/20261110-resident-counties-01/`.
 
 ## Linked swing maps and compact navigation: verified live
@@ -146,10 +153,20 @@ Two full scientific offline reproductions pass, including all 239,742 block
 groups in each full ACS table. Two additional runtime-only reproductions reuse
 that accepted science and exactly reproduce all 52 files; they are not extra
 raw-input scientific reductions. Frozen backend **3814854** has all 35 tests
-and both source checks passing. Eleven full release assets are prepared, not
-published. The website reader is implemented/tested but awaiting actual
-production acceptance; the public county-only catalog is not silently treated
-as these new local estimates.
+and both source checks passing. All **11** full assets are now anonymously verified in immutable release
+**441018651**, tag `participation-resident-local-context-20261110-02`.
+The common publisher promoted the exact ready dataset to staged **373c3de2** /
+catalog **bb4dafa0** on `participation-data`, version
+`23a94afd67693e09f23401ee7dfac50583d3a1aee26ca5cc929a4c2520d5f828`.
+All 53 immutable files and the catalog passed anonymous checks. Website main,
+the source HEAD/index and Pages run IDs remained identical: zero site builds.
+After the mutable catalog cache naturally propagated, the live reader passed
+all **66** direct production county/local-reference/viewport/year cases with
+no test fixture. It shows direct county context and conditional local profiles
+separately, requires exact loaded reference hashes, preserves the missing 35011
+income and never turns resident composition into voter composition.
+Both production screenshots were inspected. Other unsupported local/historical
+contexts remain explicitly unavailable. Full final records are linked above.
 
 ## 2026 modeled NORC and returns bridge
 

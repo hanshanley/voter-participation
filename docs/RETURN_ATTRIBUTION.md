@@ -8,8 +8,10 @@ The three contribution views add to the reported total wherever a qualified
 historical comparison exists. All margins use `100 * (D - R) / (D + R)`.
 
 Latest website source **21d3d60** uses one map with a view selector, preserving
-office/state and a shared scale. Publication is not certified by source push:
-actual Pages **42916341779** and live byte/browser acceptance remain pending.
+office/state and a shared scale. Actual Pages **42916341779 attempt 1** /
+artifact **13810247294** and live byte/browser acceptance pass: all 113
+records, all 24 office/view/viewport combinations and all earlier download
+routes remain exact. Source push alone was not treated as publication proof.
 
 All original 113 models and their sensitivity ranges remain unchanged.
 Their seven terms explain a recalled-presidential survey-frame contrast,

@@ -8,6 +8,13 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Resident context, not voter characteristics
+
+| Analysis | What it provides | Complete ZIP |
+|---|---|---|
+| Current county and qualified local resident context · verified live | All 3,144 native counties and 6,847 conditional local references / one held reference; both entire predecessor packets, five full ACS originals, all counted block pages, factual BG index, every point/weight/profile, native intake, runtime/compiler/code/tests/checksums. No voter composition, median averaging or inferred MOEs | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-local-context-20261110-02/complete-resident-dataset.zip) |
+| Earlier county-only resident context | Complete native county ACS observations and all original inputs/references/code; preserved immutable predecessor | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/complete-analysis.zip) |
+
 ## Participation rates and survey frames
 
 | Analysis | What it provides | Complete ZIP |
