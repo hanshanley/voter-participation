@@ -47,8 +47,12 @@ The first NORC/returns bridge computes 113 conditional office/state estimates:
 55 office-specific switching tables and 1,017 declared strength scenarios.
 Five focused tests, 10,565 independent rational-arithmetic checks and two exact
 network-blocked reproductions pass. The complete 749,940-byte / 14-member
-packet is built, but the new estimates and coloured chart are **not yet
-published or verified live**. Keep the 2024 presidential-recall baseline,
+packet and all six full assets are published in immutable release **440640408**.
+The coloured chart is **verified live** at website **b3929d2**:
+Pages **42859217257 attempt 1**, artifact **13784767830**,
+996,055,796 payload / 998,635,520 tar bytes; all 113 embedded records,
+three office interactions, 32 layout cases and 436 old routes pass.
+Keep the 2024 presidential-recall baseline,
 cross-office assumptions, unknowns, denominator and unallocated frame gap
 explicit; these are not causal or administrative staying-home estimates.
 
@@ -66,6 +70,11 @@ voter characteristics or group turnout. Start from official 2020–2024 ACS
 five-year public summary files and approved geography. Preserve native MOEs,
 source years and missingness; precinct estimates need qualified crosswalks,
 not state allocations or averages of median incomes.
+All five full national originals are held (462,776,851 bytes). The common
+adapter and five focused tests pass: 3,144 native counties across all 51
+jurisdictions, 3,143 observed medians and one missing median. Loaded-map joins,
+precinct crosswalks, complete packages and the demographic interface are
+still in progress; acquisition and county reduction alone are not live context.
 
 **Continuing architecture priority: replace active one-off intake.**
 Use one validated source contract, direct adapters, hash-based incremental

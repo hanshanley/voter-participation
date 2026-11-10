@@ -27,7 +27,7 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
-## 2026 modeled NORC and returns bridge — publication in progress
+## 2026 modeled NORC and returns bridge
 
 The new experimental bridge reuses the already-reduced whole-state NORC
 moments, held House district controls, 35 native Senate vectors, all 2,014
@@ -39,7 +39,12 @@ Private fine joint/demographic cells and respondent records are not selected.
 Five tests, **10,565 independent Fraction checks** and two exact network-blocked
 reproductions pass. A complete **749,940-byte / 14-member** packet contains all
 sufficient selected numerical inputs, full queries, code, tests and checksums.
-It is **not yet anonymously published or claimed live**. The
+All six full assets are anonymously checksum-verified in immutable release
+**440640408** before website activation. Website **b3929d2**, Pages
+**42859217257 attempt 1** / artifact **13784767830**, passes
+**996,055,796 payload / 998,635,520 tar bytes**, exact production assets,
+all 113 embedded records, all three office interactions and 32 layout cases.
+All **436** earlier complete-download routes are unchanged. The
 [methods note](docs/RETURN_ATTRIBUTION.md) distinguishes source-frame contrasts,
 transport, the exact denominator term and the unallocated return/frame gap.
 The baseline is recalled 2024 President, not automatically a prior election
