@@ -9,7 +9,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Reference area | Jump to |
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
-| Latest local integration | [Nevada county snapshots](#2026-nevada-distinct-county-participation-snapshots), [source-mode frame review](#2026-local-source-mode-frame-review), [Alabama county counts](#2026-alabama-native-county-ballots-cast), [Minnesota native follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
+| Latest local integration | [Minnesota complete statistics](#2026-minnesota-complete-native-statistics), [Nevada county snapshots](#2026-nevada-distinct-county-participation-snapshots), [source-mode frame review](#2026-local-source-mode-frame-review), [Alabama county counts](#2026-alabama-native-county-ballots-cast), [earlier Minnesota follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
 | Local activity snapshots | [Direct MA city references](#2026-massachusetts-direct-city-precinct-references), [earlier MA counts](#2026-massachusetts-native-reporting-counts), [three-city NH wards](#2026-native-ward-counts-in-three-new-hampshire-cities), [earlier Manchester/Concord](#2026-native-ward-counts-in-manchester-and-concord), [earlier Manchester](#2026-manchester-native-ward-counts-on-current-municipal-context), [New Hampshire city sources](#2026-new-hampshire-four-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
@@ -26,6 +26,42 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Minnesota complete native statistics
+
+Source `592c7df` uses the genuinely new **November 10, 8:08 AM** native
+statistics snapshot; timezone unknown. The
+[complete ZIP](https://github.com/hanshanley/margin_of_error/releases/download/voter-minnesota-complete-native-statistics-20261110-03/complete-analysis.zip)
+is **71,548,414 bytes / 57 members**. All eight sufficient inputs include
+the **entire earlier 50,849,478-byte / 80-member original package**, every
+new native row, full page numerical fields and complete comparisons, plus
+all maintained code/tests/queries and exact offline reproduction.
+Immutable **440502731** / all 13 full assets and the browser-safe, tag-pinned
+9,223,418-byte native reference were anonymously verified before main.
+
+| Scope | Treatment |
+|---|---|
+| Complete source reporting | All 87 counties / 4,105 native rows explicitly report. Fillmore, Hubbard and Wright close the 26 earlier unknowns. Keep 32 reported zeros as zeros, not missing. |
+| Counts and registers | Derived native Total Number Voted sum 2,852,618 equals the separately labelled Estimated Voters display, but that estimate never supplies missing counts. Keep 7AM registrations 3,927,697 and Election Day registrations 147,357 separate. |
+| Qualified fractions | Existing source-register rules qualify 73 county fractions; 14 remain withheld. Preserve all 60 component conflicts and six precinct electorate excesses. Every precinct analysis rate stays null; no unique-person, certification or demographic claim. |
+| References and history | Every one of 4,105 coordinate hashes matches the prior full September 18, 2026 reference. Reuse all 13,619 pair reviews without another geometry acquisition/intersection campaign. Keep every earlier reader, reference and full route; native properties are not geometry repairs or certified legal precincts. |
+
+All 208 affected Node checks, three Python checks, four staging-safety checks,
+Astro/build and actual desktop/mobile full-count/zero/new-unit selections,
+Methods/modes/rejection/retry, all204 controls, all51 geography and preserved
+Nevada17 pass. Independent verification passes **91,191 checks and two
+exact blocked-network reproductions**, each with three Python and two Node tests.
+Actual Pages **42839445026 attempt 1** / main guard **42839445105** passed:
+artifact **13774599591**, **995,766,815 payload / 998,348,800 tar bytes**.
+All **52 exact unqueried production paths**, 436 unchanged full-download
+routes and eleven production suites pass, including all 26 newly reported
+unit selections, all204 mode controls and all51 geography. The bounded
+deployment retry reused the same artifact; no rebuild or reupload.
+The complete Minnesota view is now verified live. The
+[source record](data/participation-access/20261110-minnesota-complete-native-03/observations.json)
+and [website status](data/participation-access/20261110-minnesota-complete-native-03/website-acceptance.json)
+retain the actual proofs. Broader coverage and the common-intake replacement
+remain open.
 
 ## 2026 Nevada distinct county participation snapshots
 

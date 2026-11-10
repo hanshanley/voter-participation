@@ -41,8 +41,37 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
-**Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live: Nevada distinct native county snapshots.**
+**Current priority: replace active one-off intake and finish the margin fix.**
+Use one validated source contract, direct adapters, hash-based incremental
+processing, approved reference reuse, full reproducible downloads and data-only
+publication with truthful coverage. Do not start another bespoke state importer
+or claim the replacement is live before the active runtime is switched and tested.
+
+**Latest accepted live: Minnesota complete native statistics.**
+Source `592c7df` / immutable **440502731** reports every native row:
+87 counties / 4,105 precinct statistics, including all 26 formerly unknown
+rows in Fillmore, Hubbard and Wright. Native page clock November 10,
+8:08 AM; timezone unknown. Keep 32 reported zeros, all 60 component
+conflicts and six precinct electorate excesses. Existing rules qualify
+73 county source-register fractions; 14 county and all precinct rates stay
+withheld. The derived native Total Number Voted sum 2,852,618 now equals
+the separately labelled Estimated Voters display, never used to fill counts.
+The **71,548,414-byte / 57-member** complete packet includes all eight
+sufficient inputs and the **entire prior 80-member original archive**,
+all new fields/comparisons, unchanged references, code/tests and reproduction.
+All 13 full assets plus the exact browser-safe reference were anonymously
+verified before main. All local checks and 91,191 independent checks/two
+exact offline reproductions pass. All 4,105 coordinate hashes match the
+prior reference; reuse 13,619 pair reviews, not another geometry campaign.
+Actual Pages **42839445026 attempt 1** / main guard **42839445105** passed:
+artifact **13774599591**, **995,766,815 payload / 998,348,800 tar bytes**.
+All 52 exact unqueried production files, 436 old complete-download routes and
+eleven browser suites pass, including all newly reported units, all204 modes
+and all51 geography. The bounded deployment retry reused the same artifact.
+Do not repeat successful acquisition, preparation, packet, replay, build or
+local/native/production acceptance.
+
+**Earlier accepted live: Nevada distinct native county snapshots.**
 Source `3e20b0d` / immutable **440439566** adds Clark 745,317, Churchill 9,685
 and White Pine 3,077 native participation counts, while retaining Washoe
 191,830 and its earlier clock unchanged. Four separate unofficial snapshots,
@@ -65,7 +94,7 @@ and passed, without rebuilding, reuploading or creating another artifact.
 Do not repeat the successful acquisition, freeze, preparation, packet,
 replays, build or actual local/native/production acceptance.
 
-**Next genuine evidence: Minnesota's formerly unknown rows now report.**
+**Minnesota's genuinely new evidence is live in the accepted source above.**
 The newly acquired native November 10, 8:08 AM snapshot explicitly reports
 all 4,105 rows / 87 counties, including all 26 former holds; timezone unknown.
 Full originals and all native comparison/qualification queries are retained.
@@ -73,9 +102,8 @@ The derived complete Total Number Voted sum is 2,852,618; 73 county source
 registration fractions qualify under existing rules. All 60 component
 conflicts, six precinct electorate excesses and 32 reported zeros survive.
 The separate Estimated Voters display now equals that sum but is never
-used to fill the counts. Complete-count integration is in an isolated
-worktree, not yet claimed live; the accepted Minnesota view remains the
-earlier 84-complete / three-partial snapshot below. Reuse unchanged full
+used to fill the counts. Complete-count source `592c7df` is verified live;
+the earlier 84-complete / three-partial snapshot remains archived. Reuse unchanged full
 native coordinates and 13,619 pair reviews; no new geometry campaign.
 
 **Earlier accepted live: all-state source-mode separation.**
