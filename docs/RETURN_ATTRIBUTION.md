@@ -2,10 +2,14 @@
 
 ## Reported-swing correction: version 20261110-02
 
-The primary maps now distinguish the **reported same-office swing** from
+The corrected numerical dataset distinguishes the **reported same-office swing** from
 modeled switching, modeled nonparticipation, and **other / unallocated**.
-The three contribution maps add to the reported total wherever a qualified
+The three contribution views add to the reported total wherever a qualified
 historical comparison exists. All margins use `100 * (D - R) / (D + R)`.
+
+Latest website source **21d3d60** uses one map with a view selector, preserving
+office/state and a shared scale. Publication is not certified by source push:
+actual Pages **42916341779** and live byte/browser acceptance remain pending.
 
 All original 113 models and their sensitivity ranges remain unchanged.
 Their seven terms explain a recalled-presidential survey-frame contrast,

@@ -42,6 +42,58 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Current override: one selectable map, corrected swing accounting and resident context.**
+The original two maps showed modeled contributions to a recalled-presidential
+survey-frame contrast, not the actual previous same-office swing. Correction
+source **ffc72e9** and website **975fbf8** retain all 113 models and add
+**89 qualified reported comparisons** (35 House, 26 Senate, 28 governor frames).
+The latest user explicitly requires **one map with selectable views**, not two
+or four separate panels. Website source **21d3d60** provides reported total,
+modeled switching, modeled nonparticipation and other/unallocated views while
+preserving the office, state and shared signed scale. An above-map equation
+reconciles them. Texas House is
+**+25.16 pp**, not its **+3.60 pp** switching component. Missing or incompatible
+comparisons remain unavailable, not zero.
+
+Immutable correction release **440892459** is public and all three complete
+assets are anonymously byte/hash verified. Its **4,307,149-byte / 16-member**
+packet contains both entire predecessor packets, full FEC workbook, full Census
+Gazetteer original, inputs, queries, code, tests and checksums. Exact offline
+reproduction, 21 focused numerical/JS tests, Astro check/build, six office/viewport
+map cases and 32 layout cases pass. Original Pages **42898891761** built a
+valid **996,245,789-payload / 998,830,080-tar-byte** artifact **13802017519**,
+with 56 exact assets / 436 old routes and source guard **42898892133** passing,
+but both deployment attempts timed out after their built-in retries.
+Do not repeat another unchanged-tree build/retry. A cross-run recovery request
+was rejected; its helper was removed without changing the validated site tree.
+
+The resident reader is now implemented in the same code rollout: common
+immutable/hash-checked catalog and state shards, direct native-2024 Census
+county context, exact loaded-reference hashes for conditional precinct context,
+income/race/age/education and no voter/population substitution. It is
+default-closed **below the map**, not another long sidebar. Six focused tests,
+66 unpublished-local-data fixture cases, 55 integrated real-public-county cases,
+late-response/corrupt-shard isolation, desktop/phone visuals and year-change
+checks pass. These local fixture results do not publish precinct estimates.
+The actual catalog still contains county-only version **496a**; prepared **23a**
+is not activated.
+
+The superseded multi-map code build **42914262055** was intentionally cancelled
+while building at the user's one-map request. Its reader work is preserved.
+Latest **21d3d60** passes 13 focused tests, Astro check/build, **24**
+office/view/viewport combinations, 32 layouts, native drilldown smoke and all
+436 unchanged full downloads. Local payload/tar are **986,501,943 / 989,040,640**
+bytes. Actual new Pages **42916341779** / main guard **42916341788** are pending;
+`single-map-native-production-01` owns the sole native/publication acceptance.
+Do not call the map or reader live before that proof passes.
+
+After code acceptance, publish the already-reproduced complete local resident
+bundle and promote **496a -> 23a without another site build**, verifying real
+profiles through the reader. Active canonical count-reader replacement and the
+coverage dashboard remain unfinished. The user's demographic/geographic
+keep/switch/nonparticipation simulation, using `pre1870_pop` as a methods
+reference, is explicitly deferred until the existing agreed work is complete.
+
 **Latest direct priorities: modeled 2026 effects and resident demographic context.**
 The linked switching/nonparticipation maps and removal of the redundant Precincts
 top tab are **verified live at ecd0aca**. Pages **42884589720 attempt 1** /

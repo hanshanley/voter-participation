@@ -27,6 +27,55 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Reported same-office swing correction
+
+Version **20261110-02**, research source **ffc72e9**, original website source **975fbf8**
+and latest one-map website source **21d3d60**,
+corrects the distinction between the reported return swing and the original
+conditional survey-frame contributions. The 89 qualified comparisons cover
+35 complete-identity House source aggregates, 26 qualified Senate references
+and 28 supplied matched governor county frames. Unqualified comparisons remain
+unavailable; all 113 original model records and ranges are unchanged.
+The user requires **one map with selectable views**, retaining office/state,
+the shared signed scale and the full reported-total equation.
+
+House uses the complete prior six-input House packet, exact Census Gazetteer
+county identities and native current district controls. Source coverage and
+competition/geography qualifications remain separate. Senate uses the full
+official FEC 2020 workbook's regular-seat candidate rows; Georgia uses its
+January 2021 full-term runoff, not the other seat. DFL is an explicit Minnesota
+party-code alias; independent/fusion/unmapped affiliations are not inferred
+as Democratic coalitions. Unresolved later specials and missing party pairs
+are withheld. Governor comparisons retain the supplied matched 2022/2026 frame.
+
+All margins use `100*(D-R)/(D+R)`. The unallocated baseline-alignment term is
+reported swing minus original survey-frame change; it is not fitted to people
+or assigned to switching/staying home. Current native clocks, capture snapshots,
+rounds, partial reporting and absent clocks remain explicit in each comparison.
+
+Immutable release **440892459**, tag `participation-observed-swing-20261110-02`,
+has three anonymously byte/hash-verified full assets. Its **4,307,149-byte**
+complete packet includes both entire predecessor analysis ZIPs, the full FEC
+workbook and Census Gazetteer original, every input/selector/query, code,
+tests, results and hashes. Offline reproduction rebuilds both predecessor
+analyses and byte-compares every new comparison. See
+[interpretation and limitations](docs/RETURN_ATTRIBUTION.md).
+Original Pages **42898891761** produced a fully verified artifact **13802017519**
+(996,245,789 payload / 998,830,080 tar bytes; 56 exact critical assets and 436
+old downloads), but deployment attempts 1 and 2 timed out. The rejected cross-run
+recovery helper was removed; the validated site tree was preserved. The next
+multi-map code build was intentionally cancelled at the latest user request,
+not described as a failed numerical/reader validation.
+
+Latest source **21d3d60** adds a single view-selectable map and the default-closed,
+full-width resident disclosure below the atlas. Reader checks pass all 51
+jurisdictions, native county missingness, exact conditional-reference hashes,
+late-response/error isolation and election-year changes. Current county catalog
+**496a** is genuinely public; local **23a** browser fixtures are not publication.
+Actual Pages **42916341779** / guard **42916341788** and exact production
+acceptance remain pending. Current state:
+`data/participation-access/20261110-single-map-reader-01/publication-state.json`.
+
 ## Direct county resident context and independent data publication
 
 The common backend source **01adfc2** reduces the complete public **2020-2024
@@ -91,9 +140,16 @@ checks across **933,012** complete block decisions and every saved profile.
 No reference is repaired, no original reacquired, no source ballot count
 allocated and no median income averaged. 2020 proxy placement, 2024 block-group
 code equivalence and within-group composition remain explicit assumptions.
-Complete precinct packaging, offline reproduction, publication and the
-website demographic reader remain open; the county-only catalog is not
-silently treated as these new precinct estimates.
+The **306,928,470-byte / 122-member** complete precinct packet and
+**322,942,792-byte / 85-member** all-in-one dataset bundle are now prepared.
+Two full scientific offline reproductions pass, including all 239,742 block
+groups in each full ACS table. Two additional runtime-only reproductions reuse
+that accepted science and exactly reproduce all 52 files; they are not extra
+raw-input scientific reductions. Frozen backend **3814854** has all 35 tests
+and both source checks passing. Eleven full release assets are prepared, not
+published. The website reader is implemented/tested but awaiting actual
+production acceptance; the public county-only catalog is not silently treated
+as these new local estimates.
 
 ## 2026 modeled NORC and returns bridge
 
