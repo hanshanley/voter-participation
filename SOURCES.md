@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
-| Local activity snapshots | [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
+| Local activity snapshots | [New Hampshire city sources](#2026-new-hampshire-two-city-sources-not-statecounty-or-precinct-turnout), [Illinois source-region context](#2026-illinois-source-region-activity-not-whole-county-totals), [Alaska geographic units](#2026-alaska-native-geographic-ballots-partial-app-reference), [Maine partial localities](#2026-project-maine-partial-locality-activity), [Connecticut towns](#2026-connecticut-native-town-counts-not-county-or-precinct-totals), [county provider frames](#2026-project-held-county-activity-frames), [Hawaii reporting areas](#2026-hawaii-four-election-administrations-five-census-county-decisions) |
 | Candidate returns and context | [Historical compilations](#historical-returns-academic-and-publisher-compilations), [2026 counts](#current-2026-returns-exact-counts-and-comparison-products) |
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
@@ -25,6 +25,49 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 New Hampshire: two city sources, not state/county or precinct turnout
+
+Source `452e4c9` integrates two independently acquired official city reports for
+November 3, 2026. **Live and exact-production verified.**
+The [complete package](https://github.com/hanshanley/margin_of_error/releases/download/voter-new-hampshire-native-cities-20261110-01/complete-analysis.zip)
+contains all 13 full PDFs / 187 pages, exact visual readings/crops, safe source
+receipts, full unchanged municipality reference, code, tests and every query.
+
+| Scope | Treatment |
+|---|---|
+| Manchester | 38,562 is a derived sum of 12 printed ward `Total Ballots Cast` fields, not a separately printed city parent |
+| Source disagreement | Ward 7 prints 2,712 versus 2,694 Election Day + 103 absentee; the 85 difference is retained, never corrected |
+| Federal-only | Separate native sum 76, never added; inclusion in native totals independently unqualified |
+| Concord | Native `Total Cast` 19,234; CSD/MVSD cells, printed ward subtotals and city parent stay distinct |
+| Registration and printed rates | Opening 25,879 + Election Day registrations 1,461 = closing 27,340; source 74.32% uses opening-stock arithmetic, not an approved analysis rate |
+| Geography | Two cities on full 259-area **2024 municipality context**; 257 unknown areas are not zero, all 22 ward rows remain table-only |
+| Qualifications | All analysis denominators/rates null; no county allocation, repaired counts, unique-voter claims or certified 2026 ward/precinct boundaries |
+
+The **81,359,216-byte / 62-member** ZIP has SHA-256
+`f6eb7f91aa6a9072c1dc279ac0205a175fc33c862597874d03ac8844d310b7b6`.
+All 107 source fields, 259 reference decisions, 12 accounting decisions and
+11 source-percent-basis diagnostics are downloadable, alongside two city and
+22 ward profiles. Independent verification checks all Concord fields against
+actual PDF text and regenerates all 24 Manchester header/count crops pixel
+exactly; 778 checks and two network-blocked, byte-identical reproductions pass.
+All 188 affected tests, Astro and full build pass. Actual desktop/mobile tests
+cover counts, source conflicts, unknown-area clearing, unsupported modes,
+Methods and false-reference rejection with selector/map retry recovery.
+The existing blocked state routes were not revisited; private discovery HTML
+and session/request state are excluded.
+
+Immutable release **439928692** targets `452e4c9`; all **ten full assets** were
+anonymously verified before main activation. Pages `42752839549` attempt 1
+and main guard `42752839324` succeeded. Native artifact `13734333285` passes
+**989,103,993 payload / 991,662,080 tar bytes**, with **32 unqueried production
+files** matching exactly. Production desktop/mobile NH counts, all 22 ward
+rows, source conflicts, unknown-area clearing, unsupported modes, Methods,
+false-reference rejection and retry pass; Illinois102, Alaska81, Maine480,
+Hawaii4 and all51 navigation also pass. All **436 old complete-download
+mappings remain unchanged**. The [source record](data/participation-access/20261110-new-hampshire-cities-01/observations.json)
+and [acceptance](data/participation-access/20261110-new-hampshire-cities-01/website-acceptance.json)
+retain the evidence. Neither statewide nor native precinct completion is claimed.
 
 ## 2026 Illinois source-region activity, not whole-county totals
 

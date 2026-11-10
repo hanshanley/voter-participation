@@ -42,7 +42,29 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **Current priority: actual 2026 county/precinct coverage on the website.**
-**Latest accepted live:** Illinois `09eff27` adds
+**Latest accepted live: New Hampshire** source `452e4c9`
+connects Manchester's 12 ward packets and Concord's native city report:
+two city snapshots and 22 table-only wards on full 259-area 2024 municipality
+context; 257 unknown areas remain unknown. Manchester's derived 38,562 sum
+retains the 85-ballot Ward 7 discrepancy and separate federal-only 76.
+Concord's native 19,234, school splits, opening/EDR/closing registers and source
+percentages stay separate; all analysis rates remain null.
+Complete 81,359,216-byte / 62-member package includes all 13 full PDFs,
+107 source / 259 reference / 12 accounting / 11 printed-basis queries,
+code/tests/results. All 188 tests, Astro/build, 778 independent checks,
+two exact blocked-network reproductions, desktop/mobile counts/retry/Methods/
+unsupported-mode exclusions and all51 navigation pass.
+Immutable release `439928692`, all ten full assets anonymously verified
+before main, is published. Pages `42752839549` attempt1 / main guard
+`42752839324` succeeded; actual artifact `13734333285` passes
+**989,103,993 payload / 991,662,080 tar bytes**. All **32 exact unqueried
+production files**, NH desktop/mobile counts/22 wards/source conflicts/
+unknown-area clearing/unsupported modes/Methods/false-reference retry,
+Illinois102/Alaska81/Maine480/Hawaii4/all51 pass. All 436 old complete routes
+remain. Do not repeat this successful acquisition, freeze, package, build,
+publication or acceptance. Nationwide native precinct coverage remains open.
+
+**Previous accepted increment:** Illinois `09eff27` adds
 explicitly contextual activity for all 102 county-named source records per
 mode, without whole-county or source-authority-territory claims. All six
 city-named records remain separate and visible, never assigned or added into
@@ -90,21 +112,30 @@ ElectionAuthorities.aspx / ElectionAuthoritiesPrint.aspx routes returned403
 on November10 and are stopped, with no alternate client/cache/mirror.
 MA/NH provider responses are absent in this held snapshot; Alaska's provider
 responses are state-only. Do not invent regional values from them.
-Accepted county contest-only fallbacks remain AK/MA/NH; Illinois now has
-explicitly limited source-region activity and Alaska separately has the partial native precinct map.
+County contest-only fallbacks remain where no qualified participation scope
+exists; Illinois has explicitly limited source-region activity, Alaska has
+the partial native precinct map, and New Hampshire's two-city integration
+remains partial rather than statewide coverage.
 Nationwide native precinct coverage remains open.
 
-**Next supported source work:** the held Worcester report is explicitly
-contest counts, not inferred ballots. No NH native participation audit is
-held and no MA/NH provider response exists in the held snapshot. Distinct,
-independent Manchester/Concord official city indexes were fetched normally
-on November10 without revisiting the blocked NH state routes. Manchester's
-actual November3,2026 section declares all12 ward paperwork PDFs; Ward1
-was acquired (16 scanned pages,9,310,710bytes). Concord's declared general
-archive PDF was acquired (4pages,175,306bytes); initial text is contest counts,
-not a qualified ballot measure. Review literal participation fields before
-acquiring the remaining Manchester ward files or making any map/rate claim.
-Private discovery HTML/session state is excluded from public packages.
+**Next supported source work:** extend the two-city New Hampshire view using
+the already-acquired complete Nashua and Dover reports. Nashua: 29 pages /
+8,349,293 bytes, all nine wards' 36 native fields directly reviewed; retain
+three source-accounting disagreements, literal red amendments and separate
+federal-only counts. Dover: one page / 125,447 bytes, all 99 fields independently
+parsed and visually checked; native 15,941 ballots / 22,456 source registrations,
+including 1,484 Election Day registrations, with explicit percentage basis.
+Its filename says2025 but the actual report identifies November3,2026.
+The canonical official `www` page and declared file succeeded with normal TLS;
+the failed bare-host certificate observation is retained, not overridden.
+Registration-affiliation stocks are not ballot choice or group turnout.
+Build a separate complete package and tested integration; never alter or
+rebuild the frozen two-city release. Do not reacquire those successful PDFs.
+Rochester's independently published official city news is reachable,
+but its linked full-results page returned403 and stays stopped.
+Worcester remains contest-only, not inferred ballots. Existing state-route
+holds stay stopped; private discovery HTML/session state is excluded from
+public packages. Nationwide native precinct coverage is open.
 
 **Previous accepted increment:** Maine partial locality activity under `f6a9e98`.
 Both modes retain all 584 source regions: 480 mapped and 104 native / 48
