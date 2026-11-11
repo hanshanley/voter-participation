@@ -1,0 +1,21 @@
+{
+  "contract": "participation.cps_1998_state_points_inputs.v1",
+  "files": {
+    "1998-tab04.txt": {
+      "bytes": 70868,
+      "sha256": "bc998b4ac2db5c65b2aa55839df907c70d599eddeca0f988500ef80339095833"
+    },
+    "policy.json": {
+      "bytes": 901,
+      "sha256": "b6aa5994b48246ea31fa6ea498308478bbf30a529134cb380d991bd196860ce1"
+    },
+    "predecessor-science.zip": {
+      "bytes": 1241697,
+      "sha256": "4d651c36c02a8dd5b413897deccad01d8b2ee05f1f08b9ce2cd068b167858a8b"
+    },
+    "provenance.json": {
+      "bytes": 2240,
+      "sha256": "bb489863106285b31af05356419d67a010a1fe58d41d4b34af980efbcff5f658"
+    }
+  }
+}
