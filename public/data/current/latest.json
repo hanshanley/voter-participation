@@ -1,28 +1,28 @@
 {
-  "snapshot_id": "20261110T195748Z",
+  "snapshot_id": "20261111T005048Z",
   "election_date": "2026-11-03",
   "status": "preliminary",
-  "retrieved_at": "2026-11-10T19:57:51.234061+00:00",
+  "retrieved_at": "2026-11-11T00:50:50.932437+00:00",
   "files": [
     {
-      "path": "current/20261110T195748Z/complete-snapshot.zip",
-      "bytes": 1161584,
-      "sha256": "3c785b8f7ce72362b861f4a09b795a77c9fb7bf92f9f4769159a5a7f2d60c513"
+      "path": "current/20261111T005048Z/complete-snapshot.zip",
+      "bytes": 1161456,
+      "sha256": "f407247d93842de6a01bbf6b92129e6eeb903b81ad7adbd3dbe82eed4a466522"
     },
     {
-      "path": "current/20261110T195748Z/demographics.csv",
+      "path": "current/20261111T005048Z/demographics.csv",
       "bytes": 405550,
       "sha256": "9056d3128a03bd2b2ee9ff2739c8c1be6a2a23fd76cf207b4d86f8413d2a340d"
     },
     {
-      "path": "current/20261110T195748Z/reporting.csv",
-      "bytes": 7530,
-      "sha256": "07ad4f33469f573e2a782845a57a7f714a7c394cca4ba09d695aebc97441069a"
+      "path": "current/20261111T005048Z/reporting.csv",
+      "bytes": 7570,
+      "sha256": "468bec332ad147c3b66edbb229e02e6bccccd485ef6a5e9f3edc074b98add648"
     },
     {
-      "path": "current/20261110T195748Z/snapshot.json",
-      "bytes": 1708764,
-      "sha256": "a33f5b547e85665e5fcd46825146c3276063290c9dd19100bfa8b76973ae835a"
+      "path": "current/20261111T005048Z/snapshot.json",
+      "bytes": 1708804,
+      "sha256": "32d7aea6f0c42ff09eacf16883aff6d61c59c0b0025155c69deeb5c7e16b0bf0"
     }
   ]
 }
