@@ -1,0 +1,16 @@
+{
+  "all_fifty_unaffected_states_twenty_two_prior_frames_and_thirty_three_controls_preserved": true,
+  "conditional_scenarios": 23,
+  "dated_registration_frame_added": 1,
+  "native_accounting_cells": 1946,
+  "native_blank_or_empty_party_cells": 299,
+  "native_county_rows": 105,
+  "native_district_rows": 169,
+  "native_registered_total_parent": 2027520,
+  "native_statewide_ballot_controls_added": 0,
+  "native_workbook_cells": 2645,
+  "no_new_website_view": true,
+  "repeated_native_state_parents": 4,
+  "source_control_records": 34,
+  "state_and_dc_rows": 51
+}

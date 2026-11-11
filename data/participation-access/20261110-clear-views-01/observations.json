@@ -1,0 +1,23 @@
+{
+  "observed_date_utc": "2026-11-10",
+  "status": "verified_live_clear_swings_and_geographic_views",
+  "website_commit": "b30339e0b79afab61863070d87bf5673cc18cda8",
+  "pages_run_id": 42867075038,
+  "main_guard_run_id": 42867074581,
+  "source_guard_run_id": 42866662632,
+  "source_files": 9,
+  "changes": [
+    "Primary 2026 swings tab and per-state links; original 113 models and full accounting unchanged.",
+    "Supporting studies organized into three default-closed, purpose-labeled groups.",
+    "Selected county-layer border follows the exact displayed footprint; coarse baseline is not overlaid.",
+    "Sourced precinct search, county/locality filtering, loaded-footprint fit and real count/rate totals.",
+    "Unsupported 2026 selections remain unsupported, not replaced by 2024; historical summaries update."
+  ],
+  "scientific_model_or_count_changes": 0,
+  "source_geometry_repaired": false,
+  "earlier_complete_download_routes": 436,
+  "source_clocks_unchanged": true,
+  "demographic_context_activated": false,
+  "one_off_intake_replacement_activated": false,
+  "whole_project_complete": false
+}

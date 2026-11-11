@@ -1,0 +1,2221 @@
+source_page,view,district_literal,geography_literal,native_column_label,native_value,native_kind,missing_imputed_zero,registration_affiliation_not_vote_choice
+1,monthly_comparison,,Baker,This Month,12860,observed_count,False,True
+1,monthly_comparison,,Baker,Last Month,12978,observed_count,False,True
+1,monthly_comparison,,Baker,Native monthly % change,-0.91%,printed_percentage,False,True
+1,monthly_comparison,,Baker,November 2025,13038,observed_count,False,True
+1,monthly_comparison,,Baker,Native annual % change,-1.37%,printed_percentage,False,True
+1,monthly_comparison,,Benton,This Month,61304,observed_count,False,True
+1,monthly_comparison,,Benton,Last Month,61633,observed_count,False,True
+1,monthly_comparison,,Benton,Native monthly % change,-0.53%,printed_percentage,False,True
+1,monthly_comparison,,Benton,November 2025,61812,observed_count,False,True
+1,monthly_comparison,,Benton,Native annual % change,-0.82%,printed_percentage,False,True
+1,monthly_comparison,,Clackamas,This Month,322768,observed_count,False,True
+1,monthly_comparison,,Clackamas,Last Month,323735,observed_count,False,True
+1,monthly_comparison,,Clackamas,Native monthly % change,-0.30%,printed_percentage,False,True
+1,monthly_comparison,,Clackamas,November 2025,319050,observed_count,False,True
+1,monthly_comparison,,Clackamas,Native annual % change,1.17%,printed_percentage,False,True
+1,monthly_comparison,,Clatsop,This Month,31678,observed_count,False,True
+1,monthly_comparison,,Clatsop,Last Month,31735,observed_count,False,True
+1,monthly_comparison,,Clatsop,Native monthly % change,-0.18%,printed_percentage,False,True
+1,monthly_comparison,,Clatsop,November 2025,31536,observed_count,False,True
+1,monthly_comparison,,Clatsop,Native annual % change,0.45%,printed_percentage,False,True
+1,monthly_comparison,,Columbia,This Month,42256,observed_count,False,True
+1,monthly_comparison,,Columbia,Last Month,42600,observed_count,False,True
+1,monthly_comparison,,Columbia,Native monthly % change,-0.81%,printed_percentage,False,True
+1,monthly_comparison,,Columbia,November 2025,42518,observed_count,False,True
+1,monthly_comparison,,Columbia,Native annual % change,-0.62%,printed_percentage,False,True
+1,monthly_comparison,,Coos,This Month,49790,observed_count,False,True
+1,monthly_comparison,,Coos,Last Month,50321,observed_count,False,True
+1,monthly_comparison,,Coos,Native monthly % change,-1.06%,printed_percentage,False,True
+1,monthly_comparison,,Coos,November 2025,50149,observed_count,False,True
+1,monthly_comparison,,Coos,Native annual % change,-0.72%,printed_percentage,False,True
+1,monthly_comparison,,Crook,This Month,21874,observed_count,False,True
+1,monthly_comparison,,Crook,Last Month,21750,observed_count,False,True
+1,monthly_comparison,,Crook,Native monthly % change,0.57%,printed_percentage,False,True
+1,monthly_comparison,,Crook,November 2025,21618,observed_count,False,True
+1,monthly_comparison,,Crook,Native annual % change,1.18%,printed_percentage,False,True
+1,monthly_comparison,,Curry,This Month,18972,observed_count,False,True
+1,monthly_comparison,,Curry,Last Month,19156,observed_count,False,True
+1,monthly_comparison,,Curry,Native monthly % change,-0.96%,printed_percentage,False,True
+1,monthly_comparison,,Curry,November 2025,19201,observed_count,False,True
+1,monthly_comparison,,Curry,Native annual % change,-1.19%,printed_percentage,False,True
+1,monthly_comparison,,Deschutes,This Month,169458,observed_count,False,True
+1,monthly_comparison,,Deschutes,Last Month,167817,observed_count,False,True
+1,monthly_comparison,,Deschutes,Native monthly % change,0.98%,printed_percentage,False,True
+1,monthly_comparison,,Deschutes,November 2025,164877,observed_count,False,True
+1,monthly_comparison,,Deschutes,Native annual % change,2.78%,printed_percentage,False,True
+1,monthly_comparison,,Douglas,This Month,89488,observed_count,False,True
+1,monthly_comparison,,Douglas,Last Month,89159,observed_count,False,True
+1,monthly_comparison,,Douglas,Native monthly % change,0.37%,printed_percentage,False,True
+1,monthly_comparison,,Douglas,November 2025,89197,observed_count,False,True
+1,monthly_comparison,,Douglas,Native annual % change,0.33%,printed_percentage,False,True
+1,monthly_comparison,,Gilliam,This Month,1449,observed_count,False,True
+1,monthly_comparison,,Gilliam,Last Month,1455,observed_count,False,True
+1,monthly_comparison,,Gilliam,Native monthly % change,-0.41%,printed_percentage,False,True
+1,monthly_comparison,,Gilliam,November 2025,1454,observed_count,False,True
+1,monthly_comparison,,Gilliam,Native annual % change,-0.34%,printed_percentage,False,True
+1,monthly_comparison,,Grant,This Month,5501,observed_count,False,True
+1,monthly_comparison,,Grant,Last Month,5494,observed_count,False,True
+1,monthly_comparison,,Grant,Native monthly % change,0.13%,printed_percentage,False,True
+1,monthly_comparison,,Grant,November 2025,5511,observed_count,False,True
+1,monthly_comparison,,Grant,Native annual % change,-0.18%,printed_percentage,False,True
+1,monthly_comparison,,Harney,This Month,5637,observed_count,False,True
+1,monthly_comparison,,Harney,Last Month,5671,observed_count,False,True
+1,monthly_comparison,,Harney,Native monthly % change,-0.60%,printed_percentage,False,True
+1,monthly_comparison,,Harney,November 2025,5706,observed_count,False,True
+1,monthly_comparison,,Harney,Native annual % change,-1.21%,printed_percentage,False,True
+1,monthly_comparison,,Hood River,This Month,17027,observed_count,False,True
+1,monthly_comparison,,Hood River,Last Month,16972,observed_count,False,True
+1,monthly_comparison,,Hood River,Native monthly % change,0.32%,printed_percentage,False,True
+1,monthly_comparison,,Hood River,November 2025,16853,observed_count,False,True
+1,monthly_comparison,,Hood River,Native annual % change,1.03%,printed_percentage,False,True
+1,monthly_comparison,,Jackson,This Month,165278,observed_count,False,True
+1,monthly_comparison,,Jackson,Last Month,165721,observed_count,False,True
+1,monthly_comparison,,Jackson,Native monthly % change,-0.27%,printed_percentage,False,True
+1,monthly_comparison,,Jackson,November 2025,163784,observed_count,False,True
+1,monthly_comparison,,Jackson,Native annual % change,0.91%,printed_percentage,False,True
+1,monthly_comparison,,Jefferson,This Month,17869,observed_count,False,True
+1,monthly_comparison,,Jefferson,Last Month,17869,observed_count,False,True
+1,monthly_comparison,,Jefferson,Native monthly % change,0.00%,printed_percentage,False,True
+1,monthly_comparison,,Jefferson,November 2025,17628,observed_count,False,True
+1,monthly_comparison,,Jefferson,Native annual % change,1.37%,printed_percentage,False,True
+1,monthly_comparison,,Josephine,This Month,70392,observed_count,False,True
+1,monthly_comparison,,Josephine,Last Month,69977,observed_count,False,True
+1,monthly_comparison,,Josephine,Native monthly % change,0.59%,printed_percentage,False,True
+1,monthly_comparison,,Josephine,November 2025,70369,observed_count,False,True
+1,monthly_comparison,,Josephine,Native annual % change,0.03%,printed_percentage,False,True
+1,monthly_comparison,,Klamath,This Month,50909,observed_count,False,True
+1,monthly_comparison,,Klamath,Last Month,51427,observed_count,False,True
+1,monthly_comparison,,Klamath,Native monthly % change,-1.01%,printed_percentage,False,True
+1,monthly_comparison,,Klamath,November 2025,51455,observed_count,False,True
+1,monthly_comparison,,Klamath,Native annual % change,-1.06%,printed_percentage,False,True
+1,monthly_comparison,,Lake,This Month,5632,observed_count,False,True
+1,monthly_comparison,,Lake,Last Month,5654,observed_count,False,True
+1,monthly_comparison,,Lake,Native monthly % change,-0.39%,printed_percentage,False,True
+1,monthly_comparison,,Lake,November 2025,5741,observed_count,False,True
+1,monthly_comparison,,Lake,Native annual % change,-1.90%,printed_percentage,False,True
+1,monthly_comparison,,Lane,This Month,282837,observed_count,False,True
+1,monthly_comparison,,Lane,Last Month,282837,observed_count,False,True
+1,monthly_comparison,,Lane,Native monthly % change,0.00%,printed_percentage,False,True
+1,monthly_comparison,,Lane,November 2025,281378,observed_count,False,True
+1,monthly_comparison,,Lane,Native annual % change,0.52%,printed_percentage,False,True
+1,monthly_comparison,,Lincoln,This Month,40327,observed_count,False,True
+1,monthly_comparison,,Lincoln,Last Month,41033,observed_count,False,True
+1,monthly_comparison,,Lincoln,Native monthly % change,-1.72%,printed_percentage,False,True
+1,monthly_comparison,,Lincoln,November 2025,40022,observed_count,False,True
+1,monthly_comparison,,Lincoln,Native annual % change,0.76%,printed_percentage,False,True
+1,monthly_comparison,,Linn,This Month,101363,observed_count,False,True
+1,monthly_comparison,,Linn,Last Month,100739,observed_count,False,True
+1,monthly_comparison,,Linn,Native monthly % change,0.62%,printed_percentage,False,True
+1,monthly_comparison,,Linn,November 2025,100464,observed_count,False,True
+1,monthly_comparison,,Linn,Native annual % change,0.89%,printed_percentage,False,True
+1,monthly_comparison,,Malheur,This Month,18698,observed_count,False,True
+1,monthly_comparison,,Malheur,Last Month,18809,observed_count,False,True
+1,monthly_comparison,,Malheur,Native monthly % change,-0.59%,printed_percentage,False,True
+1,monthly_comparison,,Malheur,November 2025,18544,observed_count,False,True
+1,monthly_comparison,,Malheur,Native annual % change,0.83%,printed_percentage,False,True
+1,monthly_comparison,,Marion,This Month,231298,observed_count,False,True
+1,monthly_comparison,,Marion,Last Month,232994,observed_count,False,True
+1,monthly_comparison,,Marion,Native monthly % change,-0.73%,printed_percentage,False,True
+1,monthly_comparison,,Marion,November 2025,229440,observed_count,False,True
+1,monthly_comparison,,Marion,Native annual % change,0.81%,printed_percentage,False,True
+1,monthly_comparison,,Morrow,This Month,7367,observed_count,False,True
+1,monthly_comparison,,Morrow,Last Month,7419,observed_count,False,True
+1,monthly_comparison,,Morrow,Native monthly % change,-0.70%,printed_percentage,False,True
+1,monthly_comparison,,Morrow,November 2025,7359,observed_count,False,True
+1,monthly_comparison,,Morrow,Native annual % change,0.11%,printed_percentage,False,True
+1,monthly_comparison,,Multnomah,This Month,594778,observed_count,False,True
+1,monthly_comparison,,Multnomah,Last Month,586928,observed_count,False,True
+1,monthly_comparison,,Multnomah,Native monthly % change,1.34%,printed_percentage,False,True
+1,monthly_comparison,,Multnomah,November 2025,578620,observed_count,False,True
+1,monthly_comparison,,Multnomah,Native annual % change,2.79%,printed_percentage,False,True
+1,monthly_comparison,,Polk,This Month,65059,observed_count,False,True
+1,monthly_comparison,,Polk,Last Month,64657,observed_count,False,True
+1,monthly_comparison,,Polk,Native monthly % change,0.62%,printed_percentage,False,True
+1,monthly_comparison,,Polk,November 2025,63912,observed_count,False,True
+1,monthly_comparison,,Polk,Native annual % change,1.79%,printed_percentage,False,True
+1,monthly_comparison,,Sherman,This Month,1466,observed_count,False,True
+1,monthly_comparison,,Sherman,Last Month,1495,observed_count,False,True
+1,monthly_comparison,,Sherman,Native monthly % change,-1.94%,printed_percentage,False,True
+1,monthly_comparison,,Sherman,November 2025,1526,observed_count,False,True
+1,monthly_comparison,,Sherman,Native annual % change,-3.93%,printed_percentage,False,True
+1,monthly_comparison,,Tillamook,This Month,21850,observed_count,False,True
+1,monthly_comparison,,Tillamook,Last Month,21950,observed_count,False,True
+1,monthly_comparison,,Tillamook,Native monthly % change,-0.46%,printed_percentage,False,True
+1,monthly_comparison,,Tillamook,November 2025,21906,observed_count,False,True
+1,monthly_comparison,,Tillamook,Native annual % change,-0.26%,printed_percentage,False,True
+1,monthly_comparison,,Umatilla,This Month,51442,observed_count,False,True
+1,monthly_comparison,,Umatilla,Last Month,51809,observed_count,False,True
+1,monthly_comparison,,Umatilla,Native monthly % change,-0.71%,printed_percentage,False,True
+1,monthly_comparison,,Umatilla,November 2025,51222,observed_count,False,True
+1,monthly_comparison,,Umatilla,Native annual % change,0.43%,printed_percentage,False,True
+1,monthly_comparison,,Union,This Month,19602,observed_count,False,True
+1,monthly_comparison,,Union,Last Month,19546,observed_count,False,True
+1,monthly_comparison,,Union,Native monthly % change,0.29%,printed_percentage,False,True
+1,monthly_comparison,,Union,November 2025,19490,observed_count,False,True
+1,monthly_comparison,,Union,Native annual % change,0.57%,printed_percentage,False,True
+1,monthly_comparison,,Wallowa,This Month,6383,observed_count,False,True
+1,monthly_comparison,,Wallowa,Last Month,6367,observed_count,False,True
+1,monthly_comparison,,Wallowa,Native monthly % change,0.25%,printed_percentage,False,True
+1,monthly_comparison,,Wallowa,November 2025,6431,observed_count,False,True
+1,monthly_comparison,,Wallowa,Native annual % change,-0.75%,printed_percentage,False,True
+1,monthly_comparison,,Wasco,This Month,19103,observed_count,False,True
+1,monthly_comparison,,Wasco,Last Month,19185,observed_count,False,True
+1,monthly_comparison,,Wasco,Native monthly % change,-0.43%,printed_percentage,False,True
+1,monthly_comparison,,Wasco,November 2025,19163,observed_count,False,True
+1,monthly_comparison,,Wasco,Native annual % change,-0.31%,printed_percentage,False,True
+1,monthly_comparison,,Washington,This Month,411138,observed_count,False,True
+1,monthly_comparison,,Washington,Last Month,407039,observed_count,False,True
+1,monthly_comparison,,Washington,Native monthly % change,1.01%,printed_percentage,False,True
+1,monthly_comparison,,Washington,November 2025,402383,observed_count,False,True
+1,monthly_comparison,,Washington,Native annual % change,2.18%,printed_percentage,False,True
+1,monthly_comparison,,Wheeler,This Month,1039,observed_count,False,True
+1,monthly_comparison,,Wheeler,Last Month,1052,observed_count,False,True
+1,monthly_comparison,,Wheeler,Native monthly % change,-1.24%,printed_percentage,False,True
+1,monthly_comparison,,Wheeler,November 2025,1041,observed_count,False,True
+1,monthly_comparison,,Wheeler,Native annual % change,-0.19%,printed_percentage,False,True
+1,monthly_comparison,,Yamhill,This Month,78415,observed_count,False,True
+1,monthly_comparison,,Yamhill,Last Month,78282,observed_count,False,True
+1,monthly_comparison,,Yamhill,Native monthly % change,0.17%,printed_percentage,False,True
+1,monthly_comparison,,Yamhill,November 2025,77709,observed_count,False,True
+1,monthly_comparison,,Yamhill,Native annual % change,0.91%,printed_percentage,False,True
+1,monthly_comparison,,Total,This Month,3112307,observed_count,False,True
+1,monthly_comparison,,Total,Last Month,3103265,observed_count,False,True
+1,monthly_comparison,,Total,Native monthly % change,0.29%,printed_percentage,False,True
+1,monthly_comparison,,Total,November 2025,3072107,observed_count,False,True
+1,monthly_comparison,,Total,Native annual % change,1.31%,printed_percentage,False,True
+2,county,,Baker,Democrat,1687,observed_count,False,True
+2,county,,Baker,Republican,5849,observed_count,False,True
+2,county,,Baker,Non Affiliated,4367,observed_count,False,True
+2,county,,Baker,Independent,739,observed_count,False,True
+2,county,,Baker,Libertarian,66,observed_count,False,True
+2,county,,Baker,No Labels,49,observed_count,False,True
+2,county,,Baker,Pacific Green,17,observed_count,False,True
+2,county,,Baker,Progressive,4,observed_count,False,True
+2,county,,Baker,Working Families,27,observed_count,False,True
+2,county,,Baker,Other,55,observed_count,False,True
+2,county,,Baker,Total,12860,observed_count,False,True
+2,county,,Benton,Democrat,25191,observed_count,False,True
+2,county,,Benton,Republican,12025,observed_count,False,True
+2,county,,Benton,Non Affiliated,19884,observed_count,False,True
+2,county,,Benton,Independent,2978,observed_count,False,True
+2,county,,Benton,Libertarian,360,observed_count,False,True
+2,county,,Benton,No Labels,188,observed_count,False,True
+2,county,,Benton,Pacific Green,258,observed_count,False,True
+2,county,,Benton,Progressive,84,observed_count,False,True
+2,county,,Benton,Working Families,102,observed_count,False,True
+2,county,,Benton,Other,234,observed_count,False,True
+2,county,,Benton,Total,61304,observed_count,False,True
+2,county,,Clackamas,Democrat,102113,observed_count,False,True
+2,county,,Clackamas,Republican,84594,observed_count,False,True
+2,county,,Clackamas,Non Affiliated,111746,observed_count,False,True
+2,county,,Clackamas,Independent,17864,observed_count,False,True
+2,county,,Clackamas,Libertarian,1984,observed_count,False,True
+2,county,,Clackamas,No Labels,782,observed_count,False,True
+2,county,,Clackamas,Pacific Green,619,observed_count,False,True
+2,county,,Clackamas,Progressive,366,observed_count,False,True
+2,county,,Clackamas,Working Families,781,observed_count,False,True
+2,county,,Clackamas,Other,1919,observed_count,False,True
+2,county,,Clackamas,Total,322768,observed_count,False,True
+2,county,,Clatsop,Democrat,9779,observed_count,False,True
+2,county,,Clatsop,Republican,7509,observed_count,False,True
+2,county,,Clatsop,Non Affiliated,11815,observed_count,False,True
+2,county,,Clatsop,Independent,1846,observed_count,False,True
+2,county,,Clatsop,Libertarian,228,observed_count,False,True
+2,county,,Clatsop,No Labels,160,observed_count,False,True
+2,county,,Clatsop,Pacific Green,82,observed_count,False,True
+2,county,,Clatsop,Progressive,53,observed_count,False,True
+2,county,,Clatsop,Working Families,66,observed_count,False,True
+2,county,,Clatsop,Other,140,observed_count,False,True
+2,county,,Clatsop,Total,31678,observed_count,False,True
+2,county,,Columbia,Democrat,10879,observed_count,False,True
+2,county,,Columbia,Republican,12126,observed_count,False,True
+2,county,,Columbia,Non Affiliated,16090,observed_count,False,True
+2,county,,Columbia,Independent,2141,observed_count,False,True
+2,county,,Columbia,Libertarian,354,observed_count,False,True
+2,county,,Columbia,No Labels,134,observed_count,False,True
+2,county,,Columbia,Pacific Green,95,observed_count,False,True
+2,county,,Columbia,Progressive,36,observed_count,False,True
+2,county,,Columbia,Working Families,117,observed_count,False,True
+2,county,,Columbia,Other,284,observed_count,False,True
+2,county,,Columbia,Total,42256,observed_count,False,True
+2,county,,Coos,Democrat,10742,observed_count,False,True
+2,county,,Coos,Republican,15982,observed_count,False,True
+2,county,,Coos,Non Affiliated,19186,observed_count,False,True
+2,county,,Coos,Independent,2789,observed_count,False,True
+2,county,,Coos,Libertarian,301,observed_count,False,True
+2,county,,Coos,No Labels,218,observed_count,False,True
+2,county,,Coos,Pacific Green,113,observed_count,False,True
+2,county,,Coos,Progressive,42,observed_count,False,True
+2,county,,Coos,Working Families,113,observed_count,False,True
+2,county,,Coos,Other,304,observed_count,False,True
+2,county,,Coos,Total,49790,observed_count,False,True
+2,county,,Crook,Democrat,2980,observed_count,False,True
+2,county,,Crook,Republican,9984,observed_count,False,True
+2,county,,Crook,Non Affiliated,7351,observed_count,False,True
+2,county,,Crook,Independent,1164,observed_count,False,True
+2,county,,Crook,Libertarian,136,observed_count,False,True
+2,county,,Crook,No Labels,60,observed_count,False,True
+2,county,,Crook,Pacific Green,17,observed_count,False,True
+2,county,,Crook,Progressive,5,observed_count,False,True
+2,county,,Crook,Working Families,34,observed_count,False,True
+2,county,,Crook,Other,143,observed_count,False,True
+2,county,,Crook,Total,21874,observed_count,False,True
+2,county,,Curry,Democrat,3903,observed_count,False,True
+2,county,,Curry,Republican,6158,observed_count,False,True
+2,county,,Curry,Non Affiliated,7278,observed_count,False,True
+2,county,,Curry,Independent,1243,observed_count,False,True
+2,county,,Curry,Libertarian,129,observed_count,False,True
+2,county,,Curry,No Labels,90,observed_count,False,True
+2,county,,Curry,Pacific Green,42,observed_count,False,True
+2,county,,Curry,Progressive,13,observed_count,False,True
+2,county,,Curry,Working Families,20,observed_count,False,True
+2,county,,Curry,Other,96,observed_count,False,True
+2,county,,Curry,Total,18972,observed_count,False,True
+2,county,,Deschutes,Democrat,50521,observed_count,False,True
+2,county,,Deschutes,Republican,45616,observed_count,False,True
+2,county,,Deschutes,Non Affiliated,59140,observed_count,False,True
+2,county,,Deschutes,Independent,10814,observed_count,False,True
+2,county,,Deschutes,Libertarian,1150,observed_count,False,True
+2,county,,Deschutes,No Labels,637,observed_count,False,True
+2,county,,Deschutes,Pacific Green,314,observed_count,False,True
+2,county,,Deschutes,Progressive,178,observed_count,False,True
+2,county,,Deschutes,Working Families,223,observed_count,False,True
+2,county,,Deschutes,Other,865,observed_count,False,True
+2,county,,Deschutes,Total,169458,observed_count,False,True
+2,county,,Douglas,Democrat,14974,observed_count,False,True
+2,county,,Douglas,Republican,34942,observed_count,False,True
+2,county,,Douglas,Non Affiliated,32661,observed_count,False,True
+2,county,,Douglas,Independent,4916,observed_count,False,True
+2,county,,Douglas,Libertarian,608,observed_count,False,True
+2,county,,Douglas,No Labels,324,observed_count,False,True
+2,county,,Douglas,Pacific Green,130,observed_count,False,True
+2,county,,Douglas,Progressive,96,observed_count,False,True
+2,county,,Douglas,Working Families,200,observed_count,False,True
+2,county,,Douglas,Other,637,observed_count,False,True
+2,county,,Douglas,Total,89488,observed_count,False,True
+2,county,,Gilliam,Democrat,224,observed_count,False,True
+2,county,,Gilliam,Republican,615,observed_count,False,True
+2,county,,Gilliam,Non Affiliated,495,observed_count,False,True
+2,county,,Gilliam,Independent,81,observed_count,False,True
+2,county,,Gilliam,Libertarian,11,observed_count,False,True
+2,county,,Gilliam,No Labels,7,observed_count,False,True
+2,county,,Gilliam,Pacific Green,0,observed_count,False,True
+2,county,,Gilliam,Progressive,0,observed_count,False,True
+2,county,,Gilliam,Working Families,7,observed_count,False,True
+2,county,,Gilliam,Other,9,observed_count,False,True
+2,county,,Gilliam,Total,1449,observed_count,False,True
+2,county,,Grant,Democrat,657,observed_count,False,True
+2,county,,Grant,Republican,2817,observed_count,False,True
+2,county,,Grant,Non Affiliated,1655,observed_count,False,True
+2,county,,Grant,Independent,280,observed_count,False,True
+2,county,,Grant,Libertarian,32,observed_count,False,True
+2,county,,Grant,No Labels,18,observed_count,False,True
+2,county,,Grant,Pacific Green,6,observed_count,False,True
+2,county,,Grant,Progressive,3,observed_count,False,True
+2,county,,Grant,Working Families,8,observed_count,False,True
+2,county,,Grant,Other,25,observed_count,False,True
+2,county,,Grant,Total,5501,observed_count,False,True
+2,county,,Harney,Democrat,661,observed_count,False,True
+2,county,,Harney,Republican,2791,observed_count,False,True
+2,county,,Harney,Non Affiliated,1818,observed_count,False,True
+2,county,,Harney,Independent,270,observed_count,False,True
+2,county,,Harney,Libertarian,35,observed_count,False,True
+2,county,,Harney,No Labels,11,observed_count,False,True
+2,county,,Harney,Pacific Green,6,observed_count,False,True
+2,county,,Harney,Progressive,3,observed_count,False,True
+2,county,,Harney,Working Families,12,observed_count,False,True
+2,county,,Harney,Other,30,observed_count,False,True
+2,county,,Harney,Total,5637,observed_count,False,True
+2,county,,Hood River,Democrat,6573,observed_count,False,True
+2,county,,Hood River,Republican,3024,observed_count,False,True
+2,county,,Hood River,Non Affiliated,6265,observed_count,False,True
+2,county,,Hood River,Independent,819,observed_count,False,True
+2,county,,Hood River,Libertarian,91,observed_count,False,True
+2,county,,Hood River,No Labels,74,observed_count,False,True
+2,county,,Hood River,Pacific Green,51,observed_count,False,True
+2,county,,Hood River,Progressive,17,observed_count,False,True
+2,county,,Hood River,Working Families,34,observed_count,False,True
+2,county,,Hood River,Other,79,observed_count,False,True
+2,county,,Hood River,Total,17027,observed_count,False,True
+2,county,,Jackson,Democrat,42828,observed_count,False,True
+2,county,,Jackson,Republican,49933,observed_count,False,True
+2,county,,Jackson,Non Affiliated,59527,observed_count,False,True
+2,county,,Jackson,Independent,9295,observed_count,False,True
+2,county,,Jackson,Libertarian,1141,observed_count,False,True
+2,county,,Jackson,No Labels,657,observed_count,False,True
+2,county,,Jackson,Pacific Green,382,observed_count,False,True
+2,county,,Jackson,Progressive,162,observed_count,False,True
+2,county,,Jackson,Working Families,309,observed_count,False,True
+2,county,,Jackson,Other,1044,observed_count,False,True
+2,county,,Jackson,Total,165278,observed_count,False,True
+2,county,,Jefferson,Democrat,3066,observed_count,False,True
+2,county,,Jefferson,Republican,6033,observed_count,False,True
+2,county,,Jefferson,Non Affiliated,7451,observed_count,False,True
+2,county,,Jefferson,Independent,925,observed_count,False,True
+2,county,,Jefferson,Libertarian,100,observed_count,False,True
+2,county,,Jefferson,No Labels,51,observed_count,False,True
+2,county,,Jefferson,Pacific Green,31,observed_count,False,True
+2,county,,Jefferson,Progressive,14,observed_count,False,True
+2,county,,Jefferson,Working Families,46,observed_count,False,True
+2,county,,Jefferson,Other,152,observed_count,False,True
+2,county,,Jefferson,Total,17869,observed_count,False,True
+2,county,,Josephine,Democrat,12855,observed_count,False,True
+2,county,,Josephine,Republican,25404,observed_count,False,True
+2,county,,Josephine,Non Affiliated,26476,observed_count,False,True
+2,county,,Josephine,Independent,3879,observed_count,False,True
+2,county,,Josephine,Libertarian,501,observed_count,False,True
+2,county,,Josephine,No Labels,293,observed_count,False,True
+2,county,,Josephine,Pacific Green,149,observed_count,False,True
+2,county,,Josephine,Progressive,49,observed_count,False,True
+2,county,,Josephine,Working Families,107,observed_count,False,True
+2,county,,Josephine,Other,679,observed_count,False,True
+2,county,,Josephine,Total,70392,observed_count,False,True
+2,county,,Klamath,Democrat,7383,observed_count,False,True
+2,county,,Klamath,Republican,20180,observed_count,False,True
+2,county,,Klamath,Non Affiliated,19586,observed_count,False,True
+2,county,,Klamath,Independent,2706,observed_count,False,True
+2,county,,Klamath,Libertarian,343,observed_count,False,True
+2,county,,Klamath,No Labels,191,observed_count,False,True
+2,county,,Klamath,Pacific Green,68,observed_count,False,True
+2,county,,Klamath,Progressive,46,observed_count,False,True
+2,county,,Klamath,Working Families,113,observed_count,False,True
+2,county,,Klamath,Other,293,observed_count,False,True
+2,county,,Klamath,Total,50909,observed_count,False,True
+2,county,,Lake,Democrat,529,observed_count,False,True
+2,county,,Lake,Republican,2878,observed_count,False,True
+2,county,,Lake,Non Affiliated,1859,observed_count,False,True
+2,county,,Lake,Independent,266,observed_count,False,True
+2,county,,Lake,Libertarian,38,observed_count,False,True
+2,county,,Lake,No Labels,17,observed_count,False,True
+2,county,,Lake,Pacific Green,6,observed_count,False,True
+2,county,,Lake,Progressive,3,observed_count,False,True
+2,county,,Lake,Working Families,6,observed_count,False,True
+2,county,,Lake,Other,30,observed_count,False,True
+2,county,,Lake,Total,5632,observed_count,False,True
+2,county,,Lane,Democrat,100679,observed_count,False,True
+2,county,,Lane,Republican,61818,observed_count,False,True
+2,county,,Lane,Non Affiliated,98736,observed_count,False,True
+2,county,,Lane,Independent,14749,observed_count,False,True
+2,county,,Lane,Libertarian,1777,observed_count,False,True
+2,county,,Lane,No Labels,1021,observed_count,False,True
+2,county,,Lane,Pacific Green,993,observed_count,False,True
+2,county,,Lane,Progressive,533,observed_count,False,True
+2,county,,Lane,Working Families,673,observed_count,False,True
+2,county,,Lane,Other,1858,observed_count,False,True
+2,county,,Lane,Total,282837,observed_count,False,True
+2,county,,Lincoln,Democrat,13049,observed_count,False,True
+2,county,,Lincoln,Republican,8638,observed_count,False,True
+2,county,,Lincoln,Non Affiliated,15333,observed_count,False,True
+2,county,,Lincoln,Independent,2409,observed_count,False,True
+2,county,,Lincoln,Libertarian,261,observed_count,False,True
+2,county,,Lincoln,No Labels,184,observed_count,False,True
+2,county,,Lincoln,Pacific Green,114,observed_count,False,True
+2,county,,Lincoln,Progressive,67,observed_count,False,True
+2,county,,Lincoln,Working Families,83,observed_count,False,True
+2,county,,Lincoln,Other,189,observed_count,False,True
+2,county,,Lincoln,Total,40327,observed_count,False,True
+2,county,,Linn,Democrat,21186,observed_count,False,True
+2,county,,Linn,Republican,35020,observed_count,False,True
+2,county,,Linn,Non Affiliated,37501,observed_count,False,True
+2,county,,Linn,Independent,5488,observed_count,False,True
+2,county,,Linn,Libertarian,702,observed_count,False,True
+2,county,,Linn,No Labels,329,observed_count,False,True
+2,county,,Linn,Pacific Green,200,observed_count,False,True
+2,county,,Linn,Progressive,133,observed_count,False,True
+2,county,,Linn,Working Families,212,observed_count,False,True
+2,county,,Linn,Other,592,observed_count,False,True
+2,county,,Linn,Total,101363,observed_count,False,True
+2,county,,Malheur,Democrat,2237,observed_count,False,True
+2,county,,Malheur,Republican,6366,observed_count,False,True
+2,county,,Malheur,Non Affiliated,9131,observed_count,False,True
+2,county,,Malheur,Independent,642,observed_count,False,True
+2,county,,Malheur,Libertarian,84,observed_count,False,True
+2,county,,Malheur,No Labels,72,observed_count,False,True
+2,county,,Malheur,Pacific Green,14,observed_count,False,True
+2,county,,Malheur,Progressive,17,observed_count,False,True
+2,county,,Malheur,Working Families,45,observed_count,False,True
+2,county,,Malheur,Other,90,observed_count,False,True
+2,county,,Malheur,Total,18698,observed_count,False,True
+2,county,,Marion,Democrat,62051,observed_count,False,True
+2,county,,Marion,Republican,62762,observed_count,False,True
+2,county,,Marion,Non Affiliated,91493,observed_count,False,True
+2,county,,Marion,Independent,10925,observed_count,False,True
+2,county,,Marion,Libertarian,1352,observed_count,False,True
+2,county,,Marion,No Labels,742,observed_count,False,True
+2,county,,Marion,Pacific Green,396,observed_count,False,True
+2,county,,Marion,Progressive,284,observed_count,False,True
+2,county,,Marion,Working Families,508,observed_count,False,True
+2,county,,Marion,Other,785,observed_count,False,True
+2,county,,Marion,Total,231298,observed_count,False,True
+2,county,,Morrow,Democrat,1006,observed_count,False,True
+2,county,,Morrow,Republican,2600,observed_count,False,True
+2,county,,Morrow,Non Affiliated,3282,observed_count,False,True
+2,county,,Morrow,Independent,297,observed_count,False,True
+2,county,,Morrow,Libertarian,48,observed_count,False,True
+2,county,,Morrow,No Labels,38,observed_count,False,True
+2,county,,Morrow,Pacific Green,7,observed_count,False,True
+2,county,,Morrow,Progressive,3,observed_count,False,True
+2,county,,Morrow,Working Families,29,observed_count,False,True
+2,county,,Morrow,Other,57,observed_count,False,True
+2,county,,Morrow,Total,7367,observed_count,False,True
+2,county,,Multnomah,Democrat,287737,observed_count,False,True
+2,county,,Multnomah,Republican,56648,observed_count,False,True
+2,county,,Multnomah,Non Affiliated,210978,observed_count,False,True
+2,county,,Multnomah,Independent,23249,observed_count,False,True
+2,county,,Multnomah,Libertarian,2714,observed_count,False,True
+2,county,,Multnomah,No Labels,2065,observed_count,False,True
+2,county,,Multnomah,Pacific Green,2482,observed_count,False,True
+2,county,,Multnomah,Progressive,1642,observed_count,False,True
+2,county,,Multnomah,Working Families,3374,observed_count,False,True
+2,county,,Multnomah,Other,3889,observed_count,False,True
+2,county,,Multnomah,Total,594778,observed_count,False,True
+2,county,,Polk,Democrat,17146,observed_count,False,True
+2,county,,Polk,Republican,19666,observed_count,False,True
+2,county,,Polk,Non Affiliated,23460,observed_count,False,True
+2,county,,Polk,Independent,3606,observed_count,False,True
+2,county,,Polk,Libertarian,403,observed_count,False,True
+2,county,,Polk,No Labels,181,observed_count,False,True
+2,county,,Polk,Pacific Green,123,observed_count,False,True
+2,county,,Polk,Progressive,86,observed_count,False,True
+2,county,,Polk,Working Families,122,observed_count,False,True
+2,county,,Polk,Other,266,observed_count,False,True
+2,county,,Polk,Total,65059,observed_count,False,True
+2,county,,Sherman,Democrat,195,observed_count,False,True
+2,county,,Sherman,Republican,713,observed_count,False,True
+2,county,,Sherman,Non Affiliated,458,observed_count,False,True
+2,county,,Sherman,Independent,72,observed_count,False,True
+2,county,,Sherman,Libertarian,11,observed_count,False,True
+2,county,,Sherman,No Labels,4,observed_count,False,True
+2,county,,Sherman,Pacific Green,3,observed_count,False,True
+2,county,,Sherman,Progressive,1,observed_count,False,True
+2,county,,Sherman,Working Families,3,observed_count,False,True
+2,county,,Sherman,Other,6,observed_count,False,True
+2,county,,Sherman,Total,1466,observed_count,False,True
+2,county,,Tillamook,Democrat,6038,observed_count,False,True
+2,county,,Tillamook,Republican,6164,observed_count,False,True
+2,county,,Tillamook,Non Affiliated,8079,observed_count,False,True
+2,county,,Tillamook,Independent,1123,observed_count,False,True
+2,county,,Tillamook,Libertarian,125,observed_count,False,True
+2,county,,Tillamook,No Labels,68,observed_count,False,True
+2,county,,Tillamook,Pacific Green,52,observed_count,False,True
+2,county,,Tillamook,Progressive,22,observed_count,False,True
+2,county,,Tillamook,Working Families,54,observed_count,False,True
+2,county,,Tillamook,Other,125,observed_count,False,True
+2,county,,Tillamook,Total,21850,observed_count,False,True
+2,county,,Umatilla,Democrat,7952,observed_count,False,True
+2,county,,Umatilla,Republican,16524,observed_count,False,True
+2,county,,Umatilla,Non Affiliated,23567,observed_count,False,True
+2,county,,Umatilla,Independent,2203,observed_count,False,True
+2,county,,Umatilla,Libertarian,346,observed_count,False,True
+2,county,,Umatilla,No Labels,226,observed_count,False,True
+2,county,,Umatilla,Pacific Green,57,observed_count,False,True
+2,county,,Umatilla,Progressive,39,observed_count,False,True
+2,county,,Umatilla,Working Families,133,observed_count,False,True
+2,county,,Umatilla,Other,395,observed_count,False,True
+2,county,,Umatilla,Total,51442,observed_count,False,True
+2,county,,Union,Democrat,3045,observed_count,False,True
+2,county,,Union,Republican,8392,observed_count,False,True
+2,county,,Union,Non Affiliated,6782,observed_count,False,True
+2,county,,Union,Independent,1019,observed_count,False,True
+2,county,,Union,Libertarian,127,observed_count,False,True
+2,county,,Union,No Labels,55,observed_count,False,True
+2,county,,Union,Pacific Green,13,observed_count,False,True
+2,county,,Union,Progressive,14,observed_count,False,True
+2,county,,Union,Working Families,36,observed_count,False,True
+2,county,,Union,Other,119,observed_count,False,True
+2,county,,Union,Total,19602,observed_count,False,True
+2,county,,Wallowa,Democrat,1065,observed_count,False,True
+2,county,,Wallowa,Republican,3008,observed_count,False,True
+2,county,,Wallowa,Non Affiliated,1888,observed_count,False,True
+2,county,,Wallowa,Independent,324,observed_count,False,True
+2,county,,Wallowa,Libertarian,34,observed_count,False,True
+2,county,,Wallowa,No Labels,25,observed_count,False,True
+2,county,,Wallowa,Pacific Green,3,observed_count,False,True
+2,county,,Wallowa,Progressive,1,observed_count,False,True
+2,county,,Wallowa,Working Families,5,observed_count,False,True
+2,county,,Wallowa,Other,30,observed_count,False,True
+2,county,,Wallowa,Total,6383,observed_count,False,True
+2,county,,Wasco,Democrat,4833,observed_count,False,True
+2,county,,Wasco,Republican,5230,observed_count,False,True
+2,county,,Wasco,Non Affiliated,7629,observed_count,False,True
+2,county,,Wasco,Independent,960,observed_count,False,True
+2,county,,Wasco,Libertarian,131,observed_count,False,True
+2,county,,Wasco,No Labels,71,observed_count,False,True
+2,county,,Wasco,Pacific Green,34,observed_count,False,True
+2,county,,Wasco,Progressive,19,observed_count,False,True
+2,county,,Wasco,Working Families,39,observed_count,False,True
+2,county,,Wasco,Other,157,observed_count,False,True
+2,county,,Wasco,Total,19103,observed_count,False,True
+2,county,,Washington,Democrat,146544,observed_count,False,True
+2,county,,Washington,Republican,73849,observed_count,False,True
+2,county,,Washington,Non Affiliated,163826,observed_count,False,True
+2,county,,Washington,Independent,19813,observed_count,False,True
+2,county,,Washington,Libertarian,2422,observed_count,False,True
+2,county,,Washington,No Labels,1109,observed_count,False,True
+2,county,,Washington,Pacific Green,794,observed_count,False,True
+2,county,,Washington,Progressive,668,observed_count,False,True
+2,county,,Washington,Working Families,822,observed_count,False,True
+2,county,,Washington,Other,1291,observed_count,False,True
+2,county,,Washington,Total,411138,observed_count,False,True
+2,county,,Wheeler,Democrat,162,observed_count,False,True
+2,county,,Wheeler,Republican,521,observed_count,False,True
+2,county,,Wheeler,Non Affiliated,280,observed_count,False,True
+2,county,,Wheeler,Independent,55,observed_count,False,True
+2,county,,Wheeler,Libertarian,5,observed_count,False,True
+2,county,,Wheeler,No Labels,2,observed_count,False,True
+2,county,,Wheeler,Pacific Green,3,observed_count,False,True
+2,county,,Wheeler,Progressive,1,observed_count,False,True
+2,county,,Wheeler,Working Families,1,observed_count,False,True
+2,county,,Wheeler,Other,9,observed_count,False,True
+2,county,,Wheeler,Total,1039,observed_count,False,True
+2,county,,Yamhill,Democrat,20024,observed_count,False,True
+2,county,,Yamhill,Republican,23705,observed_count,False,True
+2,county,,Yamhill,Non Affiliated,28668,observed_count,False,True
+2,county,,Yamhill,Independent,4328,observed_count,False,True
+2,county,,Yamhill,Libertarian,603,observed_count,False,True
+2,county,,Yamhill,No Labels,220,observed_count,False,True
+2,county,,Yamhill,Pacific Green,162,observed_count,False,True
+2,county,,Yamhill,Progressive,77,observed_count,False,True
+2,county,,Yamhill,Working Families,169,observed_count,False,True
+2,county,,Yamhill,Other,459,observed_count,False,True
+2,county,,Yamhill,Total,78415,observed_count,False,True
+2,county,,Total,Democrat,1002494,observed_count,False,True
+2,county,,Total,Republican,740084,observed_count,False,True
+2,county,,Total,Non Affiliated,1145741,observed_count,False,True
+2,county,,Total,Independent,156277,observed_count,False,True
+2,county,,Total,Libertarian,18753,observed_count,False,True
+2,county,,Total,No Labels,10373,observed_count,False,True
+2,county,,Total,Pacific Green,7836,observed_count,False,True
+2,county,,Total,Progressive,4781,observed_count,False,True
+2,county,,Total,Working Families,8633,observed_count,False,True
+2,county,,Total,Other,17335,observed_count,False,True
+2,county,,Total,Total,3112307,observed_count,False,True
+3,congressional,1st,Clatsop,Democrat,9779,observed_count,False,True
+3,congressional,1st,Clatsop,Republican,7509,observed_count,False,True
+3,congressional,1st,Clatsop,Non Affiliated,11815,observed_count,False,True
+3,congressional,1st,Clatsop,Independent,1846,observed_count,False,True
+3,congressional,1st,Clatsop,Libertarian,228,observed_count,False,True
+3,congressional,1st,Clatsop,No Labels,160,observed_count,False,True
+3,congressional,1st,Clatsop,Pacific Green,82,observed_count,False,True
+3,congressional,1st,Clatsop,Progressive,53,observed_count,False,True
+3,congressional,1st,Clatsop,Working Families,66,observed_count,False,True
+3,congressional,1st,Clatsop,Other,140,observed_count,False,True
+3,congressional,1st,Clatsop,Total,31678,observed_count,False,True
+3,congressional,1st,Columbia,Democrat,10879,observed_count,False,True
+3,congressional,1st,Columbia,Republican,12126,observed_count,False,True
+3,congressional,1st,Columbia,Non Affiliated,16090,observed_count,False,True
+3,congressional,1st,Columbia,Independent,2141,observed_count,False,True
+3,congressional,1st,Columbia,Libertarian,354,observed_count,False,True
+3,congressional,1st,Columbia,No Labels,134,observed_count,False,True
+3,congressional,1st,Columbia,Pacific Green,95,observed_count,False,True
+3,congressional,1st,Columbia,Progressive,36,observed_count,False,True
+3,congressional,1st,Columbia,Working Families,117,observed_count,False,True
+3,congressional,1st,Columbia,Other,284,observed_count,False,True
+3,congressional,1st,Columbia,Total,42256,observed_count,False,True
+3,congressional,1st,Multnomah,Democrat,69136,observed_count,False,True
+3,congressional,1st,Multnomah,Republican,7888,observed_count,False,True
+3,congressional,1st,Multnomah,Non Affiliated,42161,observed_count,False,True
+3,congressional,1st,Multnomah,Independent,5340,observed_count,False,True
+3,congressional,1st,Multnomah,Libertarian,600,observed_count,False,True
+3,congressional,1st,Multnomah,No Labels,495,observed_count,False,True
+3,congressional,1st,Multnomah,Pacific Green,622,observed_count,False,True
+3,congressional,1st,Multnomah,Progressive,457,observed_count,False,True
+3,congressional,1st,Multnomah,Working Families,576,observed_count,False,True
+3,congressional,1st,Multnomah,Other,718,observed_count,False,True
+3,congressional,1st,Multnomah,Total,127993,observed_count,False,True
+3,congressional,1st,Tillamook,Democrat,6038,observed_count,False,True
+3,congressional,1st,Tillamook,Republican,6164,observed_count,False,True
+3,congressional,1st,Tillamook,Non Affiliated,8079,observed_count,False,True
+3,congressional,1st,Tillamook,Independent,1123,observed_count,False,True
+3,congressional,1st,Tillamook,Libertarian,125,observed_count,False,True
+3,congressional,1st,Tillamook,No Labels,68,observed_count,False,True
+3,congressional,1st,Tillamook,Pacific Green,52,observed_count,False,True
+3,congressional,1st,Tillamook,Progressive,22,observed_count,False,True
+3,congressional,1st,Tillamook,Working Families,54,observed_count,False,True
+3,congressional,1st,Tillamook,Other,125,observed_count,False,True
+3,congressional,1st,Tillamook,Total,21850,observed_count,False,True
+3,congressional,1st,Washington,Democrat,99555,observed_count,False,True
+3,congressional,1st,Washington,Republican,49773,observed_count,False,True
+3,congressional,1st,Washington,Non Affiliated,118344,observed_count,False,True
+3,congressional,1st,Washington,Independent,13031,observed_count,False,True
+3,congressional,1st,Washington,Libertarian,1664,observed_count,False,True
+3,congressional,1st,Washington,No Labels,797,observed_count,False,True
+3,congressional,1st,Washington,Pacific Green,551,observed_count,False,True
+3,congressional,1st,Washington,Progressive,468,observed_count,False,True
+3,congressional,1st,Washington,Working Families,598,observed_count,False,True
+3,congressional,1st,Washington,Other,911,observed_count,False,True
+3,congressional,1st,Washington,Total,285692,observed_count,False,True
+3,congressional,1st,Total,Democrat,195387,observed_count,False,True
+3,congressional,1st,Total,Republican,83460,observed_count,False,True
+3,congressional,1st,Total,Non Affiliated,196489,observed_count,False,True
+3,congressional,1st,Total,Independent,23481,observed_count,False,True
+3,congressional,1st,Total,Libertarian,2971,observed_count,False,True
+3,congressional,1st,Total,No Labels,1654,observed_count,False,True
+3,congressional,1st,Total,Pacific Green,1402,observed_count,False,True
+3,congressional,1st,Total,Progressive,1036,observed_count,False,True
+3,congressional,1st,Total,Working Families,1411,observed_count,False,True
+3,congressional,1st,Total,Other,2178,observed_count,False,True
+3,congressional,1st,Total,Total,509469,observed_count,False,True
+3,congressional,2nd,Baker,Democrat,1687,observed_count,False,True
+3,congressional,2nd,Baker,Republican,5849,observed_count,False,True
+3,congressional,2nd,Baker,Non Affiliated,4367,observed_count,False,True
+3,congressional,2nd,Baker,Independent,739,observed_count,False,True
+3,congressional,2nd,Baker,Libertarian,66,observed_count,False,True
+3,congressional,2nd,Baker,No Labels,49,observed_count,False,True
+3,congressional,2nd,Baker,Pacific Green,17,observed_count,False,True
+3,congressional,2nd,Baker,Progressive,4,observed_count,False,True
+3,congressional,2nd,Baker,Working Families,27,observed_count,False,True
+3,congressional,2nd,Baker,Other,55,observed_count,False,True
+3,congressional,2nd,Baker,Total,12860,observed_count,False,True
+3,congressional,2nd,Clackamas,Democrat,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Republican,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Non Affiliated,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Independent,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Libertarian,0,observed_count,False,True
+3,congressional,2nd,Clackamas,No Labels,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Pacific Green,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Progressive,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Working Families,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Other,0,observed_count,False,True
+3,congressional,2nd,Clackamas,Total,0,observed_count,False,True
+3,congressional,2nd,Crook,Democrat,2980,observed_count,False,True
+3,congressional,2nd,Crook,Republican,9984,observed_count,False,True
+3,congressional,2nd,Crook,Non Affiliated,7351,observed_count,False,True
+3,congressional,2nd,Crook,Independent,1164,observed_count,False,True
+3,congressional,2nd,Crook,Libertarian,136,observed_count,False,True
+3,congressional,2nd,Crook,No Labels,60,observed_count,False,True
+3,congressional,2nd,Crook,Pacific Green,17,observed_count,False,True
+3,congressional,2nd,Crook,Progressive,5,observed_count,False,True
+3,congressional,2nd,Crook,Working Families,34,observed_count,False,True
+3,congressional,2nd,Crook,Other,143,observed_count,False,True
+3,congressional,2nd,Crook,Total,21874,observed_count,False,True
+3,congressional,2nd,Curry,Democrat,0,observed_count,False,True
+3,congressional,2nd,Curry,Republican,0,observed_count,False,True
+3,congressional,2nd,Curry,Non Affiliated,0,observed_count,False,True
+3,congressional,2nd,Curry,Independent,0,observed_count,False,True
+3,congressional,2nd,Curry,Libertarian,0,observed_count,False,True
+3,congressional,2nd,Curry,No Labels,0,observed_count,False,True
+3,congressional,2nd,Curry,Pacific Green,0,observed_count,False,True
+3,congressional,2nd,Curry,Progressive,0,observed_count,False,True
+3,congressional,2nd,Curry,Working Families,0,observed_count,False,True
+3,congressional,2nd,Curry,Other,0,observed_count,False,True
+3,congressional,2nd,Curry,Total,0,observed_count,False,True
+3,congressional,2nd,Deschutes,Democrat,4699,observed_count,False,True
+3,congressional,2nd,Deschutes,Republican,8047,observed_count,False,True
+3,congressional,2nd,Deschutes,Non Affiliated,7798,observed_count,False,True
+3,congressional,2nd,Deschutes,Independent,1382,observed_count,False,True
+3,congressional,2nd,Deschutes,Libertarian,135,observed_count,False,True
+3,congressional,2nd,Deschutes,No Labels,78,observed_count,False,True
+3,congressional,2nd,Deschutes,Pacific Green,46,observed_count,False,True
+3,congressional,2nd,Deschutes,Progressive,16,observed_count,False,True
+3,congressional,2nd,Deschutes,Working Families,51,observed_count,False,True
+3,congressional,2nd,Deschutes,Other,143,observed_count,False,True
+3,congressional,2nd,Deschutes,Total,22395,observed_count,False,True
+3,congressional,2nd,Douglas,Democrat,2672,observed_count,False,True
+3,congressional,2nd,Douglas,Republican,7247,observed_count,False,True
+3,congressional,2nd,Douglas,Non Affiliated,7335,observed_count,False,True
+3,congressional,2nd,Douglas,Independent,1045,observed_count,False,True
+3,congressional,2nd,Douglas,Libertarian,123,observed_count,False,True
+3,congressional,2nd,Douglas,No Labels,67,observed_count,False,True
+3,congressional,2nd,Douglas,Pacific Green,33,observed_count,False,True
+3,congressional,2nd,Douglas,Progressive,14,observed_count,False,True
+3,congressional,2nd,Douglas,Working Families,43,observed_count,False,True
+3,congressional,2nd,Douglas,Other,157,observed_count,False,True
+3,congressional,2nd,Douglas,Total,18736,observed_count,False,True
+3,congressional,2nd,Gilliam,Democrat,224,observed_count,False,True
+3,congressional,2nd,Gilliam,Republican,615,observed_count,False,True
+3,congressional,2nd,Gilliam,Non Affiliated,495,observed_count,False,True
+3,congressional,2nd,Gilliam,Independent,81,observed_count,False,True
+3,congressional,2nd,Gilliam,Libertarian,11,observed_count,False,True
+3,congressional,2nd,Gilliam,No Labels,7,observed_count,False,True
+3,congressional,2nd,Gilliam,Pacific Green,0,observed_count,False,True
+3,congressional,2nd,Gilliam,Progressive,0,observed_count,False,True
+3,congressional,2nd,Gilliam,Working Families,7,observed_count,False,True
+3,congressional,2nd,Gilliam,Other,9,observed_count,False,True
+3,congressional,2nd,Gilliam,Total,1449,observed_count,False,True
+3,congressional,2nd,Grant,Democrat,657,observed_count,False,True
+3,congressional,2nd,Grant,Republican,2817,observed_count,False,True
+3,congressional,2nd,Grant,Non Affiliated,1655,observed_count,False,True
+3,congressional,2nd,Grant,Independent,280,observed_count,False,True
+3,congressional,2nd,Grant,Libertarian,32,observed_count,False,True
+3,congressional,2nd,Grant,No Labels,18,observed_count,False,True
+3,congressional,2nd,Grant,Pacific Green,6,observed_count,False,True
+3,congressional,2nd,Grant,Progressive,3,observed_count,False,True
+3,congressional,2nd,Grant,Working Families,8,observed_count,False,True
+3,congressional,2nd,Grant,Other,25,observed_count,False,True
+3,congressional,2nd,Grant,Total,5501,observed_count,False,True
+3,congressional,2nd,Harney,Democrat,661,observed_count,False,True
+3,congressional,2nd,Harney,Republican,2791,observed_count,False,True
+3,congressional,2nd,Harney,Non Affiliated,1818,observed_count,False,True
+3,congressional,2nd,Harney,Independent,270,observed_count,False,True
+3,congressional,2nd,Harney,Libertarian,35,observed_count,False,True
+3,congressional,2nd,Harney,No Labels,11,observed_count,False,True
+3,congressional,2nd,Harney,Pacific Green,6,observed_count,False,True
+3,congressional,2nd,Harney,Progressive,3,observed_count,False,True
+3,congressional,2nd,Harney,Working Families,12,observed_count,False,True
+3,congressional,2nd,Harney,Other,30,observed_count,False,True
+3,congressional,2nd,Harney,Total,5637,observed_count,False,True
+3,congressional,2nd,Jackson,Democrat,42828,observed_count,False,True
+3,congressional,2nd,Jackson,Republican,49933,observed_count,False,True
+3,congressional,2nd,Jackson,Non Affiliated,59527,observed_count,False,True
+3,congressional,2nd,Jackson,Independent,9295,observed_count,False,True
+3,congressional,2nd,Jackson,Libertarian,1141,observed_count,False,True
+3,congressional,2nd,Jackson,No Labels,657,observed_count,False,True
+3,congressional,2nd,Jackson,Pacific Green,382,observed_count,False,True
+3,congressional,2nd,Jackson,Progressive,162,observed_count,False,True
+3,congressional,2nd,Jackson,Working Families,309,observed_count,False,True
+3,congressional,2nd,Jackson,Other,1044,observed_count,False,True
+3,congressional,2nd,Jackson,Total,165278,observed_count,False,True
+3,congressional,2nd,Jefferson,Democrat,3063,observed_count,False,True
+3,congressional,2nd,Jefferson,Republican,6025,observed_count,False,True
+3,congressional,2nd,Jefferson,Non Affiliated,7446,observed_count,False,True
+3,congressional,2nd,Jefferson,Independent,924,observed_count,False,True
+3,congressional,2nd,Jefferson,Libertarian,100,observed_count,False,True
+3,congressional,2nd,Jefferson,No Labels,51,observed_count,False,True
+3,congressional,2nd,Jefferson,Pacific Green,31,observed_count,False,True
+3,congressional,2nd,Jefferson,Progressive,14,observed_count,False,True
+3,congressional,2nd,Jefferson,Working Families,46,observed_count,False,True
+3,congressional,2nd,Jefferson,Other,152,observed_count,False,True
+3,congressional,2nd,Jefferson,Total,17852,observed_count,False,True
+3,congressional,2nd,Josephine,Democrat,12855,observed_count,False,True
+3,congressional,2nd,Josephine,Republican,25404,observed_count,False,True
+3,congressional,2nd,Josephine,Non Affiliated,26476,observed_count,False,True
+3,congressional,2nd,Josephine,Independent,3879,observed_count,False,True
+3,congressional,2nd,Josephine,Libertarian,501,observed_count,False,True
+3,congressional,2nd,Josephine,No Labels,293,observed_count,False,True
+3,congressional,2nd,Josephine,Pacific Green,149,observed_count,False,True
+3,congressional,2nd,Josephine,Progressive,49,observed_count,False,True
+3,congressional,2nd,Josephine,Working Families,107,observed_count,False,True
+3,congressional,2nd,Josephine,Other,679,observed_count,False,True
+3,congressional,2nd,Josephine,Total,70392,observed_count,False,True
+3,congressional,2nd,Klamath,Democrat,7383,observed_count,False,True
+3,congressional,2nd,Klamath,Republican,20180,observed_count,False,True
+3,congressional,2nd,Klamath,Non Affiliated,19586,observed_count,False,True
+3,congressional,2nd,Klamath,Independent,2706,observed_count,False,True
+3,congressional,2nd,Klamath,Libertarian,343,observed_count,False,True
+3,congressional,2nd,Klamath,No Labels,191,observed_count,False,True
+3,congressional,2nd,Klamath,Pacific Green,68,observed_count,False,True
+3,congressional,2nd,Klamath,Progressive,46,observed_count,False,True
+3,congressional,2nd,Klamath,Working Families,113,observed_count,False,True
+3,congressional,2nd,Klamath,Other,293,observed_count,False,True
+3,congressional,2nd,Klamath,Total,50909,observed_count,False,True
+3,congressional,2nd,Lake,Democrat,529,observed_count,False,True
+3,congressional,2nd,Lake,Republican,2878,observed_count,False,True
+3,congressional,2nd,Lake,Non Affiliated,1859,observed_count,False,True
+3,congressional,2nd,Lake,Independent,266,observed_count,False,True
+3,congressional,2nd,Lake,Libertarian,38,observed_count,False,True
+3,congressional,2nd,Lake,No Labels,17,observed_count,False,True
+3,congressional,2nd,Lake,Pacific Green,6,observed_count,False,True
+3,congressional,2nd,Lake,Progressive,3,observed_count,False,True
+3,congressional,2nd,Lake,Working Families,6,observed_count,False,True
+3,congressional,2nd,Lake,Other,30,observed_count,False,True
+3,congressional,2nd,Lake,Total,5632,observed_count,False,True
+3,congressional,2nd,Malheur,Democrat,2237,observed_count,False,True
+3,congressional,2nd,Malheur,Republican,6366,observed_count,False,True
+3,congressional,2nd,Malheur,Non Affiliated,9131,observed_count,False,True
+3,congressional,2nd,Malheur,Independent,642,observed_count,False,True
+3,congressional,2nd,Malheur,Libertarian,84,observed_count,False,True
+3,congressional,2nd,Malheur,No Labels,72,observed_count,False,True
+3,congressional,2nd,Malheur,Pacific Green,14,observed_count,False,True
+3,congressional,2nd,Malheur,Progressive,17,observed_count,False,True
+3,congressional,2nd,Malheur,Working Families,45,observed_count,False,True
+3,congressional,2nd,Malheur,Other,90,observed_count,False,True
+3,congressional,2nd,Malheur,Total,18698,observed_count,False,True
+3,congressional,2nd,Marion,Democrat,0,observed_count,False,True
+3,congressional,2nd,Marion,Republican,0,observed_count,False,True
+3,congressional,2nd,Marion,Non Affiliated,0,observed_count,False,True
+3,congressional,2nd,Marion,Independent,0,observed_count,False,True
+3,congressional,2nd,Marion,Libertarian,0,observed_count,False,True
+3,congressional,2nd,Marion,No Labels,0,observed_count,False,True
+3,congressional,2nd,Marion,Pacific Green,0,observed_count,False,True
+3,congressional,2nd,Marion,Progressive,0,observed_count,False,True
+3,congressional,2nd,Marion,Working Families,0,observed_count,False,True
+3,congressional,2nd,Marion,Other,0,observed_count,False,True
+3,congressional,2nd,Marion,Total,0,observed_count,False,True
+3,congressional,2nd,Morrow,Democrat,1006,observed_count,False,True
+3,congressional,2nd,Morrow,Republican,2600,observed_count,False,True
+3,congressional,2nd,Morrow,Non Affiliated,3282,observed_count,False,True
+3,congressional,2nd,Morrow,Independent,297,observed_count,False,True
+3,congressional,2nd,Morrow,Libertarian,48,observed_count,False,True
+3,congressional,2nd,Morrow,No Labels,38,observed_count,False,True
+3,congressional,2nd,Morrow,Pacific Green,7,observed_count,False,True
+3,congressional,2nd,Morrow,Progressive,3,observed_count,False,True
+3,congressional,2nd,Morrow,Working Families,29,observed_count,False,True
+3,congressional,2nd,Morrow,Other,57,observed_count,False,True
+3,congressional,2nd,Morrow,Total,7367,observed_count,False,True
+3,congressional,2nd,Sherman,Democrat,195,observed_count,False,True
+3,congressional,2nd,Sherman,Republican,713,observed_count,False,True
+3,congressional,2nd,Sherman,Non Affiliated,458,observed_count,False,True
+3,congressional,2nd,Sherman,Independent,72,observed_count,False,True
+3,congressional,2nd,Sherman,Libertarian,11,observed_count,False,True
+3,congressional,2nd,Sherman,No Labels,4,observed_count,False,True
+3,congressional,2nd,Sherman,Pacific Green,3,observed_count,False,True
+3,congressional,2nd,Sherman,Progressive,1,observed_count,False,True
+3,congressional,2nd,Sherman,Working Families,3,observed_count,False,True
+3,congressional,2nd,Sherman,Other,6,observed_count,False,True
+3,congressional,2nd,Sherman,Total,1466,observed_count,False,True
+3,congressional,2nd,Umatilla,Democrat,7952,observed_count,False,True
+3,congressional,2nd,Umatilla,Republican,16524,observed_count,False,True
+3,congressional,2nd,Umatilla,Non Affiliated,23567,observed_count,False,True
+3,congressional,2nd,Umatilla,Independent,2203,observed_count,False,True
+3,congressional,2nd,Umatilla,Libertarian,346,observed_count,False,True
+3,congressional,2nd,Umatilla,No Labels,226,observed_count,False,True
+3,congressional,2nd,Umatilla,Pacific Green,57,observed_count,False,True
+3,congressional,2nd,Umatilla,Progressive,39,observed_count,False,True
+3,congressional,2nd,Umatilla,Working Families,133,observed_count,False,True
+3,congressional,2nd,Umatilla,Other,395,observed_count,False,True
+3,congressional,2nd,Umatilla,Total,51442,observed_count,False,True
+3,congressional,2nd,Union,Democrat,3045,observed_count,False,True
+3,congressional,2nd,Union,Republican,8392,observed_count,False,True
+3,congressional,2nd,Union,Non Affiliated,6782,observed_count,False,True
+3,congressional,2nd,Union,Independent,1019,observed_count,False,True
+3,congressional,2nd,Union,Libertarian,127,observed_count,False,True
+3,congressional,2nd,Union,No Labels,55,observed_count,False,True
+3,congressional,2nd,Union,Pacific Green,13,observed_count,False,True
+3,congressional,2nd,Union,Progressive,14,observed_count,False,True
+3,congressional,2nd,Union,Working Families,36,observed_count,False,True
+3,congressional,2nd,Union,Other,119,observed_count,False,True
+3,congressional,2nd,Union,Total,19602,observed_count,False,True
+3,congressional,2nd,Wallowa,Democrat,1065,observed_count,False,True
+3,congressional,2nd,Wallowa,Republican,3008,observed_count,False,True
+3,congressional,2nd,Wallowa,Non Affiliated,1888,observed_count,False,True
+3,congressional,2nd,Wallowa,Independent,324,observed_count,False,True
+3,congressional,2nd,Wallowa,Libertarian,34,observed_count,False,True
+3,congressional,2nd,Wallowa,No Labels,25,observed_count,False,True
+3,congressional,2nd,Wallowa,Pacific Green,3,observed_count,False,True
+3,congressional,2nd,Wallowa,Progressive,1,observed_count,False,True
+3,congressional,2nd,Wallowa,Working Families,5,observed_count,False,True
+3,congressional,2nd,Wallowa,Other,30,observed_count,False,True
+3,congressional,2nd,Wallowa,Total,6383,observed_count,False,True
+3,congressional,2nd,Wasco,Democrat,4833,observed_count,False,True
+3,congressional,2nd,Wasco,Republican,5230,observed_count,False,True
+3,congressional,2nd,Wasco,Non Affiliated,7629,observed_count,False,True
+3,congressional,2nd,Wasco,Independent,960,observed_count,False,True
+3,congressional,2nd,Wasco,Libertarian,131,observed_count,False,True
+3,congressional,2nd,Wasco,No Labels,71,observed_count,False,True
+3,congressional,2nd,Wasco,Pacific Green,34,observed_count,False,True
+3,congressional,2nd,Wasco,Progressive,19,observed_count,False,True
+3,congressional,2nd,Wasco,Working Families,39,observed_count,False,True
+3,congressional,2nd,Wasco,Other,157,observed_count,False,True
+3,congressional,2nd,Wasco,Total,19103,observed_count,False,True
+3,congressional,2nd,Wheeler,Democrat,162,observed_count,False,True
+3,congressional,2nd,Wheeler,Republican,521,observed_count,False,True
+3,congressional,2nd,Wheeler,Non Affiliated,280,observed_count,False,True
+3,congressional,2nd,Wheeler,Independent,55,observed_count,False,True
+3,congressional,2nd,Wheeler,Libertarian,5,observed_count,False,True
+3,congressional,2nd,Wheeler,No Labels,2,observed_count,False,True
+3,congressional,2nd,Wheeler,Pacific Green,3,observed_count,False,True
+3,congressional,2nd,Wheeler,Progressive,1,observed_count,False,True
+3,congressional,2nd,Wheeler,Working Families,1,observed_count,False,True
+3,congressional,2nd,Wheeler,Other,9,observed_count,False,True
+3,congressional,2nd,Wheeler,Total,1039,observed_count,False,True
+3,congressional,2nd,Total,Democrat,100733,observed_count,False,True
+3,congressional,2nd,Total,Republican,185124,observed_count,False,True
+3,congressional,2nd,Total,Non Affiliated,198730,observed_count,False,True
+3,congressional,2nd,Total,Independent,27603,observed_count,False,True
+3,congressional,2nd,Total,Libertarian,3447,observed_count,False,True
+3,congressional,2nd,Total,No Labels,1992,observed_count,False,True
+3,congressional,2nd,Total,Pacific Green,895,observed_count,False,True
+3,congressional,2nd,Total,Progressive,414,observed_count,False,True
+3,congressional,2nd,Total,Working Families,1054,observed_count,False,True
+3,congressional,2nd,Total,Other,3623,observed_count,False,True
+3,congressional,2nd,Total,Total,523615,observed_count,False,True
+3,congressional,3rd,Clackamas,Democrat,16779,observed_count,False,True
+3,congressional,3rd,Clackamas,Republican,20347,observed_count,False,True
+3,congressional,3rd,Clackamas,Non Affiliated,25224,observed_count,False,True
+3,congressional,3rd,Clackamas,Independent,3584,observed_count,False,True
+3,congressional,3rd,Clackamas,Libertarian,461,observed_count,False,True
+3,congressional,3rd,Clackamas,No Labels,171,observed_count,False,True
+3,congressional,3rd,Clackamas,Pacific Green,108,observed_count,False,True
+3,congressional,3rd,Clackamas,Progressive,60,observed_count,False,True
+3,congressional,3rd,Clackamas,Working Families,180,observed_count,False,True
+3,congressional,3rd,Clackamas,Other,472,observed_count,False,True
+3,congressional,3rd,Clackamas,Total,67386,observed_count,False,True
+3,congressional,3rd,Hood River,Democrat,6573,observed_count,False,True
+3,congressional,3rd,Hood River,Republican,3024,observed_count,False,True
+3,congressional,3rd,Hood River,Non Affiliated,6265,observed_count,False,True
+3,congressional,3rd,Hood River,Independent,819,observed_count,False,True
+3,congressional,3rd,Hood River,Libertarian,91,observed_count,False,True
+3,congressional,3rd,Hood River,No Labels,74,observed_count,False,True
+3,congressional,3rd,Hood River,Pacific Green,51,observed_count,False,True
+3,congressional,3rd,Hood River,Progressive,17,observed_count,False,True
+3,congressional,3rd,Hood River,Working Families,34,observed_count,False,True
+3,congressional,3rd,Hood River,Other,79,observed_count,False,True
+3,congressional,3rd,Hood River,Total,17027,observed_count,False,True
+3,congressional,3rd,Multnomah,Democrat,198607,observed_count,False,True
+3,congressional,3rd,Multnomah,Republican,45215,observed_count,False,True
+3,congressional,3rd,Multnomah,Non Affiliated,156165,observed_count,False,True
+3,congressional,3rd,Multnomah,Independent,16337,observed_count,False,True
+3,congressional,3rd,Multnomah,Libertarian,1935,observed_count,False,True
+3,congressional,3rd,Multnomah,No Labels,1469,observed_count,False,True
+3,congressional,3rd,Multnomah,Pacific Green,1686,observed_count,False,True
+3,congressional,3rd,Multnomah,Progressive,1093,observed_count,False,True
+3,congressional,3rd,Multnomah,Working Families,2648,observed_count,False,True
+3,congressional,3rd,Multnomah,Other,2937,observed_count,False,True
+3,congressional,3rd,Multnomah,Total,428092,observed_count,False,True
+3,congressional,3rd,Total,Democrat,221959,observed_count,False,True
+3,congressional,3rd,Total,Republican,68586,observed_count,False,True
+3,congressional,3rd,Total,Non Affiliated,187654,observed_count,False,True
+3,congressional,3rd,Total,Independent,20740,observed_count,False,True
+3,congressional,3rd,Total,Libertarian,2487,observed_count,False,True
+3,congressional,3rd,Total,No Labels,1714,observed_count,False,True
+3,congressional,3rd,Total,Pacific Green,1845,observed_count,False,True
+3,congressional,3rd,Total,Progressive,1170,observed_count,False,True
+3,congressional,3rd,Total,Working Families,2862,observed_count,False,True
+3,congressional,3rd,Total,Other,3488,observed_count,False,True
+3,congressional,3rd,Total,Total,512505,observed_count,False,True
+3,congressional,4th,Benton,Democrat,25191,observed_count,False,True
+3,congressional,4th,Benton,Republican,12025,observed_count,False,True
+3,congressional,4th,Benton,Non Affiliated,19884,observed_count,False,True
+3,congressional,4th,Benton,Independent,2978,observed_count,False,True
+3,congressional,4th,Benton,Libertarian,360,observed_count,False,True
+3,congressional,4th,Benton,No Labels,188,observed_count,False,True
+3,congressional,4th,Benton,Pacific Green,258,observed_count,False,True
+3,congressional,4th,Benton,Progressive,84,observed_count,False,True
+3,congressional,4th,Benton,Working Families,102,observed_count,False,True
+3,congressional,4th,Benton,Other,234,observed_count,False,True
+3,congressional,4th,Benton,Total,61304,observed_count,False,True
+3,congressional,4th,Coos,Democrat,10742,observed_count,False,True
+3,congressional,4th,Coos,Republican,15982,observed_count,False,True
+3,congressional,4th,Coos,Non Affiliated,19186,observed_count,False,True
+3,congressional,4th,Coos,Independent,2789,observed_count,False,True
+3,congressional,4th,Coos,Libertarian,301,observed_count,False,True
+3,congressional,4th,Coos,No Labels,218,observed_count,False,True
+3,congressional,4th,Coos,Pacific Green,113,observed_count,False,True
+3,congressional,4th,Coos,Progressive,42,observed_count,False,True
+3,congressional,4th,Coos,Working Families,113,observed_count,False,True
+3,congressional,4th,Coos,Other,304,observed_count,False,True
+3,congressional,4th,Coos,Total,49790,observed_count,False,True
+3,congressional,4th,Curry,Democrat,3903,observed_count,False,True
+3,congressional,4th,Curry,Republican,6158,observed_count,False,True
+3,congressional,4th,Curry,Non Affiliated,7278,observed_count,False,True
+3,congressional,4th,Curry,Independent,1243,observed_count,False,True
+3,congressional,4th,Curry,Libertarian,129,observed_count,False,True
+3,congressional,4th,Curry,No Labels,90,observed_count,False,True
+3,congressional,4th,Curry,Pacific Green,42,observed_count,False,True
+3,congressional,4th,Curry,Progressive,13,observed_count,False,True
+3,congressional,4th,Curry,Working Families,20,observed_count,False,True
+3,congressional,4th,Curry,Other,96,observed_count,False,True
+3,congressional,4th,Curry,Total,18972,observed_count,False,True
+3,congressional,4th,Douglas,Democrat,12302,observed_count,False,True
+3,congressional,4th,Douglas,Republican,27695,observed_count,False,True
+3,congressional,4th,Douglas,Non Affiliated,25326,observed_count,False,True
+3,congressional,4th,Douglas,Independent,3871,observed_count,False,True
+3,congressional,4th,Douglas,Libertarian,485,observed_count,False,True
+3,congressional,4th,Douglas,No Labels,257,observed_count,False,True
+3,congressional,4th,Douglas,Pacific Green,97,observed_count,False,True
+3,congressional,4th,Douglas,Progressive,82,observed_count,False,True
+3,congressional,4th,Douglas,Working Families,157,observed_count,False,True
+3,congressional,4th,Douglas,Other,480,observed_count,False,True
+3,congressional,4th,Douglas,Total,70752,observed_count,False,True
+3,congressional,4th,Lane,Democrat,100679,observed_count,False,True
+3,congressional,4th,Lane,Republican,61818,observed_count,False,True
+3,congressional,4th,Lane,Non Affiliated,98736,observed_count,False,True
+3,congressional,4th,Lane,Independent,14749,observed_count,False,True
+3,congressional,4th,Lane,Libertarian,1777,observed_count,False,True
+3,congressional,4th,Lane,No Labels,1021,observed_count,False,True
+3,congressional,4th,Lane,Pacific Green,993,observed_count,False,True
+3,congressional,4th,Lane,Progressive,533,observed_count,False,True
+3,congressional,4th,Lane,Working Families,673,observed_count,False,True
+3,congressional,4th,Lane,Other,1858,observed_count,False,True
+3,congressional,4th,Lane,Total,282837,observed_count,False,True
+3,congressional,4th,Lincoln,Democrat,13049,observed_count,False,True
+3,congressional,4th,Lincoln,Republican,8638,observed_count,False,True
+3,congressional,4th,Lincoln,Non Affiliated,15333,observed_count,False,True
+3,congressional,4th,Lincoln,Independent,2409,observed_count,False,True
+3,congressional,4th,Lincoln,Libertarian,261,observed_count,False,True
+3,congressional,4th,Lincoln,No Labels,184,observed_count,False,True
+3,congressional,4th,Lincoln,Pacific Green,114,observed_count,False,True
+3,congressional,4th,Lincoln,Progressive,67,observed_count,False,True
+3,congressional,4th,Lincoln,Working Families,83,observed_count,False,True
+3,congressional,4th,Lincoln,Other,189,observed_count,False,True
+3,congressional,4th,Lincoln,Total,40327,observed_count,False,True
+3,congressional,4th,Linn,Democrat,321,observed_count,False,True
+3,congressional,4th,Linn,Republican,285,observed_count,False,True
+3,congressional,4th,Linn,Non Affiliated,242,observed_count,False,True
+3,congressional,4th,Linn,Independent,61,observed_count,False,True
+3,congressional,4th,Linn,Libertarian,7,observed_count,False,True
+3,congressional,4th,Linn,No Labels,2,observed_count,False,True
+3,congressional,4th,Linn,Pacific Green,7,observed_count,False,True
+3,congressional,4th,Linn,Progressive,2,observed_count,False,True
+3,congressional,4th,Linn,Working Families,0,observed_count,False,True
+3,congressional,4th,Linn,Other,1,observed_count,False,True
+3,congressional,4th,Linn,Total,928,observed_count,False,True
+3,congressional,4th,Total,Democrat,166187,observed_count,False,True
+3,congressional,4th,Total,Republican,132601,observed_count,False,True
+3,congressional,4th,Total,Non Affiliated,185985,observed_count,False,True
+3,congressional,4th,Total,Independent,28100,observed_count,False,True
+3,congressional,4th,Total,Libertarian,3320,observed_count,False,True
+3,congressional,4th,Total,No Labels,1960,observed_count,False,True
+3,congressional,4th,Total,Pacific Green,1624,observed_count,False,True
+3,congressional,4th,Total,Progressive,823,observed_count,False,True
+3,congressional,4th,Total,Working Families,1148,observed_count,False,True
+3,congressional,4th,Total,Other,3162,observed_count,False,True
+3,congressional,4th,Total,Total,524910,observed_count,False,True
+4,congressional,5th,Clackamas,Democrat,75553,observed_count,False,True
+4,congressional,5th,Clackamas,Republican,57351,observed_count,False,True
+4,congressional,5th,Clackamas,Non Affiliated,77109,observed_count,False,True
+4,congressional,5th,Clackamas,Independent,12541,observed_count,False,True
+4,congressional,5th,Clackamas,Libertarian,1358,observed_count,False,True
+4,congressional,5th,Clackamas,No Labels,542,observed_count,False,True
+4,congressional,5th,Clackamas,Pacific Green,455,observed_count,False,True
+4,congressional,5th,Clackamas,Progressive,276,observed_count,False,True
+4,congressional,5th,Clackamas,Working Families,565,observed_count,False,True
+4,congressional,5th,Clackamas,Other,1337,observed_count,False,True
+4,congressional,5th,Clackamas,Total,227087,observed_count,False,True
+4,congressional,5th,Deschutes,Democrat,45822,observed_count,False,True
+4,congressional,5th,Deschutes,Republican,37569,observed_count,False,True
+4,congressional,5th,Deschutes,Non Affiliated,51342,observed_count,False,True
+4,congressional,5th,Deschutes,Independent,9432,observed_count,False,True
+4,congressional,5th,Deschutes,Libertarian,1015,observed_count,False,True
+4,congressional,5th,Deschutes,No Labels,559,observed_count,False,True
+4,congressional,5th,Deschutes,Pacific Green,268,observed_count,False,True
+4,congressional,5th,Deschutes,Progressive,162,observed_count,False,True
+4,congressional,5th,Deschutes,Working Families,172,observed_count,False,True
+4,congressional,5th,Deschutes,Other,722,observed_count,False,True
+4,congressional,5th,Deschutes,Total,147063,observed_count,False,True
+4,congressional,5th,Jefferson,Democrat,3,observed_count,False,True
+4,congressional,5th,Jefferson,Republican,8,observed_count,False,True
+4,congressional,5th,Jefferson,Non Affiliated,5,observed_count,False,True
+4,congressional,5th,Jefferson,Independent,1,observed_count,False,True
+4,congressional,5th,Jefferson,Libertarian,0,observed_count,False,True
+4,congressional,5th,Jefferson,No Labels,0,observed_count,False,True
+4,congressional,5th,Jefferson,Pacific Green,0,observed_count,False,True
+4,congressional,5th,Jefferson,Progressive,0,observed_count,False,True
+4,congressional,5th,Jefferson,Working Families,0,observed_count,False,True
+4,congressional,5th,Jefferson,Other,0,observed_count,False,True
+4,congressional,5th,Jefferson,Total,17,observed_count,False,True
+4,congressional,5th,Linn,Democrat,20865,observed_count,False,True
+4,congressional,5th,Linn,Republican,34735,observed_count,False,True
+4,congressional,5th,Linn,Non Affiliated,37259,observed_count,False,True
+4,congressional,5th,Linn,Independent,5427,observed_count,False,True
+4,congressional,5th,Linn,Libertarian,695,observed_count,False,True
+4,congressional,5th,Linn,No Labels,327,observed_count,False,True
+4,congressional,5th,Linn,Pacific Green,193,observed_count,False,True
+4,congressional,5th,Linn,Progressive,131,observed_count,False,True
+4,congressional,5th,Linn,Working Families,212,observed_count,False,True
+4,congressional,5th,Linn,Other,591,observed_count,False,True
+4,congressional,5th,Linn,Total,100435,observed_count,False,True
+4,congressional,5th,Marion,Democrat,8351,observed_count,False,True
+4,congressional,5th,Marion,Republican,15444,observed_count,False,True
+4,congressional,5th,Marion,Non Affiliated,13292,observed_count,False,True
+4,congressional,5th,Marion,Independent,1932,observed_count,False,True
+4,congressional,5th,Marion,Libertarian,240,observed_count,False,True
+4,congressional,5th,Marion,No Labels,73,observed_count,False,True
+4,congressional,5th,Marion,Pacific Green,68,observed_count,False,True
+4,congressional,5th,Marion,Progressive,23,observed_count,False,True
+4,congressional,5th,Marion,Working Families,59,observed_count,False,True
+4,congressional,5th,Marion,Other,126,observed_count,False,True
+4,congressional,5th,Marion,Total,39608,observed_count,False,True
+4,congressional,5th,Multnomah,Democrat,19994,observed_count,False,True
+4,congressional,5th,Multnomah,Republican,3545,observed_count,False,True
+4,congressional,5th,Multnomah,Non Affiliated,12652,observed_count,False,True
+4,congressional,5th,Multnomah,Independent,1572,observed_count,False,True
+4,congressional,5th,Multnomah,Libertarian,179,observed_count,False,True
+4,congressional,5th,Multnomah,No Labels,101,observed_count,False,True
+4,congressional,5th,Multnomah,Pacific Green,174,observed_count,False,True
+4,congressional,5th,Multnomah,Progressive,92,observed_count,False,True
+4,congressional,5th,Multnomah,Working Families,150,observed_count,False,True
+4,congressional,5th,Multnomah,Other,234,observed_count,False,True
+4,congressional,5th,Multnomah,Total,38693,observed_count,False,True
+4,congressional,5th,Total,Democrat,170588,observed_count,False,True
+4,congressional,5th,Total,Republican,148652,observed_count,False,True
+4,congressional,5th,Total,Non Affiliated,191659,observed_count,False,True
+4,congressional,5th,Total,Independent,30905,observed_count,False,True
+4,congressional,5th,Total,Libertarian,3487,observed_count,False,True
+4,congressional,5th,Total,No Labels,1602,observed_count,False,True
+4,congressional,5th,Total,Pacific Green,1158,observed_count,False,True
+4,congressional,5th,Total,Progressive,684,observed_count,False,True
+4,congressional,5th,Total,Working Families,1158,observed_count,False,True
+4,congressional,5th,Total,Other,3010,observed_count,False,True
+4,congressional,5th,Total,Total,552903,observed_count,False,True
+4,congressional,6th,Clackamas,Democrat,9781,observed_count,False,True
+4,congressional,6th,Clackamas,Republican,6896,observed_count,False,True
+4,congressional,6th,Clackamas,Non Affiliated,9413,observed_count,False,True
+4,congressional,6th,Clackamas,Independent,1739,observed_count,False,True
+4,congressional,6th,Clackamas,Libertarian,165,observed_count,False,True
+4,congressional,6th,Clackamas,No Labels,69,observed_count,False,True
+4,congressional,6th,Clackamas,Pacific Green,56,observed_count,False,True
+4,congressional,6th,Clackamas,Progressive,30,observed_count,False,True
+4,congressional,6th,Clackamas,Working Families,36,observed_count,False,True
+4,congressional,6th,Clackamas,Other,110,observed_count,False,True
+4,congressional,6th,Clackamas,Total,28295,observed_count,False,True
+4,congressional,6th,Marion,Democrat,53700,observed_count,False,True
+4,congressional,6th,Marion,Republican,47318,observed_count,False,True
+4,congressional,6th,Marion,Non Affiliated,78201,observed_count,False,True
+4,congressional,6th,Marion,Independent,8993,observed_count,False,True
+4,congressional,6th,Marion,Libertarian,1112,observed_count,False,True
+4,congressional,6th,Marion,No Labels,669,observed_count,False,True
+4,congressional,6th,Marion,Pacific Green,328,observed_count,False,True
+4,congressional,6th,Marion,Progressive,261,observed_count,False,True
+4,congressional,6th,Marion,Working Families,449,observed_count,False,True
+4,congressional,6th,Marion,Other,659,observed_count,False,True
+4,congressional,6th,Marion,Total,191690,observed_count,False,True
+4,congressional,6th,Polk,Democrat,17146,observed_count,False,True
+4,congressional,6th,Polk,Republican,19666,observed_count,False,True
+4,congressional,6th,Polk,Non Affiliated,23460,observed_count,False,True
+4,congressional,6th,Polk,Independent,3606,observed_count,False,True
+4,congressional,6th,Polk,Libertarian,403,observed_count,False,True
+4,congressional,6th,Polk,No Labels,181,observed_count,False,True
+4,congressional,6th,Polk,Pacific Green,123,observed_count,False,True
+4,congressional,6th,Polk,Progressive,86,observed_count,False,True
+4,congressional,6th,Polk,Working Families,122,observed_count,False,True
+4,congressional,6th,Polk,Other,266,observed_count,False,True
+4,congressional,6th,Polk,Total,65059,observed_count,False,True
+4,congressional,6th,Washington,Democrat,46989,observed_count,False,True
+4,congressional,6th,Washington,Republican,24076,observed_count,False,True
+4,congressional,6th,Washington,Non Affiliated,45482,observed_count,False,True
+4,congressional,6th,Washington,Independent,6782,observed_count,False,True
+4,congressional,6th,Washington,Libertarian,758,observed_count,False,True
+4,congressional,6th,Washington,No Labels,312,observed_count,False,True
+4,congressional,6th,Washington,Pacific Green,243,observed_count,False,True
+4,congressional,6th,Washington,Progressive,200,observed_count,False,True
+4,congressional,6th,Washington,Working Families,224,observed_count,False,True
+4,congressional,6th,Washington,Other,380,observed_count,False,True
+4,congressional,6th,Washington,Total,125446,observed_count,False,True
+4,congressional,6th,Yamhill,Democrat,20024,observed_count,False,True
+4,congressional,6th,Yamhill,Republican,23705,observed_count,False,True
+4,congressional,6th,Yamhill,Non Affiliated,28668,observed_count,False,True
+4,congressional,6th,Yamhill,Independent,4328,observed_count,False,True
+4,congressional,6th,Yamhill,Libertarian,603,observed_count,False,True
+4,congressional,6th,Yamhill,No Labels,220,observed_count,False,True
+4,congressional,6th,Yamhill,Pacific Green,162,observed_count,False,True
+4,congressional,6th,Yamhill,Progressive,77,observed_count,False,True
+4,congressional,6th,Yamhill,Working Families,169,observed_count,False,True
+4,congressional,6th,Yamhill,Other,459,observed_count,False,True
+4,congressional,6th,Yamhill,Total,78415,observed_count,False,True
+4,congressional,6th,Total,Democrat,147640,observed_count,False,True
+4,congressional,6th,Total,Republican,121661,observed_count,False,True
+4,congressional,6th,Total,Non Affiliated,185224,observed_count,False,True
+4,congressional,6th,Total,Independent,25448,observed_count,False,True
+4,congressional,6th,Total,Libertarian,3041,observed_count,False,True
+4,congressional,6th,Total,No Labels,1451,observed_count,False,True
+4,congressional,6th,Total,Pacific Green,912,observed_count,False,True
+4,congressional,6th,Total,Progressive,654,observed_count,False,True
+4,congressional,6th,Total,Working Families,1000,observed_count,False,True
+4,congressional,6th,Total,Other,1874,observed_count,False,True
+4,congressional,6th,Total,Total,488905,observed_count,False,True
+4,congressional,,Grand Total,Democrat,1002494,observed_count,False,True
+4,congressional,,Grand Total,Republican,740084,observed_count,False,True
+4,congressional,,Grand Total,Non Affiliated,1145741,observed_count,False,True
+4,congressional,,Grand Total,Independent,156277,observed_count,False,True
+4,congressional,,Grand Total,Libertarian,18753,observed_count,False,True
+4,congressional,,Grand Total,No Labels,10373,observed_count,False,True
+4,congressional,,Grand Total,Pacific Green,7836,observed_count,False,True
+4,congressional,,Grand Total,Progressive,4781,observed_count,False,True
+4,congressional,,Grand Total,Working Families,8633,observed_count,False,True
+4,congressional,,Grand Total,Other,17335,observed_count,False,True
+4,congressional,,Grand Total,Total,3112307,observed_count,False,True
+5,senate,1,1,Democrat,20430,observed_count,False,True
+5,senate,1,1,Republican,43465,observed_count,False,True
+5,senate,1,1,Non Affiliated,41897,observed_count,False,True
+5,senate,1,1,Independent,6425,observed_count,False,True
+5,senate,1,1,Libertarian,788,observed_count,False,True
+5,senate,1,1,No Labels,428,observed_count,False,True
+5,senate,1,1,Pacific Green,190,observed_count,False,True
+5,senate,1,1,Progressive,114,observed_count,False,True
+5,senate,1,1,Working Families,234,observed_count,False,True
+5,senate,1,1,Other,747,observed_count,False,True
+5,senate,1,1,Total,114718,observed_count,False,True
+5,senate,2,2,Democrat,20129,observed_count,False,True
+5,senate,2,2,Republican,42003,observed_count,False,True
+5,senate,2,2,Non Affiliated,41824,observed_count,False,True
+5,senate,2,2,Independent,6255,observed_count,False,True
+5,senate,2,2,Libertarian,787,observed_count,False,True
+5,senate,2,2,No Labels,453,observed_count,False,True
+5,senate,2,2,Pacific Green,222,observed_count,False,True
+5,senate,2,2,Progressive,74,observed_count,False,True
+5,senate,2,2,Working Families,191,observed_count,False,True
+5,senate,2,2,Other,971,observed_count,False,True
+5,senate,2,2,Total,112909,observed_count,False,True
+5,senate,3,3,Democrat,32401,observed_count,False,True
+5,senate,3,3,Republican,25484,observed_count,False,True
+5,senate,3,3,Non Affiliated,36159,observed_count,False,True
+5,senate,3,3,Independent,5842,observed_count,False,True
+5,senate,3,3,Libertarian,710,observed_count,False,True
+5,senate,3,3,No Labels,430,observed_count,False,True
+5,senate,3,3,Pacific Green,294,observed_count,False,True
+5,senate,3,3,Progressive,125,observed_count,False,True
+5,senate,3,3,Working Families,179,observed_count,False,True
+5,senate,3,3,Other,628,observed_count,False,True
+5,senate,3,3,Total,102252,observed_count,False,True
+5,senate,4,4,Democrat,39095,observed_count,False,True
+5,senate,4,4,Republican,15679,observed_count,False,True
+5,senate,4,4,Non Affiliated,34221,observed_count,False,True
+5,senate,4,4,Independent,4697,observed_count,False,True
+5,senate,4,4,Libertarian,587,observed_count,False,True
+5,senate,4,4,No Labels,367,observed_count,False,True
+5,senate,4,4,Pacific Green,432,observed_count,False,True
+5,senate,4,4,Progressive,250,observed_count,False,True
+5,senate,4,4,Working Families,277,observed_count,False,True
+5,senate,4,4,Other,617,observed_count,False,True
+5,senate,4,4,Total,96222,observed_count,False,True
+5,senate,5,5,Democrat,31507,observed_count,False,True
+5,senate,5,5,Republican,29806,observed_count,False,True
+5,senate,5,5,Non Affiliated,41193,observed_count,False,True
+5,senate,5,5,Independent,6412,observed_count,False,True
+5,senate,5,5,Libertarian,686,observed_count,False,True
+5,senate,5,5,No Labels,448,observed_count,False,True
+5,senate,5,5,Pacific Green,281,observed_count,False,True
+5,senate,5,5,Progressive,137,observed_count,False,True
+5,senate,5,5,Working Families,217,observed_count,False,True
+5,senate,5,5,Other,617,observed_count,False,True
+5,senate,5,5,Total,111304,observed_count,False,True
+5,senate,6,6,Democrat,24757,observed_count,False,True
+5,senate,6,6,Republican,39194,observed_count,False,True
+5,senate,6,6,Non Affiliated,40230,observed_count,False,True
+5,senate,6,6,Independent,5952,observed_count,False,True
+5,senate,6,6,Libertarian,757,observed_count,False,True
+5,senate,6,6,No Labels,363,observed_count,False,True
+5,senate,6,6,Pacific Green,238,observed_count,False,True
+5,senate,6,6,Progressive,151,observed_count,False,True
+5,senate,6,6,Working Families,239,observed_count,False,True
+5,senate,6,6,Other,708,observed_count,False,True
+5,senate,6,6,Total,112589,observed_count,False,True
+5,senate,7,7,Democrat,39767,observed_count,False,True
+5,senate,7,7,Republican,21290,observed_count,False,True
+5,senate,7,7,Non Affiliated,37095,observed_count,False,True
+5,senate,7,7,Independent,5607,observed_count,False,True
+5,senate,7,7,Libertarian,675,observed_count,False,True
+5,senate,7,7,No Labels,397,observed_count,False,True
+5,senate,7,7,Pacific Green,367,observed_count,False,True
+5,senate,7,7,Progressive,175,observed_count,False,True
+5,senate,7,7,Working Families,239,observed_count,False,True
+5,senate,7,7,Other,704,observed_count,False,True
+5,senate,7,7,Total,106316,observed_count,False,True
+5,senate,8,8,Democrat,33697,observed_count,False,True
+5,senate,8,8,Republican,22623,observed_count,False,True
+5,senate,8,8,Non Affiliated,33417,observed_count,False,True
+5,senate,8,8,Independent,5063,observed_count,False,True
+5,senate,8,8,Libertarian,613,observed_count,False,True
+5,senate,8,8,No Labels,338,observed_count,False,True
+5,senate,8,8,Pacific Green,322,observed_count,False,True
+5,senate,8,8,Progressive,140,observed_count,False,True
+5,senate,8,8,Working Families,176,observed_count,False,True
+5,senate,8,8,Other,441,observed_count,False,True
+5,senate,8,8,Total,96830,observed_count,False,True
+5,senate,9,9,Democrat,22316,observed_count,False,True
+5,senate,9,9,Republican,38836,observed_count,False,True
+5,senate,9,9,Non Affiliated,38494,observed_count,False,True
+5,senate,9,9,Independent,5126,observed_count,False,True
+5,senate,9,9,Libertarian,612,observed_count,False,True
+5,senate,9,9,No Labels,245,observed_count,False,True
+5,senate,9,9,Pacific Green,166,observed_count,False,True
+5,senate,9,9,Progressive,84,observed_count,False,True
+5,senate,9,9,Working Families,192,observed_count,False,True
+5,senate,9,9,Other,439,observed_count,False,True
+5,senate,9,9,Total,106510,observed_count,False,True
+5,senate,10,10,Democrat,31044,observed_count,False,True
+5,senate,10,10,Republican,23713,observed_count,False,True
+5,senate,10,10,Non Affiliated,36855,observed_count,False,True
+5,senate,10,10,Independent,5315,observed_count,False,True
+5,senate,10,10,Libertarian,640,observed_count,False,True
+5,senate,10,10,No Labels,356,observed_count,False,True
+5,senate,10,10,Pacific Green,210,observed_count,False,True
+5,senate,10,10,Progressive,148,observed_count,False,True
+5,senate,10,10,Working Families,204,observed_count,False,True
+5,senate,10,10,Other,344,observed_count,False,True
+5,senate,10,10,Total,98829,observed_count,False,True
+5,senate,11,11,Democrat,23370,observed_count,False,True
+5,senate,11,11,Republican,18430,observed_count,False,True
+5,senate,11,11,Non Affiliated,37870,observed_count,False,True
+5,senate,11,11,Independent,3680,observed_count,False,True
+5,senate,11,11,Libertarian,493,observed_count,False,True
+5,senate,11,11,No Labels,300,observed_count,False,True
+5,senate,11,11,Pacific Green,133,observed_count,False,True
+5,senate,11,11,Progressive,122,observed_count,False,True
+5,senate,11,11,Working Families,237,observed_count,False,True
+5,senate,11,11,Other,309,observed_count,False,True
+5,senate,11,11,Total,84944,observed_count,False,True
+5,senate,12,12,Democrat,26056,observed_count,False,True
+5,senate,12,12,Republican,33975,observed_count,False,True
+5,senate,12,12,Non Affiliated,38162,observed_count,False,True
+5,senate,12,12,Independent,5814,observed_count,False,True
+5,senate,12,12,Libertarian,762,observed_count,False,True
+5,senate,12,12,No Labels,285,observed_count,False,True
+5,senate,12,12,Pacific Green,216,observed_count,False,True
+5,senate,12,12,Progressive,109,observed_count,False,True
+5,senate,12,12,Working Families,217,observed_count,False,True
+5,senate,12,12,Other,584,observed_count,False,True
+5,senate,12,12,Total,106180,observed_count,False,True
+5,senate,13,13,Democrat,35757,observed_count,False,True
+5,senate,13,13,Republican,21652,observed_count,False,True
+5,senate,13,13,Non Affiliated,36621,observed_count,False,True
+5,senate,13,13,Independent,5696,observed_count,False,True
+5,senate,13,13,Libertarian,625,observed_count,False,True
+5,senate,13,13,No Labels,250,observed_count,False,True
+5,senate,13,13,Pacific Green,179,observed_count,False,True
+5,senate,13,13,Progressive,150,observed_count,False,True
+5,senate,13,13,Working Families,170,observed_count,False,True
+5,senate,13,13,Other,320,observed_count,False,True
+5,senate,13,13,Total,101420,observed_count,False,True
+5,senate,14,14,Democrat,49510,observed_count,False,True
+5,senate,14,14,Republican,11674,observed_count,False,True
+5,senate,14,14,Non Affiliated,33026,observed_count,False,True
+5,senate,14,14,Independent,4612,observed_count,False,True
+5,senate,14,14,Libertarian,541,observed_count,False,True
+5,senate,14,14,No Labels,278,observed_count,False,True
+5,senate,14,14,Pacific Green,310,observed_count,False,True
+5,senate,14,14,Progressive,223,observed_count,False,True
+5,senate,14,14,Working Families,260,observed_count,False,True
+5,senate,14,14,Other,371,observed_count,False,True
+5,senate,14,14,Total,100805,observed_count,False,True
+5,senate,15,15,Democrat,29386,observed_count,False,True
+5,senate,15,15,Republican,16707,observed_count,False,True
+5,senate,15,15,Non Affiliated,39051,observed_count,False,True
+5,senate,15,15,Independent,4080,observed_count,False,True
+5,senate,15,15,Libertarian,561,observed_count,False,True
+5,senate,15,15,No Labels,275,observed_count,False,True
+5,senate,15,15,Pacific Green,175,observed_count,False,True
+5,senate,15,15,Progressive,134,observed_count,False,True
+5,senate,15,15,Working Families,215,observed_count,False,True
+5,senate,15,15,Other,307,observed_count,False,True
+5,senate,15,15,Total,90891,observed_count,False,True
+5,senate,16,16,Democrat,31469,observed_count,False,True
+5,senate,16,16,Republican,31607,observed_count,False,True
+5,senate,16,16,Non Affiliated,42243,observed_count,False,True
+5,senate,16,16,Independent,5950,observed_count,False,True
+5,senate,16,16,Libertarian,836,observed_count,False,True
+5,senate,16,16,No Labels,396,observed_count,False,True
+5,senate,16,16,Pacific Green,266,observed_count,False,True
+5,senate,16,16,Progressive,127,observed_count,False,True
+5,senate,16,16,Working Families,274,observed_count,False,True
+5,senate,16,16,Other,626,observed_count,False,True
+5,senate,16,16,Total,113794,observed_count,False,True
+5,senate,17,17,Democrat,43399,observed_count,False,True
+5,senate,17,17,Republican,10104,observed_count,False,True
+5,senate,17,17,Non Affiliated,39216,observed_count,False,True
+5,senate,17,17,Independent,4536,observed_count,False,True
+5,senate,17,17,Libertarian,470,observed_count,False,True
+5,senate,17,17,No Labels,379,observed_count,False,True
+5,senate,17,17,Pacific Green,312,observed_count,False,True
+5,senate,17,17,Progressive,280,observed_count,False,True
+5,senate,17,17,Working Families,343,observed_count,False,True
+5,senate,17,17,Other,480,observed_count,False,True
+5,senate,17,17,Total,99519,observed_count,False,True
+5,senate,18,18,Democrat,33480,observed_count,False,True
+5,senate,18,18,Republican,16128,observed_count,False,True
+5,senate,18,18,Non Affiliated,41311,observed_count,False,True
+5,senate,18,18,Independent,4444,observed_count,False,True
+5,senate,18,18,Libertarian,560,observed_count,False,True
+5,senate,18,18,No Labels,285,observed_count,False,True
+5,senate,18,18,Pacific Green,195,observed_count,False,True
+5,senate,18,18,Progressive,164,observed_count,False,True
+5,senate,18,18,Working Families,219,observed_count,False,True
+5,senate,18,18,Other,290,observed_count,False,True
+5,senate,18,18,Total,97076,observed_count,False,True
+5,senate,19,19,Democrat,43857,observed_count,False,True
+5,senate,19,19,Republican,19498,observed_count,False,True
+5,senate,19,19,Non Affiliated,32998,observed_count,False,True
+5,senate,19,19,Independent,5924,observed_count,False,True
+5,senate,19,19,Libertarian,522,observed_count,False,True
+5,senate,19,19,No Labels,217,observed_count,False,True
+5,senate,19,19,Pacific Green,207,observed_count,False,True
+5,senate,19,19,Progressive,121,observed_count,False,True
+5,senate,19,19,Working Families,144,observed_count,False,True
+5,senate,19,19,Other,399,observed_count,False,True
+5,senate,19,19,Total,103887,observed_count,False,True
+5,senate,20,20,Democrat,33262,observed_count,False,True
+5,senate,20,20,Republican,23418,observed_count,False,True
+5,senate,20,20,Non Affiliated,39699,observed_count,False,True
+5,senate,20,20,Independent,5536,observed_count,False,True
+5,senate,20,20,Libertarian,628,observed_count,False,True
+5,senate,20,20,No Labels,292,observed_count,False,True
+5,senate,20,20,Pacific Green,204,observed_count,False,True
+5,senate,20,20,Progressive,134,observed_count,False,True
+5,senate,20,20,Working Families,324,observed_count,False,True
+5,senate,20,20,Other,668,observed_count,False,True
+5,senate,20,20,Total,104165,observed_count,False,True
+5,senate,21,21,Democrat,63429,observed_count,False,True
+5,senate,21,21,Republican,7876,observed_count,False,True
+5,senate,21,21,Non Affiliated,34278,observed_count,False,True
+5,senate,21,21,Independent,4367,observed_count,False,True
+5,senate,21,21,Libertarian,519,observed_count,False,True
+5,senate,21,21,No Labels,329,observed_count,False,True
+5,senate,21,21,Pacific Green,585,observed_count,False,True
+5,senate,21,21,Progressive,388,observed_count,False,True
+5,senate,21,21,Working Families,501,observed_count,False,True
+5,senate,21,21,Other,662,observed_count,False,True
+5,senate,21,21,Total,112934,observed_count,False,True
+5,senate,22,22,Democrat,61849,observed_count,False,True
+5,senate,22,22,Republican,4672,observed_count,False,True
+5,senate,22,22,Non Affiliated,34869,observed_count,False,True
+5,senate,22,22,Independent,3627,observed_count,False,True
+5,senate,22,22,Libertarian,401,observed_count,False,True
+5,senate,22,22,No Labels,361,observed_count,False,True
+5,senate,22,22,Pacific Green,528,observed_count,False,True
+5,senate,22,22,Progressive,332,observed_count,False,True
+5,senate,22,22,Working Families,770,observed_count,False,True
+5,senate,22,22,Other,630,observed_count,False,True
+5,senate,22,22,Total,108039,observed_count,False,True
+5,senate,23,23,Democrat,53973,observed_count,False,True
+5,senate,23,23,Republican,7815,observed_count,False,True
+5,senate,23,23,Non Affiliated,34976,observed_count,False,True
+5,senate,23,23,Independent,3746,observed_count,False,True
+5,senate,23,23,Libertarian,447,observed_count,False,True
+5,senate,23,23,No Labels,344,observed_count,False,True
+5,senate,23,23,Pacific Green,503,observed_count,False,True
+5,senate,23,23,Progressive,305,observed_count,False,True
+5,senate,23,23,Working Families,618,observed_count,False,True
+5,senate,23,23,Other,727,observed_count,False,True
+5,senate,23,23,Total,103454,observed_count,False,True
+5,senate,24,24,Democrat,32022,observed_count,False,True
+5,senate,24,24,Republican,15359,observed_count,False,True
+5,senate,24,24,Non Affiliated,39473,observed_count,False,True
+5,senate,24,24,Independent,3709,observed_count,False,True
+5,senate,24,24,Libertarian,493,observed_count,False,True
+5,senate,24,24,No Labels,335,observed_count,False,True
+5,senate,24,24,Pacific Green,268,observed_count,False,True
+5,senate,24,24,Progressive,175,observed_count,False,True
+5,senate,24,24,Working Families,570,observed_count,False,True
+5,senate,24,24,Other,725,observed_count,False,True
+5,senate,24,24,Total,93129,observed_count,False,True
+5,senate,25,25,Democrat,28171,observed_count,False,True
+5,senate,25,25,Republican,18108,observed_count,False,True
+5,senate,25,25,Non Affiliated,39395,observed_count,False,True
+5,senate,25,25,Independent,4284,observed_count,False,True
+5,senate,25,25,Libertarian,521,observed_count,False,True
+5,senate,25,25,No Labels,337,observed_count,False,True
+5,senate,25,25,Pacific Green,217,observed_count,False,True
+5,senate,25,25,Progressive,148,observed_count,False,True
+5,senate,25,25,Working Families,537,observed_count,False,True
+5,senate,25,25,Other,721,observed_count,False,True
+5,senate,25,25,Total,92439,observed_count,False,True
+5,senate,26,26,Democrat,29767,observed_count,False,True
+5,senate,26,26,Republican,33310,observed_count,False,True
+5,senate,26,26,Non Affiliated,38972,observed_count,False,True
+5,senate,26,26,Independent,5932,observed_count,False,True
+5,senate,26,26,Libertarian,738,observed_count,False,True
+5,senate,26,26,No Labels,314,observed_count,False,True
+5,senate,26,26,Pacific Green,214,observed_count,False,True
+5,senate,26,26,Progressive,115,observed_count,False,True
+5,senate,26,26,Working Families,282,observed_count,False,True
+5,senate,26,26,Other,739,observed_count,False,True
+5,senate,26,26,Total,110383,observed_count,False,True
+5,senate,27,27,Democrat,39073,observed_count,False,True
+5,senate,27,27,Republican,27142,observed_count,False,True
+5,senate,27,27,Non Affiliated,41276,observed_count,False,True
+5,senate,27,27,Independent,7573,observed_count,False,True
+5,senate,27,27,Libertarian,809,observed_count,False,True
+5,senate,27,27,No Labels,468,observed_count,False,True
+5,senate,27,27,Pacific Green,228,observed_count,False,True
+5,senate,27,27,Progressive,135,observed_count,False,True
+5,senate,27,27,Working Families,130,observed_count,False,True
+5,senate,27,27,Other,550,observed_count,False,True
+5,senate,27,27,Total,117384,observed_count,False,True
+5,senate,28,28,Democrat,18511,observed_count,False,True
+5,senate,28,28,Republican,41543,observed_count,False,True
+5,senate,28,28,Non Affiliated,41376,observed_count,False,True
+5,senate,28,28,Independent,6136,observed_count,False,True
+5,senate,28,28,Libertarian,714,observed_count,False,True
+5,senate,28,28,No Labels,388,observed_count,False,True
+5,senate,28,28,Pacific Green,158,observed_count,False,True
+5,senate,28,28,Progressive,84,observed_count,False,True
+5,senate,28,28,Working Families,241,observed_count,False,True
+5,senate,28,28,Other,668,observed_count,False,True
+5,senate,28,28,Total,109819,observed_count,False,True
+5,senate,29,29,Democrat,14960,observed_count,False,True
+5,senate,29,29,Republican,34350,observed_count,False,True
+5,senate,29,29,Non Affiliated,39578,observed_count,False,True
+5,senate,29,29,Independent,4335,observed_count,False,True
+5,senate,29,29,Libertarian,616,observed_count,False,True
+5,senate,29,29,No Labels,378,observed_count,False,True
+5,senate,29,29,Pacific Green,93,observed_count,False,True
+5,senate,29,29,Progressive,67,observed_count,False,True
+5,senate,29,29,Working Families,229,observed_count,False,True
+5,senate,29,29,Other,697,observed_count,False,True
+5,senate,29,29,Total,95303,observed_count,False,True
+5,senate,30,30,Democrat,16050,observed_count,False,True
+5,senate,30,30,Republican,44623,observed_count,False,True
+5,senate,30,30,Non Affiliated,39966,observed_count,False,True
+5,senate,30,30,Independent,5602,observed_count,False,True
+5,senate,30,30,Libertarian,642,observed_count,False,True
+5,senate,30,30,No Labels,337,observed_count,False,True
+5,senate,30,30,Pacific Green,123,observed_count,False,True
+5,senate,30,30,Progressive,70,observed_count,False,True
+5,senate,30,30,Working Families,204,observed_count,False,True
+5,senate,30,30,Other,646,observed_count,False,True
+5,senate,30,30,Total,108263,observed_count,False,True
+5,senate,,Total,Democrat,1002494,observed_count,False,True
+5,senate,,Total,Republican,740084,observed_count,False,True
+5,senate,,Total,Non Affiliated,1145741,observed_count,False,True
+5,senate,,Total,Independent,156277,observed_count,False,True
+5,senate,,Total,Libertarian,18753,observed_count,False,True
+5,senate,,Total,No Labels,10373,observed_count,False,True
+5,senate,,Total,Pacific Green,7836,observed_count,False,True
+5,senate,,Total,Progressive,4781,observed_count,False,True
+5,senate,,Total,Working Families,8633,observed_count,False,True
+5,senate,,Total,Other,17335,observed_count,False,True
+5,senate,,Total,Total,3112307,observed_count,False,True
+6,representative,1,1,Democrat,10603,observed_count,False,True
+6,representative,1,1,Republican,21233,observed_count,False,True
+6,representative,1,1,Non Affiliated,21455,observed_count,False,True
+6,representative,1,1,Independent,3286,observed_count,False,True
+6,representative,1,1,Libertarian,384,observed_count,False,True
+6,representative,1,1,No Labels,213,observed_count,False,True
+6,representative,1,1,Pacific Green,103,observed_count,False,True
+6,representative,1,1,Progressive,51,observed_count,False,True
+6,representative,1,1,Working Families,111,observed_count,False,True
+6,representative,1,1,Other,342,observed_count,False,True
+6,representative,1,1,Total,57781,observed_count,False,True
+6,representative,2,2,Democrat,9827,observed_count,False,True
+6,representative,2,2,Republican,22232,observed_count,False,True
+6,representative,2,2,Non Affiliated,20442,observed_count,False,True
+6,representative,2,2,Independent,3139,observed_count,False,True
+6,representative,2,2,Libertarian,404,observed_count,False,True
+6,representative,2,2,No Labels,215,observed_count,False,True
+6,representative,2,2,Pacific Green,87,observed_count,False,True
+6,representative,2,2,Progressive,63,observed_count,False,True
+6,representative,2,2,Working Families,123,observed_count,False,True
+6,representative,2,2,Other,405,observed_count,False,True
+6,representative,2,2,Total,56937,observed_count,False,True
+6,representative,3,3,Democrat,10434,observed_count,False,True
+6,representative,3,3,Republican,19224,observed_count,False,True
+6,representative,3,3,Non Affiliated,21146,observed_count,False,True
+6,representative,3,3,Independent,3073,observed_count,False,True
+6,representative,3,3,Libertarian,401,observed_count,False,True
+6,representative,3,3,No Labels,243,observed_count,False,True
+6,representative,3,3,Pacific Green,132,observed_count,False,True
+6,representative,3,3,Progressive,45,observed_count,False,True
+6,representative,3,3,Working Families,82,observed_count,False,True
+6,representative,3,3,Other,525,observed_count,False,True
+6,representative,3,3,Total,55305,observed_count,False,True
+6,representative,4,4,Democrat,9695,observed_count,False,True
+6,representative,4,4,Republican,22779,observed_count,False,True
+6,representative,4,4,Non Affiliated,20678,observed_count,False,True
+6,representative,4,4,Independent,3182,observed_count,False,True
+6,representative,4,4,Libertarian,386,observed_count,False,True
+6,representative,4,4,No Labels,210,observed_count,False,True
+6,representative,4,4,Pacific Green,90,observed_count,False,True
+6,representative,4,4,Progressive,29,observed_count,False,True
+6,representative,4,4,Working Families,109,observed_count,False,True
+6,representative,4,4,Other,446,observed_count,False,True
+6,representative,4,4,Total,57604,observed_count,False,True
+6,representative,5,5,Democrat,20917,observed_count,False,True
+6,representative,5,5,Republican,11342,observed_count,False,True
+6,representative,5,5,Non Affiliated,17034,observed_count,False,True
+6,representative,5,5,Independent,3036,observed_count,False,True
+6,representative,5,5,Libertarian,329,observed_count,False,True
+6,representative,5,5,No Labels,246,observed_count,False,True
+6,representative,5,5,Pacific Green,206,observed_count,False,True
+6,representative,5,5,Progressive,74,observed_count,False,True
+6,representative,5,5,Working Families,80,observed_count,False,True
+6,representative,5,5,Other,309,observed_count,False,True
+6,representative,5,5,Total,53573,observed_count,False,True
+6,representative,6,6,Democrat,11484,observed_count,False,True
+6,representative,6,6,Republican,14142,observed_count,False,True
+6,representative,6,6,Non Affiliated,19125,observed_count,False,True
+6,representative,6,6,Independent,2806,observed_count,False,True
+6,representative,6,6,Libertarian,381,observed_count,False,True
+6,representative,6,6,No Labels,184,observed_count,False,True
+6,representative,6,6,Pacific Green,88,observed_count,False,True
+6,representative,6,6,Progressive,51,observed_count,False,True
+6,representative,6,6,Working Families,99,observed_count,False,True
+6,representative,6,6,Other,319,observed_count,False,True
+6,representative,6,6,Total,48679,observed_count,False,True
+6,representative,7,7,Democrat,15820,observed_count,False,True
+6,representative,7,7,Republican,11658,observed_count,False,True
+6,representative,7,7,Non Affiliated,20167,observed_count,False,True
+6,representative,7,7,Independent,2758,observed_count,False,True
+6,representative,7,7,Libertarian,365,observed_count,False,True
+6,representative,7,7,No Labels,199,observed_count,False,True
+6,representative,7,7,Pacific Green,126,observed_count,False,True
+6,representative,7,7,Progressive,107,observed_count,False,True
+6,representative,7,7,Working Families,154,observed_count,False,True
+6,representative,7,7,Other,365,observed_count,False,True
+6,representative,7,7,Total,51719,observed_count,False,True
+6,representative,8,8,Democrat,23275,observed_count,False,True
+6,representative,8,8,Republican,4021,observed_count,False,True
+6,representative,8,8,Non Affiliated,14054,observed_count,False,True
+6,representative,8,8,Independent,1939,observed_count,False,True
+6,representative,8,8,Libertarian,222,observed_count,False,True
+6,representative,8,8,No Labels,168,observed_count,False,True
+6,representative,8,8,Pacific Green,306,observed_count,False,True
+6,representative,8,8,Progressive,143,observed_count,False,True
+6,representative,8,8,Working Families,123,observed_count,False,True
+6,representative,8,8,Other,252,observed_count,False,True
+6,representative,8,8,Total,44503,observed_count,False,True
+6,representative,9,9,Democrat,13770,observed_count,False,True
+6,representative,9,9,Republican,16281,observed_count,False,True
+6,representative,9,9,Non Affiliated,20378,observed_count,False,True
+6,representative,9,9,Independent,3165,observed_count,False,True
+6,representative,9,9,Libertarian,324,observed_count,False,True
+6,representative,9,9,No Labels,220,observed_count,False,True
+6,representative,9,9,Pacific Green,129,observed_count,False,True
+6,representative,9,9,Progressive,57,observed_count,False,True
+6,representative,9,9,Working Families,106,observed_count,False,True
+6,representative,9,9,Other,343,observed_count,False,True
+6,representative,9,9,Total,54773,observed_count,False,True
+6,representative,10,10,Democrat,17737,observed_count,False,True
+6,representative,10,10,Republican,13525,observed_count,False,True
+6,representative,10,10,Non Affiliated,20815,observed_count,False,True
+6,representative,10,10,Independent,3247,observed_count,False,True
+6,representative,10,10,Libertarian,362,observed_count,False,True
+6,representative,10,10,No Labels,228,observed_count,False,True
+6,representative,10,10,Pacific Green,152,observed_count,False,True
+6,representative,10,10,Progressive,80,observed_count,False,True
+6,representative,10,10,Working Families,111,observed_count,False,True
+6,representative,10,10,Other,274,observed_count,False,True
+6,representative,10,10,Total,56531,observed_count,False,True
+6,representative,11,11,Democrat,9639,observed_count,False,True
+6,representative,11,11,Republican,21485,observed_count,False,True
+6,representative,11,11,Non Affiliated,20636,observed_count,False,True
+6,representative,11,11,Independent,2866,observed_count,False,True
+6,representative,11,11,Libertarian,378,observed_count,False,True
+6,representative,11,11,No Labels,162,observed_count,False,True
+6,representative,11,11,Pacific Green,99,observed_count,False,True
+6,representative,11,11,Progressive,72,observed_count,False,True
+6,representative,11,11,Working Families,121,observed_count,False,True
+6,representative,11,11,Other,327,observed_count,False,True
+6,representative,11,11,Total,55785,observed_count,False,True
+6,representative,12,12,Democrat,15118,observed_count,False,True
+6,representative,12,12,Republican,17709,observed_count,False,True
+6,representative,12,12,Non Affiliated,19594,observed_count,False,True
+6,representative,12,12,Independent,3086,observed_count,False,True
+6,representative,12,12,Libertarian,379,observed_count,False,True
+6,representative,12,12,No Labels,201,observed_count,False,True
+6,representative,12,12,Pacific Green,139,observed_count,False,True
+6,representative,12,12,Progressive,79,observed_count,False,True
+6,representative,12,12,Working Families,118,observed_count,False,True
+6,representative,12,12,Other,381,observed_count,False,True
+6,representative,12,12,Total,56804,observed_count,False,True
+6,representative,13,13,Democrat,21883,observed_count,False,True
+6,representative,13,13,Republican,11072,observed_count,False,True
+6,representative,13,13,Non Affiliated,18013,observed_count,False,True
+6,representative,13,13,Independent,2997,observed_count,False,True
+6,representative,13,13,Libertarian,329,observed_count,False,True
+6,representative,13,13,No Labels,199,observed_count,False,True
+6,representative,13,13,Pacific Green,189,observed_count,False,True
+6,representative,13,13,Progressive,90,observed_count,False,True
+6,representative,13,13,Working Families,110,observed_count,False,True
+6,representative,13,13,Other,313,observed_count,False,True
+6,representative,13,13,Total,55195,observed_count,False,True
+6,representative,14,14,Democrat,17884,observed_count,False,True
+6,representative,14,14,Republican,10218,observed_count,False,True
+6,representative,14,14,Non Affiliated,19082,observed_count,False,True
+6,representative,14,14,Independent,2610,observed_count,False,True
+6,representative,14,14,Libertarian,346,observed_count,False,True
+6,representative,14,14,No Labels,198,observed_count,False,True
+6,representative,14,14,Pacific Green,178,observed_count,False,True
+6,representative,14,14,Progressive,85,observed_count,False,True
+6,representative,14,14,Working Families,129,observed_count,False,True
+6,representative,14,14,Other,391,observed_count,False,True
+6,representative,14,14,Total,51121,observed_count,False,True
+6,representative,15,15,Democrat,14618,observed_count,False,True
+6,representative,15,15,Republican,16602,observed_count,False,True
+6,representative,15,15,Non Affiliated,19886,observed_count,False,True
+6,representative,15,15,Independent,3083,observed_count,False,True
+6,representative,15,15,Libertarian,387,observed_count,False,True
+6,representative,15,15,No Labels,199,observed_count,False,True
+6,representative,15,15,Pacific Green,113,observed_count,False,True
+6,representative,15,15,Progressive,73,observed_count,False,True
+6,representative,15,15,Working Families,99,observed_count,False,True
+6,representative,15,15,Other,288,observed_count,False,True
+6,representative,15,15,Total,55348,observed_count,False,True
+6,representative,16,16,Democrat,19079,observed_count,False,True
+6,representative,16,16,Republican,6021,observed_count,False,True
+6,representative,16,16,Non Affiliated,13531,observed_count,False,True
+6,representative,16,16,Independent,1980,observed_count,False,True
+6,representative,16,16,Libertarian,226,observed_count,False,True
+6,representative,16,16,No Labels,139,observed_count,False,True
+6,representative,16,16,Pacific Green,209,observed_count,False,True
+6,representative,16,16,Progressive,67,observed_count,False,True
+6,representative,16,16,Working Families,77,observed_count,False,True
+6,representative,16,16,Other,153,observed_count,False,True
+6,representative,16,16,Total,41482,observed_count,False,True
+6,representative,17,17,Democrat,11166,observed_count,False,True
+6,representative,17,17,Republican,18431,observed_count,False,True
+6,representative,17,17,Non Affiliated,19618,observed_count,False,True
+6,representative,17,17,Independent,2503,observed_count,False,True
+6,representative,17,17,Libertarian,278,observed_count,False,True
+6,representative,17,17,No Labels,128,observed_count,False,True
+6,representative,17,17,Pacific Green,67,observed_count,False,True
+6,representative,17,17,Progressive,42,observed_count,False,True
+6,representative,17,17,Working Families,91,observed_count,False,True
+6,representative,17,17,Other,178,observed_count,False,True
+6,representative,17,17,Total,52502,observed_count,False,True
+6,representative,18,18,Democrat,11150,observed_count,False,True
+6,representative,18,18,Republican,20405,observed_count,False,True
+6,representative,18,18,Non Affiliated,18876,observed_count,False,True
+6,representative,18,18,Independent,2623,observed_count,False,True
+6,representative,18,18,Libertarian,334,observed_count,False,True
+6,representative,18,18,No Labels,117,observed_count,False,True
+6,representative,18,18,Pacific Green,99,observed_count,False,True
+6,representative,18,18,Progressive,42,observed_count,False,True
+6,representative,18,18,Working Families,101,observed_count,False,True
+6,representative,18,18,Other,261,observed_count,False,True
+6,representative,18,18,Total,54008,observed_count,False,True
+6,representative,19,19,Democrat,15024,observed_count,False,True
+6,representative,19,19,Republican,11017,observed_count,False,True
+6,representative,19,19,Non Affiliated,18520,observed_count,False,True
+6,representative,19,19,Independent,2518,observed_count,False,True
+6,representative,19,19,Libertarian,309,observed_count,False,True
+6,representative,19,19,No Labels,198,observed_count,False,True
+6,representative,19,19,Pacific Green,102,observed_count,False,True
+6,representative,19,19,Progressive,76,observed_count,False,True
+6,representative,19,19,Working Families,108,observed_count,False,True
+6,representative,19,19,Other,168,observed_count,False,True
+6,representative,19,19,Total,48040,observed_count,False,True
+6,representative,20,20,Democrat,16020,observed_count,False,True
+6,representative,20,20,Republican,12696,observed_count,False,True
+6,representative,20,20,Non Affiliated,18335,observed_count,False,True
+6,representative,20,20,Independent,2797,observed_count,False,True
+6,representative,20,20,Libertarian,331,observed_count,False,True
+6,representative,20,20,No Labels,158,observed_count,False,True
+6,representative,20,20,Pacific Green,108,observed_count,False,True
+6,representative,20,20,Progressive,72,observed_count,False,True
+6,representative,20,20,Working Families,96,observed_count,False,True
+6,representative,20,20,Other,176,observed_count,False,True
+6,representative,20,20,Total,50789,observed_count,False,True
+6,representative,21,21,Democrat,12894,observed_count,False,True
+6,representative,21,21,Republican,10920,observed_count,False,True
+6,representative,21,21,Non Affiliated,18589,observed_count,False,True
+6,representative,21,21,Independent,2137,observed_count,False,True
+6,representative,21,21,Libertarian,285,observed_count,False,True
+6,representative,21,21,No Labels,149,observed_count,False,True
+6,representative,21,21,Pacific Green,85,observed_count,False,True
+6,representative,21,21,Progressive,72,observed_count,False,True
+6,representative,21,21,Working Families,121,observed_count,False,True
+6,representative,21,21,Other,165,observed_count,False,True
+6,representative,21,21,Total,45417,observed_count,False,True
+6,representative,22,22,Democrat,10476,observed_count,False,True
+6,representative,22,22,Republican,7510,observed_count,False,True
+6,representative,22,22,Non Affiliated,19281,observed_count,False,True
+6,representative,22,22,Independent,1543,observed_count,False,True
+6,representative,22,22,Libertarian,208,observed_count,False,True
+6,representative,22,22,No Labels,151,observed_count,False,True
+6,representative,22,22,Pacific Green,48,observed_count,False,True
+6,representative,22,22,Progressive,50,observed_count,False,True
+6,representative,22,22,Working Families,116,observed_count,False,True
+6,representative,22,22,Other,144,observed_count,False,True
+6,representative,22,22,Total,39527,observed_count,False,True
+6,representative,23,23,Democrat,13080,observed_count,False,True
+6,representative,23,23,Republican,18816,observed_count,False,True
+6,representative,23,23,Non Affiliated,18762,observed_count,False,True
+6,representative,23,23,Independent,3049,observed_count,False,True
+6,representative,23,23,Libertarian,380,observed_count,False,True
+6,representative,23,23,No Labels,125,observed_count,False,True
+6,representative,23,23,Pacific Green,112,observed_count,False,True
+6,representative,23,23,Progressive,58,observed_count,False,True
+6,representative,23,23,Working Families,96,observed_count,False,True
+6,representative,23,23,Other,275,observed_count,False,True
+6,representative,23,23,Total,54753,observed_count,False,True
+6,representative,24,24,Democrat,12976,observed_count,False,True
+6,representative,24,24,Republican,15159,observed_count,False,True
+6,representative,24,24,Non Affiliated,19400,observed_count,False,True
+6,representative,24,24,Independent,2765,observed_count,False,True
+6,representative,24,24,Libertarian,382,observed_count,False,True
+6,representative,24,24,No Labels,160,observed_count,False,True
+6,representative,24,24,Pacific Green,104,observed_count,False,True
+6,representative,24,24,Progressive,51,observed_count,False,True
+6,representative,24,24,Working Families,121,observed_count,False,True
+6,representative,24,24,Other,309,observed_count,False,True
+6,representative,24,24,Total,51427,observed_count,False,True
+6,representative,25,25,Democrat,19195,observed_count,False,True
+6,representative,25,25,Republican,9053,observed_count,False,True
+6,representative,25,25,Non Affiliated,18546,observed_count,False,True
+6,representative,25,25,Independent,2617,observed_count,False,True
+6,representative,25,25,Libertarian,298,observed_count,False,True
+6,representative,25,25,No Labels,120,observed_count,False,True
+6,representative,25,25,Pacific Green,102,observed_count,False,True
+6,representative,25,25,Progressive,88,observed_count,False,True
+6,representative,25,25,Working Families,110,observed_count,False,True
+6,representative,25,25,Other,160,observed_count,False,True
+6,representative,25,25,Total,50289,observed_count,False,True
+6,representative,26,26,Democrat,16562,observed_count,False,True
+6,representative,26,26,Republican,12599,observed_count,False,True
+6,representative,26,26,Non Affiliated,18075,observed_count,False,True
+6,representative,26,26,Independent,3079,observed_count,False,True
+6,representative,26,26,Libertarian,327,observed_count,False,True
+6,representative,26,26,No Labels,130,observed_count,False,True
+6,representative,26,26,Pacific Green,77,observed_count,False,True
+6,representative,26,26,Progressive,62,observed_count,False,True
+6,representative,26,26,Working Families,60,observed_count,False,True
+6,representative,26,26,Other,160,observed_count,False,True
+6,representative,26,26,Total,51131,observed_count,False,True
+6,representative,27,27,Democrat,20569,observed_count,False,True
+6,representative,27,27,Republican,6863,observed_count,False,True
+6,representative,27,27,Non Affiliated,17045,observed_count,False,True
+6,representative,27,27,Independent,2262,observed_count,False,True
+6,representative,27,27,Libertarian,296,observed_count,False,True
+6,representative,27,27,No Labels,121,observed_count,False,True
+6,representative,27,27,Pacific Green,113,observed_count,False,True
+6,representative,27,27,Progressive,105,observed_count,False,True
+6,representative,27,27,Working Families,103,observed_count,False,True
+6,representative,27,27,Other,158,observed_count,False,True
+6,representative,27,27,Total,47635,observed_count,False,True
+6,representative,28,28,Democrat,28941,observed_count,False,True
+6,representative,28,28,Republican,4811,observed_count,False,True
+6,representative,28,28,Non Affiliated,15981,observed_count,False,True
+6,representative,28,28,Independent,2350,observed_count,False,True
+6,representative,28,28,Libertarian,245,observed_count,False,True
+6,representative,28,28,No Labels,157,observed_count,False,True
+6,representative,28,28,Pacific Green,197,observed_count,False,True
+6,representative,28,28,Progressive,118,observed_count,False,True
+6,representative,28,28,Working Families,157,observed_count,False,True
+6,representative,28,28,Other,213,observed_count,False,True
+6,representative,28,28,Total,53170,observed_count,False,True
+6,representative,29,29,Democrat,14123,observed_count,False,True
+6,representative,29,29,Republican,9496,observed_count,False,True
+6,representative,29,29,Non Affiliated,19760,observed_count,False,True
+6,representative,29,29,Independent,2044,observed_count,False,True
+6,representative,29,29,Libertarian,261,observed_count,False,True
+6,representative,29,29,No Labels,117,observed_count,False,True
+6,representative,29,29,Pacific Green,84,observed_count,False,True
+6,representative,29,29,Progressive,48,observed_count,False,True
+6,representative,29,29,Working Families,130,observed_count,False,True
+6,representative,29,29,Other,166,observed_count,False,True
+6,representative,29,29,Total,46229,observed_count,False,True
+6,representative,30,30,Democrat,15263,observed_count,False,True
+6,representative,30,30,Republican,7211,observed_count,False,True
+6,representative,30,30,Non Affiliated,19291,observed_count,False,True
+6,representative,30,30,Independent,2036,observed_count,False,True
+6,representative,30,30,Libertarian,300,observed_count,False,True
+6,representative,30,30,No Labels,158,observed_count,False,True
+6,representative,30,30,Pacific Green,91,observed_count,False,True
+6,representative,30,30,Progressive,86,observed_count,False,True
+6,representative,30,30,Working Families,85,observed_count,False,True
+6,representative,30,30,Other,141,observed_count,False,True
+6,representative,30,30,Total,44662,observed_count,False,True
+7,representative,31,31,Democrat,15179,observed_count,False,True
+7,representative,31,31,Republican,17348,observed_count,False,True
+7,representative,31,31,Non Affiliated,21456,observed_count,False,True
+7,representative,31,31,Independent,2856,observed_count,False,True
+7,representative,31,31,Libertarian,473,observed_count,False,True
+7,representative,31,31,No Labels,160,observed_count,False,True
+7,representative,31,31,Pacific Green,126,observed_count,False,True
+7,representative,31,31,Progressive,50,observed_count,False,True
+7,representative,31,31,Working Families,149,observed_count,False,True
+7,representative,31,31,Other,347,observed_count,False,True
+7,representative,31,31,Total,58144,observed_count,False,True
+7,representative,32,32,Democrat,16290,observed_count,False,True
+7,representative,32,32,Republican,14259,observed_count,False,True
+7,representative,32,32,Non Affiliated,20787,observed_count,False,True
+7,representative,32,32,Independent,3094,observed_count,False,True
+7,representative,32,32,Libertarian,363,observed_count,False,True
+7,representative,32,32,No Labels,236,observed_count,False,True
+7,representative,32,32,Pacific Green,140,observed_count,False,True
+7,representative,32,32,Progressive,77,observed_count,False,True
+7,representative,32,32,Working Families,125,observed_count,False,True
+7,representative,32,32,Other,279,observed_count,False,True
+7,representative,32,32,Total,55650,observed_count,False,True
+7,representative,33,33,Democrat,26905,observed_count,False,True
+7,representative,33,33,Republican,3475,observed_count,False,True
+7,representative,33,33,Non Affiliated,19644,observed_count,False,True
+7,representative,33,33,Independent,2501,observed_count,False,True
+7,representative,33,33,Libertarian,282,observed_count,False,True
+7,representative,33,33,No Labels,266,observed_count,False,True
+7,representative,33,33,Pacific Green,244,observed_count,False,True
+7,representative,33,33,Progressive,217,observed_count,False,True
+7,representative,33,33,Working Families,294,observed_count,False,True
+7,representative,33,33,Other,357,observed_count,False,True
+7,representative,33,33,Total,54185,observed_count,False,True
+7,representative,34,34,Democrat,16494,observed_count,False,True
+7,representative,34,34,Republican,6629,observed_count,False,True
+7,representative,34,34,Non Affiliated,19572,observed_count,False,True
+7,representative,34,34,Independent,2035,observed_count,False,True
+7,representative,34,34,Libertarian,188,observed_count,False,True
+7,representative,34,34,No Labels,113,observed_count,False,True
+7,representative,34,34,Pacific Green,68,observed_count,False,True
+7,representative,34,34,Progressive,63,observed_count,False,True
+7,representative,34,34,Working Families,49,observed_count,False,True
+7,representative,34,34,Other,123,observed_count,False,True
+7,representative,34,34,Total,45334,observed_count,False,True
+7,representative,35,35,Democrat,14236,observed_count,False,True
+7,representative,35,35,Republican,5580,observed_count,False,True
+7,representative,35,35,Non Affiliated,18835,observed_count,False,True
+7,representative,35,35,Independent,1763,observed_count,False,True
+7,representative,35,35,Libertarian,253,observed_count,False,True
+7,representative,35,35,No Labels,143,observed_count,False,True
+7,representative,35,35,Pacific Green,109,observed_count,False,True
+7,representative,35,35,Progressive,83,observed_count,False,True
+7,representative,35,35,Working Families,130,observed_count,False,True
+7,representative,35,35,Other,151,observed_count,False,True
+7,representative,35,35,Total,41283,observed_count,False,True
+7,representative,36,36,Democrat,19244,observed_count,False,True
+7,representative,36,36,Republican,10548,observed_count,False,True
+7,representative,36,36,Non Affiliated,22476,observed_count,False,True
+7,representative,36,36,Independent,2681,observed_count,False,True
+7,representative,36,36,Libertarian,307,observed_count,False,True
+7,representative,36,36,No Labels,142,observed_count,False,True
+7,representative,36,36,Pacific Green,86,observed_count,False,True
+7,representative,36,36,Progressive,81,observed_count,False,True
+7,representative,36,36,Working Families,89,observed_count,False,True
+7,representative,36,36,Other,139,observed_count,False,True
+7,representative,36,36,Total,55793,observed_count,False,True
+7,representative,37,37,Democrat,18607,observed_count,False,True
+7,representative,37,37,Republican,11504,observed_count,False,True
+7,representative,37,37,Non Affiliated,17099,observed_count,False,True
+7,representative,37,37,Independent,3049,observed_count,False,True
+7,representative,37,37,Libertarian,305,observed_count,False,True
+7,representative,37,37,No Labels,106,observed_count,False,True
+7,representative,37,37,Pacific Green,74,observed_count,False,True
+7,representative,37,37,Progressive,58,observed_count,False,True
+7,representative,37,37,Working Families,69,observed_count,False,True
+7,representative,37,37,Other,211,observed_count,False,True
+7,representative,37,37,Total,51082,observed_count,False,True
+7,representative,38,38,Democrat,25250,observed_count,False,True
+7,representative,38,38,Republican,7994,observed_count,False,True
+7,representative,38,38,Non Affiliated,15899,observed_count,False,True
+7,representative,38,38,Independent,2875,observed_count,False,True
+7,representative,38,38,Libertarian,217,observed_count,False,True
+7,representative,38,38,No Labels,111,observed_count,False,True
+7,representative,38,38,Pacific Green,133,observed_count,False,True
+7,representative,38,38,Progressive,63,observed_count,False,True
+7,representative,38,38,Working Families,75,observed_count,False,True
+7,representative,38,38,Other,188,observed_count,False,True
+7,representative,38,38,Total,52805,observed_count,False,True
+7,representative,39,39,Democrat,15854,observed_count,False,True
+7,representative,39,39,Republican,10535,observed_count,False,True
+7,representative,39,39,Non Affiliated,21037,observed_count,False,True
+7,representative,39,39,Independent,2582,observed_count,False,True
+7,representative,39,39,Libertarian,260,observed_count,False,True
+7,representative,39,39,No Labels,158,observed_count,False,True
+7,representative,39,39,Pacific Green,94,observed_count,False,True
+7,representative,39,39,Progressive,61,observed_count,False,True
+7,representative,39,39,Working Families,158,observed_count,False,True
+7,representative,39,39,Other,314,observed_count,False,True
+7,representative,39,39,Total,51053,observed_count,False,True
+7,representative,40,40,Democrat,17408,observed_count,False,True
+7,representative,40,40,Republican,12883,observed_count,False,True
+7,representative,40,40,Non Affiliated,18662,observed_count,False,True
+7,representative,40,40,Independent,2954,observed_count,False,True
+7,representative,40,40,Libertarian,368,observed_count,False,True
+7,representative,40,40,No Labels,134,observed_count,False,True
+7,representative,40,40,Pacific Green,110,observed_count,False,True
+7,representative,40,40,Progressive,73,observed_count,False,True
+7,representative,40,40,Working Families,166,observed_count,False,True
+7,representative,40,40,Other,354,observed_count,False,True
+7,representative,40,40,Total,53112,observed_count,False,True
+7,representative,41,41,Democrat,29015,observed_count,False,True
+7,representative,41,41,Republican,6103,observed_count,False,True
+7,representative,41,41,Non Affiliated,16510,observed_count,False,True
+7,representative,41,41,Independent,2489,observed_count,False,True
+7,representative,41,41,Libertarian,264,observed_count,False,True
+7,representative,41,41,No Labels,133,observed_count,False,True
+7,representative,41,41,Pacific Green,209,observed_count,False,True
+7,representative,41,41,Progressive,125,observed_count,False,True
+7,representative,41,41,Working Families,195,observed_count,False,True
+7,representative,41,41,Other,353,observed_count,False,True
+7,representative,41,41,Total,55396,observed_count,False,True
+7,representative,42,42,Democrat,34414,observed_count,False,True
+7,representative,42,42,Republican,1773,observed_count,False,True
+7,representative,42,42,Non Affiliated,17768,observed_count,False,True
+7,representative,42,42,Independent,1878,observed_count,False,True
+7,representative,42,42,Libertarian,255,observed_count,False,True
+7,representative,42,42,No Labels,196,observed_count,False,True
+7,representative,42,42,Pacific Green,376,observed_count,False,True
+7,representative,42,42,Progressive,263,observed_count,False,True
+7,representative,42,42,Working Families,306,observed_count,False,True
+7,representative,42,42,Other,309,observed_count,False,True
+7,representative,42,42,Total,57538,observed_count,False,True
+7,representative,43,43,Democrat,34372,observed_count,False,True
+7,representative,43,43,Republican,1825,observed_count,False,True
+7,representative,43,43,Non Affiliated,16828,observed_count,False,True
+7,representative,43,43,Independent,1848,observed_count,False,True
+7,representative,43,43,Libertarian,201,observed_count,False,True
+7,representative,43,43,No Labels,177,observed_count,False,True
+7,representative,43,43,Pacific Green,281,observed_count,False,True
+7,representative,43,43,Progressive,179,observed_count,False,True
+7,representative,43,43,Working Families,360,observed_count,False,True
+7,representative,43,43,Other,290,observed_count,False,True
+7,representative,43,43,Total,56361,observed_count,False,True
+7,representative,44,44,Democrat,27477,observed_count,False,True
+7,representative,44,44,Republican,2847,observed_count,False,True
+7,representative,44,44,Non Affiliated,18041,observed_count,False,True
+7,representative,44,44,Independent,1779,observed_count,False,True
+7,representative,44,44,Libertarian,200,observed_count,False,True
+7,representative,44,44,No Labels,184,observed_count,False,True
+7,representative,44,44,Pacific Green,247,observed_count,False,True
+7,representative,44,44,Progressive,153,observed_count,False,True
+7,representative,44,44,Working Families,410,observed_count,False,True
+7,representative,44,44,Other,340,observed_count,False,True
+7,representative,44,44,Total,51678,observed_count,False,True
+7,representative,45,45,Democrat,29423,observed_count,False,True
+7,representative,45,45,Republican,4028,observed_count,False,True
+7,representative,45,45,Non Affiliated,16419,observed_count,False,True
+7,representative,45,45,Independent,1963,observed_count,False,True
+7,representative,45,45,Libertarian,212,observed_count,False,True
+7,representative,45,45,No Labels,166,observed_count,False,True
+7,representative,45,45,Pacific Green,227,observed_count,False,True
+7,representative,45,45,Progressive,129,observed_count,False,True
+7,representative,45,45,Working Families,291,observed_count,False,True
+7,representative,45,45,Other,334,observed_count,False,True
+7,representative,45,45,Total,53192,observed_count,False,True
+7,representative,46,46,Democrat,24550,observed_count,False,True
+7,representative,46,46,Republican,3787,observed_count,False,True
+7,representative,46,46,Non Affiliated,18557,observed_count,False,True
+7,representative,46,46,Independent,1783,observed_count,False,True
+7,representative,46,46,Libertarian,235,observed_count,False,True
+7,representative,46,46,No Labels,178,observed_count,False,True
+7,representative,46,46,Pacific Green,276,observed_count,False,True
+7,representative,46,46,Progressive,176,observed_count,False,True
+7,representative,46,46,Working Families,327,observed_count,False,True
+7,representative,46,46,Other,393,observed_count,False,True
+7,representative,46,46,Total,50262,observed_count,False,True
+7,representative,47,47,Democrat,17389,observed_count,False,True
+7,representative,47,47,Republican,5896,observed_count,False,True
+7,representative,47,47,Non Affiliated,18951,observed_count,False,True
+7,representative,47,47,Independent,1729,observed_count,False,True
+7,representative,47,47,Libertarian,244,observed_count,False,True
+7,representative,47,47,No Labels,170,observed_count,False,True
+7,representative,47,47,Pacific Green,159,observed_count,False,True
+7,representative,47,47,Progressive,103,observed_count,False,True
+7,representative,47,47,Working Families,335,observed_count,False,True
+7,representative,47,47,Other,357,observed_count,False,True
+7,representative,47,47,Total,45333,observed_count,False,True
+7,representative,48,48,Democrat,14633,observed_count,False,True
+7,representative,48,48,Republican,9463,observed_count,False,True
+7,representative,48,48,Non Affiliated,20522,observed_count,False,True
+7,representative,48,48,Independent,1980,observed_count,False,True
+7,representative,48,48,Libertarian,249,observed_count,False,True
+7,representative,48,48,No Labels,165,observed_count,False,True
+7,representative,48,48,Pacific Green,109,observed_count,False,True
+7,representative,48,48,Progressive,72,observed_count,False,True
+7,representative,48,48,Working Families,235,observed_count,False,True
+7,representative,48,48,Other,368,observed_count,False,True
+7,representative,48,48,Total,47796,observed_count,False,True
+7,representative,49,49,Democrat,13955,observed_count,False,True
+7,representative,49,49,Republican,8263,observed_count,False,True
+7,representative,49,49,Non Affiliated,19634,observed_count,False,True
+7,representative,49,49,Independent,2049,observed_count,False,True
+7,representative,49,49,Libertarian,248,observed_count,False,True
+7,representative,49,49,No Labels,170,observed_count,False,True
+7,representative,49,49,Pacific Green,109,observed_count,False,True
+7,representative,49,49,Progressive,83,observed_count,False,True
+7,representative,49,49,Working Families,272,observed_count,False,True
+7,representative,49,49,Other,353,observed_count,False,True
+7,representative,49,49,Total,45136,observed_count,False,True
+7,representative,50,50,Democrat,14216,observed_count,False,True
+7,representative,50,50,Republican,9845,observed_count,False,True
+7,representative,50,50,Non Affiliated,19761,observed_count,False,True
+7,representative,50,50,Independent,2235,observed_count,False,True
+7,representative,50,50,Libertarian,273,observed_count,False,True
+7,representative,50,50,No Labels,167,observed_count,False,True
+7,representative,50,50,Pacific Green,108,observed_count,False,True
+7,representative,50,50,Progressive,65,observed_count,False,True
+7,representative,50,50,Working Families,265,observed_count,False,True
+7,representative,50,50,Other,368,observed_count,False,True
+7,representative,50,50,Total,47303,observed_count,False,True
+7,representative,51,51,Democrat,13677,observed_count,False,True
+7,representative,51,51,Republican,19914,observed_count,False,True
+7,representative,51,51,Non Affiliated,19331,observed_count,False,True
+7,representative,51,51,Independent,3230,observed_count,False,True
+7,representative,51,51,Libertarian,411,observed_count,False,True
+7,representative,51,51,No Labels,119,observed_count,False,True
+7,representative,51,51,Pacific Green,91,observed_count,False,True
+7,representative,51,51,Progressive,62,observed_count,False,True
+7,representative,51,51,Working Families,167,observed_count,False,True
+7,representative,51,51,Other,386,observed_count,False,True
+7,representative,51,51,Total,57388,observed_count,False,True
+7,representative,52,52,Democrat,16090,observed_count,False,True
+7,representative,52,52,Republican,13396,observed_count,False,True
+7,representative,52,52,Non Affiliated,19641,observed_count,False,True
+7,representative,52,52,Independent,2702,observed_count,False,True
+7,representative,52,52,Libertarian,327,observed_count,False,True
+7,representative,52,52,No Labels,195,observed_count,False,True
+7,representative,52,52,Pacific Green,123,observed_count,False,True
+7,representative,52,52,Progressive,53,observed_count,False,True
+7,representative,52,52,Working Families,115,observed_count,False,True
+7,representative,52,52,Other,353,observed_count,False,True
+7,representative,52,52,Total,52995,observed_count,False,True
+7,representative,53,53,Democrat,18499,observed_count,False,True
+7,representative,53,53,Republican,16217,observed_count,False,True
+7,representative,53,53,Non Affiliated,20803,observed_count,False,True
+7,representative,53,53,Independent,3920,observed_count,False,True
+7,representative,53,53,Libertarian,410,observed_count,False,True
+7,representative,53,53,No Labels,247,observed_count,False,True
+7,representative,53,53,Pacific Green,104,observed_count,False,True
+7,representative,53,53,Progressive,62,observed_count,False,True
+7,representative,53,53,Working Families,72,observed_count,False,True
+7,representative,53,53,Other,310,observed_count,False,True
+7,representative,53,53,Total,60644,observed_count,False,True
+7,representative,54,54,Democrat,20574,observed_count,False,True
+7,representative,54,54,Republican,10925,observed_count,False,True
+7,representative,54,54,Non Affiliated,20473,observed_count,False,True
+7,representative,54,54,Independent,3653,observed_count,False,True
+7,representative,54,54,Libertarian,399,observed_count,False,True
+7,representative,54,54,No Labels,221,observed_count,False,True
+7,representative,54,54,Pacific Green,124,observed_count,False,True
+7,representative,54,54,Progressive,73,observed_count,False,True
+7,representative,54,54,Working Families,58,observed_count,False,True
+7,representative,54,54,Other,240,observed_count,False,True
+7,representative,54,54,Total,56740,observed_count,False,True
+7,representative,55,55,Democrat,10324,observed_count,False,True
+7,representative,55,55,Republican,22190,observed_count,False,True
+7,representative,55,55,Non Affiliated,20890,observed_count,False,True
+7,representative,55,55,Independent,3287,observed_count,False,True
+7,representative,55,55,Libertarian,353,observed_count,False,True
+7,representative,55,55,No Labels,188,observed_count,False,True
+7,representative,55,55,Pacific Green,93,observed_count,False,True
+7,representative,55,55,Progressive,42,observed_count,False,True
+7,representative,55,55,Working Families,116,observed_count,False,True
+7,representative,55,55,Other,335,observed_count,False,True
+7,representative,55,55,Total,57818,observed_count,False,True
+7,representative,56,56,Democrat,8187,observed_count,False,True
+7,representative,56,56,Republican,19353,observed_count,False,True
+7,representative,56,56,Non Affiliated,20486,observed_count,False,True
+7,representative,56,56,Independent,2849,observed_count,False,True
+7,representative,56,56,Libertarian,361,observed_count,False,True
+7,representative,56,56,No Labels,200,observed_count,False,True
+7,representative,56,56,Pacific Green,65,observed_count,False,True
+7,representative,56,56,Progressive,42,observed_count,False,True
+7,representative,56,56,Working Families,125,observed_count,False,True
+7,representative,56,56,Other,333,observed_count,False,True
+7,representative,56,56,Total,52001,observed_count,False,True
+7,representative,57,57,Democrat,6835,observed_count,False,True
+7,representative,57,57,Republican,13819,observed_count,False,True
+7,representative,57,57,Non Affiliated,20401,observed_count,False,True
+7,representative,57,57,Independent,1795,observed_count,False,True
+7,representative,57,57,Libertarian,277,observed_count,False,True
+7,representative,57,57,No Labels,198,observed_count,False,True
+7,representative,57,57,Pacific Green,35,observed_count,False,True
+7,representative,57,57,Progressive,36,observed_count,False,True
+7,representative,57,57,Working Families,143,observed_count,False,True
+7,representative,57,57,Other,331,observed_count,False,True
+7,representative,57,57,Total,43870,observed_count,False,True
+7,representative,58,58,Democrat,8125,observed_count,False,True
+7,representative,58,58,Republican,20531,observed_count,False,True
+7,representative,58,58,Non Affiliated,19177,observed_count,False,True
+7,representative,58,58,Independent,2540,observed_count,False,True
+7,representative,58,58,Libertarian,339,observed_count,False,True
+7,representative,58,58,No Labels,180,observed_count,False,True
+7,representative,58,58,Pacific Green,58,observed_count,False,True
+7,representative,58,58,Progressive,31,observed_count,False,True
+7,representative,58,58,Working Families,86,observed_count,False,True
+7,representative,58,58,Other,366,observed_count,False,True
+7,representative,58,58,Total,51433,observed_count,False,True
+7,representative,59,59,Democrat,10275,observed_count,False,True
+7,representative,59,59,Republican,23890,observed_count,False,True
+7,representative,59,59,Non Affiliated,21118,observed_count,False,True
+7,representative,59,59,Independent,3404,observed_count,False,True
+7,representative,59,59,Libertarian,387,observed_count,False,True
+7,representative,59,59,No Labels,170,observed_count,False,True
+7,representative,59,59,Pacific Green,74,observed_count,False,True
+7,representative,59,59,Progressive,40,observed_count,False,True
+7,representative,59,59,Working Families,106,observed_count,False,True
+7,representative,59,59,Other,415,observed_count,False,True
+7,representative,59,59,Total,59879,observed_count,False,True
+7,representative,60,60,Democrat,5775,observed_count,False,True
+7,representative,60,60,Republican,20733,observed_count,False,True
+7,representative,60,60,Non Affiliated,18848,observed_count,False,True
+7,representative,60,60,Independent,2198,observed_count,False,True
+7,representative,60,60,Libertarian,255,observed_count,False,True
+7,representative,60,60,No Labels,167,observed_count,False,True
+7,representative,60,60,Pacific Green,49,observed_count,False,True
+7,representative,60,60,Progressive,30,observed_count,False,True
+7,representative,60,60,Working Families,98,observed_count,False,True
+7,representative,60,60,Other,231,observed_count,False,True
+7,representative,60,60,Total,48384,observed_count,False,True
+7,representative,,Total,Democrat,1002494,observed_count,False,True
+7,representative,,Total,Republican,740084,observed_count,False,True
+7,representative,,Total,Non Affiliated,1145741,observed_count,False,True
+7,representative,,Total,Independent,156277,observed_count,False,True
+7,representative,,Total,Libertarian,18753,observed_count,False,True
+7,representative,,Total,No Labels,10373,observed_count,False,True
+7,representative,,Total,Pacific Green,7836,observed_count,False,True
+7,representative,,Total,Progressive,4781,observed_count,False,True
+7,representative,,Total,Working Families,8633,observed_count,False,True
+7,representative,,Total,Other,17335,observed_count,False,True
+7,representative,,Total,Total,3112307,observed_count,False,True

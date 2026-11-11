@@ -1,0 +1,86 @@
+{
+  "observed_date_utc": "2026-11-09",
+  "access_method": "web tool, ordinary declared official URL",
+  "scope": "Distinct registration products screened after complete Connecticut version14 publication",
+  "original_http_response_bodies_captured": false,
+  "server_body_bytes": null,
+  "server_body_sha256": null,
+  "tool_errors_are_not_original_server_bodies": true,
+  "observations": [
+    {
+      "state_code": "TX",
+      "publisher": "Texas Secretary of State",
+      "product": "November 2026 Voter Registration Figures",
+      "url": "https://www.sos.texas.gov/elections/historical/nov2026.shtml",
+      "observed_http_status": 403,
+      "tool_error_literal": "Failed to fetch https://www.sos.texas.gov/elections/historical/nov2026.shtml: (403) Forbidden",
+      "tool_evidence_ref": "turn750603view0",
+      "source_original_acquired": false,
+      "native_numerical_values_qualified": false,
+      "cached_search_snippet_not_promoted_to_native_data": true,
+      "disposition": "access_hold_stop_route_no_other_client_cache_or_mirror",
+      "native_registered_denominator": null
+    },
+    {
+      "state_code": "LA",
+      "publisher": "Louisiana Secretary of State",
+      "declaring_index_url": "https://www.sos.la.gov/elections-voting/voter-registration-statistics",
+      "declaring_statewide_page_url": "https://www.sos.la.gov/elections-voting/statewide-registration-statistics",
+      "url": "https://electionstatistics.--environment--.sos.la.gov/default.aspx?Stats=Registration_Statistics&Type=Statewide",
+      "observed_http_status": 502,
+      "tool_error_literal": "Failed to fetch https://electionstatistics.--environment--.sos.la.gov/default.aspx?Stats=Registration_Statistics&Type=Statewide: (502) Bad Gateway",
+      "tool_evidence_ref": "turn466294view0",
+      "source_original_acquired": false,
+      "native_numerical_values_qualified": false,
+      "disposition": "declared_link_contains_unresolved_environment_placeholder_no_guessed_production_hostname",
+      "native_registered_denominator": null
+    },
+    {
+      "state_code": "ME",
+      "publisher": "Maine Secretary of State",
+      "declaring_index_url": "https://www.maine.gov/sos/elections-voting/voter-data",
+      "product": "Statewide Registered and Enrolled Data File, Active Status",
+      "index_date_literal": "3/7/2026",
+      "url": "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/E%26R%203.7.26%20ACTIVE%20After%20Inactivation%20Process.xlsx",
+      "observed_http_status": 403,
+      "tool_error_literal": "Failed to fetch https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/E%26R%203.7.26%20ACTIVE%20After%20Inactivation%20Process.xlsx: (403) Forbidden",
+      "tool_evidence_ref": "turn730056view0",
+      "source_original_acquired": false,
+      "native_numerical_values_qualified": false,
+      "disposition": "access_hold_stop_route_no_other_client_cache_or_mirror",
+      "native_registered_denominator": null
+    },
+    {
+      "state_code": "ME",
+      "publisher": "Maine Secretary of State",
+      "declaring_index_url": "https://www.maine.gov/sos/elections-voting/voter-data",
+      "product": "Statewide Registered and Enrolled Data File, Inactive Status",
+      "index_date_literal": "3/7/2026",
+      "url": "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/E%26R%203.7.26%20INACTIVE%20After%20Inactivation%20Process.xlsx",
+      "observed_http_status": 403,
+      "tool_error_literal": "Failed to fetch https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/E%26R%203.7.26%20INACTIVE%20After%20Inactivation%20Process.xlsx: (403) Forbidden",
+      "tool_evidence_ref": "turn730056view1",
+      "source_original_acquired": false,
+      "native_numerical_values_qualified": false,
+      "disposition": "access_hold_stop_route_no_other_client_cache_or_mirror",
+      "native_registered_denominator": null
+    }
+  ],
+  "layout_only_observation": {
+    "state_code": "ME",
+    "url": "https://www.maine.gov/sos/elections-voting/voter-data/enrolled-layout",
+    "example_as_of_date_literal": "01-Jan-2026",
+    "example_is_not_actual_workbook_date_or_count_qualification": true,
+    "source_affiliation_is_registration_accounting_not_party_voting": true
+  },
+  "ohio_discovery_only": {
+    "aggregate_portal_url": "https://data.ohiosos.gov/portal/",
+    "native_aggregate_numerical_input_acquired": false,
+    "individual_voter_files_not_acquired": true
+  },
+  "new_conditional_frames": 0,
+  "new_native_statewide_ballot_references": 0,
+  "complete_version14_downloads_unchanged": true,
+  "not_a_metadata_only_replacement_for_complete_analysis": true,
+  "new_website_view": false
+}

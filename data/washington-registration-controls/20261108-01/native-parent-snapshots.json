@@ -1,0 +1,3006 @@
+{
+  "counties": [
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:43.7460045Z",
+        "ballotsCast": 2814.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-9710-eb1f-ec83-08df1022cfb4",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-b33e-08ddd6a09ca6",
+        "lastUpdated": "2026-11-04T04:22:16.6392716Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "f6b057d4-8edb-42e2-8abb-4037b415590c",
+        "totalVoters": 8853.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-b33e-08ddd6a09ca6",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Adams County"
+          }
+        ],
+        "shortName": "adams-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:39.3925248Z",
+        "ballotsCast": 7839.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-4a83-0b96-1af4-08df03ba903e",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-8b66-08ddd6a09ca8",
+        "lastUpdated": "2026-11-04T04:13:04.5238857Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "9f09c2fe-7e34-4bed-bcdb-a6d07798839a",
+        "totalVoters": 15007.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-8b66-08ddd6a09ca8",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Asotin County"
+          }
+        ],
+        "shortName": "asotin-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:44.7435007Z",
+        "ballotsCast": 38025.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-4cdd-c837-9787-08df24a83c72",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-4559-08ddd6a09ca9",
+        "lastUpdated": "2026-11-04T04:11:22.6968279Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "a0853d53-227d-4f90-b2f5-1cd942975b4a",
+        "totalVoters": 139609.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-4559-08ddd6a09ca9",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Benton County"
+          }
+        ],
+        "shortName": "benton-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:39:18.2704394Z",
+        "ballotsCast": 28748.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-7ecd-a5e6-daff-08df0944e228",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-f99e-08ddd6a09ca9",
+        "lastUpdated": "2026-11-05T00:37:37.1821175Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "e51dd178-14a2-49f2-af57-40c8f7425d86",
+        "totalVoters": 55184.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-f99e-08ddd6a09ca9",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Chelan County"
+          }
+        ],
+        "shortName": "chelan-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:43:07.9896228Z",
+        "ballotsCast": 20248.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-463e-5eac-88e7-08df0f5c0545",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-ad30-08ddd6a09caa",
+        "lastUpdated": "2026-11-05T00:29:25.4238298Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "25e47d7f-52f5-48e3-9c65-ddbe31eb1378",
+        "totalVoters": 60299.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-ad30-08ddd6a09caa",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Clallam County"
+          }
+        ],
+        "shortName": "clallam-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:19:45.0442988Z",
+        "ballotsCast": 188389.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-a025-9452-91c9-08df08491e99",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-56b4-08ddd6a09cab",
+        "lastUpdated": "2026-11-05T01:13:32.4916081Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "e7bf4dc3-a7f0-4ca8-866e-352a7bc4cffb",
+        "totalVoters": 363192.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-56b4-08ddd6a09cab",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Clark County"
+          }
+        ],
+        "shortName": "clark-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:40.5952339Z",
+        "ballotsCast": 1986.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-427a-c8f0-ce28-08df0ec655e3",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-0277-08ddd6a09cac",
+        "lastUpdated": "2026-11-04T22:54:42.3294262Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "85802a51-ce82-48f9-bd6a-b2872913c3df",
+        "totalVoters": 2998.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-0277-08ddd6a09cac",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Columbia County"
+          }
+        ],
+        "shortName": "columbia-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:39:25.7737566Z",
+        "ballotsCast": 42208.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": [],
+        "id": "01000000-5379-b336-f6e8-08df14416746",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-ac95-08ddd6a09cac",
+        "lastUpdated": "2026-11-05T01:38:57.2851772Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "c5ff67ba-f55c-4f8d-acd6-1719dff281a2",
+        "totalVoters": 78810.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-ac95-08ddd6a09cac",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Cowlitz County"
+          }
+        ],
+        "shortName": "cowlitz-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:22:44.7878193Z",
+        "ballotsCast": 13589.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": [],
+        "id": "01000000-d777-e79a-a734-08df1837bd0f",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-5bf7-08ddd6a09cad",
+        "lastUpdated": "2026-11-05T01:20:50.7423985Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "72404019-e419-4fdc-a86d-464769240843",
+        "totalVoters": 28783.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-5bf7-08ddd6a09cad",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Douglas County"
+          }
+        ],
+        "shortName": "douglas-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:42.5858906Z",
+        "ballotsCast": 2498.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-2abd-43be-7bcb-08df12a91b3b",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-0502-08ddd6a09cae",
+        "lastUpdated": "2026-11-04T04:20:41.7578579Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "52887cf6-d3c6-436e-a4e9-c4391d30af2b",
+        "totalVoters": 5427.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-0502-08ddd6a09cae",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Ferry County"
+          }
+        ],
+        "shortName": "ferry-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T04:01:04.6360455Z",
+        "ballotsCast": 20268.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-52be-fe8b-817b-08df1f3196fb",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-b165-08ddd6a09cae",
+        "lastUpdated": "2026-11-05T03:57:39.9799245Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "fecc73c1-9776-46a2-95cc-19a6b0aca995",
+        "totalVoters": 50458.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-b165-08ddd6a09cae",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Franklin County"
+          }
+        ],
+        "shortName": "franklin-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:39.3566948Z",
+        "ballotsCast": 1304.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-a35f-1c4a-eb4a-08df046bcc78",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-5b77-08ddd6a09caf",
+        "lastUpdated": "2026-11-04T23:00:23.0878879Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "78477918-f4f3-48c0-9035-d68178c30e76",
+        "totalVoters": 1693.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-5b77-08ddd6a09caf",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Garfield County"
+          }
+        ],
+        "shortName": "garfield-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:47:27.7921592Z",
+        "ballotsCast": 15488.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-427a-c8f0-00f4-08df0eab3b0a",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-0a73-08ddd6a09cb0",
+        "lastUpdated": "2026-11-05T01:47:05.2016218Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "d889fdf0-9b8f-4375-963e-7a254fef2f3b",
+        "totalVoters": 53138.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-0a73-08ddd6a09cb0",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Grant County"
+          }
+        ],
+        "shortName": "grant-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:44.5001213Z",
+        "ballotsCast": 19068.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-869c-a752-72f5-08df2ef6a48c",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-b7d1-08ddd6a09cb0",
+        "lastUpdated": "2026-11-04T04:24:51.9927002Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "69ecac33-9cbe-4335-9f86-1090ee12a664",
+        "totalVoters": 52723.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-b7d1-08ddd6a09cb0",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Grays Harbor County"
+          }
+        ],
+        "shortName": "grays-harbor-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:50:41.5443964Z",
+        "ballotsCast": 32357.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": [],
+        "id": "01000000-25d6-d6d0-12d5-08df104003ef",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-6425-08ddd6a09cb1",
+        "lastUpdated": "2026-11-05T00:50:40.5731268Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "954a407f-b4d1-48dc-934d-341214642066",
+        "totalVoters": 66082.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-6425-08ddd6a09cb1",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Island County"
+          }
+        ],
+        "shortName": "island-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:40.4402308Z",
+        "ballotsCast": 16788.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": [],
+        "id": "01000000-ad1b-4012-59d8-08df0abcabf8",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-1d0e-08ddd6a09cb2",
+        "lastUpdated": "2026-11-04T04:29:12.8616361Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "351c0a08-623d-494b-9bac-089b9aa9ad70",
+        "totalVoters": 29041.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-1d0e-08ddd6a09cb2",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Jefferson County"
+          }
+        ],
+        "shortName": "jefferson-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:34:31.9335562Z",
+        "ballotsCast": 601199.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-3a7f-6232-5ca2-08df23219415",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-d40f-08ddd6a09cb2",
+        "lastUpdated": "2026-11-05T00:34:25.1010854Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "4436f01a-532c-416b-adb6-1c22daf6c95e",
+        "totalVoters": 1460414.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-d40f-08ddd6a09cb2",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "King County"
+          }
+        ],
+        "shortName": "king-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:44.4798351Z",
+        "ballotsCast": 97481.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-2abd-43be-3e6b-08df12a97d6e",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-8682-08ddd6a09cb3",
+        "lastUpdated": "2026-11-04T23:34:36.439083Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "45480972-3fc5-4a5e-b9ec-70d0925fa1fd",
+        "totalVoters": 204242.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-8682-08ddd6a09cb3",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Kitsap County"
+          }
+        ],
+        "shortName": "kitsap-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:43.21623Z",
+        "ballotsCast": 14709.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-4cae-e852-78fc-08df12b22b08",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-38ad-08ddd6a09cb4",
+        "lastUpdated": "2026-11-04T04:06:32.2144133Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "93aaf486-f597-4c0a-a4ec-56115eeab82d",
+        "totalVoters": 32564.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-38ad-08ddd6a09cb4",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Kittitas County"
+          }
+        ],
+        "shortName": "kittitas-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:20:39.4509456Z",
+        "ballotsCast": 8071.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-81eb-b7fd-3f4b-08df078e252d",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-eddf-08ddd6a09cb4",
+        "lastUpdated": "2026-11-05T01:19:53.8560563Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "ac2b7ad5-4911-4b7f-8ae5-ef139061c178",
+        "totalVoters": 16885.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-eddf-08ddd6a09cb4",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Klickitat County"
+          }
+        ],
+        "shortName": "klickitat-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:41:36.4710012Z",
+        "ballotsCast": 36814.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-ad1b-4012-7996-08df0ac5a5fb",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-a581-08ddd6a09cb5",
+        "lastUpdated": "2026-11-05T00:41:35.6128079Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "14771952-b887-448b-ae6a-e09254c01230",
+        "totalVoters": 60000.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-a581-08ddd6a09cb5",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Lewis County"
+          }
+        ],
+        "shortName": "lewis-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:40.3254277Z",
+        "ballotsCast": 4088.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-ae04-19a1-5676-08df0df8c113",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-5c13-08ddd6a09cb6",
+        "lastUpdated": "2026-11-04T04:11:01.570627Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "3dac297a-ce07-4187-8120-350e3b428fac",
+        "totalVoters": 8926.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-5c13-08ddd6a09cb6",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Lincoln County"
+          }
+        ],
+        "shortName": "lincoln-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:42:41.8637165Z",
+        "ballotsCast": 18223.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-71c5-d490-677b-08df1046df43",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-420f-08ddd6a09cb7",
+        "lastUpdated": "2026-11-05T01:42:07.3259957Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "a001985a-36bc-4ea7-92f1-b694c75c4a19",
+        "totalVoters": 48656.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-420f-08ddd6a09cb7",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Mason County"
+          }
+        ],
+        "shortName": "mason-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:42.0066056Z",
+        "ballotsCast": 14460.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-5379-b336-6c43-08df14415b53",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-6c66-08ddd6a09cb8",
+        "lastUpdated": "2026-11-05T00:11:24.5926035Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "79002a63-450a-4632-a7ab-eb7ce663cd53",
+        "totalVoters": 27319.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-6c66-08ddd6a09cb8",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Okanogan County"
+          }
+        ],
+        "shortName": "okanogan-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:45.2158274Z",
+        "ballotsCast": 9942.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-915c-c900-0f8f-08df14e9c128",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-37cd-08ddd6a09cb9",
+        "lastUpdated": "2026-11-04T04:20:16.0784838Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "7848a8cc-2f56-49a6-92ed-1e1c19ef1b39",
+        "totalVoters": 18100.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-37cd-08ddd6a09cb9",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Pacific County"
+          }
+        ],
+        "shortName": "pacific-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:48:56.9256853Z",
+        "ballotsCast": 6983.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-9088-43cd-2cfa-08df0de0e560",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-0a9a-08ddd6a09cba",
+        "lastUpdated": "2026-11-05T01:48:44.2310425Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "1f11eabe-b730-43f9-b655-80ebe5287299",
+        "totalVoters": 11119.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-0a9a-08ddd6a09cba",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Pend Oreille County"
+          }
+        ],
+        "shortName": "pend-oreille-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:01:07.8999187Z",
+        "ballotsCast": 286103.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-5379-b336-8f4f-08df143a05fe",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-f161-08ddd6a09cba",
+        "lastUpdated": "2026-11-05T01:00:18.7399654Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "165eb3b5-cf8c-46f1-bac6-5442aad5b704",
+        "totalVoters": 601691.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-f161-08ddd6a09cba",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Pierce County"
+          }
+        ],
+        "shortName": "pierce-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:11:46.7205669Z",
+        "ballotsCast": 8574.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-53b4-f248-b537-08df0857b73c",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-b520-08ddd6a09cbb",
+        "lastUpdated": "2026-11-04T04:05:28.9727642Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "dff0f975-2baa-44b7-a9c7-531521fbefc4",
+        "totalVoters": 15223.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-b520-08ddd6a09cbb",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "San Juan County"
+          }
+        ],
+        "shortName": "san-juan-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:29:55.8942708Z",
+        "ballotsCast": 35984.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-86f9-4b07-5988-08df12988f8f",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-8590-08ddd6a09cbc",
+        "lastUpdated": "2026-11-05T00:29:33.1853651Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "8c223967-f49b-4ac7-8ca4-1804425c4412",
+        "totalVoters": 92274.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-8590-08ddd6a09cbc",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Skagit County"
+          }
+        ],
+        "shortName": "skagit-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:30:07.0206407Z",
+        "ballotsCast": 6085.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": [],
+        "id": "01000000-cf60-de85-b61e-08df1f45b36c",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-6920-08ddd6a09cbd",
+        "lastUpdated": "2026-11-05T00:20:24.9878512Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "d7787c56-d9ab-4dde-9b3e-a48aeb4e0ce3",
+        "totalVoters": 9229.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-6920-08ddd6a09cbd",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Skamania County"
+          }
+        ],
+        "shortName": "skamania-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:34:36.5400391Z",
+        "ballotsCast": 251385.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": [],
+        "id": "01000000-b51d-f53b-72f7-08df134d53d5",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-262f-08ddd6a09cbe",
+        "lastUpdated": "2026-11-05T00:34:00.5299721Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "7f4629d6-b984-409d-a082-95d7274e2bc1",
+        "totalVoters": 548600.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-262f-08ddd6a09cbe",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Snohomish County"
+          }
+        ],
+        "shortName": "snohomish-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:23:50.7079526Z",
+        "ballotsCast": 156416.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-2abd-43be-2c6b-08df12b28768",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-f298-08ddd6a09cbe",
+        "lastUpdated": "2026-11-05T01:20:03.5718318Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "4c2191e1-cde7-4722-8116-769cee6d63b7",
+        "totalVoters": 376343.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-f298-08ddd6a09cbe",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Spokane County"
+          }
+        ],
+        "shortName": "spokane-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:43.7594766Z",
+        "ballotsCast": 7716.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-a656-cc72-f016-08df12a608f7",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-ae0a-08ddd6a09cbf",
+        "lastUpdated": "2026-11-04T04:36:49.1262075Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "db1a11dd-2582-4f20-8d37-c19d13cafffd",
+        "totalVoters": 36711.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-ae0a-08ddd6a09cbf",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Stevens County"
+          }
+        ],
+        "shortName": "stevens-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:51:55.9606176Z",
+        "ballotsCast": 78902.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-245d-eb24-19f2-08df09123dd1",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-605b-08ddd6a09cc0",
+        "lastUpdated": "2026-11-05T01:51:51.1174643Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "ec4c9d21-278b-40d4-8c80-c06bbcb259a2",
+        "totalVoters": 214940.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-605b-08ddd6a09cc0",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Thurston County"
+          }
+        ],
+        "shortName": "thurston-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:51:40.5533153Z",
+        "ballotsCast": 2453.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": [],
+        "id": "01000000-abe6-37e4-c2bd-08df127793a4",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-0cbd-08ddd6a09cc1",
+        "lastUpdated": "2026-11-04T05:12:30.4938409Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "23c26c7d-98fb-4938-9f4a-c72c17c34820",
+        "totalVoters": 3724.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-0cbd-08ddd6a09cc1",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Wahkiakum County"
+          }
+        ],
+        "shortName": "wahkiakum-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:44.2506118Z",
+        "ballotsCast": 8216.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-2abd-43be-4770-08df128a22ac",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-b406-08ddd6a09cc1",
+        "lastUpdated": "2026-11-04T04:24:48.268032Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "4c280747-d7a7-4b8b-9bb8-aeada2ced76e",
+        "totalVoters": 39291.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-b406-08ddd6a09cc1",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Walla Walla County"
+          }
+        ],
+        "shortName": "walla-walla-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:49:52.5432229Z",
+        "ballotsCast": 106374.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-d961-523e-169a-08df140634ff",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-5d8a-08ddd6a09cc2",
+        "lastUpdated": "2026-11-05T00:14:04.3829111Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "e2e74f5e-567e-4d03-9fb6-a2dda98b281a",
+        "totalVoters": 170523.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-5d8a-08ddd6a09cc2",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Whatcom County"
+          }
+        ],
+        "shortName": "whatcom-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T01:20:40.7782797Z",
+        "ballotsCast": 8584.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-915c-c900-664e-08df141ffe94",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-0a29-08ddd6a09cc3",
+        "lastUpdated": "2026-11-05T01:15:49.0576385Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "986c394a-25fd-4474-b5ec-76cc89cd6827",
+        "totalVoters": 24704.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-0a29-08ddd6a09cc3",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Whitman County"
+          }
+        ],
+        "shortName": "whitman-county-wa"
+      }
+    },
+    {
+      "election": {
+        "asOf": "2026-11-05T00:27:40.4933368Z",
+        "ballotsCast": 46367.0,
+        "electionDate": "2026-11-03",
+        "groupReportingStatus": null,
+        "id": "01000000-bead-f0e1-9abc-08df0eb86b80",
+        "includePrecinctResults": false,
+        "isOfficialResults": false,
+        "isPrimary": false,
+        "isProduction": true,
+        "jurisdictionId": "01000000-f977-1a83-f3fc-08ddd6a09cc3",
+        "lastUpdated": "2026-11-04T23:33:39.9654137Z",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "2026 General"
+          }
+        ],
+        "precinctReportingStatus": [],
+        "precinctsReporting": null,
+        "publishDate": "2026-11-05T04:07:12.8391684Z",
+        "publishVersionId": "c28cf102-ade9-4e20-b09f-8f9695bf39c9",
+        "totalVoters": 138176.0
+      },
+      "jurisdiction": {
+        "id": "01000000-f977-1a83-f3fc-08ddd6a09cc3",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Yakima County"
+          }
+        ],
+        "shortName": "yakima-county-wa"
+      }
+    }
+  ],
+  "state_election": {
+    "asOf": "2026-11-05T04:01:31.3211464Z",
+    "ballotsCast": 0.0,
+    "electionDate": "2026-11-03",
+    "groupReportingStatus": [],
+    "id": "01000000-a578-3971-654b-08defdf81b1d",
+    "includePrecinctResults": false,
+    "isOfficialResults": false,
+    "isPrimary": false,
+    "isProduction": true,
+    "jurisdictionId": "01000000-f977-1a83-1ed4-08ddd69e9e69",
+    "lastUpdated": "2026-11-05T03:57:41.6823065Z",
+    "name": [
+      {
+        "languageId": "en",
+        "text": "2026 General"
+      }
+    ],
+    "precinctReportingStatus": null,
+    "precinctsReporting": null,
+    "publishDate": "2026-11-05T04:07:12.8391684Z",
+    "publishVersionId": "7a4264f2-cbf7-4322-baf2-c0d54bfada57",
+    "totalVoters": 5170951.0
+  },
+  "state_jurisdiction": {
+    "childLocalities": [
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-B33E-08DDD6A09CA6",
+        "mapFeatureId": "ADAMS",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Adams County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "adams-county-wa",
+        "turnoutPercent": 0.3178583
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-8B66-08DDD6A09CA8",
+        "mapFeatureId": "ASOTIN",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Asotin County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "asotin-county-wa",
+        "turnoutPercent": 0.5223562
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-4559-08DDD6A09CA9",
+        "mapFeatureId": "BENTON",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Benton County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "benton-county-wa",
+        "turnoutPercent": 0.2723678
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-F99E-08DDD6A09CA9",
+        "mapFeatureId": "CHELAN",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Chelan County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "chelan-county-wa",
+        "turnoutPercent": 0.5209481
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-AD30-08DDD6A09CAA",
+        "mapFeatureId": "CLALLAM",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Clallam County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "clallam-county-wa",
+        "turnoutPercent": 0.3357933
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-56B4-08DDD6A09CAB",
+        "mapFeatureId": "CLARK",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Clark County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "clark-county-wa",
+        "turnoutPercent": 0.5187036
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-0277-08DDD6A09CAC",
+        "mapFeatureId": "COLUMBIA",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Columbia County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "columbia-county-wa",
+        "turnoutPercent": 0.6624416
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-AC95-08DDD6A09CAC",
+        "mapFeatureId": "COWLITZ",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Cowlitz County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "cowlitz-county-wa",
+        "turnoutPercent": 0.5355666
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-5BF7-08DDD6A09CAD",
+        "mapFeatureId": "DOUGLAS",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Douglas County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "douglas-county-wa",
+        "turnoutPercent": 0.472119
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-0502-08DDD6A09CAE",
+        "mapFeatureId": "FERRY",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Ferry County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "ferry-county-wa",
+        "turnoutPercent": 0.4602911
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-B165-08DDD6A09CAE",
+        "mapFeatureId": "FRANKLIN",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Franklin County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "franklin-county-wa",
+        "turnoutPercent": 0.4016806
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-5B77-08DDD6A09CAF",
+        "mapFeatureId": "GARFIELD",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Garfield County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "garfield-county-wa",
+        "turnoutPercent": 0.7702304
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-0A73-08DDD6A09CB0",
+        "mapFeatureId": "GRANT",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Grant County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "grant-county-wa",
+        "turnoutPercent": 0.2914675
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-B7D1-08DDD6A09CB0",
+        "mapFeatureId": "GRAYS HARBOR",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Grays Harbor County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "grays-harbor-county-wa",
+        "turnoutPercent": 0.3616638
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-6425-08DDD6A09CB1",
+        "mapFeatureId": "ISLAND",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Island County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "island-county-wa",
+        "turnoutPercent": 0.4896492
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-1D0E-08DDD6A09CB2",
+        "mapFeatureId": "JEFFERSON",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Jefferson County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "jefferson-county-wa",
+        "turnoutPercent": 0.5780793
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-D40F-08DDD6A09CB2",
+        "mapFeatureId": "KING",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "King County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "king-county-wa",
+        "turnoutPercent": 0.4116634
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-8682-08DDD6A09CB3",
+        "mapFeatureId": "KITSAP",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Kitsap County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "kitsap-county-wa",
+        "turnoutPercent": 0.4772818
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-38AD-08DDD6A09CB4",
+        "mapFeatureId": "KITTITAS",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Kittitas County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "kittitas-county-wa",
+        "turnoutPercent": 0.4516951
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-EDDF-08DDD6A09CB4",
+        "mapFeatureId": "KLICKITAT",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Klickitat County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "klickitat-county-wa",
+        "turnoutPercent": 0.4779982
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-A581-08DDD6A09CB5",
+        "mapFeatureId": "LEWIS",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Lewis County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "lewis-county-wa",
+        "turnoutPercent": 0.6135666
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-5C13-08DDD6A09CB6",
+        "mapFeatureId": "LINCOLN",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Lincoln County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "lincoln-county-wa",
+        "turnoutPercent": 0.4579879
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-420F-08DDD6A09CB7",
+        "mapFeatureId": "MASON",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Mason County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "mason-county-wa",
+        "turnoutPercent": 0.3745273
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-6C66-08DDD6A09CB8",
+        "mapFeatureId": "OKANOGAN",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Okanogan County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "okanogan-county-wa",
+        "turnoutPercent": 0.5293019
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-37CD-08DDD6A09CB9",
+        "mapFeatureId": "PACIFIC",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Pacific County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "pacific-county-wa",
+        "turnoutPercent": 0.5492818
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-0A9A-08DDD6A09CBA",
+        "mapFeatureId": "PEND OREILLE",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Pend Oreille County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "pend-oreille-county-wa",
+        "turnoutPercent": 0.6280241
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-F161-08DDD6A09CBA",
+        "mapFeatureId": "PIERCE",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Pierce County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "pierce-county-wa",
+        "turnoutPercent": 0.4754982
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-B520-08DDD6A09CBB",
+        "mapFeatureId": "SAN JUAN",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "San Juan County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "san-juan-county-wa",
+        "turnoutPercent": 0.5632267
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-8590-08DDD6A09CBC",
+        "mapFeatureId": "SKAGIT",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Skagit County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "skagit-county-wa",
+        "turnoutPercent": 0.389969
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-6920-08DDD6A09CBD",
+        "mapFeatureId": "SKAMANIA",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Skamania County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "skamania-county-wa",
+        "turnoutPercent": 0.6593347
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-262F-08DDD6A09CBE",
+        "mapFeatureId": "SNOHOMISH",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Snohomish County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "snohomish-county-wa",
+        "turnoutPercent": 0.45823
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-F298-08DDD6A09CBE",
+        "mapFeatureId": "SPOKANE",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Spokane County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "spokane-county-wa",
+        "turnoutPercent": 0.4156209
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-AE0A-08DDD6A09CBF",
+        "mapFeatureId": "STEVENS",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Stevens County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "stevens-county-wa",
+        "turnoutPercent": 0.2101822
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-605B-08DDD6A09CC0",
+        "mapFeatureId": "THURSTON",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Thurston County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "thurston-county-wa",
+        "turnoutPercent": 0.3670885
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-0CBD-08DDD6A09CC1",
+        "mapFeatureId": "WAHKIAKUM",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Wahkiakum County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "wahkiakum-county-wa",
+        "turnoutPercent": 0.6587003
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-B406-08DDD6A09CC1",
+        "mapFeatureId": "WALLA WALLA",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Walla Walla County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "walla-walla-county-wa",
+        "turnoutPercent": 0.2091064
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-5D8A-08DDD6A09CC2",
+        "mapFeatureId": "WHATCOM",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Whatcom County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "whatcom-county-wa",
+        "turnoutPercent": 0.6238103
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-0A29-08DDD6A09CC3",
+        "mapFeatureId": "WHITMAN",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Whitman County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "whitman-county-wa",
+        "turnoutPercent": 0.3474741
+      },
+      {
+        "hasCountGroupStatus": false,
+        "hasPrecinctStatus": false,
+        "id": "01000000-F977-1A83-F3FC-08DDD6A09CC3",
+        "mapFeatureId": "YAKIMA",
+        "name": [
+          {
+            "languageId": "en",
+            "text": "Yakima County"
+          }
+        ],
+        "percentReporting": null,
+        "precinctsReporting": null,
+        "shortName": "yakima-county-wa",
+        "turnoutPercent": 0.3355648
+      }
+    ],
+    "id": "01000000-f977-1a83-1ed4-08ddd69e9e69",
+    "name": [
+      {
+        "languageId": "en",
+        "text": "Washington"
+      }
+    ],
+    "shortName": "washington"
+  },
+  "state_locality_elections": [
+    {
+      "asOf": "2026-11-05T04:01:29.8533525Z",
+      "ballotsCast": 2814.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-9710-eb1f-ec83-08df1022cfb4",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-b33e-08ddd6a09ca6",
+      "lastUpdated": "2026-11-04T04:22:16.6392716Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 8853.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:29.8845764Z",
+      "ballotsCast": 7839.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-4a83-0b96-1af4-08df03ba903e",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-8b66-08ddd6a09ca8",
+      "lastUpdated": "2026-11-04T04:13:04.5238857Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 15007.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:29.9147874Z",
+      "ballotsCast": 38025.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-4cdd-c837-9787-08df24a83c72",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-4559-08ddd6a09ca9",
+      "lastUpdated": "2026-11-04T04:11:22.6968279Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 139609.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:29.9459603Z",
+      "ballotsCast": 28748.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-7ecd-a5e6-daff-08df0944e228",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-f99e-08ddd6a09ca9",
+      "lastUpdated": "2026-11-05T00:37:37.1821175Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 55184.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:29.9741967Z",
+      "ballotsCast": 20248.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-463e-5eac-88e7-08df0f5c0545",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-ad30-08ddd6a09caa",
+      "lastUpdated": "2026-11-05T00:29:25.4238298Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 60299.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.0026358Z",
+      "ballotsCast": 188389.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-a025-9452-91c9-08df08491e99",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-56b4-08ddd6a09cab",
+      "lastUpdated": "2026-11-05T01:13:32.4916081Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 363192.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.0394786Z",
+      "ballotsCast": 1986.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-427a-c8f0-ce28-08df0ec655e3",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-0277-08ddd6a09cac",
+      "lastUpdated": "2026-11-04T22:54:42.3294262Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 2998.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.0773606Z",
+      "ballotsCast": 42208.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-5379-b336-f6e8-08df14416746",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-ac95-08ddd6a09cac",
+      "lastUpdated": "2026-11-05T01:38:57.2851772Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 78810.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.1126803Z",
+      "ballotsCast": 13589.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-d777-e79a-a734-08df1837bd0f",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-5bf7-08ddd6a09cad",
+      "lastUpdated": "2026-11-05T01:20:50.7423985Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 28783.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.1441666Z",
+      "ballotsCast": 2498.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-2abd-43be-7bcb-08df12a91b3b",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-0502-08ddd6a09cae",
+      "lastUpdated": "2026-11-04T04:20:41.7578579Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 5427.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.1790198Z",
+      "ballotsCast": 20268.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-52be-fe8b-817b-08df1f3196fb",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-b165-08ddd6a09cae",
+      "lastUpdated": "2026-11-05T03:57:39.9799245Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 50458.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.2080193Z",
+      "ballotsCast": 1304.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-a35f-1c4a-eb4a-08df046bcc78",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-5b77-08ddd6a09caf",
+      "lastUpdated": "2026-11-04T23:00:23.0878879Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 1693.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.2342793Z",
+      "ballotsCast": 15488.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-427a-c8f0-00f4-08df0eab3b0a",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-0a73-08ddd6a09cb0",
+      "lastUpdated": "2026-11-05T01:47:05.2016218Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 53138.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.2606647Z",
+      "ballotsCast": 19068.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-869c-a752-72f5-08df2ef6a48c",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-b7d1-08ddd6a09cb0",
+      "lastUpdated": "2026-11-04T04:24:51.9927002Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 52723.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.2890591Z",
+      "ballotsCast": 32357.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-25d6-d6d0-12d5-08df104003ef",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-6425-08ddd6a09cb1",
+      "lastUpdated": "2026-11-05T00:50:40.5731268Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 66082.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.3193467Z",
+      "ballotsCast": 16788.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-ad1b-4012-59d8-08df0abcabf8",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-1d0e-08ddd6a09cb2",
+      "lastUpdated": "2026-11-04T04:29:12.8616361Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 29041.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.3980545Z",
+      "ballotsCast": 601199.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-3a7f-6232-5ca2-08df23219415",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-d40f-08ddd6a09cb2",
+      "lastUpdated": "2026-11-05T00:34:25.1010854Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 1460414.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.5409902Z",
+      "ballotsCast": 97481.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-2abd-43be-3e6b-08df12a97d6e",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-8682-08ddd6a09cb3",
+      "lastUpdated": "2026-11-04T23:34:36.439083Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 204242.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.5843196Z",
+      "ballotsCast": 14709.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-4cae-e852-78fc-08df12b22b08",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-38ad-08ddd6a09cb4",
+      "lastUpdated": "2026-11-04T04:06:32.2144133Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 32564.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.615591Z",
+      "ballotsCast": 8071.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-81eb-b7fd-3f4b-08df078e252d",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-eddf-08ddd6a09cb4",
+      "lastUpdated": "2026-11-05T01:19:53.8560563Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 16885.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.6488732Z",
+      "ballotsCast": 36814.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-ad1b-4012-7996-08df0ac5a5fb",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-a581-08ddd6a09cb5",
+      "lastUpdated": "2026-11-05T00:41:35.6128079Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 60000.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.696609Z",
+      "ballotsCast": 4088.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-ae04-19a1-5676-08df0df8c113",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-5c13-08ddd6a09cb6",
+      "lastUpdated": "2026-11-04T04:11:01.570627Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 8926.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.7742528Z",
+      "ballotsCast": 18223.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-71c5-d490-677b-08df1046df43",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-420f-08ddd6a09cb7",
+      "lastUpdated": "2026-11-05T01:42:07.3259957Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 48656.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.8027991Z",
+      "ballotsCast": 14460.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-5379-b336-6c43-08df14415b53",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-6c66-08ddd6a09cb8",
+      "lastUpdated": "2026-11-05T00:11:24.5926035Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 27319.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.829548Z",
+      "ballotsCast": 9942.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-915c-c900-0f8f-08df14e9c128",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-37cd-08ddd6a09cb9",
+      "lastUpdated": "2026-11-04T04:20:16.0784838Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 18100.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.8732056Z",
+      "ballotsCast": 6983.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-9088-43cd-2cfa-08df0de0e560",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-0a9a-08ddd6a09cba",
+      "lastUpdated": "2026-11-05T01:48:44.2310425Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 11119.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.9121337Z",
+      "ballotsCast": 286103.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-5379-b336-8f4f-08df143a05fe",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-f161-08ddd6a09cba",
+      "lastUpdated": "2026-11-05T01:00:18.7399654Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 601691.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.9502072Z",
+      "ballotsCast": 8574.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-53b4-f248-b537-08df0857b73c",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-b520-08ddd6a09cbb",
+      "lastUpdated": "2026-11-04T04:05:28.9727642Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 15223.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:30.9801358Z",
+      "ballotsCast": 35984.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-86f9-4b07-5988-08df12988f8f",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-8590-08ddd6a09cbc",
+      "lastUpdated": "2026-11-05T00:29:33.1853651Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 92274.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.0116924Z",
+      "ballotsCast": 6085.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-cf60-de85-b61e-08df1f45b36c",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-6920-08ddd6a09cbd",
+      "lastUpdated": "2026-11-05T00:20:24.9878512Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 9229.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.0543182Z",
+      "ballotsCast": 251385.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-b51d-f53b-72f7-08df134d53d5",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-262f-08ddd6a09cbe",
+      "lastUpdated": "2026-11-05T00:34:00.5299721Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 548600.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.1083694Z",
+      "ballotsCast": 156416.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-2abd-43be-2c6b-08df12b28768",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-f298-08ddd6a09cbe",
+      "lastUpdated": "2026-11-05T01:20:03.5718318Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 376343.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.14436Z",
+      "ballotsCast": 7716.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-a656-cc72-f016-08df12a608f7",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-ae0a-08ddd6a09cbf",
+      "lastUpdated": "2026-11-04T04:36:49.1262075Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 36711.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.1706449Z",
+      "ballotsCast": 78902.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-245d-eb24-19f2-08df09123dd1",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-605b-08ddd6a09cc0",
+      "lastUpdated": "2026-11-05T01:51:51.1174643Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 214940.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.2005987Z",
+      "ballotsCast": 2453.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-abe6-37e4-c2bd-08df127793a4",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-0cbd-08ddd6a09cc1",
+      "lastUpdated": "2026-11-04T05:12:30.4938409Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 3724.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.2252679Z",
+      "ballotsCast": 8216.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-2abd-43be-4770-08df128a22ac",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-b406-08ddd6a09cc1",
+      "lastUpdated": "2026-11-04T04:24:48.268032Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 39291.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.2560348Z",
+      "ballotsCast": 106374.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-d961-523e-169a-08df140634ff",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-5d8a-08ddd6a09cc2",
+      "lastUpdated": "2026-11-05T00:14:04.3829111Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 170523.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.2838815Z",
+      "ballotsCast": 8584.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-915c-c900-664e-08df141ffe94",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-0a29-08ddd6a09cc3",
+      "lastUpdated": "2026-11-05T01:15:49.0576385Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 24704.0
+    },
+    {
+      "asOf": "2026-11-05T04:01:31.3119657Z",
+      "ballotsCast": 46367.0,
+      "electionDate": "2026-11-03",
+      "groupReportingStatus": null,
+      "id": "01000000-bead-f0e1-9abc-08df0eb86b80",
+      "includePrecinctResults": false,
+      "isOfficialResults": false,
+      "isPrimary": false,
+      "isProduction": true,
+      "jurisdictionId": "01000000-f977-1a83-f3fc-08ddd6a09cc3",
+      "lastUpdated": "2026-11-04T23:33:39.9654137Z",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "2026 General"
+        }
+      ],
+      "precinctReportingStatus": [],
+      "precinctsReporting": null,
+      "publishDate": null,
+      "publishVersionId": null,
+      "totalVoters": 138176.0
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "native-registration-demographic-stocks-frame-v1",
+  "version": "20261109-01",
+  "release_id": 438791395,
+  "release_tag": "participation-state-controls-20261108-19",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-analysis.zip",
+      "bytes": 103538706,
+      "sha256": "bb13c57bba29b96329af131ef490b5043cc376297a659027f84be5580a4598f9",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426693",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-conditional-registered-scenarios.csv",
+      "bytes": 22409,
+      "sha256": "c0c00828158ffea0974be8e280a9077fb25340a47c41ec066e11f6dfaa32f9cf",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426695",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-native-control-dispositions.csv",
+      "bytes": 31598,
+      "sha256": "c289492e052b51dae8173e15510a024e8e23f8c4605bd8ad13ca060870bf8121",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426699",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-registration-marginals.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-native-registration-marginals.csv",
+      "bytes": 483660,
+      "sha256": "4033df5bca378c9f8aa54d6693c6470a60d9147d4bfbcde6d3b31c1210f91b8e",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426724",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-workbook-cells.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-native-workbook-cells.csv",
+      "bytes": 461928,
+      "sha256": "c73257af25890d60df9b0d282939a57ed93abf9ff2c35442078d2572857cd757",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426696",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-south-carolina-registration-frame.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-south-carolina-registration-frame.csv",
+      "bytes": 642,
+      "sha256": "d95086f189e4cb7dffb69b16b7ce6661df7dd585617b12f8c27566d889bdf602",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426726",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/complete-state-control-query.csv",
+      "bytes": 23892,
+      "sha256": "fb79d68eb827ed29d10ca3fa2a8b7a055ec36884236ef2eb910d716c7876acb5",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426692",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "native-accounting-diagnostics.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/native-accounting-diagnostics.json",
+      "bytes": 723853,
+      "sha256": "f608823cc2ca11cd47b37d813f35680f1418a5ea74de97eeb799bc435b8b5661",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426725",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/source-qualification.json",
+      "bytes": 2154,
+      "sha256": "2856fbedf202621d0292c850eaac8407826843b7114f5e6a873f00f946c4f7f1",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426727",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-19/summary.json",
+      "bytes": 561,
+      "sha256": "4151f65858cef77c479129d0d4107d44cf42adfefda5471349a97adf6aa0a40e",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726426744",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_state_query_rows": 51,
+  "source_control_records": 36,
+  "conditional_scenarios": 25,
+  "declared_report_label": "2026-11-02",
+  "embedded_registration_cutoff": null,
+  "native_report_clock": null,
+  "native_registered_total_parent": 3470220,
+  "native_workbook_cells": 14121,
+  "native_accounting_slots": 6768,
+  "missing_count_cells_preserved_not_zero": 945,
+  "native_group_registration_not_participation": true,
+  "cps_civic_demographic_equivalence_and_population_transport_qualified": false,
+  "previous_fifty_state_rows_twenty_four_scenarios_and_thirty_five_controls_preserved": true,
+  "successful_original_and_independent_snapshot_reused": true
+}

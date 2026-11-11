@@ -1,0 +1,73 @@
+{
+  "contract": "participation.cps_2002_point_selection_acceptance.v1",
+  "expected_unchanged_catalog": "a1e3cb15040aa38d35b52435f407e721f5c5055e",
+  "fresh_reproductions": [
+    {
+      "all_full_result_query_bytes_identical": true,
+      "independent": {
+        "checks": 24438,
+        "complete_midterm_snapshot_decisions": 104,
+        "complete_native_rows": 832,
+        "conflicting_pennsylvania_totals_preserved": 3,
+        "frontend_activation": false,
+        "native_defects_preserved": 6,
+        "native_metric_cells": 8320,
+        "new_intervals": 0,
+        "selected_reported_point_rows": 693,
+        "status": "passed_independent_cps_2002_point_selection",
+        "suppressed_or_missing_rows_preserved": 131,
+        "workbook_precision_mapping_qualified": false
+      },
+      "network_and_external_commands_blocked": true,
+      "previous_native_reductions_repeated": false,
+      "source_commit": "fe8933c4318d4b104aac50084d3afd9f4f240a87",
+      "status": "passed_fresh_offline_cps_2002_point_selection",
+      "tests_passed": 10,
+      "whole_predecessor_packet_included": true
+    },
+    {
+      "all_full_result_query_bytes_identical": true,
+      "independent": {
+        "checks": 24438,
+        "complete_midterm_snapshot_decisions": 104,
+        "complete_native_rows": 832,
+        "conflicting_pennsylvania_totals_preserved": 3,
+        "frontend_activation": false,
+        "native_defects_preserved": 6,
+        "native_metric_cells": 8320,
+        "new_intervals": 0,
+        "selected_reported_point_rows": 693,
+        "status": "passed_independent_cps_2002_point_selection",
+        "suppressed_or_missing_rows_preserved": 131,
+        "workbook_precision_mapping_qualified": false
+      },
+      "network_and_external_commands_blocked": true,
+      "previous_native_reductions_repeated": false,
+      "source_commit": "fe8933c4318d4b104aac50084d3afd9f4f240a87",
+      "status": "passed_fresh_offline_cps_2002_point_selection",
+      "tests_passed": 10,
+      "whole_predecessor_packet_included": true
+    }
+  ],
+  "independent": {
+    "checks": 24438,
+    "complete_midterm_snapshot_decisions": 104,
+    "complete_native_rows": 832,
+    "conflicting_pennsylvania_totals_preserved": 3,
+    "frontend_activation": false,
+    "native_defects_preserved": 6,
+    "native_metric_cells": 8320,
+    "new_intervals": 0,
+    "selected_reported_point_rows": 693,
+    "status": "passed_independent_cps_2002_point_selection",
+    "suppressed_or_missing_rows_preserved": 131,
+    "workbook_precision_mapping_qualified": false
+  },
+  "report_points_only": true,
+  "source_defects_repaired": false,
+  "source_precision_mapping_qualified": false,
+  "statewide_demographic_allocation": false,
+  "suppressed_rates_reconstructed": false,
+  "website_baseline_unchanged": "78df729b3139633f42936f7d1a64eada1c40f2bf",
+  "website_builds": 0
+}

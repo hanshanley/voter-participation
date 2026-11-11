@@ -1,0 +1,178 @@
+{
+  "actual_eligible_population": null,
+  "actual_staying_home": null,
+  "archive_members": 17,
+  "astro_errors": 0,
+  "astro_warnings": 0,
+  "broader_project_complete": false,
+  "complete_query_download": true,
+  "confidence_intervals": null,
+  "eligibility_deaths_migration": null,
+  "existing_counts_geometry_resident_and_original_scenario_datasets_changed": false,
+  "fitted_not_independently_validated_histories": true,
+  "fresh_offline_reproductions": [
+    {
+      "all_six_full_output_bytes_identical": true,
+      "complete_fits": 801,
+      "independent": {
+        "all_24_permutation_Shapley_decompositions_checked": true,
+        "all_native_counts_and_both_margins_preserved": true,
+        "calibrated_comparisons": 89,
+        "calibration_not_independent_behavioral_validation": true,
+        "checks": 119478,
+        "complete_decisions": 113,
+        "complete_fits": 801,
+        "no_residual_effect_inserted": true,
+        "status": "passed_independent_all_state_return_constraints",
+        "unavailable": 24
+      },
+      "network_and_external_commands_blocked": true,
+      "original_source_reductions_repeated": false,
+      "status": "passed_offline_return_constrained_queries",
+      "tests_passed": 5
+    },
+    {
+      "all_six_full_output_bytes_identical": true,
+      "complete_fits": 801,
+      "independent": {
+        "all_24_permutation_Shapley_decompositions_checked": true,
+        "all_native_counts_and_both_margins_preserved": true,
+        "calibrated_comparisons": 89,
+        "calibration_not_independent_behavioral_validation": true,
+        "checks": 119478,
+        "complete_decisions": 113,
+        "complete_fits": 801,
+        "no_residual_effect_inserted": true,
+        "status": "passed_independent_all_state_return_constraints",
+        "unavailable": 24
+      },
+      "network_and_external_commands_blocked": true,
+      "original_source_reductions_repeated": false,
+      "status": "passed_offline_return_constrained_queries",
+      "tests_passed": 5
+    }
+  ],
+  "full_build_passed": true,
+  "governor_other_counts_observed": false,
+  "immutable_science_release": 442171871,
+  "independent": {
+    "all_24_permutation_Shapley_decompositions_checked": true,
+    "all_native_counts_and_both_margins_preserved": true,
+    "calibrated_comparisons": 89,
+    "calibration_not_independent_behavioral_validation": true,
+    "checks": 119478,
+    "complete_decisions": 113,
+    "complete_fits": 801,
+    "no_residual_effect_inserted": true,
+    "status": "passed_independent_all_state_return_constraints",
+    "unavailable": 24
+  },
+  "local_browser": {
+    "base_url": "http://127.0.0.1:7213",
+    "cases": [
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 50,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "house",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 390
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 35,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "senate",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 390
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 28,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "governor",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 390
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 50,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "house",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 1440
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 35,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "senate",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 1440
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 28,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "governor",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 1440
+      }
+    ],
+    "fit_not_independent_behavioral_validation": true,
+    "status": "passed_all_state_office_return_constrained_maps",
+    "valid_data_overrides": false
+  },
+  "mathematical_tests_passed": 5,
+  "package": {
+    "bytes": 14943668,
+    "sha256": "2377ea253d33b88af3146bad4e2a52c9936d97b178c00a4fa0e3be022aadeae1"
+  },
+  "preexisting_astro_hints": 8,
+  "prepared_payload_bytes": 986996127,
+  "prepared_tar_bytes": 989542400,
+  "private_joint_cells_reconstructed": false,
+  "production_live_verified": false,
+  "reader_tests_passed": 18,
+  "scientific_source_commit": "07fee19a4e4130cf3603635e90af36faa0c26a0d",
+  "state_model_allocated_locally": false,
+  "status": "passed_numerical_and_local_atlas_model_acceptance_not_live_production",
+  "summary": {
+    "complete_fits": 801,
+    "fitted": 89,
+    "total_decisions": 113,
+    "unavailable": 24
+  },
+  "unchanged_full_downloads": 436,
+  "website_commit": "442287da1524ccf8397d536861918e0ff5bb75b7"
+}

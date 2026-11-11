@@ -1,0 +1,130 @@
+{
+  "schema": "mississippi-multiyear-register-conditional-frames-v1",
+  "version": "20261109-01",
+  "release_id": 439058337,
+  "release_tag": "participation-mississippi-register-history-20261109-01",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-analysis.zip",
+      "bytes": 1706238,
+      "sha256": "5c4c69a370715d8e758ede707da7cb1bfc374b8de8173bb394715acbc772c17e",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266699",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-participation-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-conditional-participation-scenarios.csv",
+      "bytes": 1805,
+      "sha256": "f29ba29f12c5ccb030cfac9e75cbe3a26aca668766eca2c85a26b030228f4d8f",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266726",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-county-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-native-county-query.csv",
+      "bytes": 49713,
+      "sha256": "c70a456843f37425790d45c7be342b4fc21222fca63e4de5edfe4fa82483c8ac",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266703",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-percent-diagnostics.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-native-percent-diagnostics.csv",
+      "bytes": 53606,
+      "sha256": "bf91532ac8954bce3c137202e84366624398cb49f729524bd19b6c9faeb99d06",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266698",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-participation-scenario-decisions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-participation-scenario-decisions.csv",
+      "bytes": 1298,
+      "sha256": "28b7cb75a580842417662ca1c2b352bcde2582065c144d6760ab35263b867b86",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266724",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-registration-stock-comparisons.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-registration-stock-comparisons.csv",
+      "bytes": 933,
+      "sha256": "6c4181201a148bd7672a66f0a4049e0831ff2fa29b3ff2cba3fb910196b0e836",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266700",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-scenario-comparison-decisions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-scenario-comparison-decisions.csv",
+      "bytes": 394,
+      "sha256": "9b83c193e6b6ff085dba457795258bf23aed43edf8bf27ebffeeec2c19611406",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266733",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-registration-frames.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-state-registration-frames.csv",
+      "bytes": 944,
+      "sha256": "a276457b60bb51bc6d061256b6960586759f6c76d8e5ddc8ba0fa54e93e97cdb",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266702",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/source-qualification.json",
+      "bytes": 1410,
+      "sha256": "5437545d4471fd54f5ebdbc38c86f96dd9be8453fa7ef309eb50919f219b6033",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266727",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/summary.json",
+      "bytes": 549,
+      "sha256": "4e98b9c3b9094943bb44403fc8180d69cd1b24dc9a767461d7aef96bce966bfc",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/727266735",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "years": [
+    2022,
+    2024,
+    2026
+  ],
+  "native_county_rows": 246,
+  "native_factual_cells": 984,
+  "native_count_cells": 492,
+  "native_percentage_cells": 246,
+  "derived_registration_stocks": {
+    "2022": 1926538,
+    "2024": 1965611,
+    "2026": 1888362
+  },
+  "printed_statewide_totals": null,
+  "registration_stock_comparisons": 3,
+  "complete_source_year_decisions": 9,
+  "new_CPS_conditional_scenarios": 2,
+  "reused_Civic_2026_scenarios": 1,
+  "held_model_comparisons": 3,
+  "native_percentage_rounding_disagreements": 0,
+  "source_percentages_over100_preserved": 8,
+  "CPS_rounded_marginal_ratio_not_an_individual_registered_joint": true,
+  "CPS_complement_not_identified_reported_nonvoters_or_unknown": true,
+  "registration_frame_transport_validated": false,
+  "survey_measurements_harmonized": false,
+  "no_turnout_retention_demographic_change_legal_certification_or_local_group_allocation": true,
+  "prior_2026_originals_reductions_model_queries_reused_unchanged": true,
+  "current_native27_all51_decisions_51_dispositions_33_scenarios_unchanged": true,
+  "earlier_models_releases_stopped403_routes_and_website_unchanged": true,
+  "research_downloads_only_no_new_website_view": true
+}

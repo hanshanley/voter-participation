@@ -1,0 +1,85 @@
+{
+  "schema": "dated-native-active-registration-frame-v1",
+  "version": "20261108-01",
+  "release_id": 438732665,
+  "release_tag": "participation-state-controls-20261108-14",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-analysis.zip",
+      "bytes": 102374460,
+      "sha256": "96c223b86f535d11c73d2134e3788a3451d820aef1003bef1e918af8c3f9e4f7",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-conditional-registered-scenarios.csv",
+      "bytes": 16247,
+      "sha256": "362e2313c661266cf8fe50a4acfd45799427aec9a31adb51992ffd1b29216810",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-connecticut-dated-active-frame.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-connecticut-dated-active-frame.csv",
+      "bytes": 563,
+      "sha256": "68d00e6912365a77f5429438cf550349d757723c5f73e3a5c787442c27e5a66d",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-connecticut-native-minor-party-legend.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-connecticut-native-minor-party-legend.csv",
+      "bytes": 205,
+      "sha256": "60d7597cfff7debedf58faa3d83fb1af195c61d0b937d427dc13f308142be9b8",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-connecticut-native-registration-accounting.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-connecticut-native-registration-accounting.csv",
+      "bytes": 17082,
+      "sha256": "119cca18b14dcd07202d849e7d6d2fe8e63c65d8ab2993449d6d6729a8c8deff",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-native-control-dispositions.csv",
+      "bytes": 24591,
+      "sha256": "9c951e3bf46296cdb26bc204f4d0535caadd931f0595f14088ac9e5dde45d243",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/complete-state-control-query.csv",
+      "bytes": 21352,
+      "sha256": "ffe27bc2a60652ac88a2ceba10314babbd89b3daed089b64cfa23e6da672d54b",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/source-qualification.json",
+      "bytes": 4730,
+      "sha256": "8f75cd30dfc06e87494ebeb171c278aa0d41b66e87d904a75a7317eb582ed90e",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-14/summary.json",
+      "bytes": 615,
+      "sha256": "6e97a643a3c6721532804c27b0357153d1d38393a4731a19b7a2ed32873ebd75",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_state_query_rows": 51,
+  "source_control_records": 30,
+  "conditional_scenarios": 19,
+  "dated_active_registration_frame_added": 1,
+  "native_statewide_ballot_controls_added": 0,
+  "source_date": "2026-10-19",
+  "election_time_denominator_qualified": false,
+  "all_2550_count_cells_169_towns_and_state_parent_preserved": true,
+  "separate_partial_results_and_13_zero_EV_14_zero_VV_towns_not_repaired": true,
+  "previous_fifty_state_rows_eighteen_scenarios_and_twenty_nine_controls_preserved": true,
+  "registration_snapshot_does_not_replace_results_denominator": true,
+  "party_votes_not_inferred": true,
+  "native_pdf_refresh_distinct_from_standard_library_frozen_input_reproduction": true
+}

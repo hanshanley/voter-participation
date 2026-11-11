@@ -1,0 +1,235 @@
+{
+  "benchmark_decisions": 51,
+  "benchmark_states": 39,
+  "current_voter_tables": 55,
+  "decision": "retain_accepted_global_baseline_no_ui_promotion",
+  "existing_website_baseline": "78df729b3139633f42936f7d1a64eada1c40f2bf",
+  "feature_and_factor_coverage": {
+    "census_region": {
+      "age": {
+        "adaptive_state_predictions": 21,
+        "changed_factor_state_predictions": 0,
+        "dispositions": {
+          "adaptive_grid_prediction": 21,
+          "held_missing_or_suppressed_feature_global_fallback": 18
+        }
+      },
+      "age_rurality": {
+        "adaptive_state_predictions": 6,
+        "changed_factor_state_predictions": 1,
+        "dispositions": {
+          "adaptive_grid_prediction": 6,
+          "held_insufficient_feature_training_states": 16,
+          "held_missing_or_suppressed_feature_global_fallback": 17
+        }
+      },
+      "global": {
+        "adaptive_state_predictions": 0,
+        "changed_factor_state_predictions": 0,
+        "dispositions": {
+          "global": 39
+        }
+      },
+      "nonvoter": {
+        "adaptive_state_predictions": 39,
+        "changed_factor_state_predictions": 8,
+        "dispositions": {
+          "adaptive_grid_prediction": 39
+        }
+      },
+      "rurality": {
+        "adaptive_state_predictions": 20,
+        "changed_factor_state_predictions": 0,
+        "dispositions": {
+          "adaptive_grid_prediction": 20,
+          "held_missing_or_suppressed_feature_global_fallback": 19
+        }
+      }
+    },
+    "state": {
+      "age": {
+        "adaptive_state_predictions": 21,
+        "changed_factor_state_predictions": 0,
+        "dispositions": {
+          "adaptive_grid_prediction": 21,
+          "held_missing_or_suppressed_feature_global_fallback": 18
+        }
+      },
+      "age_rurality": {
+        "adaptive_state_predictions": 14,
+        "changed_factor_state_predictions": 0,
+        "dispositions": {
+          "adaptive_grid_prediction": 14,
+          "held_missing_or_suppressed_feature_global_fallback": 25
+        }
+      },
+      "global": {
+        "adaptive_state_predictions": 0,
+        "changed_factor_state_predictions": 0,
+        "dispositions": {
+          "global": 39
+        }
+      },
+      "nonvoter": {
+        "adaptive_state_predictions": 39,
+        "changed_factor_state_predictions": 1,
+        "dispositions": {
+          "adaptive_grid_prediction": 39
+        }
+      },
+      "rurality": {
+        "adaptive_state_predictions": 20,
+        "changed_factor_state_predictions": 4,
+        "dispositions": {
+          "adaptive_grid_prediction": 20,
+          "held_missing_or_suppressed_feature_global_fallback": 19
+        }
+      }
+    }
+  },
+  "feature_availability_rows": 78,
+  "heldout_predictions": 550,
+  "independent_verification": {
+    "all_cached_analytic_outputs_unchanged": true,
+    "checks": 311478,
+    "heldout_predictions": 550,
+    "outer_folds": 215,
+    "population_transport_validated": false,
+    "same_state_and_region_leakage_rejected": true,
+    "status": "passed_independent_adaptive_persistence_verification",
+    "suppressed_features_not_imputed": true,
+    "unique_fits_checked": 13943
+  },
+  "input_sha256": {
+    "simulation": "c752e881d5ec6ab7a68f7bab1a9a2590b64d9f8b503b97d9362ca5b6ef1c6238",
+    "specification": "cd91cc4f71047923686e775b0bea6d51849257bc2c1a0be61c4e2b0b930f10a6"
+  },
+  "interpretation": "Sparse released features do not improve this blocked source-frame test; no absence-of-demographic-effects, observed-history or precinct-population validation claim.",
+  "metric_definition": "table_mae_pp weights tables equally; state_balanced_mae_pp and tuning MSE give states equal weight",
+  "metrics": {
+    "census_region": {
+      "age": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.3832585258475567,
+        "state_balanced_mse_pp2": 4.036009783842706,
+        "states": 39,
+        "table_mae_pp": 1.3861750152965129,
+        "tables": 55
+      },
+      "age_rurality": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.4074965914171058,
+        "state_balanced_mse_pp2": 4.123203705115257,
+        "states": 39,
+        "table_mae_pp": 1.4033620072458297,
+        "tables": 55
+      },
+      "global": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.3832585258475567,
+        "state_balanced_mse_pp2": 4.036009783842706,
+        "states": 39,
+        "table_mae_pp": 1.3861750152965129,
+        "tables": 55
+      },
+      "nonvoter": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.393061684028089,
+        "state_balanced_mse_pp2": 4.170432793519745,
+        "states": 39,
+        "table_mae_pp": 1.401414717420448,
+        "tables": 55
+      },
+      "rurality": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.3832585258475567,
+        "state_balanced_mse_pp2": 4.036009783842706,
+        "states": 39,
+        "table_mae_pp": 1.3861750152965129,
+        "tables": 55
+      }
+    },
+    "state": {
+      "age": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.3832585258475567,
+        "state_balanced_mse_pp2": 4.036009783842706,
+        "states": 39,
+        "table_mae_pp": 1.3861750152965129,
+        "tables": 55
+      },
+      "age_rurality": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.3832585258475567,
+        "state_balanced_mse_pp2": 4.036009783842706,
+        "states": 39,
+        "table_mae_pp": 1.3861750152965129,
+        "tables": 55
+      },
+      "global": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.3832585258475567,
+        "state_balanced_mse_pp2": 4.036009783842706,
+        "states": 39,
+        "table_mae_pp": 1.3861750152965129,
+        "tables": 55
+      },
+      "nonvoter": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.405467604773582,
+        "state_balanced_mse_pp2": 4.160340122475984,
+        "states": 39,
+        "table_mae_pp": 1.4019232712622398,
+        "tables": 55
+      },
+      "rurality": {
+        "maximum_absolute_error_pp": 8.085027742331226,
+        "state_balanced_mae_pp": 1.3910167336777302,
+        "state_balanced_mse_pp2": 4.044858001082825,
+        "states": 39,
+        "table_mae_pp": 1.4075459635603016,
+        "tables": 55
+      }
+    }
+  },
+  "offline_reproductions": [
+    {
+      "archive_sha256": "c0236d56211032c8f7fdfe6f84d0bb60ea0bafb2d0df2ab16fad3e10d4f03992",
+      "focused_tests": 9,
+      "full_predecessor_members_verified": 20,
+      "full_result_and_all_query_export_bytes_identical": true,
+      "independent_checks": 311478,
+      "network_and_external_commands_blocked": true,
+      "numerical_warnings_fatal": true,
+      "original_entropy_fits_or_seed_draws_repeated": false,
+      "pinned_members": 23,
+      "status": "passed_complete_adaptive_offline_reproduction"
+    },
+    {
+      "archive_sha256": "c0236d56211032c8f7fdfe6f84d0bb60ea0bafb2d0df2ab16fad3e10d4f03992",
+      "focused_tests": 9,
+      "full_predecessor_members_verified": 20,
+      "full_result_and_all_query_export_bytes_identical": true,
+      "independent_checks": 311478,
+      "network_and_external_commands_blocked": true,
+      "numerical_warnings_fatal": true,
+      "original_entropy_fits_or_seed_draws_repeated": false,
+      "pinned_members": 23,
+      "status": "passed_complete_adaptive_offline_reproduction"
+    }
+  ],
+  "outer_folds": 215,
+  "primary_candidate": "age_rurality",
+  "qualifications": {
+    "automatic_ui_promotion": false,
+    "demographic_party_association_identified": false,
+    "entropy_or_seed_reductions_repeated": false,
+    "observed_staying_home": null,
+    "original_model_or_source_counts_changed": false,
+    "population_transport_validated": false,
+    "precinct_or_county_transition_estimates": false,
+    "private_joint_cells_reconstructed": false
+  },
+  "research_source_commit": "d50f98733c5ae81d2c7a71587f683fe514b2b73b",
+  "schema": "participation.adaptive_persistence_observations.v1"
+}

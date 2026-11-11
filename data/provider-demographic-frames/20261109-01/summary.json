@@ -1,0 +1,21 @@
+{
+  "complete_group_query_rows": 511,
+  "complete_scope_decisions": 408,
+  "disposition_counts": {
+    "dimension_not_provided_by_assessed_source": 284,
+    "mode_category_not_provided_by_assessed_source": 60,
+    "provider_capability_not_reported_current_capture": 32,
+    "selected_own_demographic_frame_arithmetic": 32
+  },
+  "mode_parent_query_rows": 102,
+  "no_group_turnout_rate_survey_projection_or_new_website_view": true,
+  "not_reported_capability_states": 4,
+  "reported_capability_states": 47,
+  "same_date_and_arithmetic_parent_match_views": 20,
+  "schema": "provider-demographic-frame-arithmetic-v1",
+  "selected_native_demographic_views": 32,
+  "selected_native_group_counts": 135,
+  "source_demographic_total_differs_from_mode_parent": 12,
+  "source_mode_parents": 79,
+  "supported_source_states": 11
+}

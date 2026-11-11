@@ -1,0 +1,70 @@
+{
+  "schema": "ap-state-demographics-v1",
+  "version": "20261109-01",
+  "release_id": 438827134,
+  "release_tag": "participation-ap-state-demographics-20261109-01",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-demographics-20261109-01/complete-analysis.zip",
+      "bytes": 1044743,
+      "sha256": "22caef437af4e8126bd611a1d3ae0f98d3bc8920d81b7dd0e3e70487029e2372",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726569821",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-demographic-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-demographics-20261109-01/complete-state-demographic-query.csv",
+      "bytes": 3421723,
+      "sha256": "fef9b3f1e2d57274cf6aa3e090e136d183aac3ff9ea7587d2a7efe46897889f9",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726569819",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-demographics-20261109-01/source-qualification.json",
+      "bytes": 737,
+      "sha256": "42f447f82cd6be098353b42025b31e93607953d7dc4ca52d85bc7aef0086a29c",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726569822",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ap-state-demographics-20261109-01/summary.json",
+      "bytes": 995,
+      "sha256": "c22da6cc9650dbff3692682aee01e1b61f34379b4de5c91b246cc9062ac8985d",
+      "anonymous_verification_url": "https://api.github.com/repos/hanshanley/margin_of_error/releases/assets/726569818",
+      "anonymous_verification_accept": "application/octet-stream",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "years": [
+    2018,
+    2020,
+    2022,
+    2024
+  ],
+  "jurisdictions": 51,
+  "complete_query_decisions": 12138,
+  "selected_weight_views": 3590,
+  "nonoverall_weight_views": 3206,
+  "distinct_nonoverall_state_year_group_cells": 1603,
+  "both_weight_stages_are_same_sample": true,
+  "group_view_state_coverage_by_year": {
+    "2018": 45,
+    "2020": 44,
+    "2022": 40,
+    "2024": 46
+  },
+  "all_2114_positive_cell_partitions_and_synchronized_masks_verified": true,
+  "native_registered_survey_frame_not_administrative_turnout": true,
+  "class_case_support_and_design_confidence_intervals_available": false,
+  "no_native_category_harmonization_cps_civic_projection_or_local_allocation": true,
+  "prior_602_row_complete_ap_package_preserved": true,
+  "original_native_reductions_and_132196_checks_reused_not_rerun": true,
+  "research_downloads_only_no_new_website_view": true
+}

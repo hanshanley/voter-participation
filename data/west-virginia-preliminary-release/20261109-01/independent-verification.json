@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "independent_checks": 199,
+  "native_ballots_cast": 463912,
+  "native_registered_parent": 1210385,
+  "conditional_modeled_participant_units": "476060.13457956632245416352565047972996977834735837037353640284127948984950417664",
+  "conditional_modeled_nonparticipant_units": "734324.86542043367754583647434952027003022165264162962646359715872051015049582336",
+  "native_minus_conditional_participant_units": "-12148.13457956632245416352565047972996977834735837037353640284127948984950417664",
+  "publication_date": "2026-11-06",
+  "native_count_and_registration_cutoffs_unknown": true,
+  "preliminary_source_defined_reference_not_certified_or_generic_turnout": true,
+  "all_nine_relevant_native_factual_observations_verified_from_privately_held_original": true,
+  "full_prose_app_code_contacts_session_headers_excluded_complete_permitted_facts_included": true,
+  "quoted_factual_words": 12,
+  "mode_counts_not_added_received_not_relabelled_cast": true,
+  "no_party_votes_population_validation_or_local_survey_allocation": true,
+  "complete_state_query_rows": 51,
+  "source_control_records": 35,
+  "conditional_scenarios": 24,
+  "registration_frames_added": 1,
+  "native_source_defined_ballot_references_added": 1,
+  "generic_cast_ballot_controls_added": 0,
+  "all_50_unaffected_state_rows_twenty_three_prior_frames_and_thirty_four_controls_preserved": true,
+  "unchanged_maintained_washington_shared_helpers_included": true,
+  "focused_tests": 10,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 14,
+  "archive_bytes": 103190172,
+  "archive_sha256": "c615e4533315fe9814d3c89eb6d50507552c8828fad261c86297a0f20a79ebb7"
+}

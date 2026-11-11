@@ -1,0 +1,91 @@
+{
+  "schema": "dated-native-active-registration-frame-v1",
+  "version": "20261108-01",
+  "release_id": 438718321,
+  "release_tag": "participation-state-controls-20261108-13",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-analysis.zip",
+      "bytes": 101997925,
+      "sha256": "b4b940c75cf0879ac2959fa2654202f8afa0d1981ddaf8de23a74933beffcce6",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-conditional-registered-scenarios.csv",
+      "bytes": 15170,
+      "sha256": "5724ce0cab3a00d186679f5eaab23dc073367179a4cca35f40e8894c81e282ae",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-native-control-dispositions.csv",
+      "bytes": 23193,
+      "sha256": "99084d4330121f1c9fadae8c696fb3d707c1892d8a86d99533369505cd987847",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-state-control-query.csv",
+      "bytes": 20830,
+      "sha256": "e871bf426da505e86ecfe96840e1206e7d92393c4c69ae9e77abad0d571fec87",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-utah-dated-active-frame.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-utah-dated-active-frame.csv",
+      "bytes": 563,
+      "sha256": "3ff4fa7076cb8e637e14fc3604b8e17f074989718cd4a737f9e5d7782870c9f6",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-utah-native-county-affiliation-accounting.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-utah-native-county-affiliation-accounting.csv",
+      "bytes": 5306,
+      "sha256": "82e7bbd81c0925249e268610298e3e79a2d69f49b570448365e3aa79d08b5c23",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-utah-native-state-registration-accounting.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-utah-native-state-registration-accounting.csv",
+      "bytes": 326,
+      "sha256": "713707e8e71b95be8a7e46fa4ef6eee55237db6286c270eac70359b5a6c85b6e",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-utah-prior-county-participation.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/complete-utah-prior-county-participation.csv",
+      "bytes": 3944,
+      "sha256": "4a7d98fb346266b36ffc3fd5bbf6565e340ef82fbc9b0009d4487a7e9087a663",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/source-qualification.json",
+      "bytes": 4222,
+      "sha256": "c8d89fcd4ca2b979cd295a40335dd9e558f8642d6d175837ba2af06df780a31d",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-13/summary.json",
+      "bytes": 519,
+      "sha256": "0629bdaa89ac8bab5f80ac884584225c48355f72a24083bb8c0cf143050dadbf",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_state_query_rows": 51,
+  "source_control_records": 29,
+  "conditional_scenarios": 18,
+  "dated_active_registration_frame_added": 1,
+  "native_statewide_ballot_controls_added": 0,
+  "source_date": "2026-11-02",
+  "election_time_denominator_qualified": false,
+  "native_combined_total_discrepancy_not_repaired": true,
+  "previous_fifty_state_rows_seventeen_scenarios_and_twenty_eight_controls_preserved": true,
+  "original_state_county_affiliation_and_county_participation_csv_bytes_preserved": true,
+  "county_report_denominators_not_substituted": true,
+  "party_votes_not_inferred": true
+}

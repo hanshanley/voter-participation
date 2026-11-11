@@ -1,0 +1,82 @@
+{
+  "schema": "derived-complete-county-registration-frame-v1",
+  "version": "20261108-01",
+  "release_id": 438706606,
+  "release_tag": "participation-state-controls-20261108-12",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-analysis.zip",
+      "bytes": 101893785,
+      "sha256": "828409e756b42800f3278a0313268384ceb8b63e56437e19702f2892e8f7a4c8",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-conditional-registered-scenarios.csv",
+      "bytes": 14225,
+      "sha256": "b8a7e19baee6dc70b5aa1c2c7b71a8937f72c56c8f03641ac17a4ef95efe2254",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-native-control-dispositions.csv",
+      "bytes": 22047,
+      "sha256": "8059bde0beeda115b993cedb738278596049f109b47999bebaebfbe741f4937c",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-south-dakota-derived-frame.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-south-dakota-derived-frame.csv",
+      "bytes": 498,
+      "sha256": "61cf51b5c18d00146aff71e77cc766ee608e1806e3e72c3729fcbfc778816a86",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-south-dakota-native-county-parents.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-south-dakota-native-county-parents.csv",
+      "bytes": 8901,
+      "sha256": "6fa12f2b7acd315d2fa9bc9afb4a01eba8bbcb5a462f8dad8e0b33101036a667",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-south-dakota-prior-reporting-units.json.gz",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-south-dakota-prior-reporting-units.json.gz",
+      "bytes": 22848,
+      "sha256": "530c3b4c886e3f594c66b708431e660f6e0ebcc5538a1ead6c0ee36fce668db2",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/complete-state-control-query.csv",
+      "bytes": 20439,
+      "sha256": "5bb0b443843774bf9185352f09553a357713bb17d8efd5f1b25b0ec118bf05ff",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/source-qualification.json",
+      "bytes": 19655,
+      "sha256": "ee5da0e587151ffea2058f5cb02129e1573a925421b35a4b98740b18b556c5e7",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-12/summary.json",
+      "bytes": 461,
+      "sha256": "45ab6cc4c4aeba4854e2ec18b369ab9f4a46a914904954de0dd37dfdfe781d12",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_state_query_rows": 51,
+  "source_control_records": 28,
+  "conditional_scenarios": 17,
+  "derived_complete_county_registration_frame_added": 1,
+  "native_statewide_ballot_controls_added": 0,
+  "explicitly_derived_not_native_statewide_field": true,
+  "previous_fifty_state_rows_sixteen_scenarios_and_twenty_seven_controls_preserved": true,
+  "all_66_county_parents_counted_once_repeated_vote_center_registrations_not_summed": true,
+  "native_CurrentDateTime_not_promoted_to_qualified_update_clock": true,
+  "original_671_unit_gzip_bytes_and_prior_596_available_75_held_rate_decisions_preserved": true
+}

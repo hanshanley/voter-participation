@@ -1,0 +1,267 @@
+{
+  "status": "PASS_complete_immutable_county_science_and_real_data_only_activation",
+  "proof": {
+    "public-release-verification": {
+      "status": "PASS_immutable_county_science_all_nine_complete_assets_verified_anonymously",
+      "release_id": 440794066,
+      "tag": "participation-resident-counties-20261110-01",
+      "source_commit": "01adfc2009779727d799d42d7501a5accb125806",
+      "immutable": true,
+      "assets": {
+        "complete-analysis.zip": {
+          "bytes": 159566534,
+          "sha256": "f1a9c33fbb71c1842d38ddeab98220fc91bd2945459b608f608e05fbddd3cdf1",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/complete-analysis.zip",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        },
+        "county-native-context.json.gz": {
+          "bytes": 5458079,
+          "sha256": "a4f4b4677d306f513f2c117508e000237c49756a3e1b2d770df7af055c1f9a1a",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/county-native-context.json.gz",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        },
+        "independent-native-verification.json": {
+          "bytes": 1926,
+          "sha256": "2567b55deeaa0c870957eeb2775b55476f5429b5eff2c40a8bd83d12b4ee2b26",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/independent-native-verification.json",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        },
+        "offline-reproduction-01.json": {
+          "bytes": 3325,
+          "sha256": "cfa19b1da6d14bd9a401d292258ef6077bdafeb9c827373f03e5ff0a91913c54",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/offline-reproduction-01.json",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        },
+        "offline-reproduction-02.json": {
+          "bytes": 520,
+          "sha256": "175b925a5e79a16a0cda52b9efc95596355dfdfff32fb86b79f92ec79758dc7b",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/offline-reproduction-02.json",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        },
+        "release-checksums.json": {
+          "bytes": 1149,
+          "sha256": "6dc42c89c280b864d98f99096b56591b4331a91374e3def58ea33d7a1f907e10",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/release-checksums.json",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        },
+        "requirements-participation-context.txt": {
+          "bytes": 83,
+          "sha256": "a5c1e82a34e74191aa040d83ef792356fc2af15a0e383a991c8aebf178b47b83",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/requirements-participation-context.txt",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        },
+        "requirements-participation-intake.txt": {
+          "bytes": 14,
+          "sha256": "c889a26bd67805aeb8969c4509db183fc7480fc6a56191c90e9d259ee1e0acd1",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/requirements-participation-intake.txt",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        },
+        "runtime-dataset.zip": {
+          "bytes": 1834624,
+          "sha256": "d97d3e03598c4d4ab77f56ce88306c287cdb63d00c953495d23c1b1777c5e914",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-resident-counties-20261110-01/runtime-dataset.zip",
+          "anonymous_status": 200,
+          "verified_anonymously": true
+        }
+      },
+      "website_main_advanced": false,
+      "website_interface_activated": false,
+      "precinct_estimates_published": false,
+      "whole_project_complete": false
+    },
+    "data-only-publication": {
+      "status": "PASS_real_public_data_only_county_catalog_activation",
+      "id": "resident-context",
+      "version": "496a4245fae201722492a4396a36f05a04600476a662d0974480a5e59cb3fb3a",
+      "staged_commit": "f4d07e8c6f8be1b82e6d36d65e6244a36eb6fdca",
+      "catalog_commit": "f120331a9eb82f8b611a574d1457b1173a2be3a0",
+      "anonymous_verified_files": 53,
+      "catalog_url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/participation-data/catalog.json",
+      "website_builds_started": 0,
+      "worktree_head_or_index_changed": false,
+      "immutable_science_release": 440794066,
+      "complete_native_counties": 3144,
+      "jurisdictions": 51,
+      "runtime_files": 52,
+      "source_worktree_preserved": {
+        "head": "3389e1f45d6e90422f9b666c6136e434c452d982",
+        "index_sha256": "557e38a3ff7e070605709c15eb09beda5ac471193984809ddc6bcbbacab91754",
+        "remote_main": "3389e1f45d6e90422f9b666c6136e434c452d982"
+      },
+      "deploy_run_ids_before": [
+        42875076282,
+        42867075038,
+        42861217192
+      ],
+      "deploy_run_ids_after": [
+        42875076282,
+        42867075038,
+        42861217192
+      ],
+      "existing_site_not_rebuilt": true,
+      "website_reader_activated": false,
+      "subsequent_same_dataset_update_demonstrated": false,
+      "whole_project_complete": false
+    },
+    "independent-native-verification": {
+      "status": "PASS_all_native_county_cells_full_originals_and_runtime_values",
+      "checks": 2247960,
+      "counties": 3144,
+      "states": 51,
+      "selected_native_counties": {
+        "B19013": 3144,
+        "B03002": 3144,
+        "B19001": 3144,
+        "B15003": 3144,
+        "B01001": 3144
+      },
+      "original_bytes": 462776851,
+      "originals": {
+        "B19013": {
+          "bytes": 17917916,
+          "sha256": "b25a176b0e6c339b6f3a2a0d3d8446bf06f5f080b4395993ec9a8313efb1c229",
+          "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat"
+        },
+        "B03002": {
+          "bytes": 83256772,
+          "sha256": "ef1a9310905393bf477820de8edb2935c1e9bdb356be65b5ee5fb6fceda911c1",
+          "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b03002.dat"
+        },
+        "B19001": {
+          "bytes": 68953041,
+          "sha256": "1af421b3b9d0f85dbd938cd518ad5d01c693fa2870f24e1089552ea5c1e6683f",
+          "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19001.dat"
+        },
+        "B15003": {
+          "bytes": 92292840,
+          "sha256": "d0c8609e958022459215c8a31d7452ef7528ee8dd70fbb6f9a99de0f491f42d7",
+          "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b15003.dat"
+        },
+        "B01001": {
+          "bytes": 200356282,
+          "sha256": "1637b18a96881b81e050df1cd3d5ac38a33208b9b69b40e1dbeb3c4e13718f0e",
+          "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01001.dat"
+        }
+      },
+      "native_query_sha256": "a4f4b4677d306f513f2c117508e000237c49756a3e1b2d770df7af055c1f9a1a",
+      "observed_income_medians": 3143,
+      "missing_income_geographies": [
+        "35011"
+      ],
+      "resident_context_not_voter_data": true,
+      "certified_election_boundaries": false,
+      "published_or_live": false
+    },
+    "offline-reproduction-01": {
+      "acquisition_requests": 0,
+      "all_members_verified": 141,
+      "complete_originals": 6,
+      "counties": 3144,
+      "geometry_preparations": 0,
+      "native_query_exact": true,
+      "runtime_files_exact": 52,
+      "states": 51,
+      "status": "PASS_complete_native_and_runtime_county_reproduction",
+      "voter_characteristics_inferred": false,
+      "packaged_independent_checker": {
+        "status": "PASS_all_native_county_cells_full_originals_and_runtime_values",
+        "checks": 2247960,
+        "counties": 3144,
+        "states": 51,
+        "selected_native_counties": {
+          "B19013": 3144,
+          "B03002": 3144,
+          "B19001": 3144,
+          "B15003": 3144,
+          "B01001": 3144
+        },
+        "original_bytes": 462776851,
+        "originals": {
+          "B19013": {
+            "bytes": 17917916,
+            "sha256": "b25a176b0e6c339b6f3a2a0d3d8446bf06f5f080b4395993ec9a8313efb1c229",
+            "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19013.dat"
+          },
+          "B03002": {
+            "bytes": 83256772,
+            "sha256": "ef1a9310905393bf477820de8edb2935c1e9bdb356be65b5ee5fb6fceda911c1",
+            "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b03002.dat"
+          },
+          "B19001": {
+            "bytes": 68953041,
+            "sha256": "1af421b3b9d0f85dbd938cd518ad5d01c693fa2870f24e1089552ea5c1e6683f",
+            "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b19001.dat"
+          },
+          "B15003": {
+            "bytes": 92292840,
+            "sha256": "d0c8609e958022459215c8a31d7452ef7528ee8dd70fbb6f9a99de0f491f42d7",
+            "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b15003.dat"
+          },
+          "B01001": {
+            "bytes": 200356282,
+            "sha256": "1637b18a96881b81e050df1cd3d5ac38a33208b9b69b40e1dbeb3c4e13718f0e",
+            "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData/acsdt5y2024-b01001.dat"
+          }
+        },
+        "native_query_sha256": "a4f4b4677d306f513f2c117508e000237c49756a3e1b2d770df7af055c1f9a1a",
+        "observed_income_medians": 3143,
+        "missing_income_geographies": [
+          "35011"
+        ],
+        "resident_context_not_voter_data": true,
+        "certified_election_boundaries": false,
+        "published_or_live": false
+      },
+      "packaged_tests": {
+        "intake": {
+          "returncode": 0,
+          "output": "...............\n----------------------------------------------------------------------\nRan 15 tests in 0.932s\n\nOK\n"
+        },
+        "resident-context": {
+          "returncode": 0,
+          "output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.060s\n\nOK\n"
+        },
+        "crosswalk": {
+          "returncode": 0,
+          "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.101s\n\nOK\n"
+        },
+        "publisher": {
+          "returncode": 0,
+          "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 1.498s\n\nOK\n"
+        }
+      },
+      "archive_sha256": "f1a9c33fbb71c1842d38ddeab98220fc91bd2945459b608f608e05fbddd3cdf1",
+      "network_and_DNS_blocked": true,
+      "fresh_process": true,
+      "attempt": 1,
+      "published_or_live": false
+    },
+    "offline-reproduction-02": {
+      "acquisition_requests": 0,
+      "all_members_verified": 141,
+      "complete_originals": 6,
+      "counties": 3144,
+      "geometry_preparations": 0,
+      "native_query_exact": true,
+      "runtime_files_exact": 52,
+      "states": 51,
+      "status": "PASS_complete_native_and_runtime_county_reproduction",
+      "voter_characteristics_inferred": false,
+      "archive_sha256": "f1a9c33fbb71c1842d38ddeab98220fc91bd2945459b608f608e05fbddd3cdf1",
+      "network_and_DNS_blocked": true,
+      "fresh_process": true,
+      "attempt": 2,
+      "published_or_live": false
+    }
+  },
+  "website_interface_activated": false,
+  "whole_project_complete": false
+}

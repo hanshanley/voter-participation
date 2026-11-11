@@ -1,0 +1,4 @@
+year,state_code,report_month,election_type,registration_status,native_county_rows,derived_active_register,missing_active_cells,printed_statewide_total,aggregate_is_derived_not_printed,actual_cutoff_date,exact_clock,timezone,source_url,independent_legal_eligibility_certification,administratively_observed_voting,all82_county_sum_not_an_independent_state_benchmark,local_model_allocation
+2022,MS,2022-10,midterm,ACTIVE,82,1926538,0,,True,,,,https://www.sos.ms.gov/sites/default/files/active-voter-count-reports/2022October%20Voter%20Count%20Red.pdf,False,False,True,False
+2024,MS,2024-10,presidential,ACTIVE,82,1965611,0,,True,,,,https://www.sos.ms.gov/sites/default/files/active-voter-count-reports/2024October%20Voter%20Count%20Red.pdf,False,False,True,False
+2026,MS,2026-10,midterm,ACTIVE,82,1888362,0,,True,,,,https://www.sos.ms.gov/sites/default/files/active-voter-count-reports/2026October%20Voter%20Count%20Red.pdf,False,False,True,False

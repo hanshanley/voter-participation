@@ -1,0 +1,19 @@
+{
+  "all51_prior_state_rows_43_controls_31_scenarios_preserved": true,
+  "complete_equations": 326,
+  "conditional_scenarios": 31,
+  "incomplete_equations": 16,
+  "native_accounting_discrepancies": 0,
+  "native_count_slots": 1515,
+  "native_grid_slots": 4517,
+  "native_mode_count_slots": 549,
+  "native_observed_zero_literals": 7,
+  "native_pages": 13,
+  "native_registration_records": 161,
+  "native_tables": 20,
+  "native_unique_precincts": 144,
+  "native_unknown_count_slots": 23,
+  "no_dc_survey_projection_no_new_website_view": true,
+  "source_control_records": 48,
+  "state_and_dc_rows": 51
+}

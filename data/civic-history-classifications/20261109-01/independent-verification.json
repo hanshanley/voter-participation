@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "independent_checks": 4652,
+  "focused_tests": 15,
+  "complete_decisions": 102,
+  "complete_cell_queries": 408,
+  "complete_conditional_rate_queries": 204,
+  "selected_tables": 77,
+  "held_tables": 25,
+  "prior2022_selected_tables": 33,
+  "prior2024_selected_tables": 44,
+  "selected_cell_rows": 308,
+  "selected_conditional_rate_rows": 154,
+  "accepted_current_parent_checks": 100,
+  "detailed_unknown_and_explicit_nonvote_not_individually_disclosed_or_imputed": true,
+  "other_candidate_and_current_unknown_choice_classifications_preserved": true,
+  "current_source_state_not_verified_prior_residence": true,
+  "no_original_survey_reduction_rerun_or_current_model_reestimation": true,
+  "no_observed_turnout_new_returning_voter_population_or_legal_cohort_certification": true,
+  "NY_reporting_HomeNoJS403_stopped_no_cached_count_promoted": true,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 14,
+  "archive_bytes": 67954,
+  "archive_sha256": "1fcbcc597323158d7c92b7b3022fbf8926f876305e1ca3f82d214940d5949dcc"
+}

@@ -1,0 +1,1428 @@
+{
+  "registration": {
+    "absent_county_party_rows_not_invented": true,
+    "all_native_rows_parsed_without_unclassified_remainder": true,
+    "complete_independent_extractions_match": true,
+    "denominator_substitution_for_separate_native_snapshots_approved": false,
+    "derived_county_subtotals": [
+      {
+        "county_literal": "Beaver",
+        "sum_of_observed_active_party_rows": 3847
+      },
+      {
+        "county_literal": "Box Elder",
+        "sum_of_observed_active_party_rows": 33827
+      },
+      {
+        "county_literal": "Cache",
+        "sum_of_observed_active_party_rows": 70585
+      },
+      {
+        "county_literal": "Carbon",
+        "sum_of_observed_active_party_rows": 10911
+      },
+      {
+        "county_literal": "Daggett",
+        "sum_of_observed_active_party_rows": 688
+      },
+      {
+        "county_literal": "Davis",
+        "sum_of_observed_active_party_rows": 200033
+      },
+      {
+        "county_literal": "Duchesne",
+        "sum_of_observed_active_party_rows": 10440
+      },
+      {
+        "county_literal": "Emery",
+        "sum_of_observed_active_party_rows": 5754
+      },
+      {
+        "county_literal": "Garfield",
+        "sum_of_observed_active_party_rows": 3250
+      },
+      {
+        "county_literal": "Grand",
+        "sum_of_observed_active_party_rows": 5873
+      },
+      {
+        "county_literal": "Iron",
+        "sum_of_observed_active_party_rows": 32827
+      },
+      {
+        "county_literal": "Juab",
+        "sum_of_observed_active_party_rows": 7677
+      },
+      {
+        "county_literal": "Kane",
+        "sum_of_observed_active_party_rows": 5113
+      },
+      {
+        "county_literal": "Millard",
+        "sum_of_observed_active_party_rows": 7264
+      },
+      {
+        "county_literal": "Morgan",
+        "sum_of_observed_active_party_rows": 8313
+      },
+      {
+        "county_literal": "Piute",
+        "sum_of_observed_active_party_rows": 1112
+      },
+      {
+        "county_literal": "Rich",
+        "sum_of_observed_active_party_rows": 1591
+      },
+      {
+        "county_literal": "Salt Lake",
+        "sum_of_observed_active_party_rows": 604683
+      },
+      {
+        "county_literal": "San Juan",
+        "sum_of_observed_active_party_rows": 8095
+      },
+      {
+        "county_literal": "Sanpete",
+        "sum_of_observed_active_party_rows": 15536
+      },
+      {
+        "county_literal": "Sevier",
+        "sum_of_observed_active_party_rows": 12493
+      },
+      {
+        "county_literal": "Summit",
+        "sum_of_observed_active_party_rows": 29388
+      },
+      {
+        "county_literal": "Tooele",
+        "sum_of_observed_active_party_rows": 41900
+      },
+      {
+        "county_literal": "Uintah",
+        "sum_of_observed_active_party_rows": 18088
+      },
+      {
+        "county_literal": "Utah",
+        "sum_of_observed_active_party_rows": 374875
+      },
+      {
+        "county_literal": "Wasatch",
+        "sum_of_observed_active_party_rows": 21951
+      },
+      {
+        "county_literal": "Washington",
+        "sum_of_observed_active_party_rows": 113079
+      },
+      {
+        "county_literal": "Wayne",
+        "sum_of_observed_active_party_rows": 1835
+      },
+      {
+        "county_literal": "Weber",
+        "sum_of_observed_active_party_rows": 133227
+      }
+    ],
+    "discrepancies_not_corrected_or_allocated": true,
+    "every_state_party_active_count_reconciles_to_observed_county_rows": true,
+    "native_parent_arithmetic_discrepancies": [
+      {
+        "active_plus_inactive_minus_native_total": 1,
+        "party_literal": "Republican"
+      },
+      {
+        "active_plus_inactive_minus_native_total": 1,
+        "party_literal": "Total"
+      }
+    ],
+    "native_rows": [
+      {
+        "active_registered_voters": 18,
+        "county_literal": "Beaver",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 178,
+        "county_literal": "Beaver",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 5,
+        "county_literal": "Beaver",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 1,
+        "county_literal": "Beaver",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 134,
+        "county_literal": "Beaver",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 20,
+        "county_literal": "Beaver",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 2917,
+        "county_literal": "Beaver",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 574,
+        "county_literal": "Beaver",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 176,
+        "county_literal": "Box Elder",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 1707,
+        "county_literal": "Box Elder",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 24,
+        "county_literal": "Box Elder",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 8,
+        "county_literal": "Box Elder",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 1216,
+        "county_literal": "Box Elder",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 296,
+        "county_literal": "Box Elder",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 21842,
+        "county_literal": "Box Elder",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 8558,
+        "county_literal": "Box Elder",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 318,
+        "county_literal": "Cache",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 6852,
+        "county_literal": "Cache",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 73,
+        "county_literal": "Cache",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 56,
+        "county_literal": "Cache",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 1947,
+        "county_literal": "Cache",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 689,
+        "county_literal": "Cache",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 40254,
+        "county_literal": "Cache",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 20396,
+        "county_literal": "Cache",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 60,
+        "county_literal": "Carbon",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 1460,
+        "county_literal": "Carbon",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 4,
+        "county_literal": "Carbon",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 5,
+        "county_literal": "Carbon",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 512,
+        "county_literal": "Carbon",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 83,
+        "county_literal": "Carbon",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 5884,
+        "county_literal": "Carbon",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 2903,
+        "county_literal": "Carbon",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 2,
+        "county_literal": "Daggett",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 51,
+        "county_literal": "Daggett",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 4,
+        "county_literal": "Daggett",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 1,
+        "county_literal": "Daggett",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 29,
+        "county_literal": "Daggett",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 4,
+        "county_literal": "Daggett",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 496,
+        "county_literal": "Daggett",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 101,
+        "county_literal": "Daggett",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 604,
+        "county_literal": "Davis",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 21479,
+        "county_literal": "Davis",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 201,
+        "county_literal": "Davis",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 133,
+        "county_literal": "Davis",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 7775,
+        "county_literal": "Davis",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 1983,
+        "county_literal": "Davis",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 109062,
+        "county_literal": "Davis",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 58796,
+        "county_literal": "Davis",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 87,
+        "county_literal": "Duchesne",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 472,
+        "county_literal": "Duchesne",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 13,
+        "county_literal": "Duchesne",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 2,
+        "county_literal": "Duchesne",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 330,
+        "county_literal": "Duchesne",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 86,
+        "county_literal": "Duchesne",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 7810,
+        "county_literal": "Duchesne",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 1640,
+        "county_literal": "Duchesne",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 14,
+        "county_literal": "Emery",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 227,
+        "county_literal": "Emery",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 3,
+        "county_literal": "Emery",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 2,
+        "county_literal": "Emery",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 196,
+        "county_literal": "Emery",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 28,
+        "county_literal": "Emery",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 4042,
+        "county_literal": "Emery",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 1242,
+        "county_literal": "Emery",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 16,
+        "county_literal": "Garfield",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 202,
+        "county_literal": "Garfield",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 1,
+        "county_literal": "Garfield",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 1,
+        "county_literal": "Garfield",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 103,
+        "county_literal": "Garfield",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 15,
+        "county_literal": "Garfield",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 2392,
+        "county_literal": "Garfield",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 520,
+        "county_literal": "Garfield",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 13,
+        "county_literal": "Grand",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 1266,
+        "county_literal": "Grand",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 5,
+        "county_literal": "Grand",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 8,
+        "county_literal": "Grand",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 220,
+        "county_literal": "Grand",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 52,
+        "county_literal": "Grand",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 2095,
+        "county_literal": "Grand",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 2214,
+        "county_literal": "Grand",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 228,
+        "county_literal": "Iron",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 2305,
+        "county_literal": "Iron",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 37,
+        "county_literal": "Iron",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 18,
+        "county_literal": "Iron",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 1538,
+        "county_literal": "Iron",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 385,
+        "county_literal": "Iron",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 21247,
+        "county_literal": "Iron",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 7069,
+        "county_literal": "Iron",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 33,
+        "county_literal": "Juab",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 299,
+        "county_literal": "Juab",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 8,
+        "county_literal": "Juab",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 1,
+        "county_literal": "Juab",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 217,
+        "county_literal": "Juab",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 51,
+        "county_literal": "Juab",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 5454,
+        "county_literal": "Juab",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 1614,
+        "county_literal": "Juab",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 19,
+        "county_literal": "Kane",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 463,
+        "county_literal": "Kane",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 6,
+        "county_literal": "Kane",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 2,
+        "county_literal": "Kane",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 240,
+        "county_literal": "Kane",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 42,
+        "county_literal": "Kane",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 3438,
+        "county_literal": "Kane",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 903,
+        "county_literal": "Kane",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 59,
+        "county_literal": "Millard",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 273,
+        "county_literal": "Millard",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 8,
+        "county_literal": "Millard",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 2,
+        "county_literal": "Millard",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 151,
+        "county_literal": "Millard",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 37,
+        "county_literal": "Millard",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 5451,
+        "county_literal": "Millard",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 1283,
+        "county_literal": "Millard",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 28,
+        "county_literal": "Morgan",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 381,
+        "county_literal": "Morgan",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 2,
+        "county_literal": "Morgan",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 5,
+        "county_literal": "Morgan",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 261,
+        "county_literal": "Morgan",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 69,
+        "county_literal": "Morgan",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 5673,
+        "county_literal": "Morgan",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 1894,
+        "county_literal": "Morgan",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 6,
+        "county_literal": "Piute",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 33,
+        "county_literal": "Piute",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 26,
+        "county_literal": "Piute",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 4,
+        "county_literal": "Piute",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 905,
+        "county_literal": "Piute",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 138,
+        "county_literal": "Piute",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 3,
+        "county_literal": "Rich",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 65,
+        "county_literal": "Rich",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 1,
+        "county_literal": "Rich",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 30,
+        "county_literal": "Rich",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 9,
+        "county_literal": "Rich",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 1245,
+        "county_literal": "Rich",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 238,
+        "county_literal": "Rich",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 1667,
+        "county_literal": "Salt Lake",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 138905,
+        "county_literal": "Salt Lake",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 805,
+        "county_literal": "Salt Lake",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 568,
+        "county_literal": "Salt Lake",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 27072,
+        "county_literal": "Salt Lake",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 5936,
+        "county_literal": "Salt Lake",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 234929,
+        "county_literal": "Salt Lake",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 194801,
+        "county_literal": "Salt Lake",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 25,
+        "county_literal": "San Juan",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 2145,
+        "county_literal": "San Juan",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 18,
+        "county_literal": "San Juan",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 9,
+        "county_literal": "San Juan",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 223,
+        "county_literal": "San Juan",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 40,
+        "county_literal": "San Juan",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 3531,
+        "county_literal": "San Juan",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 2104,
+        "county_literal": "San Juan",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 161,
+        "county_literal": "Sanpete",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 681,
+        "county_literal": "Sanpete",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 26,
+        "county_literal": "Sanpete",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 6,
+        "county_literal": "Sanpete",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 532,
+        "county_literal": "Sanpete",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 113,
+        "county_literal": "Sanpete",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 10696,
+        "county_literal": "Sanpete",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 3321,
+        "county_literal": "Sanpete",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 65,
+        "county_literal": "Sevier",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 416,
+        "county_literal": "Sevier",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 14,
+        "county_literal": "Sevier",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 3,
+        "county_literal": "Sevier",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 363,
+        "county_literal": "Sevier",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 78,
+        "county_literal": "Sevier",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 9145,
+        "county_literal": "Sevier",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 2409,
+        "county_literal": "Sevier",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 46,
+        "county_literal": "Summit",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 7222,
+        "county_literal": "Summit",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 15,
+        "county_literal": "Summit",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 12,
+        "county_literal": "Summit",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 1640,
+        "county_literal": "Summit",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 266,
+        "county_literal": "Summit",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 10864,
+        "county_literal": "Summit",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 9323,
+        "county_literal": "Summit",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 270,
+        "county_literal": "Tooele",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 4170,
+        "county_literal": "Tooele",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 68,
+        "county_literal": "Tooele",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 24,
+        "county_literal": "Tooele",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 2058,
+        "county_literal": "Tooele",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 439,
+        "county_literal": "Tooele",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 20997,
+        "county_literal": "Tooele",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 13874,
+        "county_literal": "Tooele",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 131,
+        "county_literal": "Uintah",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 867,
+        "county_literal": "Uintah",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 21,
+        "county_literal": "Uintah",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 4,
+        "county_literal": "Uintah",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 638,
+        "county_literal": "Uintah",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 161,
+        "county_literal": "Uintah",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 13162,
+        "county_literal": "Uintah",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 3104,
+        "county_literal": "Uintah",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 1539,
+        "county_literal": "Utah",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 31112,
+        "county_literal": "Utah",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 563,
+        "county_literal": "Utah",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 266,
+        "county_literal": "Utah",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 15540,
+        "county_literal": "Utah",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 4475,
+        "county_literal": "Utah",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 219383,
+        "county_literal": "Utah",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 101997,
+        "county_literal": "Utah",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 54,
+        "county_literal": "Wasatch",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 2827,
+        "county_literal": "Wasatch",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 23,
+        "county_literal": "Wasatch",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 9,
+        "county_literal": "Wasatch",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 1230,
+        "county_literal": "Wasatch",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 249,
+        "county_literal": "Wasatch",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 11747,
+        "county_literal": "Wasatch",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 5812,
+        "county_literal": "Wasatch",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 547,
+        "county_literal": "Washington",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 9694,
+        "county_literal": "Washington",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 74,
+        "county_literal": "Washington",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 57,
+        "county_literal": "Washington",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 6025,
+        "county_literal": "Washington",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 1242,
+        "county_literal": "Washington",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 71175,
+        "county_literal": "Washington",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 24265,
+        "county_literal": "Washington",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 7,
+        "county_literal": "Wayne",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 132,
+        "county_literal": "Wayne",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 1,
+        "county_literal": "Wayne",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 60,
+        "county_literal": "Wayne",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 7,
+        "county_literal": "Wayne",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 1312,
+        "county_literal": "Wayne",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 316,
+        "county_literal": "Wayne",
+        "party_literal": "Unaffiliated"
+      },
+      {
+        "active_registered_voters": 486,
+        "county_literal": "Weber",
+        "party_literal": "Constitution"
+      },
+      {
+        "active_registered_voters": 19360,
+        "county_literal": "Weber",
+        "party_literal": "Democratic"
+      },
+      {
+        "active_registered_voters": 171,
+        "county_literal": "Weber",
+        "party_literal": "Forward"
+      },
+      {
+        "active_registered_voters": 98,
+        "county_literal": "Weber",
+        "party_literal": "Green"
+      },
+      {
+        "active_registered_voters": 6229,
+        "county_literal": "Weber",
+        "party_literal": "Independent American"
+      },
+      {
+        "active_registered_voters": 1384,
+        "county_literal": "Weber",
+        "party_literal": "Libertarian"
+      },
+      {
+        "active_registered_voters": 64197,
+        "county_literal": "Weber",
+        "party_literal": "Republican"
+      },
+      {
+        "active_registered_voters": 41302,
+        "county_literal": "Weber",
+        "party_literal": "Unaffiliated"
+      }
+    ],
+    "native_state_party_rows": [
+      {
+        "active": 6682,
+        "inactive": 1839,
+        "party_literal": "Constitution",
+        "total": 8521
+      },
+      {
+        "active": 255244,
+        "inactive": 47077,
+        "party_literal": "Democratic",
+        "total": 302321
+      },
+      {
+        "active": 2193,
+        "inactive": 841,
+        "party_literal": "Forward",
+        "total": 3034
+      },
+      {
+        "active": 1302,
+        "inactive": 115,
+        "party_literal": "Green",
+        "total": 1417
+      },
+      {
+        "active": 76535,
+        "inactive": 19061,
+        "party_literal": "Independent American",
+        "total": 95596
+      },
+      {
+        "active": 18243,
+        "inactive": 6095,
+        "party_literal": "Libertarian",
+        "total": 24338
+      },
+      {
+        "active": 0,
+        "inactive": 0,
+        "party_literal": "Peoples\u2019 Freedom",
+        "total": 0
+      },
+      {
+        "active": 911345,
+        "inactive": 118364,
+        "party_literal": "Republican",
+        "total": 1029708
+      },
+      {
+        "active": 512711,
+        "inactive": 121579,
+        "party_literal": "Unaffiliated",
+        "total": 634290
+      },
+      {
+        "active": 1784255,
+        "inactive": 314971,
+        "party_literal": "Total",
+        "total": 2099225
+      }
+    ],
+    "physical_pages": 6,
+    "scope": "Active registration affiliation, not party votes, party turnout or ballots cast.",
+    "source_date_literal": "11/02/2026",
+    "source_receipts": [
+      {
+        "bytes": 23072,
+        "captured_at_utc": "2026-11-06T18:51:28.873930+00:00",
+        "final_url": "https://vote.utah.gov/current-voter-registration-statistics/",
+        "requested_url": "https://vote.utah.gov/current-voter-registration-statistics/",
+        "sha256": "ae7adc5dc9b74abf827944f552f0cec0ae66ec46aa49ff0ca07f0d9f2806297b",
+        "status": 200,
+        "tls_verification": true
+      },
+      {
+        "bytes": 11022,
+        "captured_at_utc": "2026-11-06T18:51:28.953556+00:00",
+        "final_url": "https://vote.utah.gov/wp-content/uploads/2026/11/11.02.2026-Active-Voters-by-County-and-Party.pdf",
+        "requested_url": "https://vote.utah.gov/wp-content/uploads/2026/11/11.02.2026-Active-Voters-by-County-and-Party.pdf",
+        "sha256": "07163e31d8bd29a5c3028127ba205c51d2d333b7bb72ffca96ab610d950a8620",
+        "status": 200,
+        "tls_verification": true
+      }
+    ],
+    "source_timezone_literal": null
+  },
+  "state_rows": [
+    {
+      "active": "6682",
+      "inactive": "1839",
+      "party_literal": "Constitution",
+      "total": "8521"
+    },
+    {
+      "active": "255244",
+      "inactive": "47077",
+      "party_literal": "Democratic",
+      "total": "302321"
+    },
+    {
+      "active": "2193",
+      "inactive": "841",
+      "party_literal": "Forward",
+      "total": "3034"
+    },
+    {
+      "active": "1302",
+      "inactive": "115",
+      "party_literal": "Green",
+      "total": "1417"
+    },
+    {
+      "active": "76535",
+      "inactive": "19061",
+      "party_literal": "Independent American",
+      "total": "95596"
+    },
+    {
+      "active": "18243",
+      "inactive": "6095",
+      "party_literal": "Libertarian",
+      "total": "24338"
+    },
+    {
+      "active": "0",
+      "inactive": "0",
+      "party_literal": "Peoples\u2019 Freedom",
+      "total": "0"
+    },
+    {
+      "active": "911345",
+      "inactive": "118364",
+      "party_literal": "Republican",
+      "total": "1029708"
+    },
+    {
+      "active": "512711",
+      "inactive": "121579",
+      "party_literal": "Unaffiliated",
+      "total": "634290"
+    },
+    {
+      "active": "1784255",
+      "inactive": "314971",
+      "party_literal": "Total",
+      "total": "2099225"
+    }
+  ]
+}

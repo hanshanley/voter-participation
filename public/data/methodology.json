@@ -1,0 +1,22 @@
+{
+  "denominators": {
+    "cvap": "Civilian noninstitutionalized adult citizens (CPS survey); not legal voting-eligible population.",
+    "vap": "Civilian noninstitutionalized adult residents, including noncitizens (CPS survey).",
+    "registered": "Election-time NC active and inactive registrations; not all adult citizens."
+  },
+  "limitations": [
+    "National and state CPS estimates are self-reported, not validated participation.",
+    "CPS state estimates have sampling uncertainty; margins of error are not supplied by these historical tables.",
+    "Do not interpret precinct demographics as an individual's participation or candidate preference.",
+    "NC records are public aggregate participation and registration counts, not ballots cast totals.",
+    "Race and ethnicity categories overlap; age bands differ between CPS and NC.",
+    "Rates above 100%, zero denominators, and precincts lacking participation records are flagged, never clipped or assigned zero turnout.",
+    "Published precinct snapshots are not a fixed-boundary panel; no precinct trend claim across changing boundaries.",
+    "A matching precinct identifier is not proof of an unchanged or election-certified boundary.",
+    "Some NC participants have blank or unmatched precincts; counts remain in the downloadable analysis.",
+    "2000 NC history source contains 'Data Unavailable'; no participation rate is inferred.",
+    "Historical education and sex VAP series remain separate from 2000\u20132024 CVAP rates calculated using election-specific Census citizen counts.",
+    "Archived NC history/registration totals differ from official ballots/eligible counts in some years; see the reconciliation download.",
+    "Historical trend series end in 2024. Separate 2026 NC snapshots are unofficial and incomplete; they are never spliced into historical demographic turnout."
+  ]
+}

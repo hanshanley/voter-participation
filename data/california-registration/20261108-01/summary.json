@@ -1,0 +1,13 @@
+{
+  "changed_model_estimates": 0,
+  "existing_states_and_nine_scenarios_byte_identical": true,
+  "jurisdictions": 51,
+  "native_age_groups": 6,
+  "native_counties": 58,
+  "native_preregistered": 124180,
+  "native_registered": 23273590,
+  "native_registered_count_matches_prior_ca_denominator": true,
+  "native_workbook_cells": 2901,
+  "new_or_duplicate_scenarios": 0,
+  "observed_demographic_turnout": false
+}

@@ -1,0 +1,753 @@
+jurisdiction_literal,source_page,native_row_position,native_column_position,native_column_label,native_count,native_cell_state,missing_is_zero,registry_filter_not_generic_vep,affiliation_not_party_voting
+Adams,1,1,1,Republican,11580,observed_numeric,False,True,True
+Adams,1,1,2,Democratic,3606,observed_numeric,False,True,True
+Adams,1,1,3,Libertarian,233,observed_numeric,False,True,True
+Adams,1,1,4,Legal Marijuana NOW,147,observed_numeric,False,True,True
+Adams,1,1,5,Nebraska Working People,1,observed_numeric,False,True,True
+Adams,1,1,6,America First,8,observed_numeric,False,True,True
+Adams,1,1,7,Nonpartisan,3706,observed_numeric,False,True,True
+Adams,1,1,8,Grand Total,19281,observed_numeric,False,True,True
+Antelope,1,2,1,Republican,3334,observed_numeric,False,True,True
+Antelope,1,2,2,Democratic,449,observed_numeric,False,True,True
+Antelope,1,2,3,Libertarian,30,observed_numeric,False,True,True
+Antelope,1,2,4,Legal Marijuana NOW,17,observed_numeric,False,True,True
+Antelope,1,2,5,Nebraska Working People,,blank,False,True,True
+Antelope,1,2,6,America First,,blank,False,True,True
+Antelope,1,2,7,Nonpartisan,511,observed_numeric,False,True,True
+Antelope,1,2,8,Grand Total,4341,observed_numeric,False,True,True
+Arthur,1,3,1,Republican,292,observed_numeric,False,True,True
+Arthur,1,3,2,Democratic,16,observed_numeric,False,True,True
+Arthur,1,3,3,Libertarian,1,observed_numeric,False,True,True
+Arthur,1,3,4,Legal Marijuana NOW,,blank,False,True,True
+Arthur,1,3,5,Nebraska Working People,,blank,False,True,True
+Arthur,1,3,6,America First,,blank,False,True,True
+Arthur,1,3,7,Nonpartisan,19,observed_numeric,False,True,True
+Arthur,1,3,8,Grand Total,328,observed_numeric,False,True,True
+Banner,1,4,1,Republican,432,observed_numeric,False,True,True
+Banner,1,4,2,Democratic,20,observed_numeric,False,True,True
+Banner,1,4,3,Libertarian,7,observed_numeric,False,True,True
+Banner,1,4,4,Legal Marijuana NOW,1,observed_numeric,False,True,True
+Banner,1,4,5,Nebraska Working People,,blank,False,True,True
+Banner,1,4,6,America First,,blank,False,True,True
+Banner,1,4,7,Nonpartisan,64,observed_numeric,False,True,True
+Banner,1,4,8,Grand Total,524,observed_numeric,False,True,True
+Blaine,1,5,1,Republican,297,observed_numeric,False,True,True
+Blaine,1,5,2,Democratic,23,observed_numeric,False,True,True
+Blaine,1,5,3,Libertarian,3,observed_numeric,False,True,True
+Blaine,1,5,4,Legal Marijuana NOW,,blank,False,True,True
+Blaine,1,5,5,Nebraska Working People,,blank,False,True,True
+Blaine,1,5,6,America First,,blank,False,True,True
+Blaine,1,5,7,Nonpartisan,28,observed_numeric,False,True,True
+Blaine,1,5,8,Grand Total,351,observed_numeric,False,True,True
+Boone,1,6,1,Republican,2703,observed_numeric,False,True,True
+Boone,1,6,2,Democratic,473,observed_numeric,False,True,True
+Boone,1,6,3,Libertarian,28,observed_numeric,False,True,True
+Boone,1,6,4,Legal Marijuana NOW,6,observed_numeric,False,True,True
+Boone,1,6,5,Nebraska Working People,,blank,False,True,True
+Boone,1,6,6,America First,,blank,False,True,True
+Boone,1,6,7,Nonpartisan,384,observed_numeric,False,True,True
+Boone,1,6,8,Grand Total,3594,observed_numeric,False,True,True
+Box Butte,1,7,1,Republican,4340,observed_numeric,False,True,True
+Box Butte,1,7,2,Democratic,1018,observed_numeric,False,True,True
+Box Butte,1,7,3,Libertarian,80,observed_numeric,False,True,True
+Box Butte,1,7,4,Legal Marijuana NOW,47,observed_numeric,False,True,True
+Box Butte,1,7,5,Nebraska Working People,2,observed_numeric,False,True,True
+Box Butte,1,7,6,America First,,blank,False,True,True
+Box Butte,1,7,7,Nonpartisan,1318,observed_numeric,False,True,True
+Box Butte,1,7,8,Grand Total,6805,observed_numeric,False,True,True
+Boyd,1,8,1,Republican,980,observed_numeric,False,True,True
+Boyd,1,8,2,Democratic,126,observed_numeric,False,True,True
+Boyd,1,8,3,Libertarian,6,observed_numeric,False,True,True
+Boyd,1,8,4,Legal Marijuana NOW,3,observed_numeric,False,True,True
+Boyd,1,8,5,Nebraska Working People,,blank,False,True,True
+Boyd,1,8,6,America First,,blank,False,True,True
+Boyd,1,8,7,Nonpartisan,129,observed_numeric,False,True,True
+Boyd,1,8,8,Grand Total,1244,observed_numeric,False,True,True
+Brown,1,9,1,Republican,1733,observed_numeric,False,True,True
+Brown,1,9,2,Democratic,125,observed_numeric,False,True,True
+Brown,1,9,3,Libertarian,10,observed_numeric,False,True,True
+Brown,1,9,4,Legal Marijuana NOW,11,observed_numeric,False,True,True
+Brown,1,9,5,Nebraska Working People,1,observed_numeric,False,True,True
+Brown,1,9,6,America First,,blank,False,True,True
+Brown,1,9,7,Nonpartisan,177,observed_numeric,False,True,True
+Brown,1,9,8,Grand Total,2057,observed_numeric,False,True,True
+Buffalo,1,10,1,Republican,19321,observed_numeric,False,True,True
+Buffalo,1,10,2,Democratic,5248,observed_numeric,False,True,True
+Buffalo,1,10,3,Libertarian,473,observed_numeric,False,True,True
+Buffalo,1,10,4,Legal Marijuana NOW,205,observed_numeric,False,True,True
+Buffalo,1,10,5,Nebraska Working People,2,observed_numeric,False,True,True
+Buffalo,1,10,6,America First,3,observed_numeric,False,True,True
+Buffalo,1,10,7,Nonpartisan,5931,observed_numeric,False,True,True
+Buffalo,1,10,8,Grand Total,31183,observed_numeric,False,True,True
+Burt,1,11,1,Republican,2898,observed_numeric,False,True,True
+Burt,1,11,2,Democratic,950,observed_numeric,False,True,True
+Burt,1,11,3,Libertarian,55,observed_numeric,False,True,True
+Burt,1,11,4,Legal Marijuana NOW,31,observed_numeric,False,True,True
+Burt,1,11,5,Nebraska Working People,,blank,False,True,True
+Burt,1,11,6,America First,1,observed_numeric,False,True,True
+Burt,1,11,7,Nonpartisan,924,observed_numeric,False,True,True
+Burt,1,11,8,Grand Total,4859,observed_numeric,False,True,True
+Butler,1,12,1,Republican,3965,observed_numeric,False,True,True
+Butler,1,12,2,Democratic,882,observed_numeric,False,True,True
+Butler,1,12,3,Libertarian,41,observed_numeric,False,True,True
+Butler,1,12,4,Legal Marijuana NOW,19,observed_numeric,False,True,True
+Butler,1,12,5,Nebraska Working People,,blank,False,True,True
+Butler,1,12,6,America First,1,observed_numeric,False,True,True
+Butler,1,12,7,Nonpartisan,878,observed_numeric,False,True,True
+Butler,1,12,8,Grand Total,5786,observed_numeric,False,True,True
+Cass,1,13,1,Republican,10690,observed_numeric,False,True,True
+Cass,1,13,2,Democratic,3702,observed_numeric,False,True,True
+Cass,1,13,3,Libertarian,332,observed_numeric,False,True,True
+Cass,1,13,4,Legal Marijuana NOW,129,observed_numeric,False,True,True
+Cass,1,13,5,Nebraska Working People,3,observed_numeric,False,True,True
+Cass,1,13,6,America First,2,observed_numeric,False,True,True
+Cass,1,13,7,Nonpartisan,4828,observed_numeric,False,True,True
+Cass,1,13,8,Grand Total,19686,observed_numeric,False,True,True
+Cedar,1,14,1,Republican,4105,observed_numeric,False,True,True
+Cedar,1,14,2,Democratic,826,observed_numeric,False,True,True
+Cedar,1,14,3,Libertarian,44,observed_numeric,False,True,True
+Cedar,1,14,4,Legal Marijuana NOW,22,observed_numeric,False,True,True
+Cedar,1,14,5,Nebraska Working People,,blank,False,True,True
+Cedar,1,14,6,America First,,blank,False,True,True
+Cedar,1,14,7,Nonpartisan,780,observed_numeric,False,True,True
+Cedar,1,14,8,Grand Total,5777,observed_numeric,False,True,True
+Chase,1,15,1,Republican,1879,observed_numeric,False,True,True
+Chase,1,15,2,Democratic,199,observed_numeric,False,True,True
+Chase,1,15,3,Libertarian,19,observed_numeric,False,True,True
+Chase,1,15,4,Legal Marijuana NOW,8,observed_numeric,False,True,True
+Chase,1,15,5,Nebraska Working People,,blank,False,True,True
+Chase,1,15,6,America First,,blank,False,True,True
+Chase,1,15,7,Nonpartisan,281,observed_numeric,False,True,True
+Chase,1,15,8,Grand Total,2386,observed_numeric,False,True,True
+Cherry,2,1,1,Republican,2949,observed_numeric,False,True,True
+Cherry,2,1,2,Democratic,291,observed_numeric,False,True,True
+Cherry,2,1,3,Libertarian,29,observed_numeric,False,True,True
+Cherry,2,1,4,Legal Marijuana NOW,14,observed_numeric,False,True,True
+Cherry,2,1,5,Nebraska Working People,,blank,False,True,True
+Cherry,2,1,6,America First,,blank,False,True,True
+Cherry,2,1,7,Nonpartisan,362,observed_numeric,False,True,True
+Cherry,2,1,8,Grand Total,3645,observed_numeric,False,True,True
+Cheyenne,2,2,1,Republican,4212,observed_numeric,False,True,True
+Cheyenne,2,2,2,Democratic,702,observed_numeric,False,True,True
+Cheyenne,2,2,3,Libertarian,90,observed_numeric,False,True,True
+Cheyenne,2,2,4,Legal Marijuana NOW,41,observed_numeric,False,True,True
+Cheyenne,2,2,5,Nebraska Working People,1,observed_numeric,False,True,True
+Cheyenne,2,2,6,America First,,blank,False,True,True
+Cheyenne,2,2,7,Nonpartisan,1218,observed_numeric,False,True,True
+Cheyenne,2,2,8,Grand Total,6264,observed_numeric,False,True,True
+Clay,2,3,1,Republican,2996,observed_numeric,False,True,True
+Clay,2,3,2,Democratic,530,observed_numeric,False,True,True
+Clay,2,3,3,Libertarian,41,observed_numeric,False,True,True
+Clay,2,3,4,Legal Marijuana NOW,16,observed_numeric,False,True,True
+Clay,2,3,5,Nebraska Working People,2,observed_numeric,False,True,True
+Clay,2,3,6,America First,2,observed_numeric,False,True,True
+Clay,2,3,7,Nonpartisan,561,observed_numeric,False,True,True
+Clay,2,3,8,Grand Total,4148,observed_numeric,False,True,True
+Colfax,2,4,1,Republican,2847,observed_numeric,False,True,True
+Colfax,2,4,2,Democratic,1428,observed_numeric,False,True,True
+Colfax,2,4,3,Libertarian,53,observed_numeric,False,True,True
+Colfax,2,4,4,Legal Marijuana NOW,27,observed_numeric,False,True,True
+Colfax,2,4,5,Nebraska Working People,1,observed_numeric,False,True,True
+Colfax,2,4,6,America First,2,observed_numeric,False,True,True
+Colfax,2,4,7,Nonpartisan,782,observed_numeric,False,True,True
+Colfax,2,4,8,Grand Total,5140,observed_numeric,False,True,True
+Cuming,2,5,1,Republican,3949,observed_numeric,False,True,True
+Cuming,2,5,2,Democratic,816,observed_numeric,False,True,True
+Cuming,2,5,3,Libertarian,40,observed_numeric,False,True,True
+Cuming,2,5,4,Legal Marijuana NOW,22,observed_numeric,False,True,True
+Cuming,2,5,5,Nebraska Working People,1,observed_numeric,False,True,True
+Cuming,2,5,6,America First,,blank,False,True,True
+Cuming,2,5,7,Nonpartisan,942,observed_numeric,False,True,True
+Cuming,2,5,8,Grand Total,5770,observed_numeric,False,True,True
+Custer,2,6,1,Republican,5828,observed_numeric,False,True,True
+Custer,2,6,2,Democratic,726,observed_numeric,False,True,True
+Custer,2,6,3,Libertarian,72,observed_numeric,False,True,True
+Custer,2,6,4,Legal Marijuana NOW,29,observed_numeric,False,True,True
+Custer,2,6,5,Nebraska Working People,1,observed_numeric,False,True,True
+Custer,2,6,6,America First,,blank,False,True,True
+Custer,2,6,7,Nonpartisan,1036,observed_numeric,False,True,True
+Custer,2,6,8,Grand Total,7692,observed_numeric,False,True,True
+Dakota,2,7,1,Republican,4076,observed_numeric,False,True,True
+Dakota,2,7,2,Democratic,3628,observed_numeric,False,True,True
+Dakota,2,7,3,Libertarian,141,observed_numeric,False,True,True
+Dakota,2,7,4,Legal Marijuana NOW,72,observed_numeric,False,True,True
+Dakota,2,7,5,Nebraska Working People,3,observed_numeric,False,True,True
+Dakota,2,7,6,America First,,blank,False,True,True
+Dakota,2,7,7,Nonpartisan,2686,observed_numeric,False,True,True
+Dakota,2,7,8,Grand Total,10606,observed_numeric,False,True,True
+Dawes,2,8,1,Republican,3135,observed_numeric,False,True,True
+Dawes,2,8,2,Democratic,796,observed_numeric,False,True,True
+Dawes,2,8,3,Libertarian,72,observed_numeric,False,True,True
+Dawes,2,8,4,Legal Marijuana NOW,28,observed_numeric,False,True,True
+Dawes,2,8,5,Nebraska Working People,1,observed_numeric,False,True,True
+Dawes,2,8,6,America First,,blank,False,True,True
+Dawes,2,8,7,Nonpartisan,962,observed_numeric,False,True,True
+Dawes,2,8,8,Grand Total,4994,observed_numeric,False,True,True
+Dawson,2,9,1,Republican,7570,observed_numeric,False,True,True
+Dawson,2,9,2,Democratic,2758,observed_numeric,False,True,True
+Dawson,2,9,3,Libertarian,138,observed_numeric,False,True,True
+Dawson,2,9,4,Legal Marijuana NOW,91,observed_numeric,False,True,True
+Dawson,2,9,5,Nebraska Working People,1,observed_numeric,False,True,True
+Dawson,2,9,6,America First,,blank,False,True,True
+Dawson,2,9,7,Nonpartisan,2253,observed_numeric,False,True,True
+Dawson,2,9,8,Grand Total,12811,observed_numeric,False,True,True
+Deuel,2,10,1,Republican,1017,observed_numeric,False,True,True
+Deuel,2,10,2,Democratic,116,observed_numeric,False,True,True
+Deuel,2,10,3,Libertarian,12,observed_numeric,False,True,True
+Deuel,2,10,4,Legal Marijuana NOW,4,observed_numeric,False,True,True
+Deuel,2,10,5,Nebraska Working People,,blank,False,True,True
+Deuel,2,10,6,America First,,blank,False,True,True
+Deuel,2,10,7,Nonpartisan,225,observed_numeric,False,True,True
+Deuel,2,10,8,Grand Total,1374,observed_numeric,False,True,True
+Dixon,2,11,1,Republican,2337,observed_numeric,False,True,True
+Dixon,2,11,2,Democratic,591,observed_numeric,False,True,True
+Dixon,2,11,3,Libertarian,34,observed_numeric,False,True,True
+Dixon,2,11,4,Legal Marijuana NOW,12,observed_numeric,False,True,True
+Dixon,2,11,5,Nebraska Working People,,blank,False,True,True
+Dixon,2,11,6,America First,,blank,False,True,True
+Dixon,2,11,7,Nonpartisan,535,observed_numeric,False,True,True
+Dixon,2,11,8,Grand Total,3509,observed_numeric,False,True,True
+Dodge,2,12,1,Republican,11862,observed_numeric,False,True,True
+Dodge,2,12,2,Democratic,5018,observed_numeric,False,True,True
+Dodge,2,12,3,Libertarian,343,observed_numeric,False,True,True
+Dodge,2,12,4,Legal Marijuana NOW,223,observed_numeric,False,True,True
+Dodge,2,12,5,Nebraska Working People,3,observed_numeric,False,True,True
+Dodge,2,12,6,America First,6,observed_numeric,False,True,True
+Dodge,2,12,7,Nonpartisan,4857,observed_numeric,False,True,True
+Dodge,2,12,8,Grand Total,22312,observed_numeric,False,True,True
+Douglas,2,13,1,Republican,128539,observed_numeric,False,True,True
+Douglas,2,13,2,Democratic,135191,observed_numeric,False,True,True
+Douglas,2,13,3,Libertarian,5490,observed_numeric,False,True,True
+Douglas,2,13,4,Legal Marijuana NOW,4496,observed_numeric,False,True,True
+Douglas,2,13,5,Nebraska Working People,104,observed_numeric,False,True,True
+Douglas,2,13,6,America First,100,observed_numeric,False,True,True
+Douglas,2,13,7,Nonpartisan,97401,observed_numeric,False,True,True
+Douglas,2,13,8,Grand Total,371321,observed_numeric,False,True,True
+Dundy,2,14,1,Republican,924,observed_numeric,False,True,True
+Dundy,2,14,2,Democratic,85,observed_numeric,False,True,True
+Dundy,2,14,3,Libertarian,11,observed_numeric,False,True,True
+Dundy,2,14,4,Legal Marijuana NOW,4,observed_numeric,False,True,True
+Dundy,2,14,5,Nebraska Working People,,blank,False,True,True
+Dundy,2,14,6,America First,,blank,False,True,True
+Dundy,2,14,7,Nonpartisan,154,observed_numeric,False,True,True
+Dundy,2,14,8,Grand Total,1178,observed_numeric,False,True,True
+Fillmore,2,15,1,Republican,2704,observed_numeric,False,True,True
+Fillmore,2,15,2,Democratic,587,observed_numeric,False,True,True
+Fillmore,2,15,3,Libertarian,48,observed_numeric,False,True,True
+Fillmore,2,15,4,Legal Marijuana NOW,14,observed_numeric,False,True,True
+Fillmore,2,15,5,Nebraska Working People,,blank,False,True,True
+Fillmore,2,15,6,America First,,blank,False,True,True
+Fillmore,2,15,7,Nonpartisan,598,observed_numeric,False,True,True
+Fillmore,2,15,8,Grand Total,3951,observed_numeric,False,True,True
+Franklin,3,1,1,Republican,1518,observed_numeric,False,True,True
+Franklin,3,1,2,Democratic,225,observed_numeric,False,True,True
+Franklin,3,1,3,Libertarian,24,observed_numeric,False,True,True
+Franklin,3,1,4,Legal Marijuana NOW,7,observed_numeric,False,True,True
+Franklin,3,1,5,Nebraska Working People,,blank,False,True,True
+Franklin,3,1,6,America First,,blank,False,True,True
+Franklin,3,1,7,Nonpartisan,304,observed_numeric,False,True,True
+Franklin,3,1,8,Grand Total,2078,observed_numeric,False,True,True
+Frontier,3,2,1,Republican,1382,observed_numeric,False,True,True
+Frontier,3,2,2,Democratic,155,observed_numeric,False,True,True
+Frontier,3,2,3,Libertarian,13,observed_numeric,False,True,True
+Frontier,3,2,4,Legal Marijuana NOW,7,observed_numeric,False,True,True
+Frontier,3,2,5,Nebraska Working People,,blank,False,True,True
+Frontier,3,2,6,America First,,blank,False,True,True
+Frontier,3,2,7,Nonpartisan,215,observed_numeric,False,True,True
+Frontier,3,2,8,Grand Total,1772,observed_numeric,False,True,True
+Furnas,3,3,1,Republican,2394,observed_numeric,False,True,True
+Furnas,3,3,2,Democratic,348,observed_numeric,False,True,True
+Furnas,3,3,3,Libertarian,38,observed_numeric,False,True,True
+Furnas,3,3,4,Legal Marijuana NOW,14,observed_numeric,False,True,True
+Furnas,3,3,5,Nebraska Working People,,blank,False,True,True
+Furnas,3,3,6,America First,,blank,False,True,True
+Furnas,3,3,7,Nonpartisan,520,observed_numeric,False,True,True
+Furnas,3,3,8,Grand Total,3314,observed_numeric,False,True,True
+Gage,3,4,1,Republican,8387,observed_numeric,False,True,True
+Gage,3,4,2,Democratic,2771,observed_numeric,False,True,True
+Gage,3,4,3,Libertarian,165,observed_numeric,False,True,True
+Gage,3,4,4,Legal Marijuana NOW,123,observed_numeric,False,True,True
+Gage,3,4,5,Nebraska Working People,,blank,False,True,True
+Gage,3,4,6,America First,1,observed_numeric,False,True,True
+Gage,3,4,7,Nonpartisan,3100,observed_numeric,False,True,True
+Gage,3,4,8,Grand Total,14547,observed_numeric,False,True,True
+Garden,3,5,1,Republican,1012,observed_numeric,False,True,True
+Garden,3,5,2,Democratic,108,observed_numeric,False,True,True
+Garden,3,5,3,Libertarian,14,observed_numeric,False,True,True
+Garden,3,5,4,Legal Marijuana NOW,4,observed_numeric,False,True,True
+Garden,3,5,5,Nebraska Working People,,blank,False,True,True
+Garden,3,5,6,America First,,blank,False,True,True
+Garden,3,5,7,Nonpartisan,157,observed_numeric,False,True,True
+Garden,3,5,8,Grand Total,1295,observed_numeric,False,True,True
+Garfield,3,6,1,Republican,1057,observed_numeric,False,True,True
+Garfield,3,6,2,Democratic,93,observed_numeric,False,True,True
+Garfield,3,6,3,Libertarian,10,observed_numeric,False,True,True
+Garfield,3,6,4,Legal Marijuana NOW,4,observed_numeric,False,True,True
+Garfield,3,6,5,Nebraska Working People,,blank,False,True,True
+Garfield,3,6,6,America First,,blank,False,True,True
+Garfield,3,6,7,Nonpartisan,105,observed_numeric,False,True,True
+Garfield,3,6,8,Grand Total,1269,observed_numeric,False,True,True
+Gosper,3,7,1,Republican,1076,observed_numeric,False,True,True
+Gosper,3,7,2,Democratic,114,observed_numeric,False,True,True
+Gosper,3,7,3,Libertarian,10,observed_numeric,False,True,True
+Gosper,3,7,4,Legal Marijuana NOW,4,observed_numeric,False,True,True
+Gosper,3,7,5,Nebraska Working People,,blank,False,True,True
+Gosper,3,7,6,America First,,blank,False,True,True
+Gosper,3,7,7,Nonpartisan,190,observed_numeric,False,True,True
+Gosper,3,7,8,Grand Total,1394,observed_numeric,False,True,True
+Grant,3,8,1,Republican,381,observed_numeric,False,True,True
+Grant,3,8,2,Democratic,17,observed_numeric,False,True,True
+Grant,3,8,3,Libertarian,3,observed_numeric,False,True,True
+Grant,3,8,4,Legal Marijuana NOW,,blank,False,True,True
+Grant,3,8,5,Nebraska Working People,,blank,False,True,True
+Grant,3,8,6,America First,,blank,False,True,True
+Grant,3,8,7,Nonpartisan,27,observed_numeric,False,True,True
+Grant,3,8,8,Grand Total,428,observed_numeric,False,True,True
+Greeley,3,9,1,Republican,1081,observed_numeric,False,True,True
+Greeley,3,9,2,Democratic,303,observed_numeric,False,True,True
+Greeley,3,9,3,Libertarian,8,observed_numeric,False,True,True
+Greeley,3,9,4,Legal Marijuana NOW,4,observed_numeric,False,True,True
+Greeley,3,9,5,Nebraska Working People,,blank,False,True,True
+Greeley,3,9,6,America First,,blank,False,True,True
+Greeley,3,9,7,Nonpartisan,153,observed_numeric,False,True,True
+Greeley,3,9,8,Grand Total,1549,observed_numeric,False,True,True
+Hall,3,10,1,Republican,17617,observed_numeric,False,True,True
+Hall,3,10,2,Democratic,7350,observed_numeric,False,True,True
+Hall,3,10,3,Libertarian,431,observed_numeric,False,True,True
+Hall,3,10,4,Legal Marijuana NOW,253,observed_numeric,False,True,True
+Hall,3,10,5,Nebraska Working People,8,observed_numeric,False,True,True
+Hall,3,10,6,America First,7,observed_numeric,False,True,True
+Hall,3,10,7,Nonpartisan,7249,observed_numeric,False,True,True
+Hall,3,10,8,Grand Total,32915,observed_numeric,False,True,True
+Hamilton,3,11,1,Republican,4907,observed_numeric,False,True,True
+Hamilton,3,11,2,Democratic,839,observed_numeric,False,True,True
+Hamilton,3,11,3,Libertarian,67,observed_numeric,False,True,True
+Hamilton,3,11,4,Legal Marijuana NOW,28,observed_numeric,False,True,True
+Hamilton,3,11,5,Nebraska Working People,1,observed_numeric,False,True,True
+Hamilton,3,11,6,America First,1,observed_numeric,False,True,True
+Hamilton,3,11,7,Nonpartisan,1051,observed_numeric,False,True,True
+Hamilton,3,11,8,Grand Total,6894,observed_numeric,False,True,True
+Harlan,3,12,1,Republican,1673,observed_numeric,False,True,True
+Harlan,3,12,2,Democratic,274,observed_numeric,False,True,True
+Harlan,3,12,3,Libertarian,11,observed_numeric,False,True,True
+Harlan,3,12,4,Legal Marijuana NOW,8,observed_numeric,False,True,True
+Harlan,3,12,5,Nebraska Working People,,blank,False,True,True
+Harlan,3,12,6,America First,,blank,False,True,True
+Harlan,3,12,7,Nonpartisan,325,observed_numeric,False,True,True
+Harlan,3,12,8,Grand Total,2291,observed_numeric,False,True,True
+Hayes,3,13,1,Republican,521,observed_numeric,False,True,True
+Hayes,3,13,2,Democratic,21,observed_numeric,False,True,True
+Hayes,3,13,3,Libertarian,6,observed_numeric,False,True,True
+Hayes,3,13,4,Legal Marijuana NOW,2,observed_numeric,False,True,True
+Hayes,3,13,5,Nebraska Working People,,blank,False,True,True
+Hayes,3,13,6,America First,,blank,False,True,True
+Hayes,3,13,7,Nonpartisan,60,observed_numeric,False,True,True
+Hayes,3,13,8,Grand Total,610,observed_numeric,False,True,True
+Hitchcock,3,14,1,Republican,1377,observed_numeric,False,True,True
+Hitchcock,3,14,2,Democratic,161,observed_numeric,False,True,True
+Hitchcock,3,14,3,Libertarian,20,observed_numeric,False,True,True
+Hitchcock,3,14,4,Legal Marijuana NOW,2,observed_numeric,False,True,True
+Hitchcock,3,14,5,Nebraska Working People,,blank,False,True,True
+Hitchcock,3,14,6,America First,,blank,False,True,True
+Hitchcock,3,14,7,Nonpartisan,275,observed_numeric,False,True,True
+Hitchcock,3,14,8,Grand Total,1835,observed_numeric,False,True,True
+Holt,3,15,1,Republican,5519,observed_numeric,False,True,True
+Holt,3,15,2,Democratic,689,observed_numeric,False,True,True
+Holt,3,15,3,Libertarian,39,observed_numeric,False,True,True
+Holt,3,15,4,Legal Marijuana NOW,24,observed_numeric,False,True,True
+Holt,3,15,5,Nebraska Working People,,blank,False,True,True
+Holt,3,15,6,America First,,blank,False,True,True
+Holt,3,15,7,Nonpartisan,714,observed_numeric,False,True,True
+Holt,3,15,8,Grand Total,6985,observed_numeric,False,True,True
+Hooker,4,1,1,Republican,422,observed_numeric,False,True,True
+Hooker,4,1,2,Democratic,50,observed_numeric,False,True,True
+Hooker,4,1,3,Libertarian,2,observed_numeric,False,True,True
+Hooker,4,1,4,Legal Marijuana NOW,1,observed_numeric,False,True,True
+Hooker,4,1,5,Nebraska Working People,,blank,False,True,True
+Hooker,4,1,6,America First,,blank,False,True,True
+Hooker,4,1,7,Nonpartisan,54,observed_numeric,False,True,True
+Hooker,4,1,8,Grand Total,529,observed_numeric,False,True,True
+Howard,4,2,1,Republican,3268,observed_numeric,False,True,True
+Howard,4,2,2,Democratic,724,observed_numeric,False,True,True
+Howard,4,2,3,Libertarian,57,observed_numeric,False,True,True
+Howard,4,2,4,Legal Marijuana NOW,12,observed_numeric,False,True,True
+Howard,4,2,5,Nebraska Working People,,blank,False,True,True
+Howard,4,2,6,America First,1,observed_numeric,False,True,True
+Howard,4,2,7,Nonpartisan,614,observed_numeric,False,True,True
+Howard,4,2,8,Grand Total,4676,observed_numeric,False,True,True
+Jefferson,4,3,1,Republican,2953,observed_numeric,False,True,True
+Jefferson,4,3,2,Democratic,793,observed_numeric,False,True,True
+Jefferson,4,3,3,Libertarian,58,observed_numeric,False,True,True
+Jefferson,4,3,4,Legal Marijuana NOW,43,observed_numeric,False,True,True
+Jefferson,4,3,5,Nebraska Working People,,blank,False,True,True
+Jefferson,4,3,6,America First,,blank,False,True,True
+Jefferson,4,3,7,Nonpartisan,835,observed_numeric,False,True,True
+Jefferson,4,3,8,Grand Total,4682,observed_numeric,False,True,True
+Johnson,4,4,1,Republican,1681,observed_numeric,False,True,True
+Johnson,4,4,2,Democratic,554,observed_numeric,False,True,True
+Johnson,4,4,3,Libertarian,37,observed_numeric,False,True,True
+Johnson,4,4,4,Legal Marijuana NOW,12,observed_numeric,False,True,True
+Johnson,4,4,5,Nebraska Working People,,blank,False,True,True
+Johnson,4,4,6,America First,1,observed_numeric,False,True,True
+Johnson,4,4,7,Nonpartisan,479,observed_numeric,False,True,True
+Johnson,4,4,8,Grand Total,2764,observed_numeric,False,True,True
+Kearney,4,5,1,Republican,3299,observed_numeric,False,True,True
+Kearney,4,5,2,Democratic,603,observed_numeric,False,True,True
+Kearney,4,5,3,Libertarian,63,observed_numeric,False,True,True
+Kearney,4,5,4,Legal Marijuana NOW,22,observed_numeric,False,True,True
+Kearney,4,5,5,Nebraska Working People,,blank,False,True,True
+Kearney,4,5,6,America First,,blank,False,True,True
+Kearney,4,5,7,Nonpartisan,658,observed_numeric,False,True,True
+Kearney,4,5,8,Grand Total,4645,observed_numeric,False,True,True
+Keith,4,6,1,Republican,3943,observed_numeric,False,True,True
+Keith,4,6,2,Democratic,655,observed_numeric,False,True,True
+Keith,4,6,3,Libertarian,59,observed_numeric,False,True,True
+Keith,4,6,4,Legal Marijuana NOW,23,observed_numeric,False,True,True
+Keith,4,6,5,Nebraska Working People,2,observed_numeric,False,True,True
+Keith,4,6,6,America First,1,observed_numeric,False,True,True
+Keith,4,6,7,Nonpartisan,1044,observed_numeric,False,True,True
+Keith,4,6,8,Grand Total,5727,observed_numeric,False,True,True
+Keya Paha,4,7,1,Republican,557,observed_numeric,False,True,True
+Keya Paha,4,7,2,Democratic,36,observed_numeric,False,True,True
+Keya Paha,4,7,3,Libertarian,2,observed_numeric,False,True,True
+Keya Paha,4,7,4,Legal Marijuana NOW,,blank,False,True,True
+Keya Paha,4,7,5,Nebraska Working People,,blank,False,True,True
+Keya Paha,4,7,6,America First,,blank,False,True,True
+Keya Paha,4,7,7,Nonpartisan,28,observed_numeric,False,True,True
+Keya Paha,4,7,8,Grand Total,623,observed_numeric,False,True,True
+Kimball,4,8,1,Republican,1833,observed_numeric,False,True,True
+Kimball,4,8,2,Democratic,282,observed_numeric,False,True,True
+Kimball,4,8,3,Libertarian,30,observed_numeric,False,True,True
+Kimball,4,8,4,Legal Marijuana NOW,9,observed_numeric,False,True,True
+Kimball,4,8,5,Nebraska Working People,1,observed_numeric,False,True,True
+Kimball,4,8,6,America First,,blank,False,True,True
+Kimball,4,8,7,Nonpartisan,405,observed_numeric,False,True,True
+Kimball,4,8,8,Grand Total,2560,observed_numeric,False,True,True
+Knox,4,9,1,Republican,3791,observed_numeric,False,True,True
+Knox,4,9,2,Democratic,912,observed_numeric,False,True,True
+Knox,4,9,3,Libertarian,41,observed_numeric,False,True,True
+Knox,4,9,4,Legal Marijuana NOW,30,observed_numeric,False,True,True
+Knox,4,9,5,Nebraska Working People,,blank,False,True,True
+Knox,4,9,6,America First,,blank,False,True,True
+Knox,4,9,7,Nonpartisan,709,observed_numeric,False,True,True
+Knox,4,9,8,Grand Total,5483,observed_numeric,False,True,True
+Lancaster,4,10,1,Republican,82936,observed_numeric,False,True,True
+Lancaster,4,10,2,Democratic,68891,observed_numeric,False,True,True
+Lancaster,4,10,3,Libertarian,3178,observed_numeric,False,True,True
+Lancaster,4,10,4,Legal Marijuana NOW,1937,observed_numeric,False,True,True
+Lancaster,4,10,5,Nebraska Working People,19,observed_numeric,False,True,True
+Lancaster,4,10,6,America First,66,observed_numeric,False,True,True
+Lancaster,4,10,7,Nonpartisan,51774,observed_numeric,False,True,True
+Lancaster,4,10,8,Grand Total,208801,observed_numeric,False,True,True
+Lincoln,4,11,1,Republican,14560,observed_numeric,False,True,True
+Lincoln,4,11,2,Democratic,3757,observed_numeric,False,True,True
+Lincoln,4,11,3,Libertarian,325,observed_numeric,False,True,True
+Lincoln,4,11,4,Legal Marijuana NOW,191,observed_numeric,False,True,True
+Lincoln,4,11,5,Nebraska Working People,26,observed_numeric,False,True,True
+Lincoln,4,11,6,America First,1,observed_numeric,False,True,True
+Lincoln,4,11,7,Nonpartisan,4320,observed_numeric,False,True,True
+Lincoln,4,11,8,Grand Total,23180,observed_numeric,False,True,True
+Logan,4,12,1,Republican,434,observed_numeric,False,True,True
+Logan,4,12,2,Democratic,34,observed_numeric,False,True,True
+Logan,4,12,3,Libertarian,7,observed_numeric,False,True,True
+Logan,4,12,4,Legal Marijuana NOW,,blank,False,True,True
+Logan,4,12,5,Nebraska Working People,,blank,False,True,True
+Logan,4,12,6,America First,,blank,False,True,True
+Logan,4,12,7,Nonpartisan,59,observed_numeric,False,True,True
+Logan,4,12,8,Grand Total,534,observed_numeric,False,True,True
+Loup,4,13,1,Republican,407,observed_numeric,False,True,True
+Loup,4,13,2,Democratic,59,observed_numeric,False,True,True
+Loup,4,13,3,Libertarian,3,observed_numeric,False,True,True
+Loup,4,13,4,Legal Marijuana NOW,1,observed_numeric,False,True,True
+Loup,4,13,5,Nebraska Working People,,blank,False,True,True
+Loup,4,13,6,America First,,blank,False,True,True
+Loup,4,13,7,Nonpartisan,30,observed_numeric,False,True,True
+Loup,4,13,8,Grand Total,500,observed_numeric,False,True,True
+Madison,4,14,1,Republican,13505,observed_numeric,False,True,True
+Madison,4,14,2,Democratic,3325,observed_numeric,False,True,True
+Madison,4,14,3,Libertarian,243,observed_numeric,False,True,True
+Madison,4,14,4,Legal Marijuana NOW,163,observed_numeric,False,True,True
+Madison,4,14,5,Nebraska Working People,3,observed_numeric,False,True,True
+Madison,4,14,6,America First,8,observed_numeric,False,True,True
+Madison,4,14,7,Nonpartisan,3926,observed_numeric,False,True,True
+Madison,4,14,8,Grand Total,21173,observed_numeric,False,True,True
+Mcpherson,4,15,1,Republican,297,observed_numeric,False,True,True
+Mcpherson,4,15,2,Democratic,20,observed_numeric,False,True,True
+Mcpherson,4,15,3,Libertarian,5,observed_numeric,False,True,True
+Mcpherson,4,15,4,Legal Marijuana NOW,,blank,False,True,True
+Mcpherson,4,15,5,Nebraska Working People,,blank,False,True,True
+Mcpherson,4,15,6,America First,,blank,False,True,True
+Mcpherson,4,15,7,Nonpartisan,17,observed_numeric,False,True,True
+Mcpherson,4,15,8,Grand Total,339,observed_numeric,False,True,True
+Merrick,5,1,1,Republican,3927,observed_numeric,False,True,True
+Merrick,5,1,2,Democratic,628,observed_numeric,False,True,True
+Merrick,5,1,3,Libertarian,48,observed_numeric,False,True,True
+Merrick,5,1,4,Legal Marijuana NOW,23,observed_numeric,False,True,True
+Merrick,5,1,5,Nebraska Working People,2,observed_numeric,False,True,True
+Merrick,5,1,6,America First,1,observed_numeric,False,True,True
+Merrick,5,1,7,Nonpartisan,751,observed_numeric,False,True,True
+Merrick,5,1,8,Grand Total,5380,observed_numeric,False,True,True
+Morrill,5,2,1,Republican,2265,observed_numeric,False,True,True
+Morrill,5,2,2,Democratic,302,observed_numeric,False,True,True
+Morrill,5,2,3,Libertarian,28,observed_numeric,False,True,True
+Morrill,5,2,4,Legal Marijuana NOW,11,observed_numeric,False,True,True
+Morrill,5,2,5,Nebraska Working People,,blank,False,True,True
+Morrill,5,2,6,America First,,blank,False,True,True
+Morrill,5,2,7,Nonpartisan,395,observed_numeric,False,True,True
+Morrill,5,2,8,Grand Total,3001,observed_numeric,False,True,True
+Nance,5,3,1,Republican,1638,observed_numeric,False,True,True
+Nance,5,3,2,Democratic,425,observed_numeric,False,True,True
+Nance,5,3,3,Libertarian,23,observed_numeric,False,True,True
+Nance,5,3,4,Legal Marijuana NOW,13,observed_numeric,False,True,True
+Nance,5,3,5,Nebraska Working People,,blank,False,True,True
+Nance,5,3,6,America First,,blank,False,True,True
+Nance,5,3,7,Nonpartisan,297,observed_numeric,False,True,True
+Nance,5,3,8,Grand Total,2396,observed_numeric,False,True,True
+Nemaha,5,4,1,Republican,2708,observed_numeric,False,True,True
+Nemaha,5,4,2,Democratic,789,observed_numeric,False,True,True
+Nemaha,5,4,3,Libertarian,70,observed_numeric,False,True,True
+Nemaha,5,4,4,Legal Marijuana NOW,23,observed_numeric,False,True,True
+Nemaha,5,4,5,Nebraska Working People,,blank,False,True,True
+Nemaha,5,4,6,America First,1,observed_numeric,False,True,True
+Nemaha,5,4,7,Nonpartisan,890,observed_numeric,False,True,True
+Nemaha,5,4,8,Grand Total,4481,observed_numeric,False,True,True
+Nuckolls,5,5,1,Republican,2094,observed_numeric,False,True,True
+Nuckolls,5,5,2,Democratic,445,observed_numeric,False,True,True
+Nuckolls,5,5,3,Libertarian,22,observed_numeric,False,True,True
+Nuckolls,5,5,4,Legal Marijuana NOW,19,observed_numeric,False,True,True
+Nuckolls,5,5,5,Nebraska Working People,,blank,False,True,True
+Nuckolls,5,5,6,America First,,blank,False,True,True
+Nuckolls,5,5,7,Nonpartisan,442,observed_numeric,False,True,True
+Nuckolls,5,5,8,Grand Total,3022,observed_numeric,False,True,True
+Otoe,5,6,1,Republican,6268,observed_numeric,False,True,True
+Otoe,5,6,2,Democratic,2012,observed_numeric,False,True,True
+Otoe,5,6,3,Libertarian,140,observed_numeric,False,True,True
+Otoe,5,6,4,Legal Marijuana NOW,65,observed_numeric,False,True,True
+Otoe,5,6,5,Nebraska Working People,3,observed_numeric,False,True,True
+Otoe,5,6,6,America First,5,observed_numeric,False,True,True
+Otoe,5,6,7,Nonpartisan,2313,observed_numeric,False,True,True
+Otoe,5,6,8,Grand Total,10806,observed_numeric,False,True,True
+Pawnee,5,7,1,Republican,1182,observed_numeric,False,True,True
+Pawnee,5,7,2,Democratic,294,observed_numeric,False,True,True
+Pawnee,5,7,3,Libertarian,21,observed_numeric,False,True,True
+Pawnee,5,7,4,Legal Marijuana NOW,9,observed_numeric,False,True,True
+Pawnee,5,7,5,Nebraska Working People,,blank,False,True,True
+Pawnee,5,7,6,America First,,blank,False,True,True
+Pawnee,5,7,7,Nonpartisan,267,observed_numeric,False,True,True
+Pawnee,5,7,8,Grand Total,1773,observed_numeric,False,True,True
+Perkins,5,8,1,Republican,1407,observed_numeric,False,True,True
+Perkins,5,8,2,Democratic,181,observed_numeric,False,True,True
+Perkins,5,8,3,Libertarian,17,observed_numeric,False,True,True
+Perkins,5,8,4,Legal Marijuana NOW,4,observed_numeric,False,True,True
+Perkins,5,8,5,Nebraska Working People,,blank,False,True,True
+Perkins,5,8,6,America First,,blank,False,True,True
+Perkins,5,8,7,Nonpartisan,234,observed_numeric,False,True,True
+Perkins,5,8,8,Grand Total,1843,observed_numeric,False,True,True
+Phelps,5,9,1,Republican,4597,observed_numeric,False,True,True
+Phelps,5,9,2,Democratic,653,observed_numeric,False,True,True
+Phelps,5,9,3,Libertarian,76,observed_numeric,False,True,True
+Phelps,5,9,4,Legal Marijuana NOW,24,observed_numeric,False,True,True
+Phelps,5,9,5,Nebraska Working People,1,observed_numeric,False,True,True
+Phelps,5,9,6,America First,,blank,False,True,True
+Phelps,5,9,7,Nonpartisan,803,observed_numeric,False,True,True
+Phelps,5,9,8,Grand Total,6154,observed_numeric,False,True,True
+Pierce,5,10,1,Republican,3830,observed_numeric,False,True,True
+Pierce,5,10,2,Democratic,412,observed_numeric,False,True,True
+Pierce,5,10,3,Libertarian,46,observed_numeric,False,True,True
+Pierce,5,10,4,Legal Marijuana NOW,22,observed_numeric,False,True,True
+Pierce,5,10,5,Nebraska Working People,,blank,False,True,True
+Pierce,5,10,6,America First,,blank,False,True,True
+Pierce,5,10,7,Nonpartisan,682,observed_numeric,False,True,True
+Pierce,5,10,8,Grand Total,4992,observed_numeric,False,True,True
+Platte,5,11,1,Republican,13431,observed_numeric,False,True,True
+Platte,5,11,2,Democratic,3422,observed_numeric,False,True,True
+Platte,5,11,3,Libertarian,215,observed_numeric,False,True,True
+Platte,5,11,4,Legal Marijuana NOW,126,observed_numeric,False,True,True
+Platte,5,11,5,Nebraska Working People,7,observed_numeric,False,True,True
+Platte,5,11,6,America First,7,observed_numeric,False,True,True
+Platte,5,11,7,Nonpartisan,3336,observed_numeric,False,True,True
+Platte,5,11,8,Grand Total,20544,observed_numeric,False,True,True
+Polk,5,12,1,Republican,2615,observed_numeric,False,True,True
+Polk,5,12,2,Democratic,462,observed_numeric,False,True,True
+Polk,5,12,3,Libertarian,36,observed_numeric,False,True,True
+Polk,5,12,4,Legal Marijuana NOW,17,observed_numeric,False,True,True
+Polk,5,12,5,Nebraska Working People,,blank,False,True,True
+Polk,5,12,6,America First,,blank,False,True,True
+Polk,5,12,7,Nonpartisan,493,observed_numeric,False,True,True
+Polk,5,12,8,Grand Total,3623,observed_numeric,False,True,True
+Red Willow,5,13,1,Republican,4990,observed_numeric,False,True,True
+Red Willow,5,13,2,Democratic,764,observed_numeric,False,True,True
+Red Willow,5,13,3,Libertarian,80,observed_numeric,False,True,True
+Red Willow,5,13,4,Legal Marijuana NOW,35,observed_numeric,False,True,True
+Red Willow,5,13,5,Nebraska Working People,1,observed_numeric,False,True,True
+Red Willow,5,13,6,America First,1,observed_numeric,False,True,True
+Red Willow,5,13,7,Nonpartisan,1162,observed_numeric,False,True,True
+Red Willow,5,13,8,Grand Total,7033,observed_numeric,False,True,True
+Richardson,5,14,1,Republican,3242,observed_numeric,False,True,True
+Richardson,5,14,2,Democratic,987,observed_numeric,False,True,True
+Richardson,5,14,3,Libertarian,38,observed_numeric,False,True,True
+Richardson,5,14,4,Legal Marijuana NOW,37,observed_numeric,False,True,True
+Richardson,5,14,5,Nebraska Working People,,blank,False,True,True
+Richardson,5,14,6,America First,,blank,False,True,True
+Richardson,5,14,7,Nonpartisan,851,observed_numeric,False,True,True
+Richardson,5,14,8,Grand Total,5155,observed_numeric,False,True,True
+Rock,5,15,1,Republican,912,observed_numeric,False,True,True
+Rock,5,15,2,Democratic,64,observed_numeric,False,True,True
+Rock,5,15,3,Libertarian,6,observed_numeric,False,True,True
+Rock,5,15,4,Legal Marijuana NOW,1,observed_numeric,False,True,True
+Rock,5,15,5,Nebraska Working People,,blank,False,True,True
+Rock,5,15,6,America First,,blank,False,True,True
+Rock,5,15,7,Nonpartisan,64,observed_numeric,False,True,True
+Rock,5,15,8,Grand Total,1047,observed_numeric,False,True,True
+Saline,6,1,1,Republican,3854,observed_numeric,False,True,True
+Saline,6,1,2,Democratic,2189,observed_numeric,False,True,True
+Saline,6,1,3,Libertarian,108,observed_numeric,False,True,True
+Saline,6,1,4,Legal Marijuana NOW,39,observed_numeric,False,True,True
+Saline,6,1,5,Nebraska Working People,1,observed_numeric,False,True,True
+Saline,6,1,6,America First,3,observed_numeric,False,True,True
+Saline,6,1,7,Nonpartisan,1536,observed_numeric,False,True,True
+Saline,6,1,8,Grand Total,7730,observed_numeric,False,True,True
+Sarpy,6,2,1,Republican,57898,observed_numeric,False,True,True
+Sarpy,6,2,2,Democratic,34521,observed_numeric,False,True,True
+Sarpy,6,2,3,Libertarian,2250,observed_numeric,False,True,True
+Sarpy,6,2,4,Legal Marijuana NOW,1097,observed_numeric,False,True,True
+Sarpy,6,2,5,Nebraska Working People,21,observed_numeric,False,True,True
+Sarpy,6,2,6,America First,26,observed_numeric,False,True,True
+Sarpy,6,2,7,Nonpartisan,37255,observed_numeric,False,True,True
+Sarpy,6,2,8,Grand Total,133068,observed_numeric,False,True,True
+Saunders,6,3,1,Republican,10682,observed_numeric,False,True,True
+Saunders,6,3,2,Democratic,2822,observed_numeric,False,True,True
+Saunders,6,3,3,Libertarian,204,observed_numeric,False,True,True
+Saunders,6,3,4,Legal Marijuana NOW,84,observed_numeric,False,True,True
+Saunders,6,3,5,Nebraska Working People,1,observed_numeric,False,True,True
+Saunders,6,3,6,America First,4,observed_numeric,False,True,True
+Saunders,6,3,7,Nonpartisan,3099,observed_numeric,False,True,True
+Saunders,6,3,8,Grand Total,16896,observed_numeric,False,True,True
+Scotts Bluff,6,4,1,Republican,12917,observed_numeric,False,True,True
+Scotts Bluff,6,4,2,Democratic,4233,observed_numeric,False,True,True
+Scotts Bluff,6,4,3,Libertarian,294,observed_numeric,False,True,True
+Scotts Bluff,6,4,4,Legal Marijuana NOW,188,observed_numeric,False,True,True
+Scotts Bluff,6,4,5,Nebraska Working People,3,observed_numeric,False,True,True
+Scotts Bluff,6,4,6,America First,6,observed_numeric,False,True,True
+Scotts Bluff,6,4,7,Nonpartisan,4888,observed_numeric,False,True,True
+Scotts Bluff,6,4,8,Grand Total,22529,observed_numeric,False,True,True
+Seward,6,5,1,Republican,7243,observed_numeric,False,True,True
+Seward,6,5,2,Democratic,1923,observed_numeric,False,True,True
+Seward,6,5,3,Libertarian,149,observed_numeric,False,True,True
+Seward,6,5,4,Legal Marijuana NOW,42,observed_numeric,False,True,True
+Seward,6,5,5,Nebraska Working People,1,observed_numeric,False,True,True
+Seward,6,5,6,America First,4,observed_numeric,False,True,True
+Seward,6,5,7,Nonpartisan,2243,observed_numeric,False,True,True
+Seward,6,5,8,Grand Total,11605,observed_numeric,False,True,True
+Sheridan,6,6,1,Republican,2468,observed_numeric,False,True,True
+Sheridan,6,6,2,Democratic,338,observed_numeric,False,True,True
+Sheridan,6,6,3,Libertarian,25,observed_numeric,False,True,True
+Sheridan,6,6,4,Legal Marijuana NOW,18,observed_numeric,False,True,True
+Sheridan,6,6,5,Nebraska Working People,,blank,False,True,True
+Sheridan,6,6,6,America First,,blank,False,True,True
+Sheridan,6,6,7,Nonpartisan,450,observed_numeric,False,True,True
+Sheridan,6,6,8,Grand Total,3299,observed_numeric,False,True,True
+Sherman,6,7,1,Republican,1391,observed_numeric,False,True,True
+Sherman,6,7,2,Democratic,433,observed_numeric,False,True,True
+Sherman,6,7,3,Libertarian,18,observed_numeric,False,True,True
+Sherman,6,7,4,Legal Marijuana NOW,6,observed_numeric,False,True,True
+Sherman,6,7,5,Nebraska Working People,,blank,False,True,True
+Sherman,6,7,6,America First,,blank,False,True,True
+Sherman,6,7,7,Nonpartisan,217,observed_numeric,False,True,True
+Sherman,6,7,8,Grand Total,2065,observed_numeric,False,True,True
+Sioux,6,8,1,Republican,682,observed_numeric,False,True,True
+Sioux,6,8,2,Democratic,60,observed_numeric,False,True,True
+Sioux,6,8,3,Libertarian,7,observed_numeric,False,True,True
+Sioux,6,8,4,Legal Marijuana NOW,3,observed_numeric,False,True,True
+Sioux,6,8,5,Nebraska Working People,,blank,False,True,True
+Sioux,6,8,6,America First,,blank,False,True,True
+Sioux,6,8,7,Nonpartisan,84,observed_numeric,False,True,True
+Sioux,6,8,8,Grand Total,836,observed_numeric,False,True,True
+Stanton,6,9,1,Republican,2881,observed_numeric,False,True,True
+Stanton,6,9,2,Democratic,437,observed_numeric,False,True,True
+Stanton,6,9,3,Libertarian,35,observed_numeric,False,True,True
+Stanton,6,9,4,Legal Marijuana NOW,16,observed_numeric,False,True,True
+Stanton,6,9,5,Nebraska Working People,1,observed_numeric,False,True,True
+Stanton,6,9,6,America First,,blank,False,True,True
+Stanton,6,9,7,Nonpartisan,452,observed_numeric,False,True,True
+Stanton,6,9,8,Grand Total,3822,observed_numeric,False,True,True
+Thayer,6,10,1,Republican,2486,observed_numeric,False,True,True
+Thayer,6,10,2,Democratic,500,observed_numeric,False,True,True
+Thayer,6,10,3,Libertarian,34,observed_numeric,False,True,True
+Thayer,6,10,4,Legal Marijuana NOW,15,observed_numeric,False,True,True
+Thayer,6,10,5,Nebraska Working People,,blank,False,True,True
+Thayer,6,10,6,America First,,blank,False,True,True
+Thayer,6,10,7,Nonpartisan,501,observed_numeric,False,True,True
+Thayer,6,10,8,Grand Total,3536,observed_numeric,False,True,True
+Thomas,6,11,1,Republican,391,observed_numeric,False,True,True
+Thomas,6,11,2,Democratic,28,observed_numeric,False,True,True
+Thomas,6,11,3,Libertarian,,blank,False,True,True
+Thomas,6,11,4,Legal Marijuana NOW,5,observed_numeric,False,True,True
+Thomas,6,11,5,Nebraska Working People,,blank,False,True,True
+Thomas,6,11,6,America First,,blank,False,True,True
+Thomas,6,11,7,Nonpartisan,56,observed_numeric,False,True,True
+Thomas,6,11,8,Grand Total,480,observed_numeric,False,True,True
+Thurston,6,12,1,Republican,1329,observed_numeric,False,True,True
+Thurston,6,12,2,Democratic,1727,observed_numeric,False,True,True
+Thurston,6,12,3,Libertarian,30,observed_numeric,False,True,True
+Thurston,6,12,4,Legal Marijuana NOW,59,observed_numeric,False,True,True
+Thurston,6,12,5,Nebraska Working People,1,observed_numeric,False,True,True
+Thurston,6,12,6,America First,,blank,False,True,True
+Thurston,6,12,7,Nonpartisan,671,observed_numeric,False,True,True
+Thurston,6,12,8,Grand Total,3817,observed_numeric,False,True,True
+Valley,6,13,1,Republican,2199,observed_numeric,False,True,True
+Valley,6,13,2,Democratic,386,observed_numeric,False,True,True
+Valley,6,13,3,Libertarian,20,observed_numeric,False,True,True
+Valley,6,13,4,Legal Marijuana NOW,8,observed_numeric,False,True,True
+Valley,6,13,5,Nebraska Working People,,blank,False,True,True
+Valley,6,13,6,America First,,blank,False,True,True
+Valley,6,13,7,Nonpartisan,340,observed_numeric,False,True,True
+Valley,6,13,8,Grand Total,2953,observed_numeric,False,True,True
+Washington,6,14,1,Republican,9350,observed_numeric,False,True,True
+Washington,6,14,2,Democratic,2590,observed_numeric,False,True,True
+Washington,6,14,3,Libertarian,221,observed_numeric,False,True,True
+Washington,6,14,4,Legal Marijuana NOW,85,observed_numeric,False,True,True
+Washington,6,14,5,Nebraska Working People,2,observed_numeric,False,True,True
+Washington,6,14,6,America First,2,observed_numeric,False,True,True
+Washington,6,14,7,Nonpartisan,3264,observed_numeric,False,True,True
+Washington,6,14,8,Grand Total,15514,observed_numeric,False,True,True
+Wayne,6,15,1,Republican,3407,observed_numeric,False,True,True
+Wayne,6,15,2,Democratic,842,observed_numeric,False,True,True
+Wayne,6,15,3,Libertarian,82,observed_numeric,False,True,True
+Wayne,6,15,4,Legal Marijuana NOW,21,observed_numeric,False,True,True
+Wayne,6,15,5,Nebraska Working People,1,observed_numeric,False,True,True
+Wayne,6,15,6,America First,2,observed_numeric,False,True,True
+Wayne,6,15,7,Nonpartisan,886,observed_numeric,False,True,True
+Wayne,6,15,8,Grand Total,5241,observed_numeric,False,True,True
+Webster,7,1,1,Republican,1623,observed_numeric,False,True,True
+Webster,7,1,2,Democratic,276,observed_numeric,False,True,True
+Webster,7,1,3,Libertarian,31,observed_numeric,False,True,True
+Webster,7,1,4,Legal Marijuana NOW,6,observed_numeric,False,True,True
+Webster,7,1,5,Nebraska Working People,,blank,False,True,True
+Webster,7,1,6,America First,1,observed_numeric,False,True,True
+Webster,7,1,7,Nonpartisan,338,observed_numeric,False,True,True
+Webster,7,1,8,Grand Total,2275,observed_numeric,False,True,True
+Wheeler,7,2,1,Republican,469,observed_numeric,False,True,True
+Wheeler,7,2,2,Democratic,61,observed_numeric,False,True,True
+Wheeler,7,2,3,Libertarian,5,observed_numeric,False,True,True
+Wheeler,7,2,4,Legal Marijuana NOW,,blank,False,True,True
+Wheeler,7,2,5,Nebraska Working People,,blank,False,True,True
+Wheeler,7,2,6,America First,,blank,False,True,True
+Wheeler,7,2,7,Nonpartisan,39,observed_numeric,False,True,True
+Wheeler,7,2,8,Grand Total,574,observed_numeric,False,True,True
+York,7,3,1,Republican,6204,observed_numeric,False,True,True
+York,7,3,2,Democratic,1263,observed_numeric,False,True,True
+York,7,3,3,Libertarian,98,observed_numeric,False,True,True
+York,7,3,4,Legal Marijuana NOW,54,observed_numeric,False,True,True
+York,7,3,5,Nebraska Working People,2,observed_numeric,False,True,True
+York,7,3,6,America First,,blank,False,True,True
+York,7,3,7,Nonpartisan,1602,observed_numeric,False,True,True
+York,7,3,8,Grand Total,9223,observed_numeric,False,True,True
+Grand Total,7,4,1,Republican,619862,observed_numeric,False,True,True
+Grand Total,7,4,2,Democratic,331558,observed_numeric,False,True,True
+Grand Total,7,4,3,Libertarian,17422,observed_numeric,False,True,True
+Grand Total,7,4,4,Legal Marijuana NOW,10842,observed_numeric,False,True,True
+Grand Total,7,4,5,Nebraska Working People,235,observed_numeric,False,True,True
+Grand Total,7,4,6,America First,275,observed_numeric,False,True,True
+Grand Total,7,4,7,Nonpartisan,284828,observed_numeric,False,True,True
+Grand Total,7,4,8,Grand Total,1265022,observed_numeric,False,True,True

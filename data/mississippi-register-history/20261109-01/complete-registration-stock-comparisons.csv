@@ -1,0 +1,4 @@
+from_year,to_year,state_code,source_status,report_months,from_derived_register,to_derived_register,registration_stock_difference,registration_stock_change_pct,same_election_type,matched_person_panel,registration_definitions_and_processing_harmonized,change_is_turnout_or_participation_change,inferred_new_voters,retained_voters,deaths,migration,eligibility
+2022,2024,MS,ACTIVE,October labels; exact cutoffs unknown,1926538,1965611,39073,2.0281458242713094680717431994593410563404407283946644187656822756675445799667590,False,False,False,False,,,,,
+2024,2026,MS,ACTIVE,October labels; exact cutoffs unknown,1965611,1888362,-77249,-3.9300248116234595756739253087207997920239559098926491559113171426085832852990749,False,False,False,False,,,,,
+2022,2026,MS,ACTIVE,October labels; exact cutoffs unknown,1926538,1888362,-38176,-1.9815856214619176990020440811445193398728704027639216044531693639056172263407210,True,False,False,False,,,,,

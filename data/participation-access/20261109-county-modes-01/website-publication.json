@@ -1,0 +1,513 @@
+{
+  "status": "live_verified_partial_not_nationwide_complete",
+  "website_commit": "cb79d841af3bdf5a3b353399699bb1b774a376db",
+  "Colorado_source_commit": "944d84683ea168f8d47b4eec8558e86192dcb9ab",
+  "West_Virginia_source_commit": "d0371e80c92af9ff3b8e88434d0b801fc6ce28ac",
+  "pages_run_id": 42717017978,
+  "main_source_guard_run_id": 42717018339,
+  "main_source_guard": "success",
+  "Pages_sync_timeout_ms": 1800000,
+  "timeout_input_documentation": "https://github.com/actions/deploy-pages/blob/main/action.yml",
+  "actual_production_acceptance_pending": false,
+  "whole_project_complete": false,
+  "complete_numerical_releases": {
+    "WV": {
+      "status": "PASS_immutable_complete_release",
+      "release_id": 439728452,
+      "tag": "voter-county-west-virginia-modes-20261109-01",
+      "source_commit": "d0371e80c92af9ff3b8e88434d0b801fc6ce28ac",
+      "immutable": true,
+      "published_at": "2026-11-09T22:38:58Z",
+      "assets": [
+        {
+          "name": "CHECKSUMS.txt",
+          "bytes": 423,
+          "sha256": "185a44396917c3f7f6bb6813ee02eddad1a95dade490de5d5dc6702efa2342f7",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-west-virginia-modes-20261109-01/CHECKSUMS.txt"
+        },
+        {
+          "name": "complete-analysis.zip",
+          "bytes": 1165420,
+          "sha256": "6c7656675b751b662162c29d0a282b667980c5412c1db707d7bc6fe1e2221c66",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-west-virginia-modes-20261109-01/complete-analysis.zip"
+        },
+        {
+          "name": "complete-county-mode-queries.csv",
+          "bytes": 177160,
+          "sha256": "24cf90f5fb40b901765b0b852d53915ae53e338c29dbba08809ccc7291ed28ca",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-west-virginia-modes-20261109-01/complete-county-mode-queries.csv"
+        },
+        {
+          "name": "manifest.json",
+          "bytes": 4588,
+          "sha256": "d1b2ade2cbf07ccdc55c01648c97e7bed497922768a1a1740bf510b116aa7813",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-west-virginia-modes-20261109-01/manifest.json"
+        },
+        {
+          "name": "queries.json",
+          "bytes": 620463,
+          "sha256": "bd678531f9d56811064b3c53a4220d12b55f68f5aa0abe6866b9760240843627",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-west-virginia-modes-20261109-01/queries.json"
+        },
+        {
+          "name": "README.txt",
+          "bytes": 1926,
+          "sha256": "49a096134fe6313353408f2616203df2219cd1f5b2dd0dc3f0bdf6e4a4b2c697",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-west-virginia-modes-20261109-01/README.txt"
+        }
+      ]
+    },
+    "CO": {
+      "status": "PASS_immutable_complete_release",
+      "release_id": 439743253,
+      "tag": "voter-county-colorado-returned-20261109-01",
+      "source_commit": "944d84683ea168f8d47b4eec8558e86192dcb9ab",
+      "immutable": true,
+      "published_at": "2026-11-09T22:59:16Z",
+      "assets": [
+        {
+          "name": "CHECKSUMS.txt",
+          "bytes": 418,
+          "sha256": "4d693fed491cc3cb7caba05fdc0c7d0f8154425e56eb09b176a4064c71a836b2",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-colorado-returned-20261109-01/CHECKSUMS.txt"
+        },
+        {
+          "name": "complete-analysis.zip",
+          "bytes": 1023255,
+          "sha256": "3551b8f7035000f047a1b9c98c19e521bb4cccd8c459b3263b26218e2fc5a9b1",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-colorado-returned-20261109-01/complete-analysis.zip"
+        },
+        {
+          "name": "complete-county-queries.csv",
+          "bytes": 16079,
+          "sha256": "0971cc193da5af76a60f350cffbb98c57d58f79baddbd2a170109175a185a26e",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-colorado-returned-20261109-01/complete-county-queries.csv"
+        },
+        {
+          "name": "manifest.json",
+          "bytes": 2628,
+          "sha256": "b18ae27b613b8d904de885089441647335ea751a07ad35d4d35f5c9892c10ca0",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-colorado-returned-20261109-01/manifest.json"
+        },
+        {
+          "name": "queries.json",
+          "bytes": 207875,
+          "sha256": "b77ad2711fe6a4f848fcfcf2b5b4c093bc6e154177d6af4accfb4738fc812e4c",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-colorado-returned-20261109-01/queries.json"
+        },
+        {
+          "name": "README.txt",
+          "bytes": 1488,
+          "sha256": "55af51d271e0366336d843b7e05d6d65ffc07963e67b736d8b3d0063d9334737",
+          "anonymous": true,
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-colorado-returned-20261109-01/README.txt"
+        }
+      ]
+    }
+  },
+  "local_views": {
+    "WV": {
+      "county_decisions": 55,
+      "all_method_counts": 3,
+      "all_method_holds": 52,
+      "early_counties": 55,
+      "returned_counties": 55,
+      "requests_download_only": 55,
+      "desktop_mobile_all_values_methods_missing_mode_rejection_and_retry": true
+    },
+    "CO": {
+      "county_decisions": 64,
+      "native_returned_processed_counts": 64,
+      "native_mode_frames": 3,
+      "desktop_mobile_all_values_native_records_methods_download_link": true
+    }
+  },
+  "focused_frozen_page_tests": 156,
+  "Astro_errors": 0,
+  "Astro_warnings": 0,
+  "build_tests": 4,
+  "local_prepared_payload_bytes": 978495288,
+  "local_prepared_tar_bytes": 980981760,
+  "unchanged_complete_download_routes": 436,
+  "original_native_WV_artifact": {
+    "status": "PASS_exact_pages_publication",
+    "commit": "d0371e80c92af9ff3b8e88434d0b801fc6ce28ac",
+    "run_id": 42713872385,
+    "artifact_id": 13716648981,
+    "payload_bytes": 988163667,
+    "tar_bytes": 990689280,
+    "files": 2903,
+    "verified_sha256": {
+      "participation-local/WV.json.gz": "d811b5ee63cde1d4f357c1564360fd51569afc6fa8eebc136c9f4fcd6a121eff",
+      "participation-local/MI.json.gz": "a6192cc95add7d81b2d9ee2afcfa1590c48562dad4bca798478e7dbebe832f8b",
+      "participation-local/MD.json.gz": "17d32c963e3322300fdfbbb79ccd46821f5bdb39c93019423e0e0b81690938c0",
+      "participation-local/IN.json.gz": "84bd7ffaf083902b4606506b0a2c20ee18c6073b295f196f92c8f06d5f819baf",
+      "participation-precincts/20261109-indiana-monroe-01/index.json": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650",
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281",
+      "participation-downloads.json": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade",
+      "participation-county-parents/20261109-02/complete-analysis.zip": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c",
+      "participation-county-parents/20261109-01/complete-analysis.zip": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915",
+      "participation-county-cards/20261109-01/complete-analysis.zip": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6",
+      "county-results.json": "3b5755aa3f2ad414c8c79dc52a3a53fa01ef0ce10aba4906dff5fb81f9925ad7",
+      "scripts/participation-explorer.js": "fca06ed9ed5e47b4535fe462e238bb2a2536a1a4df8eb9d4ddb24161657c31ca",
+      "scripts/participation-geography.js": "fc272a0e05477f7e6c568d3c08313cf583a321b60d43ed8234df3bfa5816a192",
+      "participation-precincts.json": "d97329822d3fd1b9eee7550b2526642a5f88ad3649e06aa2048f0398988504bb",
+      "participation-reporting-units.json": "fe52276f89aceda8b47d8c508125d4217effcf064bd37f210ce58257226dc335"
+    },
+    "unchanged_complete_download_routes": 436,
+    "generated_gzip_platform_headers": {
+      "participation-local/WV.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "004b9de8fc8d63e27af3e6df7ca7147d586fb6a46cf528eb911b28887182a94d",
+        "artifact_compressed_sha256": "d811b5ee63cde1d4f357c1564360fd51569afc6fa8eebc136c9f4fcd6a121eff",
+        "exact_decompressed_sha256": "4923b8b9c84e2e9b4f3a347eaa966d8bc602e757ab744ea116077b0c5309af76",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/MI.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "6bef07fc5a02ff6e98d79dd190ca297226f38363d9b7e74626febf11d241bda5",
+        "artifact_compressed_sha256": "a6192cc95add7d81b2d9ee2afcfa1590c48562dad4bca798478e7dbebe832f8b",
+        "exact_decompressed_sha256": "1ed80652a4d6f673dff137b41a42d36ca3629c3028b13cd3f17af50ac324443c",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/MD.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "3348301051b90ec9968a797975fd7f15e06111fafcfbb4a4f65360dd0a386975",
+        "artifact_compressed_sha256": "17d32c963e3322300fdfbbb79ccd46821f5bdb39c93019423e0e0b81690938c0",
+        "exact_decompressed_sha256": "a4b890bdcfc10f07ed7591f23c4e390d9378cb90cacc4d061e071a2c7d67c99c",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/IN.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "6dbb9cc2a3d29e6bda4b0d1cdec7bf3047f257fc37c3ee67a55f662fc3a06007",
+        "artifact_compressed_sha256": "84bd7ffaf083902b4606506b0a2c20ee18c6073b295f196f92c8f06d5f819baf",
+        "exact_decompressed_sha256": "e8b7cce801f11ca4d5f4102a611a66821b339b9f46e23c583c600a2f4140a2dc",
+        "all_other_compressed_bytes_identical": true
+      }
+    }
+  },
+  "failed_WV_deployment": {
+    "run_id": 42713872385,
+    "attempt1": "Successful build; Pages syncing_files timed out after600000ms",
+    "attempt2": "Only failed deploy retried, immediately cancelled; successful build not repeated"
+  },
+  "all_rates_withheld_for_new_county_frames": true,
+  "candidate_votes_substituted": false,
+  "counts_allocated_or_geometries_repaired": false,
+  "valid_sources_overridden": false,
+  "actual_native_artifact": {
+    "status": "PASS_exact_pages_publication",
+    "commit": "cb79d841af3bdf5a3b353399699bb1b774a376db",
+    "run_id": 42717017978,
+    "artifact_id": 13717918487,
+    "payload_bytes": 988185251,
+    "tar_bytes": 990709760,
+    "files": 2904,
+    "verified_sha256": {
+      "participation-local/WV.json.gz": "d811b5ee63cde1d4f357c1564360fd51569afc6fa8eebc136c9f4fcd6a121eff",
+      "participation-local/MI.json.gz": "a6192cc95add7d81b2d9ee2afcfa1590c48562dad4bca798478e7dbebe832f8b",
+      "participation-local/MD.json.gz": "17d32c963e3322300fdfbbb79ccd46821f5bdb39c93019423e0e0b81690938c0",
+      "participation-local/CO.json.gz": "09542de9aeb0e84d07c363ee2ba3111811e680d9a559e42789ca0f21adfa1ccf",
+      "participation-local/IN.json.gz": "84bd7ffaf083902b4606506b0a2c20ee18c6073b295f196f92c8f06d5f819baf",
+      "participation-precincts/20261109-indiana-monroe-01/index.json": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650",
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281",
+      "participation-downloads.json": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade",
+      "participation-county-parents/20261109-02/complete-analysis.zip": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c",
+      "participation-county-parents/20261109-01/complete-analysis.zip": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915",
+      "participation-county-cards/20261109-01/complete-analysis.zip": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6",
+      "county-results.json": "3b5755aa3f2ad414c8c79dc52a3a53fa01ef0ce10aba4906dff5fb81f9925ad7",
+      "scripts/participation-explorer.js": "fca06ed9ed5e47b4535fe462e238bb2a2536a1a4df8eb9d4ddb24161657c31ca",
+      "scripts/participation-geography.js": "fc272a0e05477f7e6c568d3c08313cf583a321b60d43ed8234df3bfa5816a192",
+      "participation-precincts.json": "d97329822d3fd1b9eee7550b2526642a5f88ad3649e06aa2048f0398988504bb",
+      "participation-reporting-units.json": "fe52276f89aceda8b47d8c508125d4217effcf064bd37f210ce58257226dc335"
+    },
+    "unchanged_complete_download_routes": 436,
+    "generated_gzip_platform_headers": {
+      "participation-local/WV.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "004b9de8fc8d63e27af3e6df7ca7147d586fb6a46cf528eb911b28887182a94d",
+        "artifact_compressed_sha256": "d811b5ee63cde1d4f357c1564360fd51569afc6fa8eebc136c9f4fcd6a121eff",
+        "exact_decompressed_sha256": "4923b8b9c84e2e9b4f3a347eaa966d8bc602e757ab744ea116077b0c5309af76",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/MI.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "6bef07fc5a02ff6e98d79dd190ca297226f38363d9b7e74626febf11d241bda5",
+        "artifact_compressed_sha256": "a6192cc95add7d81b2d9ee2afcfa1590c48562dad4bca798478e7dbebe832f8b",
+        "exact_decompressed_sha256": "1ed80652a4d6f673dff137b41a42d36ca3629c3028b13cd3f17af50ac324443c",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/MD.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "3348301051b90ec9968a797975fd7f15e06111fafcfbb4a4f65360dd0a386975",
+        "artifact_compressed_sha256": "17d32c963e3322300fdfbbb79ccd46821f5bdb39c93019423e0e0b81690938c0",
+        "exact_decompressed_sha256": "a4b890bdcfc10f07ed7591f23c4e390d9378cb90cacc4d061e071a2c7d67c99c",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/CO.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "6a378117bd71a1472edf22e9dec5f00770df918783bc2a21986ea591cc9b460c",
+        "artifact_compressed_sha256": "09542de9aeb0e84d07c363ee2ba3111811e680d9a559e42789ca0f21adfa1ccf",
+        "exact_decompressed_sha256": "27131475e6fe98b255ccb44eeed79744f053ff0a1291617ad32a0ff96546c896",
+        "all_other_compressed_bytes_identical": true
+      },
+      "participation-local/IN.json.gz": {
+        "artifact_os_byte": 3,
+        "local_os_byte": 19,
+        "local_compressed_sha256": "6dbb9cc2a3d29e6bda4b0d1cdec7bf3047f257fc37c3ee67a55f662fc3a06007",
+        "artifact_compressed_sha256": "84bd7ffaf083902b4606506b0a2c20ee18c6073b295f196f92c8f06d5f819baf",
+        "exact_decompressed_sha256": "e8b7cce801f11ca4d5f4102a611a66821b339b9f46e23c583c600a2f4140a2dc",
+        "all_other_compressed_bytes_identical": true
+      }
+    }
+  },
+  "actual_production_bytes": {
+    "status": "PASS_exact_unqueried_production_bytes",
+    "commit": "cb79d841af3bdf5a3b353399699bb1b774a376db",
+    "run_id": 42717017978,
+    "source_guard_run_id": 42717018339,
+    "artifact_id": 13717918487,
+    "files": {
+      "participation-local/WV.json.gz": {
+        "bytes": 11870,
+        "sha256": "d811b5ee63cde1d4f357c1564360fd51569afc6fa8eebc136c9f4fcd6a121eff"
+      },
+      "participation-local/MI.json.gz": {
+        "bytes": 8228,
+        "sha256": "a6192cc95add7d81b2d9ee2afcfa1590c48562dad4bca798478e7dbebe832f8b"
+      },
+      "participation-local/MD.json.gz": {
+        "bytes": 3167,
+        "sha256": "17d32c963e3322300fdfbbb79ccd46821f5bdb39c93019423e0e0b81690938c0"
+      },
+      "participation-local/CO.json.gz": {
+        "bytes": 10193,
+        "sha256": "09542de9aeb0e84d07c363ee2ba3111811e680d9a559e42789ca0f21adfa1ccf"
+      },
+      "participation-local/IN.json.gz": {
+        "bytes": 17611,
+        "sha256": "84bd7ffaf083902b4606506b0a2c20ee18c6073b295f196f92c8f06d5f819baf"
+      },
+      "participation-precincts/20261109-indiana-monroe-01/index.json": {
+        "bytes": 1065,
+        "sha256": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650"
+      },
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": {
+        "bytes": 380087,
+        "sha256": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281"
+      },
+      "participation-downloads.json": {
+        "bytes": 189615,
+        "sha256": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade"
+      },
+      "participation-county-parents/20261109-02/complete-analysis.zip": {
+        "bytes": 2937769,
+        "sha256": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c"
+      },
+      "participation-county-parents/20261109-01/complete-analysis.zip": {
+        "bytes": 2513817,
+        "sha256": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915"
+      },
+      "participation-county-cards/20261109-01/complete-analysis.zip": {
+        "bytes": 633225,
+        "sha256": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6"
+      },
+      "county-results.json": {
+        "bytes": 29435,
+        "sha256": "3b5755aa3f2ad414c8c79dc52a3a53fa01ef0ce10aba4906dff5fb81f9925ad7"
+      },
+      "scripts/participation-explorer.js": {
+        "bytes": 234472,
+        "sha256": "fca06ed9ed5e47b4535fe462e238bb2a2536a1a4df8eb9d4ddb24161657c31ca"
+      },
+      "scripts/participation-geography.js": {
+        "bytes": 4024,
+        "sha256": "fc272a0e05477f7e6c568d3c08313cf583a321b60d43ed8234df3bfa5816a192"
+      },
+      "participation-precincts.json": {
+        "bytes": 416,
+        "sha256": "d97329822d3fd1b9eee7550b2526642a5f88ad3649e06aa2048f0398988504bb"
+      },
+      "participation-reporting-units.json": {
+        "bytes": 5326,
+        "sha256": "fe52276f89aceda8b47d8c508125d4217effcf064bd37f210ce58257226dc335"
+      }
+    },
+    "valid_sources_overridden": false
+  },
+  "production_native_views": {
+    "WV": {
+      "status": "PASS_WV_native_county_frames_not_additive",
+      "base_url": "https://www.themarginoferror.com",
+      "cases": [
+        {
+          "mobile": false,
+          "native_mode_checks": [
+            {
+              "mode": "available",
+              "all_native_values": true,
+              "counties": 55
+            },
+            {
+              "mode": "in_person_early",
+              "all_native_values": true,
+              "counties": 55
+            },
+            {
+              "mode": "mail_returned",
+              "all_native_values": true,
+              "counties": 55
+            },
+            {
+              "mode": "official",
+              "all_native_values": true,
+              "counties": 55
+            },
+            {
+              "mode": "in_person_early",
+              "all_native_values": true,
+              "counties": 55
+            }
+          ],
+          "all_method_holds_not_zero": true,
+          "methods_roundtrip": true,
+          "no_rates": true
+        },
+        {
+          "mobile": true,
+          "native_mode_checks": [
+            {
+              "mode": "available",
+              "all_native_values": true,
+              "counties": 55
+            },
+            {
+              "mode": "in_person_early",
+              "all_native_values": true,
+              "counties": 55
+            },
+            {
+              "mode": "mail_returned",
+              "all_native_values": true,
+              "counties": 55
+            },
+            {
+              "mode": "official",
+              "all_native_values": true,
+              "counties": 55
+            },
+            {
+              "mode": "in_person_early",
+              "all_native_values": true,
+              "counties": 55
+            }
+          ],
+          "all_method_holds_not_zero": true,
+          "methods_roundtrip": true,
+          "no_rates": true
+        }
+      ],
+      "missing_mode_rejected_not_replaced_with_all_method": true,
+      "incomplete_mode_retry_recovered": true,
+      "valid_source_overrides": false
+    },
+    "CO": {
+      "status": "PASS_CO64_native_returned_counts_not_cast_or_people",
+      "base_url": "https://www.themarginoferror.com",
+      "cases": [
+        {
+          "mobile": false,
+          "native_checks": [
+            {
+              "mode": "available",
+              "all64native_values": true,
+              "no_rates": true,
+              "methods_roundtrip": true
+            },
+            {
+              "mode": "official",
+              "all64native_values": true,
+              "no_rates": true,
+              "methods_roundtrip": true
+            },
+            {
+              "mode": "available",
+              "all64native_values": true,
+              "no_rates": true,
+              "methods_roundtrip": true
+            }
+          ],
+          "all_original_mode_records_retained": true
+        },
+        {
+          "mobile": true,
+          "native_checks": [
+            {
+              "mode": "available",
+              "all64native_values": true,
+              "no_rates": true,
+              "methods_roundtrip": true
+            },
+            {
+              "mode": "official",
+              "all64native_values": true,
+              "no_rates": true,
+              "methods_roundtrip": true
+            },
+            {
+              "mode": "available",
+              "all64native_values": true,
+              "no_rates": true,
+              "methods_roundtrip": true
+            }
+          ],
+          "all_original_mode_records_retained": true
+        }
+      ],
+      "valid_source_overrides": false
+    }
+  },
+  "production_all_51_county_and_precinct_interactions": true,
+  "remaining_contest_only_county_states": [
+    "Alaska",
+    "Connecticut",
+    "Delaware",
+    "Hawaii",
+    "Illinois",
+    "Kansas",
+    "Louisiana",
+    "Massachusetts",
+    "Mississippi",
+    "Montana",
+    "New Hampshire",
+    "New York",
+    "Ohio",
+    "Oklahoma",
+    "South Carolina",
+    "Tennessee",
+    "Texas"
+  ],
+  "Maine_county_layer_missing": true,
+  "other_source_states_partial": true,
+  "mapped_precinct_coverage": "partial7states_and_DC",
+  "native_county_observation_coverage": "30states_plusDC_different_literal_measures_and_partial_counts_separate_RI_VT_municipalities"
+}

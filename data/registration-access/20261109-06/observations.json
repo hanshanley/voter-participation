@@ -1,0 +1,56 @@
+{
+  "schema": "official-registration-route-observations-v1",
+  "observations": [
+    {
+      "requested_url": "https://www.elections.il.gov/ElectionOperations/ElectionResults.aspx",
+      "final_url": "https://www.elections.il.gov/ElectionOperations/ElectionResults.aspx",
+      "status": 200,
+      "retrieved_at_utc": "2026-11-09T11:04:52.075516+00:00",
+      "bytes": 28675,
+      "sha256": "547ddbd12dbfe49da6704785f757a3deeb21360d567e3883af0f825479e5a527",
+      "source_original_acquired": true,
+      "state_code": "IL",
+      "disposition": "http200_navigation_discovery_no_numerical_input",
+      "numerical_input_acquired": false,
+      "full_original_body_held_locally_not_redistributed": true,
+      "no_alternate_client_cache_mirror_or_guessed_parameters": true,
+      "no_global_data_absence_inferred": true
+    },
+    {
+      "requested_url": "https://www.elections.il.gov/ElectionOperations/ElectionVoteTotals.aspx",
+      "final_url": "https://www.elections.il.gov/ElectionOperations/ElectionVoteTotals.aspx",
+      "status": 200,
+      "retrieved_at_utc": "2026-11-09T11:05:22.172725+00:00",
+      "bytes": 27378,
+      "sha256": "4c1b6ea67313b3072815ea0e889a4fd698b1ec7af2ef6acc560f8d9791ae8900",
+      "source_original_acquired": true,
+      "selected_exact_published_link": true,
+      "state_code": "IL",
+      "disposition": "http200_application_error_no_numerical_input",
+      "numerical_input_acquired": false,
+      "full_original_body_held_locally_not_redistributed": true,
+      "no_alternate_client_cache_mirror_or_guessed_parameters": true,
+      "no_global_data_absence_inferred": true,
+      "native_page_title": "Error Display",
+      "native_error_marker": "An error has occurred.",
+      "not_an_http403": true
+    },
+    {
+      "requested_url": "https://www.sos.nh.gov/",
+      "final_url": "https://www.sos.nh.gov/",
+      "status": 403,
+      "retrieved_at_utc": "2026-11-09T11:04:52.047469+00:00",
+      "bytes": 372,
+      "sha256": "e7bc1e6d14b9405c5bf33b22f7121c351a1a9bdeffec7e12d361484005bd6f1f",
+      "source_original_acquired": false,
+      "state_code": "NH",
+      "disposition": "http403_access_hold_route_stopped",
+      "numerical_input_acquired": false,
+      "full_original_body_held_locally_not_redistributed": true,
+      "no_alternate_client_cache_mirror_or_guessed_parameters": true,
+      "no_global_data_absence_inferred": true
+    }
+  ],
+  "observed_at_utc": "2026-11-09T11:09:42.369440+00:00",
+  "no_registration_values_inferred_from_navigation_error_or_access_hold": true
+}

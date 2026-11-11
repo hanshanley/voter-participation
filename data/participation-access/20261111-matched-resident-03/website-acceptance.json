@@ -1,0 +1,853 @@
+{
+  "status": "PASS_actual_matched_resident_reader_full_source_holds_and_prior_profiles_preserved",
+  "commit": "6ee8416322a9f0b74a943a828fb3c439d5447e1b",
+  "pages_run_id": 42944752314,
+  "main_guard_id": 42944752242,
+  "artifact": {
+    "status": "PASS_exact_pages_publication",
+    "commit": "6ee8416322a9f0b74a943a828fb3c439d5447e1b",
+    "run_id": 42944752314,
+    "artifact_id": 13823195376,
+    "payload_bytes": 996278378,
+    "tar_bytes": 998860800,
+    "files": 2964,
+    "verified_sha256": {
+      "participation-local/NV.json.gz": "dbdeaface035426477db3422938972f52e426d4a05ab1a7bd61d2ae760939174",
+      "participation-local/MN.json.gz": "c1581a3597e03ec21a681b980b182ad2efafd74875f212d11a37b35a0107c7b6",
+      "participation-local/DE.json.gz": "b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8",
+      "participation-local/WV.json.gz": "004b9de8fc8d63e27af3e6df7ca7147d586fb6a46cf528eb911b28887182a94d",
+      "participation-local/AL.json.gz": "790c4a762dc1abf58637de83c0961b625ed4d466f158c8cc86c8d894ac59eef7",
+      "participation-local/NY.json.gz": "9d07f3f07c64b34ec3c2ae791a6f0e7d48b2ea09467f1e1b93571cc578604473",
+      "participation-local/MI.json.gz": "5a6c9ce644a6e53a3509d627cf58fd39f033c2ca464638c3a83c0d530cf1bac3",
+      "participation-local/ME.json.gz": "f2d5254853fff5418711e90876cbef6c4eabfe89442667b0701521279865aec4",
+      "participation-local/MD.json.gz": "63aa859e66119a6347902941249eafa23952bbf359d5ecb859b0d8fa89102b5a",
+      "participation-local/MA.json.gz": "5f46f09b7005a0b5edbbe7b4869062e6269c5356a1c61dddb2cc4e2b02042210",
+      "participation-local/TX.json.gz": "61b15dcde164789942832363d3b0a84ac8d26edc399dcf3499ce4ebc2c0e8cb1",
+      "participation-local/NH.json.gz": "c416f9fa65cde936c6bc984e23cc4f407be4af4c57b1b6db6b10a041588e3efe",
+      "participation-local/IL.json.gz": "1da978e9a5b4241c0ca3fbfd4a5cbd56ef32700bf0a9105f51567605e42f878e",
+      "participation-local/CO.json.gz": "a4810b0da93bfc5edd23a87f53abd96e2e49ce276d15256663587b6194485376",
+      "participation-local/AR.json.gz": "83684327edaccd72bd9e70147bb78c2354932b8b603137873db7c8283faedd7b",
+      "participation-local/IN.json.gz": "74dace208fc054e1c68f1d20e3e23f6b52adde7f8868ed152b47e7d944287b24",
+      "participation-local/HI.json.gz": "e7677d3d50356056ce4973606ce889667a639b35c1c7fa69121fa6ca0a31e9d3",
+      "participation-local/CT.json.gz": "f60eb5119332c7d87eb1a5be2ce58442cb776ea6d6e0a43aedce04605949aef1",
+      "participation-precincts/20261110-new-hampshire-ward-reference-02/index.json": "dc7a8dc070fa6afbfd59e66b8a8564e78e7ac883db3593e4efdccb2c66cc1a00",
+      "participation-precincts/20261110-new-hampshire-ward-reference-02/NH.geojson.gz": "967c8b030dc4858d5b0f691d5eddd9b19319b6720b46a14fb0488eaac27611a1",
+      "participation-precincts/20261110-massachusetts-native-local-counts-01/index.json": "7679f236de0a81008427ca39299a621baeaabb76fe49a014d48d0ffe57234992",
+      "participation-precincts/20261110-massachusetts-native-local-counts-01/MA.geojson.gz": "c240fe151cf4c2563874c4980ba977c1ea8818b63d828311c65ca2979986d820",
+      "participation-precincts/20261109-indiana-monroe-01/index.json": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650",
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281",
+      "participation-precincts/20261110-minnesota-complete-native-03/index.json": "ef2799062f3fbfd76c9097f50243a899b332c57547f01c9d21ccf582969865bc",
+      "participation-precincts/20261110-massachusetts-city-precinct-reference-02/index.json": "6cfcc32e41675b88b8944c45b140d0338c6aa0fdf3134d3a0c47e6c3ea99b559",
+      "participation-precincts/20261110-massachusetts-city-precinct-reference-02/MA.geojson.gz": "72ebce014fed1fd3a25f81ce93dae73cee28b52c754271f30dd2621b538fe0dd",
+      "participation-precincts/20261110-minnesota-followup-02/index.json": "84f035cc277a1c912c56f308cae0d3ba7934f73bf09f4824102488c5c8dda0ca",
+      "participation-precincts/20261110-alaska-native-display-01/index.json": "193413401d2ee39fc66e17cbe36582308539915a7909360af5d068b531d4db08",
+      "participation-precincts/20261110-alaska-native-display-01/AK.geojson.gz": "8c5bf4c88d3d4ab72b3a655189b904f28f7c9a3a6c87047516a39aca9cbc8273",
+      "participation-precincts/20261110-new-hampshire-ward-reference-03/index.json": "03a1b245da22ec5c9c343e02d11343902cffdd6418addb8499049e90e2605c8e",
+      "participation-precincts/20261110-new-hampshire-ward-reference-03/NH.geojson.gz": "d76d43baa665e64889b993116507e87c828b793c18a9959c9904f2f3a5e5087a",
+      "participation-precincts/20261110-manchester-ward-reference-01/index.json": "1fe820cb70f059e7b5a124af408d928d99350d180d8154b08982065ce5c695b8",
+      "participation-precincts/20261110-manchester-ward-reference-01/NH.geojson.gz": "0022586d018c178ccbdab8cc6dde8a900eead30f87f51e157c5a0e5b58da5871",
+      "participation-precincts/20261110-new-hampshire-ward-reference-04/index.json": "76fdcb1e9b99a67b6beb7ecf763a81468cea48110d07313c15052595a6148982",
+      "participation-precincts/20261110-new-hampshire-ward-reference-04/NH.geojson.gz": "87389220a20d2af082c70fa43cab4ce5864a14f8a4e3b4ac321049f7c1ca9ddd",
+      "participation-downloads.json": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade",
+      "participation-county-parents/20261109-02/complete-analysis.zip": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c",
+      "participation-county-parents/20261109-01/complete-analysis.zip": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915",
+      "participation-city-counts/20261110-new-hampshire-01/NH.geojson.gz": "b74e8b9c197371af4f093dbdc2916cb18aaa1bc2ff498e2f875642f2f7e5fdee",
+      "participation-city-counts/20261110-massachusetts-native-local-counts-01/index.json": "e2969942836ba4eeb03e63bd67ae3b617c393a943f6194b33af319321e353d1c",
+      "participation-city-counts/20261110-massachusetts-native-local-counts-01/MA.geojson.gz": "9b631685f4ed9500c0681679f855c83ed302479b6b692796beb4ef61901e02ee",
+      "participation-county-cards/20261109-01/complete-analysis.zip": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6",
+      "participation-county-administrations/20261109-hawaii-01/HI.geojson.gz": "b5973c0a59c892d8619ed60b9c72cbc874a206b04fe4689c2428ca883c61b6d0",
+      "county-results.json": "9c91d5de0974ab4dedd98ae4c2708e25b35790b1ac7128dae9970b1f2061996e",
+      "_astro/BaseLayout.CEWuOCzZ.css": "f4161b19471c5935ddf24860bd2cad01dd86810e6d2b864bc149f18c3016ac99",
+      "_astro/voter-participation.XX1jlCyL.css": "1c5c1474c8bc47dddbd4549a23f9be6a5653b8909d4f69ae3306b1323bfd66a1",
+      "participation-town-reports/20261110-connecticut-01/CT.geojson.gz": "f8ff12fc121ae0d4cd9fd5a89eaf9b7af44ea1eca4fea8008bf7156282dd7eea",
+      "participation-locality-activity/20261110-maine-01/ME.geojson.gz": "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc",
+      "scripts/participation-explorer.js": "e99f2ad3c71b16181993db458e0039210a9e73791fbabf37f919a17dabde3c5a",
+      "scripts/participation-native-bindings.js": "6d988c642e06c8916572d4b7a18582ba707afa38dab86e7a4ce480a2d52ce274",
+      "scripts/participation-coverage.js": "f67b2fc454e16900146b8c54608183b6e56e22c288e1c250bfafe26a2329689a",
+      "scripts/provider-county-scopes.js": "32db206ded3bc8d6242d2a47c39ac5acb9dd52ea789291cb464af0bc77cfb99c",
+      "scripts/participation-map-projection.js": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a",
+      "scripts/participation-dataset.js": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f",
+      "scripts/participation-resident-context.js": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260",
+      "scripts/participation-geography.js": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3",
+      "scripts/participation-counts.js": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de",
+      "scripts/participation-return-drivers.js": "aa45b8d7d751c189e2479faa15ec5e415f490e8bdfcf9f20cdb4164cb0b7cf4a",
+      "participation-precincts.json": "494d74741756af1c887d57a4358e154e879fce6ce20f374c1923740c93693b81",
+      "participation-reporting-units.json": "6247cc999b23dcd05f49bbb18ec47361047a8195c792a310b9938564c6a1bf62"
+    },
+    "unchanged_complete_download_routes": 436,
+    "generated_gzip_platform_headers": {}
+  },
+  "production_bytes": {
+    "status": "PASS_exact_unqueried_layout_styles_and_preserved_participation_assets",
+    "commit": "6ee8416322a9f0b74a943a828fb3c439d5447e1b",
+    "run_id": 42944752314,
+    "deployment_run_id": 42944752314,
+    "source_guard_run_id": 42944752242,
+    "artifact_id": 13823195376,
+    "files": {
+      "participation-local/NV.json.gz": {
+        "bytes": 10322,
+        "sha256": "dbdeaface035426477db3422938972f52e426d4a05ab1a7bd61d2ae760939174"
+      },
+      "participation-local/MN.json.gz": {
+        "bytes": 277302,
+        "sha256": "c1581a3597e03ec21a681b980b182ad2efafd74875f212d11a37b35a0107c7b6"
+      },
+      "participation-local/DE.json.gz": {
+        "bytes": 1549,
+        "sha256": "b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8"
+      },
+      "participation-local/WV.json.gz": {
+        "bytes": 11870,
+        "sha256": "004b9de8fc8d63e27af3e6df7ca7147d586fb6a46cf528eb911b28887182a94d"
+      },
+      "participation-local/AL.json.gz": {
+        "bytes": 23170,
+        "sha256": "790c4a762dc1abf58637de83c0961b625ed4d466f158c8cc86c8d894ac59eef7"
+      },
+      "participation-local/NY.json.gz": {
+        "bytes": 4435,
+        "sha256": "9d07f3f07c64b34ec3c2ae791a6f0e7d48b2ea09467f1e1b93571cc578604473"
+      },
+      "participation-local/MI.json.gz": {
+        "bytes": 13485,
+        "sha256": "5a6c9ce644a6e53a3509d627cf58fd39f033c2ca464638c3a83c0d530cf1bac3"
+      },
+      "participation-local/ME.json.gz": {
+        "bytes": 49306,
+        "sha256": "f2d5254853fff5418711e90876cbef6c4eabfe89442667b0701521279865aec4"
+      },
+      "participation-local/MD.json.gz": {
+        "bytes": 5432,
+        "sha256": "63aa859e66119a6347902941249eafa23952bbf359d5ecb859b0d8fa89102b5a"
+      },
+      "participation-local/MA.json.gz": {
+        "bytes": 14531,
+        "sha256": "5f46f09b7005a0b5edbbe7b4869062e6269c5356a1c61dddb2cc4e2b02042210"
+      },
+      "participation-local/TX.json.gz": {
+        "bytes": 23975,
+        "sha256": "61b15dcde164789942832363d3b0a84ac8d26edc399dcf3499ce4ebc2c0e8cb1"
+      },
+      "participation-local/NH.json.gz": {
+        "bytes": 7546,
+        "sha256": "c416f9fa65cde936c6bc984e23cc4f407be4af4c57b1b6db6b10a041588e3efe"
+      },
+      "participation-local/IL.json.gz": {
+        "bytes": 11452,
+        "sha256": "1da978e9a5b4241c0ca3fbfd4a5cbd56ef32700bf0a9105f51567605e42f878e"
+      },
+      "participation-local/CO.json.gz": {
+        "bytes": 18351,
+        "sha256": "a4810b0da93bfc5edd23a87f53abd96e2e49ce276d15256663587b6194485376"
+      },
+      "participation-local/AR.json.gz": {
+        "bytes": 14894,
+        "sha256": "83684327edaccd72bd9e70147bb78c2354932b8b603137873db7c8283faedd7b"
+      },
+      "participation-local/IN.json.gz": {
+        "bytes": 26731,
+        "sha256": "74dace208fc054e1c68f1d20e3e23f6b52adde7f8868ed152b47e7d944287b24"
+      },
+      "participation-local/HI.json.gz": {
+        "bytes": 1979,
+        "sha256": "e7677d3d50356056ce4973606ce889667a639b35c1c7fa69121fa6ca0a31e9d3"
+      },
+      "participation-local/CT.json.gz": {
+        "bytes": 16937,
+        "sha256": "f60eb5119332c7d87eb1a5be2ce58442cb776ea6d6e0a43aedce04605949aef1"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-02/index.json": {
+        "bytes": 1975,
+        "sha256": "dc7a8dc070fa6afbfd59e66b8a8564e78e7ac883db3593e4efdccb2c66cc1a00"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-02/NH.geojson.gz": {
+        "bytes": 106980,
+        "sha256": "967c8b030dc4858d5b0f691d5eddd9b19319b6720b46a14fb0488eaac27611a1"
+      },
+      "participation-precincts/20261110-massachusetts-native-local-counts-01/index.json": {
+        "bytes": 2095,
+        "sha256": "7679f236de0a81008427ca39299a621baeaabb76fe49a014d48d0ffe57234992"
+      },
+      "participation-precincts/20261110-massachusetts-native-local-counts-01/MA.geojson.gz": {
+        "bytes": 281194,
+        "sha256": "c240fe151cf4c2563874c4980ba977c1ea8818b63d828311c65ca2979986d820"
+      },
+      "participation-precincts/20261109-indiana-monroe-01/index.json": {
+        "bytes": 1065,
+        "sha256": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650"
+      },
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": {
+        "bytes": 380087,
+        "sha256": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281"
+      },
+      "participation-precincts/20261110-minnesota-complete-native-03/index.json": {
+        "bytes": 1717,
+        "sha256": "ef2799062f3fbfd76c9097f50243a899b332c57547f01c9d21ccf582969865bc"
+      },
+      "participation-precincts/20261110-massachusetts-city-precinct-reference-02/index.json": {
+        "bytes": 2339,
+        "sha256": "6cfcc32e41675b88b8944c45b140d0338c6aa0fdf3134d3a0c47e6c3ea99b559"
+      },
+      "participation-precincts/20261110-massachusetts-city-precinct-reference-02/MA.geojson.gz": {
+        "bytes": 286941,
+        "sha256": "72ebce014fed1fd3a25f81ce93dae73cee28b52c754271f30dd2621b538fe0dd"
+      },
+      "participation-precincts/20261110-minnesota-followup-02/index.json": {
+        "bytes": 1428,
+        "sha256": "84f035cc277a1c912c56f308cae0d3ba7934f73bf09f4824102488c5c8dda0ca"
+      },
+      "participation-precincts/20261110-alaska-native-display-01/index.json": {
+        "bytes": 1118,
+        "sha256": "193413401d2ee39fc66e17cbe36582308539915a7909360af5d068b531d4db08"
+      },
+      "participation-precincts/20261110-alaska-native-display-01/AK.geojson.gz": {
+        "bytes": 38523,
+        "sha256": "8c5bf4c88d3d4ab72b3a655189b904f28f7c9a3a6c87047516a39aca9cbc8273"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-03/index.json": {
+        "bytes": 2269,
+        "sha256": "03a1b245da22ec5c9c343e02d11343902cffdd6418addb8499049e90e2605c8e"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-03/NH.geojson.gz": {
+        "bytes": 219794,
+        "sha256": "d76d43baa665e64889b993116507e87c828b793c18a9959c9904f2f3a5e5087a"
+      },
+      "participation-precincts/20261110-manchester-ward-reference-01/index.json": {
+        "bytes": 1910,
+        "sha256": "1fe820cb70f059e7b5a124af408d928d99350d180d8154b08982065ce5c695b8"
+      },
+      "participation-precincts/20261110-manchester-ward-reference-01/NH.geojson.gz": {
+        "bytes": 47443,
+        "sha256": "0022586d018c178ccbdab8cc6dde8a900eead30f87f51e157c5a0e5b58da5871"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-04/index.json": {
+        "bytes": 2323,
+        "sha256": "76fdcb1e9b99a67b6beb7ecf763a81468cea48110d07313c15052595a6148982"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-04/NH.geojson.gz": {
+        "bytes": 245038,
+        "sha256": "87389220a20d2af082c70fa43cab4ce5864a14f8a4e3b4ac321049f7c1ca9ddd"
+      },
+      "participation-downloads.json": {
+        "bytes": 189615,
+        "sha256": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade"
+      },
+      "participation-county-parents/20261109-02/complete-analysis.zip": {
+        "bytes": 2937769,
+        "sha256": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c"
+      },
+      "participation-county-parents/20261109-01/complete-analysis.zip": {
+        "bytes": 2513817,
+        "sha256": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915"
+      },
+      "participation-city-counts/20261110-new-hampshire-01/NH.geojson.gz": {
+        "bytes": 55447,
+        "sha256": "b74e8b9c197371af4f093dbdc2916cb18aaa1bc2ff498e2f875642f2f7e5fdee"
+      },
+      "participation-city-counts/20261110-massachusetts-native-local-counts-01/index.json": {
+        "bytes": 1054,
+        "sha256": "e2969942836ba4eeb03e63bd67ae3b617c393a943f6194b33af319321e353d1c"
+      },
+      "participation-city-counts/20261110-massachusetts-native-local-counts-01/MA.geojson.gz": {
+        "bytes": 5343535,
+        "sha256": "9b631685f4ed9500c0681679f855c83ed302479b6b692796beb4ef61901e02ee"
+      },
+      "participation-county-cards/20261109-01/complete-analysis.zip": {
+        "bytes": 633225,
+        "sha256": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6"
+      },
+      "participation-county-administrations/20261109-hawaii-01/HI.geojson.gz": {
+        "bytes": 57585,
+        "sha256": "b5973c0a59c892d8619ed60b9c72cbc874a206b04fe4689c2428ca883c61b6d0"
+      },
+      "county-results.json": {
+        "bytes": 31648,
+        "sha256": "9c91d5de0974ab4dedd98ae4c2708e25b35790b1ac7128dae9970b1f2061996e"
+      },
+      "_astro/BaseLayout.CEWuOCzZ.css": {
+        "bytes": 17227,
+        "sha256": "f4161b19471c5935ddf24860bd2cad01dd86810e6d2b864bc149f18c3016ac99"
+      },
+      "_astro/voter-participation.XX1jlCyL.css": {
+        "bytes": 28681,
+        "sha256": "1c5c1474c8bc47dddbd4549a23f9be6a5653b8909d4f69ae3306b1323bfd66a1"
+      },
+      "participation-town-reports/20261110-connecticut-01/CT.geojson.gz": {
+        "bytes": 50919,
+        "sha256": "f8ff12fc121ae0d4cd9fd5a89eaf9b7af44ea1eca4fea8008bf7156282dd7eea"
+      },
+      "participation-locality-activity/20261110-maine-01/ME.geojson.gz": {
+        "bytes": 191891,
+        "sha256": "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc"
+      },
+      "scripts/participation-explorer.js": {
+        "bytes": 255427,
+        "sha256": "e99f2ad3c71b16181993db458e0039210a9e73791fbabf37f919a17dabde3c5a"
+      },
+      "scripts/participation-native-bindings.js": {
+        "bytes": 8671,
+        "sha256": "6d988c642e06c8916572d4b7a18582ba707afa38dab86e7a4ce480a2d52ce274"
+      },
+      "scripts/participation-coverage.js": {
+        "bytes": 5146,
+        "sha256": "f67b2fc454e16900146b8c54608183b6e56e22c288e1c250bfafe26a2329689a"
+      },
+      "scripts/provider-county-scopes.js": {
+        "bytes": 3691,
+        "sha256": "32db206ded3bc8d6242d2a47c39ac5acb9dd52ea789291cb464af0bc77cfb99c"
+      },
+      "scripts/participation-map-projection.js": {
+        "bytes": 2389,
+        "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+      },
+      "scripts/participation-dataset.js": {
+        "bytes": 3108,
+        "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+      },
+      "scripts/participation-resident-context.js": {
+        "bytes": 13801,
+        "sha256": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260"
+      },
+      "scripts/participation-geography.js": {
+        "bytes": 51748,
+        "sha256": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3"
+      },
+      "scripts/participation-counts.js": {
+        "bytes": 8473,
+        "sha256": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de"
+      },
+      "scripts/participation-return-drivers.js": {
+        "bytes": 17102,
+        "sha256": "aa45b8d7d751c189e2479faa15ec5e415f490e8bdfcf9f20cdb4164cb0b7cf4a"
+      },
+      "participation-precincts.json": {
+        "bytes": 981,
+        "sha256": "494d74741756af1c887d57a4358e154e879fce6ce20f374c1923740c93693b81"
+      },
+      "participation-reporting-units.json": {
+        "bytes": 5497,
+        "sha256": "6247cc999b23dcd05f49bbb18ec47361047a8195c792a310b9938564c6a1bf62"
+      }
+    },
+    "unchanged_complete_download_routes": 436,
+    "valid_sources_overridden": false
+  },
+  "actual_resident_reader": {
+    "status": "PASS_actual_public_catalog_integrated_resident_reader",
+    "dataset_version": "55600f7238c96fc8c3c36b5a7470c70609cb3f5c6e0ce1789781059c41c3e0c4",
+    "cases": [
+      {
+        "width": 1440,
+        "state": "Alabama",
+        "native_county_options": 67
+      },
+      {
+        "width": 1440,
+        "state": "Alaska",
+        "native_county_options": 30
+      },
+      {
+        "width": 1440,
+        "state": "Arizona",
+        "native_county_options": 15
+      },
+      {
+        "width": 1440,
+        "state": "Arkansas",
+        "native_county_options": 75
+      },
+      {
+        "width": 1440,
+        "state": "California",
+        "native_county_options": 58
+      },
+      {
+        "width": 1440,
+        "state": "Colorado",
+        "native_county_options": 64
+      },
+      {
+        "width": 1440,
+        "state": "Connecticut",
+        "native_county_options": 9
+      },
+      {
+        "width": 1440,
+        "state": "Delaware",
+        "native_county_options": 3
+      },
+      {
+        "width": 1440,
+        "state": "District of Columbia",
+        "native_county_options": 1
+      },
+      {
+        "width": 1440,
+        "state": "Florida",
+        "native_county_options": 67
+      },
+      {
+        "width": 1440,
+        "state": "Georgia",
+        "native_county_options": 159
+      },
+      {
+        "width": 1440,
+        "state": "Hawaii",
+        "native_county_options": 5
+      },
+      {
+        "width": 1440,
+        "state": "Idaho",
+        "native_county_options": 44
+      },
+      {
+        "width": 1440,
+        "state": "Illinois",
+        "native_county_options": 102
+      },
+      {
+        "width": 1440,
+        "state": "Indiana",
+        "native_county_options": 92
+      },
+      {
+        "width": 1440,
+        "state": "Iowa",
+        "native_county_options": 99
+      },
+      {
+        "width": 1440,
+        "state": "Kansas",
+        "native_county_options": 105
+      },
+      {
+        "width": 1440,
+        "state": "Kentucky",
+        "native_county_options": 120
+      },
+      {
+        "width": 1440,
+        "state": "Louisiana",
+        "native_county_options": 64
+      },
+      {
+        "width": 1440,
+        "state": "Maine",
+        "native_county_options": 16
+      },
+      {
+        "width": 1440,
+        "state": "Maryland",
+        "native_county_options": 24
+      },
+      {
+        "width": 1440,
+        "state": "Massachusetts",
+        "native_county_options": 14
+      },
+      {
+        "width": 1440,
+        "state": "Michigan",
+        "native_county_options": 83
+      },
+      {
+        "width": 1440,
+        "state": "Minnesota",
+        "native_county_options": 87
+      },
+      {
+        "width": 1440,
+        "state": "Mississippi",
+        "native_county_options": 82
+      },
+      {
+        "width": 1440,
+        "state": "Missouri",
+        "native_county_options": 115
+      },
+      {
+        "width": 1440,
+        "state": "Montana",
+        "native_county_options": 56
+      },
+      {
+        "width": 1440,
+        "state": "Nebraska",
+        "native_county_options": 93
+      },
+      {
+        "width": 1440,
+        "state": "Nevada",
+        "native_county_options": 17
+      },
+      {
+        "width": 1440,
+        "state": "New Hampshire",
+        "native_county_options": 10
+      },
+      {
+        "width": 1440,
+        "state": "New Jersey",
+        "native_county_options": 21
+      },
+      {
+        "width": 1440,
+        "state": "New Mexico",
+        "native_county_options": 33
+      },
+      {
+        "width": 1440,
+        "state": "New York",
+        "native_county_options": 62
+      },
+      {
+        "width": 1440,
+        "state": "North Carolina",
+        "native_county_options": 100
+      },
+      {
+        "width": 1440,
+        "state": "North Dakota",
+        "native_county_options": 53
+      },
+      {
+        "width": 1440,
+        "state": "Ohio",
+        "native_county_options": 88
+      },
+      {
+        "width": 1440,
+        "state": "Oklahoma",
+        "native_county_options": 77
+      },
+      {
+        "width": 1440,
+        "state": "Oregon",
+        "native_county_options": 36
+      },
+      {
+        "width": 1440,
+        "state": "Pennsylvania",
+        "native_county_options": 67
+      },
+      {
+        "width": 1440,
+        "state": "Rhode Island",
+        "native_county_options": 5
+      },
+      {
+        "width": 1440,
+        "state": "South Carolina",
+        "native_county_options": 46
+      },
+      {
+        "width": 1440,
+        "state": "South Dakota",
+        "native_county_options": 66
+      },
+      {
+        "width": 1440,
+        "state": "Tennessee",
+        "native_county_options": 95
+      },
+      {
+        "width": 1440,
+        "state": "Texas",
+        "native_county_options": 254
+      },
+      {
+        "width": 1440,
+        "state": "Utah",
+        "native_county_options": 29
+      },
+      {
+        "width": 1440,
+        "state": "Vermont",
+        "native_county_options": 14
+      },
+      {
+        "width": 1440,
+        "state": "Virginia",
+        "native_county_options": 133
+      },
+      {
+        "width": 1440,
+        "state": "Washington",
+        "native_county_options": 39
+      },
+      {
+        "width": 1440,
+        "state": "West Virginia",
+        "native_county_options": 55
+      },
+      {
+        "width": 1440,
+        "state": "Wisconsin",
+        "native_county_options": 72
+      },
+      {
+        "width": 1440,
+        "state": "Wyoming",
+        "native_county_options": 23
+      },
+      {
+        "width": 1440,
+        "county": "12087",
+        "direct_context": true,
+        "unknown_income_preserved": false
+      },
+      {
+        "width": 1440,
+        "county": "35011",
+        "direct_context": true,
+        "unknown_income_preserved": true
+      },
+      {
+        "width": 1440,
+        "state": "MN",
+        "exact_reference_key": "MN|01|0005",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "NH",
+        "exact_reference_key": "NH|Concord|Ward:1",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "NM",
+        "exact_reference_key": "35001000001",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "MI",
+        "exact_reference_key": "WP-017-04080-00001",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "MA",
+        "exact_reference_key": "MA|Boston:Ward:10:Precinct:1",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "AK",
+        "exact_reference_key": "AK|source-unit-100",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "IN",
+        "exact_reference_key": "IN|18105|1",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "ID",
+        "exact_reference_key": "ID|Ada County|1001",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "VA",
+        "exact_reference_key": "VA:007:0401:5",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "ND",
+        "exact_reference_key": "ND|38003|2401",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "ND",
+        "held_reference": "ND|38001|3901",
+        "source_scope_hold_retained": true,
+        "whole_unit_not_clipped_area": true,
+        "no_stale_profile_or_county_substitution": true
+      },
+      {
+        "width": 1440,
+        "state": "DC",
+        "exact_reference_key": "DC|11001|100|6",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 1440,
+        "state": "DC",
+        "held_reference": "DC|11001|1|6",
+        "source_scope_hold_retained": true,
+        "whole_unit_not_clipped_area": true,
+        "no_stale_profile_or_county_substitution": true
+      },
+      {
+        "width": 1440,
+        "prior_year_cannot_retain_current_reference": true
+      },
+      {
+        "width": 390,
+        "county": "12087",
+        "direct_context": true,
+        "unknown_income_preserved": false
+      },
+      {
+        "width": 390,
+        "county": "35011",
+        "direct_context": true,
+        "unknown_income_preserved": true
+      },
+      {
+        "width": 390,
+        "state": "MN",
+        "exact_reference_key": "MN|01|0005",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 390,
+        "state": "NH",
+        "exact_reference_key": "NH|Concord|Ward:1",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 390,
+        "state": "ID",
+        "exact_reference_key": "ID|Ada County|1001",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 390,
+        "state": "VA",
+        "exact_reference_key": "VA:007:0401:5",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 390,
+        "state": "ND",
+        "exact_reference_key": "ND|38003|2401",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 390,
+        "state": "ND",
+        "held_reference": "ND|38001|3901",
+        "source_scope_hold_retained": true,
+        "whole_unit_not_clipped_area": true,
+        "no_stale_profile_or_county_substitution": true
+      },
+      {
+        "width": 390,
+        "state": "DC",
+        "exact_reference_key": "DC|11001|100|6",
+        "conditional_profile": true,
+        "verified_actual_geometry_hash": true,
+        "county_not_substituted": true
+      },
+      {
+        "width": 390,
+        "state": "DC",
+        "held_reference": "DC|11001|1|6",
+        "source_scope_hold_retained": true,
+        "whole_unit_not_clipped_area": true,
+        "no_stale_profile_or_county_substitution": true
+      },
+      {
+        "width": 390,
+        "prior_year_cannot_retain_current_reference": true
+      }
+    ],
+    "production": true,
+    "fixture_is_publication_proof": false,
+    "test_fixture_used": false,
+    "no_resident_values_used_as_voter_composition": true,
+    "native_participation_values_unchanged": true
+  },
+  "native_cases": 176,
+  "count_cases": 308,
+  "geography_cases": 59,
+  "single_map_cases": 24,
+  "layout_cases": 32,
+  "all_113_models_exact": true,
+  "old_full_download_routes": 436,
+  "proofs": {
+    "participation-matched-resident-native_bindings-production-6ee8416.json": {
+      "bytes": 16789,
+      "sha256": "f97ea555098f17adfb43a3371005bba331ac703a2aa0e2b8d06382fefba4d2f9"
+    },
+    "participation-matched-resident-canonical_counts-production-6ee8416.json": {
+      "bytes": 31444,
+      "sha256": "d2212b9970fc043a73b1da36585c87c10651d5c0954b36bf2281d54e2c620fc3"
+    },
+    "participation-matched-resident-resident_counties-production-6ee8416.json": {
+      "bytes": 10621,
+      "sha256": "727e7f14a57d3c3f582f635fa0af3a094e060f6140f05cce7873b9d1bb988567"
+    },
+    "participation-matched-resident-county49_precincts-production-6ee8416.json": {
+      "bytes": 6154,
+      "sha256": "3b0dfa3454bd7dc2f867ae1f76ced161d42843a5ebed99e88f0641908b75b844"
+    },
+    "participation-matched-resident-models113-production-6ee8416.json": {
+      "bytes": 11103,
+      "sha256": "7633a32457f0eefca9d65dd28aa283fbedcbacc75dc8b5716c32d4131681b8d3"
+    },
+    "participation-matched-resident-layout32-production-6ee8416.json": {
+      "bytes": 6790,
+      "sha256": "473ee841228739e1318d49058505ff45b4ea29ff03254d2c5374524edbf8f43c"
+    },
+    "participation-matched-resident-full113data-production-6ee8416.json": {
+      "bytes": 223,
+      "sha256": "562d61e023090a3c20479beaed7c6acf627b61e9ecac8291ca444d95ef3223cd"
+    },
+    "participation-matched-resident-pages-artifact-6ee8416.json": {
+      "bytes": 8006,
+      "sha256": "c8b1bce6e9af16344bccaa2e85858f13246ea97c6edabf965d4d8ece7fa5df98"
+    },
+    "participation-matched-resident-production-bytes-6ee8416.json": {
+      "bytes": 10832,
+      "sha256": "7b5254671e4ad24bde50081a3f49cef426432dec3bcba29272edcba0b213f610"
+    },
+    "matched-resident-incremental-runtime-03.json": {
+      "bytes": 279,
+      "sha256": "def235596786d1af2107986c5578b54dd38d3251e0a7c43892e907fc958669d9"
+    }
+  },
+  "resident_profiles_are_not_administrative_or_voter_demographics": true,
+  "whole_project_complete": false
+}

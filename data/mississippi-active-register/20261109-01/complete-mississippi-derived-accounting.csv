@@ -1,0 +1,9 @@
+scope,source_measure,native_county_rows,missing_count_slots,derived_county_sum,complete,printed_parent,native_parent_discrepancy,derived_sum_not_printed_parent,missing_imputed_zero,used_as_model_denominator
+page1,native_active_count,29,0,767008,True,,,True,False,False
+page1,native_cvap_count,29,0,866122,True,,,True,False,False
+page2,native_active_count,32,0,858697,True,,,True,False,False
+page2,native_cvap_count,32,0,1035550,True,,,True,False,False
+page3,native_active_count,21,0,262657,True,,,True,False,False
+page3,native_cvap_count,21,0,325020,True,,,True,False,False
+all82_counties,native_active_count,82,0,1888362,True,,,True,False,True
+all82_counties,native_cvap_count,82,0,2226692,True,,,True,False,False

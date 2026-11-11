@@ -1,0 +1,81 @@
+{
+  "schema": "held-native-federal-participation-frame-v1",
+  "version": "20261108-01",
+  "release_id": 438694717,
+  "release_tag": "participation-state-controls-20261108-11",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-alaska-native-contest-headers.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-alaska-native-contest-headers.csv",
+      "bytes": 7120,
+      "sha256": "318daed51fe792568069a140b503da7004292484ab6f6969bf302236ba7ecd5f",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-alaska-native-model-comparison.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-alaska-native-model-comparison.csv",
+      "bytes": 705,
+      "sha256": "39b67d62293901d819cc7f8e3116f420abc537fb3d3f61ca5f2d22f15ff07368",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-alaska-native-reporting-units.json.gz",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-alaska-native-reporting-units.json.gz",
+      "bytes": 21052,
+      "sha256": "5eb889e4ebb1dbcf6687b19f6bb3d27a790b1d498b6c3ad854f7ae59d6a1d138",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-analysis.zip",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-analysis.zip",
+      "bytes": 100091036,
+      "sha256": "807201daef6a86bffd42f76d90ba5fff8c76a7b273bd6fff2d6bf8e0184e0ae4",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-conditional-registered-scenarios.csv",
+      "bytes": 13330,
+      "sha256": "e964c9015925216d9d0442aee1b87f56fdfc969fcf978e31196e970e67926ed2",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-native-control-dispositions.csv",
+      "bytes": 20985,
+      "sha256": "c35d7abac3662a17d4b160f1c8c8d06c6481853340801eddd936c603e625e0c6",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/complete-state-control-query.csv",
+      "bytes": 20104,
+      "sha256": "1fd58bf3d9042745fc146703a59e22857b3baf889648edbb9ba40d97a6d235f2",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/source-qualification.json",
+      "bytes": 3260,
+      "sha256": "920039edd9a753367e4db066e54402f8aac342b4763cb0c0df43552fbc4faac0",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-11/summary.json",
+      "bytes": 491,
+      "sha256": "b0504e146abefd16d794c481698707643c5ed11b08e34076f0ed5d89697ff092",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "complete_state_query_rows": 51,
+  "native_control_records": 27,
+  "conditional_scenarios": 16,
+  "native_federal_participation_control_added": 1,
+  "generic_cast_ballot_controls_added": 0,
+  "previous_fifty_state_rows_fifteen_scenarios_and_twenty_six_controls_preserved": true,
+  "candidate_selections_not_used_as_ballots": true,
+  "federal_and_governor_scopes_not_blended": true,
+  "all_523_original_reporting_unit_gzip_bytes_and_all_quality_holds_preserved": true
+}

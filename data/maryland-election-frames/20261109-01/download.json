@@ -1,0 +1,106 @@
+{
+  "schema": "maryland-general-election-register-card-frames-v1",
+  "version": "20261109-01",
+  "native_control_version": 28,
+  "release_id": 439195403,
+  "release_tag": "participation-state-controls-20261108-28",
+  "immutable": true,
+  "assets": [
+    {
+      "name": "complete-analysis.zip",
+      "asset_id": 727669431,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-analysis.zip",
+      "bytes": 106571158,
+      "sha256": "74cf1dd932be643b8a408c0fbfbd9d589297e07363c242e817a0c7be1af987fe",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-conditional-registered-scenarios.csv",
+      "asset_id": 727669437,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-conditional-registered-scenarios.csv",
+      "bytes": 31322,
+      "sha256": "b9a53316f7bfcba4c0e9e3c4032089d17604bd3e57560c44ca8b93b4a613e714",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-maryland-card-references.csv",
+      "asset_id": 727669473,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-maryland-card-references.csv",
+      "bytes": 8238,
+      "sha256": "3e84f1381bef65b3ed661df1b567aec5b5eabde4f490cf04a8efb9591e97f02b",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-maryland-native-accounting.csv",
+      "asset_id": 727669474,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-maryland-native-accounting.csv",
+      "bytes": 3634,
+      "sha256": "fe0fd79b624369e2b2cbeb4ab37641907b77ad2037450701658d92964c8617ac",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-maryland-register-stocks.csv",
+      "asset_id": 727669434,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-maryland-register-stocks.csv",
+      "bytes": 60251,
+      "sha256": "9cdd05a6d4f3304d88363f9440b7d99c8a794b4c869083de4b5620a27508b5fe",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-native-control-dispositions.csv",
+      "asset_id": 727669436,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-native-control-dispositions.csv",
+      "bytes": 49731,
+      "sha256": "fe0699a86552be51f54d340a84ac747eb5d5bbceaa77499131f2548dd281f27f",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "complete-state-control-query.csv",
+      "asset_id": 727669432,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-state-control-query.csv",
+      "bytes": 25982,
+      "sha256": "e9cb40873891934a6d710af1a1d0884fa6eaa800a071d82a53eef1aa6d5e70af",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "source-qualification.json",
+      "asset_id": 727669479,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/source-qualification.json",
+      "bytes": 1238,
+      "sha256": "7370c78883f0f6bf51a0e6cd8952f064144a3cc55b244dcf24ce0b71dd491613",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    },
+    {
+      "name": "summary.json",
+      "asset_id": 727669482,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/summary.json",
+      "bytes": 774,
+      "sha256": "7f1a3ebc10e4a4139def8d81e407dd5e8fe60a20dea75704f26d63785588d93a",
+      "full_authenticated_draft_and_anonymous_published_bytes_verified": true
+    }
+  ],
+  "state_and_dc_queries": 51,
+  "source_dispositions": 52,
+  "conditional_scenarios": 34,
+  "conditional_scenario_jurisdictions": 31,
+  "register_stock_queries": 350,
+  "native_card_references": 25,
+  "native_accounting_rows": 66,
+  "active_register": 4293322,
+  "inactive_register": 283680,
+  "register_as_of": "2026-10-18",
+  "native_cards_cast": 2079801,
+  "source_displayed_reference_percentage": "48.44%",
+  "source_card_run_date": "11/8/2026",
+  "source_card_run_time": "7:44 pm",
+  "timezone": null,
+  "cards_not_certified_unique_voters_or_ballots": true,
+  "registration_party_stocks_not_party_participation": true,
+  "inactive_and_same_day_registration_not_added": true,
+  "model_frame_transport_validated": false,
+  "card_reference_not_used_for_model_fitting_or_staying_home_residual": true,
+  "all50_other_states_51_controls_33_scenarios_preserved": true,
+  "prior_CPS_models_releases_stopped_routes_and_website_unchanged": true,
+  "pinned_native_pdf_render_matches_counts_older_web_preview_not_used": true,
+  "no_respondent_identifiers_private_fine_cells_group_local_allocation_or_new_view": true
+}

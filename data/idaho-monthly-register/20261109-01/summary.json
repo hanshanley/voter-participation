@@ -1,0 +1,14 @@
+{
+  "conditional_scenarios": 28,
+  "month_labelled_registration_parent": 1056803,
+  "native_accounting_discrepancies": 0,
+  "native_accounting_equations": 102,
+  "native_count_slots": 504,
+  "native_raw_cells": 609,
+  "native_views": 3,
+  "no_new_website_view": true,
+  "primary_idaho_source_fields_and_denominator_hold_preserved": true,
+  "prior_50_other_states_39_controls_27_scenarios_preserved": true,
+  "source_control_records": 40,
+  "state_and_dc_rows": 51
+}

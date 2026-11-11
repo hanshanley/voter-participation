@@ -1,0 +1,145 @@
+{
+  "status": "PASS_complete_current_and_county_snapshot_migration_public_and_reproduced",
+  "retained_source_appearances_not_people": 24827,
+  "observed_zeros": 616,
+  "unknown_counts": 111,
+  "withheld_counts": 6,
+  "jurisdictions": 51,
+  "exact_old_reader_bindings": 306,
+  "science": {
+    "status": "PASS_immutable_science_all_complete_assets_verified_anonymously",
+    "release_id": 441081257,
+    "tag": "participation-count-migration-20261110-01",
+    "source_commit": "e9f9e9dfe33880fe9a4dc77ddd4d22ac3da441e9",
+    "immutable": true,
+    "assets": {
+      "all-observations.csv.gz": {
+        "bytes": 3423506,
+        "sha256": "64e15529f0db9da4481293686da381b44158ad9cc961f388a68cdb73f96fa67a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-count-migration-20261110-01/all-observations.csv.gz",
+        "anonymous_status": 200,
+        "verified_anonymously": true
+      },
+      "checksums.json": {
+        "bytes": 414,
+        "sha256": "5fdbe3007dc858cbf3e38636d8d05527385197dae03623ecb3808d378e330585",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-count-migration-20261110-01/checksums.json",
+        "anonymous_status": 200,
+        "verified_anonymously": true
+      },
+      "complete-analysis.zip": {
+        "bytes": 8621160,
+        "sha256": "5619858746efb0db540d1a90a2ce7453571a17b3f8ae693a4e7eff5115cd55d8",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-count-migration-20261110-01/complete-analysis.zip",
+        "anonymous_status": 200,
+        "verified_anonymously": true
+      },
+      "runtime-dataset.zip": {
+        "bytes": 3995965,
+        "sha256": "0db2bcd9588e697f8ba9cd2b30ceea80a2d61a8c9a0651f95c46cb24b247caf7",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-count-migration-20261110-01/runtime-dataset.zip",
+        "anonymous_status": 200,
+        "verified_anonymously": true
+      }
+    },
+    "website_main_advanced": false,
+    "website_interface_activated": false,
+    "primary_asset": "complete-analysis.zip",
+    "precinct_estimates_published": false,
+    "whole_project_complete": false
+  },
+  "data_only_publication": {
+    "status": "PASS_actual_count_catalog_science_and_all_immutable_files_public",
+    "id": "participation-counts-2026",
+    "version": "b695d9e882b601001716764ebbad7aca50e44af04b635c4f60833247e0fd2996",
+    "staged_commit": "c3715dfe9d80dd0225eed41c2070cdabcfe655f2",
+    "catalog_commit": "b3df476df80f486ed506cc09150f205f49c373f1",
+    "anonymous_verified_files": 54,
+    "catalog_url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/participation-data/catalog.json",
+    "website_builds_started": 0,
+    "worktree_head_or_index_changed": false,
+    "complete_download": {
+      "bytes": 8621160,
+      "sha256": "5619858746efb0db540d1a90a2ce7453571a17b3f8ae693a4e7eff5115cd55d8",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-count-migration-20261110-01/complete-analysis.zip",
+      "anonymous_status": 200,
+      "verified_anonymously": true,
+      "immutable": true,
+      "release_id": 441081257,
+      "members": 126
+    },
+    "protected_before": {
+      "source": {
+        "head": "e9f9e9dfe33880fe9a4dc77ddd4d22ac3da441e9",
+        "index_sha256": "2351c12872188d33f245bb4e2ebd0c2bb99170b74a3f9f1b7271ebb5eb4fa996"
+      },
+      "canonical_website": {
+        "head": "e8412375749695ecf0dd866544df301879ad12e9",
+        "index_sha256": "a3a03cd67d767ec8e0005824e5d4e5677471e9453217316572b493fb047b5099"
+      },
+      "canonical_research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "website_main": "21d3d60333606adb6b11b3dac89d6976087ad439",
+      "pages_runs": [
+        {
+          "databaseId": 42916341779,
+          "headSha": "21d3d60333606adb6b11b3dac89d6976087ad439"
+        },
+        {
+          "databaseId": 42914262055,
+          "headSha": "4d4c65aff5c1500ead143a496a62e0ac069b332a"
+        },
+        {
+          "databaseId": 42898891761,
+          "headSha": "975fbf8e8bb5d05e61a45df4416b95afc5340314"
+        }
+      ]
+    },
+    "protected_after": {
+      "source": {
+        "head": "e9f9e9dfe33880fe9a4dc77ddd4d22ac3da441e9",
+        "index_sha256": "2351c12872188d33f245bb4e2ebd0c2bb99170b74a3f9f1b7271ebb5eb4fa996"
+      },
+      "canonical_website": {
+        "head": "e8412375749695ecf0dd866544df301879ad12e9",
+        "index_sha256": "a3a03cd67d767ec8e0005824e5d4e5677471e9453217316572b493fb047b5099"
+      },
+      "canonical_research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "website_main": "21d3d60333606adb6b11b3dac89d6976087ad439",
+      "pages_runs": [
+        {
+          "databaseId": 42916341779,
+          "headSha": "21d3d60333606adb6b11b3dac89d6976087ad439"
+        },
+        {
+          "databaseId": 42914262055,
+          "headSha": "4d4c65aff5c1500ead143a496a62e0ac069b332a"
+        },
+        {
+          "databaseId": 42898891761,
+          "headSha": "975fbf8e8bb5d05e61a45df4416b95afc5340314"
+        }
+      ]
+    },
+    "reader_code_not_yet_deployed": false,
+    "website_reader_acceptance_pending": false,
+    "whole_project_complete": false,
+    "actual_reader_source": "c4ccdf4d677974ea9068724367263dc59d9d0d88",
+    "actual_reader_cases": 308,
+    "actual_state_UI_cases": 51,
+    "actual_reader_proof": "participation-count-catalog-canonical_counts-production-c4ccdf4.json",
+    "browser_acceptance_source": "41887bf990325f45a2159b64e87272f977a74577",
+    "native_artifact_rebuilt_for_transport_failure": false
+  },
+  "native_sources_reacquired": 0,
+  "native_sources_reparsed": 0,
+  "new_geographic_approvals": 0,
+  "precinct_geometry_embedded_count_migration_complete": false,
+  "coverage_dashboard_complete": false,
+  "whole_project_complete": false
+}

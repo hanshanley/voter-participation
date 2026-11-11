@@ -1,0 +1,210 @@
+{
+  "observed_date_utc": "2026-11-10",
+  "purpose": "Source qualification ledger, not a substitute for the complete numerical query download",
+  "complete_numerical_release": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/complete-analysis.zip",
+  "release_id": 439851515,
+  "source_commit": "f6a9e98d2cfdc7e2b376cceefd30f47b26348cfa",
+  "source_guard_run_id": 42738069416,
+  "summary": {
+    "complete_source_region_queries": 1168,
+    "complete_reference_queries": 1056,
+    "mapped_per_mode": {
+      "in_person_early": 480,
+      "mail_returned": 480
+    },
+    "held_native_per_mode": {
+      "in_person_early": 104,
+      "mail_returned": 104
+    },
+    "held_reference_per_mode": {
+      "in_person_early": 48,
+      "mail_returned": 48
+    },
+    "contextual_boundary_year": 2024,
+    "native_election_id_qualified": false,
+    "analysis_rates_approved": false,
+    "county_totals_inferred": false,
+    "precinct_records_inferred": false,
+    "modes_added": false
+  },
+  "source_frames": [
+    {
+      "state_code": "ME",
+      "mode": "in_person_early",
+      "source_date": "2026-11-02",
+      "source_regions": 584,
+      "mapped_locality_observations": 480,
+      "native_category_parents": {
+        "Democratic": {
+          "votes": 74248,
+          "color": "#4874a3"
+        },
+        "No Party Affiliation": {
+          "votes": 43469,
+          "color": "#63c660"
+        },
+        "Other": {
+          "votes": 3985,
+          "color": "#e0bb24"
+        },
+        "Republican": {
+          "votes": 39942,
+          "color": "#c6606b"
+        }
+      },
+      "source_category_sum": 161644,
+      "native_category_parent_sums_agree": true,
+      "source_clock": null,
+      "source_timezone": null,
+      "native_election_name": "Maine In-Person Early Voting",
+      "native_election_id_qualified": false,
+      "analysis_rates_approved": false,
+      "source_url": "https://civicapi.org/api/v2/early-vote/ME/inperson"
+    },
+    {
+      "state_code": "ME",
+      "mode": "mail_returned",
+      "source_date": "2026-11-02",
+      "source_regions": 584,
+      "mapped_locality_observations": 480,
+      "native_category_parents": {
+        "Democratic": {
+          "votes": 66965,
+          "color": "#4874a3"
+        },
+        "No Party Affiliation": {
+          "votes": 40384,
+          "color": "#63c660"
+        },
+        "Other": {
+          "votes": 4085,
+          "color": "#e0bb24"
+        },
+        "Republican": {
+          "votes": 29270,
+          "color": "#c6606b"
+        }
+      },
+      "source_category_sum": 140704,
+      "native_category_parent_sums_agree": true,
+      "source_clock": null,
+      "source_timezone": null,
+      "native_election_name": "Maine Ballots Returned",
+      "native_election_id_qualified": false,
+      "analysis_rates_approved": false,
+      "source_url": "https://civicapi.org/api/v2/early-vote/ME/returned"
+    }
+  ],
+  "identity_methods_per_mode": {
+    "in_person_early": {
+      "held_2024_qualified_identity_reference_only": 441,
+      "unambiguous_name_with_literal_Twp_Plt_suffix": 39
+    },
+    "mail_returned": {
+      "held_2024_qualified_identity_reference_only": 441,
+      "unambiguous_name_with_literal_Twp_Plt_suffix": 39
+    }
+  },
+  "original_geometry_path": "data/participation-local/20261104T220000Z-identity-audit/geometry/2024/municipality-ME.geojson.gz",
+  "original_historical_identity_path": "data/participation-local/20261104T220000Z-identity-audit/states/ME.json.gz",
+  "full_contextual_reference": {
+    "path": "public/participation-locality-activity/20261110-maine-01/ME.geojson.gz",
+    "url": "/participation-locality-activity/20261110-maine-01/ME.geojson.gz",
+    "sha256": "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc",
+    "uncompressed_sha256": "38751b1df738a178a32a71f77f361828bfdbcb5a431be7f546201032c19c407a",
+    "boundary_year": 2024,
+    "localities": 528,
+    "geography_scope": "provider_partial_locality_activity",
+    "identity_field": "reference_municipality_key",
+    "review_id": "maine-locality-activity-20261110-01",
+    "certified_election_day_geography": false
+  },
+  "native_source_receipts": {
+    "inperson": {
+      "url": "https://civicapi.org/api/v2/early-vote/ME/inperson",
+      "retrieved_at": "2026-11-04T22:04:32.410934+00:00",
+      "source_snapshot_id": "20261104T220425Z",
+      "bytes": 113673,
+      "sha256": "2ac2be7d3fbfd00f67722118b7bfff6f57e9f28c0e0efd7b4a311bc4192395e2",
+      "http_status": 200
+    },
+    "returned": {
+      "url": "https://civicapi.org/api/v2/early-vote/ME/returned",
+      "retrieved_at": "2026-11-04T22:04:32.653793+00:00",
+      "source_snapshot_id": "20261104T220425Z",
+      "bytes": 113621,
+      "sha256": "53e93c8e8b9f71645a9e889cc28928b054dc61f64dbe5ac452cad9f55900b1a4",
+      "http_status": 200
+    }
+  },
+  "historical_voting_counts_not_transferred": true,
+  "geometry_bytes_unchanged": true,
+  "counts_allocated": false,
+  "fake_native_FIPS_created": false,
+  "precinct_records_inferred": false,
+  "county_totals_inferred": false,
+  "denominators_approved": false,
+  "rates_approved": false,
+  "native_election_id_qualified": false,
+  "cast_ballot_count_qualified": false,
+  "unique_voter_count_qualified": false,
+  "original_sources_reacquired": false,
+  "independent_checks": 11438,
+  "network_blocked_replays": [
+    {
+      "network_probe": "EPERM",
+      "exact_query_sha256": "f69c01f0228accaa7731885dcfbe3cae51a3018c66c8278b1b39506d615268bf",
+      "focused_tests": 4,
+      "status": "PASS"
+    },
+    {
+      "network_probe": "EPERM",
+      "exact_query_sha256": "f69c01f0228accaa7731885dcfbe3cae51a3018c66c8278b1b39506d615268bf",
+      "focused_tests": 4,
+      "status": "PASS"
+    }
+  ],
+  "eight_complete_assets_verified_before_main": true,
+  "release_assets": {
+    "complete-analysis.zip": {
+      "bytes": 665845,
+      "sha256": "f597ea56a5a4f10184629a1d829710b993efe8cd6cbcc8c21bbb3eef3214d890",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/complete-analysis.zip"
+    },
+    "queries.json": {
+      "bytes": 2965224,
+      "sha256": "f69c01f0228accaa7731885dcfbe3cae51a3018c66c8278b1b39506d615268bf",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/queries.json"
+    },
+    "all1168-source-region-queries.csv": {
+      "bytes": 674715,
+      "sha256": "ba60c9e76ecb623efb143d3dfdd3923b50044351258f9c9cc7107008e9783b4a",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/all1168-source-region-queries.csv"
+    },
+    "all1056-reference-queries.csv": {
+      "bytes": 80927,
+      "sha256": "12fa449da706b7aac859dbe24ee9d984c5855a548042b97b24dc49ad774e15c4",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/all1056-reference-queries.csv"
+    },
+    "all2-source-frame-decisions.csv": {
+      "bytes": 1000,
+      "sha256": "e3ce2db8fe5de6344933f5331b32e3c9e63bacc4c5eda8d00a4262dde43ed60f",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/all2-source-frame-decisions.csv"
+    },
+    "all960-mapped-locality-queries.csv": {
+      "bytes": 564736,
+      "sha256": "4c98fdcf5897c39b025924c4025fe5167f2e845c3e1497e2b9c4ae68892669b8",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/all960-mapped-locality-queries.csv"
+    },
+    "manifest.json": {
+      "bytes": 3653,
+      "sha256": "dc4d4608f529c6043a4e1c7997c7a69b22007a27f1dfc55fb730b44e388f3425",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/manifest.json"
+    },
+    "README.txt": {
+      "bytes": 2417,
+      "sha256": "0c3608e216bca77dc06e2b72111665d1a7d19a989e7ce978f2bd2a11dedf566a",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-maine-locality-activity-20261110-01/README.txt"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+__type,CountyID,CountyName,CountyPercent,CurrentDateTime,IsReported,PartialPrecincts,PrecinctName,PrecinctsReporting,TotalPrecincts,Voters,calcVoterTurnout,source_vote_center,county_id_not_fips,survey_allocated_to_county
+TurnoutData:#SDENRwebservice,10,Aurora,0.5449500554938956,11/5/2026 3:20:04 AM,True,0,Countywide,5,5,1802,982,False,True,False
+TurnoutData:#SDENRwebservice,04,Beadle,0.4737712895377129,11/5/2026 3:20:04 AM,True,0,Countywide,9,9,10275,4868,False,True,False
+TurnoutData:#SDENRwebservice,11,Bennett,0.4768802228412256,11/5/2026 3:20:04 AM,True,0,Countywide,4,4,1795,856,False,True,False
+TurnoutData:#SDENRwebservice,12,Bon Homme,0.5462799495586381,11/5/2026 3:20:04 AM,True,0,Countywide,5,5,3965,2166,False,True,False
+TurnoutData:#SDENRwebservice,06,Brookings (Vote Center),0.5272085764689918,11/5/2026 3:20:04 AM,True,0,Countywide,10,10,22107,11655,True,True,False
+TurnoutData:#SDENRwebservice,03,Brown (Vote Center),0.5093061190346732,11/5/2026 3:20:04 AM,True,0,Countywide,12,12,23909,12177,True,True,False
+TurnoutData:#SDENRwebservice,13,Brule,0.5482790130977764,11/5/2026 3:20:04 AM,True,0,Countywide,4,4,3283,1800,False,True,False
+TurnoutData:#SDENRwebservice,14,Buffalo,0.4261744966442953,11/5/2026 3:20:04 AM,True,0,Countywide,3,3,894,381,False,True,False
+TurnoutData:#SDENRwebservice,15,Butte,0.4951084644831986,11/5/2026 3:20:04 AM,True,0,Countywide,18,18,7053,3492,False,True,False
+TurnoutData:#SDENRwebservice,16,Campbell,0.5513513513513514,11/5/2026 3:20:04 AM,True,0,Countywide,5,5,1110,612,False,True,False
+TurnoutData:#SDENRwebservice,17,Charles Mix (Vote Center),0.49180626365622726,11/5/2026 3:20:04 AM,True,0,Countywide,7,7,5492,2701,True,True,False
+TurnoutData:#SDENRwebservice,18,Clark,0.5736919675755343,11/5/2026 3:20:04 AM,True,0,Countywide,12,12,2714,1557,False,True,False
+TurnoutData:#SDENRwebservice,19,Clay,0.49084423305588587,11/5/2026 3:20:04 AM,True,0,Countywide,9,9,8410,4128,False,True,False
+TurnoutData:#SDENRwebservice,05,Codington,0.522656086865734,11/5/2026 3:20:04 AM,True,0,Countywide,20,20,19156,10012,False,True,False
+TurnoutData:#SDENRwebservice,20,Corson,0.3274336283185841,11/5/2026 3:20:04 AM,True,0,Countywide,9,9,2260,740,False,True,False
+TurnoutData:#SDENRwebservice,21,Custer,0.5726256983240223,11/5/2026 3:20:04 AM,True,0,Countywide,10,10,8234,4715,False,True,False
+TurnoutData:#SDENRwebservice,08,Davison,0.459578931595115,11/5/2026 3:20:04 AM,True,0,Countywide,7,7,13347,6134,False,True,False
+TurnoutData:#SDENRwebservice,22,Day,0.5788675429726997,11/5/2026 3:20:04 AM,True,0,Countywide,11,11,3956,2290,False,True,False
+TurnoutData:#SDENRwebservice,23,Deuel,0.5395232120451694,11/5/2026 3:20:04 AM,True,0,Countywide,10,10,3188,1720,False,True,False
+TurnoutData:#SDENRwebservice,24,Dewey,0.37259408216029877,11/5/2026 3:20:04 AM,True,0,Countywide,11,11,3481,1297,False,True,False
+TurnoutData:#SDENRwebservice,25,Douglas (Vote Center),0.605050023820867,11/5/2026 3:20:04 AM,True,0,Countywide,3,3,2099,1270,True,True,False
+TurnoutData:#SDENRwebservice,26,Edmunds,0.5394298407997038,11/5/2026 3:20:04 AM,True,0,Countywide,6,6,2701,1457,False,True,False
+TurnoutData:#SDENRwebservice,27,Fall River,0.5288124801018784,11/5/2026 3:20:04 AM,True,0,Countywide,9,9,6282,3322,False,True,False
+TurnoutData:#SDENRwebservice,28,Faulk,0.5345830639948287,11/5/2026 3:20:04 AM,True,0,Countywide,7,7,1547,827,False,True,False
+TurnoutData:#SDENRwebservice,29,Grant,0.6129032258064516,11/5/2026 3:20:04 AM,True,0,Countywide,17,17,4805,2945,False,True,False
+TurnoutData:#SDENRwebservice,30,Gregory,0.5562130177514792,11/5/2026 3:20:04 AM,True,0,Countywide,3,3,2873,1598,False,True,False
+TurnoutData:#SDENRwebservice,31,Haakon (Vote Center),0.6125995655322231,11/5/2026 3:20:04 AM,True,0,Countywide,5,5,1381,846,True,True,False
+TurnoutData:#SDENRwebservice,32,Hamlin,0.5213989875747814,11/5/2026 3:20:04 AM,True,0,Countywide,7,7,4346,2266,False,True,False
+TurnoutData:#SDENRwebservice,33,Hand,0.56951871657754,11/5/2026 3:20:04 AM,True,0,Countywide,5,5,2244,1278,False,True,False
+TurnoutData:#SDENRwebservice,34,Hanson,0.3872010342598578,11/5/2026 3:20:04 AM,True,0,Countywide,5,5,3094,1198,False,True,False
+TurnoutData:#SDENRwebservice,35,Harding,0.6610837438423646,11/5/2026 3:20:04 AM,True,0,Countywide,8,8,1015,671,False,True,False
+TurnoutData:#SDENRwebservice,36,Hughes (Vote Center),0.5529332434254889,11/5/2026 3:20:04 AM,True,0,Countywide,6,6,11864,6560,True,True,False
+TurnoutData:#SDENRwebservice,37,Hutchinson,0.5150368452499502,11/5/2026 3:20:04 AM,True,0,Countywide,6,6,5021,2586,False,True,False
+TurnoutData:#SDENRwebservice,38,Hyde (Vote Center),0.5483870967741935,11/5/2026 3:20:04 AM,True,0,Countywide,1,1,930,510,True,True,False
+TurnoutData:#SDENRwebservice,39,Jackson,0.4273224043715847,11/5/2026 3:20:04 AM,True,0,Countywide,8,8,1830,782,False,True,False
+TurnoutData:#SDENRwebservice,40,Jerauld,0.5354150799695354,11/5/2026 3:20:04 AM,True,0,Countywide,5,5,1313,703,False,True,False
+TurnoutData:#SDENRwebservice,41,Jones,0.719188767550702,11/5/2026 3:20:04 AM,True,0,Countywide,2,2,641,461,False,True,False
+TurnoutData:#SDENRwebservice,42,Kingsbury,0.5722130697419,11/5/2026 3:20:04 AM,True,0,Countywide,6,6,3642,2084,False,True,False
+TurnoutData:#SDENRwebservice,43,Lake,0.5780786589297228,11/5/2026 3:20:04 AM,True,0,Countywide,10,10,7755,4483,False,True,False
+TurnoutData:#SDENRwebservice,09,Lawrence,0.4726523958646133,11/5/2026 3:20:04 AM,True,0,Countywide,11,11,23311,11018,False,True,False
+TurnoutData:#SDENRwebservice,44,Lincoln,0.5151081363407746,11/5/2026 3:20:04 AM,True,0,Countywide,33,33,51694,26628,False,True,False
+TurnoutData:#SDENRwebservice,45,Lyman,0.5085125448028673,11/5/2026 3:20:04 AM,True,0,Countywide,7,7,2232,1135,False,True,False
+TurnoutData:#SDENRwebservice,48,Marshall,0.5959488272921108,11/5/2026 3:20:04 AM,True,0,Countywide,9,9,2814,1677,False,True,False
+TurnoutData:#SDENRwebservice,46,McCook,0.5541016607951686,11/5/2026 3:20:04 AM,True,0,Countywide,6,6,3974,2202,False,True,False
+TurnoutData:#SDENRwebservice,47,McPherson,0.598813056379822,11/5/2026 3:20:04 AM,True,0,Countywide,4,4,1685,1009,False,True,False
+TurnoutData:#SDENRwebservice,49,Meade,0.4827487745681245,11/5/2026 3:20:04 AM,True,0,Countywide,41,41,21013,10144,False,True,False
+TurnoutData:#SDENRwebservice,50,Mellette,0.5209380234505863,11/5/2026 3:20:04 AM,True,0,Countywide,4,4,1194,622,False,True,False
+TurnoutData:#SDENRwebservice,51,Miner,0.575187969924812,11/5/2026 3:20:04 AM,True,0,Countywide,8,8,1596,918,False,True,False
+TurnoutData:#SDENRwebservice,01,Minnehaha,0.48823804218924066,11/5/2026 3:20:04 AM,True,0,Countywide,80,80,139135,67931,False,True,False
+TurnoutData:#SDENRwebservice,52,Moody,0.5589421783953384,11/5/2026 3:20:04 AM,True,0,Countywide,6,6,4462,2494,False,True,False
+TurnoutData:#SDENRwebservice,65,Oglala Lakota (Vote Center),0.28863085364297564,11/5/2026 3:20:04 AM,True,0,Countywide,9,9,7837,2262,True,True,False
+TurnoutData:#SDENRwebservice,02,Pennington,0.4328038789500084,11/5/2026 3:20:04 AM,True,0,Countywide,46,46,89715,38829,False,True,False
+TurnoutData:#SDENRwebservice,53,Perkins,0.5936784241868988,11/5/2026 3:20:04 AM,True,0,Countywide,10,10,2183,1296,False,True,False
+TurnoutData:#SDENRwebservice,54,Potter (Vote Center),0.5551622418879056,11/5/2026 3:20:04 AM,True,0,Countywide,3,3,1695,941,True,True,False
+TurnoutData:#SDENRwebservice,55,Roberts,0.4884022708840227,11/5/2026 3:20:04 AM,True,0,Countywide,12,12,6165,3011,False,True,False
+TurnoutData:#SDENRwebservice,56,Sanborn,0.5183823529411765,11/5/2026 3:20:04 AM,True,0,Countywide,4,4,1632,846,False,True,False
+TurnoutData:#SDENRwebservice,57,Spink,0.5474539803968443,11/5/2026 3:20:04 AM,True,0,Countywide,9,9,4183,2290,False,True,False
+TurnoutData:#SDENRwebservice,58,Stanley,0.5904091509018917,11/5/2026 3:20:04 AM,True,0,Countywide,3,3,2273,1342,False,True,False
+TurnoutData:#SDENRwebservice,59,Sully (Vote Center),0.6210163652024118,11/5/2026 3:20:04 AM,True,0,Countywide,4,4,1161,721,True,True,False
+TurnoutData:#SDENRwebservice,67,Todd,0.3741313606814616,11/5/2026 3:20:04 AM,True,0,Countywide,10,10,4461,1669,False,True,False
+TurnoutData:#SDENRwebservice,60,Tripp,0.5604458416690483,11/5/2026 3:20:04 AM,True,0,Countywide,13,13,3499,1961,False,True,False
+TurnoutData:#SDENRwebservice,61,Turner,0.5369643441282302,11/5/2026 3:20:04 AM,True,0,Countywide,8,8,6114,3283,False,True,False
+TurnoutData:#SDENRwebservice,62,Union,0.4623867664434817,11/5/2026 3:20:04 AM,True,0,Countywide,13,13,12695,5870,False,True,False
+TurnoutData:#SDENRwebservice,63,Walworth (Vote Center),0.46162402669632924,11/5/2026 3:20:04 AM,True,0,Countywide,5,5,3596,1660,True,True,False
+TurnoutData:#SDENRwebservice,07,Yankton (Vote Center),0.5282241728561783,11/5/2026 3:20:04 AM,True,0,Countywide,7,7,14810,7823,True,True,False
+TurnoutData:#SDENRwebservice,64,Ziebach,0.3617283950617284,11/5/2026 3:20:04 AM,True,0,Countywide,6,6,1620,586,False,True,False

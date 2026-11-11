@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "independent_checks": 183662,
+  "complete_comparison_decisions": 6426,
+  "selected_weight_view_contrasts": 1010,
+  "distinct_state_group_pair_contrasts": 505,
+  "selected_nonoverall_weight_views": 826,
+  "distinct_nonoverall_state_group_pair_contrasts": 413,
+  "prior_public_inputs_unchanged_no_native_reductions_or_private_source_reuse": true,
+  "all_numeric_held_fields_absent_exact_full_denominator_arithmetic_verified": true,
+  "no_observed_turnout_change_model_equivalence_panel_causal_or_fake_interval_claim": true,
+  "both_new_403_receipts_verified_no_cached_counts_used": true,
+  "focused_tests": 10,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 10,
+  "archive_bytes": 1221147,
+  "archive_sha256": "314119ecc91494e52ba3c09c7db82ced4631830f292f97224bc9dae730f01498"
+}

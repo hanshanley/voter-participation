@@ -1,0 +1,4 @@
+from_year,to_year,disposition,conditional_participation_unit_difference,observed_turnout_change,person_switching_or_retention,no_cross_source_trend_claim
+2022,2024,held_different_election_types_and_unvalidated_measurement_transport,,,,True
+2024,2026,held_different_election_types_and_unvalidated_measurement_transport,,,,True
+2022,2026,held_CPS_selfreport_vs_Civic_model_not_harmonized,,,,True

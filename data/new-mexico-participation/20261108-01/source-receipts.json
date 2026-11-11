@@ -1,0 +1,30 @@
+[
+  {
+    "declaration_url": "https://electionresults.sos.nm.gov/VoterTurnoutDetails.aspx?map=TURN",
+    "native_download_url": "https://electionresults.sos.nm.gov/VoterTurnoutDetails.aspx?map=TURN",
+    "native_filename": "Voter Turnout Results.xlsx",
+    "bytes": 118724,
+    "sha256": "330db5ae977029696fd8ff19aedc2bd8d4c6d179ecf371fe0c3b7131bf94e0f2",
+    "retrieved_at_utc": "2026-11-09T00:13:04.159527+00:00",
+    "action": "ordinary declared statewide Voter Turnout export; no session headers or form state exported",
+    "file": "official-native-turnout-export.xlsx"
+  },
+  {
+    "url": "https://klvg4oyd4j.execute-api.us-west-2.amazonaws.com/prod/PublicFiles/ee3072ab0d43456cb15a51f7d82c77a2/4050a4d3-ae31-4905-9750-37f74a39aa90/Statewide_10-30-2026.pdf",
+    "status": 200,
+    "bytes": 92466,
+    "sha256": "900ec856517dbabd0dd68cc0e34ab240499a5bc8c3b48904f6982f8cbe65c3cc",
+    "content_type": "application/pdf",
+    "retrieved_at_utc": "2026-11-09T00:13:40.710023+00:00",
+    "file": "Statewide_10-30-2026.pdf"
+  },
+  {
+    "url": "https://klvg4oyd4j.execute-api.us-west-2.amazonaws.com/prod/PublicFiles/ee3072ab0d43456cb15a51f7d82c77a2/4dfda95a-6e57-4485-9cc5-ad8f29def2ae/County_Precincts_10-30-2026.pdf",
+    "status": 200,
+    "bytes": 1043464,
+    "sha256": "630d5b674872494b73f326b8e664229aba0ebefda7ff582863e820ee12ad33a5",
+    "content_type": "application/pdf",
+    "retrieved_at_utc": "2026-11-09T00:13:41.744780+00:00",
+    "file": "County_Precincts_10-30-2026.pdf"
+  }
+]

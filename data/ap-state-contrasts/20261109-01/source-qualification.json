@@ -1,0 +1,31 @@
+{
+  "cross_study_cps_civic_projection": false,
+  "design_confidence_interval": null,
+  "exact_native_group_weights_not_rounded_display_percentages": true,
+  "final_outcome_calibration_not_independent_turnout_validation": true,
+  "local_allocation": false,
+  "model_equivalence_validated": false,
+  "native_2018_47_inference_state_and_2022_source_holds_preserved": true,
+  "native_code_and_label_match_required_not_measurement_equivalence": true,
+  "new_website_view": false,
+  "no_new_private_cells_or_suppression_recovery": true,
+  "observed_turnout_change": false,
+  "old_native_reductions_and_qualified_source_campaigns_not_rerun": true,
+  "only_both_already_public_supported_endpoints_used": true,
+  "population_validation": false,
+  "repeated_cross_sections_not_panel_or_fixed_group_cohort": true,
+  "same_type_pairs": [
+    {
+      "election_type": "midterm",
+      "from_year": 2018,
+      "to_year": 2022
+    },
+    {
+      "election_type": "presidential",
+      "from_year": 2020,
+      "to_year": 2024
+    }
+  ],
+  "sex_gender_and_race_contrasts_held_no_crosswalk": true,
+  "unknown_model_mass_retained_in_each_full_denominator": true
+}

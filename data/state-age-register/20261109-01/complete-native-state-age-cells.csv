@@ -1,0 +1,13 @@
+state_code,native_race_view,native_gender_label,native_age_label,source_sheet,source_cell,native_cell_kind,native_value,native_registered_count,missing_is_zero,registration_stock_not_participation
+SC,All,Female,18 - 24,Sheet1,K58,number,148384,148384,False,True
+SC,All,Female,25 - 44,Sheet1,L58,number,579987,579987,False,True
+SC,All,Female,45 - 64,Sheet1,M58,number,606780,606780,False,True
+SC,All,Female,65 - Up,Sheet1,N58,number,580268,580268,False,True
+SC,All,Male,18 - 24,Sheet1,Q58,number,123601,123601,False,True
+SC,All,Male,25 - 44,Sheet1,R58,number,463490,463490,False,True
+SC,All,Male,45 - 64,Sheet1,S58,number,501344,501344,False,True
+SC,All,Male,65 - Up,Sheet1,T58,number,465059,465059,False,True
+SC,All,Unknown,18 - 24,Sheet1,X58,number,520,520,False,True
+SC,All,Unknown,25 - 44,Sheet1,Y58,number,402,402,False,True
+SC,All,Unknown,45 - 64,Sheet1,Z58,number,235,235,False,True
+SC,All,Unknown,65 - Up,Sheet1,AA58,number,150,150,False,True

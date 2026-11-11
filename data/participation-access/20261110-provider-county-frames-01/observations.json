@@ -1,0 +1,249 @@
+{
+  "observed_date_utc": "2026-11-10",
+  "purpose": "Source qualification ledger, not a substitute for the complete numerical query download",
+  "complete_numerical_release": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip",
+  "release_id": 439800051,
+  "source_commit": "5fc4f81f9fdf2d1d91a033f8bd05d0e6b0f8cc2a",
+  "original_sources_reacquired": false,
+  "dataset_directory_id": "20261104T220424Z",
+  "source_snapshot_id": "20261104T220425Z",
+  "provider": "civicAPI early activity, not Civic/NORC",
+  "collector_election_context": "2026-11-03",
+  "native_election_id_qualified": false,
+  "literal_count_field": "votes",
+  "count_basis": "Sum native source-category cells within ONE activity frame",
+  "summary": {
+    "complete_state_mode_queries": 102,
+    "approved_county_frames": 63,
+    "approved_states": 39,
+    "approved_county_observations": 4731,
+    "all_source_region_queries": 6371,
+    "analysis_rates_approved": false,
+    "native_election_context_qualified": false,
+    "modes_added": false
+  },
+  "runtime_provider_frames": 61,
+  "runtime_provider_states": 38,
+  "runtime_source_county_counts": 4621,
+  "stronger_native_WV_frames": 2,
+  "native_positive_zero_partial_priority": true,
+  "modes_added": false,
+  "state_totals_allocated": false,
+  "cast_ballot_count_qualified": false,
+  "unique_voter_count_qualified": false,
+  "rates_approved": false,
+  "denominators_approved": false,
+  "held_frame_dispositions": {
+    "no_captured_provider_response": 23,
+    "state_only_no_region_counts": 5,
+    "noncounty_mixed_partial_or_unmatched_regions": 9,
+    "no_complete_county_reference": 2
+  },
+  "raw_source_dates": [
+    "2026-10-23",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-10-31",
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-04"
+  ],
+  "approved_catalogue": {
+    "AR": {
+      "in_person_early": 75,
+      "mail_returned": 75
+    },
+    "AZ": {
+      "mail_returned": 15
+    },
+    "CA": {
+      "in_person_early": 58,
+      "mail_returned": 58
+    },
+    "CO": {
+      "in_person_early": 64,
+      "mail_returned": 64
+    },
+    "DE": {
+      "mail_returned": 3
+    },
+    "FL": {
+      "in_person_early": 67,
+      "mail_returned": 67
+    },
+    "GA": {
+      "in_person_early": 159,
+      "mail_returned": 159
+    },
+    "IA": {
+      "in_person_early": 99,
+      "mail_returned": 99
+    },
+    "ID": {
+      "in_person_early": 44,
+      "mail_returned": 44
+    },
+    "IN": {
+      "in_person_early": 92,
+      "mail_returned": 92
+    },
+    "KS": {
+      "in_person_early": 105,
+      "mail_returned": 105
+    },
+    "KY": {
+      "in_person_early": 120,
+      "mail_returned": 120
+    },
+    "LA": {
+      "in_person_early": 64,
+      "mail_returned": 64
+    },
+    "MD": {
+      "mail_returned": 24
+    },
+    "MI": {
+      "mail_returned": 83
+    },
+    "MN": {
+      "in_person_early": 87,
+      "mail_returned": 87
+    },
+    "MS": {
+      "mail_returned": 82
+    },
+    "MT": {
+      "mail_returned": 56
+    },
+    "NC": {
+      "in_person_early": 100,
+      "mail_returned": 100
+    },
+    "ND": {
+      "mail_returned": 53
+    },
+    "NE": {
+      "in_person_early": 93,
+      "mail_returned": 93
+    },
+    "NJ": {
+      "in_person_early": 21,
+      "mail_returned": 21
+    },
+    "NM": {
+      "in_person_early": 33,
+      "mail_returned": 33
+    },
+    "NV": {
+      "in_person_early": 17,
+      "mail_returned": 17
+    },
+    "NY": {
+      "in_person_early": 62
+    },
+    "OH": {
+      "in_person_early": 88,
+      "mail_returned": 88
+    },
+    "OK": {
+      "mail_returned": 77
+    },
+    "OR": {
+      "mail_returned": 36
+    },
+    "PA": {
+      "mail_returned": 67
+    },
+    "SC": {
+      "in_person_early": 46,
+      "mail_returned": 46
+    },
+    "SD": {
+      "mail_returned": 66
+    },
+    "TN": {
+      "in_person_early": 95
+    },
+    "TX": {
+      "in_person_early": 254,
+      "mail_returned": 254
+    },
+    "UT": {
+      "in_person_early": 29,
+      "mail_returned": 29
+    },
+    "VA": {
+      "in_person_early": 133,
+      "mail_returned": 133
+    },
+    "WA": {
+      "mail_returned": 39
+    },
+    "WI": {
+      "in_person_early": 72,
+      "mail_returned": 72
+    },
+    "WV": {
+      "in_person_early": 55,
+      "mail_returned": 55
+    },
+    "WY": {
+      "mail_returned": 23
+    }
+  },
+  "all_seven_assets_anonymously_verified_before_main": true,
+  "release_assets": {
+    "complete-analysis.zip": {
+      "bytes": 52460406,
+      "sha256": "0ef503144a4992f89cc541206f920dc02d038ab4a3eca4dfee06169d2b60b18a",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip"
+    },
+    "queries.json": {
+      "bytes": 20819685,
+      "sha256": "a17f3ec279d10ee07a2c2e88af4a7a704a5368bcbdcd590f57f83310bb28f620",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/queries.json"
+    },
+    "complete-state-mode-decisions.csv": {
+      "bytes": 29851,
+      "sha256": "578407b76b87856247b3420c78660ebaaee81383f94835c53a9b1c9165f408b9",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-state-mode-decisions.csv"
+    },
+    "complete-source-region-queries.csv": {
+      "bytes": 2040901,
+      "sha256": "e9106f18a6590683a12b9c18283cbe87b0c5f6a3362f1bb6bbd4e3a96ff7b861",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-source-region-queries.csv"
+    },
+    "complete-qualified-county-queries.csv": {
+      "bytes": 9604714,
+      "sha256": "474f165a9ba5967ef45de1f546b83c750a3ec50caabb635997ad03474fc38b98",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-qualified-county-queries.csv"
+    },
+    "manifest.json": {
+      "bytes": 28292,
+      "sha256": "b4428d24a05ef997b16ed954ca67563fb7bd52c43a6ac01c0574451d19b16bd0",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/manifest.json"
+    },
+    "README.txt": {
+      "bytes": 2731,
+      "sha256": "b55a5b4dba1b4c5562ca374750791151010c37c0800375299b580e40a89cc621",
+      "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/README.txt"
+    }
+  },
+  "independent_checks": 71197,
+  "archive_members": 144,
+  "exact_network_blocked_replays": [
+    {
+      "network_probe": "EPERM",
+      "exact_query_sha256": "a17f3ec279d10ee07a2c2e88af4a7a704a5368bcbdcd590f57f83310bb28f620",
+      "focused_tests": 4,
+      "status": "PASS"
+    },
+    {
+      "network_probe": "EPERM",
+      "exact_query_sha256": "a17f3ec279d10ee07a2c2e88af4a7a704a5368bcbdcd590f57f83310bb28f620",
+      "focused_tests": 4,
+      "status": "PASS"
+    }
+  ],
+  "source_guard_run_id": 42727588407
+}

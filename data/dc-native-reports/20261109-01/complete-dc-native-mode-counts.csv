@@ -1,0 +1,550 @@
+report_id,source_row,source_column,native_geography_label,native_location_ward,geographic_level,native_period_label,raw_native_count,native_count,native_measure,geography_is_voter_residence_qualified,accepted_or_generic_cast_ballots_qualified,allmode_or_unique_people_count_qualified,missing_imputed_zero
+DC-early,2,2,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,26-Oct,209,209,native_early_vote_center_report_count,False,False,False,False
+DC-early,2,3,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,27-Oct,147,147,native_early_vote_center_report_count,False,False,False,False
+DC-early,2,4,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,28-Oct,158,158,native_early_vote_center_report_count,False,False,False,False
+DC-early,2,5,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,29-Oct,154,154,native_early_vote_center_report_count,False,False,False,False
+DC-early,2,6,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,30-Oct,283,283,native_early_vote_center_report_count,False,False,False,False
+DC-early,2,7,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,31-Oct,247,247,native_early_vote_center_report_count,False,False,False,False
+DC-early,2,8,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,1-Nov,367,367,native_early_vote_center_report_count,False,False,False,False
+DC-early,2,9,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,TOTAL,1565,1565,native_early_vote_center_report_count,False,False,False,False
+DC-early,3,2,PRINCE HALL CENTER (MASONIC TEMPLE),1,vote_center,26-Oct,124,124,native_early_vote_center_report_count,False,False,False,False
+DC-early,3,3,PRINCE HALL CENTER (MASONIC TEMPLE),1,vote_center,27-Oct,111,111,native_early_vote_center_report_count,False,False,False,False
+DC-early,3,4,PRINCE HALL CENTER (MASONIC TEMPLE),1,vote_center,28-Oct,102,102,native_early_vote_center_report_count,False,False,False,False
+DC-early,3,5,PRINCE HALL CENTER (MASONIC TEMPLE),1,vote_center,29-Oct,127,127,native_early_vote_center_report_count,False,False,False,False
+DC-early,3,6,PRINCE HALL CENTER (MASONIC TEMPLE),1,vote_center,30-Oct,192,192,native_early_vote_center_report_count,False,False,False,False
+DC-early,3,7,PRINCE HALL CENTER (MASONIC TEMPLE),1,vote_center,31-Oct,168,168,native_early_vote_center_report_count,False,False,False,False
+DC-early,3,8,PRINCE HALL CENTER (MASONIC TEMPLE),1,vote_center,1-Nov,254,254,native_early_vote_center_report_count,False,False,False,False
+DC-early,3,9,PRINCE HALL CENTER (MASONIC TEMPLE),1,vote_center,TOTAL,1078,1078,native_early_vote_center_report_count,False,False,False,False
+DC-early,4,2,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,26-Oct,79,79,native_early_vote_center_report_count,False,False,False,False
+DC-early,4,3,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,27-Oct,84,84,native_early_vote_center_report_count,False,False,False,False
+DC-early,4,4,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,28-Oct,66,66,native_early_vote_center_report_count,False,False,False,False
+DC-early,4,5,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,29-Oct,66,66,native_early_vote_center_report_count,False,False,False,False
+DC-early,4,6,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,30-Oct,126,126,native_early_vote_center_report_count,False,False,False,False
+DC-early,4,7,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,31-Oct,119,119,native_early_vote_center_report_count,False,False,False,False
+DC-early,4,8,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,1-Nov,195,195,native_early_vote_center_report_count,False,False,False,False
+DC-early,4,9,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,TOTAL,735,735,native_early_vote_center_report_count,False,False,False,False
+DC-early,5,2,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,26-Oct,241,241,native_early_vote_center_report_count,False,False,False,False
+DC-early,5,3,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,27-Oct,214,214,native_early_vote_center_report_count,False,False,False,False
+DC-early,5,4,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,28-Oct,219,219,native_early_vote_center_report_count,False,False,False,False
+DC-early,5,5,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,29-Oct,255,255,native_early_vote_center_report_count,False,False,False,False
+DC-early,5,6,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,30-Oct,246,246,native_early_vote_center_report_count,False,False,False,False
+DC-early,5,7,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,31-Oct,233,233,native_early_vote_center_report_count,False,False,False,False
+DC-early,5,8,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,1-Nov,254,254,native_early_vote_center_report_count,False,False,False,False
+DC-early,5,9,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,TOTAL,1662,1662,native_early_vote_center_report_count,False,False,False,False
+DC-early,6,2,WEST END PUBLIC LIBRARY,2,vote_center,26-Oct,93,93,native_early_vote_center_report_count,False,False,False,False
+DC-early,6,3,WEST END PUBLIC LIBRARY,2,vote_center,27-Oct,72,72,native_early_vote_center_report_count,False,False,False,False
+DC-early,6,4,WEST END PUBLIC LIBRARY,2,vote_center,28-Oct,94,94,native_early_vote_center_report_count,False,False,False,False
+DC-early,6,5,WEST END PUBLIC LIBRARY,2,vote_center,29-Oct,108,108,native_early_vote_center_report_count,False,False,False,False
+DC-early,6,6,WEST END PUBLIC LIBRARY,2,vote_center,30-Oct,103,103,native_early_vote_center_report_count,False,False,False,False
+DC-early,6,7,WEST END PUBLIC LIBRARY,2,vote_center,31-Oct,109,109,native_early_vote_center_report_count,False,False,False,False
+DC-early,6,8,WEST END PUBLIC LIBRARY,2,vote_center,1-Nov,154,154,native_early_vote_center_report_count,False,False,False,False
+DC-early,6,9,WEST END PUBLIC LIBRARY,2,vote_center,TOTAL,733,733,native_early_vote_center_report_count,False,False,False,False
+DC-early,7,2,STEAD RECREATION CENTER,2,vote_center,26-Oct,139,139,native_early_vote_center_report_count,False,False,False,False
+DC-early,7,3,STEAD RECREATION CENTER,2,vote_center,27-Oct,122,122,native_early_vote_center_report_count,False,False,False,False
+DC-early,7,4,STEAD RECREATION CENTER,2,vote_center,28-Oct,113,113,native_early_vote_center_report_count,False,False,False,False
+DC-early,7,5,STEAD RECREATION CENTER,2,vote_center,29-Oct,127,127,native_early_vote_center_report_count,False,False,False,False
+DC-early,7,6,STEAD RECREATION CENTER,2,vote_center,30-Oct,231,231,native_early_vote_center_report_count,False,False,False,False
+DC-early,7,7,STEAD RECREATION CENTER,2,vote_center,31-Oct,280,280,native_early_vote_center_report_count,False,False,False,False
+DC-early,7,8,STEAD RECREATION CENTER,2,vote_center,1-Nov,304,304,native_early_vote_center_report_count,False,False,False,False
+DC-early,7,9,STEAD RECREATION CENTER,2,vote_center,TOTAL,1316,1316,native_early_vote_center_report_count,False,False,False,False
+DC-early,8,2,CLEVELAND PARK LIBRARY,3,vote_center,26-Oct,143,143,native_early_vote_center_report_count,False,False,False,False
+DC-early,8,3,CLEVELAND PARK LIBRARY,3,vote_center,27-Oct,148,148,native_early_vote_center_report_count,False,False,False,False
+DC-early,8,4,CLEVELAND PARK LIBRARY,3,vote_center,28-Oct,112,112,native_early_vote_center_report_count,False,False,False,False
+DC-early,8,5,CLEVELAND PARK LIBRARY,3,vote_center,29-Oct,140,140,native_early_vote_center_report_count,False,False,False,False
+DC-early,8,6,CLEVELAND PARK LIBRARY,3,vote_center,30-Oct,214,214,native_early_vote_center_report_count,False,False,False,False
+DC-early,8,7,CLEVELAND PARK LIBRARY,3,vote_center,31-Oct,261,261,native_early_vote_center_report_count,False,False,False,False
+DC-early,8,8,CLEVELAND PARK LIBRARY,3,vote_center,1-Nov,281,281,native_early_vote_center_report_count,False,False,False,False
+DC-early,8,9,CLEVELAND PARK LIBRARY,3,vote_center,TOTAL,1299,1299,native_early_vote_center_report_count,False,False,False,False
+DC-early,9,2,CHEVY CHASE COMMUNITY CENTER,3,vote_center,26-Oct,184,184,native_early_vote_center_report_count,False,False,False,False
+DC-early,9,3,CHEVY CHASE COMMUNITY CENTER,3,vote_center,27-Oct,168,168,native_early_vote_center_report_count,False,False,False,False
+DC-early,9,4,CHEVY CHASE COMMUNITY CENTER,3,vote_center,28-Oct,158,158,native_early_vote_center_report_count,False,False,False,False
+DC-early,9,5,CHEVY CHASE COMMUNITY CENTER,3,vote_center,29-Oct,169,169,native_early_vote_center_report_count,False,False,False,False
+DC-early,9,6,CHEVY CHASE COMMUNITY CENTER,3,vote_center,30-Oct,251,251,native_early_vote_center_report_count,False,False,False,False
+DC-early,9,7,CHEVY CHASE COMMUNITY CENTER,3,vote_center,31-Oct,328,328,native_early_vote_center_report_count,False,False,False,False
+DC-early,9,8,CHEVY CHASE COMMUNITY CENTER,3,vote_center,1-Nov,347,347,native_early_vote_center_report_count,False,False,False,False
+DC-early,9,9,CHEVY CHASE COMMUNITY CENTER,3,vote_center,TOTAL,1605,1605,native_early_vote_center_report_count,False,False,False,False
+DC-early,10,2,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,26-Oct,112,112,native_early_vote_center_report_count,False,False,False,False
+DC-early,10,3,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,27-Oct,116,116,native_early_vote_center_report_count,False,False,False,False
+DC-early,10,4,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,28-Oct,81,81,native_early_vote_center_report_count,False,False,False,False
+DC-early,10,5,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,29-Oct,106,106,native_early_vote_center_report_count,False,False,False,False
+DC-early,10,6,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,30-Oct,123,123,native_early_vote_center_report_count,False,False,False,False
+DC-early,10,7,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,31-Oct,111,111,native_early_vote_center_report_count,False,False,False,False
+DC-early,10,8,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,1-Nov,119,119,native_early_vote_center_report_count,False,False,False,False
+DC-early,10,9,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,TOTAL,768,768,native_early_vote_center_report_count,False,False,False,False
+DC-early,11,2,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,26-Oct,169,169,native_early_vote_center_report_count,False,False,False,False
+DC-early,11,3,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,27-Oct,156,156,native_early_vote_center_report_count,False,False,False,False
+DC-early,11,4,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,28-Oct,137,137,native_early_vote_center_report_count,False,False,False,False
+DC-early,11,5,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,29-Oct,161,161,native_early_vote_center_report_count,False,False,False,False
+DC-early,11,6,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,30-Oct,203,203,native_early_vote_center_report_count,False,False,False,False
+DC-early,11,7,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,31-Oct,172,172,native_early_vote_center_report_count,False,False,False,False
+DC-early,11,8,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,1-Nov,195,195,native_early_vote_center_report_count,False,False,False,False
+DC-early,11,9,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,TOTAL,1193,1193,native_early_vote_center_report_count,False,False,False,False
+DC-early,12,2,TAKOMA COMMUNITY CENTER,4,vote_center,26-Oct,211,211,native_early_vote_center_report_count,False,False,False,False
+DC-early,12,3,TAKOMA COMMUNITY CENTER,4,vote_center,27-Oct,169,169,native_early_vote_center_report_count,False,False,False,False
+DC-early,12,4,TAKOMA COMMUNITY CENTER,4,vote_center,28-Oct,167,167,native_early_vote_center_report_count,False,False,False,False
+DC-early,12,5,TAKOMA COMMUNITY CENTER,4,vote_center,29-Oct,218,218,native_early_vote_center_report_count,False,False,False,False
+DC-early,12,6,TAKOMA COMMUNITY CENTER,4,vote_center,30-Oct,248,248,native_early_vote_center_report_count,False,False,False,False
+DC-early,12,7,TAKOMA COMMUNITY CENTER,4,vote_center,31-Oct,238,238,native_early_vote_center_report_count,False,False,False,False
+DC-early,12,8,TAKOMA COMMUNITY CENTER,4,vote_center,1-Nov,322,322,native_early_vote_center_report_count,False,False,False,False
+DC-early,12,9,TAKOMA COMMUNITY CENTER,4,vote_center,TOTAL,1573,1573,native_early_vote_center_report_count,False,False,False,False
+DC-early,13,2,RAYMOND RECREATION CENTER,4,vote_center,26-Oct,78,78,native_early_vote_center_report_count,False,False,False,False
+DC-early,13,3,RAYMOND RECREATION CENTER,4,vote_center,27-Oct,69,69,native_early_vote_center_report_count,False,False,False,False
+DC-early,13,4,RAYMOND RECREATION CENTER,4,vote_center,28-Oct,54,54,native_early_vote_center_report_count,False,False,False,False
+DC-early,13,5,RAYMOND RECREATION CENTER,4,vote_center,29-Oct,84,84,native_early_vote_center_report_count,False,False,False,False
+DC-early,13,6,RAYMOND RECREATION CENTER,4,vote_center,30-Oct,132,132,native_early_vote_center_report_count,False,False,False,False
+DC-early,13,7,RAYMOND RECREATION CENTER,4,vote_center,31-Oct,144,144,native_early_vote_center_report_count,False,False,False,False
+DC-early,13,8,RAYMOND RECREATION CENTER,4,vote_center,1-Nov,181,181,native_early_vote_center_report_count,False,False,False,False
+DC-early,13,9,RAYMOND RECREATION CENTER,4,vote_center,TOTAL,742,742,native_early_vote_center_report_count,False,False,False,False
+DC-early,14,2,TURKEY THICKET RECREATION CENTER,5,vote_center,26-Oct,388,388,native_early_vote_center_report_count,False,False,False,False
+DC-early,14,3,TURKEY THICKET RECREATION CENTER,5,vote_center,27-Oct,323,323,native_early_vote_center_report_count,False,False,False,False
+DC-early,14,4,TURKEY THICKET RECREATION CENTER,5,vote_center,28-Oct,287,287,native_early_vote_center_report_count,False,False,False,False
+DC-early,14,5,TURKEY THICKET RECREATION CENTER,5,vote_center,29-Oct,398,398,native_early_vote_center_report_count,False,False,False,False
+DC-early,14,6,TURKEY THICKET RECREATION CENTER,5,vote_center,30-Oct,436,436,native_early_vote_center_report_count,False,False,False,False
+DC-early,14,7,TURKEY THICKET RECREATION CENTER,5,vote_center,31-Oct,371,371,native_early_vote_center_report_count,False,False,False,False
+DC-early,14,8,TURKEY THICKET RECREATION CENTER,5,vote_center,1-Nov,475,475,native_early_vote_center_report_count,False,False,False,False
+DC-early,14,9,TURKEY THICKET RECREATION CENTER,5,vote_center,TOTAL,2678,2678,native_early_vote_center_report_count,False,False,False,False
+DC-early,15,2,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,26-Oct,95,95,native_early_vote_center_report_count,False,False,False,False
+DC-early,15,3,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,27-Oct,89,89,native_early_vote_center_report_count,False,False,False,False
+DC-early,15,4,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,28-Oct,89,89,native_early_vote_center_report_count,False,False,False,False
+DC-early,15,5,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,29-Oct,129,129,native_early_vote_center_report_count,False,False,False,False
+DC-early,15,6,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,30-Oct,159,159,native_early_vote_center_report_count,False,False,False,False
+DC-early,15,7,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,31-Oct,176,176,native_early_vote_center_report_count,False,False,False,False
+DC-early,15,8,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,1-Nov,219,219,native_early_vote_center_report_count,False,False,False,False
+DC-early,15,9,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,TOTAL,956,956,native_early_vote_center_report_count,False,False,False,False
+DC-early,16,2,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,26-Oct,96,96,native_early_vote_center_report_count,False,False,False,False
+DC-early,16,3,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,27-Oct,82,82,native_early_vote_center_report_count,False,False,False,False
+DC-early,16,4,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,28-Oct,71,71,native_early_vote_center_report_count,False,False,False,False
+DC-early,16,5,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,29-Oct,88,88,native_early_vote_center_report_count,False,False,False,False
+DC-early,16,6,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,30-Oct,111,111,native_early_vote_center_report_count,False,False,False,False
+DC-early,16,7,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,31-Oct,123,123,native_early_vote_center_report_count,False,False,False,False
+DC-early,16,8,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,1-Nov,166,166,native_early_vote_center_report_count,False,False,False,False
+DC-early,16,9,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,TOTAL,737,737,native_early_vote_center_report_count,False,False,False,False
+DC-early,17,2,SHERWOOD RECREATION CENTER,6,vote_center,26-Oct,173,173,native_early_vote_center_report_count,False,False,False,False
+DC-early,17,3,SHERWOOD RECREATION CENTER,6,vote_center,27-Oct,152,152,native_early_vote_center_report_count,False,False,False,False
+DC-early,17,4,SHERWOOD RECREATION CENTER,6,vote_center,28-Oct,147,147,native_early_vote_center_report_count,False,False,False,False
+DC-early,17,5,SHERWOOD RECREATION CENTER,6,vote_center,29-Oct,199,199,native_early_vote_center_report_count,False,False,False,False
+DC-early,17,6,SHERWOOD RECREATION CENTER,6,vote_center,30-Oct,308,308,native_early_vote_center_report_count,False,False,False,False
+DC-early,17,7,SHERWOOD RECREATION CENTER,6,vote_center,31-Oct,268,268,native_early_vote_center_report_count,False,False,False,False
+DC-early,17,8,SHERWOOD RECREATION CENTER,6,vote_center,1-Nov,389,389,native_early_vote_center_report_count,False,False,False,False
+DC-early,17,9,SHERWOOD RECREATION CENTER,6,vote_center,TOTAL,1636,1636,native_early_vote_center_report_count,False,False,False,False
+DC-early,18,2,KING GREENLEAF RECREATION CENTER,6,vote_center,26-Oct,145,145,native_early_vote_center_report_count,False,False,False,False
+DC-early,18,3,KING GREENLEAF RECREATION CENTER,6,vote_center,27-Oct,115,115,native_early_vote_center_report_count,False,False,False,False
+DC-early,18,4,KING GREENLEAF RECREATION CENTER,6,vote_center,28-Oct,102,102,native_early_vote_center_report_count,False,False,False,False
+DC-early,18,5,KING GREENLEAF RECREATION CENTER,6,vote_center,29-Oct,138,138,native_early_vote_center_report_count,False,False,False,False
+DC-early,18,6,KING GREENLEAF RECREATION CENTER,6,vote_center,30-Oct,172,172,native_early_vote_center_report_count,False,False,False,False
+DC-early,18,7,KING GREENLEAF RECREATION CENTER,6,vote_center,31-Oct,182,182,native_early_vote_center_report_count,False,False,False,False
+DC-early,18,8,KING GREENLEAF RECREATION CENTER,6,vote_center,1-Nov,196,196,native_early_vote_center_report_count,False,False,False,False
+DC-early,18,9,KING GREENLEAF RECREATION CENTER,6,vote_center,TOTAL,1050,1050,native_early_vote_center_report_count,False,False,False,False
+DC-early,19,2,ROSEDALE RECREATION CENTER,7,vote_center,26-Oct,68,68,native_early_vote_center_report_count,False,False,False,False
+DC-early,19,3,ROSEDALE RECREATION CENTER,7,vote_center,27-Oct,59,59,native_early_vote_center_report_count,False,False,False,False
+DC-early,19,4,ROSEDALE RECREATION CENTER,7,vote_center,28-Oct,63,63,native_early_vote_center_report_count,False,False,False,False
+DC-early,19,5,ROSEDALE RECREATION CENTER,7,vote_center,29-Oct,65,65,native_early_vote_center_report_count,False,False,False,False
+DC-early,19,6,ROSEDALE RECREATION CENTER,7,vote_center,30-Oct,80,80,native_early_vote_center_report_count,False,False,False,False
+DC-early,19,7,ROSEDALE RECREATION CENTER,7,vote_center,31-Oct,82,82,native_early_vote_center_report_count,False,False,False,False
+DC-early,19,8,ROSEDALE RECREATION CENTER,7,vote_center,1-Nov,117,117,native_early_vote_center_report_count,False,False,False,False
+DC-early,19,9,ROSEDALE RECREATION CENTER,7,vote_center,TOTAL,534,534,native_early_vote_center_report_count,False,False,False,False
+DC-early,20,2,DEANWOOD RECREATION CENTER,7,vote_center,26-Oct,119,119,native_early_vote_center_report_count,False,False,False,False
+DC-early,20,3,DEANWOOD RECREATION CENTER,7,vote_center,27-Oct,98,98,native_early_vote_center_report_count,False,False,False,False
+DC-early,20,4,DEANWOOD RECREATION CENTER,7,vote_center,28-Oct,115,115,native_early_vote_center_report_count,False,False,False,False
+DC-early,20,5,DEANWOOD RECREATION CENTER,7,vote_center,29-Oct,146,146,native_early_vote_center_report_count,False,False,False,False
+DC-early,20,6,DEANWOOD RECREATION CENTER,7,vote_center,30-Oct,160,160,native_early_vote_center_report_count,False,False,False,False
+DC-early,20,7,DEANWOOD RECREATION CENTER,7,vote_center,31-Oct,133,133,native_early_vote_center_report_count,False,False,False,False
+DC-early,20,8,DEANWOOD RECREATION CENTER,7,vote_center,1-Nov,175,175,native_early_vote_center_report_count,False,False,False,False
+DC-early,20,9,DEANWOOD RECREATION CENTER,7,vote_center,TOTAL,946,946,native_early_vote_center_report_count,False,False,False,False
+DC-early,21,2,BENNING STODDERT RECREATION CENTER,7,vote_center,26-Oct,98,98,native_early_vote_center_report_count,False,False,False,False
+DC-early,21,3,BENNING STODDERT RECREATION CENTER,7,vote_center,27-Oct,111,111,native_early_vote_center_report_count,False,False,False,False
+DC-early,21,4,BENNING STODDERT RECREATION CENTER,7,vote_center,28-Oct,109,109,native_early_vote_center_report_count,False,False,False,False
+DC-early,21,5,BENNING STODDERT RECREATION CENTER,7,vote_center,29-Oct,133,133,native_early_vote_center_report_count,False,False,False,False
+DC-early,21,6,BENNING STODDERT RECREATION CENTER,7,vote_center,30-Oct,199,199,native_early_vote_center_report_count,False,False,False,False
+DC-early,21,7,BENNING STODDERT RECREATION CENTER,7,vote_center,31-Oct,157,157,native_early_vote_center_report_count,False,False,False,False
+DC-early,21,8,BENNING STODDERT RECREATION CENTER,7,vote_center,1-Nov,136,136,native_early_vote_center_report_count,False,False,False,False
+DC-early,21,9,BENNING STODDERT RECREATION CENTER,7,vote_center,TOTAL,943,943,native_early_vote_center_report_count,False,False,False,False
+DC-early,22,2,HILLCREST RECREATION CENTER,7,vote_center,26-Oct,125,125,native_early_vote_center_report_count,False,False,False,False
+DC-early,22,3,HILLCREST RECREATION CENTER,7,vote_center,27-Oct,89,89,native_early_vote_center_report_count,False,False,False,False
+DC-early,22,4,HILLCREST RECREATION CENTER,7,vote_center,28-Oct,90,90,native_early_vote_center_report_count,False,False,False,False
+DC-early,22,5,HILLCREST RECREATION CENTER,7,vote_center,29-Oct,111,111,native_early_vote_center_report_count,False,False,False,False
+DC-early,22,6,HILLCREST RECREATION CENTER,7,vote_center,30-Oct,147,147,native_early_vote_center_report_count,False,False,False,False
+DC-early,22,7,HILLCREST RECREATION CENTER,7,vote_center,31-Oct,121,121,native_early_vote_center_report_count,False,False,False,False
+DC-early,22,8,HILLCREST RECREATION CENTER,7,vote_center,1-Nov,176,176,native_early_vote_center_report_count,False,False,False,False
+DC-early,22,9,HILLCREST RECREATION CENTER,7,vote_center,TOTAL,859,859,native_early_vote_center_report_count,False,False,False,False
+DC-early,23,2,CENTRAL DETENTION FACILITY,7,vote_center,26-Oct,,,native_early_vote_center_report_count,False,False,False,False
+DC-early,23,3,CENTRAL DETENTION FACILITY,7,vote_center,27-Oct,61,61,native_early_vote_center_report_count,False,False,False,False
+DC-early,23,4,CENTRAL DETENTION FACILITY,7,vote_center,28-Oct,101,101,native_early_vote_center_report_count,False,False,False,False
+DC-early,23,5,CENTRAL DETENTION FACILITY,7,vote_center,29-Oct,99,99,native_early_vote_center_report_count,False,False,False,False
+DC-early,23,6,CENTRAL DETENTION FACILITY,7,vote_center,30-Oct,,,native_early_vote_center_report_count,False,False,False,False
+DC-early,23,7,CENTRAL DETENTION FACILITY,7,vote_center,31-Oct,,,native_early_vote_center_report_count,False,False,False,False
+DC-early,23,8,CENTRAL DETENTION FACILITY,7,vote_center,1-Nov,,,native_early_vote_center_report_count,False,False,False,False
+DC-early,23,9,CENTRAL DETENTION FACILITY,7,vote_center,TOTAL,261,261,native_early_vote_center_report_count,False,False,False,False
+DC-early,24,2,CORRECTIONAL TREATMENT FACILITY,7,vote_center,26-Oct,,,native_early_vote_center_report_count,False,False,False,False
+DC-early,24,3,CORRECTIONAL TREATMENT FACILITY,7,vote_center,27-Oct,164,164,native_early_vote_center_report_count,False,False,False,False
+DC-early,24,4,CORRECTIONAL TREATMENT FACILITY,7,vote_center,28-Oct,26,26,native_early_vote_center_report_count,False,False,False,False
+DC-early,24,5,CORRECTIONAL TREATMENT FACILITY,7,vote_center,29-Oct,0,0,native_early_vote_center_report_count,False,False,False,False
+DC-early,24,6,CORRECTIONAL TREATMENT FACILITY,7,vote_center,30-Oct,,,native_early_vote_center_report_count,False,False,False,False
+DC-early,24,7,CORRECTIONAL TREATMENT FACILITY,7,vote_center,31-Oct,,,native_early_vote_center_report_count,False,False,False,False
+DC-early,24,8,CORRECTIONAL TREATMENT FACILITY,7,vote_center,1-Nov,,,native_early_vote_center_report_count,False,False,False,False
+DC-early,24,9,CORRECTIONAL TREATMENT FACILITY,7,vote_center,TOTAL,190,190,native_early_vote_center_report_count,False,False,False,False
+DC-early,25,2,FORT STANTON RECREATION CENTER,8,vote_center,26-Oct,62,62,native_early_vote_center_report_count,False,False,False,False
+DC-early,25,3,FORT STANTON RECREATION CENTER,8,vote_center,27-Oct,67,67,native_early_vote_center_report_count,False,False,False,False
+DC-early,25,4,FORT STANTON RECREATION CENTER,8,vote_center,28-Oct,65,65,native_early_vote_center_report_count,False,False,False,False
+DC-early,25,5,FORT STANTON RECREATION CENTER,8,vote_center,29-Oct,74,74,native_early_vote_center_report_count,False,False,False,False
+DC-early,25,6,FORT STANTON RECREATION CENTER,8,vote_center,30-Oct,105,105,native_early_vote_center_report_count,False,False,False,False
+DC-early,25,7,FORT STANTON RECREATION CENTER,8,vote_center,31-Oct,79,79,native_early_vote_center_report_count,False,False,False,False
+DC-early,25,8,FORT STANTON RECREATION CENTER,8,vote_center,1-Nov,103,103,native_early_vote_center_report_count,False,False,False,False
+DC-early,25,9,FORT STANTON RECREATION CENTER,8,vote_center,TOTAL,555,555,native_early_vote_center_report_count,False,False,False,False
+DC-early,26,2,FEREBEE-HOPE RECREATION CENTER,8,vote_center,26-Oct,59,59,native_early_vote_center_report_count,False,False,False,False
+DC-early,26,3,FEREBEE-HOPE RECREATION CENTER,8,vote_center,27-Oct,64,64,native_early_vote_center_report_count,False,False,False,False
+DC-early,26,4,FEREBEE-HOPE RECREATION CENTER,8,vote_center,28-Oct,42,42,native_early_vote_center_report_count,False,False,False,False
+DC-early,26,5,FEREBEE-HOPE RECREATION CENTER,8,vote_center,29-Oct,60,60,native_early_vote_center_report_count,False,False,False,False
+DC-early,26,6,FEREBEE-HOPE RECREATION CENTER,8,vote_center,30-Oct,88,88,native_early_vote_center_report_count,False,False,False,False
+DC-early,26,7,FEREBEE-HOPE RECREATION CENTER,8,vote_center,31-Oct,73,73,native_early_vote_center_report_count,False,False,False,False
+DC-early,26,8,FEREBEE-HOPE RECREATION CENTER,8,vote_center,1-Nov,64,64,native_early_vote_center_report_count,False,False,False,False
+DC-early,26,9,FEREBEE-HOPE RECREATION CENTER,8,vote_center,TOTAL,450,450,native_early_vote_center_report_count,False,False,False,False
+DC-early,27,2,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,26-Oct,82,82,native_early_vote_center_report_count,False,False,False,False
+DC-early,27,3,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,27-Oct,65,65,native_early_vote_center_report_count,False,False,False,False
+DC-early,27,4,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,28-Oct,83,83,native_early_vote_center_report_count,False,False,False,False
+DC-early,27,5,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,29-Oct,81,81,native_early_vote_center_report_count,False,False,False,False
+DC-early,27,6,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,30-Oct,129,129,native_early_vote_center_report_count,False,False,False,False
+DC-early,27,7,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,31-Oct,91,91,native_early_vote_center_report_count,False,False,False,False
+DC-early,27,8,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,1-Nov,159,159,native_early_vote_center_report_count,False,False,False,False
+DC-early,27,9,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,TOTAL,690,690,native_early_vote_center_report_count,False,False,False,False
+DC-early,28,2,BALD EAGLE RECREATION CENTER,8,vote_center,26-Oct,69,69,native_early_vote_center_report_count,False,False,False,False
+DC-early,28,3,BALD EAGLE RECREATION CENTER,8,vote_center,27-Oct,50,50,native_early_vote_center_report_count,False,False,False,False
+DC-early,28,4,BALD EAGLE RECREATION CENTER,8,vote_center,28-Oct,47,47,native_early_vote_center_report_count,False,False,False,False
+DC-early,28,5,BALD EAGLE RECREATION CENTER,8,vote_center,29-Oct,41,41,native_early_vote_center_report_count,False,False,False,False
+DC-early,28,6,BALD EAGLE RECREATION CENTER,8,vote_center,30-Oct,63,63,native_early_vote_center_report_count,False,False,False,False
+DC-early,28,7,BALD EAGLE RECREATION CENTER,8,vote_center,31-Oct,57,57,native_early_vote_center_report_count,False,False,False,False
+DC-early,28,8,BALD EAGLE RECREATION CENTER,8,vote_center,1-Nov,37,37,native_early_vote_center_report_count,False,False,False,False
+DC-early,28,9,BALD EAGLE RECREATION CENTER,8,vote_center,TOTAL,364,364,native_early_vote_center_report_count,False,False,False,False
+DC-early,29,2,TOTAL,,source_report_total,26-Oct,3361,3361,native_early_vote_center_report_count,False,False,False,False
+DC-early,29,3,TOTAL,,source_report_total,27-Oct,3165,3165,native_early_vote_center_report_count,False,False,False,False
+DC-early,29,4,TOTAL,,source_report_total,28-Oct,2898,2898,native_early_vote_center_report_count,False,False,False,False
+DC-early,29,5,TOTAL,,source_report_total,29-Oct,3477,3477,native_early_vote_center_report_count,False,False,False,False
+DC-early,29,6,TOTAL,,source_report_total,30-Oct,4509,4509,native_early_vote_center_report_count,False,False,False,False
+DC-early,29,7,TOTAL,,source_report_total,31-Oct,4323,4323,native_early_vote_center_report_count,False,False,False,False
+DC-early,29,8,TOTAL,,source_report_total,1-Nov,5385,5385,native_early_vote_center_report_count,False,False,False,False
+DC-early,29,9,TOTAL,,source_report_total,TOTAL,27118,27118,native_early_vote_center_report_count,False,False,False,False
+DC-election-day,table1-header,1,WARD 1,1,source_location_ward_parent,,7773,7773,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table1-row2,2,COLUMBIA HEIGHTS EDUCATION CAMPUS,1,vote_center,,1244,1244,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table1-row3,2,MARIE REED ELEMENTARY SCHOOL,1,vote_center,,1800,1800,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table1-row4,2,H.D. COOKE ELEMENTARY SCHOOL,1,vote_center,,947,947,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table1-row5,2,BANCROFT ELEMENTARY SCHOOL,1,vote_center,,899,899,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table1-row6,2,COLUMBIA HEIGHTS COMMUNITY CENTER,1,vote_center,,1419,1419,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table1-row7,2,PRINCE HALL CENTER(MASONIC TEMPLE),1,vote_center,,1464,1464,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table2-header,1,WARD 2,2,source_location_ward_parent,,8929,8929,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table2-row2,2,FIFTEENTH STREET PRESBYTERIAN CHURCH,2,vote_center,,1300,1300,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table2-row3,2,STEAD RECREATION CENTER,2,vote_center,,1636,1636,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table2-row4,2,HARDY MIDDLE SCHOOL,2,vote_center,,676,676,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table2-row5,2,SHILOH BAPTIST CHURCH,2,vote_center,,1251,1251,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table2-row6,2,GEORGETOWN NEIGHBORHOOD LIBRARY,2,vote_center,,871,871,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table2-row7,2,M.L.K. Jr. MEMORIAL LIBRARY,2,vote_center,,1816,1816,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table2-row8,2,WEST END PUBLIC LIBRARY,2,vote_center,,1379,1379,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-header,1,WARD 3,3,source_location_ward_parent,,8722,8722,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row2,2,PALISADES RECREATION CENTER,3,vote_center,,754,754,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row3,2,ANNUNCIATION CHURCH,3,vote_center,,837,837,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row4,2,OYSTER-ADAMS BILINGUAL SCHOOL,3,vote_center,,692,692,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row5,2,JANNEY ELEMENTARY SCHOOL,3,vote_center,,1301,1301,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row6,2,MURCH ELEMENTARY SCHOOL,3,vote_center,,765,765,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row7,2,HORACE MANN ELEMENTARY SCHOOL,3,vote_center,,908,908,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row8,2,CHEVY CHASE COMMUNITY CENTER,3,vote_center,,1245,1245,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row9,2,CLEVELAND PARK LIBRARY,3,vote_center,,1328,1328,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table3-row10,2,UNIVERSITY OF THE DISTRICT OF COLUMBIA,3,vote_center,,892,892,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-header,1,WARD 4,4,source_location_ward_parent,,9696,9696,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row2,2,POWELL ELEMENTARY SCHOOL,4,vote_center,,1152,1152,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row3,2,BARNARD ELEMENTARY SCHOOL,4,vote_center,,958,958,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row4,2,TAKOMA EDUCATION CAMPUS,4,vote_center,,688,688,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row5,2,LASALLE-BACKUS EDUCATION CAMPUS,4,vote_center,,609,609,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row6,2,LAFAYETTE ELEMENTARY SCHOOL,4,vote_center,,657,657,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row7,2,IDA B. WELLS MIDDLE SCHOOL,4,vote_center,,635,635,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row8,2,SHEPHERD RECREATION CENTER,4,vote_center,,802,802,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row9,2,FORT STEVENS RECREATION CENTER,4,vote_center,,581,581,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row10,2,EMERY HEIGHTS COMMUNITY CENTER,4,vote_center,,1508,1508,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row11,2,TAKOMA COMMUNITY CENTER,4,vote_center,,948,948,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table4-row12,2,RAYMOND RECREATION CENTER,4,vote_center,,1158,1158,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-header,1,WARD 5,5,source_location_ward_parent,,9689,9689,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row2,2,BUNKER HILL ELEMENTARY SCHOOL,5,vote_center,,381,381,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row3,2,NOYES EDUCATION CAMPUS,5,vote_center,,958,958,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row4,2,JOSEPH H. COLE RECREATION CENTER,5,vote_center,,1092,1092,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row5,2,MT. HOREB BAPTIST CHURCH,5,vote_center,,599,599,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row6,2,LAMOND-RIGGS/LILLIAN J.HUFF LIBRARY,5,vote_center,,914,914,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row7,2,McKINLEY TECHNOLOGY HIGH SCHOOL,5,vote_center,,1262,1262,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row8,2,DUNBAR SENIOR HIGH SCHOOL,5,vote_center,,1242,1242,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row9,2,WOODRIDGE NEIGHBORHOOD LIBRARY,5,vote_center,,985,985,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table5-row10,2,TURKEY THICKET RECREATION CENTER,5,vote_center,,2256,2256,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-header,1,WARD 6,6,source_location_ward_parent,,10688,10688,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row2,2,CALVARY EPISCOPAL CHURCH,6,vote_center,,1344,1344,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row3,2,STUART-HOBSON MIDDLE SCHOOL,6,vote_center,,696,696,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row4,2,EASTERN MARKET,6,vote_center,,2235,2235,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row5,2,PAYNE ELEMENTARY SCHOOL,6,vote_center,,859,859,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row6,2,WATKINS ELEMENTARY SCHOOL,6,vote_center,,835,835,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row7,2,JEFFERSON MIDDLE SCHOOL ACADEMY,6,vote_center,,1123,1123,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row8,2,KING GREENLEAF RECREATION CENTER,6,vote_center,,1366,1366,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row9,2,SHERWOOD RECREATION CENTER,6,vote_center,,1215,1215,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table6-row10,2,WALKER JONES MS/RH TERRELL REC CTR,6,vote_center,,1015,1015,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-header,1,WARD 7,7,source_location_ward_parent,,9043,9043,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row2,2,KELLY MILLER MIDDLE SCHOOL,7,vote_center,,889,889,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row3,2,MINER ELEMENTARY SCHOOL,7,vote_center,,738,738,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row4,2,CESAR CHAVEZ PUB. CHARTER SCHOOL,7,vote_center,,392,392,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row5,2,RIVER TERRACE EDUCATION CAMPUS,7,vote_center,,423,423,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row6,2,NALLE ELEMENTARY SCHOOL,7,vote_center,,709,709,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row7,2,RANDLE-HIGHLANDS ELEMENTARY SCHOOL,7,vote_center,,632,632,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row8,2,ST. TIMOTHY'S EPISCOPAL CHURCH,7,vote_center,,717,717,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row9,2,KIMBALL ELEMENTARY SCHOOL,7,vote_center,,547,547,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row10,2,BENNING STODDERT RECREATION CENTER,7,vote_center,,1223,1223,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row11,2,DEANWOOD RECREATION CENTER,7,vote_center,,1403,1403,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row12,2,HILLCREST RECREATION CENTER,7,vote_center,,674,674,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table7-row13,2,ROSEDALE RECREATION CENTER,7,vote_center,,696,696,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-header,1,WARD 8,8,source_location_ward_parent,,8363,8363,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row2,2,THEARC,8,vote_center,,820,820,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row3,2,HENDLEY ELEMENTARY SCHOOL,8,vote_center,,595,595,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row4,2,ALLEN A.M.E. CHURCH,8,vote_center,,608,608,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row5,2,COVENANT BAPTIST CHURCH,8,vote_center,,412,412,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row6,2,UNION TEMPLE BAPTIST CHURCH,8,vote_center,,736,736,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row7,2,ANACOSTIA SENIOR HIGH SCHOOL,8,vote_center,,688,688,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row8,2,BALLOU SENIOR HIGH SCHOOL,8,vote_center,,796,796,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row9,2,TURNER ELEMENTARY SCHOOL,8,vote_center,,957,957,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row10,2,ARTHUR CAPPER COMMUNITY CENTER,8,vote_center,,1140,1140,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row11,2,BALD EAGLE RECREATION CENTER,8,vote_center,,463,463,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row12,2,FORT STANTON RECREATION CENTER,8,vote_center,,623,623,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,table8-row13,2,FEREBEE-HOPE RECREATION CENTER,8,vote_center,,525,525,native_election_day_in_person_report_count,False,False,False,False
+DC-election-day,outside-grid-native-parent,,ELECTION DAY IN-PERSON,,source_report_total,,72903,72903,native_election_day_in_person_report_count,False,False,False,False
+DC-dropbox,2,2,WARD 1,1,source_location_ward,"October 13, 2026",680,680,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,2,3,WARD 2,2,source_location_ward,"October 13, 2026",823,823,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,2,4,WARD 3,3,source_location_ward,"October 13, 2026",999,999,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,2,5,WARD 4,4,source_location_ward,"October 13, 2026",457,457,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,2,6,WARD 5,5,source_location_ward,"October 13, 2026",386,386,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,2,7,WARD 6,6,source_location_ward,"October 13, 2026",861,861,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,2,8,WARD 7,7,source_location_ward,"October 13, 2026",323,323,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,2,9,WARD 8,8,source_location_ward,"October 13, 2026",163,163,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,2,10,source_total,,source_report_total,"October 13, 2026",4692,4692,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,2,WARD 1,1,source_location_ward,"October 14, 2026",164,164,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,3,WARD 2,2,source_location_ward,"October 14, 2026",225,225,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,4,WARD 3,3,source_location_ward,"October 14, 2026",210,210,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,5,WARD 4,4,source_location_ward,"October 14, 2026",107,107,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,6,WARD 5,5,source_location_ward,"October 14, 2026",120,120,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,7,WARD 6,6,source_location_ward,"October 14, 2026",222,222,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,8,WARD 7,7,source_location_ward,"October 14, 2026",59,59,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,9,WARD 8,8,source_location_ward,"October 14, 2026",55,55,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,3,10,source_total,,source_report_total,"October 14, 2026",1162,1162,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,2,WARD 1,1,source_location_ward,"October 15, 2026",133,133,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,3,WARD 2,2,source_location_ward,"October 15, 2026",206,206,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,4,WARD 3,3,source_location_ward,"October 15, 2026",258,258,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,5,WARD 4,4,source_location_ward,"October 15, 2026",135,135,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,6,WARD 5,5,source_location_ward,"October 15, 2026",167,167,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,7,WARD 6,6,source_location_ward,"October 15, 2026",227,227,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,8,WARD 7,7,source_location_ward,"October 15, 2026",93,93,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,9,WARD 8,8,source_location_ward,"October 15, 2026",75,75,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,4,10,source_total,,source_report_total,"October 15, 2026",1294,1294,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,2,WARD 1,1,source_location_ward,"October 16, 2026",102,102,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,3,WARD 2,2,source_location_ward,"October 16, 2026",156,156,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,4,WARD 3,3,source_location_ward,"October 16, 2026",188,188,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,5,WARD 4,4,source_location_ward,"October 16, 2026",78,78,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,6,WARD 5,5,source_location_ward,"October 16, 2026",81,81,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,7,WARD 6,6,source_location_ward,"October 16, 2026",137,137,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,8,WARD 7,7,source_location_ward,"October 16, 2026",78,78,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,9,WARD 8,8,source_location_ward,"October 16, 2026",59,59,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,5,10,source_total,,source_report_total,"October 16, 2026",879,879,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,2,WARD 1,1,source_location_ward,"October 17, 2026",187,187,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,3,WARD 2,2,source_location_ward,"October 17, 2026",123,123,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,4,WARD 3,3,source_location_ward,"October 17, 2026",198,198,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,5,WARD 4,4,source_location_ward,"October 17, 2026",141,141,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,6,WARD 5,5,source_location_ward,"October 17, 2026",179,179,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,7,WARD 6,6,source_location_ward,"October 17, 2026",265,265,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,8,WARD 7,7,source_location_ward,"October 17, 2026",67,67,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,9,WARD 8,8,source_location_ward,"October 17, 2026",44,44,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,6,10,source_total,,source_report_total,"October 17, 2026",1204,1204,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,2,WARD 1,1,source_location_ward,"October 18, 2026",134,134,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,3,WARD 2,2,source_location_ward,"October 18, 2026",151,151,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,4,WARD 3,3,source_location_ward,"October 18, 2026",321,321,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,5,WARD 4,4,source_location_ward,"October 18, 2026",117,117,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,6,WARD 5,5,source_location_ward,"October 18, 2026",144,144,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,7,WARD 6,6,source_location_ward,"October 18, 2026",195,195,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,8,WARD 7,7,source_location_ward,"October 18, 2026",63,63,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,9,WARD 8,8,source_location_ward,"October 18, 2026",31,31,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,7,10,source_total,,source_report_total,"October 18, 2026",1156,1156,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,2,WARD 1,1,source_location_ward,"October 19, 2026",212,212,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,3,WARD 2,2,source_location_ward,"October 19, 2026",194,194,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,4,WARD 3,3,source_location_ward,"October 19, 2026",259,259,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,5,WARD 4,4,source_location_ward,"October 19, 2026",152,152,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,6,WARD 5,5,source_location_ward,"October 19, 2026",183,183,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,7,WARD 6,6,source_location_ward,"October 19, 2026",327,327,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,8,WARD 7,7,source_location_ward,"October 19, 2026",76,76,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,9,WARD 8,8,source_location_ward,"October 19, 2026",39,39,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,8,10,source_total,,source_report_total,"October 19, 2026",1442,1442,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,2,WARD 1,1,source_location_ward,"October 20, 2026",205,205,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,3,WARD 2,2,source_location_ward,"October 20, 2026",236,236,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,4,WARD 3,3,source_location_ward,"October 20, 2026",340,340,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,5,WARD 4,4,source_location_ward,"October 20, 2026",134,134,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,6,WARD 5,5,source_location_ward,"October 20, 2026",208,208,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,7,WARD 6,6,source_location_ward,"October 20, 2026",259,259,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,8,WARD 7,7,source_location_ward,"October 20, 2026",89,89,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,9,WARD 8,8,source_location_ward,"October 20, 2026",69,69,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,9,10,source_total,,source_report_total,"October 20, 2026",1540,1540,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,2,WARD 1,1,source_location_ward,"October 21, 2026",164,164,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,3,WARD 2,2,source_location_ward,"October 21, 2026",216,216,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,4,WARD 3,3,source_location_ward,"October 21, 2026",283,283,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,5,WARD 4,4,source_location_ward,"October 21, 2026",166,166,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,6,WARD 5,5,source_location_ward,"October 21, 2026",164,164,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,7,WARD 6,6,source_location_ward,"October 21, 2026",257,257,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,8,WARD 7,7,source_location_ward,"October 21, 2026",141,141,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,9,WARD 8,8,source_location_ward,"October 21, 2026",63,63,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,10,10,source_total,,source_report_total,"October 21, 2026",1454,1454,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,2,WARD 1,1,source_location_ward,"October 22, 2026",198,198,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,3,WARD 2,2,source_location_ward,"October 22, 2026",196,196,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,4,WARD 3,3,source_location_ward,"October 22, 2026",275,275,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,5,WARD 4,4,source_location_ward,"October 22, 2026",154,154,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,6,WARD 5,5,source_location_ward,"October 22, 2026",216,216,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,7,WARD 6,6,source_location_ward,"October 22, 2026",262,262,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,8,WARD 7,7,source_location_ward,"October 22, 2026",158,158,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,9,WARD 8,8,source_location_ward,"October 22, 2026",69,69,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,11,10,source_total,,source_report_total,"October 22, 2026",1528,1528,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,2,WARD 1,1,source_location_ward,"October 23, 2026",198,198,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,3,WARD 2,2,source_location_ward,"October 23, 2026",190,190,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,4,WARD 3,3,source_location_ward,"October 23, 2026",241,241,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,5,WARD 4,4,source_location_ward,"October 23, 2026",191,191,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,6,WARD 5,5,source_location_ward,"October 23, 2026",166,166,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,7,WARD 6,6,source_location_ward,"October 23, 2026",211,211,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,8,WARD 7,7,source_location_ward,"October 23, 2026",112,112,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,9,WARD 8,8,source_location_ward,"October 23, 2026",60,60,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,12,10,source_total,,source_report_total,"October 23, 2026",1369,1369,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,2,WARD 1,1,source_location_ward,"October 24, 2026",171,171,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,3,WARD 2,2,source_location_ward,"October 24, 2026",162,162,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,4,WARD 3,3,source_location_ward,"October 24, 2026",202,202,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,5,WARD 4,4,source_location_ward,"October 24, 2026",117,117,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,6,WARD 5,5,source_location_ward,"October 24, 2026",156,156,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,7,WARD 6,6,source_location_ward,"October 24, 2026",175,175,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,8,WARD 7,7,source_location_ward,"October 24, 2026",87,87,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,9,WARD 8,8,source_location_ward,"October 24, 2026",49,49,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,13,10,source_total,,source_report_total,"October 24, 2026",1119,1119,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,2,WARD 1,1,source_location_ward,"October 25, 2026",189,189,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,3,WARD 2,2,source_location_ward,"October 25, 2026",220,220,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,4,WARD 3,3,source_location_ward,"October 25, 2026",389,389,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,5,WARD 4,4,source_location_ward,"October 25, 2026",170,170,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,6,WARD 5,5,source_location_ward,"October 25, 2026",185,185,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,7,WARD 6,6,source_location_ward,"October 25, 2026",327,327,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,8,WARD 7,7,source_location_ward,"October 25, 2026",99,99,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,9,WARD 8,8,source_location_ward,"October 25, 2026",42,42,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,14,10,source_total,,source_report_total,"October 25, 2026",1621,1621,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,2,WARD 1,1,source_location_ward,"October 26, 2026",370,370,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,3,WARD 2,2,source_location_ward,"October 26, 2026",365,365,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,4,WARD 3,3,source_location_ward,"October 26, 2026",404,404,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,5,WARD 4,4,source_location_ward,"October 26, 2026",306,306,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,6,WARD 5,5,source_location_ward,"October 26, 2026",349,349,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,7,WARD 6,6,source_location_ward,"October 26, 2026",416,416,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,8,WARD 7,7,source_location_ward,"October 26, 2026",230,230,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,9,WARD 8,8,source_location_ward,"October 26, 2026",138,138,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,15,10,source_total,,source_report_total,"October 26, 2026",2578,2578,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,2,WARD 1,1,source_location_ward,"October 27, 2026",431,431,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,3,WARD 2,2,source_location_ward,"October 27, 2026",374,374,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,4,WARD 3,3,source_location_ward,"October 27, 2026",567,567,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,5,WARD 4,4,source_location_ward,"October 27, 2026",538,538,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,6,WARD 5,5,source_location_ward,"October 27, 2026",436,436,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,7,WARD 6,6,source_location_ward,"October 27, 2026",388,388,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,8,WARD 7,7,source_location_ward,"October 27, 2026",232,232,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,9,WARD 8,8,source_location_ward,"October 27, 2026",138,138,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,16,10,source_total,,source_report_total,"October 27, 2026",3104,3104,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,2,WARD 1,1,source_location_ward,"October 28, 2026",462,462,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,3,WARD 2,2,source_location_ward,"October 28, 2026",487,487,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,4,WARD 3,3,source_location_ward,"October 28, 2026",584,584,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,5,WARD 4,4,source_location_ward,"October 28, 2026",401,401,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,6,WARD 5,5,source_location_ward,"October 28, 2026",546,546,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,7,WARD 6,6,source_location_ward,"October 28, 2026",555,555,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,8,WARD 7,7,source_location_ward,"October 28, 2026",265,265,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,9,WARD 8,8,source_location_ward,"October 28, 2026",205,205,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,17,10,source_total,,source_report_total,"October 28, 2026",3505,3505,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,2,WARD 1,1,source_location_ward,"October 29, 2026",443,443,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,3,WARD 2,2,source_location_ward,"October 29, 2026",490,490,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,4,WARD 3,3,source_location_ward,"October 29, 2026",541,541,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,5,WARD 4,4,source_location_ward,"October 29, 2026",431,431,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,6,WARD 5,5,source_location_ward,"October 29, 2026",407,407,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,7,WARD 6,6,source_location_ward,"October 29, 2026",573,573,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,8,WARD 7,7,source_location_ward,"October 29, 2026",312,312,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,9,WARD 8,8,source_location_ward,"October 29, 2026",154,154,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,18,10,source_total,,source_report_total,"October 29, 2026",3351,3351,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,2,WARD 1,1,source_location_ward,"October 30, 2026",513,513,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,3,WARD 2,2,source_location_ward,"October 30, 2026",605,605,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,4,WARD 3,3,source_location_ward,"October 30, 2026",711,711,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,5,WARD 4,4,source_location_ward,"October 30, 2026",506,506,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,6,WARD 5,5,source_location_ward,"October 30, 2026",602,602,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,7,WARD 6,6,source_location_ward,"October 30, 2026",630,630,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,8,WARD 7,7,source_location_ward,"October 30, 2026",340,340,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,9,WARD 8,8,source_location_ward,"October 30, 2026",219,219,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,19,10,source_total,,source_report_total,"October 30, 2026",4126,4126,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,2,WARD 1,1,source_location_ward,"October 31, 2026",821,821,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,3,WARD 2,2,source_location_ward,"October 31, 2026",646,646,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,4,WARD 3,3,source_location_ward,"October 31, 2026",753,753,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,5,WARD 4,4,source_location_ward,"October 31, 2026",527,527,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,6,WARD 5,5,source_location_ward,"October 31, 2026",639,639,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,7,WARD 6,6,source_location_ward,"October 31, 2026",599,599,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,8,WARD 7,7,source_location_ward,"October 31, 2026",397,397,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,9,WARD 8,8,source_location_ward,"October 31, 2026",205,205,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,20,10,source_total,,source_report_total,"October 31, 2026",4587,4587,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,2,WARD 1,1,source_location_ward,"November 1, 2026",605,605,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,3,WARD 2,2,source_location_ward,"November 1, 2026",624,624,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,4,WARD 3,3,source_location_ward,"November 1, 2026",1060,1060,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,5,WARD 4,4,source_location_ward,"November 1, 2026",592,592,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,6,WARD 5,5,source_location_ward,"November 1, 2026",822,822,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,7,WARD 6,6,source_location_ward,"November 1, 2026",1030,1030,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,8,WARD 7,7,source_location_ward,"November 1, 2026",349,349,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,9,WARD 8,8,source_location_ward,"November 1, 2026",200,200,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,21,10,source_total,,source_report_total,"November 1, 2026",5282,5282,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,2,WARD 1,1,source_location_ward,"November 2, 2026",1117,1117,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,3,WARD 2,2,source_location_ward,"November 2, 2026",1084,1084,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,4,WARD 3,3,source_location_ward,"November 2, 2026",1189,1189,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,5,WARD 4,4,source_location_ward,"November 2, 2026",732,732,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,6,WARD 5,5,source_location_ward,"November 2, 2026",863,863,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,7,WARD 6,6,source_location_ward,"November 2, 2026",1075,1075,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,8,WARD 7,7,source_location_ward,"November 2, 2026",462,462,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,9,WARD 8,8,source_location_ward,"November 2, 2026",221,221,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,22,10,source_total,,source_report_total,"November 2, 2026",6743,6743,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,2,WARD 1,1,source_location_ward,"November 3, 2026",,,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,3,WARD 2,2,source_location_ward,"November 3, 2026",,,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,4,WARD 3,3,source_location_ward,"November 3, 2026",,,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,5,WARD 4,4,source_location_ward,"November 3, 2026",,,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,6,WARD 5,5,source_location_ward,"November 3, 2026",,,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,7,WARD 6,6,source_location_ward,"November 3, 2026",,,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,8,WARD 7,7,source_location_ward,"November 3, 2026",,,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,9,WARD 8,8,source_location_ward,"November 3, 2026",,,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,23,10,source_total,,source_report_total,"November 3, 2026",0,0,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,2,WARD 1,1,source_location_ward,TOTAL,7499,7499,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,3,WARD 2,2,source_location_ward,TOTAL,7773,7773,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,4,WARD 3,3,source_location_ward,TOTAL,9972,9972,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,5,WARD 4,4,source_location_ward,TOTAL,6152,6152,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,6,WARD 5,5,source_location_ward,TOTAL,7019,7019,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,7,WARD 6,6,source_location_ward,TOTAL,8991,8991,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,8,WARD 7,7,source_location_ward,TOTAL,4032,4032,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,9,WARD 8,8,source_location_ward,TOTAL,2298,2298,native_drop_box_mail_ballots_received,False,False,False,False
+DC-dropbox,24,10,source_total,,source_report_total,TOTAL,53736,53736,native_drop_box_mail_ballots_received,False,False,False,False
+DC-usps,1,2,District of Columbia,,source_report_total,"October 8, 2026","1,094",1094,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,2,2,District of Columbia,,source_report_total,"October 13, 2026","6,557",6557,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,3,2,District of Columbia,,source_report_total,"October 14, 2026",0,0,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,4,2,District of Columbia,,source_report_total,"October 15, 2026",673,673,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,5,2,District of Columbia,,source_report_total,"October 16, 2026",1436,1436,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,6,2,District of Columbia,,source_report_total,"October 17, 2026",3549,3549,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,7,2,District of Columbia,,source_report_total,"October 18, 2026",0,0,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,8,2,District of Columbia,,source_report_total,"October 19, 2026",2461,2461,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,9,2,District of Columbia,,source_report_total,"October 20, 2026",977,977,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,10,2,District of Columbia,,source_report_total,"October 21, 2026",79,79,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,11,2,District of Columbia,,source_report_total,"October 22, 2026",1456,1456,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,12,2,District of Columbia,,source_report_total,"October 23, 2026",2525,2525,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,13,2,District of Columbia,,source_report_total,"October 24, 2026",0,0,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,14,2,District of Columbia,,source_report_total,"October 25, 2026",3447,3447,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,15,2,District of Columbia,,source_report_total,"October 26, 2026",5,5,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,16,2,District of Columbia,,source_report_total,"October 27, 2026",3100,3100,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,17,2,District of Columbia,,source_report_total,"October 28, 2026",2069,2069,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,18,2,District of Columbia,,source_report_total,"October 29, 2026",2153,2153,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,19,2,District of Columbia,,source_report_total,"October 30, 2026",1998,1998,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,20,2,District of Columbia,,source_report_total,"October 31, 2026",1586,1586,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,21,2,District of Columbia,,source_report_total,"November 1, 2026",1874,1874,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,22,2,District of Columbia,,source_report_total,"November 2, 2026",0,0,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,23,2,District of Columbia,,source_report_total,"November 3, 2026",7164,7164,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,24,2,District of Columbia,,source_report_total,"November 4, 2026",0,0,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,25,2,District of Columbia,,source_report_total,"November 5, 2026",922,922,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,26,2,District of Columbia,,source_report_total,"November 6, 2026",251,251,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,27,2,District of Columbia,,source_report_total,"November 7, 2026",,,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,28,2,District of Columbia,,source_report_total,"November 8, 2026",,,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,29,2,District of Columbia,,source_report_total,"November 9, 2026",,,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,30,2,District of Columbia,,source_report_total,"November 10, 2026",,,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,31,2,District of Columbia,,source_report_total,"November 11, 2026",,,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,32,2,District of Columbia,,source_report_total,"November 12, 2026",,,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,33,2,District of Columbia,,source_report_total,"November 13, 2026",,,native_usps_mail_ballots_received,False,False,False,False
+DC-usps,34,2,District of Columbia,,source_report_total,TOTAL,45376,45376,native_usps_mail_ballots_received,False,False,False,False

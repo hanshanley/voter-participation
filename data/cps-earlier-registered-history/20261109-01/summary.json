@@ -1,0 +1,23 @@
+{
+  "absent_earlier_registered_frames": 0,
+  "accepted_later_queries_preserved": 1734,
+  "complete_four_year_queries": 3468,
+  "earlier_exclusive_partition_checks": 6520,
+  "earlier_native_CPS_comparisons": 204,
+  "earlier_sparse_registered_under30_diagnostics": 362,
+  "held_citizen_comparisons": 1,
+  "held_registered_comparisons": 3,
+  "new_earlier_coarse_pairs": 13731,
+  "new_earlier_queries": 1734,
+  "new_earlier_registration_class_rows": 5202,
+  "no_2026_projection_or_new_website_view": true,
+  "same_type_comparison_decisions": 1734,
+  "states_and_dc": 51,
+  "supported_earlier_registered_frames": 1734,
+  "years": [
+    2018,
+    2020,
+    2022,
+    2024
+  ]
+}

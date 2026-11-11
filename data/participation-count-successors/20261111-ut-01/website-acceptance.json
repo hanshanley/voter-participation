@@ -1,0 +1,1148 @@
+{
+  "activation": {
+    "actual_frontend_catalog_preflight_passed": true,
+    "before_catalog_commit": "1a440f55916ca4e86d82f9fa058021aff157707d",
+    "catalog_commit": "a1e3cb15040aa38d35b52435f407e721f5c5055e",
+    "complete_download": {
+      "bytes": 232295601,
+      "immutable": true,
+      "sha256": "9e753a4f8b363713f9752ba4448993250d9e49eaff68b196b20f0d72cc42e285",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-utah-count-successors-20261111-01/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "protected_after": {
+      "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+      "research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+      "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+      "website": {
+        "head": "e8412375749695ecf0dd866544df301879ad12e9",
+        "index_sha256": "a3a03cd67d767ec8e0005824e5d4e5677471e9453217316572b493fb047b5099"
+      }
+    },
+    "protected_before": {
+      "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+      "research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+      "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+      "website": {
+        "head": "e8412375749695ecf0dd866544df301879ad12e9",
+        "index_sha256": "a3a03cd67d767ec8e0005824e5d4e5677471e9453217316572b493fb047b5099"
+      }
+    },
+    "publications": [
+      {
+        "anonymous_verified_files": 31,
+        "catalog_commit": "aaff09cd84919b2966d638462174db5817015b73",
+        "catalog_url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/participation-data/catalog.json",
+        "id": "participation-native-bindings-2026",
+        "staged_commit": "383db69b2d69dc33c19088fec77726e21b57c0b3",
+        "status": "published",
+        "version": "67d36be354685dbd75e1ad7cd0fda4eaeaa57fcdd605029f292ae4d4d3f460bf",
+        "website_builds_started": 0,
+        "worktree_head_or_index_changed": false
+      },
+      {
+        "anonymous_verified_files": 54,
+        "catalog_commit": "a1e3cb15040aa38d35b52435f407e721f5c5055e",
+        "catalog_url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/participation-data/catalog.json",
+        "id": "participation-counts-2026",
+        "staged_commit": "b86b45b749d89ce60636defa0b76e3a186bd07aa",
+        "status": "published",
+        "version": "d63083706c7a4b7c8e912dae24503bee068181db9f85183c0ecf8926562c6997",
+        "website_builds_started": 0,
+        "worktree_head_or_index_changed": false
+      }
+    ],
+    "status": "passed_native_first_then_count_activation",
+    "unmodified_dataset_entries_preserved": true,
+    "website_builds_started": 0,
+    "website_source_unchanged": "78df729b3139633f42936f7d1a64eada1c40f2bf"
+  },
+  "contract": "participation.utah_count_successor_acceptance.v1",
+  "fresh_offline_reproductions": [
+    {
+      "all_runtime_and_full_query_bytes_equal": true,
+      "full_predecessor_packet_retained": true,
+      "independent": {
+        "checks": 929,
+        "counts_version": "d63083706c7a4b7c8e912dae24503bee068181db9f85183c0ecf8926562c6997",
+        "geometry_unchanged": true,
+        "native_version": "67d36be354685dbd75e1ad7cd0fda4eaeaa57fcdd605029f292ae4d4d3f460bf",
+        "new_analysis_rates": 0,
+        "new_observations": 4,
+        "old_rates_and_early_mail_frames_preserved": true,
+        "original_utah_records": 147,
+        "qualified_counts": 23,
+        "retained_utah_records": 147,
+        "selected_counties": 29,
+        "status": "passed_independent_utah_count_successor_verification",
+        "unresolved_counts": 6
+      },
+      "network_and_node_child_commands_blocked": true,
+      "previous_source_reductions_repeated": false,
+      "status": "passed_fresh_offline_utah_successor_reproduction",
+      "tests_passed": 22
+    },
+    {
+      "all_runtime_and_full_query_bytes_equal": true,
+      "full_predecessor_packet_retained": true,
+      "independent": {
+        "checks": 929,
+        "counts_version": "d63083706c7a4b7c8e912dae24503bee068181db9f85183c0ecf8926562c6997",
+        "geometry_unchanged": true,
+        "native_version": "67d36be354685dbd75e1ad7cd0fda4eaeaa57fcdd605029f292ae4d4d3f460bf",
+        "new_analysis_rates": 0,
+        "new_observations": 4,
+        "old_rates_and_early_mail_frames_preserved": true,
+        "original_utah_records": 147,
+        "qualified_counts": 23,
+        "retained_utah_records": 147,
+        "selected_counties": 29,
+        "status": "passed_independent_utah_count_successor_verification",
+        "unresolved_counts": 6
+      },
+      "network_and_node_child_commands_blocked": true,
+      "previous_source_reductions_repeated": false,
+      "status": "passed_fresh_offline_utah_successor_reproduction",
+      "tests_passed": 22
+    }
+  ],
+  "production": {
+    "actual_full_source_records_equal": true,
+    "all_113_model_fields_and_saved_rows_preserved": true,
+    "all_19_previous_counts_rates_and_six_holds_preserved": true,
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "count": 42549,
+        "county": "Cache County",
+        "missing_not_zero": false,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 3395,
+        "county": "Kane County",
+        "missing_not_zero": false,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 4149,
+        "county": "Millard County",
+        "missing_not_zero": false,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 737,
+        "county": "Piute County",
+        "missing_not_zero": false,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Daggett County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Garfield County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Iron County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Morgan County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "San Juan County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Wasatch County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 42549,
+        "county": "Cache County",
+        "missing_not_zero": false,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 3395,
+        "county": "Kane County",
+        "missing_not_zero": false,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 4149,
+        "county": "Millard County",
+        "missing_not_zero": false,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 737,
+        "county": "Piute County",
+        "missing_not_zero": false,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Daggett County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Garfield County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Iron County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Morgan County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "San Juan County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Wasatch County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 42549,
+        "county": "Cache County",
+        "missing_not_zero": false,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 3395,
+        "county": "Kane County",
+        "missing_not_zero": false,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 4149,
+        "county": "Millard County",
+        "missing_not_zero": false,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 737,
+        "county": "Piute County",
+        "missing_not_zero": false,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Daggett County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Garfield County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Iron County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Morgan County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "San Juan County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Wasatch County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 42549,
+        "county": "Cache County",
+        "missing_not_zero": false,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 3395,
+        "county": "Kane County",
+        "missing_not_zero": false,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 4149,
+        "county": "Millard County",
+        "missing_not_zero": false,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 737,
+        "county": "Piute County",
+        "missing_not_zero": false,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Daggett County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Garfield County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Iron County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Morgan County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "San Juan County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Wasatch County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 1440,
+        "withheld_rate": true
+      },
+      {
+        "count": 42549,
+        "county": "Cache County",
+        "missing_not_zero": false,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 3395,
+        "county": "Kane County",
+        "missing_not_zero": false,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 4149,
+        "county": "Millard County",
+        "missing_not_zero": false,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 737,
+        "county": "Piute County",
+        "missing_not_zero": false,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Daggett County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Garfield County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Iron County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Morgan County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "San Juan County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Wasatch County",
+        "missing_not_zero": true,
+        "mode": "available",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 42549,
+        "county": "Cache County",
+        "missing_not_zero": false,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 3395,
+        "county": "Kane County",
+        "missing_not_zero": false,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 4149,
+        "county": "Millard County",
+        "missing_not_zero": false,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 737,
+        "county": "Piute County",
+        "missing_not_zero": false,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Daggett County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Garfield County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Iron County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Morgan County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "San Juan County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Wasatch County",
+        "missing_not_zero": true,
+        "mode": "official",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 42549,
+        "county": "Cache County",
+        "missing_not_zero": false,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 3395,
+        "county": "Kane County",
+        "missing_not_zero": false,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 4149,
+        "county": "Millard County",
+        "missing_not_zero": false,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 737,
+        "county": "Piute County",
+        "missing_not_zero": false,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Daggett County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Garfield County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Iron County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Morgan County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "San Juan County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Wasatch County",
+        "missing_not_zero": true,
+        "mode": "uf_vep",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 42549,
+        "county": "Cache County",
+        "missing_not_zero": false,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 3395,
+        "county": "Kane County",
+        "missing_not_zero": false,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 4149,
+        "county": "Millard County",
+        "missing_not_zero": false,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": 737,
+        "county": "Piute County",
+        "missing_not_zero": false,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Daggett County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Garfield County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Iron County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Morgan County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "San Juan County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      },
+      {
+        "count": null,
+        "county": "Wasatch County",
+        "missing_not_zero": true,
+        "mode": "uf_vap",
+        "no_overflow": true,
+        "real_svg_pointer_click": true,
+        "reference_year": 2024,
+        "width": 390,
+        "withheld_rate": true
+      }
+    ],
+    "catalog_commit": "a1e3cb15040aa38d35b52435f407e721f5c5055e",
+    "console_errors": [],
+    "fixture": false,
+    "frames": [
+      {
+        "all_29_count_and_rate_attributes_equal": true,
+        "mode": "available",
+        "old_19_count_and_rate_values_preserved": true,
+        "six_holds_not_zero": true,
+        "width": 1440
+      },
+      {
+        "all_29_count_and_rate_attributes_equal": true,
+        "mode": "official",
+        "old_19_count_and_rate_values_preserved": true,
+        "six_holds_not_zero": true,
+        "width": 1440
+      },
+      {
+        "all_29_count_and_rate_attributes_equal": true,
+        "mode": "uf_vep",
+        "old_19_count_and_rate_values_preserved": true,
+        "six_holds_not_zero": true,
+        "width": 1440
+      },
+      {
+        "all_29_count_and_rate_attributes_equal": true,
+        "mode": "uf_vap",
+        "old_19_count_and_rate_values_preserved": true,
+        "six_holds_not_zero": true,
+        "width": 1440
+      },
+      {
+        "all_29_count_and_rate_attributes_equal": true,
+        "mode": "available",
+        "old_19_count_and_rate_values_preserved": true,
+        "six_holds_not_zero": true,
+        "width": 390
+      },
+      {
+        "all_29_count_and_rate_attributes_equal": true,
+        "mode": "official",
+        "old_19_count_and_rate_values_preserved": true,
+        "six_holds_not_zero": true,
+        "width": 390
+      },
+      {
+        "all_29_count_and_rate_attributes_equal": true,
+        "mode": "uf_vep",
+        "old_19_count_and_rate_values_preserved": true,
+        "six_holds_not_zero": true,
+        "width": 390
+      },
+      {
+        "all_29_count_and_rate_attributes_equal": true,
+        "mode": "uf_vap",
+        "old_19_count_and_rate_values_preserved": true,
+        "six_holds_not_zero": true,
+        "width": 390
+      }
+    ],
+    "geometry_unchanged": true,
+    "matching_source_assets": [
+      {
+        "bytes": 8473,
+        "file": "participation-counts.js",
+        "sha256": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de"
+      },
+      {
+        "bytes": 8671,
+        "file": "participation-native-bindings.js",
+        "sha256": "6d988c642e06c8916572d4b7a18582ba707afa38dab86e7a4ce480a2d52ce274"
+      },
+      {
+        "bytes": 3108,
+        "file": "participation-dataset.js",
+        "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+      },
+      {
+        "bytes": 255460,
+        "file": "participation-explorer.js",
+        "sha256": "c2080b92fe327350a5657259f5d51be0880b5cf4aa9454c0fca15a5d2eeb8a54"
+      },
+      {
+        "bytes": 5146,
+        "file": "participation-coverage.js",
+        "sha256": "f67b2fc454e16900146b8c54608183b6e56e22c288e1c250bfafe26a2329689a"
+      }
+    ],
+    "production_source": "78df729b3139633f42936f7d1a64eada1c40f2bf",
+    "reader": {
+      "complete_downloads": [
+        {
+          "bytes": 232295601,
+          "immutable": true,
+          "sha256": "9e753a4f8b363713f9752ba4448993250d9e49eaff68b196b20f0d72cc42e285",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-utah-count-successors-20261111-01/complete-analysis.zip",
+          "verified_anonymously": true
+        },
+        {
+          "bytes": 232295601,
+          "immutable": true,
+          "sha256": "9e753a4f8b363713f9752ba4448993250d9e49eaff68b196b20f0d72cc42e285",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-utah-count-successors-20261111-01/complete-analysis.zip",
+          "verified_anonymously": true
+        }
+      ],
+      "count_version": "d63083706c7a4b7c8e912dae24503bee068181db9f85183c0ecf8926562c6997",
+      "frames": [
+        {
+          "bindings": 29,
+          "changed_source_scope_rejected": true,
+          "changed_vintage_rejected": true,
+          "mode": "available"
+        },
+        {
+          "bindings": 29,
+          "changed_source_scope_rejected": true,
+          "changed_vintage_rejected": true,
+          "mode": "official"
+        },
+        {
+          "bindings": 29,
+          "changed_source_scope_rejected": true,
+          "changed_vintage_rejected": true,
+          "mode": "uf_vep"
+        },
+        {
+          "bindings": 29,
+          "changed_source_scope_rejected": true,
+          "changed_vintage_rejected": true,
+          "mode": "uf_vap"
+        }
+      ],
+      "native_version": "67d36be354685dbd75e1ad7cd0fda4eaeaa57fcdd605029f292ae4d4d3f460bf",
+      "readable": [
+        "participation-counts-2026",
+        "participation-native-bindings-2026",
+        "resident-context",
+        "transition-scenarios-2026"
+      ]
+    },
+    "status": "passed_actual_production_utah_count_successors"
+  }
+}

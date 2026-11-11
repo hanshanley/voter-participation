@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "independent_checks": 5018,
+  "native_registry_filtered_parent": 1265022,
+  "conditional_modeled_participant_units": "778723.60800461971063379573495446026570629421982355393927880472008043722040073258",
+  "conditional_modeled_nonparticipant_units": "486298.39199538028936620426504553973429370578017644606072119527991956277959926742",
+  "all_93_counties_752_slots_126_blanks_and_102_equations_verified": true,
+  "independent_original_ruled_cell_borders_do_not_reuse_maintained_word_grid": true,
+  "source_filtered_registry_not_generic_vep_or_legal_eligibility_certification": true,
+  "processed_and_printed_clocks_distinct_not_registration_cutoff_or_live_update": true,
+  "native_statewide_ballots": null,
+  "native_minus_model": null,
+  "complete_state_query_rows": 51,
+  "source_control_records": 37,
+  "conditional_scenarios": 26,
+  "all_50_unaffected_state_rows_twenty_five_prior_frames_and_thirty_six_controls_preserved": true,
+  "focused_tests": 12,
+  "two_blocked_probed_exact_offline_reproduction_seeds": [
+    3,
+    97
+  ],
+  "archive_members": 15,
+  "archive_bytes": 104086275,
+  "archive_sha256": "c8b3b6664507bebea9e8d3fc7cecbe19f8182510d748f298961e787887b68893"
+}

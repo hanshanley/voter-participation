@@ -1,0 +1,196 @@
+{
+  "status": "verified_reported_swing_reconciliation_not_causal_attribution",
+  "website_commit": "21d3d60333606adb6b11b3dac89d6976087ad439",
+  "original_model_version": "20261110-01",
+  "dataset_version": "20261110-02",
+  "models": 113,
+  "original_model_records_and_ranges_unchanged": true,
+  "scenarios": 1017,
+  "qualified_reported_comparisons": {
+    "house": 35,
+    "senate": 26,
+    "governor": 28
+  },
+  "unavailable_comparisons": 24,
+  "margin_definition": "100 * (D - R) / (D + R)",
+  "seven_original_terms_plus_unallocated_baseline_alignment_equal_reported_total": true,
+  "exactly_one_map_with_four_selectable_views": true,
+  "office_and_state_preserved_on_view_change": true,
+  "switching_plus_nonparticipation_plus_other_unallocated_equal_reported_total": true,
+  "texas": {
+    "house": {
+      "reported_change_pp": 25.163635639247342,
+      "switching_pp": 3.5983884082676587,
+      "modeled_nonparticipation_pp": -0.8468238317922675,
+      "other_and_unallocated_pp": 22.41207106277195,
+      "baseline_alignment_pp": 14.620837770481451,
+      "baseline_year": 2024
+    },
+    "senate": {
+      "reported_change_pp": 22.23678046612781,
+      "switching_pp": 10.708796692005215,
+      "modeled_nonparticipation_pp": -0.8468238317922675,
+      "other_and_unallocated_pp": 12.374807605914866,
+      "baseline_alignment_pp": 5.064231440527284,
+      "baseline_year": 2020
+    },
+    "governor": {
+      "reported_change_pp": 18.27655273823629,
+      "switching_pp": 7.755423288525882,
+      "modeled_nonparticipation_pp": -0.8468238317922675,
+      "other_and_unallocated_pp": 11.367953281502677,
+      "baseline_alignment_pp": 6.2054729466635745,
+      "baseline_year": 2022
+    }
+  },
+  "complete_download": {
+    "status": "PASS_immutable_science_all_complete_assets_verified_anonymously",
+    "release_id": 440892459,
+    "tag": "participation-observed-swing-20261110-02",
+    "source_commit": "975fbf8e8bb5d05e61a45df4416b95afc5340314",
+    "immutable": true,
+    "assets": {
+      "complete-analysis.zip": {
+        "bytes": 4307149,
+        "sha256": "3b6a0c21e5a20f7bd389f0b206d420fab903b87aaa4f818044e6bee90bf0ca15",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-observed-swing-20261110-02/complete-analysis.zip",
+        "anonymous_status": 200,
+        "verified_anonymously": true
+      },
+      "download.json": {
+        "bytes": 414,
+        "sha256": "13098efdff80ef2cf67f63bd9743de21aebb1f31dd5ccfb42505b349745cece9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-observed-swing-20261110-02/download.json",
+        "anonymous_status": 200,
+        "verified_anonymously": true
+      },
+      "viewer-data.json": {
+        "bytes": 319013,
+        "sha256": "2acc3fc2e79186e8009d6eb5e8cfc64e837b582313cd05036406c7d90bdc3741",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-observed-swing-20261110-02/viewer-data.json",
+        "anonymous_status": 200,
+        "verified_anonymously": true
+      }
+    },
+    "website_main_advanced": false,
+    "website_interface_activated": false,
+    "primary_asset": "complete-analysis.zip",
+    "precinct_estimates_published": false,
+    "whole_project_complete": false
+  },
+  "rational_verification": {
+    "status": "PASS_independent_fraction_margin_arithmetic_unchanged_models_and_explicit_holds",
+    "dataset_sha256": "2acc3fc2e79186e8009d6eb5e8cfc64e837b582313cd05036406c7d90bdc3741",
+    "checks": 630,
+    "models": 113,
+    "qualified": {
+      "house": 35,
+      "senate": 26,
+      "governor": 28
+    },
+    "holds": [
+      {
+        "id": "AK-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "CT-house",
+        "reason": "Held county identities do not exactly cover the Census state reference."
+      },
+      {
+        "id": "HI-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "IL-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "IN-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "LA-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "ME-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "MS-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "NJ-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "OK-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "PA-house",
+        "reason": "Current district controls omit candidate totals; statewide comparison withheld."
+      },
+      {
+        "id": "RI-house",
+        "reason": "Located county totals disagree with native current district controls."
+      },
+      {
+        "id": "SD-house",
+        "reason": "Held county identities do not exactly cover the Census state reference."
+      },
+      {
+        "id": "VA-house",
+        "reason": "At least one county lacks reviewed prior/current candidate counts."
+      },
+      {
+        "id": "VT-house",
+        "reason": "Both periods need a reported D and R contest; no coalition is inferred."
+      },
+      {
+        "id": "AK-senate-86916",
+        "reason": "Both periods need a reported D and R contest; no coalition is inferred."
+      },
+      {
+        "id": "AR-senate-86949",
+        "reason": "Both periods need a reported D and R contest; no coalition is inferred."
+      },
+      {
+        "id": "FL-senate-87068",
+        "reason": "No qualified prior same-seat general election is in the held FEC reference."
+      },
+      {
+        "id": "ID-senate-87103",
+        "reason": "Both periods need a reported D and R contest; no coalition is inferred."
+      },
+      {
+        "id": "NE-senate-87254",
+        "reason": "The 2024 same-seat special election is not in this verified reference."
+      },
+      {
+        "id": "OH-senate-87527",
+        "reason": "No qualified prior same-seat general election is in the held FEC reference."
+      },
+      {
+        "id": "OK-senate-87526",
+        "reason": "The 2022 same-seat special election is not in this verified reference."
+      },
+      {
+        "id": "OR-senate-87374",
+        "reason": "Both periods need a reported D and R contest; no coalition is inferred."
+      },
+      {
+        "id": "SD-senate-87446",
+        "reason": "Both periods need a reported D and R contest; no coalition is inferred."
+      }
+    ],
+    "validation_scope": "Independent exact rational arithmetic on packaged comparison counts; not independent verification of returns or causal mechanisms"
+  },
+  "offline_reproduction": "Fresh complete packet rebuilt every original model/scenario, full House panel and all comparisons byte-for-byte; no source acquisition.",
+  "source_coverage_or_causal_certification": false,
+  "county_or_precinct_model_allocation": false,
+  "observed_nonparticipation": false,
+  "broader_project_complete": false
+}

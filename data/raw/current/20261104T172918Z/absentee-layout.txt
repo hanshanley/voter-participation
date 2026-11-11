@@ -1,0 +1,17 @@
+/* *******************************************************************************
+* name:     layout_absentee_counts_state.txt
+* purpose:  Statewide absentee ballot counts/stats.
+*           Grouped by request type, party, gender, and race.
+* updated:  09/10/2020
+* format:   tab delimited
+******************************************************************************* */
+
+------------------------------------------------------------------------------------
+name                    data type          description
+------------------------------------------------------------------------------------
+ballot_req_type		char(30)	    Ballot request type
+voter_party_code	char(3)		    Party of registered voter
+gender			char(60)	    Gender/sex
+race			char(60)	    Race
+ballot_count            char(6)             Ballot count by group
+-- ---------------------------------------------------------------------------------

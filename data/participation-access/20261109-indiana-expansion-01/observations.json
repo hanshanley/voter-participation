@@ -1,0 +1,84 @@
+{
+  "observed_date_utc": "2026-11-09",
+  "purpose": "Access and source-qualification ledger, not a numerical analysis download",
+  "complete_numerical_release": "https://github.com/hanshanley/margin_of_error/releases/download/voter-county-indiana-voter-statistics-20261109-01/complete-analysis.zip",
+  "acquisition_session_headers_included": false,
+  "observations": [
+    {
+      "state_code": "IN",
+      "requested_url": "https://enr.indianavoters.in.gov/site/data/statewideTurnout_B.json",
+      "http_status": 200,
+      "captured_at_utc": "2026-11-09T20:32:16.470255+00:00",
+      "uncompressed_bytes": 13359,
+      "uncompressed_sha256": "eb240d626034c20959e443dec0246b1e137aefcf2fe1054f5df4991444846d80",
+      "disposition": "Complete native 93-row original acquired and preserved in the numerical release. Source-specific review selects 68 VotersVoting county counts and withholds 24 contradictory zeros without altering any original. Seven independent county parents provide 75 selected county snapshots in total; every rate is withheld."
+    },
+    {
+      "state_code": "IN",
+      "requested_url": "https://enr.indianavoters.in.gov/site/Scripts/EnrAngular/Directives/enrVoterStatistics.js",
+      "http_status": 403,
+      "captured_at_utc": null,
+      "body_hash_available": false,
+      "disposition": "Exact script route stopped after ordinary HTTP denial. No other-client/cache/mirror retry. The distinct permitted controller/export/template declarations identify the separately acquired statistics dataset."
+    },
+    {
+      "state_code": "IN",
+      "requested_url": "https://enr.indianavoters.in.gov/site/Scripts/EnrAngular/Services/jsonDataFetcher.js",
+      "http_status": 403,
+      "captured_at_utc": null,
+      "body_hash_available": false,
+      "disposition": "Exact script route stopped after ordinary HTTP denial. No other-client/cache/mirror retry."
+    },
+    {
+      "state_code": "TN",
+      "requested_url": "https://elections.tn.gov/",
+      "http_status": 403,
+      "captured_at_utc": null,
+      "body_hash_available": false,
+      "disposition": "Route stopped. No other-client/cache/mirror retry or native numerical input."
+    },
+    {
+      "state_code": "TN",
+      "requested_url": "https://tnfirefly.com/elections/how-tennessee-voted-2026",
+      "http_status": 200,
+      "captured_at_utc": "2026-11-09T20:15:46.045633+00:00",
+      "bytes": 727851,
+      "sha256": "400d49e6bb1f642d98d48008b23c6ef5f587d13e672f8ed5e6039106dc819240",
+      "disposition": "Publisher method reviewed: its turnout uses governor-race votes. No promotion to ballot or voter-participation counts; compiled application code is not redistributed."
+    },
+    {
+      "state_code": "NH",
+      "requested_url": "https://www.sos.nh.gov/2026-election-results",
+      "http_status": 403,
+      "captured_at_utc": null,
+      "body_hash_available": false,
+      "disposition": "Route stopped. No other-client/cache/mirror retry or native numerical input."
+    },
+    {
+      "state_code": "KS",
+      "requested_url": "https://ent.sos.ks.gov/kssos_ent.html",
+      "http_status": 403,
+      "captured_at_utc": null,
+      "body_hash_available": false,
+      "disposition": "Official-index-declared portal reached a denial/verification challenge in ordinary Chromium. Product stopped; no challenge solving, other client, cache or mirror."
+    },
+    {
+      "state_code": "WV",
+      "requested_url": "https://results.enr.clarityelections.com/WV/127496/web.345435/",
+      "declared_index_url": "https://sos.wv.gov/elections",
+      "http_status": null,
+      "captured_at_utc": null,
+      "body_hash_available": false,
+      "disposition": "The declared 2026 General Election Results link requires robot verification. Challenge product stopped without solving or another-client/cache/mirror retry. Historical-results index lists only the 2026 primary; historical-turnout index ends in 2016. Neither establishes global county-source absence. Continue independently declared official county publications."
+    }
+  ],
+  "unsuccessful_indiana_filename_queries": [
+    {"url": "https://enr.indianavoters.in.gov/site/data/statewideVoterStatistics_B.json", "http_status": 404},
+    {"url": "https://enr.indianavoters.in.gov/site/data/statewideStatistics_B.json", "http_status": 404},
+    {"url": "https://enr.indianavoters.in.gov/site/data/voterStatistics_B.json", "http_status": 404},
+    {"url": "https://enr.indianavoters.in.gov/site/data/voterStatistics.json", "http_status": 404}
+  ],
+  "unsuccessful_queries_repeated": false,
+  "statewide_survey_allocation_to_localities": false,
+  "candidate_votes_substituted_for_participation": false
+}

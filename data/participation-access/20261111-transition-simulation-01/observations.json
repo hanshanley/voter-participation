@@ -1,0 +1,109 @@
+{
+  "existing_complete_download_routes": 436,
+  "existing_original_models": 113,
+  "full_offline_reproductions": [
+    {
+      "archive_sha256": "422d14209bc6be35919e95a5b69aee6af58e9721c095453bf343139f59f883a2",
+      "focused_tests": 12,
+      "full_result_and_viewer_bytes_identical": true,
+      "independent_scalar_checks": 2557140,
+      "network_and_external_commands_blocked": true,
+      "numerical_warnings_fatal": true,
+      "pinned_members": 19,
+      "status": "passed_complete_offline_reproduction"
+    },
+    {
+      "archive_sha256": "422d14209bc6be35919e95a5b69aee6af58e9721c095453bf343139f59f883a2",
+      "focused_tests": 12,
+      "full_result_and_viewer_bytes_identical": true,
+      "independent_scalar_checks": 2557140,
+      "network_and_external_commands_blocked": true,
+      "numerical_warnings_fatal": true,
+      "pinned_members": 19,
+      "status": "passed_complete_offline_reproduction"
+    }
+  ],
+  "historical_joint_holdout_passed": false,
+  "local_allocation": false,
+  "new_simulation_view_live": false,
+  "new_website_builds": 0,
+  "numerical_verification": {
+    "calibration_grid_kernels": 1443,
+    "checks": 2557140,
+    "complete_demographic_decisions": 1530,
+    "complete_historical_decisions": 2754,
+    "final_kernels": 300,
+    "imports_producer_or_numpy": false,
+    "same_office_comparisons": 89,
+    "source_states": 50,
+    "state_blocked_poll_targets": 55,
+    "state_seed_cases": 1500,
+    "status": "passed_independent_scalar_verification"
+  },
+  "population_transport_validated": false,
+  "private_joint_cells_reconstructed": false,
+  "release": {
+    "assets": [
+      {
+        "anonymous_full_bytes_verified": true,
+        "bytes": 476,
+        "name": "checksums.json",
+        "sha256": "f663fbc2e9ba244dca5c0219d795f52661e1069c27c5a853aafaf6b0e17a5e9a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-transition-simulation-20261111-01/checksums.json"
+      },
+      {
+        "anonymous_full_bytes_verified": true,
+        "bytes": 9977891,
+        "name": "complete-analysis.zip",
+        "sha256": "422d14209bc6be35919e95a5b69aee6af58e9721c095453bf343139f59f883a2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-transition-simulation-20261111-01/complete-analysis.zip"
+      },
+      {
+        "anonymous_full_bytes_verified": true,
+        "bytes": 44360809,
+        "name": "complete-scenarios.json",
+        "sha256": "c752e881d5ec6ab7a68f7bab1a9a2590b64d9f8b503b97d9362ca5b6ef1c6238",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-transition-simulation-20261111-01/complete-scenarios.json"
+      },
+      {
+        "anonymous_full_bytes_verified": true,
+        "bytes": 379,
+        "name": "independent-verification.json",
+        "sha256": "cc994a218b31c5e53afd8a0c982c58b49e6d2f524c5ab647df3c80b173e710b4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-transition-simulation-20261111-01/independent-verification.json"
+      },
+      {
+        "anonymous_full_bytes_verified": true,
+        "bytes": 365,
+        "name": "transition-simulation-offline-reproduction-02.json",
+        "sha256": "08fd591e4edeee26d2bbc744ebc8f06e99e5b8743457be6250c7c3460bdb6fb4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-transition-simulation-20261111-01/transition-simulation-offline-reproduction-02.json"
+      },
+      {
+        "anonymous_full_bytes_verified": true,
+        "bytes": 365,
+        "name": "transition-simulation-offline-reproduction-03.json",
+        "sha256": "08fd591e4edeee26d2bbc744ebc8f06e99e5b8743457be6250c7c3460bdb6fb4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-transition-simulation-20261111-01/transition-simulation-offline-reproduction-03.json"
+      },
+      {
+        "anonymous_full_bytes_verified": true,
+        "bytes": 1900104,
+        "name": "viewer-data.json",
+        "sha256": "db104e263ff4616d69505f1f916ae08e8e8ff1e1dac90985aca434c6f6a5cdeb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-transition-simulation-20261111-01/viewer-data.json"
+      }
+    ],
+    "id": 441189732,
+    "immutable": true,
+    "research_source": "ddfabf759bd8c7ee2e9e48637260d07c6bdd740c",
+    "status": "published_immutable_all_assets_verified",
+    "tag": "participation-transition-simulation-20261111-01",
+    "website_release_anchor": "6ee8416322a9f0b74a943a828fb3c439d5447e1b"
+  },
+  "research_source": "ddfabf759bd8c7ee2e9e48637260d07c6bdd740c",
+  "source_nonvoter_is_administrative_staying_home": false,
+  "source_units_are_people": false,
+  "status": "conditional_science_published_ui_integration_pending",
+  "website_main": "6ee8416322a9f0b74a943a828fb3c439d5447e1b"
+}

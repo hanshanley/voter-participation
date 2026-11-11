@@ -1,0 +1,34 @@
+{
+  "contract": "participation.adaptive_persistence_spec.v1",
+  "id": "adaptive-persistence-transport-20261111-01",
+  "models": {
+    "global": [],
+    "nonvoter": ["nonvoter"],
+    "age": ["nonvoter", "age_gap"],
+    "rurality": ["nonvoter", "rurality_gap"],
+    "age_rurality": ["nonvoter", "age_gap", "rurality_gap"]
+  },
+  "primary_candidate": "age_rurality",
+  "penalties": [0.1, 1.0, 10.0, 100.0],
+  "minimum_training_states": 8,
+  "outer_blocks": ["state", "census_region"],
+  "inner_block": "state",
+  "tuning_objective": "state_balanced_gross_switching_squared_error",
+  "feature_scaling": "eligible_training_states_only",
+  "regression_target": "training_state_grid_optimum_log2_factor_minus_training_global_log2_factor",
+  "intercept": "training_global_gross_switching_optimum",
+  "factor_prediction": "nearest_existing_quarter_octave_grid_point_no_extrapolation",
+  "missing_feature_policy": "training_global_factor_no_group_imputation",
+  "age_contrast": ["AGE6", "30_49", "65_plus"],
+  "rurality_contrast": ["RUCC", "rural_county", "urban_county"],
+  "group_disposition": "selected_broad_source_model",
+  "automatic_ui_promotion": false,
+  "partisan_direction_or_reported_returns_used": false,
+  "region_source_url": "https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf",
+  "regions": {
+    "Northeast": ["CT", "ME", "MA", "NH", "RI", "VT", "NJ", "NY", "PA"],
+    "Midwest": ["IN", "IL", "MI", "OH", "WI", "IA", "KS", "MN", "MO", "NE", "ND", "SD"],
+    "South": ["DE", "DC", "FL", "GA", "MD", "NC", "SC", "VA", "WV", "AL", "KY", "MS", "TN", "AR", "LA", "OK", "TX"],
+    "West": ["AZ", "CO", "ID", "MT", "NV", "NM", "UT", "WY", "AK", "CA", "HI", "OR", "WA"]
+  }
+}

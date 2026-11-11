@@ -1,0 +1,5185 @@
+{
+  "status": "research_only_not_a_2026_estimate",
+  "method": "Same-election historical log-odds gap transfer",
+  "independence": "Own calculations from archived public Census tables only. No NYT estimates, poll responses, commercial voter files, party labels or candidate votes are inputs.",
+  "specification": {
+    "window_same_type_elections": 3,
+    "first_test_year": 2012,
+    "formula": "p_hat(g,t) = logistic(logit(p_all,t-4) + mean_k(logit(p_g,k) - logit(p_all,k)))",
+    "training": "k is the last three earlier elections of the same type; race starts in 2004.",
+    "baseline": "The group's turnout rate in the immediately previous election of the same type.",
+    "target": "Published CPS self-reported turnout among civilian noninstitutionalized adult citizens.",
+    "scoring": "Equal-weight group/election errors in percentage points; overlapping groups are not independent samples and are never summed into an electorate.",
+    "thresholds": "Working research criteria fixed before running this experiment, not a general statistical certification or a model-uncertainty interval."
+  },
+  "summary": {
+    "tests": 98,
+    "years": [
+      2012,
+      2014,
+      2016,
+      2018,
+      2020,
+      2022,
+      2024
+    ],
+    "model_mae_pp": 4.223087601280716,
+    "baseline_mae_pp": 4.17395918367347,
+    "relative_mae_improvement": -0.011770219938760547,
+    "max_absolute_error_pp": 14.308864535828661
+  },
+  "scores": [
+    {
+      "slice": "election_type",
+      "value": "midterm",
+      "tests": 43,
+      "years": [
+        2014,
+        2018,
+        2022
+      ],
+      "model_mae_pp": 5.718238187942817,
+      "baseline_mae_pp": 5.616232558139535,
+      "relative_mae_improvement": -0.018162643506534834,
+      "max_absolute_error_pp": 14.308864535828661
+    },
+    {
+      "slice": "election_type",
+      "value": "presidential",
+      "tests": 55,
+      "years": [
+        2012,
+        2016,
+        2020,
+        2024
+      ],
+      "model_mae_pp": 3.054151688072164,
+      "baseline_mae_pp": 3.0463636363636373,
+      "relative_mae_improvement": -0.0025565075736734143,
+      "max_absolute_error_pp": 12.654734550596174
+    },
+    {
+      "slice": "dimension",
+      "value": "age",
+      "tests": 24,
+      "years": [
+        2014,
+        2016,
+        2018,
+        2020,
+        2022,
+        2024
+      ],
+      "model_mae_pp": 4.029830904938545,
+      "baseline_mae_pp": 4.341666666666666,
+      "relative_mae_improvement": 0.0718239758298935,
+      "max_absolute_error_pp": 14.308864535828661
+    },
+    {
+      "slice": "dimension",
+      "value": "education",
+      "tests": 35,
+      "years": [
+        2012,
+        2014,
+        2016,
+        2018,
+        2020,
+        2022,
+        2024
+      ],
+      "model_mae_pp": 4.091433618851489,
+      "baseline_mae_pp": 3.753085714285715,
+      "relative_mae_improvement": -0.09015192572817851,
+      "max_absolute_error_pp": 11.873864572925882
+    },
+    {
+      "slice": "dimension",
+      "value": "race",
+      "tests": 25,
+      "years": [
+        2016,
+        2018,
+        2020,
+        2022,
+        2024
+      ],
+      "model_mae_pp": 4.930651894456304,
+      "baseline_mae_pp": 4.912000000000001,
+      "relative_mae_improvement": -0.003797209783449307,
+      "max_absolute_error_pp": 13.176383786115125
+    },
+    {
+      "slice": "dimension",
+      "value": "sex",
+      "tests": 14,
+      "years": [
+        2012,
+        2014,
+        2016,
+        2018,
+        2020,
+        2022,
+        2024
+      ],
+      "model_mae_pp": 3.6200120846982426,
+      "baseline_mae_pp": 3.620714285714286,
+      "relative_mae_improvement": 0.0001939399136833074,
+      "max_absolute_error_pp": 12.226799857749235
+    },
+    {
+      "slice": "year",
+      "value": 2012,
+      "tests": 7,
+      "years": [
+        2012
+      ],
+      "model_mae_pp": 2.610431272452795,
+      "baseline_mae_pp": 2.0040000000000027,
+      "relative_mae_improvement": -0.3026104153956046,
+      "max_absolute_error_pp": 3.7318978093443036
+    },
+    {
+      "slice": "year",
+      "value": 2014,
+      "tests": 11,
+      "years": [
+        2014
+      ],
+      "model_mae_pp": 4.1280857227499865,
+      "baseline_mae_pp": 3.722272727272727,
+      "relative_mae_improvement": -0.10902290756502267,
+      "max_absolute_error_pp": 5.4870175406728166
+    },
+    {
+      "slice": "year",
+      "value": 2016,
+      "tests": 16,
+      "years": [
+        2016
+      ],
+      "model_mae_pp": 1.7164886387172367,
+      "baseline_mae_pp": 1.7396250000000004,
+      "relative_mae_improvement": 0.013299625656543074,
+      "max_absolute_error_pp": 5.070753772297952
+    },
+    {
+      "slice": "year",
+      "value": 2018,
+      "tests": 16,
+      "years": [
+        2018
+      ],
+      "model_mae_pp": 10.496625690510768,
+      "baseline_mae_pp": 10.718499999999999,
+      "relative_mae_improvement": 0.020700126835772766,
+      "max_absolute_error_pp": 14.308864535828661
+    },
+    {
+      "slice": "year",
+      "value": 2020,
+      "tests": 16,
+      "years": [
+        2020
+      ],
+      "model_mae_pp": 5.164470939174102,
+      "baseline_mae_pp": 5.615187500000001,
+      "relative_mae_improvement": 0.0802674106298141,
+      "max_absolute_error_pp": 12.654734550596174
+    },
+    {
+      "slice": "year",
+      "value": 2022,
+      "tests": 16,
+      "years": [
+        2022
+      ],
+      "model_mae_pp": 2.0330805051949374,
+      "baseline_mae_pp": 1.8160625000000001,
+      "relative_mae_improvement": -0.11949919410534456,
+      "max_absolute_error_pp": 6.735888040595885
+    },
+    {
+      "slice": "year",
+      "value": 2024,
+      "tests": 16,
+      "years": [
+        2024
+      ],
+      "model_mae_pp": 2.475623168158629,
+      "baseline_mae_pp": 2.2403125,
+      "relative_mae_improvement": -0.10503475214222525,
+      "max_absolute_error_pp": 8.091763161297319
+    }
+  ],
+  "checks": [
+    {
+      "requirement": "At least 10% lower mean absolute error than same-type carry-forward",
+      "passed": false
+    },
+    {
+      "requirement": "Lower mean absolute error in both presidential and midterm tests",
+      "passed": false
+    },
+    {
+      "requirement": "Lower mean absolute error in every demographic dimension",
+      "passed": false
+    },
+    {
+      "requirement": "No worse mean absolute error in the latest held-out midterm",
+      "passed": false
+    },
+    {
+      "requirement": "Mean absolute error no greater than 5 percentage points for every group",
+      "passed": false
+    }
+  ],
+  "historical_gate_passed": false,
+  "estimates_2026": [],
+  "release_2026": {
+    "allowed": false,
+    "reasons": [
+      "No complete, matched 2026 national demographic participation and population inputs.",
+      "No survey-design, measurement-error or model-uncertainty intervals have been fitted.",
+      "Historical persistence does not identify 2026 demographic turnout shifts.",
+      "Historical CPS targets are self-reported, not validated individual turnout.",
+      "Retrospective year holdouts use today's archived tables, not verified historical release vintages."
+    ]
+  },
+  "predictions": [
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "18 to 24 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 20.240342076769277,
+      "baseline_pct": 21.3,
+      "observed_cps_pct": 17.1,
+      "error_pp": 3.140342076769276,
+      "absolute_error_pp": 3.140342076769276,
+      "baseline_absolute_error_pp": 4.199999999999999,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 82,
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 88,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 86,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 84,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "18 to 24 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 44.10654887024365,
+      "baseline_pct": 41.2,
+      "observed_cps_pct": 43,
+      "error_pp": 1.1065488702436497,
+      "absolute_error_pp": 1.1065488702436497,
+      "baseline_absolute_error_pp": 1.7999999999999972,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 81,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 87,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 85,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 83,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "18 to 24 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 18.091135464171337,
+      "baseline_pct": 17.1,
+      "observed_cps_pct": 32.4,
+      "error_pp": -14.308864535828661,
+      "absolute_error_pp": 14.308864535828661,
+      "baseline_absolute_error_pp": 15.299999999999997,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 80,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 86,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 84,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 82,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "18 to 24 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 43.30404720816661,
+      "baseline_pct": 43,
+      "observed_cps_pct": 51.4,
+      "error_pp": -8.09595279183339,
+      "absolute_error_pp": 8.09595279183339,
+      "baseline_absolute_error_pp": 8.399999999999999,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 79,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 85,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 83,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 81,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "18 to 24 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 27.94782346739649,
+      "baseline_pct": 32.4,
+      "observed_cps_pct": 27.6,
+      "error_pp": 0.34782346739648773,
+      "absolute_error_pp": 0.34782346739648773,
+      "baseline_absolute_error_pp": 4.799999999999997,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 78,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 84,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 82,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 80,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "18 to 24 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 48.929670972855284,
+      "baseline_pct": 51.4,
+      "observed_cps_pct": 47.7,
+      "error_pp": 1.2296709728552813,
+      "absolute_error_pp": 1.2296709728552813,
+      "baseline_absolute_error_pp": 3.6999999999999957,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 77,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 83,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 81,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 79,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "25 to 44 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 37.70956206616615,
+      "baseline_pct": 37.1,
+      "observed_cps_pct": 32.5,
+      "error_pp": 5.20956206616615,
+      "absolute_error_pp": 5.20956206616615,
+      "baseline_absolute_error_pp": 4.600000000000001,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 151,
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 157,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 155,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 153,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "25 to 44 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 57.82350844690253,
+      "baseline_pct": 57.3,
+      "observed_cps_pct": 56.5,
+      "error_pp": 1.3235084469025296,
+      "absolute_error_pp": 1.3235084469025296,
+      "baseline_absolute_error_pp": 0.7999999999999972,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 150,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 156,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 154,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 152,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "25 to 44 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 33.52454582435792,
+      "baseline_pct": 32.5,
+      "observed_cps_pct": 46.3,
+      "error_pp": -12.775454175642075,
+      "absolute_error_pp": 12.775454175642075,
+      "baseline_absolute_error_pp": 13.799999999999997,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 149,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 155,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 153,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 151,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "25 to 44 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 57.0383590704507,
+      "baseline_pct": 56.5,
+      "observed_cps_pct": 62.6,
+      "error_pp": -5.561640929549299,
+      "absolute_error_pp": 5.561640929549299,
+      "baseline_absolute_error_pp": 6.100000000000001,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 148,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 154,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 152,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 150,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "25 to 44 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 44.79147108578643,
+      "baseline_pct": 46.3,
+      "observed_cps_pct": 44.3,
+      "error_pp": 0.4914710857864364,
+      "absolute_error_pp": 0.4914710857864364,
+      "baseline_absolute_error_pp": 2.0,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 147,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 153,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 151,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 149,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "25 to 44 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 62.43185112845327,
+      "baseline_pct": 62.6,
+      "observed_cps_pct": 60.2,
+      "error_pp": 2.2318511284532647,
+      "absolute_error_pp": 2.2318511284532647,
+      "baseline_absolute_error_pp": 2.3999999999999986,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 146,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 152,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 150,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 148,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "45 to 64 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 55.07784855678338,
+      "baseline_pct": 54.4,
+      "observed_cps_pct": 49.6,
+      "error_pp": 5.477848556783378,
+      "absolute_error_pp": 5.477848556783378,
+      "baseline_absolute_error_pp": 4.799999999999997,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 220,
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 226,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 224,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 222,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "45 to 64 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 68.00846116268538,
+      "baseline_pct": 67.9,
+      "observed_cps_pct": 66.6,
+      "error_pp": 1.4084611626853842,
+      "absolute_error_pp": 1.4084611626853842,
+      "baseline_absolute_error_pp": 1.3000000000000114,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 219,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 225,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 223,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 221,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "45 to 64 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 50.68009021024769,
+      "baseline_pct": 49.6,
+      "observed_cps_pct": 59.5,
+      "error_pp": -8.819909789752309,
+      "absolute_error_pp": 8.819909789752309,
+      "baseline_absolute_error_pp": 9.899999999999999,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 218,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 224,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 222,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 220,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "45 to 64 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 67.09914101238887,
+      "baseline_pct": 66.6,
+      "observed_cps_pct": 71,
+      "error_pp": -3.90085898761113,
+      "absolute_error_pp": 3.90085898761113,
+      "baseline_absolute_error_pp": 4.400000000000006,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 217,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 223,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 221,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 219,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "45 to 64 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 60.8649665568449,
+      "baseline_pct": 59.5,
+      "observed_cps_pct": 58.3,
+      "error_pp": 2.564966556844901,
+      "absolute_error_pp": 2.564966556844901,
+      "baseline_absolute_error_pp": 1.2000000000000028,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 216,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 222,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 220,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 218,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "45 to 64 Years",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 71.69260602773863,
+      "baseline_pct": 71,
+      "observed_cps_pct": 70,
+      "error_pp": 1.6926060277386341,
+      "absolute_error_pp": 1.6926060277386341,
+      "baseline_absolute_error_pp": 1,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 215,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 221,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 219,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 217,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "65 Years and Over",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 61.08376982775313,
+      "baseline_pct": 60.8,
+      "observed_cps_pct": 59.4,
+      "error_pp": 1.6837698277531317,
+      "absolute_error_pp": 1.6837698277531317,
+      "baseline_absolute_error_pp": 1.3999999999999986,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 289,
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 295,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 293,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 291,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "65 Years and Over",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 69.97881203468944,
+      "baseline_pct": 72,
+      "observed_cps_pct": 70.9,
+      "error_pp": -0.9211879653105655,
+      "absolute_error_pp": 0.9211879653105655,
+      "baseline_absolute_error_pp": 1.0999999999999943,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 288,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 294,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 292,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 290,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "65 Years and Over",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 57.81093290053115,
+      "baseline_pct": 59.4,
+      "observed_cps_pct": 66.1,
+      "error_pp": -8.289067099468845,
+      "absolute_error_pp": 8.289067099468845,
+      "baseline_absolute_error_pp": 6.699999999999996,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 287,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 293,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 291,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 289,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "65 Years and Over",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 70.30658996117681,
+      "baseline_pct": 70.9,
+      "observed_cps_pct": 74.5,
+      "error_pp": -4.193410038823188,
+      "absolute_error_pp": 4.193410038823188,
+      "baseline_absolute_error_pp": 3.5999999999999943,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 286,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 292,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 290,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 288,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "age",
+      "group": "65 Years and Over",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 68.04108449202603,
+      "baseline_pct": 66.1,
+      "observed_cps_pct": 66.8,
+      "error_pp": 1.241084492026033,
+      "absolute_error_pp": 1.241084492026033,
+      "baseline_absolute_error_pp": 0.7000000000000028,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 285,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 291,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 289,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 287,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "age",
+      "group": "65 Years and Over",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 75.40008066630108,
+      "baseline_pct": 74.5,
+      "observed_cps_pct": 74.7,
+      "error_pp": 0.7000806663010763,
+      "absolute_error_pp": 0.7000806663010763,
+      "baseline_absolute_error_pp": 0.20000000000000284,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 284,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 290,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 288,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 286,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "9th\u201312th grade, no diploma",
+      "denominator": "cvap",
+      "training_years": [
+        2000,
+        2004,
+        2008
+      ],
+      "last_training_year": 2008,
+      "national_input_year": 2008,
+      "national_input_pct": 63.6,
+      "predicted_pct": 40.508142461502196,
+      "baseline_pct": 39.875,
+      "observed_cps_pct": 38.324,
+      "error_pp": 2.184142461502198,
+      "absolute_error_pp": 2.184142461502198,
+      "baseline_absolute_error_pp": 1.551000000000002,
+      "target_source": "elections/2012/table05_1.xls",
+      "target_source_row": [
+        9
+      ],
+      "training_sources": [
+        {
+          "year": 2000,
+          "group_source": "elections/2000/tab05.xls",
+          "group_source_row": [
+            17
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 20
+        },
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "9th\u201312th grade, no diploma",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 25.281979747897104,
+      "baseline_pct": 24.55,
+      "observed_cps_pct": 21.654,
+      "error_pp": 3.627979747897104,
+      "absolute_error_pp": 3.627979747897104,
+      "baseline_absolute_error_pp": 2.896000000000001,
+      "target_source": "elections/2014/table05_1.xls",
+      "target_source_row": [
+        9
+      ],
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "elections/2002/tab05-1.xls",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            8
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "9th\u201312th grade, no diploma",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 38.0287015542969,
+      "baseline_pct": 38.324,
+      "observed_cps_pct": 35.352,
+      "error_pp": 2.676701554296905,
+      "absolute_error_pp": 2.676701554296905,
+      "baseline_absolute_error_pp": 2.9720000000000013,
+      "target_source": "elections/2016/table05_1.xlsx",
+      "target_source_row": [
+        10
+      ],
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "9th\u201312th grade, no diploma",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 21.999243413937045,
+      "baseline_pct": 21.654,
+      "observed_cps_pct": 27.862,
+      "error_pp": -5.862756586062954,
+      "absolute_error_pp": 5.862756586062954,
+      "baseline_absolute_error_pp": 6.207999999999998,
+      "target_source": "elections/2018/table05_1.xlsx",
+      "target_source_row": [
+        10
+      ],
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            8
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "9th\u201312th grade, no diploma",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 36.96703097418604,
+      "baseline_pct": 35.352,
+      "observed_cps_pct": 41.474,
+      "error_pp": -4.506969025813959,
+      "absolute_error_pp": 4.506969025813959,
+      "baseline_absolute_error_pp": 6.122,
+      "target_source": "elections/2020/table05_1.xlsx",
+      "target_source_row": [
+        10
+      ],
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "9th\u201312th grade, no diploma",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 29.73232147876509,
+      "baseline_pct": 27.862,
+      "observed_cps_pct": 26.763,
+      "error_pp": 2.969321478765089,
+      "absolute_error_pp": 2.969321478765089,
+      "baseline_absolute_error_pp": 1.0989999999999966,
+      "target_source": "elections/2022/vote05_2022_1.xlsx",
+      "target_source_row": [
+        10
+      ],
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            8
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "elections/2018/table05_1.xlsx",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "9th\u201312th grade, no diploma",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 41.98031886258478,
+      "baseline_pct": 41.474,
+      "observed_cps_pct": 38.263,
+      "error_pp": 3.717318862584783,
+      "absolute_error_pp": 3.717318862584783,
+      "baseline_absolute_error_pp": 3.2109999999999985,
+      "target_source": "elections/2024/vote05_2024_1.xlsx",
+      "target_source_row": [
+        10
+      ],
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "elections/2020/table05_1.xlsx",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Bachelor's degree or more",
+      "denominator": "cvap",
+      "training_years": [
+        2000,
+        2004,
+        2008
+      ],
+      "last_training_year": 2008,
+      "national_input_year": 2008,
+      "national_input_pct": 63.6,
+      "predicted_pct": 79.62293065761368,
+      "baseline_pct": 78.879,
+      "observed_cps_pct": 77.136,
+      "error_pp": 2.4869306576136836,
+      "absolute_error_pp": 2.4869306576136836,
+      "baseline_absolute_error_pp": 1.7430000000000092,
+      "target_source": "elections/2012/table05_1.xls",
+      "target_source_row": [
+        12,
+        13
+      ],
+      "training_sources": [
+        {
+          "year": 2000,
+          "group_source": "elections/2000/tab05.xls",
+          "group_source_row": [
+            21,
+            22
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 20
+        },
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            16,
+            17
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            16,
+            17
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Bachelor's degree or more",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 61.78801754067282,
+      "baseline_pct": 60.884,
+      "observed_cps_pct": 56.301,
+      "error_pp": 5.4870175406728166,
+      "absolute_error_pp": 5.4870175406728166,
+      "baseline_absolute_error_pp": 4.582999999999998,
+      "target_source": "elections/2014/table05_1.xls",
+      "target_source_row": [
+        12,
+        13
+      ],
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "elections/2002/tab05-1.xls",
+          "group_source_row": [
+            15,
+            16
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            16,
+            17
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            11,
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Bachelor's degree or more",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 77.67865637376995,
+      "baseline_pct": 77.136,
+      "observed_cps_pct": 76.326,
+      "error_pp": 1.3526563737699604,
+      "absolute_error_pp": 1.3526563737699604,
+      "baseline_absolute_error_pp": 0.8100000000000023,
+      "target_source": "elections/2016/table05_1.xlsx",
+      "target_source_row": [
+        13,
+        14
+      ],
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            16,
+            17
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            16,
+            17
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            12,
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Bachelor's degree or more",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 57.30622830540189,
+      "baseline_pct": 56.301,
+      "observed_cps_pct": 68.662,
+      "error_pp": -11.355771694598118,
+      "absolute_error_pp": 11.355771694598118,
+      "baseline_absolute_error_pp": 12.361000000000004,
+      "target_source": "elections/2018/table05_1.xlsx",
+      "target_source_row": [
+        13,
+        14
+      ],
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            16,
+            17
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            11,
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            12,
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Bachelor's degree or more",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 76.81386770520984,
+      "baseline_pct": 76.326,
+      "observed_cps_pct": 79.693,
+      "error_pp": -2.8791322947901534,
+      "absolute_error_pp": 2.8791322947901534,
+      "baseline_absolute_error_pp": 3.3670000000000044,
+      "target_source": "elections/2020/table05_1.xlsx",
+      "target_source_row": [
+        13,
+        14
+      ],
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            16,
+            17
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            12,
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            13,
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Bachelor's degree or more",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 67.99030598096417,
+      "baseline_pct": 68.662,
+      "observed_cps_pct": 66.768,
+      "error_pp": 1.2223059809641654,
+      "absolute_error_pp": 1.2223059809641654,
+      "baseline_absolute_error_pp": 1.8940000000000055,
+      "target_source": "elections/2022/vote05_2022_1.xlsx",
+      "target_source_row": [
+        13,
+        14
+      ],
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            11,
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            12,
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "elections/2018/table05_1.xlsx",
+          "group_source_row": [
+            13,
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Bachelor's degree or more",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 80.25507133783276,
+      "baseline_pct": 79.693,
+      "observed_cps_pct": 79.134,
+      "error_pp": 1.1210713378327597,
+      "absolute_error_pp": 1.1210713378327597,
+      "baseline_absolute_error_pp": 0.5589999999999975,
+      "target_source": "elections/2024/vote05_2024_1.xlsx",
+      "target_source_row": [
+        13,
+        14
+      ],
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            12,
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            13,
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "elections/2020/table05_1.xlsx",
+          "group_source_row": [
+            13,
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "High school / GED",
+      "denominator": "cvap",
+      "training_years": [
+        2000,
+        2004,
+        2008
+      ],
+      "last_training_year": 2008,
+      "national_input_year": 2008,
+      "national_input_pct": 63.6,
+      "predicted_pct": 55.921081931003826,
+      "baseline_pct": 54.859,
+      "observed_cps_pct": 52.619,
+      "error_pp": 3.3020819310038263,
+      "absolute_error_pp": 3.3020819310038263,
+      "baseline_absolute_error_pp": 2.240000000000002,
+      "target_source": "elections/2012/table05_1.xls",
+      "target_source_row": [
+        10
+      ],
+      "training_sources": [
+        {
+          "year": 2000,
+          "group_source": "elections/2000/tab05.xls",
+          "group_source_row": [
+            18
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 20
+        },
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "High school / GED",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 38.44122575056213,
+      "baseline_pct": 37.93,
+      "observed_cps_pct": 33.931,
+      "error_pp": 4.510225750562135,
+      "absolute_error_pp": 4.510225750562135,
+      "baseline_absolute_error_pp": 3.9990000000000023,
+      "target_source": "elections/2014/table05_1.xls",
+      "target_source_row": [
+        10
+      ],
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "elections/2002/tab05-1.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "High school / GED",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 53.269426552843136,
+      "baseline_pct": 52.619,
+      "observed_cps_pct": 51.549,
+      "error_pp": 1.7204265528431364,
+      "absolute_error_pp": 1.7204265528431364,
+      "baseline_absolute_error_pp": 1.0700000000000003,
+      "target_source": "elections/2016/table05_1.xlsx",
+      "target_source_row": [
+        11
+      ],
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "High school / GED",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 34.4732095596939,
+      "baseline_pct": 33.931,
+      "observed_cps_pct": 42.083,
+      "error_pp": -7.609790440306099,
+      "absolute_error_pp": 7.609790440306099,
+      "baseline_absolute_error_pp": 8.152000000000001,
+      "target_source": "elections/2018/table05_1.xlsx",
+      "target_source_row": [
+        11
+      ],
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "High school / GED",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 52.09056137857255,
+      "baseline_pct": 51.549,
+      "observed_cps_pct": 55.458,
+      "error_pp": -3.3674386214274463,
+      "absolute_error_pp": 3.3674386214274463,
+      "baseline_absolute_error_pp": 3.908999999999999,
+      "target_source": "elections/2020/table05_1.xlsx",
+      "target_source_row": [
+        11
+      ],
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "High school / GED",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 44.20557196124173,
+      "baseline_pct": 42.083,
+      "observed_cps_pct": 40.448,
+      "error_pp": 3.75757196124173,
+      "absolute_error_pp": 3.75757196124173,
+      "baseline_absolute_error_pp": 1.634999999999998,
+      "target_source": "elections/2022/vote05_2022_1.xlsx",
+      "target_source_row": [
+        11
+      ],
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "elections/2018/table05_1.xlsx",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "High school / GED",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 56.94735082571473,
+      "baseline_pct": 55.458,
+      "observed_cps_pct": 52.541,
+      "error_pp": 4.406350825714732,
+      "absolute_error_pp": 4.406350825714732,
+      "baseline_absolute_error_pp": 2.9170000000000016,
+      "target_source": "elections/2024/vote05_2024_1.xlsx",
+      "target_source_row": [
+        11
+      ],
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "elections/2020/table05_1.xlsx",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Less than 9th grade",
+      "denominator": "cvap",
+      "training_years": [
+        2000,
+        2004,
+        2008
+      ],
+      "last_training_year": 2008,
+      "national_input_year": 2008,
+      "national_input_pct": 63.6,
+      "predicted_pct": 40.07030390275516,
+      "baseline_pct": 38.148,
+      "observed_cps_pct": 37.117,
+      "error_pp": 2.9533039027551595,
+      "absolute_error_pp": 2.9533039027551595,
+      "baseline_absolute_error_pp": 1.031000000000006,
+      "target_source": "elections/2012/table05_1.xls",
+      "target_source_row": [
+        8
+      ],
+      "training_sources": [
+        {
+          "year": 2000,
+          "group_source": "elections/2000/tab05.xls",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 20
+        },
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Less than 9th grade",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 27.556771746667305,
+      "baseline_pct": 26.341,
+      "observed_cps_pct": 23.749,
+      "error_pp": 3.8077717466673064,
+      "absolute_error_pp": 3.8077717466673064,
+      "baseline_absolute_error_pp": 2.5920000000000023,
+      "target_source": "elections/2014/table05_1.xls",
+      "target_source_row": [
+        8
+      ],
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "elections/2002/tab05-1.xls",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            7
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Less than 9th grade",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 36.75575377229795,
+      "baseline_pct": 37.117,
+      "observed_cps_pct": 31.685,
+      "error_pp": 5.070753772297952,
+      "absolute_error_pp": 5.070753772297952,
+      "baseline_absolute_error_pp": 5.431999999999999,
+      "target_source": "elections/2016/table05_1.xlsx",
+      "target_source_row": [
+        9
+      ],
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            8
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Less than 9th grade",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 23.85094117530131,
+      "baseline_pct": 23.749,
+      "observed_cps_pct": 25.436,
+      "error_pp": -1.5850588246986916,
+      "absolute_error_pp": 1.5850588246986916,
+      "baseline_absolute_error_pp": 1.6870000000000012,
+      "target_source": "elections/2018/table05_1.xlsx",
+      "target_source_row": [
+        9
+      ],
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            7
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            8
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Less than 9th grade",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 34.754415151266876,
+      "baseline_pct": 31.685,
+      "observed_cps_pct": 37.563,
+      "error_pp": -2.808584848733126,
+      "absolute_error_pp": 2.808584848733126,
+      "baseline_absolute_error_pp": 5.878000000000004,
+      "target_source": "elections/2020/table05_1.xlsx",
+      "target_source_row": [
+        9
+      ],
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            8
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Less than 9th grade",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 30.360888040595885,
+      "baseline_pct": 25.436,
+      "observed_cps_pct": 23.625,
+      "error_pp": 6.735888040595885,
+      "absolute_error_pp": 6.735888040595885,
+      "baseline_absolute_error_pp": 1.811,
+      "target_source": "elections/2022/vote05_2022_1.xlsx",
+      "target_source_row": [
+        9
+      ],
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            7
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            8
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "elections/2018/table05_1.xlsx",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Less than 9th grade",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 38.93176316129732,
+      "baseline_pct": 37.563,
+      "observed_cps_pct": 30.84,
+      "error_pp": 8.091763161297319,
+      "absolute_error_pp": 8.091763161297319,
+      "baseline_absolute_error_pp": 6.7230000000000025,
+      "target_source": "elections/2024/vote05_2024_1.xlsx",
+      "target_source_row": [
+        9
+      ],
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            8
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "elections/2020/table05_1.xlsx",
+          "group_source_row": [
+            9
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Some college / associate's degree",
+      "denominator": "cvap",
+      "training_years": [
+        2000,
+        2004,
+        2008
+      ],
+      "last_training_year": 2008,
+      "national_input_year": 2008,
+      "national_input_pct": 63.6,
+      "predicted_pct": 67.9408978093443,
+      "baseline_pct": 68.024,
+      "observed_cps_pct": 64.209,
+      "error_pp": 3.7318978093443036,
+      "absolute_error_pp": 3.7318978093443036,
+      "baseline_absolute_error_pp": 3.8149999999999977,
+      "target_source": "elections/2012/table05_1.xls",
+      "target_source_row": [
+        11
+      ],
+      "training_sources": [
+        {
+          "year": 2000,
+          "group_source": "elections/2000/tab05.xls",
+          "group_source_row": [
+            20
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 20
+        },
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Some college / associate's degree",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 46.91658217069359,
+      "baseline_pct": 46.309,
+      "observed_cps_pct": 41.651,
+      "error_pp": 5.265582170693584,
+      "absolute_error_pp": 5.265582170693584,
+      "baseline_absolute_error_pp": 4.657999999999994,
+      "target_source": "elections/2014/table05_1.xls",
+      "target_source_row": [
+        11
+      ],
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "elections/2002/tab05-1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Some college / associate's degree",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 65.86596438942033,
+      "baseline_pct": 64.209,
+      "observed_cps_pct": 63.309,
+      "error_pp": 2.5569643894203296,
+      "absolute_error_pp": 2.5569643894203296,
+      "baseline_absolute_error_pp": 0.9000000000000057,
+      "target_source": "elections/2016/table05_1.xlsx",
+      "target_source_row": [
+        12
+      ],
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Some college / associate's degree",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 42.612135427074115,
+      "baseline_pct": 41.651,
+      "observed_cps_pct": 54.486,
+      "error_pp": -11.873864572925882,
+      "absolute_error_pp": 11.873864572925882,
+      "baseline_absolute_error_pp": 12.834999999999994,
+      "target_source": "elections/2018/table05_1.xlsx",
+      "target_source_row": [
+        12
+      ],
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Some college / associate's degree",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 64.36725802817804,
+      "baseline_pct": 63.309,
+      "observed_cps_pct": 69.577,
+      "error_pp": -5.2097419718219555,
+      "absolute_error_pp": 5.2097419718219555,
+      "baseline_absolute_error_pp": 6.268000000000001,
+      "target_source": "elections/2020/table05_1.xlsx",
+      "target_source_row": [
+        12
+      ],
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "education",
+      "group": "Some college / associate's degree",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 53.94748864961931,
+      "baseline_pct": 54.486,
+      "observed_cps_pct": 52.272,
+      "error_pp": 1.6754886496193109,
+      "absolute_error_pp": 1.6754886496193109,
+      "baseline_absolute_error_pp": 2.2139999999999986,
+      "target_source": "elections/2022/vote05_2022_1.xlsx",
+      "target_source_row": [
+        12
+      ],
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            10
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "elections/2018/table05_1.xlsx",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "education",
+      "group": "Some college / associate's degree",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 69.07055111866755,
+      "baseline_pct": 69.577,
+      "observed_cps_pct": 67.361,
+      "error_pp": 1.709551118667548,
+      "absolute_error_pp": 1.709551118667548,
+      "baseline_absolute_error_pp": 2.215999999999994,
+      "target_source": "elections/2024/vote05_2024_1.xlsx",
+      "target_source_row": [
+        12
+      ],
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            11
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "elections/2020/table05_1.xlsx",
+          "group_source_row": [
+            12
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Asian",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 45.01799346124865,
+      "baseline_pct": 47.3,
+      "observed_cps_pct": 49,
+      "error_pp": -3.9820065387513495,
+      "absolute_error_pp": 3.9820065387513495,
+      "baseline_absolute_error_pp": 1.7000000000000028,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 12,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 18,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "Asian",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 27.423616213884877,
+      "baseline_pct": 27.1,
+      "observed_cps_pct": 40.6,
+      "error_pp": -13.176383786115125,
+      "absolute_error_pp": 13.176383786115125,
+      "baseline_absolute_error_pp": 13.5,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 11,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 17,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Asian",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 47.04526544940383,
+      "baseline_pct": 49,
+      "observed_cps_pct": 59.7,
+      "error_pp": -12.654734550596174,
+      "absolute_error_pp": 12.654734550596174,
+      "baseline_absolute_error_pp": 10.700000000000003,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 10,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "Asian",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 38.54229810704357,
+      "baseline_pct": 40.6,
+      "observed_cps_pct": 40.2,
+      "error_pp": -1.6577018929564318,
+      "absolute_error_pp": 1.6577018929564318,
+      "baseline_absolute_error_pp": 0.3999999999999986,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 9,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 11,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Asian",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 55.790165717779935,
+      "baseline_pct": 59.7,
+      "observed_cps_pct": 57.1,
+      "error_pp": -1.3098342822200664,
+      "absolute_error_pp": 1.3098342822200664,
+      "baseline_absolute_error_pp": 2.6000000000000014,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 8,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 10,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Black",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 62.4099808606141,
+      "baseline_pct": 66.2,
+      "observed_cps_pct": 59.4,
+      "error_pp": 3.0099808606140996,
+      "absolute_error_pp": 3.0099808606140996,
+      "baseline_absolute_error_pp": 6.800000000000004,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 12,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 18,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "Black",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 38.31466548614672,
+      "baseline_pct": 39.7,
+      "observed_cps_pct": 51.1,
+      "error_pp": -12.785334513853279,
+      "absolute_error_pp": 12.785334513853279,
+      "baseline_absolute_error_pp": 11.399999999999999,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 11,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 17,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Black",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 62.619843084599836,
+      "baseline_pct": 59.4,
+      "observed_cps_pct": 62.6,
+      "error_pp": 0.019843084599834526,
+      "absolute_error_pp": 0.019843084599834526,
+      "baseline_absolute_error_pp": 3.200000000000003,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 10,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "Black",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 51.20256059928473,
+      "baseline_pct": 51.1,
+      "observed_cps_pct": 45.1,
+      "error_pp": 6.102560599284729,
+      "absolute_error_pp": 6.102560599284729,
+      "baseline_absolute_error_pp": 6.0,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 9,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 11,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Black",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 66.23178403763919,
+      "baseline_pct": 62.6,
+      "observed_cps_pct": 59.6,
+      "error_pp": 6.631784037639186,
+      "absolute_error_pp": 6.631784037639186,
+      "baseline_absolute_error_pp": 3.0,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 8,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 10,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Hispanic, any race",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 47.013865592851204,
+      "baseline_pct": 48,
+      "observed_cps_pct": 47.6,
+      "error_pp": -0.5861344071487977,
+      "absolute_error_pp": 0.5861344071487977,
+      "baseline_absolute_error_pp": 0.3999999999999986,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 12,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 18,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "Hispanic, any race",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 27.483787492266554,
+      "baseline_pct": 27,
+      "observed_cps_pct": 40.4,
+      "error_pp": -12.916212507733444,
+      "absolute_error_pp": 12.916212507733444,
+      "baseline_absolute_error_pp": 13.399999999999999,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 11,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 17,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Hispanic, any race",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 47.5776148458123,
+      "baseline_pct": 47.6,
+      "observed_cps_pct": 53.7,
+      "error_pp": -6.122385154187704,
+      "absolute_error_pp": 6.122385154187704,
+      "baseline_absolute_error_pp": 6.100000000000001,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 10,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "Hispanic, any race",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 38.584416449214906,
+      "baseline_pct": 40.4,
+      "observed_cps_pct": 37.9,
+      "error_pp": 0.6844164492149076,
+      "absolute_error_pp": 0.6844164492149076,
+      "baseline_absolute_error_pp": 2.5,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 9,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 11,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "Hispanic, any race",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 53.53770797377534,
+      "baseline_pct": 53.7,
+      "observed_cps_pct": 50.6,
+      "error_pp": 2.937707973775339,
+      "absolute_error_pp": 2.937707973775339,
+      "baseline_absolute_error_pp": 3.1000000000000014,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 8,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 10,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "White",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 62.752800984074135,
+      "baseline_pct": 62.2,
+      "observed_cps_pct": 62.9,
+      "error_pp": -0.14719901592586382,
+      "absolute_error_pp": 0.14719901592586382,
+      "baseline_absolute_error_pp": 0.6999999999999957,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 12,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 18,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "White",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 43.41385757977976,
+      "baseline_pct": 43.4,
+      "observed_cps_pct": 55,
+      "error_pp": -11.586142420220241,
+      "absolute_error_pp": 11.586142420220241,
+      "baseline_absolute_error_pp": 11.600000000000001,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 11,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 17,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "White",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 62.30815488365408,
+      "baseline_pct": 62.9,
+      "observed_cps_pct": 68.3,
+      "error_pp": -5.991845116345914,
+      "absolute_error_pp": 5.991845116345914,
+      "baseline_absolute_error_pp": 5.399999999999999,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 10,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "White",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 54.84076989099392,
+      "baseline_pct": 55,
+      "observed_cps_pct": 54.7,
+      "error_pp": 0.14076989099391568,
+      "absolute_error_pp": 0.14076989099391568,
+      "baseline_absolute_error_pp": 0.29999999999999716,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 9,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 11,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "White",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 67.89352747486247,
+      "baseline_pct": 68.3,
+      "observed_cps_pct": 67.3,
+      "error_pp": 0.5935274748624693,
+      "absolute_error_pp": 0.5935274748624693,
+      "baseline_absolute_error_pp": 1.0,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 8,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 10,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "White, non-Hispanic",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 64.58166266939017,
+      "baseline_pct": 64.1,
+      "observed_cps_pct": 65.3,
+      "error_pp": -0.7183373306098275,
+      "absolute_error_pp": 0.7183373306098275,
+      "baseline_absolute_error_pp": 1.2000000000000028,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 12,
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 18,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "White, non-Hispanic",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 45.46579054163599,
+      "baseline_pct": 45.8,
+      "observed_cps_pct": 57.5,
+      "error_pp": -12.03420945836401,
+      "absolute_error_pp": 12.03420945836401,
+      "baseline_absolute_error_pp": 11.700000000000003,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 11,
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 17,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "White, non-Hispanic",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 64.32822135706861,
+      "baseline_pct": 65.3,
+      "observed_cps_pct": 70.9,
+      "error_pp": -6.571778642931392,
+      "absolute_error_pp": 6.571778642931392,
+      "baseline_absolute_error_pp": 5.6000000000000085,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 10,
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 16,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "race",
+      "group": "White, non-Hispanic",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 57.09886635149888,
+      "baseline_pct": 57.5,
+      "observed_cps_pct": 57.6,
+      "error_pp": -0.5011336485011242,
+      "absolute_error_pp": 0.5011336485011242,
+      "baseline_absolute_error_pp": 0.10000000000000142,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 9,
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 15,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 13,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 11,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "race",
+      "group": "White, non-Hispanic",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 70.09566627603763,
+      "baseline_pct": 70.9,
+      "observed_cps_pct": 70.5,
+      "error_pp": -0.4043337239623668,
+      "absolute_error_pp": 0.4043337239623668,
+      "baseline_absolute_error_pp": 0.4000000000000057,
+      "target_source": "hst_vote01.xlsx",
+      "target_source_row": 8,
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 14,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 12,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "hst_vote01.xlsx",
+          "group_source_row": 10,
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "election_type": "presidential",
+      "dimension": "sex",
+      "group": "Female",
+      "denominator": "cvap",
+      "training_years": [
+        2000,
+        2004,
+        2008
+      ],
+      "last_training_year": 2008,
+      "national_input_year": 2008,
+      "national_input_pct": 63.6,
+      "predicted_pct": 65.21881790682326,
+      "baseline_pct": 65.652,
+      "observed_cps_pct": 63.714,
+      "error_pp": 1.5048179068232628,
+      "absolute_error_pp": 1.5048179068232628,
+      "baseline_absolute_error_pp": 1.9380000000000024,
+      "target_source": "elections/2012/table05_1.xls",
+      "target_source_row": [
+        21
+      ],
+      "training_sources": [
+        {
+          "year": 2000,
+          "group_source": "elections/2000/tab05.xls",
+          "group_source_row": [
+            34
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 20
+        },
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            27
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            27
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "sex",
+      "group": "Female",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 46.175850685180144,
+      "baseline_pct": 46.197,
+      "observed_cps_pct": 42.954,
+      "error_pp": 3.2218506851801436,
+      "absolute_error_pp": 3.2218506851801436,
+      "baseline_absolute_error_pp": 3.243000000000002,
+      "target_source": "elections/2014/table05_1.xls",
+      "target_source_row": [
+        21
+      ],
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "elections/2002/tab05-1.xls",
+          "group_source_row": [
+            26
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            27
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            20
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "sex",
+      "group": "Female",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 63.68683416087353,
+      "baseline_pct": 63.714,
+      "observed_cps_pct": 63.289,
+      "error_pp": 0.3978341608735292,
+      "absolute_error_pp": 0.3978341608735292,
+      "baseline_absolute_error_pp": 0.42499999999999716,
+      "target_source": "elections/2016/table05_1.xlsx",
+      "target_source_row": [
+        22
+      ],
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            27
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            27
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            21
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "sex",
+      "group": "Female",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 42.742200142250766,
+      "baseline_pct": 42.954,
+      "observed_cps_pct": 54.969,
+      "error_pp": -12.226799857749235,
+      "absolute_error_pp": 12.226799857749235,
+      "baseline_absolute_error_pp": 12.015,
+      "target_source": "elections/2018/table05_1.xlsx",
+      "target_source_row": [
+        22
+      ],
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            27
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            20
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            21
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "sex",
+      "group": "Female",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 63.37205282620353,
+      "baseline_pct": 63.289,
+      "observed_cps_pct": 68.4,
+      "error_pp": -5.027947173796477,
+      "absolute_error_pp": 5.027947173796477,
+      "baseline_absolute_error_pp": 5.111000000000004,
+      "target_source": "elections/2020/table05_1.xlsx",
+      "target_source_row": [
+        22
+      ],
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            27
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            21
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            22
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "sex",
+      "group": "Female",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 54.51321834213137,
+      "baseline_pct": 54.969,
+      "observed_cps_pct": 53.049,
+      "error_pp": 1.4642183421313675,
+      "absolute_error_pp": 1.4642183421313675,
+      "baseline_absolute_error_pp": 1.9200000000000017,
+      "target_source": "elections/2022/vote05_2022_1.xlsx",
+      "target_source_row": [
+        22
+      ],
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            20
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            21
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "elections/2018/table05_1.xlsx",
+          "group_source_row": [
+            22
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "sex",
+      "group": "Female",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 68.51701162689655,
+      "baseline_pct": 68.4,
+      "observed_cps_pct": 66.912,
+      "error_pp": 1.605011626896541,
+      "absolute_error_pp": 1.605011626896541,
+      "baseline_absolute_error_pp": 1.4879999999999995,
+      "target_source": "elections/2024/vote05_2024_1.xlsx",
+      "target_source_row": [
+        22
+      ],
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            21
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            22
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "elections/2020/table05_1.xlsx",
+          "group_source_row": [
+            22
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    },
+    {
+      "year": 2012,
+      "election_type": "presidential",
+      "dimension": "sex",
+      "group": "Male",
+      "denominator": "cvap",
+      "training_years": [
+        2000,
+        2004,
+        2008
+      ],
+      "last_training_year": 2008,
+      "national_input_year": 2008,
+      "national_input_pct": 63.6,
+      "predicted_pct": 61.85484423812713,
+      "baseline_pct": 61.455,
+      "observed_cps_pct": 59.745,
+      "error_pp": 2.109844238127131,
+      "absolute_error_pp": 2.109844238127131,
+      "baseline_absolute_error_pp": 1.7100000000000009,
+      "target_source": "elections/2012/table05_1.xls",
+      "target_source_row": [
+        14
+      ],
+      "training_sources": [
+        {
+          "year": 2000,
+          "group_source": "elections/2000/tab05.xls",
+          "group_source_row": [
+            24
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 20
+        },
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            19
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            19
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        }
+      ]
+    },
+    {
+      "year": 2014,
+      "election_type": "midterm",
+      "dimension": "sex",
+      "group": "Male",
+      "denominator": "cvap",
+      "training_years": [
+        2002,
+        2006,
+        2010
+      ],
+      "last_training_year": 2010,
+      "national_input_year": 2010,
+      "national_input_pct": 45.5,
+      "predicted_pct": 44.821992781104825,
+      "baseline_pct": 44.819,
+      "observed_cps_pct": 40.845,
+      "error_pp": 3.9769927811048262,
+      "absolute_error_pp": 3.9769927811048262,
+      "baseline_absolute_error_pp": 3.9740000000000038,
+      "target_source": "elections/2014/table05_1.xls",
+      "target_source_row": [
+        14
+      ],
+      "training_sources": [
+        {
+          "year": 2002,
+          "group_source": "elections/2002/tab05-1.xls",
+          "group_source_row": [
+            18
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 19
+        },
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            19
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        }
+      ]
+    },
+    {
+      "year": 2016,
+      "election_type": "presidential",
+      "dimension": "sex",
+      "group": "Male",
+      "denominator": "cvap",
+      "training_years": [
+        2004,
+        2008,
+        2012
+      ],
+      "last_training_year": 2012,
+      "national_input_year": 2012,
+      "national_input_pct": 61.8,
+      "predicted_pct": 59.80511681778191,
+      "baseline_pct": 59.745,
+      "observed_cps_pct": 59.32,
+      "error_pp": 0.4851168177819076,
+      "absolute_error_pp": 0.4851168177819076,
+      "baseline_absolute_error_pp": 0.42499999999999716,
+      "target_source": "elections/2016/table05_1.xlsx",
+      "target_source_row": [
+        15
+      ],
+      "training_sources": [
+        {
+          "year": 2004,
+          "group_source": "elections/2004/tab05-1.xls",
+          "group_source_row": [
+            19
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 18
+        },
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            19
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "election_type": "midterm",
+      "dimension": "sex",
+      "group": "Male",
+      "denominator": "cvap",
+      "training_years": [
+        2006,
+        2010,
+        2014
+      ],
+      "last_training_year": 2014,
+      "national_input_year": 2014,
+      "national_input_pct": 41.9,
+      "predicted_pct": 41.04260921514669,
+      "baseline_pct": 40.845,
+      "observed_cps_pct": 51.783,
+      "error_pp": -10.740390784853311,
+      "absolute_error_pp": 10.740390784853311,
+      "baseline_absolute_error_pp": 10.938000000000002,
+      "target_source": "elections/2018/table05_1.xlsx",
+      "target_source_row": [
+        15
+      ],
+      "training_sources": [
+        {
+          "year": 2006,
+          "group_source": "elections/2006/tab05-1.xls",
+          "group_source_row": [
+            19
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 17
+        },
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "election_type": "presidential",
+      "dimension": "sex",
+      "group": "Male",
+      "denominator": "cvap",
+      "training_years": [
+        2008,
+        2012,
+        2016
+      ],
+      "last_training_year": 2016,
+      "national_input_year": 2016,
+      "national_input_pct": 61.4,
+      "predicted_pct": 59.28872820607552,
+      "baseline_pct": 59.32,
+      "observed_cps_pct": 65.008,
+      "error_pp": -5.719271793924477,
+      "absolute_error_pp": 5.719271793924477,
+      "baseline_absolute_error_pp": 5.687999999999995,
+      "target_source": "elections/2020/table05_1.xlsx",
+      "target_source_row": [
+        15
+      ],
+      "training_sources": [
+        {
+          "year": 2008,
+          "group_source": "elections/2008/table-05-1.xls",
+          "group_source_row": [
+            19
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 16
+        },
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "election_type": "midterm",
+      "dimension": "sex",
+      "group": "Male",
+      "denominator": "cvap",
+      "training_years": [
+        2010,
+        2014,
+        2018
+      ],
+      "last_training_year": 2018,
+      "national_input_year": 2018,
+      "national_input_pct": 53.4,
+      "predicted_pct": 52.27156554679649,
+      "baseline_pct": 51.783,
+      "observed_cps_pct": 51.299,
+      "error_pp": 0.9725655467964884,
+      "absolute_error_pp": 0.9725655467964884,
+      "baseline_absolute_error_pp": 0.48400000000000176,
+      "target_source": "elections/2022/vote05_2022_1.xlsx",
+      "target_source_row": [
+        15
+      ],
+      "training_sources": [
+        {
+          "year": 2010,
+          "group_source": "elections/2010/table5-1_2010.xls",
+          "group_source_row": [
+            13
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 15
+        },
+        {
+          "year": 2014,
+          "group_source": "elections/2014/table05_1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 13
+        },
+        {
+          "year": 2018,
+          "group_source": "elections/2018/table05_1.xlsx",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 11
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "election_type": "presidential",
+      "dimension": "sex",
+      "group": "Male",
+      "denominator": "cvap",
+      "training_years": [
+        2012,
+        2016,
+        2020
+      ],
+      "last_training_year": 2020,
+      "national_input_year": 2020,
+      "national_input_pct": 66.8,
+      "predicted_pct": 64.9045074697367,
+      "baseline_pct": 65.008,
+      "observed_cps_pct": 63.677,
+      "error_pp": 1.2275074697367003,
+      "absolute_error_pp": 1.2275074697367003,
+      "baseline_absolute_error_pp": 1.330999999999996,
+      "target_source": "elections/2024/vote05_2024_1.xlsx",
+      "target_source_row": [
+        15
+      ],
+      "training_sources": [
+        {
+          "year": 2012,
+          "group_source": "elections/2012/table05_1.xls",
+          "group_source_row": [
+            14
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 14
+        },
+        {
+          "year": 2016,
+          "group_source": "elections/2016/table05_1.xlsx",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 12
+        },
+        {
+          "year": 2020,
+          "group_source": "elections/2020/table05_1.xlsx",
+          "group_source_row": [
+            15
+          ],
+          "overall_source": "hst_vote01.xlsx",
+          "overall_source_row": 10
+        }
+      ]
+    }
+  ],
+  "input": {
+    "path": "national.json",
+    "bytes": 690638,
+    "sha256": "af4c43575acb64a6985eea9c47e4b1ba7bebc8f7befd3497c04baedff41fe3e5",
+    "source_manifest": "sources.json"
+  }
+}

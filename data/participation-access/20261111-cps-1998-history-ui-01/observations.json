@@ -1,0 +1,29 @@
+{
+  "all_adult_and_citizen_overall_frames_separate": true,
+  "complete_downloads": {
+    "new_1998_complete_zip": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1998-state-points-20261111-01/complete-analysis.zip",
+    "old_routes_preserved": 436
+  },
+  "contract": "participation.cps_1998_history_presentation.v1",
+  "existing_default_closed_history_view": true,
+  "history_query_cells_preserved": 13156,
+  "lazy_source_loading": true,
+  "native_1998_SE_not_confidence_margin": true,
+  "native_source_acquisition_reduction_or_science_repackaging": false,
+  "new_error_bars_or_chart_connections": false,
+  "new_front_page_panels": 0,
+  "non_hispanic_1998_API_not_aliased_to_broader_2002_API": true,
+  "old_2002_programmatic_category_aliases_preserved": true,
+  "point_1998_selection_cells_per_screen": 1508,
+  "point_2002_selection_cells_per_screen": 3016,
+  "scientific_release": 441905879,
+  "scientific_source_sha256": "0b1e80744e3a24145aa2494c3581e602b458cb3330806d64f8757a32ab4c6a19",
+  "selected_1998_voting_points": 355,
+  "selected_distinct_2002_points_preserved": 642,
+  "source_1998_native_rows_retained": 468,
+  "source_2002_precision_unreinterpreted": true,
+  "source_count_or_model_changes": false,
+  "source_geographies": 52,
+  "visible_group_options": 29,
+  "website_commit": "84ce048728f9e159db9798f634c07fff8a0c92cc"
+}

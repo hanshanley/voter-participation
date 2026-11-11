@@ -1,0 +1,554 @@
+{
+  "observed_date_utc": "2026-11-10",
+  "purpose": "Source qualification ledger, not a substitute for complete numerical queries",
+  "complete_numerical_release": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/complete-analysis.zip",
+  "release_id": 439900272,
+  "source_commit": "09eff27c1629587cd3564d10adb255e713e06b02",
+  "source_guard_run_id": 42747268228,
+  "summary": {
+    "complete_source_queries": 216,
+    "complete_reference_queries": 204,
+    "complete_frame_queries": 2,
+    "contextual_regions_per_mode": 102,
+    "city_holds_per_mode": 6,
+    "whole_county_counts_qualified": false,
+    "authority_territories_qualified": false,
+    "native_election_id_qualified": false,
+    "rates_approved": false
+  },
+  "complete_source_frames": [
+    {
+      "state_code": "IL",
+      "mode": "in_person_early",
+      "source_regions": 108,
+      "contextual_regions": 102,
+      "city_regions_held": 6,
+      "source_category_parents": {
+        "Unspecified": {
+          "votes": 1162828,
+          "color": "#999999"
+        }
+      },
+      "native_parent_source_count": 1162828,
+      "contextual_region_count_sum": 915498,
+      "held_city_count_sum": 247330,
+      "county_totals_inferred": false,
+      "city_counts_allocated": false,
+      "rates_approved": false
+    },
+    {
+      "state_code": "IL",
+      "mode": "mail_returned",
+      "source_regions": 108,
+      "contextual_regions": 102,
+      "city_regions_held": 6,
+      "source_category_parents": {
+        "Unspecified": {
+          "votes": 892086,
+          "color": "#999999"
+        }
+      },
+      "native_parent_source_count": 892086,
+      "contextual_region_count_sum": 759410,
+      "held_city_count_sum": 132676,
+      "county_totals_inferred": false,
+      "city_counts_allocated": false,
+      "rates_approved": false
+    }
+  ],
+  "held_city_regions": {
+    "in_person_early": [
+      {
+        "state_code": "IL",
+        "mode": "in_person_early",
+        "source_region": "City of Bloomington",
+        "source_count": 7681,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 7681,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/inperson",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "in_person_early",
+        "source_region": "City of Chicago",
+        "source_count": 224915,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 224915,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/inperson",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "in_person_early",
+        "source_region": "City of Danville",
+        "source_count": 1855,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 1855,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/inperson",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "in_person_early",
+        "source_region": "City of East St Louis",
+        "source_count": 506,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 506,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/inperson",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "in_person_early",
+        "source_region": "City of Galesburg",
+        "source_count": 2725,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 2725,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/inperson",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "in_person_early",
+        "source_region": "City of Rockford",
+        "source_count": 9648,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 9648,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/inperson",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      }
+    ],
+    "mail_returned": [
+      {
+        "state_code": "IL",
+        "mode": "mail_returned",
+        "source_region": "City of Bloomington",
+        "source_count": 6726,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 6726,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/returned",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "mail_returned",
+        "source_region": "City of Chicago",
+        "source_count": 109844,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 109844,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/returned",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "mail_returned",
+        "source_region": "City of Danville",
+        "source_count": 3281,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 3281,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/returned",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "mail_returned",
+        "source_region": "City of East St Louis",
+        "source_count": 2568,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 2568,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/returned",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "mail_returned",
+        "source_region": "City of Galesburg",
+        "source_count": 1854,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 1854,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/returned",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      },
+      {
+        "state_code": "IL",
+        "mode": "mail_returned",
+        "source_region": "City of Rockford",
+        "source_count": 8403,
+        "native_categories": {
+          "Unspecified": {
+            "votes": 8403,
+            "color": "#999999"
+          }
+        },
+        "contextual_county_fips": null,
+        "native_geography_id_qualified": false,
+        "whole_county_count_qualified": false,
+        "source_authority_territory_qualified": false,
+        "native_election_id_qualified": false,
+        "cast_ballot_count_qualified": false,
+        "unique_voter_count_qualified": false,
+        "denominator": null,
+        "reported_pct": null,
+        "source_date": "2026-11-04",
+        "source_clock": null,
+        "source_timezone": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/IL/returned",
+        "disposition": "held_city_named_region_not_assigned_to_county"
+      }
+    ]
+  },
+  "qualification": {
+    "source_region_counts": true,
+    "county_name_context": true,
+    "whole_county_counts": false,
+    "source_authority_territories": false,
+    "native_geography_ids": false,
+    "native_election_identifier": false,
+    "cast_or_accepted_ballots": false,
+    "deduplicated_people": false,
+    "demographic_participation": false,
+    "city_counts_allocated_or_added_into_counties": false,
+    "modes_added": false,
+    "analysis_denominator": null,
+    "analysis_rate": null,
+    "native_zeros_unknown_categories_preserved": true
+  },
+  "reference": {
+    "original_gzip_sha256": "ddc8ec595021ed04413207a23410d297a8c538d4c5ebbbe135f37c5d8bde5039",
+    "original_gzip_bytes": 1046857,
+    "full_counties": 102,
+    "boundary_year": 2026,
+    "unchanged_original_gzip": true,
+    "purpose": "Context locating county-named source labels, not electoral-authority territories",
+    "contextual_fips_are_not_native_source_ids": true,
+    "geometry_repaired": false,
+    "geometry_clipped": false
+  },
+  "access_holds": [
+    {
+      "url": "https://www.elections.il.gov/electionoperations/electionauthorities.aspx",
+      "tool": "web.open",
+      "result": "HTTP403",
+      "original_acquired": false,
+      "response_bytes": null,
+      "response_sha256": null,
+      "action": "STOP; no alternate client, cache, mirror or challenge bypass"
+    },
+    {
+      "url": "https://www.elections.il.gov/electionoperations/electionauthoritiesprint.aspx",
+      "tool": "web.open",
+      "result": "HTTP403",
+      "original_acquired": false,
+      "response_bytes": null,
+      "response_sha256": null,
+      "action": "STOP; no alternate client, cache, mirror or challenge bypass"
+    },
+    {
+      "url": "https://ilga.gov/legislation/ILCS/details?ActID=170&ActName=Election+Code.&ChapAct=10+ILCS+5%2F&Chapter=ELECTIONS&ChapterID=3&MajorTopic=GOVERNMENT&Print=True&SeqEnd=2950000&SeqStart=100000",
+      "tool": "web.open",
+      "result": "TimeoutError, not an access denial",
+      "original_acquired": false,
+      "response_bytes": null,
+      "response_sha256": null
+    }
+  ],
+  "sufficient_inputs": {
+    "data/county-source-reviews/20261110-illinois-county-context-01/original-inperson.json": {
+      "bytes": 6572,
+      "sha256": "92dfd49c05e478f66bd47ffd2a0318d3d9e5b593d3b833ac3e6e37e1c0fa2264"
+    },
+    "data/county-source-reviews/20261110-illinois-county-context-01/original-returned.json": {
+      "bytes": 6572,
+      "sha256": "4eec1194fc5b3c6931470c93294d23f0d0bb88de118295e72ec758f23ba726a7"
+    },
+    "data/county-source-reviews/20261110-illinois-county-context-01/original-county-context.geojson.gz": {
+      "bytes": 1046857,
+      "sha256": "ddc8ec595021ed04413207a23410d297a8c538d4c5ebbbe135f37c5d8bde5039"
+    }
+  },
+  "complete_archive": {
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/complete-analysis.zip",
+    "bytes": 1102066,
+    "sha256": "3e55e0f9b30ca7f1c326553133e7968b5a580661aad3e8da87ef747737e76bd4",
+    "members": 19,
+    "complete_source_queries": 216,
+    "complete_reference_queries": 204,
+    "complete_frame_queries": 2,
+    "contextual_regions_per_mode": 102,
+    "city_holds_per_mode": 6,
+    "whole_county_counts_qualified": false,
+    "authority_territories_qualified": false,
+    "native_election_id_qualified": false,
+    "rates_approved": false
+  },
+  "immutable_release": {
+    "status": "PASS_immutable_IL_complete_release_all_assets_anonymous",
+    "release_id": 439900272,
+    "tag": "voter-illinois-county-context-20261110-01",
+    "source_commit": "09eff27c1629587cd3564d10adb255e713e06b02",
+    "source_guard_run_id": 42747268228,
+    "published_at": "2026-11-10T03:08:06Z",
+    "immutable": true,
+    "assets": {
+      "complete-analysis.zip": {
+        "bytes": 1102066,
+        "sha256": "3e55e0f9b30ca7f1c326553133e7968b5a580661aad3e8da87ef747737e76bd4",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/complete-analysis.zip"
+      },
+      "queries.json": {
+        "bytes": 591412,
+        "sha256": "1e6551f1ab5dc59747798a5a7f36951ba0807987cfb3d625e466f85f7e3d4daf",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/queries.json"
+      },
+      "all216-source-region-queries.csv": {
+        "bytes": 57047,
+        "sha256": "7424a1614423f2308578375dd889625045b9da13d3927c18382713e262dd9c65",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/all216-source-region-queries.csv"
+      },
+      "all204-county-context-decisions.csv": {
+        "bytes": 19811,
+        "sha256": "b898971f59d46f05a8cf731b7f11b01cc8e96dcb0b3b5754a77ddf6353842554",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/all204-county-context-decisions.csv"
+      },
+      "all2-source-frame-decisions.csv": {
+        "bytes": 485,
+        "sha256": "a74eb37a44ae98182cf753528b63e7adf9da3ce1fcc51905c59d2f245db5a9dc",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/all2-source-frame-decisions.csv"
+      },
+      "all204-context-counts.csv": {
+        "bytes": 138071,
+        "sha256": "0c7ce00dca326a044f6601fcdcee7466c1902742917bb66e1d5d694ca80e3ef2",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/all204-context-counts.csv"
+      },
+      "manifest.json": {
+        "bytes": 3357,
+        "sha256": "f4f50e6a426cb910c5963f9e6c0d3d111dc497f9c49e7d449008a36ba66a4a03",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/manifest.json"
+      },
+      "README.txt": {
+        "bytes": 2868,
+        "sha256": "38d8c342c4018d01196d11aff642e15b7a6a7f02f6e217c193997afc83e6f030",
+        "anonymous_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-illinois-county-context-20261110-01/README.txt"
+      }
+    },
+    "numerical_archive_members": 19,
+    "original_sources_reacquired": false,
+    "verified_before_main_activation": true
+  },
+  "verification": {
+    "affected_tests": 182,
+    "standalone_numerical_tests": 5,
+    "astro_errors": 0,
+    "astro_warnings": 0,
+    "full_build_passed": true,
+    "independent_checks": 2814,
+    "exact_network_blocked_replays": [
+      {
+        "exact_sha256": "1e6551f1ab5dc59747798a5a7f36951ba0807987cfb3d625e466f85f7e3d4daf",
+        "network_block": "EPERM socket probe verified",
+        "focused_tests": 5
+      },
+      {
+        "exact_sha256": "1e6551f1ab5dc59747798a5a7f36951ba0807987cfb3d625e466f85f7e3d4daf",
+        "network_block": "EPERM socket probe verified",
+        "focused_tests": 5
+      }
+    ],
+    "local_desktop_mobile_exact102_both_modes": true,
+    "all_six_city_records_preserved_and_visible": true,
+    "original_reference_unchanged": true,
+    "official_exclusion_and_native_zero_priority": true,
+    "whole_county_scope_rejected": true,
+    "source_selector_and_map_retry_restored": true
+  },
+  "publication": {
+    "status": "live_verified_source_region_activity_on_county_context",
+    "main_commit": "09eff27c1629587cd3564d10adb255e713e06b02",
+    "pages_run_id": 42747433131,
+    "main_guard_run_id": 42747433393,
+    "artifact_id": 13731489436,
+    "deployment_attempt": 1,
+    "actual_payload_bytes": 989037557,
+    "actual_tar_bytes": 991600640,
+    "exact_unqueried_production_files": 30,
+    "unchanged_complete_download_routes": 436,
+    "nationwide_project_complete": false
+  }
+}
