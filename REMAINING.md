@@ -46,7 +46,7 @@ every comparison or redistribution is approved.
 All 89 comparable central frames permit zero D/R switching, so return reconciliation
 does not identify the fitted behavioral split. Complete release **442279581** has
 all 113 decisions/24 holds, 1,912 sharp bounds, 224 metric holds, 3,824 full extremal
-tables and all 806,912 cut certificates/checks. Eight tests, 930,069 independent
+tables and every dual certificate, independently checked against 806,912 cuts. Eight tests, 930,069 independent
 exact checks and two fresh six-output offline reproductions pass. Entire accepted
 predecessor and all sufficient code/inputs/results are in the 15,444,633-byte ZIP;
 all 13 full assets anonymously verified. No new fitting or old reductions.
