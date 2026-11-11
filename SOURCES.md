@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Latest deployed history view | [Separate 2002 source points](#2002-cps-points-in-the-existing-historical-view) |
 | Latest historical participation extension | [2002 CPS reported points](#2002-cps-reported-points-and-midterm-snapshot-comparisons) |
 | Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
 | Latest missing-count integration | [Four Utah native county totals](#2026-utah-four-native-county-count-successors) |
@@ -29,6 +30,43 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2002 CPS points in the existing historical view
+
+The point-only science below now has a separately qualified presentation in the
+existing **Source studies & supporting analyses → Historical participation and
+demographic comparisons** section. Both details stay closed by default.
+No new homepage panel or tab is added. The 2002 source loads only when the
+historical details open, from the exact immutable research result with SHA256
+`9d9fe04a02ca1aec9563699d4145e6657777cb01d3af0dbfec69ecf85df0de2d`.
+
+The geography/group controls expose two separate 2002 population rows:
+**all adults 18+** and **citizen adults, overall only**. All source holds remain
+unavailable, not zero. Five old racial categories have explicit 2002 labels
+instead of being aliased into race-alone or race-in-combination categories.
+No workbook margin is inferred and no 2002 all-adult point is connected to
+the citizen-series chart. The original **13,156** query cells, published margins,
+gap-safe lines, 2004 baseline, source tables and full downloads are unchanged.
+
+Website **c1357ec** is **verified live**. Sole Pages **43030652407**, main guard
+**43030652544**, and artifact **13861735166** pass actual
+**996,321,829 payload / 998,912,000 tar bytes**, both strictly below 1e9.
+All **65** checked unqueried production assets match the native artifact,
+and all **436** old complete-download pins remain unchanged. The existing
+immutable 2002 ZIP and complete 832-row CSV are linked; no scientific packet
+or source acquisition was repeated for this presentation.
+
+Five focused reader tests, six source-guard tests, Astro check/full build and
+actual prepared-site/production browser tests pass. Each desktop/phone run
+checks **2,912** point-selection cells across **52** geographies / **28** options,
+retaining **642** selected distinct source points. All old **13,156** history
+cells, **6,788** plotted points and **1,441** gap-safe segments per screen pass.
+No-JavaScript, failed/corrupt source, late-response selection isolation and
+overflow checks pass with no valid-data overrides or browser errors.
+All **113** original model objects/saved rows and all four catalog readers
+remain intact; catalog **a1e3cb15** and geometry/count/scenario datasets are
+unchanged. No new uncertainty, 2026 estimate or local demographic rate is added.
+Records: `data/participation-access/20261111-cps-2002-history-ui-01/`.
 
 ## 2002 CPS reported points and midterm snapshot comparisons
 

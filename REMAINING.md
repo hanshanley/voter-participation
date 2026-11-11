@@ -42,6 +42,31 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**2002 source points are integrated into the existing historical view, verified live.**
+Website **c1357ec**, sole Pages **43030652407**, main guard **43030652544** and
+artifact **13861735166** pass actual **996,321,829 payload / 998,912,000 tar
+bytes**, 65 exact unqueried assets and all 436 unchanged full-download pins.
+The existing default-closed **Source studies & supporting analyses → Historical
+participation and demographic comparisons** section now exposes the approved
+2002 points through its geography/group controls. No new panel/tab or data
+catalog entry is added; the source fetch is lazy and checksum-pinned.
+
+All-adult groups and separate citizen-overall points remain distinct. Five
+old racial categories have explicit 2002 labels, never race-alone aliases.
+Source holds remain unavailable, not zero; no margin, source repair or chart
+connection to the later citizen series is invented. All original 13,156 query
+cells and their native margins/lines/source tables/downloads remain intact.
+Five reader tests, six guard tests, type-check/full build and actual local/live
+browser suites pass: 2,912 new selection cells across all 52 geographies/28
+options on desktop and phone, all 13,156 old cells/6,788 plotted points/1,441
+gap-safe segments per screen, JS/no-JS, failure/corruption and late responses.
+All 113 model objects/saved rows and four existing catalog readers are preserved.
+No valid data was overridden. Scientific package441661238 is reused unchanged;
+no old source acquisition/reduction/publication was repeated.
+Records: `data/participation-access/20261111-cps-2002-history-ui-01/`.
+Do not rebuild or repeat accepted QA for this completed increment. Broader
+native/precinct coverage, category harmonization and precision gaps remain open.
+
 **2002 CPS reported-point selection is complete and publicly reproduced.**
 Scientific source **fe8933c** and immutable science **441661238**, tag
 `participation-cps-2002-reported-points-20261111-01`, publish **693 selected

@@ -1,0 +1,25 @@
+{
+  "all_adult_and_citizen_overall_frames_separate": true,
+  "complete_downloads": {
+    "new_2002_complete_zip": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-2002-reported-points-20261111-01/complete-analysis.zip",
+    "old_routes_preserved": 436
+  },
+  "contract": "participation.cps_2002_history_presentation.v1",
+  "existing_default_closed_history_view": true,
+  "history_query_cells_preserved": 13156,
+  "lazy_source_loading": true,
+  "new_error_bars_or_chart_connections": false,
+  "new_front_page_panels": 0,
+  "old_racial_categories_not_aliased": true,
+  "point_selection_cells_per_screen": 2912,
+  "scientific_release": 441661238,
+  "scientific_source_sha256": "9d9fe04a02ca1aec9563699d4145e6657777cb01d3af0dbfec69ecf85df0de2d",
+  "selected_distinct_2002_points": 642,
+  "source_2002_held_rows": 139,
+  "source_2002_native_rows_retained": 832,
+  "source_2002_selected_rows": 693,
+  "source_count_or_model_changes": false,
+  "source_geographies": 52,
+  "visible_group_options": 28,
+  "website_commit": "c1357ec35b911e54f6c0b5fdc3bb9b113880cecc"
+}
