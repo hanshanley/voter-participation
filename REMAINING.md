@@ -69,9 +69,12 @@ the scenario, not an observed zero. No-ballot history, actual unique stayers,
 eligibility/deaths/migration and local allocation remain unqualified.
 
 Website **442287d** is pushed but **not live-verified**. GitHub push run
-**43095898386**, explicit-dispatch recovery **43097363368** and main guard
-**43095898371** all report queued with zero jobs. Normal/force-cancel return409
-because GitHub says the run is not yet queued internally. Production still
+**43095898386** and main guard **43095898371** remain pre-job queued.
+Explicit recovery **43097363368** first returned `startup_failure` with an
+unexpected **GitHub internal error**, support request
+`79366489-de10-11f1-841c-aca5b4bc9cb0`; one rerun request is again pre-job queued.
+The deployment workflow is byte-identical to the last successful version.
+Normal/force-cancel return409 because GitHub says the run is not yet queued internally. Production still
 serves the old model. **Check the existing runs and finish artifact/live
 acceptance first; do not queue more builds or redo numerical science.**
 Acceptance helper:

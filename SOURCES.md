@@ -102,11 +102,14 @@ have a server-rendered table and sum-preserving display rounding. Local real
 desktop/phone tests check **1,530 state/view values and 226 state/office
 summaries**, selection and unavailable cases, without valid-data overrides.
 Eighteen reader tests, Astro checks/build and both responsive screenshots pass.
-Production acceptance is **blocked on GitHub workflow scheduling**. Push run
-**43095898386**, explicit-dispatch recovery **43097363368** and main guard
-**43095898371** still report queued with **zero jobs created**. Normal and
-documented force-cancellation both return 409, saying the run has not yet been
-queued internally. The unqueried production page still serves the old model;
+Production acceptance is **blocked on GitHub Actions startup/scheduling**.
+Push run **43095898386** and main guard **43095898371** remain pre-job queued.
+Explicit recovery **43097363368** first ended `startup_failure`; its public
+annotation reports an **unexpected GitHub internal error**, request
+`79366489-de10-11f1-841c-aca5b4bc9cb0`, not a model or YAML diagnostic. One rerun
+was requested and again has zero jobs. The workflow is byte-identical to the
+last successful revision. Normal/force-cancel both return409 saying the run
+is not yet queued internally. The unqueried production page still serves the old model;
 **this is not a live-verified correction**. Check these existing runs, not a new
 duplicate build, then verify actual artifact limits and the production browser.
 The old 436 complete-download pins remain byte-identical.
