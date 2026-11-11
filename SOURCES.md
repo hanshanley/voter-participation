@@ -1,6 +1,6 @@
 # Voter-participation source ledger
 
-Last reviewed: 2026-11-10 UTC.
+Last reviewed: 2026-11-11 UTC.
 
 **Start here:** [Overview](README.md) | [Estimation methods](METHODOLOGY.md) |
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
@@ -26,6 +26,54 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## Canonical 2026 state/provider and county/local count migration
+
+The one-time migration uses the complete accepted aggregate exports, not a new
+native-source parse: 49 full additional-state files, the complete base query,
+all reviewed county/state rows and the current state/provider snapshot. All
+**24,827 source appearances** retain their full original fields, literal clocks,
+conflicts, rate decisions and reference qualifications under the shared
+observation contract. **616 zeros, 111 unknown counts and six explicitly withheld
+counts** remain distinct. These are non-additive source appearances, not people.
+
+All **306** original state/view selections match every field in the actual
+accepted reader. The original frozen Python contract accepts every record;
+two fresh network-blocked reproductions exactly rebuild all **53** runtime files.
+The source-specific precinct counts still embedded in reference geometry remain
+a separate unfinished migration; no new native or geographic qualification is
+claimed.
+
+Immutable release **441081257**, tag `participation-count-migration-20261110-01`,
+has all **four** complete assets anonymously byte/hash verified. The
+**8,621,160-byte / 126-member** primary ZIP includes every sufficient accepted
+aggregate input, every canonical query, full-observation CSV, code/tests,
+original contract and exact offline reproduction. Acquisition receipt headers
+and compiled publisher application code are excluded. All earlier raw-source
+science and complete releases remain unchanged.
+
+The shared publisher activated version
+`b695d9e882b601001716764ebbad7aca50e44af04b635c4f60833247e0fd2996`,
+staged **c3715dfe** / catalog **b3df476d**, with all 54 immutable files and catalog
+verified. Source/canonical HEADs and actual indexes, main and Pages run IDs were
+identical before/after: **zero builds**. Resident dataset **23a** is unchanged.
+After natural mutable-catalog propagation, the local reader passed all 306
+actual-public bindings, all 51 selector inventories, desktop/phone and no
+obsolete 2026 count requests, without fixtures. All 59 native drilldowns,
+24 single-map cases and 66 actual-public resident cases pass locally.
+
+Website source **c4ccdf4**, native Pages **42930954947** / guard **42930955056**
+and artifact **13816392978** pass deployment, **996,279,079 payload /
+998,860,800 tar bytes**, all 59 exact unqueried production assets and all 436
+old downloads. The reader is **verified live**: all 306 bindings plus two
+viewport cases, all 51 selector inventories, 66 resident cases, 59 native cases,
+24 map cases, 32 layouts and every field of all 113 models pass in production.
+Desktop/phone images were inspected. One transient public-shard fetch failed;
+only unfinished browser acceptance resumed, using bounded transport-only retries
+from **41887bf**, without rebuilding or substituting data. Final records:
+`data/participation-access/20261110-count-catalog-01/`.
+Remaining source-specific county/precinct geographic qualification and embedded
+precinct counts, coverage and separately qualified gaps are still unfinished.
 
 ## Reported same-office swing correction
 

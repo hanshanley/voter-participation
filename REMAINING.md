@@ -1,6 +1,6 @@
 # Remaining work: participation and election-transition estimates
 
-Updated: 2026-11-10 UTC. Source catalog: [SOURCES.md](SOURCES.md).
+Updated: 2026-11-11 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 **The project is not finished when the files are downloaded.** Acquisition and
 reconciliation must feed the participation, switching, modeled/reported
@@ -41,6 +41,41 @@ are recorded by source family in `SOURCES.md`. Source possession does not mean
 every comparison or redistribution is approved.
 
 ## Execution queue
+
+**Current increment: common state/provider and county/local count reader.**
+Source **c4ccdf4** replaces the active current snapshot/local-count fetches and
+build-time state-importer chain with the common immutable catalog and frozen
+accepted snapshots. The complete **24,827-source-appearance** dataset preserves
+616 zeros, 111 unknown counts and six explicit withheld counts. All 306 original
+state/view bindings match every field; the original Python contract and two
+fresh full-input offline reproductions pass all 53 runtime files.
+
+Science release **441081257** has all four complete assets anonymously verified;
+its **8,621,160-byte / 126-member** packet includes every sufficient accepted
+aggregate input, full queries, maintained code/tests and offline reproduction,
+not only metadata. The shared publisher activated **b695**, staged **c3715dfe** /
+catalog **b3df476d**, with 54 immutable files and catalog verified and **zero
+website builds**. Source/canonical HEADs/indexes and main/Pages IDs were unchanged.
+The existing resident **23a** dataset remains. Local actual-public acceptance
+passes all 306 bindings, all 51 county-selector inventories, both viewports,
+59 native drilldowns, 24 map cases and 66 resident cases, with no fixture.
+
+Native Pages **42930954947** / main guard **42930955056** and artifact
+**13816392978** pass deployment, **996,279,079 payload / 998,860,800 tar bytes**
+and all 59 exact unqueried production assets / 436 old routes. This increment is
+**verified live**: 306 real-public bindings, all 51 selector inventories, two
+viewport cases, 66 resident / 59 native / 24 map / 32 layout cases and every
+field of all 113 models pass. Production desktop/phone images were inspected.
+A transient public-shard fetch was handled by resuming only unfinished browser
+checks with bounded transport-only retries; the accepted build/data were not
+repeated or replaced. Final records: `data/participation-access/20261110-count-catalog-01/`.
+The bounded increment is separate from the **still-open parent runtime**:
+next decouple the native precinct count properties embedded in geometry and
+replace the remaining county/precinct geographic qualification branches, preserving every reference
+and source hold. Coverage must use the current selected contract frame rather
+than stale legacy audit badges (for example, the old 75-county Minnesota button
+beside the actual 87 county choices). Then finish the dashboard and separately qualified gaps. This is
+not completion of the common runtime or whole project; simulation remains deferred.
 
 **Current override: one selectable map, corrected swing accounting and resident context.**
 The original two maps showed modeled contributions to a recalled-presidential
