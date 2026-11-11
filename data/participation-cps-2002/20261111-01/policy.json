@@ -1,0 +1,24 @@
+{
+  "comparison_population_frame": "cvap",
+  "comparisons_are_snapshots_not_cohorts": true,
+  "confidence_scalar_interpretation": "unqualified_except_direct_national_citizen_report_anchor",
+  "conflicting_pennsylvania_totals_selected": false,
+  "contract": "participation.cps_2002_point_selection.v1",
+  "exact_native_group_labels_required": true,
+  "frontend_activation": false,
+  "local_allocation_allowed": false,
+  "minimum_guarantees_precision": false,
+  "minimum_is_sample_size": false,
+  "minimum_weighted_population_thousands": 75,
+  "native_defects_repaired": false,
+  "new_intervals_allowed": false,
+  "new_standard_errors_allowed": false,
+  "race_harmonization_allowed": false,
+  "same_type_comparison_years": [
+    2018,
+    2022
+  ],
+  "selection": "reported_native_points_only",
+  "suppressed_rates_reconstructed": false,
+  "year": 2002
+}

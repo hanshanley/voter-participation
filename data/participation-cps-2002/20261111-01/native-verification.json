@@ -1,0 +1,62 @@
+{
+  "counts": {
+    "dispositions": {
+      "candidate_native_rate_pending_precision_and_public_selection": 693,
+      "withheld_cross_table_total_count_conflict": 3,
+      "withheld_native_inconsistency": 5,
+      "withheld_native_missing_or_suppressed_rate": 131
+    },
+    "flagged_observations": 6,
+    "metric_cells": 8320,
+    "observations": 832,
+    "total_controls": 104,
+    "worksheet_cells": 10659
+  },
+  "hash_seed_reproduction_identical": true,
+  "independent_native_verification_passed": true,
+  "independent_verifier_sha256": "fdd8fe3d2ab42b3b1de492b4465ba4c4f5ad02a3627bfe12fc669ab26c3c54a9",
+  "individual_transitions_or_2026_participation_qualified": false,
+  "limits": [
+    "All raw cells retained, including literal suppression/rounds-to-zero tokens and source defects.",
+    "Sex/race and age rates use all adults; only the separate overall table uses citizen adults.",
+    "Native confidence fields are literal: workbook confidence level and half-width interpretation not independently established.",
+    "Counts are rounded weighted population thousands, not respondent counts or precision guarantees.",
+    "Native racial labels remain exact; no automatic equivalence to later race-alone/in-combination categories.",
+    "Suppressed rates are not reconstructed. Group views overlap and are not additive.",
+    "Repeated cross-sections do not establish fixed-person transitions, 2026 voting or local demographic rates.",
+    "Candidate rates still require precision/disclosure/public-selection review; no public display approved."
+  ],
+  "network_blocked_and_probed": [
+    "dns",
+    "connect"
+  ],
+  "parser": {
+    "name": "python_calamine",
+    "version": "0.4.0"
+  },
+  "primary_parser_and_reviewer_imported": false,
+  "primary_reviewer_sha256": "d8736e5655043126e836964cf948f95174209202beaf78c6ae79b965ae761df8",
+  "public_package_qualified": false,
+  "review_sha256": "8b4bf57db10e2f5a75199b979b890708692a2e8f560aad99119db98a9458d05b",
+  "source_pins": {
+    "2002-table4a.xls": "097f5372f450ced80ba97fd78e254ec2a68e597d2ff02971d7330d6090ae9706",
+    "2002-table4b.xls": "98e44d6676d8c9eec72e1fec4de3348722b5eff15ad09d587e574c66e570c35f",
+    "2002-table4c.xls": "44a334b0e5b20ecf3fa94cf791246386c6d25cc53ed63f65cffd6edfcfc762f5",
+    "catalog-2002.html": "0b580511724202ccc08a7c51744e5213c130feb9d472e03fc954375ef604fd24"
+  },
+  "tamper_refusals": [
+    "changed_original",
+    "changed_source_pin",
+    "dropped_observation",
+    "changed_native_cell",
+    "repaired_source_defect",
+    "changed_denominator",
+    "reconstructed_suppressed_rate",
+    "hidden_control_conflict",
+    "published_conflicting_total",
+    "dropped_native_flag",
+    "invented_moe90",
+    "public_qualification",
+    "individual_transition_qualification"
+  ]
+}
