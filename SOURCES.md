@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Latest historical participation extension | [2002 CPS reported points](#2002-cps-reported-points-and-midterm-snapshot-comparisons) |
 | Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
 | Latest missing-count integration | [Four Utah native county totals](#2026-utah-four-native-county-count-successors) |
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
@@ -28,6 +29,69 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2002 CPS reported points and midterm snapshot comparisons
+
+The already-held 2002 Census voting/registration workbooks now have a maintained
+**reported-point-only** public selection. All **832 native rows / 8,320 metric
+cells** remain available. **693 source table rows** are selected, representing
+**642 distinct geography/frame/category cells**, including **540 non-total
+group rows**. Repeated total rows and overlapping groups are not independent
+or additive estimates. No raw survey microdata or voter identifiers are used.
+
+Table 4a sex/race/Hispanic-origin and Table 4b age percentages use **all adults
+18+**, not citizen adults. Only Table 4c's separate overall percentages use
+**citizen adults**. Exact native White, Non-Hispanic White, Black, Non-Hispanic
+Black, Asian and Pacific Islander, and Hispanic-of-any-race labels are retained.
+They are not harmonized modern race categories or exclusive demographic
+partitions. All **139 held rows** remain withheld, not repaired or reconstructed:
+**131** missing/suppressed, five other inconsistent rows and **three Pennsylvania
+conflicting totals**. One Pennsylvania total also has a native defect, making
+**six flagged defect rows** in all. The national Non-Hispanic White source population discrepancy
+is preserved despite the separate report's different printed value.
+
+The public selection resolves the earlier all-or-nothing publication hold by
+publishing **reported points without interpreting unqualified precision**.
+The source's 75,000-person caution uses weighted population, not sample size
+or a precision guarantee. Native confidence scalars remain literal; no new
+standard errors, confidence intervals, significance tests or change intervals
+are constructed. Only the directly printed national citizen interval is
+retained as a report fact. The prior factual/method reviews are unchanged and
+**workbook-wide precision mapping remains unqualified**.
+
+All **832 source-reconciliation decisions** are included. The **150** supported
+overall-table comparisons match both the reported voting and registration
+percentages in the held retrospective series. This is common-source
+corroboration, not independent administrative validation. There are **104**
+complete 2002-to-2018/2022 midterm citizen-overall snapshot decisions:
+**100** arithmetic comparisons across 50 state/D.C. jurisdictions, two
+Pennsylvania source holds and two absent national retrospective endpoints.
+Population controls/definitions are not declared harmonized, and the changes
+are not fixed-person retention, administrative staying home or 2026 estimates.
+No state/group result is allocated to counties or precincts.
+
+Maintained scientific source **fe8933c** includes the selector, independent
+verifier, complete-query packager/reproducer, tests and sufficient frozen
+inputs. A CSV JSON-roundtrip column-order defect was caught before science
+publication and fixed with a focused byte-identity regression; values did
+not change. **Ten tests / 24,438 independent checks** and two fresh
+warning-fatal network/external-command-blocked reproductions pass every full
+result/query byte. Accepted native parsing, acquisitions and prior reductions
+were reused, not repeated.
+
+Immutable science **441661238**, tag
+`participation-cps-2002-reported-points-20261111-01`, has all **12 full assets**
+anonymously byte/hash verified. Its **1,241,697-byte / 25-member**
+[complete packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-2002-reported-points-20261111-01/complete-analysis.zip)
+contains all three original XLS files, both full official PDFs, complete
+accepted factual/methodological reductions, the **entire 368,608-byte**
+accepted historical state-frame science ZIP, maintained code/tests, complete
+queries and the full **1,963,519-byte** result. SHA256:
+`4d651c36c02a8dd5b413897deccad01d8b2ee05f1f08b9ce2cd068b167858a8b`.
+Acquisition session headers and source-page HTML are excluded.
+Research records: `data/participation-cps-2002/20261111-01/`.
+No frontend/data activation, new panel or website build is part of this increment;
+the accepted website, data catalog and prior downloads remain unchanged.
 
 ## 2026 Utah four native county count successors
 

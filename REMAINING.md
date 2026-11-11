@@ -42,6 +42,41 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**2002 CPS reported-point selection is complete and publicly reproduced.**
+Scientific source **fe8933c** and immutable science **441661238**, tag
+`participation-cps-2002-reported-points-20261111-01`, publish **693 selected
+native rows / 642 distinct geography-frame-category cells**, including
+**540 non-total group rows**, plus all **832 native rows / 8,320 metric cells**.
+All 12 full assets are anonymously byte/hash verified; the **1,241,697-byte /
+25-member** ZIP includes all three XLS originals, both full official PDFs,
+complete accepted factual/method inputs, the whole historical-frame predecessor,
+maintained code/tests and the full **1,963,519-byte** result and every query.
+Ten focused tests, **24,438 independent checks**, and two fresh warning-fatal
+network/external-command-blocked reproductions pass every result/query byte.
+No accepted original parsing, acquisition or old reduction was repeated.
+
+All **139 held rows** remain withheld: 131 missing/suppressed, five other
+inconsistent rows and three conflicting Pennsylvania totals. One Pennsylvania
+total also has a defect, so the complete native flag inventory remains six.
+Native confidence scalars stay uninterpreted;
+only the directly printed national citizen interval is retained. The selection
+is explicitly point-only, not a precision qualification: workbook-wide mapping
+remains unqualified, and the weighted 75,000-person caution is not sample size.
+Group rates are **all-adult 18+**, not citizen turnout; only separate overall
+Table 4c is citizen-based. Exact historical race labels are not harmonized.
+No intervals, source repairs, 2026 effects or precinct/group allocations are
+invented. Repeated totals/overlapping categories are not independent/additive.
+
+All 832 source-reconciliation decisions retain the **150** matching overall
+rate comparisons. All **104** midterm citizen-overall snapshot decisions retain
+**100** supported 2002-to-2018/2022 arithmetic differences, two Pennsylvania
+holds and two unmatched national endpoints. These are source snapshots, not
+cohort transitions, significance findings or population validation.
+Records: `data/participation-cps-2002/20261111-01/`.
+No live view/data activation or website build was introduced. Do not rerun
+this accepted selection/publication; broader historical harmonization,
+precision, demographic transport and native/precinct coverage remain open.
+
 **Four Utah missing-count successors are complete and verified live.**
 Piute **737**, Kane **3,395**, Millard **4,149**, and Cache **42,549** are explicit
 native ballot totals from already-held November 10 reports, not candidate votes.
