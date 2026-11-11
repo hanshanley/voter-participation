@@ -73,19 +73,45 @@ disclosure are complete, not whole-project completion. Coverage follows the
 selected year/mode/geography, distinguishes table-only sources and missing /
 awaiting / rejected frames, and fixes the Minnesota county badge to 87.
 
-**Current work: resident context for the remaining mapped reference families.**
+**Completed and verified live: resident context for the remaining mapped reference families.**
 The first **448 Idaho / 710 Virginia** profiles pass **922,198** independent
 native-point and Fraction checks across **245,370** complete block decisions.
 The held source audits also distinguish **159 North Dakota / 139 D.C.**
 full, unrepaired units from **179 / five** clipped or repair-affected reference
 holds. Those 298 profiles are computed and independently checked separately.
-These new profiles are **not yet packaged, published or live**.
-The accepted 3,144 counties and 6,847 local profiles are unchanged; their
-successful spatial reductions are not repeated. Finish complete reproducible
-science, catalog publication and exact hash-gated reader integration for this
-extension. Preserve explicit holds rather than treating clipped display areas
-as demographics of entire reporting units. The transition simulation remains
-deferred until the agreed existing integration is complete.
+All **1,456** new profiles pass **1,242,200** independent checks over **335,948**
+complete points. Science **441153023** has all three full assets anonymously
+verified, including the **604,211,777-byte / 85-member** complete bundle with
+both whole predecessor packets. Two new-science reproductions, two incremental
+runtime reproductions and full-bundle mode pass. All 3,144 county records,
+6,847 previous profiles and 47 unaffected state-shard bytes are unchanged;
+their successful spatial reductions are not repeated.
+
+Resident **23a -> 556**, staged **2ee541ca** / catalog **25808ff0**, is genuinely
+public with all 53 files/catalog checked and **zero website builds**. The
+unchanged actual production e588860 reader already loaded its new version
+and retained county/Minnesota context, without fixtures. The full dataset has
+**8,303 profiles / 185 reference holds**. New matched-selection/hash plumbing
+and readable hold reasons are on **6ee8416**; actual-public local acceptance
+passes 78 cases and both inspected screen widths. Actual code **6ee8416** /
+Pages **42944752314** / guard **42944752242** / artifact **13823195376** are
+**verified live**: **996,278,378 payload / 998,860,800 tar bytes**, all 61 exact
+unqueried assets and 436 old downloads. All 78 real-public resident cases,
+176 native / 308 count / 59 geography / 24 map / 32 layout cases and every
+field of all 113 models pass. Production phone/desktop images were inspected.
+Final records: `data/participation-access/20261111-matched-resident-03/`.
+Do not rebuild or republish this accepted science/data/code.
+
+The current approved-reference resident integration, common count intake,
+coverage and swing-accounting prerequisites are complete. All 8,488 currently
+mapped reference decisions are accounted for as 8,303 conditional profiles
+and 185 explicit holds; this is not universal historical or statewide precinct
+coverage. Preserve those holds and unavailable proxy metrics. The next requested
+modeling stage is the demographic/geographic transition simulation, using only
+qualified modern frames and treating `pre1870_pop` as an architecture reference,
+not as modern election input. Broader blocked/unsupported source gaps remain
+explicit; simulation must not disguise them as measured participation or
+identified individual histories.
 
 **Previously completed: common state/provider and county/local count reader.**
 Source **c4ccdf4** replaces the active current snapshot/local-count fetches and

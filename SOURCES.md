@@ -27,6 +27,62 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Additional matched-reference resident context
+
+The four remaining mapped participation-reference families now have **1,456**
+new conditional resident profiles: **448 Idaho, 710 Virginia, 159 North Dakota
+and 139 D.C.** The original full scope audits, not newly repaired geometry,
+identify **179 North Dakota / five D.C.** references whose clipped or prior
+repair-affected footprints remain held. All 482 ND/DC reference decisions are
+retained; no demographics of a clipped area are labeled as the whole unit.
+One otherwise qualified North Dakota reference has no usable population/income
+proxy; those metrics stay unavailable rather than becoming zero.
+
+All **335,948** new native block decisions and exact resident arithmetic pass
+**1,242,200 independent checks**. Two fresh network/DNS-blocked new-science
+reproductions preserve every point/weight/profile byte and check all 239,742
+native block groups in each full ACS table. Two fresh incremental runtime
+reproductions and the new full-bundle mode also pass. The seven previously
+accepted spatial reductions are not repeated.
+
+Immutable release **441153023**, tag
+`participation-resident-matched-context-20261111-03`, has all **three** full
+assets anonymously byte/hash verified: **275,687,426 bytes / 81 members** for
+the new science, **604,211,777 bytes / 85 members** for the complete resident
+bundle, and **5,816,288 bytes** for the exact runtime ZIP. The complete bundle
+retains both entire new and prior scientific inputs, all sufficient originals,
+full queries/code/tests and the earlier native intake demonstration; it is not
+a metadata-only update. Primary SHA:
+`858555e7cd9ab989f411be32523757c423691b8ab0c57769e73e314db57a885a`.
+
+Runtime version
+`55600f7238c96fc8c3c36b5a7470c70609cb3f5c6e0ce1789781059c41c3e0c4`
+extends resident **23a -> 556**, staged **2ee541ca** / catalog **25808ff0**.
+All **53** immutable files and catalog are verified. Every existing county
+record and all 47 untouched state-shard bytes are preserved, including all
+**6,847** prior local profiles. The dataset now contains **3,144 counties,
+8,303 local profiles / 185 held references** across 11 reference families.
+Unrelated count datasets, source/canonical HEADs/indexes and main/Pages IDs
+were unchanged: **zero builds for data activation**. The unchanged actual
+production **e588860** reader subsequently loaded the new dataset and retained
+county/Minnesota profiles with no fixture or build.
+
+The matched-selection/hash plumbing and readable hold explanations are
+implemented in **6ee8416**. Actual-public local acceptance passes **78** resident
+cases across all 51 jurisdictions, all 11 reference families, both screen
+widths and explicit held-reference selections. Both images were inspected.
+Actual code **6ee8416** is now **verified live**. Native Pages **42944752314** /
+guard **42944752242** / artifact **13823195376** pass **996,278,378 payload /
+998,860,800 tar bytes**, 61 exact unqueried production assets and 436 old
+downloads. All **78 actual production resident cases**, including the four
+new families and explicit holds on both screen widths, pass without fixtures.
+All 176 native, 308 count, 59 geography, 24 map and 32 layout cases pass;
+every field of all 113 models remains exact. Production desktop/phone images
+were inspected. Records: `data/participation-access/20261111-matched-resident-03/`.
+Context remains conditional 2020-proxy / 2020-2024 ACS resident composition,
+not voter demographics, group turnout, election-time boundary certification,
+averaged median incomes or a new sampling MOE.
+
 ## Canonical native count/reference bindings and scoped coverage
 
 The common native reader is **verified live at e588860**. It separates count
