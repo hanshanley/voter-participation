@@ -27,6 +27,58 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## New Jersey: complete contextual county map bindings
+
+The two later Essex/Hudson source records now qualify on the **same unchanged
+2024 contextual county geometry** used for the previous 19 NJ observations.
+All 19 original exact-record-hash identities pass their accepted oracle; the
+two new county headings, state, election and full sufficient source facts
+match unique existing Essex/Hudson features. No coordinates, overlaps or
+coastal shapes are repaired, recomputed or replaced. The complete reference
+remains **139,257 bytes**, SHA
+`489eabbafe98495645d95ddb65581f5204b3bd7871b001d02d3aaa3ffa11733b`.
+This is contextual county identity, not certified 2026 legal election/precinct
+boundaries, individual voters, turnout rates or survey allocation.
+
+Generic source **18b3319** updates only explicit join/view-reference metadata
+for the 21 supported county observations. All 107 source records otherwise
+remain unchanged, including counts, denominators, missing rates, clocks,
+conflicts and full native fields. Early/returned frames are untouched.
+All **51** unaffected count runtime files and **29** unaffected native files
+are byte-identical. Four new Native county-mode bindings retain all other
+native layers, tables, municipality references and prior county modes.
+
+Immutable science **441296396**, tag
+`participation-new-jersey-county-bindings-20261111-01`, has all **six** complete
+assets anonymously byte/hash verified. Its **163,001,209-byte / 116-member**
+ZIP includes **all three entire** count/native/context predecessor scientific
+packets, full unchanged geometry, original 19-row hash oracle within the whole
+review, complete native facts, new code/tests, every 21-county/four-mode query
+and both complete runtime datasets. Fourteen tests, **402 independent checks**
+and two fresh network/subprocess-blocked byte-identical reproductions pass.
+Archive SHA: `9039c32cb65bc42f0c412137ca413f7d4dc224250eb404a8fa6df4004da81d91`.
+
+The existing common publisher safely activates Native **6b57129d** first
+(staged **704df678**, catalog **8468f323**), then count **2de669a7**
+(staged **d744c159**, final catalog **1a440f55**). All **31 + 54** immutable
+files and the actual public pointer are verified; resident/scenario entries
+are unchanged. Data activation has **zero website builds**.
+
+Actual production verifies all 107 full NJ source records, all four catalog
+readers, four county modes and **16 real SVG pointer/tooltip cases** on desktop
+and phone. Altered reference vintages and source qualifiers are rejected;
+missing rates remain null. Screenshot inspection caught a generic footer
+hardcoded to 2026 despite the actual 2024 reference. The sole caption correction
+is website **121fd8c**, Pages **42971691616**, guard **42971691564**, artifact
+**13834575140**: actual **996,310,342 payload / 998,891,520 tar bytes**, all
+**62 exact unqueried assets** and **436 unchanged complete-download pins** pass.
+Thirteen count/native/coverage tests, Astro check (zero errors/warnings, eight
+existing hints), the full build, four local map cases and the existing 2026
+reference caption pass. Final production rechecks all 16 cases, both vintages
+and every field/saved row of all **113** original models; both final images
+were inspected. No new tab/sidebar or geometry repair was introduced.
+Records: `data/participation-access/20261111-nj-county-bindings-02/`.
+
 ## New Jersey: two previously held county counted-mode observations
 
 The official index declared distinct **November 10, 2026** Essex and Hudson
@@ -76,9 +128,9 @@ the shared reader without republishing science or changing runtime bytes.
 All four actual catalog readers, all 107 full NJ records/six mode frames and
 16 real desktop/phone county-detail cases now pass. Four unchanged production
 script assets are byte-verified and both screenshots inspected.
-The new counts remain **table/selector-only**: their two source-to-reference
-bindings are not approved, so their map values remain missing, not zero.
-The existing 19 contextual county bindings are not extended by source possession.
+At this count-only stage, the new counts were **table/selector-only**; source
+possession did not approve their two map bindings. The separate qualified
+reference extension above subsequently resolves those two holds.
 Records: `data/participation-access/20261111-nj-county-gap-01/`.
 
 ## Conditional demographic transition simulation

@@ -42,6 +42,36 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**New Jersey's selected county references now cover all 21 source observations.**
+Generic source **18b3319** retains the 19 accepted exact-record-hash identities
+and qualifies Essex/Hudson on the same full, unchanged 2024 county features.
+Only explicit join/view-reference metadata changes; all counts, denominators,
+null rates, source clocks/conflicts and all early/mail frames are unchanged.
+No new geometry, certified election/precinct boundary or turnout rate is inferred.
+
+Science **441296396** has six full assets anonymously verified. Its complete
+**163,001,209-byte / 116-member** packet preserves all three whole count/native/
+context predecessor archives, full reference facts, code/tests, all county/mode
+queries and both runtime datasets. Fourteen tests, 402 independent checks and
+two fresh blocked-network/subprocess reproductions pass every output byte.
+Native **6b57129d**, staged **704df678** / catalog **8468f323**, activates before
+count **2de669a7**, staged **d744c159** / final catalog **1a440f55**:
+31 + 54 immutable files verified, resident/scenario datasets unchanged and
+zero builds for data activation. Do not reacquire reports, rerun accepted
+count reductions/topology work or republish these accepted datasets.
+The map is **verified live**, including 16 real SVG click/tooltip cases across
+all four modes and both screen sizes. A generic caption's hardcoded 2026
+reference date was corrected to the actual qualified vintage in website
+**121fd8c**. Pages **42971691616** / guard **42971691564** / artifact
+**13834575140** pass **996,310,342 payload / 998,891,520 tar bytes**, 62 exact
+unqueried assets and all 436 old complete-download pins. Thirteen focused site
+tests/type-check/full build/local checks pass; production preserves both
+2024/2026 reference captions, all 107 NJ source records and all 113 original
+model fields/saved rows. Final phone/desktop images inspected. No further
+NJ county-source/reference gap remains in this selected frame; broader state,
+historical and precinct gaps below remain real, not filled by this increment.
+Records: `data/participation-access/20261111-nj-county-bindings-02/`.
+
 **New Jersey's two source-count gaps are filled; broader coverage is not finished.**
 The declared November 10 Essex/Hudson native reports support EV+ED+mail-tallied
 subtotals **225,368 / 213,051**, bringing selected NJ county observations from
@@ -63,11 +93,9 @@ clocks/unknowns and do not rerun this successful acquisition or scientific work.
 The omitted immutable-download qualifier was corrected after the first actual
 production gate rejected it; no runtime bytes or science assets changed.
 All four production catalog readers, 107 NJ records/six mode frames and
-16 desktop/phone cases pass. New Essex/Hudson counts are available in the
-compact selector and complete queries, **not approved map joins**; the existing
-19 contextual bindings remain unchanged. Qualifying those two count-to-reference
-bindings is a separate remaining geographic step, not a reason to reacquire
-the reports or rerun their accepted count reduction.
+16 desktop/phone cases pass. This earlier count-only stage deliberately left
+the two map bindings held. The separately qualified reference extension above
+now resolves those holds; do not restart their source acquisition or count reduction.
 Records: `data/participation-access/20261111-nj-county-gap-01/`.
 
 **Completed and verified live: conditional transition scenarios in the existing map.**
