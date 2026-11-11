@@ -94,6 +94,77 @@ historical joint-transition holdout is therefore explicitly unavailable, not
 passed. Eligibility, deaths, migration and design confidence intervals remain
 null. State estimates are not allocated to counties or precincts.
 
+## Demographic and geographic adaptive-persistence experiment
+
+The separate cached-input experiment tests whether released modeled-nonvoter,
+age and rurality contrasts improve gross-switching prediction. It does not
+reconstruct demographic party associations or refit the accepted entropy
+couplings. Five declared candidates use the global factor, modeled nonvoter
+share, nonvoter plus age, nonvoter plus rurality, or all three features. Age is
+the released age 30-49 minus 65+ modeled-nonvoter contrast; rurality is the
+released rural-county minus urban-county contrast. A missing or suppressed
+source group stays missing; it is not imputed from a complement or another state.
+
+All offices from a held-out state are excluded together. The 39 state holdouts
+and four outer Census-region holdouts each have training-only, nested state
+tuning over ridge penalties 0.1, 1, 10 and 100. Features are centered/scaled only
+on eligible training states. The target is a training state's optimum log2
+factor relative to the training-global optimum, not a held-out outcome.
+At least eight eligible training states are required. Predictions snap to the
+nearest already-cached quarter-octave factor without extrapolation. Missing
+features or insufficient training support use the training-global factor.
+The complete official Census region table and its source pin are included.
+
+**The primary age-and-rurality candidate does not improve the baseline.**
+The table below gives table-weighted MAE in percentage points over the same
+55 published current-voter tables in 39 states; the two blocking strategies
+produce separate predictions, not 110 independent source tables.
+
+| Candidate | State-held-out MAE | Region-held-out MAE |
+|---|---:|---:|
+| Global | 1.386175 | 1.386175 |
+| Modeled nonvoter | 1.401923 | 1.401415 |
+| Nonvoter + age | 1.386175 | 1.386175 |
+| Nonvoter + rurality | 1.407546 | 1.386175 |
+| Nonvoter + age + rurality (primary) | 1.386175 | 1.403362 |
+
+State-balanced MAE for the global model is 1.383259 pp under either block
+strategy. The primary candidate ties it on state holdouts and worsens to
+1.407497 pp on region holdouts. Tuning uses state-balanced squared error;
+both MAE definitions and all squared-error scores are retained in the queries.
+
+Only 14/39 benchmark states jointly disclose both contrasts. The primary
+state-held-out model can adapt in those 14 states but changes no selected grid
+factor; 25 states use the missing-feature fallback. In region holdouts, only
+six states receive an adaptive prediction, 16 have insufficient eligible
+training support and 17 lack a disclosed feature. One region-held-out factor
+changes. Age is available in 21 states and rurality in 20. This sparse test
+does not show that demographic effects are absent, nor validate population,
+precinct or county transition effects. Region blocking does not establish
+independence between common survey questions or source methods.
+
+The complete result retains all 215 outer folds, 550 model/table/block
+predictions, every inner fit, candidate penalty, training inventory, parameter,
+feature/benchmark hold, exact cached coupling key and analytic output.
+The entire accepted predecessor packet is included, not just its metadata.
+No accepted solver fits or seed draws are rerun. No automatic UI/model
+promotion occurs; the existing live baseline and full prior downloads remain
+unchanged. These are source-frame prediction errors, not design confidence
+intervals, identified individual histories or measured staying home.
+
+Reproduce this **new experiment only**, using Python 3.9+ standard library:
+
+```
+python scripts/reproduce_adaptive_persistence.py \
+  --archive complete-analysis.zip --output reproduction.json
+```
+
+Its reproducer verifies every new and predecessor member, blocks network and
+external commands, runs the focused new tests, regenerates the entire new
+result and all query exports, and independently checks leakage, ridge normal
+equations, nested tuning, source holds, errors and complete coverage.
+It does not invoke the predecessor solver or seed simulation.
+
 ## Complete reproduction
 
 Install the project's `simulation` extra, or the packet's exact
