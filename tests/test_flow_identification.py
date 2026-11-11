@@ -1,4 +1,5 @@
 from decimal import Decimal as D
+import json
 import unittest
 
 from scripts import flow_identification as flow
@@ -81,6 +82,18 @@ class FlowIdentificationTests(unittest.TestCase):
         self.assertEqual(selected[1]["bounds"]["switching"]["lower_percent"], bounds["lower_percent"])
         self.assertNotIn("upper", selected[1]["bounds"]["switching"])
         self.assertTrue(selected[1]["unknown_other_is_opaque_X"])
+
+    def test_complete_query_bytes_survive_saved_json_round_trip(self):
+        rows, columns = list(map(D, (4, 2, 4))), list(map(D, (3, 1, 6)))
+        identity = dict(id="TX-house", state_code="TX", office="house")
+        case = dict(identity, case_id="TX-house|accepted_frame_1.0", frame_name="accepted_frame_1.0",
+            frame_units="10", unknown_other_is_opaque_X=True, categories=list("DRX"),
+            target_rows=list(map(str, rows)), target_columns=list(map(str, columns)),
+            metrics={key: flow.bounds(rows, columns, "DRX", key) for key in flow.METRICS})
+        result = dict(accepted_science_sha256="accepted",
+            decisions=[dict(identity, status="conditional_bounds_not_identified_histories")],
+            cases=[case])
+        self.assertEqual(flow.result_files(result), flow.result_files(json.loads(flow.encoded(result))))
 
 
 if __name__ == "__main__":

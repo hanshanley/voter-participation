@@ -238,7 +238,8 @@ def result_files(result):
             for category, count in zip(case["categories"], case["target_"+side]):
                 constraints.append(dict(identity, side=side, category=category, accounting_units=count,
                     native_candidate_count=category in "DRO", assumed_outside_margin=category in "NX"))
-        for metric, value in case["metrics"].items():
+        for metric in METRICS:
+            value = case["metrics"][metric]
             limits.append(dict(identity, metric=metric, **{key: v for key, v in value.items()
                 if key not in ("lower", "upper")},
                 lower_units=value["lower"]["value"] if value["lower"] else None,
