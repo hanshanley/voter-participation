@@ -1,0 +1,100 @@
+{
+  "assets": {
+    "checksums.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882452,
+      "bytes": 1517,
+      "sha256": "930c3e2fdd61f995296bec925363dbf6a5f942502e2045f2dec7aaefdd35d925",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882454,
+      "bytes": 53385,
+      "sha256": "8943fc1bf7ff07be11c4f847f4a31dc058f9fe696cc1c1c5a65ff44e897bb4d7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/complete-analysis.zip"
+    },
+    "complete-participant-profiles.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882450,
+      "bytes": 3646,
+      "sha256": "37e405f170f47098f712e7a7f2349ef7e4dcfbc51ae496c3830d83211bc7d2dd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/complete-participant-profiles.csv"
+    },
+    "complete-result.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882451,
+      "bytes": 137023,
+      "sha256": "3e588171dc20e25ad6970061aba2902e50dd40efc77b2e2ff1a378d648ea25f9",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/complete-result.json"
+    },
+    "complete-source-column-decisions.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882448,
+      "bytes": 14903,
+      "sha256": "0b752783b24f4936899a57afac7dbbda0dfdd1bfeb315960062b73500003d9f9",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/complete-source-column-decisions.csv"
+    },
+    "complete-state-group-decisions.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882477,
+      "bytes": 15253,
+      "sha256": "1471914d8c26246f01dd2ed5dd8257f59174c906a9b1b299ab105a15163a48ac",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/complete-state-group-decisions.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882476,
+      "bytes": 912,
+      "sha256": "525e2e7e1202c57c0ef47b7c01868055c42fc58abbeab0ef4f7f8def655aa9a3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882490,
+      "bytes": 912,
+      "sha256": "525e2e7e1202c57c0ef47b7c01868055c42fc58abbeab0ef4f7f8def655aa9a3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/fresh-reproduction-02.json"
+    },
+    "independent-verification.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882482,
+      "bytes": 449,
+      "sha256": "5de3f78adb2ce5ddc2f2e425b4142ec3c81d67fff8d492af3834374164a22829",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/independent-verification.json"
+    },
+    "manifest.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882483,
+      "bytes": 3498,
+      "sha256": "6c8492e9089496acef0d47bab3554790524155a12afe65f4abfa3e4a53527415",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/manifest.json"
+    },
+    "package-receipt.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882500,
+      "bytes": 1362,
+      "sha256": "47e14511e25ae133c5925fad8ee4921e9a097a49e25079862443036c49c85ec4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/package-receipt.json"
+    },
+    "summary.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735882502,
+      "bytes": 550,
+      "sha256": "bff2fceb06b40a69c6197781b6e71f28d1103a82bfd2656780beaae99649d232",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-mevp-state-profiles-20261111-01/summary.json"
+    }
+  },
+  "blocked_source_routes_retried": false,
+  "immutable": true,
+  "live_dataset_promoted": false,
+  "previous_joint_reductions_repeated": false,
+  "release_id": 441835842,
+  "scientific_source_commit": "006563f6acc5c7b4f227947a5796b107e90dd3e9",
+  "scientific_source_repository": "hanshanley/voter-participation",
+  "status": "passed_immutable_mevp_participation_science_publication",
+  "tag": "participation-mevp-state-profiles-20261111-01",
+  "verified_at_utc": "2026-11-11T14:57:08.858434+00:00",
+  "website_baseline_unchanged": "c1357ec35b911e54f6c0b5fdc3bb9b113880cecc",
+  "website_builds": 0
+}

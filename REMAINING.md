@@ -42,6 +42,37 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Direct MEVP state participant-history profiles are complete, research-only.**
+Scientific source **006563f** and immutable science **441835842**, tag
+`participation-mevp-state-profiles-20261111-01`, publish **11 direct state/group
+profiles across AZ/CA/FL/MI/TX**, five national references, all 51 source-column
+decisions and **663** newly selected numerical facts. The complete
+**255 state/DC-by-five-group query** explicitly retains **244 missing cells**;
+35 multistate/partisan context columns are not population profiles.
+Actual state columns in the already-held November 7 national crosstabs supplied
+the evidence, never national allocations. All six newly denied state-PDF and
+separate-release routes remain stopped: no retry, alternate client/cache/mirror,
+blocked-original recovery or repeated accepted acquisition/reduction.
+
+All **12 full release assets** are anonymously byte/hash verified. The complete
+**53,385-byte / 22-member** ZIP includes all permitted sufficient numerical
+inputs, methods/policy/access decisions, the whole accepted predecessor archive,
+code/tests and every full query/result. Seven tests, **1,962 independent checks**
+and two fresh warning-fatal network/external-command-blocked reproductions
+match all result/query bytes. Copyrighted originals/prose/HTML are not mirrored.
+Records: `data/participation-mevp-state-profiles/20261111-01/`.
+
+This source mixes reported early voters and certain Election Day intenders;
+first-November-general history is not first-ever voting, measured retention or
+observed 2026 turnout. Native group labels, raw N, 99/101 totals and signed
+residuals remain; Q2 experiences stay multiresponse, not an inferred union.
+Eligibility, deaths, migration, absence, individual retention and design
+intervals remain null. No local allocation, new race harmonization, model
+calibration or UI activation is qualified. Website **c1357ec**, catalog
+**a1e3cb15** and accepted simulations stay unchanged; no new website build.
+Do not repeat this bounded completed publication. Broader demographic transport,
+population participation and precinct/source-coverage gaps remain open.
+
 **2002 source points are integrated into the existing historical view, verified live.**
 Website **c1357ec**, sole Pages **43030652407**, main guard **43030652544** and
 artifact **13861735166** pass actual **996,321,829 payload / 998,912,000 tar

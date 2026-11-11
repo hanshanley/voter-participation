@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Latest source-defined 2026 participation history | [Direct MEVP state/group profiles](#2026-mevp-direct-state-participant-history-and-experiences) |
 | Latest deployed history view | [Separate 2002 source points](#2002-cps-points-in-the-existing-historical-view) |
 | Latest historical participation extension | [2002 CPS reported points](#2002-cps-reported-points-and-midterm-snapshot-comparisons) |
 | Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
@@ -30,6 +31,75 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 MEVP direct state participant history and experiences
+
+The already-held November 7 national crosstabs from the **BSP Research /
+African American Research Collaborative 2026 Midterm Election Voter Poll**
+contain actual state columns, not just national marginals. Their first panels
+now supply **11 direct state/group profiles**, five national group references,
+all **51 source-column decisions** and **663 independently checked numerical
+facts**. The complete **255 state/DC-by-five-group query** retains **244 missing
+combinations**; no national percentages are allocated to missing states.
+The 35 multistate/partisan context columns remain in the factual inventory,
+excluded from state/national profile selection.
+
+| Study-native group | Direct state columns (raw respondent N) |
+|---|---|
+| Latina/o | AZ 337; CA 421; FL 516; MI 241; TX 844 |
+| Asian American | CA 389; TX 283 |
+| White, non-Hispanic | MI 441; TX 448 |
+| African American | MI 314; TX 443 |
+| Native American | No explicit state columns in these held panels |
+
+These are source-defined participant/intender compositions, **not population
+turnout**. Screening includes reported early voters **and respondents certain
+they would vote on Election Day**; completed voting is not independently
+verified. The PDF field dates are October 19-November 2, while the held methods
+end November 3; both definitions remain visible. Q1 asks first **November
+general-election** history, not first-ever voting, first eligibility, measured
+retention or individual transitions. Its native bins are 2026, 2024, 2022 and
+2020-or-earlier; unoffered years are not silently added.
+
+Printed 99/101 totals, prior-bin sums and signed `100 - printed total` residuals
+remain literal. For example, the national Latina/o prior-bin sum is **84%**,
+not the 83% complement of the printed 17% first-2026 share. The -1-point residual
+is unresolved rounding/response, not an observed nonvoter class. Q2's eight
+experience responses remain **multiresponse**; no disjoint total, any-problem
+union or counts from N times percentages are inferred. Raw N and the minimum
+100-respondent diagnostic are not weighted population, effective N or precision
+certification. Whole-group margins do not qualify state-column intervals.
+State-versus-own-national differences are nested common-source descriptions,
+not independent replications. Study-native groups are not harmonized to CPS,
+CES or other survey race definitions; eligibility, deaths, migration, population
+turnout/absence, first-ever voting, individual retention and design intervals
+remain null. No live model calibration, local allocation or frontend activation.
+
+The newly declared AZ/FL/TX PDF routes and their three separate press-release
+routes each returned **HTTP403, 17 bytes**, SHA256
+`2938e9f1284180959e33ab1718d0793a72ff6e4cdb8108c34dcd14e69446de5c`.
+All six routes are stopped without retries, alternate clients, caches or mirrors.
+Discovery does not count as original acquisition. The state values above come
+only from distinct national originals already held on November 7; no blocked
+state original was recovered or reconstructed.
+
+Scientific source **006563f6acc5c7b4f227947a5796b107e90dd3e9** and immutable
+science **441835842**, tag `participation-mevp-state-profiles-20261111-01`,
+publish all **12 full assets**, anonymously byte/hash verified. The
+**53,385-byte / 22-member** complete ZIP has SHA256
+`8943fc1bf7ff07be11c4f847f4a31dc058f9fe696cc1c1c5a65ff44e897bb4d7`.
+It includes every permitted sufficient numerical fact, methods/policy/access
+decision, the entire accepted predecessor science ZIP, maintained code/tests,
+full results and every query. Copyrighted originals/prose/HTML/session headers
+are not redistributed. Seven focused tests, **1,962 independent checks** and
+two fresh warning-fatal network/external-command-blocked reproductions pass
+every full result/query byte. Original acquisition and earlier joint reductions
+were not repeated. The live website **c1357ec**, catalog **a1e3cb15** and accepted
+model outputs are unchanged; no website build was needed.
+
+Inputs: `data/participation-mevp-state-participation/20261111-01/`.
+Results/publication/acceptance:
+`data/participation-mevp-state-profiles/20261111-01/`.
 
 ## 2002 CPS points in the existing historical view
 
