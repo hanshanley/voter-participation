@@ -27,6 +27,53 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Canonical native count/reference bindings and scoped coverage
+
+The common native reader is **verified live at e588860**. It separates count
+observations from fixed reference bytes across **11 mapped layers**, **134
+county/local frame bindings**, **eight municipal bindings** and **five complete
+reporting-only tables**. The **14,470** canonical appearances retain every
+previous source field, clock, zero, unknown, conflict, withholding and geographic
+qualification. They are non-additive appearances, not people. Old embedded
+counts are ignored; count-only updates can reuse reference hashes and coordinates.
+The original accepted source-specific qualification code supplies the frozen
+compiler oracle, not the active browser qualification chain. No new native
+acquisition, topology reduction, source repair or geographic approval occurred.
+
+Immutable release **441129848**, tag `participation-native-bindings-20261111-02`,
+has its entire **115,221,556-byte / 191-member** ZIP anonymously byte/hash
+verified. It includes every sufficient held input, full reference bodies,
+all queries, original contract/oracle, compiler/tests and offline reproduction.
+Two fresh network-blocked reproductions pass the original Python contract,
+all 14,470 records and all **30** runtime files. Science SHA:
+`6f92f5a81b54b40189b40dace02de481a3e05912cd8bd10cb9bcfafbff6d960d`.
+
+Dataset version
+`e90970b8c6cdcddbdbd23926b6e57f818bb49952ae32c784603dda6293143f24`,
+staged **ec906850** / catalog **414734fe**, is independently public with all
+31 immutable files and catalog verified. Prior datasets and protected source /
+canonical HEADs/indexes, main and Pages IDs remained unchanged: **zero builds**.
+The code was separately activated once. Actual Pages **42939815222** /
+guard **42939815230** / artifact **13820547304** pass **996,277,012 payload /
+998,860,800 tar bytes**, 61 exact unqueried assets and 436 old downloads.
+
+All **176** production native cases pass, including every binding/table, all
+11 maps, phone/desktop scope coverage and explicit fault isolation. All 306
+count bindings / 51 selectors, 66 resident, 59 geography, 24 map and 32 layout
+cases pass; every field of all 113 `20261110-02` model records remains exact.
+The final model-only check resumed after the acceptance harness initially
+selected its older expected dataset; no valid deployment or completed checks
+were repeated. The full legacy site validator's unrelated Methods selector
+assertion remains a confirmed pre-existing limitation, not a claimed pass.
+Records: `data/participation-access/20261111-native-bindings-02/`.
+
+The coverage disclosure stays closed by default, full-width below resident
+context, never a sidebar list. It follows actual selected frame inventories;
+table-only sources do not imply approved precinct geography. Unknown, withheld,
+missing, awaiting-publication and rejected cases remain distinct. Historical
+observations are outside this 2026 catalog, not falsely marked missing.
+Historical, candidate-result and survey readers remain separate.
+
 ## Canonical 2026 state/provider and county/local count migration
 
 The one-time migration uses the complete accepted aggregate exports, not a new
@@ -40,9 +87,8 @@ counts** remain distinct. These are non-additive source appearances, not people.
 All **306** original state/view selections match every field in the actual
 accepted reader. The original frozen Python contract accepts every record;
 two fresh network-blocked reproductions exactly rebuild all **53** runtime files.
-The source-specific precinct counts still embedded in reference geometry remain
-a separate unfinished migration; no new native or geographic qualification is
-claimed.
+The original record scoped this increment separately from the native migration,
+now completed above. No new native or geographic qualification is claimed.
 
 Immutable release **441081257**, tag `participation-count-migration-20261110-01`,
 has all **four** complete assets anonymously byte/hash verified. The
@@ -72,8 +118,8 @@ Desktop/phone images were inspected. One transient public-shard fetch failed;
 only unfinished browser acceptance resumed, using bounded transport-only retries
 from **41887bf**, without rebuilding or substituting data. Final records:
 `data/participation-access/20261110-count-catalog-01/`.
-Remaining source-specific county/precinct geographic qualification and embedded
-precinct counts, coverage and separately qualified gaps are still unfinished.
+The dependent native count/reference migration and coverage are completed above;
+separately qualified geographic/demographic gaps remain unfinished.
 
 ## Reported same-office swing correction
 
@@ -181,7 +227,7 @@ production were accepted; no competing rebuild was queued and the other
 publication's workflow changes were preserved. Full records:
 `data/participation-access/20261110-swing-maps-01/`.
 
-### Conditional local resident context remains unpublished
+### Conditional local resident context: accepted native-point reduction
 
 The corrected common source **d9f1c09** applies local ACS cells to **6,847**
 valid references across MN/NM and the supported portions of MI/IN/AK/NH/MA;

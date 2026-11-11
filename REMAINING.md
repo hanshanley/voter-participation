@@ -42,7 +42,52 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
-**Current increment: common state/provider and county/local count reader.**
+**Completed and verified live: common native count/reference reader and coverage.**
+Website **e588860**, Pages **42939815222**, main guard **42939815230** and
+artifact **13820547304** pass **996,277,012 payload / 998,860,800 tar bytes**,
+61 exact unqueried production assets and all 436 existing complete downloads.
+All **176** actual-public native cases pass: 11 mapped layers, five full
+reporting tables, 134 county/local and eight municipal bindings, both screen
+widths, corruption rejection, cache recovery and late-response isolation.
+The 306 count bindings / all 51 selectors, 66 resident, 59 geography, 24 map,
+32 layout cases and every field of all 113 reviewed models also pass.
+The last model assertion initially selected the older expected dataset;
+only that assertion resumed against the reviewed `20261110-02` data. No
+deployment, data publication or completed browser checks were repeated.
+
+Immutable science **441129848**, tag `participation-native-bindings-20261111-02`,
+contains all **14,470** canonical reference/count and reporting-table queries,
+every sufficient held input, unchanged references, original qualification
+oracle, original contract and offline reproduction: **115,221,556 bytes /
+191 members**. Two fresh network-blocked reproductions pass all 30 runtime
+files and the original Python contract. Native version **e909**, staged
+**ec906850** / catalog **414734fe**, has all 31 immutable files and catalog
+verified. Prior datasets and protected HEADs/indexes/main/Pages IDs were
+unchanged during activation: **zero builds for data publication**.
+No native counts, reference coordinates, rate decisions or source scopes
+were repaired or newly approved. Historical, candidate and survey readers
+remain separate. Full records: `data/participation-access/20261111-native-bindings-02/`.
+
+The active count-runtime migration and default-closed, full-width coverage
+disclosure are complete, not whole-project completion. Coverage follows the
+selected year/mode/geography, distinguishes table-only sources and missing /
+awaiting / rejected frames, and fixes the Minnesota county badge to 87.
+
+**Current work: resident context for the remaining mapped reference families.**
+The first **448 Idaho / 710 Virginia** profiles pass **922,198** independent
+native-point and Fraction checks across **245,370** complete block decisions.
+The held source audits also distinguish **159 North Dakota / 139 D.C.**
+full, unrepaired units from **179 / five** clipped or repair-affected reference
+holds. Those 298 profiles are computed and independently checked separately.
+These new profiles are **not yet packaged, published or live**.
+The accepted 3,144 counties and 6,847 local profiles are unchanged; their
+successful spatial reductions are not repeated. Finish complete reproducible
+science, catalog publication and exact hash-gated reader integration for this
+extension. Preserve explicit holds rather than treating clipped display areas
+as demographics of entire reporting units. The transition simulation remains
+deferred until the agreed existing integration is complete.
+
+**Previously completed: common state/provider and county/local count reader.**
 Source **c4ccdf4** replaces the active current snapshot/local-count fetches and
 build-time state-importer chain with the common immutable catalog and frozen
 accepted snapshots. The complete **24,827-source-appearance** dataset preserves
@@ -69,13 +114,9 @@ field of all 113 models pass. Production desktop/phone images were inspected.
 A transient public-shard fetch was handled by resuming only unfinished browser
 checks with bounded transport-only retries; the accepted build/data were not
 repeated or replaced. Final records: `data/participation-access/20261110-count-catalog-01/`.
-The bounded increment is separate from the **still-open parent runtime**:
-next decouple the native precinct count properties embedded in geometry and
-replace the remaining county/precinct geographic qualification branches, preserving every reference
-and source hold. Coverage must use the current selected contract frame rather
-than stale legacy audit badges (for example, the old 75-county Minnesota button
-beside the actual 87 county choices). Then finish the dashboard and separately qualified gaps. This is
-not completion of the common runtime or whole project; simulation remains deferred.
+The original records preserve this increment's then-unfinished native migration.
+That dependent native migration and coverage are now completed above; separately
+qualified demographic/data gaps remain. This is not whole-project completion.
 
 **Current override: one selectable map, corrected swing accounting and resident context.**
 The original two maps showed modeled contributions to a recalled-presidential
@@ -138,9 +179,9 @@ The production desktop/phone demographic screenshots were inspected.
 
 The canonical intake **backend component** is complete at **3814854**: all 35
 tests/both source checks, full public native intake packet and exact 4,192-row
-pilot/incremental no-op are recorded. The active legacy count-reader chain is
-**not** replaced. Next finish that migration and the coverage dashboard,
-and keep pursuing separately qualified geographic/data gaps. Do not restart
+pilot/incremental no-op are recorded. The active count-reader migration and coverage dashboard were subsequently
+completed at **e588860**, as recorded above. Continue the separately qualified
+geographic/data gaps. Do not restart
 completed acquisitions, spatial reductions, packages or accepted UI checks.
 The user's demographic/geographic
 keep/switch/nonparticipation simulation, using `pre1870_pop` as a methods
@@ -195,8 +236,9 @@ voter characteristics or group turnout. Start from official 2020–2024 ACS
 five-year public summary files and approved geography. Preserve native MOEs,
 source years and missingness; precinct estimates need qualified crosswalks,
 not state allocations or averages of median incomes.
-County context is now **published independently**, not yet shown by the website
-reader. Immutable release **440794066** has all nine anonymously verified assets.
+The earlier county-only context was **published independently**; its later
+website reader and same-dataset update are accepted above. Immutable release
+**440794066** has all nine anonymously verified assets.
 Its **159,566,534-byte / 142-member** complete packet contains all five full ACS
 originals (462,776,851 bytes), the complete Gazetteer original, all 51 unchanged
 approved county references, native/runtime queries and maintained code/tests.
@@ -209,9 +251,8 @@ The shared publisher actually activated dataset version **496a4245fae2** on
 the separate `participation-data` ref, catalog commit **f120331a**.
 All 53 immutable files and the catalog were checked anonymously; website main,
 the source worktree HEAD/index and the Pages run list were unchanged.
-This proves one real data-only publication, **not** an active website reader
-or a subsequent update of the same dataset. Complete the generic reader,
-coverage dashboard and actual subsequent-update acceptance.
+That milestone proved the first data-only publication. The later generic
+reader, actual subsequent update and coverage are now completed above.
 
 Conditional context now covers 6,847 valid held references across MN, NM,
 MI, IN, AK, NH and MA; one invalid Michigan reference remains held. A shared-edge
@@ -222,16 +263,17 @@ Independent scalar native-coordinate membership and exact-Fraction verification
 passes **3,884,575 checks**, every **933,012** block decision, all 6,847 valid
 reference profiles and the one Michigan hold. Prior outputs are preserved,
 no originals or geometries reacquired, no source geometry repaired.
-These new precinct estimates still need complete packages, blocked-network
-reproduction and publication before any website activation.
+Their later complete packages, blocked-network reproduction, publication and
+actual website activation are accepted above; do not repeat that seven-family
+work for the new matched-reference extension.
 The native small-area index now retains **239,742 block groups** across all
 51 jurisdictions, with exactly matching identities in all five ACS tables.
 Eight focused tests pass. A separate complete public Census 2020 block
 query holds **8,132,968 blocks**, population 331,449,281 and 140,498,736
 housing units, with all native count controls and observed zeros retained.
 These are population/housing proxy inputs, not voter characteristics; housing
-units are not occupied households. Precinct verification/publication and
-demographic interface integration remain open.
+units are not occupied households. The accepted seven-family verification/publication and demographic reader are
+complete; the new matched-reference extension remains separate.
 
 **Continuing architecture priority: replace active one-off intake.**
 Use one validated source contract, direct adapters, hash-based incremental
