@@ -42,6 +42,48 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Louisiana source-native early group compositions are complete, research-only.**
+Scientific source **9ba392d**, immutable science **442055936**, tag
+`participation-louisiana-early-groups-20261111-01`, publish the full official
+two-page report: **64 parishes plus separate state parent / 1,040 cells**.
+Native **VOTES 536,190 = INPER 448,588 + ABS 87,602**; these are source-defined
+early/absentee-report votes, not full-election ballots or unique people.
+Race **328,590 WHITE / 184,348 BLACK / 23,252 OTHER** and sex
+**224,376 MALE / 311,536 FEMALE** stay literal. Preserve the **278-unit
+arithmetic sex residual**, all 37 parish sex residuals and 21 actual zeros.
+No renormalization or invented sex/nonvoter category.
+
+All **455 own-frame race/sex/method compositions / 260 margin accounts /
+130 opaque-subset decisions / 16 same-report parent controls / 51 state/DC
+source-coverage decisions** are complete. All sixteen parish-column sums
+equal printed state parents; parent and children are not additional votes or
+independent samples. Fifty states not supplied by this state source stay null.
+No registered denominator, group turnout, full-election ballot total, unique
+person, N/CI, joint/intersection/union, observed staying home or racial
+harmonization is inferred. ABS is not normalized into mail-returned; parish
+codes are not FIPS. Party fields remain accounting, not voting behavior.
+
+All **16 full release assets** are anonymously byte/hash verified. The complete
+**262,124-byte / 27-member** ZIP includes the full **157,893-byte original PDF**,
+cached text, all sufficient facts/two-engine evidence/policy/provenance/holds,
+code/tests and full **910,047-byte result/every query**. Seven tests,
+**8,072 independent checks** and two fresh warning-fatal network/external-
+command-blocked reproductions pass every output byte. The native C reader
+failed; the installed pure-Python pypdf independent reader verified all
+1,040 cells without source alteration. No successful older acquisition or
+reduction repeated.
+Records: `data/participation-louisiana-early-groups/20261111-01/`.
+
+Print **November 10, 2026, 3:10:06 AM** has unknown timezone; PDF creation
+offset stays separate. Filter **January 1, 1900-November 9, 2026** is not an
+observed voting period. No finality/certification claim. Website **84ce048**,
+catalog **a1e3cb15** and models remain unchanged; zero new builds/data
+activation. Method/frame/reference qualification remains before any new map.
+The distinct Michigan historical PDF's new403/537byte hold stays stopped
+without alternate-client/cache/mirror or old index/dashboard retries.
+Do not repeat this completed scientific increment; broader source, demographic,
+population-frame and precinct gaps remain open.
+
 **1998 voting points are integrated into the existing historical view, verified live.**
 Website **84ce048**, sole Pages **43063989329**, main guard **43063989413** and
 artifact **13874379278** pass actual **996,331,113 payload / 998,922,240 tar

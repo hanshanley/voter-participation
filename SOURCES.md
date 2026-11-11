@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Latest source-native 2026 group counts | [Louisiana early/absentee compositions](#2026-louisiana-source-native-early-group-counts-and-compositions) |
 | Latest source-defined 2026 participation history | [Direct MEVP state/group profiles](#2026-mevp-direct-state-participant-history-and-experiences) |
 | Latest deployed history view | [Separate 1998 and 2002 source points](#1998-points-in-the-existing-historical-view) |
 | Latest historical participation extension | [1998 native state points and midterm snapshots](#1998-cps-native-state-demographic-points-and-midterm-snapshots) |
@@ -31,6 +32,74 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Louisiana source-native early group counts and compositions
+
+The newly acquired official **Statewide Early Voting Statistical Report**
+supplies **64 parish rows plus a separate state parent / 1,040 literal count
+cells** across two full pages. Native **VOTES 536,190 = INPER 448,588 +
+ABS 87,602**. These are counts in this source-defined early/absentee report,
+**not complete-election ballots or independently verified unique people**.
+The source's ABS is not relabeled into mail-returned activity, and source
+parish codes 01-64 are not inferred FIPS or approved map references.
+
+The state parent's native race margins are **WHITE 328,590 / BLACK 184,348 /
+OTHER 23,252**. Native sex margins **MALE 224,376 / FEMALE 311,536** leave
+**278 arithmetic units** outside those two printed fields. All **37 parish
+sex residuals** and **21 literal zero count cells** remain. The residual is
+not normalized away or identified as a new sex/nonvoter category. Race,
+affiliation and INPER/ABS margins sum to native VOTES; all **16 same-report
+parish-column sums** equal their printed state parents. Parent and children
+are repeated margins, not 65 independent populations or additive votes.
+
+All **455 race/sex/native-method composition rows**, **260 margin accounts**,
+**130 opaque-subset decisions**, 16 parent controls and **51 state/DC coverage
+decisions** are complete. Fifty states are not supplied by this Louisiana
+source, not zero or globally absent. Composition percentages use **own native
+VOTES**, not a classified-sex subtotal or registrations. Exact decimal shares
+are arithmetic, not sampling precision or confidence intervals.
+Registration denominators, group turnout, full-election ballots, unique
+people, sampling N, CIs, race-sex-method joints, measured staying home and
+eligibility/deaths/migration remain null. Native racial labels are not CPS,
+SSRS or resident-profile aliases. Party fields are registration accounting,
+not choices; no partisan-choice shares are derived. UOCAVA IN/OUT and ASST D/I
+stay literal without inferred definitions, disjoint unions or intersections.
+
+The report labels election **November 3, 2026**, query begin **January 1, 1900**,
+query end **November 9, 2026**, and print **November 10, 2026, 3:10:06 AM**.
+Printed timezone is unknown. The PDF's separate creation metadata is not
+used to fill that clock's timezone. The 1900 filter bound is not an observed
+voting start; no finality, certification or complete-count claim follows.
+
+Scientific source **9ba392d92277933786baeab6755c7cdddfaafe71** and immutable
+science **442055936**, tag `participation-louisiana-early-groups-20261111-01`,
+publish all **16 full assets**, anonymously byte/hash verified. The
+**262,124-byte / 27-member** ZIP has SHA256
+`f788b1d388d52efbba78121513cd16c82445c2ad4acd89fb8f9bb44379708bfe`.
+It includes the complete **157,893-byte** original PDF, full cached text,
+all native facts and independent pypdf-coordinate evidence, policy/provenance/
+access holds, maintained code/tests, the **910,047-byte** result and every
+complete query. This is a standalone new source, not a replacement or
+repackaging of older accepted science. Publisher HTML/apps/session headers,
+private voter/survey records and identifiers are not included.
+
+All **1,040 original cells** match a second PDF engine. Seven focused tests,
+**8,072 independent checks** and two fresh warning-fatal network/external-
+command-blocked reproductions pass every full result/query byte. The installed
+native C reader failed; the independent audit succeeded with the already
+installed pure-Python pypdf reader, without source changes or a native-data
+shortcut. No earlier successful acquisition or scientific reduction was repeated.
+Inputs and records: `data/participation-louisiana-early-groups/20261111-01/`.
+Website **84ce048**, catalog **a1e3cb15** and accepted models are unchanged;
+zero new builds or data activation. Frame/method/reference qualification is
+still required before any mapped integration.
+
+The separately discovered Michigan general-election registration/turnout PDF
+returned **HTTP403 / 537 bytes**, SHA256
+`e4191d850748db7a004ddfaadfafd6fab7bb89d5276065b7bde803d8816db5f1`.
+It stays stopped with no alternate client, cache, mirror or web-snippet counts.
+The older Michigan statistics index/dashboard were not retried, and Louisiana's
+unresolved registration hostname was not guessed or retried.
 
 ## 1998 points in the existing historical view
 
