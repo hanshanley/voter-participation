@@ -7085,37 +7085,37 @@
   },
   "deployment": "Not authorized; local-only.",
   "current_snapshot": {
-    "snapshot_id": "20261111T005048Z",
+    "snapshot_id": "20261111T081652Z",
     "election_date": "2026-11-03",
     "status": "preliminary",
-    "retrieved_at": "2026-11-11T00:50:50.932437+00:00",
+    "retrieved_at": "2026-11-11T08:16:53.746511+00:00",
     "files": [
       {
-        "path": "current/20261111T005048Z/complete-snapshot.zip",
-        "bytes": 1161456,
-        "sha256": "f407247d93842de6a01bbf6b92129e6eeb903b81ad7adbd3dbe82eed4a466522"
+        "path": "current/20261111T081652Z/complete-snapshot.zip",
+        "bytes": 1161447,
+        "sha256": "752daf980d40e169df82d38410af16d4b14bbdfce16712f8afe7333119672c1e"
       },
       {
-        "path": "current/20261111T005048Z/demographics.csv",
+        "path": "current/20261111T081652Z/demographics.csv",
         "bytes": 405550,
         "sha256": "9056d3128a03bd2b2ee9ff2739c8c1be6a2a23fd76cf207b4d86f8413d2a340d"
       },
       {
-        "path": "current/20261111T005048Z/reporting.csv",
+        "path": "current/20261111T081652Z/reporting.csv",
         "bytes": 7570,
-        "sha256": "468bec332ad147c3b66edbb229e02e6bccccd485ef6a5e9f3edc074b98add648"
+        "sha256": "58830fb26cc4abed63ce88eff4cf591519da4b9cf71d608d4e675aee1d3d8118"
       },
       {
-        "path": "current/20261111T005048Z/snapshot.json",
+        "path": "current/20261111T081652Z/snapshot.json",
         "bytes": 1708804,
-        "sha256": "32d7aea6f0c42ff09eacf16883aff6d61c59c0b0025155c69deeb5c7e16b0bf0"
+        "sha256": "4349114d9b291c74419cbc2759deb52a771654623d5f154007d71391d035b564"
       }
     ]
   },
   "nationwide_snapshot": {
-    "snapshot_id": "20261111T005053Z",
+    "snapshot_id": "20261111T081656Z",
     "election_date": "2026-11-03",
-    "retrieved_at": "2026-11-11T00:50:53.156923+00:00",
+    "retrieved_at": "2026-11-11T08:16:56.720473+00:00",
     "status": "preliminary",
     "audit": {
       "jurisdictions_assessed": 51,
@@ -7128,34 +7128,34 @@
     },
     "files": [
       {
-        "path": "nationwide/20261111T005053Z/complete-snapshot.zip",
-        "bytes": 428278,
-        "sha256": "6e764f5b71fc39efbeaddcf073350e3622f12ba6bfb4bf300925d3dc16cda69c"
+        "path": "nationwide/20261111T081656Z/complete-snapshot.zip",
+        "bytes": 427992,
+        "sha256": "4fc9f11c2beceecda3eeae2e0fd2815b0d351a39123050724ac5b7b18b9b5ed8"
       },
       {
-        "path": "nationwide/20261111T005053Z/coverage.csv",
+        "path": "nationwide/20261111T081656Z/coverage.csv",
         "bytes": 6999,
         "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
       },
       {
-        "path": "nationwide/20261111T005053Z/demographics.csv",
+        "path": "nationwide/20261111T081656Z/demographics.csv",
         "bytes": 31512,
-        "sha256": "18726666ce8f3cf4f91d58c9091f764606209a684070ec65c203ffda35d092a5"
+        "sha256": "470ad7d1c447f7fa20c58e1a6d95b1829999ea8065ddfceef03a814d300d5a78"
       },
       {
-        "path": "nationwide/20261111T005053Z/early_voting.csv",
+        "path": "nationwide/20261111T081656Z/early_voting.csv",
         "bytes": 1197602,
-        "sha256": "bcaa58c81d6f92a4ddca21c0104415d722ddc2696180e3a0bc2ba01195026178"
+        "sha256": "66178f7ff9858c481f07a0521b4cd272b5da51d3b3eee335e715f55b3b786bd3"
       },
       {
-        "path": "nationwide/20261111T005053Z/reporting.csv",
-        "bytes": 1171,
-        "sha256": "e9f5e3cdcd53ef3752f3d4ccfcddfaed901385c3d94bb15e3bc8f96bb731b5f0"
+        "path": "nationwide/20261111T081656Z/reporting.csv",
+        "bytes": 1170,
+        "sha256": "6a1fcae08d0d0bc67058e5b0b8fe1a2f3e954f16d833166e95fd88f2b57e5b1e"
       },
       {
-        "path": "nationwide/20261111T005053Z/snapshot.json",
-        "bytes": 4197961,
-        "sha256": "688d71b727a61aebcff8e8f61826c4fc03a8205b43c45dda2628b3d833a94419"
+        "path": "nationwide/20261111T081656Z/snapshot.json",
+        "bytes": 4197959,
+        "sha256": "084b43db0fef98bc9ac10a6176f3266f07ee5f4558a8fe553f025a9c9a4d48ec"
       }
     ]
   },
