@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Latest local integration | [Minnesota complete statistics](#2026-minnesota-complete-native-statistics), [Nevada county snapshots](#2026-nevada-distinct-county-participation-snapshots), [source-mode frame review](#2026-local-source-mode-frame-review), [Alabama county counts](#2026-alabama-native-county-ballots-cast), [earlier Minnesota follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
@@ -26,6 +27,60 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## Demographic and geographic adaptive persistence: negative result
+
+The new cached-input experiment tests five fixed candidate models of gross
+switching: global persistence, modeled-nonvoter share, nonvoter plus age,
+nonvoter plus rurality, and the primary nonvoter-plus-age-plus-rurality model.
+Age is the disclosed 30-49 minus 65+ modeled-nonvoter contrast; rurality is the
+disclosed rural-county minus urban-county contrast. Neither is an observed
+individual history, administrative turnout or a demographic party association.
+The complete official Census region PDF and source pin are retained.
+
+All offices for each held-out state are excluded together. Nested training-only
+state tuning operates inside 39 state and four Census-region outer holdouts,
+using penalties 0.1/1/10/100 and at least eight eligible training states.
+The **215 outer folds / 550 model-table-block predictions** retain every inner
+fit, parameter, candidate score, training inventory and exact cached analytic
+output. All 55 original current-voter tables in 39 states remain the benchmark;
+they are not 550 independent source observations. No original entropy fit or
+seed simulation is repeated and no partisan direction/return count is fitted.
+
+**The primary demographic/geographic candidate does not improve the baseline.**
+Its table-weighted MAE ties the global model at **1.386175 pp** on state holdouts
+and worsens to **1.403362 pp** on region holdouts. State-balanced MAE ties at
+**1.383259 pp** and worsens to **1.407497 pp**, respectively. Tuning uses
+state-balanced squared error; both error definitions are included in full.
+Only **14/39** benchmark states jointly disclose both contrasts. The primary
+state test changes no selected grid factor; 25 states use missing-feature
+fallback. Region holdouts have six adaptive states, 16 insufficient-training
+fallbacks and 17 missing-feature fallbacks; one selected factor changes.
+Sparse features and common-source dependencies do not establish that
+demographic effects are absent or certify population/locality transport.
+
+Research source **d50f987** publishes the maintained fitter, independent
+verifier, complete-query packager/reproducer, tests and region inputs.
+Immutable science **441510341**, tag
+`participation-adaptive-persistence-20261111-01`, has all **12 full assets**
+anonymously byte/hash verified. Its **12,593,287-byte / 24-member** complete
+ZIP includes the **entire** accepted 20-member predecessor archive, all
+**29,924,107 bytes** of new results, every permitted sufficient input, code,
+tests, query, feature/benchmark hold and exact reproduction. Archive SHA:
+`c0236d56211032c8f7fdfe6f84d0bb60ea0bafb2d0df2ab16fad3e10d4f03992`.
+Separate full CSVs contain 550 predictions, 78 feature decisions, 51 benchmark
+decisions and 215 outer fits. Every inner fit remains in the full JSON.
+Nine focused tests, **311,478 independent checks / 13,943 unique fits**, and
+two fresh warning-fatal network/external-command-blocked reproductions pass
+all result/query bytes and every predecessor member.
+
+**Keep the existing live model.** There is no automatic model/UI promotion,
+new precinct/county transition estimate, observed-staying-home claim, data
+activation or website build. The completed map/interface audit remains live
+at website **78df729**, with all 113 models and prior complete downloads
+unchanged. See [the full method](docs/TRANSITION_SIMULATION.md#demographic-and-geographic-adaptive-persistence-experiment)
+and [complete downloads](docs/DATA.md). Numerical/publication records:
+`data/participation-model-validation/20261111-adaptive-persistence/`.
 
 ## New Jersey: complete contextual county map bindings
 

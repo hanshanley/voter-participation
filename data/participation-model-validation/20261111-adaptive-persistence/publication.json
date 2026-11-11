@@ -1,0 +1,198 @@
+{
+  "accepted_couplings_or_seed_draws_rerun": false,
+  "accepted_fits_or_seeds_repeated": false,
+  "assets": {
+    "checksums.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003072,
+      "bytes": 1336,
+      "sha256": "a36d5b4888f63b2ee9c9f3d40b075785686caf4488793b89246e88521a5d67d5",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003001,
+      "bytes": 12593287,
+      "sha256": "c0236d56211032c8f7fdfe6f84d0bb60ea0bafb2d0df2ab16fad3e10d4f03992",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/complete-analysis.zip"
+    },
+    "complete-benchmark-decisions.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003031,
+      "bytes": 2298,
+      "sha256": "de25f86cc5e0ab6e482ce8ffb19d3207a218dba3c0f172b0566cc89dd848b2ea",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/complete-benchmark-decisions.csv"
+    },
+    "complete-feature-availability.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003029,
+      "bytes": 20471,
+      "sha256": "33cb71bbbabae9382b58b7f10e93cf6009a2d09adf3013f066bd7f07789c1438",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/complete-feature-availability.csv"
+    },
+    "complete-heldout-predictions.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003027,
+      "bytes": 379069,
+      "sha256": "57a3eac8116da6d3ff247b8eaa6793947542911ab970153a7ee52032e0761513",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/complete-heldout-predictions.csv"
+    },
+    "complete-outer-fold-selections.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003059,
+      "bytes": 142588,
+      "sha256": "573f4c3e3df1176e32a46746d0870f01adf61d340e88054d7b62a22a86798652",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/complete-outer-fold-selections.csv"
+    },
+    "complete-results.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003000,
+      "bytes": 29924107,
+      "sha256": "8d578eca2c144ec0cfb691166530e578acd4549afa3de2756ab183366f224a54",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/complete-results.json"
+    },
+    "factor-coverage.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735002999,
+      "bytes": 1657,
+      "sha256": "61e356e6841b1e7829e80b7cd9a699dd91f55ca17806e1f25aee4cffbbd4fa5b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/factor-coverage.json"
+    },
+    "independent-verification.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003005,
+      "bytes": 360,
+      "sha256": "84582cbb808509d1a1c12efecbd6a67fffda8916e476b0f8b998d799974f053a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/independent-verification.json"
+    },
+    "metrics.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003003,
+      "bytes": 2051,
+      "sha256": "452e3787ab8c84f006cfc67ac127fd7edb39d48404a0842094f0703305665f6f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/metrics.json"
+    },
+    "offline-reproduction-01.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003068,
+      "bytes": 475,
+      "sha256": "c7bedebe70dc1c8e503935e6c3f9c5457495e84296572d99dd1b2484b34334e6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/offline-reproduction-01.json"
+    },
+    "offline-reproduction-02.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 735003063,
+      "bytes": 475,
+      "sha256": "c7bedebe70dc1c8e503935e6c3f9c5457495e84296572d99dd1b2484b34334e6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-adaptive-persistence-20261111-01/offline-reproduction-02.json"
+    }
+  },
+  "authenticated_draft_full_asset_verification": {
+    "assets": {
+      "checksums.json": {
+        "asset_id": 735003072,
+        "bytes": 1336,
+        "sha256": "a36d5b4888f63b2ee9c9f3d40b075785686caf4488793b89246e88521a5d67d5"
+      },
+      "complete-analysis.zip": {
+        "asset_id": 735003001,
+        "bytes": 12593287,
+        "sha256": "c0236d56211032c8f7fdfe6f84d0bb60ea0bafb2d0df2ab16fad3e10d4f03992"
+      },
+      "complete-benchmark-decisions.csv": {
+        "asset_id": 735003031,
+        "bytes": 2298,
+        "sha256": "de25f86cc5e0ab6e482ce8ffb19d3207a218dba3c0f172b0566cc89dd848b2ea"
+      },
+      "complete-feature-availability.csv": {
+        "asset_id": 735003029,
+        "bytes": 20471,
+        "sha256": "33cb71bbbabae9382b58b7f10e93cf6009a2d09adf3013f066bd7f07789c1438"
+      },
+      "complete-heldout-predictions.csv": {
+        "asset_id": 735003027,
+        "bytes": 379069,
+        "sha256": "57a3eac8116da6d3ff247b8eaa6793947542911ab970153a7ee52032e0761513"
+      },
+      "complete-outer-fold-selections.csv": {
+        "asset_id": 735003059,
+        "bytes": 142588,
+        "sha256": "573f4c3e3df1176e32a46746d0870f01adf61d340e88054d7b62a22a86798652"
+      },
+      "complete-results.json": {
+        "asset_id": 735003000,
+        "bytes": 29924107,
+        "sha256": "8d578eca2c144ec0cfb691166530e578acd4549afa3de2756ab183366f224a54"
+      },
+      "factor-coverage.json": {
+        "asset_id": 735002999,
+        "bytes": 1657,
+        "sha256": "61e356e6841b1e7829e80b7cd9a699dd91f55ca17806e1f25aee4cffbbd4fa5b"
+      },
+      "independent-verification.json": {
+        "asset_id": 735003005,
+        "bytes": 360,
+        "sha256": "84582cbb808509d1a1c12efecbd6a67fffda8916e476b0f8b998d799974f053a"
+      },
+      "metrics.json": {
+        "asset_id": 735003003,
+        "bytes": 2051,
+        "sha256": "452e3787ab8c84f006cfc67ac127fd7edb39d48404a0842094f0703305665f6f"
+      },
+      "offline-reproduction-01.json": {
+        "asset_id": 735003068,
+        "bytes": 475,
+        "sha256": "c7bedebe70dc1c8e503935e6c3f9c5457495e84296572d99dd1b2484b34334e6"
+      },
+      "offline-reproduction-02.json": {
+        "asset_id": 735003063,
+        "bytes": 475,
+        "sha256": "c7bedebe70dc1c8e503935e6c3f9c5457495e84296572d99dd1b2484b34334e6"
+      }
+    },
+    "release_id": 441510341,
+    "status": "passed_all_draft_full_asset_bytes",
+    "tag": "participation-adaptive-persistence-20261111-01"
+  },
+  "complete_packet_members": 24,
+  "earlier_science_and_downloads_preserved": true,
+  "full_predecessor_packet_included": true,
+  "full_result_bytes": 29924107,
+  "immutable": true,
+  "live_model_promoted": false,
+  "offline_reproductions": [
+    {
+      "archive_sha256": "c0236d56211032c8f7fdfe6f84d0bb60ea0bafb2d0df2ab16fad3e10d4f03992",
+      "focused_tests": 9,
+      "full_predecessor_members_verified": 20,
+      "full_result_and_all_query_export_bytes_identical": true,
+      "independent_checks": 311478,
+      "network_and_external_commands_blocked": true,
+      "numerical_warnings_fatal": true,
+      "original_entropy_fits_or_seed_draws_repeated": false,
+      "pinned_members": 23,
+      "status": "passed_complete_adaptive_offline_reproduction"
+    },
+    {
+      "archive_sha256": "c0236d56211032c8f7fdfe6f84d0bb60ea0bafb2d0df2ab16fad3e10d4f03992",
+      "focused_tests": 9,
+      "full_predecessor_members_verified": 20,
+      "full_result_and_all_query_export_bytes_identical": true,
+      "independent_checks": 311478,
+      "network_and_external_commands_blocked": true,
+      "numerical_warnings_fatal": true,
+      "original_entropy_fits_or_seed_draws_repeated": false,
+      "pinned_members": 23,
+      "status": "passed_complete_adaptive_offline_reproduction"
+    }
+  ],
+  "qualified_population_or_local_transition_estimates": false,
+  "release_id": 441510341,
+  "research_source_commit": "d50f98733c5ae81d2c7a71587f683fe514b2b73b",
+  "schema": "participation.adaptive_persistence_publication.v1",
+  "status": "passed_immutable_adaptive_persistence_science_publication",
+  "tag": "participation-adaptive-persistence-20261111-01",
+  "verified_at_utc": "2026-11-11T09:59:24.159414+00:00",
+  "website_baseline_unchanged": "78df729b3139633f42936f7d1a64eada1c40f2bf",
+  "website_builds": 0
+}

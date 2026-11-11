@@ -42,6 +42,49 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Demographic/geographic persistence test complete: retain the live baseline.**
+The five-candidate cached-input experiment is public in immutable science
+**441510341**, tag `participation-adaptive-persistence-20261111-01`, with all
+**12 complete assets** anonymously byte/hash verified. Research source
+**d50f987** includes all maintained code/tests and the full official region
+reference. The **12,593,287-byte / 24-member** packet includes the whole
+accepted predecessor, the full **29,924,107-byte** new result, every inner fit,
+all 215 outer folds / 550 predictions, feature/benchmark holds and queries.
+Nine tests, **311,478 independent checks / 13,943 fits**, and two fresh
+blocked-network/external-command reproductions pass every output byte.
+No accepted original coupling, seed reduction or completed validation is rerun.
+
+The primary nonvoter+age+rurality candidate ties global table-weighted
+state-held-out MAE at **1.386175 pp** and worsens region-held-out MAE to
+**1.403362 pp**. State-balanced MAE is **1.383259 / 1.407497 pp**, versus
+global **1.383259 pp** under either block scheme. Only **14/39** benchmark
+states jointly disclose both contrasts; missing features remain missing,
+with training-global fallback and no group imputation. This is a sparse
+negative transport test, not proof of no demographic effects or validation
+of precinct-level transitions. No automatic live-model/UI promotion occurs.
+Do not refit or repackage this completed experiment merely for activity.
+Records: `data/participation-model-validation/20261111-adaptive-persistence/`.
+
+**The requested all-map/tab audit is also complete and verified live.**
+Website **78df729**, Pages **42991100245**, guard **42991100138**, artifact
+**13841664234** pass actual **996,310,441 payload / 998,901,760 tar bytes**,
+all 62 exact unqueried assets and all 436 unchanged full-download pins.
+The responsive More options overflow/offscreen bug was fixed on phones/tablets.
+All four tabs, all 51 jurisdiction pointer selections, 49 county footprints,
+native bindings, available historical/current layers, selections, zoom/pan,
+source holds and late-response/error isolation passed; final production
+layout/geography/tab/pointer tests used no CSS or valid-data fixtures.
+All counts, model fields and geometry remain unchanged. Do not reopen this
+accepted UI/build work as a substitute for unresolved research.
+
+The broader historical/native/precinct coverage gaps remain separate below.
+County-count filling cannot by itself identify individual party transitions;
+it is not a gate for the delivered conditional simulation. The retained Utah
+successor originals remain a separate paused backlog, not new qualified counts.
+If resumed, reuse those originals and keep the denied Cache workbook route
+stopped. Do not reacquire accepted sources or reinterpret source activity,
+missing values or resident profiles as observed group turnout.
+
 **New Jersey's selected county references now cover all 21 source observations.**
 Generic source **18b3319** retains the 19 accepted exact-record-hash identities
 and qualifies Essex/Hudson on the same full, unchanged 2024 county features.
