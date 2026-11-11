@@ -1,0 +1,22 @@
+{
+  "copyrighted_third_party_prose_apps_session_headers_or_personal_records_included": false,
+  "first_native_C_reader_failed": true,
+  "independent_verification_completed_with_pure_python_reader": true,
+  "native_definition_of_UOCAVA_IN_OUT_and_ASST_D_I_not_qualified": true,
+  "previous_successful_acquisition_or_reduction_repeated": false,
+  "print_timezone_not_inferred_from_pdf_creation_metadata": true,
+  "report_filter_begin_is_not_observed_voting_start": true,
+  "source": {
+    "bytes": 157893,
+    "content_type": "application/pdf",
+    "discovery_url": "https://veritenews.org/2026/10/29/three-things-to-know-about-the-record-breaking-early-voter-turnout-in-louisiana/",
+    "final_url": "https://electionstatistics.sos.la.gov/Data/Early_Voting_Statistics/statewide/2026_1103_StatewideStats.pdf",
+    "previously_unresolved_registration_host_guessed_or_retried": false,
+    "retries": 0,
+    "retrieved_at_utc": "2026-11-11T18:07:11.953539+00:00",
+    "sha256": "03662b5a09ee09ca57b6806e7ba97e52561317f540dbc6ddafeb56d33f164390",
+    "status": 200,
+    "url": "https://electionstatistics.sos.la.gov/Data/Early_Voting_Statistics/statewide/2026_1103_StatewideStats.pdf"
+  },
+  "standalone_new_native_source": true
+}
