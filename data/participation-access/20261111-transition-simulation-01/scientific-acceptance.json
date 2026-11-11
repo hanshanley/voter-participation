@@ -1,0 +1,39 @@
+{
+  "calibrated_persistence": 13.454342644059432,
+  "current_prior_frame_residuals_unallocated": true,
+  "current_voter_poll_states": 39,
+  "current_voter_poll_tables": 55,
+  "eligibility_death_migration": null,
+  "fixed_factor16_mae_pp": 1.3964109389058161,
+  "focused_tests": 12,
+  "full_public_assets": 7,
+  "heldout_gross_switching_mae_pp": 1.3861750152965129,
+  "historical_joint_truth_available": false,
+  "live_simulation_ui": false,
+  "material_population_improvement_established": false,
+  "new_website_builds": 0,
+  "scalar_checks": 2557140,
+  "source_sampling_design_confidence_intervals": null,
+  "status": "accepted_conditional_source_frame_science_not_population_validation",
+  "website_main_before_and_after": "6ee8416322a9f0b74a943a828fb3c439d5447e1b",
+  "website_runs_before_and_after": [
+    {
+      "databaseId": 42944752314,
+      "event": "push",
+      "headSha": "6ee8416322a9f0b74a943a828fb3c439d5447e1b",
+      "workflowName": "Deploy to GitHub Pages"
+    },
+    {
+      "databaseId": 42944752242,
+      "event": "push",
+      "headSha": "6ee8416322a9f0b74a943a828fb3c439d5447e1b",
+      "workflowName": "Check copied source credentials"
+    },
+    {
+      "databaseId": 42939815222,
+      "event": "push",
+      "headSha": "e58886047c9d1442db4ffe9c7ddc43cf9058b398",
+      "workflowName": "Deploy to GitHub Pages"
+    }
+  ]
+}

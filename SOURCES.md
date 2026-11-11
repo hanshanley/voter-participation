@@ -27,6 +27,60 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## Conditional demographic transition simulation
+
+The requested simulation now has a **published conditional source-frame model**,
+not identified respondent histories or validated population turnout. Research
+source **ddfabf7** implements finite-budget synthetic couplings over retaining,
+switching, modeled nonparticipation, prior-contest nonvote entry, Other and
+unresolved choices. It uses only previously released permitted whole-state
+moments and disclosed broad-group inputs. The `pre1870_pop` reference supplies
+budget/seed/conservation architecture only, not historical population or ancestry
+assumptions. See [the full method](docs/TRANSITION_SIMULATION.md).
+
+All **50 source states**, **300 final couplings**, **1,443 calibration-grid
+couplings**, **1,500 state seed cases** and **20,130 nonadditive demographic seed
+cases** are computed. All **1,530 demographic decisions**, including **671**
+disclosed groups, are retained; suppressed/unavailable groups stay null. All
+**113** current-return checks remain unfitted. All **89** qualified same-office
+swings reconcile exactly with the synthetic signed terms, normalized-margin
+denominator term and separate unallocated current/prior frame differences.
+The **2,754** historical CPS decisions retain native missingness and frame breaks;
+their marginals do not supply joint-transition holdout truth.
+
+Gross switching alone, not its partisan direction or reported election counts,
+calibrates a shared persistence strength against **55** current-voter tables in
+**39** states. Every same-state office table is excluded from that state's fold.
+The held-out MAE is **1.39 pp**, versus **1.40 pp** for the fixed factor-16
+scenario, not material evidence of better population prediction. Some governor
+misses exceed four points; Wyoming is approximately eight. House-model transport
+to Senate/governor remains an assumption; there are no House poll targets.
+Demographic prior-party associations, source sampling uncertainty, survey
+independence and population transport remain unqualified. Half/double-strength
+envelopes are assumption sensitivity, not confidence intervals.
+
+Immutable release **441189732**, tag
+`participation-transition-simulation-20261111-01`, has all **seven** complete
+assets anonymously byte/hash verified. Its **9,977,891-byte / 20-member** ZIP
+contains both entire predecessor packets, the whole permitted demographic and
+corrected comparison inputs, all code/tests and every scenario/query/result.
+The separate complete result is **44,360,809 bytes**; the compact viewer is
+**1,900,104 bytes**. Archive SHA:
+`422d14209bc6be35919e95a5b69aee6af58e9721c095453bf343139f59f883a2`.
+Twelve focused tests and **2,557,140 independent scalar checks** pass, including
+relative-entropy stationarity, not just moment feasibility. Two fresh
+network/external-command-blocked reproductions produce every result/viewer byte
+identically under different hash seeds, with numerical warnings fatal.
+
+This is **scientific publication, not a new live map view**. The immutable
+website release anchor remains **6ee8416**; the implementation source is the
+separately published research commit above. The next step is restrained tested
+integration into the existing one-map interface, preserving all prior models,
+routes and complete downloads. No state survey model is allocated to precincts.
+Source weights/draws are not people; modeled nonvoters are not administrative
+staying home; eligibility/death/migration and design CIs remain null.
+Records: `data/participation-access/20261111-transition-simulation-01/`.
+
 ## Additional matched-reference resident context
 
 The four remaining mapped participation-reference families now have **1,456**

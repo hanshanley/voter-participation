@@ -42,6 +42,36 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Scientific publication completed; active next step: one-map simulation integration.**
+The conditional transition model is public in immutable science **441189732**,
+tag `participation-transition-simulation-20261111-01`, from research source
+**ddfabf7**. All seven full assets are anonymously byte/hash verified. The
+**9,977,891-byte / 20-member** complete ZIP includes every permitted sufficient
+input, all code/tests and every query/seed/scenario/result; its separate full
+result is **44,360,809 bytes**, not metadata. Twelve focused tests, **2,557,140**
+independent scalar checks (including entropy optimality) and two fresh
+warning-fatal blocked-network/external-command reproductions pass.
+
+All 50 source states, 300 final / 1,443 grid couplings, 1,500 state and 20,130
+separate demographic seed cases, 1,530 demographic decisions / 671 disclosed
+groups, 113 unfitted return checks, 89 exact same-office reconciliations and
+2,754 historical qualification decisions are included. Current-voter gross
+switching calibrates persistence without fitting partisan returns; state-held-out
+MAE1.39 pp versus fixed-factor-16 MAE1.40 pp is not evidence of materially better
+population prediction. Cross-office transport, demographic party associations,
+historical joint truth and population/design uncertainty remain unqualified.
+Held groups stay null; no state effects are allocated to counties/precincts.
+
+**No new simulation view is live yet.** Integrate restrained keep/switch/modeled
+nonparticipation scenario options into the existing single map, retaining office
+and source-frame qualifications, unavailable categories, uncertainty distinctions
+and exact reported-swing residuals. Use an external verified dataset: its compact
+viewer is1,900,104 bytes and must not consume the native tar headroom. Preserve
+all113 original models/all436 full routes, actual source pin and strict native
+payload/tar<1e9. Verify real catalog promotion, browser behavior, actual artifact
+and exact production before calling the interface live. Do not add a tab,
+sidebar inventory or measured-staying-home/individual-history claims.
+
 **Completed and verified live: common native count/reference reader and coverage.**
 Website **e588860**, Pages **42939815222**, main guard **42939815230** and
 artifact **13820547304** pass **996,277,012 payload / 998,860,800 tar bytes**,
@@ -106,10 +136,10 @@ The current approved-reference resident integration, common count intake,
 coverage and swing-accounting prerequisites are complete. All 8,488 currently
 mapped reference decisions are accounted for as 8,303 conditional profiles
 and 185 explicit holds; this is not universal historical or statewide precinct
-coverage. Preserve those holds and unavailable proxy metrics. The next requested
-modeling stage is the demographic/geographic transition simulation, using only
-qualified modern frames and treating `pre1870_pop` as an architecture reference,
-not as modern election input. Broader blocked/unsupported source gaps remain
+coverage. Preserve those holds and unavailable proxy metrics. The requested
+demographic/geographic transition model is now published as conditional science;
+its tested one-map integration is the active next step above. `pre1870_pop` is
+an architecture reference, not modern election input. Broader blocked/unsupported source gaps remain
 explicit; simulation must not disguise them as measured participation or
 identified individual histories.
 
