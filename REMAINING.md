@@ -42,6 +42,34 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**New Jersey's two source-count gaps are filled; broader coverage is not finished.**
+The declared November 10 Essex/Hudson native reports support EV+ED+mail-tallied
+subtotals **225,368 / 213,051**, bringing selected NJ county observations from
+**19/21 to 21/21**. No complete-election ballot total, unique-person count,
+registration rate, statewide sum or new geography is qualified. Essex's
+11,740/1,990 processing disagreement and Hudson's separately counted 1,200
+provisionals remain literal and excluded from the selected subtotal.
+
+Science **441254758** has all eight full assets anonymously verified. Its
+**12,360,680-byte / 79-member** package preserves both whole predecessor
+archives, all new facts/code/tests/results and complete queries. Eleven tests,
+193 independent checks and two fresh blocked-network/subprocess reproductions
+pass every runtime/query byte. Count version **1b1bff95**, staged **f0479fec** /
+corrected catalog **411c1e20**, is public through the existing common publisher:
+54 immutable files verified, all three other datasets unchanged, zero builds.
+All 105 old NJ records, 50 other state shards and current snapshot are preserved.
+The early/mail provider frames remain distinct and unchanged. Preserve source
+clocks/unknowns and do not rerun this successful acquisition or scientific work.
+The omitted immutable-download qualifier was corrected after the first actual
+production gate rejected it; no runtime bytes or science assets changed.
+All four production catalog readers, 107 NJ records/six mode frames and
+16 desktop/phone cases pass. New Essex/Hudson counts are available in the
+compact selector and complete queries, **not approved map joins**; the existing
+19 contextual bindings remain unchanged. Qualifying those two count-to-reference
+bindings is a separate remaining geographic step, not a reason to reacquire
+the reports or rerun their accepted count reduction.
+Records: `data/participation-access/20261111-nj-county-gap-01/`.
+
 **Completed and verified live: conditional transition scenarios in the existing map.**
 The conditional transition model is public in immutable science **441189732**,
 tag `participation-transition-simulation-20261111-01`, from research source
@@ -428,9 +456,11 @@ production all51 audit has nonempty county/locality context in every
 jurisdiction. Alaska's county layer explicitly shows contest counts, not
 participation; its native precinct counts are a separate layer. Native county
 observations remain partial in Iowa (1/99), Kentucky (1/120), Michigan (2/83),
-Missouri (1/115), Nevada (4/17), New Jersey (19/21), Pennsylvania (43/67),
+Missouri (1/115), Nevada (4/17), Pennsylvania (43/67),
 Utah (19/29) and Wisconsin (1/72). Shape counts are not observed-count coverage,
 and provider early/returned activity is not complete-election participation.
+New Jersey now has 21/21 selected county observations after the qualified
+November 10 Essex/Hudson extension above, not 21 certified full-election totals.
 Continue these real source/within-state gaps and qualified precinct joins
 using held originals first, without another blank-map or inventory-only loop.
 

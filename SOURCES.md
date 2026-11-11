@@ -27,6 +27,60 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## New Jersey: two previously held county counted-mode observations
+
+The official index declared distinct **November 10, 2026** Essex and Hudson
+periodic reports. Their complete 46-row, 12-count-column factual tables retain
+all blanks and source fields. Independent PDF engines checked **598 labels and
+cells**; both congressional and municipal aggregate rows, and their component
+rows, agree on the selected early Votes Cast + Election Day Votes Cast +
+mail Ballots Tallied components. The derived subtotals are **Essex 225,368**
+(45,282 + 140,183 + 39,903) and **Hudson 213,051**
+(38,978 + 155,273 + 18,800).
+
+These are source-defined counted-mode subtotals, **not certified full-election
+ballots, unique people or turnout rates**. The blank county rows remain blank.
+Essex's nonselected mail-processing disagreement, **11,740 versus 1,990**, is
+unrepaired. Hudson's separately reported **1,200 counted provisionals** are
+retained but excluded from this consistent subtotal definition. Issued,
+received and pending counts are not added or used as registration denominators.
+Native clocks remain **11/10/26 3:10 PM** and **11/10/26 12:21 PM**, respectively;
+neither declares a timezone or counting completion.
+
+Generic append-only source **0f10fcb** adds only these two observations.
+All **105** previous NJ records, all **50** other state shards and the current
+state/provider snapshot remain unchanged: **51 unaffected runtime files** are
+byte-identical. Available/official/UF-context selections now contain **21**
+county observations; the distinct early/returned provider frames are unchanged.
+No new rate, state sum, survey allocation or geographic approval is introduced.
+
+Immutable science **441254758**, tag
+`participation-new-jersey-county-gap-20261111-01`, has **eight** full assets
+anonymously byte/hash verified. The **12,360,680-byte / 79-member** complete ZIP
+includes the entire prior 126-member count packet and nine-member NJ query
+packet, all new sufficient facts/recipe, compiler/contracts/code/tests, updated
+runtime and complete matched county queries. Original PDF/HTML presentation
+and acquisition/session headers are not redistributed. Eleven tests,
+**193 independent arithmetic/incremental checks**, and two fresh
+network/subprocess-blocked byte-identical reproductions pass.
+Archive SHA: `3a4641e43cfd6825d87e16696b5b0cf4282035327bf8de2769bc8a9883d6b8dc`.
+
+The existing common catalog activates count version **1b1bff95**, staged
+**f0479fec** / corrected catalog **411c1e20**, with all **54** immutable files verified,
+all other three datasets unchanged and **zero website builds**. Website/main
+remains **38a6e71**, with protected canonical HEADs/indexes and Pages IDs
+unchanged. Mixed November 5/10 county clocks are not a statewide snapshot.
+The first production gate caught an omitted `immutable: true` download
+qualifier; a single-field, independently verified metadata correction restored
+the shared reader without republishing science or changing runtime bytes.
+All four actual catalog readers, all 107 full NJ records/six mode frames and
+16 real desktop/phone county-detail cases now pass. Four unchanged production
+script assets are byte-verified and both screenshots inspected.
+The new counts remain **table/selector-only**: their two source-to-reference
+bindings are not approved, so their map values remain missing, not zero.
+The existing 19 contextual county bindings are not extended by source possession.
+Records: `data/participation-access/20261111-nj-county-gap-01/`.
+
 ## Conditional demographic transition simulation
 
 The requested simulation now has a **published conditional source-frame model**,
