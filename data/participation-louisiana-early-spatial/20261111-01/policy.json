@@ -1,0 +1,11 @@
+{
+  "binding": "unique_native_parish_name_to_accepted_context_reference",
+  "contract": "participation.louisiana_early_spatial_policy.v1",
+  "counts_replaced": false,
+  "election_boundaries_certified": false,
+  "frontend_or_catalog_activation": false,
+  "geometry_repaired": false,
+  "group_turnout_inferred": false,
+  "native_codes_inferred_as_FIPS": false,
+  "provider_method_or_clock_requalified": false
+}

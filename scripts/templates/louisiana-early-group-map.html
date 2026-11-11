@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Louisiana early-report group maps | 2026</title>
+<style>
+:root{font-family:Georgia,"Times New Roman",serif;color:#263532;background:#fafbf9;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}main{max-width:980px;margin:auto;padding:32px 24px 24px}
+h1{font-size:clamp(25px,4vw,36px);font-weight:500;line-height:1.15;letter-spacing:-.025em;margin:8px 0 12px}
+p{line-height:1.55}.eyebrow,label,select,button,output,.legend,.note,summary{font-family:system-ui,sans-serif}
+.eyebrow{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#64726c}
+.intro{max-width:760px;margin:0 0 22px;color:#51605b}.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:end}
+label{display:grid;gap:5px;font-size:12px;color:#52605b}select,button{font-size:14px;border:1px solid #bec9c3;border-radius:4px;background:#fff;color:#263532;padding:8px 10px;max-width:100%}
+select{width:100%;min-width:0}
+button{cursor:pointer}select:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #247569;outline-offset:3px}
+.map-wrap{margin:16px 0 0;border-top:1px solid #dce2dc;padding-top:12px}
+svg{width:100%;height:auto;max-height:590px;display:block;touch-action:pan-y}
+.parish{stroke:#fafbf9;stroke-width:.7;vector-effect:non-scaling-stroke;cursor:pointer}
+.parish:hover,.parish:focus-visible{stroke:#263532;stroke-width:1.6;outline:none}
+.parish[aria-pressed=true]{stroke:#152e27;stroke-width:2}
+.legend{font-size:12px;color:#52605b;display:flex;align-items:center;gap:9px;justify-content:center;flex-wrap:wrap;margin:0 0 18px}
+.ramp{width:150px;height:9px;background:linear-gradient(90deg,#e1ebe4,#276454)}
+.detail{border-top:1px solid #dce2dc;padding-top:16px;display:grid;grid-template-columns:1fr auto;gap:12px}
+.detail h2{font-size:20px;font-weight:500;margin:0 0 4px}.detail p{margin:0}
+output{font-size:24px;text-align:right;font-variant-numeric:tabular-nums}
+.note{font-size:12px;color:#62716a;margin-top:8px}.method{margin-top:22px;border-top:1px solid #dce2dc;padding-top:14px}
+summary{cursor:pointer;font-size:13px}.method p{font-size:13px;color:#52605b}
+a{color:#245e50}noscript{display:block;padding:18px;border:1px solid #bec9c3;margin-top:20px}
+@media(max-width:500px){main{padding:22px 14px}.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}label{min-width:0}button{font-size:12px;grid-column:1/-1;justify-self:start}.detail{grid-template-columns:1fr}output{text-align:left;font-size:22px}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Source-defined participation counts</div>
+<h1>Louisiana &middot; 2026 early/absentee report</h1>
+<p class="intro">Explore the report's race, sex and method margins across 64 parishes. Shares describe these reported votes, <strong>not turnout within a demographic population</strong>.</p>
+<div class="controls">
+<label for="group">Reported group<select id="group">
+<optgroup label="Native race margin"><option value="WHITE">WHITE</option><option value="BLACK">BLACK</option><option value="OTHER">OTHER</option></optgroup>
+<optgroup label="Native sex margin"><option value="MALE">MALE</option><option value="FEMALE">FEMALE</option></optgroup>
+<optgroup label="Native method margin"><option value="INPER">INPER</option><option value="ABS">ABS (source label)</option></optgroup>
+</select></label>
+<label for="metric">Map value<select id="metric"><option value="share">Report share</option><option value="count">Reported count</option></select></label>
+<button id="reset" type="button">All parishes</button>
+</div>
+<noscript>This offline map needs JavaScript. The companion GeoJSON and complete CSV downloads contain every parish profile and source comparison.</noscript>
+<div class="map-wrap"><svg id="map" viewBox="0 0 850 650" role="group" aria-label="Louisiana parish map; select a parish for its native source counts"></svg></div>
+<div class="legend" id="legend"><span id="low"></span><span class="ramp" aria-hidden="true"></span><span id="high"></span><span id="legend-label"></span></div>
+<section class="detail" aria-live="polite" aria-atomic="true">
+<div><h2 id="place">Louisiana &middot; all parishes</h2><p id="description"></p><p class="note" id="residual"></p></div>
+<output id="value"></output>
+</section>
+<p class="note" id="map-note">Race, sex and method are separate margins. ABS is not qualified here as mail-returned. No group registrations, unique-voter totals or full-election turnout are supplied.</p>
+<details class="method"><summary>Source, timing and geographic limits</summary>
+<p>Official Statewide Early Voting Statistical Report, election November 3, 2026; printed November 10, 2026, 3:10:06 AM, timezone unknown. Its query filter ends November 9 and begins January 1, 1900; that filter is not an observed voting period. The printed state parent is separate from the 64 parish features, never an additional parish.</p>
+<p>County shapes are the accepted, unchanged unsimplified 2026 Census reference, not certified election precincts. Native source parish codes were matched by unique parish names, not interpreted as FIPS. Native race labels are not standardized demographic aliases. Sex residuals are arithmetic, not an identified population.</p>
+<p>The earlier provider rows have a separately unqualified November 3 snapshot label. Across 128 comparisons, 124 values agree and four differ: Bossier ABS &minus;1, East Feliciana INPER +1, Jefferson ABS +4 and Lafayette ABS +1 (official report minus provider). Agreement does not establish common timing, population, processing semantics or independence. Neither source is silently replaced.</p>
+<p>This self-contained file makes no network requests and changes no live website dataset. The complete package includes every profile/composition, all 128 comparisons, full original science, reference geometry, code and tests. <a href="https://electionstatistics.sos.la.gov/Data/Early_Voting_Statistics/statewide/2026_1103_StatewideStats.pdf">Official report</a>.</p>
+</details>
+</main>
+<script id="source-data" type="application/json">__COMPLETE_GEOJSON__</script>
+<script>
+"use strict";
+(() => {
+  const data = JSON.parse(document.getElementById("source-data").textContent);
+  const group = document.getElementById("group"), metric = document.getElementById("metric");
+  const svg = document.getElementById("map"), ns = "http://www.w3.org/2000/svg";
+  const format = new Intl.NumberFormat("en-US"), paths = new Map();
+  let selected = null;
+  const projected = [];
+  function project(point) { return [point[0] * Math.cos(31 * Math.PI / 180), -point[1]]; }
+  function polygons(geometry) {
+    if (geometry.type === "Polygon") return [geometry.coordinates];
+    if (geometry.type === "MultiPolygon") return geometry.coordinates;
+    throw new Error("Unqualified geometry type");
+  }
+  for (const feature of data.features) {
+    for (const polygon of polygons(feature.geometry)) for (const ring of polygon) for (const point of ring) projected.push(project(point));
+  }
+  let minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+  for (const [x,y] of projected) { minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y); }
+  const scale=Math.min(810/(maxX-minX),610/(maxY-minY)), ox=(850-(maxX-minX)*scale)/2, oy=(650-(maxY-minY)*scale)/2;
+  function position(point) { const [x,y]=project(point);return [(ox+(x-minX)*scale).toFixed(2),(oy+(y-minY)*scale).toFixed(2)]; }
+  function source(feature) { return feature ? feature.properties.native_source_profile : data.source_state_parent; }
+  function compositions(feature) { return feature ? feature.properties.native_compositions : data.source_state_compositions; }
+  function value(feature) {
+    const row=compositions(feature).find(row=>row.native_group===group.value);
+    return metric.value==="count" ? row.native_count : row.source_composition_pct===null ? null : Number(row.source_composition_pct);
+  }
+  function label(number) { return number===null ? "Not available" : metric.value==="count" ? format.format(number) : number.toFixed(1)+"%"; }
+  function draw() {
+    const values=data.features.map(value).filter(value=>value!==null), low=Math.min(...values), high=Math.max(...values);
+    for (const feature of data.features) {
+      const path=paths.get(feature.id), number=value(feature), t=number===null ? 0 : high===low ? 0.5 : (number-low)/(high-low);
+      const start=[225,235,228],end=[39,100,84],color=start.map((v,i)=>Math.round(v+(end[i]-v)*t));
+      path.setAttribute("fill",number===null?"#e8e8e8":`rgb(${color.join(",")})`);
+      path.setAttribute("aria-pressed",String(selected===feature.id));
+      path.setAttribute("aria-label",`${feature.properties.reference.name}: ${group.value}, ${label(number)}`);
+      path.querySelector("title").textContent=path.getAttribute("aria-label");
+    }
+    document.getElementById("low").textContent=label(low);
+    document.getElementById("high").textContent=label(high);
+    document.getElementById("legend-label").textContent=metric.value==="share"?"of each parish's report votes":"source counts \u00b7 linear scale";
+    const feature=data.features.find(feature=>feature.id===selected), row=source(feature), counts=row.raw_counts;
+    const number=value(feature), residual=counts.VOTES-counts.MALE-counts.FEMALE;
+    document.getElementById("place").textContent=feature?feature.properties.reference.name:"Louisiana \u00b7 all parishes";
+    document.getElementById("value").textContent=label(number);
+    document.getElementById("description").textContent=`${group.value}: ${format.format(counts[group.value])} of ${format.format(counts.VOTES)} native report votes.`;
+    document.getElementById("residual").textContent=`MALE + FEMALE leaves ${format.format(residual)} arithmetic units; not an identified category.`;
+    document.getElementById("reset").disabled=selected===null;
+  }
+  for (const feature of data.features) {
+    const path=document.createElementNS(ns,"path");
+    path.setAttribute("class","parish");path.setAttribute("data-key",feature.id);
+    path.setAttribute("role","button");path.setAttribute("tabindex","0");path.setAttribute("fill-rule","evenodd");
+    path.setAttribute("d",polygons(feature.geometry).map(polygon=>polygon.map(ring=>ring.map((point,i)=>(i?"L":"M")+position(point).join(",")).join("")+"Z").join("")).join(""));
+    path.appendChild(document.createElementNS(ns,"title"));
+    path.addEventListener("click",()=>{selected=feature.id;draw();});
+    path.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();selected=feature.id;draw();}});
+    svg.appendChild(path);paths.set(feature.id,path);
+  }
+  group.addEventListener("change",draw);metric.addEventListener("change",draw);
+  document.getElementById("reset").addEventListener("click",()=>{selected=null;draw();});
+  draw();
+})();
+</script>
+</body>
+</html>

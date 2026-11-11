@@ -1,0 +1,20 @@
+{
+  "common_upstream_lineage_established": false,
+  "count_version": "d63083706c7a4b7c8e912dae24503bee068181db9f85183c0ecf8926562c6997",
+  "native_ABS_qualified_as_mail_returned": false,
+  "native_science_release": 442055936,
+  "native_science_tag": "participation-louisiana-early-groups-20261111-01",
+  "native_version": "67d36be354685dbd75e1ad7cd0fda4eaeaa57fcdd605029f292ae4d4d3f460bf",
+  "provider_snapshot_label": "2026-11-03",
+  "reference_scope": "unchanged unsimplified 2026 Census county context, not certified election boundaries",
+  "reference_sha256": "7eeec4d3ebb2ca1fd2897e5f914e925a3b1fb88748bc25c51bd7977bfd930eac",
+  "reference_url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/6b6b96caed4fa4f7c66fd206a64bd709310a69f2/data/county-results/20261105-house-02/geometry/LA.geojson.gz",
+  "runtime_science_tag": "participation-utah-count-successors-20261111-01",
+  "source_compositions_reused_without_reduction": true,
+  "source_election_date": "2026-11-03",
+  "source_filter_begin": "1900-01-01",
+  "source_filter_end": "2026-11-09",
+  "source_print_clock": "11/10/2026 3:10:06 AM",
+  "source_print_timezone": null,
+  "source_url": "https://electionstatistics.sos.la.gov/Data/Early_Voting_Statistics/statewide/2026_1103_StatewideStats.pdf"
+}

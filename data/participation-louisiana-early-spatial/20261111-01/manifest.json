@@ -1,0 +1,59 @@
+{
+  "complete_predecessors": {
+    "complete-native-science.zip": {
+      "bytes": 262124,
+      "sha256": "f788b1d388d52efbba78121513cd16c82445c2ad4acd89fb8f9bb44379708bfe"
+    },
+    "complete-runtime-science.zip": {
+      "bytes": 232295601,
+      "sha256": "9e753a4f8b363713f9752ba4448993250d9e49eaff68b196b20f0d72cc42e285"
+    }
+  },
+  "contract": "participation.louisiana_early_spatial_inputs.v1",
+  "files": {
+    "LA-reference.geojson.gz": {
+      "bytes": 1288586,
+      "sha256": "7eeec4d3ebb2ca1fd2897e5f914e925a3b1fb88748bc25c51bd7977bfd930eac"
+    },
+    "counts-LA.json.gz": {
+      "bytes": 36964,
+      "sha256": "b873b944ea1cdd1ca0d2881cf59b9474345c10c257e1cdf851219ad220512808"
+    },
+    "counts-dataset.json": {
+      "bytes": 6290,
+      "sha256": "74a1c56f90bf6b1db5a58ef9ef23a5afd25bb9ebf7b1410634e1d28226002332"
+    },
+    "counts-index.json": {
+      "bytes": 140664,
+      "sha256": "72328d42fe9f18e6629d9cd724b50ef01c970e936204f03df11fc62ff4e372e8"
+    },
+    "native-dataset.json": {
+      "bytes": 4673,
+      "sha256": "01aba8a13dfe03aa8c73b44a05544808993f4e81457ff366100a15475b4b54ca"
+    },
+    "native-index.json": {
+      "bytes": 7863035,
+      "sha256": "9203c339bb9b0539fa535b5997b16bb474bfbb5f87f5b6d61fa7824c47e902c9"
+    },
+    "policy.json": {
+      "bytes": 409,
+      "sha256": "633aa3677fb3e5b24b64cd011f51ec62fde6e8f1cd01a6219b50a5e5c0cd78f7"
+    },
+    "provenance.json": {
+      "bytes": 1273,
+      "sha256": "ea87440e563c23a50716e3abc417aa56d7b21a60a72f5373fb2059875eebcf62"
+    },
+    "source-independent-native.json": {
+      "bytes": 29863,
+      "sha256": "b094ac0086656f60713b932f88edaf0f567027417ca0410e0fef37b496efa8e0"
+    },
+    "source-native-facts.json": {
+      "bytes": 37300,
+      "sha256": "205f430273d6e20747e6be96003e3c2755f07c66a28bab965b2c89fa9eb93dcb"
+    },
+    "source-result.json": {
+      "bytes": 910047,
+      "sha256": "4d74f813dfad9cb4fe29518a918ce967b0bd5b91d9efaa2062dbd48290eb3e71"
+    }
+  }
+}
