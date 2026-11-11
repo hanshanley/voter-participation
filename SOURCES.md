@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Atlas-wide swing model correction | [Both-endpoint return-constrained scenarios](#2026-both-endpoint-return-constrained-transition-scenarios) |
 | Latest source-native 2026 group counts | [Louisiana early/absentee compositions](#2026-louisiana-source-native-early-group-counts-and-compositions) |
 | Latest source-defined 2026 participation history | [Direct MEVP state/group profiles](#2026-mevp-direct-state-participant-history-and-experiences) |
 | Latest deployed history view | [Separate 1998 and 2002 source points](#1998-points-in-the-existing-historical-view) |
@@ -32,6 +33,88 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 both-endpoint return-constrained transition scenarios
+
+The previous live equation was **not a useful explanation of reported swing**:
+it joined a recalled-presidential survey-frame contrast to observed same-office
+returns, then called the difference Other/unallocated. Texas's 22.41-point
+bucket included 14.62 points of prior-baseline mismatch and additional entry,
+other-choice, unresolved and denominator terms. This was an **atlas-wide
+architecture issue**, not a Texas-specific arithmetic bug.
+
+Scientific source **07fee19a4e4130cf3603635e90af36faa0c26a0d** now implements a
+different model: a nonnegative synthetic transition table constrained to **both
+recorded D/R candidate-vote endpoints** in the qualified same-office frame.
+There are **113 complete state/office decisions, 89 fitted comparisons and 24
+explicitly unavailable comparisons**: 35 House state aggregates, 26 Senate
+comparisons and 28 governor source frames are fitted. Missing comparisons do
+not become zero contributions or borrow another state's baseline.
+
+The accepted state-specific synthetic survey/recalled-president associations
+are a **prior only**, not the previous same-office result. Relative-entropy
+row/column scaling chooses a feasible table. Four Shapley mechanisms—major-party
+switching, no current-contest vote, entry/return, and Other-party choice—include
+denominator effects and exactly reconcile the normalized D-R margin. There is
+no ad-hoc return/frame balancing term. Gross retention/switching/outside/Other
+shares partition the modeled previous major-party frame, not all voters.
+
+**Fitting is not independent validation or identification of individual histories.**
+The common candidate-vote accounting-frame size is assumed from the prior's
+known-party weight, not a measured eligible population. The nine cases vary
+persistence **0.5/1/2 times** the accepted factor and frame size **0.8/1/1.25**;
+lower frame bounds remain explicit. Ranges are assumption sensitivity, not
+confidence or identification intervals. No counted vote for the target office
+does not identify no ballot, first-ever voting, eligibility, death or migration.
+Original synthetic N/U categories are pooled only in the prior; no source
+observations are recoded. No state model is allocated to counties or precincts.
+
+Actual Other counts constrain endpoints where supplied. The governor source
+frames supply D/R only: their raw Other counts remain absent, **not zero**;
+the model's Other/outside split is explicitly prior-assumed. Changed competition,
+partial reporting, native source clocks and geographic/source-frame qualifications
+remain in every return comparison. This model does not certify full-election
+turnout or independently validate any behavioral mechanism.
+
+All **801 fitted cases / 12,816 synthetic cells / 678 endpoint decisions / 113
+selection decisions** are available. An independent verifier checks all native
+counts/both margins and evaluates every contribution through all **24 mechanism
+orderings**: **119,478 checks** pass. Five mathematical regression tests and two
+fresh network/external-command-blocked reproductions pass all **six full query
+output bytes**; the accepted older source simulations are not rerun.
+
+Immutable science **442171871**, tag
+`participation-return-constrained-20261111-01`, supplies a complete
+**14,943,668-byte / 17-member ZIP**, SHA
+`2377ea253d33b88af3146bad4e2a52c9936d97b178c00a4fa0e3be022aadeae1`.
+It includes both **entire** accepted scientific predecessors (9,977,891 and
+4,307,149 bytes), all return comparisons, new code/tests, complete queries,
+viewer and results, never metadata-only links. All **13 assets** were verified
+as full anonymous bytes. Reference byte reproduction uses Python 3.9; later
+versions can differ in floating summation/serialization.
+[Complete model and queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/complete-analysis.zip).
+
+Website revision **442287da1524ccf8397d536861918e0ff5bb75b7** integrates these
+scenarios into the existing single map with switching, no-contest-vote,
+entry/return and Other-choice views. The original 113 estimates remain archived,
+not presented as the observed swing decomposition. All 113 new decisions also
+have a server-rendered table and sum-preserving display rounding. Local real
+desktop/phone tests check **1,530 state/view values and 226 state/office
+summaries**, selection and unavailable cases, without valid-data overrides.
+Eighteen reader tests, Astro checks/build and both responsive screenshots pass.
+Production acceptance is **blocked on GitHub workflow scheduling**. Push run
+**43095898386**, explicit-dispatch recovery **43097363368** and main guard
+**43095898371** still report queued with **zero jobs created**. Normal and
+documented force-cancellation both return 409, saying the run has not yet been
+queued internally. The unqueried production page still serves the old model;
+**this is not a live-verified correction**. Check these existing runs, not a new
+duplicate build, then verify actual artifact limits and the production browser.
+The old 436 complete-download pins remain byte-identical.
+
+Records: `data/return-constrained/20261111-01/`. Counts, native geometry,
+resident context and the separate original survey-frame scenario dataset are
+unchanged. This completes a coherent **conditional model/display correction**,
+not identification of actual staying home or nationwide administrative histories.
 
 ## 2026 Louisiana source-native early group counts and compositions
 

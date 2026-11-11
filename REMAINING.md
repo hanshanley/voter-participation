@@ -42,6 +42,58 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**User priority: the all-state swing model, not more peripheral source packages.**
+The November 11 screenshot exposed an atlas-wide mismatch between survey-recall
+contrasts and observed same-office returns. A 22.41-point Other/unallocated
+bucket was not a useful behavioral explanation. Do not treat arithmetic
+reconciliation of that old bridge as validation; do not fix only Texas.
+
+The replacement **both-endpoint return-constrained model** is computed for all
+**113 state/office decisions / 89 comparable frames / 24 unavailable / 801
+sensitivity cases / 12,816 synthetic cells**. Scientific source **07fee19**,
+immutable release **442171871**, tag
+`participation-return-constrained-20261111-01`; all 13 full assets anonymously
+verified. The **14,943,668-byte / 17-member** ZIP includes both entire older
+scientific archives, full comparisons, code/tests and all six new query outputs.
+Five tests, **119,478 independent checks** through all 24 mechanism orderings,
+and two fresh offline byte-identical reproductions pass. Do not repeat this
+accepted computation or prior successful survey reductions.
+
+**These are fitted scenarios, not measured causes.** Both recorded D/R endpoints
+constrain nonnegative transition cells; four Shapley mechanisms include denominator
+effects without an unmodeled balancing term. The prior is not the observed
+previous-office baseline. Common-frame size and transitions are assumed;
+nine persistence/frame-size cases are not confidence or identification intervals.
+Missing Other in governor frames stays unknown natively and prior-assumed in
+the scenario, not an observed zero. No-ballot history, actual unique stayers,
+eligibility/deaths/migration and local allocation remain unqualified.
+
+Website **442287d** is pushed but **not live-verified**. GitHub push run
+**43095898386**, explicit-dispatch recovery **43097363368** and main guard
+**43095898371** all report queued with zero jobs. Normal/force-cancel return409
+because GitHub says the run is not yet queued internally. Production still
+serves the old model. **Check the existing runs and finish artifact/live
+acceptance first; do not queue more builds or redo numerical science.**
+Acceptance helper:
+`files/accept-calibrated-swing-pages-01.py --pages-run <successful-run>`.
+It defaults to main guard43095898371; verify the guard or exact same guard
+step's CI result before accepting publication. Local desktop/
+phone checked all **1,530 state/view values / 226 state/office summaries** plus
+selection, missing cases, no overflow and original 113-model preservation;
+18 reader tests/Astro checks/full build pass. Prepared payload **986,996,127** /
+tar **989,542,400** bytes and all **436 existing download pins** pass. **Do not
+call this live-verified until its actual deployment, artifact and production
+reader acceptance are recorded.** Source counts, boundaries and other catalog
+datasets are unchanged.
+
+Prioritize honest model validation and useful visible analysis over more
+repackaging/acquisition. Matching fitted endpoints is not evidence that the
+switching/nonparticipation split is true. Do not resume the paused Louisiana
+spatial ledger/publication task ahead of this correction: its separate science
+release **442128655** already exists and is verified; do not reacquire or redo it.
+The single 45-minute continuation 120 remains; broad data/administrative
+transition gaps remain open.
+
 **Louisiana source-native early group compositions are complete, research-only.**
 Scientific source **9ba392d**, immutable science **442055936**, tag
 `participation-louisiana-early-groups-20261111-01`, publish the full official

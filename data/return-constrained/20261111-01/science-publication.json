@@ -1,0 +1,91 @@
+{
+  "assets": {
+    "checksums.json": {
+      "anonymously_verified": true,
+      "bytes": 1635,
+      "sha256": "5b8f3021462263cd86480a53a3cc0ea19465064e3660c430d9255920f133e6b8",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymously_verified": true,
+      "bytes": 14943668,
+      "sha256": "2377ea253d33b88af3146bad4e2a52c9936d97b178c00a4fa0e3be022aadeae1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/complete-analysis.zip"
+    },
+    "complete-decisions.csv": {
+      "anonymously_verified": true,
+      "bytes": 12825,
+      "sha256": "7534962034071ba919dcab41a602119ce865d7816f3f3e9ba16238194cefea81",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/complete-decisions.csv"
+    },
+    "complete-endpoints.csv": {
+      "anonymously_verified": true,
+      "bytes": 32226,
+      "sha256": "b2b8a88dc19c216d4fdafa51da6c0c98c3d0c6cb70fd308d616c5d6c5ae377e6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/complete-endpoints.csv"
+    },
+    "complete-result.json": {
+      "anonymously_verified": true,
+      "bytes": 1390209,
+      "sha256": "19f93295a5354717dcb44c75c6f8f5a528e733638141782380849df213688677",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/complete-result.json"
+    },
+    "complete-scenarios.csv": {
+      "anonymously_verified": true,
+      "bytes": 120231,
+      "sha256": "21624fefbb9b0e403619bbac2ae1a5fb942675d4b75720a0c1983d88088edeac",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/complete-scenarios.csv"
+    },
+    "complete-synthetic-cells.csv": {
+      "anonymously_verified": true,
+      "bytes": 950691,
+      "sha256": "3c1a4b5fd5538964a7320af0ffc646fda9863157835a4cb2d60b6eb18b0f1e17",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/complete-synthetic-cells.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "anonymously_verified": true,
+      "bytes": 606,
+      "sha256": "d16822e9290c10a438aff552318d0145094b5b4379f7f5f6eb3ed1855af0dc27",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "anonymously_verified": true,
+      "bytes": 606,
+      "sha256": "d16822e9290c10a438aff552318d0145094b5b4379f7f5f6eb3ed1855af0dc27",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/fresh-reproduction-02.json"
+    },
+    "independent-verification.json": {
+      "anonymously_verified": true,
+      "bytes": 368,
+      "sha256": "5fa767a3c34aa759b0964edf9a0502ca2a68eb810f56d47bade40ad401de3eb1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/independent-verification.json"
+    },
+    "manifest.json": {
+      "anonymously_verified": true,
+      "bytes": 2238,
+      "sha256": "a7d3545f73e51bf968b2d95cbd0ced06a1da5f2e62bee3213a267c73098f83b1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/manifest.json"
+    },
+    "package-receipt.json": {
+      "anonymously_verified": true,
+      "bytes": 691,
+      "sha256": "d503661d6d7bfabc0160330b2c82c5fc0f63aad0ec88fd3d2a180106569de726",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/package-receipt.json"
+    },
+    "viewer-data.json": {
+      "anonymously_verified": true,
+      "bytes": 377542,
+      "sha256": "256c17ca619bfca33e00174ce9dc11bffd69f8b24f8cdfc555eeb3b83e0b323a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-return-constrained-20261111-01/viewer-data.json"
+    }
+  },
+  "calibrated_comparisons": 89,
+  "complete_fits": 801,
+  "fitted_not_independently_validated_histories": true,
+  "immutable": true,
+  "release_id": 442171871,
+  "scientific_source_commit": "07fee19a4e4130cf3603635e90af36faa0c26a0d",
+  "status": "passed_immutable_return_constrained_science",
+  "tag": "participation-return-constrained-20261111-01",
+  "unavailable": 24
+}
