@@ -54,14 +54,24 @@ D/R-only governor outside mass stays opaque; absent Other is not no contest vote
 Bounds are conditional on accounting frame, not CIs, actual people or additive
 net-margin contributions. See SOURCES.md and data/flow-identification/20261111-01.
 
-Website156bfa8/Pages43117213469 and independent browser43117281181 are pending
-actual CI artifact/production acceptance. Local20reader tests/Astro checks pass;
-local full build and canonical/session-record writes hit ENOSPC. Full build,
-real browser and exact artifact checks have moved to bounded CI jobs without
-changing the deployment workflow. Do not repeat accepted fits/science or claim
-this increment live yet. Canonical owned-doc sync baseline107c5c7 remains pending;
-remote main preserves concurrent automated snapshot16343fcc. Sole45minute120
-and broader project remain open. No Louisiana side-work restart.
+**Website156bfa8 is now verified live**, Pages43117213469/artifact13898329284:
+actual996785099payload/999372800tar bytes, both below strict1e9;67 exact
+unqueried production assets and436 unchanged complete-download pins. Live browser
+43117281181 checks1530state/view values,226state/office summaries, all113saved
+bounds/holds and real no-JS table; pointer/persistent selection,missing cases,
+no overflow/errors/valid-data overrides pass. Exact existing-artifact checker
+43118691759 passes. Original113model objects/113fitted decisions, counts, geometry
+and other catalog datasets are unchanged. Twenty reader tests/Astro checks and
+the complete CI build pass. No new panel, model fit or site rebuild for verification.
+
+The science and live interpretation increment is complete. **Only local record
+sync is blocked by ENOSPC**: canonical owned-doc baseline107c5c7 and current
+session SQL could not be updated. Current remote records are authoritative;
+when storage recovers, sync these three owned docs/new records UNINDEXED and
+mark only participation-flow-identification-20261111 complete. Do NOT repeat
+any accepted fits, reductions, publication, build or validation. Protected local
+heads/indexes/unrelated files remain exact. Remote main preserves concurrent
+snapshot16343fcc. Sole45minute120 and the broader project remain open.
 
 **User priority: the all-state swing model, not more peripheral source packages.**
 The November 11 screenshot exposed an atlas-wide mismatch between survey-recall

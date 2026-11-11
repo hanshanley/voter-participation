@@ -1,0 +1,16 @@
+{
+  "accepted_at_utc": "2026-11-11T23:21:09.060150+00:00",
+  "broader_project_complete": false,
+  "canonical_owned_doc_baseline": "107c5c72707e62c5dfa4d1d164a2c210bf038031",
+  "canonical_owned_doc_sync": "blocked_ENOSPC",
+  "continuation_minutes": 45,
+  "id": "participation-flow-identification-20261111",
+  "next_action": "When storage recovers: guarded unindexed sync of owned docs/new records and mark only this bounded SQL todo complete. Do not rerun accepted science, builds or validations.",
+  "protected_heads_indexes_unrelated_files_unchanged": true,
+  "research_scientific_source": "5402033954fd94a5f99ee4e244545ed7cdb6994e",
+  "session_sql_update": "blocked_ENOSPC",
+  "sole_continuation_id": 120,
+  "source_main_preserves_concurrent_snapshot": "16343fcc43f610133b717e8ab9c2c720f40e3165",
+  "status": "science_and_live_output_complete_local_tracking_sync_blocked",
+  "website_commit": "156bfa8bddf0aabd810ffcea1ede3fbbe7ccf1e3"
+}

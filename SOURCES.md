@@ -71,15 +71,27 @@ inputs/code/tests, every query/witness/constraint/certificate and the exact view
 All **13 full release assets** were anonymously verified byte-for-byte; no
 metadata-only substitution. Records: `data/flow-identification/20261111-01/`.
 
-Website **156bfa8** adds the compatible gross-switching range to the existing
-collapsed selected-state details and saved table, not a new panel or map.
-Twenty reader tests and Astro checks pass. Production acceptance is **pending**
-Pages **43117213469**, independent live browser **43117281181**, and the bounded
-artifact verifier. Local Astro compilation succeeded; existing chart export
-encountered ENOSPC, so the complete build and real acceptance run on CI. Do not
-claim this new interpretation live until those actual receipts pass. The original
-113 model objects, 113 constrained decisions, source counts, geometry, resident
-context and 436 complete-download pins must remain unchanged.
+Website **156bfa8 is verified live**: Pages **43117213469**, actual artifact
+**13898329284**, successful full build and exact copied-source credential guard.
+Actual **996,785,099 payload / 999,372,800 tar bytes** both pass the strict
+1,000,000,000-byte limit. All **67 checked unqueried production assets** match
+the actual artifact; all **436 complete-download pins** remain unchanged.
+Independent live browser **43117281181** checks **1,530 state/view values /
+226 state/office summaries**, all 113 saved gross-bound decisions, pointer and
+persistent selection, missing cases, no overflow and the actual no-JavaScript
+table. The exact artifact/production checker **43118691759** also passes.
+All original 113 model objects, 113 constrained decisions, source counts,
+geometry and other catalog datasets are preserved. No new panel or map.
+
+Twenty reader tests and Astro checks pass. Local chart export hit ENOSPC;
+CI completed the full build, browser and artifact checks on separate storage.
+The first temporary artifact checker had a quoting error; it was corrected and
+checked the SAME uploaded artifact, without another site build or old-model fit.
+Verification workflows remain branch-only, not production YAML changes.
+Complete production/browser records and screenshots are retained here. The
+canonical local owned-document and session-SQL sync remains blocked by ENOSPC;
+these current remote records supersede stale local progress. Do not repeat this
+accepted science/build/validation when storage recovers; only finish that sync.
 
 ## 2026 both-endpoint return-constrained transition scenarios
 

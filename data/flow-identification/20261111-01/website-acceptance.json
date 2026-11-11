@@ -1,0 +1,129 @@
+{
+  "accepted_at_utc": "2026-11-11T23:21:09.060150+00:00",
+  "broader_project_complete": false,
+  "browser_proof_artifact_id": 13899182844,
+  "browser_run_id": 43117281181,
+  "full_CI_build_passed": true,
+  "identified_staying_home": false,
+  "identified_switchers": false,
+  "local_astro_errors": 0,
+  "local_astro_warnings": 0,
+  "local_full_build_blocker": "ENOSPC; complete build accepted on CI",
+  "local_reader_tests_passed": 20,
+  "media": {
+    "data/flow-identification/20261111-01/media/browser.house-1440.png": {
+      "bytes": 145270,
+      "sha256": "18bc81a40616fb09cd6ae6565fb2e6185b4c5d4957e5941a926f733408fba845"
+    },
+    "data/flow-identification/20261111-01/media/browser.house-390.png": {
+      "bytes": 100127,
+      "sha256": "fc4de00b12dca97fae0a9678cef51332c5ee209f49af403835addfcf2711af80"
+    },
+    "data/flow-identification/20261111-01/media/browser.house-detail-1440.png": {
+      "bytes": 176960,
+      "sha256": "f5ac631d6a188d7b20caee2ce648acc6ec1c2f00bf2e3c935ce155d1aba9cd18"
+    },
+    "data/flow-identification/20261111-01/media/browser.house-detail-390.png": {
+      "bytes": 159654,
+      "sha256": "8851d365cc8a9e50d0d2606b2fdb2c5a306b38b902eec0c6d21579d1958c41b9"
+    }
+  },
+  "new_partisan_fit_performed": false,
+  "original_models_and_all436_full_downloads_preserved": true,
+  "pages_artifact_id": 13898329284,
+  "pages_run_id": 43117213469,
+  "production_browser": {
+    "all_89_central_frames_allow_zero_switching": true,
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 50,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "house",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 390
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 35,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "senate",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 390
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 28,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "governor",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 390
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 50,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "house",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 1440
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 35,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "senate",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 1440
+      },
+      {
+        "actual_pointer_selection": true,
+        "all_office_state_summaries": 28,
+        "archived_113_models_retained": true,
+        "exact_state_view_values": 255,
+        "no_horizontal_overflow": true,
+        "no_unmodeled_balancing_term": true,
+        "office": "governor",
+        "one_map": true,
+        "shared_signed_scale": true,
+        "state_selection_preserved_across_views": true,
+        "width": 1440
+      }
+    ],
+    "exact_gross_switching_bounds_and_holds": 113,
+    "fit_not_independent_behavioral_validation": true,
+    "no_js_bounds_and_holds_verified": true,
+    "no_new_fitted_models": true,
+    "status": "passed_all_state_office_return_constrained_maps",
+    "valid_data_overrides": false
+  },
+  "production_verification_passed": true,
+  "scientific_release_id": 442279581,
+  "status": "passed_actual_live_conditional_flow_interpretation",
+  "website_commit": "156bfa8bddf0aabd810ffcea1ede3fbbe7ccf1e3"
+}
