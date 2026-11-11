@@ -1,0 +1,68 @@
+{
+  "at_utc": "2026-11-11T21:45:58.087349+00:00",
+  "branch": "diagnostic/actions-startup-20261111",
+  "commit": "935d197933e146cfa0d2accb48096dd13a1b34cb",
+  "inference": "Both standard and maximum queues started successfully; no evidence supports changing the existing valid queue syntax.",
+  "production_workflow_changed": false,
+  "runs": [
+    {
+      "complete_workflow": "name: Startup diagnostic - standard queue\n\non:\n  push:\n    branches: [diagnostic/actions-startup-20261111]\n\npermissions: {}\n\nconcurrency:\n  group: startup-baseline-${{ github.ref }}\n  cancel-in-progress: false\n\njobs:\n  probe:\n    runs-on: ubuntu-latest\n    timeout-minutes: 1\n    steps:\n      - name: Confirm runner startup\n        run: printf 'Hosted runner startup reached\\n'\n",
+      "conclusion": "success",
+      "head_sha": "935d197933e146cfa0d2accb48096dd13a1b34cb",
+      "id": 43105585347,
+      "jobs": [
+        {
+          "conclusion": "success",
+          "id": 130807933440,
+          "name": "probe",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job"
+            },
+            {
+              "conclusion": "success",
+              "name": "Confirm runner startup"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job"
+            }
+          ]
+        }
+      ],
+      "workflow_sha256": "aa65dca5efa989fa768b7c26d92e751c3771104ec5c76a9ac3dc6e3b434ca7d3"
+    },
+    {
+      "complete_workflow": "name: Startup diagnostic - maximum queue\n\non:\n  push:\n    branches: [diagnostic/actions-startup-20261111]\n\npermissions: {}\n\nconcurrency:\n  group: startup-max-${{ github.ref }}\n  cancel-in-progress: false\n  queue: max\n\njobs:\n  probe:\n    runs-on: ubuntu-latest\n    timeout-minutes: 1\n    steps:\n      - name: Confirm runner startup\n        run: printf 'Hosted runner startup reached\\n'\n",
+      "conclusion": "success",
+      "head_sha": "935d197933e146cfa0d2accb48096dd13a1b34cb",
+      "id": 43105585333,
+      "jobs": [
+        {
+          "conclusion": "success",
+          "id": 130807933433,
+          "name": "probe",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job"
+            },
+            {
+              "conclusion": "success",
+              "name": "Confirm runner startup"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job"
+            }
+          ]
+        }
+      ],
+      "workflow_sha256": "9c884ad1d11896452ce18e14a08ec77160404d84f74642cd1219f6873b8875ca"
+    }
+  ],
+  "scientific_models_rerun": false,
+  "site_builds_triggered_by_diagnostics": 0,
+  "status": "passed_both_isolated_startup_controls"
+}

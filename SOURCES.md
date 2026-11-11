@@ -102,18 +102,29 @@ have a server-rendered table and sum-preserving display rounding. Local real
 desktop/phone tests check **1,530 state/view values and 226 state/office
 summaries**, selection and unavailable cases, without valid-data overrides.
 Eighteen reader tests, Astro checks/build and both responsive screenshots pass.
-Production acceptance is **blocked on GitHub Actions startup/scheduling**.
-Push run **43095898386** and main guard **43095898371** remain pre-job queued.
-Explicit recovery **43097363368** first ended `startup_failure`; its public
-annotation reports an **unexpected GitHub internal error**, request
-`79366489-de10-11f1-841c-aca5b4bc9cb0`, not a model or YAML diagnostic. One rerun
-was requested and also ended `startup_failure`, again with zero jobs and zero
-artifacts. The workflow is byte-identical to the
-last successful revision. Normal/force-cancel both return409 saying the run
-is not yet queued internally. The unqueried production page still serves the old model;
-**this is not a live-verified correction**. Check these existing runs, not a new
-duplicate build, then verify actual artifact limits and the production browser.
-The old 436 complete-download pins remain byte-identical.
+**Production acceptance passed November 11 at 21:57 UTC.** Fresh Pages run
+**43106318180** successfully built and deployed the unchanged revision;
+artifact **13893564445** contains **996,768,461 payload / 999,362,560 tar
+bytes**, both below the strict 1,000,000,000-byte limit. All **67 checked
+unqueried live assets** match actual CI artifact hashes, and the original
+**436 complete-download pins** remain byte-identical. The exact copied-source
+credential guard passed in build job **130810475808**.
+Actual production desktop/phone checks pass all **1,530 state/view values /
+226 state/office summaries**, pointer and persistent selection, unavailable
+states, shared signed scale and no horizontal overflow or valid-data overrides.
+Both responsive screenshots were inspected. Full embedded-data comparison
+confirms all **113 original model objects** and the complete **113 new
+decisions** remain exact, with both server-rendered tables present.
+
+The earlier `startup_failure`/zero-job incidents are preserved in the
+pending/recovery/blocker records. Bounded isolated standard/max-queue controls
+**43105585347 / 43105585333** both succeeded before the fresh dispatch.
+No diagnostic workflows were merged into main and no production YAML or
+numerical model changed during recovery. This establishes operational recovery,
+not the internal cause of GitHub's initial failures. The new
+`actions-startup-diagnostic.json`, `website-acceptance.json` and
+`production-acceptance.json` retain full controls, browser results and actual
+artifact/live hashes. No accepted source reductions or fits were repeated.
 
 Records: `data/return-constrained/20261111-01/`. Counts, native geometry,
 resident context and the separate original survey-frame scenario dataset are
