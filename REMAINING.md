@@ -42,7 +42,7 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
-**Scientific publication completed; active next step: one-map simulation integration.**
+**Completed and verified live: conditional transition scenarios in the existing map.**
 The conditional transition model is public in immutable science **441189732**,
 tag `participation-transition-simulation-20261111-01`, from research source
 **ddfabf7**. All seven full assets are anonymously byte/hash verified. The
@@ -57,20 +57,29 @@ separate demographic seed cases, 1,530 demographic decisions / 671 disclosed
 groups, 113 unfitted return checks, 89 exact same-office reconciliations and
 2,754 historical qualification decisions are included. Current-voter gross
 switching calibrates persistence without fitting partisan returns; state-held-out
-MAE1.39 pp versus fixed-factor-16 MAE1.40 pp is not evidence of materially better
+MAE 1.39 pp versus fixed-factor-16 MAE 1.40 pp is not evidence of materially better
 population prediction. Cross-office transport, demographic party associations,
 historical joint truth and population/design uncertainty remain unqualified.
 Held groups stay null; no state effects are allocated to counties/precincts.
 
-**No new simulation view is live yet.** Integrate restrained keep/switch/modeled
-nonparticipation scenario options into the existing single map, retaining office
-and source-frame qualifications, unavailable categories, uncertainty distinctions
-and exact reported-swing residuals. Use an external verified dataset: its compact
-viewer is1,900,104 bytes and must not consume the native tar headroom. Preserve
-all113 original models/all436 full routes, actual source pin and strict native
-payload/tar<1e9. Verify real catalog promotion, browser behavior, actual artifact
-and exact production before calling the interface live. Do not add a tab,
-sidebar inventory or measured-staying-home/individual-history claims.
+The existing single map now includes keep/switch/modeled-nonparticipation options
+and source-group filters at website **38a6e71**. Actual Pages **42954156305** /
+guard **42954156464** / artifact **13825843761** pass **996,310,309 payload /
+998,891,520 tar bytes**, 62 exact unqueried assets and all 436 old complete
+downloads. All 128 actual-public scenario cases, 176 native / 308 count /
+78 resident / 59 geography / 24 original map / 32 layout cases and every field
+of all 113 original models pass. Production phone/desktop images were inspected.
+No new tab, sidebar, local allocation or observed-staying-home claim was added.
+
+The separate dataset **6d90035**, staged **ba863590** / catalog **7c9d73a6**,
+has all three immutable files verified, all prior entries unchanged and zero
+builds for data activation. The unchanged production loader read the actual
+50-state / 1,530-decision data before code activation. The **1,900,104-byte** viewer
+is external, not added to the Pages tar. Do not republish or rerun this accepted
+science/data/build/production work. The bounded simulation stage and its
+approved integration are delivered; broader source/access/coverage gaps below
+remain separate, not retrospectively filled by simulation.
+Final records: `data/participation-access/20261111-transition-simulation-ui-02/`.
 
 **Completed and verified live: common native count/reference reader and coverage.**
 Website **e588860**, Pages **42939815222**, main guard **42939815230** and

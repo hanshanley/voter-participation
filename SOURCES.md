@@ -72,14 +72,39 @@ relative-entropy stationarity, not just moment feasibility. Two fresh
 network/external-command-blocked reproductions produce every result/viewer byte
 identically under different hash seeds, with numerical warnings fatal.
 
-This is **scientific publication, not a new live map view**. The immutable
-website release anchor remains **6ee8416**; the implementation source is the
-separately published research commit above. The next step is restrained tested
-integration into the existing one-map interface, preserving all prior models,
-routes and complete downloads. No state survey model is allocated to precincts.
-Source weights/draws are not people; modeled nonvoters are not administrative
-staying home; eligibility/death/migration and design CIs remain null.
-Records: `data/participation-access/20261111-transition-simulation-01/`.
+The conditional scenarios are now **verified live in the existing single map**
+at website **38a6e71**. Keep-party-choice, switch-party-choice and modeled
+nonparticipation views have demographic/source-group selection and a sequential
+share scale, separate from the unchanged signed swing views. Clicking a state
+retains the selected office/group and shows the five exhaustive gross outcomes,
+half/double-strength envelope and separate whole-state reconciliation. Missing
+groups and D.C. remain gray/unavailable, never zero. No tab or sidebar was added.
+
+The independent `transition-scenarios-2026` dataset is version **6d90035**,
+staged **ba863590** / catalog **7c9d73a6**. Both runtime files and descriptor
+are anonymously verified; all three older catalog entries are unchanged.
+Data activation preserved all protected HEADs/indexes and main/run IDs:
+**zero website builds**. The unchanged actual production **6ee8416** loader read all
+50 states / 1,530 decisions before the separate code activation. The 1.9 MB
+scientific viewer stays external; its runtime gzip is **271,073 bytes**.
+
+Actual Pages **42954156305** / guard **42954156464** / artifact **13825843761**
+pass **996,310,309 payload / 998,891,520 tar bytes**, all **62** exact unqueried
+assets and **436** preserved complete-download routes. All **128** new real-public
+scenario cases pass across office/group/view combinations on phone and desktop,
+including checksum rejection/retry and late-response isolation. All prior
+176 native, 308 count, 78 resident, 59 geography, 24 original map and 32 layout
+cases pass; every field of all 113 original models is unchanged. Production
+phone/desktop images were inspected. Thirteen focused frontend tests, Astro
+check and the full build pass. Existing unrelated source hints and the known
+legacy Methods-selector validator limitation are not claimed fixed.
+
+The immutable scientific release anchor remains **6ee8416**; its implementation source
+is the separately published research commit above. Source weights/draws are not
+people; modeled nonvoters are not administrative staying home; no state model
+is allocated to precincts. Eligibility/death/migration and design CIs remain null.
+Science records: `data/participation-access/20261111-transition-simulation-01/`.
+Final live records: `data/participation-access/20261111-transition-simulation-ui-02/`.
 
 ## Additional matched-reference resident context
 
