@@ -42,6 +42,37 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**1998 voting points are integrated into the existing historical view, verified live.**
+Website **84ce048**, sole Pages **43063989329**, main guard **43063989413** and
+artifact **13874379278** pass actual **996,331,113 payload / 998,922,240 tar
+bytes**, 66 exact unqueried assets and all 436 unchanged full-download pins.
+The same default-closed **Source studies & supporting analyses → Historical
+participation and demographic comparisons** section exposes **355 available
+1998 voting points**, using its existing state/group controls and a pinned
+lazy source. No new homepage panel, tab or data-catalog activation.
+
+The 1998 source-adult row and its printed SE stay separate from the citizen
+chart and 2002 precision scalars. Four older labels explicitly span 1998/2002;
+the distinct 1998 non-Hispanic API choice never aliases broader 2002 API or
+modern race-alone categories. Old programmatic 2002 aliases remain available.
+No margin, source repair or chart connection is invented. All original
+**642 selected 2002 points**, **13,156** citizen-history query cells, native
+margins, gaps, 2004 baseline, source tables and full downloads are preserved.
+
+Six new/five old reader tests, 23 existing guards, type-check/full build and
+actual local/live suites pass. Every desktop/phone run checks **1,508 new
+selections** and **3,016 old 2002 selections** across **52 geographies /
+29 options**, plus all **13,156** original cells/**6,788 points/1,441 gap-safe
+segments**. JS/no-JS, source failure/corruption, delayed-response/latest-selection
+isolation and no-overflow pass without valid-data overrides or browser errors.
+All **113** original model objects/saved rows and four checksum-checked catalog
+readers remain intact; catalog **a1e3cb15** is unchanged. Production screenshots
+were reviewed. Science **441905879** is reused unchanged; no old acquisition,
+reduction or scientific package publication repeated.
+Records: `data/participation-access/20261111-cps-1998-history-ui-01/`.
+Do not rebuild or repeat acceptance for this completed increment. Broader
+native/precinct coverage, demographic transport and source-category gaps remain open.
+
 **1998 native state demographic points and midterm comparisons are complete.**
 Scientific source **f6c4291**, immutable science **441905879**, tag
 `participation-cps-1998-state-points-20261111-01`, publish all **468 rows /

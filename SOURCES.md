@@ -9,7 +9,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Reference area | Jump to |
 |---|---|
 | Latest source-defined 2026 participation history | [Direct MEVP state/group profiles](#2026-mevp-direct-state-participant-history-and-experiences) |
-| Latest deployed history view | [Separate 2002 source points](#2002-cps-points-in-the-existing-historical-view) |
+| Latest deployed history view | [Separate 1998 and 2002 source points](#1998-points-in-the-existing-historical-view) |
 | Latest historical participation extension | [1998 native state points and midterm snapshots](#1998-cps-native-state-demographic-points-and-midterm-snapshots) |
 | Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
 | Latest missing-count integration | [Four Utah native county totals](#2026-utah-four-native-county-count-successors) |
@@ -31,6 +31,47 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 1998 points in the existing historical view
+
+The qualified 1998 voting points are now **verified live**, alongside the
+unchanged 2002 points, inside the existing default-closed **Source studies &
+supporting analyses → Historical participation and demographic comparisons**
+section. No new homepage panel or tab is added. The same state/group controls
+expose **355 available 1998 voting points** across the 52 geography choices.
+The source is checksum-pinned and lazy until the history details open.
+Its full result SHA256 remains
+`0b1e80744e3a24145aa2494c3581e602b458cb3330806d64f8757a32ab4c6a19`.
+
+The 1998 row uses **source adults 18+**, never citizen turnout. Its directly
+printed SE is labeled as an SE, **not a 90% margin**. Source suppression stays
+unavailable; no point or uncertainty is reconstructed. Four compatible older
+labels explicitly say 1998/2002, while old 2002 programmatic aliases remain
+supported. A separate 1998 non-Hispanic Asian/Pacific Islander option never
+aliases the broader 2002 API or modern race-alone categories.
+Neither early all-adult row connects to the citizen chart. The separate 2002
+citizen-overall row, all **642** selected distinct 2002 points and their
+unqualified workbook margins remain unchanged.
+
+Website **84ce048728f9e159db9798f634c07fff8a0c92cc**, sole Pages
+**43063989329**, main guard **43063989413**, and artifact **13874379278** pass
+actual **996,331,113 payload / 998,922,240 tar bytes**, both strictly below 1e9.
+All **66** checked unqueried production assets match the exact native artifact,
+and all **436** old complete-download pins remain unchanged. Two new links
+reuse the existing full 1998 science ZIP and all-1,404-metric CSV; no new
+source acquisition, scientific reduction or package publication was repeated.
+
+Six new reader tests, five preserved 2002 reader tests and 23 existing guards
+pass, as do Astro check and the full build. Actual desktop/phone acceptance
+checks **1,508** 1998 selections and **3,016** preserved 2002 selections per
+screen across **52 geographies / 29 options**. All old **13,156** history cells,
+**6,788** plotted points and **1,441** gap-safe segments per screen pass.
+No-JavaScript, failed/corrupt source, late-response selection isolation and
+overflow checks pass with no valid-data overrides or browser errors.
+All **113** model objects/saved rows and all four checksum-checked catalog
+readers remain intact; catalog **a1e3cb15** and geometry/count/scenario datasets
+are unchanged. Desktop and phone production layouts were visually inspected.
+Records: `data/participation-access/20261111-cps-1998-history-ui-01/`.
 
 ## 1998 CPS native state demographic points and midterm snapshots
 
@@ -91,7 +132,8 @@ complete query. Seven tests, **37,044 independent checks** and two fresh
 warning-fatal network/external-command-blocked reproductions pass all output
 bytes. Native original whitespace is retained, not reformatted.
 Inputs and records: `data/participation-cps-1998-state-points/20261111-01/`.
-Website **c1357ec** and catalog **a1e3cb15** are unchanged; zero new website builds.
+At scientific publication, website **c1357ec** and catalog **a1e3cb15** were
+unchanged with zero new builds. The separately tested presentation is above.
 
 Separately, the bounded primary SSRS/AP route review still does not resolve
 the actual race/ethnicity question, Hispanic priority, multiracial/nonresponse
