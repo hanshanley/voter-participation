@@ -1,0 +1,17 @@
+{
+  "artifact_diagnostic_commit": "79a5e3cd3c5cfa0241cd7633bcd3aa702b3f111d",
+  "broader_project_complete": false,
+  "browser_run_id": 43117281181,
+  "canonical_owned_doc_baseline": "107c5c72707e62c5dfa4d1d164a2c210bf038031",
+  "canonical_sync_and_session_sql_blocked_by_local_storage": true,
+  "local_astro_build_passed": true,
+  "local_astro_errors": 0,
+  "local_astro_warnings": 0,
+  "local_full_build_blocker": "ENOSPC during unrelated existing chart exports; full build and acceptance moved to CI",
+  "local_reader_tests": 20,
+  "old_astro_hints": 8,
+  "pages_run_id": 43117213469,
+  "single_continuation_id": 120,
+  "status": "production_acceptance_in_progress",
+  "website_commit": "156bfa8bddf0aabd810ffcea1ede3fbbe7ccf1e3"
+}

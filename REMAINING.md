@@ -42,6 +42,27 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**New core interpretation check: aggregate-compatible flow bounds, science complete.**
+All 89 comparable central frames permit zero D/R switching, so return reconciliation
+does not identify the fitted behavioral split. Complete release **442279581** has
+all 113 decisions/24 holds, 1,912 sharp bounds, 224 metric holds, 3,824 full extremal
+tables and all 806,912 cut certificates/checks. Eight tests, 930,069 independent
+exact checks and two fresh six-output offline reproductions pass. Entire accepted
+predecessor and all sufficient code/inputs/results are in the 15,444,633-byte ZIP;
+all 13 full assets anonymously verified. No new fitting or old reductions.
+D/R-only governor outside mass stays opaque; absent Other is not no contest vote.
+Bounds are conditional on accounting frame, not CIs, actual people or additive
+net-margin contributions. See SOURCES.md and data/flow-identification/20261111-01.
+
+Website156bfa8/Pages43117213469 and independent browser43117281181 are pending
+actual CI artifact/production acceptance. Local20reader tests/Astro checks pass;
+local full build and canonical/session-record writes hit ENOSPC. Full build,
+real browser and exact artifact checks have moved to bounded CI jobs without
+changing the deployment workflow. Do not repeat accepted fits/science or claim
+this increment live yet. Canonical owned-doc sync baseline107c5c7 remains pending;
+remote main preserves concurrent automated snapshot16343fcc. Sole45minute120
+and broader project remain open. No Louisiana side-work restart.
+
 **User priority: the all-state swing model, not more peripheral source packages.**
 The November 11 screenshot exposed an atlas-wide mismatch between survey-recall
 contrasts and observed same-office returns. A 22.41-point Other/unallocated

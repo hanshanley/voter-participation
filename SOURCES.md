@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Constraint-only flow bounds | [Aggregate-compatible gross flows](#2026-aggregate-compatible-gross-flow-bounds) |
 | Atlas-wide swing model correction | [Both-endpoint return-constrained scenarios](#2026-both-endpoint-return-constrained-transition-scenarios) |
 | Latest source-native 2026 group counts | [Louisiana early/absentee compositions](#2026-louisiana-source-native-early-group-counts-and-compositions) |
 | Latest source-defined 2026 participation history | [Direct MEVP state/group profiles](#2026-mevp-direct-state-participant-history-and-experiences) |
@@ -33,6 +34,52 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 aggregate-compatible gross-flow bounds
+
+The return-constrained split is not identified by the observed endpoints. New
+constraint-only calculations retain all **113 decisions / 89 comparable cases /
+24 unavailable** and compute **356 explicitly conditioned accounting frames**:
+the three already-declared common-frame sizes plus a separately labeled
+large-frame mathematical counterexample. There is **no new partisan fitting**.
+All **89 central frames allow zero D/R switching**; all 89 gross-switching ranges
+are nondegenerate. The fitted switching contribution is therefore an assumption,
+not a quantity required by those aggregate returns.
+
+All **1,912 sharp metric bounds / 224 explicit holds / 3,824 extremal tables**
+include exact source endpoints and dual cut certificates. Independent verification
+passes **930,069 exact checks / 806,912 network-cut evaluations**, with eight
+focused tests and two fresh offline reproductions of all **six full outputs**.
+No accepted source reduction or fitted simulation is repeated. Other supplied at
+both endpoints uses DRON; D/R-only governor frames use an **opaque X**, not zero
+Other or measured nonvote. Separate Other/no-contest-vote bounds stay unavailable.
+Entry into D/R can include prior Other choices; it is not first-ever voting.
+
+These are continuous accounting-unit bounds **conditional on an assumed frame**,
+not measured people, eligible population, confidence intervals, no-ballot histories
+or net-margin contribution intervals. Separate extrema are not jointly attainable
+partitions. A separately labeled large frame admits one zero-retention AND
+zero-switching table for every case while preserving all recorded endpoints;
+that construction is not an additional fitted estimate or an observed history.
+
+Scientific source **5402033954fd94a5f99ee4e244545ed7cdb6994e**, immutable release
+**442279581**, tag `participation-flow-identification-20261111-01`. The full
+**15,444,633-byte / 15-member ZIP**, SHA256
+`93a5c627f54509d2002b80524a763cc059a96601013d62fad65f0866e9e5464f`,
+includes the **entire 14,943,668-byte accepted predecessor**, complete sufficient
+inputs/code/tests, every query/witness/constraint/certificate and the exact viewer.
+All **13 full release assets** were anonymously verified byte-for-byte; no
+metadata-only substitution. Records: `data/flow-identification/20261111-01/`.
+
+Website **156bfa8** adds the compatible gross-switching range to the existing
+collapsed selected-state details and saved table, not a new panel or map.
+Twenty reader tests and Astro checks pass. Production acceptance is **pending**
+Pages **43117213469**, independent live browser **43117281181**, and the bounded
+artifact verifier. Local Astro compilation succeeded; existing chart export
+encountered ENOSPC, so the complete build and real acceptance run on CI. Do not
+claim this new interpretation live until those actual receipts pass. The original
+113 model objects, 113 constrained decisions, source counts, geometry, resident
+context and 436 complete-download pins must remain unchanged.
 
 ## 2026 both-endpoint return-constrained transition scenarios
 

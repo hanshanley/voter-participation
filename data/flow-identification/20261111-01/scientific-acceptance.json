@@ -1,0 +1,86 @@
+{
+  "all89central_frames_allow_zero_switching": true,
+  "bounds_are_not_confidence_intervals": true,
+  "complete_query_download": true,
+  "independently_identified_people": false,
+  "new_partisan_fitting": false,
+  "package": {
+    "archive": {
+      "bytes": 15444633,
+      "sha256": "93a5c627f54509d2002b80524a763cc059a96601013d62fad65f0866e9e5464f"
+    },
+    "independent": {
+      "all_cut_evaluations": 806912,
+      "checks": 930069,
+      "complete_decisions": 113,
+      "explicit_metric_holds": 224,
+      "extremal_primal_tables": 3824,
+      "frame_cases": 356,
+      "numerical_tolerance_used": false,
+      "prior_fits_or_source_reductions_rerun": false,
+      "sharp_metric_bounds": 1912,
+      "simultaneous_zero_retention_switching_counterexamples": 89,
+      "status": "passed_independent_exact_primal_and_all_cut_verification"
+    },
+    "members": 15,
+    "source_commit": "5402033954fd94a5f99ee4e244545ed7cdb6994e",
+    "status": "complete_conditional_gross_flow_bounds_package",
+    "summary": {
+      "available": 89,
+      "bounded_metrics": 1912,
+      "frame_cases": 356,
+      "held_metrics": 224,
+      "large_frame_counterexamples": 89,
+      "primal_witnesses": 3824,
+      "total_decisions": 113,
+      "unavailable": 24
+    }
+  },
+  "reproductions": [
+    {
+      "all_six_query_outputs_byte_identical": true,
+      "independent": {
+        "all_cut_evaluations": 806912,
+        "checks": 930069,
+        "complete_decisions": 113,
+        "explicit_metric_holds": 224,
+        "extremal_primal_tables": 3824,
+        "frame_cases": 356,
+        "numerical_tolerance_used": false,
+        "prior_fits_or_source_reductions_rerun": false,
+        "sharp_metric_bounds": 1912,
+        "simultaneous_zero_retention_switching_counterexamples": 89,
+        "status": "passed_independent_exact_primal_and_all_cut_verification"
+      },
+      "network_and_external_commands_blocked": true,
+      "original_fits_or_source_reductions_rerun": false,
+      "status": "passed_offline_exact_gross_flow_bounds",
+      "tests_passed": 8
+    },
+    {
+      "all_six_query_outputs_byte_identical": true,
+      "independent": {
+        "all_cut_evaluations": 806912,
+        "checks": 930069,
+        "complete_decisions": 113,
+        "explicit_metric_holds": 224,
+        "extremal_primal_tables": 3824,
+        "frame_cases": 356,
+        "numerical_tolerance_used": false,
+        "prior_fits_or_source_reductions_rerun": false,
+        "sharp_metric_bounds": 1912,
+        "simultaneous_zero_retention_switching_counterexamples": 89,
+        "status": "passed_independent_exact_primal_and_all_cut_verification"
+      },
+      "network_and_external_commands_blocked": true,
+      "original_fits_or_source_reductions_rerun": false,
+      "status": "passed_offline_exact_gross_flow_bounds",
+      "tests_passed": 8
+    }
+  ],
+  "scientific_source": "5402033954fd94a5f99ee4e244545ed7cdb6994e",
+  "separate_extrema_not_joint_partitions": true,
+  "source_models_reduced_again": false,
+  "status": "passed_complete_conditional_gross_flow_science",
+  "unknown_other_not_imputed": true
+}
