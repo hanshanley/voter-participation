@@ -42,6 +42,31 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**Four Utah missing-count successors are complete and verified live.**
+Piute **737**, Kane **3,395**, Millard **4,149**, and Cache **42,549** are explicit
+native ballot totals from already-held November 10 reports, not candidate votes.
+Scientific source **ffab1d9**, immutable science **441593451**, and final data
+catalog **a1e3cb15** publish the bounded increment. All **12 full assets** are
+anonymously byte/hash verified; the **232,295,601-byte / 266-member** packet
+includes the entire accepted predecessor, full new inputs/code/tests/query/runtime.
+Two fresh blocked-network/Node-command reproductions pass **22 tests / 929
+independent checks** with every runtime/query byte identical; **487** workbook
+cells were independently compared. No accepted source/reduction was repeated.
+
+Utah now has **23/29 known selected county counts**, not 29 observed or final
+totals. The six remaining unresolved counties are **Daggett, Garfield, Iron,
+Morgan, San Juan and Wasatch**. All 147 old source observations, previous 19
+counts/18 rates, early/mail frames and unchanged 2024 contextual geometry are
+retained; no new rates, statewide total or precinct allocations are inferred.
+Native **67d36be3** activated before counts **d6308370**. Actual desktop/phone
+checks passed all four modes, 29 count/rate attributes and **80 real pointer
+cases**, including the six holds, with no overflow/browser errors. All 113
+original model objects/saved rows and other catalog entries are preserved.
+Website **78df729** is unchanged; zero new website builds.
+Records: `data/participation-count-successors/20261111-ut-01/`.
+Do not rerun this accepted increment. The denied Cache workbook route remains
+stopped; its distinct cached summary PDF supplied its explicit ballot total.
+
 **Demographic/geographic persistence test complete: retain the live baseline.**
 The five-candidate cached-input experiment is public in immutable science
 **441510341**, tag `participation-adaptive-persistence-20261111-01`, with all
@@ -79,11 +104,11 @@ accepted UI/build work as a substitute for unresolved research.
 
 The broader historical/native/precinct coverage gaps remain separate below.
 County-count filling cannot by itself identify individual party transitions;
-it is not a gate for the delivered conditional simulation. The retained Utah
-successor originals remain a separate paused backlog, not new qualified counts.
-If resumed, reuse those originals and keep the denied Cache workbook route
-stopped. Do not reacquire accepted sources or reinterpret source activity,
-missing values or resident profiles as observed group turnout.
+it is not a gate for the delivered conditional simulation. Utah's four supported
+cached successors are now integrated above; six other counts remain unresolved.
+Keep the denied Cache workbook route stopped. Do not reacquire accepted sources
+or reinterpret source activity, missing values or resident profiles as observed
+group turnout.
 
 **New Jersey's selected county references now cover all 21 source observations.**
 Generic source **18b3319** retains the 19 accepted exact-record-hash identities
@@ -528,7 +553,7 @@ jurisdiction. Alaska's county layer explicitly shows contest counts, not
 participation; its native precinct counts are a separate layer. Native county
 observations remain partial in Iowa (1/99), Kentucky (1/120), Michigan (2/83),
 Missouri (1/115), Nevada (4/17), Pennsylvania (43/67),
-Utah (19/29) and Wisconsin (1/72). Shape counts are not observed-count coverage,
+Utah (23/29) and Wisconsin (1/72). Shape counts are not observed-count coverage,
 and provider early/returned activity is not complete-election participation.
 New Jersey now has 21/21 selected county observations after the qualified
 November 10 Essex/Hudson extension above, not 21 certified full-election totals.

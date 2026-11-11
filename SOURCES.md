@@ -9,6 +9,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Reference area | Jump to |
 |---|---|
 | Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
+| Latest missing-count integration | [Four Utah native county totals](#2026-utah-four-native-county-count-successors) |
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
 | Latest local integration | [Minnesota complete statistics](#2026-minnesota-complete-native-statistics), [Nevada county snapshots](#2026-nevada-distinct-county-participation-snapshots), [source-mode frame review](#2026-local-source-mode-frame-review), [Alabama county counts](#2026-alabama-native-county-ballots-cast), [earlier Minnesota follow-up](#2026-minnesota-native-county-and-precinct-follow-up), [four-city NH wards](#2026-native-ward-counts-in-four-new-hampshire-cities) |
 | Administrative counts and registration | [Primary sources](#primary-administrative-data-and-population-denominators), [historical controls](#historical-administrative-participation-comparison), [Wyoming registers](#wyoming-declared-registration-reports-and-source-weighted-scenarios) |
@@ -27,6 +28,66 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 Utah four native county count successors
+
+Four already-held November 10 reports explicitly supply **Ballots Cast - Total**:
+Piute **737**, Kane **3,395**, Millard **4,149**, and Cache **42,549** for the
+November 3, 2026 general election. These are native ballot totals, not candidate
+selections, inferred processing subtotals or verified unique people. All seven
+successful PDF/XLSX originals were reused; no report was reacquired. The denied
+Cache workbook route remains stopped. Its distinct, already-held summary PDF
+provides the explicit count; its contest accounting is corroboration only.
+
+The full factual input preserves native aggregate cells, blank versus zero,
+Excel errors/formula strings, duplicated field identifiers, clocks and source
+qualifications. Independent raw-OOXML/openpyxl comparison agrees on **487 cells**.
+The image-only Piute/Kane summary facts were visually checked against the
+originals; Piute's OCR errors in completeness/percentage were corrected against
+the image, not by altering source facts. Unused certification identities and
+source presentation are excluded. Native registrations/printed percentages
+remain factual context, not new denominators or analysis rates. The three
+workbooks define active registrations as the Friday-before-election reference.
+Local OFFICIAL labels do not establish state-level official status or completed
+counting; native report times have no supplied timezone.
+
+Factual source **68c22a9** and generic compiler/reference source **ffab1d9** add
+only four explicitly hash-pinned missing-count successors. All **147** archived
+Utah source observations are retained, with **151** after extension. Each of the
+four selected official/context modes still contains **29** county rows:
+**23 known counts / six unresolved counts**, retaining the previous 19 counts
+and 18 analysis rates. Early/mail frames and other-state/runtime files are
+preserved. The same 29-feature **2024** contextual county geometry is retained
+byte-for-byte, including its existing overlaps. No 2026 election-boundary,
+precinct allocation, statewide total or individual-history claim is added.
+
+Immutable science **441593451**, tag
+`participation-utah-count-successors-20261111-01`, has all **12 full assets**
+anonymously byte/hash verified. The **232,295,601-byte / 266-member**
+[complete packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-utah-count-successors-20261111-01/complete-analysis.zip)
+contains the **entire 163,001,209-byte accepted predecessor archive**, all new
+sufficient facts, maintained code/tests, complete 29-county/151-history/174-mode
+and 29-reference queries, and both full runtimes. Archive SHA256:
+`9e753a4f8b363713f9752ba4448993250d9e49eaff68b196b20f0d72cc42e285`.
+Two fresh warning-fatal reproductions block network/Node child commands, pass
+all **22 tests / 929 independent checks**, and reproduce every runtime/query
+byte without reacquiring sources or repeating accepted predecessor reductions.
+
+Native **67d36be3** activates first, staged **383db69b** / catalog **aaff09cd**;
+counts **d6308370** follow, staged **b86b45b7** / final catalog **a1e3cb15**.
+All **31 Native / 54 count files**, both catalogs and complete-download pins
+were anonymously verified after the real frontend schema preflight.
+Production uses unchanged website **78df729**, with no new UI build.
+Actual desktop/phone acceptance covers all four modes, all 29 count/rate
+attributes and **80 real county-pointer cases**, including every unresolved
+county. Clocks, hover details, download links, nulls and all **113** original
+model objects/saved rows pass with no browser errors or overflow.
+
+Six selected county counts remain unresolved: Daggett, Garfield, Iron, Morgan,
+San Juan and Wasatch. They remain gray/missing, not zero. This completes only
+the bounded four-county increment, not nationwide/native/precinct coverage.
+Research records: `data/participation-count-successors/20261111-ut-01/`
+(`observations.json`, `publication.json`, `website-acceptance.json`).
 
 ## Demographic and geographic adaptive persistence: negative result
 
