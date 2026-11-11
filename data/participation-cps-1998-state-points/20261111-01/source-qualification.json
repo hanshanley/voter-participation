@@ -1,0 +1,20 @@
+{
+  "status": "inspected_primary_pages_do_not_resolve_required_category_operationalization",
+  "review_date": "2026-11-11",
+  "study": "The Voter Poll by SSRS",
+  "inspected_primary_pages": [
+    "https://ssrs.com/ssrs-solutions/voter-poll/",
+    "https://www.ap.org/elections/our-role-in-the-u-s-elections/how-we-survey-the-electorate/"
+  ],
+  "held_methodology_reacquired": false,
+  "finding": "The inspected pages and discovery results describe race/ethnicity questions but do not supply the actual response options, Hispanic priority, multiracial treatment, nonresponse coding or a complete CES-compatible operationalization.",
+  "questionnaire_absent_globally_claimed": false,
+  "cnn_and_nbc_web_routes_stopped_after_robots_denial": true,
+  "alternate_clients_caches_or_mirrors_used": false,
+  "historical_race_reductions_repeated": false,
+  "previous_private_12_row_diagnostics_recomputed": false,
+  "new_demographic_residual_published": false,
+  "cross_source_matching_qualified": false,
+  "next_required_input": "An actual primary SSRS race/ethnicity question and category-coding contract, together with precision, disclosure and changing-identity qualification.",
+  "continuing_distinct_supported_work": "Extend source-native historical state demographic participation using separately declared Census tables; do not harmonize these with SSRS."
+}

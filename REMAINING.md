@@ -42,6 +42,45 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**1998 native state demographic points and midterm comparisons are complete.**
+Scientific source **f6c4291**, immutable science **441905879**, tag
+`participation-cps-1998-state-points-20261111-01`, publish all **468 rows /
+4,680 literal metric cells** across **50 states, D.C. and US**, nine native
+groups and **1,404 metric decisions**. **711 registration/voting percentages**
+and **349 separate citizenship shares** are selected, with **1,059 directly
+printed SEs**, not new confidence intervals. All source-adult 18+ denominators,
+343 `(B)` measures, 32 literal dot counts, 14 actual zeros, ten zero SEs and
+both native `900.` percentage / `0.8.` SE defects remain unrepaired.
+Citizenship share is not turnout; rounded thousands are not N or exact persons.
+
+All **936** 1998-to-2002 group/metric decisions retain **675 compatible native-label
+snapshots**, **104 non-Hispanic-API/all-API holds**, 147 native 1998 metric holds
+and ten accepted 2002 holds. All **104** original/retrospective decisions retain
+**102 matching state percentages**; all **208** later same-VAP overall decisions
+retain **204 descriptive 2018/2022 differences** and four absent US endpoints.
+These are not harmonized definitions, cohorts, observed staying home or
+significant changes. No modern race alias, derived citizen turnout, invented
+interval, sample size, source repair, local allocation or model refit.
+
+All **13 full assets** are anonymously byte/hash verified. The complete
+**1,408,974-byte / 19-member** ZIP includes the entire native TXT, sufficient
+policy/provenance, whole **1,241,697-byte** accepted 2002 archive/full originals/
+older science, code/tests and full **2,820,598-byte** result/every query.
+Seven tests, **37,044 independent checks** and two fresh warning-fatal
+network/external-command-blocked reproductions match every full output byte.
+The denied Census HTML route stays stopped; a distinct native directory
+explicitly declared the successful original, not an alternate-client recovery.
+Records: `data/participation-cps-1998-state-points/20261111-01/`.
+Website **c1357ec**, catalog **a1e3cb15** and accepted models are unchanged;
+zero new builds. Do not repeat this completed bounded increment.
+
+The SSRS race semantic task remains **blocked**, not silently matched: inspected
+primary descriptions do not establish question/options, Hispanic priority,
+multiracial/nonresponse coding or CES compatibility. No old private reduction
+or new race residual was published. CNN/NBC web robots denials remain stopped.
+Resume this task only with genuine questionnaire/coding/precision/disclosure
+evidence. Broader demographic transport and native/precinct coverage remain open.
+
 **Direct MEVP state participant-history profiles are complete, research-only.**
 Scientific source **006563f** and immutable science **441835842**, tag
 `participation-mevp-state-profiles-20261111-01`, publish **11 direct state/group

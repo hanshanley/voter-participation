@@ -10,7 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Latest source-defined 2026 participation history | [Direct MEVP state/group profiles](#2026-mevp-direct-state-participant-history-and-experiences) |
 | Latest deployed history view | [Separate 2002 source points](#2002-cps-points-in-the-existing-historical-view) |
-| Latest historical participation extension | [2002 CPS reported points](#2002-cps-reported-points-and-midterm-snapshot-comparisons) |
+| Latest historical participation extension | [1998 native state points and midterm snapshots](#1998-cps-native-state-demographic-points-and-midterm-snapshots) |
 | Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
 | Latest missing-count integration | [Four Utah native county totals](#2026-utah-four-native-county-count-successors) |
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
@@ -31,6 +31,76 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 1998 CPS native state demographic points and midterm snapshots
+
+The newly acquired Census Table 4 TXT supplies **468 native rows / 4,680
+literal metric cells**, nine native groups in **all 50 states, D.C. and the
+United States**. The complete **1,404 metric decisions** select **1,060 reported
+points**: **711 registration/voting percentages** and **349 separate citizenship
+shares**. Registration and voting percentages use the **source adult 18+
+population**, not citizen adults; citizenship share is not turnout or eligibility.
+Counts are rounded thousands, not sample sizes or exact persons.
+
+The table's explicit Standard error headers qualify **1,059 directly printed
+source SEs**, including ten literal zeros, not new confidence intervals.
+All **343 `(B)` measures** remain suppressed and **32 literal dot counts** remain
+unqualified symbols, never missing-as-zero; **14 actual zero counts** survive.
+New Jersey male citizenship percentage **`900.`** is not repaired to 90.
+New Mexico's citizenship SE **`0.8.`** stays malformed while its valid 93.5%
+point remains available. Selection is metric-specific: a withheld citizenship
+share or SE does not erase the same row's valid participation measures.
+No sample-N, precision certification, suppressed percentage reconstruction,
+derived citizen turnout, new interval or source correction is introduced.
+
+Native categories remain literal and overlapping: Total, Male, Female,
+N-H White, N-H Black, N-H API, Hispanic, White and Black. Source footnotes define
+N-H as Non-Hispanic, API as Asian and Pacific Islander, and Hispanic as any race.
+The complete **936** 1998-to-2002 group/metric decisions retain **675 compatible
+native-label descriptive snapshots**, **104 non-Hispanic-API versus all-API
+holds**, 147 native 1998 metric holds and ten accepted 2002 selection holds.
+The broader 2002 API category never substitutes for 1998 N-H API. These are not
+modern race aliases, harmonized population definitions, individual retention,
+observed staying home, significant changes or demographic histories.
+1998 printed SEs do not interpret 2002 confidence scalars or qualify change CIs.
+
+All **104** original-versus-retrospective decisions retain **102 matching
+state percentages** and two absent national endpoints: common-source
+corroboration, not independent administrative validation. All **208**
+2018/2022 same-VAP overall decisions retain **204 descriptive differences**
+and four absent national endpoints. Unknown eligibility/deaths/migration and
+local allocations stay null/unqualified; no accepted model or live UI changes.
+
+The ordinary Census landing-page GET returned **403 / 17 bytes** and remains
+stopped. A **distinct native-file directory** returned 200, explicitly listed
+`tab04.txt`, and its separately acquired original returned 200 / **70,868 bytes**,
+SHA256 `bc998b4ac2db5c65b2aa55839df907c70d599eddeca0f988500ef80339095833`.
+This is not a cache/mirror/client recovery of the denied HTML page. The native
+Internet release date is **July 19, 2000**; the indexed report date is separate.
+No successful old acquisition, parser or numerical reduction was repeated.
+
+Scientific source **f6c42915614ca585e1cc875b49af9fedf1432986** and immutable
+science **441905879**, tag `participation-cps-1998-state-points-20261111-01`,
+publish all **13 full assets**, anonymously byte/hash verified. The
+**1,408,974-byte / 19-member** ZIP has SHA256
+`c94bc51267849010ea393af44cb2dd3da7a507e86f45d8dfdd796033c8939a8b`.
+It includes the complete original TXT, all permitted policy/provenance, the
+entire **1,241,697-byte** accepted 2002 predecessor with its full XLS/PDFs and
+older science, maintained code/tests, the **2,820,598-byte** result and every
+complete query. Seven tests, **37,044 independent checks** and two fresh
+warning-fatal network/external-command-blocked reproductions pass all output
+bytes. Native original whitespace is retained, not reformatted.
+Inputs and records: `data/participation-cps-1998-state-points/20261111-01/`.
+Website **c1357ec** and catalog **a1e3cb15** are unchanged; zero new website builds.
+
+Separately, the bounded primary SSRS/AP route review still does not resolve
+the actual race/ethnicity question, Hispanic priority, multiracial/nonresponse
+coding or historical CES compatibility. This does not claim global absence
+of a questionnaire. CNN/NBC web robots denials stay stopped. Held methods and
+the old private 12-row diagnostics were not reacquired/recomputed, and no new
+demographic residual is qualified. The distinct Census calculation above does
+not harmonize SSRS/CES groups. Record:
+`data/participation-cps-1998-state-points/20261111-01/source-qualification.json`.
 
 ## 2026 MEVP direct state participant history and experiences
 
