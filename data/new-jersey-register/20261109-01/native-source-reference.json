@@ -1,9 +1,0 @@
-{
-  "source_pdf_sha256": "a14234d4c27984fa01e9547f1a3a796c14fbb7397c5fc891cc607d7f6f9ef1db",
-  "native_inputs_sha256": "d50f7858b6b98c692ddd1905b99d16e10ad91df64071daca840d7c9381e1960a",
-  "source_date_literal": "11/3/26",
-  "source_date_is_election_day": true,
-  "source_kind": "native_dated_total_registration_status_unspecified",
-  "native_active_inactive_status_qualified": false,
-  "new_york_and_maryland_access_holds_preserved": true
-}

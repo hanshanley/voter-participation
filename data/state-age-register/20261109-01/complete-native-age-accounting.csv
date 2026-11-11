@@ -1,5 +1,0 @@
-scope,native_parent,observed_child_subtotal,missing_children,complete,complete_sum_minus_parent,unknown_complement_recovered
-state_age_partition_Female,1915419,1915419,0,True,0,False
-state_age_partition_Male,1553494,1553494,0,True,0,False
-state_age_partition_Unknown,1307,1307,0,True,0,False
-state_gender_partition,3470220,3470220,0,True,0,False

@@ -1,1 +1,0 @@
-{"state":"SC","provides":{"party":false,"gender":false,"race":true,"ethnicity":true,"age":false},"categories":{"requested":{"party":false,"gender":false,"race":true,"ethnicity":true,"age":false},"returned":{"party":false,"gender":false,"race":true,"ethnicity":true,"age":false},"inperson":{"party":false,"gender":false,"race":false,"ethnicity":false,"age":false}}}
