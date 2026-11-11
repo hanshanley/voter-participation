@@ -206,7 +206,7 @@ def build(native, methods, baseline, policy):
 
 def csv_bytes(rows):
     stream = io.StringIO(newline="")
-    writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
+    writer = csv.DictWriter(stream, fieldnames=sorted(rows[0]), lineterminator="\n")
     writer.writeheader()
     writer.writerows(rows)
     return stream.getvalue().encode()

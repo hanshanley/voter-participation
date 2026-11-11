@@ -60,7 +60,7 @@ def main():
         "all new inputs/code/tests/results/queries. No acquisition session headers or HTML apps.\n"
         "Requires only Python3.9+; no dependencies, original parsing, acquisition or installation.\n"
         "Reproduce: python3 code/scripts/reproduce_cps_2002_selection.py --package . --output /fresh/path\n"
-        "The reproducer blocks network/external commands, runs9focused tests and the independent\n"
+        "The reproducer blocks network/external commands, runs10focused tests and the independent\n"
         "verifier, and compares every full result/query byte. No frontend or live data activation.\n"
     ).encode()
     manifest = dict(contract="participation.complete_cps_2002_points.v1",

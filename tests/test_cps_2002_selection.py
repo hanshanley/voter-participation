@@ -122,6 +122,10 @@ class Cps2002SelectionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Original differs"):
                 load_inputs(root)
 
+    def test_complete_query_bytes_survive_a_canonical_json_roundtrip(self):
+        decoded = json.loads(json.dumps(self.result, sort_keys=True))
+        self.assertEqual(result_files(self.result), result_files(decoded))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -53,7 +53,7 @@ def main():
     sys.path.insert(0, str(root / "code"))
     suite = unittest.defaultTestLoader.discover(str(root / "code/tests"), pattern="test_cps_2002_selection.py")
     tests = unittest.TextTestRunner(verbosity=1).run(suite)
-    if not tests.wasSuccessful() or tests.testsRun != 9:
+    if not tests.wasSuccessful() or tests.testsRun != 10:
         raise ValueError("Focused selection regression failed")
     primary = module(root / "code/scripts/cps_2002_selection.py")
     verifier = module(root / "code/scripts/verify_cps_2002_selection.py")
