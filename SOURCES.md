@@ -15,7 +15,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Atlas-wide swing model correction | [Both-endpoint return-constrained scenarios](#2026-both-endpoint-return-constrained-transition-scenarios) |
 | Latest source-native 2026 group counts | [Louisiana early/absentee compositions](#2026-louisiana-source-native-early-group-counts-and-compositions) |
 | Latest source-defined 2026 participation history | [Direct MEVP state/group profiles](#2026-mevp-direct-state-participant-history-and-experiences) |
-| Latest deployed history view | [Separate 1998 and 2002 source points](#1998-points-in-the-existing-historical-view) |
+| Latest deployed history view | [Separate 1996 adult/citizen points, alongside preserved later histories](#1996-cps-native-state-participation-and-response-frames) |
 | Latest historical participation extension | [1996 native adult/citizen points and response frames](#1996-cps-native-state-participation-and-response-frames) |
 | Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
 | Latest missing-count integration | [Four Utah native county totals](#2026-utah-four-native-county-count-successors) |
@@ -80,8 +80,28 @@ contains all three originals, policy/receipts, the entire accepted 1998 science,
 maintained code/tests and every full query/result. All 17 full assets were
 anonymously verified. No older acquisition/reduction or NORC refit was repeated.
 Inputs and records: `data/participation-cps-1996-state-points/20261112-01/`.
-History integration is in progress; this scientific release alone is not a
-claim that 1996 is live. The accepted 48-state House model is unchanged.
+**History integration is verified live** at website
+`7088482a2eae2c2da8095ea8f016683983a9058b`, Pages **43164165115**,
+artifact **13919427673**. The existing default-closed history view exposes
+**520 adult and 103 citizen voting points** using its same 52 geographies,
+29 group choices and election-type control. Missing citizen cells stay blank;
+voting nonresponse is shown separately. Native White/Black labels now explicitly
+span 1996/1998/2002 while old programmatic aliases remain unchanged. No early
+point is spliced into the 2006-2024 citizen/MOE chart or a new homepage panel.
+
+Actual production passes all **3,016** new state/group/frame combinations on
+desktop and phone, plus no-JS, failed/corrupted and late-response boundaries.
+Preserved 1998 **1,508** and 2002 **3,016** combinations pass their complete
+six-case production suites. All **3,060** House-map values, **102** real pointer
+selections, six dimensions/22 options, both PA scope captions, legacy Senate/
+governor values and **48 layouts** also pass. All 69 unqueried production assets
+match the actual artifact; all 436 old complete-download pins remain unchanged.
+The actual native payload is **996,810,595 bytes** and tar **999,403,520 bytes**,
+both strictly below 1,000,000,000. Twenty-two targeted reader tests, Astro
+zero errors/warnings (eight pre-existing hints) and the build's four tests pass.
+Production history and preserved-map images were inspected. No NORC refit,
+new source counts, private respondents or compiled publisher HTML were published.
+Records and the two history images are in `website-acceptance.json` and `media/`.
 
 The official Maine results index, 2024 results page and 2026 CD2 tabulation
 announcement each returned HTTP 403 on November 12, 2026. All three exact routes

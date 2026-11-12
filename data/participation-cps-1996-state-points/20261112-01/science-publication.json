@@ -129,6 +129,12 @@
   "scientific_source_repository": "hanshanley/voter-participation",
   "status": "passed_immutable_cps_1996_native_science_publication",
   "stopped_maine_routes_retried": false,
+  "subsequent_website_integration": {
+    "acceptance": "website-acceptance.json",
+    "commit": "7088482a2eae2c2da8095ea8f016683983a9058b",
+    "pages_run_id": 43164165115,
+    "status": "verified_live"
+  },
   "tag": "participation-cps-1996-state-points-20261112-01",
   "verified_at_utc": "2026-11-12T05:37:32.856598+00:00",
   "website_baseline_unchanged": "8f1f4e699fa9412124cf8deef9f013a7a8ff12eb",

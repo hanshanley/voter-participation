@@ -18,6 +18,17 @@ python3 -m unittest discover -s tests -p test_cps_state_frames.py
 python3 -m scripts.cps_state_frames --inputs inputs --output reproduced
 ```
 
+The complete 1996 native-state packet has its own standard-library-only runner:
+
+```sh
+python3 -Werror code/scripts/reproduce_cps_1996_state_points.py --package . --output /fresh/path
+```
+
+It verifies every packaged member, runs eight focused tests and 76,557 independent
+fixed-column/CSV checks, then reproduces all ten result/query files byte-for-byte
+with network and external commands blocked. The complete accepted 1998 science
+is a frozen input, not a request to repeat its acquisitions or reductions.
+
 ## Maintained analysis entry points
 
 The table identifies the matching reader and focused test. Input flags and
@@ -28,6 +39,7 @@ not one guessed command for every analysis.
 |---|---|---|
 | CPS demographic frames | `cps_group_frames.py` | `test_cps_group_frames.py` |
 | CPS state frames | `cps_state_frames.py` | `test_cps_state_frames.py` |
+| 1996 native state participation/response frames | `cps_1996_state_points.py` | `test_cps_1996_state_points.py` |
 | AP public aggregates | `ap_public_aggregates.py` | `test_ap_public_aggregates.py` |
 | Current state controls | `participation_controls.py` | `test_participation_controls.py` |
 | Historical administrative controls | `historical_participation_controls.py` | `test_historical_participation_controls.py` |

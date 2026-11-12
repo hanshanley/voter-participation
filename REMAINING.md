@@ -13,6 +13,35 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Latest completed increment: 1996 participation history
+
+The three new native Census tables are now fully computed, reproduced,
+published and **verified live**, not merely inventoried. All 1,923 rows/19,539 cells,
+4,576 metric decisions, native suppression/rounded zeros and all complete
+same-year/same-type/cross-election-type queries remain in immutable science
+442536397. Eight tests/76,557 independent checks and two fresh blocked-network
+reproductions pass every output byte; no prior acquisition/reduction or NORC fit
+was repeated.
+
+Website 7088482/Pages 43164165115 exposes 520 adult and 103 citizen voting points
+through the existing closed history view, with 52 geographies/29 groups and
+election-type selection. Adult/citizen denominators, explicit voting
+nonresponse and unsupported citizen cells stay separate; no early point is
+spliced into the later citizen/MOE chart. Desktop/phone 3,016 new combinations
+and no-JS/failure/corruption/late-response cases pass. Both old 1998/2002 complete
+production suites, 3,060 House-map values/102 pointer selections, PA scope captions,
+legacy office maps and 48 layouts pass. All 436 old download pins remain intact.
+Actual artifact 13919427673 is 996,810,595 payload/999,403,520 tar bytes, both <1e9.
+
+The existing 48-state House model remains numerically unchanged. Alaska's
+nonpartisan comparison and Maine's unresolved count-stage comparison remain
+held, not silently zero-filled. On November 12 the three exact official Maine
+index/2024/CD2-announcement routes returned 403; they remain stopped with unknown
+body byte counts/hashes, without alternate-client/cache/mirror retries.
+See `data/participation-cps-1996-state-points/20261112-01/` and the source ledger.
+Do not repeat this completed scientific reader, publication or UI campaign.
+The broader evidence project and the sole 45-minute continuation remain open.
+
 ## What is already held
 
 | Input | Actual state |
