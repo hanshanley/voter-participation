@@ -8,6 +8,12 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current geographic observations
+
+| Analysis | What it provides | Complete ZIP |
+|---|---|---|
+| Jefferson County WI ballots and native reporting rows · verified live | One additional county observation (38,414 Ballots Cast / 52,428 Registered Voters), all 32 literal ward-group rows including an observed 0/0 row, full original report, complete sufficient baseline runtimes, every new query/output, code/tests and offline replay. 65,478,892 bytes / 196 members; 684 frontend checks, two fresh 90-output reproductions, all ten full assets verified. Actual desktop/phone eight county clicks and128 ward selections; selector/download metadata corrected after browser QA. Other states/Rock/early-mail/old models preserved; no new precinct polygons, unit rates or statewide completion (WI2/72). Earlier immutable packets retained | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/complete-analysis.zip) |
+
 ## NORC demographic House transitions
 
 | Analysis | What it provides | Complete ZIP |

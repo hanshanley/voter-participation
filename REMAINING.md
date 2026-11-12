@@ -13,6 +13,42 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Current priority: missing county and precinct observations
+
+Further model variants are paused while geographic omissions are addressed.
+Context shapes in all 51 jurisdictions are **not** complete participation data.
+Candidate votes, processing/return activity and modeled state effects must not
+be substituted for missing ballot observations or precinct boundaries.
+
+Jefferson County, Wisconsin is now connected to the existing county map and
+county reporting-row selector: **38,414 native Ballots Cast / 52,428 Registered
+Voters**, all **32 literal ward-group rows**, including one observed 0/0 row.
+The source clock is **11-06-2026 01:13 pm**, timezone undeclared. Official header,
+unofficial-until-canvass and single-machine disclaimers remain together.
+County registration fractions are conditional same-report snapshots; unit rates
+and precinct polygons remain withheld. Wisconsin coverage is now **2/72 counties**,
+not statewide completion. The previous Rock record and all other states survive.
+
+Actual production verifies eight county pointer selections and 128 reporting-row
+selections across desktop/phone, full native fields, complete-download links,
+all 113 old model objects and unchanged website source `94db6c0`. Data catalog
+`2176b9a` activates counts and bindings together, with 86 full immutable files
+verified and no website build. Browser QA caught missing selector aliases;
+the corrected third version retains the first two immutable publications.
+Science **443214044**, tag `participation-wisconsin-jefferson-counts-20261112-03`:
+65,478,892 bytes / 196 members, all ten full assets anonymously verified;
+684 frontend checks and two fresh 90-output offline replays pass.
+
+Partial native county observations remain IA **1/99**, KY **1/120**, MI **2/83**,
+MO **1/115**, NV **4/17**, PA **43/67**, UT **23/29**, WI **2/72**.
+This list does not imply other states have universal precinct or historical
+coverage. NJ's 21/21 selected observations are not certified full-election totals.
+New Brown/Milwaukee/Dane source URLs returned 403 and remain stopped, not
+recovered from cached search results. Pursue other distinct permitted primary
+products and already-held qualified observations; do not restart completed fits
+or source campaigns. The broader geographic task and sole 45-minute continuation
+remain open. Full records: `data/participation-access/20261112-jefferson-wi-01/`.
+
 ## Completed joint administrative-participation / House-choice source test
 
 The previously missing **four-axis dependence** is now actually fitted and
@@ -1229,7 +1265,7 @@ jurisdiction. Alaska's county layer explicitly shows contest counts, not
 participation; its native precinct counts are a separate layer. Native county
 observations remain partial in Iowa (1/99), Kentucky (1/120), Michigan (2/83),
 Missouri (1/115), Nevada (4/17), Pennsylvania (43/67),
-Utah (23/29) and Wisconsin (1/72). Shape counts are not observed-count coverage,
+Utah (23/29) and Wisconsin (2/72). Shape counts are not observed-count coverage,
 and provider early/returned activity is not complete-election participation.
 New Jersey now has 21/21 selected county observations after the qualified
 November 10 Essex/Hudson extension above, not 21 certified full-election totals.

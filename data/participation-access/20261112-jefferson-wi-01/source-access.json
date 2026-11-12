@@ -1,0 +1,42 @@
+{
+  "brown.pdf": {
+    "bytes": 212,
+    "content_type": "text/html; charset=iso-8859-1",
+    "denied_route_must_not_be_retried": true,
+    "original_complete": true,
+    "private_session_headers_recorded": false,
+    "sha256": "a10799e14364d98e9d91bbf4a918757b67352a70fdb2f93f350b46101ab4d174",
+    "status": 403,
+    "url": "https://www.browncountywi.gov/i/f/files/County-Clerk/Elections/Election%20Results/2026/November/Canvass%20-%20Official.pdf"
+  },
+  "dane.html": {
+    "bytes": 5674,
+    "content_type": "text/html; charset=UTF-8",
+    "denied_route_must_not_be_retried": true,
+    "original_complete": true,
+    "private_session_headers_recorded": false,
+    "sha256": "d3acb0a8e90bc2c73bdb2533c0c321e594723d2f629294e68a4fa14ea84e1220",
+    "status": 403,
+    "url": "https://elections.danecounty.gov/Election-Result/"
+  },
+  "jefferson.html": {
+    "bytes": 134561,
+    "content_type": "text/html; charset=UTF-8",
+    "denied_route_must_not_be_retried": false,
+    "original_complete": true,
+    "private_session_headers_recorded": false,
+    "sha256": "5446fcc254a6a280214022e247754aa59ab5123ca855a8aa8cf93f0085babfe7",
+    "status": 200,
+    "url": "https://apps.jeffersoncountywi.gov/jc/election/results/11032026"
+  },
+  "milwaukee.html": {
+    "bytes": 5851,
+    "content_type": "text/html; charset=UTF-8",
+    "denied_route_must_not_be_retried": true,
+    "original_complete": true,
+    "private_session_headers_recorded": false,
+    "sha256": "0db7f7a8685e4f9b948be99f6a78059c17d1c8994f6d75143b182a6bf352f708",
+    "status": 403,
+    "url": "https://county.milwaukee.gov/EN/County-Clerk/Off-Nav/Election-Results/11-3-26-General-Election--Unofficial-Results-Election-Night-Website"
+  }
+}

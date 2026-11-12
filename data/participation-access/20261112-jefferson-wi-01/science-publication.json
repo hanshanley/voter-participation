@@ -1,0 +1,83 @@
+{
+  "assets": {
+    "checksums.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740194365,
+      "bytes": 1262,
+      "sha256": "a7c88b52ddf43c2339ad1612bb312f9d7fa811e992b562771bb3bac7d8f0ceeb",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740194432,
+      "bytes": 65478892,
+      "sha256": "7274b1714763b8a7a13c11c8021b526e4bf120f97700cc4e8e200f5d74f1244f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/complete-analysis.zip"
+    },
+    "complete-native-query.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740194724,
+      "bytes": 6651,
+      "sha256": "db4ec6dc86823519773c52f48cff15c6ef4cbdb4cc48c4fdfef65cc2e1a7988a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/complete-native-query.json"
+    },
+    "county-participation.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740194762,
+      "bytes": 1043,
+      "sha256": "a1e19d081e26111c246368db1c5dba9f3c9921ff61e9ca4ca1b7ad4bfae73484",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/county-participation.json"
+    },
+    "frontend-contract-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740194810,
+      "bytes": 410,
+      "sha256": "0a78302d0b58d3d261bad09741d7b883466df9ea238f0b38f4b7168a328ff6ef",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/frontend-contract-proof.json"
+    },
+    "offline-reproduction-19.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740194868,
+      "bytes": 327,
+      "sha256": "1e4ab8a694842fdf68cc76a53cfefc939e15f75b79e235f91222487f1fcdac9d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/offline-reproduction-19.json"
+    },
+    "offline-reproduction-73.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740194926,
+      "bytes": 327,
+      "sha256": "1e4ab8a694842fdf68cc76a53cfefc939e15f75b79e235f91222487f1fcdac9d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/offline-reproduction-73.json"
+    },
+    "package-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740195013,
+      "bytes": 306,
+      "sha256": "495a99d4d4e2886b98c0512d18d77b373d90e59d7db813127403cc84118cd6c1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/package-proof.json"
+    },
+    "reporting-unit-participation.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740195045,
+      "bytes": 2399,
+      "sha256": "bd49bd214d8f345b60cffebfbcd710e0c07e184acdc048bfa6b7566095379e3d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/reporting-unit-participation.csv"
+    },
+    "reporting-unit-participation.json.gz": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740195096,
+      "bytes": 2313,
+      "sha256": "093c3516448233ca788a8a1cbc267c93a48f27477941280a022a626952c40ff0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wisconsin-jefferson-counts-20261112-03/reporting-unit-participation.json.gz"
+    }
+  },
+  "full_state_coverage_claim": false,
+  "immutable": true,
+  "precinct_polygons_invented": false,
+  "release_id": 443214044,
+  "scientific_source_commit": "3f44d4364e223204fcfb83873656f598a058d82e",
+  "status": "passed_complete_immutable_geographic_science_publication",
+  "tag": "participation-wisconsin-jefferson-counts-20261112-03",
+  "website_baseline_unchanged": "94db6c0c098842b01cf0a33a090bf62c30cf818c",
+  "website_builds": 0
+}

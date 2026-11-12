@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current geographic gap integration | [Jefferson WI: county ballots and native ward-group rows](#2026-jefferson-wisconsin-county-and-ward-group-participation) |
 | Joint participation and House choices | [Four-axis source test: entry gains and drop-off negatives](#four-axis-administrative-participation-and-house-choice-dependence) |
 | Fixed-marginal historical calibration | [Nested holdouts and six unvalidated current association stresses](#fixed-marginal-house-calibration-and-current-association-stresses) |
 | Held-out cross-election dependence | [Paired heads and identical-margin flow test](#held-out-cross-election-dependence-and-identical-margin-flows) |
@@ -33,6 +34,42 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Jefferson Wisconsin county and ward-group participation
+
+Official source: `https://apps.jeffersoncountywi.gov/jc/election/results/11032026`.
+The complete original was acquired once: 134,561 bytes, SHA256
+`5446fcc254a6a280214022e247754aa59ab5123ca855a8aa8cf93f0085babfe7`.
+All 32 literal Registered Voters / Ballots Cast rows reconcile to separately
+printed county totals **52,428 / 38,414**. One native 0/0 row remains zero,
+not a computed turnout rate. Combined/noncontiguous wards are not split.
+
+Native clock **11-06-2026 01:13 pm**, no timezone. Preserve both Official Results
+and unofficial-until-canvass wording, plus the warning that 100% can refer to
+one machine. No certification, all-machine/all-mode completion, unique-person
+or eligible-population claim follows. `55055` is a contextual Census identity,
+not native FIPS. Unchanged full 72-county 2026 references support the county
+display; no new precinct polygons are approved. Ward fractions stay withheld.
+
+Corrected source `3f44d4364e223204fcfb83873656f598a058d82e`; immutable science
+**443214044**, tag `participation-wisconsin-jefferson-counts-20261112-03`.
+Complete ZIP **65,478,892 bytes / 196 members**, SHA256
+`7274b1714763b8a7a13c11c8021b526e4bf120f97700cc4e8e200f5d74f1244f`.
+Includes original Jefferson report, every native query, complete sufficient
+accepted runtime inputs, both full new runtime datasets, code/tests and replay.
+All ten full assets verified, 684 frontend checks, two focused tests and two
+fresh 90-output guarded offline reproductions pass. No respondent data.
+Earlier scientific/runtime versions remain immutable; selector compatibility
+metadata was corrected after actual browser QA, without changing native counts.
+
+Counts and native bindings switch atomically in catalog `2176b9a673526ddb78c4945324286cd0db8530a1`;
+all 86 full files verified. Actual unchanged production `94db6c0` passes eight
+county clicks and 128 ward selections on desktop/phone, missing/zero distinctions,
+source clock, full downloads and old model preservation. No website build.
+Wisconsin is **2/72**, not complete. Brown's separate official PDF and Milwaukee/
+Dane results URLs returned 403; safe receipts retain exact routes/status/hashes,
+with no retries through other clients, mirrors or caches and no cached counts.
+Records: `data/participation-access/20261112-jefferson-wi-01/`.
 
 ## Four-axis administrative participation and House-choice dependence
 
