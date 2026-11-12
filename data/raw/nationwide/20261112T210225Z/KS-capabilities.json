@@ -1,0 +1,1 @@
+{"state":"KS","provides":{"party":true,"gender":true,"race":false,"ethnicity":false,"age":true},"categories":{"requested":{"party":true,"gender":true,"race":false,"ethnicity":false,"age":true},"returned":{"party":true,"gender":true,"race":false,"ethnicity":false,"age":true},"inperson":{"party":true,"gender":true,"race":false,"ethnicity":false,"age":true}}}
