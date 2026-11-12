@@ -9,7 +9,7 @@ from pathlib import Path
 
 from review_jefferson_wi_participation import encoded
 
-TAG = "participation-wisconsin-jefferson-counts-20261112-01"
+TAG = "participation-wisconsin-jefferson-counts-20261112-02"
 RELEASE = "https://github.com/hanshanley/margin_of_error/releases/download/"+TAG+"/"
 MODES = ("available", "official", "uf_vep", "uf_vap")
 
@@ -110,6 +110,7 @@ def build(query, accepted_counts, accepted_native, original_reference):
         view = dict(base)
         view.update(properties)
         view.update(geography_level="reporting_unit", unit_key=unit["unit_key"],
+                    unit=unit["reporting_unit"], unit_kind="native_ward_group",
                     ballots=unit["ballots"], denominator=unit["registered"], reported_pct=None)
         view["precinct"] = unit["reporting_unit"]
         row = observation(view, unit["unit_key"], "reporting_unit", False)

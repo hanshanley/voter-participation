@@ -63,6 +63,8 @@ let ballots=0,registered=0,zeros=0;
 for(const row of table.records){
   counts.validateCountObservation(row.observation,"WI");checks++;
   same(row.properties.ballots,row.observation.count.value);
+  same(row.observation.view.unit,row.properties.precinct);
+  same(row.observation.view.unit_kind,row.properties.reporting_unit_kind);
   same(row.properties.reported_pct,null);
   same(row.observation.denominator.qualified,false);
   names.add(row.properties.precinct);
