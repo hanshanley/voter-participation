@@ -16,7 +16,7 @@ This document is the detailed reference ledger, not the methods introduction.
 | Latest source-native 2026 group counts | [Louisiana early/absentee compositions](#2026-louisiana-source-native-early-group-counts-and-compositions) |
 | Latest source-defined 2026 participation history | [Direct MEVP state/group profiles](#2026-mevp-direct-state-participant-history-and-experiences) |
 | Latest deployed history view | [Separate 1998 and 2002 source points](#1998-points-in-the-existing-historical-view) |
-| Latest historical participation extension | [1998 native state points and midterm snapshots](#1998-cps-native-state-demographic-points-and-midterm-snapshots) |
+| Latest historical participation extension | [1996 native adult/citizen points and response frames](#1996-cps-native-state-participation-and-response-frames) |
 | Latest blocked model test | [Demographic/geographic persistence: negative result](#demographic-and-geographic-adaptive-persistence-negative-result) |
 | Latest missing-count integration | [Four Utah native county totals](#2026-utah-four-native-county-count-successors) |
 | Historical demographic/state frames | [Every-state groups](#every-state-historical-demographic-participation), [CPS](#historical-cps-group-registration-and-response-frames), [EAC](#held-eac-historical-state-controls-complete-verified-publication) |
@@ -37,6 +37,57 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 1996 CPS native state participation and response frames
+
+The three original Census P20-504 tables (Internet release August 17, 1998;
+November 1996 election) now have a complete maintained reader and immutable
+science release **442536397**, tag
+`participation-cps-1996-state-points-20261112-01`. Scientific code is
+`72ae9ad5cf5effe8c45f7d0464464e9de8f33fed`.
+The separately declared native directory and all three TXT files returned 200
+and were acquired once; compiled directory HTML is not redistributed.
+
+All **1,923 rows / 19,539 literal cells** are preserved: 1,040 race/origin-by-age,
+780 sex-by-age and 103 citizen-gender rows, across 50 states, DC and the US.
+All **4,576 metric decisions** retain 4,142 selected source percentages,
+96 suppressed `(B)` holds, 20 rounded-zero-base holds and 318 absent
+citizen geography/gender decisions. The selections include 520 repeated A/B
+totals and 618 citizen-category rates; they are not independent turnout samples.
+All 2,600 repeated-total cells match; 1,313 literal integer zeros survive.
+
+A/B use all adults 18+; C uses citizen adults 18+. National reported voting
+is **54.2% versus 58.4%**, not one denominator. Counts are rounded thousands,
+not sample sizes or exact persons. No sample N, SE or CI is invented. White/
+Black and Hispanic overlap; there is no non-Hispanic or API reconstruction.
+Fifty-one state citizen-overall cells and two national citizen-gender cells are
+not printed and are not fabricated by summing sexes.
+
+The download includes every native cell, all **309 cross-frame count references**,
+**206 no/unknown allocation scenarios**, **624 presidential-to-midterm group
+decisions**, **104 original/retrospective controls** and **728 same-frame
+presidential overall decisions** to 2000/04/08/12/16/20/24, including all holds.
+Unknown voting responses are not observed nonvoters; allocation scenarios are
+not confidence intervals. Native rounding residuals stay separate, including
+the national one-thousand voting residual. No cohort, retention, causal effect,
+local allocation or administrative turnout is inferred.
+
+Eight tests, **76,557 independent fixed-column/CSV checks** and two fresh
+network/external-command-blocked reproductions match all ten output files.
+The complete **1,962,849-byte / 26-member ZIP**, SHA-256
+`3a3e5a108d34dda52ebf47ecfe16a4bc746cbbbcc79b459e73d9989be65f4f1f`,
+contains all three originals, policy/receipts, the entire accepted 1998 science,
+maintained code/tests and every full query/result. All 17 full assets were
+anonymously verified. No older acquisition/reduction or NORC refit was repeated.
+Inputs and records: `data/participation-cps-1996-state-points/20261112-01/`.
+History integration is in progress; this scientific release alone is not a
+claim that 1996 is live. The accepted 48-state House model is unchanged.
+
+The official Maine results index, 2024 results page and 2026 CD2 tabulation
+announcement each returned HTTP 403 on November 12, 2026. All three exact routes
+remain stopped, without alternate-client/cache/mirror retries. Unknown denied
+body lengths and hashes remain null in `maine-access-holds.json`; no count-stage
+compatibility was inferred from candidate totals. Maine's House comparison stays held.
 
 ## 2026 Pennsylvania native district control scope
 

@@ -1,0 +1,136 @@
+{
+  "assets": {
+    "checksums.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223685,
+      "bytes": 2278,
+      "sha256": "9fa59815f0d8281e053897a737c3caba76dadc4f4cc1df0ac1133e1cbc519ed4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223681,
+      "bytes": 1962849,
+      "sha256": "3a3e5a108d34dda52ebf47ecfe16a4bc746cbbbcc79b459e73d9989be65f4f1f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-analysis.zip"
+    },
+    "complete-cross-frame-count-references.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223683,
+      "bytes": 33275,
+      "sha256": "f03dd86594f37a334df385d97b97589a9e972a8f0e7e2c5b1ca55ebd63539818",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-cross-frame-count-references.csv"
+    },
+    "complete-duplicate-total-checks.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223684,
+      "bytes": 212328,
+      "sha256": "3f8b30ac26072704ac47a9bad7edd022bfb22d4172c3bc985f3b7808ba71f5f9",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-duplicate-total-checks.csv"
+    },
+    "complete-group-snapshot-comparisons.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223682,
+      "bytes": 107518,
+      "sha256": "1f8eccae761a759313431ea9a95199f2c7429b2cfa7bbd74199a9da67f825646",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-group-snapshot-comparisons.csv"
+    },
+    "complete-metric-decisions.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223717,
+      "bytes": 426013,
+      "sha256": "38a45ac0890ec95e0f6131102f1f6d2742102a9ca3b87b0ca1f3f2e1fe269bdc",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-metric-decisions.csv"
+    },
+    "complete-native-cells.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223715,
+      "bytes": 1364551,
+      "sha256": "816931d4e225e0bcc39edcf5e68230db638b3b6f267c8fecee43e626d1ffcefb",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-native-cells.csv"
+    },
+    "complete-nonresponse-scenarios.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223721,
+      "bytes": 35664,
+      "sha256": "5388bd49fd6d64230f8eeeb3f03c693732c547af35894491a53766af0ba03090",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-nonresponse-scenarios.csv"
+    },
+    "complete-overall-snapshot-comparisons.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223719,
+      "bytes": 94225,
+      "sha256": "9a58c8017027f81b5da377ca8653d8df531f77daf69e5ea7450009611d342339",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-overall-snapshot-comparisons.csv"
+    },
+    "complete-result.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223720,
+      "bytes": 7307341,
+      "sha256": "5132058d432233e18d249f6d9371e2ce454bb8ecc5ba895c23b521ef96adc622",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-result.json"
+    },
+    "complete-retrospective-reconciliations.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223754,
+      "bytes": 5304,
+      "sha256": "150f168197021f2f10de83923d5d65d6bd03c9f70f2a1ccbf48f026926e0d78a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/complete-retrospective-reconciliations.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223755,
+      "bytes": 800,
+      "sha256": "290984d1db71e11f5f51712ae16f480c58a7844c43324b277d620c015a6462c0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223758,
+      "bytes": 800,
+      "sha256": "290984d1db71e11f5f51712ae16f480c58a7844c43324b277d620c015a6462c0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/fresh-reproduction-02.json"
+    },
+    "independent-verification.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223765,
+      "bytes": 343,
+      "sha256": "c634136bcbdae7913439a38e0a29c1d4a719f47b220ee9323cbe9bd448628a71",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/independent-verification.json"
+    },
+    "manifest.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223767,
+      "bytes": 4110,
+      "sha256": "b2c72ef31439b12426415066530f64e0f10e2255e400acbc38361a4b9bafb8ff",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/manifest.json"
+    },
+    "package-receipt.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223773,
+      "bytes": 1716,
+      "sha256": "d1d3163064d1c3166b4a09abdee440175b9f3459bc758dfb404ac9f232dc5ef0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/package-receipt.json"
+    },
+    "summary.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 738223780,
+      "bytes": 975,
+      "sha256": "f1e54939b8d3cf33f677d37b84a5f7da67ba3e5558de7f455d44a6b75e8c68f3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-cps-1996-state-points-20261112-01/summary.json"
+    }
+  },
+  "broader_project_complete": false,
+  "earlier_acquisitions_or_reductions_repeated": false,
+  "immutable": true,
+  "live_dataset_promoted": false,
+  "release_id": 442536397,
+  "scientific_source_commit": "72ae9ad5cf5effe8c45f7d0464464e9de8f33fed",
+  "scientific_source_repository": "hanshanley/voter-participation",
+  "status": "passed_immutable_cps_1996_native_science_publication",
+  "stopped_maine_routes_retried": false,
+  "tag": "participation-cps-1996-state-points-20261112-01",
+  "verified_at_utc": "2026-11-12T05:37:32.856598+00:00",
+  "website_baseline_unchanged": "8f1f4e699fa9412124cf8deef9f013a7a8ff12eb",
+  "website_builds": 0
+}

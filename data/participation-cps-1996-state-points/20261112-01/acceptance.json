@@ -1,0 +1,114 @@
+{
+  "all_17_assets_anonymously_verified": true,
+  "archive": {
+    "bytes": 1962849,
+    "sha256": "3a3e5a108d34dda52ebf47ecfe16a4bc746cbbbcc79b459e73d9989be65f4f1f"
+  },
+  "archive_members": 26,
+  "broader_project_complete": false,
+  "complete_query_download": true,
+  "fresh_offline_reproductions": [
+    {
+      "all_full_result_query_bytes_identical": true,
+      "frontend_activation": false,
+      "independent": {
+        "checks": 76557,
+        "confidence_intervals_created": 0,
+        "fixed_column_AB_and_csv_C": true,
+        "frontend_activation": false,
+        "full_query_exports": 8,
+        "native_metric_cells": 19539,
+        "native_rows": 1923,
+        "same_type_overall_decisions": 728,
+        "source_repairs": 0,
+        "status": "passed_independent_1996_native_and_complete_query_checks"
+      },
+      "network_and_external_commands_blocked": true,
+      "older_acquisitions_or_reductions_repeated": false,
+      "source_commit": "72ae9ad5cf5effe8c45f7d0464464e9de8f33fed",
+      "status": "passed_fresh_offline_cps_1996_state_points",
+      "stopped_maine_routes_retried": false,
+      "tests_passed": 8,
+      "whole_accepted_predecessor_included": true
+    },
+    {
+      "all_full_result_query_bytes_identical": true,
+      "frontend_activation": false,
+      "independent": {
+        "checks": 76557,
+        "confidence_intervals_created": 0,
+        "fixed_column_AB_and_csv_C": true,
+        "frontend_activation": false,
+        "full_query_exports": 8,
+        "native_metric_cells": 19539,
+        "native_rows": 1923,
+        "same_type_overall_decisions": 728,
+        "source_repairs": 0,
+        "status": "passed_independent_1996_native_and_complete_query_checks"
+      },
+      "network_and_external_commands_blocked": true,
+      "older_acquisitions_or_reductions_repeated": false,
+      "source_commit": "72ae9ad5cf5effe8c45f7d0464464e9de8f33fed",
+      "status": "passed_fresh_offline_cps_1996_state_points",
+      "stopped_maine_routes_retried": false,
+      "tests_passed": 8,
+      "whole_accepted_predecessor_included": true
+    }
+  ],
+  "frontend_activation": false,
+  "immutable_release": 442536397,
+  "independent": {
+    "checks": 76557,
+    "confidence_intervals_created": 0,
+    "fixed_column_AB_and_csv_C": true,
+    "frontend_activation": false,
+    "full_query_exports": 8,
+    "native_metric_cells": 19539,
+    "native_rows": 1923,
+    "same_type_overall_decisions": 728,
+    "source_repairs": 0,
+    "status": "passed_independent_1996_native_and_complete_query_checks"
+  },
+  "scientific_source_commit": "72ae9ad5cf5effe8c45f7d0464464e9de8f33fed",
+  "status": "verified_complete_native_1996_science",
+  "summary": {
+    "cross_election_type_group_decisions": 624,
+    "cross_frame_count_references": 309,
+    "dispositions": {
+      "not_printed_citizen_geography_gender_cell": 318,
+      "selected_native_percentage": 4142,
+      "withheld_native_B": 96,
+      "withheld_rounded_zero_base": 20
+    },
+    "duplicate_total_cell_checks": 2600,
+    "duplicate_total_mismatches": 0,
+    "frontend_activation": false,
+    "geographies": 52,
+    "house_model_refits": 0,
+    "metric_decisions": 4576,
+    "native_B_cells": 96,
+    "native_cells": 19539,
+    "native_rows": 1923,
+    "native_zeros_preserved": 1313,
+    "new_confidence_intervals": 0,
+    "nonresponse_scenarios": 206,
+    "population_frames_not_merged": true,
+    "same_type_endpoint_years": [
+      2000,
+      2004,
+      2008,
+      2012,
+      2016,
+      2020,
+      2024
+    ],
+    "same_type_overall_decisions": 728,
+    "same_year_reconciliations": 104,
+    "source_acquisitions_or_accepted_reductions_repeated": false,
+    "table_rows": {
+      "A": 1040,
+      "B": 780,
+      "C": 103
+    }
+  }
+}
