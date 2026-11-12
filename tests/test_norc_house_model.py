@@ -6,6 +6,25 @@ from scripts.fit_norc_house_model import choice, features
 
 
 class NorcHouseModelTests(unittest.TestCase):
+    def test_incremental_states_are_not_overwritten_by_group_selection(self):
+        codes = ["AK", "AL"] + ["unused-"+str(i) for i in range(48)]
+        q = [[.04]*5 for _ in range(5)]
+        state = dict(prior_joint=q, direct_2022_house_prior_joint=q,
+            groups=[dict(dimension="age", group="all", label="All", available=True, prior_joint=q)])
+        priors = dict(contract="participation.norc_house_demographic_priors.v1",
+            raw_records_or_private_fine_cells_exported=False, old_synthetic_state_couplings_used=False,
+            states={code: state for code in codes}, validation={}, assumptions=[],
+            source_input_sha256="fixture")
+        comparison = dict(status="reported_source_comparison",
+            previous=dict(D=1, R=1, O=1), current=dict(D=1, R=1, O=1),
+            reported_change_pp=0, current_margin_pp=0)
+        accepted = dict(rows=[dict(office="house", state_code=code,
+            reported_comparison=comparison) for code in codes])
+        result = model.build(priors, accepted, state_codes=("AK", "AL"))
+        self.assertEqual([row["state_code"] for row in result["rows"]], ["AK", "AL"])
+        self.assertEqual(len(result["complete_seed_cases"]), 10)
+        self.assertEqual(len(result["complete_demographic_seed_cases"]), 10)
+
     def test_r_plus_four_to_d_plus_twelve_is_sixteen_points(self):
         joint = [[.38, .02, 0, .08, 0], [.05, .40, 0, .07, 0],
             [0]*5, [.13, .04, 0, .03, 0], [0]*5]

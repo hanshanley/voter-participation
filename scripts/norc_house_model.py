@@ -147,7 +147,7 @@ def coarse_outcomes(joint):
         current_N=sum(row[3] for row in joint)/total)
 
 
-def build(priors, accepted):
+def build(priors, accepted, state_codes=None):
     if (priors["contract"] != "participation.norc_house_demographic_priors.v1"
             or priors["raw_records_or_private_fine_cells_exported"] is not False
             or priors["old_synthetic_state_couplings_used"] is not False):
@@ -155,8 +155,13 @@ def build(priors, accepted):
     originals = {row["state_code"]: row for row in accepted["rows"] if row["office"] == "house"}
     if set(originals) != set(priors["states"]) or len(originals) != 50:
         raise ValueError("All 50 source-state decisions must be retained")
+    selected_states = set(priors["states"]) if state_codes is None else set(state_codes)
+    if not selected_states or not selected_states <= set(priors["states"]):
+        raise ValueError("Select known source states for incremental simulations")
     results, sensitivities, simulations, demographic_seeds = [], [], [], []
     for code, state in sorted(priors["states"].items()):
+        if code not in selected_states:
+            continue
         comparison = originals[code]["reported_comparison"]
         joint, factors, rows, columns, frame, normalizer = fit_state(state, comparison)
         summary = accounting(joint)
@@ -263,11 +268,12 @@ def build(priors, accepted):
         return_constraints_used_only_in_separate_conditional_reconstruction=True,
         preconditioning_margin_MAE_pp=sum(abs(r["before_current_party_conditioning"][
             "prediction_error_observed_minus_predicted_pp"]) for r in results
-            if r["before_current_party_conditioning"])/sum(r["source_comparison_available"] for r in results),
+            if r["before_current_party_conditioning"])/sum(r["source_comparison_available"] for r in results)
+            if any(r["source_comparison_available"] for r in results) else None,
         exact_accounting="Symmetric numerator/denominator identity, denominator effects assigned within each transition mechanism",
         model_units_are_people=False, source_likelihood_is_completed_voting=False,
         confidence_intervals=None, local_allocation=False, demographic_dimensions_are_additive_together=False,
-        summary=dict(states=50, return_anchored=sum(r["source_comparison_available"] for r in results),
+        summary=dict(states=len(results), return_anchored=sum(r["source_comparison_available"] for r in results),
             assumption_cases=len(sensitivities), seeds=len(simulations), synthetic_agents=len(simulations)*10000,
             demographic_partition_seed_cases=len(demographic_seeds),
             demographic_partition_agent_draws=len(demographic_seeds)*10000,
