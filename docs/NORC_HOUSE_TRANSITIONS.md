@@ -6,6 +6,141 @@ changes. It is an assumption-dependent explanation, not identified voter histori
 or a causal effect. Moving from R+4 to D+12 is a +16 margin-point change,
 equivalent to +8 Democratic **two-party-share** points, not +16 share points.
 
+## Held-out dependence test and why matching margins is not enough
+
+The next historical test predicts both 2022 and 2024 source outcomes from
+**2020-only** survey predictors: contemporaneous President response, approximate
+calendar-age, literal education code and survey state. It does not use later
+reported House choices, later administrative histories, carried 2020 recall
+profiles or 2026 returns as predictors. Five prior-President-stratified folds
+are shared across every model and native weight frame. Vocabulary and source
+weight normalization use only positive-weight training cases.
+
+Five structural hypotheses are compared, not five new statistical families:
+pooled President20-stratum paired frequencies; independent versus paired ridge
+with President20 only; independent versus paired ridge adding 2020 age,
+education and state, with President-by-age/education interactions. Ridge C=0.15,
+solver settings and support regularization are fixed. Native training weights
+are divided by their training mean; evaluation uses native weight ratios.
+The primary frame is `commonpostweight_24`; the guide recommends 2024 weights.
+Earlier `commonpostweight_22` and `vvweight_post_22` are explicitly nonrecommended
+2024-frame sensitivity experiments, not certified alternative population weights.
+
+Administrative responses form a full 3x3 pair (positive / explicit nonvote /
+unknown in each year). Reported House responses form a full 6x5 pair, preserving
+2022 reported-election nonvote separately and forbidding that unsupported code
+in 2024. Independent heads multiply two marginal predictions; paired heads
+learn the corresponding 9- or 30-class joint distribution. Administrative and
+House pairs are still modeled separately: this is **not** a learned 270-state
+joint dependence across all four axes. Contradictions are not repaired.
+
+Absent training classes receive an explicit training-only Dirichlet prior
+(alpha=0.5 per class), mixed into ridge probabilities by `1/(training_n+1)`.
+This is fixed support regularization, not post-score flooring or observed
+support. Pooled history rows shrink by 20 normalized training-case weight units
+toward the similarly smoothed global distribution. All unknown cases remain.
+
+Full-pair log loss and multiclass Brier scores are evaluated out of fold.
+Known-positive/nonvote administrative pairs are separately renormalized/scored,
+so predicting missingness alone cannot explain that diagnostic. The previously
+published both-positive-history/both-major-House cohort supplies a separate,
+explicitly outcome-selected conditional House-pair diagnostic.
+
+| Hypothesis, primary weights | House pair log loss | House pair Brier | Administrative pair log loss | Administrative pair Brier |
+|---|---:|---:|---:|---:|
+| Pooled-history pairs | 1.278311 | 0.476766 | 1.095872 | 0.478363 |
+| Independent history | 1.313660 | 0.483039 | 1.262932 | 0.505718 |
+| Paired history | 1.275865 | 0.476735 | 1.095157 | 0.477814 |
+| Independent demographic/geographic | 1.348023 | 0.492568 | 1.303602 | 0.520227 |
+| Paired demographic/geographic | 1.315931 | 0.487600 | 1.115513 | 0.491573 |
+
+Pairing improves matched-feature comparisons here. **Adding the tested
+demographic/geographic predictors does not improve overall prediction versus
+the simpler paired-history model.** These expanded 9-/30-class source scores
+cannot be ranked against the accepted 2026 model's different five-class scores.
+No family or live default is reselected from this table.
+
+### Identical margins, different gross switching
+
+OOF House-pair predictions are renormalized to four D/R pairs within each
+already selected both-positive-history/both-major-choice case, then aggregated
+with primary source weights. These are conditional selected-cohort forecasts,
+not predictions of who would enter that cohort or of population switching.
+The aggregate is scaled to its known source weight total. A separate stage
+matches only the exact previously public D/R row and column margins.
+
+For four cells and fixed margins, let `x=DD`, `r` be previous D weight,
+`c` current D weight and `T` total. Then `DR=r-x`, `RD=c-x`,
+`RR=T-r-c+x`. The matching stage solves
+`x*(T-r-c+x)/((r-x)*(c-x)) = forecast_odds_ratio`.
+It preserves the forecast's association rather than fitting observed switching.
+
+| Hypothesis | Gross switching after identical-margin matching | Reference gross switching |
+|---|---:|---:|
+| Pooled-history pairs | 4.598943% | 4.599023% |
+| Independent history | 12.035204% | 4.599023% |
+| Paired history | 4.549400% | 4.599023% |
+| Independent demographic/geographic | 11.294996% | 4.599023% |
+| Paired demographic/geographic | 4.620939% | 4.599023% |
+
+Thus matching margins can coexist with seriously wrong gross flows in this
+source diagnostic. The richer paired model's closer aggregate rate does not
+override its worse proper scores relative to simpler paired-history.
+Near-perfect pooled aggregate calibration is not identification of individual
+histories or validation on an independent external sample.
+
+### Sensitivity, correction history and complete reproduction
+
+All 126 compositions of five fold draws are evaluated with their multinomial
+multiplicities, summing to 3,125 ordered draws. The complete 5,040 paired-minus-
+independent score rows are fold-composition stress tests, **not confidence
+intervals**: training sets overlap and folds are not independent sampling units.
+The primary demographic comparison reverses its full-House advantage in
+21 of 126 unique compositions for log loss and 14 for Brier. Known-history
+Brier also reverses in six. The selected-major House diagnostic favors pairing
+throughout this grid, but that is not a significance or population claim.
+No per-person losses, predictions, coefficients, features or native fine cells
+are released. Published sufficient inputs are broad fold-level score sums and
+synthetic selected-cohort forecasts; the exact public reference is reused,
+not supplemented with recoverable raw source subtables.
+
+The original design/code/test hashes were frozen before the first new fit.
+It was not external public preregistration, and the source/reference were
+already explored. After 72 successful component fits, finite weighted `matmul`
+reductions raised numerical flags despite agreement with independent product
+sums and `math.fsum`. Only score/forecast reductions changed. AST-bound cache
+adoption retained all successful probability arrays unchanged; 108 remaining
+fits completed, none repeated. Both policies, the original source, diagnostic
+and adoption proof are preserved, not silently rewritten.
+
+Scientific source `a90a2c6fb881fe1123c5da4a7f232d0d4d33e02b`; immutable
+science **442867090**, tag `participation-house-paired-oof-20261112-01`.
+The 163,404-byte / 29-member ZIP includes the entire accepted predecessor,
+all permitted inputs, 75 model/fold/frame rows, 100 pooled scores, 40 synthetic
+cells / 10 stages, 15 decisions, all stress rows, nine exact code/test files
+and all seven outputs. SHA256
+`a48dcae4c99911cf8c3dc05ef39bde1617d4abb12589d99d47dec15649c97ed8`.
+Thirteen tests / 27,479 independent native-row, predictor, weight, cache,
+`math.fsum` and iterative-IPF checks pass; two fresh blocked-network/command
+standard-library replays match every output. Without numerical packages the
+five private-stack tests skip, while eight feature/public-arithmetic tests run.
+All 19 full assets are anonymously byte-verified.
+
+```sh
+python3 -S -W error code/scripts/reproduce_house_pair_oof.py \
+  --archive /path/to/complete-analysis.zip --output /fresh/replay/path
+```
+
+Conditional common-item coding, retained-2020-adult selection, postwave weighting,
+future-cohort selection and differing historical predictors/window remain.
+This midterm-to-presidential test is not a replication of the richer 2026
+predictor set or validated presidential-to-midterm transport. Native House
+reports are not candidate-specific administrative truth. No current source
+marginal, accepted model, live map, earlier download or precinct allocation
+changes. Next isolate fixed-marginal persistence with leakage-free calibration,
+rather than transporting this pooled odds ratio as a validated 2026 parameter.
+Full results: `data/house-paired-oof/20261112-01/`.
+
 ## Historical same-office panel check: conditional source concordance
 
 The new check uses the held 6,175-case CES 2020/2022/2024 retained panel's

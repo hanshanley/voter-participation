@@ -1,0 +1,129 @@
+{
+  "contract": "participation.house_pair_oof_complete_packet.v1",
+  "files": {
+    "README.txt": {
+      "bytes": 2612,
+      "sha256": "2d7a87ef0e97148edf7295d4fa5c8e5e797140810664d07e69f890fe0beecc03"
+    },
+    "code/scripts/adopt_house_pair_cache.py": {
+      "bytes": 4756,
+      "sha256": "6737622e982e1193a96d9fe88f7385347c374c3e135a4f1773a0f148c2a4ca30"
+    },
+    "code/scripts/house_pair_oof.py": {
+      "bytes": 16523,
+      "sha256": "497427647767666aa11af59bf600db4ee591b5df9c7ca6d378fbf25883a49bbc"
+    },
+    "code/scripts/house_pair_public.py": {
+      "bytes": 13752,
+      "sha256": "cd296136cae375389dc1cdc4c7697dc75322fed061137a6aabcfbc5bb72b94a1"
+    },
+    "code/scripts/house_panel_validation.py": {
+      "bytes": 12467,
+      "sha256": "513478a8cd70598a81618b9d62e45ec9ee350740211aedff168fd6cb4447d198"
+    },
+    "code/scripts/package_house_pair_oof.py": {
+      "bytes": 9296,
+      "sha256": "a604c027e84a15afee4f76f57817ae8b6c311e693d934b5e6c5d4c4f819a1b03"
+    },
+    "code/scripts/reproduce_house_pair_oof.py": {
+      "bytes": 3338,
+      "sha256": "0cd2e7fc8f35dd0aaa5ef5ccbb1ab866856e8253c13251f42ff3d71e8807be78"
+    },
+    "code/scripts/verify_house_pair_oof.py": {
+      "bytes": 12605,
+      "sha256": "6c5c071760785427885829bd34ae4b12b91e8ce55065903354c6be8b529aa244"
+    },
+    "code/tests/test_house_pair_oof.py": {
+      "bytes": 3911,
+      "sha256": "45628216c3ac453d53277816286c9fe16f9bd1808f1bb9cf4b44db10af84af7c"
+    },
+    "code/tests/test_house_pair_public.py": {
+      "bytes": 3890,
+      "sha256": "2b4f3f4c75fb6c17ed280a0c0c943f40e05a6cc59cd4b5422dbdbc2d0af51134"
+    },
+    "inputs/accepted-house-panel-science.zip": {
+      "bytes": 35562,
+      "sha256": "25d0dfe7a6b7332dd6f26620b36b96f277e57e8f319f38bc70b83757d9c3e2d3"
+    },
+    "inputs/original-fitter.py": {
+      "bytes": 16419,
+      "sha256": "f5fa279bc32868c762dbea2b626852c9421ee4a8943eb2dfd995565ede7555c2"
+    },
+    "inputs/policy-original.json": {
+      "bytes": 6438,
+      "sha256": "6bd4439ac94ebd1f4c5dceb35695153a5b5720fa4bc55ffc9ccca5c4eb5cdb1a"
+    },
+    "inputs/policy-score02.json": {
+      "bytes": 7188,
+      "sha256": "3e2df02dee61795c240e21d517df9b7159ae8ccf1d3c89e79eb344cdf1074d9b"
+    },
+    "inputs/reference-concordance.json": {
+      "bytes": 96307,
+      "sha256": "e9274c3d217330aea55de267f015ef810ac534d6696af59836168bd16834558b"
+    },
+    "inputs/sufficient-fold-scores.json": {
+      "bytes": 50333,
+      "sha256": "a462a90e139e4d69bafe6921ee75a99bdb1f13d77d3a790ff5e7472c1b493b9a"
+    },
+    "outputs/fold-composition-stress.csv": {
+      "bytes": 632944,
+      "sha256": "e7a78edaf14dda66c4d8b60f82297cfdf7520a389f3bcc4b4c2337a181906b6c"
+    },
+    "outputs/fold-scores.csv": {
+      "bytes": 19087,
+      "sha256": "ba1e9e1f4bd44d8399b894cb449f03c53488b3e187bd026cd5e3954f866163f0"
+    },
+    "outputs/query-decisions.csv": {
+      "bytes": 1257,
+      "sha256": "052f709c40b5def4d992c22d353786012e57a737bfe18ec3d7890d0f03bac3ce"
+    },
+    "outputs/scores.csv": {
+      "bytes": 9125,
+      "sha256": "70f15c8de7f6f771ba90a60e8a31b6e41df1ba361f67183edb271fd66a387f20"
+    },
+    "outputs/source-margin-stages.csv": {
+      "bytes": 1782,
+      "sha256": "77a13fca19f73b83b58fca6d430a12e6136354f790e15aa741610632ae8a9344"
+    },
+    "outputs/summary.json": {
+      "bytes": 7410,
+      "sha256": "3e4fcb701155f46b9823ac9fea25905576ae78992c6648ae1eeb41526534f138"
+    },
+    "outputs/synthetic-flows.csv": {
+      "bytes": 5534,
+      "sha256": "33f37e0d9179bea571210f438fe73a08e288a7006ef8ef887a9c9b0eaa0003dd"
+    },
+    "records/cache-adoption.json": {
+      "bytes": 914,
+      "sha256": "ecccd0b7833cda13ef38194d89043b4f1faff784b92c76be5713432b6612c056"
+    },
+    "records/fitting-receipt.json": {
+      "bytes": 430,
+      "sha256": "bd3261968f31ff33cd27eb32320116a0e60b440864fe66e4ab5b82300ea19783"
+    },
+    "records/independent-native-verification.json": {
+      "bytes": 880,
+      "sha256": "7f63e8d5391053b49166120c568dfe178c345e50831a76994b53cdcdf739cee1"
+    },
+    "records/numerical-environment.json": {
+      "bytes": 222,
+      "sha256": "0ec9fa9716f258b14e63e634f100964ac2c0f90946ec5e656f1d37175e3957c8"
+    },
+    "records/reduction-diagnostic.json": {
+      "bytes": 748,
+      "sha256": "9740634e2b8813b86c79fa3177199281ab267e9e00f908d5d2959563cb101e1b"
+    }
+  },
+  "only_permitted_sufficient_inputs": true,
+  "original_persons_and_prediction_caches_included": false,
+  "output_files": [
+    "fold-composition-stress.csv",
+    "fold-scores.csv",
+    "query-decisions.csv",
+    "scores.csv",
+    "source-margin-stages.csv",
+    "summary.json",
+    "synthetic-flows.csv"
+  ],
+  "source_code_commit": "a90a2c6fb881fe1123c5da4a7f232d0d4d33e02b"
+}

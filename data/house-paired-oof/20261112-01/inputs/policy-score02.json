@@ -1,0 +1,85 @@
+{
+  "contract": "participation.house_pair_oof_policy.v1",
+  "date": "2026-11-12",
+  "frozen_before_first_new_paired_source_fit": false,
+  "external_public_preregistration": false,
+  "source_previously_analyzed_and_pooled_reference_already_known": true,
+  "fitter_sha256": "497427647767666aa11af59bf600db4ee591b5df9c7ca6d378fbf25883a49bbc",
+  "tests_sha256": "45628216c3ac453d53277816286c9fe16f9bd1808f1bb9cf4b44db10af84af7c",
+  "native_classifier_sha256": "513478a8cd70598a81618b9d62e45ec9ee350740211aedff168fd6cb4447d198",
+  "reference_sha256": "e9274c3d217330aea55de267f015ef810ac534d6696af59836168bd16834558b",
+  "source_sha256": "e9921d391159cf8fcb68a0b69aa76c94a5bf73436f516606bf3fb310125ba5ac",
+  "guide_sha256": "81f3e73e4dc26b752b18c09ee0b1fc9d7fcf7462f657643193323c17f88941d4",
+  "bridge_sha256": "499b561c5e33aca603c5b3d5e7aa7c6adec4b1a64488764cacfe63d56075e22c",
+  "source_rows": 6175,
+  "source_choice_code_transport_remains_conditional": true,
+  "native_panel_numeric_choice_labels_qualified": false,
+  "predictors": {
+    "history": ["CC20_410"],
+    "demographic": ["CC20_410", "birthyr_20", "educ_20", "inputstate_20"],
+    "president20": "Contemporaneous 2020 response, not later recalled profiles; keep contest nonvote, reported election nonvote and unknown distinct.",
+    "age20": "Approximate calendar-year age 2020 minus birthyr_20; bins18-29/30-44/45-64/65+; missing or outside18..110 stays UNKNOWN, never dropped or treated as eligibility proof.",
+    "education20": "Literal native categorical codes1..6; no numeric labels inferred from PDF display order.",
+    "state20": "2020 survey-state categorical FIPS, not current matched-record geography or election-day residence.",
+    "interactions": ["president20_by_age20", "president20_by_education20"],
+    "forbidden": ["2022_or_2024_choices_as_predictors", "2022_or_2024_histories_as_predictors", "later_president20_profiles", "respondent_identifiers", "CL_2020gvm_with_unqualified_pre2022_record_availability", "2026_returns", "weights_as_predictors", "counterfactual_House_preferences"]
+  },
+  "targets": {
+    "administrative_pair": "Full3x3 POSITIVE/EXPLICIT_NONVOTE/UNKNOWN at2022 and2024, not repaired from reported House choice.",
+    "House_response_pair": "Full6x5 reported House classes: D/R/O/contest-nonvote/reported-election-nonvote/unknown at2022; no unsupported election-nonvote code12 at2024.",
+    "administrative_and_House_pairs_modeled_separately": true,
+    "complete_four_axis_dependence_claimed": false
+  },
+  "models": ["pooled_history_pairs", "independent_history", "paired_history", "independent_demographic", "paired_demographic"],
+  "models_are_five_structural_hypotheses_not_five_new_statistical_families": true,
+  "ridge": {"C": 0.15, "solver": "lbfgs", "max_iter": 1000, "tol": 0.000001, "native_training_weights_divided_by_training_mean": true},
+  "pooled_history": {"strata": "president20", "global_Dirichlet_alpha_each_class": 0.5, "row_prior_strength_in_training_case_weight_units": 20},
+  "ridge_support_regularization": "Each head mixes raw model probabilities with training-only Dirichlet(alpha=.5/class) prior by epsilon=1/(training_n+1); absent training classes explicitly supported. This is fixed regularization, not post-score flooring.",
+  "folds": 5,
+  "split_seed": 20261112,
+  "stratification": "Only contemporaneous2020president feature; seeded shuffled round-robin with seeded stratum offsets. No later outcomes used in splits.",
+  "same_raw_case_folds_for_all_models_and_weight_frames": true,
+  "training_vocabulary_fit_only_on_positive_weight_training_cases": true,
+  "weights": {
+    "primary": "commonpostweight_24",
+    "sensitivity_only_not_recommended2024_weights": ["commonpostweight_22", "vvweight_post_22"],
+    "guide_recommends2024_weights": true,
+    "native_weight_calibration_external_to_folds": true,
+    "attrition_original2020_adult_frame_and_later_eligibility_not_repaired": true
+  },
+  "scores": ["full_administrative_pair_logloss", "full_administrative_pair_Brier", "full_House_response_pair_logloss", "full_House_response_pair_Brier", "both_known_P_N_conditional_administrative_pair_scores", "primary_both_positive_history_and_major_House_conditional_pair_scores"],
+  "primary_known_major_diagnostic": {
+    "reuse_exact_predecessor_pooled_CES_2x2_reference": true,
+    "no_new_reference_subtables_or_sensitivity_raw_cells_published": true,
+    "forecast": "Normalize OOF House-pair probabilities to four D/R pairs within each already selected actual both-positive-history/both-major-choice reference case; aggregate source weights.",
+    "marginal_matching": "Normalize predicted pooled table to reference weight total, then fit only reference row/column margins, preserving forecast cross-product odds ratio. Do not fit observed switching or odds ratio.",
+    "report": "All five unconstrained and marginal-matched2x2 synthetic tables, gross-switch errors, matching residuals and odds-ratio preservation.",
+    "selection_on_future_observed_cohort_is_diagnostic_not_population_forecast": true
+  },
+  "fold_stress": "All126multisets of5outer-fold draws, with multinomial multiplicities summing3125; compare paired versus independent losses at matched feature level. Overlapping training folds make this a fold-composition stress grid, NOT confidence intervals or independent resampling units.",
+  "publication": {
+    "minimum_raw_cases_each_published_scored_fold_or_selected_cohort": 100,
+    "allowed": "Pooled model/frame/fold loss sufficient sums, primary selected-cohort synthetic forecasts, exact previously public2x2reference, complete score/flow/stress/query outputs/code/tests/replay.",
+    "forbidden": "Persons, identifiers, per-case labels/features/predictions/losses, native fine cells, state model coefficients or state benchmarks.",
+    "public_replay_does_not_repeat_private_fits": true
+  },
+  "interpretation": {
+    "unmatched_historical_stress_test_not_exact_2026_predictor_replication": true,
+    "direction": "2022midterm to2024presidential, not2024presidential to2026midterm.",
+    "proper_scores_and_known_history_slices_distinguish_missingness_from_retention": true,
+    "no_2026_model_replacement_affinity_calibration_or_family_reselection": true,
+    "no_design_confidence_intervals": true,
+    "no_independent_population_or_candidate_specific_administrative_truth": true,
+    "no_precinct_or_county_allocation": true,
+    "all_negative_results_retained": true
+  },
+  "original_policy_sha256": "6bd4439ac94ebd1f4c5dceb35695153a5b5720fa4bc55ffc9ccca5c4eb5cdb1a",
+  "score_backend_correction": {
+    "original_statistical_design_frozen_before_first_fit": true,
+    "corrected_code_frozen_before_remaining_fits": true,
+    "successful_component_fits_carried_forward_without_refitting": 72,
+    "reason": "On finite positive-weight inputs, NumPy matmul emitted divide/overflow/invalid warnings despite finite results matching product-sum and math.fsum within1e-13. Replace only weighted score/forecast matmul reductions with explicit float64 product-sums.",
+    "features_training_labels_weights_splits_estimators_and_regularization_changed": false,
+    "original_failed_attempt_and_cache_bindings_retained": true
+  }
+}

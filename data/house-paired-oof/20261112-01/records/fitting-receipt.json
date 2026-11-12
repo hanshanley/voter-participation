@@ -1,0 +1,13 @@
+{
+  "OOF_model_fold_frame_rows": 75,
+  "final_candidate_sha256": "a462a90e139e4d69bafe6921ee75a99bdb1f13d77d3a790ff5e7472c1b493b9a",
+  "policy_sha256": "3e2df02dee61795c240e21d517df9b7159ae8ccf1d3c89e79eb344cdf1074d9b",
+  "source_rows": 6175,
+  "source_weights": [
+    "commonpostweight_24",
+    "commonpostweight_22",
+    "vvweight_post_22"
+  ],
+  "successful_component_fits_new": 108,
+  "successful_component_fits_reused": 72
+}

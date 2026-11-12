@@ -1,0 +1,107 @@
+{
+  "assets": {
+    "README.txt": {
+      "bytes": 2612,
+      "sha256": "2d7a87ef0e97148edf7295d4fa5c8e5e797140810664d07e69f890fe0beecc03",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/README.txt"
+    },
+    "SHA256SUMS.txt": {
+      "bytes": 1483,
+      "sha256": "00e674f5d4dc8dec3af5395f46f6c6b9e0642fbdc33e645b7c91e55d7a467470",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/SHA256SUMS.txt"
+    },
+    "checksums.json": {
+      "bytes": 2397,
+      "sha256": "e3f1a7541fe5398a42be9c4bf79ecb301dc6189e3ae18c9eaf77427ac8f48f1f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "bytes": 163404,
+      "sha256": "a48dcae4c99911cf8c3dc05ef39bde1617d4abb12589d99d47dec15649c97ed8",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/complete-analysis.zip"
+    },
+    "fold-composition-stress.csv": {
+      "bytes": 632944,
+      "sha256": "e7a78edaf14dda66c4d8b60f82297cfdf7520a389f3bcc4b4c2337a181906b6c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/fold-composition-stress.csv"
+    },
+    "fold-scores.csv": {
+      "bytes": 19087,
+      "sha256": "ba1e9e1f4bd44d8399b894cb449f03c53488b3e187bd026cd5e3954f866163f0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/fold-scores.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "bytes": 936,
+      "sha256": "aa7c7462097aaba3f93739157dc42097a05b65bd42e3a1ad926a559ebc6b4895",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "bytes": 936,
+      "sha256": "aa7c7462097aaba3f93739157dc42097a05b65bd42e3a1ad926a559ebc6b4895",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/fresh-reproduction-02.json"
+    },
+    "independent-native-verification.json": {
+      "bytes": 880,
+      "sha256": "7f63e8d5391053b49166120c568dfe178c345e50831a76994b53cdcdf739cee1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/independent-native-verification.json"
+    },
+    "manifest.json": {
+      "bytes": 4722,
+      "sha256": "01290fa621176759f2725beb8cff0572490f5ccb4a60c3abe73f7da8546a1c78",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/manifest.json"
+    },
+    "package-receipt.json": {
+      "bytes": 396,
+      "sha256": "6ae62ec3f2d86941d3b5c613718885ae2ab292815db72b623cf2bbc297397b09",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/package-receipt.json"
+    },
+    "policy-original.json": {
+      "bytes": 6438,
+      "sha256": "6bd4439ac94ebd1f4c5dceb35695153a5b5720fa4bc55ffc9ccca5c4eb5cdb1a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/policy-original.json"
+    },
+    "policy-score02.json": {
+      "bytes": 7188,
+      "sha256": "3e2df02dee61795c240e21d517df9b7159ae8ccf1d3c89e79eb344cdf1074d9b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/policy-score02.json"
+    },
+    "query-decisions.csv": {
+      "bytes": 1257,
+      "sha256": "052f709c40b5def4d992c22d353786012e57a737bfe18ec3d7890d0f03bac3ce",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/query-decisions.csv"
+    },
+    "scores.csv": {
+      "bytes": 9125,
+      "sha256": "70f15c8de7f6f771ba90a60e8a31b6e41df1ba361f67183edb271fd66a387f20",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/scores.csv"
+    },
+    "source-margin-stages.csv": {
+      "bytes": 1782,
+      "sha256": "77a13fca19f73b83b58fca6d430a12e6136354f790e15aa741610632ae8a9344",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/source-margin-stages.csv"
+    },
+    "sufficient-fold-scores.json": {
+      "bytes": 50333,
+      "sha256": "a462a90e139e4d69bafe6921ee75a99bdb1f13d77d3a790ff5e7472c1b493b9a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/sufficient-fold-scores.json"
+    },
+    "summary.json": {
+      "bytes": 7410,
+      "sha256": "3e4fcb701155f46b9823ac9fea25905576ae78992c6648ae1eeb41526534f138",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/summary.json"
+    },
+    "synthetic-flows.csv": {
+      "bytes": 5534,
+      "sha256": "33f37e0d9179bea571210f438fe73a08e288a7006ef8ef887a9c9b0eaa0003dd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-paired-oof-20261112-01/synthetic-flows.csv"
+    }
+  },
+  "current_models_or_website_changed": false,
+  "immutable": true,
+  "independent_population_validation": false,
+  "raw_people_and_private_predictions_exported": false,
+  "release_id": 442867090,
+  "scientific_source_commit": "a90a2c6fb881fe1123c5da4a7f232d0d4d33e02b",
+  "status": "passed_immutable_complete_paired_source_OOF_science",
+  "tag": "participation-house-paired-oof-20261112-01"
+}

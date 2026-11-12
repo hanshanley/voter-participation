@@ -1,0 +1,15 @@
+{
+  "all_successful_probability_arrays_byte_identical": true,
+  "completed_fits_reused": 72,
+  "corrected_fitter_sha256": "497427647767666aa11af59bf600db4ee591b5df9c7ca6d378fbf25883a49bbc",
+  "fitting_and_feature_function_ASTs_unchanged": true,
+  "new_policy_sha256": "3e2df02dee61795c240e21d517df9b7159ae8ccf1d3c89e79eb344cdf1074d9b",
+  "old_policy_sha256": "6bd4439ac94ebd1f4c5dceb35695153a5b5720fa4bc55ffc9ccca5c4eb5cdb1a",
+  "original_fitter_commit": "1e9ee689873252a50c6806bed0b63a46018684c9",
+  "original_fitter_sha256": "f5fa279bc32868c762dbea2b626852c9421ee4a8943eb2dfd995565ede7555c2",
+  "private_cache_names_sha256": "f95f53f90d3d234a82a84770e390036c9b0f658f6216b018e42b046facc237a2",
+  "run_AST_unchanged_except_expected_weighted_sum": true,
+  "statistical_design_models_weights_splits_and_regularization_unchanged": true,
+  "status": "pass_score_only_cache_adoption",
+  "successful_fits_repeated": 0
+}

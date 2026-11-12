@@ -1,0 +1,18 @@
+{
+  "all_75_model_fold_frame_rows_independently_scored": true,
+  "all_native_targets_and_weight_frames_match_accepted_private_controls": true,
+  "all_predictors_match_contemporaneous2020_source_fields": true,
+  "all_primary_pre_correction_predictions_identical": true,
+  "cached_component_fits_verified": 180,
+  "checks": 27479,
+  "native_people_predictions_or_fine_cells_exported": false,
+  "policy_sha256": "3e2df02dee61795c240e21d517df9b7159ae8ccf1d3c89e79eb344cdf1074d9b",
+  "population_validation": false,
+  "score_backend": "independent_math_fsum_and_math_log",
+  "source_cases": 6175,
+  "source_margin_check": "independent_iterative_IPF",
+  "status": "pass",
+  "successful_fits_repeated": 0,
+  "sufficient_sha256": "a462a90e139e4d69bafe6921ee75a99bdb1f13d77d3a790ff5e7472c1b493b9a",
+  "verifier_sha256": "6c5c071760785427885829bd34ae4b12b91e8ce55065903354c6be8b529aa244"
+}

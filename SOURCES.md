@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Held-out cross-election dependence | [Paired heads and identical-margin flow test](#held-out-cross-election-dependence-and-identical-margin-flows) |
 | Historical House panel evidence | [Conditional same-office source concordance, not population validation](#conditional-same-office-house-source-concordance) |
 | Three House model families | [Same-source comparison; negative results retained](#three-fixed-norc-house-model-families) |
 | Pennsylvania native control scope correction | [48 comparisons; no new counts or refit](#2026-pennsylvania-native-district-control-scope) |
@@ -30,6 +31,45 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Held-out cross-election dependence and identical-margin flows
+
+The already-held CES 6,175-case panel now supplies a new five-fold predictive
+test, not just another source inventory. Only contemporaneous 2020 presidential
+response, approximate 2020 calendar-age, native education code and survey-state
+predictors are allowed. Later choices/histories, carried recall profiles, IDs
+and 2026 returns are excluded. Five fixed structural hypotheses compare
+pooled-history pairs and independent/paired ridge with/without demographic and
+geographic features. Separate administrative 9-class and reported-House 30-class
+pairs retain unknowns and contradictions; no full four-axis dependence is claimed.
+The source's conditional House code transport and 2020-adult retention limits
+remain. Earlier 2022 weights are sensitivity frames, not valid 2024 voter weights.
+
+In the exact previously public both-positive-history/both-major-choice cohort,
+identical-margin independent-demographic predicts **11.294996%** switching,
+paired-demographic **4.620939%**, against **4.599023%** reported. Margin fitting
+preserves forecast odds, not observed switching. Paired-history predicts
+4.549400% and has better overall proper scores than paired-demographic:
+House log loss **1.275865 versus 1.315931**. Adding demographics/geography
+therefore did not improve this source's overall prediction. Closer aggregate
+calibration alone does not select a model. These expanded-target scores are
+not comparable to the accepted 2026 model's different five-class scores.
+
+Source `a90a2c6fb881fe1123c5da4a7f232d0d4d33e02b`; immutable science
+**442867090**, tag `participation-house-paired-oof-20261112-01`. The full
+163,404-byte / 29-member ZIP retains the entire accepted predecessor, all
+75 model/fold/frame sufficient rows, 100 scores, 40 synthetic cells / 10 stages,
+15 decisions, 5,040 stress rows, exact source/tests and both design versions.
+SHA256 `a48dcae4c99911cf8c3dc05ef39bde1617d4abb12589d99d47dec15649c97ed8`.
+All 19 full assets verified; 13 tests, 27,479 independent native-row, cache,
+math.fsum/IPF checks and two fresh seven-output standard-library replays pass.
+Of 180 successful component fits, 72 survived a score-only reduction correction
+unchanged and 108 remaining fits completed; none repeated. Both policies,
+original source and AST-bound adoption proof remain. No private people,
+features, predictions, coefficients or native fine cells are published.
+Fold-composition stress is not a CI. No accepted model, current source marginal,
+live map, deployment or old download changed, and no 2026 transport is validated.
+See `data/house-paired-oof/20261112-01/` and the complete download catalog.
 
 ## Conditional same-office House source concordance
 

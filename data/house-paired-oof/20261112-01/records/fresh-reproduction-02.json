@@ -1,0 +1,17 @@
+{
+  "archive_members": 29,
+  "archive_sha256": "a48dcae4c99911cf8c3dc05ef39bde1617d4abb12589d99d47dec15649c97ed8",
+  "network_and_external_commands_blocked": true,
+  "output_files_matched": 7,
+  "outputs": {
+    "fold-composition-stress.csv": "e7a78edaf14dda66c4d8b60f82297cfdf7520a389f3bcc4b4c2337a181906b6c",
+    "fold-scores.csv": "ba1e9e1f4bd44d8399b894cb449f03c53488b3e187bd026cd5e3954f866163f0",
+    "query-decisions.csv": "052f709c40b5def4d992c22d353786012e57a737bfe18ec3d7890d0f03bac3ce",
+    "scores.csv": "70f15c8de7f6f771ba90a60e8a31b6e41df1ba361f67183edb271fd66a387f20",
+    "source-margin-stages.csv": "77a13fca19f73b83b58fca6d430a12e6136354f790e15aa741610632ae8a9344",
+    "summary.json": "3e4fcb701155f46b9823ac9fea25905576ae78992c6648ae1eeb41526534f138",
+    "synthetic-flows.csv": "33f37e0d9179bea571210f438fe73a08e288a7006ef8ef887a9c9b0eaa0003dd"
+  },
+  "status": "pass",
+  "successful_private_fits_repeated": false
+}

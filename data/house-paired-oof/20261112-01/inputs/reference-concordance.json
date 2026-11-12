@@ -1,0 +1,3257 @@
+{
+  "available_source_tables": 2,
+  "contract": "participation.house_panel_concordance.v1",
+  "current_2026_model_changed": false,
+  "decisions": [
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AK",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AK",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AK",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AK",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AK",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AK",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AR",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AR",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AR",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AR",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AR",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AR",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AZ",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AZ",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AZ",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AZ",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AZ",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "AZ",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CO",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CO",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CO",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CO",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CO",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CO",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "CT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "DE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "FL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "FL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "FL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "FL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "FL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "FL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "GA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "GA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "GA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "GA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "GA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "GA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "HI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "HI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "HI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "HI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "HI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "HI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ID",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ID",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ID",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ID",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ID",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ID",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IL",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IL",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "IN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KS",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KS",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KS",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KS",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KS",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KS",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "KY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "LA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "LA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "LA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "LA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "LA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "LA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MD",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MD",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MD",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MD",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MD",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MD",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ME",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ME",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ME",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ME",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ME",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ME",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MO",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MO",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MO",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MO",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MO",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MO",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MS",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MS",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MS",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MS",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MS",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MS",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "MT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ND",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ND",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ND",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ND",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ND",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ND",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NH",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NH",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NH",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NH",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NH",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NH",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NJ",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NJ",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NJ",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NJ",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NJ",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NJ",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NM",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NM",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NM",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NM",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NM",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NM",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NV",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NV",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NV",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NV",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NV",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NV",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "NY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OH",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OH",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OH",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OH",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OH",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OH",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OK",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OK",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OK",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OK",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OK",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OK",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OR",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OR",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OR",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OR",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OR",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "OR",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "PA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "PA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "PA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "PA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "PA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "PA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "RI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "RI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "RI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "RI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "RI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "RI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SC",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SC",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SD",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SD",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SD",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SD",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SD",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "SD",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TN",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TN",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TX",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TX",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TX",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TX",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TX",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "TX",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VT",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "VT",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WA",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WA",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WI",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WI",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WV",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WV",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WV",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WV",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WV",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WV",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WY",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "WY",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UNLOCATED",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UNLOCATED",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UNLOCATED",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UNLOCATED",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UNLOCATED",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "UNLOCATED",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ALL_SOURCE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cells": {
+        "DD": {
+          "n": 1153,
+          "squared_weight": "2675.8129621578539660482157313910263347",
+          "weight": "1042.32630807310440837"
+        },
+        "DR": {
+          "n": 33,
+          "squared_weight": "192.4898579023241067054129942061053229",
+          "weight": "44.52500781731514033"
+        },
+        "RD": {
+          "n": 37,
+          "squared_weight": "228.42971456039371294403107713031705",
+          "weight": "55.3656271942219169"
+        },
+        "RR": {
+          "n": 1145,
+          "squared_weight": "2456.909177418705040331536066278615258525",
+          "weight": "1029.779950442046768165"
+        }
+      },
+      "reason": null,
+      "scope": "ALL_SOURCE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": {
+        "D_to_opposite_pct_within_selected_previous_choice": "4.096697235981846080736910376188279718281506377915564238352374486643023",
+        "R_to_opposite_pct_within_selected_previous_choice": "5.102138214010211938182958552122784809221444621905061263518148749357193",
+        "gross_D_R_switch_pct_within_selected_both_major_choices": "4.599022922603901930558149558778882897904788170579930152460301448618885"
+      },
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ALL_SOURCE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ALL_SOURCE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "commonpostweight_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ALL_SOURCE",
+      "selection": "both_major_choices",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": false,
+      "cells": null,
+      "reason": "outside_prespecified_public_scope",
+      "scope": "ALL_SOURCE",
+      "selection": "both_major_choices_and_positive_history",
+      "source": "CES_retained_panel",
+      "statistics": null,
+      "weight_frame": "vvweight_post_22"
+    },
+    {
+      "available": true,
+      "cells": {
+        "DD": {
+          "n": 41263,
+          "squared_weight": "182548630442.48711099886712038766",
+          "weight": "61793538.1700854790"
+        },
+        "DR": {
+          "n": 1386,
+          "squared_weight": "6785065256.600048016800686949",
+          "weight": "2188593.655615403"
+        },
+        "RD": {
+          "n": 1462,
+          "squared_weight": "5640360318.21527582393285576848",
+          "weight": "2058865.6160488720"
+        },
+        "RR": {
+          "n": 35405,
+          "squared_weight": "180479877770.96999448729135387510",
+          "weight": "59904357.6092335588"
+        }
+      },
+      "reason": null,
+      "scope": "POOLED_SOURCE_NOT_NATIONAL_POPULATION",
+      "selection": "modeled_current_voter_both_recalled22_and_current24_major_choices",
+      "source": "AP2024_source",
+      "statistics": {
+        "D_to_opposite_pct_within_selected_previous_choice": "3.420632594077258071827273679749753426862932342105865026859788554853212",
+        "R_to_opposite_pct_within_selected_previous_choice": "3.322721945182488704901366976444659331289155248901055515607882190991081",
+        "gross_D_R_switch_pct_within_selected_both_major_choices": "3.372462025252842501896261530539878229235835139493308920475717407762725"
+      },
+      "weight_frame": "POLLCLOSE_STATE_WEIGHT"
+    }
+  ],
+  "design_confidence_intervals": null,
+  "independent_individual_truth": false,
+  "population_validation": false,
+  "precinct_allocation": false,
+  "source_code_transport_assumption_required": true,
+  "unmatched_source_differences_pp": {
+    "D_to_opposite_pct_within_selected_previous_choice": "-0.676064641904588008909636696438526291418574035809699211492585931789811",
+    "R_to_opposite_pct_within_selected_previous_choice": "-1.779416268827723233281591575678125477932289373004005747910266558366112",
+    "gross_D_R_switch_pct_within_selected_both_major_choices": "-1.226560897351059428661888028239004668668953031086621231984584040856160"
+  }
+}

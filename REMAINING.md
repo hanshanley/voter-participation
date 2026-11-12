@@ -13,6 +13,53 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Completed held-out dependence and identical-margin flow test
+
+The new test actually fits and evaluates five structural hypotheses, not more
+seeds: pooled 2020-president-stratum pairs; independent versus paired ridge,
+with and without 2020 age/education/survey-state predictors. Five common
+prior-only folds and three native weight frames produce 75 held-out query rows.
+Separate full administrative 3x3 and House-response 6x5 pairs retain unknowns
+and contradictions. No 2022/2024 outcomes enter predictors; no 2026 returns
+train or select a model. Primary weights remain 2024 postwave; earlier 2022
+weights are explicitly nonrecommended-frame sensitivity tests.
+
+**Equal margins still conceal wrong flows.** In the already published selected
+CES cohort, margin-matched independent-demographic predicts 11.294996% switching,
+paired-demographic 4.620939%, versus 4.599023% reported under the conditional
+code bridge. The simpler paired-history model predicts 4.549400%. Pairing also
+improves held-out proper scores versus independence at the same feature level.
+Adding demographic/geographic predictors worsens overall proper scores versus
+the simpler paired-history model. Do not select the richer model merely because
+its aggregate switch rate is closer. These are source-cohort results, not
+validated 2026 transitions or a replication of the richer 2026 predictor set.
+
+Immutable science **442867090** has all 19 full assets verified, including the
+163,404-byte / 29-member ZIP, entire 35,562-byte predecessor, both policies,
+all permitted sufficient inputs/code/tests, seven full outputs, 100 scores,
+40 synthetic cells / 10 matching stages, 15 decisions and 5,040 fold-composition
+stress rows. The 126 compositions represent 3,125 ordered draws, NOT CIs.
+Some compositions reverse the full-House score advantage; those remain in
+the complete results, not hidden behind the favorable pooled comparison.
+Thirteen tests / 27,479 independent source, cached-prediction, math.fsum and
+IPF checks / two fresh blocked-network standard-library replays pass.
+
+All 180 component fits were completed once. A score-only weighted-reduction
+correction retained all 72 early successful probability caches unchanged;
+108 remaining fits completed. The original source/design/failed attempt and
+AST-bound cache-adoption proof remain. Native persons, per-case predictions,
+coefficients and fine cells stay private. No old acquisition, accepted model
+refit, baseline simulation or website build repeated.
+
+The live map/models/48 comparisons/AK-ME holds and actual prediction errors are
+unchanged. Next modeling work should isolate a **fixed-marginal persistence
+copula**, with leakage-free calibration, before considering a clearly labeled
+transported coupling sensitivity in the existing map. Do not substitute the
+pooled historical odds ratio for a validated 2026 parameter, demand universal
+administrative gold before conditional simulation, or repeat this completed
+experiment/source-inventory queue. The broader project and sole 45-minute
+continuation remain open. See `data/house-paired-oof/20261112-01/`.
+
 ## Completed historical House source-concordance increment
 
 New same-office 2022-to-2024 House joints now use the held 6,175-case CES

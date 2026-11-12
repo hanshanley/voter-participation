@@ -1,0 +1,7 @@
+{
+  "native_fits_local_only": true,
+  "numpy": "2.0.2",
+  "public_replay_standard_library_only": true,
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "scikit_learn": "1.6.1"
+}

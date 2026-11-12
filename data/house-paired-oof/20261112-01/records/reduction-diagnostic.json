@@ -1,0 +1,15 @@
+{
+  "status": "finite_reduction_agreement_before_score_only_fix",
+  "diagnosed_frame": "commonpostweight_22",
+  "fold": 0,
+  "models": "pooled_history_pairs",
+  "metrics_checked": ["admin_nll", "admin_brier", "house_nll", "house_brier"],
+  "all_four_inputs_finite": true,
+  "all_four_probability_arrays_positive": true,
+  "all_four_matmul_results_finite": true,
+  "all_four_matmul_results_match_float64_product_sums_within1e_13": true,
+  "all_four_product_sums_match_independent_math_fsum_within1e_13": true,
+  "matmul_warnings": ["divide by zero encountered in matmul", "overflow encountered in matmul", "invalid value encountered in matmul"],
+  "completed_component_fits_preserved": 72,
+  "raw_native_values_or_per_case_losses_included": false
+}
