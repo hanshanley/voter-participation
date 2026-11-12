@@ -1,11 +1,12 @@
 """Small direct CSV, JSON/API, PDF and native-statistics adapters."""
 
 import csv
+import gzip
 import io
 import json
 import re
 
-from .contract import IntakeError, VERSION, count, observation_id
+from .contract import IntakeError, VERSION, count, observation_id, validate_all
 
 
 FORBIDDEN_FIELDS = {"candidatevotes", "candidatevotetotal", "totalvotes", "demvotes", "repvotes"}
@@ -124,9 +125,15 @@ def delimited(spec, inputs):
 
 def json_records(spec, inputs):
     try:
-        data = json.loads(inputs[spec["primary_input"]])
-    except (ValueError, UnicodeError) as error:
+        body = inputs[spec["primary_input"]]
+        if spec.get("format", {}).get("compression") == "gzip":
+            body = gzip.decompress(body)
+        data = json.loads(body)
+    except (ValueError, UnicodeError, OSError, EOFError) as error:
         raise IntakeError("source_schema", "Native API/JSON product is not valid complete JSON") from error
+    for path, expected in spec.get("format", {}).get("assert_fields", {}).items():
+        if field(data, path) != expected:
+            raise IntakeError("election_scope", "Native JSON election/product control changed: " + path)
     path = spec.get("format", {}).get("items_path")
     rows = field(data, path) if path else data
     if not isinstance(rows, list) or not all(isinstance(row, dict) for row in rows):
@@ -160,6 +167,21 @@ ADAPTERS = {"csv": delimited, "json": json_records, "pdf": pdf_records}
 
 def adapt(spec, inputs, input_pins, clock, references):
     name = spec["adapter"]
+    if name == "canonical_json":
+        if not spec.get("review_evidence"):
+            raise IntakeError("unreviewed_canonical_input", "Reusing canonical observations needs explicit review evidence")
+        rows = json_records(spec, inputs)
+        selected = set(spec.get("format", {}).get("source_ids", []))
+        if selected:
+            rows = [row for row in rows if row.get("source", {}).get("id") in selected]
+        if not rows or spec.get("expected_rows") is not None and len(rows) != spec["expected_rows"]:
+            raise IntakeError("source_schema", "Canonical source inventory changed")
+        for row in rows:
+            check_fields(row, "")
+            if (row["geography"]["state_code"] != spec["geography"]["state_code"]
+                    or row["election"] != spec["election"]):
+                raise IntakeError("election_scope", "Canonical observations differ from the registered jurisdiction/election")
+        return validate_all(rows)
     if name not in ADAPTERS:
         raise IntakeError("unknown_adapter", "Unregistered direct adapter: " + name)
     rows = ADAPTERS[name](spec, inputs)

@@ -1,0 +1,168 @@
+{
+  "baseline_catalog_commit": "351130a058e7e64bd970e62dce6e4edb3874b373",
+  "baseline_version": "ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e",
+  "contract": "participation.routine_batch.v1",
+  "native_source_reacquisition": false,
+  "source_scope": "Three registered previously reviewed reporting sources; all 51 baseline state shards retained.",
+  "sources": [
+    {
+      "baseline_source_ids": [
+        "accepted-export:b128dc3cef02ae063e840495611b3747dc9454692d2788a8cb94e3b160f4908a:reporting/AR"
+      ],
+      "id": "held-reporting-ar",
+      "spec": {
+        "adapter": "canonical_json",
+        "classification": "public_aggregate",
+        "election": {
+          "date": null,
+          "id": "us-2026-general-previously-reviewed",
+          "qualification": "previously_reviewed",
+          "type": "general",
+          "year": 2026
+        },
+        "expected_rows": 2768,
+        "format": {
+          "assert_fields": {
+            "contract": "participation.count_snapshot.v1",
+            "state_code": "AR",
+            "year": 2026
+          },
+          "compression": "gzip",
+          "items_path": "records",
+          "source_ids": [
+            "accepted-export:b128dc3cef02ae063e840495611b3747dc9454692d2788a8cb94e3b160f4908a:reporting/AR"
+          ]
+        },
+        "geography": {
+          "level": "reporting_unit",
+          "state_code": "AR"
+        },
+        "id": "held-reporting-ar",
+        "inputs": {
+          "snapshot": {
+            "allowed_hosts": [
+              "raw.githubusercontent.com"
+            ],
+            "pin": {
+              "bytes": 716286,
+              "sha256": "bb97ef2b21532612a0e2de42da73e0d9c932e924eb8377e6e3e9116594324417"
+            },
+            "publication": "original",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/5fa34d67abe0b9f5ba4169b7733567c643dcb912/datasets/participation-counts-2026/ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e/states/AR.json.gz"
+          }
+        },
+        "notes": [
+          "Previously reviewed held-source update proof; no native reacquisition or new geography/turnout qualification."
+        ],
+        "primary_input": "snapshot",
+        "review_evidence": "https://github.com/hanshanley/margin_of_error/releases/tag/participation-held-reporting-navigation-20261112-01"
+      }
+    },
+    {
+      "baseline_source_ids": [
+        "accepted-export:bc9f1e93785e4a83148b96afa6855701f511be995f7469b8e9e4dfcb7e6cb51f:reporting/AZ"
+      ],
+      "id": "held-reporting-az",
+      "spec": {
+        "adapter": "canonical_json",
+        "classification": "public_aggregate",
+        "election": {
+          "date": null,
+          "id": "us-2026-general-previously-reviewed",
+          "qualification": "previously_reviewed",
+          "type": "general",
+          "year": 2026
+        },
+        "expected_rows": 1763,
+        "format": {
+          "assert_fields": {
+            "contract": "participation.count_snapshot.v1",
+            "state_code": "AZ",
+            "year": 2026
+          },
+          "compression": "gzip",
+          "items_path": "records",
+          "source_ids": [
+            "accepted-export:bc9f1e93785e4a83148b96afa6855701f511be995f7469b8e9e4dfcb7e6cb51f:reporting/AZ"
+          ]
+        },
+        "geography": {
+          "level": "reporting_unit",
+          "state_code": "AZ"
+        },
+        "id": "held-reporting-az",
+        "inputs": {
+          "snapshot": {
+            "allowed_hosts": [
+              "raw.githubusercontent.com"
+            ],
+            "pin": {
+              "bytes": 467111,
+              "sha256": "686c0aed12780619b3242314c67f973d40c207197343a43aa3a1d8a3d3ded833"
+            },
+            "publication": "original",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/5fa34d67abe0b9f5ba4169b7733567c643dcb912/datasets/participation-counts-2026/ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e/states/AZ.json.gz"
+          }
+        },
+        "notes": [
+          "Previously reviewed held-source update proof; no native reacquisition or new geography/turnout qualification."
+        ],
+        "primary_input": "snapshot",
+        "review_evidence": "https://github.com/hanshanley/margin_of_error/releases/tag/participation-held-reporting-navigation-20261112-01"
+      }
+    },
+    {
+      "baseline_source_ids": [
+        "accepted-export:cea7eba88d5ae521db73653ce33992dbe2d253a2854cd81d27655890e74be161:reporting/WY"
+      ],
+      "id": "held-reporting-wy",
+      "spec": {
+        "adapter": "canonical_json",
+        "classification": "public_aggregate",
+        "election": {
+          "date": null,
+          "id": "us-2026-general-previously-reviewed",
+          "qualification": "previously_reviewed",
+          "type": "general",
+          "year": 2026
+        },
+        "expected_rows": 432,
+        "format": {
+          "assert_fields": {
+            "contract": "participation.count_snapshot.v1",
+            "state_code": "WY",
+            "year": 2026
+          },
+          "compression": "gzip",
+          "items_path": "records",
+          "source_ids": [
+            "accepted-export:cea7eba88d5ae521db73653ce33992dbe2d253a2854cd81d27655890e74be161:reporting/WY"
+          ]
+        },
+        "geography": {
+          "level": "reporting_unit",
+          "state_code": "WY"
+        },
+        "id": "held-reporting-wy",
+        "inputs": {
+          "snapshot": {
+            "allowed_hosts": [
+              "raw.githubusercontent.com"
+            ],
+            "pin": {
+              "bytes": 95995,
+              "sha256": "647f15b864bbe061c677fdd9c1d45c8b9da037ffb67319165295114b09b493d4"
+            },
+            "publication": "original",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/5fa34d67abe0b9f5ba4169b7733567c643dcb912/datasets/participation-counts-2026/ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e/states/WY.json.gz"
+          }
+        },
+        "notes": [
+          "Previously reviewed held-source update proof; no native reacquisition or new geography/turnout qualification."
+        ],
+        "primary_input": "snapshot",
+        "review_evidence": "https://github.com/hanshanley/margin_of_error/releases/tag/participation-held-reporting-navigation-20261112-01"
+      }
+    }
+  ]
+}
