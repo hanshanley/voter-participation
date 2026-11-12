@@ -1,0 +1,177 @@
+{
+  "archived_tests": 46,
+  "assets": {
+    "complete-analysis.zip": {
+      "bytes": 874127644,
+      "members": 81,
+      "sha256": "cf7958ae88c713972c6bebb119daca864d7f789384ec832b662f8e227654c2a9",
+      "verified_members": 79
+    },
+    "mggg-md-va-complements-complete.zip": {
+      "bytes": 64263258,
+      "members": 52,
+      "sha256": "2d0cf49bc1341b7be5b69cce4b9892b4f6dea90bd06ccb849a325c75181690fb",
+      "verified_members": 50
+    },
+    "north-carolina-2018-complete.zip": {
+      "bytes": 8079828,
+      "members": 41,
+      "sha256": "55d02ece6f99849a9fd2cf11ab5c5b6e7bf8888a9170d5eb9e80ec4960505753",
+      "verified_members": 39
+    },
+    "official-state-complete-factual-queries.zip": {
+      "bytes": 77756232,
+      "members": 56,
+      "sha256": "dd926d9128b5291a27d06369ac7a575e786e9234cf91094a7394f98c2e55e50a",
+      "verified_members": 54
+    },
+    "openelections-supplements-complete.zip": {
+      "bytes": 40709549,
+      "members": 455,
+      "sha256": "573c4110fd92a8b212ff1e558618fb21bd9c8fee15a70a36a5e5d570ffa84630",
+      "verified_members": 453
+    }
+  },
+  "coverage": {
+    "existing_sources_retained_not_reacquired": true,
+    "source_presence_is_not_geographic_or_turnout_completeness": true,
+    "state_year_decisions": 255,
+    "years": {
+      "2016": {
+        "jurisdictions_with_compiled_queries": 51,
+        "jurisdictions_with_selected_sources": 51,
+        "no_selected_source": []
+      },
+      "2018": {
+        "jurisdictions_with_compiled_queries": 51,
+        "jurisdictions_with_selected_sources": 51,
+        "no_selected_source": []
+      },
+      "2020": {
+        "jurisdictions_with_compiled_queries": 51,
+        "jurisdictions_with_selected_sources": 51,
+        "no_selected_source": []
+      },
+      "2022": {
+        "jurisdictions_with_compiled_queries": 51,
+        "jurisdictions_with_selected_sources": 51,
+        "no_selected_source": []
+      },
+      "2024": {
+        "jurisdictions_with_compiled_queries": 51,
+        "jurisdictions_with_selected_sources": 51,
+        "no_selected_source": []
+      }
+    }
+  },
+  "dependencies": {
+    "openpyxl": "3.1.5",
+    "pyshp": "3.1.6",
+    "xlrd": "2.0.2"
+  },
+  "nested_packets": {
+    "medsl-2016-complete.zip": {
+      "bytes": 177316385,
+      "members": 39,
+      "sha256": "b641d38ad3f5be5f7d0b986669f11a68ce22b9e8537532043eb7fbd18621b3cb",
+      "verified_members": 37
+    },
+    "mggg-md-va-complements-complete.zip": {
+      "bytes": 64263258,
+      "members": 52,
+      "sha256": "2d0cf49bc1341b7be5b69cce4b9892b4f6dea90bd06ccb849a325c75181690fb",
+      "verified_members": 50
+    },
+    "north-carolina-2018-complete.zip": {
+      "bytes": 8079828,
+      "members": 41,
+      "sha256": "55d02ece6f99849a9fd2cf11ab5c5b6e7bf8888a9170d5eb9e80ec4960505753",
+      "verified_members": 39
+    },
+    "official-state-complete-factual-queries.zip": {
+      "bytes": 77756232,
+      "members": 56,
+      "sha256": "dd926d9128b5291a27d06369ac7a575e786e9234cf91094a7394f98c2e55e50a",
+      "verified_members": 54
+    },
+    "openelections-statewide-complete.zip": {
+      "bytes": 427063792,
+      "members": 119,
+      "sha256": "a377ee5d62db401a81979b2b823de1ef5fbfc2c5d2ed1ce4298e362f90c4ad06",
+      "verified_members": 117
+    },
+    "openelections-supplements-complete.zip": {
+      "bytes": 40709549,
+      "members": 455,
+      "sha256": "573c4110fd92a8b212ff1e558618fb21bd9c8fee15a70a36a5e5d570ffa84630",
+      "verified_members": 453
+    }
+  },
+  "official_template_extraction_replay_requires_separately_retained_originals": true,
+  "offline_probes": [
+    "network",
+    "dns",
+    "child_command"
+  ],
+  "replayed_outputs": {
+    "coverage/all-255-state-year-decisions.csv": {
+      "bytes": 349876,
+      "sha256": "93caf00b286b529b54cf2384810286e208cdc90b43d11492d598f4b6744fe338"
+    },
+    "coverage/manifest.json": {
+      "bytes": 545,
+      "sha256": "defc9d1a9b6994b0f08dbaccf903e071d19d8078623c04bd7fe0e6ca119bec18"
+    },
+    "coverage/summary.json": {
+      "bytes": 922,
+      "sha256": "ccab7e46ba3dc18322817924c72bdd5b13758f27faeb54688a2d68f2ed5fe1dc"
+    },
+    "mggg-2018/manifest.json": {
+      "bytes": 850,
+      "sha256": "c3e22475f1f83de5402538bc1240fd791b412d6ee7a8a0ffd04cc8de43e7bf34"
+    },
+    "mggg-2018/md2018-election-day.csv.gz": {
+      "bytes": 1329488,
+      "sha256": "b01846f1815f6bc2c7a5f17dbc9c2fded08b88ba29e60f205b6ebc5754d1ab2a"
+    },
+    "mggg-2018/md2018-publisher-allocated.csv.gz": {
+      "bytes": 1408755,
+      "sha256": "2388bc2939feedee76d71fd5180e0d9177aacb95a1cd818f775aedd72efbb187"
+    },
+    "mggg-2018/summary.json": {
+      "bytes": 1739,
+      "sha256": "d82a4434b2b5912d18ff49a3ecdb3fedf3fdbae388a7a097779dd770a8246357"
+    },
+    "mggg-2018/va2018-publisher-compiled.csv.gz": {
+      "bytes": 1682664,
+      "sha256": "e97dbc456a7e784ce97c36c8e2ec5ea9cdbf786efc892a90115b55d2f54d0759"
+    },
+    "north-carolina-2018/complete-native-row-query.csv.gz": {
+      "bytes": 5904608,
+      "sha256": "5dd021a1d129380fcdaf354e2747b255026d32968cd0a23386da99571b330146"
+    },
+    "north-carolina-2018/manifest.json": {
+      "bytes": 542,
+      "sha256": "5f681b8cbf57caa2a5d8113fb243face539b5f8b15eacc9776722a01c83c232a"
+    },
+    "north-carolina-2018/summary.json": {
+      "bytes": 154,
+      "sha256": "496e8227a72601e9368d22945d20287b36a7203ac545237e3bfd8702dace4569"
+    },
+    "virginia-2020/complete-native-row-query.csv.gz": {
+      "bytes": 6241299,
+      "sha256": "27f67709be5f4e3850e7261f613ffd8701d625898631bfd3607e99eb368ac0e4"
+    },
+    "virginia-2020/manifest.json": {
+      "bytes": 542,
+      "sha256": "d509158ab290d8015c89fc3aacc148ce8cf044fe82986a4fdbddbbc52386c0c8"
+    },
+    "virginia-2020/summary.json": {
+      "bytes": 154,
+      "sha256": "25cfd182b4a7738e007b24d7f6b85c1bda466a987ec0f47517ab821aa5fdb10f"
+    }
+  },
+  "source_commit": "650151b54f51f089e2d253425cadf2d300783255",
+  "status": "pass",
+  "wholesale_multiyear_native_reprocessing_claimed": false
+}

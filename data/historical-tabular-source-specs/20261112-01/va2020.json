@@ -1,0 +1,49 @@
+{
+  "sources": [
+    {
+      "canonical_columns": {
+        "candidate": "BallotName",
+        "county": "LocalityName",
+        "office": "RaceName",
+        "party": "PoliticalParty",
+        "unit": "PrecinctName",
+        "votes": "Votes"
+      },
+      "container": "plain",
+      "delimiter": ",",
+      "encoding": "utf-8-sig",
+      "expected_header": [
+        "",
+        "ElectionName",
+        "ElectionDate",
+        "CreateDate",
+        "District",
+        "RaceName",
+        "NumberOfSeats",
+        "LocalityName",
+        "LocalityCode",
+        "PrecinctName",
+        "BallotName",
+        "BallotOrder",
+        "Votes",
+        "Percentage",
+        "PoliticalParty"
+      ],
+      "license": "ODbL-1.0; Database-Contents-License-1.0",
+      "measure": "native_candidate_or_question_votes",
+      "original_path": "VA/2020/VA-2020-precincts.csv",
+      "original_pin": {
+        "bytes": 29314700,
+        "sha256": "b9961bd01a0e9efb2f3312cc3ab9c5e5e1a8e714e0195946245bf76beaf58d25"
+      },
+      "required_values": {
+        "ElectionDate": "2020-11-03T00:00:00",
+        "ElectionName": "2020 November General"
+      },
+      "source_commit": "63dabd2a58a5ea41b94406235da8a6d1fc6fa1da",
+      "source_url": "https://raw.githubusercontent.com/mggg-states/VA-shapefiles/63dabd2a58a5ea41b94406235da8a6d1fc6fa1da/2020/VA-2020-precincts.csv",
+      "state_code": "VA",
+      "year": 2020
+    }
+  ]
+}

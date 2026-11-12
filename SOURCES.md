@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Historical precinct bulk collection | [All-state source/query presence for 2016/2018/2020/2022/2024](#historical-precinct-bulk-collection-2016-through-2024) |
 | House-result comparison correction | [Massachusetts and changed major-party contest coverage](#house-result-comparability-audit-and-correction) |
 | Held reporting-row batch integration | [4,963 rows connected across Arkansas, Arizona and Wyoming](#held-reporting-rows-connected-to-county-navigation) |
 | Current geographic gap integration | [Harris TX: counted ballots, not roster voters](#2026-harris-texas-held-counted-ballot-integration), [Jefferson WI: county ballots and native ward-group rows](#2026-jefferson-wisconsin-county-and-ward-group-participation) |
@@ -36,6 +37,73 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Historical precinct bulk collection: 2016 through 2024
+
+See the [maintained usage guide](docs/HISTORICAL_PRECINCTS.md) and complete
+[255 state/year decisions](data/historical-precinct-coverage/20261112-03/queries/all-255-state-year-decisions.csv).
+All 51 jurisdictions including DC have selected sources and compiled queries
+in each of 2016/2018/2020/2022/2024. This is not a count of fully covered states.
+
+MEDSL2016 commit `5965d5e572dfb9affaf8b295e6ddee94773a6cf8`: all five office
+partitions/22 originals, MIT notice retained, complete 4,060,918-row federal query.
+All37 native fields independently compared. OpenElections: 85 statewide-named
+CSVs plus414 supplemental county/ward/town/unsuffixed-general CSVs, all pinned
+Git blobs verified, 13,003,540 rows. All native cells/modes and canonical fields
+checked independently; alternative files never summed. Four repository MIT
+notices retained, not extended to every source. Official AL/KS/PA2018/2020:
+23 originals/1,161,107cells-or-rows and15 full Kansas grids; complete source
+packet reproduces all19 outputs offline. NC2018 separately declared official
+ZIP supplies183,723rows; all16 native columns and canonical fields checked.
+
+The shared access-ledger parser incorrectly treated an entire Markdown table
+as blocked when one row reported403. Fixed row-level interpretation with a
+regression; the historical NCSBE page had not been natively denied in that
+attempt. Ordinary acquisition then returned200 for the historical index and
+its declared2018 ZIP. The distinct `er.ncsbe.gov`403 stays stopped. Concurrent
+identical cache objects now use atomic publication; original shared-module
+import provenance is supplemented, not falsely described as wholly verbatim.
+
+| Historical route | Actual outcome |
+|---|---|
+| `https://elections.maryland.gov/elections/archive/2018/election_data/index.html` | Native HTTP403; stopped, no alternate client/cache/mirror |
+| `https://elections.maryland.gov/elections/archive/2018/index.html` | Native HTTP403; stopped, no alternate client/cache/mirror |
+| `https://apps.elections.virginia.gov/SBE_CSV/ELECTIONS/ELECTIONRESULTS/` | Officially declared directory, native HTTP403; stopped |
+| `https://www.ncsbe.gov/results-data/election-results/historical-election-results-data` | Native200/101,014bytes; declared historical archive acquired, not an ER denial bypass |
+| `https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2018_11_06/results_pct_20181106.zip` | Native200/2,084,856bytes; ZIP CRC passed, full TSV retained |
+
+Independent licensed MGGG products close the remaining source-presence gaps:
+`mggg-states/MD-shapefiles` at `c040ffd20f2560f4edcfe9829720a01aa13eca7b`
+and `mggg-states/VA-shapefiles` at `63dabd2a58a5ea41b94406235da8a6d1fc6fa1da`.
+MD2018 has two DISTINCT 1,809-row tables: merged election-day-only, versus
+publisher-allocated early/absentee/provisional plus election-day counts.
+VA2018 has 2,439 publisher-compiled attributes; VA2020 has 152,025 native
+candidate/reporting-unit rows, including central absentee/provisional units
+and multi-seat races. All original cells and selected election fields were
+independently checked; the DBF checker uses a different binary reader.
+Databases use ODbL1.0, individual contents Database Contents License1.0.
+Retain original notices and MGGG attribution; VA2018 was compiled by Princeton
+Gerrymandering Project and edited by MGGG. These are independent compiled
+products, not retries or mirrors of the stopped official routes.
+
+Existing MEDSL2022/2024 national holdings and original NYT presidential layers
+were reused, not recollected. ME towns/WI wards/partial NJ and
+unmerged KS sheets remain explicit; candidate votes do not become ballots or
+group turnout. No new geometry join, cross-year identity, rate or map activation.
+Source `650151b54f51f089e2d253425cadf2d300783255` contains 28 owned source/test
+files and 46 passing tests. The final 874,127,644-byte complete packet contains
+all six complete component packets and every selected held2022/2024 numerical
+query. Every member checksum and all six nested packets pass; a fresh archived
+network/DNS/child-command-blocked run passes all46tests and reproduces every
+coverage/NC2018/MD2018/VA2018/VA2020 output byte-for-byte. This is not a claim
+of wholesale multiyear re-extraction. Native template rights/version holds
+remain separate from the complete selected factual queries.
+Immutable release **443532631**, tag
+`participation-historical-precincts-20261112-01`, supplies the
+[complete selected numerical delivery](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/complete-analysis.zip).
+All eight full assets were verified authenticated before publication and
+anonymously afterward. This is research-download delivery, not a website build;
+records: `data/participation-access/20261112-historical-precincts-01/`.
 
 <a id="house-result-comparability-audit-in-progress"></a>
 

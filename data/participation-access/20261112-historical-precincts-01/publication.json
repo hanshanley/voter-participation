@@ -1,0 +1,69 @@
+{
+  "assets": {
+    "all-255-state-year-decisions.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 741163340,
+      "bytes": 349876,
+      "sha256": "93caf00b286b529b54cf2384810286e208cdc90b43d11492d598f4b6744fe338",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/all-255-state-year-decisions.csv"
+    },
+    "complete-analysis.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 741163339,
+      "bytes": 874127644,
+      "sha256": "cf7958ae88c713972c6bebb119daca864d7f789384ec832b662f8e227654c2a9",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/complete-analysis.zip"
+    },
+    "delivery-manifest.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 741163343,
+      "bytes": 1585,
+      "sha256": "92bfb36be0741feb464ec37af19e38eef5906d4a60cf32bade7437e25da47362",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/delivery-manifest.json"
+    },
+    "historical-final-delivery-verification-01.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 741163338,
+      "bytes": 5981,
+      "sha256": "612d3a4581455997e85be489d0442f5f17899b44a3c2106c7ceb53a82aba5e62",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/historical-final-delivery-verification-01.json"
+    },
+    "mggg-md-va-complements-complete.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 741163344,
+      "bytes": 64263258,
+      "sha256": "2d0cf49bc1341b7be5b69cce4b9892b4f6dea90bd06ccb849a325c75181690fb",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/mggg-md-va-complements-complete.zip"
+    },
+    "north-carolina-2018-complete.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 741163363,
+      "bytes": 8079828,
+      "sha256": "55d02ece6f99849a9fd2cf11ab5c5b6e7bf8888a9170d5eb9e80ec4960505753",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/north-carolina-2018-complete.zip"
+    },
+    "official-state-complete-factual-queries.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 741163368,
+      "bytes": 77756232,
+      "sha256": "dd926d9128b5291a27d06369ac7a575e786e9234cf91094a7394f98c2e55e50a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/official-state-complete-factual-queries.zip"
+    },
+    "openelections-supplements-complete.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 741163369,
+      "bytes": 40709549,
+      "sha256": "573c4110fd92a8b212ff1e558618fb21bd9c8fee15a70a36a5e5d570ffa84630",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/openelections-supplements-complete.zip"
+    }
+  },
+  "immutable": true,
+  "release_anchor_website_unchanged": "3cee7a193cb57428887a172c00d355fb06351c10",
+  "release_id": 443532631,
+  "research_source_commit": "650151b54f51f089e2d253425cadf2d300783255",
+  "runtime_data_activation": false,
+  "status": "pass",
+  "tag": "participation-historical-precincts-20261112-01",
+  "verified_at_utc": "2026-11-12T21:32:31.933686+00:00",
+  "website_builds": 0
+}

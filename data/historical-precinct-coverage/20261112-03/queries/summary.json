@@ -1,0 +1,32 @@
+{
+  "existing_sources_retained_not_reacquired": true,
+  "source_presence_is_not_geographic_or_turnout_completeness": true,
+  "state_year_decisions": 255,
+  "years": {
+    "2016": {
+      "jurisdictions_with_compiled_queries": 51,
+      "jurisdictions_with_selected_sources": 51,
+      "no_selected_source": []
+    },
+    "2018": {
+      "jurisdictions_with_compiled_queries": 51,
+      "jurisdictions_with_selected_sources": 51,
+      "no_selected_source": []
+    },
+    "2020": {
+      "jurisdictions_with_compiled_queries": 51,
+      "jurisdictions_with_selected_sources": 51,
+      "no_selected_source": []
+    },
+    "2022": {
+      "jurisdictions_with_compiled_queries": 51,
+      "jurisdictions_with_selected_sources": 51,
+      "no_selected_source": []
+    },
+    "2024": {
+      "jurisdictions_with_compiled_queries": 51,
+      "jurisdictions_with_selected_sources": 51,
+      "no_selected_source": []
+    }
+  }
+}

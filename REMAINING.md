@@ -13,6 +13,56 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Historical source delivery verified; completeness qualification remains
+
+Bulk collection now supplies selected sources and compiled queries in
+**all 51 jurisdictions in every requested year: 2016 / 2018 / 2020 / 2022 /
+2024**, including DC.
+This is not complete precinct coverage. The complete 255-decision ledger and
+[historical usage guide](docs/HISTORICAL_PRECINCTS.md) distinguish source presence,
+compiled queries, native ballot fields and existing presidential geometry.
+
+Acquired/compiled: 4,060,918 MEDSL2016 federal rows; 499 OpenElections CSVs /
+13,003,540 rows; 23 official AL/KS/PA products / 1,161,107 native cells-or-rows
+with all Kansas supplemental grids; official NC2018 / 183,723 rows;
+independent MGGG MD2018 two distinct 1,809-row variants, VA2018 2,439 compiled
+attributes and VA2020 152,025 native candidate/reporting-unit rows.
+Reused all 51 held MEDSL2022/2024 jurisdiction files and earlier NYT layers.
+No accepted model fit, source-acquisition campaign or website build repeated;
+the fresh archived-code verification replays only the listed outputs.
+All46 archived tests pass with network/DNS/child commands blocked; all final
+packet/member checksums and six nested packets pass. A fresh archived-code replay
+matches every coverage/NC2018/MD2018/VA2018/VA2020 output byte-for-byte.
+Earlier full native-field checks and precisely scoped offline proofs are retained.
+
+No state-year remains without a selected source/query in this collection.
+**Within-state completeness, voting-mode coverage and geographic qualification
+remain open.** Both requested
+Maryland historical index routes and Virginia's declared bulk directory returned
+native HTTP403 and are stopped; no cached-web numbers or alternate-client
+workaround. The MGGG complements are independently produced datasets, not blocked
+originals recovered through another route. Preserve MD election-day-only versus
+publisher-allocated non-election-day variants and ODbL/DBCL notices. ME towns,
+WI wards, 13 NJ2020 county files and Kansas unmerged sheets require explicit
+scope qualification, not statewide-complete labels.
+
+The [874,127,644-byte complete download](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/complete-analysis.zip)
+is published in immutable release443532631; all eight full assets were verified
+authenticated before publication and anonymously afterward. The maintained
+source is650151b; full scientific/publication records are under
+`data/participation-access/20261112-historical-precincts-01/`.
+Existing whole
+2022/2024 native-archive rights/version linkage remains separate from use of
+factual numerical queries; missing repository LICENSE is not a blanket ban on
+election facts. Next qualify complete county/contest/mode inventories against
+native parent totals and resolve genuine within-state gaps before new historical
+precinct panels. New election-year geometry and turnout denominators remain open.
+
+Two real intake defects were fixed: concurrent identical-object cache writes
+now publish atomically; a denied Markdown table row no longer incorrectly blocks
+every other source in that table. The latter allowed acquisition of NC2018.
+Genuine access stops remain enforced.
+
 ## Next priority: repeatable all-state updates
 
 Complete the requested reusable all-state batch workflow rather than adding
@@ -20,7 +70,8 @@ per-state scripts: automatic qualified-product discovery, reviewed-adapter
 reuse, content-hash caching/no-op detection, resumable verification/publication
 and one documented routine command. The new batch publisher has six passing
 tests for atomic activation, interruptions, immutable-byte validation even on
-no-op, duplicates and concurrent catalog changes. It remains uncommitted;
+no-op, duplicates and concurrent catalog changes. This code is published at
+`650151b54f51f089e2d253425cadf2d300783255`;
 the generic discovery/compiler/cache/resume/intake CLI is **not yet complete**.
 Demonstrate actual idempotence against the 4,963 already-connected rows.
 New formats and measurement scopes still require qualification.

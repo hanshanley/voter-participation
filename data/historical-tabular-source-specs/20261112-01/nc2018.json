@@ -1,0 +1,48 @@
+{
+  "sources": [
+    {
+      "canonical_columns": {
+        "candidate": "Choice",
+        "county": "County",
+        "office": "Contest Name",
+        "party": "Choice Party",
+        "unit": "Precinct",
+        "votes": "Total Votes"
+      },
+      "delimiter": "\t",
+      "encoding": "utf-8-sig",
+      "encoding_is_not_publisher_certification": true,
+      "expected_header": [
+        "County",
+        "Election Date",
+        "Precinct",
+        "Contest Group ID",
+        "Contest Type",
+        "Contest Name",
+        "Choice",
+        "Choice Party",
+        "Vote For",
+        "Election Day",
+        "One Stop",
+        "Absentee by Mail",
+        "Provisional",
+        "Total Votes",
+        "Real Precinct",
+        ""
+      ],
+      "measure": "native_candidate_or_question_votes",
+      "member": "results_pct_20181106.txt",
+      "original_path": "original-results.zip",
+      "original_pin": {
+        "bytes": 2084856,
+        "sha256": "d2f8f5e4fb5a607fed6bf37850dc15c3a27c413461a197a6f679e5ef14b09f17"
+      },
+      "required_values": {
+        "Election Date": "11/06/2018"
+      },
+      "source_url": "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/2018_11_06/results_pct_20181106.zip",
+      "state_code": "NC",
+      "year": 2018
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "code": {
+    "bytes": 4063,
+    "sha256": "9e1919e24296e0abc838356897d414e2af0a13d96c6a37a64bce044b359bdfe6"
+  },
+  "files": {
+    "all-255-state-year-decisions.csv": {
+      "bytes": 349876,
+      "sha256": "93caf00b286b529b54cf2384810286e208cdc90b43d11492d598f4b6744fe338"
+    },
+    "summary.json": {
+      "bytes": 922,
+      "sha256": "ccab7e46ba3dc18322817924c72bdd5b13758f27faeb54688a2d68f2ed5fe1dc"
+    }
+  },
+  "inputs": {
+    "bytes": 350017,
+    "sha256": "1e05159998bd318a2f24d1b7a13b8855aef039770ce12b4bd500d02c0c3ef441"
+  }
+}

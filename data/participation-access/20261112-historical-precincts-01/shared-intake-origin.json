@@ -1,0 +1,56 @@
+{
+  "final_files": {
+    "scripts/participation_intake/__init__.py": {
+      "bytes": 81,
+      "sha256": "9cf4f030414255eff678cc0d0bfec792f14df3e8e9156766f99a6c2cca2bb6a5"
+    },
+    "scripts/participation_intake/adapters.py": {
+      "bytes": 9062,
+      "sha256": "799f89bf69d668e844ab6301d19915af115622e5fdc750ffd65d0409ff790cf2"
+    },
+    "scripts/participation_intake/contract.py": {
+      "bytes": 13466,
+      "sha256": "eda9c2f0743dd73ea2ea50fd158242b3f2d3646a520463f3fd9c95d8560e908d"
+    },
+    "scripts/participation_intake/engine.py": {
+      "bytes": 24696,
+      "sha256": "ec19f06b335b4cbead947bdba3bb78a8b295eadc6285f99e1ec3bd98ce906a3f"
+    },
+    "scripts/participation_intake/publisher.py": {
+      "bytes": 7666,
+      "sha256": "b7fddfdcf810abcb0398254fa8cfd5e30ac71236882a9f09d9b1c5424606052b"
+    }
+  },
+  "four_other_shared_modules_remain_verbatim": true,
+  "intentional_changes": [
+    "scripts/participation_intake/engine.py"
+  ],
+  "original_import": {
+    "files": {
+      "scripts/participation_intake/__init__.py": {
+        "bytes": 81,
+        "sha256": "9cf4f030414255eff678cc0d0bfec792f14df3e8e9156766f99a6c2cca2bb6a5"
+      },
+      "scripts/participation_intake/adapters.py": {
+        "bytes": 9062,
+        "sha256": "799f89bf69d668e844ab6301d19915af115622e5fdc750ffd65d0409ff790cf2"
+      },
+      "scripts/participation_intake/contract.py": {
+        "bytes": 13466,
+        "sha256": "eda9c2f0743dd73ea2ea50fd158242b3f2d3646a520463f3fd9c95d8560e908d"
+      },
+      "scripts/participation_intake/engine.py": {
+        "bytes": 24019,
+        "sha256": "b4bf8a7bf4e4fd99d8a7950911f9883b33f29193cefb71846abfc15c8469aaf7"
+      },
+      "scripts/participation_intake/publisher.py": {
+        "bytes": 7666,
+        "sha256": "b7fddfdcf810abcb0398254fa8cfd5e30ac71236882a9f09d9b1c5424606052b"
+      }
+    },
+    "source_commit": "9e9625227be1c3e2ffcd5ac332e9e1a8a09e056e",
+    "source_repository": "hanshanley/margin_of_error",
+    "verbatim_shared_code_not_reimplemented": true
+  },
+  "reason": "Atomic tempfile/fsync/hard-link publication fixes partial reads of concurrent identical originals"
+}

@@ -8,6 +8,33 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Historical precinct returns: all-state source coverage
+
+The [historical guide](HISTORICAL_PRECINCTS.md) and
+[255 state-year decisions](../data/historical-precinct-coverage/20261112-03/queries/all-255-state-year-decisions.csv)
+cover **all 50 states plus D.C. in each of 2016, 2018, 2020, 2022 and 2024**.
+This means acquired source/query presence, not fully qualified precinct turnout
+or geographic completeness. Candidate votes are not ballots.
+
+| Complete download | Contents |
+|---|---|
+| [All selected years and sources](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/complete-analysis.zip) | 874,127,644 bytes / 81 members: six ENTIRE component packets, every selected held2022House/2024federal numerical query, all255decisions/frozen inputs/code/tests/proofs. Complete selected queries, not sampled rows or metadata substitutes |
+| [OpenElections supplements](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/openelections-supplements-complete.zip) | All414originalCSVs/1,157,188rows/code/provenance; county partitions, towns and wards keep their native scopes |
+| [Official NC2018](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/north-carolina-2018-complete.zip) | Original ZIP, all183,723rows/16columns/modes, explicit recipe and exact reproducible code |
+| [MGGG MD/VA complements](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/mggg-md-va-complements-complete.zip) | All four native products, complete parsed/raw DBF attributes and VA2020CSV, code/recipes and original ODbL/DBCL notices. MD election-day and publisher-allocated variants remain separate, never added |
+| [Official AL/KS/PA factual queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/official-state-complete-factual-queries.zip) | Every selected native-cell query/disposition and all15Kansas grids, code and provenance. Whole workbook/document templates remain local; re-extraction requires the listed separately retained originals |
+| [Complete coverage CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-precincts-20261112-01/all-255-state-year-decisions.csv) | All255decisions, full source evidence/scopes, ballot-field counts and explicit false completeness/geometry/turnout qualification flags |
+
+Immutable release **443532631**: all eight full assets verified authenticated
+before publication and anonymously afterward. All final ZIP/member checksums,
+six nested packets and46archived tests pass. A fresh blocked-network/DNS/
+child-command replay reproduces all14coverage/NC2018/MD2018/VA2018/VA2020
+outputs; earlier precisely scoped native-field/replay/delta proofs remain.
+This is not wholesale multiyear re-extraction. Whole heldMEDSL2022/2024 native
+archive rights/version linkage remains unresolved; complete selected numerical
+queries are included. No new map, turnout rate, boundary match or live model.
+Full records: `data/participation-access/20261112-historical-precincts-01/`.
+
 ## Current geographic observations
 
 | Analysis | What it provides | Complete ZIP |

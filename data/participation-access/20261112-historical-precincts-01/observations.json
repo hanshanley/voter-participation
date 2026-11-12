@@ -1,0 +1,62 @@
+{
+  "actual_denied_routes_stay_stopped": [
+    "https://elections.maryland.gov/elections/archive/2018/election_data/index.html",
+    "https://elections.maryland.gov/elections/archive/2018/index.html",
+    "https://apps.elections.virginia.gov/SBE_CSV/ELECTIONS/ELECTIONRESULTS/"
+  ],
+  "existing_MEDSL_2022_2024": {
+    "jurisdiction_archives_each": 51,
+    "native_archives_reacquired": false,
+    "selected_numerical_queries_in_complete_download": true,
+    "whole_native_archive_redistribution_version_linkage_unresolved": true
+  },
+  "generic_4963_current_row_routine_workflow_complete": false,
+  "independent_complements_not_mirrors_of_denied_originals": true,
+  "medsl_2016": {
+    "complete_federal_rows": 4060918,
+    "office_partitions": 5,
+    "originals": 22
+  },
+  "mggg": {
+    "MD2018_variant_rows_each": 1809,
+    "MD_variants_never_added": true,
+    "VA2018_attribute_rows": 2439,
+    "VA2020_native_rows": 152025,
+    "attribution": "MGGG; Virginia2018 compiled by Princeton Gerrymandering Project, edited by MGGG",
+    "license": "ODbL1.0; Database Contents License1.0"
+  },
+  "new_map_or_model_or_runtime_activation": false,
+  "not_complete_precinct_or_voting_mode_coverage": true,
+  "official_AL_KS_PA_2018_2020": {
+    "kansas_complete_supplemental_grids": 15,
+    "native_cells_or_rows": 1161107,
+    "products": 23,
+    "public_template_redistribution": false
+  },
+  "official_NC_2018": {
+    "native_columns": 16,
+    "native_rows": 183723
+  },
+  "openelections": {
+    "complete_rows": 13003540,
+    "original_csvs": 499,
+    "supplemental_csvs": 414,
+    "supplemental_rows": 1157188
+  },
+  "qualifications": [
+    "candidate_votes_not_ballots",
+    "registration_stocks_not_qualified_turnout_denominators",
+    "MD_election_day_only_vs_publisher_allocated_variants",
+    "VA_administrative_and_multiseat_units",
+    "ME_towns_WI_wards",
+    "NJ2020_supplement_only_13_county_files",
+    "KS_wide_grids_unmerged",
+    "no_new_geometry_joins",
+    "no_group_turnout",
+    "no_individual_transitions"
+  ],
+  "scope": "all_50_states_plus_DC_each_of_2016_2018_2020_2022_2024",
+  "source_and_compiled_query_presence_decisions": 255,
+  "source_commit": "650151b54f51f089e2d253425cadf2d300783255",
+  "website_builds": 0
+}
