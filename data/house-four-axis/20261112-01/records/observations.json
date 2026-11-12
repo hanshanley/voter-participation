@@ -1,0 +1,775 @@
+{
+  "coarse_reference_decisions": [
+    {
+      "available": false,
+      "cohort": "previous_voter_major",
+      "reason": "whole_coarse_table_support_hold"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter",
+      "reason": null
+    }
+  ],
+  "current2026_models_website_and_population_benchmarks_unchanged": true,
+  "no_native_fine_or_held_reference_cells_exported": true,
+  "pre2024_matched_record_availability_not_established": true,
+  "primary_history_projected_logloss_fold_stress": {
+    "full_four_axis": {
+      "not_confidence_intervals": true,
+      "unique_compositions": 126,
+      "worse": 0
+    },
+    "previous_nonvoter_future15": {
+      "not_confidence_intervals": true,
+      "unique_compositions": 126,
+      "worse": 9
+    },
+    "previous_nonvoter_known_future_admin": {
+      "not_confidence_intervals": true,
+      "unique_compositions": 126,
+      "worse": 21
+    },
+    "previous_voter_major_future15": {
+      "not_confidence_intervals": true,
+      "unique_compositions": 126,
+      "worse": 93
+    },
+    "previous_voter_major_known_future_admin": {
+      "not_confidence_intervals": true,
+      "unique_compositions": 126,
+      "worse": 120
+    }
+  },
+  "primary_positive_post24_weight_case_counts": {
+    "full_four_axis": 4015,
+    "previous_nonvoter_future15": 403,
+    "previous_voter_major_future15": 2760
+  },
+  "primary_scores": [
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "history",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "2.371022168455",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "history",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.676763878399",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "history",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "1.275865208301",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "history",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.476735159550",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "history",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.660999802704",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "history",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.270781083503",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "history",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "1.551514913915",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "history",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.646314658058",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "history",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.069624120071",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "history",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.025154903013",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "history",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.490997735422",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "history",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.310180823744",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "history",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "2.278029178919",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "history",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.666163287014",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "history",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "1.273510384752",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "history",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.476758420446",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "history",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.663805697879",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "history",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.269458767908",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "history",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "1.483980512552",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "history",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.616327731495",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "history",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.070747194388",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "history",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.025213073178",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "history",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.459953495554",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "history",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.291866554087",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "history",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "2.280635412407",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "history",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.666090674122",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "history",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "1.275865208301",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "history",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.476735159550",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "history",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.664967865241",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "history",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.269833907096",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "history",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "1.483908332511",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "history",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.617133210801",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "history",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.070772850834",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "history",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.025212411669",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "history",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.460688197532",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "history",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.292315273570",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "2.431444084807",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.686698227862",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "1.315930908276",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.487599831156",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.684063514160",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.275431882067",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "1.639166587878",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.657702143402",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.070469450049",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.025335459715",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.535333263391",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "independent_pairs",
+      "reason": null,
+      "value": "0.336359724632",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "2.337424067374",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.676199976606",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "1.313299767649",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.487437940806",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.687040618393",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.272911373330",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "1.525913545410",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.623940078466",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.071500500301",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.025402994689",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.493573144378",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "conditional_house_given_admin",
+      "reason": null,
+      "value": "0.317280433941",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "2.344011527339",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "full_four_axis",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.675971403921",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "1.315930908276",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "marginal_house",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.487599831156",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.690707534154",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_future15",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.273927822216",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "1.533769030960",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_future15",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.627383814245",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.071629862529",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_voter_major_known_future_admin",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.025391168295",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "demographic",
+      "metric": "logloss",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.491402990948",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "available": true,
+      "cohort": "previous_nonvoter_known_future_admin",
+      "level": "demographic",
+      "metric": "Brier",
+      "model": "fixed_pair_marginals",
+      "reason": null,
+      "value": "0.315399229271",
+      "weight_frame": "commonpostweight_24"
+    }
+  ],
+  "prior_only_conditioning_is_retrospective_source_diagnostic": true,
+  "source_rows_retained": 6175,
+  "source_unknowns_and_conflicts_retained": true,
+  "status": "pass"
+}

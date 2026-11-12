@@ -13,6 +13,60 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Completed joint administrative-participation / House-choice source test
+
+The previously missing **four-axis dependence** is now actually fitted and
+evaluated, not another run of the separate-pair experiment. Thirty new
+conditional House heads reuse 60 accepted paired administrative/House heads.
+Each held-out forecast enumerates all nine hypothetical administrative pairs;
+actual future test histories never enter forecast features. Independent pairs,
+raw conditional joint and fixed-pair-margin projection are compared on the
+same five folds, two predictor levels and three native weight frames.
+Both original per-case pair margins remain fixed in the projected comparison.
+
+The results are mixed, not a blanket nonparticipation fix. Primary history-only
+full-joint log loss improves **2.371022 to 2.280635** and Brier
+**0.676764 to 0.666091**. Prior-nonvoter future-15 log loss improves
+1.551515 to 1.483908; its known-P/N binary diagnostic improves .490998 to
+.460688. However the prior-major-voter known-history drop-off diagnostic
+**worsens** .069624 to .070773, in 120/126 fold compositions. Its full-15
+log loss also worsens, while Brier improves. Added age/education/survey-state
+predictors still do not beat simpler history. These are source holdouts,
+not independent population or 2026 validation.
+
+Primary positive-post24-weight evaluations contain 4,015 cases overall,
+2,760 prior positive-history/major-House cases and 403 prior explicit
+administrative nonvoters. All 6,175 raw panel cases remain retained; zero/
+missing-weight cases are not silently given weights. The prior-nonvoter
+coarse reference qualifies with 230 positive / 128 explicit nonvote / 45
+unknown future histories. Source-weighted positive share is 71.144209%.
+Projected history predicts 72.336692%, versus original 70.843548%:
+aggregate calibration worsens despite better proper scores. The six-cell
+prior-major reference is held **whole** under the frozen 30-per-cell rule.
+No native rare, fine or state table is published.
+
+Immutable science **443141393**, tag
+`participation-house-four-axis-20261112-01`: **63,962,523 bytes / 29 members**,
+including the entire accepted 63,651,646-byte predecessor, all 540 fold-cohort
+score queries, 216 pooled scores, 60 predictive queries, 54 coarse estimates,
+270 predictive-simulation rows (600,000 synthetic draws), 18,144 fold-stress
+rows, exact code/tests and complete permitted inputs. All 21 full assets
+anonymously verified. Nine focused tests / 3,650 independent cache, isolation,
+math.fsum and dual-certificate checks pass; two fresh blocked-network stdlib
+replays match all nine outputs. Extracted stdlib tests pass six cases, with
+only three optional numerical tests skipped. No old fits, baseline simulations,
+acquisitions, website builds or successful campaigns repeated.
+
+Conditioning on 2022 categories is retrospective: availability of the later
+matched administrative record before 2024 is not established. Source weights,
+retained-2020-adult recruitment, conditional House-code transport, unknowns
+and conflicting reports remain. Administrative nonvote is **not** 2026 NORC
+voting likelihood. This research-only download does not change the live
+map/default, identify first-ever voting, repair the 49 state-population
+benchmark gaps or allocate state results locally. Do not rerun this completed
+experiment; pursue remaining transfer/participation evidence from held inputs.
+See `data/house-four-axis/20261112-01/`. Sole 45-minute continuation stays open.
+
 ## Completed fixed-marginal calibration and live association comparisons
 
 The dependence experiment below is complete, including its proposed next step.

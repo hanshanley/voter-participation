@@ -1,0 +1,117 @@
+{
+  "assets": {
+    "README.txt": {
+      "bytes": 3125,
+      "sha256": "1665a2f33dd0b374fd8c355f093ef0546a0a32d61070b504ba4dd94817fd21bc",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/README.txt"
+    },
+    "SHA256SUMS.txt": {
+      "bytes": 1681,
+      "sha256": "7e22f68c1d9df01a1963051d8266da31711adaf79f61b24be30b18b354206568",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/SHA256SUMS.txt"
+    },
+    "archived-stdlib-tests.json": {
+      "bytes": 1434,
+      "sha256": "7579684b8f13cebb741e71b9e187ce2c22c3f72adb7e9641203f823cce9eb9ed",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/archived-stdlib-tests.json"
+    },
+    "checksums.json": {
+      "bytes": 2696,
+      "sha256": "ec393a94f35de51dc21f7d871824dff02bf87ee219ad5cb9f921bf0ed4282a9d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/checksums.json"
+    },
+    "coarse-reference-decisions.json": {
+      "bytes": 922,
+      "sha256": "1c2d0be522f94399791a2c6bb0971f1e163a1ea285d4b2a5af0b090d6e44e94e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/coarse-reference-decisions.json"
+    },
+    "complete-analysis.zip": {
+      "bytes": 63962523,
+      "sha256": "38ec0cc2532385460fe8d1ff4eace310061dd84f79282e54070724de58a76527",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/complete-analysis.zip"
+    },
+    "fold-composition-stress.csv": {
+      "bytes": 3072056,
+      "sha256": "d1a13ff0fc56b8a393312eeda98b87e5a5746361589c6bf9768f9e7dae990e5b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/fold-composition-stress.csv"
+    },
+    "fold-scores.csv": {
+      "bytes": 79612,
+      "sha256": "98129fa99c0b88515e290b1c0321b4eefb52fe882f735751efd6d915165532a4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/fold-scores.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "bytes": 1297,
+      "sha256": "72471d6747e8dac284164669abb80a7d52adf8c12c33337b7a7b604792cf937e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "bytes": 1297,
+      "sha256": "72471d6747e8dac284164669abb80a7d52adf8c12c33337b7a7b604792cf937e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/fresh-reproduction-02.json"
+    },
+    "independent-native-verification.json": {
+      "bytes": 870,
+      "sha256": "9dde068babafc9cb21d20cd9b8d5e192a57067867ac9f2dfcbe85d3c6ec7e08f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/independent-native-verification.json"
+    },
+    "manifest.json": {
+      "bytes": 4947,
+      "sha256": "68928ef4a9dd8118f1b509744009083568ef57160fe3bf67dbf33086b7bd74a9",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/manifest.json"
+    },
+    "package-receipt.json": {
+      "bytes": 391,
+      "sha256": "52c07ee8249e162c978ee320998f58e3e2f28b7a572dedea278f90eca38ac800",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/package-receipt.json"
+    },
+    "pair-margin-diagnostics.csv": {
+      "bytes": 2479,
+      "sha256": "0f52be84448669a13933456def2af8575671afe18091a817563f012d7a0b800f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/pair-margin-diagnostics.csv"
+    },
+    "policy.json": {
+      "bytes": 5107,
+      "sha256": "c95de1c8d223ac5445c6f5ca8ffd451a7606e6a681629a4213e72b4578703e09",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/policy.json"
+    },
+    "scores.csv": {
+      "bytes": 23246,
+      "sha256": "7b8b5b05a3e0e5ac0b06e2aa23523cdb5e5a8fa9734178d02f871904de588087",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/scores.csv"
+    },
+    "source-outcomes.csv": {
+      "bytes": 8287,
+      "sha256": "425346ecb832c67458e40edd8acbd1c014f632cad093dbaca377bb686e271811",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/source-outcomes.csv"
+    },
+    "source-predictive-simulations.csv": {
+      "bytes": 36447,
+      "sha256": "6a2cb641f702c8beaf524aa8667f6dabe1b41069f3cd1bdd8c51249dfd21202a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/source-predictive-simulations.csv"
+    },
+    "sufficient-scores.json": {
+      "bytes": 242103,
+      "sha256": "c461a288e7882233757b758cd57826167676c1dea253f04edf251b7ebf053572",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/sufficient-scores.json"
+    },
+    "summary.json": {
+      "bytes": 21437,
+      "sha256": "97beebfc636d4596f2d367b9d9ba7fecbc4faaa300ce963ae33727982556aa6a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/summary.json"
+    },
+    "synthetic-forecasts.csv": {
+      "bytes": 38234,
+      "sha256": "9d5be959f1027da15268517c8b7d19fcb2762d2c26daa4c8cd491e1a5e1e0231",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-four-axis-20261112-01/synthetic-forecasts.csv"
+    }
+  },
+  "current_models_or_website_changed": false,
+  "immutable": true,
+  "independent_population_or2026_validation": false,
+  "private_people_predictions_and_fine_cells_exported": false,
+  "release_id": 443141393,
+  "scientific_source_commit": "a2b3f9e854de4c35fc42958861579d561820662c",
+  "status": "passed_immutable_complete_four_axis_science",
+  "tag": "participation-house-four-axis-20261112-01"
+}

@@ -1,0 +1,12 @@
+{
+  "archive": {
+    "bytes": 63962523,
+    "sha256": "38ec0cc2532385460fe8d1ff4eace310061dd84f79282e54070724de58a76527"
+  },
+  "complete_public_outputs": 9,
+  "entire_predecessor_bytes": 63651646,
+  "members": 29,
+  "native_persons_or_predictions_exported": false,
+  "source_code_commit": "a2b3f9e854de4c35fc42958861579d561820662c",
+  "status": "complete_four_axis_public_packet_created"
+}

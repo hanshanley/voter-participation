@@ -1,0 +1,22 @@
+{
+  "archive_members": 29,
+  "archive_sha256": "38ec0cc2532385460fe8d1ff4eace310061dd84f79282e54070724de58a76527",
+  "baseline_or_current2026_simulations_repeated": false,
+  "network_and_external_commands_blocked": true,
+  "output_files_matched": 9,
+  "outputs": {
+    "coarse-reference-decisions.json": "1c2d0be522f94399791a2c6bb0971f1e163a1ea285d4b2a5af0b090d6e44e94e",
+    "fold-composition-stress.csv": "d1a13ff0fc56b8a393312eeda98b87e5a5746361589c6bf9768f9e7dae990e5b",
+    "fold-scores.csv": "98129fa99c0b88515e290b1c0321b4eefb52fe882f735751efd6d915165532a4",
+    "pair-margin-diagnostics.csv": "0f52be84448669a13933456def2af8575671afe18091a817563f012d7a0b800f",
+    "scores.csv": "7b8b5b05a3e0e5ac0b06e2aa23523cdb5e5a8fa9734178d02f871904de588087",
+    "source-outcomes.csv": "425346ecb832c67458e40edd8acbd1c014f632cad093dbaca377bb686e271811",
+    "source-predictive-simulations.csv": "6a2cb641f702c8beaf524aa8667f6dabe1b41069f3cd1bdd8c51249dfd21202a",
+    "summary.json": "97beebfc636d4596f2d367b9d9ba7fecbc4faaa300ce963ae33727982556aa6a",
+    "synthetic-forecasts.csv": "9d5be959f1027da15268517c8b7d19fcb2762d2c26daa4c8cd491e1a5e1e0231"
+  },
+  "private_fits_replayed": false,
+  "source_predictive_draws_reproduced": 600000,
+  "status": "pass",
+  "successful_source_fits_repeated": false
+}

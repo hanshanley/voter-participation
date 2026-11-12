@@ -6,6 +6,123 @@ changes. It is an assumption-dependent explanation, not identified voter histori
 or a causal effect. Moving from R+4 to D+12 is a +16 margin-point change,
 equivalent to +8 Democratic **two-party-share** points, not +16 share points.
 
+## Administrative participation and reported House choices jointly
+
+The preceding experiments modeled administrative 3x3 and reported-House 6x5
+pairs separately. The new source test learns their missing **cross-axis
+dependence**, with a complete 270-category joint probability law. It does not
+relabel reported choice as administrative participation.
+
+Let `A=(A22,A24)` have nine positive/nonvote/unknown pair categories and
+`H=(H22,H24)` have 30 reported-House pair categories. Reuse accepted paired
+heads `p(A|X2020)` and `q(H|X2020)`. Fit only the new conditional ridge head
+`r(H|A,X2020)` with the unchanged training settings, source weights and
+2020-only predictor levels. During training, `A` is the conditional likelihood
+factor. During test forecasting, enumerate **all nine hypothetical A values**
+for every case; the actual future test history is not a forecast feature.
+
+Compare:
+
+1. Independent pairs: `p(A|X) q(H|X)`.
+2. Conditional joint: `p(A|X) r(H|A,X)`.
+3. KL projection of the conditional joint to the same accepted `p(A|X)` and
+   `q(H|X)` margins for each case.
+
+The third isolates cross-axis association while preserving both full pair
+margins, including unknowns and contradictory reported/administrative histories.
+It is a regularized conditional factorization, not a saturated unconstrained
+270-class fit. Thirty new conditional heads reuse 60 accepted paired heads
+from the earlier paired-source experiment, not refits of the later copula
+heads. Same five original folds, two predictor levels and three native frames;
+no parameter, family or model is selected against current return errors.
+
+After target-free joint prediction, condition only on literal prior 2022
+administrative and House categories. For prior administrative-positive cases
+with reported D/R House choice, score all 15 possible 2024 administrative
+P/N/U by reported D/R/O/contest-nonvote/U outcomes. For prior explicit
+administrative nonvoters, score the same future categories with all prior
+House reports retained. Separate known-future-P/N binary diagnostics are
+**outcome-selected**, not population forecasts or proof unknowns are ignorable.
+
+| Primary history source target | Independent pairs log loss | Fixed-pair joint log loss | Independent Brier | Fixed-pair Brier |
+|---|---:|---:|---:|---:|
+| Full four-axis, 270 categories | 2.371022 | 2.280635 | 0.676764 | 0.666091 |
+| Prior nonvoter, full 15 future outcomes | 1.551515 | 1.483908 | 0.646315 | 0.617133 |
+| Prior nonvoter, known-future-P/N diagnostic | 0.490998 | 0.460688 | 0.310181 | 0.292315 |
+| Prior positive/major choice, full 15 future outcomes | 0.661000 | 0.664968 | 0.270781 | 0.269834 |
+| Prior positive/major choice, known-future-P/N diagnostic | 0.069624 | 0.070773 | 0.025155 | 0.025212 |
+
+These are different scoring targets; do not rank their raw loss magnitudes
+against each other or the earlier 30-class House tests. The full joint and
+prior-nonvoter scores improve, but the prior-major-voter log score and
+known-history drop-off diagnostic worsen. The full-15 Brier improves in that
+cohort, so the result is a proper-score trade-off, not uniform improvement.
+Adding tested demographic/geographic predictors still does not beat simpler
+history. No staying-home parameter is promoted.
+
+Primary history log-loss fold compositions reverse the full-joint advantage
+in 0/126, prior-nonvoter future-15 in 9/126 and entry known-P/N in 21/126.
+Prior-major-voter full-15 worsens in 93/126 and drop-off known-P/N in 120/126.
+All 18,144 frame/feature/model/cohort/metric stresses and their multiplicities
+remain; training sets overlap, so these are **not confidence intervals**.
+
+### Source cohorts, disclosure and a calibration counterexample
+
+All 6,175 raw cases remain retained. Each frame trains/scores only its native
+positive weights; primary post24 evaluations have 4,015 cases overall,
+2,760 prior positive/major-House cases and 403 prior explicit nonvoters.
+Missing or zero weights are not replaced with average weights, and unknown
+responses are not recoded to nonvote.
+
+The frozen disclosure rule requires every cell of a whole pooled primary
+reference table to contain at least 30 raw cases. The six-cell prior-major
+table fails and is held **whole**, without native rare/fine/source-state
+disclosures. The prior-nonvoter reference qualifies: 230 positive, 128 explicit
+nonvote and 45 unknown future histories. Their weighted source shares are
+71.144209%, 16.370869% and 12.484922%, not population re-entry rates.
+
+Projected history predicts 72.336692% positive, versus baseline 70.843548%
+and reference 71.144209%. Aggregate entry calibration worsens even while
+individual proper scores improve. Closer pooled calibration is not a substitute
+for scoring each case or a reason to suppress this negative result.
+
+For primary source-predictive stress, simulate 10,000 independent draws from
+each pooled coarse predictive mixture under five common seeds, totaling
+600,000 synthetic draws. These are illustrative model draws, not real persons,
+sampling variance, survey uncertainty or confidence intervals.
+
+### Limits, complete outputs and reproduction
+
+Prior-2022 conditioning is retrospective: availability of the later matched
+administrative record before 2024 is **not established**. This is not archived
+prospective validation. Retained-2020-adult recruitment, omitted newly eligible
+adults, postwave weights, conditional shared-item House codes and imperfect
+matching remain. Administrative P/N/U is not candidate-specific ballot truth;
+reported House choices and conflicts are kept literally. Source administrative
+nonvote cannot be transferred as the 2026 NORC voting-likelihood class.
+No first-ever/eligibility/death/migration, state-population benchmark or local
+allocation is identified. Existing live maps, default and 2026 forecasts stay
+unchanged; no unnecessary website rebuild was run.
+
+Immutable science **443141393**, tag
+`participation-house-four-axis-20261112-01`: **63,962,523 bytes / 29 members**,
+SHA256 `38ec0cc2532385460fe8d1ff4eace310061dd84f79282e54070724de58a76527`.
+Includes the entire accepted 63,651,646-byte predecessor, all 540 scored
+queries, 216 pooled scores, 60 predictive queries, 54 estimates, 270 simulation
+rows, all stresses, permitted sufficient inputs, exact code/tests and proofs.
+Nine focused tests / 3,650 independent cache, isolation, math.fsum,
+pair-margin and dual checks pass. Two fresh blocked-network/command
+standard-library replays match all nine outputs; extracted tests pass six
+with three optional numerical cases skipped. All **21 full assets** verified.
+Scientific source `a2b3f9e854de4c35fc42958861579d561820662c`;
+design/code were frozen before new fits, not externally preregistered, and
+the source/earlier pair results were already explored.
+
+```sh
+python3 -S -W error code/scripts/reproduce_house_four_axis.py \
+  --archive /path/to/complete-analysis.zip --output /fresh/replay/path
+```
+
 ## Nested fixed-marginal dependence calibration
 
 The earlier independent/paired comparison below changes the fitted joint and

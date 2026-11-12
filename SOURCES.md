@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Joint participation and House choices | [Four-axis source test: entry gains and drop-off negatives](#four-axis-administrative-participation-and-house-choice-dependence) |
 | Fixed-marginal historical calibration | [Nested holdouts and six unvalidated current association stresses](#fixed-marginal-house-calibration-and-current-association-stresses) |
 | Held-out cross-election dependence | [Paired heads and identical-margin flow test](#held-out-cross-election-dependence-and-identical-margin-flows) |
 | Historical House panel evidence | [Conditional same-office source concordance, not population validation](#conditional-same-office-house-source-concordance) |
@@ -32,6 +33,60 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Four-axis administrative participation and House-choice dependence
+
+New source implementation `a2b3f9e854de4c35fc42958861579d561820662c`
+fits 30 conditional House-pair heads while reusing 60 accepted paired
+administrative-9 / House-30 heads from the earlier paired-source experiment.
+Joint probabilities are `p(A22,A24|X2020) * p(H22,H24|A22,A24,X2020)`.
+Conditional training uses the administrative pair as a target factor; test
+forecast features enumerate **all nine hypothetical pairs**, never the observed
+future history. Positive KL projection optionally preserves both accepted
+per-case pair margins, isolating cross-axis association. This is a regularized
+factorization of the full 270-category joint, not an unrestricted saturated fit.
+Same five prior-only folds, two predictor levels and three native frames.
+
+Primary history-only projected full-joint log loss **2.371022 -> 2.280635**
+and Brier **.676764 -> .666091** improve. Prior-nonvoter future-15 log loss
+**1.551515 -> 1.483908** and known-future-P/N **.490998 -> .460688** improve,
+but prior-major-voter known-history drop-off **.069624 -> .070773** worsens.
+Its full-15 log loss worsens while Brier improves. No universal staying-home
+improvement is claimed. In primary history log-loss fold stress, joint
+advantage reverses in 0/126 compositions, prior-nonvoter future-15 in 9/126,
+entry known-P/N in 21/126; drop-off known-P/N worsens in 120/126.
+Overlapping training folds make these stresses, **not confidence intervals**.
+
+Of 6,175 retained raw cases, primary positive-weight evaluations use 4,015
+overall, 2,760 prior positive-history/major-House cases and 403 prior explicit
+nonvoters. The latter's coarse reference has 230 positive / 128 nonvote /
+45 unknown future histories; weighted shares 71.144209 / 16.370869 /
+12.484922%. Projected history predicts 72.336692% positive versus baseline
+70.843548%; aggregate calibration therefore worsens despite better proper
+scores. The six-cell prior-major reference fails the frozen every-cell-30
+rule and is held whole. Native finer/source-state cells remain private.
+
+Immutable science **443141393**, tag `participation-house-four-axis-20261112-01`.
+Full **63,962,523-byte / 29-member** ZIP SHA256
+`38ec0cc2532385460fe8d1ff4eace310061dd84f79282e54070724de58a76527`.
+Entire accepted 63,651,646-byte predecessor, all 540 score queries / 216 pooled
+scores / 60 predictive queries / 54 estimates / 270 simulation rows / 18,144
+fold-stress rows, code/tests and permitted sufficient inputs included. Nine
+focused tests / 3,650 independent math.fsum, cached-head, target-isolation and
+pair-margin/dual checks pass. Two fresh blocked-network/command standard-library
+replays reproduce all nine outputs and 600,000 synthetic source-predictive
+draws; extracted tests pass six and skip only three optional numerical cases.
+All **21 full assets** anonymously verified.
+
+Prior-year conditioning is a retrospective source diagnostic; pre-2024
+availability of the later matched record is not established. Postwave weights,
+retained-2020-adult selection, conditional shared-item House codes, missingness
+and source conflicts remain. Future-known-P/N scores are outcome-selected
+diagnostics, not forecasts of cohort membership. Administrative nonvote is
+not the 2026 NORC likelihood class. No current model/default/map, population
+benchmark, first-ever/eligibility/death/migration or state-to-local allocation
+changes. No old fit, simulation, acquisition or website campaign repeated.
+Full results: `data/house-four-axis/20261112-01/`.
 
 ## Fixed-marginal House calibration and current association stresses
 

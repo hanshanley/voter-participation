@@ -1,0 +1,91 @@
+{
+  "files": {
+    "data/house-four-axis/20261112-01/inputs/policy.json": {
+      "bytes": 5107,
+      "sha256": "c95de1c8d223ac5445c6f5ca8ffd451a7606e6a681629a4213e72b4578703e09"
+    },
+    "data/house-four-axis/20261112-01/inputs/sufficient-scores.json": {
+      "bytes": 242103,
+      "sha256": "c461a288e7882233757b758cd57826167676c1dea253f04edf251b7ebf053572"
+    },
+    "data/house-four-axis/20261112-01/outputs/coarse-reference-decisions.json": {
+      "bytes": 922,
+      "sha256": "1c2d0be522f94399791a2c6bb0971f1e163a1ea285d4b2a5af0b090d6e44e94e"
+    },
+    "data/house-four-axis/20261112-01/outputs/fold-composition-stress.csv": {
+      "bytes": 3072056,
+      "sha256": "d1a13ff0fc56b8a393312eeda98b87e5a5746361589c6bf9768f9e7dae990e5b"
+    },
+    "data/house-four-axis/20261112-01/outputs/fold-scores.csv": {
+      "bytes": 79612,
+      "sha256": "98129fa99c0b88515e290b1c0321b4eefb52fe882f735751efd6d915165532a4"
+    },
+    "data/house-four-axis/20261112-01/outputs/pair-margin-diagnostics.csv": {
+      "bytes": 2479,
+      "sha256": "0f52be84448669a13933456def2af8575671afe18091a817563f012d7a0b800f"
+    },
+    "data/house-four-axis/20261112-01/outputs/scores.csv": {
+      "bytes": 23246,
+      "sha256": "7b8b5b05a3e0e5ac0b06e2aa23523cdb5e5a8fa9734178d02f871904de588087"
+    },
+    "data/house-four-axis/20261112-01/outputs/source-outcomes.csv": {
+      "bytes": 8287,
+      "sha256": "425346ecb832c67458e40edd8acbd1c014f632cad093dbaca377bb686e271811"
+    },
+    "data/house-four-axis/20261112-01/outputs/source-predictive-simulations.csv": {
+      "bytes": 36447,
+      "sha256": "6a2cb641f702c8beaf524aa8667f6dabe1b41069f3cd1bdd8c51249dfd21202a"
+    },
+    "data/house-four-axis/20261112-01/outputs/summary.json": {
+      "bytes": 21437,
+      "sha256": "97beebfc636d4596f2d367b9d9ba7fecbc4faaa300ce963ae33727982556aa6a"
+    },
+    "data/house-four-axis/20261112-01/outputs/synthetic-forecasts.csv": {
+      "bytes": 38234,
+      "sha256": "9d5be959f1027da15268517c8b7d19fcb2762d2c26daa4c8cd491e1a5e1e0231"
+    },
+    "data/house-four-axis/20261112-01/records/fitting-receipt.json": {
+      "bytes": 430,
+      "sha256": "3d161a6aa6b6b451005a3e404586dfe3e643910690e70aaacbdc8aef645e436f"
+    },
+    "data/house-four-axis/20261112-01/records/independent-native-verification.json": {
+      "bytes": 870,
+      "sha256": "9dde068babafc9cb21d20cd9b8d5e192a57067867ac9f2dfcbe85d3c6ec7e08f"
+    },
+    "scripts/fit_house_four_axis.py": {
+      "bytes": 9147,
+      "sha256": "bb0b3995c6ff789e58aa21e3135fcb609668c26351bda4f07e15e0b1fbae57c7"
+    },
+    "scripts/house_four_axis.py": {
+      "bytes": 6523,
+      "sha256": "a3160c1a6320392e4b497ef0dee386ec7a2fbdbeeb69913697a839f0163f151e"
+    },
+    "scripts/house_four_axis_public.py": {
+      "bytes": 13294,
+      "sha256": "05d4b441b58b267a5fa5d24dfc1571a99ba655ca350b8dede9817fda279b4fb6"
+    },
+    "scripts/package_house_four_axis.py": {
+      "bytes": 9599,
+      "sha256": "752e160032452d89182792710e3f5602177f283123aa9ed43d4d424521c6d3ce"
+    },
+    "scripts/reproduce_house_four_axis.py": {
+      "bytes": 3824,
+      "sha256": "e77049d1e32949d6b30e84dc433141dab629764b8e6d43fc8bb9d089f9d0c82b"
+    },
+    "scripts/verify_house_four_axis.py": {
+      "bytes": 12579,
+      "sha256": "bc84621fc39445edca409742424113d904d1a0c0a85c63b9862c37a4ac262d70"
+    },
+    "tests/test_house_four_axis.py": {
+      "bytes": 3597,
+      "sha256": "0a957f80b918198e87a7fb0883173c74f8acba86047b977de31bc4c9915a1af7"
+    },
+    "tests/test_house_four_axis_public.py": {
+      "bytes": 2639,
+      "sha256": "f98467f239c80ff693e70c7e9a09396a8ac17253c2574f7658d891f774b16b2d"
+    }
+  },
+  "source_commit": "a2b3f9e854de4c35fc42958861579d561820662c",
+  "status": "pass",
+  "verified_anonymous_source_bodies": 21
+}

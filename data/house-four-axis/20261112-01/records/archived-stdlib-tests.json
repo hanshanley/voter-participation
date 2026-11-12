@@ -1,0 +1,9 @@
+{
+  "optional_numerical_skips": 3,
+  "output": "test_coarse_categories_keep_nonvote_and_unknown_even_with_reported_party (test_house_four_axis.FeatureTests) ... ok\ntest_hypothetical_predictions_enumerate_all_pairs_without_outcomes (test_house_four_axis.FeatureTests) ... ok\ntest_coarse_forecasts_partition_probability_without_repairing_conflicts (test_house_four_axis.NumericalTests) ... skipped 'Private numerical stack optional'\ntest_full_four_axis_projection_preserves_both_accepted_pairs (test_house_four_axis.NumericalTests) ... skipped 'Private numerical stack optional'\ntest_past_conditioning_uses_correct_axes_and_all15_future_categories (test_house_four_axis.NumericalTests) ... skipped 'Private numerical stack optional'\ntest_all_complete_queries_and_source_predictive_simulations_replay (test_house_four_axis_public.PublicReplayTests) ... ok\ntest_changed_marginals_unknown_partition_and_false_truth_claims_fail (test_house_four_axis_public.PublicReplayTests) ... ok\ntest_missing_duplicate_or_unequal_scored_cohorts_fail (test_house_four_axis_public.PublicReplayTests) ... ok\ntest_whole_held_reference_cannot_disclose_or_promote_rare_cells (test_house_four_axis_public.PublicReplayTests) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.252s\n\nOK (skipped=3)\n",
+  "passed": 6,
+  "returncode": 0,
+  "standard_library_only": true,
+  "status": "pass",
+  "tests": 9
+}
