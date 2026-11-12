@@ -8,6 +8,32 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Reusable participation update workflow
+
+The [routine command and source-review guide](PARTICIPATION_BATCH.md) cover
+shared intake, approved discovery, caching, constrained compilation and resumable
+atomic publication. This real demonstration reuses **4,963 accepted AR/AZ/WY
+reporting rows**, preserving 113 county parents, 83 unknowns, 22 zeros and all
+54 runtime files across 51 jurisdictions. The other48 jurisdictions remain
+the accepted baseline, not newly ingested native products.
+
+| Complete download | Contents |
+|---|---|
+| [Complete workflow packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/complete-analysis.zip) | 15,280,995 bytes: complete sufficient baseline, all permitted supplied snapshots and source packets, every count-runtime/source/jurisdiction query, registry, exact processing code and14workflow tests |
+| [Every selected observation](https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/complete-selected-observations.json.gz) | All4,963 full canonical observations and native source fields, not just row counts or metadata |
+| [All51jurisdiction dispositions](https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/all-51-jurisdictions.json) | Every retained jurisdiction and explicit registered-source scope; no completeness promotion |
+| [Complete source dispositions](https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/complete-source-dispositions.json) | Every registered source's verified observations/unknowns/zeros |
+| [Scientific acceptance](https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/scientific-acceptance.json) | Real CLI no-op,60affected tests,two fresh offline14-test/56-output reproductions and precise remaining limitations |
+
+Immutable release **443580352**: all six assets full-byte verified authenticated
+before publication and anonymously afterward. Actual cached rerun: zero
+requests/parses/compilations/publication attempts, with network/DNS/children
+blocked and probed and entire working-directory bytes/mtimes unchanged.
+No new native acquisition, nationwide native-adapter rollout, turnout rate,
+boundary, model, data activation or website build. New native-binding products
+and broader completeness remain separate. Records:
+`data/participation-access/20261112-routine-batch-01/`.
+
 ## Historical precinct returns: all-state source coverage
 
 The [historical guide](HISTORICAL_PRECINCTS.md) and

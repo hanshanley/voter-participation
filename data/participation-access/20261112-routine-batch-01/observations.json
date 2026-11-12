@@ -1,0 +1,138 @@
+{
+  "actual_cached_command": {
+    "baseline_version": "ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e",
+    "candidate_version": "ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e",
+    "changed_rows": 0,
+    "compiled_rows": 0,
+    "complete_selected_source_queries": true,
+    "jurisdictions": 51,
+    "no_op": true,
+    "parsed_inputs": 0,
+    "publication": {
+      "catalog_commit": "351130a058e7e64bd970e62dce6e4edb3874b373",
+      "datasets_changed": 0,
+      "status": "unchanged",
+      "website_builds_started": 0
+    },
+    "publication_attempts": 0,
+    "recipe": "f18947196d3c11318a2f1a987a0ac4b71e1fc5c003d735368cd92004755d771d",
+    "source_requests": 0,
+    "status": "unchanged",
+    "website_builds_started": 0
+  },
+  "actual_first_command": {
+    "baseline_version": "ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e",
+    "candidate_version": "ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e",
+    "changed_rows": 0,
+    "compiled_rows": 4963,
+    "complete_selected_source_queries": true,
+    "jurisdictions": 51,
+    "no_op": false,
+    "parsed_inputs": 0,
+    "publication": {
+      "catalog_commit": "351130a058e7e64bd970e62dce6e4edb3874b373",
+      "datasets_changed": 0,
+      "status": "unchanged",
+      "website_builds_started": 0
+    },
+    "publication_attempts": 1,
+    "recipe": "f18947196d3c11318a2f1a987a0ac4b71e1fc5c003d735368cd92004755d771d",
+    "source_requests": 0,
+    "status": "unchanged",
+    "website_builds_started": 0
+  },
+  "all_51_jurisdictions_preserved": true,
+  "baseline_runtime_files_identical": 54,
+  "baseline_version": "ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e",
+  "blocked_and_probed": [
+    "network",
+    "dns",
+    "child_command"
+  ],
+  "candidate_version": "ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e",
+  "catalog_commit": "351130a058e7e64bd970e62dce6e4edb3874b373",
+  "complete_download": {
+    "asset_id": 741318149,
+    "authenticated_draft_and_anonymous_public_full_bytes_verified": true,
+    "bytes": 15280995,
+    "sha256": "110c147d31de87286513f0e1cc7c75c659148abc6911ce7794424137edd78ba2",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/complete-analysis.zip"
+  },
+  "complete_package": {
+    "bytes": 15280995,
+    "sha256": "110c147d31de87286513f0e1cc7c75c659148abc6911ce7794424137edd78ba2"
+  },
+  "complete_selected_source_queries": true,
+  "contract": "participation.routine_batch.acceptance.v1",
+  "county_parents": 113,
+  "entire_work_directory_bytes_and_mtimes_unchanged": true,
+  "maintained_source_files": {
+    "data/participation-routine-batch/20261112-01/registry.json": {
+      "bytes": 6393,
+      "sha256": "bfdff1c5511c7cd7ab25fb577c7ff7ddbe5bc7ab4688997df4b0598462f41706"
+    },
+    "docs/PARTICIPATION_BATCH.md": {
+      "bytes": 5786,
+      "sha256": "259157fabc11965c1a57f5fdcca0f2660413e5de959b940d55609f2f334a4924"
+    },
+    "scripts/participation_batch.py": {
+      "bytes": 26024,
+      "sha256": "d51d344c734941065f1f9165389a4f70fdcbe997287869dcf54e2b37fd60be6e"
+    },
+    "scripts/participation_intake/adapters.py": {
+      "bytes": 10433,
+      "sha256": "288cadae6a30cae759803d465e1d43259b9acdb404869b5b1f671a58f081e17e"
+    },
+    "tests/test_participation_batch.py": {
+      "bytes": 15336,
+      "sha256": "3b8acd73a88ff8fba2b6a5643c3d0507a5543690a3edd4f8d3f38c2d6f69f6c6"
+    }
+  },
+  "nationwide_native_adapter_rollout": false,
+  "native_observation_fields_and_views_preserved": true,
+  "native_reacquisition": false,
+  "new_native_products_qualified": false,
+  "new_turnout_rates_or_models": false,
+  "newly_compiled_native_binding_or_geometry_products": false,
+  "observed_zeros": 22,
+  "recipe": "f18947196d3c11318a2f1a987a0ac4b71e1fc5c003d735368cd92004755d771d",
+  "release_id": 443580352,
+  "remaining_work": [
+    "Broader native-binding product integration",
+    "Within-state/office/mode completeness",
+    "Qualified historical precinct panels"
+  ],
+  "research_source_commit": "2082405294cccfeec3bb5325973afd33b70fbbc7",
+  "runtime_activation": false,
+  "scope": "Three previously reviewed canonical reporting snapshots; all 51 accepted jurisdiction shards retained.",
+  "selected_rows": 4963,
+  "source_controls": {
+    "AR": {
+      "all_native_fields_and_view_bindings_preserved": true,
+      "county_parents": 75,
+      "rows": 2768,
+      "unknown": 82,
+      "zeros": 0
+    },
+    "AZ": {
+      "all_native_fields_and_view_bindings_preserved": true,
+      "county_parents": 15,
+      "rows": 1763,
+      "unknown": 1,
+      "zeros": 21
+    },
+    "WY": {
+      "all_native_fields_and_view_bindings_preserved": true,
+      "county_parents": 23,
+      "rows": 432,
+      "unknown": 0,
+      "zeros": 1
+    }
+  },
+  "status": "pass",
+  "tag": "participation-routine-batch-20261112-01",
+  "unknown_counts": 83,
+  "website_builds": 0,
+  "website_commit": "3cee7a193cb57428887a172c00d355fb06351c10",
+  "wholesale_historical_reextraction": false
+}

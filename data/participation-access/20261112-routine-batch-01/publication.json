@@ -1,0 +1,54 @@
+{
+  "assets": {
+    "all-51-jurisdictions.json": {
+      "asset_id": 741318147,
+      "authenticated_draft_and_anonymous_public_full_bytes_verified": true,
+      "bytes": 7152,
+      "sha256": "855610be925245a64c4b8d721805aa529fdb9e47011f7f15a41eb0943f3529a3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/all-51-jurisdictions.json"
+    },
+    "complete-analysis.zip": {
+      "asset_id": 741318149,
+      "authenticated_draft_and_anonymous_public_full_bytes_verified": true,
+      "bytes": 15280995,
+      "sha256": "110c147d31de87286513f0e1cc7c75c659148abc6911ce7794424137edd78ba2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/complete-analysis.zip"
+    },
+    "complete-selected-observations.json.gz": {
+      "asset_id": 741318143,
+      "authenticated_draft_and_anonymous_public_full_bytes_verified": true,
+      "bytes": 825858,
+      "sha256": "53eb0c49283fb34131c2822173a322f191bda57198922b5f03c28658a6cff408",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/complete-selected-observations.json.gz"
+    },
+    "complete-source-dispositions.json": {
+      "asset_id": 741318144,
+      "authenticated_draft_and_anonymous_public_full_bytes_verified": true,
+      "bytes": 324,
+      "sha256": "68dd6862a929948f2683330515e2dd64b01fa2b6c723b880f2709df7398a5174",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/complete-source-dispositions.json"
+    },
+    "download-manifest.json": {
+      "asset_id": 741318145,
+      "authenticated_draft_and_anonymous_public_full_bytes_verified": true,
+      "bytes": 1132,
+      "sha256": "9cf9b31aff3e3209b69fba68dbb9dd658959e32002e775912208e0668fd053a6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/download-manifest.json"
+    },
+    "scientific-acceptance.json": {
+      "asset_id": 741318173,
+      "authenticated_draft_and_anonymous_public_full_bytes_verified": true,
+      "bytes": 25337,
+      "sha256": "5631bb1b0303e7323aad9ead38c9264b22a8a5166d90c2b3fb3cac5e90a8601b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-routine-batch-20261112-01/scientific-acceptance.json"
+    }
+  },
+  "immutable": true,
+  "release_anchor_website_unchanged": "3cee7a193cb57428887a172c00d355fb06351c10",
+  "release_id": 443580352,
+  "research_source_commit": "2082405294cccfeec3bb5325973afd33b70fbbc7",
+  "runtime_activation": false,
+  "status": "pass",
+  "tag": "participation-routine-batch-20261112-01",
+  "website_builds": 0
+}

@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Reusable participation updates | [Reviewed routine, complete queries and real no-op proof](#reviewed-routine-participation-batch) |
 | Historical precinct bulk collection | [All-state source/query presence for 2016/2018/2020/2022/2024](#historical-precinct-bulk-collection-2016-through-2024) |
 | House-result comparison correction | [Massachusetts and changed major-party contest coverage](#house-result-comparability-audit-and-correction) |
 | Held reporting-row batch integration | [4,963 rows connected across Arkansas, Arizona and Wyoming](#held-reporting-rows-connected-to-county-navigation) |
@@ -37,6 +38,45 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Reviewed routine participation batch
+
+Source `2082405294cccfeec3bb5325973afd33b70fbbc7` adds the maintained
+`scripts.participation_batch` command and [usage guide](docs/PARTICIPATION_BATCH.md),
+extends the shared adapter rather than calling state-specific importers, and
+freezes three previously reviewed public canonical reporting snapshots.
+These are accepted derived source observations, not fresh native extraction.
+The registry preserves their original provenance and exact replacement scopes.
+All 51 baseline jurisdictions remain, including 48 with no newly registered
+source in this demonstration.
+
+Actual proof: 4,963 unchanged rows across AR/AZ/WY, 113 county parents,
+83 unknowns, 22 observed zeros; all native fields, display bindings and
+54 compressed/runtime descriptor files preserved. Actual publisher returns
+unchanged at351130a. The second actual CLI invocation performs zero requests,
+parses, compilations or publication attempts and leaves the entire cache's
+bytes and mtimes unchanged with networking, DNS and child commands blocked
+and probed. All60 affected tests pass. Two fresh archived-code extractions
+each pass14 workflow tests and reproduce all56 runtime/full-query outputs
+byte-for-byte, also checking full source-row equality.
+
+The shared workflow enforces access stops, personal-record rejection, approved
+declaration-link discovery and retained discovery originals, exact inventory,
+full election/geography/measure semantics and reviewed display identities.
+Conditional HTTP validators survive unchanged input registration. Changed-data
+publication uses separate staging and a complete-download byte/hash binding;
+interruption/concurrent-catalog/corrupt-cache failures are tested.
+Direct native-adapter/discovery changes are fixture-tested, not a claim of
+new nationwide native products. Newly compiled native-binding products,
+broader completeness and new measurement/geographic qualification remain open.
+
+Immutable science release443580352, tag `participation-routine-batch-20261112-01`:
+complete15,280,995-byte packet, full selected observations, complete 51-jurisdiction
+and source queries, exact processing code and14 workflow tests. All six assets
+verified full-byte authenticated before publication and anonymously afterward.
+The existing website3cee/catalog351130a remain unchanged; no new rate, polygon,
+model, build or data activation. Full records:
+`data/participation-access/20261112-routine-batch-01/`.
 
 ## Historical precinct bulk collection: 2016 through 2024
 

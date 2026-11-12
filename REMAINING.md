@@ -63,18 +63,41 @@ now publish atomically; a denied Markdown table row no longer incorrectly blocks
 every other source in that table. The latter allowed acquisition of NC2018.
 Genuine access stops remain enforced.
 
-## Next priority: repeatable all-state updates
+## Reusable routine verified; native-product scope remains open
 
-Complete the requested reusable all-state batch workflow rather than adding
-per-state scripts: automatic qualified-product discovery, reviewed-adapter
-reuse, content-hash caching/no-op detection, resumable verification/publication
-and one documented routine command. The new batch publisher has six passing
-tests for atomic activation, interruptions, immutable-byte validation even on
-no-op, duplicates and concurrent catalog changes. This code is published at
-`650151b54f51f089e2d253425cadf2d300783255`;
-the generic discovery/compiler/cache/resume/intake CLI is **not yet complete**.
-Demonstrate actual idempotence against the 4,963 already-connected rows.
-New formats and measurement scopes still require qualification.
+The [maintained routine command](docs/PARTICIPATION_BATCH.md), reviewed discovery,
+shared-adapter reuse, original/content-hash cache, constrained count compiler,
+complete-query packaging and resumable atomic publisher are now published at
+`2082405294cccfeec3bb5325973afd33b70fbbc7`. No per-state importer wrapper.
+All 60 affected tests pass, including the publisher's interruption, concurrent
+catalog and immutable-byte tests. Two fresh offline extractions each pass the
+14 archived workflow tests and reproduce all 56 complete runtime/query outputs.
+
+The real demonstration checks all **4,963 already-connected AR/AZ/WY rows /
+113 county parents / 83 unknown counts / 22 observed zeros**, preserving all
+native observation fields, views, 54 runtime files and all 51 jurisdiction
+shards exactly. Its publisher result is unchanged at catalog351130a.
+An actual second CLI invocation has zero requests, parses, compilations and
+publication attempts; every work-directory byte and modification time remains
+unchanged with network, DNS and child commands blocked and probed.
+
+Immutable release **443580352**, tag `participation-routine-batch-20261112-01`,
+provides the complete **15,280,995-byte** packet, all selected observations and
+source/jurisdiction queries. All six assets were full-byte verified authenticated
+while draft and anonymously after publication. Records:
+`data/participation-access/20261112-routine-batch-01/`.
+
+This is three previously reviewed canonical reporting snapshots with all 51
+baseline jurisdictions retained, **not newly acquired nationwide native
+products**. Direct adapter/discovery changes have fixture tests, not newly
+qualified all-state native rollout. Newly compiled native-binding products and
+broader within-state/office/mode completeness remain open. Changed inventory,
+geography, measure or mode needs separate review. No new turnout rate, precinct
+boundary, model, data activation or website build.
+
+Next continue the historical completeness work above and reviewed native-product
+integration through this shared command. Do not rerun accepted source acquisition,
+model fitting, publication or website campaigns merely to demonstrate activity.
 
 ## House-result comparison correction verified live
 
