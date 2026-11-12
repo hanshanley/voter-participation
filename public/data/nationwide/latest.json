@@ -1,7 +1,7 @@
 {
-  "snapshot_id": "20261112T040449Z",
+  "snapshot_id": "20261112T130956Z",
   "election_date": "2026-11-03",
-  "retrieved_at": "2026-11-12T04:04:49.476904+00:00",
+  "retrieved_at": "2026-11-12T13:09:56.827824+00:00",
   "status": "preliminary",
   "audit": {
     "jurisdictions_assessed": 51,
@@ -14,34 +14,34 @@
   },
   "files": [
     {
-      "path": "nationwide/20261112T040449Z/complete-snapshot.zip",
-      "bytes": 428279,
-      "sha256": "31d0017ff2cefb7050904a72b6e105bb6731f1eac2febc00dc5b06db2121065b"
+      "path": "nationwide/20261112T130956Z/complete-snapshot.zip",
+      "bytes": 428389,
+      "sha256": "1faa179295b6d72e9ddeb0dfed96688796c0df28bb9409d3a798e7d79bf74cbb"
     },
     {
-      "path": "nationwide/20261112T040449Z/coverage.csv",
+      "path": "nationwide/20261112T130956Z/coverage.csv",
       "bytes": 6999,
       "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
     },
     {
-      "path": "nationwide/20261112T040449Z/demographics.csv",
+      "path": "nationwide/20261112T130956Z/demographics.csv",
       "bytes": 31512,
-      "sha256": "a5730869848364392230d411ce851c54d3f2117d536966497860b1cebf6e9e98"
+      "sha256": "91d4cdf363503f76d2d1404bb32a077752fb015778415d146703d7c057b98494"
     },
     {
-      "path": "nationwide/20261112T040449Z/early_voting.csv",
+      "path": "nationwide/20261112T130956Z/early_voting.csv",
       "bytes": 1197602,
-      "sha256": "5b3a7a4a998db1659990fcff673ddf01bcaa45ed32b1377675c225f50e711c2d"
+      "sha256": "7a73d9cf298871cd8cf08f772339601fd37f351a7490a8fef385f28c074d0768"
     },
     {
-      "path": "nationwide/20261112T040449Z/reporting.csv",
+      "path": "nationwide/20261112T130956Z/reporting.csv",
       "bytes": 1170,
-      "sha256": "665cfe0fb4e42531226cf0c1d3b9d6c012321a258956c34844f88f449e7f4ca2"
+      "sha256": "cd9c3a42c76d5d0ec96a9d4f7266753bc0d7239a132c50458ada641e5d1bc918"
     },
     {
-      "path": "nationwide/20261112T040449Z/snapshot.json",
+      "path": "nationwide/20261112T130956Z/snapshot.json",
       "bytes": 4197959,
-      "sha256": "9f648d45f3f73e68f85c4c4b3f089fac71bfc12ee8e6872b1eabe1fd767bd80c"
+      "sha256": "760063e4b33eea53f9ecc78ce15c23a53279663cfe6410791eb8befe05ff20f6"
     }
   ]
 }
