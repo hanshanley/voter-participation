@@ -140,8 +140,10 @@ def main():
         "and differing predictors/election direction remain. No population/2026validation, design\n"
         "confidence intervals, identified causes or allocation to counties/precincts.\n\n"
         "Offline standard-library replay checks all members, rebuilds8broad source outputs,\n"
-        "reruns only6NEW profile simulations/projections, and byte-compares all60outputs plus\n"
-        "12transformed-prior/decision inputs. It does NOT repeat baseline simulations or private\n"
+        "consumes12published transformed-prior/decision inputs, independently checks every source\n"
+        "and demographic-year constraint, reruns only6NEW profile simulations and byte-compares\n"
+        "all60outputs. NumPy is needed to recompute the original source-only projections, NOT\n"
+        "the stdlib replay. It does NOT repeat baseline simulations or private\n"
         "fitting/calibration; broad sums reproduce public scoring, not withheld native fits.\n"
         "python -S -W error code/scripts/reproduce_house_fixed_copula.py --archive COMPLETE_ZIP --output NEW_DIRECTORY\n"
         "Scientific implementation commit: "+args.source_commit+"\n").encode()

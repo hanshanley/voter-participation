@@ -37,10 +37,50 @@ def combine(baseline, changed, codes):
     return result
 
 
+def check_prepared_projection(original, prepared, decisions, theta, profile):
+    flags = prepared.get("structural_association_stress", {})
+    if (flags.get("profile") != profile or flags.get("requested_theta") != theta
+            or flags.get("current_return_targets_used") is not False
+            or set(original["states"]) != set(prepared["states"]) or set(decisions) != set(original["states"])):
+        raise ValueError("Prepared projection changed its source-only binding")
+
+    def margins(table):
+        return [math.fsum(row) for row in table]+[math.fsum(row[j] for row in table) for j in range(5)]
+
+    for code, old in original["states"].items():
+        new, decision = prepared["states"][code], decisions[code]
+        if (decision["requested_theta"] != theta or decision["feasibility_exponent"] not in (0, .125, .25, .5, 1)
+                or not math.isclose(decision["effective_theta"], theta**decision["feasibility_exponent"], abs_tol=1e-12)
+                or new["direct_2022_house_prior_joint"] != old["direct_2022_house_prior_joint"]
+                or len(new["groups"]) != len(old["groups"])):
+            raise ValueError("Prepared strength or direct scenario differs")
+        log_ratio = [[math.log(new["prior_joint"][i][j]/old["prior_joint"][i][j])
+                      -(math.log(decision["effective_theta"]) if i == j and i < 2 else 0)
+                      for j in range(5)] for i in range(5)]
+        if any(abs(log_ratio[i][j]-log_ratio[i][-1]-log_ratio[-1][j]+log_ratio[-1][-1]) > 1e-8
+               for i in range(5) for j in range(5)):
+            raise ValueError("Prepared state joint violates its association dual certificate")
+        for before, after in [(old, new), *zip(old["groups"], new["groups"])]:
+            if before is not old and any(before[key] != after[key] for key in ("dimension", "group", "label", "available")):
+                raise ValueError("Prepared projection changed its disclosure mask")
+            if before.get("available", True):
+                if (any(not math.isfinite(value) or value < 0 for row in after["prior_joint"] for value in row)
+                        or any(abs(a-b) > 1e-10 for a, b in zip(margins(before["prior_joint"]), margins(after["prior_joint"])))):
+                    raise ValueError("Prepared projection changed a source year margin")
+            elif before["prior_joint"] != after["prior_joint"]:
+                raise ValueError("Prepared projection filled a held source group")
+        for dimension in {group["dimension"] for group in new["groups"]}:
+            tables = [group["prior_joint"] for group in new["groups"] if group["dimension"] == dimension and group["available"]]
+            if any(abs(math.fsum(table[i][j] for table in tables)-new["prior_joint"][i][j]) > 1e-10
+                   for i in range(5) for j in range(5)):
+                raise ValueError("Prepared demographic partition does not reproduce its state")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("source-summary", "priors", "baseline-results", "baseline-viewer", "output"):
         parser.add_argument("--"+name, type=Path, required=True)
+    parser.add_argument("--prepared-projections", type=Path)
     args = parser.parse_args()
     if args.output.exists():
         raise ValueError("Use a fresh complete association-profile directory")
@@ -63,7 +103,13 @@ def main():
         transformed[profile], projection_decisions[profile] = {}, {}
         for family in families.FAMILIES:
             print(json.dumps(dict(profile=profile, family=family, stage="source_margin_constrained_projection")), flush=True)
-            prior, decisions = stress_priors(original_priors[family], theta, profile)
+            if args.prepared_projections:
+                prepared_directory = args.prepared_projections/profile/family
+                prior = json.loads((prepared_directory/"synthetic-priors.json").read_bytes())
+                decisions = json.loads((prepared_directory/"source-projection-decisions.json").read_bytes())
+                check_prepared_projection(original_priors[family], prior, decisions, theta, profile)
+            else:
+                prior, decisions = stress_priors(original_priors[family], theta, profile)
             directory = args.output/profile/family
             directory.mkdir(parents=True)
             (directory/"synthetic-priors.json").write_bytes(simulation.encoded(prior))

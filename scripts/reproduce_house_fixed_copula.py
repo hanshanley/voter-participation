@@ -53,8 +53,13 @@ def main():
     runpy.run_path(str(packet/"code/scripts/house_fixed_copula_public.py"), run_name="__main__")
     sys.argv = ["build_house_copula_profiles.py", "--source-summary", str(args.output/"source/summary.json"),
         "--priors", str(packet/"inputs/original-priors"), "--baseline-results", str(packet/"inputs/original-results"),
-        "--baseline-viewer", str(packet/"inputs/original-viewer.json"), "--output", str(args.output/"current")]
+        "--baseline-viewer", str(packet/"inputs/original-viewer.json"), "--output", str(args.output/"current"),
+        "--prepared-projections", str(packet/"inputs/current-profiles")]
     runpy.run_path(str(packet/"code/scripts/build_house_copula_profiles.py"), run_name="__main__")
+    sys.argv = ["verify_house_copula_profiles.py", "--profiles", str(args.output/"current"),
+        "--original-priors", str(packet/"inputs/original-priors"), "--baseline-results", str(packet/"inputs/original-results"),
+        "--output", str(args.output/"independent-replay-verification.json")]
+    runpy.run_path(str(packet/"code/scripts/verify_house_copula_profiles.py"), run_name="__main__")
     matched = {}
     for name in manifest["output_files"]:
         body = (args.output/name).read_bytes()
@@ -73,6 +78,8 @@ def main():
         archive_sha256=hashlib.sha256(args.archive.read_bytes()).hexdigest(), archive_members=len(names),
         network_and_external_commands_blocked=True, successful_private_fits_repeated=False,
         original_baseline_simulations_repeated=False, new_current_profile_simulations_reproduced=6,
+        published_projections_consumed_not_recomputed=True,
+        source_and_group_year_marginal_constraints_independently_rechecked=True,
         public_scores_replayed_from_permitted_sums_not_private_refits=True)
     (args.output/"reproduction.json").write_text(json.dumps(report, indent=2, sort_keys=True)+"\n")
     print(json.dumps({key: value for key, value in report.items() if key != "outputs"}), flush=True)
