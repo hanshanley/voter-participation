@@ -96,7 +96,8 @@ def metrics(probabilities, target, weights):
     chosen = probabilities[np.arange(len(target)), target]
     logloss = -np.log(chosen)
     brier = (probabilities * probabilities).sum(axis=1) - 2 * chosen + 1
-    return {"nll_sum": float(weights @ logloss), "brier_sum": float(weights @ brier)}
+    return {"nll_sum": float(np.sum(weights * logloss, dtype=np.float64)),
+            "brier_sum": float(np.sum(weights * brier, dtype=np.float64))}
 
 
 def secure_npz(path, **values):
@@ -245,7 +246,7 @@ def run(args, policy, prepared):
                         raise ValueError("Whole primary selected-fold support hold")
                     probabilities = predictions[model]["house"][selected][:, [0, 1, 5, 6]]
                     probabilities /= probabilities.sum(axis=1)[:, None]
-                    expected = weights[selected] @ probabilities
+                    expected = np.sum(weights[selected, None] * probabilities, axis=0, dtype=np.float64)
                     row["selected_source_n"] = len(selected)
                     row["selected_weight_sum"] = format(float(weights[selected].sum()), ".17g")
                     values = metrics(probabilities, target[selected, 2] * 2 + target[selected, 3], weights[selected])
