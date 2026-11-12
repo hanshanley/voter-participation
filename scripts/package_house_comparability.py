@@ -26,7 +26,11 @@ def build(source, packet, output, website=None):
     if website:
         for name in ("public/scripts/participation-norc-house.js", "public/scripts/participation-return-drivers.js",
                      "src/components/ParticipationReturnDrivers.astro", "scripts/participation-norc-house.test.mjs",
-                     "scripts/check-participation-house-comparability-browser.py"):
+                     "scripts/check-participation-house-comparability-browser.py",
+                     "data/participation-return-attribution/20261112-06/norc-receipt.json",
+                     "data/participation-return-attribution/20261112-06/family-summary.json",
+                     "data/participation-return-attribution/20261112-06/norc-point-summary.json",
+                     "data/participation-return-attribution/20261112-06/copula-receipt.json"):
             members["viewer-code/"+name] = (website/name).read_bytes()
     for directory in ("inputs", "results"):
         for path in sorted((packet/directory).rglob("*")):
@@ -53,6 +57,8 @@ def build(source, packet, output, website=None):
         "python3 -S code/scripts/reproduce_house_comparability.py --inputs inputs --packet /fresh/replay --expected results\n"
         "This rebuilds every published result and independently verifies native counts,\n"
         "candidate-coverage masks, rational accounting and complete demographic simulations.\n"
+        "Exact public-reader and shared-scale checks (Node):\n"
+        "node code/scripts/verify_house_comparability.mjs viewer-code results /fresh/reader-proof.json\n"
     ).encode()
     members["manifest.json"] = json.dumps({name: pin(body) for name, body in sorted(members.items())},
         indent=2, sort_keys=True).encode()+b"\n"
