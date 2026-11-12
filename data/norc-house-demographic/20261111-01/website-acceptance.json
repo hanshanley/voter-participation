@@ -1,0 +1,602 @@
+{
+  "actual_payload_bytes": 996845969,
+  "actual_tar_bytes": 999434240,
+  "archived_return_constrained_decisions": 113,
+  "artifact_id": 13904749933,
+  "broader_project_complete": false,
+  "demographic_dimensions_additive_together": false,
+  "endpoint_matching_is_independent_validation": false,
+  "exact_unqueried_assets": 68,
+  "legacy_office_checks": [
+    {
+      "actual_pointer_selection": true,
+      "all_office_state_summaries": 35,
+      "archived_113_models_retained": true,
+      "exact_state_view_values": 255,
+      "no_horizontal_overflow": true,
+      "no_unmodeled_balancing_term": true,
+      "office": "senate",
+      "one_map": true,
+      "shared_signed_scale": true,
+      "state_selection_preserved_across_views": true,
+      "width": 390
+    },
+    {
+      "actual_pointer_selection": true,
+      "all_office_state_summaries": 28,
+      "archived_113_models_retained": true,
+      "exact_state_view_values": 255,
+      "no_horizontal_overflow": true,
+      "no_unmodeled_balancing_term": true,
+      "office": "governor",
+      "one_map": true,
+      "shared_signed_scale": true,
+      "state_selection_preserved_across_views": true,
+      "width": 390
+    },
+    {
+      "actual_pointer_selection": true,
+      "all_office_state_summaries": 35,
+      "archived_113_models_retained": true,
+      "exact_state_view_values": 255,
+      "no_horizontal_overflow": true,
+      "no_unmodeled_balancing_term": true,
+      "office": "senate",
+      "one_map": true,
+      "shared_signed_scale": true,
+      "state_selection_preserved_across_views": true,
+      "width": 1440
+    },
+    {
+      "actual_pointer_selection": true,
+      "all_office_state_summaries": 28,
+      "archived_113_models_retained": true,
+      "exact_state_view_values": 255,
+      "no_horizontal_overflow": true,
+      "no_unmodeled_balancing_term": true,
+      "office": "governor",
+      "one_map": true,
+      "shared_signed_scale": true,
+      "state_selection_preserved_across_views": true,
+      "width": 1440
+    }
+  ],
+  "media": {
+    "media/detail-1440.png": {
+      "bytes": 116797,
+      "sha256": "173f17bf7003865c3eec277a42ee14d39c00dd19d4aea22ed5c9e919b8397f51"
+    },
+    "media/detail-390.png": {
+      "bytes": 107081,
+      "sha256": "c739c8331c61b25295f654b9b6a56e566e64a845b620cb3dd6b62036e40960b8"
+    },
+    "media/map-1440.png": {
+      "bytes": 90964,
+      "sha256": "9c32e304413fcd1e5c57c925108383381222632383eb994e6759016b98004430"
+    },
+    "media/map-390.png": {
+      "bytes": 28411,
+      "sha256": "e41bf20372d09bad3d0663fe768ee268174b569c9b57ea95bba9995a27fcff56"
+    },
+    "media/overview-1440.png": {
+      "bytes": 322622,
+      "sha256": "3a9ec13bd7efc5c2e9157ed282caaa86c65a64e80656d596ccee840683ab8072"
+    },
+    "media/overview-390.png": {
+      "bytes": 245824,
+      "sha256": "6935b805c502e03a5b50e67f78ab411db4684d25e45e168d2cd986d580074727"
+    }
+  },
+  "model_checks": {
+    "archived_226_full_models_retained": true,
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "actual_pointer_selections": 51,
+        "all_50_state_summaries": true,
+        "complete_svg_screenshot": true,
+        "demographic_dimensions": 6,
+        "demographic_options": 22,
+        "exact_state_view_values": 1530,
+        "no_horizontal_overflow": true,
+        "prediction_error_separate": true,
+        "selected_border_painted_last": true,
+        "width": 390
+      },
+      {
+        "actual_pointer_selections": 51,
+        "all_50_state_summaries": true,
+        "complete_svg_screenshot": true,
+        "demographic_dimensions": 6,
+        "demographic_options": 22,
+        "exact_state_view_values": 1530,
+        "no_horizontal_overflow": true,
+        "prediction_error_separate": true,
+        "selected_border_painted_last": true,
+        "width": 1440
+      }
+    ],
+    "failure_checksum_retry_and_late_office_isolation": true,
+    "no_js_all_50_states": true,
+    "source_training_separate_from_return_conditioning": true,
+    "status": "passed_real_NORC_demographic_House_maps",
+    "unavailable_comparisons_not_zero": true,
+    "valid_data_overrides": false
+  },
+  "original_model_objects": 113,
+  "pages_run_id": 43130276092,
+  "production_images_visually_inspected": true,
+  "raw_respondents_exported": false,
+  "responsive_layout_checks": [
+    {
+      "documentWidth": 320,
+      "headerLeft": 14,
+      "headerRight": 306,
+      "pageLeft": 14,
+      "pageRight": 306,
+      "view": "states",
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "historical_options_open": true,
+      "left": 14,
+      "right": 306,
+      "view": "states",
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headerLeft": 14,
+      "headerRight": 306,
+      "pageLeft": 14,
+      "pageRight": 306,
+      "view": "national",
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "historical_options_open": true,
+      "left": 14,
+      "right": 306,
+      "view": "national",
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headerLeft": 14,
+      "headerRight": 306,
+      "pageLeft": 14,
+      "pageRight": 306,
+      "view": "effects",
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "documentWidth": 320,
+      "headerLeft": 14,
+      "headerRight": 306,
+      "pageLeft": 14,
+      "pageRight": 306,
+      "view": "methods",
+      "viewport": 320,
+      "width": 320
+    },
+    {
+      "documentWidth": 390,
+      "headerLeft": 14,
+      "headerRight": 376,
+      "pageLeft": 14,
+      "pageRight": 376,
+      "view": "states",
+      "viewport": 390,
+      "width": 390
+    },
+    {
+      "documentWidth": 390,
+      "historical_options_open": true,
+      "left": 14,
+      "right": 376,
+      "view": "states",
+      "viewport": 390,
+      "width": 390
+    },
+    {
+      "documentWidth": 390,
+      "headerLeft": 14,
+      "headerRight": 376,
+      "pageLeft": 14,
+      "pageRight": 376,
+      "view": "national",
+      "viewport": 390,
+      "width": 390
+    },
+    {
+      "documentWidth": 390,
+      "historical_options_open": true,
+      "left": 14,
+      "right": 376,
+      "view": "national",
+      "viewport": 390,
+      "width": 390
+    },
+    {
+      "documentWidth": 390,
+      "headerLeft": 14,
+      "headerRight": 376,
+      "pageLeft": 14,
+      "pageRight": 376,
+      "view": "effects",
+      "viewport": 390,
+      "width": 390
+    },
+    {
+      "documentWidth": 390,
+      "headerLeft": 14,
+      "headerRight": 376,
+      "pageLeft": 14,
+      "pageRight": 376,
+      "view": "methods",
+      "viewport": 390,
+      "width": 390
+    },
+    {
+      "documentWidth": 700,
+      "headerLeft": 14,
+      "headerRight": 686,
+      "pageLeft": 14,
+      "pageRight": 686,
+      "view": "states",
+      "viewport": 700,
+      "width": 700
+    },
+    {
+      "documentWidth": 700,
+      "historical_options_open": true,
+      "left": 14,
+      "right": 686,
+      "view": "states",
+      "viewport": 700,
+      "width": 700
+    },
+    {
+      "documentWidth": 700,
+      "headerLeft": 14,
+      "headerRight": 686,
+      "pageLeft": 14,
+      "pageRight": 686,
+      "view": "national",
+      "viewport": 700,
+      "width": 700
+    },
+    {
+      "documentWidth": 700,
+      "historical_options_open": true,
+      "left": 14,
+      "right": 686,
+      "view": "national",
+      "viewport": 700,
+      "width": 700
+    },
+    {
+      "documentWidth": 700,
+      "headerLeft": 14,
+      "headerRight": 686,
+      "pageLeft": 14,
+      "pageRight": 686,
+      "view": "effects",
+      "viewport": 700,
+      "width": 700
+    },
+    {
+      "documentWidth": 700,
+      "headerLeft": 14,
+      "headerRight": 686,
+      "pageLeft": 14,
+      "pageRight": 686,
+      "view": "methods",
+      "viewport": 700,
+      "width": 700
+    },
+    {
+      "documentWidth": 760,
+      "headerLeft": 14,
+      "headerRight": 746,
+      "pageLeft": 14,
+      "pageRight": 746,
+      "view": "states",
+      "viewport": 760,
+      "width": 760
+    },
+    {
+      "documentWidth": 760,
+      "historical_options_open": true,
+      "left": 14,
+      "right": 746,
+      "view": "states",
+      "viewport": 760,
+      "width": 760
+    },
+    {
+      "documentWidth": 760,
+      "headerLeft": 14,
+      "headerRight": 746,
+      "pageLeft": 14,
+      "pageRight": 746,
+      "view": "national",
+      "viewport": 760,
+      "width": 760
+    },
+    {
+      "documentWidth": 760,
+      "historical_options_open": true,
+      "left": 14,
+      "right": 746,
+      "view": "national",
+      "viewport": 760,
+      "width": 760
+    },
+    {
+      "documentWidth": 760,
+      "headerLeft": 14,
+      "headerRight": 746,
+      "pageLeft": 14,
+      "pageRight": 746,
+      "view": "effects",
+      "viewport": 760,
+      "width": 760
+    },
+    {
+      "documentWidth": 760,
+      "headerLeft": 14,
+      "headerRight": 746,
+      "pageLeft": 14,
+      "pageRight": 746,
+      "view": "methods",
+      "viewport": 760,
+      "width": 760
+    },
+    {
+      "documentWidth": 761,
+      "headerLeft": 20,
+      "headerRight": 741,
+      "pageLeft": 20,
+      "pageRight": 741,
+      "view": "states",
+      "viewport": 761,
+      "width": 761
+    },
+    {
+      "documentWidth": 761,
+      "historical_options_open": true,
+      "left": 20,
+      "right": 741,
+      "view": "states",
+      "viewport": 761,
+      "width": 761
+    },
+    {
+      "documentWidth": 761,
+      "headerLeft": 20,
+      "headerRight": 741,
+      "pageLeft": 20,
+      "pageRight": 741,
+      "view": "national",
+      "viewport": 761,
+      "width": 761
+    },
+    {
+      "documentWidth": 761,
+      "historical_options_open": true,
+      "left": 20,
+      "right": 741,
+      "view": "national",
+      "viewport": 761,
+      "width": 761
+    },
+    {
+      "documentWidth": 761,
+      "headerLeft": 20,
+      "headerRight": 741,
+      "pageLeft": 20,
+      "pageRight": 741,
+      "view": "effects",
+      "viewport": 761,
+      "width": 761
+    },
+    {
+      "documentWidth": 761,
+      "headerLeft": 20,
+      "headerRight": 741,
+      "pageLeft": 20,
+      "pageRight": 741,
+      "view": "methods",
+      "viewport": 761,
+      "width": 761
+    },
+    {
+      "documentWidth": 1024,
+      "headerLeft": 20,
+      "headerRight": 1004,
+      "pageLeft": 20,
+      "pageRight": 1004,
+      "view": "states",
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "documentWidth": 1024,
+      "historical_options_open": true,
+      "left": 784,
+      "right": 1004,
+      "view": "states",
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "documentWidth": 1024,
+      "headerLeft": 20,
+      "headerRight": 1004,
+      "pageLeft": 20,
+      "pageRight": 1004,
+      "view": "national",
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "documentWidth": 1024,
+      "historical_options_open": true,
+      "left": 784,
+      "right": 1004,
+      "view": "national",
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "documentWidth": 1024,
+      "headerLeft": 20,
+      "headerRight": 1004,
+      "pageLeft": 20,
+      "pageRight": 1004,
+      "view": "effects",
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "documentWidth": 1024,
+      "headerLeft": 20,
+      "headerRight": 1004,
+      "pageLeft": 20,
+      "pageRight": 1004,
+      "view": "methods",
+      "viewport": 1024,
+      "width": 1024
+    },
+    {
+      "documentWidth": 1440,
+      "headerLeft": 130,
+      "headerRight": 1310,
+      "pageLeft": 130,
+      "pageRight": 1310,
+      "view": "states",
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "historical_options_open": true,
+      "left": 1090,
+      "right": 1310,
+      "view": "states",
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headerLeft": 130,
+      "headerRight": 1310,
+      "pageLeft": 130,
+      "pageRight": 1310,
+      "view": "national",
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "historical_options_open": true,
+      "left": 1090,
+      "right": 1310,
+      "view": "national",
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headerLeft": 130,
+      "headerRight": 1310,
+      "pageLeft": 130,
+      "pageRight": 1310,
+      "view": "effects",
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "documentWidth": 1440,
+      "headerLeft": 130,
+      "headerRight": 1310,
+      "pageLeft": 130,
+      "pageRight": 1310,
+      "view": "methods",
+      "viewport": 1440,
+      "width": 1440
+    },
+    {
+      "documentWidth": 2000,
+      "headerLeft": 410,
+      "headerRight": 1590,
+      "pageLeft": 410,
+      "pageRight": 1590,
+      "view": "states",
+      "viewport": 2000,
+      "width": 2000
+    },
+    {
+      "documentWidth": 2000,
+      "historical_options_open": true,
+      "left": 1370,
+      "right": 1590,
+      "view": "states",
+      "viewport": 2000,
+      "width": 2000
+    },
+    {
+      "documentWidth": 2000,
+      "headerLeft": 410,
+      "headerRight": 1590,
+      "pageLeft": 410,
+      "pageRight": 1590,
+      "view": "national",
+      "viewport": 2000,
+      "width": 2000
+    },
+    {
+      "documentWidth": 2000,
+      "historical_options_open": true,
+      "left": 1370,
+      "right": 1590,
+      "view": "national",
+      "viewport": 2000,
+      "width": 2000
+    },
+    {
+      "documentWidth": 2000,
+      "headerLeft": 410,
+      "headerRight": 1590,
+      "pageLeft": 410,
+      "pageRight": 1590,
+      "view": "effects",
+      "viewport": 2000,
+      "width": 2000
+    },
+    {
+      "documentWidth": 2000,
+      "headerLeft": 410,
+      "headerRight": 1590,
+      "pageLeft": 410,
+      "pageRight": 1590,
+      "view": "methods",
+      "viewport": 2000,
+      "width": 2000
+    }
+  ],
+  "saved_NORC_state_summaries": 50,
+  "science_release_id": 442345226,
+  "scientific_source_commit": "8f74ee8e4521d21142e8ee275cc154cb2bbfbd80",
+  "status": "verified_live_NORC_demographic_House_model",
+  "unchanged_complete_downloads": 436,
+  "website_commit": "aef5122669aec680f8ff5775956f609fa2606244"
+}

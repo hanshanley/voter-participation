@@ -1,13 +1,13 @@
 # Remaining work: participation and election-transition estimates
 
-Updated: 2026-11-11 UTC. Source catalog: [SOURCES.md](SOURCES.md).
+Updated: 2026-11-12 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 **The project is not finished when the files are downloaded.** Acquisition and
 reconciliation must feed the participation, switching, modeled/reported
 nonparticipation and new/returning-voter estimates, then their tested integration
 into the existing project. Do not stop at an inventory or another audit.
 
-The user changed the single assistant continuation to **45 minutes** on this date
+The single assistant continuation runs every **45 minutes**
 (schedule 120; the previous schedule 119 is stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
@@ -42,6 +42,45 @@ every comparison or redistribution is approved.
 
 ## Execution queue
 
+**CURRENT USER PRIORITY: NORC-informed demographic House explanation.**
+The actual learned model and complete science are now published, not replaced by
+another bounds/arithmetic-only product. Science **442345226** contains 50 states,
+35 recorded-endpoint reconstructions/15 source scenarios, 1,600 demographic
+decisions, 360 assumption cases and every flow/seed query. Nine tests, 51,712
+independent checks and two fresh offline exact reproductions pass all eight
+outputs. All 16 full assets anonymously verified. See
+[full model methods](docs/NORC_HOUSE_TRANSITIONS.md).
+
+The source model is trained without current partisan return targets; reconstruction
+uses the recorded endpoints separately. Respondent prediction improves with
+demographics, historical transfer improves only modestly, the bridge Brier score
+slightly worsens and before-conditioning 35-state margin MAE is 5.99 points.
+Do not hide those errors, assign them to another mechanism or describe endpoint
+matching as validation. Private respondents/fine cells stay local.
+
+**Delivered and verified live: website aef5122**, Pages43130276092/artifact13904749933.
+One map has all eight House views, six demographic dimensions/22 options,
+retained-choice flows, separate model errors and stronger selected outlines.
+Actual payload996845969/tar999434240 are both below strict1e9;68 exact unqueried
+assets and436 old complete-download pins pass. Production3060new map/group
+values/102actualpointer clicks/all50summaries/noJS/fault/retry/latest-office
+isolation and48layouts pass; all six production images inspected.
+Original113models/113archived decisions and Senate/governor behavior remain.
+Science, code, complete downloads and live model are done for this increment.
+Do not refit, reacquire, reproduce, rebuild or re-audit them merely for activity.
+
+**Remaining evidence, not a coding hold:** fifteen observed House comparisons
+remain unavailable: AK, CT, HI, IL, IN, LA, ME, MS, NJ, OK, PA, RI, SD, VA, VT.
+Their full source scenarios and reasons are retained, never observed zeros.
+Most lack complete qualified paired candidate counts; CT/SD have reference
+inventory differences, PA omits current candidate controls, RI conflicts with
+current district controls and VT lacks a D/R contest at both endpoints.
+Prefer already-held qualified state/district endpoints or genuinely new permitted
+corrections; do not infer them from partial county sums or borrow another office.
+Stronger independent linked-choice/participation validation and source-justified
+separation of first-general, returning and newly eligible entry remain open.
+Broader historical/local evidence gaps and sole45minute120 remain open.
+
 **New core interpretation check: aggregate-compatible flow bounds, science complete.**
 All 89 comparable central frames permit zero D/R switching, so return reconciliation
 does not identify the fitted behavioral split. Complete release **442279581** has
@@ -64,14 +103,13 @@ no overflow/errors/valid-data overrides pass. Exact existing-artifact checker
 and other catalog datasets are unchanged. Twenty reader tests/Astro checks and
 the complete CI build pass. No new panel, model fit or site rebuild for verification.
 
-The science and live interpretation increment is complete. **Only local record
-sync is blocked by ENOSPC**: canonical owned-doc baseline107c5c7 and current
-session SQL could not be updated. Current remote records are authoritative;
-when storage recovers, sync these three owned docs/new records UNINDEXED and
-mark only participation-flow-identification-20261111 complete. Do NOT repeat
-any accepted fits, reductions, publication, build or validation. Protected local
-heads/indexes/unrelated files remain exact. Remote main preserves concurrent
-snapshot16343fcc. Sole45minute120 and the broader project remain open.
+The science and live interpretation increment is complete. Earlier local record
+writes failed ENOSPC, explaining the older canonical107c5c7 baseline; that was
+an operational tracking hold, not missing scientific work. Current published
+acceptance records and TOPplan govern the guarded UNINDEXED synchronization.
+Do NOT repeat accepted fits, reductions, publication, build or validation.
+Protected local heads/indexes/unrelated files remain exact. Remote main preserves
+concurrent snapshot16343fcc. Sole45minute120 and the broader project remain open.
 
 **User priority: the all-state swing model, not more peripheral source packages.**
 The November 11 screenshot exposed an atlas-wide mismatch between survey-recall

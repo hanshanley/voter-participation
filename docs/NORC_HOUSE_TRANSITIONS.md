@@ -90,6 +90,18 @@ assumption envelopes are not confidence intervals.
 
 ## Interpretation and reproduction
 
+For example, the central return-conditioned estimates give the following
+sum-preserving, rounded contributions. These are fitted explanations of the
+held comparisons, not independently established behavioral percentages.
+
+| State | Total change | Switching | Net participation | Other | Unresolved |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Texas | +25.16 | +14.50 | +9.15 | +0.41 | +1.10 |
+| Minnesota | +11.96 | +7.16 | +4.06 | +0.33 | +0.41 |
+
+Units are D/R margin points. Unrounded counts determine the change, so subtracting
+separately rounded displayed endpoint margins can differ by 0.01 point.
+
 Modeled absence is not confirmed staying home or no ballot in any contest.
 Entry/return is not proven first-ever voting. Eligibility, deaths and migration
 are not separately identified. Changing candidate availability, age, residence,

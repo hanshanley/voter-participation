@@ -8,6 +8,12 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## NORC demographic House transitions
+
+| Analysis | What it provides | Complete ZIP |
+|---|---|---|
+| NORC-informed demographic House transitions · verified live | Learned joint demographic/prior-choice associations; 50 states/35 endpoint reconstructions/15 source-only scenarios, all 1,600 group decisions, 360 assumptions, 250 state seeds/1,500 partition seeds and every flow/query. All permitted fitted synthetic inputs, eight complete outputs, source/tests/checks and entire return-source predecessor. 51,712 independent checks/two fresh offline reproductions. Website aef5122/Pages43130276092 verifies all eight House views, six demographic dimensions, 3,060 exact values/102 actual pointer selections, no-JS/fault handling and 436 unchanged old downloads. Private training requires original local files; no respondents/private fine cells exported. Prediction errors remain separate, not behavioral residuals; return conditioning is not independent validation, N/U stay distinct, frame/affinity sensitivity not a CI, no state-to-precinct allocation | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-analysis.zip) |
+
 ## Resident context, not voter characteristics
 
 | Analysis | What it provides | Complete ZIP |

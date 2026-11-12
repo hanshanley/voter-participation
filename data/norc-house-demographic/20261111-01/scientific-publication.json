@@ -1,0 +1,251 @@
+{
+  "county_precinct_allocation": false,
+  "demographic_dimensions_additive_together": false,
+  "endpoint_matching_is_independent_validation": false,
+  "first_ever_voting_identified": false,
+  "fresh_offline_reproductions": [
+    {
+      "all_eight_complete_output_files_byte_identical": true,
+      "independent": {
+        "assumption_cases": 360,
+        "checks": 51712,
+        "complete_demographic_decisions": 1600,
+        "demographic_partition_seed_cases": 1500,
+        "population_validation_claimed": false,
+        "return_anchored_states": 35,
+        "source_individual_histories_identified": false,
+        "states": 50,
+        "status": "passed_independent_NORC_endpoints_rational_accounting_and_demographic_simulations"
+      },
+      "network_and_external_commands_blocked": true,
+      "original_survey_reduction_or_fit_repeated": false,
+      "status": "passed_complete_offline_NORC_demographic_simulations",
+      "tests_passed": 9
+    },
+    {
+      "all_eight_complete_output_files_byte_identical": true,
+      "independent": {
+        "assumption_cases": 360,
+        "checks": 51712,
+        "complete_demographic_decisions": 1600,
+        "demographic_partition_seed_cases": 1500,
+        "population_validation_claimed": false,
+        "return_anchored_states": 35,
+        "source_individual_histories_identified": false,
+        "states": 50,
+        "status": "passed_independent_NORC_endpoints_rational_accounting_and_demographic_simulations"
+      },
+      "network_and_external_commands_blocked": true,
+      "original_survey_reduction_or_fit_repeated": false,
+      "status": "passed_complete_offline_NORC_demographic_simulations",
+      "tests_passed": 9
+    }
+  ],
+  "observed_staying_home_identified": false,
+  "package": {
+    "archive_bytes": 17856244,
+    "archive_sha256": "8ec723e49df49af59b559d4835cf7846e70ac46e4e28bac7b5c2fe0a67bc7ae0",
+    "independent": {
+      "assumption_cases": 360,
+      "checks": 51712,
+      "complete_demographic_decisions": 1600,
+      "demographic_partition_seed_cases": 1500,
+      "population_validation_claimed": false,
+      "return_anchored_states": 35,
+      "source_individual_histories_identified": false,
+      "states": 50,
+      "status": "passed_independent_NORC_endpoints_rational_accounting_and_demographic_simulations"
+    },
+    "members": 21,
+    "private_raw_respondents_exported": false,
+    "source_commit": "8f74ee8e4521d21142e8ee275cc154cb2bbfbd80",
+    "status": "complete_NORC_demographic_House_model_package",
+    "summary": {
+      "assumption_cases": 360,
+      "complete_group_decisions": 1600,
+      "demographic_partition_agent_draws": 15000000,
+      "demographic_partition_seed_cases": 1500,
+      "return_anchored": 35,
+      "seeds": 250,
+      "states": 50,
+      "synthetic_agents": 2500000
+    }
+  },
+  "pages_run_id": 43130276092,
+  "preconditioning_margin_MAE_pp": 5.987905979587252,
+  "private_raw_respondents_exported": false,
+  "science": {
+    "assets": {
+      "checksums.json": {
+        "anonymously_verified": true,
+        "bytes": 2102,
+        "sha256": "f9c966664a6044976ab4b12e47cddf360f2d5bd23c558211f816b4da629e403b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/checksums.json"
+      },
+      "complete-analysis.zip": {
+        "anonymously_verified": true,
+        "bytes": 17856244,
+        "sha256": "8ec723e49df49af59b559d4835cf7846e70ac46e4e28bac7b5c2fe0a67bc7ae0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-analysis.zip"
+      },
+      "complete-assumption-cases.json": {
+        "anonymously_verified": true,
+        "bytes": 359460,
+        "sha256": "cf113667c222663852ddae46700d335d9ef7d6bab7d953b4b28caeb03e960519",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-assumption-cases.json"
+      },
+      "complete-demographic-contributions.csv": {
+        "anonymously_verified": true,
+        "bytes": 201247,
+        "sha256": "048a67c16c6edec73e90029e34fea7cc4e99eea144b5eff02030e6a2b916815d",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-demographic-contributions.csv"
+      },
+      "complete-demographic-seed-cases.json": {
+        "anonymously_verified": true,
+        "bytes": 2543071,
+        "sha256": "d978bca37dacb58cd30815b8de79b6c7590c8341a6df591b81f2a32e950820ad",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-demographic-seed-cases.json"
+      },
+      "complete-modeled-flows.csv": {
+        "anonymously_verified": true,
+        "bytes": 41991,
+        "sha256": "f1ba2c0baa19a5ddfa9360618e213abfa11ace0bb1a694a7511dc41778187336",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-modeled-flows.csv"
+      },
+      "complete-result.json": {
+        "anonymously_verified": true,
+        "bytes": 4786338,
+        "sha256": "4e7fc633ebc3ecf8a1049b5c801210963029a9b2fa50672ff7e204070119dd4d",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-result.json"
+      },
+      "complete-seed-cases.json": {
+        "anonymously_verified": true,
+        "bytes": 127596,
+        "sha256": "7dd956b95b2315ef00a15ae97f626b3f5123b92945870c4c19d0e5d945d71e55",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-seed-cases.json"
+      },
+      "complete-state-mechanisms.csv": {
+        "anonymously_verified": true,
+        "bytes": 11126,
+        "sha256": "e0ff4cf2c4414095142d62a179334b694d73814b9d7b2e3a19a084c5ca7f90c8",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/complete-state-mechanisms.csv"
+      },
+      "fresh-reproduction-01.json": {
+        "anonymously_verified": true,
+        "bytes": 582,
+        "sha256": "9f411300187ed32fb40a3b553d105ca8f9fb89522cd4a350751523607941b9a2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/fresh-reproduction-01.json"
+      },
+      "fresh-reproduction-02.json": {
+        "anonymously_verified": true,
+        "bytes": 582,
+        "sha256": "9f411300187ed32fb40a3b553d105ca8f9fb89522cd4a350751523607941b9a2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/fresh-reproduction-02.json"
+      },
+      "independent-verification.json": {
+        "anonymously_verified": true,
+        "bytes": 336,
+        "sha256": "eac4e2ad34ae4503180343d9db419af19111d45706da58dc20a5e08230250979",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/independent-verification.json"
+      },
+      "manifest.json": {
+        "anonymously_verified": true,
+        "bytes": 2966,
+        "sha256": "447868733df5c60d9012522195fbe02fe18f721f324dbe919b5475d19630ea0f",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/manifest.json"
+      },
+      "package-receipt.json": {
+        "anonymously_verified": true,
+        "bytes": 855,
+        "sha256": "d869a55a38bfdb7aa7bd29cec3a3250a06b5e237ffbf556ee134cf4944021665",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/package-receipt.json"
+      },
+      "untouched-historical-transfer.json": {
+        "anonymously_verified": true,
+        "bytes": 775,
+        "sha256": "5b338a2681a62068965b49a2852f123a04a6bd3d15e2e8964a91ac8c5cf596b6",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/untouched-historical-transfer.json"
+      },
+      "viewer-data.json": {
+        "anonymously_verified": true,
+        "bytes": 1756127,
+        "sha256": "c81a9d42711000ceeb06bbe04db625a81ea98b70320f1b7ada578601d8192b6c",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-house-demographic-20261111-01/viewer-data.json"
+      }
+    },
+    "immutable": true,
+    "private_respondents_exported": false,
+    "release_id": 442345226,
+    "scientific_source_commit": "8f74ee8e4521d21142e8ee275cc154cb2bbfbd80",
+    "source_training_separate_from_return_conditioning": true,
+    "status": "passed_immutable_NORC_demographic_science",
+    "tag": "participation-norc-house-demographic-20261111-01"
+  },
+  "scientific_source_commit": "8f74ee8e4521d21142e8ee275cc154cb2bbfbd80",
+  "source_training_excludes_current_partisan_returns": true,
+  "status": "published_complete_NORC_demographic_science",
+  "validation": {
+    "current_2026_response": {
+      "known_major_party_source_log_loss": 0.4972928237474164,
+      "outcome_return_calibration_used_in_test": false,
+      "predicts_survey_responses_not_independent_population_histories": true,
+      "source_weighted_log_loss": 0.47895890965318244,
+      "source_weighted_multiclass_brier": 0.22950076386360704,
+      "state_stratified_respondent_holdout": true,
+      "test_cases": 22589,
+      "train_cases": 90431
+    },
+    "current_2026_response_without_demographics": {
+      "known_major_party_source_log_loss": 0.550591491565787,
+      "outcome_return_calibration_used_in_test": false,
+      "predicts_survey_responses_not_independent_population_histories": true,
+      "source_weighted_log_loss": 0.5479059368009784,
+      "source_weighted_multiclass_brier": 0.2595944788267139,
+      "state_stratified_respondent_holdout": true,
+      "test_cases": 22589,
+      "train_cases": 90431
+    },
+    "historical_transfer": {
+      "changing_election_type_and_residence_and_age_composition_remain": true,
+      "held_target_election_results_used_in_training": false,
+      "matched_panel": false,
+      "race_and_gender_harmonization_attempted": false,
+      "target": "AP source modeled participation/current House-response class, not validated individual histories",
+      "test_cases": 136435,
+      "training_cases": 116620,
+      "training_year": 2022,
+      "untouched_test_year": 2024,
+      "weights": "Native poll-close state weights; final-vote weights not used",
+      "with_demographics": {
+        "source_weighted_brier": 0.3596046786547033,
+        "source_weighted_log_loss": 0.7417359306955971
+      },
+      "without_demographics": {
+        "source_weighted_brier": 0.36005162991991607,
+        "source_weighted_log_loss": 0.7440894486079555
+      }
+    },
+    "house_2024_bridge": {
+      "known_major_party_source_log_loss": 0.1867432977918,
+      "outcome_return_calibration_used_in_test": false,
+      "predicts_survey_responses_not_independent_population_histories": true,
+      "source_weighted_log_loss": 0.2244446505394057,
+      "source_weighted_multiclass_brier": 0.09899594794884828,
+      "state_stratified_respondent_holdout": true,
+      "test_cases": 27268,
+      "train_cases": 109167
+    },
+    "house_2024_bridge_without_demographics": {
+      "known_major_party_source_log_loss": 0.18800738511462306,
+      "outcome_return_calibration_used_in_test": false,
+      "predicts_survey_responses_not_independent_population_histories": true,
+      "source_weighted_log_loss": 0.2252964774586414,
+      "source_weighted_multiclass_brier": 0.09892044655448982,
+      "state_stratified_respondent_holdout": true,
+      "test_cases": 27268,
+      "train_cases": 109167
+    }
+  },
+  "website_commit": "aef5122669aec680f8ff5775956f609fa2606244",
+  "website_integration_status": "verified_live"
+}

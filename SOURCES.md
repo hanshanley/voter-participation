@@ -1,6 +1,6 @@
 # Voter-participation source ledger
 
-Last reviewed: 2026-11-11 UTC.
+Last reviewed: 2026-11-12 UTC.
 
 **Start here:** [Overview](README.md) | [Estimation methods](METHODOLOGY.md) |
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| NORC-informed demographic House transitions | [Learned associations, simulation and honest prediction checks](#2026-norc-informed-demographic-house-transitions) |
 | Constraint-only flow bounds | [Aggregate-compatible gross flows](#2026-aggregate-compatible-gross-flow-bounds) |
 | Atlas-wide swing model correction | [Both-endpoint return-constrained scenarios](#2026-both-endpoint-return-constrained-transition-scenarios) |
 | Latest source-native 2026 group counts | [Louisiana early/absentee compositions](#2026-louisiana-source-native-early-group-counts-and-compositions) |
@@ -34,6 +35,67 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## 2026 NORC-informed demographic House transitions
+
+The user rejected bounds-only and count-only substitutes for the requested
+explanatory model. New science learns demographic/prior-choice associations from
+**113,020 CHEP2026** and **136,435 AP/NORC2024 positive-state-weight cases**.
+Actual joint demographic records are used privately; the old statewide synthetic
+coupling and products of separate demographic marginals are not the fitted input.
+An explicit AP2024 President/House bridge supplies latent House24 because CHEP
+recalls President24, not House24. Actual recalled House22 is used in both studies;
+forced-choice QVOTE2022S is excluded and the reversed AP/CHEP party codes handled.
+
+All **50 source states / 35 same-office endpoint reconstructions / 15 source-only
+scenarios** retain DRONU, six separate demographic partitions, all **1,600 group
+decisions**, **360 assumption cases**, **250 state seed cases** and **1,500
+demographic partition seed cases**. Switching, exit, entry/return, Other and
+unresolved contributions use exact symmetric margin accounting; net participation
+is entry plus exit. Denominator effects belong inside each mechanism. Demographic
+dimensions overlap and are not additive causes. Source disclosure holds remain.
+
+Source training excludes current partisan returns. Respondent holdout log loss
+improves **0.54790594 to 0.47895891** with demographics. The House24 bridge has
+slightly improved log loss but **slightly worse Brier**. Untouched AP2022-to2024
+response transfer improves only modestly (**0.74408945 to 0.74173593**).
+Before current-party conditioning, the 35-state margin MAE is **5.98790598 pp**;
+all prediction gaps remain model error, not another behavioral residual.
+Return matching is a separate conditional reconstruction, not validation.
+Full scores, formulas, source definitions and limitations:
+[NORC House methods](docs/NORC_HOUSE_TRANSITIONS.md).
+
+Scientific source **8f74ee8e4521d21142e8ee275cc154cb2bbfbd80**, immutable release
+**442345226**, tag `participation-norc-house-demographic-20261111-01`.
+All **16 full assets** anonymously byte/hash verified. Complete
+**17,856,244-byte / 21-member ZIP**, SHA256
+`8ec723e49df49af59b559d4835cf7846e70ac46e4e28bac7b5c2fe0a67bc7ae0`,
+contains all permitted fitted synthetic priors, eight complete outputs/every
+query, code/tests/checks and the entire accepted return-source predecessor.
+Nine focused tests, **51,712 independent checks** and two fresh blocked-network/
+external-command reproductions match all eight outputs. Public simulation
+reproduction is complete; private training requires original local files.
+No raw respondents, identifiers or private fine source cells are redistributed.
+
+**Website aef5122 is verified live**, Pages **43130276092**, actual artifact
+**13904749933**. Actual payload **996,845,969** and tar **999,434,240** bytes
+both pass the unchanged strict 1e9 limits. All **68 exact unqueried assets** and
+**436 unchanged complete-download pins** pass. Production checks match
+**3,060 new state/view/group values**, all 50 summaries, 22 options across six
+demographic dimensions and **102 actual phone/desktop pointer selections**,
+including tiny D.C. A generic invisible hit area and correct paint order improve
+selection without changing displayed geometry. No-JS, failure/checksum/retry,
+late-office isolation, 1,020 preserved Senate/governor values/126 summaries and
+48 responsive/tab layouts pass. All six production screenshots were inspected.
+Original 113 models and 113 archived return-constrained decisions remain complete.
+Acceptance and media: `data/norc-house-demographic/20261111-01/`.
+
+The existing single map has observed, switching, net participation, entry, exit,
+Other, unresolved and retained-share options with state/group controls and
+saved no-JS state summaries. All old models/downloads remain. Modeled absence is
+not confirmed staying home; entry/return is not proven first-ever voting.
+Frame size/latent affinity, residence/age/candidate availability/source-weight
+and reporting scope remain assumptions. No county/precinct allocation or new CI.
 
 ## 2026 aggregate-compatible gross-flow bounds
 
