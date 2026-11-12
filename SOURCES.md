@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Official House endpoint successor | [47 qualified comparisons; unchanged NORC fits](#2026-official-house-endpoint-successor) |
 | NORC-informed demographic House transitions | [Learned associations, simulation and honest prediction checks](#2026-norc-informed-demographic-house-transitions) |
 | Constraint-only flow bounds | [Aggregate-compatible gross flows](#2026-aggregate-compatible-gross-flow-bounds) |
 | Atlas-wide swing model correction | [Both-endpoint return-constrained scenarios](#2026-both-endpoint-return-constrained-transition-scenarios) |
@@ -36,7 +37,63 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 official House endpoint successor
+
+The official House Clerk declaring page links its complete
+[2024 congressional statistics PDF](https://clerk.house.gov/member_info/electionInfo/2024/statistics2024.pdf).
+Acquired once through the common native intake on November 12 UTC:
+608,100 bytes, 87 physical pages, SHA256
+`d4ba800fc17135b616ae556c92861080ab962d95916ace34b546c5aac824aec4`.
+The HTTP Last-Modified is March 19, 2025, not a separately established publication
+date. The compiled declaring-page HTML stays private; its safe receipt is retained.
+
+All 50 states/435 districts, 1,279 candidate-party lines and 68 excluded
+noncandidate lines are preserved. Independent pypdf6.16.0 stream-order extraction
+matches all 1,347 complete lines/1,345 numeric cells/two footnote-only counts in
+8,082 checks. All 459 literal national recap cells remain, including dot/NULL
+fields. Candidate votes plus separately excluded accounting reconcile every
+printed state parent; blank/overvote/continuing/exhausted quantities are never
+added to candidate votes. Explicit same-nominee fusion lines and mixed major-party
+affiliations are qualified without inferred coalitions. FL-20/OK-03 `(1)` values
+stay NULL; both no-ballot footnotes are independently checked.
+
+The endpoint-only successor changes 21 previously anchored baselines and adds
+12 comparisons (CT/HI/IL/IN/LA/MS/NJ/OK/RI/SD/VA/VT). **47 comparisons/three holds**:
+AK nonpartisan classification, ME unresolved ranked-choice round compatibility,
+PA missing current candidate totals. All held 2026 district controls remain
+exactly the accepted **20261107T125502Z** source snapshot, not fresh or certified
+final counts. No private survey refit, changed coefficients or local allocation.
+Only 33 changed-state cases are recalculated; the other 17 states' numerical
+fields and complete simulations are reused. The preconditioning 47-state margin
+MAE is **6.21027852 pp**, retained as error rather than a behavioral component.
+
+Source **7d691c95593714ef4e3b251b0d16c63f72a9f6e9**, immutable release **442419209**,
+tag `participation-house-clerk-norc-endpoints-20261112-01`.
+All **17 full assets** anonymously byte/hash verified. Complete
+**21,876,268-byte/32-member ZIP**, SHA256
+`fa8f548d131cdd8938d25966ca65888812eca15f800693029a6712f0a4b82cdc`,
+contains the entire accepted NORC predecessor, full PDF/native facts/receipts/
+endpoint decisions, all eight complete outputs, 432 assumptions, 250 state seeds,
+1,500 demographic partition seeds and all sufficient code/tests. Sixteen tests,
+52,216 independent numerical checks and two fresh blocked-network/external-command
+reproductions pass all eight output bytes. Public simulation reproduction uses
+the standard library; optional fresh native extraction declares PDF dependencies.
+Source fits, original release and all historical complete downloads remain intact.
+**Website 9bf7f3c is verified live**, Pages **43141953120**, actual artifact
+**13910840679**: **996,797,587 payload / 999,393,280 tar bytes**, both strictly
+below 1e9. All 68 exact unqueried production assets and 436 unchanged full-download
+pins pass. Production checks verify 3,060 state/view/group values, 102 actual
+pointer selections, all 50 summaries, six dimensions/22 options, no-JS and
+failure/checksum/retry/latest-office isolation. Preserved Senate/governor views
+pass 1,020 values/126 summaries; 48 responsive/tab layouts pass. All six actual
+production images were visually inspected. Full records/media:
+`data/house-clerk-norc-endpoints/20261112-01/`.
+
 ## 2026 NORC-informed demographic House transitions
+
+**Original November 11 version, preserved unchanged.** The endpoint-only successor
+above supersedes its return counts and observed-comparison coverage, not its
+learned source models or validation scores.
 
 The user rejected bounds-only and count-only substitutes for the requested
 explanatory model. New science learns demographic/prior-choice associations from
@@ -77,7 +134,7 @@ external-command reproductions match all eight outputs. Public simulation
 reproduction is complete; private training requires original local files.
 No raw respondents, identifiers or private fine source cells are redistributed.
 
-**Website aef5122 is verified live**, Pages **43130276092**, actual artifact
+**Original website aef5122 was verified live**, Pages **43130276092**, actual artifact
 **13904749933**. Actual payload **996,845,969** and tar **999,434,240** bytes
 both pass the unchanged strict 1e9 limits. All **68 exact unqueried assets** and
 **436 unchanged complete-download pins** pass. Production checks match

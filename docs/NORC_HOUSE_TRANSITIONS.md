@@ -5,6 +5,10 @@ Other-party choice and unresolved answers can account for state House margin
 changes. It is an assumption-dependent explanation, not identified voter histories
 or a causal effect. Moving from R+4 to D+12 is a +16 margin-point change.
 
+The endpoint-only successor uses the official House Clerk 2024 baseline and the
+unchanged November 7, 2026 current-source snapshot. It does not refit NORC.
+The original November 11 release remains available unchanged.
+
 ## What is learned
 
 Regularized multinomial models use state effects and interactions of previous
@@ -49,16 +53,38 @@ historical transfer improves only modestly. Predicting source likely-voter class
 is not independently predicting completed voting.
 
 A separate state prediction uses previous House counts and current total
-candidate-vote volume, but not the current party split. Across 35 comparable
-states its margin MAE is **5.98790598 points**. Texas projects R+5.2075 versus
-held D+5.7080, a +10.9155-point error. Every state error is retained as model
+candidate-vote volume, but not the current party split. Across 47 comparable
+states its margin MAE is **6.21027852 points**. Texas projects R+4.5299 versus
+held D+5.7080, a +10.2379-point error. Every state error is retained as model
 error, never assigned to another behavioral component.
 
 ## Conditional reconstruction and exact demographic accounting
 
-Thirty-five states have qualified held 2024/2026 same-office endpoints.
-Fifteen retain source-only scenarios and unavailable observed comparisons.
+Forty-seven states have qualified held 2024/2026 same-office endpoints.
+Three retain source-only scenarios and unavailable observed comparisons:
+Alaska's leading current non-Republican nominee is explicitly Nonpartisan,
+Maine's cross-year ranked-choice round compatibility is unresolved, and
+Pennsylvania has missing current candidate totals.
 D.C. has no CHEP sample. None receives an invented recorded baseline.
+
+The complete official House Clerk 2024 PDF supplies all 50 states/435 districts.
+Its 1,279 candidate-party lines and 68 separate noncandidate accounting lines
+were checked with a second PDF engine: 1,347 complete lines, 1,345 numeric cells,
+two footnote-only counts and 8,082 checks. Blank, overvote, continuing and
+exhausted quantities are not candidate votes; the 1,546,879 excluded accounting
+units are not an extra voting population. Explicit same-nominee fusion lines
+are combined, including Connecticut; Vermont's explicitly Republican/Libertarian
+nominee is Republican-affiliated without inferred caucus or coalition assignment.
+FL-20/OK-03 `(1)` counts remain NULL, not zero. The source notes explain that
+unopposed names are not printed on the ballot; reported state count sums remain
+separate from any invented count for those nominees.
+
+Twenty-one previously anchored baselines change and twelve comparisons are
+newly anchored. Only those 33 states are recalculated. All numerical fields
+and complete assumption/seed cases in the other 17 states are reused exactly.
+The entire accepted predecessor and current native district controls remain
+unchanged. These are frozen reported candidate counts, not updated November 12
+counts, certified final totals, ballots or a measured turnout denominator.
 
 Common row/column multipliers constrain each state's synthetic prior to its
 recorded D/R/Other endpoints; those same multipliers apply to each demographic
@@ -82,7 +108,7 @@ separately partition their state. Different dimensions overlap and must not be
 added. Native disclosure/complementary holds remain; an opaque synthetic
 remainder completes each partition without publishing withheld source groups.
 
-Three frame scales (0.8/1/1.2) and three latent affinities (0.5/1/2) give 360
+Three frame scales (0.8/1/1.2) and three latent affinities (0.5/1/2) give 432
 assumption cases. There are 250 overall seed cases (2.5 million draws) and 1,500
 alternate demographic-partition seed cases (15 million draws), not that many
 distinct people. Monte Carlo variation is not source/design uncertainty, and
@@ -96,7 +122,7 @@ held comparisons, not independently established behavioral percentages.
 
 | State | Total change | Switching | Net participation | Other | Unresolved |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Texas | +25.16 | +14.50 | +9.15 | +0.41 | +1.10 |
+| Texas | +23.95 | +13.94 | +8.59 | +0.39 | +1.03 |
 | Minnesota | +11.96 | +7.16 | +4.06 | +0.33 | +0.41 |
 
 Units are D/R margin points. Unrounded counts determine the change, so subtracting
@@ -111,16 +137,18 @@ model is allocated to counties or precincts.
 The full scientific download contains permitted fitted synthetic priors, all eight
 complete outputs, every state/group/flow/assumption/seed query, code, tests,
 independent checks and the entire accepted return-source predecessor.
+The successor also includes the full official PDF, native facts and exclusions,
+all 50 endpoint decisions and exact old/new baseline comparisons.
 Public simulation reproduction is complete and standard-library-only:
 
 ```sh
-python3 -Werror code/scripts/reproduce_norc_house_model.py \
+python3 -Werror code/scripts/reproduce_norc_house_endpoints.py \
   --package . --output /fresh/output/path
 ```
 
 Python3.9 is the reference byte-reproduction toolchain. Two fresh network- and
-external-command-blocked reproductions match all eight outputs; nine tests and
-51,712 independent endpoint/rational-accounting/demographic checks pass.
+external-command-blocked reproductions match all eight outputs; sixteen tests and
+52,216 independent endpoint/rational-accounting/demographic checks pass.
 Private model-training reproduction requires the original user-supplied local
 survey files and disclosure policy. Raw respondents, identifiers and private fine
 source cells are not published or uploaded to CI.

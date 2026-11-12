@@ -43,6 +43,32 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **CURRENT USER PRIORITY: NORC-informed demographic House explanation.**
+The official House endpoint successor is scientifically complete, release
+**442419209**, source **7d691c95593714ef4e3b251b0d16c63f72a9f6e9**.
+It gives **47 recorded-endpoint reconstructions/three source scenarios**,
+corrects 21 previously anchored 2024 baselines and adds 12 state comparisons
+without refitting NORC or changing the frozen November 7 current controls.
+Only 33 changed-state cases are recalculated; 17 states' numerics and full
+simulation inventories are reused. All 17 full assets are anonymously verified;
+the complete 21,876,268-byte/32-member ZIP includes the official 608,100-byte
+House Clerk PDF, all native facts/exclusions, all 50 decisions, entire accepted
+predecessor, source/tests and every query. Sixteen tests, 8,082 independent native
+checks, 52,216 independent numerical checks and two fresh offline reproductions
+pass. The 47-state preconditioning margin MAE is 6.21027852 points; it remains
+model error, not another behavioral component.
+
+**Successor delivered and verified live: website 9bf7f3c**, Pages43141953120,
+actual artifact13910840679. Native996797587payload/999393280tar bytes pass both
+strict1e9 caps;68 exact unqueried production assets/436 unchanged full-download
+pins pass. Production3060map/group values/102actualpointer clicks/all50summaries/
+sixdimensions22options/noJS/fault/checksum/retry/latest-office isolation pass.
+Preserved Senate/governor1020values/126summaries and48responsive/tab layouts pass.
+All six production images inspected; full records/media are in
+data/house-clerk-norc-endpoints/20261112-01. Reader25tests/Astro/build4tests pass.
+Do not refit, reacquire, reproduce, rebuild or re-audit this accepted increment
+merely for activity. The three concrete evidence holds below remain open.
+
+**Original accepted increment, preserved rather than recomputed:**
 The actual learned model and complete science are now published, not replaced by
 another bounds/arithmetic-only product. Science **442345226** contains 50 states,
 35 recorded-endpoint reconstructions/15 source scenarios, 1,600 demographic
@@ -58,7 +84,7 @@ slightly worsens and before-conditioning 35-state margin MAE is 5.99 points.
 Do not hide those errors, assign them to another mechanism or describe endpoint
 matching as validation. Private respondents/fine cells stay local.
 
-**Delivered and verified live: website aef5122**, Pages43130276092/artifact13904749933.
+**Original verified deployment: website aef5122**, Pages43130276092/artifact13904749933.
 One map has all eight House views, six demographic dimensions/22 options,
 retained-choice flows, separate model errors and stronger selected outlines.
 Actual payload996845969/tar999434240 are both below strict1e9;68 exact unqueried
@@ -69,12 +95,13 @@ Original113models/113archived decisions and Senate/governor behavior remain.
 Science, code, complete downloads and live model are done for this increment.
 Do not refit, reacquire, reproduce, rebuild or re-audit them merely for activity.
 
-**Remaining evidence, not a coding hold:** fifteen observed House comparisons
-remain unavailable: AK, CT, HI, IL, IN, LA, ME, MS, NJ, OK, PA, RI, SD, VA, VT.
+**Remaining evidence, not a coding hold:** three observed House comparisons
+remain unavailable: AK, ME, PA.
 Their full source scenarios and reasons are retained, never observed zeros.
-Most lack complete qualified paired candidate counts; CT/SD have reference
-inventory differences, PA omits current candidate controls, RI conflicts with
-current district controls and VT lacks a D/R contest at both endpoints.
+AK's leading current non-Republican nominee is explicitly Nonpartisan, not a
+Democrat; ME has unresolved cross-year ranked-choice round compatibility;
+PA omits current candidate controls. The former twelve additional holds are
+resolved by complete native candidate endpoints, not partial county sums.
 Prefer already-held qualified state/district endpoints or genuinely new permitted
 corrections; do not infer them from partial county sums or borrow another office.
 Stronger independent linked-choice/participation validation and source-justified

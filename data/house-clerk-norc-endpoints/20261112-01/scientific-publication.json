@@ -1,0 +1,213 @@
+{
+  "assets": {
+    "checksums.json": {
+      "anonymously_verified": true,
+      "bytes": 2240,
+      "sha256": "c10e1c44fc2cd8573ae551a6a891453669d1f47dcc7d81fb9197ea25db0db721",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymously_verified": true,
+      "bytes": 21876268,
+      "sha256": "fa8f548d131cdd8938d25966ca65888812eca15f800693029a6712f0a4b82cdc",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/complete-analysis.zip"
+    },
+    "complete-assumption-cases.json": {
+      "anonymously_verified": true,
+      "bytes": 431179,
+      "sha256": "d10978e3ec40568d0cfca392ae34523a80b3966770c4499bdd82d03b8d64eb0a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/complete-assumption-cases.json"
+    },
+    "complete-demographic-contributions.csv": {
+      "anonymously_verified": true,
+      "bytes": 201023,
+      "sha256": "0e0231239ed79e3fc8d6c0c76e1eac4908ac32a7401a047ad95b068713c01540",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/complete-demographic-contributions.csv"
+    },
+    "complete-demographic-seed-cases.json": {
+      "anonymously_verified": true,
+      "bytes": 2541610,
+      "sha256": "2fc9ae37b5a5cd34e6ab8bd8b320e4262890d6b640336c6ccbd06e02ff2d7482",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/complete-demographic-seed-cases.json"
+    },
+    "complete-modeled-flows.csv": {
+      "anonymously_verified": true,
+      "bytes": 41781,
+      "sha256": "ddd8cb1a39ca3693a4f2bdc549a2d20a98a6824c44f84d2c1508e21ff0d0e461",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/complete-modeled-flows.csv"
+    },
+    "complete-result.json": {
+      "anonymously_verified": true,
+      "bytes": 5004893,
+      "sha256": "cef62e1fc61a11e8f6487928aa0fe8d7a76f0556324b2457f919df01b1f0b47e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/complete-result.json"
+    },
+    "complete-seed-cases.json": {
+      "anonymously_verified": true,
+      "bytes": 127529,
+      "sha256": "ce679247ecd8ffdd01ee0980702225cd7725f83e13fb43b2077649530bd563bc",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/complete-seed-cases.json"
+    },
+    "complete-state-mechanisms.csv": {
+      "anonymously_verified": true,
+      "bytes": 10951,
+      "sha256": "ed87bc3b69c2dee0ddb47c07b83e9a0a6d68bcc45fe8a71d64c38c85f1ef1aff",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/complete-state-mechanisms.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "anonymously_verified": true,
+      "bytes": 1231,
+      "sha256": "388ca3e6135bbfded159d5673de1e58a015e0dd89d6d1a03db9b7e7a34285ecf",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "anonymously_verified": true,
+      "bytes": 1231,
+      "sha256": "388ca3e6135bbfded159d5673de1e58a015e0dd89d6d1a03db9b7e7a34285ecf",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/fresh-reproduction-02.json"
+    },
+    "independent-verification.json": {
+      "anonymously_verified": true,
+      "bytes": 336,
+      "sha256": "5ed9302ccb7adc246d275a6e5f61912fc6846d5c4f2c005c66e097f2e3f42ad3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/independent-verification.json"
+    },
+    "manifest.json": {
+      "anonymously_verified": true,
+      "bytes": 4284,
+      "sha256": "de50cce42d2268bb2243b90371228caf69485320c93c20ff33020946c5cc845f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/manifest.json"
+    },
+    "package-receipt.json": {
+      "anonymously_verified": true,
+      "bytes": 1491,
+      "sha256": "7778513c762eecd2dd12610369895236d30ffd3034440b14813a4f2e4a413441",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/package-receipt.json"
+    },
+    "source-no-ballot-footnotes.json": {
+      "anonymously_verified": true,
+      "bytes": 779,
+      "sha256": "ff82525b109dea7dd523c055be680862248b76e212f106171df24e180aea8f18",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/source-no-ballot-footnotes.json"
+    },
+    "unchanged-state-reuse.json": {
+      "anonymously_verified": true,
+      "bytes": 596,
+      "sha256": "566ee8baedeece0d302c1649928f5462e364ec31de5237cb2ee17718414d08eb",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/unchanged-state-reuse.json"
+    },
+    "viewer-data.json": {
+      "anonymously_verified": true,
+      "bytes": 1904491,
+      "sha256": "8ad1c3e16be3bb789fcbf76ffb9f3de196ac7a98ebf13b9ec1243575fead886b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-clerk-norc-endpoints-20261112-01/viewer-data.json"
+    }
+  },
+  "broader_project_complete": false,
+  "immutable": true,
+  "package": {
+    "archive_bytes": 21876268,
+    "archive_sha256": "fa8f548d131cdd8938d25966ca65888812eca15f800693029a6712f0a4b82cdc",
+    "independent": {
+      "assumption_cases": 432,
+      "checks": 52216,
+      "complete_demographic_decisions": 1600,
+      "demographic_partition_seed_cases": 1500,
+      "population_validation_claimed": false,
+      "return_anchored_states": 47,
+      "source_individual_histories_identified": false,
+      "states": 50,
+      "status": "passed_independent_NORC_endpoints_rational_accounting_and_demographic_simulations"
+    },
+    "members": 32,
+    "private_raw_respondents_exported": false,
+    "reuse": {
+      "current_source_controls_changed": false,
+      "newly_anchored_states": [
+        "CT",
+        "HI",
+        "IL",
+        "IN",
+        "LA",
+        "MS",
+        "NJ",
+        "OK",
+        "RI",
+        "SD",
+        "VA",
+        "VT"
+      ],
+      "preserved_cases": {
+        "complete_assumption_cases": 135,
+        "complete_demographic_seed_cases": 510,
+        "complete_seed_cases": 85
+      },
+      "revised_previously_anchored_baselines": [
+        "AR",
+        "AZ",
+        "CA",
+        "CO",
+        "FL",
+        "GA",
+        "KS",
+        "KY",
+        "MI",
+        "MO",
+        "MT",
+        "NC",
+        "NM",
+        "NV",
+        "NY",
+        "OH",
+        "OR",
+        "TX",
+        "UT",
+        "WA",
+        "WV"
+      ],
+      "source_models_refitted": false,
+      "status": "passed_unchanged_state_numerics_and_full_simulation_reuse",
+      "unchanged_states": [
+        "AK",
+        "AL",
+        "DE",
+        "IA",
+        "ID",
+        "MA",
+        "MD",
+        "ME",
+        "MN",
+        "ND",
+        "NE",
+        "NH",
+        "PA",
+        "SC",
+        "TN",
+        "WI",
+        "WY"
+      ]
+    },
+    "source_commit": "7d691c95593714ef4e3b251b0d16c63f72a9f6e9",
+    "source_models_refitted": false,
+    "status": "complete_NORC_House_endpoint_successor_package",
+    "summary": {
+      "assumption_cases": 432,
+      "complete_group_decisions": 1600,
+      "demographic_partition_agent_draws": 15000000,
+      "demographic_partition_seed_cases": 1500,
+      "return_anchored": 47,
+      "seeds": 250,
+      "states": 50,
+      "synthetic_agents": 2500000
+    }
+  },
+  "private_raw_respondents_exported": false,
+  "release_id": 442419209,
+  "scientific_source_commit": "7d691c95593714ef4e3b251b0d16c63f72a9f6e9",
+  "source_models_refitted": false,
+  "status": "passed_immutable_complete_House_endpoint_successor",
+  "tag": "participation-house-clerk-norc-endpoints-20261112-01",
+  "website_acceptance": "website-acceptance.json",
+  "website_commit": "9bf7f3c10f05a311aa96af6b47cc46c2ab3eb68a",
+  "website_integration_status": "verified_live"
+}
