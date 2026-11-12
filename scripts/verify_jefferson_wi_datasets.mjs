@@ -65,6 +65,7 @@ for(const row of table.records){
   same(row.properties.ballots,row.observation.count.value);
   same(row.observation.view.unit,row.properties.precinct);
   same(row.observation.view.unit_kind,row.properties.reporting_unit_kind);
+  assert.ok(row.observation.view.review_id&&row.observation.view.source_reporting_label);checks++;
   same(row.properties.reported_pct,null);
   same(row.observation.denominator.qualified,false);
   names.add(row.properties.precinct);

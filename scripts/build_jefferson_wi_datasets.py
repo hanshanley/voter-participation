@@ -9,7 +9,7 @@ from pathlib import Path
 
 from review_jefferson_wi_participation import encoded
 
-TAG = "participation-wisconsin-jefferson-counts-20261112-02"
+TAG = "participation-wisconsin-jefferson-counts-20261112-03"
 RELEASE = "https://github.com/hanshanley/margin_of_error/releases/download/"+TAG+"/"
 MODES = ("available", "official", "uf_vep", "uf_vap")
 
@@ -49,6 +49,8 @@ def build(query, accepted_counts, accepted_native, original_reference):
         "The literal source clock has no declared timezone; no UTC, receipt-clock or election-day-registration adjustment is substituted.",
     ]
     base = dict(year=2026, state_code="WI", county="Jefferson County", county_id=county_id,
+        review_id="jefferson-wi-20261112-03",
+        source_reporting_label="Native report: 32 of 32 for 100%; single-machine disclaimer retained.",
         county_fips="55055", source_url=query["source_url"], source_update_label=query["source_update_label"],
         source_update_timezone=None, source_mode="source_defined_native_report",
         source_status_literal="Native Official Results header; unofficial-until-canvass and machine-completeness disclaimers retained",
