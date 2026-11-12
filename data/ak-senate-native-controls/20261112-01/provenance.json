@@ -1,0 +1,10 @@
+{
+  "bytes": 59314,
+  "headers_excluded": true,
+  "research_start_main": "1ca039e7a3721af49128ae02236079cef93aa566",
+  "retrieved_at_utc": "2026-11-08T01:42:10.830964+00:00",
+  "sha256": "3289bf5f9b24d2b1d4f666ad4b8d2375aa377effca990118fa4fa24ba979d4c5",
+  "source_reacquired": false,
+  "status": 200,
+  "url": "https://civicapi.org/api/v2/race/86916"
+}

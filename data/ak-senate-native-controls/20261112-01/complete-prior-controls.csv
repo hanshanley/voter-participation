@@ -1,0 +1,235 @@
+provider,state,candidate,party,native_state_votes,selected_county_equivalent_votes,county_minus_state,native_round,native_updated,ak_noncounty_units_not_summed,native_explicit_unlocated_units,native_explicit_unlocated_votes,county_plus_explicit_unlocated_minus_state
+civic,AK,Mary Peltola,Democratic,103171,,,1,2026-11-08T01:37:46.780Z,True,0,,
+civic,AK,Dan Sullivan,Republican,102617,,,1,2026-11-08T01:37:46.780Z,True,0,,
+civic,AK,Gerald L. Heikes,Republican,4851,,,1,2026-11-08T01:37:46.780Z,True,0,,
+civic,AK,Daniel J. Jr. Sullivan,Nonpartisan,3607,,,1,2026-11-08T01:37:46.780Z,True,0,,
+civic,AL,Barry Moore,Republican,917347,917347,0,1,2026-11-08T01:20:41.860Z,False,0,0,0
+civic,AL,Everett Wess,Democratic,759336,759336,0,1,2026-11-08T01:20:41.860Z,False,0,0,0
+civic,AR,Tom Cotton,Republican,480800,480800,0,1,2026-11-07T14:08:58.174Z,False,0,0,0
+civic,AR,Hallie Shoffner,Democratic,375823,375823,0,1,2026-11-07T14:08:58.174Z,False,0,0,0
+civic,AR,Jeff Wadlin,Libertarian,29488,29488,0,1,2026-11-07T14:08:58.174Z,False,0,0,0
+civic,CO,John Hickenlooper,Democratic,1609163,1609163,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,CO,Mark Baisley,Republican,932741,932741,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,CO,Bob Chew,Forward,70049,70049,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,CO,Blake Huber,Libertarian,32507,32507,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,CO,Adam Withrow,Unity,13409,13409,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,CO,Christopher Baum,Approval Voting,4184,4184,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,CO,Donald Willoughby,Write-In,0,0,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,CO,Will Powers,Write-In,0,0,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,CO,Ryan Apelbaum,Write-In,0,0,0,1,2026-11-08T01:31:15.505Z,False,0,0,0
+civic,DE,Chris Coons,Democratic,240347,240347,0,1,2026-11-08T01:40:16.084Z,False,0,0,0
+civic,DE,"Michael ""Dr. Mike"" Katz",Republican,137764,137764,0,1,2026-11-08T01:40:16.084Z,False,0,0,0
+civic,FL,Ashley Moody,Republican,4211455,4211455,0,1,2026-11-08T01:11:15.787Z,False,0,0,0
+civic,FL,Angie Nixon,Democratic,3974148,3974148,0,1,2026-11-08T01:11:15.787Z,False,0,0,0
+civic,FL,Neil J. Gillespie,Independent,94665,94665,0,1,2026-11-08T01:11:15.787Z,False,0,0,0
+civic,GA,Jon Ossoff,Democratic,2466695,2466695,0,1,2026-11-08T01:27:25.836Z,False,0,0,0
+civic,GA,Mike Collins,Republican,1712587,1712587,0,1,2026-11-08T01:27:25.836Z,False,0,0,0
+civic,IA,Josh Turek,Democratic,686486,686486,0,1,2026-11-08T01:38:42.789Z,False,0,0,0
+civic,IA,Ashley Hinson,Republican,630615,630615,0,1,2026-11-08T01:38:42.789Z,False,0,0,0
+civic,IA,Thomas Laehn,Libertarian,42052,42052,0,1,2026-11-08T01:38:42.789Z,False,0,0,0
+civic,IA,Write-in,Nonpartisan,1686,1686,0,1,2026-11-08T01:38:42.789Z,False,0,0,0
+civic,ID,Jim Risch,Republican,401778,401778,0,1,2026-11-08T01:14:33.590Z,False,0,0,0
+civic,ID,Todd Achilles,Independent,238342,238342,0,1,2026-11-08T01:14:33.590Z,False,0,0,0
+civic,ID,Natalie M Fleming,Independent,49928,49928,0,1,2026-11-08T01:14:33.590Z,False,0,0,0
+civic,ID,Matt Loesby,Libertarian,20676,20676,0,1,2026-11-08T01:14:33.590Z,False,0,0,0
+civic,IL,Juliana Stratton,Democratic,2501456,2501456,0,1,2026-11-08T01:34:30.399Z,False,0,0,0
+civic,IL,Don Tracy,Republican,1510968,1510968,0,1,2026-11-08T01:34:30.399Z,False,0,0,0
+civic,IL,Whitfield Harrington Jr.,American Center Party,64555,64555,0,1,2026-11-08T01:34:30.399Z,False,0,0,0
+civic,KS,Adam Hamilton,Democratic,561143,561143,0,1,2026-11-08T01:20:08.132Z,False,0,0,0
+civic,KS,Roger Marshall,Republican,505558,505558,0,1,2026-11-08T01:20:08.132Z,False,0,0,0
+civic,KS,David C Graham,Libertarian,33195,33195,0,1,2026-11-08T01:20:08.132Z,False,0,0,0
+civic,KY,Andy Barr,Republican,784000,784000,0,1,2026-11-08T01:28:57.249Z,False,0,0,0
+civic,KY,Charles Booker,Democratic,611987,611987,0,1,2026-11-08T01:28:57.249Z,False,0,0,0
+civic,KY,Christopher Campbell,Kentucky Party,29876,29876,0,1,2026-11-08T01:28:57.249Z,False,0,0,0
+civic,KY,Write-in,Nonpartisan,22,22,0,1,2026-11-08T01:28:57.249Z,False,0,0,0
+civic,LA,Julia Letlow,Republican,745961,745961,0,1,2026-11-08T01:41:35.472Z,False,0,0,0
+civic,LA,Jamie Davis,Democratic,720111,720111,0,1,2026-11-08T01:41:35.472Z,False,0,0,0
+civic,MA,Edward J. Markey,Democratic,1650772,1650772,0,1,2026-11-08T01:20:21.480Z,False,0,0,0
+civic,MA,John Deaton,Republican,837152,837152,0,1,2026-11-08T01:20:21.480Z,False,0,0,0
+civic,MA,Shiva Ayyadurai,Independent,59837,59837,0,1,2026-11-08T01:20:21.480Z,False,0,0,0
+civic,MA,Joe Tache,Socialism and Liberation,56530,56530,0,1,2026-11-08T01:20:21.480Z,False,0,0,0
+civic,ME,Troy Jackson,Democratic,376070,376070,0,1,2026-11-08T01:40:42.034Z,False,0,0,0
+civic,ME,Susan Collins,Republican,332803,332803,0,1,2026-11-08T01:40:42.034Z,False,0,0,0
+civic,ME,Write-in,Nonpartisan,882,0,-882,1,2026-11-08T01:40:42.034Z,False,0,0,-882
+civic,MI,Abdul El-Sayed,Democratic,2506953,2506953,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Mike Rogers,Republican,2172463,2172463,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Lydia Christensen,Libertarian,49503,49503,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Tim Long,U.S. Taxpayers,26409,26409,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Douglas P. Marsh,Green,12504,12504,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Walter P. Kristy,Natural Law,7226,7226,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Write-in,Nonpartisan,3612,3612,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Craig HenleyJohnson,Nonpartisan,0,0,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Robert Trevor-Blair Davis,Write-In,0,0,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,George Earnest Huffman,Write-In,0,0,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Craig Henley Johnson II,Write-In,0,0,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MI,Daniel Varney Tamba Pawa,Write-In,0,0,0,1,2026-11-08T01:28:16.852Z,False,0,0,0
+civic,MN,Peggy Flanagan,Democratic,1520571,1520571,0,1,2026-11-08T01:39:04.612Z,False,0,0,0
+civic,MN,Michele Tafoya,Republican,1233465,1233465,0,1,2026-11-08T01:39:04.612Z,False,0,0,0
+civic,MN,Marisa Simonetti,Independent,41565,41565,0,1,2026-11-08T01:39:04.612Z,False,0,0,0
+civic,MN,Rebecca Whiting,Libertarian,32471,32471,0,1,2026-11-08T01:39:04.612Z,False,0,0,0
+civic,MN,Write-in,Nonpartisan,3346,3346,0,1,2026-11-08T01:39:04.612Z,False,0,0,0
+civic,MS,Scott Colom,Democratic,468032,468032,0,1,2026-11-08T01:41:02.005Z,False,0,0,0
+civic,MS,Cindy Hyde-Smith,Republican,465387,465387,0,1,2026-11-08T01:41:02.005Z,False,0,0,0
+civic,MS,Ty Pinkins,Independent,20044,20044,0,1,2026-11-08T01:41:02.005Z,False,0,0,0
+civic,MT,Kurt Alme,Republican,232916,232916,0,1,2026-11-08T01:21:09.438Z,False,0,0,0
+civic,MT,Seth Bodnar,Independent,181674,181674,0,1,2026-11-08T01:21:09.438Z,False,0,0,0
+civic,MT,Alani Bankhead,Democratic,58555,58555,0,1,2026-11-08T01:21:09.438Z,False,0,0,0
+civic,MT,Kyle Austin,Libertarian,8869,8869,0,1,2026-11-08T01:21:09.438Z,False,0,0,0
+civic,NC,Roy Cooper,Democratic,2467972,2467972,0,1,2026-11-08T01:26:52.633Z,False,0,0,0
+civic,NC,Michael Whatley,Republican,1643114,1643114,0,1,2026-11-08T01:26:52.633Z,False,0,0,0
+civic,NC,Shannon Bray,Libertarian,55727,55727,0,1,2026-11-08T01:26:52.633Z,False,0,0,0
+civic,NC,Michael Dublin,Green,36405,36405,0,1,2026-11-08T01:26:52.633Z,False,0,0,0
+civic,NE,Pete  Ricketts,Republican,378244,378244,0,1,2026-11-08T01:32:08.307Z,False,0,0,0
+civic,NE,Dan  Osborn,Independent,331250,331250,0,1,2026-11-08T01:32:08.307Z,False,0,0,0
+civic,NE,Robin  Richards,Nebraska Working People,19541,19541,0,1,2026-11-08T01:32:08.307Z,False,0,0,0
+civic,NE,Mike  Marvin,Legal Marijuana Now,16238,16238,0,1,2026-11-08T01:32:08.307Z,False,0,0,0
+civic,NE,Chuck  Conboy,America First,9094,9094,0,1,2026-11-08T01:32:08.307Z,False,0,0,0
+civic,NH,Chris Pappas,Democratic,355898,355898,0,1,2026-11-08T01:10:23.671Z,False,0,0,0
+civic,NH,John E. Sununu,Republican,268559,268559,0,1,2026-11-08T01:10:23.671Z,False,0,0,0
+civic,NH,Edmond Laplante,Constitution,12089,12089,0,1,2026-11-08T01:10:23.671Z,False,0,0,0
+civic,NH,Write-in,Nonpartisan,778,778,0,1,2026-11-08T01:10:23.671Z,False,0,0,0
+civic,NJ,Cory Booker,Democratic,1824530,1824530,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Justin Murphy,Republican,1024195,1024195,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Veronica Fernandez,Independent,48444,48444,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Joanne Kuniansky,Socialist Workers,27459,27459,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Write-in,Nonpartisan,3304,3304,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Edwardo Castillo,Write-In,4,4,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Eduardo Castillo,Independent,3,3,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Andrew Brake,Independent,2,2,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Thomas Massie,Write-In,2,2,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Adam Sheridan,Write-In,2,2,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Lily Benavides,Write-In,2,2,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Hind Rajab,Write-In,2,2,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Hasan Piker,Write-In,2,2,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Eduardo Castille,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Geoff Rickly,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Nova Piatt,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Edward Smith,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Johnathan Porter Aka Blue,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Ai Dan,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Hugh Jass,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Evan Pustizzi,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Jeremy Wilford,Independent,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Gary Stout,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Heier,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Someone From Out of State,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,William Hunt,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Andy Kim,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Bryce Harper,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Richard tabor,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Free Palestine,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Fred Porter,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,God,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Loretta Kelly,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Emily Wallace,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,optimus prime,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Clifford P. Case,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Jeff Van Drew,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Scott Frost,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Katie Bansil,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Lucca Lima,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Michael Clay,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Death to Isreal,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Frank Pallone,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Mr. Potato Head,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Steven P Naphy,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Analia Mejia,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Laura Fitzgerald,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Dominic Serrentino,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Undecided,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Joseph D. Quinn II,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,John Garza,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Dan A. Dewey,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Nurul Mukul,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Leah O'Leary,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Ayishat Akanbi,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,William Curtin,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Tellirico,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Tessa Tabor,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Mario Walker,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Carole Melman,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Patricia Niculescu,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Mom,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Seamus O'toole,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Nancy Berkley,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Troy Green,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Chris Fields,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Robert Bockius,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Yeat,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Elmo,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Mickey Mouse,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Uncommitted,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Melissa Knezick,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Adam Hamway,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Steven Knezick,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Tom Knezick,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,No One,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,They All Suck,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Ian Grimes,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Steven Trembly,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Terry Sadie and Fatty,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Murphy,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Abdul El-Sayed,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Zohran Mamdani,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Bruno Pereira,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Abdul Malik Al Houthi,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Mitchell Brown,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Daryl Murray,Write-In,1,1,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NJ,Shawn Riggins,Independent,0,0,0,1,2026-11-08T01:35:06.880Z,False,0,0,0
+civic,NM,Ben Ray Luján,Democratic,458756,458756,0,1,2026-11-08T01:16:18.076Z,False,0,0,0
+civic,NM,Larry Marker,Republican,266434,266434,0,1,2026-11-08T01:16:18.076Z,False,0,0,0
+civic,OH,Sherrod Brown,Democratic,2301042,2301042,0,1,2026-11-08T01:20:17.239Z,False,0,0,0
+civic,OH,Jon Husted,Republican,2077748,2077748,0,1,2026-11-08T01:20:17.239Z,False,0,0,0
+civic,OH,William B. Redpath,Libertarian,128272,128272,0,1,2026-11-08T01:20:17.239Z,False,0,0,0
+civic,OH,Greg Levy,Other Party,94509,94509,0,1,2026-11-08T01:20:17.239Z,False,0,0,0
+civic,OH,Stephen Faris,Write-In,291,291,0,1,2026-11-08T01:20:17.239Z,False,0,0,0
+civic,OH,Anthony Holliman,Write-In,36,36,0,1,2026-11-08T01:20:17.239Z,False,0,0,0
+civic,OH,Timothy Telymonde,Write-In,27,27,0,1,2026-11-08T01:20:17.239Z,False,0,0,0
+civic,OK,Kevin Hern,Republican,639510,639510,0,1,2026-11-08T01:16:20.146Z,False,0,0,0
+civic,OK,N'Kiyla Jasmine Thomas,Democratic,439109,439109,0,1,2026-11-08T01:16:20.146Z,False,0,0,0
+civic,OK,Curtis Stinnett,Independent,14622,14622,0,1,2026-11-08T01:16:20.146Z,False,0,0,0
+civic,OK,Ron Meinhardt,Independent,14492,14492,0,1,2026-11-08T01:16:20.146Z,False,0,0,0
+civic,OK,Sevier White,Libertarian,10199,10199,0,1,2026-11-08T01:16:20.146Z,False,0,0,0
+civic,OR,Jeff Merkley,Democratic,1081731,1081731,0,1,2026-11-08T01:28:49.749Z,False,0,0,0
+civic,OR,David Brock Smith,Republican,719926,719926,0,1,2026-11-08T01:28:49.749Z,False,0,0,0
+civic,OR,Chris Henry,Progressive,40659,40659,0,1,2026-11-08T01:28:49.749Z,False,0,0,0
+civic,OR,Gary Lyndon Dye,Libertarian,18529,18529,0,1,2026-11-08T01:28:49.749Z,False,0,0,0
+civic,OR,Write-in,Nonpartisan,1439,1439,0,1,2026-11-08T01:28:49.749Z,False,0,0,0
+civic,RI,John F. Reed,Democratic,240069,239339,-730,1,2026-11-08T01:18:35.974Z,False,1,730,0
+civic,RI,Raymond T. McKay,Republican,105346,105333,-13,1,2026-11-08T01:18:35.974Z,False,1,13,0
+civic,RI,Michael Bahry,Independent,13536,13528,-8,1,2026-11-08T01:18:35.974Z,False,1,8,0
+civic,RI,Write-in,Nonpartisan,694,690,-4,1,2026-11-08T01:18:35.974Z,False,1,4,0
+civic,SC,Annie Andrews,Democratic,1043744,1043744,0,1,2026-11-08T01:40:45.993Z,False,0,0,0
+civic,SC,Darline Graham,Republican,952013,952013,0,1,2026-11-08T01:40:45.993Z,False,0,0,0
+civic,SC,Kasie Whitener,Libertarian,23597,23597,0,1,2026-11-08T01:40:45.993Z,False,0,0,0
+civic,SC,Mark Hackett,Constitution,16820,16820,0,1,2026-11-08T01:40:45.993Z,False,0,0,0
+civic,SC,Write-in,Nonpartisan,4899,4899,0,1,2026-11-08T01:40:45.993Z,False,0,0,0
+civic,SD,Mike Rounds,Republican,184589,184589,0,1,2026-11-08T01:13:36.455Z,False,0,0,0
+civic,SD,Brian Bengs,Independent,120513,120513,0,1,2026-11-08T01:13:36.455Z,False,0,0,0
+civic,TN,Bill Hagerty,Republican,1138457,1138457,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,Marquita Bradshaw,Democratic,886974,886974,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,Robert Jones,Independent,9398,9398,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,Tharon Chandler,Independent,7689,7689,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,Andrew Gerena,Independent,5633,5633,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,"Catherine Barcel ""Barcy"" Whitson",Independent,5113,5113,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,Jeremy Dean Hearn,Independent,4937,4937,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,"David Sutman, Jr.",Independent,3087,3087,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,Yoshi D. Matthews,Independent,3026,3026,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TN,James William Macon III,Independent,2576,2576,0,1,2026-11-08T01:22:41.801Z,False,0,0,0
+civic,TX,James Talarico,Democratic,5447039,5447039,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,TX,Ken Paxton,Republican,4250573,4250573,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,TX,Ted Brown,Libertarian,190319,190319,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,TX,Write-in,Nonpartisan,4459,4459,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,TX,Avery Ayers,Write-In,2005,2005,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,TX,Jade Simmons,Write-In,1739,1739,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,TX,"Bradford ""Brad"" Hall",Write-In,1264,1264,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,TX,Zul Mohamed,Write-In,186,186,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,TX,Brad Hall,Nonpartisan,15,15,0,1,2026-11-08T01:24:31.961Z,False,0,0,0
+civic,VA,Mark Warner,Democratic,2200151,2200151,0,1,2026-11-08T01:14:11.378Z,False,0,0,0
+civic,VA,Bert Mizusawa,Republican,1380564,1380564,0,1,2026-11-08T01:14:11.378Z,False,0,0,0
+civic,VA,Write-in,Nonpartisan,9531,9531,0,1,2026-11-08T01:14:11.378Z,False,0,0,0
+civic,WV,Shelley Moore Capito,Republican,266067,266067,0,1,2026-11-08T01:17:06.133Z,False,0,0,0
+civic,WV,Rachel Fetty Anderson,Democratic,172922,172922,0,1,2026-11-08T01:17:06.133Z,False,0,0,0
+civic,WV,S. Marshall Wilson,Constitution,17139,17139,0,1,2026-11-08T01:17:06.133Z,False,0,0,0
+civic,WY,Harriet Hageman,Republican,122157,122157,0,1,2026-11-08T01:37:35.905Z,False,0,0,0
+civic,WY,James W. Byrd,Democratic,65097,65097,0,1,2026-11-08T01:37:35.905Z,False,0,0,0

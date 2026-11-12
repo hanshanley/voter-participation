@@ -1,0 +1,26 @@
+{
+  "accepted-identifiers.zip": {
+    "bytes": 956205,
+    "sha256": "1c3938ea0d933d7e9fd628d07b0d3244c76fa795a18ac1bb21692a11a771d7ef"
+  },
+  "complete-prior-controls.csv": {
+    "bytes": 19976,
+    "sha256": "a7e8bd4a811aa27721ba289bee3589feb125de2bb834764fa6a014665232c93e"
+  },
+  "complete-prior-crosschecks.csv": {
+    "bytes": 1867956,
+    "sha256": "672a3bc38c540a8ba01409dc81a8fb72c912673f87b3ea5cf886859fe422b9ef"
+  },
+  "native-AK.json": {
+    "bytes": 59314,
+    "sha256": "3289bf5f9b24d2b1d4f666ad4b8d2375aa377effca990118fa4fa24ba979d4c5"
+  },
+  "policy.json": {
+    "bytes": 1777,
+    "sha256": "71da48f23119229ca97a11ca0447a1e62c9e2ddbd2811a2323a2a49739ffadc9"
+  },
+  "provenance.json": {
+    "bytes": 354,
+    "sha256": "da5721734b05d2c5fc06c1cd3e8a5cf22ae5eac91d70ba429f3e97028d196005"
+  }
+}
