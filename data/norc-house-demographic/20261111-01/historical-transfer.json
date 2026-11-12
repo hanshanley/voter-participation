@@ -1,0 +1,20 @@
+{
+  "changing_election_type_and_residence_and_age_composition_remain": true,
+  "held_target_election_results_used_in_training": false,
+  "matched_panel": false,
+  "race_and_gender_harmonization_attempted": false,
+  "target": "AP source modeled participation/current House-response class, not validated individual histories",
+  "test_cases": 136435,
+  "training_cases": 116620,
+  "training_year": 2022,
+  "untouched_test_year": 2024,
+  "weights": "Native poll-close state weights; final-vote weights not used",
+  "with_demographics": {
+    "source_weighted_brier": 0.3596046786547033,
+    "source_weighted_log_loss": 0.7417359306955971
+  },
+  "without_demographics": {
+    "source_weighted_brier": 0.36005162991991607,
+    "source_weighted_log_loss": 0.7440894486079555
+  }
+}
