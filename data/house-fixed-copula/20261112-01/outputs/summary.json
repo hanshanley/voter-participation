@@ -1,0 +1,243 @@
+{
+  "calibration_curve_rows": 270,
+  "calibration_decisions": 30,
+  "code_transport_conditional": true,
+  "conditional_transport_gate": {
+    "all_case_margins_and_dual_certificates_pass": true,
+    "full_Brier_not_worse": true,
+    "full_logloss_improves": true,
+    "positive_source_median": true,
+    "selected_major_Brier_not_worse": true
+  },
+  "conditional_transport_gate_passed": true,
+  "contract": "participation.house_fixed_copula_public.v1",
+  "default_accepted_model_changed": false,
+  "design_confidence_intervals": null,
+  "fixed_marginals_not_changed": true,
+  "fold_composition_rows": 2016,
+  "historical_profile_requested_thetas": {
+    "attenuated": 2.8284271247461903,
+    "full": 8.0
+  },
+  "matching_stages": 8,
+  "native_persons_or_predictions_exported": false,
+  "outer_score_rows": 60,
+  "pooled_score_rows": 32,
+  "population_or2026_parameter_validation": false,
+  "primary_flow_stages": [
+    {
+      "forecast_odds_ratio": "53.510585464355",
+      "gross_switch_percent": "12.025230604829",
+      "kind": "baseline",
+      "level": "history",
+      "maximum_margin_residual": "26.939129231121571187675303030700997405332510397237352929026665595779",
+      "reference_gross_switch_percent": "4.599022922604",
+      "stage": "unconditioned",
+      "switch_error_pp": "7.426207682225"
+    },
+    {
+      "forecast_odds_ratio": "53.510585464355",
+      "gross_switch_percent": "12.035204097084",
+      "kind": "baseline",
+      "level": "history",
+      "maximum_margin_residual": "0E-66",
+      "reference_gross_switch_percent": "4.599022922604",
+      "stage": "matched_source_margins",
+      "switch_error_pp": "7.436181174480"
+    },
+    {
+      "forecast_odds_ratio": "400.234136958353",
+      "gross_switch_percent": "4.768871760468",
+      "kind": "calibrated",
+      "level": "history",
+      "maximum_margin_residual": "22.919992446434672399936721848070046817325894006426053669050874275563",
+      "reference_gross_switch_percent": "4.599022922604",
+      "stage": "unconditioned",
+      "switch_error_pp": "0.169848837864"
+    },
+    {
+      "forecast_odds_ratio": "400.234136958353",
+      "gross_switch_percent": "4.785351599293",
+      "kind": "calibrated",
+      "level": "history",
+      "maximum_margin_residual": "0E-66",
+      "reference_gross_switch_percent": "4.599022922604",
+      "stage": "matched_source_margins",
+      "switch_error_pp": "0.186328676689"
+    },
+    {
+      "forecast_odds_ratio": "61.795170918635",
+      "gross_switch_percent": "11.284584648615",
+      "kind": "baseline",
+      "level": "demographic",
+      "maximum_margin_residual": "24.038793162715180119202147417028923834747593571600085769862809240780",
+      "reference_gross_switch_percent": "4.599022922604",
+      "stage": "unconditioned",
+      "switch_error_pp": "6.685561726011"
+    },
+    {
+      "forecast_odds_ratio": "61.795170918635",
+      "gross_switch_percent": "11.294995574145",
+      "kind": "baseline",
+      "level": "demographic",
+      "maximum_margin_residual": "0E-66",
+      "reference_gross_switch_percent": "4.599022922604",
+      "stage": "matched_source_margins",
+      "switch_error_pp": "6.695972651541"
+    },
+    {
+      "forecast_odds_ratio": "213.410472592628",
+      "gross_switch_percent": "6.408833594778",
+      "kind": "calibrated",
+      "level": "demographic",
+      "maximum_margin_residual": "20.980033679692295731767822515698457580875192301329261504242876441717",
+      "reference_gross_switch_percent": "4.599022922604",
+      "stage": "unconditioned",
+      "switch_error_pp": "1.809810672175"
+    },
+    {
+      "forecast_odds_ratio": "213.410472592628",
+      "gross_switch_percent": "6.424792376122",
+      "kind": "calibrated",
+      "level": "demographic",
+      "maximum_margin_residual": "0E-66",
+      "reference_gross_switch_percent": "4.599022922604",
+      "stage": "matched_source_margins",
+      "switch_error_pp": "1.825769453518"
+    }
+  ],
+  "primary_scores": [
+    {
+      "frame_role": "primary",
+      "kind": "baseline",
+      "level": "history",
+      "metric": "House_logloss",
+      "value": "1.313660393502",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "baseline",
+      "level": "history",
+      "metric": "House_Brier",
+      "value": "0.483039297689",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "baseline",
+      "level": "history",
+      "metric": "selected_major_logloss",
+      "value": "0.402298106421",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "baseline",
+      "level": "history",
+      "metric": "selected_major_Brier",
+      "value": "0.155257726348",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "calibrated",
+      "level": "history",
+      "metric": "House_logloss",
+      "value": "1.263987390597",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "calibrated",
+      "level": "history",
+      "metric": "House_Brier",
+      "value": "0.477227852054",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "calibrated",
+      "level": "history",
+      "metric": "selected_major_logloss",
+      "value": "0.344750556090",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "calibrated",
+      "level": "history",
+      "metric": "selected_major_Brier",
+      "value": "0.143844735291",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "baseline",
+      "level": "demographic",
+      "metric": "House_logloss",
+      "value": "1.348022708134",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "baseline",
+      "level": "demographic",
+      "metric": "House_Brier",
+      "value": "0.492568170945",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "baseline",
+      "level": "demographic",
+      "metric": "selected_major_logloss",
+      "value": "0.427222532923",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "baseline",
+      "level": "demographic",
+      "metric": "selected_major_Brier",
+      "value": "0.162539430201",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "calibrated",
+      "level": "demographic",
+      "metric": "House_logloss",
+      "value": "1.300594187367",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "calibrated",
+      "level": "demographic",
+      "metric": "House_Brier",
+      "value": "0.485929497226",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "calibrated",
+      "level": "demographic",
+      "metric": "selected_major_logloss",
+      "value": "0.374061936631",
+      "weight_frame": "commonpostweight_24"
+    },
+    {
+      "frame_role": "primary",
+      "kind": "calibrated",
+      "level": "demographic",
+      "metric": "selected_major_Brier",
+      "value": "0.150022248135",
+      "weight_frame": "commonpostweight_24"
+    }
+  ],
+  "source_feature_set_and_election_direction_differ_from2026": true,
+  "source_primary_history_theta_median": 8.0,
+  "source_rows": 6175,
+  "synthetic_flow_rows": 32
+}

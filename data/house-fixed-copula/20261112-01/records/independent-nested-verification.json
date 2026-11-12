@@ -1,0 +1,19 @@
+{
+  "accepted_outer_heads_verified_without_refit": 60,
+  "all_training_and_calibration_cases_exclude_outer_holdout": true,
+  "calibration_curves_verified": 270,
+  "checks": 4797,
+  "every_case_year_margin_and_dual_certificate_verified": true,
+  "independent_population_or2026_validation": false,
+  "independent_score_backend": "math.fsum_and_math.log",
+  "native_cases_predictions_or_fine_cells_exported": false,
+  "new_inner_fits_verified": 180,
+  "original_outer_probabilities_byte_identical": true,
+  "outer_scores_verified": 60,
+  "policy_sha256": "41f41b6bdd393e185405c60ec6e27e73cee1b044baef0e8326a850400b4741ef",
+  "source_cases": 6175,
+  "status": "pass",
+  "successful_source_fits_repeated": false,
+  "sufficient_sha256": "3d59803860d48153ab28ba065df952d79674f66af9cd73db5bde5dc62ec4b891",
+  "verifier_sha256": "695e4f539391d281204721f5cc0a09f5cacb71372d26d0b072b79e51c3b0db74"
+}

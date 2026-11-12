@@ -1,0 +1,21 @@
+{
+  "current_party_return_errors_used_for_parameter_selection": false,
+  "historical_parameter_transport_validated": false,
+  "independent_model_check_total": 313548,
+  "independent_model_checks": {
+    "attenuated|accepted_ridge_multinomial": 52258,
+    "attenuated|extra_randomized_trees": 52258,
+    "attenuated|histogram_gradient_boosting": 52258,
+    "full|accepted_ridge_multinomial": 52258,
+    "full|extra_randomized_trees": 52258,
+    "full|histogram_gradient_boosting": 52258
+  },
+  "new_margin_mask_partition_direct2022_checks": 148472,
+  "original_default_replaced": false,
+  "original_qualified_comparisons": 48,
+  "source_fits_repeated": false,
+  "source_model_profiles_verified": 6,
+  "state_and_group_source_year_margins_preserved": true,
+  "status": "pass",
+  "verifier_sha256": "01b276c38419caa12bb466e611a0eff517d78e7ed0934378734f89bb83067312"
+}

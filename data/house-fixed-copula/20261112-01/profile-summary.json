@@ -1,0 +1,61 @@
+{
+  "accepted_marginal_fits_repeated": false,
+  "actual_staying_home_firstever_eligibility_death_migration": null,
+  "all_original_outputs_and_default_unchanged": true,
+  "complete_profile_family_state_decisions": 450,
+  "contract": "participation.house_copula_profiles.v1",
+  "current_return_errors_used_for_selection": false,
+  "families": [
+    "accepted_ridge_multinomial",
+    "histogram_gradient_boosting",
+    "extra_randomized_trees"
+  ],
+  "independent_population_validation": false,
+  "native_respondents_and_private_fine_cells_exported": false,
+  "profile_family_scenarios": 6,
+  "profiles": [
+    "original",
+    "attenuated",
+    "full"
+  ],
+  "projection_decisions": {
+    "attenuated": {
+      "accepted_ridge_multinomial": {
+        "backed_off_states": 0,
+        "changed_states": 50,
+        "zero_effective_states": 0
+      },
+      "extra_randomized_trees": {
+        "backed_off_states": 0,
+        "changed_states": 50,
+        "zero_effective_states": 0
+      },
+      "histogram_gradient_boosting": {
+        "backed_off_states": 0,
+        "changed_states": 50,
+        "zero_effective_states": 0
+      }
+    },
+    "full": {
+      "accepted_ridge_multinomial": {
+        "backed_off_states": 1,
+        "changed_states": 50,
+        "zero_effective_states": 0
+      },
+      "extra_randomized_trees": {
+        "backed_off_states": 0,
+        "changed_states": 50,
+        "zero_effective_states": 0
+      },
+      "histogram_gradient_boosting": {
+        "backed_off_states": 1,
+        "changed_states": 50,
+        "zero_effective_states": 0
+      }
+    }
+  },
+  "qualified_comparisons_per_family": 48,
+  "source_row_group_year_margins_preserved": true,
+  "states_per_family": 50,
+  "unvalidated_transport": true
+}

@@ -1,0 +1,12 @@
+{
+  "accepted_outer_fits_repeated": 0,
+  "accepted_outer_marginal_fits_reused": 60,
+  "decisions": 30,
+  "inner_calibration_rows": 270,
+  "new_inner_component_fits": 180,
+  "outer_score_rows": 60,
+  "policy_sha256": "41f41b6bdd393e185405c60ec6e27e73cee1b044baef0e8326a850400b4741ef",
+  "previously_new_inner_fits_reused": 0,
+  "status": "complete_new_nested_fixed_marginal_calibration",
+  "sufficient_sha256": "3d59803860d48153ab28ba065df952d79674f66af9cd73db5bde5dc62ec4b891"
+}
