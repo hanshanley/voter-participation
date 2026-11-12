@@ -1,7 +1,8 @@
 import unittest
 from unittest.mock import patch
 
-from scripts.house_comparability import district_rows, margin, requalify_model
+from scripts.house_comparability import audit, district_rows, margin, requalify_model
+from scripts.house_clerk_endpoints import STATES
 
 
 def previous(district, name, party, votes):
@@ -17,6 +18,30 @@ def current(district, name, party, votes, race):
 
 
 class ComparabilityTests(unittest.TestCase):
+    def test_empty_contest_cannot_pass_merely_because_named_parties_match(self):
+        codes = sorted(STATES)+["MA"]*385
+        before, after = [], []
+        controls = {code: dict(D=0, R=0, O=0) for code in STATES}
+        for index, code in enumerate(codes, 1):
+            district = code+"-"+str(index)
+            for name, party, literal in (("A", "D", "Democratic"), ("B", "R", "Republican")):
+                before.append(previous(district, name, party, 100))
+                votes = 0 if index == 51 else 100
+                row = current(district, name, literal, votes, index)
+                row["state_code"] = code
+                after.append(row)
+                controls[code][party] += votes
+        facts = dict(source_pdf_sha256="d4ba800fc17135b616ae556c92861080ab962d95916ace34b546c5aac824aec4",
+                     candidate_party_lines=[], candidates=before)
+        with patch("scripts.house_clerk_endpoints.candidate_totals", return_value=before):
+            review = audit(facts, after, dict(return_controls=[
+                dict(state_code=code, office="house", current=counts) for code, counts in controls.items()]))
+        ma = next(row for row in review["states"] if row["state_code"] == "MA")
+        self.assertFalse(ma["coverage_changed_districts"])
+        self.assertFalse(ma["missing_count_districts"])
+        self.assertFalse(ma["like_for_like_statewide_source_comparison"])
+        self.assertIn("All-candidate zero totals", ma["hold_reasons"][0])
+
     def test_new_republican_candidate_is_not_a_statewide_preference_swing(self):
         before = [previous("MA-01", "A", "D", 600), previous("MA-01", "B", "R", 400),
                   previous("MA-02", "C", "D", 1000)]

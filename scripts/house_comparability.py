@@ -121,6 +121,12 @@ def audit(previous_facts, current_candidates, controls):
         if multiple:
             reasons.append("Multiple same-party nominees require independently qualified election-stage scope in "+
                            ", ".join(multiple)+".")
+        if not reasons:
+            empty = [row["district"] for row in local if any(
+                sum(row[phase]["reported_counts"].values()) == 0 for phase in ("previous", "current"))]
+            if empty:
+                reasons.append("All-candidate zero totals require independently qualified counting/ballot scope in "+
+                               ", ".join(empty)+"; these are not evidence of zero voter support.")
         qualified = not reasons and raw is not None
         states.append(dict(state_code=code, districts=len(local), previous_counts=totals["previous"],
             current_counts=totals["current"],

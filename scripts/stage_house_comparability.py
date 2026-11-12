@@ -19,7 +19,7 @@ def load(path):
     return json.loads(path.read_bytes())
 
 
-def stage(results, research, website=None, source_commit=None):
+def stage(results, research, website=None, source_commit=None, receipt_version="20261112-06"):
     destination = research/DATA
     destination.mkdir(parents=True, exist_ok=True)
     for name in ("viewer-original.json", "viewer-attenuated.json", "viewer-full.json",
@@ -43,7 +43,9 @@ def stage(results, research, website=None, source_commit=None):
 
     original = load(results/"viewer-original.json")
     points = original["families"]["accepted_ridge_multinomial"]
-    output = website/"data/participation-return-attribution/20261112-05"
+    if not re.fullmatch(r"[0-9]{8}-[0-9]{2}", receipt_version):
+        raise ValueError("Invalid immutable website receipt version")
+    output = website/"data/participation-return-attribution"/receipt_version
     if output.exists():
         raise ValueError("Use a fresh website receipt version")
     output.mkdir(parents=True)
@@ -73,7 +75,10 @@ def stage(results, research, website=None, source_commit=None):
                     maxima[key] = max(maxima.get(key, 0), abs(row["reported_comparison"]["reported_change_pp"]),
                                       abs(value["net_participation_pp"]),
                                       *(abs(number) for number in value["contributions_pp"].values()))
-    association["shared_max_abs_margin"] = maxima
+    reported_maximum = max(abs(row["reported_comparison"]["reported_change_pp"])
+        for row in points["rows"] if row["source_comparison_available"])
+    association["shared_max_abs_margin"] = {key: max(value, reported_maximum)
+                                           for key, value in maxima.items()}
     association["comparison_policy"] = original["comparison_policy"]
     (output/"copula-receipt.json").write_bytes(encoded(association))
 
@@ -84,5 +89,6 @@ if __name__ == "__main__":
         parser.add_argument("--"+name, type=Path, required=True)
     parser.add_argument("--website", type=Path)
     parser.add_argument("--source-commit")
+    parser.add_argument("--receipt-version", default="20261112-06")
     args = parser.parse_args()
-    stage(args.results, args.research, args.website, args.source_commit)
+    stage(args.results, args.research, args.website, args.source_commit, args.receipt_version)
