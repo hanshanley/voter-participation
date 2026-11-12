@@ -1,0 +1,24 @@
+{
+  "current_partisan_returns_used": false,
+  "decisions": [
+    {
+      "admissible": false,
+      "current_partisan_returns_used": false,
+      "current_response_Brier_not_worse": true,
+      "family": "histogram_gradient_boosting",
+      "historical_Brier_not_worse": false,
+      "historical_log_loss_not_worse": false
+    },
+    {
+      "admissible": false,
+      "current_partisan_returns_used": false,
+      "current_response_Brier_not_worse": false,
+      "family": "extra_randomized_trees",
+      "historical_Brier_not_worse": false,
+      "historical_log_loss_not_worse": false
+    }
+  ],
+  "historical_test_used_for_family_selection_not_independent_postselection_test": true,
+  "preferred_family": "accepted_ridge_multinomial",
+  "selection_uses_source_validation_not_current_return_errors": true
+}

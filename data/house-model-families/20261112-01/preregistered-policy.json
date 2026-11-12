@@ -1,0 +1,62 @@
+{
+  "contract": "participation.house_family_comparison_policy.v1",
+  "accepted_logistic_model_and_completed_runs_reused_not_refitted": true,
+  "class_order": ["D", "R", "O", "N", "U"],
+  "current_partisan_returns_used_for_training_or_model_selection": false,
+  "source_input_sha256": {
+    "chep2026": "496a5b57fbc435210bdf78e2c1c3717879c0689c74081bee830d121b548c792f",
+    "ap2024": "7d63dada53d1e6f5f3fac54417e189755d54ce312cf7945f16abe4f91c5bf62f",
+    "ap2022": "1badd8bbc31232e7bf7a39256036b5c6d6ac189366d30143b881c516bb927df6"
+  },
+  "model_families": {
+    "accepted_ridge_multinomial": {
+      "source": "existing accepted fitted synthetic priors and published validation",
+      "C": 0.15,
+      "refit": false
+    },
+    "histogram_gradient_boosting": {
+      "max_iter": 100,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 100,
+      "learning_rate": 0.05,
+      "l2_regularization": 1.0,
+      "early_stopping": false,
+      "random_state": 20261112
+    },
+    "extra_randomized_trees": {
+      "n_estimators": 128,
+      "max_depth": 12,
+      "min_samples_leaf": 100,
+      "max_features": 1.0,
+      "bootstrap": false,
+      "n_jobs": 2,
+      "random_state": 20261112
+    }
+  },
+  "predictors": {
+    "house24_bridge": ["state", "p24", "h22", "AGE6", "EDUC", "RACETH5", "INCOME"],
+    "house26_response": ["state", "p24", "h22", "AGE6", "EDUC", "RACETH5", "INCOME", "SEX", "RUCC"],
+    "historical_transfer": ["state", "prior_2020_president", "age", "education"]
+  },
+  "forbidden_predictors": ["HOUSEVOTE", "LIKELYVOTER", "LVB", "respondent_ID", "current_return_party_counts", "QVOTE2022S"],
+  "bridge_holdout_seed": 20261112,
+  "current_holdout_seed": 20261113,
+  "holdouts": "same existing state-stratified 20 percent respondent indices",
+  "historical_transfer": "train AP2022 only; test AP2024 without refit using native poll-close weights",
+  "source_weight_frames_unchanged": true,
+  "probability_floor_for_synthetic_prior_support": 1e-8,
+  "evaluation_probabilities_not_floored": true,
+  "preferred_family_rule": "Among families not worse than accepted baseline on historical log loss and Brier and current-response Brier, choose minimum historical log loss; otherwise retain accepted baseline. Decide before reading current-party endpoint errors.",
+  "all_family_results_and_negative_results_retained": true,
+  "source_metrics": ["weighted_multiclass_log_loss", "weighted_multiclass_Brier", "known_major_party_log_loss"],
+  "same_frozen_48_state_endpoints_and_two_holds": true,
+  "same_frame_scales": [0.8, 1, 1.2],
+  "same_affinities": [0.5, 1, 2],
+  "same_simulation_seeds": true,
+  "margin_and_Democratic_two_party_share_reported_separately": true,
+  "return_conditioning_not_behavioral_validation": true,
+  "family_disagreement_not_confidence_interval": true,
+  "private_respondents_and_fine_joint_cells_exported": false,
+  "demographic_disclosure_mask": "unchanged accepted per-state coarse-group whitelist",
+  "precinct_or_county_allocation": false
+}

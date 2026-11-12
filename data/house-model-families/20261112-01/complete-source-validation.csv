@@ -1,0 +1,10 @@
+current_returns_used_for_fit_or_selection,family,label,role,source_weighted_log_loss,source_weighted_multiclass_brier
+False,accepted_ridge_multinomial,Multinomial ridge · accepted baseline,house24_bridge,0.2244446505394057,0.09899594794884828
+False,accepted_ridge_multinomial,Multinomial ridge · accepted baseline,house26_response,0.47895890965318244,0.22950076386360704
+False,accepted_ridge_multinomial,Multinomial ridge · accepted baseline,historical_transfer,0.7417359306955971,0.3596046786547033
+False,histogram_gradient_boosting,Histogram gradient boosting,house24_bridge,0.22240608138202914,0.09901986341673957
+False,histogram_gradient_boosting,Histogram gradient boosting,house26_response,0.4758928583373844,0.2270186852110797
+False,histogram_gradient_boosting,Histogram gradient boosting,historical_transfer,0.7481931201767114,0.3606129562308658
+False,extra_randomized_trees,Extra-randomized trees,house24_bridge,0.22737526767403685,0.09975940266549016
+False,extra_randomized_trees,Extra-randomized trees,house26_response,0.5867766938982473,0.23852383182348438
+False,extra_randomized_trees,Extra-randomized trees,historical_transfer,0.8043241191154062,0.35962708359203877

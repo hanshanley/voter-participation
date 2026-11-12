@@ -1,0 +1,24 @@
+{
+  "Democratic_two_party_share_MAE_pp": {
+    "accepted_ridge_multinomial": 3.0634991351555776,
+    "extra_randomized_trees": 3.0317870230928565,
+    "histogram_gradient_boosting": 2.871557714231276
+  },
+  "baseline_fits_or_simulations_repeated": false,
+  "families": [
+    "accepted_ridge_multinomial",
+    "histogram_gradient_boosting",
+    "extra_randomized_trees"
+  ],
+  "family_dispersion_decisions": 300,
+  "margin_MAE_pp": {
+    "accepted_ridge_multinomial": 6.126998270311155,
+    "extra_randomized_trees": 6.063574046185713,
+    "histogram_gradient_boosting": 5.743115428462552
+  },
+  "preferred_family": "accepted_ridge_multinomial",
+  "qualified_comparisons_per_family": 48,
+  "raw_respondents_exported": false,
+  "state_decisions": 150,
+  "states_per_family": 50
+}
