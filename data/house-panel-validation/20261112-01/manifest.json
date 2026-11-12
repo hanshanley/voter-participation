@@ -1,0 +1,87 @@
+{
+  "contract": "participation.house_panel_complete_packet.v1",
+  "files": {
+    "README.txt": {
+      "bytes": 2101,
+      "sha256": "f6a79d4e126c730dccbc708764086d72c3c88ac775d094d63a991442aa8f7fa1"
+    },
+    "code/scripts/house_panel_public.py": {
+      "bytes": 8208,
+      "sha256": "cd3770d9159723fc5093e7ee962ebeb71b9e3000deb4eca25d2cfcd58362c3f0"
+    },
+    "code/scripts/house_panel_validation.py": {
+      "bytes": 12467,
+      "sha256": "513478a8cd70598a81618b9d62e45ec9ee350740211aedff168fd6cb4447d198"
+    },
+    "code/scripts/package_house_panel_validation.py": {
+      "bytes": 7969,
+      "sha256": "fd0a2af32a93f2f401a64611e65d9253365dc83b383491be787288c29b56e3e9"
+    },
+    "code/scripts/reproduce_house_panel_validation.py": {
+      "bytes": 3360,
+      "sha256": "754aeb7f286a9e3bbec6beef7f7a92bd8b4ed49ef2f6d61ecc7e3d20cbfb199a"
+    },
+    "code/scripts/verify_house_panel_validation.py": {
+      "bytes": 8270,
+      "sha256": "190c1d6efb70a10c469861584658925e68d78305088ec384e18d3e502feba324"
+    },
+    "code/tests/test_house_panel_public.py": {
+      "bytes": 2694,
+      "sha256": "e55c7a9853d9df7e63aec71c9cb7208128010163127f5393279b08c9f4c7e600"
+    },
+    "code/tests/test_house_panel_validation.py": {
+      "bytes": 4975,
+      "sha256": "3a0aab63d259cc2c0ff73be63b96f32d3f40f27bc40c61178e5c79acc0d13a71"
+    },
+    "inputs/choice-bridge-03.json": {
+      "bytes": 2668,
+      "sha256": "499b561c5e33aca603c5b3d5e7aa7c6adec4b1a64488764cacfe63d56075e22c"
+    },
+    "inputs/participation-qualification-02.json": {
+      "bytes": 3653,
+      "sha256": "a03dac32b7a8c088bb8d34ad4c7cfb023c90c8e2ab9ae51a3dc552fbc95e0fd7"
+    },
+    "inputs/policy.json": {
+      "bytes": 4912,
+      "sha256": "9bbff5b000b5514efbe5ce5fea88b59c611a36f793254b0ea103f7cf18c8ff8b"
+    },
+    "inputs/sufficient-coarse-inputs.json": {
+      "bytes": 86471,
+      "sha256": "bed7f06e811f8e6c6117ec69d6330a84f4b914bddb34d348ff7da681ef706641"
+    },
+    "outputs/pooled-joints.csv": {
+      "bytes": 1120,
+      "sha256": "3d18b3abb90591019a73f76203bc3df569e1d64b149b5dcd3d7b557adef27b42"
+    },
+    "outputs/query-decisions.csv": {
+      "bytes": 35395,
+      "sha256": "f622d25ab523c269c9cad21815aec9dbf28319ba73f41613728e624be4eaa345"
+    },
+    "outputs/source-comparison.csv": {
+      "bytes": 1080,
+      "sha256": "4d6edcadcf3f28c04d3a8bdc2750b369232148abaf9588a1fd3c989c040c2701"
+    },
+    "outputs/source-concordance.json": {
+      "bytes": 96307,
+      "sha256": "e9274c3d217330aea55de267f015ef810ac534d6696af59836168bd16834558b"
+    },
+    "outputs/summary.json": {
+      "bytes": 1924,
+      "sha256": "9b863014f25f3b518fcfb285f5c0bc0cb570ea3d696083cec5e3157e5b29eec4"
+    },
+    "records/independent-native-verification.json": {
+      "bytes": 931,
+      "sha256": "934d541eab70dff8e5019f957bd1fbfbb46f1a5bf34e8b7b453629e4528a96e4"
+    }
+  },
+  "only_permitted_coarse_sufficient_inputs": true,
+  "original_native_sources_included": false,
+  "output_files": [
+    "pooled-joints.csv",
+    "query-decisions.csv",
+    "source-comparison.csv",
+    "source-concordance.json",
+    "summary.json"
+  ],
+  "source_code_commit": "b97cb7ff535d39b8853e84f98944e31e332328df"
+}

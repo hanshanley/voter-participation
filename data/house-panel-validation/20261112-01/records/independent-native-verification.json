@@ -1,0 +1,18 @@
+{
+  "available_source_tables": 2,
+  "checks": 14138,
+  "historical_positive_nonvote_unknown_control_preserved": true,
+  "method": "independent_SQL_classification_and_exact_fraction_native_arithmetic",
+  "policy_sha256": "9bbff5b000b5514efbe5ce5fea88b59c611a36f793254b0ea103f7cf18c8ff8b",
+  "private_result_sha256": {
+    "private-AP-joint.json": "83c7c1bdbc1b89783cc311ec0d95ea51f96ad509b6fcdae9dde953a6a62f5e7b",
+    "private-full-panel-joints.json": "c75e08e648d7cd88a89c4b962ced626a391c21120f060649b03c0b8c1bd00e71",
+    "public-candidate.json": "e9274c3d217330aea55de267f015ef810ac534d6696af59836168bd16834558b"
+  },
+  "query_decisions": 319,
+  "raw_cases_identifiers_private_fine_cells_exported": false,
+  "reviewer_sha256": "513478a8cd70598a81618b9d62e45ec9ee350740211aedff168fd6cb4447d198",
+  "source_rows": 6175,
+  "status": "pass",
+  "verifier_sha256": "190c1d6efb70a10c469861584658925e68d78305088ec384e18d3e502feba324"
+}

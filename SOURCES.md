@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Historical House panel evidence | [Conditional same-office source concordance, not population validation](#conditional-same-office-house-source-concordance) |
 | Three House model families | [Same-source comparison; negative results retained](#three-fixed-norc-house-model-families) |
 | Pennsylvania native control scope correction | [48 comparisons; no new counts or refit](#2026-pennsylvania-native-district-control-scope) |
 | Official House endpoint successor | [47 qualified comparisons; unchanged NORC fits](#2026-official-house-endpoint-successor) |
@@ -29,6 +30,43 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Conditional same-office House source concordance
+
+The already-held CES 2020/2022/2024 recontact panel (DOI `10.7910/DVN/CETPVT`,
+version 2.0, 6,175 cases) supplies 2022 and 2024 post-election House response
+items and separate administrative participation histories. Choice coding uses
+an explicit **conditional shared-item code transport**, not panel-native numeric
+labels. Literal candidate-slot party fields determine party; missing party,
+including `__NA__`, remains unknown. Code 7 alone is explicit administrative
+nonvote; positive House answers do not resolve missing histories. Contradictions
+remain separate; 2024 codes 6..8/12 and `_nv` counterfactuals are not borrowed.
+
+Among 2,368 positive-2024-postweight cases with both histories positive and
+both House reports D/R, weighted switching is **4.599023%**. The D-to-R and
+R-to-D cells have only 33 and 37 respondents. A separate AP2024 pooled poll-close
+state-weight source query has 79,516 selected modeled-current-voter cases with
+known actual recalled House22/current House24 source responses: **3.372462%**.
+The **-1.226561 pp** AP-minus-CES difference is unmatched source concordance,
+not identified recall bias, national population switching or 2026 model error.
+Frames differ in recruitment/retention, weights, response timing, recall,
+state composition and administrative selection. These conditional D/R-only
+denominators omit other choices and nonparticipation; they do not validate exit
+or entry. Current-record states are not election-day residence.
+
+Source `b97cb7ff535d39b8853e84f98944e31e332328df`; immutable science
+**442761753**, tag `participation-house-panel-validation-20261112-01`.
+All 319 public query decisions / two available tables / 317 whole-table holds,
+eight permitted coarse sufficient cells, five full outputs, code/tests and
+exact coding records are included in the 35,562-byte / 19-member complete ZIP:
+SHA256 `25d0dfe7a6b7332dd6f26620b36b96f277e57e8f319f38bc70b83757d9c3e2d3`.
+Fourteen tests, 14,138 independent SQL/exact-fraction checks and two fresh
+standard-library/network-command-blocked five-output reproductions pass.
+All 15 full assets anonymously verified. Native respondents/identifiers/private
+fine cells remain local; inherited native-release/population holds remain.
+See `data/house-panel-validation/20261112-01/` and the complete download catalog.
+No accepted model, simulation, source weight, live map or deployment changed.
+This does not close the 49 missing independent state-population benchmarks.
 
 ## Three fixed NORC House model families
 

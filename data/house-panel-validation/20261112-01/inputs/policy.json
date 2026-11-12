@@ -1,0 +1,71 @@
+{
+  "contract": "participation.house_panel_concordance_policy.v1",
+  "date": "2026-11-12",
+  "frozen_before_first_new_same_office_joint_calculation": true,
+  "external_public_preregistration": false,
+  "prior_participation_and_reporting_analyses_already_exist": true,
+  "reviewer_sha256": "513478a8cd70598a81618b9d62e45ec9ee350740211aedff168fd6cb4447d198",
+  "tests_sha256": "3a0aab63d259cc2c0ff73be63b96f32d3f40f27bc40c61178e5c79acc0d13a71",
+  "bridge_sha256": "499b561c5e33aca603c5b3d5e7aa7c6adec4b1a64488764cacfe63d56075e22c",
+  "history_qualification_sha256": "a03dac32b7a8c088bb8d34ad4c7cfb023c90c8e2ab9ae51a3dc552fbc95e0fd7",
+  "source_sha256": {
+    "CES_panel_2020_2022_2024_v2": "e9921d391159cf8fcb68a0b69aa76c94a5bf73436f516606bf3fb310125ba5ac",
+    "CES_panel_guide": "81f3e73e4dc26b752b18c09ee0b1fc9d7fcf7462f657643193323c17f88941d4",
+    "AP2024": "7d63dada53d1e6f5f3fac54417e189755d54ce312cf7945f16abe4f91c5bf62f"
+  },
+  "CES": {
+    "doi": "10.7910/DVN/CETPVT",
+    "version": "2.0",
+    "source_rows": 6175,
+    "choice_code_transport_assumption_required": true,
+    "panel_numeric_choice_labels_directly_qualified": false,
+    "choice_variables": ["CC22_412", "CC24_412"],
+    "candidate_party": "Literal corresponding HouseCandNParty_post_22/_24; never infer party from numeric choice position.",
+    "missing_candidate_party": ["", "NA", "__NA__", "-1"],
+    "2022_slots": [1, 2, 3, 4, 5, 6, 7, 8],
+    "2024_slots": [1, 2, 3, 4, 5],
+    "2024_forbidden_borrowed_codes": [6, 7, 8, 12],
+    "nonvote_responses": "Keep contest nonvote, 2022 reported election nonvote, unknown and administrative nonvote distinct.",
+    "administrative_positive_codes": [1, 2, 3, 4, 5, 6],
+    "administrative_explicit_nonvote": 7,
+    "missing_history_is_unknown": true,
+    "positive_choice_does_not_resolve_missing_history": true,
+    "weight_frames": ["commonpostweight_24", "commonpostweight_22", "vvweight_post_22"],
+    "primary_weight_frame": "commonpostweight_24",
+    "earlier_weights_are_sensitivity_not_2024_validated_voter_weights": true,
+    "private_scopes": "51 matched-record state codes, UNLOCATED and ALL_SOURCE. Record-state differences are not proven election-day migration.",
+    "private_queries": "All administrative P/N/U by reported D/R/O/contest-nonvote/reported-election-nonvote/unknown at each wave; all raw cases and each positive-weight frame accounted.",
+    "public_eligible_scope": "ALL_SOURCE only, including DC/unlocated source cases where eligible; not a national population estimate.",
+    "public_eligible_selection": "Both administrative histories positive, both reported House choices known D/R, positive commonpostweight_24.",
+    "public_all_other_queries": "whole-table hold without numeric cells or statistics",
+    "frame_limitations": "Recruited among 2020 adults, retained through 2024; excludes newly first-age-eligible 2022/2024 entrants; not representative of the full 2024 or 2026 population by assumption."
+  },
+  "AP2024": {
+    "primary_weight": "POLLCLOSE_STATE_WEIGHT",
+    "selected_frame": "Pooled positive poll-close state-weight source cases classified LIKELYVOTER=1 with known recalled House22 and current House24 D/R responses.",
+    "recalled_2022": "Use actual QVOTE2022 with 1=R/2=D; QPVVOTE22 codes1..3 override as reported nonvote; never consume QVOTE2022S.",
+    "current_2024": "HOUSEVOTE1=D/2=R among modeled current voters; source response is not candidate-specific administrative truth.",
+    "pooled_state_weights_are_not_a_national_population_weight": true,
+    "not_the_accepted_bridge_final_vote_weight_frame": true
+  },
+  "public_support": {
+    "minimum_raw_cases_in_each_of_four_cells": 30,
+    "minimum_table_raw_cases": 100,
+    "failure_holds_entire_table": true,
+    "state_and_sensitivity_cells_public": false,
+    "respondents_identifiers_private_fine_cells_public": false
+  },
+  "statistics": {
+    "switching": "100*(w_DR+w_RD)/(w_DD+w_DR+w_RD+w_RR), conditional on each source-specific selected known-major-choice frame.",
+    "directional": "Previous D or R row conditional rates among selected current D/R choices; not all previous coalition members.",
+    "comparison": "AP source point rate minus retained CES point rate in percentage points; unmatched source concordance only.",
+    "source_frame_recall_administrative_and_attrition_differences_not_identified": true,
+    "design_confidence_intervals": false,
+    "independent_individual_candidate_truth": false,
+    "population_transition_validation": false,
+    "current_2026_model_correction": false,
+    "model_family_selection_changed": false,
+    "new_precinct_or_county_allocation": false
+  },
+  "delivery": "Complete permitted coarse sufficient inputs, every public query/hold/result, exact code/tests, private independent arithmetic verification and standard-library-only offline public replay; preserve original private sources and immutable predecessors."
+}

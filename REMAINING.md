@@ -13,6 +13,39 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Completed historical House source-concordance increment
+
+New same-office 2022-to-2024 House joints now use the held 6,175-case CES
+retained panel, keeping reported choices and administrative P/N/U as separate
+axes, every raw case, three weight frames and all current-record-state scopes.
+Conditional shared-item choice-code transport is explicit; missing parties/
+histories and contradictions are not repaired. Primary weight `commonpostweight_24`
+does not undo 2020-adult recruitment, retention or omitted newly eligible adults.
+
+The prespecified safe pooled CES table has 2,368 selected both-positive-history/
+both-major-choice cases: 4.5990% weighted switching, with only 33 D-to-R and 37 R-to-D
+respondents. AP2024's differently selected pooled poll-close source frame has
+79,516 cases / 3.3725%. Their -1.2266 pp difference is **not** recall bias, population
+truth, a 2026 model correction or independent validation of staying home/entry.
+No source/weight/frame matching or native candidate-label qualification was
+invented. No source acquired, old campaign/refit/simulation/build repeated.
+
+Immutable science 442761753 contains complete permitted sufficient inputs,
+all 319 public query decisions / two available tables / 317 whole-table holds,
+eight coarse cells, five full outputs and exact code/tests/coding records.
+The 35,562-byte / 19-member ZIP and all 15 assets are full-byte publicly verified;
+14 tests / 14,138 independent SQL/exact-fraction checks / two fresh blocked-network
+offline reproductions pass. Native cases/private fine cells remain local.
+See `data/house-panel-validation/20261112-01/` and `docs/DATA.md`.
+
+The live three-family map, 48 state comparisons, AK/ME holds and prediction errors
+are unchanged. This bounded source-concordance calculation does **not** close
+the 49 independent state-population benchmark gaps or finish the project.
+Next House modeling evidence must test transition assumptions out of sample
+under stated coding/retention/weight sensitivities, rather than retune against
+current partisan returns or treat held fine cells as public state truth.
+Preserve the sole 45-minute continuation (#120) and all immutable predecessors.
+
 ## Completed direct-priority increment: House families and usable comparison maps
 
 The project is **not all fixed**. Three genuinely different families have now

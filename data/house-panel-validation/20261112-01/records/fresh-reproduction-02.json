@@ -1,0 +1,15 @@
+{
+  "archive_members": 19,
+  "archive_sha256": "25d0dfe7a6b7332dd6f26620b36b96f277e57e8f319f38bc70b83757d9c3e2d3",
+  "network_and_external_commands_blocked": true,
+  "output_files_matched": 5,
+  "outputs": {
+    "pooled-joints.csv": "3d18b3abb90591019a73f76203bc3df569e1d64b149b5dcd3d7b557adef27b42",
+    "query-decisions.csv": "f622d25ab523c269c9cad21815aec9dbf28319ba73f41613728e624be4eaa345",
+    "source-comparison.csv": "4d6edcadcf3f28c04d3a8bdc2750b369232148abaf9588a1fd3c989c040c2701",
+    "source-concordance.json": "e9274c3d217330aea55de267f015ef810ac534d6696af59836168bd16834558b",
+    "summary.json": "9b863014f25f3b518fcfb285f5c0bc0cb570ea3d696083cec5e3157e5b29eec4"
+  },
+  "private_extraction_or_model_fits_repeated": false,
+  "status": "pass"
+}

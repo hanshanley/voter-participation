@@ -6,6 +6,84 @@ changes. It is an assumption-dependent explanation, not identified voter histori
 or a causal effect. Moving from R+4 to D+12 is a +16 margin-point change,
 equivalent to +8 Democratic **two-party-share** points, not +16 share points.
 
+## Historical same-office panel check: conditional source concordance
+
+The new check uses the held 6,175-case CES 2020/2022/2024 retained panel's
+post-election House items at both waves, not a presidential-history substitute.
+Administrative participation and reported House choice are separate axes:
+codes 1..6 are positive histories, 7 is explicit nonvote and absent histories
+remain unknown even with a positive choice. Contest nonvote, reported election
+nonvote and unknown choice remain distinct. No contradiction is repaired.
+The guide does not directly qualify panel-native numeric candidate labels.
+Shared-item codebook transport is a stated assumption at the source-classifier
+boundary; candidate position is mapped through its literal party field, with
+blank/NA/__NA__/-1 party unknown. 2024 slots 6..8/code 12 and House-preference
+counterfactuals are not used.
+
+The primary table requires positive administrative histories at both waves,
+known D/R House reports at both waves and positive `commonpostweight_24`.
+Earlier 2022 weights are private sensitivity frames, not 2024 validated-voter
+weights. The three-wave retained panel was recruited among 2020 adults and omits
+newly first-age-eligible 2022/2024 adults. Native postwave weights do not prove
+retention/attrition correction. Matched-record states reflect current record
+geography (2024 field as of August 2025), not established election-day residence
+or verified moves.
+
+For weighted selected 2x2 cells `w_DD,w_DR,w_RD,w_RR`, the reported gross
+switching percentage is `100*(w_DR+w_RD)/(w_DD+w_DR+w_RD+w_RR)`.
+Directional rates use the corresponding previous-choice row denominator.
+They exclude current Other/unknown/nonparticipation and therefore are **not**
+rates among all members of the previous coalition or signed margin contributions.
+
+| Selected source frame | Raw selected cases | Weighted D-to-R | Weighted R-to-D | Weighted gross D/R switching |
+|---|---:|---:|---:|---:|
+| CES retained panel, both administrative histories positive | 2,368 | 4.096697% | 5.102138% | 4.599023% |
+| AP2024 pooled poll-close state-weight modeled-current-voter source | 79,516 | 3.420633% | 3.322722% | 3.372462% |
+
+CES's switching directions have only 33 and 37 respondents, respectively.
+AP's actual recalled House22 item uses 1R/2D, reversed from current House24;
+`QVOTE2022S` is never used. Its frame uses `POLLCLOSE_STATE_WEIGHT`,
+**not** the final-vote state weight used by the accepted fitted House bridge.
+Pooling state-weight source cases does not yield a national population-weighted
+estimate. Current modeled voter/source House response is not a candidate-specific
+administrative vote. CES and AP differ in recruitment, retention, recall,
+response timing, state composition and administrative selection. AP-minus-CES
+gross switching is -1.226561 percentage points of **unmatched source concordance**,
+not identified recall bias or population/model prediction error. No design CIs,
+2026 correction, family reselection, verified staying home/entry or local allocation.
+This historical window runs from a midterm to a presidential election; it is
+not the requested 2024-to-2026 presidential-to-midterm transition.
+
+Before this new joint calculation, source/code/test/design hashes and public
+selection were locally frozen; this was not external public preregistration
+or analysis of a previously untouched source. Public eligibility is restricted
+to the two pooled primary 2x2 queries, with 30 raw cases required in **every**
+cell. All other state/sensitivity/choice-only queries are held whole without
+numeric complements. All 6,175 raw cases and complete separate-axis weighted
+joints are accounted for privately, not relabeled nonvoters or dropped silently.
+
+Immutable science 442761753, tag `participation-house-panel-validation-20261112-01`,
+contains all permitted coarse sufficient inputs, 319 public decisions / two available
+tables / 317 whole-table holds, eight coarse cells, five full outputs, seven exact
+code/test files and coding-qualification records. Including the latter does not
+override their inherited native-release/population-validation holds. The complete
+ZIP is 35,562 bytes / 19 members, SHA256
+`25d0dfe7a6b7332dd6f26620b36b96f277e57e8f319f38bc70b83757d9c3e2d3`.
+Fourteen tests and 14,138 independent SQL/exact-fraction native checks pass.
+Two fresh standard-library-only replays, with network/external commands blocked,
+match all five public outputs; they do not repeat private extraction or model fits.
+All 15 full release assets are anonymously byte-verified. Private respondents/
+identifiers/fine cells remain local. The accepted three-family model, live map,
+all old downloads and 49 missing independent state-population benchmarks remain.
+
+```sh
+python3 -S -W error code/scripts/reproduce_house_panel_validation.py \
+  --archive /path/to/complete-analysis.zip --output /fresh/replay/path
+```
+
+Full results and scientific receipts:
+`data/house-panel-validation/20261112-01/`; see [complete downloads](DATA.md).
+
 ## Three genuinely different model families
 
 The November 12 comparison reuses the accepted ridge fits and all eight accepted

@@ -1,0 +1,57 @@
+{
+  "status": "cross_wave_common_item_bridge_conditional_not_panel_native_labels",
+  "source_sha256": "e9921d391159cf8fcb68a0b69aa76c94a5bf73436f516606bf3fb310125ba5ac",
+  "qualified_baseline_source_sha256": "ee5ff210d535fc8e4443c98f967beee6e9e0da9995e4a502ae682a5bd2d33565",
+  "same_case_2020_choice_and_state_matches": 6175,
+  "same_case_carried_2022_profile_differences": 0,
+  "same_case_2024_common_matches": 0,
+  "baseline_codes": {
+    "1": "Joe Biden (Democrat)",
+    "2": "Donald J. Trump (Republican)",
+    "4": "Other",
+    "5": "I did not vote in this race",
+    "6": "I did not vote",
+    "7": "Not sure",
+    "98": "skipped",
+    "99": "not asked"
+  },
+  "profile_2020_codes_in_2024_common": {
+    "1": "Joe Biden",
+    "2": "Donald Trump",
+    "3": "Jo Jorgensen",
+    "4": "Howie Hawkins",
+    "5": "Other",
+    "6": "Did not vote for President",
+    "8": "skipped",
+    "9": "not asked"
+  },
+  "current_house_codes_in_2024_common": {
+    "1": "$HouseCand1Name ($HouseCand1Party)",
+    "2": "$HouseCand2Name ($HouseCand2Party)",
+    "3": "$HouseCand3Name ($HouseCand3Party)",
+    "4": "$HouseCand4Name ($HouseCand4Party)",
+    "5": "$HouseCand5Name ($HouseCand5Party)",
+    "10": "Other",
+    "11": "I did not vote in this race",
+    "13": "Not sure",
+    "98": "skipped",
+    "99": "not asked"
+  },
+  "current_selfreport_codes_in_2024_common": {
+    "1": "I did not vote in the election this November.",
+    "2": "I thought about voting this time \u2013 but didn't.",
+    "3": "I usually vote, but didn't this time.",
+    "4": "I attempted to vote but did not or could not.",
+    "5": "I definitely voted in the November 2024 General Election.",
+    "8": "skipped",
+    "9": "not asked"
+  },
+  "panel_numeric_labels_directly_qualified": false,
+  "panel_code_transport_assumption_required": true,
+  "code_transport_basis": "Guide pp59/130-131 maps the same common-item identifiers across waves; use authoritative2024common numeric definitions for those same items, conditionally, not PDFdisplayorder or observed political agreement.",
+  "timing": "A profile2020choice carried in the2024wave is not proven to have been freshly re-asked in2024. Do not call differences four-year memory effects.",
+  "withheld_item": "CC24_410 current presidential vote is NOT used; the panel guide's last response label does not clearly agree with the2024common numeric codebook.",
+  "guide_limits": "PanelHouseguide lists slots through8; authoritative2024common onlythrough5. Accept only the common defined codes; reject2024slot6..8 orcode12 rather than borrow2022semantics.",
+  "no_candidate_specific_administrative_gold": true,
+  "population_method_validated": false
+}

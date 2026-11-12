@@ -1,0 +1,87 @@
+{
+  "assets": {
+    "README.txt": {
+      "bytes": 2101,
+      "sha256": "f6a79d4e126c730dccbc708764086d72c3c88ac775d094d63a991442aa8f7fa1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/README.txt"
+    },
+    "SHA256SUMS.txt": {
+      "bytes": 1135,
+      "sha256": "f9274b5aeb4c04d80c8563812b2402a61f2377f5960297151742c0e8ae69f22e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/SHA256SUMS.txt"
+    },
+    "checksums.json": {
+      "bytes": 1864,
+      "sha256": "e74324b987638a45c3c95438894488b17a87968056f8acf10d721a60233fd073",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "bytes": 35562,
+      "sha256": "25d0dfe7a6b7332dd6f26620b36b96f277e57e8f319f38bc70b83757d9c3e2d3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/complete-analysis.zip"
+    },
+    "fresh-reproduction-01.json": {
+      "bytes": 759,
+      "sha256": "a23fee10875afd7e9f881f0a588f0e7db5e6efb3541e00131b02444266df4fd3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "bytes": 759,
+      "sha256": "a23fee10875afd7e9f881f0a588f0e7db5e6efb3541e00131b02444266df4fd3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/fresh-reproduction-02.json"
+    },
+    "independent-native-verification.json": {
+      "bytes": 931,
+      "sha256": "934d541eab70dff8e5019f957bd1fbfbb46f1a5bf34e8b7b453629e4528a96e4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/independent-native-verification.json"
+    },
+    "manifest.json": {
+      "bytes": 3182,
+      "sha256": "b442301b4e71e78407f120e9aab3a6b6f392b890f5b5b9d13f6aad5dda4c582a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/manifest.json"
+    },
+    "policy.json": {
+      "bytes": 4912,
+      "sha256": "9bbff5b000b5514efbe5ce5fea88b59c611a36f793254b0ea103f7cf18c8ff8b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/policy.json"
+    },
+    "pooled-joints.csv": {
+      "bytes": 1120,
+      "sha256": "3d18b3abb90591019a73f76203bc3df569e1d64b149b5dcd3d7b557adef27b42",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/pooled-joints.csv"
+    },
+    "query-decisions.csv": {
+      "bytes": 35395,
+      "sha256": "f622d25ab523c269c9cad21815aec9dbf28319ba73f41613728e624be4eaa345",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/query-decisions.csv"
+    },
+    "source-comparison.csv": {
+      "bytes": 1080,
+      "sha256": "4d6edcadcf3f28c04d3a8bdc2750b369232148abaf9588a1fd3c989c040c2701",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/source-comparison.csv"
+    },
+    "source-concordance.json": {
+      "bytes": 96307,
+      "sha256": "e9274c3d217330aea55de267f015ef810ac534d6696af59836168bd16834558b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/source-concordance.json"
+    },
+    "sufficient-coarse-inputs.json": {
+      "bytes": 86471,
+      "sha256": "bed7f06e811f8e6c6117ec69d6330a84f4b914bddb34d348ff7da681ef706641",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/sufficient-coarse-inputs.json"
+    },
+    "summary.json": {
+      "bytes": 1924,
+      "sha256": "9b863014f25f3b518fcfb285f5c0bc0cb570ea3d696083cec5e3157e5b29eec4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-panel-validation-20261112-01/summary.json"
+    }
+  },
+  "current_models_or_website_changed": false,
+  "immutable": true,
+  "independent_population_validation": false,
+  "native_respondents_and_private_fine_cells_exported": false,
+  "release_id": 442761753,
+  "scientific_source_commit": "b97cb7ff535d39b8853e84f98944e31e332328df",
+  "status": "passed_immutable_complete_conditional_house_concordance",
+  "tag": "participation-house-panel-validation-20261112-01"
+}

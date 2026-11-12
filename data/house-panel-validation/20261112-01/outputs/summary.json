@@ -1,0 +1,34 @@
+{
+  "accepted_models_changed": false,
+  "available_source_tables": 2,
+  "conditional_source_code_transport": true,
+  "contract": "participation.house_panel_concordance.v1",
+  "design_confidence_intervals": null,
+  "independent_population_validation": false,
+  "native_respondents_and_private_fine_cells_exported": false,
+  "private_source_extraction_rerun_by_public_replay": false,
+  "query_decisions": 319,
+  "selected_raw_cases": {
+    "AP2024_source": 79516,
+    "CES_retained_panel": 2368
+  },
+  "selected_source_rates": {
+    "AP2024_source": {
+      "D_to_opposite_pct_within_selected_previous_choice": "3.420632594077258071827273679749753426862932342105865026859788554853212",
+      "R_to_opposite_pct_within_selected_previous_choice": "3.322721945182488704901366976444659331289155248901055515607882190991081",
+      "gross_D_R_switch_pct_within_selected_both_major_choices": "3.372462025252842501896261530539878229235835139493308920475717407762725"
+    },
+    "CES_retained_panel": {
+      "D_to_opposite_pct_within_selected_previous_choice": "4.096697235981846080736910376188279718281506377915564238352374486643023",
+      "R_to_opposite_pct_within_selected_previous_choice": "5.102138214010211938182958552122784809221444621905061263518148749357193",
+      "gross_D_R_switch_pct_within_selected_both_major_choices": "4.599022922603901930558149558778882897904788170579930152460301448618885"
+    }
+  },
+  "source_CES_retained_cases": 6175,
+  "unmatched_source_differences_pp": {
+    "D_to_opposite_pct_within_selected_previous_choice": "-0.676064641904588008909636696438526291418574035809699211492585931789811",
+    "R_to_opposite_pct_within_selected_previous_choice": "-1.779416268827723233281591575678125477932289373004005747910266558366112",
+    "gross_D_R_switch_pct_within_selected_both_major_choices": "-1.226560897351059428661888028239004668668953031086621231984584040856160"
+  },
+  "whole_table_holds": 317
+}
