@@ -1,0 +1,35 @@
+[
+  {
+    "available": false,
+    "cells": null,
+    "cohort": "previous_voter_major",
+    "minimum_each_cell": 30,
+    "no_native_fine_or_state_cells": true,
+    "population_validation": false,
+    "reason": "whole_coarse_table_support_hold",
+    "source_code_transport_conditional": true
+  },
+  {
+    "available": true,
+    "cells": {
+      "explicit_nonvote_any_house": {
+        "n": 128,
+        "weight": "36906765006781119453/500000000000000000"
+      },
+      "positive_any_house": {
+        "n": 230,
+        "weight": "80194357963846160837/250000000000000000"
+      },
+      "unknown_history_any_house": {
+        "n": 45,
+        "weight": "7036555452107720131/125000000000000000"
+      }
+    },
+    "cohort": "previous_nonvoter",
+    "minimum_each_cell": 30,
+    "no_native_fine_or_state_cells": true,
+    "population_validation": false,
+    "reason": null,
+    "source_code_transport_conditional": true
+  }
+]

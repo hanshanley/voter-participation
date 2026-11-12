@@ -1,0 +1,17 @@
+{
+  "accepted_paired_heads_verified_without_refit": 60,
+  "all_prior_cohorts_and_disclosure_holds_verified": true,
+  "all_test_predictions_enumerate_nine_hypothetical_pairs_without_future_targets": true,
+  "checks": 3650,
+  "complete_score_queries_verified": 540,
+  "current2026_transport_validated": false,
+  "independent_score_backend": "math.fsum_and_math.log",
+  "new_conditional_heads_verified": 30,
+  "original_paired_admin_and_house_margins_and_dual_certificate_verified": true,
+  "policy_sha256": "c95de1c8d223ac5445c6f5ca8ffd451a7606e6a681629a4213e72b4578703e09",
+  "private_persons_predictions_or_fine_cells_exported": false,
+  "source_fits_repeated": false,
+  "status": "pass",
+  "sufficient_sha256": "c461a288e7882233757b758cd57826167676c1dea253f04edf251b7ebf053572",
+  "verifier_sha256": "bc84621fc39445edca409742424113d904d1a0c0a85c63b9862c37a4ac262d70"
+}

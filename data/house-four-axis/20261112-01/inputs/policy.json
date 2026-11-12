@@ -1,0 +1,90 @@
+{
+  "contract": "participation.house_four_axis_policy.v1",
+  "core_sha256": "a3160c1a6320392e4b497ef0dee386ec7a2fbdbeeb69913697a839f0163f151e",
+  "date": "2026-11-12",
+  "delivery": {
+    "all_negative_results_retained": true,
+    "complete_permitted_download_and_offline_replays_required": true,
+    "full_predecessor_bytes": 63651646,
+    "full_predecessor_sha256": "08273545ef2886a3994ea2f4a7c7083f7a780e78c3335c88b1d3665cc6b0db72",
+    "independent_population_or_candidate_administrative_truth": false,
+    "no2026_parameter_transport_or_model_default_change": true,
+    "no_new_website_build_or_claim": true,
+    "no_state_to_local_allocation": true,
+    "staying_home_firstever_eligibility_death_migration_not_identified": true
+  },
+  "design": {
+    "accepted_paired_heads_reused": 60,
+    "conditional_factorization": "p(A22,A24|X2020) times p(H22,H24|A22,A24,X2020). Observed administrative pairs enter TRAINING as a conditional target factor, not as known future test predictors.",
+    "earlier2022_weights_sensitivity_only_not_recommended2024weights": true,
+    "feature_levels": [
+      "history",
+      "demographic"
+    ],
+    "fixed_marginals": "KL-project learned positive9x30joint to unchanged accepted administrative9 and House30 pair margins for every held-out case; no label/current-return tuning.",
+    "interaction": "Native admin-pair category and President20-by-admin-pair, alongside each unchanged2020feature level.",
+    "max_iter": 1000,
+    "models": [
+      "independent_pairs",
+      "conditional_house_given_admin",
+      "fixed_pair_marginals"
+    ],
+    "native_weight_frames": [
+      "commonpostweight_24",
+      "commonpostweight_22",
+      "vvweight_post_22"
+    ],
+    "new_conditional_heads": 30,
+    "no_free_270_class_saturated_fit_claim": true,
+    "outer_folds": 5,
+    "prediction": "Every held-out case enumerates ALL9 hypothetical administrative pairs in fixed case-major order; no test outcomes enter feature construction or prediction.",
+    "primary_weight": "commonpostweight_24",
+    "ridge_C": 0.15,
+    "solver": "lbfgs",
+    "split_and_features": "Unchanged prior-only2020 source dictionaries, training-only vocabulary and positive-weight normalization.",
+    "successful_old_fits_repeated": false,
+    "support_regularization": "Exact accepted training-only Dirichlet alpha.5/class, epsilon1/(training_n+1).",
+    "tol": 1e-06
+  },
+  "diagnostics": {
+    "administrativeN_not_equated_to_NORC2026_likelihoodN": true,
+    "future_target": "Full15categories administrativeP/N/U by HouseD/R/O/contestnonvote/U at2024, conditional only on literal observed2022categories after target-free joint prediction.",
+    "known_future_admin": "Outcome-selected P/N-only binary diagnostic, explicitly not population forecasting or proof attrition is repaired.",
+    "prior_cohort_selection": "2022administrativePOSITIVE plus reportedHouseD/R; separate2022explicitadministrativeNONVOTE with any House response.",
+    "source_2020_adult_retention_and_newly_eligible_omission_remain": true,
+    "source_categories_and_contradictions_preserved": true,
+    "source_house_codes_remain_conditional": true
+  },
+  "driver_sha256": "bb0b3995c6ff789e58aa21e3135fcb609668c26351bda4f07e15e0b1fbae57c7",
+  "external_public_preregistration": false,
+  "frozen_before_new_native_fits": true,
+  "implementation_commit_before_fits": "af079fc",
+  "parent_fitter_sha256": "497427647767666aa11af59bf600db4ee591b5df9c7ca6d378fbf25883a49bbc",
+  "parent_policy_sha256": "3e2df02dee61795c240e21d517df9b7159ae8ccf1d3c89e79eb344cdf1074d9b",
+  "parent_sufficient_sha256": "a462a90e139e4d69bafe6921ee75a99bdb1f13d77d3a790ff5e7472c1b493b9a",
+  "prepared_sha256": "0adceb0b837f316a1af549aaf8cd9083b441e71ea43285bd2cae798f76f4de17",
+  "projector_sha256": "12e2fa6ca7e70981b41f7d6cc73f5fbab9f554eddb2106ee322174125a7ae34a",
+  "publication": {
+    "full_fold_minimum_cases": 100,
+    "primary_pooled_coarse_tables": "Six exhaustive voter-major outcomes or three prior-explicit-nonvoter outcomes. Every raw cell>=30 or holdWHOLEtable; primary post24weights only. No raw finer/source-state subtables or older-weight cell publication.",
+    "private": "Native persons, features, per-case predictions/losses, trained coefficients and fine cells remain local.",
+    "public_inputs": "Broad fold/cohort/model score sums and synthetic predictive moments, available whole pooled coarse references, exact code/design/all results and full accepted predecessor.",
+    "whole_scored_cohort_minimum_cases": 30
+  },
+  "simulation": {
+    "interpretation": "Independent source-predictive draws from pooled OOF coarse probability mixtures, not real persons, sampling confidence intervals or survey variance.",
+    "seeds": [
+      11,
+      29,
+      47,
+      83,
+      101
+    ],
+    "synthetic_draws_per_case": 10000,
+    "weight_frame": "primary only"
+  },
+  "source_and_earlier_pair_results_already_explored": true,
+  "source_rows": 6175,
+  "source_sha256": "e9921d391159cf8fcb68a0b69aa76c94a5bf73436f516606bf3fb310125ba5ac",
+  "tests_sha256": "0a957f80b918198e87a7fb0883173c74f8acba86047b977de31bc4c9915a1af7"
+}
