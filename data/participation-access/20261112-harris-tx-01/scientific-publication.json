@@ -1,0 +1,83 @@
+{
+  "assets": {
+    "checksums.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275247,
+      "bytes": 1251,
+      "sha256": "82847cce25841093947d1d52f14b46336d0dce6bc77a049cc2ede3c745130dfd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275286,
+      "bytes": 68729952,
+      "sha256": "ce1daade50e084cfdba52daf7dc1cb31136ede87b9f633bd0f1b291b55c453e2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/complete-analysis.zip"
+    },
+    "complete-harris-query.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275527,
+      "bytes": 6579,
+      "sha256": "8443d5db4b3a589d146e5bad8b069ac22652e5b4c8d61a114514936289e47e00",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/complete-harris-query.json"
+    },
+    "county-participation.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275561,
+      "bytes": 3071,
+      "sha256": "9a4204e3067a1057191c80ed87678a765a2af316e85142aed03a6429efada15a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/county-participation.csv"
+    },
+    "county-participation.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275609,
+      "bytes": 9810,
+      "sha256": "fdaf8231122da460f35dfcf2c14959214940975fa8bcef6da13856b85b3f7e54",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/county-participation.json"
+    },
+    "frontend-contract-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275648,
+      "bytes": 439,
+      "sha256": "8865f04aafe5b66ece4aa5e7e39ef0c6129692589acff9ba7c351e12b1f6ea31",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/frontend-contract-proof.json"
+    },
+    "local-renderer-fixture-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275708,
+      "bytes": 2773,
+      "sha256": "e0a967ff140a1528bb4c9173ce36e797a8a075f16bc18c38b8dbd4ee717e3d42",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/local-renderer-fixture-proof.json"
+    },
+    "offline-reproduction-19.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275753,
+      "bytes": 358,
+      "sha256": "62a08674be24d10d233378af0cae11dc5f3fc9199e7b8323d23f66cf233f66ad",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/offline-reproduction-19.json"
+    },
+    "offline-reproduction-73.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275798,
+      "bytes": 358,
+      "sha256": "62a08674be24d10d233378af0cae11dc5f3fc9199e7b8323d23f66cf233f66ad",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/offline-reproduction-73.json"
+    },
+    "package-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740275868,
+      "bytes": 368,
+      "sha256": "0bc20f844e64623c38ea3cdebcd89859ca521ea0fafc94b1af24447bef1b37c6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/package-proof.json"
+    }
+  },
+  "full_state_coverage_claim": false,
+  "immutable": true,
+  "precinct_polygons_invented": false,
+  "release_id": 443243371,
+  "scientific_source_commit": "3bed691632efac95cb1b62c18fee79dc2331f06b",
+  "status": "passed_complete_immutable_geographic_science_publication",
+  "tag": "participation-harris-county-counts-20261112-01",
+  "website_baseline_unchanged": "94db6c0c098842b01cf0a33a090bf62c30cf818c",
+  "website_builds": 0
+}

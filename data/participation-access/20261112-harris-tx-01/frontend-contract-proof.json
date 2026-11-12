@@ -1,0 +1,13 @@
+{
+  "WI_Jefferson_and_all_other_native_bindings_preserved": true,
+  "all_other_state_shards_unchanged": 50,
+  "archived_TX_records_preserved": 1018,
+  "available_native_priority_not_mixed_with_early_activity": true,
+  "checks": 457,
+  "county_reference_features": 254,
+  "new_county_observations": 1,
+  "new_rates_or_precinct_polygons": 0,
+  "old_early_mail_counties": 508,
+  "real_frontend_contracts_verified": true,
+  "status": "pass"
+}

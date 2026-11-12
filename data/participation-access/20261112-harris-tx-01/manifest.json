@@ -1,0 +1,65 @@
+{
+  "all_new_source_files_match_archive": true,
+  "catalog_commit": "8808a7c0d80324f32a2c3f37afe05ed1e365798a",
+  "complete_download": {
+    "bytes": 68729952,
+    "immutable": true,
+    "sha256": "ce1daade50e084cfdba52daf7dc1cb31136ede87b9f633bd0f1b291b55c453e2",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "continuation_45_minutes": 120,
+  "files": {
+    "atomic-activation.json": {
+      "bytes": 2284,
+      "sha256": "c7244691c824abd110905f63dc5b80c423ae44d38de525a0344391b6262e326e"
+    },
+    "county-desktop.png": {
+      "bytes": 438674,
+      "sha256": "21440fb2ef1e5c23d580ae7a37520146e1c39dba75621c31deb06beee3cc53c3"
+    },
+    "county-phone.png": {
+      "bytes": 322573,
+      "sha256": "438476dfb9fcd7ecbc46c3c19df8e94b17ecb34c80b33841e88b8f9a7a2c63d7"
+    },
+    "frontend-contract-proof.json": {
+      "bytes": 439,
+      "sha256": "babbfecb65a48b570cd81e20291da7e3b8eda029a72b2e7b5ea8ab9b3a80dee2"
+    },
+    "observations.json": {
+      "bytes": 16777,
+      "sha256": "6c5542a24ca99004d5c35335b160b629711874b1e51734dba94e2e11fd47e5de"
+    },
+    "offline-reproduction-19.json": {
+      "bytes": 358,
+      "sha256": "bdf5002f9d667cfa0a8fe055af6c940aab078afe4ae0aad3a9b78b8b6e1e8f0a"
+    },
+    "offline-reproduction-73.json": {
+      "bytes": 358,
+      "sha256": "bdf5002f9d667cfa0a8fe055af6c940aab078afe4ae0aad3a9b78b8b6e1e8f0a"
+    },
+    "other-source-dispositions.json": {
+      "bytes": 768,
+      "sha256": "beb58a4dde008c62b95fd5fb31ad89a62a5f0cab26d3288d0f79d399f53e61de"
+    },
+    "scientific-publication.json": {
+      "bytes": 4200,
+      "sha256": "7df95d9bb16da6b6943143c11ad77de4cc2ae19693a5a76c06f7580935cc27c4"
+    },
+    "scope-and-provenance.json": {
+      "bytes": 994,
+      "sha256": "04eaf6c2f9a3ee60a5dede3422e5bca76ff247ddd184ed4f402115d4d0c7cced"
+    },
+    "website-acceptance.json": {
+      "bytes": 60451,
+      "sha256": "0566fb953cefaad91f3cf4bb5d8d7dbb75fc3b4915c5d94e14c2a0059c27b0ef"
+    }
+  },
+  "nationwide_geography_task_remains_open": true,
+  "owned_document_baseline": "6a038838776c0417b7c79c7f9a3d36fae70dc2bf",
+  "scientific_release": 443243371,
+  "scientific_source_commit": "3bed691632efac95cb1b62c18fee79dc2331f06b",
+  "status": "verified_live_bounded_county_increment_not_nationwide_completion",
+  "website_builds": 0,
+  "website_source": "94db6c0c098842b01cf0a33a090bf62c30cf818c"
+}

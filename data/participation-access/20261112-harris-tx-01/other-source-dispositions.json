@@ -1,0 +1,26 @@
+{
+  "ohio_butler": {
+    "new_county_observation_not_promoted": true,
+    "original_2026_PartyTurnout_HTTP": 403,
+    "private_voter_file_not_published": true,
+    "rendered_control_not_native_input": true
+  },
+  "utah": {
+    "bytes": 343311,
+    "denied_Cache_workbook_not_retried": true,
+    "missing_counties": [
+      "Daggett",
+      "Garfield",
+      "Iron",
+      "Morgan",
+      "San Juan",
+      "Wasatch"
+    ],
+    "native_county_coverage": "23/29",
+    "new_index_captured": "2026-11-12T16:38:21.046895+00:00",
+    "new_qualified_missing_county_observations": 0,
+    "regenerated_report_UUID_not_successor_evidence": true,
+    "sha256": "9cbb3cc2b90d72dda788abdd3fa505440bc0e39f86d57d77ca5a0ad4f349c688",
+    "state_backend_zeros_unqualified": true
+  }
+}

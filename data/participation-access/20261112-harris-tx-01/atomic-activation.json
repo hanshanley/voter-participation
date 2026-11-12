@@ -1,0 +1,46 @@
+{
+  "actual_frontend_catalog_preflight_passed": true,
+  "before_catalog_commit": "2176b9a673526ddb78c4945324286cd0db8530a1",
+  "catalog_commit": "8808a7c0d80324f32a2c3f37afe05ed1e365798a",
+  "complete_download": {
+    "bytes": 68729952,
+    "immutable": true,
+    "sha256": "ce1daade50e084cfdba52daf7dc1cb31136ede87b9f633bd0f1b291b55c453e2",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-harris-county-counts-20261112-01/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "immutable_files_verified": 86,
+  "intermediate_catalog_unchanged": true,
+  "protected_after": {
+    "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+    "research": {
+      "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+      "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+    },
+    "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+    "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+    "website": {
+      "head": "e8412375749695ecf0dd866544df301879ad12e9",
+      "index_sha256": "a3a03cd67d767ec8e0005824e5d4e5677471e9453217316572b493fb047b5099"
+    }
+  },
+  "protected_before": {
+    "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+    "research": {
+      "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+      "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+    },
+    "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+    "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+    "website": {
+      "head": "e8412375749695ecf0dd866544df301879ad12e9",
+      "index_sha256": "a3a03cd67d767ec8e0005824e5d4e5677471e9453217316572b493fb047b5099"
+    }
+  },
+  "single_commit_updates_both_dependencies": true,
+  "staged_commit": "0023f52d7b9bd0f3bf0311a81a0339a92e8ef73a",
+  "status": "passed_atomic_count_and_binding_activation",
+  "unmodified_dataset_entries_preserved": true,
+  "website_builds_started": 0,
+  "website_source_unchanged": "94db6c0c098842b01cf0a33a090bf62c30cf818c"
+}

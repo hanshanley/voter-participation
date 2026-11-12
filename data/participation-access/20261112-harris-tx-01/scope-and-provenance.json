@@ -1,0 +1,24 @@
+{
+  "all_other_state_shards_unchanged": 50,
+  "contextual_census_fips": "48201",
+  "county_reference_features": 254,
+  "early_mail_county_rows_preserved": 508,
+  "full_election_county_observations": 1,
+  "native_county": "Harris",
+  "native_fips": null,
+  "original_reacquisition_or_OCR": false,
+  "precinct_polygons_added": 0,
+  "raw_http_headers_or_person_rows_published": false,
+  "registered_denominator_qualified": false,
+  "source": {
+    "bytes": 29813,
+    "http_last_modified_utc": "2026-11-04T16:23:10Z",
+    "report_date_native": "11/4/2026",
+    "report_time_native": null,
+    "sha256": "64d92c0f8787191e42d3889caf60ecc5e56a7f1e2a8fdfd406152afcdc60f7b3",
+    "status_native": "Preliminary Election Reconciliation - Unofficial Totals",
+    "timezone_native": null,
+    "url": "https://www.harrisvotes.com/Portals/harrisvotes/Documents/2026/Reports/1126%20Preliminary%20Election%20Reconciliation%20-%20Unofficial%20Totals.pdf?ver=UZziX2HoKRKkYolHPwg9EQ%3D%3D"
+  },
+  "state": "TX"
+}

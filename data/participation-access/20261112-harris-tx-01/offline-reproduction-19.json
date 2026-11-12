@@ -1,0 +1,12 @@
+{
+  "archived_tests": 2,
+  "complete_native_measures": 13,
+  "counted_ballots": 1392280,
+  "network_creation_dns_and_external_command_guards_probed": true,
+  "network_ocr_or_source_acquisition_required": false,
+  "no_new_rate_or_precinct_geometry": true,
+  "outputs": 87,
+  "roster_voters": 1393495,
+  "signed_native_difference": -4085,
+  "status": "pass"
+}

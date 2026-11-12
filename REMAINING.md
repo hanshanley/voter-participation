@@ -20,6 +20,27 @@ Context shapes in all 51 jurisdictions are **not** complete participation data.
 Candidate votes, processing/return activity and modeled state effects must not
 be substituted for missing ballot observations or precinct boundaries.
 
+Harris County, Texas is now connected using its already-held preliminary
+reconciliation, without repeating acquisition/OCR: **1,392,280 counted ballots**,
+not the separate **1,393,495 roster voters**. All 13 factual rows and the native
+**-4,085 C-F-I discrepancy** remain. The November 4, 2026 source has no report
+time/timezone; 2,761,770 registrations have unqualified status/cutoff, so no new
+rate is supplied. No precinct polygons or demographic allocations are invented.
+Texas full-election county coverage in these views is now **1/254**. Best
+available prioritizes this native snapshot; both separate early/mail modes keep
+all 254 counties each, and every old Texas record/other state's data is unchanged.
+
+Actual desktop/phone production passes eight Harris county pointer selections,
+four full-election contexts, both early/mail views, source/download/disagreement
+details and 253 missing-not-zero counties. Wisconsin's 32 ward rows, zero and
+noncontiguous labels and all 113 original model objects survive. Website source
+`94db6c0` is unchanged, with zero builds. Catalog `8808a7c` activates matching
+counts/bindings in one commit after 86 full immutable files are verified.
+Science **443243371**, tag `participation-harris-county-counts-20261112-01`:
+complete **68,729,952-byte / 192-member** download, all ten full assets verified,
+457 frontend checks and two fresh 87-output blocked-network offline replays.
+Records: `data/participation-access/20261112-harris-tx-01/`.
+
 Jefferson County, Wisconsin is now connected to the existing county map and
 county reporting-row selector: **38,414 native Ballots Cast / 52,428 Registered
 Voters**, all **32 literal ward-group rows**, including one observed 0/0 row.
@@ -31,8 +52,8 @@ not statewide completion. The previous Rock record and all other states survive.
 
 Actual production verifies eight county pointer selections and 128 reporting-row
 selections across desktop/phone, full native fields, complete-download links,
-all 113 old model objects and unchanged website source `94db6c0`. Data catalog
-`2176b9a` activates counts and bindings together, with 86 full immutable files
+all 113 old model objects and unchanged website source `94db6c0`. Its original data catalog
+`2176b9a` activated counts and bindings together, with 86 full immutable files
 verified and no website build. Browser QA caught missing selector aliases;
 the corrected third version retains the first two immutable publications.
 Science **443214044**, tag `participation-wisconsin-jefferson-counts-20261112-03`:
@@ -40,7 +61,7 @@ Science **443214044**, tag `participation-wisconsin-jefferson-counts-20261112-03
 684 frontend checks and two fresh 90-output offline replays pass.
 
 Partial native county observations remain IA **1/99**, KY **1/120**, MI **2/83**,
-MO **1/115**, NV **4/17**, PA **43/67**, UT **23/29**, WI **2/72**.
+MO **1/115**, NV **4/17**, PA **43/67**, TX **1/254**, UT **23/29**, WI **2/72**.
 This list does not imply other states have universal precinct or historical
 coverage. NJ's 21/21 selected observations are not certified full-election totals.
 New Brown/Milwaukee/Dane source URLs returned 403 and remain stopped, not
@@ -48,6 +69,13 @@ recovered from cached search results. Pursue other distinct permitted primary
 products and already-held qualified observations; do not restart completed fits
 or source campaigns. The broader geographic task and sole 45-minute continuation
 remain open. Full records: `data/participation-access/20261112-jefferson-wi-01/`.
+
+A fresh Utah declared index adds no qualified missing-county observation:
+regenerated report UUIDs, as-of timestamps and backend zeros do not close its
+six gaps. Existing denied Cache workbook products stay stopped. Butler Ohio's
+rendered external control is not a new county observation because the original
+PartyTurnout report returned HTTP403. Reuse other genuinely qualified held
+observations or distinct permitted primary products; do not loop on these holds.
 
 ## Completed joint administrative-participation / House-choice source test
 

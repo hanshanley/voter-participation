@@ -8,7 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
-| Current geographic gap integration | [Jefferson WI: county ballots and native ward-group rows](#2026-jefferson-wisconsin-county-and-ward-group-participation) |
+| Current geographic gap integration | [Harris TX: counted ballots, not roster voters](#2026-harris-texas-held-counted-ballot-integration), [Jefferson WI: county ballots and native ward-group rows](#2026-jefferson-wisconsin-county-and-ward-group-participation) |
 | Joint participation and House choices | [Four-axis source test: entry gains and drop-off negatives](#four-axis-administrative-participation-and-house-choice-dependence) |
 | Fixed-marginal historical calibration | [Nested holdouts and six unvalidated current association stresses](#fixed-marginal-house-calibration-and-current-association-stresses) |
 | Held-out cross-election dependence | [Paired heads and identical-margin flow test](#held-out-cross-election-dependence-and-identical-margin-flows) |
@@ -34,6 +34,62 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Harris Texas held counted-ballot integration
+
+An already-held and previously verified official report was missing from the
+county-map runtime. It is now connected, rather than acquired or OCR'd again:
+`https://www.harrisvotes.com/Portals/harrisvotes/Documents/2026/Reports/1126%20Preliminary%20Election%20Reconciliation%20-%20Unofficial%20Totals.pdf?ver=UZziX2HoKRKkYolHPwg9EQ%3D%3D`.
+Original 29,813 bytes, SHA256
+`64d92c0f8787191e42d3889caf60ecc5e56a7f1e2a8fdfd406152afcdc60f7b3`.
+Native report date **11/4/2026**, with no report time or timezone. The HTTP
+Last-Modified value is not substituted for the source clock.
+
+**I. Total ballots counted (G+H) = 1,392,280**, separately **C. Total Voters
+(A+B) = 1,393,495** from rosters. All 13 native factual rows remain, including
+**5,300 rejected/pending** and signed **C-F-I = -4,085**. Roster minus counted
+alone is 1,215, not the native reconciliation field. No disagreement is repaired
+or pending/possible additions counted prematurely. Preliminary/unofficial status
+remains; no certified, final or unique-person claim follows.
+
+Registered Voters **2,761,770** has undeclared status/cutoff scope: **no new rate**.
+`48201` is contextual Census identity, not a FIPS field printed in the report.
+The unchanged full 254-county 2026 reference supplies context, not precincts.
+Texas full-election county observations are now **1/254** in these map views.
+Best available prioritizes this native count; all **254 early + 254 mail** county
+observations remain in their separate modes, not mixed with counted ballots.
+All 1,018 old Texas records, other 50 state shards, Wisconsin's two counties/
+32 ward rows and existing native geometries/tables are preserved exactly.
+
+Scientific source `3bed691632efac95cb1b62c18fee79dc2331f06b`, immutable science
+**443243371**, tag `participation-harris-county-counts-20261112-01`.
+Complete ZIP **68,729,952 bytes / 192 members**, SHA256
+`ce1daade50e084cfdba52daf7dc1cb31136ede87b9f633bd0f1b291b55c453e2`.
+Includes all 13 factual rows, safe provenance, full sufficient baseline runtime
+inputs, unchanged county reference, every new output and maintained code/tests.
+No raw HTTP/session headers, private voters or respondents. Both fresh guarded
+offline replays reproduce all **87 outputs**; **457 actual frontend checks**,
+two focused tests plus two Wisconsin regressions pass. Explicit unpublished
+desktop/phone renderer fixtures were checked before immutable publication.
+
+All ten full release assets are anonymously verified. Catalog
+`8808a7c0d80324f32a2c3f37afe05ed1e365798a` atomically activates both dependent
+datasets after all **86 immutable files** are verified; intermediate catalog
+remained unchanged. Actual production, without overrides, passes eight Harris
+map clicks/four source contexts on desktop/phone, both 254-county early/mail
+views, full source details/date/download, 253 unknown-not-zero counties, no rate,
+Wisconsin zero/noncontiguous-ward regressions and all 113 original model objects.
+Five actual source scripts and website `94db6c0` remain unchanged; zero builds.
+Full records: `data/participation-access/20261112-harris-tx-01/`.
+
+A distinct fresh Utah declared index (343,311 bytes, SHA256
+`9cbb3cc2b90d72dda788abdd3fa505440bc0e39f86d57d77ca5a0ad4f349c688`,
+captured November 12, 2026 at 16:38:21 UTC) yields no newly qualified missing
+county report; regenerated blob UUIDs and backend zeros are not new observations.
+Utah remains 23/29; denied Cache workbook routes stay stopped. Butler Ohio's
+rendered 148,684 control has an underlying original HTTP403 and is **not**
+promoted as a native county count or recovered through alternate clients.
+The nationwide geographic task remains open, with the sole 45-minute continuation.
 
 ## 2026 Jefferson Wisconsin county and ward-group participation
 
