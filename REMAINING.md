@@ -8,10 +8,66 @@ nonparticipation and new/returning-voter estimates, then their tested integratio
 into the existing project. Do not stop at an inventory or another audit.
 
 The single assistant continuation runs every **45 minutes**
-(schedule 122; the previous schedules 121, 120 and 119 are stopped).
+(schedule 124; schedules 123, 122 and earlier continuations are stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
+
+## Current priority: reconcile 2026 counts and the combined-source model
+
+The user explicitly prioritizes updating the 2026 estimates and correcting the
+disputed House map. The continuation must combine official returns from the
+supplied all-state website directory, weighted NORC, historical and current
+exit/current-voter polling, Census/ACS local context, registration/history data
+and mail/absentee/early-ballot dispositions. Do not return to historical
+inventories or new model variants while these current-source checks are pending.
+
+Use the sources for their actual roles: candidate returns constrain contest
+totals; qualified native ballot measures constrain participation; NORC supplies
+study-frame demographic/choice/participation associations; comparable voter-poll
+joint tables supply diagnostic or validation evidence; Census/ACS supplies
+resident/citizen context and compatible frames, not voter characteristics.
+Registration stocks and returned mail ballots are not automatically eligible
+population or accepted/tabulated votes. Preserve applications, issued, returned,
+accepted, rejected, outstanding and counted ballots as separate measures.
+
+Actually estimate switching, retention, entry/return and modeled nonparticipation
+with explicit source populations, joint-information requirements, historical
+holdouts, simple baselines, sensitivity and uncertainty. Current-voter-only polls
+cannot identify people who stayed home. Unknown matches and registration
+deletions do not establish nonvoting, death or migration. Do not spread state
+estimates over counties or precincts; local models require compatible inputs,
+geography and validation. Shared SSRS partner products are not independent studies.
+
+**Actual source progress:** refreshed every one of the 51 directory dispositions,
+with 18 successfully acquired native indexes and explicit access holds retained.
+Fresh official Hawaii summary/precinct TSVs and Wyoming official summary/ballot
+PDFs plus its three-workbook precinct archive are held locally. Wyoming's native
+House summary has Gray99,906 / Kinney61,689 and its separate ballot summary has
+191,713 ballots across23counties. These new files have not yet been compiled,
+used to update estimates or activated on the website. Do that next, checking
+all native fields and parent totals and recalculating only qualified changed cases.
+
+**Texas map diagnosis:** the held counts already imply **+11.9761 Democratic
+two-party-share points**, equivalent to **+23.9522 D-minus-R margin points**.
+Texas is gray because of the behavioral comparison hold, not a Republican swing.
+Separate descriptive reported totals and their units/accessibility from whether
+they support a behavioral decomposition. Do not force signs or promote
+unopposed-candidate/coalition artifacts into preference swings.
+
+**NORC version check:** both the supplied project page and download declaration
+returned native HTTP200 on November12 at23:16UTC. The latter explicitly says
+data will change as they are weighted to final vote counts. Compare the declared
+CSV/codebook version with held originals before any refit. Determine whether
+weights use current outcomes before claiming independent preconditioning
+validation; data reweighted to returns cannot independently validate those same
+returns. Reuse accepted fits when sufficient inputs are unchanged.
+The supplied SSRS methods URL returned native307, not403. Do not invent access
+holds from an empty web-renderer result. Existing genuine access stops remain.
+
+The updated continuation includes the exact supplied NORC/SSRS links and these
+requirements. Current request tasks631/632/633 remain open; the schedule change
+alone is not an estimate update or whole-project completion.
 
 ## Historical source delivery verified; completeness qualification remains
 

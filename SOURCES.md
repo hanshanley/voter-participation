@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current combined-source priority | [2026 returns, NORC revisions and voter-poll reconciliation](#2026-combined-source-refresh-and-model-reconciliation) |
 | Reusable participation updates | [Reviewed routine, complete queries and real no-op proof](#reviewed-routine-participation-batch) |
 | Historical precinct bulk collection | [All-state source/query presence for 2016/2018/2020/2022/2024](#historical-precinct-bulk-collection-2016-through-2024) |
 | House-result comparison correction | [Massachusetts and changed major-party contest coverage](#house-result-comparability-audit-and-correction) |
@@ -38,6 +39,52 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 combined-source refresh and model reconciliation
+
+The user's current instruction is to use official2026 returns, weighted NORC,
+exit/current-voter polling over time, Census/ACS local context, registration/
+history and mail/absentee/early-ballot measures together to update the estimates,
+not merely list their availability. Current task details are in
+[REMAINING.md](REMAINING.md). The single45-minute continuation is124.
+
+| Newly checked declaration | Native outcome, November12 at23:16UTC |
+|---|---|
+| [NORC project](https://www.norc.org/services-solutions/civic-health-elections-project.html) | HTTP200;181,832bytes; SHA256 `6bf924a71e60f6d2d393ca526bafa6a9acd9abf336e22c3759b1df6ae3ca223a` |
+| [NORC download declaration](https://civichealth.norc.org/download-data.html) | HTTP200;2,962bytes; SHA256 `505d5e7d5992251639f669fd589e48a86176733473414c4174793101deddd2f1`; declares public-use ZIP/CSV and codebook |
+| [SSRS supplied methods link](https://ssrs.com/news/what-you-need-to-know-about-the-election-day-voter-poll/) | Native307; no successful original claimed and not falsely labeled403 |
+
+NORC's native declaration explicitly says the data will change as weights
+are adjusted to final vote counts. The supplied
+[CSV](https://civichealth.norc.org/downloads/civichealth_datafile.csv),
+[codebook](https://civichealth.norc.org/downloads/civichealth_codebook.zip) and
+[crosstabs](https://civichealth.norc.org/crosstabs.html) are version-check leads,
+not newly acquired/qualified microdata in this increment. Compare their actual
+version and weight definitions with the already-held113,020 observations and
+accepted fits. A source weight calibrated to current results is not independent
+validation of those same results. Empty web-renderer output is not a native
+access denial; the two NORC pages above are reachable.
+
+The actual all51jurisdiction directory refresh retains every disposition:
+48declared results-index URLs,24requests,18acquired indexes and30access holds,
+including persisted stops. Fresh declared official HI summary/precinct TSVs
+and WY candidate/ballot PDFs plus its complete three-workbook precinct archive
+are held. WY native House99,906Gray/61,689Kinney differs slightly from the old
+provider99,891/61,684; separate native ballots191,713 across23counties.
+No new numerical compilation, model update or activation is claimed yet.
+
+The native civicAPI refreshes for race87495 and87098 returned403 and are stopped;
+the declared AlaskaNovember11combined report returned405. No other client,
+cache, mirror or search-snippet numbers replace those failed originals.
+Independently declared official products remain separate sources, not mirrors.
+
+Texas's existing raw counts imply+11.97610548 Democratic two-party-share points,
+or+23.95221096 D-minus-R margin points. Its model-comparison hold is not a
+Republican result. Keep descriptive reported totals, units, candidate-coverage
+qualification and behavioral attribution distinct. Current-voter polls do not
+identify missing prior voters, Census residents do not become observed voters,
+and registration/returned/accepted/tabulated measures must not be interchanged.
+The schedule change is operational policy, not new scientific results.
 
 ## Reviewed routine participation batch
 

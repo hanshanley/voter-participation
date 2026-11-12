@@ -1,0 +1,63 @@
+{
+  "NORC_native_pages_reachable": true,
+  "NORC_publisher_declares_final_vote_count_weight_revisions": true,
+  "contract": "participation.combined_source_priority.v1",
+  "coverage": "All50states plus DC where supported; presidential and midterm history",
+  "modeled_outcomes": [
+    "participation",
+    "vote_share_change",
+    "switching",
+    "retention",
+    "entry_return",
+    "latent_nonparticipation"
+  ],
+  "new_estimates_or_website_activation": false,
+  "operational_policy_not_scientific_results": true,
+  "requirements": [
+    "Actual numerical integration, not source inventories alone",
+    "Native versions, weights, response universes and joint-information qualification",
+    "Historical holdouts, simple baselines, source-based sensitivity and uncertainty",
+    "No state-to-local allocation without a qualified local model",
+    "No current-voter-only identification of stayinghome",
+    "No missing-as-zero or inferred death/migration/firstever voting",
+    "Complete permitted sufficient-input/code/test/query/result downloads",
+    "No private respondents or private fine cells published",
+    "Reconcile reported endpoints and units separately from behavioral eligibility"
+  ],
+  "return_calibrated_weights_are_not_independent_validation": true,
+  "schedule": {
+    "id": 124,
+    "interval": "45m",
+    "one_active_schedule_verified": true,
+    "replaced_stopped": [
+      122,
+      123
+    ]
+  },
+  "source_roles": [
+    {
+      "role": "Contest counts and separately qualified ballot/participation controls",
+      "source": "official_election_returns"
+    },
+    {
+      "role": "Weighted source-frame demographic, participation and vote-choice associations",
+      "source": "NORC_CHEP"
+    },
+    {
+      "role": "Comparable current-voter composition and actual joint-history checks; shared study partners not independent",
+      "source": "historical_and_current_exit_voter_polls"
+    },
+    {
+      "role": "Compatible population frames and district/county/precinct resident context, not observed voter attributes",
+      "source": "Census_ACS"
+    },
+    {
+      "role": "Native stocks and qualified matched histories, preserving unknowns and cohort changes",
+      "source": "registration_and_history"
+    },
+    {
+      "role": "Distinct applications/issued/returned/received/accepted/rejected/tabulated/outstanding snapshots",
+      "source": "mail_absentee_early_ballots"
+    }
+  ]
+}
