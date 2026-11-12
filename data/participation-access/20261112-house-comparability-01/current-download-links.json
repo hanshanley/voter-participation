@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "corrected_current_CSV": true,
+      "held_and_qualified_state_selection": true,
+      "no_horizontal_overflow": true,
+      "old_target_CSV_not_current": true,
+      "width": 1440
+    },
+    {
+      "corrected_current_CSV": true,
+      "held_and_qualified_state_selection": true,
+      "no_horizontal_overflow": true,
+      "old_target_CSV_not_current": true,
+      "width": 390
+    }
+  ],
+  "current_CSV_rows": 450,
+  "final_footer_only_change_verified": true,
+  "qualified_profile_family_state_rows": 297,
+  "status": "pass"
+}

@@ -1,0 +1,25 @@
+{
+  "status": "passed_actual_reader_all_nine_models",
+  "checks": 166188,
+  "held_states": [
+    "AK",
+    "AL",
+    "CA",
+    "FL",
+    "IL",
+    "KY",
+    "LA",
+    "MA",
+    "ME",
+    "MS",
+    "NC",
+    "NJ",
+    "NV",
+    "OK",
+    "TX",
+    "WA",
+    "WI"
+  ],
+  "all_unqualified_behavioral_views_missing": true,
+  "source_only_scenarios_not_substituted": true
+}

@@ -1,0 +1,33 @@
+{
+  "base_url": "https://www.themarginoferror.com",
+  "cases": [
+    {
+      "corrected_CSV_not_superseded_targets": true,
+      "exact_map_values": 11781,
+      "incompatible_states_unavailable_in_every_view": true,
+      "keyboard_enter_space_selection": true,
+      "no_horizontal_overflow": true,
+      "original_full_download_link_present": true,
+      "per_pin_single_download": true,
+      "state_selections": 50,
+      "true_Massachusetts_pointer_selection": true,
+      "width": 1440
+    },
+    {
+      "corrected_CSV_not_superseded_targets": true,
+      "exact_map_values": 11781,
+      "incompatible_states_unavailable_in_every_view": true,
+      "keyboard_enter_space_selection": true,
+      "no_horizontal_overflow": true,
+      "original_full_download_link_present": true,
+      "per_pin_single_download": true,
+      "state_selections": 50,
+      "true_Massachusetts_pointer_selection": true,
+      "width": 390
+    }
+  ],
+  "intentional_bad_scale_clears_and_recovers": true,
+  "intentional_source_failure_fails_closed": true,
+  "status": "passed_corrected_House_comparability_desktop_phone",
+  "valid_data_overrides": false
+}

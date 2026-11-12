@@ -1,0 +1,143 @@
+{
+  "assets": {
+    "actual-reader-verification.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740792739,
+      "bytes": 369,
+      "sha256": "f84e3af0f5a9e56eeb6a84d80e16d278fc29d36a736a98a768c6ca9e13a9347e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/actual-reader-verification.json"
+    },
+    "analytical-predecessor-manifest.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740792791,
+      "bytes": 23250,
+      "sha256": "7545f1a87b624cb2ff51e7beb6fa716fd496c83e763179bbed39e317a86eb671",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/analytical-predecessor-manifest.json"
+    },
+    "border-hit-regression.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740792824,
+      "bytes": 475,
+      "sha256": "9efcf9bccdb8fd28b7d8769a82c863f1b85ec6c8cbf5eb1ac7483b62196a8aa7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/border-hit-regression.json"
+    },
+    "candidate-line-review.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740792875,
+      "bytes": 336,
+      "sha256": "69871f36a1f2ecdd1562e5e7bb639f488091c074a15d3059e9d4e6beba252776",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/candidate-line-review.json"
+    },
+    "checksums.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740792936,
+      "bytes": 2536,
+      "sha256": "3315d12eb5a6a3139f664696d9218ad09050ae207608a98bc566bbb07ab2cba0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740792961,
+      "bytes": 50449445,
+      "sha256": "684edab6893d42eda52225b37fc53a663570322c39541c5f173fe47f3359b7bd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/complete-analysis.zip"
+    },
+    "complete-audit.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793119,
+      "bytes": 814048,
+      "sha256": "87600f4819217ac124a11120d9af49c6cf75d35e91839e10b2e29a165ee412cf",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/complete-audit.json"
+    },
+    "complete-profile-family-state-comparisons.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793172,
+      "bytes": 199117,
+      "sha256": "e734dfbf2e1cdf62c2996b9bafd4c0a7fc385f2d06449c3190275033f0ff48f3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/complete-profile-family-state-comparisons.csv"
+    },
+    "independent-verification.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793213,
+      "bytes": 3693,
+      "sha256": "6464d3663f424528c5b48bdd5f363b011e3ebff64fdafe3ab6a7c0a90ef46eb4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/independent-verification.json"
+    },
+    "local-browser-acceptance.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793260,
+      "bytes": 1028,
+      "sha256": "27b26275c30879bf33d72171dc9940416d9b61e641ecde6b2083904c142fba4f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/local-browser-acceptance.json"
+    },
+    "offline-analysis-reproduction-19.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793288,
+      "bytes": 428,
+      "sha256": "1eccff1e3d84bfece8e018e62437d148b4654535d3ab7c16829f4e54cd43d851",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/offline-analysis-reproduction-19.json"
+    },
+    "offline-analysis-reproduction-73.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793320,
+      "bytes": 428,
+      "sha256": "4eca0c10f0206a87f90b4b14a0609e6e42221a21eef6c129732d8b313bd4dc99",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/offline-analysis-reproduction-73.json"
+    },
+    "package-receipt.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793379,
+      "bytes": 318,
+      "sha256": "4252ea94130049c305754fddbb520a2494d6162a4fa159f878e733732298fd1c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/package-receipt.json"
+    },
+    "public-source-verification.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793411,
+      "bytes": 2585,
+      "sha256": "cbfe13991b253007febf598d1dd8f90568caf985e8769f3ddacef18ba724000a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/public-source-verification.json"
+    },
+    "summary.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793436,
+      "bytes": 1098,
+      "sha256": "20e57f505e4286cb7b4dd19c7c4d628e3efb9599235576ce0901d862a9392045",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/summary.json"
+    },
+    "viewer-attenuated.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793475,
+      "bytes": 6360976,
+      "sha256": "2e7bb19e2b7d2ef4abd0af9fe59e73954ae6080cf34c6e7898e68cae1a1d06b4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/viewer-attenuated.json"
+    },
+    "viewer-full.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793533,
+      "bytes": 6363612,
+      "sha256": "d5376417ad3ecbca674e075b507728aa6ceb76fe20105581bfaeb013d1261bcb",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/viewer-full.json"
+    },
+    "viewer-only-archive-delta.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793660,
+      "bytes": 1968,
+      "sha256": "a4774341b35a944b530391066811432ed8d8f5621becd5aac689e19a4df85e5a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/viewer-only-archive-delta.json"
+    },
+    "viewer-original.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740793701,
+      "bytes": 6319695,
+      "sha256": "719f0bd533e58b0f7edee1acb3121b4285ebe2c50326f0498b830afd4f8176a0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-comparability-20261112-01/viewer-original.json"
+    }
+  },
+  "immutable": true,
+  "release_id": 443411454,
+  "scientific_source_commit": "cc50fc288739b1c8150a68ab1df07468b580eace",
+  "status": "passed_complete_immutable_science",
+  "tag": "participation-house-comparability-20261112-01",
+  "website_baseline": "109754a734f043fbbbe4d792138caea3cd9da5f0"
+}

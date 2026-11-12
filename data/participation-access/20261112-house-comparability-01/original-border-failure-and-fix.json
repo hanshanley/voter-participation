@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "corrected_visibleFill_selects_MA": true,
+      "original_stroke_intercepts_valid_MA_fill_click": true,
+      "style_only_negative_fixture_not_production": true,
+      "width": 1440
+    },
+    {
+      "corrected_visibleFill_selects_MA": true,
+      "original_stroke_intercepts_valid_MA_fill_click": true,
+      "style_only_negative_fixture_not_production": true,
+      "width": 390
+    }
+  ],
+  "source_data_overrides": false,
+  "status": "pass"
+}

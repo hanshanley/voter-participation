@@ -1,0 +1,63 @@
+{
+  "anonymously_verified_full_files": {
+    "data/house-comparability/20261112-01/complete-audit.json": {
+      "bytes": 814048,
+      "sha256": "87600f4819217ac124a11120d9af49c6cf75d35e91839e10b2e29a165ee412cf"
+    },
+    "data/house-comparability/20261112-01/complete-profile-family-state-comparisons.csv": {
+      "bytes": 199117,
+      "sha256": "e734dfbf2e1cdf62c2996b9bafd4c0a7fc385f2d06449c3190275033f0ff48f3"
+    },
+    "data/house-comparability/20261112-01/independent-verification.json": {
+      "bytes": 3693,
+      "sha256": "6464d3663f424528c5b48bdd5f363b011e3ebff64fdafe3ab6a7c0a90ef46eb4"
+    },
+    "data/house-comparability/20261112-01/summary.json": {
+      "bytes": 1098,
+      "sha256": "20e57f505e4286cb7b4dd19c7c4d628e3efb9599235576ce0901d862a9392045"
+    },
+    "data/house-comparability/20261112-01/viewer-attenuated.json": {
+      "bytes": 6360976,
+      "sha256": "2e7bb19e2b7d2ef4abd0af9fe59e73954ae6080cf34c6e7898e68cae1a1d06b4"
+    },
+    "data/house-comparability/20261112-01/viewer-full.json": {
+      "bytes": 6363612,
+      "sha256": "d5376417ad3ecbca674e075b507728aa6ceb76fe20105581bfaeb013d1261bcb"
+    },
+    "data/house-comparability/20261112-01/viewer-original.json": {
+      "bytes": 6319695,
+      "sha256": "719f0bd533e58b0f7edee1acb3121b4285ebe2c50326f0498b830afd4f8176a0"
+    },
+    "scripts/house_comparability.py": {
+      "bytes": 14099,
+      "sha256": "c49bc5c04a87adbc3a0477e16d2faecc8bb86e74d45f3415fd617f657963b518"
+    },
+    "scripts/package_house_comparability.py": {
+      "bytes": 5859,
+      "sha256": "e91fc0f490f78053736a94dc1db329900eb9bfaf09c3b89e16a0400e7807953d"
+    },
+    "scripts/reproduce_house_comparability.py": {
+      "bytes": 10437,
+      "sha256": "708b4fb25fd044e31fb328ff830da3d22a31a92e54bc3f53b5d10f7cd2a3b8c4"
+    },
+    "scripts/stage_house_comparability.py": {
+      "bytes": 5069,
+      "sha256": "5dba293f36c74fca7c8a18eaafdfea2cb404d9360ef7325c21e3d9147892197f"
+    },
+    "scripts/verify_house_comparability.mjs": {
+      "bytes": 2105,
+      "sha256": "09a0b094f4ea4b70d9a06dd0eb5b0a5970c0103d0c73fb3affaa1f3a69272f22"
+    },
+    "scripts/verify_house_comparability.py": {
+      "bytes": 4743,
+      "sha256": "cc1bbe2d9bc3ffdbd1e36d59e6b64cab5bc0bafe88b2cbc23b270b12910bbddb"
+    },
+    "tests/test_house_comparability.py": {
+      "bytes": 6955,
+      "sha256": "803e70525a24f5f96d6199a93779ba4ecb85f716305b25edb1b2820d94c8dc6a"
+    }
+  },
+  "immutable_viewer_source": "4891ee0678c0105d8b5a228e340b587e157fce7d",
+  "source_commit": "cc50fc288739b1c8150a68ab1df07468b580eace",
+  "status": "pass"
+}

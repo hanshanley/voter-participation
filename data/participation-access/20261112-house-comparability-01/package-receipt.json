@@ -1,0 +1,10 @@
+{
+  "archive": {
+    "bytes": 50449445,
+    "sha256": "684edab6893d42eda52225b37fc53a663570322c39541c5f173fe47f3359b7bd"
+  },
+  "complete_sufficient_inputs_and_all_queries_included": true,
+  "members": 133,
+  "raw_respondents_and_private_fine_cells_exported": false,
+  "source_only_holds_not_observed_effects": true
+}

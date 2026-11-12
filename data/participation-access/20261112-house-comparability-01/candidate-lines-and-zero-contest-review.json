@@ -1,0 +1,12 @@
+{
+  "all_empty_contests_already_held": true,
+  "candidate_rows": 1400,
+  "districts": 435,
+  "literal_all_candidate_zero_districts": [
+    "FL-10"
+  ],
+  "same_district_name_across_multiple_party_rows": [],
+  "source_numbers_unchanged": true,
+  "source_zeros_not_reclassified_as_positive_support_or_ballots": true,
+  "status": "pass"
+}

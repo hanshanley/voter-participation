@@ -8,15 +8,27 @@ nonparticipation and new/returning-voter estimates, then their tested integratio
 into the existing project. Do not stop at an inventory or another audit.
 
 The single assistant continuation runs every **45 minutes**
-(schedule 121; the previous schedules 120 and 119 are stopped).
+(schedule 122; the previous schedules 121, 120 and 119 are stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## Immediate priority: House-result comparison correctness
+## Next priority: repeatable all-state updates
 
-The user identified Massachusetts's displayed **-22.91-point** House-margin
-change as wrong. The raw source calculation compares 2024 D/R counts
+Complete the requested reusable all-state batch workflow rather than adding
+per-state scripts: automatic qualified-product discovery, reviewed-adapter
+reuse, content-hash caching/no-op detection, resumable verification/publication
+and one documented routine command. The new batch publisher has six passing
+tests for atomic activation, interruptions, immutable-byte validation even on
+no-op, duplicates and concurrent catalog changes. It remains uncommitted;
+the generic discovery/compiler/cache/resume/intake CLI is **not yet complete**.
+Demonstrate actual idempotence against the 4,963 already-connected rows.
+New formats and measurement scopes still require qualification.
+
+## House-result comparison correction verified live
+
+The misleading Massachusetts **-22.91-point** preference-swing presentation
+is removed. The unchanged raw source calculation compares 2024 D/R counts
 2,386,143 / 304,460 with held 2026 counts 1,722,855 / 507,904. However, the
 House Clerk's 2024 page 35 lists named Republican candidates in only **2/9**
 districts; the held 2026 source has them in **5/9**. This is not a like-for-like
@@ -24,19 +36,37 @@ statewide preference shift. The two common D/R source district IDs yield
 **+5.65 points Democratic**, but that subset is not a statewide estimate and
 district-ID matching alone does not establish unchanged geographic boundaries.
 
-The complete 435-district/50-state comparability audit is now being implemented:
-check named-party coverage, missing native counts, duplicate/party-line handling,
-election stages and source completeness. Correct or hold affected comparisons
-and propagate changes through every dependent map, model, table and download.
-**The displayed Massachusetts comparison is not yet fixed.** Internal accounting
-tests and preserving old model objects do not validate their source targets.
-Do not force a preferred direction or run more model variants instead.
+All **435 districts / 1,400 current candidate rows / 50 states** are audited.
+Sixteen candidate-coverage/count/stage policy holds plus Maine's independent
+ranked-choice-round hold leave **33 conditional comparisons / 17 held states**
+across all three families and three association profiles. Only affected
+conditional scenarios were recalculated; source fits, native counts and other
+states' numerical cases are unchanged. Held source-only scenarios remain in
+the complete download, not substituted as election explanations. The current
+maps, state details, saved tables and 450-row CSV all use the corrected masks;
+old targets are explicitly superseded.
 
-The user also requests a reusable, all-state batch update workflow, rather than
-per-state scripts. Finish source correctness first, then complete automatic
-discovery, reviewed-adapter reuse, content-hash caching, no-op detection,
-resumable verification/publication and one documented routine update command.
-The generic publisher starting point is not yet a complete tested workflow.
+Science **443411454**, tag `participation-house-comparability-20261112-01`:
+complete **50,449,445 bytes / 133 members**, all nineteen assets verified;
+465,552 independent checks, 166,188 actual reader/scale checks, six source and
+34 frontend tests. Two full 79-output blocked-network replays are reused after
+all 122 processing members remain byte-identical through final viewer-only
+changes; the final archive was **not** resimulated wholesale. Final archived
+tests/readers were rerun. No source fits or native totals were altered.
+
+Website `3cee7a1` / native Pages `43290808730` / artifact `13977511623`:
+actual **996,886,705 payload / 999,475,200 tar bytes**, both below 1e9.
+All 436 old download pins and 113 archived models survive. Actual desktop/phone
+production passes 23,562 exact map values, 100 state selections, Massachusetts
+pointer/keyboard selection, source/scale fault recovery, current CSV links,
+single-download cache and no-overflow checks. Fill-only hit testing prevents
+adjacent border strokes stealing clicks; demographic scales include reported
+totals even where the selected source group is withheld. Four production
+images were reviewed. Records: `data/participation-access/20261112-house-comparability-01/`.
+
+The held states and geographic gaps are still unresolved source limitations,
+not zero effects or a completed nationwide project. Do not restart accepted
+fits, model variants, acquisitions or deployment campaigns merely for activity.
 
 ## Current geographic integration
 

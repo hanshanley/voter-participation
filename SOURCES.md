@@ -8,7 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
-| Urgent House-result comparison audit | [Massachusetts and changed major-party contest coverage](#house-result-comparability-audit-in-progress) |
+| House-result comparison correction | [Massachusetts and changed major-party contest coverage](#house-result-comparability-audit-and-correction) |
 | Held reporting-row batch integration | [4,963 rows connected across Arkansas, Arizona and Wyoming](#held-reporting-rows-connected-to-county-navigation) |
 | Current geographic gap integration | [Harris TX: counted ballots, not roster voters](#2026-harris-texas-held-counted-ballot-integration), [Jefferson WI: county ballots and native ward-group rows](#2026-jefferson-wisconsin-county-and-ward-group-participation) |
 | Joint participation and House choices | [Four-axis source test: entry gains and drop-off negatives](#four-axis-administrative-participation-and-house-choice-dependence) |
@@ -37,7 +37,9 @@ This document is the detailed reference ledger, not the methods introduction.
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
 
-## House-result comparability audit in progress
+<a id="house-result-comparability-audit-in-progress"></a>
+
+## House-result comparability audit and correction
 
 The displayed Massachusetts raw House-margin change is **-22.90507143 pp**:
 2024 D 2,386,143 / R 304,460 versus held 2026 D 1,722,855 / R 507,904.
@@ -50,10 +52,50 @@ Other/independent and unassigned write-in votes are not reassigned to Republican
 Common D/R source district IDs MA-08/MA-09 have D/R totals 517,363 / 304,460
 then 409,193 / 212,901: **+5.64724422 pp Democratic**. This is only a subtotal
 diagnostic, not a statewide estimate or a certification of unchanged boundaries.
-A generic 435-district/50-state audit is in progress. Comparability must precede
-return conditioning and “observed swing” labels; internal arithmetic alone is
-insufficient. The current live House comparison has **not yet been corrected**.
-No current candidate counts have been changed to force the expected direction.
+A generic **435-district / 50-state / 1,400-current-candidate-row** audit is now
+integrated before return conditioning. Named parties are counted by candidacy,
+not positive support; native missing counts and multiple same-party nominees
+require explicit scope qualification. An all-candidate-zero guard prevents
+empty contests passing merely because names match. FL-10's literal zeros are
+preserved and already held, not promoted as zero voter support. No repeated
+same-district candidate names across party rows were found.
+
+Sixteen coverage/count/stage policy holds plus independent Maine ranked-choice
+scope leave **33 conditional comparisons and 17 held states** in every
+family/profile. All three original families and six existing association
+stresses receive the same decisions. Source fits and counts are unchanged;
+affected conditional scenarios alone are recomputed. Source-only held
+scenarios are explicitly separate in downloads and unavailable as current
+election explanations on every map/static table. A changed MAE population is
+not improved source prediction or validation.
+
+Maintained scientific source `cc50fc288739b1c8150a68ab1df07468b580eace`;
+byte-identical immutable viewer dataset at `4891ee0678c0105d8b5a228e340b587e157fce7d`.
+Science **443411454**, tag `participation-house-comparability-20261112-01`:
+complete **50,449,445 bytes / 133 members**, SHA256
+`684edab6893d42eda52225b37fc53a663570322c39541c5f173fe47f3359b7bd`.
+All nineteen full assets verified anonymously. Every sufficient input,
+district/candidate query, all nine full state/group/assumption/seed outputs
+and code/tests are included, never metadata-only. 465,552 independent checks,
+166,188 actual reader/scale checks, six source and 34 frontend tests pass.
+Two full 79-output network-blocked standard-library replays are retained;
+122 analytical code/input/result members remain byte-identical through the
+final viewer-only changes, so no redundant resimulation was done. The final
+archive itself was not rerun wholesale; final archived source tests and reader
+checks were rerun, with the explicit delta proof preserved.
+
+**Verified live:** website `3cee7a193cb57428887a172c00d355fb06351c10`,
+native Pages `43290808730` / source guard `43290808766` / actual downloaded
+artifact `13977511623`, payload **996,886,705** / tar **999,475,200**, both <1e9.
+All 436 old download pins and 113 original model objects remain. Production
+desktop/phone verifies 23,562 exact map values, 100 state selections, real
+Massachusetts pointer/Enter/Space selection, all family/profile/unit controls,
+current 450-row CSV, withheld cases, cache, source/scale failure recovery and
+no horizontal overflow. Adjacent border strokes no longer steal fill clicks;
+shared demographic bounds include reported totals from states whose selected
+group is held. Four production images reviewed. Old targets remain archived,
+clearly superseded. No native totals were changed to force a desired direction.
+Full records: `data/participation-access/20261112-house-comparability-01/`.
 
 ## Held reporting rows connected to county navigation
 

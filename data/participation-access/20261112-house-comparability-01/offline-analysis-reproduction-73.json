@@ -1,0 +1,13 @@
+{
+  "archive_bytes": 50448964,
+  "archive_sha256": "b24d471bece29fb8abd0432777cfc919ed2a184ad79200e5f7ac219f4e80d2ed",
+  "archived_actual_reader_and_shared_scales_verified": true,
+  "archived_tests": 6,
+  "byte_identical_outputs": 79,
+  "every_archive_member_verified": true,
+  "network_and_external_commands_blocked": true,
+  "private_inputs_used": false,
+  "replay_seed": "73-v4",
+  "source_refits": 0,
+  "status": "passed"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "build_returncode": 0,
+  "all_four_original_owned_symlinks_restored": true,
+  "source_native_reductions_and_models_not_repeated": true,
+  "canonical_source_files_never_modified": true,
+  "prior_successful_precinct_and_swing_build_prerequisites_reused": true
+}

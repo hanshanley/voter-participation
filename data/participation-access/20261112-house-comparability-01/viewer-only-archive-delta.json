@@ -1,0 +1,45 @@
+{
+  "changed_members": [
+    "manifest.json",
+    "viewer-code/public/scripts/participation-return-drivers.js",
+    "viewer-code/scripts/check-participation-house-comparability-browser.py",
+    "viewer-code/src/components/ParticipationReturnDrivers.astro"
+  ],
+  "current_archive_sha256": "684edab6893d42eda52225b37fc53a663570322c39541c5f173fe47f3359b7bd",
+  "final_archive_replayed_in_full": false,
+  "final_archived_reader_and_shared_scale_checks": 166188,
+  "final_archived_tests": 6,
+  "identical_analysis_code_input_result_members": 122,
+  "previous_fully_replayed_archive_sha256": "b24d471bece29fb8abd0432777cfc919ed2a184ad79200e5f7ac219f4e80d2ed",
+  "reason_no_resimulation": "Every analytical implementation, input and output byte is identical; only viewer hit-testing, corrected download links and browser regression coverage changed.",
+  "reused_full_offline_replays": [
+    {
+      "archive_bytes": 50448964,
+      "archive_sha256": "b24d471bece29fb8abd0432777cfc919ed2a184ad79200e5f7ac219f4e80d2ed",
+      "archived_actual_reader_and_shared_scales_verified": true,
+      "archived_tests": 6,
+      "byte_identical_outputs": 79,
+      "every_archive_member_verified": true,
+      "network_and_external_commands_blocked": true,
+      "private_inputs_used": false,
+      "replay_seed": "19-v4",
+      "source_refits": 0,
+      "status": "passed"
+    },
+    {
+      "archive_bytes": 50448964,
+      "archive_sha256": "b24d471bece29fb8abd0432777cfc919ed2a184ad79200e5f7ac219f4e80d2ed",
+      "archived_actual_reader_and_shared_scales_verified": true,
+      "archived_tests": 6,
+      "byte_identical_outputs": 79,
+      "every_archive_member_verified": true,
+      "network_and_external_commands_blocked": true,
+      "private_inputs_used": false,
+      "replay_seed": "73-v4",
+      "source_refits": 0,
+      "status": "passed"
+    }
+  ],
+  "source_refits_or_new_model_simulations": 0,
+  "status": "passed_viewer_only_delta_with_unchanged_complete_analysis"
+}
