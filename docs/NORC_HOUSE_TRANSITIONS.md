@@ -53,18 +53,18 @@ historical transfer improves only modestly. Predicting source likely-voter class
 is not independently predicting completed voting.
 
 A separate state prediction uses previous House counts and current total
-candidate-vote volume, but not the current party split. Across 47 comparable
-states its margin MAE is **6.21027852 points**. Texas projects R+4.5299 versus
+candidate-vote volume, but not the current party split. Across 48 comparable
+states its margin MAE is **6.12699827 points**. This changes the comparison set,
+not the source fits. Texas projects R+4.5299 versus
 held D+5.7080, a +10.2379-point error. Every state error is retained as model
 error, never assigned to another behavioral component.
 
 ## Conditional reconstruction and exact demographic accounting
 
-Forty-seven states have qualified held 2024/2026 same-office endpoints.
-Three retain source-only scenarios and unavailable observed comparisons:
+Forty-eight states have qualified held 2024/2026 same-office endpoints.
+Two retain source-only scenarios and unavailable observed comparisons:
 Alaska's leading current non-Republican nominee is explicitly Nonpartisan,
-Maine's cross-year ranked-choice round compatibility is unresolved, and
-Pennsylvania has missing current candidate totals.
+Maine's cross-year ranked-choice round compatibility is unresolved.
 D.C. has no CHEP sample. None receives an invented recorded baseline.
 
 The complete official House Clerk 2024 PDF supplies all 50 states/435 districts.
@@ -79,12 +79,28 @@ FL-20/OK-03 `(1)` counts remain NULL, not zero. The source notes explain that
 unopposed names are not printed on the ballot; reported state count sums remain
 separate from any invented count for those nominees.
 
-Twenty-one previously anchored baselines change and twelve comparisons are
-newly anchored. Only those 33 states are recalculated. All numerical fields
-and complete assumption/seed cases in the other 17 states are reused exactly.
+In the preceding endpoint update, twenty-one anchored baselines changed and twelve comparisons were
+newly anchored. Only those 33 states were recalculated. All numerical fields
+and complete assumption/seed cases in the other 17 states were reused exactly.
 The entire accepted predecessor and current native district controls remain
 unchanged. These are frozen reported candidate counts, not updated November 12
 counts, certified final totals, ballots or a measured turnout denominator.
+
+The PA-only successor corrects an eligibility error, not a vote count.
+The county-validation table unions reported district candidates with located
+county name/party rows. Its 18 blank PA controls are county-validation-only
+exceptions, not absent native votes. The complete accepted native export has
+all 17 PA districts/34 reported candidates, matching every nonblank held
+candidate control exactly without alias normalization. No county sum or missing
+count is substituted. All 18 exceptions remain unchanged in the full query.
+Provider district/state totals omit known county-source write-ins; those are
+kept separate, not added to Other. This is not a complete Other-ballot count,
+certified final return or participation measure. All 17 native clocks remain.
+
+Only PA is recalculated in this successor; all 49 other states' numerical
+fields and full assumption/seed inventories are reused. PA's before-conditioning
+prediction is D+11.1572 versus reported D+13.3700, a +2.2128-point error.
+Source fits and the frozen November 7 counts are unchanged.
 
 Common row/column multipliers constrain each state's synthetic prior to its
 recorded D/R/Other endpoints; those same multipliers apply to each demographic
@@ -108,7 +124,7 @@ separately partition their state. Different dimensions overlap and must not be
 added. Native disclosure/complementary holds remain; an opaque synthetic
 remainder completes each partition without publishing withheld source groups.
 
-Three frame scales (0.8/1/1.2) and three latent affinities (0.5/1/2) give 432
+Three frame scales (0.8/1/1.2) and three latent affinities (0.5/1/2) give 438
 assumption cases. There are 250 overall seed cases (2.5 million draws) and 1,500
 alternate demographic-partition seed cases (15 million draws), not that many
 distinct people. Monte Carlo variation is not source/design uncertainty, and
@@ -123,6 +139,7 @@ held comparisons, not independently established behavioral percentages.
 | State | Total change | Switching | Net participation | Other | Unresolved |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Texas | +23.95 | +13.94 | +8.59 | +0.39 | +1.03 |
+| Pennsylvania | +15.46 | +6.86 | +8.19 | +0.09 | +0.32 |
 | Minnesota | +11.96 | +7.16 | +4.06 | +0.33 | +0.41 |
 
 Units are D/R margin points. Unrounded counts determine the change, so subtracting
@@ -142,13 +159,15 @@ all 50 endpoint decisions and exact old/new baseline comparisons.
 Public simulation reproduction is complete and standard-library-only:
 
 ```sh
-python3 -Werror code/scripts/reproduce_norc_house_endpoints.py \
+python3 -Werror code/scripts/reproduce_pa_house_native_controls.py \
   --package . --output /fresh/output/path
 ```
 
 Python3.9 is the reference byte-reproduction toolchain. Two fresh network- and
-external-command-blocked reproductions match all eight outputs; sixteen tests and
-52,216 independent endpoint/rational-accounting/demographic checks pass.
+external-command-blocked PA-only reproductions under different hash seeds match
+all eight outputs. Five new native-scope behavior tests, 1,427 independent
+SQL/native-control checks and 52,258 independent endpoint/rational-accounting/
+demographic checks pass. Earlier complete science and its checks remain unchanged.
 Private model-training reproduction requires the original user-supplied local
 survey files and disclosure policy. Raw respondents, identifiers and private fine
 source cells are not published or uploaded to CI.

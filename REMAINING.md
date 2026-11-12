@@ -43,6 +43,33 @@ every comparison or redistribution is approved.
 ## Execution queue
 
 **CURRENT USER PRIORITY: NORC-informed demographic House explanation.**
+The PA native-control scope successor is scientifically complete, release
+**442474232**, source **35f6344abf50b4723170bf86221999ea37f726b9**.
+It gives **48 recorded-endpoint reconstructions/two source scenarios** without
+new counts or NORC refitting. All 17 PA districts/34 reported native candidates
+were already present; 18 blank UNION county-validation rows were incorrectly
+treated as absent native controls. Those exceptions and known omitted
+county-source write-ins remain separate, not normalized, pooled or zero-filled.
+Only PA recalculated; all 49 other numerical rows/full simulations reused.
+Five new behavior tests, 1,427 independent SQL/native checks, 52,258 numerical
+checks and two fresh blocked-network/command PA-only reproductions pass.
+All 18 full assets anonymously verified; complete24,711,519-byte/34-member ZIP
+includes the entire predecessor, complete accepted native export/audit,
+all queries/results/code/tests. 48-state MAE6.12699827 is a changed comparison
+set, not source-fit improvement. Native clocks and Nov7 counts are unchanged.
+
+**Delivered and verified live: website8f1f4e6**, Pages43152046888, actual
+artifact13914043283. Native996798434payload/999393280tar bytes pass both strict1e9
+caps;68 exact unqueried assets/436 unchanged full-download pins pass.
+Production3060values/102actualclicks/all50summaries/6dimensions22options/noJS/faults
+and both PA native-scope captions pass. Preserved Senate/governor1020values/
+126summaries and48responsive/tab layouts pass; all eight production images
+inspected. Reader25tests/Astro0errors0warnings/build4tests pass. Records/media
+under data/pa-house-native-controls/20261112-01. Do not repeat this accepted
+science/deployment merely for activity. Two House source holds and the broader
+evidence project remain open; sole45minute120 stays active.
+
+**Previous 47-comparison increment, preserved unchanged:**
 The official House endpoint successor is scientifically complete, release
 **442419209**, source **7d691c95593714ef4e3b251b0d16c63f72a9f6e9**.
 It gives **47 recorded-endpoint reconstructions/three source scenarios**,
@@ -95,12 +122,13 @@ Original113models/113archived decisions and Senate/governor behavior remain.
 Science, code, complete downloads and live model are done for this increment.
 Do not refit, reacquire, reproduce, rebuild or re-audit them merely for activity.
 
-**Remaining evidence, not a coding hold:** three observed House comparisons
-remain unavailable: AK, ME, PA.
+**Remaining evidence, not a coding hold:** two observed House comparisons
+remain unavailable: AK, ME.
 Their full source scenarios and reasons are retained, never observed zeros.
 AK's leading current non-Republican nominee is explicitly Nonpartisan, not a
-Democrat; ME has unresolved cross-year ranked-choice round compatibility;
-PA omits current candidate controls. The former twelve additional holds are
+Democrat; ME has unresolved cross-year ranked-choice round compatibility.
+PA's erroneous missing-native-control hold is corrected by source-role
+qualification; no candidate count was repaired. Earlier twelve holds were
 resolved by complete native candidate endpoints, not partial county sums.
 Prefer already-held qualified state/district endpoints or genuinely new permitted
 corrections; do not infer them from partial county sums or borrow another office.

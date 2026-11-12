@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Pennsylvania native control scope correction | [48 comparisons; no new counts or refit](#2026-pennsylvania-native-district-control-scope) |
 | Official House endpoint successor | [47 qualified comparisons; unchanged NORC fits](#2026-official-house-endpoint-successor) |
 | NORC-informed demographic House transitions | [Learned associations, simulation and honest prediction checks](#2026-norc-informed-demographic-house-transitions) |
 | Constraint-only flow bounds | [Aggregate-compatible gross flows](#2026-aggregate-compatible-gross-flow-bounds) |
@@ -37,7 +38,63 @@ The per-file URLs, native timestamps, retrieval receipts, and checksums remain i
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
 
+## 2026 Pennsylvania native district control scope
+
+The prior PA hold incorrectly treated blank county-validation joins as missing
+native district votes. The accepted county-control query is a UNION of native
+reported candidates and county candidate/party keys. Its 18 blank PA entries
+are county-validation-only exceptions; all 17 native districts and 34 reported
+candidate counts already exist. Every native candidate matches its nonblank
+held control exactly, without alias normalization, county summing or zero-fill.
+All 18 exceptions are retained, not repaired or deleted.
+
+Reused the complete accepted **1,400-row/435-district/50-state** native candidate
+CSV and complete audit at website source **9bf7f3c10f05a311aa96af6b47cc46c2ab3eb68a**,
+path `data/county-results/20261107T125502Z/party-votes/`.
+The 25,651-byte CSV gzip SHA256 is
+`31af5b11d473397ca7928d3f0ef9c455709f0655bf7b2f29cc9ef653d09111f3`.
+No acquisition or successful large source parsing campaign was repeated.
+The audit explicitly separates provider district/state totals from official
+county fragments. Provider totals omit known county-source write-ins; those
+are NOT pooled into Other. Current counts remain D2,803,188/R2,142,015/O17,361,
+not all Other ballots, certified final totals or participation. All 17 native
+source URLs/clocks remain in the full qualification query.
+
+**48 comparable states / AK+ME held.** Only PA is recalculated; 49 states'
+numerical fields and complete simulations are reused exactly. PA's reported
+known-D/R margin changes from R+2.09314957 to D+13.36998704: +15.46313661 points.
+Conditional switching +6.85916448, net participation +8.19411186, Other
++0.09046519 and unresolved +0.31939507 reconcile exactly. Before current-party
+conditioning PA projects D+11.15716065, retaining its +2.21282639-point error.
+The 48-state preconditioning MAE6.12699827 changes the comparison set, not the
+learned source fits or their validation.
+
+Science source **35f6344abf50b4723170bf86221999ea37f726b9**, immutable release
+**442474232**, tag `participation-pa-house-native-controls-20261112-01`.
+All **18 full assets** anonymously byte/hash verified. Complete
+**24,711,519-byte/34-member ZIP**, SHA256
+`02f4f6d4b8f6770af5725dd7f0e68752432f772c11d9ca3e4852618b6849b08c`,
+contains the entire accepted 47-comparison predecessor, complete native
+CSV/audit, source-role query, all eight outputs, 438 assumptions/250 state/
+1,500 partition seeds/1,600 group decisions and all sufficient code/tests.
+Five new behavior tests, 1,427 independent SQL/native-scope checks and 52,258
+independent numerical checks pass. Two fresh network/external-command-blocked
+PA-only reproductions under different hash seeds match all eight outputs.
+No new private source fits, respondents, fine cells, session headers, compiled
+publisher app code, county allocation or population/causal validation.
+**Website8f1f4e6 is verified live**, Pages**43152046888**, actual artifact
+**13914043283**: **996,798,434 payload / 999,393,280 tar bytes**, both strictly
+below1e9. All68 unqueried production assets/436 unchanged full-download pins pass.
+Production3060map/group values/102actualpointer clicks/all50summaries/6dimensions/
+22options/noJS/fault/checksum/retry/latest-office isolation pass. Both new PA
+scope captions are verified/captured, all eight production images inspected.
+Preserved Senate/governor1020values/126summaries and48responsive/tab layouts pass.
+Full accepted records/media: `data/pa-house-native-controls/20261112-01/`.
+
 ## 2026 official House endpoint successor
+
+**Previous 47-comparison increment, preserved unchanged.** PA eligibility is
+superseded above; all other numerical state rows and simulation cases remain.
 
 The official House Clerk declaring page links its complete
 [2024 congressional statistics PDF](https://clerk.house.gov/member_info/electionInfo/2024/statistics2024.pdf).

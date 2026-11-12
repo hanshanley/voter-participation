@@ -1,0 +1,236 @@
+{
+  "assets": {
+    "checksums.json": {
+      "anonymously_verified": true,
+      "bytes": 2392,
+      "sha256": "145831dead9c0812d865db00e5ada1b863d62cbaaa768fc8b9dc80089b894090",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymously_verified": true,
+      "bytes": 24711519,
+      "sha256": "02f4f6d4b8f6770af5725dd7f0e68752432f772c11d9ca3e4852618b6849b08c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-analysis.zip"
+    },
+    "complete-assumption-cases.json": {
+      "anonymously_verified": true,
+      "bytes": 436594,
+      "sha256": "14561b649e1d1086eb042ceeeb0e94662730cb197ddb5cb4486a6f7b791f7401",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-assumption-cases.json"
+    },
+    "complete-demographic-contributions.csv": {
+      "anonymously_verified": true,
+      "bytes": 201055,
+      "sha256": "cfe5010ded651e8a57b3f0d40242a9405e2854ee5691d4aded414f884711bc6e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-demographic-contributions.csv"
+    },
+    "complete-demographic-seed-cases.json": {
+      "anonymously_verified": true,
+      "bytes": 2541716,
+      "sha256": "232d7753912304685cbe778d6a6baa42479681ad285563cdb713412093b06040",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-demographic-seed-cases.json"
+    },
+    "complete-endpoint-decisions.json": {
+      "anonymously_verified": true,
+      "bytes": 150931,
+      "sha256": "ed6fd44bae07af301a5883206f694fe4ea47642fde3436d481afb9e0c189c215",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-endpoint-decisions.json"
+    },
+    "complete-modeled-flows.csv": {
+      "anonymously_verified": true,
+      "bytes": 41696,
+      "sha256": "d2a1693d86408aa25ea87c97f220f11b6627306dafadab4a6904b0bddb6ebd7e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-modeled-flows.csv"
+    },
+    "complete-result.json": {
+      "anonymously_verified": true,
+      "bytes": 5032940,
+      "sha256": "9026f37f666629f7809c5d72a874f3deefb70ee70ed673f7b5e3c96d526e065b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-result.json"
+    },
+    "complete-seed-cases.json": {
+      "anonymously_verified": true,
+      "bytes": 127542,
+      "sha256": "48b122fdc0b1f4bb5ec4088669877760915a7153244df5e50a4e6c66e2c05dc7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-seed-cases.json"
+    },
+    "complete-state-mechanisms.csv": {
+      "anonymously_verified": true,
+      "bytes": 10940,
+      "sha256": "2b46c249882d3ab38d561b28162d3e5233c73cc3da6f62b692d1b23467b1b8cb",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/complete-state-mechanisms.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "anonymously_verified": true,
+      "bytes": 1668,
+      "sha256": "c962bb673f16f29e63547799d7b49dcfa4e609b5cb2706f0e9b4f4506fa3d9ae",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "anonymously_verified": true,
+      "bytes": 1668,
+      "sha256": "c962bb673f16f29e63547799d7b49dcfa4e609b5cb2706f0e9b4f4506fa3d9ae",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/fresh-reproduction-02.json"
+    },
+    "independent-verification.json": {
+      "anonymously_verified": true,
+      "bytes": 336,
+      "sha256": "df3c6d4295f178bce9c63fe49e7c4d50183d0f65025b6702e268aba60a2ed1fd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/independent-verification.json"
+    },
+    "manifest.json": {
+      "anonymously_verified": true,
+      "bytes": 4764,
+      "sha256": "926317440efc7e5ad58746b10827be8845822b246abb1b9980336facadd4d6b6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/manifest.json"
+    },
+    "native-control-SQL-verification.json": {
+      "anonymously_verified": true,
+      "bytes": 434,
+      "sha256": "5480cb1e136fdbbdb50bb029dfb7988607aaad7d39397efbce5218794e753db1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/native-control-SQL-verification.json"
+    },
+    "package-receipt.json": {
+      "anonymously_verified": true,
+      "bytes": 1972,
+      "sha256": "484e9965fc205bf66526edec01e08960c37fb8f029bd2b2a7ce757ad7ad05ba7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/package-receipt.json"
+    },
+    "unchanged-state-reuse.json": {
+      "anonymously_verified": true,
+      "bytes": 599,
+      "sha256": "b2184448d69f7cc3223c15b736aced8affede5a8ce55f30db93a03146f0a5edd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/unchanged-state-reuse.json"
+    },
+    "viewer-data.json": {
+      "anonymously_verified": true,
+      "bytes": 1927004,
+      "sha256": "a472943cc39ed9be9679f536be6e18cc637a350c2caca005a5ae5efb3bc12803",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-pa-house-native-controls-20261112-01/viewer-data.json"
+    }
+  },
+  "broader_project_complete": false,
+  "immutable": true,
+  "native_source_counts_changed": false,
+  "package": {
+    "archive_bytes": 24711519,
+    "archive_sha256": "02f4f6d4b8f6770af5725dd7f0e68752432f772c11d9ca3e4852618b6849b08c",
+    "independent": {
+      "assumption_cases": 438,
+      "checks": 52258,
+      "complete_demographic_decisions": 1600,
+      "demographic_partition_seed_cases": 1500,
+      "population_validation_claimed": false,
+      "return_anchored_states": 48,
+      "source_individual_histories_identified": false,
+      "states": 50,
+      "status": "passed_independent_NORC_endpoints_rational_accounting_and_demographic_simulations"
+    },
+    "members": 34,
+    "native_SQL": {
+      "checks": 1427,
+      "county_counts_added_to_state": false,
+      "county_validation_exceptions_retained": 18,
+      "current_reported_counts": {
+        "D": 2803188,
+        "O": 17361,
+        "R": 2142015
+      },
+      "independent_behavioral_or_administrative_validation": false,
+      "native_PA_candidate_rows": 34,
+      "native_PA_districts": 17,
+      "primary_qualifier_imported_by_SQL_verifier": false,
+      "source_originals_reacquired": false,
+      "status": "passed_independent_native_reported_controls_SQL_reconciliation"
+    },
+    "native_source_counts_changed": false,
+    "private_raw_respondents_exported": false,
+    "reuse": {
+      "current_source_controls_changed": false,
+      "newly_anchored_states": [
+        "PA"
+      ],
+      "preserved_cases": {
+        "complete_assumption_cases": 429,
+        "complete_demographic_seed_cases": 1470,
+        "complete_seed_cases": 245
+      },
+      "revised_previously_anchored_baselines": [],
+      "source_models_refitted": false,
+      "status": "passed_unchanged_state_numerics_and_full_simulation_reuse",
+      "unchanged_states": [
+        "AK",
+        "AL",
+        "AR",
+        "AZ",
+        "CA",
+        "CO",
+        "CT",
+        "DE",
+        "FL",
+        "GA",
+        "HI",
+        "IA",
+        "ID",
+        "IL",
+        "IN",
+        "KS",
+        "KY",
+        "LA",
+        "MA",
+        "MD",
+        "ME",
+        "MI",
+        "MN",
+        "MO",
+        "MS",
+        "MT",
+        "NC",
+        "ND",
+        "NE",
+        "NH",
+        "NJ",
+        "NM",
+        "NV",
+        "NY",
+        "OH",
+        "OK",
+        "OR",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VT",
+        "WA",
+        "WI",
+        "WV",
+        "WY"
+      ]
+    },
+    "source_commit": "35f6344abf50b4723170bf86221999ea37f726b9",
+    "source_models_refitted": false,
+    "status": "complete_PA_native_House_scope_successor",
+    "summary": {
+      "assumption_cases": 438,
+      "complete_group_decisions": 1600,
+      "demographic_partition_agent_draws": 15000000,
+      "demographic_partition_seed_cases": 1500,
+      "return_anchored": 48,
+      "seeds": 250,
+      "states": 50,
+      "synthetic_agents": 2500000
+    }
+  },
+  "private_raw_respondents_exported": false,
+  "release_id": 442474232,
+  "scientific_source_commit": "35f6344abf50b4723170bf86221999ea37f726b9",
+  "source_models_refitted": false,
+  "status": "passed_immutable_complete_PA_native_House_successor",
+  "tag": "participation-pa-house-native-controls-20261112-01",
+  "website_acceptance": "website-acceptance.json",
+  "website_commit": "8f1f4e699fa9412124cf8deef9f013a7a8ff12eb",
+  "website_integration_status": "verified_live"
+}
