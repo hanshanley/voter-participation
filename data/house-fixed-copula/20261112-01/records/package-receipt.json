@@ -1,0 +1,14 @@
+{
+  "accepted_full_family_predecessor_bytes": 35332487,
+  "accepted_full_source_predecessor_bytes": 163404,
+  "archive": {
+    "bytes": 63651646,
+    "sha256": "08273545ef2886a3994ea2f4a7c7083f7a780e78c3335c88b1d3665cc6b0db72"
+  },
+  "complete_public_outputs": 60,
+  "members": 124,
+  "native_respondents_and_fine_cells_exported": false,
+  "new_profile_simulation_runs": 6,
+  "source_code_commit": "dd28869d0985080f6ec2b31f90d6682f47033e90",
+  "status": "complete_public_copula_packet_created"
+}

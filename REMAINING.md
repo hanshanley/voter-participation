@@ -13,6 +13,62 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Completed fixed-marginal calibration and live association comparisons
+
+The dependence experiment below is complete, including its proposed next step.
+**Do not restart those fits, calibration or simulations.** The new nested test
+reuses 60 accepted outer marginal heads unchanged and fits 180 genuinely new
+inner heads. Every inner training/calibration set excludes its outer holdout;
+overlapping outer-OOF predictions are not used to tune dependence.
+The full 6x5 House-response margins stay fixed for every case. Only the D-D/R-R
+kernel is biased; Other, nonvote and unknown remain distinct.
+
+Primary history-only held-out log loss improves **1.313660 to 1.263987**;
+Brier improves **0.483039 to 0.477228**. The tested demographic/geographic
+version improves 1.348023 to 1.300594 and 0.492568 to 0.485929, but still does
+not beat the simpler calibrated-history version. The declared historical
+source gate passes; the five history selections are 8, 4, 8, 8, 8.
+This is retained-panel response evidence, not population or 2026 validation.
+
+Six complete current runs now apply attenuated/stronger association stresses
+to all three accepted families, preserving state and demographic-group
+year-specific source margins and partition coherence. Source-only feasibility
+backoff precedes current-return comparisons. **Neither profile improved
+48-state before-conditioning margin MAE for any family.** Ridge errors are
+6.127 original, 6.276 attenuated and 6.179 stronger points. Original defaults,
+48 comparisons, AK/ME holds and direct recalled-2022 scenarios stay unchanged.
+These are postaggregation stresses, not validated per-case parameter transfer
+or measured staying home/first-ever voting.
+
+Immutable science **443019940**, tag
+`participation-house-fixed-copula-20261112-01`, contains the complete
+**63,651,646-byte / 124-member** packet: both whole accepted predecessors,
+270 curves / 30 decisions / 60 outer rows, all source scores/stresses,
+six full state/group/assumption/seed runs, 450 comparisons, transformed priors,
+feasibility decisions, code/tests and independent proofs. All 22 full assets
+are anonymously verified. Fifteen scientific tests, 4,797 independent nested
+checks and 462,020 current-profile accounting/margin checks pass.
+Two fresh blocked-network/command standard-library replays match all 60
+outputs from 12 independently checked published projection inputs.
+No accepted fits or baseline simulations were repeated. The original failed
+public replay attempt is retained; the repair only removes an unintended
+NumPy dependency from the public replay, not from projection recomputation.
+
+Source implementation `dd28869d0985080f6ec2b31f90d6682f47033e90`;
+immutable viewer pins remain `3c99ff2712e266f16860551ab65957c647956753`.
+The existing single-map integration is **verified live**, website
+`94db6c0c098842b01cf0a33a090bf62c30cf818c`, Pages **43233632514**,
+artifact **13951483145**. Actual payload **996,851,521** and tar
+**999,444,480** bytes both pass the strict decimal-billion limit.
+All 69 unqueried production assets and 436 old complete download pins match.
+Production checks cover 90,576 new profile values, 45,288 original family
+values, 3,060 baseline values, all 50 summaries, 102 pointer selections,
+48 responsive/tab cases, no-JS/fault/retry/cache/late-response behavior.
+Phone/desktop production screenshots were inspected; borders and selections
+work. The broader project, independent
+state-population benchmark gaps and sole 45-minute continuation remain open.
+See `data/house-fixed-copula/20261112-01/`.
+
 ## Completed held-out dependence and identical-margin flow test
 
 The new test actually fits and evaluates five structural hypotheses, not more
@@ -52,9 +108,8 @@ coefficients and fine cells stay private. No old acquisition, accepted model
 refit, baseline simulation or website build repeated.
 
 The live map/models/48 comparisons/AK-ME holds and actual prediction errors are
-unchanged. Next modeling work should isolate a **fixed-marginal persistence
-copula**, with leakage-free calibration, before considering a clearly labeled
-transported coupling sensitivity in the existing map. Do not substitute the
+unchanged in this earlier experiment. Its proposed **fixed-marginal persistence
+copula** is now completed in the newer section above. Do not substitute the
 pooled historical odds ratio for a validated 2026 parameter, demand universal
 administrative gold before conditional simulation, or repeat this completed
 experiment/source-inventory queue. The broader project and sole 45-minute

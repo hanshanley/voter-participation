@@ -6,6 +6,127 @@ changes. It is an assumption-dependent explanation, not identified voter histori
 or a causal effect. Moving from R+4 to D+12 is a +16 margin-point change,
 equivalent to +8 Democratic **two-party-share** points, not +16 share points.
 
+## Nested fixed-marginal dependence calibration
+
+The earlier independent/paired comparison below changes the fitted joint and
+can also change marginal predictions. The new experiment instead freezes
+**every case's original 2022 and 2024 predicted House-response margins**.
+For case `i`, let `p_i(a)` and `q_i(b)` be the accepted six- and five-class
+predictions. Define `K_theta(a,b)=theta` for D-D/R-R and 1 otherwise, and solve
+
+`Q_i(a,b) = u_i(a) p_i(a) q_i(b) K_theta(a,b) v_i(b)`
+
+subject to `sum_b Q_i(a,b)=p_i(a)` and `sum_a Q_i(a,b)=q_i(b)`.
+Positive iterative proportional fitting gives the dual row/column scaling
+certificate. Theta=1 is exactly the original outer product. The D/R
+cross-product odds multiplier is **theta squared**, not theta and not a
+retention percentage. Other/nonvote/unknown classes remain distinct; no
+administrative-N persistence parameter is inferred from this kernel.
+
+For each of five original outer folds, fit three inner-fold marginal heads
+**only inside that outer training set**. Do not calibrate on the other four
+overlapping outer-OOF predictions: their training sets contain this outer test
+fold. Theta in [.25,.5,1,2,4,8,16,32,64] minimizes native-weighted full
+30-class inner-OOF log loss; ties within 1e-12 prefer closest log(theta) to zero.
+Then apply it to the unchanged accepted outer marginal predictions and score
+the untouched outer fold. Same 2020-only predictors, native weight frames,
+training-only vocabulary/support regularization and ridge C=.15 remain.
+This adds 180 inner heads; 60 accepted outer heads are reused, never refitted.
+
+| Primary source predictors | Original log loss | Calibrated log loss | Original Brier | Calibrated Brier |
+|---|---:|---:|---:|---:|
+| History only | 1.313660 | 1.263987 | 0.483039 | 0.477228 |
+| History plus age/education/survey state | 1.348023 | 1.300594 | 0.492568 | 0.485929 |
+
+Primary history selections are 8,4,8,8,8 (median 8); demographic selections
+4,4,8,4,4. The tested richer predictors still do not beat simpler calibrated
+history. Maximum case margin error is below 2e-12; independent proper scoring,
+dual certificates and exact accepted-baseline probabilities pass. The
+selected-major conditional Brier improves .155258 to .143845 for history.
+Under the separately matched source margins, gross switching is 4.785352%
+for calibrated history versus 4.599023% in the already public source reference.
+This diagnostic is not the calibration target or independent population truth.
+
+### Conditional current-election stresses, including the negative result
+
+The policy frozen before these new fits allows transport only if primary
+history full-pair log loss improves, Brier and selected-major Brier do not
+worsen, margins/duals pass and median theta exceeds one. It passes here.
+The history-only source was fixed before this test because the preceding
+proper-score comparison favored it, not because of current-return error.
+Requested sqrt(8) and 8 give two **association stresses**, not new model
+families or validated transfers of this per-case parameter.
+
+The current priors have richer predictors, a different election direction and
+different recruitment/response frames. Stress therefore acts **after state
+aggregation**, not on the original 2026 persons. Each demographic partition
+is projected jointly to its original group-by-previous, group-by-current and
+common state 5x5 margins. Cell feasibility bounds and backoff exponents
+1,.5,.25,.125,0 use only synthetic source constraints before reading current
+return comparisons. Zero recovers the exact original. The stronger ridge
+and boosting profiles each need one state's backoff; actual strengths are
+retained and displayed, not replaced with the requested strength.
+
+Preserving unconditional current margins does **not** freeze prediction after
+the existing previous-row and candidate-volume calibration. Those honest
+preconditioning errors are:
+
+| Family | Original margin MAE | Attenuated | Stronger |
+|---|---:|---:|---:|
+| Ridge | 6.126998 | 6.276248 | 6.178784 |
+| Histogram boosting | 5.743115 | 6.243356 | 6.524791 |
+| Extra-randomized trees | 6.063574 | 6.529695 | 6.989285 |
+
+**Neither current stress improves any family's 48-state return prediction.**
+Do not select a profile using these errors or replace the original default.
+All effects still reconcile under return conditioning; that is a constraint,
+not predictive or behavioral validation. The map integration is now verified
+live after exact artifact and production checks, not just a local build.
+
+All six new runs preserve the same 50 states, 48 comparisons, AK/ME holds,
+source masks, direct recalled-2022 scenario and central accounting frames.
+State and group-year source margins stay fixed; switching versus participation
+allocations change. Entry/return does not prove first-ever voting, and model
+nonvote is not administrative staying home. The retained-2020-adult panel,
+conditional candidate-code bridge, omitted newly eligible adults and
+postwave weighting qualifications remain. No confidence intervals, identified
+causes or state-to-precinct estimates are manufactured.
+
+Immutable science **443019940**, tag
+`participation-house-fixed-copula-20261112-01`, contains 63,651,646 bytes /
+124 members: both entire accepted predecessors, all 270 curves / 30 decisions /
+60 outer rows, every six-profile-run state/group/assumption/seed output,
+450 comparisons, all permitted inputs, exact code/tests and proofs. SHA256
+`08273545ef2886a3994ea2f4a7c7083f7a780e78c3335c88b1d3665cc6b0db72`.
+All 22 full assets anonymously verified; 15 scientific tests, 4,797 independent
+nested checks and 462,020 current-profile accounting/margin checks pass.
+Two fresh `python -S -W error` replays with blocked network/commands reproduce
+all 60 outputs from 12 published projected inputs, independently checking
+their year margins, partition coherence and state dual certificates first.
+The replay reruns only the six new current simulations, not baseline
+simulations or private fitting. Projection recomputation requires NumPy;
+the original failed replay and dependency-only correction are preserved.
+Scientific implementation `dd28869d0985080f6ec2b31f90d6682f47033e90`;
+unchanged numerical viewer pin `3c99ff2712e266f16860551ab65957c647956753`.
+Native persons, predictions, coefficients and fine cells remain private.
+
+Website `94db6c0c098842b01cf0a33a090bf62c30cf818c` / Pages
+**43233632514** / artifact **13951483145** passes actual payload
+**996,851,521** and tar **999,444,480** bytes. All 69 unqueried assets and
+436 old complete downloads match. Real production checks cover 90,576 new
+profile values, 45,288 original family values, 3,060 baseline values,
+all 50 state summaries, 102 actual pointer selections, 48 responsive/tab
+cases, no-JS, failure/checksum/retry/cache and late-profile/office isolation.
+Active-profile errors and actual feasibility strengths remain visible;
+family, state, group and unit selections survive profile changes.
+Phone and desktop production views were inspected. No source fits, baseline
+simulations, old numerical outputs, default selection or geography changed.
+
+```sh
+python3 -S -W error code/scripts/reproduce_house_fixed_copula.py \
+  --archive /path/to/complete-analysis.zip --output /fresh/replay/path
+```
+
 ## Held-out dependence test and why matching margins is not enough
 
 The next historical test predicts both 2022 and 2024 source outcomes from
@@ -137,8 +258,9 @@ This midterm-to-presidential test is not a replication of the richer 2026
 predictor set or validated presidential-to-midterm transport. Native House
 reports are not candidate-specific administrative truth. No current source
 marginal, accepted model, live map, earlier download or precinct allocation
-changes. Next isolate fixed-marginal persistence with leakage-free calibration,
-rather than transporting this pooled odds ratio as a validated 2026 parameter.
+changed in this earlier experiment. The nested fixed-marginal step is now
+complete in the section above; no pooled odds ratio is transported as a
+validated 2026 parameter.
 Full results: `data/house-paired-oof/20261112-01/`.
 
 ## Historical same-office panel check: conditional source concordance

@@ -1,0 +1,128 @@
+{
+  "complete_anonymous_source_bodies": 30,
+  "files": {
+    "data/house-fixed-copula/20261112-01/complete-profile-family-state-comparisons.csv": {
+      "bytes": 230551,
+      "sha256": "d0abe810f3d24c2b3f97e8a51361471d44503383fc2c3f01c6865e9b3604ffba"
+    },
+    "data/house-fixed-copula/20261112-01/inputs/policy.json": {
+      "bytes": 6279,
+      "sha256": "41f41b6bdd393e185405c60ec6e27e73cee1b044baef0e8326a850400b4741ef"
+    },
+    "data/house-fixed-copula/20261112-01/inputs/reference-concordance.json": {
+      "bytes": 96307,
+      "sha256": "e9274c3d217330aea55de267f015ef810ac534d6696af59836168bd16834558b"
+    },
+    "data/house-fixed-copula/20261112-01/inputs/sufficient-scores.json": {
+      "bytes": 158565,
+      "sha256": "3d59803860d48153ab28ba065df952d79674f66af9cd73db5bde5dc62ec4b891"
+    },
+    "data/house-fixed-copula/20261112-01/outputs/calibration-curves.csv": {
+      "bytes": 38725,
+      "sha256": "652b383b1136dc834cea25ed3ce3896566898a2ca1e3f3f78da965470086bd98"
+    },
+    "data/house-fixed-copula/20261112-01/outputs/fold-composition-stress.csv": {
+      "bytes": 210388,
+      "sha256": "1a4f92327c34df72357b1fb8f06ef3ac3d4788eacb4c2b0a4b5994459bd428da"
+    },
+    "data/house-fixed-copula/20261112-01/outputs/outer-scores.csv": {
+      "bytes": 11928,
+      "sha256": "5f45abbb4217cd0b3f0e421d796763194830501855dbb6b162b0fce159f3de8a"
+    },
+    "data/house-fixed-copula/20261112-01/outputs/scores.csv": {
+      "bytes": 2880,
+      "sha256": "d695b0c215348f8015c89649d9b948c30a0739c1b2b206afeea31974f134b3b2"
+    },
+    "data/house-fixed-copula/20261112-01/outputs/selection-decisions.csv": {
+      "bytes": 2044,
+      "sha256": "7beda99a9abd84fcb81b4544c72e82778f34bfc8ec933be372d9c1faaec94ccd"
+    },
+    "data/house-fixed-copula/20261112-01/outputs/source-margin-stages.csv": {
+      "bytes": 1237,
+      "sha256": "ec59e3b864f1f097ea4854eaab1369b81ac183fa695d07eefe5270598c6c8e34"
+    },
+    "data/house-fixed-copula/20261112-01/outputs/summary.json": {
+      "bytes": 7517,
+      "sha256": "ec28f0b6c3332f2337261c1adac53486c56beb9f3cda5e0cca027b823d24ca4f"
+    },
+    "data/house-fixed-copula/20261112-01/outputs/synthetic-flows.csv": {
+      "bytes": 2928,
+      "sha256": "3ec2d59f0742fb94c94456554fdb4d8ab16e450691c73669cf81cf2df614ed88"
+    },
+    "data/house-fixed-copula/20261112-01/profile-summary.json": {
+      "bytes": 1745,
+      "sha256": "3bc3ede1ee34dcb1f53197e8e603886150f02e769df0d7099eb2dc870b96c8e8"
+    },
+    "data/house-fixed-copula/20261112-01/records/fitting-receipt.json": {
+      "bytes": 479,
+      "sha256": "8a620cda0890050bcc4522c80497c47b3ecf8e40b6ca1184c2ba5f6c720440d2"
+    },
+    "data/house-fixed-copula/20261112-01/records/independent-current-profiles.json": {
+      "bytes": 865,
+      "sha256": "a7a9a54597e2b373c34e860b6eaa43a5b75d0262130c9daa80dba3971278140d"
+    },
+    "data/house-fixed-copula/20261112-01/records/independent-nested-verification.json": {
+      "bytes": 889,
+      "sha256": "971909bf9cadfaf5d5d799c1649eee89ac102f1011579e88acea0b5530354efd"
+    },
+    "data/house-fixed-copula/20261112-01/viewer-attenuated.json": {
+      "bytes": 5859938,
+      "sha256": "65a8acff1a8d42121ad5ce977c90ef4a7586ad9eabb2a48f60bdffb8e7843fde"
+    },
+    "data/house-fixed-copula/20261112-01/viewer-full.json": {
+      "bytes": 5862665,
+      "sha256": "0a1733fa5ecc9897e54de89ddef0395eb89102eae0e022be1527288e4a432d89"
+    },
+    "scripts/build_house_copula_profiles.py": {
+      "bytes": 9061,
+      "sha256": "b54523dea7834ab6942f150e6cfe7faa3bf4358057126c01e0df8928de31ad95"
+    },
+    "scripts/fit_house_fixed_copula.py": {
+      "bytes": 12562,
+      "sha256": "147065f28b59039d6994c5dd95af24d407dd280705ec5a2498c4597400eb2b89"
+    },
+    "scripts/house_fixed_copula.py": {
+      "bytes": 3060,
+      "sha256": "12e2fa6ca7e70981b41f7d6cc73f5fbab9f554eddb2106ee322174125a7ae34a"
+    },
+    "scripts/house_fixed_copula_public.py": {
+      "bytes": 12836,
+      "sha256": "df709a4439b20df109d5ba02fa4c6945b7396e76e34b519c1232c0a9277080b0"
+    },
+    "scripts/package_house_fixed_copula.py": {
+      "bytes": 11907,
+      "sha256": "d5ac4e195918666946b5e64de00b37b976c298266d664b9475964459a4fca1ee"
+    },
+    "scripts/reproduce_house_fixed_copula.py": {
+      "bytes": 4552,
+      "sha256": "77682a5a45c483387984125adb176f4a70e9c76f93c1095a36d07370c38bee9b"
+    },
+    "scripts/transport_house_copula.py": {
+      "bytes": 5030,
+      "sha256": "5d50ebb3b65ed1145102675833e0da2772d1060010ea038405ef07afe8c8ae15"
+    },
+    "scripts/verify_house_copula_profiles.py": {
+      "bytes": 6269,
+      "sha256": "01b276c38419caa12bb466e611a0eff517d78e7ed0934378734f89bb83067312"
+    },
+    "scripts/verify_house_fixed_copula.py": {
+      "bytes": 11859,
+      "sha256": "695e4f539391d281204721f5cc0a09f5cacb71372d26d0b072b79e51c3b0db74"
+    },
+    "tests/test_house_fixed_copula.py": {
+      "bytes": 2175,
+      "sha256": "b94e5d134c36cc5b5f0e58379bbf3562388b9e5d1167ffd11be60c85aade6c94"
+    },
+    "tests/test_house_fixed_copula_public.py": {
+      "bytes": 2579,
+      "sha256": "908b63ba07558de3850b1d9ebad4f9a775516c5519d53ecdb79e8476d900f894"
+    },
+    "tests/test_transport_house_copula.py": {
+      "bytes": 3519,
+      "sha256": "34761bbf2a6df3844d0f17d9d0866fecfff3a549a1aae814ca8360a6cbdec9dc"
+    }
+  },
+  "profile_CORS_verified": true,
+  "source_commit": "3c99ff2712e266f16860551ab65957c647956753",
+  "status": "pass"
+}

@@ -1,0 +1,122 @@
+{
+  "assets": {
+    "README.txt": {
+      "bytes": 2390,
+      "sha256": "c14055afe12edc64de2c068f7c14984d22a6a6a3324b4f6897597e1f7894b2da",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/README.txt"
+    },
+    "SHA256SUMS.txt": {
+      "bytes": 1776,
+      "sha256": "a83b1984f2b5027c415ab9785acc68cf0e19da70195b5c2325f6808faec3eb53",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/SHA256SUMS.txt"
+    },
+    "calibration-curves.csv": {
+      "bytes": 38725,
+      "sha256": "652b383b1136dc834cea25ed3ce3896566898a2ca1e3f3f78da965470086bd98",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/calibration-curves.csv"
+    },
+    "checksums.json": {
+      "bytes": 2836,
+      "sha256": "6093d8a29acc4d273460be7f594cc66ba7a00799fb1859cd89b40964c8a43a93",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "bytes": 63651646,
+      "sha256": "08273545ef2886a3994ea2f4a7c7083f7a780e78c3335c88b1d3665cc6b0db72",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/complete-analysis.zip"
+    },
+    "complete-profile-family-state-comparisons.csv": {
+      "bytes": 230551,
+      "sha256": "d0abe810f3d24c2b3f97e8a51361471d44503383fc2c3f01c6865e9b3604ffba",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/complete-profile-family-state-comparisons.csv"
+    },
+    "fold-composition-stress.csv": {
+      "bytes": 210388,
+      "sha256": "1a4f92327c34df72357b1fb8f06ef3ac3d4788eacb4c2b0a4b5994459bd428da",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/fold-composition-stress.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "bytes": 8874,
+      "sha256": "7ef3546ddce5a832099727bf76657c359921059476908671283287699d1e2868",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "bytes": 8874,
+      "sha256": "7ef3546ddce5a832099727bf76657c359921059476908671283287699d1e2868",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/fresh-reproduction-02.json"
+    },
+    "independent-current-profiles.json": {
+      "bytes": 865,
+      "sha256": "a7a9a54597e2b373c34e860b6eaa43a5b75d0262130c9daa80dba3971278140d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/independent-current-profiles.json"
+    },
+    "independent-nested-verification.json": {
+      "bytes": 889,
+      "sha256": "971909bf9cadfaf5d5d799c1649eee89ac102f1011579e88acea0b5530354efd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/independent-nested-verification.json"
+    },
+    "manifest.json": {
+      "bytes": 26790,
+      "sha256": "5cfa628eb48554a55ebfd6048c1ca9ffa4e40d2f663ebc219454c1389df444c2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/manifest.json"
+    },
+    "outer-scores.csv": {
+      "bytes": 11928,
+      "sha256": "5f45abbb4217cd0b3f0e421d796763194830501855dbb6b162b0fce159f3de8a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/outer-scores.csv"
+    },
+    "package-receipt.json": {
+      "bytes": 496,
+      "sha256": "8bb44515dbcb74023f5b8aa2dacb198f576c22a8527dc70873f61d1844a7f13c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/package-receipt.json"
+    },
+    "policy.json": {
+      "bytes": 6279,
+      "sha256": "41f41b6bdd393e185405c60ec6e27e73cee1b044baef0e8326a850400b4741ef",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/policy.json"
+    },
+    "profile-summary.json": {
+      "bytes": 1745,
+      "sha256": "3bc3ede1ee34dcb1f53197e8e603886150f02e769df0d7099eb2dc870b96c8e8",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/profile-summary.json"
+    },
+    "scores.csv": {
+      "bytes": 2880,
+      "sha256": "d695b0c215348f8015c89649d9b948c30a0739c1b2b206afeea31974f134b3b2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/scores.csv"
+    },
+    "selection-decisions.csv": {
+      "bytes": 2044,
+      "sha256": "7beda99a9abd84fcb81b4544c72e82778f34bfc8ec933be372d9c1faaec94ccd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/selection-decisions.csv"
+    },
+    "source-margin-stages.csv": {
+      "bytes": 1237,
+      "sha256": "ec59e3b864f1f097ea4854eaab1369b81ac183fa695d07eefe5270598c6c8e34",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/source-margin-stages.csv"
+    },
+    "sufficient-scores.json": {
+      "bytes": 158565,
+      "sha256": "3d59803860d48153ab28ba065df952d79674f66af9cd73db5bde5dc62ec4b891",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/sufficient-scores.json"
+    },
+    "summary.json": {
+      "bytes": 7517,
+      "sha256": "ec28f0b6c3332f2337261c1adac53486c56beb9f3cda5e0cca027b823d24ca4f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/summary.json"
+    },
+    "synthetic-flows.csv": {
+      "bytes": 2928,
+      "sha256": "3ec2d59f0742fb94c94456554fdb4d8ab16e450691c73669cf81cf2df614ed88",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-fixed-copula-20261112-01/synthetic-flows.csv"
+    }
+  },
+  "current_default_changed": false,
+  "immutable": true,
+  "independent_population_validation": false,
+  "raw_people_and_private_predictions_exported": false,
+  "release_id": 443019940,
+  "scientific_source_commit": "dd28869d0985080f6ec2b31f90d6682f47033e90",
+  "status": "passed_immutable_complete_fixed_copula_science",
+  "tag": "participation-house-fixed-copula-20261112-01"
+}

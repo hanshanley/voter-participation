@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Fixed-marginal historical calibration | [Nested holdouts and six unvalidated current association stresses](#fixed-marginal-house-calibration-and-current-association-stresses) |
 | Held-out cross-election dependence | [Paired heads and identical-margin flow test](#held-out-cross-election-dependence-and-identical-margin-flows) |
 | Historical House panel evidence | [Conditional same-office source concordance, not population validation](#conditional-same-office-house-source-concordance) |
 | Three House model families | [Same-source comparison; negative results retained](#three-fixed-norc-house-model-families) |
@@ -31,6 +32,66 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Fixed-marginal House calibration and current association stresses
+
+The held CES 6,175-case panel now supplies a nested dependence test with every
+case's original full 2022/2024 House marginal predictions fixed. The same
+2020-only predictor levels, five outer folds, three native frames and ridge
+settings remain. Sixty accepted outer heads are reused unchanged; 180 new
+inner heads exclude the outer holdout from fitting and calibration. Nine
+prespecified D-D/R-R kernel strengths are selected only by inner-OOF full-pair
+log loss, with ties preferring independence. No other overlapping outer-OOF
+predictions or 2026 returns enter selection. No administrative-N persistence
+parameter is estimated.
+
+Primary history-only House-pair log loss **1.313660 -> 1.263987**, Brier
+**0.483039 -> 0.477228**. Demographic/geographic scores improve
+1.348023 -> 1.300594 and 0.492568 -> 0.485929, without beating calibrated
+history-only. Maximum per-case margin error is below 2e-12; dual certificates
+and independent math.fsum scoring pass. History selections 8/4/8/8/8 satisfy
+the frozen source gate. Matching selected-source D/R margins subsequently
+gives 4.785352% history and 6.424792% demographic switching against the same
+4.599023% conditional source reference; switching itself was not the criterion.
+
+The gate permits two explicitly **unvalidated postaggregation 2026 stresses**
+(sqrt(8), 8) on the three already fitted current-family priors, not a population
+correction. State and group-year margins and partition-state coherence stay
+fixed; source-only feasibility backoff precedes any current-return comparison.
+All six simulations are complete. Neither profile improves current 48-state
+before-conditioning MAE for any family; the original default stays. Unknowns,
+disclosure masks, direct-2022 scenario, AK/ME holds and earlier downloads stay.
+Reported/model nonvote is not verified staying home, and retained-2020-adult
+recruitment, conditional shared-item House codes, predictor/election-direction
+differences and omitted newly eligible entrants remain.
+
+Scientific source **dd28869d0985080f6ec2b31f90d6682f47033e90**, data/viewer
+pin **3c99ff2712e266f16860551ab65957c647956753**; immutable science
+**443019940**, tag `participation-house-fixed-copula-20261112-01`.
+Complete ZIP **63,651,646 bytes / 124 members**, SHA256
+`08273545ef2886a3994ea2f4a7c7083f7a780e78c3335c88b1d3665cc6b0db72`.
+Both full accepted predecessors, all 270 curves / 30 decisions / 60 outer
+score rows, six complete simulation runs, 450 comparisons, code/tests and
+permitted sufficient inputs are included. All 22 assets anonymously verified;
+15 scientific tests / 4,797 independent nested checks / 462,020 current
+accounting/margin checks pass. Two fresh standard-library, blocked-network/
+command replays consume 12 independently certified projected inputs and
+reproduce all 60 outputs without baseline resimulation or private refitting.
+Recomputing the projections themselves requires NumPy; the failed initial
+replay and dependency-only correction are preserved, not hidden.
+No persons, per-case predictions, coefficients, fine cells, CIs or unsupported
+local allocations are released.
+
+Existing-map controls are **verified live**, website
+`94db6c0c098842b01cf0a33a090bf62c30cf818c`, Pages **43233632514** /
+artifact **13951483145**. Actual 996,851,521 payload / 999,444,480 tar
+bytes pass both strict caps. All 69 exact unqueried assets and 436 old full
+download pins match. Production checks verify 90,576 new profile values,
+45,288 original family values, 3,060 baseline values, 50 state summaries,
+102 actual pointer selections and all 48 responsive/tab cases, plus no-JS,
+failure/checksum/retry/cache and late-profile/office isolation. Actual phone
+and desktop views were inspected. Full numerical and operational records:
+`data/house-fixed-copula/20261112-01/`.
 
 ## Held-out cross-election dependence and identical-margin flows
 

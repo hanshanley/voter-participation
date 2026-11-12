@@ -1,0 +1,24 @@
+{
+  "files": {
+    "scripts/build_house_copula_profiles.py": {
+      "bytes": 12511,
+      "sha256": "ae11c63f47b617dbcb21682a0321165631bc533d46dddecd8637462667095b70"
+    },
+    "scripts/package_house_fixed_copula.py": {
+      "bytes": 12089,
+      "sha256": "74a9a21d59114382ab9412876672c486c2c2f1ec47d7c457615195949655e7ba"
+    },
+    "scripts/reproduce_house_fixed_copula.py": {
+      "bytes": 5164,
+      "sha256": "85441c7930cd2ae23f3c7da2d9dc7baf89b5950a6251caef51e75737d226ade0"
+    },
+    "tests/test_transport_house_copula.py": {
+      "bytes": 5270,
+      "sha256": "300fa300892d405518d6aafcf40472ebc88974e37d537533628599b3be36cf83"
+    }
+  },
+  "numerical_results_changed": false,
+  "source_bodies": 4,
+  "source_commit": "dd28869d0985080f6ec2b31f90d6682f47033e90",
+  "status": "pass"
+}
