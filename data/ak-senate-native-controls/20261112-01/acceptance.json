@@ -1,0 +1,63 @@
+{
+  "all14assets_anonymously_verified": true,
+  "broader_project_complete": false,
+  "initial_hypothesis_rejected_not_repaired": true,
+  "new_builds": 0,
+  "offline_reproductions": [
+    {
+      "earlier_reductions_repeated": false,
+      "every_result_query_byte_identical": true,
+      "independent": {
+        "checks": 4253,
+        "complete_controls": 234,
+        "county_repairs": 0,
+        "native_rows": 288,
+        "prior_215_disagreements_preserved": true,
+        "separate_state_accounting_qualified": 233,
+        "status": "passed_independent_native_SQLite_Alaska_scope_checks",
+        "turnout_or_RCV_promotion": false
+      },
+      "network_and_external_commands_blocked": true,
+      "status": "passed_fresh_offline_Alaska_scope_experiment",
+      "tests_passed": 5
+    },
+    {
+      "earlier_reductions_repeated": false,
+      "every_result_query_byte_identical": true,
+      "independent": {
+        "checks": 4253,
+        "complete_controls": 234,
+        "county_repairs": 0,
+        "native_rows": 288,
+        "prior_215_disagreements_preserved": true,
+        "separate_state_accounting_qualified": 233,
+        "status": "passed_independent_native_SQLite_Alaska_scope_checks",
+        "turnout_or_RCV_promotion": false
+      },
+      "network_and_external_commands_blocked": true,
+      "status": "passed_fresh_offline_Alaska_scope_experiment",
+      "tests_passed": 5
+    }
+  ],
+  "package": {
+    "archive": {
+      "bytes": 1263132,
+      "sha256": "be61d07d9092f87bdc8cfee5e3a7b5e5fc9e4109d1a89da027ae932d54467bcd"
+    },
+    "independent": {
+      "checks": 4253,
+      "complete_controls": 234,
+      "county_repairs": 0,
+      "native_rows": 288,
+      "prior_215_disagreements_preserved": true,
+      "separate_state_accounting_qualified": 233,
+      "status": "passed_independent_native_SQLite_Alaska_scope_checks",
+      "turnout_or_RCV_promotion": false
+    },
+    "members": 21,
+    "source_commit": "45bef126d7fa53c9264ae745fa585bc4cd73eb77"
+  },
+  "source_commit": "45bef126d7fa53c9264ae745fa585bc4cd73eb77",
+  "status": "passed_complete_native_Alaska_scope_experiment",
+  "unchanged_website": "7088482a2eae2c2da8095ea8f016683983a9058b"
+}

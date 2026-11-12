@@ -13,7 +13,36 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## Latest completed increment: 1996 participation history
+## Latest completed increment: Alaska Senate native accounting
+
+The held civicAPI response contains two different native parents: **214,246**
+top-level candidate selections and **213,733** in its nested State region.
+Thirty Borough units plus explicit Overseas match all four top candidates;
+40 House Districts plus Overseas match the nested region instead. Both remain.
+Their D-R margin difference is approximately **0.036966 points**, not an
+explanation of the larger House model shifts.
+
+All 234 candidate controls retain every original field. Four AK controls now
+have a separate noncounty internal-accounting check alongside 229 unchanged
+controls. This is **233 internally reconciled controls**, not county coverage,
+independent validation, matched timing, final RCV or turnout. The source remains
+partial (73.9%, native round1, Nov8 global clock, null registration), and all
+four nested-parent disagreements stay explicit. Maine's 882 write-in gap,
+all 215 old cross-source differences and the one additional difference remain.
+The six formerly missing FIPS joins were already done and were not repeated.
+
+Science **442603249** publishes every sufficient input, original AK JSON, whole
+accepted identifier packet/all34,492rows, all14,742 old crosschecks, source/tests
+and seven complete outputs. Five tests/4,253 independent SQL/raw checks and two
+fresh offline reproductions pass all bytes; all14assets anonymously verified.
+The rejected first parent assumption is preserved in the experiment history,
+not repaired into acceptance. See `data/ak-senate-native-controls/20261112-01/`.
+No new acquisition, old reduction, refit, changed live count or website build.
+The accepted48-state House model, Alaska/Maine House holds and website7088482
+remain unchanged. Do not repeat this completed scope experiment. Broader
+source disagreements and the sole45-minute continuation remain open.
+
+## Completed: 1996 participation history
 
 The three new native Census tables are now fully computed, reproduced,
 published and **verified live**, not merely inventoried. All 1,923 rows/19,539 cells,

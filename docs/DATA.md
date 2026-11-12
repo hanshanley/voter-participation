@@ -26,6 +26,14 @@ are not automatically compatible populations.
 
 ## Participation rates and survey frames
 
+The [complete Alaska Senate native-scope experiment](https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/complete-analysis.zip)
+preserves both differing parents, 288 native rows, all 234 control decisions,
+24 candidate/scope checks, six exact-fraction margin diagnostics, all 14,742
+earlier crosschecks/215 differences, the whole accepted identifier packet,
+original factual AK JSON, policy/code/tests and two fresh offline reproductions.
+The 0.036966-point parent sensitivity and four additional internal accounting
+checks do not qualify counties, turnout, matched rounds or a new live model.
+
 | Analysis | What it provides | Complete ZIP |
 |---|---|---|
 | Aggregate-compatible gross-flow bounds · interpretation verified live | All 113 decisions/89 comparable cases/24 unavailable, 356 explicitly conditioned frames, 1,912 sharp bounds/224 holds, 3,824 extremal tables and every endpoint/dual certificate. All 89 central frames permit zero switching. Entire accepted predecessor, sufficient inputs/code/tests, six complete outputs and two fresh offline reproductions; no new fit. Frame assumed, unknown governor Other opaque, separate extrema not additive or jointly attainable, not CIs or net-margin effects. Existing detail/table verified live by Pages43117213469, full1530-value/226-summary browser and no-JS checks;436 old full downloads unchanged | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-flow-identification-20261111-01/complete-analysis.zip) |

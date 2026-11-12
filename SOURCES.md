@@ -10,6 +10,7 @@ This document is the detailed reference ledger, not the methods introduction.
 |---|---|
 | Pennsylvania native control scope correction | [48 comparisons; no new counts or refit](#2026-pennsylvania-native-district-control-scope) |
 | Official House endpoint successor | [47 qualified comparisons; unchanged NORC fits](#2026-official-house-endpoint-successor) |
+| Alaska Senate internal source scopes | [Two native parents; no county or final-round promotion](#alaska-senate-two-native-parents-and-accounting-scopes) |
 | NORC-informed demographic House transitions | [Learned associations, simulation and honest prediction checks](#2026-norc-informed-demographic-house-transitions) |
 | Constraint-only flow bounds | [Aggregate-compatible gross flows](#2026-aggregate-compatible-gross-flow-bounds) |
 | Atlas-wide swing model correction | [Both-endpoint return-constrained scenarios](#2026-both-endpoint-return-constrained-transition-scenarios) |
@@ -37,6 +38,61 @@ complete coverage, independent validation, or permission to redistribute origina
 The per-file URLs, native timestamps, retrieval receipts, and checksums remain in
 the machine-readable inventories linked below. Those inventories, not a copied
 list of thousands of county URLs, are the inputs for future automation.
+
+## Alaska Senate: two native parents and accounting scopes
+
+The already-held civicAPI race `86916` contains two different aggregates inside
+one response. The top-level candidate parent totals **214,246 candidate
+selections**; the nested `alaska` State region totals **213,733**. No count is
+repaired, blended or selected by closeness to an external outcome.
+
+All four top-parent candidates exactly equal the source's **30 Borough units
+plus its explicit Federal Overseas Absentee unit**. The **40 House District
+units plus that Overseas unit** instead match the nested State region. Boroughs
+alone and districts alone are retained as components, not statewide totals.
+These are native vendor reporting roles, not approved county geography,
+matched boundaries or proof of nonoverlapping legal election units.
+
+The normalized D-R margins are **-2.039983099** and **-2.003017137** percentage
+points for the top and nested parents, respectively: approximately **0.036966
+points** of source-scope sensitivity. All native Republican candidates remain
+Republican; Nonpartisan stays separate. This is vote-count accounting, not
+individual vote choice or an explanation of the much larger House shifts.
+The source reports native round **1**, **73.9% reporting** and a global clock
+of **2026-11-08T01:37:46.780Z**. Registered population is null. A common response
+clock does not establish synchronized subunit counts or final-RCV compatibility.
+No cast-ballot, turnout, eligibility, county allocation or final-result claim follows.
+
+All **234** previous candidate-control rows and every original field survive.
+The prior **229** accepted controls are unchanged; four AK controls gain only
+a separate noncounty internal-accounting scope, giving **233 internally
+reconciled controls**, not 233 county or independently validated controls.
+All four nested-parent disagreements remain explicit. Maine's **882 statewide
+write-ins versus zero supplied county write-ins** remains held; the held town
+vectors also contain no write-in count to allocate. All **14,742** earlier
+crosschecks, **215** differing counts, six completed reference-ID joins and the
+one additional named-count difference remain intact.
+
+Maintained source `45bef126d7fa53c9264ae745fa585bc4cd73eb77` provides all
+**288** AK native rows, **24** candidate/scope checks, **six** exact-fraction
+margin diagnostics and complete control decisions. Five focused tests,
+**4,253 independent raw-JSON/SQLite checks** and two fresh warning-fatal
+network/external-command-blocked reproductions match all seven output files.
+The initial district-to-top-parent hypothesis was rejected, not normalized
+away; the accepted frozen policy enumerates both native parents and all scopes.
+
+Immutable science **442603249**, tag
+`participation-ak-senate-native-controls-20261112-01`, contains the full factual
+AK original, safe receipt without acquisition headers, entire accepted Senate
+identifier packet/all 34,492 rows, all earlier crosschecks, policy, code/tests
+and every complete query/result. All **14** full assets were anonymously verified.
+The **1,263,132-byte / 21-member ZIP** has SHA-256
+`be61d07d9092f87bdc8cfee5e3a7b5e5fc9e4109d1a89da027ae932d54467bcd`.
+Inputs/results/acceptance: `data/ak-senate-native-controls/20261112-01/`.
+No acquisition, old reduction, model refit, new source count or website build
+was repeated. Website `7088482` and its actual Pages acceptance remain unchanged.
+This does not resolve Alaska's Nonpartisan House comparison or Maine's House
+round hold, and does not promote a new live view.
 
 ## 1996 CPS native state participation and response frames
 

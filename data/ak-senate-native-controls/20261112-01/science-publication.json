@@ -1,0 +1,84 @@
+{
+  "assets": {
+    "checksums.json": {
+      "bytes": 1779,
+      "sha256": "527f55957a070887cb363bc65d3245160c864b5681f608ef399063bc3c71acf2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "bytes": 1263132,
+      "sha256": "be61d07d9092f87bdc8cfee5e3a7b5e5fc9e4109d1a89da027ae932d54467bcd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/complete-analysis.zip"
+    },
+    "complete-control-decisions.csv": {
+      "bytes": 44889,
+      "sha256": "b8a82a6920997539007c424c91e6db502ff1a243a4d68e3aff96786217786b8d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/complete-control-decisions.csv"
+    },
+    "complete-native-AK-rows.csv": {
+      "bytes": 47984,
+      "sha256": "0d01c1c77782f0c43b0b0c553b06dcf1a296413df5be84c38ecee860070dfc20",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/complete-native-AK-rows.csv"
+    },
+    "complete-prior-crosschecks.csv": {
+      "bytes": 1867956,
+      "sha256": "672a3bc38c540a8ba01409dc81a8fb72c912673f87b3ea5cf886859fe422b9ef",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/complete-prior-crosschecks.csv"
+    },
+    "complete-result.json": {
+      "bytes": 396013,
+      "sha256": "ec2913dcb638d23a298503f51f88b711f74e21225b9d7b28bc7f0ec5693891ca",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/complete-result.json"
+    },
+    "complete-scope-candidate-checks.csv": {
+      "bytes": 3265,
+      "sha256": "e7c89bc397a20e675a97fc269fe2a640aecc05a596f24fc7456e5c4c15d3ada3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/complete-scope-candidate-checks.csv"
+    },
+    "complete-scope-margins.csv": {
+      "bytes": 1076,
+      "sha256": "843e43cb33ff102916541ef79b22bd8cd7c4e1f4b05baa552457bef42cda8074",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/complete-scope-margins.csv"
+    },
+    "fresh-reproduction-01.json": {
+      "bytes": 544,
+      "sha256": "f424145f6c26531d46a8f81253e386f24c585efb6c41fb35e713abfd0a6a58f7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/fresh-reproduction-01.json"
+    },
+    "fresh-reproduction-02.json": {
+      "bytes": 544,
+      "sha256": "f424145f6c26531d46a8f81253e386f24c585efb6c41fb35e713abfd0a6a58f7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/fresh-reproduction-02.json"
+    },
+    "independent.json": {
+      "bytes": 290,
+      "sha256": "6651f86633fb7840688c72734fa55f532c705e4685e5c4dc66477bc54291775d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/independent.json"
+    },
+    "manifest.json": {
+      "bytes": 3204,
+      "sha256": "b25329ae63e2e1e623e32ec9421c0483618114c25a8367c33a4c090fd4a45c5a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/manifest.json"
+    },
+    "package-receipt.json": {
+      "bytes": 532,
+      "sha256": "f802b26c5b30a731a30015219c6dff95936b8cfade2428075ef2f5e9f511537c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/package-receipt.json"
+    },
+    "summary.json": {
+      "bytes": 793,
+      "sha256": "ccfa9c1d3157e165e5050098b931707616a950fa4574efc1fa2973b709157852",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ak-senate-native-controls-20261112-01/summary.json"
+    }
+  },
+  "broader_project_complete": false,
+  "complete_query_download": true,
+  "immutable": true,
+  "new_website_builds": 0,
+  "no_new_acquisition_or_old_reduction": true,
+  "release_id": 442603249,
+  "source_commit": "45bef126d7fa53c9264ae745fa585bc4cd73eb77",
+  "status": "passed_immutable_Alaska_scope_complete_science",
+  "tag": "participation-ak-senate-native-controls-20261112-01",
+  "website_unchanged": "7088482a2eae2c2da8095ea8f016683983a9058b"
+}

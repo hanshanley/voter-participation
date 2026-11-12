@@ -40,6 +40,7 @@ not one guessed command for every analysis.
 | CPS demographic frames | `cps_group_frames.py` | `test_cps_group_frames.py` |
 | CPS state frames | `cps_state_frames.py` | `test_cps_state_frames.py` |
 | 1996 native state participation/response frames | `cps_1996_state_points.py` | `test_cps_1996_state_points.py` |
+| Alaska Senate native parents and accounting scopes | `ak_senate_controls.py` | `test_ak_senate_controls.py` |
 | AP public aggregates | `ap_public_aggregates.py` | `test_ap_public_aggregates.py` |
 | Current state controls | `participation_controls.py` | `test_participation_controls.py` |
 | Historical administrative controls | `historical_participation_controls.py` | `test_historical_participation_controls.py` |
