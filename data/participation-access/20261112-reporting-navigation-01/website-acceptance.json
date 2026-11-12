@@ -1,0 +1,198 @@
+{
+  "all_113_original_models_preserved": true,
+  "candidate_catalog_used": false,
+  "cases": [
+    {
+      "all_counties_checked": 75,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "official",
+      "state": "AR",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "available",
+      "state": "AR",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vep",
+      "state": "AR",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vap",
+      "state": "AR",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 15,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "official",
+      "state": "AZ",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "available",
+      "state": "AZ",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vep",
+      "state": "AZ",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vap",
+      "state": "AZ",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 23,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "official",
+      "state": "WY",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "available",
+      "state": "WY",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vep",
+      "state": "WY",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vap",
+      "state": "WY",
+      "width": 1440
+    },
+    {
+      "all_counties_checked": 75,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "official",
+      "state": "AR",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "available",
+      "state": "AR",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vep",
+      "state": "AR",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vap",
+      "state": "AR",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 15,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "official",
+      "state": "AZ",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "available",
+      "state": "AZ",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vep",
+      "state": "AZ",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vap",
+      "state": "AZ",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 23,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "official",
+      "state": "WY",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "available",
+      "state": "WY",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vep",
+      "state": "WY",
+      "width": 390
+    },
+    {
+      "all_counties_checked": 1,
+      "known_unknown_zero_and_qualified_source_links": true,
+      "mode": "uf_vap",
+      "state": "WY",
+      "width": 390
+    }
+  ],
+  "console_errors": [],
+  "county_selections": 244,
+  "download_metadata_specimen_only": false,
+  "fixture": false,
+  "original_failure_regressions": {},
+  "production": true,
+  "reader": {
+    "countVersion": "ceff9f365c5810f2dde6b349d84502b9e63eb4fe5bb91cf8deb0b200f6aecb3e",
+    "nativeVersion": "b82a5795aad8bf43cbaa988e4212e910365272e2617f0f83eecf80c7c4963d52",
+    "readable": [
+      "participation-counts-2026",
+      "participation-native-bindings-2026",
+      "resident-context",
+      "transition-scenarios-2026"
+    ],
+    "sizes": {
+      "AR": 2768,
+      "AZ": 1763,
+      "WY": 432
+    }
+  },
+  "status": "pass",
+  "unit_selections": 276,
+  "valid_production_data_overrides": false
+}

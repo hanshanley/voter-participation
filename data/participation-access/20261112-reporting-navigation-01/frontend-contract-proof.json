@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "checks": 85128,
+  "reporting_rows_connected": 4963,
+  "county_parents": 113,
+  "source_unknowns_preserved": 83,
+  "true_zeros_preserved": 22,
+  "old_records_preserved": true,
+  "other48_state_shards_unchanged": true,
+  "all_native_tables_and_bindings_unchanged": true,
+  "no_new_numerical_observations_rates_or_precinct_polygons": true,
+  "real_frontend_contracts_verified": true
+}

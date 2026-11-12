@@ -8,17 +8,62 @@ nonparticipation and new/returning-voter estimates, then their tested integratio
 into the existing project. Do not stop at an inventory or another audit.
 
 The single assistant continuation runs every **45 minutes**
-(schedule 120; the previous schedule 119 is stopped).
+(schedule 121; the previous schedules 120 and 119 are stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## Current priority: missing county and precinct observations
+## Immediate priority: House-result comparison correctness
+
+The user identified Massachusetts's displayed **-22.91-point** House-margin
+change as wrong. The raw source calculation compares 2024 D/R counts
+2,386,143 / 304,460 with held 2026 counts 1,722,855 / 507,904. However, the
+House Clerk's 2024 page 35 lists named Republican candidates in only **2/9**
+districts; the held 2026 source has them in **5/9**. This is not a like-for-like
+statewide preference shift. The two common D/R source district IDs yield
+**+5.65 points Democratic**, but that subset is not a statewide estimate and
+district-ID matching alone does not establish unchanged geographic boundaries.
+
+The complete 435-district/50-state comparability audit is now being implemented:
+check named-party coverage, missing native counts, duplicate/party-line handling,
+election stages and source completeness. Correct or hold affected comparisons
+and propagate changes through every dependent map, model, table and download.
+**The displayed Massachusetts comparison is not yet fixed.** Internal accounting
+tests and preserving old model objects do not validate their source targets.
+Do not force a preferred direction or run more model variants instead.
+
+The user also requests a reusable, all-state batch update workflow, rather than
+per-state scripts. Finish source correctness first, then complete automatic
+discovery, reviewed-adapter reuse, content-hash caching, no-op detection,
+resumable verification/publication and one documented routine update command.
+The generic publisher starting point is not yet a complete tested workflow.
+
+## Current geographic integration
 
 Further model variants are paused while geographic omissions are addressed.
 Context shapes in all 51 jurisdictions are **not** complete participation data.
 Candidate votes, processing/return activity and modeled state effects must not
 be substituted for missing ballot observations or precinct boundaries.
+
+**4,963 already-held reporting rows are now connected to 113 county selectors:**
+Arkansas 2,768 / 75 counties; Arizona 1,763 / 15; Wyoming 432 / 23.
+The rows existed in native tables but were missing from county-navigation frames
+and had incompatible parent/selector metadata. All **83 unknown counts** and
+**22 actual zeros** remain distinct. No counts, rates or precinct polygons were
+invented; all old records, other 48 state shards, early/mail modes and native
+tables/bindings are unchanged. This improves access, not source acquisition.
+
+Science **443300298**, tag `participation-held-reporting-navigation-20261112-01`:
+complete **38,063,832 bytes / 160 members**, all eleven assets verified;
+85,128 reader checks and two fresh 57-output blocked-network replays pass.
+Actual desktop/phone production verifies 244 county and 276 unit selections,
+24 contexts and six real county-map clicks, without data overrides.
+Website `109754a` / Pages `43271725430` / artifact `13967849374` passes actual
+**996,866,407 payload / 999,454,720 tar bytes**, with all 436 old download pins.
+Catalog `351130a` activates only the compatible count entry; native bindings
+remain unchanged. Five live scripts, Wisconsin's 32 ward rows and 113 old model
+objects are preserved. **Preservation is not validation of the House inputs.**
+Records: `data/participation-access/20261112-reporting-navigation-01/`.
 
 Harris County, Texas is now connected using its already-held preliminary
 reconciliation, without repeating acquisition/OCR: **1,392,280 counted ballots**,

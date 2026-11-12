@@ -8,6 +8,8 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Urgent House-result comparison audit | [Massachusetts and changed major-party contest coverage](#house-result-comparability-audit-in-progress) |
+| Held reporting-row batch integration | [4,963 rows connected across Arkansas, Arizona and Wyoming](#held-reporting-rows-connected-to-county-navigation) |
 | Current geographic gap integration | [Harris TX: counted ballots, not roster voters](#2026-harris-texas-held-counted-ballot-integration), [Jefferson WI: county ballots and native ward-group rows](#2026-jefferson-wisconsin-county-and-ward-group-participation) |
 | Joint participation and House choices | [Four-axis source test: entry gains and drop-off negatives](#four-axis-administrative-participation-and-house-choice-dependence) |
 | Fixed-marginal historical calibration | [Nested holdouts and six unvalidated current association stresses](#fixed-marginal-house-calibration-and-current-association-stresses) |
@@ -34,6 +36,61 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## House-result comparability audit in progress
+
+The displayed Massachusetts raw House-margin change is **-22.90507143 pp**:
+2024 D 2,386,143 / R 304,460 versus held 2026 D 1,722,855 / R 507,904.
+These raw totals are not equivalent to a statewide voter-preference swing.
+The already-held House Clerk original, page 35, lists named Republican nominees
+only in MA-08 and MA-09 in 2024. The held 2026 provider snapshot lists them
+also in MA-03, MA-04 and MA-06. Major-party ballot coverage changes **2/9 to 5/9**.
+Other/independent and unassigned write-in votes are not reassigned to Republicans.
+
+Common D/R source district IDs MA-08/MA-09 have D/R totals 517,363 / 304,460
+then 409,193 / 212,901: **+5.64724422 pp Democratic**. This is only a subtotal
+diagnostic, not a statewide estimate or a certification of unchanged boundaries.
+A generic 435-district/50-state audit is in progress. Comparability must precede
+return conditioning and “observed swing” labels; internal arithmetic alone is
+insufficient. The current live House comparison has **not yet been corrected**.
+No current candidate counts have been changed to force the expected direction.
+
+## Held reporting rows connected to county navigation
+
+The accepted native tables already contained AR **2,768**, AZ **1,763** and
+WY **432** reporting rows, but canonical county frames omitted them and their
+legacy parent/selector metadata did not match existing county controls.
+The repair connects all **4,963 rows to 113 existing county parents** by unique
+literal same-state labels. It preserves every source count/clock/status/denominator,
+**83 unknowns**, **22 true zeros**, all old records, other 48 state shards,
+early/mail frames, native tables, county bindings and geometry originals.
+No new numerical observations, rates, physical precinct joins or state allocation.
+
+Frozen adapter source `5d59f39a53a76aefdcd01eeae230e58a34a5e4a9`;
+science **443300298**, tag `participation-held-reporting-navigation-20261112-01`.
+Full ZIP **38,063,832 bytes / 160 members**, SHA256
+`15948ef18f6bd772a17e1e50e71fc8fb00f3ec69fa698a9ed84b1d7a4b492726`.
+Every sufficient accepted count/native input, complete 4,963-row match queries,
+all 57 outputs and maintained code/tests/readers are included, not metadata-only.
+All eleven full assets verified, 85,128 reader checks and two fresh guarded
+offline reproductions pass. Both missing-selector and wrong unknown-count-scope
+failures were reproduced before the fix; explicit local fixtures preceded release.
+
+Actual production verifies desktop/phone 244 county / 276 unit selections,
+24 contexts, six real map clicks, missing versus zero, full downloads and no
+new rate/polygon. Website `109754a734f043fbbbe4d792138caea3cd9da5f0`,
+native Pages `43271725430` / guard `43271725174` / artifact `13967849374`:
+**996,866,407 actual payload / 999,454,720 actual tar bytes**, both below 1e9.
+All 436 old download pins, five source scripts and 113 old model objects survive.
+This is preservation, **not proof that the old House endpoints are comparable**.
+Count-only staging `5fa34d67abe0b9f5ba4169b7733567c643dcb912`, catalog
+`351130a058e7e64bd970e62dce6e4edb3874b373`; all 54 immutable files verified,
+old catalog retained during staging, every other dataset entry unchanged.
+Records: `data/participation-access/20261112-reporting-navigation-01/`.
+
+The sole 45-minute continuation is now **121**, replacing stopped 120 at the
+user's request. Its obsolete historical queue is removed; the immediate priority
+is source-result correctness, then remaining integration and reusable batching.
 
 ## 2026 Harris Texas held counted-ballot integration
 

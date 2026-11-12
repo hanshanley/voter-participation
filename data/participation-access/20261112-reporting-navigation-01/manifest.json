@@ -1,0 +1,121 @@
+{
+  "catalog_commit": "351130a058e7e64bd970e62dce6e4edb3874b373",
+  "complete_download": {
+    "bytes": 38063832,
+    "immutable": true,
+    "sha256": "15948ef18f6bd772a17e1e50e71fc8fb00f3ec69fa698a9ed84b1d7a4b492726",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "counties": 113,
+  "files": {
+    "AR-map-1440.png": {
+      "bytes": 427248,
+      "sha256": "9457b5c6c1fab9f1049ea0ce51781b3a6a32bdd44bc25da5e739f73cf208648c"
+    },
+    "AR-map-390.png": {
+      "bytes": 320688,
+      "sha256": "089e70bff21eb493015b7596b56ded930de70ef1d6dac4321e97945c76881387"
+    },
+    "AR-unit-1440.png": {
+      "bytes": 70228,
+      "sha256": "f9cc9ab130196bc1e21e1b4bb77fe97fd3735f818582e27a0266b3344ad98244"
+    },
+    "AR-unit-390.png": {
+      "bytes": 71011,
+      "sha256": "74842a37adf11a83cd1bdf8d2e560973d9bdcb20c373c5a6973cc0b68f8f1fe6"
+    },
+    "AZ-map-1440.png": {
+      "bytes": 417820,
+      "sha256": "bab8ecd206ce34df651670302b7c9ac3182b000a607f7f6d30fac328fe468183"
+    },
+    "AZ-map-390.png": {
+      "bytes": 322246,
+      "sha256": "a2128f668b146e1755a6a137a42899d01312a02702d5c044448a65af92b294f5"
+    },
+    "AZ-unit-1440.png": {
+      "bytes": 73321,
+      "sha256": "17c464180387a3381863b1fe9ae0a207a0daf737c939e9c9423b2d58279bed90"
+    },
+    "AZ-unit-390.png": {
+      "bytes": 74689,
+      "sha256": "6c6e14f82e8dfc8c707533d6d935264f77d17b8435e9384ce627fffd5172696d"
+    },
+    "WY-map-1440.png": {
+      "bytes": 424923,
+      "sha256": "85e9bdad90fed2bc96cb0af761b927a4dbffbf95db9d5988ab5f22710ba45c45"
+    },
+    "WY-map-390.png": {
+      "bytes": 324049,
+      "sha256": "3cc8cffc6c4a8e51082f65e23edd00e8ee3476822f624360d4f12b8706b8c7ca"
+    },
+    "WY-unit-1440.png": {
+      "bytes": 69201,
+      "sha256": "df9558645fc080136353440513344e1c767094f36874dd24798ab1904e7f7901"
+    },
+    "WY-unit-390.png": {
+      "bytes": 70795,
+      "sha256": "6b6ee9312c6c142d1d1ca0836de4e48b1b283c806ed2aab9bba14717d443660b"
+    },
+    "activation.json": {
+      "bytes": 2297,
+      "sha256": "05097fe4780450c006b4f7514558a46af86658054a448b8a27b1a666269b1055"
+    },
+    "complete-navigation-query.csv": {
+      "bytes": 1325443,
+      "sha256": "76270ecda9dbe5a6699a29dc62509673e206b4e2ca2be624879cf0b0f0d857f8"
+    },
+    "complete-navigation-query.json": {
+      "bytes": 2780905,
+      "sha256": "5b1bae3369d7b3cf19e3af189e17d2fbf2b16e571c0cf53ca77a0a00fe40237a"
+    },
+    "frontend-contract-proof.json": {
+      "bytes": 407,
+      "sha256": "06a18b0cafd3d261d0266af07bc2ac73903aecf5a95f806233df881ef613106e"
+    },
+    "map-pointer-acceptance.json": {
+      "bytes": 880,
+      "sha256": "84395633cc351b552f2f0cdc0529cd5c6780799f65f18329494cbe8a3fbee08e"
+    },
+    "native-pages-acceptance.json": {
+      "bytes": 727,
+      "sha256": "63f9500abcaa3b76dde4631d97cd90006f5cfa7cedbdaa47ca76fa7cd62ba8f5"
+    },
+    "offline-reproduction-19.json": {
+      "bytes": 232,
+      "sha256": "5e0cabdaa0656417eb38e4864dedf327f604c0dbe2d28eff89c1899322b343f0"
+    },
+    "offline-reproduction-73.json": {
+      "bytes": 232,
+      "sha256": "5e0cabdaa0656417eb38e4864dedf327f604c0dbe2d28eff89c1899322b343f0"
+    },
+    "preservation.json": {
+      "bytes": 55544,
+      "sha256": "18f731995a1b2b0a0ff42538a0538845268781ccbb4e4309c180a73f99d8fd62"
+    },
+    "scientific-publication.json": {
+      "bytes": 4706,
+      "sha256": "251036fd7be771e3f6e3df65d5af93b255617ad82bf54bdbccfaba1de2e31406"
+    },
+    "summary.json": {
+      "bytes": 488,
+      "sha256": "0dc39cde474a7edebcc96ca6b84ad43fd9e8d9db831864f4e942a820fbd7fbb4"
+    },
+    "website-acceptance.json": {
+      "bytes": 4951,
+      "sha256": "4bf28ddc1b315acd8668d200d36009c1c0bd8688bcb39fec6d1830f253245434"
+    }
+  },
+  "model_preservation_does_not_validate_source_returns": true,
+  "new_numerical_observations": 0,
+  "new_rates_or_precinct_polygons": false,
+  "reporting_rows_connected": 4963,
+  "scientific_source_commit": "5d59f39a53a76aefdcd01eeae230e58a34a5e4a9",
+  "sole_45minute_continuation": 121,
+  "source_counts_changed": false,
+  "source_unknowns": 83,
+  "status": "verified_live_reporting_navigation_not_nationwide_completion",
+  "true_zeros": 22,
+  "urgent_MA_and_all_state_result_comparability_audit_remains_open": true,
+  "website_source": "109754a734f043fbbbe4d792138caea3cd9da5f0"
+}

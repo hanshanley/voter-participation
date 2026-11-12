@@ -1,0 +1,90 @@
+{
+  "all_factual_counts_unchanged": true,
+  "assets": {
+    "checksums.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437084,
+      "bytes": 1392,
+      "sha256": "81c9833e118e42de4ed64d583fa0c5662f564645db432f573318c0c9e59aa269",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/checksums.json"
+    },
+    "complete-analysis.zip": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437148,
+      "bytes": 38063832,
+      "sha256": "15948ef18f6bd772a17e1e50e71fc8fb00f3ec69fa698a9ed84b1d7a4b492726",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/complete-analysis.zip"
+    },
+    "complete-navigation-query.csv": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437287,
+      "bytes": 1325443,
+      "sha256": "76270ecda9dbe5a6699a29dc62509673e206b4e2ca2be624879cf0b0f0d857f8",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/complete-navigation-query.csv"
+    },
+    "complete-navigation-query.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437361,
+      "bytes": 2780905,
+      "sha256": "5b1bae3369d7b3cf19e3af189e17d2fbf2b16e571c0cf53ca77a0a00fe40237a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/complete-navigation-query.json"
+    },
+    "frontend-contract-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437422,
+      "bytes": 407,
+      "sha256": "06a18b0cafd3d261d0266af07bc2ac73903aecf5a95f806233df881ef613106e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/frontend-contract-proof.json"
+    },
+    "local-map-pointer-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437479,
+      "bytes": 830,
+      "sha256": "e30e915a25d9d84a6a8faa3f86b9eed0c0ea7e7bcf6742b41c2a198e5f043022",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/local-map-pointer-proof.json"
+    },
+    "local-renderer-fixture-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437552,
+      "bytes": 5077,
+      "sha256": "962fe924871733884615c8b0880983307500433fd409c671cf33d19eff5bdca0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/local-renderer-fixture-proof.json"
+    },
+    "offline-reproduction-19.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437604,
+      "bytes": 232,
+      "sha256": "5e0cabdaa0656417eb38e4864dedf327f604c0dbe2d28eff89c1899322b343f0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/offline-reproduction-19.json"
+    },
+    "offline-reproduction-73.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437645,
+      "bytes": 232,
+      "sha256": "5e0cabdaa0656417eb38e4864dedf327f604c0dbe2d28eff89c1899322b343f0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/offline-reproduction-73.json"
+    },
+    "package-proof.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437690,
+      "bytes": 278,
+      "sha256": "bfe65413cc27bd65438ba9222ec289abfb207f86b9bf8b66784b54961d95ef13",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/package-proof.json"
+    },
+    "summary.json": {
+      "anonymous_full_byte_verification": true,
+      "asset_id": 740437747,
+      "bytes": 488,
+      "sha256": "0dc39cde474a7edebcc96ca6b84ad43fd9e8d9db831864f4e942a820fbd7fbb4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-held-reporting-navigation-20261112-01/summary.json"
+    }
+  },
+  "immutable": true,
+  "release_id": 443300298,
+  "scientific_source_commit": "5d59f39a53a76aefdcd01eeae230e58a34a5e4a9",
+  "source_acquisitions_model_refits_or_new_precinct_polygons": 0,
+  "status": "passed_complete_immutable_reporting_navigation_science",
+  "tag": "participation-held-reporting-navigation-20261112-01",
+  "website_baseline": "94db6c0c098842b01cf0a33a090bf62c30cf818c",
+  "website_source_candidate": "109754a734f043fbbbe4d792138caea3cd9da5f0"
+}

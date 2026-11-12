@@ -1,0 +1,18 @@
+{
+  "actual_downloaded_native_zip_sha256": "0035345d4b49427d62be9dff3fc6ce53e62aa9395205a09a83fa4271c289fc23",
+  "actual_native_artifact_id": 13967849374,
+  "actual_payload_bytes": 996866407,
+  "actual_tar_bytes": 999454720,
+  "all_113_original_models_preserved": true,
+  "artifact_files": 2971,
+  "full_build_and_deployment_successful": true,
+  "not_a_local_size_projection": true,
+  "old_full_download_pins_preserved": 436,
+  "pinned_participation_source": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+  "run_id": 43271725430,
+  "source_commit": "109754a734f043fbbbe4d792138caea3cd9da5f0",
+  "source_guard_run": 43271725174,
+  "source_scripts_match_frozen_commit": 5,
+  "status": "pass",
+  "strict_both_less_than_1e9": true
+}

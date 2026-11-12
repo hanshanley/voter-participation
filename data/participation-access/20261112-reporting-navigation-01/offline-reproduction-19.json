@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "outputs": 57,
+  "reporting_rows": 4963,
+  "county_parents": 113,
+  "network_or_source_acquisition_required": false,
+  "network_creation_dns_and_external_command_guards_probed": true,
+  "archived_tests": 2
+}

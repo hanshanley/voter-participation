@@ -1,0 +1,46 @@
+{
+  "status": "pass",
+  "fixture_only": false,
+  "production": true,
+  "data_overrides": false,
+  "cases": [
+    {
+      "width": 1440,
+      "state": "AR",
+      "actual_county_pointer": true,
+      "reporting_rows": 30
+    },
+    {
+      "width": 1440,
+      "state": "AZ",
+      "actual_county_pointer": true,
+      "reporting_rows": 44
+    },
+    {
+      "width": 1440,
+      "state": "WY",
+      "actual_county_pointer": true,
+      "reporting_rows": 11
+    },
+    {
+      "width": 390,
+      "state": "AR",
+      "actual_county_pointer": true,
+      "reporting_rows": 30
+    },
+    {
+      "width": 390,
+      "state": "AZ",
+      "actual_county_pointer": true,
+      "reporting_rows": 44
+    },
+    {
+      "width": 390,
+      "state": "WY",
+      "actual_county_pointer": true,
+      "reporting_rows": 11
+    }
+  ],
+  "actual_county_pointers": 6,
+  "console_errors": []
+}
