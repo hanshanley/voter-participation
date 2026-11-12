@@ -1,0 +1,42 @@
+{
+  "compiled_HTML_or_session_headers_included": false,
+  "models_48_state_House_unchanged": true,
+  "native_directory_receipt": {
+    "bytes": 15261,
+    "origin": "new_source_response",
+    "recorded_at_utc": "2026-11-12T05:17:10.031230+00:00",
+    "sha256": "d98e34ff77729e96bbdf3fb3e1e234c4109bce594fca8ace67b5715f80c25a38",
+    "status": 200,
+    "url": "https://www2.census.gov/programs-surveys/cps/tables/p20/504/"
+  },
+  "native_receipts": [
+    {
+      "bytes": 172212,
+      "origin": "new_source_response",
+      "recorded_at_utc": "2026-11-12T05:17:59.075126+00:00",
+      "sha256": "da7bb07383701ea3c1bd49ad917ac494c70bf83fd172047a927cbc5b70610d0a",
+      "status": 200,
+      "url": "https://www2.census.gov/programs-surveys/cps/tables/p20/504/tab4a.txt"
+    },
+    {
+      "bytes": 128126,
+      "origin": "new_source_response",
+      "recorded_at_utc": "2026-11-12T05:17:59.339224+00:00",
+      "sha256": "66c0f2068338464f74f210ea96ecc4019d44347e6e0aa90c27401cd779f38d1f",
+      "status": 200,
+      "url": "https://www2.census.gov/programs-surveys/cps/tables/p20/504/tab4b.txt"
+    },
+    {
+      "bytes": 42637,
+      "origin": "new_source_response",
+      "recorded_at_utc": "2026-11-12T05:17:59.500659+00:00",
+      "sha256": "957569808ecbc66c8f71ac33ddb9561c604e0c4193c1b206d7af91406f8e518d",
+      "status": 200,
+      "url": "https://www2.census.gov/programs-surveys/cps/tables/p20/504/tab4c.txt"
+    }
+  ],
+  "native_release_date": "1998-08-17",
+  "report_number": "P20-504",
+  "research_start_main": "3b08e2fde0abd926c58e3c487fd73711a8fa5e5b",
+  "source_acquisitions_repeated": false
+}

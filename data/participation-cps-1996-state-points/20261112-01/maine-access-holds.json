@@ -1,0 +1,29 @@
+{
+  "alternate_client_cache_or_mirror": false,
+  "native_originals_acquired": false,
+  "recorded_date": "2026-11-12",
+  "requests_retried": false,
+  "resources": [
+    {
+      "body_bytes": null,
+      "body_sha256": null,
+      "status": 403,
+      "stopped": true,
+      "url": "https://www.maine.gov/sos/elections-voting/election-results-data/election-results-2024"
+    },
+    {
+      "body_bytes": null,
+      "body_sha256": null,
+      "status": 403,
+      "stopped": true,
+      "url": "https://www.maine.gov/sos/news/maine-secretary-states-office-announces-congressional-district-2-race-will-proceed-ranked"
+    },
+    {
+      "body_bytes": null,
+      "body_sha256": null,
+      "status": 403,
+      "stopped": true,
+      "url": "https://www.maine.gov/sos/elections-voting/election-results-data"
+    }
+  ]
+}

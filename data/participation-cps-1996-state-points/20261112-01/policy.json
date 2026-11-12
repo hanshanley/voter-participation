@@ -1,0 +1,25 @@
+{
+  "AB_nonvoter_total_is_opaque_complement": true,
+  "citizen_state_totals_from_sex_sums": false,
+  "cohort_or_local_allocation": false,
+  "confidence_intervals": null,
+  "count_unit": "rounded_thousands_not_sample_N",
+  "frames": {
+    "A": "all_adults_18_plus",
+    "B": "all_adults_18_plus",
+    "C": "citizen_adults_18_plus"
+  },
+  "group_snapshot_endpoint": 1998,
+  "group_snapshot_type": "presidential_to_midterm_descriptive_not_same_election_type",
+  "nonresponse_scenarios": "rounded_count_all_unknown_no_vs_yes_assumptions_not_CI",
+  "race_aliases": "literal_White_Black_Hispanic_only_no_modern_or_NH_aliases",
+  "raw_sample_N": null,
+  "same_year_controls": "accepted_1996_retrospective_native_frame_only",
+  "selection": "direct_printed_metric_specific_percentage_with_positive_rounded_population",
+  "source_B": "withheld_never_reconstructed",
+  "source_repairs": false,
+  "standard_errors": null,
+  "unknown_voting_is_nonvote": false,
+  "year": 1996,
+  "zero_base_points": "retain_literal_cells_but_do_not_infer_zero_turnout"
+}

@@ -1,0 +1,30 @@
+{
+  "accepted-1998-science.zip": {
+    "bytes": 1408974,
+    "sha256": "c94bc51267849010ea393af44cb2dd3da7a507e86f45d8dfdd796033c8939a8b"
+  },
+  "maine-access-holds.json": {
+    "bytes": 817,
+    "sha256": "5268ee058ad530e5555b2b4672f759675eea4c782f2f8b4ffd46d3f270dabbc5"
+  },
+  "policy.json": {
+    "bytes": 1042,
+    "sha256": "1df8201f4ecbe470814319fde6aef786ad45329c400372883c3a6ef73a8c10f4"
+  },
+  "provenance.json": {
+    "bytes": 1611,
+    "sha256": "0e5d657f9e912428e89d7176dc95f6a6e6982598d22f9eb5af8209305accacf0"
+  },
+  "tab4a.txt": {
+    "bytes": 172212,
+    "sha256": "da7bb07383701ea3c1bd49ad917ac494c70bf83fd172047a927cbc5b70610d0a"
+  },
+  "tab4b.txt": {
+    "bytes": 128126,
+    "sha256": "66c0f2068338464f74f210ea96ecc4019d44347e6e0aa90c27401cd779f38d1f"
+  },
+  "tab4c.txt": {
+    "bytes": 42637,
+    "sha256": "957569808ecbc66c8f71ac33ddb9561c604e0c4193c1b206d7af91406f8e518d"
+  }
+}
