@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Three House model families | [Same-source comparison; negative results retained](#three-fixed-norc-house-model-families) |
 | Pennsylvania native control scope correction | [48 comparisons; no new counts or refit](#2026-pennsylvania-native-district-control-scope) |
 | Official House endpoint successor | [47 qualified comparisons; unchanged NORC fits](#2026-official-house-endpoint-successor) |
 | Alaska Senate internal source scopes | [Two native parents; no county or final-round promotion](#alaska-senate-two-native-parents-and-accounting-scopes) |
@@ -28,6 +29,40 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Three fixed NORC House model families
+
+Scientific source `7b760e61d7d601476f124b8302038147115ec08a` adds genuine native
+histogram boosting and extra-randomized-tree fits, not merely more Monte Carlo
+seeds. Accepted ridge fits and eight outputs are reused unchanged. Same source
+records, predictors, weights, holdout seeds, 48 endpoints, disclosure masks and
+simulation inventories are retained. The source-only preregistered rule keeps
+ridge; boosting improves current-response log loss slightly but worsens
+historical transfer. Historical transfer is now selection validation, not an
+independent post-selection test. Current-return errors never select a model.
+
+All 150 state/family decisions, 300 dispersion rows and nine source validations
+are public in `data/house-model-families/20261112-01/`. Margin MAEs are
+6.12699827 / 5.74311543 / 6.06357405pp; Democratic two-party-share MAEs are
+exactly half. Gross retained-voter percentages are not halved. Full science
+tag `participation-house-model-families-20261112-01` includes the entire
+accepted predecessor, all permitted inputs, every state/group/seed/assumption
+query and exact fitting/replay code: 35,332,487 bytes/53 members, SHA256
+`124c3702ea3d7218351f0105a571407804d48a2afa9c924b743fb5dc8dd214da`.
+Two fresh blocked-network/command standard-library-only reproductions match
+31 full outputs; eight focused tests, 52,258 checks per new family and 3,788
+cross-family checks pass. Raw respondents, private fine cells, individual
+predictions and estimators are not published. AK/ME holds and frozen counts
+remain; exact return reconstruction is not identified behavior.
+Website **c2d1c19** is verified live: Pages43184405254/artifact13927688816,
+actual996829655payload/999424000tar bytes, both strictly below1billion.
+All69 unqueried production assets and436 old download pins match. Actual
+phone/desktop checks cover45,288 family/unit/group values,3,060 baseline
+values,102 real pointer selections,all50 summaries,22 groups/six dimensions,
+noJS/failure/checksum/retry/late-office isolation,1,020 preserved legacy values/
+126 summaries and48 layouts. Four actual production captures were inspected.
+Full scientific/website records are in the same versioned data directory.
+Full methods: [NORC House transitions](docs/NORC_HOUSE_TRANSITIONS.md).
 
 This is the canonical **source-family ledger** for the research project and its
 [companion website](https://github.com/hanshanley/margin_of_error). It includes

@@ -1,0 +1,1050 @@
+{
+  "full_old_download_pins_preserved": 436,
+  "main_push": {
+    "all_local_browsers_passed": true,
+    "commit": "c2d1c19ab6b15b077d9e6e26cb695aa610f3a567",
+    "feature_guard_run": 43184196054,
+    "local_payload_bytes": 987106661,
+    "local_tar_bytes": 989655040,
+    "parent": "7088482a2eae2c2da8095ea8f016683983a9058b",
+    "protected": {
+      "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+      "research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+      "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+      "website": {
+        "head": "e8412375749695ecf0dd866544df301879ad12e9",
+        "index_sha256": "a3a03cd67d767ec8e0005824e5d4e5677471e9453217316572b493fb047b5099"
+      }
+    },
+    "unchanged_downloads": 436
+  },
+  "native_artifact": {
+    "artifact_id": 13927688816,
+    "commit": "c2d1c19ab6b15b077d9e6e26cb695aa610f3a567",
+    "files": 2971,
+    "generated_gzip_platform_headers": {},
+    "payload_bytes": 996829655,
+    "run_id": 43184405254,
+    "status": "PASS_exact_pages_publication",
+    "tar_bytes": 999424000,
+    "unchanged_complete_download_routes": 436,
+    "verified_sha256": {
+      "_astro/BaseLayout.CEWuOCzZ.css": "f4161b19471c5935ddf24860bd2cad01dd86810e6d2b864bc149f18c3016ac99",
+      "_astro/ParticipationCPSUnifiedHistory.astro_astro_type_script_index_0_lang.BgXsRZsU.js": "3e52d3a7327aa904f2d9ce0bd8644654552ccaad2f75a629a848e234ac8f2174",
+      "_astro/ParticipationReturnDrivers.astro_astro_type_script_index_0_lang.rDGpOrAM.js": "7f650233912cddbf62d4fa69c974d90ab173cd380cc0ae832b382878b54f68e7",
+      "_astro/voter-participation.BXEZYCrE.css": "123548d8bbad4c095b5f38e095c732d879e33a2d388939f3ba9e15fd6f7858b8",
+      "county-results.json": "9c91d5de0974ab4dedd98ae4c2708e25b35790b1ac7128dae9970b1f2061996e",
+      "participation-city-counts/20261110-massachusetts-native-local-counts-01/MA.geojson.gz": "9b631685f4ed9500c0681679f855c83ed302479b6b692796beb4ef61901e02ee",
+      "participation-city-counts/20261110-massachusetts-native-local-counts-01/index.json": "e2969942836ba4eeb03e63bd67ae3b617c393a943f6194b33af319321e353d1c",
+      "participation-city-counts/20261110-new-hampshire-01/NH.geojson.gz": "b74e8b9c197371af4f093dbdc2916cb18aaa1bc2ff498e2f875642f2f7e5fdee",
+      "participation-county-administrations/20261109-hawaii-01/HI.geojson.gz": "b5973c0a59c892d8619ed60b9c72cbc874a206b04fe4689c2428ca883c61b6d0",
+      "participation-county-cards/20261109-01/complete-analysis.zip": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6",
+      "participation-county-parents/20261109-01/complete-analysis.zip": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915",
+      "participation-county-parents/20261109-02/complete-analysis.zip": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c",
+      "participation-downloads.json": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade",
+      "participation-local/AL.json.gz": "790c4a762dc1abf58637de83c0961b625ed4d466f158c8cc86c8d894ac59eef7",
+      "participation-local/AR.json.gz": "83684327edaccd72bd9e70147bb78c2354932b8b603137873db7c8283faedd7b",
+      "participation-local/CO.json.gz": "a4810b0da93bfc5edd23a87f53abd96e2e49ce276d15256663587b6194485376",
+      "participation-local/CT.json.gz": "f60eb5119332c7d87eb1a5be2ce58442cb776ea6d6e0a43aedce04605949aef1",
+      "participation-local/DE.json.gz": "b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8",
+      "participation-local/HI.json.gz": "e7677d3d50356056ce4973606ce889667a639b35c1c7fa69121fa6ca0a31e9d3",
+      "participation-local/IL.json.gz": "1da978e9a5b4241c0ca3fbfd4a5cbd56ef32700bf0a9105f51567605e42f878e",
+      "participation-local/IN.json.gz": "74dace208fc054e1c68f1d20e3e23f6b52adde7f8868ed152b47e7d944287b24",
+      "participation-local/MA.json.gz": "5f46f09b7005a0b5edbbe7b4869062e6269c5356a1c61dddb2cc4e2b02042210",
+      "participation-local/MD.json.gz": "63aa859e66119a6347902941249eafa23952bbf359d5ecb859b0d8fa89102b5a",
+      "participation-local/ME.json.gz": "f2d5254853fff5418711e90876cbef6c4eabfe89442667b0701521279865aec4",
+      "participation-local/MI.json.gz": "5a6c9ce644a6e53a3509d627cf58fd39f033c2ca464638c3a83c0d530cf1bac3",
+      "participation-local/MN.json.gz": "c1581a3597e03ec21a681b980b182ad2efafd74875f212d11a37b35a0107c7b6",
+      "participation-local/NH.json.gz": "c416f9fa65cde936c6bc984e23cc4f407be4af4c57b1b6db6b10a041588e3efe",
+      "participation-local/NV.json.gz": "dbdeaface035426477db3422938972f52e426d4a05ab1a7bd61d2ae760939174",
+      "participation-local/NY.json.gz": "9d07f3f07c64b34ec3c2ae791a6f0e7d48b2ea09467f1e1b93571cc578604473",
+      "participation-local/TX.json.gz": "61b15dcde164789942832363d3b0a84ac8d26edc399dcf3499ce4ebc2c0e8cb1",
+      "participation-local/WV.json.gz": "004b9de8fc8d63e27af3e6df7ca7147d586fb6a46cf528eb911b28887182a94d",
+      "participation-locality-activity/20261110-maine-01/ME.geojson.gz": "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc",
+      "participation-precincts.json": "494d74741756af1c887d57a4358e154e879fce6ce20f374c1923740c93693b81",
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281",
+      "participation-precincts/20261109-indiana-monroe-01/index.json": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650",
+      "participation-precincts/20261110-alaska-native-display-01/AK.geojson.gz": "8c5bf4c88d3d4ab72b3a655189b904f28f7c9a3a6c87047516a39aca9cbc8273",
+      "participation-precincts/20261110-alaska-native-display-01/index.json": "193413401d2ee39fc66e17cbe36582308539915a7909360af5d068b531d4db08",
+      "participation-precincts/20261110-manchester-ward-reference-01/NH.geojson.gz": "0022586d018c178ccbdab8cc6dde8a900eead30f87f51e157c5a0e5b58da5871",
+      "participation-precincts/20261110-manchester-ward-reference-01/index.json": "1fe820cb70f059e7b5a124af408d928d99350d180d8154b08982065ce5c695b8",
+      "participation-precincts/20261110-massachusetts-city-precinct-reference-02/MA.geojson.gz": "72ebce014fed1fd3a25f81ce93dae73cee28b52c754271f30dd2621b538fe0dd",
+      "participation-precincts/20261110-massachusetts-city-precinct-reference-02/index.json": "6cfcc32e41675b88b8944c45b140d0338c6aa0fdf3134d3a0c47e6c3ea99b559",
+      "participation-precincts/20261110-massachusetts-native-local-counts-01/MA.geojson.gz": "c240fe151cf4c2563874c4980ba977c1ea8818b63d828311c65ca2979986d820",
+      "participation-precincts/20261110-massachusetts-native-local-counts-01/index.json": "7679f236de0a81008427ca39299a621baeaabb76fe49a014d48d0ffe57234992",
+      "participation-precincts/20261110-minnesota-complete-native-03/index.json": "ef2799062f3fbfd76c9097f50243a899b332c57547f01c9d21ccf582969865bc",
+      "participation-precincts/20261110-minnesota-followup-02/index.json": "84f035cc277a1c912c56f308cae0d3ba7934f73bf09f4824102488c5c8dda0ca",
+      "participation-precincts/20261110-new-hampshire-ward-reference-02/NH.geojson.gz": "967c8b030dc4858d5b0f691d5eddd9b19319b6720b46a14fb0488eaac27611a1",
+      "participation-precincts/20261110-new-hampshire-ward-reference-02/index.json": "dc7a8dc070fa6afbfd59e66b8a8564e78e7ac883db3593e4efdccb2c66cc1a00",
+      "participation-precincts/20261110-new-hampshire-ward-reference-03/NH.geojson.gz": "d76d43baa665e64889b993116507e87c828b793c18a9959c9904f2f3a5e5087a",
+      "participation-precincts/20261110-new-hampshire-ward-reference-03/index.json": "03a1b245da22ec5c9c343e02d11343902cffdd6418addb8499049e90e2605c8e",
+      "participation-precincts/20261110-new-hampshire-ward-reference-04/NH.geojson.gz": "87389220a20d2af082c70fa43cab4ce5864a14f8a4e3b4ac321049f7c1ca9ddd",
+      "participation-precincts/20261110-new-hampshire-ward-reference-04/index.json": "76fdcb1e9b99a67b6beb7ecf763a81468cea48110d07313c15052595a6148982",
+      "participation-reporting-units.json": "6247cc999b23dcd05f49bbb18ec47361047a8195c792a310b9938564c6a1bf62",
+      "participation-town-reports/20261110-connecticut-01/CT.geojson.gz": "f8ff12fc121ae0d4cd9fd5a89eaf9b7af44ea1eca4fea8008bf7156282dd7eea",
+      "scripts/participation-calibrated-swing.js": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115",
+      "scripts/participation-counts.js": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de",
+      "scripts/participation-coverage.js": "f67b2fc454e16900146b8c54608183b6e56e22c288e1c250bfafe26a2329689a",
+      "scripts/participation-cps-1996.js": "a5d03985e995bbd975980c7fadd51021ebf8973e9416cb19430a3ccf4d264400",
+      "scripts/participation-cps-1998.js": "3d526ac6f0e9666bc3c251e2ff5d030ac371a309fc6c2278087f6ccd2940589c",
+      "scripts/participation-cps-2002.js": "b6e3e532ef46327b9c64f16baea5b7a65cc0a8178316b18be96755609c26e5f5",
+      "scripts/participation-dataset.js": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f",
+      "scripts/participation-explorer.js": "c2080b92fe327350a5657259f5d51be0880b5cf4aa9454c0fca15a5d2eeb8a54",
+      "scripts/participation-geography.js": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3",
+      "scripts/participation-map-projection.js": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a",
+      "scripts/participation-native-bindings.js": "6d988c642e06c8916572d4b7a18582ba707afa38dab86e7a4ce480a2d52ce274",
+      "scripts/participation-norc-house.js": "97e3b5954a5513948e097e350e5f41d0a216ea7904c11a8ec84551013fc35c27",
+      "scripts/participation-resident-context.js": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260",
+      "scripts/participation-return-drivers.js": "6fda665efb9d2d5465ef01f68c435c552a1430915471af972a93c03138591cd3",
+      "scripts/participation-transition-scenarios.js": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e",
+      "scripts/provider-county-scopes.js": "32db206ded3bc8d6242d2a47c39ac5acb9dd52ea789291cb464af0bc77cfb99c"
+    }
+  },
+  "production": {
+    "actual_payload_bytes": 996829655,
+    "actual_tar_bytes": 999424000,
+    "artifact_id": 13927688816,
+    "checks": {
+      "families": {
+        "bytes": 841,
+        "path": "house-families-c2d1c19-families-production.json",
+        "result": {
+          "base_url": "https://www.themarginoferror.com",
+          "cases": [
+            {
+              "exact_state_family_unit_group_view_values": 22644,
+              "no_horizontal_overflow": true,
+              "office_roundtrip_preserved": true,
+              "retained_percentages_not_halved": true,
+              "selected_state_preserved": true,
+              "shared_family_bounds": true,
+              "width": 390
+            },
+            {
+              "exact_state_family_unit_group_view_values": 22644,
+              "no_horizontal_overflow": true,
+              "office_roundtrip_preserved": true,
+              "retained_percentages_not_halved": true,
+              "selected_state_preserved": true,
+              "shared_family_bounds": true,
+              "width": 1440
+            }
+          ],
+          "public_viewer_sha256": "46d81972333ff8a08e38f802034b7cc2338db15a63ae2376ae63a39fbfc91529",
+          "status": "passed_real_public_three_family_unit_maps",
+          "valid_data_overrides": false
+        },
+        "sha256": "cc0991d2243c22dd67ae3ca90a8ea2de52efbcae5e76610198ca622219cdee98"
+      },
+      "layout": {
+        "bytes": 9816,
+        "path": "house-families-c2d1c19-layout-production.json",
+        "result": {
+          "base_url": "https://www.themarginoferror.com",
+          "cases": [
+            {
+              "documentWidth": 320,
+              "headerLeft": 14,
+              "headerRight": 306,
+              "pageLeft": 14,
+              "pageRight": 306,
+              "view": "states",
+              "viewport": 320,
+              "width": 320
+            },
+            {
+              "documentWidth": 320,
+              "historical_options_open": true,
+              "left": 14,
+              "right": 306,
+              "view": "states",
+              "viewport": 320,
+              "width": 320
+            },
+            {
+              "documentWidth": 320,
+              "headerLeft": 14,
+              "headerRight": 306,
+              "pageLeft": 14,
+              "pageRight": 306,
+              "view": "national",
+              "viewport": 320,
+              "width": 320
+            },
+            {
+              "documentWidth": 320,
+              "historical_options_open": true,
+              "left": 14,
+              "right": 306,
+              "view": "national",
+              "viewport": 320,
+              "width": 320
+            },
+            {
+              "documentWidth": 320,
+              "headerLeft": 14,
+              "headerRight": 306,
+              "pageLeft": 14,
+              "pageRight": 306,
+              "view": "effects",
+              "viewport": 320,
+              "width": 320
+            },
+            {
+              "documentWidth": 320,
+              "headerLeft": 14,
+              "headerRight": 306,
+              "pageLeft": 14,
+              "pageRight": 306,
+              "view": "methods",
+              "viewport": 320,
+              "width": 320
+            },
+            {
+              "documentWidth": 390,
+              "headerLeft": 14,
+              "headerRight": 376,
+              "pageLeft": 14,
+              "pageRight": 376,
+              "view": "states",
+              "viewport": 390,
+              "width": 390
+            },
+            {
+              "documentWidth": 390,
+              "historical_options_open": true,
+              "left": 14,
+              "right": 376,
+              "view": "states",
+              "viewport": 390,
+              "width": 390
+            },
+            {
+              "documentWidth": 390,
+              "headerLeft": 14,
+              "headerRight": 376,
+              "pageLeft": 14,
+              "pageRight": 376,
+              "view": "national",
+              "viewport": 390,
+              "width": 390
+            },
+            {
+              "documentWidth": 390,
+              "historical_options_open": true,
+              "left": 14,
+              "right": 376,
+              "view": "national",
+              "viewport": 390,
+              "width": 390
+            },
+            {
+              "documentWidth": 390,
+              "headerLeft": 14,
+              "headerRight": 376,
+              "pageLeft": 14,
+              "pageRight": 376,
+              "view": "effects",
+              "viewport": 390,
+              "width": 390
+            },
+            {
+              "documentWidth": 390,
+              "headerLeft": 14,
+              "headerRight": 376,
+              "pageLeft": 14,
+              "pageRight": 376,
+              "view": "methods",
+              "viewport": 390,
+              "width": 390
+            },
+            {
+              "documentWidth": 700,
+              "headerLeft": 14,
+              "headerRight": 686,
+              "pageLeft": 14,
+              "pageRight": 686,
+              "view": "states",
+              "viewport": 700,
+              "width": 700
+            },
+            {
+              "documentWidth": 700,
+              "historical_options_open": true,
+              "left": 14,
+              "right": 686,
+              "view": "states",
+              "viewport": 700,
+              "width": 700
+            },
+            {
+              "documentWidth": 700,
+              "headerLeft": 14,
+              "headerRight": 686,
+              "pageLeft": 14,
+              "pageRight": 686,
+              "view": "national",
+              "viewport": 700,
+              "width": 700
+            },
+            {
+              "documentWidth": 700,
+              "historical_options_open": true,
+              "left": 14,
+              "right": 686,
+              "view": "national",
+              "viewport": 700,
+              "width": 700
+            },
+            {
+              "documentWidth": 700,
+              "headerLeft": 14,
+              "headerRight": 686,
+              "pageLeft": 14,
+              "pageRight": 686,
+              "view": "effects",
+              "viewport": 700,
+              "width": 700
+            },
+            {
+              "documentWidth": 700,
+              "headerLeft": 14,
+              "headerRight": 686,
+              "pageLeft": 14,
+              "pageRight": 686,
+              "view": "methods",
+              "viewport": 700,
+              "width": 700
+            },
+            {
+              "documentWidth": 760,
+              "headerLeft": 14,
+              "headerRight": 746,
+              "pageLeft": 14,
+              "pageRight": 746,
+              "view": "states",
+              "viewport": 760,
+              "width": 760
+            },
+            {
+              "documentWidth": 760,
+              "historical_options_open": true,
+              "left": 14,
+              "right": 746,
+              "view": "states",
+              "viewport": 760,
+              "width": 760
+            },
+            {
+              "documentWidth": 760,
+              "headerLeft": 14,
+              "headerRight": 746,
+              "pageLeft": 14,
+              "pageRight": 746,
+              "view": "national",
+              "viewport": 760,
+              "width": 760
+            },
+            {
+              "documentWidth": 760,
+              "historical_options_open": true,
+              "left": 14,
+              "right": 746,
+              "view": "national",
+              "viewport": 760,
+              "width": 760
+            },
+            {
+              "documentWidth": 760,
+              "headerLeft": 14,
+              "headerRight": 746,
+              "pageLeft": 14,
+              "pageRight": 746,
+              "view": "effects",
+              "viewport": 760,
+              "width": 760
+            },
+            {
+              "documentWidth": 760,
+              "headerLeft": 14,
+              "headerRight": 746,
+              "pageLeft": 14,
+              "pageRight": 746,
+              "view": "methods",
+              "viewport": 760,
+              "width": 760
+            },
+            {
+              "documentWidth": 761,
+              "headerLeft": 20,
+              "headerRight": 741,
+              "pageLeft": 20,
+              "pageRight": 741,
+              "view": "states",
+              "viewport": 761,
+              "width": 761
+            },
+            {
+              "documentWidth": 761,
+              "historical_options_open": true,
+              "left": 20,
+              "right": 741,
+              "view": "states",
+              "viewport": 761,
+              "width": 761
+            },
+            {
+              "documentWidth": 761,
+              "headerLeft": 20,
+              "headerRight": 741,
+              "pageLeft": 20,
+              "pageRight": 741,
+              "view": "national",
+              "viewport": 761,
+              "width": 761
+            },
+            {
+              "documentWidth": 761,
+              "historical_options_open": true,
+              "left": 20,
+              "right": 741,
+              "view": "national",
+              "viewport": 761,
+              "width": 761
+            },
+            {
+              "documentWidth": 761,
+              "headerLeft": 20,
+              "headerRight": 741,
+              "pageLeft": 20,
+              "pageRight": 741,
+              "view": "effects",
+              "viewport": 761,
+              "width": 761
+            },
+            {
+              "documentWidth": 761,
+              "headerLeft": 20,
+              "headerRight": 741,
+              "pageLeft": 20,
+              "pageRight": 741,
+              "view": "methods",
+              "viewport": 761,
+              "width": 761
+            },
+            {
+              "documentWidth": 1024,
+              "headerLeft": 20,
+              "headerRight": 1004,
+              "pageLeft": 20,
+              "pageRight": 1004,
+              "view": "states",
+              "viewport": 1024,
+              "width": 1024
+            },
+            {
+              "documentWidth": 1024,
+              "historical_options_open": true,
+              "left": 784,
+              "right": 1004,
+              "view": "states",
+              "viewport": 1024,
+              "width": 1024
+            },
+            {
+              "documentWidth": 1024,
+              "headerLeft": 20,
+              "headerRight": 1004,
+              "pageLeft": 20,
+              "pageRight": 1004,
+              "view": "national",
+              "viewport": 1024,
+              "width": 1024
+            },
+            {
+              "documentWidth": 1024,
+              "historical_options_open": true,
+              "left": 784,
+              "right": 1004,
+              "view": "national",
+              "viewport": 1024,
+              "width": 1024
+            },
+            {
+              "documentWidth": 1024,
+              "headerLeft": 20,
+              "headerRight": 1004,
+              "pageLeft": 20,
+              "pageRight": 1004,
+              "view": "effects",
+              "viewport": 1024,
+              "width": 1024
+            },
+            {
+              "documentWidth": 1024,
+              "headerLeft": 20,
+              "headerRight": 1004,
+              "pageLeft": 20,
+              "pageRight": 1004,
+              "view": "methods",
+              "viewport": 1024,
+              "width": 1024
+            },
+            {
+              "documentWidth": 1440,
+              "headerLeft": 130,
+              "headerRight": 1310,
+              "pageLeft": 130,
+              "pageRight": 1310,
+              "view": "states",
+              "viewport": 1440,
+              "width": 1440
+            },
+            {
+              "documentWidth": 1440,
+              "historical_options_open": true,
+              "left": 1090,
+              "right": 1310,
+              "view": "states",
+              "viewport": 1440,
+              "width": 1440
+            },
+            {
+              "documentWidth": 1440,
+              "headerLeft": 130,
+              "headerRight": 1310,
+              "pageLeft": 130,
+              "pageRight": 1310,
+              "view": "national",
+              "viewport": 1440,
+              "width": 1440
+            },
+            {
+              "documentWidth": 1440,
+              "historical_options_open": true,
+              "left": 1090,
+              "right": 1310,
+              "view": "national",
+              "viewport": 1440,
+              "width": 1440
+            },
+            {
+              "documentWidth": 1440,
+              "headerLeft": 130,
+              "headerRight": 1310,
+              "pageLeft": 130,
+              "pageRight": 1310,
+              "view": "effects",
+              "viewport": 1440,
+              "width": 1440
+            },
+            {
+              "documentWidth": 1440,
+              "headerLeft": 130,
+              "headerRight": 1310,
+              "pageLeft": 130,
+              "pageRight": 1310,
+              "view": "methods",
+              "viewport": 1440,
+              "width": 1440
+            },
+            {
+              "documentWidth": 2000,
+              "headerLeft": 410,
+              "headerRight": 1590,
+              "pageLeft": 410,
+              "pageRight": 1590,
+              "view": "states",
+              "viewport": 2000,
+              "width": 2000
+            },
+            {
+              "documentWidth": 2000,
+              "historical_options_open": true,
+              "left": 1370,
+              "right": 1590,
+              "view": "states",
+              "viewport": 2000,
+              "width": 2000
+            },
+            {
+              "documentWidth": 2000,
+              "headerLeft": 410,
+              "headerRight": 1590,
+              "pageLeft": 410,
+              "pageRight": 1590,
+              "view": "national",
+              "viewport": 2000,
+              "width": 2000
+            },
+            {
+              "documentWidth": 2000,
+              "historical_options_open": true,
+              "left": 1370,
+              "right": 1590,
+              "view": "national",
+              "viewport": 2000,
+              "width": 2000
+            },
+            {
+              "documentWidth": 2000,
+              "headerLeft": 410,
+              "headerRight": 1590,
+              "pageLeft": 410,
+              "pageRight": 1590,
+              "view": "effects",
+              "viewport": 2000,
+              "width": 2000
+            },
+            {
+              "documentWidth": 2000,
+              "headerLeft": 410,
+              "headerRight": 1590,
+              "pageLeft": 410,
+              "pageRight": 1590,
+              "view": "methods",
+              "viewport": 2000,
+              "width": 2000
+            }
+          ],
+          "horizontal_document_overflow": false,
+          "status": "PASS_shared_masthead_atlas_margins_all_breakpoints_and_tabs",
+          "stylesheet_override": false
+        },
+        "sha256": "57a35abe621963e58d9417b1953a130273a0df7c57b66f45ab4da6f6f3b63bb2"
+      },
+      "legacy": {
+        "bytes": 2055,
+        "path": "house-families-c2d1c19-legacy-production.json",
+        "result": {
+          "all_89_central_frames_allow_zero_switching": true,
+          "base_url": "https://www.themarginoferror.com",
+          "cases": [
+            {
+              "actual_pointer_selection": true,
+              "all_office_state_summaries": 35,
+              "archived_113_models_retained": true,
+              "exact_state_view_values": 255,
+              "no_horizontal_overflow": true,
+              "no_unmodeled_balancing_term": true,
+              "office": "senate",
+              "one_map": true,
+              "shared_signed_scale": true,
+              "state_selection_preserved_across_views": true,
+              "width": 390
+            },
+            {
+              "actual_pointer_selection": true,
+              "all_office_state_summaries": 28,
+              "archived_113_models_retained": true,
+              "exact_state_view_values": 255,
+              "no_horizontal_overflow": true,
+              "no_unmodeled_balancing_term": true,
+              "office": "governor",
+              "one_map": true,
+              "shared_signed_scale": true,
+              "state_selection_preserved_across_views": true,
+              "width": 390
+            },
+            {
+              "actual_pointer_selection": true,
+              "all_office_state_summaries": 35,
+              "archived_113_models_retained": true,
+              "exact_state_view_values": 255,
+              "no_horizontal_overflow": true,
+              "no_unmodeled_balancing_term": true,
+              "office": "senate",
+              "one_map": true,
+              "shared_signed_scale": true,
+              "state_selection_preserved_across_views": true,
+              "width": 1440
+            },
+            {
+              "actual_pointer_selection": true,
+              "all_office_state_summaries": 28,
+              "archived_113_models_retained": true,
+              "exact_state_view_values": 255,
+              "no_horizontal_overflow": true,
+              "no_unmodeled_balancing_term": true,
+              "office": "governor",
+              "one_map": true,
+              "shared_signed_scale": true,
+              "state_selection_preserved_across_views": true,
+              "width": 1440
+            }
+          ],
+          "exact_gross_switching_bounds_and_holds": 113,
+          "fit_not_independent_behavioral_validation": true,
+          "no_js_bounds_and_holds_verified": true,
+          "no_new_fitted_models": true,
+          "status": "passed_all_state_office_return_constrained_maps",
+          "valid_data_overrides": false
+        },
+        "sha256": "59bcfcdf1bfd3778ed8dacbc1731ca2cc2dce5ca418e93bb0ee87ec4364758e3"
+      },
+      "norc": {
+        "bytes": 1246,
+        "path": "house-families-c2d1c19-norc-production.json",
+        "result": {
+          "archived_226_full_models_retained": true,
+          "base_url": "https://www.themarginoferror.com",
+          "cases": [
+            {
+              "actual_pointer_selections": 51,
+              "all_50_state_summaries": true,
+              "complete_svg_screenshot": true,
+              "demographic_dimensions": 6,
+              "demographic_options": 22,
+              "exact_state_view_values": 1530,
+              "native_scope_qualification_cases": 1,
+              "no_horizontal_overflow": true,
+              "prediction_error_separate": true,
+              "selected_border_painted_last": true,
+              "width": 390
+            },
+            {
+              "actual_pointer_selections": 51,
+              "all_50_state_summaries": true,
+              "complete_svg_screenshot": true,
+              "demographic_dimensions": 6,
+              "demographic_options": 22,
+              "exact_state_view_values": 1530,
+              "native_scope_qualification_cases": 1,
+              "no_horizontal_overflow": true,
+              "prediction_error_separate": true,
+              "selected_border_painted_last": true,
+              "width": 1440
+            }
+          ],
+          "failure_checksum_retry_and_late_office_isolation": true,
+          "no_js_all_50_states": true,
+          "source_training_separate_from_return_conditioning": true,
+          "status": "passed_real_NORC_demographic_House_maps",
+          "unavailable_comparisons_not_zero": true,
+          "valid_data_overrides": false
+        },
+        "sha256": "f30a166f75785b24e1f9544e3e029b994d7cc4845ff41032e9e7b14b0ba911b2"
+      }
+    },
+    "commit": "c2d1c19ab6b15b077d9e6e26cb695aa610f3a567",
+    "exact_unqueried_assets": 69,
+    "pages_run_id": 43184405254,
+    "private_raw_respondents_exported": false,
+    "science_release_id": 442665630,
+    "source_training_separate_from_return_conditioning": true,
+    "status": "passed_NORC_House_exact_production",
+    "unchanged_complete_downloads": 436
+  },
+  "production_bytes": {
+    "actual_payload_bytes": 996829655,
+    "actual_tar_bytes": 999424000,
+    "artifact_download": {
+      "bytes": 528971935,
+      "sha256": "3a340da82e127dac7d75e1fd844a9c1906ad3ad5caffc63a75d54b7c64c3c386"
+    },
+    "artifact_id": 13927688816,
+    "commit": "c2d1c19ab6b15b077d9e6e26cb695aa610f3a567",
+    "exact_unqueried_assets": 69,
+    "files": {
+      "_astro/BaseLayout.CEWuOCzZ.css": {
+        "bytes": 17227,
+        "sha256": "f4161b19471c5935ddf24860bd2cad01dd86810e6d2b864bc149f18c3016ac99"
+      },
+      "_astro/ParticipationCPSUnifiedHistory.astro_astro_type_script_index_0_lang.BgXsRZsU.js": {
+        "bytes": 16075,
+        "sha256": "3e52d3a7327aa904f2d9ce0bd8644654552ccaad2f75a629a848e234ac8f2174"
+      },
+      "_astro/ParticipationReturnDrivers.astro_astro_type_script_index_0_lang.rDGpOrAM.js": {
+        "bytes": 58767,
+        "sha256": "7f650233912cddbf62d4fa69c974d90ab173cd380cc0ae832b382878b54f68e7"
+      },
+      "_astro/voter-participation.BXEZYCrE.css": {
+        "bytes": 29242,
+        "sha256": "123548d8bbad4c095b5f38e095c732d879e33a2d388939f3ba9e15fd6f7858b8"
+      },
+      "county-results.json": {
+        "bytes": 31648,
+        "sha256": "9c91d5de0974ab4dedd98ae4c2708e25b35790b1ac7128dae9970b1f2061996e"
+      },
+      "participation-city-counts/20261110-massachusetts-native-local-counts-01/MA.geojson.gz": {
+        "bytes": 5343535,
+        "sha256": "9b631685f4ed9500c0681679f855c83ed302479b6b692796beb4ef61901e02ee"
+      },
+      "participation-city-counts/20261110-massachusetts-native-local-counts-01/index.json": {
+        "bytes": 1054,
+        "sha256": "e2969942836ba4eeb03e63bd67ae3b617c393a943f6194b33af319321e353d1c"
+      },
+      "participation-city-counts/20261110-new-hampshire-01/NH.geojson.gz": {
+        "bytes": 55447,
+        "sha256": "b74e8b9c197371af4f093dbdc2916cb18aaa1bc2ff498e2f875642f2f7e5fdee"
+      },
+      "participation-county-administrations/20261109-hawaii-01/HI.geojson.gz": {
+        "bytes": 57585,
+        "sha256": "b5973c0a59c892d8619ed60b9c72cbc874a206b04fe4689c2428ca883c61b6d0"
+      },
+      "participation-county-cards/20261109-01/complete-analysis.zip": {
+        "bytes": 633225,
+        "sha256": "11c81fc255f2203ae513a125d7e9151e25277cdafdb7c1b65f832b389a5ebeb6"
+      },
+      "participation-county-parents/20261109-01/complete-analysis.zip": {
+        "bytes": 2513817,
+        "sha256": "0ada1f2fd2657d00a30b53e323ecc320adf2ab75b74880a3a0e4ca49e921d915"
+      },
+      "participation-county-parents/20261109-02/complete-analysis.zip": {
+        "bytes": 2937769,
+        "sha256": "75140de431911ad17635399c7b1fada2c57353cabbbff0622c4b4ed42652f68c"
+      },
+      "participation-downloads.json": {
+        "bytes": 189615,
+        "sha256": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade"
+      },
+      "participation-local/AL.json.gz": {
+        "bytes": 23170,
+        "sha256": "790c4a762dc1abf58637de83c0961b625ed4d466f158c8cc86c8d894ac59eef7"
+      },
+      "participation-local/AR.json.gz": {
+        "bytes": 14894,
+        "sha256": "83684327edaccd72bd9e70147bb78c2354932b8b603137873db7c8283faedd7b"
+      },
+      "participation-local/CO.json.gz": {
+        "bytes": 18351,
+        "sha256": "a4810b0da93bfc5edd23a87f53abd96e2e49ce276d15256663587b6194485376"
+      },
+      "participation-local/CT.json.gz": {
+        "bytes": 16937,
+        "sha256": "f60eb5119332c7d87eb1a5be2ce58442cb776ea6d6e0a43aedce04605949aef1"
+      },
+      "participation-local/DE.json.gz": {
+        "bytes": 1549,
+        "sha256": "b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8"
+      },
+      "participation-local/HI.json.gz": {
+        "bytes": 1979,
+        "sha256": "e7677d3d50356056ce4973606ce889667a639b35c1c7fa69121fa6ca0a31e9d3"
+      },
+      "participation-local/IL.json.gz": {
+        "bytes": 11452,
+        "sha256": "1da978e9a5b4241c0ca3fbfd4a5cbd56ef32700bf0a9105f51567605e42f878e"
+      },
+      "participation-local/IN.json.gz": {
+        "bytes": 26731,
+        "sha256": "74dace208fc054e1c68f1d20e3e23f6b52adde7f8868ed152b47e7d944287b24"
+      },
+      "participation-local/MA.json.gz": {
+        "bytes": 14531,
+        "sha256": "5f46f09b7005a0b5edbbe7b4869062e6269c5356a1c61dddb2cc4e2b02042210"
+      },
+      "participation-local/MD.json.gz": {
+        "bytes": 5432,
+        "sha256": "63aa859e66119a6347902941249eafa23952bbf359d5ecb859b0d8fa89102b5a"
+      },
+      "participation-local/ME.json.gz": {
+        "bytes": 49306,
+        "sha256": "f2d5254853fff5418711e90876cbef6c4eabfe89442667b0701521279865aec4"
+      },
+      "participation-local/MI.json.gz": {
+        "bytes": 13485,
+        "sha256": "5a6c9ce644a6e53a3509d627cf58fd39f033c2ca464638c3a83c0d530cf1bac3"
+      },
+      "participation-local/MN.json.gz": {
+        "bytes": 277302,
+        "sha256": "c1581a3597e03ec21a681b980b182ad2efafd74875f212d11a37b35a0107c7b6"
+      },
+      "participation-local/NH.json.gz": {
+        "bytes": 7546,
+        "sha256": "c416f9fa65cde936c6bc984e23cc4f407be4af4c57b1b6db6b10a041588e3efe"
+      },
+      "participation-local/NV.json.gz": {
+        "bytes": 10322,
+        "sha256": "dbdeaface035426477db3422938972f52e426d4a05ab1a7bd61d2ae760939174"
+      },
+      "participation-local/NY.json.gz": {
+        "bytes": 4435,
+        "sha256": "9d07f3f07c64b34ec3c2ae791a6f0e7d48b2ea09467f1e1b93571cc578604473"
+      },
+      "participation-local/TX.json.gz": {
+        "bytes": 23975,
+        "sha256": "61b15dcde164789942832363d3b0a84ac8d26edc399dcf3499ce4ebc2c0e8cb1"
+      },
+      "participation-local/WV.json.gz": {
+        "bytes": 11870,
+        "sha256": "004b9de8fc8d63e27af3e6df7ca7147d586fb6a46cf528eb911b28887182a94d"
+      },
+      "participation-locality-activity/20261110-maine-01/ME.geojson.gz": {
+        "bytes": 191891,
+        "sha256": "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc"
+      },
+      "participation-precincts.json": {
+        "bytes": 981,
+        "sha256": "494d74741756af1c887d57a4358e154e879fce6ce20f374c1923740c93693b81"
+      },
+      "participation-precincts/20261109-indiana-monroe-01/IN.geojson.gz": {
+        "bytes": 380087,
+        "sha256": "86b4dda4aea4963580c2d4c2582ae6487f272bf70a36f6254268a8599b665281"
+      },
+      "participation-precincts/20261109-indiana-monroe-01/index.json": {
+        "bytes": 1065,
+        "sha256": "834d6c524d7e3123af84e8f0c0cb77d3d5187bc092b2727f3b19092a59028650"
+      },
+      "participation-precincts/20261110-alaska-native-display-01/AK.geojson.gz": {
+        "bytes": 38523,
+        "sha256": "8c5bf4c88d3d4ab72b3a655189b904f28f7c9a3a6c87047516a39aca9cbc8273"
+      },
+      "participation-precincts/20261110-alaska-native-display-01/index.json": {
+        "bytes": 1118,
+        "sha256": "193413401d2ee39fc66e17cbe36582308539915a7909360af5d068b531d4db08"
+      },
+      "participation-precincts/20261110-manchester-ward-reference-01/NH.geojson.gz": {
+        "bytes": 47443,
+        "sha256": "0022586d018c178ccbdab8cc6dde8a900eead30f87f51e157c5a0e5b58da5871"
+      },
+      "participation-precincts/20261110-manchester-ward-reference-01/index.json": {
+        "bytes": 1910,
+        "sha256": "1fe820cb70f059e7b5a124af408d928d99350d180d8154b08982065ce5c695b8"
+      },
+      "participation-precincts/20261110-massachusetts-city-precinct-reference-02/MA.geojson.gz": {
+        "bytes": 286941,
+        "sha256": "72ebce014fed1fd3a25f81ce93dae73cee28b52c754271f30dd2621b538fe0dd"
+      },
+      "participation-precincts/20261110-massachusetts-city-precinct-reference-02/index.json": {
+        "bytes": 2339,
+        "sha256": "6cfcc32e41675b88b8944c45b140d0338c6aa0fdf3134d3a0c47e6c3ea99b559"
+      },
+      "participation-precincts/20261110-massachusetts-native-local-counts-01/MA.geojson.gz": {
+        "bytes": 281194,
+        "sha256": "c240fe151cf4c2563874c4980ba977c1ea8818b63d828311c65ca2979986d820"
+      },
+      "participation-precincts/20261110-massachusetts-native-local-counts-01/index.json": {
+        "bytes": 2095,
+        "sha256": "7679f236de0a81008427ca39299a621baeaabb76fe49a014d48d0ffe57234992"
+      },
+      "participation-precincts/20261110-minnesota-complete-native-03/index.json": {
+        "bytes": 1717,
+        "sha256": "ef2799062f3fbfd76c9097f50243a899b332c57547f01c9d21ccf582969865bc"
+      },
+      "participation-precincts/20261110-minnesota-followup-02/index.json": {
+        "bytes": 1428,
+        "sha256": "84f035cc277a1c912c56f308cae0d3ba7934f73bf09f4824102488c5c8dda0ca"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-02/NH.geojson.gz": {
+        "bytes": 106980,
+        "sha256": "967c8b030dc4858d5b0f691d5eddd9b19319b6720b46a14fb0488eaac27611a1"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-02/index.json": {
+        "bytes": 1975,
+        "sha256": "dc7a8dc070fa6afbfd59e66b8a8564e78e7ac883db3593e4efdccb2c66cc1a00"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-03/NH.geojson.gz": {
+        "bytes": 219794,
+        "sha256": "d76d43baa665e64889b993116507e87c828b793c18a9959c9904f2f3a5e5087a"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-03/index.json": {
+        "bytes": 2269,
+        "sha256": "03a1b245da22ec5c9c343e02d11343902cffdd6418addb8499049e90e2605c8e"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-04/NH.geojson.gz": {
+        "bytes": 245038,
+        "sha256": "87389220a20d2af082c70fa43cab4ce5864a14f8a4e3b4ac321049f7c1ca9ddd"
+      },
+      "participation-precincts/20261110-new-hampshire-ward-reference-04/index.json": {
+        "bytes": 2323,
+        "sha256": "76fdcb1e9b99a67b6beb7ecf763a81468cea48110d07313c15052595a6148982"
+      },
+      "participation-reporting-units.json": {
+        "bytes": 5497,
+        "sha256": "6247cc999b23dcd05f49bbb18ec47361047a8195c792a310b9938564c6a1bf62"
+      },
+      "participation-town-reports/20261110-connecticut-01/CT.geojson.gz": {
+        "bytes": 50919,
+        "sha256": "f8ff12fc121ae0d4cd9fd5a89eaf9b7af44ea1eca4fea8008bf7156282dd7eea"
+      },
+      "scripts/participation-calibrated-swing.js": {
+        "bytes": 6433,
+        "sha256": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115"
+      },
+      "scripts/participation-counts.js": {
+        "bytes": 8473,
+        "sha256": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de"
+      },
+      "scripts/participation-coverage.js": {
+        "bytes": 5146,
+        "sha256": "f67b2fc454e16900146b8c54608183b6e56e22c288e1c250bfafe26a2329689a"
+      },
+      "scripts/participation-cps-1996.js": {
+        "bytes": 5447,
+        "sha256": "a5d03985e995bbd975980c7fadd51021ebf8973e9416cb19430a3ccf4d264400"
+      },
+      "scripts/participation-cps-1998.js": {
+        "bytes": 4291,
+        "sha256": "3d526ac6f0e9666bc3c251e2ff5d030ac371a309fc6c2278087f6ccd2940589c"
+      },
+      "scripts/participation-cps-2002.js": {
+        "bytes": 4206,
+        "sha256": "b6e3e532ef46327b9c64f16baea5b7a65cc0a8178316b18be96755609c26e5f5"
+      },
+      "scripts/participation-dataset.js": {
+        "bytes": 3108,
+        "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+      },
+      "scripts/participation-explorer.js": {
+        "bytes": 255460,
+        "sha256": "c2080b92fe327350a5657259f5d51be0880b5cf4aa9454c0fca15a5d2eeb8a54"
+      },
+      "scripts/participation-geography.js": {
+        "bytes": 51748,
+        "sha256": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3"
+      },
+      "scripts/participation-map-projection.js": {
+        "bytes": 2389,
+        "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+      },
+      "scripts/participation-native-bindings.js": {
+        "bytes": 8671,
+        "sha256": "6d988c642e06c8916572d4b7a18582ba707afa38dab86e7a4ce480a2d52ce274"
+      },
+      "scripts/participation-norc-house.js": {
+        "bytes": 22440,
+        "sha256": "97e3b5954a5513948e097e350e5f41d0a216ea7904c11a8ec84551013fc35c27"
+      },
+      "scripts/participation-resident-context.js": {
+        "bytes": 13801,
+        "sha256": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260"
+      },
+      "scripts/participation-return-drivers.js": {
+        "bytes": 37655,
+        "sha256": "6fda665efb9d2d5465ef01f68c435c552a1430915471af972a93c03138591cd3"
+      },
+      "scripts/participation-transition-scenarios.js": {
+        "bytes": 7455,
+        "sha256": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e"
+      },
+      "scripts/provider-county-scopes.js": {
+        "bytes": 3691,
+        "sha256": "32db206ded3bc8d6242d2a47c39ac5acb9dd52ea789291cb464af0bc77cfb99c"
+      }
+    },
+    "guard_job_id": 131067896919,
+    "pages_run_id": 43184405254,
+    "run_attempt": 1,
+    "status": "passed_exact_NORC_artifact_and_live_bytes",
+    "unchanged_complete_downloads": 436
+  },
+  "reviewed_production_captures": [
+    "docs/media/house-model-families-20261112-01/phone-boosting-share.png",
+    "docs/media/house-model-families-20261112-01/desktop-extra-trees-share.png",
+    "docs/media/house-model-families-20261112-01/phone-map-borders.png",
+    "docs/media/house-model-families-20261112-01/desktop-baseline-detail.png"
+  ],
+  "scientific_release_id": 442665630,
+  "standalone_main_source_guard": {
+    "conclusion": "success",
+    "head_sha": "c2d1c19ab6b15b077d9e6e26cb695aa610f3a567",
+    "run_id": 43184405399
+  },
+  "status": "passed_verified_live_three_model_family_maps",
+  "valid_data_overrides": false
+}

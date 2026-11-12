@@ -13,7 +13,48 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## Latest completed increment: Alaska Senate native accounting
+## Completed direct-priority increment: House families and usable comparison maps
+
+The project is **not all fixed**. Three genuinely different families have now
+been fitted/evaluated: accepted multinomial ridge, histogram boosting and extra
+trees. Repeated seeds are not different model types. Ridge remains preferred
+under the source-only rule frozen before the two new fits; boosting's lower
+current-return error cannot override its worse historical transfer.
+Margin MAEs across the same48 states are 6.126998 / 5.743115 / 6.063574pp.
+Share-change MAEs are half. Exact endpoint reconciliation is not independent
+behavioral validation; these errors and family disagreement remain visible.
+
+Complete science includes all150 state/family decisions,300 mechanism spreads,
+nine source validations and all three families' full demographic/assumption/
+seed/flow queries, with the entire accepted predecessor and code. Eight tests,
+two fresh offline31-output reproductions and independent checks pass. No private
+respondents/fine cells/prediction caches exported; no successful fits or baseline
+simulations repeated.
+
+**Verified live:** website c2d1c19/Pages43184405254/artifact13927688816.
+The existing single map now has three model families, both change units,
+shared family colour bounds and selected-state/group comparative details.
+Actual phone/desktop45,288 family/unit/group values,3,060 baseline values,
+102 real pointer selections/all50 summaries/six dimensions22 groups, noJS/
+failure/checksum/retry/late-office isolation,1,020 legacy values/126 summaries
+and48 layouts pass. All69 exact unqueried assets and436 previous download
+pins remain. Actual996829655payload/999424000tar bytes both fit the strict
+cap; four actual captures were inspected. Full science442665630/all13assets
+and complete code/results/production records are published. Do not repeat
+these fits, simulations, packages, builds or browser campaigns for activity.
+Historical transfer now participates in selection and is not an independent
+post-selection test.
+
+Genuine broader limits remain: AK nonpartisan/ME RCV holds, substantial
+before-conditioning error, no identified first-ever/eligibility/death/migration
+flows, no independent individual-transition validation, and no allocation of
+state models onto unsupported counties/precincts. The next modeling evidence
+priority is stronger outcome-independent, same-office participation/choice
+validation, not claiming another seed or exact endpoint fit solves these
+limitations. New models require source-only validation and retained negative
+results. Preserve sole45-minute120 and the broader evidence project.
+
+## Previously completed increment: Alaska Senate native accounting
 
 The held civicAPI response contains two different native parents: **214,246**
 top-level candidate selections and **213,733** in its nested State region.

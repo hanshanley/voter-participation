@@ -3,7 +3,78 @@
 This model estimates how switching, entry/return, modeled nonparticipation,
 Other-party choice and unresolved answers can account for state House margin
 changes. It is an assumption-dependent explanation, not identified voter histories
-or a causal effect. Moving from R+4 to D+12 is a +16 margin-point change.
+or a causal effect. Moving from R+4 to D+12 is a +16 margin-point change,
+equivalent to +8 Democratic **two-party-share** points, not +16 share points.
+
+## Three genuinely different model families
+
+The November 12 comparison reuses the accepted ridge fits and all eight accepted
+48-state simulation outputs byte-for-byte. Two new native-source fits use the
+same predictor information, weights, state-stratified holdout seeds, frozen
+endpoints, demographic disclosure masks and simulation grids:
+
+- Native-categorical histogram gradient boosting: 100 iterations, 15 leaves,
+  minimum leaf 100, learning rate 0.05, L2=1, no early stopping.
+- Sparse extra-randomized trees: 128 trees, depth 12, minimum leaf 100, all
+  features, no bootstrap, fixed seed 20261112.
+
+The settings and source-only selection rule were locally frozen before these
+new fits; this is not an external public preregistration.
+An alternative must not worsen historical log loss, historical Brier or current
+response Brier versus ridge; admissible models are ranked by historical log loss.
+No current partisan-return error selects a family. **Ridge remains preferred.**
+
+| Family | Current response log loss | Historical log loss | Historical Brier | 48-state margin MAE | Democratic two-party-share MAE |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Accepted ridge | 0.47895891 | 0.74173593 | 0.35960468 | 6.12699827 | 3.06349914 |
+| Histogram boosting | 0.47589286 | 0.74819312 | 0.36061296 | 5.74311543 | 2.87155771 |
+| Extra-randomized trees | 0.58677669 | 0.80432412 | 0.35962708 | 6.06357405 | 3.03178702 |
+
+Boosting's slightly better current-response prediction and lower return MAE do
+not override its worse historical transfer. Historical transfer is now used for
+family selection: it is **not an independent post-selection test**. Extra trees'
+negative results remain published, not discarded. None independently validates
+the decomposition's latent behaviors.
+
+Each family has 50 state scenarios, 48 qualified comparisons, 1,600 group
+decisions, 438 assumption cases, 250 state seeds and 1,500 demographic partition
+seeds. The map compares families on one shared scale and can switch between
+margin points and Democratic two-party-share-change points. All signed
+contributions, errors and assumption ranges halve under share units. Gross
+retention/switching percentages retain their original denominators and do not
+halve. Family dispersion and assumption envelopes are not confidence intervals.
+
+The full 35,332,487-byte/53-member scientific ZIP contains all three permitted
+synthetic priors, every complete output/query, fitting and public replay code,
+tests, and the **entire** accepted 48-state predecessor. Raw cases, individual
+predictions, private fine cells and trained estimators remain local. Two fresh
+standard-library-only offline replays under different hash seeds match all 31
+public outputs, without private refits or baseline resimulation. Eight focused
+tests, 52,258 independent numerical checks per new family and 3,788 independent
+cross-family checks pass. An inherited ridge-only weight-description sentence
+was corrected for tree fits before freezing public inputs; no numerical results
+were recalculated for that metadata correction.
+
+```sh
+python3 -S -Werror code/scripts/reproduce_house_model_families.py \
+  --root . --output /fresh/output/path
+```
+
+Public replay needs no numerical packages or network. Optional private-fitting
+tests skip if numpy/scikit-learn are absent; the three public selection/units
+tests still run. Authorized private fitting requires the original local survey
+files and numerical stack, not public synthetic inputs in place of respondents.
+The earlier ridge-specific methods and original checks below remain preserved.
+
+The comparison interface is verified live at website `c2d1c19`, native
+Pages run43184405254/artifact13927688816. Actual payload996829655/tar999424000
+bytes both satisfy the strict cap; 69 unqueried assets and436 old downloads
+match. Phone/desktop tests verify45,288 family/unit/group map values,3,060
+baseline values,102 real pointer selections,all50 summaries, noJS/fault/retry/
+late-office handling, preserved legacy views and48 layouts.
+Full acceptance: `data/house-model-families/20261112-01/website-acceptance.json`.
+Reviewed [phone comparison](media/house-model-families-20261112-01/phone-boosting-share.png)
+and [desktop comparison](media/house-model-families-20261112-01/desktop-extra-trees-share.png).
 
 The endpoint-only successor uses the official House Clerk 2024 baseline and the
 unchanged November 7, 2026 current-source snapshot. It does not refit NORC.

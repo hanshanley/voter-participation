@@ -1,0 +1,219 @@
+{
+  "independent": {
+    "baseline_eight_outputs_unchanged": true,
+    "checks": 3788,
+    "current_returns_used_for_selection": false,
+    "dispersion_decisions": 300,
+    "preferred_family": "accepted_ridge_multinomial",
+    "private_records_exported": false,
+    "state_family_decisions": 150,
+    "status": "passed"
+  },
+  "new_family_independent_numerical_checks": {
+    "extra_randomized_trees": {
+      "assumption_cases": 438,
+      "checks": 52258,
+      "complete_demographic_decisions": 1600,
+      "demographic_partition_seed_cases": 1500,
+      "population_validation_claimed": false,
+      "return_anchored_states": 48,
+      "source_individual_histories_identified": false,
+      "states": 50,
+      "status": "passed_independent_NORC_endpoints_rational_accounting_and_demographic_simulations"
+    },
+    "histogram_gradient_boosting": {
+      "assumption_cases": 438,
+      "checks": 52258,
+      "complete_demographic_decisions": 1600,
+      "demographic_partition_seed_cases": 1500,
+      "population_validation_claimed": false,
+      "return_anchored_states": 48,
+      "source_individual_histories_identified": false,
+      "states": 50,
+      "status": "passed_independent_NORC_endpoints_rational_accounting_and_demographic_simulations"
+    }
+  },
+  "package": {
+    "all_complete_queries_included": true,
+    "archive": {
+      "bytes": 35332487,
+      "sha256": "124c3702ea3d7218351f0105a571407804d48a2afa9c924b743fb5dc8dd214da"
+    },
+    "entire_accepted_predecessor_included": true,
+    "members": 53,
+    "private_records_exported": false
+  },
+  "publication": {
+    "assets": {
+      "checksums.json": {
+        "bytes": 1684,
+        "sha256": "1c8afd085dc007951506db89d49219eaaf687032a23fa76696ed98cbba580bfa",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/checksums.json"
+      },
+      "complete-analysis.zip": {
+        "bytes": 35332487,
+        "sha256": "124c3702ea3d7218351f0105a571407804d48a2afa9c924b743fb5dc8dd214da",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/complete-analysis.zip"
+      },
+      "complete-family-dispersion.csv": {
+        "bytes": 38157,
+        "sha256": "f23108563632763c98f9c828836d46ca1920c8c6c0d405f76fdb0f3c13aef5e0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/complete-family-dispersion.csv"
+      },
+      "complete-source-validation.csv": {
+        "bytes": 1183,
+        "sha256": "d1ab8b6aadfe5bd57a025a9299432f5e4590b5658581790861d09fb1577b2d4c",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/complete-source-validation.csv"
+      },
+      "complete-state-family-comparisons.csv": {
+        "bytes": 72767,
+        "sha256": "2ee71048d1ae9097e3c97786c627e838557140b019a3faedb61866df9d31994a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/complete-state-family-comparisons.csv"
+      },
+      "fresh-reproduction-01.json": {
+        "bytes": 525,
+        "sha256": "3ec3bfe5be97b28c9335c406c8a0635478430a94793bec88a0c4704bb0bf9949",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/fresh-reproduction-01.json"
+      },
+      "fresh-reproduction-02.json": {
+        "bytes": 525,
+        "sha256": "3ec3bfe5be97b28c9335c406c8a0635478430a94793bec88a0c4704bb0bf9949",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/fresh-reproduction-02.json"
+      },
+      "independent-comparison-verification.json": {
+        "bytes": 287,
+        "sha256": "18d7c02dc708a53872fa353973444c4fd90ae9d9a72e4110db61ef5ee5b5c2ea",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/independent-comparison-verification.json"
+      },
+      "package-receipt.json": {
+        "bytes": 270,
+        "sha256": "5aec8575af42de55ae4615b4235fce478c758e03de2f9891cf359908bf25bac0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/package-receipt.json"
+      },
+      "preregistered-policy.json": {
+        "bytes": 2990,
+        "sha256": "847ed5480a465b830ad0229e0ffe60ab80aa6077fcd0f2ce4e903bf157ea8d06",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/preregistered-policy.json"
+      },
+      "selection-before-return-evaluation.json": {
+        "bytes": 810,
+        "sha256": "86bd47fdb3ce33d510be543f839d8afc8bca6d94c9ced83c01e5b831ca26a6cc",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/selection-before-return-evaluation.json"
+      },
+      "summary.json": {
+        "bytes": 778,
+        "sha256": "52f462df3c83a4c26eeadf8c7bf64a5ac02dee1da96240b30d15a7a2ebde2a87",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/summary.json"
+      },
+      "viewer-data.json": {
+        "bytes": 5818490,
+        "sha256": "46d81972333ff8a08e38f802034b7cc2338db15a63ae2376ae63a39fbfc91529",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-families-20261112-01/viewer-data.json"
+      }
+    },
+    "immutable": true,
+    "private_records_exported": false,
+    "release_id": 442665630,
+    "scientific_source_commit": "7b760e61d7d601476f124b8302038147115ec08a",
+    "status": "passed_immutable_full_three_family_science",
+    "tag": "participation-house-model-families-20261112-01"
+  },
+  "reproductions": [
+    {
+      "all_complete_output_files_byte_identical": 31,
+      "baseline_eight_outputs_unchanged": true,
+      "baseline_simulations_repeated": false,
+      "checks": 3788,
+      "current_returns_used_for_selection": false,
+      "dispersion_decisions": 300,
+      "network_and_external_commands_blocked": true,
+      "optional_private_stack_tests_skipped": 5,
+      "preferred_family": "accepted_ridge_multinomial",
+      "private_fits_repeated": false,
+      "private_records_exported": false,
+      "state_family_decisions": 150,
+      "status": "passed",
+      "tests_run": 8
+    },
+    {
+      "all_complete_output_files_byte_identical": 31,
+      "baseline_eight_outputs_unchanged": true,
+      "baseline_simulations_repeated": false,
+      "checks": 3788,
+      "current_returns_used_for_selection": false,
+      "dispersion_decisions": 300,
+      "network_and_external_commands_blocked": true,
+      "optional_private_stack_tests_skipped": 5,
+      "preferred_family": "accepted_ridge_multinomial",
+      "private_fits_repeated": false,
+      "private_records_exported": false,
+      "state_family_decisions": 150,
+      "status": "passed",
+      "tests_run": 8
+    }
+  ],
+  "source_verification": {
+    "all_archived_code_matches_commit": true,
+    "commit": "7b760e61d7d601476f124b8302038147115ec08a",
+    "files": {
+      "data/house-model-families/20261112-01/complete-family-dispersion.csv": {
+        "bytes": 38157,
+        "sha256": "f23108563632763c98f9c828836d46ca1920c8c6c0d405f76fdb0f3c13aef5e0"
+      },
+      "data/house-model-families/20261112-01/complete-source-validation.csv": {
+        "bytes": 1183,
+        "sha256": "d1ab8b6aadfe5bd57a025a9299432f5e4590b5658581790861d09fb1577b2d4c"
+      },
+      "data/house-model-families/20261112-01/complete-state-family-comparisons.csv": {
+        "bytes": 72767,
+        "sha256": "2ee71048d1ae9097e3c97786c627e838557140b019a3faedb61866df9d31994a"
+      },
+      "data/house-model-families/20261112-01/preregistered-policy.json": {
+        "bytes": 2990,
+        "sha256": "847ed5480a465b830ad0229e0ffe60ab80aa6077fcd0f2ce4e903bf157ea8d06"
+      },
+      "data/house-model-families/20261112-01/selection-before-return-evaluation.json": {
+        "bytes": 810,
+        "sha256": "86bd47fdb3ce33d510be543f839d8afc8bca6d94c9ced83c01e5b831ca26a6cc"
+      },
+      "data/house-model-families/20261112-01/summary.json": {
+        "bytes": 778,
+        "sha256": "52f462df3c83a4c26eeadf8c7bf64a5ac02dee1da96240b30d15a7a2ebde2a87"
+      },
+      "data/house-model-families/20261112-01/viewer-data.json": {
+        "bytes": 5818490,
+        "sha256": "46d81972333ff8a08e38f802034b7cc2338db15a63ae2376ae63a39fbfc91529"
+      },
+      "scripts/compare_house_model_families.py": {
+        "bytes": 12159,
+        "sha256": "f414e2e342b5e14d96d0c442d0da10df16696903500ad44e63711332a93f9aaa"
+      },
+      "scripts/fit_house_model_families.py": {
+        "bytes": 15469,
+        "sha256": "c11f98b09de0b2368006154a55b2179dcab691b8ea16f2c24ef9cadc302660d5"
+      },
+      "scripts/package_house_model_families.py": {
+        "bytes": 4942,
+        "sha256": "f6952d14dd9e76454c5bef0f2b03334ad0ee1f17cd2bf9d703c9d222f368e028"
+      },
+      "scripts/reproduce_house_model_families.py": {
+        "bytes": 3974,
+        "sha256": "c0f246339e57995953bfc5486934db65260fe7172fcca9dd8f0db44ced4cbc47"
+      },
+      "scripts/verify_house_model_families.py": {
+        "bytes": 6487,
+        "sha256": "79c73be48681eff0127872eabc72b796e17de21feac512082a3f7ac04088d109"
+      },
+      "tests/test_house_model_comparison.py": {
+        "bytes": 2609,
+        "sha256": "b6e53b51ce60af34359c60d3ad60282c9b53188fe9503236894c656250ce8542"
+      },
+      "tests/test_house_model_families.py": {
+        "bytes": 2945,
+        "sha256": "7a0933b7d5c110db238363a71acf4f5ac5d227e9240ddad0a727b86cc0e3c519"
+      }
+    },
+    "status": "passed_all_public_scientific_source_and_archive_code"
+  },
+  "status": "passed_complete_public_science"
+}
