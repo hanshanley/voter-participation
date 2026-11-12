@@ -19,7 +19,7 @@ def margin(counts):
     return Fraction(100*(counts["D"]-counts["R"]), counts["D"]+counts["R"])
 
 
-def comparisons(facts, recap, held, previous):
+def comparisons(facts, recap, held, previous, native_control_evidence=None):
     if facts["source_pdf_sha256"] != "d4ba800fc17135b616ae556c92861080ab962d95916ace34b546c5aac824aec4":
         raise ValueError("Only the reviewed native House Clerk original is allowed")
     candidates = native.candidate_totals(facts["candidate_party_lines"])
@@ -31,6 +31,12 @@ def comparisons(facts, recap, held, previous):
     old = {r["state_code"]: r for r in previous["rows"]}
     if set(old) != set(native.STATES):
         raise ValueError("Every accepted source-state scenario must remain")
+    pa_qualification = None
+    if native_control_evidence is not None:
+        from scripts.house_native_controls import qualify_pa
+        pa_qualification = qualify_pa(native_control_evidence["csv"],
+            native_control_evidence["audit"], controls["PA"],
+            {r["district"] for r in candidates})
     outputs = []
     for state in sorted(native.STATES):
         control = controls[state]
@@ -72,8 +78,9 @@ def comparisons(facts, recap, held, previous):
         districts = {r["district"] for r in selected}
         if districts != current_districts:
             raise ValueError("The full source district inventory does not reconcile")
-        reason = HOLDS.get(state)
-        if missing:
+        qualification = pa_qualification if state == "PA" else None
+        reason = None if qualification else HOLDS.get(state)
+        if missing and not qualification:
             reason = HOLDS["PA"] if state == "PA" else "Native current district candidate counts are missing."
         common = dict(
             state_code=state, previous_candidate_counts=previous_counts,
@@ -112,6 +119,14 @@ def comparisons(facts, recap, held, previous):
                 qualification="Changed competition, unopposed no-ballot contests and reporting affect counts; model N is not observed staying home.",
                 native_nonnumeric_counts_preserved=bool(nonnumeric),
                 direct_state_baseline_not_county_reconstruction=True)
+            if qualification:
+                comparison["current_native_control_scope_qualification"] = (
+                    "All reported native district candidates, not a county validation join; "
+                    "provider-only totals omit known county-source write-ins. "
+                    "Not all Other ballots, certified final totals or participation.")
+                comparison["current_native_district_sources"] = qualification["native_district_sources"]
+        if qualification:
+            common["native_current_control_scope"] = qualification
         prior_comparison = old[state]["reported_comparison"]
         common.update(reported_comparison=comparison,
             old_comparison_available=old[state]["source_comparison_available"],
