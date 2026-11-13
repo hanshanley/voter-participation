@@ -309,10 +309,12 @@ def verify_fact_bindings(spec, rows, inputs):
                 raise IntakeError("source_fact_binding", "Factual grid is not complete declared JSON") from error
         data = decoded[key]
         if not isinstance(data, dict) or data.get("contract") not in (
-                "participation.reviewed_pdf_factual_grids.v1", "participation.native_factual_tables.v1"):
+                "participation.reviewed_pdf_factual_grids.v1", "participation.native_factual_tables.v1",
+                "participation.selected_html_statistics.v1"):
             raise IntakeError("source_fact_binding", "Factual grid contract changed")
         native = data["contract"] == "participation.native_factual_tables.v1"
-        products = [data] if native else data.get("products")
+        html_statistics = data["contract"] == "participation.selected_html_statistics.v1"
+        products = [data] if native or html_statistics else data.get("products")
         if not isinstance(products, list):
             raise IntakeError("source_fact_binding", "Factual product inventory changed")
         selected = [row for row in rows if binding["record"] and all(
@@ -321,8 +323,15 @@ def verify_fact_bindings(spec, rows, inputs):
             if product["source"]["id"] == binding["source_id"]]
         if len(selected) != 1 or len(products) != 1:
             raise IntakeError("source_fact_binding", "Canonical or native product identity is ambiguous")
-        tables, cells = (native_query_cells(binding, products[0], spec, inputs, native_cache)
-                         if native else factual_cells(binding, products[0]))
+        if html_statistics:
+            from scripts.html_statistics import binding_cells
+            try:
+                tables, cells = binding_cells(binding, products[0], spec, inputs)
+            except (KeyError, TypeError, ValueError) as error:
+                raise IntakeError("source_fact_binding", str(error)) from error
+        else:
+            tables, cells = (native_query_cells(binding, products[0], spec, inputs, native_cache)
+                             if native else factual_cells(binding, products[0]))
         scope = binding.get("value_scope", "cell")
         parse = binding.get("parse", "literal")
         operation = binding.get("operation", "unique")

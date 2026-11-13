@@ -91,6 +91,46 @@ requires separately reviewed qualification. Unknowns remain unknown and zeros
 remain zeros. Candidate votes do not become ballots; registration stocks do
 not automatically become turnout denominators.
 
+### State-only native HTML statistics
+
+The separate `state_reporting` target advances one existing same-source statewide
+reference without replacing county records or an unselected dated historical
+observation. It does not weaken the county/coherent-control or fixed-registration
+operations. Supply one complete canonical state observation, its
+`participation.selected_html_statistics.v1` factual projection and the exact
+`participation.native_html_statistics_recipe.v1` recipe as pinned public inputs.
+
+`scripts.html_statistics` extracts counts beside their own literal labels,
+checks agreeing repeated percentages, retains the native clock and exact
+election assertions, and keeps explicitly selected backend context opaque.
+The recipe binds the complete original's hash, encoding and reviewed selectors.
+Metadata, retrieval time, candidate votes and opaque counters cannot authorize
+replacement statistical values. Use an independent parser to qualify a new
+original before registering its selected factual projection.
+
+Every count/register/percentage/clock mirror needs a direct fact binding.
+`format.state_reporting` declares the statistics path, exact old reference
+preimage, registration-basis review and source-status limitation. A changed
+active-registration stock must be explicitly reviewed; it does not certify
+eligibility, counting completion or the survey's population/cutoff transport.
+All 51 jurisdiction shards and unrelated current modes remain unchanged.
+
+Where publisher HTML/application redistribution is not qualified, retain the
+full original privately and publish every permitted selected numerical fact,
+literal, selector/provenance record, receipt, recipe, exact reader and complete
+query. The public standalone packet replays selected facts and transformations,
+**not extraction of excluded publisher HTML**. This boundary is explicit in the
+model and source downloads, not disguised as complete-original reproduction.
+
+The companion `scripts.state_reference_model` revises one existing selected
+reported-count/registered scenario using the complete accepted model and count
+batch. It checks its own older model preimage separately from the runtime's
+preimage, preserves all study weights/probabilities, and recomputes only that
+registered-frame partition. Separate monthly registers, held envelope contexts,
+all other scenarios and full prior numerical downloads remain unchanged.
+Native-minus-model differences are nominal source comparisons, not validated
+error, administrative nonparticipation or observed staying home.
+
 ### Native workbook facts and coherent reporting targets
 
 Fact bindings also accept `participation.native_factual_tables.v1` directly,

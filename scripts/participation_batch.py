@@ -183,11 +183,13 @@ def refresh_current_reporting(data, sources):
 def compile_counts(description, files, index, sources):
     changes, changed_rows = {}, 0
     candidate_index = copy.deepcopy(index)
-    for code in sorted({source["spec"]["geography"]["state_code"] for source in sources}):
+    state_only = [source for source in sources if source.get("target") == "state_reporting"]
+    replacement_sources = [source for source in sources if source.get("target") != "state_reporting"]
+    for code in sorted({source["spec"]["geography"]["state_code"] for source in replacement_sources}):
         declaration = candidate_index["states"][code]
         state = json.loads(gzip.decompress(files[declaration["file"]]))
         original = copy.deepcopy(state)
-        for source in (item for item in sources if item["spec"]["geography"]["state_code"] == code):
+        for source in (item for item in replacement_sources if item["spec"]["geography"]["state_code"] == code):
             spec, rows = source["spec"], source["rows"]
             selected = set(source["baseline_source_ids"])
             old = [row for row in state["records"] if row["source"]["id"] in selected]
@@ -238,10 +240,19 @@ def compile_counts(description, files, index, sources):
             qualified_fractions=sum(bool(row["denominator"] and row["denominator"]["qualified"]) for row in records))
         changes[declaration["file"]] = compressed(state)
         declaration.update(pin(changes[declaration["file"]]))
-    if any(source["spec"].get("format", {}).get("current_reporting") for source in sources):
+    county_references = [source for source in replacement_sources
+                         if source["spec"].get("format", {}).get("current_reporting")]
+    if ({source["spec"]["geography"]["state_code"] for source in county_references}
+            & {source["spec"]["geography"]["state_code"] for source in state_only}):
+        raise IntakeError("current_reporting_scope", "Two operations cannot replace the same statewide reference")
+    if county_references or state_only:
         declaration = candidate_index["current_snapshot"]
         before = json.loads(gzip.decompress(files[declaration["file"]]))
-        current, reference_changes = refresh_current_reporting(before, sources)
+        current, reference_changes = refresh_current_reporting(before, county_references)
+        if state_only:
+            from scripts.state_reporting_successor import refresh
+            current, state_changes = refresh(current, state_only)
+            reference_changes += state_changes
         if current != before:
             changes[declaration["file"]] = compressed(current)
             declaration.update(pin(changes[declaration["file"]]))
@@ -364,7 +375,7 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
     for entry in entries:
         state = entry["spec"]["geography"]["state_code"]
         target = entry.get("target", "counts")
-        if target not in ("counts", "native_reporting"):
+        if target not in ("counts", "native_reporting", "state_reporting"):
             raise ValueError("Unknown registered dataset target")
         if target == "native_reporting" and not isinstance(entry.get("reporting_source"), dict):
             raise ValueError("A native reporting target requires reviewed complete source metadata")
@@ -514,8 +525,11 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 Path(__file__).with_name("native_products.py"),
                 Path(__file__).with_name("native_tabular.py"),
                 Path(__file__).with_name("native_count_refresh.py"),
+                Path(__file__).with_name("html_statistics.py"),
+                Path(__file__).with_name("state_reporting_successor.py"),
                 *sorted((Path(__file__).parent / "participation_intake").glob("*.py"))]
-        for name in ("test_participation_batch.py", "test_native_count_refresh.py", "test_native_tabular.py"):
+        for name in ("test_participation_batch.py", "test_native_count_refresh.py", "test_native_tabular.py",
+                     "test_html_statistics.py", "test_state_reporting_successor.py"):
             test = Path(__file__).parents[1] / "tests" / name
             if test.is_file():
                 code_paths.append(test)
@@ -569,7 +583,7 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 status="verified", observations=len(rows), unknown=sum(row["count"]["status"] == "unknown" for row in rows),
                 zeros=sum(row["count"]["value"] == 0 for row in rows)))
         descriptor, runtime, count_changed = compile_counts(description, files, index,
-            [source for source in sources if source["target"] == "counts"])
+            [source for source in sources if source["target"] in ("counts", "state_reporting")])
         native_candidate, native_runtime, native_changed = (compile_reporting(*native,
             [source for source in sources if source["target"] == "native_reporting"])
             if native else (None, None, 0))

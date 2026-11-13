@@ -271,6 +271,9 @@ def package(output, spec, inputs, receipts, rows, report, references, reference_
             binding.get("query_recipe_input") for binding in options.get("fact_bindings", [])):
         for name in ("native_products.py", "native_tabular.py"):
             members["code/scripts/" + name] = (Path(__file__).parent.parent / name).read_bytes()
+    if options.get("html_statistics_recipe_input"):
+        members["code/scripts/html_statistics.py"] = (
+            Path(__file__).parent.parent / "html_statistics.py").read_bytes()
     tests = Path(__file__).parent.parent / "test-participation-intake.py"
     if tests.exists():
         members["tests/test-participation-intake.py"] = tests.read_bytes()
@@ -372,6 +375,9 @@ def run(spec, store, supplied=None, references=None, geometry_inputs=None):
         return dict(report, no_op=False, directory=None)
     input_pins = {name: pin(body) for name, body in inputs.items()}
     code = {path.name: digest(path.read_bytes()) for path in Path(__file__).parent.glob("*.py")}
+    if spec.get("format", {}).get("html_statistics_recipe_input"):
+        code["html_statistics.py"] = digest(
+            (Path(__file__).parent.parent / "html_statistics.py").read_bytes())
     for name in ("test-participation-intake.py", "requirements-participation-intake.txt"):
         path = Path(__file__).parent.parent / name
         if path.exists():
