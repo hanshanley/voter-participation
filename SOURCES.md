@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Missouri native additions | [Boone/Cole Ballots Cast, Cole reporting rows and explicitly reviewed county context](#2026-missouri-boone-and-cole-native-statistics) |
 | Current King County native refresh | [935,956 printed Ballots Cast; complete source controls and unchanged county context](#2026-king-county-native-ballots-cast-successor) |
 | Current Wayne County native evidence | [770 reporting units, a derived administrative composite, and reviewed county context](#2026-wayne-county-native-statistical-counts) |
 | Current recorded-swing display | [All50 state values by default, with separate comparison holds](#recorded-house-swings-default-display-correction) |
@@ -54,6 +55,79 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Missouri Boone and Cole native statistics
+
+Two independent county products add direct **Ballots Cast**, not candidate-vote
+proxies: Boone67,527 and Cole29,108. The Missouri statewide declaration, separate
+ENR application and Johnson County PDF returned native403 and remain stopped.
+Neither denied product supplied originals or numerical values. No complete
+new statewide House source or statewide participation estimate is inferred.
+
+Boone's six-page report prints Final Official,130,157 Registered Voters and51.88%.
+Its literal November9,2026,1:36PM clock has no supplied timezone.
+Election Day46,516,Absentee16,488 and Central1/2/3/4 counts1,210/1,172/939/1,202
+reconcile to67,527. Those native categories do not establish returned-mail stages.
+Every factual page's numeric-token inventory matches an independent reader;
+50 header,520 literal and eight typed statistical cells also agree.
+
+Cole's physical page1 is a scanned complete30-row turnout table:28 locality
+labels, ABSENTEE and native Total. Direct visual transcription retains every
+label/count/register/percentage; there is no OCR or encoded-text extraction
+claim. Locality ballots23,958 plus5,150 ABSENTEE reconcile to29,108.
+Locality registers sum55,406; ABSENTEE repeats the same55,406 stock, so
+110,812 is **not** a county electorate. Native Total52.54% and the distinct
+November9,2026,10:05:40AM clock remain source context, timezone unknown.
+The source filename says Unofficial while its page prints OFFICIAL RESULTS;
+the literal printed status is retained, not independently certified.
+All29 non-Total rows remain source reporting units, including ABSENTEE,
+not29 matched precinct polygons. The remaining23 physical pages are contest
+abstracts, outside the selected turnout-table extraction.
+
+The shared routine adds31 separately pinned,558-fact-bound observations:
+two county parents and29 reporting rows. Both analytical/view denominators and
+rates remain null; native registration stocks and percentages remain inspectable.
+Changed-count and changed-clock negative checks fail as intended.
+Two82-test/57-output isolated full replays, actual canonical-code replay and
+the31-query standalone SDK pass, with source-packet bytes identical.
+All21 native assets in immutable444603376 are fully verified.
+
+Counts55a8f41b activate at catalog46bd3ae3 after54 full-body checks, with zero
+requests, parsing, compilation or website builds during cached activation.
+Christian's prior observation, other50 jurisdiction shards, statewide snapshot,
+native3bcc, model33, House endpoints and NORC weights remain unchanged.
+Missouri now has **three source county observations out of115**, plus29
+table-only reporting rows; the other112 counties are unknown, not zero.
+
+The separately reviewed8a1da7f contextual successor adds only Boone/Cole to the
+previous King review: all834 prior joins,1,329 prior selected records, exclusions,
+source selections and20 geometry collections remain exact. The complete review
+has836 joins/1,331 records. Its full25,589,619-byte/39-member package in
+immutable444601898 includes the new native analysis and prior King analysis;
+both blocked complete-member replays pass. These are unchanged2024 Census
+county contextual shapes, not certified2026 election or precinct boundaries.
+
+Website8264955 pins the review and retains earlier complete links. Seventeen
+frontend tests pass in maintained and canonical trees. The actual production
+browser passes86 cases,58 reporting-row selections,115 reference features,
+three source counts/112 unknown counties, all51 jurisdictions/306 reader frames,
+and both complete archive hashes at both widths. Pages43486985052 and main
+guard43486984973 succeed; actual native artifact14069140286 has997,326,856
+payload bytes and999,925,760 tar bytes, both below1e9. All31 live HTML/script
+bodies equal the artifact; independent Which Candidate/Interactive Analysis
+HTML,436 prior complete-download pins,113 archived models and prior numerical
+drivers remain unchanged. Both final responsive production images are reviewed.
+A second critic-agent visual transcription finds zero differences in120 CSV
+and120 factual-JSON comparisons; it is not blinded human certification or
+statistically independent evidence.
+
+See [complete downloads](docs/DATA.md#current-missouri-native-county-counts),
+[observations](data/participation-access/20261113-missouri-native-counts-01/observations.json)
+and [acceptance](data/participation-access/20261113-missouri-native-counts-01/website-acceptance.json).
+The independent critique also identifies nonblocking current-model disclosure
+improvements; these are tracked separately, without removing provisional
+conditional estimates or confusing the archived entropy model with the
+current learned House models.
 
 ## 2026 King County native Ballots Cast successor
 

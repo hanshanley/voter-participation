@@ -13,6 +13,61 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Missouri native county additions and independent critique
+
+The shared routine adds Boone67,527 and Cole29,108 native Ballots Cast, plus
+all29 Cole statistical reporting rows. Boone's six-page factual source and
+Cole's complete30-row scanned turnout table are qualified separately;
+no candidate sums or statewide totals are substituted. Their distinct
+November9 clocks have no supplied timezones. Raw registered stocks130,157/
+55,406 and printed51.88%/52.54% remain context; analytical rates and
+denominators remain null. Cole ABSENTEE repeats the whole55,406 register
+stock and must not be added into110,812. All29 rows stay table-only, not
+qualified precincts.
+
+Two82-test/57-output blocked replays, actual canonical replay and isolated
+31-observation SDK pass. Immutable444603376 supplies21 fully verified native
+assets, including the11,985,834-byte/142-member complete analysis.
+Counts55a8f41b/catalog46bd3ae3 are activated after54 immutable-body checks
+with zero cached-activation requests/parses/compilations/builds.
+All old Christian/other50 jurisdiction records, statewide snapshot,
+native3bcc/model33/House/weights and earlier downloads remain unchanged.
+The Missouri statewide/ENR and Johnson native403 routes remain stopped.
+
+The8a1da7f review adds only two county identities on unchanged Census county
+context; all834 prior joins,1,329 records and20 geometry collections remain.
+Immutable444601898 supplies six full assets and a25,589,619-byte/39-member
+contextual package; two full-member offline replays pass. Website8264955
+passes17 tests in both maintained/canonical trees and actual production86
+cases/58 reporting-row selections/all51+306 reader frames/full native and
+context download hashes at both widths. Actual Pages43486985052/main guard
+43486984973 succeed; native artifact14069140286 is997,326,856 payload/
+999,925,760 tar bytes, both below1e9. All31 live HTML/script bodies equal
+the artifact;436 earlier full-download pins,113 archived models and independent
+Which Candidate/Interactive Analysis HTML remain unchanged. Both final
+production images are reviewed. The actual proofs/public records are linked
+in the [acceptance](data/participation-access/20261113-missouri-native-counts-01/website-acceptance.json).
+Missouri remains **3/115 source counties**, with112 unknown, not zero.
+This does not qualify a statewide demographic/behavioral model update.
+
+The user-requested independent critic finds no blocking arithmetic defect in
+the current learned House estimates. Its earlier entropy-model/nullspace
+criticism applies to archived scenarios, not the current nine learned
+family/profile variants. Its second-agent Cole image transcription matches
+all30 rows/240 comparisons; this is not blinded human certification.
+Four nonblocking disclosure improvements remain as659: surface model-family/
+profile sensitivity beside points, clarify conditioned totals versus predictive
+diagnostics, persist endpoint version/completeness, and use explicit modeled
+source-category labels. Keep the requested provisional estimates; do not
+replace them with bounds only or invent a design confidence interval.
+
+User-requested Texas implementation658 is independently active in isolated
+worktrees. Preserve accepted Harris1392280 counted ballots versus1393495 roster
+and native-4085, the+11.976 Democratic-share/+23.952 margin-unit distinction
+and the33/17 behavioral holds. Its candidate must be coordinated against
+current Missouri/King baselines, not publish over them. Full audit636 then
+beautification637 remain behind genuine unfinished implementation.
+
 ## King County native count successor and contextual join
 
 The native county observation is now935,956 printed Total Ballots Cast, replacing

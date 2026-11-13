@@ -8,6 +8,54 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current Missouri native county counts
+
+Boone67,527 and Cole29,108 are direct native Ballots Cast, not candidate
+sums, unique-person histories or a statewide total. All29 Cole non-Total
+rows are complete source statistical observations, not qualified precinct
+polygons. Registration stocks and native percentages remain source context;
+all new analytical rates/denominators stay null. Cole's ABSENTEE register
+repeats the full55,406 stock and is never added to locality registrations.
+
+| Complete download | Contents |
+|---|---|
+| [Complete native analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-analysis.zip) | 11,985,834 bytes/142 members; full51-jurisdiction baseline, permitted factual inputs, code/tests and57 outputs |
+| [Complete source SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-count-source-packet.zip) | 93,880 bytes/19 members; isolated standard-library replay of every31 selected canonical observations |
+| [All selected canonical queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-selected-source-query.json) | Both county parents and every29 Cole reporting row, source clocks, raw register/fraction context and holds |
+| [Every selected PDF factual measure](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-pdf-measure-queries.csv) | Complete Cole30-row statistical table and all Boone6-page sufficient factual lines/statistical cells |
+| [Cole complete reviewed statistics](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/cole-reviewed-statistics.csv) | Every label/count/register/native-percentage cell, explicitly from direct visual review rather than OCR |
+| [Full reviewed registry](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-source-registry.json) | Exact preimages,558 direct factual bindings and complete mode/partition additions |
+| [Independent Boone verification](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/independent-boone-verification.json) | Full50-header/520-label/8-typed-cell independent decoding controls |
+| [Complete contextual successor](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/complete-context-successor.zip) | 25,589,619 bytes/39 members; all836 joins/1,331 records,20 original geometries, full native analysis, prior King analysis and reproduction |
+| [Every contextual numerical join](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/county-participation-joins.csv) | Adds only Boone/Cole; all834 earlier joins remain unchanged |
+| [Complete contextual source records](https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/complete-source-records.json.gz) | All1,331 selected records; all1,329 prior records retained |
+
+Analysis SHA256
+`7dd3b1a37ebbe8a7c590d89a569200090ee501d8993d3cbf074bb31e86a6e286`;
+SDK SHA256
+`bcf247d1bddc54f257753228211bd8a28d022c4897c66103537f81f6567f2e8d`;
+context SHA256
+`80a262cb117e80b74197f5fdb921bf41f32eadafcb8ec16147ec2dbad0156293`.
+All21/six assets in immutable444603376/444601898 are authenticated/draft
+and anonymous/public full-body verified. Two82-test/57-output count replays,
+actual canonical replay, isolated SDK and two39-member contextual replays pass.
+
+These are complete sufficient **factual-input and downstream-query replays**.
+The original PDF templates and Cole's23 contest-abstract pages are not included
+or claimed as publicly re-extracted inputs. Cole's selected turnout table has
+explicit visual-transcription provenance; a second critic agent independently
+compares30 rows/240 fields with zero mismatches, without claiming blinded human
+certification. Model fitting from private respondents is a separate
+reproducibility boundary; no fitting or weight change occurs here.
+All prior full numerical downloads remain available.
+Website8264955 is verified against the actual successful Pages43486985052
+artifact14069140286:997,326,856 payload/999,925,760 tar bytes below1e9,
+all31 served HTML/script bodies exact. Production86 cases/58 reporting-row
+selections/all51+306 reader frames and both complete ZIP hashes pass at both
+widths;436 earlier download pins and113 archived models remain unchanged.
+See [source qualifications](../SOURCES.md#2026-missouri-boone-and-cole-native-statistics)
+and [actual production acceptance](../data/participation-access/20261113-missouri-native-counts-01/website-acceptance.json).
+
 ## Current King County native Ballots Cast
 
 The county's935,956 printed Total Ballots Cast replaces601,199, not a count of

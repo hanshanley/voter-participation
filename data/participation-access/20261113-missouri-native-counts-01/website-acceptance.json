@@ -1,0 +1,2865 @@
+{
+  "actual_canonical_code_replay": {
+    "all_archive_members_verified": 142,
+    "all_source_packet_bytes_exact": true,
+    "archive": {
+      "bytes": 11985834,
+      "sha256": "7dd3b1a37ebbe8a7c590d89a569200090ee501d8993d3cbf074bb31e86a6e286"
+    },
+    "complete_outputs_checked": 57,
+    "hash_seed": "19",
+    "isolated_stdlib_only": true,
+    "network_dns_and_children_blocked": true,
+    "passed": true,
+    "sdk": false,
+    "tests": 82,
+    "three_offline_gates_probed": true,
+    "unexpected_external_operations": 0
+  },
+  "actual_production_browser": {
+    "actual_production": true,
+    "all_51_jurisdictions_306_reader_frames": {
+      "states": [
+        {
+          "code": "AL",
+          "frames": {
+            "available": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 135
+        },
+        {
+          "code": "AK",
+          "frames": {
+            "available": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 2
+        },
+        {
+          "code": "AZ",
+          "frames": {
+            "available": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 1763
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 1763
+            },
+            "uf_vap": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 1763
+            },
+            "uf_vep": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 1763
+            }
+          },
+          "records": 1809
+        },
+        {
+          "code": "AR",
+          "frames": {
+            "available": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 2768
+            },
+            "in_person_early": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 2768
+            },
+            "uf_vap": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 2768
+            },
+            "uf_vep": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 2768
+            }
+          },
+          "records": 3145
+        },
+        {
+          "code": "CA",
+          "frames": {
+            "available": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 293
+        },
+        {
+          "code": "CO",
+          "frames": {
+            "available": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 322
+        },
+        {
+          "code": "CT",
+          "frames": {
+            "available": {
+              "counties": 169,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 169,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 169,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 169,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 338
+        },
+        {
+          "code": "DE",
+          "frames": {
+            "available": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 8
+        },
+        {
+          "code": "DC",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 1
+        },
+        {
+          "code": "FL",
+          "frames": {
+            "available": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 338
+        },
+        {
+          "code": "GA",
+          "frames": {
+            "available": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 798
+        },
+        {
+          "code": "HI",
+          "frames": {
+            "available": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 14
+        },
+        {
+          "code": "ID",
+          "frames": {
+            "available": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 986
+            },
+            "in_person_early": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 986
+            },
+            "uf_vap": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 986
+            },
+            "uf_vep": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 986
+            }
+          },
+          "records": 1208
+        },
+        {
+          "code": "IL",
+          "frames": {
+            "available": {
+              "counties": 102,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 102,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 102,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 422
+        },
+        {
+          "code": "IN",
+          "frames": {
+            "available": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 103
+            },
+            "in_person_early": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 103
+            },
+            "uf_vap": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 103
+            },
+            "uf_vep": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 103
+            }
+          },
+          "records": 565
+        },
+        {
+          "code": "IA",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 99,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 99,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 399
+        },
+        {
+          "code": "KS",
+          "frames": {
+            "available": {
+              "counties": 105,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 105,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 105,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 422
+        },
+        {
+          "code": "KY",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 120,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 120,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 483
+        },
+        {
+          "code": "LA",
+          "frames": {
+            "available": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 258
+        },
+        {
+          "code": "ME",
+          "frames": {
+            "available": {
+              "counties": 480,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 480,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 480,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 2130
+        },
+        {
+          "code": "MD",
+          "frames": {
+            "available": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 73
+        },
+        {
+          "code": "MA",
+          "frames": {
+            "available": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 307
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 307
+            },
+            "uf_vap": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 307
+            },
+            "uf_vep": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 307
+            }
+          },
+          "records": 309
+        },
+        {
+          "code": "MI",
+          "frames": {
+            "available": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 833
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 83,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 833
+            },
+            "uf_vap": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 833
+            },
+            "uf_vep": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 833
+            }
+          },
+          "records": 1003
+        },
+        {
+          "code": "MN",
+          "frames": {
+            "available": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 4105
+            },
+            "in_person_early": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 4105
+            },
+            "uf_vap": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 4105
+            },
+            "uf_vep": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 4105
+            }
+          },
+          "records": 4716
+        },
+        {
+          "code": "MS",
+          "frames": {
+            "available": {
+              "counties": 82,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 82,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 165
+        },
+        {
+          "code": "MO",
+          "frames": {
+            "available": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 29
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 29
+            },
+            "uf_vap": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 29
+            },
+            "uf_vep": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 29
+            }
+          },
+          "records": 36
+        },
+        {
+          "code": "MT",
+          "frames": {
+            "available": {
+              "counties": 56,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 56,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 113
+        },
+        {
+          "code": "NE",
+          "frames": {
+            "available": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 1415
+            },
+            "in_person_early": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 1415
+            },
+            "uf_vap": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 1415
+            },
+            "uf_vep": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 1415
+            }
+          },
+          "records": 1883
+        },
+        {
+          "code": "NV",
+          "frames": {
+            "available": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 104
+        },
+        {
+          "code": "NH",
+          "frames": {
+            "available": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 37
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 37
+            },
+            "uf_vap": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 37
+            },
+            "uf_vep": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 37
+            }
+          },
+          "records": 41
+        },
+        {
+          "code": "NJ",
+          "frames": {
+            "available": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 107
+        },
+        {
+          "code": "NM",
+          "frames": {
+            "available": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 2204
+            },
+            "in_person_early": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 2204
+            },
+            "uf_vap": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 2204
+            },
+            "uf_vep": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 2204
+            }
+          },
+          "records": 2372
+        },
+        {
+          "code": "NY",
+          "frames": {
+            "available": {
+              "counties": 62,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 62,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 125
+        },
+        {
+          "code": "NC",
+          "frames": {
+            "available": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 503
+        },
+        {
+          "code": "ND",
+          "frames": {
+            "available": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 358
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 358
+            },
+            "uf_vap": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 358
+            },
+            "uf_vep": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 358
+            }
+          },
+          "records": 520
+        },
+        {
+          "code": "OH",
+          "frames": {
+            "available": {
+              "counties": 88,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 88,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 88,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 354
+        },
+        {
+          "code": "OK",
+          "frames": {
+            "available": {
+              "counties": 77,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 77,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 155
+        },
+        {
+          "code": "OR",
+          "frames": {
+            "available": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 110
+        },
+        {
+          "code": "PA",
+          "frames": {
+            "available": {
+              "counties": 43,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 43,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 43,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 43,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 178
+        },
+        {
+          "code": "RI",
+          "frames": {
+            "available": {
+              "counties": 39,
+              "nongeographic": 1,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 39,
+              "nongeographic": 1,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 39,
+              "nongeographic": 1,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 39,
+              "nongeographic": 1,
+              "precincts": 0
+            }
+          },
+          "records": 120
+        },
+        {
+          "code": "SC",
+          "frames": {
+            "available": {
+              "counties": 46,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 46,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 46,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 186
+        },
+        {
+          "code": "SD",
+          "frames": {
+            "available": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 671
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 671
+            },
+            "uf_vap": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 671
+            },
+            "uf_vep": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 671
+            }
+          },
+          "records": 871
+        },
+        {
+          "code": "TN",
+          "frames": {
+            "available": {
+              "counties": 95,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 95,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 191
+        },
+        {
+          "code": "TX",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 254,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 254,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 1019
+        },
+        {
+          "code": "UT",
+          "frames": {
+            "available": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 151
+        },
+        {
+          "code": "VT",
+          "frames": {
+            "available": {
+              "counties": 247,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 247,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 247,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 247,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 249
+        },
+        {
+          "code": "VA",
+          "frames": {
+            "available": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 667
+        },
+        {
+          "code": "WA",
+          "frames": {
+            "available": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 118
+        },
+        {
+          "code": "WV",
+          "frames": {
+            "available": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 277
+        },
+        {
+          "code": "WI",
+          "frames": {
+            "available": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 32
+            },
+            "in_person_early": {
+              "counties": 72,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 72,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 32
+            },
+            "uf_vap": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 32
+            },
+            "uf_vep": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 32
+            }
+          },
+          "records": 324
+        },
+        {
+          "code": "WY",
+          "frames": {
+            "available": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 432
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 432
+            },
+            "uf_vap": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 432
+            },
+            "uf_vep": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 432
+            }
+          },
+          "records": 502
+        }
+      ],
+      "version": "55a8f41bf313b19b0d93334d2b585fb53b686acf1c5485c84995a0947f381ad8"
+    },
+    "cases": [
+      {
+        "count": 35258,
+        "county": "additional:MO:29043",
+        "mode": "available",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 29108,
+        "county": "native:MO:cole",
+        "mode": "available",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 67527,
+        "county": "native:MO:boone",
+        "mode": "available",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 35258,
+        "county": "additional:MO:29043",
+        "mode": "official",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 29108,
+        "county": "native:MO:cole",
+        "mode": "official",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 67527,
+        "county": "native:MO:boone",
+        "mode": "official",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 677,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-1",
+        "width": 1440
+      },
+      {
+        "count": 800,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-2",
+        "width": 1440
+      },
+      {
+        "count": 827,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-3",
+        "width": 1440
+      },
+      {
+        "count": 395,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-4",
+        "width": 1440
+      },
+      {
+        "count": 675,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-5",
+        "width": 1440
+      },
+      {
+        "count": 457,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-6",
+        "width": 1440
+      },
+      {
+        "count": 949,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-7",
+        "width": 1440
+      },
+      {
+        "count": 803,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-8",
+        "width": 1440
+      },
+      {
+        "count": 1029,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-9",
+        "width": 1440
+      },
+      {
+        "count": 1403,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-10",
+        "width": 1440
+      },
+      {
+        "count": 1469,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-11",
+        "width": 1440
+      },
+      {
+        "count": 999,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-12",
+        "width": 1440
+      },
+      {
+        "count": 854,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-13",
+        "width": 1440
+      },
+      {
+        "count": 346,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-14",
+        "width": 1440
+      },
+      {
+        "count": 821,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-15",
+        "width": 1440
+      },
+      {
+        "count": 534,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-16",
+        "width": 1440
+      },
+      {
+        "count": 1365,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-17",
+        "width": 1440
+      },
+      {
+        "count": 1070,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-18",
+        "width": 1440
+      },
+      {
+        "count": 272,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-19",
+        "width": 1440
+      },
+      {
+        "count": 1043,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-20",
+        "width": 1440
+      },
+      {
+        "count": 1284,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-21",
+        "width": 1440
+      },
+      {
+        "count": 1541,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-22",
+        "width": 1440
+      },
+      {
+        "count": 502,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-23",
+        "width": 1440
+      },
+      {
+        "count": 1115,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-24",
+        "width": 1440
+      },
+      {
+        "count": 383,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-25",
+        "width": 1440
+      },
+      {
+        "count": 630,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-26",
+        "width": 1440
+      },
+      {
+        "count": 373,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-27",
+        "width": 1440
+      },
+      {
+        "count": 1342,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-28",
+        "width": 1440
+      },
+      {
+        "count": 5150,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-29",
+        "width": 1440
+      },
+      {
+        "count": 35258,
+        "county": "additional:MO:29043",
+        "mode": "uf_vep",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 29108,
+        "county": "native:MO:cole",
+        "mode": "uf_vep",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 67527,
+        "county": "native:MO:boone",
+        "mode": "uf_vep",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 35258,
+        "county": "additional:MO:29043",
+        "mode": "uf_vap",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 29108,
+        "county": "native:MO:cole",
+        "mode": "uf_vap",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "count": 67527,
+        "county": "native:MO:boone",
+        "mode": "uf_vap",
+        "rate": null,
+        "width": 1440
+      },
+      {
+        "held": true,
+        "mode": "mail_returned",
+        "width": 1440
+      },
+      {
+        "held": true,
+        "mode": "in_person_early",
+        "width": 1440
+      },
+      {
+        "count": 35258,
+        "county": "additional:MO:29043",
+        "mode": "available",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 29108,
+        "county": "native:MO:cole",
+        "mode": "available",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 67527,
+        "county": "native:MO:boone",
+        "mode": "available",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 35258,
+        "county": "additional:MO:29043",
+        "mode": "official",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 29108,
+        "county": "native:MO:cole",
+        "mode": "official",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 67527,
+        "county": "native:MO:boone",
+        "mode": "official",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 677,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-1",
+        "width": 390
+      },
+      {
+        "count": 800,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-2",
+        "width": 390
+      },
+      {
+        "count": 827,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-3",
+        "width": 390
+      },
+      {
+        "count": 395,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-4",
+        "width": 390
+      },
+      {
+        "count": 675,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-5",
+        "width": 390
+      },
+      {
+        "count": 457,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-6",
+        "width": 390
+      },
+      {
+        "count": 949,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-7",
+        "width": 390
+      },
+      {
+        "count": 803,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-8",
+        "width": 390
+      },
+      {
+        "count": 1029,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-9",
+        "width": 390
+      },
+      {
+        "count": 1403,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-10",
+        "width": 390
+      },
+      {
+        "count": 1469,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-11",
+        "width": 390
+      },
+      {
+        "count": 999,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-12",
+        "width": 390
+      },
+      {
+        "count": 854,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-13",
+        "width": 390
+      },
+      {
+        "count": 346,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-14",
+        "width": 390
+      },
+      {
+        "count": 821,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-15",
+        "width": 390
+      },
+      {
+        "count": 534,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-16",
+        "width": 390
+      },
+      {
+        "count": 1365,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-17",
+        "width": 390
+      },
+      {
+        "count": 1070,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-18",
+        "width": 390
+      },
+      {
+        "count": 272,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-19",
+        "width": 390
+      },
+      {
+        "count": 1043,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-20",
+        "width": 390
+      },
+      {
+        "count": 1284,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-21",
+        "width": 390
+      },
+      {
+        "count": 1541,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-22",
+        "width": 390
+      },
+      {
+        "count": 502,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-23",
+        "width": 390
+      },
+      {
+        "count": 1115,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-24",
+        "width": 390
+      },
+      {
+        "count": 383,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-25",
+        "width": 390
+      },
+      {
+        "count": 630,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-26",
+        "width": 390
+      },
+      {
+        "count": 373,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-27",
+        "width": 390
+      },
+      {
+        "count": 1342,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-28",
+        "width": 390
+      },
+      {
+        "count": 5150,
+        "mode": "official",
+        "unit": "native:MO:cole:statistical-row-29",
+        "width": 390
+      },
+      {
+        "count": 35258,
+        "county": "additional:MO:29043",
+        "mode": "uf_vep",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 29108,
+        "county": "native:MO:cole",
+        "mode": "uf_vep",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 67527,
+        "county": "native:MO:boone",
+        "mode": "uf_vep",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 35258,
+        "county": "additional:MO:29043",
+        "mode": "uf_vap",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 29108,
+        "county": "native:MO:cole",
+        "mode": "uf_vap",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "count": 67527,
+        "county": "native:MO:boone",
+        "mode": "uf_vap",
+        "rate": null,
+        "width": 390
+      },
+      {
+        "held": true,
+        "mode": "mail_returned",
+        "width": 390
+      },
+      {
+        "held": true,
+        "mode": "in_person_early",
+        "width": 390
+      }
+    ],
+    "count_and_map_modes_all_six_at_both_widths": true,
+    "county_geometry_features": 115,
+    "errors": [],
+    "native_and_context_downloads_full_body_verified_at_both_widths": true,
+    "new_rates_and_precinct_geography_held": true,
+    "no_local_server_left_running": true,
+    "passed": true,
+    "phase": "production",
+    "qualified_county_observations": 3,
+    "source_data_dom_or_style_overrides": false,
+    "source_unit_checks": 58,
+    "unknown_counties_not_zero": 112
+  },
+  "atomic_publication": {
+    "anonymous_verified_files": 54,
+    "catalog_commit": "46bd3ae3e1a468b63d12657948f1287efd2bf3cf",
+    "changed_ids": [
+      "participation-counts-2026"
+    ],
+    "datasets_changed": 1,
+    "intermediate_catalog_unchanged": true,
+    "single_catalog_commit_for_all_changes": true,
+    "staged_commit": "54c6904c787d3157b9ac5c64388874c6eb863ff0",
+    "status": "published",
+    "unchanged_dataset_entries_preserved": true,
+    "website_builds_started": 0,
+    "worktree_head_or_index_changed": false
+  },
+  "bounded_request": "Boone and Cole native county counts, full Cole reporting rows and reviewed contextual identities",
+  "canonical_website_persistence": {
+    "canonical_heads_indexes_and_unrelated_files_preserved": true,
+    "missing_only_exact_published_dependencies_restored": {},
+    "node_tests": 17,
+    "older_independent_explorer_preserved_sha256": "c08ddc6d0a495429e64528b4eff716ebfae7231d1c61b6b7f48bf5cc56b569b5",
+    "owned_files": {
+      "data/participation-counts/context-review.json": "d836e22991c933679868ea81d6e1a9fcd509b433f475d3487b14f8cfa25a62a0",
+      "scripts/participation-context-publication.test.mjs": "3d550638245c41f451cb80e91ca193347576912a1f95acabf88c268e7171c91b"
+    },
+    "passed": true,
+    "protected": {
+      "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+      "research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+      "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+      "website": {
+        "head": "cb263a70f4c00dcddce34f9cae367a1f524c5376",
+        "index_sha256": "a5809faddc5e47eacd85ae5be0a3c703b8e3557be2d69c43b7962180bbc3b9e0"
+      }
+    },
+    "published_dependency_baseline": "67455da372b89dbeb86eb89561705b4dca233e87",
+    "skipped": 0,
+    "source_commit": "826495550eef0c92b1390b9f0dd7f76a136a79b3"
+  },
+  "complete_context_release": {
+    "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+    "assets": [
+      {
+        "bytes": 25589619,
+        "id": 744754624,
+        "name": "complete-context-successor.zip",
+        "sha256": "80a262cb117e80b74197f5fdb921bf41f32eadafcb8ec16147ec2dbad0156293",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/complete-context-successor.zip"
+      },
+      {
+        "bytes": 155617,
+        "id": 744754489,
+        "name": "complete-source-records.json.gz",
+        "sha256": "8a3998a0d604b380d86c08705846000286f69f1fd72231fdc6197f3ed61e4189",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/complete-source-records.json.gz"
+      },
+      {
+        "bytes": 540739,
+        "id": 744754389,
+        "name": "county-participation-joins.csv",
+        "sha256": "d23bcf862a801f507d3595a3e7a30aad08c35ff7d48aa04d33d41b757cd7f110",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/county-participation-joins.csv"
+      },
+      {
+        "bytes": 1231,
+        "id": 744754837,
+        "name": "offline-replays.json",
+        "sha256": "ea3b8e7fe2ff55b618d9e49c1b819f3c173eed9d7acc3e45b36cc2c6fb7c94f0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/offline-replays.json"
+      },
+      {
+        "bytes": 6680,
+        "id": 744754569,
+        "name": "review-succession.json",
+        "sha256": "e1907b9ef27179b4d0c50ae7ab4f298e74cceee1e6ed11870f57b7fe78d251c2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/review-succession.json"
+      },
+      {
+        "bytes": 1270137,
+        "id": 744754292,
+        "name": "review.json",
+        "sha256": "4fb401cbfe5b4aae90b0ffff133ca81be19b6d2b6dec995d1cba42d302145f8a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/review.json"
+      }
+    ],
+    "id": 444601898,
+    "immutable": true,
+    "passed": true,
+    "source_commit": "8a1da7fb80b0c87ad17391f77507c26831adb5e6",
+    "tag": "participation-missouri-context-successor-20261113-01"
+  },
+  "complete_native_release": {
+    "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+    "assets": [
+      {
+        "bytes": 6938,
+        "id": 744758021,
+        "name": "all-51-jurisdictions.json",
+        "sha256": "8d633689bac9b93e3e55317a0d8986c8df11f57b94487c22e0b50ee46a713f5f",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/all-51-jurisdictions.json"
+      },
+      {
+        "bytes": 402,
+        "id": 744758424,
+        "name": "candidate-verification.json",
+        "sha256": "f53d5eb848a8ec1221dc848cd2efa6dff13d7d222bd8bb0c08d265d7c259e27a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/candidate-verification.json"
+      },
+      {
+        "bytes": 1071,
+        "id": 744758773,
+        "name": "cole-reviewed-statistics.csv",
+        "sha256": "485c6509cc81a098633e381cc304ddb3759717167f793a355ecddcae6b09c992",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/cole-reviewed-statistics.csv"
+      },
+      {
+        "bytes": 9497,
+        "id": 744758357,
+        "name": "compile-factual.py",
+        "sha256": "42f807f6912d53a33f2c087871eee5ccf48e9bc698b084188239e2b550cae622",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/compile-factual.py"
+      },
+      {
+        "bytes": 11985834,
+        "id": 744758572,
+        "name": "complete-analysis.zip",
+        "sha256": "7dd3b1a37ebbe8a7c590d89a569200090ee501d8993d3cbf074bb31e86a6e286",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-analysis.zip"
+      },
+      {
+        "bytes": 2780,
+        "id": 744758491,
+        "name": "complete-asset-manifest.json",
+        "sha256": "f4d0adada2eedc89516655daa37d2aed166c8f9d6fa6d13d67be809145b72e80",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-asset-manifest.json"
+      },
+      {
+        "bytes": 93880,
+        "id": 744758858,
+        "name": "complete-count-source-packet.zip",
+        "sha256": "bcf247d1bddc54f257753228211bd8a28d022c4897c66103537f81f6567f2e8d",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-count-source-packet.zip"
+      },
+      {
+        "bytes": 250758,
+        "id": 744758817,
+        "name": "complete-pdf-measure-queries.csv",
+        "sha256": "4584607639c23f8da003603c5a1430303bf4a4b4ba218123d8ada8972bfb2bfe",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-pdf-measure-queries.csv"
+      },
+      {
+        "bytes": 326122,
+        "id": 744758235,
+        "name": "complete-pdf-measure-queries.json",
+        "sha256": "cee66b18c2b141150abb8f885c02fbc970b7b74aa2206552cd9d9f71da7b5b6a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-pdf-measure-queries.json"
+      },
+      {
+        "bytes": 154170,
+        "id": 744759266,
+        "name": "complete-selected-source-query.json",
+        "sha256": "2577cdfddaa0213b8c22a916ad3f7963b9cb500d81d707275dc01c24c867837a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-selected-source-query.json"
+      },
+      {
+        "bytes": 107,
+        "id": 744758078,
+        "name": "complete-source-dispositions.json",
+        "sha256": "3cedd63f75d77256523ee4b05e483c39e4a30660a83f523da0fcd9a4c1981873",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-source-dispositions.json"
+      },
+      {
+        "bytes": 197972,
+        "id": 744758139,
+        "name": "complete-source-registry.json",
+        "sha256": "091957a232a1cc48a2c534bb6d6bf37d2cad55394aac456bbd48609e7d9fc5bf",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-source-registry.json"
+      },
+      {
+        "bytes": 326122,
+        "id": 744759203,
+        "name": "complete_queries.json",
+        "sha256": "cee66b18c2b141150abb8f885c02fbc970b7b74aa2206552cd9d9f71da7b5b6a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete_queries.json"
+      },
+      {
+        "bytes": 36613,
+        "id": 744758738,
+        "name": "facts.json.gz",
+        "sha256": "ec690d068fdafc776c881e121c8dff499c486e734d4e33dedac0e485eaa36de6",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/facts.json.gz"
+      },
+      {
+        "bytes": 469,
+        "id": 744758529,
+        "name": "independent-boone-verification.json",
+        "sha256": "4dbfd45f390024f6d806ddf47b358b1914a5b0a320eefe66e6866c819bfd5bb2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/independent-boone-verification.json"
+      },
+      {
+        "bytes": 2052,
+        "id": 744758641,
+        "name": "offline-replays.json",
+        "sha256": "60402d8d5707d2136a0cfeaa5b971fe11a40f69479d4fb730db5719380a13378",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/offline-replays.json"
+      },
+      {
+        "bytes": 12935,
+        "id": 744757971,
+        "name": "prepare-inputs.py",
+        "sha256": "ea6cf2765b9e601d86ce895a7e2538604b3415cceb6bfa4049ae708003325888",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/prepare-inputs.py"
+      },
+      {
+        "bytes": 154170,
+        "id": 744758701,
+        "name": "snapshot.json",
+        "sha256": "2577cdfddaa0213b8c22a916ad3f7963b9cb500d81d707275dc01c24c867837a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/snapshot.json"
+      },
+      {
+        "bytes": 1791,
+        "id": 744759144,
+        "name": "source-access-dispositions.json",
+        "sha256": "f3a0259ff00cc402e662d7f6a2510eea52bed58dc170ff0393fbc33a073393ad",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/source-access-dispositions.json"
+      },
+      {
+        "bytes": 1002,
+        "id": 744758303,
+        "name": "source-summary.json",
+        "sha256": "67a960e3fa1e098b24f5fc9d3479cafbc072de6dd87615acbff09d699008aafa",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/source-summary.json"
+      },
+      {
+        "bytes": 1002,
+        "id": 744759356,
+        "name": "source_summary.json",
+        "sha256": "67a960e3fa1e098b24f5fc9d3479cafbc072de6dd87615acbff09d699008aafa",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/source_summary.json"
+      }
+    ],
+    "id": 444603376,
+    "immutable": true,
+    "passed": true,
+    "source_commit": "8a1da7fb80b0c87ad17391f77507c26831adb5e6",
+    "tag": "participation-missouri-native-counts-20261113-01"
+  },
+  "contextual_offline_replays": {
+    "complete_archive": {
+      "bytes": 25589619,
+      "sha256": "80a262cb117e80b74197f5fdb921bf41f32eadafcb8ec16147ec2dbad0156293"
+    },
+    "passed": true,
+    "replays": [
+      {
+        "all_member_bytes_exact": true,
+        "counts": {
+          "complete_source_records": 1331,
+          "contextual_joins": 836,
+          "excluded_missing_county_totals": 208,
+          "excluded_municipalities": 286,
+          "jurisdictions": 20,
+          "missing_rates": 390,
+          "retained_duplicate_source_observations": 1,
+          "reviewed_rates": 446
+        },
+        "members": 39,
+        "network_dns_and_subprocess_blocked": true,
+        "passed": true,
+        "seed": "19"
+      },
+      {
+        "all_member_bytes_exact": true,
+        "counts": {
+          "complete_source_records": 1331,
+          "contextual_joins": 836,
+          "excluded_missing_county_totals": 208,
+          "excluded_municipalities": 286,
+          "jurisdictions": 20,
+          "missing_rates": 390,
+          "retained_duplicate_source_observations": 1,
+          "reviewed_rates": 446
+        },
+        "members": 39,
+        "network_dns_and_subprocess_blocked": true,
+        "passed": true,
+        "seed": "73"
+      }
+    ],
+    "unchanged_geometry_collections": 20,
+    "unchanged_other_joins": 834
+  },
+  "independent_critic_scope": "Second agent source-image verification, not blinded human certification or independent statistical observations",
+  "native_and_production_bytes": {
+    "actual_native_artifact_id": 14069140286,
+    "actual_payload_bytes": 997326856,
+    "actual_production_html_and_scripts_exact": true,
+    "actual_tar_bytes": 999925760,
+    "all_prior_driver_numerics_and_stable_links_unchanged": true,
+    "artifact_zip_sha256": "9e1ea3a5f8d46f96ef2a645b3189653707ef4754d9ba366202b4b008a716d193",
+    "assets": {
+      "_astro/ParticipationCPSUnifiedHistory.astro_astro_type_script_index_0_lang.BgXsRZsU.js": {
+        "bytes": 16075,
+        "sha256": "3e52d3a7327aa904f2d9ce0bd8644654552ccaad2f75a629a848e234ac8f2174"
+      },
+      "_astro/ParticipationReturnDrivers.astro_astro_type_script_index_0_lang.Cc0ZGe0P.js": {
+        "bytes": 74079,
+        "sha256": "1e45325fd36c34253667f39fe54f6029ba241537c2355b376434b1d5867480ba"
+      },
+      "interactive-analysis/index.html": {
+        "bytes": 8649,
+        "sha256": "25ea2bb5ef36f9f1035369e2b8f5ae0e708b2fc751add506c85927d90ddc3501"
+      },
+      "scripts/participation-ap-history.js": {
+        "bytes": 4818,
+        "sha256": "ebc440cb3ca4a67a5ae7b1e40bfdd692084a4553cf766fc378047899be40ca08"
+      },
+      "scripts/participation-calibrated-swing.js": {
+        "bytes": 6433,
+        "sha256": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115"
+      },
+      "scripts/participation-civic-state-demographics.js": {
+        "bytes": 4149,
+        "sha256": "66913f5636120c6de8264ce8756054bbbced194b1d5255ec524c70ebcf0da0e6"
+      },
+      "scripts/participation-counts.js": {
+        "bytes": 8473,
+        "sha256": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de"
+      },
+      "scripts/participation-county-context.js": {
+        "bytes": 1798,
+        "sha256": "c23837f6178c121051fd5d1454f7d27690dc1002baaf7392cc4a983001865c05"
+      },
+      "scripts/participation-coverage.js": {
+        "bytes": 5146,
+        "sha256": "f67b2fc454e16900146b8c54608183b6e56e22c288e1c250bfafe26a2329689a"
+      },
+      "scripts/participation-cps-1996.js": {
+        "bytes": 5447,
+        "sha256": "a5d03985e995bbd975980c7fadd51021ebf8973e9416cb19430a3ccf4d264400"
+      },
+      "scripts/participation-cps-1998.js": {
+        "bytes": 4291,
+        "sha256": "3d526ac6f0e9666bc3c251e2ff5d030ac371a309fc6c2278087f6ccd2940589c"
+      },
+      "scripts/participation-cps-2002.js": {
+        "bytes": 4206,
+        "sha256": "b6e3e532ef46327b9c64f16baea5b7a65cc0a8178316b18be96755609c26e5f5"
+      },
+      "scripts/participation-dataset.js": {
+        "bytes": 3108,
+        "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+      },
+      "scripts/participation-downloads.js": {
+        "bytes": 6746,
+        "sha256": "ffd308df80b1453fb642eab9fa2143473863a43a809c578717a8bbdb0c645203"
+      },
+      "scripts/participation-explorer.js": {
+        "bytes": 256135,
+        "sha256": "86538968060fd21de90a1f8ce8061ceeab97e408a8b6614f740872432786dc95"
+      },
+      "scripts/participation-geography.js": {
+        "bytes": 51748,
+        "sha256": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3"
+      },
+      "scripts/participation-map-projection.js": {
+        "bytes": 2389,
+        "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+      },
+      "scripts/participation-native-bindings.js": {
+        "bytes": 8869,
+        "sha256": "550dbd2cc7fcde5a91df7186ecb3358d7cc299562af4286647df795e8282fb00"
+      },
+      "scripts/participation-norc-house.js": {
+        "bytes": 37997,
+        "sha256": "d600bb196cdf9f43a8b82fd566a0e97e121dabb77a7451853e4a9074fcd6f017"
+      },
+      "scripts/participation-resident-context.js": {
+        "bytes": 13801,
+        "sha256": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260"
+      },
+      "scripts/participation-return-drivers.js": {
+        "bytes": 44392,
+        "sha256": "19d13c48069cb81aee446403a82be0d421dcbd399da576fb470ecbeb6c2b99e2"
+      },
+      "scripts/participation-state-demographics.js": {
+        "bytes": 4906,
+        "sha256": "0f3bbab2b430894a6fa91b2b5752e9c2709e86b7015f103160850ec81360afdf"
+      },
+      "scripts/participation-swing.js": {
+        "bytes": 4686,
+        "sha256": "cdae0c2e5f77a2744a5117ff3e995375025041151d5ab1ce657024560739abf8"
+      },
+      "scripts/participation-transition-scenarios.js": {
+        "bytes": 7455,
+        "sha256": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e"
+      },
+      "voter-participation/app.js": {
+        "bytes": 28147,
+        "sha256": "ec3a37d51010c4581d01e7552747a3eb3029f4f58ab4ae97223aaa798723f9db"
+      },
+      "voter-participation/cps.js": {
+        "bytes": 2125,
+        "sha256": "385aa4a3b12c7e6bf6d816ba87737d66c425dffe1ba5624e26e2c0fc32e32f69"
+      },
+      "voter-participation/current.js": {
+        "bytes": 4691,
+        "sha256": "88561de5a79c5c4ef5cb11fe8bad4b0ecc3fa6b6e9d507c36b8f15689f437c27"
+      },
+      "voter-participation/index.html": {
+        "bytes": 6759242,
+        "sha256": "b481490be1c3ce2ac30a89d7451b35491ebeed769ccc381f8fb0364ff65583b2"
+      },
+      "voter-participation/model.js": {
+        "bytes": 2437,
+        "sha256": "8a4a1b9b9e54e2fd9d5e435a0455321ca84bd9b19b26f8bd5951b76cb8b3bfee"
+      },
+      "voter-participation/nationwide.js": {
+        "bytes": 6438,
+        "sha256": "b49dc256be87b855ec45adc337cb5ccdb89c7b3e3bc23bbfe0b70c9c68952e9c"
+      },
+      "which-candidate/index.html": {
+        "bytes": 33353,
+        "sha256": "b2953a99cab53d53bbd3288b9435c1c1bd0c8b8c7a0baec178b2100f14d3bc4c"
+      }
+    },
+    "behavioral_holds": 17,
+    "both_strictly_less_than_1e9": true,
+    "concurrent_independent_website_publication_preserved": true,
+    "independent_which_candidate_and_interactive_analysis_html_byte_identical": true,
+    "new_context_review_sha256": "4fb401cbfe5b4aae90b0ffff133ca81be19b6d2b6dec995d1cba42d302145f8a",
+    "old_context_checksums_not_weakened": true,
+    "passed": true,
+    "preserved_complete_download_pins": 436,
+    "preserved_original_models": 113,
+    "recorded_rows": 50,
+    "run_id": 43486985052,
+    "served_bodies": 31,
+    "source_commit": "826495550eef0c92b1390b9f0dd7f76a136a79b3",
+    "source_dom_and_style_not_overridden": true,
+    "source_guard_run": 43486984973,
+    "this_data_task_started_no_website_build": false
+  },
+  "old_science_geometry_weights_and_downloads_retained": true,
+  "passed": true,
+  "responsive_final_production_images_reviewed": true,
+  "whole_project_complete": false
+}

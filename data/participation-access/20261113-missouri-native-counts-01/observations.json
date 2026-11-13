@@ -1,0 +1,412 @@
+{
+  "analytical_rates_and_denominators_held": true,
+  "candidate_verification": {
+    "all_new_rates_and_native_geometry_held": true,
+    "all_previous_MO_records_exact": true,
+    "candidate_version": "55a8f41bf313b19b0d93334d2b585fb53b686acf1c5485c84995a0947f381ad8",
+    "changed_rows": 31,
+    "county_observations": 3,
+    "county_reference_inventory": 115,
+    "other_jurisdiction_shards_exact": 50,
+    "passed": true,
+    "source_reporting_rows": 29,
+    "statewide_snapshot_unchanged": true
+  },
+  "catalog_commit": "46bd3ae3e1a468b63d12657948f1287efd2bf3cf",
+  "complete_context_assets": [
+    {
+      "bytes": 25589619,
+      "id": 744754624,
+      "name": "complete-context-successor.zip",
+      "sha256": "80a262cb117e80b74197f5fdb921bf41f32eadafcb8ec16147ec2dbad0156293",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/complete-context-successor.zip"
+    },
+    {
+      "bytes": 155617,
+      "id": 744754489,
+      "name": "complete-source-records.json.gz",
+      "sha256": "8a3998a0d604b380d86c08705846000286f69f1fd72231fdc6197f3ed61e4189",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/complete-source-records.json.gz"
+    },
+    {
+      "bytes": 540739,
+      "id": 744754389,
+      "name": "county-participation-joins.csv",
+      "sha256": "d23bcf862a801f507d3595a3e7a30aad08c35ff7d48aa04d33d41b757cd7f110",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/county-participation-joins.csv"
+    },
+    {
+      "bytes": 1231,
+      "id": 744754837,
+      "name": "offline-replays.json",
+      "sha256": "ea3b8e7fe2ff55b618d9e49c1b819f3c173eed9d7acc3e45b36cc2c6fb7c94f0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/offline-replays.json"
+    },
+    {
+      "bytes": 6680,
+      "id": 744754569,
+      "name": "review-succession.json",
+      "sha256": "e1907b9ef27179b4d0c50ae7ab4f298e74cceee1e6ed11870f57b7fe78d251c2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/review-succession.json"
+    },
+    {
+      "bytes": 1270137,
+      "id": 744754292,
+      "name": "review.json",
+      "sha256": "4fb401cbfe5b4aae90b0ffff133ca81be19b6d2b6dec995d1cba42d302145f8a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-context-successor-20261113-01/review.json"
+    }
+  ],
+  "complete_native_assets": [
+    {
+      "bytes": 6938,
+      "id": 744758021,
+      "name": "all-51-jurisdictions.json",
+      "sha256": "8d633689bac9b93e3e55317a0d8986c8df11f57b94487c22e0b50ee46a713f5f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/all-51-jurisdictions.json"
+    },
+    {
+      "bytes": 402,
+      "id": 744758424,
+      "name": "candidate-verification.json",
+      "sha256": "f53d5eb848a8ec1221dc848cd2efa6dff13d7d222bd8bb0c08d265d7c259e27a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/candidate-verification.json"
+    },
+    {
+      "bytes": 1071,
+      "id": 744758773,
+      "name": "cole-reviewed-statistics.csv",
+      "sha256": "485c6509cc81a098633e381cc304ddb3759717167f793a355ecddcae6b09c992",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/cole-reviewed-statistics.csv"
+    },
+    {
+      "bytes": 9497,
+      "id": 744758357,
+      "name": "compile-factual.py",
+      "sha256": "42f807f6912d53a33f2c087871eee5ccf48e9bc698b084188239e2b550cae622",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/compile-factual.py"
+    },
+    {
+      "bytes": 11985834,
+      "id": 744758572,
+      "name": "complete-analysis.zip",
+      "sha256": "7dd3b1a37ebbe8a7c590d89a569200090ee501d8993d3cbf074bb31e86a6e286",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-analysis.zip"
+    },
+    {
+      "bytes": 2780,
+      "id": 744758491,
+      "name": "complete-asset-manifest.json",
+      "sha256": "f4d0adada2eedc89516655daa37d2aed166c8f9d6fa6d13d67be809145b72e80",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-asset-manifest.json"
+    },
+    {
+      "bytes": 93880,
+      "id": 744758858,
+      "name": "complete-count-source-packet.zip",
+      "sha256": "bcf247d1bddc54f257753228211bd8a28d022c4897c66103537f81f6567f2e8d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-count-source-packet.zip"
+    },
+    {
+      "bytes": 250758,
+      "id": 744758817,
+      "name": "complete-pdf-measure-queries.csv",
+      "sha256": "4584607639c23f8da003603c5a1430303bf4a4b4ba218123d8ada8972bfb2bfe",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-pdf-measure-queries.csv"
+    },
+    {
+      "bytes": 326122,
+      "id": 744758235,
+      "name": "complete-pdf-measure-queries.json",
+      "sha256": "cee66b18c2b141150abb8f885c02fbc970b7b74aa2206552cd9d9f71da7b5b6a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-pdf-measure-queries.json"
+    },
+    {
+      "bytes": 154170,
+      "id": 744759266,
+      "name": "complete-selected-source-query.json",
+      "sha256": "2577cdfddaa0213b8c22a916ad3f7963b9cb500d81d707275dc01c24c867837a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-selected-source-query.json"
+    },
+    {
+      "bytes": 107,
+      "id": 744758078,
+      "name": "complete-source-dispositions.json",
+      "sha256": "3cedd63f75d77256523ee4b05e483c39e4a30660a83f523da0fcd9a4c1981873",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-source-dispositions.json"
+    },
+    {
+      "bytes": 197972,
+      "id": 744758139,
+      "name": "complete-source-registry.json",
+      "sha256": "091957a232a1cc48a2c534bb6d6bf37d2cad55394aac456bbd48609e7d9fc5bf",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete-source-registry.json"
+    },
+    {
+      "bytes": 326122,
+      "id": 744759203,
+      "name": "complete_queries.json",
+      "sha256": "cee66b18c2b141150abb8f885c02fbc970b7b74aa2206552cd9d9f71da7b5b6a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/complete_queries.json"
+    },
+    {
+      "bytes": 36613,
+      "id": 744758738,
+      "name": "facts.json.gz",
+      "sha256": "ec690d068fdafc776c881e121c8dff499c486e734d4e33dedac0e485eaa36de6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/facts.json.gz"
+    },
+    {
+      "bytes": 469,
+      "id": 744758529,
+      "name": "independent-boone-verification.json",
+      "sha256": "4dbfd45f390024f6d806ddf47b358b1914a5b0a320eefe66e6866c819bfd5bb2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/independent-boone-verification.json"
+    },
+    {
+      "bytes": 2052,
+      "id": 744758641,
+      "name": "offline-replays.json",
+      "sha256": "60402d8d5707d2136a0cfeaa5b971fe11a40f69479d4fb730db5719380a13378",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/offline-replays.json"
+    },
+    {
+      "bytes": 12935,
+      "id": 744757971,
+      "name": "prepare-inputs.py",
+      "sha256": "ea6cf2765b9e601d86ce895a7e2538604b3415cceb6bfa4049ae708003325888",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/prepare-inputs.py"
+    },
+    {
+      "bytes": 154170,
+      "id": 744758701,
+      "name": "snapshot.json",
+      "sha256": "2577cdfddaa0213b8c22a916ad3f7963b9cb500d81d707275dc01c24c867837a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/snapshot.json"
+    },
+    {
+      "bytes": 1791,
+      "id": 744759144,
+      "name": "source-access-dispositions.json",
+      "sha256": "f3a0259ff00cc402e662d7f6a2510eea52bed58dc170ff0393fbc33a073393ad",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/source-access-dispositions.json"
+    },
+    {
+      "bytes": 1002,
+      "id": 744758303,
+      "name": "source-summary.json",
+      "sha256": "67a960e3fa1e098b24f5fc9d3479cafbc072de6dd87615acbff09d699008aafa",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/source-summary.json"
+    },
+    {
+      "bytes": 1002,
+      "id": 744759356,
+      "name": "source_summary.json",
+      "sha256": "67a960e3fa1e098b24f5fc9d3479cafbc072de6dd87615acbff09d699008aafa",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-missouri-native-counts-20261113-01/source_summary.json"
+    }
+  ],
+  "contextual_source_commit": "8a1da7fb80b0c87ad17391f77507c26831adb5e6",
+  "contract": "participation.native_count_addition_delivery.v1",
+  "counts_version": "55a8f41bf313b19b0d93334d2b585fb53b686acf1c5485c84995a0947f381ad8",
+  "county_observations": 3,
+  "county_reference_inventory": 115,
+  "full_numerical_downloads_not_replaced_by_this_record": true,
+  "independent_critic_and_second_agent_source_image_check": {
+    "agent_id": "1ef74af6-09a7-42c6-b5f7-003a09db2234",
+    "cole_second_agent_visual_check": {
+      "absentee_ballots": 5150,
+      "absentee_repeated_registration_stock": 55406,
+      "all_30_printed_percentage_controls_pass": true,
+      "blinded_review": false,
+      "csv_field_comparisons": 120,
+      "factual_json_field_comparisons": 120,
+      "independent_human_certification": false,
+      "limitation": "A second critic-agent visual transcription; the prior review turn had exposed the existing CSV. No OCR or private source extraction is claimed by public replay.",
+      "locality_ballots": 23958,
+      "locality_registered": 55406,
+      "mismatches": 0,
+      "native_ballots": 29108,
+      "native_clock_literal": "11/9/2026 10:05:40 AM",
+      "native_fraction": "52.54%",
+      "native_registered": 55406,
+      "native_status_literal": "OFFICIAL RESULTS",
+      "rows": 30,
+      "source_image": {
+        "bytes": 2957503,
+        "height": 2632,
+        "sha256": "cb3cecb9329ba4b775356e18ce74b7083d631eef386c56e04cdbd8677096f58c",
+        "width": 2036
+      },
+      "source_pdf": {
+        "bytes": 9253565,
+        "sha256": "c6ee3bf75d40d6827759123ce387896353d8715799be0ec4d69208fee4acd299"
+      },
+      "statistically_independent_evidence": false
+    },
+    "contract": "participation.independent_agent_critique.v1",
+    "corrections_to_initial_critique": {
+      "current_default": "accepted_ridge_multinomial with original association; nine learned family/profile variants",
+      "first_party_consumer_misclassifying_29_cole_rows_as_mapped_precincts_found": false,
+      "legacy_25_cell_rank_argument_applies_to_current_default": false,
+      "legacy_entropy_model": "participation-transition-simulation-20261111-01 and scenario_* views only",
+      "legacy_precincts_transport_partition_severity": "API naming concern, not justification for a breaking collection migration",
+      "public_projection_replay_vs_private_training_boundary": "Disclosed; clearer package-level reproducibility badges are a possible improvement."
+    },
+    "current_blocking_arithmetic_defects_found": false,
+    "disclosure_fixes_task": "participation-model-disclosure-fixes-20261113",
+    "model": "gpt-5.6-sol",
+    "provisional_conditional_models_may_remain_published": true,
+    "refined_findings": [
+      {
+        "fix": "Show the existing family/profile spread beside the selected point, explicitly as model sensitivity rather than a confidence interval.",
+        "issue": "Material nine-variant sensitivity is not foregrounded beside selected point estimates.",
+        "participation_cross_variant_margin_pp_spread": {
+          "maximum": 8.91,
+          "median": 4.3
+        },
+        "severity": "nonblocking",
+        "switching_cross_variant_margin_pp_spread": {
+          "maximum": 9.95,
+          "median": 4.91
+        }
+      },
+      {
+        "fix": "Explain that the conditioned total equals its endpoint by construction, and keep preconditioning predictive error separate.",
+        "issue": "Conditioned total labels can resemble independent predictive validation.",
+        "severity": "nonblocking"
+      },
+      {
+        "fix": "Show exact endpoint snapshot/version and counting qualification; retain provisional scenarios rather than impose an unrequested certification wait.",
+        "issue": "Endpoint provisionality/version is disclosed but not persistently surfaced on modeled views.",
+        "severity": "nonblocking"
+      },
+      {
+        "fix": "Use the actual modeled/source-choice category definitions, preserving quantities and source nonresponse distinctions.",
+        "issue": "Prior-absent and new/returning selector labels can imply observed individual histories.",
+        "severity": "nonblocking"
+      }
+    ],
+    "whole_project_complete": false
+  },
+  "native_bindings_and_model_and_house_endpoints_and_weights_unchanged": true,
+  "native_source_statistics_and_independent_encoded_pdf_verification": {
+    "boone_all_numeric_token_inventories_equal": true,
+    "boone_native_ballots": 67527,
+    "boone_native_registered": 130157,
+    "boone_pdf_pages": 6,
+    "candidate_votes_not_used_as_ballots": true,
+    "clocks_differ_and_timezones_unknown": true,
+    "cole_automated_pdf_text_extraction_claimed": false,
+    "cole_count_control_passed": true,
+    "cole_image_reviewed": true,
+    "cole_native_ballots": 29108,
+    "cole_native_registered": 55406,
+    "cole_native_units": 29,
+    "cole_repeated_absentee_registration_stock_not_added": true,
+    "cole_rows": 30,
+    "independent_boone_verification": {
+      "comparisons": {
+        "blanks": 0,
+        "headers": 50,
+        "labels": 520,
+        "native_negative_values": 0,
+        "numeric_cells": 8
+      },
+      "contract": "participation.independent_pdf_cell_verification.v1",
+      "failures": [],
+      "numeric_blank_zero_sign_and_nonapplicability_compared": true,
+      "numeric_decoder": "pdfminer.six via pdfplumber; not primary MuPDF characters",
+      "passed": true,
+      "shared_geometry_only": "Reviewed rectangles and reader-frame transformation",
+      "whitespace_only_layout_differences_allowed_for_labels": true
+    },
+    "passed": true
+  },
+  "new_canonical_observations": 31,
+  "new_county_parents": [
+    {
+      "ballots": 67527,
+      "county": "Boone",
+      "native_clock": "11/09/2026 1:36 PM",
+      "printed_fraction": "51.88%",
+      "registered_stock": 130157,
+      "source_status": "Final Official",
+      "timezone": null
+    },
+    {
+      "ballots": 29108,
+      "county": "Cole",
+      "native_clock": "11/9/2026 10:05:40 AM",
+      "printed_fraction": "52.54%",
+      "registered_stock": 55406,
+      "source_status": "OFFICIAL RESULTS",
+      "timezone": null
+    }
+  ],
+  "no_new_statewide_total_or_individual_behavior_or_precinct_geometry": true,
+  "preserved_prior_contextual_joins": 834,
+  "preserved_prior_contextual_source_records": 1329,
+  "public_archive_scope": "All31 selected canonical observations, every Cole30-row statistical-table cell, all Boone6-page sufficient factual lines and statistical cells, full baselines/code/tests/numerical queries. Cole's other23pages of contest abstracts and original publisher PDF templates are excluded; their extraction is not claimed by public replay.",
+  "repeated_absentee_registration_stock_not_added": true,
+  "scientific_code_unchanged_from": "e69a26685cf75dc7a0a0878a7137ee83369f6be2",
+  "source_access_dispositions": {
+    "denied_routes_remain_stopped": true,
+    "independent_county_products": [
+      {
+        "name": "cole",
+        "passed": true,
+        "receipt": {
+          "bytes": 9253565,
+          "origin": "new_source_response",
+          "sha256": "c6ee3bf75d40d6827759123ce387896353d8715799be0ec4d69208fee4acd299",
+          "status": 200,
+          "url": "https://www.colecounty.org/DocumentCenter/View/14460/November-3-2026-Unofficial-Turnout-and-Abstract"
+        },
+        "retrieved_at_utc": "2026-11-13T18:25:32.464809+00:00"
+      },
+      {
+        "error": "HTTP 403; original not replaced or retried",
+        "name": "johnson",
+        "no_original_acquired": true,
+        "passed": false,
+        "persisted_stop": "HTTP 403",
+        "url": "https://www.jocomo.gov/ArchiveCenter/ViewFile/Item/282"
+      },
+      {
+        "name": "boone",
+        "passed": true,
+        "receipt": {
+          "bytes": 35020,
+          "origin": "new_source_response",
+          "sha256": "19e98e9b3d7febb56dbc920dd93006aa3e911040a0f0896e2accd3de1ef49a9e",
+          "status": 200,
+          "url": "https://www.boonemo.gov/clerk/webpublish/elections/results/20261103sgn.pdf"
+        },
+        "retrieved_at_utc": "2026-11-13T18:25:33.693724+00:00"
+      }
+    ],
+    "originals_for_denied_requests_not_acquired": true,
+    "separately_declared_ENR": {
+      "error": "HTTP 403; original not replaced or retried",
+      "no_original_acquired": true,
+      "passed": false,
+      "persisted_stop": "HTTP 403",
+      "source_url": "https://enr.sos.mo.gov/CountyResults.aspx"
+    },
+    "source_registration_stock_not_turnout": true,
+    "statewide_declaration": {
+      "error": "HTTP 403; original not replaced or retried",
+      "no_original_acquired": true,
+      "passed": false,
+      "persisted_stop": "HTTP 403",
+      "source_url": "https://www.sos.mo.gov/elections/results"
+    }
+  },
+  "source_reporting_rows": 29,
+  "source_reporting_rows_are_not_qualified_precincts": true,
+  "unchanged_contextual_geometry_collections": 20,
+  "unknown_counties": 112,
+  "website_source": "826495550eef0c92b1390b9f0dd7f76a136a79b3",
+  "whole_project_complete": false
+}
