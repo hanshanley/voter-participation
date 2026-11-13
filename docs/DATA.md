@@ -8,6 +8,22 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Recorded House swings and unchanged complete queries
+
+The initial map now shows recorded vote-share changes for all50 states,
+including Texas+11.97610548 Democratic share points. Hatching flags the17
+candidate-coverage/election-scope holds, independently of the33 qualified
+behavioral reconstructions. These are held snapshots, not fresh or certified
+2026 returns, measured switching or demographic turnout.
+
+The existing complete downloads remain unchanged:
+[recorded-count CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.csv),
+[recorded-count JSON](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.json)
+and [complete scientific packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-analysis.zip).
+No metadata-only replacement or new numerical model version was introduced.
+The [source ledger](../SOURCES.md#recorded-house-swings-default-display-correction)
+records the actual native-artifact, production and canonical acceptance.
+
 ## Current New Jersey administrative subtotal refresh
 
 Fifteen county observations advance within the existing derived EV + Election

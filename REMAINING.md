@@ -13,6 +13,28 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Recorded House swings: default map corrected and verified live
+
+The November13 screenshot exposed a display-policy problem: the initial
+like-for-like comparison filter hid Texas's known counts. The default now
+shows recorded House changes for all50 states, including Texas
+**+11.97610548 Democratic two-party-share points** (+23.95221096 D-R margin
+points). Hatching distinguishes the17 candidate-coverage/election-scope
+holds; it does not erase their raw values or qualify them as preference
+swings. Switching and participation explanations retain the33/17 policy.
+
+Website9c06c56 is verified against the actual native Pages artifact and
+production desktop/phone browsers. Recorded swings load without the NORC
+model download; both model-failure/recovery cases and50 no-JavaScript rows
+pass. All old links,436 full-download pins,113 archived models, accepted
+fits/weights and current numerical queries remain unchanged. The39 affected
+tests and Astro checks also pass in the guarded canonical checkout.
+
+This finishes the bounded screenshot correction, not the remaining project.
+Wayne's native compilation and independent statistical checks are retained;
+its reviewed new-source/count integration remains in progress. Full audit,
+then beautification, remain behind the actual implementation work.
+
 ## New Jersey: 15 administrative subtotal successors verified live
 
 The existing shared routine now updates **15 county observations** from the

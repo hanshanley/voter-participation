@@ -1,0 +1,113 @@
+{
+  "canonical_verification": {
+    "astro_errors": 0,
+    "astro_warnings": 0,
+    "completed_tool_command": "visible-swings-canonical-verification",
+    "exit_code": 0,
+    "node_tests_passed": 39,
+    "raw_stdout_not_saved_as_separate_file": true
+  },
+  "complete_download_verification": {
+    "all_published_recorded_outputs_byte_identical": true,
+    "canonical_export_cli": true,
+    "complete_assets": {
+      "complete-recorded-counts.csv": {
+        "bytes": 12378,
+        "sha256": "bdde9c50508858a5d8ee7e901309b45183683650ce267e79715856c052351c1a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.csv"
+      },
+      "complete-recorded-counts.json": {
+        "bytes": 28682,
+        "sha256": "d919df5439cfc90ea164948ce9186953715675ece966ebca29f354f1ac81bcac",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.json"
+      }
+    },
+    "no_source_refit_or_new_numerical_version": true,
+    "source_sha256": "7b022c2311f2151071c1cab42d87d2a21fc6efe30aaca3d7ac19e804d38049e4",
+    "status": "passed"
+  },
+  "guarded_canonical_source": {
+    "files": {
+      "public/scripts/participation-norc-house.js": "d600bb196cdf9f43a8b82fd566a0e97e121dabb77a7451853e4a9074fcd6f017",
+      "public/scripts/participation-return-drivers.js": "19d13c48069cb81aee446403a82be0d421dcbd399da576fb470ecbeb6c2b99e2",
+      "scripts/check-participation-house-comparability-browser.py": "33abc3737366e3a8148f2b44e736eeb713ad0802f786f2168472e31d8998ec52",
+      "scripts/check-participation-house-copula-browser.py": "da8312c5b943f60b8d37c96def7eb7953bc0f4ee0c80cdb6eae530a0663ccdec",
+      "scripts/check-participation-house-families-browser.py": "ffa8ba71982704b27080ec1899d82bb76e40b899644e6a53952a6c62f7c9b634",
+      "scripts/check-participation-norc-house-browser.py": "49ec218335971d0bdb34bb88c4b7331e066f2e7c00b97aa084f13d70ec30a1e2",
+      "scripts/check-participation-recorded-swings-browser.py": "d4a656c6692476c69bf4c175182900c36a1f9a0bc8a98a4008456c06bdeace05",
+      "scripts/participation-norc-house.test.mjs": "5ebf3a79852734b72e88b10b1243f13a0564f02b971b44292d55e356ebad97c5",
+      "src/components/ParticipationReturnDrivers.astro": "085f58aef55439dee4ef44b4b891081c26524afa24129259d19c422f2ae98382"
+    },
+    "protected_heads_indexes_preserved": true,
+    "source_commit": "9c06c56a566c6dc95e3d5569fd8ae14e09a3fcd3"
+  },
+  "native_and_production_bytes": {
+    "actual_native_artifact_id": 14044617025,
+    "actual_payload_bytes": 997264628,
+    "actual_production_html_exact": true,
+    "actual_production_scripts_exact": 26,
+    "actual_tar_bytes": 999854080,
+    "all_prior_driver_payloads_unchanged": true,
+    "artifact_zip_sha256": "5a12beb1cf8c883604c9b777a25159e321ed9bc1a1e09d5c8199a089318aa929",
+    "behavioral_holds": 17,
+    "both_strictly_less_than_1e9": true,
+    "current_scientific_downloads_unchanged": true,
+    "preserved_complete_download_pins": 436,
+    "preserved_original_models": 113,
+    "recorded_rows": 50,
+    "run_id": 43438470967,
+    "source_bodies_anonymously_verified": 9,
+    "source_commit": "9c06c56a566c6dc95e3d5569fd8ae14e09a3fcd3",
+    "source_guard_run": 43438470784,
+    "status": "passed"
+  },
+  "production_browser": {
+    "base_url": "https://www.themarginoferror.com",
+    "behavioral_holds_unchanged": 17,
+    "cases": [
+      {
+        "errors": [],
+        "initial_model_requests": 0,
+        "kind": "recorded",
+        "map_values": 153,
+        "state_selections": 50,
+        "unchanged_comparable_and_switching_values": 102,
+        "width": 1440
+      },
+      {
+        "failed_model_clears_previous_values": true,
+        "kind": "blocked-model",
+        "recorded_counts_remain_available": true,
+        "recovered_without_model": true,
+        "width": 1440
+      },
+      {
+        "errors": [],
+        "initial_model_requests": 0,
+        "kind": "recorded",
+        "map_values": 153,
+        "state_selections": 50,
+        "unchanged_comparable_and_switching_values": 102,
+        "width": 390
+      },
+      {
+        "failed_model_clears_previous_values": true,
+        "kind": "blocked-model",
+        "recorded_counts_remain_available": true,
+        "recovered_without_model": true,
+        "width": 390
+      },
+      {
+        "kind": "no-JavaScript",
+        "recorded_rows": 50
+      }
+    ],
+    "independent_rational_expected_values": true,
+    "source_sha256": "3622cc62cb5ef2925416c5fe59f965d725345569727818aaeabdc7557da857e5",
+    "status": "passed",
+    "valid_data_or_style_overrides": false
+  },
+  "responsive_production_images_reviewed": true,
+  "status": "passed",
+  "whole_project_complete": false
+}

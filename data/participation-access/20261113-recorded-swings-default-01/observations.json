@@ -1,0 +1,1184 @@
+{
+  "complete_existing_assets": {
+    "complete-recorded-counts.csv": {
+      "bytes": 12378,
+      "sha256": "bdde9c50508858a5d8ee7e901309b45183683650ce267e79715856c052351c1a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.csv"
+    },
+    "complete-recorded-counts.json": {
+      "bytes": 28682,
+      "sha256": "d919df5439cfc90ea164948ce9186953715675ece966ebca29f354f1ac81bcac",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.json"
+    }
+  },
+  "contract": "participation.recorded_swings_display_change.v1",
+  "current_complete_science_url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-analysis.zip",
+  "new_behavioral_qualification": false,
+  "new_fits": 0,
+  "recorded_queries": {
+    "contract": "participation.house_recorded_counts.v1",
+    "input_source_counts_revised_from_previous_release": true,
+    "jurisdictions": 50,
+    "new_model_fits": 0,
+    "official_source_revisions": [
+      {
+        "count_scope": "All six explicitly party-marked named House candidates across both native contests. Candidate votes are not ballots or turnout. Reporting=0 native units were retained in the precinct reconciliation.",
+        "counting_complete_independently_qualified": false,
+        "districts": [
+          "HI-01",
+          "HI-02"
+        ],
+        "independent_behavioral_validation": false,
+        "native_updated_at": null,
+        "office": "house",
+        "query": "hi-summary-candidates",
+        "query_pin": {
+          "bytes": 1912402,
+          "sha256": "e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a"
+        },
+        "retrieved_at_utc": "2026-11-12T23:06:26.986797+00:00",
+        "source_pin": {
+          "bytes": 22026,
+          "sha256": "b262fa9df3b4d828468dbb2ad2f28f2273455af190b79cb2948073265c835db4"
+        },
+        "source_url": "https://elections.hawaii.gov/wp-content/results/2026%20General/summary.txt",
+        "stage": "general",
+        "state_code": "HI",
+        "year": 2026
+      },
+      {
+        "count_scope": "All four named candidates plus 1,031 explicitly source-unassigned Write-Ins in the official statewide House control. O means reported choices outside the known D/R candidate counts, including these unassigned write-ins; their unknown party is preserved as blank, never imputed to D/R. This explicitly extends the earlier named-candidate-only current scope. The 1,231 overvotes and 6,228 undervotes remain distinct, excluded accounting queries. These are reported valid candidate-choice counts, not ballots, certified final completeness or unique-voter turnout.",
+        "counting_complete_independently_qualified": false,
+        "districts": [
+          "WY-AL"
+        ],
+        "independent_behavioral_validation": false,
+        "native_updated_at": null,
+        "office": "house",
+        "query": "wy-state-house",
+        "query_pin": {
+          "bytes": 1912402,
+          "sha256": "e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a"
+        },
+        "retrieved_at_utc": "2026-11-12T23:07:47.701972+00:00",
+        "source_pin": {
+          "bytes": 647239,
+          "sha256": "c378306bd8df97437a3d11fac7792e23a8297a7e3eded8129a9cd61e3e654ff1"
+        },
+        "source_url": "https://sos.wyo.gov/Elections/Docs/2026/Results/General/2026_Wyoming_General_Results.zip",
+        "stage": "general",
+        "state_code": "WY",
+        "year": 2026
+      }
+    ],
+    "records": [
+      {
+        "D_minus_R_margin_change_pp": -73.32431007824799,
+        "D_two_party_share_change_pp": -36.662155039123995,
+        "current": {
+          "D": 15572,
+          "O": 92004,
+          "R": 105946
+        },
+        "current_D_two_party_share": 12.814562451653252,
+        "model_eligible": false,
+        "model_hold_reason": "The leading current non-Republican nominee is natively Nonpartisan, not Democratic; no caucus/coalition reassignment or ordinary D/R comparison is inferred.",
+        "previous": {
+          "D": 156245,
+          "O": 13760,
+          "R": 159550
+        },
+        "previous_D_two_party_share": 49.47671749077725,
+        "recorded_counts_available": true,
+        "snapshot": "held source snapshot",
+        "state_code": "AK",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 39.842791601560776,
+        "D_two_party_share_change_pp": 19.921395800780388,
+        "current": {
+          "D": 763464,
+          "O": 0,
+          "R": 914968
+        },
+        "current_D_two_party_share": 45.48674000495701,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in AL-03, AL-04, AL-05; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 518197,
+          "O": 21712,
+          "R": 1508754
+        },
+        "previous_D_two_party_share": 25.56534420417662,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "AL",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 17.024536114829907,
+        "D_two_party_share_change_pp": 8.512268057414953,
+        "current": {
+          "D": 348637,
+          "O": 15357,
+          "R": 513162
+        },
+        "current_D_two_party_share": 40.454560750244546,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 358749,
+          "O": 21684,
+          "R": 764367
+        },
+        "previous_D_two_party_share": 31.942292692829593,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "AR",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 14.988773449178979,
+        "D_two_party_share_change_pp": 7.494386724589489,
+        "current": {
+          "D": 1373402,
+          "O": 48845,
+          "R": 1101777
+        },
+        "current_D_two_party_share": 55.48697690146854,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 1551085,
+          "O": 21994,
+          "R": 1680841
+        },
+        "previous_D_two_party_share": 47.99259017687905,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "AZ",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 18.145168659198575,
+        "D_two_party_share_change_pp": 9.072584329599287,
+        "current": {
+          "D": 6647751,
+          "O": 76313,
+          "R": 2886188
+        },
+        "current_D_two_party_share": 69.7272239732182,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in CA-04, CA-06, CA-07, CA-11, CA-14, CA-16, CA-20, CA-29, CA-40; aggregate vote-margin change is not a like-for-like statewide comparison. Multiple same-party nominees require independently qualified election-stage scope in CA-04, CA-07, CA-11, CA-12, CA-14, CA-16, CA-20, CA-29, CA-34, CA-37, CA-40.",
+        "previous": {
+          "D": 9138709,
+          "O": 44450,
+          "R": 5928084
+        },
+        "previous_D_two_party_share": 60.654639643618914,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "CA",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 12.399304997675301,
+        "D_two_party_share_change_pp": 6.199652498837651,
+        "current": {
+          "D": 1580769,
+          "O": 96025,
+          "R": 957702
+        },
+        "current_D_two_party_share": 62.272486075279176,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 1667213,
+          "O": 100092,
+          "R": 1306086
+        },
+        "previous_D_two_party_share": 56.072833576441525,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "CO",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 8.840181528160713,
+        "D_two_party_share_change_pp": 4.420090764080356,
+        "current": {
+          "D": 807102,
+          "O": 17024,
+          "R": 460023
+        },
+        "current_D_two_party_share": 63.695531222255106,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 1001554,
+          "O": 12253,
+          "R": 688107
+        },
+        "previous_D_two_party_share": 59.27544045817475,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "CT",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 12.945685347358165,
+        "D_two_party_share_change_pp": 6.472842673679082,
+        "current": {
+          "D": 243467,
+          "O": 0,
+          "R": 134966
+        },
+        "current_D_two_party_share": 64.33556270198423,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 287830,
+          "O": 0,
+          "R": 209606
+        },
+        "previous_D_two_party_share": 57.86272002830515,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "DE",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 13.630002809236984,
+        "D_two_party_share_change_pp": 6.815001404618492,
+        "current": {
+          "D": 3862341,
+          "O": 94496,
+          "R": 4038308
+        },
+        "current_D_two_party_share": 48.8863762964283,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in FL-10, FL-20; aggregate vote-margin change is not a like-for-like statewide comparison. Native major-party counts are absent/non-numeric in FL-20; an unopposed/no-ballot contest is not zero voter support.",
+        "previous": {
+          "D": 4339733,
+          "O": 12754,
+          "R": 5975435
+        },
+        "previous_D_two_party_share": 42.07137489180981,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "FL",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 17.61247546673576,
+        "D_two_party_share_change_pp": 8.80623773336788,
+        "current": {
+          "D": 2343022,
+          "O": 0,
+          "R": 1825597
+        },
+        "current_D_two_party_share": 56.206192026663985,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 2434984,
+          "O": 0,
+          "R": 2702118
+        },
+        "previous_D_two_party_share": 47.399954293296105,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "GA",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 1.0439609818560882,
+        "D_two_party_share_change_pp": 0.5219804909280441,
+        "current": {
+          "D": 256268,
+          "O": 9359,
+          "R": 105749
+        },
+        "current_D_two_party_share": 70.78894085084401,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 330488,
+          "O": 8434,
+          "R": 139844
+        },
+        "previous_D_two_party_share": 70.26696035991597,
+        "recorded_counts_available": true,
+        "snapshot": "native-query:e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a",
+        "state_code": "HI",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 14.285030899892504,
+        "D_two_party_share_change_pp": 7.142515449946252,
+        "current": {
+          "D": 667037,
+          "O": 31375,
+          "R": 650479
+        },
+        "current_D_two_party_share": 50.62837946560042,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 696033,
+          "O": 9013,
+          "R": 904563
+        },
+        "previous_D_two_party_share": 43.485864015654165,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "IA",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 14.458964222872325,
+        "D_two_party_share_change_pp": 7.2294821114361625,
+        "current": {
+          "D": 242052,
+          "O": 53028,
+          "R": 414366
+        },
+        "current_D_two_party_share": 36.874674369075805,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 244885,
+          "O": 47651,
+          "R": 581168
+        },
+        "previous_D_two_party_share": 29.645192257639643,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "ID",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 19.223551242484675,
+        "D_two_party_share_change_pp": 9.611775621242337,
+        "current": {
+          "D": 2522530,
+          "O": 20184,
+          "R": 1511744
+        },
+        "current_D_two_party_share": 62.527483259689355,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in IL-15, IL-16; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 2829169,
+          "O": 13496,
+          "R": 2517389
+        },
+        "previous_D_two_party_share": 52.91570763844702,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "IL",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 24.01447743977461,
+        "D_two_party_share_change_pp": 12.007238719887305,
+        "current": {
+          "D": 993821,
+          "O": 16338,
+          "R": 924234
+        },
+        "current_D_two_party_share": 51.813999077190175,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 1103484,
+          "O": 96005,
+          "R": 1668618
+        },
+        "previous_D_two_party_share": 39.80676035730287,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "IN",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 15.357259214073338,
+        "D_two_party_share_change_pp": 7.678629607036669,
+        "current": {
+          "D": 522206,
+          "O": 29173,
+          "R": 545079
+        },
+        "current_D_two_party_share": 48.92844928955246,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 526153,
+          "O": 30121,
+          "R": 749375
+        },
+        "previous_D_two_party_share": 41.24981968251579,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "KS",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 35.970559926354206,
+        "D_two_party_share_change_pp": 17.985279963177103,
+        "current": {
+          "D": 622091,
+          "O": 34730,
+          "R": 764309
+        },
+        "current_D_two_party_share": 44.87096076168494,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in KY-04, KY-05; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 511998,
+          "O": 1182,
+          "R": 1392354
+        },
+        "previous_D_two_party_share": 26.88568079850784,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "KY",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 21.4459985305578,
+        "D_two_party_share_change_pp": 10.7229992652789,
+        "current": {
+          "D": 645794,
+          "O": 23905,
+          "R": 789409
+        },
+        "current_D_two_party_share": 44.99670081514601,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in LA-04; aggregate vote-margin change is not a like-for-like statewide comparison. Multiple same-party nominees require independently qualified election-stage scope in LA-01, LA-02, LA-03, LA-04, LA-05, LA-06.",
+        "previous": {
+          "D": 650836,
+          "O": 6781,
+          "R": 1248101
+        },
+        "previous_D_two_party_share": 34.27370154986711,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "LA",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": -22.905071428374555,
+        "D_two_party_share_change_pp": -11.452535714187277,
+        "current": {
+          "D": 1722855,
+          "O": 110672,
+          "R": 507904
+        },
+        "current_D_two_party_share": 77.23178523542884,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in MA-03, MA-04, MA-06; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 2386143,
+          "O": 285560,
+          "R": 304460
+        },
+        "previous_D_two_party_share": 88.68432094961612,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "MA",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 8.292979543208247,
+        "D_two_party_share_change_pp": 4.146489771604124,
+        "current": {
+          "D": 1363280,
+          "O": 24924,
+          "R": 617529
+        },
+        "current_D_two_party_share": 68.82440457409069,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 1863416,
+          "O": 54258,
+          "R": 1017654
+        },
+        "previous_D_two_party_share": 64.67791480248657,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "MD",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 3.9752148484731293,
+        "D_two_party_share_change_pp": 1.9876074242365647,
+        "current": {
+          "D": 412802,
+          "O": 165,
+          "R": 297458
+        },
+        "current_D_two_party_share": 58.11984343761439,
+        "model_eligible": false,
+        "model_hold_reason": "Cross-year ranked-choice round compatibility is not qualified by the held current controls; continuing/exhausted ballots are not candidate votes.",
+        "previous": {
+          "D": 446949,
+          "O": 20883,
+          "R": 349294
+        },
+        "previous_D_two_party_share": 56.13223601337783,
+        "recorded_counts_available": true,
+        "snapshot": "held source snapshot",
+        "state_code": "ME",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 10.311674687515236,
+        "D_two_party_share_change_pp": 5.155837343757618,
+        "current": {
+          "D": 2520988,
+          "O": 106064,
+          "R": 2103424
+        },
+        "current_D_two_party_share": 54.51477939249357,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 2634228,
+          "O": 180015,
+          "R": 2702653
+        },
+        "previous_D_two_party_share": 49.358942048735955,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "MI",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 11.956284687094865,
+        "D_two_party_share_change_pp": 5.978142343547432,
+        "current": {
+          "D": 1574276,
+          "O": 27742,
+          "R": 1214756
+        },
+        "current_D_two_party_share": 56.44524695306472,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 1579742,
+          "O": 16521,
+          "R": 1550499
+        },
+        "previous_D_two_party_share": 50.467104609517285,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "MN",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 19.90132156694365,
+        "D_two_party_share_change_pp": 9.950660783471825,
+        "current": {
+          "D": 1008279,
+          "O": 59639,
+          "R": 1023199
+        },
+        "current_D_two_party_share": 49.63277968060693,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 1125671,
+          "O": 88142,
+          "R": 1711050
+        },
+        "previous_D_two_party_share": 39.682118897135105,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "MO",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 34.77111110021125,
+        "D_two_party_share_change_pp": 17.385555550105625,
+        "current": {
+          "D": 442496,
+          "O": 18980,
+          "R": 488946
+        },
+        "current_D_two_party_share": 47.50655435335748,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in MS-03; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 350353,
+          "O": 0,
+          "R": 812799
+        },
+        "previous_D_two_party_share": 30.120998803251855,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "MS",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 8.678129611952073,
+        "D_two_party_share_change_pp": 4.339064805976037,
+        "current": {
+          "D": 202434,
+          "O": 28604,
+          "R": 250040
+        },
+        "current_D_two_party_share": 44.73936623982814,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 237496,
+          "O": 9954,
+          "R": 350361
+        },
+        "previous_D_two_party_share": 40.40030143385211,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "MT",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 25.609088762437636,
+        "D_two_party_share_change_pp": 12.804544381218818,
+        "current": {
+          "D": 2385611,
+          "O": 52661,
+          "R": 1752634
+        },
+        "current_D_two_party_share": 57.647891799543046,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in NC-03, NC-06; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 2349621,
+          "O": 243535,
+          "R": 2889999
+        },
+        "previous_D_two_party_share": 44.84334741832423,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "NC",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 16.98652172391708,
+        "D_two_party_share_change_pp": 8.49326086195854,
+        "current": {
+          "D": 85892,
+          "O": 14226,
+          "R": 134477
+        },
+        "current_D_two_party_share": 38.97644405519833,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 109231,
+          "O": 1455,
+          "R": 249101
+        },
+        "previous_D_two_party_share": 30.48318319323979,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "ND",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 14.132085589276642,
+        "D_two_party_share_change_pp": 7.066042794638321,
+        "current": {
+          "D": 310846,
+          "O": 37595,
+          "R": 404557
+        },
+        "current_D_two_party_share": 43.45047476736888,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 338154,
+          "O": 0,
+          "R": 591238
+        },
+        "previous_D_two_party_share": 36.38443197273056,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "NE",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 10.463755944636844,
+        "D_two_party_share_change_pp": 5.231877972318422,
+        "current": {
+          "D": 368340,
+          "O": 8220,
+          "R": 258686
+        },
+        "current_D_two_party_share": 58.74397552892543,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 430218,
+          "O": 662,
+          "R": 373746
+        },
+        "previous_D_two_party_share": 53.51209755660701,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "NH",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 21.239176184891278,
+        "D_two_party_share_change_pp": 10.619588092445639,
+        "current": {
+          "D": 1823549,
+          "O": 48256,
+          "R": 1014339
+        },
+        "current_D_two_party_share": 64.25725750981012,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in NJ-08; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 2115843,
+          "O": 92430,
+          "R": 1828853
+        },
+        "previous_D_two_party_share": 53.63766941736448,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "NJ",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 13.018632885618771,
+        "D_two_party_share_change_pp": 6.509316442809386,
+        "current": {
+          "D": 444860,
+          "O": 0,
+          "R": 277531
+        },
+        "current_D_two_party_share": 61.58160885171604,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 493722,
+          "O": 0,
+          "R": 402776
+        },
+        "previous_D_two_party_share": 55.072292408906655,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "NM",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 30.81291289477177,
+        "D_two_party_share_change_pp": 15.406456447385885,
+        "current": {
+          "D": 614267,
+          "O": 35884,
+          "R": 427876
+        },
+        "current_D_two_party_share": 58.94267869188777,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in NV-02; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 534115,
+          "O": 200248,
+          "R": 692714
+        },
+        "previous_D_two_party_share": 43.536222244501886,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "NV",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 9.78416663936163,
+        "D_two_party_share_change_pp": 4.892083319680815,
+        "current": {
+          "D": 3686362,
+          "O": 40487,
+          "R": 2230558
+        },
+        "current_D_two_party_share": 62.302042278753134,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 4527087,
+          "O": 47314,
+          "R": 3358456
+        },
+        "previous_D_two_party_share": 57.40995895907232,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "NY",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 16.283820650533627,
+        "D_two_party_share_change_pp": 8.141910325266814,
+        "current": {
+          "D": 2318450,
+          "O": 53928,
+          "R": 2178153
+        },
+        "current_D_two_party_share": 51.56003320729004,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 2382078,
+          "O": 84416,
+          "R": 3104290
+        },
+        "previous_D_two_party_share": 43.418122882023226,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "OH",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 18.17242679735638,
+        "D_two_party_share_change_pp": 9.08621339867819,
+        "current": {
+          "D": 454345,
+          "O": 18961,
+          "R": 643929
+        },
+        "current_D_two_party_share": 41.369002635043714,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in OK-03; aggregate vote-margin change is not a like-for-like statewide comparison. Native major-party counts are absent/non-numeric in OK-03; an unopposed/no-ballot contest is not zero voter support.",
+        "previous": {
+          "D": 397856,
+          "O": 49697,
+          "R": 834553
+        },
+        "previous_D_two_party_share": 32.282789236365524,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "OK",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 6.980020891950815,
+        "D_two_party_share_change_pp": 3.4900104459754075,
+        "current": {
+          "D": 1082787,
+          "O": 21527,
+          "R": 743719
+        },
+        "current_D_two_party_share": 59.28187479263687,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 1151394,
+          "O": 93241,
+          "R": 912337
+        },
+        "previous_D_two_party_share": 55.79186434666146,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "OR",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 15.463136605595665,
+        "D_two_party_share_change_pp": 7.731568302797832,
+        "current": {
+          "D": 2803188,
+          "O": 17361,
+          "R": 2142015
+        },
+        "current_D_two_party_share": 56.68499351796074,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 3338371,
+          "O": 0,
+          "R": 3481113
+        },
+        "previous_D_two_party_share": 48.95342521516291,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "PA",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 8.599287077107007,
+        "D_two_party_share_change_pp": 4.299643538553504,
+        "current": {
+          "D": 232582,
+          "O": 6931,
+          "R": 118688
+        },
+        "current_D_two_party_share": 66.21174595040851,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 292791,
+          "O": 11684,
+          "R": 180123
+        },
+        "previous_D_two_party_share": 61.91210241185501,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "RI",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 18.307023763414236,
+        "D_two_party_share_change_pp": 9.153511881707118,
+        "current": {
+          "D": 978191,
+          "O": 23023,
+          "R": 1031088
+        },
+        "current_D_two_party_share": 48.6836820570961,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 964448,
+          "O": 35127,
+          "R": 1475329
+        },
+        "previous_D_two_party_share": 39.53017017538898,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "SC",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 16.080049515050597,
+        "D_two_party_share_change_pp": 8.040024757525298,
+        "current": {
+          "D": 109997,
+          "O": 0,
+          "R": 195588
+        },
+        "current_D_two_party_share": 35.99554951977355,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 117818,
+          "O": 0,
+          "R": 303630
+        },
+        "previous_D_two_party_share": 27.95552476224825,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "SD",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 22.41794812569934,
+        "D_two_party_share_change_pp": 11.20897406284967,
+        "current": {
+          "D": 903874,
+          "O": 39360,
+          "R": 1088370
+        },
+        "current_D_two_party_share": 45.369643477405376,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 977870,
+          "O": 64394,
+          "R": 1884691
+        },
+        "previous_D_two_party_share": 34.160669414555706,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "TN",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 23.95221095988684,
+        "D_two_party_share_change_pp": 11.97610547994342,
+        "current": {
+          "D": 5147146,
+          "O": 44093,
+          "R": 4591278
+        },
+        "current_D_two_party_share": 52.853993623608915,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in TX-01, TX-09, TX-11, TX-13, TX-19, TX-20, TX-25, TX-30; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 4310913,
+          "O": 128081,
+          "R": 6234918
+        },
+        "previous_D_two_party_share": 40.877888143665494,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "TX",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 30.739183661442894,
+        "D_two_party_share_change_pp": 15.369591830721447,
+        "current": {
+          "D": 459077,
+          "O": 66493,
+          "R": 468459
+        },
+        "current_D_two_party_share": 49.49425143606286,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 471051,
+          "O": 68294,
+          "R": 909332
+        },
+        "previous_D_two_party_share": 34.124659605341414,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "UT",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 15.565113903707285,
+        "D_two_party_share_change_pp": 7.782556951853643,
+        "current": {
+          "D": 2105772,
+          "O": 58819,
+          "R": 1422580
+        },
+        "current_D_two_party_share": 59.681460353162045,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 2274922,
+          "O": 42390,
+          "R": 2108450
+        },
+        "previous_D_two_party_share": 51.8989034013084,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "VA",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 0.4527622530904978,
+        "D_two_party_share_change_pp": 0.2263811265452489,
+        "current": {
+          "D": 198758,
+          "O": 11839,
+          "R": 94078
+        },
+        "current_D_two_party_share": 67.87348550041662,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 218398,
+          "O": 27767,
+          "R": 104451
+        },
+        "previous_D_two_party_share": 67.64710437387137,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "VT",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 11.217254433067765,
+        "D_two_party_share_change_pp": 5.608627216533883,
+        "current": {
+          "D": 1779277,
+          "O": 12063,
+          "R": 1039496
+        },
+        "current_D_two_party_share": 63.12239403456752,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in WA-04, WA-09; aggregate vote-margin change is not a like-for-like statewide comparison. Multiple same-party nominees require independently qualified election-stage scope in WA-04, WA-09.",
+        "previous": {
+          "D": 2155907,
+          "O": 19674,
+          "R": 1592599
+        },
+        "previous_D_two_party_share": 57.51376681803364,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "WA",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 16.455557442655035,
+        "D_two_party_share_change_pp": 8.227778721327518,
+        "current": {
+          "D": 1453581,
+          "O": 25266,
+          "R": 1108357
+        },
+        "current_D_two_party_share": 56.73755570977908,
+        "model_eligible": false,
+        "model_hold_reason": "Named D/R candidate coverage changed in WI-02; aggregate vote-margin change is not a like-for-like statewide comparison.",
+        "previous": {
+          "D": 1603350,
+          "O": 20396,
+          "R": 1701860
+        },
+        "previous_D_two_party_share": 48.50977698845156,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "WI",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 23.93214621349091,
+        "D_two_party_share_change_pp": 11.966073106745455,
+        "current": {
+          "D": 180582,
+          "O": 6904,
+          "R": 262491
+        },
+        "current_D_two_party_share": 40.75671503341436,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 200813,
+          "O": 25790,
+          "R": 496681
+        },
+        "previous_D_two_party_share": 28.790641926668904,
+        "recorded_counts_available": true,
+        "snapshot": "20261107T125502Z",
+        "state_code": "WV",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      },
+      {
+        "D_minus_R_margin_change_pp": 26.828016758888552,
+        "D_two_party_share_change_pp": 13.414008379444276,
+        "current": {
+          "D": 61689,
+          "O": 22659,
+          "R": 99906
+        },
+        "current_D_two_party_share": 38.175067297874314,
+        "model_eligible": true,
+        "model_hold_reason": null,
+        "previous": {
+          "D": 60778,
+          "O": 16090,
+          "R": 184680
+        },
+        "previous_D_two_party_share": 24.761058918430038,
+        "recorded_counts_available": true,
+        "snapshot": "native-query:e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a",
+        "state_code": "WY",
+        "unadjusted_party_totals_not_voter_preference_swing": true
+      }
+    ],
+    "source_count_repairs": 0,
+    "source_counts_changed": false,
+    "source_sha256": "7b022c2311f2151071c1cab42d87d2a21fc6efe30aaca3d7ac19e804d38049e4"
+  },
+  "source_counts_changed": false,
+  "these_records_are_not_replacement_scientific_downloads": true,
+  "website_source": "9c06c56a566c6dc95e3d5569fd8ae14e09a3fcd3",
+  "whole_project_complete": false
+}

@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current recorded-swing display | [All50 state values by default, with separate comparison holds](#recorded-house-swings-default-display-correction) |
 | Current administrative subtotal refresh | [New Jersey: 15 same-measure successors and complete native queries](#2026-new-jersey-administrative-subtotal-successors) |
 | Current state-reference/model refresh | [Oregon counted ballots, active registration and revision33](#2026-oregon-state-reference-and-registered-source-revision-33) |
 | Current coherent count/model refresh | [North Carolina state/county counts, native group observations and revision32](#2026-coherent-north-carolina-counts-and-native-source-revision-32) |
@@ -51,6 +52,37 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Recorded House swings: default display correction
+
+Website9c06c56a566c6dc95e3d5569fd8ae14e09a3fcd3 corrects the November13
+screenshot's gray Texas: the prior initial map applied a like-for-like
+candidate-coverage filter, although the recorded totals were present.
+The default now displays all50 recorded House changes. Texas is
++11.97610547994342 Democratic two-party-share points, equivalently
++23.95221095988684 D-R margin points. These are unchanged held source counts,
+not new returns, measured switching or population turnout.
+
+Seventeen changed-competition/election-scope comparisons are hatched, not
+silently treated as comparable preference shifts. The33 conditional/17 held
+behavioral policy, all model families/profiles, priors and weights remain
+unchanged. A small source-count projection renders without downloading fitted
+models; missing model data cannot hide known recorded swings.
+
+Actual Pages43438470967 and both exact-source guards succeeded. Native
+artifact14044617025 contains997,264,628 payload bytes and999,854,080 tar bytes,
+both strictly below1billion. All prior driver payloads,113 archived models
+and436 complete-download pins remain exact. Actual unqueried production HTML
+and26 script bodies match the artifact. Desktop/phone checks pass306 recorded
+map values,100 state selections,204 preserved comparable/switching values,
+the17 hatch qualifications, model-failure isolation/recovery and50 no-JS rows.
+Both responsive production images were reviewed; no valid-data/style overrides
+were used. All9 source bodies are anonymously byte-verified and guardedly
+persistent;39 affected canonical tests and Astro0errors/0warnings pass.
+
+The complete scientific CSV/JSON/ZIP downloads are retained unchanged, not
+replaced by these acceptance records. This display correction adds no county
+counts, precinct boundaries, refits or new behavioral qualification.
 
 ## 2026 New Jersey administrative subtotal successors
 
