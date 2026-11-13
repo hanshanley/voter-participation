@@ -91,6 +91,25 @@ requires separately reviewed qualification. Unknowns remain unknown and zeros
 remain zeros. Candidate votes do not become ballots; registration stocks do
 not automatically become turnout denominators.
 
+For an already accepted derived mode subtotal, a PDF fact binding can declare
+`operation: "component_sum"` and distinct `components`, each naming its native
+`measure`, literal `native_header` and `header_requirement` index. Exactly one
+native parent row is selected. Every encoded component must occupy its own
+declared physical header column; repeated parents or fields, missing counts,
+metadata and changed headers are rejected. Image-only facts instead require
+their pinned, explicitly reviewed image transcription and separate
+`visual_header_review_evidence`; no encoded-text extraction is claimed.
+
+Both `sum_review_evidence` and `same_measure_review_evidence` must justify the
+specific nonoverlapping components and unchanged `accepted_measure_literal`.
+Administrative tables additionally require `administrative_measure_review_evidence`.
+An early-vote/Election-Day/tallied-mail subtotal remains that subtotal, not
+all-mode ballots or unique voters. Issued, received, pending and provisional
+counts cannot be silently added. Retain the selected parent scope, including
+any explicitly included overseas component, rather than replacing it with a
+different municipal aggregate. Compare dated native contexts before selection;
+do not resolve same-clock conflicts by page order or impose monotonic counts.
+
 ### State-only native HTML statistics
 
 The separate `state_reporting` target advances one existing same-source statewide

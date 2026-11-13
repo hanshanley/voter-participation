@@ -165,16 +165,66 @@ def pdf_records(spec, inputs):
 ADAPTERS = {"csv": delimited, "json": json_records, "pdf": pdf_records}
 
 
+def component_cells(binding, table, row):
+    components = binding.get("components")
+    if (binding.get("operation") != "component_sum"
+            or binding.get("value_scope", "cell") != "cell" or binding.get("parse") != "count"
+            or not binding.get("sum_review_evidence")
+            or not binding.get("same_measure_review_evidence")
+            or not isinstance(components, list) or len(components) < 2
+            or any(not isinstance(item, dict) or not isinstance(item.get("measure"), str)
+                   or not isinstance(item.get("native_header"), str) or not item["native_header"].strip()
+                   for item in components)
+            or len({item["measure"] for item in components}) != len(components)
+            or "measure" in binding):
+        raise IntakeError("source_fact_binding", "Component sums require distinct reviewed native count columns")
+    cells = []
+    for component in components:
+        measure = component["measure"]
+        if measure not in row["cells"]:
+            raise IntakeError("source_fact_binding", "Native component cell is absent")
+        cell = row["cells"][measure]
+        requirements = table.get("native_requirements")
+        if requirements is not None:
+            index = component.get("header_requirement")
+            if type(index) is not int or not 0 <= index < len(requirements):
+                raise IntakeError("source_fact_binding", "Native component header selector is absent")
+            header = requirements[index]
+            value_box, header_box = cell.get("reading_bbox"), header.get("reading_bbox")
+            if (not value_box or not header_box
+                    or value_box[0] != header_box[0] or value_box[2] != header_box[2]
+                    or header_box[3] > value_box[1]
+                    or " ".join(header["decoded_text"].split())
+                    != " ".join(component["native_header"].split())):
+                raise IntakeError("source_fact_binding", "Native component header or physical column changed")
+        else:
+            annotations = table.get("source_annotations", {})
+            image = annotations.get("reviewed_image_pin", {})
+            method = "visually_reviewed_source_image_transcription"
+            if (not binding.get("visual_header_review_evidence")
+                    or annotations.get("source_method") != method or cell.get("source_method") != method
+                    or not re.fullmatch(r"[a-f0-9]{64}", str(image.get("sha256", "")))
+                    or type(image.get("bytes")) is not int or image["bytes"] <= 0):
+                raise IntakeError("source_fact_binding", "Image components require the pinned explicit visual review")
+        cells.append(cell)
+    return cells
+
+
 def factual_cells(binding, product):
+    if "components" in binding and binding.get("operation") != "component_sum":
+        raise IntakeError("source_fact_binding", "Component columns require their explicit sum operation")
     identifiers = binding.get("table_ids", [binding.get("table_id")])
     if (not identifiers or None in identifiers or len(set(identifiers)) != len(identifiers)
             or "table_ids" in binding and "table_id" in binding):
         raise IntakeError("source_fact_binding", "Native table selection must be explicit and unique")
     tables = [table for table in product["tables"] if table["id"] in identifiers]
-    if (len(tables) != len(identifiers) or {table["id"] for table in tables} != set(identifiers)
-            or any(table["source_role"] not in (
+    roles = (
             "unofficial_registration_ballot_reported_turnout_statistics",
-            "native_registration_ballot_reported_turnout_statistics") for table in tables)):
+            "native_registration_ballot_reported_turnout_statistics")
+    if binding.get("administrative_measure_review_evidence"):
+        roles += ("unofficial_administrative_measures_not_candidate_returns",)
+    if (len(tables) != len(identifiers) or {table["id"] for table in tables} != set(identifiers)
+            or any(table["source_role"] not in roles for table in tables)):
         raise IntakeError("source_fact_binding", "Participation updates require reviewed ballot statistics, not choices")
     scope = binding.get("value_scope", "cell")
     cells = []
@@ -189,6 +239,13 @@ def factual_cells(binding, product):
                     raise IntakeError("source_fact_binding", "Native row selector field is absent")
                 if (normalize(row["cells"]["native_unit"]["value"]) == normalize(binding["native_unit"])
                         and all(row["cells"][name]["value"] not in (None, "") for name in required)):
+                    if binding.get("operation") == "component_sum":
+                        identity = (table["id"], row.get("row"))
+                        if type(identity[1]) is not int or identities:
+                            raise IntakeError("source_fact_binding", "Component sums require exactly one native parent row")
+                        identities.add(identity)
+                        cells.extend(component_cells(binding, table, row))
+                        continue
                     if binding["measure"] not in row["cells"]:
                         raise IntakeError("source_fact_binding", "Native statistical cell is absent")
                     if binding.get("operation") == "sum":
@@ -314,6 +371,8 @@ def verify_fact_bindings(spec, rows, inputs):
             raise IntakeError("source_fact_binding", "Factual grid contract changed")
         native = data["contract"] == "participation.native_factual_tables.v1"
         html_statistics = data["contract"] == "participation.selected_html_statistics.v1"
+        if binding.get("operation") == "component_sum" and (native or html_statistics):
+            raise IntakeError("source_fact_binding", "Component sums require reviewed factual PDF columns")
         products = [data] if native or html_statistics else data.get("products")
         if not isinstance(products, list):
             raise IntakeError("source_fact_binding", "Factual product inventory changed")
@@ -335,7 +394,7 @@ def verify_fact_bindings(spec, rows, inputs):
         scope = binding.get("value_scope", "cell")
         parse = binding.get("parse", "literal")
         operation = binding.get("operation", "unique")
-        if operation == "sum":
+        if operation in ("sum", "component_sum"):
             if scope != "cell" or parse != "count" or not binding.get("sum_review_evidence"):
                 raise IntakeError("source_fact_binding", "Only explicitly reviewed statistical counts may be summed")
         elif operation != "unique":
@@ -350,7 +409,8 @@ def verify_fact_bindings(spec, rows, inputs):
             if any(cell["native_status"] not in ("reported", "literal") or count(cell["value"]) is None
                     for cell in cells):
                 raise IntakeError("source_fact_binding", "Unknown factual cell cannot become a reported count")
-            value = count(sum(count(cell["value"]) for cell in cells)) if operation == "sum" else count(cells[0]["value"])
+            value = count(sum(count(cell["value"]) for cell in cells)) if operation in (
+                "sum", "component_sum") else count(cells[0]["value"])
         elif parse == "literal":
             value = cells[0]["value"]
         else:
@@ -358,7 +418,10 @@ def verify_fact_bindings(spec, rows, inputs):
         row = selected[0]
         if binding["path"] in ("count.value", "count.literal", "view.ballots"):
             header = binding.get("native_measure_header")
-            if header:
+            if operation == "component_sum":
+                equivalent = (binding.get("same_measure_review_evidence")
+                    and binding.get("accepted_measure_literal") == row["measure"]["literal"])
+            elif header:
                 equivalent = (binding.get("same_measure_review_evidence")
                     and binding.get("accepted_measure_literal") == row["measure"]["literal"]
                     and all(" ".join(table.get("source_annotations", {}).get(

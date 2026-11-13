@@ -284,6 +284,106 @@ class RoutineBatchTests(unittest.TestCase):
     def run_wide_statistical_fixture(self, row, spec, facts):
         return adapt(spec, dict(data=encoded([row]), facts=encoded(facts)), {}, {}, {})
 
+    def component_statistical_fixture(self):
+        row, spec, binding, facts = self.wide_statistical_fixture()
+        binding.pop("measure")
+        binding.pop("native_measure_header")
+        binding.pop("table_ids")
+        binding.update(table_id="first", operation="component_sum",
+            administrative_measure_review_evidence="Synthetic reviewed administrative mode columns",
+            components=[dict(measure=name, native_header=header, header_requirement=index)
+                for index, (name, header) in enumerate((
+                    ("early", "Votes Cast"), ("election_day", "Votes Cast"), ("tallied_mail", "Ballots Tallied")))])
+        table = facts["products"][0]["tables"][0]
+        facts["products"][0]["tables"] = [table]
+        table["source_role"] = "unofficial_administrative_measures_not_candidate_returns"
+        table["rows"] = [table["rows"][1]]
+        table["native_requirements"] = [dict(decoded_text=part["native_header"],
+            reading_bbox=[index * 10, 0, index * 10 + 9, 5])
+            for index, part in enumerate(binding["components"])]
+        table["rows"][0]["cells"].update({name: dict(value=value, native_status="reported",
+            reading_bbox=[index * 10, 5, index * 10 + 9, 10])
+            for index, (name, value) in enumerate((("early", 0), ("election_day", 5), ("tallied_mail", 13)))})
+        return row, spec, binding, facts
+
+    def test_reviewed_component_sum_checks_all_three_canonical_count_mirrors_and_zero(self):
+        row, spec, binding, facts = self.component_statistical_fixture()
+        spec["format"]["fact_bindings"] = [dict(binding, path=path)
+            for path in ("count.value", "count.literal", "view.ballots")]
+        self.assertEqual(self.run_wide_statistical_fixture(row, spec, facts)[0]["count"]["value"], 18)
+        row["view"]["ballots"] = 19
+        with self.assertRaisesRegex(ValueError, "differs from its reviewed native fact"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_component_sum_rejects_duplicate_columns_and_repeated_or_cross_parent_rows(self):
+        row, spec, binding, facts = self.component_statistical_fixture()
+        binding["components"].append(copy.deepcopy(binding["components"][0]))
+        with self.assertRaisesRegex(ValueError, "distinct reviewed native count columns"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        binding["components"].pop()
+        table = facts["products"][0]["tables"][0]
+        table["rows"].append(copy.deepcopy(table["rows"][0]))
+        with self.assertRaisesRegex(ValueError, "exactly one native parent row"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_component_sum_rejects_wrong_header_wrong_physical_column_and_unknown_component(self):
+        row, spec, binding, facts = self.component_statistical_fixture()
+        table = facts["products"][0]["tables"][0]
+        table["native_requirements"][2]["decoded_text"] = "Ballots Issued"
+        with self.assertRaisesRegex(ValueError, "header or physical column changed"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        table["native_requirements"][2]["decoded_text"] = "Ballots Tallied"
+        table["rows"][0]["cells"]["tallied_mail"]["reading_bbox"][0] += 1
+        with self.assertRaisesRegex(ValueError, "header or physical column changed"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        table["rows"][0]["cells"]["tallied_mail"]["reading_bbox"][0] -= 1
+        table["rows"][0]["cells"]["tallied_mail"].update(value=None, native_status="blank")
+        with self.assertRaisesRegex(ValueError, "Unknown factual cell"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_component_sum_cannot_use_unreviewed_admin_roles_metadata_or_changed_measure(self):
+        for mutation in ("role", "metadata", "measure", "review"):
+            with self.subTest(mutation=mutation):
+                row, spec, binding, facts = self.component_statistical_fixture()
+                if mutation == "role":
+                    binding.pop("administrative_measure_review_evidence")
+                elif mutation == "metadata":
+                    binding.update(value_scope="annotations", value_path="native_column_headers")
+                elif mutation == "measure":
+                    binding["accepted_measure_literal"] = "All ballots"
+                else:
+                    binding.pop("sum_review_evidence")
+                with self.assertRaises(ValueError):
+                    self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_component_image_sum_requires_explicit_pinned_visual_review(self):
+        row, spec, binding, facts = self.component_statistical_fixture()
+        table = facts["products"][0]["tables"][0]
+        table.pop("native_requirements")
+        with self.assertRaisesRegex(ValueError, "pinned explicit visual review"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        method = "visually_reviewed_source_image_transcription"
+        table["source_annotations"].update(source_method=method,
+            reviewed_image_pin=dict(bytes=100, sha256="a" * 64))
+        for component in binding["components"]:
+            table["rows"][0]["cells"][component["measure"]]["source_method"] = method
+        binding["visual_header_review_evidence"] = "Synthetic independent header and image review"
+        self.assertEqual(self.run_wide_statistical_fixture(row, spec, facts)[0]["count"]["value"], 18)
+        table["source_annotations"]["reviewed_image_pin"]["sha256"] = "not-a-pin"
+        with self.assertRaisesRegex(ValueError, "pinned explicit visual review"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_component_columns_reject_other_operations_and_non_pdf_contracts_before_dispatch(self):
+        row, spec, binding, facts = self.component_statistical_fixture()
+        binding["operation"] = "unique"
+        with self.assertRaisesRegex(ValueError, "explicit sum operation"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        binding["operation"] = "component_sum"
+        for contract in ("participation.native_factual_tables.v1", "participation.selected_html_statistics.v1"):
+            facts["contract"] = contract
+            with self.assertRaisesRegex(ValueError, "reviewed factual PDF columns"):
+                self.run_wide_statistical_fixture(row, spec, facts)
+
     def test_explicit_native_part_sum_excludes_declared_headings_and_checks_all_pages(self):
         row, spec, binding, facts = self.wide_statistical_fixture()
         self.assertEqual(self.run_wide_statistical_fixture(row, spec, facts)[0]["count"]["value"], 18)
