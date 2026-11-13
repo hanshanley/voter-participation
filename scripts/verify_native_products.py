@@ -7,6 +7,7 @@ from decimal import Decimal, InvalidOperation
 import gzip
 import io
 import json
+import math
 from pathlib import Path
 import sys
 import xml.etree.ElementTree as ET
@@ -137,7 +138,9 @@ def verify(recipe, source_root, compiled):
                                                 member + " / " + table["name"] + " / " + address)
                                     if isinstance(actual, (datetime, time, timedelta)):
                                         same = actual == from_excel(float(native["cached_literal"]), workbook.epoch)
-                                    elif type(actual) in (int, float) and native["storage_type"] == "n":
+                                    elif type(actual) is float and native["storage_type"] == "n":
+                                        same = math.isfinite(actual) and actual == float(native["cached_literal"])
+                                    elif type(actual) is int and native["storage_type"] == "n":
                                         same = Decimal(str(actual)) == Decimal(native["cached_literal"])
                                     else:
                                         same = actual == expected and type(actual) is type(expected)

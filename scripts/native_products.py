@@ -114,6 +114,9 @@ def query(product, spec):
             source_rows = [(row["row"], {field: row["values"][index]
                 for field, index in indices.items()}) for row in table["rows"]]
         else:
+            if any(spec["fields"][name] in ("$row", "$table")
+                    for name in spec.get("counts", [])):
+                raise ValueError("Native metadata is not a recorded count")
             for number, columns in spec.get("require", {}).items():
                 actual = tabular.values(table, int(number))
                 if any(actual.get(column) != expected for column, expected in columns.items()):
@@ -124,7 +127,8 @@ def query(product, spec):
                     continue
                 cells = {re.sub(r"[0-9]+$", "", cell["address"]): cell for cell in row["cells"]}
                 source_rows.append((row["row"], {
-                    field: (table["name"] if selector == "$table" else
+                    field: (row["row"] if selector == "$row" else
+                        table["name"] if selector == "$table" else
                         displayed_cell(table, cells, selector))
                     for field, selector in spec["fields"].items()}))
         for number, fields in source_rows:
@@ -155,6 +159,77 @@ def query(product, spec):
         raise ValueError("A declared query cannot silently become empty")
     return dict(id=spec["id"], product=spec["product"],
         count_fields=spec.get("counts", []), rows=result)
+
+
+def statistical_units(source_query, spec):
+    """Group explicitly reviewed native mode blocks; do not qualify their measure."""
+    roles = spec["fields"]
+    modes, parents = spec["modes"], spec["parents"]
+    if (len(set(modes)) != len(modes) or len(set(parents)) != len(parents)
+            or not modes or not parents or set(modes) & set(parents)
+            or "Total" in modes + parents):
+        raise ValueError("Ambiguous native mode/parent roles")
+    units, current, controls, parent_modes = [], None, {}, {}
+    previous_row = 0
+    for row in source_query["rows"]:
+        number = row[roles["row"]]
+        if type(number) is not int or number <= previous_row:
+            raise ValueError("Native statistical row identity changed")
+        previous_row = number
+        if number < spec["first_row"]:
+            continue
+        label = row[roles["label"]]
+        values = {key: row[roles[key]] for key in ("registered", "cast", "fraction")}
+        if label is None:
+            if any(value not in (None, "") for value in values.values()):
+                raise ValueError("An unlabeled statistical value cannot be discarded")
+            continue
+        if label in parents or label in modes or label == "Total":
+            observation = dict(registered=integer(values["registered"]),
+                cast=integer(values["cast"]), native_fraction=values["fraction"],
+                source_rows=row["source_rows"])
+            if label in parents:
+                if current is not None or label in controls or parent_modes:
+                    raise ValueError("Ambiguous native parent block")
+                if controls and any(observation[key] != next(iter(controls.values()))[key]
+                        for key in ("registered", "cast", "native_fraction")):
+                    raise ValueError("Repeated native parent controls disagree")
+                controls[label] = observation
+            elif label in modes:
+                target = current["modes"] if current is not None else parent_modes
+                if label in target or current is None and not controls:
+                    raise ValueError("Missing or repeated native mode context")
+                target[label] = observation
+            else:
+                if current is None or controls:
+                    raise ValueError("Missing native unit context")
+                if (list(current["modes"]) != modes
+                        or sum(v["cast"] for v in current["modes"].values()) != observation["cast"]
+                        or any(v["registered"] != observation["registered"]
+                            for v in current["modes"].values())):
+                    raise ValueError("Native unit mode/registration controls disagree")
+                current.update(observation)
+                units.append(current)
+                current = None
+        else:
+            if (current is not None or controls or not isinstance(label, str)
+                    or not label.strip() or any(v not in (None, "") for v in values.values())):
+                raise ValueError("Unreviewed native statistical row")
+            current = dict(unit=label, header_source_rows=row["source_rows"], modes={})
+    if (current is not None or not units or list(controls) != parents
+            or list(parent_modes) != modes or len({u["unit"] for u in units}) != len(units)):
+        raise ValueError("Incomplete or repeated native unit/parent inventory")
+    parent = controls[parents[-1]]
+    if (sum(u["cast"] for u in units) != parent["cast"]
+            or sum(u["registered"] for u in units) != parent["registered"]
+            or any(v["registered"] != parent["registered"] for v in parent_modes.values())
+            or sum(v["cast"] for v in parent_modes.values()) != parent["cast"]
+            or any(sum(u["modes"][mode]["cast"] for u in units) != parent_modes[mode]["cast"]
+                for mode in modes)):
+        raise ValueError("Native unit-to-parent controls disagree")
+    return dict(units=units, parent=parent, parent_modes=parent_modes,
+        agreeing_native_parent_copies=controls,
+        automatic_geographic_or_turnout_qualification=False)
 
 
 def compile_products(recipe, source_root, output):

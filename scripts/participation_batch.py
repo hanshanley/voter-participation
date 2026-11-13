@@ -191,6 +191,12 @@ def compile_counts(description, files, index, sources):
         original = copy.deepcopy(state)
         for source in (item for item in replacement_sources if item["spec"]["geography"]["state_code"] == code):
             spec, rows = source["spec"], source["rows"]
+            if source.get("target") == "counts_addition":
+                from scripts.participation_count_additions import append_reviewed
+                prepared = dict(source, rows=[display(row, spec) for row in rows])
+                state, additions = append_reviewed(state, prepared, pin(files[declaration["file"]]))
+                changed_rows += additions
+                continue
             selected = set(source["baseline_source_ids"])
             old = [row for row in state["records"] if row["source"]["id"] in selected]
             key = lambda row: (row["geography"]["id"], row["measure"]["id"], row["measure"]["mode"])
@@ -221,6 +227,8 @@ def compile_counts(description, files, index, sources):
         if len(by_id) != len(state["records"]):
             raise IntakeError("duplicate_observation", "Replacement duplicates an existing observation")
         for mode, frame in state["views"].items():
+            declaration["views"][mode].update({name: len(frame[name])
+                for name in ("counties", "precincts", "nongeographic", "holds")})
             for partition in ("counties", "precincts", "nongeographic"):
                 selected_rows = [by_id[identity] for identity in frame[partition]]
                 if any(row["geography"]["state_code"] != code for row in selected_rows):
@@ -230,8 +238,10 @@ def compile_counts(description, files, index, sources):
                     unknown=sum(row["count"]["status"] == "unknown" for row in selected_rows),
                     withheld=sum(row["count"]["status"] == "withheld" for row in selected_rows),
                     qualified_fractions=sum(bool(row["denominator"] and row["denominator"]["qualified"])
-                        for row in selected_rows))
+                        for row in selected_rows),
+                    geography_levels=sorted({row["geography"]["level"] for row in selected_rows}))
         records = state["records"]
+        declaration["records"] = len(records)
         candidate_index["coverage"][code].update(records=len(records),
             reported=sum(row["count"]["status"] == "reported" for row in records),
             zeros=sum(row["count"]["value"] == 0 for row in records),
@@ -375,8 +385,10 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
     for entry in entries:
         state = entry["spec"]["geography"]["state_code"]
         target = entry.get("target", "counts")
-        if target not in ("counts", "native_reporting", "state_reporting"):
+        if target not in ("counts", "counts_addition", "native_reporting", "state_reporting"):
             raise ValueError("Unknown registered dataset target")
+        if target == "counts_addition" and (entry["baseline_source_ids"] or not entry.get("addition")):
+            raise ValueError("A new count inventory requires its separate reviewed addition declaration")
         if target == "native_reporting" and not isinstance(entry.get("reporting_source"), dict):
             raise ValueError("A native reporting target requires reviewed complete source metadata")
         if any(not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", value)
@@ -397,9 +409,10 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
     if plan.get("baseline_version") != description["version"]:
         raise ValueError("Registered baseline advanced; rebase rather than overwrite")
     native = None
-    if any(entry.get("target") == "native_reporting" for entry in entries):
+    if any(entry.get("target") == "native_reporting"
+            or (entry.get("addition") or {}).get("county_reference") for entry in entries):
         if native_baseline is None:
-            raise ValueError("Native reporting updates require their complete accepted baseline")
+            raise ValueError("Native reporting/reference updates require their complete accepted baseline")
         native_baseline = Path(native_baseline)
         native = native_baseline_files(native_baseline)
         if plan.get("native_baseline_version") != native[0]["version"]:
@@ -523,13 +536,16 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 Path(__file__).with_name("package_historical_source_sets.py"),
                 Path(__file__).with_name("historical_precinct_rows.py"),
                 Path(__file__).with_name("native_products.py"),
+                Path(__file__).with_name("native_statistical_counts.py"),
+                Path(__file__).with_name("participation_count_additions.py"),
                 Path(__file__).with_name("native_tabular.py"),
                 Path(__file__).with_name("native_count_refresh.py"),
                 Path(__file__).with_name("html_statistics.py"),
                 Path(__file__).with_name("state_reporting_successor.py"),
                 *sorted((Path(__file__).parent / "participation_intake").glob("*.py"))]
         for name in ("test_participation_batch.py", "test_native_count_refresh.py", "test_native_tabular.py",
-                     "test_html_statistics.py", "test_state_reporting_successor.py"):
+                     "test_html_statistics.py", "test_state_reporting_successor.py",
+                     "test_native_statistical_counts.py"):
             test = Path(__file__).parents[1] / "tests" / name
             if test.is_file():
                 code_paths.append(test)
@@ -577,16 +593,24 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
             sources.append(dict(spec=item["spec"], rows=rows,
                 baseline_source_ids=item["entry"]["baseline_source_ids"], outcome=outcome,
                 target=item["entry"].get("target", "counts"),
+                addition=item["entry"].get("addition"),
                 reporting_source=item["entry"].get("reporting_source")))
             parsed += outcome["parsed_inputs"]
             dispositions.append(dict(id=item["entry"]["id"], state_code=item["spec"]["geography"]["state_code"],
                 status="verified", observations=len(rows), unknown=sum(row["count"]["status"] == "unknown" for row in rows),
                 zeros=sum(row["count"]["value"] == 0 for row in rows)))
         descriptor, runtime, count_changed = compile_counts(description, files, index,
-            [source for source in sources if source["target"] in ("counts", "state_reporting")])
+            [source for source in sources if source["target"] in ("counts", "counts_addition", "state_reporting")])
         native_candidate, native_runtime, native_changed = (compile_reporting(*native,
             [source for source in sources if source["target"] == "native_reporting"])
             if native else (None, None, 0))
+        if native:
+            from scripts.participation_count_additions import append_county_references
+            native_candidate, native_runtime, reference_changes = append_county_references(
+                native_candidate, native_runtime, json.loads(native_runtime[native_candidate["index"]["file"]]),
+                [dict(source, rows=[display(row, source["spec"]) for row in source["rows"]])
+                 for source in sources if source["target"] == "counts_addition"])
+            native_changed += reference_changes
         changed = count_changed + native_changed
         staging = work / "staging"
         staging.mkdir(parents=True, exist_ok=True)

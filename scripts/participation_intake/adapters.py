@@ -486,6 +486,16 @@ def verify_native_reproduction(spec, inputs):
 
 def adapt(spec, inputs, input_pins, clock, references):
     name = spec["adapter"]
+    if name == "native_statistics":
+        from scripts.native_statistical_counts import observations
+        if not spec.get("review_evidence"):
+            raise IntakeError("unreviewed_source", "Native statistical additions require explicit source review")
+        try:
+            return observations(spec, inputs)
+        except IntakeError:
+            raise
+        except (KeyError, TypeError, ValueError, UnicodeError, OSError) as error:
+            raise IntakeError("native_statistics", "Native statistical qualification failed: " + str(error)) from error
     if name == "canonical_json":
         if not spec.get("review_evidence"):
             raise IntakeError("unreviewed_canonical_input", "Reusing canonical observations needs explicit review evidence")

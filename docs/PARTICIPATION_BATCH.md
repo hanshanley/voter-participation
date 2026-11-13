@@ -91,6 +91,32 @@ requires separately reviewed qualification. Unknowns remain unknown and zeros
 remain zeros. Candidate votes do not become ballots; registration stocks do
 not automatically become turnout denominators.
 
+The distinct `counts_addition` target requires a
+`participation.reviewed_count_addition.v1` declaration: the exact accepted
+state-shard pin, full added-observation pins, source/scope review and every
+mode/partition's existing IDs plus explicit appended IDs. It never replaces
+old observations or selected display identities. Missing modes, changed
+preimages, shadowed identities, count/clock discrepancies and rate promotion
+are rejected. Ordinary same-inventory refresh guards remain unchanged.
+Mapped county additions additionally require the complete accepted native
+baseline and a pinned `participation.reviewed_county_reference_addition.v1`
+review for every affected mode. Only explicit new identities can be appended
+to existing complete contextual bindings; feature names, state, vintage,
+reference hash, preserved binding preimages and withheld rates are checked.
+Geometry files and prior bindings are never rewritten to fit new counts.
+
+The shared `native_statistics` adapter reads complete pinned factual
+worksheets and their reviewed query/grouping roles directly. It preserves
+every statistical unit, zero, mode vector and agreeing duplicate parent,
+and derives count-only canonical rows rather than taking counts from
+metadata. Explicitly reviewed disjoint report frames can supply a separately
+labeled composite parent. Different report clocks remain separate, not a
+common snapshot; decoded Excel clocks retain cache lexemes, number formats
+and date systems. Registrations and printed fractions remain native context,
+not inferred denominators. Source units gain no precinct geometry or rates.
+Where templates are excluded, the public packet reproduces all factual
+queries and transformations, not extraction of the private originals.
+
 For an already accepted derived mode subtotal, a PDF fact binding can declare
 `operation: "component_sum"` and distinct `components`, each naming its native
 `measure`, literal `native_header` and `header_requirement` index. Exactly one
@@ -160,6 +186,21 @@ role and `native_header_row`. The native source/pin/election/jurisdiction must
 match the complete recipe and the canonical scope. Header guards must name the
 actual count column; label equivalence needs explicit review. Cached values are
 read as facts, never calculated by executing workbook formulas.
+
+Worksheet query fields may select `$table` and `$row` as provenance keys when
+repeated statistical labels or identical values must retain distinct physical
+rows. Neither selector may supply a count field. Blank cells remain blank.
+The independent reader preserves every exact numeric cache lexeme and decoded
+value; a separate binary64 reader's fractional values are compared in its own
+numeric representation, without rounding or weakening integer-count checks.
+
+`native_products.statistical_units` groups a separately reviewed statistical
+worksheet query using explicit field, mode and parent roles. It requires each
+unit's mode counts and repeated registration stock to reconcile, preserves
+zeros and unknown native fractions, and checks repeated parent copies for
+equality instead of adding them. Missing counts, ambiguous unit identities and
+disagreeing controls are held. These are native statistical groups, not
+automatic physical-ballot, geographic, population or turnout qualifications.
 
 The same native binding may check source URL/hash and missing native clock via
 `value_scope: "source"`. Metadata still cannot authorize a statistical count.

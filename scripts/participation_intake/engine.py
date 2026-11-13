@@ -268,9 +268,12 @@ def package(output, spec, inputs, receipts, rows, report, references, reference_
         members["code/participation_intake/" + path.name] = path.read_bytes()
     options = spec.get("format", {})
     if options.get("native_reproduction") or any(
-            binding.get("query_recipe_input") for binding in options.get("fact_bindings", [])):
+            binding.get("query_recipe_input") for binding in options.get("fact_bindings", [])) or spec["adapter"] == "native_statistics":
         for name in ("native_products.py", "native_tabular.py"):
             members["code/scripts/" + name] = (Path(__file__).parent.parent / name).read_bytes()
+    if spec["adapter"] == "native_statistics":
+        members["code/scripts/native_statistical_counts.py"] = (
+            Path(__file__).parent.parent / "native_statistical_counts.py").read_bytes()
     if options.get("html_statistics_recipe_input"):
         members["code/scripts/html_statistics.py"] = (
             Path(__file__).parent.parent / "html_statistics.py").read_bytes()
@@ -375,6 +378,9 @@ def run(spec, store, supplied=None, references=None, geometry_inputs=None):
         return dict(report, no_op=False, directory=None)
     input_pins = {name: pin(body) for name, body in inputs.items()}
     code = {path.name: digest(path.read_bytes()) for path in Path(__file__).parent.glob("*.py")}
+    if spec["adapter"] == "native_statistics":
+        for name in ("native_statistical_counts.py", "native_products.py", "native_tabular.py"):
+            code[name] = digest((Path(__file__).parent.parent / name).read_bytes())
     if spec.get("format", {}).get("html_statistics_recipe_input"):
         code["html_statistics.py"] = digest(
             (Path(__file__).parent.parent / "html_statistics.py").read_bytes())

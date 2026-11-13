@@ -735,6 +735,78 @@ class RoutineBatchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "inventory"):
             self.execute()
 
+    def addition_fixture(self):
+        from scripts.participation_batch import baseline_files
+        description, files, index = baseline_files(self.baseline)
+        spec = copy.deepcopy(self.spec)
+        spec["id"] = "new-source"
+        spec["expected_rows"] = 1
+        spec["view"]["identities"] = dict(three=dict(
+            spec["view"]["identities"]["one"], unit_key="three", unit="Three", precinct="Three"))
+        body = encoded([dict(unit="three", label="Three", ballots=0)])
+        rows = [display(row, spec) for row in adapt(spec, {"data": body},
+            {"data": pin(body)}, {"literal": "native clock", "timezone": None}, {})]
+        state = json.loads(gzip.decompress(files["states/AR.json.gz"]))
+        binding = dict(contract="participation.reviewed_count_addition.v1",
+            baseline_shard=pin(files["states/AR.json.gz"]),
+            source_scope_review_evidence="Synthetic independently reviewed new reporting unit",
+            records={row["id"]: pin(encoded(row)) for row in rows},
+            views={mode: {part: dict(before=list(frame[part]),
+                append=[rows[0]["id"]] if part == "precincts" else [])
+                for part in ("counties", "precincts", "nongeographic")}
+                for mode, frame in state["views"].items()})
+        source = dict(spec=spec, rows=rows, baseline_source_ids=[], target="counts_addition", addition=binding)
+        return description, files, index, source, body
+
+    def test_explicit_addition_retains_all_old_rows_views_and_other_fifty_states(self):
+        from scripts.participation_batch import compile_counts
+        description, files, index, source, body = self.addition_fixture()
+        result, output, changed = compile_counts(description, files, index, [source])
+        self.assertEqual(changed, 1)
+        self.assertNotEqual(result["version"], description["version"])
+        for name in files:
+            if name not in ("states/AR.json.gz", "index.json"):
+                self.assertEqual(output[name], files[name])
+        shard = json.loads(gzip.decompress(output["states/AR.json.gz"]))
+        self.assertEqual(shard["records"][:-1], self.original_rows)
+        self.assertEqual(shard["records"][-1]["count"]["value"], 0)
+        declaration = json.loads(output["index.json"])["states"]["AR"]
+        self.assertEqual(declaration["records"], 3)
+        self.assertEqual(declaration["views"]["official"]["precincts"], 3)
+
+    def test_addition_requires_exact_preimage_rows_modes_and_cannot_overwrite(self):
+        from scripts.participation_batch import compile_counts
+        for change in ("preimage", "count", "before", "mode", "existing"):
+            with self.subTest(change=change):
+                description, files, index, source, body = self.addition_fixture()
+                if change == "preimage":
+                    source["addition"]["baseline_shard"]["sha256"] = "0"*64
+                elif change == "count":
+                    source["rows"][0]["view"]["ballots"] = 7
+                elif change == "before":
+                    source["addition"]["views"]["official"]["precincts"]["before"] = []
+                elif change == "mode":
+                    source["addition"]["views"]["new-mode"] = {}
+                else:
+                    source["rows"] = [self.original_rows[0]]
+                    source["addition"]["records"] = {
+                        source["rows"][0]["id"]: pin(encoded(source["rows"][0]))}
+                with self.assertRaises(ValueError):
+                    compile_counts(description, files, index, [source])
+
+    def test_addition_runs_through_shared_cli_and_offline_cached_noop(self):
+        description, files, index, source, body = self.addition_fixture()
+        self.plan["sources"] = [dict(id="native", **{key: source[key] for key in
+            ("spec", "baseline_source_ids", "target", "addition")})]
+        self.write_input(body)
+        self.save_plan()
+        first = self.execute()
+        self.assertEqual((first["status"], first["changed_rows"]), ("changed", 1))
+        with patch("scripts.participation_batch.run", side_effect=AssertionError("reparse")):
+            second = self.execute()
+        self.assertTrue(second["no_op"])
+        self.assertEqual(second["candidate_version"], first["candidate_version"])
+
     def test_source_access_hold_never_requests_or_erases_baseline(self):
         self.spec["inputs"]["data"]["stopped"] = True
         self.save_plan()
@@ -744,6 +816,76 @@ class RoutineBatchTests(unittest.TestCase):
         self.assertEqual(result["compiled_rows"], 0)
         self.assertEqual((Path(result["directory"]) / "counts/states/AR.json.gz").read_bytes(),
             (self.baseline / "states/AR.json.gz").read_bytes())
+
+    def county_reference_fixture(self):
+        source = self.addition_fixture()[3]
+        row = source["rows"][0]
+        row["geography"].update(level="county", name="New County",
+            join=dict(status="approved", feature_key="05001", reference_id="context",
+                evidence="Synthetic reviewed existing county context"))
+        row["view"].update(county_id="new-county", county="New County", county_fips="05001",
+            geography_level="county", maps_approved=True, reference_geometry=dict(
+                sha256="a"*64, boundary_year=2026, url="https://example.gov/context.json.gz"))
+        binding = dict(sha256="a"*64, features=1, feature_keys=["05001"], rows=[],
+            feature_scopes={"05001": dict(state_code="AR", name="New County", boundary_year=2026)})
+        index = dict(county_bindings=dict(AR=dict(official=binding)))
+        files = {"index.json": encoded(index), "geometry.json.gz": b"unchanged contextual geometry"}
+        description = dict(index=dict(file="index.json"), record_contract="participation.native_bindings.v1")
+        source["addition"]["views"] = dict(official=dict(counties=dict(append=[row["id"]])))
+        source["addition"]["county_reference"] = dict(
+            contract="participation.reviewed_county_reference_addition.v1",
+            review_evidence="Synthetic separately reviewed identity", baseline_index=pin(files["index.json"]),
+            modes=dict(official=dict(before=pin(encoded(binding)), append=[row["id"]])))
+        return description, files, index, source
+
+    def test_county_reference_addition_retains_all_geometry_and_old_binding_fields(self):
+        from scripts.participation_count_additions import append_county_references
+        description, files, index, source = self.county_reference_fixture()
+        descriptor, output, changed = append_county_references(description, files, index, [source])
+        self.assertEqual(changed, 1)
+        self.assertEqual(output["geometry.json.gz"], files["geometry.json.gz"])
+        binding = json.loads(output["index.json"])["county_bindings"]["AR"]["official"]
+        self.assertEqual({k: v for k, v in binding.items() if k != "rows"},
+            {k: v for k, v in index["county_bindings"]["AR"]["official"].items() if k != "rows"})
+        self.assertEqual(binding["rows"][0]["feature_key"], "05001")
+        self.assertEqual(binding["rows"][0]["county_id"], "new-county")
+        self.assertIsNone(descriptor["complete_download"])
+        self.assertEqual(index["county_bindings"]["AR"]["official"]["rows"], [])
+
+    def test_county_reference_addition_rejects_changed_preimages_modes_scopes_or_rates(self):
+        from scripts.participation_count_additions import append_county_references
+        for change in ("index", "binding", "mode", "ids", "state", "name", "year",
+                       "hash", "key", "denominator", "duplicate"):
+            with self.subTest(change=change):
+                description, files, index, source = self.county_reference_fixture()
+                review = source["addition"]["county_reference"]
+                row = source["rows"][0]
+                if change == "index": review["baseline_index"]["sha256"] = "0"*64
+                elif change == "binding": review["modes"]["official"]["before"]["sha256"] = "0"*64
+                elif change == "mode": review["modes"]["mail_returned"] = {}
+                elif change == "ids": review["modes"]["official"]["append"] = []
+                elif change == "state": row["geography"]["state_code"] = "MI"
+                elif change == "name": row["view"]["county"] = "Other County"
+                elif change == "year": row["view"]["reference_geometry"]["boundary_year"] = 2024
+                elif change == "hash": row["view"]["reference_geometry"]["sha256"] = "b"*64
+                elif change == "key": row["view"]["county_fips"] = "05003"
+                elif change == "denominator": row["view"]["reported_pct"] = 0
+                else:
+                    binding = index["county_bindings"]["AR"]["official"]
+                    binding["rows"].append(dict(county_id="new-county", feature_key="05001"))
+                    review["modes"]["official"]["before"] = pin(encoded(binding))
+                with self.assertRaises(ValueError):
+                    append_county_references(description, files, index, [source])
+
+    def test_mapped_county_cannot_be_added_without_its_native_reference_review(self):
+        from scripts.participation_batch import compile_counts
+        description, files, index, source, body = self.addition_fixture()
+        source["rows"][0]["geography"]["level"] = "county"
+        source["rows"][0]["view"].update(geography_level="county", maps_approved=True)
+        source["addition"]["records"] = {
+            row["id"]: pin(encoded(row)) for row in source["rows"]}
+        with self.assertRaisesRegex(ValueError, "Mapped county additions require"):
+            compile_counts(description, files, index, [source])
 
     def test_private_input_is_quarantined_not_exported_in_outer_bundle(self):
         self.write_input(encoded([dict(unit="one", label="One", ballots=0, firstname="Synthetic private marker"),

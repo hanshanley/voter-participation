@@ -7,7 +7,7 @@ from pathlib import Path
 import unittest
 import zipfile
 
-from scripts.native_products import compile_products, displayed_cell, encoded, integer, pin, query, unpack
+from scripts.native_products import compile_products, displayed_cell, encoded, integer, pin, query, statistical_units, unpack
 
 
 class NativeProductsTests(unittest.TestCase):
@@ -126,6 +126,50 @@ class NativeProductsTests(unittest.TestCase):
                 integer(value)
         self.assertEqual(integer("0"), 0)
 
+    def statistical_fixture(self):
+        labels = [
+            ("Unit A", None, None, None), ("Early", 2, 0, "0"), ("Day", 2, 0, "0"),
+            ("Total", 2, 0, "0"), ("Unit B", None, None, None),
+            ("Early", 6, 2, "0.3333333333333333"), ("Day", 6, 1, None),
+            ("Total", 6, 3, "0.5"), ("Area total", 8, 3, "0.375"),
+            ("Overall total", 8, 3, "0.375"), ("Early", 8, 2, "0.25"),
+            ("Day", 8, 1, "0.125"), (None, None, None, None)]
+        rows = [dict(n=n, label=label, registered=registered, cast=cast, fraction=fraction,
+            source_rows=[dict(table="Stats", workbook=None, row=n)])
+            for n, (label, registered, cast, fraction) in enumerate(labels, 8)]
+        spec = dict(first_row=8, modes=["Early", "Day"], parents=["Area total", "Overall total"],
+            fields=dict(row="n", label="label", registered="registered", cast="cast", fraction="fraction"))
+        return dict(rows=rows), spec
+
+    def test_statistical_units_keep_zeros_unknown_fractions_and_repeated_stocks(self):
+        source, spec = self.statistical_fixture()
+        original = copy.deepcopy(source)
+        result = statistical_units(source, spec)
+        self.assertEqual(source, original)
+        self.assertEqual([u["cast"] for u in result["units"]], [0, 3])
+        self.assertIsNone(result["units"][1]["modes"]["Day"]["native_fraction"])
+        self.assertEqual(result["parent"]["registered"], 8)
+        self.assertEqual(len(result["agreeing_native_parent_copies"]), 2)
+        self.assertFalse(result["automatic_geographic_or_turnout_qualification"])
+
+    def test_statistical_units_hold_ambiguous_missing_or_disagreeing_controls(self):
+        for change in ("parent", "mode_stock", "missing_count", "unlabeled", "duplicate_unit", "inventory"):
+            source, spec = self.statistical_fixture()
+            if change == "parent":
+                source["rows"][9]["cast"] = 4
+            elif change == "mode_stock":
+                source["rows"][10]["registered"] = 9
+            elif change == "missing_count":
+                source["rows"][1]["cast"] = None
+            elif change == "unlabeled":
+                source["rows"][1]["label"] = None
+            elif change == "duplicate_unit":
+                source["rows"][4]["label"] = "Unit A"
+            else:
+                del source["rows"][8]
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                statistical_units(source, spec)
+
     def workbook_body(self):
         namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
         stream = io.BytesIO()
@@ -161,6 +205,74 @@ class NativeProductsTests(unittest.TestCase):
         spec["sheets"] = ["Month", "Missing month"]
         with self.assertRaisesRegex(ValueError, "worksheet inventory"):
             unpack(spec, body)
+
+    def test_native_row_identity_preserves_identical_statistical_rows_and_blanks(self):
+        body = self.workbook_body()
+        spec = dict(self.spec, kind="xlsx", sheets=["Month"], pin=pin(body))
+        product = unpack(spec, body)
+        duplicate = copy.deepcopy(product["tables"][0]["rows"][0])
+        duplicate["row"] = 7
+        for cell in duplicate["cells"]:
+            cell["address"] = cell["address"][:-1] + "7"
+            cell["attributes"]["r"] = cell["address"]
+        product["tables"][0]["rows"].append(duplicate)
+        result = query(product, dict(id="rows", product=spec["id"], tables=["Month"],
+            fields=dict(native_row="$row", native_table="$table", label="A", stock="B", unknown="C"),
+            counts=["stock"], keys=["native_table", "native_row"]))
+        self.assertEqual([row["native_row"] for row in result["rows"]], [1, 7])
+        self.assertEqual([row["stock"] for row in result["rows"]], [0, 0])
+        self.assertTrue(all(row["unknown"] is None for row in result["rows"]))
+        self.assertEqual(result["rows"][1]["source_rows"],
+            [dict(table="Month", workbook=None, row=7)])
+
+    def test_native_row_and_table_metadata_cannot_supply_count_fields(self):
+        body = self.workbook_body()
+        spec = dict(self.spec, kind="xlsx", sheets=["Month"], pin=pin(body))
+        for selector in ("$row", "$table"):
+            with self.subTest(selector=selector), self.assertRaisesRegex(ValueError, "metadata"):
+                query(unpack(spec, body), dict(id="rows", product=spec["id"],
+                    fields=dict(count=selector), counts=["count"], keys=["count"]))
+
+    def test_independent_float_peer_keeps_exact_cached_decimal_lexeme(self):
+        from openpyxl import Workbook
+        from scripts.verify_native_products import verify
+
+        workbook = Workbook()
+        workbook.active.title = "Month"
+        workbook.active.append(["Stock", 0.1])
+        stream = io.BytesIO()
+        workbook.save(stream)
+        workbook.close()
+        changed = io.BytesIO()
+        with zipfile.ZipFile(stream) as before, zipfile.ZipFile(changed, "w") as after:
+            for name in before.namelist():
+                body = before.read(name)
+                if name == "xl/worksheets/sheet1.xml":
+                    self.assertIn(b"<v>0.1</v>", body)
+                    body = body.replace(b"<v>0.1</v>", b"<v>0.10000000000000001</v>")
+                after.writestr(name, body)
+        body = changed.getvalue()
+        spec = dict(self.spec, path="stock.xlsx", kind="xlsx", sheets=["Month"], pin=pin(body))
+        recipe = dict(contract="participation.native_product_recipe.v1", products=[spec],
+            queries=[dict(id="stocks", product=spec["id"], tables=["Month"],
+                fields=dict(native_row="$row", fraction="B"), keys=["native_row"])])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "stock.xlsx").write_bytes(body)
+            compile_products(recipe, root, root / "compiled")
+            self.assertEqual(verify(recipe, root, root / "compiled")["status"], "passed")
+            path = root / "compiled/test.factual-tables.json.gz"
+            factual = json.loads(gzip.decompress(path.read_bytes()))
+            cell = factual["tables"][0]["rows"][0]["cells"][1]
+            self.assertEqual(cell["cached_literal"], "0.10000000000000001")
+            self.assertEqual(cell["value"], "0.10000000000000001")
+            cell["value"] = "0.1"
+            path.write_bytes(gzip.compress(encoded(factual), mtime=0))
+            manifest = json.loads((root / "compiled/manifest.json").read_bytes())
+            manifest["outputs"][path.name] = pin(path.read_bytes())
+            (root / "compiled/manifest.json").write_bytes(encoded(manifest))
+            with self.assertRaisesRegex(ValueError, "Independent cached value differs"):
+                verify(recipe, root, root / "compiled")
 
     def test_direct_workbook_independent_reader_detects_changed_cached_facts(self):
         from openpyxl import Workbook
