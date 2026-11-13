@@ -13,7 +13,7 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## Existing registered-frame model: numerical revision published, live integration pending
+## Existing registered-frame model: revision 29 verified live and persistent
 
 The full current control28 queries confirmed a real stale VT input, not a
 duplicate source:506,512 registrations/311,009 native Votes Cast, dated November4.
@@ -40,14 +40,30 @@ prior28 baseline and full accepted native source packet, not only changed rows.
 See [complete downloads](docs/DATA.md#current-registered-source-frame-model-revision-29)
 and `data/participation-access/20261113-registered-control-successor-01/`.
 
-The existing Civic research section is being connected to all34 existing
-registered-frame scenarios in31 jurisdictions and all51 source-frame decisions.
-This is not a new top-level mode or model family. Live website integration,
-actual native artifact payload/tar limits and canonical final acceptance are
-still pending; do not claim them complete from scientific publication alone.
+The existing Civic research section now displays all34 existing registered-frame
+scenarios in31 jurisdictions and all51 source-frame decisions. Website54ce62c
+passes native Pages43392149287/sourceguard43392149124. Actual artifact14022130292
+contains997,240,655 payload/999,833,600 tar bytes, both strictly below1e9;
+all22 public JS bodies,436 old download pins and113 archived models survive.
+All unrounded new model values match the actual artifact. Actual production
+desktop/mobile/no-JavaScript/blocked-JSON checks pass every old Civic table and
+the new34scenario/51decision rows; full CSV download hashes match.
+Desktop/mobile screenshots were reviewed. Required69 tests and Astro pass.
+Canonical science passes37 tests and a whole-ZIP/full11-output replay.
+Five owned website files are guardedly persisted; the independently edited
+canonical package is byte-identical. Its three new display tests, complete-release
+display regeneration and Astro check pass. Both HEADs/indexes and unrelated
+files are preserved. See the accompanying `website-acceptance.json`.
+This is not a new top-level mode or model family.
 The nine House family/profile outputs,33conditional/17held policy, fits/weights,
 current count/catalog/native-binding versions and all earlier downloads remain.
 Full audit and beautification remain pending behind the broader implementation.
+One concrete next integration gap is already-held Minnesota: the model control
+still describes2,490/4,105 partial units and1,224,405 reported counts, while the
+accepted November10 complete native packet supplies all4,105 rows/87 counties
+and2,852,618 Total Number Voted. Reconcile this source context without mixing
+its7AM/Election Day registration fields with the separate November2 registered
+stock, allocating state survey estimates locally or lifting component holds.
 
 ## Native county conflicts: actual access stops, not repaired vote counts
 

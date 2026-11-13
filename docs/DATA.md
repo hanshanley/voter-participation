@@ -32,8 +32,16 @@ blocked/probed and zero attempts. All13 release443966016 assets are full-byte
 verified authenticated/draft then anonymously/public. Independent Fraction
 checks and37 targeted tests pass. Maryland's full stock/card/accounting queries
 remain in the packet and standalone assets. Earlier complete versions remain.
-Existing-site integration is pending acceptance; no live deployment is claimed
-by scientific publication alone.
+The existing Civic research details now display all34 scenarios/31jurisdictions
+and all51 state/DC frame decisions at website54ce62c. Actual native deployment
+43392149287/sourceguard43392149124 and artifact14022130292 pass:
+997,240,655 payload/999,833,600 tar bytes,22 unchanged public JS bodies,
+436 old download pins and113 old model records retained. Every unrounded new
+model value matches the artifact; actual production passes desktop/mobile,
+no-JavaScript and blocked-JSON checks plus full numerical CSV hash checks.
+Canonical science, display regeneration, focused tests and Astro pass without
+overwriting independent package scripts or moving protected HEADs/indexes.
+See the [website acceptance record](../data/participation-access/20261113-registered-control-successor-01/website-acceptance.json).
 
 ## Newer county House source: complete reconciliation downloads
 

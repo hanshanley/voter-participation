@@ -214,7 +214,7 @@
     }
   },
   "source_values_are_not_physical_ballots_or_observed_individual_staying_home": true,
-  "status": "complete_native_control_29_science_published_live_integration_pending",
+  "status": "complete_native_control_29_live_published_persistent",
   "summary": {
     "changed_control_rows": 1,
     "changed_existing_scenarios": 1,
@@ -253,7 +253,8 @@
     "state_to_county_or_demographic_allocation": false,
     "study_fit_weights_or_probabilities_changed": false
   },
-  "website_live_integration_verified": false,
+  "website_acceptance_record": "website-acceptance.json",
+  "website_live_integration_verified": true,
   "whole_project_complete": false,
   "year": 2026
 }

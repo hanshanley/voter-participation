@@ -90,8 +90,21 @@ all13 assets full-byte verified authenticated/draft then anonymously/public.
 [Complete downloads](docs/DATA.md#current-registered-source-frame-model-revision-29)
 and [acceptance record](data/participation-access/20261113-registered-control-successor-01/observations.json).
 
-Scientific publication is verified; the existing-page integration is in
-progress, not yet accepted live. All existing House family/profile endpoints,
+Website54ce62c is verified live through Pages43392149287/sourceguard43392149124.
+Its actual native artifact14022130292 has997,240,655 payload/999,833,600 tar
+bytes, both strictly below1e9. All22 frozen public JS bodies,436 old download
+pins and113 archived model records survive. All34 existing scenarios in31
+jurisdictions and all51 frame decisions render inside the existing Civic research
+details, with every unrounded model value checked in the actual artifact.
+Production desktop/mobile/no-JavaScript/blocked-JSON checks pass all new rows
+and every original Civic table; full CSV download hashes match and desktop/
+mobile screenshots were reviewed. Required69 website tests and Astro pass.
+Actual canonical science passes37 tests/full11-output/whole-ZIP reproduction;
+five guarded website files, three new display tests, exact full-release
+projection and Astro pass while preserving the independent package, HEADs,
+indexes and unrelated files. The [website acceptance](data/participation-access/20261113-registered-control-successor-01/website-acceptance.json)
+retains the deployment, artifact and browser proof.
+All existing House family/profile endpoints,
 33conditional/17held masks, count/catalog/native-binding versions and source
 fits/weights remain unchanged. No new source original or respondent acquisition
 was required. Full audit and beautification remain pending.
