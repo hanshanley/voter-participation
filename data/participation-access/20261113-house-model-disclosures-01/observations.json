@@ -1,0 +1,196 @@
+{
+  "all_three_previously_published_fitted_aggregate_source_bodies_included": true,
+  "all_variant_state_group_numerical_validation": {
+    "all_nine_variants": true,
+    "held_scopes": 9279,
+    "passed": true,
+    "point_values_covered_without_refitting": true,
+    "selected_scope_checks": 14850,
+    "source_pins_exact": true,
+    "supported_scopes": 5571,
+    "unsupported_groups_or_states_not_substituted": true
+  },
+  "archive_scope": "Complete public fitted-aggregate projection replay: all three existing public aggregate profile products, producer/packager/tests, exact JSON/gzip, full118800-decision CSV and manifest. Not private source-model fitting or complete survey/transport/frame/endpoint uncertainty.",
+  "complete_state_group_metric_variant_witnesses": 118800,
+  "conditioned_endpoint_total_is_not_prediction_accuracy": true,
+  "contract": "participation.house_model_disclosure_delivery.v1",
+  "counting_completion_independently_qualified": false,
+  "current_source_counts_and_fits_and_weights_and_comparison_gates_changed": false,
+  "default_recorded_view_requests_asset": false,
+  "democratic_two_party_share_conversion_factor": 0.5,
+  "demographic_group_decisions": 1600,
+  "display_rounding_verification": {
+    "checks": 55710,
+    "display_rounding_outside_range": 0,
+    "examples": [],
+    "outward_range_rounding_and_explicit_net_sum_display_allowance_only": true,
+    "passed": true,
+    "selected_points_and_exact_downloaded_range_endpoints_unchanged": true
+  },
+  "displayed_point_rounding_and_exact_exported_bounds_preserved": true,
+  "exact_contribution_units": "statewide_D_minus_R_margin_percentage_points",
+  "exact_endpoint_version_is_not_native_count_update_time": true,
+  "existing_variants": 9,
+  "families": [
+    "accepted_ridge_multinomial",
+    "histogram_gradient_boosting",
+    "extra_randomized_trees"
+  ],
+  "fitted_aggregate_projection_replay_only": true,
+  "groups_in_held_states": 544,
+  "held_states": 17,
+  "incomplete_download_replacement": false,
+  "independent_critic_semantic_review": {
+    "agent_id": "1ef74af6-09a7-42c6-b5f7-003a09db2234",
+    "blocking_disclosure_defects": [],
+    "conditioned_total_not_prediction_accuracy": true,
+    "contract": "participation.independent_agent_disclosure_review.v1",
+    "disposition": "scoped_pass",
+    "exact_downloaded_bounds_and_existing_points_not_changed": true,
+    "exact_endpoint_version_not_native_count_update_time": true,
+    "independent_human_certification": false,
+    "model": "gpt-5.6-sol",
+    "modeled_source_categories_not_observed_absent_or_first_time_people": true,
+    "nonblocking_caveats": [
+      {
+        "finding": "Initial static modeled_nonparticipation option still said No contest vote although the metric is net entry plus exit.",
+        "parent_fix": "Changed to Net participation - NORC estimate; runtime definition and numeric values unchanged."
+      },
+      {
+        "finding": "Top-level introduction still used entry/return shorthand.",
+        "parent_fix": "Replaced with explicitly modeled prior no-House-choice to D/R contributions."
+      }
+    ],
+    "not_confidence_intervals_or_all_uncertainty": true,
+    "outward_and_net_sum_rounding_allowance_disclosed_as_presentation_only": true,
+    "parent_resolved_both_wording_caveats_after_review": true,
+    "retention_own_prior_model_assigned_DR_denominator": true,
+    "same_state_group_ranges_no_statewide_group_substitution": true,
+    "scope": "Current source-code disclosure semantics only; not build, production, numerical replay, private fitting or source-original certification.",
+    "source_fits_reproduced": false
+  },
+  "missing_retention_is_unavailable_not_zero": true,
+  "model_family_profile_ranges_not_confidence_intervals_or_all_uncertainty": true,
+  "net_participation_only_explicit_extra_display_rounding_allowance_pp": 0.01,
+  "no_private_respondents_individual_histories_or_private_fine_cells_exported": true,
+  "no_statewide_range_substitution_for_demographic_groups": true,
+  "observed_staying_home_or_first_ever_or_returning_people_identified": false,
+  "optional_compressed_asset_bytes": 159948,
+  "profiles": [
+    "original",
+    "attenuated",
+    "full"
+  ],
+  "qualified_states": 33,
+  "ranges_rounded_outward_for_display": true,
+  "raw_output_pins": {
+    "files": {
+      "complete-nine-variant-query.csv": {
+        "bytes": 17693301,
+        "sha256": "efb1fc4a1a47522a8d19ebe632000a7b04c853f10b6359a6f4bdcfeaaf058a4d"
+      },
+      "sensitivity.json": {
+        "bytes": 942084,
+        "sha256": "7a7c144774b183f4405a54cc7b4a00dc5d0599d3e172cebbc860445f387ebf87"
+      },
+      "sensitivity.json.gz": {
+        "bytes": 159948,
+        "sha256": "ac008fc2ee863cb12c22a57c7c10737501dac8b67dc3103b2bf1290c12b3a742"
+      }
+    },
+    "input_layer": "three published fitted aggregate profile products",
+    "source_fits_reproduced": false,
+    "source_pins": {
+      "attenuated": {
+        "bytes": 6393351,
+        "sha256": "84e84d0cba17fea1da599fac78551d08db732eb302bb890097e3a6d0a35aa2a0",
+        "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/25dcb6be51253a8a3140b55cf222627b03fee2d7/data/house-official-source-update/20261113-01/viewer-attenuated.json"
+      },
+      "full": {
+        "bytes": 6395879,
+        "sha256": "944f6ffee2db97d274446d45b2d6ad1a378b33637591ef8850ba266edfcfdf88",
+        "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/25dcb6be51253a8a3140b55cf222627b03fee2d7/data/house-official-source-update/20261113-01/viewer-full.json"
+      },
+      "original": {
+        "bytes": 6351974,
+        "sha256": "7b022c2311f2151071c1cab42d87d2a21fc6efe30aaca3d7ac19e804d38049e4",
+        "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/25dcb6be51253a8a3140b55cf222627b03fee2d7/data/house-official-source-update/20261113-01/viewer-original.json"
+      }
+    }
+  },
+  "retention_denominator": "prior_model_assigned_D_R_mass_all_destinations",
+  "retention_not_halved": true,
+  "scientific_release": {
+    "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+    "assets": [
+      {
+        "bytes": 270,
+        "id": 745015253,
+        "name": "actual-client-scope-validation.json",
+        "sha256": "c76da8bdeb0d2d1faaa36961c2ae40df99da09ca0c4652d4aa34e6d38242dc63",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/actual-client-scope-validation.json"
+      },
+      {
+        "bytes": 7039622,
+        "id": 745015240,
+        "name": "complete-analysis.zip",
+        "sha256": "cea37bea5fe1218bf05e4e682b211fa1c60c651ec8b33e238d1ccdf6ea658e1b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/complete-analysis.zip"
+      },
+      {
+        "bytes": 959,
+        "id": 745015249,
+        "name": "complete-asset-manifest.json",
+        "sha256": "8d937714c91e338a9b79573e7f6ac77369f91437c5b13b27e4e8c711ca0e53a0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/complete-asset-manifest.json"
+      },
+      {
+        "bytes": 17693301,
+        "id": 745015291,
+        "name": "complete-nine-variant-query.csv",
+        "sha256": "efb1fc4a1a47522a8d19ebe632000a7b04c853f10b6359a6f4bdcfeaaf058a4d",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/complete-nine-variant-query.csv"
+      },
+      {
+        "bytes": 1335,
+        "id": 745015282,
+        "name": "manifest.json",
+        "sha256": "25053c85d033dfd6ffde484241e4fca576e94ef83ef6b53346c3eabd7adf2f77",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/manifest.json"
+      },
+      {
+        "bytes": 2756,
+        "id": 745015248,
+        "name": "offline-replays.json",
+        "sha256": "46d152af883f851a4c1961610de61ec1caadae197012603f44ab00e07bd3451b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/offline-replays.json"
+      },
+      {
+        "bytes": 942084,
+        "id": 745015283,
+        "name": "sensitivity.json",
+        "sha256": "7a7c144774b183f4405a54cc7b4a00dc5d0599d3e172cebbc860445f387ebf87",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/sensitivity.json"
+      },
+      {
+        "bytes": 159948,
+        "id": 745015250,
+        "name": "sensitivity.json.gz",
+        "sha256": "ac008fc2ee863cb12c22a57c7c10737501dac8b67dc3103b2bf1290c12b3a742",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/sensitivity.json.gz"
+      }
+    ],
+    "id": 444685503,
+    "immutable": true,
+    "passed": true,
+    "source_commit": "ae9c99747f2c5f5565cb20135ee8d3cf0095d10d",
+    "tag": "participation-house-model-disclosures-20261113-01"
+  },
+  "scientific_source_commit": "ae9c99747f2c5f5565cb20135ee8d3cf0095d10d",
+  "source_fits_reproduced": false,
+  "state_decisions": 50,
+  "supported_groups": 586,
+  "suppressed_qualified_groups": 470,
+  "website_source": "f84b0f359ffeb5fdd5eeec07ea22ccf5d01f8072",
+  "whole_project_complete": false
+}

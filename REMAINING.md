@@ -13,6 +13,47 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Current House-model disclosures are live; source gaps remain
+
+The four independent-critic disclosure fixes659 are integrated without
+refitting or changing source counts, weights, current points or33/17 gates.
+Selected state/group points now show nine-family/profile ranges; exact
+endpoint versions are not native update clocks; conditioned totals are not
+prediction accuracy; prior D/R versus no-House-choice categories are explicitly
+modeled, not observed absent/new/returning people. Retention uses its own
+prior model-assigned D/R denominator and missing retention is not0%.
+
+Scientific sourceae9c997/immutable444685503 contain a7,039,622-byte/13-member
+complete public-aggregate projection replay and17,693,301-byte CSV with all
+118,800 state/group/metric/variant decisions. All three original public profile
+bodies and exact withholding decisions are included. No private source-model
+fit is claimed reproduced. Two7-test/four-output isolated blocked replays,
+14,850 actual client scope checks and55,710 display checks pass.
+The explicit outward/0.01pp net-sum display-rounding allowance changes neither
+raw exported bounds nor old points. Ranges are not confidence intervals or
+all uncertainty; source-frame/affinity assumptions remain separately disclosed.
+
+Websitef84b0f3 is live after guards43502379124/43502827953 and actual
+Pages43502828046. Native artifact14075411840 has997,353,884 payload/
+999,956,480 tar bytes, both below1e9. All32 served bodies and every old saved
+numeric cell match;436 prior download pins,113 archived models and independent
+Which Candidate/Interactive Analysis HTML remain. Live72 exact point/range
+cases across both widths, both full ZIP hashes and single-request caches pass.
+Separate503 optional-source failure/retry cases preserve points. All43 driver
+tests also pass in the actual canonical checkout; only the owned test-script
+key is added to its older manifest. No HEAD/index or unrelated script is reset.
+See [source qualifications](SOURCES.md#current-house-model-disclosures-and-variant-sensitivity)
+and [acceptance](data/participation-access/20261113-house-model-disclosures-01/website-acceptance.json).
+
+The entire catalog047df0ce remains unchanged, including Texas9/254 counts,
+Missouri/King context, native observations, House endpoints and model33.
+Do not repeat this disclosure/model-replay campaign. Continue genuine
+all-state native and compatible joint-source gap resolution and qualified
+numerical updates; unchanged NORC files do not justify another fit.
+Full audit636 then beautification637 remain behind genuine unfinished
+implementation; sole45-minute continuation124 stays active. Older campaign
+IDs below are historical receipts.
+
 ## Texas integration is live; nationwide work remains open
 
 The user-requested Texas implementation and independent source critique are
@@ -40,9 +81,8 @@ and [acceptance](data/participation-access/20261113-texas-county-reconciliations
 Texas remains partial; the statewide recorded+11.976 Democratic-share versus
 +23.952 D-R-margin distinction and33 qualified/17 held behavioral comparisons
 are unchanged. Continue genuine all-state source/model reconciliation, not
-another Texas replay. The four current-model disclosure fixes659 remain open;
-the compact source-pinned sensitivity reducer passes six tests in the session
-workspace but is not yet a published UI feature. Full audit636 then
+another Texas replay. The four current-model disclosure fixes659 are now live
+as described above. Full audit636 then
 beautification637 stay behind unfinished implementation. Sole45-minute
 continuation124 remains active; older campaign IDs below are historical.
 

@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current House-model disclosures | [Same-group variant sensitivity, exact versions and conditioned totals](#current-house-model-disclosures-and-variant-sensitivity) |
 | Current Texas county expansion | [Eight direct counted-ballot additions, native discrepancies and typed source dates](#2026-texas-eight-native-county-reconciliations) |
 | Current Missouri native additions | [Boone/Cole Ballots Cast, Cole reporting rows and explicitly reviewed county context](#2026-missouri-boone-and-cole-native-statistics) |
 | Current King County native refresh | [935,956 printed Ballots Cast; complete source controls and unchanged county context](#2026-king-county-native-ballots-cast-successor) |
@@ -56,6 +57,63 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Current House-model disclosures and variant sensitivity
+
+The current interface shows each selected state/group point beside the range
+across the **three existing model families and three association profiles**.
+No fits, weights, source counts or comparison gates change: all50 state
+decisions,33 qualified/17 held comparisons and1,600 group decisions remain,
+including586 supported groups. A state's range is never substituted for a
+withheld group. Contributions are to the statewide D-R margin, not the group's
+own vote share. Democratic-share contributions are half the margin points;
+retention keeps its own prior model-assigned D/R denominator.
+
+The persistent badge prints the exact endpoint version separately from the
+unknown native count-update clock and unqualified counting completion.
+The conditioned total matches its endpoint **by construction**, not predictive
+accuracy; preconditioning errors remain separate diagnostics. Modeled prior
+D/R to no House choice and its reverse are not observed staying-home,
+first-ever or returning people. Missing retention remains unavailable, not0%.
+The independent critic gives a scoped semantics pass; its two static wording
+caveats are resolved. This is not human certification or population validation.
+
+The compact159,948-byte gzip is independently checksum-verified, decoded and
+bound to the actual profile pins, endpoint and group. The default recorded
+view does not request it or a full model. A failed optional fetch preserves
+existing points and offers an exact-source retry. Nine-variant ranges are
+model sensitivity, **not confidence intervals or all survey, transport,
+accounting-frame or endpoint uncertainty**. Display bounds round outward;
+net participation adds an explicit0.01pp display allowance for summing two
+rounded entry/exit terms. Exact exported bounds and all earlier points remain
+unchanged. All55,710 display checks pass.
+
+Scientific sourceae9c997 and immutable444685503 provide all three already-public
+aggregate profile bodies,7 Python tests, complete producer/packager code,
+118,800 state/group/metric/variant witnesses and four exact outputs.
+Two isolated network/DNS/child-process-blocked replays pass, as do14,850
+actual client scope checks. This is complete **public fitted-aggregate
+projection replay**, not private respondent-model fitting.
+
+Websitef84b0f3 passes43 driver tests, Astro checks and the separate17
+Which Candidate/caucus contracts. Actual feature/main guards43502379124/
+43502827953 and Pages43502828046 succeed. Native artifact14075411840 contains
+997,353,884 payload/999,956,480 tar bytes, both below1e9; all32 live bodies
+equal the artifact. Every saved numeric cell and all prior driver payload
+fields remain unchanged apart from the new sensitivity receipt;436 previous
+download pins,113 archived models and independent Which Candidate/Interactive
+Analysis HTML are retained. Live72 model/profile/group/unit cases at both
+widths, full7,039,622-byte ZIP hashes, withheld selections, retention and
+single-request caches pass. Two separately labeled503 fault tests preserve
+points and retry successfully; no source/data/style overrides occur in the
+normal live checks. Both production images are reviewed.
+
+The entire live catalog047df0ce, counts01c3cd0a/nativeb2a69fc5, all native
+observations and model33 remain byte-identical. Canonical source persistence
+adds only the owned driver-test key to its intentionally older package
+manifest, preserving unrelated scripts, old explorer and protected HEADs/
+indexes. See [complete numerical downloads](docs/DATA.md#current-house-model-sensitivity-and-disclosure-replay)
+and [acceptance](data/participation-access/20261113-house-model-disclosures-01/website-acceptance.json).
 
 ## 2026 Texas eight native county reconciliations
 

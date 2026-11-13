@@ -8,6 +8,49 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current House model sensitivity and disclosure replay
+
+This package projects the **three existing public aggregate profile products**
+into exact same-state/group ranges across nine family/profile combinations.
+It preserves all50 states,33 qualified/17 held comparisons,1,600 group decisions
+and every withholding. It does not refit private respondents, change weights
+or source counts, or identify individual histories.
+
+| Complete download | Contents |
+|---|---|
+| [Complete numerical projection and replay](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/complete-analysis.zip) | 7,039,622 bytes/13 members; all three original public profile bodies, producer/packager/tests, four complete outputs, README and checksums |
+| [Every numerical/held variant decision](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/complete-nine-variant-query.csv) | 17,693,301 bytes;118,800 state/group/metric/variant witnesses, including null held decisions |
+| [Exact complete sensitivity projection](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/sensitivity.json) |942,084 bytes; all source pins, exact extrema, supported/held decisions and unit definitions |
+| [Compressed viewer counterpart](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/sensitivity.json.gz) |159,948 bytes; same JSON, independently verified before and after decoding |
+| [Full input/output manifest](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/manifest.json) | All three immutable source URL/body pins and every exact output checksum |
+
+Archive SHA256
+`cea37bea5fe1218bf05e4e682b211fa1c60c651ec8b33e238d1ccdf6ea658e1b`;
+CSV SHA256
+`efb1fc4a1a47522a8d19ebe632000a7b04c853f10b6359a6f4bdcfeaaf058a4d`.
+All eight assets in immutable444685503 are authenticated/draft then anonymous/
+public full-body verified. Two7-test/four-output isolated network/DNS/child-
+blocked replays and14,850 client scope checks pass.
+
+Contribution metrics use statewide **D-R margin percentage points**, not
+group vote shares. Halve those contributions for Democratic two-party-share
+points; do not halve retention, whose exported values are fractions of prior
+model-assigned D/R mass. Ranges are model sensitivity, not confidence intervals,
+identified flows or all survey/transport/frame/endpoint uncertainty.
+The interface rounds bounds outward and adds an explicitly disclosed0.01pp
+net-participation display allowance for summed rounded entry/exit terms;
+the exact CSV/JSON bounds and all old model points are unchanged.
+Public fitted-aggregate projection replay is not private source-model fitting.
+
+Live websitef84b0f3 passes43 driver tests and72 real model/profile/group/unit
+cases at both widths, both full ZIP hashes, held selections and single-fetch
+caches. Optional503 failures are separately tested and do not remove points.
+Actual artifact14075411840 has997,353,884 payload/999,956,480 tar bytes below1e9;
+all32 live bodies match. All saved numeric values,436 earlier download pins,
+113 archived models, current native counts and other site sections remain.
+See [source definitions](../SOURCES.md#current-house-model-disclosures-and-variant-sensitivity)
+and [actual production acceptance](../data/participation-access/20261113-house-model-disclosures-01/website-acceptance.json).
+
 ## Current Texas native county counts
 
 Eight direct counted-ballot additions plus preserved Harris supply9/254

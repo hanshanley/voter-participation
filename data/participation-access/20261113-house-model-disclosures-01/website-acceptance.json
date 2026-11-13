@@ -1,0 +1,1824 @@
+{
+  "actual_native_and_production_bytes": {
+    "actual_native_artifact_id": 14075411840,
+    "actual_payload_bytes": 997353884,
+    "actual_production_html_and_scripts_exact": true,
+    "actual_tar_bytes": 999956480,
+    "all_prior_driver_numerics_and_stable_links_unchanged": true,
+    "artifact_zip_sha256": "be2284b2460e9e372305405c127b21fab40ec0ba072e0d802e7cc0930d9f3851",
+    "assets": {
+      "_astro/ParticipationCPSUnifiedHistory.astro_astro_type_script_index_0_lang.BgXsRZsU.js": {
+        "bytes": 16075,
+        "sha256": "3e52d3a7327aa904f2d9ce0bd8644654552ccaad2f75a629a848e234ac8f2174"
+      },
+      "_astro/ParticipationReturnDrivers.astro_astro_type_script_index_0_lang.De78sNtk.js": {
+        "bytes": 81771,
+        "sha256": "ddd056d5021ea6b91107ef580fbfe0ac17158ad59cbb5b574b20dd7e0573447f"
+      },
+      "interactive-analysis/index.html": {
+        "bytes": 8649,
+        "sha256": "25ea2bb5ef36f9f1035369e2b8f5ae0e708b2fc751add506c85927d90ddc3501"
+      },
+      "scripts/participation-ap-history.js": {
+        "bytes": 4818,
+        "sha256": "ebc440cb3ca4a67a5ae7b1e40bfdd692084a4553cf766fc378047899be40ca08"
+      },
+      "scripts/participation-calibrated-swing.js": {
+        "bytes": 6433,
+        "sha256": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115"
+      },
+      "scripts/participation-civic-state-demographics.js": {
+        "bytes": 4149,
+        "sha256": "66913f5636120c6de8264ce8756054bbbced194b1d5255ec524c70ebcf0da0e6"
+      },
+      "scripts/participation-counts.js": {
+        "bytes": 8473,
+        "sha256": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de"
+      },
+      "scripts/participation-county-context.js": {
+        "bytes": 1798,
+        "sha256": "c23837f6178c121051fd5d1454f7d27690dc1002baaf7392cc4a983001865c05"
+      },
+      "scripts/participation-coverage.js": {
+        "bytes": 5146,
+        "sha256": "f67b2fc454e16900146b8c54608183b6e56e22c288e1c250bfafe26a2329689a"
+      },
+      "scripts/participation-cps-1996.js": {
+        "bytes": 5447,
+        "sha256": "a5d03985e995bbd975980c7fadd51021ebf8973e9416cb19430a3ccf4d264400"
+      },
+      "scripts/participation-cps-1998.js": {
+        "bytes": 4291,
+        "sha256": "3d526ac6f0e9666bc3c251e2ff5d030ac371a309fc6c2278087f6ccd2940589c"
+      },
+      "scripts/participation-cps-2002.js": {
+        "bytes": 4206,
+        "sha256": "b6e3e532ef46327b9c64f16baea5b7a65cc0a8178316b18be96755609c26e5f5"
+      },
+      "scripts/participation-dataset.js": {
+        "bytes": 3108,
+        "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+      },
+      "scripts/participation-downloads.js": {
+        "bytes": 6746,
+        "sha256": "ffd308df80b1453fb642eab9fa2143473863a43a809c578717a8bbdb0c645203"
+      },
+      "scripts/participation-explorer.js": {
+        "bytes": 256135,
+        "sha256": "86538968060fd21de90a1f8ce8061ceeab97e408a8b6614f740872432786dc95"
+      },
+      "scripts/participation-geography.js": {
+        "bytes": 51748,
+        "sha256": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3"
+      },
+      "scripts/participation-house-sensitivity.js": {
+        "bytes": 6941,
+        "sha256": "7edf1f578e4953e2c54f917f759178483a8a4cf14f3301d9667daf006e01046f"
+      },
+      "scripts/participation-map-projection.js": {
+        "bytes": 2389,
+        "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+      },
+      "scripts/participation-native-bindings.js": {
+        "bytes": 8869,
+        "sha256": "550dbd2cc7fcde5a91df7186ecb3358d7cc299562af4286647df795e8282fb00"
+      },
+      "scripts/participation-norc-house.js": {
+        "bytes": 41344,
+        "sha256": "3329062a64af6a79970dd5792f2f358ed23668d151c8183451b514afb778dd20"
+      },
+      "scripts/participation-resident-context.js": {
+        "bytes": 13801,
+        "sha256": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260"
+      },
+      "scripts/participation-return-drivers.js": {
+        "bytes": 45900,
+        "sha256": "549d29bb1031fd6fb541096b4a29e269449d5f6b8f81044225343feeccc19291"
+      },
+      "scripts/participation-state-demographics.js": {
+        "bytes": 4906,
+        "sha256": "0f3bbab2b430894a6fa91b2b5752e9c2709e86b7015f103160850ec81360afdf"
+      },
+      "scripts/participation-swing.js": {
+        "bytes": 4686,
+        "sha256": "cdae0c2e5f77a2744a5117ff3e995375025041151d5ab1ce657024560739abf8"
+      },
+      "scripts/participation-transition-scenarios.js": {
+        "bytes": 7455,
+        "sha256": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e"
+      },
+      "voter-participation/app.js": {
+        "bytes": 28147,
+        "sha256": "ec3a37d51010c4581d01e7552747a3eb3029f4f58ab4ae97223aaa798723f9db"
+      },
+      "voter-participation/cps.js": {
+        "bytes": 2125,
+        "sha256": "385aa4a3b12c7e6bf6d816ba87737d66c425dffe1ba5624e26e2c0fc32e32f69"
+      },
+      "voter-participation/current.js": {
+        "bytes": 4691,
+        "sha256": "88561de5a79c5c4ef5cb11fe8bad4b0ecc3fa6b6e9d507c36b8f15689f437c27"
+      },
+      "voter-participation/index.html": {
+        "bytes": 6766679,
+        "sha256": "058b282c2278957adc73bd8033bf5c2ea2c27bbb3d2916c8adc526eddc49ab29"
+      },
+      "voter-participation/model.js": {
+        "bytes": 2437,
+        "sha256": "8a4a1b9b9e54e2fd9d5e435a0455321ca84bd9b19b26f8bd5951b76cb8b3bfee"
+      },
+      "voter-participation/nationwide.js": {
+        "bytes": 6438,
+        "sha256": "b49dc256be87b855ec45adc337cb5ccdb89c7b3e3bc23bbfe0b70c9c68952e9c"
+      },
+      "which-candidate/index.html": {
+        "bytes": 33353,
+        "sha256": "b2953a99cab53d53bbd3288b9435c1c1bd0c8b8c7a0baec178b2100f14d3bc4c"
+      }
+    },
+    "behavioral_holds": 17,
+    "both_strictly_less_than_1e9": true,
+    "concurrent_independent_website_publication_preserved": true,
+    "independent_which_candidate_and_interactive_analysis_html_byte_identical": true,
+    "new_context_review_sha256": "4fb401cbfe5b4aae90b0ffff133ca81be19b6d2b6dec995d1cba42d302145f8a",
+    "old_context_checksums_not_weakened": true,
+    "passed": true,
+    "preserved_complete_download_pins": 436,
+    "preserved_original_models": 113,
+    "recorded_rows": 50,
+    "run_id": 43502828046,
+    "served_bodies": 32,
+    "source_commit": "f84b0f359ffeb5fdd5eeec07ea22ccf5d01f8072",
+    "source_dom_and_style_not_overridden": true,
+    "source_guard_run": 43502827953,
+    "this_data_task_started_no_website_build": false
+  },
+  "actual_production_browser": {
+    "actual_production": true,
+    "all_local_servers_and_browsers_closed": true,
+    "cache_requests": [
+      {
+        "one_request_per_profile_and_sensitivity": true,
+        "width": 1440
+      },
+      {
+        "one_request_per_profile_and_sensitivity": true,
+        "width": 390
+      }
+    ],
+    "cases": [
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      }
+    ],
+    "default_recorded_counts_load_no_model_or_sensitivity": true,
+    "errors": [],
+    "exact_state_group_family_profile_points_and_ranges": true,
+    "explicit_optional_availability_failure_injection": false,
+    "full_complete_downloads": [
+      {
+        "bytes": 7039622,
+        "sha256": "cea37bea5fe1218bf05e4e682b211fa1c60c651ec8b33e238d1ccdf6ea658e1b",
+        "width": 1440
+      },
+      {
+        "bytes": 7039622,
+        "sha256": "cea37bea5fe1218bf05e4e682b211fa1c60c651ec8b33e238d1ccdf6ea658e1b",
+        "width": 390
+      }
+    ],
+    "passed": true,
+    "phase": "production",
+    "regular_paths_source_data_dom_and_style_not_overridden": true,
+    "retention_own_denominator_and_units_control_preserved": true,
+    "unsupported_groups_and_states_not_substituted": true
+  },
+  "both_final_production_images_reviewed": true,
+  "bounded_request": "Four current House-model disclosure corrections without refitting",
+  "candidate_browser": {
+    "actual_production": false,
+    "all_local_servers_and_browsers_closed": true,
+    "cache_requests": [
+      {
+        "one_request_per_profile_and_sensitivity": true,
+        "width": 1440
+      },
+      {
+        "one_request_per_profile_and_sensitivity": true,
+        "width": 390
+      }
+    ],
+    "cases": [
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 1440
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 1440
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "original",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "attenuated",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "accepted_ridge_multinomial",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "margin",
+        "width": 390
+      },
+      {
+        "family": "extra_randomized_trees",
+        "group": "AGE6|30_49",
+        "point_and_range_cells": 12,
+        "profile": "full",
+        "state": "AR",
+        "units": "democratic_two_party_share",
+        "width": 390
+      }
+    ],
+    "default_recorded_counts_load_no_model_or_sensitivity": true,
+    "errors": [],
+    "exact_state_group_family_profile_points_and_ranges": true,
+    "explicit_optional_availability_failure_injection": false,
+    "full_complete_downloads": [
+      {
+        "bytes": 7039622,
+        "sha256": "cea37bea5fe1218bf05e4e682b211fa1c60c651ec8b33e238d1ccdf6ea658e1b",
+        "width": 1440
+      },
+      {
+        "bytes": 7039622,
+        "sha256": "cea37bea5fe1218bf05e4e682b211fa1c60c651ec8b33e238d1ccdf6ea658e1b",
+        "width": 390
+      }
+    ],
+    "passed": true,
+    "phase": "candidate",
+    "regular_paths_source_data_dom_and_style_not_overridden": true,
+    "retention_own_denominator_and_units_control_preserved": true,
+    "unsupported_groups_and_states_not_substituted": true
+  },
+  "canonical_scientific_source": {
+    "baseline": "bb0ff77c8a4eaccf7f2026b76a66f1e2d629bb50",
+    "canonical_heads_indexes_and_unrelated_files_preserved": true,
+    "files": {
+      "data/house-model-disclosures/20261113-01/manifest.json": {
+        "bytes": 1335,
+        "sha256": "25053c85d033dfd6ffde484241e4fca576e94ef83ef6b53346c3eabd7adf2f77"
+      },
+      "data/house-model-disclosures/20261113-01/sensitivity.json": {
+        "bytes": 942084,
+        "sha256": "7a7c144774b183f4405a54cc7b4a00dc5d0599d3e172cebbc860445f387ebf87"
+      },
+      "data/house-model-disclosures/20261113-01/sensitivity.json.gz": {
+        "bytes": 159948,
+        "sha256": "ac008fc2ee863cb12c22a57c7c10737501dac8b67dc3103b2bf1290c12b3a742"
+      },
+      "scripts/house_model_sensitivity.py": {
+        "bytes": 10555,
+        "sha256": "9d8387061f8cbac58889465150a5dfe2c2c4b0a4796500beab876992fc26922a"
+      },
+      "scripts/package_house_model_sensitivity.py": {
+        "bytes": 5545,
+        "sha256": "6ad4f052abbdad1d2a248512b19998fc5b56e732ca545207e743a0ae71ab3465"
+      },
+      "tests/test_house_model_sensitivity.py": {
+        "bytes": 6956,
+        "sha256": "eca68eb4f3bd27e63f9f5f28d65434229a819ec0cdfed01742c333b52e50e405"
+      }
+    },
+    "passed": true,
+    "protected": {
+      "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+      "research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+      "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+      "website": {
+        "head": "cb263a70f4c00dcddce34f9cae367a1f524c5376",
+        "index_sha256": "a5809faddc5e47eacd85ae5be0a3c703b8e3557be2d69c43b7962180bbc3b9e0"
+      }
+    },
+    "source_commit": "ae9c99747f2c5f5565cb20135ee8d3cf0095d10d"
+  },
+  "canonical_website_persistence": {
+    "baseline": "826495550eef0c92b1390b9f0dd7f76a136a79b3",
+    "canonical_package_only_owned_test_script_added": true,
+    "canonical_package_sha256": "2cb17bcc7a3580f40298d7b60679f2efdf1ddeb7cf156e431d3103a749fc8b92",
+    "canonical_package_unchanged_pending_owned_script": false,
+    "no_missing_dependencies_or_new_package_installs": true,
+    "node_tests": 43,
+    "older_independent_explorer_preserved_sha256": "c08ddc6d0a495429e64528b4eff716ebfae7231d1c61b6b7f48bf5cc56b569b5",
+    "owned_files": {
+      "data/participation-return-attribution/20261113-01/sensitivity-receipt.json": {
+        "bytes": 846,
+        "sha256": "55550e880ee4c8da87f213db334b4a8e81272242a993d218140426107593b62c"
+      },
+      "public/scripts/participation-house-sensitivity.js": {
+        "bytes": 6941,
+        "sha256": "7edf1f578e4953e2c54f917f759178483a8a4cf14f3301d9667daf006e01046f"
+      },
+      "public/scripts/participation-norc-house.js": {
+        "bytes": 41344,
+        "sha256": "3329062a64af6a79970dd5792f2f358ed23668d151c8183451b514afb778dd20"
+      },
+      "public/scripts/participation-return-drivers.js": {
+        "bytes": 45900,
+        "sha256": "549d29bb1031fd6fb541096b4a29e269449d5f6b8f81044225343feeccc19291"
+      },
+      "scripts/participation-house-sensitivity.test.mjs": {
+        "bytes": 8229,
+        "sha256": "49818ba099a2de600a20f0fae3760876c35ab0439eb582b10e344d5bb714aa63"
+      },
+      "src/components/ParticipationReturnDrivers.astro": {
+        "bytes": 33891,
+        "sha256": "48f4153bc12a0f08d5a1e5495d4ceb7750fe79a827f0689af17e652456429b37"
+      }
+    },
+    "passed": true,
+    "protected": {
+      "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+      "research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+      "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+      "website": {
+        "head": "cb263a70f4c00dcddce34f9cae367a1f524c5376",
+        "index_sha256": "a5809faddc5e47eacd85ae5be0a3c703b8e3557be2d69c43b7962180bbc3b9e0"
+      }
+    },
+    "source_commit": "f84b0f359ffeb5fdd5eeec07ea22ccf5d01f8072",
+    "unrelated_canonical_package_fields_and_scripts_preserved": true
+  },
+  "complete_scientific_release": {
+    "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+    "assets": [
+      {
+        "bytes": 270,
+        "id": 745015253,
+        "name": "actual-client-scope-validation.json",
+        "sha256": "c76da8bdeb0d2d1faaa36961c2ae40df99da09ca0c4652d4aa34e6d38242dc63",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/actual-client-scope-validation.json"
+      },
+      {
+        "bytes": 7039622,
+        "id": 745015240,
+        "name": "complete-analysis.zip",
+        "sha256": "cea37bea5fe1218bf05e4e682b211fa1c60c651ec8b33e238d1ccdf6ea658e1b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/complete-analysis.zip"
+      },
+      {
+        "bytes": 959,
+        "id": 745015249,
+        "name": "complete-asset-manifest.json",
+        "sha256": "8d937714c91e338a9b79573e7f6ac77369f91437c5b13b27e4e8c711ca0e53a0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/complete-asset-manifest.json"
+      },
+      {
+        "bytes": 17693301,
+        "id": 745015291,
+        "name": "complete-nine-variant-query.csv",
+        "sha256": "efb1fc4a1a47522a8d19ebe632000a7b04c853f10b6359a6f4bdcfeaaf058a4d",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/complete-nine-variant-query.csv"
+      },
+      {
+        "bytes": 1335,
+        "id": 745015282,
+        "name": "manifest.json",
+        "sha256": "25053c85d033dfd6ffde484241e4fca576e94ef83ef6b53346c3eabd7adf2f77",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/manifest.json"
+      },
+      {
+        "bytes": 2756,
+        "id": 745015248,
+        "name": "offline-replays.json",
+        "sha256": "46d152af883f851a4c1961610de61ec1caadae197012603f44ab00e07bd3451b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/offline-replays.json"
+      },
+      {
+        "bytes": 942084,
+        "id": 745015283,
+        "name": "sensitivity.json",
+        "sha256": "7a7c144774b183f4405a54cc7b4a00dc5d0599d3e172cebbc860445f387ebf87",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/sensitivity.json"
+      },
+      {
+        "bytes": 159948,
+        "id": 745015250,
+        "name": "sensitivity.json.gz",
+        "sha256": "ac008fc2ee863cb12c22a57c7c10737501dac8b67dc3103b2bf1290c12b3a742",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-model-disclosures-20261113-01/sensitivity.json.gz"
+      }
+    ],
+    "id": 444685503,
+    "immutable": true,
+    "passed": true,
+    "source_commit": "ae9c99747f2c5f5565cb20135ee8d3cf0095d10d",
+    "tag": "participation-house-model-disclosures-20261113-01"
+  },
+  "current_counts_catalog_unchanged": {
+    "all_catalog_bytes_unchanged": true,
+    "bytes": 20519,
+    "catalog_commit": "047df0ceacf70de6697482b94436da0d0a005f52",
+    "counts_version": "01c3cd0a55e6d99a42066514bc723aaf64e47f6b726c5a62b0e5a13853930dbe",
+    "native_version": "b2a69fc5d504bc91d1295b80441c6824cdc98b5da517b62762d0932eb1d94235",
+    "no_new_counts_or_weights_or_model_dataset_activated": true,
+    "passed": true,
+    "sha256": "641c0b40461d391c8ede2c229dcebf08b3f1b9c775a51303b721ffdd6a1250a0"
+  },
+  "explicitly_injected_optional_source_failure_checks": {
+    "actual_production": false,
+    "all_local_servers_and_browsers_closed": true,
+    "cache_requests": [],
+    "cases": [
+      {
+        "exact_source_retry_succeeded": true,
+        "injected_http_status": 503,
+        "optional_sensitivity_failure_preserved_points": true,
+        "width": 1440
+      },
+      {
+        "exact_source_retry_succeeded": true,
+        "injected_http_status": 503,
+        "optional_sensitivity_failure_preserved_points": true,
+        "width": 390
+      }
+    ],
+    "default_recorded_counts_load_no_model_or_sensitivity": true,
+    "errors": [],
+    "exact_state_group_family_profile_points_and_ranges": true,
+    "explicit_optional_availability_failure_injection": true,
+    "full_complete_downloads": [],
+    "passed": true,
+    "phase": "faults",
+    "regular_paths_source_data_dom_and_style_not_overridden": false,
+    "retention_own_denominator_and_units_control_preserved": true,
+    "unsupported_groups_and_states_not_substituted": true
+  },
+  "isolated_scientific_replays": {
+    "passed": true,
+    "replays": [
+      {
+        "all_member_pins_verified": 12,
+        "all_output_bytes_exact": true,
+        "complete_output_files": 4,
+        "hash_seed": "19",
+        "isolated_stdlib_only": true,
+        "network_dns_and_children_blocked": true,
+        "passed": true,
+        "private_respondents_included": false,
+        "source_fits_reproduced": false,
+        "summary": {
+          "group_decisions": 1600,
+          "held_states": 17,
+          "qualified_states": 33,
+          "states": 50,
+          "statewide_spread_margin_pp": {
+            "entry": {
+              "maximum": 2.0720313001526276,
+              "median": 0.5163671029121888,
+              "states_with_complete_variants": 33
+            },
+            "modeled_nonparticipation": {
+              "maximum": 8.905295381088697,
+              "median": 4.300089369150257,
+              "states_with_complete_variants": 33
+            },
+            "other_choice": {
+              "maximum": 2.1788968604213714,
+              "median": 0.285714973374917,
+              "states_with_complete_variants": 33
+            },
+            "switching": {
+              "maximum": 9.948693432163363,
+              "median": 4.911174049632615,
+              "states_with_complete_variants": 33
+            }
+          },
+          "supported_group_decisions": 586
+        },
+        "tests": 7,
+        "three_gates_probed": true,
+        "unexpected_external_operations": 0
+      },
+      {
+        "all_member_pins_verified": 12,
+        "all_output_bytes_exact": true,
+        "complete_output_files": 4,
+        "hash_seed": "73",
+        "isolated_stdlib_only": true,
+        "network_dns_and_children_blocked": true,
+        "passed": true,
+        "private_respondents_included": false,
+        "source_fits_reproduced": false,
+        "summary": {
+          "group_decisions": 1600,
+          "held_states": 17,
+          "qualified_states": 33,
+          "states": 50,
+          "statewide_spread_margin_pp": {
+            "entry": {
+              "maximum": 2.0720313001526276,
+              "median": 0.5163671029121888,
+              "states_with_complete_variants": 33
+            },
+            "modeled_nonparticipation": {
+              "maximum": 8.905295381088697,
+              "median": 4.300089369150257,
+              "states_with_complete_variants": 33
+            },
+            "other_choice": {
+              "maximum": 2.1788968604213714,
+              "median": 0.285714973374917,
+              "states_with_complete_variants": 33
+            },
+            "switching": {
+              "maximum": 9.948693432163363,
+              "median": 4.911174049632615,
+              "states_with_complete_variants": 33
+            }
+          },
+          "supported_group_decisions": 586
+        },
+        "tests": 7,
+        "three_gates_probed": true,
+        "unexpected_external_operations": 0
+      }
+    ]
+  },
+  "passed": true,
+  "preserved_436_prior_full_download_pins_and_113_archived_models": true,
+  "private_source_fits_not_claimed_reproduced": true,
+  "whole_project_complete": false
+}
