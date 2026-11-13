@@ -36,13 +36,18 @@ def percentage(value):
     return result
 
 
-def bounds(value, places):
+def bounds(value, places, upstream_places=None):
     if isinstance(places, bool) or not isinstance(places, int) or not 0 <= places <= 6:
         raise ValueError("Explicit reviewed rounding precision is required")
     value = percentage(value)
     if (value * 10 ** places).denominator != 1:
         raise ValueError("A source share exceeds its declared rounding precision")
     half_step = Fraction(1, 2 * 10 ** places)
+    if upstream_places is not None:
+        if (isinstance(upstream_places, bool) or not isinstance(upstream_places, int)
+                or not places < upstream_places <= 6):
+            raise ValueError("Upstream rounding must have explicit finer precision")
+        half_step += Fraction(1, 2 * 10 ** upstream_places)
     # Closed bounds conservatively retain either tie convention, not a match claim.
     return max(0, value - half_step), min(100, value + half_step)
 
@@ -74,7 +79,7 @@ def index_source(document, recipe):
                 continue
             integer(native[period["count"]])
             for field in period["parties"].values():
-                bounds(native[field], period["decimal_places"])
+                bounds(native[field], period["decimal_places"], period.get("upstream_decimal_places"))
     return rows
 
 
@@ -194,7 +199,8 @@ def build(current, previous, reference_rows, candidates, recipe):
         else:
             denominator = integer(ref[fields["total"]])
             for group, field in selected["parties"].items():
-                low, high = bounds(native[field], selected["decimal_places"])
+                low, high = bounds(native[field], selected["decimal_places"],
+                                   selected.get("upstream_decimal_places"))
                 exact = Fraction(100 * integer(ref[fields[group]]), denominator)
                 query["rounded_party_checks"][group] = dict(
                     source_native_percent=native[field],
@@ -222,7 +228,8 @@ def build(current, previous, reference_rows, candidates, recipe):
             if (row.get(period["one_party"]) or
                     any(percentage(row[field]) == 0 for field in period["parties"].values())):
                 holds.append("one_major_party_or_zero_reported_share_" + period["key"])
-            d, r = (bounds(row[period["parties"][group]], period["decimal_places"])
+            d, r = (bounds(row[period["parties"][group]], period["decimal_places"],
+                           period.get("upstream_decimal_places"))
                     for group in "DR")
             margin_intervals.append((d[0] - r[1], d[1] - r[0]))
         if not holds and len(margin_intervals) == 2:
@@ -317,6 +324,8 @@ def export(inputs, output):
         "candidate rows, district controls, receipts, recipe, code and tests are included.\n"
         "Original publisher prose/application code and respondent/person rows are excluded.\n"
         "Share intervals are conservative closed rounding intervals, not exact vote recovery.\n"
+        "Reviewed upstream rounding adds uncertainty; two-then-one-decimal history is not\n"
+        "treated as a single one-decimal rounding operation. Mixed origins use the wider bound.\n"
         "County identity equality and arithmetic agreement do not qualify source/party/round\n"
         "or geographic comparability. No state party sums or model promotion occurs.\n"
         "From a fresh full extraction, offline using only the Python standard library:\n"

@@ -11,7 +11,8 @@ def recipe():
     return dict(
         collection="counties", identity=dict(id="fips", state="state", name="name"),
         periods=[dict(key=key, count="v", parties=dict(D="d", R="r"),
-                      decimal_places=places, one_party="op")
+                      decimal_places=places, one_party="op",
+                      **(dict(upstream_decimal_places=2) if key == "h24" else {}))
                  for key, places in (("h24", 1), ("h26", 2))],
         reference_period="h26",
         reference_year=2026,
@@ -58,6 +59,10 @@ class ReturnConcordanceTests(unittest.TestCase):
         self.assertTrue(low <= Fraction(100, 3) <= high)
         self.assertEqual(bounds(0, 2)[0], 0)
         self.assertEqual(bounds(100, 2)[1], 100)
+        self.assertEqual(bounds(50, 1, 2), (Fraction(9989, 200), Fraction(10011, 200)))
+        self.assertTrue(bounds(36.9, 1, 2)[0] <= Fraction("36.845"))
+        with self.assertRaises(ValueError):
+            bounds(50, 1, 1)
         for value, precision in ((True, 2), (-1, 2), (101, 2), ("NaN", 2),
                                  (33.333, 2), (40, True)):
             with self.assertRaises(ValueError):
@@ -71,8 +76,8 @@ class ReturnConcordanceTests(unittest.TestCase):
         self.assertIsNone(row["measured_turnout"])
         self.assertEqual(row["native_current_periods"]["h26"]["rem"], 20)
         interval = row["source_descriptive_margin_change_interval_pp"]
-        self.assertEqual(interval["lower"], "39.89")
-        self.assertEqual(interval["upper"], "40.11")
+        self.assertEqual(interval["lower"], "39.88")
+        self.assertEqual(interval["upper"], "40.12")
         self.assertNotEqual(interval["lower"], "-99")
         self.assertEqual(summary["new_exact_candidate_counts_inferred"], 0)
         new = source()
