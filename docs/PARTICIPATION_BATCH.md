@@ -81,11 +81,62 @@ requires separately reviewed qualification. Unknowns remain unknown and zeros
 remain zeros. Candidate votes do not become ballots; registration stocks do
 not automatically become turnout denominators.
 
+## Bind a same-measure refresh to reviewed native facts
+
+The Cape May refresh in [DATA.md](DATA.md) is a real changed-source example,
+not the earlier canonical no-op demonstration. It uses complete reviewed PDF
+factual grids, the existing approved county context and the complete19-row
+accepted replacement scope. Only one observation changes; all51jurisdiction
+shards and other source/mode frames remain represented. The existing measure,
+election and geographic identities are not requalified.
+
+For `canonical_json`, optional `format.fact_bindings` compare individual
+canonical fields with an independently supplied, pinned
+`participation.reviewed_pdf_factual_grids.v1` input. For example:
+
+```json
+{
+  "input": "facts",
+  "compression": "gzip",
+  "record": {"geography.id": "existing-reviewed-county"},
+  "path": "count.value",
+  "source_id": "reviewed-native-product",
+  "table_id": "reviewed-summary",
+  "native_unit": "Ballots Cast - Total",
+  "measure": "total",
+  "parse": "count"
+}
+```
+
+Declare `facts` in `spec.inputs`, including its full byte/SHA pin and permitted
+publication policy. Product, table, record and native-row selectors must each
+be unambiguous. The current supported native role is the reviewed unofficial
+registration/ballot/turnout-statistics grid, not a contest-choice table.
+Native numerator labels must match the accepted measure; missing cells cannot
+become reported zeroes. `parse: "count"` accepts only a native scalar count,
+not provenance metadata. Other conversions are rejected.
+
+Bind dependent mirrors too: `count.literal`, `view.ballots`, denominator fields
+and native printed percentages. `value_scope: "annotations"` plus `value_path`
+can verify the native clock; `value_scope: "source"` can verify original source
+URL/hash metadata. These use literal comparisons, not inferred dates or
+retrieval clocks. The full published refresh registry contains all eleven
+assertions and is included in its complete offline packet.
+
+If existing observations already have approved joins, register the unchanged
+reference under `entry.references.assets` and supply its exact original as a
+pinned `spec.inputs` product. The shared runner forwards those references to
+the existing strict intake validator and includes them in the complete source
+packet. A missing original, changed checksum, absent feature key or missing
+approval evidence holds the source. This does not grant a new join or permit
+an inventory change.
+
 ## Complete outputs, publication and resume
 
 Every batch includes all 51 jurisdiction dispositions, complete selected-source
 queries, every compiled count file, permitted original inputs, source-specific
-intake packets, registry, exact processing code and 14 workflow tests.
+intake packets, registry, exact processing code and workflow tests. The original
+three-source packet has14tests; the native-fact refresh packet has17.
 `complete-analysis.zip` includes member checksums and offline instructions,
 not merely metadata or a sampled row export.
 
@@ -104,7 +155,10 @@ resume inputs is rejected. Corrupt cached members fail verification instead of
 being trusted as unchanged. A source hold retains the baseline and produces
 explicit dispositions with exit status 2; it does not activate a partial batch.
 
-This milestone adds no turnout rate, boundary match, precinct polygon, group
-allocation or model fit. Newly compiled native-binding products and broader
+The original no-op milestone adds no turnout rate, boundary match, precinct
+polygon, group allocation or model fit. The subsequent Cape May refresh updates
+the numerator and percentage within its existing reported-registration frame,
+not an eligible-population turnout rate. Newly qualified native-binding
+products and broader
 within-state/office/mode completeness remain separate work; see
 [REMAINING.md](../REMAINING.md).
