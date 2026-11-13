@@ -1,0 +1,391 @@
+{
+  "actual_canonical_full_data_and_model_replays_pass": true,
+  "actual_runtime_baseline": 4223102,
+  "actual_runtime_change": 20078,
+  "cached_bytes_and_mtimes_unchanged_with_no_external_operations": true,
+  "complete_data_release": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 22917365,
+        "name": "absentee-counties.csv",
+        "sha256": "b869d200b429da43c74c9f1fb6941ea94417ef5debec85c79f1f6061d406967d",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/absentee-counties.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 204387,
+        "name": "absentee-state.csv",
+        "sha256": "1b25d4461528297feb4f49074381af289b374603f46cc96e523368d52a70904c",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/absentee-state.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 6927,
+        "name": "all-51-jurisdictions.json",
+        "sha256": "83805f800b3f20f2bc1e01d0752ffdc1474ea6f4bc693f1e16f32907e4bd40e6",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/all-51-jurisdictions.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1057,
+        "name": "coherent-candidate-verification.json",
+        "sha256": "21aed0b895e1561ea3d0f067a518f26d22748fb3007369f71d199f3995ca3abb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/coherent-candidate-verification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 19604553,
+        "name": "complete-analysis.zip",
+        "sha256": "044d0938b21ca738f2fb3996abf8e76518c772b3a8ac4c11c72a65339e59fe40",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2726,
+        "name": "complete-asset-manifest.json",
+        "sha256": "5ac603a1b28c63a403800b8e6afb75d6f21e04d7f58a29a009a4bc359eec2ef3",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3907564,
+        "name": "complete-count-source-packet.zip",
+        "sha256": "3e289d5c12c31c7ef16c5588c4bfc84fa99756fc250c7bff2c46ec92c655cbe4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/complete-count-source-packet.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1843747,
+        "name": "complete-native-queries.json.gz",
+        "sha256": "1e403a4b1bc50113efa3c6e565728b682a1c88f136e6ea9928e6e2db2fbea943",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/complete-native-queries.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 4864,
+        "name": "complete-native-query-recipe.json",
+        "sha256": "b5b1f9560e0fb813461ee1dcfa7509dfc3d9ddf4b3a2adf601fe0dbead5606e2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/complete-native-query-recipe.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 97,
+        "name": "complete-source-dispositions.json",
+        "sha256": "17ab102b9e81061eec69044ac4b8be9d07087b94769770b99625c02beefaabeb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/complete-source-dispositions.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 8646120,
+        "name": "complete-source-registry.json",
+        "sha256": "ee3503417ef8f8d0b1c02a813d7a27df9833f6afdc3bbaea718e3b869861060f",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/complete-source-registry.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1716814,
+        "name": "nc-absentee-county.factual-tables.json.gz",
+        "sha256": "3effd57ec4b46c6330f815e91a49e666d8f5ef48cf1a19cb46214ca186726f60",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/nc-absentee-county.factual-tables.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 19851,
+        "name": "nc-absentee-state.factual-tables.json.gz",
+        "sha256": "7ddb60f31da86a0d8dc4147098527a704b27d806bb234e32ac45ceccd63db048",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/nc-absentee-state.factual-tables.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 5482,
+        "name": "nc-enr.factual-tables.json.gz",
+        "sha256": "caf3c7d6f45b0156b96aeb935a7e065e0cbb434b9ce433237736dc217f224dcf",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/nc-enr.factual-tables.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2797,
+        "name": "original-source-transport-manifest.json",
+        "sha256": "adc4410a9461251e791a561750aa98bf923c27d6e5050714aa52a714311c5e57",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/original-source-transport-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2999,
+        "name": "preparation-review.json",
+        "sha256": "99bb8e5e59a1d1f86c1e0e40df68bb6ae582e916ee63714da43c7fe352eee737",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/preparation-review.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 15485,
+        "name": "prepare-native-count-refresh.py",
+        "sha256": "06e447828ba324cf53119316ccc85f0385a2ab34df61588786b3683b67df3096",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/prepare-native-count-refresh.py"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 27098,
+        "name": "reporting.json",
+        "sha256": "2317d3f6e76077bcd1e562765813eab666be332cc16c5c14fe4db6e657164474",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/reporting.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 832488,
+        "name": "reviewed-count-observations.json",
+        "sha256": "869bcb64b4021f9cd8879987cbfcc7d39d40e35e5842ca323759448521db7f15",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/reviewed-count-observations.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1262,
+        "name": "source-role-review.json",
+        "sha256": "5c86dd3a409489e4787a29cac4b582e972c9141f6db7aa0219168e34e909b06f",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/source-role-review.json"
+      }
+    ],
+    "authenticated_full_draft_verification": "release-authenticated-verification.json",
+    "draft": false,
+    "immutable": true,
+    "passed": true,
+    "release_id": 444146422,
+    "source_processing_commit": "58ed929d5982fa5e688d4fcc4329f010af0a04aa",
+    "tag": "participation-nc-native-count-groups-refresh-20261113-01"
+  },
+  "complete_model_release": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 4081,
+        "name": "ballot-control-change.json",
+        "sha256": "1e2127f9ebfb6c97db7215dc09e067bf8b6bbc1758e8c68df0bb539cf3c241c1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/ballot-control-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 270632645,
+        "name": "complete-analysis.zip",
+        "sha256": "0a9f9f687fb287c95bae4a89978d94c6a6da36e15afb8aa04841ca558fbac490",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3473,
+        "name": "complete-asset-manifest.json",
+        "sha256": "a66f82dd7223d8e71c0e8d83dace1bb432770f5c981e0829242d50b1df71e6a3",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 161622,
+        "name": "complete-ballot-control-change-query.json",
+        "sha256": "d24a08a1f496c03f5dfbbb7e2616ad089c11ad104769790c77a5ffdeffad55c4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-ballot-control-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 7177,
+        "name": "complete-ballot-control-queries.json.gz",
+        "sha256": "fbab546276eaa9d6909791ed860717d0f85a7acad1ca792b3d9f1055ae0464cb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-ballot-control-queries.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 31439,
+        "name": "complete-conditional-registered-scenarios.csv",
+        "sha256": "7ad39b8a847682c2003321db44a020eb642a5ae2d24a55ec027ae763eeec9be6",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-conditional-registered-scenarios.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1843747,
+        "name": "complete-current-native-source-queries.json.gz",
+        "sha256": "1e403a4b1bc50113efa3c6e565728b682a1c88f136e6ea9928e6e2db2fbea943",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-current-native-source-queries.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 8238,
+        "name": "complete-maryland-card-references.csv",
+        "sha256": "3e84f1381bef65b3ed661df1b567aec5b5eabde4f490cf04a8efb9591e97f02b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-maryland-card-references.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3634,
+        "name": "complete-maryland-native-accounting.csv",
+        "sha256": "fe0fd79b624369e2b2cbeb4ab37641907b77ad2037450701658d92964c8617ac",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-maryland-native-accounting.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 60251,
+        "name": "complete-maryland-register-stocks.csv",
+        "sha256": "9cdd05a6d4f3304d88363f9440b7d99c8a794b4c869083de4b5620a27508b5fe",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-maryland-register-stocks.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 159278,
+        "name": "complete-native-context-change-query.json",
+        "sha256": "1b8b0085bfc939dfd60758435202ec99bfa4740ac7728512d2d21a15122a8317",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-native-context-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 165330,
+        "name": "complete-native-context-query.json.gz",
+        "sha256": "077175910837d3feaa359a3a5ba638a75d3eee70ed5e7413f92190ff0cb29c71",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-native-context-query.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 54611,
+        "name": "complete-native-control-dispositions.csv",
+        "sha256": "6414082077c0330a475dd6e2932601239f3bc2f4abd73a1f0a0a3d8f55609211",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-native-control-dispositions.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 625001,
+        "name": "complete-native-group-control-query.json",
+        "sha256": "26675302e1192bd60b8fc6ac9558e909b87b837b9f4e4524440665e3fa5e1504",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-native-group-control-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 553003,
+        "name": "complete-native-participation-group-controls.csv",
+        "sha256": "ed278eb60d021cc345cd4c97a180e326706fd5c5d266cee29dc2af7559f67157",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-native-participation-group-controls.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 157288,
+        "name": "complete-registered-control-change-query.json",
+        "sha256": "6c28ab0cc138c68a299fe56a8d78c7e718ffcd5f759f2b98845e003e168ae5b9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-registered-control-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 164509,
+        "name": "complete-reported-registered-reference-change-query.json",
+        "sha256": "118fe4e2c6e72e5b2fe9b87af3282702beb2b8e473b63d02a36324a9cdb67fde",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-reported-registered-reference-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 26004,
+        "name": "complete-state-control-query.csv",
+        "sha256": "129556d36588116a0eba18998521454e88e434ce105f6383b637d6479f2c0d30",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-state-control-query.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3807,
+        "name": "native-context-change.json",
+        "sha256": "bed9acee3de2e9ed2d23ac98c9da234445c2c8ddaf52be1346552638babba21c",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/native-context-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1354,
+        "name": "native-participation-source-accounting.json",
+        "sha256": "02a9505bc67a9bbaefad9f741bb2d18cdf984901279eb0e4c1fc5ad79e520e73",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/native-participation-source-accounting.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1382,
+        "name": "registered-frame-change.json",
+        "sha256": "9e4738f47f4668fc1ea2e307d872b5d5641b69b287f200a485bab2fc23d9b483",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/registered-frame-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 4853,
+        "name": "reported-registered-reference-change.json",
+        "sha256": "b656d10ff4260f77e3427349cca5e0cf102d0e5d07bcab6107504b1a8eca7c66",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/reported-registered-reference-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 9232,
+        "name": "source-qualification.json",
+        "sha256": "1f7928f2b28ab52e00bd51b3191ef66987e4044f26f7966b09b5f0f3fae9e56b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/source-qualification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 5593,
+        "name": "summary.json",
+        "sha256": "57f75ee398831579c4609b14e584ae26c71de3ebf868cdc97f9398dc3d133e5a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/summary.json"
+      }
+    ],
+    "authenticated_full_draft_verification": "release-authenticated-verification.json",
+    "draft": false,
+    "immutable": true,
+    "passed": true,
+    "release_id": 444146420,
+    "source_processing_commit": "58ed929d5982fa5e688d4fcc4329f010af0a04aa",
+    "tag": "participation-state-controls-20261113-32"
+  },
+  "complete_source_mode_group_projections": 7575,
+  "count_activation": {
+    "anonymous_verified_files": 54,
+    "catalog_commit": "60bf14d115690109dd5e36973bf2247bed5fa57f",
+    "changed_ids": [
+      "participation-counts-2026"
+    ],
+    "datasets_changed": 1,
+    "intermediate_catalog_unchanged": true,
+    "single_catalog_commit_for_all_changes": true,
+    "staged_commit": "4d4d9b5095cfd627c9370b40e72e01490e15a5fd",
+    "status": "published",
+    "unchanged_dataset_entries_preserved": true,
+    "website_builds_started": 0,
+    "worktree_head_or_index_changed": false
+  },
+  "each_county_literal_clock_preserved": true,
+  "focused_source_and_model_tests": 114,
+  "fresh_data_replays": {
+    "full_outputs_each": 57,
+    "repeats": 2,
+    "tests_each": 48
+  },
+  "fresh_model_replays": {
+    "entire_zip_byte_identical": true,
+    "full_outputs_each": 22,
+    "repeats": 2,
+    "tests_each": 6
+  },
+  "full_native_joint_count_cells": 327240,
+  "group_registration_denominators_or_full_demographic_turnout_qualified": false,
+  "model_version": 32,
+  "native_binding_version_unchanged": "991c5863a273bb72716be8423147f83fe5da00ccc941d5386df6700914e644d2",
+  "native_outcome_fitting_applied": false,
+  "new_ballot_count": 4243180,
+  "nine_house_family_profile_outputs_preserved": true,
+  "observed_staying_home_switching_or_causal_persuasion_identified": false,
+  "old_dated_native_reference_preserved_as_historical": true,
+  "other50state_shards_and403other_nc_observations_preserved": true,
+  "other6reporting_rows_6450early_rows_135provider_group_rows_preserved": true,
+  "passed": true,
+  "raw_source_gender_or_registration_party_mapped_to_survey_gender_or_vote_choice": false,
+  "registered_scenarios": 34,
+  "registered_source_units": 7885046,
+  "scope": "Existing NC administrative counts and native source-mode group observations",
+  "selected_model_reference_baseline": 4223355,
+  "selected_reference_change": 19825,
+  "source_clock": "November 12, 2026 6:33 pm",
+  "source_commit": "58ed929d5982fa5e688d4fcc4329f010af0a04aa",
+  "source_modes_or_misaligned_cutoffs_added": false,
+  "source_packet_isolated_stdlib_replay_pass": true,
+  "source_timezone": null,
+  "state_and_all100_county_references_updated_coherently": true,
+  "study_refit_weights_probabilities_or_conditional_means_changed": false,
+  "whole_project_complete": false
+}

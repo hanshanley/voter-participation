@@ -8,7 +8,58 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current coherent North Carolina counts and native-source revision 32
+
+The verified NCSBE state and100county counters now reconcile to **4,243,180**,
+with7,885,046 registrations unchanged. The accepted runtime increase is20,078;
+the separately dated selected model-reference increase is19,825. All other
+50jurisdiction shards,403other NC observations,provider early/mail/demographic
+frames and native bindings remain exact. Each source clock is retained.
+
+| Complete download | Contents |
+|---|---|
+| [Complete coherent data packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-native-count-groups-refresh-20261113-01/complete-analysis.zip) | 19,604,553bytes/141members; full accepted baseline, all permitted originals/facts, reviewed recipe, code/tests and57complete runtime/query outputs |
+| [Complete scientific model32](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-analysis.zip) | 270,632,645bytes/42members; entire model31 and new data packets, all22outputs, code/tests and whole-ZIP exact replay |
+| [All51state/DC queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-state-control-query.csv) | Updated NC reference/bookkeeping, with every prior source-weighted mean retained |
+| [All52native controls](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-native-control-dispositions.csv) | Complete native clock/frame/count/qualification and historical-context decisions |
+| [All34conditional scenarios](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-conditional-registered-scenarios.csv) | All unrounded means, registrations, weights and qualification flags; no new model or scenario |
+| [All7,575native source-mode group observations](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-native-participation-group-controls.csv) | Full state/county projections of native aggregate cast counts; not full-election group turnout or individual histories |
+| [Complete current native source queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-32/complete-current-native-source-queries.json.gz) | Every native API and327,240joint group-count cell, including zeros and exact field/record provenance |
+
+These are mode-specific administrative observations, not requests or compatible
+group-registration denominators. Cutoffs need not align with the all-mode
+counter; do not add overlapping feeds. Source gender/registration-party labels
+are not silently converted to survey gender or candidate choice.
+All34modeled means/Rframes/weights and nine House family/profile outputs remain
+unchanged. NC conditional source units4,427,914.405402/3,457,131.594598 are not
+administratively observed people or confirmed staying home. The dated old
+November6 native snapshot remains historical, not a second current counter.
+
+Every20/24release asset is full-body verified authenticated/draft then
+anonymously/public, with actual public immutable releases444146422/444146420.
+Data ZIP SHA256`044d0938b21ca738f2fb3996abf8e76518c772b3a8ac4c11c72a65339e59fe40`;
+model ZIP SHA256`0a9f9f687fb287c95bae4a89978d94c6a6da36e15afb8aa04841ca558fbac490`.
+Both fresh data replays pass48tests/all57outputs; both model replays pass6tests/
+all22outputs and whole-ZIP exact reproduction with external operations blocked.
+Canonical114affected tests and full replays pass; the isolated source SDK also
+reproduces all original queries. Cached routine execution preserves bytes/mtimes.
+
+Counts967054a is active at catalog60bf14d after54immutable body checks, with
+all other entries unchanged. Website3cfd938 adds both full group/query links;
+70affected tests/Astro and canonical four-test/full-release regeneration/Astro
+pass. Native Pages43417847986/guard43417847633 and artifact14033436506 verify
+997,241,488payload/999,833,600tar bytes, both below1e9,22unchanged JS bodies,
+436old pins and113archived models. Actual unqueried HTML/source bytes match.
+Production passes306bindings/51selectors, all100NCcounty/432WYunit choices at
+both widths, and four-mode exact Civic/native values plus full CSV/group-query
+hashes. Desktop/mobile screenshots reviewed. QA-onlya2fb768 fixes the checker's
+generic source-anchor selector without changing application bytes or rebuilding.
+See the [acceptance record](../data/participation-access/20261113-nc-native-successor-01/website-acceptance.json).
+Every older complete release below remains available.
+
 ## Current coherent native counts and ballot-control revision 31
+
+Preserved predecessor; revision32 above is the current NC/count/model successor.
 
 WY native ballots reconcile to191,713 across23counties/432reporting units,
 replacing191,688 (+25 across six counties/20units). No registered denominator,

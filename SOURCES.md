@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current coherent count/model refresh | [North Carolina state/county counts, native group observations and revision32](#2026-coherent-north-carolina-counts-and-native-source-revision-32) |
 | Current coherent native refresh | [Wyoming county/reporting counts and ballot-only model revision31](#2026-coherent-native-county-and-reporting-refresh-revision-31) |
 | Current complete native context | [Revision30: complete reporting units, unchanged selected registration and modeled means](#2026-complete-native-source-context-revision-30) |
 | Current registered-frame numerical revision | [Native revision29, unchanged Civic priors and preserved complete state queries](#2026-existing-registered-frame-model-native-control-revision-29) |
@@ -49,7 +50,86 @@ This document is the detailed reference ledger, not the methods introduction.
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
 
+## 2026 coherent North Carolina counts and native-source revision 32
+
+The already-preserved official NCSBE originals contain genuinely newer numerical
+data, not just refreshed retrieval metadata. Shared processing58ed929 uses
+strict native JSON records and actual CSV headers, retains literal scalar types,
+zeros and record indices, and reproduces all full original-source queries.
+Independent verification covers 101 API records/1,212 scalar fields and every
+header/value in the 3,240 state and 324,000 county aggregate rows.
+All county joint cells match their state counterparts, including zero cells.
+No new acquisition, formula execution, missing-as-zero repair or inferred
+precinct geography is involved.
+
+The official all-mode counter is **4,243,180**, with **7,885,046 registrations**
+and 2,626/2,626 reporting units unchanged. All 100 source county IDs/literal names
+match the accepted frame. Its actual runtime baseline was 4,223,102
+(increase20,078); the separately dated selected model reference was4,223,355
+(increase19,825). The latest two raw crawls differ by58, not the accepted-to-new
+change. The state label is November12,2026,6:33p.m., timezone not supplied;
+each county keeps its own `imp` value. Retrieval/HTTP timestamps are separate.
+
+The preserved official catalog distinguishes **Absentee Counts** from
+**Absentee Request Demographic Stats**. The selected CSVs are public aggregate
+cast-count cells, including early-voting modes, not individual voter records.
+Their actual headers, native request-type/mode labels, registration-party,
+gender, race, ethnicity and count fields are retained. The older2020 tab-layout
+description is not substituted for the actual current CSV schema.
+Revision32 exports all7,575 native source-mode group projections and the entire
+327,240-cell underlying query set. No matched group-registration denominator,
+all-mode demographic turnout or source/survey gender equivalence is inferred.
+Mode totals can overlap or have different cutoffs; do not sum feeds or use them
+as evidence that particular previous voters stayed home.
+
+The generic count routine coherently replaces the existing NC state reference
+and100county observations together, preserving the old base snapshot's provenance.
+Only `states/NC.json.gz`, `current.json.gz` and `index.json` change.
+All50other jurisdiction shards,403other NC observations,six other reporting rows,
+6,450early-activity/135provider demographic rows and existing native991c5863
+remain byte-identical. All registration/geography/rate holds remain.
+Counts967054a is active at catalog60bf14d after54full immutable body checks;
+all other catalog entries are preserved, with no build or source reparse.
+
+The separate registered-reference operation changes one existing NC state/control
+reference, one scenario's bookkeeping and the old November6 snapshot's historical
+disposition, not any fitted probability. All34scenario means/Rframes/weights/
+qualification flags, other50state/50control/33scenario rows and12earlier numerical
+outputs remain exact. The3,895-case NC Civic prior and all nine House outputs
+are unchanged. Conditional units4,427,914.405402/3,457,131.594598 and the nominal
+native-minus-model comparison are not observed voters/nonvoters or validated error.
+
+Complete immutable datarelease444146422 has19,604,553bytes/141members/20assets;
+model32release444146420 has270,632,645bytes/42members/24assets.
+Every authenticated-draft and anonymous-public asset is full-body verified.
+Both fresh data replays pass48tests/all57outputs; both model replays pass6tests/
+all22outputs and whole-ZIP exact reproduction, with network/DNS/children blocked
+and probed. Actual canonical114affected tests and full data/model replays pass.
+The complete source SDK independently replays all originals/queries under
+isolated `-I -S` execution, using only extracted dependencies.
+[Full numerical downloads](docs/DATA.md#current-coherent-north-carolina-counts-and-native-source-revision-32).
+
+Website3cfd938 contains the small verified model32 display projection and both
+complete group/query download links, not large static copies or a new model mode.
+All70affected website tests/Astro and canonical four-test/full-release projection
+regeneration/Astro pass. Six owned files are guardedly persisted without moving
+canonical HEADs/indexes or replacing independent package/older explorer changes.
+Native Pages43417847986/guard43417847633 pass for3cfd938. Actual artifact14033436506
+contains997,241,488payload/999,833,600tar bytes, both below1e9;22unchanged public
+JS bodies,436old full-download pins and113archived models remain.
+Actual unqueried production HTML equals the native artifact; all22served
+scripts equal source. Production passes306bindings/51selectors and100NCcounty/
+432WYunit selections at both widths, plus four-mode79Civic/112flow/2margin/
+34scenario/51decision and full numerical CSV/group-query hashes.
+Desktop/mobile screenshots reviewed. QA-onlya2fb768 corrects one checker
+anchor-label assumption, not application/data bytes; no extra build.
+The [acceptance record](data/participation-access/20261113-nc-native-successor-01/website-acceptance.json)
+retains actual native/live/canonical proofs. Broader nationwide work and final
+audit/beautification remain open.
+
 ## 2026 coherent native county and reporting refresh: revision 31
+
+Preserved predecessor; the current NC/count/model successor is revision32 above.
 
 Shared processing9c787a5 binds complete accepted native factual grids to
 reviewed source/year/state, guarded Total Ballots Cast columns and exact
