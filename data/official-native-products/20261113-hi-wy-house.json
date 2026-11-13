@@ -1,0 +1,50 @@
+{
+  "contract": "participation.reviewed_official_house_queries.v1",
+  "query_pin": {"bytes": 1912402, "sha256": "e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a"},
+  "review": "Complete native grids independently checked against all source records/cells, 192 printed PDF controls, and all required precinct/county/state candidate and mode controls. HI's seven-ballot accounting difference is retained, not repaired. This review qualifies named candidate counts only, not final counting completeness, turnout, voter switching, or geographic stability.",
+  "sources": [
+    {
+      "state_code": "HI",
+      "year": "2026",
+      "office": "U.S. House",
+      "stage": "general",
+      "url": "https://elections.hawaii.gov/wp-content/results/2026%20General/summary.txt",
+      "source_pin": {"bytes": 22026, "sha256": "b262fa9df3b4d828468dbb2ad2f28f2273455af190b79cb2948073265c835db4"},
+      "native_updated_at": null,
+      "retrieved_at_utc": "2026-11-12T23:06:26.986797+00:00",
+      "query": "hi-summary-candidates",
+      "kind": "candidate_records",
+      "districts": {
+        "30": {"district": "HI-01", "title": "U.S. Representative, Dist I", "candidate_ids": ["1", "2", "3", "4"]},
+        "5": {"district": "HI-02", "title": "U.S. Representative, Dist II", "candidate_ids": ["1", "2"]}
+      },
+      "party_pattern": "^\\(([A-Z])\\) ",
+      "party_labels": {"D": "Democratic", "R": "Republican", "G": "Green", "N": "Nonpartisan"},
+      "count_scope": "All six explicitly party-marked named House candidates across both native contests. Candidate votes are not ballots or turnout. Reporting=0 native units were retained in the precinct reconciliation.",
+      "ballot_accounting_discrepancy": 7
+    },
+    {
+      "state_code": "WY",
+      "year": "2026",
+      "office": "U.S. House",
+      "stage": "general",
+      "url": "https://sos.wyo.gov/Elections/Docs/2026/Results/General/2026_Wyoming_General_Results.zip",
+      "source_pin": {"bytes": 647239, "sha256": "c378306bd8df97437a3d11fac7792e23a8297a7e3eded8129a9cd61e3e654ff1"},
+      "native_updated_at": null,
+      "retrieved_at_utc": "2026-11-12T23:07:47.701972+00:00",
+      "query": "wy-state-house",
+      "kind": "wide_candidate_control",
+      "district": "WY-AL",
+      "selector": "Statewide Candidates / Total / G28:J28",
+      "control_key": "county",
+      "control_value": "Total",
+      "candidates": [
+        {"name": "Chuck\nGray (R)", "party": "Republican", "count_field": "R", "header_cell": "G4", "count_cell": "G28"},
+        {"name": "Lisa\nKinney (D)", "party": "Democratic", "count_field": "D", "header_cell": "H4", "count_cell": "H28"},
+        {"name": "Shawn\nJohnson (L)", "party": "Libertarian", "count_field": "L", "header_cell": "I4", "count_cell": "I28"},
+        {"name": "Jeffrey\nHaggit (C)", "party": "Constitution", "count_field": "C", "header_cell": "J4", "count_cell": "J28"}
+      ],
+      "count_scope": "All four named candidates in the official statewide House control. The separate 1,031 unassigned Write-Ins, 1,231 overvotes and 6,228 undervotes remain complete distinct factual queries, not silently assigned to D/R/Other. This preserves the earlier named-candidate current-endpoint scope; it is not all Other ballots or unique-voter turnout."
+    }
+  ]
+}

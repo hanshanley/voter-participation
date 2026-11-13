@@ -1,0 +1,208 @@
+{
+  "contract": "participation.native_product_recipe.v1",
+  "qualification": "Pinned public aggregate election facts, not individual voter records. Reader selection alone confers no geographic, turnout, or model eligibility.",
+  "products": [
+    {
+      "id": "hi-summary",
+      "path": "native-2026-declared-products-20261112-01/hi-summary",
+      "kind": "delimited",
+      "state_code": "HI",
+      "election_year": 2026,
+      "url": "https://elections.hawaii.gov/wp-content/results/2026%20General/summary.txt",
+      "pin": {"bytes": 22026, "sha256": "b262fa9df3b4d828468dbb2ad2f28f2273455af190b79cb2948073265c835db4"},
+      "retrieved_at_utc": "2026-11-12T23:06:26.986797+00:00",
+      "native_updated_at": null,
+      "redistribution": "Public aggregate factual tables; source text retained locally.",
+      "reader": {"delimiter": "\t", "preamble_rows": 1},
+      "expected_rows": 202
+    },
+    {
+      "id": "hi-precinct",
+      "path": "native-2026-declared-products-20261112-01/hi-precinct",
+      "kind": "delimited",
+      "state_code": "HI",
+      "election_year": 2026,
+      "url": "https://elections.hawaii.gov/wp-content/results/2026%20General/media.txt",
+      "pin": {"bytes": 1885088, "sha256": "c8cc8576e80bd32161118111e1d353460d0b58a6b0fdd34bddb6e56639ae1a5a"},
+      "retrieved_at_utc": "2026-11-12T23:06:26.987115+00:00",
+      "native_updated_at": null,
+      "redistribution": "Public aggregate factual tables; source text retained locally.",
+      "reader": {"delimiter": "\t", "preamble_rows": 2},
+      "expected_rows": 25766
+    },
+    {
+      "id": "wy-workbooks",
+      "path": "native-2026-follow-declared-20261112-01/wy-full-precinct-zip",
+      "kind": "xlsx_zip",
+      "state_code": "WY",
+      "election_year": 2026,
+      "url": "https://sos.wyo.gov/Elections/Docs/2026/Results/General/2026_Wyoming_General_Results.zip",
+      "pin": {"bytes": 647239, "sha256": "c378306bd8df97437a3d11fac7792e23a8297a7e3eded8129a9cd61e3e654ff1"},
+      "retrieved_at_utc": "2026-11-12T23:07:47.701972+00:00",
+      "native_updated_at": null,
+      "redistribution": "Complete public aggregate factual cell grids, raw/cached values, formulas and number-format evidence. Workbook templates are retained locally, not licensed for redistribution by this recipe.",
+      "members": {
+        "2026 General Results Summaries - OFFICIAL.xlsx": [
+          "Statewide Total Ballots Cast", "Statewide Candidates", "Statewide Senate Odd",
+          "Statewide House", "Statewide Judicial", "Statewide Ballot Issue"
+        ],
+        "2026 County General PbP - OFFICIAL.xlsx": [
+          "Albany", "Big Horn", "Campbell", "Carbon", "Converse", "Crook", "Fremont",
+          "Goshen", "Hot Springs", "Johnson", "Laramie", "Lincoln", "Natrona", "Niobrara",
+          "Park", "Platte", "Sheridan", "Sublette", "Sweetwater", "Teton", "Uinta", "Washakie", "Weston"
+        ],
+        "2026 County General PbP TBC - OFFICIAL.xlsx": [
+          "Albany", "Big Horn", "Campbell", "Carbon", "Converse", "Crook", "Fremont",
+          "Goshen", "Hot Springs", "Johnson", "Laramie", "Lincoln", "Natrona", "Niobrara",
+          "Park", "Platte", "Sheridan", "Sublette", "Sweetwater", "Teton", "Uinta", "Washakie", "Weston"
+        ]
+      }
+    }
+  ],
+  "queries": [
+    {
+      "id": "hi-summary-candidates",
+      "product": "hi-summary",
+      "fields": {
+        "contest": "#Contest ID", "title": "Contest Title", "candidate_id": "Candidate ID",
+        "candidate": "Candidate Name", "party": "Candidate Party",
+        "mail": "Mail Votes", "in_person": "In-Person Votes", "total": "Total Votes",
+        "mail_blank": "Mail Blank Votes", "in_person_blank": "In-Person Blank Votes",
+        "mail_over": "Mail Over Votes", "in_person_over": "In-Person Over Votes",
+        "mail_invalid": "Mail Invalid Votes", "in_person_invalid": "In-Person Invalid Votes",
+        "registered": "Registered Voters", "declared_units": "Total Precincts", "counted_units": "Counted Precincts"
+      },
+      "keys": ["contest", "candidate_id"],
+      "counts": ["mail", "in_person", "total", "mail_blank", "in_person_blank", "mail_over",
+        "in_person_over", "mail_invalid", "in_person_invalid", "registered", "declared_units", "counted_units"]
+    },
+    {
+      "id": "hi-house-contests",
+      "product": "hi-summary",
+      "fields": {
+        "contest": "#Contest ID", "title": "Contest Title",
+        "mail_blank": "Mail Blank Votes", "in_person_blank": "In-Person Blank Votes",
+        "mail_over": "Mail Over Votes", "in_person_over": "In-Person Over Votes",
+        "mail_invalid": "Mail Invalid Votes", "in_person_invalid": "In-Person Invalid Votes",
+        "registered": "Registered Voters", "declared_units": "Total Precincts", "counted_units": "Counted Precincts"
+      },
+      "where": {"contest": ["30", "5"]},
+      "keys": ["contest"],
+      "counts": ["mail_blank", "in_person_blank", "mail_over", "in_person_over",
+        "mail_invalid", "in_person_invalid", "registered", "declared_units", "counted_units"],
+      "deduplicate": true
+    },
+    {
+      "id": "hi-native-units",
+      "product": "hi-precinct",
+      "fields": {
+        "precinct": "#\"Precinct_Name\"", "split": "Split_Name", "unit": "precinct_splitId",
+        "registered": "Reg_voters", "ballots": "Ballots", "reporting": "Reporting"
+      },
+      "keys": ["unit"],
+      "counts": ["registered", "ballots"],
+      "deduplicate": true
+    },
+    {
+      "id": "hi-house-units",
+      "product": "hi-precinct",
+      "fields": {"unit": "precinct_splitId", "contest": "Contest_id",
+        "title": "Contest_title", "reporting": "Reporting"},
+      "where": {"contest": ["30", "5"]},
+      "keys": ["unit"],
+      "deduplicate": true
+    },
+    {
+      "id": "hi-house-precinct-candidates",
+      "product": "hi-precinct",
+      "fields": {
+        "precinct": "#\"Precinct_Name\"", "split": "Split_Name", "unit": "precinct_splitId",
+        "contest": "Contest_id", "title": "Contest_title", "candidate_id": "Choice_id",
+        "candidate": "Candidate_name", "party": "Choice_party", "candidate_type": "Candidate_Type",
+        "mail": "Mail votes", "in_person": "In-Person votes"
+      },
+      "where": {"contest": ["30", "5"], "candidate_type": ["C"]},
+      "keys": ["unit", "contest", "candidate_id"],
+      "counts": ["mail", "in_person"]
+    },
+    {
+      "id": "wy-state-house",
+      "product": "wy-workbooks",
+      "workbook": "2026 General Results Summaries - OFFICIAL.xlsx",
+      "tables": ["Statewide Candidates"],
+      "require": {
+        "3": {"G": "United States Representative"},
+        "4": {"G": "Chuck\nGray (R)", "H": "Lisa\nKinney (D)", "I": "Shawn\nJohnson (L)",
+          "J": "Jeffrey\nHaggit (C)", "K": "Write-Ins", "L": "Overvotes", "M": "Undervotes"}
+      },
+      "first_row": 5,
+      "last_row": 28,
+      "fields": {"county": "A", "R": "G", "D": "H", "L": "I", "C": "J",
+        "write_ins": "K", "overvotes": "L", "undervotes": "M"},
+      "keys": ["county"],
+      "counts": ["R", "D", "L", "C", "write_ins", "overvotes", "undervotes"]
+    },
+    {
+      "id": "wy-state-ballots",
+      "product": "wy-workbooks",
+      "workbook": "2026 General Results Summaries - OFFICIAL.xlsx",
+      "tables": ["Statewide Total Ballots Cast"],
+      "require": {"4": {"B": "Total Ballots Cast"}},
+      "first_row": 5,
+      "last_row": 28,
+      "fields": {"county": "A", "ballots": "B"},
+      "keys": ["county"],
+      "counts": ["ballots"]
+    },
+    {
+      "id": "wy-precinct-house",
+      "product": "wy-workbooks",
+      "workbook": "2026 County General PbP - OFFICIAL.xlsx",
+      "require": {
+        "3": {"G": "United States Representative"},
+        "4": {"A": "Precinct", "G": "Chuck\nGray (R)", "H": "Lisa\nKinney (D)",
+          "I": "Shawn\nJohnson (L)", "J": "Jeffrey\nHaggit (C)", "K": "Write-Ins",
+          "L": "Overvotes", "M": "Undervotes"}
+      },
+      "first_row": 5,
+      "fields": {"county": "$table", "precinct": {"column": "A", "display": "excel_month_day"},
+        "precinct_native_value": "A", "R": "G", "D": "H", "L": "I", "C": "J",
+        "write_ins": "K", "overvotes": "L", "undervotes": "M"},
+      "exclude": {"precinct": [null, "", "Total", "Precincts Continue\non Next Page"]},
+      "keys": ["county", "precinct"],
+      "counts": ["R", "D", "L", "C", "write_ins", "overvotes", "undervotes"]
+    },
+    {
+      "id": "wy-county-house",
+      "product": "wy-workbooks",
+      "workbook": "2026 County General PbP - OFFICIAL.xlsx",
+      "first_row": 5,
+      "fields": {"county": "$table", "precinct": "A", "R": "G", "D": "H", "L": "I", "C": "J",
+        "write_ins": "K", "overvotes": "L", "undervotes": "M"},
+      "where": {"precinct": ["Total"]},
+      "keys": ["county"],
+      "counts": ["R", "D", "L", "C", "write_ins", "overvotes", "undervotes"]
+    },
+    {
+      "id": "wy-precinct-ballots",
+      "product": "wy-workbooks",
+      "workbook": "2026 County General PbP TBC - OFFICIAL.xlsx",
+      "require": {"3": {"A": "Precinct", "B": "Total Ballots Cast"}},
+      "first_row": 4,
+      "fields": {"county": "$table", "precinct": "A", "ballots": "B"},
+      "exclude": {"precinct": [null, "", "Total", "Precincts Continue\non Next Page"]},
+      "keys": ["county", "precinct"],
+      "counts": ["ballots"]
+    },
+    {
+      "id": "wy-county-ballots",
+      "product": "wy-workbooks",
+      "workbook": "2026 County General PbP TBC - OFFICIAL.xlsx",
+      "first_row": 4,
+      "fields": {"county": "$table", "precinct": "A", "ballots": "B"},
+      "where": {"precinct": ["Total"]},
+      "keys": ["county"],
+      "counts": ["ballots"]
+    }
+  ]
+}

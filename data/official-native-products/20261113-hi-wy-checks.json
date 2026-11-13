@@ -1,0 +1,115 @@
+{
+  "contract": "participation.native_reconciliation_recipe.v1",
+  "checks": [
+    {
+      "id": "hi-summary-mail-plus-in-person",
+      "keys": ["contest", "candidate_id"],
+      "left": [{"query": "hi-summary-candidates", "fields": ["total"]}],
+      "right": [{"query": "hi-summary-candidates", "fields": ["mail", "in_person"]}]
+    },
+    {
+      "id": "hi-house-precinct-candidates-to-summary",
+      "keys": ["contest", "candidate_id"],
+      "left": [{"query": "hi-house-precinct-candidates", "fields": ["mail", "in_person"]}],
+      "right": [{"query": "hi-summary-candidates", "fields": ["total"], "where": {"contest": ["30", "5"]}}]
+    },
+    {
+      "id": "hi-house-precinct-mail-to-summary",
+      "keys": ["contest", "candidate_id"],
+      "left": [{"query": "hi-house-precinct-candidates", "fields": ["mail"]}],
+      "right": [{"query": "hi-summary-candidates", "fields": ["mail"], "where": {"contest": ["30", "5"]}}]
+    },
+    {
+      "id": "hi-house-precinct-in-person-to-summary",
+      "keys": ["contest", "candidate_id"],
+      "left": [{"query": "hi-house-precinct-candidates", "fields": ["in_person"]}],
+      "right": [{"query": "hi-summary-candidates", "fields": ["in_person"], "where": {"contest": ["30", "5"]}}]
+    },
+    {
+      "id": "hi-house-declared-native-unit-inventory",
+      "left": [{"query": "hi-native-units", "operation": "count"}],
+      "right": [{"query": "hi-house-contests", "fields": ["declared_units"]}]
+    },
+    {
+      "id": "hi-house-unit-district-inventory",
+      "keys": ["contest"],
+      "left": [{"query": "hi-house-units", "operation": "count"}],
+      "right": [{"query": "hi-house-contests", "fields": ["declared_units"]}]
+    },
+    {
+      "id": "hi-house-counted-district-inventory",
+      "keys": ["contest"],
+      "left": [{"query": "hi-house-units", "operation": "count", "where": {"reporting": ["1"]}}],
+      "right": [{"query": "hi-house-contests", "fields": ["counted_units"]}]
+    },
+    {
+      "id": "hi-house-native-counted-flags",
+      "left": [{"query": "hi-native-units", "operation": "count", "where": {"reporting": ["1"]}}],
+      "right": [{"query": "hi-house-contests", "fields": ["counted_units"]}]
+    },
+    {
+      "id": "hi-native-registration-stock",
+      "left": [{"query": "hi-native-units", "fields": ["registered"]}],
+      "right": [{"query": "hi-house-contests", "fields": ["registered"], "operation": "unique"}]
+    },
+    {
+      "id": "hi-house-ballot-accounting",
+      "policy": "record_discrepancy",
+      "left": [{"query": "hi-native-units", "fields": ["ballots"]}],
+      "right": [
+        {"query": "hi-summary-candidates", "fields": ["total"], "where": {"contest": ["30", "5"]}},
+        {"query": "hi-house-contests", "fields": ["mail_blank", "in_person_blank", "mail_over",
+          "in_person_over", "mail_invalid", "in_person_invalid"]}
+      ]
+    },
+    {
+      "id": "wy-precinct-inventory",
+      "keys": ["county", "precinct"],
+      "left": [{"query": "wy-precinct-house", "operation": "count"}],
+      "right": [{"query": "wy-precinct-ballots", "operation": "count"}]
+    },
+    {
+      "id": "wy-precinct-house-ballot-accounting",
+      "keys": ["county", "precinct"],
+      "left": [{"query": "wy-precinct-house", "fields": ["R", "D", "L", "C", "write_ins", "overvotes", "undervotes"]}],
+      "right": [{"query": "wy-precinct-ballots", "fields": ["ballots"]}]
+    },
+    {
+      "id": "wy-precinct-to-county-ballots",
+      "keys": ["county"],
+      "left": [{"query": "wy-precinct-ballots", "fields": ["ballots"]}],
+      "right": [{"query": "wy-county-ballots", "fields": ["ballots"]}]
+    },
+    {
+      "id": "wy-precinct-to-county-house",
+      "each_field": ["R", "D", "L", "C", "write_ins", "overvotes", "undervotes"],
+      "keys": ["county"],
+      "left": [{"query": "wy-precinct-house", "fields": ["$field"]}],
+      "right": [{"query": "wy-county-house", "fields": ["$field"]}]
+    },
+    {
+      "id": "wy-county-to-state-house",
+      "each_field": ["R", "D", "L", "C", "write_ins", "overvotes", "undervotes"],
+      "keys": ["county"],
+      "left": [{"query": "wy-county-house", "fields": ["$field"]}],
+      "right": [{"query": "wy-state-house", "fields": ["$field"], "exclude": {"county": ["Total"]}}]
+    },
+    {
+      "id": "wy-state-total-house",
+      "each_field": ["R", "D", "L", "C", "write_ins", "overvotes", "undervotes"],
+      "left": [{"query": "wy-county-house", "fields": ["$field"]}],
+      "right": [{"query": "wy-state-house", "fields": ["$field"], "where": {"county": ["Total"]}}]
+    },
+    {
+      "id": "wy-county-to-state-ballots",
+      "keys": ["county"],
+      "left": [{"query": "wy-county-ballots", "fields": ["ballots"]}],
+      "right": [{"query": "wy-state-ballots", "fields": ["ballots"], "exclude": {"county": ["Total"]}}]
+    },
+    {
+      "id": "wy-state-total-ballots",
+      "left": [{"query": "wy-county-ballots", "fields": ["ballots"]}],
+      "right": [{"query": "wy-state-ballots", "fields": ["ballots"], "where": {"county": ["Total"]}}]
+    }
+  ]
+}

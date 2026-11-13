@@ -18,7 +18,11 @@ def margin(counts):
     return Fraction(100*(counts["D"]-counts["R"]), denominator) if denominator else None
 
 
-def district_rows(previous, current):
+def district_rows(previous, current, official_queries=None):
+    official = None
+    if official_queries is not None:
+        from scripts.house_official_sources import validate_current
+        official = validate_current(current, official_queries)
     groups = defaultdict(lambda: {"previous": [], "current": []})
     for row in previous:
         groups[row["district"]]["previous"].append(dict(
@@ -28,20 +32,23 @@ def district_rows(previous, current):
     identities = set()
     urls, district_urls = {}, {}
     for row in current:
+        selector = official["selectors"].get((row["source_url"], row["district"])) if official else None
+        provider = bool(re.fullmatch(r"https://civicapi\.org/api/v2/race/[0-9]+", row["source_url"]))
         if (row["year"] != "2026" or row["office"] != "U.S. House"
                 or not row["district"].startswith(row["state_code"]+"-")
                 or not re.fullmatch(r"[0-9]+", row["votes"])
-                or not re.fullmatch(r"https://civicapi\.org/api/v2/race/[0-9]+", row["source_url"])):
+                or not (provider or selector)):
             raise ValueError("Current candidate has an unqualified year, office, count or source")
         key = row["district"], row["name"], row["party"]
         if key in identities:
             raise ValueError("Repeated native candidate line")
         identities.add(key)
-        if (row["source_url"] in urls and urls[row["source_url"]] != row["district"]
-                or row["district"] in district_urls and district_urls[row["district"]] != row["source_url"]):
+        source_key = (row["source_url"], selector) if selector else row["source_url"]
+        if (source_key in urls and urls[source_key] != row["district"]
+                or row["district"] in district_urls and district_urls[row["district"]] != source_key):
             raise ValueError("One native race cannot supply multiple districts or vice versa")
-        urls[row["source_url"]] = row["district"]
-        district_urls[row["district"]] = row["source_url"]
+        urls[source_key] = row["district"]
+        district_urls[row["district"]] = source_key
         party = row["party"].strip().casefold()
         group = "D" if party in CURRENT_D else "R" if party in CURRENT_R else "O"
         if clerk.NONCANDIDATE.fullmatch(row["name"].strip()):
@@ -49,7 +56,8 @@ def district_rows(previous, current):
         groups[row["district"]]["current"].append(dict(name=row["name"], group=group,
             votes=int(row["votes"]), named=not bool(GENERIC.fullmatch(row["name"].strip())),
             literal_parties=[row["party"]], source_url=row["source_url"],
-            source_updated_at=row["source_updated_at"]))
+            source_updated_at=None if selector else row["source_updated_at"],
+            **(dict(native_contest_selector=selector) if selector else {})))
     result = []
     for district, sources in sorted(groups.items()):
         if not sources["previous"] or not sources["current"]:
@@ -81,13 +89,13 @@ def district_rows(previous, current):
     return result
 
 
-def audit(previous_facts, current_candidates, controls):
+def audit(previous_facts, current_candidates, controls, official_queries=None):
     if previous_facts["source_pdf_sha256"] != "d4ba800fc17135b616ae556c92861080ab962d95916ace34b546c5aac824aec4":
         raise ValueError("Wrong pinned native House Clerk original")
     previous = clerk.candidate_totals(previous_facts["candidate_party_lines"])
     if previous != previous_facts["candidates"]:
         raise ValueError("Native candidate grouping changed")
-    districts = district_rows(previous, current_candidates)
+    districts = district_rows(previous, current_candidates, official_queries)
     if len(districts) != 435 or {r["state_code"] for r in districts} != set(clerk.STATES):
         raise ValueError("The complete 435-district/50-state audit is required")
     held = {row["state_code"]: row for row in controls["return_controls"] if row["office"] == "house"}
@@ -149,9 +157,14 @@ def audit(previous_facts, current_candidates, controls):
                 float(raw-common_change) if raw is not None and common_change is not None else None),
             aggregate_minus_subset_is_descriptive_composition_not_causal_effect=True,
             current_counting_complete_independently_qualified=False))
-    return dict(contract="participation.house_comparability.v1", states=states, district_queries=districts,
+    result = dict(contract="participation.house_comparability.v1", states=states, district_queries=districts,
         complete_states=50, complete_districts=435, source_counts_changed=False,
         new_voter_or_turnout_inferences=False, generic_all_state_audit=True)
+    if official_queries is not None:
+        from scripts.house_official_sources import qualified
+        result["reviewed_official_source_revisions"] = qualified(official_queries)["policies"]
+        result["source_counts_changed_definition"] = "Audit does not repair counts within the supplied sources."
+    return result
 
 
 def requalify_model(priors, previous, review):
