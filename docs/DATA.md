@@ -8,7 +8,55 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current Oregon state reference and model revision 33
+
+Native Oregon **2,019,444 Ballots Counted / 3,109,145 Active Registered
+Voters**, printed64.95%, retains clock11/13/2026 | 1:45 AM PT.
+All51 jurisdiction shards and earlier source-mode/House numerical outputs
+remain exact; only the selected state reference and existing Oregon
+registered-source partition advance.
+
+| Complete download | Contents |
+|---|---|
+| [Complete all-state count packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-analysis.zip) | 11,407,111bytes/139members; full accepted baseline, all permitted selected facts, recipes, code/tests and57complete runtime/query outputs |
+| [Complete selected factual source SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-count-source-packet.zip) | 41,585bytes/21members; isolated standard-library selected-input replay, not excluded publisher HTML re-extraction |
+| [Complete selected state-reference query](https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-selected-state-reference-query.json) | Every canonical selected count/registration/clock field and factual binding |
+| [Complete scientific model33](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-analysis.zip) | 283,098,707bytes/47members; entire model32 and new count packets, code/tests, all48outputs and whole-ZIP exact replay |
+| [All51state/DC queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-state-control-query.csv) | Updated Oregon reference/registered partition; other50rows exact |
+| [All52native controls](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-native-control-dispositions.csv) | Complete source, clock, denominator and qualification decisions |
+| [All34conditional scenarios](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-conditional-registered-scenarios.csv) | Unrounded means, registrations, unchanged weights and false qualification flags; no new scenario |
+| [Every before/after state-reference query](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-state-reference-change-query.json) | All state/control/scenario change and preservation decisions, with complete selected source facts |
+| [All7,575native source-mode group observations](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-native-participation-group-controls.csv) | Prior complete NC group observations retained byte-for-byte, not new Oregon group turnout |
+| [Complete current native source queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-current-native-source-queries.json.gz) | Every previously accepted API/joint group-count cell, including zeros and exact provenance |
+
+Data ZIP SHA256`212ad518ce61bcdc5c32e89769d3187456aa0c2f1ec3b66e9e7929e6d116386b`;
+model ZIP SHA256`c3f315eae798b4bdc693afdf1024b710e1bdc3c5ebe9940e17c0b9d315452f05`.
+All14/31 release assets are fully verified authenticated/draft and
+anonymously/public; releases444190384/444188768 are actually immutable.
+Two fresh63test/57output data replays and two5test/48output model replays
+pass with external operations blocked/probed; both full model ZIPs are exact.
+Actual canonical replays and80 affected source tests in both trees pass.
+
+The same1,655-case Oregon Civic probability yields conditional participant/
+complement units2,083,361.267128987.../1,025,783.732871013..., not observed
+voters, staying home, independently validated error, or a native-outcome fit.
+The separate monthly-registration scenario and held envelope warning remain.
+Counts76878ba is active at catalog1f4e6b1. Website5168917 is verified live
+and canonically persistent: native Pages43425281622, both exact source guards,
+artifact14037436051 at997,241,489payload/999,833,600tar bytes, both below1e9.
+All436old pins/113archived models/unrounded33values remain exact.
+Unqueried production HTML/all22scripts match; all306bindings/51selectors/
+14state-reference cases,100NCcounty/432WYunit selections at both widths,
+four-mode Civic/native values and full CSV/group-query hashes pass.
+Four production images reviewed. Source70tests/Astro and canonical four-test/
+full-release projection regeneration/Astro pass without overwriting independent
+package scripts, the older explorer or protected HEAD/index pairs.
+See the [acceptance record](../data/participation-access/20261113-or-state-reference-01/website-acceptance.json).
+Every older complete release below remains available.
+
 ## Current coherent North Carolina counts and native-source revision 32
+
+Preserved accepted predecessor; revision33 above advances Oregon only.
 
 The verified NCSBE state and100county counters now reconcile to **4,243,180**,
 with7,885,046 registrations unchanged. The accepted runtime increase is20,078;

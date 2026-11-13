@@ -13,7 +13,57 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Oregon state reference and model revision 33
+
+The genuine Oregon successor is now scientifically compiled, published and
+active in the data catalog: **2,019,444 Ballots Counted / 3,109,145 Active
+Registered Voters**, native64.95%, clock11/13/2026 | 1:45 AM PT.
+The runtime increase468,367/+56 and separately dated model-reference
+increase127,839/+61 are distinct from the raw-crawl increase7,894/0.
+Hidden backend counts do not establish completeness or replace the active
+registration stock. No new participant or staying-home history is observed.
+
+The distinct shared state-only operation preserves all51 jurisdiction shards,
+other statewide/provider/mode observations and native bindings. It does not
+weaken county-coherence or fixed-registration guards. Catalog1f4e6b1 activates
+counts76878ba after54 immutable body checks, without a build or source reparse.
+Model33 changes only the existing Oregon primary reference/registered partition,
+retaining its1,655-case Civic weights/probability and every other state's
+numbers. Conditional source units2,083,361.267128987.../1,025,783.732871013...
+are not observed people or validated staying home. The separate monthly
+registration and held envelope contexts, all34 existing scenarios, all17
+earlier complete outputs and nine House family/profile outputs remain.
+
+Shared source29f7362 and ten owned canonical files are persistent;80 affected
+tests pass in both trees. Immutable data444190384/model444188768 supply all
+14/31 full assets, authenticated/draft then anonymously/public verified.
+Both fresh63test/57output data replays, both5test/48output/whole-ZIP model
+replays, actual canonical replays and isolated source SDK replay pass.
+Public sufficient-input replay does not claim excluded publisher HTML
+re-extraction. Complete numerical downloads, not metadata-only replacements,
+remain in [the data guide](docs/DATA.md#current-oregon-state-reference-and-model-revision-33).
+
+Website5168917 is verified live and canonically persistent after70 required
+tests/Astro and actual canonical four-test/full-release projection regeneration/
+Astro. Native Pages43425281622 and both exact source guards pass; actual
+artifact14037436051 has997,241,489payload/999,833,600tar bytes, both below1e9.
+All436old pins/113archived models/unrounded33values remain. Unqueried live
+HTML and all22scripts match. Production passes all306bindings/51selectors,
+14state-reference cases,100NCcounty/432WYunit selections at both widths,
+and four-mode79Civic/112flow/2margin/34scenario/51decision checks with full
+CSV/group-query hashes. Four actual production images reviewed. Four owned
+website paths are guardedly persisted, preserving independent package scripts,
+the older explorer and both protected HEAD/index pairs.
+See the [acceptance record](data/participation-access/20261113-or-state-reference-01/website-acceptance.json).
+The167-original comparison's genuine NC/OR successors are now integrated;
+ND's different HTML had identical facts. Do not repeat that completed crawl,
+repackage accepted releases or refit unchanged NORC inputs.
+Broader624/626/631/632/633 remain open. Complete genuine remaining implementation
+before the requested full audit636 and then restrained beautification637.
+
 ## Coherent North Carolina counts and native-source revision 32
+
+Preserved accepted predecessor; revision33 above advances Oregon only.
 
 The shared routine now uses the verified newer NCSBE snapshot for both the
 state reference and all 100 existing county observations: **4,243,180 ballots**,
@@ -77,10 +127,10 @@ See the [acceptance record](data/participation-access/20261113-nc-native-success
 
 The bounded cached nationwide comparison also checked167existing originals:
 163are byte-identical; ND's changed HTML retains identical native facts.
-OR's genuinely newer counted-ballot/active-registration reference is next,
-not yet promoted. Its accepted runtime and selected model use different old
-counts/stocks, so compare those separately before any update. Do not replace
-separate returned-envelope observations or weaken fixed-registration guards.
+OR's genuinely newer counted-ballot/active-registration reference has now
+advanced through the separate operation described above. Its runtime and
+model baselines remain distinct; separate envelope observations and existing
+fixed-registration guards are preserved.
 
 Broader624/626/631/632/633 remain open. After the remaining implementation,
 perform the requested full audit636, fix substantive defects, then understated

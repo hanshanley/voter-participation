@@ -1,0 +1,2175 @@
+{
+  "actual_desktop_and_mobile_screenshots_visually_reviewed": true,
+  "canonical_display_validation": {
+    "actual_canonical_full_release_projection_byte_identical": true,
+    "actual_canonical_projection_tests": 4,
+    "astro": {
+      "errors": 0,
+      "preexisting_hints": 5,
+      "warnings": 0
+    },
+    "independent_package_and_older_explorer_not_overwritten": true,
+    "passed": true
+  },
+  "canonical_independent_package_older_explorer_heads_indexes_and_unrelated_files_preserved": true,
+  "four_owned_website_files_persisted": true,
+  "native_artifact": {
+    "actual_downloaded_zip_sha256": "7bcdb22d6b3b5a35ad69b8e3c0519076d3eac7682c1b857816b80b44c3f6d4ae",
+    "actual_linked_renderer": "scripts/participation-explorer.js",
+    "actual_native_artifact_id": 14037436051,
+    "actual_native_registered_scenarios": 34,
+    "actual_native_registered_state_decisions": 51,
+    "actual_payload_bytes": 997241489,
+    "actual_tar_bytes": 999833600,
+    "artifact_files": 2975,
+    "complete_registered_analysis_link_verified": true,
+    "dynamic_disclosures_verified_in_actual_renderer": true,
+    "every_unrounded_registered_model_value_exact": true,
+    "frozen_source_scripts_verified": 22,
+    "not_a_local_size_projection": true,
+    "old_full_download_pins_preserved": 436,
+    "original_models_preserved": 113,
+    "passed": true,
+    "renderer_is_bundled": false,
+    "run_id": 43425281622,
+    "source_commit": "5168917f50f9fcb7f7a8b1c4ca127995142ad8b0",
+    "source_guard_run": 43425281512,
+    "strict_both_less_than_1e9": true,
+    "successful_native_build_and_deployment": true
+  },
+  "no_application_change_for_two_initial_browser_selector_failures": true,
+  "passed": true,
+  "production_civic_reader": {
+    "base_url": "https://www.themarginoferror.com",
+    "checks": [
+      {
+        "conditional_rows": 112,
+        "default_closed_research_preserved": true,
+        "margin_rows": 2,
+        "mode": "desktop",
+        "native_complete_download_matches_verified_immutable_asset": true,
+        "native_registered_scenarios": 34,
+        "native_source_frame_decisions": 51,
+        "native_source_group_downloads": 2,
+        "participation_rows": 79,
+        "passed": true
+      },
+      {
+        "conditional_rows": 112,
+        "default_closed_research_preserved": true,
+        "margin_rows": 2,
+        "mode": "mobile",
+        "native_complete_download_matches_verified_immutable_asset": true,
+        "native_registered_scenarios": 34,
+        "native_source_frame_decisions": 51,
+        "native_source_group_downloads": 2,
+        "participation_rows": 79,
+        "passed": true
+      },
+      {
+        "conditional_rows": 112,
+        "default_closed_research_preserved": true,
+        "margin_rows": 2,
+        "mode": "no_javascript",
+        "native_complete_download_matches_verified_immutable_asset": true,
+        "native_registered_scenarios": 34,
+        "native_source_frame_decisions": 51,
+        "native_source_group_downloads": 2,
+        "participation_rows": 79,
+        "passed": true
+      },
+      {
+        "conditional_rows": 112,
+        "default_closed_research_preserved": true,
+        "margin_rows": 2,
+        "mode": "failed_json",
+        "native_complete_download_matches_verified_immutable_asset": true,
+        "native_registered_scenarios": 34,
+        "native_source_frame_decisions": 51,
+        "native_source_group_downloads": 2,
+        "participation_rows": 79,
+        "passed": true
+      }
+    ]
+  },
+  "production_count_reader": {
+    "active_legacy_count_requests": 0,
+    "all_state_UI_cases": 51,
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 67,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 67,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 67,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 67,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "available",
+        "units": 2768
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "official",
+        "units": 2768
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "uf_vap",
+        "units": 2768
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "uf_vep",
+        "units": 2768
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "available",
+        "units": 1763
+      },
+      {
+        "code": "AZ",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "official",
+        "units": 1763
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "uf_vap",
+        "units": 1763
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "uf_vep",
+        "units": 1763
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 169,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 169,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 169,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 169,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 3,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 3,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 4,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 4,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 4,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 4,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 99,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 99,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "available",
+        "units": 986
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "official",
+        "units": 986
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "uf_vap",
+        "units": 986
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "uf_vep",
+        "units": 986
+      },
+      {
+        "code": "IL",
+        "counties": 102,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 102,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 102,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "available",
+        "units": 103
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "official",
+        "units": 103
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "uf_vap",
+        "units": 103
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "uf_vep",
+        "units": 103
+      },
+      {
+        "code": "KS",
+        "counties": 105,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 105,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 105,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 120,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 120,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 64,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 64,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 64,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "MA",
+        "counties": 2,
+        "mode": "available",
+        "units": 307
+      },
+      {
+        "code": "MA",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MA",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MA",
+        "counties": 2,
+        "mode": "official",
+        "units": 307
+      },
+      {
+        "code": "MA",
+        "counties": 2,
+        "mode": "uf_vap",
+        "units": 307
+      },
+      {
+        "code": "MA",
+        "counties": 2,
+        "mode": "uf_vep",
+        "units": 307
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 480,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 480,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 480,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "MI",
+        "counties": 2,
+        "mode": "available",
+        "units": 63
+      },
+      {
+        "code": "MI",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MI",
+        "counties": 83,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MI",
+        "counties": 2,
+        "mode": "official",
+        "units": 63
+      },
+      {
+        "code": "MI",
+        "counties": 2,
+        "mode": "uf_vap",
+        "units": 63
+      },
+      {
+        "code": "MI",
+        "counties": 2,
+        "mode": "uf_vep",
+        "units": 63
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "available",
+        "units": 4105
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "official",
+        "units": 4105
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "uf_vap",
+        "units": 4105
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "uf_vep",
+        "units": 4105
+      },
+      {
+        "code": "MO",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 82,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 82,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 56,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 56,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "available",
+        "units": 358
+      },
+      {
+        "code": "ND",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "official",
+        "units": 358
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "uf_vap",
+        "units": 358
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "uf_vep",
+        "units": 358
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "available",
+        "units": 1415
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "official",
+        "units": 1415
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "uf_vap",
+        "units": 1415
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "uf_vep",
+        "units": 1415
+      },
+      {
+        "code": "NH",
+        "counties": 4,
+        "mode": "available",
+        "units": 37
+      },
+      {
+        "code": "NH",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NH",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NH",
+        "counties": 4,
+        "mode": "official",
+        "units": 37
+      },
+      {
+        "code": "NH",
+        "counties": 4,
+        "mode": "uf_vap",
+        "units": 37
+      },
+      {
+        "code": "NH",
+        "counties": 4,
+        "mode": "uf_vep",
+        "units": 37
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "available",
+        "units": 2204
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "official",
+        "units": 2204
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "uf_vap",
+        "units": 2204
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "uf_vep",
+        "units": 2204
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 62,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 62,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 88,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 88,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 88,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 77,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 77,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 43,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 67,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 43,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 43,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 43,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 39,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 39,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 39,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 39,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 46,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 46,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 46,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "available",
+        "units": 671
+      },
+      {
+        "code": "SD",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "official",
+        "units": 671
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "uf_vap",
+        "units": 671
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "uf_vep",
+        "units": 671
+      },
+      {
+        "code": "TN",
+        "counties": 95,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 95,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 254,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 254,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 247,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 247,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 247,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 247,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "WI",
+        "counties": 2,
+        "mode": "available",
+        "units": 32
+      },
+      {
+        "code": "WI",
+        "counties": 72,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "WI",
+        "counties": 72,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "WI",
+        "counties": 2,
+        "mode": "official",
+        "units": 32
+      },
+      {
+        "code": "WI",
+        "counties": 2,
+        "mode": "uf_vap",
+        "units": 32
+      },
+      {
+        "code": "WI",
+        "counties": 2,
+        "mode": "uf_vep",
+        "units": 32
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "available",
+        "units": 432
+      },
+      {
+        "code": "WY",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "official",
+        "units": 432
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "uf_vap",
+        "units": 432
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "uf_vep",
+        "units": 432
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 1693621,
+        "state": "Alabama",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 752061,
+        "state": "Nebraska",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 726684,
+        "state": "New Mexico",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 4243180,
+        "state": "North Carolina",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 239057,
+        "state": "North Dakota",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 2019444,
+        "state": "Oregon",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 310298,
+        "state": "South Dakota",
+        "width": 1440
+      },
+      {
+        "compact_sidebar": true,
+        "county_count": 9019,
+        "native_county_choices": 87,
+        "no_overflow": true,
+        "state": "Minnesota",
+        "width": 1440
+      },
+      {
+        "current_complete_queries_linked": true,
+        "municipality_counts_bound": 247,
+        "native_source_label_correct": true,
+        "no_overflow": true,
+        "reviewed_registered_fractions": 247,
+        "state": "Vermont",
+        "width": 1440,
+        "withheld_rates": 0
+      },
+      {
+        "native_counties_checked": 100,
+        "native_source_link_verified": true,
+        "no_overflow": true,
+        "reported_ballots": 4243180,
+        "separate_early_and_demographic_provider_frames_preserved": true,
+        "state": "North Carolina",
+        "state_and_county_snapshot_exact": true,
+        "width": 1440
+      },
+      {
+        "all_native_properties_exact": true,
+        "complete_numerical_downloads_linked": true,
+        "geographic_and_rate_holds_preserved": true,
+        "native_units_checked": 432,
+        "no_overflow": true,
+        "reported_ballots": 191713,
+        "state": "Wyoming",
+        "unknown_clock_explicit": true,
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 1693621,
+        "state": "Alabama",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 752061,
+        "state": "Nebraska",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 726684,
+        "state": "New Mexico",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 4243180,
+        "state": "North Carolina",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 239057,
+        "state": "North Dakota",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 2019444,
+        "state": "Oregon",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 310298,
+        "state": "South Dakota",
+        "width": 390
+      },
+      {
+        "compact_sidebar": true,
+        "county_count": 9019,
+        "native_county_choices": 87,
+        "no_overflow": true,
+        "state": "Minnesota",
+        "width": 390
+      },
+      {
+        "current_complete_queries_linked": true,
+        "municipality_counts_bound": 247,
+        "native_source_label_correct": true,
+        "no_overflow": true,
+        "reviewed_registered_fractions": 247,
+        "state": "Vermont",
+        "width": 390,
+        "withheld_rates": 0
+      },
+      {
+        "native_counties_checked": 100,
+        "native_source_link_verified": true,
+        "no_overflow": true,
+        "reported_ballots": 4243180,
+        "separate_early_and_demographic_provider_frames_preserved": true,
+        "state": "North Carolina",
+        "state_and_county_snapshot_exact": true,
+        "width": 390
+      },
+      {
+        "all_native_properties_exact": true,
+        "complete_numerical_downloads_linked": true,
+        "geographic_and_rate_holds_preserved": true,
+        "native_units_checked": 432,
+        "no_overflow": true,
+        "reported_ballots": 191713,
+        "state": "Wyoming",
+        "unknown_clock_explicit": true,
+        "width": 390
+      }
+    ],
+    "complete_current_snapshot_exact": true,
+    "immutable_base": "https://raw.githubusercontent.com/hanshanley/margin_of_error/faf867a0b229f21daf87ab5459abc1f299897f5f/datasets/participation-counts-2026/76878ba43ab52839e7f3dfdd179c8017405eb6971a77c85bc999592435a9a3aa/",
+    "production": true,
+    "reporting_rows": 7,
+    "retained_early_rows": 6450,
+    "status": "PASS_actual_public_catalog_all_306_bindings_state_UI_and_phone",
+    "test_fixture_used": false,
+    "version": "76878ba43ab52839e7f3dfdd179c8017405eb6971a77c85bc999592435a9a3aa"
+  },
+  "proof_pins": {
+    "canonical-code-sync.json": {
+      "bytes": 2441,
+      "sha256": "7e176e5a90291f24f9bdc54c8caecef427f5115fa9f452418d17b1e8c5cccb15"
+    },
+    "canonical-display-validation.json": {
+      "bytes": 277,
+      "sha256": "bc7431122c1e75c6ba59f72cdaa9d10e460d3c60c1324e2c0c1c3d1cb268b807"
+    },
+    "canonical-website-sync.json": {
+      "bytes": 1599,
+      "sha256": "22b8a5f28b60a79652e3d8bf10e174b3c61df3c25e130a2f6b56e4c14d680be4"
+    },
+    "native-pages/verification.json": {
+      "bytes": 991,
+      "sha256": "ff0cfe8c548a14bb922352abe7a26bd2d7c02af13c97b84271c8fa8396646701"
+    },
+    "production-civic-browser.json": {
+      "bytes": 1656,
+      "sha256": "5289982a4c284abdd73297039f2836c306de2b76e06266eb79c9ce5ade3a170c"
+    },
+    "production-count-browser.json": {
+      "bytes": 36487,
+      "sha256": "3ecbcd39a2f58c8a8bdc3a03b63af402a7fc8a604703f5f04d63a2e669130dba"
+    },
+    "production-source-bytes.json": {
+      "bytes": 4133,
+      "sha256": "ef44c496726e6c2c2eb476238e01f07f8efa442a9ffb0231ae362ad8f9deaeb8"
+    },
+    "public-website-source-verification.json": {
+      "bytes": 812,
+      "sha256": "91e94e881807534e852e6c5b2ca1c39daf15c7f520ca9a5387a6cebc13716147"
+    }
+  },
+  "remaining_work": "Broader all-state/historical/native/combined-source implementation remains open; complete genuine prerequisites, then full audit and understated beautification.",
+  "source_commit": "5168917f50f9fcb7f7a8b1c4ca127995142ad8b0",
+  "source_guard_tests": 6,
+  "website_source_and_projection_tests": 70,
+  "whole_project_complete": false
+}

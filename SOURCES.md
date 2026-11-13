@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current state-reference/model refresh | [Oregon counted ballots, active registration and revision33](#2026-oregon-state-reference-and-registered-source-revision-33) |
 | Current coherent count/model refresh | [North Carolina state/county counts, native group observations and revision32](#2026-coherent-north-carolina-counts-and-native-source-revision-32) |
 | Current coherent native refresh | [Wyoming county/reporting counts and ballot-only model revision31](#2026-coherent-native-county-and-reporting-refresh-revision-31) |
 | Current complete native context | [Revision30: complete reporting units, unchanged selected registration and modeled means](#2026-complete-native-source-context-revision-30) |
@@ -50,7 +51,76 @@ This document is the detailed reference ledger, not the methods introduction.
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
 
+## 2026 Oregon state reference and registered-source revision 33
+
+The held official Oregon general-election page reports **2,019,444 Ballots
+Counted**, **3,109,145 Active Registered Voters** and two agreeing **64.95%**
+displays. The native result clock is **11/13/2026 | 1:45 AM PT**; retrieval
+is separate and no canonical timezone conversion is invented. Its complete
+36,835-byte original has SHA256
+`c3051595596d2796e2634d92b4f8ab537b4f89a8b1e5c5ff50422f0129738d68`.
+The maintained HTMLParser extraction and independent lxml/libxml2 DOM agree
+on all14 selected literal/value/assertion/context checks. Backend
+`hidVoterTotal=1089701`, reported0 and not-reported1318 remain opaque,
+not the active register or evidence of complete counting.
+
+Three previous observations must not be conflated. The latest raw crawl
+changes7,894 counted ballots and no registrations. The actual accepted runtime
+reference was1,551,077/R3,109,089 (increase468,367/+56); model32's separately
+dated selected reference was1,891,605/R3,109,084 (increase127,839/+61).
+These counting/reference revisions are not observed new voters or switching.
+
+Shared source29f7362 adds a distinct reviewed `state_reporting` operation and
+registered-source successor. It does not weaken existing coherent-county or
+fixed-registration guards. Only the current snapshot/index change; all51
+jurisdiction shards remain exact, including the dated, unselected old Oregon
+state record. Other current reporting, provider early/mail/demographic
+observations and native991c5863 remain exact. County returned-envelope
+observations are not replaced with the state counted-ballot statistic.
+Counts76878ba is active through atomic catalog1f4e6b1 after54 full immutable
+body checks, without a build, source request or reparse.
+
+Model33 recomputes only the existing Oregon primary source-unit partition,
+using the same1,655-case Civic weights/probability: conditional participant
+units **2,083,361.267128987123...** and complementary units
+**1,025,783.732871012876...**. The other50state/51control/33scenario rows,
+all17 earlier complete numerical outputs and nine House family/profile
+outputs remain exact. The separate Oregon monthly-registration scenario
+(R3,112,307) and formal-analysis-warning envelope context stay separate.
+No native outcome is fitted; these units are not measured staying home,
+certified population counts, or independently validated model errors.
+
+Both complete releases are public and immutable:444190384 (14data assets)
+and444188768 (31model assets), every full body verified authenticated/draft
+then anonymously/public. Both fresh data replays pass63tests/all57outputs;
+both model replays pass5tests/all48outputs and whole-ZIP exact reproduction.
+Actual canonical replays pass, as do80 affected source tests in both trees.
+The source SDK separately replays21members in an isolated standard-library
+process. Public replay includes all selected factual inputs/recipes/queries,
+not re-extraction of the excluded publisher HTML/application. The original
+remains private; no new source acquisition or respondent refit is involved.
+See [complete downloads](docs/DATA.md#current-oregon-state-reference-and-model-revision-33).
+
+Website5168917 is verified live and canonically persistent. All70 required
+website tests/Astro pass; the actual canonical four projection tests,
+full-release regeneration and Astro also pass without changing independent
+package scripts or the older explorer. Native Pages43425281622 and both
+source guards43425281512/43425281631 succeed. Actual artifact14037436051
+contains997,241,489payload/999,833,600tar bytes, both below1e9, with436old
+download pins,113archived models and every unrounded33display value exact.
+Unqueried production HTML and all22served scripts match the native artifact.
+Production passes306bindings/51selectors/14state-reference cases, all100NC
+county/432WYunit selections at both widths, and four-mode79Civic/112flow/
+2margin/34scenario/51decision checks plus full CSV/group-query hashes.
+Four actual production images reviewed. The focused Oregon screenshot
+selector uses an explicit scenario ID because Oregon has two legitimate
+frames; both still receive complete numerical checks.
+See the [acceptance record](data/participation-access/20261113-or-state-reference-01/website-acceptance.json).
+
 ## 2026 coherent North Carolina counts and native-source revision 32
+
+Preserved accepted predecessor; revision33 above advances Oregon only.
+North Carolina's counts and complete group/source queries remain unchanged.
 
 The already-preserved official NCSBE originals contain genuinely newer numerical
 data, not just refreshed retrieval metadata. Shared processing58ed929 uses

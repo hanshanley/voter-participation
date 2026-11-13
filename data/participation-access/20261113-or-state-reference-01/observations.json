@@ -1,0 +1,483 @@
+{
+  "active_registered_source_units": 3109145,
+  "actual_canonical_full_data_and_model_replays_pass": true,
+  "actual_runtime_baseline": {
+    "ballots": 1551077,
+    "registered": 3109089
+  },
+  "actual_runtime_change": {
+    "ballots": 468367,
+    "registered": 56
+  },
+  "affected_research_and_canonical_tests_each": 80,
+  "all51jurisdiction_shards_preserved_byte_identically": true,
+  "cached70workfiles_bytes_and_mtimes_unchanged_with_no_external_operations": true,
+  "canonical_source_timezone": null,
+  "complete_data_release": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 6934,
+        "id": 743538212,
+        "name": "all-51-jurisdictions.json",
+        "sha256": "eb11c83677e3e78fbb11beb0fb4e2c10d49853d167055a718780ed44a31d7ac6",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/all-51-jurisdictions.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 782,
+        "id": 743538213,
+        "name": "candidate-verification.json",
+        "sha256": "018c29d6a78e4c3e24fcc82ba7608276a8af08a97aed620df1d40a209f805206",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/candidate-verification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 11407111,
+        "id": 743538251,
+        "name": "complete-analysis.zip",
+        "sha256": "212ad518ce61bcdc5c32e89769d3187456aa0c2f1ec3b66e9e7929e6d116386b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1801,
+        "id": 743538250,
+        "name": "complete-asset-manifest.json",
+        "sha256": "9448754197058df1197a73db4b28a44f74ae9042de3586ed47297be29c1b5528",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 41585,
+        "id": 743538288,
+        "name": "complete-count-source-packet.zip",
+        "sha256": "d58246afebae59640c2a6a6cbae6766bfc37c3db0a19d2056b93d721ba6ee7a1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-count-source-packet.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 13760,
+        "id": 743538289,
+        "name": "complete-selected-state-reference-query.json",
+        "sha256": "a30a3bb75efb94ede9ebba2162fabbd2aae23d87ea39660545dc91ac45d6c9f9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-selected-state-reference-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 104,
+        "id": 743538214,
+        "name": "complete-source-dispositions.json",
+        "sha256": "7a1b1d6a13f359d774116148c6562ca1fcdf739c6526d7be0ae547bbef10e6cb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-source-dispositions.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 12882,
+        "id": 743538211,
+        "name": "complete-source-registry.json",
+        "sha256": "f517ed16debad6c48376d1d93fc1f65b62e1d1a98d5e76bf66e911959d1fe6d3",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/complete-source-registry.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 849,
+        "id": 743538286,
+        "name": "independent_native_verification.json",
+        "sha256": "1b8daff280d99dc7b1f35d589272585ae21e8ee97be12b73d2d02aa0b3193b14",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/independent_native_verification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2285,
+        "id": 743538255,
+        "name": "offline-replays.json",
+        "sha256": "309983cd994a23934469b93dff45f336e85b488ab44ad3008ad3e468ea97466a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/offline-replays.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2964,
+        "id": 743538253,
+        "name": "recipe.json",
+        "sha256": "54c700963a6565ab1391f331d78c66a16b55f186cf0a2fd47eff5d0ec351e7cb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/recipe.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 13760,
+        "id": 743538260,
+        "name": "snapshot.json",
+        "sha256": "a30a3bb75efb94ede9ebba2162fabbd2aae23d87ea39660545dc91ac45d6c9f9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/snapshot.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 336,
+        "id": 743538210,
+        "name": "source_receipt.json",
+        "sha256": "05f56eae4d77719c9039a8a20f78400841d8769b1c3ef2dc8fe0d9857a3b3dbe",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/source_receipt.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 4832,
+        "id": 743538278,
+        "name": "statistics.json",
+        "sha256": "a73b78de0e2c648fdc70148daf67c8fe25fc0b566913aaeff913e5923b1209f1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-or-state-reference-refresh-20261113-01/statistics.json"
+      }
+    ],
+    "draft": false,
+    "every_full_authenticated_draft_and_anonymous_public_body_verified": true,
+    "id": 444190384,
+    "immutable": true,
+    "passed": true,
+    "research_source_commit": "29f736213cfd8b8e23c000974bb14266e95a5f9f",
+    "tag": "participation-or-state-reference-refresh-20261113-01",
+    "target_commitish": "a2fb76887192f8e21474c76984dc08532bc7356a"
+  },
+  "complete_model_release": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 1071,
+        "id": 743532407,
+        "name": "README.txt",
+        "sha256": "ea770ee69d4530641f6cee89815ddd4a723c35042926bf5db4ecf61367aceb5a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/README.txt"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 4081,
+        "id": 743532324,
+        "name": "ballot-control-change.json",
+        "sha256": "1e2127f9ebfb6c97db7215dc09e067bf8b6bbc1758e8c68df0bb539cf3c241c1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/ballot-control-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 6854,
+        "id": 743532442,
+        "name": "checksums.json",
+        "sha256": "295c7309cb8d5b1ffe53ea71e82c0d8af18f4abe051e77cb82f8457ab5eb7272",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/checksums.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 283098707,
+        "id": 743532332,
+        "name": "complete-analysis.zip",
+        "sha256": "c3f315eae798b4bdc693afdf1024b710e1bdc3c5ebe9940e17c0b9d315452f05",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 4465,
+        "id": 743532293,
+        "name": "complete-asset-manifest.json",
+        "sha256": "3a581b1172d85670c474d386064d5b15dad8336d5b0e86ac43e72eb10d2c0e22",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 161622,
+        "id": 743532326,
+        "name": "complete-ballot-control-change-query.json",
+        "sha256": "d24a08a1f496c03f5dfbbb7e2616ad089c11ad104769790c77a5ffdeffad55c4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-ballot-control-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 7177,
+        "id": 743532255,
+        "name": "complete-ballot-control-queries.json.gz",
+        "sha256": "fbab546276eaa9d6909791ed860717d0f85a7acad1ca792b3d9f1055ae0464cb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-ballot-control-queries.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 31512,
+        "id": 743532469,
+        "name": "complete-conditional-registered-scenarios.csv",
+        "sha256": "cb743361fe71bfbf100d9e0b36947cb202c8a3ce2733b16178b11d6e8553e657",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-conditional-registered-scenarios.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1843747,
+        "id": 743532435,
+        "name": "complete-current-native-source-queries.json.gz",
+        "sha256": "1e403a4b1bc50113efa3c6e565728b682a1c88f136e6ea9928e6e2db2fbea943",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-current-native-source-queries.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 8238,
+        "id": 743532443,
+        "name": "complete-maryland-card-references.csv",
+        "sha256": "3e84f1381bef65b3ed661df1b567aec5b5eabde4f490cf04a8efb9591e97f02b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-maryland-card-references.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3634,
+        "id": 743532434,
+        "name": "complete-maryland-native-accounting.csv",
+        "sha256": "fe0fd79b624369e2b2cbeb4ab37641907b77ad2037450701658d92964c8617ac",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-maryland-native-accounting.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 60251,
+        "id": 743532294,
+        "name": "complete-maryland-register-stocks.csv",
+        "sha256": "9cdd05a6d4f3304d88363f9440b7d99c8a794b4c869083de4b5620a27508b5fe",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-maryland-register-stocks.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 159278,
+        "id": 743532254,
+        "name": "complete-native-context-change-query.json",
+        "sha256": "1b8b0085bfc939dfd60758435202ec99bfa4740ac7728512d2d21a15122a8317",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-native-context-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 165330,
+        "id": 743532385,
+        "name": "complete-native-context-query.json.gz",
+        "sha256": "077175910837d3feaa359a3a5ba638a75d3eee70ed5e7413f92190ff0cb29c71",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-native-context-query.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 55394,
+        "id": 743532370,
+        "name": "complete-native-control-dispositions.csv",
+        "sha256": "1db6a368297b5ea344109c8e2ecce426ebd4029ce34b4604a75be7a56fad49b6",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-native-control-dispositions.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 625001,
+        "id": 743532404,
+        "name": "complete-native-group-control-query.json",
+        "sha256": "26675302e1192bd60b8fc6ac9558e909b87b837b9f4e4524440665e3fa5e1504",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-native-group-control-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 553003,
+        "id": 743532472,
+        "name": "complete-native-participation-group-controls.csv",
+        "sha256": "ed278eb60d021cc345cd4c97a180e326706fd5c5d266cee29dc2af7559f67157",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-native-participation-group-controls.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 157288,
+        "id": 743532372,
+        "name": "complete-registered-control-change-query.json",
+        "sha256": "6c28ab0cc138c68a299fe56a8d78c7e718ffcd5f759f2b98845e003e168ae5b9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-registered-control-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 164509,
+        "id": 743532476,
+        "name": "complete-reported-registered-reference-change-query.json",
+        "sha256": "118fe4e2c6e72e5b2fe9b87af3282702beb2b8e473b63d02a36324a9cdb67fde",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-reported-registered-reference-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 7908,
+        "id": 743532377,
+        "name": "complete-selected-native-state-statistics.json",
+        "sha256": "209fbcee92c619092af198c193ea2d26119d56fe3a1c15670b8dd7b82c753ef9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-selected-native-state-statistics.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 26005,
+        "id": 743532491,
+        "name": "complete-state-control-query.csv",
+        "sha256": "0b888c865caa83ed1529d9dfda1d2dbe7ac520ba429684fab5a92db800d15054",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-state-control-query.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 166933,
+        "id": 743532323,
+        "name": "complete-state-reference-change-query.json",
+        "sha256": "2552171975869a05006dfd4920b078dee8e473f7dbe420165237039b966813ba",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/complete-state-reference-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1530,
+        "id": 743532401,
+        "name": "independent-numerical-verification.json",
+        "sha256": "d73fd03049931f9ae4c8a7427bb61244a3fb048a32cd71bb91a31eeedaa075a9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/independent-numerical-verification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3807,
+        "id": 743532289,
+        "name": "native-context-change.json",
+        "sha256": "bed9acee3de2e9ed2d23ac98c9da234445c2c8ddaf52be1346552638babba21c",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/native-context-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1354,
+        "id": 743532285,
+        "name": "native-participation-source-accounting.json",
+        "sha256": "02a9505bc67a9bbaefad9f741bb2d18cdf984901279eb0e4c1fc5ad79e520e73",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/native-participation-source-accounting.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2285,
+        "id": 743532334,
+        "name": "offline-replays.json",
+        "sha256": "309983cd994a23934469b93dff45f336e85b488ab44ad3008ad3e468ea97466a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/offline-replays.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1382,
+        "id": 743532410,
+        "name": "registered-frame-change.json",
+        "sha256": "9e4738f47f4668fc1ea2e307d872b5d5641b69b287f200a485bab2fc23d9b483",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/registered-frame-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 4853,
+        "id": 743532290,
+        "name": "reported-registered-reference-change.json",
+        "sha256": "b656d10ff4260f77e3427349cca5e0cf102d0e5d07bcab6107504b1a8eca7c66",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/reported-registered-reference-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 10671,
+        "id": 743532259,
+        "name": "source-qualification.json",
+        "sha256": "3de0dcb0331ff3fbf89398bbf7ecb275977367da9d7148d55ad11c7c5d16976e",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/source-qualification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1628,
+        "id": 743532258,
+        "name": "state-reference-change.json",
+        "sha256": "ef49ac2013601b9d07b98607dc760f6fbc47659e32f546f5e33ad1103cdc6d0e",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/state-reference-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2176,
+        "id": 743532253,
+        "name": "summary.json",
+        "sha256": "1821f0a218f303add1913fee50002851c960f0e5a4a8725b5bf1f1b52b929a64",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-33/summary.json"
+      }
+    ],
+    "draft": false,
+    "every_full_authenticated_draft_and_anonymous_public_body_verified": true,
+    "id": 444188768,
+    "immutable": true,
+    "passed": true,
+    "research_source_commit": "29f736213cfd8b8e23c000974bb14266e95a5f9f",
+    "tag": "participation-state-controls-20261113-33",
+    "target_commitish": "a2fb76887192f8e21474c76984dc08532bc7356a"
+  },
+  "conditional_complement_source_units": "1025783.7328710128767248047952625844044586654926650395463490203105184187099335829",
+  "conditional_participant_source_units": "2083361.2671289871232751952047374155955413345073349604536509796894815812900664171",
+  "count_activation": {
+    "anonymous_verified_files": 54,
+    "catalog_commit": "1f4e6b1d79d00b561ac9a5aaecc80363f7a39ee1",
+    "changed_ids": [
+      "participation-counts-2026"
+    ],
+    "datasets_changed": 1,
+    "intermediate_catalog_unchanged": true,
+    "single_catalog_commit_for_all_changes": true,
+    "staged_commit": "faf867a0b229f21daf87ab5459abc1f299897f5f",
+    "status": "published",
+    "unchanged_dataset_entries_preserved": true,
+    "website_builds_started": 0,
+    "worktree_head_or_index_changed": false
+  },
+  "counted_ballots": 2019444,
+  "counting_completeness_independently_qualified": false,
+  "dated_unselected_old_or_state_observation_and_county_envelope_frames_preserved": true,
+  "fresh_data_replays": {
+    "full_outputs_each": 57,
+    "repeats": 2,
+    "tests_each": 63
+  },
+  "fresh_model_replays": {
+    "entire_zip_byte_identical": true,
+    "full_outputs_each": 48,
+    "repeats": 2,
+    "tests_each": 5
+  },
+  "hidden_backend_counters_not_population_or_completeness_authority": true,
+  "independent_native_literal_value_assertion_context_checks": 14,
+  "model_version": 33,
+  "native_binding_version_unchanged": "991c5863a273bb72716be8423147f83fe5da00ccc941d5386df6700914e644d2",
+  "native_outcome_fitting_applied": false,
+  "native_printed_percentage": "64.95%",
+  "nine_house_family_profile_outputs_preserved": true,
+  "observed_staying_home_switching_or_causal_persuasion_identified": false,
+  "original_html_bytes": 36835,
+  "original_html_sha256": "c3051595596d2796e2634d92b4f8ab537b4f89a8b1e5c5ff50422f0129738d68",
+  "other50state_51control_33scenario_rows_and17prior_full_outputs_exact": true,
+  "other6reporting_rows_6450early_rows_135provider_group_rows_preserved": true,
+  "passed": true,
+  "public_selected_input_replay_not_excluded_publisher_html_reextraction": true,
+  "raw_crawl_change_not_the_runtime_or_model_change": {
+    "ballots": 7894,
+    "registered": 0
+  },
+  "registered_scenarios": 34,
+  "scope": "Existing Oregon statewide counted-ballot/active-registration reference",
+  "selected_model_reference_change": {
+    "ballots": 127839,
+    "registered": 61
+  },
+  "separate_monthly_R3112307_and_held_warning_envelope_context_preserved": true,
+  "separate_reviewed_state_reporting_operation_not_weakened_county_or_fixed_R_guards": true,
+  "separately_dated_model_baseline": {
+    "ballots": 1891605,
+    "registered": 3109084
+  },
+  "source_cases": 1655,
+  "source_clock": "11/13/2026 | 1:45 AM PT",
+  "source_commit": "29f736213cfd8b8e23c000974bb14266e95a5f9f",
+  "source_fits_weights_or_probabilities_changed": false,
+  "source_sdk_isolated_stdlib_replay": {
+    "all_archive_members_checked": 21,
+    "complete_outputs_checked": 1,
+    "complete_zip_byte_exact": null,
+    "hash_seed": "19",
+    "isolated_stdlib_only": true,
+    "kind": "sdk",
+    "network_dns_and_children_blocked": true,
+    "original_archive": {
+      "bytes": 41585,
+      "sha256": "d58246afebae59640c2a6a6cbae6766bfc37c3db0a19d2056b93d721ba6ee7a1"
+    },
+    "passed": true,
+    "tests": 0,
+    "three_offline_gates_probed": true,
+    "unexpected_external_operations": 0
+  },
+  "whole_project_complete": false
+}
