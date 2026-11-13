@@ -101,12 +101,23 @@ both full50state recorded-count exports;2,200independent exported-value checks
 pass. The complete82,439,184-byte packet preserves the entire50,449,445-byte
 predecessor and complete factual grids, not metadata-only downloads.
 
-**Delivery is still in progress:** source loading and full frontend contracts
-pass38tests; current typecheck/coherent Astro build and strict local Pages size
-checks pass. Immutable full-asset release verification, actual no-override local/
-production desktop/phone acceptance, native artifact payload AND tar below1e9,
-and guarded canonical sync are not yet claimed. Website main remains0a164b6
-until those gates pass. Do not repeat native extraction/private fitting or the
+**Delivery is still in progress:** immutable release443764898/tag
+`participation-house-official-refresh-20261113-01` is now public; all11full
+assets are authenticated-draft and anonymous-public byte verified. Source
+loading/full frontend contracts pass38tests; current typecheck/coherent Astro
+build and strict local Pages sizing pass. Actual no-valid-data-override local
+desktop/phone25398mapvalues/100state selections, native HI/WY totals, holds,
+source/scale failures, keyboard/cache/download/no-overflow checks pass.
+Research canonical37tests and32full published bodies pass; only5absent
+previously published test/import dependencies were restored, with protected
+HEADs/indexes/unrelated hashes unchanged.
+
+Website source73d15a100a481df7f17e829648358b0c0812dc42 is published;
+source guard43356596795 passes. NativePages43356596811, actual artifact
+payload AND tar below1e9, production desktop/phone acceptance and guarded
+website sync still require verification. The last previously accepted live
+snapshot is0a164b6; publication of source alone is not production acceptance.
+Do not repeat native extraction/private fitting or the
 named-candidate-only predecessor; finish this delivery before further modeling.
 The rest of the all-state source, poll/history/Census/registration/mail and
 native-binding work remains open; this is not nationwide fresh native coverage.

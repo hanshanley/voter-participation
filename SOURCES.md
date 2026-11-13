@@ -163,6 +163,16 @@ Whole workbook templates remain separately held; public reproduction uses
 complete factual grids. No new raw respondents, source refits, weights,
 individual histories, geographic joins or population validation are claimed.
 
+Immutable release443764898/tag
+`participation-house-official-refresh-20261113-01` now publishes the complete
+packet, full native factual grids/queries, both recorded-count formats, all450
+state/profile/family comparisons and complete verification/reproduction proofs.
+All11full assets are verified authenticated while draft and anonymously after
+publication. The current website source73d15a1 passes38affected tests and actual
+local desktop/phone25398mapvalues/100state selections without valid-data
+overrides. Native artifact/production acceptance remains pending; these local
+checks do not establish deployment.
+
 The native civicAPI refreshes for race87495 and87098 returned403 and are stopped;
 the declared AlaskaNovember11combined report returned405. No other client,
 cache, mirror or search-snippet numbers replace those failed originals.

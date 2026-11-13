@@ -1,0 +1,39 @@
+{
+  "base_url": "http://127.0.0.1:51485",
+  "cases": [
+    {
+      "Texas_share_change_checked": 11.97610547994342,
+      "corrected_CSV_not_superseded_targets": true,
+      "default_Democratic_share_units": true,
+      "exact_map_values": 12699,
+      "incompatible_states_unavailable_in_behavioral_views": true,
+      "keyboard_enter_space_selection": true,
+      "no_horizontal_overflow": true,
+      "original_full_download_link_present": true,
+      "per_pin_single_download": true,
+      "recorded_counts_visible_without_behavioral_promotion": true,
+      "state_selections": 50,
+      "true_Massachusetts_pointer_selection": true,
+      "width": 1440
+    },
+    {
+      "Texas_share_change_checked": 11.97610547994342,
+      "corrected_CSV_not_superseded_targets": true,
+      "default_Democratic_share_units": true,
+      "exact_map_values": 12699,
+      "incompatible_states_unavailable_in_behavioral_views": true,
+      "keyboard_enter_space_selection": true,
+      "no_horizontal_overflow": true,
+      "original_full_download_link_present": true,
+      "per_pin_single_download": true,
+      "recorded_counts_visible_without_behavioral_promotion": true,
+      "state_selections": 50,
+      "true_Massachusetts_pointer_selection": true,
+      "width": 390
+    }
+  ],
+  "intentional_bad_scale_clears_and_recovers": true,
+  "intentional_source_failure_fails_closed": true,
+  "status": "passed_recorded_counts_and_comparability_desktop_phone",
+  "valid_data_overrides": false
+}

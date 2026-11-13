@@ -8,7 +8,7 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
-## Official HI/WY update: verified research, delivery pending
+## Official HI/WY update: complete verified downloads
 
 The current research source
 `25dcb6be51253a8a3140b55cf222627b03fee2d7` contains complete updated viewers
@@ -24,9 +24,19 @@ exact replay code/tests and sufficient fixtures. Both fresh offline extractions
 pass37Python/18client tests and reproduce all82outputs plus both full50state
 recorded-count exports;465,552model checks and2,200exported-value checks pass.
 Whole workbook templates remain local; replay starts from complete factual grids.
-Immutable release verification and actual native/production website acceptance
-are still pending; the older complete public packages below remain preserved.
-See [current delivery gates](../REMAINING.md).
+Immutable release443764898: all11full assets verified authenticated while draft
+and anonymously after publication. Actual local desktop/phone acceptance passes;
+native artifact/production verification remains pending. Older complete public
+packages below remain preserved. See [current delivery gates](../REMAINING.md).
+
+| Complete download | Contents |
+|---|---|
+| [Complete scientific packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-analysis.zip) | 82,439,184bytes: entire preceding scientific packet, complete factual grids, all nine result/query sets, code/tests and sufficient inputs |
+| [Complete native factual tables](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-native-factual-tables.zip) | Every HI summary/precinct record and every WY cell/cache/formula/format across52sheets, selected full numerical queries, recipes and verification; no workbook templates |
+| [Complete selected native queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-native-queries.json.gz) | Every selected unit, candidate, mode, ballot and county/state-control query, with all source-row references |
+| [Complete recorded-count CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.csv) | All50states, both endpoints, D/R/Other-unassigned counts, both change units and explicit model qualifications |
+| [Complete recorded-count JSON](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.json) | Same complete numerical decisions plus explicit official-source revisions and scope |
+| [All450state/profile/family comparisons](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-profile-family-state-comparisons.csv) | Full numerical comparison queries; all state/group/flow/assumption/seed arrays remain in the complete scientific ZIP |
 
 ## Recorded House counts and behavioral eligibility
 

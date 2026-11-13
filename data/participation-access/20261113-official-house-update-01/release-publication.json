@@ -1,0 +1,87 @@
+{
+  "assets": {
+    "browser-acceptance.json": {
+      "asset_id": 742048917,
+      "bytes": 1486,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "e1dfda975062f79f856c1f6153c14453ab70592f191aa764d4a88758d90fe326",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/browser-acceptance.json"
+    },
+    "complete-analysis.zip": {
+      "asset_id": 742048915,
+      "bytes": 82439184,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "1dfd78d5bb83477a603c6e97e1b21a23437e7bc732d70e304538baac520b801b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-analysis.zip"
+    },
+    "complete-native-factual-tables.zip": {
+      "asset_id": 742048918,
+      "bytes": 1156560,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "9c13be9f8532a192eaca33c957bdfd1aa937e3793cacd0455b993b5bd1df6edd",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-native-factual-tables.zip"
+    },
+    "complete-native-queries.json.gz": {
+      "asset_id": 742048919,
+      "bytes": 122355,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "d1204240d84f71a97ee3b214a5754c42f0d6d79c1c637faf15e9ea24a58a8a29",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-native-queries.json.gz"
+    },
+    "complete-profile-family-state-comparisons.csv": {
+      "asset_id": 742048922,
+      "bytes": 199161,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "95dc4c176379de527d866ce49dc5a885540fddaa72a651754b6be615c7404a44",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-profile-family-state-comparisons.csv"
+    },
+    "complete-recorded-counts.csv": {
+      "asset_id": 742048949,
+      "bytes": 12378,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "bdde9c50508858a5d8ee7e901309b45183683650ce267e79715856c052351c1a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.csv"
+    },
+    "complete-recorded-counts.json": {
+      "asset_id": 742048952,
+      "bytes": 28682,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "d919df5439cfc90ea164948ce9186953715675ece966ebca29f354f1ac81bcac",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/complete-recorded-counts.json"
+    },
+    "independent-verification.json": {
+      "asset_id": 742048950,
+      "bytes": 21181,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "b065991050a2c3d8a1cca2ffe37e32bd036801cdcede05f2bdfd24cb36d60260",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/independent-verification.json"
+    },
+    "offline-reproduction-01.json": {
+      "asset_id": 742048953,
+      "bytes": 469,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "e179c8e3b2798702488c1d8a57f25d466feeef39552815b42df07ab5b2d45161",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/offline-reproduction-01.json"
+    },
+    "offline-reproduction-02.json": {
+      "asset_id": 742048969,
+      "bytes": 469,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "76917267516a3fbf29be82cdfe7745ca52f551a5f51019b34e93285f0dc85435",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/offline-reproduction-02.json"
+    },
+    "scientific-acceptance.json": {
+      "asset_id": 742048970,
+      "bytes": 378870,
+      "full_authenticated_draft_and_anonymous_public_bodies_verified": true,
+      "sha256": "1e33aa4c1a80ae95b7c9ced07f74a40a2624a1c8b47884d5586f89a343002114",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-official-refresh-20261113-01/scientific-acceptance.json"
+    }
+  },
+  "immutable": true,
+  "no_metadata_only_downloads": true,
+  "release_id": 443764898,
+  "status": "passed_immutable_complete_release",
+  "tag": "participation-house-official-refresh-20261113-01",
+  "website_native_and_production_activation_not_yet_claimed": true
+}

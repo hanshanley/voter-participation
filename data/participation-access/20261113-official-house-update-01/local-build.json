@@ -1,0 +1,20 @@
+{
+  "all_four_owned_symlinks_restored": true,
+  "build_returncode": 0,
+  "current_typecheck_and_coherent_Astro_build": true,
+  "native_artifact_or_production_not_yet_claimed": true,
+  "previous_verified_precinct_and_swing_prerequisites_reused": true,
+  "source_acquisition_and_models_not_repeated": true,
+  "source_files": {
+    "data/participation-return-attribution/20261113-01/copula-receipt.json": "eb4a6250557203aee971f07bf8f8439929379ede2f24240b2315a1d81e1b6dde",
+    "data/participation-return-attribution/20261113-01/family-summary.json": "e4c6646c26374edb3e3499245f61bdd1b30f9c30b4a9a349979627c7634433ee",
+    "data/participation-return-attribution/20261113-01/norc-point-summary.json": "3622cc62cb5ef2925416c5fe59f965d725345569727818aaeabdc7557da857e5",
+    "data/participation-return-attribution/20261113-01/norc-receipt.json": "2b221cb578a60f4fc2c5ebaf8536959edf642f96fb5e73953ecb169edb0c7462",
+    "public/scripts/participation-norc-house.js": "3a2bc620fa95e6211928703778653bdf19f0ea1f56196fd54b22c1413ceb0c3b",
+    "scripts/build-official-house-receipts.mjs": "6219e50a57717d9ca0a501c9114d0d0dfbdc5af0f02cc71f95227341ac5549b8",
+    "scripts/export-house-recorded-counts.mjs": "4bc30a0b3c47194e5d839b6e3bbe22c110282d25165bf5f72b473e3adbc3a95d",
+    "src/components/ParticipationReturnDrivers.astro": "9a3c21b38e9ee5a118bbe978773f0f877d852491b3c7bb8f73611de9773469ac"
+  },
+  "status": "pass",
+  "unchanged_component_typecheck_reused": true
+}
