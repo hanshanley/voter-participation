@@ -1,5 +1,6 @@
 import copy
 import gzip
+import io
 import json
 from pathlib import Path
 import tempfile
@@ -142,6 +143,79 @@ class RoutineBatchTests(unittest.TestCase):
         with patch("scripts.participation_batch.Store.acquire", side_effect=AssertionError("acquisition")):
             with self.assertRaisesRegex(ValueError, "public aggregate"):
                 self.execute()
+
+    def test_canonical_refresh_can_require_an_independent_native_statistical_cell(self):
+        row = copy.deepcopy(self.original_rows[0])
+        spec = copy.deepcopy(self.spec)
+        spec.update(adapter="canonical_json", expected_rows=1)
+        spec["inputs"]["facts"] = dict(url="https://example.gov/reviewed-facts.json")
+        spec["format"] = dict(fact_bindings=[dict(input="facts",
+            record={"geography.id": row["geography"]["id"]}, path="count.value",
+            source_id="native-source", table_id="statistics",
+            native_unit="Native ballots", measure="total", parse="count")])
+        facts = dict(contract="participation.reviewed_pdf_factual_grids.v1",
+            products=[dict(source=dict(id="native-source"), tables=[dict(id="statistics",
+                source_annotations=dict(native_clock="native clock"),
+                source_role="unofficial_registration_ballot_reported_turnout_statistics",
+                rows=[dict(cells=dict(native_unit=dict(value="Native ballots"),
+                    total=dict(value="0", native_status="literal")))])])])
+        def run():
+            return adapt(spec, dict(data=encoded([row]), facts=encoded(facts)),
+                {}, {"literal": None, "timezone": None}, {})
+        self.assertEqual(run()[0]["count"]["value"], 0)
+        clock_binding = dict(spec["format"]["fact_bindings"][0], path="source_clock.literal",
+            value_scope="annotations", value_path="native_clock", parse="literal")
+        spec["format"]["fact_bindings"].append(clock_binding)
+        self.assertEqual(run()[0]["source_clock"]["literal"], "native clock")
+        facts["products"][0]["tables"][0]["source_annotations"]["native_clock"] = "different clock"
+        with self.assertRaisesRegex(ValueError, "differs from its reviewed native fact"):
+            run()
+        facts["products"][0]["tables"][0]["source_annotations"]["native_clock"] = "native clock"
+        row["count"].update(value=1, literal=1)
+        with self.assertRaisesRegex(ValueError, "differs from its reviewed native fact"):
+            run()
+        row["count"].update(value=0, literal=0)
+        facts["products"][0]["tables"][0]["rows"][0]["cells"]["total"].update(
+            value=None, native_status="blank")
+        with self.assertRaisesRegex(ValueError, "Unknown factual cell"):
+            run()
+
+    def test_contest_choice_cells_cannot_authorize_participation_refresh(self):
+        row = copy.deepcopy(self.original_rows[0])
+        spec = copy.deepcopy(self.spec)
+        spec.update(adapter="canonical_json", expected_rows=1)
+        spec["inputs"]["facts"] = dict(url="https://example.gov/reviewed-facts.json")
+        spec["format"] = dict(fact_bindings=[dict(input="facts",
+            record={"geography.id": row["geography"]["id"]}, path="count.value",
+            source_id="source", table_id="contest",
+            native_unit="Native ballots", measure="total", parse="count")])
+        facts = dict(contract="participation.reviewed_pdf_factual_grids.v1",
+            products=[dict(source=dict(id="source"), tables=[dict(id="contest",
+                source_role="unofficial_contest_choices_and_vote_accounting", rows=[])])])
+        with self.assertRaisesRegex(ValueError, "not choices"):
+            adapt(spec, dict(data=encoded([row]), facts=encoded(facts)), {}, {}, {})
+
+    def test_registered_reference_original_is_verified_and_packaged_by_the_shared_runner(self):
+        body = encoded(dict(type="FeatureCollection", features=[
+            dict(type="Feature", properties=dict(key=key), geometry=None) for key in ("one", "two")]))
+        self.spec["inputs"]["geometry"] = dict(url="https://example.gov/context.json", pin=pin(body))
+        (self.supplied / "native/geometry").write_bytes(body)
+        self.plan["sources"][0]["references"] = dict(assets={
+            "reviewed-context": dict(pin(body), key_path="properties.key",
+                approval_evidence="Synthetic already reviewed reference, not a new geographic join")})
+        self.save_plan()
+        result = self.execute()
+        self.assertEqual(result["status"], "unchanged")
+        found = False
+        with zipfile.ZipFile(Path(result["directory"]) / "complete-analysis.zip") as outer:
+            for name in outer.namelist():
+                if not name.endswith(".zip"):
+                    continue
+                with zipfile.ZipFile(io.BytesIO(outer.read(name))) as source:
+                    if "references/reviewed-context" in source.namelist():
+                        self.assertEqual(source.read("references/reviewed-context"), body)
+                        found = True
+        self.assertTrue(found, "The complete registered reference original must survive outer packaging")
 
     def test_overlapping_registry_entries_and_wrong_baseline_rejected(self):
         self.plan["sources"].append(dict(self.plan["sources"][0], id="duplicate-scope"))

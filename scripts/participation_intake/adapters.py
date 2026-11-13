@@ -165,6 +165,71 @@ def pdf_records(spec, inputs):
 ADAPTERS = {"csv": delimited, "json": json_records, "pdf": pdf_records}
 
 
+def verify_fact_bindings(spec, rows, inputs):
+    decoded = {}
+    for binding in spec.get("format", {}).get("fact_bindings", []):
+        name, compression = binding["input"], binding.get("compression")
+        if name not in inputs or name not in spec["inputs"] or compression not in (None, "gzip"):
+            raise IntakeError("source_fact_binding", "Undeclared factual input or compression")
+        key = (name, compression)
+        if key not in decoded:
+            try:
+                body = gzip.decompress(inputs[name]) if compression == "gzip" else inputs[name]
+                decoded[key] = json.loads(body)
+            except (ValueError, UnicodeError, OSError, EOFError) as error:
+                raise IntakeError("source_fact_binding", "Factual grid is not complete declared JSON") from error
+        data = decoded[key]
+        if (not isinstance(data, dict)
+                or data.get("contract") != "participation.reviewed_pdf_factual_grids.v1"
+                or not isinstance(data.get("products"), list)):
+            raise IntakeError("source_fact_binding", "Factual grid contract changed")
+        selected = [row for row in rows if binding["record"] and all(
+            field(row, path) == value for path, value in binding["record"].items())]
+        products = [product for product in data["products"]
+            if product["source"]["id"] == binding["source_id"]]
+        if len(selected) != 1 or len(products) != 1:
+            raise IntakeError("source_fact_binding", "Canonical or native product identity is ambiguous")
+        tables = [table for table in products[0]["tables"] if table["id"] == binding["table_id"]]
+        if len(tables) != 1 or tables[0]["source_role"] != (
+                "unofficial_registration_ballot_reported_turnout_statistics"):
+            raise IntakeError("source_fact_binding", "Participation updates require reviewed ballot statistics, not choices")
+        scope = binding.get("value_scope", "cell")
+        if scope == "cell":
+            native = [row for row in tables[0]["rows"]
+                if row["cells"]["native_unit"]["value"] == binding["native_unit"]]
+            if len(native) != 1 or binding["measure"] not in native[0]["cells"]:
+                raise IntakeError("source_fact_binding", "Native statistical cell is absent or ambiguous")
+            cell = native[0]["cells"][binding["measure"]]
+        elif scope in ("source", "annotations"):
+            container = products[0]["source"] if scope == "source" else tables[0]["source_annotations"]
+            missing = object()
+            value = field(container, binding["value_path"], missing)
+            if value is missing:
+                raise IntakeError("source_fact_binding", "Native provenance or clock field is absent")
+            cell = dict(value=value, native_status="literal")
+        else:
+            raise IntakeError("source_fact_binding", "Unsupported factual value scope")
+        parse = binding.get("parse", "literal")
+        if parse == "count":
+            if scope != "cell":
+                raise IntakeError("source_fact_binding", "Provenance metadata cannot authorize a statistical count")
+            if cell["native_status"] not in ("reported", "literal") or count(cell["value"]) is None:
+                raise IntakeError("source_fact_binding", "Unknown factual cell cannot become a reported count")
+            value = count(cell["value"])
+        elif parse == "literal":
+            value = cell["value"]
+        else:
+            raise IntakeError("source_fact_binding", "Unsupported factual conversion")
+        row = selected[0]
+        if binding["path"] in ("count.value", "count.literal", "view.ballots"):
+            if scope != "cell" or row["measure"]["literal"] != binding["native_unit"]:
+                raise IntakeError("source_fact_binding", "Native numerator label differs from the accepted measure")
+        missing = object()
+        actual = field(row, binding["path"], missing)
+        if actual is missing or type(actual) is not type(value) or actual != value:
+            raise IntakeError("source_fact_binding", "Canonical value differs from its reviewed native fact")
+
+
 def adapt(spec, inputs, input_pins, clock, references):
     name = spec["adapter"]
     if name == "canonical_json":
@@ -181,6 +246,7 @@ def adapt(spec, inputs, input_pins, clock, references):
             if (row["geography"]["state_code"] != spec["geography"]["state_code"]
                     or row["election"] != spec["election"]):
                 raise IntakeError("election_scope", "Canonical observations differ from the registered jurisdiction/election")
+        verify_fact_bindings(spec, rows, inputs)
         return validate_all(rows)
     if name not in ADAPTERS:
         raise IntakeError("unknown_adapter", "Unregistered direct adapter: " + name)

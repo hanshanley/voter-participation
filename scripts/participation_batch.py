@@ -339,7 +339,9 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
             store = Store(work / "intake")
         sources, parsed = [], 0
         for item in prepared:
-            outcome = run(item["spec"], store, supplied={name: value["path"] for name, value in item["inputs"].items()})
+            outcome = run(item["spec"], store,
+                supplied={name: value["path"] for name, value in item["inputs"].items()},
+                references=item["entry"].get("references", {}))
             if outcome["status"] == "rejected":
                 item["quarantined"] = outcome.get("raw_inputs_quarantined_not_packaged", False)
                 dispositions.append(dict(id=item["entry"]["id"], state_code=item["spec"]["geography"]["state_code"],
