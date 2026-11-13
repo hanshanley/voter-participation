@@ -211,8 +211,76 @@ def factual_cells(binding, product):
     return tables, cells
 
 
+def native_query_cells(binding, product, spec, inputs, cache):
+    from scripts.native_products import query
+    from scripts.native_tabular import values
+
+    recipe_name = binding.get("query_recipe_input")
+    if recipe_name not in inputs or recipe_name not in spec["inputs"]:
+        raise IntakeError("source_fact_binding", "A complete declared native query recipe is required")
+    if (binding.get("source_role") not in (
+            "unofficial_registration_ballot_reported_turnout_statistics",
+            "native_registration_ballot_reported_turnout_statistics")
+            or not binding.get("same_measure_review_evidence")
+            or not isinstance(binding.get("native_measure_header"), str)):
+        raise IntakeError("source_fact_binding", "Native table bindings need reviewed statistical measure equivalence")
+    key = (binding["input"], recipe_name, binding.get("native_query_id"))
+    if key not in cache:
+        try:
+            recipe = json.loads(inputs[recipe_name])
+            if recipe["contract"] != "participation.native_product_recipe.v1":
+                raise ValueError("Native query recipe contract changed")
+            sources = [s for s in recipe["products"] if s["id"] == binding["source_id"]]
+            queries = [q for q in recipe["queries"] if q["id"] == binding["native_query_id"]]
+            source = product["source"]
+            if (len(sources) != 1 or len(queries) != 1
+                    or queries[0]["product"] != source["id"]
+                    or any(source[name] != sources[0][name] for name in (
+                        "id", "url", "pin", "state_code", "election_year",
+                        "retrieved_at_utc", "native_updated_at"))
+                    or source["state_code"] != spec["geography"]["state_code"]
+                    or source["election_year"] != spec["election"]["year"]):
+                raise ValueError("Native query source, election or jurisdiction changed")
+            selected = queries[0]
+            tables = [t for t in product["tables"] if t.get("workbook") == selected.get("workbook")
+                      and (not selected.get("tables") or t["name"] in selected["tables"])]
+            cache[key] = selected, tables, query(product, selected)
+        except (KeyError, TypeError, ValueError) as error:
+            raise IntakeError("source_fact_binding", "Native source/query agreement failed: " + str(error)) from error
+    selected, tables, result = cache[key]
+    measure = binding["measure"]
+    column = selected["fields"].get(measure)
+    header_row = binding.get("native_header_row")
+    if (measure not in result["count_fields"] or not isinstance(column, str)
+            or not re.fullmatch(r"[A-Z]+", column) or type(header_row) is not int or header_row <= 0):
+        raise IntakeError("source_fact_binding", "A direct native statistical count column/header is required")
+    table_views = []
+    for table in tables:
+        actual = values(table, header_row).get(column)
+        required = selected.get("require", {}).get(str(header_row), {}).get(column)
+        if not isinstance(actual, str) or required != actual:
+            raise IntakeError("source_fact_binding", "Native statistical header needs its complete recipe guard")
+        table_views.append(dict(source_annotations=dict(native_column_headers={measure: actual})))
+    selectors = binding.get("native_record", {})
+    matches = [r for r in result["rows"] if selectors and all(
+        field(r, path) == value for path, value in selectors.items())]
+    if len(matches) != 1:
+        raise IntakeError("source_fact_binding", "Native statistical query row is absent or ambiguous")
+    scope = binding.get("value_scope", "cell")
+    if scope == "cell":
+        value = matches[0][measure]
+    elif scope == "source":
+        missing = object()
+        value = field(product["source"], binding["value_path"], missing)
+        if value is missing:
+            raise IntakeError("source_fact_binding", "Native source provenance field is absent")
+    else:
+        raise IntakeError("source_fact_binding", "Unsupported native query value scope")
+    return table_views, [dict(value=value, native_status="reported" if scope == "cell" else "literal")]
+
+
 def verify_fact_bindings(spec, rows, inputs):
-    decoded = {}
+    decoded, native_cache = {}, {}
     for binding in spec.get("format", {}).get("fact_bindings", []):
         name, compression = binding["input"], binding.get("compression")
         if name not in inputs or name not in spec["inputs"] or compression not in (None, "gzip"):
@@ -225,17 +293,21 @@ def verify_fact_bindings(spec, rows, inputs):
             except (ValueError, UnicodeError, OSError, EOFError) as error:
                 raise IntakeError("source_fact_binding", "Factual grid is not complete declared JSON") from error
         data = decoded[key]
-        if (not isinstance(data, dict)
-                or data.get("contract") != "participation.reviewed_pdf_factual_grids.v1"
-                or not isinstance(data.get("products"), list)):
+        if not isinstance(data, dict) or data.get("contract") not in (
+                "participation.reviewed_pdf_factual_grids.v1", "participation.native_factual_tables.v1"):
             raise IntakeError("source_fact_binding", "Factual grid contract changed")
+        native = data["contract"] == "participation.native_factual_tables.v1"
+        products = [data] if native else data.get("products")
+        if not isinstance(products, list):
+            raise IntakeError("source_fact_binding", "Factual product inventory changed")
         selected = [row for row in rows if binding["record"] and all(
             field(row, path) == value for path, value in binding["record"].items())]
-        products = [product for product in data["products"]
+        products = [product for product in products
             if product["source"]["id"] == binding["source_id"]]
         if len(selected) != 1 or len(products) != 1:
             raise IntakeError("source_fact_binding", "Canonical or native product identity is ambiguous")
-        tables, cells = factual_cells(binding, products[0])
+        tables, cells = (native_query_cells(binding, products[0], spec, inputs, native_cache)
+                         if native else factual_cells(binding, products[0]))
         scope = binding.get("value_scope", "cell")
         parse = binding.get("parse", "literal")
         operation = binding.get("operation", "unique")

@@ -91,6 +91,48 @@ requires separately reviewed qualification. Unknowns remain unknown and zeros
 remain zeros. Candidate votes do not become ballots; registration stocks do
 not automatically become turnout denominators.
 
+### Native workbook facts and coherent reporting targets
+
+Fact bindings also accept `participation.native_factual_tables.v1` directly,
+without disguising workbook facts as PDF grids. Supply the complete pinned
+native query recipe as another input and declare `query_recipe_input`,
+`native_query_id`, an exact `native_record` selector, the reviewed statistical
+role and `native_header_row`. The native source/pin/election/jurisdiction must
+match the complete recipe and the canonical scope. Header guards must name the
+actual count column; label equivalence needs explicit review. Cached values are
+read as facts, never calculated by executing workbook formulas.
+
+The same native binding may check source URL/hash and missing native clock via
+`value_scope: "source"`. Metadata still cannot authorize a statistical count.
+Candidate-choice columns, unknown cells and ambiguous rows are not ballot
+refreshes. The full factual grids and recipe remain downloadable sufficient
+inputs, even where redistribution of the original workbook template is held.
+
+For existing reporting-unit tables served by the native-binding dataset, use
+the **same routine command** with an additional complete baseline:
+
+```sh
+python3 -m scripts.participation_batch \
+  --registry reviewed-registry.json --baseline accepted-counts \
+  --native-baseline accepted-native-bindings \
+  --supplied-root reviewed-inputs --work-dir routine-work --offline
+```
+
+Pin `native_baseline_version` in the registry. Ordinary sources retain the
+default `target: "counts"`; a complete existing reporting table declares
+`target: "native_reporting"` and reviewed `reporting_source` metadata. Every
+original observation identity, geographic/display key, registration definition,
+rate hold and source-unit type must survive. New inventories or qualified
+geography require separate review. Metadata binds the entire current compressed
+properties export; it cannot substitute a number for source facts.
+
+Both complete datasets and baselines are packaged together. Unchanged state
+shards, geometry and native tables remain byte-identical. The existing resumable
+publisher verifies both expected versions, stages all immutable bodies and
+activates the coherent changes in one catalog commit; it does not publish an
+updated parent against stale child counts. Cached execution validates both
+baselines and performs no acquisition, parsing or compilation.
+
 ## Revise an existing scientific control without inventing a model
 
 Use the complete current packet in [DATA.md](DATA.md) as the pinned input and
@@ -123,6 +165,15 @@ native group-fact recipe. It derives new registration counts from native count
 columns, reuses accepted study probabilities/weights unchanged and retains
 all frame/behavior qualifications. Neither operation creates another model
 family or fits a propensity to an unqualified native outcome counter.
+
+An existing selected **ballot-only** reference with no registered denominator or
+conditional scenario uses `scripts.ballot_control_successor`. Its complete
+count/reporting batch must agree with the separate native unit/county/state
+controls, and its old runtime must reproduce the old model reference. This
+updates the counter and explicitly scoped valid-choice context only. The latter
+may include source-unassigned write-ins and exclude over/undervotes; a scope
+change is not participation or switching. No study probability, weight,
+registered source mean or geographic hold is changed.
 
 ## Bind a same-measure refresh to reviewed native facts
 

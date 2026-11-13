@@ -177,8 +177,100 @@ def compile_counts(description, files, index, sources):
     return descriptor, result, changed_rows
 
 
+def native_baseline_files(root):
+    description = validate_dataset(root)
+    if (description["id"] != "participation-native-bindings-2026"
+            or description["record_contract"] != "participation.native_bindings.v1"):
+        raise ValueError("An accepted native-binding dataset is required")
+    files = {name: local(root, name).read_bytes() for name in description["files"]}
+    index = json.loads(files[description["index"]["file"]])
+    if index["contract"] != "participation.native_index.v1" or index["year"] != 2026:
+        raise ValueError("Native-binding election contract changed")
+    for declaration in index["reporting_tables"].values():
+        if description["files"].get(declaration["file"]) != {
+                key: declaration[key] for key in ("bytes", "sha256")}:
+            raise ValueError("Native reporting declaration differs from the accepted dataset")
+    return description, files, index
+
+
+def compile_reporting(description, files, index, sources):
+    codes = [source["spec"]["geography"]["state_code"] for source in sources]
+    if len(codes) != len(set(codes)):
+        raise IntakeError("replacement_scope", "Replace each complete native table through one reviewed source")
+    updated, result, changed = copy.deepcopy(index), dict(files), 0
+    identity_fields = set(IDENTITY_VIEW) | {"key", "source_precinct_label", "reporting_unit_kind"}
+    for source in sources:
+        code = source["spec"]["geography"]["state_code"]
+        declaration = updated["reporting_tables"].get(code)
+        if declaration is None:
+            raise IntakeError("replacement_scope", "New native reporting inventories require separate review")
+        previous = json.loads(gzip.decompress(files[declaration["file"]]))
+        if (previous["contract"] != "participation.reporting_units.v1"
+                or previous["state_code"] != code or len(previous["records"]) != declaration["rows"]):
+            raise IntakeError("replacement_scope", "Complete native reporting baseline changed")
+        before = {row["observation"]["id"]: row for row in previous["records"]}
+        after = {row["id"]: row for row in source["rows"]}
+        if (len(before) != len(previous["records"]) or len(after) != len(source["rows"])
+                or before.keys() != after.keys()
+                or set(source["baseline_source_ids"]) != {
+                    row["observation"]["source"]["id"] for row in previous["records"]}):
+            raise IntakeError("replacement_scope", "Native reporting refresh must retain every original identity")
+        records, properties = [], []
+        for original in previous["records"]:
+            old = original["observation"]
+            row = after[old["id"]]
+            validate_all([row])
+            if (any(row[name] != old[name] for name in ("election", "geography", "measure", "denominator"))
+                    or row["geography"]["level"] != "reporting_unit"
+                    or any(row["view"].get(name) != old["view"].get(name) for name in identity_fields)
+                    or row["view"].get("reported_pct") is not None
+                    or (row["denominator"] or {}).get("qualified")
+                    or row["count"]["value"] != row["view"]["ballots"]
+                    or not set(original["properties"]) <= set(row["view"])):
+                raise IntakeError("replacement_scope", "Native source updates cannot qualify new geography or rates")
+            projected = {name: copy.deepcopy(row["view"][name]) for name in original["properties"]}
+            if (projected["ballots"] != row["count"]["value"]
+                    or projected["reported_pct"] is not None
+                    or projected["registered"] != original["properties"]["registered"]):
+                raise IntakeError("replacement_scope", "Native properties and canonical counter/registration disagree")
+            current = dict(properties=projected, observation=row)
+            changed += current != original
+            records.append(current)
+            properties.append(projected)
+        metadata = copy.deepcopy(source["reporting_source"])
+        source_body = compressed(properties)
+        if (metadata["rows"] != len(records) or metadata["sha256"] != digest(source_body)
+                or not metadata.get("data_url", "").startswith("https://")
+                or not metadata.get("source_url", "").startswith("https://")
+                or not metadata.get("complete_download_url", "").startswith("https://")
+                or not metadata.get("scope") or not metadata.get("geometry_note")
+                or any(row.get("source_update_label") != metadata["source_update_label"] for row in properties)):
+            raise IntakeError("source_integrity", "Full native reporting source metadata differs from its current rows")
+        if records == previous["records"] and metadata == updated["reporting_sources"][code]:
+            continue
+        result[declaration["file"]] = compressed(dict(previous, records=records))
+        declaration.update(pin(result[declaration["file"]]))
+        declaration["coverage"].update(
+            source_rows=len(records), fractions=0,
+            reported=sum(row["observation"]["count"]["status"] == "reported" for row in records),
+            unknown=sum(row["observation"]["count"]["status"] == "unknown" for row in records),
+            withheld=sum(row["observation"]["count"]["status"] == "withheld" for row in records))
+        result["source-reporting/" + code + ".json.gz"] = source_body
+        updated["reporting_sources"][code] = metadata
+    if updated == index:
+        return description, files, changed
+    if not changed:
+        raise IntakeError("replacement_scope", "Native metadata cannot publish without a changed source observation")
+    result["index.json"] = encoded(updated)
+    pins = {name: pin(body) for name, body in sorted(result.items())}
+    descriptor = dict(description, files=pins, index=dict(file="index.json", **pins["index.json"]),
+        version=digest(encoded(dict(files=pins, contract=description["record_contract"]))),
+        complete_download=None)
+    return descriptor, result, changed
+
+
 def execute(registry, baseline, work, supplied_root=None, refresh=False, offline=False,
-            website_repo=None, complete_download=None):
+            website_repo=None, complete_download=None, native_baseline=None):
     registry, baseline, work = Path(registry), Path(baseline), Path(work)
     plan = json.loads(registry.read_bytes())
     if plan.get("contract") != "participation.routine_batch.v1":
@@ -191,6 +283,11 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
     selected_sources = set()
     for entry in entries:
         state = entry["spec"]["geography"]["state_code"]
+        target = entry.get("target", "counts")
+        if target not in ("counts", "native_reporting"):
+            raise ValueError("Unknown registered dataset target")
+        if target == "native_reporting" and not isinstance(entry.get("reporting_source"), dict):
+            raise ValueError("A native reporting target requires reviewed complete source metadata")
         if any(not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", value)
                 for value in (entry["id"], entry["spec"]["id"])):
             raise ValueError("Unsafe registered source identity")
@@ -201,13 +298,26 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
         if state not in STATES:
             raise ValueError("Unknown registered jurisdiction")
         for source in entry["baseline_source_ids"]:
-            key = (state, source)
+            key = (target, state, source)
             if key in selected_sources:
                 raise ValueError("Overlapping source replacement scopes")
             selected_sources.add(key)
     description, files, index = baseline_files(baseline)
     if plan.get("baseline_version") != description["version"]:
         raise ValueError("Registered baseline advanced; rebase rather than overwrite")
+    native = None
+    if any(entry.get("target") == "native_reporting" for entry in entries):
+        if native_baseline is None:
+            raise ValueError("Native reporting updates require their complete accepted baseline")
+        native_baseline = Path(native_baseline)
+        native = native_baseline_files(native_baseline)
+        if plan.get("native_baseline_version") != native[0]["version"]:
+            raise ValueError("Registered native baseline advanced; rebase rather than overwrite")
+    elif native_baseline is not None:
+        raise ValueError("A native baseline requires a registered native reporting target")
+    expected_versions = {description["id"]: description["version"]}
+    if native:
+        expected_versions[native[0]["id"]] = native[0]["version"]
     store = None
     requests = 0
 
@@ -255,36 +365,41 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
         if journal_path.exists():
             journal = json.loads(journal_path.read_bytes())
             expected_download = (complete_download or journal["complete_download"]) if result["changed_rows"] else description["complete_download"]
-            if (journal["expected_versions"] != {description["id"]: description["version"]}
+            if (journal["expected_versions"] != expected_versions
                     or journal["complete_download"] != expected_download):
                 raise ValueError("Publication resume inputs changed")
             if journal.get("result"):
                 return dict(returned, publication=journal["result"])
-        root = output / "counts"
         if result["changed_rows"]:
             if complete_download is None:
                 return dict(returned, status="awaiting_publication")
             if {key: complete_download[key] for key in ("bytes", "sha256")} != pin(
                     (output / "complete-analysis.zip").read_bytes()):
                 raise IntakeError("incomplete_download", "Download does not bind this complete compiled batch")
-            root = work / "publication" / recipe / "counts"
-            for name in [*files, "dataset.json"]:
-                target = local(root, name)
-                expected_body = (output / "counts" / name).read_bytes()
-                if name == "dataset.json":
-                    descriptor = json.loads(expected_body)
-                    descriptor["complete_download"] = complete_download
-                    expected_body = encoded(descriptor)
-                if target.exists() and target.read_bytes() != expected_body:
-                    raise IntakeError("cache_corruption", "Publication staging changed")
-                if not target.exists():
-                    target.parent.mkdir(parents=True, exist_ok=True)
-                    target.write_bytes(expected_body)
             download = complete_download
         else:
             download = description["complete_download"]
-        publication = publish_datasets(website_repo, [root],
-            {description["id"]: description["version"]}, download, journal_path)
+        roots = []
+        products = [("counts", description)]
+        if native:
+            products.append(("native", native[0]))
+        for folder, previous in products:
+            candidate = json.loads((output / folder / "dataset.json").read_bytes())
+            root = output / folder
+            if candidate["version"] != previous["version"]:
+                root = work / "publication" / recipe / folder
+                for name in [*candidate["files"], "dataset.json"]:
+                    target = local(root, name)
+                    expected_body = (output / folder / name).read_bytes()
+                    if name == "dataset.json":
+                        expected_body = encoded(dict(candidate, complete_download=complete_download))
+                    if target.exists() and target.read_bytes() != expected_body:
+                        raise IntakeError("cache_corruption", "Publication staging changed")
+                    if not target.exists():
+                        target.parent.mkdir(parents=True, exist_ok=True)
+                        target.write_bytes(expected_body)
+            roots.append(root)
+        publication = publish_datasets(website_repo, roots, expected_versions, download, journal_path)
         return dict(returned, publication=publication, publication_attempts=1)
 
     prepared, dispositions = [], []
@@ -316,12 +431,15 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
         code_paths = [Path(__file__), Path(__file__).with_name("participation_batch_publish.py"),
                 Path(__file__).with_name("package_historical_source_sets.py"),
                 Path(__file__).with_name("historical_precinct_rows.py"),
+                Path(__file__).with_name("native_products.py"),
+                Path(__file__).with_name("native_tabular.py"),
                 *sorted((Path(__file__).parent / "participation_intake").glob("*.py"))]
         test = Path(__file__).parents[1] / "tests/test_participation_batch.py"
         if test.is_file():
             code_paths.append(test)
         code = {str(path.relative_to(Path(__file__).parents[1])): pin(path.read_bytes()) for path in code_paths}
         recipe = digest(encoded(dict(plan=plan, baseline=pin((baseline / "dataset.json").read_bytes()),
+            native_baseline=pin((native_baseline / "dataset.json").read_bytes()) if native else None,
             inputs={item["entry"]["id"]: {name: {key: value[key] for key in ("bytes", "sha256")}
                 for name, value in item["inputs"].items()} for item in prepared},
             discovery_inputs={item["entry"]["id"]: {key: item["discovery_input"][key]
@@ -361,12 +479,19 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
             store.db.commit()
             rows = json.loads((Path(outcome["directory"]) / "queries.json").read_bytes())
             sources.append(dict(spec=item["spec"], rows=rows,
-                baseline_source_ids=item["entry"]["baseline_source_ids"], outcome=outcome))
+                baseline_source_ids=item["entry"]["baseline_source_ids"], outcome=outcome,
+                target=item["entry"].get("target", "counts"),
+                reporting_source=item["entry"].get("reporting_source")))
             parsed += outcome["parsed_inputs"]
             dispositions.append(dict(id=item["entry"]["id"], state_code=item["spec"]["geography"]["state_code"],
                 status="verified", observations=len(rows), unknown=sum(row["count"]["status"] == "unknown" for row in rows),
                 zeros=sum(row["count"]["value"] == 0 for row in rows)))
-        descriptor, runtime, changed = compile_counts(description, files, index, sources)
+        descriptor, runtime, count_changed = compile_counts(description, files, index,
+            [source for source in sources if source["target"] == "counts"])
+        native_candidate, native_runtime, native_changed = (compile_reporting(*native,
+            [source for source in sources if source["target"] == "native_reporting"])
+            if native else (None, None, 0))
+        changed = count_changed + native_changed
         staging = work / "staging"
         staging.mkdir(parents=True, exist_ok=True)
         output.parent.mkdir(parents=True, exist_ok=True)
@@ -377,6 +502,12 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(body)
             (stage / "counts/dataset.json").write_bytes(encoded(descriptor))
+            if native:
+                for name, body in native_runtime.items():
+                    target = local(stage / "native", name)
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes(body)
+                (stage / "native/dataset.json").write_bytes(encoded(native_candidate))
             coverage = [dict(state_code=state, baseline_observations=index["states"][state]["records"],
                 registered_sources=[row for row in dispositions if row["state_code"] == state],
                 baseline_retained=True, new_geographic_qualification=False) for state in STATES]
@@ -389,9 +520,17 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 jurisdictions=51, candidate_version=descriptor["version"],
                 baseline_version=description["version"], publication_attempts=0,
                 website_builds_started=0, complete_selected_source_queries=True)
+            if native:
+                result.update(count_changed_rows=count_changed, native_changed_rows=native_changed,
+                    native_candidate_version=native_candidate["version"],
+                    native_baseline_version=native[0]["version"])
             (stage / "result.json").write_bytes(encoded(result))
             members = {"originals/registry.json": registry, "originals/baseline/dataset.json": baseline / "dataset.json"}
             members.update({"originals/baseline/" + name: local(baseline, name) for name in files})
+            if native:
+                members["originals/native-baseline/dataset.json"] = native_baseline / "dataset.json"
+                members.update({"originals/native-baseline/" + name: local(native_baseline, name)
+                                for name in native[1]})
             for item in prepared:
                 if item.get("quarantined"):
                     continue
@@ -409,6 +548,8 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
             for path in (Path(__file__), Path(__file__).with_name("participation_batch_publish.py"),
                     Path(__file__).with_name("package_historical_source_sets.py"),
                     Path(__file__).with_name("historical_precinct_rows.py"),
+                    Path(__file__).with_name("native_products.py"),
+                    Path(__file__).with_name("native_tabular.py"),
                     *sorted((Path(__file__).parent / "participation_intake").glob("*.py"))):
                 members["code/scripts/" + str(path.relative_to(Path(__file__).parent))] = path
             test = Path(__file__).parents[1] / "tests/test_participation_batch.py"
@@ -416,7 +557,8 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 members["code/tests/" + test.name] = test
             package(stage / "complete-analysis.zip", members,
                 "From code/: python -m scripts.participation_batch --registry ../originals/registry.json "
-                "--baseline ../originals/baseline --supplied-root ../originals/supplied --work-dir ../replayed --offline\n"
+                "--baseline ../originals/baseline --supplied-root ../originals/supplied --work-dir ../replayed --offline"
+                + (" --native-baseline ../originals/native-baseline" if native else "") + "\n"
                 "Compare queries/counts and complete source/jurisdiction queries. Sources and modes remain separate.\n"
                 "Whole source packets retain their own exact extraction code. No new boundary or turnout qualification.\n")
             (stage / "manifest.json").write_bytes(encoded({str(path.relative_to(stage)): pin(path.read_bytes())
@@ -432,6 +574,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--registry", type=Path, required=True)
     parser.add_argument("--baseline", type=Path, required=True)
+    parser.add_argument("--native-baseline", type=Path)
     parser.add_argument("--work-dir", type=Path, required=True)
     parser.add_argument("--supplied-root", type=Path)
     parser.add_argument("--refresh", action="store_true")
@@ -441,7 +584,8 @@ def main():
     args = parser.parse_args()
     result = execute(args.registry, args.baseline, args.work_dir, args.supplied_root,
         args.refresh, args.offline, args.website_repo,
-        json.loads(args.complete_download.read_bytes()) if args.complete_download else None)
+        json.loads(args.complete_download.read_bytes()) if args.complete_download else None,
+        args.native_baseline)
     print(json.dumps(result, sort_keys=True))
     return 2 if result["status"] == "held" else 0
 

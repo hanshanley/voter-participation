@@ -10,7 +10,9 @@ from unittest.mock import patch
 import urllib.error
 import zipfile
 
-from scripts.participation_batch import compressed, discover, display, execute
+from scripts.participation_batch import (
+    compile_reporting, compressed, discover, display, execute, native_baseline_files,
+)
 from scripts.participation_intake.adapters import adapt
 from scripts.participation_intake.contract import STATES, digest, encoded, pin
 from scripts.participation_intake.engine import Store
@@ -337,6 +339,210 @@ class RoutineBatchTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Native numerator label differs"):
                 self.run_wide_statistical_fixture(row, spec, facts)
             binding[name] = original
+
+    def native_workbook_fixture(self):
+        row = copy.deepcopy(self.original_rows[0])
+        row["source_clock"].update(literal=None, timezone=None)
+        row["view"]["source_update_label"] = None
+        spec = copy.deepcopy(self.spec)
+        spec.update(adapter="canonical_json", expected_rows=1)
+        spec["inputs"].update(facts=dict(url="https://example.gov/native-facts.json"),
+                              recipe=dict(url="https://example.gov/native-recipe.json"))
+        source = dict(id="workbook", url="https://example.gov/native.xlsx",
+            pin=dict(bytes=10, sha256="a" * 64), state_code=spec["geography"]["state_code"],
+            election_year=spec["election"]["year"], retrieved_at_utc="2026-11-12T00:00:00Z",
+            native_updated_at=None)
+        table = dict(kind="worksheet", workbook="native.xlsx", name="Statistics", rows=[
+            dict(row=1, cells=[dict(address="B1", value="Total Ballots Cast")]),
+            dict(row=2, cells=[dict(address="A2", value="One County"), dict(address="B2", value=0)])])
+        facts = dict(contract="participation.native_factual_tables.v1", source=source, tables=[table])
+        query = dict(id="ballots", product="workbook", workbook="native.xlsx", tables=["Statistics"],
+            require={"1": {"B": "Total Ballots Cast"}}, first_row=2, last_row=2,
+            fields=dict(county="A", total="B"), keys=["county"], counts=["total"])
+        recipe = dict(contract="participation.native_product_recipe.v1",
+                      products=[copy.deepcopy(source)], queries=[query])
+        binding = dict(input="facts", record={"geography.id": row["geography"]["id"]},
+            path="count.value", source_id="workbook", query_recipe_input="recipe",
+            native_query_id="ballots", native_record=dict(county="One County"),
+            native_header_row=1, measure="total", parse="count",
+            source_role="native_registration_ballot_reported_turnout_statistics",
+            native_measure_header="Total Ballots Cast", accepted_measure_literal="Native ballots",
+            same_measure_review_evidence="Reviewed native count-column equivalence; no new turnout qualification")
+        spec["format"] = dict(fact_bindings=[binding])
+        return row, spec, binding, facts, recipe
+
+    def run_native_workbook_fixture(self, row, spec, facts, recipe):
+        return adapt(spec, dict(data=encoded([row]), facts=encoded(facts), recipe=encoded(recipe)),
+                     {}, {}, {})
+
+    def test_native_workbook_counts_and_unknown_clock_use_full_pinned_recipe(self):
+        row, spec, binding, facts, recipe = self.native_workbook_fixture()
+        self.assertEqual(self.run_native_workbook_fixture(row, spec, facts, recipe)[0]["count"]["value"], 0)
+        spec["format"]["fact_bindings"].append(dict(binding, path="source_clock.literal",
+            value_scope="source", value_path="native_updated_at", parse="literal"))
+        self.assertIsNone(self.run_native_workbook_fixture(row, spec, facts, recipe)[0]["source_clock"]["literal"])
+        row["count"].update(value=1, literal=1)
+        row["view"]["ballots"] = 1
+        with self.assertRaisesRegex(ValueError, "differs from its reviewed native fact"):
+            self.run_native_workbook_fixture(row, spec, facts, recipe)
+
+    def test_native_workbook_header_and_review_cannot_substitute_candidate_counts(self):
+        for change in ("header", "role", "review", "missing_guard"):
+            row, spec, binding, facts, recipe = self.native_workbook_fixture()
+            if change == "header":
+                facts["tables"][0]["rows"][0]["cells"][0]["value"] = "Candidate votes"
+                recipe["queries"][0]["require"]["1"]["B"] = "Candidate votes"
+            elif change == "role":
+                binding["source_role"] = "unofficial_contest_choices_and_vote_accounting"
+            elif change == "review":
+                binding["same_measure_review_evidence"] = ""
+            else:
+                recipe["queries"][0]["require"] = {}
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                self.run_native_workbook_fixture(row, spec, facts, recipe)
+
+    def test_native_workbook_source_and_election_must_match_canonical_scope(self):
+        for change in ("year", "state", "pin", "recipe"):
+            row, spec, binding, facts, recipe = self.native_workbook_fixture()
+            if change == "year":
+                facts["source"]["election_year"] = recipe["products"][0]["election_year"] = 2024
+            elif change == "state":
+                facts["source"]["state_code"] = recipe["products"][0]["state_code"] = "ZZ"
+            elif change == "pin":
+                facts["source"]["pin"]["sha256"] = "b" * 64
+            else:
+                spec["inputs"].pop("recipe")
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                self.run_native_workbook_fixture(row, spec, facts, recipe)
+
+    def test_native_workbook_missing_and_duplicate_rows_are_not_filled(self):
+        for change in ("missing", "duplicate", "selector"):
+            row, spec, binding, facts, recipe = self.native_workbook_fixture()
+            if change == "missing":
+                facts["tables"][0]["rows"][1]["cells"][1]["value"] = None
+            elif change == "duplicate":
+                facts["tables"][0]["rows"].append(copy.deepcopy(facts["tables"][0]["rows"][1]))
+            else:
+                binding["native_record"] = dict(county="Different County")
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                self.run_native_workbook_fixture(row, spec, facts, recipe)
+
+    def test_native_workbook_provenance_cannot_supply_a_replacement_count(self):
+        row, spec, binding, facts, recipe = self.native_workbook_fixture()
+        binding.update(value_scope="source", value_path="election_year", parse="count")
+        with self.assertRaisesRegex(ValueError, "Provenance metadata cannot authorize"):
+            self.run_native_workbook_fixture(row, spec, facts, recipe)
+
+    def native_reporting_fixture(self):
+        row = copy.deepcopy(self.original_rows[0])
+        properties = dict(key="native-one", year=2026, state_code="AR", precinct="One",
+            registered=None, reporting_unit_kind="source_reporting_unit",
+            ballots=0, reported_pct=None, source_update_label="native clock")
+        row["view"].update(properties)
+        metadata = dict(rows=1, sha256=digest(compressed([properties])),
+            data_url="https://example.gov/full-reporting.json.gz", source_url="https://example.gov/counts",
+            complete_download_url="https://example.gov/complete-analysis.zip",
+            source_update_label="native clock", scope="Complete native source rows, not population turnout",
+            geometry_note="No geographic approval or rate allocation")
+        table = compressed(dict(contract="participation.reporting_units.v1", state_code="AR",
+                                records=[dict(properties=properties, observation=row)]))
+        index = dict(contract="participation.native_index.v1", year=2026,
+            reporting_tables=dict(AR=dict(file="tables/AR.json.gz", **pin(table), rows=1,
+                eligible_modes=["available", "official"], coverage=dict(
+                    source_rows=1, reported=1, unknown=0, withheld=0, fractions=0))),
+            reporting_sources=dict(AR=metadata))
+        files = {"index.json": encoded(index), "tables/AR.json.gz": table,
+                 "geometry/unchanged.json.gz": b"unchanged original reference"}
+        pins = {name: pin(body) for name, body in sorted(files.items())}
+        description = dict(self.description, id="participation-native-bindings-2026",
+            record_contract="participation.native_bindings.v1", files=pins,
+            index=dict(file="index.json", **pins["index.json"]),
+            version=digest(encoded(dict(files=pins, contract="participation.native_bindings.v1"))))
+        root = self.root / "native-baseline"
+        root.mkdir()
+        for name, body in dict(files, **{"dataset.json": encoded(description)}).items():
+            path = root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(body)
+        updated = copy.deepcopy(row)
+        updated["count"].update(value=1, literal=1)
+        updated["view"]["ballots"] = 1
+        current_properties = dict(properties, ballots=1)
+        source = dict(spec=copy.deepcopy(self.spec), rows=[updated],
+            baseline_source_ids=["native-counts"], reporting_source=dict(
+                metadata, sha256=digest(compressed([current_properties]))))
+        return root, description, files, index, source
+
+    def test_native_reporting_refresh_preserves_references_and_other_files(self):
+        root, description, files, index, source = self.native_reporting_fixture()
+        self.assertEqual(native_baseline_files(root)[0], description)
+        candidate, output, changed = compile_reporting(description, files, index, [source])
+        self.assertEqual(changed, 1)
+        self.assertEqual(output["geometry/unchanged.json.gz"], files["geometry/unchanged.json.gz"])
+        self.assertNotEqual(candidate["version"], description["version"])
+        data = json.loads(gzip.decompress(output["tables/AR.json.gz"]))
+        self.assertEqual(data["records"][0]["properties"]["ballots"], 1)
+        self.assertEqual(data["records"][0]["observation"]["count"]["value"], 1)
+        self.assertIsNone(data["records"][0]["properties"]["reported_pct"])
+        self.assertEqual(json.loads(files["index.json"]), index)
+        self.assertIn("source-reporting/AR.json.gz", output)
+
+    def test_native_reporting_refresh_cannot_change_inventory_identity_or_rates(self):
+        for change in ("id", "geography", "rate", "registration", "missing"):
+            with self.subTest(change=change):
+                root, description, files, index, source = self.native_reporting_fixture()
+                row = source["rows"][0]
+                if change == "id":
+                    row["id"] = "a" * 32
+                elif change == "geography":
+                    row["geography"]["id"] = "different"
+                elif change == "rate":
+                    row["view"]["reported_pct"] = 10
+                elif change == "registration":
+                    row["view"]["registered"] = 3
+                else:
+                    source["rows"] = []
+                with self.assertRaises(ValueError):
+                    compile_reporting(description, files, index, [source])
+                for path in sorted(root.rglob("*"), reverse=True):
+                    if path.is_file():
+                        path.unlink()
+                    elif path.is_dir():
+                        path.rmdir()
+                root.rmdir()
+
+    def test_native_reporting_metadata_cannot_override_its_full_source_rows(self):
+        root, description, files, index, source = self.native_reporting_fixture()
+        source["reporting_source"]["sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "metadata differs"):
+            compile_reporting(description, files, index, [source])
+
+    def test_one_routine_compiles_both_datasets_and_packages_both_complete_baselines(self):
+        root, description, files, index, source = self.native_reporting_fixture()
+        spec = copy.deepcopy(self.spec)
+        spec.update(id="native-reporting-counts", adapter="canonical_json", expected_rows=1)
+        spec["inputs"]["data"]["url"] = "https://example.gov/reviewed-reporting.json"
+        target = self.supplied / "reporting/data"
+        target.parent.mkdir()
+        target.write_bytes(encoded(source["rows"]))
+        self.plan["native_baseline_version"] = description["version"]
+        self.plan["sources"].append(dict(id="reporting", target="native_reporting", spec=spec,
+            baseline_source_ids=source["baseline_source_ids"], reporting_source=source["reporting_source"]))
+        self.save_plan()
+        first = self.execute(native_baseline=root)
+        self.assertEqual((first["count_changed_rows"], first["native_changed_rows"]), (0, 1))
+        self.assertEqual(first["candidate_version"], self.description["version"])
+        self.assertNotEqual(first["native_candidate_version"], description["version"])
+        with zipfile.ZipFile(Path(first["directory"]) / "complete-analysis.zip") as archive:
+            self.assertEqual(archive.read("originals/native-baseline/geometry/unchanged.json.gz"),
+                             files["geometry/unchanged.json.gz"])
+            self.assertIn("queries/native/tables/AR.json.gz", archive.namelist())
+            self.assertIn("code/scripts/native_products.py", archive.namelist())
+            self.assertIn("code/scripts/native_tabular.py", archive.namelist())
+        with patch("scripts.participation_batch.run", side_effect=AssertionError("reparse")):
+            second = self.execute(native_baseline=root)
+        self.assertTrue(second["no_op"])
+        self.assertEqual(second["native_candidate_version"], first["native_candidate_version"])
 
     def test_registered_reference_original_is_verified_and_packaged_by_the_shared_runner(self):
         body = encoded(dict(type="FeatureCollection", features=[
