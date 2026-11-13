@@ -1,0 +1,26 @@
+{
+  "Texas_Democratic_share_change_pp": 11.97610547994342,
+  "actual_payload_bytes": 997189386,
+  "actual_production_map_values": 25398,
+  "actual_production_state_selections": 100,
+  "actual_tar_bytes": 999782400,
+  "complete_download": {
+    "asset_id": 741624281,
+    "bytes": 53684336,
+    "full_authenticated_draft_and_anonymous_public_bytes_verified": true,
+    "sha256": "f5ce94c8b7f03329f0b5974467e9913ec1f6437f33b151602086f71bfef4321e",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/complete-analysis.zip"
+  },
+  "conditional_models": 33,
+  "held_models": 17,
+  "native_count_and_exit_poll_reconciliation_remains_open": true,
+  "old_download_pins_preserved": 436,
+  "original_models_preserved": 113,
+  "recorded_states": 50,
+  "scientific_release": 443665464,
+  "source_counts_changed": false,
+  "source_snapshot": "20261107T125502Z",
+  "status": "pass",
+  "website_commit": "0a164b6b4f184aba0e5783d44c6cd0264234864f",
+  "weights_or_source_fits_changed": false
+}

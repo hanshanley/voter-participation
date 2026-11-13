@@ -1,6 +1,6 @@
 # Remaining work: participation and election-transition estimates
 
-Updated: 2026-11-12 UTC. Source catalog: [SOURCES.md](SOURCES.md).
+Updated: 2026-11-13 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 **The project is not finished when the files are downloaded.** Acquisition and
 reconciliation must feed the participation, switching, modeled/reported
@@ -16,7 +16,14 @@ This document itself does not install a cron job or enable a website workflow.
 ## Current priority: reconcile 2026 counts and the combined-source model
 
 The user explicitly prioritizes updating the 2026 estimates and correcting the
-disputed House map. The continuation must combine official returns from the
+disputed House map. The recorded-count/behavioral-eligibility separation is
+verified live in website source0a164b6 with all37tests, two full offline
+numerical replays,550independent checks and actual production desktop/phone
+verification of25,398mapvalues/100state selections, Texas+11.98, holds,
+pointer/keyboard, source/scale faults, cache and downloads.
+NativePages43336523492/sourceguard43336523474/artifact13998151323 has actual
+997,189,386payload/999,782,400tar bytes, both below1e9; all436old download pins
+and113original models remain. The broader continuation must combine official returns from the
 supplied all-state website directory, weighted NORC, historical and current
 exit/current-voter polling, Census/ACS local context, registration/history data
 and mail/absentee/early-ballot dispositions. Do not return to historical
@@ -51,14 +58,22 @@ all native fields and parent totals and recalculating only qualified changed cas
 **Texas map diagnosis:** the held counts already imply **+11.9761 Democratic
 two-party-share points**, equivalent to **+23.9522 D-minus-R margin points**.
 Texas is gray because of the behavioral comparison hold, not a Republican swing.
-Separate descriptive reported totals and their units/accessibility from whether
-they support a behavioral decomposition. Do not force signs or promote
-unopposed-candidate/coalition artifacts into preference swings.
+The new separate recorded-count view, selected-state figures and all50state table
+make those numbers inspectable without overriding the behavioral hold.
+Default map units are Democratic two-party-share points, with margin units still
+available. Do not force signs or promote unopposed-candidate/coalition artifacts
+into preference swings. The complete53,684,336-byte correction packet is public
+in immutable443665464; all seven full assets verified. Source fits, weights and
+the entire preceding scientific packet remain unchanged.
 
 **NORC version check:** both the supplied project page and download declaration
 returned native HTTP200 on November12 at23:16UTC. The latter explicitly says
 data will change as they are weighted to final vote counts. Compare the declared
-CSV/codebook version with held originals before any refit. Determine whether
+CSV/codebook version with held originals before any refit. The actual native
+November13CSV and codebook downloads are now verified byte-identical to those
+supplied originals; no respondent reprocessing or refit is warranted from these
+unchanged inputs. Do not confuse a reachable page or unchanged file with a new
+weight release. Determine whether
 weights use current outcomes before claiming independent preconditioning
 validation; data reweighted to returns cannot independently validate those same
 returns. Reuse accepted fits when sufficient inputs are unchanged.
@@ -66,8 +81,9 @@ The supplied SSRS methods URL returned native307, not403. Do not invent access
 holds from an empty web-renderer result. Existing genuine access stops remain.
 
 The updated continuation includes the exact supplied NORC/SSRS links and these
-requirements. Current request tasks631/632/633 remain open; the schedule change
-alone is not an estimate update or whole-project completion.
+requirements. Current request tasks631/632/633 remain open for the broader
+native-count/exit-poll/model reconciliation; the narrower live interface delivery
+is complete. Neither its completion nor the schedule change completes the project.
 
 ## Historical source delivery verified; completeness qualification remains
 

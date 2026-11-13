@@ -1,0 +1,156 @@
+{
+  "all7science_assets_full_bytes_verified": true,
+  "independent_checks": {
+    "Texas_D_two_party_share_change_pp": 11.97610547994342,
+    "all_50_states_retained": true,
+    "code": {
+      "public/scripts/participation-calibrated-swing.js": {
+        "bytes": 6433,
+        "sha256": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115"
+      },
+      "public/scripts/participation-dataset.js": {
+        "bytes": 3108,
+        "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+      },
+      "public/scripts/participation-downloads.js": {
+        "bytes": 6746,
+        "sha256": "ffd308df80b1453fb642eab9fa2143473863a43a809c578717a8bbdb0c645203"
+      },
+      "public/scripts/participation-map-projection.js": {
+        "bytes": 2389,
+        "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+      },
+      "public/scripts/participation-norc-house.js": {
+        "bytes": 35306,
+        "sha256": "adae2c665ad705d1079b12336cbf3aec966e081fb715a9e60fe27294b04577be"
+      },
+      "public/scripts/participation-return-drivers.js": {
+        "bytes": 42559,
+        "sha256": "ef1f6a9abd27ddcf2b7d9ddb9140bef2f278c64a325067c738975f944ad597bb"
+      },
+      "public/scripts/participation-transition-scenarios.js": {
+        "bytes": 7455,
+        "sha256": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e"
+      }
+    },
+    "conditional_models": 33,
+    "held_models": 17,
+    "independent_exact_fraction_checks": 550,
+    "no_fresh_HI_WY_counts_or_NORC_revision_used": true,
+    "original_complete_predecessor": {
+      "bytes": 50449445,
+      "sha256": "684edab6893d42eda52225b37fc53a663570322c39541c5f173fe47f3359b7bd"
+    },
+    "previous_numerical_models_repeated": false,
+    "raw_counts_not_voter_preference_swings": true,
+    "source_counts_changed": false,
+    "source_fits_repeated": false,
+    "source_sha256": "719f0bd533e58b0f7edee1acb3121b4285ebe2c50326f0498b830afd4f8176a0",
+    "source_snapshot": "20261107T125502Z",
+    "status": "pass"
+  },
+  "native_pages": {
+    "actual_downloaded_zip_sha256": "f5ca591274af641ab2ae6cff5cc6a5a9b7681b53648544c7ed6a263ea157c757",
+    "actual_native_artifact_id": 13998151323,
+    "actual_payload_bytes": 997189386,
+    "actual_renderer_bundle_verified": true,
+    "actual_tar_bytes": 999782400,
+    "artifact_files": 2975,
+    "behavioral_holds_unchanged": 17,
+    "not_a_local_size_projection": true,
+    "preserved_full_download_pins": 436,
+    "preserved_original_models": 113,
+    "recorded_query_rows": 50,
+    "run_id": 43336523492,
+    "source_commit": "0a164b6b4f184aba0e5783d44c6cd0264234864f",
+    "source_guard_run": 43336523474,
+    "source_scripts_match_frozen_commit": 7,
+    "status": "pass",
+    "strict_both_less_than_1e9": true,
+    "successful_native_build_and_deployment": true
+  },
+  "offline_reproductions": [
+    {
+      "all_members_verified": 26,
+      "archived_tests": 37,
+      "complete_package": {
+        "bytes": 53684336,
+        "sha256": "f5ce94c8b7f03329f0b5974467e9913ec1f6437f33b151602086f71bfef4321e"
+      },
+      "fresh_byte_identical_outputs": {
+        "complete-recorded-counts.csv": {
+          "bytes": 12250,
+          "sha256": "2d71ff85b4626c72c819ada674dd9cf7577e9df9f71f73c1d0255d49575e0ade"
+        },
+        "complete-recorded-counts.json": {
+          "bytes": 26448,
+          "sha256": "60d72d14fc123bce9c47b0c605fe2d2a29ca0986947fecc78f619f533686ecae"
+        }
+      },
+      "network_dns_children_blocked_and_probed": true,
+      "predecessor_wholesale_models_repeated": false,
+      "status": "pass"
+    },
+    {
+      "all_members_verified": 26,
+      "archived_tests": 37,
+      "complete_package": {
+        "bytes": 53684336,
+        "sha256": "f5ce94c8b7f03329f0b5974467e9913ec1f6437f33b151602086f71bfef4321e"
+      },
+      "fresh_byte_identical_outputs": {
+        "complete-recorded-counts.csv": {
+          "bytes": 12250,
+          "sha256": "2d71ff85b4626c72c819ada674dd9cf7577e9df9f71f73c1d0255d49575e0ade"
+        },
+        "complete-recorded-counts.json": {
+          "bytes": 26448,
+          "sha256": "60d72d14fc123bce9c47b0c605fe2d2a29ca0986947fecc78f619f533686ecae"
+        }
+      },
+      "network_dns_children_blocked_and_probed": true,
+      "predecessor_wholesale_models_repeated": false,
+      "status": "pass"
+    }
+  ],
+  "production": {
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "Texas_share_change_checked": 11.97610547994342,
+        "corrected_CSV_not_superseded_targets": true,
+        "default_Democratic_share_units": true,
+        "exact_map_values": 12699,
+        "incompatible_states_unavailable_in_behavioral_views": true,
+        "keyboard_enter_space_selection": true,
+        "no_horizontal_overflow": true,
+        "original_full_download_link_present": true,
+        "per_pin_single_download": true,
+        "recorded_counts_visible_without_behavioral_promotion": true,
+        "state_selections": 50,
+        "true_Massachusetts_pointer_selection": true,
+        "width": 1440
+      },
+      {
+        "Texas_share_change_checked": 11.97610547994342,
+        "corrected_CSV_not_superseded_targets": true,
+        "default_Democratic_share_units": true,
+        "exact_map_values": 12699,
+        "incompatible_states_unavailable_in_behavioral_views": true,
+        "keyboard_enter_space_selection": true,
+        "no_horizontal_overflow": true,
+        "original_full_download_link_present": true,
+        "per_pin_single_download": true,
+        "recorded_counts_visible_without_behavioral_promotion": true,
+        "state_selections": 50,
+        "true_Massachusetts_pointer_selection": true,
+        "width": 390
+      }
+    ],
+    "intentional_bad_scale_clears_and_recovers": true,
+    "intentional_source_failure_fails_closed": true,
+    "status": "passed_recorded_counts_and_comparability_desktop_phone",
+    "valid_data_overrides": false
+  },
+  "status": "pass"
+}

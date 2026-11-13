@@ -8,6 +8,31 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Recorded House counts and behavioral eligibility
+
+The [recorded-count guide](HOUSE_RECORDED_COUNTS.md) separates known source
+totals from whether a state can support the model's behavioral reconstruction.
+Texas's held counts imply **+11.9761 Democratic two-party-share points**, or
+**+23.9522 D-minus-R margin points**. Recorded totals remain inspectable even
+when the behavioral comparison is held. The original33conditional/17held masks,
+source fits and full simulation querysets are unchanged.
+
+| Complete download | Contents |
+|---|---|
+| [Complete correction packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/complete-analysis.zip) | 53,684,336 bytes: every recorded-count/share/change/eligibility query, exact code,37tests/sufficient fixtures and the ENTIRE50,449,445-byte preceding scientific packet |
+| [Complete recorded-count CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/complete-recorded-counts.csv) | All50states, both endpoints, D/R/Other counts, both change units and explicit model qualifications |
+| [Complete recorded-count JSON](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/complete-recorded-counts.json) | Same complete numerical decisions with nulls/booleans and provenance retained |
+
+Immutable science **443665464**: all seven assets full-byte verified authenticated
+while draft and anonymously after publication. Two fresh network/DNS/child-
+command-blocked extractions each pass37tests and reproduce both complete
+numerical outputs.550independent count/share/eligibility checks pass. The entire
+preceding packet is retained without claiming a wholesale model rerun.
+Unadjusted raw changes from unopposed contests or different coalition labels
+are not voter-preference swings. This still uses the explicitly heldNovember7
+snapshot; the fresh official HI/WY and NORC-version work remains separate.
+No new weights, source fits, vote counts, turnout rates or local allocation.
+
 ## Reusable participation update workflow
 
 The [routine command and source-review guide](PARTICIPATION_BATCH.md) cover

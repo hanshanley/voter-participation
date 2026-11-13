@@ -1,0 +1,25 @@
+{
+  "codebook": {
+    "bytes": 241714,
+    "retrieved_at_utc": "2026-11-13T00:28:48.748968+00:00",
+    "sha256": "5c0e522820d36562d2610ea514ae693079f871b3352584ee070b628b02ac59c8",
+    "url": "https://civichealth.norc.org/downloads/civichealth_codebook.zip"
+  },
+  "contract": "participation.NORC_version_check.v1",
+  "csv": {
+    "bytes": 88182202,
+    "exact_supplied_original_bytes_match": true,
+    "retrieved_at_utc": "2026-11-13T00:30:25.691414+00:00",
+    "sha256": "496a5b57fbc435210bdf78e2c1c3717879c0689c74081bee830d121b548c792f",
+    "url": "https://civichealth.norc.org/downloads/civichealth_datafile.csv"
+  },
+  "exact_supplied_codebook_bytes_match": true,
+  "new_election_updates_not_inferred_from_unchanged_survey": true,
+  "public_browser_API_credentials_acquired_or_used": false,
+  "raw_respondents_or_publisher_app_code_exported": false,
+  "respondents_reprocessed": false,
+  "source_fits_repeated": false,
+  "source_weights_changed": false,
+  "status": "verified_identical_to_supplied_originals",
+  "weight_target_and_calibration_qualification_not_changed": true
+}

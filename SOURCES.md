@@ -1,6 +1,6 @@
 # Voter-participation source ledger
 
-Last reviewed: 2026-11-12 UTC.
+Last reviewed: 2026-11-13 UTC.
 
 **Start here:** [Overview](README.md) | [Estimation methods](METHODOLOGY.md) |
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Recorded-count display correction | [All50state raw totals remain inspectable independently of behavioral eligibility](#recorded-house-counts-versus-behavioral-eligibility) |
 | Current combined-source priority | [2026 returns, NORC revisions and voter-poll reconciliation](#2026-combined-source-refresh-and-model-reconciliation) |
 | Reusable participation updates | [Reviewed routine, complete queries and real no-op proof](#reviewed-routine-participation-batch) |
 | Historical precinct bulk collection | [All-state source/query presence for 2016/2018/2020/2022/2024](#historical-precinct-bulk-collection-2016-through-2024) |
@@ -40,6 +41,48 @@ This document is the detailed reference ledger, not the methods introduction.
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
 
+## Recorded House counts versus behavioral eligibility
+
+Website source `0a164b6b4f184aba0e5783d44c6cd0264234864f` separates the
+unadjusted recorded-count view from the existing comparable/model view, exposes
+held-state raw counts in state details and a complete50state table, and defaults
+to Democratic two-party-share change units. The original33conditional/17held
+behavioral decisions, source fits, weights and all nine profile/family numerical
+querysets are unchanged.
+
+Texas's held2024D/R4,310,913/6,234,918 versus2026D/R5,147,146/4,591,278
+implies+11.97610548 Democratic-share points, or+23.95221096 D-minus-R margin
+points. Its behavioral hold no longer erases those recorded numbers.
+Raw candidate totals are explicitly unadjusted: negative Alaska/Massachusetts
+changes from coalition labels/changed competition are not Republican preference
+swings or eligible behavioral targets. No signs or source counts are repaired.
+
+All37focused tests pass in two fresh offline extractions, which reproduce both
+completeJSON/CSV numerical outputs byte-for-byte with network/DNS/children
+blocked and probed.550independent count/share/eligibility checks pass.
+Actual local desktop/phone browsers verify25,398exactmapvalues,100state
+selections, Texas's+11.98 value, model holds, pointer/keyboard selection,
+source/scale fault recovery, cache, complete links and no horizontal overflow.
+Actual production desktop/phone passes the same25,398mapvalues/100state
+selections, Texas benchmark, model holds, pointer/keyboard, source/scale faults,
+cache/download and no-overflow checks without valid-data overrides.
+NativePages43336523492/sourceguard43336523474/artifact13998151323 is
+downloaded and verified: actual997,189,386payload/999,782,400tar bytes, both
+strictly below1e9;436old download pins/113original models preserved and the
+actual compiled renderer checked. These are native artifact/production proofs,
+not local size projections. Records:
+`data/participation-access/20261113-house-recorded-counts-01/`.
+
+Immutable science443665464/tag `participation-house-recorded-counts-20261113-01`:
+complete53,684,336-byte packet/SHA256
+`f5ce94c8b7f03329f0b5974467e9913ec1f6437f33b151602086f71bfef4321e`.
+All seven full assets verified authenticated while draft and anonymously after
+publication. Every selected recorded query, exact processing/interface code,
+37tests and sufficient fixtures plus the ENTIRE50,449,445-byte predecessor are
+included. No wholesale predecessor resimulation claimed. This uses the held
+November7snapshot, not newly acquired HI/WY counts or a NORC weight revision.
+See [usage and interpretation](docs/HOUSE_RECORDED_COUNTS.md).
+
 ## 2026 combined-source refresh and model reconciliation
 
 The user's current instruction is to use official2026 returns, weighted NORC,
@@ -58,10 +101,20 @@ NORC's native declaration explicitly says the data will change as weights
 are adjusted to final vote counts. The supplied
 [CSV](https://civichealth.norc.org/downloads/civichealth_datafile.csv),
 [codebook](https://civichealth.norc.org/downloads/civichealth_codebook.zip) and
-[crosstabs](https://civichealth.norc.org/crosstabs.html) are version-check leads,
-not newly acquired/qualified microdata in this increment. Compare their actual
-version and weight definitions with the already-held113,020 observations and
-accepted fits. A source weight calibrated to current results is not independent
+[crosstabs](https://civichealth.norc.org/crosstabs.html) are the supplied version-
+check leads. Subsequent ordinary native requests on November13 at00:28-00:30UTC
+returned200 for the codebook ZIP241,714bytes/SHA256
+`5c0e522820d36562d2610ea514ae693079f871b3352584ee070b628b02ac59c8`
+and CSV88,182,202bytes/SHA256
+`496a5b57fbc435210bdf78e2c1c3717879c0689c74081bee830d121b548c792f`.
+Both are **byte-identical to the supplied originals**. No respondent reduction,
+weight change or source refit is warranted merely by reacquiring these files.
+The publisher's older application-code comment saying its codebook is unavailable
+does not override the actual200/validZIP; no global absence claim is made.
+Original respondents and publisher application code remain outside public Git/
+downloads; no copied browser API credentials were acquired or used.
+The actual weight-target/calibration qualification is unchanged, not resolved
+by matching bytes. A source weight calibrated to current results is not independent
 validation of those same results. Empty web-renderer output is not a native
 access denial; the two NORC pages above are reachable.
 

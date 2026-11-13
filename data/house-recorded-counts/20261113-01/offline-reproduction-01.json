@@ -1,0 +1,21 @@
+{
+  "all_members_verified": 26,
+  "archived_tests": 37,
+  "complete_package": {
+    "bytes": 53684336,
+    "sha256": "f5ce94c8b7f03329f0b5974467e9913ec1f6437f33b151602086f71bfef4321e"
+  },
+  "fresh_byte_identical_outputs": {
+    "complete-recorded-counts.csv": {
+      "bytes": 12250,
+      "sha256": "2d71ff85b4626c72c819ada674dd9cf7577e9df9f71f73c1d0255d49575e0ade"
+    },
+    "complete-recorded-counts.json": {
+      "bytes": 26448,
+      "sha256": "60d72d14fc123bce9c47b0c605fe2d2a29ca0986947fecc78f619f533686ecae"
+    }
+  },
+  "network_dns_children_blocked_and_probed": true,
+  "predecessor_wholesale_models_repeated": false,
+  "status": "pass"
+}

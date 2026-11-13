@@ -1,0 +1,95 @@
+{
+  "science": {
+    "assets": {
+      "browser-acceptance.json": {
+        "asset_id": 741624298,
+        "bytes": 1486,
+        "full_authenticated_draft_and_anonymous_public_bytes_verified": true,
+        "sha256": "f70e7ecb7e1e656314653bd13533e52cc07158775e1c91b9754a9d521ea337c3",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/browser-acceptance.json"
+      },
+      "complete-analysis.zip": {
+        "asset_id": 741624281,
+        "bytes": 53684336,
+        "full_authenticated_draft_and_anonymous_public_bytes_verified": true,
+        "sha256": "f5ce94c8b7f03329f0b5974467e9913ec1f6437f33b151602086f71bfef4321e",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/complete-analysis.zip"
+      },
+      "complete-recorded-counts.csv": {
+        "asset_id": 741624279,
+        "bytes": 12250,
+        "full_authenticated_draft_and_anonymous_public_bytes_verified": true,
+        "sha256": "2d71ff85b4626c72c819ada674dd9cf7577e9df9f71f73c1d0255d49575e0ade",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/complete-recorded-counts.csv"
+      },
+      "complete-recorded-counts.json": {
+        "asset_id": 741624280,
+        "bytes": 26448,
+        "full_authenticated_draft_and_anonymous_public_bytes_verified": true,
+        "sha256": "60d72d14fc123bce9c47b0c605fe2d2a29ca0986947fecc78f619f533686ecae",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/complete-recorded-counts.json"
+      },
+      "independent-verification.json": {
+        "asset_id": 741624288,
+        "bytes": 1880,
+        "full_authenticated_draft_and_anonymous_public_bytes_verified": true,
+        "sha256": "2d02cc45066f7e836827df5cacb3e686bdf54ce9068b4ae57fa7f09d73958c05",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/independent-verification.json"
+      },
+      "offline-reproduction-01.json": {
+        "asset_id": 741624278,
+        "bytes": 652,
+        "full_authenticated_draft_and_anonymous_public_bytes_verified": true,
+        "sha256": "b6cc292e6d12e60511db373c53d81478e9863bed35414329a5cd8a45e4a3da3f",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/offline-reproduction-01.json"
+      },
+      "offline-reproduction-02.json": {
+        "asset_id": 741624299,
+        "bytes": 652,
+        "full_authenticated_draft_and_anonymous_public_bytes_verified": true,
+        "sha256": "b6cc292e6d12e60511db373c53d81478e9863bed35414329a5cd8a45e4a3da3f",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-house-recorded-counts-20261113-01/offline-reproduction-02.json"
+      }
+    },
+    "immutable": true,
+    "model_fits_changed": false,
+    "release_id": 443665464,
+    "source_counts_changed": false,
+    "status": "pass",
+    "tag": "participation-house-recorded-counts-20261113-01",
+    "website_activation_not_yet_claimed": true
+  },
+  "status": "pass",
+  "website_source": {
+    "commit": "0a164b6b4f184aba0e5783d44c6cd0264234864f",
+    "files": {
+      "public/scripts/participation-norc-house.js": {
+        "bytes": 35306,
+        "sha256": "adae2c665ad705d1079b12336cbf3aec966e081fb715a9e60fe27294b04577be"
+      },
+      "public/scripts/participation-return-drivers.js": {
+        "bytes": 42559,
+        "sha256": "ef1f6a9abd27ddcf2b7d9ddb9140bef2f278c64a325067c738975f944ad597bb"
+      },
+      "scripts/check-participation-house-comparability-browser.py": {
+        "bytes": 13357,
+        "sha256": "cb0e492e4ebbaba8bb33e7b12dc3712ee7a7422cd11e3995854c8d2d9288cec7"
+      },
+      "scripts/export-house-recorded-counts.mjs": {
+        "bytes": 2998,
+        "sha256": "2b24823ae28d4665560d3bd600d5a56a7ec233ff07838ecee2b841a87261bf18"
+      },
+      "scripts/participation-norc-house.test.mjs": {
+        "bytes": 17834,
+        "sha256": "950c010d798fe42df774a65f78b6e19096206c529a39a47a21a3cb41f4022e06"
+      },
+      "src/components/ParticipationReturnDrivers.astro": {
+        "bytes": 29975,
+        "sha256": "74b85b5fab145656067ca8ea8b5e597704fed32789aa26531ce000d08e94559b"
+      }
+    },
+    "parent": "3cee7a193cb57428887a172c00d355fb06351c10",
+    "status": "pass"
+  },
+  "website_verified_live": true
+}

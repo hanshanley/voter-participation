@@ -1,0 +1,49 @@
+{
+  "Texas_D_two_party_share_change_pp": 11.97610547994342,
+  "all_50_states_retained": true,
+  "code": {
+    "public/scripts/participation-calibrated-swing.js": {
+      "bytes": 6433,
+      "sha256": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115"
+    },
+    "public/scripts/participation-dataset.js": {
+      "bytes": 3108,
+      "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+    },
+    "public/scripts/participation-downloads.js": {
+      "bytes": 6746,
+      "sha256": "ffd308df80b1453fb642eab9fa2143473863a43a809c578717a8bbdb0c645203"
+    },
+    "public/scripts/participation-map-projection.js": {
+      "bytes": 2389,
+      "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+    },
+    "public/scripts/participation-norc-house.js": {
+      "bytes": 35306,
+      "sha256": "adae2c665ad705d1079b12336cbf3aec966e081fb715a9e60fe27294b04577be"
+    },
+    "public/scripts/participation-return-drivers.js": {
+      "bytes": 42559,
+      "sha256": "ef1f6a9abd27ddcf2b7d9ddb9140bef2f278c64a325067c738975f944ad597bb"
+    },
+    "public/scripts/participation-transition-scenarios.js": {
+      "bytes": 7455,
+      "sha256": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e"
+    }
+  },
+  "conditional_models": 33,
+  "held_models": 17,
+  "independent_exact_fraction_checks": 550,
+  "no_fresh_HI_WY_counts_or_NORC_revision_used": true,
+  "original_complete_predecessor": {
+    "bytes": 50449445,
+    "sha256": "684edab6893d42eda52225b37fc53a663570322c39541c5f173fe47f3359b7bd"
+  },
+  "previous_numerical_models_repeated": false,
+  "raw_counts_not_voter_preference_swings": true,
+  "source_counts_changed": false,
+  "source_fits_repeated": false,
+  "source_sha256": "719f0bd533e58b0f7edee1acb3121b4285ebe2c50326f0498b830afd4f8176a0",
+  "source_snapshot": "20261107T125502Z",
+  "status": "pass"
+}
