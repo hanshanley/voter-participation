@@ -13,6 +13,62 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Vermont native turnout: full count refresh and coupled display verified live
+
+The declared November 9 native voter-turnout report now supplies all 247
+existing municipal observations through the shared routine. Its 283 printed
+legislative reporting parts reconcile to 14 county controls and the state:
+311,510 Total Votes Cast (Includes Absentee), 506,830 Registered Voters and
+193,189 included Absentee Votes Cast. All 90 cross-level count comparisons and
+624 printed percentages match. All 247 town identities match after whitespace
+normalization; no aliases, precinct allocation or new geographic joins.
+
+Ten participation counts and 40 registration counts change. Six older
+contest/scope rate holds are explicitly reviewed against the new same-report
+turnout/registration frame; all 247 native registration-frame fractions are
+supported. This does not qualify eligible-population turnout, unique people,
+physical ballots, demographic participation or individual staying-home histories.
+Source report date is November 9, 2026; no time, timezone or certification
+status is inferred. Other 50 jurisdiction shards, both VT early/mail provider
+frames and all existing municipal binding qualifiers are unchanged.
+
+Research source25f7c37 adds reviewed native-part sums, exact header-equivalence
+assertions and generic full-query/group/control replay. All 37 affected tests
+pass. Both fresh complete-archive extractions reproduce all 57 batch outputs
+and three full native numerical outputs under blocked/probed network, DNS and
+children, with no unexpected attempts. The complete 12,541,210-byte packet
+includes all51 baseline/runtime files and the nested complete native-source
+analysis, not merely metadata. All11 assets in immutable release443852099/tag
+`participation-vt-native-turnout-refresh-20261113-01` are fully verified
+authenticated/draft and anonymously/public.
+
+Atomic catalog9ba97246 activates counts784e30c6 from staged1c7a033c.
+Production all306 bindings/all51 selectors pass. A real municipal-map drill
+found stale hard-coded241/six-withheld copy, despite correctly updated geometry
+counts. Website082575f derives the disclosures from actual count rows, separates
+current-count and old boundary downloads, and fixes the PDF-as-CSV source label.
+Its124 targeted tests and Astro check pass. Native Pages43373889995/source
+guard43373890018 succeed. Actual artifact14013818063 has997,195,451 payload
+bytes and999,792,640 tar bytes, both below1e9; all22 frozen source scripts,
+436 previous download pins and113 archived models are preserved.
+
+Actual production verifies all306 bindings/all51 selectors and all247 mapped
+counts, denominators and fractions on desktop/phone. All six VT modes and
+11 changed/prior-held town details pass without valid-data overrides. Canonical
+shared code passes37 tests and reproduces all57 batch files/three full native
+outputs offline. The canonical frontend retains its pre-existing local loader
+and geometry gates: only the coupled disclosure/link changes are surgically
+merged, and the published checker is restored as a missing file. This is not a
+wholesale replacement of unrelated canonical frontend work. Canonical HEADs,
+indexes and protected unrelated files remain unchanged.
+
+Acceptance records are under
+`data/participation-access/20261113-vt-native-turnout-01/`.
+
+House endpoints, survey fits/weights and behavioral masks are unchanged.
+Broader all-state/combined-source implementation and final audit/beautification
+remain open; do not redo accepted NJ work or treat this as nationwide new data.
+
 ## Native Cape May count refresh: now live through the shared routine
 
 The same native Cape May `Ballots Cast - Total` observation is now42,442,
@@ -95,10 +151,11 @@ complete permitted downloads and privacy; caching/error recovery,
 accessibility/performance and actual desktop/mobile production. Fix verified
 defects rather than ending with an audit report.
 
-One verified pre-existing presentation defect is queued here: the live local
-detail labels its original-PDF source link "Complete native participation table
-(CSV)". Correct the format-aware label without changing the source URL or
-confusing it with the separate complete numerical scientific download.
+The original-PDF-as-CSV source label is corrected in website082575f during the
+coupled Vermont integration, alongside stale municipal rate-count disclosures.
+Native deployment/production acceptance is recorded above; this is not the full
+audit or beautification round. Existing county/locality navigation terminology
+and intended drill-down routing still belong in that broader audit.
 
 Then polish typography, spacing, hierarchy, map/chart scales and legends,
 units/labels, tables and download-link organization, responsive layout,

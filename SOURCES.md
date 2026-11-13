@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current native municipal refresh | [Vermont full turnout report, 247 municipal observations and explicit registration-frame review](#2026-vermont-native-turnout-report-and-municipal-refresh) |
 | Current native county-count refresh | [Cape May same-measure successor, all51jurisdiction retention and live acceptance](#2026-native-cape-may-count-refresh) |
 | New Jersey complete native tables | [All21county files, distinct administrative/contest frames and unresolved source conflicts](#2026-new-jersey-complete-native-pdf-measures) |
 | Recorded-count display correction | [All50state raw totals remain inspectable independently of behavioral eligibility](#recorded-house-counts-versus-behavioral-eligibility) |
@@ -42,6 +43,75 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Vermont native turnout report and municipal refresh
+
+The permitted VT results index explicitly declares the
+[2026 general-election turnout report](https://outside.vermont.gov/dept/sos/Elections_Division/election_info_resources/elections_results_data/2026_general_election_voter_turnout.pdf).
+The acquired434,143-byte PDF has SHA256
+`1a8826e99f2c263ed13940b4136c63f80af0e0dbe0c88502cd7d6bfcd8af4b5c`.
+Its13 pages/14 grids identify the November3 election and November9 report
+date, but do not supply a time, timezone or certification status.
+
+All283 town/legislative reporting parts, 14 printed county controls and the
+county/state summary are compiled. All247 existing town names match using
+whitespace-only reading normalization. Distinct Rep/Senate reporting-part
+identities and all90 cross-level count comparisons agree;624 printed
+percentages agree at their displayed precision. The independent reader compares
+978 count positions, including42 native blanks, plus138 headers/1,600 literals.
+Blank county headings are not zero observations; controls are not added twice.
+The full2,252-cell JSON/CSV queries retain native values, statuses, literal
+labels, source rectangles, percentages and their separate denominators.
+
+The native state controls are311,510 Total Votes Cast (Includes Absentee),
+506,830 Registered Voters and193,189 Absentee Votes Cast. The absentee count is
+an included component, not an additional participation total or a returned-mail
+measure. Native turnout61.46% uses registration; native absentee share62.02%
+uses votes cast. Neither is an eligible-population or individual behavioral rate.
+
+The common routine replaces the complete247-town source scope. Ten counts and
+40 registration stocks differ from the older snapshot. Six previous
+contest/scope registration-rate holds are explicitly reviewed against the new
+same-report numerator/denominator frame, supporting247 native registered-voter
+fractions. Prior observations/holds and the new review remain in the full
+packet. This does not qualify unique people, physical ballots, precinct
+boundaries, demographic allocation or staying-home/switching histories.
+Other50 whole-state shards, both VT provider early/mail frames and all
+existing municipal binding qualifiers remain unchanged.
+
+Processing source25f7c37:37 tests pass. Both fresh archive extractions reproduce
+all57 complete batch outputs and three full source numerical outputs with
+network/DNS/child gates blocked/probed and zero attempts. A genuine cached no-op
+preserves bytes/mtimes. All11 release443852099 assets/tag
+`participation-vt-native-turnout-refresh-20261113-01` are verified in full while
+authenticated/draft and anonymously/public. The complete12,541,210-byte ZIP
+has SHA256
+`da8b158b0b6c8d3245d21f74fb5a23536e11a6db5173f7042b699a71c52b51fc`.
+It includes the complete370,732-byte native-source packet, all51 sufficient
+baseline/runtime files, full queries, code/tests and replay inputs. Original PDF
+templates/private glyph facts are not redistributed; replay starts from complete
+permitted factual grids.
+
+Data catalog9ba97246 activates counts784e30c6 from staged1c7a033c after all54
+immutable files are anonymously verified. All306 production bindings and51
+selectors pass. Coupled website082575f fixes stale hard-coded rate summaries
+and the native PDF source-link label;124 targeted tests, Astro check and
+desktop/phone checks pass. Native Pages43373889995/source guard43373890018
+succeed; actual artifact14013818063 has997,195,451 payload/999,792,640 tar
+bytes, both below1e9, preserving22 source scripts,436 old download pins and
+113 archived models. Actual production verifies all247 mapped values/fractions
+on desktop/phone plus all six modes and11 changed/prior-held town details,
+with no valid-data overrides.
+
+Canonical shared code passes37 tests and reproduces all57 batch files/three
+full native outputs offline. Only the coupled disclosure/link changes are
+surgically merged into the differing canonical frontend; its unrelated local
+loader and geometry gates are preserved, not wholesale replaced. Canonical
+HEADs/indexes and protected user files remain unchanged. Public acceptance:
+`data/participation-access/20261113-vt-native-turnout-01/`.
+Survey fits/weights, House endpoints and behavioral masks are unchanged.
+Broader all-state source/model work and the requested final audit/beautification
+remain open.
 
 ## 2026 native Cape May count refresh
 

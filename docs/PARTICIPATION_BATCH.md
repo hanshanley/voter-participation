@@ -110,8 +110,11 @@ canonical fields with an independently supplied, pinned
 
 Declare `facts` in `spec.inputs`, including its full byte/SHA pin and permitted
 publication policy. Product, table, record and native-row selectors must each
-be unambiguous. The current supported native role is the reviewed unofficial
-registration/ballot/turnout-statistics grid, not a contest-choice table.
+be unambiguous. Supported native roles are reviewed
+`unofficial_registration_ballot_reported_turnout_statistics` and neutral
+`native_registration_ballot_reported_turnout_statistics`, not contest-choice
+tables. The neutral role does not invent an official/unofficial or certified
+status when the report supplies none.
 Native numerator labels must match the accepted measure; missing cells cannot
 become reported zeroes. `parse: "count"` accepts only a native scalar count,
 not provenance metadata. Other conversions are rejected.
@@ -131,12 +134,54 @@ packet. A missing original, changed checksum, absent feature key or missing
 approval evidence holds the source. This does not grant a new join or permit
 an inventory change.
 
+### Reviewed reporting-part sums and wide statistical tables
+
+The VT refresh uses the same runner, not a per-state importer. An explicit
+`table_ids` list can span source pages; all declared tables must be present
+exactly once. `reading_whitespace_normalized: true` allows layout whitespace
+only, not place-name aliases. `where_nonempty` declares source row selectors
+that distinguish reporting parts from blank county headings.
+
+`operation: "sum"` requires `parse: "count"` and nonempty
+`sum_review_evidence`. Every selected factual row needs a unique table/row
+identity and every selected count must be known. Missing values are not
+silently skipped or converted to zero. A default unique-cell binding still
+rejects multiple matches. Percentages and provenance metadata are not approved
+summable count fields; registration stocks need an explicitly reviewed additive
+partition, not repeated whole-population values.
+
+In wide tables, the row label names a locality rather than a measure.
+Numerator bindings may declare an exact `native_measure_header`, the unchanged
+`accepted_measure_literal` and explicit `same_measure_review_evidence`. Every
+selected table's native column-header annotation must match. This records a
+reviewed same-quantity label equivalence; it does not change accepted measure,
+election or geographic identity, approve candidate-choice substitution, or
+grant physical-ballot/unique-voter qualification.
+
+`pdf_group_queries.py` and the optional `--group-recipe` argument to
+`reproduce_pdf_measures.py` reproduce complete reporting-part, grouped-unit,
+parent and state queries. Recipes name source tables, count fields, literal
+parent headings/control suffixes, expected inventories and percentage pairs.
+Unknown counts, missing controls and duplicate reporting-part identities fail
+closed. Native percentages retain their own denominators and display precision;
+zero-denominator rates remain unqualified. Grouped percentages are not added
+or averaged. Complete cell JSON/CSV and numerical control outputs remain
+included, not replaced by a reconciliation summary.
+
+The VT complete batch additionally declares the full native-source analysis
+ZIP as a pinned public input, so it remains nested in the offline packet with
+its own complete facts, queries, code and tests. Both fresh archive extractions
+pass37 affected tests and reproduce57 batch files plus all three full native
+outputs. Six older rate holds are explicitly reviewed against the new native
+turnout/registration frame; this is not a general permission to lift old masks.
+
 ## Complete outputs, publication and resume
 
 Every batch includes all 51 jurisdiction dispositions, complete selected-source
 queries, every compiled count file, permitted original inputs, source-specific
 intake packets, registry, exact processing code and workflow tests. The original
-three-source packet has14tests; the native-fact refresh packet has17.
+three-source packet has14tests; the Cape May native-fact packet has17 and the
+complete VT native-group/batch packet has37 across its included test suites.
 `complete-analysis.zip` includes member checksums and offline instructions,
 not merely metadata or a sampled row export.
 

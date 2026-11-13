@@ -8,6 +8,43 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Vermont native turnout refresh: complete downloads
+
+The full native report now supplies all247 existing municipalities, preserving
+all other jurisdictions, separate VT provider early/mail frames and geographic
+binding qualifiers. Its283 reporting parts reconcile to14 county controls and
+the state:311,510 votes cast,506,830 registered and193,189 included absentee
+votes. All90 count comparisons and624 printed percentages match. Six previous
+registration-rate holds are explicitly reviewed against the new same-report
+frame, not silently discarded or extended to eligible-population turnout.
+
+| Complete download | Contents |
+|---|---|
+| [Complete all-jurisdiction scientific packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-vt-native-turnout-refresh-20261113-01/complete-analysis.zip) | 12,541,210bytes; all51 sufficient baseline/runtime files, all247 native municipal observations, complete nested source analysis, code/tests and offline replay |
+| [Complete native-source analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-vt-native-turnout-refresh-20261113-01/complete-source-analysis.zip) | 370,732bytes/25members; full factual grids, all cell/group/control queries, source recipes, prior municipal observations and exact code/tests |
+| [Complete native factual grids](https://github.com/hanshanley/margin_of_error/releases/download/participation-vt-native-turnout-refresh-20261113-01/complete-factual-grids.json.gz) | All14 grids/13 pages; values, blank statuses, raw labels, percentages and source geometry |
+| [Complete numerical JSON](https://github.com/hanshanley/margin_of_error/releases/download/participation-vt-native-turnout-refresh-20261113-01/complete-queries.json.gz) | All2,252 selected cells and their full frame/status/provenance |
+| [Complete numerical CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-vt-native-turnout-refresh-20261113-01/complete-queries.csv.gz) | Same full cell queries; value_json preserves null versus zero and native literals |
+| [Complete group/control queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-vt-native-turnout-refresh-20261113-01/complete-controls.json) | All283 reporting parts,247 town aggregates,14 county controls, state totals,90 count comparisons and624 printed-percentage checks |
+| [All247 reviewed municipal observations](https://github.com/hanshanley/margin_of_error/releases/download/participation-vt-native-turnout-refresh-20261113-01/reviewed-source-observations.json) | Complete canonical inputs with native source fields, prior qualifications and explicit new registration-frame review |
+| [Complete refresh registry](https://github.com/hanshanley/margin_of_error/releases/download/participation-vt-native-turnout-refresh-20261113-01/reviewed-refresh-registry.json) | All3,187 reviewed factual assertions, complete source inventory and pinned sufficient inputs |
+
+Both fresh complete-archive extractions pass37 tests and reproduce all57 batch
+outputs and three full native numerical outputs under blocked/probed network,
+DNS and children. All11 immutable release443852099 assets are authenticated/
+draft and anonymously/public full-byte verified. Catalog9ba97246/counts784e30c6
+is active. The coupled website082575f passes native Pages43373889995:
+actual997,195,451 payload/999,792,640 tar bytes,436 old download pins and
+113 archived models preserved. Actual production checks all306 bindings,
+all51 selectors, all247 VT map values/fractions, all six modes and desktop/
+phone. Canonical shared code passes37 tests and reproduces57 batch/three
+native output files; canonical frontend disclosure changes are surgically
+merged without replacing unrelated local loader/geometry work. Neither
+source-defined participation nor
+registration stocks establish individual staying-home or switching histories.
+No new geographic, eligible-population or unique-voter qualification, survey
+refit or study-weight change is claimed. All earlier full downloads remain.
+
 ## Current native county-count refresh: complete downloads
 
 The same Cape May ballot-count snapshot is now42,442, with the same76,899
