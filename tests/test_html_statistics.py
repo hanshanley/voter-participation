@@ -169,6 +169,81 @@ class HtmlStatisticsTests(unittest.TestCase):
         with self.assertRaises(IntakeError):
             verify_fact_bindings(spec, [row], inputs)
 
+    def count_only_fixture(self):
+        body = b"""<h1>2026 General Election</h1>
+<p>Early Voting: 12 (60.0%)</p><p>Total Voter Turnout: 20</p>
+<p>Turnout of Active Registered Voters: 59.8%</p>"""
+        recipe = dict(
+            contract="participation.native_html_statistics_recipe.v2",
+            source=dict(id="state-statistics", state_code="AR", election_year=2026,
+                        url="https://example.gov/release", pin=pin(body)), encoding="utf-8",
+            roles=dict(count="turnout", denominator=None, percentage="pct", clock=None),
+            fields=[
+                dict(name="turnout", kind="count", native_label="Total Voter Turnout:",
+                     selector=dict(tag="p", text="Total Voter Turnout: 20"),
+                     prefix="Total Voter Turnout:"),
+                dict(name="early", kind="count", native_label="Early Voting:",
+                     selector=dict(tag="p", text="Early Voting: 12 (60.0%)"),
+                     prefix="Early Voting:", suffix=" (60.0%)"),
+                dict(name="pct", kind="percentage", native_label="Turnout of Active Registered Voters:",
+                     selector=dict(tag="p", text="Turnout of Active Registered Voters: 59.8%"),
+                     prefix="Turnout of Active Registered Voters:"),
+            ],
+            assertions=[dict(selector=dict(tag="h1"), expected="2026 General Election")],
+            opaque_context=[])
+        return body, recipe
+
+    def test_count_only_preserves_printed_percentage_without_inventing_denominator_or_clock(self):
+        body, recipe = self.count_only_fixture()
+        selected = extract(body, recipe)
+        self.assertEqual(selected["fields"]["turnout"]["value"], 20)
+        self.assertEqual(selected["fields"]["early"]["value"], 12)
+        self.assertEqual(selected["fields"]["pct"]["value"], "59.8%")
+        self.assertIsNone(selected["recipe"]["roles"]["denominator"])
+        self.assertIsNone(selected["recipe"]["roles"]["clock"])
+        self.assertNotIn("registered", selected["fields"])
+        self.assertEqual(selected["contract"], "participation.selected_html_statistics.v2")
+
+    def test_count_only_roles_do_not_relax_legacy_contract_or_allow_percentage_counts(self):
+        for change in ("legacy", "percentage_count", "absent_count", "undeclared_count"):
+            body, recipe = self.count_only_fixture()
+            if change == "legacy":
+                recipe["contract"] = "participation.native_html_statistics_recipe.v1"
+            elif change == "percentage_count":
+                recipe["roles"]["count"] = "pct"
+                recipe["roles"]["percentage"] = None
+            elif change == "absent_count":
+                recipe["roles"]["count"] = None
+            else:
+                recipe["roles"]["count"] = "missing"
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                extract(body, recipe)
+
+    def test_count_only_suffix_cannot_drop_unreviewed_native_context(self):
+        body, recipe = self.count_only_fixture()
+        recipe["fields"][1]["suffix"] = " (61.0%)"
+        with self.assertRaises(ValueError):
+            extract(body, recipe)
+
+    def test_count_only_statistics_bind_through_shared_intake(self):
+        body, recipe = self.count_only_fixture()
+        selected = extract(body, recipe)
+        binding = dict(input="statistics", source_id="state-statistics", measure="turnout",
+            native_measure_header="Total Voter Turnout:", record=dict(id="row"),
+            path="count.value", parse="count",
+            source_role="native_registration_ballot_reported_turnout_statistics",
+            accepted_measure_literal="Total Voter Turnout",
+            same_measure_review_evidence="Directly reported participation, not candidate votes")
+        spec = dict(inputs=dict(statistics={}, recipe={}),
+            geography=dict(state_code="AR"), election=dict(year=2026),
+            format=dict(html_statistics_recipe_input="recipe", fact_bindings=[binding]))
+        row = dict(id="row", count=dict(value=20), measure=dict(literal="Total Voter Turnout"))
+        inputs = dict(statistics=json.dumps(selected).encode(), recipe=json.dumps(recipe).encode())
+        verify_fact_bindings(spec, [row], inputs)
+        row["count"]["value"] = 21
+        with self.assertRaises(IntakeError):
+            verify_fact_bindings(spec, [row], inputs)
+
 
 if __name__ == "__main__":
     unittest.main()

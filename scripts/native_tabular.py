@@ -34,6 +34,53 @@ def column(table, label):
     return indices[0]
 
 
+def xls(body):
+    import xlrd
+
+    workbook = xlrd.open_workbook(file_contents=body, formatting_info=True, on_demand=True)
+    try:
+        if workbook.datemode not in (0, 1):
+            raise ValueError("Unknown native BIFF date system")
+        tables = []
+        for sheet in workbook.sheets():
+            rows = []
+            for number in range(sheet.nrows):
+                cells = []
+                for column_number in range(sheet.ncols):
+                    cell = sheet.cell(number, column_number)
+                    if cell.ctype == xlrd.XL_CELL_EMPTY:
+                        continue
+                    value = cell.value
+                    if cell.ctype in (xlrd.XL_CELL_EMPTY, xlrd.XL_CELL_BLANK):
+                        value = None
+                    elif cell.ctype == xlrd.XL_CELL_NUMBER and isinstance(value, float) and value.is_integer():
+                        value = int(value)
+                    elif cell.ctype == xlrd.XL_CELL_BOOLEAN:
+                        value = bool(value)
+                    elif cell.ctype == xlrd.XL_CELL_ERROR:
+                        value = xlrd.error_text_from_code[value]
+                    index, letters = column_number + 1, ""
+                    while index:
+                        index, remainder = divmod(index - 1, 26)
+                        letters = chr(65 + remainder) + letters
+                    cells.append(dict(address=letters + str(number + 1),
+                        attributes=dict(s=str(cell.xf_index)), storage_type="biff:" + str(cell.ctype),
+                        cached_value=cell.value, value=value))
+                rows.append(dict(row=number + 1, cells=cells))
+            tables.append(dict(name=sheet.name, rows=rows, nrows=sheet.nrows, ncols=sheet.ncols,
+                absent_cells_are_implicit_empty=True,
+                source_format="BIFF_cached_cells",
+                formula_provenance="Formula expressions are not exposed by this reader; cached values are not recalculated.",
+                workbook_properties=dict(date1904=str(workbook.datemode)),
+                workbook_number_formats={str(key): item.format_str for key, item in workbook.format_map.items()},
+                workbook_cell_formats=[dict(numFmtId=str(item.format_key)) for item in workbook.xf_list]))
+        if not tables or len({table["name"] for table in tables}) != len(tables):
+            raise ValueError("Native BIFF worksheet identities are absent or ambiguous")
+        return tables
+    finally:
+        workbook.release_resources()
+
+
 def json_records(body, items_path=None, encoding="utf-8-sig", record_guards=None):
     def unique_object(pairs):
         result = {}

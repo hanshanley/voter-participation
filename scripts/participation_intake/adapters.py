@@ -317,21 +317,65 @@ def native_query_cells(binding, product, spec, inputs, cache):
                 raise IntakeError("source_fact_binding", "Native record fields are not worksheet or candidate columns")
             actual = table["header"][native_column(table, column)]
         else:
-            if not re.fullmatch(r"[A-Z]+", column) or type(header_row) is not int or header_row <= 0:
+            if selected.get("axis") == "columns":
+                native_row = re.fullmatch(r"\$row:([1-9][0-9]*)", column)
+                header_column = binding.get("native_header_column", "")
+                if (not native_row or type(header_row) is not int or header_row != int(native_row[1])
+                        or not re.fullmatch(r"[A-Z]+", header_column)):
+                    raise IntakeError("source_fact_binding", "Transposed statistics require their own physical row header")
+                header_field = header_column
+            elif not re.fullmatch(r"[A-Z]+", column) or type(header_row) is not int or header_row <= 0:
                 raise IntakeError("source_fact_binding", "A direct native statistical count column/header is required")
-            actual = values(table, header_row).get(column)
-            required = selected.get("require", {}).get(str(header_row), {}).get(column)
+            else:
+                header_field = column
+            actual = values(table, header_row).get(header_field)
+            required = selected.get("require", {}).get(str(header_row), {}).get(header_field)
             if not isinstance(actual, str) or required != actual:
                 raise IntakeError("source_fact_binding", "Native statistical header needs its complete recipe guard")
         table_views.append(dict(source_annotations=dict(native_column_headers={measure: actual})))
-    selectors = binding.get("native_record", {})
-    matches = [r for r in result["rows"] if selectors and all(
-        field(r, path) == value for path, value in selectors.items())]
-    if len(matches) != 1:
-        raise IntakeError("source_fact_binding", "Native statistical query row is absent or ambiguous")
+    selectors = binding.get("native_records")
+    if selectors is not None:
+        if (binding.get("operation") != "sum" or binding.get("value_scope", "cell") != "cell"
+                or binding.get("native_sum_scope") != "complete_query"
+                or not binding.get("sum_review_evidence")
+                or not isinstance(selectors, list) or not selectors
+                or any(not isinstance(item, dict) or not item for item in selectors)
+                or len({json.dumps(item, sort_keys=True) for item in selectors}) != len(selectors)):
+            raise IntakeError("source_fact_binding", "Native sums require an explicit distinct reviewed record inventory")
+    else:
+        selectors = [binding.get("native_record", {})]
+    matches = []
+    for selector in selectors:
+        found = [r for r in result["rows"] if selector and all(
+            field(r, path) == value for path, value in selector.items())]
+        if len(found) != 1 or any(found[0] is previous for previous in matches):
+            raise IntakeError("source_fact_binding", "Native statistical query row is absent, repeated or ambiguous")
+        matches.append(found[0])
+    if binding.get("native_records") is not None:
+        if (len(matches) != len(result["rows"])
+                or selected.get("axis") == "columns" and any(
+                    type(binding.get("native_first_data_column")) is not int
+                    or binding["native_first_data_column"] != selected.get("first_column")
+                    or type(table.get("ncols")) is not int or selected.get("last_column") != table["ncols"]
+                    for table in tables)):
+            raise IntakeError("source_fact_binding", "A complete native sum cannot omit query rows or truncate physical columns")
+        if selected.get("axis") == "columns":
+            for table in tables:
+                for letter, literal in values(table, int(column[5:])).items():
+                    number = 0
+                    for character in letter:
+                        number = number * 26 + ord(character) - 64
+                    if number >= binding["native_first_data_column"]:
+                        continue
+                    try:
+                        native_count = count(literal)
+                    except IntakeError:
+                        continue
+                    if native_count is not None:
+                        raise IntakeError("source_fact_binding", "A complete native sum cannot omit a leading native count cell")
     scope = binding.get("value_scope", "cell")
     if scope == "cell":
-        value = matches[0][measure]
+        return table_views, [dict(value=row[measure], native_status="reported") for row in matches]
     elif scope == "row":
         path = binding.get("value_path")
         field_column = selected["fields"].get(path)
@@ -367,10 +411,11 @@ def verify_fact_bindings(spec, rows, inputs):
         data = decoded[key]
         if not isinstance(data, dict) or data.get("contract") not in (
                 "participation.reviewed_pdf_factual_grids.v1", "participation.native_factual_tables.v1",
-                "participation.selected_html_statistics.v1"):
+                "participation.selected_html_statistics.v1", "participation.selected_html_statistics.v2"):
             raise IntakeError("source_fact_binding", "Factual grid contract changed")
         native = data["contract"] == "participation.native_factual_tables.v1"
-        html_statistics = data["contract"] == "participation.selected_html_statistics.v1"
+        html_statistics = data["contract"] in (
+            "participation.selected_html_statistics.v1", "participation.selected_html_statistics.v2")
         if binding.get("operation") == "component_sum" and (native or html_statistics):
             raise IntakeError("source_fact_binding", "Component sums require reviewed factual PDF columns")
         products = [data] if native or html_statistics else data.get("products")

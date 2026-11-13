@@ -49,7 +49,7 @@ def alabama_rows(body, year):
         for member in sorted(archive.namelist()):
             if not member.lower().endswith(".xls") or member.startswith("__MACOSX/"):
                 continue
-            match = re.fullmatch(str(year)+r"-General-(.+)\.xls", member, re.I)
+            match = re.fullmatch(str(year)+r"(?:-General-|_GENERAL_ELECTION-)([^/\\]+)\.xls", member, re.I)
             if not match:
                 raise ValueError("Unreviewed Alabama county workbook identity")
             workbook = xlrd.open_workbook(file_contents=archive.read(member),on_demand=True)

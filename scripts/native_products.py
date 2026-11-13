@@ -42,13 +42,14 @@ def unpack(spec, body):
         if [table["name"] for table in workbook] != spec["sheets"]:
             raise ValueError("Native worksheet inventory changed")
         tables = [dict(kind="worksheet", **table) for table in workbook]
-    elif spec["kind"] == "xlsx_zip":
+    elif spec["kind"] in ("xlsx_zip", "xls_zip"):
         with zipfile.ZipFile(io.BytesIO(body)) as archive:
             if sorted(archive.namelist()) != sorted(spec["members"]):
                 raise ValueError("Native workbook inventory changed")
             tables = []
             for name, sheet_names in spec["members"].items():
-                workbook = tabular.xlsx(archive.read(name))
+                reader = tabular.xls if spec["kind"] == "xls_zip" else tabular.xlsx
+                workbook = reader(archive.read(name))
                 if [table["name"] for table in workbook] != sheet_names:
                     raise ValueError("Native worksheet inventory changed")
                 tables.extend(dict(kind="worksheet", workbook=name, **table)
@@ -101,6 +102,8 @@ def displayed_cell(table, cells, selector):
 
 def query(product, spec):
     count_formats = spec.get("count_formats", {})
+    if spec.get("axis", "rows") not in ("rows", "columns"):
+        raise ValueError("Unreviewed native query axis")
     if (not isinstance(count_formats, dict)
             or any(field not in spec.get("counts", []) or value != "comma_grouped_integer"
                    for field, value in count_formats.items())):
@@ -114,6 +117,8 @@ def query(product, spec):
     output = []
     for table in selected:
         if table["kind"] in ("delimited", "json_records"):
+            if spec.get("axis") == "columns":
+                raise ValueError("Column-axis queries require physical worksheet cells")
             indices = {field: tabular.column(table, label)
                 for field, label in spec["fields"].items()}
             source_rows = [(row["row"], {field: row["values"][index]
@@ -127,15 +132,33 @@ def query(product, spec):
                 if any(actual.get(column) != expected for column, expected in columns.items()):
                     raise ValueError("Declared worksheet header changed")
             source_rows = []
-            for row in table["rows"]:
-                if not spec.get("first_row", 1) <= row["row"] <= spec.get("last_row", float("inf")):
-                    continue
-                cells = {re.sub(r"[0-9]+$", "", cell["address"]): cell for cell in row["cells"]}
-                source_rows.append((row["row"], {
-                    field: (row["row"] if selector == "$row" else
-                        table["name"] if selector == "$table" else
-                        displayed_cell(table, cells, selector))
-                    for field, selector in spec["fields"].items()}))
+            if spec.get("axis") == "columns":
+                first, last = spec.get("first_column"), spec.get("last_column")
+                if type(first) is not int or type(last) is not int or not 1 <= first <= last:
+                    raise ValueError("An explicit physical worksheet column range is required")
+                selectors = {}
+                for field, selector in spec["fields"].items():
+                    match = re.fullmatch(r"\$row:([1-9][0-9]*)", selector)
+                    if not match and (selector != "$column" or field in spec.get("counts", [])):
+                        raise ValueError("Column-axis fields require fixed native rows; metadata is not a count")
+                    selectors[field] = None if selector == "$column" else tabular.values(table, int(match[1]))
+                for number in range(first, last + 1):
+                    index, letter = number, ""
+                    while index:
+                        index, remainder = divmod(index - 1, 26)
+                        letter = chr(65 + remainder) + letter
+                    source_rows.append((letter, {field: letter if values is None else values.get(letter)
+                        for field, values in selectors.items()}))
+            else:
+                for row in table["rows"]:
+                    if not spec.get("first_row", 1) <= row["row"] <= spec.get("last_row", float("inf")):
+                        continue
+                    cells = {re.sub(r"[0-9]+$", "", cell["address"]): cell for cell in row["cells"]}
+                    source_rows.append((row["row"], {
+                        field: (row["row"] if selector == "$row" else
+                            table["name"] if selector == "$table" else
+                            displayed_cell(table, cells, selector))
+                        for field, selector in spec["fields"].items()}))
         for number, fields in source_rows:
             if any(fields[field] not in allowed for field, allowed in spec.get("where", {}).items()):
                 continue
@@ -150,7 +173,11 @@ def query(product, spec):
                     value = value.replace(",", "")
                 fields[field] = integer(value)
             reference = dict(table=table.get("name"), workbook=table.get("workbook"))
-            reference["record_index" if table["kind"] == "json_records" else "row"] = number
+            if spec.get("axis") == "columns":
+                reference.update(column=number, rows_by_field={field: int(selector[5:])
+                    for field, selector in spec["fields"].items() if selector.startswith("$row:")})
+            else:
+                reference["record_index" if table["kind"] == "json_records" else "row"] = number
             output.append(dict(**fields, source_rows=[reference]))
     keys, result = {}, []
     for row in output:

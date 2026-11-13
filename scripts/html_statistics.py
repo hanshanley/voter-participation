@@ -11,6 +11,10 @@ import re
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
         "meta", "param", "source", "track", "wbr"}
+CONTRACTS = {
+    "participation.selected_html_statistics.v1": "participation.native_html_statistics_recipe.v1",
+    "participation.selected_html_statistics.v2": "participation.native_html_statistics_recipe.v2",
+}
 
 
 def pin(body):
@@ -97,8 +101,8 @@ def value(literal, kind):
 
 
 def validate(selected):
-    if (selected["contract"] != "participation.selected_html_statistics.v1"
-            or selected["recipe"]["contract"] != "participation.native_html_statistics_recipe.v1"
+    if (selected["contract"] not in CONTRACTS
+            or selected["recipe"]["contract"] != CONTRACTS[selected["contract"]]
             or selected["source"] != selected["recipe"]["source"]
             or selected["whole_publisher_html_redistributed"] is not False):
         raise ValueError("Native HTML statistic selection contract changed")
@@ -136,16 +140,24 @@ def validate(selected):
     roles = recipe["roles"]
     if set(roles) != {"count", "denominator", "percentage", "clock"}:
         raise ValueError("Complete distinct statistical roles are required")
-    if len(set(roles.values())) != len(roles):
+    present = [name for name in roles.values() if name is not None]
+    if (len(set(present)) != len(present) or roles["count"] is None
+            or selected["contract"].endswith(".v1") and len(present) != len(roles)):
         raise ValueError("Statistical roles must be distinct")
     fields = selected["fields"]
-    if any(fields[roles[role]]["kind"] != kind for role, kind in (
+    if any(roles[role] is not None and (
+            roles[role] not in fields or fields[roles[role]]["kind"] != kind) for role, kind in (
             ("count", "count"), ("denominator", "count"),
             ("percentage", "percentage"), ("clock", "literal"))):
         raise ValueError("Native statistical role kinds differ from their reviewed literals")
-    count, registered = (fields[roles[key]]["value"] for key in ("count", "denominator"))
+    count = fields[roles["count"]]["value"]
+    if roles["denominator"] is None:
+        return selected
+    registered = fields[roles["denominator"]]["value"]
     if type(count) is not int or type(registered) is not int or not 0 <= count <= registered or registered <= 0:
         raise ValueError("Native source count/register values require separate review")
+    if roles["percentage"] is None:
+        return selected
     printed = fields[roles["percentage"]]["value"][:-1]
     decimals = len(printed.partition(".")[2])
     if abs(Decimal(100 * count) / registered - Decimal(printed)) > Decimal(5).scaleb(-decimals-1):
@@ -155,7 +167,7 @@ def validate(selected):
 
 def extract(body, recipe):
     if (set(recipe) != {"contract", "source", "encoding", "fields", "roles", "assertions", "opaque_context"}
-            or recipe["contract"] != "participation.native_html_statistics_recipe.v1"
+            or recipe["contract"] not in CONTRACTS.values()
             or pin(body) != recipe["source"]["pin"]):
         raise ValueError("An exact pinned original and reviewed HTML statistics recipe are required")
     parser = Elements()
@@ -204,11 +216,18 @@ def extract(body, recipe):
             if not prefix or not literal.startswith(prefix):
                 raise ValueError("Native clock label differs from its reviewed prefix")
             literal = literal[len(prefix):].strip()
+        if "suffix" in declaration:
+            suffix = declaration["suffix"]
+            if not suffix or not literal.endswith(suffix):
+                raise ValueError("Native statistic differs from its reviewed suffix")
+            literal = literal[:-len(suffix)].strip()
         fields[declaration["name"]] = dict(
             literal=literal, value=value(literal, declaration["kind"]), kind=declaration["kind"],
             native_label=declaration["native_label"],
             source_elements=[parser.reference(index) for index in matches])
-    return validate(dict(contract="participation.selected_html_statistics.v1",
+    contract = next(name for name, recipe_contract in CONTRACTS.items()
+                    if recipe_contract == recipe["contract"])
+    return validate(dict(contract=contract,
                          source=recipe["source"], recipe=recipe, fields=fields,
                          assertions=assertions, opaque_context=context,
                          whole_publisher_html_redistributed=False))

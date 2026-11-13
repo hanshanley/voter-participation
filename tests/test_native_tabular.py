@@ -1,11 +1,38 @@
 import io
+import sys
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 import zipfile
 
-from scripts.native_tabular import column, delimited, json_records, values, xlsx
+from scripts.native_tabular import column, delimited, json_records, values, xls, xlsx
 
 
 class NativeTabularTests(unittest.TestCase):
+    def test_biff_cached_zeros_blanks_dates_errors_and_booleans_remain_distinct(self):
+        xlrd = SimpleNamespace(XL_CELL_EMPTY=0, XL_CELL_TEXT=1, XL_CELL_NUMBER=2,
+            XL_CELL_DATE=3, XL_CELL_BOOLEAN=4, XL_CELL_ERROR=5, XL_CELL_BLANK=6,
+            error_text_from_code={7: "#DIV/0!"})
+        native = [(xlrd.XL_CELL_NUMBER, 0.0), (xlrd.XL_CELL_BLANK, ""),
+                  (xlrd.XL_CELL_DATE, 45000.0), (xlrd.XL_CELL_ERROR, 7),
+                  (xlrd.XL_CELL_BOOLEAN, 1), (xlrd.XL_CELL_TEXT, "001")]
+        sheet = SimpleNamespace(name="Counts", nrows=1, ncols=len(native),
+            cell=lambda row, column: SimpleNamespace(
+                ctype=native[column][0], value=native[column][1], xf_index=0))
+        released = []
+        workbook = SimpleNamespace(datemode=0, format_map={}, xf_list=[],
+            sheets=lambda: [sheet], release_resources=lambda: released.append(True))
+        xlrd.open_workbook = lambda **kwargs: workbook
+        with patch.dict(sys.modules, xlrd=xlrd):
+            table = xls(b"reviewed native BIFF")[0]
+        self.assertEqual(values(table, 1),
+            dict(A=0, B=None, C=45000.0, D="#DIV/0!", E=True, F="001"))
+        self.assertIs(type(values(table, 1)["C"]), float)
+        self.assertEqual(table["rows"][0]["cells"][1]["cached_value"], "")
+        self.assertEqual(table["rows"][0]["cells"][3]["cached_value"], 7)
+        self.assertNotIn("formula", table["rows"][0]["cells"][0])
+        self.assertEqual(released, [True])
+
     def test_native_json_preserves_scalar_types_nulls_and_record_indices(self):
         table = json_records(b'{"data":[{"id":"001","count":0,"unknown":null,"flag":false},'
             b'{"flag":true,"count":"0","id":"002","unknown":""}]}', items_path="data")

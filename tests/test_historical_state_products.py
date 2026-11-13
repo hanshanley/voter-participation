@@ -71,6 +71,15 @@ class HistoricalStateTests(unittest.TestCase):
         self.assertEqual(rows[0]["count_literal"],"0")
         self.assertIn("not_qualified_denominators",rows[0]["qualification"])
         self.assertEqual(rows[3]["unit_kind"],"pooled_administrative_unit")
+        body=io.BytesIO()
+        with zipfile.ZipFile(body,"w") as archive:
+            archive.writestr("2026_GENERAL_ELECTION-Test.xls",b"fixture")
+        with patch("xlrd.open_workbook",return_value=workbook):
+            current=list(alabama_rows(body.getvalue(),2026))
+        self.assertEqual([row["count_literal"] for row in current],
+                         [row["count_literal"] for row in rows])
+        with self.assertRaises(ValueError):
+            list(alabama_rows(body.getvalue(),2024))
 
 
 if __name__=="__main__":
