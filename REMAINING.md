@@ -13,7 +13,37 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## New Jersey source compilation: complete tables, integration still required
+## Native Cape May count refresh: now live through the shared routine
+
+The same native Cape May `Ballots Cast - Total` observation is now42,442,
+replacing its older41,278snapshot. Registered voters remain76,899; the
+same-report fraction is55.191875056892805%, with55.19%printed. This is
+unofficial/incomplete registration-frame participation, not eligible-population
+turnout, unique people, partisan swing or observed staying-home history.
+
+The shared routine processes the full19-row accepted NJ source scope and
+changes exactly one observation. All50other state shards, allotherNJrecords/
+provider early-mail frames and all126existingNJcounty-context qualifiers
+remain unchanged. Source899505c adds reviewed cross-input factual assertions
+and forwards the existing approved reference without weakening join checks.
+Seventeen tests pass; two fresh extractions reproduce all57full outputfiles
+offline. The actual canonical code also passes17tests and reproduces them.
+
+Immutable release443823002/tag `participation-nj-native-count-refresh-20261113-01`
+contains the full12,344,673-byte packet, not only the changed row. All eight
+assets are full-byte verified authenticated/draft then anonymous/public.
+Data catalogfb3af059 activates counts64c872ab; nativebindingsb82a5795 and
+website/main73d15a1 remain unchanged. Actual production verifies all306
+state/mode count bindings, all51state selectors, and six NJmodes on desktop/
+phone without valid-data overrides. No new websitebuild or static payload.
+
+Do not redo this accepted single-observation integration. Continue the
+remaining all-state source/administrative-constraint and combined-source model
+work. The other NJnative measure frames/source conflicts are not automatically
+eligible new totals. Survey fits/weights, House endpoints and geographic joins
+were not changed. Final audit and beautification remain pending.
+
+## New Jersey source compilation: complete tables, further integration required
 
 The21latest-declared county PDFs now have complete permitted numerical grids
 and downloads:58pages,86grids,1,472records and15,766measure cells. Shared
@@ -32,16 +62,17 @@ seven native negative entries, all actual clocks/schemas and Salem's
 same-clock mail-count conflicts. Repeated Bergen county rows were
 equality-checked, not summed. Morris parent/subdistrict units overlap.
 
-**Next is real integration, not another inventory.** Review the existing NJ
-source measures and bindings against these full facts. Cape May's native
-summary has42,442ballots/76,899registered voters and printed55.19%, versus
-the older accepted41,278snapshot; do not silently replace a differently
-defined measure or qualify an eligible-population rate. Reporting is still
-incomplete/unofficial. Its House41,957choices+68overvotes+417undervotes
+**Further work is real integration, not another inventory.** The same-measure
+Cape May refresh is integrated above; review the other NJsource measures and
+remaining administrative/model bindings against the full facts. Do not silently
+replace a differently defined measure or qualify an eligible-population rate.
+Reporting remains incomplete/unofficial. Cape May's
+House41,957choices+68overvotes+417undervotes
 reconcile to42,442ballots; these are not observed staying-home counts.
 Preserve all51jurisdiction dispositions and the genuine OK403STOP.
-No current website/model data or study weights were changed by this
-source-compilation release. The combined-source estimates, reusable native
+No current website/model data or study weights were changed by the
+source-compilation release itself; the separate count refresh is described
+above. The combined-source estimates, broader reusable native
 binding/routine work and final audit/beautification remain open.
 
 ## Final phase requested: full audit, then beautification
@@ -63,6 +94,11 @@ handling; numerical agreement between models, maps, tables and exports;
 complete permitted downloads and privacy; caching/error recovery,
 accessibility/performance and actual desktop/mobile production. Fix verified
 defects rather than ending with an audit report.
+
+One verified pre-existing presentation defect is queued here: the live local
+detail labels its original-PDF source link "Complete native participation table
+(CSV)". Correct the format-aware label without changing the source URL or
+confusing it with the separate complete numerical scientific download.
 
 Then polish typography, spacing, hierarchy, map/chart scales and legends,
 units/labels, tables and download-link organization, responsive layout,

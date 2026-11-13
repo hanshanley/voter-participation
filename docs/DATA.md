@@ -8,6 +8,32 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current native county-count refresh: complete downloads
+
+The same Cape May ballot-count snapshot is now42,442, with the same76,899
+native registered-voter denominator and printed55.19%. All50otherstate shards,
+allotherNJrecords/provider early-mail frames and existing approved context
+bindings are retained. The full128-member packet contains the sufficient
+all51baseline and full updated count runtime, not only the changed observation.
+Two fresh extractions each pass17tests and reproduce all57full outputfiles
+offline; canonical code passes the same tests/reproduction. All eight immutable
+release443823002assets are authenticated/draft thenanonymous/public verified.
+
+| Complete download | Contents |
+|---|---|
+| [Complete scientific packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-count-refresh-20261113-01/complete-analysis.zip) | 12,344,673bytes; complete all-jurisdiction sufficient baseline/runtime, source inputs/reference, code/tests and numerical queries |
+| [All selected native-source observations](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-count-refresh-20261113-01/complete-selected-observations.json.gz) | Full19-row accepted NJsource scope; one verified same-measure count successor |
+| [Complete registered source packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-count-refresh-20261113-01/reviewed-source-observations.json) | Reusable complete canonical input, preserving all native fields and qualifications |
+| [All51jurisdiction dispositions](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-count-refresh-20261113-01/all-51-jurisdictions.json) | Every retained jurisdiction and exact registered scope; not nationwide new-native acquisition |
+| [Full reviewed registry](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-count-refresh-20261113-01/registry.json) | Eleven source-fact/count/clock/provenance assertions and unchanged approved county-reference binding |
+
+This count refresh is live at catalogfb3af059/counts64c872ab. Actual production
+checks all306state/mode bindings/all51selectors and desktop/phone Cape May
+details. The reported registration frame is not eligible-population turnout,
+final counting, unique people or individual staying-home evidence. Native
+bindings, website source/static payload, House endpoints and study weights are
+unchanged. All earlier complete downloads remain available.
+
 ## New Jersey complete native tables: integration pending
 
 All21declared county PDFs/58pages are represented by86reviewed numerical
@@ -27,7 +53,8 @@ authenticated while draft and anonymously after publication.
 | [Complete numerical CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-measures-20261113-01/complete-queries.csv.gz) | Same complete cell queries; value_json preserves null versus zero and literal statistical pairs/rates |
 | [Complete native-control queries/results](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-measures-20261113-01/complete-controls.json) | All32county observations,1,428checks,19cross-level differences and140unqualified comparisons |
 
-These are source-compilation outputs, **not an activated website/model update**.
+These are source-compilation outputs; the separate Cape May count refresh
+above is activated, while broader administrative/model integration remains open.
 Keep conflicting Salem snapshots, older Morris definitions, overlapping units,
 native negative entries and distinct mail/provisional/machine measures.
 Cape May's55.19%is a printed registration-frame percentage, not an eligible-

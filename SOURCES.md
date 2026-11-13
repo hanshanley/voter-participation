@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current native county-count refresh | [Cape May same-measure successor, all51jurisdiction retention and live acceptance](#2026-native-cape-may-count-refresh) |
 | New Jersey complete native tables | [All21county files, distinct administrative/contest frames and unresolved source conflicts](#2026-new-jersey-complete-native-pdf-measures) |
 | Recorded-count display correction | [All50state raw totals remain inspectable independently of behavioral eligibility](#recorded-house-counts-versus-behavioral-eligibility) |
 | Current combined-source priority | [2026 returns, NORC revisions and voter-poll reconciliation](#2026-combined-source-refresh-and-model-reconciliation) |
@@ -41,6 +42,46 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 native Cape May count refresh
+
+The full native NJcompilation below now supplies one actual same-measure
+count successor through the shared routine. Cape May's older41,278native
+`Ballots Cast - Total` snapshot becomes42,442; the same76,899registered-voter
+denominator and approved county identity are preserved. The exact reported-
+registration fraction is55.191875056892805%, native printed55.19%. Native
+clock is `Election Summary - 11/12/2026 03:34PM`, timezone undeclared.
+ED127of128/complete0of128 remains incomplete/unofficial, not certified turnout,
+eligible-population participation, unique people or observed staying-home.
+
+Source899505c adds eleven cross-input factual assertions for the reviewed
+successor and forwards the unchanged approved21county reference. Candidate
+choices cannot authorize participation counts; missing facts cannot become
+zeroes; clocks/URLs/source hashes must agree with the full factual input.
+The complete19-row accepted source scope is retained, changing only one
+observation. All50otherwhole-state shards, everyotherNJrecord/providerframe
+and all126nativecounty-context qualifiers remain unchanged.
+
+Immutable release443823002/tag `participation-nj-native-count-refresh-20261113-01`:
+all eight assets authenticated/draft and anonymous/public full-byte verified.
+Complete12,344,673-byte packet SHA256
+`db36b93326ffa0e1af86bb09e088f728b8378d486ae2dd5b766b03bebb70998e`;
+128members include the full sufficient all51baseline, full candidate runtime,
+source originals/factual grids/reference, code/tests and complete queries.
+Both fresh extractions pass17tests and reproduce all57full outputfiles with
+network/DNS/child commands blocked/probed. Actual canonical17tests/replay
+likewise pass. A real no-op preserves every runtime file byte and mtime.
+
+Atomic data catalogfb3af059 activates counts64c872ab from staged0ba592b4;
+all54immutable files anonymously verified before catalog activation. Other
+catalog entries/nativebindingsb82a5795/website73d15a1 are unchanged, with zero
+websitebuilds/static payload growth. Actual production verifies all306
+state/mode bindings/all51selectors plus all six Cape May modes on desktop/
+phone, true native printed fractions, current complete links, unchanged
+provider early/mail frames and public county-context bindings; no valid-data
+overrides. This does not claim a new county/precinct geometry or SVG overlay.
+House models and survey fits/weights are unchanged. Broader all-state
+administrative/model integration and final audit/beautification remain open.
 
 ## 2026 New Jersey complete native PDF measures
 
@@ -83,8 +124,9 @@ outputs with network/DNS/child commands blocked and probed. Public replay
 starts from complete permitted factual grids, not original-template
 re-extraction; unnecessary staff contacts/templates are not redistributed.
 [Full numerical downloads](docs/DATA.md#new-jersey-complete-native-tables-integration-pending).
-Current website/model data and study weights are unchanged; actual binding
-and combined-source estimation remain required. The declared OKportal's
+The source-compilation release itself changes no website/model data or study
+weights; the separate Cape May count successor is described above. Further
+binding and combined-source estimation remain required. The declared OKportal's
 actual403remains a persistent STOP, not a reason to try another client.
 
 ## Recorded House counts versus behavioral eligibility
