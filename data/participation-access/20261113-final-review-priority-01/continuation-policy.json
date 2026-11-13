@@ -1,0 +1,26 @@
+{
+  "actual_native_and_live_desktop_mobile_checks_required": true,
+  "additional_schedules_created": false,
+  "audit_prerequisites": [
+    "participation-2026-official-refresh-20261112",
+    "participation-2026-swing-update-20261112",
+    "participation-2026-map-reconciliation-20261112",
+    "participation-county-precinct-gap-fix-20261112",
+    "participation-historical-precinct-gap-fill-20261112",
+    "participation-repeatable-batch-workflow-20261112"
+  ],
+  "audit_todo": "participation-final-audit-20261113",
+  "beautification_prerequisites": [
+    "participation-final-audit-20261113"
+  ],
+  "beautification_todo": "participation-final-beautification-20261113",
+  "contract": "participation.final_review_priority.v1",
+  "existing_single_continuation": 124,
+  "numerical_meaning_qualifications_old_routes_and_complete_downloads_preserved": true,
+  "sequence": [
+    "finish_remaining_implementation",
+    "full_audit_and_substantive_fixes",
+    "beautification_and_regression_verification"
+  ],
+  "status": "queued_not_executed"
+}

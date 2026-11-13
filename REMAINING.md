@@ -13,6 +13,39 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Final phase requested: full audit, then beautification
+
+After the remaining implementation work, perform a full project audit and then
+a comprehensive beautification/usability round. This is queued work, **not a
+replacement for the unfinished 2026 estimates and source integration**.
+
+The audit follows completion of the current official-source refresh, estimate
+update, map reconciliation, geographic gaps, historical completeness work and
+broader reusable native-product integration. Do not close those tasks
+artificially to start polishing sooner. Genuine source limitations remain
+explicit holds, not fabricated coverage or observations.
+
+Audit source/version/clock/measure/denominator/geography qualification across
+all51jurisdictions and supported years; survey weights/populations and model
+assumptions, accounting, uncertainty and historical validation; null/zero/hold
+handling; numerical agreement between models, maps, tables and exports;
+complete permitted downloads and privacy; caching/error recovery,
+accessibility/performance and actual desktop/mobile production. Fix verified
+defects rather than ending with an audit report.
+
+Then polish typography, spacing, hierarchy, map/chart scales and legends,
+units/labels, tables and download-link organization, responsive layout,
+keyboard/focus/contrast and loading/error states. Keep the presentation
+understated and preserve numerical meaning, qualifications, disclosure,
+old routes and complete downloads. Revalidate numerical integrity and required
+tests after styling; verify the exact native artifact remains below1e9bytes
+for both payload and tar and check actual no-override desktop/mobile production.
+
+Tracked as `participation-final-audit-20261113` and
+`participation-final-beautification-20261113`, with explicit prerequisites.
+The existing single45-minute continuation reads this queue; no second schedule
+is needed or installed.
+
 ## Current priority: reconcile 2026 counts and the combined-source model
 
 The user explicitly prioritizes updating the 2026 estimates and correcting the
