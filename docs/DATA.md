@@ -8,6 +8,43 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current Texas native county counts
+
+Eight direct counted-ballot additions plus preserved Harris supply9/254
+counties;245 remain unknown, not zero. Registration is unqualified context,
+not a turnout denominator. Native discrepancies, preliminary status,
+separate pending ballots and unknown count-update clocks remain explicit.
+No new statewide House endpoint, model, weights or precinct geometry follows.
+
+| Complete download | Contents |
+|---|---|
+| [Complete numerical analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-analysis.zip) | 81,155,865 bytes/210 members; both full accepted baselines, all51 jurisdictions, sufficient source facts, shared code/tests and90 output files |
+| [Complete source SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-count-source-packet.zip) | 7,916,024 bytes/22 members; isolated standard-library replay of all eight new observations and their source qualifications |
+| [All selected canonical queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-selected-source-query.json) | Every new count, native provenance, unrepaired conflict and withholding decision |
+| [Every selected native measure query](https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete_queries) | All175 native factual measure queries, not only selected headline counts |
+| [Complete reviewed registry](https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-source-registry.json) |224 factual bindings, exact preimages and eight source-defined count/reference additions |
+| [Independent agent source review](https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/independent-agent-source-review.json) | All eight actual originals compared with selected facts; not human certification |
+
+Analysis SHA256
+`664c92912e9ff89cb2605107e1afd3e31b00d72abd6de426e33b25e19054f827`;
+SDK SHA256
+`0919f5ad2dd304613af8b37d89c666a0139f6b79d740d63174c28046ea598f62`.
+All20 assets in immutable444663136 are authenticated/draft then anonymous/
+public full-body verified. Two83-test/90-output blocked replays, actual
+canonical code,56 focused tests and standalone SDK pass.
+
+These are complete selected count/control **factual-input and query replays**,
+not every form field, original publisher PDF template, automated
+re-transcription of visual facts, or a private respondent-model refit.
+Cameron's registration equality and230-voter stock excess are source-native,
+not100% turnout. Hemphill native3/computed0 and Moore11/computed minus11 are
+unrepaired. Attestation/posting dates are not count-as-of clocks. All earlier
+full numerical packages remain available. Actual production passes1,088
+selections/all51+306 frames/six modes/both widths and both full ZIP hashes;
+the unchanged website preserves436 prior download pins and113 archived models.
+See [source qualifications](../SOURCES.md#2026-texas-eight-native-county-reconciliations)
+and [actual production acceptance](../data/participation-access/20261113-texas-county-reconciliations-01/website-acceptance.json).
+
 ## Current Missouri native county counts
 
 Boone67,527 and Cole29,108 are direct native Ballots Cast, not candidate

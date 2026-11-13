@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Texas county expansion | [Eight direct counted-ballot additions, native discrepancies and typed source dates](#2026-texas-eight-native-county-reconciliations) |
 | Current Missouri native additions | [Boone/Cole Ballots Cast, Cole reporting rows and explicitly reviewed county context](#2026-missouri-boone-and-cole-native-statistics) |
 | Current King County native refresh | [935,956 printed Ballots Cast; complete source controls and unchanged county context](#2026-king-county-native-ballots-cast-successor) |
 | Current Wayne County native evidence | [770 reporting units, a derived administrative composite, and reviewed county context](#2026-wayne-county-native-statistical-counts) |
@@ -55,6 +56,54 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Texas eight native county reconciliations
+
+Eight county-published reconciliation forms add direct **total ballots counted**:
+Liberty25,700, Hemphill1,262, Refugio2,448, Archer4,035, Cameron103,976,
+Nolan3,781, Moore4,164 and Wise31,186. With the unchanged Harris1,392,280,
+coverage is **9/254 counties**, with245 unknown, not zero. All254 earlier
+mail and early-vote rows remain unchanged. No statewide total, registration
+turnout rate, new precinct geography or individual histories are inferred.
+
+Five new forms say Official Totals; Refugio, Moore and Wise remain preliminary/
+unofficial. The eight attestation/posting dates are typed provenance, **not
+count-update times**: count-as-of clocks and update labels remain null.
+Hemphill's native difference3 versus computed0 and Moore's11 versus computed
+minus11 are structured, unrepaired conflicts. Archer's blank difference stays
+null. Refugio's voter-mode and counted-mode vectors differ despite the equal
+2,448 parent; pending mail14 and estimated provisional1 are not added.
+Cameron's native register103,976 equals counted ballots while its104,206 voters
+exceed that stock by230. This is a confirmed native anomaly, not a duplicated
+transcription or evidence of100% turnout; registration remains unqualified
+context. Other pending/rejected measures also remain distinct.
+
+The user-requested second agent compares all eight actual pinned originals
+with selected facts and finds no blocking source/measure defect. This is not
+independent human certification. The Cameron disclosure addition leaves the
+reviewed native facts, visual transcriptions and175 native queries byte-identical.
+Source7484828 is published and guardedly synced;56 focused tests pass.
+Two83-test/90-output standard-library blocked replays, including actual
+canonical code, and the22-member source SDK pass.
+
+Immutable444663136 supplies20 fully authenticated/anonymous verified assets,
+including the81,155,865-byte/210-member full analysis and7,916,024-byte source
+SDK. They contain complete selected count/control facts, baselines, code and
+queries, not every original form field or excluded publisher PDF templates.
+Counts01c3cd0a/native bindingsb2a69fc5/catalog047df0ce are atomically live after
+87 immutable-body checks, with zero activation requests/parses/compilations/
+website builds. The836 Missouri/King contextual joins, other50 state shards,
+statewide snapshot, model33, House endpoints and NORC weights remain unchanged.
+
+Actual production passes1,088 selections across six modes and both widths,
+all51 jurisdictions/306 reader frames, all254 county features with9 counts/
+245 unknowns, and visible complete-source downloads with full ZIP hashes at
+both widths. Website8264955 and all31 live HTML/script bodies are unchanged;
+its previously verified immutable native artifact remains997,326,856 payload/
+999,925,760 tar bytes, below1e9. Fort Bend, Nacogdoches, Panola, Travis and
+Webb denied routes remain stopped. See [complete downloads](docs/DATA.md#current-texas-native-county-counts)
+and [acceptance](data/participation-access/20261113-texas-county-reconciliations-01/website-acceptance.json).
+Earlier campaign IDs below are retained historical receipts, not current pointers.
 
 ## 2026 Missouri Boone and Cole native statistics
 

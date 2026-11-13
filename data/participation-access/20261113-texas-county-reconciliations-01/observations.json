@@ -1,0 +1,769 @@
+{
+  "all_acquired_county_products_processed": true,
+  "blank_native_archer_difference_not_replaced_by_zero": true,
+  "cameron_disclosure_added_after_independent_source_review": true,
+  "cameron_native_registered_equals_counted": 103976,
+  "cameron_native_voter_registration_excess": 230,
+  "cameron_native_voters": 104206,
+  "candidate_verification": {
+    "baseline_counts_version": "55a8f41bf313b19b0d93334d2b585fb53b686acf1c5485c84995a0947f381ad8",
+    "baseline_native_version": "3bcc590d0c30a0da3a3fbc0fc08dd0977f6b453089fe50a5931225240275e59c",
+    "candidate_counts_version": "01c3cd0a55e6d99a42066514bc723aaf64e47f6b726c5a62b0e5a13853930dbe",
+    "candidate_native_version": "b2a69fc5d504bc91d1295b80441c6824cdc98b5da517b62762d0932eb1d94235",
+    "count_files_changed": [
+      "dataset.json",
+      "index.json",
+      "states/TX.json.gz"
+    ],
+    "explicit_unknown_counties": 245,
+    "harris_record_exact": true,
+    "model_house_weights_touched": false,
+    "native_files_changed": [
+      "dataset.json",
+      "index.json"
+    ],
+    "native_tx_feature_keys_exact": true,
+    "native_tx_geometry_sha_exact": true,
+    "native_tx_rows": {
+      "available": 9,
+      "in_person_early": 254,
+      "mail_returned": 254,
+      "official": 9,
+      "uf_vap": 9,
+      "uf_vep": 9
+    },
+    "new_count_update_clocks": 0,
+    "new_rates": 0,
+    "new_records": [
+      {
+        "ballots": 25700,
+        "conflicts": [],
+        "count_as_of": null,
+        "county": "Liberty County",
+        "denominator": null,
+        "fips": "48291",
+        "id": "f70b9b75892afe18bd2f971e4f8d6b3d",
+        "registered_context": 60591,
+        "reported_pct": null,
+        "source_time_kind": "attestation_date",
+        "source_time_literal": "11/06/2026",
+        "status": "Election Reconciliation - Official Totals"
+      },
+      {
+        "ballots": 1262,
+        "conflicts": [
+          {
+            "actual_native": 3,
+            "code": "native_reconciliation_difference_disagrees",
+            "computed": 0,
+            "expression": "E-H-M",
+            "repaired": false
+          }
+        ],
+        "count_as_of": null,
+        "county": "Hemphill County",
+        "denominator": null,
+        "fips": "48211",
+        "id": "5c586c6dccd3c92f939939d2f255d4a7",
+        "registered_context": 2305,
+        "reported_pct": null,
+        "source_time_kind": "publication_timestamp",
+        "source_time_literal": "11/9/2026 at 4:30 p.m",
+        "status": "Election Reconciliation - Official Totals"
+      },
+      {
+        "ballots": 2448,
+        "conflicts": [],
+        "count_as_of": null,
+        "county": "Refugio County",
+        "denominator": null,
+        "fips": "48391",
+        "id": "dc2cc6fe1e7edcf82c72f846da0c79f0",
+        "registered_context": 4915,
+        "reported_pct": null,
+        "source_time_kind": "attestation_date",
+        "source_time_literal": "11/03/2026",
+        "status": "Preliminary Election Reconciliation -Unofficial Totals"
+      },
+      {
+        "ballots": 4035,
+        "conflicts": [],
+        "count_as_of": null,
+        "county": "Archer County",
+        "denominator": null,
+        "fips": "48009",
+        "id": "d6d0d5901f87eb86bbd5803914739473",
+        "registered_context": 7158,
+        "reported_pct": null,
+        "source_time_kind": "attestation_date",
+        "source_time_literal": "11/10/26",
+        "status": "Election Reconciliation - Official Totals"
+      },
+      {
+        "ballots": 103976,
+        "conflicts": [],
+        "count_as_of": null,
+        "county": "Cameron County",
+        "denominator": null,
+        "fips": "48061",
+        "id": "b06cc5ad7e9360371a3c35d55f94bfd6",
+        "registered_context": 103976,
+        "reported_pct": null,
+        "source_time_kind": "attestation_date",
+        "source_time_literal": "11-10-26",
+        "status": "Election Reconciliation - Official Totals"
+      },
+      {
+        "ballots": 3781,
+        "conflicts": [],
+        "count_as_of": null,
+        "county": "Nolan County",
+        "denominator": null,
+        "fips": "48353",
+        "id": "be9ba3d69f39d59e78888c2739d7d269",
+        "registered_context": 9085,
+        "reported_pct": null,
+        "source_time_kind": "attestation_date",
+        "source_time_literal": "11.9.26",
+        "status": "Election Reconciliation - Official Totals"
+      },
+      {
+        "ballots": 4164,
+        "conflicts": [
+          {
+            "actual_native": 11,
+            "code": "native_reconciliation_difference_disagrees",
+            "computed": -11,
+            "expression": "C-F-I",
+            "repaired": false
+          }
+        ],
+        "count_as_of": null,
+        "county": "Moore County",
+        "denominator": null,
+        "fips": "48341",
+        "id": "902cf5ecb61e6f1190aa32846ed30dff",
+        "registered_context": 10254,
+        "reported_pct": null,
+        "source_time_kind": "attestation_date",
+        "source_time_literal": "11/03/2026",
+        "status": "Preliminary Election Reconciliation \u2013 Unofficial Totals"
+      },
+      {
+        "ballots": 31186,
+        "conflicts": [],
+        "count_as_of": null,
+        "county": "Wise County",
+        "denominator": null,
+        "fips": "48497",
+        "id": "359741ffeec8449f259919d29b225709",
+        "registered_context": 59881,
+        "reported_pct": null,
+        "source_time_kind": "attestation_date",
+        "source_time_literal": "11/04/2026",
+        "status": "Preliminary Election Reconciliation \u2013 Unofficial Totals"
+      }
+    ],
+    "passed": true,
+    "selected_full_election_counties": 9,
+    "source_requests": 0,
+    "supersedes": "candidate-validation-07.json"
+  },
+  "catalog_commit": "047df0ceacf70de6697482b94436da0d0a005f52",
+  "complete_native_assets": [
+    {
+      "bytes": 6942,
+      "id": 744944640,
+      "name": "all-51-jurisdictions.json",
+      "sha256": "250c4ad2fa88eec6df3c764154e63404cb2a1b6681bd4a32eb5bf447b4e93335",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/all-51-jurisdictions.json"
+    },
+    {
+      "bytes": 5011,
+      "id": 744944667,
+      "name": "candidate-verification.json",
+      "sha256": "5280ff1cfbcf685945df9767831a0f8a3af6bb45d697e898448c7e55d0fc6585",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/candidate-verification.json"
+    },
+    {
+      "bytes": 81155865,
+      "id": 744944692,
+      "name": "complete-analysis.zip",
+      "sha256": "664c92912e9ff89cb2605107e1afd3e31b00d72abd6de426e33b25e19054f827",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-analysis.zip"
+    },
+    {
+      "bytes": 2591,
+      "id": 744944686,
+      "name": "complete-asset-manifest.json",
+      "sha256": "f2db4920626ef885689ff1b00f312b6c625222556ff441ca306202228f47d14c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-asset-manifest.json"
+    },
+    {
+      "bytes": 7916024,
+      "id": 744944702,
+      "name": "complete-count-source-packet.zip",
+      "sha256": "0919f5ad2dd304613af8b37d89c666a0139f6b79d740d63174c28046ea598f62",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-count-source-packet.zip"
+    },
+    {
+      "bytes": 59862,
+      "id": 744944763,
+      "name": "complete-selected-source-query.json",
+      "sha256": "dcf671de77e5401dd64ae808c29636c46236b459c2f27364ffefc5886e6c7e80",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-selected-source-query.json"
+    },
+    {
+      "bytes": 110,
+      "id": 744944638,
+      "name": "complete-source-dispositions.json",
+      "sha256": "5008a615eaf8f491e29b52f8a490e7e382fb21e27bbf1b2e1e0b4cb6ecdeb722",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-source-dispositions.json"
+    },
+    {
+      "bytes": 118506,
+      "id": 744944637,
+      "name": "complete-source-registry.json",
+      "sha256": "69b6a959f13d3da85931876efc306822391ad519872c6f017b62ebb39589a2d1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete-source-registry.json"
+    },
+    {
+      "bytes": 169862,
+      "id": 744944668,
+      "name": "complete_queries",
+      "sha256": "ad53ca845df86106af36a6a7fd99d93ea34d3b07635573e9bec6b326960e4866",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/complete_queries"
+    },
+    {
+      "bytes": 13163,
+      "id": 744944730,
+      "name": "facts",
+      "sha256": "7c967b1873b6fc994eb4093deedf043fa1d2c5f1a2b0c17aff8b0f77b493c6e1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/facts"
+    },
+    {
+      "bytes": 3922482,
+      "id": 744944704,
+      "name": "geometry",
+      "sha256": "6dec632a2eeb7ec21f9da35873e154636aa42be3681d6890e1ba23023061cad5",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/geometry"
+    },
+    {
+      "bytes": 4909,
+      "id": 744944737,
+      "name": "independent-agent-source-review.json",
+      "sha256": "8e488c7cfd7e64a5c49b8d56140691be20aaad157e364ab71de95ece3271e4c0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/independent-agent-source-review.json"
+    },
+    {
+      "bytes": 1569,
+      "id": 744944699,
+      "name": "offline-replays.json",
+      "sha256": "004ea6c9de4ad45c1f92618731cf164b624e2f754c3e0bd62f9d615dd94413ea",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/offline-replays.json"
+    },
+    {
+      "bytes": 59135,
+      "id": 744944636,
+      "name": "prepare-inputs.py",
+      "sha256": "402e34e33538b8e81f7543b4037a219eb059060e01af304c735e118d6a148e8d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/prepare-inputs.py"
+    },
+    {
+      "bytes": 2476,
+      "id": 744944714,
+      "name": "qualification-dispositions.json",
+      "sha256": "653627fd477cf0b13cf42ca95d7c287f36f2f2ccda5e2653873e4aba146113ca",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/qualification-dispositions.json"
+    },
+    {
+      "bytes": 59862,
+      "id": 744944639,
+      "name": "snapshot",
+      "sha256": "dcf671de77e5401dd64ae808c29636c46236b459c2f27364ffefc5886e6c7e80",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/snapshot"
+    },
+    {
+      "bytes": 8719,
+      "id": 744944708,
+      "name": "source-access-dispositions.json",
+      "sha256": "168242a91fb9971f92bbf85dbae7ec2896f6a87ca1ad22b9fbdccffecc9b31df",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/source-access-dispositions.json"
+    },
+    {
+      "bytes": 1422,
+      "id": 744944749,
+      "name": "source_summary",
+      "sha256": "a22e287997e6d96a7dc4d1398a2985689e9da20fba3d8ab373f98ef02d2c7d1d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/source_summary"
+    },
+    {
+      "bytes": 8917,
+      "id": 744944660,
+      "name": "test-prepare-inputs.py",
+      "sha256": "4ea40c0530e81bacd44d6f4d7c48cfe2c298a6fd03cd00d62d1f536d0a7ada1f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/test-prepare-inputs.py"
+    },
+    {
+      "bytes": 15575,
+      "id": 744944671,
+      "name": "visual_review",
+      "sha256": "f4c5cb75bec867fac1d88e643bb9c6dc8d7f9eedd3f01c01240ca9adaee51de2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-county-reconciliations-20261113-01/visual_review"
+    }
+  ],
+  "contract": "participation.native_count_addition_delivery.v1",
+  "counts_version": "01c3cd0a55e6d99a42066514bc723aaf64e47f6b726c5a62b0e5a13853930dbe",
+  "county_observations": 9,
+  "county_reference_inventory": 254,
+  "critique_candidate07_native_facts_and_transcriptions_and_queries_unchanged_in08": true,
+  "early_and_mail_rows_each_preserved": 254,
+  "existing_contextual_joins_retained": 836,
+  "full_baseline_preservation": {
+    "all_native_geometry_tables_and_other_files_exact": true,
+    "all_old_texas_records_exact": 1019,
+    "all_other_50_state_shards_and_current_snapshot_exact": true,
+    "counts": {
+      "changed_runtime_files": [
+        "index.json",
+        "states/TX.json.gz"
+      ],
+      "unchanged_runtime_files": 51
+    },
+    "early_and_mail_views_exact": true,
+    "native": {
+      "changed_runtime_files": [
+        "index.json"
+      ],
+      "unchanged_runtime_files": 31
+    },
+    "new_texas_records": 8,
+    "passed": true,
+    "source_critic_factual_preimages_exact": true
+  },
+  "full_numerical_downloads_not_replaced_by_this_record": true,
+  "independent_critic_source_comparison": {
+    "agent_id": "1ef74af6-09a7-42c6-b5f7-003a09db2234",
+    "all_eight_count_as_of_clocks_null": true,
+    "all_eight_direct_native_total_ballots_counted": true,
+    "attestation_and_publication_dates_are_not_count_update_times": true,
+    "blocking_source_or_measure_defects": [],
+    "candidate": "prepared-07",
+    "contract": "participation.independent_agent_source_review.v1",
+    "counties": [
+      {
+        "computed_difference": 0,
+        "counted": 25700,
+        "counted_components": [
+          19115,
+          6090,
+          495,
+          0
+        ],
+        "county": "Liberty",
+        "native_difference": 0,
+        "pdf_sha256": "32bf1986c7283e5e933c832e27113a0e6064a13603e37a72de82fe2971d952bd",
+        "registered_context": 60591,
+        "rejected": 169,
+        "stage": "official",
+        "time_kind": "attestation_date",
+        "total_voters": 25869
+      },
+      {
+        "computed_difference": 0,
+        "conflict_structured_and_unrepaired": true,
+        "counted": 1262,
+        "counted_components": [
+          785,
+          427,
+          50,
+          0
+        ],
+        "county": "Hemphill",
+        "native_difference": 3,
+        "pdf_sha256": "85b6772c939fcbe8f15e207e5fc797c93499b658a5b5158c4640b841ceda871f",
+        "registered_context": 2305,
+        "rejected": 3,
+        "stage": "official",
+        "time_kind": "publication_timestamp",
+        "total_voters": 1265
+      },
+      {
+        "counted": 2448,
+        "counted_components": [
+          2354,
+          94
+        ],
+        "county": "Refugio",
+        "distinct_voter_components": [
+          2364,
+          84
+        ],
+        "estimated_provisional_excluded_from_counted": 1,
+        "native_difference": 0,
+        "pdf_sha256": "85d8885f99199593a9f4daad9082a7712b8eb579322b8cd4c980db07c09518b5",
+        "pending_mail_excluded_from_counted": 14,
+        "registered_context": 4915,
+        "stage": "preliminary_unofficial",
+        "time_kind": "attestation_date"
+      },
+      {
+        "blank_native_difference_not_replaced_by_zero": true,
+        "counted": 4035,
+        "counted_components": [
+          2549,
+          1363,
+          123,
+          0
+        ],
+        "county": "Archer",
+        "native_difference": null,
+        "pdf_sha256": "64adeb170b2457d1764452b3e2d284944a40980ad79f3d4a573b8d27aea2393a",
+        "registered_context": 7158,
+        "rejected": 0,
+        "stage": "official",
+        "time_kind": "attestation_date"
+      },
+      {
+        "computed_difference": -8,
+        "counted": 103976,
+        "counted_components": [
+          77816,
+          23461,
+          2591,
+          108
+        ],
+        "county": "Cameron",
+        "native_difference": -8,
+        "native_registration_equality_and_voter_stock_excess": 230,
+        "nonblocking_followup": "Explicitly note the source-native registration equality and voter-over-registration anomaly wherever this registration stock is displayed. No 100% turnout inference, rate or repair.",
+        "pdf_sha256": "38477616b9ee0ab4cf5defcc9f85737baccfd375745a1832e39cf9c0cfe842ef",
+        "registered_context": 103976,
+        "rejected": 238,
+        "stage": "official",
+        "time_kind": "attestation_date",
+        "total_voters": 104206
+      },
+      {
+        "computed_difference": 2,
+        "counted": 3781,
+        "counted_components": [
+          2105,
+          1559,
+          114,
+          3
+        ],
+        "county": "Nolan",
+        "native_difference": 2,
+        "pdf_sha256": "b8a04016828d668260b62bc836eab6a5897a5c823594906c6bd8cd54dea93168",
+        "registered_context": 9085,
+        "rejected": 5,
+        "stage": "official",
+        "time_kind": "attestation_date",
+        "total_voters": 3788
+      },
+      {
+        "computed_difference": -11,
+        "conflict_structured_and_unrepaired": true,
+        "counted": 4164,
+        "counted_components": [
+          4055,
+          109
+        ],
+        "county": "Moore",
+        "estimated_provisional_excluded_from_counted": 27,
+        "native_difference": 11,
+        "pdf_sha256": "c6a880809a58b051c314401463bcb61ea12375675945b2e140cefcb215c22e1b",
+        "pending_mail_excluded_from_counted": 17,
+        "registered_context": 10254,
+        "rejected_or_pending": 44,
+        "stage": "preliminary_unofficial",
+        "time_kind": "attestation_date",
+        "total_voters": 4197
+      },
+      {
+        "computed_difference": 9,
+        "counted": 31186,
+        "counted_components": [
+          30445,
+          741
+        ],
+        "county": "Wise",
+        "estimated_provisional_excluded_from_counted": 199,
+        "native_difference": 9,
+        "pdf_sha256": "e3e2de27be0f03d8928c5faf846be152eea6ba1435bbe31b53c44e7b9f552a22",
+        "pending_mail_excluded_from_counted": 150,
+        "registered_context": 59881,
+        "rejected_or_pending": 299,
+        "stage": "preliminary_unofficial",
+        "time_kind": "attestation_date",
+        "total_voters": 31494
+      }
+    ],
+    "disposition": "qualified_pass",
+    "independent_human_certification": false,
+    "independent_statistical_observations": false,
+    "model": "gpt-5.6-sol",
+    "model_replay_or_publication_review": false,
+    "registration_context_not_a_qualified_denominator": true,
+    "scope": "Eight pinned native PDFs, five existing rendered pages, factual grids, selected queries and final observations; source-to-selected-facts, measure, status and time semantics only.",
+    "source_repairs": 0,
+    "source_requests": 0
+  },
+  "native_bindings_version": "b2a69fc5d504bc91d1295b80441c6824cdc98b5da517b62762d0932eb1d94235",
+  "native_counted_voter_pending_rejected_modes_not_interchanged": true,
+  "native_discrepancies_retained_without_repair": {
+    "Hemphill": {
+      "computed": 0,
+      "native": 3
+    },
+    "Moore": {
+      "computed": -11,
+      "native": 11
+    }
+  },
+  "new_county_counts": {
+    "Archer": 4035,
+    "Cameron": 103976,
+    "Hemphill": 1262,
+    "Liberty": 25700,
+    "Moore": 4164,
+    "Nolan": 3781,
+    "Refugio": 2448,
+    "Wise": 31186
+  },
+  "new_rates_and_count_update_clocks": 0,
+  "new_statewide_total_house_model_weights_or_precinct_geometry": false,
+  "previous_harris_counted": 1392280,
+  "previous_harris_native_difference": -4085,
+  "previous_harris_roster": 1393495,
+  "public_archive_scope": "Complete selected count/control facts, eight observations,175 native queries, full count/native baselines, shared code/tests and90 outputs. Not every original form field, original publisher PDF templates or automated re-transcription of visual facts; private model fitting is separate.",
+  "registration_not_a_qualified_denominator": true,
+  "scientific_source_commit": "74848286a161c8886ea3da443b0b03a3cb4313e5",
+  "source_access_dispositions": {
+    "candidate_votes_not_used_as_participation": true,
+    "contract": "participation.texas_county_source_dispositions.v1",
+    "prior_stops_respected": true,
+    "retrieved_at_utc": "2026-11-13T18:52:50.743727+00:00",
+    "sources": [
+      {
+        "acquired": true,
+        "county": "Archer",
+        "county_fips": "48009",
+        "disposition": "held_official_county_reconciliation_reused",
+        "filename": "archer-official-reconciliation.pdf",
+        "receipt": {
+          "bytes": 203694,
+          "origin": "held_original",
+          "sha256": "64adeb170b2457d1764452b3e2d284944a40980ad79f3d4a573b8d27aea2393a",
+          "url": "https://www.co.archer.tx.us/upload/page/1336/Election%20Reconciliation.pdf"
+        },
+        "response": {
+          "content_type": "application/pdf",
+          "status": 200
+        },
+        "source_requests": 0,
+        "stage": "official",
+        "url": "https://www.co.archer.tx.us/upload/page/1336/Election%20Reconciliation.pdf"
+      },
+      {
+        "acquired": true,
+        "county": "Cameron",
+        "county_fips": "48061",
+        "disposition": "held_official_county_reconciliation_reused",
+        "filename": "cameron-official-reconciliation.pdf",
+        "receipt": {
+          "bytes": 970493,
+          "origin": "held_original",
+          "sha256": "38477616b9ee0ab4cf5defcc9f85737baccfd375745a1832e39cf9c0cfe842ef",
+          "url": "https://www.cameroncountytx.gov/elections/wp-content/uploads/2026/11/GN26-Official-Reconciliation-Report.pdf"
+        },
+        "response": {
+          "content_type": "application/pdf",
+          "status": 200
+        },
+        "source_requests": 0,
+        "stage": "official",
+        "url": "https://www.cameroncountytx.gov/elections/wp-content/uploads/2026/11/GN26-Official-Reconciliation-Report.pdf"
+      },
+      {
+        "acquired": false,
+        "county": "Fort Bend",
+        "county_fips": "48157",
+        "disposition": "persistent_source_stop_not_followed",
+        "source_requests": 0,
+        "stage": "official",
+        "stop": "HTTP 403",
+        "url": "https://www.fortbendcountytx.gov/sites/default/files/document-central/document-central/elections-documents/elections-results/2026/Election-Reconciliation---Official-Totals_2.pdf"
+      },
+      {
+        "acquired": true,
+        "county": "Hemphill",
+        "county_fips": "48211",
+        "disposition": "held_official_county_reconciliation_reused",
+        "filename": "hemphill-official-reconciliation.pdf",
+        "receipt": {
+          "bytes": 104377,
+          "origin": "held_original",
+          "sha256": "85b6772c939fcbe8f15e207e5fc797c93499b658a5b5158c4640b841ceda871f",
+          "url": "https://newtools.cira.state.tx.us/upload/page/7666/110326%20GE%20-%20Reconciliation%20-%20Official%20Totals.pdf"
+        },
+        "response": {
+          "content_type": "application/pdf",
+          "status": 200
+        },
+        "source_requests": 0,
+        "stage": "official",
+        "url": "https://newtools.cira.state.tx.us/upload/page/7666/110326%20GE%20-%20Reconciliation%20-%20Official%20Totals.pdf"
+      },
+      {
+        "acquired": true,
+        "county": "Liberty",
+        "county_fips": "48291",
+        "disposition": "held_official_county_reconciliation_reused",
+        "filename": "liberty-official-reconciliation.pdf",
+        "receipt": {
+          "bytes": 312207,
+          "origin": "held_original",
+          "sha256": "32bf1986c7283e5e933c832e27113a0e6064a13603e37a72de82fe2971d952bd",
+          "url": "https://newtools.cira.state.tx.us/upload/page/12682/Election%20Reconciliation%20Official%20Totals%20November%203%202026%20signed.pdf"
+        },
+        "response": {
+          "content_type": "application/pdf",
+          "status": 200
+        },
+        "source_requests": 0,
+        "stage": "official",
+        "url": "https://newtools.cira.state.tx.us/upload/page/12682/Election%20Reconciliation%20Official%20Totals%20November%203%202026%20signed.pdf"
+      },
+      {
+        "acquired": false,
+        "county": "Nacogdoches",
+        "county_fips": "48347",
+        "disposition": "persistent_source_stop_not_followed",
+        "source_requests": 0,
+        "stage": "official",
+        "stop": "HTTP 403",
+        "url": "https://www.nacogdochesco.gov/DocumentCenter/View/731/2026-November-3rd---Election-Reconciliation---Official-Totals-PDF"
+      },
+      {
+        "acquired": true,
+        "county": "Nolan",
+        "county_fips": "48353",
+        "disposition": "held_official_county_reconciliation_reused",
+        "filename": "nolan-official-reconciliation.pdf",
+        "receipt": {
+          "bytes": 237107,
+          "origin": "held_original",
+          "sha256": "b8a04016828d668260b62bc836eab6a5897a5c823594906c6bd8cd54dea93168",
+          "url": "https://newtools.cira.state.tx.us/upload/page/0503/Reconciliation%2011032026.pdf"
+        },
+        "response": {
+          "content_type": "application/pdf",
+          "status": 200
+        },
+        "source_requests": 0,
+        "stage": "official",
+        "url": "https://newtools.cira.state.tx.us/upload/page/0503/Reconciliation%2011032026.pdf"
+      },
+      {
+        "acquired": false,
+        "county": "Travis",
+        "county_fips": "48453",
+        "disposition": "persistent_source_stop_not_followed",
+        "source_requests": 0,
+        "stage": "official",
+        "stop": "HTTP 403",
+        "url": "https://votetravis.gov/wp-content/uploads/Election-Reconciliation-Official-Totals.pdf"
+      },
+      {
+        "acquired": false,
+        "county": "Webb",
+        "county_fips": "48479",
+        "disposition": "persistent_source_stop_not_followed",
+        "source_requests": 0,
+        "stage": "official",
+        "stop": "HTTP 403",
+        "url": "https://www.webbcountytx.gov/DocumentCenter/View/12325/11032026-Reconcilliation?bidId="
+      },
+      {
+        "acquired": true,
+        "county": "Moore",
+        "county_fips": "48341",
+        "disposition": "preliminary_county_reconciliation_acquired",
+        "filename": "moore-preliminary-reconciliation.pdf",
+        "receipt": {
+          "bytes": 85503,
+          "origin": "new_source_response",
+          "sha256": "c6a880809a58b051c314401463bcb61ea12375675945b2e140cefcb215c22e1b",
+          "status": 200,
+          "url": "https://newtools.cira.state.tx.us/upload/page/4507/2026/preliminary_election_reconcillationunofficial_totals.pdf"
+        },
+        "response": {
+          "content_type": "application/pdf",
+          "status": 200
+        },
+        "source_requests": 1,
+        "stage": "preliminary",
+        "url": "https://newtools.cira.state.tx.us/upload/page/4507/2026/preliminary_election_reconcillationunofficial_totals.pdf"
+      },
+      {
+        "acquired": false,
+        "county": "Panola",
+        "county_fips": "48365",
+        "disposition": "stopped_or_unavailable",
+        "error": "HTTP 403; original not replaced or retried",
+        "source_requests": 1,
+        "stage": "preliminary",
+        "url": "https://www.co.panola.tx.us/DocumentCenter/View/1959/Preliminary-Election-Reconciliation---Unofficial-Totals-PDF?bidId="
+      },
+      {
+        "acquired": true,
+        "county": "Refugio",
+        "county_fips": "48391",
+        "disposition": "preliminary_county_reconciliation_acquired",
+        "filename": "refugio-preliminary-reconciliation.pdf",
+        "receipt": {
+          "bytes": 240717,
+          "origin": "new_source_response",
+          "sha256": "85d8885f99199593a9f4daad9082a7712b8eb579322b8cd4c980db07c09518b5",
+          "status": 200,
+          "url": "https://newtools.cira.state.tx.us/upload/page/12428/docs/2026%20-%20NOVEMBER%203/RESULTS/UNOFFICIAL/2026%20-%20NOVEMBER%203%20-%20PRELIMINARY%20ELECTION%20RECONCILIATION%20-%20UNOFFICIAL%20TOTALS%20-%20SIGNED.pdf"
+        },
+        "response": {
+          "content_type": "application/pdf",
+          "status": 200
+        },
+        "source_requests": 1,
+        "stage": "preliminary",
+        "url": "https://newtools.cira.state.tx.us/upload/page/12428/docs/2026%20-%20NOVEMBER%203/RESULTS/UNOFFICIAL/2026%20-%20NOVEMBER%203%20-%20PRELIMINARY%20ELECTION%20RECONCILIATION%20-%20UNOFFICIAL%20TOTALS%20-%20SIGNED.pdf"
+      },
+      {
+        "acquired": true,
+        "county": "Wise",
+        "county_fips": "48497",
+        "disposition": "preliminary_county_reconciliation_acquired",
+        "filename": "wise-preliminary-reconciliation.pdf",
+        "receipt": {
+          "bytes": 324221,
+          "origin": "new_source_response",
+          "sha256": "e3e2de27be0f03d8928c5faf846be152eea6ba1435bbe31b53c44e7b9f552a22",
+          "status": 200,
+          "url": "https://www.co.wise.tx.us/DocumentCenter/View/8027/Preliminary-Election-Reconciliation--Unofficial-Totals?bidId="
+        },
+        "response": {
+          "content_type": "application/pdf",
+          "status": 200
+        },
+        "source_requests": 1,
+        "stage": "preliminary",
+        "url": "https://www.co.wise.tx.us/DocumentCenter/View/8027/Preliminary-Election-Reconciliation--Unofficial-Totals?bidId="
+      }
+    ],
+    "whole_state_product_qualified": false
+  },
+  "source_attestation_and_publication_dates_not_count_clocks": true,
+  "unknown_counties": 245,
+  "website_source": "826495550eef0c92b1390b9f0dd7f76a136a79b3",
+  "whole_project_complete": false
+}

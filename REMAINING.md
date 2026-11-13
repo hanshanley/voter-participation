@@ -13,6 +13,39 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Texas integration is live; nationwide work remains open
+
+The user-requested Texas implementation and independent source critique are
+integrated: eight native counted-ballot additions bring coverage to9/254
+counties, with245 explicit gaps. All five already-acquired but previously
+unselected products are now processed. Harris1,392,280 counted versus1,393,495
+roster/native minus4,085 and all254 early/mail rows remain unchanged.
+Attestation/posting dates are not count-update clocks. Hemphill/Moore arithmetic
+conflicts and Cameron's native registration anomaly are retained unrepaired;
+no analytical rates, statewide total or individual histories are inferred.
+
+Scientific source7484828 is published/canonical. The shared routine activates
+counts01c3cd0a/nativeb2a69fc5 in catalog047df0ce, retaining every other dataset
+entry and Missouri/King context. Immutable444663136 provides20 complete assets:
+81,155,865-byte/210-member numerical analysis and7,916,024-byte/22-member SDK.
+All assets pass full authenticated and anonymous byte checks. Parent56
+focused tests, two83-test/90-output isolated blocked replays including actual
+canonical code, and standalone SDK pass. Actual production passes1,088 cases,
+all51+306 reader frames, six modes/both widths,9 counts/245 unknown county
+features and visible complete-download/full-body hashes at both widths.
+Website8264955 and its31 served bodies are unchanged; no site rebuild is
+needed. See [complete source qualifications](SOURCES.md#2026-texas-eight-native-county-reconciliations)
+and [acceptance](data/participation-access/20261113-texas-county-reconciliations-01/website-acceptance.json).
+
+Texas remains partial; the statewide recorded+11.976 Democratic-share versus
++23.952 D-R-margin distinction and33 qualified/17 held behavioral comparisons
+are unchanged. Continue genuine all-state source/model reconciliation, not
+another Texas replay. The four current-model disclosure fixes659 remain open;
+the compact source-pinned sensitivity reducer passes six tests in the session
+workspace but is not yet a published UI feature. Full audit636 then
+beautification637 stay behind unfinished implementation. Sole45-minute
+continuation124 remains active; older campaign IDs below are historical.
+
 ## Missouri native county additions and independent critique
 
 The shared routine adds Boone67,527 and Cole29,108 native Ballots Cast, plus
@@ -61,11 +94,8 @@ diagnostics, persist endpoint version/completeness, and use explicit modeled
 source-category labels. Keep the requested provisional estimates; do not
 replace them with bounds only or invent a design confidence interval.
 
-User-requested Texas implementation658 is independently active in isolated
-worktrees. Preserve accepted Harris1392280 counted ballots versus1393495 roster
-and native-4085, the+11.976 Democratic-share/+23.952 margin-unit distinction
-and the33/17 behavioral holds. Its candidate must be coordinated against
-current Missouri/King baselines, not publish over them. Full audit636 then
+Texas implementation658 is now integrated as described above; do not treat
+its earlier isolated candidates as current work. Full audit636 then
 beautification637 remain behind genuine unfinished implementation.
 
 ## King County native count successor and contextual join
