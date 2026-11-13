@@ -8,7 +8,47 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current coherent native counts and ballot-control revision 31
+
+WY native ballots reconcile to191,713 across23counties/432reporting units,
+replacing191,688 (+25 across six counties/20units). No registered denominator,
+turnout rate, precinct geometry or individual staying-home history is invented.
+All34conditional-scenario CSV bytes and accepted survey priors/weights remain.
+
+| Complete download | Contents |
+|---|---|
+| [Complete coherent data packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-analysis.zip) | 73,306,625bytes/207members; both full baselines, all permitted inputs, complete recipes, maintained code/tests and90runtime/query outputs |
+| [All432current reporting rows](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-source-reporting-rows.json.gz) | Every native count, registration field, candidate-accounting record, source identity and hold; not geographic allocations |
+| [Full native source queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-native-source-queries.json) | Separate guarded statewide/county/unit ballot controls and complete candidate/overvote/undervote accounting |
+| [Complete scientific model31](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-analysis.zip) | 251,010,401bytes/32members; full prior30 and new data packets, all17outputs, code/tests and whole-ZIP exact replay |
+| [All51state/DC queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-state-control-query.csv) | One ballot-only WY reference updated; all other source-weighted means retained |
+| [All52native controls](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-native-control-dispositions.csv) | Complete source, clock, denominator and qualification decisions |
+| [All34conditional scenarios](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-conditional-registered-scenarios.csv) | Byte-identical to30; no WY registered scenario or refit |
+| [Every before/after control query](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-ballot-control-change-query.json) | All52controls and explicit changed/unchanged decisions |
+
+Model31 valid-choice context184,254 includes1,031source-unassigned write-ins
+and excludes1,231overvotes/6,228undervotes. Its change from the older183,200
+named-candidate context is not participation, vote-share swing or switching.
+Both releases are public and immutable; every17/19asset is full-body verified
+authenticated/draft then anonymously/public. Two fresh data replays pass33tests
+and reproduce all90outputs; two model replays pass7tests/all17outputs and the
+whole ZIP exactly. Actual canonical89tests and both complete replays pass.
+Original workbook-template redistribution holds remain; complete permitted
+factual inputs are supplied, not metadata-only replacements. Older archives stay.
+
+Cataloge7413a1 atomically activates both datasets after87full-body checks.
+Website30371c8 current-display integration passes native Pages43405520853/
+guard43405520921. Actual artifact14026913742 has997,240,701payload/
+999,833,600tar bytes, both below1e9, with436older download pins and113archived
+models retained. Production passes all306count bindings/51state selectors,
+all432WYunit selections at both widths, and four-mode exact Civic/native
+values, CSV hashes and complete ZIP links. Canonical full release regeneration,
+focused tests and Astro pass; protected local files/package stay unchanged.
+See the [acceptance record](../data/participation-access/20261113-wy-native-successor-01/website-acceptance.json).
+
 ## Current native-source context: revision 30
+
+Preserved predecessor; the current complete packet is revision31 above.
 
 All51state rows and34conditional scenario CSV bytes match29, including its
 Vermont update. This revision replaces only one obsolete partial Minnesota

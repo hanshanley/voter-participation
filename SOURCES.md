@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current coherent native refresh | [Wyoming county/reporting counts and ballot-only model revision31](#2026-coherent-native-county-and-reporting-refresh-revision-31) |
 | Current complete native context | [Revision30: complete reporting units, unchanged selected registration and modeled means](#2026-complete-native-source-context-revision-30) |
 | Current registered-frame numerical revision | [Native revision29, unchanged Civic priors and preserved complete state queries](#2026-existing-registered-frame-model-native-control-revision-29) |
 | Current county-primary access outcomes | [Independent originals, actual viewer resolution and retained stops](#2026-county-primary-originals-and-native-viewer-resolution) |
@@ -47,6 +48,53 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 coherent native county and reporting refresh: revision 31
+
+Shared processing9c787a5 binds complete accepted native factual grids to
+reviewed source/year/state, guarded Total Ballots Cast columns and exact
+23county/432reporting-unit identities. Independent state/county/unit controls
+agree at191,713, replacing191,688: six county and20unit numerical changes
+sum+25. Provenance updates cover455records. Candidate choices are separate
+accounting, never the source of the ballot measure. Native result clock and
+timezone remain unknown; official workbook naming is not final certification.
+
+The existing common CLI compiled both countscddb52cc and native991c5863,
+then activated them atomically at cataloge7413a1 after87immutable files were
+anonymously verified. Other51count files/29native files, all51jurisdiction
+dispositions, provider early/mail frames, identities, registration fields,
+rate/geography holds and other catalog entries are preserved. A full new
+source-reporting export is included; no unsupported geographic overlay is added.
+
+Ballot-only model31 updates one WY reference, not a registered scenario.
+Its separate valid-choice context184,254 includes1,031source-unassigned
+write-ins and excludes1,231overvotes/6,228undervotes. The older183,200 context
+had a different scope; its difference is not participation or switching.
+All34scenario CSV bytes, other50state/51control rows,781-case WY Civic prior,
+fits/weights/qualifications and existing House outputs remain unchanged.
+
+Complete immutable releases444062632(data:73,306,625bytes/207members/17assets)
+and444062631(model31:251,010,401bytes/32members/19assets) have every authenticated
+draft and anonymous public asset verified in full. Two fresh data extractions
+each pass33tests/all90runtime-query outputs; two model extractions pass7tests/
+all17outputs and whole-ZIP exact replay. Actual canonical89affected tests and
+both full replays pass with network/DNS/children blocked/probed.
+[Complete downloads](docs/DATA.md#current-coherent-native-counts-and-ballot-control-revision-31).
+Website30371c8 advances the small display projection, preserves all34scenarios,
+and fixes unknown source-clock rendering without manufacturing a clock.
+Native Pages43405520853/guard43405520921 pass. Actual artifact14026913742 has
+997,240,701payload/999,833,600tar bytes, both below1e9; all22JSfiles match
+published source (21unchanged, one reviewed clock-label patch),436older
+download pins and113archived models remain. Actual production verifies all306
+state/mode bindings,51selectors and432WYunit selections at both widths,
+all79Civic/112flow/2margin/34scenario/51decision rows in four browser modes,
+full numerical CSV hashes and current ZIP links. Four new screenshots reviewed.
+Owned canonical code/display, full replays, regeneration and Astro pass;
+independent package, protected HEAD/indexes/unrelated files and older local
+explorer remain intact. Its tiny published reader patch is separately retained
+in the [acceptance record](data/participation-access/20261113-wy-native-successor-01/website-reader-change.patch),
+not applied over unrelated local changes. Broader implementation, full audit
+and beautification remain pending.
 
 ## 2026 complete native source context: revision 30
 

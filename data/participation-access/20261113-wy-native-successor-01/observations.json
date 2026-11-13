@@ -1,0 +1,423 @@
+{
+  "atomic_activation": {
+    "anonymous_verified_files": 87,
+    "catalog_commit": "e7413a12890212db316a94c7f14f7c77f32087fe",
+    "changed_ids": [
+      "participation-counts-2026",
+      "participation-native-bindings-2026"
+    ],
+    "datasets_changed": 2,
+    "intermediate_catalog_unchanged": true,
+    "single_catalog_commit_for_all_changes": true,
+    "staged_commit": "5de17caa455c8e0e33415a0e83ddda71db6d2b3c",
+    "status": "published",
+    "unchanged_dataset_entries_preserved": true,
+    "website_builds_started": 0,
+    "worktree_head_or_index_changed": false
+  },
+  "audit_and_beautification_still_pending": true,
+  "canonical_batch_replay": {
+    "all51jurisdictions_retained": true,
+    "archive_bytes": 73306625,
+    "archive_sha256": "300cc2edf52e12844bf1a218e42d4a4be2305ce8cd65cb7735c85c86df8708fd",
+    "candidate_counts": "cddb52cc0b047444faa811cdc2a47d0a1e0117f929be01d0ff5907f17f498b72",
+    "candidate_native": "991c5863a273bb72716be8423147f83fe5da00ccc941d5386df6700914e644d2",
+    "complete_both_baselines_and_originals_included": true,
+    "every_output_byte_identical": true,
+    "external_operation_probes_rejected": 3,
+    "full_runtime_and_query_outputs": 90,
+    "full_selected_source_packets_checked": 2,
+    "hash_seed": "97",
+    "no_network_dns_or_child_attempts": true,
+    "passed": true,
+    "tests": 33
+  },
+  "canonical_model_replay": {
+    "archive_bytes": 251010401,
+    "archive_sha256": "61a597dd0d78c795a8a9bcd418155b58c5d4d282d192a1637b272320394d2874",
+    "external_operation_probes_rejected": 3,
+    "full_numerical_outputs": [
+      "ballot-control-change.json",
+      "complete-ballot-control-change-query.json",
+      "complete-ballot-control-queries.json.gz",
+      "complete-conditional-registered-scenarios.csv",
+      "complete-maryland-card-references.csv",
+      "complete-maryland-native-accounting.csv",
+      "complete-maryland-register-stocks.csv",
+      "complete-native-context-change-query.json",
+      "complete-native-context-query.json.gz",
+      "complete-native-control-dispositions.csv",
+      "complete-native-group-control-query.json",
+      "complete-registered-control-change-query.json",
+      "complete-state-control-query.csv",
+      "native-context-change.json",
+      "registered-frame-change.json",
+      "source-qualification.json",
+      "summary.json"
+    ],
+    "full_source_packet_and_prior_model_included": true,
+    "hash_seed": "97",
+    "passed": true,
+    "tests": 7,
+    "whole_zip_byte_identical": true,
+    "zero_network_dns_or_child_attempts": true
+  },
+  "contract": "participation.coherent_native_successor_acceptance.v1",
+  "data_release": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 7024,
+        "name": "all-51-jurisdictions.json",
+        "sha256": "43b58b70244e6c5080ffe8c92c5c81b7c94609f450b0a75e0de5e436a3228fe5",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/all-51-jurisdictions.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 835,
+        "name": "coherent-before-after-verification.json",
+        "sha256": "8371747d958dd171d290f288a39a7ac7afe67a9be4a7a260782717d243e0547b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/coherent-before-after-verification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 73306625,
+        "name": "complete-analysis.zip",
+        "sha256": "300cc2edf52e12844bf1a218e42d4a4be2305ce8cd65cb7735c85c86df8708fd",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2313,
+        "name": "complete-asset-manifest.json",
+        "sha256": "33e19a237b6b868c4a0a04ea945a44d77cd57aea8334d0297cd81080ffe0bb25",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3261998,
+        "name": "complete-native-factual-tables.json.gz",
+        "sha256": "e84ad0699acbf26e46acd2a066eeddaf91777d8ed96bf647bf25cc6f23e95a1d",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-native-factual-tables.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 9629,
+        "name": "complete-native-query-recipe.json",
+        "sha256": "e0700c3e59d3c524e3388f97b4e0fedade633f9492e9cbe878211bfb9ef35d72",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-native-query-recipe.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 177319,
+        "name": "complete-native-reconciliation.json",
+        "sha256": "f319212c5b2c0035b4526ea4dbf67fa9fa7cd43620c6924a63e34c73d9635bc4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-native-reconciliation.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1912402,
+        "name": "complete-native-source-queries.json",
+        "sha256": "e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-native-source-queries.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 194,
+        "name": "complete-source-dispositions.json",
+        "sha256": "e67211bc79d1b8568035bc7f30273b79643da8228dd3d44fd62bf805da276a90",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-source-dispositions.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 7712122,
+        "name": "complete-source-registry.json",
+        "sha256": "e2f408e1f30be1a52e9b3f63e2ae49bf797fdc0e4c937995e4886f7db4d0bec8",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-source-registry.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 26754,
+        "name": "complete-source-reporting-rows.json.gz",
+        "sha256": "57497d0450172cbe83f924eb28ef796d6542e755ed4a4bdc951d6ba7251059df",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/complete-source-reporting-rows.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 11762,
+        "name": "manifest.json",
+        "sha256": "f79a872c5bee66ced11afede436db5ae09d4f953cf7e36ed5b52a06131b8b1a7",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1696,
+        "name": "preparation-review.json",
+        "sha256": "98a0fc4f391019c885c7a0dfcab88abd65ee48496f307fe1a12e5b267fe62693",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/preparation-review.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 10036,
+        "name": "prepare-native-successor-observations.py",
+        "sha256": "445fb3b78777e14b39760e8df89f424c6ab5ea877c3c4873e7d8963a1401df33",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/prepare-native-successor-observations.py"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 710,
+        "name": "result.json",
+        "sha256": "e420e13cafaef755794bcde289f7c8fe13fe3db4ffd9b8ddaaae853ba68606b3",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/result.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 180814,
+        "name": "reviewed-county-observations.json",
+        "sha256": "e2fa94c894de6dace1088313aa07a2e1796262dd9f87d76bc67a94de8473c290",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/reviewed-county-observations.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3656694,
+        "name": "reviewed-reporting-observations.json",
+        "sha256": "d2d8316d57e561c1096253e26052682121d81aabda7070666a1611f89428ad34",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-count-reporting-refresh-20261113-01/reviewed-reporting-observations.json"
+      }
+    ],
+    "authenticated_full_draft_verification": "release-authenticated-verification.json",
+    "draft": false,
+    "immutable": true,
+    "passed": true,
+    "release_id": 444062632,
+    "source_processing_commit": "9c787a53f1557e258dee7e45dd21eeb96117f5a7",
+    "tag": "participation-native-count-reporting-refresh-20261113-01"
+  },
+  "independent_data": {
+    "actual_county_count_changes": 6,
+    "actual_unit_count_changes": 20,
+    "all432_identities_registrations_rates_and_geography_preserved": true,
+    "all51_jurisdictions_retained": true,
+    "complete_packet": {
+      "bytes": 73306625,
+      "sha256": "300cc2edf52e12844bf1a218e42d4a4be2305ce8cd65cb7735c85c86df8708fd"
+    },
+    "datasets": {
+      "counts": {
+        "added_files": [],
+        "prior_files_changed": [
+          "index.json",
+          "states/WY.json.gz"
+        ],
+        "unchanged_other_files": 51,
+        "version": "cddb52cc0b047444faa811cdc2a47d0a1e0117f929be01d0ff5907f17f498b72"
+      },
+      "native": {
+        "added_files": [
+          "source-reporting/WY.json.gz"
+        ],
+        "prior_files_changed": [
+          "index.json",
+          "tables/WY.json.gz"
+        ],
+        "unchanged_other_files": 29,
+        "version": "991c5863a273bb72716be8423147f83fe5da00ccc941d5386df6700914e644d2"
+      }
+    },
+    "no_new_house_endpoint_or_study_weight_changes": true,
+    "passed": true,
+    "provider_and_uf_rows_byte_preserved": true,
+    "source_total": 191713
+  },
+  "independent_model": {
+    "all34_registered_scenarios_csv_byte_identical": true,
+    "all_source_prior_weight_and_qualification_fields_unchanged": true,
+    "complete_packet": {
+      "bytes": 251010401,
+      "members": 32,
+      "sha256": "61a597dd0d78c795a8a9bcd418155b58c5d4d282d192a1637b272320394d2874"
+    },
+    "native_counties_checked": 23,
+    "native_units_checked": 432,
+    "no_native_outcome_fit_or_registration_ratio": true,
+    "passed": true,
+    "previous_reported_ballot_reference": 191688,
+    "reported_ballot_reference": 191713,
+    "source_overvotes": 1231,
+    "source_unassigned_writeins": 1031,
+    "source_undervotes": 6228,
+    "source_valid_choice_context": 184254,
+    "unchanged_other_controls": 51,
+    "unchanged_other_state_rows": 50
+  },
+  "model_release": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 4081,
+        "name": "ballot-control-change.json",
+        "sha256": "1e2127f9ebfb6c97db7215dc09e067bf8b6bbc1758e8c68df0bb539cf3c241c1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/ballot-control-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 251010401,
+        "name": "complete-analysis.zip",
+        "sha256": "61a597dd0d78c795a8a9bcd418155b58c5d4d282d192a1637b272320394d2874",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2667,
+        "name": "complete-asset-manifest.json",
+        "sha256": "ae3e636d714377690eff19e86088b728d40ea78277abf6a67dc904d384fdbda2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 161622,
+        "name": "complete-ballot-control-change-query.json",
+        "sha256": "d24a08a1f496c03f5dfbbb7e2616ad089c11ad104769790c77a5ffdeffad55c4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-ballot-control-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 7177,
+        "name": "complete-ballot-control-queries.json.gz",
+        "sha256": "fbab546276eaa9d6909791ed860717d0f85a7acad1ca792b3d9f1055ae0464cb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-ballot-control-queries.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 31360,
+        "name": "complete-conditional-registered-scenarios.csv",
+        "sha256": "94637f56ee77a3f45cdc1f9f9b1b633d44d9601b2b6e291a756592bc7e6837d1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-conditional-registered-scenarios.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 8238,
+        "name": "complete-maryland-card-references.csv",
+        "sha256": "3e84f1381bef65b3ed661df1b567aec5b5eabde4f490cf04a8efb9591e97f02b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-maryland-card-references.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3634,
+        "name": "complete-maryland-native-accounting.csv",
+        "sha256": "fe0fd79b624369e2b2cbeb4ab37641907b77ad2037450701658d92964c8617ac",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-maryland-native-accounting.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 60251,
+        "name": "complete-maryland-register-stocks.csv",
+        "sha256": "9cdd05a6d4f3304d88363f9440b7d99c8a794b4c869083de4b5620a27508b5fe",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-maryland-register-stocks.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 159278,
+        "name": "complete-native-context-change-query.json",
+        "sha256": "1b8b0085bfc939dfd60758435202ec99bfa4740ac7728512d2d21a15122a8317",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-native-context-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 165330,
+        "name": "complete-native-context-query.json.gz",
+        "sha256": "077175910837d3feaa359a3a5ba638a75d3eee70ed5e7413f92190ff0cb29c71",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-native-context-query.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 52965,
+        "name": "complete-native-control-dispositions.csv",
+        "sha256": "85f8c8a818b055a9b6479959287ddd220321e67ac901042bb812c0c816aecae2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-native-control-dispositions.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 625001,
+        "name": "complete-native-group-control-query.json",
+        "sha256": "26675302e1192bd60b8fc6ac9558e909b87b837b9f4e4524440665e3fa5e1504",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-native-group-control-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 157288,
+        "name": "complete-registered-control-change-query.json",
+        "sha256": "6c28ab0cc138c68a299fe56a8d78c7e718ffcd5f759f2b98845e003e168ae5b9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-registered-control-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 26003,
+        "name": "complete-state-control-query.csv",
+        "sha256": "0753a66ce547b168d28aece311e3cf48acd4d75976867426e6570d4b2c6c0bbc",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/complete-state-control-query.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3807,
+        "name": "native-context-change.json",
+        "sha256": "bed9acee3de2e9ed2d23ac98c9da234445c2c8ddaf52be1346552638babba21c",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/native-context-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1382,
+        "name": "registered-frame-change.json",
+        "sha256": "9e4738f47f4668fc1ea2e307d872b5d5641b69b287f200a485bab2fc23d9b483",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/registered-frame-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 7158,
+        "name": "source-qualification.json",
+        "sha256": "34eb02f1dd9c6cd62b4cd1a851a231a381079ea6f5721ec9266cb21f7ffa8eb0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/source-qualification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 4691,
+        "name": "summary.json",
+        "sha256": "0a60ef33d3a4932cbc16784acad925cf29301baa8f943fc3e3dfd914bfb54521",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-31/summary.json"
+      }
+    ],
+    "authenticated_full_draft_verification": "release-authenticated-verification.json",
+    "draft": false,
+    "immutable": true,
+    "passed": true,
+    "release_id": 444062631,
+    "source_processing_commit": "9c787a53f1557e258dee7e45dd21eeb96117f5a7",
+    "tag": "participation-state-controls-20261113-31"
+  },
+  "source_access_stops_not_bypassed": true,
+  "source_processing_commit": "9c787a53f1557e258dee7e45dd21eeb96117f5a7",
+  "source_tests_passed": 89,
+  "unknown_clock_regression": {
+    "cases": [
+      {
+        "all432_source_units_loaded": true,
+        "base": "https://www.themarginoferror.com",
+        "detail": "Albany \u00b7 13-1\n\n1,244\n\nNative reported ballots \u00b7 no participation rate\n\nNative registrations: \u2014 \u00b7 not a qualified rate denominator.\n\nNative reporting-unit counts, not a population or demographic turnout rate. Registration definitions, ballot-mode scope and 2026 boundary joins remain unqualified.\n\nCounts come only from the guarded Total Ballots Cast columns, not candidate choices.; Candidate/overvote/undervote query records are included only as complete source accounting.; All existing registrations, rate holds, namespace keys, source precinct labels and geographic qualifications remain.; Separate provider mail-returned and UF frames are not replaced.; The source's official workbook filename is not independent certification of final counting, unique people or election-date boundaries.; Legacy source/CSV-row keys remain stable identifiers, not current workbook row numbers.\n\nSource label: null.",
+        "expected_clock_label_verified": true,
+        "reader": "old-production"
+      },
+      {
+        "all432_source_units_loaded": true,
+        "base": "http://127.0.0.1:4399",
+        "detail": "Albany \u00b7 13-1\n\n1,244\n\nNative reported ballots \u00b7 no participation rate\n\nNative registrations: \u2014 \u00b7 not a qualified rate denominator.\n\nNative reporting-unit counts, not a population or demographic turnout rate. Registration definitions, ballot-mode scope and 2026 boundary joins remain unqualified.\n\nCounts come only from the guarded Total Ballots Cast columns, not candidate choices.; Candidate/overvote/undervote query records are included only as complete source accounting.; All existing registrations, rate holds, namespace keys, source precinct labels and geographic qualifications remain.; Separate provider mail-returned and UF frames are not replaced.; The source's official workbook filename is not independent certification of final counting, unique people or election-date boundaries.; Legacy source/CSV-row keys remain stable identifiers, not current workbook row numbers.\n\nSource label: Not supplied; retrieval time is separate.",
+        "expected_clock_label_verified": true,
+        "reader": "new-local"
+      }
+    ],
+    "no_response_or_DOM_overrides": true,
+    "passed": true
+  },
+  "website_commit": "30371c8486617a37f29bf7115917189efa04fcbe",
+  "website_tests_passed": 69,
+  "whole_project_complete": false
+}

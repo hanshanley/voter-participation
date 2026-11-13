@@ -13,6 +13,54 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Coherent native refresh and ballot-control revision 31
+
+The verified WY discrepancy below is now scientifically resolved through the
+shared maintained routine9c787a5:191,713 native ballots across23counties and
+432reporting units, versus191,688 previously. Only six county and20unit counts
+change (+25); all455provenance records are current. Countscddb52cc and
+native991c5863 activate together at cataloge7413a1, after87immutable bodies
+were anonymously verified. All other catalog entries,51jurisdiction decisions,
+provider early/mail frames, registration fields and rate/geography holds remain.
+
+Model31 changes only the existing WY ballot-only reference and separately
+scoped valid-choice context. No registration denominator/scenario is fabricated.
+All34scenario CSV bytes, other50state/51control rows,781-case Civic prior,
+fits/weights/qualifications and House outputs remain unchanged. The valid-choice
+context184,254 includes1,031unassigned write-ins, excludes1,231over/6,228under,
+and is not new voters, swing or switching.
+
+Both complete immutable data/model releases444062632/444062631 are verified:
+73,306,625bytes/207members and251,010,401bytes/32members, all17/19assets full-body
+checked authenticated/draft then anonymously/public. Both fresh data extractions
+pass33tests/all90outputs; both model extractions pass7tests/all17outputs and
+whole-ZIP exact reproduction. Actual canonical89tests and both full replays pass.
+The cached compilation preserves every work byte/mtime; activation reparses no
+sources and launches no website build. Complete downloads remain numerical.
+
+Website30371c8 displays the verified model31 projection and explicitly labels
+unknown source clocks rather than printing null or using retrieval time.
+Native Pages43405520853/guard43405520921 pass. Actual artifact14026913742 is
+997,240,701payload/999,833,600tar bytes, both below1e9;436older download pins,
+113archived models and all22JSfiles remain (one intentional clock-label patch).
+Actual production passes all306bindings/51selectors and every432WYunit
+selection at both widths, plus four-mode79Civic/112flow/2margin/34scenario/
+51decision checks, exact CSV hashes and current complete ZIP links.
+Four new desktop/mobile screenshots reviewed. Canonical code/display,
+full offline replays, exact display regeneration and Astro pass.
+The independent canonical package and deliberately older/unrelated local
+explorer remain protected; the tiny maintained reader patch is preserved in
+the [access record](data/participation-access/20261113-wy-native-successor-01/website-reader-change.patch)
+rather than replacing that unrelated local script. This bounded increment is
+verified; it does not finish nationwide coverage or the broader model work.
+
+Broader624/626/631/632/633 remain open: nationwide within-state precinct/office/
+mode qualification, broader reviewed native-product registration and genuinely
+compatible poll/Census/registration/mail model reconciliation. Primary403stops
+remain real; do not bypass or relabel them resolved. Do not reacquire accepted
+sources or refit unchanged NORC merely for activity. Full audit636 followed by
+understated beautification637 remains pending after implementation.
+
 ## Complete native context revision 30: verified live and persistent
 
 The existing Minnesota model context was stale:2,490/4,105 reporting units and
@@ -55,7 +103,8 @@ ZIP link. Desktop/mobile screenshots reviewed. Complete release443999393 is
 public and immutable. Acceptance records are in
 `data/participation-access/20261113-native-context-successor-01/`.
 Full audit and beautification remain pending behind broader implementation.
-Next verified native-count gap: current WY's23county counts sum191,688, while
+The subsequent revision31 above resolves this then-verified native-count gap:
+the older WY23county counts summed191,688, while
 the already-held official summary and all432 native unit queries sum191,713.
 Exact county-name identities agree; six counties change by+25 in total.
 Reconcile source measure/scope and update only through shared native facts/
