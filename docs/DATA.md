@@ -8,6 +8,46 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current New Jersey administrative subtotal refresh
+
+Fifteen county observations advance within the existing derived EV + Election
+Day + tallied-mail measure; provisionals are excluded. All21 county decisions,
+32 native dated contexts and15,766 factual cells remain in the full inputs.
+Atlantic's decrease, Union's distinct congressional/municipal scopes, Salem's
+same-clock conflict and Cape May's separately accepted native summary remain
+explicit. No statewide sum, new rate, unique people or staying-home history is
+inferred; model33 and all House/weight outputs are unchanged.
+
+| Complete download | Contents |
+|---|---|
+| [Complete all-state count analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-analysis.zip) | 15,239,791bytes/141members; full51-jurisdiction baseline, sufficient factual inputs, code/tests and57complete runtime/query outputs |
+| [Complete selected source SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-count-source-packet.zip) | 1,961,659bytes/23members; isolated standard-library replay of every selected canonical observation and native component binding |
+| [Complete selected-source query](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-selected-source-query.json) | All18 canonical observations in the replacement family, including unchanged observations |
+| [All21 county decisions](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/all-21-county-decisions.csv) | Before/after counts, signed changes, native clocks, parent scopes and explicit holds |
+| [Every successor/context comparison](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-successor-review.json) | All32 native contexts, full parent vectors and alternative totals; no missing-as-zero |
+| [All native factual grids](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-factual-grids.json.gz) | Every complete native measure cell and its reading/provenance metadata |
+| [All native controls and queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-native-controls.json) | Every native administrative/accounting query, discrepancy and excluded comparison |
+| [Entire accepted native analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-native-analysis.zip) | The complete unchanged21-county source compilation, not a metadata-only predecessor |
+| [Complete registry and bindings](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-source-registry.json) | All285 direct native count, component and literal provenance assertions |
+| [Offline reproduction proofs](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/offline-replays.json) | Two fresh69test/57output runs, actual canonical replay and isolated source SDK |
+
+Analysis SHA256`f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c`;
+source SDK SHA256`04fa0558974404fa49e3de47a6286741b5570072643fb185c0535709484aca56`.
+All16 assets of release444238558 are fully authenticated/draft and anonymously/
+public verified; the release is actually immutable. Public replay validates
+complete permitted factual inputs, not excluded publisher PDF/image extraction.
+Source046897e and actual canonical75 affected tests pass.
+
+Counts64e9f92 is active at catalog25abfa3 with54 immutable bodies verified and
+no source reparse or website build. Actual production passes306 bindings/51
+selectors,14 statewide references, NC100/WY432 selections at both widths,
+all252 NJ county/mode/viewport selections,120 changed-source cases and both
+full ZIP hashes. The21 public contextual bindings remain; both images reviewed.
+Unqueried production HTML/all22scripts equal unchanged website5168917, preserving
+its accepted native artifact,436 old pins and113 archived models. See
+[acceptance](../data/participation-access/20261113-nj-derived-successors-01/website-acceptance.json).
+Every earlier complete download below remains available.
+
 ## Current Oregon state reference and model revision 33
 
 Native Oregon **2,019,444 Ballots Counted / 3,109,145 Active Registered

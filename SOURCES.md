@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current administrative subtotal refresh | [New Jersey: 15 same-measure successors and complete native queries](#2026-new-jersey-administrative-subtotal-successors) |
 | Current state-reference/model refresh | [Oregon counted ballots, active registration and revision33](#2026-oregon-state-reference-and-registered-source-revision-33) |
 | Current coherent count/model refresh | [North Carolina state/county counts, native group observations and revision32](#2026-coherent-north-carolina-counts-and-native-source-revision-32) |
 | Current coherent native refresh | [Wyoming county/reporting counts and ballot-only model revision31](#2026-coherent-native-county-and-reporting-refresh-revision-31) |
@@ -50,6 +51,58 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 New Jersey administrative subtotal successors
+
+The complete accepted21-county/32-context native compilation supplies15
+genuinely changed county observations. Selection uses literal native table
+clocks and the exact accepted parent labels, not filenames, page order or
+municipal sums. The measure remains **Early Voting Votes Cast + Election Day
+Votes Cast + Vote-by-Mail Ballots Tallied**, excluding provisionals. Issued,
+received, pending and provisional counts remain separate native queries.
+It is not a native all-mode ballot total, unique-voter count or measured
+nonparticipation.
+
+Atlantic94,256 retains its decrease36; Morris199,582 increases442.
+Union's congressional total179,217 retains its overseas-inclusive scope,
+while the municipal total178,802 and415 mail difference remain separate.
+The12,574 change across15 observations is not promoted to a statewide total.
+Salem's three latest same-clock reports conflict and remain held; its older
+dated record is not silently relabelled. Cape May's42,442 native summary and
+the other five unchanged county observations remain exact.
+
+Source046897e extends the existing shared factual binder with an explicit
+component-sum operation, not a new county importer. It checks exactly one
+parent, distinct native columns and physical headers, or the pinned explicitly
+reviewed image transcription for Sussex. Unchanged measure semantics, count
+mirrors and literal source clocks are required. The18-row replacement family
+excludes Cape May's already-distinct native source. Other92 NJ records,
+50 other jurisdiction shards, current statewide snapshot, provider frames,
+geometry/rate holds, native991, model33, study weights and House outputs remain.
+
+All75 affected maintained/canonical tests,673 independent source/preservation
+comparisons, two fresh69test/57output replays, the actual canonical replay and
+isolated1,961,659-byte/23-member source SDK pass. The complete15,239,791-byte/
+141-member analysis has SHA256
+`f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c`.
+Its full native predecessor, all15,766 factual cells/controls,32 contexts,
+21 county decisions, sufficient inputs, code/tests and complete outputs remain
+downloadable. Excluded publisher templates/images are not falsely claimed as
+part of public extraction replay.
+
+Immutable release444238558/tag`participation-nj-derived-county-refresh-20261113-01`
+has all16 full assets authenticated/draft then anonymous/public byte-verified.
+The common cached publisher activates counts64e9f92 at catalog25abfa3 after54
+immutable body checks, without requests, re-parsing or a website build.
+Actual production verifies306 bindings/51 selectors/14 state-reference cases,
+NC100/WY432 selections at both widths, NJ252 county selections and120 changed
+source/clock/null-rate cases, both complete ZIP hashes and21 public contextual
+bindings. Both images reviewed. All23 unqueried HTML/script bodies equal the
+accepted5168917 application; its existing native artifact/caps remain unchanged.
+See [full downloads](docs/DATA.md#current-new-jersey-administrative-subtotal-refresh)
+and [acceptance](data/participation-access/20261113-nj-derived-successors-01/website-acceptance.json).
+Broader source/model/geographic/historical work and the later audit/beautification
+remain open; no nationwide completion or fresh NORC fit is claimed.
 
 ## 2026 Oregon state reference and registered-source revision 33
 

@@ -1,0 +1,4220 @@
+{
+  "actual_production": true,
+  "all_earlier_full_downloads_preserved": true,
+  "both_actual_production_images_reviewed": true,
+  "catalog_commit": "25abfa3078931288f7c34dd551e7d2e3a817bc99",
+  "common_live_reader": {
+    "active_legacy_count_requests": 0,
+    "all_state_UI_cases": 51,
+    "base_url": "https://www.themarginoferror.com",
+    "cases": [
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "AK",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 67,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 67,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 67,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "AL",
+        "counties": 67,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "available",
+        "units": 2768
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "official",
+        "units": 2768
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "uf_vap",
+        "units": 2768
+      },
+      {
+        "code": "AR",
+        "counties": 75,
+        "mode": "uf_vep",
+        "units": 2768
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "available",
+        "units": 1763
+      },
+      {
+        "code": "AZ",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "official",
+        "units": 1763
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "uf_vap",
+        "units": 1763
+      },
+      {
+        "code": "AZ",
+        "counties": 15,
+        "mode": "uf_vep",
+        "units": 1763
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "CA",
+        "counties": 58,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "CO",
+        "counties": 64,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 169,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 169,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 169,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "CT",
+        "counties": 169,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "DC",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 3,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 3,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "DE",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "FL",
+        "counties": 67,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "GA",
+        "counties": 159,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 4,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 4,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 4,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "HI",
+        "counties": 4,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 99,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 99,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "IA",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "available",
+        "units": 986
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "official",
+        "units": 986
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "uf_vap",
+        "units": 986
+      },
+      {
+        "code": "ID",
+        "counties": 44,
+        "mode": "uf_vep",
+        "units": 986
+      },
+      {
+        "code": "IL",
+        "counties": 102,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 102,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 102,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "IL",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "available",
+        "units": 103
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "official",
+        "units": 103
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "uf_vap",
+        "units": 103
+      },
+      {
+        "code": "IN",
+        "counties": 92,
+        "mode": "uf_vep",
+        "units": 103
+      },
+      {
+        "code": "KS",
+        "counties": 105,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 105,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 105,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "KS",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 120,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 120,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "KY",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 64,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 64,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 64,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "LA",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "MA",
+        "counties": 2,
+        "mode": "available",
+        "units": 307
+      },
+      {
+        "code": "MA",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MA",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MA",
+        "counties": 2,
+        "mode": "official",
+        "units": 307
+      },
+      {
+        "code": "MA",
+        "counties": 2,
+        "mode": "uf_vap",
+        "units": 307
+      },
+      {
+        "code": "MA",
+        "counties": 2,
+        "mode": "uf_vep",
+        "units": 307
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "MD",
+        "counties": 24,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 480,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 480,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 480,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "ME",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "MI",
+        "counties": 2,
+        "mode": "available",
+        "units": 63
+      },
+      {
+        "code": "MI",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MI",
+        "counties": 83,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MI",
+        "counties": 2,
+        "mode": "official",
+        "units": 63
+      },
+      {
+        "code": "MI",
+        "counties": 2,
+        "mode": "uf_vap",
+        "units": 63
+      },
+      {
+        "code": "MI",
+        "counties": 2,
+        "mode": "uf_vep",
+        "units": 63
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "available",
+        "units": 4105
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "official",
+        "units": 4105
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "uf_vap",
+        "units": 4105
+      },
+      {
+        "code": "MN",
+        "counties": 87,
+        "mode": "uf_vep",
+        "units": 4105
+      },
+      {
+        "code": "MO",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "MO",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 82,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 82,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "MS",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 56,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 56,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "MT",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "NC",
+        "counties": 100,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "available",
+        "units": 358
+      },
+      {
+        "code": "ND",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "official",
+        "units": 358
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "uf_vap",
+        "units": 358
+      },
+      {
+        "code": "ND",
+        "counties": 53,
+        "mode": "uf_vep",
+        "units": 358
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "available",
+        "units": 1415
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "official",
+        "units": 1415
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "uf_vap",
+        "units": 1415
+      },
+      {
+        "code": "NE",
+        "counties": 93,
+        "mode": "uf_vep",
+        "units": 1415
+      },
+      {
+        "code": "NH",
+        "counties": 4,
+        "mode": "available",
+        "units": 37
+      },
+      {
+        "code": "NH",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NH",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NH",
+        "counties": 4,
+        "mode": "official",
+        "units": 37
+      },
+      {
+        "code": "NH",
+        "counties": 4,
+        "mode": "uf_vap",
+        "units": 37
+      },
+      {
+        "code": "NH",
+        "counties": 4,
+        "mode": "uf_vep",
+        "units": 37
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "NJ",
+        "counties": 21,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "available",
+        "units": 2204
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "official",
+        "units": 2204
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "uf_vap",
+        "units": 2204
+      },
+      {
+        "code": "NM",
+        "counties": 33,
+        "mode": "uf_vep",
+        "units": 2204
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "NV",
+        "counties": 17,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 62,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 62,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "NY",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 88,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 88,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 88,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "OH",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 77,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 77,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "OK",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "OR",
+        "counties": 36,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 43,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 67,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 43,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 43,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "PA",
+        "counties": 43,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 39,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 39,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 39,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "RI",
+        "counties": 39,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 46,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 46,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 46,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "SC",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "available",
+        "units": 671
+      },
+      {
+        "code": "SD",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "official",
+        "units": 671
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "uf_vap",
+        "units": 671
+      },
+      {
+        "code": "SD",
+        "counties": 66,
+        "mode": "uf_vep",
+        "units": 671
+      },
+      {
+        "code": "TN",
+        "counties": 95,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 95,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 0,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 0,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "TN",
+        "counties": 0,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 1,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 254,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 254,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 1,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 1,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "TX",
+        "counties": 1,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "UT",
+        "counties": 29,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "VA",
+        "counties": 133,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 247,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 0,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 247,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 247,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "VT",
+        "counties": 247,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "WA",
+        "counties": 39,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "WI",
+        "counties": 2,
+        "mode": "available",
+        "units": 32
+      },
+      {
+        "code": "WI",
+        "counties": 72,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "WI",
+        "counties": 72,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "WI",
+        "counties": 2,
+        "mode": "official",
+        "units": 32
+      },
+      {
+        "code": "WI",
+        "counties": 2,
+        "mode": "uf_vap",
+        "units": 32
+      },
+      {
+        "code": "WI",
+        "counties": 2,
+        "mode": "uf_vep",
+        "units": 32
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "available",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "official",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "uf_vap",
+        "units": 0
+      },
+      {
+        "code": "WV",
+        "counties": 55,
+        "mode": "uf_vep",
+        "units": 0
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "available",
+        "units": 432
+      },
+      {
+        "code": "WY",
+        "counties": 0,
+        "mode": "in_person_early",
+        "units": 0
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "mail_returned",
+        "units": 0
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "official",
+        "units": 432
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "uf_vap",
+        "units": 432
+      },
+      {
+        "code": "WY",
+        "counties": 23,
+        "mode": "uf_vep",
+        "units": 432
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 1693621,
+        "state": "Alabama",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 752061,
+        "state": "Nebraska",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 726684,
+        "state": "New Mexico",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 4243180,
+        "state": "North Carolina",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 239057,
+        "state": "North Dakota",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 2019444,
+        "state": "Oregon",
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 310298,
+        "state": "South Dakota",
+        "width": 1440
+      },
+      {
+        "compact_sidebar": true,
+        "county_count": 9019,
+        "native_county_choices": 87,
+        "no_overflow": true,
+        "state": "Minnesota",
+        "width": 1440
+      },
+      {
+        "current_complete_queries_linked": true,
+        "municipality_counts_bound": 247,
+        "native_source_label_correct": true,
+        "no_overflow": true,
+        "reviewed_registered_fractions": 247,
+        "state": "Vermont",
+        "width": 1440,
+        "withheld_rates": 0
+      },
+      {
+        "native_counties_checked": 100,
+        "native_source_link_verified": true,
+        "no_overflow": true,
+        "reported_ballots": 4243180,
+        "separate_early_and_demographic_provider_frames_preserved": true,
+        "state": "North Carolina",
+        "state_and_county_snapshot_exact": true,
+        "width": 1440
+      },
+      {
+        "all_native_properties_exact": true,
+        "complete_numerical_downloads_linked": true,
+        "geographic_and_rate_holds_preserved": true,
+        "native_units_checked": 432,
+        "no_overflow": true,
+        "reported_ballots": 191713,
+        "state": "Wyoming",
+        "unknown_clock_explicit": true,
+        "width": 1440
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 1693621,
+        "state": "Alabama",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 752061,
+        "state": "Nebraska",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 726684,
+        "state": "New Mexico",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 4243180,
+        "state": "North Carolina",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 239057,
+        "state": "North Dakota",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 2019444,
+        "state": "Oregon",
+        "width": 390
+      },
+      {
+        "native_source_clock_and_link_exact": true,
+        "native_state_reference_checked": true,
+        "no_overflow": true,
+        "reported_ballots": 310298,
+        "state": "South Dakota",
+        "width": 390
+      },
+      {
+        "compact_sidebar": true,
+        "county_count": 9019,
+        "native_county_choices": 87,
+        "no_overflow": true,
+        "state": "Minnesota",
+        "width": 390
+      },
+      {
+        "current_complete_queries_linked": true,
+        "municipality_counts_bound": 247,
+        "native_source_label_correct": true,
+        "no_overflow": true,
+        "reviewed_registered_fractions": 247,
+        "state": "Vermont",
+        "width": 390,
+        "withheld_rates": 0
+      },
+      {
+        "native_counties_checked": 100,
+        "native_source_link_verified": true,
+        "no_overflow": true,
+        "reported_ballots": 4243180,
+        "separate_early_and_demographic_provider_frames_preserved": true,
+        "state": "North Carolina",
+        "state_and_county_snapshot_exact": true,
+        "width": 390
+      },
+      {
+        "all_native_properties_exact": true,
+        "complete_numerical_downloads_linked": true,
+        "geographic_and_rate_holds_preserved": true,
+        "native_units_checked": 432,
+        "no_overflow": true,
+        "reported_ballots": 191713,
+        "state": "Wyoming",
+        "unknown_clock_explicit": true,
+        "width": 390
+      }
+    ],
+    "complete_current_snapshot_exact": true,
+    "immutable_base": "https://raw.githubusercontent.com/hanshanley/margin_of_error/8ab4f0aafa7afb1646a10a5b7b7914e3d2b8d353/datasets/participation-counts-2026/64e9f92adb4f58db0d37f205b3b1b77b03ea7766b74cd922dd5fc5831be31757/",
+    "production": true,
+    "reporting_rows": 7,
+    "retained_early_rows": 6450,
+    "status": "PASS_actual_public_catalog_all_306_bindings_state_UI_and_phone",
+    "test_fixture_used": false,
+    "version": "64e9f92adb4f58db0d37f205b3b1b77b03ea7766b74cd922dd5fc5831be31757"
+  },
+  "complete_download": {
+    "bytes": 15239791,
+    "immutable": true,
+    "sha256": "f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "counts_version": "64e9f92adb4f58db0d37f205b3b1b77b03ea7766b74cd922dd5fc5831be31757",
+  "county_context_bindings_not_new_svg_overlay_qualification": true,
+  "images": {
+    "1440": {
+      "bytes": 402308,
+      "sha256": "8ab72af4411054b18a0a3f789a2a785ef083e7a80224cb04d0b6d501436f4b5e"
+    },
+    "390": {
+      "bytes": 278301,
+      "sha256": "a275be178a5296d68e7fd183638ab27c4866197a897111e22bedb256b9b00993"
+    }
+  },
+  "known_later_audit_items": [
+    "Existing county-map navigation/routing is not newly qualified by selector/context-binding checks.",
+    "Existing repeated source qualifications and crowded controls remain for the later usability pass."
+  ],
+  "native_artifact_reused_from_verified_unchanged_application": true,
+  "new_jersey_live_reader": {
+    "actual_production": true,
+    "all_21_counties_all_six_modes_both_widths": true,
+    "approved_county_context_bindings": 21,
+    "cape_may_all_mode_summary_preserved": true,
+    "changed_source_clock_label_link_and_null_rate_cases": 120,
+    "county_selection_cases": [
+      {
+        "county": "Atlantic",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 94256,
+        "width": 1440
+      },
+      {
+        "county": "Bergen",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 319503,
+        "width": 1440
+      },
+      {
+        "county": "Burlington",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 168775,
+        "width": 1440
+      },
+      {
+        "county": "Camden",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 173676,
+        "width": 1440
+      },
+      {
+        "county": "Cape May",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42442,
+        "width": 1440
+      },
+      {
+        "county": "Cumberland",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 38841,
+        "width": 1440
+      },
+      {
+        "county": "Gloucester",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116265,
+        "width": 1440
+      },
+      {
+        "county": "Hunterdon",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63031,
+        "width": 1440
+      },
+      {
+        "county": "Mercer",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116456,
+        "width": 1440
+      },
+      {
+        "county": "Middlesex",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 248023,
+        "width": 1440
+      },
+      {
+        "county": "Monmouth",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 238962,
+        "width": 1440
+      },
+      {
+        "county": "Morris",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 199582,
+        "width": 1440
+      },
+      {
+        "county": "Ocean",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 224523,
+        "width": 1440
+      },
+      {
+        "county": "Passaic",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 136232,
+        "width": 1440
+      },
+      {
+        "county": "Salem",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21153,
+        "width": 1440
+      },
+      {
+        "county": "Somerset",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 134109,
+        "width": 1440
+      },
+      {
+        "county": "Sussex",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 57580,
+        "width": 1440
+      },
+      {
+        "county": "Union",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 179217,
+        "width": 1440
+      },
+      {
+        "county": "Warren",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 42747,
+        "width": 1440
+      },
+      {
+        "county": "Essex",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 225368,
+        "width": 1440
+      },
+      {
+        "county": "Hudson",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 213051,
+        "width": 1440
+      },
+      {
+        "county": "Atlantic County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21463,
+        "width": 1440
+      },
+      {
+        "county": "Bergen County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 60336,
+        "width": 1440
+      },
+      {
+        "county": "Burlington County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 43959,
+        "width": 1440
+      },
+      {
+        "county": "Camden County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 16115,
+        "width": 1440
+      },
+      {
+        "county": "Cape May County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 9669,
+        "width": 1440
+      },
+      {
+        "county": "Cumberland County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 7241,
+        "width": 1440
+      },
+      {
+        "county": "Essex County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 44585,
+        "width": 1440
+      },
+      {
+        "county": "Gloucester County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 20121,
+        "width": 1440
+      },
+      {
+        "county": "Hudson County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 38992,
+        "width": 1440
+      },
+      {
+        "county": "Hunterdon County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 16319,
+        "width": 1440
+      },
+      {
+        "county": "Mercer County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 29606,
+        "width": 1440
+      },
+      {
+        "county": "Middlesex County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 40340,
+        "width": 1440
+      },
+      {
+        "county": "Monmouth County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63954,
+        "width": 1440
+      },
+      {
+        "county": "Morris County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 43760,
+        "width": 1440
+      },
+      {
+        "county": "Ocean County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 50465,
+        "width": 1440
+      },
+      {
+        "county": "Passaic County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 31395,
+        "width": 1440
+      },
+      {
+        "county": "Salem County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 3770,
+        "width": 1440
+      },
+      {
+        "county": "Somerset County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 35728,
+        "width": 1440
+      },
+      {
+        "county": "Sussex County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 11225,
+        "width": 1440
+      },
+      {
+        "county": "Union County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42950,
+        "width": 1440
+      },
+      {
+        "county": "Warren County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 10651,
+        "width": 1440
+      },
+      {
+        "county": "Atlantic County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 14024,
+        "width": 1440
+      },
+      {
+        "county": "Bergen County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 52462,
+        "width": 1440
+      },
+      {
+        "county": "Burlington County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 39782,
+        "width": 1440
+      },
+      {
+        "county": "Camden County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 67809,
+        "width": 1440
+      },
+      {
+        "county": "Cape May County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 7647,
+        "width": 1440
+      },
+      {
+        "county": "Cumberland County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 9529,
+        "width": 1440
+      },
+      {
+        "county": "Essex County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 37704,
+        "width": 1440
+      },
+      {
+        "county": "Gloucester County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 25591,
+        "width": 1440
+      },
+      {
+        "county": "Hudson County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 17655,
+        "width": 1440
+      },
+      {
+        "county": "Hunterdon County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 12735,
+        "width": 1440
+      },
+      {
+        "county": "Mercer County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 29127,
+        "width": 1440
+      },
+      {
+        "county": "Middlesex County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 77545,
+        "width": 1440
+      },
+      {
+        "county": "Monmouth County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 37793,
+        "width": 1440
+      },
+      {
+        "county": "Morris County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 33447,
+        "width": 1440
+      },
+      {
+        "county": "Ocean County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 39703,
+        "width": 1440
+      },
+      {
+        "county": "Passaic County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 17745,
+        "width": 1440
+      },
+      {
+        "county": "Salem County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 3410,
+        "width": 1440
+      },
+      {
+        "county": "Somerset County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 28747,
+        "width": 1440
+      },
+      {
+        "county": "Sussex County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 7914,
+        "width": 1440
+      },
+      {
+        "county": "Union County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 29867,
+        "width": 1440
+      },
+      {
+        "county": "Warren County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 7169,
+        "width": 1440
+      },
+      {
+        "county": "Atlantic",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 94256,
+        "width": 1440
+      },
+      {
+        "county": "Bergen",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 319503,
+        "width": 1440
+      },
+      {
+        "county": "Burlington",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 168775,
+        "width": 1440
+      },
+      {
+        "county": "Camden",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 173676,
+        "width": 1440
+      },
+      {
+        "county": "Cape May",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42442,
+        "width": 1440
+      },
+      {
+        "county": "Cumberland",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 38841,
+        "width": 1440
+      },
+      {
+        "county": "Gloucester",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116265,
+        "width": 1440
+      },
+      {
+        "county": "Hunterdon",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63031,
+        "width": 1440
+      },
+      {
+        "county": "Mercer",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116456,
+        "width": 1440
+      },
+      {
+        "county": "Middlesex",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 248023,
+        "width": 1440
+      },
+      {
+        "county": "Monmouth",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 238962,
+        "width": 1440
+      },
+      {
+        "county": "Morris",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 199582,
+        "width": 1440
+      },
+      {
+        "county": "Ocean",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 224523,
+        "width": 1440
+      },
+      {
+        "county": "Passaic",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 136232,
+        "width": 1440
+      },
+      {
+        "county": "Salem",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21153,
+        "width": 1440
+      },
+      {
+        "county": "Somerset",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 134109,
+        "width": 1440
+      },
+      {
+        "county": "Sussex",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 57580,
+        "width": 1440
+      },
+      {
+        "county": "Union",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 179217,
+        "width": 1440
+      },
+      {
+        "county": "Warren",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 42747,
+        "width": 1440
+      },
+      {
+        "county": "Essex",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 225368,
+        "width": 1440
+      },
+      {
+        "county": "Hudson",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 213051,
+        "width": 1440
+      },
+      {
+        "county": "Atlantic",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 94256,
+        "width": 1440
+      },
+      {
+        "county": "Bergen",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 319503,
+        "width": 1440
+      },
+      {
+        "county": "Burlington",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 168775,
+        "width": 1440
+      },
+      {
+        "county": "Camden",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 173676,
+        "width": 1440
+      },
+      {
+        "county": "Cape May",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42442,
+        "width": 1440
+      },
+      {
+        "county": "Cumberland",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 38841,
+        "width": 1440
+      },
+      {
+        "county": "Gloucester",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116265,
+        "width": 1440
+      },
+      {
+        "county": "Hunterdon",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63031,
+        "width": 1440
+      },
+      {
+        "county": "Mercer",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116456,
+        "width": 1440
+      },
+      {
+        "county": "Middlesex",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 248023,
+        "width": 1440
+      },
+      {
+        "county": "Monmouth",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 238962,
+        "width": 1440
+      },
+      {
+        "county": "Morris",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 199582,
+        "width": 1440
+      },
+      {
+        "county": "Ocean",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 224523,
+        "width": 1440
+      },
+      {
+        "county": "Passaic",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 136232,
+        "width": 1440
+      },
+      {
+        "county": "Salem",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21153,
+        "width": 1440
+      },
+      {
+        "county": "Somerset",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 134109,
+        "width": 1440
+      },
+      {
+        "county": "Sussex",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 57580,
+        "width": 1440
+      },
+      {
+        "county": "Union",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 179217,
+        "width": 1440
+      },
+      {
+        "county": "Warren",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 42747,
+        "width": 1440
+      },
+      {
+        "county": "Essex",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 225368,
+        "width": 1440
+      },
+      {
+        "county": "Hudson",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 213051,
+        "width": 1440
+      },
+      {
+        "county": "Atlantic",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 94256,
+        "width": 1440
+      },
+      {
+        "county": "Bergen",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 319503,
+        "width": 1440
+      },
+      {
+        "county": "Burlington",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 168775,
+        "width": 1440
+      },
+      {
+        "county": "Camden",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 173676,
+        "width": 1440
+      },
+      {
+        "county": "Cape May",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42442,
+        "width": 1440
+      },
+      {
+        "county": "Cumberland",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 38841,
+        "width": 1440
+      },
+      {
+        "county": "Gloucester",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116265,
+        "width": 1440
+      },
+      {
+        "county": "Hunterdon",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63031,
+        "width": 1440
+      },
+      {
+        "county": "Mercer",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116456,
+        "width": 1440
+      },
+      {
+        "county": "Middlesex",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 248023,
+        "width": 1440
+      },
+      {
+        "county": "Monmouth",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 238962,
+        "width": 1440
+      },
+      {
+        "county": "Morris",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 199582,
+        "width": 1440
+      },
+      {
+        "county": "Ocean",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 224523,
+        "width": 1440
+      },
+      {
+        "county": "Passaic",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 136232,
+        "width": 1440
+      },
+      {
+        "county": "Salem",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21153,
+        "width": 1440
+      },
+      {
+        "county": "Somerset",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 134109,
+        "width": 1440
+      },
+      {
+        "county": "Sussex",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 57580,
+        "width": 1440
+      },
+      {
+        "county": "Union",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 179217,
+        "width": 1440
+      },
+      {
+        "county": "Warren",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 42747,
+        "width": 1440
+      },
+      {
+        "county": "Essex",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 225368,
+        "width": 1440
+      },
+      {
+        "county": "Hudson",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 213051,
+        "width": 1440
+      },
+      {
+        "county": "Atlantic",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 94256,
+        "width": 390
+      },
+      {
+        "county": "Bergen",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 319503,
+        "width": 390
+      },
+      {
+        "county": "Burlington",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 168775,
+        "width": 390
+      },
+      {
+        "county": "Camden",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 173676,
+        "width": 390
+      },
+      {
+        "county": "Cape May",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42442,
+        "width": 390
+      },
+      {
+        "county": "Cumberland",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 38841,
+        "width": 390
+      },
+      {
+        "county": "Gloucester",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116265,
+        "width": 390
+      },
+      {
+        "county": "Hunterdon",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63031,
+        "width": 390
+      },
+      {
+        "county": "Mercer",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116456,
+        "width": 390
+      },
+      {
+        "county": "Middlesex",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 248023,
+        "width": 390
+      },
+      {
+        "county": "Monmouth",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 238962,
+        "width": 390
+      },
+      {
+        "county": "Morris",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 199582,
+        "width": 390
+      },
+      {
+        "county": "Ocean",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 224523,
+        "width": 390
+      },
+      {
+        "county": "Passaic",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 136232,
+        "width": 390
+      },
+      {
+        "county": "Salem",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21153,
+        "width": 390
+      },
+      {
+        "county": "Somerset",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 134109,
+        "width": 390
+      },
+      {
+        "county": "Sussex",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 57580,
+        "width": 390
+      },
+      {
+        "county": "Union",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 179217,
+        "width": 390
+      },
+      {
+        "county": "Warren",
+        "mode": "available",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 42747,
+        "width": 390
+      },
+      {
+        "county": "Essex",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 225368,
+        "width": 390
+      },
+      {
+        "county": "Hudson",
+        "mode": "available",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 213051,
+        "width": 390
+      },
+      {
+        "county": "Atlantic County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21463,
+        "width": 390
+      },
+      {
+        "county": "Bergen County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 60336,
+        "width": 390
+      },
+      {
+        "county": "Burlington County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 43959,
+        "width": 390
+      },
+      {
+        "county": "Camden County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 16115,
+        "width": 390
+      },
+      {
+        "county": "Cape May County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 9669,
+        "width": 390
+      },
+      {
+        "county": "Cumberland County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 7241,
+        "width": 390
+      },
+      {
+        "county": "Essex County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 44585,
+        "width": 390
+      },
+      {
+        "county": "Gloucester County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 20121,
+        "width": 390
+      },
+      {
+        "county": "Hudson County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 38992,
+        "width": 390
+      },
+      {
+        "county": "Hunterdon County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 16319,
+        "width": 390
+      },
+      {
+        "county": "Mercer County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 29606,
+        "width": 390
+      },
+      {
+        "county": "Middlesex County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 40340,
+        "width": 390
+      },
+      {
+        "county": "Monmouth County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63954,
+        "width": 390
+      },
+      {
+        "county": "Morris County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 43760,
+        "width": 390
+      },
+      {
+        "county": "Ocean County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 50465,
+        "width": 390
+      },
+      {
+        "county": "Passaic County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 31395,
+        "width": 390
+      },
+      {
+        "county": "Salem County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 3770,
+        "width": 390
+      },
+      {
+        "county": "Somerset County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 35728,
+        "width": 390
+      },
+      {
+        "county": "Sussex County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 11225,
+        "width": 390
+      },
+      {
+        "county": "Union County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42950,
+        "width": 390
+      },
+      {
+        "county": "Warren County",
+        "mode": "in_person_early",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 10651,
+        "width": 390
+      },
+      {
+        "county": "Atlantic County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 14024,
+        "width": 390
+      },
+      {
+        "county": "Bergen County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 52462,
+        "width": 390
+      },
+      {
+        "county": "Burlington County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 39782,
+        "width": 390
+      },
+      {
+        "county": "Camden County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 67809,
+        "width": 390
+      },
+      {
+        "county": "Cape May County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 7647,
+        "width": 390
+      },
+      {
+        "county": "Cumberland County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 9529,
+        "width": 390
+      },
+      {
+        "county": "Essex County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 37704,
+        "width": 390
+      },
+      {
+        "county": "Gloucester County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 25591,
+        "width": 390
+      },
+      {
+        "county": "Hudson County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 17655,
+        "width": 390
+      },
+      {
+        "county": "Hunterdon County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 12735,
+        "width": 390
+      },
+      {
+        "county": "Mercer County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 29127,
+        "width": 390
+      },
+      {
+        "county": "Middlesex County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 77545,
+        "width": 390
+      },
+      {
+        "county": "Monmouth County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 37793,
+        "width": 390
+      },
+      {
+        "county": "Morris County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 33447,
+        "width": 390
+      },
+      {
+        "county": "Ocean County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 39703,
+        "width": 390
+      },
+      {
+        "county": "Passaic County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 17745,
+        "width": 390
+      },
+      {
+        "county": "Salem County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 3410,
+        "width": 390
+      },
+      {
+        "county": "Somerset County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 28747,
+        "width": 390
+      },
+      {
+        "county": "Sussex County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 7914,
+        "width": 390
+      },
+      {
+        "county": "Union County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 29867,
+        "width": 390
+      },
+      {
+        "county": "Warren County",
+        "mode": "mail_returned",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 7169,
+        "width": 390
+      },
+      {
+        "county": "Atlantic",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 94256,
+        "width": 390
+      },
+      {
+        "county": "Bergen",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 319503,
+        "width": 390
+      },
+      {
+        "county": "Burlington",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 168775,
+        "width": 390
+      },
+      {
+        "county": "Camden",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 173676,
+        "width": 390
+      },
+      {
+        "county": "Cape May",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42442,
+        "width": 390
+      },
+      {
+        "county": "Cumberland",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 38841,
+        "width": 390
+      },
+      {
+        "county": "Gloucester",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116265,
+        "width": 390
+      },
+      {
+        "county": "Hunterdon",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63031,
+        "width": 390
+      },
+      {
+        "county": "Mercer",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116456,
+        "width": 390
+      },
+      {
+        "county": "Middlesex",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 248023,
+        "width": 390
+      },
+      {
+        "county": "Monmouth",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 238962,
+        "width": 390
+      },
+      {
+        "county": "Morris",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 199582,
+        "width": 390
+      },
+      {
+        "county": "Ocean",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 224523,
+        "width": 390
+      },
+      {
+        "county": "Passaic",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 136232,
+        "width": 390
+      },
+      {
+        "county": "Salem",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21153,
+        "width": 390
+      },
+      {
+        "county": "Somerset",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 134109,
+        "width": 390
+      },
+      {
+        "county": "Sussex",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 57580,
+        "width": 390
+      },
+      {
+        "county": "Union",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 179217,
+        "width": 390
+      },
+      {
+        "county": "Warren",
+        "mode": "official",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 42747,
+        "width": 390
+      },
+      {
+        "county": "Essex",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 225368,
+        "width": 390
+      },
+      {
+        "county": "Hudson",
+        "mode": "official",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 213051,
+        "width": 390
+      },
+      {
+        "county": "Atlantic",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 94256,
+        "width": 390
+      },
+      {
+        "county": "Bergen",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 319503,
+        "width": 390
+      },
+      {
+        "county": "Burlington",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 168775,
+        "width": 390
+      },
+      {
+        "county": "Camden",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 173676,
+        "width": 390
+      },
+      {
+        "county": "Cape May",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42442,
+        "width": 390
+      },
+      {
+        "county": "Cumberland",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 38841,
+        "width": 390
+      },
+      {
+        "county": "Gloucester",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116265,
+        "width": 390
+      },
+      {
+        "county": "Hunterdon",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63031,
+        "width": 390
+      },
+      {
+        "county": "Mercer",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116456,
+        "width": 390
+      },
+      {
+        "county": "Middlesex",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 248023,
+        "width": 390
+      },
+      {
+        "county": "Monmouth",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 238962,
+        "width": 390
+      },
+      {
+        "county": "Morris",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 199582,
+        "width": 390
+      },
+      {
+        "county": "Ocean",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 224523,
+        "width": 390
+      },
+      {
+        "county": "Passaic",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 136232,
+        "width": 390
+      },
+      {
+        "county": "Salem",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21153,
+        "width": 390
+      },
+      {
+        "county": "Somerset",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 134109,
+        "width": 390
+      },
+      {
+        "county": "Sussex",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 57580,
+        "width": 390
+      },
+      {
+        "county": "Union",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 179217,
+        "width": 390
+      },
+      {
+        "county": "Warren",
+        "mode": "uf_vap",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 42747,
+        "width": 390
+      },
+      {
+        "county": "Essex",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 225368,
+        "width": 390
+      },
+      {
+        "county": "Hudson",
+        "mode": "uf_vap",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 213051,
+        "width": 390
+      },
+      {
+        "county": "Atlantic",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 94256,
+        "width": 390
+      },
+      {
+        "county": "Bergen",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 319503,
+        "width": 390
+      },
+      {
+        "county": "Burlington",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 168775,
+        "width": 390
+      },
+      {
+        "county": "Camden",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 173676,
+        "width": 390
+      },
+      {
+        "county": "Cape May",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 42442,
+        "width": 390
+      },
+      {
+        "county": "Cumberland",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 38841,
+        "width": 390
+      },
+      {
+        "county": "Gloucester",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116265,
+        "width": 390
+      },
+      {
+        "county": "Hunterdon",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 63031,
+        "width": 390
+      },
+      {
+        "county": "Mercer",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 116456,
+        "width": 390
+      },
+      {
+        "county": "Middlesex",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 248023,
+        "width": 390
+      },
+      {
+        "county": "Monmouth",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 238962,
+        "width": 390
+      },
+      {
+        "county": "Morris",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 199582,
+        "width": 390
+      },
+      {
+        "county": "Ocean",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 224523,
+        "width": 390
+      },
+      {
+        "county": "Passaic",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 136232,
+        "width": 390
+      },
+      {
+        "county": "Salem",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 21153,
+        "width": 390
+      },
+      {
+        "county": "Somerset",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 134109,
+        "width": 390
+      },
+      {
+        "county": "Sussex",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 57580,
+        "width": 390
+      },
+      {
+        "county": "Union",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 179217,
+        "width": 390
+      },
+      {
+        "county": "Warren",
+        "mode": "uf_vep",
+        "new_source_fields_checked": true,
+        "no_overflow": true,
+        "source_count": 42747,
+        "width": 390
+      },
+      {
+        "county": "Essex",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 225368,
+        "width": 390
+      },
+      {
+        "county": "Hudson",
+        "mode": "uf_vep",
+        "new_source_fields_checked": false,
+        "no_overflow": true,
+        "source_count": 213051,
+        "width": 390
+      }
+    ],
+    "early_and_mail_provider_frames_preserved": true,
+    "full_complete_download_checked_at_both_widths": {
+      "bytes": 15239791,
+      "immutable": true,
+      "sha256": "f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "page_errors": [],
+    "passed": true,
+    "salem_older_dated_observation_preserved": true,
+    "valid_data_response_dom_or_style_overrides": false
+  },
+  "passed": true,
+  "remaining_work": "Broader all-state/combined-source and geographic/historical implementation; full audit then restrained beautification remain pending.",
+  "retained_native_artifact": {
+    "actual_tar_bytes": 999833600,
+    "both_strictly_below_1000000000": true,
+    "id": 14037436051,
+    "payload_bytes": 997241489
+  },
+  "unchanged_unqueried_production_bodies": {
+    "all_23_unqueried_bodies_unchanged": true,
+    "application_source": "5168917f50f9fcb7f7a8b1c4ca127995142ad8b0",
+    "assets": {
+      "scripts/participation-ap-history.js": {
+        "bytes": 4818,
+        "sha256": "ebc440cb3ca4a67a5ae7b1e40bfdd692084a4553cf766fc378047899be40ca08"
+      },
+      "scripts/participation-calibrated-swing.js": {
+        "bytes": 6433,
+        "sha256": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115"
+      },
+      "scripts/participation-civic-state-demographics.js": {
+        "bytes": 4149,
+        "sha256": "66913f5636120c6de8264ce8756054bbbced194b1d5255ec524c70ebcf0da0e6"
+      },
+      "scripts/participation-counts.js": {
+        "bytes": 8473,
+        "sha256": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de"
+      },
+      "scripts/participation-county-context.js": {
+        "bytes": 1798,
+        "sha256": "c23837f6178c121051fd5d1454f7d27690dc1002baaf7392cc4a983001865c05"
+      },
+      "scripts/participation-coverage.js": {
+        "bytes": 5146,
+        "sha256": "f67b2fc454e16900146b8c54608183b6e56e22c288e1c250bfafe26a2329689a"
+      },
+      "scripts/participation-cps-1996.js": {
+        "bytes": 5447,
+        "sha256": "a5d03985e995bbd975980c7fadd51021ebf8973e9416cb19430a3ccf4d264400"
+      },
+      "scripts/participation-cps-1998.js": {
+        "bytes": 4291,
+        "sha256": "3d526ac6f0e9666bc3c251e2ff5d030ac371a309fc6c2278087f6ccd2940589c"
+      },
+      "scripts/participation-cps-2002.js": {
+        "bytes": 4206,
+        "sha256": "b6e3e532ef46327b9c64f16baea5b7a65cc0a8178316b18be96755609c26e5f5"
+      },
+      "scripts/participation-dataset.js": {
+        "bytes": 3108,
+        "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+      },
+      "scripts/participation-downloads.js": {
+        "bytes": 6746,
+        "sha256": "ffd308df80b1453fb642eab9fa2143473863a43a809c578717a8bbdb0c645203"
+      },
+      "scripts/participation-explorer.js": {
+        "bytes": 256192,
+        "sha256": "0524807fb8cb2c933d8bbba1266a5e64e1648f58b14d4dd8858657952eb1b8a9"
+      },
+      "scripts/participation-geography.js": {
+        "bytes": 51748,
+        "sha256": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3"
+      },
+      "scripts/participation-map-projection.js": {
+        "bytes": 2389,
+        "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+      },
+      "scripts/participation-native-bindings.js": {
+        "bytes": 8671,
+        "sha256": "6d988c642e06c8916572d4b7a18582ba707afa38dab86e7a4ce480a2d52ce274"
+      },
+      "scripts/participation-norc-house.js": {
+        "bytes": 37534,
+        "sha256": "3a2bc620fa95e6211928703778653bdf19f0ea1f56196fd54b22c1413ceb0c3b"
+      },
+      "scripts/participation-resident-context.js": {
+        "bytes": 13801,
+        "sha256": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260"
+      },
+      "scripts/participation-return-drivers.js": {
+        "bytes": 42559,
+        "sha256": "ef1f6a9abd27ddcf2b7d9ddb9140bef2f278c64a325067c738975f944ad597bb"
+      },
+      "scripts/participation-state-demographics.js": {
+        "bytes": 4906,
+        "sha256": "0f3bbab2b430894a6fa91b2b5752e9c2709e86b7015f103160850ec81360afdf"
+      },
+      "scripts/participation-swing.js": {
+        "bytes": 4686,
+        "sha256": "cdae0c2e5f77a2744a5117ff3e995375025041151d5ab1ce657024560739abf8"
+      },
+      "scripts/participation-transition-scenarios.js": {
+        "bytes": 7455,
+        "sha256": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e"
+      },
+      "scripts/provider-county-scopes.js": {
+        "bytes": 3691,
+        "sha256": "32db206ded3bc8d6242d2a47c39ac5acb9dd52ea789291cb464af0bc77cfb99c"
+      },
+      "voter-participation/index.html": {
+        "bytes": 6735546,
+        "sha256": "bc6fe6ed84e62dd1afbf8a71060b9eab8e3d4fada621c6280d3112e6eba7cfd7"
+      }
+    },
+    "native_artifact_reused_from_verified_unchanged_application": true,
+    "passed": true,
+    "source_responses_style_and_dom_not_overridden": true
+  },
+  "website_application_unchanged": "5168917f50f9fcb7f7a8b1c4ca127995142ad8b0",
+  "whole_project_complete": false,
+  "zero_website_builds": true
+}

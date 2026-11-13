@@ -1,0 +1,1091 @@
+{
+  "activation": {
+    "baseline_version": "76878ba43ab52839e7f3dfdd179c8017405eb6971a77c85bc999592435a9a3aa",
+    "candidate_version": "64e9f92adb4f58db0d37f205b3b1b77b03ea7766b74cd922dd5fc5831be31757",
+    "changed_rows": 15,
+    "compiled_rows": 0,
+    "complete_selected_source_queries": true,
+    "jurisdictions": 51,
+    "no_op": true,
+    "parsed_inputs": 0,
+    "publication": {
+      "anonymous_verified_files": 54,
+      "catalog_commit": "25abfa3078931288f7c34dd551e7d2e3a817bc99",
+      "changed_ids": [
+        "participation-counts-2026"
+      ],
+      "datasets_changed": 1,
+      "intermediate_catalog_unchanged": true,
+      "single_catalog_commit_for_all_changes": true,
+      "staged_commit": "8ab4f0aafa7afb1646a10a5b7b7914e3d2b8d353",
+      "status": "published",
+      "unchanged_dataset_entries_preserved": true,
+      "website_builds_started": 0,
+      "worktree_head_or_index_changed": false
+    },
+    "publication_attempts": 1,
+    "recipe": "4fae5e4af4bc9bbf4790a9f8564973be277c4446db6afc97055951c63c53c83c",
+    "source_requests": 0,
+    "status": "changed",
+    "website_builds_started": 0
+  },
+  "complete_context_review": {
+    "bytes": 97350,
+    "id": 743688286,
+    "name": "complete-successor-review.json",
+    "sha256": "b30672a58dd0e0fb81bf70df3e623a6554c6ce7b5e2808e875ff16ca625668a2",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-successor-review.json"
+  },
+  "complete_release": {
+    "assets": [
+      {
+        "bytes": 2881,
+        "id": 743688287,
+        "name": "all-21-county-decisions.csv",
+        "sha256": "2f5c880058f9c30aed8fc2866d6099c4727fbe44391ac92bbebcc53b9d9743a0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/all-21-county-decisions.csv"
+      },
+      {
+        "bytes": 6941,
+        "id": 743688253,
+        "name": "all-51-jurisdictions.json",
+        "sha256": "5d79279a67f0a2a1a75f1a5ee5d7001034f5ea25eb666066416a178ea3d408a3",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/all-51-jurisdictions.json"
+      },
+      {
+        "bytes": 1191,
+        "id": 743688290,
+        "name": "candidate-verification.json",
+        "sha256": "c2e47c3938e6fee954a8e7116d804d0c198152d76567284647e6f134aa6301bb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/candidate-verification.json"
+      },
+      {
+        "bytes": 15239791,
+        "id": 743688317,
+        "name": "complete-analysis.zip",
+        "sha256": "f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-analysis.zip"
+      },
+      {
+        "bytes": 2136,
+        "id": 743688289,
+        "name": "complete-asset-manifest.json",
+        "sha256": "f0d049854a0847edf9d6ad8150e8dbed2a359709e75e969e78717acaee9ec508",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-asset-manifest.json"
+      },
+      {
+        "bytes": 1961659,
+        "id": 743688328,
+        "name": "complete-count-source-packet.zip",
+        "sha256": "04fa0558974404fa49e3de47a6286741b5570072643fb185c0535709484aca56",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-count-source-packet.zip"
+      },
+      {
+        "bytes": 472515,
+        "id": 743688251,
+        "name": "complete-factual-grids.json.gz",
+        "sha256": "01c8cc40c44a6d09c89a893a968edffc53dec57375d48c0a21382db89e3eac53",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-factual-grids.json.gz"
+      },
+      {
+        "bytes": 1268193,
+        "id": 743688323,
+        "name": "complete-native-analysis.zip",
+        "sha256": "ac8bfa0fad2b8ddf32091e2b6d795b71664f46b087c0bb5b1740f198c3d2e1b1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-native-analysis.zip"
+      },
+      {
+        "bytes": 2250664,
+        "id": 743688334,
+        "name": "complete-native-controls.json",
+        "sha256": "7cf0750e1b5ab4a64cd7d49d1f854054a4c6f48fca841c2ab87bad3de6cad638",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-native-controls.json"
+      },
+      {
+        "bytes": 210400,
+        "id": 743688356,
+        "name": "complete-selected-source-query.json",
+        "sha256": "5256fa41710c6c201b0037193b9dbf1bc7330aada7e9c637edf359f08ed6abd0",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-selected-source-query.json"
+      },
+      {
+        "bytes": 111,
+        "id": 743688258,
+        "name": "complete-source-dispositions.json",
+        "sha256": "d1ea00fa366fe5cc03a770f5cba78b0392b227857af7aa6fab97ca7b9c11e9e6",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-source-dispositions.json"
+      },
+      {
+        "bytes": 223049,
+        "id": 743688260,
+        "name": "complete-source-registry.json",
+        "sha256": "a600d85842c886a1e92e4218449c4f427ff9ecf4a15b8646df566cc957a07798",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-source-registry.json"
+      },
+      {
+        "bytes": 97350,
+        "id": 743688286,
+        "name": "complete-successor-review.json",
+        "sha256": "b30672a58dd0e0fb81bf70df3e623a6554c6ce7b5e2808e875ff16ca625668a2",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/complete-successor-review.json"
+      },
+      {
+        "bytes": 2072,
+        "id": 743688320,
+        "name": "offline-replays.json",
+        "sha256": "cc1cb73b2c80ea77a47778277ff10631984ec56f9bd4d2b08698212135b05d48",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/offline-replays.json"
+      },
+      {
+        "bytes": 18189,
+        "id": 743688254,
+        "name": "prepare-inputs.py",
+        "sha256": "23031cdbc39283c124af28730ab156b2f45ea6cf9d3b1e3123f64d7d95b6fb73",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/prepare-inputs.py"
+      },
+      {
+        "bytes": 210499,
+        "id": 743688292,
+        "name": "reviewed-source-observations.json",
+        "sha256": "1418096e9a1c2e4864ee936aecd1e54b91d7d93a5b4a784a610265d5c607bfaf",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-derived-county-refresh-20261113-01/reviewed-source-observations.json"
+      }
+    ],
+    "draft": false,
+    "every_asset_full_body_authenticated_draft_and_anonymous_public_verified": true,
+    "id": 444238558,
+    "immutable": true,
+    "passed": true,
+    "source_commit": "046897e10ac6536544231b0dbc43546e5c394c13",
+    "tag": "participation-nj-derived-county-refresh-20261113-01"
+  },
+  "full_county_decisions": [
+    {
+      "accepted_count": 94292,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:10 PM; other native timestamps: 11/5/26 4:10 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Atlantic",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 21477,
+          "election_day_votes_cast": 57510,
+          "mail_ballots_tallied": 15269
+        }
+      ],
+      "latest_native_clock": "11/12/26 4:41 PM",
+      "latest_queries": [
+        "native-administrative-report-1"
+      ],
+      "previous_components": {
+        "early_votes_cast": 21477,
+        "election_day_votes_cast": 57510,
+        "mail_ballots_tallied": 15305
+      },
+      "record_id": "fa29fa062fa35a5b83469041c862a6e9",
+      "selected_parent": "Atlantic County",
+      "selected_query": "native-administrative-report-1",
+      "signed_count_change": -36,
+      "source_pin": {
+        "bytes": 267636,
+        "sha256": "dc682d4b91e04cb869c00cb236b893e05cb9ebc1948f036b91da1c865aef77eb"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-atlantic-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 94256
+    },
+    {
+      "accepted_count": 319503,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 3:55 PM; other native timestamps: 11/5/2026 3:56:32 PM (timezone not declared); periodic_report page 2: 11/5/26 3:55 PM; other native timestamps: 11/5/2026 3:56:32 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Bergen",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 60373,
+          "election_day_votes_cast": 200273,
+          "mail_ballots_tallied": 58857
+        }
+      ],
+      "latest_native_clock": "11/10/26 5:02 PM",
+      "latest_queries": [
+        "native-administrative-report-2"
+      ],
+      "reason": "Native same-scope numerical count is unchanged; do not publish a metadata-only successor.",
+      "record_id": "a78b4799fcaacffd38b12572d9cbaf95",
+      "status": "preserved_identical_count"
+    },
+    {
+      "accepted_count": 168392,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:27 PM; other native timestamps: 11/5/2026; 11/5/26 4:27 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Burlington",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 43967,
+          "election_day_votes_cast": 82383,
+          "mail_ballots_tallied": 42425
+        }
+      ],
+      "latest_native_clock": "11/12/26 5:20 PM",
+      "latest_queries": [
+        "native-administrative-report-3"
+      ],
+      "previous_components": {
+        "early_votes_cast": 43967,
+        "election_day_votes_cast": 82383,
+        "mail_ballots_tallied": 42042
+      },
+      "record_id": "89b78e3d6c81a67451f8b85e46549b96",
+      "selected_parent": "Burlington County",
+      "selected_query": "native-administrative-report-3",
+      "signed_count_change": 383,
+      "source_pin": {
+        "bytes": 279510,
+        "sha256": "12c2c5cf3ba9e3c58714a1822533bc19a572d259fb3c6db93dda227764eb195b"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-burlington-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 168775
+    },
+    {
+      "accepted_count": 173461,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:25 PM; other native timestamps: 11/5/2026; 11/5/26 4:25 PM (timezone not declared); periodic_report page 2: 11/5/26 4:25 PM; other native timestamps: 11/5/2026; 11/5/26 4:25 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Camden",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 16135,
+          "election_day_votes_cast": 85458,
+          "mail_ballots_tallied": 72083
+        }
+      ],
+      "latest_native_clock": "11/10/26 4:16 PM",
+      "latest_queries": [
+        "native-administrative-report-4"
+      ],
+      "previous_components": {
+        "early_votes_cast": 16135,
+        "election_day_votes_cast": 85458,
+        "mail_ballots_tallied": 71868
+      },
+      "record_id": "4ea6578b646e1b9ef8f12cbec17044b7",
+      "selected_parent": "Camden County",
+      "selected_query": "native-administrative-report-4",
+      "signed_count_change": 215,
+      "source_pin": {
+        "bytes": 131328,
+        "sha256": "48112d41fdc0b3a6f4a295d6c2a04c628da80d7ddfed38a273464dd9c4f4c804"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-camden-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 173676
+    },
+    {
+      "accepted_count": 42442,
+      "accepted_measure": "Ballots Cast - Total",
+      "accepted_source_clock": {
+        "literal": "Election Summary - 11/12/2026 03:34PM",
+        "qualification": "native_printed_summary_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Cape May",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 9678,
+          "election_day_votes_cast": 24033,
+          "mail_ballots_tallied": 8396
+        }
+      ],
+      "latest_native_clock": "11/12/26 3:37 PM",
+      "latest_queries": [
+        "native-administrative-report-5"
+      ],
+      "reason": "Accepted native all-mode summary42442 is not the42107 provisional-excluded subtotal.",
+      "record_id": "aeaf71008903a11ec1f7411d9dbcbce8",
+      "status": "preserved_different_measure"
+    },
+    {
+      "accepted_count": 38597,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:35 PM; other native timestamps: 11/5/2026; 11/5/26 4:35 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Cumberland",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 7244,
+          "election_day_votes_cast": 21858,
+          "mail_ballots_tallied": 9739
+        }
+      ],
+      "latest_native_clock": "11/10/26 2:16 PM",
+      "latest_queries": [
+        "native-administrative-report-6"
+      ],
+      "previous_components": {
+        "early_votes_cast": 7243,
+        "election_day_votes_cast": 21615,
+        "mail_ballots_tallied": 9739
+      },
+      "record_id": "14c3a7d4538756c8269ed98a0ade3745",
+      "selected_parent": "Cumberland County",
+      "selected_query": "native-administrative-report-6",
+      "signed_count_change": 244,
+      "source_pin": {
+        "bytes": 262382,
+        "sha256": "b2c0bb5d5c8a49cb4edfe5d733299698a22cfda3b6e374c46b55a6f4a4c6f765"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-cumberland-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 38841
+    },
+    {
+      "accepted_count": 225368,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; provisional excluded",
+      "accepted_source_clock": {
+        "literal": "11/10/26 3:10 PM",
+        "qualification": "native_report_table_literal_timezone_undeclared",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Essex",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 45282,
+          "election_day_votes_cast": 140183,
+          "mail_ballots_tallied": 39903
+        }
+      ],
+      "latest_native_clock": "11/10/26 3:10 PM",
+      "latest_queries": [
+        "native-administrative-report-7"
+      ],
+      "reason": "Native same-scope numerical count is unchanged; do not publish a metadata-only successor.",
+      "record_id": "173137fa95e4f81256d67f4379c73b00",
+      "status": "preserved_identical_count"
+    },
+    {
+      "accepted_count": 114579,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 2:50 PM; other native timestamps: 11/5/2026; 11/5/26 2:50 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Gloucester",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 20145,
+          "election_day_votes_cast": 68967,
+          "mail_ballots_tallied": 27153
+        }
+      ],
+      "latest_native_clock": "11/12/26 3:23 PM",
+      "latest_queries": [
+        "native-administrative-report-8"
+      ],
+      "previous_components": {
+        "early_votes_cast": 20145,
+        "election_day_votes_cast": 68967,
+        "mail_ballots_tallied": 25467
+      },
+      "record_id": "a4fbe277b2d08c6c39eea717f6c8a198",
+      "selected_parent": "Gloucester County",
+      "selected_query": "native-administrative-report-8",
+      "signed_count_change": 1686,
+      "source_pin": {
+        "bytes": 48546,
+        "sha256": "b582b056c93363b6c200468aa412ae1c3794af68731c9669ed2729e1a1d58453"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-gloucester-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 116265
+    },
+    {
+      "accepted_count": 213051,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; provisional excluded",
+      "accepted_source_clock": {
+        "literal": "11/10/26 12:21 PM",
+        "qualification": "native_report_table_literal_timezone_undeclared",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Hudson",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 38978,
+          "election_day_votes_cast": 155273,
+          "mail_ballots_tallied": 18800
+        }
+      ],
+      "latest_native_clock": "11/10/26 12:21 PM",
+      "latest_queries": [
+        "native-administrative-report-9"
+      ],
+      "reason": "Native same-scope numerical count is unchanged; do not publish a metadata-only successor.",
+      "record_id": "54c437ec62fda2c38d1d6e3250ace28b",
+      "status": "preserved_identical_count"
+    },
+    {
+      "accepted_count": 63031,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 12:40 PM; other native timestamps: 11/5/2026; 11/5/26 12:40 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Hunterdon",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 16319,
+          "election_day_votes_cast": 33180,
+          "mail_ballots_tallied": 13532
+        }
+      ],
+      "latest_native_clock": "11/10/26 1:15 PM",
+      "latest_queries": [
+        "native-administrative-report-10"
+      ],
+      "reason": "Native same-scope numerical count is unchanged; do not publish a metadata-only successor.",
+      "record_id": "0af52e1a61f862eb900f6c2d70548c0d",
+      "status": "preserved_identical_count"
+    },
+    {
+      "accepted_count": 116165,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:32 PM; other native timestamps: 11/5/2026; 11/5/26 4:32 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Mercer",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 29660,
+          "election_day_votes_cast": 55326,
+          "mail_ballots_tallied": 31470
+        }
+      ],
+      "latest_native_clock": "11/10/26 5:54 PM",
+      "latest_queries": [
+        "native-administrative-report-11"
+      ],
+      "previous_components": {
+        "early_votes_cast": 29660,
+        "election_day_votes_cast": 55326,
+        "mail_ballots_tallied": 31179
+      },
+      "record_id": "58b2177f620276a051ef14887cb62fa3",
+      "selected_parent": "Mercer County",
+      "selected_query": "native-administrative-report-11",
+      "signed_count_change": 291,
+      "source_pin": {
+        "bytes": 107824,
+        "sha256": "6a22a0a14a0148160ed638d99fa665bc39995b5ddac87f49c133cb52db44e7bb"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-mercer-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 116456
+    },
+    {
+      "accepted_count": 247881,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 9:39 PM; other native timestamps: 11/5/26 9:39 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Middlesex",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 40418,
+          "election_day_votes_cast": 123163,
+          "mail_ballots_tallied": 84442
+        }
+      ],
+      "latest_native_clock": "11/11/26 8:28 PM",
+      "latest_queries": [
+        "native-administrative-report-12"
+      ],
+      "previous_components": {
+        "early_votes_cast": 40418,
+        "election_day_votes_cast": 123163,
+        "mail_ballots_tallied": 84300
+      },
+      "record_id": "1b7661d14f59c888f2d2f2960ed3a1bd",
+      "selected_parent": "Middlesex County",
+      "selected_query": "native-administrative-report-12",
+      "signed_count_change": 142,
+      "source_pin": {
+        "bytes": 101261,
+        "sha256": "c15065d7f3b2b2e0b0cf38e3527cd6a5923fb062904a005cb486cc1a4f1601ec"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-middlesex-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 248023
+    },
+    {
+      "accepted_count": 238271,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 9:01 PM; other native timestamps: 11/5/2026; 11/5/26 9:01 PM (timezone not declared); periodic_report page 2: 11/5/26 9:01 PM; other native timestamps: 11/5/2026; 11/5/26 9:01 PM (timezone not declared); periodic_report page 3: 11/5/26 9:01 PM; other native timestamps: 11/5/2026; 11/5/26 9:01 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Monmouth",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 60268,
+          "election_day_votes_cast": 138192,
+          "mail_ballots_tallied": 40502
+        }
+      ],
+      "latest_native_clock": "11/12/26 4:49 PM",
+      "latest_queries": [
+        "native-administrative-report-13"
+      ],
+      "previous_components": {
+        "early_votes_cast": 60268,
+        "election_day_votes_cast": 138192,
+        "mail_ballots_tallied": 39811
+      },
+      "record_id": "9c3a3795ae9d3c513c0bd1baf1bdba16",
+      "selected_parent": "Monmouth County",
+      "selected_query": "native-administrative-report-13",
+      "signed_count_change": 691,
+      "source_pin": {
+        "bytes": 166286,
+        "sha256": "bc57d19bd1d7249ce0cc81cd4fe439df9d9a4f9ab1cb486129cd0b75f763ecfb"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-monmouth-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 238962
+    },
+    {
+      "accepted_count": 199140,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:04 PM; other native timestamps: 11/5/2026; 11/5/26 4:04 PM (timezone not declared); periodic_report page 2: 11/5/26 4:04 PM; other native timestamps: 11/5/2026; 11/5/26 4:04 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Morris",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 43773,
+          "election_day_votes_cast": 122457,
+          "mail_ballots_tallied": 33352
+        }
+      ],
+      "latest_native_clock": "11/12/26 3:23 PM",
+      "latest_queries": [
+        "native-administrative-report-14"
+      ],
+      "previous_components": {
+        "early_votes_cast": 43773,
+        "election_day_votes_cast": 122015,
+        "mail_ballots_tallied": 33352
+      },
+      "record_id": "b3810c600b2e8de0532486960b1d0bff",
+      "selected_parent": "Morris County",
+      "selected_query": "native-administrative-report-14",
+      "signed_count_change": 442,
+      "source_pin": {
+        "bytes": 1263797,
+        "sha256": "09d0c4b3caaca3acd99f68ccf07292492679eae3a9e4a14c1c381004f4843f2a"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-morris-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 199582
+    },
+    {
+      "accepted_count": 224275,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 6:34 PM; other native timestamps: 11/5/2026; 11/5/26 6:34 PM (timezone not declared); periodic_report page 2: 11/5/26 6:34 PM; other native timestamps: 11/5/2026; 11/5/26 6:34 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Ocean",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 50508,
+          "election_day_votes_cast": 131097,
+          "mail_ballots_tallied": 42918
+        }
+      ],
+      "latest_native_clock": "11/11/26 5:53 PM",
+      "latest_queries": [
+        "native-administrative-report-24"
+      ],
+      "previous_components": {
+        "early_votes_cast": 50508,
+        "election_day_votes_cast": 131097,
+        "mail_ballots_tallied": 42670
+      },
+      "record_id": "bb6db1782e3276d0ea7802111ad452e2",
+      "selected_parent": "Ocean County",
+      "selected_query": "native-administrative-report-24",
+      "signed_count_change": 248,
+      "source_pin": {
+        "bytes": 134994,
+        "sha256": "bd8da0122976b2f516c8539cda7146cdacc5b66d03418979dd21af2348f8379c"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-ocean-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 224523
+    },
+    {
+      "accepted_count": 136195,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:12 PM; other native timestamps: 11/5/2026; 11/5/26 4:12 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Passaic",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 31431,
+          "election_day_votes_cast": 87737,
+          "mail_ballots_tallied": 17064
+        }
+      ],
+      "latest_native_clock": "11/11/26 8:23 PM",
+      "latest_queries": [
+        "native-administrative-report-25"
+      ],
+      "previous_components": {
+        "early_votes_cast": 31431,
+        "election_day_votes_cast": 87700,
+        "mail_ballots_tallied": 17064
+      },
+      "record_id": "0cd5555f73c7e1980c2068c8cfbe886e",
+      "selected_parent": "Passaic County",
+      "selected_query": "native-administrative-report-25",
+      "signed_count_change": 37,
+      "source_pin": {
+        "bytes": 120214,
+        "sha256": "967df27882648d4d32bc39add9525dcdf9145738375cad153b27a45442f35783"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-passaic-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 136232
+    },
+    {
+      "accepted_count": 21153,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 3:59 PM; other native timestamps: 11/5/2026; 11/5/26 3:59 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Salem",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 3705,
+          "election_day_votes_cast": 13820,
+          "mail_ballots_tallied": 3628
+        },
+        {
+          "early_votes_cast": 3705,
+          "election_day_votes_cast": 13820,
+          "mail_ballots_tallied": 3403
+        },
+        {
+          "early_votes_cast": 3705,
+          "election_day_votes_cast": 13820,
+          "mail_ballots_tallied": 3628
+        }
+      ],
+      "latest_native_clock": "11/10/26 5:03 PM",
+      "latest_queries": [
+        "native-administrative-report-26",
+        "native-administrative-report-27",
+        "native-administrative-report-28"
+      ],
+      "reason": "Conflicting same-clock native component vectors; do not select by page order.",
+      "record_id": "aee2ca1f0245ec8570fcc0a26263d460",
+      "status": "held_same_clock_conflict"
+    },
+    {
+      "accepted_count": 129899,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 11:21 AM; other native timestamps: 11/5/2026; 11/5/26 11:21 AM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Somerset",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 35754,
+          "election_day_votes_cast": 67119,
+          "mail_ballots_tallied": 31236
+        }
+      ],
+      "latest_native_clock": "11/11/26 6:47 PM",
+      "latest_queries": [
+        "native-administrative-report-29"
+      ],
+      "previous_components": {
+        "early_votes_cast": 35754,
+        "election_day_votes_cast": 66599,
+        "mail_ballots_tallied": 27546
+      },
+      "record_id": "da4533d37595b58ac4092ab29e53ce1d",
+      "selected_parent": "Somerset County",
+      "selected_query": "native-administrative-report-29",
+      "signed_count_change": 4210,
+      "source_pin": {
+        "bytes": 111045,
+        "sha256": "ae389d843df98530cdf9ff2c88aa754c063d960cf4df8724b5f8babf2c5e06e5"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-somerset-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 134109
+    },
+    {
+      "accepted_count": 56838,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:15 PM; other native timestamps: 11/5/2026; 11/5/26 4:15 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Sussex",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 11298,
+          "election_day_votes_cast": 38038,
+          "mail_ballots_tallied": 8244
+        }
+      ],
+      "latest_native_clock": "11/12/26 1:07 PM",
+      "latest_queries": [
+        "native-administrative-report-30"
+      ],
+      "previous_components": {
+        "early_votes_cast": 11298,
+        "election_day_votes_cast": 38037,
+        "mail_ballots_tallied": 7503
+      },
+      "record_id": "1d35a9ce3b9d96be8c2a08d106d34637",
+      "selected_parent": "Sussex County",
+      "selected_query": "native-administrative-report-30",
+      "signed_count_change": 742,
+      "source_pin": {
+        "bytes": 884901,
+        "sha256": "b4df2a7604e7138651d6d4801826779620d82b1feacc5461484f9f263e89babf"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-sussex-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 57580
+    },
+    {
+      "accepted_count": 176356,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 3:03 PM; other native timestamps: 11/5/2026; 11/5/26 3:03 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Union",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 42998,
+          "election_day_votes_cast": 103785,
+          "mail_ballots_tallied": 32434
+        }
+      ],
+      "latest_native_clock": "11/12/26 2:56 PM",
+      "latest_queries": [
+        "native-administrative-report-31"
+      ],
+      "previous_components": {
+        "early_votes_cast": 42998,
+        "election_day_votes_cast": 103766,
+        "mail_ballots_tallied": 29592
+      },
+      "record_id": "35349a49183fe08aaee7e5e0b60528da",
+      "selected_parent": "Congressional TOTALS",
+      "selected_query": "native-administrative-report-31",
+      "signed_count_change": 2861,
+      "source_pin": {
+        "bytes": 43765,
+        "sha256": "f3861a9a9a0f588be136b78b3830c07d4d19e5162b5e8fa0605205a942149063"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-union-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 179217
+    },
+    {
+      "accepted_count": 42329,
+      "accepted_measure": "Derived EV + ED + mail-tallied subtotal; no provisional-issued counts added",
+      "accepted_source_clock": {
+        "literal": "periodic_report page 1: 11/5/26 4:04 PM; other native timestamps: 11/5/2026; 11/5/26 4:04 PM (timezone not declared)",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "all_mode_or_unique_people_qualified": false,
+      "approved_context_unchanged": true,
+      "county": "Warren",
+      "latest_component_vectors": [
+        {
+          "early_votes_cast": 10656,
+          "election_day_votes_cast": 24121,
+          "mail_ballots_tallied": 7970
+        }
+      ],
+      "latest_native_clock": "11/12/26 4:06 PM",
+      "latest_queries": [
+        "native-administrative-report-32"
+      ],
+      "previous_components": {
+        "early_votes_cast": 10656,
+        "election_day_votes_cast": 24121,
+        "mail_ballots_tallied": 7552
+      },
+      "record_id": "852bca9dde7deb9f4a0e61256dac9568",
+      "selected_parent": "Warren County",
+      "selected_query": "native-administrative-report-32",
+      "signed_count_change": 418,
+      "source_pin": {
+        "bytes": 112931,
+        "sha256": "beaa8b50554f1c65d1526bdaec8e3dd2db29db1f6e60286eb00e26f2fc844469"
+      },
+      "source_url": "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/2026-1112-warren-periodic-report.pdf",
+      "status": "qualified_same_measure_successor",
+      "successor_count": 42747
+    }
+  ],
+  "independent_verification": {
+    "all_32_contexts_and_21_counties_checked": true,
+    "all_identities_geometry_measures_denominators_rate_holds_preserved": true,
+    "archive": {
+      "bytes": 15239791,
+      "sha256": "f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c"
+    },
+    "cached_noop_preserves_all_files_bytes_and_mtimes": 72,
+    "candidate_version": "64e9f92adb4f58db0d37f205b3b1b77b03ea7766b74cd922dd5fc5831be31757",
+    "complete_native_analysis_nested": true,
+    "complete_source_packet": {
+      "bytes": 1961659,
+      "sha256": "04fa0558974404fa49e3de47a6286741b5570072643fb185c0535709484aca56"
+    },
+    "every_complete_archive_member_verified": 141,
+    "independent_native_comparisons": 673,
+    "native991_and_model33_not_changed": true,
+    "other_50_shards_and_current_snapshot_byte_exact": true,
+    "passed": true,
+    "same_clock_salem_conflict_held": true,
+    "signed_changed_observation_sum_not_statewide_total": 12574,
+    "source_negative_delta_retained": true,
+    "source_packet_member": "originals/source-packets/reviewed-administrative-component-refresh.zip",
+    "source_requests": 0,
+    "union_congressional_scope_including_overseas_preserved": true,
+    "untouched_NJ_records": 92,
+    "updated_counties": 15
+  },
+  "measure": "Early Voting Votes Cast + Election Day Votes Cast + Vote-by-Mail Ballots Tallied; provisional excluded.",
+  "native_version_and_model33_and_house_outputs_unchanged": true,
+  "observed_staying_home_or_new_voters": false,
+  "offline_reproductions": {
+    "replay-canonical/offline-verification.json": {
+      "all_archive_members_verified": 141,
+      "all_source_packet_bytes_exact": true,
+      "archive": {
+        "bytes": 15239791,
+        "sha256": "f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c"
+      },
+      "complete_outputs_checked": 57,
+      "hash_seed": "19",
+      "isolated_stdlib_only": true,
+      "network_dns_and_children_blocked": true,
+      "passed": true,
+      "sdk": false,
+      "tests": 69,
+      "three_offline_gates_probed": true,
+      "unexpected_external_operations": 0
+    },
+    "replay-final-19/offline-verification.json": {
+      "all_archive_members_verified": 141,
+      "all_source_packet_bytes_exact": true,
+      "archive": {
+        "bytes": 15239791,
+        "sha256": "f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c"
+      },
+      "complete_outputs_checked": 57,
+      "hash_seed": "19",
+      "isolated_stdlib_only": true,
+      "network_dns_and_children_blocked": true,
+      "passed": true,
+      "sdk": false,
+      "tests": 69,
+      "three_offline_gates_probed": true,
+      "unexpected_external_operations": 0
+    },
+    "replay-final-73/offline-verification.json": {
+      "all_archive_members_verified": 141,
+      "all_source_packet_bytes_exact": true,
+      "archive": {
+        "bytes": 15239791,
+        "sha256": "f470eeb3229d1779e519147ceaeb0911c7d2df86f3c0261b71cc41ae71be335c"
+      },
+      "complete_outputs_checked": 57,
+      "hash_seed": "73",
+      "isolated_stdlib_only": true,
+      "network_dns_and_children_blocked": true,
+      "passed": true,
+      "sdk": false,
+      "tests": 69,
+      "three_offline_gates_probed": true,
+      "unexpected_external_operations": 0
+    },
+    "replay-final-sdk/offline-verification.json": {
+      "all_archive_members_verified": 23,
+      "all_source_packet_bytes_exact": true,
+      "archive": {
+        "bytes": 1961659,
+        "sha256": "04fa0558974404fa49e3de47a6286741b5570072643fb185c0535709484aca56"
+      },
+      "complete_outputs_checked": 1,
+      "hash_seed": "19",
+      "isolated_stdlib_only": true,
+      "network_dns_and_children_blocked": true,
+      "passed": true,
+      "sdk": true,
+      "tests": 0,
+      "three_offline_gates_probed": true,
+      "unexpected_external_operations": 0
+    }
+  },
+  "passed": true,
+  "processing_source": "046897e10ac6536544231b0dbc43546e5c394c13",
+  "processing_tests": {
+    "files": [
+      "tests/test_participation_batch.py",
+      "tests/test_participation_batch_publish.py",
+      "tests/test_html_statistics.py",
+      "tests/test_state_reporting_successor.py",
+      "tests/test_native_count_refresh.py",
+      "tests/test_native_tabular.py"
+    ],
+    "passed": true,
+    "tests": 75
+  },
+  "proof_pins": {
+    "atomic-publication-result.json": {
+      "bytes": 1279,
+      "sha256": "ef3daf440747d121335f2d27f64c284d4b5ad6154f05cbca21c7051e73d1756a"
+    },
+    "candidate-verification-final.json": {
+      "bytes": 1191,
+      "sha256": "c2e47c3938e6fee954a8e7116d804d0c198152d76567284647e6f134aa6301bb"
+    },
+    "canonical-code-sync.json": {
+      "bytes": 1345,
+      "sha256": "138a67c662b56f7db0d677b3e7207c12e98f4642cbac73cb6bf62e01975d72de"
+    },
+    "canonical-tests.json": {
+      "bytes": 304,
+      "sha256": "869e739210914da0ecfa71770093cc9eafb796af08327dd6b313f744faf60ded"
+    },
+    "production-common.json": {
+      "bytes": 36487,
+      "sha256": "500906b37ecbc0028310cac678e70bc6b05500d737d3f0df177111c0fc20980b"
+    },
+    "production-new-jersey.json": {
+      "bytes": 48046,
+      "sha256": "06dc9d6b365f2c2eb5a31de3c69815015eab2288322efdff9b8dc5f81efbddae"
+    },
+    "production-source-bytes.json": {
+      "bytes": 3906,
+      "sha256": "6c768ba16e3026552fe430757dd95ef9b0de67f36b129f58e7c1f3eeeb368a83"
+    },
+    "public-source-verification.json": {
+      "bytes": 567,
+      "sha256": "ee8b01663174ad8dd726fa663b9db7f07d1e9ccff9ce6403dc3826cbcdbcc5b4"
+    },
+    "release/release-publication.json": {
+      "bytes": 5873,
+      "sha256": "61259bc7a434ebb35d7f5a6423c2cbcd2bac5af43115213f8d624adb2c209380"
+    },
+    "replay-canonical/offline-verification.json": {
+      "bytes": 464,
+      "sha256": "81f010c485cccee1ca9af9923dd4b256d237b56ab7d073d39a5bf895b5e9f0c5"
+    },
+    "replay-final-19/offline-verification.json": {
+      "bytes": 464,
+      "sha256": "81f010c485cccee1ca9af9923dd4b256d237b56ab7d073d39a5bf895b5e9f0c5"
+    },
+    "replay-final-73/offline-verification.json": {
+      "bytes": 464,
+      "sha256": "72b1279993729d1c1589ade1efb98868ba03ff8cf230bbd21d2df35215a77885"
+    },
+    "replay-final-sdk/offline-verification.json": {
+      "bytes": 459,
+      "sha256": "379e5f14da9c3ac9bb8c531cd21d88f85cfbf98bd2b3c504ae261523ce396abf"
+    }
+  },
+  "public_replay_scope": "Full permitted factual grids, all numerical queries and exact component bindings; not re-extraction of excluded publisher PDF templates or image originals.",
+  "scope": "Fifteen same-measure New Jersey county administrative subtotal successors.",
+  "signed_changed_observation_sum_not_statewide_total": 12574,
+  "source_native_all_mode_or_unique_voter_promotion": false,
+  "whole_project_complete": false
+}

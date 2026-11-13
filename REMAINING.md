@@ -13,6 +13,47 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## New Jersey: 15 administrative subtotal successors verified live
+
+The existing shared routine now updates **15 county observations** from the
+already compiled native reports, retaining all21 county decisions and32 dated
+contexts. These remain **early-voting + Election Day + tallied-mail subtotals,
+provisional excluded**, not native all-mode totals, unique voters or observed
+staying home. Atlantic decreases36 to94,256; Morris increases442 to199,582.
+Union's accepted congressional parent becomes179,217; its different municipal
+parent178,802 is not substituted or added. The12,574 sum of changed observations
+is not a statewide participation total or new-voter count.
+
+Salem's three same-clock conflicting reports remain held; its older dated
+observation is preserved. Cape May's42,442 native all-mode summary, Bergen,
+Hunterdon, Essex and Hudson remain unchanged. Other92 NJ records, all50 other
+state/DC shards, the statewide snapshot, provider modes, native991 bindings,
+model33, NORC weights and all nine House family/profile outputs remain exact.
+No new registration denominator, rate, geography or local demographic model
+is introduced.
+
+Shared source046897e is published and guardedly persistent;75 affected tests
+pass in both maintained and canonical trees. The distinct component-sum binding
+checks one native parent, distinct columns, physical encoded headers or explicit
+pinned visual review, every count mirror and unchanged measure semantics.
+Both fresh69test/57output offline replays, actual canonical replay and isolated
+source SDK pass. All16 full assets in immutable release444238558 are verified
+authenticated/draft then anonymously/public. The complete15,239,791-byte/
+141-member packet includes every sufficient input, full numerical query and
+code/test/result, plus the entire accepted native analysis; public replay does
+not claim extraction of excluded publisher templates.
+
+Catalog25abfa3 activates counts64e9f92 after54 immutable body checks, with zero
+source requests, re-parses or website builds. Actual production passes306
+bindings/51 selectors,14 statewide reference cases,100 NC county and432 WY
+unit selections at both widths, plus252 NJ county selections/six modes and120
+changed-source checks. Both full download hashes pass; desktop/mobile images
+reviewed. Unqueried production HTML and all22 scripts remain byte-identical to
+accepted website5168917. Full downloads and acceptance records are linked in
+[the data guide](docs/DATA.md#current-new-jersey-administrative-subtotal-refresh).
+This finishes bounded652, not the broader all-state/combined-source work.
+Audit636 and then beautification637 remain queued after the real prerequisites.
+
 ## Oregon state reference and model revision 33
 
 The genuine Oregon successor is now scientifically compiled, published and
