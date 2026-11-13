@@ -8,6 +8,44 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Newer county House source: complete reconciliation downloads
+
+This is a full secondary-source diagnostic, **not an updated model endpoint or
+turnout dataset**. It compares all3,143 factual source units at both recent
+snapshots with all3,127 older exact reference counties, preserving3,155 union
+queries across50 states plusD.C. and all3,084 sourceh24/h26 pairs.
+The exact reference remains49 states: all16 Maine county allocations stay held.
+
+| Complete download | Contents |
+|---|---|
+| [Complete scientific packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/complete-analysis.zip) | 2,066,895bytes/24members; both complete selected factual snapshots, all12,405 reference candidate rows, district controls/audits, recipes/receipts, code/tests and all six numerical outputs |
+| [Complete county query JSON](https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/county-concordance.json.gz) | Every3,155 unit, native old/newh24/h26 fields, exact reference row, changed fields, rounding intervals and holds |
+| [Complete county query CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/county-concordance.csv.gz) | Same full query set; structured fields remain JSON and explicit nulls differ from native zeros |
+| [All51jurisdiction queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/state-queries.json) | Complete per-state record/status/change counts; no sums of reconstructed party votes |
+| [All source-change queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/source-changes.json.gz) | All3,143 native unit dispositions,175 changed contest totals/20 states and12 reporting-only changes |
+| [All exact candidate-vector checks](https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/reference-candidate-checks.json.gz) | All3,127 exact D/R/O reference vectors checked against the complete12,405 native candidate rows |
+
+Both fresh full-archive extractions pass16 packaged tests and reproduce every
+complete numerical output offline with network/DNS/children blocked/probed,
+zero attempts. All nine release443915242 assets are authenticated/draft then
+anonymously/public full-byte verified. Processing source03fb69f passes26 focused
+repository tests. No publisher prose/application code, private voters or survey
+respondents are included. Earlier complete downloads remain available.
+Historical bounds include reviewed upstream two-decimal rounding before the
+one-decimal publication stage; all2,777 intervals and6,172 current-share checks
+pass independent exact-decimal verification. The previous release443910979 is
+explicitly superseded for narrower historical intervals, with all assets retained.
+
+There are1,180 contest-total disagreements and two same-total party-share
+disagreements against the older exact reference. Washington TN has opposite
+party-margin signs, Howard IA needs native reconciliation, and Alexander IL's
+secondary1,601 does not repair its older exact zero. Original IL-12 route87123
+returned403 and is stopped. AK/CT geography and ME-02 holds are retained.
+Rounded percentages never become exact candidate counts; `sp24` is not
+House-to-House swing. Existing official HI/WY precedence, nine family/profile
+endpoints, NORC fits/weights,33conditional/17held masks and website/count
+versions remain unchanged. See [the full source ledger](../SOURCES.md#2026-newer-county-house-source-concordance).
+
 ## Vermont native turnout refresh: complete downloads
 
 The full native report now supplies all247 existing municipalities, preserving

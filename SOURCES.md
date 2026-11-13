@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Newer secondary county House comparison | [Complete all-unit queries, exact reference vectors and unresolved primary conflicts](#2026-newer-county-house-source-concordance) |
 | Current native municipal refresh | [Vermont full turnout report, 247 municipal observations and explicit registration-frame review](#2026-vermont-native-turnout-report-and-municipal-refresh) |
 | Current native county-count refresh | [Cape May same-measure successor, all51jurisdiction retention and live acceptance](#2026-native-cape-may-count-refresh) |
 | New Jersey complete native tables | [All21county files, distinct administrative/contest frames and unresolved source conflicts](#2026-new-jersey-complete-native-pdf-measures) |
@@ -43,6 +44,78 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 newer county House source concordance
+
+The acquired immutable combined county snapshot
+`26eb70ea95056fcb4af64146ae63eb82b71e3beb` is6,331,085bytes, SHA256
+`3665656ea459c44dd4b25e168232ccb7a4b26978ba4f03552cd2957b5ad89ef5`,
+Gitblob`fb0fe1b30f0b01b83c06bc28b5b8e30af7335882`.
+Its commit time is November13,2026 04:16:06UTC; acquisition is06:39:54.318249UTC.
+This is the newest acquired snapshot, not an assertion that the publisher
+cannot subsequently revise it. The complete source receipt is retained.
+
+The same-commit builder was inspected for source semantics: county current
+D/R/I shares are rounded to two decimals,2024 shares to one; some2024 shares
+first pass through two-decimal rounding. The reviewed historical recipe
+therefore conservatively includes both rounding stages for mixed source origins,
+not just the last displayed decimal. The emitted margin
+is derived from rounded shares. `sp24` compares the2026 office margin with the
+2024 presidential margin, not the2024 House result. D/R/I need not sum to100;
+I is not assumed to be all Other. Expected/remaining/reporting fields are not
+population denominators or nonvoter counts. No exact party counts are recovered
+from percentages, even when an integer happens to fit a rounding interval.
+
+The shared reviewed comparator retains every3,143 factual source unit for both
+snapshots, all3,127 older exact reference counties, all12,405 native county
+candidate rows,435district controls/audits, source receipts and precision recipe.
+There are3,155 union queries across all50 states plusD.C., including28 source-
+only and12 reference-only units. Sourceh24/h26 presence is3,086/3,112 with3,084
+pairs; h24 fields do not change between the two recent source snapshots.
+All3,127 exact reference party vectors match their full native candidate rows.
+Reference county coverage remains49 states; Maine's16 counties are missing
+because of its existing ME-02 candidate/unlocated-vector hold, not zero votes.
+
+Compared with8049f27,187h26 records change:175contest totals across20 states
+and12reporting-field-only changes. Compared with the older exact reference:
+1,904 arithmetic-compatible rows,1,180 contest-total differences,48 AK/CT
+geographic holds,16 missing reference units,one explicit reference zero,two
+same-total rounded-share disagreements andfour missing secondary results.
+Closed precision intervals are conservative arithmetic diagnostics, not
+independent source validation, candidate/round matching or behavioral eligibility.
+
+The important exceptions remain numerical queries, not automatic corrections:
+Alexander IL1,601 versus old exact0; Howard IA equal3,702 but differing party
+shares; Washington TN equal40,682 but opposite D-R margin signs. The TN export
+copies literal native candidates and verifies their vectors, rather than
+assigning votes by position. Its older D23,535/R16,010/O1,137 is not silently
+swapped using the secondary rounded D39.35/R57.85. Declared original IL-12
+`https://civicapi.org/api/v2/race/87123` returned actual403 through the shared
+stop-aware store; stopped with no alternate route. AK/CT geography and ME-02
+holds remain. Prior qualified official HI/WY endpoints retain precedence.
+
+Processing source03fb69f passes26 focused tests. Both fresh archive extractions
+pass16 packaged tests and reproduce all six full numerical outputs offline
+with network/DNS/children blocked/probed, zero attempts. Independent decimal
+checks agree for all6,172 current-share comparisons and all2,777 historical
+margin intervals. Immutable release443915242/tag
+`participation-county-return-concordance-20261113-02`: all nine assets full-byte
+verified authenticated/draft then anonymously/public. Complete ZIP2,066,895bytes/
+24members, SHA256
+`e4e9014cd2abf7f948e54bebbe296b20af998f792e32ffdb35bc6db2c7163c3b`.
+The original publisher prose/application code is excluded; all sufficient
+selected factual inputs, native values, queries, code and tests are included.
+Earlier release443910979 is explicitly superseded because its historical
+intervals omitted upstream rounding; all its assets are preserved, not replaced.
+Current count/share classifications and model endpoints are unchanged by this fix.
+
+[Complete downloads](docs/DATA.md#newer-county-house-source-complete-reconciliation-downloads)
+and [acceptance record](data/participation-access/20261113-county-concordance-02/observations.json).
+No new exact endpoint, ballot/participation observation, model variant, fitted
+NORC revision or study weight is claimed. Nine existing family/profile outputs,
+33conditional/17held masks and count/native/website versions are unchanged.
+Native conflict resolution, broader implementation and final audit/beautification
+remain open.
 
 ## 2026 Vermont native turnout report and municipal refresh
 

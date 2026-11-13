@@ -13,6 +13,56 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Newer county House snapshot: complete reconciliation, no unqualified model promotion
+
+The November13 secondary snapshot26eb70e is now compared in full with both the
+held November12 snapshot8049f27 and the older accepted exact county reference.
+All3,155 distinct source/reference units and51 jurisdiction queries are retained,
+including all3,143 source records,3,127 exact reference counties,28 source-only
+and12 reference-only units. Reference coverage is49 states; Maine's16 counties
+remain held. Source record presence is not nationwide comparable result coverage.
+
+There are175 changed selected-contest totals across20 states versus November12,
+plus12 reporting-field-only changes. Against the older exact county reference:
+1,904 arithmetic-compatible rows,1,180 differing contest totals,48 geographic
+holds,16 missing reference units,one reference zero,two same-total rounded-share
+disagreements andfour missing secondary results. All12,405 native candidate
+rows reproduce all3,127 reference D/R/O vectors. None of these contest totals
+becomes ballots cast, demographic participation or observed staying home.
+
+Follow up the genuine conflicts, not just the source inventory: Alexander IL
+has secondary1,601 versus old exact zero; declared native IL-12 route87123 now
+has an actual403 STOP. Howard IA differs in party shares despite equal3,702.
+Washington TN has equal40,682 but opposite D-R margin signs across sources;
+the existing export preserves literal native candidate names/parties/votes,
+not positional assignments. Do not silently swap parties or manufacture exact
+votes from the newer rounded shares. Resolve through permitted primary evidence.
+AK's statewide hub/backfills, CT planning-region copies and ME-02's prior vector
+hold remain. `sp24` is presidential-baseline change, not House-to-House swing.
+
+Shared recipe-driven source03fb69f passes26 focused tests. Historical bounds
+conservatively include two-decimal rounding before one-decimal publication;
+all2,777 resulting historical intervals and6,172 current share comparisons
+pass an independent exact-decimal check. Both fresh complete
+archive extractions pass16 packaged tests and reproduce all six full numerical
+outputs with network/DNS/children blocked/probed, zero attempts. Independent
+decimal checks agree for every rounded-share comparison. The complete2,066,895-
+byte/24-member ZIP and all nine release443915242 assets are authenticated/draft
+and anonymously/public full-byte verified. Full downloads and records are under
+[DATA.md](docs/DATA.md#newer-county-house-source-complete-reconciliation-downloads)
+and `data/participation-access/20261113-county-concordance-02/`.
+
+The earlier release443910979 is explicitly superseded for its narrower
+historical rounding intervals; its assets remain byte-identical provenance.
+No current count/share comparison, source classification or model endpoint
+changes in the corrected release.
+
+No new exact candidate endpoints qualify from this secondary product alone.
+All nine existing family/profile endpoints, learned NORC fits/weights,33
+conditional/17 behavioral holds, official HI/WY precedence and current count/
+native/website versions remain unchanged. Continue native conflict resolution
+and combined-source implementation. Full audit and beautification remain pending.
+
 ## Vermont native turnout: full count refresh and coupled display verified live
 
 The declared November 9 native voter-turnout report now supplies all 247

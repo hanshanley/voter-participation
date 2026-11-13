@@ -1,0 +1,338 @@
+{
+  "all_nine_family_profile_endpoints_and_prior_NORC_fits_weights_unchanged": true,
+  "behaviorally_held_states": 17,
+  "comparison": "2024 versus 2026 House; not presidential sp24",
+  "complete_download": {
+    "assets": {
+      "complete-analysis.zip": {
+        "bytes": 2066895,
+        "sha256": "e4e9014cd2abf7f948e54bebbe296b20af998f792e32ffdb35bc6db2c7163c3b"
+      },
+      "complete-asset-manifest.json": {
+        "bytes": 1095,
+        "sha256": "cb2a402a661494ede8979003df1d58534115c39e5e9e483759f29a1d6bfe4e65"
+      },
+      "county-concordance.csv.gz": {
+        "bytes": 498237,
+        "sha256": "2eac9b3369513b3a61fccae30997c3cdb455eb6c27a5f41091abbf6f7661baa6"
+      },
+      "county-concordance.json.gz": {
+        "bytes": 544355,
+        "sha256": "e48d29fc436212a912eb49e1cc5d03323f26ad6bdf2af38724c28c5a81ba780f"
+      },
+      "reference-candidate-checks.json.gz": {
+        "bytes": 51552,
+        "sha256": "6c78bb7a2840f6ea28039c302c09d35b030fe0fbd2f3441c4310782e3fb2bcc8"
+      },
+      "source-changes.json.gz": {
+        "bytes": 10819,
+        "sha256": "78b8542afcd5d55f21cdd3400def98f20ba7c91dde41a273111ad765a6cacd4b"
+      },
+      "source-manifest.json": {
+        "bytes": 5685,
+        "sha256": "221a0534da9643fb054daaedba8b6c0a3722803d3860d64c8eb8d6c8242e11e1"
+      },
+      "state-queries.json": {
+        "bytes": 14857,
+        "sha256": "612f3407499e1bc4a99275ac8549b7abc63b2323b248f0ed24ce3b8875d60429"
+      },
+      "summary.json": {
+        "bytes": 1542,
+        "sha256": "f851e998adfbf89a7602d144baff9a43d6f9ff8b808ae22fd35ffea5ea8eda81"
+      }
+    },
+    "complete_zip": {
+      "bytes": 2066895,
+      "sha256": "e4e9014cd2abf7f948e54bebbe296b20af998f792e32ffdb35bc6db2c7163c3b"
+    },
+    "complete_zip_members": 24,
+    "fresh_extractions": 2,
+    "full_output_files": [
+      "county-concordance.json",
+      "county-concordance.csv",
+      "state-queries.json",
+      "source-changes.json",
+      "reference-candidate-checks.json",
+      "summary.json"
+    ],
+    "passed": true,
+    "publisher_prose_or_application_code_included": false,
+    "sufficient_native_factual_inputs": true,
+    "tests_per_fresh_extraction": 16
+  },
+  "conditional_states": 33,
+  "count_catalog_website_or_native_binding_versions_changed": false,
+  "focused_repository_tests": 26,
+  "fresh_offline_replays": [
+    {
+      "complete_output_files": [
+        "county-concordance.json",
+        "county-concordance.csv",
+        "state-queries.json",
+        "source-changes.json",
+        "reference-candidate-checks.json",
+        "summary.json"
+      ],
+      "passed": true,
+      "source_queries": 3155,
+      "tests": 16,
+      "unexpected_external_attempts": []
+    },
+    {
+      "complete_output_files": [
+        "county-concordance.json",
+        "county-concordance.csv",
+        "state-queries.json",
+        "source-changes.json",
+        "reference-candidate-checks.json",
+        "summary.json"
+      ],
+      "passed": true,
+      "source_queries": 3155,
+      "tests": 16,
+      "unexpected_external_attempts": []
+    }
+  ],
+  "full_output_summary": {
+    "changed_contest_total_states": [
+      "AK",
+      "CA",
+      "CO",
+      "IA",
+      "IL",
+      "KS",
+      "MA",
+      "MD",
+      "MS",
+      "NC",
+      "NE",
+      "NJ",
+      "NV",
+      "NY",
+      "OH",
+      "PA",
+      "RI",
+      "UT",
+      "VA",
+      "WA"
+    ],
+    "changed_selected_contest_totals": 175,
+    "changed_selected_records": 187,
+    "comparison_status_counts": {
+      "arithmetic_compatible_not_independent_validation": 1904,
+      "contest_total_difference": 1180,
+      "geography_held": 48,
+      "reference_unit_missing": 16,
+      "reference_zero_contest_total": 1,
+      "rounded_party_share_difference": 2,
+      "secondary_result_missing": 4
+    },
+    "complete_reference_candidate_checks": 3127,
+    "complete_union_queries": 3155,
+    "current_source_period_presence": {
+      "h24": 3086,
+      "h26": 3112
+    },
+    "new_ballot_or_participation_observations": 0,
+    "new_exact_candidate_counts_inferred": 0,
+    "new_model_endpoints_qualified": 0,
+    "official_endpoint_precedence_changed": false,
+    "paired_current_source_records": 3084,
+    "reference_only_units": 12,
+    "reference_records": 3127,
+    "reference_states": 49,
+    "same_identity_source_reference_records": 3115,
+    "source_agreement_is_not_independent_validation": true,
+    "source_change_kind_counts": {
+      "contest_total_changed": 175,
+      "reporting_fields_only": 12
+    },
+    "source_current_records": 3143,
+    "source_only_units": 28,
+    "source_previous_records": 3143,
+    "state_queries": 51,
+    "state_sums_of_rounded_party_counts_performed": false,
+    "survey_fits_weights_or_behavioral_masks_changed": false
+  },
+  "full_project_audit_and_beautification_still_pending": true,
+  "independent_query_verification": {
+    "all_queries": 3155,
+    "complete_native_projection_units_per_snapshot": 3143,
+    "endpoint_or_behavior_promotions": 0,
+    "exact_decimal_rounding_checks": 6172,
+    "historical_double_rounding_interval_checks": 2777,
+    "omitted_or_zero_filled_reference_only_units": 0,
+    "passed": true,
+    "source_change_counts": {
+      "contest_total_changed": 175,
+      "reporting_fields_only": 12
+    }
+  },
+  "native_same_contest_party_candidate_round_and_geography_qualification_still_required": true,
+  "native_source": {
+    "commit": "26eb70ea95056fcb4af64146ae63eb82b71e3beb",
+    "native_git_blob": "fb0fe1b30f0b01b83c06bc28b5b8e30af7335882",
+    "no_ballots_cast_fields_inferred": true,
+    "original_prose_and_app_code_not_redistributed": true,
+    "receipt": {
+      "bytes": 6331085,
+      "origin": "new_source_response",
+      "sha256": "3665656ea459c44dd4b25e168232ccb7a4b26978ba4f03552cd2957b5ad89ef5",
+      "status": 200,
+      "url": "https://raw.githubusercontent.com/mike10010100/elections-2026/26eb70ea95056fcb4af64146ae63eb82b71e3beb/site_data/county_shifts.json"
+    },
+    "retrieved_at_utc": "2026-11-13T06:39:54.318249+00:00",
+    "rounded_percentages_not_exact_candidate_counts": true,
+    "source_family": "secondary_combined_NYT_civic_historical_not_independent_gold"
+  },
+  "prior_qualified_official_HI_WY_precedence_retained": true,
+  "prior_release_supersession": {
+    "current_release_id": 443915242,
+    "current_tag": "participation-county-return-concordance-20261113-02",
+    "passed": true,
+    "prior_asset_ids_names_sizes_preserved": true,
+    "prior_assets_replaced": false,
+    "prior_release_id": 443910979,
+    "prior_release_prerelease": true,
+    "prior_tag": "participation-county-return-concordance-20261113-01"
+  },
+  "publication": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 2066895,
+        "name": "complete-analysis.zip",
+        "sha256": "e4e9014cd2abf7f948e54bebbe296b20af998f792e32ffdb35bc6db2c7163c3b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1095,
+        "name": "complete-asset-manifest.json",
+        "sha256": "cb2a402a661494ede8979003df1d58534115c39e5e9e483759f29a1d6bfe4e65",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 498237,
+        "name": "county-concordance.csv.gz",
+        "sha256": "2eac9b3369513b3a61fccae30997c3cdb455eb6c27a5f41091abbf6f7661baa6",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/county-concordance.csv.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 544355,
+        "name": "county-concordance.json.gz",
+        "sha256": "e48d29fc436212a912eb49e1cc5d03323f26ad6bdf2af38724c28c5a81ba780f",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/county-concordance.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 51552,
+        "name": "reference-candidate-checks.json.gz",
+        "sha256": "6c78bb7a2840f6ea28039c302c09d35b030fe0fbd2f3441c4310782e3fb2bcc8",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/reference-candidate-checks.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 10819,
+        "name": "source-changes.json.gz",
+        "sha256": "78b8542afcd5d55f21cdd3400def98f20ba7c91dde41a273111ad765a6cacd4b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/source-changes.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 5685,
+        "name": "source-manifest.json",
+        "sha256": "221a0534da9643fb054daaedba8b6c0a3722803d3860d64c8eb8d6c8242e11e1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/source-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 14857,
+        "name": "state-queries.json",
+        "sha256": "612f3407499e1bc4a99275ac8549b7abc63b2323b248f0ed24ce3b8875d60429",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/state-queries.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1542,
+        "name": "summary.json",
+        "sha256": "f851e998adfbf89a7602d144baff9a43d6f9ff8b808ae22fd35ffea5ea8eda81",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/summary.json"
+      }
+    ],
+    "authenticated_full_draft_verification": "release-authenticated-verification.json",
+    "draft": false,
+    "passed": true,
+    "release_id": 443915242,
+    "source_processing_commit": "03fb69ff51dfc7993a8aa88f1ce15c6f19197cfa",
+    "tag": "participation-county-return-concordance-20261113-02"
+  },
+  "raw_publisher_original_prose_application_code_and_person_rows_redistributed": false,
+  "source_processing_commit": "03fb69ff51dfc7993a8aa88f1ce15c6f19197cfa",
+  "status": "complete_secondary_diagnostics_published_not_new_model_endpoints",
+  "unresolved_primary_reconciliations": [
+    {
+      "native_refresh": {
+        "error": {
+          "code": "source_access",
+          "message": "HTTP 403; original not replaced or retried",
+          "record_id": null
+        },
+        "no_alternate_route_used": true,
+        "status": "held",
+        "url": "https://civicapi.org/api/v2/race/87123"
+      },
+      "no_repair_promoted": true,
+      "previous_exact_reference_total": 0,
+      "secondary_contest_total": 1601,
+      "state_code": "IL",
+      "unit": "Alexander",
+      "unit_id": "17003",
+      "zero_not_interpreted_as_nonparticipation": true
+    },
+    {
+      "no_exact_candidate_counts_inferred": true,
+      "same_contest_total": 3702,
+      "state_code": "IA",
+      "status": "rounded_party_share_disagreement",
+      "unit": "Howard",
+      "unit_id": "19089"
+    },
+    {
+      "no_party_or_vote_swap_promoted": true,
+      "reference_export_preserves_literal_native_candidate_vectors": true,
+      "reference_native_literal_counts": {
+        "D": 23535,
+        "O": 1137,
+        "R": 16010
+      },
+      "same_contest_total": 40682,
+      "secondary_reported_percentages": {
+        "D": 39.35,
+        "R": 57.85
+      },
+      "state_code": "TN",
+      "status": "opposite_D_minus_R_margin_signs",
+      "unit": "Washington",
+      "unit_id": "47179"
+    },
+    {
+      "district": "ME-02",
+      "prior_native_vector_reconciliation_hold_retained": true,
+      "reference_counties_held": 16,
+      "state_code": "ME"
+    },
+    {
+      "complete_geography_held_queries": 48,
+      "no_aliases_allocations_or_crosswalks_invented": true,
+      "state_codes": [
+        "AK",
+        "CT"
+      ]
+    }
+  ],
+  "whole_project_complete": false,
+  "year": 2026
+}
