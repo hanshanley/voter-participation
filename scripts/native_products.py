@@ -100,6 +100,11 @@ def displayed_cell(table, cells, selector):
 
 
 def query(product, spec):
+    count_formats = spec.get("count_formats", {})
+    if (not isinstance(count_formats, dict)
+            or any(field not in spec.get("counts", []) or value != "comma_grouped_integer"
+                   for field, value in count_formats.items())):
+        raise ValueError("An explicit supported format is required for each declared count field")
     selected = [table for table in product["tables"] if (
         spec.get("workbook") == table.get("workbook")
         and (not spec.get("tables") or table.get("name") in spec["tables"]))]
@@ -137,7 +142,13 @@ def query(product, spec):
             if any(fields[field] in excluded for field, excluded in spec.get("exclude", {}).items()):
                 continue
             for field in spec.get("counts", []):
-                fields[field] = integer(fields[field])
+                value = fields[field]
+                if field in count_formats:
+                    if not isinstance(value, str) or re.fullmatch(
+                            r"(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)", value) is None:
+                        raise ValueError("A malformed grouped count cannot be repaired into an integer")
+                    value = value.replace(",", "")
+                fields[field] = integer(value)
             reference = dict(table=table.get("name"), workbook=table.get("workbook"))
             reference["record_index" if table["kind"] == "json_records" else "row"] = number
             output.append(dict(**fields, source_rows=[reference]))

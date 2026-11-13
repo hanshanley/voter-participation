@@ -545,7 +545,7 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 *sorted((Path(__file__).parent / "participation_intake").glob("*.py"))]
         for name in ("test_participation_batch.py", "test_native_count_refresh.py", "test_native_tabular.py",
                      "test_html_statistics.py", "test_state_reporting_successor.py",
-                     "test_native_statistical_counts.py"):
+                     "test_native_statistical_counts.py", "test_native_count_formats.py"):
             test = Path(__file__).parents[1] / "tests" / name
             if test.is_file():
                 code_paths.append(test)

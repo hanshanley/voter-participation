@@ -211,8 +211,13 @@ inputs, even where redistribution of the original workbook template is held.
 Direct delimited and `json_records` products use their actual column/field names
 in the same complete native recipe. JSON records retain scalar types, unknowns
 and zero-based source-record indices; they are not represented as worksheet
-cells. Declare the expected full record inventory and any native record guards
-(for example an exact election-header pattern). Duplicate JSON keys, changing
+cells. Declare the expected full record inventory and native record guards
+(for example an exact election-header pattern).
+Optionally use `count_formats: {"field": "comma_grouped_integer"}` for explicitly
+reviewed thousands-grouped textual counts. The default integer reader stays
+strict. Malformed grouping, decimal values, whitespace repairs, unknown formats
+and declarations for non-count fields are rejected; original factual strings
+and true zeros remain intact. Duplicate JSON keys, changing
 record schemas and undeclared nested fields are rejected. The independent
 verifier checks every native field/type/index against the complete original.
 
