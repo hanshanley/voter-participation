@@ -105,6 +105,19 @@ to existing complete contextual bindings; feature names, state, vintage,
 reference hash, preserved binding preimages and withheld rates are checked.
 Geometry files and prior bindings are never rewritten to fit new counts.
 
+When the canonical observations themselves carry approved joins, the registered
+reference asset may name an `input` from the source's pinned input inventory.
+The routine forwards that exact body to the shared geometry verifier and
+packages it for fresh offline replay. The declared input pin must equal the
+reference asset pin; a checksum still needs explicit approval evidence and
+cannot authorize a new join by itself.
+
+Signer attestation dates and page-posting timestamps are typed provenance, not
+count-as-of clocks. Retain them as directly fact-bound `source_time_kind` and
+`source_time_literal` fields and explain them in source-reporting notes. Unless
+the native product supplies an actual count-update field, canonical
+`source_clock.literal` and `view.source_update_label` remain null.
+
 The shared `native_statistics` adapter reads complete pinned factual
 worksheets and their reviewed query/grouping roles directly. It preserves
 every statistical unit, zero, mode vector and agreeing duplicate parent,

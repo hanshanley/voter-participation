@@ -109,6 +109,26 @@ def display(row, spec):
     return dict(row, view=view)
 
 
+def supplied_reference_bodies(entry, inputs):
+    bodies = {}
+    for identity, asset in entry.get("references", {}).get("assets", {}).items():
+        name = asset.get("input")
+        if name is None:
+            continue
+        if name not in inputs:
+            raise IntakeError(
+                "geometry_original_missing",
+                "A declared reference input is absent: " + str(name),
+            )
+        body = Path(inputs[name]["path"]).read_bytes()
+        if pin(body) != {key: asset[key] for key in ("bytes", "sha256")}:
+            raise IntakeError(
+                "geometry_hash", "A supplied reference input differs from its approved asset"
+            )
+        bodies[identity] = body
+    return bodies
+
+
 def refresh_current_reporting(data, sources):
     result, changed, seen = copy.deepcopy(data), 0, set()
     for source in sources:
@@ -571,7 +591,8 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
         for item in prepared:
             outcome = run(item["spec"], store,
                 supplied={name: value["path"] for name, value in item["inputs"].items()},
-                references=item["entry"].get("references", {}))
+                references=item["entry"].get("references", {}),
+                geometry_inputs=supplied_reference_bodies(item["entry"], item["inputs"]))
             if outcome["status"] == "rejected":
                 item["quarantined"] = outcome.get("raw_inputs_quarantined_not_packaged", False)
                 dispositions.append(dict(id=item["entry"]["id"], state_code=item["spec"]["geography"]["state_code"],

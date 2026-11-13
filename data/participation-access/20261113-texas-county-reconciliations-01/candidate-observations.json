@@ -1,0 +1,27 @@
+{
+  "contract": "participation.texas_county_reconciliation_candidate.v1",
+  "status": "prepared_tested_not_activated",
+  "baseline_counts_version": "55a8f41bf313b19b0d93334d2b585fb53b686acf1c5485c84995a0947f381ad8",
+  "candidate_counts_version": "01c3cd0a55e6d99a42066514bc723aaf64e47f6b726c5a62b0e5a13853930dbe",
+  "baseline_native_version": "3bcc590d0c30a0da3a3fbc0fc08dd0977f6b453089fe50a5931225240275e59c",
+  "candidate_native_version": "b2a69fc5d504bc91d1295b80441c6824cdc98b5da517b62762d0932eb1d94235",
+  "observations": [
+    {"county":"Archer County","county_fips":"48009","ballots":4035,"registered_source_context":7158,"source_time_kind":"attestation_date","source_time_literal":"11/10/26","count_as_of":null,"source_status":"Election Reconciliation - Official Totals","source_sha256":"64adeb170b2457d1764452b3e2d284944a40980ad79f3d4a573b8d27aea2393a"},
+    {"county":"Cameron County","county_fips":"48061","ballots":103976,"registered_source_context":103976,"source_time_kind":"attestation_date","source_time_literal":"11-10-26","count_as_of":null,"source_status":"Election Reconciliation - Official Totals","source_sha256":"38477616b9ee0ab4cf5defcc9f85737baccfd375745a1832e39cf9c0cfe842ef","qualification":"Native Registered Voters 103,976 equals counted ballots 103,976 while Total voters 104,206 exceeds that stock by 230; retained without rate, 100% turnout inference or repair."},
+    {"county":"Hemphill County","county_fips":"48211","ballots":1262,"registered_source_context":2305,"source_time_kind":"publication_timestamp","source_time_literal":"11/9/2026 at 4:30 p.m","count_as_of":null,"source_status":"Election Reconciliation - Official Totals","source_sha256":"85b6772c939fcbe8f15e207e5fc797c93499b658a5b5158c4640b841ceda871f","conflicts":[{"code":"native_reconciliation_difference_disagrees","repaired":false,"actual_native":3,"computed":0,"expression":"E-H-M"}]},
+    {"county":"Liberty County","county_fips":"48291","ballots":25700,"registered_source_context":60591,"source_time_kind":"attestation_date","source_time_literal":"11/06/2026","count_as_of":null,"source_status":"Election Reconciliation - Official Totals","source_sha256":"32bf1986c7283e5e933c832e27113a0e6064a13603e37a72de82fe2971d952bd"},
+    {"county":"Moore County","county_fips":"48341","ballots":4164,"registered_source_context":10254,"source_time_kind":"attestation_date","source_time_literal":"11/03/2026","count_as_of":null,"source_status":"Preliminary Election Reconciliation – Unofficial Totals","source_sha256":"c6a880809a58b051c314401463bcb61ea12375675945b2e140cefcb215c22e1b","conflicts":[{"code":"native_reconciliation_difference_disagrees","repaired":false,"actual_native":11,"computed":-11,"expression":"C-F-I"}]},
+    {"county":"Nolan County","county_fips":"48353","ballots":3781,"registered_source_context":9085,"source_time_kind":"attestation_date","source_time_literal":"11.9.26","count_as_of":null,"source_status":"Election Reconciliation - Official Totals","source_sha256":"b8a04016828d668260b62bc836eab6a5897a5c823594906c6bd8cd54dea93168"},
+    {"county":"Refugio County","county_fips":"48391","ballots":2448,"registered_source_context":4915,"source_time_kind":"attestation_date","source_time_literal":"11/03/2026","count_as_of":null,"source_status":"Preliminary Election Reconciliation -Unofficial Totals","source_sha256":"85d8885f99199593a9f4daad9082a7712b8eb579322b8cd4c980db07c09518b5"},
+    {"county":"Wise County","county_fips":"48497","ballots":31186,"registered_source_context":59881,"source_time_kind":"attestation_date","source_time_literal":"11/04/2026","count_as_of":null,"source_status":"Preliminary Election Reconciliation – Unofficial Totals","source_sha256":"e3e2de27be0f03d8928c5faf846be152eea6ba1435bbe31b53c44e7b9f552a22"}
+  ],
+  "existing_harris_record_preserved_exactly": true,
+  "selected_full_election_counties_after_candidate": 9,
+  "explicit_remaining_county_gaps": 245,
+  "analytical_rates_qualified": 0,
+  "new_count_as_of_clocks": 0,
+  "new_precinct_geometries": 0,
+  "statewide_texas_total_claimed": false,
+  "candidate_votes_used_as_participation": false,
+  "house_model_or_norc_weight_changes": false
+}

@@ -12,10 +12,27 @@ import zipfile
 
 from scripts.participation_batch import (
     compile_reporting, compressed, discover, display, execute, native_baseline_files,
+    supplied_reference_bodies,
 )
 from scripts.participation_intake.adapters import adapt
-from scripts.participation_intake.contract import STATES, digest, encoded, pin
+from scripts.participation_intake.contract import IntakeError, STATES, digest, encoded, pin
 from scripts.participation_intake.engine import Store
+
+
+class SuppliedReferenceBodyTests(unittest.TestCase):
+    def test_declared_geometry_input_is_pinned_and_forwarded(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "geometry.json"
+            path.write_bytes(b'{"type":"FeatureCollection","features":[]}')
+            asset = dict(pin(path.read_bytes()), input="geometry")
+            entry = {"references": {"assets": {"reference": asset}}}
+            inputs = {"geometry": {"path": path, **pin(path.read_bytes())}}
+            self.assertEqual(supplied_reference_bodies(entry, inputs), {"reference": path.read_bytes()})
+            with self.assertRaises(IntakeError):
+                supplied_reference_bodies(entry, {})
+            path.write_bytes(b"changed")
+            with self.assertRaises(IntakeError):
+                supplied_reference_bodies(entry, inputs)
 
 
 class NativeResponseTraceTests(unittest.TestCase):
