@@ -12,6 +12,7 @@ from scripts.compile_pdf_grids import compile_grids
 from scripts.native_products import pin
 from scripts.pdf_measure_queries import csv_body, queries
 from scripts.pdf_control_checks import ADMINISTRATIVE, build
+from scripts.pdf_group_queries import build as group_queries
 from scripts.native_reconciliation import reconcile
 from scripts.verify_pdf_grids import verify
 
@@ -102,6 +103,71 @@ class ReviewedPdfGridTests(unittest.TestCase):
         combined = build(grids)
         self.assertEqual(len(combined["observations"]), 2)
         self.assertEqual(len(combined["checks"]), 2)
+
+    def grouping_fixture(self):
+        def row(index, name, district, registered, votes, pct):
+            return dict(row=index, cells={key: dict(value=value) for key, value in dict(
+                native_unit=name, district=district, registered=registered, votes=votes, pct=pct).items()})
+        tables = [
+            dict(id="first", source_page=1, rows=[row(0, "A", "", None, None, ""),
+                row(1, "One\nTown", "1", 10, 6, "60%")]),
+            dict(id="second", source_page=2, rows=[row(0, "One Town", "2", 20, 12, "60%"),
+                row(1, "A Total", "", 30, 18, "60%")]),
+            dict(id="summary", source_page=2, rows=[row(0, "A", "", 30, 18, "60%"),
+                row(1, "State Total", "", 30, 18, "60%")])]
+        for table in tables:
+            table["source_role"] = "native_registration_ballot_reported_turnout_statistics"
+        grids = dict(contract="participation.reviewed_pdf_factual_grids.v1",
+            products=[dict(source=dict(id="source"), tables=tables)])
+        recipe = dict(contract="participation.reviewed_pdf_group_queries.v1", source_id="source",
+            part_tables=["first", "second"], summary_tables=["summary"],
+            reading_whitespace_normalized=True, count_fields=["registered", "votes"],
+            part_nonempty_fields=["district"], parent_total_suffix=" Total",
+            summary_total_label="State Total",
+            expected_rows=dict(parts=2, parent_controls=1, summary_parents=1, summary_total=1, grouped_units=1),
+            percentages=[dict(field="pct", numerator="votes", denominator="registered")])
+        return grids, recipe
+
+    def test_native_groups_reconcile_cross_page_parts_without_averaging_printed_rates(self):
+        grids, recipe = self.grouping_fixture()
+        result = group_queries(grids, recipe)
+        grouped = result["queries"]["grouped_units"]["rows"]
+        self.assertEqual((len(grouped), grouped[0]["votes"], grouped[0]["registered"]), (1, 18, 30))
+        self.assertNotIn("pct", grouped[0])
+        self.assertEqual(grouped[0]["source_parts"], 2)
+        self.assertTrue(all(row["status"] == "matched" for row in result["native_rate_checks"]))
+        self.assertTrue(reconcile(result["queries"], result["checks"])["required_checks_passed"])
+        grids["products"][0]["tables"][2]["rows"][1]["cells"]["votes"]["value"] = 19
+        changed = group_queries(grids, recipe)
+        self.assertFalse(reconcile(changed["queries"], changed["checks"])["required_checks_passed"])
+
+    def test_native_groups_reject_missing_counts_headers_controls_and_duplicate_rows(self):
+        for defect in ("count", "header", "control", "duplicate", "part_identity"):
+            with self.subTest(defect=defect):
+                grids, recipe = self.grouping_fixture()
+                tables = grids["products"][0]["tables"]
+                if defect == "count":
+                    tables[1]["rows"][0]["cells"]["votes"]["value"] = None
+                elif defect == "header":
+                    tables[0]["rows"].pop(0)
+                elif defect == "control":
+                    tables[1]["rows"].pop()
+                elif defect == "duplicate":
+                    tables[1]["rows"].append(copy.deepcopy(tables[1]["rows"][0]))
+                else:
+                    tables[1]["rows"][0]["cells"]["district"]["value"] = "1"
+                with self.assertRaises(ValueError):
+                    group_queries(grids, recipe)
+
+    def test_zero_denominator_percentage_is_unqualified_not_reported_zero(self):
+        grids, recipe = self.grouping_fixture()
+        cells = grids["products"][0]["tables"][0]["rows"][1]["cells"]
+        cells["registered"]["value"] = 0
+        cells["votes"]["value"] = 0
+        result = group_queries(grids, recipe)
+        check = result["native_rate_checks"][0]
+        self.assertEqual(check["status"], "unqualified_native_fraction")
+        self.assertNotIn("exact_percent", check)
 
 
 if __name__ == "__main__":

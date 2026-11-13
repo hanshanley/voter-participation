@@ -165,6 +165,52 @@ def pdf_records(spec, inputs):
 ADAPTERS = {"csv": delimited, "json": json_records, "pdf": pdf_records}
 
 
+def factual_cells(binding, product):
+    identifiers = binding.get("table_ids", [binding.get("table_id")])
+    if (not identifiers or None in identifiers or len(set(identifiers)) != len(identifiers)
+            or "table_ids" in binding and "table_id" in binding):
+        raise IntakeError("source_fact_binding", "Native table selection must be explicit and unique")
+    tables = [table for table in product["tables"] if table["id"] in identifiers]
+    if (len(tables) != len(identifiers) or {table["id"] for table in tables} != set(identifiers)
+            or any(table["source_role"] not in (
+            "unofficial_registration_ballot_reported_turnout_statistics",
+            "native_registration_ballot_reported_turnout_statistics") for table in tables)):
+        raise IntakeError("source_fact_binding", "Participation updates require reviewed ballot statistics, not choices")
+    scope = binding.get("value_scope", "cell")
+    cells = []
+    identities = set()
+    if scope == "cell":
+        normalize = (lambda value: " ".join(value.split())) if binding.get(
+            "reading_whitespace_normalized") else (lambda value: value)
+        required = binding.get("where_nonempty", [])
+        for table in tables:
+            for row in table["rows"]:
+                if any(name not in row["cells"] for name in ["native_unit"] + required):
+                    raise IntakeError("source_fact_binding", "Native row selector field is absent")
+                if (normalize(row["cells"]["native_unit"]["value"]) == normalize(binding["native_unit"])
+                        and all(row["cells"][name]["value"] not in (None, "") for name in required)):
+                    if binding["measure"] not in row["cells"]:
+                        raise IntakeError("source_fact_binding", "Native statistical cell is absent")
+                    if binding.get("operation") == "sum":
+                        identity = (table["id"], row.get("row"))
+                        if type(identity[1]) is not int or identity in identities:
+                            raise IntakeError("source_fact_binding", "Summed native rows need unique factual identities")
+                        identities.add(identity)
+                    cells.append(row["cells"][binding["measure"]])
+    elif scope in ("source", "annotations"):
+        containers = [product["source"]] if scope == "source" else [
+            table["source_annotations"] for table in tables]
+        for container in containers:
+            missing = object()
+            value = field(container, binding["value_path"], missing)
+            if value is missing:
+                raise IntakeError("source_fact_binding", "Native provenance or clock field is absent")
+            cells.append(dict(value=value, native_status="literal"))
+    else:
+        raise IntakeError("source_fact_binding", "Unsupported factual value scope")
+    return tables, cells
+
+
 def verify_fact_bindings(spec, rows, inputs):
     decoded = {}
     for binding in spec.get("format", {}).get("fact_bindings", []):
@@ -189,40 +235,42 @@ def verify_fact_bindings(spec, rows, inputs):
             if product["source"]["id"] == binding["source_id"]]
         if len(selected) != 1 or len(products) != 1:
             raise IntakeError("source_fact_binding", "Canonical or native product identity is ambiguous")
-        tables = [table for table in products[0]["tables"] if table["id"] == binding["table_id"]]
-        if len(tables) != 1 or tables[0]["source_role"] != (
-                "unofficial_registration_ballot_reported_turnout_statistics"):
-            raise IntakeError("source_fact_binding", "Participation updates require reviewed ballot statistics, not choices")
+        tables, cells = factual_cells(binding, products[0])
         scope = binding.get("value_scope", "cell")
-        if scope == "cell":
-            native = [row for row in tables[0]["rows"]
-                if row["cells"]["native_unit"]["value"] == binding["native_unit"]]
-            if len(native) != 1 or binding["measure"] not in native[0]["cells"]:
-                raise IntakeError("source_fact_binding", "Native statistical cell is absent or ambiguous")
-            cell = native[0]["cells"][binding["measure"]]
-        elif scope in ("source", "annotations"):
-            container = products[0]["source"] if scope == "source" else tables[0]["source_annotations"]
-            missing = object()
-            value = field(container, binding["value_path"], missing)
-            if value is missing:
-                raise IntakeError("source_fact_binding", "Native provenance or clock field is absent")
-            cell = dict(value=value, native_status="literal")
-        else:
-            raise IntakeError("source_fact_binding", "Unsupported factual value scope")
         parse = binding.get("parse", "literal")
+        operation = binding.get("operation", "unique")
+        if operation == "sum":
+            if scope != "cell" or parse != "count" or not binding.get("sum_review_evidence"):
+                raise IntakeError("source_fact_binding", "Only explicitly reviewed statistical counts may be summed")
+        elif operation != "unique":
+            raise IntakeError("source_fact_binding", "Unsupported factual operation")
+        ambiguous = len(cells) != 1 if scope == "cell" else (
+            cells and any(cell["value"] != cells[0]["value"] for cell in cells))
+        if not cells or operation == "unique" and ambiguous:
+            raise IntakeError("source_fact_binding", "Native statistical cell is absent or ambiguous")
         if parse == "count":
             if scope != "cell":
                 raise IntakeError("source_fact_binding", "Provenance metadata cannot authorize a statistical count")
-            if cell["native_status"] not in ("reported", "literal") or count(cell["value"]) is None:
+            if any(cell["native_status"] not in ("reported", "literal") or count(cell["value"]) is None
+                    for cell in cells):
                 raise IntakeError("source_fact_binding", "Unknown factual cell cannot become a reported count")
-            value = count(cell["value"])
+            value = count(sum(count(cell["value"]) for cell in cells)) if operation == "sum" else count(cells[0]["value"])
         elif parse == "literal":
-            value = cell["value"]
+            value = cells[0]["value"]
         else:
             raise IntakeError("source_fact_binding", "Unsupported factual conversion")
         row = selected[0]
         if binding["path"] in ("count.value", "count.literal", "view.ballots"):
-            if scope != "cell" or row["measure"]["literal"] != binding["native_unit"]:
+            header = binding.get("native_measure_header")
+            if header:
+                equivalent = (binding.get("same_measure_review_evidence")
+                    and binding.get("accepted_measure_literal") == row["measure"]["literal"]
+                    and all(" ".join(table.get("source_annotations", {}).get(
+                        "native_column_headers", {}).get(binding["measure"], "").split())
+                        == " ".join(header.split()) for table in tables))
+            else:
+                equivalent = row["measure"]["literal"] == binding["native_unit"]
+            if scope != "cell" or not equivalent:
                 raise IntakeError("source_fact_binding", "Native numerator label differs from the accepted measure")
         missing = object()
         actual = field(row, binding["path"], missing)

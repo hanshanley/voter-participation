@@ -12,12 +12,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.native_products import encoded, pin
 from scripts.native_reconciliation import reconcile
 from scripts.pdf_control_checks import build
+from scripts.pdf_group_queries import build as group_queries
 from scripts.pdf_measure_queries import csv_body, queries
 
 
-def replay(grids):
+def replay(grids, group_recipe=None):
     complete = queries(grids)
-    controls = build(grids)
+    controls = build(grids) if group_recipe is None else group_queries(grids, group_recipe)
     controls["reconciliation"] = reconcile(controls["queries"], controls["checks"])
     return {
         "complete-queries.json.gz": gzip.compress(encoded(complete), mtime=0),
@@ -29,6 +30,7 @@ def replay(grids):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--grids", type=Path, required=True)
+    parser.add_argument("--group-recipe", type=Path)
     parser.add_argument("--expected", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -52,7 +54,8 @@ def main():
     body = args.grids.read_bytes()
     if args.grids.suffix == ".gz":
         body = gzip.decompress(body)
-    outputs = replay(json.loads(body))
+    recipe = json.loads(args.group_recipe.read_bytes()) if args.group_recipe else None
+    outputs = replay(json.loads(body), recipe)
     args.output.mkdir(parents=True)
     for name, body in outputs.items():
         expected = (args.expected / name).read_bytes()

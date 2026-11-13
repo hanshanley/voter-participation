@@ -195,6 +195,93 @@ class RoutineBatchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "not choices"):
             adapt(spec, dict(data=encoded([row]), facts=encoded(facts)), {}, {}, {})
 
+    def wide_statistical_fixture(self):
+        row = copy.deepcopy(self.original_rows[0])
+        row["count"].update(value=18, literal=18)
+        row["view"]["ballots"] = 18
+        spec = copy.deepcopy(self.spec)
+        spec.update(adapter="canonical_json", expected_rows=1)
+        spec["inputs"]["facts"] = dict(url="https://example.gov/reviewed-facts.json")
+        binding = dict(input="facts", record={"geography.id": row["geography"]["id"]},
+            path="count.value", source_id="source", table_ids=["first", "second"],
+            native_unit="One Town", reading_whitespace_normalized=True,
+            where_nonempty=["district"], measure="total", parse="count", operation="sum",
+            sum_review_evidence="Synthetic disjoint parts reconcile to printed parent controls",
+            native_measure_header="Total votes cast", accepted_measure_literal="Native ballots",
+            same_measure_review_evidence="Synthetic reviewed same-quantity label equivalence")
+        spec["format"] = dict(fact_bindings=[binding])
+        tables = []
+        for name, value in (("first", 6), ("second", 12)):
+            tables.append(dict(id=name, source_role="native_registration_ballot_reported_turnout_statistics",
+                source_annotations=dict(native_column_headers=dict(total="Total votes\ncast")),
+                rows=[dict(row=1, cells=dict(native_unit=dict(value="One\nTown"),
+                    district=dict(value="A" if name == "first" else "B"),
+                    total=dict(value=value, native_status="reported")))]))
+        tables[0]["rows"].insert(0, dict(row=0, cells=dict(native_unit=dict(value="One Town"),
+            district=dict(value=""), total=dict(value=None, native_status="blank"))))
+        facts = dict(contract="participation.reviewed_pdf_factual_grids.v1",
+            products=[dict(source=dict(id="source"), tables=tables)])
+        return row, spec, binding, facts
+
+    def run_wide_statistical_fixture(self, row, spec, facts):
+        return adapt(spec, dict(data=encoded([row]), facts=encoded(facts)), {}, {}, {})
+
+    def test_explicit_native_part_sum_excludes_declared_headings_and_checks_all_pages(self):
+        row, spec, binding, facts = self.wide_statistical_fixture()
+        self.assertEqual(self.run_wide_statistical_fixture(row, spec, facts)[0]["count"]["value"], 18)
+        row["count"].update(value=19, literal=19)
+        with self.assertRaisesRegex(ValueError, "differs from its reviewed native fact"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        row["count"].update(value=18, literal=18)
+        facts["products"][0]["tables"].pop()
+        with self.assertRaisesRegex(ValueError, "reviewed ballot statistics"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_native_part_sum_rejects_missing_values_and_ambiguous_unique_cells(self):
+        row, spec, binding, facts = self.wide_statistical_fixture()
+        binding["operation"] = "unique"
+        with self.assertRaisesRegex(ValueError, "absent or ambiguous"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        binding["operation"] = "sum"
+        facts["products"][0]["tables"][1]["rows"][0]["cells"]["total"].update(
+            value=None, native_status="blank")
+        with self.assertRaisesRegex(ValueError, "Unknown factual cell"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_native_part_sum_rejects_repeated_rows_and_missing_table_identities(self):
+        row, spec, binding, facts = self.wide_statistical_fixture()
+        table = facts["products"][0]["tables"][0]
+        table["rows"].append(copy.deepcopy(table["rows"][1]))
+        with self.assertRaisesRegex(ValueError, "unique factual identities"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        table["rows"].pop()
+        facts["products"][0]["tables"][1] = copy.deepcopy(table)
+        with self.assertRaisesRegex(ValueError, "reviewed ballot statistics"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_native_part_sum_requires_review_and_cannot_add_percentages_or_metadata(self):
+        row, spec, binding, facts = self.wide_statistical_fixture()
+        binding.pop("sum_review_evidence")
+        with self.assertRaisesRegex(ValueError, "explicitly reviewed statistical counts"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        binding["sum_review_evidence"] = "Synthetic reviewed partition"
+        binding["parse"] = "literal"
+        with self.assertRaisesRegex(ValueError, "explicitly reviewed statistical counts"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+        binding.update(parse="count", value_scope="annotations", value_path="native_column_headers.total")
+        with self.assertRaisesRegex(ValueError, "explicitly reviewed statistical counts"):
+            self.run_wide_statistical_fixture(row, spec, facts)
+
+    def test_native_column_header_equivalence_needs_exact_literal_and_review(self):
+        row, spec, binding, facts = self.wide_statistical_fixture()
+        for name, value in (("same_measure_review_evidence", ""),
+                ("accepted_measure_literal", "Different measure"), ("native_measure_header", "Candidate votes")):
+            original = binding[name]
+            binding[name] = value
+            with self.assertRaisesRegex(ValueError, "Native numerator label differs"):
+                self.run_wide_statistical_fixture(row, spec, facts)
+            binding[name] = original
+
     def test_registered_reference_original_is_verified_and_packaged_by_the_shared_runner(self):
         body = encoded(dict(type="FeatureCollection", features=[
             dict(type="Feature", properties=dict(key=key), geometry=None) for key in ("one", "two")]))
