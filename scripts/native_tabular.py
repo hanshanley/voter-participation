@@ -2,6 +2,7 @@
 
 import csv
 import io
+import json
 from pathlib import PurePosixPath
 import posixpath
 import re
@@ -31,6 +32,44 @@ def column(table, label):
     if len(indices) != 1:
         raise ValueError("Required native column is missing or ambiguous: " + label)
     return indices[0]
+
+
+def json_records(body, items_path=None, encoding="utf-8-sig", record_guards=None):
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError("Duplicate native JSON object key")
+            result[key] = value
+        return result
+
+    def invalid_constant(value):
+        raise ValueError("Nonfinite native JSON value: " + value)
+
+    data = json.loads(body.decode(encoding), object_pairs_hook=unique_object,
+        parse_constant=invalid_constant)
+    if items_path:
+        for part in items_path.split("."):
+            if isinstance(data, dict) and part in data:
+                data = data[part]
+            elif isinstance(data, list) and part.isdecimal() and int(part) < len(data):
+                data = data[int(part)]
+            else:
+                raise ValueError("Declared native JSON record path is absent")
+    if not isinstance(data, list) or not data or not all(isinstance(row, dict) for row in data):
+        raise ValueError("A complete native JSON record array is required")
+    header = list(data[0])
+    if not header or any(not name for name in header):
+        raise ValueError("Native JSON field identities are empty")
+    rows = []
+    for index, row in enumerate(data):
+        if set(row) != set(header) or any(isinstance(value, (dict, list)) for value in row.values()):
+            raise ValueError("Native JSON record schema changed or needs an explicit nested-field reader")
+        for key, pattern in (record_guards or {}).items():
+            if not isinstance(row.get(key), str) or re.fullmatch(pattern, row[key]) is None:
+                raise ValueError("Native JSON record guard failed: " + key)
+        rows.append(dict(row=index, values=[row[name] for name in header]))
+    return dict(header=header, rows=rows, record_address_basis="zero_based_json_array_index")
 
 
 def xlsx(body):

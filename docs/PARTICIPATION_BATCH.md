@@ -108,6 +108,54 @@ Candidate-choice columns, unknown cells and ambiguous rows are not ballot
 refreshes. The full factual grids and recipe remain downloadable sufficient
 inputs, even where redistribution of the original workbook template is held.
 
+Direct delimited and `json_records` products use their actual column/field names
+in the same complete native recipe. JSON records retain scalar types, unknowns
+and zero-based source-record indices; they are not represented as worksheet
+cells. Declare the expected full record inventory and any native record guards
+(for example an exact election-header pattern). Duplicate JSON keys, changing
+record schemas and undeclared nested fields are rejected. The independent
+verifier checks every native field/type/index against the complete original.
+
+For these record products, `native_measure_header` is the actual field name;
+omit `native_header_row`. Existing measure-equivalence and statistical-role
+reviews remain required. A per-record literal such as its own result clock
+uses `value_scope: "row"`, `value_path` naming a declared query field, and
+`parse: "literal"`. That literal cannot authorize a statistical count or turn
+acquisition time into a native result clock. Workbook guards are unchanged.
+
+When complete originals are permitted, `format.native_reproduction` binds a
+`recipe_input`, every product ID to its `original` and `facts` input names
+(optional `compression: "gzip"`), and a complete `queries_input` (optional
+`queries_compression: "gzip"`). The same routine re-parses every full original,
+compares every factual table and reproduces every declared numerical query
+before accepting observations. Original source URLs, pins, election/state and
+explicit original-redistribution declarations must agree. Metadata-only inputs,
+altered cells or partial query sets cannot satisfy this option. Do not enable
+it for workbook originals whose redistribution remains held.
+
+For an existing same-source county record frame, the maintained
+`scripts.native_count_refresh` preparation operation accepts reviewed identity
+and field roles, the complete accepted baseline, and a source-input directory
+containing the registered `recipe`, gzipped `controls`, permitted originals and
+`facts-<product-id>` tables. It requires exact native IDs/names, separate
+state/county controls, unchanged registration stocks, matching printed fractions
+and each record's own literal clock. It preserves observation/geographic IDs,
+existing rate holds and all unselected modes; no metadata supplies counts.
+The prepared registry and supplied inputs then use the same routine command.
+Fresh preparation refuses an existing output directory. Preparation code and
+review are included in the complete download, alongside every native original
+and query. Native source packets also include their shared query-reader modules
+so their own isolated `reproduce.py` does not depend on a surrounding checkout.
+
+When the same source also has an existing state record in the current snapshot,
+the reviewed preparation sets `refresh_current_reporting: true`. Its separate
+native state reference is fact-bound in the accepted county observations.
+The common compiler updates that one same-source state record together with
+its counties, checks all county/state count and registration controls, and
+preserves the other reporting records, early/mail and demographic partitions.
+The base snapshot remains historical provenance, not a fabricated common clock;
+the successor retains its own source hash and result/retrieval labels.
+
 For existing reporting-unit tables served by the native-binding dataset, use
 the **same routine command** with an additional complete baseline:
 
@@ -174,6 +222,23 @@ updates the counter and explicitly scoped valid-choice context only. The latter
 may include source-unassigned write-ins and exclude over/undervotes; a scope
 change is not participation or switching. No study probability, weight,
 registered source mean or geographic hold is changed.
+
+An existing **reported-ballot reference with an unchanged registered scenario**
+instead uses `scripts.reported_registered_reference`. It verifies the complete
+new batch against original record products, the separate native state control,
+every county identity and both refreshed runtimes. The accepted registered
+stock, study weights and all conditional voter/nonvoter means must remain
+unchanged. Only the source reference/time, registered reporting fraction and
+nominal reported-minus-modeled comparison change. That comparison is not an
+independently validated prediction error or observed staying home.
+
+The operation retains earlier same-source evidence with its old count/date,
+but does not continue describing it as a duplicate of the latest reference.
+Paired public aggregate state/county group tables must reconcile every joint
+cell, including recorded zeros. Complete source-mode group observations and
+queries are exported separately; overlapping feeds and different clocks are
+not added, deduplicated or promoted to full demographic turnout. No new model
+family, scenario, geographic allocation or propensity fit is created.
 
 ## Bind a same-measure refresh to reviewed native facts
 

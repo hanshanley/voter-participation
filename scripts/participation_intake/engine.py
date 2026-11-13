@@ -266,6 +266,11 @@ def package(output, spec, inputs, receipts, rows, report, references, reference_
     members["source-receipts-without-headers.json"] = encoded(receipts)
     for path in sorted(Path(__file__).parent.glob("*.py")):
         members["code/participation_intake/" + path.name] = path.read_bytes()
+    options = spec.get("format", {})
+    if options.get("native_reproduction") or any(
+            binding.get("query_recipe_input") for binding in options.get("fact_bindings", [])):
+        for name in ("native_products.py", "native_tabular.py"):
+            members["code/scripts/" + name] = (Path(__file__).parent.parent / name).read_bytes()
     tests = Path(__file__).parent.parent / "test-participation-intake.py"
     if tests.exists():
         members["tests/test-participation-intake.py"] = tests.read_bytes()

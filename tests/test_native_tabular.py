@@ -2,10 +2,33 @@ import io
 import unittest
 import zipfile
 
-from scripts.native_tabular import column, delimited, values, xlsx
+from scripts.native_tabular import column, delimited, json_records, values, xlsx
 
 
 class NativeTabularTests(unittest.TestCase):
+    def test_native_json_preserves_scalar_types_nulls_and_record_indices(self):
+        table = json_records(b'{"data":[{"id":"001","count":0,"unknown":null,"flag":false},'
+            b'{"flag":true,"count":"0","id":"002","unknown":""}]}', items_path="data")
+        self.assertEqual(table["header"], ["id", "count", "unknown", "flag"])
+        self.assertEqual(table["rows"], [
+            dict(row=0, values=["001", 0, None, False]),
+            dict(row=1, values=["002", "0", "", True])])
+
+    def test_native_json_rejects_duplicate_keys_missing_fields_nested_records_and_nonfinite_values(self):
+        for body in (b'[{"id":"1","id":"2"}]', b'[{"id":"1"},{"other":"2"}]',
+                b'[{"id":{"nested":0}}]', b'[{"id":NaN}]', b'[]'):
+            with self.subTest(body=body), self.assertRaises(ValueError):
+                json_records(body)
+
+    def test_native_json_guards_native_election_literals_not_metadata(self):
+        body = b'[{"election":"2026 general","count":"0"}]'
+        self.assertEqual(json_records(body, record_guards={
+            "election": "2026 general"})["rows"][0]["values"][1], "0")
+        with self.assertRaisesRegex(ValueError, "record guard"):
+            json_records(body, record_guards={"election": "2024 general"})
+        with self.assertRaisesRegex(ValueError, "record path"):
+            json_records(body, items_path="missing")
+
     def test_logical_preamble_multiline_names_and_empty_final_column_preserved(self):
         body = b'#Format 1\t\t\nname\tvotes\t\n"First\nLast"\t0\t\nOther\t\t\n'
         table = delimited(body, delimiter="\t", preamble_rows=1)

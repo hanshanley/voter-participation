@@ -22,6 +22,85 @@ class NativeProductsTests(unittest.TestCase):
             fields=dict(unit="unit", ballots="ballots", reporting="reporting"),
             counts=["ballots"], keys=["unit"], deduplicate=True)
 
+    def test_native_json_queries_keep_zero_based_source_record_provenance(self):
+        body = b'[{"unit":"A","ballots":"10","clock":"Native date"},'
+        body += b'{"unit":"B","ballots":0,"clock":null}]'
+        spec = dict(self.spec, kind="json_records", pin=pin(body), expected_rows=2)
+        product = unpack(spec, body)
+        selection = dict(self.selection, fields=dict(unit="unit", ballots="ballots", clock="clock"))
+        result = query(product, selection)
+        self.assertEqual(result["rows"][0]["source_rows"],
+            [dict(table=None, workbook=None, record_index=0)])
+        self.assertEqual(result["rows"][1]["ballots"], 0)
+        self.assertIsNone(result["rows"][1]["clock"])
+        self.assertEqual(product["tables"][0]["kind"], "json_records")
+
+    def test_independent_json_verification_detects_changed_types_or_ordinals(self):
+        from scripts.verify_native_products import verify
+
+        body = b'[{"unit":"A","ballots":0,"flag":false}]'
+        spec = dict(self.spec, path="native.json", kind="json_records", pin=pin(body), expected_rows=1)
+        selection = dict(self.selection, fields=dict(unit="unit", ballots="ballots"))
+        recipe = dict(contract="participation.native_product_recipe.v1",
+            products=[spec], queries=[selection])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "native.json").write_bytes(body)
+            compile_products(recipe, root, root / "compiled")
+            self.assertEqual(verify(recipe, root, root / "compiled")["status"], "passed")
+            path = root / "compiled/test.factual-tables.json.gz"
+            original = json.loads(gzip.decompress(path.read_bytes()))
+            for change in ("type", "ordinal"):
+                factual = copy.deepcopy(original)
+                if change == "type":
+                    factual["tables"][0]["rows"][0]["values"][2] = 0
+                else:
+                    factual["tables"][0]["rows"][0]["row"] = 1
+                path.write_bytes(gzip.compress(encoded(factual), mtime=0))
+                manifest = json.loads((root / "compiled/manifest.json").read_bytes())
+                manifest["outputs"][path.name] = pin(path.read_bytes())
+                (root / "compiled/manifest.json").write_bytes(encoded(manifest))
+                with self.subTest(change=change), self.assertRaisesRegex(ValueError, "JSON record"):
+                    verify(recipe, root, root / "compiled")
+
+    def native_reproduction_fixture(self):
+        product = unpack(self.spec, self.body)
+        recipe = dict(contract="participation.native_product_recipe.v1",
+            products=[self.spec], queries=[self.selection])
+        declaration = dict(recipe_input="recipe", products={
+            self.spec["id"]: dict(original="original", facts="facts")}, queries_input="queries")
+        spec = dict(election=dict(year=2026), geography=dict(state_code="HI"),
+            format=dict(native_reproduction=declaration), inputs=dict(
+                original=dict(url=self.spec["url"], pin=self.spec["pin"], publication="original"),
+                recipe={}, facts={}, queries={}))
+        inputs = dict(original=self.body, facts=encoded(product), recipe=encoded(recipe),
+            queries=encoded(dict(contract="participation.native_queries.v1",
+                queries={self.selection["id"]: query(product, self.selection)})))
+        return spec, inputs
+
+    def test_native_intake_reproduces_complete_originals_facts_and_queries(self):
+        from scripts.participation_intake.adapters import verify_native_reproduction
+
+        spec, inputs = self.native_reproduction_fixture()
+        verify_native_reproduction(spec, inputs)
+        spec["format"]["native_reproduction"]["products"]["test"]["compression"] = "gzip"
+        inputs["facts"] = gzip.compress(inputs["facts"], mtime=0)
+        verify_native_reproduction(spec, inputs)
+
+    def test_native_intake_rejects_metadata_only_inputs_or_tampered_facts_and_queries(self):
+        from scripts.participation_intake.adapters import verify_native_reproduction
+
+        for change in ("original", "facts", "queries", "permission", "year"):
+            spec, inputs = self.native_reproduction_fixture()
+            if change == "permission":
+                spec["inputs"]["original"]["publication"] = "metadata_only"
+            elif change == "year":
+                spec["election"]["year"] = 2024
+            else:
+                inputs[change] = b"{}"
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                verify_native_reproduction(spec, inputs)
+
     def test_native_zero_reporting_does_not_remove_positive_counts(self):
         product = unpack(self.spec, self.body)
         result = query(product, self.selection)

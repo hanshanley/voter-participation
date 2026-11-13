@@ -32,6 +32,11 @@ def unpack(spec, body):
         if len(table["rows"]) != spec["expected_rows"]:
             raise ValueError("Native record inventory changed")
         tables = [dict(kind="delimited", **table)]
+    elif spec["kind"] == "json_records":
+        table = tabular.json_records(body, **spec["reader"])
+        if len(table["rows"]) != spec["expected_rows"]:
+            raise ValueError("Native JSON record inventory changed")
+        tables = [dict(kind="json_records", **table)]
     elif spec["kind"] == "xlsx":
         workbook = tabular.xlsx(body)
         if [table["name"] for table in workbook] != spec["sheets"]:
@@ -103,7 +108,7 @@ def query(product, spec):
         raise ValueError("Query table inventory differs")
     output = []
     for table in selected:
-        if table["kind"] == "delimited":
+        if table["kind"] in ("delimited", "json_records"):
             indices = {field: tabular.column(table, label)
                 for field, label in spec["fields"].items()}
             source_rows = [(row["row"], {field: row["values"][index]
@@ -129,8 +134,9 @@ def query(product, spec):
                 continue
             for field in spec.get("counts", []):
                 fields[field] = integer(fields[field])
-            output.append(dict(**fields, source_rows=[
-                dict(table=table.get("name"), workbook=table.get("workbook"), row=number)]))
+            reference = dict(table=table.get("name"), workbook=table.get("workbook"))
+            reference["record_index" if table["kind"] == "json_records" else "row"] = number
+            output.append(dict(**fields, source_rows=[reference]))
     keys, result = {}, []
     for row in output:
         key = tuple(row[field] for field in spec["keys"])

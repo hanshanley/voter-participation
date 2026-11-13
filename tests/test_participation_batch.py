@@ -433,6 +433,54 @@ class RoutineBatchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Provenance metadata cannot authorize"):
             self.run_native_workbook_fixture(row, spec, facts, recipe)
 
+    def native_records_fixture(self, kind="json_records"):
+        from scripts.native_products import unpack
+
+        row, spec, binding, _, recipe = self.native_workbook_fixture()
+        source = recipe["products"][0]
+        source.update(url="https://example.gov/counts.json", redistribution="public_aggregate",
+            kind=kind, reader={}, expected_rows=1)
+        body = (b'[{"county":"One County","bct":"0","clock":"Native report date","candidateVotes":"9"}]'
+            if kind == "json_records" else
+            b"county,bct,clock,candidateVotes\nOne County,0,Native report date,9\n")
+        source["pin"] = pin(body)
+        facts = unpack(source, body)
+        recipe["queries"][0] = dict(id="ballots", product=source["id"],
+            fields=dict(county="county", total="bct", clock="clock"), counts=["total"], keys=["county"])
+        binding.pop("native_header_row")
+        binding["native_measure_header"] = "bct"
+        row["source_clock"]["literal"] = row["view"]["source_update_label"] = "Native report date"
+        spec["format"]["fact_bindings"].append(dict(binding, path="source_clock.literal",
+            value_scope="row", value_path="clock", parse="literal"))
+        return row, spec, binding, facts, recipe
+
+    def test_native_json_and_delimited_headers_bind_counts_and_per_record_clocks(self):
+        for kind in ("json_records", "delimited"):
+            row, spec, binding, facts, recipe = self.native_records_fixture(kind)
+            actual = self.run_native_workbook_fixture(row, spec, facts, recipe)[0]
+            self.assertEqual(actual["count"]["value"], 0)
+            self.assertEqual(actual["source_clock"]["literal"], "Native report date")
+            row["source_clock"]["literal"] = row["view"]["source_update_label"] = "Acquisition time"
+            with self.subTest(kind=kind), self.assertRaisesRegex(ValueError, "reviewed native fact"):
+                self.run_native_workbook_fixture(row, spec, facts, recipe)
+
+    def test_native_record_fields_cannot_masquerade_as_workbook_or_candidate_columns(self):
+        for change in ("worksheet", "candidate"):
+            row, spec, binding, facts, recipe = self.native_records_fixture()
+            if change == "worksheet":
+                binding["native_header_row"] = 1
+            else:
+                recipe["queries"][0]["fields"]["total"] = "candidateVotes"
+                binding["native_measure_header"] = "candidateVotes"
+            with self.subTest(change=change), self.assertRaisesRegex(ValueError, "worksheet or candidate"):
+                self.run_native_workbook_fixture(row, spec, facts, recipe)
+
+    def test_native_record_clock_literals_cannot_supply_statistical_counts(self):
+        row, spec, binding, facts, recipe = self.native_records_fixture()
+        binding.update(value_scope="row", value_path="clock", parse="count")
+        with self.assertRaisesRegex(ValueError, "record literals"):
+            self.run_native_workbook_fixture(row, spec, facts, recipe)
+
     def native_reporting_fixture(self):
         row = copy.deepcopy(self.original_rows[0])
         properties = dict(key="native-one", year=2026, state_code="AR", precinct="One",

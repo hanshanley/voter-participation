@@ -213,7 +213,7 @@ def factual_cells(binding, product):
 
 def native_query_cells(binding, product, spec, inputs, cache):
     from scripts.native_products import query
-    from scripts.native_tabular import values
+    from scripts.native_tabular import column as native_column, values
 
     recipe_name = binding.get("query_recipe_input")
     if recipe_name not in inputs or recipe_name not in spec["inputs"]:
@@ -251,15 +251,21 @@ def native_query_cells(binding, product, spec, inputs, cache):
     measure = binding["measure"]
     column = selected["fields"].get(measure)
     header_row = binding.get("native_header_row")
-    if (measure not in result["count_fields"] or not isinstance(column, str)
-            or not re.fullmatch(r"[A-Z]+", column) or type(header_row) is not int or header_row <= 0):
+    if measure not in result["count_fields"] or not isinstance(column, str):
         raise IntakeError("source_fact_binding", "A direct native statistical count column/header is required")
     table_views = []
     for table in tables:
-        actual = values(table, header_row).get(column)
-        required = selected.get("require", {}).get(str(header_row), {}).get(column)
-        if not isinstance(actual, str) or required != actual:
-            raise IntakeError("source_fact_binding", "Native statistical header needs its complete recipe guard")
+        if table["kind"] in ("delimited", "json_records"):
+            if header_row is not None or re.sub(r"[^a-z0-9]", "", column.lower()) in FORBIDDEN_FIELDS:
+                raise IntakeError("source_fact_binding", "Native record fields are not worksheet or candidate columns")
+            actual = table["header"][native_column(table, column)]
+        else:
+            if not re.fullmatch(r"[A-Z]+", column) or type(header_row) is not int or header_row <= 0:
+                raise IntakeError("source_fact_binding", "A direct native statistical count column/header is required")
+            actual = values(table, header_row).get(column)
+            required = selected.get("require", {}).get(str(header_row), {}).get(column)
+            if not isinstance(actual, str) or required != actual:
+                raise IntakeError("source_fact_binding", "Native statistical header needs its complete recipe guard")
         table_views.append(dict(source_annotations=dict(native_column_headers={measure: actual})))
     selectors = binding.get("native_record", {})
     matches = [r for r in result["rows"] if selectors and all(
@@ -269,6 +275,15 @@ def native_query_cells(binding, product, spec, inputs, cache):
     scope = binding.get("value_scope", "cell")
     if scope == "cell":
         value = matches[0][measure]
+    elif scope == "row":
+        path = binding.get("value_path")
+        field_column = selected["fields"].get(path)
+        if (binding.get("parse", "literal") != "literal" or not isinstance(field_column, str)
+                or not tables or any(table["kind"] not in ("delimited", "json_records") for table in tables)):
+            raise IntakeError("source_fact_binding", "Native record literals require an exact non-count field")
+        for table in tables:
+            native_column(table, field_column)
+        value = matches[0][path]
     elif scope == "source":
         missing = object()
         value = field(product["source"], binding["value_path"], missing)
@@ -350,6 +365,53 @@ def verify_fact_bindings(spec, rows, inputs):
             raise IntakeError("source_fact_binding", "Canonical value differs from its reviewed native fact")
 
 
+def verify_native_reproduction(spec, inputs):
+    declaration = spec.get("format", {}).get("native_reproduction")
+    if declaration is None:
+        return
+    from scripts.native_products import encoded, pin, query, unpack
+
+    def supplied(name, compression=None):
+        if name not in inputs or name not in spec["inputs"] or compression not in (None, "gzip"):
+            raise ValueError("A complete declared native input is required")
+        return gzip.decompress(inputs[name]) if compression == "gzip" else inputs[name]
+
+    try:
+        recipe = json.loads(supplied(declaration["recipe_input"]))
+        products, selections = recipe["products"], recipe["queries"]
+        ids = [p["id"] for p in products]
+        query_ids = [q["id"] for q in selections]
+        if (recipe["contract"] != "participation.native_product_recipe.v1"
+                or not ids or len(set(ids)) != len(ids)
+                or not query_ids or len(set(query_ids)) != len(query_ids)
+                or set(ids) != set(declaration["products"])
+                or any(q["product"] not in ids for q in selections)):
+            raise ValueError("Complete native product/query inventory changed")
+        queries = {}
+        for product_spec in products:
+            names = declaration["products"][product_spec["id"]]
+            original = names["original"]
+            original_body = supplied(original)
+            source = spec["inputs"][original]
+            if (source.get("publication") != "original" or source["url"] != product_spec["url"]
+                    or source["pin"] != product_spec["pin"] or pin(original_body) != source["pin"]
+                    or product_spec["state_code"] != spec["geography"]["state_code"]
+                    or product_spec["election_year"] != spec["election"]["year"]):
+                raise ValueError("Native original permission, pin, source or election changed")
+            product = unpack(product_spec, original_body)
+            factual = supplied(names["facts"], names.get("compression"))
+            if encoded(product) != factual:
+                raise ValueError("Factual tables differ from their complete original")
+            for selection in selections:
+                if selection["product"] == product_spec["id"]:
+                    queries[selection["id"]] = query(product, selection)
+        expected = encoded(dict(contract="participation.native_queries.v1", queries=queries))
+        if supplied(declaration["queries_input"], declaration.get("queries_compression")) != expected:
+            raise ValueError("Complete native numerical queries differ from their originals")
+    except (KeyError, TypeError, ValueError, UnicodeError, OSError, EOFError) as error:
+        raise IntakeError("source_native_reproduction", str(error)) from error
+
+
 def adapt(spec, inputs, input_pins, clock, references):
     name = spec["adapter"]
     if name == "canonical_json":
@@ -366,6 +428,7 @@ def adapt(spec, inputs, input_pins, clock, references):
             if (row["geography"]["state_code"] != spec["geography"]["state_code"]
                     or row["election"] != spec["election"]):
                 raise IntakeError("election_scope", "Canonical observations differ from the registered jurisdiction/election")
+        verify_native_reproduction(spec, inputs)
         verify_fact_bindings(spec, rows, inputs)
         return validate_all(rows)
     if name not in ADAPTERS:

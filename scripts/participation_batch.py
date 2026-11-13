@@ -2,6 +2,7 @@
 
 import argparse
 import copy
+from decimal import Decimal, InvalidOperation
 import gzip
 from html.parser import HTMLParser
 import json
@@ -108,6 +109,77 @@ def display(row, spec):
     return dict(row, view=view)
 
 
+def refresh_current_reporting(data, sources):
+    result, changed, seen = copy.deepcopy(data), 0, set()
+    for source in sources:
+        spec = source["spec"]
+        binding = spec.get("format", {}).get("current_reporting")
+        if binding is None:
+            continue
+        code = spec["geography"]["state_code"]
+        rows = source["rows"]
+        if (code in seen or not rows or not spec["format"].get("native_reproduction")
+                or set(binding["fields"]) != {
+                    "count", "denominator", "reported_units", "total_units", "clock", "published_pct"}):
+            raise IntakeError("current_reporting_scope", "A complete reproduced native state reference is required")
+        seen.add(code)
+        path, roles = binding["reference_path"], binding["fields"]
+        reference = field(rows[0], path)
+        if not isinstance(reference, dict) or any(field(row, path) != reference for row in rows):
+            raise IntakeError("current_reporting_scope", "Native state reference differs across county records")
+        for row in rows:
+            for role, name in roles.items():
+                matches = [item for item in spec["format"].get("fact_bindings", [])
+                    if item.get("record") == {"id": row["id"]}
+                    and item.get("native_query_id") == binding["query_id"]
+                    and item.get("path") == path + "." + name
+                    and item.get("parse") == ("literal" if role in ("clock", "published_pct") else "count")]
+                if len(matches) != 1:
+                    raise IntakeError("current_reporting_scope", "Metadata cannot supply a native statewide statistic")
+        if (sum(row["count"]["value"] for row in rows) != reference[roles["count"]]
+                or sum(row["denominator"]["value"] for row in rows) != reference[roles["denominator"]]
+                or any(sum(row["reporting_status"][key] for row in rows) != reference[roles[role]]
+                    for role, key in (("reported_units", "reported_units"), ("total_units", "total_units")))):
+            raise IntakeError("current_reporting_scope", "Current county/state reference controls do not match")
+        url = rows[0]["source"]["url"]
+        matches = [row for row in result["snapshot"]["reporting"]
+            if row["state_code"] == code and row["source_url"] == url]
+        if len(matches) != 1 or any(row["source"]["url"] != url for row in rows):
+            raise IntakeError("current_reporting_scope", "Exactly one existing same-source state record is required")
+        previous = copy.deepcopy(matches[0])
+        target = matches[0]
+        count, registered = reference[roles["count"]], reference[roles["denominator"]]
+        if registered != target["denominator"] or registered <= 0 or count > registered:
+            raise IntakeError("current_reporting_scope", "A changed statewide registered frame needs separate review")
+        literal = reference[roles["published_pct"]]
+        try:
+            published = Decimal(literal[:-1]) if isinstance(literal, str) and literal.endswith("%") else None
+        except InvalidOperation:
+            published = None
+        if (published is None or not published.is_finite() or not 0 <= published <= 100
+                or abs(Decimal(100 * count) / registered - published) > Decimal(".015")):
+            raise IntakeError("current_reporting_scope", "Native statewide printed fraction does not reconcile")
+        native_pin = rows[0]["source"]["input_sha256"]
+        target.update(ballots=count, denominator=registered, published_pct=float(published),
+            validated_pct=round(100 * count / registered, 3) if target["validated_pct"] is not None else None,
+            reported_units=reference[roles["reported_units"]], total_units=reference[roles["total_units"]],
+            source_update_label=reference[roles["clock"]],
+            source_retrieved_at=rows[0]["view"]["source_retrieved_at"],
+            source_snapshot="native-sha256:" + native_pin, source_sha256=native_pin,
+            complete_download_url=rows[0]["view"]["complete_download_url"])
+        if target != previous:
+            changed += 1
+            lineage = result["snapshot"].setdefault("native_reporting_successors", [])
+            lineage[:] = [item for item in lineage if item["state_code"] != code]
+            lineage.append(dict(state_code=code, source_url=url, source_sha256=native_pin,
+                native_query=binding["query_id"], base_snapshot_not_a_common_asof=True))
+            note = "Native reporting successors retain their own result/retrieval clocks; the base snapshot date is not a common as-of time."
+            limitations = result["snapshot"].setdefault("limitations", [])
+            if note not in limitations:
+                limitations.append(note)
+    return result, changed
+
+
 def compile_counts(description, files, index, sources):
     changes, changed_rows = {}, 0
     candidate_index = copy.deepcopy(index)
@@ -166,6 +238,14 @@ def compile_counts(description, files, index, sources):
             qualified_fractions=sum(bool(row["denominator"] and row["denominator"]["qualified"]) for row in records))
         changes[declaration["file"]] = compressed(state)
         declaration.update(pin(changes[declaration["file"]]))
+    if any(source["spec"].get("format", {}).get("current_reporting") for source in sources):
+        declaration = candidate_index["current_snapshot"]
+        before = json.loads(gzip.decompress(files[declaration["file"]]))
+        current, reference_changes = refresh_current_reporting(before, sources)
+        if current != before:
+            changes[declaration["file"]] = compressed(current)
+            declaration.update(pin(changes[declaration["file"]]))
+            changed_rows += reference_changes
     if not changes:
         return description, files, changed_rows
     changes["index.json"] = encoded(candidate_index)
@@ -433,10 +513,12 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 Path(__file__).with_name("historical_precinct_rows.py"),
                 Path(__file__).with_name("native_products.py"),
                 Path(__file__).with_name("native_tabular.py"),
+                Path(__file__).with_name("native_count_refresh.py"),
                 *sorted((Path(__file__).parent / "participation_intake").glob("*.py"))]
-        test = Path(__file__).parents[1] / "tests/test_participation_batch.py"
-        if test.is_file():
-            code_paths.append(test)
+        for name in ("test_participation_batch.py", "test_native_count_refresh.py", "test_native_tabular.py"):
+            test = Path(__file__).parents[1] / "tests" / name
+            if test.is_file():
+                code_paths.append(test)
         code = {str(path.relative_to(Path(__file__).parents[1])): pin(path.read_bytes()) for path in code_paths}
         recipe = digest(encoded(dict(plan=plan, baseline=pin((baseline / "dataset.json").read_bytes()),
             native_baseline=pin((native_baseline / "dataset.json").read_bytes()) if native else None,
@@ -545,16 +627,8 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
             for path in stage.rglob("*"):
                 if path.is_file():
                     members["queries/" + str(path.relative_to(stage))] = path
-            for path in (Path(__file__), Path(__file__).with_name("participation_batch_publish.py"),
-                    Path(__file__).with_name("package_historical_source_sets.py"),
-                    Path(__file__).with_name("historical_precinct_rows.py"),
-                    Path(__file__).with_name("native_products.py"),
-                    Path(__file__).with_name("native_tabular.py"),
-                    *sorted((Path(__file__).parent / "participation_intake").glob("*.py"))):
-                members["code/scripts/" + str(path.relative_to(Path(__file__).parent))] = path
-            test = Path(__file__).parents[1] / "tests/test_participation_batch.py"
-            if test.is_file():
-                members["code/tests/" + test.name] = test
+            for path in code_paths:
+                members["code/" + str(path.relative_to(Path(__file__).parents[1]))] = path
             package(stage / "complete-analysis.zip", members,
                 "From code/: python -m scripts.participation_batch --registry ../originals/registry.json "
                 "--baseline ../originals/baseline --supplied-root ../originals/supplied --work-dir ../replayed --offline"

@@ -47,6 +47,22 @@ def verify(recipe, source_root, compiled):
             reports.append(dict(product=spec["id"], data_rows=len(table["rows"]),
                 full_source_values_checked=sum(map(len, native))))
             continue
+        if spec["kind"] == "json_records":
+            native = json.loads(body.decode(spec["reader"].get("encoding", "utf-8-sig")))
+            for part in (spec["reader"].get("items_path") or "").split("."):
+                if part:
+                    native = native[int(part)] if isinstance(native, list) else native[part]
+            table = product["tables"][0]
+            restored = [dict(zip(table["header"], row["values"])) for row in table["rows"]]
+            if (not native or table["header"] != list(native[0])
+                    or encoded(native) != encoded(restored)
+                    or [row["row"] for row in table["rows"]] != list(range(len(native)))
+                    or len(native) != spec["expected_rows"]
+                    or table.get("record_address_basis") != "zero_based_json_array_index"):
+                raise ValueError("A complete native JSON record, type or ordinal changed")
+            reports.append(dict(product=spec["id"], data_rows=len(native),
+                full_source_values_checked=sum(map(len, native)), json_scalar_types_preserved=True))
+            continue
         if spec["kind"] not in ("xlsx", "xlsx_zip"):
             raise ValueError("Undeclared independent workbook reader")
         with zipfile.ZipFile(io.BytesIO(body)) as archive:
