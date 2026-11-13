@@ -1,7 +1,7 @@
 {
   "contract": "participation.reviewed_official_house_queries.v1",
   "query_pin": {"bytes": 1912402, "sha256": "e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a"},
-  "review": "Complete native grids independently checked against all source records/cells, 192 printed PDF controls, and all required precinct/county/state candidate and mode controls. HI's seven-ballot accounting difference is retained, not repaired. This review qualifies named candidate counts only, not final counting completeness, turnout, voter switching, or geographic stability.",
+  "review": "Complete native grids independently checked against all source records/cells, 192 printed PDF controls, and all required precinct/county/state candidate and mode controls. HI's seven-ballot accounting difference is retained, not repaired. WY includes its explicitly unassigned Write-Ins in the outside-D/R source category, with blank party affiliation preserved; no D/R affiliation is inferred. This does not qualify final counting completeness, turnout, voter switching, or geographic stability.",
   "sources": [
     {
       "state_code": "HI",
@@ -35,16 +35,17 @@
       "query": "wy-state-house",
       "kind": "wide_candidate_control",
       "district": "WY-AL",
-      "selector": "Statewide Candidates / Total / G28:J28",
+      "selector": "Statewide Candidates / Total / G28:K28",
       "control_key": "county",
       "control_value": "Total",
       "candidates": [
         {"name": "Chuck\nGray (R)", "party": "Republican", "count_field": "R", "header_cell": "G4", "count_cell": "G28"},
         {"name": "Lisa\nKinney (D)", "party": "Democratic", "count_field": "D", "header_cell": "H4", "count_cell": "H28"},
         {"name": "Shawn\nJohnson (L)", "party": "Libertarian", "count_field": "L", "header_cell": "I4", "count_cell": "I28"},
-        {"name": "Jeffrey\nHaggit (C)", "party": "Constitution", "count_field": "C", "header_cell": "J4", "count_cell": "J28"}
+        {"name": "Jeffrey\nHaggit (C)", "party": "Constitution", "count_field": "C", "header_cell": "J4", "count_cell": "J28"},
+        {"name": "Write-Ins", "party": "", "count_field": "write_ins", "header_cell": "K4", "count_cell": "K28"}
       ],
-      "count_scope": "All four named candidates in the official statewide House control. The separate 1,031 unassigned Write-Ins, 1,231 overvotes and 6,228 undervotes remain complete distinct factual queries, not silently assigned to D/R/Other. This preserves the earlier named-candidate current-endpoint scope; it is not all Other ballots or unique-voter turnout."
+      "count_scope": "All four named candidates plus 1,031 explicitly source-unassigned Write-Ins in the official statewide House control. O means reported choices outside the known D/R candidate counts, including these unassigned write-ins; their unknown party is preserved as blank, never imputed to D/R. This explicitly extends the earlier named-candidate-only current scope. The 1,231 overvotes and 6,228 undervotes remain distinct, excluded accounting queries. These are reported valid candidate-choice counts, not ballots, certified final completeness or unique-voter turnout."
     }
   ]
 }

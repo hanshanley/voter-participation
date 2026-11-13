@@ -22,8 +22,17 @@ def verify(inputs, output):
     if len(audit["district_queries"]) != 435 or len(audit["states"]) != 50:
         raise ValueError("Incomplete native audit")
     decisions = {row["state_code"]: row for row in audit["states"]}
+    native_queries = load(inputs / "native/complete-queries.json")["queries"]
+    wy = next(row for row in native_queries["wy-state-house"]["rows"] if row["county"] == "Total")
+    wy_ballots = next(row["ballots"] for row in native_queries["wy-state-ballots"]["rows"]
+        if row["county"] == "Total")
+    if (decisions["WY"]["current_counts"] != dict(D=wy["D"], R=wy["R"],
+            O=wy["L"] + wy["C"] + wy["write_ins"])
+            or sum(decisions["WY"]["current_counts"].values()) + wy["overvotes"]
+                + wy["undervotes"] != wy_ballots):
+        raise ValueError("Known unassigned candidate votes were omitted or accounting added to candidates")
     new_candidates = load(output / "current-candidate-queries.json")
-    if len(new_candidates) != 1400:
+    if len(new_candidates) != 1401:
         raise ValueError("The complete current candidate inventory changed")
     checks, proofs, changes = 0, {}, {}
     with zipfile.ZipFile(inputs / "predecessor-complete-analysis.zip") as previous:
@@ -86,7 +95,7 @@ def verify(inputs, output):
                         raise ValueError("A complete numerical export disagrees with its result")
     return dict(status="passed_all_nine_official_endpoint_successors",
         checks=checks, proofs=proofs, complete_changed_state_queries=changes,
-        complete_states=50, complete_districts=435, complete_candidates=1400,
+        complete_states=50, complete_districts=435, complete_candidates=1401,
         unaffected_states_exactly_reused=48, qualified_states=33, held_states=17,
         source_refits=0, survey_weight_changes=0, native_count_repairs=0,
         individual_histories_identified=False)

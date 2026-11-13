@@ -20,7 +20,7 @@ class OfficialHouseSourcesTests(unittest.TestCase):
                 ("D", "R", "G", "N") if contest == "30" else ("D", "R"))]
         self.body = encoded(dict(queries={
             "hi-summary-candidates": dict(rows=rows),
-            "wy-state-house": dict(rows=[dict(county="Total", R=20, D=10, L=2, C=1)])}))
+            "wy-state-house": dict(rows=[dict(county="Total", R=20, D=10, L=2, C=1, write_ins=3)])}))
         catalog["query_pin"] = pin(self.body)
         self.directory = tempfile.TemporaryDirectory()
         self.addCleanup(self.directory.cleanup)
@@ -44,6 +44,11 @@ class OfficialHouseSourcesTests(unittest.TestCase):
             for candidate in row["current"]["source_candidate_rows"]:
                 self.assertIsNone(candidate["source_updated_at"])
                 self.assertTrue(candidate["native_contest_selector"])
+        wy = next(row for row in rows if row["district"] == "WY-AL")
+        self.assertEqual(wy["current"]["reported_counts"]["O"], 6)
+        write_in = next(row for row in wy["current"]["source_candidate_rows"] if row["name"] == "Write-Ins")
+        self.assertEqual(write_in["literal_parties"], [""])
+        self.assertFalse(write_in["named"])
         self.assertNotEqual(
             rows[0]["current"]["source_candidate_rows"][0]["native_contest_selector"],
             rows[1]["current"]["source_candidate_rows"][0]["native_contest_selector"])

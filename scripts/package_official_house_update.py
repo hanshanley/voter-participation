@@ -60,7 +60,11 @@ def package(packet, destination, website):
     for path in sorted((root / "data/official-native-products").glob("20261113-hi-wy*.json")):
         shutil.copyfile(path, catalogs / path.name)
     for relative in (Path("scripts/export-house-recorded-counts.mjs"),
-                     Path("public/scripts/participation-norc-house.js")):
+                     Path("scripts/participation-norc-house.test.mjs"),
+                     Path("public/scripts/participation-norc-house.js"),
+                     Path("data/participation-return-attribution/20261112-02/norc-test-oracle.json"),
+                     Path("data/participation-return-attribution/20261112-02/norc-receipt.json"),
+                     Path("data/participation-return-attribution/20261112-03/family-summary.json")):
         target = destination / "code" / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(website / relative, target)
@@ -79,7 +83,8 @@ def package(packet, destination, website):
         "Offline replay starts from complete factual grids, not the original templates.\n"
         "All required reconciliations match. HI's seven-ballot accounting gap remains\n"
         "explicit. WY's unassigned write-ins, overvotes and undervotes remain distinct;\n"
-        "its named-candidate model endpoint does not claim all Other ballots or turnout.\n"
+        "the 1,031 unassigned write-ins now explicitly enter O, with blank party retained.\n"
+        "Overvotes/undervotes never enter candidate counts; turnout is not inferred.\n"
         "No formulas are executed, native counts repaired, individual histories observed,\n"
         "source models refitted, new survey weights inferred or geographic joins approved.\n\n"
         "Python >=3.9 core replay (no networking, subprocesses or private survey inputs):\n"
@@ -91,6 +96,8 @@ def package(packet, destination, website):
         "  node code/scripts/export-house-recorded-counts.mjs --source results/viewer-original.json \\\n"
         "    --source-sha256 <SHA256 of that file, as pinned in manifest.json> \\\n"
         "    --output ../fresh-recorded-counts\n\n"
+        "From code/, node --test scripts/participation-norc-house.test.mjs runs the\n"
+        "18 client contract/source-review tests with complete sufficient fixtures.\n\n"
         "Run each archived test_native_*, test_house_comparability, test_house_official_sources,\n"
         "test_official_house_successor, test_norc_house_model, and test_house_model_families\n"
         "with unittest discovery from code/. The 37 affected tests were run with no skips.\n"
