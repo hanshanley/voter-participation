@@ -1,0 +1,63 @@
+{
+  "status": "verified_research_and_local_build_delivery_pending",
+  "processing_source_commit": "25dcb6be51253a8a3140b55cf222627b03fee2d7",
+  "website_main_still_previous_snapshot": "0a164b6b4f184aba0e5783d44c6cd0264234864f",
+  "full_native_records_verified": {
+    "HI_summary": 202,
+    "HI_precinct": 25766,
+    "WY_sheets": 52,
+    "WY_declared_rows": 33534,
+    "WY_cells": 539246,
+    "WY_printed_control_counts": 192,
+    "WY_reporting_units": 432,
+    "WY_counties": 23
+  },
+  "current_candidate_queries": 1401,
+  "current_district_queries": 435,
+  "current_state_decisions": 50,
+  "current_official_house_counts": {
+    "HI": {"D": 256268, "R": 105749, "O": 9359},
+    "WY": {"D": 61689, "R": 99906, "O": 22659}
+  },
+  "WY_source_unassigned_write_ins": {
+    "votes": 1031,
+    "literal_party": "",
+    "counted_as": "O",
+    "named_candidate": false,
+    "party_affiliation_not_imputed": true
+  },
+  "HI_signed_ballot_accounting_gap_retained": 7,
+  "changed_states": ["HI", "WY"],
+  "unchanged_complete_state_and_seed_queries": 48,
+  "profiles": 3,
+  "families": 3,
+  "conditional_states": 33,
+  "held_states": 17,
+  "source_count_repairs": 0,
+  "source_model_refits": 0,
+  "survey_weight_changes": 0,
+  "independent_model_checks": 465552,
+  "affected_Python_tests": 37,
+  "affected_frontend_tests": 38,
+  "fresh_final_archive_reproductions": 2,
+  "archived_Python_tests_per_reproduction": 37,
+  "archived_client_tests_per_reproduction": 18,
+  "byte_identical_full_numerical_outputs_per_reproduction": 82,
+  "complete_recorded_exports_reproduced_per_reproduction": 2,
+  "independent_exported_value_checks": 2200,
+  "network_DNS_and_child_commands_blocked_and_probed": true,
+  "complete_scientific_packet": {
+    "bytes": 82439184,
+    "sha256": "1dfd78d5bb83477a603c6e97e1b21a23437e7bc732d70e304538baac520b801b",
+    "members": 136,
+    "entire_predecessor_bytes": 50449445,
+    "metadata_only": false
+  },
+  "current_typecheck_and_coherent_Astro_build_passed": true,
+  "strict_local_payload_and_tar_size_passed": true,
+  "immutable_release_publication_verified": false,
+  "actual_native_artifact_and_live_production_verified": false,
+  "new_precinct_geography_or_turnout_qualified": false,
+  "individual_voter_histories_identified": false,
+  "final_project_audit_and_beautification_started": false
+}

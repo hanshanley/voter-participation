@@ -8,6 +8,26 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Official HI/WY update: verified research, delivery pending
+
+The current research source
+`25dcb6be51253a8a3140b55cf222627b03fee2d7` contains complete updated viewers
+for all50states, reconditioning only HI/WY across three profiles and families.
+Other48whole-state/assumption/seed queries, learned priors, weights and all
+33conditional/17held masks remain unchanged. WY's1,031unassigned write-ins
+are explicitly included in Other/unassigned with party left blank; overvotes
+and undervotes are separate. HI's seven-ballot accounting gap is not repaired.
+
+The complete82,439,184-byte packet contains the entire50,449,445-byte
+predecessor, all selected HI/WY factual records/cells, every new numerical query,
+exact replay code/tests and sufficient fixtures. Both fresh offline extractions
+pass37Python/18client tests and reproduce all82outputs plus both full50state
+recorded-count exports;465,552model checks and2,200exported-value checks pass.
+Whole workbook templates remain local; replay starts from complete factual grids.
+Immutable release verification and actual native/production website acceptance
+are still pending; the older complete public packages below remain preserved.
+See [current delivery gates](../REMAINING.md).
+
 ## Recorded House counts and behavioral eligibility
 
 The [recorded-count guide](HOUSE_RECORDED_COUNTS.md) separates known source

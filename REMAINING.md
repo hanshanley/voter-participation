@@ -84,9 +84,32 @@ with 18 successfully acquired native indexes and explicit access holds retained.
 Fresh official Hawaii summary/precinct TSVs and Wyoming official summary/ballot
 PDFs plus its three-workbook precinct archive are held locally. Wyoming's native
 House summary has Gray99,906 / Kinney61,689 and its separate ballot summary has
-191,713 ballots across23counties. These new files have not yet been compiled,
-used to update estimates or activated on the website. Do that next, checking
-all native fields and parent totals and recalculating only qualified changed cases.
+191,713 ballots across23counties. The complete held HI/WY products are now
+compiled and independently verified: all202HI summary/25,766precinct rows,
+all52WY sheets/539,246cells,192printed controls and every required native
+parent/mode check. HI's seven-ballot accounting difference remains explicit.
+WY's1,031unassigned write-ins now enter Other/unassigned with party left blank;
+overvotes/undervotes remain separate. Current candidate inventory is1,401.
+
+Research source `25dcb6be51253a8a3140b55cf222627b03fee2d7` publishes the
+new full viewer datasets. All nine profile/family reconstructions update only
+HI/WY; every other48whole-state row and complete seed/assumption query is reused,
+with33conditional/17held unchanged and no survey refit or weight change.
+All37Python tests and465,552independent checks pass. Two final archive
+extractions each pass37Python/18client tests and reproduce all82outputs plus
+both full50state recorded-count exports;2,200independent exported-value checks
+pass. The complete82,439,184-byte packet preserves the entire50,449,445-byte
+predecessor and complete factual grids, not metadata-only downloads.
+
+**Delivery is still in progress:** source loading and full frontend contracts
+pass38tests; current typecheck/coherent Astro build and strict local Pages size
+checks pass. Immutable full-asset release verification, actual no-override local/
+production desktop/phone acceptance, native artifact payload AND tar below1e9,
+and guarded canonical sync are not yet claimed. Website main remains0a164b6
+until those gates pass. Do not repeat native extraction/private fitting or the
+named-candidate-only predecessor; finish this delivery before further modeling.
+The rest of the all-state source, poll/history/Census/registration/mail and
+native-binding work remains open; this is not nationwide fresh native coverage.
 
 **Texas map diagnosis:** the held counts already imply **+11.9761 Democratic
 two-party-share points**, equivalent to **+23.9522 D-minus-R margin points**.

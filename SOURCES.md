@@ -124,7 +124,44 @@ including persisted stops. Fresh declared official HI summary/precinct TSVs
 and WY candidate/ballot PDFs plus its complete three-workbook precinct archive
 are held. WY native House99,906Gray/61,689Kinney differs slightly from the old
 provider99,891/61,684; separate native ballots191,713 across23counties.
-No new numerical compilation, model update or activation is claimed yet.
+The complete native products are now compiled and the qualified changed
+endpoints reconditioned in research source
+`25dcb6be51253a8a3140b55cf222627b03fee2d7`. This is not yet a live activation:
+see the delivery gates in [REMAINING.md](REMAINING.md).
+
+Every202HI summary/25,766precinct record and every declared WY cell across
+52sheets/33,534rows/539,246cells is retained and independently checked.
+All192printed WY House/ballot controls agree; all432native precinct reporting
+units reconcile through23counties to the state. Thirty-five date-stored native
+precinct labels are decoded only using their literal reviewed display formats
+and independently checked, not matched by row order or guessed geographic alias.
+No formulas are executed, native counts repaired or boundaries qualified.
+
+HI native HouseD256,268/R105,749/O9,359 matches the full precinct/mode
+candidate sums. Its249reporting/247nonreporting split records include positive
+VSC votes underReporting0; that flag never erases votes. Deduplicated native
+ballots392,435 exceed Housecandidate+blank+over/invalid392,428 by7; the signed
+gap remains unresolved. Native registration853,399 is not allocated again
+from the repeated whole-state contest stock or used as local voter eligibility.
+
+WY native HouseD61,689/R99,906/O22,659 includes1,031explicitly unassigned
+write-ins in the outside-known-D/R category. Their affiliation remains blank,
+not inferred as D/R or Nonpartisan. Its1,231overvotes/6,228undervotes remain
+separate; candidate-choice counts plus these equal191,713ballots.
+This explicitly extends the earlier named-only current scope; source59d359c
+and the first private packet are predecessors, not final accepted scope.
+Current full candidate inventory is1,401, with all435districts/50states retained.
+
+All nine updated profile/family cases preserve the earlier learned priors,
+weights, source-validation scores,33conditional/17held masks and every other
+48whole-state/assumption/seed query.37Python tests and465,552independent
+checks pass; two final fresh offline extractions reproduce all82full outputs
+and both50state recorded-count exports with37Python/18client tests each and
+2,200independent exported-value checks. Complete packet82,439,184bytes/SHA256
+`1dfd78d5bb83477a603c6e97e1b21a23437e7bc732d70e304538baac520b801b`.
+Whole workbook templates remain separately held; public reproduction uses
+complete factual grids. No new raw respondents, source refits, weights,
+individual histories, geographic joins or population validation are claimed.
 
 The native civicAPI refreshes for race87495 and87098 returned403 and are stopped;
 the declared AlaskaNovember11combined report returned405. No other client,
