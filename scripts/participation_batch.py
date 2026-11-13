@@ -200,6 +200,63 @@ def refresh_current_reporting(data, sources):
     return result, changed
 
 
+def reviewed_view_aliases(state, spec, replacements):
+    review = spec.get("format", {}).get("view_aliases")
+    if review is None:
+        return {}
+    if (set(review) != {"contract", "review_evidence", "baseline_views", "aliases"}
+            or review["contract"] != "participation.reviewed_view_aliases.v1"
+            or not isinstance(review["review_evidence"], str) or not review["review_evidence"].strip()
+            or review["baseline_views"] != pin(encoded(state["views"]))
+            or not isinstance(review["aliases"], list) or not review["aliases"]):
+        raise IntakeError("replacement_scope", "View aliases require complete pinned selections and explicit review")
+    records = {row["id"]: row for row in state["records"]}
+    selected = {key for frame in state["views"].values()
+                for partition in ("counties", "precincts", "nongeographic") for key in frame[partition]}
+    aliases = {}
+    for binding in review["aliases"]:
+        if not isinstance(binding, dict) or set(binding) != {
+                "id", "pin", "refreshed_from", "occurrences", "selector_partitions"}:
+            raise IntakeError("replacement_scope", "Every view alias requires its exact record and refresh origin")
+        identity, origin = binding["id"], binding["refreshed_from"]
+        if (identity not in records or origin not in records or origin not in replacements
+                or identity in replacements or identity in aliases or identity not in selected
+                or binding["pin"] != pin(encoded(records[identity]))):
+            raise IntakeError("replacement_scope", "A view alias must be a selected, retained, pinned source copy")
+        alias, previous, updated = records[identity], records[origin], replacements[origin]
+        occurrences = [{"mode": mode, "partition": partition, "index": position}
+                       for mode, frame in state["views"].items()
+                       for partition in ("counties", "precincts", "nongeographic")
+                       for position, key in enumerate(frame[partition]) if key == identity]
+        declared = binding["occurrences"]
+        if (not isinstance(declared, list) or not declared
+                or any(not isinstance(item, dict) or set(item) != {"mode", "partition", "index"}
+                    or type(item["index"]) is not int for item in declared)
+                or encoded(declared) != encoded(occurrences)):
+            raise IntakeError("replacement_scope", "Every mode, partition and position of an alias must be declared")
+        partitions = {"alias": alias["source"]["selector"].get("partition"),
+                      "origin": previous["source"]["selector"].get("partition")}
+        normalized = copy.deepcopy(alias)
+        normalized["id"] = previous["id"]
+        normalized["source"]["id"] = previous["source"]["id"]
+        if "partition" in previous["source"]["selector"]:
+            normalized["source"]["selector"]["partition"] = partitions["origin"]
+        if (binding["selector_partitions"] != partitions or normalized != previous
+                or updated["denominator"] is not None and updated["denominator"].get("qualified")
+                or updated["view"].get("reported_pct") is not None):
+            raise IntakeError("replacement_scope", "View aliases cannot bridge different source or electorate frames")
+        aliases[identity] = updated["id"]
+    for frame in state["views"].values():
+        selected_ids = []
+        for partition in ("counties", "precincts", "nongeographic"):
+            keys = [aliases.get(key, replacements[key]["id"] if key in replacements else key)
+                    for key in frame[partition]]
+            selected_ids.extend(keys)
+        if len(selected_ids) != len(set(selected_ids)):
+            raise IntakeError("replacement_scope", "View aliases cannot duplicate selected observations")
+    return aliases
+
+
 def compile_counts(description, files, index, sources):
     changes, changed_rows = {}, 0
     candidate_index = copy.deepcopy(index)
@@ -236,10 +293,12 @@ def compile_counts(description, files, index, sources):
                     raise IntakeError("view_count", "Displayed and canonical count differ")
                 replacements[previous["id"]] = row
                 changed_rows += row != previous
+            aliases = reviewed_view_aliases(state, spec, replacements)
             state["records"] = [replacements.get(row["id"], row) for row in state["records"]]
             for frame in state["views"].values():
                 for partition in ("counties", "precincts", "nongeographic"):
-                    frame[partition] = [replacements[identity]["id"] if identity in replacements else identity
+                    frame[partition] = [aliases.get(identity, replacements[identity]["id"]
+                        if identity in replacements else identity)
                         for identity in frame[partition]]
         if state == original:
             continue

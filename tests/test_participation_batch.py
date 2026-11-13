@@ -11,8 +11,8 @@ import urllib.error
 import zipfile
 
 from scripts.participation_batch import (
-    compile_reporting, compressed, discover, display, execute, native_baseline_files,
-    supplied_reference_bodies,
+    compile_counts, compile_reporting, compressed, discover, display, execute, native_baseline_files,
+    reviewed_view_aliases, supplied_reference_bodies,
 )
 from scripts.participation_intake.adapters import adapt
 from scripts.participation_intake.contract import IntakeError, STATES, digest, encoded, pin
@@ -162,6 +162,116 @@ class RoutineBatchTests(unittest.TestCase):
 
     def execute(self, **kwargs):
         return execute(self.registry, self.baseline, self.work, self.supplied, offline=True, **kwargs)
+
+    def alias_refresh_fixture(self):
+        state = json.loads(gzip.decompress((self.baseline / "states/AR.json.gz").read_bytes()))
+        state["records"][0]["source"]["selector"]["partition"] = "original-export"
+        alias = copy.deepcopy(state["records"][0])
+        alias["id"] = "a" * 32
+        alias["source"]["id"] = "retained-export-copy"
+        alias["source"]["selector"]["partition"] = "copied-export"
+        state["records"].append(alias)
+        for mode in ("uf_vep", "uf_vap"):
+            state["views"][mode]["precincts"][0] = alias["id"]
+        native = encoded([dict(unit="one", label="One", ballots=7), dict(unit="two", label="Two", ballots="")])
+        rows = [display(row, self.spec) for row in adapt(self.spec, {"data": native},
+            {"data": pin(native)}, {"literal": "native clock", "timezone": None}, {})]
+        spec = copy.deepcopy(self.spec)
+        spec["format"] = dict(view_aliases=dict(
+            contract="participation.reviewed_view_aliases.v1", review_evidence="Synthetic same-source copy review",
+            baseline_views=pin(encoded(state["views"])),
+            aliases=[dict(id=alias["id"], pin=pin(encoded(alias)),
+                          refreshed_from=self.original_rows[0]["id"],
+                          selector_partitions=dict(alias="copied-export", origin="original-export"),
+                          occurrences=[dict(mode=mode, partition="precincts", index=0)
+                                       for mode in state["views"] if mode in ("uf_vep", "uf_vap")])]))
+        replacements = dict(zip([row["id"] for row in self.original_rows], rows))
+        return state, spec, replacements, alias
+
+    def test_explicit_alias_review_updates_all_selected_modes_and_retains_original_copy(self):
+        state, spec, replacements, alias = self.alias_refresh_fixture()
+        files = {name: (self.baseline / name).read_bytes() for name in self.description["files"]}
+        index = json.loads(files["index.json"])
+        files["states/AR.json.gz"] = compressed(state)
+        source = dict(spec=spec, rows=list(replacements.values()), baseline_source_ids=["native-counts"])
+        _, result, _ = compile_counts(self.description, files, index, [source])
+        actual = json.loads(gzip.decompress(result["states/AR.json.gz"]))
+        self.assertIn(alias, actual["records"])
+        for mode in ("available", "official", "uf_vep", "uf_vap"):
+            selected = actual["views"][mode]["precincts"][0]
+            row = next(row for row in actual["records"] if row["id"] == selected)
+            self.assertEqual(row["count"]["value"], 7)
+            self.assertEqual(row["source"]["id"], "native-counts")
+        for mode, frame in state["views"].items():
+            for partition in ("counties", "precincts", "nongeographic"):
+                expected = [replacements[self.original_rows[0]["id"]]["id"]
+                            if key == alias["id"] else key for key in frame[partition]]
+                self.assertEqual(actual["views"][mode][partition], expected)
+        for name in self.description["files"]:
+            if name not in ("states/AR.json.gz", "index.json"):
+                self.assertEqual(result[name], files[name])
+        spec["format"] = {}
+        self.assertEqual(reviewed_view_aliases(state, spec, replacements), {})
+
+    def test_alias_review_rejects_changed_preimages_unknown_origins_and_duplicate_selections(self):
+        for failure in ("views", "pin", "origin", "repeated", "selected", "cross_partition", "occurrence", "lineage"):
+            with self.subTest(failure=failure):
+                state, spec, replacements, alias = self.alias_refresh_fixture()
+                review = spec["format"]["view_aliases"]
+                if failure == "views":
+                    review["baseline_views"] = pin(b"changed")
+                elif failure == "pin":
+                    review["aliases"][0]["pin"] = pin(b"changed")
+                elif failure == "origin":
+                    review["aliases"][0]["refreshed_from"] = "b" * 32
+                elif failure == "repeated":
+                    review["aliases"].append(copy.deepcopy(review["aliases"][0]))
+                elif failure == "selected":
+                    state["views"]["uf_vep"]["precincts"].append(self.original_rows[0]["id"])
+                    review["baseline_views"] = pin(encoded(state["views"]))
+                elif failure == "cross_partition":
+                    state["views"]["uf_vep"]["counties"].append(self.original_rows[0]["id"])
+                    review["baseline_views"] = pin(encoded(state["views"]))
+                elif failure == "occurrence":
+                    review["aliases"][0]["occurrences"].pop()
+                else:
+                    review["aliases"][0]["selector_partitions"]["alias"] = "unreviewed-export"
+                with self.assertRaises(IntakeError):
+                    reviewed_view_aliases(state, spec, replacements)
+
+    def test_rechecksummed_alias_cannot_bridge_source_measure_count_clock_or_population(self):
+        for failure in ("source", "measure", "count", "clock", "denominator", "geography", "visible"):
+            with self.subTest(failure=failure):
+                state, spec, replacements, alias = self.alias_refresh_fixture()
+                if failure == "source":
+                    alias["source"]["input_sha256"] = "b" * 64
+                elif failure == "measure":
+                    alias["measure"]["literal"] = "Cards"
+                elif failure == "count":
+                    alias["count"].update(value=1, literal=1)
+                elif failure == "clock":
+                    alias["source_clock"]["literal"] = "other snapshot"
+                elif failure == "denominator":
+                    alias["denominator"] = dict(value=100, qualified=False, literal="Registry", basis="other")
+                elif failure == "geography":
+                    alias["geography"]["name"] = "Different source unit"
+                else:
+                    alias["view"]["source_status_literal"] = "Unreviewed source status"
+                spec["format"]["view_aliases"]["aliases"][0]["pin"] = pin(encoded(alias))
+                with self.assertRaises(IntakeError):
+                    reviewed_view_aliases(state, spec, replacements)
+
+    def test_alias_target_cannot_promote_a_qualified_denominator_or_rate(self):
+        for failure in ("denominator", "rate"):
+            with self.subTest(failure=failure):
+                state, spec, replacements, alias = self.alias_refresh_fixture()
+                target = replacements[self.original_rows[0]["id"]]
+                if failure == "denominator":
+                    target["denominator"] = dict(value=100, qualified=True, literal="Registry", basis="other")
+                else:
+                    target["view"]["reported_pct"] = 7
+                with self.assertRaises(IntakeError):
+                    reviewed_view_aliases(state, spec, replacements)
 
     def test_noop_preserves_all_fifty_one_shards_and_never_reparses_or_rewrites(self):
         first = self.execute()

@@ -46,6 +46,18 @@ source's replacement scope, literal election/state, public-aggregate
 classification and source/scope review evidence. Source and packet IDs must
 be safe and distinct; replacement scopes cannot overlap.
 
+For reviewed duplicate exports, optional `format.view_aliases` can rebind
+consumer selections to an ordinary refresh's verified successor. This requires
+`participation.reviewed_view_aliases.v1`, review evidence, an exact baseline
+views pin, and each retained alias's whole-record pin, `refreshed_from`,
+`selector_partitions`, and complete `{mode, partition, index}` occurrences.
+The old records must match apart from their ID, source ID and project selector
+partition; source counts, clocks, measures and qualifications cannot differ.
+All occurrences are checked, cross-partition duplicate selections are refused,
+and qualified denominators or rates cannot be introduced through aliases.
+Original alias records remain available. Omit this declaration for ordinary
+same-scope refreshes; no aliases are inferred from names or similar counts.
+
 Existing shared CSV, JSON and PDF adapters accept declared fields and explicit
 display bindings. The reviewed `canonical_json` adapter reuses complete
 canonical observations losslessly; it does not relabel an accepted derived
