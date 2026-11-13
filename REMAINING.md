@@ -101,7 +101,7 @@ both full50state recorded-count exports;2,200independent exported-value checks
 pass. The complete82,439,184-byte packet preserves the entire50,449,445-byte
 predecessor and complete factual grids, not metadata-only downloads.
 
-**Delivery is still in progress:** immutable release443764898/tag
+**The bounded HI/WY delivery is now verified live and persistent:** immutable release443764898/tag
 `participation-house-official-refresh-20261113-01` is now public; all11full
 assets are authenticated-draft and anonymous-public byte verified. Source
 loading/full frontend contracts pass38tests; current typecheck/coherent Astro
@@ -112,15 +112,32 @@ Research canonical37tests and32full published bodies pass; only5absent
 previously published test/import dependencies were restored, with protected
 HEADs/indexes/unrelated hashes unchanged.
 
-Website source73d15a100a481df7f17e829648358b0c0812dc42 is published;
-source guard43356596795 passes. NativePages43356596811, actual artifact
-payload AND tar below1e9, production desktop/phone acceptance and guarded
-website sync still require verification. The last previously accepted live
-snapshot is0a164b6; publication of source alone is not production acceptance.
-Do not repeat native extraction/private fitting or the
-named-candidate-only predecessor; finish this delivery before further modeling.
+Website source73d15a100a481df7f17e829648358b0c0812dc42 is accepted in
+production; source guard43356596795 and nativePages43356596811 pass.
+The actual downloaded artifact14007030928 has997,194,869payload and
+999,792,640tar bytes, both below1e9; all436old download pins/113archived
+models and the actual new compiled renderer/current receipts are verified.
+Actual no-valid-data-override production desktop/phone25398mapvalues/100state
+selections, fresh HI/WY counts, all profiles, pointer/Enter/Space, holds,
+source/scale failure recovery, cache, complete links and no overflow pass.
+Guarded10-file website sync preserves canonical HEAD/index and unrelated work.
+Canonical38frontend tests pass through the exact underlying Node command,
+leaving the user's older package manifest unchanged. The actual canonical
+scientific CLI reproduces all82outputs offline; both canonical complete
+JSON/CSV exports equal the immutable public assets.
+Only207,360tar bytes remain: new large data belong in external pinned assets,
+not the static Pages payload.
+
+Do not repeat this accepted native extraction, model/release/build/browser
+campaign or private fitting, and do not revert to the named-only predecessor.
 The rest of the all-state source, poll/history/Census/registration/mail and
 native-binding work remains open; this is not nationwide fresh native coverage.
+Next follow the remaining supplied official declarations through the shared
+stop-aware workflow, preserving all51dispositions and updating only genuinely
+qualified changed cases. Held OKgeneral declares its Nov3results portal;
+NJ's held index lists candidate filings and primary/special results, not yet
+regular November returns. Candidate email lists are unnecessary and are not
+source returns. Do not substitute these other stages for the general election.
 
 **Texas map diagnosis:** the held counts already imply **+11.9761 Democratic
 two-party-share points**, equivalent to **+23.9522 D-minus-R margin points**.

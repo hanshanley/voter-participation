@@ -126,8 +126,9 @@ are held. WY native House99,906Gray/61,689Kinney differs slightly from the old
 provider99,891/61,684; separate native ballots191,713 across23counties.
 The complete native products are now compiled and the qualified changed
 endpoints reconditioned in research source
-`25dcb6be51253a8a3140b55cf222627b03fee2d7`. This is not yet a live activation:
-see the delivery gates in [REMAINING.md](REMAINING.md).
+`25dcb6be51253a8a3140b55cf222627b03fee2d7`. The bounded update is now
+verified live in website73d15a1; see [remaining work](REMAINING.md) for the
+broader all-state, source/model and geographic tasks, which remain open.
 
 Every202HI summary/25,766precinct record and every declared WY cell across
 52sheets/33,534rows/539,246cells is retained and independently checked.
@@ -169,9 +170,16 @@ packet, full native factual grids/queries, both recorded-count formats, all450
 state/profile/family comparisons and complete verification/reproduction proofs.
 All11full assets are verified authenticated while draft and anonymously after
 publication. The current website source73d15a1 passes38affected tests and actual
-local desktop/phone25398mapvalues/100state selections without valid-data
-overrides. Native artifact/production acceptance remains pending; these local
-checks do not establish deployment.
+local and actual production desktop/phone25398mapvalues/100state selections
+without valid-data overrides. NativePages43356596811/sourceguard43356596795
+and downloaded artifact14007030928 verify997,194,869payload/999,792,640tar
+bytes, both below1e9, all436old download pins/113archived models and the actual
+new compiled renderer/current source receipts. Guarded canonical source sync,
+37backend/38frontend tests, all82canonical offline output matches and both
+complete canonical JSON/CSV matches pass; protected HEAD/index/unrelated files
+are unchanged. Earlier missing-test/selector checks are unaccepted predecessors,
+not unresolved final errors. This is not full all-state native coverage,
+individual-history identification, a NORC weight revision or a new precinct map.
 
 The native civicAPI refreshes for race87495 and87098 returned403 and are stopped;
 the declared AlaskaNovember11combined report returned405. No other client,

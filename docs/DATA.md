@@ -25,9 +25,13 @@ pass37Python/18client tests and reproduce all82outputs plus both full50state
 recorded-count exports;465,552model checks and2,200exported-value checks pass.
 Whole workbook templates remain local; replay starts from complete factual grids.
 Immutable release443764898: all11full assets verified authenticated while draft
-and anonymously after publication. Actual local desktop/phone acceptance passes;
-native artifact/production verification remains pending. Older complete public
-packages below remain preserved. See [current delivery gates](../REMAINING.md).
+and anonymously after publication. Actual local and production desktop/phone
+acceptance passes. Website73d15a1/nativePages43356596811/artifact14007030928
+verifies997,194,869payload/999,792,640tar bytes, below1e9, preserving436old
+download pins/113archived models. Canonical code reproduces all82full outputs
+and both complete numerical exports. Older complete public packages remain
+preserved. The broader source/model work and final audit/beautification remain
+open; see [remaining tasks](../REMAINING.md).
 
 | Complete download | Contents |
 |---|---|
