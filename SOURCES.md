@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current county-primary access outcomes | [Independent originals, actual viewer resolution and retained stops](#2026-county-primary-originals-and-native-viewer-resolution) |
 | Newer secondary county House comparison | [Complete all-unit queries, exact reference vectors and unresolved primary conflicts](#2026-newer-county-house-source-concordance) |
 | Current native municipal refresh | [Vermont full turnout report, 247 municipal observations and explicit registration-frame review](#2026-vermont-native-turnout-report-and-municipal-refresh) |
 | Current native county-count refresh | [Cape May same-measure successor, all51jurisdiction retention and live acceptance](#2026-native-cape-may-count-refresh) |
@@ -44,6 +45,43 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 county primary originals and native viewer resolution
+
+The newer county comparisons prompted checks of independently administered
+county originals, not mirrors of denied state/Civic routes. Full ledger/code/
+record and stop-store checks found no prior acquisition for these county hosts.
+Washington TN's actual `https://www.wcecoffice.com/` returned403; stopped without
+following search-cached PDFs from that denied site. The three numerical
+exceptions remain unresolved, not corrected by a demanded swing sign.
+
+Howard IA's actual `https://howardcounty.iowa.gov/` returned200,143,589bytes,
+SHA256`12f66656c340f3b975bead019141e2d65f3684b2e1a84cb055c0df2c03fa5694`.
+Its literal "Howard County, Iowa Results" link declares the vendor object
+`https://cap.gmdsolutions.com/viewfile.aspx?id=A187354CD62547FA9C4C51B383A1ACA0&dir=Objects`.
+That exact request returned200,25,533bytes,
+SHA256`44873a0e93302461164436ee9d8255a26e209dd675173afe1ec73a52e4dfee79`,
+but the body is the generic PDF.js viewer template. Its hidden password-dialog
+markup is not evidence that the actual document is password-protected, and the
+viewer is not numerical election data.
+
+An optional private trace in the shared collector resolves the actual redirect
+to `/lib/pdf.js/web/viewer.html?file=...`, rather than guessing file paths.
+The explicitly declared child document at the vendor's `/api/files/` endpoint
+returned actual403 and is stopped. No PDF bytes, election identity or candidate/
+turnout counts were verified. No browser, referer/cookie, alternative-client or
+search-snippet replacement was attempted. Stable safe URLs/outcomes are in
+[the access record](data/participation-access/20261113-county-primary-access-01/observations.json);
+full private redirect URLs, publisher template code, headers and contact data
+are not exported.
+
+The private trace supports200 and304, including Python3.9's HTTPError filename,
+while leaving public receipts, cache schema and host restrictions unchanged.
+Stopped/challenge attempts clear traces. All39 affected tests pass. No numerical
+endpoint, fit, weight, mask, catalog or map changes follow from these access
+results. The complete24-member numerical release443915242 is retained unchanged,
+not replaced with an access-only download. Genuine source/model work and the
+final audit/beautification remain open.
 
 ## 2026 newer county House source concordance
 

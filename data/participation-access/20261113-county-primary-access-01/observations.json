@@ -1,0 +1,75 @@
+{
+  "complete_prior_analysis_retained": {
+    "bytes": 2066895,
+    "metadata_only_replacement": false,
+    "release_id": 443915242,
+    "sha256": "e4e9014cd2abf7f948e54bebbe296b20af998f792e32ffdb35bc6db2c7163c3b",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-county-return-concordance-20261113-02/complete-analysis.zip"
+  },
+  "howard_ia": {
+    "acquired_body_is_pdfjs_template_not_result_document": true,
+    "actual_document_route_stopped": true,
+    "actual_viewer_path": "/lib/pdf.js/web/viewer.html",
+    "county_index_receipt": {
+      "bytes": 143589,
+      "origin": "new_source_response",
+      "sha256": "12f66656c340f3b975bead019141e2d65f3684b2e1a84cb055c0df2c03fa5694",
+      "status": 200,
+      "url": "https://howardcounty.iowa.gov/"
+    },
+    "declared_document_url": "https://cap.gmdsolutions.com/api/files/e99771fc-b649-4406-9a97-69d82f0c7005/A187354CD62547FA9C4C51B383A1ACA0",
+    "document_outcome": {
+      "code": "source_access",
+      "message": "HTTP 403; original not replaced or retried",
+      "record_id": null
+    },
+    "exact_declared_viewer_receipt": {
+      "bytes": 25533,
+      "origin": "new_source_response",
+      "sha256": "44873a0e93302461164436ee9d8255a26e209dd675173afe1ec73a52e4dfee79",
+      "status": 200,
+      "url": "https://cap.gmdsolutions.com/viewfile.aspx?id=A187354CD62547FA9C4C51B383A1ACA0&dir=Objects"
+    },
+    "native_document_acquired": false,
+    "native_election_identity_verified": false,
+    "no_guessed_paths_browser_retry_referer_cookie_or_alternate_client": true,
+    "private_trace_published": false,
+    "source_product_label": "Howard County, Iowa Results"
+  },
+  "maintained_generic_collector_change": {
+    "focused_tests_passed": 39,
+    "optional_keyword": "response_trace",
+    "public_receipt_or_cache_schema_changed": false,
+    "python_39_conditional_HTTPError_filename_supported": true,
+    "redirect_host_allowlist_unchanged": true,
+    "stopped_or_challenge_trace_cleared": true,
+    "successful_and_conditional_response_urls_available_privately": true
+  },
+  "no_publisher_prose_code_headers_contacts_or_private_records_exported": true,
+  "numerical_updates": {
+    "endpoint_weight_fit_mask_or_map_changes": 0,
+    "new_exact_candidate_counts": 0,
+    "new_participation_observations": 0
+  },
+  "primary_numerical_conflicts_remain_unresolved": true,
+  "prior_state_Gov_and_civic_87123_stops_preserved": true,
+  "source_requests_not_blocked_by_documentation_or_empty_web_renderer_assumptions": true,
+  "status": "primary_access_holds_not_numerical_election_observations",
+  "unresolved_counties": [
+    "17003",
+    "19089",
+    "47179"
+  ],
+  "washington_tn": {
+    "no_alternate_route_used": true,
+    "original_url": "https://www.wcecoffice.com/",
+    "outcome": {
+      "code": "source_access",
+      "message": "HTTP 403; original not replaced or retried",
+      "record_id": null
+    },
+    "search_discovery_not_used_as_replacement_numerical_content": true
+  },
+  "whole_project_complete": false,
+  "year": 2026
+}

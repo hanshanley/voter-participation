@@ -74,6 +74,16 @@ validators where available. `--offline` forbids missing-original requests.
 Explicit and persisted source-access holds are enforced before using a source,
 including its cache; there is no blocked-route workaround.
 
+For a permitted native document viewer, direct callers can pass an optional
+`response_trace={}` to `Store.acquire`. It records the actual final response URL,
+status and content type, including a conditional304 response, so a declared
+viewer document parameter can be resolved without guessed paths. The trace is
+private operational context: redirected URLs can contain temporary signatures
+and are never added to standard public receipts. Each acquisition clears stale
+trace data before checking access holds; this adds no request path around a stop,
+changes no public receipt or cache schema, and does not qualify viewer HTML as
+election results.
+
 The compiler requires the exact existing geography/measure-mode inventory and
 unchanged election, geography, complete measure semantics and display identities.
 Changing an inventory, geographic join, measure, voting mode or reference map

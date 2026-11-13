@@ -13,6 +13,34 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Native county conflicts: actual access stops, not repaired vote counts
+
+The independent Washington TN election-office original returned403 and is
+stopped. Howard IA's own county index returned200 and explicitly declared its
+results viewer. That exact vendor URL returned200, but only a PDF.js template,
+not election results. The actual redirected viewer's `file` parameter declares
+the native document endpoint; that endpoint returned403 and is now stopped.
+No guessed paths, browser/cookie/referer workaround, alternate client or cached
+search-result counts were used. The existing supplied state-Gov and Civic87123
+stops remain; none of these outcomes repairs the TN/IA/IL numerical conflicts.
+
+The common collector now optionally exposes a private `response_trace` for
+reviewed native viewers, retaining actual final URLs on200/304 without changing
+standard public receipts or cache schemas. Stopped/security-challenge attempts
+clear stale traces; redirect-host restrictions are unchanged. All39 directly
+affected tests pass, including Python3.9 conditional-response handling.
+Access records are under
+`data/participation-access/20261113-county-primary-access-01/`.
+
+No new candidate, participation or model values qualify. The complete numerical
+release443915242 remains available unchanged; this access record is not a
+metadata-only replacement. Continue with genuinely permitted independent
+evidence and compatible already-held administrative/model constraints. Before
+refitting or duplicating a control, check the full existing control/scenario
+queries: the newer VT registration frame may update an existing conditional
+scenario, but native Votes Cast must not become physical ballots or observed
+individual staying home. Full audit and beautification remain pending.
+
 ## Newer county House snapshot: complete reconciliation, no unqualified model promotion
 
 The November13 secondary snapshot26eb70e is now compared in full with both the

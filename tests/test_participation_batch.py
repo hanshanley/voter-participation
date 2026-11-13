@@ -7,11 +7,67 @@ import tempfile
 import sqlite3
 import unittest
 from unittest.mock import patch
+import urllib.error
 import zipfile
 
 from scripts.participation_batch import compressed, discover, display, execute
 from scripts.participation_intake.adapters import adapt
 from scripts.participation_intake.contract import STATES, digest, encoded, pin
+from scripts.participation_intake.engine import Store
+
+
+class NativeResponseTraceTests(unittest.TestCase):
+    def test_native_viewer_redirect_trace_is_private_for_success_and_conditional_cache(self):
+        class Response(io.BytesIO):
+            status = 200
+            headers = {"ETag": "synthetic-etag", "Content-Type": "text/html"}
+
+            def geturl(self):
+                return "https://example.gov/viewer.html?file=%2Fnative.pdf"
+
+        with tempfile.TemporaryDirectory() as temporary:
+            store = Store(temporary)
+            self.addCleanup(store.db.close)
+            source = dict(url="https://example.gov/declared-result")
+            trace = {"stale": "discard"}
+            response = Response(b"native viewer")
+            with patch("urllib.request.OpenerDirector.open", return_value=response):
+                body, receipt = store.acquire(source, response_trace=trace)
+            self.assertEqual(body, b"native viewer")
+            self.assertEqual(trace, dict(final_url=response.geturl(), status=200, content_type="text/html"))
+            self.assertNotIn("final_url", receipt)
+            self.assertNotIn("content_type", receipt)
+            unchanged = urllib.error.HTTPError(response.geturl(), 304, "Not Modified", {}, None)
+            trace["stale"] = "discard"
+            with patch("urllib.request.OpenerDirector.open", side_effect=unchanged):
+                cached, cached_receipt = store.acquire(source, response_trace=trace)
+            self.assertEqual(cached, body)
+            self.assertEqual(trace, dict(final_url=response.geturl(), status=304, content_type=None))
+            self.assertNotIn("final_url", cached_receipt)
+            self.assertEqual(receipt["sha256"], cached_receipt["sha256"])
+
+    def test_access_stop_clears_stale_trace_and_prevents_any_request(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            store = Store(temporary)
+            self.addCleanup(store.db.close)
+            source = dict(url="https://example.gov/declared-result")
+            store.db.execute("INSERT INTO inputs VALUES(?,?,?,?,?)",
+                             (source["url"], None, None, None, "HTTP 403"))
+            store.db.commit()
+            trace = {"final_url": "https://example.gov/old-viewer?file=old.pdf"}
+            with patch("urllib.request.OpenerDirector.open", side_effect=AssertionError("network")):
+                with self.assertRaisesRegex(ValueError, "Recorded access hold"):
+                    store.acquire(source, response_trace=trace)
+            self.assertEqual(trace, {})
+            response = io.BytesIO(b"security challenge")
+            response.status, response.headers = 200, {}
+            response.geturl = lambda: "https://example.gov/security-check"
+            source = dict(url="https://example.gov/second-result",
+                          reject_body_patterns=["security challenge"])
+            with patch("urllib.request.OpenerDirector.open", return_value=response):
+                with self.assertRaisesRegex(ValueError, "Security challenge"):
+                    store.acquire(source, response_trace=trace)
+            self.assertEqual(trace, {})
 
 
 class RoutineBatchTests(unittest.TestCase):

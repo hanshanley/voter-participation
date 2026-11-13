@@ -63,7 +63,9 @@ class Store:
                     temporary.unlink(missing_ok=True)
         return path
 
-    def acquire(self, description, supplied=None):
+    def acquire(self, description, supplied=None, *, response_trace=None):
+        if response_trace is not None:
+            response_trace.clear()
         url = description["url"]
         parsed = urllib.parse.urlparse(url)
         hosts = description.get("allowed_hosts", [parsed.hostname])
@@ -90,11 +92,18 @@ class Store:
                 body = response.read()
                 etag, modified = response.headers.get("ETag"), response.headers.get("Last-Modified")
                 status = response.status
+                if response_trace is not None:
+                    # Redirect URLs may contain temporary signatures; never add them to public receipts.
+                    trace_values = dict(final_url=response.geturl(), status=status,
+                                        content_type=response.headers.get("Content-Type"))
         except urllib.error.HTTPError as error:
             if error.code == 304 and existing:
                 body = (self.root / "objects" / existing[0]).read_bytes()
                 if digest(body) != existing[0]:
                     raise IntakeError("cache_corruption", "Cached original hash differs")
+                if response_trace is not None:
+                    response_trace.update(final_url=error.filename, status=304,
+                                          content_type=(error.headers or {}).get("Content-Type"))
                 return body, dict(url=url, origin="unchanged_conditional_response", status=304, **pin(body))
             if error.code in (401, 403, 429):
                 self.db.execute("INSERT OR REPLACE INTO inputs VALUES(?,?,?,?,?)",
@@ -113,6 +122,8 @@ class Store:
         self.object(body)
         self.db.execute("INSERT OR REPLACE INTO inputs VALUES(?,?,?,?,NULL)", (url, digest(body), etag, modified))
         self.db.commit()
+        if response_trace is not None:
+            response_trace.update(trace_values)
         return body, dict(url=url, origin="new_source_response", status=200, **pin(body))
 
     def geometry_keys(self, asset, body):
