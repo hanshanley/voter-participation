@@ -1,0 +1,144 @@
+{
+  "actual_native_deployment": {
+    "actual_downloaded_zip_sha256": "bddfb2403f3b99113d628026bbf693b580a9848fad5f021490576fae839c4e35",
+    "actual_linked_renderer": "scripts/participation-explorer.js",
+    "actual_native_artifact_id": 14023137622,
+    "actual_native_registered_scenarios": 34,
+    "actual_native_registered_state_decisions": 51,
+    "actual_payload_bytes": 997240655,
+    "actual_tar_bytes": 999833600,
+    "artifact_files": 2975,
+    "complete_registered_analysis_link_verified": true,
+    "dynamic_disclosures_verified_in_actual_renderer": true,
+    "every_unrounded_registered_model_value_exact": true,
+    "frozen_source_scripts_verified": 22,
+    "not_a_local_size_projection": true,
+    "old_full_download_pins_preserved": 436,
+    "original_models_preserved": 113,
+    "passed": true,
+    "renderer_is_bundled": false,
+    "run_id": 43395764741,
+    "source_commit": "539cc68d9626c2e74987571f6df0ed2f852b7161",
+    "source_guard_run": 43395764723,
+    "strict_both_less_than_1e9": true,
+    "successful_native_build_and_deployment": true
+  },
+  "all51_state_rows_and34scenario_csv_bytes_unchanged": true,
+  "all5published_generic_source_and_website_bodies_anonymously_exact": true,
+  "all_previous_displayed_state_scenario_values_unchanged": true,
+  "canonical_astro_errors": 0,
+  "canonical_astro_warnings": 0,
+  "canonical_full_reproduction": {
+    "archive_bytes": 179023914,
+    "archive_sha256": "535bc55c943e677a6ab1361b63dd1bbb9bd2872325ebb0405e902d560cbb5ccd",
+    "external_operation_probes_rejected": 3,
+    "full_numerical_outputs": [
+      "complete-conditional-registered-scenarios.csv",
+      "complete-maryland-card-references.csv",
+      "complete-maryland-native-accounting.csv",
+      "complete-maryland-register-stocks.csv",
+      "complete-native-context-change-query.json",
+      "complete-native-context-query.json.gz",
+      "complete-native-control-dispositions.csv",
+      "complete-native-group-control-query.json",
+      "complete-registered-control-change-query.json",
+      "complete-state-control-query.csv",
+      "native-context-change.json",
+      "registered-frame-change.json",
+      "source-qualification.json",
+      "summary.json"
+    ],
+    "full_source_packet_and_prior_model_included": true,
+    "hash_seed": "97",
+    "passed": true,
+    "tests": 7,
+    "whole_zip_byte_identical": true,
+    "zero_network_dns_or_child_attempts": true
+  },
+  "canonical_guarded_display_projection": {
+    "all_previous_displayed_state_scenario_values_unchanged": true,
+    "baseline": "54ce62cacefa6b1a2e91bd9648b93f6d5e33b389",
+    "canonical_package_preserved_byte_identically": true,
+    "files": {
+      "data/participation-registered-controls/20261113-30/display-model.json": {
+        "bytes": 50732,
+        "sha256": "ff4817cc2745435eecd898e269e6e39092067bc1ff84b3398cfd44e564cdd4fe"
+      },
+      "scripts/check-participation-civic-estimates-browser.py": {
+        "bytes": 11900,
+        "sha256": "eb83b295084d00f561c7143c87785d07fa690b525aba1397d4f277ea53e8bb44"
+      },
+      "src/components/ParticipationCivicEstimates.astro": {
+        "bytes": 18260,
+        "sha256": "32f4d53be516645282c914d5934d1759d8216c92faeca633c7d875ccac1da32a"
+      }
+    },
+    "full_current_release_display_regeneration_exact": true,
+    "passed": true,
+    "source_commit": "539cc68d9626c2e74987571f6df0ed2f852b7161"
+  },
+  "canonical_new_display_tests": 3,
+  "canonical_preexisting_astro_hints": 5,
+  "canonical_tests": 34,
+  "desktop_and_mobile_screenshots_reviewed": true,
+  "full_project_audit_and_beautification_still_pending": true,
+  "no_new_study_fit_weights_or_native_outcome_calibration": true,
+  "production": {
+    "base_url": "https://www.themarginoferror.com",
+    "checks": [
+      {
+        "conditional_rows": 112,
+        "default_closed_research_preserved": true,
+        "margin_rows": 2,
+        "mode": "desktop",
+        "native_complete_download_matches_verified_immutable_asset": true,
+        "native_registered_scenarios": 34,
+        "native_source_frame_decisions": 51,
+        "participation_rows": 79,
+        "passed": true
+      },
+      {
+        "conditional_rows": 112,
+        "default_closed_research_preserved": true,
+        "margin_rows": 2,
+        "mode": "mobile",
+        "native_complete_download_matches_verified_immutable_asset": true,
+        "native_registered_scenarios": 34,
+        "native_source_frame_decisions": 51,
+        "participation_rows": 79,
+        "passed": true
+      },
+      {
+        "conditional_rows": 112,
+        "default_closed_research_preserved": true,
+        "margin_rows": 2,
+        "mode": "no_javascript",
+        "native_complete_download_matches_verified_immutable_asset": true,
+        "native_registered_scenarios": 34,
+        "native_source_frame_decisions": 51,
+        "participation_rows": 79,
+        "passed": true
+      },
+      {
+        "conditional_rows": 112,
+        "default_closed_research_preserved": true,
+        "margin_rows": 2,
+        "mode": "failed_json",
+        "native_complete_download_matches_verified_immutable_asset": true,
+        "native_registered_scenarios": 34,
+        "native_source_frame_decisions": 51,
+        "participation_rows": 79,
+        "passed": true
+      }
+    ]
+  },
+  "protected_heads_indexes_unrelated_files_and_package_preserved": true,
+  "release_id": 443999393,
+  "release_public_and_immutable": true,
+  "release_tag": "participation-state-controls-20261113-30",
+  "source_processing_commit": "7963b132d03d41de0f02b68bae6b651039f9544a",
+  "status": "PASS_live_published_persistent_native_context_30",
+  "website_commit": "539cc68d9626c2e74987571f6df0ed2f852b7161",
+  "website_required_tests": 69,
+  "whole_project_complete": false
+}

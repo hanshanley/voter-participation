@@ -13,6 +13,55 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Complete native context revision 30: verified live and persistent
+
+The existing Minnesota model context was stale:2,490/4,105 reporting units and
+1,224,405 native reported counts. The already-accepted November10 source
+explicitly reports all4,105 units/87 counties and derives2,852,618 Total Number
+Voted. Generic source7963b13 rereads every original record through reviewed
+column roles and compares all unit/parent count and component queries.
+It replaces one non-selected context, not a model or selected registration frame.
+
+All51state rows and34conditional scenario CSV bytes remain identical to29.
+The separate November2 Registered-only stock3,927,036 and all modeled means,
+weights/priors/qualification flags are unchanged. Native7AM3,927,697 and
+Election Day147,357 registration fields remain separate; their sum is only
+source-component context, not a population/turnout denominator. All60component
+conflicts,six electorate excesses,32zeros and null precinct rates survive.
+The legacy context ID is retained for provenance; current scope and measure
+explicitly say complete native reporting units, not generic physical ballots.
+No new source acquisition, geometry, scenario or outcome fitting.
+
+Full179,023,914-byte/29-member packet contains the entire107MBprior29 and
+71MBaccepted native packet, all14numerical outputs, code/tests and replay.
+All16release443999393 assets are authenticated/draft then anonymously/public
+verified. Independent checks cover every4,105 raw records/87 parent totals.
+Both fresh extractions pass7tests and reproduce the whole ZIP offline under
+blocked/probed network/DNS/children; all14outputs additionally compared
+individually in both extractions. Actual canonical34tests and7test/14output/
+whole-ZIP reproduction pass. Complete downloads are in
+[DATA.md](docs/DATA.md#current-native-source-context-revision-30).
+
+Website539cc68 advances only current archive/CSV metadata; all displayed
+state/scenario values remain exact. Required69tests/source Astro pass.
+Three owned canonical website paths, display regeneration,3tests and Astro
+pass with the independent package/older29data preserved. Native
+Pages43395764741/sourceguard43395764723 pass for539cc68. Actual artifact14023137622
+has997,240,655 payload/999,833,600 tar bytes, both strictly below1e9, with all22
+public JS bodies,436old download pins and113archived models preserved.
+Production desktop/mobile/no-JavaScript/blocked-JSON checks pass every old
+Civic and current34scenario/51decision value plus full CSV hashes/current
+ZIP link. Desktop/mobile screenshots reviewed. Complete release443999393 is
+public and immutable. Acceptance records are in
+`data/participation-access/20261113-native-context-successor-01/`.
+Full audit and beautification remain pending behind broader implementation.
+Next verified native-count gap: current WY's23county counts sum191,688, while
+the already-held official summary and all432 native unit queries sum191,713.
+Exact county-name identities agree; six counties change by+25 in total.
+Reconcile source measure/scope and update only through shared native facts/
+count compilation, retaining source clocks, mode/registration and geography
+holds. Do not reacquire or refit the accepted HI/WY House products.
+
 ## Existing registered-frame model: revision 29 verified live and persistent
 
 The full current control28 queries confirmed a real stale VT input, not a
@@ -58,12 +107,9 @@ This is not a new top-level mode or model family.
 The nine House family/profile outputs,33conditional/17held policy, fits/weights,
 current count/catalog/native-binding versions and all earlier downloads remain.
 Full audit and beautification remain pending behind the broader implementation.
-One concrete next integration gap is already-held Minnesota: the model control
-still describes2,490/4,105 partial units and1,224,405 reported counts, while the
-accepted November10 complete native packet supplies all4,105 rows/87 counties
-and2,852,618 Total Number Voted. Reconcile this source context without mixing
-its7AM/Election Day registration fields with the separate November2 registered
-stock, allocating state survey estimates locally or lifting component holds.
+The following revision30 above reconciles the already-held complete Minnesota
+context without mixing its7AM/Election Day fields with the separate November2
+registered stock, allocating state survey estimates locally or lifting holds.
 
 ## Native county conflicts: actual access stops, not repaired vote counts
 

@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current complete native context | [Revision30: complete reporting units, unchanged selected registration and modeled means](#2026-complete-native-source-context-revision-30) |
 | Current registered-frame numerical revision | [Native revision29, unchanged Civic priors and preserved complete state queries](#2026-existing-registered-frame-model-native-control-revision-29) |
 | Current county-primary access outcomes | [Independent originals, actual viewer resolution and retained stops](#2026-county-primary-originals-and-native-viewer-resolution) |
 | Newer secondary county House comparison | [Complete all-unit queries, exact reference vectors and unresolved primary conflicts](#2026-newer-county-house-source-concordance) |
@@ -46,6 +47,56 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 complete native source context: revision 30
+
+Generic processing7963b13 updates the obsolete non-selected Minnesota native
+context in the complete current model ledger. Old2,490/4,105 reporting units/
+1,224,405 counts become all4,105 reported rows/87 counties/2,852,618 Total Number
+Voted from the already-accepted November10 source. The raw12-column file is
+headerless: its column schema is explicitly reviewed, not a printed native
+header. Every original literal and all unit/parent component/count queries
+agree with the accepted complete source packet. Metadata cannot provide
+replacement counts. Native clock11/10/26 8:08AM; timezone unknown.
+
+Exactly one non-selected source context changes. All51state and34scenario CSV
+bytes, selected November2 Registered-only3,927,036, all source means/priors/
+weights, other51controls and full older Maryland/VT queries remain unchanged.
+Native7AM3,927,697 and Election Day147,357 are separate source fields, not that
+dated registration stock, a population or turnout denominator. All60component
+conflicts,six electorate excesses,32zeros and null precinct rates are retained.
+The stable legacy context ID is provenance, not a partial current scope label.
+Its explicit measure now rejects generic physical-ballot/unique-person meaning.
+No independently printed state count, new scenario, fit, outcome calibration,
+source-count repair, local survey allocation or geographic work is invented.
+
+The full179,023,914-byte/29-member ZIP SHA256
+`535bc55c943e677a6ab1361b63dd1bbb9bd2872325ebb0405e902d560cbb5ccd`
+contains both entire107,093,238-byte prior29 and71,548,414-byte native source
+packets, code/tests, full14outputs and exact offline reproduction.
+All16release443999393/tag`participation-state-controls-20261113-30` assets
+are verified authenticated/draft then anonymously/public, full bodies.
+Independent checks cover all4,105 original records/87 parent totals.
+R/canonical34affected tests pass; both fresh extractions pass7tests and
+reproduce the whole ZIP byte-identically offline under blocked/probed
+network/DNS/children. All14numerical outputs additionally match individually
+in both extracted replays. Actual canonical7test/14output/wholeZIP replay passes.
+[Complete downloads](docs/DATA.md#current-native-source-context-revision-30).
+
+Website539cc68 advances only current complete-download bindings; all previous
+state/scenario display values are exact. Required69tests/Astro and guarded
+canonical3path/display projection/3tests/Astro pass. Native43395764741/
+sourceguard43395764723 pass for539cc68. Actual artifact14023137622 has
+997,240,655 payload/999,833,600 tar bytes, both strictly below1e9;22frozen public
+JS bodies,436old download pins and113archived models survive. Every unrounded
+scenario value and current complete ZIP link match the actual artifact.
+Production desktop/mobile/no-JavaScript/blocked-JSON checks pass all old
+Civic/new current-version rows and full CSV hashes; screenshots reviewed.
+Release443999393 is public and immutable. The
+[scientific record](data/participation-access/20261113-native-context-successor-01/observations.json)
+and [website acceptance](data/participation-access/20261113-native-context-successor-01/website-acceptance.json)
+retain the evidence. This does not complete nationwide native rollout or the
+broader implementation prerequisites for full audit and beautification.
 
 ## 2026 existing registered-frame model: native control revision 29
 

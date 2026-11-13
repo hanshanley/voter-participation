@@ -1,0 +1,310 @@
+{
+  "all51_state_rows_and34_scenarios_byte_identical": true,
+  "canonical_full_reproduction": {
+    "archive_bytes": 179023914,
+    "archive_sha256": "535bc55c943e677a6ab1361b63dd1bbb9bd2872325ebb0405e902d560cbb5ccd",
+    "external_operation_probes_rejected": 3,
+    "full_numerical_outputs": [
+      "complete-conditional-registered-scenarios.csv",
+      "complete-maryland-card-references.csv",
+      "complete-maryland-native-accounting.csv",
+      "complete-maryland-register-stocks.csv",
+      "complete-native-context-change-query.json",
+      "complete-native-context-query.json.gz",
+      "complete-native-control-dispositions.csv",
+      "complete-native-group-control-query.json",
+      "complete-registered-control-change-query.json",
+      "complete-state-control-query.csv",
+      "native-context-change.json",
+      "registered-frame-change.json",
+      "source-qualification.json",
+      "summary.json"
+    ],
+    "full_source_packet_and_prior_model_included": true,
+    "hash_seed": "97",
+    "passed": true,
+    "tests": 7,
+    "whole_zip_byte_identical": true,
+    "zero_network_dns_or_child_attempts": true
+  },
+  "complete_download": {
+    "all51states_all34scenarios_unchanged": true,
+    "complete_zip": {
+      "bytes": 179023914,
+      "sha256": "535bc55c943e677a6ab1361b63dd1bbb9bd2872325ebb0405e902d560cbb5ccd"
+    },
+    "fresh_full_extractions": 2,
+    "full_numerical_outputs": 14,
+    "full_prior_model_and_native_source_inputs_included": true,
+    "members": 29,
+    "passed": true,
+    "standard_library_only": true,
+    "tests_per_extraction": 7,
+    "whole_zip_byte_reproduction": true,
+    "zero_network_dns_or_child_attempts": true
+  },
+  "focused_research_and_canonical_tests": 34,
+  "fresh_offline_replays": [
+    {
+      "all_complete_numerical_outputs": [
+        "complete-conditional-registered-scenarios.csv",
+        "complete-maryland-card-references.csv",
+        "complete-maryland-native-accounting.csv",
+        "complete-maryland-register-stocks.csv",
+        "complete-native-context-change-query.json",
+        "complete-native-context-query.json.gz",
+        "complete-native-control-dispositions.csv",
+        "complete-native-group-control-query.json",
+        "complete-registered-control-change-query.json",
+        "complete-state-control-query.csv",
+        "native-context-change.json",
+        "registered-frame-change.json",
+        "source-qualification.json",
+        "summary.json"
+      ],
+      "all_output_bytes_exact": true,
+      "comparison_completed_after_replay": true,
+      "complete_archive": {
+        "bytes": 179023914,
+        "sha256": "535bc55c943e677a6ab1361b63dd1bbb9bd2872325ebb0405e902d560cbb5ccd"
+      },
+      "initial_receipt_retained": "replay-19.json",
+      "passed": true,
+      "tests": 7,
+      "whole_zip_byte_identical": true,
+      "zero_network_dns_or_child_attempts": true
+    },
+    {
+      "all_complete_numerical_outputs": [
+        "complete-conditional-registered-scenarios.csv",
+        "complete-maryland-card-references.csv",
+        "complete-maryland-native-accounting.csv",
+        "complete-maryland-register-stocks.csv",
+        "complete-native-context-change-query.json",
+        "complete-native-context-query.json.gz",
+        "complete-native-control-dispositions.csv",
+        "complete-native-group-control-query.json",
+        "complete-registered-control-change-query.json",
+        "complete-state-control-query.csv",
+        "native-context-change.json",
+        "registered-frame-change.json",
+        "source-qualification.json",
+        "summary.json"
+      ],
+      "all_output_bytes_exact": true,
+      "comparison_completed_after_replay": true,
+      "complete_archive": {
+        "bytes": 179023914,
+        "sha256": "535bc55c943e677a6ab1361b63dd1bbb9bd2872325ebb0405e902d560cbb5ccd"
+      },
+      "initial_receipt_retained": "replay-73.json",
+      "passed": true,
+      "tests": 7,
+      "whole_zip_byte_identical": true,
+      "zero_network_dns_or_child_attempts": true
+    }
+  ],
+  "full_project_audit_and_beautification_still_pending": true,
+  "independent_verification": {
+    "all51_state_rows_and34_scenarios_byte_identical": true,
+    "changed_controls": 1,
+    "complete_archive": {
+      "bytes": 179023914,
+      "members": 29,
+      "sha256": "535bc55c943e677a6ab1361b63dd1bbb9bd2872325ebb0405e902d560cbb5ccd"
+    },
+    "component_conflicts": 60,
+    "electorate_excesses": 6,
+    "explicit_zeros": 32,
+    "native_parents_independently_checked": 87,
+    "native_reported_count": 2852618,
+    "native_units_independently_checked": 4105,
+    "passed": true,
+    "selected_register_weights_fits_or_model_means_changed": false,
+    "separate_registration_components": {
+      "registered_7am": 3927697,
+      "registered_election_day": 147357
+    },
+    "source_rates_or_counts_repaired": false,
+    "unchanged_other_complete_csvs": [
+      "complete-conditional-registered-scenarios.csv",
+      "complete-maryland-card-references.csv",
+      "complete-maryland-native-accounting.csv",
+      "complete-maryland-register-stocks.csv",
+      "complete-state-control-query.csv"
+    ]
+  },
+  "native_control_version": 30,
+  "no_new_acquisition_geometry_model_or_outcome_fit": true,
+  "publication": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 179023914,
+        "name": "complete-analysis.zip",
+        "sha256": "535bc55c943e677a6ab1361b63dd1bbb9bd2872325ebb0405e902d560cbb5ccd",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2220,
+        "name": "complete-asset-manifest.json",
+        "sha256": "57b9a57ecf6bb024f27764d2260bd2b297387dbc3c371ef494a51883c198d398",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 31360,
+        "name": "complete-conditional-registered-scenarios.csv",
+        "sha256": "94637f56ee77a3f45cdc1f9f9b1b633d44d9601b2b6e291a756592bc7e6837d1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-conditional-registered-scenarios.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 8238,
+        "name": "complete-maryland-card-references.csv",
+        "sha256": "3e84f1381bef65b3ed661df1b567aec5b5eabde4f490cf04a8efb9591e97f02b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-maryland-card-references.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3634,
+        "name": "complete-maryland-native-accounting.csv",
+        "sha256": "fe0fd79b624369e2b2cbeb4ab37641907b77ad2037450701658d92964c8617ac",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-maryland-native-accounting.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 60251,
+        "name": "complete-maryland-register-stocks.csv",
+        "sha256": "9cdd05a6d4f3304d88363f9440b7d99c8a794b4c869083de4b5620a27508b5fe",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-maryland-register-stocks.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 159278,
+        "name": "complete-native-context-change-query.json",
+        "sha256": "1b8b0085bfc939dfd60758435202ec99bfa4740ac7728512d2d21a15122a8317",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-native-context-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 165330,
+        "name": "complete-native-context-query.json.gz",
+        "sha256": "077175910837d3feaa359a3a5ba638a75d3eee70ed5e7413f92190ff0cb29c71",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-native-context-query.json.gz"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 51719,
+        "name": "complete-native-control-dispositions.csv",
+        "sha256": "c5a7f23fc13b41eabdee0a31030344a0f668b3305df3db5e64ec9afe7d6fbf48",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-native-control-dispositions.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 625001,
+        "name": "complete-native-group-control-query.json",
+        "sha256": "26675302e1192bd60b8fc6ac9558e909b87b837b9f4e4524440665e3fa5e1504",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-native-group-control-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 157288,
+        "name": "complete-registered-control-change-query.json",
+        "sha256": "6c28ab0cc138c68a299fe56a8d78c7e718ffcd5f759f2b98845e003e168ae5b9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-registered-control-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 25998,
+        "name": "complete-state-control-query.csv",
+        "sha256": "203774cc1152b8d8bfdfd3fba9dc89927cbe3fe7ba31d47642432f5470e784d4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-state-control-query.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3807,
+        "name": "native-context-change.json",
+        "sha256": "bed9acee3de2e9ed2d23ac98c9da234445c2c8ddaf52be1346552638babba21c",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/native-context-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1382,
+        "name": "registered-frame-change.json",
+        "sha256": "9e4738f47f4668fc1ea2e307d872b5d5641b69b287f200a485bab2fc23d9b483",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/registered-frame-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 4659,
+        "name": "source-qualification.json",
+        "sha256": "24958deda03e143a7dffa244468d06abe823cc0ec2847ff64966c1916201c1bb",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/source-qualification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1518,
+        "name": "summary.json",
+        "sha256": "f19e6924a58530de3dbb12c432a5e7dd2c4c2c4b664b453c7f20bd28509d435b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/summary.json"
+      }
+    ],
+    "authenticated_full_draft_verification": "release-authenticated-verification.json",
+    "draft": false,
+    "passed": true,
+    "release_id": 443999393,
+    "source_processing_commit": "7963b132d03d41de0f02b68bae6b651039f9544a",
+    "tag": "participation-state-controls-20261113-30"
+  },
+  "release_public_and_immutable": true,
+  "source_processing_commit": "7963b132d03d41de0f02b68bae6b651039f9544a",
+  "status": "complete_native_context_30_live_published_persistent",
+  "summary": {
+    "changed_control_rows": 1,
+    "changed_existing_scenarios": 0,
+    "changed_state_rows": 0,
+    "conditional_scenarios": 34,
+    "native_context_update": {
+      "complete_native_parents": 87,
+      "complete_native_units": 4105,
+      "contract": "participation.native_context_successor.v1",
+      "derived_native_numerator": 2852618,
+      "explicit_reported_zero_rows": 32,
+      "independently_printed_state_count": null,
+      "native_column_schema_is_reviewed_not_a_printed_header": true,
+      "native_component_conflicts": 60,
+      "native_electorate_excesses": 6,
+      "native_registration_components": {
+        "registered_7am": 3927697,
+        "registered_election_day": 147357
+      },
+      "original_pin": {
+        "bytes": 206137,
+        "sha256": "54085ea0fa1f183ad7e12c19d259a9c8d8e90bad6d682c7b7f8b0be7ef62e7e2"
+      },
+      "physical_ballots_unique_people_or_observed_staying_home_qualified": false,
+      "precinct_rates_allocations_or_geometry_changes": 0,
+      "source_counts_repaired": false,
+      "source_time_label": "11/10/26 8:08 AM",
+      "source_timezone": null,
+      "source_url": "https://electionresultsfiles.sos.mn.gov/20261103/pctstats.txt",
+      "state_code": "MN",
+      "year": 2026
+    },
+    "native_control_version": 30,
+    "native_count_used_for_outcome_fitting": false,
+    "new_model_variants_or_scenarios_created": 0,
+    "observed_staying_home": false,
+    "source_control_records": 52,
+    "state_and_dc_rows": 51,
+    "state_to_county_or_demographic_allocation": false,
+    "study_fit_weights_or_probabilities_changed": false
+  },
+  "website_acceptance_record": "website-acceptance.json",
+  "website_live_integration_verified": true,
+  "website_required_tests": 69,
+  "whole_project_complete": false,
+  "year": 2026
+}

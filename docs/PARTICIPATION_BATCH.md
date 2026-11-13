@@ -91,6 +91,39 @@ requires separately reviewed qualification. Unknowns remain unknown and zeros
 remain zeros. Candidate votes do not become ballots; registration stocks do
 not automatically become turnout denominators.
 
+## Revise an existing scientific control without inventing a model
+
+Use the complete current packet in [DATA.md](DATA.md) as the pinned input and
+recipe reference. From a full extraction, the native-context operation is:
+
+```sh
+python3 -S -m scripts.native_context_successor --inputs inputs --output /new/replay
+```
+
+The operation rereads complete source records through explicitly reviewed column
+roles, checks their literal identities/counts against every accepted source-query
+row and parent, and checks a separate printed registration control. Headerless
+column roles are a reviewed schema, never relabelled as printed headers.
+Missing/unreported/duplicate units, changed source/election, incomplete packets
+and metadata-supplied replacement counts are rejected. Full prior analysis and
+native source packets remain sufficient inputs; all before/after controls and
+unit/parent queries are downloadable.
+
+This operation can replace only an existing **non-selected context** that is
+not referenced by a current state estimate or conditional scenario. State and
+scenario CSV bytes, the selected registration stock, source weights/means and
+all other controls remain unchanged. Complete native reporting-unit coverage
+does not qualify physical ballots, unique people, a population denominator or
+observed staying home. Component discrepancies, source zeros and null rates
+are preserved, not repaired. Duplicate numerical/coverage updates are refused.
+
+An actual change to an existing registered-frame scenario instead uses the
+separate `scripts.registered_control_successor` operation and its reviewed
+native group-fact recipe. It derives new registration counts from native count
+columns, reuses accepted study probabilities/weights unchanged and retains
+all frame/behavior qualifications. Neither operation creates another model
+family or fits a propensity to an unqualified native outcome counter.
+
 ## Bind a same-measure refresh to reviewed native facts
 
 The Cape May refresh in [DATA.md](DATA.md) is a real changed-source example,

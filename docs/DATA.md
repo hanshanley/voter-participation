@@ -8,6 +8,39 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current native-source context: revision 30
+
+All51state rows and34conditional scenario CSV bytes match29, including its
+Vermont update. This revision replaces only one obsolete partial Minnesota
+source context with complete4,105unit/87county reporting and2,852,618 native
+Total Number Voted. Separate7AM3,927,697/Election Day147,357 registration
+components do not replace the independently dated November2 stock3,927,036.
+All60component conflicts,six excesses,32zeros and null precinct rates remain;
+no physical-ballot, unique-person, population or staying-home promotion.
+
+| Complete download | Contents |
+|---|---|
+| [Complete scientific packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-analysis.zip) | 179,023,914bytes/29members; entire prior29 and accepted native source packets, code/tests, all14outputs and exact offline replay |
+| [All51state/DC queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-state-control-query.csv) | Complete prior selected-frame queries retained byte-identically |
+| [All52current native controls](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-native-control-dispositions.csv) | One non-selected context updated; all other source/clock/measure/hold decisions retained |
+| [All34conditional scenarios](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-conditional-registered-scenarios.csv) | Every source mean/weight/qualification retained byte-identically; no new model |
+| [Complete native context queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-native-context-query.json.gz) | Every4,105 raw source record, count/component/excess/zero decision, all87 parent sums and separate registration fields |
+| [All52before/after context queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-30/complete-native-context-change-query.json) | Changed and unchanged controls, not only a selected-row summary |
+
+All16release443999393 assets are full-byte verified authenticated/draft then
+anonymously/public. Two fresh extractions pass7tests and whole-ZIP exact offline
+replay with network/DNS/children blocked/probed; every14numerical output was
+additionally compared individually in both extractions. Independent raw-record
+checks and actual canonical34tests/7test/full14output/wholeZIP replay pass.
+Earlier complete versions and complete Maryland/VT queries remain.
+Website539cc68 current-download activation is verified by native
+Pages43395764741/sourceguard43395764723 and actual artifact14023137622:
+997,240,655 payload/999,833,600 tar bytes,22unchanged JS bodies,436old download
+pins and113old model records retained. Production passes desktop/mobile,
+no-JavaScript/blocked-JSON and full CSV hash/current ZIP-link checks, with
+screenshots reviewed. The release is public and immutable. See the
+[acceptance record](../data/participation-access/20261113-native-context-successor-01/website-acceptance.json).
+
 ## Current registered-source-frame model: revision 29
 
 The existing Vermont registered-frame scenario now uses506,830 native
