@@ -3813,6 +3813,14 @@ qualified citywide reference. Earlier releases and access holds survive.
 
 ## Alabama monthly active and combined registration frames
 
+November13 directory refresh: the original remains byte-identical at SHA256
+`e0942c9ce7d5e390d9163fe16cbb654b5ede4161ac6ae980dae7e464825fc382`.
+It is **already integrated below**, not a new control or model revision.
+The shared direct-XLSX reader independently checks all15,400 cells,666 formulas
+and2,513 blanks including headers; the2,293 blank count slots stay unknown.
+No new source/model/website version is issued. Exact no-op record:
+`data/participation-access/20261113-registration-source-noop-01/`.
+
 [Complete version-24 controls and originals](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-24/complete-analysis.zip)
 add the [official 2026 workbook](https://www.sos.alabama.gov/sites/default/files/election-data/2026-11/ALVR-2026.xlsx),
 obtained from its explicit [registration-index link](https://www.sos.alabama.gov/node/3616).
@@ -3982,6 +3990,14 @@ No new website view, local/group allocation, rate/map/population approval
 or fabricated intervals; earlier releases and source holds remain intact.
 
 ## Oregon monthly registration and held returned-envelope context
+
+November13 directory refresh: the original remains byte-identical at SHA256
+`6ba27dc31ecb4b09d81ef9c9b3258dfa8fd44bdc8f2a1c34aa38d3dc5ab890b9`.
+It is **already integrated below**, not a new source/scenario. Generic reviewed
+PDF projections independently reproduce all2,146 count positions and preserve
+the additional raw district-label blanks, native zeros and signed percentages.
+All existing51 state rows/scenarios and full downloads remain unchanged.
+Do not confuse a second cache/reader with new election evidence.
 
 [Complete version-21 controls and originals](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-21/complete-analysis.zip)
 add a distinct [monthly registration report](https://sos.oregon.gov/elections/Documents/Registration/2026-November.pdf)

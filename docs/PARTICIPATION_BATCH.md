@@ -177,6 +177,31 @@ turnout/registration frame; this is not a general permission to lift old masks.
 
 ## Complete outputs, publication and resume
 
+### Native workbook and stock-query maintenance
+
+`native_products.py` supports pinned direct `xlsx` inputs with an exact `sheets`
+inventory, alongside existing `xlsx_zip` inputs. Both retain native formula
+text, raw stored values, cached decoded values and blank cells without executing
+formulas. The independent verifier checks XML attributes/cache/formula literals
+as well as decoded values; a changed decoded count cannot hide behind an
+unchanged cached literal.
+
+`reproduce_pdf_measures.py --wide-recipe` accepts reviewed table selections,
+expected row inventories, source-field filters and optional literal-label carry.
+Carried labels have explicit review evidence and source-row provenance; original
+blank labels stay blank. Derived fields cannot overwrite native fields or
+provenance. Count/parent equations remain declarative. Optional signed stock
+percent-change checks use the printed precision and preserve unqualified zero
+denominators; none of this identifies voter entry/exit or party choice.
+
+Direct/grouped/wide control recipes are mutually exclusive. Existing NJ/VT
+complete outputs remain byte-identical. All52 affected reader, independent
+verification, PDF and routine tests pass. The AL/ORdirectory products used for
+compatibility are already integrated, exact-source no-ops; use their existing
+complete downloads, not a duplicate model/data release.
+
+### Publication and resume
+
 Every batch includes all 51 jurisdiction dispositions, complete selected-source
 queries, every compiled count file, permitted original inputs, source-specific
 intake packets, registry, exact processing code and workflow tests. The original

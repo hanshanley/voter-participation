@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+from decimal import Decimal
 import gzip
 import io
 import json
@@ -63,6 +64,89 @@ def csv_body(result):
                 sort_keys=True, separators=(",", ":"), allow_nan=False))
         writer.writerow(output)
     return stream.getvalue().encode()
+
+
+def wide_queries(grids, recipe):
+    if (grids["contract"] != "participation.reviewed_pdf_factual_grids.v1"
+            or recipe["contract"] != "participation.reviewed_pdf_wide_queries.v1"):
+        raise ValueError("Reviewed factual grids and wide-query recipe are required")
+    queries = {}
+    for selection in recipe["selections"]:
+        if selection["id"] in queries:
+            raise ValueError("Repeated wide-query identity")
+        products = [item for item in grids["products"]
+            if item["source"]["id"] == selection["source_id"]]
+        if len(products) != 1:
+            raise ValueError("Wide-query source identity is ambiguous")
+        identifiers = selection["table_ids"]
+        tables = {table["id"]: table for table in products[0]["tables"] if table["id"] in identifiers}
+        if (not identifiers or len(set(identifiers)) != len(identifiers)
+                or set(tables) != set(identifiers)
+                or sum(table["id"] in identifiers for table in products[0]["tables"]) != len(identifiers)):
+            raise ValueError("Wide-query table inventory differs")
+        carry = selection.get("carry_forward", {})
+        if carry and not selection.get("carry_review_evidence"):
+            raise ValueError("Source-label carry requires explicit native grouping review")
+        rows, remembered, identities = [], {}, set()
+        for identifier in identifiers:
+            table = tables[identifier]
+            for record in table["rows"]:
+                identity = (identifier, record["row"])
+                if identity in identities:
+                    raise ValueError("Repeated wide-query factual row")
+                identities.add(identity)
+                row = {name: cell["value"] for name, cell in record["cells"].items()}
+                if {"source_rows", "derived_label_sources"} & (set(row) | set(carry)):
+                    raise ValueError("Native or derived fields cannot replace query provenance")
+                reference = dict(table=identifier, page=table["source_page"], row=record["row"])
+                for target, source in carry.items():
+                    if target in row or source not in row:
+                        raise ValueError("Derived carry cannot overwrite or invent a native field")
+                    if row[source] not in (None, ""):
+                        remembered[target] = (row[source], reference)
+                if any(row[name] not in allowed for name, allowed in selection.get("where", {}).items()):
+                    continue
+                if any(row[name] in excluded for name, excluded in selection.get("exclude", {}).items()):
+                    continue
+                if any(target not in remembered for target in carry):
+                    raise ValueError("Native parent label is absent before a selected reporting row")
+                for target in carry:
+                    row[target] = remembered[target][0]
+                if carry:
+                    row["derived_label_sources"] = {target: remembered[target][1] for target in carry}
+                if any(type(row[name]) is not int for name in selection.get("counts", [])):
+                    raise ValueError("Unknown native count cannot be coerced in a wide query")
+                rows.append(dict(row, source_rows=[reference]))
+        if not rows or len(rows) != selection["expected_rows"]:
+            raise ValueError("Reviewed wide-query row inventory differs")
+        queries[selection["id"]] = dict(rows=rows)
+    result = dict(contract="participation.complete_pdf_wide_queries.v1",
+        queries=queries, checks=recipe["checks"], source_count_repairs=0,
+        automatic_geographic_or_model_qualification=False)
+    if recipe.get("percent_changes"):
+        checks = []
+        for definition in recipe["percent_changes"]:
+            for row in queries[definition["query"]]["rows"]:
+                current, previous = row[definition["current"]], row[definition["previous"]]
+                literal = row[definition["printed"]]
+                check = dict(source_rows=row["source_rows"], native_unit=row["native_unit"],
+                    field=definition["printed"], current=current, previous=previous, native_literal=literal)
+                if type(current) is not int or type(previous) is not int or current < 0 or previous <= 0:
+                    check["status"] = "unqualified_native_percent_change"
+                else:
+                    if not isinstance(literal, str) or not literal.endswith("%"):
+                        raise ValueError("Native percent-change literal changed")
+                    printed = Decimal(literal[:-1])
+                    exact = Decimal(100) * (current-previous) / previous
+                    tolerance = Decimal("0.5") * Decimal(10) ** printed.as_tuple().exponent
+                    check.update(exact_percent_change=str(exact),
+                        signed_printed_minus_exact_pp=str(printed-exact),
+                        native_precision_tolerance_pp=str(tolerance),
+                        status="matched" if abs(printed-exact) <= tolerance else "discrepancy")
+                checks.append(check)
+        result["native_stock_percent_change_checks"] = checks
+        result["registration_stock_changes_not_person_transitions"] = True
+    return result
 
 
 def main():

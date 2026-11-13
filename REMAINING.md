@@ -69,6 +69,36 @@ House endpoints, survey fits/weights and behavioral masks are unchanged.
 Broader all-state/combined-source implementation and final audit/beautification
 remain open; do not redo accepted NJ work or treat this as nationwide new data.
 
+## Registration refresh correction: AL/OR are already integrated, not new evidence
+
+The supplied directory's AL2026 workbook and ORNovember2026 PDF are exact
+byte matches to already-integrated source releases24 and21. Their hashes are
+already enforced by `alabama_monthly_register.py` and
+`oregon_monthly_register.py`. Do not add duplicate control/scenario records,
+refit unchanged Civic inputs or call these new2026 observations.
+Existing full original/query/model packages remain the downloads; the no-op
+record links them under
+`data/participation-access/20261113-registration-source-noop-01/`.
+
+The ALworkbook ends with October:3,390,357 active,462,824 inactive,
+3,853,181 combined. The existing active/combined modeled units remain separate,
+unvalidated registration-transport scenarios, not observed participation.
+OR's3,112,307 monthly stock and its preparation date likewise are not a new
+election-time cutoff, ballot total or staying-home observation. All existing
+51state control rows and prior conditional scenarios remain unchanged.
+
+Maintained shared readers now support direct XLSX as well as ZIP workbooks,
+preserve and independently check raw caches/formulas/attributes/decoded values,
+and support reviewed wide PDF queries with traced source-label carry and signed
+stock-percent checks. All52 affected tests pass; accepted NJ/VT full numerical
+outputs remain byte-identical. These are workflow/validation improvements,
+not new source data, fits or a new website-data version.
+
+**Before following another declared URL, search the full ledger and accepted
+source fingerprints. Absence from the newest intake cache is not proof of an
+unused source.** Continue genuinely new native returns/administrative constraints
+and combined-source reconciliation; final audit/beautification remain pending.
+
 ## Native Cape May count refresh: now live through the shared routine
 
 The same native Cape May `Ballots Cast - Total` observation is now42,442,

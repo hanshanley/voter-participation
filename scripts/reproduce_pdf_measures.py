@@ -13,12 +13,15 @@ from scripts.native_products import encoded, pin
 from scripts.native_reconciliation import reconcile
 from scripts.pdf_control_checks import build
 from scripts.pdf_group_queries import build as group_queries
-from scripts.pdf_measure_queries import csv_body, queries
+from scripts.pdf_measure_queries import csv_body, queries, wide_queries
 
 
-def replay(grids, group_recipe=None):
+def replay(grids, group_recipe=None, wide_recipe=None):
+    if group_recipe is not None and wide_recipe is not None:
+        raise ValueError("Use one explicitly reviewed control recipe")
     complete = queries(grids)
-    controls = build(grids) if group_recipe is None else group_queries(grids, group_recipe)
+    controls = (wide_queries(grids, wide_recipe) if wide_recipe is not None else
+        build(grids) if group_recipe is None else group_queries(grids, group_recipe))
     controls["reconciliation"] = reconcile(controls["queries"], controls["checks"])
     return {
         "complete-queries.json.gz": gzip.compress(encoded(complete), mtime=0),
@@ -30,7 +33,9 @@ def replay(grids, group_recipe=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--grids", type=Path, required=True)
-    parser.add_argument("--group-recipe", type=Path)
+    control = parser.add_mutually_exclusive_group()
+    control.add_argument("--group-recipe", type=Path)
+    control.add_argument("--wide-recipe", type=Path)
     parser.add_argument("--expected", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
@@ -55,7 +60,8 @@ def main():
     if args.grids.suffix == ".gz":
         body = gzip.decompress(body)
     recipe = json.loads(args.group_recipe.read_bytes()) if args.group_recipe else None
-    outputs = replay(json.loads(body), recipe)
+    wide = json.loads(args.wide_recipe.read_bytes()) if args.wide_recipe else None
+    outputs = replay(json.loads(body), recipe, wide)
     args.output.mkdir(parents=True)
     for name, body in outputs.items():
         expected = (args.expected / name).read_bytes()

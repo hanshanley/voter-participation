@@ -32,6 +32,11 @@ def unpack(spec, body):
         if len(table["rows"]) != spec["expected_rows"]:
             raise ValueError("Native record inventory changed")
         tables = [dict(kind="delimited", **table)]
+    elif spec["kind"] == "xlsx":
+        workbook = tabular.xlsx(body)
+        if [table["name"] for table in workbook] != spec["sheets"]:
+            raise ValueError("Native worksheet inventory changed")
+        tables = [dict(kind="worksheet", **table) for table in workbook]
     elif spec["kind"] == "xlsx_zip":
         with zipfile.ZipFile(io.BytesIO(body)) as archive:
             if sorted(archive.namelist()) != sorted(spec["members"]):

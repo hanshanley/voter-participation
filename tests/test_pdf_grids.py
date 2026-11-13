@@ -10,7 +10,7 @@ import fitz
 
 from scripts.compile_pdf_grids import compile_grids
 from scripts.native_products import pin
-from scripts.pdf_measure_queries import csv_body, queries
+from scripts.pdf_measure_queries import csv_body, queries, wide_queries
 from scripts.pdf_control_checks import ADMINISTRATIVE, build
 from scripts.pdf_group_queries import build as group_queries
 from scripts.native_reconciliation import reconcile
@@ -168,6 +168,59 @@ class ReviewedPdfGridTests(unittest.TestCase):
         check = result["native_rate_checks"][0]
         self.assertEqual(check["status"], "unqualified_native_fraction")
         self.assertNotIn("exact_percent", check)
+
+    def test_wide_queries_preserve_native_blanks_and_trace_reviewed_parent_labels(self):
+        grids, unused = self.grouping_fixture()
+        for table in grids["products"][0]["tables"]:
+            table["rows"] = [row for row in table["rows"]
+                if row["cells"]["native_unit"]["value"] not in ("A", "A Total", "State Total")]
+        first, second = grids["products"][0]["tables"][:2]
+        first["rows"][0]["cells"]["district"]["value"] = "Source parent"
+        second["rows"][0]["cells"]["district"]["value"] = ""
+        recipe = dict(contract="participation.reviewed_pdf_wide_queries.v1", checks=[], selections=[
+            dict(id="parts", source_id="source", table_ids=["first", "second"], expected_rows=2,
+                carry_forward=dict(derived_parent="district"),
+                carry_review_evidence="Synthetic explicit merged source grouping", counts=["votes"])])
+        result = wide_queries(grids, recipe)["queries"]["parts"]["rows"]
+        self.assertEqual(result[1]["district"], "")
+        self.assertEqual(result[1]["derived_parent"], "Source parent")
+        self.assertEqual(result[1]["derived_label_sources"]["derived_parent"],
+            dict(table="first", page=1, row=1))
+        second["rows"][0]["cells"]["votes"]["value"] = None
+        with self.assertRaisesRegex(ValueError, "Unknown native count"):
+            wide_queries(grids, recipe)
+
+    def test_wide_queries_reject_unreviewed_carry_missing_tables_and_derived_overwrites(self):
+        grids, unused = self.grouping_fixture()
+        selection = dict(id="parts", source_id="source", table_ids=["first"], expected_rows=2,
+            carry_forward=dict(derived_parent="district"))
+        recipe = dict(contract="participation.reviewed_pdf_wide_queries.v1",
+            checks=[], selections=[selection])
+        with self.assertRaisesRegex(ValueError, "explicit native grouping review"):
+            wide_queries(grids, recipe)
+        selection.update(carry_review_evidence="Synthetic source grouping", table_ids=["absent"])
+        with self.assertRaisesRegex(ValueError, "table inventory"):
+            wide_queries(grids, recipe)
+        selection.update(table_ids=["first"], carry_forward=dict(native_unit="district"))
+        with self.assertRaisesRegex(ValueError, "overwrite or invent"):
+            wide_queries(grids, recipe)
+
+    def test_native_stock_percent_changes_keep_signed_changes_and_unknown_denominators(self):
+        grids, unused = self.grouping_fixture()
+        table = grids["products"][0]["tables"][1]
+        table["rows"] = table["rows"][:1]
+        table["rows"][0]["cells"]["pct"]["value"] = "-40%"
+        recipe = dict(contract="participation.reviewed_pdf_wide_queries.v1", checks=[],
+            selections=[dict(id="stock", source_id="source", table_ids=["second"], expected_rows=1)],
+            percent_changes=[dict(query="stock", current="votes", previous="registered", printed="pct")])
+        result = wide_queries(grids, recipe)
+        self.assertEqual(result["native_stock_percent_change_checks"][0]["status"], "matched")
+        self.assertEqual(result["native_stock_percent_change_checks"][0]["exact_percent_change"], "-40")
+        table["rows"][0]["cells"]["registered"]["value"] = 0
+        result = wide_queries(grids, recipe)
+        self.assertEqual(result["native_stock_percent_change_checks"][0]["status"],
+            "unqualified_native_percent_change")
+        self.assertNotIn("exact_percent_change", result["native_stock_percent_change_checks"][0])
 
 
 if __name__ == "__main__":

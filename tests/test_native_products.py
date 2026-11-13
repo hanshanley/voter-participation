@@ -1,7 +1,11 @@
 import copy
+import gzip
+import io
+import json
 import tempfile
 from pathlib import Path
 import unittest
+import zipfile
 
 from scripts.native_products import compile_products, displayed_cell, encoded, integer, pin, query, unpack
 
@@ -42,6 +46,100 @@ class NativeProductsTests(unittest.TestCase):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 integer(value)
         self.assertEqual(integer("0"), 0)
+
+    def workbook_body(self):
+        namespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+        stream = io.BytesIO()
+        with zipfile.ZipFile(stream, "w") as archive:
+            archive.writestr("xl/workbook.xml",
+                f'<workbook xmlns="{namespace}" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
+                '<sheets><sheet name="Month" sheetId="1" r:id="rId1"/></sheets></workbook>')
+            archive.writestr("xl/_rels/workbook.xml.rels",
+                '<Relationships><Relationship Id="rId1" Target="worksheets/sheet1.xml"/></Relationships>')
+            archive.writestr("xl/worksheets/sheet1.xml", f'<worksheet xmlns="{namespace}"><sheetData>'
+                '<row r="1"><c r="A1" t="inlineStr"><is><t>Stock</t></is></c>'
+                '<c r="B1"><f>EXTERNAL_FUNCTION()</f><v>0</v></c>'
+                '<c r="C1"/></row></sheetData></worksheet>')
+        return stream.getvalue()
+
+    def test_direct_workbook_preserves_cached_counts_formulas_and_blank_cells(self):
+        body = self.workbook_body()
+        spec = dict(self.spec, kind="xlsx", sheets=["Month"], pin=pin(body))
+        product = unpack(spec, body)
+        result = query(product, dict(id="stocks", product=self.spec["id"], tables=["Month"],
+            fields=dict(label="A", stock="B", unknown="C"), counts=["stock"], keys=["label"]))
+        row = result["rows"][0]
+        self.assertEqual((row["label"], row["stock"], row["unknown"]), ("Stock", 0, None))
+        cell = product["tables"][0]["rows"][0]["cells"][1]
+        self.assertEqual(cell["formula"]["text"], "EXTERNAL_FUNCTION()")
+        self.assertEqual(cell["cached_literal"], "0")
+
+    def test_direct_workbook_requires_exact_declared_sheet_inventory(self):
+        body = self.workbook_body()
+        spec = dict(self.spec, kind="xlsx", sheets=["Different month"], pin=pin(body))
+        with self.assertRaisesRegex(ValueError, "worksheet inventory"):
+            unpack(spec, body)
+        spec["sheets"] = ["Month", "Missing month"]
+        with self.assertRaisesRegex(ValueError, "worksheet inventory"):
+            unpack(spec, body)
+
+    def test_direct_workbook_independent_reader_detects_changed_cached_facts(self):
+        from openpyxl import Workbook
+        from scripts.verify_native_products import verify
+
+        workbook = Workbook()
+        workbook.active.title = "Month"
+        workbook.active.append(["Stock", 0])
+        stream = io.BytesIO()
+        workbook.save(stream)
+        workbook.close()
+        body = stream.getvalue()
+        spec = dict(self.spec, path="stock.xlsx", kind="xlsx", sheets=["Month"], pin=pin(body))
+        recipe = dict(contract="participation.native_product_recipe.v1", products=[spec],
+            queries=[dict(id="stocks", product=spec["id"], tables=["Month"],
+                fields=dict(label="A", stock="B"), counts=["stock"], keys=["label"])])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "stock.xlsx").write_bytes(body)
+            compiled = root / "compiled"
+            compile_products(recipe, root, compiled)
+            self.assertEqual(verify(recipe, root, compiled)["status"], "passed")
+            path = compiled / "test.factual-tables.json.gz"
+            factual = json.loads(gzip.decompress(path.read_bytes()))
+            factual["tables"][0]["rows"][0]["cells"][1]["value"] = 1
+            path.write_bytes(gzip.compress(encoded(factual), mtime=0))
+            manifest = json.loads((compiled / "manifest.json").read_bytes())
+            manifest["outputs"][path.name] = pin(path.read_bytes())
+            (compiled / "manifest.json").write_bytes(encoded(manifest))
+            with self.assertRaisesRegex(ValueError, "Independent cached value differs"):
+                verify(recipe, root, compiled)
+
+    def test_existing_nested_workbook_reader_retains_independent_verification(self):
+        from openpyxl import Workbook
+        from scripts.verify_native_products import verify
+
+        workbook = Workbook()
+        workbook.active.title = "Month"
+        workbook.active.append(["Stock", 7])
+        inner = io.BytesIO()
+        workbook.save(inner)
+        workbook.close()
+        outer = io.BytesIO()
+        with zipfile.ZipFile(outer, "w") as archive:
+            archive.writestr("source.xlsx", inner.getvalue())
+        body = outer.getvalue()
+        spec = dict(self.spec, path="source.zip", kind="xlsx_zip",
+            members={"source.xlsx": ["Month"]}, pin=pin(body))
+        recipe = dict(contract="participation.native_product_recipe.v1", products=[spec],
+            queries=[dict(id="stocks", product=spec["id"], workbook="source.xlsx", tables=["Month"],
+                fields=dict(label="A", stock="B"), counts=["stock"], keys=["label"])])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "source.zip").write_bytes(body)
+            compile_products(recipe, root, root / "compiled")
+            report = verify(recipe, root, root / "compiled")
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(report["reports"][0]["cells"], 2)
 
     def test_native_date_format_is_required_and_raw_precinct_value_is_unchanged(self):
         table = dict(workbook_properties={}, workbook_number_formats={"164": r"mm\-dd"},

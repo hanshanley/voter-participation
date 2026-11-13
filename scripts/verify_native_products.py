@@ -3,7 +3,7 @@
 import argparse
 import csv
 from datetime import datetime, time, timedelta
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 import gzip
 import io
 import json
@@ -47,10 +47,14 @@ def verify(recipe, source_root, compiled):
             reports.append(dict(product=spec["id"], data_rows=len(table["rows"]),
                 full_source_values_checked=sum(map(len, native))))
             continue
+        if spec["kind"] not in ("xlsx", "xlsx_zip"):
+            raise ValueError("Undeclared independent workbook reader")
         with zipfile.ZipFile(io.BytesIO(body)) as archive:
-            for member in spec["members"]:
-                workbook_body = archive.read(member)
-                selected = [table for table in product["tables"] if table["workbook"] == member]
+            members = {spec["path"]: spec["sheets"]} if spec["kind"] == "xlsx" else spec["members"]
+            for member, sheet_names in members.items():
+                workbook_body = body if spec["kind"] == "xlsx" else archive.read(member)
+                selected = product["tables"] if spec["kind"] == "xlsx" else [
+                    table for table in product["tables"] if table["workbook"] == member]
                 report = dict(product=spec["id"], workbook=member,
                     sheets=len(selected), rows=0, cells=0, formulas=0,
                     explicit_blank_cells=0, native_nonapplicable_cells=0, zero_cells=0,
@@ -64,11 +68,27 @@ def verify(recipe, source_root, compiled):
                                 (row["row"], [cell["address"] for cell in row["cells"]])
                                 for row in table["rows"]]:
                             raise ValueError("Native row/cell inventory changed")
+                        cached = {cell["address"]: cell
+                            for row in table["rows"] for cell in row["cells"]}
+                        for row in native_rows:
+                            for cell in row.findall("{" + NS + "}c"):
+                                native = cached[cell.attrib["r"]]
+                                value, formula = cell.find("{" + NS + "}v"), cell.find("{" + NS + "}f")
+                                expected_formula = (dict(text=formula.text, attributes=dict(formula.attrib))
+                                    if formula is not None else None)
+                                if (native["attributes"] != dict(cell.attrib)
+                                        or native["storage_type"] != cell.attrib.get("t", "n")
+                                        or native["cached_literal"] != (value.text if value is not None else None)
+                                        or native["formula"] != expected_formula):
+                                    raise ValueError("Native cached literal, formula or cell attributes changed")
                         report["rows"] += len(table["rows"])
                 for data_only in (True, False):
                     workbook = openpyxl.load_workbook(io.BytesIO(workbook_body),
                         read_only=True, data_only=data_only, keep_links=False)
                     try:
+                        if workbook.sheetnames != sheet_names or [
+                                table["name"] for table in selected] != sheet_names:
+                            raise ValueError("Independent worksheet inventory differs")
                         for table in selected:
                             native_cells = {cell["address"]: cell
                                 for row in table["rows"] for cell in row["cells"]}
@@ -90,6 +110,15 @@ def verify(recipe, source_root, compiled):
                                                 raise ValueError("Native formula text changed")
                                         continue
                                     actual, expected = cell.value, native["value"]
+                                    if native["storage_type"] == "n" and native["cached_literal"] is not None:
+                                        try:
+                                            decoded_matches = (type(expected) in (int, str)
+                                                and Decimal(str(expected)) == Decimal(native["cached_literal"]))
+                                        except InvalidOperation:
+                                            decoded_matches = False
+                                        if not decoded_matches:
+                                            raise ValueError("Independent cached value differs: " +
+                                                member + " / " + table["name"] + " / " + address)
                                     if isinstance(actual, (datetime, time, timedelta)):
                                         same = actual == from_excel(float(native["cached_literal"]), workbook.epoch)
                                     elif type(actual) in (int, float) and native["storage_type"] == "n":
