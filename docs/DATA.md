@@ -8,6 +8,33 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current registered-source-frame model: revision 29
+
+The existing Vermont registered-frame scenario now uses506,830 native
+registrations instead of506,512, with its754-case Civic prior and weights
+unchanged. Modeled voter/nonvoter source units are327,473.897238/179,356.102762.
+These are conditional source units, not observed voters or staying home.
+Native311,510 Votes Cast remains context, not a physical-ballot fitting target.
+All other50state/51control/33scenario rows remain unchanged.
+
+| Complete download | Contents |
+|---|---|
+| [Complete scientific packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-analysis.zip) | 107,093,238bytes/25members; entire native28 baseline, complete accepted native source packet, code/tests, all11 outputs and exact offline replay |
+| [All51state/DC queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-state-control-query.csv) | Every state and D.C., source clocks/frames, native counts and holds; no missing-to-zero conversion |
+| [All52native controls](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-native-control-dispositions.csv) | Full native source scope and dispositions, including separate county/partial/registration-only measures |
+| [All34existing conditional scenarios](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-conditional-registered-scenarios.csv) | Full unrounded means, accepted Civic weights, conditional assumptions and unqualified population/behavior flags |
+| [Complete native group/control queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-native-group-control-query.json) | All283parts/247towns/14county controls/state,90 count comparisons and624 printed-percentage checks |
+| [Every control before/after query](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-registered-control-change-query.json) | All52 controls, not just changed VT; unchanged and replaced records remain explicit |
+
+Both fresh full extractions pass6 packaged tests and reproduce every numerical
+output and the full ZIP byte-identically offline, with network/DNS/children
+blocked/probed and zero attempts. All13 release443966016 assets are full-byte
+verified authenticated/draft then anonymously/public. Independent Fraction
+checks and37 targeted tests pass. Maryland's full stock/card/accounting queries
+remain in the packet and standalone assets. Earlier complete versions remain.
+Existing-site integration is pending acceptance; no live deployment is claimed
+by scientific publication alone.
+
 ## Newer county House source: complete reconciliation downloads
 
 This is a full secondary-source diagnostic, **not an updated model endpoint or
@@ -356,7 +383,7 @@ checks do not qualify counties, turnout, matched rounds or a new live model.
 |---|---|---|
 | 2026 same-age registration-frame source units | All 255 state/age decisions, one unvalidated SC 65+ group-specific model/stock scenario, native boundary and missingness holds; not observed group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-age-register-frames-20261109-01/complete-analysis.zip) |
 | California dated registration evidence | Complete county/age/preregistration accounting, dated reference and all prior state estimates preserved; not group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-california-register-frame-20261108-01/complete-analysis.zip) |
-| Current state controls | All state/D.C. decisions, separate Maryland dated registers/unofficial card references, 34 unvalidated conditional scenarios and complete earlier baselines; not 34 states or group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261108-28/complete-analysis.zip) |
+| Current state controls | All state/D.C. decisions, updated existing VT registration frame, separate Maryland dated registers/unofficial card references, 34 unvalidated conditional scenarios and complete earlier baselines; not 34 states or group turnout | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-analysis.zip) |
 | Mississippi multiyear frames | October2022/2024/2026 registration stocks, two unvalidated historical CPS marginal-ratio scenarios, all source decisions and held CPS/Civic comparisons | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-mississippi-register-history-20261109-01/complete-analysis.zip) |
 | Historical administrative controls | Source-specific 2018-2026 comparisons, holds and registration-frame scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-controls-20261108-02/complete-analysis.zip) |
 | Historical EAC state controls | Complete state/year grid, selected native references and separate Alaska scenarios | [Download](https://github.com/hanshanley/margin_of_error/releases/download/participation-eac-state-controls-20261108-01/complete-analysis.zip) |

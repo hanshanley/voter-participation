@@ -13,6 +13,42 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Existing registered-frame model: numerical revision published, live integration pending
+
+The full current control28 queries confirmed a real stale VT input, not a
+duplicate source:506,512 registrations/311,009 native Votes Cast, dated November4.
+The already-accepted November9 report supplies506,830/311,510 across the same
+247 municipalities. Generic sourcef6abaa4 derives both values from the reviewed
+native group facts and replays all90 count/624 printed-percentage checks.
+
+Exactly one state row, one existing control and one existing scenario change.
+All50other state rows,51other controls,33other scenarios and Maryland's complete
+stock/card/accounting queries are preserved. No new model variant or scenario.
+The754-case Civic source prior, weights and64.612177108391...% propensity remain
+unchanged. Conditional modeled voter/nonvoter source units change from
+327,268.430515/179,243.569485 to327,473.897238/179,356.102762.
+These are not administratively observed people or confirmed staying home.
+Native Votes Cast is context, not a physical-ballot or outcome-fitting target.
+The nominal count/model difference is not a validated model error.
+
+All37 focused tests pass. Independent Fraction checks and both fresh complete
+archive extractions pass:6 packaged tests, all11 numerical outputs and the entire
+ZIP reproduce byte-identically with network/DNS/children blocked/probed.
+All13 release443966016 assets are authenticated/draft then anonymously/public
+full-byte verified. Full107,093,238-byte/25-member ZIP includes the complete
+prior28 baseline and full accepted native source packet, not only changed rows.
+See [complete downloads](docs/DATA.md#current-registered-source-frame-model-revision-29)
+and `data/participation-access/20261113-registered-control-successor-01/`.
+
+The existing Civic research section is being connected to all34 existing
+registered-frame scenarios in31 jurisdictions and all51 source-frame decisions.
+This is not a new top-level mode or model family. Live website integration,
+actual native artifact payload/tar limits and canonical final acceptance are
+still pending; do not claim them complete from scientific publication alone.
+The nine House family/profile outputs,33conditional/17held policy, fits/weights,
+current count/catalog/native-binding versions and all earlier downloads remain.
+Full audit and beautification remain pending behind the broader implementation.
+
 ## Native county conflicts: actual access stops, not repaired vote counts
 
 The independent Washington TN election-office original returned403 and is

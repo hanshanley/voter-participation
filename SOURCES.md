@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current registered-frame numerical revision | [Native revision29, unchanged Civic priors and preserved complete state queries](#2026-existing-registered-frame-model-native-control-revision-29) |
 | Current county-primary access outcomes | [Independent originals, actual viewer resolution and retained stops](#2026-county-primary-originals-and-native-viewer-resolution) |
 | Newer secondary county House comparison | [Complete all-unit queries, exact reference vectors and unresolved primary conflicts](#2026-newer-county-house-source-concordance) |
 | Current native municipal refresh | [Vermont full turnout report, 247 municipal observations and explicit registration-frame review](#2026-vermont-native-turnout-report-and-municipal-refresh) |
@@ -45,6 +46,55 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 existing registered-frame model: native control revision 29
+
+The complete current native-control28 baseline still used VT's November4
+municipal totals506,512 registrations/311,009 native Votes Cast. The accepted
+November9 full turnout report supplies506,830/311,510. The same247 town
+identities and all283 reporting parts/14county controls/printed state control
+are already qualified for native registration-frame reading, not population
+harmonization. All90 count comparisons and624 printed percentages replay.
+
+Generic processing sourcef6abaa4 binds replacement counts only to reviewed
+native factual count columns, never metadata or percentages. It replaces the
+existing `vt-2026-held-municipal-registration` control/scenario, not a new
+model variant. Native active/inactive status, cutoff and study-frame
+exchangeability remain unqualified. The source-weighted754-case Civic parent
+has weight250.2665563419, modeled voter161.7026706267/nonvoter88.5638857152;
+the64.612177108391...% propensity and all fitted priors/weights are unchanged.
+
+Conditional native registered-frame voter/nonvoter units are now
+327,473.897238458963.../179,356.102761541036..., versus earlier
+327,268.430515254279.../179,243.569484745720.... The increases205.466723204683.../
+112.533276795316... partition the318-unit registration change. No outcome
+calibration to311,510, physical-ballot/unique-person promotion, local/group
+allocation, confidence interval or observed staying-home claim follows.
+The nominal native-count/model difference is explicitly not validated error.
+
+All51state/DC rows,52native controls and34existing conditional cases remain;
+exactly one row in each changes. The other50/51/33 rows and the complete Maryland
+stock/card/accounting outputs are unchanged. The full107,093,238-byte/25-member
+ZIP has SHA256`2692c9c978638b5fec0f15a4c7fd7d3b163cae9e3e3eb5b4a3df3be3eecd7492`.
+It contains the complete106,571,158-byte native28 baseline, full370,732-byte
+accepted native source packet, code/tests, full queries, exclusions and replay.
+The fully pinned legacy source note outside its internal numerical manifest
+is explicitly allowed; no extra unreviewed data or code members are accepted.
+
+All37 targeted tests pass. Independent Fraction checks verify unchanged
+probabilities and full unrelated-row preservation. Both fresh complete
+extractions pass6 packaged tests and reproduce all11 numerical outputs and
+the whole ZIP byte-for-byte with network/DNS/children blocked/probed, zero
+attempts. Release443966016/tag`participation-state-controls-20261113-29`:
+all13 assets full-byte verified authenticated/draft then anonymously/public.
+[Complete downloads](docs/DATA.md#current-registered-source-frame-model-revision-29)
+and [acceptance record](data/participation-access/20261113-registered-control-successor-01/observations.json).
+
+Scientific publication is verified; the existing-page integration is in
+progress, not yet accepted live. All existing House family/profile endpoints,
+33conditional/17held masks, count/catalog/native-binding versions and source
+fits/weights remain unchanged. No new source original or respondent acquisition
+was required. Full audit and beautification remain pending.
 
 ## 2026 county primary originals and native viewer resolution
 

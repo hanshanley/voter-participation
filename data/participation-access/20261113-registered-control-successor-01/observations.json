@@ -1,0 +1,259 @@
+{
+  "all_existing_House_families_profiles_masks_and_NORC_fits_weights_unchanged": true,
+  "complete_download": {
+    "complete_zip": {
+      "bytes": 107093238,
+      "sha256": "2692c9c978638b5fec0f15a4c7fd7d3b163cae9e3e3eb5b4a3df3be3eecd7492"
+    },
+    "fresh_full_extractions": 2,
+    "full_numerical_outputs": 11,
+    "members": 25,
+    "passed": true,
+    "standard_library_only": true,
+    "sufficient_prior_all_state_and_native_inputs_included": true,
+    "tests_per_extraction": 6,
+    "whole_zip_byte_reproduction": true,
+    "zero_network_dns_or_child_attempts": true
+  },
+  "current_count_catalog_and_native_binding_unchanged": true,
+  "focused_research_tests": 37,
+  "fresh_offline_replays": [
+    {
+      "complete_numerical_outputs": [
+        "complete-conditional-registered-scenarios.csv",
+        "complete-maryland-card-references.csv",
+        "complete-maryland-native-accounting.csv",
+        "complete-maryland-register-stocks.csv",
+        "complete-native-control-dispositions.csv",
+        "complete-native-group-control-query.json",
+        "complete-registered-control-change-query.json",
+        "complete-state-control-query.csv",
+        "registered-frame-change.json",
+        "source-qualification.json",
+        "summary.json"
+      ],
+      "existing_scenarios": 34,
+      "passed": true,
+      "state_rows": 51,
+      "tests": 6,
+      "unexpected_external_attempts": []
+    },
+    {
+      "complete_numerical_outputs": [
+        "complete-conditional-registered-scenarios.csv",
+        "complete-maryland-card-references.csv",
+        "complete-maryland-native-accounting.csv",
+        "complete-maryland-register-stocks.csv",
+        "complete-native-control-dispositions.csv",
+        "complete-native-group-control-query.json",
+        "complete-registered-control-change-query.json",
+        "complete-state-control-query.csv",
+        "registered-frame-change.json",
+        "source-qualification.json",
+        "summary.json"
+      ],
+      "existing_scenarios": 34,
+      "passed": true,
+      "state_rows": 51,
+      "tests": 6,
+      "unexpected_external_attempts": []
+    }
+  ],
+  "full_project_audit_and_beautification_still_pending": true,
+  "independent_verification": {
+    "all_624_native_printed_rates_match": true,
+    "all_90_native_counts_match": true,
+    "all_existing_scenarios": 34,
+    "all_native_controls": 52,
+    "all_state_rows": 51,
+    "changed_rows_per_table": [
+      1,
+      1,
+      1
+    ],
+    "exact_fraction_tolerance": "1e-70 source units",
+    "native_reported_count_not_fit_target": 311510,
+    "other_state_control_scenario_rows_preserved": [
+      50,
+      51,
+      33
+    ],
+    "passed": true,
+    "physical_ballot_or_individual_staying_home_qualification": false,
+    "source_registration": 506830,
+    "study_probability_or_weights_changed": false
+  },
+  "native_control_version": 29,
+  "no_respondents_individual_histories_or_private_fine_cells_exported": true,
+  "publication": {
+    "assets": [
+      {
+        "anonymous_status": 200,
+        "bytes": 107093238,
+        "name": "complete-analysis.zip",
+        "sha256": "2692c9c978638b5fec0f15a4c7fd7d3b163cae9e3e3eb5b4a3df3be3eecd7492",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-analysis.zip"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1773,
+        "name": "complete-asset-manifest.json",
+        "sha256": "ca9db3c759b4282b8a1c8938aefd06c654e08d1528d2dea502b47e53dedcec7b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-asset-manifest.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 31360,
+        "name": "complete-conditional-registered-scenarios.csv",
+        "sha256": "94637f56ee77a3f45cdc1f9f9b1b633d44d9601b2b6e291a756592bc7e6837d1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-conditional-registered-scenarios.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 8238,
+        "name": "complete-maryland-card-references.csv",
+        "sha256": "3e84f1381bef65b3ed661df1b567aec5b5eabde4f490cf04a8efb9591e97f02b",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-maryland-card-references.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 3634,
+        "name": "complete-maryland-native-accounting.csv",
+        "sha256": "fe0fd79b624369e2b2cbeb4ab37641907b77ad2037450701658d92964c8617ac",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-maryland-native-accounting.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 60251,
+        "name": "complete-maryland-register-stocks.csv",
+        "sha256": "9cdd05a6d4f3304d88363f9440b7d99c8a794b4c869083de4b5620a27508b5fe",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-maryland-register-stocks.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 50621,
+        "name": "complete-native-control-dispositions.csv",
+        "sha256": "3ba4485e65828d76ff5da542ab9cd2eb09566266ae1993b29495fa791d7ec7fa",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-native-control-dispositions.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 625001,
+        "name": "complete-native-group-control-query.json",
+        "sha256": "26675302e1192bd60b8fc6ac9558e909b87b837b9f4e4524440665e3fa5e1504",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-native-group-control-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 157288,
+        "name": "complete-registered-control-change-query.json",
+        "sha256": "6c28ab0cc138c68a299fe56a8d78c7e718ffcd5f759f2b98845e003e168ae5b9",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-registered-control-change-query.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 25998,
+        "name": "complete-state-control-query.csv",
+        "sha256": "203774cc1152b8d8bfdfd3fba9dc89927cbe3fe7ba31d47642432f5470e784d4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/complete-state-control-query.csv"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 1382,
+        "name": "registered-frame-change.json",
+        "sha256": "9e4738f47f4668fc1ea2e307d872b5d5641b69b287f200a485bab2fc23d9b483",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/registered-frame-change.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2053,
+        "name": "source-qualification.json",
+        "sha256": "a97980e36cc55cf914c53b40c3ee089b37ae0ccbb3589ea32cdc98815de3a1b4",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/source-qualification.json"
+      },
+      {
+        "anonymous_status": 200,
+        "bytes": 2011,
+        "name": "summary.json",
+        "sha256": "75f6d46d050a46980d1910d8974bde16dafb6554635d17c2d2ab31de54712314",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-state-controls-20261113-29/summary.json"
+      }
+    ],
+    "authenticated_full_draft_verification": "release-authenticated-verification.json",
+    "draft": false,
+    "passed": true,
+    "release_id": 443966016,
+    "source_processing_commit": "f6abaa4d185f46843926edfbf5a589a270253db0",
+    "tag": "participation-state-controls-20261113-29"
+  },
+  "scope": "One existing state/control/scenario revision; all51 complete decisions retained",
+  "source_processing_commit": "f6abaa4d185f46843926edfbf5a589a270253db0",
+  "source_qualification": {
+    "contract": "participation.registered_control_successor.v1",
+    "native_control_version": 29,
+    "no_new_bridge_or_native_outcome_calibration": true,
+    "original_population_weight_target_and_cutoff_qualification_not_lifted": true,
+    "physical_ballot_unique_voter_eligible_population_or_staying_home_qualification": false,
+    "registered_source_units_not_individuals": true,
+    "same_scope_review": "Replace the existing source-native municipal registration frame using the full November9 voter-turnout report: all247 exact town identities,283 distinct native legislative reporting parts,14 county controls and the printed state control. All90 cross-level count and624 printed-percentage checks agree. No aliases, precinct join or model allocation; included absentee is not added again. The old frame and new Registered Voters column both leave active/inactive status and registration cutoff unspecified; this is NOT population/frame harmonization. The six earlier municipal rate holds were explicitly reviewed only against the new same-report registration frame, not behavior, physical ballots or eligibility. Native Total Votes Cast (Includes Absentee) remains unqualified as physical cast ballots/unique people and is NOT an outcome-fitting target. Reuse the existing754-case Civic source prior and weights unchanged. Registration-frame transport, field-period and calibration assumptions remain unvalidated; modeled nonparticipant source units are not observed staying home.",
+    "source": {
+      "expected_pages": 13,
+      "filename": "original.pdf",
+      "id": "vt-general-turnout-20261109",
+      "pin": {
+        "bytes": 434143,
+        "sha256": "1a8826e99f2c263ed13940b4136c63f80af0e0dbe0c88502cd7d6bfcd8af4b5c"
+      },
+      "retrieved_at_utc": "2026-11-13T05:06:16.240393+00:00",
+      "url": "https://outside.vermont.gov/dept/sos/Elections_Division/election_info_resources/elections_results_data/2026_general_election_voter_turnout.pdf"
+    },
+    "source_ref": {
+      "page": 13,
+      "row": 15,
+      "table": "vermont-county-state-totals-page-13-grid-2"
+    }
+  },
+  "source_values_are_not_physical_ballots_or_observed_individual_staying_home": true,
+  "status": "complete_native_control_29_science_published_live_integration_pending",
+  "summary": {
+    "changed_control_rows": 1,
+    "changed_existing_scenarios": 1,
+    "changed_registered_frame": {
+      "conditional_nonvoter_unit_difference": "112.53327679531608156097945310080155090653003490029798894738503365543199864550",
+      "conditional_voter_unit_difference": "205.46672320468391843902054689919844909346996509970201105261496634456800135450",
+      "control_id": "vt-2026-held-municipal-registration",
+      "current_conditional_nonvoter_units": "179356.10276154103653317992520465172970426609304565418156667659310560565997956764",
+      "current_conditional_voter_units": "327473.89723845896346682007479534827029573390695434581843332340689439434002043236",
+      "current_native_reported_count": 311510,
+      "current_registered": 506830,
+      "independent_population_validation": false,
+      "native_count_minus_modeled_voter_units_nominal_not_validated_error": "-15963.89723845896346682007479534827029573390695434581843332340689439434002043236",
+      "native_reported_count_is_qualified_cast_ballots": false,
+      "observed_staying_home": false,
+      "outcome_calibration_applied": false,
+      "previous_conditional_nonvoter_units": "179243.56948474572045161894575155092815335956301075388357772920807195022798092214",
+      "previous_conditional_voter_units": "327268.43051525427954838105424844907184664043698924611642227079192804977201907786",
+      "previous_native_reported_count": 311009,
+      "previous_registered": 506512,
+      "registered_difference": 318,
+      "state_code": "VT",
+      "survey_probability_unchanged": true
+    },
+    "changed_state_rows": 1,
+    "conditional_scenarios": 34,
+    "native_control_version": 29,
+    "native_count_used_for_outcome_fitting": false,
+    "new_model_variants_or_scenarios_created": 0,
+    "observed_staying_home": false,
+    "preserved_other_controls": 51,
+    "preserved_other_scenarios": 33,
+    "preserved_other_states": 50,
+    "source_control_records": 52,
+    "state_and_dc_rows": 51,
+    "state_to_county_or_demographic_allocation": false,
+    "study_fit_weights_or_probabilities_changed": false
+  },
+  "website_live_integration_verified": false,
+  "whole_project_complete": false,
+  "year": 2026
+}
