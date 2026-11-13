@@ -7085,37 +7085,37 @@
   },
   "deployment": "Not authorized; local-only.",
   "current_snapshot": {
-    "snapshot_id": "20261113T175945Z",
+    "snapshot_id": "20261113T234844Z",
     "election_date": "2026-11-03",
     "status": "preliminary",
-    "retrieved_at": "2026-11-13T17:59:47.398322+00:00",
+    "retrieved_at": "2026-11-13T23:48:47.156749+00:00",
     "files": [
       {
-        "path": "current/20261113T175945Z/complete-snapshot.zip",
-        "bytes": 1161894,
-        "sha256": "b3e2aa7ad9a8d573d1010114b7fe35b37140aac552f9263adef3f1c8faa2f0d1"
+        "path": "current/20261113T234844Z/complete-snapshot.zip",
+        "bytes": 1161813,
+        "sha256": "3bebbe6393b6eca38c850e5052207889eb9f85d875e8ca63e33c279f52083cc2"
       },
       {
-        "path": "current/20261113T175945Z/demographics.csv",
+        "path": "current/20261113T234844Z/demographics.csv",
         "bytes": 405563,
         "sha256": "7f1a9d13a523d2891f5258369ede3ff6191476e44a2d85f6190d55af82b1d0ae"
       },
       {
-        "path": "current/20261113T175945Z/reporting.csv",
-        "bytes": 7645,
-        "sha256": "d793e662e01c01248f915eb4ae65ad267869a847a989ee3eb39eb12afc184572"
+        "path": "current/20261113T234844Z/reporting.csv",
+        "bytes": 7637,
+        "sha256": "6069c731832a06a6f2e856e36015a783da556258d594dd48e81739dc6c493133"
       },
       {
-        "path": "current/20261113T175945Z/snapshot.json",
-        "bytes": 1708892,
-        "sha256": "67a094e9964bca6af8a991d6dae85f5ccface6fc4ac9c05c1b8a2f4c9fa794f2"
+        "path": "current/20261113T234844Z/snapshot.json",
+        "bytes": 1708884,
+        "sha256": "f305757f58ba98665a79fffc67b9caf1b763a615ccc8cd6cd58cb7c58548c74e"
       }
     ]
   },
   "nationwide_snapshot": {
-    "snapshot_id": "20261113T175951Z",
+    "snapshot_id": "20261113T234850Z",
     "election_date": "2026-11-03",
-    "retrieved_at": "2026-11-13T17:59:51.737760+00:00",
+    "retrieved_at": "2026-11-13T23:48:50.936411+00:00",
     "status": "preliminary",
     "audit": {
       "jurisdictions_assessed": 51,
@@ -7128,34 +7128,34 @@
     },
     "files": [
       {
-        "path": "nationwide/20261113T175951Z/complete-snapshot.zip",
-        "bytes": 428551,
-        "sha256": "e49645d96ce29c153842fcef837fe730e6f56335d13450bd0acf849e0291f34b"
+        "path": "nationwide/20261113T234850Z/complete-snapshot.zip",
+        "bytes": 428299,
+        "sha256": "f6e7194b6a566f08373916fb6c5637466a25210bc0f99115e18a1c1966fbdc34"
       },
       {
-        "path": "nationwide/20261113T175951Z/coverage.csv",
+        "path": "nationwide/20261113T234850Z/coverage.csv",
         "bytes": 6999,
         "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
       },
       {
-        "path": "nationwide/20261113T175951Z/demographics.csv",
+        "path": "nationwide/20261113T234850Z/demographics.csv",
         "bytes": 31512,
-        "sha256": "f9f527b3ddbd4657c0b55a70128f7b1dfbf6a48b5709e08586174f3428c8f2af"
+        "sha256": "b705e44d2e31494a609ee00daa8ac8986b43bc068ebe9684a37b294a0db5e04e"
       },
       {
-        "path": "nationwide/20261113T175951Z/early_voting.csv",
+        "path": "nationwide/20261113T234850Z/early_voting.csv",
         "bytes": 1197602,
-        "sha256": "ec9f9ee53d27d212149c5c5faced94249e2b5815c5f09c092fc2e0a14d68f6d0"
+        "sha256": "1f0244c1095198f74a4670c2ec7bcabaa0736bb66cdf6fc6173840e9564ac80f"
       },
       {
-        "path": "nationwide/20261113T175951Z/reporting.csv",
-        "bytes": 1171,
-        "sha256": "7654bac9afb38af52703bbae583fb3d862c6a975c5eb3bf5ed229223686ca936"
+        "path": "nationwide/20261113T234850Z/reporting.csv",
+        "bytes": 1170,
+        "sha256": "42483a40a6d7871ff66fbcf9441602b8aa561bb47214004dfb7a052e47249308"
       },
       {
-        "path": "nationwide/20261113T175951Z/snapshot.json",
-        "bytes": 4197961,
-        "sha256": "e155e1f0251493a13aa5c712a6e77a57bf302c15a3599208c5c9be4e8cbbd19d"
+        "path": "nationwide/20261113T234850Z/snapshot.json",
+        "bytes": 4197959,
+        "sha256": "83e34f8a3f6960b965ee1521aebdd2e18e97ced58a4b413cee91e350634a7ef9"
       }
     ]
   },
