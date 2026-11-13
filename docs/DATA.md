@@ -8,6 +8,54 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current King County native Ballots Cast
+
+The county's935,956 printed Total Ballots Cast replaces601,199, not a count of
+new voters. All17 source headers repeat the same parent; they are checked,
+never added. Registered voters1,460,414 and native64.09% remain separate from
+any population-turnout estimate. The minus-one contest control and186-versus185
+counter comparison remain unrepaired; analysis fraction is withheld. The PDF
+clock is November12,2026,15:10:05, unknown timezone; CSV clock is absent.
+
+| Complete download | Contents |
+|---|---|
+| [Complete native count analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-analysis.zip) | 12,328,955 bytes/148 members; full51-jurisdiction baseline, complete factual inputs, code/tests and57 outputs |
+| [Complete selected-source SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-count-source-packet.zip) | 270,472 bytes/27 members; offline reproduction of all39 selected canonical observations |
+| [All selected canonical queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-selected-source-query.json) | King successor plus all38 preserved county observations and full native provenance |
+| [Complete PDF factual queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-pdf-measure-queries.csv) | All914 measure queries; repeated parents and every factual numeric token retained |
+| [Complete native CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/webresults.csv) | All115 contests,286 choice rows and1,430 count cells, without candidate-sum turnout |
+| [Complete source concordance](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-source-concordance.json) | Full common-field comparisons and retained counter/accounting discrepancies |
+| [Complete registry and controls](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-source-registry.json) | All factual bindings, exact preimages, unchanged inventory and source access dispositions |
+| [Complete contextual successor](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/complete-context-successor.zip) | 14,514,584 bytes/36 members; all834 joins,1,329 full records,20 unchanged geometry collections, identity inputs, complete native analysis and reproduction |
+| [Every contextual numerical join](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/county-participation-joins.csv) | All834 selected source observations; only King's count record changes, its rate stays null |
+| [Full contextual source records](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/complete-source-records.json.gz) | All1,329 complete selected records;1,328 remain unchanged |
+
+Analysis SHA256
+`262561d937db56ea60c0042e216954eb3fdad8bf42be46e902f5433b83f217c0`;
+SDK SHA256
+`7ba41f43df7040d17d9b112a3277e17130f1f8ca5b8f47be3e455243eb3714f3`;
+context archive SHA256
+`5891a233f0787cf882a1bc73ec5ae5e8f0e698cf7f2f77613a3593aed53f518c`.
+Releases444549012/444563227 are immutable; all27/six assets are
+authenticated/draft then anonymously/public full-body verified. The public
+PDF inputs are complete sufficient factual tables/queries, not the excluded
+publisher template. The contextual package's member inventory and checksums
+define that same scope; its nested native analysis does not contain that PDF.
+
+Two82-test/57-output count replays and two36-member contextual replays reproduce
+all selected numerical outputs with network access blocked. The separate
+standard-library SDK and source-concordance replay also pass. No earlier
+complete numerical package is removed or replaced by these delivery records.
+Website67455da and actual Pages artifact14065126605 are verified live:
+312 final map values,39 Washington observations/38 rates, King selection
+and complete contextual-download hashes pass at both widths. The older392
+county selections and51-jurisdiction/306-frame checks retain unchanged count
+data and reader-code coverage. Native payload997,324,587/tar999,925,760 are
+both below1e9; all31 served HTML/script bodies match. All436 earlier complete
+download pins and113 archived models remain unchanged.
+See [source qualifications](../SOURCES.md#2026-king-county-native-ballots-cast-successor)
+and [production acceptance](../data/participation-access/20261113-king-native-count-refresh-01/website-acceptance.json).
+
 ## Current Wayne County native statistical counts
 
 All770 source reporting units are retained, including three zeros and61 labels

@@ -13,6 +13,51 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## King County native count successor and contextual join
+
+The native county observation is now935,956 printed Total Ballots Cast, replacing
+601,199. All17 identical PDF headers retain1,460,414 registered voters and64.09%.
+The334,757 increase is a dated snapshot change, not new people or staying home.
+PDF clock November12,2026,15:10:05 has no supplied timezone; CSV clock is absent.
+The full115-contest/286-choice/1,430-cell CSV and914 PDF measure queries retain
+the native minus-one contest accounting residual and186-versus185 counter
+comparison unrepaired. Analysis rate and denominator qualification stay held.
+
+Source e69a266 is published/canonical,85 affected tests pass, and the complete
+82-test/57-output replays, actual canonical replay, isolated SDK and standalone
+concordance pass. All27 full assets of immutable444549012 are verified.
+Catalog0c6c232 activates counts06711a2f with54 verified runtime bodies and zero
+activation requests, parses or site builds. Other117 WA records,50 other shards,
+provider/early/mail frames, native3bcc, model33, House outputs and weights remain.
+
+The actual browser exposed a tightly coupled old contextual-review checksum:
+King's updated count appeared in the sidebar but was not attached to its polygon.
+The explicit successor review b1f5149 changes only that source record, retaining
+833 other joins and all20 geometry collections without weakening either checksum
+guard. Immutable444563227 provides six full assets, including a14,514,584-byte
+complete numerical/context/native-analysis archive; two36-member offline replays
+pass. Website67455da pins the successor;17 tests pass in both maintained and canonical
+trees, with Astro checks and the complete build/preparers passing. Actual
+production verifies312 map values across four modes and both widths, King
+polygon selection,39 county counts/38 rates and the full-context download hash.
+Both final production images are reviewed. Pages43479566667 and main source
+guard43479566728 succeed; actual native artifact14065126605 has997,324,587
+payload/999,925,760 tar bytes, both below1e9. All31 live HTML/script bodies
+equal the artifact; independent Which Candidate/Interactive Analysis HTML,
+436 old download pins,113 archived models and prior drivers remain unchanged.
+
+The [public acceptance](data/participation-access/20261113-king-native-count-refresh-01/website-acceptance.json)
+and [observations](data/participation-access/20261113-king-native-count-refresh-01/observations.json)
+record the full delivery. Canonical synchronization preserves both protected
+HEAD/index pairs, unrelated research files and the deliberately older explorer;
+107 missing published test inputs are restored without overwriting existing
+files. This completes bounded655, not the nationwide project.
+
+No new precinct data, statewide WA estimate, qualified rate, model fit or weight
+is introduced. The two denied King routes stay stopped. Independent website
+5d6785 and research9bf56a2 publications are preserved, not reset. This does not
+close the broader all-state/model work or unlock audit636/beautification637.
+
 ## Wayne County native statistical counts integrated
 
 The completed integration adds770 native reporting units and a separately

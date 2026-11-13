@@ -1,0 +1,5093 @@
+{
+  "analysis_fraction": null,
+  "catalog_commit": "0c6c232a5d62dd247a80656a2156d504163f1004",
+  "complete_contextual_assets": [
+    {
+      "bytes": 14514584,
+      "id": 744637015,
+      "name": "complete-context-successor.zip",
+      "sha256": "5891a233f0787cf882a1bc73ec5ae5e8f0e698cf7f2f77613a3593aed53f518c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/complete-context-successor.zip"
+    },
+    {
+      "bytes": 154755,
+      "id": 744636858,
+      "name": "complete-source-records.json.gz",
+      "sha256": "0774ccc78a253139ac02cabf6dde9856d272fcc2d0650da80c9bb0e534dc8d2e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/complete-source-records.json.gz"
+    },
+    {
+      "bytes": 539766,
+      "id": 744636770,
+      "name": "county-participation-joins.csv",
+      "sha256": "8b6ebb88968ad5d1177b167c82cc7cc1c858ff52eca2ec35e74403ef720892a9",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/county-participation-joins.csv"
+    },
+    {
+      "bytes": 1231,
+      "id": 744637127,
+      "name": "offline-replays.json",
+      "sha256": "26dbfed392e3ae48a39194ed9b7576eef1818a2e6b149af50685df1874d52708",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/offline-replays.json"
+    },
+    {
+      "bytes": 9407,
+      "id": 744636943,
+      "name": "review-succession.json",
+      "sha256": "1f2463ba00fc0e2857f246520e55f2ea7fd380b2e17330c52ee426d819dc8dbe",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/review-succession.json"
+    },
+    {
+      "bytes": 1268194,
+      "id": 744636664,
+      "name": "review.json",
+      "sha256": "d8e06e58de8d882d3b6145d5d4c7e99b7660d6d50340fcb82920b9ac9f532658",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/review.json"
+    }
+  ],
+  "complete_native_assets": [
+    {
+      "bytes": 6933,
+      "id": 744594456,
+      "name": "all-51-jurisdictions.json",
+      "sha256": "7710deef56b89200c5b5b80ee9d9c5a1f2cedf9c10b9705236d8e0c24755bf05",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/all-51-jurisdictions.json"
+    },
+    {
+      "bytes": 2195,
+      "id": 744594511,
+      "name": "candidate-verification.json",
+      "sha256": "7db4b6562956502b561e5dd85289a06aed13ed597728f5a548981064f3ec236d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/candidate-verification.json"
+    },
+    {
+      "bytes": 12328955,
+      "id": 744594535,
+      "name": "complete-analysis.zip",
+      "sha256": "262561d937db56ea60c0042e216954eb3fdad8bf42be46e902f5433b83f217c0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-analysis.zip"
+    },
+    {
+      "bytes": 3575,
+      "id": 744594513,
+      "name": "complete-asset-manifest.json",
+      "sha256": "366702c1b2443ecdc1594d3e5adbed765e6cd47b9c8c44c25210470fe01e3a5a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-asset-manifest.json"
+    },
+    {
+      "bytes": 32469,
+      "id": 744594580,
+      "name": "complete-choice-counter-checks.json",
+      "sha256": "38922e5cd31fbeba4f3ce92b3d439498f728a0be3a8f3c4baaa26ebbc75069ee",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-choice-counter-checks.json"
+    },
+    {
+      "bytes": 270472,
+      "id": 744594626,
+      "name": "complete-count-source-packet.zip",
+      "sha256": "7ba41f43df7040d17d9b112a3277e17130f1f8ca5b8f47be3e455243eb3714f3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-count-source-packet.zip"
+    },
+    {
+      "bytes": 678618,
+      "id": 744594589,
+      "name": "complete-pdf-measure-queries.csv",
+      "sha256": "ff388946aea7c6fcdad779a5639bfbca244a70b52219bb70175b099f23aa719c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-pdf-measure-queries.csv"
+    },
+    {
+      "bytes": 345024,
+      "id": 744594638,
+      "name": "complete-selected-source-query.json",
+      "sha256": "2f4f757836a9541d617dc049d4b16e5b91125e266a4238893ac91e128e298295",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-selected-source-query.json"
+    },
+    {
+      "bytes": 177986,
+      "id": 744594514,
+      "name": "complete-source-concordance.json",
+      "sha256": "357f66b49a9dc7bc63c3b8d7ff65aaa2b2b742ac0d3315a8b6963434198ca6c2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-source-concordance.json"
+    },
+    {
+      "bytes": 102,
+      "id": 744594453,
+      "name": "complete-source-dispositions.json",
+      "sha256": "29e6127e4536c15f2e25fdbf14273b7129ba7dbb55c14cdd1ec1fe3fec9ae24e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-source-dispositions.json"
+    },
+    {
+      "bytes": 8913,
+      "id": 744594457,
+      "name": "complete-source-registry.json",
+      "sha256": "100125411364030100f7736521a7a741f63dcd17aad41ce723a9b901838a1d41",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/complete-source-registry.json"
+    },
+    {
+      "bytes": 177986,
+      "id": 744594488,
+      "name": "concordance.json",
+      "sha256": "357f66b49a9dc7bc63c3b8d7ff65aaa2b2b742ac0d3315a8b6963434198ca6c2",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/concordance.json"
+    },
+    {
+      "bytes": 8979,
+      "id": 744594487,
+      "name": "csv_facts.json.gz",
+      "sha256": "297341a609a725e4b385af84e301703f312254d21f5b56bf191364fcaaf2b788",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/csv_facts.json.gz"
+    },
+    {
+      "bytes": 102332,
+      "id": 744594454,
+      "name": "csv_queries.json",
+      "sha256": "a3ccc0549f01e58a4c29bff64de3f714d61f1ac52e630c77c70fcde910f54fc9",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/csv_queries.json"
+    },
+    {
+      "bytes": 1401,
+      "id": 744594622,
+      "name": "csv_recipe.json",
+      "sha256": "1f9af5b5dd1b6b7a7883086c94f1f884cc59ec8266b7edec40f3c2d76d87641e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/csv_recipe.json"
+    },
+    {
+      "bytes": 472,
+      "id": 744594515,
+      "name": "independent_pdf.json",
+      "sha256": "109ad30b2eed2e2ab3c935c356175be14bcb3f816c8919b56d5b5cc19621f4bc",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/independent_pdf.json"
+    },
+    {
+      "bytes": 2080,
+      "id": 744594538,
+      "name": "offline-replays.json",
+      "sha256": "ccfebad3c8703f1ee09dff9560bba6cfe1446e3a721d843b581097585b9cc5ab",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/offline-replays.json"
+    },
+    {
+      "bytes": 149215,
+      "id": 744594491,
+      "name": "pdf_facts.json.gz",
+      "sha256": "477ab1bb81814917164e09a2c978c348185afbb7f8ef2394a55aedffe8cbc08b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/pdf_facts.json.gz"
+    },
+    {
+      "bytes": 174660,
+      "id": 744594645,
+      "name": "pdf_grid_recipe.json",
+      "sha256": "377507afb2cfa13f954587e7d5a21949bdc22ff8fadb14fd054ce05ae34456a5",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/pdf_grid_recipe.json"
+    },
+    {
+      "bytes": 866836,
+      "id": 744594625,
+      "name": "pdf_queries.json",
+      "sha256": "50d9568b5428916c592adac7ce580a466f1f8c6a38088bacd44d8fe57adc0e29",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/pdf_queries.json"
+    },
+    {
+      "bytes": 10653,
+      "id": 744594455,
+      "name": "prepare-inputs.py",
+      "sha256": "720748ea5db1f7b770df4b1eb5bf673224ea427ba0d5118964939d0aeadb7e5c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/prepare-inputs.py"
+    },
+    {
+      "bytes": 345024,
+      "id": 744594544,
+      "name": "snapshot.json",
+      "sha256": "2f4f757836a9541d617dc049d4b16e5b91125e266a4238893ac91e128e298295",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/snapshot.json"
+    },
+    {
+      "bytes": 2131,
+      "id": 744594627,
+      "name": "source-access-dispositions.json",
+      "sha256": "f03f70d9802049cef3e881e06a07583cd477195c93352fac72e485c3a62ecc5d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/source-access-dispositions.json"
+    },
+    {
+      "bytes": 610,
+      "id": 744594532,
+      "name": "source-concordance-replay.json",
+      "sha256": "4ff154ebe8fbdd086a872354c7a0ed960dd9c85e7c26dd8b7a2030c444a87c6f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/source-concordance-replay.json"
+    },
+    {
+      "bytes": 20906,
+      "id": 744594588,
+      "name": "source-review.json",
+      "sha256": "fb7514cd33b01c1b2487e4f52cb5c8c888242498f9124597dfaf8f54a768638c",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/source-review.json"
+    },
+    {
+      "bytes": 7303,
+      "id": 744594490,
+      "name": "verify-source-concordance.py",
+      "sha256": "00eca728eed54147ac67d498f9b72351e984e5afd002ac13f9e21250c97e8e54",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/verify-source-concordance.py"
+    },
+    {
+      "bytes": 38741,
+      "id": 744594649,
+      "name": "webresults.csv",
+      "sha256": "d6b04daf7b6c4284e2fa87bdb28477051f16f8083271b505807ccec43b8eb622",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-king-native-count-refresh-20261113-01/webresults.csv"
+    }
+  ],
+  "complete_pdf_measure_queries": 914,
+  "contextual_source_commit": "b1f514990fdf24022433851af8965b7aee6f8311",
+  "contract": "participation.native_count_successor_delivery.v1",
+  "counts_version": "06711a2fd82327de52e2c7d1eb773c6efb7b5947f6175b6a62fbb2ef74f1353e",
+  "county": "King County",
+  "csv_choice_rows": 286,
+  "csv_clock": null,
+  "csv_contests": 115,
+  "csv_count_cells": 1430,
+  "final_contextual_map_verification": {
+    "actual_production": true,
+    "cases": [
+      {
+        "all_39_map_values_exact": true,
+        "king_count": 935956,
+        "king_map_selection_checked": true,
+        "king_rate": null,
+        "mode": "available",
+        "unchanged_2024_context": true,
+        "width": 1440
+      },
+      {
+        "all_39_map_values_exact": true,
+        "king_count": 935956,
+        "king_map_selection_checked": true,
+        "king_rate": null,
+        "mode": "official",
+        "unchanged_2024_context": true,
+        "width": 1440
+      },
+      {
+        "all_39_map_values_exact": true,
+        "king_count": 935956,
+        "king_map_selection_checked": true,
+        "king_rate": null,
+        "mode": "uf_vep",
+        "unchanged_2024_context": true,
+        "width": 1440
+      },
+      {
+        "all_39_map_values_exact": true,
+        "king_count": 935956,
+        "king_map_selection_checked": true,
+        "king_rate": null,
+        "mode": "uf_vap",
+        "unchanged_2024_context": true,
+        "width": 1440
+      },
+      {
+        "all_39_map_values_exact": true,
+        "king_count": 935956,
+        "king_map_selection_checked": true,
+        "king_rate": null,
+        "mode": "available",
+        "unchanged_2024_context": true,
+        "width": 390
+      },
+      {
+        "all_39_map_values_exact": true,
+        "king_count": 935956,
+        "king_map_selection_checked": true,
+        "king_rate": null,
+        "mode": "official",
+        "unchanged_2024_context": true,
+        "width": 390
+      },
+      {
+        "all_39_map_values_exact": true,
+        "king_count": 935956,
+        "king_map_selection_checked": true,
+        "king_rate": null,
+        "mode": "uf_vep",
+        "unchanged_2024_context": true,
+        "width": 390
+      },
+      {
+        "all_39_map_values_exact": true,
+        "king_count": 935956,
+        "king_map_selection_checked": true,
+        "king_rate": null,
+        "mode": "uf_vap",
+        "unchanged_2024_context": true,
+        "width": 390
+      }
+    ],
+    "complete_context_download_verified_at_both_widths": true,
+    "errors": [],
+    "no_local_server_left_running": true,
+    "passed": true,
+    "phase": "production",
+    "source_data_dom_or_style_overrides": false
+  },
+  "full_numerical_downloads_not_replaced_by_this_record": true,
+  "identical_printed_county_headers": 17,
+  "independent_candidate_verification": {
+    "all_other_runtime_bodies_exact": [
+      "current.json.gz",
+      "states/AK.json.gz",
+      "states/AL.json.gz",
+      "states/AR.json.gz",
+      "states/AZ.json.gz",
+      "states/CA.json.gz",
+      "states/CO.json.gz",
+      "states/CT.json.gz",
+      "states/DC.json.gz",
+      "states/DE.json.gz",
+      "states/FL.json.gz",
+      "states/GA.json.gz",
+      "states/HI.json.gz",
+      "states/IA.json.gz",
+      "states/ID.json.gz",
+      "states/IL.json.gz",
+      "states/IN.json.gz",
+      "states/KS.json.gz",
+      "states/KY.json.gz",
+      "states/LA.json.gz",
+      "states/MA.json.gz",
+      "states/MD.json.gz",
+      "states/ME.json.gz",
+      "states/MI.json.gz",
+      "states/MN.json.gz",
+      "states/MO.json.gz",
+      "states/MS.json.gz",
+      "states/MT.json.gz",
+      "states/NC.json.gz",
+      "states/ND.json.gz",
+      "states/NE.json.gz",
+      "states/NH.json.gz",
+      "states/NJ.json.gz",
+      "states/NM.json.gz",
+      "states/NV.json.gz",
+      "states/NY.json.gz",
+      "states/OH.json.gz",
+      "states/OK.json.gz",
+      "states/OR.json.gz",
+      "states/PA.json.gz",
+      "states/RI.json.gz",
+      "states/SC.json.gz",
+      "states/SD.json.gz",
+      "states/TN.json.gz",
+      "states/TX.json.gz",
+      "states/UT.json.gz",
+      "states/VA.json.gz",
+      "states/VT.json.gz",
+      "states/WI.json.gz",
+      "states/WV.json.gz",
+      "states/WY.json.gz"
+    ],
+    "analysis_rate_held": true,
+    "cached_noop_preserves_all_bytes_and_mtimes": true,
+    "candidate_version": "06711a2fd82327de52e2c7d1eb773c6efb7b5947f6175b6a62fbb2ef74f1353e",
+    "changed_observations": 1,
+    "complete_archive": {
+      "bytes": 12328955,
+      "sha256": "262561d937db56ea60c0042e216954eb3fdad8bf42be46e902f5433b83f217c0"
+    },
+    "complete_selected_source_rows": 39,
+    "every_mode_inventory_and_other_source_clock_preserved": true,
+    "native_ballots": 935956,
+    "native_fraction_literal": "64.09%",
+    "native_geometry_and_model_catalog_entries_unchanged": true,
+    "native_registered": 1460414,
+    "one_ballot_native_contest_disagreement_preserved": true,
+    "passed": true,
+    "preserved_other_WA_records": 117,
+    "preserved_other_full_election_county_observations": 38,
+    "signed_source_count_increase": 334757,
+    "source_increase_not_new_voters_or_staying_home": true
+  },
+  "native_accounting_residual": -1,
+  "native_ballots_cast": 935956,
+  "native_printed_fraction": "64.09%",
+  "native_result_status_literal": null,
+  "native_version_unchanged": "3bcc590d0c30a0da3a3fbc0fc08dd0977f6b453089fe50a5931225240275e59c",
+  "new_precinct_original_or_geometry": false,
+  "no_new_statewide_model_or_house_endpoint_or_weight": true,
+  "original_count_viewer_verification": {
+    "actual_production": true,
+    "all_51_jurisdictions_306_reader_frames": {
+      "states": [
+        {
+          "code": "AL",
+          "frames": {
+            "available": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 135
+        },
+        {
+          "code": "AK",
+          "frames": {
+            "available": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 2
+        },
+        {
+          "code": "AZ",
+          "frames": {
+            "available": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 1763
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 1763
+            },
+            "uf_vap": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 1763
+            },
+            "uf_vep": {
+              "counties": 15,
+              "nongeographic": 0,
+              "precincts": 1763
+            }
+          },
+          "records": 1809
+        },
+        {
+          "code": "AR",
+          "frames": {
+            "available": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 2768
+            },
+            "in_person_early": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 2768
+            },
+            "uf_vap": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 2768
+            },
+            "uf_vep": {
+              "counties": 75,
+              "nongeographic": 0,
+              "precincts": 2768
+            }
+          },
+          "records": 3145
+        },
+        {
+          "code": "CA",
+          "frames": {
+            "available": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 58,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 293
+        },
+        {
+          "code": "CO",
+          "frames": {
+            "available": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 322
+        },
+        {
+          "code": "CT",
+          "frames": {
+            "available": {
+              "counties": 169,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 169,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 169,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 169,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 338
+        },
+        {
+          "code": "DE",
+          "frames": {
+            "available": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 8
+        },
+        {
+          "code": "DC",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 1
+        },
+        {
+          "code": "FL",
+          "frames": {
+            "available": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 338
+        },
+        {
+          "code": "GA",
+          "frames": {
+            "available": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 159,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 798
+        },
+        {
+          "code": "HI",
+          "frames": {
+            "available": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 14
+        },
+        {
+          "code": "ID",
+          "frames": {
+            "available": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 986
+            },
+            "in_person_early": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 986
+            },
+            "uf_vap": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 986
+            },
+            "uf_vep": {
+              "counties": 44,
+              "nongeographic": 0,
+              "precincts": 986
+            }
+          },
+          "records": 1208
+        },
+        {
+          "code": "IL",
+          "frames": {
+            "available": {
+              "counties": 102,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 102,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 102,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 422
+        },
+        {
+          "code": "IN",
+          "frames": {
+            "available": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 103
+            },
+            "in_person_early": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 103
+            },
+            "uf_vap": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 103
+            },
+            "uf_vep": {
+              "counties": 92,
+              "nongeographic": 0,
+              "precincts": 103
+            }
+          },
+          "records": 565
+        },
+        {
+          "code": "IA",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 99,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 99,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 399
+        },
+        {
+          "code": "KS",
+          "frames": {
+            "available": {
+              "counties": 105,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 105,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 105,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 422
+        },
+        {
+          "code": "KY",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 120,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 120,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 483
+        },
+        {
+          "code": "LA",
+          "frames": {
+            "available": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 64,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 258
+        },
+        {
+          "code": "ME",
+          "frames": {
+            "available": {
+              "counties": 480,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 480,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 480,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 2130
+        },
+        {
+          "code": "MD",
+          "frames": {
+            "available": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 24,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 73
+        },
+        {
+          "code": "MA",
+          "frames": {
+            "available": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 307
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 307
+            },
+            "uf_vap": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 307
+            },
+            "uf_vep": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 307
+            }
+          },
+          "records": 309
+        },
+        {
+          "code": "MI",
+          "frames": {
+            "available": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 833
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 83,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 833
+            },
+            "uf_vap": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 833
+            },
+            "uf_vep": {
+              "counties": 3,
+              "nongeographic": 0,
+              "precincts": 833
+            }
+          },
+          "records": 1003
+        },
+        {
+          "code": "MN",
+          "frames": {
+            "available": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 4105
+            },
+            "in_person_early": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 4105
+            },
+            "uf_vap": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 4105
+            },
+            "uf_vep": {
+              "counties": 87,
+              "nongeographic": 0,
+              "precincts": 4105
+            }
+          },
+          "records": 4716
+        },
+        {
+          "code": "MS",
+          "frames": {
+            "available": {
+              "counties": 82,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 82,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 165
+        },
+        {
+          "code": "MO",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 5
+        },
+        {
+          "code": "MT",
+          "frames": {
+            "available": {
+              "counties": 56,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 56,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 113
+        },
+        {
+          "code": "NE",
+          "frames": {
+            "available": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 1415
+            },
+            "in_person_early": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 1415
+            },
+            "uf_vap": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 1415
+            },
+            "uf_vep": {
+              "counties": 93,
+              "nongeographic": 0,
+              "precincts": 1415
+            }
+          },
+          "records": 1883
+        },
+        {
+          "code": "NV",
+          "frames": {
+            "available": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 17,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 104
+        },
+        {
+          "code": "NH",
+          "frames": {
+            "available": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 37
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 37
+            },
+            "uf_vap": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 37
+            },
+            "uf_vep": {
+              "counties": 4,
+              "nongeographic": 0,
+              "precincts": 37
+            }
+          },
+          "records": 41
+        },
+        {
+          "code": "NJ",
+          "frames": {
+            "available": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 21,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 107
+        },
+        {
+          "code": "NM",
+          "frames": {
+            "available": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 2204
+            },
+            "in_person_early": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 2204
+            },
+            "uf_vap": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 2204
+            },
+            "uf_vep": {
+              "counties": 33,
+              "nongeographic": 0,
+              "precincts": 2204
+            }
+          },
+          "records": 2372
+        },
+        {
+          "code": "NY",
+          "frames": {
+            "available": {
+              "counties": 62,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 62,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 125
+        },
+        {
+          "code": "NC",
+          "frames": {
+            "available": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 100,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 503
+        },
+        {
+          "code": "ND",
+          "frames": {
+            "available": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 358
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 358
+            },
+            "uf_vap": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 358
+            },
+            "uf_vep": {
+              "counties": 53,
+              "nongeographic": 0,
+              "precincts": 358
+            }
+          },
+          "records": 520
+        },
+        {
+          "code": "OH",
+          "frames": {
+            "available": {
+              "counties": 88,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 88,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 88,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 354
+        },
+        {
+          "code": "OK",
+          "frames": {
+            "available": {
+              "counties": 77,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 77,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 155
+        },
+        {
+          "code": "OR",
+          "frames": {
+            "available": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 36,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 110
+        },
+        {
+          "code": "PA",
+          "frames": {
+            "available": {
+              "counties": 43,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 67,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 43,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 43,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 43,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 178
+        },
+        {
+          "code": "RI",
+          "frames": {
+            "available": {
+              "counties": 39,
+              "nongeographic": 1,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 39,
+              "nongeographic": 1,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 39,
+              "nongeographic": 1,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 39,
+              "nongeographic": 1,
+              "precincts": 0
+            }
+          },
+          "records": 120
+        },
+        {
+          "code": "SC",
+          "frames": {
+            "available": {
+              "counties": 46,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 46,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 46,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 186
+        },
+        {
+          "code": "SD",
+          "frames": {
+            "available": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 671
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 671
+            },
+            "uf_vap": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 671
+            },
+            "uf_vep": {
+              "counties": 66,
+              "nongeographic": 0,
+              "precincts": 671
+            }
+          },
+          "records": 871
+        },
+        {
+          "code": "TN",
+          "frames": {
+            "available": {
+              "counties": 95,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 95,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 191
+        },
+        {
+          "code": "TX",
+          "frames": {
+            "available": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 254,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 254,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 1,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 1019
+        },
+        {
+          "code": "UT",
+          "frames": {
+            "available": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 29,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 151
+        },
+        {
+          "code": "VT",
+          "frames": {
+            "available": {
+              "counties": 247,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 247,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 247,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 247,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 249
+        },
+        {
+          "code": "VA",
+          "frames": {
+            "available": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 133,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 667
+        },
+        {
+          "code": "WA",
+          "frames": {
+            "available": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 39,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 118
+        },
+        {
+          "code": "WV",
+          "frames": {
+            "available": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "in_person_early": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vap": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "uf_vep": {
+              "counties": 55,
+              "nongeographic": 0,
+              "precincts": 0
+            }
+          },
+          "records": 277
+        },
+        {
+          "code": "WI",
+          "frames": {
+            "available": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 32
+            },
+            "in_person_early": {
+              "counties": 72,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 72,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 32
+            },
+            "uf_vap": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 32
+            },
+            "uf_vep": {
+              "counties": 2,
+              "nongeographic": 0,
+              "precincts": 32
+            }
+          },
+          "records": 324
+        },
+        {
+          "code": "WY",
+          "frames": {
+            "available": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 432
+            },
+            "in_person_early": {
+              "counties": 0,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "mail_returned": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 0
+            },
+            "official": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 432
+            },
+            "uf_vap": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 432
+            },
+            "uf_vep": {
+              "counties": 23,
+              "nongeographic": 0,
+              "precincts": 432
+            }
+          },
+          "records": 502
+        }
+      ],
+      "version": "06711a2fd82327de52e2c7d1eb773c6efb7b5947f6175b6a62fbb2ef74f1353e"
+    },
+    "all_six_modes_both_widths": true,
+    "analytical_rate_held": true,
+    "candidate_catalog_and_dataset_fixtures": false,
+    "changed_source_checks": 8,
+    "county_selection_cases": [
+      {
+        "county": "Adams County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 2814,
+        "width": 1440
+      },
+      {
+        "county": "Asotin County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 7839,
+        "width": 1440
+      },
+      {
+        "county": "Benton County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 38025,
+        "width": 1440
+      },
+      {
+        "county": "Chelan County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 28748,
+        "width": 1440
+      },
+      {
+        "county": "Clallam County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 20248,
+        "width": 1440
+      },
+      {
+        "county": "Clark County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 188389,
+        "width": 1440
+      },
+      {
+        "county": "Columbia County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 1986,
+        "width": 1440
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 42208,
+        "width": 1440
+      },
+      {
+        "county": "Douglas County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 13589,
+        "width": 1440
+      },
+      {
+        "county": "Ferry County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 2498,
+        "width": 1440
+      },
+      {
+        "county": "Franklin County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 20268,
+        "width": 1440
+      },
+      {
+        "county": "Garfield County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 1304,
+        "width": 1440
+      },
+      {
+        "county": "Grant County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 15488,
+        "width": 1440
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 19068,
+        "width": 1440
+      },
+      {
+        "county": "Island County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 32357,
+        "width": 1440
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 16788,
+        "width": 1440
+      },
+      {
+        "county": "King County",
+        "mode": "available",
+        "new_source_checked": true,
+        "source_count": 935956,
+        "width": 1440
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 97481,
+        "width": 1440
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 14709,
+        "width": 1440
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 8071,
+        "width": 1440
+      },
+      {
+        "county": "Lewis County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 36814,
+        "width": 1440
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 4088,
+        "width": 1440
+      },
+      {
+        "county": "Mason County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 18223,
+        "width": 1440
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 14460,
+        "width": 1440
+      },
+      {
+        "county": "Pacific County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 9942,
+        "width": 1440
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 6983,
+        "width": 1440
+      },
+      {
+        "county": "Pierce County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 286103,
+        "width": 1440
+      },
+      {
+        "county": "San Juan County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 8574,
+        "width": 1440
+      },
+      {
+        "county": "Skagit County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 35984,
+        "width": 1440
+      },
+      {
+        "county": "Skamania County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 6085,
+        "width": 1440
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 251385,
+        "width": 1440
+      },
+      {
+        "county": "Spokane County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 156416,
+        "width": 1440
+      },
+      {
+        "county": "Stevens County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 7716,
+        "width": 1440
+      },
+      {
+        "county": "Thurston County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 78902,
+        "width": 1440
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 2453,
+        "width": 1440
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 8216,
+        "width": 1440
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 106374,
+        "width": 1440
+      },
+      {
+        "county": "Whitman County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 8584,
+        "width": 1440
+      },
+      {
+        "county": "Yakima County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 46367,
+        "width": 1440
+      },
+      {
+        "county": "Adams County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 2814,
+        "width": 1440
+      },
+      {
+        "county": "Asotin County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 7839,
+        "width": 1440
+      },
+      {
+        "county": "Benton County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 38025,
+        "width": 1440
+      },
+      {
+        "county": "Chelan County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 28748,
+        "width": 1440
+      },
+      {
+        "county": "Clallam County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 20248,
+        "width": 1440
+      },
+      {
+        "county": "Clark County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 188389,
+        "width": 1440
+      },
+      {
+        "county": "Columbia County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 1986,
+        "width": 1440
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 42208,
+        "width": 1440
+      },
+      {
+        "county": "Douglas County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 13589,
+        "width": 1440
+      },
+      {
+        "county": "Ferry County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 2498,
+        "width": 1440
+      },
+      {
+        "county": "Franklin County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 20268,
+        "width": 1440
+      },
+      {
+        "county": "Garfield County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 1304,
+        "width": 1440
+      },
+      {
+        "county": "Grant County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 15488,
+        "width": 1440
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 19068,
+        "width": 1440
+      },
+      {
+        "county": "Island County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 32357,
+        "width": 1440
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 16788,
+        "width": 1440
+      },
+      {
+        "county": "King County",
+        "mode": "official",
+        "new_source_checked": true,
+        "source_count": 935956,
+        "width": 1440
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 97481,
+        "width": 1440
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 14709,
+        "width": 1440
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 8071,
+        "width": 1440
+      },
+      {
+        "county": "Lewis County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 36814,
+        "width": 1440
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 4088,
+        "width": 1440
+      },
+      {
+        "county": "Mason County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 18223,
+        "width": 1440
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 14460,
+        "width": 1440
+      },
+      {
+        "county": "Pacific County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 9942,
+        "width": 1440
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 6983,
+        "width": 1440
+      },
+      {
+        "county": "Pierce County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 286103,
+        "width": 1440
+      },
+      {
+        "county": "San Juan County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 8574,
+        "width": 1440
+      },
+      {
+        "county": "Skagit County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 35984,
+        "width": 1440
+      },
+      {
+        "county": "Skamania County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 6085,
+        "width": 1440
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 251385,
+        "width": 1440
+      },
+      {
+        "county": "Spokane County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 156416,
+        "width": 1440
+      },
+      {
+        "county": "Stevens County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 7716,
+        "width": 1440
+      },
+      {
+        "county": "Thurston County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 78902,
+        "width": 1440
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 2453,
+        "width": 1440
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 8216,
+        "width": 1440
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 106374,
+        "width": 1440
+      },
+      {
+        "county": "Whitman County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 8584,
+        "width": 1440
+      },
+      {
+        "county": "Yakima County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 46367,
+        "width": 1440
+      },
+      {
+        "county": "Adams County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 2814,
+        "width": 1440
+      },
+      {
+        "county": "Asotin County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 7839,
+        "width": 1440
+      },
+      {
+        "county": "Benton County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 38025,
+        "width": 1440
+      },
+      {
+        "county": "Chelan County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 28748,
+        "width": 1440
+      },
+      {
+        "county": "Clallam County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 20248,
+        "width": 1440
+      },
+      {
+        "county": "Clark County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 188389,
+        "width": 1440
+      },
+      {
+        "county": "Columbia County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 1986,
+        "width": 1440
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 42208,
+        "width": 1440
+      },
+      {
+        "county": "Douglas County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 13589,
+        "width": 1440
+      },
+      {
+        "county": "Ferry County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 2498,
+        "width": 1440
+      },
+      {
+        "county": "Franklin County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 20268,
+        "width": 1440
+      },
+      {
+        "county": "Garfield County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 1304,
+        "width": 1440
+      },
+      {
+        "county": "Grant County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 15488,
+        "width": 1440
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 19068,
+        "width": 1440
+      },
+      {
+        "county": "Island County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 32357,
+        "width": 1440
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 16788,
+        "width": 1440
+      },
+      {
+        "county": "King County",
+        "mode": "uf_vep",
+        "new_source_checked": true,
+        "source_count": 935956,
+        "width": 1440
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 97481,
+        "width": 1440
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 14709,
+        "width": 1440
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 8071,
+        "width": 1440
+      },
+      {
+        "county": "Lewis County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 36814,
+        "width": 1440
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 4088,
+        "width": 1440
+      },
+      {
+        "county": "Mason County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 18223,
+        "width": 1440
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 14460,
+        "width": 1440
+      },
+      {
+        "county": "Pacific County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 9942,
+        "width": 1440
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 6983,
+        "width": 1440
+      },
+      {
+        "county": "Pierce County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 286103,
+        "width": 1440
+      },
+      {
+        "county": "San Juan County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 8574,
+        "width": 1440
+      },
+      {
+        "county": "Skagit County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 35984,
+        "width": 1440
+      },
+      {
+        "county": "Skamania County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 6085,
+        "width": 1440
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 251385,
+        "width": 1440
+      },
+      {
+        "county": "Spokane County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 156416,
+        "width": 1440
+      },
+      {
+        "county": "Stevens County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 7716,
+        "width": 1440
+      },
+      {
+        "county": "Thurston County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 78902,
+        "width": 1440
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 2453,
+        "width": 1440
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 8216,
+        "width": 1440
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 106374,
+        "width": 1440
+      },
+      {
+        "county": "Whitman County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 8584,
+        "width": 1440
+      },
+      {
+        "county": "Yakima County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 46367,
+        "width": 1440
+      },
+      {
+        "county": "Adams County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 2814,
+        "width": 1440
+      },
+      {
+        "county": "Asotin County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 7839,
+        "width": 1440
+      },
+      {
+        "county": "Benton County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 38025,
+        "width": 1440
+      },
+      {
+        "county": "Chelan County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 28748,
+        "width": 1440
+      },
+      {
+        "county": "Clallam County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 20248,
+        "width": 1440
+      },
+      {
+        "county": "Clark County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 188389,
+        "width": 1440
+      },
+      {
+        "county": "Columbia County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 1986,
+        "width": 1440
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 42208,
+        "width": 1440
+      },
+      {
+        "county": "Douglas County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 13589,
+        "width": 1440
+      },
+      {
+        "county": "Ferry County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 2498,
+        "width": 1440
+      },
+      {
+        "county": "Franklin County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 20268,
+        "width": 1440
+      },
+      {
+        "county": "Garfield County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 1304,
+        "width": 1440
+      },
+      {
+        "county": "Grant County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 15488,
+        "width": 1440
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 19068,
+        "width": 1440
+      },
+      {
+        "county": "Island County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 32357,
+        "width": 1440
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 16788,
+        "width": 1440
+      },
+      {
+        "county": "King County",
+        "mode": "uf_vap",
+        "new_source_checked": true,
+        "source_count": 935956,
+        "width": 1440
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 97481,
+        "width": 1440
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 14709,
+        "width": 1440
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 8071,
+        "width": 1440
+      },
+      {
+        "county": "Lewis County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 36814,
+        "width": 1440
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 4088,
+        "width": 1440
+      },
+      {
+        "county": "Mason County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 18223,
+        "width": 1440
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 14460,
+        "width": 1440
+      },
+      {
+        "county": "Pacific County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 9942,
+        "width": 1440
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 6983,
+        "width": 1440
+      },
+      {
+        "county": "Pierce County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 286103,
+        "width": 1440
+      },
+      {
+        "county": "San Juan County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 8574,
+        "width": 1440
+      },
+      {
+        "county": "Skagit County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 35984,
+        "width": 1440
+      },
+      {
+        "county": "Skamania County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 6085,
+        "width": 1440
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 251385,
+        "width": 1440
+      },
+      {
+        "county": "Spokane County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 156416,
+        "width": 1440
+      },
+      {
+        "county": "Stevens County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 7716,
+        "width": 1440
+      },
+      {
+        "county": "Thurston County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 78902,
+        "width": 1440
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 2453,
+        "width": 1440
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 8216,
+        "width": 1440
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 106374,
+        "width": 1440
+      },
+      {
+        "county": "Whitman County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 8584,
+        "width": 1440
+      },
+      {
+        "county": "Yakima County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 46367,
+        "width": 1440
+      },
+      {
+        "county": "Adams County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 3010,
+        "width": 1440
+      },
+      {
+        "county": "Asotin County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 8710,
+        "width": 1440
+      },
+      {
+        "county": "Benton County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 63305,
+        "width": 1440
+      },
+      {
+        "county": "Chelan County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 31015,
+        "width": 1440
+      },
+      {
+        "county": "Clallam County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 34616,
+        "width": 1440
+      },
+      {
+        "county": "Clark County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 233614,
+        "width": 1440
+      },
+      {
+        "county": "Columbia County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 1990,
+        "width": 1440
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 42878,
+        "width": 1440
+      },
+      {
+        "county": "Douglas County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 13872,
+        "width": 1440
+      },
+      {
+        "county": "Ferry County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 2523,
+        "width": 1440
+      },
+      {
+        "county": "Franklin County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 19733,
+        "width": 1440
+      },
+      {
+        "county": "Garfield County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 1243,
+        "width": 1440
+      },
+      {
+        "county": "Grant County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 16054,
+        "width": 1440
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 21933,
+        "width": 1440
+      },
+      {
+        "county": "Island County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 38900,
+        "width": 1440
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 20407,
+        "width": 1440
+      },
+      {
+        "county": "King County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 799391,
+        "width": 1440
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 131431,
+        "width": 1440
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 18440,
+        "width": 1440
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 9111,
+        "width": 1440
+      },
+      {
+        "county": "Lewis County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 37263,
+        "width": 1440
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 5061,
+        "width": 1440
+      },
+      {
+        "county": "Mason County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 26188,
+        "width": 1440
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 14912,
+        "width": 1440
+      },
+      {
+        "county": "Pacific County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 10227,
+        "width": 1440
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 6759,
+        "width": 1440
+      },
+      {
+        "county": "Pierce County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 335490,
+        "width": 1440
+      },
+      {
+        "county": "San Juan County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 9015,
+        "width": 1440
+      },
+      {
+        "county": "Skagit County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 43562,
+        "width": 1440
+      },
+      {
+        "county": "Skamania County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 6032,
+        "width": 1440
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 308305,
+        "width": 1440
+      },
+      {
+        "county": "Spokane County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 218509,
+        "width": 1440
+      },
+      {
+        "county": "Stevens County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 18853,
+        "width": 1440
+      },
+      {
+        "county": "Thurston County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 128696,
+        "width": 1440
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 2472,
+        "width": 1440
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 15805,
+        "width": 1440
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 108171,
+        "width": 1440
+      },
+      {
+        "county": "Whitman County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 9178,
+        "width": 1440
+      },
+      {
+        "county": "Yakima County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 58126,
+        "width": 1440
+      },
+      {
+        "held": true,
+        "mode": "in_person_early",
+        "width": 1440
+      },
+      {
+        "county": "Adams County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 2814,
+        "width": 390
+      },
+      {
+        "county": "Asotin County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 7839,
+        "width": 390
+      },
+      {
+        "county": "Benton County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 38025,
+        "width": 390
+      },
+      {
+        "county": "Chelan County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 28748,
+        "width": 390
+      },
+      {
+        "county": "Clallam County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 20248,
+        "width": 390
+      },
+      {
+        "county": "Clark County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 188389,
+        "width": 390
+      },
+      {
+        "county": "Columbia County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 1986,
+        "width": 390
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 42208,
+        "width": 390
+      },
+      {
+        "county": "Douglas County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 13589,
+        "width": 390
+      },
+      {
+        "county": "Ferry County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 2498,
+        "width": 390
+      },
+      {
+        "county": "Franklin County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 20268,
+        "width": 390
+      },
+      {
+        "county": "Garfield County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 1304,
+        "width": 390
+      },
+      {
+        "county": "Grant County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 15488,
+        "width": 390
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 19068,
+        "width": 390
+      },
+      {
+        "county": "Island County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 32357,
+        "width": 390
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 16788,
+        "width": 390
+      },
+      {
+        "county": "King County",
+        "mode": "available",
+        "new_source_checked": true,
+        "source_count": 935956,
+        "width": 390
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 97481,
+        "width": 390
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 14709,
+        "width": 390
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 8071,
+        "width": 390
+      },
+      {
+        "county": "Lewis County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 36814,
+        "width": 390
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 4088,
+        "width": 390
+      },
+      {
+        "county": "Mason County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 18223,
+        "width": 390
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 14460,
+        "width": 390
+      },
+      {
+        "county": "Pacific County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 9942,
+        "width": 390
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 6983,
+        "width": 390
+      },
+      {
+        "county": "Pierce County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 286103,
+        "width": 390
+      },
+      {
+        "county": "San Juan County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 8574,
+        "width": 390
+      },
+      {
+        "county": "Skagit County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 35984,
+        "width": 390
+      },
+      {
+        "county": "Skamania County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 6085,
+        "width": 390
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 251385,
+        "width": 390
+      },
+      {
+        "county": "Spokane County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 156416,
+        "width": 390
+      },
+      {
+        "county": "Stevens County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 7716,
+        "width": 390
+      },
+      {
+        "county": "Thurston County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 78902,
+        "width": 390
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 2453,
+        "width": 390
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 8216,
+        "width": 390
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 106374,
+        "width": 390
+      },
+      {
+        "county": "Whitman County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 8584,
+        "width": 390
+      },
+      {
+        "county": "Yakima County",
+        "mode": "available",
+        "new_source_checked": false,
+        "source_count": 46367,
+        "width": 390
+      },
+      {
+        "county": "Adams County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 2814,
+        "width": 390
+      },
+      {
+        "county": "Asotin County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 7839,
+        "width": 390
+      },
+      {
+        "county": "Benton County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 38025,
+        "width": 390
+      },
+      {
+        "county": "Chelan County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 28748,
+        "width": 390
+      },
+      {
+        "county": "Clallam County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 20248,
+        "width": 390
+      },
+      {
+        "county": "Clark County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 188389,
+        "width": 390
+      },
+      {
+        "county": "Columbia County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 1986,
+        "width": 390
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 42208,
+        "width": 390
+      },
+      {
+        "county": "Douglas County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 13589,
+        "width": 390
+      },
+      {
+        "county": "Ferry County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 2498,
+        "width": 390
+      },
+      {
+        "county": "Franklin County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 20268,
+        "width": 390
+      },
+      {
+        "county": "Garfield County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 1304,
+        "width": 390
+      },
+      {
+        "county": "Grant County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 15488,
+        "width": 390
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 19068,
+        "width": 390
+      },
+      {
+        "county": "Island County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 32357,
+        "width": 390
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 16788,
+        "width": 390
+      },
+      {
+        "county": "King County",
+        "mode": "official",
+        "new_source_checked": true,
+        "source_count": 935956,
+        "width": 390
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 97481,
+        "width": 390
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 14709,
+        "width": 390
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 8071,
+        "width": 390
+      },
+      {
+        "county": "Lewis County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 36814,
+        "width": 390
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 4088,
+        "width": 390
+      },
+      {
+        "county": "Mason County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 18223,
+        "width": 390
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 14460,
+        "width": 390
+      },
+      {
+        "county": "Pacific County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 9942,
+        "width": 390
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 6983,
+        "width": 390
+      },
+      {
+        "county": "Pierce County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 286103,
+        "width": 390
+      },
+      {
+        "county": "San Juan County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 8574,
+        "width": 390
+      },
+      {
+        "county": "Skagit County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 35984,
+        "width": 390
+      },
+      {
+        "county": "Skamania County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 6085,
+        "width": 390
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 251385,
+        "width": 390
+      },
+      {
+        "county": "Spokane County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 156416,
+        "width": 390
+      },
+      {
+        "county": "Stevens County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 7716,
+        "width": 390
+      },
+      {
+        "county": "Thurston County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 78902,
+        "width": 390
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 2453,
+        "width": 390
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 8216,
+        "width": 390
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 106374,
+        "width": 390
+      },
+      {
+        "county": "Whitman County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 8584,
+        "width": 390
+      },
+      {
+        "county": "Yakima County",
+        "mode": "official",
+        "new_source_checked": false,
+        "source_count": 46367,
+        "width": 390
+      },
+      {
+        "county": "Adams County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 2814,
+        "width": 390
+      },
+      {
+        "county": "Asotin County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 7839,
+        "width": 390
+      },
+      {
+        "county": "Benton County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 38025,
+        "width": 390
+      },
+      {
+        "county": "Chelan County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 28748,
+        "width": 390
+      },
+      {
+        "county": "Clallam County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 20248,
+        "width": 390
+      },
+      {
+        "county": "Clark County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 188389,
+        "width": 390
+      },
+      {
+        "county": "Columbia County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 1986,
+        "width": 390
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 42208,
+        "width": 390
+      },
+      {
+        "county": "Douglas County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 13589,
+        "width": 390
+      },
+      {
+        "county": "Ferry County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 2498,
+        "width": 390
+      },
+      {
+        "county": "Franklin County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 20268,
+        "width": 390
+      },
+      {
+        "county": "Garfield County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 1304,
+        "width": 390
+      },
+      {
+        "county": "Grant County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 15488,
+        "width": 390
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 19068,
+        "width": 390
+      },
+      {
+        "county": "Island County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 32357,
+        "width": 390
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 16788,
+        "width": 390
+      },
+      {
+        "county": "King County",
+        "mode": "uf_vep",
+        "new_source_checked": true,
+        "source_count": 935956,
+        "width": 390
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 97481,
+        "width": 390
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 14709,
+        "width": 390
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 8071,
+        "width": 390
+      },
+      {
+        "county": "Lewis County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 36814,
+        "width": 390
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 4088,
+        "width": 390
+      },
+      {
+        "county": "Mason County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 18223,
+        "width": 390
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 14460,
+        "width": 390
+      },
+      {
+        "county": "Pacific County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 9942,
+        "width": 390
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 6983,
+        "width": 390
+      },
+      {
+        "county": "Pierce County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 286103,
+        "width": 390
+      },
+      {
+        "county": "San Juan County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 8574,
+        "width": 390
+      },
+      {
+        "county": "Skagit County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 35984,
+        "width": 390
+      },
+      {
+        "county": "Skamania County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 6085,
+        "width": 390
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 251385,
+        "width": 390
+      },
+      {
+        "county": "Spokane County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 156416,
+        "width": 390
+      },
+      {
+        "county": "Stevens County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 7716,
+        "width": 390
+      },
+      {
+        "county": "Thurston County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 78902,
+        "width": 390
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 2453,
+        "width": 390
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 8216,
+        "width": 390
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 106374,
+        "width": 390
+      },
+      {
+        "county": "Whitman County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 8584,
+        "width": 390
+      },
+      {
+        "county": "Yakima County",
+        "mode": "uf_vep",
+        "new_source_checked": false,
+        "source_count": 46367,
+        "width": 390
+      },
+      {
+        "county": "Adams County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 2814,
+        "width": 390
+      },
+      {
+        "county": "Asotin County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 7839,
+        "width": 390
+      },
+      {
+        "county": "Benton County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 38025,
+        "width": 390
+      },
+      {
+        "county": "Chelan County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 28748,
+        "width": 390
+      },
+      {
+        "county": "Clallam County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 20248,
+        "width": 390
+      },
+      {
+        "county": "Clark County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 188389,
+        "width": 390
+      },
+      {
+        "county": "Columbia County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 1986,
+        "width": 390
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 42208,
+        "width": 390
+      },
+      {
+        "county": "Douglas County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 13589,
+        "width": 390
+      },
+      {
+        "county": "Ferry County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 2498,
+        "width": 390
+      },
+      {
+        "county": "Franklin County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 20268,
+        "width": 390
+      },
+      {
+        "county": "Garfield County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 1304,
+        "width": 390
+      },
+      {
+        "county": "Grant County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 15488,
+        "width": 390
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 19068,
+        "width": 390
+      },
+      {
+        "county": "Island County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 32357,
+        "width": 390
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 16788,
+        "width": 390
+      },
+      {
+        "county": "King County",
+        "mode": "uf_vap",
+        "new_source_checked": true,
+        "source_count": 935956,
+        "width": 390
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 97481,
+        "width": 390
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 14709,
+        "width": 390
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 8071,
+        "width": 390
+      },
+      {
+        "county": "Lewis County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 36814,
+        "width": 390
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 4088,
+        "width": 390
+      },
+      {
+        "county": "Mason County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 18223,
+        "width": 390
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 14460,
+        "width": 390
+      },
+      {
+        "county": "Pacific County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 9942,
+        "width": 390
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 6983,
+        "width": 390
+      },
+      {
+        "county": "Pierce County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 286103,
+        "width": 390
+      },
+      {
+        "county": "San Juan County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 8574,
+        "width": 390
+      },
+      {
+        "county": "Skagit County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 35984,
+        "width": 390
+      },
+      {
+        "county": "Skamania County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 6085,
+        "width": 390
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 251385,
+        "width": 390
+      },
+      {
+        "county": "Spokane County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 156416,
+        "width": 390
+      },
+      {
+        "county": "Stevens County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 7716,
+        "width": 390
+      },
+      {
+        "county": "Thurston County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 78902,
+        "width": 390
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 2453,
+        "width": 390
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 8216,
+        "width": 390
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 106374,
+        "width": 390
+      },
+      {
+        "county": "Whitman County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 8584,
+        "width": 390
+      },
+      {
+        "county": "Yakima County",
+        "mode": "uf_vap",
+        "new_source_checked": false,
+        "source_count": 46367,
+        "width": 390
+      },
+      {
+        "county": "Adams County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 3010,
+        "width": 390
+      },
+      {
+        "county": "Asotin County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 8710,
+        "width": 390
+      },
+      {
+        "county": "Benton County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 63305,
+        "width": 390
+      },
+      {
+        "county": "Chelan County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 31015,
+        "width": 390
+      },
+      {
+        "county": "Clallam County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 34616,
+        "width": 390
+      },
+      {
+        "county": "Clark County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 233614,
+        "width": 390
+      },
+      {
+        "county": "Columbia County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 1990,
+        "width": 390
+      },
+      {
+        "county": "Cowlitz County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 42878,
+        "width": 390
+      },
+      {
+        "county": "Douglas County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 13872,
+        "width": 390
+      },
+      {
+        "county": "Ferry County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 2523,
+        "width": 390
+      },
+      {
+        "county": "Franklin County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 19733,
+        "width": 390
+      },
+      {
+        "county": "Garfield County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 1243,
+        "width": 390
+      },
+      {
+        "county": "Grant County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 16054,
+        "width": 390
+      },
+      {
+        "county": "Grays Harbor County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 21933,
+        "width": 390
+      },
+      {
+        "county": "Island County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 38900,
+        "width": 390
+      },
+      {
+        "county": "Jefferson County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 20407,
+        "width": 390
+      },
+      {
+        "county": "King County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 799391,
+        "width": 390
+      },
+      {
+        "county": "Kitsap County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 131431,
+        "width": 390
+      },
+      {
+        "county": "Kittitas County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 18440,
+        "width": 390
+      },
+      {
+        "county": "Klickitat County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 9111,
+        "width": 390
+      },
+      {
+        "county": "Lewis County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 37263,
+        "width": 390
+      },
+      {
+        "county": "Lincoln County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 5061,
+        "width": 390
+      },
+      {
+        "county": "Mason County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 26188,
+        "width": 390
+      },
+      {
+        "county": "Okanogan County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 14912,
+        "width": 390
+      },
+      {
+        "county": "Pacific County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 10227,
+        "width": 390
+      },
+      {
+        "county": "Pend Oreille County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 6759,
+        "width": 390
+      },
+      {
+        "county": "Pierce County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 335490,
+        "width": 390
+      },
+      {
+        "county": "San Juan County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 9015,
+        "width": 390
+      },
+      {
+        "county": "Skagit County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 43562,
+        "width": 390
+      },
+      {
+        "county": "Skamania County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 6032,
+        "width": 390
+      },
+      {
+        "county": "Snohomish County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 308305,
+        "width": 390
+      },
+      {
+        "county": "Spokane County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 218509,
+        "width": 390
+      },
+      {
+        "county": "Stevens County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 18853,
+        "width": 390
+      },
+      {
+        "county": "Thurston County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 128696,
+        "width": 390
+      },
+      {
+        "county": "Wahkiakum County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 2472,
+        "width": 390
+      },
+      {
+        "county": "Walla Walla County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 15805,
+        "width": 390
+      },
+      {
+        "county": "Whatcom County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 108171,
+        "width": 390
+      },
+      {
+        "county": "Whitman County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 9178,
+        "width": 390
+      },
+      {
+        "county": "Yakima County",
+        "mode": "mail_returned",
+        "new_source_checked": false,
+        "source_count": 58126,
+        "width": 390
+      },
+      {
+        "held": true,
+        "mode": "in_person_early",
+        "width": 390
+      }
+    ],
+    "full_complete_download_checked_at_both_widths": true,
+    "native_fraction_preserved": true,
+    "page_errors": [],
+    "passed": true,
+    "previous_source_status_literal_not_reused": true,
+    "production_data_dom_or_style_overrides": false,
+    "source_diagnostics_preserved": true
+  },
+  "pdf_literal_clock": "2026-11-12 15:10:05",
+  "pdf_timezone": null,
+  "previous_count": 601199,
+  "public_archive_scope": "Complete permitted factual inputs, native CSV, all numerical queries and reproduction; excluded original PDF template is not an archive member. The contextual package's nested native analysis has that same scope.",
+  "registered_voters": 1460414,
+  "registration_denominator_qualified": false,
+  "scientific_source_commit": "e69a26685cf75dc7a0a0878a7137ee83369f6be2",
+  "selected_contextual_joins": 834,
+  "selected_contextual_records": 1329,
+  "separate_overvote_comparison": {
+    "csv_per_choice_membership": 186,
+    "pdf_total_overvoted_ballots": 185
+  },
+  "source_access_dispositions": {
+    "blocked_index": {
+      "body_not_exposed_in_failed_request": true,
+      "bytes": null,
+      "no_alternate_client_index_retry": true,
+      "no_original_acquired": true,
+      "sha256": null,
+      "source_url": "https://kingcounty.gov/en/dept/elections/results/2026/november-general",
+      "status": "native_HTTP403_stopped",
+      "web_visible_declaration_not_native_original": true
+    },
+    "current_csv": {
+      "counts_not_qualified_from_download_alone": true,
+      "declared_by": "current-summary-original meta http-equiv refresh",
+      "receipt": {
+        "bytes": 38741,
+        "origin": "new_source_response",
+        "sha256": "d6b04daf7b6c4284e2fa87bdb28477051f16f8083271b505807ccec43b8eb622",
+        "status": 200,
+        "url": "https://election-results-01.kingcounty.gov/webresults.csv"
+      }
+    },
+    "current_pdf": {
+      "declaration": {
+        "bytes": 374,
+        "origin": "new_source_response",
+        "sha256": "f259c7a133878666aa8c5a89f01a85ce33520ab4b262d7f22cb5a9cab0085001",
+        "status": 200,
+        "url": "https://election-results-pdf.kingcounty.gov/"
+      },
+      "pdf": {
+        "bytes": 49581,
+        "origin": "new_source_response",
+        "sha256": "51ba603ec7b4092eab8d093e33ab77909aa796ebd54da89ec74e9b69f7f3427a",
+        "status": 200,
+        "url": "https://election-results-01.kingcounty.gov/results.pdf"
+      }
+    },
+    "declared_products": {
+      "current-summary": {
+        "qualification": "native_original_not_yet_analyzed",
+        "receipt": {
+          "bytes": 375,
+          "origin": "new_source_response",
+          "sha256": "479a03f61d2fc4ba174657baaaf2e9f19a4d65a741a3f986cf568b3bc926ebf8",
+          "status": 200,
+          "url": "https://election-results-csv.kingcounty.gov/"
+        }
+      },
+      "mid-election": {
+        "error": "HTTP 403; original not replaced or retried",
+        "error_type": "IntakeError",
+        "native_product_not_acquired": true,
+        "url": "https://cdn.kingcounty.gov/-/media/king-county/depts/elections/results/2026/11/mid-election-results-report.csv?hash=344A53A9B814CF043EEE695C5C46450D&rev=8ec7197ea23b47949919fa8923151359"
+      }
+    },
+    "denied_index_and_precinct_routes_not_retried": true
+  },
+  "source_conflicts_repaired": false,
+  "source_increase_not_new_voters_or_staying_home": true,
+  "source_snapshot_increase": 334757,
+  "state_code": "WA",
+  "unchanged_contextual_geometry_collections": 20,
+  "unchanged_other_WA_records": 117,
+  "unchanged_other_contextual_joins": 833,
+  "unchanged_other_jurisdiction_shards": 50,
+  "website_source": "67455da372b89dbeb86eb89561705b4dca233e87",
+  "whole_project_complete": false
+}

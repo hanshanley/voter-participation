@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current King County native refresh | [935,956 printed Ballots Cast; complete source controls and unchanged county context](#2026-king-county-native-ballots-cast-successor) |
 | Current Wayne County native evidence | [770 reporting units, a derived administrative composite, and reviewed county context](#2026-wayne-county-native-statistical-counts) |
 | Current recorded-swing display | [All50 state values by default, with separate comparison holds](#recorded-house-swings-default-display-correction) |
 | Current administrative subtotal refresh | [New Jersey: 15 same-measure successors and complete native queries](#2026-new-jersey-administrative-subtotal-successors) |
@@ -53,6 +54,72 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 King County native Ballots Cast successor
+
+The separately declared current PDF prints **935,956 Total Ballots Cast**,
+**1,460,414 Registered Voters** and **64.09%** identically on all17 pages.
+The county observation replaces601,199; the334,757 increase is a change between
+dated administrative snapshots, not new voters, switching or observed staying
+home. The native PDF clock is **November12,2026,15:10:05**, timezone unspecified.
+The separate complete CSV supplies no native clock; the PDF clock is not copied.
+
+All115 contests,286 choice rows and1,430 CSV count cells are retained, together
+with914 complete PDF factual-measure queries. Independent PDF verification
+checks238 header,1,760 literal and34 typed-count cells, and all17 page numeric
+token inventories. Candidate/contest votes are not summed into participation.
+Legislative District32's State Senator accounting control is short by1, and
+one CSV per-choice overvote counter is186 versus the PDF's185 total-overvoted
+ballots. Neither is repaired or treated as an interchangeable measure.
+The printed64.09% remains inspectable, but the analytical fraction and
+registration-denominator qualification are withheld.
+
+The native index and separately declared mid-election CSV returned403 and remain
+stopped. The distinct current CSV/PDF wrapper roots returned200 and supplied
+literal meta-refresh targets; only those targets were followed. No precinct
+original, precinct geometry or final/certified result status is inferred.
+The complete permitted factual inputs, native CSV, all numerical queries,
+code/tests and source-disposition records are available in the
+[27-asset immutable release](https://github.com/hanshanley/margin_of_error/releases/tag/participation-king-native-count-refresh-20261113-01).
+The original PDF template is retained for review, not claimed as a public
+archive member or re-extracted by the public replay.
+
+Shared scientific source e69a266 and its four owned canonical files pass85
+affected tests. Both complete82-test/57-output isolated replays, actual canonical
+replay, isolated39-query SDK and standalone source-concordance replay pass.
+Catalog0c6c232 activates counts06711a2f after54 immutable-body checks, without
+source requests, re-parses or activation builds. Other117 Washington records,
+other50 jurisdiction shards, early/mail frames, native3bcc bindings, statewide
+snapshot, model33, House endpoints and NORC weights are unchanged by this task.
+The independent automated9bf56a2 snapshot publication is preserved separately.
+
+A production check found the old contextual join correctly rejected King's
+changed full-record checksum, leaving the new sidebar count off the polygon.
+The separately reviewed b1f5149 successor changes only King, retaining all833
+other joins,1,328 other full source records, exclusions, source selections and
+all20 geometry collections. It retains the strict full-record/geometry checks.
+All834 numerical joins and1,329 full selected records, original identity inputs,
+geometry, complete King analysis and reproduction tools are in the
+[complete contextual successor](https://github.com/hanshanley/margin_of_error/releases/download/participation-king-context-successor-20261113-01/complete-context-successor.zip).
+Both network/DNS/subprocess-blocked36-member replays pass. Website67455da pins
+that immutable-source review without changing the county-boundary vintage,
+adding precincts or promoting a rate. Its17 affected tests and Astro checks
+pass in both maintained and canonical trees. Actual production desktop/phone
+browsers verify312 map values across four full-election modes, King polygon
+selection and the full contextual-download hash at both widths. King stays
+gray because its rate is withheld, not because its count is missing.
+Pages43479566667/main guard43479566728 succeed. Native artifact14065126605
+has997,324,587 payload bytes and999,925,760 tar bytes, both below1e9.
+All31 actual HTML/script bodies equal the native artifact; the independent
+Which Candidate and Interactive Analysis pages remain byte-identical.
+All436 earlier download pins,113 archived models and prior numerical drivers
+remain. The original392 count-selection checks and all51/306 reader-frame
+checks remain applicable to unchanged count data and reader code.
+
+This closes no nationwide gap or behavioral-model prerequisite by itself.
+See [complete downloads](docs/DATA.md#current-king-county-native-ballots-cast)
+and the final [observations](data/participation-access/20261113-king-native-count-refresh-01/observations.json)
+and [website acceptance](data/participation-access/20261113-king-native-count-refresh-01/website-acceptance.json).
 
 ## 2026 Wayne County native statistical counts
 
