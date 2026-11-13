@@ -13,6 +13,44 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Wayne County native statistical counts integrated
+
+The completed integration adds770 native reporting units and a separately
+labeled747,004 administrative composite:724,872 main-report Voters Cast plus
+22,132 in the disjoint Belleville/Sumpter/Van Buren supplement. It is not a
+printed native county parent, a unique-person count or observed staying home.
+All217 factual worksheets, both distinct November6 decoded Excel clocks,
+three zeros and61 non-Precinct labels remain in complete queries. Registration
+discrepancies and the supplement's zero/N/A remain unrepaired; analysis rates
+are withheld.
+
+Catalog783199c atomically activates counts e4bd2004 and native bindings3bcc590d,
+with87 immutable runtime bodies verified and no source reparse or activation
+build. Only four county-mode contextual bindings are appended; all old geometry
+and binding bodies,232 previous Michigan observations, other50 jurisdiction
+shards, statewide/provider observations and all model/House outputs remain.
+Michigan now has three selected county observations out of83 reference counties,
+plus833 source reporting rows. This is not a new precinct map or complete
+statewide Michigan participation estimate.
+
+Shared source2324a9e is published and canonically persistent;83 affected tests
+and both80-test/90-output offline replays, actual canonical replay and isolated
+SDK pass. Immutable release444407182 provides20 fully verified assets, including
+the100,678,076-byte complete analysis, all771 selected canonical observations
+and all native statistical queries. Website ecd2f02 fixes only the tightly
+coupled hard-coded two-county coverage message. Its actual Pages artifact and
+live application bytes pass, with payload997,287,791/tar999,884,800 below1e9.
+The linked [acceptance](data/participation-access/20261113-wayne-statistical-counts-01/website-acceptance.json)
+retains the no-override production browser results and full-download checks.
+The independently older canonical explorer and both protected HEAD/index pairs
+are preserved; missing published test dependencies are restored without
+overwriting that explorer.
+
+This closes bounded653 only. Model33, all nine House family/profile outputs,
+NORC weights, the33/17 behavioral policy and all earlier numerical downloads
+remain unchanged. Continue genuine remaining implementation before full
+audit636 and then restrained beautification637.
+
 ## Recorded House swings: default map corrected and verified live
 
 The November13 screenshot exposed a display-policy problem: the initial
@@ -31,9 +69,9 @@ fits/weights and current numerical queries remain unchanged. The39 affected
 tests and Astro checks also pass in the guarded canonical checkout.
 
 This finishes the bounded screenshot correction, not the remaining project.
-Wayne's native compilation and independent statistical checks are retained;
-its reviewed new-source/count integration remains in progress. Full audit,
-then beautification, remain behind the actual implementation work.
+Wayne's native compilation, independent statistical checks and reviewed
+new-source/count integration are now completed in the bounded entry above.
+Full audit, then beautification, remain behind the actual remaining work.
 
 ## New Jersey: 15 administrative subtotal successors verified live
 

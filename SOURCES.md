@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Wayne County native evidence | [770 reporting units, a derived administrative composite, and reviewed county context](#2026-wayne-county-native-statistical-counts) |
 | Current recorded-swing display | [All50 state values by default, with separate comparison holds](#recorded-house-swings-default-display-correction) |
 | Current administrative subtotal refresh | [New Jersey: 15 same-measure successors and complete native queries](#2026-new-jersey-administrative-subtotal-successors) |
 | Current state-reference/model refresh | [Oregon counted ballots, active registration and revision33](#2026-oregon-state-reference-and-registered-source-revision-33) |
@@ -52,6 +53,59 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Wayne County native statistical counts
+
+The official Michigan county source supplies **770 native reporting units**:
+758 in the main report (724,872 Voters Cast), and 12 in the separately declared
+Belleville/Sumpter/Van Buren supplement (22,132). The main report explicitly
+excludes those three localities. Their **747,004 derived administrative
+composite is not a separately printed county parent or a qualified count of
+unique people**. Agreeing duplicate parent labels are checked, not added.
+
+All 217 factual worksheets and their complete statistical queries are retained.
+The three real zeros and 61 labels without a literal Precinct designation remain
+selectable. Registrations and printed fractions remain context only: the main
+workbook's 1,435,257 registrations differ from the older PDF's 1,474,536; the
+supplement's zero/N/A is not an eligible-zero denominator. All analysis rates
+stay withheld.
+
+The main and supplemental Excel H1 caches decode to November 6, 2026,
+08:32:47.569 and 11:57:18.452 respectively, with unknown timezones. Original
+cache lexemes, number formats and date systems remain in the full queries.
+These are not copied PDF clocks or a fabricated common snapshot.
+
+Shared source2324a9e adds an explicitly reviewed append-only count operation
+and a separately pinned contextual-binding addition. Counts e4bd2004 and native
+bindings3bcc590d are activated together by catalog783199c, after all87 immutable
+runtime bodies were anonymously verified. Michigan now has three selected
+county observations across the existing83-feature Census reference, and833
+reporting rows including the unchanged63 earlier rows. Only four county-mode
+bindings are appended. Every old binding, geometry body,232 old Michigan
+observations, other50 jurisdiction shards, statewide snapshot and provider
+frame remain unchanged. No new precinct geometry is qualified.
+
+Website ecd2f02 replaces the hard-coded two-county missingness message with the
+actual loaded inventory. Its native Pages43454665378 artifact has997,287,791
+payload bytes and999,884,800 tar bytes, both below one billion. Existing
+House endpoints, model33, NORC fits/weights,113 archived models and436 complete
+download pins remain exact. These partial county statistics do not justify a
+new statewide Michigan turnout or demographic switching/staying-home estimate.
+
+The [complete downloads](docs/DATA.md#current-wayne-county-native-statistical-counts)
+include the100,678,076-byte/211-member analysis and all771 selected canonical
+queries. All20 assets in immutable release444407182 are full-body verified,
+authenticated/draft then anonymously/public. Both independent80-test/90-output
+offline replays, the actual canonical replay, isolated source SDK and83 affected
+source tests pass. Public replay uses complete sufficient factual inputs; it
+does not claim extraction of excluded publisher templates.
+
+The [acceptance record](data/participation-access/20261113-wayne-statistical-counts-01/website-acceptance.json)
+records actual desktop/phone navigation, count/reference checks and full
+downloads. The protected older canonical explorer is deliberately preserved;
+the published maintained website source is authoritative for the live viewer.
+This completes the bounded Wayne integration, not the remaining all-state work
+or the later full audit and beautification.
 
 ## Recorded House swings: default display correction
 

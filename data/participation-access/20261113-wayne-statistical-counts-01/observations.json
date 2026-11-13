@@ -1,0 +1,262 @@
+{
+  "analytical_rates_qualified": false,
+  "catalog_commit": "783199c20381e0fe7a90ee1c77f680c8c8868348",
+  "complete_assets": [
+    {
+      "bytes": 6938,
+      "id": 744179076,
+      "name": "all-51-jurisdictions.json",
+      "sha256": "866fbdfa58dcc73939efd4a7adc2ebcc93a34c87ee060d7bdd01246d3a597361",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/all-51-jurisdictions.json"
+    },
+    {
+      "bytes": 2296,
+      "id": 744179103,
+      "name": "candidate-verification.json",
+      "sha256": "671e23334449da6d4cd1143c19a98f8c5c77e41702dd51dd03087ab133786d6d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/candidate-verification.json"
+    },
+    {
+      "bytes": 100678076,
+      "id": 744179121,
+      "name": "complete-analysis.zip",
+      "sha256": "05fe0e927249eb7cadd37b7028af5549111b21de31621f04d2526a95840b4ebf",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-analysis.zip"
+    },
+    {
+      "bytes": 2628,
+      "id": 744179106,
+      "name": "complete-asset-manifest.json",
+      "sha256": "4540dc0f85aaa95a64ddfaa950ba8412551dd0009ede6ae13a803fba5f1431c1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-asset-manifest.json"
+    },
+    {
+      "bytes": 16151078,
+      "id": 744179161,
+      "name": "complete-count-source-packet.zip",
+      "sha256": "68cc5d039c63dd9df14af98db34198a45a1405526c186f8dc45d60fa77839798",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-count-source-packet.zip"
+    },
+    {
+      "bytes": 9295863,
+      "id": 744179183,
+      "name": "complete-selected-source-query.json",
+      "sha256": "81fd8cc541954d441b9b949b7eaeb72d67e7f1012dd1d0aebc3d3d5cb898f609",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-selected-source-query.json"
+    },
+    {
+      "bytes": 108,
+      "id": 744179071,
+      "name": "complete-source-dispositions.json",
+      "sha256": "0ab7a479a7fd0665f6054d3e24c9e2ad7d1e78db7854777466c0c7d40ad87550",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-source-dispositions.json"
+    },
+    {
+      "bytes": 770045,
+      "id": 744179102,
+      "name": "complete-source-registry.json",
+      "sha256": "33951a5b76437737901c0a65617accf7585dd8631f2cf03ca756df5402346afc",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-source-registry.json"
+    },
+    {
+      "bytes": 606825,
+      "id": 744179150,
+      "name": "complete-statistical-units.json",
+      "sha256": "6167bd0b7e4cb2199fcf4332fce90155ba51b2099c958aea3348a9003d904544",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-statistical-units.json"
+    },
+    {
+      "bytes": 463584,
+      "id": 744179072,
+      "name": "geometry.json",
+      "sha256": "cbe4a45667430678549ea8c28e5b0a43652b914373ef41f9d75e6adb0fc2fa87",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/geometry.json"
+    },
+    {
+      "bytes": 527,
+      "id": 744179104,
+      "name": "grouping.json",
+      "sha256": "6e4a2022a02297639ddf8c978642fd63d194ab22e6069d2f66f9ce6c2be6862e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/grouping.json"
+    },
+    {
+      "bytes": 1153,
+      "id": 744179117,
+      "name": "independent-statistical-verification.json",
+      "sha256": "b97bc6bc30cb09f4fe1176ae16ca4801f5c992b8ddee67321ef04c616b27f674",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/independent-statistical-verification.json"
+    },
+    {
+      "bytes": 1153,
+      "id": 744179171,
+      "name": "independent_review.json",
+      "sha256": "b97bc6bc30cb09f4fe1176ae16ca4801f5c992b8ddee67321ef04c616b27f674",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/independent_review.json"
+    },
+    {
+      "bytes": 2079,
+      "id": 744179126,
+      "name": "offline-replays.json",
+      "sha256": "a150fbfb2dfec9a3cabcec86b0f5b90ecc6b4ac441e8cb2bf455c93883643e1d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/offline-replays.json"
+    },
+    {
+      "bytes": 13100,
+      "id": 744179070,
+      "name": "prepare-inputs.py",
+      "sha256": "fcc06cd6cddf2c2f4ec930f55373c8ba983864af7c9e9123fc37eabd7583f559",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/prepare-inputs.py"
+    },
+    {
+      "bytes": 1147531,
+      "id": 744179139,
+      "name": "queries.json",
+      "sha256": "d049682eaa4b273e58fd0fc0f21ce9ac51ee9c81a854182aa191530f12ccf790",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/queries.json"
+    },
+    {
+      "bytes": 4112,
+      "id": 744179120,
+      "name": "recipe.json",
+      "sha256": "5bc770bf13538c68225bce7347258a9772aa22f634d3146b0aa6cb9a5cb90ff9",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/recipe.json"
+    },
+    {
+      "bytes": 606825,
+      "id": 744179174,
+      "name": "reviewed_units.json",
+      "sha256": "6167bd0b7e4cb2199fcf4332fce90155ba51b2099c958aea3348a9003d904544",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/reviewed_units.json"
+    },
+    {
+      "bytes": 19212631,
+      "id": 744179077,
+      "name": "wayne-main.json.gz",
+      "sha256": "81332b565e31756fcc48ee520e04b959404d705640df32dbfd433f5ee7025d03",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/wayne-main.json.gz"
+    },
+    {
+      "bytes": 307191,
+      "id": 744179153,
+      "name": "wayne-three-localities.json.gz",
+      "sha256": "424a19cd5fe9043f5f8f4dcd2f1cdae464017f4ea5ea3f64516813e2c857b3e3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/wayne-three-localities.json.gz"
+    }
+  ],
+  "contract": "participation.native_statistical_count_delivery.v1",
+  "counts_version": "e4bd2004bd1f84d87c471fafa0e173253518bf13ee89a1ea9b6edb13e9e71baa",
+  "county_observations": 3,
+  "county_reference_inventory": 83,
+  "derived_administrative_composite": 747004,
+  "full_numerical_downloads_not_replaced_by_this_record": true,
+  "independent_candidate_verification": {
+    "added_source_units": 770,
+    "all_new_rates_and_denominators_null": true,
+    "all_old_MI_observations_preserved": 232,
+    "all_other_runtime_files_byte_identical": [
+      "current.json.gz",
+      "states/AK.json.gz",
+      "states/AL.json.gz",
+      "states/AR.json.gz",
+      "states/AZ.json.gz",
+      "states/CA.json.gz",
+      "states/CO.json.gz",
+      "states/CT.json.gz",
+      "states/DC.json.gz",
+      "states/DE.json.gz",
+      "states/FL.json.gz",
+      "states/GA.json.gz",
+      "states/HI.json.gz",
+      "states/IA.json.gz",
+      "states/ID.json.gz",
+      "states/IL.json.gz",
+      "states/IN.json.gz",
+      "states/KS.json.gz",
+      "states/KY.json.gz",
+      "states/LA.json.gz",
+      "states/MA.json.gz",
+      "states/MD.json.gz",
+      "states/ME.json.gz",
+      "states/MN.json.gz",
+      "states/MO.json.gz",
+      "states/MS.json.gz",
+      "states/MT.json.gz",
+      "states/NC.json.gz",
+      "states/ND.json.gz",
+      "states/NE.json.gz",
+      "states/NH.json.gz",
+      "states/NJ.json.gz",
+      "states/NM.json.gz",
+      "states/NV.json.gz",
+      "states/NY.json.gz",
+      "states/OH.json.gz",
+      "states/OK.json.gz",
+      "states/OR.json.gz",
+      "states/PA.json.gz",
+      "states/RI.json.gz",
+      "states/SC.json.gz",
+      "states/SD.json.gz",
+      "states/TN.json.gz",
+      "states/TX.json.gz",
+      "states/UT.json.gz",
+      "states/VA.json.gz",
+      "states/VT.json.gz",
+      "states/WA.json.gz",
+      "states/WI.json.gz",
+      "states/WV.json.gz",
+      "states/WY.json.gz"
+    ],
+    "cached_noop_preserves_all_bytes_and_mtimes": true,
+    "complete_archive": {
+      "bytes": 100678076,
+      "sha256": "05fe0e927249eb7cadd37b7028af5549111b21de31621f04d2526a95840b4ebf"
+    },
+    "county_observations": 3,
+    "county_reference_inventory": 83,
+    "derived_administrative_composite": 747004,
+    "independent_new_row_checks": 5390,
+    "native_reference_changes": {
+      "added_county_mode_bindings": 4,
+      "all_other_bindings_and_geometry_files_exact": true,
+      "baseline": "991c5863a273bb72716be8423147f83fe5da00ccc941d5386df6700914e644d2",
+      "candidate": "3bcc590d0c30a0da3a3fbc0fc08dd0977f6b453089fe50a5931225240275e59c"
+    },
+    "no_model_changes": true,
+    "non_precinct_labels_preserved": 61,
+    "old_independent_native_statistical_checks_reused": 53218,
+    "passed": true,
+    "reporting_rows": 833,
+    "source_repairs": 0,
+    "source_zeros": 3
+  },
+  "independent_original_statistical_checks_reused": 53218,
+  "main": {
+    "decoded_excel_clock": "2026-11-06T08:32:47.569",
+    "source_units": 758,
+    "timezone": null,
+    "voters_cast": 724872
+  },
+  "model_or_house_endpoint_changes": false,
+  "native_county_parent": false,
+  "native_version": "3bcc590d0c30a0da3a3fbc0fc08dd0977f6b453089fe50a5931225240275e59c",
+  "new_precinct_geometry": false,
+  "non_precinct_literal_labels": 61,
+  "observed_nonparticipation_qualified": false,
+  "observed_zeros": 3,
+  "source_commit": "2324a9e6891fc9d6e624ba43cd5041b414650a02",
+  "source_units": 770,
+  "supplement": {
+    "decoded_excel_clock": "2026-11-06T11:57:18.452",
+    "scope": [
+      "Belleville",
+      "Sumpter",
+      "Van Buren"
+    ],
+    "source_units": 12,
+    "timezone": null,
+    "voters_cast": 22132
+  },
+  "unique_people_qualified": false,
+  "website_source": "ecd2f02778147ee047c014cbd6d8155ab61491f1",
+  "whole_project_complete": false
+}

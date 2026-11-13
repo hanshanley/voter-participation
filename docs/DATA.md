@@ -8,6 +8,46 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current Wayne County native statistical counts
+
+All770 source reporting units are retained, including three zeros and61 labels
+without a literal Precinct designation. The main724,872 and separately declared
+supplement22,132 form a **derived747,004 administrative composite**, not a
+separately printed county parent or qualified unique-person count. Their two
+different decoded Excel clocks remain separate, with unknown timezones.
+Registrations and native fractions are context only; analysis rates stay held.
+
+| Complete download | Contents |
+|---|---|
+| [Complete count and contextual-binding analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-analysis.zip) | 100,678,076 bytes/211 members; full51-jurisdiction count baseline, complete native-binding baseline, sufficient factual inputs, code/tests and90 complete runtime/query outputs |
+| [Complete selected source SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-count-source-packet.zip) | 16,151,078 bytes/27 members; standard-library offline reproduction of every selected canonical observation |
+| [All771 selected canonical observations](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-selected-source-query.json) | All770 literal units, full native vectors/provenance and the separately labeled derived composite |
+| [Every native statistical unit and parent](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-statistical-units.json) | Full registration/count/mode/fraction vectors, physical rows and agreeing duplicate parents |
+| [Complete native worksheet queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/queries.json) | All physical statistical worksheet rows; missing supplemental modes are not fabricated zeros |
+| [Complete main factual worksheets](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/wayne-main.json.gz) | Every sufficient factual cell, exact cache lexeme, number format and source provenance |
+| [Complete supplemental factual worksheets](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/wayne-three-localities.json.gz) | The separately declared Belleville/Sumpter/Van Buren report, without copying the main clock or registration frame |
+| [Full reviewed registry and bindings](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/complete-source-registry.json) | Exact old preimages, complete new observation pins and four explicit county-mode contextual additions |
+| [Offline reproduction proofs](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/offline-replays.json) | Both80-test/90-output byte-exact runs, actual canonical replay and isolated source SDK |
+| [Independent statistical verification](https://github.com/hanshanley/margin_of_error/releases/download/participation-wayne-native-counts-20261113-01/independent-statistical-verification.json) | 53,218 original statistical/group/query checks, reused rather than rerun or weakened |
+
+Analysis SHA256
+`05fe0e927249eb7cadd37b7028af5549111b21de31621f04d2526a95840b4ebf`;
+source SDK SHA256
+`68cc5d039c63dd9df14af98db34198a45a1405526c186f8dc45d60fa77839798`.
+All20 assets of release444407182 are authenticated/draft then anonymously/public
+full-body verified, and the release is immutable. The packet preserves all217
+factual worksheets; public replay does not claim extraction of excluded original
+publisher templates.
+
+Counts e4bd2004 and native bindings3bcc590d activate together at catalog783199c,
+after87 immutable runtime body checks, with zero re-parses or activation builds.
+The full83-feature Michigan county reference gains only four explicit mode
+bindings; every old reference binding and geometry file remains exact. No
+precinct geometry, new statewide count, rate, NORC refit or behavioral estimate
+is introduced. See [source qualifications](../SOURCES.md#2026-wayne-county-native-statistical-counts)
+and [production acceptance](../data/participation-access/20261113-wayne-statistical-counts-01/website-acceptance.json).
+All earlier complete numerical downloads remain available.
+
 ## Recorded House swings and unchanged complete queries
 
 The initial map now shows recorded vote-share changes for all50 states,
