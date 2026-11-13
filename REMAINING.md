@@ -13,6 +13,37 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## New Jersey source compilation: complete tables, integration still required
+
+The21latest-declared county PDFs now have complete permitted numerical grids
+and downloads:58pages,86grids,1,472records and15,766measure cells. Shared
+PDF/compiler/query/control/replay code is published as research3901e61.
+Immutable release443806852/tag `participation-nj-native-measures-20261113-01`
+contains eight full-byte-verified authenticated/anonymous assets, including
+the complete1,268,193-byte scientific ZIP and full JSON/CSV numerical exports.
+Both fresh archive extractions pass23affected tests and reproduce all three
+full numerical outputs with network/DNS/child commands blocked and probed.
+
+The second reader verifies15,410encoded numerical cells. Sussex's348image
+cells are explicitly reviewed transcription, not fabricated encoded text;
+239localOCR numeric tokens agree and its municipal controls match.
+Keep19cross-level source-control differences,140unqualified comparisons,
+seven native negative entries, all actual clocks/schemas and Salem's
+same-clock mail-count conflicts. Repeated Bergen county rows were
+equality-checked, not summed. Morris parent/subdistrict units overlap.
+
+**Next is real integration, not another inventory.** Review the existing NJ
+source measures and bindings against these full facts. Cape May's native
+summary has42,442ballots/76,899registered voters and printed55.19%, versus
+the older accepted41,278snapshot; do not silently replace a differently
+defined measure or qualify an eligible-population rate. Reporting is still
+incomplete/unofficial. Its House41,957choices+68overvotes+417undervotes
+reconcile to42,442ballots; these are not observed staying-home counts.
+Preserve all51jurisdiction dispositions and the genuine OK403STOP.
+No current website/model data or study weights were changed by this
+source-compilation release. The combined-source estimates, reusable native
+binding/routine work and final audit/beautification remain open.
+
 ## Final phase requested: full audit, then beautification
 
 After the remaining implementation work, perform a full project audit and then

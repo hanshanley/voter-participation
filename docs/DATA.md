@@ -8,6 +8,34 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## New Jersey complete native tables: integration pending
+
+All21declared county PDFs/58pages are represented by86reviewed numerical
+grids,1,472records and15,766measure cells. Complete JSON/CSV exports preserve
+values, blank/zero status, source/schema/clock distinctions and cell geometry.
+The29-member scientific packet contains all sufficient factual inputs,
+processing code/tests and complete numerical queries/control results.
+Both fresh extractions pass23tests and reproduce all three full outputs
+offline. Immutable release443806852: all eight full assets verified
+authenticated while draft and anonymously after publication.
+
+| Complete download | Contents |
+|---|---|
+| [Complete scientific packet](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-measures-20261113-01/complete-analysis.zip) | 1,268,193bytes; complete sufficient grids, all numerical queries, source recipes, code/tests and verification |
+| [Complete factual grids](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-measures-20261113-01/complete-factual-grids.json.gz) | Every selected administrative/contest/statistical cell; reviewed Sussex image transcription explicitly separate |
+| [Complete numerical JSON](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-measures-20261113-01/complete-queries.json.gz) | All15,766measure cells and their full status/frame/provenance |
+| [Complete numerical CSV](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-measures-20261113-01/complete-queries.csv.gz) | Same complete cell queries; value_json preserves null versus zero and literal statistical pairs/rates |
+| [Complete native-control queries/results](https://github.com/hanshanley/margin_of_error/releases/download/participation-nj-native-measures-20261113-01/complete-controls.json) | All32county observations,1,428checks,19cross-level differences and140unqualified comparisons |
+
+These are source-compilation outputs, **not an activated website/model update**.
+Keep conflicting Salem snapshots, older Morris definitions, overlapping units,
+native negative entries and distinct mail/provisional/machine measures.
+Cape May's55.19%is a printed registration-frame percentage, not an eligible-
+population turnout rate; reporting remains incomplete/unofficial.
+Original document templates, respondent data and staff contacts are not
+redistributed. Public offline replay begins from the complete factual grids.
+All previous complete downloads remain preserved.
+
 ## Official HI/WY update: complete verified downloads
 
 The current research source

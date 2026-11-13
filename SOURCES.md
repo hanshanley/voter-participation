@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| New Jersey complete native tables | [All21county files, distinct administrative/contest frames and unresolved source conflicts](#2026-new-jersey-complete-native-pdf-measures) |
 | Recorded-count display correction | [All50state raw totals remain inspectable independently of behavioral eligibility](#recorded-house-counts-versus-behavioral-eligibility) |
 | Current combined-source priority | [2026 returns, NORC revisions and voter-poll reconciliation](#2026-combined-source-refresh-and-model-reconciliation) |
 | Reusable participation updates | [Reviewed routine, complete queries and real no-op proof](#reviewed-routine-participation-batch) |
@@ -40,6 +41,51 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 New Jersey complete native PDF measures
+
+All21latest county files declared by the official periodic-report directory
+were acquired through the shared stop-aware client and pinned individually.
+Their58pages contain86reviewed numerical grids,1,472source records and
+15,766measure cells. Preserve source/retrieval/filename clocks separately:
+several Nov12filenames contain earlier printed clocks; Morris also includes
+older administrative schemas. Cape May's ten-page appendix is an actual
+contest/statistics summary, not an administrative time series.
+
+Shared processing source3901e61 preserves original/reading coordinates,
+nonzero origins/crops/rotations, explicit blanks/zeros, absent columns,
+native negative entries and literal geographic labels. Independent
+pdfminer/pdfplumber decoding agrees on15,410encoded numerical cells.
+Sussex's348image cells are separately visually reviewed transcription;
+239on-device OCR numeric tokens agree and municipal controls match.
+No encoded text or zero values are invented for the scanned original.
+
+All1,428within-report checks remain downloadable, including19cross-level
+control differences;140additional missing/unqualified comparisons are
+excluded, not interpreted as zero. Bergen's repeated county control was
+equality-checked. Keep Salem's same-clock content conflicts and Morris's
+issued-versus-eligible provisional definitions and overlapping units.
+SVRS receipts, issued/tallied/pending mail, eligible provisional ballots and
+machine counts do not share an interchangeable voter/population frame.
+
+Cape May's native statistics report42,442ballots and76,899registered voters,
+with55.19%printed registration-frame participation. Its House choices total
+41,957and68overvotes+417undervotes reconcile to42,442. Reporting remains
+incomplete/unofficial; no eligible-population, unique-voter, certification,
+individual stay-home, precinct geometry or statewide aggregate is inferred.
+
+Immutable release443806852/tag `participation-nj-native-measures-20261113-01`:
+all eight assets verified in full while authenticated/draft and anonymously
+after publication. Complete1,268,193-byte packet SHA256
+`ac8bfa0fad2b8ddf32091e2b6d795b71664f46b087c0bb5b1740f198c3d2e1b1`;
+two fresh extractions each pass23tests and reproduce all three full numerical
+outputs with network/DNS/child commands blocked and probed. Public replay
+starts from complete permitted factual grids, not original-template
+re-extraction; unnecessary staff contacts/templates are not redistributed.
+[Full numerical downloads](docs/DATA.md#new-jersey-complete-native-tables-integration-pending).
+Current website/model data and study weights are unchanged; actual binding
+and combined-source estimation remain required. The declared OKportal's
+actual403remains a persistent STOP, not a reason to try another client.
 
 ## Recorded House counts versus behavioral eligibility
 
