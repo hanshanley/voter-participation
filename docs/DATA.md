@@ -8,6 +8,40 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current webforms-source automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/02e314a2fbdd5f8cb187c5970e54c712060e45ae/snapshots/8b3f43499cef833222611b83901fbbbf668f2d4a72a30e151a2ea7ed5297efe2/complete-results.zip) is **29,995,981 bytes**,
+SHA256 `da8379c0c9683e8e3667b6246c38c1daa1e33a5fe57932270f55f00bccc59d6a`. It includes all51 jurisdiction decisions, complete
+selected permitted facts and14 outputs, accepted baselines, code, tests and
+checksums. Actual anonymous fresh-extraction replay:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete automatic runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-3f7b9c5f3817f9c8a4242e9c78bfa5aa606e67b07ef33a27952af78e6eacdf20/complete-analysis.zip) is
+**174,463,206 bytes**, SHA256 `5212851d66c9b09a8f1c53a23efadc186802dc787e13e8240a8195e488f47c26`.
+The server-immutable archive nests the ENTIRE source packet and actual preceding
+rolling seed, complete before/after count/native datasets, allnine model cases
+and every numerical query. Actual anonymous fresh-extraction replay:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both use Python3.9+ and the existing requests dependency, reproducing14/113
+outputs with zero requests. Complete permitted numerical facts are included;
+publisher presentation templates and private respondents/histories/identifiers/
+fine cells are excluded. Replay does not re-extract excluded HTML, perform OCR
+or refit surveys. Every older full source/runtime download below is retained.
+
+The NE/SD increment refreshes1,415/669 appearances, preserves159 existing county
+parents and holds two ambiguous SD units. Native state/unit discrepancies and
+missing source clocks remain explicit, with no new rate or boundary approval.
+[Actual complete acceptance](../data/participation-access/20261114-native-webforms-automatic-intake-01/acceptance.json) and
+[all51 decisions](../data/participation-access/20261114-native-webforms-automatic-intake-01/observations.json) retain the wider gaps.
+
+
 ## Current summary-source automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/2b809f5ddfd0abbf37dd0a4cad8a70de2e9652c5/snapshots/82353e90a0e33d2b2c6187dbbf021b8c16a4a0c8b1afebe5bf3798213b596efd/complete-results.zip) is

@@ -54,6 +54,21 @@ cd code
 python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_nationwide.py tests/test_current.py
 ```
 
+## Verified webform-source delivery
+
+Actual collector43650846819 at producer `f19ea9c9` reported
+allthree reviewed NE/SD products; consumer43651334289 activated
+runtime `3f7b9c5f` using the unchanged website engine. Source
+14-output/runtime113-output fresh public offline replays and all306 live reader
+frames pass. Every2,086 NE/SD unit selection is checked at desktop/mobile, with
+two ambiguous SD rows retained. Missing clocks are not retrieval timestamps;
+159 pre-existing county parents remain unchanged. No new rates, fits or joins.
+[Complete outcomes and acceptance](../data/participation-access/20261114-native-webforms-automatic-intake-01/acceptance.json) and
+[both full downloads](DATA.md#current-webforms-source-automatic-intake) govern
+this increment. Older hosted examples below are historical, not nationwide
+county/precinct-completeness claims.
+
+
 ## What updates automatically
 
 Actual hosted acceptance at producer `ed0f48d` (collector43641019948) refreshed

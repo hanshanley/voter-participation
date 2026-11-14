@@ -13,6 +13,43 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Current Nebraska and South Dakota automatic intake
+
+Shared producer `f19ea9c9` passed actual collector43650846819;
+the existing website consumer `48539315` activated runtime
+`3f7b9c5f` in job43651334289. No website-source
+change or Pages rebuild was needed: all12 runtime engine bodies were unchanged.
+The hosted run refreshed10,674 record appearances across12 states,
+including1,415 Nebraska and669 South Dakota appearances. These are not new
+people or disjoint geographies; all51 jurisdiction decisions remain explicit.
+
+Nebraska's TURN and PREC products retain separate144/1,271 accepted unit rows.
+Both native tables contain1,415 physical rows
+versus1,322 printed reporting units; the
+514,523 unit-count sum is not substituted for the
+775,942 state
+parent. South Dakota retains671 physical rows, but two same-county
+Sacred Heart Church Hall labels remain ambiguous and unrefreshed. Existing
+93 Nebraska and66 South Dakota county parents are unchanged, never fabricated
+from unit sums. Native missing clocks stay unknown; prior accepted clocks are
+retained separately for rollback rejection, including repeat captures.
+
+The complete source14-output and runtime113-output public downloads replay
+offline with zero requests. Actual desktop/mobile checks pass all306 reader
+frames, every2,086 NE/SD source-row selection per viewport (including both held
+rows), both NM/MN native maps and allnine model controls. The maintained153-test
+and canonical159-test suites pass with11/9 optional private-original skips.
+An independent reader checked all3,501 retained physical rows. No new rates,
+survey fits, weights, boundaries or33-directional/17-held comparisons were
+promoted. Earlier Hawaii/King metadata and historical-context repairs survive.
+
+[Complete state/source decisions](data/participation-access/20261114-native-webforms-automatic-intake-01/observations.json),
+[actual acceptance](data/participation-access/20261114-native-webforms-automatic-intake-01/acceptance.json) and
+[both complete downloads](docs/DATA.md#current-webforms-source-automatic-intake)
+record the scope. Broader nationwide county/precinct, historical, model and
+boundary gaps remain open; the full audit THEN beautification remain pending.
+
+
 ## Current summary-source automatic delivery
 
 Producer `bebd78db` and collector43649316665 feed consumer `48539315` and
