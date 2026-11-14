@@ -8,6 +8,7 @@ and survey estimates.
 [Open the explorer](https://www.themarginoferror.com/voter-participation/) |
 [Estimation methods](METHODOLOGY.md) |
 [Complete downloads](docs/DATA.md) |
+[Automatic 2026 intake](docs/RESULTS_INTAKE.md) |
 [Reproduce an analysis](docs/REPRODUCING.md)
 
 ## How the estimates work

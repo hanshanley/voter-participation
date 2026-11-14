@@ -20,13 +20,16 @@ from .contract import IntakeError, VERSION, digest, encoded, observation_id, pin
 
 
 class AllowedRedirect(urllib.request.HTTPRedirectHandler):
-    def __init__(self, hosts):
+    def __init__(self, hosts, access_guard=None):
         self.hosts = set(hosts)
+        self.access_guard = access_guard
 
     def redirect_request(self, request, response, code, message, headers, url):
         target = urllib.parse.urlparse(url)
         if target.scheme != "https" or target.hostname not in self.hosts:
             raise IntakeError("unapproved_redirect", "Source redirect left its registered public hosts")
+        if self.access_guard is not None:
+            self.access_guard(url)
         return super().redirect_request(request, response, code, message, headers, url)
 
 
@@ -63,7 +66,7 @@ class Store:
                     temporary.unlink(missing_ok=True)
         return path
 
-    def acquire(self, description, supplied=None, *, response_trace=None):
+    def acquire(self, description, supplied=None, *, response_trace=None, access_guard=None):
         if response_trace is not None:
             response_trace.clear()
         url = description["url"]
@@ -78,6 +81,8 @@ class Store:
                 raise IntakeError("source_input_missing", "Supplied original is unavailable: " + str(supplied)) from error
             self.object(body)
             return body, dict(url=url, origin="supplied_original", **pin(body))
+        if access_guard is not None:
+            access_guard(url)
         existing = self.db.execute("SELECT sha,etag,modified,stopped FROM inputs WHERE url=?", (url,)).fetchone()
         if description.get("stopped") or existing and existing[3]:
             raise IntakeError("source_stopped", "Recorded access hold; no retry/client/cache/mirror bypass: " + url)
@@ -86,7 +91,7 @@ class Store:
             headers["If-None-Match"] = existing[1]
         if existing and existing[2]:
             headers["If-Modified-Since"] = existing[2]
-        opener = urllib.request.build_opener(AllowedRedirect(hosts))
+        opener = urllib.request.build_opener(AllowedRedirect(hosts, access_guard))
         try:
             with opener.open(urllib.request.Request(url, headers=headers), timeout=90) as response:
                 body = response.read()
