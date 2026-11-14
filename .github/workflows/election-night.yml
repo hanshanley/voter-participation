@@ -1,127 +1,85 @@
-name: Update election results
+name: Recover already collected summary originals
 
 on:
-  schedule:
-    - cron: "23 * * * *"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: election-night-participation
+  group: summary-cache-diagnostic
   cancel-in-progress: false
 
 jobs:
-  refresh:
+  inspect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
-      - name: Limit automatic collection to this election
-        id: window
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-        run: |
-          python - <<'PY'
-          import os
-          from datetime import datetime, timezone
-          now = datetime.now(timezone.utc)
-          active = os.environ["EVENT_NAME"] == "workflow_dispatch" or (
-              datetime(2026, 11, 3, tzinfo=timezone.utc) <= now <
-              datetime(2027, 2, 1, tzinfo=timezone.utc)
-          )
-          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
-              output.write(f"active={str(active).lower()}\n")
-          PY
-
-      - name: Checkout the intake tool and complete baseline only
-        if: steps.window.outputs.active == 'true'
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
-          ref: main
+          ref: 6b624362bc4d4a8b2fbad3b2a94a05bfe06a06ae
           sparse-checkout: |
             scripts
-            tests
             data/results-intake
-
-      - name: Set up Python
-        if: steps.window.outputs.active == 'true'
-        uses: actions/setup-python@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-
-      - name: Install existing intake dependencies
-        if: steps.window.outputs.active == 'true'
-        run: python -m pip install 'requests>=2.31' 'pytest>=8' 'xlrd>=2' 'pypdf>=4' 'PyMuPDF>=1.23' 'rapidocr-onnxruntime==1.4.4'
-
-      - name: Test source identities, stops, complete queries and publication
-        if: steps.window.outputs.active == 'true'
-        run: python -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_nationwide.py tests/test_current.py
-
-      - name: Reuse conditional HTTP cache
-        if: steps.window.outputs.active == 'true'
-        uses: actions/cache@v5
+      - run: python -m pip install 'requests>=2.31' 'pypdf>=4'
+      - uses: actions/cache/restore@v5
         with:
           path: ${{ runner.temp }}/election-intake/cache
-          key: election-intake-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: election-intake-
-
-      - name: Collect independent House and participation results
-        if: steps.window.outputs.active == 'true'
-        id: capture
-        continue-on-error: true
-        run: |
-          python -m scripts.results_intake collect \
-            --registry data/results-intake/registry.json \
-            --work-dir "$RUNNER_TEMP/election-intake"
-
-      - name: Publish valid results or preserve new access stops
-        id: publication
-        if: always() && steps.window.outputs.active == 'true' && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure')
-        run: |
-          python -m scripts.results_intake publish \
-            --work-dir "$RUNNER_TEMP/election-intake" \
-            > "$RUNNER_TEMP/election-intake/publication.json"
-
-      - name: Write current-results summary
-        if: always() && steps.window.outputs.active == 'true'
+          key: election-intake-43644313766-1
+          fail-on-cache-miss: true
+      - name: Inspect exact already-collected bodies without source requests
         run: |
           python - <<'PY'
-          import json, os
+          import io, json, os
           from pathlib import Path
-          report = Path(os.environ["RUNNER_TEMP"]) / "election-intake/report.json"
-          publication = report.with_name("publication.json")
-          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as out:
-              if report.exists():
-                  data = json.loads(report.read_bytes())
-                  out.write("# Current election results\n\n")
-                  out.write(f"Jurisdictions: {data['jurisdictions']}. ")
-                  out.write(f"House districts with available returns: {data['house_districts_available']}")
-                  out.write(f"/{data['house_districts_declared']}.\n\n")
-                  body = publication.read_bytes() if publication.exists() else b""
-                  status = json.loads(body)["status"] if body else "not completed"
-                  out.write(f"Data publication: **{status}**. ")
-                  out.write("On successful publication, `results-data/latest.json` pins the ")
-                  out.write("immutable complete queries and reproducible ZIP.\n\n")
-                  out.write("Counting completeness is not certification. Candidate votes are not ballots. ")
-                  out.write("New source layouts remain explicit review items; failed sources retain prior data.\n")
-              else:
-                  out.write("Intake failed. Last valid results remain active; inspect the retained report.\n")
+          import socket
+          from pypdf import PdfReader
+          from scripts.results_intake import baseline_inputs
+          from scripts.results_native import source_plan, summary_statistics, SUMMARY_PROFILES
+          from scripts.participation_intake.contract import encoded, pin
+          def deny(*args, **kwargs):
+              raise AssertionError("Diagnostic must not acquire sources")
+          socket.socket = socket.create_connection = socket.getaddrinfo = deny
+          registry = Path("data/results-intake/registry.json")
+          config = json.loads(registry.read_bytes())
+          baseline = baseline_inputs(registry.parent / config["baseline"]["root"], config["baseline"])
+          selected = {
+              "cch": ("7102a5a55fe0b12b25c5b3569603b2c3825b0a6876874ef5ccab216ef5135296", 23908),
+              "coh": ("29743dbcba7a18bf3cf5ba0229a3b097316f4f7cc9dd735a50aa3c930277c0a6", 9441),
+              "cok": ("dd8e88d93fb7da8c4e78fea291270071d5e3e2c33d38f8a2f2d32badc2c113e7", 8592),
+              "com": ("0bb3d2fc122afbe65ffc71289acc53e0ef1a802ab7448a80501c1e1e60220d55", 15082),
+          }
+          cache = Path(os.environ["RUNNER_TEMP"]) / "election-intake/cache/objects"
+          output = Path(os.environ["RUNNER_TEMP"]) / "summary-cached-originals"
+          output.mkdir()
+          report = {}
+          for identity, source in source_plan(baseline)["HI"].items():
+              if source["adapter"] != "reviewed_summary_statistics":
+                  continue
+              url = source["url"]
+              name = url.rsplit("/", 1)[1].removesuffix(".pdf")
+              sha, size = selected[name]
+              body = (cache / sha).read_bytes()
+              assert pin(body) == {"bytes": size, "sha256": sha}
+              (output / (name + ".pdf")).write_bytes(body)
+              pages = [page.extract_text(extraction_mode="layout") for page in PdfReader(io.BytesIO(body)).pages]
+              (output / (name + ".txt")).write_text("\f".join(pages))
+              try:
+                  result = summary_statistics(body, source["templates"], SUMMARY_PROFILES[url])
+                  report[name] = {"passed": True, "updates": len(result["updates"])}
+              except Exception as error:
+                  report[name] = {"passed": False, "error_type": type(error).__name__, "error": str(error)}
+              report[name].update(source=pin(body), source_url=url)
+          assert set(report) == set(selected)
+          (output / "diagnostic.json").write_bytes(encoded(
+              {"source_requests": 0, "exact_cache_key": "election-intake-43644313766-1", "reports": report}))
+          print(json.dumps(report))
           PY
-
-      - name: Retain the report and complete numerical package
-        if: always() && steps.window.outputs.active == 'true'
-        uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v6
         with:
-          name: election-results-${{ github.run_id }}
-          if-no-files-found: warn
-          retention-days: 30
-          path: |
-            ${{ runner.temp }}/election-intake/report.json
-            ${{ runner.temp }}/election-intake/source-stops.json
-            ${{ runner.temp }}/election-intake/publication.json
-            ${{ runner.temp }}/election-intake/complete-results.zip
-
-      - name: Fail visibly if collection did not finish
-        if: always() && steps.window.outputs.active == 'true' && steps.capture.outcome == 'failure'
-        run: exit 1
+          name: summary-cached-originals
+          retention-days: 7
+          path: ${{ runner.temp }}/summary-cached-originals
