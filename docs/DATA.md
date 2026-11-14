@@ -8,6 +8,38 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current South Carolina and Alabama native counts
+
+The current corrected release is immutable444853341,
+`participation-native-declarations-20261113-02`. All49 assets have full
+authenticated-draft and anonymous-public byte verification. The earlier-01
+release is retained; its UF county selections were superseded, not its source
+numbers silently repaired.
+
+| Complete download | Contents |
+|---|---|
+| [Complete analysis and offline replay](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-analysis.zip) |31,514,328 bytes/157 members; complete permitted inputs, all51 baselines, code, tests, every query and all source SDKs |
+| [Alabama county source SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-source-packet-al-native-counties.zip) |4,561,646 bytes/23 members; standalone complete county-query reproduction |
+| [Alabama reporting-column SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-source-packet-al-native-units.zip) |5,129,729 bytes/23 members; all1,195 source reporting rows, zeros and withheld geography/rates |
+| [South Carolina state-only SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-source-packet-sc-native-state.zip) |44,298 bytes/21 members; native state total, components and retained qualifications |
+| [Every asset checksum](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-asset-manifest.json) | Full inventory, including201,186 native Alabama source-cell queries and complete selected county/unit/state JSON queries |
+
+Archive SHA256
+`a65c30689a71ac06a7353f2638eea7566d0bd78fb6f5ee9407fe6d0cb79d03a4`.
+Two97-test/57-output isolated network/DNS/child-blocked replays match every
+output and all three SDK bytes; each SDK separately reproduces its full query.
+The actual canonical code also passes the full reproduction.
+Original publisher HTML/BIFF/PDF templates and private person records are not
+redistributed. The public replay starts from complete permitted selected
+facts, not a claim to re-decode excluded templates.
+
+SC2,054,835 is native reported participation, with no supplied exact active
+register or count-update clock. AL38 county values are complete source-column
+sums;29 older counties remain, no common new state total or new unit polygons.
+The binding correction makes all four modes select the same38 successor
+sources without changing any source number, weight or modeled mean.
+[Full scope and live evidence](../SOURCES.md#2026-south-carolina-and-alabama-native-source-counts).
+
 ## Current House model sensitivity and disclosure replay
 
 This package projects the **three existing public aggregate profile products**

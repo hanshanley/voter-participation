@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current SC/AL administrative counts | [South Carolina state-only participation and Alabama corrected all-mode source selections](#2026-south-carolina-and-alabama-native-source-counts) |
 | Current House-model disclosures | [Same-group variant sensitivity, exact versions and conditioned totals](#current-house-model-disclosures-and-variant-sensitivity) |
 | Current Texas county expansion | [Eight direct counted-ballot additions, native discrepancies and typed source dates](#2026-texas-eight-native-county-reconciliations) |
 | Current Missouri native additions | [Boone/Cole Ballots Cast, Cole reporting rows and explicitly reviewed county context](#2026-missouri-boone-and-cole-native-statistics) |
@@ -57,6 +58,55 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 South Carolina and Alabama native source counts
+
+The supplied all-state directory was conditionally reviewed without retrying
+stopped routes. Its complete51-jurisdiction dispositions remain in the
+[complete numerical delivery](docs/DATA.md#current-south-carolina-and-alabama-native-counts).
+New scientific sourceb837ce2 and reviewed selection correction0fd3fee are
+published and canonically persistent. Immutable release444853341/-02 retains
+all49 complete assets; the earlier444825497/-01 remains historical.
+
+South Carolina directly reports **2,054,835 Total Voter Turnout**:
+1,043,810 early +44,167 absentee +966,858 ElectionDay. These are native
+reported-participation counts, not a candidate sum or independently deduplicated
+people. Printed59.8% concerns active registrations, but its exact stock/cutoff
+is absent. Neither November12 publication nor reported November11 certification
+is a count-update clock. Printed mode percentages50.8/2.1/47.0 and their rounding
+inconsistency remain unrepaired. This state-only observation supplies no local
+county/precinct counts, demographic turnout or new behavioral identification.
+
+Alabama's38 published BIFF county workbooks supply1,195 named statistical
+columns and201,186 complete source-cell queries. County values are explicitly
+derived complete source-column sums, not printed county parents or a new
+common statewide total. The29 other county observations retain their older
+sources. All67 county selections remain available; all1,195 source rows are
+unmapped, with four actual zeros preserved and analytical rates/denominators/
+count clocks withheld. Candidate/choice cells never replace native statistical
+counts. Both decoding paths use xlrd and are not independent decoders; all38
+native workbooks contain zero formula records.
+
+Actual production QA caught an initial binding defect: the UF views selected
+older duplicate county exports while available/official selected38 successors.
+The reviewed generic correction pins whole equivalent old records and every
+mode/partition occurrence, retains those aliases, and changes exactly76 UF
+selection IDs plus the corrected package links. **Baldwin is86,472 in all four
+modes**, not the stale86,040. No numerical source value was changed by this
+binding correction, and ordinary refresh/publication baseline guards remain.
+
+Counts917e37ec are live at catalogaf7a497e; nativeb2, model33, weights, House
+endpoints,33/17 qualification and every other dataset entry are unchanged.
+Both isolated97-test/57-output replays, three standalone SDKs, actual canonical
+97-test/full-output replay and all31,835 client records/306 frames pass.
+Real desktop/mobile checks verify all67 counties in all four modes, source
+identities/clocks/stocks,1,195-row inventories, zeros and both full ZIP hashes.
+Website4274's source-label deployment has an actual997,319,458-byte payload/
+999,915,520-byte tar; the later correction is data-only. The approved independent
+gallery withdrawal is preserved. See the [complete scientific record](data/participation-access/20261113-native-declarations-02/observations.json)
+and [live acceptance](data/participation-access/20261113-native-declarations-02/website-acceptance.json).
+This is not nationwide precinct completion; the regional integrations and final
+audit/beautification remain separate work.
 
 ## Current House-model disclosures and variant sensitivity
 

@@ -13,6 +13,39 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Current SC/AL counts are live; continue the regional integration
+
+South Carolina's native2,054,835 Total Voter Turnout is now a separate state-only
+observation. Exact active-registration stock and count-update clock remain
+unknown; no local observations or demographic turnout are inferred.
+Alabama adds38 complete source-column county sums and1,195 unmapped reporting
+rows, retaining29 older county observations and four genuine zero rows.
+Native percentages/source anomalies remain unrepaired; no new common Alabama
+state total, analytical denominator/rate, House endpoint, source fit or weight.
+
+Production QA found and fixed stale county aliases in both UF views:
+Baldwin now86,472 in every mode instead of86,040 in those older exports.
+Generic reviewed alias binding retains all originals, pins complete occurrences
+and refuses conflicting records, duplicate selections and rate promotion.
+Source0fd3fee, immutable444853341/-02 and live counts917e37ec/catalogaf7a497e
+are persistent. Both full97-test/57-output blocked replays, three SDKs and
+actual canonical reproduction pass. Real desktop/mobile all67x4 county
+selections/source identities/inventories/zeros/full ZIP hashes pass; all51
+jurisdictions, nativeb2, model33, means, weights and33/17 House gates survive.
+See [source scope](SOURCES.md#2026-south-carolina-and-alabama-native-source-counts)
+and [complete downloads](docs/DATA.md#current-south-carolina-and-alabama-native-counts).
+
+Do not repeat accepted SC/AL acquisition, decoding, releases or site builds.
+The regional agent has privately rebased TX/Central/MI/CA/NM updates on917e;
+parent publication, atomic activation and actual live acceptance still remain.
+NM revision34's qualified numerator/clock update has passed the independent
+critic after complete county-ID binding and generic-contract fixes; delivery
+is still pending. No new private fit or change to accepted modeled means is
+authorized by those source updates. NE's registration/frame bridge stays held.
+Finish these genuine implementation prerequisites, then the requested full
+audit636 and beautification637. Do not equate complete jurisdiction decisions
+with complete nationwide precinct turnout or close unresolved source holds.
+
 ## Current House-model disclosures are live; source gaps remain
 
 The four independent-critic disclosure fixes659 are integrated without

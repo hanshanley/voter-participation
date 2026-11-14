@@ -1,0 +1,487 @@
+{
+  "actual_client_verification": {
+    "actual_al_unit_mode_cells": 4780,
+    "actual_production_browser": false,
+    "actual_sc_overall_label_preserves_native_measure": true,
+    "all_268_al_county_mode_records_exact": true,
+    "exact_sc_state_count": 2054835,
+    "jurisdictions": 51,
+    "no_source_data_dom_or_style_overrides": true,
+    "passed": true,
+    "reader_frames": 306,
+    "unqualified_precinct_geometry_and_rates_held": true,
+    "validated_records": 31835
+  },
+  "alabama": {
+    "analysis_denominators_and_rates_held": true,
+    "named_reporting_columns": 1195,
+    "native_source_cell_queries": 201186,
+    "new_county_source_column_sums": 38,
+    "new_precinct_geometry": false,
+    "no_new_common_statewide_total": true,
+    "older_counties_retained": 29,
+    "selected_counties": 67,
+    "source_count_update_clocks": null,
+    "true_zero_units": 4
+  },
+  "all_51_jurisdictions_retained": true,
+  "archive_scope": "Complete permitted factual inputs, code, tests, every query and all51 accepted baselines; original publisher HTML/BIFF/PDF templates and private person records are excluded.",
+  "candidate_verification": {
+    "actual_native_zero_selector_omission_rejected": true,
+    "all_51_jurisdictions": true,
+    "all_four_al_modes_select_exact_same_38_successors": true,
+    "all_source_column_sums_equal_selected_county_values": true,
+    "changed_rows": 1234,
+    "counts_version": "917e37ec2dd839bf89be88c6beafd17e884eecd79609e042003da7a1185f8bc6",
+    "county_geometry_measure_and_reference_qualifiers_unchanged": true,
+    "early_mail_rows_other_state_sources_and_lineage_preserved": true,
+    "newly_acquired_county_sources": 38,
+    "no_new_statewide_al_total_or_house_endpoint_or_model": true,
+    "older_counties_exact": 29,
+    "other_50_shards_byte_identical": true,
+    "passed": true,
+    "preservation_comparison_against_previous_live_version": {
+      "all_four_modes_select_same_new_38_county_sources": true,
+      "baldwin_count_in_all_four_modes": 86472,
+      "candidate_version": "917e37ec2dd839bf89be88c6beafd17e884eecd79609e042003da7a1185f8bc6",
+      "changed_observations": 1234,
+      "exactly_reviewed_uf_county_id_substitutions": 76,
+      "full_package_links_advanced_to": "participation-native-declarations-20261113-02",
+      "native_bindings_house_models_weights_and_other_50_jurisdiction_shards_unchanged": true,
+      "original_registered_stock_and_rate_and_geometry_qualifications_unchanged": true,
+      "passed": true,
+      "preserved_original_aliases": 38,
+      "previous_counts": "6c622c02c7afe94de9a592a5b7514846d4427be9973b2447bd90b731c9afb39c",
+      "retained_prior_release": "participation-native-declarations-20261113-01",
+      "source_numerical_values_changed": false,
+      "unchanged_other_view_selections_and_all_record_values": true,
+      "whole_project_complete": false
+    },
+    "prior_al_records_exact": 97,
+    "sc_denominator_rate_and_count_clock_unknown": true,
+    "sc_state_count": 2054835,
+    "true_zero_reporting_units": 4,
+    "unjoined_reporting_units": 1195
+  },
+  "catalog_commit": "af7a497e7227b42079cbbeb65d379ff199dfb401",
+  "complete_public_assets": [
+    {
+      "bytes": 1012,
+      "id": 745614316,
+      "name": "PUBLIC-SCOPE.txt",
+      "sha256": "04f44a9ee5e7e4e4117844b3b367904824f676fa6f042ebd6696b8c52c39d4f3",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/PUBLIC-SCOPE.txt"
+    },
+    {
+      "bytes": 421,
+      "id": 745614392,
+      "name": "actual-client-candidate-verification.json",
+      "sha256": "0f40e430f3f7d834b4671cbbff3ea5cdc4984eda504fa5ddbacf25fc905dbe78",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/actual-client-candidate-verification.json"
+    },
+    {
+      "bytes": 1242829,
+      "id": 745614330,
+      "name": "al-complete-native-factual-tables.json.gz",
+      "sha256": "513c2614cdcf00f2496278b0a5325122bc3508f8cb75f4bc6409c5b397bf64ef",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-complete-native-factual-tables.json.gz"
+    },
+    {
+      "bytes": 3633946,
+      "id": 745614354,
+      "name": "al-complete-native-source-cell-query.csv.gz",
+      "sha256": "0afecd680599cceb02bd591007e88fe3d1d6b48ab4fc8946831895ea07f3f719",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-complete-native-source-cell-query.csv.gz"
+    },
+    {
+      "bytes": 282605,
+      "id": 745614160,
+      "name": "al-complete-statistical-queries.json",
+      "sha256": "00960e44d7572b9ac1e38e6eac260c980e0b27d52945082a535bae36756cf469",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-complete-statistical-queries.json"
+    },
+    {
+      "bytes": 3633946,
+      "id": 745614190,
+      "name": "al-native-counties-complete_source_cells",
+      "sha256": "0afecd680599cceb02bd591007e88fe3d1d6b48ab4fc8946831895ea07f3f719",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-counties-complete_source_cells"
+    },
+    {
+      "bytes": 282605,
+      "id": 745614251,
+      "name": "al-native-counties-complete_statistical_queries",
+      "sha256": "00960e44d7572b9ac1e38e6eac260c980e0b27d52945082a535bae36756cf469",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-counties-complete_statistical_queries"
+    },
+    {
+      "bytes": 1242829,
+      "id": 745614214,
+      "name": "al-native-counties-facts",
+      "sha256": "513c2614cdcf00f2496278b0a5325122bc3508f8cb75f4bc6409c5b397bf64ef",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-counties-facts"
+    },
+    {
+      "bytes": 25465,
+      "id": 745614408,
+      "name": "al-native-counties-recipe",
+      "sha256": "8cde05c940cc0ebc90016e5ac6d5cbbf7ca38e3d66c0a557874aafc4fc168453",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-counties-recipe"
+    },
+    {
+      "bytes": 791011,
+      "id": 745614350,
+      "name": "al-native-counties-snapshot",
+      "sha256": "35171d7c4692e32b489cf70510c90cde5375a935a330b75f44e462d4933f9870",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-counties-snapshot"
+    },
+    {
+      "bytes": 1022,
+      "id": 745614363,
+      "name": "al-native-counties-source_qualification",
+      "sha256": "018256a7d1675ff275d216f7a28e9fd3c884156e512863bd2ab1c74ce0eb9f55",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-counties-source_qualification"
+    },
+    {
+      "bytes": 25465,
+      "id": 745614328,
+      "name": "al-native-source-recipe.json",
+      "sha256": "8cde05c940cc0ebc90016e5ac6d5cbbf7ca38e3d66c0a557874aafc4fc168453",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-source-recipe.json"
+    },
+    {
+      "bytes": 3633946,
+      "id": 745614400,
+      "name": "al-native-units-complete_source_cells",
+      "sha256": "0afecd680599cceb02bd591007e88fe3d1d6b48ab4fc8946831895ea07f3f719",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-units-complete_source_cells"
+    },
+    {
+      "bytes": 282605,
+      "id": 745614181,
+      "name": "al-native-units-complete_statistical_queries",
+      "sha256": "00960e44d7572b9ac1e38e6eac260c980e0b27d52945082a535bae36756cf469",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-units-complete_statistical_queries"
+    },
+    {
+      "bytes": 1242829,
+      "id": 745614368,
+      "name": "al-native-units-facts",
+      "sha256": "513c2614cdcf00f2496278b0a5325122bc3508f8cb75f4bc6409c5b397bf64ef",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-units-facts"
+    },
+    {
+      "bytes": 25465,
+      "id": 745614339,
+      "name": "al-native-units-recipe",
+      "sha256": "8cde05c940cc0ebc90016e5ac6d5cbbf7ca38e3d66c0a557874aafc4fc168453",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-units-recipe"
+    },
+    {
+      "bytes": 11757731,
+      "id": 745614393,
+      "name": "al-native-units-snapshot",
+      "sha256": "124ab86473481d45615dd296b69df8d397cf2024a1990b4c41e2cd12d6f49903",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-units-snapshot"
+    },
+    {
+      "bytes": 1022,
+      "id": 745614301,
+      "name": "al-native-units-source_qualification",
+      "sha256": "018256a7d1675ff275d216f7a28e9fd3c884156e512863bd2ab1c74ce0eb9f55",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/al-native-units-source_qualification"
+    },
+    {
+      "bytes": 7146,
+      "id": 745614162,
+      "name": "all-51-jurisdictions.json",
+      "sha256": "8d9d501f90d3de3e3052d38c30bd24452607221bbcc9bdb9f94dcf064360842f",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/all-51-jurisdictions.json"
+    },
+    {
+      "bytes": 65491,
+      "id": 745614304,
+      "name": "all-51-source-declarations.json",
+      "sha256": "876232212accbbeed9e07f87c8a0f12f639966ece1d16534e0bdacf393600473",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/all-51-source-declarations.json"
+    },
+    {
+      "bytes": 5029,
+      "id": 745614369,
+      "name": "biff-formula-audit.json",
+      "sha256": "8337d8e131c36b5e52a3ac985147ee5444380db64cdffe0e808f1134e5f27265",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/biff-formula-audit.json"
+    },
+    {
+      "bytes": 1845,
+      "id": 745614221,
+      "name": "candidate-verification.json",
+      "sha256": "078521c54b60c7dc776f58287517e9399d91ba3554d2f8f3c7a32af4c1317902",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/candidate-verification.json"
+    },
+    {
+      "bytes": 4902,
+      "id": 745614275,
+      "name": "complete-al-county-count-comparison.json",
+      "sha256": "276540ff4eb89be0895069128a32e12479fb5b6c352e0130d5f89b79a72a1bdb",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-al-county-count-comparison.json"
+    },
+    {
+      "bytes": 31514328,
+      "id": 745614285,
+      "name": "complete-analysis.zip",
+      "sha256": "a65c30689a71ac06a7353f2638eea7566d0bd78fb6f5ee9407fe6d0cb79d03a4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-analysis.zip"
+    },
+    {
+      "bytes": 7067,
+      "id": 745614249,
+      "name": "complete-asset-manifest.json",
+      "sha256": "fafd5b9eb060505fca944811a7ce7ec9c2450baa1d6c68203283f7a253dd96c4",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-asset-manifest.json"
+    },
+    {
+      "bytes": 791011,
+      "id": 745614317,
+      "name": "complete-canonical-queries-al-native-counties.json",
+      "sha256": "35171d7c4692e32b489cf70510c90cde5375a935a330b75f44e462d4933f9870",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-canonical-queries-al-native-counties.json"
+    },
+    {
+      "bytes": 11757731,
+      "id": 745614262,
+      "name": "complete-canonical-queries-al-native-units.json",
+      "sha256": "124ab86473481d45615dd296b69df8d397cf2024a1990b4c41e2cd12d6f49903",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-canonical-queries-al-native-units.json"
+    },
+    {
+      "bytes": 21122,
+      "id": 745614396,
+      "name": "complete-canonical-queries-sc-native-state.json",
+      "sha256": "fc8e505d546ecb156d8b67eba3f7882d495c1b421817ca7c3998e694e3541c00",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-canonical-queries-sc-native-state.json"
+    },
+    {
+      "bytes": 315,
+      "id": 745614159,
+      "name": "complete-source-dispositions.json",
+      "sha256": "73685d9d13d2359ecbe6c937b45e34cd9ec615d21191e87c3ae1114151ac9423",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-source-dispositions.json"
+    },
+    {
+      "bytes": 4561646,
+      "id": 745614215,
+      "name": "complete-source-packet-al-native-counties.zip",
+      "sha256": "119d3398526f8351dfe2e8a35a780771f8f939acffbc52336a092d1922d2d75e",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-source-packet-al-native-counties.zip"
+    },
+    {
+      "bytes": 5129729,
+      "id": 745614187,
+      "name": "complete-source-packet-al-native-units.zip",
+      "sha256": "40c119f6a59f9b79ed60f2d276fee4663796f0099d80708db20af8ca331ffd73",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-source-packet-al-native-units.zip"
+    },
+    {
+      "bytes": 44298,
+      "id": 745614361,
+      "name": "complete-source-packet-sc-native-state.zip",
+      "sha256": "f383c1ad6131ee93717e665a97df7d0be06897cc731007a4fd0dabb2528df478",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-source-packet-sc-native-state.zip"
+    },
+    {
+      "bytes": 4231528,
+      "id": 745614161,
+      "name": "complete-source-registry.json",
+      "sha256": "548f288f17c49355fd37dd98a12a1cbdeeefe6dc3fa13ba98d51970afc4fd88d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/complete-source-registry.json"
+    },
+    {
+      "bytes": 243,
+      "id": 745614180,
+      "name": "conditional-source-summary.json",
+      "sha256": "8c0e46661b22e880b9611d1c0d801df5563a38394c13eec1ccbd2a3952bd9472",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/conditional-source-summary.json"
+    },
+    {
+      "bytes": 2026,
+      "id": 745614380,
+      "name": "independent-critic-review.json",
+      "sha256": "79e78cd3d5e7f3f48d40e8685022ec84c7e53a33079b7c979639a3a4681e18f7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/independent-critic-review.json"
+    },
+    {
+      "bytes": 2053,
+      "id": 745614208,
+      "name": "new-declared-product-access.json",
+      "sha256": "4c437a88d9f3b63d35d48d49bf894f8ab173d6c331445e19e6065c8cfaeffc6a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/new-declared-product-access.json"
+    },
+    {
+      "bytes": 2885,
+      "id": 745614309,
+      "name": "offline-replays.json",
+      "sha256": "d619f41fedb6fe528510b0ec0a966d781a6c78ccf1eb56f84fa9e7f0889f13a1",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/offline-replays.json"
+    },
+    {
+      "bytes": 1128,
+      "id": 745614241,
+      "name": "sc-accounting-and-percentage-diagnostics.json",
+      "sha256": "49398e7b3cc3fc4698f13ed24730228b891be2f170282f4dc4567dc039554488",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-accounting-and-percentage-diagnostics.json"
+    },
+    {
+      "bytes": 1172,
+      "id": 745614196,
+      "name": "sc-complete-selected-statistic-queries.csv",
+      "sha256": "d521f92c083c008dad762a623f7edfd859930e3ab123437fbd3729e1e4d20599",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-complete-selected-statistic-queries.csv"
+    },
+    {
+      "bytes": 723,
+      "id": 745614325,
+      "name": "sc-independent-publication-access.json",
+      "sha256": "d0ebdeac4f803f1fd5d8633ed5c2a1f2b99b276c53d24f9f53a75a9ba5f543e6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-independent-publication-access.json"
+    },
+    {
+      "bytes": 1172,
+      "id": 745614335,
+      "name": "sc-native-state-complete_statistic_queries",
+      "sha256": "d521f92c083c008dad762a623f7edfd859930e3ab123437fbd3729e1e4d20599",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-native-state-complete_statistic_queries"
+    },
+    {
+      "bytes": 1128,
+      "id": 745614237,
+      "name": "sc-native-state-percentage_diagnostics",
+      "sha256": "49398e7b3cc3fc4698f13ed24730228b891be2f170282f4dc4567dc039554488",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-native-state-percentage_diagnostics"
+    },
+    {
+      "bytes": 2478,
+      "id": 745614410,
+      "name": "sc-native-state-recipe",
+      "sha256": "d2b66f3fedbccb3bf1f5b2d002dbfe6dc1def326d1771d343fe3a9c78f9de271",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-native-state-recipe"
+    },
+    {
+      "bytes": 21122,
+      "id": 745614230,
+      "name": "sc-native-state-snapshot",
+      "sha256": "fc8e505d546ecb156d8b67eba3f7882d495c1b421817ca7c3998e694e3541c00",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-native-state-snapshot"
+    },
+    {
+      "bytes": 5061,
+      "id": 745614351,
+      "name": "sc-native-state-statistics",
+      "sha256": "dba5e96a12be2bb21c5c3435025e5a90a49fd1370340c4ffe929a0d591a7ea73",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-native-state-statistics"
+    },
+    {
+      "bytes": 5061,
+      "id": 745614281,
+      "name": "sc-selected-statistics.json",
+      "sha256": "dba5e96a12be2bb21c5c3435025e5a90a49fd1370340c4ffe929a0d591a7ea73",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-selected-statistics.json"
+    },
+    {
+      "bytes": 2478,
+      "id": 745614211,
+      "name": "sc-source-recipe.json",
+      "sha256": "d2b66f3fedbccb3bf1f5b2d002dbfe6dc1def326d1771d343fe3a9c78f9de271",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/sc-source-recipe.json"
+    },
+    {
+      "bytes": 1165,
+      "id": 745614191,
+      "name": "source-compilation-manifest.json",
+      "sha256": "ae662b4b3ddcdcf17b1970a7f60710548a309cd7640661bfd523021e718efe6b",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/source-compilation-manifest.json"
+    },
+    {
+      "bytes": 1022,
+      "id": 745614164,
+      "name": "source-qualification.json",
+      "sha256": "018256a7d1675ff275d216f7a28e9fd3c884156e512863bd2ab1c74ce0eb9f55",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-declarations-20261113-02/source-qualification.json"
+    }
+  ],
+  "contract": "participation.native_declarations_delivery.v2",
+  "corrected_uf_mode_selection": {
+    "baldwin_all_four_modes": 86472,
+    "no_source_numerical_values_changed_by_binding_correction": true,
+    "ordinary_baseline_guards_preserved": true,
+    "previous_live_counts": "6c622c02c7afe94de9a592a5b7514846d4427be9973b2447bd90b731c9afb39c",
+    "previous_uf_alias_count": 86040,
+    "retained_original_alias_records": 38,
+    "reviewed_county_id_substitutions": 76
+  },
+  "counts_version": "917e37ec2dd839bf89be88c6beafd17e884eecd79609e042003da7a1185f8bc6",
+  "independent_critic": {
+    "agent_id": "1ef74af6-09a7-42c6-b5f7-003a09db2234",
+    "all_global_cross_partition_duplicate_guards_complete": true,
+    "passed": true,
+    "prior_native_source_semantic_review": {
+      "al_reporting_unit_columns": 1195,
+      "candidate_counts_version": "6c622c02c7afe94de9a592a5b7514846d4427be9973b2447bd90b731c9afb39c",
+      "governing_preparation": "prepared-03",
+      "independently_exercised_leading_nonzero_rebound_bound_rejected": true,
+      "independently_exercised_leading_nonzero_unchanged_bound_rejected": true,
+      "independently_exercised_leading_zero_rebound_bound_rejected": true,
+      "independently_exercised_leading_zero_unchanged_bound_rejected": true,
+      "native_percentages_and_discrepancies_unrepaired": true,
+      "newly_selected_al_county_sources": 38,
+      "passed": true,
+      "prior_al_counties_preserved": 29,
+      "prior_left_truncation_blocker_closed": true,
+      "prior_omitted_zero_selector_blocker_closed": true,
+      "publication_or_live_production_assessed": false,
+      "remaining_actual_source_or_data_blockers": [],
+      "reviewed_first_data_column": 4,
+      "reviewer_agent": "1ef74af6-09a7-42c6-b5f7-003a09db2234",
+      "sc_denominator_and_count_update_clock_remain_unknown": true,
+      "sc_native_total_voter_turnout": 2054835,
+      "scope": "SC/AL native source facts, count-only semantics and complete-column sum guards",
+      "whole_project_complete": false
+    },
+    "retained_aliases_and_unchanged_views_tested": true,
+    "review_turn": 13,
+    "reviewed_files": {
+      "scripts/participation_batch.py": {
+        "bytes": 48280,
+        "sha256": "852b723a4f7b54e320738a71053c982847c09d8a1772d968b5b7be75f85d23de"
+      },
+      "tests/test_participation_batch.py": {
+        "bytes": 68722,
+        "sha256": "0a811576b8515ea1c1fbf862586e0e810476cccae830f718565a35d6727c82e2"
+      }
+    },
+    "scope": "Independent review of reviewed alias selection and regressions, not live production approval",
+    "updated_target_denominator_and_rate_refusals_tested": true,
+    "whole_records_and_complete_occurrences_pinned": true
+  },
+  "no_new_house_endpoint_or_source_fit_or_weights_or_modeled_means": true,
+  "reviewed_alias_correction_source": "0fd3fee94b906b43558a5f915e7fa736ea68e718",
+  "scientific_source_commit": "b837ce2cb8018a013d2cab7315ed6b55ce6e7f28",
+  "south_carolina": {
+    "absentee": 44167,
+    "count_update_clock": null,
+    "early": 1043810,
+    "election_day": 966858,
+    "exact_active_registration_denominator": null,
+    "native_printed_pct": "59.8%",
+    "native_total_voter_turnout": 2054835,
+    "printed_mode_percentages": [
+      "50.8",
+      "2.1",
+      "47.0"
+    ],
+    "printed_percentage_inconsistency_unrepaired": true,
+    "state_only_not_county_or_precinct_observations": true
+  },
+  "website_source": "4274b3401c204c22fe83ccd0559e1fed0a5eacdf",
+  "whole_project_complete": false
+}
