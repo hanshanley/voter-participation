@@ -51,6 +51,32 @@ def oe_sources(row):
 
 
 class HistoricalNativeCountsTests(unittest.TestCase):
+    def test_grouped_native_integer_retains_upstream_flag_and_independent_native_match(self):
+        row = oe()
+        row.update(votes="1,054", vote_count_status="noninteger_native_literal")
+        fields = json.loads(row["native_fields_json"])
+        fields["values"][4] = "1,054"
+        row["native_fields_json"] = json.dumps(fields)
+        result = project(row, "openelections-statewide", oe_sources(row))
+        self.assertEqual(result["count"]["value"], 1054)
+        self.assertEqual(result["count"]["status"], "reported")
+        self.assertEqual(result["count"]["upstream_source_status"], "noninteger_native_literal")
+        self.assertEqual(result["source"]["native_fields"], fields)
+        fields["values"][4] = "1,055"
+        row["native_fields_json"] = json.dumps(fields)
+        with self.assertRaisesRegex(ValueError, "disagree"):
+            project(row, "openelections-statewide", oe_sources(row))
+
+    def test_format_review_does_not_promote_unknown_suppressed_fraction_or_malformed_grouping(self):
+        for literal, status in (
+                ("1,054", "unknown"), ("1,054", "suppressed"),
+                ("1120.5", "noninteger_native_literal"),
+                ("1,05,4", "noninteger_native_literal")):
+            with self.subTest(literal=literal, status=status):
+                result = native_count(literal, status)
+                self.assertIsNone(result["value"])
+                self.assertEqual(result["literal"], literal)
+
     def test_exact_zero_unknown_and_noninteger_remain_distinct(self):
         self.assertEqual(native_count("0", "reported")["value"], 0)
         self.assertEqual(native_count("1,234.0", "reported")["value"], 1234)

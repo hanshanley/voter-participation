@@ -37,6 +37,10 @@ def file_pin(path):
 
 
 def native_count(literal, status):
+    upstream_status = None
+    if status == "noninteger_native_literal" and re.fullmatch(
+            r"\d{1,3}(?:,\d{3})+(?:\.0+)?", literal, re.ASCII):
+        upstream_status, status = status, "reported"
     if status != "reported":
         return {"value": None, "status": "unknown" if status == "unknown" else "withheld",
                 "literal": literal, "source_status": status}
@@ -46,8 +50,12 @@ def native_count(literal, status):
         value = Decimal(literal.replace(",", ""))
     except InvalidOperation as error:
         raise ValueError("Invalid reported administrative count") from error
-    return {"value": count(int(value)), "status": "reported", "literal": literal,
-            "source_status": status}
+    result = {"value": count(int(value)), "status": "reported", "literal": literal,
+              "source_status": status}
+    if upstream_status:
+        result["source_status"] = "reported_comma_grouped_native_integer"
+        result["upstream_source_status"] = upstream_status
+    return result
 
 
 def native_field(fields, aliases):
