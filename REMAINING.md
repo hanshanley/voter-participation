@@ -8,10 +8,35 @@ nonparticipation and new/returning-voter estimates, then their tested integratio
 into the existing project. Do not stop at an inventory or another audit.
 
 The single assistant continuation runs every **45 minutes**
-(schedule 124; schedules 123, 122 and earlier continuations are stopped).
+(schedule 125; schedules 124, 123, 122 and earlier continuations are stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
+
+## Nationwide misleading-swing correction verified live
+
+The shared correction is live at website `93a80186`: all 50 states use the same
+comparability rule, with 33 directional comparisons and 17 neutral, hatched holds.
+Massachusetts is not displayed as a Republican preference swing. Positive
+incompatible comparisons, including Texas, receive the same hold. Raw totals and
+arithmetic remain available in closed diagnostics, the 50-row no-JavaScript table
+and complete existing downloads; genuine qualified negatives are never sign-filtered.
+
+The independent source audit passed 6,016 checks across 50 states, 435 districts,
+1,401 candidates and all nine profile/family cases, with no additional high-confidence
+source or numerical error found. This is scoped computational source review, not
+human/blind validation or certification of election completeness. The actual
+desktop/mobile production checks pass all 100 state selections, 306 map values,
+204 preserved modeled-comparison values, failure clearing/recovery and no-JS.
+The actual native artifact fits both unchanged size limits and retains 436 old
+download pins. All source counts, fits, probabilities and weights are unchanged.
+
+[Full per-state/district findings and live acceptance](data/participation-access/20261114-nationwide-swing-correction-01/acceptance.json)
+are persisted. The broader automatic source-to-website/model pipeline remains
+unfinished and unpublished: rolling last-good seeds, real mapped/table coherence,
+complete extracted replay, workflow delivery and actual production propagation
+must pass before it is called automatic. Final full audit THEN beautification
+remain queued after substantive remaining work.
 
 ## Automatic current-results intake delivered; source gaps remain
 

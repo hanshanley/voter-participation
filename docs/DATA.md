@@ -8,6 +8,18 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Nationwide swing-comparison audit
+
+The correction changes display eligibility, not numerical results. All existing
+complete scientific ZIPs and 50-state JSON/CSV exports below remain unchanged.
+Raw arithmetic is not automatically a comparable preference swing.
+[Full acceptance and audit scope](../data/participation-access/20261114-nationwide-swing-correction-01/acceptance.json),
+[complete 50-state queries](../data/participation-access/20261114-nationwide-swing-correction-01/per-state-findings.json),
+[complete 435-district queries](../data/participation-access/20261114-nationwide-swing-correction-01/district-findings.json),
+[all nine family/profile checks](../data/participation-access/20261114-nationwide-swing-correction-01/family-association-cases.json)
+and [source/input pins](../data/participation-access/20261114-nationwide-swing-correction-01/INPUT-PINS.json)
+are available as full JSON, not replacements for the original numerical packages.
+
 ## Automatic current results
 
 The [current `results-data` pointer](https://raw.githubusercontent.com/hanshanley/voter-participation/results-data/latest.json)

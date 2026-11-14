@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Nationwide swing correction | [All-state source audit and neutral comparison holds](#nationwide-house-display-comparability-correction) |
 | Automatic current-results intake | [Hourly GitHub updates, retained source dates and complete numerical queries](#2026-automatic-current-results-intake) |
 | Current Tennessee/Montana native observations | [Three county reports, 57 table-only reporting rows and complete numerical SDKs](#2026-tennessee-and-montana-partial-native-participation) |
 | Current Kansas official source observation | [Greeley source-reported turnout, explicit partial coverage and complete replay](#2026-kansas-greeley-official-source-turnout) |
@@ -74,6 +75,32 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Nationwide House display comparability correction
+
+Website `93a8018683cd8fd319c8318104e27c3e5ca283fa` is actual-native and production
+verified. The default map uses 33 supported directional comparisons; all 17
+incompatible comparisons are neutral/hatched, regardless of sign. Raw arithmetic
+is retained under **Raw source arithmetic - not a comparable swing**, in the
+complete 50-state no-JS table and in every original full export. No source count,
+sign, model fit or weight was repaired to obtain a preferred political direction.
+
+An independent read-only audit passed 6,016 checks across 50 states, 435 districts,
+1,401 candidates and all nine cases. It found no additional high-confidence source,
+candidate-accounting, qualification or numerical defect. This scoped check is not
+independent administrative outcome validation, source reacquisition or a guarantee
+that every project gap is resolved.
+
+[Complete audit and acceptance](data/participation-access/20261114-nationwide-swing-correction-01/acceptance.json),
+[all 50 state findings](data/participation-access/20261114-nationwide-swing-correction-01/per-state-findings.json)
+and [all 435 district findings](data/participation-access/20261114-nationwide-swing-correction-01/district-findings.json)
+retain exact counts, comparison reasons and source clocks. Both actual viewport
+checks cover all states, share/margin units, selection, model failure/recovery and
+no-JavaScript. Both embedded numerical payloads, 213 saved rows, 3,341 link occurrences,
+276 anchor occurrences and 436 complete downloads remain intact. The actual deployed
+artifact is independently bound to its successful CI source and verified full bytes;
+unrelated UK/congressional updates are separately source-pinned, not overwritten.
+Automatic website/model delivery remains a separate unfinished implementation.
 
 ## 2026 automatic current-results intake
 
