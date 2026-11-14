@@ -8,7 +8,60 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current regional native counts and map bindings
+
+Immutable release **444945203**, `participation-native-regional-merge-20261113-03`,
+contains exactly two new assets. Both have full authenticated-draft and
+anonymous-public body verification; all93 assets in five earlier dependency
+releases retain their original identities, sizes and digests.
+
+| Complete download | Contents |
+|---|---|
+| [Full sufficient-fact analysis](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-regional-merge-20261113-03/native-regional-merge-20261113-03-complete-sufficient-facts.zip) |161,578,808 bytes/223 members; complete permitted source facts, all51 baseline jurisdictions and decisions, all regional queries, code, tests, outputs and nested SDKs |
+| [Shared-routine standalone SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-native-regional-merge-20261113-03/complete-analysis.zip) |87,841,022 bytes; exact95 selected inputs, complete queries/withholdings, constrained compiler and offline reproduction |
+
+Full sufficient-fact SHA256:
+`0b287d7e18c635c0b9b28b59695ba7db161d516e4e68010d75353b89061a4217`.
+Standalone SDK SHA256:
+`fe0fce9731e120fcb33dd4ca685ec8c6cdebe7ead84740cbf5d180ce7bfc2076`.
+The corrected31,514,328-byte SC/AL baseline package is nested intact.
+Two isolated replays with hash seeds29/83 reproduce all92 outputs and the
+whole SDK byte-for-byte; fresh extracted-SDK execution uses its own reproduction
+command with network/DNS/child guards blocked and probed. Public reproduction
+starts from complete permitted sufficient facts; excluded publisher HTML/PDF
+templates and private respondents/individual histories are not redistributed.
+
+Runtime counts `b21e7c22` and native `b591e846` activate together in catalog
+`b2d439b7360ad3e301d885779559776281ae6b12`. Seven state successors preserve
+the other44 state shards, all51 jurisdiction decisions, earlier historical
+downloads and all source holds. The full-package coverage link is now live
+in website `a3af4c49`: all four county/precinct links at1440/390 are visible,
+historical scope clears the current link, and both actual full ZIP bodies
+match the bytes and SHA256 above. The first missing-global-link failure is
+retained; no source/DOM/style override is used to pass the final checks.
+
+Actual final acceptance also verifies all51/306 reader frames per width,
+220 county/mode selections,430 source-detail selections and every count/
+registration/rate tuple on the2,177 NM map shapes, plus both real415/672
+polygon selections. Artifact14095221200 is997,322,442 payload/999,915,520 tar
+bytes below1e9, with31 exact served bodies. All436 earlier download pins and
+113 original publication entries remain;115 actual asset bodies are hashed
+across35 native members and80 immutable/commit-pinned linked assets.
+The canonical source fixes pass11 regressions without resetting canonical
+HEADs/indexes or replacing unrelated older renderer code.
+[Full actual acceptance](../data/participation-access/20261114-native-regional-03/website-acceptance.json).
+
+Texas11/254 counties and243 unknowns, Michigan's80 QVF activity selections,
+Nebraska's nonadditive state/reporting frames, and New Mexico's1,208 bound/
+969 unknown existing map shapes remain explicitly qualified. CA/NE model
+controls are not promoted; separately delivered NM revision34 preserves
+the existing fitted means and weights. There is no new behavioral fit or
+observed individual switching/staying-home inference from this count release.
+[Detailed source scope](../SOURCES.md#2026-regional-native-counts-and-new-mexico-map-bindings).
+
 ## Current South Carolina and Alabama native counts
+
+Historical acceptance receipt, retained by the regional successor above.
 
 The current corrected release is immutable444853341,
 `participation-native-declarations-20261113-02`. All49 assets have full

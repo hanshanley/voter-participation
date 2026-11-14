@@ -1,6 +1,6 @@
 # Voter-participation source ledger
 
-Last reviewed: 2026-11-13 UTC.
+Ledger updated: 2026-11-14 UTC. Source-specific clocks remain as recorded.
 
 **Start here:** [Overview](README.md) | [Estimation methods](METHODOLOGY.md) |
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current regional counts and map bindings | [Seven-state successors, full numerical packages and retained model-frame holds](#2026-regional-native-counts-and-new-mexico-map-bindings) |
 | Current SC/AL administrative counts | [South Carolina state-only participation and Alabama corrected all-mode source selections](#2026-south-carolina-and-alabama-native-source-counts) |
 | Current House-model disclosures | [Same-group variant sensitivity, exact versions and conditioned totals](#current-house-model-disclosures-and-variant-sensitivity) |
 | Current Texas county expansion | [Eight direct counted-ballot additions, native discrepancies and typed source dates](#2026-texas-eight-native-county-reconciliations) |
@@ -58,6 +59,81 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 regional native counts and New Mexico map bindings
+
+The shared routine's source `8c422c9` and immutable release **444945203**,
+`participation-native-regional-merge-20261113-03`, retain complete permitted
+inputs, code, tests, every query and all withholding decisions. Both new assets
+have authenticated-draft and anonymous-public full-body verification. Five older
+immutable releases and all93 dependency assets retain their exact IDs, sizes,
+digests and URLs; unchanged dependencies were not uploaded again.
+[Complete packages and reproduction](docs/DATA.md#current-regional-native-counts-and-map-bindings).
+
+Counts `b21e7c22` and native bindings `b591e846` were activated together in
+catalog `b2d439b7360ad3e301d885779559776281ae6b12`, after87 anonymous immutable
+file checks. All51 jurisdictions remain; the other44 state shards, including
+the accepted SC/AL and corrected IN/KS selections, are byte-identical.
+
+| State | Qualified change and limits |
+|---|---|
+| CA | Native county aggregate12,898,770; the native measure is not automatically unique voters, counted ballots or a qualified model control |
+| MI |80 selected county QVF activity observations; all83 source rows retained; not tabulator ballots or deduplicated people; Bay/Isabella/Wayne alternative totals held |
+| MO | Platte County45,223; original counting scope, unknown analytical denominator and source clock retained |
+| NE | State767,046;144 new selected reporting units sum511,037; the256,009 difference is not an accounting closure or inferred missing voters |
+| NM | State731,491 with source registration1,469,718; existing2,177 shapes now carry1,208 bound counts and969 unknowns; six analytical rates remain held |
+| TX | Tarrant734,929 and Bexar672,231 counted ballots; coverage11/254 counties, with243 unknown rather than zero |
+| WI | Walworth46,612, Oconto18,982 and Dunn19,896;67 additional source reporting rows remain table-only, not invented precinct geography |
+
+The Nebraska state and reporting frames are not additive or complete against
+each other. Its source registration1,265,162 differs from the model's1,265,022;
+the140 difference does not establish a compatible cutoff/status bridge.
+NE and CA model-control changes remain held. New Mexico's separately reviewed
+native-reference revision34 is already live and persistent: the qualified
+731,209-to731,491 numerator/clock/diagnostic update preserves registration,
+priors, fitted means, probabilities and weights. This regional delivery adds
+no further fit or behavioral change. Hancock IN and all five Harvey KS facts
+remain source-detail-only, not duplicate selected counties.
+
+The display-compatibility repair fills missing metadata on1,487 rows, including
+complete factual-package links for216 new and1,271 retained Nebraska rows.
+Its71 electorate labels explicitly say the analytical denominator is withheld
+or not supplied; no denominator value, rate, native clock, geometry, existing
+nonnull source link or source fact is changed by that repair. A separate generic
+renderer fix exposes supplied complete packages on legacy rows without adding
+fake review IDs. All430 actual MO/WI/NE detail/link checks pass at both widths.
+
+The first broad live test caught a missing coverage-panel link after its
+numerical and New Mexico polygon checks; that failure is retained, not waived.
+The generic current-scope download fix is now live in website `a3af4c49`,
+after feature43547427334/main43547527468 guards and actual Pages43547527463.
+Artifact14095221200 contains997,322,442 payload/999,915,520 tar bytes, both below
+1e9; all31 served bodies match. All436 earlier download pins remain exact.
+Every one of115 published asset bodies is hashed:35 native and80 linked
+immutable/commit-pinned bodies; all113 original publication entries match the
+frozen inputs. The local-versus-CI generated preview difference is separate
+from those original scientific inputs.
+
+Actual final desktop/mobile acceptance passes all51/306 reader frames per
+width,220 county/mode selections,430 MO/WI/NE detail/link selections and every
+count/registration/rate attribute on all2,177 NM shapes. Both real polygon
+clicks select415/672 with the literal11/12/2026 11:07 AM MT clock. The current
+full161,578,808-byte ZIP hashes correctly at both widths. All four county/
+precinct package links are visible; historical scope clears the current link.
+No source-data, DOM or style override is used, all browsers close, and actual
+responsive images are reviewed. Maintained16 reader tests, Astro check/full
+build, six independent site contracts and canonical11 regressions pass.
+The older canonical renderer receives only its four-line legacy-link fix;
+its unrelated code and all protected canonical HEADs/indexes remain intact.
+No science refit, release replacement or second data activation was needed.
+[Full observations](data/participation-access/20261114-native-regional-03/observations.json)
+and [actual live acceptance](data/participation-access/20261114-native-regional-03/website-acceptance.json).
+
+These are administrative observations, not identified switching, new voters
+or staying-home counts. Texas's recorded+11.97610548 Democratic two-party-share
+points equal+23.95221096 D-R margin points and remain unchanged; the33 qualified/
+17 held behavioral comparisons remain separate. Older acceptance sections below
+retain their original version-specific scope, superseded by this current entry.
 
 ## 2026 South Carolina and Alabama native source counts
 

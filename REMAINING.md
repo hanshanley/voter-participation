@@ -1,6 +1,6 @@
 # Remaining work: participation and election-transition estimates
 
-Updated: 2026-11-13 UTC. Source catalog: [SOURCES.md](SOURCES.md).
+Updated: 2026-11-14 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 **The project is not finished when the files are downloaded.** Acquisition and
 reconciliation must feed the participation, switching, modeled/reported
@@ -13,7 +13,61 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Regional counts and complete downloads are live; continue genuine gaps
+
+The reviewed seven-state successor is now atomically active:
+catalog `b2d439b7360ad3e301d885779559776281ae6b12`,
+counts `b21e7c22`, native `b591e846`. All87 immutable file checks pass;
+the other44 state shards and all other catalog entries remain exact.
+Texas now has11/254 direct counted-ballot counties, not the older9/254.
+New Mexico's existing2,177 shapes have1,208 bound counts,969 unknowns and
+six held rates; no new geometry or fabricated local demographic estimates.
+The80 selected Michigan QVF observations are source-defined activity, not
+tabulator ballots or deduplicated people. NE's reporting subtotal is not closure.
+
+Immutable444945203 provides the full161,578,808-byte sufficient-fact package
+and87,841,022-byte standalone SDK. Both92-output blocked replays and genuine
+extracted-SDK execution pass; all51 jurisdiction decisions and earlier source
+packages remain included. Scientific source8c422c9 and its73 maintained plus
+73 actual canonical tests are persistent. Do not rerun this accepted scientific
+campaign or refit the unchanged NORC observations for activity.
+
+The real coverage-panel download defect is fixed, not waived. Website
+`a3af4c49` passes both source guards and actual Pages43547527463; artifact
+14095221200 has997,322,442 payload/999,915,520 tar bytes below1e9. All31 live
+bodies,436 old download pins and113 original publication entries are preserved;
+all115 actual published asset bodies are hashed (35 native+80 linked).
+Actual final tests at1440/390 pass all51/306 reader frames per width,220
+county/mode selections,430 MO/WI/NE source details, every2,177 NM map tuple,
+both real415/672 polygon clicks, visible county/precinct package links,
+historical-link clearing and both complete161,578,808-byte ZIP hashes.
+No data/DOM/style overrides or browser errors; all browsers close.
+The source fix is separately critic-approved;16 reader tests, Astro check,
+the frozen-input build's six independent contracts and actual canonical11
+regressions pass. Canonical coverage files equal the published source;
+the deliberately older renderer retains only the four-line legacy-link
+addition, preserving unrelated code and protected HEADs/indexes.
+Keep the first failed proof as history; do not repeat this accepted release,
+scientific replay, data activation or site-build campaign.
+
+New Mexico native-reference revision34 is already live and persistent;
+older wording below that called it delivery-pending is superseded. The narrow
+qualified numerator/clock/diagnostic update changes no prior, fitted mean,
+probability or weight. CA and NE control changes remain held without a proven
+frame bridge. NE's140 registration difference is not new voters or a warrant
+to transport a stock. No new individual switching/stay-home identification
+follows from additional administrative count snapshots.
+
+Continue genuine all-state compatible joint-source, population/frame and local
+coverage gaps after this delivery. Keep all source-access stops and complete
+query downloads. Do not manufacture county/precinct estimates or close blocked
+source holds to unlock the requested full audit636 and then beautification637.
+See [current scope](SOURCES.md#2026-regional-native-counts-and-new-mexico-map-bindings)
+and [complete packages](docs/DATA.md#current-regional-native-counts-and-map-bindings).
+
 ## Current SC/AL counts are live; continue the regional integration
+
+Historical acceptance receipt, retained by the regional successor above.
 
 South Carolina's native2,054,835 Total Voter Turnout is now a separate state-only
 observation. Exact active-registration stock and count-update clock remain
@@ -35,16 +89,9 @@ jurisdictions, nativeb2, model33, means, weights and33/17 House gates survive.
 See [source scope](SOURCES.md#2026-south-carolina-and-alabama-native-source-counts)
 and [complete downloads](docs/DATA.md#current-south-carolina-and-alabama-native-counts).
 
-Do not repeat accepted SC/AL acquisition, decoding, releases or site builds.
-The regional agent has privately rebased TX/Central/MI/CA/NM updates on917e;
-parent publication, atomic activation and actual live acceptance still remain.
-NM revision34's qualified numerator/clock update has passed the independent
-critic after complete county-ID binding and generic-contract fixes; delivery
-is still pending. No new private fit or change to accepted modeled means is
-authorized by those source updates. NE's registration/frame bridge stays held.
-Finish these genuine implementation prerequisites, then the requested full
-audit636 and beautification637. Do not equate complete jurisdiction decisions
-with complete nationwide precinct turnout or close unresolved source holds.
+Do not repeat accepted SC/AL acquisition, decoding or releases. The regional
+successor above preserves these observations and corrected selections.
+Complete jurisdiction decisions are not complete nationwide precinct turnout.
 
 ## Current House-model disclosures are live; source gaps remain
 

@@ -1,0 +1,219 @@
+{
+  "all_51_jurisdictions_retained": true,
+  "all_other_counts_models_weights_and_prior_downloads_retained": true,
+  "california_measure_not_promoted_to_unique_people_or_model_control": true,
+  "california_native_county_sum": 12898770,
+  "catalog_commit": "b2d439b7360ad3e301d885779559776281ae6b12",
+  "changed_jurisdictions": [
+    "CA",
+    "MI",
+    "MO",
+    "NE",
+    "NM",
+    "TX",
+    "WI"
+  ],
+  "changed_state_shard_records_by_state": {
+    "CA": 59,
+    "MI": 80,
+    "MO": 1,
+    "NE": 145,
+    "NM": 2238,
+    "TX": 2,
+    "WI": 70
+  },
+  "complete_numerical_downloads_not_replaced_by_this_record": true,
+  "complete_release": {
+    "activation_go": false,
+    "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+    "asset_count": 2,
+    "assets": [
+      {
+        "bytes": 87841022,
+        "id": 745974187,
+        "name": "complete-analysis.zip",
+        "server_digest": "sha256:fe0fce9731e120fcb33dd4ca685ec8c6cdebe7ead84740cbf5d180ce7bfc2076",
+        "sha256": "fe0fce9731e120fcb33dd4ca685ec8c6cdebe7ead84740cbf5d180ce7bfc2076",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-regional-merge-20261113-03/complete-analysis.zip"
+      },
+      {
+        "bytes": 161578808,
+        "id": 745974186,
+        "name": "native-regional-merge-20261113-03-complete-sufficient-facts.zip",
+        "server_digest": "sha256:0b287d7e18c635c0b9b28b59695ba7db161d516e4e68010d75353b89061a4217",
+        "sha256": "0b287d7e18c635c0b9b28b59695ba7db161d516e4e68010d75353b89061a4217",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-regional-merge-20261113-03/native-regional-merge-20261113-03-complete-sufficient-facts.zip"
+      }
+    ],
+    "catalog_activation_attempts": 0,
+    "contract": "participation.release_publication_go.v3",
+    "id": 444945203,
+    "immutable": true,
+    "ne_ui_historical_wording_preserved": true,
+    "passed": true,
+    "production_certified": false,
+    "publication_attempts": 1,
+    "release_publication_go": true,
+    "source_commit": "8c422c9ee664942b21e6447cc9406f7f32e58b46",
+    "tag": "participation-native-regional-merge-20261113-03",
+    "website_commit": "8e5a386e8b01c926e04c20c56b838fb9234ac61e",
+    "whole_project_complete": false
+  },
+  "contract": "participation.native_regional_live_delivery.v1",
+  "counts_version": "b21e7c22d9196960139664537ae5047b7b9c312f54bb82fe37a3ce54882a6f2d",
+  "evidence_pins": {
+    "native-regional-live-delivery-20261113-01/activation-03/atomic-publication-result.json": {
+      "bytes": 3999,
+      "sha256": "6e9fad87f0093484de76aa3fa0bc4ac7fba16d397b4c3d4c115c204a8085f63d"
+    },
+    "native-regional-live-delivery-20261113-01/context/native-and-production-bytes.json": {
+      "bytes": 6279,
+      "sha256": "476a7c5ed80bf7963f91d2e8bebf8cc7c03b2d23271e9e205a37930e3ca5b5f7"
+    },
+    "native-regional-live-delivery-20261113-01/context/native-archived-model-bytes.json": {
+      "bytes": 38850,
+      "sha256": "fe75240f4f836365cabeb7e045fdedcd092de7661ac6fe57ec6a4eed8f3127b5"
+    },
+    "native-regional-live-delivery-20261113-01/production-regional-03b.json": {
+      "bytes": 23048,
+      "sha256": "23daa3eb59cc9d3a5f3090984796b720d0a113959b7060c50c16b2fe8c8f6c70"
+    },
+    "native-regional-live-delivery-20261113-01/production-source-views-03b.json": {
+      "bytes": 94066,
+      "sha256": "92b06babe0647db2c12375350eef0bb98d6d6b87ccea9ec7c95fef5a8eb5e647"
+    },
+    "native-regional-live-delivery-20261113-01/release-retention-independent-03.json": {
+      "bytes": 1034,
+      "sha256": "0e19427d187d64d46d51f2fd3acb311fea1eb70a1fdf7ad23d2111ea56b6817e"
+    },
+    "native-regional-live-delivery-20261113-01/renderer-canonical/final-acceptance.json": {
+      "bytes": 819,
+      "sha256": "69b3ca75604432272650df2471f8a77cdba721086cf7a4f4ba8aaecb5b1e49f9"
+    },
+    "native-regional-live-delivery-20261113-01/responsive-final-review-03.json": {
+      "bytes": 1130,
+      "sha256": "7b88c27c67f38f78ebc80a6ffc37620597dbada5405c4a398d41c6296d2e4942"
+    },
+    "participation-catalog-download-access-20261114-01/canonical-final-acceptance.json": {
+      "bytes": 778,
+      "sha256": "a1a5a193e1a671aa89173b95526a31171d0b69bbf0eed3252ee0f98c831c0c5d"
+    },
+    "participation-catalog-download-access-20261114-01/context/native-and-production-bytes.json": {
+      "bytes": 6279,
+      "sha256": "80b18f07a653b42ba99316e8e65c7dc1e61787a300562e0bf7a066aa9ba1c31b"
+    },
+    "participation-catalog-download-access-20261114-01/context/native-archived-model-bytes.json": {
+      "bytes": 38705,
+      "sha256": "56ed7bac98af39a8ce2b0f849810499ddf485193088e058659266c1e8dc0b490"
+    },
+    "participation-catalog-download-access-20261114-01/independent-accounting-review.txt": {
+      "bytes": 1533,
+      "sha256": "dfc27af430cc4de4f60426b3ccefc3a09e78296d75c1ae219b583d7a0f1baae4"
+    },
+    "participation-catalog-download-access-20261114-01/production-download-links.json": {
+      "bytes": 1699,
+      "sha256": "7455ae39d26ab9dfd88f78836b514bbc10f5500d6317dca50b80ad3335bb04ab"
+    }
+  },
+  "genuine_holds": [
+    "California and Nebraska model/control changes remain held.",
+    "New Mexico revision34 is already live and preserved; new03 adds no fit, mean, probability or weight change.",
+    "Indiana Hancock and all five Kansas Harvey facts remain source-detail only.",
+    "Michigan Bay, Isabella and Wayne alternatives remain unselected.",
+    "Nebraska unit subtotal remains non-closure to the state frame.",
+    "Oklahoma remains withheld.",
+    "Texas source conflicts and unknowns remain unrepaired and explicitly qualified."
+  ],
+  "house_behavioral_comparisons": {
+    "held": 17,
+    "qualified": 33
+  },
+  "indiana_hancock_and_all_five_kansas_harvey_facts_source_detail_only": true,
+  "michigan_alternatives_held": [
+    "Bay",
+    "Isabella",
+    "Wayne"
+  ],
+  "michigan_complete_qvf_source_rows": 83,
+  "michigan_measure": "Source-defined QVF recorded total, not tabulator ballots or deduplicated people",
+  "michigan_selected_qvf_counties": 80,
+  "native_version": "b591e8463d144c6968ed15664e703ec530a8fcb4f8c4747f3e1499a27852d2d2",
+  "nebraska": {
+    "difference_not_accounting_closure": 256009,
+    "model_control_change": false,
+    "native_registration": 1265162,
+    "native_state_count": 767046,
+    "new_selected_reporting_units": 144,
+    "prior_model_registration": 1265022,
+    "registration_cutoff_status_bridge_qualified": false,
+    "selected_reporting_unit_subtotal": 511037
+  },
+  "new_mexico": {
+    "additional_model_fit_mean_probability_or_weight_change": false,
+    "bound_map_shapes": 1208,
+    "count_bindings_changed": 697,
+    "existing_map_shapes": 2177,
+    "geometry_changed": false,
+    "held_rates": 6,
+    "native_reference_revision_34_already_live_and_preserved": true,
+    "native_registration": 1469718,
+    "native_state_count": 731491,
+    "registration_bindings_changed": 988,
+    "table_reporting_units": 2204,
+    "unknown_map_shapes": 969
+  },
+  "new_selected_county_facts": {
+    "MO": {
+      "Platte": 45223
+    },
+    "TX": {
+      "Bexar": 672231,
+      "Tarrant": 734929
+    },
+    "WI": {
+      "Dunn": 19896,
+      "Oconto": 18982,
+      "Walworth": 46612
+    }
+  },
+  "no_preexisting_nonnull_basis_or_download_overwritten": true,
+  "other_44_state_shards_byte_exact": true,
+  "record_change_accounting": {
+    "changed_state_shard_records": 2595,
+    "counts_are_record_representations_not_unique_people_or_new_voters": true,
+    "new_metadata_rows_already_in_state_shard_changes": 216,
+    "refreshed_current_state_snapshot_representations": 2,
+    "retained_nebraska_link_metadata_only_rows": 1271,
+    "total_count_changed_rows": 3868
+  },
+  "recorded_texas_democratic_margin_swing_pp_unchanged": 23.95221096,
+  "recorded_texas_democratic_share_swing_pp_unchanged": 11.97610548,
+  "reproducibility": {
+    "all_outputs_byte_exact_per_replay": 92,
+    "hash_seeds": [
+      29,
+      83
+    ],
+    "network_dns_child_execution_blocked_and_probed": true,
+    "publisher_html_or_pdf_templates_redistributed": false,
+    "source_tests_maintained_and_canonical_each": 73,
+    "standalone_sdk_genuinely_extracted_and_executed": true
+  },
+  "scientific_source_commit": "8c422c9ee664942b21e6447cc9406f7f32e58b46",
+  "texas_counted_ballot_county_coverage": {
+    "known": 11,
+    "total": 254,
+    "unknown": 243
+  },
+  "view_metadata_compatibility": {
+    "existing_nonnull_basis_or_download_values_changed": 0,
+    "ne_total": 1416,
+    "new_integrated_rows_with_links": 216,
+    "new_mo_wi_rows": 71,
+    "new_ne_rows": 145,
+    "retained_ne_accepted_export_rows_missing_links": 1271,
+    "withheld_basis_labels_added": 71
+  },
+  "website_source_commit": "a3af4c49eb3e146881c86e21eb860f21d64eb8f6",
+  "whole_project_complete": false
+}
