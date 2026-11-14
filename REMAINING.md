@@ -13,6 +13,36 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Automatic current-results intake delivered; source gaps remain
+
+The latest human request for available results and a GitHub automatic intake
+tool is delivered. **Update election results** replaces the legacy research
+collector schedule: hourly at minute23 through January31,2027 UTC, plus manual
+dispatch. Actual run43606543817 at source`d62ee2fb` passed collection, tests,
+two-phase publication and full artifact upload. It is separate from the single
+45-minute assistant continuation and does not trigger a website build.
+
+The `results-data` branch now supplies all51 jurisdiction decisions, retained
+435-district/1,401-candidate House facts and complete existing local observations,
+with fresh source channels kept separate. The actual run reached20 official
+directories and Oregon's statewide feed. Oregon remains1,992,463 counted ballots
+and3,109,123 active registrations; its newer source clock is not new voters.
+The House declaration, provider capability feeds and AL/NC/ND live statistical
+routes are access-stopped; their last valid data are retained with original
+clocks, not advertised as newly retrieved. All143 durable route stops persist.
+
+[Complete results and instructions](docs/RESULTS_INTAKE.md) include11 full queries,
+the entire accepted all-state baseline, facts, code, tests and checksums. Every
+public body and the actual downloaded ZIP passed verification; its literal
+extracted command reproduces11 outputs offline. Shared compatibility:112 tests
+passed/two optional-fixture skips; actual GitHub tests35 passed/two skips.
+
+Newly declared unfamiliar state PDFs/spreadsheets still need source-specific
+scope/parser review. Automatic intake does not qualify every state as final,
+reconcile all precinct boundaries, refit behavioral models, or finish the
+requested final audit/beautification. Continue those substantive gaps, including
+the separate Maine source integration, without reopening this delivered tool.
+
 ## Tennessee/Montana partial native delivery complete; statewide gaps remain
 
 The coherent successor is live at website95e33a39, catalog518ec401 and count

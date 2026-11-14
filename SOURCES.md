@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Automatic current-results intake | [Hourly GitHub updates, retained source dates and complete numerical queries](#2026-automatic-current-results-intake) |
 | Current Tennessee/Montana native observations | [Three county reports, 57 table-only reporting rows and complete numerical SDKs](#2026-tennessee-and-montana-partial-native-participation) |
 | Current Kansas official source observation | [Greeley source-reported turnout, explicit partial coverage and complete replay](#2026-kansas-greeley-official-source-turnout) |
 | Mississippi publication hold | [Unverified declaration mapping; accepted-table projection not promoted](#2026-mississippi-absentee-product-authority-hold) |
@@ -73,6 +74,50 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 automatic current-results intake
+
+Source`d62ee2fb9d307d676c9513a3072c8f96149ba2c9` adds shared-Store-guarded
+`scripts.results_intake`/`results_house`, an all51 registry and pinned complete
+baseline. It preserves concurrent automatic snapshot`1bd8a926` unchanged.
+The existing research workflow is replaced, not duplicated: hourly at minute23
+through January31,2027 UTC, with manual dispatch. Actual GitHub run43606543817
+at that exact source completed successfully on November14,2026 at14:46:28UTC.
+Tests, collection, staged anonymous verification, activation and full artifact
+14118555563 all succeeded. Local affected/shared tests:112 passed/two skips;
+actual CI:35 passed/two optional-fixture skips.
+
+The resulting version is
+`99d3a448a80d581653766a079a95b32221289248e5f9152929c8e4cbd8e5eda4`,
+staged commit`760eae86a900003930151f5bd158d5b24db3212f`, activated on the
+independent `results-data` branch at`acb25c0ffd209914311fcdc182bedfdf8ad88e24`.
+All12 full public bodies were anonymously downloaded and hash-verified.
+The15,989,742-byte complete ZIP has SHA256
+`95a514a8b18cb1cc5ab7ae59bff014365d33d99eb58d575bd1e8751e069b8927`;
+its actual public download/extraction/literal replay reproduces all11 queries
+without source requests. Complete facts, baseline shards, qualification queries,
+processing code and tests are included, not metadata-only.
+
+Coverage includes all51 jurisdiction dispositions and retained435 House
+districts/1,401 candidate facts. The actual CI run successfully refreshed20
+official directories plus the Oregon statistical feed. Oregon counts remain
+1,992,463/3,109,123 active registrations; the source clock advanced without a
+numerical change. The House declaration, provider capabilities and AL/NC/ND
+statistical sources remain access-stopped. Their retained counts/clocks are not
+fresh retrievals or evidence of certification. Existing143 exact access stops,
+including race87098/87123/87495, survive fresh CI/cache state; no stopped source
+was retried through another client, alias or old capability declaration.
+
+The initial live run exposed string-valued accepted candidate counts; a strict
+integer conversion and regression repaired projection without source changes.
+The recovery reused permitted cached bodies and retained all new stops.
+Independent source failures cannot erase other results; partial district sets
+cannot yield falsely complete state sums. Newly declared unfamiliar layouts
+remain explicit scope/parser-review items. This tool changes no website catalog,
+geographic join, House behavioral gate, model fit or weight.
+
+See [operation and replay](docs/RESULTS_INTAKE.md), [complete download](docs/DATA.md#automatic-current-results),
+and [acceptance record](data/participation-access/20261114-automatic-results-01/acceptance.json).
 
 ## 2026 Tennessee and Montana partial native participation
 

@@ -8,6 +8,27 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Automatic current results
+
+The [current `results-data` pointer](https://raw.githubusercontent.com/hanshanley/voter-participation/results-data/latest.json)
+pins every full query and its immutable source commit. The first verified
+GitHub-run [complete numerical ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/760eae86a900003930151f5bd158d5b24db3212f/snapshots/99d3a448a80d581653766a079a95b32221289248e5f9152929c8e4cbd8e5eda4/complete-results.zip)
+is **15,989,742 bytes**, SHA256
+`95a514a8b18cb1cc5ab7ae59bff014365d33d99eb58d575bd1e8751e069b8927`.
+It includes11 complete queries, all51 accepted jurisdiction shards, selected
+facts, House controls/qualification flags, code, tests and checksums. Its actual
+anonymous download and extracted literal command reproduce every query:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+Requires Python3.9+ and the existing `requests` dependency. These are source
+snapshots, not all-final counts or new switching estimates. Live-source failures
+retain original count dates; all435 House snapshots are currently retained,
+not fresh House retrievals. [Hourly workflow, manual refresh and scope](RESULTS_INTAKE.md).
+Existing complete scientific downloads below remain unchanged.
+
 ## Tennessee and Montana partial native participation
 
 The current coherent all51 projection is the
