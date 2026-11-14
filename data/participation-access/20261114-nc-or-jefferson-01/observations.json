@@ -1,0 +1,194 @@
+{
+  "all_other_catalog_entries_preserved": {
+    "participation-historical-native-counts": "a8e917a7758dd094af52d7d445dd84de326e47bc4caddfc2376de5d4780059fe",
+    "resident-context": "55600f7238c96fc8c3c36b5a7470c70609cb3f5c6e0ce1789781059c41c3e0c4",
+    "source-native-la-early-group-data": "5e58886f44dd5968d3bc74a801898e86ab942c509200bf29392dac05727311c7",
+    "transition-scenarios-2026": "6d90035b93c21e859b8a5172b490628f460d9455b3a2db09f1cd7071fef2d24a"
+  },
+  "catalog_commit": "3e0e37b8635747f2c8dfe953478f52ce0924b084",
+  "complete_immutable_sdk_releases": [
+    {
+      "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+      "assets": [
+        {
+          "bytes": 41769394,
+          "id": 746809953,
+          "name": "complete-analysis.zip",
+          "sha256": "b76a5bab5d337c85052721bd17d5b4e81fc6cec265c447ff149236c489945eb7",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ky-jefferson-precinct-reference-20261114-01/complete-analysis.zip"
+        }
+      ],
+      "id": 445140564,
+      "immutable": true,
+      "passed": true,
+      "source_or_data_activation_or_website_builds": 0,
+      "tag": "participation-ky-jefferson-precinct-reference-20261114-01"
+    },
+    {
+      "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+      "assets": [
+        {
+          "bytes": 15734471,
+          "id": 746822805,
+          "name": "complete-analysis.zip",
+          "sha256": "f08cd25269fe2bd2fe5a053d34c372758d3f82a408b3bb3156d98aa9eecf6182",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-or-native-counts-20261114-01/complete-analysis.zip"
+        }
+      ],
+      "id": 445143216,
+      "immutable": true,
+      "passed": true,
+      "source_or_data_activation_or_website_builds": 0,
+      "tag": "participation-nc-or-native-counts-20261114-01"
+    },
+    {
+      "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+      "assets": [
+        {
+          "bytes": 20986248,
+          "id": 746823007,
+          "name": "complete-analysis.zip",
+          "sha256": "8d083f12ae2ed57326412bb81634260fa00cd118e97e6b1e55f09226c7b98b0c",
+          "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-or-native-controls-r35-20261114-01/complete-analysis.zip"
+        }
+      ],
+      "id": 445143258,
+      "immutable": true,
+      "passed": true,
+      "source_or_data_activation_or_website_builds": 0,
+      "tag": "participation-nc-or-native-controls-r35-20261114-01"
+    }
+  ],
+  "conditional_scenarios": 34,
+  "contract": "participation.native_reference_and_control_delivery.v1",
+  "counts_version": "7afe2ba0db377e8d5a81c8b82c0b124834f3b8b6c3cf1c48181c9e5e3a4bb8c7",
+  "full_downloads_not_replaced_by_this_record": true,
+  "house_comparison_held_states": 17,
+  "house_comparison_qualified_states": 33,
+  "local_reference": {
+    "all_native_reporting_units": 646,
+    "companion_map_date_assigned_to_geometry": false,
+    "companion_map_printed_date": "2026-11-07",
+    "county": "Jefferson",
+    "geometries_repaired_or_clipped": false,
+    "geometry_retrieved_at_utc": "2026-11-14T07:29:17.538470+00:00",
+    "held_reporting_labels": 117,
+    "legal_election_day_boundaries_certified": false,
+    "mapped_literal_rows": 529,
+    "native_zero_units_mapped": 18,
+    "native_zero_units_retained": 19,
+    "rates_electorate_unique_people_or_local_model_allocation_qualified": false,
+    "separate_reference_contract": "participation.reference_bindings.v1",
+    "source_observations_preserved_and_loaded_ky_shard_preimage_checked": true,
+    "state_code": "KY",
+    "suffix_normalization": false
+  },
+  "model_projection": {
+    "base_display": {
+      "bytes": 52061,
+      "sha256": "60d193a49e906833fac7ba66fcab232fe16508f22c2fa24301060d00614f6fa5"
+    },
+    "base_native_control_version": 34,
+    "candidate_model35_nm_predecessor_not_applied": true,
+    "count_sdk": {
+      "bytes": 15734471,
+      "sha256": "f08cd25269fe2bd2fe5a053d34c372758d3f82a408b3bb3156d98aa9eecf6182"
+    },
+    "house_models_families_probabilities_weights_changed": false,
+    "model35_public_outputs_verified": 25,
+    "model35_sdk": {
+      "bytes": 20986248,
+      "sha256": "8d083f12ae2ed57326412bb81634260fa00cd118e97e6b1e55f09226c7b98b0c"
+    },
+    "overlaid_state_codes": [
+      "NC",
+      "OR"
+    ],
+    "preserved_other_scenarios": 32,
+    "preserved_other_state_codes": 49,
+    "retained_current_nm_revision": true
+  },
+  "native_reference_changes": [
+    {
+      "conditional_modeled_nonvoter_unit_difference": "0",
+      "conditional_modeled_voter_unit_difference": "0",
+      "control_id": "reporting-NC",
+      "current_native_clock": "November 13, 2026 6:03 pm",
+      "current_native_minus_model_diagnostic": "-185252.4054021573736280934086815484799063789388426872888781066708664965385435648",
+      "current_native_numerator": 4242662,
+      "current_registered_denominator": 7885046,
+      "diagnostic_is_not_validated_model_error": true,
+      "kind": "reported_reference_fixed_register",
+      "native_numerator_difference": -518,
+      "previous_native_clock": "November 12, 2026 6:33 pm",
+      "previous_native_minus_model_diagnostic": "-184734.4054021573736280934086815484799063789388426872888781066708664965385435648",
+      "previous_native_numerator": 4243180,
+      "previous_registered_denominator": 7885046,
+      "registered_denominator_difference": 0,
+      "source_weights_probabilities_and_fits_unchanged": true,
+      "state_code": "NC"
+    },
+    {
+      "conditional_modeled_nonvoter_unit_difference": "-7.2583434105396445929494139050371908991348556720998441757069698683738492797",
+      "conditional_modeled_voter_unit_difference": "-14.7416565894603554070505860949628091008651443279001558242930301316261507203",
+      "control_id": "reporting-OR",
+      "current_native_clock": "11/13/2026 | 10:45 PM PT",
+      "current_native_minus_model_diagnostic": "-90883.5254723976629197881541513206327322336421906325534951553964514496639156968",
+      "current_native_numerator": 1992463,
+      "current_registered_denominator": 3109123,
+      "diagnostic_is_not_validated_model_error": true,
+      "kind": "registered_reference",
+      "native_numerator_difference": -26981,
+      "previous_native_clock": "11/13/2026 | 1:45 AM PT",
+      "previous_native_minus_model_diagnostic": "-63917.2671289871232751952047374155955413345073349604536509796894815812900664171",
+      "previous_native_numerator": 2019444,
+      "previous_registered_denominator": 3109145,
+      "registered_denominator_difference": -22,
+      "source_weights_probabilities_and_fits_unchanged": true,
+      "state_code": "OR"
+    }
+  ],
+  "native_revisions_identify_observed_switching_or_staying_home": false,
+  "native_version": "7e017f32899244774b175d7c96c77a25e53aa7bfaff1dba52c55c1a81f76d7a9",
+  "new_house_endpoint_or_family": false,
+  "permitted_native_aggregate_and_geometry_originals_included": true,
+  "priors_weights_probabilities_refitted": false,
+  "public_reproduction": {
+    "count_outputs_exact": 54,
+    "count_tests": 115,
+    "each_sdk_two_fresh_and_actual_public_download_replays": true,
+    "maintained_source_factual_outputs_exact": 7,
+    "maintained_source_tests": 23,
+    "model34_outputs_exact": 25,
+    "model35_outputs_exact": 25,
+    "model_tests": 19,
+    "process_local_api_guards_probed_not_os_sandbox": true,
+    "reference_factual_outputs_exact": 7,
+    "reference_node_tests": 10,
+    "reference_python_tests": 8,
+    "reference_runtime_outputs_exact": 36
+  },
+  "publisher_html_pdf_images_templates_private_respondents_and_estimators_excluded": true,
+  "retained_native_reference_changes": [
+    {
+      "control_id": "nm-2026-native-general-registered-turnout",
+      "current_native_clock": "11/12/2026 11:07 AM MT",
+      "current_native_minus_model_diagnostic": "-34203.89549549517653955223422",
+      "current_native_numerator": 731491,
+      "diagnostic_is_not_validated_model_error": true,
+      "native_numerator_difference": 282,
+      "previous_native_clock": "11/6/2026 9:55 AM MT",
+      "previous_native_minus_model_diagnostic": "-34485.89549549517653955223422",
+      "previous_native_numerator": 731209,
+      "registered_denominator": 1469718,
+      "state_code": "NM"
+    }
+  ],
+  "staged_data_commit": "1eaa322db6141a30f04380c6403a27364c14be9b",
+  "state_dc_decisions": 51,
+  "status": "live_verified",
+  "website_runtime_source": "2d2d2c504cac896722145796bb335942acc7a640",
+  "website_source": "ef92704fb68fe67f7cbe9d8f242ee28af99978b2",
+  "whole_project_complete": false,
+  "year": 2026
+}

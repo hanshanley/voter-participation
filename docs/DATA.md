@@ -8,6 +8,81 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## North Carolina and Oregon native successors
+
+[Complete permitted native aggregates, all51 count shards, numerical queries, code and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-or-native-counts-20261114-01/complete-analysis.zip):
+**15,734,471 bytes/164 members**, SHA256
+`f08cd25269fe2bd2fe5a053d34c372758d3f82a408b3bb3156d98aa9eecf6182`;
+immutable release445143216.
+
+[Complete model34/model35 aggregate inputs, weights, conditional results and all queries](https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-or-native-controls-r35-20261114-01/complete-analysis.zip):
+**20,986,248 bytes/233 members**, SHA256
+`8d083f12ae2ed57326412bb81634260fa00cd118e97e6b1e55f09226c7b98b0c`;
+immutable release445143258.
+
+For either full extraction, keep its ZIP one directory above it and use
+CPython >=3.9 standard library only, with a fresh work directory:
+
+```sh
+(cd code && python3 -S -m unittest discover -s tests -p 'test_*.py')
+python3 -S code/materialize_and_reproduce.py --archive ../complete-analysis.zip \
+  --sdk-root . --work-dir ../nc-or-public-replay
+```
+
+The count SDK reproduces54 files byte-exact and passes115 tests. The model
+SDK reproduces all25 revision34 and25 revision35 numerical/qualification
+outputs and passes19 tests. Each has two fresh executions and actual public
+download reproduction. Selected Python API guards are probed, not an OS sandbox.
+Permitted native NC aggregate originals are included; publisher HTML/PDF/
+application templates, private cases, individual predictions and estimators are
+excluded. The model starts from the complete accepted factual aggregate
+projection, not re-extraction of excluded publisher originals or a new refit.
+
+The accepted NC reference changes by -518 ballots with registration unchanged.
+OR changes by -26,981 ballots/-22 active registrations. Unchanged probabilities
+mechanically rescale OR conditional units, not observed voters or staying home.
+The website retains its later New Mexico revision34 through a strict NC/OR-only
+overlay; its prior complete release remains available. Subsequent catalog
+3e0e37b8635747f2c8dfe953478f52ce0924b084 activates the count successor after
+the successful native artifact and exact served-source checks. Actual
+all51/306-frame and desktop/mobile/no-JavaScript/failure acceptance pass.
+
+## Jefferson Kentucky partial LOJIC reference
+
+[Complete permitted original geometry, accepted counts, all reference queries/holds, code and replay](https://github.com/hanshanley/margin_of_error/releases/download/participation-ky-jefferson-precinct-reference-20261114-01/complete-analysis.zip):
+**41,769,394 bytes/75 members**, SHA256
+`b76a5bab5d337c85052721bd17d5b4e81fc6cec265c447ff149236c489945eb7`;
+immutable release445140564 with full authenticated/anonymous verification.
+
+Keep the ZIP one directory above a fresh extraction. Requirements are
+CPython3.9-3.12, NumPy2.0.2, Shapely2.0.7/GEOS3.11.4 and Node.js >=20;
+see the included dependency file. From the extraction:
+
+```sh
+python3 code/reproduce_public.py --archive ../complete-analysis.zip \
+  --sdk-root . --work-dir ../jefferson-reference-public-replay
+```
+
+This reproduces all7 factual and36 native outputs byte-for-byte, runs8 Python
+and10 Node tests, and checks selected process-local API guards. No OS sandbox is
+claimed. The full accepted native baseline, all647 count observations including
+646 reporting units, exact KY count shard/index/descriptor, complete original
+native-coordinate/WGS84 geometry and independent identity/count queries are
+included. It does not claim to recompile the other50 count shards or rebuild
+the whole website. Unchanged native bodies are shared rather than duplicated.
+
+There are529 literal joins and117 held/unmapped labels, never normalized
+suffixes or repaired geometry. All19 native zeros remain;18 map. Geometry
+retrieved November14,2026 is not dated by the separate map printed November7
+and is not certified November3 legal geography. Bare geometry rights do not
+extend this package to publisher PDF/HTML/rendered maps/application templates.
+No rates, electorate, unique-person count or local model allocation is added.
+Full source dispositions remain downloadable. Subsequent joint activation
+passes actual no-override desktop/phone production:1058 count/shade/ARIA
+checks, all646 source controls,117 holds, modes, physical keyboard selection
+and both complete public ZIP downloads. Native artifact14106597734 is
+997,366,767 payload bytes/999,966,720 tar bytes; all436 old download pins remain.
+
 ## Jefferson Kentucky native ballots and reporting labels
 
 [Complete permitted numerical facts, all51 baseline jurisdictions, queries, code, tests and replay](https://github.com/hanshanley/margin_of_error/releases/download/participation-ky-jefferson-native-20261114-01/complete-analysis.zip):

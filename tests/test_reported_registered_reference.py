@@ -1,8 +1,15 @@
 import copy
+import csv
+import io
+import json
+from pathlib import Path
+import shutil
 import unittest
+from unittest.mock import patch
+import zipfile
 
-from scripts.registered_control_successor import FLAGS
-from scripts.reported_registered_reference import group_controls, revise
+from scripts.registered_control_successor import FLAGS, TABLES, csv_bytes, encoded, pin
+from scripts.reported_registered_reference import build, group_controls, revise
 
 
 class ReportedRegisteredReferenceTests(unittest.TestCase):
@@ -86,6 +93,129 @@ class ReportedRegisteredReferenceTests(unittest.TestCase):
         tables[1][2]["numerator"] = "29"
         with self.assertRaises(ValueError):
             revise(tables, facts, review)
+
+    def test_repeated_same_source_refresh_can_decrease_and_guard_retained_history(self):
+        tables, facts, review = self.fixture()
+        current, _, _ = revise(tables, facts, review)
+        retained = copy.deepcopy(current[1][2])
+        facts.update(total=31, clock="Later corrected native result",
+            previous_county_runtime_total=32, current_county_runtime_total=31)
+        review.update(historical_same_source_controls=[],
+            retained_historical_same_source_controls=[dict(
+                id="older-AR", accepted_baseline_row_pin=pin(encoded(retained)))])
+        refreshed, changes, delta = revise(current, facts, review)
+        self.assertEqual(refreshed[0][0]["reported_cast_ballots"], "31")
+        self.assertEqual(refreshed[1][0]["numerator"], "31")
+        self.assertEqual(refreshed[1][2], retained)
+        self.assertEqual(refreshed[2][0]["conditional_modeled_voter_count"], "150")
+        self.assertEqual(delta["selected_reference_difference"], -1)
+        self.assertEqual(delta["retained_historical_same_source_controls"], ["older-AR"])
+        self.assertEqual(sum(row["changed"] for row in changes), 1)
+
+        for field, value in (
+                ("numerator", "999"), ("source_time_label", "Fabricated"),
+                ("source_url", "https://different.example/source"),
+                ("disposition", "selected"), ("selected_state_reference", "True"),
+                ("measure", "candidate_votes"), ("year", "2024"), ("state_code", "NC")):
+            changed = copy.deepcopy(current)
+            changed[1][2][field] = value
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                revise(changed, facts, review)
+
+    def test_retained_control_reviews_reject_duplicates_and_noncanonical_order(self):
+        tables, facts, review = self.fixture()
+        current, _, _ = revise(tables, facts, review)
+        second = dict(current[1][2], id="older-AR-2", source_time_label="Oldest result")
+        current[1].append(second)
+        review.update(expected_table_rows=[2, 4, 2], historical_same_source_controls=[])
+        retained = [
+            dict(id=row["id"], accepted_baseline_row_pin=pin(encoded(row)))
+            for row in (current[1][2], second)
+        ]
+        review["retained_historical_same_source_controls"] = retained
+        facts.update(total=31, clock="Later corrected native result")
+        revise(current, facts, review)
+        for invalid in ([retained[0], retained[0]], list(reversed(retained))):
+            review["retained_historical_same_source_controls"] = invalid
+            with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                revise(current, facts, review)
+
+    def test_end_to_end_build_uses_accepted_row_pin_not_mutated_baseline(self):
+        tables, facts, review = self.fixture()
+        current, _, _ = revise(tables, facts, review)
+        retained = copy.deepcopy(current[1][2])
+        facts.update(total=31, clock="Later corrected native result",
+            previous_county_runtime_total=32, current_county_runtime_total=31,
+            native_queries_body=b"queries", group_rows=[dict(value=1)],
+            native_source=dict(id="source"), group_accounting=dict(matched=True),
+            reported_units=2, total_units=2)
+        work = Path("test-build-regression-work")
+        if work.exists():
+            shutil.rmtree(work)
+        work.mkdir()
+
+        def packet_bytes(files, reproduce=False):
+            files = dict(files)
+            checksums = {name: pin(body) for name, body in sorted(files.items())}
+            members = dict(files, **{"checksums.json": encoded(checksums)})
+            if reproduce:
+                members["REPRODUCE.txt"] = b"offline\n"
+            stream = io.BytesIO()
+            with zipfile.ZipFile(stream, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+                for name, body in sorted(members.items()):
+                    archive.writestr(name, body)
+            return stream.getvalue()
+
+        def baseline(rows):
+            files = {
+                name: csv_bytes(values) for name, values in zip(TABLES, rows)
+            }
+            files["summary.json"] = encoded(dict(native_control_version=1))
+            files["source-qualification.json"] = encoded(dict(previous=True))
+            return packet_bytes(files)
+
+        try:
+            baseline_body = baseline(current)
+            accepted_retained = next(row for row in csv.DictReader(io.StringIO(
+                csv_bytes(current[1]).decode())) if row["id"] == "older-AR")
+            source_body = packet_bytes({}, reproduce=True)
+            end_to_end_review = dict(
+                contract="participation.reported_registered_reference.v1",
+                version=2, year=2026, state_code="AR", control_id="reporting-AR",
+                source_entry="counts", expected_states=["AR", "NC"],
+                expected_table_rows=[2, 3, 2],
+                input_pins=dict(baseline=pin(baseline_body), native_batch=pin(source_body)),
+                historical_same_source_controls=[],
+                retained_historical_same_source_controls=[dict(
+                    id="older-AR", accepted_baseline_row_pin=pin(encoded(accepted_retained)))],
+                group_queries={}, scope_review="Repeated accepted same-source correction")
+            for name, body in (
+                    ("baseline-complete-analysis.zip", baseline_body),
+                    ("native-batch-complete-analysis.zip", source_body),
+                    ("reviewed-successor.json", encoded(end_to_end_review))):
+                (work / name).write_bytes(body)
+            with patch("scripts.reported_registered_reference.STATES", ("AR", "NC")), \
+                    patch("scripts.reported_registered_reference.native_facts", return_value=facts):
+                files, summary = build(work)
+            self.assertEqual(summary["changed_registered_reference"][
+                "selected_reference_difference"], -1)
+            output_controls = list(csv.DictReader(io.StringIO(
+                files["complete-native-control-dispositions.csv"].decode())))
+            self.assertEqual(next(row for row in output_controls
+                if row["id"] == "older-AR"), accepted_retained)
+
+            mutated = copy.deepcopy(current)
+            mutated[1][2]["numerator"] = "999"
+            mutated_body = baseline(mutated)
+            end_to_end_review["input_pins"]["baseline"] = pin(mutated_body)
+            (work / "baseline-complete-analysis.zip").write_bytes(mutated_body)
+            (work / "reviewed-successor.json").write_bytes(encoded(end_to_end_review))
+            with patch("scripts.reported_registered_reference.STATES", ("AR", "NC")), \
+                    patch("scripts.reported_registered_reference.native_facts", return_value=facts), \
+                    self.assertRaisesRegex(ValueError, "Retained same-source"):
+                build(work)
+        finally:
+            shutil.rmtree(work)
 
     def test_unchanged_counter_and_clock_reuses_accepted_analysis(self):
         tables, facts, review = self.fixture()

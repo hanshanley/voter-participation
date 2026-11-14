@@ -8,11 +8,41 @@ import gzip
 import io
 import json
 from pathlib import Path
+import re
 import zipfile
 
 from scripts.participation_intake.adapters import field, verify_native_reproduction
 from scripts.participation_intake.contract import STATES
 from scripts.registered_control_successor import FLAGS, TABLES, csv_bytes, encoded, integer, number, packet, pin
+
+
+def canonical_id_list(values, label):
+    if (not isinstance(values, list) or any(not isinstance(value, str) or not value for value in values)
+            or values != sorted(values) or len(values) != len(set(values))):
+        raise ValueError(f"{label} must be a unique canonical identity list")
+    return values
+
+
+def retained_control_reviews(review):
+    values = review.get("retained_historical_same_source_controls", [])
+    if not isinstance(values, list):
+        raise ValueError("Retained same-source controls need accepted baseline row pins")
+    identities = []
+    for item in values:
+        metadata = item.get("accepted_baseline_row_pin") if isinstance(item, dict) else None
+        if (not isinstance(item, dict)
+                or set(item) != {"id", "accepted_baseline_row_pin"}
+                or not isinstance(item["id"], str) or not item["id"]
+                or not isinstance(metadata, dict)
+                or set(metadata) != {"bytes", "sha256"}
+                or type(metadata["bytes"]) is not int
+                or metadata["bytes"] <= 0
+                or not re.fullmatch(r"[a-f0-9]{64}", metadata["sha256"])):
+            raise ValueError("Retained same-source controls need complete accepted baseline row pins")
+        identities.append(item["id"])
+    if identities != sorted(identities) or len(identities) != len(set(identities)):
+        raise ValueError("Retained same-source control reviews must be unique and canonical")
+    return values
 
 
 def group_controls(queries, declaration, state_code, counties):
@@ -194,7 +224,12 @@ def revise(tables, facts, review):
     scenario.update(source_time_label=clock, control_native_status=status,
         reported_cast_ballot_measure_control=str(facts["total"]),
         reported_cast_minus_conditional_modeled_voter_count=gap)
-    for identity in review["historical_same_source_controls"]:
+    historical_controls = canonical_id_list(
+        review["historical_same_source_controls"], "Historical same-source controls")
+    retained_historical = retained_control_reviews(review)
+    if set(historical_controls) & {item["id"] for item in retained_historical}:
+        raise ValueError("Current duplicate and already-retained historical reviews overlap")
+    for identity in historical_controls:
         rows = [row for row in controls if row["id"] == identity and row["state_code"] == code]
         if (len(rows) != 1 or rows[0]["selected_state_reference"] != "False"
                 or rows[0]["source_url"] != facts["source_url"] or integer(rows[0]["numerator"]) != previous
@@ -203,6 +238,20 @@ def revise(tables, facts, review):
             raise ValueError("Historical same-source duplicate identity changed")
         rows[0].update(disposition="retained_older_same_source_snapshot_not_current_duplicate",
             scope_notes="Dated earlier source counts retained; not a duplicate of the newer selected reference or independent current validation.")
+    for retained in retained_historical:
+        rows = [row for row in controls
+                if row["id"] == retained["id"] and row["state_code"] == code]
+        if (len(rows) != 1
+                or pin(encoded(rows[0])) != retained["accepted_baseline_row_pin"]
+                or rows[0]["selected_state_reference"] != "False"
+                or rows[0]["measure"] != "reported_cast_ballots"
+                or rows[0]["year"] != str(review["year"])
+                or rows[0]["state_code"] != code
+                or rows[0]["source_url"] != facts["source_url"]
+                or integer(rows[0]["denominator"]) != registered
+                or not rows[0]["source_time_label"]
+                or rows[0]["disposition"] != "retained_older_same_source_snapshot_not_current_duplicate"):
+            raise ValueError("Retained same-source historical reference identity changed")
     if any(a != b for a, b in zip(tables[0], states) if a["state_code"] != code):
         raise ValueError("An unrelated state changed")
     allowed = {"source_time_label", "control_native_status", "reported_cast_ballot_measure_control",
@@ -211,7 +260,7 @@ def revise(tables, facts, review):
         if any(before[key] != after[key] for key in before if key not in allowed
                 or before["control_id"] != identifier):
             raise ValueError("A conditional mean, registered frame, source weight or unrelated scenario changed")
-    expected_changes = {identifier, *review["historical_same_source_controls"]}
+    expected_changes = {identifier, *historical_controls}
     if {a["id"] for a, b in zip(tables[1], controls) if a != b} != expected_changes:
         raise ValueError("Unexpected native control changes")
     changes = [dict(control_id=old["id"], state_code=old["state_code"], changed=old != new,
@@ -226,6 +275,9 @@ def revise(tables, facts, review):
         previous_state=old_state, previous_control=old_control, previous_scenario=old_scenario,
         observed_staying_home=False, native_outcome_calibration_applied=False,
         demographic_or_local_model_allocation_applied=False, house_endpoints_or_family_outputs_changed=False)
+    if retained_historical:
+        delta["retained_historical_same_source_controls"] = [
+            item["id"] for item in retained_historical]
     return (states, controls, scenarios), changes, delta
 
 
@@ -235,7 +287,13 @@ def build(inputs):
     required = {"contract", "version", "year", "state_code", "control_id", "source_entry",
         "expected_states", "expected_table_rows", "input_pins", "historical_same_source_controls",
         "group_queries", "scope_review"}
-    if (set(review) != required or review["contract"] != "participation.reported_registered_reference.v1"
+    optional = {"retained_historical_same_source_controls"}
+    retained = retained_control_reviews(review)
+    historical = canonical_id_list(
+        review.get("historical_same_source_controls"), "Historical same-source controls")
+    if (not required <= set(review) or set(review) - required - optional
+            or set(historical) & {item["id"] for item in retained}
+            or review["contract"] != "participation.reported_registered_reference.v1"
             or not review["scope_review"].strip() or set(review["expected_states"]) != set(STATES)):
         raise ValueError("An explicit complete reported-registered reference review is required")
     baseline_body = (inputs / "baseline-complete-analysis.zip").read_bytes()
@@ -270,13 +328,16 @@ def build(inputs):
         native_count_used_for_outcome_fitting=False, state_to_county_or_demographic_allocation=False,
         observed_staying_home=False, changed_registered_reference=delta)
     files["summary.json"] = encoded(summary)
-    files["source-qualification.json"] = encoded(dict(contract=review["contract"],
+    qualification = dict(contract=review["contract"],
         native_control_version=review["version"], explicit_same_source_review=review["scope_review"],
         unchanged_registered_stock_source_weights_and_conditional_means=True,
         source_early_group_counts_are_separate_native_observations_not_full_demographic_turnout=True,
         cross_feed_modes_and_clocks_not_deduplicated_or_assumed_aligned=True,
         historical_duplicate_retained_with_older_scope=True, no_native_outcome_or_causal_calibration=True,
-        prior_source_qualification=json.loads(baseline["source-qualification.json"])))
+        prior_source_qualification=json.loads(baseline["source-qualification.json"]))
+    if retained:
+        qualification["retained_historical_same_source_controls"] = retained
+    files["source-qualification.json"] = encoded(qualification)
     files["inputs/baseline-complete-analysis.zip"] = baseline_body
     files["inputs/native-batch-complete-analysis.zip"] = source_body
     files["inputs/reviewed-successor.json"] = review_body

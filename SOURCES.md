@@ -8,6 +8,8 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Published NC/OR successor packets | [Native revisions, unchanged probabilities and complete count/model replays](#2026-north-carolina-and-oregon-native-successor-packets) |
+| Published Jefferson reference packet | [529 literal reference joins, 117 explicit holds and complete geometry/replay](#2026-jefferson-kentucky-partial-lojic-reference) |
 | Current Jefferson Kentucky native facts | [268,257 Ballots Cast, 646 literal reporting labels and complete fact-only replay](#2026-jefferson-kentucky-native-participation-statistics) |
 | Current AP/CHEP predictor-block evidence | [Complete exploratory source-response comparison and timing erratum; no model promotion](#exploratory-apchep-source-predictor-block-comparison) |
 | Current Louisiana native group map | [Early/absentee report compositions, qualified parish context and complete fact-only reproduction](#2026-louisiana-native-earlyabsentee-group-map-and-data) |
@@ -65,6 +67,89 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 North Carolina and Oregon native successor packets
+
+The complete count and model SDKs are public and immutable:
+releases445143216 and445143258, respectively. Their exact pins and offline
+commands are in [complete downloads](docs/DATA.md#north-carolina-and-oregon-native-successors).
+Permitted original NC aggregate products remain included; publisher HTML/PDF/
+application templates and private respondents/predictions/estimators are excluded.
+Both fresh extracted replays and actual anonymous public-download executions pass:
+115 count tests/54 exact count files;19 model tests/25 exact revision34 and25
+exact revision35 outputs. All51 baseline jurisdiction shards remain available.
+
+The accepted selected NC reference changes4,243,180 ->4,242,662 (-518), with
+7,885,046 active-plus-inactive registrations unchanged. The73 changed county rows
+plus the statewide parent are74 changed observations; all100 county sums
+reconcile. County source titles are OFFICIAL except HALIFAX; the statewide title
+remains UNOFFICIAL. Do not substitute the raw crawler's -2 comparison for this
+accepted-reference difference. Oregon changes2,019,444/3,109,145 ->
+1,992,463/3,109,123 (-26,981 ballots/-22 active registrations); the native PT
+clock remains literal, not a newly inferred IANA timezone.
+
+Study probabilities, weights and fitted models are unchanged. NC conditional
+means do not change. Oregon conditional participant/complement source units
+change by -14.741656589460355407.../-7.258343410539644593..., mechanically
+partitioning the -22 registration-unit revision, not observed staying home.
+Native-minus-model differences remain nominal diagnostics, not validated errors.
+The website's strict two-row overlay retains its later New Mexico revision34,
+other49 jurisdiction decisions and other32 conditional scenarios. Both actual
+count/model publication receipts must verify before ready download links render.
+Member fragments are inventories inside full ZIPs, not standalone HTTP assets.
+
+Website runtime source2d2d2c504cac896722145796bb335942acc7a640 is live; its
+non-runtime acceptance-checker follow-up isef92704fb68fe67f7cbe9d8f242ee28af99978b2.
+Catalog3e0e37b8635747f2c8dfe953478f52ce0924b084 atomically activates counts
+`7afe2ba0db377e8d5a81c8b82c0b124834f3b8b6c3cf1c48181c9e5e3a4bb8c7`
+and native reference
+`7e017f32899244774b175d7c96c77a25e53aa7bfaff1dba52c55c1a81f76d7a9`,
+after90 staged anonymous file checks. Actual native artifact14106597734 from
+successful workflow43577480552 has997,366,767-byte payload/999,966,720-byte
+tar; actual served page/scripts and all436 old complete download pins match.
+No-override production passes all51 jurisdiction interfaces/306 count bindings,
+the exact eight-report/6,450-early-row snapshot and desktop/phone county/source
+checks. Civic desktop/mobile/no-JavaScript/failed-JSON cases verify all79 study
+rows,112 flow rows,34 conditional scenarios,51 decisions and real ZIP members.
+No new House endpoint, family, weight, individual transition identification or
+county/precinct demographic allocation is claimed.
+
+## 2026 Jefferson Kentucky partial LOJIC reference
+
+Immutable release445140564 publishes the complete permitted bare geometry,
+accepted numerical observations, all seven factual queries/dispositions,
+unchanged prior native bodies, compiler/reader tests and exact offline replay.
+The75-member SDK is41,769,394 bytes, SHA256
+`b76a5bab5d337c85052721bd17d5b4e81fc6cec265c447ff149236c489945eb7`.
+Two fresh extracted replays and an actual anonymous public-download replay each
+pass8 Python/10 Node tests and reproduce7 factual plus36 runtime outputs exactly.
+All31 prior non-index native bodies remain byte-identical.
+
+The source-declared LOJIC public-authoritative item is
+`b82cf258640843cabe1d234a5d4472ec`; published Hub PDDL terms qualify bare dataset
+geometry, not publisher PDF/HTML/rendered maps/application templates. All current
+count, identity, native-coordinate and source-server WGS84 queries contain646
+unique identities. Preserve the older service-description623/2013 versus
+authoritative-item2020 conflict. Geometry retrieval on November14,2026 and the
+companion map's printed November7 date are distinct; neither certifies legal
+November3 election boundaries.
+
+Only529 exact-literal joins map. The117 held labels comprise60 suffixed labels,
+invalid K161, six conservative invalid-bbox neighbors and50 other overlap labels.
+No suffix is stripped, invalid polygon repaired or overlap clipped. All646
+native unit counts/19 true zeros remain available, including18 mapped zeros;
+unmapped is not zero. The separate `participation.reference_bindings.v1`
+contract pins the actual KY count shard and preserves the complete original
+observation, without claiming the foundational legacy review approved this join.
+Rates, registered/eligible denominators, unique people and local demographic/
+behavioral allocations remain unqualified. Source/runtime/SDK reviews pass;
+whole existing-page private desktop/phone checks pass1058 count/shade/ARIA
+comparisons, all source labels, mode holds, genuine keyboard selection, two
+actual full public ZIP downloads and six explicit failure/retry/race cases.
+The same1058 map/count/shade/ARIA checks, all646 source labels, mode holds,
+physical keyboard changes and two full public SDK downloads pass true
+no-override desktop/phone production after joint catalog activation. Full source
+and geometry qualification does not resolve the local population/model-frame gap.
 
 ## 2026 Jefferson Kentucky native participation statistics
 

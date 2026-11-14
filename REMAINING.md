@@ -13,6 +13,56 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Live NC/OR successors and Jefferson reference: retain model-frame gaps
+
+Three complete immutable SDKs are now public: NC/OR count445143216,
+NC/OR conditional-control model445143258, and Jefferson partial reference445140564.
+Each has full authenticated/anonymous byte verification, two fresh extracted
+replays, actual public-download reproduction and independent review. Counts
+retain all51 jurisdictions; model probabilities/weights/fits and House endpoints
+are unchanged. The NC selected reference is now4,242,662 (-518); OR is
+1,992,463 ballots/3,109,123 active registrations. Only OR conditional source
+units mechanically rescale, not observed nonparticipation or switching.
+
+Jefferson has529 literal reference joins and117 explicitly held labels, with
+all646 counts/19 true zeros preserved. No suffix normalization, geometry
+repair, legal-boundary certification, rates or local demographic allocation.
+The separate reference contract checks the exact KY shard and retains original
+source observations. Private existing-page desktop/phone checks cover all529
+map values/shades/accessible labels, all646 source labels,18 mapped zeros,
+mode holds, actual full downloads and six explicit failure/retry/race cases.
+
+Website source2d2d2c504cac896722145796bb335942acc7a640 is published. Its final
+combined regressions, Astro checks and full local build pass. Real ZIP/member
+checks also pass desktop/mobile/no-JavaScript/failed-JSON cases. Both actual
+count/model receipts are required; fragments are inventory only. The strict
+NC/OR overlay preserves later NM34 and every other49 state/DC decisions and32
+scenarios, plus all113 older model/download routes.
+
+Joint stage1eaa322db6141a30f04380c6403a27364c14be9b has90 anonymously
+verified files. Catalog3e0e37b8635747f2c8dfe953478f52ce0924b084 atomically
+activates counts7afe2ba0/native7e017f32, preserving all other catalog entries.
+Actual successful native artifact14106597734 has997,366,767-byte payload and
+999,966,720-byte tar, both below1e9; served page/scripts and436 old download
+pins match. The exact ordinary final download rewrite, not ad-hoc HTML
+normalization, reconciles the tested local page with the native artifact.
+
+Actual no-override production passes all51 jurisdiction interfaces/306 count
+bindings, eight state reporting references/all6,450 retained early rows, NC100
+county controls, WY432 units at both widths, and the full current snapshot.
+Jefferson production passes1058 map/count/shade/ARIA checks, all646 source
+controls/117 holds/18 mapped zeros, modes, keyboard and both full downloads.
+Civic desktop/mobile/no-JavaScript/failed-JSON checks pass all source/scenario
+rows and actual full ZIP/member verification. The checker-only follow-up
+ef92704 preserves runtime source2d2d2c5; it replaces a stale seven-report
+assertion with exact frozen-snapshot cardinalities and distinguishes original
+source from complete-package links.
+
+Do not refit unchanged studies, roll back later NM34, reinterpret registration
+revisions as actual staying home, or allocate state models to new reference
+polygons. Continue the remaining all-state/source/model work and local frame/
+geography/joint-support gaps. Full audit then beautification remain pending.
+
 ## Jefferson Kentucky live: retain the local population/model-frame gap
 
 Independent source, typed-data/runtime and SDK reviews pass for the new native
