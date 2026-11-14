@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Ohio administrative context | [Separate registry-date-token channel, preserved county frames and complete replay](#2026-ohio-separate-current-registry-history-context) |
 | Pending New York/Ohio qualification | [Real county access stops and held current-registry interpretation](#2026-new-york-access-stops-and-ohio-registry-history-qualification) |
 | Current Oklahoma/Texas native counts | [77 in-person-early counties, two counted-ballot additions and complete fact-only replays](#2026-oklahoma-early-ballots-and-texas-counted-ballot-additions) |
 | Published NC/OR successor packets | [Native revisions, unchanged probabilities and complete count/model replays](#2026-north-carolina-and-oregon-native-successor-packets) |
@@ -70,6 +71,66 @@ This document is the detailed reference ledger, not the methods introduction.
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
 
+## 2026 Ohio separate current-registry history context
+
+The neutral Butler County aggregate is now live in a separate administrative
+context channel, not a county ballot or turnout frame. Independent streaming
+verification of the privately retained current voter-record CSV supports
+148,569 current-registration records with at least one exactly parsed
+11/03/2026 history-date token, within249,106 current records. Record identifiers
+are unique within this file; this does not establish unique people. Only the
+observed Active/Inactive frame is known; removed/cancelled-record treatment,
+history completeness, election type and opaque method/party codes remain
+unqualified. Missing history is not observed nonparticipation.
+
+The actual Butler Election Vault index declares the normal POST download,
+product name and file-update literal. The verified source CSV is133,021,454
+bytes, SHA256
+`0eac6dfcf5c03f26c0489ddd0b0434340db9450245077d9a8478cf5e95e7cee0`.
+Its file update is **Saturday, November7,2026 4:02 AM**, timezone unknown,
+not4:03 AM and not an election-result/completion clock. The distributed row
+is a derived public aggregate from privately retained person-record input,
+not a publisher-supplied aggregate. Individual rows, identifiers, contacts,
+birth dates, histories and rare private diagnostics are excluded.
+
+Only `views.available.administrative_contexts` selects the new record.
+All24 original Ohio geographic/nongeographic/hold lists across six modes
+remain exact, including88 available county rows and88 each in early/mail.
+Official/UF frames stay empty. The optional typed role rejects ballot-frame
+aliases, geographic joins and denominator/rate promotion. A separate selector,
+source-unit card and explicit table action never enter county-map selection;
+the table selection survives asynchronous map rendering. The ordinary source
+detail also honors its supplied measure label rather than inventing ballots.
+
+Immutable release445249918 contains the complete132-member SDK03,
+16,209,212 bytes, SHA256
+`9c79a7ea43f0501b2c17d3e909165b55954bf3c7523309d3048a229ced238cc3`.
+See [complete downloads](docs/DATA.md#ohio-separate-current-registry-history-context).
+Independent source/typed/SDK review, two fresh extractions and an actual
+public-download replay pass9 tests, five process-local API guards and54 exact
+count outputs. Replay starts from complete accepted aggregate facts; it does
+not re-extract private records or claim an OS sandbox. SDK02 remains a prior
+immutable scientific archive but its geographic-slot candidate was never
+activated; the original ballot-worded candidate remains wholly held.
+
+Website `fd14b2a4783abc32a1208a2e12a637a14a3d7aaf` and catalog
+`7e0f44afe854512937553fe9047be1af0da50533` activate count version
+`afe46ca7eb431e602a5504870250931c91fd69675192d503779f81022f6f9c4a`.
+Actual native artifact14112792252 has997,371,977 payload bytes and999,966,720
+raw tar bytes, both below1 GB; all436 old download pins remain exact.
+No-override production passes all51 interfaces/306 mode bindings, unchanged
+eight state references/6,450 early rows,176 ordinary Ohio county values,
+desktop/phone context/mode/map exclusions and two actual full SDK downloads.
+Initial cached old-version loads were not accepted; final checks assert the
+actual browser module's new version. Exact four publication sources are
+persisted separately from the preserved older independent local renderer/tests.
+
+All other50 shards, current snapshot, Kentucky reference and other catalog
+entries are unchanged, including Oklahoma233 records and Texas13 native
+counties. No House endpoint, swing unit, model fit, probability, weight or
+conditional transition estimate changes. Ohio's genuine full-election
+participation gap and broader nationwide source/model work remain open.
+
 ## 2026 New York access stops and Ohio registry-history qualification
 
 The bounded New York follow-up received actual HTTP403 from five official
@@ -83,7 +144,8 @@ links and snippets were not treated as source-authority evidence or counts.
 Other genuinely independent primary products remain a possible route; these
 outcomes are not proof of statewide unavailability.
 
-An isolated Ohio candidate is also withheld. Its Butler County Election Vault
+The original ballot-worded Ohio candidate remains withheld; the separate
+neutral context above does not promote its stronger claims. Its Butler County Election Vault
 index supports the publisher, normal POST download declaration, product name
 and file-update literal. The underlying current voter-record CSV and receipt
 were located in the already-held private linked-history source collection.
@@ -102,13 +164,12 @@ registrants are treated. A file-update clock is not an election-result clock,
 and one current record carrying a matching token is not necessarily a unique
 history credit or a complete unique participant.
 
-The private package's mechanical CRC/manifest/portable-replay checks and
-individual-record exclusion passed independent review; source meaning,
-typed units and publication remain HOLD. No Ohio count, model or public
-download changed. Registry-history records must not inherit generic ballot/
-full-election labels through the existing display adapter. Resolve those
-source and rendering gates before publication; do not repair a discrepancy
-by merging different administrative measures.
+That original private package's mechanical CRC/manifest/portable-replay checks
+and individual-record exclusion passed independent review, but its stronger
+source meaning, typed units and publication remain HOLD. Its count/model
+projection was not activated. The later neutral channel resolves only the
+administrative-context display, not counted-ballot or complete-election source
+qualification. Do not repair discrepancies by merging different measures.
 
 ## 2026 Oklahoma early ballots and Texas counted-ballot additions
 
@@ -154,8 +215,9 @@ Texas native county coverage increases11 ->13 of254;241 remain unknown.
 Both additions remain preliminary/unofficial and rate/geometry holds remain.
 All1,029 older Texas records, all233 corrected Oklahoma records and all other
 shards are preserved; counted totals do not enter early/mail frames.
-The combined count version459c853f is atomically active at cataloge3a42628,
+The combined count version459c853f was atomically activated at cataloge3a42628,
 with both compiled source projections retained at immutable stagee188012a.
+The later separate Ohio context preserves this complete Oklahoma/Texas delta.
 All other catalog entries, Kentucky's loaded preimage and the full current
 snapshot are exact. No House endpoint, model, prior, weight or transition
 probability was changed.

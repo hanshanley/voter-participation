@@ -13,7 +13,52 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## New York and Ohio follow-up: source qualification remains open
+## Ohio neutral context delivered; full-election qualification remains open
+
+The separate Butler registry context is live at website
+`fd14b2a4783abc32a1208a2e12a637a14a3d7aaf`, catalog
+`7e0f44afe854512937553fe9047be1af0da50533`, count version
+`afe46ca7eb431e602a5504870250931c91fd69675192d503779f81022f6f9c4a`.
+It reports148,569 current-registration records with an exact11/03/2026 history
+token within249,106 records, not ballots, unique participants, general-election
+classification or staying home. The source clock is a November7 file update
+at4:02 AM with unknown timezone, not an election-result clock. Individual
+records and histories remain private. Complete immutable SDK03/release445249918
+has independent review, two fresh replays and actual public reproduction:
+9 tests, five process-local guards and54 byte-exact outputs. See
+[complete downloads](docs/DATA.md#ohio-separate-current-registry-history-context).
+
+The new optional administrative-context channel preserves all24 old Ohio
+partitions,88 available county rows, separate88 early/mail rows and empty
+official/UF frames. It never enters county maps or turnout denominators.
+Actual no-override desktop/phone acceptance covers176 original county values,
+the separate source card/table, mode/map exclusions and full SDK downloads.
+All51 interfaces/306 bindings/eight state references/6,450 early rows pass;
+the actual consumer version, not an HTTP preflight, establishes acceptance.
+The native artifact is997,371,977 payload bytes/999,966,720 raw tar bytes;
+all436 old download pins remain. Source copies and compatible reader/checker
+are persisted without replacing the older independent local renderer/tests.
+
+This closes only the bounded neutral-context delivery. The original
+ballot-worded candidate and the prior geographically substituted candidate
+were not activated. Directive evidence still lacks retained directive bytes;
+the separate claimed Ballots Cast context still lacks a retained primary
+artifact. Date tokens and current status stocks cannot close the Ohio native
+full-election gap or identify missing participation, switching or entry.
+No model, probability, weight, House endpoint or swing unit changes.
+
+The earlier disk pause is superseded: verified APFS copy-on-write recloning
+reclaimed2,921,870,150 duplicate bytes from57 identical copied data files,
+with independent inodes, byte/metadata/mtime checks and no original, failed
+evidence or SDK deletion. Continue bounded work while monitoring shared-host
+headroom; do not make broad copies or relax artifact/production gates.
+
+Separate Kansas and Mississippi integrations are in progress. Kansas has a
+private partial-county candidate under independent review, not live coverage;
+Mississippi source qualification remains in progress. All other source/model
+gaps remain, followed by the full audit THEN understated beautification.
+
+## New York follow-up: queried routes remain stopped
 
 The bounded New York follow-up preserved five actual403 stops: Monroe's
 elections home/results pages and the Saratoga, Seneca and Schenectady election
@@ -22,41 +67,16 @@ was created, and all51 accepted jurisdiction projections remain. These stops
 do not establish that every independent New York primary product is unavailable.
 Do not retry them through another client, cache, mirror or guessed download.
 
-The private Ohio/Butler candidate is NOT published or activated. Independent
-review found that a current-registry history-date predicate was described too
-strongly as counted ballots/general-election/all-method participation. The
-underlying person-record CSV and receipt were located outside the worker's
-review folder, and independent streaming aggregate recomputation succeeded.
-This supports only a neutral current-record/date-coded-history predicate. The
-referenced directive pin is a derived evidence record, not retained directive
-bytes; the separate claimed Ballots Cast context also lacks a retained primary
-artifact. Neither can establish those stronger semantics. Removed/cancelled
-records outside the observed status frame remain unknown.
-
-Before any Ohio promotion, qualify the exact source predicate and update all
-facts, queries, typed units, source classifications and display scope together.
-Preserve private person records and individual histories; distribute only
-permitted sufficiently aggregated facts and explicit withholding decisions.
-The current renderer's generic non-review ballot/full-election wording is not
-suitable for registry-history records. A private edit attempt failed with
-ENOSPC before changing either website file; both remain exactly accepted0c6f2be.
-
-Storage is critically constrained. Pause new acquisition, large copies,
-packaging and full rebuilds until safe headroom exists. Only the already
-verified generated website `dist` was removed, after retaining its tested
-prepared page and full download manifest. All originals, private source bytes,
-SDKs, failed attempts, source files and acceptance evidence remain. Continue
-read-only source verification meanwhile; do not turn a private handoff into a
-completed delivery or silently relax the actual artifact/production gates.
-
-The live Oklahoma/Texas successor below is unchanged. All broader source/model
-gaps and the full audit THEN beautification remain open.
+No New York numerical observation or SDK was promoted by this bounded follow-up.
+The live Oklahoma/Texas observations below remain exact in the new context
+successor. Continue genuinely independent primary products, not stopped routes.
 
 ## Oklahoma early ballots and two Texas counted-ballot additions
 
-The qualified count successor is live at catalog
+The qualified combined count successor was activated at catalog
 `e3a42628eedd41f5ff66b4afae3b68479bf7f29f`, count version
-`459c853f0d8216494a8f9e67f8bcf5cdc8923d9b5f4454a2d7b464a8208aa060`.
+`459c853f0d8216494a8f9e67f8bcf5cdc8923d9b5f4454a2d7b464a8208aa060`;
+the later separate Ohio context retains its complete count delta.
 Its single activation preserves both state integrations, all other49 state/DC
 shards, Kentucky's exact reference preimage, the full current snapshot and all
 other catalog entries. Both complete immutable SDKs have independent source,

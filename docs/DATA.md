@@ -8,6 +8,55 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Ohio separate current-registry history context
+
+[Complete neutral Butler aggregate facts, all numerical queries, all51 projections, compiler and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-ohio-registry-context-20261114-02/complete-analysis.zip):
+**16,209,212 bytes/132 members**, SHA256
+`9c79a7ea43f0501b2c17d3e909165b55954bf3c7523309d3048a229ced238cc3`;
+immutable release445249918.
+
+Extract the full ZIP into a fresh directory. CPython >=3.9 standard library
+is sufficient; from the extraction run:
+
+```sh
+python3 code/reproduce.py --package . --output reproduced
+```
+
+Independent source/typed/SDK review, two fresh executions and actual
+public-download reproduction pass9 tests, five process-local API guards and
+54 exact count files. The archive contains131 manifested members plus its
+manifest, complete sufficient aggregate inputs, source qualifications, queries
+and own replay code. It does not re-extract the privately retained person-record
+CSV. No private records, identifiers, contacts, birth dates, individual
+histories, rare diagnostic cells, publisher originals/media/templates,
+predictions or estimators are distributed. Process-local guards are not an
+OS sandbox. ZIP member inventories are not separate HTTP assets; frozen
+creation-time planned flags remain unchanged, with actual immutable and
+anonymous full-body verification external.
+
+The observation is148,569 current-registration records with an exact
+11/03/2026 date-coded history token within249,106 current records. It is not
+counted ballots, unique participants, a qualified general-election/all-method
+population, turnout or observed staying home. The source file update is
+November7,2026 4:02 AM, timezone unknown, not an election-result clock.
+Opaque method/party codes and removed/cancelled-record treatment stay unknown.
+
+Only a separate `views.available.administrative_contexts` channel selects it.
+All24 original Ohio partitions,88 available county rows, separate early/mail
+rows and empty official/UF frames remain exact. The context never enters
+geographic joins or turnout denominators. Websitefd14b2a and catalog7e0f44a
+activate count versionafe46ca7 after actual native artifact and no-override
+production acceptance. Checks include all51 interfaces/306 bindings,176
+original county values, desktop/phone source units and map/mode exclusions,
+plus two real full SDK downloads. Cached old consumer versions were rejected.
+
+The original ballot-worded package remains held. Earlier neutral SDK02 remains
+an immutable scientific archive, but its geographic-slot candidate was never
+activated; use SDK03 for the accepted separate-channel projection. All earlier
+complete downloads, Oklahoma/Texas counts, other50 state/DC shards, current
+snapshot, Kentucky reference and113 model releases remain. This addition
+does not close the Ohio full-election gap or update transition estimates.
+
 ## Oklahoma early ballots and Texas counted-ballot additions
 
 [Complete Oklahoma source facts, all390 query cells, all51 projections, compiler and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-oklahoma-inperson-counts-20261114-01/complete-analysis.zip):
@@ -50,12 +99,13 @@ stages, registration context, differences1/8 and Uvalde's92 versus94 provisional
 measures remain separate. Signer dates are not count-update clocks. No new rate,
 geometry, unique-person, local demographic allocation or transition model follows.
 
-The final combined count version459c853f is active at cataloge3a42628, preserving
+The final combined count version459c853f was activated at cataloge3a42628, preserving
 all other catalog entries/current data/Kentucky bindings. Actual desktop/mobile
 production checks308 Oklahoma county-mode values,52 Texas native county-mode
 values, separate source modes and real full downloads. All51 interfaces and306
 bindings pass, with eight state references/6,450 retained early rows unchanged.
-All earlier full downloads and113 models remain available.
+All earlier full downloads and113 models remain available. The later separate
+Ohio context preserves this complete Oklahoma/Texas count delta.
 
 ## North Carolina and Oregon native successors
 
