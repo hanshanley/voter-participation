@@ -8,6 +8,34 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Maine House round source context
+
+The [complete selected-facts numerical SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-maine-house-round-context-20261114-01/complete-analysis.zip)
+is **19,942 bytes**, SHA256
+`f6c8e0ebb8553e840ecc016b0dcad6d8108749a60a8052684cbb4a51a97ee6bc`.
+The server-immutable archive contains14 members: sufficient selected source
+facts/access receipts, the reviewed compiler and ten tests, all four complete
+query outputs, checksums and literal reproduction instructions. It preserves
+three snapshots,12 category decisions, three major-party diagnostics and all
+three pairwise contrasts. It is not a metadata-only download.
+
+The actual anonymous-download archive and independent exact-packet review
+reproduce all outputs:
+
+```sh
+python3 -Werror code/reproduce.py --package . --output reproduced
+```
+
+The replay computes from pinned selected facts; it does not reacquire or replay
+extraction of the source article. Its eight selected process-local API guards
+are not a universal OS/network-isolation claim. Full publisher HTML and private
+person/history records are not included. Final Other/blank accounting is unknown;
+the403 tabulation CSV remains stopped. No comparable swing, individual transfer,
+statewide endpoint, model, geography or website update is implied.
+[Complete source decisions](../data/participation-house-round-context/20261114-01/observations.json)
+and [publication/complete-output pins](../data/participation-house-round-context/20261114-01/publication.json)
+record the scope. All older complete downloads remain intact.
+
 ## Automatic live counts and compatible estimates
 
 The [complete automatic scientific ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-a76640d9c4d3d0da65da00e49277f4963a9b6ef4472fad63b7a0c1b52d4b2e4d/complete-analysis.zip)

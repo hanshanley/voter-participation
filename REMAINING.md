@@ -42,6 +42,30 @@ All 144 durable stops, unfamiliar-product review holds, unsupported geography
 and model-identification limitations remain. Continue those substantive gaps;
 the requested final full audit THEN beautification remain separate queued work.
 
+## Maine House round-context integration complete; endpoint hold remains
+
+The separately permitted November12 CD2 announcement and two earlier held
+snapshots now have a durable source-context compiler, tests and all four full
+numerical query outputs. The already-published immutable release445345570
+contains the complete selected-facts SDK, not a metadata-only inventory.
+Its actual anonymous-download replay and independent exact-packet review passed;
+the compiler's ten focused tests and recursive payload guards remain intact.
+
+The three snapshots produce12 category decisions, three major-party diagnostics
+and three pairwise contrasts. Final-minus-initial D share among reported D/R is
+about **-0.00303 percentage points**, not the **+0.873** obtained by subtracting
+printed percentages with unqualified denominators. Neither number is promoted
+to a comparable election swing or an individual-transfer estimate.
+
+Final Other/blank/exhausted accounting remains unknown, not zero. The declared
+CSV403 and earlier route stops remain stopped. No full-state/common-round
+qualification, model endpoint, county allocation, fit, probability, weight,
+automatic count/native dataset or website display changed.
+[Full context and source decisions](data/participation-house-round-context/20261114-01/observations.json)
+and [complete download/reproduction](docs/DATA.md#maine-house-round-source-context)
+govern this bounded integration. The earlier common-round acquisition hold
+remains; other substantive gaps, then full audit and beautification, stay open.
+
 ## Nationwide misleading-swing correction verified live
 
 The shared correction is live at website `93a80186`: all 50 states use the same
@@ -125,12 +149,13 @@ The nullable-basis renderer crash is fixed; full source/publication records and
 versioned canonical sources preserve independent legacy files and HEAD/indexes.
 See [complete downloads](docs/DATA.md#tennessee-and-montana-partial-native-participation).
 
-Maine's new November12 announcement supplies final major-party counts, but
+Maine's new November12 CD2 announcement supplies final major-party counts, but
 not complete final Other/blank/accounting or a qualified statewide common-round
 vector. Its declared CSV returned403 and remains stopped. A bounded complete
-source-context packet has passed independent source/code/package review and
-two fresh offline replays; publication and durable source integration are next,
-not a completed model update. The original source-qualification gaps remain.
+source-context packet has passed independent source/code/package review,
+fresh replays and actual public-download reproduction. Its durable compiler,
+complete queries and source integration are now complete as recorded above;
+this is not a model update. The original source-qualification gaps remain.
 
 Continue genuine all-state/model gaps, then the requested full audit followed
 by understated beautification. Do not equate this bounded delivery with project

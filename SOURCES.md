@@ -6,6 +6,32 @@ Ledger updated: 2026-11-14 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Maine House round-source context
+
+The separately permitted November12,2026 CD2 article is retained as a distinct
+unofficial source snapshot, alongside the official initial counts and frozen
+provider counts. The declared tabulation CSV returned403 and remains unacquired;
+none of the earlier stopped routes was retried. The publication date is not a
+native count-update clock.
+
+The complete selected-facts SDK, immutable release445345570, has an independent
+exact-packet GO, ten tests, four complete numerical outputs and actual public
+download/reproduction acceptance. It retains12 category decisions, three D/R
+diagnostic rows and all three snapshot contrasts. Source-only D share among
+reported D/R changes about-0.00303pp from initial to final, not+0.873pp from
+unqualified printed percentages. Count differences do not identify people,
+transfers or changed voter preference.
+
+Final Other/blank/exhausted accounting, full-state common-round comparability
+and behavioral eligibility remain held. The durable compiler canonicalizes
+recursively validated source facts; unexpected nested records and changed
+contract/access/qualification semantics fail closed. No existing source count,
+model endpoint, fit, weight, geographic join, automatic dataset or website
+display is promoted.
+[Complete source/count queries and source decisions](data/participation-house-round-context/20261114-01/observations.json)
+and [full numerical download](docs/DATA.md#maine-house-round-source-context)
+remain separate from the active model inputs.
+
 ## Automatic qualified-source website delivery
 
 The research collector and website-owned consumer are active hourly GitHub
@@ -29,6 +55,7 @@ govern this increment; earlier dated entries below are retained history.
 
 | Reference area | Jump to |
 |---|---|
+| Maine House round-source context | [Complete selected facts and diagnostics; statewide/model hold retained](#maine-house-round-source-context) |
 | Automatic live delivery | [Qualified sources, hourly counts/estimates and complete replay](#automatic-qualified-source-website-delivery) |
 | Nationwide swing correction | [All-state source audit and neutral comparison holds](#nationwide-house-display-comparability-correction) |
 | Automatic current-results intake | [Hourly GitHub updates, retained source dates and complete numerical queries](#2026-automatic-current-results-intake) |
