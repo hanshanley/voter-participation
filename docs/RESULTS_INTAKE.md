@@ -124,6 +124,11 @@ These adapters preserve source-native measures, accepted identities and held
 rates. A report edition older than the last successful capture is retained as a
 failure, not activated over newer counts. A ballot question mentioning a primary
 election does not change the report's separately checked general-election scope.
+Current native report-status literals and printed fractions are bound to the
+complete current query before entering displayed fields. Older notes and
+rendered quality text are explicitly retained earlier-report context, not
+current report statistics. Repeat projection must not accumulate that label.
+FINAL remains a literal report edition, never inferred certification.
 Retained-original acceptance and portable tests establish parser capability;
 new hosted outcomes remain separately verifiable in the complete coverage query.
 

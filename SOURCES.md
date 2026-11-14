@@ -6,6 +6,53 @@ Ledger updated: 2026-11-14 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Current Hawaii and King summary-source delivery
+
+The shared repeated-header/statistical-column adapters passed actual hosted
+collector43649316665 and consumer43649696737, not just retained-original tests.
+Research `bebd78db`, website workflow `48539315`, source
+`82353e90a0e33d2b2c6187dbbf021b8c16a4a0c8b1afebe5bf3798213b596efd` and runtime `eb367240162013974d8c649947f651ae60db1341a0883dad4c2264d80bbd13df` pin the complete inputs,
+code and outputs.
+
+| Native reporting area | Current native count | Native printed fraction | Native report clock; timezone not supplied |
+|---|---:|---|---|
+| Honolulu election administration | 254,486 | 46.2% | November10,2026 08:02:57pm |
+| Hawaii election administration | 62,557 | 46.2% | November10,2026 06:08:53pm |
+| Kauai election administration | 24,729 | 50.1% | November10,2026 05:31:53pm |
+| Maui election administration, including Kalawao | 50,658 | 43.0% | November10,2026 05:57:18pm |
+| King County, Washington | 942,452 | 64.53% | 2026-11-13 15:22:42 |
+
+Hawaii's literal FINAL label is not certification; King supplies no current
+result-status label. Native TOTAL TURNOUT and Total Ballots Cast retain their
+source-specific qualifications. Printed percentages are contextual source
+facts, not newly approved analytical rates or evidence of complete counting.
+No Kalawao allocation or statewide Washington extrapolation is made.
+
+Physical production inspection exposed old REPORT3/missing printed fractions;
+a subsequent real-record regression also caught old King percentage/clock
+quality text. Both are corrected generically. Earlier source annotations remain
+retained, but rendered earlier-report context cannot masquerade as current
+statistics. Earlier successful numerical proofs and failed visual checks remain
+separate evidence, not rewritten successes.
+
+The final148-test maintained suite and154-test canonical suite pass, with11/9
+optional private-original skips respectively. Five retained parents and50
+independent count checks agree. The actual hosted complete-source14-output and
+runtime113-output replays pass with zero requests. All51 source decisions,
+178 durable stops, accepted identities/views, held rates and boundaries survive.
+The ten-state appearances are AL1,233/CA58/HI4/MI770/MN4,279/MT2/NM2,237/NV2/
+TX4/WA1; overlapping representations are not unique people.
+
+The consumer change is an engine pin only: static participation source bodies
+remain exactly those accepted in Pages43648246781/artifact14135351443.
+Actual994,240,543payload/996,843,520tar bytes,437complete-download pins and38
+served bodies passed. Numerical activation requires no new Pages build.
+[All state/source outcomes](data/participation-access/20261114-native-summary-automatic-intake-01/observations.json),
+[complete acceptance](data/participation-access/20261114-native-summary-automatic-intake-01/acceptance.json) and
+[both full downloads](docs/DATA.md#current-summary-source-automatic-intake)
+retain remaining scope and scientific holds. Older sections below are history.
+
+
 ## Expanded cross-state automatic intake and native maps
 
 Producer `ed0f48d` and collector43641019948 passed actual GitHub collection,

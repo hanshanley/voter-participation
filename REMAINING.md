@@ -13,6 +13,40 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Current summary-source automatic delivery
+
+Producer `bebd78db` and collector43649316665 feed consumer `48539315` and
+runtime `eb367240` through actual job43649696737. All five reviewed
+summaries refreshed: four Hawaii election administrations and King County,
+Washington. The hosted run refreshed8,590 record appearances across ten states;
+these include parents and units, not new people or disjoint geographies.
+All51 jurisdiction decisions and178 durable access stops remain explicit.
+
+Counts, native layers and compatible model descriptors activate atomically from
+the preceding verified rolling seed. Both full public packages reproduce their
+14source/113runtime outputs offline with zero requests. Actual desktop/mobile
+checks pass all306 reader frames, ten-state county selections, NM2,177/MN4,105
+native-map attributes and allnine model controls. No survey fits, weights,
+geographic joins or33-directional/17-held comparison qualifications changed.
+Unchanged/incompatible inputs are not presented as newly fitted estimates.
+
+Production inspection found and corrected stale report metadata, not count
+arithmetic: current native status and printed fractions now replace old display
+fields, and retained earlier quality text is explicitly historical. The
+intermediate numerically correct runs are not falsely recorded as visually
+accepted. FINAL is a literal report label, not certification or completed
+counting. Analytical rates remain held.
+
+Hawaii means four election administrations; Maui includes Kalawao without
+allocating its count. The Washington increment means King County only, not a
+complete statewide collector. All older full downloads remain available.
+[Complete state/source decisions](data/participation-access/20261114-native-summary-automatic-intake-01/observations.json),
+[actual delivery acceptance](data/participation-access/20261114-native-summary-automatic-intake-01/acceptance.json) and
+[both complete downloads](docs/DATA.md#current-summary-source-automatic-intake)
+record the scope. Nationwide county/precinct, historical, model and boundary
+gaps remain open; the requested full audit THEN beautification remain pending.
+
+
 ## Expanded automatic intake and native-map delivery verified
 
 The expanded producer `ed0f48d`, website reader `05974f91` and atomic runtime

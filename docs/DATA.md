@@ -8,6 +8,46 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current summary-source automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/2b809f5ddfd0abbf37dd0a4cad8a70de2e9652c5/snapshots/82353e90a0e33d2b2c6187dbbf021b8c16a4a0c8b1afebe5bf3798213b596efd/complete-results.zip) is
+**28,187,959 bytes**, SHA256
+`56baab4affaaa0ddac22a4d1d6610abb7d11ba8ad5ddbcd3121b187514263aa8`.
+Its96 members include every selected permitted input, all51 jurisdiction
+decisions, all14 complete outputs, accepted baselines, code, tests and checksums.
+The actual anonymous download freshly reproduces all outputs:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete automatic runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-eb367240162013974d8c649947f651ae60db1341a0883dad4c2264d80bbd13df/complete-analysis.zip) is
+**171,939,522 bytes**, SHA256
+`be91136a795cccb186af97df3fe6a5e73e6a7d6a843cdf2753b9e92260eb5d92`.
+The server-immutable full archive nests that ENTIRE source packet and the
+preceding verified rolling seed, complete before/after count/native datasets,
+allnine model cases and every numerical query. Its actual public fresh-extraction
+replay reproduces all113 outputs with zero network requests:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both use Python3.9+ and the existing requests dependency. These are complete
+permitted numerical packages, not metadata downloads. Publisher presentation
+templates, private respondents/histories/identifiers and fine cells are excluded;
+offline replay does not re-extract excluded originals, perform OCR or refit
+surveys. Optional private-original tests do not imply those originals are public.
+
+The new source scope is four Hawaii election administrations (Maui includes
+Kalawao) and King County only in Washington. Current status/printed percentages
+are source facts, not certification, qualified analytical rates or unique people.
+All178 stops and other coverage holds survive.
+[Complete acceptance](../data/participation-access/20261114-native-summary-automatic-intake-01/acceptance.json) and
+[all51 decisions](../data/participation-access/20261114-native-summary-automatic-intake-01/observations.json) record the actual hosted and
+live-browser outcomes. Every earlier full source/runtime link below is retained.
+
+
 ## Expanded cross-state automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/e9e2544b81f1a67d743a1d1c56881b0d91081fb8/snapshots/f79a8fc1daefd010c3f03a3ef4d7fd7684225aa2d0aa30c568d41cb73b904875/complete-results.zip)
