@@ -1,127 +1,49 @@
-name: Update election results
+name: Inspect already collected native webform originals
 
 on:
-  schedule:
-    - cron: "23 * * * *"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: election-night-participation
+  group: htmlstats-cache-diagnostic
   cancel-in-progress: false
 
 jobs:
-  refresh:
+  inspect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
-      - name: Limit automatic collection to this election
-        id: window
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-        run: |
-          python - <<'PY'
-          import os
-          from datetime import datetime, timezone
-          now = datetime.now(timezone.utc)
-          active = os.environ["EVENT_NAME"] == "workflow_dispatch" or (
-              datetime(2026, 11, 3, tzinfo=timezone.utc) <= now <
-              datetime(2027, 2, 1, tzinfo=timezone.utc)
-          )
-          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
-              output.write(f"active={str(active).lower()}\n")
-          PY
-
-      - name: Checkout the intake tool and complete baseline only
-        if: steps.window.outputs.active == 'true'
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          sparse-checkout: |
-            scripts
-            tests
-            data/results-intake
-
-      - name: Set up Python
-        if: steps.window.outputs.active == 'true'
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.12"
-
-      - name: Install existing intake dependencies
-        if: steps.window.outputs.active == 'true'
-        run: python -m pip install 'requests>=2.31' 'pytest>=8' 'xlrd>=2' 'pypdf>=4' 'PyMuPDF>=1.23' 'rapidocr-onnxruntime==1.4.4'
-
-      - name: Test source identities, stops, complete queries and publication
-        if: steps.window.outputs.active == 'true'
-        run: python -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_nationwide.py tests/test_current.py
-
-      - name: Reuse conditional HTTP cache
-        if: steps.window.outputs.active == 'true'
-        uses: actions/cache@v5
+      - uses: actions/cache/restore@v5
         with:
           path: ${{ runner.temp }}/election-intake/cache
-          key: election-intake-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: election-intake-
-
-      - name: Collect independent House and participation results
-        if: steps.window.outputs.active == 'true'
-        id: capture
-        continue-on-error: true
-        run: |
-          python -m scripts.results_intake collect \
-            --registry data/results-intake/registry.json \
-            --work-dir "$RUNNER_TEMP/election-intake"
-
-      - name: Publish valid results or preserve new access stops
-        id: publication
-        if: always() && steps.window.outputs.active == 'true' && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure')
-        run: |
-          python -m scripts.results_intake publish \
-            --work-dir "$RUNNER_TEMP/election-intake" \
-            > "$RUNNER_TEMP/election-intake/publication.json"
-
-      - name: Write current-results summary
-        if: always() && steps.window.outputs.active == 'true'
+          key: election-intake-43650846819-1
+          fail-on-cache-miss: true
+      - name: Export only hash-bound originals without source requests
         run: |
           python - <<'PY'
-          import json, os
+          import hashlib, json, os, socket
           from pathlib import Path
-          report = Path(os.environ["RUNNER_TEMP"]) / "election-intake/report.json"
-          publication = report.with_name("publication.json")
-          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as out:
-              if report.exists():
-                  data = json.loads(report.read_bytes())
-                  out.write("# Current election results\n\n")
-                  out.write(f"Jurisdictions: {data['jurisdictions']}. ")
-                  out.write(f"House districts with available returns: {data['house_districts_available']}")
-                  out.write(f"/{data['house_districts_declared']}.\n\n")
-                  body = publication.read_bytes() if publication.exists() else b""
-                  status = json.loads(body)["status"] if body else "not completed"
-                  out.write(f"Data publication: **{status}**. ")
-                  out.write("On successful publication, `results-data/latest.json` pins the ")
-                  out.write("immutable complete queries and reproducible ZIP.\n\n")
-                  out.write("Counting completeness is not certification. Candidate votes are not ballots. ")
-                  out.write("New source layouts remain explicit review items; failed sources retain prior data.\n")
-              else:
-                  out.write("Intake failed. Last valid results remain active; inspect the retained report.\n")
+          def deny(*args, **kwargs):
+              raise AssertionError("Cache inspection must not acquire sources")
+          socket.socket = socket.create_connection = socket.getaddrinfo = deny
+          selected = json.loads('{"NV-registered-2e44161be129c336": {"bytes": 478222, "sha256": "8a0b47b0d19409ebd64fe25bb52d7afed5cb44b36a4038cdd0783a8a5ae378dc", "url": "https://elections.clarkcountynv.gov/ElectionResults_NV/EnrEng/EnrMain"}, "WI-registered-e5b8a4b930d79d05": {"bytes": 134561, "sha256": "5446fcc254a6a280214022e247754aa59ab5123ca855a8aa8cf93f0085babfe7", "url": "https://apps.jeffersoncountywi.gov/jc/election/results/11032026"}, "WV-registered-99d1e3c526b6dcc7": {"bytes": 172683, "sha256": "a39a691de544fb7340e76e7e743dc312e09b620cb2c6d0372386d2414913231c", "url": "https://www.monongaliacountyclerk.com/myfiles/elections/2026General/Unofficial26G.html"}}')
+          cache = Path(os.environ["RUNNER_TEMP"]) / "election-intake/cache/objects"
+          output = Path(os.environ["RUNNER_TEMP"]) / "htmlstats-cached-originals"
+          output.mkdir()
+          for identity, source in selected.items():
+              body = (cache / source["sha256"]).read_bytes()
+              assert len(body) == source["bytes"]
+              assert hashlib.sha256(body).hexdigest() == source["sha256"]
+              (output / (identity + ".html")).write_bytes(body)
+          (output / "diagnostic.json").write_text(json.dumps({
+              "source_requests": 0, "cache_key": "election-intake-43650846819-1",
+              "originals": selected}, sort_keys=True) + "\n")
+          print(json.dumps({"originals": len(selected), "source_requests": 0}))
           PY
-
-      - name: Retain the report and complete numerical package
-        if: always() && steps.window.outputs.active == 'true'
-        uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v6
         with:
-          name: election-results-${{ github.run_id }}
-          if-no-files-found: warn
-          retention-days: 30
-          path: |
-            ${{ runner.temp }}/election-intake/report.json
-            ${{ runner.temp }}/election-intake/source-stops.json
-            ${{ runner.temp }}/election-intake/publication.json
-            ${{ runner.temp }}/election-intake/complete-results.zip
-
-      - name: Fail visibly if collection did not finish
-        if: always() && steps.window.outputs.active == 'true' && steps.capture.outcome == 'failure'
-        run: exit 1
+          name: htmlstats-cached-originals
+          retention-days: 7
+          path: ${{ runner.temp }}/htmlstats-cached-originals
