@@ -1,0 +1,52 @@
+available_districts,ballots,certification_qualified,different_district_source_clocks_preserved,expected_districts,party_votes,retained_districts,state,state_code,status
+7,,False,True,7,"{""Democratic"": 763464, ""Republican"": 914968}",7,Alabama,AL,all_district_snapshots_available
+1,,False,True,1,"{""Democratic"": 15572, ""Libertarian"": 5796, ""Nonpartisan"": 86208, ""Republican"": 105946}",1,Alaska,AK,all_district_snapshots_available
+9,,False,True,9,"{""Democratic"": 1373402, ""Green"": 10908, ""Independent"": 120, ""Libertarian"": 18074, ""No Labels"": 14952, ""Nonpartisan"": 4781, ""Other"": 10, ""Republican"": 1101777}",9,Arizona,AZ,all_district_snapshots_available
+4,,False,True,4,"{""Democratic"": 348637, ""Libertarian"": 15357, ""Republican"": 513162}",4,Arkansas,AR,all_district_snapshots_available
+52,,False,True,52,"{""Democratic"": 6647751, ""No Party Preference"": 76313, ""Republican"": 2886188}",52,California,CA,all_district_snapshots_available
+8,,False,True,8,"{""American Constitution"": 6639, ""Democratic"": 1580769, ""Independent"": 29008, ""Libertarian"": 55649, ""Republican"": 957702, ""Unity"": 4729, ""Write-In"": 0}",8,Colorado,CO,all_district_snapshots_available
+5,,False,True,5,"{""Democratic"": 807102, ""Green"": 4435, ""Independent"": 11909, ""Republican"": 460023, ""Write-In"": 680}",5,Connecticut,CT,all_district_snapshots_available
+1,,False,True,1,"{""Democratic"": 243467, ""Republican"": 134966}",1,Delaware,DE,all_district_snapshots_available
+0,,False,True,0,,0,District of Columbia,DC,not_applicable_no_voting_house_seat
+28,,False,True,28,"{""Democratic"": 3862341, ""Florida Forward Party"": 1832, ""Independent"": 57308, ""Independent Party of Florida"": 9590, ""Libertarian"": 25766, ""Nonpartisan"": 0, ""Republican"": 4038308}",28,Florida,FL,all_district_snapshots_available
+14,,False,True,14,"{""Democratic"": 2343022, ""Republican"": 1825597}",14,Georgia,GA,all_district_snapshots_available
+2,,False,True,2,"{""Democratic"": 256268, ""Green"": 7011, ""Nonpartisan"": 2348, ""Republican"": 105749}",2,Hawaii,HI,all_district_snapshots_available
+2,,False,True,2,"{""Constitution"": 3412, ""Democratic"": 242052, ""Independent"": 42477, ""Libertarian"": 7139, ""Republican"": 414366}",2,Idaho,ID,all_district_snapshots_available
+17,,False,True,17,"{""Democratic"": 2522530, ""Independent"": 14542, ""Republican"": 1511744, ""Working Class Party"": 5642}",17,Illinois,IL,all_district_snapshots_available
+9,,False,True,9,"{""Democratic"": 993821, ""Independent"": 174, ""Libertarian"": 16156, ""Republican"": 924234, ""Write-In"": 8}",9,Indiana,IN,all_district_snapshots_available
+4,,False,True,4,"{""Democratic"": 667037, ""Independent"": 20072, ""Libertarian"": 9500, ""Nonpartisan"": 1803, ""Republican"": 650479}",4,Iowa,IA,all_district_snapshots_available
+4,,False,True,4,"{""Democratic"": 522206, ""Libertarian"": 29173, ""Republican"": 545079}",4,Kansas,KS,all_district_snapshots_available
+6,,False,True,6,"{""Democratic"": 622091, ""Independent"": 18372, ""Kentucky Party"": 3836, ""Libertarian"": 12484, ""Nonpartisan"": 38, ""Republican"": 764309}",6,Kentucky,KY,all_district_snapshots_available
+6,,False,True,6,"{""Democratic"": 645794, ""Libertarian"": 9866, ""Nonpartisan"": 14039, ""Republican"": 789409}",6,Louisiana,LA,all_district_snapshots_available
+2,,False,True,2,"{""Democratic"": 412802, ""Nonpartisan"": 165, ""Republican"": 297458}",2,Maine,ME,all_district_snapshots_available
+8,,False,True,8,"{""Democratic"": 1363280, ""Green"": 19049, ""Nonpartisan"": 5838, ""Republican"": 617529, ""Write-In"": 37}",8,Maryland,MD,all_district_snapshots_available
+9,,False,True,9,"{""Democratic"": 1722855, ""Independent"": 10579, ""Independent/Unenrolled"": 93651, ""Republican"": 507904, ""Unenrolled"": 6442}",9,Massachusetts,MA,all_district_snapshots_available
+13,,False,True,13,"{""Democratic"": 2520988, ""Green"": 35379, ""Libertarian"": 21259, ""Natural Law"": 1765, ""No Party Affiliation"": 4097, ""Nonpartisan"": 3941, ""Republican"": 2103424, ""U.S. Taxpayers"": 11654, ""Working Class"": 27969}",13,Michigan,MI,all_district_snapshots_available
+8,,False,True,8,"{""Democratic"": 1574276, ""Independent"": 24110, ""Nonpartisan"": 3632, ""Republican"": 1214756}",8,Minnesota,MN,all_district_snapshots_available
+4,,False,True,4,"{""Democratic"": 442496, ""Independent"": 12480, ""Libertarian"": 6500, ""Republican"": 488946}",4,Mississippi,MS,all_district_snapshots_available
+8,,False,True,8,"{""Democratic"": 1008279, ""Libertarian"": 59639, ""Republican"": 1023199}",8,Missouri,MO,all_district_snapshots_available
+2,,False,True,2,"{""Democratic"": 202434, ""Independent"": 17079, ""Libertarian"": 11525, ""Republican"": 250040}",2,Montana,MT,all_district_snapshots_available
+3,,False,True,3,"{""America First"": 4392, ""Democratic"": 310846, ""Independent"": 8083, ""Legal Marijuana Now"": 7106, ""Libertarian"": 11168, ""Nebraska Working People"": 6846, ""Republican"": 404557}",3,Nebraska,NE,all_district_snapshots_available
+4,,False,True,4,"{""Democratic"": 614267, ""Independent American"": 26266, ""No Political Party"": 9618, ""Republican"": 427876}",4,Nevada,NV,all_district_snapshots_available
+2,,False,True,2,"{""Democratic"": 368340, ""Independent"": 7478, ""Nonpartisan"": 742, ""Republican"": 258686}",2,New Hampshire,NH,all_district_snapshots_available
+12,,False,True,12,"{""Democratic"": 1823549, ""Green"": 3411, ""Independent"": 35419, ""Nonpartisan"": 4119, ""Republican"": 1014339, ""Socialist Workers"": 5222, ""Write-In"": 85}",12,New Jersey,NJ,all_district_snapshots_available
+3,,False,True,3,"{""Democratic"": 444860, ""Republican"": 277531}",3,New Mexico,NM,all_district_snapshots_available
+26,,False,True,26,"{""Conservative"": 2075, ""Democratic"": 3686362, ""Independent"": 10826, ""Libertarian"": 637, ""Nonpartisan"": 16302, ""Republican"": 2230558, ""Socialism PSL"": 10647}",26,New York,NY,all_district_snapshots_available
+14,,False,True,14,"{""Democratic"": 2385611, ""Green"": 2890, ""Libertarian"": 49241, ""Nonpartisan"": 530, ""Republican"": 1752634}",14,North Carolina,NC,all_district_snapshots_available
+1,,False,True,1,"{""Democratic"": 85892, ""Independent"": 13886, ""Nonpartisan"": 340, ""Republican"": 134477}",1,North Dakota,ND,all_district_snapshots_available
+15,,False,True,15,"{""Democratic"": 2318450, ""Independent"": 18109, ""Libertarian"": 35293, ""Republican"": 2178153, ""Write-In"": 526}",15,Ohio,OH,all_district_snapshots_available
+5,,False,True,5,"{""Democratic"": 454345, ""Independent"": 18961, ""Republican"": 643929}",5,Oklahoma,OK,all_district_snapshots_available
+6,,False,True,6,"{""Democratic"": 1082787, ""Nonpartisan"": 2559, ""Pacific Green"": 18968, ""Republican"": 743719}",6,Oregon,OR,all_district_snapshots_available
+17,,False,True,17,"{""Democratic"": 2803188, ""Republican"": 2142015, ""The Independent Party"": 17361}",17,Pennsylvania,PA,all_district_snapshots_available
+2,,False,True,2,"{""Democratic"": 232582, ""Independent"": 6193, ""Nonpartisan"": 738, ""Republican"": 118688}",2,Rhode Island,RI,all_district_snapshots_available
+7,,False,True,7,"{""Democratic"": 978191, ""Libertarian"": 17678, ""Nonpartisan"": 1671, ""Republican"": 1031088, ""Workers"": 3674}",7,South Carolina,SC,all_district_snapshots_available
+1,,False,True,1,"{""Democratic"": 109997, ""Republican"": 195588}",1,South Dakota,SD,all_district_snapshots_available
+9,,False,True,9,"{""Democratic"": 903874, ""Independent"": 39360, ""Republican"": 1088370}",9,Tennessee,TN,all_district_snapshots_available
+38,,False,True,38,"{""Democratic"": 5147146, ""Green"": 23994, ""Independent"": 10615, ""Libertarian"": 8974, ""Nonpartisan"": 436, ""Republican"": 4591278, ""Write-In"": 74}",38,Texas,TX,all_district_snapshots_available
+4,,False,True,4,"{""Constitution"": 7832, ""Democratic"": 459077, ""Independent American"": 8402, ""Libertarian"": 23539, ""Nonpartisan"": 71, ""Republican"": 468459, ""Unaffiliated"": 26649}",4,Utah,UT,all_district_snapshots_available
+1,,False,True,1,"{""Democratic"": 198758, ""Independent"": 11593, ""Nonpartisan"": 246, ""Republican"": 94078}",1,Vermont,VT,all_district_snapshots_available
+11,,False,True,11,"{""Democratic"": 2105772, ""Green"": 4199, ""Independent"": 40573, ""Libertarian"": 6356, ""Nonpartisan"": 7691, ""Republican"": 1422580}",11,Virginia,VA,all_district_snapshots_available
+10,,False,True,10,"{""Democratic"": 1779277, ""Nonpartisan"": 12063, ""Republican"": 1039496}",10,Washington,WA,all_district_snapshots_available
+2,,False,True,2,"{""Constitution"": 6904, ""Democratic"": 180582, ""Republican"": 262491}",2,West Virginia,WV,all_district_snapshots_available
+8,,False,True,8,"{""Democratic"": 1453581, ""Independent"": 12567, ""Nonpartisan"": 12699, ""Republican"": 1108357}",8,Wisconsin,WI,all_district_snapshots_available
+1,,False,True,1,"{"""": 1031, ""Constitution"": 7961, ""Democratic"": 61689, ""Libertarian"": 13667, ""Republican"": 99906}",1,Wyoming,WY,all_district_snapshots_available
