@@ -247,7 +247,8 @@ def numeric_observations(baseline, feeds):
                          "id": row["id"], "observation": row})
     for identity, entry in sorted(feeds.items()):
         if (entry.get("data") is not None and identity.split("-")[0] in STATES
-                and not identity.endswith(("-capabilities", "-directory"))):
+                and not identity.endswith(("-capabilities", "-directory"))
+                and entry["data"].get("numerical_data_qualified") is not False):
             rows.append({"state_code": identity.split("-")[0], "channel": identity,
                          "status": entry["status"], "source": entry["source"],
                          "observation": entry["data"]})
@@ -308,6 +309,13 @@ def project(inputs, baseline):
                     "data_retained": entry.get("data") is not None,
                     "source_url": (entry.get("source") or {}).get("url")}
                    for key, entry in sorted({**feeds, **{"house-" + k: v for k, v in house.items()}}.items())]
+    products_query = compressed(encoded(inputs.get("products", {})))
+    products_reference = {"file": "declared-numerical-queries.json.gz", **pin(products_query)}
+    products_index = {
+        identity: {**{key: value for key, value in entry.items() if key != "data"},
+                   "factual_data_available": entry.get("data") is not None,
+                   "complete_factual_query": {**products_reference, "key": identity}}
+        for identity, entry in inputs.get("products", {}).items()}
     snapshot = {
         "contract": "participation.automatic_results_snapshot.v1", "election_date": "2026-11-03",
         "jurisdictions": coverage, "participation_observations": observations,
@@ -318,7 +326,7 @@ def project(inputs, baseline):
         "source_clock_not_replaced_by_retrieval_time": True,
         "baseline_and_fresh_source_frames_are_separate_not_added": True,
         "granular_sources": inputs.get("granular", {}),
-        "declared_numerical_products": inputs.get("products", {}),
+        "declared_numerical_products": products_index,
     }
     outputs = {
         "snapshot.json.gz": compressed(encoded(snapshot)), "coverage.csv": csv_body(coverage),
@@ -330,9 +338,10 @@ def project(inputs, baseline):
     if "granular" in inputs:
         _, changes = results_granular.project(baseline, inputs["granular"])
         snapshot["canonical_local_changes"] = changes
+        snapshot["declared_numerical_products_query"] = products_reference
         outputs["snapshot.json.gz"] = compressed(encoded(snapshot))
         outputs["granular-source-queries.json.gz"] = compressed(encoded(inputs["granular"]))
-        outputs["declared-numerical-queries.json.gz"] = compressed(encoded(inputs.get("products", {})))
+        outputs["declared-numerical-queries.json.gz"] = products_query
         outputs["canonical-local-changes.csv"] = csv_body(changes)
     return outputs
 

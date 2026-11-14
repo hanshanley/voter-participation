@@ -224,6 +224,37 @@ def test_same_data_is_a_numerical_noop_despite_new_check_time(tmp_path, monkeypa
     assert first["files"] == second["files"]
 
 
+def test_complete_factual_products_are_not_duplicated_as_participation_observations(tmp_path):
+    registry = fixture(tmp_path)
+    config = intake.read(registry)
+    baseline = intake.baseline_inputs(registry.parent / "accepted", config["baseline"])
+    facts = {"status": "reported", "source": {"url": "https://example.test/workbook"},
+             "data": {"numerical_data_qualified": False,
+                      "tables": [{"rows": [["label", "count"], ["native", 0], ["missing", None]]}]},
+             "error": None, "first_observed_at": NOW.isoformat()}
+    native = {"status": "reported", "source": {"url": "https://example.test/statistics"},
+              "data": {"ballots": 0, "source_update_label": None}}
+    inputs = {"feeds": {"CA-product": facts, "CA-official": native},
+              "house": {}, "districts": {},
+              "directories": {state: {"status": "not_listed"} for state in intake.STATES},
+              "granular": {}, "products": {"CA-product": facts}}
+    before = copy.deepcopy(inputs)
+    outputs = intake.project(inputs, baseline)
+    snapshot = json.loads(gzip.decompress(outputs["snapshot.json.gz"]))
+    observations = snapshot["participation_observations"]
+    assert len(observations) == 52
+    assert observations[-1]["observation"] == native["data"]
+    assert all(row["channel"] != "CA-product" for row in observations)
+    query = outputs["declared-numerical-queries.json.gz"]
+    assert json.loads(gzip.decompress(query)) == inputs["products"]
+    reference = snapshot["declared_numerical_products_query"]
+    assert reference == {"file": "declared-numerical-queries.json.gz", **pin(query)}
+    indexed = snapshot["declared_numerical_products"]["CA-product"]
+    assert indexed["complete_factual_query"] == {**reference, "key": "CA-product"}
+    assert indexed["factual_data_available"] is True and "data" not in indexed
+    assert inputs == before
+
+
 def test_invalid_stop_seed_is_fail_closed_before_transport(tmp_path):
     with pytest.raises(ValueError, match="ledger"):
         intake.Collector(tmp_path, {}, {"urls": None, "prefixes": [], "hosts": []}, NOW)

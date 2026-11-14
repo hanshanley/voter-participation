@@ -88,6 +88,11 @@ native county collectors. Supported XLS/XLSX, delimited, JSON, HTML-table and
 nested-ZIP products retain complete permitted factual cells, including blanks,
 zeros and formula caches without executing formulas. Unreviewed columns do not
 become participation counts merely because extraction succeeds.
+Unqualified factual products are not participation observations. The operational
+snapshot indexes directory-product facts through the byte/hash-pinned
+`declared-numerical-queries.json.gz`; that complete query and the full selected
+inputs remain inside the download, without duplicating every workbook in the
+live snapshot. The existing decompression limit remains unchanged.
 
 Changed identities/layouts remain held; these adapters do not approve new
 boundaries or guarantee complete precinct coverage.
