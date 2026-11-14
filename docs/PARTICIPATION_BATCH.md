@@ -338,6 +338,37 @@ Supply both complete baselines to the command above and activate the refreshed
 count shard and native layer atomically. Updating a table alone does not update
 the separately served map properties.
 
+### Preserve the canonical source-view contract
+
+Canonical observation validity alone does not establish that the existing
+county/reporting-unit renderer can display a new source. A source entry may
+declare `canonical_view_compatibility`, using
+`participation.canonical_view_compatibility.v1`, with `review_evidence` and
+an exact `source_packages` mapping keyed by the native source ID.
+
+Each package binding identifies a complete permitted factual/reproduction
+packet: HTTPS GitHub release URL, byte length, SHA256, scope
+`complete_permitted_factual_packet`, status `verified_immutable`, and true
+`immutable`/`verified_anonymously` flags established by actual publication
+verification. A missing source binding or conflicting/malformed package
+metadata is rejected; a source page or metadata-only inventory is not a
+substitute for the complete packet.
+
+This opt-in supplies missing display metadata only. It retains an existing
+canonical denominator basis, or explicitly labels a null analytical
+denominator as withheld; it never creates a denominator, rate or population
+qualification. A missing complete-source link uses only its reviewed
+source-specific package. Reporting-unit views must retain actual nonempty
+`unit` and `unit_kind` values, not invented precinct classifications.
+Native counts, source fields, clocks, unit labels, geometry and rate holds
+remain unchanged.
+
+Before activation, exercise the actual county and reporting-unit selectors,
+detail rendering and complete-source links for every affected row. A
+checksum/schema-only client check is not that browser verification. Clearly
+label private candidate-data fixtures and subsequently repeat acceptance on
+actual production without data, DOM or style overrides.
+
 ## Revise an existing scientific control without inventing a model
 
 Use the complete current packet in [DATA.md](DATA.md) as the pinned input and

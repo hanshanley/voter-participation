@@ -22,6 +22,18 @@ from scripts.package_historical_source_sets import build as package
 
 IDENTITY_VIEW = ("county_id", "county", "unit_key", "unit", "precinct", "unit_kind",
     "county_fips", "geography_level", "reference_geometry", "maps_approved")
+CANONICAL_VIEW_COMPATIBILITY = "participation.canonical_view_compatibility.v1"
+COMPATIBILITY_KEYS = {"contract", "review_evidence", "source_packages"}
+PACKAGE_KEYS = {
+    "bytes",
+    "immutable",
+    "scope",
+    "sha256",
+    "status",
+    "url",
+    "verified_anonymously",
+}
+WITHHELD_DENOMINATOR_LABEL = "analysis_denominator_withheld_or_not_supplied"
 
 
 def local(root, name):
@@ -87,9 +99,90 @@ def discover(spec, acquire):
     return result
 
 
+def canonical_package(spec, source_id):
+    review = spec.get("canonical_view_compatibility")
+    if review is None:
+        return None
+    if (not isinstance(review, dict) or set(review) != COMPATIBILITY_KEYS
+            or review["contract"] != CANONICAL_VIEW_COMPATIBILITY
+            or not isinstance(review["review_evidence"], str)
+            or not review["review_evidence"].strip()
+            or not isinstance(review["source_packages"], dict)
+            or not review["source_packages"]):
+        raise IntakeError(
+            "view_contract",
+            "Canonical view compatibility requires explicit reviewed source packages",
+        )
+    packages = review["source_packages"]
+    if any(not isinstance(identity, str) or not identity for identity in packages):
+        raise IntakeError("view_contract", "Canonical source-package identities are invalid")
+    package = packages.get(source_id)
+    if package is None:
+        return None
+    if (not isinstance(package, dict) or set(package) != PACKAGE_KEYS
+            or not isinstance(package["url"], str)
+            or not package["url"].startswith("https://")
+            or not package["url"].endswith(".zip")
+            or type(package["bytes"]) is not int or package["bytes"] <= 0
+            or not re.fullmatch(r"[a-f0-9]{64}", str(package["sha256"]))
+            or package["scope"] != "complete_permitted_factual_packet"
+            or package["status"] not in ("verified_immutable", "planned_immutable")
+            or type(package["immutable"]) is not bool
+            or type(package["verified_anonymously"]) is not bool):
+        raise IntakeError("view_contract", "Canonical source-package metadata is invalid")
+    expected_flags = (
+        (True, True)
+        if package["status"] == "verified_immutable"
+        else (False, False)
+    )
+    if (package["immutable"], package["verified_anonymously"]) != expected_flags:
+        raise IntakeError("view_contract", "Canonical source-package status is inconsistent")
+    return package
+
+
+def canonical_view(row, spec):
+    result = copy.deepcopy(row)
+    view = result["view"]
+    denominator = result["denominator"]
+    basis = view.get("denominator_basis")
+    if basis is None or basis == "":
+        view["denominator_basis"] = (
+            denominator["basis"] if denominator else WITHHELD_DENOMINATOR_LABEL
+        )
+    package = canonical_package(spec, result["source"]["id"])
+    url = view.get("complete_download_url")
+    if url is None or url == "":
+        if package is None:
+            raise IntakeError(
+                "view_contract",
+                "Canonical observations need an explicit complete factual package",
+            )
+        view["complete_download_url"] = package["url"]
+    elif package is not None and url != package["url"]:
+        raise IntakeError(
+            "view_contract",
+            "Canonical observation and reviewed package URLs differ",
+        )
+    required = ("denominator_basis", "complete_download_url", "source_url")
+    if any(not isinstance(view.get(name), str) or not view[name] for name in required):
+        raise IntakeError("view_contract", "Canonical display metadata is incomplete")
+    if (not view["complete_download_url"].startswith("https://")
+            or not view["complete_download_url"].endswith(".zip")
+            or not isinstance(view.get("quality"), list)):
+        raise IntakeError("view_contract", "Canonical display source metadata is invalid")
+    if result["geography"]["level"] == "reporting_unit" and any(
+            not isinstance(view.get(name), str) or not view[name]
+            for name in ("unit", "unit_kind")):
+        raise IntakeError(
+            "view_contract",
+            "Canonical reporting units need actual native unit labels and kinds",
+        )
+    return result
+
+
 def display(row, spec):
     if "view" in row:
-        return row
+        return canonical_view(row, spec)
     binding = spec.get("view", {})
     identity = binding.get("identities", {}).get(row["geography"]["id"])
     if identity is None:

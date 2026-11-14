@@ -109,10 +109,16 @@ class RoutineBatchTests(unittest.TestCase):
                 literal="Native ballots", unit="source_reported_count"),
             columns=dict(geography_id="unit", geography_name="label", count="ballots"),
             expected_rows=2, source_clock=dict(literal="native clock", timezone=None),
-            view=dict(identities={name: dict(county_id="parent", county="Native county",
-                unit_key=name, unit=label, precinct=label, unit_kind="source_reporting_unit",
-                geography_level="reporting_unit", maps_approved=False)
-                for name, label in (("one", "One"), ("two", "Two"))}))
+            view=dict(constants=dict(
+                denominator_basis="analysis_denominator_withheld_or_not_supplied",
+                complete_download_url=(
+                    "https://example.gov/releases/download/reviewed/"
+                    "complete-analysis.zip"
+                )),
+                identities={name: dict(county_id="parent", county="Native county",
+                    unit_key=name, unit=label, precinct=label, unit_kind="source_reporting_unit",
+                    geography_level="reporting_unit", maps_approved=False)
+                    for name, label in (("one", "One"), ("two", "Two"))}))
         rows = [display(row, self.spec) for row in adapt(self.spec, {"data": self.native},
             {"data": pin(self.native)}, {"literal": "native clock", "timezone": None}, {})]
         self.original_rows = rows
@@ -162,6 +168,109 @@ class RoutineBatchTests(unittest.TestCase):
 
     def execute(self, **kwargs):
         return execute(self.registry, self.baseline, self.work, self.supplied, offline=True, **kwargs)
+
+    def canonical_compatibility(self, source_id="native-counts"):
+        return {
+            "contract": "participation.canonical_view_compatibility.v1",
+            "review_evidence": "Synthetic complete factual package and renderer-field review",
+            "source_packages": {
+                source_id: {
+                    "bytes": 100,
+                    "immutable": True,
+                    "scope": "complete_permitted_factual_packet",
+                    "sha256": "d" * 64,
+                    "status": "verified_immutable",
+                    "url": (
+                        "https://example.gov/releases/download/reviewed/"
+                        "complete-analysis.zip"
+                    ),
+                    "verified_anonymously": True,
+                }
+            },
+        }
+
+    def test_canonical_view_rejects_actual_missing_basis_and_download_fields(self):
+        row = copy.deepcopy(self.original_rows[0])
+        row["view"].pop("denominator_basis", None)
+        row["view"].pop("complete_download_url", None)
+        with self.assertRaisesRegex(
+                IntakeError, "explicit complete factual package"):
+            display(row, self.spec)
+
+    def test_canonical_view_adds_withheld_basis_and_reviewed_complete_package_only(self):
+        row = copy.deepcopy(self.original_rows[0])
+        row["view"].pop("denominator_basis", None)
+        row["view"].pop("complete_download_url", None)
+        canonical = copy.deepcopy(row)
+        spec = copy.deepcopy(self.spec)
+        spec["canonical_view_compatibility"] = self.canonical_compatibility()
+        result = display(row, spec)
+        self.assertEqual(
+            result["view"]["denominator_basis"],
+            "analysis_denominator_withheld_or_not_supplied",
+        )
+        self.assertEqual(
+            result["view"]["complete_download_url"],
+            spec["canonical_view_compatibility"]["source_packages"][
+                "native-counts"
+            ]["url"],
+        )
+        self.assertEqual(
+            {key: value for key, value in result.items() if key != "view"},
+            {key: value for key, value in canonical.items() if key != "view"},
+        )
+        self.assertEqual(
+            (result["view"]["unit"], result["view"]["unit_kind"]),
+            (canonical["view"]["unit"], canonical["view"]["unit_kind"]),
+        )
+
+    def test_canonical_view_uses_canonical_denominator_basis_without_qualification(self):
+        row = copy.deepcopy(self.original_rows[0])
+        row["denominator"] = {
+            "basis": "source_registered_voters_context_only",
+            "literal": "Registered voters",
+            "qualified": False,
+            "value": 20,
+        }
+        row["view"].pop("denominator_basis", None)
+        row["view"].pop("complete_download_url", None)
+        spec = copy.deepcopy(self.spec)
+        spec["canonical_view_compatibility"] = self.canonical_compatibility()
+        result = display(row, spec)
+        self.assertEqual(
+            result["view"]["denominator_basis"],
+            "source_registered_voters_context_only",
+        )
+        self.assertFalse(result["denominator"]["qualified"])
+
+    def test_canonical_view_rejects_bad_package_unit_or_existing_url_metadata(self):
+        for failure in ("flags", "source", "url", "unit", "quality"):
+            with self.subTest(failure=failure):
+                row = copy.deepcopy(self.original_rows[0])
+                row["view"].pop("denominator_basis", None)
+                row["view"].pop("complete_download_url", None)
+                spec = copy.deepcopy(self.spec)
+                spec["canonical_view_compatibility"] = self.canonical_compatibility()
+                if failure == "flags":
+                    package = spec["canonical_view_compatibility"]["source_packages"][
+                        "native-counts"
+                    ]
+                    package["immutable"] = False
+                elif failure == "source":
+                    spec["canonical_view_compatibility"] = self.canonical_compatibility(
+                        "different-source"
+                    )
+                elif failure == "url":
+                    row["view"]["complete_download_url"] = (
+                        "https://example.gov/releases/download/wrong/"
+                        "complete-analysis.zip"
+                    )
+                elif failure == "unit":
+                    row["view"]["unit_kind"] = None
+                else:
+                    row["view"]["quality"] = None
+                with self.assertRaises(IntakeError):
+                    display(row, spec)
 
     def alias_refresh_fixture(self):
         state = json.loads(gzip.decompress((self.baseline / "states/AR.json.gz").read_bytes()))
