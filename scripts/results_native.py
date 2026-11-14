@@ -1212,6 +1212,7 @@ def summary_statistics(body, templates, profile):
         if current_clock < prior_clock:
             raise ValueError("Native summary edition regressed")
         native.update({clock_key: query["source_clock"], "query": query,
+                       "native_fraction_literal": query["native_fraction_literal"],
                        "private_original_pin": pin(body),
                        "whole_publisher_html_redistributed": False})
         updates.append(change(template, query["count"], native, registered=query["registered"],

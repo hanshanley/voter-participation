@@ -239,6 +239,9 @@ def test_summary_registered_sources_refresh_actual_projection_without_changing_o
     originals = {}
     for layout in ("repeated_header", "column_turnout"):
         body, row, profile = summary_fixture(layout)
+        body = body.replace(b"REPORT 3", b"FINAL")
+        row["view"].update(source_status_literal="REPORT 3", native_printed_pct="70.0%",
+                           notes="Earlier report printed 70.0%.")
         originals[row["view"]["source_url"]] = body
         state = profile["state"]
         name = "states/" + state + ".json.gz"
@@ -266,6 +269,18 @@ def test_summary_registered_sources_refresh_actual_projection_without_changing_o
         assert current["records"][0]["id"] == old["records"][0]["id"]
         assert current["records"][0]["count"]["value"] == 9
         assert current["records"][0]["denominator"] is None
+        view = current["records"][0]["view"]
+        assert view["source_status_literal"] == ("FINAL" if state == "HI" else None)
+        assert view["native_printed_pct"] == ("90.0%" if state == "HI" else "90.00%")
+        assert view["reported_pct"] is None
+        assert current["records"][0]["source"]["fields"] == view
+        assert view["notes"] == (
+            "Retained earlier-report context (not current report statistics): "
+            "Earlier report printed 70.0%.")
+        if state == "HI":
+            assert current["records"][0]["reporting_status"]["literal"] == "FINAL"
+        assert current["records"][0]["reporting_status"]["complete"] is None
+    assert granular.project(after, entries) == (after, [])
     collector.prior = entries
     for url, body in originals.items():
         originals[url] = (body.replace(b" 9", b" 8").replace(b"90.00%", b"80.00%")
@@ -277,6 +292,28 @@ def test_summary_registered_sources_refresh_actual_projection_without_changing_o
             assert entry["status"] == "retained_after_failure"
             assert entry["data"] == entries[identity]["data"]
             assert entry["data"]["updates"][0]["value"] == 9
+
+
+@pytest.mark.parametrize("field,value", [
+    ("native_fraction_literal", "80.0%"),
+    ("native_fraction_literal", 90),
+    ("native_report_status_literal", "REPORT 3"),
+])
+def test_summary_projection_rejects_display_facts_unbound_to_native_query(monkeypatch, field, value):
+    pdf_reader(monkeypatch)
+    body, row, profile = summary_fixture("column_turnout")
+    facts = native.summary_statistics(body.replace(b"REPORT 3", b"FINAL"), [row], profile)
+    facts["updates"][0]["native"][field] = value
+    before = baseline(("HI",))
+    name = "states/HI.json.gz"
+    before[name] = intake.compressed(encoded({"records": [row]}))
+    index = json.loads(before["index.json"])
+    index["states"]["HI"] = {"file": name, **pin(before[name])}
+    before["index.json"] = encoded(index)
+    entry = {"status": "reported", "data": facts,
+             "source": {"url": row["view"]["source_url"], **pin(body)}}
+    with pytest.raises(ValueError, match="display facts disagree"):
+        granular.project(before, {"HI-summary": entry})
 
 
 @pytest.mark.parametrize("change", [

@@ -535,6 +535,23 @@ def project(baseline, granular):
                     and denominator["qualified"] else None,
                     reported_units=update["reported_units"], total_units=update["total_units"],
                     native_printed_pct=None)
+                if "native_fraction_literal" in native:
+                    query = native.get("query") or {}
+                    fraction = native["native_fraction_literal"]
+                    status = native.get("native_report_status_literal")
+                    if (not isinstance(fraction, str)
+                            or not re.fullmatch(r"[0-9]+(?:\.[0-9]+)?%", fraction)
+                            or fraction != query.get("native_fraction_literal")
+                            or status != query.get("native_report_status_literal")
+                            or status is not None and (
+                                not isinstance(status, str) or not status.strip())):
+                        raise ValueError("Native summary display facts disagree with the complete query")
+                    view.update(native_printed_pct=fraction, source_status_literal=status)
+                    if status is not None:
+                        row["reporting_status"]["literal"] = status
+                    prefix = "Retained earlier-report context (not current report statistics): "
+                    if view.get("notes") and not view["notes"].startswith(prefix):
+                        view["notes"] = prefix + view["notes"]
                 view["source_reporting_label"] = (
                     "Automatic same-source native statistical refresh. Missing reporting stays unknown; "
                     "source counts are not certification or independently observed people. "
