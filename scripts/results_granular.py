@@ -12,7 +12,9 @@ from urllib.parse import quote, unquote, urlsplit, urlunsplit
 import zipfile
 
 from scripts.current import reporting_counts
-from scripts.participation_intake.contract import count, digest, encoded, observation_id, pin, validate
+from scripts.participation_intake.contract import (
+    IntakeError, count, digest, encoded, observation_id, pin, validate,
+)
 
 
 MN_URL = "https://electionresultsfiles.sos.mn.gov/20261103/pctstats.txt"
@@ -460,6 +462,30 @@ def collect(collector, baseline):
     return jobs
 
 
+def identity_fields(row):
+    return (row["source"]["id"], row["election"]["id"], row["geography"]["id"],
+            row["measure"]["id"], row["measure"]["mode"])
+
+
+def validate_projected_row(old, row):
+    try:
+        validate(row)
+        return None
+    except IntakeError as error:
+        if error.code != "observation_identity":
+            raise
+    expected = observation_id(*identity_fields(row))
+    if (row["id"] != old["id"] or identity_fields(row) != identity_fields(old)
+            or old["id"] == observation_id(*identity_fields(old))):
+        raise IntakeError(
+            "observation_identity",
+            "A refresh cannot create or alter a legacy stable observation identity")
+    probe = copy.deepcopy(row)
+    probe["id"] = expected
+    validate(probe)
+    return expected
+
+
 def project(baseline, granular):
     """Create successor bodies, preserving old versions, IDs, views and join decisions."""
     result = dict(baseline)
@@ -514,8 +540,14 @@ def project(baseline, granular):
                     "source counts are not certification or independently observed people. "
                     "Prior geographic qualifications retained; no new boundary join or local model.")
                 view["automatic_source_refresh"] = True
+                expected_identity = validate_projected_row(old, row)
+                if expected_identity is not None:
+                    view["legacy_stable_observation_id"] = {
+                        "accepted_id": row["id"], "tuple_derived_id": expected_identity,
+                        "identity_fields_changed": False,
+                    }
                 row["source"]["fields"] = copy.deepcopy(view)
-                validate(row)
+                validate_projected_row(old, row)
                 if row != old:
                     state_changed = True
                     changed.append({"state_code": state, "id": row["id"],

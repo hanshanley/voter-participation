@@ -283,13 +283,28 @@ def test_pdf_total_column_components_and_whitespace_are_checked():
 
 
 def test_ocr_groups_physical_rows_not_reading_order_and_keeps_numeric_confidence():
-    from scripts.results_pdf_ocr import physical_lines
+    from scripts.results_pdf_ocr import physical_lines, vertical_layout
     def box(x, y, width=10):
         return [[x, y], [x + width, y], [x + width, y + 10], [x, y + 10]]
     result = physical_lines([[box(100, 0), "0", .999], [box(0, 0, 90), "Total Ballots", .8],
                              [box(0, 30), "Second line", .95]])
     assert result["text"] == "Total Ballots 0\nSecond line"
     assert result["confidence"] == [.999, .95]
+    def rectangle(x, y, width, height):
+        return [[x, y], [x + width, y], [x + width, y + height], [x, y + height]]
+    ambiguous = [
+        [rectangle(460, 549, 97, 69), "123", .999],
+        [rectangle(1203, 557, 95, 62), "123", .999],
+        [rectangle(600, 564, 60, 21), "voters", .999],
+        [rectangle(670, 566, 68, 24), "rejected", .999],
+    ]
+    with pytest.raises(ValueError, match="Ambiguous physical"):
+        physical_lines(ambiguous)
+    strict = physical_lines(ambiguous, strict_role_alignment=True)
+    assert "voters rejected" in strict["text"]
+    assert vertical_layout([
+        [rectangle(0, y, 10, 100), "vertical", 1.] for y in (0, 110, 220)])
+    assert not vertical_layout([[rectangle(0, 0, 100, 10), "horizontal", 1.]])
 
 
 def test_pdf_projection_preserves_only_explicit_native_timezone_and_all_other_states():
@@ -363,3 +378,162 @@ def test_complete_projection_is_identical_after_source_fact_serialization():
             "source": {"url": row["view"]["source_url"], **pin(text.encode())}}
     serialized = json.loads(encoded(entries))
     assert granular.project(before, entries) == granular.project(before, serialized)
+
+
+def texas_template(count_value=1262, form="official", county="Example County"):
+    source_county = county.removesuffix(" County")
+    row = template("TX", county, "county")
+    row["count"] = {"value": count_value, "literal": count_value, "status": "reported"}
+    row["source_clock"] = {"literal": None, "timezone": None}
+    row["measure"]["literal"] = (
+        "M. Total ballots counted (I+J+K+L)"
+        if form == "official" else "I. Total ballots counted (G+H)")
+    row["view"]["source_url"] = "https://tx.example.test/" + source_county.lower() + "-reconciliation.pdf"
+    row["view"]["native_record"] = {
+        "source_county": source_county, "native_election_date": "11/03/2026",
+        "native_status_literal": (
+            "Election Reconciliation - Official Totals"
+            if form == "official"
+            else "Preliminary Election Reconciliation - Unofficial Totals"),
+        "ballots": count_value, "registered": 2305, "total_voters": 1265,
+        "total_rejected": 3, "difference": 3,
+    }
+    return validate(row)
+
+
+def texas_text(form="official"):
+    if form == "official":
+        return "\n".join((
+            "12-2", "Election Reconciliation - Official Totals",
+            "County Example Election Name General Election",
+            "Registered Voters 2305 Election Date 11/03/2026",
+            "E. Total voters 1265 H. Total ballots 3 M. Total ballots 1262",
+            "N. Difference between voters and ballots 3 O. Difference as percentage of voters",
+            "(E-H-M) (N/(E-H)*100) 0.00%", "5. Attestation", "11/09/2026",
+        ))
+    return "\n".join((
+        "12-1", "Preliminary Election Reconciliation - Unofficial Totals",
+        "County Example Election Name General Election",
+        "Registered Voters 2305 Election Date 11/03/2026",
+        "C. Total voters 1265 F. Total ballots rejected or pending 3 "
+        "I. Total ballots counted 1262",
+        "J. Difference between voters and ballots 0 K. Difference as percentage of voters",
+        "(C-F-I) (J/(C-F)*100) 0.00%", "5. Attestation", "11/03/2026",
+    ))
+
+
+@pytest.mark.parametrize("form", ["official", "preliminary"])
+def test_texas_reconciliation_selects_reviewed_physical_parent_without_promoting_register(form):
+    row = texas_template(form=form)
+    result = native._tx_parse_view(texas_text(form), row, 1)
+    facts = result[0]
+    assert facts["count"] == 1262
+    assert facts["registered_raw"] == 2305
+    assert facts["registered_denominator_not_promoted"] is True
+    assert facts["source_clock"] is None
+    assert facts["attestation_date_is_not_count_update_clock"] is True
+    assert facts["selected_physical_role"] == (
+        "M. Total ballots counted" if form == "official" else "I. Total ballots counted")
+    assert facts["native_total_role_evidence"] == {
+        "roles": ["E", "H", "M"] if form == "official" else ["C", "F", "I"],
+        "left_to_right": True, "counted_role_explicit": True,
+        "binding": "literal_header_line",
+    }
+
+
+def test_texas_reconciliation_retains_signed_native_discrepancy_without_repair():
+    row = texas_template()
+    facts, _lines = native._tx_parse_view(texas_text(), row, 1)
+    assert facts["printed_difference"] == 3
+    assert facts["computed_difference"] == 0
+    assert facts["discrepancy"] == {
+        "code": "native_reconciliation_difference_disagrees",
+        "repaired": False, "actual_native": 3, "computed": 0,
+        "expression": "E-H-M",
+    }
+
+
+def test_texas_reconciliation_source_plan_is_role_driven_not_county_allowlisted():
+    row = texas_template(county="Unlisted County")
+    shard = {"records": [row], "views": {"official": {"counties": [row["id"]]}}}
+    body = intake.compressed(encoded(shard))
+    before = {"index.json": encoded({"states": {"TX": {
+        "file": "states/TX.json.gz", **pin(body)}}}), "states/TX.json.gz": body}
+    source = next(iter(native.source_plan(before)["TX"].values()))
+    assert source["adapter"] == "reviewed_texas_reconciliation_parent"
+    assert source["templates"][0]["geography"]["name"] == "Unlisted County"
+
+
+def test_texas_reconciliation_never_substitutes_candidate_sums():
+    row = texas_template()
+    text = texas_text().replace(
+        "E. Total voters 1265 H. Total ballots 3 M. Total ballots 1262",
+        "Candidate A 700 Candidate B 562 Total Votes 1262")
+    with pytest.raises(ValueError, match="parent headers|statistical-parent"):
+        native._tx_parse_view(text, row, 1)
+
+
+@pytest.mark.parametrize("changed", [
+    "E. Total voters 1265 M. Total ballots 3 H. Total ballots 1262",
+    "E. Total voters 1265 Total ballots 3 M. Total ballots 1262",
+    "E. Total voters 1265 999 H. Total ballots 3 M. Total ballots 1262",
+])
+def test_texas_reconciliation_rejects_swapped_missing_or_decoy_parent_headers(changed):
+    row = texas_template()
+    text = texas_text().replace(
+        "E. Total voters 1265 H. Total ballots 3 M. Total ballots 1262", changed)
+    with pytest.raises(ValueError, match="headers"):
+        native._tx_parse_view(text, row, 1)
+
+
+def test_texas_reconciliation_geometry_binds_voter_rejected_counted_columns():
+    def cell(left, text, start=0):
+        return {"left": left, "right": left + 40, "start": start,
+                "end": start + len(text), "text": text, "confidence": 1.}
+    lines = [
+        "1. Voters 2. Rejected ballots 3. Counted ballots",
+        "E. Total voters H. Total ballots M. Total ballots",
+        "1265 3 1262",
+    ]
+    geometry = [
+        [cell(10, "1. Voters"), cell(110, "2. Rejected ballots"),
+         cell(210, "3. Counted ballots")],
+        [cell(10, "E. Total voters"), cell(110, "H. Total ballots"),
+         cell(210, "M. Total ballots")],
+        [cell(10, "1265", 0), cell(110, "3", 5), cell(210, "1262", 7)],
+    ]
+    role = native.TX_RECONCILIATION_ROLES["m. total ballots counted (i+j+k+l)"]
+    position, values, evidence = native._tx_total_row(lines, role, geometry)
+    assert position == 2
+    assert [value for value, _span in values] == [1265, 3, 1262]
+    assert evidence["binding"] == "physical_voter_rejected_counted_columns"
+    swapped = copy.deepcopy(geometry)
+    swapped[1][1]["left"], swapped[1][2]["left"] = 210, 110
+    swapped[1][1]["right"], swapped[1][2]["right"] = 250, 150
+    with pytest.raises(ValueError, match="physical columns|left-to-right"):
+        native._tx_total_row(lines, role, swapped)
+
+
+def test_texas_reconciliation_ocr_keeps_same_engine_two_resolution_and_point98(monkeypatch):
+    from scripts import results_pdf_ocr as ocr
+
+    pdf_reader(monkeypatch)
+    row = texas_template()
+    text = texas_text()
+    lines = text.splitlines()
+    view = {"text": text, "confidence": [1.] * len(lines),
+            "receipt": {"engine": "fixture", "count_minimum_confidence": .98}}
+    monkeypatch.setattr(
+        ocr, "first_page_views", lambda body, **kwargs: [view, copy.deepcopy(view)])
+    result = native.texas_reconciliation_statistics(b"", [row])
+    assert result["updates"][0]["value"] == 1262
+    assert result["updates"][0]["registered"] is None
+    assert result["updates"][0]["clock"] is None
+    assert result["ocr"]["same_engine_resolution_check_not_independent_validation"] is True
+    assert [item["roles"] for item in result["ocr"]["native_total_role_evidence"]] == [
+        ["E", "H", "M"], ["E", "H", "M"]]
+    low = copy.deepcopy(view)
+    low["confidence"][4] = .979
+    monkeypatch.setattr(ocr, "first_page_views", lambda body, **kwargs: [view, low])
+    with pytest.raises(ValueError, match="confidence"):
+        native.texas_reconciliation_statistics(b"", [row])

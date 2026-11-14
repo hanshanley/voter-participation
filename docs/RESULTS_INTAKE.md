@@ -51,7 +51,7 @@ sources or rerunning private survey fits. Optional packaged tests use `pytest`:
 
 ```sh
 cd code
-python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_nationwide.py tests/test_current.py
+python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_nationwide.py tests/test_current.py
 ```
 
 ## What updates automatically
@@ -80,6 +80,26 @@ confidence of at least .98. This is a same-engine resolution check, **not**
 independent OCR validation. Conflicting meaningful text is never replaced by OCR.
 Uncertain scans remain held. Collection requires the `pdf` extra; numerical
 packet replay neither downloads OCR models nor re-extracts excluded originals.
+
+Registered Texas reconciliation parents require explicit preliminary C/F/I or
+official E/H/M voter/rejected/counted roles in their native column order.
+Image-only forms additionally require the physical voter/rejected/counted header
+bands; an extra or displaced number is not silently selected as counted ballots.
+Attestation dates are not count-update clocks, and unresolved form labels remain
+held. Existing accepted stable observation IDs survive only when their full
+source/election/geography/measure identity tuple is unchanged.
+
+The shared workbook family supports the reviewed Colorado all-returned county
+tables and Wayne County's separate main/supplement statistical-unit workbooks.
+Colorado mail and in-person modes reconcile separately to all-returned controls;
+returned/processed counts are not promoted to cast ballots. Wayne's two component
+inventories, duplicate parent controls and distinct decoded Excel clocks stay
+separate; the administrative combination is not a printed native county parent.
+Native zeros remain zero, blanks stay unknown, formulas are not executed, and
+contextual registration/fractions do not become qualified turnout denominators.
+Portable workbook behavior tests run without private originals; additional
+retained-original cases are optional and skip only through their source fixture.
+Parser capability does not clear a stopped source or establish fresh acquisition.
 
 Source planning examines all 51 accepted jurisdiction shards. The current
 baseline supplies primary-product registrations in 29 states; that number

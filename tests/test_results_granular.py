@@ -7,7 +7,9 @@ import zipfile
 import pytest
 
 from scripts import results_granular as granular
-from scripts.participation_intake.contract import encoded, observation_id, pin, validate
+from scripts.participation_intake.contract import (
+    IntakeError, digest, encoded, observation_id, pin, validate,
+)
 
 
 def template(state="MN", name="UNIT", level="reporting_unit", native=None):
@@ -117,6 +119,45 @@ def test_failed_capture_with_older_retained_facts_never_rolls_back_last_good_web
              "error": "blocked_403"}
     assert granular.project(baseline, {"MN-native-local": entry}) == (baseline, [])
     assert entry["data"] == facts
+
+
+def test_projection_preserves_accepted_harris_id_only_when_identity_tuple_is_unchanged():
+    row = template("TX", "Harris", "county")
+    row["source"]["id"] = "harris-preliminary-reconciliation-20261104"
+    row["election"].update(
+        id="harris-2026-general-special-reconciliation", type="general_and_special")
+    row["geography"]["id"] = "reviewed:TX:Harris County"
+    row["measure"].update(
+        id="native-counted-ballots", literal="I. Total ballots counted (G+H)",
+        unit="source_reported_counted_ballots")
+    row["id"] = digest(encoded([
+        "64d92c0f8787191e42d3889caf60ecc5e56a7f1e2a8fdfd406152afcdc60f7b3",
+        "Harris", "I. Total ballots counted (G+H)"]))[:32]
+    assert row["id"] == "8754e0c31741f08f126e1628a4961ef6"
+    shard = {"records": [row], "views": {"official": {"counties": [row["id"]]}}}
+    body = gzip.compress(encoded(shard), mtime=0)
+    baseline = {"states/TX.json.gz": body, "index.json": encoded({
+        "states": {"TX": {"file": "states/TX.json.gz", **pin(body)}}})}
+    facts = {"updates": [granular.change(
+        row, 9, {"query": {"count": 9}}, registered=None, clock=None)]}
+    entry = {"status": "reported", "data": facts,
+             "source": {"url": "https://example.test/statistics", **pin(b"native")}}
+    updated, changes = granular.project(baseline, {"TX-native": entry})
+    current = json.loads(gzip.decompress(updated["states/TX.json.gz"]))["records"][0]
+    expected = observation_id(*granular.identity_fields(row))
+    assert expected == "b9898f0f987acbf1070de52586a60036"
+    assert current["id"] == row["id"]
+    assert current["view"]["legacy_stable_observation_id"] == {
+        "accepted_id": row["id"], "tuple_derived_id": expected,
+        "identity_fields_changed": False,
+    }
+    assert granular.validate_projected_row(row, current) == expected
+    assert changes == [{"state_code": "TX", "id": row["id"], "previous": 7,
+                        "current": 9, "source_status": "reported"}]
+    changed_identity = copy.deepcopy(current)
+    changed_identity["measure"]["id"] = "other-measure"
+    with pytest.raises(IntakeError, match="cannot create or alter"):
+        granular.validate_projected_row(row, changed_identity)
 
 
 def test_discovery_uses_anchor_scope_not_only_filename_and_rejects_person_files():

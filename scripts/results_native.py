@@ -1,6 +1,6 @@
 """Refresh reviewed statistical source families without assigning new geographic identities."""
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor
 from decimal import Decimal, ROUND_HALF_UP
 import html
@@ -19,6 +19,57 @@ from scripts.results_granular import (
 CA_URL = "https://media.sos.ca.gov/media/status_GG.json"
 IN_URL = "https://enr.indianavoters.in.gov/site/data/statewideTurnout_B.json"
 NM_URL = "https://electionresults.sos.nm.gov/VoterTurnoutDetails.aspx?map=PREC"
+CO_WORKBOOK_URL = (
+    "https://www.coloradosos.gov/pubs/newsRoom/pressReleases/2026/"
+    "20261105GenElectionActivity.xlsx"
+)
+WAYNE_MAIN_URL = (
+    "https://www.waynecountymi.gov/files/assets/mainsite/v/1/clerk/documents/"
+    "elections/link-statementofvotescastrpt_un.xlsx"
+)
+WAYNE_SUPPLEMENT_URL = (
+    "https://www.waynecountymi.gov/files/assets/mainsite/v/1/clerk/documents/"
+    "elections/vbs-statementofvotescast.xlsx"
+)
+COUNTY_WORKBOOK_FIELDS = {
+    "county": "A", "ACN": "B", "APV": "C", "CTR": "D", "DEM": "E", "FWD": "F",
+    "GRN": "G", "LBR": "H", "NOL": "I", "REP": "J", "UAF": "K", "UNI": "L",
+    "Grand Total": "M",
+}
+COUNTY_WORKBOOK_SHEETS = {
+    "All_Returned_Ballots_By_County": "ALL RETURNED BALLOTS - MAIL AND IN PERSON COMBINED",
+    "Returned_Mail_Ballots_By_County": "RETURNED MAIL BALLOTS",
+    "In_Person_Ballots_By_County": "IN PERSON BALLOTS",
+}
+WORKBOOK_PROFILES = {
+    CO_WORKBOOK_URL: {
+        "state": "CO", "kind": "county_mode_tables",
+        "query_id": "co-returned-processed-county-modes",
+        "sheets": [
+            "Voter_Counts", "All_Returned_Ballots_By_County",
+            "All_Returned_Ballots_GenderAge", "Returned_Mail_Ballots_By_County",
+            "Returned_Mail_Ballots_GenderAge", "In_Person_Ballots_By_County",
+            "In_Person_Ballots_GenderAge",
+        ],
+        "clock": "11:59 PM November 5, 2026; timezone not supplied. Published November 6, 2026.",
+        "measure": "Returned and processed ballots (native all-returned total)",
+    },
+    WAYNE_MAIN_URL: {
+        "state": "MI", "kind": "statistical_mode_blocks", "product": "wayne-main",
+        "query_id": "wayne-main-statistics", "sheet": "Stats", "first_row": 8,
+        "modes": ["Early Voting", "Election Day", "Absentee", "Pre-Process Absentee"],
+        "parents": ["Wayne County - Total", "County - Total"],
+        "expected_units": 758,
+    },
+    WAYNE_SUPPLEMENT_URL: {
+        "state": "MI", "kind": "statistical_mode_blocks",
+        "product": "wayne-three-localities",
+        "query_id": "wayne-three-localities-statistics", "sheet": "Sheet1",
+        "first_row": 8, "modes": ["Early Voting", "Election Day", "Absentee"],
+        "parents": ["Wayne County - Total", "County - Total"],
+        "expected_units": 12,
+    },
+}
 RECORD_PROFILES = {
     CA_URL: {
         "state": "CA", "query_id": "ca-all-status",
@@ -47,6 +98,12 @@ RECORD_PROFILES = {
 PDF_MEASURES = {
     "Ballots Cast - Total", "Ballots Cast", "Total Ballots Cast", "Total Ballots",
     "Voters Cast", "Cards Cast", "TOTAL TURNOUT",
+}
+TX_RECONCILIATION_ROLES = {
+    "i. total ballots counted (g+h)": {
+        "form": "preliminary", "count_role": "I", "total_roles": ("C", "F", "I")},
+    "m. total ballots counted (i+j+k+l)": {
+        "form": "official", "count_role": "M", "total_roles": ("E", "H", "M")},
 }
 COUNT_LITERAL = r"(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)"
 ELECTION_DATE = re.compile(
@@ -182,10 +239,626 @@ def record_statistics(body, templates, profile):
             "native_measure_not_relabelled_as_ballots": True}
 
 
+def workbook_table(workbook, name):
+    matches = [table for table in workbook if table["name"] == name]
+    if len(matches) != 1:
+        raise ValueError("Reviewed native worksheet is absent or ambiguous")
+    return matches[0]
+
+
+def reviewed_count(value):
+    if type(value) is not int or value < 0:
+        raise ValueError("A blank, fractional, boolean or negative workbook cell is not a recorded zero")
+    return value
+
+
+def county_mode_statistics(body, templates, profile, workbook):
+    from scripts.native_tabular import values
+
+    if [table["name"] for table in workbook] != profile["sheets"]:
+        raise ValueError("Colorado reviewed workbook sheet inventory changed")
+    header = list(COUNTY_WORKBOOK_FIELDS)
+    parsed = {}
+    for sheet, title in COUNTY_WORKBOOK_SHEETS.items():
+        table = workbook_table(workbook, sheet)
+        if values(table, 1).get("A") != title:
+            raise ValueError("Colorado reviewed workbook mode title changed")
+        headings = values(table, 2)
+        if [headings.get(COUNTY_WORKBOOK_FIELDS[field]) for field in header] != [
+                "COUNTY", *header[1:]]:
+            raise ValueError("Colorado reviewed workbook county columns changed")
+        rows, parent, ended = [], None, False
+        for item in table["rows"]:
+            number = item["row"]
+            if number <= 2:
+                continue
+            cells = values(table, number)
+            label = cells.get("A")
+            populated = {key: value for key, value in cells.items() if value not in (None, "")}
+            if label == "end of worksheet":
+                if parent is None or any(key != "A" for key in populated):
+                    raise ValueError("Colorado workbook end marker changed")
+                ended = True
+                continue
+            if ended:
+                if populated:
+                    raise ValueError("Colorado workbook has data after its reviewed end marker")
+                continue
+            if not isinstance(label, str) or not label:
+                raise ValueError("Colorado workbook county row is blank or malformed")
+            record = {field: reviewed_count(cells.get(column))
+                      for field, column in COUNTY_WORKBOOK_FIELDS.items() if field != "county"}
+            if sum(record[field] for field in header[1:-1]) != record["Grand Total"]:
+                raise ValueError("Colorado workbook party cells disagree with the row total")
+            row = {"county": label, "native_excel_row": number, "native_record": record}
+            if label == "Grand Total":
+                if parent is not None:
+                    raise ValueError("Colorado workbook repeats its native parent")
+                parent = row
+            else:
+                if parent is not None:
+                    raise ValueError("Colorado workbook county appears after the native parent")
+                rows.append(row)
+        if not ended or parent is None or len(rows) != 64:
+            raise ValueError("Colorado workbook county inventory changed")
+        if any(sum(row["native_record"][field] for row in rows)
+               != parent["native_record"][field] for field in header[1:]):
+            raise ValueError("Colorado workbook counties disagree with the separate state parent")
+        parsed[sheet] = {"rows": rows, "parent": parent}
+    modes = list(COUNTY_WORKBOOK_SHEETS)
+    for sheet in modes[1:]:
+        if [(row["county"], row["native_excel_row"]) for row in parsed[sheet]["rows"]] != [
+                (row["county"], row["native_excel_row"]) for row in parsed[modes[0]]["rows"]]:
+            raise ValueError("Colorado workbook mode county identities or physical rows changed")
+    for index, row in enumerate(parsed[modes[0]]["rows"]):
+        returned = row["native_record"]
+        mail = parsed[modes[1]]["rows"][index]["native_record"]
+        in_person = parsed[modes[2]]["rows"][index]["native_record"]
+        if any(returned[field] != mail[field] + in_person[field] for field in header[1:]):
+            raise ValueError("Colorado returned mode is not the mail plus in-person native control")
+    if any(parsed[modes[0]]["parent"]["native_record"][field]
+           != parsed[modes[1]]["parent"]["native_record"][field]
+           + parsed[modes[2]]["parent"]["native_record"][field] for field in header[1:]):
+        raise ValueError("Colorado statewide returned modes disagree")
+
+    expected = {}
+    for template in templates:
+        native = template.get("view", {}).get("native_record") or {}
+        if (template["geography"]["state_code"] != "CO"
+                or template["geography"]["level"] != "county"
+                or template["election"]["year"] != 2026
+                or template["election"]["type"] != "general"
+                or template["measure"]["literal"] != profile["measure"]
+                or set(native) != set(modes)):
+            raise ValueError("Reviewed Colorado workbook template scope changed")
+        selectors = []
+        for sheet in modes:
+            selected = native[sheet]
+            if (not isinstance(selected, dict) or set(selected) != {
+                    "county", "native_excel_row", "native_record"}):
+                raise ValueError("Reviewed Colorado workbook selector changed")
+            selectors.append((selected["county"], selected["native_excel_row"]))
+        if len(set(selectors)) != 1:
+            raise ValueError("Colorado template mode selectors no longer identify one county row")
+        county, number = selectors[0]
+        if county in expected or template["geography"]["name"] not in (
+                county + " County", "City and County of " + county):
+            raise ValueError("Reviewed Colorado workbook county identity changed")
+        expected[county] = (number, template)
+    observed = {row["county"]: row for row in parsed[modes[0]]["rows"]}
+    if set(expected) != set(observed):
+        raise ValueError("Reviewed Colorado workbook county inventory changed")
+
+    updates = []
+    for county, (number, template) in expected.items():
+        source = observed[county]
+        if source["native_excel_row"] != number:
+            raise ValueError("Reviewed Colorado workbook physical county row changed")
+        native = {sheet: parsed[sheet]["rows"][number - 3] for sheet in modes}
+        if any(item["county"] != county or item["native_excel_row"] != number
+               for item in native.values()):
+            raise ValueError("Colorado workbook mode rows no longer identify the same county")
+        value = native[modes[0]]["native_record"]["Grand Total"]
+        updates.append(change(template, value, native, clock=profile["clock"]))
+    complete = []
+    for sheet in modes:
+        complete.extend({"query_id": profile["query_id"], "mode": sheet, **row}
+                        for row in parsed[sheet]["rows"] + [parsed[sheet]["parent"]])
+    return {"updates": updates, "complete_native_query": complete,
+            "native_column_bindings": {
+                "county": "A", "count": "M", "party_components": list(header[1:-1]),
+                "mode_sheets": modes,
+            },
+            "private_original_pin": pin(body), "geographic_joins_changed": False,
+            "native_measure_not_relabelled_as_ballots": True,
+            "returned_processed_frames_remain_distinct": True}
+
+
+def excel_clock(table, address):
+    matches = [cell for row in table["rows"] for cell in row["cells"]
+               if cell["address"] == address]
+    if len(matches) != 1:
+        raise ValueError("Reviewed native workbook clock cell is absent or ambiguous")
+    cell = matches[0]
+    literal = cell["cached_literal"]
+    if (cell["storage_type"] != "n" or cell["formula"] is not None
+            or not isinstance(literal, str)
+            or re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", literal) is None):
+        raise ValueError("Reviewed native workbook clock cache changed")
+    style = int(cell["attributes"].get("s", "-1"))
+    if not 0 <= style < len(table["workbook_cell_formats"]):
+        raise ValueError("Reviewed native workbook clock style changed")
+    format_id = table["workbook_cell_formats"][style].get("numFmtId")
+    number_format = table["workbook_number_formats"].get(format_id)
+    if number_format != r"[$-10409]m/d/yyyy\ h:mm:ss\ AM/PM":
+        raise ValueError("Reviewed native workbook clock number format changed")
+    date1904 = table["workbook_properties"].get("date1904", "0")
+    if date1904 not in ("0", "false"):
+        raise ValueError("Reviewed Wayne workbook changed from the 1900 date system")
+    value = Decimal(literal)
+    if value < 61:
+        raise ValueError("Reviewed native workbook clock is outside the supported Excel date range")
+    milliseconds = int((value * Decimal(86400000)).quantize(Decimal("1"), ROUND_HALF_UP))
+    decoded = datetime(1899, 12, 30) + timedelta(milliseconds=milliseconds)
+    return {
+        "cached_literal": literal, "cell": address, "date_system": "1900",
+        "literal": decoded.isoformat(timespec="milliseconds")
+            + " (decoded Excel cache; timezone not supplied)",
+        "number_format": number_format,
+        "qualification": "decoded_native_worksheet_cache_not_printed_text",
+        "timezone": None,
+    }
+
+
+def decoded_excel_clock(literal):
+    suffix = " (decoded Excel cache; timezone not supplied)"
+    if not isinstance(literal, str) or not literal.endswith(suffix):
+        raise ValueError("Reviewed native workbook clock qualification changed")
+    return datetime.fromisoformat(literal[:-len(suffix)])
+
+
+def statistical_workbook_statistics(body, templates, profile, workbook):
+    from scripts.native_products import query, statistical_units
+
+    table = workbook_table(workbook, profile["sheet"])
+    product = {"tables": [dict(kind="worksheet", **item) for item in workbook]}
+    selection = {
+        "id": profile["query_id"], "product": profile["product"],
+        "tables": [profile["sheet"]],
+        "fields": {
+            "column_A": "A", "column_B": "B", "column_C": "C", "column_D": "D",
+            "column_E": "E", "column_F": "F", "column_G": "G", "column_H": "H",
+            "native_row": "$row", "native_table": "$table",
+        },
+        "keys": ["native_table", "native_row"],
+        "require": {"5": {
+            "A": "Precinct", "B": "Registered\nVoters",
+            "D": "Voters Cast", "F": "% Turnout",
+        }},
+    }
+    source_query = query(product, selection)
+    grouping = statistical_units(source_query, {
+        "first_row": profile["first_row"], "modes": profile["modes"],
+        "parents": profile["parents"],
+        "fields": {
+            "row": "native_row", "label": "column_A", "registered": "column_B",
+            "cast": "column_D", "fraction": "column_F",
+        },
+    })
+    if len(grouping["units"]) != profile["expected_units"]:
+        raise ValueError("Wayne reviewed native unit inventory changed")
+    clock = excel_clock(table, "H1")
+    observed = {unit["unit"]: unit for unit in grouping["units"]}
+    if len(observed) != len(grouping["units"]):
+        raise ValueError("Wayne reviewed native unit labels are repeated")
+    expected = {}
+    for template in templates:
+        native = template.get("view", {}).get("native_record") or {}
+        old_unit = native.get("native_unit") or {}
+        old_clock = native.get("native_clock") or {}
+        if (template["geography"]["state_code"] != "MI"
+                or template["geography"]["level"] != "reporting_unit"
+                or template["election"]["year"] != 2026
+                or template["election"]["type"] != "general"
+                or template["measure"]["literal"] != "Voters Cast (reported statistical units)"
+                or native.get("source_product") != profile["product"]
+                or old_unit.get("unit") != template["geography"]["name"]
+                or old_clock.get("cell") != "H1"
+                or old_clock.get("date_system") != "1900"):
+            raise ValueError("Reviewed Wayne workbook template scope or component role changed")
+        name = old_unit["unit"]
+        if name in expected:
+            raise ValueError("Reviewed Wayne workbook template identity is repeated")
+        expected[name] = (template, old_unit, old_clock)
+    if set(expected) != set(observed):
+        raise ValueError("Reviewed Wayne workbook unit inventory changed")
+    previous_clocks = {old_clock["literal"] for _, _, old_clock in expected.values()}
+    if (len(previous_clocks) != 1
+            or decoded_excel_clock(clock["literal"])
+            < decoded_excel_clock(previous_clocks.pop())):
+        raise ValueError("Wayne native workbook clock regressed or lost its distinct component identity")
+
+    updates = []
+    for name, (template, old_unit, _) in expected.items():
+        unit = observed[name]
+        if (unit["source_rows"] != old_unit.get("source_rows")
+                or unit["header_source_rows"] != old_unit.get("header_source_rows")):
+            raise ValueError("Reviewed Wayne workbook physical unit row changed")
+        denominator = template.get("denominator")
+        registered, compatible = None, False
+        if denominator is not None:
+            if denominator.get("qualified"):
+                if (denominator.get("value") != old_unit.get("registered")
+                        or old_unit.get("registered") != unit["registered"]):
+                    raise ValueError("Qualified native registration identity changed")
+                registered = unit["registered"]
+                compatible = bool(registered and unit["cast"] <= registered)
+            else:
+                registered = denominator.get("value")
+        native = {
+            "agreeing_native_parent_copies": grouping["agreeing_native_parent_copies"],
+            "native_clock": clock, "native_parent": grouping["parent"],
+            "native_unit": unit, "source_product": profile["product"],
+        }
+        updates.append(change(template, unit["cast"], native, registered=registered,
+            clock=clock["literal"], rate_compatible=compatible))
+    return {"updates": updates, "complete_native_query": source_query["rows"],
+            "native_statistical_units": grouping, "private_original_pin": pin(body),
+            "geographic_joins_changed": False,
+            "native_parent_is_not_unique_people_or_a_printed_composite": True,
+            "native_registration_and_fraction_context_not_promoted": True}
+
+
+def workbook_statistics(body, templates, profile):
+    from scripts.native_tabular import xlsx
+
+    if (not templates or any(template["geography"]["state_code"] != profile["state"]
+            for template in templates)):
+        raise ValueError("Reviewed native workbook state scope changed")
+    workbook = xlsx(body)
+    public_facts(workbook)
+    if profile["kind"] == "county_mode_tables":
+        return county_mode_statistics(body, templates, profile, workbook)
+    if profile["kind"] == "statistical_mode_blocks":
+        return statistical_workbook_statistics(body, templates, profile, workbook)
+    raise ValueError("Unreviewed native workbook profile")
+
+
 def pdf_measure(template):
     native = template["view"].get("native_record") or {}
     label = native.get("selected_native_parent_literal") or template["measure"]["literal"]
     return label if isinstance(label, str) and label in PDF_MEASURES else None
+
+
+def texas_reconciliation_role(template):
+    if (template["geography"]["state_code"] != "TX"
+            or template["geography"]["level"] != "county"
+            or template["election"]["year"] != 2026
+            or template["election"]["type"] not in ("general", "general_and_special")
+            or template["election"].get("date") != "2026-11-03"):
+        return None
+    literal = template["measure"]["literal"]
+    if not isinstance(literal, str):
+        return None
+    normalized = " ".join(literal.split()).lower()
+    role = TX_RECONCILIATION_ROLES.get(normalized)
+    native = template.get("view", {}).get("native_record") or {}
+    source_county = native.get("source_county")
+    election_date = native.get("native_election_date")
+    ballots = native.get("ballots")
+    if isinstance(native.get("full_native_measures"), list):
+        matching = [row for row in native["full_native_measures"]
+                    if isinstance(row, dict)
+                    and " ".join(str(row.get("native_label", "")).split()).lower() == normalized
+                    and row.get("category") == "counted_ballots"
+                    and row.get("mode") == "total"]
+        if len(matching) == 1:
+            source_county = matching[0].get("county")
+            election_date = matching[0].get("election_date")
+            ballots = matching[0].get("count")
+    if (role is None or not isinstance(source_county, str)
+            or not isinstance(election_date, str)
+            or count(ballots) != template["count"]["value"]):
+        return None
+    return {**role, "native_measure_literal": literal,
+            "reviewed_source_county": source_county,
+            "reviewed_election_date": election_date}
+
+
+def _tx_lines(page):
+    return [" ".join(line.split()) for line in page.splitlines() if line.strip()]
+
+
+def _tx_compact(value):
+    return re.sub(r"[^a-z0-9]+", "", value.lower())
+
+
+def _tx_counts(line):
+    return [(int(match.group(0).replace(",", "")), match.span())
+            for match in re.finditer(COUNT_LITERAL, line)]
+
+
+def _tx_selected_confidence(tokens, line, span):
+    selected = [item["confidence"] for item in tokens[line]
+                if item["start"] < span[1] and item["end"] > span[0]]
+    if not selected:
+        raise ValueError("Texas reconciliation count has no physical OCR token binding")
+    result = min(selected)
+    if result < .98:
+        raise ValueError("Texas reconciliation selected count OCR confidence requires review")
+    return result
+
+
+def _tx_role_pattern(letter, kind):
+    label = r"Total\s+voters?" if kind == "voters" else r"Total\s+ballots?"
+    return re.compile(
+        r"(?<![A-Za-z0-9])" + re.escape(letter) + r"[^A-Za-z0-9]*" + label
+        + r"\D*(" + COUNT_LITERAL + r")", re.I)
+
+
+def _tx_text_total_row(lines, role):
+    patterns = [
+        _tx_role_pattern(role["total_roles"][0], "voters"),
+        _tx_role_pattern(role["total_roles"][1], "ballots"),
+        _tx_role_pattern(role["total_roles"][2], "ballots"),
+    ]
+    for position, line in enumerate(lines):
+        matches = [pattern.search(line) for pattern in patterns]
+        if (all(matches)
+                and [match.start() for match in matches]
+                == sorted(match.start() for match in matches)
+                and len(_tx_counts(line)) == 3):
+            return position, [
+                (int(match.group(1).replace(",", "")), match.span(1))
+                for match in matches
+            ], {"roles": list(role["total_roles"]), "left_to_right": True,
+                "counted_role_explicit": True, "binding": "literal_header_line"}
+    raise ValueError("Texas reconciliation C/F/I or E/H/M parent headers are absent or swapped")
+
+
+def _tx_cell_center(cell):
+    return (cell["left"] + cell["right"]) / 2
+
+
+def _tx_geometry_total_row(lines, role, role_cells):
+    if len(role_cells) != len(lines):
+        raise ValueError("Texas reconciliation OCR role geometry is incomplete")
+    expected = role["total_roles"]
+    section_prefixes = (("1voters",), ("2rejected", "2ballotsrejected"),
+                        ("3countedballot",))
+    sections = []
+    for prefixes in section_prefixes:
+        candidates = [cell for row in role_cells for cell in row
+                      if _tx_compact(cell["text"]).startswith(prefixes)]
+        if len(candidates) != 1:
+            raise ValueError("Texas reconciliation voter/rejected/counted column headers changed")
+        sections.append(candidates[0])
+    section_centers = [_tx_cell_center(cell) for cell in sections]
+    if section_centers != sorted(section_centers):
+        raise ValueError("Texas reconciliation statistical columns are not left-to-right")
+    boundaries = [(section_centers[i] + section_centers[i + 1]) / 2 for i in (0, 1)]
+    roles = []
+    for index, (letter, kind) in enumerate(zip(expected, ("voters", "ballots", "ballots"))):
+        marker = letter.lower() + ("totalvoter" if kind == "voters" else "totalballot")
+        candidates = [(position, cell) for position, row in enumerate(role_cells) for cell in row
+                      if _tx_compact(cell["text"]).startswith(marker)]
+        explicit = True
+        if not candidates and index == 2:
+            candidates = [(position, cell) for position, row in enumerate(role_cells)
+                          for cell in row
+                          if "totalballot" in _tx_compact(cell["text"])
+                          and _tx_cell_center(cell) > boundaries[1]]
+            explicit = False
+        if len(candidates) != 1:
+            raise ValueError("Texas reconciliation native total-role header is absent or ambiguous")
+        position, cell = candidates[0]
+        center = _tx_cell_center(cell)
+        if ((index == 0 and center >= boundaries[0])
+                or (index == 1 and not boundaries[0] < center < boundaries[1])
+                or (index == 2 and center <= boundaries[1])):
+            raise ValueError("Texas reconciliation native total roles changed physical columns")
+        roles.append((position, cell, explicit))
+    if [_tx_cell_center(item[1]) for item in roles] != sorted(
+            _tx_cell_center(item[1]) for item in roles):
+        raise ValueError("Texas reconciliation native total roles are not left-to-right")
+    start = min(position for position, _cell, _explicit in roles)
+    for position in range(start, min(len(role_cells), start + 5)):
+        numeric = [cell for cell in role_cells[position]
+                   if re.fullmatch(COUNT_LITERAL, cell["text"])]
+        if len(numeric) != 3:
+            continue
+        columns = [[], [], []]
+        for cell in numeric:
+            center = _tx_cell_center(cell)
+            index = 0 if center < boundaries[0] else 1 if center < boundaries[1] else 2
+            columns[index].append(cell)
+        if any(len(column) != 1 for column in columns):
+            raise ValueError("Texas reconciliation total row has decoy or ambiguous numbers")
+        return position, [
+            (int(column[0]["text"].replace(",", "")),
+             (column[0]["start"], column[0]["end"]))
+            for column in columns
+        ], {"roles": list(expected), "left_to_right": True,
+            "counted_role_explicit": roles[2][2],
+            "binding": "physical_voter_rejected_counted_columns"}
+    raise ValueError("Texas reconciliation role-bound total values are absent or ambiguous")
+
+
+def _tx_total_row(lines, role, role_cells=None):
+    if role_cells is None:
+        return _tx_text_total_row(lines, role)
+    return _tx_geometry_total_row(lines, role, role_cells)
+
+
+def _tx_registered(lines):
+    for position, line in enumerate(lines):
+        if "registeredvoters" in _tx_compact(line):
+            matches = _tx_counts(line)
+            if matches:
+                return position, matches[0]
+    return None, None
+
+
+def _tx_difference(lines, start):
+    signed = r"(?<![\w.])[-+]?(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?![\w.]|%)"
+    for position in range(start + 1, min(len(lines), start + 10)):
+        line = lines[position]
+        compact = _tx_compact(line)
+        if "attestation" in compact:
+            break
+        matches = [match for match in re.finditer(signed, line)
+                   if not re.search(r"[*'×]\s*$", line[:match.start()])]
+        if "differencebetween" in compact and matches:
+            match = matches[-1]
+            return position, int(match.group(0).replace(",", "")), match.span()
+        if "%" in line and matches:
+            match = matches[0]
+            return position, int(match.group(0).replace(",", "")), match.span()
+    return None, None, None
+
+
+def _tx_election_line(lines):
+    accepted = re.compile(
+        r"(?:nov(?:ember)?|tuesdaynovember)?0?3,?2026|1103(?:20)?26", re.I)
+    for position, line in enumerate(lines):
+        compact = _tx_compact(line)
+        if (("electiondate" in compact
+             or "registeredvoters" in compact and "date" in compact)
+                and accepted.search(compact)):
+            return position, line
+    raise ValueError("Texas reconciliation election date is absent or unreadable")
+
+
+def _tx_parse_view(page, template, pages, confidence=None, tokens=None, role_cells=None):
+    role = texas_reconciliation_role(template)
+    if role is None:
+        raise ValueError("Texas reconciliation requires a reviewed statistical-parent role")
+    lines = _tx_lines(page)
+    compact = _tx_compact(" ".join(lines))
+    if ("electionreconciliation" not in compact
+            or ("officialtotals" not in compact and "unofficialtotals" not in compact)):
+        raise ValueError("Texas reconciliation form title/status changed")
+    if role["form"] == "preliminary" and "preliminaryelectionreconciliation" not in compact:
+        raise ValueError("Texas preliminary reconciliation role changed")
+    if (role["form"] == "official"
+            and ("electionreconciliationofficialtotals" not in compact
+                 or "preliminaryelectionreconciliation" in compact)):
+        raise ValueError("Texas official reconciliation role changed")
+    expected_county = role["reviewed_source_county"]
+    county_lines = [line for line in lines if "county" in line.lower()
+                    and re.search(r"(?<!\w)" + re.escape(expected_county) + r"(?!\w)", line, re.I)]
+    if not county_lines:
+        raise ValueError("Texas reconciliation literal county identity is absent or unreadable")
+    _election_position, election_line = _tx_election_line(lines)
+    total_position, total_matches, role_evidence = _tx_total_row(lines, role, role_cells)
+    values = [item[0] for item in total_matches]
+    total_voters, total_rejected, ballots = values
+    if ballots < 0 or total_voters < 0 or total_rejected < 0:
+        raise ValueError("Texas reconciliation counts must remain nonnegative")
+    selected_confidence = None
+    if tokens is not None:
+        selected_confidence = _tx_selected_confidence(
+            tokens, total_position, total_matches[2][1])
+    elif confidence is not None and confidence[total_position] < .98:
+        raise ValueError("Texas reconciliation selected count OCR confidence requires review")
+    registered_position, registered_match = _tx_registered(lines)
+    registered = registered_match[0] if registered_match else None
+    difference_position, printed_difference, _difference_span = _tx_difference(
+        lines, total_position)
+    computed_difference = total_voters - total_rejected - ballots
+    discrepancy = None
+    if printed_difference is not None and printed_difference != computed_difference:
+        discrepancy = {
+            "code": "native_reconciliation_difference_disagrees",
+            "repaired": False, "actual_native": printed_difference,
+            "computed": computed_difference,
+            "expression": "-".join(role["total_roles"]),
+        }
+    native = {
+        "native_measure_literal": role["native_measure_literal"],
+        "selected_physical_role": role["count_role"] + ". Total ballots counted",
+        "form": role["form"], "county": expected_county,
+        "election_date_line": election_line, "status_literal": (
+            "Preliminary Election Reconciliation - Unofficial Totals"
+            if role["form"] == "preliminary"
+            else "Election Reconciliation - Official Totals"),
+        "registered_raw": registered,
+        "registered_denominator_not_promoted": True,
+        "total_voters": total_voters, "total_rejected": total_rejected,
+        "count": ballots, "printed_difference": printed_difference,
+        "computed_difference": computed_difference, "discrepancy": discrepancy,
+        "native_total_role_evidence": role_evidence,
+        "statistical_parent_line": lines[total_position],
+        "registered_line": lines[registered_position] if registered_position is not None else None,
+        "difference_line": lines[difference_position] if difference_position is not None else None,
+        "pdf_pages": pages, "source_clock": None,
+        "attestation_date_is_not_count_update_clock": True,
+    }
+    if selected_confidence is not None:
+        native["ocr_selected_count_minimum_confidence"] = selected_confidence
+    return native, lines
+
+
+def texas_reconciliation_statistics(body, templates):
+    from pypdf import PdfReader
+
+    if len(templates) != 1:
+        raise ValueError("A Texas reconciliation parent must bind one reviewed county observation")
+    reader = PdfReader(io.BytesIO(body))
+    if reader.is_encrypted or not reader.pages or len(reader.pages) > 10:
+        raise ValueError("Unqualified Texas reconciliation PDF")
+    template = templates[0]
+    page = reader.pages[0].extract_text(extraction_mode="layout") or ""
+    ocr, complete_ocr_views = None, None
+    if page.strip():
+        native, lines = _tx_parse_view(page, template, len(reader.pages))
+    else:
+        from scripts.results_pdf_ocr import first_page_views
+
+        views = first_page_views(body, strict_role_alignment=True)
+        parsed = [_tx_parse_view(view["text"], template, len(reader.pages),
+                                 view["confidence"], view.get("tokens"),
+                                 view.get("role_cells"))
+                  for view in views]
+        vectors = [(item[0]["county"], item[0]["election_date_line"],
+                    item[0]["registered_raw"], item[0]["total_voters"],
+                    item[0]["total_rejected"], item[0]["count"],
+                    item[0]["printed_difference"], item[0]["computed_difference"])
+                   for item in parsed]
+        if len(parsed) != 2 or vectors[0] != vectors[1]:
+            raise ValueError("Texas reconciliation OCR statistical fields disagree")
+        if not any(item[0]["native_total_role_evidence"]["counted_role_explicit"]
+                   for item in parsed):
+            raise ValueError("Texas reconciliation counted-parent role is unreadable")
+        native, lines = parsed[0]
+        ocr = {"passes": [view["receipt"] for view in views],
+               "same_engine_resolution_check_not_independent_validation": True,
+               "native_total_role_evidence": [
+                   item[0]["native_total_role_evidence"] for item in parsed]}
+        complete_ocr_views = [
+            {"text": view["text"], "confidence": view["confidence"]}
+            for view in views]
+    compact = {"query": native, "private_original_pin": pin(body),
+               "whole_publisher_pdf_redistributed": False,
+               "reviewed_prior_native_role": {
+                   "source_county": texas_reconciliation_role(template)["reviewed_source_county"],
+                   "native_election_date": texas_reconciliation_role(
+                       template)["reviewed_election_date"],
+                   "native_measure_literal": template["measure"]["literal"],
+               }}
+    update = change(template, native["count"], compact, registered=None, clock=None,
+                    rate_compatible=False)
+    complete = {**native, "complete_first_page_lines": lines,
+                "private_original_pin": pin(body)}
+    if complete_ocr_views is not None:
+        complete["complete_ocr_views"] = complete_ocr_views
+    result = {"updates": [update], "complete_native_query": [complete],
+              "geographic_joins_changed": False, "analytical_rates_promoted": False,
+              "count_only_unknown_denominator_retained": True,
+              "attestation_clock_not_reused_as_count_update_clock": True}
+    if ocr is not None:
+        result["ocr"] = ocr
+    return result
 
 
 def clock_value(literal):
@@ -491,14 +1164,19 @@ def source_plan(baseline):
                     or state == "AL" and parsed.path.lower().endswith(".zip")):
                 continue
             profile = RECORD_PROFILES.get(url)
+            workbook_profile = WORKBOOK_PROFILES.get(url)
             native = view.get("native_record") or {}
-            if profile and state == profile["state"] and (
+            if workbook_profile and state == workbook_profile["state"]:
+                adapter = "reviewed_workbook_statistics"
+            elif profile and state == profile["state"] and (
                     (native.get("query") or {}).get("query_id") == profile["query_id"]
                     or url == IN_URL and "VotersVoting" in native):
                 adapter = "reviewed_record_statistics"
             elif (url == NM_URL and state == "NM"
                   and (native.get("query") or {}).get("query_id") == "nm-all-turnout"):
                 adapter = "reviewed_webforms_statistics"
+            elif texas_reconciliation_role(template):
+                adapter = "reviewed_texas_reconciliation_parent"
             elif (template["geography"]["level"] == "county" and pdf_measure(template)
                   and (parsed.path.lower().endswith(".pdf") or "/DocumentCenter/View/" in parsed.path
                        or native.get("complete_native_pdf_pages") or native.get("pdf_metadata"))):
@@ -528,9 +1206,15 @@ def collect_sources(collector, baseline):
             if source["adapter"] == "reviewed_record_statistics":
                 def parse(body, templates=templates, profile=RECORD_PROFILES[url]):
                     return record_statistics(body, templates, profile)
+            elif source["adapter"] == "reviewed_workbook_statistics":
+                def parse(body, templates=templates, profile=WORKBOOK_PROFILES[url]):
+                    return workbook_statistics(body, templates, profile)
             elif source["adapter"] == "reviewed_pdf_county_parent":
                 def parse(body, templates=templates):
                     return pdf_parent_statistics(body, templates)
+            elif source["adapter"] == "reviewed_texas_reconciliation_parent":
+                def parse(body, templates=templates):
+                    return texas_reconciliation_statistics(body, templates)
             elif source["adapter"] == "reviewed_webforms_statistics":
                 def parse(body, templates=templates):
                     return webforms_statistics(body, templates)
