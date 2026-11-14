@@ -6,6 +6,63 @@ changes. It is an assumption-dependent explanation, not identified voter histori
 or a causal effect. Moving from R+4 to D+12 is a +16 margin-point change,
 equivalent to +8 Democratic **two-party-share** points, not +16 share points.
 
+## Source predictor blocks: exploratory AP/CHEP comparison
+
+This follow-up tests predictor information rather than another current-return
+calibration. Twelve fixed evaluations comprise10 multinomial logistic fits
+and two training-weighted marginal baselines. Vocabulary and weight scaling
+use training data only; no current2026 return file enters fitting or selection.
+The original accepted fits, priors, state estimates and live default stay unchanged.
+
+Historical AP2022-to-AP2024 source response transfer uses the common48-state
+native poll-close-weight frame:116,057 training and134,563 target cases,
+excluding DE/WV at both stages. The shared prior item is recalled2020
+presidential choice. CHEP's pooled current-response holdout uses90,431 train/
+22,589 test cases from50 observed states, with two prior-choice items.
+These are different specifications and targets. State presence and positive
+weight do not establish state-inference qualification; D.C. is unsupported.
+Modeled nonvote remains a source-response class, not observed staying home.
+
+| Predictor block | AP transfer log loss | AP Brier | CHEP holdout log loss | CHEP Brier |
+|---|---:|---:|---:|---:|
+| Prior only |0.738564877355|0.357106096317|0.551989685666|0.260756004209|
+| Prior + state |0.743537992880|0.359842483795|0.547905826805|0.259594337866|
+| Prior + age/education |0.735829569640|0.356447395408|0.519453012604|0.246498296263|
+| Prior + state + age/education |0.741360512158|0.359456861714|0.514453965441|0.244868355307|
+| Plus race/income, current only |Not tested|Not tested|0.479198615706|0.229146186133|
+| Plus sex/RUCC, current only |Not tested|Not tested|0.478790120244|0.229233082980|
+
+Age/education improves these scores against prior-only, but the AP difference
+is small, with no uncertainty analysis or new independent historical episode.
+Adding state helps the CHEP holdout while worsening historical transfer.
+Sex/RUCC slightly improves log loss and worsens Brier; neither result is hidden.
+Do not compare loss magnitudes across targets or interpret predictor blocks
+as identified switching/nonparticipation mechanisms. The arithmetic follow-up
+gate compares against prior-only, not the accepted richer model, and does not
+authorize a model/default promotion.
+
+### Timing erratum and reproduction limits
+
+Independent critique found the original protocol's `frozen_at` value later
+than its own fit receipt. The original pinned artifact remains forensic
+evidence; its prefit-freeze claim is explicitly withdrawn. This comparison
+is exploratory/post hoc on seen source outcomes, not external preregistration
+or an independently certified prefit design. Repairs change metadata/
+qualification only; none of the12 evaluation scores is recalculated.
+
+Immutable445071249 contains the complete55,826-byte/27-member SDK, all coarse
+numerical facts/queries, source/fit/replay code, tests, observed dependencies
+and explicit erratum. Two fresh extracted executions reproduce six outputs;
+an actual public-download replay and21 extracted tests pass. Public replay
+does not refit private respondents. Its network/DNS/subprocess interception
+is limited to selected Python APIs, not OS-level containment. All source
+frames, unknowns, whole-table disclosure rules and negative results remain.
+No raw respondents, individual predictions, state scores, fine cells or
+estimators are exported.
+
+[Complete download and commands](DATA.md#exploratory-apchep-predictor-block-comparison).
+Full study: `data/norc-source-predictor-blocks/20261114-01/`.
+
 ## Administrative participation and reported House choices jointly
 
 The preceding experiments modeled administrative 3x3 and reported-House 6x5

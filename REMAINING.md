@@ -13,6 +13,40 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Source-predictor comparison complete; no unsupported model promotion
+
+The explicit AP/NORC predictor-block follow-up now has12 complete numerical
+evaluations:10 estimator fits and two marginal baselines. Training-only
+vocabularies/weight normalization, source routing, unknowns, native frames
+and negative results are retained. Historical transfer is common48-state AP;
+CHEP's50 states are pooled source observations, not qualified state inference.
+
+Age/education improves both exploratory scores relative to prior choice alone,
+but AP's improvement is small and has no uncertainty analysis or independent
+new historical episode. AP/CHEP specifications differ. Added state harms AP
+transfer; sex/RUCC has a mixed log-loss/Brier result. This does not establish
+superiority over the accepted richer model or identify stay-home/switching.
+
+Critique caught an impossible freeze timestamp and overbroad qualification/
+fit-count language. These were corrected through an explicit pinned erratum,
+not hidden retimestamping or refitting. The prefit-freeze claim is withdrawn;
+classification is exploratory/post hoc. All scores remain unchanged.
+
+Complete immutable445071249/55,826 bytes/27 members includes all numerical
+queries, code, tests and erratum. Two extracted replays and a real public
+download replay reproduce six core outputs;15 dependency and six standard-
+library tests pass. Public replay is aggregate verification, not private
+microdata fitting. Accepted fits, live estimates, source counts, weights and
+defaults remain unchanged, and no website build was needed.
+
+Continue the substantive new2026 source integration and compatible-frame/
+local-model gaps. Jefferson County Kentucky's newly declared native ballot/
+precinct reports are being independently qualified; they are not yet a live
+integration or justification to allocate state demographic estimates locally.
+Full audit and then beautification remain pending genuine remaining work.
+[Methods](docs/NORC_HOUSE_TRANSITIONS.md#source-predictor-blocks-exploratory-apchep-comparison)
+and [complete download](docs/DATA.md#exploratory-apchep-predictor-block-comparison).
+
 ## Louisiana native early-group delivery: retain the model-frame gap
 
 The new source-bound Louisiana reader preserves all1,040 native report cells,

@@ -1,0 +1,36 @@
+{
+  "source_input_sha256": {
+    "ap2022": "1badd8bbc31232e7bf7a39256036b5c6d6ac189366d30143b881c516bb927df6",
+    "ap2024": "7d63dada53d1e6f5f3fac54417e189755d54ce312cf7945f16abe4f91c5bf62f",
+    "chep2026": "496a5b57fbc435210bdf78e2c1c3717879c0689c74081bee830d121b548c792f"
+  },
+  "historical_ap_scope": {
+    "raw_states_present": 50,
+    "common_transfer_train_and_score_states": 48,
+    "excluded_from_train_and_score": [
+      "DE",
+      "WV"
+    ],
+    "dc_present": false,
+    "classification": "common_48_state_source_transfer_not_all_state_historical_validation"
+  },
+  "chep_scope": {
+    "states_observed_in_pooled_source_holdout": 50,
+    "qualified_for_pooled_source_response_analysis": 50,
+    "state_inference_qualification_established": false,
+    "dc_present": false,
+    "state_scores_published": false
+  },
+  "age_education_comparison": {
+    "ap_predictors": "one prior plus native age and education interactions",
+    "chep_predictors": "two priors plus native age and education interactions",
+    "identical_specification": false,
+    "shared_identified_mechanism_claimed": false,
+    "classification": "thematic exploratory predictor-block comparison"
+  },
+  "interpretive_limits": [
+    "CHEP LIKELYVOTER modeled N is not observed completed abstention.",
+    "AP transfer is cross-sectional and not a matched panel.",
+    "No population, local, state-inference, or out-of-source 2026 validation is established."
+  ]
+}

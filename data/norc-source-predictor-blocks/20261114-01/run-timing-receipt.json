@@ -1,0 +1,21 @@
+{
+  "evidence_type": "local_filesystem_metadata_only",
+  "independent_time_certification": false,
+  "original_protocol": {
+    "sha256": "8eecc164637e4a6ed1174a1efa7f70ed240b2b4581ec5e96bb0793ee4461cc89",
+    "birth_time": "2026-11-14T01:06:35-05:00",
+    "modify_time": "2026-11-14T01:06:55-05:00",
+    "declared_frozen_at": "2026-11-14T01:36:00-05:00",
+    "timestamp_valid": false
+  },
+  "original_fit_receipt": {
+    "birth_time": "2026-11-14T01:07:24-05:00",
+    "modify_time": "2026-11-14T01:07:24-05:00"
+  },
+  "original_coarse_facts": {
+    "birth_time": "2026-11-14T01:07:24-05:00",
+    "modify_time": "2026-11-14T01:07:24-05:00"
+  },
+  "conclusion": "The original frozen_at value is impossible. Execution ordering does not prove a prefit scientific freeze; all rule-freeze and preregistration implications are withdrawn.",
+  "new_fits_run_for_repair": 0
+}

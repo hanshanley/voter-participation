@@ -1,0 +1,15 @@
+{
+  "original_handoff": {
+    "bytes": 10714,
+    "sha256": "11c586d04e7ba9a8d9d0a04fc9550ac9b9ca346f51b5d7b85e2aa89358f2a2c3"
+  },
+  "original_protocol": {
+    "sha256": "8eecc164637e4a6ed1174a1efa7f70ed240b2b4581ec5e96bb0793ee4461cc89"
+  },
+  "original_public_sdk": {
+    "bytes": 31283,
+    "members": 17,
+    "sha256": "9b03a029378c322fb1822e50cc6f8e3a6c9d1a56374a28a634d0d11b400b47f4"
+  },
+  "preserved_unchanged": true
+}

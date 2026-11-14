@@ -8,6 +8,40 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Exploratory AP/CHEP predictor-block comparison
+
+[Complete numerical facts, every evaluation/query, code, tests and timing erratum](https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-source-predictor-blocks-20261114-01/complete-analysis.zip):
+**55,826 bytes/27 members**, SHA256
+`9532f991077027fbcca7396c17ac03cb129e8d93ce1988c7ad98d00207f36b37`.
+Immutable445071249 has authenticated and anonymous full-body verification.
+All12 evaluations, calibration queries,102 jurisdiction-study decisions
+covering all51 jurisdictions, exact code/tests, observed fitting dependencies
+and the explicit erratum are included.
+There are no private respondents, predictions, fine cells or estimators.
+
+From an extracted SDK, choose a fresh output directory:
+
+```sh
+PYTHONHASHSEED=101 python3 -S -W error src/offline_replay.py \
+  --facts facts/coarse-facts.json --output /fresh/output
+python3 -S -W error -m unittest tests.test_repaired_public -v
+```
+
+Two fresh extracted replays reproduce all six core outputs exactly. The actual
+anonymous public download was also extracted/replayed and passed six standard-
+library tests plus15 tests with the documented optional fitting dependencies.
+Selected socket/DNS/subprocess APIs are patched/probed, not OS-sandboxed.
+The public replay regenerates aggregate numerical queries, **not private fits**.
+The exact optional `PYTHONHASHSEED=17` source-refit command requires users' own
+qualified originals and the documented dependency versions.
+
+The original impossible freeze timestamp is preserved as forensic evidence;
+the erratum withdraws its prefit-freeze claim. This is exploratory/post hoc,
+not new blind validation. Common48-state AP transfer and pooled50-state CHEP
+observations do not qualify state-population or individual-history inference.
+No live model or state estimate is promoted.
+[Full interpretation](NORC_HOUSE_TRANSITIONS.md#source-predictor-blocks-exploratory-apchep-comparison).
+
 ## Louisiana native early/absentee group compositions
 
 [Complete permitted facts, queries, code, tests and reproduction](https://github.com/hanshanley/margin_of_error/releases/download/participation-louisiana-native-groups-runtime-20261114-01/complete-analysis.zip):

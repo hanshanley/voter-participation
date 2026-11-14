@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current AP/CHEP predictor-block evidence | [Complete exploratory source-response comparison and timing erratum; no model promotion](#exploratory-apchep-source-predictor-block-comparison) |
 | Current Louisiana native group map | [Early/absentee report compositions, qualified parish context and complete fact-only reproduction](#2026-louisiana-native-earlyabsentee-group-map-and-data) |
 | Current historical integer-format reconciliation | [179 qualified PA/UT native cells; original flags and all fractional/unknown holds retained](#historical-native-integer-format-reconciliation) |
 | Current historical administrative cells | [Source-separated 2018/2020 observations, all51 state/year decisions and complete reproduction](#historical-native-administrative-cells-2018-and-2020) |
@@ -63,6 +64,49 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## Exploratory AP/CHEP source predictor-block comparison
+
+The new source-only comparison evaluates12 fixed specifications:10 multinomial
+logistic fits and two training-weighted marginal baselines. Historical AP2022
+to AP2024 scoring uses the common48-state poll-close-weight frame, excluding
+DE/WV from both training and scoring. CHEP2026 uses one pooled respondent
+holdout drawn from its50 observed survey states; this does not establish
+state-inference qualification or support D.C.
+
+Vocabulary and regularization-weight normalization use training rows only.
+Native prior-choice routing, party-code reversal, Other, unknown and modeled
+nonvote classes remain distinct. Current2026 returns never enter features or
+selection. This is source-response prediction, not observed staying home or
+independent population validation; CHEP weight calibration remains a limitation.
+
+The small AP age/education change is log loss0.738564877355 to0.735829569640
+and Brier0.357106096317 to0.356447395408. Adding state improves CHEP's
+respondent score but worsens AP transfer. Sex/RUCC slightly improves CHEP log
+loss while worsening Brier. All evaluations and calibration queries remain,
+not only favorable results. AP's one-prior and CHEP's two-prior specifications
+are thematic counterparts, not the same identified mechanism. No uncertainty
+analysis or new independent historical episode establishes generalization.
+
+Independent critique caught an impossible original protocol freeze timestamp.
+The pinned erratum withdraws the prefit-freeze claim; the comparison is
+explicitly exploratory/post hoc on seen source outcomes. Original artifacts
+remain labeled forensic evidence, not silently retimestamped. The arithmetic
+follow-up comparison is against `prior_only`, not the accepted richer model;
+no state estimate, live default, model/weight or House gate is promoted.
+
+Immutable445071249 provides the complete55,826-byte/27-member numerical SDK,
+SHA256 `9532f991077027fbcca7396c17ac03cb129e8d93ce1988c7ad98d00207f36b37`.
+It contains all coarse numerical facts,12 evaluations,102 jurisdiction-study
+decisions covering all51 jurisdictions, calibration queries, code, tests,
+observed dependencies and erratum.
+Two fresh extracted replays reproduce all six core outputs. A genuinely
+downloaded public SDK replay plus15 dependency and six standard-library tests
+also pass. Selected Python APIs are intercepted/probed; OS-level containment
+is not claimed. Aggregate replay does not repeat private source fits.
+No respondents, predictions, fine cells, state scores or estimators are exported.
+[Methods and errors](docs/NORC_HOUSE_TRANSITIONS.md#source-predictor-blocks-exploratory-apchep-comparison)
+and [complete reproduction](docs/DATA.md#exploratory-apchep-predictor-block-comparison).
 
 ## 2026 Louisiana native early/absentee group map and data
 

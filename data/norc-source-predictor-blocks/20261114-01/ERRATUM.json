@@ -1,0 +1,47 @@
+{
+  "contract": "participation.source_predictor_blocks.erratum.v1",
+  "critic_sha256_prefix": "6dcfbc15",
+  "scope": "metadata, classification, chronology, packaging, and interpretation only",
+  "numerical_scores_changed": false,
+  "source_refits_performed": false,
+  "originals_preserved": {
+    "protocol_sha256": "8eecc164637e4a6ed1174a1efa7f70ed240b2b4581ec5e96bb0793ee4461cc89",
+    "sdk_sha256": "9b03a029378c322fb1822e50cc6f8e3a6c9d1a56374a28a634d0d11b400b47f4",
+    "handoff_sha256": "11c586d04e7ba9a8d9d0a04fc9550ac9b9ca346f51b5d7b85e2aa89358f2a2c3"
+  },
+  "chronology_correction": {
+    "original_protocol_claim": "frozen_at 2026-11-14T01:36:00-05:00 and rule frozen before native fits",
+    "local_filesystem_observation": "protocol modified 2026-11-14T01:06:55-05:00; fit receipt and coarse facts modified 2026-11-14T01:07:24-05:00",
+    "disposition": "The declared frozen_at timestamp is impossible and withdrawn. The rule_frozen_before_native_fits claim is withdrawn.",
+    "replacement_classification": "exploratory comparison and arithmetic gate evaluated on already-seen source outcomes; not independently time-certified and not externally preregistered",
+    "filesystem_metadata_is_independent_time_certification": false,
+    "refitting_to_create_a_clean_post_result_freeze": false
+  },
+  "source_scope_correction": {
+    "historical_ap": "Explicit common 48-state AP2022-to-AP2024 source-transfer frame; DE and WV excluded from both train and score, DC absent. This is not all-state historical validation.",
+    "chep": "Fifty states are observed in one pooled source holdout and may be used for pooled source-response analysis. State-inference qualification is not established by the held codebook evidence. DC is absent.",
+    "state_scores_published": false
+  },
+  "method_correction": {
+    "evaluations": 12,
+    "multinomial_logistic_estimator_fits": 10,
+    "training_weighted_marginal_calculations": 2,
+    "age_education_result": "small exploratory proper-score difference without uncertainty analysis or a new independent historical episode",
+    "ap_chep_block_identity": "thematic age/education comparison only; AP has one prior and CHEP has two priors, so the blocks are not identical specifications or a shared identified mechanism",
+    "comparison_baseline": "prior_only, not the stronger accepted full rich model",
+    "generalization_or_promotion_claim": false,
+    "sex_rucc": "log loss improves slightly while Brier worsens; retained as a mixed negative result"
+  },
+  "probe_correction": {
+    "actual_scope": "selected Python socket, DNS, and subprocess APIs are monkeypatched and probed during replay",
+    "os_level_network_or_process_containment_claimed": false,
+    "external_commands_required_by_replay": false
+  },
+  "governance": {
+    "automatic_default_promotion": false,
+    "scientific_scenario_change": false,
+    "selection_change": false,
+    "publication": false,
+    "parent_critic_rereview_required": true
+  }
+}

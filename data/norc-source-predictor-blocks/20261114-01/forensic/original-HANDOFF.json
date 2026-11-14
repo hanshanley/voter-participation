@@ -1,0 +1,255 @@
+{
+  "actual_fit_command": "PYTHONHASHSEED=17 <qualified-python> -W error src/fit_source_predictor_blocks.py --ap2022 '<held AP2022 zip>' --ap2024 '<held AP2024 zip>' --chep2026 '<held CHEP CSV>' --protocol protocol/frozen-protocol.json --output '<owned handoff root>'",
+  "actual_replay_command": "PYTHONHASHSEED=101 python3 -S -W error src/offline_replay.py --facts facts/coarse-facts.json --output '<fresh output>'",
+  "code_sha256": {
+    "src/fit_source_predictor_blocks.py": "4b77cdd9823d0a89c396da653391434df2aaa254f9d72628b443a3dcc4716ea4",
+    "src/offline_replay.py": "9a8814f4224104b9313daadc2e91a4a32c68bc1ce31113091ca0991048dbc7f1",
+    "src/replay_aggregate_facts.py": "9da1ccc43ad3f198bd12071725d75313b020a0f3bb558a8152411c7ed194bb45",
+    "src/source_predictor_blocks.py": "8f62d5890f8077f6fdd8306ff5616c5a749d94b1131e6f5bc4c7e90b31b73ae9"
+  },
+  "created_at_local": "2026-11-14T01:09:13.193495-05:00",
+  "fact_sha256": {
+    "class-calibration.csv": "54e8872322fe7f0ffed88725aeea99a1085bd5ef85e7a6834a0a475bfcf29335",
+    "coarse-facts.json": "06d951879b907b4841288288c5a847279663410ed423cd21931b96b0229219c3",
+    "frame-inventory.json": "4c293a506df5dad22aa654e9b8364036543421bf963e01062a9e3050ccbb0eb7",
+    "jurisdiction-decisions.csv": "cc9c998cb152e6ce145d3feb36cd0dbadd3bfa2c0d8b925c295a5ed350c79090",
+    "model-metrics.csv": "3c4180f8e10ba5ee666fef6d7a99b0f9d7b1497d96c561a1515f4ebf0b60afe2",
+    "promotion-decision.json": "d04eab25fe422be6dec37b38b7d66a774c8a0552a76c40fea435979758028634",
+    "query-definitions.json": "ff33dd54dc8b4a50d4a97a0de28adbd47fd1df6f5e9efbe23eff1a0d75f2c7ff",
+    "source-qualification.json": "fe88bf722ca5c1459be622bc4576b71315363cdb54c2da2bff33d9671fcfd624"
+  },
+  "handoff_limits": [
+    "Parent owns independent critique, publication, and integration.",
+    "The source-only age/education block is a follow-up candidate, not an automatic default promotion.",
+    "CHEP modeled nonvote is not actual observed staying home.",
+    "No population, local, or out-of-source 2026 validation is claimed."
+  ],
+  "metrics": {
+    "current_chep2026_holdout": {
+      "prior_age_education": {
+        "known_major_party_source_log_loss": 0.5350730306996693,
+        "source_weighted_log_loss": 0.5194530126041318,
+        "source_weighted_multiclass_brier": 0.2464982962628728,
+        "test_cases": 22589,
+        "train_cases": 90431,
+        "vocabulary_size": 164
+      },
+      "prior_only": {
+        "known_major_party_source_log_loss": 0.5530244053924234,
+        "source_weighted_log_loss": 0.5519896856658859,
+        "source_weighted_multiclass_brier": 0.2607560042086504,
+        "test_cases": 22589,
+        "train_cases": 90431,
+        "vocabulary_size": 10
+      },
+      "prior_state": {
+        "known_major_party_source_log_loss": 0.5505907088668396,
+        "source_weighted_log_loss": 0.5479058268052062,
+        "source_weighted_multiclass_brier": 0.2595943378663181,
+        "test_cases": 22589,
+        "train_cases": 90431,
+        "vocabulary_size": 60
+      },
+      "prior_state_age_education": {
+        "known_major_party_source_log_loss": 0.5322196807907301,
+        "source_weighted_log_loss": 0.5144539654414909,
+        "source_weighted_multiclass_brier": 0.24486835530734666,
+        "test_cases": 22589,
+        "train_cases": 90431,
+        "vocabulary_size": 214
+      },
+      "prior_state_age_education_race_income": {
+        "known_major_party_source_log_loss": 0.5009024455445485,
+        "source_weighted_log_loss": 0.47919861570570477,
+        "source_weighted_multiclass_brier": 0.2291461861327183,
+        "test_cases": 22589,
+        "train_cases": 90431,
+        "vocabulary_size": 229
+      },
+      "prior_state_age_education_race_income_sex_rucc": {
+        "known_major_party_source_log_loss": 0.4996881418553843,
+        "source_weighted_log_loss": 0.47879012024412465,
+        "source_weighted_multiclass_brier": 0.2292330829802716,
+        "test_cases": 22589,
+        "train_cases": 90431,
+        "vocabulary_size": 236
+      },
+      "training_weighted_marginal": {
+        "known_major_party_source_log_loss": 1.3214420822511572,
+        "source_weighted_log_loss": 1.1685893611150697,
+        "source_weighted_multiclass_brier": 0.6590788632164397,
+        "test_cases": 22589,
+        "train_cases": 90431,
+        "vocabulary_size": 0
+      }
+    },
+    "historical_ap2022_to_ap2024": {
+      "prior_age_education": {
+        "known_major_party_source_log_loss": 0.5843263856620647,
+        "source_weighted_log_loss": 0.7358295696401327,
+        "source_weighted_multiclass_brier": 0.356447395408003,
+        "test_cases": 134563,
+        "train_cases": 116057,
+        "vocabulary_size": 77
+      },
+      "prior_only": {
+        "known_major_party_source_log_loss": 0.5864924654459456,
+        "source_weighted_log_loss": 0.7385648773551238,
+        "source_weighted_multiclass_brier": 0.35710609631731577,
+        "test_cases": 134563,
+        "train_cases": 116057,
+        "vocabulary_size": 5
+      },
+      "prior_state": {
+        "known_major_party_source_log_loss": 0.5892521672869611,
+        "source_weighted_log_loss": 0.7435379928797649,
+        "source_weighted_multiclass_brier": 0.3598424837951115,
+        "test_cases": 134563,
+        "train_cases": 116057,
+        "vocabulary_size": 53
+      },
+      "prior_state_age_education": {
+        "known_major_party_source_log_loss": 0.5875845791086248,
+        "source_weighted_log_loss": 0.7413605121577361,
+        "source_weighted_multiclass_brier": 0.35945686171401575,
+        "test_cases": 134563,
+        "train_cases": 116057,
+        "vocabulary_size": 125
+      },
+      "training_weighted_marginal": {
+        "known_major_party_source_log_loss": 0.9827168042002704,
+        "source_weighted_log_loss": 1.1847766613587571,
+        "source_weighted_multiclass_brier": 0.6501681132401208,
+        "test_cases": 134563,
+        "train_cases": 116057,
+        "vocabulary_size": 0
+      }
+    }
+  },
+  "models_completed": 12,
+  "objective": "one bounded source-only predictor-block/transport ablation using held AP2022/AP2024/CHEP2026 inputs",
+  "privacy_and_scope": {
+    "changed_state_estimates_generated": false,
+    "current_2026_return_files_read": false,
+    "prediction_vectors_exported": false,
+    "private_fine_cells_exported": false,
+    "respondent_rows_exported": false,
+    "source_fits_publicly_reproducible_without_private_originals": false,
+    "state_score_tables_exported": false,
+    "synthetic_coarse_priors_generated": false,
+    "trained_estimators_exported": false
+  },
+  "promotion_decision": {
+    "automatic_default_promotion": false,
+    "candidates": [
+      {
+        "block": "prior_state",
+        "checks": {
+          "current": {
+            "brier_improves_vs_prior_only": true,
+            "log_loss_improves_vs_prior_only": true
+          },
+          "historical": {
+            "brier_improves_vs_prior_only": false,
+            "log_loss_improves_vs_prior_only": false
+          }
+        },
+        "eligible_source_only_scientific_candidate": false
+      },
+      {
+        "block": "prior_age_education",
+        "checks": {
+          "current": {
+            "brier_improves_vs_prior_only": true,
+            "log_loss_improves_vs_prior_only": true
+          },
+          "historical": {
+            "brier_improves_vs_prior_only": true,
+            "log_loss_improves_vs_prior_only": true
+          }
+        },
+        "eligible_source_only_scientific_candidate": true
+      },
+      {
+        "block": "prior_state_age_education",
+        "checks": {
+          "current": {
+            "brier_improves_vs_prior_only": true,
+            "log_loss_improves_vs_prior_only": true
+          },
+          "historical": {
+            "brier_improves_vs_prior_only": false,
+            "log_loss_improves_vs_prior_only": false
+          }
+        },
+        "eligible_source_only_scientific_candidate": false
+      }
+    ],
+    "changed_state_estimates_generated": false,
+    "current_only_race_income_and_sex_rucc_blocks_eligible_for_cross_source_promotion": false,
+    "disposition": "source_only_candidate_exists_but_requires_independent_review_and_no_default_change",
+    "eligible_blocks": [
+      "prior_age_education"
+    ],
+    "rule": "A common AP/CHEP block is a scientific follow-up candidate only if both weighted multiclass log loss and Brier improve strictly versus prior_only on both the AP2022-to-AP2024 transfer and the CHEP2026 respondent holdout.",
+    "rule_frozen_before_native_fits": true,
+    "synthetic_coarse_priors_generated": false
+  },
+  "protected_shared_state": {
+    "canonical_writes": false,
+    "commits": false,
+    "pushes": false,
+    "research_head": "b525c61235b20be0f2dd8c5f37749cf12265ea70",
+    "research_origin_main": "b525c61235b20be0f2dd8c5f37749cf12265ea70",
+    "research_tracked_diff": "clean",
+    "schedules": false,
+    "shared_repo_writes": false,
+    "website_head": "0ef8ef35ce2dcc9298d4fbbd0d238b4bc560dbb7",
+    "website_origin_main": "0ef8ef35ce2dcc9298d4fbbd0d238b4bc560dbb7",
+    "website_tracked_diff": "clean"
+  },
+  "protocol": {
+    "path": "protocol/frozen-protocol.json",
+    "sha256": "8eecc164637e4a6ed1174a1efa7f70ed240b2b4581ec5e96bb0793ee4461cc89"
+  },
+  "sdk": {
+    "aggregate_replay_standard_library_only": true,
+    "bytes": 31283,
+    "fit_cli_requires_users_own_exact_qualified_originals": true,
+    "members": 17,
+    "path": "public-sdk.zip",
+    "sha256": "9b03a029378c322fb1822e50cc6f8e3a6c9d1a56374a28a634d0d11b400b47f4"
+  },
+  "source_input_sha256": {
+    "ap2022": "1badd8bbc31232e7bf7a39256036b5c6d6ac189366d30143b881c516bb927df6",
+    "ap2024": "7d63dada53d1e6f5f3fac54417e189755d54ce312cf7945f16abe4f91c5bf62f",
+    "chep2026": "496a5b57fbc435210bdf78e2c1c3717879c0689c74081bee830d121b548c792f"
+  },
+  "status": "private_handoff_ready_for_parent_critique_only",
+  "tests_sha256": {
+    "tests/test_public_replay.py": "155b38ad4d2395758faf8c11e96664becab4279715987b416402a5f20cd0c01c",
+    "tests/test_source_predictor_blocks.py": "991ab97bfbdfacb12ce5cfa8aed7086f148e55e1c2f90e5eed38ef95d7371176"
+  },
+  "validation": {
+    "extracted_public_tests": {
+      "command": "python3 -S -W error -m unittest tests.test_public_replay -v",
+      "passed": 2
+    },
+    "final_replay_03": {
+      "byte_exact_core_outputs": true,
+      "hash_seed": 101,
+      "network_dns_child_probes_denied": 3,
+      "output_files": 6
+    },
+    "final_replay_04": {
+      "byte_exact_core_outputs": true,
+      "hash_seed": 211,
+      "network_dns_child_probes_denied": 3,
+      "output_files": 6
+    },
+    "fit_tests": {
+      "command": "python3 -W error -m unittest discover -s tests -v",
+      "passed": 11
+    }
+  }
+}

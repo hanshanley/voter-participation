@@ -1,0 +1,141 @@
+{
+  "contract": "participation.source_predictor_blocks.protocol.v1",
+  "frozen_at": "2026-11-14T01:36:00-05:00",
+  "pre_fit_correction": "Python 3.9 streaming SHA compatibility added after a pre-source-loading failure; zero native models had started.",
+  "previous_results_seen": true,
+  "external_preregistration": false,
+  "current_2026_candidate_returns_permitted": false,
+  "source_input_sha256": {
+    "ap2022": "1badd8bbc31232e7bf7a39256036b5c6d6ac189366d30143b881c516bb927df6",
+    "ap2024": "7d63dada53d1e6f5f3fac54417e189755d54ce312cf7945f16abe4f91c5bf62f",
+    "chep2026": "496a5b57fbc435210bdf78e2c1c3717879c0689c74081bee830d121b548c792f"
+  },
+  "source_members": {
+    "ap2022": "AP_VOTECAST_2022_midterm.csv",
+    "ap2024": "AP_VOTECAST_2024_GENERAL.csv"
+  },
+  "code_sha256": {
+    "source_predictor_blocks.py": "8f62d5890f8077f6fdd8306ff5616c5a749d94b1131e6f5bc4c7e90b31b73ae9",
+    "fit_source_predictor_blocks.py": "4b77cdd9823d0a89c396da653391434df2aaa254f9d72628b443a3dcc4716ea4"
+  },
+  "replay_sha256": "9da1ccc43ad3f198bd12071725d75313b020a0f3bb558a8152411c7ed194bb45",
+  "tests_sha256": "991ab97bfbdfacb12ce5cfa8aed7086f148e55e1c2f90e5eed38ef95d7371176",
+  "learner": {
+    "family": "multinomial_logistic_ridge",
+    "C": 0.15,
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "tol": 1e-06,
+    "random_state": 0,
+    "thread_limit": 1
+  },
+  "current_holdout_seed": 20261113,
+  "additional_stability_seeds": [],
+  "blocks": {
+    "historical_ap_transfer": [
+      "training_weighted_marginal",
+      "prior_only",
+      "prior_state",
+      "prior_age_education",
+      "prior_state_age_education"
+    ],
+    "current_chep_holdout": [
+      "training_weighted_marginal",
+      "prior_only",
+      "prior_state",
+      "prior_age_education",
+      "prior_state_age_education",
+      "prior_state_age_education_race_income",
+      "prior_state_age_education_race_income_sex_rucc"
+    ]
+  },
+  "historical_frame": {
+    "train": "AP2022 positive POLLCLOSE_STATE_WEIGHT, 48 state-qualified jurisdictions",
+    "test": "AP2024 positive POLLCLOSE_STATE_WEIGHT, same 48 jurisdictions",
+    "excluded_from_state_score_frame": [
+      "DE",
+      "WV"
+    ],
+    "excluded_reason": "AP2022 codebook says national estimates only; positive state-weight values do not create state qualification",
+    "dc": "unsupported_not_in_source",
+    "final_vote_weights_consumed": false,
+    "matched_panel": false
+  },
+  "current_frame": {
+    "source": "CHEP2026 all positive CHEP_WEIGHT records in 50 observed states",
+    "split": "fixed state-stratified 80/20 respondent holdout",
+    "dc": "unsupported_not_in_source",
+    "likely_voter_nonvote": "modeled current N, not observed abstention",
+    "source_weight_independence_from_final_returns_established": false
+  },
+  "predictor_contract": {
+    "historical_prior": "QPVVOTE20 routed nonvote or actual recalled QVOTE2020; forced-choice QVOTE2020S forbidden",
+    "current_priors": [
+      "VOTE24_CHOICE",
+      "VOTE22_CHOICE"
+    ],
+    "recalled_code_4": "N",
+    "missing_or_unknown_recall": "U",
+    "age_education_interactions": "each prior by each native age/education field",
+    "race_income_interactions": false,
+    "sex_rucc_interactions": false,
+    "race_or_sex_cross_ap_harmonization": false,
+    "outcome_or_identifier_predictors": false
+  },
+  "native_category_handling": {
+    "known_native_values": "literal native code strings",
+    "missing": "separate missing category",
+    "77": "separate dont_know_77 category",
+    "88": "separate disclosure_removed_88 category",
+    "98": "separate web_skipped_98 category",
+    "99": "separate unknown_refused_99 category",
+    "other_native": "separate other_native_CODE category",
+    "average_imputation": false
+  },
+  "weight_and_vocabulary_protocol": {
+    "vocabulary": "fit on training rows only",
+    "regularization_weight_normalization": "positive training weights divided by positive training-row mean only",
+    "zero_weights": "retained in source inventory, excluded literally from weighted fit/score frame",
+    "negative_or_invalid_weights": "retained as routing counts and excluded; any occurrence is a source warning",
+    "test_weight_normalization": false
+  },
+  "accepted_baseline_differences": [
+    "Older accepted CHEP/AP holdout code fitted DictVectorizer vocabulary on all records before splitting; this new ablation fits vocabulary on training rows only.",
+    "Older accepted CHEP/AP holdout code divided by the all-record weight mean; this new ablation divides by the positive training-row mean only.",
+    "Older accepted AP transfer consumed every positive state-weight row; this new common state-qualified frame excludes AP2022 DE/WV from both training and AP2024 scoring.",
+    "No older accepted estimator, prediction, synthetic prior, state estimate, default, or public artifact is altered."
+  ],
+  "metrics": [
+    "native-weighted five-class multiclass log loss",
+    "native-weighted five-class Brier score",
+    "native-weighted known-major-party log loss"
+  ],
+  "calibration": {
+    "table": "overall five-class weighted observed share and weighted mean prediction",
+    "minimum_raw_cases_each_class": 30,
+    "failure": "hold entire model calibration table",
+    "state_or_subgroup_tables": false
+  },
+  "promotion_rule": {
+    "candidate_blocks": [
+      "prior_state",
+      "prior_age_education",
+      "prior_state_age_education"
+    ],
+    "requirement": "strict improvement versus prior_only in both log loss and Brier on both AP transfer and CHEP holdout",
+    "current_only_race_income_or_sex_rucc_eligible": false,
+    "automatic_default_promotion": false,
+    "state_estimate_generation_before_independent_review": false
+  },
+  "public_packet": {
+    "respondent_rows": false,
+    "prediction_vectors": false,
+    "trained_estimators": false,
+    "private_fine_cells": false,
+    "state_score_tables": false,
+    "aggregate_numeric_queries": true,
+    "source_refit_reproducible_without_private_originals": false,
+    "fit_cli_requires_users_own_qualified_originals": true,
+    "aggregate_replay_standard_library_only": true
+  }
+}
