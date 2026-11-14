@@ -135,6 +135,25 @@ points equal+23.95221096 D-R margin points and remain unchanged; the33 qualified
 17 held behavioral comparisons remain separate. Older acceptance sections below
 retain their original version-specific scope, superseded by this current entry.
 
+## Additional declared source access outcomes: November 14
+
+Two newly encountered native routes returned direct403. Neither response body
+was read, so no successful body size/hash or numerical observation is claimed.
+The serialized research-tool outcomes are retained; these exact routes stay
+stopped without retries, alternate clients, caches, mirrors or guessed URLs.
+
+| Exact declared route | Native outcome |
+|---|---|
+| `https://sos.iowa.gov/elections/pdf/2026/general/AbsenteeCounty2026.pdf` |403 Forbidden; completed2026-11-14T03:04:44.864Z; body not read |
+| `https://elections.ny.gov/voters-registered-county-11012026` |403 Forbidden; completed2026-11-14T03:05:27.526Z; body not read |
+
+The separately reachable Idaho May19 primary report is **not** November3
+general-election participation. Its proposed89-row addition was rejected;
+no primary counts, rate, county binding or model change is merged.
+The cached Marion IA general-election header is a distinct, already-held
+source under independent qualification, not an alternate route to either
+denied product. No new Marion publication is claimed by this access receipt.
+
 ## 2026 South Carolina and Alabama native source counts
 
 The supplied all-state directory was conditionally reviewed without retrying

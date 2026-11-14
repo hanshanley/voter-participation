@@ -93,7 +93,11 @@ The same generic tabular adapter accepts the VA2020 plain CSV recipe;
 `data/historical-tabular-source-specs/20261112-01/`.
 Complete packets preserve the exact archived
 processing code, which need not equal later acquisition-only fixes.
-The general current-runtime update workflow remains a separate unfinished task.
+The shared current-runtime workflow has since delivered reviewed native
+multi-product/count-binding updates; see [the batch guide](PARTICIPATION_BATCH.md).
+The separate [historical administrative-cell projection](HISTORICAL_NATIVE_COUNTS.md)
+connects explicit ballot/register fields without treating candidate returns
+as participation or approving historical geometry.
 
 ## Verification and delivery
 
