@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Pending New York/Ohio qualification | [Real county access stops and held current-registry interpretation](#2026-new-york-access-stops-and-ohio-registry-history-qualification) |
 | Current Oklahoma/Texas native counts | [77 in-person-early counties, two counted-ballot additions and complete fact-only replays](#2026-oklahoma-early-ballots-and-texas-counted-ballot-additions) |
 | Published NC/OR successor packets | [Native revisions, unchanged probabilities and complete count/model replays](#2026-north-carolina-and-oregon-native-successor-packets) |
 | Published Jefferson reference packet | [529 literal reference joins, 117 explicit holds and complete geometry/replay](#2026-jefferson-kentucky-partial-lojic-reference) |
@@ -68,6 +69,46 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 New York access stops and Ohio registry-history qualification
+
+The bounded New York follow-up received actual HTTP403 from five official
+county routes: Monroe elections home and results, Saratoga Board of Elections,
+Seneca Board of Elections, and Schenectady elections. Exact STOP receipts and
+the five-test baseline/hold verification are retained privately. Earlier NY
+HomeNoJS and November1 registration-workbook stops remain binding. No declared
+numerical original was acquired or promoted, no candidate/SDK was published,
+and the full51 accepted projection is unchanged. Search-discovered product
+links and snippets were not treated as source-authority evidence or counts.
+Other genuinely independent primary products remain a possible route; these
+outcomes are not proof of statewide unavailability.
+
+An isolated Ohio candidate is also withheld. Its Butler County Election Vault
+index supports the publisher, normal POST download declaration, product name
+and file-update literal. The underlying current voter-record CSV and receipt
+were located in the already-held private linked-history source collection.
+Independent streaming verification supports the neutral current-record
+date-token predicate, not the stronger ballot/election-type claims. The source
+is person-record input, not a
+publisher-supplied public aggregate; any distributable result must identify
+its derived aggregate nature without exposing individual records or histories.
+
+The referenced directive hash points to a derived evidence record rather than
+retained directive bytes. The separately claimed ballot-total context likewise
+lacks retained primary support. Date-coded history flags alone therefore do
+not establish counted-ballot, general-election or complete all-method semantics.
+Observed Active/Inactive status values do not establish how removed/cancelled
+registrants are treated. A file-update clock is not an election-result clock,
+and one current record carrying a matching token is not necessarily a unique
+history credit or a complete unique participant.
+
+The private package's mechanical CRC/manifest/portable-replay checks and
+individual-record exclusion passed independent review; source meaning,
+typed units and publication remain HOLD. No Ohio count, model or public
+download changed. Registry-history records must not inherit generic ballot/
+full-election labels through the existing display adapter. Resolve those
+source and rendering gates before publication; do not repair a discrepancy
+by merging different administrative measures.
 
 ## 2026 Oklahoma early ballots and Texas counted-ballot additions
 

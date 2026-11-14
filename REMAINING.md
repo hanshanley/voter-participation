@@ -13,6 +13,45 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## New York and Ohio follow-up: source qualification remains open
+
+The bounded New York follow-up preserved five actual403 stops: Monroe's
+elections home/results pages and the Saratoga, Seneca and Schenectady election
+pages. No numerical source original was qualified, no new observation or SDK
+was created, and all51 accepted jurisdiction projections remain. These stops
+do not establish that every independent New York primary product is unavailable.
+Do not retry them through another client, cache, mirror or guessed download.
+
+The private Ohio/Butler candidate is NOT published or activated. Independent
+review found that a current-registry history-date predicate was described too
+strongly as counted ballots/general-election/all-method participation. The
+underlying person-record CSV and receipt were located outside the worker's
+review folder, and independent streaming aggregate recomputation succeeded.
+This supports only a neutral current-record/date-coded-history predicate. The
+referenced directive pin is a derived evidence record, not retained directive
+bytes; the separate claimed Ballots Cast context also lacks a retained primary
+artifact. Neither can establish those stronger semantics. Removed/cancelled
+records outside the observed status frame remain unknown.
+
+Before any Ohio promotion, qualify the exact source predicate and update all
+facts, queries, typed units, source classifications and display scope together.
+Preserve private person records and individual histories; distribute only
+permitted sufficiently aggregated facts and explicit withholding decisions.
+The current renderer's generic non-review ballot/full-election wording is not
+suitable for registry-history records. A private edit attempt failed with
+ENOSPC before changing either website file; both remain exactly accepted0c6f2be.
+
+Storage is critically constrained. Pause new acquisition, large copies,
+packaging and full rebuilds until safe headroom exists. Only the already
+verified generated website `dist` was removed, after retaining its tested
+prepared page and full download manifest. All originals, private source bytes,
+SDKs, failed attempts, source files and acceptance evidence remain. Continue
+read-only source verification meanwhile; do not turn a private handoff into a
+completed delivery or silently relax the actual artifact/production gates.
+
+The live Oklahoma/Texas successor below is unchanged. All broader source/model
+gaps and the full audit THEN beautification remain open.
+
 ## Oklahoma early ballots and two Texas counted-ballot additions
 
 The qualified count successor is live at catalog
