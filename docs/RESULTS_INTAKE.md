@@ -114,6 +114,19 @@ Portable workbook behavior tests run without private originals; additional
 retained-original cases are optional and skip only through their source fixture.
 Parser capability does not clear a stopped source or establish fresh acquisition.
 
+The reviewed summary family additionally registers King County's repeated global
+ballot/register header and Hawaii's four native election-administration turnout
+blocks. Every report page must retain its election, administration and source
+clock; repeated King parents must agree, and Hawaii's mail/in-person components
+and printed fractions must reconcile within the complete statistical column.
+Maui retains its existing Maui/Kalawao membership, never two allocated counts.
+These adapters preserve source-native measures, accepted identities and held
+rates. A report edition older than the last successful capture is retained as a
+failure, not activated over newer counts. A ballot question mentioning a primary
+election does not change the report's separately checked general-election scope.
+Retained-original acceptance and portable tests establish parser capability;
+new hosted outcomes remain separately verifiable in the complete coverage query.
+
 Source planning examines all 51 accepted jurisdiction shards. The current
 baseline supplies primary-product registrations in 29 states; that number
 includes unadapted products retained as factual review items, not 29 complete

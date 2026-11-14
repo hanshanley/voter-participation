@@ -41,7 +41,7 @@ def pdf_reader(monkeypatch):
     class Reader:
         def __init__(self, stream):
             self.is_encrypted = False
-            self.pages = [Page(stream.read().decode())]
+            self.pages = [Page(value) for value in stream.read().decode().split("\f")]
     monkeypatch.setattr(pypdf, "PdfReader", Reader)
 
 
@@ -93,6 +93,166 @@ def test_one_failed_state_does_not_stop_others_or_roll_back_retained_counts(tmp_
     assert {row["state_code"] for row in changes} == {"NY", "MI"}
     assert after["states/TX.json.gz"] == before["states/TX.json.gz"]
     assert next(row for key, row in entries.items() if key.startswith("TX-"))["data"] is None
+
+
+def summary_fixture(layout, value=9):
+    url, profile = next((url, profile) for url, profile in native.SUMMARY_PROFILES.items()
+                        if profile["layout"] == layout)
+    if layout == "repeated_header":
+        clock = "2026-11-12 15:10:05"
+        facts = {"source_id": profile["identity"], "native_ballots": 7,
+                 "native_pdf_clock": clock, "selected_native_parent_literal": "Total Ballots Cast:",
+                 "source_role": "native_registration_ballot_reported_turnout_statistics"}
+        text = "\n".join(("Statement of Votes Cast by Geography Page: 1 of 1",
+            profile["title"] + " 2026-11-13",
+            "All Precincts, All Districts, All Counter Groups, All ScanStations, "
+            "All Contests, All Boxes 15:10:05",
+            f"Total Ballots Cast: {value}, Registered Voters: 10, Overall Turnout: {value * 10:.2f}%",
+            "A contest with 999 candidate selections"))
+    else:
+        clock = "Printed on: 11/04/2026 at 09:09:56 am"
+        facts = {"source_administration_id": profile["identity"],
+                 "native_values": {"TOTAL TURNOUT": 7},
+                 "source_clock_literal": clock,
+                 "component_county_fips": profile["component_county_fips"]}
+        text = "\n".join((profile["title"] + " Page 1",
+            "November 3, 2026 Printed on: 11/05/2026 at 09:09:56 am", "SUMMARY REPORT", "REPORT 3",
+            "        TOTAL REGISTRATION      10",
+            f"        TOTAL TURNOUT           {value}    {value * 10:.1f}%",
+            f"        Mail TURNOUT            {value}    {value * 10:.1f}%",
+            "        In-Person TURNOUT       0    0.0%"))
+    row = template(profile["state"], profile["name"], profile["level"], facts)
+    row["measure"]["literal"] = profile["measure"]
+    row["source_clock"]["literal"] = clock
+    row["view"]["source_url"] = url
+    return text.encode(), row, profile
+
+
+@pytest.mark.parametrize("layout", ["repeated_header", "column_turnout"])
+@pytest.mark.parametrize("value", [0, 9])
+def test_summary_collects_changed_parent_and_true_zero_without_rate_promotion(monkeypatch, layout, value):
+    pdf_reader(monkeypatch)
+    body, row, profile = summary_fixture(layout, value)
+    result = native.summary_statistics(body, [row], profile)
+    update = result["updates"][0]
+    assert update["id"] == row["id"]
+    assert update["value"] == value
+    assert update["registered"] == 10
+    assert update["rate_compatible"] is False
+    assert result["analytical_rates_promoted"] is False
+    assert result["complete_native_query"][0]["count"] == value
+    if layout == "column_turnout":
+        assert update["native"]["component_county_fips"] == row["view"]["native_record"]["component_county_fips"]
+
+
+@pytest.mark.parametrize("layout", ["repeated_header", "column_turnout"])
+@pytest.mark.parametrize("field", ["year", "name", "identity", "measure", "count", "qualified"])
+def test_summary_rejects_changed_accepted_scope_or_role(monkeypatch, layout, field):
+    pdf_reader(monkeypatch)
+    body, row, profile = summary_fixture(layout)
+    if field == "year":
+        row["election"]["year"] = 2024
+    elif field == "name":
+        row["geography"]["name"] = "A different source geography"
+    elif field == "identity":
+        row["view"]["native_record"][profile["identity_field"]] = "other"
+    elif field == "measure":
+        row["measure"]["literal"] = "Candidate votes"
+    elif field == "count":
+        row["count"]["value"] = 8
+    else:
+        row["denominator"] = {"qualified": True, "value": 10}
+    with pytest.raises(ValueError, match="identity, measure or qualification"):
+        native.summary_statistics(body, [row], profile)
+
+
+def test_repeated_summary_requires_every_page_parent_and_whole_report_scope(monkeypatch):
+    pdf_reader(monkeypatch)
+    body, row, profile = summary_fixture("repeated_header")
+    first = body.replace(b"1 of 1", b"1 of 2")
+    second = body.replace(b"1 of 1", b"2 of 2")
+    result = native.summary_statistics(first + b"\f" + second, [row], profile)
+    assert len(result["complete_native_query"]) == 2
+    for changed in (
+            second.replace(b"Cast: 9", b"Cast: 8").replace(b"90.00%", b"80.00%"),
+            second.replace(b"All Precincts", b"Selected Precincts"),
+            second.replace(b"2026-11-13", b"2026-11-14"),
+            second.replace(b"Total Ballots Cast: 9", b"Total Candidate Votes: 9")):
+        with pytest.raises(ValueError):
+            native.summary_statistics(first + b"\f" + changed, [row], profile)
+
+
+def test_column_summary_finds_later_page_and_holds_missing_misaligned_or_conflicting_cells(monkeypatch):
+    pdf_reader(monkeypatch)
+    body, row, profile = summary_fixture("column_turnout")
+    header = b"\n".join(body.splitlines()[:4])
+    later = body.replace(b"Page 1", b"Page 2")
+    result = native.summary_statistics(header + b"\f" + later, [row], profile)
+    assert result["updates"][0]["native"]["query"]["page"] == 2
+    shifted = body.replace(b"        Mail TURNOUT", b"       Mail TURNOUT")
+    assert native.summary_statistics(shifted, [row], profile)["updates"][0]["value"] == 9
+    contest = body + b"\nShould the Primary Election procedure change?"
+    assert native.summary_statistics(contest, [row], profile)["updates"][0]["value"] == 9
+    for changed in (
+            body.replace(b"TOTAL TURNOUT           9", b"TOTAL TURNOUT           "),
+            body.replace(b"        Mail TURNOUT", b"           Mail TURNOUT"),
+            body.replace(b"Mail TURNOUT            9", b"Mail TURNOUT            8"),
+            body.replace(b"90.0%", b"80.0%"),
+            body.replace(b"11/05/2026", b"11/03/2026"),
+            body.replace(b"November 3, 2026", b"November 3, 2024")):
+        with pytest.raises(ValueError):
+            native.summary_statistics(changed, [row], profile)
+    changed = copy.deepcopy(row)
+    changed["view"]["native_record"]["component_county_fips"] = ["15005", "15009"]
+    with pytest.raises(ValueError, match="membership"):
+        native.summary_statistics(body, [changed], profile)
+
+
+def test_summary_registered_sources_refresh_actual_projection_without_changing_other_states(tmp_path, monkeypatch):
+    pdf_reader(monkeypatch)
+    before = baseline(("NY",))
+    index = json.loads(before["index.json"])
+    originals = {}
+    for layout in ("repeated_header", "column_turnout"):
+        body, row, profile = summary_fixture(layout)
+        originals[row["view"]["source_url"]] = body
+        state = profile["state"]
+        name = "states/" + state + ".json.gz"
+        before[name] = intake.compressed(encoded({"records": [row],
+            "views": {"official": {"counties": [row["id"]]}}}))
+        index["states"][state] = {"file": name, **pin(before[name])}
+    before["index.json"] = encoded(index)
+    def acquire(self, url):
+        self.guard(url)
+        if url not in originals:
+            raise IntakeError("source_stopped", "Retained unchanged state")
+        return originals[url], {"url": url, "origin": "fixture_transport", **pin(originals[url])}
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    collector = intake.Collector(tmp_path, {}, {"urls": [], "prefixes": [], "hosts": []},
+                                 datetime(2026, 11, 14, tzinfo=timezone.utc))
+    entries = native.collect_sources(collector, before)
+    after, changes = granular.project(before, entries)
+    assert len(changes) == 2
+    assert after["states/NY.json.gz"] == before["states/NY.json.gz"]
+    for state in ("WA", "HI"):
+        old = json.loads(gzip.decompress(before["states/" + state + ".json.gz"]))
+        current = json.loads(gzip.decompress(after["states/" + state + ".json.gz"]))
+        assert current["views"] == old["views"]
+        assert current["records"][0]["geography"] == old["records"][0]["geography"]
+        assert current["records"][0]["id"] == old["records"][0]["id"]
+        assert current["records"][0]["count"]["value"] == 9
+        assert current["records"][0]["denominator"] is None
+    collector.prior = entries
+    for url, body in originals.items():
+        originals[url] = (body.replace(b" 9", b" 8").replace(b"90.00%", b"80.00%")
+                          .replace(b"90.0%", b"80.0%").replace(b"2026-11-13", b"2026-11-12")
+                          .replace(b"11/05/2026", b"11/04/2026"))
+    retained = native.collect_sources(collector, before)
+    for identity, entry in retained.items():
+        if identity.startswith(("HI-", "WA-")):
+            assert entry["status"] == "retained_after_failure"
+            assert entry["data"] == entries[identity]["data"]
+            assert entry["data"]["updates"][0]["value"] == 9
 
 
 @pytest.mark.parametrize("change", [

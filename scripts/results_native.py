@@ -95,6 +95,32 @@ RECORD_PROFILES = {
         "analytical_rates_qualified": False,
     },
 }
+SUMMARY_PROFILES = {
+    "https://election-results-01.kingcounty.gov/results.pdf": {
+        "state": "WA", "layout": "repeated_header", "level": "county",
+        "name": "King County", "identity_field": "source_id",
+        "identity": "king-current-native-summary",
+        "measure": "Reported ballots (previously reviewed export label, not a new native qualification)",
+        "title": "King County, November 2026 General Election, Nov 03, 2026",
+    },
+    **{
+        "https://elections.hawaii.gov/wp-content/results/2026%20General/" + filename + ".pdf": {
+            "state": "HI", "layout": "column_turnout", "level": "election_administration",
+            "name": name, "identity_field": "source_administration_id", "identity": identity,
+            "measure": "TOTAL TURNOUT (native report; not certified unique voters)",
+            "title": "GENERAL ELECTION 2026 - State of Hawaii - " + title,
+            "component_county_fips": counties,
+        }
+        for filename, name, identity, title, counties in (
+            ("cch", "Honolulu election administration", "HI-HONOLULU",
+             "City and County of Honolulu", ["15003"]),
+            ("coh", "Hawaii election administration", "HI-HAWAII", "County of Hawaii", ["15001"]),
+            ("cok", "Kauai election administration", "HI-KAUAI", "County of Kauai", ["15007"]),
+            ("com", "Maui election administration (includes Kalawao)", "HI-MAUI",
+             "County of Maui", ["15009", "15005"]),
+        )
+    },
+}
 PDF_MEASURES = {
     "Ballots Cast - Total", "Ballots Cast", "Total Ballots Cast", "Total Ballots",
     "Voters Cast", "Cards Cast", "TOTAL TURNOUT",
@@ -1054,6 +1080,146 @@ def pdf_parent_statistics(body, templates):
     return result
 
 
+def summary_page_statistics(page, number, pages, profile):
+    lines = [" ".join(line.split()) for line in page.splitlines() if line.strip()]
+    if (PRIVATE_HEADERS.search(page) or len(lines) < 4
+            or re.search(r"\b(?:TEST RESULTS|PRIMARY ELECTION|RUNOFF ELECTION)\b",
+                         "\n".join(lines[:4]), re.I)):
+        raise ValueError("Unqualified native summary page")
+    if profile["layout"] == "repeated_header":
+        scope = ("All Precincts, All Districts, All Counter Groups, All ScanStations, "
+                 "All Contests, All Boxes")
+        title = re.fullmatch(re.escape(profile["title"]) + r" (\d{4}-\d{2}-\d{2})", lines[1])
+        counters = re.fullmatch(re.escape(scope) + r" (\d{2}:\d{2}:\d{2})", lines[2])
+        parent = re.fullmatch(
+            r"Total Ballots Cast: (" + COUNT_LITERAL + r"), Registered Voters: ("
+            + COUNT_LITERAL + r"), Overall Turnout: ([0-9]+\.[0-9]+)%", lines[3])
+        if (lines[0] != f"Statement of Votes Cast by Geography Page: {number} of {pages}"
+                or not title or not counters or not parent):
+            raise ValueError("Native summary election, whole-report scope or parent changed")
+        value, registered = (int(parent.group(i).replace(",", "")) for i in (1, 2))
+        fraction = parent.group(3)
+        clock = title.group(1) + " " + counters.group(1)
+        clock_value(clock)
+        if not registered or (Decimal(value) * 100 / registered).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(fraction):
+            raise ValueError("Native summary parent fraction disagrees")
+        return {"count": value, "registered": registered, "source_clock": clock,
+                "native_fraction_literal": fraction + "%", "page": number}
+    if profile["layout"] != "column_turnout":
+        raise ValueError("Unreviewed native summary layout")
+    title = re.fullmatch(re.escape(profile["title"]) + r" Page " + str(number), lines[0])
+    clock = re.fullmatch(
+        r"November 3, 2026 (Printed on: \d{2}/\d{2}/20\d{2} at \d{2}:\d{2}:\d{2} [ap]m)",
+        lines[1])
+    if not title or not clock or lines[2] != "SUMMARY REPORT" or not re.fullmatch(
+            r"REPORT [0-9]+", lines[3]):
+        raise ValueError("Native summary election, administration or report clock changed")
+    datetime.strptime(clock.group(1), "Printed on: %m/%d/%Y at %I:%M:%S %p")
+    cells = {}
+    for label in ("TOTAL REGISTRATION", "TOTAL TURNOUT", "Mail TURNOUT", "In-Person TURNOUT"):
+        pattern = (r"(?<!\S)" + re.escape(label) + r"\s+(" + COUNT_LITERAL + r")"
+                   + (r"\s+([0-9]+\.[0-9]+)%" if label != "TOTAL REGISTRATION" else "")
+                   + r"\s*$")
+        matches = [(index + 1, match) for index, line in enumerate(page.splitlines())
+                   for match in [re.search(pattern, line)] if match]
+        if len(matches) > 1:
+            raise ValueError("Ambiguous native summary statistical parent")
+        if matches:
+            index, match = matches[0]
+            cells[label] = {"value": int(match.group(1).replace(",", "")),
+                            "column": match.start(), "line": index,
+                            "fraction": match.group(2) if label != "TOTAL REGISTRATION" else None}
+    if not cells:
+        return {"source_clock": clock.group(1), "page": number}
+    columns = [cell["column"] for cell in cells.values()]
+    # Layout extraction shifts some same-column labels by one character.
+    if len(cells) != 4 or max(columns) - min(columns) > 1:
+        raise ValueError("Native summary statistical column is incomplete or misaligned")
+    registered, value, mail, in_person = (cells[label]["value"] for label in (
+        "TOTAL REGISTRATION", "TOTAL TURNOUT", "Mail TURNOUT", "In-Person TURNOUT"))
+    if not registered or value != mail + in_person:
+        raise ValueError("Native summary turnout components disagree")
+    for label in ("TOTAL TURNOUT", "Mail TURNOUT", "In-Person TURNOUT"):
+        if (Decimal(cells[label]["value"]) * 100 / registered).quantize(
+                Decimal(".1"), rounding=ROUND_HALF_UP) != Decimal(cells[label]["fraction"]):
+            raise ValueError("Native summary printed fraction disagrees")
+    return {"count": value, "registered": registered, "source_clock": clock.group(1),
+            "native_values": {label: cell["value"] for label, cell in cells.items()},
+            "native_fraction_literal": cells["TOTAL TURNOUT"]["fraction"] + "%",
+            "statistical_cells": cells, "page": number}
+
+
+def summary_statistics(body, templates, profile):
+    from pypdf import PdfReader
+
+    reader = PdfReader(io.BytesIO(body))
+    if reader.is_encrypted or not 1 <= len(reader.pages) <= 100:
+        raise ValueError("Unqualified native summary PDF")
+    queries = [summary_page_statistics(page.extract_text(extraction_mode="layout"),
+               index + 1, len(reader.pages), profile) for index, page in enumerate(reader.pages)]
+    parents = [query for query in queries if "count" in query]
+    vectors = {(row["count"], row["registered"], row["source_clock"]) for row in parents}
+    if (len(vectors) != 1 or len({row["source_clock"] for row in queries}) != 1
+            or profile["layout"] == "column_turnout" and len(parents) != 1):
+        raise ValueError("Native summary repeated parents or clocks disagree")
+    query = parents[0]
+    clock_key = "native_pdf_clock" if profile["layout"] == "repeated_header" else "source_clock_literal"
+    updates = []
+    for template in templates:
+        old = template["view"].get("native_record") or {}
+        old_value = (old.get("native_ballots") if profile["layout"] == "repeated_header"
+                     else (old.get("native_values") or {}).get("TOTAL TURNOUT"))
+        if (template["geography"]["state_code"] != profile["state"]
+                or template["geography"]["level"] != profile["level"]
+                or template["geography"]["name"] != profile["name"]
+                or template["election"]["year"] != 2026
+                or template["election"]["type"] != "general"
+                or template["measure"]["literal"] != profile["measure"]
+                or old.get(profile["identity_field"]) != profile["identity"]
+                or template["count"]["status"] != "reported"
+                or count(old_value) != template["count"]["value"]
+                or (template.get("denominator") or {}).get("qualified")):
+            raise ValueError("Reviewed native summary identity, measure or qualification changed")
+        previous = old.get(clock_key)
+        if not isinstance(previous, str) or not template["source_clock"]["literal"].startswith(previous):
+            raise ValueError("Reviewed native summary clock binding changed")
+        if profile["layout"] == "repeated_header":
+            if (old.get("selected_native_parent_literal") != "Total Ballots Cast:"
+                    or old.get("source_role") != "native_registration_ballot_reported_turnout_statistics"):
+                raise ValueError("Reviewed native summary parent role changed")
+            current_clock, prior_clock = clock_value(query["source_clock"]), clock_value(previous)
+            native = {"source_id": profile["identity"],
+                      "source_role": old["source_role"],
+                      "selected_native_parent_literal": "Total Ballots Cast:",
+                      "native_ballots": query["count"], "native_registered": query["registered"],
+                      "native_fraction_literal": query["native_fraction_literal"],
+                      "native_global_parent_copies": len(parents)}
+        else:
+            if old.get("component_county_fips") != profile["component_county_fips"]:
+                raise ValueError("Reviewed election-administration membership changed")
+            current_clock, prior_clock = (datetime.strptime(literal,
+                "Printed on: %m/%d/%Y at %I:%M:%S %p") for literal in (query["source_clock"], previous))
+            native = {"source_administration_id": profile["identity"],
+                      "administration": profile["name"],
+                      "component_county_fips": old["component_county_fips"],
+                      "native_values": query["native_values"]}
+        if current_clock < prior_clock:
+            raise ValueError("Native summary edition regressed")
+        native.update({clock_key: query["source_clock"], "query": query,
+                       "private_original_pin": pin(body),
+                       "whole_publisher_html_redistributed": False})
+        updates.append(change(template, query["count"], native, registered=query["registered"],
+                              clock=query["source_clock"], rate_compatible=False))
+    if not updates:
+        raise ValueError("Native summary has no reviewed parent")
+    return {"updates": updates, "complete_native_query": queries,
+            "date": current_clock.isoformat(),
+            "clock_qualification": "literal_native_report_clock_not_retrieval_or_certification",
+            "geographic_joins_changed": False, "analytical_rates_promoted": False,
+            "native_measure_not_relabelled_as_ballots": True}
+
+
 def webforms_statistics(body, templates):
     text = body.decode("utf-8-sig")
     if not re.search(r">\s*GENERAL 2026\s*<", text) or not re.search(
@@ -1165,8 +1331,11 @@ def source_plan(baseline):
                 continue
             profile = RECORD_PROFILES.get(url)
             workbook_profile = WORKBOOK_PROFILES.get(url)
+            summary_profile = SUMMARY_PROFILES.get(url)
             native = view.get("native_record") or {}
-            if workbook_profile and state == workbook_profile["state"]:
+            if summary_profile and state == summary_profile["state"]:
+                adapter = "reviewed_summary_statistics"
+            elif workbook_profile and state == workbook_profile["state"]:
                 adapter = "reviewed_workbook_statistics"
             elif profile and state == profile["state"] and (
                     (native.get("query") or {}).get("query_id") == profile["query_id"]
@@ -1209,6 +1378,9 @@ def collect_sources(collector, baseline):
             elif source["adapter"] == "reviewed_workbook_statistics":
                 def parse(body, templates=templates, profile=WORKBOOK_PROFILES[url]):
                     return workbook_statistics(body, templates, profile)
+            elif source["adapter"] == "reviewed_summary_statistics":
+                def parse(body, templates=templates, profile=SUMMARY_PROFILES[url]):
+                    return summary_statistics(body, templates, profile)
             elif source["adapter"] == "reviewed_pdf_county_parent":
                 def parse(body, templates=templates):
                     return pdf_parent_statistics(body, templates)
