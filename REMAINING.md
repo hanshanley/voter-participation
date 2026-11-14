@@ -13,6 +13,58 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Kansas partial official source delivered; nationwide gaps remain
+
+The qualified Greeley observation is live in the `official` view at website
+`9ecc191e792fae20c65fee45de052eb657e10171`, catalog
+`d735fba69caf4e54e1e718e5e3b5a8451c4ef5e7`, count version
+`92092b9931902e5af08a3b78e177cd6c98035d26c99fa83c0ea577d1377aee95`.
+The source reports 460 turnout (451 voted plus nine counted provisionals),
+853 registered voters and printed 53.93%. These are source-defined measures,
+not generic ballots, independently verified unique people or eligible-population
+turnout. Native count clock/timezone and 104 other official county totals are
+unknown. All 105 existing available/early/mail county frames and contextual
+maps remain exact; the new unmatched native row is not placed on those maps.
+
+The complete immutable SDK, release445279373, has independent source/typed/
+repair review, two fresh worker replays, an independent fresh replay and actual
+public-download reproduction: 14 tests and 54 exact count files. The collector
+repair is fail-closed before transport and preserves truthful stop-forming
+history; no stopped product was reacquired for the repair. The original held
+SDK and failed evidence remain. See
+[complete downloads](docs/DATA.md#kansas-greeley-official-source-turnout).
+
+Actual production verifies all51 interfaces/306 bindings/eight state
+references/6,450 early rows, 210 retained Kansas provider values, source units,
+literal official status, mode/map exclusions and complete desktop/phone SDK
+downloads. The renderer no longer invents unofficial status or precinct
+reporting metadata for this report. Actual artifact14113644559 is997,372,160
+payload bytes/999,966,720 raw tar bytes; all436 old download pins remain.
+Exact sources and the compatible checker are persisted without replacing
+independent legacy sources or changing canonical HEADs/indexes.
+
+This closes only one partial-county delivery, not Kansas's other104 native
+county totals or the nationwide project. All113 model versions, House endpoints,
+swing units, fitted probabilities and survey weights remain unchanged. A
+single county report without a compatible joint population frame does not
+justify a statewide demographic transition refit or local allocation.
+
+## Mississippi authority hold: do not activate the private projection
+
+The retained absentee PDF and complete private numerical queries pass scientific/
+typed and technical replay review, but no retained genuine official declaration
+maps the exact PDF. Source authority/publication remain HOLD. The private
+collector repair passes11 offline tests and makes newly discovered shared stops
+fail-closed, with zero new requests; it does not supply missing authority.
+Original candidates/SDK/receipts/failures remain and no replacement SDK,
+activation or Kansas composition occurred. Continue genuine independent primary
+products where available, not stopped routes or derived declaration assertions.
+This is not proof every Mississippi product is unavailable.
+
+Continue the substantive nationwide source/model gaps, including the native
+full-election gaps below. The full audit THEN understated beautification remain
+pending; do not close prerequisites just to unlock them.
+
 ## Ohio neutral context delivered; full-election qualification remains open
 
 The separate Butler registry context is live at website
@@ -53,10 +105,9 @@ with independent inodes, byte/metadata/mtime checks and no original, failed
 evidence or SDK deletion. Continue bounded work while monitoring shared-host
 headroom; do not make broad copies or relax artifact/production gates.
 
-Separate Kansas and Mississippi integrations are in progress. Kansas has a
-private partial-county candidate under independent review, not live coverage;
-Mississippi source qualification remains in progress. All other source/model
-gaps remain, followed by the full audit THEN understated beautification.
+The later Kansas partial official observation above preserves this entire
+Ohio delivery. Mississippi's bounded source-authority hold does not supply
+an accepted replacement. All broader source/model gaps remain.
 
 ## New York follow-up: queried routes remain stopped
 

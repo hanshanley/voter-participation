@@ -8,6 +8,8 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Kansas official source observation | [Greeley source-reported turnout, explicit partial coverage and complete replay](#2026-kansas-greeley-official-source-turnout) |
+| Mississippi publication hold | [Unverified declaration mapping; accepted-table projection not promoted](#2026-mississippi-absentee-product-authority-hold) |
 | Current Ohio administrative context | [Separate registry-date-token channel, preserved county frames and complete replay](#2026-ohio-separate-current-registry-history-context) |
 | Pending New York/Ohio qualification | [Real county access stops and held current-registry interpretation](#2026-new-york-access-stops-and-ohio-registry-history-qualification) |
 | Current Oklahoma/Texas native counts | [77 in-person-early counties, two counted-ballot additions and complete fact-only replays](#2026-oklahoma-early-ballots-and-texas-counted-ballot-additions) |
@@ -70,6 +72,85 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Kansas Greeley official source turnout
+
+The Greeley County Clerk's official 2026 general-election declaration identifies
+the exact retained workbook. The authority page is 10,080 bytes, SHA256
+`bfd8a5115b2ef36a20a83a744f23f7bc16c6e251dd175cec0ca932474a6ad01b`;
+the workbook is 7,942 bytes, SHA256
+`7e7218dc2fa05cccf9cf03f8d0b38c9ca10958d40d3717a7af63c8e847156790`.
+The source reports 451 voted plus nine counted provisionals, totaling 460,
+with 853 registered voters and printed 53.93% turnout. Ten provisionals
+submitted, nine counted and one not counted remain separate. Opaque MSD/GSD/HC
+codes are not interpreted as voting methods. The unit is source-reported
+voters in its turnout total, not generically relabeled ballots or independently
+verified unique people. Registration is not an eligible-population estimate.
+
+The declaration calls these official post-canvass results. No native count
+clock or timezone is printed; November 13 server Last-Modified timestamps and
+retrieval times are provenance only. Coverage is one of 105 Kansas counties;
+104 native official county totals remain unknown, not zero. No statewide sum,
+new FIPS/geometry join, precinct allocation or local demographic model follows.
+
+Only the `official` view selects the new source row. All 105 older available,
+early and mail county frames remain exact, including their separate provider
+units and contextual maps. The unmatched native row is selector/table-only,
+never substituted into a provider map. Other 50 state/DC shards, Ohio's separate
+registry context and 24 original partitions, current snapshot and Kentucky
+reference remain exact. No House endpoint, swing unit, model fit, probability
+or weight changes; all 113 prior models and complete downloads remain.
+
+Independent review held the first SDK because its collector could revisit
+recorded stopped products and its stop narrative was misleading. The repair
+removes those products from actionable collection, checks stops before
+transport and correctly identifies the three original urllib 403 attempts as
+stop-forming attempts. Original receipts, the first SDK and failed evidence
+remain unchanged. The repair performed no network or real transport calls.
+Independent source/data review and the narrow repair review pass; 14 tests
+include five collector-stop guards. Two fresh worker executions, an independent
+fresh extraction and actual public-download replay reproduce all 54 count files.
+
+Immutable release 445279373 contains the complete 11,854,547-byte,
+134-member SDK, SHA256
+`85b1a93788c7aa0acade58348322641a71216b34264ae5f8e5b0011d4982013a`.
+See [complete downloads](docs/DATA.md#kansas-greeley-official-source-turnout).
+It includes complete permitted facts, numerical queries, all51 projections,
+own code and tests, not publisher XLSX/HTML originals or private person data.
+Python-process guards are not an OS sandbox; frozen creation-time planned
+flags remain unchanged, with actual publication verification external.
+
+Website `9ecc191e792fae20c65fee45de052eb657e10171` honors literal source
+status instead of incorrectly labeling the official report unofficial, and
+omits unsupported precinct-reporting text. Catalog
+`d735fba69caf4e54e1e718e5e3b5a8451c4ef5e7` activates count version
+`92092b9931902e5af08a3b78e177cd6c98035d26c99fa83c0ea577d1377aee95`.
+Actual artifact 14113644559 has 997,372,160 payload bytes and 999,966,720 raw
+tar bytes; all 436 old download pins remain exact. Actual no-override checks
+cover all51 interfaces/306 bindings/eight state references/6,450 early rows,
+210 retained Kansas provider county values, the official native observation
+at both widths, mode/map exclusions and two complete SDK downloads. Ohio's
+separate context also passes an actual desktop/phone regression. Exact three
+owned sources are persisted without replacing the older independent renderer,
+reader, tests, canonical HEADs or indexes.
+
+## 2026 Mississippi absentee product authority hold
+
+A privately retained 82-county absentee PDF supports an internally reconciled
+83-unit, 498-cell projection, but the actual official declaration-to-exact-PDF
+mapping is not retained. Intrinsic document text and a successful direct PDF
+download do not establish that publication chain. Independent scientific/
+typed and technical SDK reproduction checks pass; source authority and
+publication remain HOLD. No observation, candidate, SDK or map was activated
+or merged into Kansas. Do not treat this as all-method participation, mail-only
+activity, unique people, turnout or staying home.
+
+A separate private repair makes future shared-stop discovery fail-closed;
+11 offline tests pass with zero new requests. It does not repair the missing
+primary declaration. The original candidate, archive, actual stops and failed
+evidence remain unchanged, and no replacement SDK was built. Stopped products
+stay stopped across clients. Other genuinely independent primary products
+remain possible; this bounded hold is not a statewide-unavailability claim.
 
 ## 2026 Ohio separate current-registry history context
 

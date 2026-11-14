@@ -8,6 +8,57 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Kansas Greeley official source turnout
+
+[Complete permitted Greeley facts, numerical queries, all51 projections, collector guards, compiler and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-kansas-greeley-official-20261114-01/complete-analysis.zip):
+**11,854,547 bytes/134 members**, SHA256
+`85b1a93788c7aa0acade58348322641a71216b34264ae5f8e5b0011d4982013a`;
+immutable release445279373.
+
+Extract the full ZIP into a fresh directory. CPython >=3.9 standard library
+is sufficient; from the extraction run:
+
+```sh
+python3 code/reproduce.py --package . --output reproduced --seed 53
+```
+
+Independent source/data and collector-repair reviews, two fresh worker
+executions, an independent fresh extraction and actual public-download
+reproduction pass14 tests and54 byte-exact count outputs. Five tests cover
+collector stop guards, including blocking before transport and allowed offline
+fixtures. Python-process network/external-command guards are not an OS sandbox.
+The numerical projection is unchanged by the collector/provenance repair.
+The original held SDK and receipts remain, not overwritten.
+
+The package contains the complete permitted sufficient factual inputs,
+numerical queries, qualifications, all51 outputs, own code and tests. It does
+not re-extract excluded publisher XLSX/HTML originals. No publisher media,
+templates, nested archives, private respondents/histories, predictions or
+estimators are included. Self-pins are external; frozen creation-time planned
+flags remain unchanged, with actual immutable/draft/anonymous verification
+external. ZIP member inventories are not separate HTTP assets.
+
+The native source reports460 turnout (451 voted plus nine counted provisionals),
+853 registered voters and printed53.93%. It is one of105 counties, not a
+statewide total;104 native official county totals remain unknown. Registered
+voters are not an eligible-population estimate and the source count is not
+generically ballots or independently verified unique people. Native count
+clock/timezone are absent; HTTP Last-Modified is provenance only.
+
+Only the `official` view selects the new unmatched row; all105 earlier
+available/early/mail county frames and maps remain exact. No new FIPS,
+geometry, precinct or local demographic allocation is qualified. Actual
+desktop/phone production verifies the source units/status, old frames,
+map exclusions and full downloads, alongside all51 interfaces/306 bindings.
+Website9ecc191 and catalogd735fba activate count version92092b99.
+All earlier full downloads, Ohio's separate context, other50 state/DC shards,
+current data, Kentucky references and113 models remain. No transition-model
+refit follows from this partial county report.
+
+Mississippi's separate private absentee projection remains source-authority
+HOLD; no public SDK or activation is claimed for it. Its numerical replay
+does not substitute for the missing official declaration-to-PDF evidence.
+
 ## Ohio separate current-registry history context
 
 [Complete neutral Butler aggregate facts, all numerical queries, all51 projections, compiler and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-ohio-registry-context-20261114-02/complete-analysis.zip):
