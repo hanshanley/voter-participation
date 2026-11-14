@@ -261,6 +261,17 @@ def project(inputs, baseline):
     coverage = []
     for state, name in STATES.items():
         official = feeds.get(state + "-official", {})
+        local = [entry for key, entry in inputs.get("granular", {}).items()
+                 if key.startswith(state + "-")]
+        products = [entry for key, entry in inputs.get("products", {}).items()
+                    if key.startswith(state + "-")]
+        fresh_local = [entry for entry in local if entry["status"] == "reported"]
+        fresh_products = [entry for entry in products
+                          if entry["status"] == "reported" and entry.get("data")]
+        refreshed = sum(len((entry.get("data") or {}).get("updates", [])) for entry in fresh_local)
+        review_required = sum(bool((entry.get("data") or {}).get(
+            "semantic_review_required_before_projection")) for entry in fresh_local)
+        review_required += len(fresh_products)
         coverage.append({
             "state_code": state, "state": name,
             "statewide_administrative_status": official.get("status", "no_registered_statewide_parser"),
@@ -269,6 +280,18 @@ def project(inputs, baseline):
             "provider_mail_status": feeds.get(state + "-returned", {}).get("status", "not_reported"),
             "accepted_local_observations_retained": True,
             "official_directory_status": inputs["directories"][state]["status"],
+            "registered_native_products": len(local),
+            "fresh_native_products": sum(bool((entry.get("data") or {}).get("updates"))
+                                         for entry in fresh_local),
+            "native_record_refreshes": refreshed,
+            "native_source_failures": sum(entry["status"] != "reported" for entry in local),
+            "primary_products_requiring_measure_review": review_required,
+            "directory_products_attempted": len(products),
+            "directory_numerical_products": len(fresh_products),
+            "local_intake_status": ("reviewed_native_refresh" if refreshed else
+                "source_facts_require_measure_review" if review_required else
+                "reviewed_source_without_qualified_updates" if fresh_local else
+                "native_source_unavailable" if local else "no_reviewed_native_product_registered"),
             "house": next(row for row in house_states if row["state_code"] == state),
             "complete_reporting_is_not_certification": True,
         })
@@ -441,7 +464,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                        "inputs/registry.json": encoded(config),
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
-    code = ("results_intake.py", "results_house.py", "results_granular.py", "native_tabular.py",
+    code = ("results_intake.py", "results_house.py", "results_granular.py", "results_native.py",
+             "results_pdf_ocr.py", "native_tabular.py",
             "nationwide.py", "current.py", "download.py",
             "precinct_source_batch.py", "house_clerk_endpoints.py",
             "participation_intake/__init__.py", "participation_intake/engine.py",
@@ -449,7 +473,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
             "participation_intake/publisher.py")
     for name in code:
         package_members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
-    for name in ("test_results_intake.py", "test_results_granular.py", "test_nationwide.py", "test_current.py"):
+    for name in ("test_results_intake.py", "test_results_granular.py", "test_results_native.py",
+                 "test_nationwide.py", "test_current.py"):
         package_members["code/tests/" + name] = (ROOT / "tests" / name).read_bytes()
     version = digest(encoded({"inputs": inputs, "baseline": config["baseline"],
                               "outputs": {name: pin(body) for name, body in outputs.items()},

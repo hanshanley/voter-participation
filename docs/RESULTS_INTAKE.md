@@ -51,7 +51,7 @@ sources or rerunning private survey fits. Optional packaged tests use `pytest`:
 
 ```sh
 cd code
-python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_nationwide.py tests/test_current.py
+python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_nationwide.py tests/test_current.py
 ```
 
 ## What updates automatically
@@ -63,8 +63,34 @@ district returns explicitly declared by the national source.
 
 Registered local adapters also parse North Carolina county statistics, Minnesota
 county/reporting-unit statistics, accepted Alabama general-election workbook
-columns, and Connecticut town statistics. Changed identities/layouts remain held;
-these adapters do not approve new boundaries or guarantee complete precinct coverage.
+columns, and Connecticut town statistics. Shared structured families additionally
+refresh California county statistics, Indiana's native `VotersVoting` records and
+New Mexico's complete county/reporting-unit turnout table. They require the
+reviewed native identities, election, measure, source-clock and parent-accounting
+checks; Indiana's contradictory source zeros and independent county overrides
+remain separate.
+
+The shared PDF family reads reviewed county statistical parents, never candidate
+totals. It checks the literal county/election, total-column or explicit fraction,
+component arithmetic and report edition. An existing qualified registration frame
+requires the matching native registration statistic; no new rate is approved.
+For image-only first pages, pinned local RapidOCR 1.4.4 and PyMuPDF use two bounded
+resolutions, requiring agreeing counts/registers/clocks and selected-number
+confidence of at least .98. This is a same-engine resolution check, **not**
+independent OCR validation. Conflicting meaningful text is never replaced by OCR.
+Uncertain scans remain held. Collection requires the `pdf` extra; numerical
+packet replay neither downloads OCR models nor re-extracts excluded originals.
+
+Source planning examines all 51 accepted jurisdiction shards. The current
+baseline supplies primary-product registrations in 29 states; that number
+includes unadapted products retained as factual review items, not 29 complete
+native county collectors. Supported XLS/XLSX, delimited, JSON, HTML-table and
+nested-ZIP products retain complete permitted factual cells, including blanks,
+zeros and formula caches without executing formulas. Unreviewed columns do not
+become participation counts merely because extraction succeeds.
+
+Changed identities/layouts remain held; these adapters do not approve new
+boundaries or guarantee complete precinct coverage.
 Alabama's registered workbook URL is distinct from newly declared ZIP products:
 discovery alone does not alias a new release to that accepted source.
 
@@ -79,6 +105,10 @@ This is not a universal parser for every state portal, PDF or newly posted
 spreadsheet. Newly declared products with unfamiliar layouts remain review items
 until an election/measure-specific parser and tests are registered. No guessed
 endpoint, inferred missing count, or unreviewed precinct join is promoted.
+The complete coverage query separately reports registered products, successful
+native updates, source failures and factual products awaiting measure review.
+Record refreshes count appearances: county parents and their reporting units,
+or separate representations of one county, must not be added as unique voters.
 
 ## Failure handling and interpretation
 

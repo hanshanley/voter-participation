@@ -165,3 +165,75 @@ def test_workbook_inventory_retains_native_shapes_without_promoting_unknown_meas
         {"name": "Statistics", "rows": 4, "columns": 9},
         {"name": "Native results", "rows": 30, "columns": 8}]
     assert result["numerical_data_qualified"] is False
+
+
+def test_complete_workbook_cells_survive_nested_zip_with_formula_cache_zero_and_blank(monkeypatch):
+    from scripts import native_tabular
+    tables = [{"name": "Statistics", "nrows": 3, "ncols": 2, "rows": [
+        {"row": 1, "cells": [{"address": "A1", "value": "Native count"}]},
+        {"row": 2, "cells": [{"address": "B2", "value": 0, "cached_value": "0",
+                              "formula": {"text": "SUM(B3:B3)"}}]},
+        {"row": 3, "cells": [{"address": "B3", "value": None}]}]}]
+    monkeypatch.setattr(native_tabular, "xls", lambda body: tables)
+    inner = io.BytesIO()
+    with zipfile.ZipFile(inner, "w") as archive:
+        archive.writestr("statistics.xls", b"native workbook")
+    outer = io.BytesIO()
+    with zipfile.ZipFile(outer, "w") as archive:
+        archive.writestr("county.zip", inner.getvalue())
+    result = granular.factual_tables(outer.getvalue(), "2026-general.zip")
+    workbook = result["members"]["county.zip"]["members"]["statistics.xls"]
+    assert workbook["tables"] == tables
+    assert workbook["complete_native_cells_retained"] is True
+    assert workbook["numerical_data_qualified"] is False
+
+
+def test_private_workbook_header_is_checked_beyond_sheet_inventory(monkeypatch):
+    from scripts import native_tabular
+    monkeypatch.setattr(native_tabular, "xls", lambda body: [
+        {"name": "Records", "nrows": 1, "ncols": 1,
+         "rows": [{"row": 1, "cells": [{"address": "A1", "value": "VoterID"}]}]}])
+    with pytest.raises(ValueError, match="Individual"):
+        granular.factual_tables(b"private workbook", "general.xls")
+
+
+def test_nested_json_retains_full_native_values_but_rejects_private_or_duplicate_keys():
+    body = {"election": {"year": 2026}, "counties": {
+        "A": {"precincts": [{"count": 0}, {"count": None}]}}}
+    result = granular.factual_tables(encoded(body), "general.json")
+    assert result["native_json"] == body
+    assert result["numerical_data_qualified"] is False
+    body["counties"]["A"]["precincts"][0]["VoterID"] = "excluded"
+    with pytest.raises(ValueError, match="Individual"):
+        granular.factual_tables(encoded(body), "general.json")
+    with pytest.raises(ValueError, match="Duplicate"):
+        granular.factual_tables(b'{"counties":{"A":0,"A":1}}', "general.json")
+
+
+def test_html_tables_keep_source_spans_and_zero_without_copying_application_code():
+    body = (b'<script>excluded application</script><table id="statistics" onclick="excluded()">'
+            b'<tr><th colspan="2">Native statistics</th></tr>'
+            b'<tr><td>County A</td><td>0</td></tr></table>')
+    result = granular.factual_tables(body, "general.aspx")
+    table = result["tables"][0]
+    assert table["rows"][0]["cells"][0]["attributes"] == {"colspan": "2"}
+    assert table["rows"][1]["cells"][1]["value"] == "0"
+    assert "excluded" not in json.dumps(result)
+    with pytest.raises(ValueError, match="nested"):
+        granular.factual_tables(b"<table><tr><td><table></table></td></tr></table>", "general.html")
+
+
+def test_nested_archive_budget_and_duplicate_members_fail_without_partial_queries():
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr("one.csv", "COUNT\n0\n")
+    with pytest.raises(ValueError, match="size/inventory"):
+        granular.factual_tables(buffer.getvalue(), "general.zip",
+                                _budget={"bytes": 1, "members": 1000})
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        archive.writestr("one.csv", "COUNT\n0\n")
+        with pytest.warns(UserWarning):
+            archive.writestr("one.csv", "COUNT\n1\n")
+    with pytest.raises(ValueError, match="size/inventory"):
+        granular.factual_tables(buffer.getvalue(), "general.zip")

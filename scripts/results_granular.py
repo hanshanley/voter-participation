@@ -3,6 +3,7 @@
 import copy
 import csv
 import gzip
+from html.parser import HTMLParser
 import io
 import json
 from pathlib import PurePosixPath
@@ -24,10 +25,12 @@ MN_FIELDS = ("state", "county_id", "precinct_id", "precinct_name", "has_reported
              "president_only_absentee", "total_number_voted")
 PRIVATE_HEADERS = re.compile(
     r"voter.?id|voter.?name|first.?name|last.?name|ncid|registration.?number|date.?of.?birth|birth.?date|"
-    r"residen(?:ce|tial).?address|street.?address|email|phone|social.?security", re.I)
+    r"\bdob\b|residen(?:ce|tial).?address|street.?address|email|phone|social.?security|"
+    r"api.?key|access.?token|password|github_pat_|ghp_", re.I)
 NOT_RESULTS = re.compile(
     r"primary|runoff|special|sample.?ballot|voter.?guide|voters.?pamphlet|cvr|cast.?vote.?record|"
-    r"voter.?file|voter.?list|registration.?extract|poll.?book|candidate.?filing", re.I)
+    r"voter.?file|voter.?list|voter.?histor|individual.?voter|registration.?extract|"
+    r"poll.?book|candidate.?filing", re.I)
 
 
 def selected_records(baseline, state):
@@ -264,10 +267,81 @@ def transport_url(url):
                       quote(parsed.query, safe="=&%+/:@"), ""))
 
 
-def factual_tables(body, name):
+def public_facts(value):
+    if isinstance(value, dict):
+        if any(PRIVATE_HEADERS.search(str(key)) for key in value):
+            raise ValueError("Individual/contact schema is excluded from public numerical intake")
+        for item in value.values():
+            public_facts(item)
+    elif isinstance(value, (list, tuple)):
+        for item in value:
+            public_facts(item)
+    elif isinstance(value, str) and PRIVATE_HEADERS.search(value):
+        raise ValueError("Individual/contact schema is excluded from public numerical intake")
+    return value
+
+
+def archive_members(archive, budget):
+    items = archive.infolist()
+    budget["members"] -= len(items)
+    budget["bytes"] -= sum(item.file_size for item in items)
+    if (budget["members"] < 0 or budget["bytes"] < 0
+            or len({item.filename for item in items}) != len(items)
+            or any(item.flag_bits & 1 for item in items)):
+        raise ValueError("Unqualified declared archive size/inventory")
+    return items
+
+
+class FactualHTMLTables(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.tables, self.table, self.row, self.cell = [], None, None, None
+        self.depth, self.hidden, self.nested = 0, 0, False
+
+    def handle_starttag(self, tag, attributes):
+        if tag in ("script", "style"):
+            self.hidden += 1
+        if tag == "table":
+            self.depth += 1
+            if self.depth == 1:
+                self.table = {"attributes": {key: value for key, value in attributes if key == "id"},
+                              "rows": []}
+            else:
+                self.nested = True
+        elif self.depth == 1 and tag == "tr":
+            self.row = {"row": len(self.table["rows"]) + 1, "cells": []}
+            self.table["rows"].append(self.row)
+        elif self.depth == 1 and tag in ("td", "th") and self.row is not None:
+            self.cell = {"kind": tag, "attributes": {
+                key: value for key, value in attributes
+                if key in ("id", "headers", "scope", "colspan", "rowspan")}, "value": ""}
+            self.row["cells"].append(self.cell)
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style"):
+            self.hidden = max(0, self.hidden - 1)
+        if tag == "table":
+            if self.depth == 1 and self.table is not None:
+                self.tables.append(self.table)
+                self.table, self.row, self.cell = None, None, None
+            self.depth = max(0, self.depth - 1)
+        elif self.depth == 1 and tag in ("td", "th"):
+            self.cell = None
+        elif self.depth == 1 and tag == "tr":
+            self.row, self.cell = None, None
+
+    def handle_data(self, text):
+        if self.depth == 1 and self.cell is not None and not self.hidden:
+            self.cell["value"] += text
+
+
+def factual_tables(body, name, *, _budget=None, _depth=0):
     """Unrecognized numerical schemas stay factual queries, never turnout/model inputs."""
     from scripts.native_tabular import delimited, json_records, xlsx, xls
 
+    if _depth > 3:
+        raise ValueError("Declared nested archive exceeds the bounded intake depth")
+    budget = _budget if _budget is not None else {"bytes": 200_000_000, "members": 1000}
     suffix = PurePosixPath(urlsplit(name).path).suffix.lower()
     if suffix in (".csv", ".txt"):
         encoding = "utf-16" if body.startswith((b"\xff\xfe", b"\xfe\xff")) else "utf-8-sig"
@@ -275,34 +349,69 @@ def factual_tables(body, name):
         table = delimited(body, delimiter="\t" if "\t" in text[:4096] else ",", encoding=encoding)
         tables = [table]
     elif suffix == ".json":
-        tables = [json_records(body)]
+        try:
+            tables = [json_records(body)]
+        except ValueError as error:
+            if not any(marker in str(error) for marker in (
+                    "record array is required", "explicit nested-field reader")):
+                raise
+            def unique(pairs):
+                result = {}
+                for key, value in pairs:
+                    if key in result:
+                        raise ValueError("Duplicate native JSON object key")
+                    result[key] = value
+                return result
+            def nonfinite(value):
+                raise ValueError("Nonfinite native JSON value: " + value)
+            native = json.loads(body.decode("utf-8-sig"), object_pairs_hook=unique,
+                                parse_constant=nonfinite)
+            public_facts(native)
+            return {"status": "complete_native_json_requires_measure_adapter",
+                    "native_json": native, "numerical_data_qualified": False,
+                    "candidate_votes_are_ballots": False}
     elif suffix in (".xlsx", ".xls"):
+        if suffix == ".xlsx":
+            with zipfile.ZipFile(io.BytesIO(body)) as archive:
+                archive_members(archive, budget)
         product = (xlsx if suffix == ".xlsx" else xls)(body)
-        # Workbook facts are retained only after a source-specific semantic adapter exists.
+        public_facts(product)
         return {"status": "native_workbook_requires_measure_adapter",
                 "native_inventory": [{"name": table["name"], "rows": table["nrows"],
                                       "columns": table["ncols"]} for table in product],
-                "numerical_data_qualified": False}
+                "tables": product, "complete_native_cells_retained": True,
+                "numerical_data_qualified": False, "candidate_votes_are_ballots": False}
     elif suffix == ".zip":
         with zipfile.ZipFile(io.BytesIO(body)) as archive:
-            items = archive.infolist()
-            if (len(items) > 1000 or sum(item.file_size for item in items) > 200_000_000
-                    or any(item.flag_bits & 1 for item in items)):
-                raise ValueError("Unqualified declared archive size/inventory")
-            selected = {}
+            items = archive_members(archive, budget)
+            selected, dispositions = {}, []
             for item in items:
                 path = PurePosixPath(item.filename)
-                if path.is_absolute() or ".." in path.parts or NOT_RESULTS.search(path.name):
+                if item.is_dir():
                     continue
-                if path.suffix.lower() in (".csv", ".txt", ".json"):
-                    selected[item.filename] = factual_tables(archive.read(item), item.filename)
+                if (path.is_absolute() or ".." in path.parts or "\\" in item.filename
+                        or NOT_RESULTS.search(item.filename)):
+                    dispositions.append({"member": item.filename, "status": "excluded_scope_or_path"})
+                    continue
+                if path.suffix.lower() in (".csv", ".txt", ".json", ".xlsx", ".xls", ".zip"):
+                    selected[item.filename] = factual_tables(archive.read(item), item.filename,
+                        _budget=budget, _depth=_depth + 1)
+                else:
+                    dispositions.append({"member": item.filename, "status": "format_requires_review"})
             return {"status": "complete_declared_tabular_queries", "members": selected,
-                    "numerical_data_qualified": False}
+                    "member_dispositions": dispositions, "numerical_data_qualified": False}
+    elif suffix in ("", ".html", ".htm", ".aspx", ".shtml"):
+        parser = FactualHTMLTables()
+        parser.feed(body.decode("utf-8-sig"))
+        parser.close()
+        if parser.depth or parser.nested:
+            raise ValueError("Incomplete/nested native HTML tables require a structural adapter")
+        tables = parser.tables
+        if not tables:
+            return {"status": "source_format_requires_measure_adapter", "numerical_data_qualified": False}
     else:
         return {"status": "source_format_requires_measure_adapter", "numerical_data_qualified": False}
-    for table in tables:
-        if PRIVATE_HEADERS.search(json.dumps(table.get("header", []))):
-            raise ValueError("Individual/contact schema is excluded from public numerical intake")
+    public_facts(tables)
     return {"status": "complete_native_table_requires_measure_adapter", "tables": tables,
             "numerical_data_qualified": False, "candidate_votes_are_ballots": False}
 
@@ -346,6 +455,8 @@ def collect(collector, baseline):
             result["source_url"] = base + "voterTurnout_Electiondata.json"
             return result
         jobs["CT-native-local"] = collector.capture("CT-native-local", CT_VERSION, capture_ct)
+    from scripts.results_native import collect_sources
+    jobs.update(collect_sources(collector, baseline))
     return jobs
 
 
@@ -355,7 +466,7 @@ def project(baseline, granular):
     index = json.loads(baseline["index.json"])
     changed = []
     by_state = {}
-    for key, entry in granular.items():
+    for key, entry in sorted(granular.items()):
         if entry.get("status") == "reported" and entry.get("data") is not None:
             by_state.setdefault(key.split("-")[0], []).append(entry)
     for state, entries in by_state.items():
@@ -378,7 +489,8 @@ def project(baseline, granular):
                 url = entry["data"].get("source_url", source["url"])
                 row["source"].update(url=url, input_sha256=numerical_pin["sha256"],
                                      selector={"native_refresh": native})
-                row["source_clock"] = {"literal": update["clock"], "timezone": None,
+                row["source_clock"] = {"literal": update["clock"],
+                                      "timezone": native.get("pdf_report_timezone_literal"),
                                       "qualification": "native_clock_or_explicitly_not_supplied"}
                 denominator = row["denominator"]
                 if denominator is not None:
