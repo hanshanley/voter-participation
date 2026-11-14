@@ -311,6 +311,33 @@ activates the coherent changes in one catalog commit; it does not publish an
 updated parent against stale child counts. Cached execution validates both
 baselines and performs no acquisition, parsing or compilation.
 
+### Refresh counts on an already-bound native map
+
+A source entry may additionally declare `native_layer_successor` using
+`participation.reviewed_native_layer_count_successor.v1`. This is separate
+from `native_reporting`: it does not relax that operation's fixed-registration
+guards. Pin the complete prior native index/layer and count shard, every
+old/new observation pair, the complete new source inventory and every unmatched
+native row. The bridge must use an existing source-unit key, not inferred names,
+FIPS, geometry positions or new spatial joins.
+
+The operation retains geometry and reference-source lineage, with distinct
+current count-source provenance for each updated row and the layer declaration.
+It requires the same source, election, measure and denominator meaning; a
+revised native registration value is not a new population qualification.
+Changing a canonical export-wrapper URL to its underlying official product
+requires an explicit `primary_source_url_bridge`, with exact old/new URLs and
+input hashes, the unchanged native product identity and a complete review pin.
+This does not permit an arbitrary change of producer or source frame.
+Only previously qualified fractions may remain qualified. Prior holds remain
+held, and newly invalid or unqualified fractions are withdrawn. Literal zero
+counts remain zero. Unsupported property paths and unknown paired successor
+counts are held rather than emitted as valid updates.
+
+Supply both complete baselines to the command above and activate the refreshed
+count shard and native layer atomically. Updating a table alone does not update
+the separately served map properties.
+
 ## Revise an existing scientific control without inventing a model
 
 Use the complete current packet in [DATA.md](DATA.md) as the pinned input and

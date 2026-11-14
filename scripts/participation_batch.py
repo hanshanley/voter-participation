@@ -466,6 +466,8 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
         target = entry.get("target", "counts")
         if target not in ("counts", "counts_addition", "native_reporting", "state_reporting"):
             raise ValueError("Unknown registered dataset target")
+        if entry.get("native_layer_successor") and target != "counts":
+            raise ValueError("A native layer successor requires an ordinary counts target")
         if target == "counts_addition" and (entry["baseline_source_ids"] or not entry.get("addition")):
             raise ValueError("A new count inventory requires its separate reviewed addition declaration")
         if target == "native_reporting" and not isinstance(entry.get("reporting_source"), dict):
@@ -489,9 +491,10 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
         raise ValueError("Registered baseline advanced; rebase rather than overwrite")
     native = None
     if any(entry.get("target") == "native_reporting"
-            or (entry.get("addition") or {}).get("county_reference") for entry in entries):
+            or (entry.get("addition") or {}).get("county_reference")
+            or entry.get("native_layer_successor") for entry in entries):
         if native_baseline is None:
-            raise ValueError("Native reporting/reference updates require their complete accepted baseline")
+            raise ValueError("Native reporting/reference/layer updates require their complete accepted baseline")
         native_baseline = Path(native_baseline)
         native = native_baseline_files(native_baseline)
         if plan.get("native_baseline_version") != native[0]["version"]:
@@ -619,12 +622,14 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 Path(__file__).with_name("participation_count_additions.py"),
                 Path(__file__).with_name("native_tabular.py"),
                 Path(__file__).with_name("native_count_refresh.py"),
+                Path(__file__).with_name("native_layer_count_successor.py"),
                 Path(__file__).with_name("html_statistics.py"),
                 Path(__file__).with_name("state_reporting_successor.py"),
                 *sorted((Path(__file__).parent / "participation_intake").glob("*.py"))]
         for name in ("test_participation_batch.py", "test_native_count_refresh.py", "test_native_tabular.py",
                      "test_html_statistics.py", "test_state_reporting_successor.py",
-                     "test_native_statistical_counts.py", "test_native_count_formats.py"):
+                     "test_native_statistical_counts.py", "test_native_count_formats.py",
+                     "test_native_layer_count_successor.py"):
             test = Path(__file__).parents[1] / "tests" / name
             if test.is_file():
                 code_paths.append(test)
@@ -674,6 +679,7 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 baseline_source_ids=item["entry"]["baseline_source_ids"], outcome=outcome,
                 target=item["entry"].get("target", "counts"),
                 addition=item["entry"].get("addition"),
+                native_layer_successor=item["entry"].get("native_layer_successor"),
                 reporting_source=item["entry"].get("reporting_source")))
             parsed += outcome["parsed_inputs"]
             dispositions.append(dict(id=item["entry"]["id"], state_code=item["spec"]["geography"]["state_code"],
@@ -691,6 +697,14 @@ def execute(registry, baseline, work, supplied_root=None, refresh=False, offline
                 [dict(source, rows=[display(row, source["spec"]) for row in source["rows"]])
                  for source in sources if source["target"] == "counts_addition"])
             native_changed += reference_changes
+            from scripts.native_layer_count_successor import refresh as refresh_native_layers
+            native_candidate, native_runtime, layer_changes = refresh_native_layers(
+                native_candidate, native_runtime,
+                json.loads(native_runtime[native_candidate["index"]["file"]]),
+                native[0], native[1], native[2],
+                description, files, index,
+                [source for source in sources if source.get("native_layer_successor")])
+            native_changed += layer_changes
         changed = count_changed + native_changed
         staging = work / "staging"
         staging.mkdir(parents=True, exist_ok=True)

@@ -819,6 +819,42 @@ class RoutineBatchTests(unittest.TestCase):
         self.assertTrue(second["no_op"])
         self.assertEqual(second["native_candidate_version"], first["native_candidate_version"])
 
+    def test_reviewed_native_layer_successor_requires_and_runs_with_native_baseline(self):
+        root, description, files, index, source = self.native_reporting_fixture()
+        self.plan["sources"][0]["native_layer_successor"] = {
+            "contract": "synthetic-reviewed-native-layer-successor"
+        }
+        self.save_plan()
+        with self.assertRaisesRegex(ValueError, "Native reporting/reference/layer"):
+            self.execute()
+        self.plan["native_baseline_version"] = description["version"]
+        self.save_plan()
+
+        def accepted(candidate, runtime, native_index, *args):
+            self.assertEqual(candidate["version"], description["version"])
+            self.assertEqual(native_index["contract"], "participation.native_index.v1")
+            self.assertEqual(args[-1][0]["native_layer_successor"],
+                             {"contract": "synthetic-reviewed-native-layer-successor"})
+            return candidate, runtime, 2
+
+        with patch("scripts.native_layer_count_successor.refresh", side_effect=accepted) as update:
+            result = self.execute(native_baseline=root)
+        self.assertEqual(result["native_changed_rows"], 2)
+        update.assert_called_once()
+
+    def test_native_layer_successor_rejects_non_counts_target(self):
+        root, description, files, index, source = self.native_reporting_fixture()
+        entry = self.plan["sources"][0]
+        entry.update(target="native_reporting",
+            native_layer_successor={"contract": "must-not-run"},
+            reporting_source=source["reporting_source"])
+        self.plan["native_baseline_version"] = description["version"]
+        self.save_plan()
+
+        with self.assertRaisesRegex(
+                ValueError, "native layer successor requires an ordinary counts target"):
+            self.execute(native_baseline=root)
+
     def test_registered_reference_original_is_verified_and_packaged_by_the_shared_runner(self):
         body = encoded(dict(type="FeatureCollection", features=[
             dict(type="Feature", properties=dict(key=key), geometry=None) for key in ("one", "two")]))
