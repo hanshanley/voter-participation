@@ -116,10 +116,14 @@ corresponding native scope review and focused parser tests.
 
 ## Automatic website and estimate consumer
 
-The separate `scripts.automatic_runtime` consumer is implemented for the website's
-own GitHub token. Source publication alone does not enable it or establish live
-delivery. The website workflow must pin the reviewed producer revision, and the
-initial website readers must be deployed and verified separately.
+The separate `scripts.automatic_runtime` consumer is enabled in the website's
+own GitHub workflow and uses its token, not a shared cross-repository secret.
+It pins reviewed producer `4d73fd2`; the initial live reader `4b08650` passed
+actual Pages and no-override desktop/mobile acceptance. Collection runs hourly
+at minute23 UTC and consumption at minute31. The assistant continuation is not
+required for these numerical updates. Source-only publication by itself would
+not establish live delivery; [the complete acceptance record](../data/participation-access/20261114-automatic-runtime-01/acceptance.json)
+records both hosted jobs, public replay and actual website propagation.
 
 ```sh
 PYTHONPATH=/path/to/research-source python3 -m scripts.automatic_runtime \
@@ -151,5 +155,6 @@ Interrupted staging is resumable; concurrent branch changes are not overwritten.
 Subsequent numerical activations do not start a Pages build.
 
 These are delivery guarantees, not observed individual switching/nonparticipation,
-new geographic qualifications or final/certified nationwide results. Actual
-GitHub-job and no-override production acceptance remain separate delivery gates.
+new geographic qualifications or final/certified nationwide results. The actual
+GitHub-job, public full-packet replay and no-override production gates passed for
+this increment; future parser/reader changes must satisfy the same gates.

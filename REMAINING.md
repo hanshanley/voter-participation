@@ -8,10 +8,39 @@ nonparticipation and new/returning-voter estimates, then their tested integratio
 into the existing project. Do not stop at an inventory or another audit.
 
 The single assistant continuation runs every **45 minutes**
-(schedule 125; schedules 124, 123, 122 and earlier continuations are stopped).
+(schedule 126; schedules 125, 124, 123, 122 and earlier continuations are stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
+
+## Automatic source-to-website delivery verified
+
+The unattended pipeline is enabled on GitHub, independently of the assistant:
+research **Update election results** collects registered sources hourly at
+minute23 UTC; website **Publish automatic participation runtime** checks and
+publishes at minute31. Both workflows are active on their actual default `main`
+branches. A numerical update does not require another Pages build.
+
+Producer `4d73fd2` and live reader `4b08650` passed actual hosted collection,
+atomic count/native/model publication, complete public offline replay and
+no-override desktop/mobile production acceptance. The first collector projected
+5,512 record appearances, not 5,512 unique geographies. The immutable
+164,140,608-byte scientific ZIP reproduces all 113 outputs with networking
+blocked. A second hosted run proved a no-op without another publication or build.
+All nine model controls, 34 registered scenarios, 51 registration decisions,
+100 state diagnostics, 306 map values and both 67-county Alabama maps passed
+live checks. All 104 merged reader/download tests and 53 canonical producer
+tests pass. Actual native artifact14125581845 passes both unchanged size limits
+and preserves all 436 earlier download pins plus the full scope-ledger download.
+
+[Complete delivery acceptance](data/participation-access/20261114-automatic-runtime-01/acceptance.json)
+and [complete numerical download](docs/DATA.md#automatic-live-counts-and-compatible-estimates)
+are retained. Failures keep last verified counts, estimates and source clocks;
+unchanged inputs do not refit accepted models. This is automatic delivery for
+registered, qualified sources, not universal county/precinct completeness.
+All 144 durable stops, unfamiliar-product review holds, unsupported geography
+and model-identification limitations remain. Continue those substantive gaps;
+the requested final full audit THEN beautification remain separate queued work.
 
 ## Nationwide misleading-swing correction verified live
 
@@ -32,13 +61,12 @@ The actual native artifact fits both unchanged size limits and retains 436 old
 download pins. All source counts, fits, probabilities and weights are unchanged.
 
 [Full per-state/district findings and live acceptance](data/participation-access/20261114-nationwide-swing-correction-01/acceptance.json)
-are persisted. The broader automatic source-to-website/model pipeline remains
-unfinished and unpublished: rolling last-good seeds, real mapped/table coherence,
-complete extracted replay, workflow delivery and actual production propagation
-must pass before it is called automatic. Final full audit THEN beautification
-remain queued after substantive remaining work.
+are persisted. The automatic delivery gates are now verified in the newer
+section above. This does not close the broader source, historical or scientific
+identification gaps. Final full audit THEN beautification remain queued after
+the remaining substantive work.
 
-## Automatic current-results intake delivered; source gaps remain
+## Initial current-results intake acceptance; retained delivery history
 
 The latest human request for available results and a GitHub automatic intake
 tool is delivered. **Update election results** replaces the legacy research

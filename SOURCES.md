@@ -6,8 +6,30 @@ Ledger updated: 2026-11-14 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Automatic qualified-source website delivery
+
+The research collector and website-owned consumer are active hourly GitHub
+workflows, not manual assistant retrieval. Producer `4d73fd2` refreshes registered
+sources; live reader `4b08650` consumes atomic, immutable count/native/model
+snapshots without rebuilding Pages for each numerical update. Initial hosted
+collector43615730054, publisher43616732118 and no-op43617475621 succeeded.
+Actual Pages43624232144/artifact14125581845 and no-override desktop/mobile
+acceptance passed. The full public 164,140,608-byte packet reproduces all
+113 outputs offline; older complete downloads remain intact.
+
+The first capture reports AL/MN registered granular products and retains NC/CT
+access stops. Its 5,512 projected record appearances include aliases and are not
+a unique-geography count. All 51 jurisdiction decisions, 33 qualified/17 held
+House comparisons, nine model controls and 34 registered-frame scenarios remain
+explicit. The 144 durable stops and unfamiliar-product/parser/geography holds
+are not cleared by the automation. Source clocks are not retrieval clocks, and
+candidate votes are not ballots. [Full delivery evidence](data/participation-access/20261114-automatic-runtime-01/acceptance.json)
+and [complete numerical package](docs/DATA.md#automatic-live-counts-and-compatible-estimates)
+govern this increment; earlier dated entries below are retained history.
+
 | Reference area | Jump to |
 |---|---|
+| Automatic live delivery | [Qualified sources, hourly counts/estimates and complete replay](#automatic-qualified-source-website-delivery) |
 | Nationwide swing correction | [All-state source audit and neutral comparison holds](#nationwide-house-display-comparability-correction) |
 | Automatic current-results intake | [Hourly GitHub updates, retained source dates and complete numerical queries](#2026-automatic-current-results-intake) |
 | Current Tennessee/Montana native observations | [Three county reports, 57 table-only reporting rows and complete numerical SDKs](#2026-tennessee-and-montana-partial-native-participation) |

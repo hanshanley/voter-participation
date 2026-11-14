@@ -8,6 +8,33 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Automatic live counts and compatible estimates
+
+The [complete automatic scientific ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-a76640d9c4d3d0da65da00e49277f4963a9b6ef4472fad63b7a0c1b52d4b2e4d/complete-analysis.zip)
+is **164,140,608 bytes**, SHA256
+`5ff83057be43c7f2298e48b73ed4790cbda5a598e0e6513a0c01b2d1580bc4c9`.
+It is a server-immutable full archive, not a metadata download. It includes the
+complete source-results package, before/after count and native bodies, safe
+aggregate seeds, all nine complete model cases, 51 registration decisions,
+34 scenarios, every output query and the sufficient offline reproduction code.
+No private respondent/history files are added.
+
+Actual anonymous download and fresh extraction reproduce all **113 outputs**
+(53 count, 35 native and 25 model/query files) with zero network requests:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+The [current automatic pointer](https://raw.githubusercontent.com/hanshanley/margin_of_error/participation-data/automatic/latest.json)
+pins later complete archives and one shared immutable count/native/model commit.
+The hourly GitHub consumer, actual no-op and live desktop/mobile propagation
+passed [delivery acceptance](../data/participation-access/20261114-automatic-runtime-01/acceptance.json).
+Updates reuse accepted fits and probabilities; incompatible frames, missing
+geography and durable source stops remain explicit. This is not a claim that
+all states' county/precinct returns are complete or certified.
+Every older complete scientific download below remains available.
+
 ## Nationwide swing-comparison audit
 
 The correction changes display eligibility, not numerical results. All existing
