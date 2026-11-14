@@ -3,6 +3,7 @@
 from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor
 from decimal import Decimal, ROUND_HALF_UP
+from html.parser import HTMLParser
 import html
 import io
 import json
@@ -133,6 +134,29 @@ LEGACY_WEBFORMS_MEASURE = {
     "id": "previously-reviewed-participation-count", "kind": "participation_reported",
     "literal": "Reported ballots (previously reviewed export label, not a new native qualification)",
     "mode": "source_defined", "unit": "source_reported_count",
+}
+HTML_STATISTICS_PROFILES = {
+    "https://elections.clarkcountynv.gov/ElectionResults_NV/EnrEng/EnrMain": {
+        "state": "NV", "layout": "method_total", "names": ("Clark", "Clark County"),
+        "title": "Election Night Results",
+        "measure": {"id": "previously-reviewed-participation-count",
+                    "kind": "participation_reported", "literal": "REGISTRATION & TURNOUT / Total",
+                    "mode": "all_methods", "unit": "source_reported_count"},
+    },
+    "https://apps.jeffersoncountywi.gov/jc/election/results/11032026": {
+        "state": "WI", "layout": "unit_table", "names": ("Jefferson County",),
+        "title": "Election Results for 11032026", "units": 32,
+        "measure": {"id": "native-ballots-cast", "kind": "ballots_cast",
+                    "literal": "Ballots Cast", "mode": "source_defined",
+                    "unit": "source_reported_ballots"},
+    },
+    "https://www.monongaliacountyclerk.com/myfiles/elections/2026General/Unofficial26G.html": {
+        "state": "WV", "layout": "printed_summary", "names": ("Monongalia County",),
+        "measure": {"id": "previously-reviewed-participation-count",
+                    "kind": "participation_reported",
+                    "literal": "Native Ballots Cast \u00b7 independent county snapshot",
+                    "mode": "all_methods", "unit": "source_reported_count"},
+    },
 }
 PDF_MEASURES = {
     "Ballots Cast - Total", "Ballots Cast", "Total Ballots Cast", "Total Ballots",
@@ -1497,6 +1521,228 @@ def legacy_webforms_statistics(body, templates, url):
     }
 
 
+class StatisticsHTMLText(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.parts, self.titles = [], []
+        self.hidden = 0
+        self.in_title = False
+
+    def handle_starttag(self, tag, attributes):
+        if tag in ("script", "style"):
+            self.hidden += 1
+        if tag == "title":
+            self.in_title = True
+            self.titles.append("")
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style"):
+            self.hidden = max(0, self.hidden - 1)
+        if tag == "title":
+            self.in_title = False
+
+    def handle_data(self, value):
+        if not self.hidden:
+            self.parts.append(value)
+            if self.in_title:
+                self.titles[-1] += value
+
+
+def _statistical_html_only(pattern, text):
+    matches = re.findall(pattern, text)
+    if len(matches) != 1:
+        raise ValueError("Missing or repeated native statistical declaration")
+    return matches[0]
+
+
+def _statistical_html_number(value):
+    if not isinstance(value, str) or re.fullmatch(COUNT_LITERAL, value) is None:
+        raise ValueError("Missing native statistic is not a recorded zero")
+    return int(value.replace(",", ""))
+
+
+def _statistical_html_clock(value):
+    matches = re.findall(
+        r"\b(?:[01]?[0-9]/[0-3]?[0-9]/(?:20[0-9]{2}|[0-9]{2})|"
+        r"[01]?[0-9]-[0-3]?[0-9]-20[0-9]{2}) "
+        r"[0-1]?[0-9]:[0-5][0-9] ?[APap][Mm]\b", " ".join(value.split()))
+    clock = next(iter(set(matches))) if len(set(matches)) == 1 else None
+    if clock is None:
+        raise ValueError("Ambiguous native HTML statistical clock")
+    for form in ("%m/%d/%y %I:%M %p", "%m/%d/%Y %I:%M %p", "%m-%d-%Y %I:%M %p"):
+        try:
+            return datetime.strptime(clock.upper(), form)
+        except ValueError:
+            pass
+    raise ValueError("Unreviewed native HTML statistical clock")
+
+
+def statistical_html(body, templates, url):
+    profile = HTML_STATISTICS_PROFILES[url]
+    reader = StatisticsHTMLText()
+    reader.feed(body.decode("utf-8-sig"))
+    text = " ".join(" ".join(reader.parts).split())
+    if (re.search(r"\b(?:TEST RESULTS|PRIMARY ELECTION|RUNOFF ELECTION)\b", text, re.I)
+            or profile.get("title") and reader.titles != [profile["title"]]):
+        raise ValueError("Native HTML publisher/election scope changed")
+    product = factual_tables(body, url)
+    if not product.get("tables"):
+        raise ValueError("Readable native statistical HTML tables are required")
+    tables = [[[" ".join(cell["value"].split()) for cell in row["cells"]]
+               for row in table["rows"]] for table in product["tables"]]
+    facts, units = [], {}
+    reporting = (None, None)
+    status = fraction = None
+    only, number = _statistical_html_only, _statistical_html_number
+    if profile["layout"] == "method_total":
+        if "2026 General Election" not in text:
+            raise ValueError("Native statistical election changed")
+        status = only(r"2026 General Election (Official Results|Unofficial Results) Updated ", text)
+        clock = "Updated " + only(r"Updated ([0-9/]+ [0-9:]+ [AP]M) REGISTRATION & TURNOUT", text)
+        registered = number(only(r"REGISTRATION & TURNOUT (" + COUNT_LITERAL + r") Registered Voters", text))
+        candidates = [table for table in tables if table and table[0] ==
+                      ["Voting Method", "Total", "% / Reg", "Grand Total / Total"]]
+        if len(candidates) != 1:
+            raise ValueError("Native turnout column roles changed")
+        rows = candidates[0][1:]
+        expected = {"Early Vote Turnout", "Early Vote Provisional Turnout", "Mail Turnout",
+                    "Election Day Provisional Turnout", "Election Day Turnout", "Total"}
+        if (len(rows) != len(expected) or any(len(row) != 4 for row in rows)
+                or {row[0] for row in rows} != expected):
+            raise ValueError("Native participation-method inventory changed")
+        for row in rows:
+            if len(row) != 4 or re.fullmatch(r"[0-9]+(?:\.[0-9]+)?%", row[2]) is None:
+                raise ValueError("Missing or malformed native turnout statistic")
+            facts.append({"level": "county" if row[0] == "Total" else "method",
+                          "label": row[0], "count": number(row[1]),
+                          "count_literal": row[1], "registered": registered,
+                          "native_fraction_literal": row[2],
+                          "native_percent_of_total_literal": row[3]})
+        parent, = [row for row in facts if row["level"] == "county"]
+        if sum(row["count"] for row in facts if row["level"] == "method") != parent["count"]:
+            raise ValueError("Native turnout components disagree with printed parent")
+        fraction = parent["native_fraction_literal"]
+    elif profile["layout"] == "unit_table":
+        for required in ("Fall General Election Jefferson County WI Official Results",
+                         "Number of votes reflect Jefferson County only",
+                         "100% may be only of one machine",
+                         "Results are unofficial until after the County Canvass is complete."):
+            if required not in text:
+                raise ValueError("Native county/election or completeness qualification changed")
+        clock = only(r"AS OF ([0-9-]+ [0-9:]+ [ap]m)", text)
+        registered = number(only(r"REGISTERED VOTERS TOTAL (" + COUNT_LITERAL + r")", text))
+        value = number(only(r"BALLOTS CAST TOTAL (" + COUNT_LITERAL + r")", text))
+        county_section = only(r"BALLOT TOTALS Votes (.*?) Precinct Detail Top", text)
+        reported, total = only(
+            r"Precincts Reporting ([0-9]+) of ([0-9]+) for [0-9]+%", county_section)
+        reporting = (int(reported), int(total))
+        if not 0 <= reporting[0] <= reporting[1] == profile["units"]:
+            raise ValueError("Native reporting inventory changed")
+        candidates = [table for table in tables if table and table[0] ==
+                      ["", "Registered Voters", "Ballots Cast", "Ballots Cast %"]]
+        if len(candidates) != 1 or len(candidates[0]) != profile["units"] + 1:
+            raise ValueError("Native ward statistics inventory or column roles changed")
+        for row in candidates[0][1:]:
+            if (len(row) != 4 or not row[0] or row[0] in units
+                    or re.fullmatch(r"[0-9]+(?:\.[0-9]+)?%", row[3]) is None):
+                raise ValueError("Duplicate or unreadable native reporting-unit label")
+            units[row[0]] = {"level": "reporting_unit", "label": row[0],
+                             "registered": number(row[1]), "count": number(row[2]),
+                             "registered_literal": row[1], "count_literal": row[2],
+                             "native_fraction_literal": row[3]}
+        if (sum(row["count"] for row in units.values()) != value
+                or sum(row["registered"] for row in units.values()) != registered):
+            raise ValueError("Complete ward inventory does not reconcile with both printed parents")
+        parent = {"level": "county", "label": "Jefferson County", "count": value,
+                  "registered": registered, "count_literal": str(value),
+                  "registered_literal": str(registered)}
+        facts = [parent, *units.values()]
+    else:
+        header = ("Summary Results Report General Election November 3, 2026 "
+                  "UNOFFICIAL RESULTS Monongalia County, WV")
+        pages = text.split("Summary Results Report")[1:]
+        if not pages or any(not ("Summary Results Report" + page).startswith(header) for page in pages):
+            raise ValueError("Native report county/election/status changed")
+        clocks = re.findall(r"Election Summary - ([0-9/]+ [0-9:]+ [AP]M)", text)
+        if len(clocks) != len(pages) or len(set(clocks)) != 1:
+            raise ValueError("Conflicting native report clocks")
+        clock, status = clocks[0], "UNOFFICIAL RESULTS"
+        statistics = only(r"Statistics TOTAL (.*?) Election Summary -", text)
+        registered = number(only(r"Registered Voters - Total (" + COUNT_LITERAL + r")", statistics))
+        value = number(only(r"Ballots Cast - Total (" + COUNT_LITERAL + r")", statistics))
+        blank = number(only(r"Ballots Cast - Blank (" + COUNT_LITERAL + r")", statistics))
+        fraction = only(r"Voter Turnout - Total ([0-9]+(?:\.[0-9]+)?%)", statistics)
+        counters = {}
+        for key in ("Election Day Precincts Reporting", "Precincts Complete",
+                    "Precincts Partially Reported", "Absentee/ Early Precincts Reporting"):
+            a, b = only(re.escape(key) + r" ([0-9]+) of ([0-9]+)", statistics)
+            counters[key] = {"reported": int(a), "total": int(b)}
+        if (any(not 0 <= row["reported"] <= row["total"] for row in counters.values())
+                or len({row["total"] for row in counters.values()}) != 1
+                or counters["Precincts Complete"]["reported"] +
+                counters["Precincts Partially Reported"]["reported"] !=
+                counters["Election Day Precincts Reporting"]["reported"]):
+            raise ValueError("Native statistical reporting counters disagree")
+        parent = {"level": "county", "label": "Monongalia County", "count": value,
+                  "registered": registered, "blank": blank,
+                  "native_fraction_literal": fraction, "reporting_counters": counters,
+                  "printed_html_report_pages": len(pages)}
+        facts = [parent]
+    current_clock = _statistical_html_clock(clock)
+    if current_clock < datetime(2026, 11, 3) or current_clock.year != 2026:
+        raise ValueError("Native statistical edition is outside the reviewed election")
+    for row in facts:
+        row.update(source_clock=clock, native_report_status_literal=status)
+    updates = []
+    for template in templates:
+        view = template["view"]
+        if (template["geography"]["state_code"] != profile["state"]
+                or template["election"]["year"] != 2026
+                or template["election"]["type"] != "general"
+                or template["measure"] != profile["measure"]
+                or view.get("source_url") != url or view.get("county") not in profile["names"]
+                or template["geography"]["level"] == "county"
+                and template["geography"]["name"] not in profile["names"]
+                or template["geography"]["level"] == "reporting_unit"
+                and template["geography"]["name"] != view.get("unit")
+                or template["count"]["status"] != "reported"):
+            raise ValueError("Accepted native HTML source/measure/identity scope changed")
+        old_clock = template["source_clock"]["literal"]
+        if old_clock is None or _statistical_html_clock(old_clock) > current_clock:
+            raise ValueError("Native statistical edition regressed or lacks an accepted clock")
+        if template["geography"]["level"] == "county":
+            query, counters = parent, reporting
+        elif template["geography"]["level"] == "reporting_unit" and units:
+            query = units.get(view.get("unit"))
+            if query is None:
+                raise ValueError("Accepted literal native ward label changed")
+            counters = (None, None)
+        else:
+            raise ValueError("Unsupported native HTML statistical geography")
+        native = {"query": query, "private_original_pin": pin(body),
+                  "native_reporting_complete_qualified": False,
+                  "whole_publisher_html_redistributed": False}
+        if fraction is not None:
+            native.update(native_fraction_literal=query["native_fraction_literal"],
+                          native_report_status_literal=status)
+        denominator = template["denominator"]
+        compatible = bool(denominator and denominator["qualified"]
+                          and denominator["value"] == query["registered"]
+                          and query["registered"] and query["count"] <= query["registered"])
+        updates.append(change(template, query["count"], native, registered=query["registered"],
+                              clock=clock, reported=counters[0], total=counters[1],
+                              rate_compatible=compatible))
+    if not templates:
+        raise ValueError("No reviewed native HTML statistical templates")
+    if units and {row["view"].get("unit") for row in templates
+                  if row["geography"]["level"] == "reporting_unit"} != set(units):
+        raise ValueError("Complete accepted ward inventory changed")
+    public_facts(facts)
+    return {"updates": updates, "complete_native_query": facts, "factual_product": product,
+            "geographic_joins_changed": False, "analytical_rates_promoted": False,
+            "reporting_counters_not_certification_or_all_machine_completeness": True}
+
+
 def source_plan(baseline):
     index = json.loads(baseline["index.json"])
     result = {}
@@ -1523,6 +1769,7 @@ def source_plan(baseline):
             workbook_profile = WORKBOOK_PROFILES.get(url)
             summary_profile = SUMMARY_PROFILES.get(url)
             legacy_webforms_profile = LEGACY_WEBFORMS_PROFILES.get(url)
+            html_profile = HTML_STATISTICS_PROFILES.get(url)
             native = view.get("native_record") or {}
             if summary_profile and state == summary_profile["state"]:
                 adapter = "reviewed_summary_statistics"
@@ -1537,6 +1784,8 @@ def source_plan(baseline):
                 adapter = "reviewed_webforms_statistics"
             elif legacy_webforms_profile and state == legacy_webforms_profile["state"]:
                 adapter = "reviewed_legacy_webforms_statistics"
+            elif html_profile and state == html_profile["state"]:
+                adapter = "reviewed_statistical_html"
             elif texas_reconciliation_role(template):
                 adapter = "reviewed_texas_reconciliation_parent"
             elif (template["geography"]["level"] == "county" and pdf_measure(template)
@@ -1586,6 +1835,9 @@ def collect_sources(collector, baseline):
             elif source["adapter"] == "reviewed_legacy_webforms_statistics":
                 def parse(body, templates=templates, url=url):
                     return legacy_webforms_statistics(body, templates, url)
+            elif source["adapter"] == "reviewed_statistical_html":
+                def parse(body, templates=templates, url=url):
+                    return statistical_html(body, templates, url)
             else:
                 def parse(body, url=url):
                     return {"updates": [], "factual_product": factual_tables(body, url),

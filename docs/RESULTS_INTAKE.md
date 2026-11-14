@@ -158,6 +158,26 @@ in the complete query, including ambiguous units, while those accepted rows stay
 held. Native state parents, printed reporting-unit counts and unit sums remain
 distinct; absent county parents are never synthesized.
 
+The shared statistical HTML family reads Clark County's complete turnout-method
+table, Jefferson County's separate printed ballot/register parents and complete
+ward inventory, and Monongalia County's explicitly headed Statistics block.
+Candidate totals are never participation substitutes. It checks the reviewed
+election, publisher, full native measure, literal unit identities and count-update
+clock, rejecting older editions. All native tables remain in complete factual
+queries; publisher application HTML is excluded from downloads.
+
+Distinct accepted Clark appearances keep their existing IDs and view memberships.
+Jefferson ward counts and registrations must reconcile to both printed county
+parents; its native zero/zero ward is retained. The county reporting counter is
+read only from BALLOT TOTALS, not repeated contest counters. Neither 32/32 reporting
+nor the literal Official Results heading overrides the source's one-machine and
+unfinished-canvass qualifications. Monongalia's complete/partial counters remain
+separate; reporting is not certification. Existing qualified registration fractions
+survive only with an unchanged compatible native stock; revisions withhold them,
+and existing displayed registration mirrors refresh coherently. No new rates or
+geographic joins are approved. Portable tests and retained-original acceptance are
+parser evidence, not proof of fresh hosted collection or production activation.
+
 These updates retain the entire accepted legacy measure contract rather than
 newly qualifying it as ballots or people. Missing report clocks remain unknown,
 not retrieval times. Earlier accepted clocks are retained separately and remain

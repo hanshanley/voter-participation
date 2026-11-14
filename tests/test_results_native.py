@@ -935,3 +935,235 @@ def test_legacy_webforms_plans_collects_projects_all_three_products_and_is_repea
     held = [entry for entry in failed.values() if entry["status"] == "retained_after_failure"]
     assert len(held) == 1 and held[0]["data"]["updates"][0]["value"] == 0
     assert granular.project(after, failed) == (after, [])
+
+
+def statistical_html_fixture(monkeypatch, state):
+    url, profile = next((url, value) for url, value in native.HTML_STATISTICS_PROFILES.items()
+                        if value["state"] == state)
+    if state == "NV":
+        rows = [("Early Vote Turnout", 0), ("Early Vote Provisional Turnout", 0),
+                ("Mail Turnout", 9), ("Election Day Provisional Turnout", 0),
+                ("Election Day Turnout", 0), ("Total", 9)]
+        text = ("<title>Election Night Results</title>2026 General Election Official Results "
+                "Updated 11/13/26 01:39 PM REGISTRATION &amp; TURNOUT 15 Registered Voters"
+                "<table><tr><th>Voting Method</th><th>Total</th><th>% / Reg</th>"
+                "<th>Grand Total / Total</th></tr>" + "".join(
+                    f"<tr><td>{name}</td><td>{value}</td><td>60%</td><td></td></tr>"
+                    for name, value in rows) + "</table>")
+        old_clock = "Updated 11/09/26 06:46 PM; native_page_update; timezone not supplied."
+    elif state == "WI":
+        monkeypatch.setitem(profile, "units", 2)
+        text = ("<title>Election Results for 11032026</title>"
+                "Fall General Election Jefferson County WI Official Results "
+                "Number of votes reflect Jefferson County only "
+                "Results saying 100% may be only of one machine "
+                "Results are unofficial until after the County Canvass is complete. "
+                "AS OF 11-06-2026 01:13 pm BALLOT TOTALS Votes "
+                "REGISTERED VOTERS TOTAL 15 BALLOTS CAST TOTAL 9 "
+                "Precincts Reporting 2 of 2 for 100% Precinct Detail Top "
+                "<table><tr><th></th><th>Registered Voters</th><th>Ballots Cast</th>"
+                "<th>Ballots Cast %</th></tr>"
+                "<tr><td>WARD A</td><td>0</td><td>0</td><td>0%</td></tr>"
+                "<tr><td>WARD B</td><td>15</td><td>9</td><td>60%</td></tr></table>"
+                "Another Contest Precincts Reporting 1 of 1 for 100%")
+        old_clock = "11-06-2026 01:13 pm"
+    else:
+        text = ("<html><table><tr><td>"
+                "Summary Results Report General Election November 3, 2026 UNOFFICIAL RESULTS "
+                "Monongalia County, WV Statistics TOTAL "
+                "Election Day Precincts Reporting 43 of 43 Precincts Complete 0 of 43 "
+                "Precincts Partially Reported 43 of 43 Absentee/ Early Precincts Reporting 43 of 43 "
+                "Registered Voters - Total 15 Ballots Cast - Total 9 Ballots Cast - Blank 0 "
+                "Voter Turnout - Total 60% Election Summary - 11/03/2026 8:36 PM 1 of 1"
+                "</td></tr></table></html>")
+        old_clock = "11/03/2026 8:36 PM; timezone not supplied."
+    templates = []
+    levels = (("county", profile["names"][0]),)
+    if state == "WI":
+        levels += (("reporting_unit", "WARD A"), ("reporting_unit", "WARD B"))
+    for level, name in levels:
+        row = template(state, name, level)
+        row["measure"] = copy.deepcopy(profile["measure"])
+        row["source_clock"]["literal"] = old_clock
+        row["source"]["url"] = url
+        row["geography"]["id"] = state + "-" + name
+        row["id"] = observation_id(*granular.identity_fields(row))
+        row["view"].update(source_url=url, county=profile["names"][0], unit=name,
+                           registered=14, quality=["Earlier report context"])
+        if state == "WI":
+            row["denominator"] = {"value": 15, "literal": "Registered Voters",
+                                  "basis": "native_registered_voters_same_report_snapshot",
+                                  "qualified": level == "county"}
+        templates.append(row)
+    return url, text.encode(), templates
+
+
+@pytest.mark.parametrize("state", ("NV", "WI", "WV"))
+def test_statistical_html_native_parent_roles_zeros_and_partial_reporting(monkeypatch, state):
+    url, body, rows = statistical_html_fixture(monkeypatch, state)
+    result = native.statistical_html(body, rows, url)
+    assert len(result["updates"]) == len(rows)
+    assert result["updates"][0]["value"] == 9
+    assert all(row["registered"] == (0 if row["value"] == 0 else 15)
+               for row in result["updates"])
+    assert all(row["native"]["native_reporting_complete_qualified"] is False
+               for row in result["updates"])
+    assert all(row["native"]["private_original_pin"] == pin(body) for row in result["updates"])
+    if state == "WI":
+        assert [row["value"] for row in result["updates"]] == [9, 0, 9]
+        assert result["updates"][0]["reported_units"] == 2
+        assert result["updates"][0]["total_units"] == 2
+        assert result["updates"][1]["rate_compatible"] is False
+    elif state == "WV":
+        query = result["complete_native_query"][0]
+        assert query["reporting_counters"]["Precincts Complete"]["reported"] == 0
+        assert query["reporting_counters"]["Precincts Partially Reported"]["reported"] == 43
+        assert result["updates"][0]["reported_units"] is None
+
+
+def test_statistical_html_rejects_candidate_columns_missing_counts_and_incomplete_inventories(monkeypatch):
+    for state, mutations in (
+        ("NV", ((b"<th>Total</th>", b"<th>Candidate Votes</th>"),
+                (b"<td>0</td>", b"<td></td>"),
+                (b"<td>Total</td><td>9</td>", b"<td>Total</td><td>10</td>"),
+                (b"2026 General Election", b"2024 General Election"))),
+        ("WI", ((b"<th>Ballots Cast</th>", b"<th>Candidate Votes</th>"),
+                (b"WARD B", b"RENAMED"),
+                (b"WARD B", b"WARD A"),
+                (b"<td>WARD B</td><td>15</td>", b"<td>WARD B</td><td>14</td>"),
+                (b"only of one machine", b"all machines"),
+                (b"11032026", b"11032024"))),
+        ("WV", ((b"Ballots Cast - Total", b"Total Votes Cast"),
+                (b"Precincts Complete 0", b"Precincts Complete 1"),
+                (b"November 3, 2026", b"May 5, 2026"),
+                (b"Monongalia County, WV", b"Another County, WV"))),
+    ):
+        url, body, rows = statistical_html_fixture(monkeypatch, state)
+        for old, new in mutations:
+            assert old in body
+            with pytest.raises(ValueError):
+                native.statistical_html(body.replace(old, new), rows, url)
+
+
+@pytest.mark.parametrize("state", ("NV", "WI", "WV"))
+def test_statistical_html_rejects_clock_rollback_and_changed_template_semantics(monkeypatch, state):
+    url, body, rows = statistical_html_fixture(monkeypatch, state)
+    for field, value in (("mode", "early"), ("kind", "candidate_votes"),
+                         ("literal", "Candidate votes")):
+        changed = copy.deepcopy(rows)
+        changed[0]["measure"][field] = value
+        with pytest.raises(ValueError, match="scope changed"):
+            native.statistical_html(body, changed, url)
+    for path in ("source_url", "county"):
+        changed = copy.deepcopy(rows)
+        changed[0]["view"][path] = "Unreviewed source"
+        with pytest.raises(ValueError, match="scope changed"):
+            native.statistical_html(body, changed, url)
+    changed = copy.deepcopy(rows)
+    changed[0]["geography"]["name"] = "Another County"
+    with pytest.raises(ValueError, match="scope changed"):
+        native.statistical_html(body, changed, url)
+    token = {"NV": b"11/13/26 01:39 PM", "WI": b"11-06-2026 01:13 pm",
+             "WV": b"11/03/2026 8:36 PM"}[state]
+    with pytest.raises(ValueError):
+        native.statistical_html(body.replace(token, b"Not supplied"), rows, url)
+    rows[0]["source_clock"]["literal"] = "11/14/2026 10:00 AM"
+    with pytest.raises(ValueError, match="regressed"):
+        native.statistical_html(body, rows, url)
+
+
+def test_statistical_html_printed_pages_require_consistent_headers_and_clocks(monkeypatch):
+    url, body, rows = statistical_html_fixture(monkeypatch, "WV")
+    second = (b"Summary Results Report General Election November 3, 2026 UNOFFICIAL RESULTS "
+              b"Monongalia County, WV Contest totals Election Summary - 11/03/2026 8:36 PM")
+    assert native.statistical_html(body + second, rows, url)["complete_native_query"][0][
+        "printed_html_report_pages"] == 2
+    for old, new in ((b"8:36", b"8:37"), (b"UNOFFICIAL RESULTS", b"OFFICIAL RESULTS"),
+                     (b"2026", b"2024")):
+        with pytest.raises(ValueError):
+            native.statistical_html(body + second.replace(old, new), rows, url)
+
+
+def test_statistical_html_changed_registration_withholds_existing_rate_and_refreshes_mirror(monkeypatch):
+    url, body, rows = statistical_html_fixture(monkeypatch, "WI")
+    baseline_files = baseline(("WI",))
+    name = "states/WI.json.gz"
+    baseline_files[name] = intake.compressed(encoded({"records": rows, "views": {}}))
+    body = body.replace(b"VOTERS TOTAL 15", b"VOTERS TOTAL 16").replace(
+        b"<td>WARD B</td><td>15</td>", b"<td>WARD B</td><td>16</td>")
+    result = native.statistical_html(body, rows, url)
+    assert result["updates"][0]["rate_compatible"] is False
+    after, _ = granular.project(baseline_files, {"WI-fixture": {
+        "status": "reported", "source": {"url": url, **pin(body)}, "data": result}})
+    current = json.loads(gzip.decompress(after[name]))["records"]
+    assert rows[0]["denominator"]["qualified"] is True
+    assert current[0]["denominator"]["qualified"] is False
+    assert current[0]["denominator"]["value"] == current[0]["view"]["registered"] == 16
+    assert all(row["view"]["reported_pct"] is None for row in current)
+    assert current[1]["count"]["value"] == current[1]["view"]["registered"] == 0
+
+
+def test_statistical_html_preserves_distinct_accepted_appearances(monkeypatch):
+    url, body, rows = statistical_html_fixture(monkeypatch, "NV")
+    duplicate = copy.deepcopy(rows[0])
+    duplicate["source"]["id"] = "another-reviewed-source-appearance"
+    duplicate["id"] = observation_id(*granular.identity_fields(duplicate))
+    result = native.statistical_html(body, [rows[0], duplicate], url)
+    assert [row["id"] for row in result["updates"]] == [rows[0]["id"], duplicate["id"]]
+    assert result["updates"][0]["value"] == result["updates"][1]["value"] == 9
+
+
+def test_statistical_html_collects_all_products_preserves_holds_and_repeats_byte_stably(
+        tmp_path, monkeypatch):
+    before = baseline(("NV", "WI", "WV", "NY"))
+    originals = {}
+    index = json.loads(before["index.json"])
+    for state in ("NV", "WI", "WV"):
+        url, body, rows = statistical_html_fixture(monkeypatch, state)
+        originals[url] = body
+        shard = {"records": rows, "views": {"official": {
+            "counties": [row["id"] for row in rows if row["geography"]["level"] == "county"],
+            "precincts": [row["id"] for row in rows if row["geography"]["level"] == "reporting_unit"]}}}
+        name = "states/" + state + ".json.gz"
+        before[name] = intake.compressed(encoded(shard))
+        index["states"][state].update(pin(before[name]))
+    before["index.json"] = encoded(index)
+    plan = native.source_plan(before)
+    assert all(next(iter(plan[state].values()))["adapter"] == "reviewed_statistical_html"
+               for state in ("NV", "WI", "WV"))
+
+    def acquire(self, url):
+        self.guard(url)
+        if url not in originals:
+            raise IntakeError("source_stopped", "Persisted access hold")
+        body = originals[url]
+        return body, {"url": url, "origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    collector = intake.Collector(tmp_path, {}, {"urls": [], "prefixes": [], "hosts": []},
+                                 datetime(2026, 11, 14, tzinfo=timezone.utc))
+    entries = native.collect_sources(collector, before)
+    assert sum(entry["status"] == "reported" for entry in entries.values()) == 3
+    after, changes = granular.project(before, entries)
+    assert len(changes) == 5
+    assert after["states/NY.json.gz"] == before["states/NY.json.gz"]
+    for state in ("NV", "WI", "WV"):
+        old, current = (json.loads(gzip.decompress(item["states/" + state + ".json.gz"]))
+                        for item in (before, after))
+        assert current["views"] == old["views"]
+        for previous, row in zip(old["records"], current["records"]):
+            assert row["id"] == previous["id"] and row["geography"] == previous["geography"]
+            assert row["reporting_status"]["complete"] is None
+            assert row["view"]["registered"] == row["view"]["native_record"]["query"]["registered"]
+            if not previous["denominator"] or not previous["denominator"]["qualified"]:
+                assert row["view"]["reported_pct"] is None
+    repeated = native.collect_sources(collector, after)
+    assert granular.project(after, repeated) == (after, [])
+    nv_url = next(url for url in originals if "clarkcountynv" in url)
+    originals[nv_url] = originals[nv_url].replace(b"2026 General Election", b"2024 General Election")
+    retained = intake.Collector(tmp_path / "retained", repeated,
+                               {"urls": [], "prefixes": [], "hosts": []},
+                               datetime(2026, 11, 14, tzinfo=timezone.utc))
+    held = native.collect_sources(retained, after)
+    assert sum(entry["status"] == "retained_after_failure" for entry in held.values()) == 1
+    assert granular.project(after, held) == (after, [])

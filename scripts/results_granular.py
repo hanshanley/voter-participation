@@ -526,7 +526,8 @@ def project(baseline, granular):
                 row["reporting_status"].update(reported_units=update["reported_units"],
                     total_units=update["total_units"],
                     complete=(update["reported_units"] == update["total_units"])
-                    if update["total_units"] is not None else None)
+                    if update["total_units"] is not None
+                    and native.get("native_reporting_complete_qualified") is not False else None)
                 view = row["view"]
                 view.update(ballots=value, native_record=native, source_url=url,
                     source_sha256=numerical_pin["sha256"], source_update_label=update["clock"],
@@ -535,6 +536,8 @@ def project(baseline, granular):
                     and denominator["qualified"] else None,
                     reported_units=update["reported_units"], total_units=update["total_units"],
                     native_printed_pct=None)
+                if "registered" in view:
+                    view["registered"] = update["registered"]
                 if "native_fraction_literal" in native:
                     query = native.get("query") or {}
                     fraction = native["native_fraction_literal"]
