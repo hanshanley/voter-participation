@@ -6,7 +6,7 @@ It is separate from candidate returns, CPS estimates and the 2026 intake.
 It does not create population turnout rates, demographic estimates, mapped
 precincts or matched precinct histories.
 
-The current numerical candidate contains 121,661 source cells in 39 separate
+The published projection contains 121,661 source cells in 39 separate
 snapshots across 18 jurisdictions, including DC. All 51 jurisdiction decisions
 are recorded for each of the two projection years. The 12,837 reported zero
 cells remain zero; 115 unknown and 484 withheld cells retain their source
@@ -14,8 +14,10 @@ literals rather than becoming zero. These are counts of source cells, not
 unique reporting units, people or ballots. Official and compiled versions can
 overlap.
 
-This is a numerical candidate until the complete package, dataset and website
-have passed their separate publication and actual live-acceptance gates.
+The complete package is immutable445000489, dataset88d51667 is separately
+published and the existing-site reader is verified on desktop and mobile.
+See the [complete download](DATA.md#historical-native-source-cells-and-marion-iowa)
+and [source qualifications](../SOURCES.md#historical-native-administrative-cells-2018-and-2020).
 
 ## Source and election boundaries
 
@@ -46,24 +48,26 @@ all other sources. It makes no missing-data classification for 2016, 2022,
 
 ## Reproduce
 
-The full packet must retain the three complete permitted component ZIPs,
+The full packet retains the three complete permitted component ZIPs,
 their immutable hashes, processing code, tests, all state files and all 102
 selection/withholding decisions. Original publisher document/application
 templates and private respondents are not required or redistributed.
 This replays a projection of already-verified factual queries, not a fresh
 decoding of the excluded official workbook templates.
 
-From the packet's `code/` directory:
+From the extracted download root, with Python3.9 or newer:
 
 ```bash
-python -m unittest discover -s tests -p test_historical_native_counts.py -v
-python -m scripts.historical_native_counts --spec ../inputs.json --output ../replayed
+sh -eu REPRODUCE.txt
 ```
 
 The producer checks each entire input component's exact bytes/hash before
 streaming its complete factual query. It writes deterministic, source-separated
 state shards and an all-jurisdiction index. A changed input or output directory
-requires a new version; no source is requested by this projection.
+requires a new version; no source is requested by this projection. The exact
+documented command selects `python3`, sets the startup-guard path, probes six
+network/DNS/child denials, runs eight tests and regenerates all20 output files.
+Both clean extracted-download executions match every output byte.
 `dataset.json` contains the data identity. Its complete-download pointer is
 publication metadata supplied only after immutable full-body verification,
 not a self-authenticating claim inside an unpublished candidate.
@@ -77,7 +81,7 @@ dropdown/map pending-load regression using the existing Playwright Python
 environment:
 
 ```bash
-python scripts/verify-historical-native-navigation.py --base http://127.0.0.1:4399 \
+python3 scripts/verify-historical-native-navigation.py --base http://127.0.0.1:4399 \
   --dataset DATASET --download VERIFIED_PREDECESSOR_POINTER --output NEW_RECEIPT
 ```
 

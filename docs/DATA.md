@@ -8,7 +8,65 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Historical native source cells and Marion Iowa
+
+Both complete packages have authenticated-draft and anonymous-public full-body
+verification and immutable release assets. They contain numerical inputs and
+every output, not merely metadata.
+
+| Complete download | Contents |
+|---|---|
+| [Historical2018/2020 native administrative cells](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-native-counts-20261114-01/complete-analysis.zip) |553,681,587 bytes; three entire factual input components,121,661 separate source cells,39 snapshots, all102 jurisdiction/year decisions, exact code/tests and reproduction |
+| [Marion Iowa fact-only General Election SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-ia-marion-native-20261114-01/complete-analysis.zip) |41,721,387 bytes/186 members; complete51-jurisdiction sufficient baselines, all144 statistical-header facts/queries, code, ten runnable tests, outputs and offline reproduction |
+
+Historical SHA256:
+`e052b3e1069c99ca8df04e7d0d20c49b86f404adfa9582b86b299b0da0307ca1`.
+Iowa SHA256:
+`13ff277c51c546901fc34af5e19e47b9fd10b01848e3b410a6767f461adf0869`.
+
+From the extracted historical download run `sh -eu REPRODUCE.txt`.
+It selects `python3`, activates and probes the network/DNS/child startup guard,
+runs all eight tests and regenerates all20 files. Two genuinely fresh
+extractions with different hash seeds match every byte. Iowa's included
+`REPRODUCE.txt` states Python/pytest requirements and its exact `python3`
+acceptance command; three public SDK tests plus seven named focused tests
+pass, with59 byte-exact outputs across both fresh replays and a genuine
+clean-extraction documented-command execution.
+
+Historical data version `88d51667` is a new independent entry, not a replacement
+for demographic histories or current modeled outcomes. Source variants,
+categories and voting modes are never summed; registration is not an approved
+turnout denominator, and boundaries/cross-year identities remain unreviewed.
+The121,661 cells include12,837 native reported zeros,115 unknowns and484
+withheld/noninteger cells. Coverage is18 jurisdictions with observations and
+explicit decisions for all51 across two elections, not universal precinct
+turnout. Original native fields and literal counts/statuses remain available.
+
+Counts `900c675c` add Marion16,373 unofficial General Election Total Ballots,
+Iowa2/99 county coverage; registration25,041 is contextual and19/19 reporting
+is not certification. All prior399 Iowa observations/source modes, other50
+state shards, current model snapshot and native `b591e846` stay exact.
+The full source PDF is excluded; public reproduction honestly starts from
+all reviewed permitted header facts rather than re-OCRing an absent template.
+No private respondents, individual histories or publisher application templates
+are added. Catalog `ac0293a6` preserves every unrelated entry.
+[Detailed scope](../SOURCES.md#historical-native-administrative-cells-2018-and-2020).
+
+Actual no-override desktop/mobile acceptance verifies both full download bodies,
+all121,661 historical cells, all51 current readers and all four applicable
+Iowa county modes. Source switching, filters,100-row paging and original-field
+expansion are exercised; unknowns, withheld cells and zeros remain distinct.
+The actual native artifact has997,339,994 payload/999,936,000 tar bytes below1e9;
+all32 served bodies,436 old download pins and113 original publication entries
+remain, with115 archived/linked bodies hashed. Separate, explicitly injected
+503/checksum tests preserve the verified full-package link and retry the real
+body without inferred values.
+[Full actual acceptance](../data/participation-access/20261114-historical-native-and-ia-01/website-acceptance.json).
+
 ## Current regional native counts and map bindings
+
+Earlier accepted regional delivery retained by the successor above; its full
+packages and all earlier download identities remain available.
 
 Immutable release **444945203**, `participation-native-regional-merge-20261113-03`,
 contains exactly two new assets. Both have full authenticated-draft and

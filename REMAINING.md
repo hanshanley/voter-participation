@@ -13,7 +13,61 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Historical source cells and Marion counts: retain the model-frame gaps
+
+The historical projection now exposes121,661 source-separated administrative
+cells in39 snapshots across18 jurisdictions for2018/2020, with all102 state/
+year decisions, genuine zeros and explicit unknown/withheld cells. It is not
+another candidate-return inventory: only directly labeled Ballots Cast and
+registration stocks enter the typed reader. It is also not a qualified
+historical precinct map, turnout denominator or geographic identity join.
+
+Marion County Iowa adds one native, unofficial November3 General Election
+Total Ballots observation16,373, with25,041 contextual registered voters.
+Iowa all-method county coverage is2/99, not nationwide county completeness.
+All399 prior Iowa observations/source modes, other50 state shards, native
+`b591e846` and the current modeled snapshot are unchanged.
+
+Research source `8d4e6ea`, website source `ea329b33` and active catalog
+`ac0293a6` carry independent history `88d51667` and counts `900c675c`.
+The complete historical553,681,587-byte package and repaired Iowa41,721,387-byte
+fact-only SDK are immutable445000489/445000488 with authenticated and anonymous
+full-body verification. Both include complete numerical sufficient inputs,
+code, tests, queries, decisions and genuine extracted-download reproduction.
+The source and package critics caught real state-navigation and SDK-test
+problems; those were fixed, not waived. Earlier failed/private packets remain
+history, not published substitutes.
+
+Actual website acceptance now passes at1440/390 without source/data/DOM/style
+overrides: all121,661 historical cells, all51 current readers, Iowa's four
+applicable modes and both complete package hashes at each width. Separate
+503/checksum fault/retry cases pass without fabricated values. Actual native
+artifact14098410480 is997,339,994 payload/999,936,000 tar bytes below1e9;
+all32 live bodies,436 old download pins and113 original publication entries
+are preserved, with115 actual asset bodies hashed. Canonical23 reader tests
+and surgical older-renderer persistence pass without changing protected
+HEADs/indexes or unrelated code. The complete acceptance record is
+[retained here](data/participation-access/20261114-historical-native-and-ia-01/website-acceptance.json).
+
+Continue the substantive all-state source/model work. These additions do not
+justify a NORC refit, new fitted means, extrapolated local demographic turnout
+or identified individual switching/nonparticipation/entry. The existing33/17
+House gates, Texas+11.97610548 Democratic-share-point result and CA/NE frame
+holds remain. Reuse the113,020-case original and accepted fits unless verified
+inputs/code change; the last successful November13 source CSV/codebook are
+byte-identical to those originals. A November14 web-tool403 on the download
+declaration is recorded separately, not misrepresented as a new measured
+native-origin denial or a claim that the dataset is absent.
+
+Audit636 and then beautification637 remain pending the genuine remaining
+integration; do not close source holds to make the checklist appear finished.
+[Source scope](SOURCES.md#historical-native-administrative-cells-2018-and-2020)
+and [complete downloads](docs/DATA.md#historical-native-source-cells-and-marion-iowa).
+
 ## Regional counts and complete downloads are live; continue genuine gaps
+
+Earlier accepted regional delivery retained by the historical/Marion successor
+above; do not repeat its acquisition, source fit or publication.
 
 The reviewed seven-state successor is now atomically active:
 catalog `b2d439b7360ad3e301d885779559776281ae6b12`,

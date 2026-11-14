@@ -8,6 +8,8 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current historical administrative cells | [Source-separated 2018/2020 observations, all51 state/year decisions and complete reproduction](#historical-native-administrative-cells-2018-and-2020) |
+| Current Marion Iowa snapshot | [Unofficial General Election Total Ballots, contextual registration and retained source modes](#2026-marion-iowa-native-general-election-snapshot) |
 | Current regional counts and map bindings | [Seven-state successors, full numerical packages and retained model-frame holds](#2026-regional-native-counts-and-new-mexico-map-bindings) |
 | Current SC/AL administrative counts | [South Carolina state-only participation and Alabama corrected all-mode source selections](#2026-south-carolina-and-alabama-native-source-counts) |
 | Current House-model disclosures | [Same-group variant sensitivity, exact versions and conditioned totals](#current-house-model-disclosures-and-variant-sensitivity) |
@@ -60,7 +62,100 @@ This document is the detailed reference ledger, not the methods introduction.
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
 
+## Historical native administrative cells: 2018 and 2020
+
+Scientific source `8d4e6ea5ce6ff1f1cee821b9ec8b4654e91276e1` projects only
+explicit native Ballots Cast and registration-stock cells from three already
+verified, complete official-workbook/OpenElections factual components.
+There are121,661 separate source cells in39 snapshots across18 jurisdictions,
+including12,837 reported zeros,115 unknowns and484 withheld/noninteger cells.
+All51 jurisdictions have explicit decisions for2018 and2020:102 decisions,
+not a claim that all51 have qualified administrative observations.
+Other years are not classified as missing merely because this projection
+does not evaluate them.
+
+Alternative official/OpenElections copies, totals, ballot styles and modes
+remain separate. Cells are not unique people or a safely additive precinct
+total; native county/unit/category fields are retained literally. Candidate
+votes do not substitute for participation. Registration is not automatically
+a turnout denominator, and no rate, demographic allocation, boundary join or
+cross-year precinct identity is approved.
+
+Immutable release **445000489** provides the complete553,681,587-byte package,
+SHA256 `e052b3e1069c99ca8df04e7d0d20c49b86f404adfa9582b86b299b0da0307ca1`.
+It contains all three full input components, exact producing code/tests,
+every numerical output and every decision. Authenticated-draft and anonymous
+public full-body hashes agree. Two fresh extracted downloads execute the
+literal `sh -eu REPRODUCE.txt` with `python3`, eight tests, six network/DNS/
+child-denial probes and all20 output files byte-exact. Original publisher
+templates and private respondents are not added.
+[Complete download and reproduction](docs/DATA.md#historical-native-source-cells-and-marion-iowa).
+
+Dataset `participation-historical-native-counts`, version `88d51667`, is an
+independent catalog entry. It does not replace demographic turnout histories,
+current2026 counts, source-native map bindings or behavioral model inputs.
+Catalog `ac0293a616f7621d84c53bde4f57e2544ea024b2` retains all other entries.
+The existing-site historical panel separates source snapshot, native county
+field, measure and unit/category search, pages100 rows and exposes original
+native fields plus the complete state and scientific downloads. Unsupported
+states are not displayed as zero; the panel is unavailable outside2018/2020.
+
+Website `ea329b33` passes both source guards and actual Pages43554754547.
+Artifact14098410480 has997,339,994 payload/999,936,000 tar bytes, both below1e9.
+All32 served bodies,436 prior download pins,113 original publication entries
+and115 actual archived/linked asset bodies are verified. No-override1440/390
+tests validate all121,661 historical cells and all51 current jurisdictions,
+actual filters/paging/native fields, distinct zero/unknown/withheld cells,
+and both complete download hashes. Four separately labeled503/checksum fault
+cases retain the verified complete package and successfully retry the real body.
+Canonical23 reader tests pass; the older renderer receives only its seven
+state-setter paths and historical hooks, preserving every unrelated byte,
+both canonical HEADs/indexes and only three owned manifest script keys.
+[Actual acceptance](data/participation-access/20261114-historical-native-and-ia-01/website-acceptance.json).
+
+## 2026 Marion Iowa native General Election snapshot
+
+The already-held Marion County source is a November3 **General Election**
+report, explicitly **UNOFFICIAL**, with native date/time
+`11/3/2026 9:34:08 PM CST`. All nine repeated statistical headers independently
+agree on **16,373 Total Ballots**,25,041 registered voters and one blank ballot.
+Nineteen of19 precincts reporting does not establish certification or finality.
+All144 header query cells are preserved; the repeated headers are not nine
+independent observations to add.
+
+One new county observation raises Iowa's direct all-method county coverage
+from1/99 to2/99. All399 prior Iowa observations and their early/returned modes,
+the other50 state shards, the current model snapshot and native `b591e846`
+remain exact. The contextual registration stock and native printed fraction
+do not qualify an analytical denominator or turnout rate. Unique people,
+Iowa native map bindings, state totals, weights and demographic/behavioral
+fits are not inferred.
+
+The repaired fact-only package is immutable **445000488**:
+41,721,387 bytes/SHA256
+`13ff277c51c546901fc34af5e19e47b9fd10b01848e3b410a6767f461adf0869`.
+It includes complete51-jurisdiction sufficient baselines, all144 header facts/
+queries, producing code, ten runnable tests and exact offline reproduction.
+Both fresh replays and a genuinely extracted download reproduce59 outputs.
+Public replay starts from reviewed permitted facts, not a false claim to
+re-OCR the excluded publisher PDF. The original source SHA256 remains
+`4627272fdf72d35b2c0d1a20b715efce5242d042ae5e00242cd7242f8d0ae002`.
+[Complete download](docs/DATA.md#historical-native-source-cells-and-marion-iowa).
+
+Counts `900c675c` were verified at54 anonymous immutable paths and activated
+in catalog `59e1c99c`; the subsequent historical entry `ac0293a6` preserves
+them. The source/data and repaired package each received independent critique.
+The earlier private PDF-containing/placeholder packet and its first
+non-runnable tests were not published; their failed evidence is retained.
+Texas's recorded+11.97610548 Democratic two-party-share points, all33 qualified/
+17 held behavioral comparisons and the existing fitted means/weights remain
+unchanged. This is a new administrative observation, not newly identified
+switching, first-ever voting or staying home.
+
 ## 2026 regional native counts and New Mexico map bindings
+
+Earlier accepted regional delivery, retained by the historical/Marion successor
+above; its immutable packages and source-specific qualifications remain valid.
 
 The shared routine's source `8c422c9` and immutable release **444945203**,
 `participation-native-regional-merge-20261113-03`, retain complete permitted
@@ -146,6 +241,15 @@ stopped without retries, alternate clients, caches, mirrors or guessed URLs.
 |---|---|
 | `https://sos.iowa.gov/elections/pdf/2026/general/AbsenteeCounty2026.pdf` |403 Forbidden; completed2026-11-14T03:04:44.864Z; body not read |
 | `https://elections.ny.gov/voters-registered-county-11012026` |403 Forbidden; completed2026-11-14T03:05:27.526Z; body not read |
+
+A separate November14 `web.run` request to the supplied NORC download
+declaration reported403 Forbidden. That attempted route is stopped; no alternate
+client, cache, mirror or snippet recovery was attempted. This is explicitly a
+web-tool result, **not an independently measured new native-origin denial**,
+and does not erase the actual native200 receipts below. No new declaration
+body, CSV or weights were acquired. The last verified November13 CSV remains
+byte-identical to the supplied113,020-case original; reuse its qualified fits
+without inventing a new weight version or a global dataset-absence claim.
 
 The separately reachable Idaho May19 primary report is **not** November3
 general-election participation. Its proposed89-row addition was rejected;
@@ -1229,7 +1333,9 @@ downloads; no copied browser API credentials were acquired or used.
 The actual weight-target/calibration qualification is unchanged, not resolved
 by matching bytes. A source weight calibrated to current results is not independent
 validation of those same results. Empty web-renderer output is not a native
-access denial; the two NORC pages above are reachable.
+access denial; the two NORC pages above were reachable in those native
+November12 requests. The separately recorded November14 web-tool403 is
+not substituted for that earlier native evidence.
 
 The actual all51jurisdiction directory refresh retains every disposition:
 48declared results-index URLs,24requests,18acquired indexes and30access holds,
