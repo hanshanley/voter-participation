@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Louisiana native group map | [Early/absentee report compositions, qualified parish context and complete fact-only reproduction](#2026-louisiana-native-earlyabsentee-group-map-and-data) |
 | Current historical integer-format reconciliation | [179 qualified PA/UT native cells; original flags and all fractional/unknown holds retained](#historical-native-integer-format-reconciliation) |
 | Current historical administrative cells | [Source-separated 2018/2020 observations, all51 state/year decisions and complete reproduction](#historical-native-administrative-cells-2018-and-2020) |
 | Current Marion Iowa snapshot | [Unofficial General Election Total Ballots, contextual registration and retained source modes](#2026-marion-iowa-native-general-election-snapshot) |
@@ -62,6 +63,54 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Louisiana native early/absentee group map and data
+
+Scientific source `7bffd4d33b2ca32fbb613f419707b593ce93f86b` and website
+source `0ef8ef35ce2dcc9298d4fbbd0d238b4bc560dbb7` add a source-bound Louisiana
+reader. Dataset `source-native-la-early-group-data`, version `5e58886f`, is a
+separate entry in catalog `9e6d7625`; all previous entries remain exact.
+It preserves1,040 native cells,65 profiles,455 group compositions,448 parish/
+group bindings,128 provider diagnostics and all51 source-scope decisions.
+Only Louisiana is supported by this source; other states are not zeros.
+
+The November3,2026 native early/absentee report has VOTES536,190:
+INPER448,588 and ABS87,602. Native race margins are WHITE328,590,
+BLACK184,348 and OTHER23,252; sex margins are MALE224,376 and FEMALE311,536.
+The278 state sex arithmetic residual,37 parish residuals and21 literal zero
+cells remain. Shares use each profile's own native VOTES, not a population,
+registration or classified-sex denominator. The state parent and parish/
+demographic margins are controls, not additive independent populations.
+
+This is not full-election turnout, a count of unique people, or identified
+switching/nonparticipation/entry. Native ABS is not promoted to mail returned;
+party accounting is not vote choice. Race/sex/method margins are not joint
+groups or aliases for CPS/NORC categories. No fitted mean, weight or House
+comparison gate changes. Source codes01-64 are not FIPS. The64 reviewed parish
+context shapes are not2026 voting precincts; upstream lineage is not established.
+Printed11/10/2026 3:10:06 AM has unknown timezone. The1900-01-01 through
+2026-11-09 query filter is not an observed voting period or a finality claim.
+
+Immutable445047387/asset746448557 contains the complete5,650,023-byte/39-member
+fact-only SDK, SHA256 `627d791dc160c5609f92baac5491a74fd807e7114c7c29477e5d2d113168ae04`.
+All permitted aggregate inputs, geometry, complete queries, code, tests and
+outputs are included; the original publisher PDF/application and private
+respondents are not. Three offline replays run six portable tests and four
+network/DNS/child denial probes, reproducing15 outputs and the16-file tree.
+Accepted full query artifacts are verified/copied replay inputs; the typed
+projection is recomputed. No re-OCR or new source acquisition is claimed.
+[Complete download and commands](docs/DATA.md#louisiana-native-earlyabsentee-group-compositions).
+
+Actual no-override1440/390 production checks pass all1,792 count/share/color/
+accessibility-label renderings, physical parish selection, Enter/Space,
+lazy/scope behavior and both complete SDK hashes. Six separate explicit
+503/checksum/delayed-response tests preserve verified downloads, substitute no
+values and retry correctly. Actual artifact14101237393 from Pages43563002467
+has997,358,400 payload/999,956,480 tar bytes, both below1e9. All33 served
+bodies,436 prior download pins,113 original entries and115 actual archived/
+linked bodies verify. Canonical29 reader and six research tests pass, retaining
+the older renderer and protected HEADs/indexes.
+[Actual acceptance](data/participation-access/20261114-louisiana-native-groups-01/website-acceptance.json).
 
 ## Historical native integer-format reconciliation
 

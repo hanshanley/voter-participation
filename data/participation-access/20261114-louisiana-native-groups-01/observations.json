@@ -1,0 +1,130 @@
+{
+  "actual_anonymous_download_and_literal_reproduction": {
+    "actual_anonymous_public_sdk_download": true,
+    "archive": {
+      "bytes": 5650023,
+      "sha256": "627d791dc160c5609f92baac5491a74fd807e7114c7c29477e5d2d113168ae04",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-louisiana-native-groups-runtime-20261114-01/complete-analysis.zip"
+    },
+    "documented_command_executed": "python3 -Werror reproduce.py --package . --output ../fresh-replay",
+    "fresh_output_basename": "fresh-replay",
+    "literal_documented_command": true,
+    "members": 39,
+    "passed": true,
+    "reproduction": {
+      "catalog_or_frontend_activation": false,
+      "child_process_block_probes": 2,
+      "files_compared": 15,
+      "group_bindings": 448,
+      "network_dns_block_probes": 2,
+      "observations": 1040,
+      "parish_sex_residuals": 37,
+      "parishes": 64,
+      "portable_behavior_tests": {
+        "errors": 0,
+        "failures": 0,
+        "log": "test_01_inventory_and_state_controls (la_behavior_tests.run_behavior_tests.<locals>.PortableLouisianaBehaviorTests) ... ok\ntest_02_zeros_unknowns_and_abs_scope (la_behavior_tests.run_behavior_tests.<locals>.PortableLouisianaBehaviorTests) ... ok\ntest_03_compositions_use_own_votes (la_behavior_tests.run_behavior_tests.<locals>.PortableLouisianaBehaviorTests) ... ok\ntest_04_bindings_are_explicit_context_only (la_behavior_tests.run_behavior_tests.<locals>.PortableLouisianaBehaviorTests) ... ok\ntest_05_publication_gate_remains_planned (la_behavior_tests.run_behavior_tests.<locals>.PortableLouisianaBehaviorTests) ... ok\ntest_06_changed_reviewed_fact_is_rejected (la_behavior_tests.run_behavior_tests.<locals>.PortableLouisianaBehaviorTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests\n\nOK\n",
+        "status": "passed",
+        "tests": [
+          "test_01_inventory_and_state_controls",
+          "test_02_zeros_unknowns_and_abs_scope",
+          "test_03_compositions_use_own_votes",
+          "test_04_bindings_are_explicit_context_only",
+          "test_05_publication_gate_remains_planned",
+          "test_06_changed_reviewed_fact_is_rejected"
+        ],
+        "tests_run": 6
+      },
+      "profiles": 65,
+      "provider_comparisons": 128,
+      "publisher_pdf_or_html_included": false,
+      "replay_basis": "complete permitted reviewed aggregate facts; no re-OCR of excluded publisher template",
+      "shared_intake_observations_validated": 1040,
+      "shared_publisher_gate": "incomplete_download_expected",
+      "source_scope_decisions": 51,
+      "state_sex_residual": 278,
+      "status": "passed_extracted_fact_only_sdk",
+      "zero_cells": 21
+    }
+  },
+  "all_other_catalog_entries_exact": true,
+  "catalog_commit": "9e6d762595687cec1fa73665a51413f251b04edf",
+  "complete_numerical_release": {
+    "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+    "assets": [
+      {
+        "bytes": 5650023,
+        "id": 746448557,
+        "name": "complete-analysis.zip",
+        "sha256": "627d791dc160c5609f92baac5491a74fd807e7114c7c29477e5d2d113168ae04",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-louisiana-native-groups-runtime-20261114-01/complete-analysis.zip"
+      }
+    ],
+    "id": 445047387,
+    "immutable": true,
+    "passed": true,
+    "source_or_data_activation_or_website_builds": 0,
+    "tag": "participation-louisiana-native-groups-runtime-20261114-01"
+  },
+  "context_is_2026_voting_precincts": false,
+  "contract": "participation.louisiana_native_groups_delivery.v1",
+  "dataset_id": "source-native-la-early-group-data",
+  "dataset_version": "5e58886f44dd5968d3bc74a801898e86ab942c509200bf29392dac05727311c7",
+  "full_election_ballots": null,
+  "geometry_upstream_lineage_established": false,
+  "group_turnout": null,
+  "house_gates_unchanged": {
+    "conditional": 33,
+    "held": 17
+  },
+  "individual_switching_nonparticipation_entry_identified": false,
+  "literal_zero_cells": 21,
+  "marginals_are_joint_demographic_groups": false,
+  "native_abs_is_mail_returned": false,
+  "native_election_date": "2026-11-03",
+  "native_group_compositions": 455,
+  "native_numeric_cells": 1040,
+  "native_printed_clock": "11/10/2026 3:10:06 AM",
+  "native_printed_timezone": null,
+  "native_profiles": 65,
+  "native_state_fields": {
+    "ABS": 87602,
+    "BLACK": 184348,
+    "FEMALE": 311536,
+    "INPER": 448588,
+    "MALE": 224376,
+    "OTHER": 23252,
+    "VOTES": 536190,
+    "WHITE": 328590
+  },
+  "new_model_or_fit_or_weight": false,
+  "other_50_source_scopes": "unsupported by this source, not zero",
+  "parent_children_and_margins_are_additive_independent_populations": false,
+  "parish_group_bindings": 448,
+  "parishes": 64,
+  "parishes_with_sex_residual": 37,
+  "party_accounting_is_vote_choice": false,
+  "provider_diagnostics": 128,
+  "publisher_pdf_html_application_or_private_respondents_included": false,
+  "query_filter": {
+    "finality_claim": false,
+    "from": "1900-01-01",
+    "observed_voting_period": false,
+    "through": "2026-11-09"
+  },
+  "replay_basis": "Accepted full query artifacts are verified/copied inputs; typed projection recomputed, no re-OCR",
+  "scientific_source_commit": "7bffd4d33b2ca32fbb613f419707b593ce93f86b",
+  "scope": "Native early/absentee report; own native VOTES composition, not population turnout",
+  "source_codes_are_fips": false,
+  "source_scope_decisions": 51,
+  "state_sex_arithmetic_residual": 278,
+  "supported_state": "LA",
+  "unchanged_catalog_versions": {
+    "participation-counts-2026": "900c675c9c54f003bd4001fdf633ef94fbe50d1caa8e2bab151ccbf81a68424f",
+    "participation-historical-native-counts": "a8e917a7758dd094af52d7d445dd84de326e47bc4caddfc2376de5d4780059fe",
+    "participation-native-bindings-2026": "b591e8463d144c6968ed15664e703ec530a8fcb4f8c4747f3e1499a27852d2d2"
+  },
+  "unique_people": null,
+  "website_source_commit": "0ef8ef35ce2dcc9298d4fbbd0d238b4bc560dbb7",
+  "whole_project_complete": false
+}

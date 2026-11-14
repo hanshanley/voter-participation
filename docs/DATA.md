@@ -8,6 +8,54 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Louisiana native early/absentee group compositions
+
+[Complete permitted facts, queries, code, tests and reproduction](https://github.com/hanshanley/margin_of_error/releases/download/participation-louisiana-native-groups-runtime-20261114-01/complete-analysis.zip):
+**5,650,023 bytes/39 members**, SHA256
+`627d791dc160c5609f92baac5491a74fd807e7114c7c29477e5d2d113168ae04`.
+Immutable445047387/asset746448557 has full authenticated and anonymous body
+verification. This package includes all1,040 native cells,65 profiles,455
+compositions,448 parish/group bindings,128 diagnostics,51 source-scope
+decisions, full64-parish context geometry and every complete query/output.
+It excludes the original publisher PDF/application and private respondents.
+
+From the extracted SDK, using Python3.9+ standard library only:
+
+```sh
+python3 -Werror reproduce.py --package . --output ../fresh-replay
+```
+
+Use a fresh output directory. The command recomputes the typed projection,
+verifies/copies accepted full-query inputs honestly, runs all six packaged
+behavior tests in process, probes four network/DNS/child denials and compares
+all15 output files. Two fresh replays and a genuine extracted-download command
+produce the same16-file tree. No source reacquisition or re-OCR is claimed.
+
+The matching public research test uses the extracted SDK root as its input:
+
+```sh
+LOUISIANA_NATIVE_SDK_PACKAGE=/path/to/extracted-sdk \
+  python3 -Werror tests/test_louisiana_native_groups.py -v
+```
+
+That explicit-input run passes six cases; without the SDK input it reports a
+clear skip rather than pretending to test the numerical projection.
+Native VOTES536,190 describe the early/absentee report only. Shares use own
+VOTES; the278 state sex residual,37 parish residuals and21 literal zeros remain.
+Native ABS is not relabeled mail returned. Separate race/sex/method margins
+are not joint groups, population turnout or individual switching evidence.
+Parish context is not2026 precinct geography; upstream lineage and the printed
+clock's timezone remain unknown.
+[Full scope](../SOURCES.md#2026-louisiana-native-earlyabsentee-group-map-and-data).
+
+The live existing-site reader passes all1,792 desktop/mobile count/share/
+color/accessibility-label checks and hashes the complete SDK at both widths,
+without source/data/DOM/style overrides. Separate fault tests remain explicitly
+labeled injections. Native artifact14101237393 is997,358,400 payload/
+999,956,480 tar bytes below1e9; all115 archived/linked scientific bodies
+remain verified.
+[Actual acceptance](../data/participation-access/20261114-louisiana-native-groups-01/website-acceptance.json).
+
 ## Historical native integer-format successor
 
 [Complete standalone analysis and reproduction](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-native-integer-review-20261114-01/complete-analysis.zip):

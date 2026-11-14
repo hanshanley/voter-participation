@@ -13,6 +13,42 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Louisiana native early-group delivery: retain the model-frame gap
+
+The new source-bound Louisiana reader preserves all1,040 native report cells,
+64 parish profiles plus the separate state parent,455 compositions and448
+parish/group bindings. Native early/absentee VOTES536,190 are not full-election
+ballots or eligible-population turnout. ABS87,602 remains native ABS, not mail
+returned. Sex residuals278/37 and21 literal zeros remain; unrelated marginals
+do not become joint demographic groups or individual transitions.
+
+The complete fact-only5,650,023-byte/39-member SDK is immutable445047387,
+SHA256 `627d791d`, with full authenticated and anonymous body verification,
+six portable behavior tests, four denial probes and15 byte-exact reproduced
+outputs. Catalog9e6d7625 activates only independent dataset5e58886f; existing
+counts900c, nativeb591, historya8, models, weights and House33/17 gates remain.
+Research7bffd4d and website0ef8ef35 preserve the accepted source values.
+
+The real built page passes1,792 count/share/color/accessibility-label checks
+at1440/390, physical parish selection, Enter/Space activation, lazy/scoped
+loading and six separate failure/retry/delayed-response cases. Canonical
+29 reader tests and six research tests pass. The older canonical renderer
+receives surgical hooks, not a wholesale replacement. Actual no-override
+production acceptance now passes the same1,792 checks and both full SDK hashes,
+with six separate live failure/retry/race cases. Native artifact14101237393
+has997,358,400 payload/999,956,480 tar bytes below1e9;33 served bodies,
+436 download pins,113 original entries and all115 actual scientific asset
+bodies verify. No private fixture is being substituted for that live proof.
+[Actual acceptance](data/participation-access/20261114-louisiana-native-groups-01/website-acceptance.json).
+
+These observations improve the available2026 administrative demographic
+evidence but do not qualify a population turnout denominator, precinct map,
+new modeled mean or a causal stay-home/switching/entry estimate. Continue the
+all-state compatible-frame, local-model and source-conflict work; full audit
+and then beautification remain pending.
+[Source scope](SOURCES.md#2026-louisiana-native-earlyabsentee-group-map-and-data)
+and [complete reproduction](docs/DATA.md#louisiana-native-earlyabsentee-group-compositions).
+
 ## Exact historical integer-format holds reconciled
 
 The native source-format successor qualifies179 previously held administrative
