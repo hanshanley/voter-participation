@@ -1,0 +1,146 @@
+{
+  "accepted_models_weights_house_endpoints_unchanged": true,
+  "activation_compiled_bodies_exact_without_descriptor": 53,
+  "activation_only_descriptor_complete_download_overlay": true,
+  "all_jurisdictions_retained": 51,
+  "canonical_extractor_tests": 10,
+  "catalog_commit": "bf3599bf39e572f651727ab9a2e71614c3d71c3e",
+  "compiler_reference_outputs_exact": 54,
+  "complete_query_inventory": {
+    "native_precinct_labels": 646,
+    "nonzero_cross_report_differences": 0,
+    "precinct_statistical_profiles": 646,
+    "source_pages": 5365,
+    "sovc_participation_rows_including_parent": 647,
+    "statistical_literal_zero_cells": 4819,
+    "statistical_numeric_cells": 7758,
+    "summary_statistical_profiles": 1
+  },
+  "complete_sdk": {
+    "bytes": 13649216,
+    "id": 746625612,
+    "immutable": true,
+    "name": "complete-analysis.zip",
+    "release_id": 445091351,
+    "sha256": "9f7a061ea0a401b662b5cc8508eb82a5a3568e4b85a1be87157b0106240a8cfc",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ky-jefferson-native-20261114-01/complete-analysis.zip"
+  },
+  "concurrent_automatic_snapshot_preserved": "ed6130a667940503d7abb4dc7d1c1e90ca7198cb",
+  "contract": "participation.ky_jefferson_native_delivery.v1",
+  "counts_version": "49aca906342ba2167fcf0ca6eda3c69ad85e6647d01478ec396b61e7134e1bc5",
+  "county": "Jefferson",
+  "county_and_reporting_unit_views_are_not_additive": true,
+  "cross_report_comparisons": 652,
+  "derived_precinct_blank_total_not_native_county_measure": 19,
+  "each_replay_python_api_guard_probes": 4,
+  "election_date": "2026-11-03",
+  "full_numerical_downloads_not_replaced_by_this_record": true,
+  "historical_version_unchanged": "a8e917a7758dd094af52d7d445dd84de326e47bc4caddfc2376de5d4780059fe",
+  "independent_review": {
+    "agent_id": "6fa9a194-5f47-4378-8205-cedc89e2df4b",
+    "critic_did_not_execute_an_additional_sdk_replay": true,
+    "critic_verified_two_actual_parent_extracted_replays": true,
+    "does_not_claim_production_browser_or_activation_approval": true,
+    "model": "gpt-5.6-sol",
+    "sdk": "GO",
+    "sdk_pin": {
+      "bytes": 13649216,
+      "sha256": "9f7a061ea0a401b662b5cc8508eb82a5a3568e4b85a1be87157b0106240a8cfc"
+    },
+    "source_data": "GO",
+    "source_port_docs": "GO",
+    "typed_runtime": "GO"
+  },
+  "louisiana_version_unchanged": "5e58886f44dd5968d3bc74a801898e86ab942c509200bf29392dac05727311c7",
+  "native_county_blank_measure": null,
+  "native_county_modes": {
+    "Election Day": 187470,
+    "Mail": 8942,
+    "Provisional": 4,
+    "TOTAL": 268257,
+    "Walk-in Early": 70532,
+    "Walk-in Excuse": 1309
+  },
+  "native_mail_cast_is_not_returned_envelopes": true,
+  "native_measure": "Ballots Cast - Total",
+  "native_version_unchanged": "b591e8463d144c6968ed15664e703ec530a8fcb4f8c4747f3e1499a27852d2d2",
+  "new_county_rows": 1,
+  "new_geographic_join_or_map": false,
+  "new_literal_reporting_units": 646,
+  "other_state_shards_exact": 50,
+  "printed_clocks": {
+    "precinct": {
+      "literal": "11/06/2026     9:52 AM",
+      "qualification": "native_printed_clock_timezone_not_supplied",
+      "timezone": null
+    },
+    "sovc": {
+      "literal": "11/05/2026 02:44PM",
+      "qualification": "native_printed_clock_timezone_not_supplied",
+      "timezone": null
+    },
+    "summary": {
+      "literal": "11/04/2026     3:07 PM",
+      "qualification": "native_printed_clock_timezone_not_supplied",
+      "timezone": null
+    }
+  },
+  "prior_KY_records_exact": 483,
+  "prior_provider_early_and_returned_observations": {
+    "in_person_early": 71861,
+    "mail_returned": 7304
+  },
+  "public_and_two_fresh_replays_each_tests": 28,
+  "public_replay_starts_from_complete_reviewed_facts_not_excluded_publisher_originals": true,
+  "registration_denominator": null,
+  "same_publisher_lineage_is_not_independent_replication_or_common_snapshot": true,
+  "scientific_source_commit": "3fe2cad17dedd24aa86edde4ad0d565215015a55",
+  "source_646_of_646_reporting_is_not_certification_or_finality": true,
+  "source_sources": {
+    "precinct": {
+      "pages": 4773,
+      "pdf_creation_metadata": "D:20261106095610-05'00'",
+      "pdf_creation_offset_is_not_printed_clock_timezone": true,
+      "pin": {
+        "bytes": 12645299,
+        "sha256": "6cd6bcb2b677e5ce72e765ae5b2688909eac19d922010e31119fc83b729d0fbe"
+      },
+      "retrieved_at_utc": "2026-11-14T06:08:19.180724+00:00",
+      "text_reader": "pypdf",
+      "url": "https://www.jeffersoncountyclerk.org/files/assets/clerk/v/1/elections/documents/26general_precinct2.pdf"
+    },
+    "sovc": {
+      "pages": 539,
+      "pdf_creation_metadata": "D:20261105144551-05'00'",
+      "pdf_creation_offset_is_not_printed_clock_timezone": true,
+      "pin": {
+        "bytes": 5000181,
+        "sha256": "48359d4a03dcb1ab4e856465ef75396cbf2737b2d8777d988ea8a29bf863b3e6"
+      },
+      "retrieved_at_utc": "2026-11-14T06:08:17.674454+00:00",
+      "text_reader": "pypdf",
+      "url": "https://www.jeffersoncountyclerk.org/files/assets/clerk/v/1/elections/documents/26general_sovc_2.pdf"
+    },
+    "summary": {
+      "pages": 53,
+      "pdf_creation_metadata": "D:20261104151241-05'00'",
+      "pdf_creation_offset_is_not_printed_clock_timezone": true,
+      "pin": {
+        "bytes": 171818,
+        "sha256": "98b65939bcf180b75fa6e7d80b8486c5124c10eff50246c19604f43797f04836"
+      },
+      "retrieved_at_utc": "2026-11-14T06:08:16.379269+00:00",
+      "text_reader": "pypdf",
+      "url": "https://strap.jeffersoncountyclerk.org/Gen26_Results.pdf"
+    }
+  },
+  "sovc_unofficial_literal_inferred": false,
+  "state_code": "KY",
+  "suffix_labels_preserved": 60,
+  "summary_and_precinct_status_literal": "UNOFFICIAL RESULTS",
+  "true_zero_total_units": 19,
+  "turnout_rate": null,
+  "unique_person_count_qualified": false,
+  "website_source": "0ef8ef35ce2dcc9298d4fbbd0d238b4bc560dbb7",
+  "whole_project_complete": false
+}

@@ -100,8 +100,15 @@ records, early/mail selections and the other50 state shards remain exact.
 The public replay starts from complete reviewed facts; publisher PDFs, HTML,
 images and templates are excluded. It does not re-extract those originals or
 reproduce the unchanged native geometry/model products.
-The shared compiler is unchanged; live catalog/browser acceptance is recorded
-separately before activation is treated as delivered.
+The shared compiler is unchanged. Source3fe2cad and atomic catalogbf3599bf
+deliver counts49aca906 without a new website build. Actual no-override production
+at1440/390 checks all1,292 unit/value combinations and two complete SDK downloads;
+separate early/mail provider counts71861/7304 remain unchanged. The actual33
+served bodies and436 prior download pins match the accepted native artifact.
+Ten canonical extractor tests pass, with deliberately old canonical HEADs and
+indexes preserved. The189-file concurrent automatic snapshoted6130a is retained.
+Final source/native/runtime/package acceptance records remain separate from
+population/model qualification; all other models and weights are unchanged.
 [Complete download and command](docs/DATA.md#jefferson-kentucky-native-ballots-and-reporting-labels).
 
 ## Exploratory AP/CHEP source predictor-block comparison

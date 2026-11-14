@@ -35,7 +35,10 @@ The package includes all7,758 statistical cells,647 SOVC participation rows,
 units and60 suffixed labels remain. County parent268,257 and646 reporting
 labels are alternative views. No rate, eligible-population denominator, new
 geometry, unique-person or individual switching/stay-home claim is introduced.
-SDK publication alone does not activate the live dataset.
+SDK publication alone did not activate the live dataset. Subsequent atomic
+catalogbf3599bf activates only counts49aca906 after independent review and the
+whole existing-page preview. Actual no-override production verifies every646
+unit at1440/390 and both full ZIP downloads; no new website build is needed.
 
 Publisher PDFs/HTML/page images/templates are excluded. Public reproduction
 starts from complete reviewed facts, not fresh extraction of excluded originals;

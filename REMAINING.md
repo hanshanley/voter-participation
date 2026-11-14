@@ -13,7 +13,7 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## Jefferson Kentucky: complete facts published, live acceptance pending
+## Jefferson Kentucky live: retain the local population/model-frame gap
 
 Independent source, typed-data/runtime and SDK reviews pass for the new native
 county parent268,257 plus646 literal reporting units. All60 suffix labels,
@@ -28,10 +28,21 @@ Critique repaired misleading legacy display metadata and added isolated
 qualification/mirror mutation tests before packaging. The original source
 statistics did not change.
 
-Actual existing whole-page preview, guarded data-catalog activation, no-override
-production acceptance and canonical persistence remain required. This is not a
-completed live integration or permission to allocate state demographic estimates
-to these reporting units. All other state shards and accepted models stay fixed.
+The existing whole-page preview and actual no-override production each pass
+1,292 native unit/value checks at1440/390 and both full SDK downloads. Every
+literal reporting label is accessible; the table transparently shows its first150
+rows and the complete download retains all. Early/mail controls preserve their
+separate provider71861/7304 observations, not the native all-method268257.
+Source3fe2cad is published and canonically persisted;10 canonical extractor
+tests pass. Atomic catalogbf3599bf activates only counts49aca906; all other
+catalog entries and the actual33 served site bodies/436 old download pins are
+unchanged. The concurrent189-file automatic snapshoted6130a was preserved.
+No new website artifact or build was required.
+
+These are source-defined ballot/reporting observations, not permission to
+allocate state demographic estimates locally. Compatible local populations,
+election-date geometry and joint information remain unresolved. All broader
+all-state/source/model work and the later full audit/beautification remain open.
 [Complete package](docs/DATA.md#jefferson-kentucky-native-ballots-and-reporting-labels).
 
 ## Source-predictor comparison complete; no unsupported model promotion
@@ -62,8 +73,8 @@ defaults remain unchanged, and no website build was needed.
 
 Continue the substantive new2026 source integration and compatible-frame/
 local-model gaps. Jefferson County Kentucky's newly declared native ballot/
-precinct reports now have independently qualified facts and an SDK, not yet a live
-integration or justification to allocate state demographic estimates locally.
+precinct reports now have qualified facts, a complete SDK and verified live
+integration, not justification to allocate state demographic estimates locally.
 Full audit and then beautification remain pending genuine remaining work.
 [Methods](docs/NORC_HOUSE_TRANSITIONS.md#source-predictor-blocks-exploratory-apchep-comparison)
 and [complete download](docs/DATA.md#exploratory-apchep-predictor-block-comparison).

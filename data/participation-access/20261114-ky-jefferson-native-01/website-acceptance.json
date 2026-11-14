@@ -1,0 +1,6855 @@
+{
+  "actual_full_sdk_downloads_at_both_widths": true,
+  "actual_production_images_reviewed": true,
+  "atomic_counts_publication": {
+    "all_other_catalog_entries_exact": true,
+    "candidate_version": "49aca906342ba2167fcf0ca6eda3c69ad85e6647d01478ec396b61e7134e1bc5",
+    "data_only_update_no_new_native_artifact": true,
+    "passed": true,
+    "publication": {
+      "anonymous_verified_files": 54,
+      "catalog_commit": "bf3599bf39e572f651727ab9a2e71614c3d71c3e",
+      "changed_ids": [
+        "participation-counts-2026"
+      ],
+      "datasets_changed": 1,
+      "intermediate_catalog_unchanged": true,
+      "single_catalog_commit_for_all_changes": true,
+      "staged_commit": "a784ca9d7eda3060d191261bc8bd9cff9bfc5a0a",
+      "status": "published",
+      "unchanged_dataset_entries_preserved": true,
+      "website_builds_started": 0,
+      "worktree_head_or_index_changed": false
+    },
+    "sdk_release": 445091351
+  },
+  "before_and_after_native_site_preservation": {
+    "accepted_artifact_reused_not_rebuilt_or_redownloaded": true,
+    "actual_native_artifact_id": 14101237393,
+    "actual_payload_bytes": 997358400,
+    "actual_tar_bytes": 999956480,
+    "artifact_zip_sha256": "f8b50bbffbd6a99ae224ccf52bf90dfdba7b11759721a61c837e930312ded920",
+    "assets": {
+      "_astro/ParticipationCPSUnifiedHistory.astro_astro_type_script_index_0_lang.BgXsRZsU.js": {
+        "bytes": 16075,
+        "sha256": "3e52d3a7327aa904f2d9ce0bd8644654552ccaad2f75a629a848e234ac8f2174"
+      },
+      "_astro/ParticipationReturnDrivers.astro_astro_type_script_index_0_lang.De78sNtk.js": {
+        "bytes": 81771,
+        "sha256": "ddd056d5021ea6b91107ef580fbfe0ac17158ad59cbb5b574b20dd7e0573447f"
+      },
+      "interactive-analysis/index.html": {
+        "bytes": 7608,
+        "sha256": "31d120a07a226a890ce98b4885db2542d2a320da16e0e21d1c3c9bc4d9e551a7"
+      },
+      "scripts/participation-ap-history.js": {
+        "bytes": 4818,
+        "sha256": "ebc440cb3ca4a67a5ae7b1e40bfdd692084a4553cf766fc378047899be40ca08"
+      },
+      "scripts/participation-calibrated-swing.js": {
+        "bytes": 6433,
+        "sha256": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115"
+      },
+      "scripts/participation-civic-state-demographics.js": {
+        "bytes": 4149,
+        "sha256": "66913f5636120c6de8264ce8756054bbbced194b1d5255ec524c70ebcf0da0e6"
+      },
+      "scripts/participation-counts.js": {
+        "bytes": 8473,
+        "sha256": "899931ab1ae182f23fecdf36be4118715a1030e72bf6a7c0eb6626655e8ce8de"
+      },
+      "scripts/participation-county-context.js": {
+        "bytes": 1798,
+        "sha256": "c23837f6178c121051fd5d1454f7d27690dc1002baaf7392cc4a983001865c05"
+      },
+      "scripts/participation-coverage.js": {
+        "bytes": 5579,
+        "sha256": "12fa282fd3603946fbe35de0527e53b4b5b83147517fb25dab5698ac245ef198"
+      },
+      "scripts/participation-cps-1996.js": {
+        "bytes": 5447,
+        "sha256": "a5d03985e995bbd975980c7fadd51021ebf8973e9416cb19430a3ccf4d264400"
+      },
+      "scripts/participation-cps-1998.js": {
+        "bytes": 4291,
+        "sha256": "3d526ac6f0e9666bc3c251e2ff5d030ac371a309fc6c2278087f6ccd2940589c"
+      },
+      "scripts/participation-cps-2002.js": {
+        "bytes": 4206,
+        "sha256": "b6e3e532ef46327b9c64f16baea5b7a65cc0a8178316b18be96755609c26e5f5"
+      },
+      "scripts/participation-dataset.js": {
+        "bytes": 3108,
+        "sha256": "934be9747c15849d499c36c944225869a9ab9637a3ded0535b4084659328c15f"
+      },
+      "scripts/participation-downloads.js": {
+        "bytes": 6746,
+        "sha256": "ffd308df80b1453fb642eab9fa2143473863a43a809c578717a8bbdb0c645203"
+      },
+      "scripts/participation-explorer.js": {
+        "bytes": 257100,
+        "sha256": "1f0eb40aef1f81706724a407b72fe69f94102adb9835a7f36be75ba9a3317c6b"
+      },
+      "scripts/participation-geography.js": {
+        "bytes": 51748,
+        "sha256": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3"
+      },
+      "scripts/participation-historical-native.js": {
+        "bytes": 17078,
+        "sha256": "2870fc1b003b2a54e35508f96e2f02584e9e57054a3dd4c2176f35dda08609ea"
+      },
+      "scripts/participation-house-sensitivity.js": {
+        "bytes": 6941,
+        "sha256": "7edf1f578e4953e2c54f917f759178483a8a4cf14f3301d9667daf006e01046f"
+      },
+      "scripts/participation-louisiana-native-groups.js": {
+        "bytes": 18189,
+        "sha256": "e1a4f5f7774e321f596e719b9e16262900bfa1394daa7a13650ca0c84df53c2f"
+      },
+      "scripts/participation-map-projection.js": {
+        "bytes": 2389,
+        "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+      },
+      "scripts/participation-native-bindings.js": {
+        "bytes": 8869,
+        "sha256": "550dbd2cc7fcde5a91df7186ecb3358d7cc299562af4286647df795e8282fb00"
+      },
+      "scripts/participation-norc-house.js": {
+        "bytes": 41344,
+        "sha256": "3329062a64af6a79970dd5792f2f358ed23668d151c8183451b514afb778dd20"
+      },
+      "scripts/participation-resident-context.js": {
+        "bytes": 13801,
+        "sha256": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260"
+      },
+      "scripts/participation-return-drivers.js": {
+        "bytes": 45900,
+        "sha256": "549d29bb1031fd6fb541096b4a29e269449d5f6b8f81044225343feeccc19291"
+      },
+      "scripts/participation-state-demographics.js": {
+        "bytes": 4906,
+        "sha256": "0f3bbab2b430894a6fa91b2b5752e9c2709e86b7015f103160850ec81360afdf"
+      },
+      "scripts/participation-swing.js": {
+        "bytes": 4686,
+        "sha256": "cdae0c2e5f77a2744a5117ff3e995375025041151d5ab1ce657024560739abf8"
+      },
+      "scripts/participation-transition-scenarios.js": {
+        "bytes": 7455,
+        "sha256": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e"
+      },
+      "voter-participation/app.js": {
+        "bytes": 28147,
+        "sha256": "ec3a37d51010c4581d01e7552747a3eb3029f4f58ab4ae97223aaa798723f9db"
+      },
+      "voter-participation/cps.js": {
+        "bytes": 2125,
+        "sha256": "385aa4a3b12c7e6bf6d816ba87737d66c425dffe1ba5624e26e2c0fc32e32f69"
+      },
+      "voter-participation/current.js": {
+        "bytes": 4691,
+        "sha256": "88561de5a79c5c4ef5cb11fe8bad4b0ecc3fa6b6e9d507c36b8f15689f437c27"
+      },
+      "voter-participation/index.html": {
+        "bytes": 6768995,
+        "sha256": "77524e008ad98bb1b24695bfb1c0fada1286c42d888a7bd08f2cb92f5b45dd5d"
+      },
+      "voter-participation/model.js": {
+        "bytes": 2437,
+        "sha256": "8a4a1b9b9e54e2fd9d5e435a0455321ca84bd9b19b26f8bd5951b76cb8b3bfee"
+      },
+      "voter-participation/nationwide.js": {
+        "bytes": 6438,
+        "sha256": "b49dc256be87b855ec45adc337cb5ccdb89c7b3e3bc23bbfe0b70c9c68952e9c"
+      }
+    },
+    "complete_download_pins_preserved": 436,
+    "current_served_bodies_verified": 33,
+    "download_manifest": {
+      "bytes": 189615,
+      "sha256": "4babec2f37a0a3a31693be85d976c4d40e14d60233e0677d84d9438ab4de7ade"
+    },
+    "passed": true,
+    "website_source": "0ef8ef35ce2dcc9298d4fbbd0d238b4bc560dbb7"
+  },
+  "canonical_extractor_tests": 10,
+  "canonical_scientific_source_files": {
+    "REMAINING.md": {
+      "bytes": 293764,
+      "sha256": "c972c14c4f90989af6fc5e02879108d3af5144c18d2addfd18d37eaf7a38abe5"
+    },
+    "SOURCES.md": {
+      "bytes": 501882,
+      "sha256": "5666f2fa6b3c108c5f2b787176d9f1b48d9dc973f3d9726ab6ecae54f1d17a1a"
+    },
+    "docs/DATA.md": {
+      "bytes": 140402,
+      "sha256": "68cc6b14f5643135cdf2981705f71d5954a0745415ea1001c01db2f77328f513"
+    },
+    "scripts/compile_jefferson_native.py": {
+      "bytes": 15581,
+      "sha256": "1c821cead1b2fa46640dd3565b64c0aa341926e8cfef4e6a26e81405d6d43afc"
+    },
+    "tests/test_jefferson_native_statistics.py": {
+      "bytes": 4386,
+      "sha256": "6461d0faf96bc4cb440f10d82882b0f608e8dda217fd652fd1a073dd71c3fddf"
+    }
+  },
+  "canonical_source_HEAD_index_and_unrelated_files_preserved": true,
+  "complete_sdk_release": {
+    "all_assets_authenticated_draft_and_anonymous_public_full_body_verified": true,
+    "assets": [
+      {
+        "bytes": 13649216,
+        "id": 746625612,
+        "name": "complete-analysis.zip",
+        "sha256": "9f7a061ea0a401b662b5cc8508eb82a5a3568e4b85a1be87157b0106240a8cfc",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-ky-jefferson-native-20261114-01/complete-analysis.zip"
+      }
+    ],
+    "id": 445091351,
+    "immutable": true,
+    "passed": true,
+    "source_or_data_activation_or_website_builds": 0,
+    "tag": "participation-ky-jefferson-native-20261114-01"
+  },
+  "contract": "participation.ky_jefferson_website_acceptance.v1",
+  "data_only_update_no_new_website_build_or_native_artifact": true,
+  "nonchanging_arrow_probe_disambiguated_from_genuine_typeahead_recovery_cases": true,
+  "no_override_actual_production": {
+    "actual_production_without_data_overrides": true,
+    "actual_whole_existing_page": true,
+    "candidate_catalog_and_shard_overrides": false,
+    "cases": [
+      {
+        "county": 268257,
+        "full_sdk_download": {
+          "bytes": 13649216,
+          "sha256": "9f7a061ea0a401b662b5cc8508eb82a5a3568e4b85a1be87157b0106240a8cfc"
+        },
+        "observed_unit_after_nonchanging_arrow_probe": "V120 MID",
+        "keyboard_selection_change_proven": false,
+        "native_units": [
+          {
+            "ballots": 367,
+            "displayed": "367",
+            "unit": "A107"
+          },
+          {
+            "ballots": 626,
+            "displayed": "626",
+            "unit": "A108"
+          },
+          {
+            "ballots": 520,
+            "displayed": "520",
+            "unit": "A111"
+          },
+          {
+            "ballots": 536,
+            "displayed": "536",
+            "unit": "A113"
+          },
+          {
+            "ballots": 439,
+            "displayed": "439",
+            "unit": "A114"
+          },
+          {
+            "ballots": 408,
+            "displayed": "408",
+            "unit": "A115"
+          },
+          {
+            "ballots": 240,
+            "displayed": "240",
+            "unit": "A118"
+          },
+          {
+            "ballots": 398,
+            "displayed": "398",
+            "unit": "A119"
+          },
+          {
+            "ballots": 446,
+            "displayed": "446",
+            "unit": "A121"
+          },
+          {
+            "ballots": 579,
+            "displayed": "579",
+            "unit": "A124"
+          },
+          {
+            "ballots": 497,
+            "displayed": "497",
+            "unit": "A125"
+          },
+          {
+            "ballots": 583,
+            "displayed": "583",
+            "unit": "A126"
+          },
+          {
+            "ballots": 359,
+            "displayed": "359",
+            "unit": "A127"
+          },
+          {
+            "ballots": 422,
+            "displayed": "422",
+            "unit": "A128"
+          },
+          {
+            "ballots": 562,
+            "displayed": "562",
+            "unit": "A129"
+          },
+          {
+            "ballots": 293,
+            "displayed": "293",
+            "unit": "A134"
+          },
+          {
+            "ballots": 230,
+            "displayed": "230",
+            "unit": "A136"
+          },
+          {
+            "ballots": 252,
+            "displayed": "252",
+            "unit": "A139"
+          },
+          {
+            "ballots": 120,
+            "displayed": "120",
+            "unit": "A142"
+          },
+          {
+            "ballots": 591,
+            "displayed": "591",
+            "unit": "A145"
+          },
+          {
+            "ballots": 353,
+            "displayed": "353",
+            "unit": "A146"
+          },
+          {
+            "ballots": 171,
+            "displayed": "171",
+            "unit": "A147"
+          },
+          {
+            "ballots": 323,
+            "displayed": "323",
+            "unit": "A148"
+          },
+          {
+            "ballots": 703,
+            "displayed": "703",
+            "unit": "A149"
+          },
+          {
+            "ballots": 575,
+            "displayed": "575",
+            "unit": "A150"
+          },
+          {
+            "ballots": 667,
+            "displayed": "667",
+            "unit": "A151"
+          },
+          {
+            "ballots": 565,
+            "displayed": "565",
+            "unit": "A152"
+          },
+          {
+            "ballots": 815,
+            "displayed": "815",
+            "unit": "A153"
+          },
+          {
+            "ballots": 789,
+            "displayed": "789",
+            "unit": "A154"
+          },
+          {
+            "ballots": 502,
+            "displayed": "502",
+            "unit": "B124"
+          },
+          {
+            "ballots": 505,
+            "displayed": "505",
+            "unit": "B134"
+          },
+          {
+            "ballots": 442,
+            "displayed": "442",
+            "unit": "B149"
+          },
+          {
+            "ballots": 72,
+            "displayed": "72",
+            "unit": "B153"
+          },
+          {
+            "ballots": 432,
+            "displayed": "432",
+            "unit": "B154"
+          },
+          {
+            "ballots": 816,
+            "displayed": "816",
+            "unit": "B158"
+          },
+          {
+            "ballots": 740,
+            "displayed": "740",
+            "unit": "B159"
+          },
+          {
+            "ballots": 390,
+            "displayed": "390",
+            "unit": "B160"
+          },
+          {
+            "ballots": 457,
+            "displayed": "457",
+            "unit": "B161"
+          },
+          {
+            "ballots": 519,
+            "displayed": "519",
+            "unit": "B162"
+          },
+          {
+            "ballots": 642,
+            "displayed": "642",
+            "unit": "B163"
+          },
+          {
+            "ballots": 413,
+            "displayed": "413",
+            "unit": "B166"
+          },
+          {
+            "ballots": 669,
+            "displayed": "669",
+            "unit": "B168"
+          },
+          {
+            "ballots": 513,
+            "displayed": "513",
+            "unit": "B169"
+          },
+          {
+            "ballots": 530,
+            "displayed": "530",
+            "unit": "B172"
+          },
+          {
+            "ballots": 575,
+            "displayed": "575",
+            "unit": "B173"
+          },
+          {
+            "ballots": 967,
+            "displayed": "967",
+            "unit": "B175"
+          },
+          {
+            "ballots": 1074,
+            "displayed": "1,074",
+            "unit": "B177"
+          },
+          {
+            "ballots": 619,
+            "displayed": "619",
+            "unit": "B183"
+          },
+          {
+            "ballots": 26,
+            "displayed": "26",
+            "unit": "B184"
+          },
+          {
+            "ballots": 889,
+            "displayed": "889",
+            "unit": "B187"
+          },
+          {
+            "ballots": 30,
+            "displayed": "30",
+            "unit": "B188"
+          },
+          {
+            "ballots": 740,
+            "displayed": "740",
+            "unit": "B189"
+          },
+          {
+            "ballots": 285,
+            "displayed": "285",
+            "unit": "B190"
+          },
+          {
+            "ballots": 692,
+            "displayed": "692",
+            "unit": "B191"
+          },
+          {
+            "ballots": 396,
+            "displayed": "396",
+            "unit": "B192"
+          },
+          {
+            "ballots": 465,
+            "displayed": "465",
+            "unit": "B193"
+          },
+          {
+            "ballots": 26,
+            "displayed": "26",
+            "unit": "B194"
+          },
+          {
+            "ballots": 32,
+            "displayed": "32",
+            "unit": "B195"
+          },
+          {
+            "ballots": 330,
+            "displayed": "330",
+            "unit": "B196 HCK"
+          },
+          {
+            "ballots": 895,
+            "displayed": "895",
+            "unit": "B197"
+          },
+          {
+            "ballots": 878,
+            "displayed": "878",
+            "unit": "B198"
+          },
+          {
+            "ballots": 757,
+            "displayed": "757",
+            "unit": "B199"
+          },
+          {
+            "ballots": 620,
+            "displayed": "620",
+            "unit": "B201"
+          },
+          {
+            "ballots": 575,
+            "displayed": "575",
+            "unit": "B202"
+          },
+          {
+            "ballots": 500,
+            "displayed": "500",
+            "unit": "C101"
+          },
+          {
+            "ballots": 299,
+            "displayed": "299",
+            "unit": "C102"
+          },
+          {
+            "ballots": 327,
+            "displayed": "327",
+            "unit": "C103"
+          },
+          {
+            "ballots": 98,
+            "displayed": "98",
+            "unit": "C104"
+          },
+          {
+            "ballots": 176,
+            "displayed": "176",
+            "unit": "C105"
+          },
+          {
+            "ballots": 642,
+            "displayed": "642",
+            "unit": "C106"
+          },
+          {
+            "ballots": 448,
+            "displayed": "448",
+            "unit": "C108"
+          },
+          {
+            "ballots": 176,
+            "displayed": "176",
+            "unit": "C109"
+          },
+          {
+            "ballots": 274,
+            "displayed": "274",
+            "unit": "C110"
+          },
+          {
+            "ballots": 554,
+            "displayed": "554",
+            "unit": "C111"
+          },
+          {
+            "ballots": 180,
+            "displayed": "180",
+            "unit": "C113"
+          },
+          {
+            "ballots": 629,
+            "displayed": "629",
+            "unit": "C115"
+          },
+          {
+            "ballots": 302,
+            "displayed": "302",
+            "unit": "C123"
+          },
+          {
+            "ballots": 636,
+            "displayed": "636",
+            "unit": "C124"
+          },
+          {
+            "ballots": 284,
+            "displayed": "284",
+            "unit": "C126"
+          },
+          {
+            "ballots": 121,
+            "displayed": "121",
+            "unit": "C128"
+          },
+          {
+            "ballots": 611,
+            "displayed": "611",
+            "unit": "C129"
+          },
+          {
+            "ballots": 55,
+            "displayed": "55",
+            "unit": "C130"
+          },
+          {
+            "ballots": 258,
+            "displayed": "258",
+            "unit": "C131"
+          },
+          {
+            "ballots": 461,
+            "displayed": "461",
+            "unit": "C134"
+          },
+          {
+            "ballots": 434,
+            "displayed": "434",
+            "unit": "C137"
+          },
+          {
+            "ballots": 348,
+            "displayed": "348",
+            "unit": "C138"
+          },
+          {
+            "ballots": 545,
+            "displayed": "545",
+            "unit": "C152"
+          },
+          {
+            "ballots": 657,
+            "displayed": "657",
+            "unit": "C153"
+          },
+          {
+            "ballots": 149,
+            "displayed": "149",
+            "unit": "C154"
+          },
+          {
+            "ballots": 415,
+            "displayed": "415",
+            "unit": "C155"
+          },
+          {
+            "ballots": 332,
+            "displayed": "332",
+            "unit": "C156"
+          },
+          {
+            "ballots": 103,
+            "displayed": "103",
+            "unit": "C157"
+          },
+          {
+            "ballots": 699,
+            "displayed": "699",
+            "unit": "D114"
+          },
+          {
+            "ballots": 493,
+            "displayed": "493",
+            "unit": "D116"
+          },
+          {
+            "ballots": 552,
+            "displayed": "552",
+            "unit": "D117 JEF"
+          },
+          {
+            "ballots": 745,
+            "displayed": "745",
+            "unit": "D120 JEF"
+          },
+          {
+            "ballots": 440,
+            "displayed": "440",
+            "unit": "D122 JEF"
+          },
+          {
+            "ballots": 818,
+            "displayed": "818",
+            "unit": "D132"
+          },
+          {
+            "ballots": 486,
+            "displayed": "486",
+            "unit": "D137 JEF"
+          },
+          {
+            "ballots": 768,
+            "displayed": "768",
+            "unit": "D139"
+          },
+          {
+            "ballots": 501,
+            "displayed": "501",
+            "unit": "D141 JEF"
+          },
+          {
+            "ballots": 442,
+            "displayed": "442",
+            "unit": "D142 JEF"
+          },
+          {
+            "ballots": 432,
+            "displayed": "432",
+            "unit": "D146"
+          },
+          {
+            "ballots": 77,
+            "displayed": "77",
+            "unit": "D147 JEF"
+          },
+          {
+            "ballots": 333,
+            "displayed": "333",
+            "unit": "D148"
+          },
+          {
+            "ballots": 331,
+            "displayed": "331",
+            "unit": "D149 JEF"
+          },
+          {
+            "ballots": 920,
+            "displayed": "920",
+            "unit": "D150"
+          },
+          {
+            "ballots": 10,
+            "displayed": "10",
+            "unit": "D151 SRP"
+          },
+          {
+            "ballots": 460,
+            "displayed": "460",
+            "unit": "D152"
+          },
+          {
+            "ballots": 20,
+            "displayed": "20",
+            "unit": "D153"
+          },
+          {
+            "ballots": 521,
+            "displayed": "521",
+            "unit": "D154"
+          },
+          {
+            "ballots": 340,
+            "displayed": "340",
+            "unit": "D155 HUB"
+          },
+          {
+            "ballots": 740,
+            "displayed": "740",
+            "unit": "D156 HUB"
+          },
+          {
+            "ballots": 696,
+            "displayed": "696",
+            "unit": "D157 HUB"
+          },
+          {
+            "ballots": 719,
+            "displayed": "719",
+            "unit": "D158"
+          },
+          {
+            "ballots": 398,
+            "displayed": "398",
+            "unit": "D159 JEF"
+          },
+          {
+            "ballots": 480,
+            "displayed": "480",
+            "unit": "D160"
+          },
+          {
+            "ballots": 315,
+            "displayed": "315",
+            "unit": "D161 HUB"
+          },
+          {
+            "ballots": 251,
+            "displayed": "251",
+            "unit": "D163"
+          },
+          {
+            "ballots": 573,
+            "displayed": "573",
+            "unit": "D164"
+          },
+          {
+            "ballots": 586,
+            "displayed": "586",
+            "unit": "D165"
+          },
+          {
+            "ballots": 468,
+            "displayed": "468",
+            "unit": "D166 JEF"
+          },
+          {
+            "ballots": 539,
+            "displayed": "539",
+            "unit": "D167 JEF"
+          },
+          {
+            "ballots": 593,
+            "displayed": "593",
+            "unit": "D168"
+          },
+          {
+            "ballots": 747,
+            "displayed": "747",
+            "unit": "D169"
+          },
+          {
+            "ballots": 758,
+            "displayed": "758",
+            "unit": "D171"
+          },
+          {
+            "ballots": 533,
+            "displayed": "533",
+            "unit": "D172 DOH"
+          },
+          {
+            "ballots": 732,
+            "displayed": "732",
+            "unit": "D173"
+          },
+          {
+            "ballots": 368,
+            "displayed": "368",
+            "unit": "E139 STM"
+          },
+          {
+            "ballots": 228,
+            "displayed": "228",
+            "unit": "E141 BWV"
+          },
+          {
+            "ballots": 523,
+            "displayed": "523",
+            "unit": "E142"
+          },
+          {
+            "ballots": 340,
+            "displayed": "340",
+            "unit": "E143 STM"
+          },
+          {
+            "ballots": 569,
+            "displayed": "569",
+            "unit": "E144"
+          },
+          {
+            "ballots": 393,
+            "displayed": "393",
+            "unit": "E145 LYN"
+          },
+          {
+            "ballots": 572,
+            "displayed": "572",
+            "unit": "E154"
+          },
+          {
+            "ballots": 530,
+            "displayed": "530",
+            "unit": "E155"
+          },
+          {
+            "ballots": 181,
+            "displayed": "181",
+            "unit": "E157"
+          },
+          {
+            "ballots": 165,
+            "displayed": "165",
+            "unit": "E162"
+          },
+          {
+            "ballots": 446,
+            "displayed": "446",
+            "unit": "E171"
+          },
+          {
+            "ballots": 494,
+            "displayed": "494",
+            "unit": "E173"
+          },
+          {
+            "ballots": 361,
+            "displayed": "361",
+            "unit": "E175 GRD"
+          },
+          {
+            "ballots": 274,
+            "displayed": "274",
+            "unit": "E176"
+          },
+          {
+            "ballots": 675,
+            "displayed": "675",
+            "unit": "E181"
+          },
+          {
+            "ballots": 528,
+            "displayed": "528",
+            "unit": "E183"
+          },
+          {
+            "ballots": 169,
+            "displayed": "169",
+            "unit": "E185 STM"
+          },
+          {
+            "ballots": 831,
+            "displayed": "831",
+            "unit": "E188"
+          },
+          {
+            "ballots": 477,
+            "displayed": "477",
+            "unit": "E189"
+          },
+          {
+            "ballots": 889,
+            "displayed": "889",
+            "unit": "E190"
+          },
+          {
+            "ballots": 562,
+            "displayed": "562",
+            "unit": "E191"
+          },
+          {
+            "ballots": 767,
+            "displayed": "767",
+            "unit": "E192"
+          },
+          {
+            "ballots": 685,
+            "displayed": "685",
+            "unit": "E193"
+          },
+          {
+            "ballots": 872,
+            "displayed": "872",
+            "unit": "E194"
+          },
+          {
+            "ballots": 591,
+            "displayed": "591",
+            "unit": "E195"
+          },
+          {
+            "ballots": 495,
+            "displayed": "495",
+            "unit": "E196"
+          },
+          {
+            "ballots": 329,
+            "displayed": "329",
+            "unit": "E197"
+          },
+          {
+            "ballots": 489,
+            "displayed": "489",
+            "unit": "E198"
+          },
+          {
+            "ballots": 393,
+            "displayed": "393",
+            "unit": "E199"
+          },
+          {
+            "ballots": 641,
+            "displayed": "641",
+            "unit": "E201"
+          },
+          {
+            "ballots": 861,
+            "displayed": "861",
+            "unit": "E202"
+          },
+          {
+            "ballots": 856,
+            "displayed": "856",
+            "unit": "E203"
+          },
+          {
+            "ballots": 477,
+            "displayed": "477",
+            "unit": "E204"
+          },
+          {
+            "ballots": 822,
+            "displayed": "822",
+            "unit": "E205"
+          },
+          {
+            "ballots": 511,
+            "displayed": "511",
+            "unit": "E206"
+          },
+          {
+            "ballots": 551,
+            "displayed": "551",
+            "unit": "E207"
+          },
+          {
+            "ballots": 634,
+            "displayed": "634",
+            "unit": "F106"
+          },
+          {
+            "ballots": 863,
+            "displayed": "863",
+            "unit": "F145"
+          },
+          {
+            "ballots": 948,
+            "displayed": "948",
+            "unit": "F151"
+          },
+          {
+            "ballots": 888,
+            "displayed": "888",
+            "unit": "F152"
+          },
+          {
+            "ballots": 274,
+            "displayed": "274",
+            "unit": "F153"
+          },
+          {
+            "ballots": 450,
+            "displayed": "450",
+            "unit": "F154"
+          },
+          {
+            "ballots": 554,
+            "displayed": "554",
+            "unit": "F155"
+          },
+          {
+            "ballots": 615,
+            "displayed": "615",
+            "unit": "F158"
+          },
+          {
+            "ballots": 711,
+            "displayed": "711",
+            "unit": "F163"
+          },
+          {
+            "ballots": 649,
+            "displayed": "649",
+            "unit": "F164"
+          },
+          {
+            "ballots": 519,
+            "displayed": "519",
+            "unit": "F167"
+          },
+          {
+            "ballots": 290,
+            "displayed": "290",
+            "unit": "F169"
+          },
+          {
+            "ballots": 235,
+            "displayed": "235",
+            "unit": "F170 DOH"
+          },
+          {
+            "ballots": 604,
+            "displayed": "604",
+            "unit": "F171"
+          },
+          {
+            "ballots": 492,
+            "displayed": "492",
+            "unit": "F172"
+          },
+          {
+            "ballots": 392,
+            "displayed": "392",
+            "unit": "F176"
+          },
+          {
+            "ballots": 641,
+            "displayed": "641",
+            "unit": "F179 LYN"
+          },
+          {
+            "ballots": 866,
+            "displayed": "866",
+            "unit": "F180 LYN"
+          },
+          {
+            "ballots": 325,
+            "displayed": "325",
+            "unit": "F183"
+          },
+          {
+            "ballots": 730,
+            "displayed": "730",
+            "unit": "F184"
+          },
+          {
+            "ballots": 80,
+            "displayed": "80",
+            "unit": "F188 MID"
+          },
+          {
+            "ballots": 46,
+            "displayed": "46",
+            "unit": "F189 MID"
+          },
+          {
+            "ballots": 736,
+            "displayed": "736",
+            "unit": "F190"
+          },
+          {
+            "ballots": 2,
+            "displayed": "2",
+            "unit": "F191"
+          },
+          {
+            "ballots": 565,
+            "displayed": "565",
+            "unit": "F192 MID"
+          },
+          {
+            "ballots": 479,
+            "displayed": "479",
+            "unit": "G140"
+          },
+          {
+            "ballots": 511,
+            "displayed": "511",
+            "unit": "G141"
+          },
+          {
+            "ballots": 812,
+            "displayed": "812",
+            "unit": "G143"
+          },
+          {
+            "ballots": 624,
+            "displayed": "624",
+            "unit": "G144"
+          },
+          {
+            "ballots": 1025,
+            "displayed": "1,025",
+            "unit": "G145"
+          },
+          {
+            "ballots": 733,
+            "displayed": "733",
+            "unit": "G146"
+          },
+          {
+            "ballots": 274,
+            "displayed": "274",
+            "unit": "G150"
+          },
+          {
+            "ballots": 737,
+            "displayed": "737",
+            "unit": "G156"
+          },
+          {
+            "ballots": 811,
+            "displayed": "811",
+            "unit": "G157"
+          },
+          {
+            "ballots": 318,
+            "displayed": "318",
+            "unit": "G158"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "G159"
+          },
+          {
+            "ballots": 810,
+            "displayed": "810",
+            "unit": "G160"
+          },
+          {
+            "ballots": 453,
+            "displayed": "453",
+            "unit": "G161 SNG"
+          },
+          {
+            "ballots": 352,
+            "displayed": "352",
+            "unit": "G163 STM"
+          },
+          {
+            "ballots": 407,
+            "displayed": "407",
+            "unit": "G164 STM"
+          },
+          {
+            "ballots": 324,
+            "displayed": "324",
+            "unit": "G165 STM"
+          },
+          {
+            "ballots": 243,
+            "displayed": "243",
+            "unit": "G169"
+          },
+          {
+            "ballots": 262,
+            "displayed": "262",
+            "unit": "G170"
+          },
+          {
+            "ballots": 467,
+            "displayed": "467",
+            "unit": "G171"
+          },
+          {
+            "ballots": 217,
+            "displayed": "217",
+            "unit": "G172"
+          },
+          {
+            "ballots": 446,
+            "displayed": "446",
+            "unit": "G173 STM"
+          },
+          {
+            "ballots": 657,
+            "displayed": "657",
+            "unit": "G174"
+          },
+          {
+            "ballots": 887,
+            "displayed": "887",
+            "unit": "G175"
+          },
+          {
+            "ballots": 20,
+            "displayed": "20",
+            "unit": "G176"
+          },
+          {
+            "ballots": 602,
+            "displayed": "602",
+            "unit": "G177 STM"
+          },
+          {
+            "ballots": 452,
+            "displayed": "452",
+            "unit": "G178"
+          },
+          {
+            "ballots": 231,
+            "displayed": "231",
+            "unit": "G179"
+          },
+          {
+            "ballots": 454,
+            "displayed": "454",
+            "unit": "G180"
+          },
+          {
+            "ballots": 161,
+            "displayed": "161",
+            "unit": "G181 DRH"
+          },
+          {
+            "ballots": 544,
+            "displayed": "544",
+            "unit": "G182"
+          },
+          {
+            "ballots": 605,
+            "displayed": "605",
+            "unit": "G183"
+          },
+          {
+            "ballots": 320,
+            "displayed": "320",
+            "unit": "G184"
+          },
+          {
+            "ballots": 728,
+            "displayed": "728",
+            "unit": "G185"
+          },
+          {
+            "ballots": 424,
+            "displayed": "424",
+            "unit": "G186"
+          },
+          {
+            "ballots": 439,
+            "displayed": "439",
+            "unit": "G187"
+          },
+          {
+            "ballots": 438,
+            "displayed": "438",
+            "unit": "G188"
+          },
+          {
+            "ballots": 602,
+            "displayed": "602",
+            "unit": "G189"
+          },
+          {
+            "ballots": 384,
+            "displayed": "384",
+            "unit": "G190"
+          },
+          {
+            "ballots": 864,
+            "displayed": "864",
+            "unit": "G191"
+          },
+          {
+            "ballots": 405,
+            "displayed": "405",
+            "unit": "G192"
+          },
+          {
+            "ballots": 728,
+            "displayed": "728",
+            "unit": "G193"
+          },
+          {
+            "ballots": 820,
+            "displayed": "820",
+            "unit": "G194 WDH"
+          },
+          {
+            "ballots": 414,
+            "displayed": "414",
+            "unit": "G195 STM"
+          },
+          {
+            "ballots": 667,
+            "displayed": "667",
+            "unit": "G196"
+          },
+          {
+            "ballots": 785,
+            "displayed": "785",
+            "unit": "H117 APK"
+          },
+          {
+            "ballots": 287,
+            "displayed": "287",
+            "unit": "H120"
+          },
+          {
+            "ballots": 269,
+            "displayed": "269",
+            "unit": "H121"
+          },
+          {
+            "ballots": 186,
+            "displayed": "186",
+            "unit": "H123"
+          },
+          {
+            "ballots": 82,
+            "displayed": "82",
+            "unit": "H124"
+          },
+          {
+            "ballots": 209,
+            "displayed": "209",
+            "unit": "H125"
+          },
+          {
+            "ballots": 301,
+            "displayed": "301",
+            "unit": "H126 LNV"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "H130"
+          },
+          {
+            "ballots": 589,
+            "displayed": "589",
+            "unit": "H138"
+          },
+          {
+            "ballots": 461,
+            "displayed": "461",
+            "unit": "H144"
+          },
+          {
+            "ballots": 417,
+            "displayed": "417",
+            "unit": "H147"
+          },
+          {
+            "ballots": 103,
+            "displayed": "103",
+            "unit": "H154"
+          },
+          {
+            "ballots": 468,
+            "displayed": "468",
+            "unit": "H155"
+          },
+          {
+            "ballots": 104,
+            "displayed": "104",
+            "unit": "H163"
+          },
+          {
+            "ballots": 470,
+            "displayed": "470",
+            "unit": "H164"
+          },
+          {
+            "ballots": 538,
+            "displayed": "538",
+            "unit": "H165"
+          },
+          {
+            "ballots": 316,
+            "displayed": "316",
+            "unit": "H166"
+          },
+          {
+            "ballots": 277,
+            "displayed": "277",
+            "unit": "H167"
+          },
+          {
+            "ballots": 587,
+            "displayed": "587",
+            "unit": "H168"
+          },
+          {
+            "ballots": 284,
+            "displayed": "284",
+            "unit": "H169"
+          },
+          {
+            "ballots": 611,
+            "displayed": "611",
+            "unit": "H171"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "H173"
+          },
+          {
+            "ballots": 31,
+            "displayed": "31",
+            "unit": "H175"
+          },
+          {
+            "ballots": 1,
+            "displayed": "1",
+            "unit": "H176"
+          },
+          {
+            "ballots": 168,
+            "displayed": "168",
+            "unit": "H177"
+          },
+          {
+            "ballots": 105,
+            "displayed": "105",
+            "unit": "H178"
+          },
+          {
+            "ballots": 551,
+            "displayed": "551",
+            "unit": "H180"
+          },
+          {
+            "ballots": 297,
+            "displayed": "297",
+            "unit": "H181"
+          },
+          {
+            "ballots": 11,
+            "displayed": "11",
+            "unit": "H182"
+          },
+          {
+            "ballots": 550,
+            "displayed": "550",
+            "unit": "H183"
+          },
+          {
+            "ballots": 541,
+            "displayed": "541",
+            "unit": "H184"
+          },
+          {
+            "ballots": 143,
+            "displayed": "143",
+            "unit": "H185"
+          },
+          {
+            "ballots": 390,
+            "displayed": "390",
+            "unit": "I126"
+          },
+          {
+            "ballots": 221,
+            "displayed": "221",
+            "unit": "I130"
+          },
+          {
+            "ballots": 661,
+            "displayed": "661",
+            "unit": "I133"
+          },
+          {
+            "ballots": 271,
+            "displayed": "271",
+            "unit": "I135"
+          },
+          {
+            "ballots": 590,
+            "displayed": "590",
+            "unit": "I141"
+          },
+          {
+            "ballots": 52,
+            "displayed": "52",
+            "unit": "I144"
+          },
+          {
+            "ballots": 120,
+            "displayed": "120",
+            "unit": "I145"
+          },
+          {
+            "ballots": 509,
+            "displayed": "509",
+            "unit": "I146"
+          },
+          {
+            "ballots": 544,
+            "displayed": "544",
+            "unit": "I151"
+          },
+          {
+            "ballots": 622,
+            "displayed": "622",
+            "unit": "I152"
+          },
+          {
+            "ballots": 447,
+            "displayed": "447",
+            "unit": "I153"
+          },
+          {
+            "ballots": 852,
+            "displayed": "852",
+            "unit": "I154"
+          },
+          {
+            "ballots": 289,
+            "displayed": "289",
+            "unit": "I157"
+          },
+          {
+            "ballots": 607,
+            "displayed": "607",
+            "unit": "I158"
+          },
+          {
+            "ballots": 88,
+            "displayed": "88",
+            "unit": "I159"
+          },
+          {
+            "ballots": 413,
+            "displayed": "413",
+            "unit": "I160"
+          },
+          {
+            "ballots": 37,
+            "displayed": "37",
+            "unit": "I161"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "I162"
+          },
+          {
+            "ballots": 128,
+            "displayed": "128",
+            "unit": "I163"
+          },
+          {
+            "ballots": 640,
+            "displayed": "640",
+            "unit": "I164"
+          },
+          {
+            "ballots": 288,
+            "displayed": "288",
+            "unit": "I165"
+          },
+          {
+            "ballots": 46,
+            "displayed": "46",
+            "unit": "I166"
+          },
+          {
+            "ballots": 178,
+            "displayed": "178",
+            "unit": "I167"
+          },
+          {
+            "ballots": 250,
+            "displayed": "250",
+            "unit": "I168"
+          },
+          {
+            "ballots": 885,
+            "displayed": "885",
+            "unit": "I169"
+          },
+          {
+            "ballots": 242,
+            "displayed": "242",
+            "unit": "I170"
+          },
+          {
+            "ballots": 586,
+            "displayed": "586",
+            "unit": "I171"
+          },
+          {
+            "ballots": 516,
+            "displayed": "516",
+            "unit": "I172"
+          },
+          {
+            "ballots": 275,
+            "displayed": "275",
+            "unit": "I173"
+          },
+          {
+            "ballots": 285,
+            "displayed": "285",
+            "unit": "I174"
+          },
+          {
+            "ballots": 341,
+            "displayed": "341",
+            "unit": "I175"
+          },
+          {
+            "ballots": 321,
+            "displayed": "321",
+            "unit": "J105"
+          },
+          {
+            "ballots": 625,
+            "displayed": "625",
+            "unit": "J108"
+          },
+          {
+            "ballots": 345,
+            "displayed": "345",
+            "unit": "J111"
+          },
+          {
+            "ballots": 572,
+            "displayed": "572",
+            "unit": "J113"
+          },
+          {
+            "ballots": 217,
+            "displayed": "217",
+            "unit": "J117"
+          },
+          {
+            "ballots": 401,
+            "displayed": "401",
+            "unit": "J119"
+          },
+          {
+            "ballots": 471,
+            "displayed": "471",
+            "unit": "J120"
+          },
+          {
+            "ballots": 25,
+            "displayed": "25",
+            "unit": "J122"
+          },
+          {
+            "ballots": 229,
+            "displayed": "229",
+            "unit": "J123"
+          },
+          {
+            "ballots": 557,
+            "displayed": "557",
+            "unit": "J135"
+          },
+          {
+            "ballots": 417,
+            "displayed": "417",
+            "unit": "J137"
+          },
+          {
+            "ballots": 128,
+            "displayed": "128",
+            "unit": "J138"
+          },
+          {
+            "ballots": 118,
+            "displayed": "118",
+            "unit": "J140"
+          },
+          {
+            "ballots": 524,
+            "displayed": "524",
+            "unit": "J145"
+          },
+          {
+            "ballots": 632,
+            "displayed": "632",
+            "unit": "J150"
+          },
+          {
+            "ballots": 331,
+            "displayed": "331",
+            "unit": "J152"
+          },
+          {
+            "ballots": 128,
+            "displayed": "128",
+            "unit": "J153"
+          },
+          {
+            "ballots": 601,
+            "displayed": "601",
+            "unit": "J156"
+          },
+          {
+            "ballots": 551,
+            "displayed": "551",
+            "unit": "J157"
+          },
+          {
+            "ballots": 373,
+            "displayed": "373",
+            "unit": "J158"
+          },
+          {
+            "ballots": 624,
+            "displayed": "624",
+            "unit": "J159"
+          },
+          {
+            "ballots": 253,
+            "displayed": "253",
+            "unit": "J160"
+          },
+          {
+            "ballots": 209,
+            "displayed": "209",
+            "unit": "J162"
+          },
+          {
+            "ballots": 88,
+            "displayed": "88",
+            "unit": "J163"
+          },
+          {
+            "ballots": 39,
+            "displayed": "39",
+            "unit": "J164"
+          },
+          {
+            "ballots": 544,
+            "displayed": "544",
+            "unit": "J165"
+          },
+          {
+            "ballots": 221,
+            "displayed": "221",
+            "unit": "J166"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "J168"
+          },
+          {
+            "ballots": 592,
+            "displayed": "592",
+            "unit": "J169"
+          },
+          {
+            "ballots": 500,
+            "displayed": "500",
+            "unit": "J170"
+          },
+          {
+            "ballots": 725,
+            "displayed": "725",
+            "unit": "J171"
+          },
+          {
+            "ballots": 170,
+            "displayed": "170",
+            "unit": "J172"
+          },
+          {
+            "ballots": 173,
+            "displayed": "173",
+            "unit": "J173"
+          },
+          {
+            "ballots": 628,
+            "displayed": "628",
+            "unit": "J174"
+          },
+          {
+            "ballots": 141,
+            "displayed": "141",
+            "unit": "K110"
+          },
+          {
+            "ballots": 163,
+            "displayed": "163",
+            "unit": "K111"
+          },
+          {
+            "ballots": 134,
+            "displayed": "134",
+            "unit": "K112"
+          },
+          {
+            "ballots": 171,
+            "displayed": "171",
+            "unit": "K113"
+          },
+          {
+            "ballots": 398,
+            "displayed": "398",
+            "unit": "K114"
+          },
+          {
+            "ballots": 40,
+            "displayed": "40",
+            "unit": "K116"
+          },
+          {
+            "ballots": 188,
+            "displayed": "188",
+            "unit": "K117"
+          },
+          {
+            "ballots": 299,
+            "displayed": "299",
+            "unit": "K118"
+          },
+          {
+            "ballots": 411,
+            "displayed": "411",
+            "unit": "K119"
+          },
+          {
+            "ballots": 484,
+            "displayed": "484",
+            "unit": "K122 SHI"
+          },
+          {
+            "ballots": 534,
+            "displayed": "534",
+            "unit": "K123 SHI"
+          },
+          {
+            "ballots": 128,
+            "displayed": "128",
+            "unit": "K125"
+          },
+          {
+            "ballots": 322,
+            "displayed": "322",
+            "unit": "K131 SHI"
+          },
+          {
+            "ballots": 363,
+            "displayed": "363",
+            "unit": "K134"
+          },
+          {
+            "ballots": 158,
+            "displayed": "158",
+            "unit": "K135"
+          },
+          {
+            "ballots": 65,
+            "displayed": "65",
+            "unit": "K137"
+          },
+          {
+            "ballots": 59,
+            "displayed": "59",
+            "unit": "K140"
+          },
+          {
+            "ballots": 104,
+            "displayed": "104",
+            "unit": "K141"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K142"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K143"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K150"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K151"
+          },
+          {
+            "ballots": 4,
+            "displayed": "4",
+            "unit": "K152"
+          },
+          {
+            "ballots": 323,
+            "displayed": "323",
+            "unit": "K153"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K154"
+          },
+          {
+            "ballots": 436,
+            "displayed": "436",
+            "unit": "K155"
+          },
+          {
+            "ballots": 208,
+            "displayed": "208",
+            "unit": "K156"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K157"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K158"
+          },
+          {
+            "ballots": 152,
+            "displayed": "152",
+            "unit": "K159"
+          },
+          {
+            "ballots": 192,
+            "displayed": "192",
+            "unit": "K160"
+          },
+          {
+            "ballots": 104,
+            "displayed": "104",
+            "unit": "K161"
+          },
+          {
+            "ballots": 11,
+            "displayed": "11",
+            "unit": "K162"
+          },
+          {
+            "ballots": 47,
+            "displayed": "47",
+            "unit": "K163"
+          },
+          {
+            "ballots": 7,
+            "displayed": "7",
+            "unit": "K164"
+          },
+          {
+            "ballots": 135,
+            "displayed": "135",
+            "unit": "K165"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K166"
+          },
+          {
+            "ballots": 59,
+            "displayed": "59",
+            "unit": "K167"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K168"
+          },
+          {
+            "ballots": 169,
+            "displayed": "169",
+            "unit": "K169"
+          },
+          {
+            "ballots": 418,
+            "displayed": "418",
+            "unit": "K170"
+          },
+          {
+            "ballots": 305,
+            "displayed": "305",
+            "unit": "K171"
+          },
+          {
+            "ballots": 379,
+            "displayed": "379",
+            "unit": "K172"
+          },
+          {
+            "ballots": 209,
+            "displayed": "209",
+            "unit": "K173"
+          },
+          {
+            "ballots": 458,
+            "displayed": "458",
+            "unit": "K174"
+          },
+          {
+            "ballots": 298,
+            "displayed": "298",
+            "unit": "K175"
+          },
+          {
+            "ballots": 118,
+            "displayed": "118",
+            "unit": "K176"
+          },
+          {
+            "ballots": 384,
+            "displayed": "384",
+            "unit": "K177"
+          },
+          {
+            "ballots": 240,
+            "displayed": "240",
+            "unit": "K178"
+          },
+          {
+            "ballots": 362,
+            "displayed": "362",
+            "unit": "K179"
+          },
+          {
+            "ballots": 262,
+            "displayed": "262",
+            "unit": "K180 SHI"
+          },
+          {
+            "ballots": 412,
+            "displayed": "412",
+            "unit": "L165"
+          },
+          {
+            "ballots": 310,
+            "displayed": "310",
+            "unit": "L166"
+          },
+          {
+            "ballots": 459,
+            "displayed": "459",
+            "unit": "L167"
+          },
+          {
+            "ballots": 592,
+            "displayed": "592",
+            "unit": "L168"
+          },
+          {
+            "ballots": 437,
+            "displayed": "437",
+            "unit": "L169"
+          },
+          {
+            "ballots": 368,
+            "displayed": "368",
+            "unit": "L170"
+          },
+          {
+            "ballots": 423,
+            "displayed": "423",
+            "unit": "L171"
+          },
+          {
+            "ballots": 353,
+            "displayed": "353",
+            "unit": "L172"
+          },
+          {
+            "ballots": 703,
+            "displayed": "703",
+            "unit": "L173"
+          },
+          {
+            "ballots": 579,
+            "displayed": "579",
+            "unit": "L174"
+          },
+          {
+            "ballots": 935,
+            "displayed": "935",
+            "unit": "L175"
+          },
+          {
+            "ballots": 792,
+            "displayed": "792",
+            "unit": "L176"
+          },
+          {
+            "ballots": 905,
+            "displayed": "905",
+            "unit": "L177"
+          },
+          {
+            "ballots": 432,
+            "displayed": "432",
+            "unit": "L178"
+          },
+          {
+            "ballots": 507,
+            "displayed": "507",
+            "unit": "L179"
+          },
+          {
+            "ballots": 506,
+            "displayed": "506",
+            "unit": "L180"
+          },
+          {
+            "ballots": 421,
+            "displayed": "421",
+            "unit": "L181"
+          },
+          {
+            "ballots": 229,
+            "displayed": "229",
+            "unit": "L182 SMM"
+          },
+          {
+            "ballots": 797,
+            "displayed": "797",
+            "unit": "L183"
+          },
+          {
+            "ballots": 459,
+            "displayed": "459",
+            "unit": "L184"
+          },
+          {
+            "ballots": 77,
+            "displayed": "77",
+            "unit": "L185"
+          },
+          {
+            "ballots": 650,
+            "displayed": "650",
+            "unit": "L186"
+          },
+          {
+            "ballots": 317,
+            "displayed": "317",
+            "unit": "L187"
+          },
+          {
+            "ballots": 352,
+            "displayed": "352",
+            "unit": "L188 WEL"
+          },
+          {
+            "ballots": 410,
+            "displayed": "410",
+            "unit": "L189"
+          },
+          {
+            "ballots": 241,
+            "displayed": "241",
+            "unit": "L192"
+          },
+          {
+            "ballots": 432,
+            "displayed": "432",
+            "unit": "L193"
+          },
+          {
+            "ballots": 197,
+            "displayed": "197",
+            "unit": "L194"
+          },
+          {
+            "ballots": 323,
+            "displayed": "323",
+            "unit": "L195"
+          },
+          {
+            "ballots": 717,
+            "displayed": "717",
+            "unit": "L196"
+          },
+          {
+            "ballots": 553,
+            "displayed": "553",
+            "unit": "L197"
+          },
+          {
+            "ballots": 330,
+            "displayed": "330",
+            "unit": "L198"
+          },
+          {
+            "ballots": 416,
+            "displayed": "416",
+            "unit": "L199"
+          },
+          {
+            "ballots": 478,
+            "displayed": "478",
+            "unit": "L201"
+          },
+          {
+            "ballots": 456,
+            "displayed": "456",
+            "unit": "L203"
+          },
+          {
+            "ballots": 845,
+            "displayed": "845",
+            "unit": "L204"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "L205"
+          },
+          {
+            "ballots": 450,
+            "displayed": "450",
+            "unit": "L206"
+          },
+          {
+            "ballots": 19,
+            "displayed": "19",
+            "unit": "L207"
+          },
+          {
+            "ballots": 237,
+            "displayed": "237",
+            "unit": "L208"
+          },
+          {
+            "ballots": 412,
+            "displayed": "412",
+            "unit": "L209"
+          },
+          {
+            "ballots": 547,
+            "displayed": "547",
+            "unit": "L210"
+          },
+          {
+            "ballots": 320,
+            "displayed": "320",
+            "unit": "L211"
+          },
+          {
+            "ballots": 372,
+            "displayed": "372",
+            "unit": "L212"
+          },
+          {
+            "ballots": 326,
+            "displayed": "326",
+            "unit": "L213"
+          },
+          {
+            "ballots": 105,
+            "displayed": "105",
+            "unit": "L215"
+          },
+          {
+            "ballots": 219,
+            "displayed": "219",
+            "unit": "L216"
+          },
+          {
+            "ballots": 312,
+            "displayed": "312",
+            "unit": "L217"
+          },
+          {
+            "ballots": 198,
+            "displayed": "198",
+            "unit": "L218"
+          },
+          {
+            "ballots": 188,
+            "displayed": "188",
+            "unit": "L219"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "L220"
+          },
+          {
+            "ballots": 124,
+            "displayed": "124",
+            "unit": "M107"
+          },
+          {
+            "ballots": 248,
+            "displayed": "248",
+            "unit": "M110"
+          },
+          {
+            "ballots": 465,
+            "displayed": "465",
+            "unit": "M121"
+          },
+          {
+            "ballots": 616,
+            "displayed": "616",
+            "unit": "M123"
+          },
+          {
+            "ballots": 549,
+            "displayed": "549",
+            "unit": "M124"
+          },
+          {
+            "ballots": 264,
+            "displayed": "264",
+            "unit": "M129"
+          },
+          {
+            "ballots": 142,
+            "displayed": "142",
+            "unit": "M131"
+          },
+          {
+            "ballots": 271,
+            "displayed": "271",
+            "unit": "M159"
+          },
+          {
+            "ballots": 110,
+            "displayed": "110",
+            "unit": "M168"
+          },
+          {
+            "ballots": 273,
+            "displayed": "273",
+            "unit": "M176"
+          },
+          {
+            "ballots": 617,
+            "displayed": "617",
+            "unit": "M177"
+          },
+          {
+            "ballots": 509,
+            "displayed": "509",
+            "unit": "M178"
+          },
+          {
+            "ballots": 439,
+            "displayed": "439",
+            "unit": "M179"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "M180"
+          },
+          {
+            "ballots": 149,
+            "displayed": "149",
+            "unit": "M181"
+          },
+          {
+            "ballots": 360,
+            "displayed": "360",
+            "unit": "M182"
+          },
+          {
+            "ballots": 38,
+            "displayed": "38",
+            "unit": "M183"
+          },
+          {
+            "ballots": 460,
+            "displayed": "460",
+            "unit": "M184"
+          },
+          {
+            "ballots": 151,
+            "displayed": "151",
+            "unit": "M185"
+          },
+          {
+            "ballots": 251,
+            "displayed": "251",
+            "unit": "M186"
+          },
+          {
+            "ballots": 151,
+            "displayed": "151",
+            "unit": "M188"
+          },
+          {
+            "ballots": 261,
+            "displayed": "261",
+            "unit": "M189"
+          },
+          {
+            "ballots": 356,
+            "displayed": "356",
+            "unit": "M191"
+          },
+          {
+            "ballots": 396,
+            "displayed": "396",
+            "unit": "M192"
+          },
+          {
+            "ballots": 252,
+            "displayed": "252",
+            "unit": "M193"
+          },
+          {
+            "ballots": 187,
+            "displayed": "187",
+            "unit": "M194"
+          },
+          {
+            "ballots": 281,
+            "displayed": "281",
+            "unit": "M195"
+          },
+          {
+            "ballots": 372,
+            "displayed": "372",
+            "unit": "M196"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "M197"
+          },
+          {
+            "ballots": 485,
+            "displayed": "485",
+            "unit": "M198"
+          },
+          {
+            "ballots": 311,
+            "displayed": "311",
+            "unit": "M199"
+          },
+          {
+            "ballots": 308,
+            "displayed": "308",
+            "unit": "M201"
+          },
+          {
+            "ballots": 240,
+            "displayed": "240",
+            "unit": "M202"
+          },
+          {
+            "ballots": 409,
+            "displayed": "409",
+            "unit": "M203"
+          },
+          {
+            "ballots": 495,
+            "displayed": "495",
+            "unit": "M210"
+          },
+          {
+            "ballots": 332,
+            "displayed": "332",
+            "unit": "M211"
+          },
+          {
+            "ballots": 152,
+            "displayed": "152",
+            "unit": "M212"
+          },
+          {
+            "ballots": 173,
+            "displayed": "173",
+            "unit": "M213"
+          },
+          {
+            "ballots": 452,
+            "displayed": "452",
+            "unit": "N101"
+          },
+          {
+            "ballots": 368,
+            "displayed": "368",
+            "unit": "N102"
+          },
+          {
+            "ballots": 533,
+            "displayed": "533",
+            "unit": "N103"
+          },
+          {
+            "ballots": 476,
+            "displayed": "476",
+            "unit": "N104"
+          },
+          {
+            "ballots": 408,
+            "displayed": "408",
+            "unit": "N105"
+          },
+          {
+            "ballots": 405,
+            "displayed": "405",
+            "unit": "N106"
+          },
+          {
+            "ballots": 452,
+            "displayed": "452",
+            "unit": "N107"
+          },
+          {
+            "ballots": 226,
+            "displayed": "226",
+            "unit": "N115"
+          },
+          {
+            "ballots": 305,
+            "displayed": "305",
+            "unit": "N117"
+          },
+          {
+            "ballots": 204,
+            "displayed": "204",
+            "unit": "N128"
+          },
+          {
+            "ballots": 373,
+            "displayed": "373",
+            "unit": "N130"
+          },
+          {
+            "ballots": 598,
+            "displayed": "598",
+            "unit": "N134"
+          },
+          {
+            "ballots": 110,
+            "displayed": "110",
+            "unit": "N135"
+          },
+          {
+            "ballots": 62,
+            "displayed": "62",
+            "unit": "N136"
+          },
+          {
+            "ballots": 185,
+            "displayed": "185",
+            "unit": "N145"
+          },
+          {
+            "ballots": 51,
+            "displayed": "51",
+            "unit": "N147"
+          },
+          {
+            "ballots": 177,
+            "displayed": "177",
+            "unit": "N148"
+          },
+          {
+            "ballots": 10,
+            "displayed": "10",
+            "unit": "N151"
+          },
+          {
+            "ballots": 165,
+            "displayed": "165",
+            "unit": "N152"
+          },
+          {
+            "ballots": 99,
+            "displayed": "99",
+            "unit": "N153"
+          },
+          {
+            "ballots": 171,
+            "displayed": "171",
+            "unit": "N154"
+          },
+          {
+            "ballots": 167,
+            "displayed": "167",
+            "unit": "N155"
+          },
+          {
+            "ballots": 320,
+            "displayed": "320",
+            "unit": "N156"
+          },
+          {
+            "ballots": 160,
+            "displayed": "160",
+            "unit": "N157"
+          },
+          {
+            "ballots": 87,
+            "displayed": "87",
+            "unit": "N158"
+          },
+          {
+            "ballots": 363,
+            "displayed": "363",
+            "unit": "N160"
+          },
+          {
+            "ballots": 127,
+            "displayed": "127",
+            "unit": "N161"
+          },
+          {
+            "ballots": 144,
+            "displayed": "144",
+            "unit": "N162"
+          },
+          {
+            "ballots": 116,
+            "displayed": "116",
+            "unit": "N163"
+          },
+          {
+            "ballots": 361,
+            "displayed": "361",
+            "unit": "N164"
+          },
+          {
+            "ballots": 161,
+            "displayed": "161",
+            "unit": "N165"
+          },
+          {
+            "ballots": 175,
+            "displayed": "175",
+            "unit": "N166"
+          },
+          {
+            "ballots": 141,
+            "displayed": "141",
+            "unit": "N167"
+          },
+          {
+            "ballots": 70,
+            "displayed": "70",
+            "unit": "N168"
+          },
+          {
+            "ballots": 18,
+            "displayed": "18",
+            "unit": "N169"
+          },
+          {
+            "ballots": 161,
+            "displayed": "161",
+            "unit": "N170"
+          },
+          {
+            "ballots": 211,
+            "displayed": "211",
+            "unit": "N171"
+          },
+          {
+            "ballots": 112,
+            "displayed": "112",
+            "unit": "N172"
+          },
+          {
+            "ballots": 38,
+            "displayed": "38",
+            "unit": "N173"
+          },
+          {
+            "ballots": 256,
+            "displayed": "256",
+            "unit": "N174"
+          },
+          {
+            "ballots": 476,
+            "displayed": "476",
+            "unit": "N175"
+          },
+          {
+            "ballots": 58,
+            "displayed": "58",
+            "unit": "N176"
+          },
+          {
+            "ballots": 401,
+            "displayed": "401",
+            "unit": "N177"
+          },
+          {
+            "ballots": 31,
+            "displayed": "31",
+            "unit": "N178"
+          },
+          {
+            "ballots": 132,
+            "displayed": "132",
+            "unit": "N179"
+          },
+          {
+            "ballots": 130,
+            "displayed": "130",
+            "unit": "N180"
+          },
+          {
+            "ballots": 309,
+            "displayed": "309",
+            "unit": "N181"
+          },
+          {
+            "ballots": 539,
+            "displayed": "539",
+            "unit": "O105"
+          },
+          {
+            "ballots": 776,
+            "displayed": "776",
+            "unit": "O107"
+          },
+          {
+            "ballots": 586,
+            "displayed": "586",
+            "unit": "O109"
+          },
+          {
+            "ballots": 425,
+            "displayed": "425",
+            "unit": "O111"
+          },
+          {
+            "ballots": 481,
+            "displayed": "481",
+            "unit": "O112"
+          },
+          {
+            "ballots": 325,
+            "displayed": "325",
+            "unit": "O113"
+          },
+          {
+            "ballots": 516,
+            "displayed": "516",
+            "unit": "O117 SHI"
+          },
+          {
+            "ballots": 582,
+            "displayed": "582",
+            "unit": "O119 SHI"
+          },
+          {
+            "ballots": 439,
+            "displayed": "439",
+            "unit": "O121 SHI"
+          },
+          {
+            "ballots": 302,
+            "displayed": "302",
+            "unit": "O124 SHI"
+          },
+          {
+            "ballots": 354,
+            "displayed": "354",
+            "unit": "O126 SHI"
+          },
+          {
+            "ballots": 435,
+            "displayed": "435",
+            "unit": "O127"
+          },
+          {
+            "ballots": 413,
+            "displayed": "413",
+            "unit": "O130"
+          },
+          {
+            "ballots": 358,
+            "displayed": "358",
+            "unit": "O131"
+          },
+          {
+            "ballots": 303,
+            "displayed": "303",
+            "unit": "O135"
+          },
+          {
+            "ballots": 308,
+            "displayed": "308",
+            "unit": "O136"
+          },
+          {
+            "ballots": 193,
+            "displayed": "193",
+            "unit": "O138"
+          },
+          {
+            "ballots": 122,
+            "displayed": "122",
+            "unit": "O141"
+          },
+          {
+            "ballots": 813,
+            "displayed": "813",
+            "unit": "O144"
+          },
+          {
+            "ballots": 671,
+            "displayed": "671",
+            "unit": "O145"
+          },
+          {
+            "ballots": 754,
+            "displayed": "754",
+            "unit": "O146"
+          },
+          {
+            "ballots": 247,
+            "displayed": "247",
+            "unit": "O147"
+          },
+          {
+            "ballots": 164,
+            "displayed": "164",
+            "unit": "O148"
+          },
+          {
+            "ballots": 514,
+            "displayed": "514",
+            "unit": "O149"
+          },
+          {
+            "ballots": 362,
+            "displayed": "362",
+            "unit": "O150 SHI"
+          },
+          {
+            "ballots": 422,
+            "displayed": "422",
+            "unit": "O151"
+          },
+          {
+            "ballots": 267,
+            "displayed": "267",
+            "unit": "O152"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "O153"
+          },
+          {
+            "ballots": 492,
+            "displayed": "492",
+            "unit": "O154 SHI"
+          },
+          {
+            "ballots": 491,
+            "displayed": "491",
+            "unit": "Q103"
+          },
+          {
+            "ballots": 648,
+            "displayed": "648",
+            "unit": "Q107"
+          },
+          {
+            "ballots": 417,
+            "displayed": "417",
+            "unit": "Q109"
+          },
+          {
+            "ballots": 607,
+            "displayed": "607",
+            "unit": "Q115"
+          },
+          {
+            "ballots": 445,
+            "displayed": "445",
+            "unit": "Q125"
+          },
+          {
+            "ballots": 1,
+            "displayed": "1",
+            "unit": "Q127"
+          },
+          {
+            "ballots": 760,
+            "displayed": "760",
+            "unit": "Q132"
+          },
+          {
+            "ballots": 466,
+            "displayed": "466",
+            "unit": "Q137"
+          },
+          {
+            "ballots": 159,
+            "displayed": "159",
+            "unit": "Q138"
+          },
+          {
+            "ballots": 787,
+            "displayed": "787",
+            "unit": "Q140"
+          },
+          {
+            "ballots": 850,
+            "displayed": "850",
+            "unit": "Q141"
+          },
+          {
+            "ballots": 334,
+            "displayed": "334",
+            "unit": "Q142"
+          },
+          {
+            "ballots": 441,
+            "displayed": "441",
+            "unit": "Q143"
+          },
+          {
+            "ballots": 341,
+            "displayed": "341",
+            "unit": "Q144"
+          },
+          {
+            "ballots": 532,
+            "displayed": "532",
+            "unit": "Q145"
+          },
+          {
+            "ballots": 222,
+            "displayed": "222",
+            "unit": "Q146"
+          },
+          {
+            "ballots": 648,
+            "displayed": "648",
+            "unit": "Q148"
+          },
+          {
+            "ballots": 297,
+            "displayed": "297",
+            "unit": "Q150"
+          },
+          {
+            "ballots": 449,
+            "displayed": "449",
+            "unit": "Q151"
+          },
+          {
+            "ballots": 223,
+            "displayed": "223",
+            "unit": "Q153"
+          },
+          {
+            "ballots": 712,
+            "displayed": "712",
+            "unit": "Q154"
+          },
+          {
+            "ballots": 111,
+            "displayed": "111",
+            "unit": "Q155"
+          },
+          {
+            "ballots": 2,
+            "displayed": "2",
+            "unit": "Q156"
+          },
+          {
+            "ballots": 322,
+            "displayed": "322",
+            "unit": "Q161"
+          },
+          {
+            "ballots": 345,
+            "displayed": "345",
+            "unit": "Q162"
+          },
+          {
+            "ballots": 729,
+            "displayed": "729",
+            "unit": "Q163"
+          },
+          {
+            "ballots": 160,
+            "displayed": "160",
+            "unit": "Q164 JEF"
+          },
+          {
+            "ballots": 97,
+            "displayed": "97",
+            "unit": "Q165"
+          },
+          {
+            "ballots": 790,
+            "displayed": "790",
+            "unit": "Q166"
+          },
+          {
+            "ballots": 918,
+            "displayed": "918",
+            "unit": "Q167"
+          },
+          {
+            "ballots": 965,
+            "displayed": "965",
+            "unit": "Q168"
+          },
+          {
+            "ballots": 286,
+            "displayed": "286",
+            "unit": "Q169"
+          },
+          {
+            "ballots": 350,
+            "displayed": "350",
+            "unit": "Q170"
+          },
+          {
+            "ballots": 514,
+            "displayed": "514",
+            "unit": "Q171"
+          },
+          {
+            "ballots": 415,
+            "displayed": "415",
+            "unit": "Q172"
+          },
+          {
+            "ballots": 652,
+            "displayed": "652",
+            "unit": "S116"
+          },
+          {
+            "ballots": 783,
+            "displayed": "783",
+            "unit": "S118"
+          },
+          {
+            "ballots": 969,
+            "displayed": "969",
+            "unit": "S125"
+          },
+          {
+            "ballots": 731,
+            "displayed": "731",
+            "unit": "S126 PSP"
+          },
+          {
+            "ballots": 559,
+            "displayed": "559",
+            "unit": "S128"
+          },
+          {
+            "ballots": 638,
+            "displayed": "638",
+            "unit": "S129"
+          },
+          {
+            "ballots": 656,
+            "displayed": "656",
+            "unit": "S130"
+          },
+          {
+            "ballots": 571,
+            "displayed": "571",
+            "unit": "S139"
+          },
+          {
+            "ballots": 726,
+            "displayed": "726",
+            "unit": "S140"
+          },
+          {
+            "ballots": 684,
+            "displayed": "684",
+            "unit": "S143"
+          },
+          {
+            "ballots": 575,
+            "displayed": "575",
+            "unit": "S144 PSP"
+          },
+          {
+            "ballots": 1452,
+            "displayed": "1,452",
+            "unit": "S153"
+          },
+          {
+            "ballots": 1009,
+            "displayed": "1,009",
+            "unit": "S160"
+          },
+          {
+            "ballots": 491,
+            "displayed": "491",
+            "unit": "S161"
+          },
+          {
+            "ballots": 505,
+            "displayed": "505",
+            "unit": "S165"
+          },
+          {
+            "ballots": 622,
+            "displayed": "622",
+            "unit": "S166"
+          },
+          {
+            "ballots": 570,
+            "displayed": "570",
+            "unit": "S167"
+          },
+          {
+            "ballots": 597,
+            "displayed": "597",
+            "unit": "S168"
+          },
+          {
+            "ballots": 126,
+            "displayed": "126",
+            "unit": "S169"
+          },
+          {
+            "ballots": 76,
+            "displayed": "76",
+            "unit": "S170"
+          },
+          {
+            "ballots": 849,
+            "displayed": "849",
+            "unit": "S171"
+          },
+          {
+            "ballots": 775,
+            "displayed": "775",
+            "unit": "S172"
+          },
+          {
+            "ballots": 767,
+            "displayed": "767",
+            "unit": "S173"
+          },
+          {
+            "ballots": 441,
+            "displayed": "441",
+            "unit": "S174"
+          },
+          {
+            "ballots": 476,
+            "displayed": "476",
+            "unit": "S175"
+          },
+          {
+            "ballots": 604,
+            "displayed": "604",
+            "unit": "S176"
+          },
+          {
+            "ballots": 420,
+            "displayed": "420",
+            "unit": "S177 INH"
+          },
+          {
+            "ballots": 764,
+            "displayed": "764",
+            "unit": "S178"
+          },
+          {
+            "ballots": 642,
+            "displayed": "642",
+            "unit": "S179"
+          },
+          {
+            "ballots": 807,
+            "displayed": "807",
+            "unit": "V101"
+          },
+          {
+            "ballots": 819,
+            "displayed": "819",
+            "unit": "V104"
+          },
+          {
+            "ballots": 858,
+            "displayed": "858",
+            "unit": "V105"
+          },
+          {
+            "ballots": 217,
+            "displayed": "217",
+            "unit": "V106"
+          },
+          {
+            "ballots": 157,
+            "displayed": "157",
+            "unit": "V107"
+          },
+          {
+            "ballots": 542,
+            "displayed": "542",
+            "unit": "V108"
+          },
+          {
+            "ballots": 461,
+            "displayed": "461",
+            "unit": "V109"
+          },
+          {
+            "ballots": 1060,
+            "displayed": "1,060",
+            "unit": "V110"
+          },
+          {
+            "ballots": 674,
+            "displayed": "674",
+            "unit": "V111"
+          },
+          {
+            "ballots": 20,
+            "displayed": "20",
+            "unit": "V112"
+          },
+          {
+            "ballots": 1027,
+            "displayed": "1,027",
+            "unit": "V113"
+          },
+          {
+            "ballots": 786,
+            "displayed": "786",
+            "unit": "V114"
+          },
+          {
+            "ballots": 773,
+            "displayed": "773",
+            "unit": "V116"
+          },
+          {
+            "ballots": 627,
+            "displayed": "627",
+            "unit": "V118"
+          },
+          {
+            "ballots": 565,
+            "displayed": "565",
+            "unit": "V120 MID"
+          },
+          {
+            "ballots": 789,
+            "displayed": "789",
+            "unit": "V121"
+          },
+          {
+            "ballots": 2,
+            "displayed": "2",
+            "unit": "V123"
+          },
+          {
+            "ballots": 698,
+            "displayed": "698",
+            "unit": "V125"
+          },
+          {
+            "ballots": 643,
+            "displayed": "643",
+            "unit": "V126"
+          },
+          {
+            "ballots": 486,
+            "displayed": "486",
+            "unit": "V127"
+          },
+          {
+            "ballots": 736,
+            "displayed": "736",
+            "unit": "V129"
+          },
+          {
+            "ballots": 248,
+            "displayed": "248",
+            "unit": "V130"
+          },
+          {
+            "ballots": 958,
+            "displayed": "958",
+            "unit": "V131"
+          },
+          {
+            "ballots": 838,
+            "displayed": "838",
+            "unit": "V133"
+          },
+          {
+            "ballots": 421,
+            "displayed": "421",
+            "unit": "V134"
+          },
+          {
+            "ballots": 314,
+            "displayed": "314",
+            "unit": "V136"
+          },
+          {
+            "ballots": 503,
+            "displayed": "503",
+            "unit": "V137"
+          },
+          {
+            "ballots": 11,
+            "displayed": "11",
+            "unit": "V138"
+          },
+          {
+            "ballots": 578,
+            "displayed": "578",
+            "unit": "V139"
+          },
+          {
+            "ballots": 865,
+            "displayed": "865",
+            "unit": "V140"
+          },
+          {
+            "ballots": 684,
+            "displayed": "684",
+            "unit": "V141"
+          },
+          {
+            "ballots": 812,
+            "displayed": "812",
+            "unit": "V142"
+          },
+          {
+            "ballots": 524,
+            "displayed": "524",
+            "unit": "V143 MID"
+          },
+          {
+            "ballots": 822,
+            "displayed": "822",
+            "unit": "V144"
+          },
+          {
+            "ballots": 364,
+            "displayed": "364",
+            "unit": "V145"
+          },
+          {
+            "ballots": 435,
+            "displayed": "435",
+            "unit": "V146"
+          }
+        ],
+        "page_errors": [],
+        "scopes": [
+          {
+            "ballots": 268257,
+            "mode": "available",
+            "native_units": 646
+          },
+          {
+            "ballots": 268257,
+            "mode": "uf_vep",
+            "native_units": 646
+          },
+          {
+            "ballots": 268257,
+            "mode": "uf_vap",
+            "native_units": 646
+          },
+          {
+            "ballots": 268257,
+            "mode": "official",
+            "native_units": 646
+          },
+          {
+            "mode": "in_person_early",
+            "native_additions": 0,
+            "prior_provider_ballots": 71861
+          },
+          {
+            "mode": "mail_returned",
+            "native_additions": 0,
+            "prior_provider_ballots": 7304
+          }
+        ],
+        "screenshot": "full-page-production-01-1440.png",
+        "table_window_checked": 150,
+        "true_zero_units_checked": 19,
+        "width": 1440
+      },
+      {
+        "county": 268257,
+        "full_sdk_download": {
+          "bytes": 13649216,
+          "sha256": "9f7a061ea0a401b662b5cc8508eb82a5a3568e4b85a1be87157b0106240a8cfc"
+        },
+        "observed_unit_after_nonchanging_arrow_probe": "V120 MID",
+        "keyboard_selection_change_proven": false,
+        "native_units": [
+          {
+            "ballots": 367,
+            "displayed": "367",
+            "unit": "A107"
+          },
+          {
+            "ballots": 626,
+            "displayed": "626",
+            "unit": "A108"
+          },
+          {
+            "ballots": 520,
+            "displayed": "520",
+            "unit": "A111"
+          },
+          {
+            "ballots": 536,
+            "displayed": "536",
+            "unit": "A113"
+          },
+          {
+            "ballots": 439,
+            "displayed": "439",
+            "unit": "A114"
+          },
+          {
+            "ballots": 408,
+            "displayed": "408",
+            "unit": "A115"
+          },
+          {
+            "ballots": 240,
+            "displayed": "240",
+            "unit": "A118"
+          },
+          {
+            "ballots": 398,
+            "displayed": "398",
+            "unit": "A119"
+          },
+          {
+            "ballots": 446,
+            "displayed": "446",
+            "unit": "A121"
+          },
+          {
+            "ballots": 579,
+            "displayed": "579",
+            "unit": "A124"
+          },
+          {
+            "ballots": 497,
+            "displayed": "497",
+            "unit": "A125"
+          },
+          {
+            "ballots": 583,
+            "displayed": "583",
+            "unit": "A126"
+          },
+          {
+            "ballots": 359,
+            "displayed": "359",
+            "unit": "A127"
+          },
+          {
+            "ballots": 422,
+            "displayed": "422",
+            "unit": "A128"
+          },
+          {
+            "ballots": 562,
+            "displayed": "562",
+            "unit": "A129"
+          },
+          {
+            "ballots": 293,
+            "displayed": "293",
+            "unit": "A134"
+          },
+          {
+            "ballots": 230,
+            "displayed": "230",
+            "unit": "A136"
+          },
+          {
+            "ballots": 252,
+            "displayed": "252",
+            "unit": "A139"
+          },
+          {
+            "ballots": 120,
+            "displayed": "120",
+            "unit": "A142"
+          },
+          {
+            "ballots": 591,
+            "displayed": "591",
+            "unit": "A145"
+          },
+          {
+            "ballots": 353,
+            "displayed": "353",
+            "unit": "A146"
+          },
+          {
+            "ballots": 171,
+            "displayed": "171",
+            "unit": "A147"
+          },
+          {
+            "ballots": 323,
+            "displayed": "323",
+            "unit": "A148"
+          },
+          {
+            "ballots": 703,
+            "displayed": "703",
+            "unit": "A149"
+          },
+          {
+            "ballots": 575,
+            "displayed": "575",
+            "unit": "A150"
+          },
+          {
+            "ballots": 667,
+            "displayed": "667",
+            "unit": "A151"
+          },
+          {
+            "ballots": 565,
+            "displayed": "565",
+            "unit": "A152"
+          },
+          {
+            "ballots": 815,
+            "displayed": "815",
+            "unit": "A153"
+          },
+          {
+            "ballots": 789,
+            "displayed": "789",
+            "unit": "A154"
+          },
+          {
+            "ballots": 502,
+            "displayed": "502",
+            "unit": "B124"
+          },
+          {
+            "ballots": 505,
+            "displayed": "505",
+            "unit": "B134"
+          },
+          {
+            "ballots": 442,
+            "displayed": "442",
+            "unit": "B149"
+          },
+          {
+            "ballots": 72,
+            "displayed": "72",
+            "unit": "B153"
+          },
+          {
+            "ballots": 432,
+            "displayed": "432",
+            "unit": "B154"
+          },
+          {
+            "ballots": 816,
+            "displayed": "816",
+            "unit": "B158"
+          },
+          {
+            "ballots": 740,
+            "displayed": "740",
+            "unit": "B159"
+          },
+          {
+            "ballots": 390,
+            "displayed": "390",
+            "unit": "B160"
+          },
+          {
+            "ballots": 457,
+            "displayed": "457",
+            "unit": "B161"
+          },
+          {
+            "ballots": 519,
+            "displayed": "519",
+            "unit": "B162"
+          },
+          {
+            "ballots": 642,
+            "displayed": "642",
+            "unit": "B163"
+          },
+          {
+            "ballots": 413,
+            "displayed": "413",
+            "unit": "B166"
+          },
+          {
+            "ballots": 669,
+            "displayed": "669",
+            "unit": "B168"
+          },
+          {
+            "ballots": 513,
+            "displayed": "513",
+            "unit": "B169"
+          },
+          {
+            "ballots": 530,
+            "displayed": "530",
+            "unit": "B172"
+          },
+          {
+            "ballots": 575,
+            "displayed": "575",
+            "unit": "B173"
+          },
+          {
+            "ballots": 967,
+            "displayed": "967",
+            "unit": "B175"
+          },
+          {
+            "ballots": 1074,
+            "displayed": "1,074",
+            "unit": "B177"
+          },
+          {
+            "ballots": 619,
+            "displayed": "619",
+            "unit": "B183"
+          },
+          {
+            "ballots": 26,
+            "displayed": "26",
+            "unit": "B184"
+          },
+          {
+            "ballots": 889,
+            "displayed": "889",
+            "unit": "B187"
+          },
+          {
+            "ballots": 30,
+            "displayed": "30",
+            "unit": "B188"
+          },
+          {
+            "ballots": 740,
+            "displayed": "740",
+            "unit": "B189"
+          },
+          {
+            "ballots": 285,
+            "displayed": "285",
+            "unit": "B190"
+          },
+          {
+            "ballots": 692,
+            "displayed": "692",
+            "unit": "B191"
+          },
+          {
+            "ballots": 396,
+            "displayed": "396",
+            "unit": "B192"
+          },
+          {
+            "ballots": 465,
+            "displayed": "465",
+            "unit": "B193"
+          },
+          {
+            "ballots": 26,
+            "displayed": "26",
+            "unit": "B194"
+          },
+          {
+            "ballots": 32,
+            "displayed": "32",
+            "unit": "B195"
+          },
+          {
+            "ballots": 330,
+            "displayed": "330",
+            "unit": "B196 HCK"
+          },
+          {
+            "ballots": 895,
+            "displayed": "895",
+            "unit": "B197"
+          },
+          {
+            "ballots": 878,
+            "displayed": "878",
+            "unit": "B198"
+          },
+          {
+            "ballots": 757,
+            "displayed": "757",
+            "unit": "B199"
+          },
+          {
+            "ballots": 620,
+            "displayed": "620",
+            "unit": "B201"
+          },
+          {
+            "ballots": 575,
+            "displayed": "575",
+            "unit": "B202"
+          },
+          {
+            "ballots": 500,
+            "displayed": "500",
+            "unit": "C101"
+          },
+          {
+            "ballots": 299,
+            "displayed": "299",
+            "unit": "C102"
+          },
+          {
+            "ballots": 327,
+            "displayed": "327",
+            "unit": "C103"
+          },
+          {
+            "ballots": 98,
+            "displayed": "98",
+            "unit": "C104"
+          },
+          {
+            "ballots": 176,
+            "displayed": "176",
+            "unit": "C105"
+          },
+          {
+            "ballots": 642,
+            "displayed": "642",
+            "unit": "C106"
+          },
+          {
+            "ballots": 448,
+            "displayed": "448",
+            "unit": "C108"
+          },
+          {
+            "ballots": 176,
+            "displayed": "176",
+            "unit": "C109"
+          },
+          {
+            "ballots": 274,
+            "displayed": "274",
+            "unit": "C110"
+          },
+          {
+            "ballots": 554,
+            "displayed": "554",
+            "unit": "C111"
+          },
+          {
+            "ballots": 180,
+            "displayed": "180",
+            "unit": "C113"
+          },
+          {
+            "ballots": 629,
+            "displayed": "629",
+            "unit": "C115"
+          },
+          {
+            "ballots": 302,
+            "displayed": "302",
+            "unit": "C123"
+          },
+          {
+            "ballots": 636,
+            "displayed": "636",
+            "unit": "C124"
+          },
+          {
+            "ballots": 284,
+            "displayed": "284",
+            "unit": "C126"
+          },
+          {
+            "ballots": 121,
+            "displayed": "121",
+            "unit": "C128"
+          },
+          {
+            "ballots": 611,
+            "displayed": "611",
+            "unit": "C129"
+          },
+          {
+            "ballots": 55,
+            "displayed": "55",
+            "unit": "C130"
+          },
+          {
+            "ballots": 258,
+            "displayed": "258",
+            "unit": "C131"
+          },
+          {
+            "ballots": 461,
+            "displayed": "461",
+            "unit": "C134"
+          },
+          {
+            "ballots": 434,
+            "displayed": "434",
+            "unit": "C137"
+          },
+          {
+            "ballots": 348,
+            "displayed": "348",
+            "unit": "C138"
+          },
+          {
+            "ballots": 545,
+            "displayed": "545",
+            "unit": "C152"
+          },
+          {
+            "ballots": 657,
+            "displayed": "657",
+            "unit": "C153"
+          },
+          {
+            "ballots": 149,
+            "displayed": "149",
+            "unit": "C154"
+          },
+          {
+            "ballots": 415,
+            "displayed": "415",
+            "unit": "C155"
+          },
+          {
+            "ballots": 332,
+            "displayed": "332",
+            "unit": "C156"
+          },
+          {
+            "ballots": 103,
+            "displayed": "103",
+            "unit": "C157"
+          },
+          {
+            "ballots": 699,
+            "displayed": "699",
+            "unit": "D114"
+          },
+          {
+            "ballots": 493,
+            "displayed": "493",
+            "unit": "D116"
+          },
+          {
+            "ballots": 552,
+            "displayed": "552",
+            "unit": "D117 JEF"
+          },
+          {
+            "ballots": 745,
+            "displayed": "745",
+            "unit": "D120 JEF"
+          },
+          {
+            "ballots": 440,
+            "displayed": "440",
+            "unit": "D122 JEF"
+          },
+          {
+            "ballots": 818,
+            "displayed": "818",
+            "unit": "D132"
+          },
+          {
+            "ballots": 486,
+            "displayed": "486",
+            "unit": "D137 JEF"
+          },
+          {
+            "ballots": 768,
+            "displayed": "768",
+            "unit": "D139"
+          },
+          {
+            "ballots": 501,
+            "displayed": "501",
+            "unit": "D141 JEF"
+          },
+          {
+            "ballots": 442,
+            "displayed": "442",
+            "unit": "D142 JEF"
+          },
+          {
+            "ballots": 432,
+            "displayed": "432",
+            "unit": "D146"
+          },
+          {
+            "ballots": 77,
+            "displayed": "77",
+            "unit": "D147 JEF"
+          },
+          {
+            "ballots": 333,
+            "displayed": "333",
+            "unit": "D148"
+          },
+          {
+            "ballots": 331,
+            "displayed": "331",
+            "unit": "D149 JEF"
+          },
+          {
+            "ballots": 920,
+            "displayed": "920",
+            "unit": "D150"
+          },
+          {
+            "ballots": 10,
+            "displayed": "10",
+            "unit": "D151 SRP"
+          },
+          {
+            "ballots": 460,
+            "displayed": "460",
+            "unit": "D152"
+          },
+          {
+            "ballots": 20,
+            "displayed": "20",
+            "unit": "D153"
+          },
+          {
+            "ballots": 521,
+            "displayed": "521",
+            "unit": "D154"
+          },
+          {
+            "ballots": 340,
+            "displayed": "340",
+            "unit": "D155 HUB"
+          },
+          {
+            "ballots": 740,
+            "displayed": "740",
+            "unit": "D156 HUB"
+          },
+          {
+            "ballots": 696,
+            "displayed": "696",
+            "unit": "D157 HUB"
+          },
+          {
+            "ballots": 719,
+            "displayed": "719",
+            "unit": "D158"
+          },
+          {
+            "ballots": 398,
+            "displayed": "398",
+            "unit": "D159 JEF"
+          },
+          {
+            "ballots": 480,
+            "displayed": "480",
+            "unit": "D160"
+          },
+          {
+            "ballots": 315,
+            "displayed": "315",
+            "unit": "D161 HUB"
+          },
+          {
+            "ballots": 251,
+            "displayed": "251",
+            "unit": "D163"
+          },
+          {
+            "ballots": 573,
+            "displayed": "573",
+            "unit": "D164"
+          },
+          {
+            "ballots": 586,
+            "displayed": "586",
+            "unit": "D165"
+          },
+          {
+            "ballots": 468,
+            "displayed": "468",
+            "unit": "D166 JEF"
+          },
+          {
+            "ballots": 539,
+            "displayed": "539",
+            "unit": "D167 JEF"
+          },
+          {
+            "ballots": 593,
+            "displayed": "593",
+            "unit": "D168"
+          },
+          {
+            "ballots": 747,
+            "displayed": "747",
+            "unit": "D169"
+          },
+          {
+            "ballots": 758,
+            "displayed": "758",
+            "unit": "D171"
+          },
+          {
+            "ballots": 533,
+            "displayed": "533",
+            "unit": "D172 DOH"
+          },
+          {
+            "ballots": 732,
+            "displayed": "732",
+            "unit": "D173"
+          },
+          {
+            "ballots": 368,
+            "displayed": "368",
+            "unit": "E139 STM"
+          },
+          {
+            "ballots": 228,
+            "displayed": "228",
+            "unit": "E141 BWV"
+          },
+          {
+            "ballots": 523,
+            "displayed": "523",
+            "unit": "E142"
+          },
+          {
+            "ballots": 340,
+            "displayed": "340",
+            "unit": "E143 STM"
+          },
+          {
+            "ballots": 569,
+            "displayed": "569",
+            "unit": "E144"
+          },
+          {
+            "ballots": 393,
+            "displayed": "393",
+            "unit": "E145 LYN"
+          },
+          {
+            "ballots": 572,
+            "displayed": "572",
+            "unit": "E154"
+          },
+          {
+            "ballots": 530,
+            "displayed": "530",
+            "unit": "E155"
+          },
+          {
+            "ballots": 181,
+            "displayed": "181",
+            "unit": "E157"
+          },
+          {
+            "ballots": 165,
+            "displayed": "165",
+            "unit": "E162"
+          },
+          {
+            "ballots": 446,
+            "displayed": "446",
+            "unit": "E171"
+          },
+          {
+            "ballots": 494,
+            "displayed": "494",
+            "unit": "E173"
+          },
+          {
+            "ballots": 361,
+            "displayed": "361",
+            "unit": "E175 GRD"
+          },
+          {
+            "ballots": 274,
+            "displayed": "274",
+            "unit": "E176"
+          },
+          {
+            "ballots": 675,
+            "displayed": "675",
+            "unit": "E181"
+          },
+          {
+            "ballots": 528,
+            "displayed": "528",
+            "unit": "E183"
+          },
+          {
+            "ballots": 169,
+            "displayed": "169",
+            "unit": "E185 STM"
+          },
+          {
+            "ballots": 831,
+            "displayed": "831",
+            "unit": "E188"
+          },
+          {
+            "ballots": 477,
+            "displayed": "477",
+            "unit": "E189"
+          },
+          {
+            "ballots": 889,
+            "displayed": "889",
+            "unit": "E190"
+          },
+          {
+            "ballots": 562,
+            "displayed": "562",
+            "unit": "E191"
+          },
+          {
+            "ballots": 767,
+            "displayed": "767",
+            "unit": "E192"
+          },
+          {
+            "ballots": 685,
+            "displayed": "685",
+            "unit": "E193"
+          },
+          {
+            "ballots": 872,
+            "displayed": "872",
+            "unit": "E194"
+          },
+          {
+            "ballots": 591,
+            "displayed": "591",
+            "unit": "E195"
+          },
+          {
+            "ballots": 495,
+            "displayed": "495",
+            "unit": "E196"
+          },
+          {
+            "ballots": 329,
+            "displayed": "329",
+            "unit": "E197"
+          },
+          {
+            "ballots": 489,
+            "displayed": "489",
+            "unit": "E198"
+          },
+          {
+            "ballots": 393,
+            "displayed": "393",
+            "unit": "E199"
+          },
+          {
+            "ballots": 641,
+            "displayed": "641",
+            "unit": "E201"
+          },
+          {
+            "ballots": 861,
+            "displayed": "861",
+            "unit": "E202"
+          },
+          {
+            "ballots": 856,
+            "displayed": "856",
+            "unit": "E203"
+          },
+          {
+            "ballots": 477,
+            "displayed": "477",
+            "unit": "E204"
+          },
+          {
+            "ballots": 822,
+            "displayed": "822",
+            "unit": "E205"
+          },
+          {
+            "ballots": 511,
+            "displayed": "511",
+            "unit": "E206"
+          },
+          {
+            "ballots": 551,
+            "displayed": "551",
+            "unit": "E207"
+          },
+          {
+            "ballots": 634,
+            "displayed": "634",
+            "unit": "F106"
+          },
+          {
+            "ballots": 863,
+            "displayed": "863",
+            "unit": "F145"
+          },
+          {
+            "ballots": 948,
+            "displayed": "948",
+            "unit": "F151"
+          },
+          {
+            "ballots": 888,
+            "displayed": "888",
+            "unit": "F152"
+          },
+          {
+            "ballots": 274,
+            "displayed": "274",
+            "unit": "F153"
+          },
+          {
+            "ballots": 450,
+            "displayed": "450",
+            "unit": "F154"
+          },
+          {
+            "ballots": 554,
+            "displayed": "554",
+            "unit": "F155"
+          },
+          {
+            "ballots": 615,
+            "displayed": "615",
+            "unit": "F158"
+          },
+          {
+            "ballots": 711,
+            "displayed": "711",
+            "unit": "F163"
+          },
+          {
+            "ballots": 649,
+            "displayed": "649",
+            "unit": "F164"
+          },
+          {
+            "ballots": 519,
+            "displayed": "519",
+            "unit": "F167"
+          },
+          {
+            "ballots": 290,
+            "displayed": "290",
+            "unit": "F169"
+          },
+          {
+            "ballots": 235,
+            "displayed": "235",
+            "unit": "F170 DOH"
+          },
+          {
+            "ballots": 604,
+            "displayed": "604",
+            "unit": "F171"
+          },
+          {
+            "ballots": 492,
+            "displayed": "492",
+            "unit": "F172"
+          },
+          {
+            "ballots": 392,
+            "displayed": "392",
+            "unit": "F176"
+          },
+          {
+            "ballots": 641,
+            "displayed": "641",
+            "unit": "F179 LYN"
+          },
+          {
+            "ballots": 866,
+            "displayed": "866",
+            "unit": "F180 LYN"
+          },
+          {
+            "ballots": 325,
+            "displayed": "325",
+            "unit": "F183"
+          },
+          {
+            "ballots": 730,
+            "displayed": "730",
+            "unit": "F184"
+          },
+          {
+            "ballots": 80,
+            "displayed": "80",
+            "unit": "F188 MID"
+          },
+          {
+            "ballots": 46,
+            "displayed": "46",
+            "unit": "F189 MID"
+          },
+          {
+            "ballots": 736,
+            "displayed": "736",
+            "unit": "F190"
+          },
+          {
+            "ballots": 2,
+            "displayed": "2",
+            "unit": "F191"
+          },
+          {
+            "ballots": 565,
+            "displayed": "565",
+            "unit": "F192 MID"
+          },
+          {
+            "ballots": 479,
+            "displayed": "479",
+            "unit": "G140"
+          },
+          {
+            "ballots": 511,
+            "displayed": "511",
+            "unit": "G141"
+          },
+          {
+            "ballots": 812,
+            "displayed": "812",
+            "unit": "G143"
+          },
+          {
+            "ballots": 624,
+            "displayed": "624",
+            "unit": "G144"
+          },
+          {
+            "ballots": 1025,
+            "displayed": "1,025",
+            "unit": "G145"
+          },
+          {
+            "ballots": 733,
+            "displayed": "733",
+            "unit": "G146"
+          },
+          {
+            "ballots": 274,
+            "displayed": "274",
+            "unit": "G150"
+          },
+          {
+            "ballots": 737,
+            "displayed": "737",
+            "unit": "G156"
+          },
+          {
+            "ballots": 811,
+            "displayed": "811",
+            "unit": "G157"
+          },
+          {
+            "ballots": 318,
+            "displayed": "318",
+            "unit": "G158"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "G159"
+          },
+          {
+            "ballots": 810,
+            "displayed": "810",
+            "unit": "G160"
+          },
+          {
+            "ballots": 453,
+            "displayed": "453",
+            "unit": "G161 SNG"
+          },
+          {
+            "ballots": 352,
+            "displayed": "352",
+            "unit": "G163 STM"
+          },
+          {
+            "ballots": 407,
+            "displayed": "407",
+            "unit": "G164 STM"
+          },
+          {
+            "ballots": 324,
+            "displayed": "324",
+            "unit": "G165 STM"
+          },
+          {
+            "ballots": 243,
+            "displayed": "243",
+            "unit": "G169"
+          },
+          {
+            "ballots": 262,
+            "displayed": "262",
+            "unit": "G170"
+          },
+          {
+            "ballots": 467,
+            "displayed": "467",
+            "unit": "G171"
+          },
+          {
+            "ballots": 217,
+            "displayed": "217",
+            "unit": "G172"
+          },
+          {
+            "ballots": 446,
+            "displayed": "446",
+            "unit": "G173 STM"
+          },
+          {
+            "ballots": 657,
+            "displayed": "657",
+            "unit": "G174"
+          },
+          {
+            "ballots": 887,
+            "displayed": "887",
+            "unit": "G175"
+          },
+          {
+            "ballots": 20,
+            "displayed": "20",
+            "unit": "G176"
+          },
+          {
+            "ballots": 602,
+            "displayed": "602",
+            "unit": "G177 STM"
+          },
+          {
+            "ballots": 452,
+            "displayed": "452",
+            "unit": "G178"
+          },
+          {
+            "ballots": 231,
+            "displayed": "231",
+            "unit": "G179"
+          },
+          {
+            "ballots": 454,
+            "displayed": "454",
+            "unit": "G180"
+          },
+          {
+            "ballots": 161,
+            "displayed": "161",
+            "unit": "G181 DRH"
+          },
+          {
+            "ballots": 544,
+            "displayed": "544",
+            "unit": "G182"
+          },
+          {
+            "ballots": 605,
+            "displayed": "605",
+            "unit": "G183"
+          },
+          {
+            "ballots": 320,
+            "displayed": "320",
+            "unit": "G184"
+          },
+          {
+            "ballots": 728,
+            "displayed": "728",
+            "unit": "G185"
+          },
+          {
+            "ballots": 424,
+            "displayed": "424",
+            "unit": "G186"
+          },
+          {
+            "ballots": 439,
+            "displayed": "439",
+            "unit": "G187"
+          },
+          {
+            "ballots": 438,
+            "displayed": "438",
+            "unit": "G188"
+          },
+          {
+            "ballots": 602,
+            "displayed": "602",
+            "unit": "G189"
+          },
+          {
+            "ballots": 384,
+            "displayed": "384",
+            "unit": "G190"
+          },
+          {
+            "ballots": 864,
+            "displayed": "864",
+            "unit": "G191"
+          },
+          {
+            "ballots": 405,
+            "displayed": "405",
+            "unit": "G192"
+          },
+          {
+            "ballots": 728,
+            "displayed": "728",
+            "unit": "G193"
+          },
+          {
+            "ballots": 820,
+            "displayed": "820",
+            "unit": "G194 WDH"
+          },
+          {
+            "ballots": 414,
+            "displayed": "414",
+            "unit": "G195 STM"
+          },
+          {
+            "ballots": 667,
+            "displayed": "667",
+            "unit": "G196"
+          },
+          {
+            "ballots": 785,
+            "displayed": "785",
+            "unit": "H117 APK"
+          },
+          {
+            "ballots": 287,
+            "displayed": "287",
+            "unit": "H120"
+          },
+          {
+            "ballots": 269,
+            "displayed": "269",
+            "unit": "H121"
+          },
+          {
+            "ballots": 186,
+            "displayed": "186",
+            "unit": "H123"
+          },
+          {
+            "ballots": 82,
+            "displayed": "82",
+            "unit": "H124"
+          },
+          {
+            "ballots": 209,
+            "displayed": "209",
+            "unit": "H125"
+          },
+          {
+            "ballots": 301,
+            "displayed": "301",
+            "unit": "H126 LNV"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "H130"
+          },
+          {
+            "ballots": 589,
+            "displayed": "589",
+            "unit": "H138"
+          },
+          {
+            "ballots": 461,
+            "displayed": "461",
+            "unit": "H144"
+          },
+          {
+            "ballots": 417,
+            "displayed": "417",
+            "unit": "H147"
+          },
+          {
+            "ballots": 103,
+            "displayed": "103",
+            "unit": "H154"
+          },
+          {
+            "ballots": 468,
+            "displayed": "468",
+            "unit": "H155"
+          },
+          {
+            "ballots": 104,
+            "displayed": "104",
+            "unit": "H163"
+          },
+          {
+            "ballots": 470,
+            "displayed": "470",
+            "unit": "H164"
+          },
+          {
+            "ballots": 538,
+            "displayed": "538",
+            "unit": "H165"
+          },
+          {
+            "ballots": 316,
+            "displayed": "316",
+            "unit": "H166"
+          },
+          {
+            "ballots": 277,
+            "displayed": "277",
+            "unit": "H167"
+          },
+          {
+            "ballots": 587,
+            "displayed": "587",
+            "unit": "H168"
+          },
+          {
+            "ballots": 284,
+            "displayed": "284",
+            "unit": "H169"
+          },
+          {
+            "ballots": 611,
+            "displayed": "611",
+            "unit": "H171"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "H173"
+          },
+          {
+            "ballots": 31,
+            "displayed": "31",
+            "unit": "H175"
+          },
+          {
+            "ballots": 1,
+            "displayed": "1",
+            "unit": "H176"
+          },
+          {
+            "ballots": 168,
+            "displayed": "168",
+            "unit": "H177"
+          },
+          {
+            "ballots": 105,
+            "displayed": "105",
+            "unit": "H178"
+          },
+          {
+            "ballots": 551,
+            "displayed": "551",
+            "unit": "H180"
+          },
+          {
+            "ballots": 297,
+            "displayed": "297",
+            "unit": "H181"
+          },
+          {
+            "ballots": 11,
+            "displayed": "11",
+            "unit": "H182"
+          },
+          {
+            "ballots": 550,
+            "displayed": "550",
+            "unit": "H183"
+          },
+          {
+            "ballots": 541,
+            "displayed": "541",
+            "unit": "H184"
+          },
+          {
+            "ballots": 143,
+            "displayed": "143",
+            "unit": "H185"
+          },
+          {
+            "ballots": 390,
+            "displayed": "390",
+            "unit": "I126"
+          },
+          {
+            "ballots": 221,
+            "displayed": "221",
+            "unit": "I130"
+          },
+          {
+            "ballots": 661,
+            "displayed": "661",
+            "unit": "I133"
+          },
+          {
+            "ballots": 271,
+            "displayed": "271",
+            "unit": "I135"
+          },
+          {
+            "ballots": 590,
+            "displayed": "590",
+            "unit": "I141"
+          },
+          {
+            "ballots": 52,
+            "displayed": "52",
+            "unit": "I144"
+          },
+          {
+            "ballots": 120,
+            "displayed": "120",
+            "unit": "I145"
+          },
+          {
+            "ballots": 509,
+            "displayed": "509",
+            "unit": "I146"
+          },
+          {
+            "ballots": 544,
+            "displayed": "544",
+            "unit": "I151"
+          },
+          {
+            "ballots": 622,
+            "displayed": "622",
+            "unit": "I152"
+          },
+          {
+            "ballots": 447,
+            "displayed": "447",
+            "unit": "I153"
+          },
+          {
+            "ballots": 852,
+            "displayed": "852",
+            "unit": "I154"
+          },
+          {
+            "ballots": 289,
+            "displayed": "289",
+            "unit": "I157"
+          },
+          {
+            "ballots": 607,
+            "displayed": "607",
+            "unit": "I158"
+          },
+          {
+            "ballots": 88,
+            "displayed": "88",
+            "unit": "I159"
+          },
+          {
+            "ballots": 413,
+            "displayed": "413",
+            "unit": "I160"
+          },
+          {
+            "ballots": 37,
+            "displayed": "37",
+            "unit": "I161"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "I162"
+          },
+          {
+            "ballots": 128,
+            "displayed": "128",
+            "unit": "I163"
+          },
+          {
+            "ballots": 640,
+            "displayed": "640",
+            "unit": "I164"
+          },
+          {
+            "ballots": 288,
+            "displayed": "288",
+            "unit": "I165"
+          },
+          {
+            "ballots": 46,
+            "displayed": "46",
+            "unit": "I166"
+          },
+          {
+            "ballots": 178,
+            "displayed": "178",
+            "unit": "I167"
+          },
+          {
+            "ballots": 250,
+            "displayed": "250",
+            "unit": "I168"
+          },
+          {
+            "ballots": 885,
+            "displayed": "885",
+            "unit": "I169"
+          },
+          {
+            "ballots": 242,
+            "displayed": "242",
+            "unit": "I170"
+          },
+          {
+            "ballots": 586,
+            "displayed": "586",
+            "unit": "I171"
+          },
+          {
+            "ballots": 516,
+            "displayed": "516",
+            "unit": "I172"
+          },
+          {
+            "ballots": 275,
+            "displayed": "275",
+            "unit": "I173"
+          },
+          {
+            "ballots": 285,
+            "displayed": "285",
+            "unit": "I174"
+          },
+          {
+            "ballots": 341,
+            "displayed": "341",
+            "unit": "I175"
+          },
+          {
+            "ballots": 321,
+            "displayed": "321",
+            "unit": "J105"
+          },
+          {
+            "ballots": 625,
+            "displayed": "625",
+            "unit": "J108"
+          },
+          {
+            "ballots": 345,
+            "displayed": "345",
+            "unit": "J111"
+          },
+          {
+            "ballots": 572,
+            "displayed": "572",
+            "unit": "J113"
+          },
+          {
+            "ballots": 217,
+            "displayed": "217",
+            "unit": "J117"
+          },
+          {
+            "ballots": 401,
+            "displayed": "401",
+            "unit": "J119"
+          },
+          {
+            "ballots": 471,
+            "displayed": "471",
+            "unit": "J120"
+          },
+          {
+            "ballots": 25,
+            "displayed": "25",
+            "unit": "J122"
+          },
+          {
+            "ballots": 229,
+            "displayed": "229",
+            "unit": "J123"
+          },
+          {
+            "ballots": 557,
+            "displayed": "557",
+            "unit": "J135"
+          },
+          {
+            "ballots": 417,
+            "displayed": "417",
+            "unit": "J137"
+          },
+          {
+            "ballots": 128,
+            "displayed": "128",
+            "unit": "J138"
+          },
+          {
+            "ballots": 118,
+            "displayed": "118",
+            "unit": "J140"
+          },
+          {
+            "ballots": 524,
+            "displayed": "524",
+            "unit": "J145"
+          },
+          {
+            "ballots": 632,
+            "displayed": "632",
+            "unit": "J150"
+          },
+          {
+            "ballots": 331,
+            "displayed": "331",
+            "unit": "J152"
+          },
+          {
+            "ballots": 128,
+            "displayed": "128",
+            "unit": "J153"
+          },
+          {
+            "ballots": 601,
+            "displayed": "601",
+            "unit": "J156"
+          },
+          {
+            "ballots": 551,
+            "displayed": "551",
+            "unit": "J157"
+          },
+          {
+            "ballots": 373,
+            "displayed": "373",
+            "unit": "J158"
+          },
+          {
+            "ballots": 624,
+            "displayed": "624",
+            "unit": "J159"
+          },
+          {
+            "ballots": 253,
+            "displayed": "253",
+            "unit": "J160"
+          },
+          {
+            "ballots": 209,
+            "displayed": "209",
+            "unit": "J162"
+          },
+          {
+            "ballots": 88,
+            "displayed": "88",
+            "unit": "J163"
+          },
+          {
+            "ballots": 39,
+            "displayed": "39",
+            "unit": "J164"
+          },
+          {
+            "ballots": 544,
+            "displayed": "544",
+            "unit": "J165"
+          },
+          {
+            "ballots": 221,
+            "displayed": "221",
+            "unit": "J166"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "J168"
+          },
+          {
+            "ballots": 592,
+            "displayed": "592",
+            "unit": "J169"
+          },
+          {
+            "ballots": 500,
+            "displayed": "500",
+            "unit": "J170"
+          },
+          {
+            "ballots": 725,
+            "displayed": "725",
+            "unit": "J171"
+          },
+          {
+            "ballots": 170,
+            "displayed": "170",
+            "unit": "J172"
+          },
+          {
+            "ballots": 173,
+            "displayed": "173",
+            "unit": "J173"
+          },
+          {
+            "ballots": 628,
+            "displayed": "628",
+            "unit": "J174"
+          },
+          {
+            "ballots": 141,
+            "displayed": "141",
+            "unit": "K110"
+          },
+          {
+            "ballots": 163,
+            "displayed": "163",
+            "unit": "K111"
+          },
+          {
+            "ballots": 134,
+            "displayed": "134",
+            "unit": "K112"
+          },
+          {
+            "ballots": 171,
+            "displayed": "171",
+            "unit": "K113"
+          },
+          {
+            "ballots": 398,
+            "displayed": "398",
+            "unit": "K114"
+          },
+          {
+            "ballots": 40,
+            "displayed": "40",
+            "unit": "K116"
+          },
+          {
+            "ballots": 188,
+            "displayed": "188",
+            "unit": "K117"
+          },
+          {
+            "ballots": 299,
+            "displayed": "299",
+            "unit": "K118"
+          },
+          {
+            "ballots": 411,
+            "displayed": "411",
+            "unit": "K119"
+          },
+          {
+            "ballots": 484,
+            "displayed": "484",
+            "unit": "K122 SHI"
+          },
+          {
+            "ballots": 534,
+            "displayed": "534",
+            "unit": "K123 SHI"
+          },
+          {
+            "ballots": 128,
+            "displayed": "128",
+            "unit": "K125"
+          },
+          {
+            "ballots": 322,
+            "displayed": "322",
+            "unit": "K131 SHI"
+          },
+          {
+            "ballots": 363,
+            "displayed": "363",
+            "unit": "K134"
+          },
+          {
+            "ballots": 158,
+            "displayed": "158",
+            "unit": "K135"
+          },
+          {
+            "ballots": 65,
+            "displayed": "65",
+            "unit": "K137"
+          },
+          {
+            "ballots": 59,
+            "displayed": "59",
+            "unit": "K140"
+          },
+          {
+            "ballots": 104,
+            "displayed": "104",
+            "unit": "K141"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K142"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K143"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K150"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K151"
+          },
+          {
+            "ballots": 4,
+            "displayed": "4",
+            "unit": "K152"
+          },
+          {
+            "ballots": 323,
+            "displayed": "323",
+            "unit": "K153"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K154"
+          },
+          {
+            "ballots": 436,
+            "displayed": "436",
+            "unit": "K155"
+          },
+          {
+            "ballots": 208,
+            "displayed": "208",
+            "unit": "K156"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K157"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K158"
+          },
+          {
+            "ballots": 152,
+            "displayed": "152",
+            "unit": "K159"
+          },
+          {
+            "ballots": 192,
+            "displayed": "192",
+            "unit": "K160"
+          },
+          {
+            "ballots": 104,
+            "displayed": "104",
+            "unit": "K161"
+          },
+          {
+            "ballots": 11,
+            "displayed": "11",
+            "unit": "K162"
+          },
+          {
+            "ballots": 47,
+            "displayed": "47",
+            "unit": "K163"
+          },
+          {
+            "ballots": 7,
+            "displayed": "7",
+            "unit": "K164"
+          },
+          {
+            "ballots": 135,
+            "displayed": "135",
+            "unit": "K165"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K166"
+          },
+          {
+            "ballots": 59,
+            "displayed": "59",
+            "unit": "K167"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "K168"
+          },
+          {
+            "ballots": 169,
+            "displayed": "169",
+            "unit": "K169"
+          },
+          {
+            "ballots": 418,
+            "displayed": "418",
+            "unit": "K170"
+          },
+          {
+            "ballots": 305,
+            "displayed": "305",
+            "unit": "K171"
+          },
+          {
+            "ballots": 379,
+            "displayed": "379",
+            "unit": "K172"
+          },
+          {
+            "ballots": 209,
+            "displayed": "209",
+            "unit": "K173"
+          },
+          {
+            "ballots": 458,
+            "displayed": "458",
+            "unit": "K174"
+          },
+          {
+            "ballots": 298,
+            "displayed": "298",
+            "unit": "K175"
+          },
+          {
+            "ballots": 118,
+            "displayed": "118",
+            "unit": "K176"
+          },
+          {
+            "ballots": 384,
+            "displayed": "384",
+            "unit": "K177"
+          },
+          {
+            "ballots": 240,
+            "displayed": "240",
+            "unit": "K178"
+          },
+          {
+            "ballots": 362,
+            "displayed": "362",
+            "unit": "K179"
+          },
+          {
+            "ballots": 262,
+            "displayed": "262",
+            "unit": "K180 SHI"
+          },
+          {
+            "ballots": 412,
+            "displayed": "412",
+            "unit": "L165"
+          },
+          {
+            "ballots": 310,
+            "displayed": "310",
+            "unit": "L166"
+          },
+          {
+            "ballots": 459,
+            "displayed": "459",
+            "unit": "L167"
+          },
+          {
+            "ballots": 592,
+            "displayed": "592",
+            "unit": "L168"
+          },
+          {
+            "ballots": 437,
+            "displayed": "437",
+            "unit": "L169"
+          },
+          {
+            "ballots": 368,
+            "displayed": "368",
+            "unit": "L170"
+          },
+          {
+            "ballots": 423,
+            "displayed": "423",
+            "unit": "L171"
+          },
+          {
+            "ballots": 353,
+            "displayed": "353",
+            "unit": "L172"
+          },
+          {
+            "ballots": 703,
+            "displayed": "703",
+            "unit": "L173"
+          },
+          {
+            "ballots": 579,
+            "displayed": "579",
+            "unit": "L174"
+          },
+          {
+            "ballots": 935,
+            "displayed": "935",
+            "unit": "L175"
+          },
+          {
+            "ballots": 792,
+            "displayed": "792",
+            "unit": "L176"
+          },
+          {
+            "ballots": 905,
+            "displayed": "905",
+            "unit": "L177"
+          },
+          {
+            "ballots": 432,
+            "displayed": "432",
+            "unit": "L178"
+          },
+          {
+            "ballots": 507,
+            "displayed": "507",
+            "unit": "L179"
+          },
+          {
+            "ballots": 506,
+            "displayed": "506",
+            "unit": "L180"
+          },
+          {
+            "ballots": 421,
+            "displayed": "421",
+            "unit": "L181"
+          },
+          {
+            "ballots": 229,
+            "displayed": "229",
+            "unit": "L182 SMM"
+          },
+          {
+            "ballots": 797,
+            "displayed": "797",
+            "unit": "L183"
+          },
+          {
+            "ballots": 459,
+            "displayed": "459",
+            "unit": "L184"
+          },
+          {
+            "ballots": 77,
+            "displayed": "77",
+            "unit": "L185"
+          },
+          {
+            "ballots": 650,
+            "displayed": "650",
+            "unit": "L186"
+          },
+          {
+            "ballots": 317,
+            "displayed": "317",
+            "unit": "L187"
+          },
+          {
+            "ballots": 352,
+            "displayed": "352",
+            "unit": "L188 WEL"
+          },
+          {
+            "ballots": 410,
+            "displayed": "410",
+            "unit": "L189"
+          },
+          {
+            "ballots": 241,
+            "displayed": "241",
+            "unit": "L192"
+          },
+          {
+            "ballots": 432,
+            "displayed": "432",
+            "unit": "L193"
+          },
+          {
+            "ballots": 197,
+            "displayed": "197",
+            "unit": "L194"
+          },
+          {
+            "ballots": 323,
+            "displayed": "323",
+            "unit": "L195"
+          },
+          {
+            "ballots": 717,
+            "displayed": "717",
+            "unit": "L196"
+          },
+          {
+            "ballots": 553,
+            "displayed": "553",
+            "unit": "L197"
+          },
+          {
+            "ballots": 330,
+            "displayed": "330",
+            "unit": "L198"
+          },
+          {
+            "ballots": 416,
+            "displayed": "416",
+            "unit": "L199"
+          },
+          {
+            "ballots": 478,
+            "displayed": "478",
+            "unit": "L201"
+          },
+          {
+            "ballots": 456,
+            "displayed": "456",
+            "unit": "L203"
+          },
+          {
+            "ballots": 845,
+            "displayed": "845",
+            "unit": "L204"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "L205"
+          },
+          {
+            "ballots": 450,
+            "displayed": "450",
+            "unit": "L206"
+          },
+          {
+            "ballots": 19,
+            "displayed": "19",
+            "unit": "L207"
+          },
+          {
+            "ballots": 237,
+            "displayed": "237",
+            "unit": "L208"
+          },
+          {
+            "ballots": 412,
+            "displayed": "412",
+            "unit": "L209"
+          },
+          {
+            "ballots": 547,
+            "displayed": "547",
+            "unit": "L210"
+          },
+          {
+            "ballots": 320,
+            "displayed": "320",
+            "unit": "L211"
+          },
+          {
+            "ballots": 372,
+            "displayed": "372",
+            "unit": "L212"
+          },
+          {
+            "ballots": 326,
+            "displayed": "326",
+            "unit": "L213"
+          },
+          {
+            "ballots": 105,
+            "displayed": "105",
+            "unit": "L215"
+          },
+          {
+            "ballots": 219,
+            "displayed": "219",
+            "unit": "L216"
+          },
+          {
+            "ballots": 312,
+            "displayed": "312",
+            "unit": "L217"
+          },
+          {
+            "ballots": 198,
+            "displayed": "198",
+            "unit": "L218"
+          },
+          {
+            "ballots": 188,
+            "displayed": "188",
+            "unit": "L219"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "L220"
+          },
+          {
+            "ballots": 124,
+            "displayed": "124",
+            "unit": "M107"
+          },
+          {
+            "ballots": 248,
+            "displayed": "248",
+            "unit": "M110"
+          },
+          {
+            "ballots": 465,
+            "displayed": "465",
+            "unit": "M121"
+          },
+          {
+            "ballots": 616,
+            "displayed": "616",
+            "unit": "M123"
+          },
+          {
+            "ballots": 549,
+            "displayed": "549",
+            "unit": "M124"
+          },
+          {
+            "ballots": 264,
+            "displayed": "264",
+            "unit": "M129"
+          },
+          {
+            "ballots": 142,
+            "displayed": "142",
+            "unit": "M131"
+          },
+          {
+            "ballots": 271,
+            "displayed": "271",
+            "unit": "M159"
+          },
+          {
+            "ballots": 110,
+            "displayed": "110",
+            "unit": "M168"
+          },
+          {
+            "ballots": 273,
+            "displayed": "273",
+            "unit": "M176"
+          },
+          {
+            "ballots": 617,
+            "displayed": "617",
+            "unit": "M177"
+          },
+          {
+            "ballots": 509,
+            "displayed": "509",
+            "unit": "M178"
+          },
+          {
+            "ballots": 439,
+            "displayed": "439",
+            "unit": "M179"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "M180"
+          },
+          {
+            "ballots": 149,
+            "displayed": "149",
+            "unit": "M181"
+          },
+          {
+            "ballots": 360,
+            "displayed": "360",
+            "unit": "M182"
+          },
+          {
+            "ballots": 38,
+            "displayed": "38",
+            "unit": "M183"
+          },
+          {
+            "ballots": 460,
+            "displayed": "460",
+            "unit": "M184"
+          },
+          {
+            "ballots": 151,
+            "displayed": "151",
+            "unit": "M185"
+          },
+          {
+            "ballots": 251,
+            "displayed": "251",
+            "unit": "M186"
+          },
+          {
+            "ballots": 151,
+            "displayed": "151",
+            "unit": "M188"
+          },
+          {
+            "ballots": 261,
+            "displayed": "261",
+            "unit": "M189"
+          },
+          {
+            "ballots": 356,
+            "displayed": "356",
+            "unit": "M191"
+          },
+          {
+            "ballots": 396,
+            "displayed": "396",
+            "unit": "M192"
+          },
+          {
+            "ballots": 252,
+            "displayed": "252",
+            "unit": "M193"
+          },
+          {
+            "ballots": 187,
+            "displayed": "187",
+            "unit": "M194"
+          },
+          {
+            "ballots": 281,
+            "displayed": "281",
+            "unit": "M195"
+          },
+          {
+            "ballots": 372,
+            "displayed": "372",
+            "unit": "M196"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "M197"
+          },
+          {
+            "ballots": 485,
+            "displayed": "485",
+            "unit": "M198"
+          },
+          {
+            "ballots": 311,
+            "displayed": "311",
+            "unit": "M199"
+          },
+          {
+            "ballots": 308,
+            "displayed": "308",
+            "unit": "M201"
+          },
+          {
+            "ballots": 240,
+            "displayed": "240",
+            "unit": "M202"
+          },
+          {
+            "ballots": 409,
+            "displayed": "409",
+            "unit": "M203"
+          },
+          {
+            "ballots": 495,
+            "displayed": "495",
+            "unit": "M210"
+          },
+          {
+            "ballots": 332,
+            "displayed": "332",
+            "unit": "M211"
+          },
+          {
+            "ballots": 152,
+            "displayed": "152",
+            "unit": "M212"
+          },
+          {
+            "ballots": 173,
+            "displayed": "173",
+            "unit": "M213"
+          },
+          {
+            "ballots": 452,
+            "displayed": "452",
+            "unit": "N101"
+          },
+          {
+            "ballots": 368,
+            "displayed": "368",
+            "unit": "N102"
+          },
+          {
+            "ballots": 533,
+            "displayed": "533",
+            "unit": "N103"
+          },
+          {
+            "ballots": 476,
+            "displayed": "476",
+            "unit": "N104"
+          },
+          {
+            "ballots": 408,
+            "displayed": "408",
+            "unit": "N105"
+          },
+          {
+            "ballots": 405,
+            "displayed": "405",
+            "unit": "N106"
+          },
+          {
+            "ballots": 452,
+            "displayed": "452",
+            "unit": "N107"
+          },
+          {
+            "ballots": 226,
+            "displayed": "226",
+            "unit": "N115"
+          },
+          {
+            "ballots": 305,
+            "displayed": "305",
+            "unit": "N117"
+          },
+          {
+            "ballots": 204,
+            "displayed": "204",
+            "unit": "N128"
+          },
+          {
+            "ballots": 373,
+            "displayed": "373",
+            "unit": "N130"
+          },
+          {
+            "ballots": 598,
+            "displayed": "598",
+            "unit": "N134"
+          },
+          {
+            "ballots": 110,
+            "displayed": "110",
+            "unit": "N135"
+          },
+          {
+            "ballots": 62,
+            "displayed": "62",
+            "unit": "N136"
+          },
+          {
+            "ballots": 185,
+            "displayed": "185",
+            "unit": "N145"
+          },
+          {
+            "ballots": 51,
+            "displayed": "51",
+            "unit": "N147"
+          },
+          {
+            "ballots": 177,
+            "displayed": "177",
+            "unit": "N148"
+          },
+          {
+            "ballots": 10,
+            "displayed": "10",
+            "unit": "N151"
+          },
+          {
+            "ballots": 165,
+            "displayed": "165",
+            "unit": "N152"
+          },
+          {
+            "ballots": 99,
+            "displayed": "99",
+            "unit": "N153"
+          },
+          {
+            "ballots": 171,
+            "displayed": "171",
+            "unit": "N154"
+          },
+          {
+            "ballots": 167,
+            "displayed": "167",
+            "unit": "N155"
+          },
+          {
+            "ballots": 320,
+            "displayed": "320",
+            "unit": "N156"
+          },
+          {
+            "ballots": 160,
+            "displayed": "160",
+            "unit": "N157"
+          },
+          {
+            "ballots": 87,
+            "displayed": "87",
+            "unit": "N158"
+          },
+          {
+            "ballots": 363,
+            "displayed": "363",
+            "unit": "N160"
+          },
+          {
+            "ballots": 127,
+            "displayed": "127",
+            "unit": "N161"
+          },
+          {
+            "ballots": 144,
+            "displayed": "144",
+            "unit": "N162"
+          },
+          {
+            "ballots": 116,
+            "displayed": "116",
+            "unit": "N163"
+          },
+          {
+            "ballots": 361,
+            "displayed": "361",
+            "unit": "N164"
+          },
+          {
+            "ballots": 161,
+            "displayed": "161",
+            "unit": "N165"
+          },
+          {
+            "ballots": 175,
+            "displayed": "175",
+            "unit": "N166"
+          },
+          {
+            "ballots": 141,
+            "displayed": "141",
+            "unit": "N167"
+          },
+          {
+            "ballots": 70,
+            "displayed": "70",
+            "unit": "N168"
+          },
+          {
+            "ballots": 18,
+            "displayed": "18",
+            "unit": "N169"
+          },
+          {
+            "ballots": 161,
+            "displayed": "161",
+            "unit": "N170"
+          },
+          {
+            "ballots": 211,
+            "displayed": "211",
+            "unit": "N171"
+          },
+          {
+            "ballots": 112,
+            "displayed": "112",
+            "unit": "N172"
+          },
+          {
+            "ballots": 38,
+            "displayed": "38",
+            "unit": "N173"
+          },
+          {
+            "ballots": 256,
+            "displayed": "256",
+            "unit": "N174"
+          },
+          {
+            "ballots": 476,
+            "displayed": "476",
+            "unit": "N175"
+          },
+          {
+            "ballots": 58,
+            "displayed": "58",
+            "unit": "N176"
+          },
+          {
+            "ballots": 401,
+            "displayed": "401",
+            "unit": "N177"
+          },
+          {
+            "ballots": 31,
+            "displayed": "31",
+            "unit": "N178"
+          },
+          {
+            "ballots": 132,
+            "displayed": "132",
+            "unit": "N179"
+          },
+          {
+            "ballots": 130,
+            "displayed": "130",
+            "unit": "N180"
+          },
+          {
+            "ballots": 309,
+            "displayed": "309",
+            "unit": "N181"
+          },
+          {
+            "ballots": 539,
+            "displayed": "539",
+            "unit": "O105"
+          },
+          {
+            "ballots": 776,
+            "displayed": "776",
+            "unit": "O107"
+          },
+          {
+            "ballots": 586,
+            "displayed": "586",
+            "unit": "O109"
+          },
+          {
+            "ballots": 425,
+            "displayed": "425",
+            "unit": "O111"
+          },
+          {
+            "ballots": 481,
+            "displayed": "481",
+            "unit": "O112"
+          },
+          {
+            "ballots": 325,
+            "displayed": "325",
+            "unit": "O113"
+          },
+          {
+            "ballots": 516,
+            "displayed": "516",
+            "unit": "O117 SHI"
+          },
+          {
+            "ballots": 582,
+            "displayed": "582",
+            "unit": "O119 SHI"
+          },
+          {
+            "ballots": 439,
+            "displayed": "439",
+            "unit": "O121 SHI"
+          },
+          {
+            "ballots": 302,
+            "displayed": "302",
+            "unit": "O124 SHI"
+          },
+          {
+            "ballots": 354,
+            "displayed": "354",
+            "unit": "O126 SHI"
+          },
+          {
+            "ballots": 435,
+            "displayed": "435",
+            "unit": "O127"
+          },
+          {
+            "ballots": 413,
+            "displayed": "413",
+            "unit": "O130"
+          },
+          {
+            "ballots": 358,
+            "displayed": "358",
+            "unit": "O131"
+          },
+          {
+            "ballots": 303,
+            "displayed": "303",
+            "unit": "O135"
+          },
+          {
+            "ballots": 308,
+            "displayed": "308",
+            "unit": "O136"
+          },
+          {
+            "ballots": 193,
+            "displayed": "193",
+            "unit": "O138"
+          },
+          {
+            "ballots": 122,
+            "displayed": "122",
+            "unit": "O141"
+          },
+          {
+            "ballots": 813,
+            "displayed": "813",
+            "unit": "O144"
+          },
+          {
+            "ballots": 671,
+            "displayed": "671",
+            "unit": "O145"
+          },
+          {
+            "ballots": 754,
+            "displayed": "754",
+            "unit": "O146"
+          },
+          {
+            "ballots": 247,
+            "displayed": "247",
+            "unit": "O147"
+          },
+          {
+            "ballots": 164,
+            "displayed": "164",
+            "unit": "O148"
+          },
+          {
+            "ballots": 514,
+            "displayed": "514",
+            "unit": "O149"
+          },
+          {
+            "ballots": 362,
+            "displayed": "362",
+            "unit": "O150 SHI"
+          },
+          {
+            "ballots": 422,
+            "displayed": "422",
+            "unit": "O151"
+          },
+          {
+            "ballots": 267,
+            "displayed": "267",
+            "unit": "O152"
+          },
+          {
+            "ballots": 0,
+            "displayed": "0",
+            "unit": "O153"
+          },
+          {
+            "ballots": 492,
+            "displayed": "492",
+            "unit": "O154 SHI"
+          },
+          {
+            "ballots": 491,
+            "displayed": "491",
+            "unit": "Q103"
+          },
+          {
+            "ballots": 648,
+            "displayed": "648",
+            "unit": "Q107"
+          },
+          {
+            "ballots": 417,
+            "displayed": "417",
+            "unit": "Q109"
+          },
+          {
+            "ballots": 607,
+            "displayed": "607",
+            "unit": "Q115"
+          },
+          {
+            "ballots": 445,
+            "displayed": "445",
+            "unit": "Q125"
+          },
+          {
+            "ballots": 1,
+            "displayed": "1",
+            "unit": "Q127"
+          },
+          {
+            "ballots": 760,
+            "displayed": "760",
+            "unit": "Q132"
+          },
+          {
+            "ballots": 466,
+            "displayed": "466",
+            "unit": "Q137"
+          },
+          {
+            "ballots": 159,
+            "displayed": "159",
+            "unit": "Q138"
+          },
+          {
+            "ballots": 787,
+            "displayed": "787",
+            "unit": "Q140"
+          },
+          {
+            "ballots": 850,
+            "displayed": "850",
+            "unit": "Q141"
+          },
+          {
+            "ballots": 334,
+            "displayed": "334",
+            "unit": "Q142"
+          },
+          {
+            "ballots": 441,
+            "displayed": "441",
+            "unit": "Q143"
+          },
+          {
+            "ballots": 341,
+            "displayed": "341",
+            "unit": "Q144"
+          },
+          {
+            "ballots": 532,
+            "displayed": "532",
+            "unit": "Q145"
+          },
+          {
+            "ballots": 222,
+            "displayed": "222",
+            "unit": "Q146"
+          },
+          {
+            "ballots": 648,
+            "displayed": "648",
+            "unit": "Q148"
+          },
+          {
+            "ballots": 297,
+            "displayed": "297",
+            "unit": "Q150"
+          },
+          {
+            "ballots": 449,
+            "displayed": "449",
+            "unit": "Q151"
+          },
+          {
+            "ballots": 223,
+            "displayed": "223",
+            "unit": "Q153"
+          },
+          {
+            "ballots": 712,
+            "displayed": "712",
+            "unit": "Q154"
+          },
+          {
+            "ballots": 111,
+            "displayed": "111",
+            "unit": "Q155"
+          },
+          {
+            "ballots": 2,
+            "displayed": "2",
+            "unit": "Q156"
+          },
+          {
+            "ballots": 322,
+            "displayed": "322",
+            "unit": "Q161"
+          },
+          {
+            "ballots": 345,
+            "displayed": "345",
+            "unit": "Q162"
+          },
+          {
+            "ballots": 729,
+            "displayed": "729",
+            "unit": "Q163"
+          },
+          {
+            "ballots": 160,
+            "displayed": "160",
+            "unit": "Q164 JEF"
+          },
+          {
+            "ballots": 97,
+            "displayed": "97",
+            "unit": "Q165"
+          },
+          {
+            "ballots": 790,
+            "displayed": "790",
+            "unit": "Q166"
+          },
+          {
+            "ballots": 918,
+            "displayed": "918",
+            "unit": "Q167"
+          },
+          {
+            "ballots": 965,
+            "displayed": "965",
+            "unit": "Q168"
+          },
+          {
+            "ballots": 286,
+            "displayed": "286",
+            "unit": "Q169"
+          },
+          {
+            "ballots": 350,
+            "displayed": "350",
+            "unit": "Q170"
+          },
+          {
+            "ballots": 514,
+            "displayed": "514",
+            "unit": "Q171"
+          },
+          {
+            "ballots": 415,
+            "displayed": "415",
+            "unit": "Q172"
+          },
+          {
+            "ballots": 652,
+            "displayed": "652",
+            "unit": "S116"
+          },
+          {
+            "ballots": 783,
+            "displayed": "783",
+            "unit": "S118"
+          },
+          {
+            "ballots": 969,
+            "displayed": "969",
+            "unit": "S125"
+          },
+          {
+            "ballots": 731,
+            "displayed": "731",
+            "unit": "S126 PSP"
+          },
+          {
+            "ballots": 559,
+            "displayed": "559",
+            "unit": "S128"
+          },
+          {
+            "ballots": 638,
+            "displayed": "638",
+            "unit": "S129"
+          },
+          {
+            "ballots": 656,
+            "displayed": "656",
+            "unit": "S130"
+          },
+          {
+            "ballots": 571,
+            "displayed": "571",
+            "unit": "S139"
+          },
+          {
+            "ballots": 726,
+            "displayed": "726",
+            "unit": "S140"
+          },
+          {
+            "ballots": 684,
+            "displayed": "684",
+            "unit": "S143"
+          },
+          {
+            "ballots": 575,
+            "displayed": "575",
+            "unit": "S144 PSP"
+          },
+          {
+            "ballots": 1452,
+            "displayed": "1,452",
+            "unit": "S153"
+          },
+          {
+            "ballots": 1009,
+            "displayed": "1,009",
+            "unit": "S160"
+          },
+          {
+            "ballots": 491,
+            "displayed": "491",
+            "unit": "S161"
+          },
+          {
+            "ballots": 505,
+            "displayed": "505",
+            "unit": "S165"
+          },
+          {
+            "ballots": 622,
+            "displayed": "622",
+            "unit": "S166"
+          },
+          {
+            "ballots": 570,
+            "displayed": "570",
+            "unit": "S167"
+          },
+          {
+            "ballots": 597,
+            "displayed": "597",
+            "unit": "S168"
+          },
+          {
+            "ballots": 126,
+            "displayed": "126",
+            "unit": "S169"
+          },
+          {
+            "ballots": 76,
+            "displayed": "76",
+            "unit": "S170"
+          },
+          {
+            "ballots": 849,
+            "displayed": "849",
+            "unit": "S171"
+          },
+          {
+            "ballots": 775,
+            "displayed": "775",
+            "unit": "S172"
+          },
+          {
+            "ballots": 767,
+            "displayed": "767",
+            "unit": "S173"
+          },
+          {
+            "ballots": 441,
+            "displayed": "441",
+            "unit": "S174"
+          },
+          {
+            "ballots": 476,
+            "displayed": "476",
+            "unit": "S175"
+          },
+          {
+            "ballots": 604,
+            "displayed": "604",
+            "unit": "S176"
+          },
+          {
+            "ballots": 420,
+            "displayed": "420",
+            "unit": "S177 INH"
+          },
+          {
+            "ballots": 764,
+            "displayed": "764",
+            "unit": "S178"
+          },
+          {
+            "ballots": 642,
+            "displayed": "642",
+            "unit": "S179"
+          },
+          {
+            "ballots": 807,
+            "displayed": "807",
+            "unit": "V101"
+          },
+          {
+            "ballots": 819,
+            "displayed": "819",
+            "unit": "V104"
+          },
+          {
+            "ballots": 858,
+            "displayed": "858",
+            "unit": "V105"
+          },
+          {
+            "ballots": 217,
+            "displayed": "217",
+            "unit": "V106"
+          },
+          {
+            "ballots": 157,
+            "displayed": "157",
+            "unit": "V107"
+          },
+          {
+            "ballots": 542,
+            "displayed": "542",
+            "unit": "V108"
+          },
+          {
+            "ballots": 461,
+            "displayed": "461",
+            "unit": "V109"
+          },
+          {
+            "ballots": 1060,
+            "displayed": "1,060",
+            "unit": "V110"
+          },
+          {
+            "ballots": 674,
+            "displayed": "674",
+            "unit": "V111"
+          },
+          {
+            "ballots": 20,
+            "displayed": "20",
+            "unit": "V112"
+          },
+          {
+            "ballots": 1027,
+            "displayed": "1,027",
+            "unit": "V113"
+          },
+          {
+            "ballots": 786,
+            "displayed": "786",
+            "unit": "V114"
+          },
+          {
+            "ballots": 773,
+            "displayed": "773",
+            "unit": "V116"
+          },
+          {
+            "ballots": 627,
+            "displayed": "627",
+            "unit": "V118"
+          },
+          {
+            "ballots": 565,
+            "displayed": "565",
+            "unit": "V120 MID"
+          },
+          {
+            "ballots": 789,
+            "displayed": "789",
+            "unit": "V121"
+          },
+          {
+            "ballots": 2,
+            "displayed": "2",
+            "unit": "V123"
+          },
+          {
+            "ballots": 698,
+            "displayed": "698",
+            "unit": "V125"
+          },
+          {
+            "ballots": 643,
+            "displayed": "643",
+            "unit": "V126"
+          },
+          {
+            "ballots": 486,
+            "displayed": "486",
+            "unit": "V127"
+          },
+          {
+            "ballots": 736,
+            "displayed": "736",
+            "unit": "V129"
+          },
+          {
+            "ballots": 248,
+            "displayed": "248",
+            "unit": "V130"
+          },
+          {
+            "ballots": 958,
+            "displayed": "958",
+            "unit": "V131"
+          },
+          {
+            "ballots": 838,
+            "displayed": "838",
+            "unit": "V133"
+          },
+          {
+            "ballots": 421,
+            "displayed": "421",
+            "unit": "V134"
+          },
+          {
+            "ballots": 314,
+            "displayed": "314",
+            "unit": "V136"
+          },
+          {
+            "ballots": 503,
+            "displayed": "503",
+            "unit": "V137"
+          },
+          {
+            "ballots": 11,
+            "displayed": "11",
+            "unit": "V138"
+          },
+          {
+            "ballots": 578,
+            "displayed": "578",
+            "unit": "V139"
+          },
+          {
+            "ballots": 865,
+            "displayed": "865",
+            "unit": "V140"
+          },
+          {
+            "ballots": 684,
+            "displayed": "684",
+            "unit": "V141"
+          },
+          {
+            "ballots": 812,
+            "displayed": "812",
+            "unit": "V142"
+          },
+          {
+            "ballots": 524,
+            "displayed": "524",
+            "unit": "V143 MID"
+          },
+          {
+            "ballots": 822,
+            "displayed": "822",
+            "unit": "V144"
+          },
+          {
+            "ballots": 364,
+            "displayed": "364",
+            "unit": "V145"
+          },
+          {
+            "ballots": 435,
+            "displayed": "435",
+            "unit": "V146"
+          }
+        ],
+        "page_errors": [],
+        "scopes": [
+          {
+            "ballots": 268257,
+            "mode": "available",
+            "native_units": 646
+          },
+          {
+            "ballots": 268257,
+            "mode": "uf_vep",
+            "native_units": 646
+          },
+          {
+            "ballots": 268257,
+            "mode": "uf_vap",
+            "native_units": 646
+          },
+          {
+            "ballots": 268257,
+            "mode": "official",
+            "native_units": 646
+          },
+          {
+            "mode": "in_person_early",
+            "native_additions": 0,
+            "prior_provider_ballots": 71861
+          },
+          {
+            "mode": "mail_returned",
+            "native_additions": 0,
+            "prior_provider_ballots": 7304
+          }
+        ],
+        "screenshot": "full-page-production-01-390.png",
+        "table_window_checked": 150,
+        "true_zero_units_checked": 19,
+        "width": 390
+      }
+    ],
+    "counts_version": "49aca906342ba2167fcf0ca6eda3c69ad85e6647d01478ec396b61e7134e1bc5",
+    "passed": true,
+    "source_dom_or_style_overrides": false
+  },
+  "passed": true,
+  "separate_explicit_fault_cases": {
+    "cases": [
+      {
+        "actual_production_with_only_stated_response_override": true,
+        "failed_values_not_substituted_or_selectable": true,
+        "fault": "http503",
+        "fresh_request_retry_recovered": true,
+        "native_count": 268257,
+        "native_units": 646,
+        "physical_keyboard_typeahead_and_tab_selected": "jefferson-native:A107",
+        "requests": 2,
+        "width": 1440
+      },
+      {
+        "actual_production_with_only_stated_response_override": true,
+        "failed_values_not_substituted_or_selectable": true,
+        "fault": "checksum",
+        "fresh_request_retry_recovered": true,
+        "native_count": 268257,
+        "native_units": 646,
+        "physical_keyboard_typeahead_and_tab_selected": "jefferson-native:A107",
+        "requests": 2,
+        "width": 1440
+      },
+      {
+        "actual_request_held_until_other_state_ready": true,
+        "fault": "delayed_KY_body_after_Alabama_selection",
+        "other_state_not_overwritten": true,
+        "return_to_KY_exact": true,
+        "source_dom_or_style_overrides": false,
+        "width": 1440
+      },
+      {
+        "actual_production_with_only_stated_response_override": true,
+        "failed_values_not_substituted_or_selectable": true,
+        "fault": "http503",
+        "fresh_request_retry_recovered": true,
+        "native_count": 268257,
+        "native_units": 646,
+        "physical_keyboard_typeahead_and_tab_selected": "jefferson-native:A107",
+        "requests": 2,
+        "width": 390
+      },
+      {
+        "actual_production_with_only_stated_response_override": true,
+        "failed_values_not_substituted_or_selectable": true,
+        "fault": "checksum",
+        "fresh_request_retry_recovered": true,
+        "native_count": 268257,
+        "native_units": 646,
+        "physical_keyboard_typeahead_and_tab_selected": "jefferson-native:A107",
+        "requests": 2,
+        "width": 390
+      },
+      {
+        "actual_request_held_until_other_state_ready": true,
+        "fault": "delayed_KY_body_after_Alabama_selection",
+        "other_state_not_overwritten": true,
+        "return_to_KY_exact": true,
+        "source_dom_or_style_overrides": false,
+        "width": 390
+      }
+    ],
+    "data_response_fault_injection_explicit": true,
+    "passed": true,
+    "separate_from_no_override_production_acceptance": true,
+    "source_dom_or_style_overrides": false
+  },
+  "whole_project_complete": false
+}
