@@ -208,6 +208,30 @@ def test_column_summary_finds_later_page_and_holds_missing_misaligned_or_conflic
         native.summary_statistics(body, [changed], profile)
 
 
+def test_summary_final_edition_preserves_native_status_without_promoting_rates(monkeypatch):
+    pdf_reader(monkeypatch)
+    body, row, profile = summary_fixture("column_turnout")
+    result = native.summary_statistics(body.replace(b"REPORT 3", b"FINAL"), [row], profile)
+    update = result["updates"][0]
+    assert update["value"] == 9
+    assert update["native"]["native_report_status_literal"] == "FINAL"
+    assert result["complete_native_query"][0]["native_report_status_literal"] == "FINAL"
+    assert update["rate_compatible"] is False
+    assert result["analytical_rates_promoted"] is False
+
+
+@pytest.mark.parametrize("status", ["FINAL REVISION", "PRELIMINARY"])
+def test_summary_final_edition_rejects_unreviewed_or_mixed_page_status(monkeypatch, status):
+    pdf_reader(monkeypatch)
+    body, row, profile = summary_fixture("column_turnout")
+    with pytest.raises(ValueError, match="report clock changed"):
+        native.summary_statistics(body.replace(b"REPORT 3", status.encode()), [row], profile)
+    header = b"\n".join(body.replace(b"REPORT 3", b"FINAL").splitlines()[:4])
+    later = body.replace(b"Page 1", b"Page 2")
+    with pytest.raises(ValueError):
+        native.summary_statistics(header + b"\f" + later, [row], profile)
+
+
 def test_summary_registered_sources_refresh_actual_projection_without_changing_other_states(tmp_path, monkeypatch):
     pdf_reader(monkeypatch)
     before = baseline(("NY",))

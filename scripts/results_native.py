@@ -1113,7 +1113,7 @@ def summary_page_statistics(page, number, pages, profile):
         r"November 3, 2026 (Printed on: \d{2}/\d{2}/20\d{2} at \d{2}:\d{2}:\d{2} [ap]m)",
         lines[1])
     if not title or not clock or lines[2] != "SUMMARY REPORT" or not re.fullmatch(
-            r"REPORT [0-9]+", lines[3]):
+            r"REPORT [0-9]+|FINAL", lines[3]):
         raise ValueError("Native summary election, administration or report clock changed")
     datetime.strptime(clock.group(1), "Printed on: %m/%d/%Y at %I:%M:%S %p")
     cells = {}
@@ -1131,7 +1131,8 @@ def summary_page_statistics(page, number, pages, profile):
                             "column": match.start(), "line": index,
                             "fraction": match.group(2) if label != "TOTAL REGISTRATION" else None}
     if not cells:
-        return {"source_clock": clock.group(1), "page": number}
+        return {"source_clock": clock.group(1), "page": number,
+                "native_report_status_literal": lines[3]}
     columns = [cell["column"] for cell in cells.values()]
     # Layout extraction shifts some same-column labels by one character.
     if len(cells) != 4 or max(columns) - min(columns) > 1:
@@ -1147,7 +1148,8 @@ def summary_page_statistics(page, number, pages, profile):
     return {"count": value, "registered": registered, "source_clock": clock.group(1),
             "native_values": {label: cell["value"] for label, cell in cells.items()},
             "native_fraction_literal": cells["TOTAL TURNOUT"]["fraction"] + "%",
-            "statistical_cells": cells, "page": number}
+            "statistical_cells": cells, "page": number,
+            "native_report_status_literal": lines[3]}
 
 
 def summary_statistics(body, templates, profile):
@@ -1161,7 +1163,9 @@ def summary_statistics(body, templates, profile):
     parents = [query for query in queries if "count" in query]
     vectors = {(row["count"], row["registered"], row["source_clock"]) for row in parents}
     if (len(vectors) != 1 or len({row["source_clock"] for row in queries}) != 1
-            or profile["layout"] == "column_turnout" and len(parents) != 1):
+            or profile["layout"] == "column_turnout" and (
+                len(parents) != 1
+                or len({row["native_report_status_literal"] for row in queries}) != 1)):
         raise ValueError("Native summary repeated parents or clocks disagree")
     query = parents[0]
     clock_key = "native_pdf_clock" if profile["layout"] == "repeated_header" else "source_clock_literal"
@@ -1203,7 +1207,8 @@ def summary_statistics(body, templates, profile):
             native = {"source_administration_id": profile["identity"],
                       "administration": profile["name"],
                       "component_county_fips": old["component_county_fips"],
-                      "native_values": query["native_values"]}
+                      "native_values": query["native_values"],
+                      "native_report_status_literal": query["native_report_status_literal"]}
         if current_clock < prior_clock:
             raise ValueError("Native summary edition regressed")
         native.update({clock_key: query["source_clock"], "query": query,
