@@ -921,6 +921,110 @@ class RoutineBatchTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     compile_counts(description, files, index, [source])
 
+    def test_county_addition_rejects_exact_selected_name_but_not_literal_variant(self):
+        from scripts.participation_count_additions import append_reviewed
+        from scripts.participation_intake.contract import observation_id
+        _, _, _, source, _ = self.addition_fixture()
+        row = source["rows"][0]
+        row["geography"].update(
+            id="native:AR:county:hancock",
+            level="county",
+            name="Hancock",
+            parent_id=None,
+        )
+        row["view"].update(
+            county="Hancock",
+            county_id="native-hancock",
+            geography_level="county",
+            maps_approved=False,
+            unit=None,
+            unit_key=None,
+        )
+        row["id"] = observation_id(
+            row["source"]["id"],
+            row["election"]["id"],
+            row["geography"]["id"],
+            row["measure"]["id"],
+            row["measure"]["mode"],
+        )
+        old = copy.deepcopy(row)
+        old["id"] = "existing-hancock"
+        old["geography"]["id"] = "additional:AR:18059"
+        old["view"]["county_id"] = "additional:AR:18059"
+        old["count"] = dict(literal=None, status="unknown", value=None)
+        old["view"]["ballots"] = None
+        state = dict(
+            state_code="AR",
+            year=2026,
+            records=[old],
+            views={
+                mode: dict(
+                    qualified=True,
+                    counties=["existing-hancock"],
+                    precincts=[],
+                    nongeographic=[],
+                    holds=[],
+                )
+                for mode in ("available", "official", "uf_vap", "uf_vep")
+            },
+        )
+        baseline = pin(encoded(state))
+
+        def candidate(name):
+            current = copy.deepcopy(row)
+            current["geography"]["name"] = name
+            current["view"]["county"] = name
+            current["id"] = observation_id(
+                current["source"]["id"],
+                current["election"]["id"],
+                current["geography"]["id"],
+                current["measure"]["id"],
+                current["measure"]["mode"],
+            )
+            binding = dict(
+                contract="participation.reviewed_count_addition.v1",
+                baseline_shard=baseline,
+                source_scope_review_evidence="Synthetic exact-literal county review",
+                records={current["id"]: pin(encoded(current))},
+                views={
+                    mode: {
+                        partition: dict(
+                            before=list(frame[partition]),
+                            append=[current["id"]] if partition == "counties" else [],
+                        )
+                        for partition in ("counties", "precincts", "nongeographic")
+                    }
+                    for mode, frame in state["views"].items()
+                },
+            )
+            return dict(
+                addition=binding,
+                baseline_source_ids=[],
+                rows=[current],
+                spec=source["spec"],
+                target="counts_addition",
+            )
+
+        with self.assertRaisesRegex(ValueError, "exact selected county name"):
+            append_reviewed(state, candidate("Hancock"), baseline)
+        duplicate = candidate("Distinct County")
+        second = copy.deepcopy(duplicate["rows"][0])
+        second["geography"]["id"] += "-second"
+        second["view"]["county_id"] += "-second"
+        second["id"] = observation_id(
+            second["source"]["id"], second["election"]["id"], second["geography"]["id"],
+            second["measure"]["id"], second["measure"]["mode"])
+        duplicate["rows"].append(second)
+        duplicate["addition"]["records"][second["id"]] = pin(encoded(second))
+        for frame in duplicate["addition"]["views"].values():
+            frame["counties"]["append"].append(second["id"])
+        with self.assertRaisesRegex(ValueError, "exact selected county name"):
+            append_reviewed(state, duplicate, baseline)
+        result, changed = append_reviewed(state, candidate("Hancock County"), baseline)
+        self.assertEqual(changed, 1)
+        self.assertEqual(result["views"]["official"]["counties"],
+                         ["existing-hancock", result["records"][-1]["id"]])
+
     def test_addition_runs_through_shared_cli_and_offline_cached_noop(self):
         description, files, index, source, body = self.addition_fixture()
         self.plan["sources"] = [dict(id="native", **{key: source[key] for key in

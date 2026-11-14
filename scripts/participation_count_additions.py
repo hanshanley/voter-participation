@@ -60,6 +60,23 @@ def append_reviewed(state, source, baseline_pin):
                         or partition == "nongeographic" and level != "nongeographic"
                         or mode in ("in_person_early", "mail_returned") and row["measure"]["mode"] != mode):
                     raise IntakeError("addition_scope", "New observations cannot substitute geographic or mode scopes")
+            if partition == "counties":
+                prior_names = {
+                    existing[key]["view"].get("county")
+                    for key in frame[partition]
+                    if existing[key]["geography"]["level"] == "county"
+                }
+                new_names = [
+                    by_id[key]["view"].get("county")
+                    for key in new
+                    if by_id[key]["geography"]["level"] == "county"
+                ]
+                if (len(new_names) != len(set(new_names))
+                        or prior_names & set(new_names)):
+                    raise IntakeError(
+                        "addition_scope",
+                        "A county addition cannot duplicate an exact selected county name",
+                    )
             def identity(row):
                 view = row["view"]
                 return (view.get("county_id"), view.get("unit_key") if partition == "precincts"
