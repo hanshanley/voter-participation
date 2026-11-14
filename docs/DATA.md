@@ -8,6 +8,43 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Jefferson Kentucky native ballots and reporting labels
+
+[Complete permitted numerical facts, all51 baseline jurisdictions, queries, code, tests and replay](https://github.com/hanshanley/margin_of_error/releases/download/participation-ky-jefferson-native-20261114-01/complete-analysis.zip):
+**13,649,216 bytes/150 members**, SHA256
+`9f7a061ea0a401b662b5cc8508eb82a5a3568e4b85a1be87157b0106240a8cfc`.
+Immutable445091351 has authenticated and anonymous full-body verification.
+
+Keep the downloaded ZIP one directory above a fresh extraction. From inside
+that extraction, with CPython >=3.9 and pytest8.x already installed:
+
+```sh
+python3 code/run_public_acceptance.py --archive ../complete-analysis.zip \
+  --sdk-root . --work-dir ../jefferson-public-acceptance
+```
+
+Use a fresh work directory. All150 archive members are verified; the actual
+archive pin is materialized into the registry outside the ZIP. The unchanged
+compiler reproduces54 counts bodies byte-for-byte, including all51 jurisdictions.
+Each of two extracted executions and the actual public-download replay passes
+21 Jefferson/parser/typed tests plus seven shared intake tests. Four probes
+cover selected Python network/DNS/child-process APIs, not an OS sandbox.
+
+The package includes all7,758 statistical cells,647 SOVC participation rows,
+5,365 page-inventory rows and652 reconciliation checks. Native19 zero TOTAL
+units and60 suffixed labels remain. County parent268,257 and646 reporting
+labels are alternative views. No rate, eligible-population denominator, new
+geometry, unique-person or individual switching/stay-home claim is introduced.
+SDK publication alone does not activate the live dataset.
+
+Publisher PDFs/HTML/page images/templates are excluded. Public reproduction
+starts from complete reviewed facts, not fresh extraction of excluded originals;
+the original extraction code and synthetic parser tests are provided transparently.
+Original extraction additionally used pypdf6.16.0, which is not required by the
+fact-only replay. Native geometry and accepted model products are unchanged,
+not recomputed by this counts-only SDK.
+[Source definitions and clocks](../SOURCES.md#2026-jefferson-kentucky-native-participation-statistics).
+
 ## Exploratory AP/CHEP predictor-block comparison
 
 [Complete numerical facts, every evaluation/query, code, tests and timing erratum](https://github.com/hanshanley/margin_of_error/releases/download/participation-norc-source-predictor-blocks-20261114-01/complete-analysis.zip):

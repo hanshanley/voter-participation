@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Jefferson Kentucky native facts | [268,257 Ballots Cast, 646 literal reporting labels and complete fact-only replay](#2026-jefferson-kentucky-native-participation-statistics) |
 | Current AP/CHEP predictor-block evidence | [Complete exploratory source-response comparison and timing erratum; no model promotion](#exploratory-apchep-source-predictor-block-comparison) |
 | Current Louisiana native group map | [Early/absentee report compositions, qualified parish context and complete fact-only reproduction](#2026-louisiana-native-earlyabsentee-group-map-and-data) |
 | Current historical integer-format reconciliation | [179 qualified PA/UT native cells; original flags and all fractional/unknown holds retained](#historical-native-integer-format-reconciliation) |
@@ -64,6 +65,44 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Jefferson Kentucky native participation statistics
+
+The county clerk's declared November3,2026 General Election reports supply
+268,257 native **Ballots Cast - Total**: Election Day187,470, Mail8,942,
+Walk-in Excuse1,309, Walk-in Early70,532 and Provisional4. These are cast
+ballots, not candidate selections, unique people or returned-mail envelopes.
+The county parent and646 native reporting labels are alternative views, not
+additive populations. All60 suffix labels and19 true-zero TOTAL units remain.
+
+The complete query contains7,758 statistical numeric cells,4,819 literal zeros,
+647 SOVC participation rows including its separate parent, all5,365 source-page
+decisions and652 exact-zero cross-report comparisons. Reports share publisher
+lineage; agreement is not independent replication. The summary clock is
+`11/04/2026     3:07 PM`, SOVC `11/05/2026 02:44PM`, and precinct report
+`11/06/2026     9:52 AM`. Printed zones are unknown; PDF creation offsets do
+not supply them. The summary/precinct status literal is `UNOFFICIAL RESULTS`;
+this status is not transferred onto SOVC. Native646/646 reporting is not
+certification, finality or a common-as-of claim across reports.
+
+The summary has no native blank-ballot measure. The precinct blank TOTAL sum19
+is derived, not a printed county statistic. Registration, analysis turnout
+rates, FIPS/precinct-boundary joins and individual transitions remain withheld.
+Native counts, clock mirrors, literal unit labels and reviewed qualifications
+are separately bound. The first typed/UI candidate was held and repaired after
+critique; its count values were not repaired or changed.
+
+The immutable fact-only SDK445091351 is13,649,216 bytes/150 members with full
+authenticated and anonymous verification. Two fresh extracted executions and
+the actual public-download replay each pass28 tests/four selected Python API
+guard probes and reproduce all54 candidate counts outputs. All483 prior KY
+records, early/mail selections and the other50 state shards remain exact.
+The public replay starts from complete reviewed facts; publisher PDFs, HTML,
+images and templates are excluded. It does not re-extract those originals or
+reproduce the unchanged native geometry/model products.
+The shared compiler is unchanged; live catalog/browser acceptance is recorded
+separately before activation is treated as delivered.
+[Complete download and command](docs/DATA.md#jefferson-kentucky-native-ballots-and-reporting-labels).
 
 ## Exploratory AP/CHEP source predictor-block comparison
 

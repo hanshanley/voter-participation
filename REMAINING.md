@@ -13,6 +13,27 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Jefferson Kentucky: complete facts published, live acceptance pending
+
+Independent source, typed-data/runtime and SDK reviews pass for the new native
+county parent268,257 plus646 literal reporting units. All60 suffix labels,
+19 zero TOTAL units, unknown printed-clock zones, missing county blank measure
+and unofficial/nonfinal qualifications remain. No new rate, registration
+denominator, unique-person count, geometry or behavioral estimate is inferred.
+
+Immutable445091351 contains the complete13,649,216-byte/150-member fact-only SDK.
+Two fresh extracted replays and an actual anonymous public-download execution
+each pass28 tests/four selected Python API probes with54 counts outputs exact.
+Critique repaired misleading legacy display metadata and added isolated
+qualification/mirror mutation tests before packaging. The original source
+statistics did not change.
+
+Actual existing whole-page preview, guarded data-catalog activation, no-override
+production acceptance and canonical persistence remain required. This is not a
+completed live integration or permission to allocate state demographic estimates
+to these reporting units. All other state shards and accepted models stay fixed.
+[Complete package](docs/DATA.md#jefferson-kentucky-native-ballots-and-reporting-labels).
+
 ## Source-predictor comparison complete; no unsupported model promotion
 
 The explicit AP/NORC predictor-block follow-up now has12 complete numerical
@@ -41,7 +62,7 @@ defaults remain unchanged, and no website build was needed.
 
 Continue the substantive new2026 source integration and compatible-frame/
 local-model gaps. Jefferson County Kentucky's newly declared native ballot/
-precinct reports are being independently qualified; they are not yet a live
+precinct reports now have independently qualified facts and an SDK, not yet a live
 integration or justification to allocate state demographic estimates locally.
 Full audit and then beautification remain pending genuine remaining work.
 [Methods](docs/NORC_HOUSE_TRANSITIONS.md#source-predictor-blocks-exploratory-apchep-comparison)
