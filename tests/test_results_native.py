@@ -6,7 +6,7 @@ import json
 import pytest
 
 from scripts import results_granular as granular, results_native as native, results_intake as intake
-from scripts.participation_intake.contract import IntakeError, encoded, pin, validate
+from scripts.participation_intake.contract import IntakeError, encoded, observation_id, pin, validate
 from test_results_granular import template
 
 
@@ -766,3 +766,172 @@ def test_texas_reconciliation_ocr_keeps_same_engine_two_resolution_and_point98(m
     monkeypatch.setattr(ocr, "first_page_views", lambda body, **kwargs: [view, low])
     with pytest.raises(ValueError, match="confidence"):
         native.texas_reconciliation_statistics(b"", [row])
+
+
+def legacy_webforms_fixture(monkeypatch, url=None):
+    url = url or next(iter(native.LEGACY_WEBFORMS_PROFILES))
+    profile = native.LEGACY_WEBFORMS_PROFILES[url]
+    monkeypatch.setitem(native.LEGACY_WEBFORMS_PROFILES, url, {**profile, "counties": 1})
+    body = (
+        f'<title>{profile["title"]}</title>'
+        '<h1>Unofficial Results</h1><h2>General Election November 3, 2026</h2>'
+        '<span class="header-ballot-text">Ballots Cast</span>'
+        '<span class="header-ballot-number">100</span>'
+        '<span class="header-voter-text">Registered Voters</span>'
+        '<span class="header-voter-number">200</span>'
+        '<span class="header-partial-number">0</span>'
+        '<span class="header-total-number">1</span>'
+        '<span class="header-totalprecincts-text">1</span>'
+        '<div class="col turnout-results-box-a"><h1>County A</h1><input countyid="02">'
+        '<div class="provisional-precinct-header">'
+        '<span class="county-precinct">Precinct Results</span>'
+        '<span class="county-cast">Ballots Cast</span>'
+        '<span class="county-counted">Registered Voters</span></div>'
+        '<div class="odd"><div class="county-precinct">UNIT 0</div>'
+        '<div class="county-cast"><span>0</span></div>'
+        '<div class="county-counted"><span>10</span></div></div></form>').encode()
+    rows = []
+    for level, unit in (("county", ""), ("reporting_unit", "UNIT 0")):
+        row = template(profile["state"], unit or "County A", level, {})
+        row["measure"] = copy.deepcopy(native.LEGACY_WEBFORMS_MEASURE)
+        row["geography"]["id"] = profile["state"] + "-" + level + "-" + url.rsplit("=", 1)[1]
+        row["id"] = observation_id(*granular.identity_fields(row))
+        row["view"].update(source_url=url, county_id="02", county="County A", unit=unit)
+        rows.append(row)
+    return url, body, rows
+
+
+def test_legacy_webforms_native_rows_do_not_invent_parent_or_clock(monkeypatch):
+    url, body, rows = legacy_webforms_fixture(monkeypatch)
+    result = native.legacy_webforms_statistics(body, rows, url)
+    assert len(result["updates"]) == 1
+    update = result["updates"][0]
+    assert update["value"] == 0 and update["clock"] is None
+    assert update["native"]["query"]["native_measure_literal"] == "Ballots Cast"
+    assert result["template_decisions"][0]["status"] == "held_county_parent_not_supplied"
+    assert result["native_unit_count_sum"] == 0 and result["native_state_count"] == 100
+    changed = body.replace(b"<span>0</span>", b"<span>7</span>")
+    assert native.legacy_webforms_statistics(changed, rows, url)["updates"][0]["value"] == 7
+
+
+def test_legacy_webforms_ambiguous_and_renamed_labels_never_join_by_position(monkeypatch):
+    url, body, rows = legacy_webforms_fixture(monkeypatch)
+    block = body[body.index(b'<div class="odd">'):body.index(b"</form>")]
+    duplicated = body.replace(b"</form>", block + b"</form>")
+    result = native.legacy_webforms_statistics(duplicated, rows, url)
+    assert result["updates"] == []
+    assert len(result["complete_native_query"]) == 3
+    assert result["template_decisions"][1]["status"] == "held_ambiguous_literal_unit"
+    renamed = native.legacy_webforms_statistics(body.replace(b"UNIT 0", b"RENAMED"), rows, url)
+    assert renamed["updates"] == []
+    assert renamed["template_decisions"][1]["status"] == "held_literal_unit_not_supplied"
+
+
+def test_legacy_webforms_rendered_whitespace_preserves_original_labels(monkeypatch):
+    url, body, rows = legacy_webforms_fixture(monkeypatch)
+    body = body.replace(b"<h1>County A</h1>", b"<h1>County<br />A</h1>")
+    body = body.replace(b"UNIT 0", b"UNIT  0")
+    result = native.legacy_webforms_statistics(body, rows, url)
+    query = result["updates"][0]["native"]["query"]
+    assert query["county"] == "County A" and query["county_literal"] == "County\nA"
+    assert query["unit"] == "UNIT 0" and query["unit_literal"] == "UNIT  0"
+
+
+def test_legacy_webforms_scope_column_roles_and_clock_rollback_fail_closed(monkeypatch):
+    url, body, rows = legacy_webforms_fixture(monkeypatch)
+    for old, new in ((b"Unofficial Results", b"Official Results"),
+                     (b"November 3, 2026", b"May 5, 2026"),
+                     (b"Registered Voters", b"Eligible Voters"),
+                     (b'class="county-cast">Ballots Cast',
+                      b'class="county-cast">Candidate Votes'),
+                     (b"Precinct Results", b"Candidate Results"),
+                     (b"<span>0</span>", b"<span></span>"),
+                     (b'countyid="02"', b'countyid="03"')):
+        with pytest.raises(ValueError):
+            native.legacy_webforms_statistics(body.replace(old, new), rows, url)
+    rows[1]["source_clock"]["literal"] = "11/12/2026 10:00 AM"
+    dated = body + b"Results last updated:</span><span>11/11/2026 10:00 AM</span>"
+    with pytest.raises(ValueError, match="regressed"):
+        native.legacy_webforms_statistics(dated, rows, url)
+    missing = native.legacy_webforms_statistics(body, rows, url)["updates"][0]
+    assert missing["clock"] is None
+    assert missing["native"]["prior_accepted_source_clock"] == "11/12/2026 10:00 AM"
+    assert missing["native"]["current_native_count_clock_not_supplied"] is True
+    for field, value in (("kind", "candidate_votes"), ("literal", "Candidate votes"),
+                         ("mode", "early")):
+        changed = copy.deepcopy(rows)
+        changed[1]["measure"][field] = value
+        with pytest.raises(ValueError, match="scope changed"):
+            native.legacy_webforms_statistics(body, changed, url)
+
+
+def test_legacy_webforms_plans_collects_projects_all_three_products_and_is_repeat_stable(
+        tmp_path, monkeypatch):
+    before = baseline(("NE", "SD", "NY"))
+    originals, rows_by_state = {}, {"NE": [], "SD": []}
+    for url in native.LEGACY_WEBFORMS_PROFILES:
+        url, body, rows = legacy_webforms_fixture(monkeypatch, url)
+        originals[url] = body
+        rows[1]["source_clock"]["literal"] = "11/12/2026 10:00 AM"
+        rows_by_state[rows[0]["geography"]["state_code"]].extend(rows)
+    index = json.loads(before["index.json"])
+    for state, rows in rows_by_state.items():
+        shard = {"records": rows, "views": {"official": {
+            "counties": [row["id"] for row in rows if row["geography"]["level"] == "county"],
+            "precincts": [row["id"] for row in rows if row["geography"]["level"] == "reporting_unit"]}}}
+        name = "states/" + state + ".json.gz"
+        before[name] = intake.compressed(encoded(shard))
+        index["states"][state].update(pin(before[name]))
+    before["index.json"] = encoded(index)
+    plan = native.source_plan(before)
+    selected = [source for state in ("NE", "SD") for source in plan[state].values()]
+    assert {source["url"] for source in selected} == set(originals)
+    assert all(source["adapter"] == "reviewed_legacy_webforms_statistics" for source in selected)
+
+    def acquire(self, url):
+        self.guard(url)
+        if url not in originals:
+            raise IntakeError("source_stopped", "Persisted access hold")
+        body = originals[url]
+        return body, {"url": url, "origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    collector = intake.Collector(tmp_path, {}, {"urls": [], "prefixes": [], "hosts": []},
+                                 datetime(2026, 11, 14, tzinfo=timezone.utc))
+    entries = native.collect_sources(collector, before)
+    reported = [entry for entry in entries.values() if entry["status"] == "reported"]
+    assert len(reported) == 3
+    assert all(entry["data"]["native_unit_row_count"] == 1 for entry in reported)
+    after, changes = granular.project(before, entries)
+    assert len(changes) == 3
+    assert after["states/NY.json.gz"] == before["states/NY.json.gz"]
+    for state in ("NE", "SD"):
+        old, current = (json.loads(gzip.decompress(item["states/" + state + ".json.gz"]))
+                        for item in (before, after))
+        assert current["views"] == old["views"]
+        for prior, row in zip(old["records"], current["records"]):
+            assert row["id"] == prior["id"] and row["geography"] == prior["geography"]
+            if row["geography"]["level"] == "county":
+                assert row == prior
+            else:
+                assert row["count"]["value"] == 0 and row["denominator"] is None
+                assert row["source_clock"]["literal"] is None
+                assert row["view"]["native_record"]["prior_accepted_source_clock"] == "11/12/2026 10:00 AM"
+    repeated = native.collect_sources(collector, after)
+    assert granular.project(after, repeated) == (after, [])
+    dated = originals[next(iter(originals))] + (
+        b"Results last updated:</span><span>11/11/2026 10:00 AM</span>")
+    first_source = next(iter(plan["NE"].values()))
+    templates = [row for row in granular.selected_records(after, "NE")
+                 if row["view"]["source_url"] == first_source["url"]]
+    with pytest.raises(ValueError, match="regressed"):
+        native.legacy_webforms_statistics(dated, templates, first_source["url"])
+    originals[first_source["url"]] = originals[first_source["url"]].replace(
+        b"November 3, 2026", b"May 5, 2026")
+    retained = intake.Collector(tmp_path / "retained", repeated,
+                               {"urls": [], "prefixes": [], "hosts": []},
+                               datetime(2026, 11, 14, tzinfo=timezone.utc))
+    failed = native.collect_sources(retained, after)
+    held = [entry for entry in failed.values() if entry["status"] == "retained_after_failure"]
+    assert len(held) == 1 and held[0]["data"]["updates"][0]["value"] == 0
+    assert granular.project(after, failed) == (after, [])

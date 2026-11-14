@@ -132,6 +132,25 @@ FINAL remains a literal report edition, never inferred certification.
 Retained-original acceptance and portable tests establish parser capability;
 new hosted outcomes remain separately verifiable in the complete coverage query.
 
+The reviewed legacy webforms family registers Nebraska's distinct TURN/PREC
+products and South Dakota's PREC product. It requires the complete native county
+inventory and literal election, publisher, status, unit, Ballots Cast and
+Registered Voters column roles. Native unit-header literals remain separate from
+canonical geography types. Only a unique native county-ID/rendered-unit-label
+pair can refresh an existing observation; HTML whitespace is not an alias.
+Physical row positions never resolve duplicate labels. All physical rows remain
+in the complete query, including ambiguous units, while those accepted rows stay
+held. Native state parents, printed reporting-unit counts and unit sums remain
+distinct; absent county parents are never synthesized.
+
+These updates retain the entire accepted legacy measure contract rather than
+newly qualifying it as ballots or people. Missing report clocks remain unknown,
+not retrieval times. Earlier accepted clocks are retained separately and remain
+available for rollback rejection across repeat captures. County parents, existing
+geographic qualifications and withheld rates survive; no new rate is approved.
+Portable tests exercise all three products through source planning, collection
+and projection, including malformed-source retention and byte-stable repeats.
+
 Source planning examines all 51 accepted jurisdiction shards. The current
 baseline supplies primary-product registrations in 29 states; that number
 includes unadapted products retained as factual review items, not 29 complete

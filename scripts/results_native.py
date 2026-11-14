@@ -121,6 +121,19 @@ SUMMARY_PROFILES = {
         )
     },
 }
+LEGACY_WEBFORMS_PROFILES = {
+    "https://electionresults.nebraska.gov/VoterTurnoutDetails.aspx?map=PREC": {
+        "state": "NE", "title": "Nebraska Secretary of State", "counties": 93},
+    "https://electionresults.nebraska.gov/VoterTurnoutDetails.aspx?map=TURN": {
+        "state": "NE", "title": "Nebraska Secretary of State", "counties": 93},
+    "https://electionresults.sd.gov/VoterTurnoutDetails.aspx?map=PREC": {
+        "state": "SD", "title": "South Dakota Secretary of State", "counties": 66},
+}
+LEGACY_WEBFORMS_MEASURE = {
+    "id": "previously-reviewed-participation-count", "kind": "participation_reported",
+    "literal": "Reported ballots (previously reviewed export label, not a new native qualification)",
+    "mode": "source_defined", "unit": "source_reported_count",
+}
 PDF_MEASURES = {
     "Ballots Cast - Total", "Ballots Cast", "Total Ballots Cast", "Total Ballots",
     "Voters Cast", "Cards Cast", "TOTAL TURNOUT",
@@ -1313,6 +1326,177 @@ def webforms_statistics(body, templates):
             "native_measure_not_relabelled_as_ballots": True}
 
 
+def _webforms_native_text(text):
+    text = re.sub(r"<br\s*/?>", "\n", text, flags=re.I)
+    return html.unescape(re.sub(r"<[^>]*>", "", text)).strip()
+
+
+def _webforms_label(text):
+    return " ".join(_webforms_native_text(text).split())
+
+
+def legacy_webforms_statistics(body, templates, url):
+    profile = LEGACY_WEBFORMS_PROFILES[url]
+    text = body.decode("utf-8-sig")
+    title = re.findall(r"<title>(.*?)</title>", text, re.S)
+    if len(title) != 1 or _webforms_label(title[0]) != profile["title"]:
+        raise ValueError("Native statistical publisher identity changed")
+    if (len(re.findall(r"<h2>\s*General Election November 3, 2026\s*</h2>", text)) != 1
+            or len(re.findall(r"<h1>\s*Unofficial Results\s*</h1>", text)) != 1):
+        raise ValueError("Native statistical election/status changed")
+
+    def header(css, expected_label=None):
+        matches = re.findall(r'<span class="' + css + r'">(.*?)</span>', text, re.S)
+        if len(matches) != 1:
+            raise ValueError("Missing or repeated native statistical header")
+        value = _webforms_label(matches[0])
+        if expected_label is not None:
+            if value != expected_label:
+                raise ValueError("Native statistical measure changed")
+            return value
+        if re.fullmatch(COUNT_LITERAL, value) is None:
+            raise ValueError("Missing native statistic is not a recorded zero")
+        return int(value.replace(",", ""))
+
+    header("header-ballot-text", "Ballots Cast")
+    header("header-voter-text", "Registered Voters")
+    state_count, state_registered = header("header-ballot-number"), header("header-voter-number")
+    partial, reported, total = (
+        header(name) for name in (
+            "header-partial-number", "header-total-number", "header-totalprecincts-text"))
+    if partial != 0 or reported != total:
+        raise ValueError("Native statistical reporting scope requires review")
+    updated = re.findall(r"Results last updated:</span><span>([^<]+)</span>", text)
+    if len(updated) > 1:
+        raise ValueError("Conflicting native update clocks")
+    clock = html.unescape(updated[0]) if updated else None
+    if clock is not None:
+        clock_value(clock)
+    sections = re.findall(
+        r'<div class="col turnout-results-box-a">\s*<h1>(.*?)</h1>(.*?)(?='
+        r'<div class="col turnout-results-box-a">|</form>)', text, re.S)
+    pattern = (
+        r'<div class="(?:odd|even)">\s*<div class="county-precinct">(.*?)</div>\s*'
+        r'<div class="county-cast">\s*<span>(' + COUNT_LITERAL + r')</span>\s*</div>\s*'
+        r'<div class="county-counted">\s*<span>(' + COUNT_LITERAL + r')</span>')
+    facts, counties, units = [], {}, {}
+    for label, block in sections:
+        county_literal = _webforms_native_text(label)
+        ids = set(re.findall(r'countyid="([0-9]+)"', block))
+        if len(ids) != 1:
+            raise ValueError("Ambiguous native county identity")
+        county_id = next(iter(ids))
+        county = _webforms_label(label)
+        if not county or county_id in counties:
+            raise ValueError("Duplicate or missing native county")
+        counties[county_id] = county
+        headings = re.findall(
+            r'<div class="provisional-precinct-header">(.*?)</div>', block, re.S)
+        if len(headings) != 1:
+            raise ValueError("Missing or repeated native statistical unit header")
+        columns = re.findall(r'<span class="([^"]+)">(.*?)</span>', headings[0], re.S)
+        columns = [(css, _webforms_label(value)) for css, value in columns]
+        if (len(columns) != 3 or columns[0][0] != "county-precinct"
+                or columns[0][1] not in ("Precinct Results", "Vote Center")
+                or columns[1:] != [("county-cast", "Ballots Cast"),
+                                   ("county-counted", "Registered Voters")]):
+            raise ValueError("Native statistical unit column roles changed")
+        matches = re.findall(pattern, block, re.S)
+        if not matches or len(matches) != len(re.findall(r'<div class="county-precinct">', block)):
+            raise ValueError("Missing or unreadable native statistical row")
+        for ordinal, (label, value, registered) in enumerate(matches):
+            unit = _webforms_label(label)
+            if not unit:
+                raise ValueError("Missing literal native reporting-unit label")
+            row = {
+                "query_id": "native-webforms-unit-statistics",
+                "native_measure_literal": "Ballots Cast",
+                "native_unit_header_literal": columns[0][1],
+                "geography_level": "reporting_unit",
+                "county_id": county_id, "county": county, "unit": unit,
+                "county_literal": county_literal, "unit_literal": _webforms_native_text(label),
+                "count": int(value.replace(",", "")),
+                "registered": int(registered.replace(",", "")),
+                "count_literal": value, "registered_literal": registered,
+                "physical_row_ordinal": ordinal, "source_clock": clock,
+                "physical_ordinal_is_not_a_native_unit_id": True,
+            }
+            facts.append(row)
+            units.setdefault((county_id, unit), []).append(row)
+    if len(counties) != profile["counties"]:
+        raise ValueError("Native county inventory changed")
+
+    decisions, updates = [], []
+    for template in templates:
+        view = template["view"]
+        if (template["geography"]["state_code"] != profile["state"]
+                or template["election"]["year"] != 2026
+                or template["election"]["type"] != "general"
+                or template["measure"] != LEGACY_WEBFORMS_MEASURE
+                or view.get("source_url") != url):
+            raise ValueError("Reviewed native statistical source scope changed")
+        county_id = str(view.get("county_id", ""))
+        if county_id not in counties or view.get("county") != counties[county_id]:
+            raise ValueError("Reviewed literal native county changed")
+        decision = {"id": template["id"], "status": None}
+        if template["geography"]["level"] == "county":
+            decision["status"] = "held_county_parent_not_supplied"
+        elif template["geography"]["level"] != "reporting_unit":
+            raise ValueError("Unsupported native statistical geography")
+        else:
+            candidates = units.get((county_id, view.get("unit")), [])
+            if len(candidates) != 1:
+                decision["status"] = ("held_ambiguous_literal_unit" if candidates
+                                      else "held_literal_unit_not_supplied")
+            elif template["count"]["status"] != "reported":
+                decision["status"] = "held_prior_source_count_qualification"
+            else:
+                row = candidates[0]
+                prior_clock = template["source_clock"]["literal"]
+                retained_clock = (view.get("native_record") or {}).get("prior_accepted_source_clock")
+                if prior_clock is not None and prior_clock != clock:
+                    retained_clock = prior_clock
+                rollback_clock = prior_clock or retained_clock
+                if clock is not None and rollback_clock is not None:
+                    if clock_value(clock) < clock_value(rollback_clock):
+                        raise ValueError("Native statistical edition regressed")
+                denominator = template["denominator"]
+                compatible = bool(denominator and denominator["qualified"]
+                                  and denominator["value"] == row["registered"]
+                                  and row["registered"] and row["count"] <= row["registered"])
+                native = {"query": row, "private_original_pin": pin(body),
+                          "prior_accepted_source_clock": retained_clock,
+                          "current_native_count_clock_not_supplied": clock is None,
+                          "whole_publisher_html_redistributed": False,
+                          "match_basis": "native_county_id_and_unique_rendered_unit_label",
+                          "html_whitespace_only_label_comparison": True}
+                updates.append(change(template, row["count"], native,
+                                      registered=row["registered"], clock=clock,
+                                      rate_compatible=compatible))
+                decision["status"] = "reported"
+        decisions.append(decision)
+    if not templates:
+        raise ValueError("No reviewed native statistical templates")
+    facts.append({
+        "geography_level": "state", "count": state_count, "registered": state_registered,
+        "native_measure_literal": "Ballots Cast",
+        "source_clock": clock, "reported_units": reported, "total_units": total,
+        "state_parent_not_a_projection_target": True,
+    })
+    return {
+        "updates": updates, "complete_native_query": facts,
+        "template_decisions": decisions, "geographic_joins_changed": False,
+        "native_measure_not_relabelled_as_ballots": True,
+        "native_unit_row_count": len(facts) - 1,
+        "native_unit_count_sum": sum(row["count"] for row in facts[:-1]),
+        "native_state_count": state_count,
+        "state_and_unit_scopes_not_assumed_additive_or_complete": True,
+        "ambiguous_native_unit_labels": [
+            {"county_id": key[0], "unit": key[1], "physical_rows": len(rows)}
+            for key, rows in units.items() if len(rows) != 1],
+    }
+
+
 def source_plan(baseline):
     index = json.loads(baseline["index.json"])
     result = {}
@@ -1338,6 +1522,7 @@ def source_plan(baseline):
             profile = RECORD_PROFILES.get(url)
             workbook_profile = WORKBOOK_PROFILES.get(url)
             summary_profile = SUMMARY_PROFILES.get(url)
+            legacy_webforms_profile = LEGACY_WEBFORMS_PROFILES.get(url)
             native = view.get("native_record") or {}
             if summary_profile and state == summary_profile["state"]:
                 adapter = "reviewed_summary_statistics"
@@ -1350,6 +1535,8 @@ def source_plan(baseline):
             elif (url == NM_URL and state == "NM"
                   and (native.get("query") or {}).get("query_id") == "nm-all-turnout"):
                 adapter = "reviewed_webforms_statistics"
+            elif legacy_webforms_profile and state == legacy_webforms_profile["state"]:
+                adapter = "reviewed_legacy_webforms_statistics"
             elif texas_reconciliation_role(template):
                 adapter = "reviewed_texas_reconciliation_parent"
             elif (template["geography"]["level"] == "county" and pdf_measure(template)
@@ -1396,6 +1583,9 @@ def collect_sources(collector, baseline):
             elif source["adapter"] == "reviewed_webforms_statistics":
                 def parse(body, templates=templates):
                     return webforms_statistics(body, templates)
+            elif source["adapter"] == "reviewed_legacy_webforms_statistics":
+                def parse(body, templates=templates, url=url):
+                    return legacy_webforms_statistics(body, templates, url)
             else:
                 def parse(body, url=url):
                     return {"updates": [], "factual_product": factual_tables(body, url),
