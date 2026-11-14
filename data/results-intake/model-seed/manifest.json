@@ -1,0 +1,431 @@
+{
+  "accepted_candidates": {
+    "bytes": 29421,
+    "compression": "gzip",
+    "decoded_bytes": 330707,
+    "decoded_sha256": "d608fdc17156f1fb91ccc49aa23e8c91cadae1bbaa5a50ec681b38eaf9c67632",
+    "path": "accepted/candidates.json.gz",
+    "sha256": "bbfe1b0fc4e65c359e8ffaa7d4a5476974582888ed8d52525c7af73ce55fb4bc"
+  },
+  "accepted_controls": {
+    "bytes": 36569,
+    "compression": "gzip",
+    "decoded_bytes": 435587,
+    "decoded_sha256": "a64fc02aa942ffa443a62a1d17aaacc7f7861ce45c80bb201bb9e79156152ce0",
+    "path": "accepted/controls.json.gz",
+    "sha256": "cb5703ea7eec677caedb56f64fe34c619d79c581ec471c9d60b3f9ae772bbceb"
+  },
+  "contract": "participation.automatic_estimates_seed.v1",
+  "election_date": "2026-11-03",
+  "families": [
+    "accepted_ridge_multinomial",
+    "histogram_gradient_boosting",
+    "extra_randomized_trees"
+  ],
+  "official_source_guards": {
+    "HI": {
+      "candidates": [
+        [
+          "HI-01",
+          "(D) CASE, Ed",
+          "Democratic",
+          "126337"
+        ],
+        [
+          "HI-01",
+          "(G) CONLEY, Jordan S.",
+          "Green",
+          "7011"
+        ],
+        [
+          "HI-01",
+          "(N) BERNING, Nathan M.",
+          "Nonpartisan",
+          "2348"
+        ],
+        [
+          "HI-01",
+          "(R) LAM, Adriel C.",
+          "Republican",
+          "40308"
+        ],
+        [
+          "HI-02",
+          "(D) TOKUDA, Jill N.",
+          "Democratic",
+          "129931"
+        ],
+        [
+          "HI-02",
+          "(R) AWA, Brenton",
+          "Republican",
+          "65441"
+        ]
+      ],
+      "current": {
+        "D": 256268,
+        "O": 9359,
+        "R": 105749
+      },
+      "districts": [
+        "HI-01",
+        "HI-02"
+      ],
+      "guard_sha256": "2d65be7af640b4b31189da248659c7fff57c9a6176fb5dced4aa0abfb3c9f94b",
+      "source_election_scope": "general",
+      "source_scope": "All six explicitly party-marked named House candidates across both native contests. Candidate votes are not ballots or turnout. Reporting=0 native units were retained in the precinct reconciliation.",
+      "source_snapshot": "native-query:e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a",
+      "state_code": "HI"
+    },
+    "WY": {
+      "candidates": [
+        [
+          "WY-AL",
+          "Chuck\nGray (R)",
+          "Republican",
+          "99906"
+        ],
+        [
+          "WY-AL",
+          "Jeffrey\nHaggit (C)",
+          "Constitution",
+          "7961"
+        ],
+        [
+          "WY-AL",
+          "Lisa\nKinney (D)",
+          "Democratic",
+          "61689"
+        ],
+        [
+          "WY-AL",
+          "Shawn\nJohnson (L)",
+          "Libertarian",
+          "13667"
+        ],
+        [
+          "WY-AL",
+          "Write-Ins",
+          "",
+          "1031"
+        ]
+      ],
+      "current": {
+        "D": 61689,
+        "O": 22659,
+        "R": 99906
+      },
+      "districts": [
+        "WY-AL"
+      ],
+      "guard_sha256": "0870325054c1f04299a5c68bf7dd6714649ebca904e16ccc702e158dd3046bab",
+      "source_election_scope": "general",
+      "source_scope": "All four named candidates plus 1,031 explicitly source-unassigned Write-Ins in the official statewide House control. O means reported choices outside the known D/R candidate counts, including these unassigned write-ins; their unknown party is preserved as blank, never imputed to D/R. This explicitly extends the earlier named-candidate-only current scope. The 1,231 overvotes and 6,228 undervotes remain distinct, excluded accounting queries. These are reported valid candidate-choice counts, not ballots, certified final completeness or unique-voter turnout.",
+      "source_snapshot": "native-query:e398311dcecd7607ec41a1af7fda21f99b1e023405503979beb3667941a82f1a",
+      "state_code": "WY"
+    }
+  },
+  "participation_state_controls": {
+    "bytes": 11482,
+    "compression": "gzip",
+    "decoded_bytes": 49565,
+    "decoded_sha256": "204c65a59c07eceabef0f72c3801cf07a0b4ed877b7708240f0d9eca48c23e28",
+    "path": "participation/registered-controls-v35.json.gz",
+    "sha256": "b78f9ecc3731cc21a3c4a002ff603f6cb2c5f34982bd47008c6dac41d1f42a63"
+  },
+  "profile_viewers": {
+    "attenuated": {
+      "bytes": 1908796,
+      "compression": "gzip",
+      "decoded_bytes": 6393351,
+      "decoded_sha256": "84e84d0cba17fea1da599fac78551d08db732eb302bb890097e3a6d0a35aa2a0",
+      "path": "accepted/viewer-attenuated.json.gz",
+      "sha256": "6e1550ecc586fb31e2c111169f87013dab0621d44f2cb1d222a7c329011f582d"
+    },
+    "full": {
+      "bytes": 1910748,
+      "compression": "gzip",
+      "decoded_bytes": 6395879,
+      "decoded_sha256": "944f6ffee2db97d274446d45b2d6ad1a378b33637591ef8850ba266edfcfdf88",
+      "path": "accepted/viewer-full.json.gz",
+      "sha256": "de5dbd03faf2340189a3a10adf8527efbfa431bb1d94ce3ece19cf94a49bbc52"
+    },
+    "original": {
+      "bytes": 1905414,
+      "compression": "gzip",
+      "decoded_bytes": 6351974,
+      "decoded_sha256": "7b022c2311f2151071c1cab42d87d2a21fc6efe30aaca3d7ac19e804d38049e4",
+      "path": "accepted/viewer-original.json.gz",
+      "sha256": "c9bd6fe66437e1699f89c54fec46414e5f936db93fdd5ff476f42192df3b138c"
+    }
+  },
+  "profiles": [
+    "original",
+    "attenuated",
+    "full"
+  ],
+  "provenance": {
+    "accepted_current_candidate_rows": 1401,
+    "accepted_districts": 435,
+    "accepted_held_states": 17,
+    "accepted_norc_house_model_sha256": "b7492aa770436e88b734eb92701319cc109356cc4c254a1d0564a628316952cc",
+    "accepted_qualified_states": 33,
+    "conditional_registered_scenarios": 34,
+    "official_house_science_sha256": "1dfd78d5bb83477a603c6e97e1b21a23437e7bc732d70e304538baac520b801b",
+    "old_simulations_replayed": false,
+    "predecessor_complete_analysis_sha256": "684edab6893d42eda52225b37fc53a663570322c39541c5f173fe47f3359b7bd",
+    "preserved_original_model_count": 113,
+    "raw_respondents_or_private_fine_cells_exported": false,
+    "registered_control_display_sha256": "b2ebc388b2700d498d55fbcb0f4f3f516fa538b67709ee0e7af73b06421b3092",
+    "registered_control_state_decisions": 51,
+    "registered_control_version": 35,
+    "research_head": "4c4a391b0d9ea9520573783a91e1691c2d87c3ae",
+    "source_models_refitted": false,
+    "successor_directory": "official-house-successor-20261113-02",
+    "website_head": "95e33a39efc115f722d071784eee59108bf57c8d"
+  },
+  "qualification": {
+    "candidate_inventory_rows": 1401,
+    "districts": 435,
+    "gate_identity_sha256": "4b01d5655220cbfa95ed57fd14d0d89f41497d3314a343ee2a77bb8dbc7cd3ae",
+    "held_state_codes": [
+      "AK",
+      "AL",
+      "CA",
+      "FL",
+      "IL",
+      "KY",
+      "LA",
+      "MA",
+      "ME",
+      "MS",
+      "NC",
+      "NJ",
+      "NV",
+      "OK",
+      "TX",
+      "WA",
+      "WI"
+    ],
+    "hold_identity_sha256": "4d61f5d1f9dc36d263ea43293fd42a723d3b2a6abfd2f02dc23710b0a3c2a7c9",
+    "mask_sha256": "847bfc08244cca7b235465d3b7de1965f60fafe507336ec5e36b803c056e20c0",
+    "official_source_guard_sha256": "e3ccb62a481e5f9fcf38a34bb0e3927fc366f7cce3db244db3fc54be27bf6522",
+    "qualified_state_codes": [
+      "AR",
+      "AZ",
+      "CO",
+      "CT",
+      "DE",
+      "GA",
+      "HI",
+      "IA",
+      "ID",
+      "IN",
+      "KS",
+      "MD",
+      "MI",
+      "MN",
+      "MO",
+      "MT",
+      "ND",
+      "NE",
+      "NH",
+      "NM",
+      "NY",
+      "OH",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "SD",
+      "TN",
+      "UT",
+      "VA",
+      "VT",
+      "WV",
+      "WY"
+    ]
+  },
+  "scenarios": {
+    "attenuated/accepted_ridge_multinomial": {
+      "accepted_result": {
+        "bytes": 1301079,
+        "compression": "gzip",
+        "decoded_bytes": 5133261,
+        "decoded_sha256": "4261fdbbfd6f15694a398b7e834406a339439654a795d5c5a95697ef2fecc8d1",
+        "path": "scenarios/attenuated/accepted_ridge_multinomial/complete-result.json.gz",
+        "sha256": "bf24ba6a8c7fb1182a1c3ed7abe7faec60f3147d100d0746eb803c5ce803659d"
+      },
+      "family": "accepted_ridge_multinomial",
+      "prior": {
+        "bytes": 245966,
+        "compression": "gzip",
+        "decoded_bytes": 751881,
+        "decoded_sha256": "28dea2e58c9f762073e991b15f2bfe6edc2b20de40eb64c4c821e38e4e33a8d4",
+        "path": "scenarios/attenuated/accepted_ridge_multinomial/synthetic-priors.json.gz",
+        "sha256": "55a139fd58f6ddc8c399adab3268434158354c0afdcad4f9deb37f560716c2b5"
+      },
+      "profile": "attenuated"
+    },
+    "attenuated/extra_randomized_trees": {
+      "accepted_result": {
+        "bytes": 1284627,
+        "compression": "gzip",
+        "decoded_bytes": 4979963,
+        "decoded_sha256": "8503714ed885f014d0ccb419838f2f2c2400eebea96fd982f66ea71efb516af0",
+        "path": "scenarios/attenuated/extra_randomized_trees/complete-result.json.gz",
+        "sha256": "b7a6f5d40f3a567232347a3a9d8affeb6a443df6186b8d6791c7d2e75924040d"
+      },
+      "family": "extra_randomized_trees",
+      "prior": {
+        "bytes": 244677,
+        "compression": "gzip",
+        "decoded_bytes": 750898,
+        "decoded_sha256": "b317b9f544c5c2196fbb2e7e635004ed09c8a2934267c96a5df7a144a37c2a4b",
+        "path": "scenarios/attenuated/extra_randomized_trees/synthetic-priors.json.gz",
+        "sha256": "3f657c3a983011dc33401316a8db3a114699cdf4bd537073c8c7adebf34881a7"
+      },
+      "profile": "attenuated"
+    },
+    "attenuated/histogram_gradient_boosting": {
+      "accepted_result": {
+        "bytes": 1287241,
+        "compression": "gzip",
+        "decoded_bytes": 4981678,
+        "decoded_sha256": "b3ba0b8881e925f42e187bbfb31269bbd90658d39583616f557e3f42d0e52258",
+        "path": "scenarios/attenuated/histogram_gradient_boosting/complete-result.json.gz",
+        "sha256": "b3cf19852c7bd894aa022dda01aa6ecdb5cff937a1f847e03dd39749680af9b1"
+      },
+      "family": "histogram_gradient_boosting",
+      "prior": {
+        "bytes": 246599,
+        "compression": "gzip",
+        "decoded_bytes": 752132,
+        "decoded_sha256": "cc28cf28e450d2b55c5cd69b488975284793167ffebd3906546f3d2618718795",
+        "path": "scenarios/attenuated/histogram_gradient_boosting/synthetic-priors.json.gz",
+        "sha256": "889511736c68bbd194d987f0d7ef5ca527f978507691bb030a652e4b73b9ff6d"
+      },
+      "profile": "attenuated"
+    },
+    "full/accepted_ridge_multinomial": {
+      "accepted_result": {
+        "bytes": 1298166,
+        "compression": "gzip",
+        "decoded_bytes": 5134265,
+        "decoded_sha256": "cc491d90b9bf4a526516e9267c3e76e8fa8ec446568be125ad9e9fd21c0931e6",
+        "path": "scenarios/full/accepted_ridge_multinomial/complete-result.json.gz",
+        "sha256": "cde89cca67a2415ac4991e6e4ae7afafbd9b57b6843c5d7e685a87bb099180c4"
+      },
+      "family": "accepted_ridge_multinomial",
+      "prior": {
+        "bytes": 247089,
+        "compression": "gzip",
+        "decoded_bytes": 753747,
+        "decoded_sha256": "e6e112aa4df8470e8b6ff25d5d4317a141c7e5292ae050320eb49beef6152ed7",
+        "path": "scenarios/full/accepted_ridge_multinomial/synthetic-priors.json.gz",
+        "sha256": "a78315a6225d4687418814cb08f3940bc26a4c02e27f19fc0b82d43de14d8c91"
+      },
+      "profile": "full"
+    },
+    "full/extra_randomized_trees": {
+      "accepted_result": {
+        "bytes": 1281805,
+        "compression": "gzip",
+        "decoded_bytes": 4980720,
+        "decoded_sha256": "0baa8b4e231d02add77376b48f6c6e0f71c5c98be7b0fc7625ac42824dc59e7c",
+        "path": "scenarios/full/extra_randomized_trees/complete-result.json.gz",
+        "sha256": "dcc022e92a27b8590f8cf67d3eec935387ce95020d6064bb037ac00a5bab6f63"
+      },
+      "family": "extra_randomized_trees",
+      "prior": {
+        "bytes": 245635,
+        "compression": "gzip",
+        "decoded_bytes": 752781,
+        "decoded_sha256": "83d44ec0409abebfd6bdbb6e1bf96393d2c9eac9b17c81782eabe163f8dbbb43",
+        "path": "scenarios/full/extra_randomized_trees/synthetic-priors.json.gz",
+        "sha256": "20a741f2b99c4c227b7c27be0df96a8ac98239af9da9c72853617b841588accb"
+      },
+      "profile": "full"
+    },
+    "full/histogram_gradient_boosting": {
+      "accepted_result": {
+        "bytes": 1284173,
+        "compression": "gzip",
+        "decoded_bytes": 4982824,
+        "decoded_sha256": "4a939dbfc3df4730321d604def7dd63c21b1c29e9c7cf1579b75a1c0e0cc1e55",
+        "path": "scenarios/full/histogram_gradient_boosting/complete-result.json.gz",
+        "sha256": "14e4bbffdf977fe560b8357216fdaeb63afa2e110eac2a8c236ad00a0c7a7bca"
+      },
+      "family": "histogram_gradient_boosting",
+      "prior": {
+        "bytes": 247573,
+        "compression": "gzip",
+        "decoded_bytes": 753953,
+        "decoded_sha256": "b59d8b52133c4ee1b71995760a0c4939c17556b156c232e3087861d52d17045e",
+        "path": "scenarios/full/histogram_gradient_boosting/synthetic-priors.json.gz",
+        "sha256": "b08d068aeacd60a611fc1a98d5192f30d227df8f719b6be7857d6a42fb3fb25d"
+      },
+      "profile": "full"
+    },
+    "original/accepted_ridge_multinomial": {
+      "accepted_result": {
+        "bytes": 1303320,
+        "compression": "gzip",
+        "decoded_bytes": 5122116,
+        "decoded_sha256": "f3312a0e8b713b24cef76edaedd1963021f54c0d751968494ae77594f374a41e",
+        "path": "scenarios/original/accepted_ridge_multinomial/complete-result.json.gz",
+        "sha256": "e47ae31ae5148367366cec393a141dc306f98f4a93655a59787340898b0bdef8"
+      },
+      "family": "accepted_ridge_multinomial",
+      "prior": {
+        "bytes": 244414,
+        "compression": "gzip",
+        "decoded_bytes": 749927,
+        "decoded_sha256": "807c86870b4baa89b80b116f5e1ac60c94d4213aadd1b63965e7e3c82759bf44",
+        "path": "scenarios/original/accepted_ridge_multinomial/synthetic-priors.json.gz",
+        "sha256": "e35d293ac788391370d78f314c25d98ed4796fe3164cba6efdf7fd319abaf4ac"
+      },
+      "profile": "original"
+    },
+    "original/extra_randomized_trees": {
+      "accepted_result": {
+        "bytes": 1286453,
+        "compression": "gzip",
+        "decoded_bytes": 4968424,
+        "decoded_sha256": "06dbece32ed35bfcbbbd3dc060f9bf11d4b8c35a8a2958919fe012b6e390d5c7",
+        "path": "scenarios/original/extra_randomized_trees/complete-result.json.gz",
+        "sha256": "03732642810acaf14c4f1b5c257618da54c0198a806a99a6b078ef900fe38992"
+      },
+      "family": "extra_randomized_trees",
+      "prior": {
+        "bytes": 243363,
+        "compression": "gzip",
+        "decoded_bytes": 748681,
+        "decoded_sha256": "63a6bfd7ab17c42eec725e65903eb662771e83a1647d52cc58a3ce1750dfff50",
+        "path": "scenarios/original/extra_randomized_trees/synthetic-priors.json.gz",
+        "sha256": "c3c85beada1f2c27780aaa3c5df91d45bed55f88882957fc32679d6c44da25dc"
+      },
+      "profile": "original"
+    },
+    "original/histogram_gradient_boosting": {
+      "accepted_result": {
+        "bytes": 1288423,
+        "compression": "gzip",
+        "decoded_bytes": 4969577,
+        "decoded_sha256": "c8093e80fc24db7ed23833cab35ec1973ccaa9e29fcb018e99e6e453a7bb74c0",
+        "path": "scenarios/original/histogram_gradient_boosting/complete-result.json.gz",
+        "sha256": "f426a606f4ec05fe0a0f3493cc2ff65e20e5821f070b3ec469f6ceb30ddfba36"
+      },
+      "family": "histogram_gradient_boosting",
+      "prior": {
+        "bytes": 245127,
+        "compression": "gzip",
+        "decoded_bytes": 749997,
+        "decoded_sha256": "3b4b2f66e6d2ee2aa4b05c31e153405f7c6da2f887af140ccc009c214eb128aa",
+        "path": "scenarios/original/histogram_gradient_boosting/synthetic-priors.json.gz",
+        "sha256": "1fb90b9761b17cf7cd2a5b0b66eebe08d498ec38e392b6e1595424575dfb4ca3"
+      },
+      "profile": "original"
+    }
+  }
+}

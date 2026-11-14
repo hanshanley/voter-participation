@@ -195,7 +195,10 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
     with zipfile.ZipFile(tmp_path / "run/complete-results.zip") as archive:
         assert archive.testzip() is None
         archive.extractall(packet)
-    assert intake.replay(packet, tmp_path / "reproduced")["complete_outputs"] == 7
+    replayed = intake.replay(packet, tmp_path / "reproduced")
+    assert replayed["complete_outputs"] == 10
+    assert (tmp_path / "reproduced/granular-source-queries.json.gz").is_file()
+    assert (tmp_path / "reproduced/declared-numerical-queries.json.gz").is_file()
     (packet / "queries/coverage.csv").write_bytes(b"changed")
     with pytest.raises(ValueError, match="Changed"):
         intake.replay(packet, tmp_path / "second")

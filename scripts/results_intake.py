@@ -24,6 +24,7 @@ from scripts.participation_intake.engine import Store
 from scripts.participation_intake.publisher import GitPublisher
 from scripts.precinct_source_batch import discover_links, is_general_precinct_product
 from scripts.results_house import NATIONAL_URL, candidate_results, districts, state_totals
+from scripts import results_granular
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -153,7 +154,7 @@ class Collector:
         self.work, self.prior, self.now = Path(work), prior, now
         self.stopped, self.offline = stops(stopped), offline
         self.lock, self.context = threading.Lock(), threading.local()
-        self.attempts = []
+        self.attempts, self.bodies = [], {}
         write(self.work / "source-stops.json", self.stopped)
 
     def guard(self, url):
@@ -180,8 +181,13 @@ class Collector:
             self.stopped = stops(self.stopped)
             write(self.work / "source-stops.json", self.stopped)
 
-    def acquire(self, url):
+    def acquire(self, url, *, refresh=False):
         self.guard(url)
+        with self.lock:
+            cached_in_run = self.bodies.get(url)
+        if cached_in_run is not None and not refresh:
+            body, receipt = cached_in_run
+            return body, {**receipt, "origin": "same_run_verified_body"}
         if not hasattr(self.context, "store"):
             self.context.store = Store(self.work / "cache")
         if self.offline:
@@ -199,6 +205,8 @@ class Collector:
         except Exception as error:
             self.remember_stop(url, error)
             raise
+        with self.lock:
+            self.bodies[url] = body, receipt
         return body, receipt
 
     def capture(self, identity, url, parser):
@@ -286,14 +294,24 @@ def project(inputs, baseline):
         "all_states_certified_or_precinct_complete": False,
         "source_clock_not_replaced_by_retrieval_time": True,
         "baseline_and_fresh_source_frames_are_separate_not_added": True,
+        "granular_sources": inputs.get("granular", {}),
+        "declared_numerical_products": inputs.get("products", {}),
     }
-    return {
+    outputs = {
         "snapshot.json.gz": compressed(encoded(snapshot)), "coverage.csv": csv_body(coverage),
         "participation-observations.csv.gz": compressed(csv_body(observations)),
         "house-candidates.csv": csv_body(candidates), "house-state-results.csv": csv_body(house_states),
         "source-status.csv": csv_body(status_rows),
         "declared-products.json": encoded(inputs["directories"]),
     }
+    if "granular" in inputs:
+        _, changes = results_granular.project(baseline, inputs["granular"])
+        snapshot["canonical_local_changes"] = changes
+        outputs["snapshot.json.gz"] = compressed(encoded(snapshot))
+        outputs["granular-source-queries.json.gz"] = compressed(encoded(inputs["granular"]))
+        outputs["declared-numerical-queries.json.gz"] = compressed(encoded(inputs.get("products", {})))
+        outputs["canonical-local-changes.csv"] = csv_body(changes)
+    return outputs
 
 
 def collect(registry_path, work, previous=None, now=None, offline=False):
@@ -363,6 +381,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
             return data
         key = state + "-official"
         feeds[key] = collector.capture(key, url, parse)
+    granular = results_granular.collect(collector, baseline)
     for key, entry in prior.items():
         if key not in feeds:
             feeds[key] = {**copy.deepcopy(entry), "status": "retained_after_failure",
@@ -388,6 +407,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     with ThreadPoolExecutor(max_workers=4) as pool:
         house.update(pool.map(capture_district, sorted(declared.items())))
     feeds["house-national"] = national
+    products = {}
     for state, declaration in config["jurisdictions"].items():
         url = declaration["url"]
         if declaration["status"] != "directory_link_unverified" or not url:
@@ -395,12 +415,24 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
             continue
         key = state + "-directory"
         result = collector.capture(key, url, lambda body: {"products": [
-            {**link, "requires_scope_or_parser_review": True}
-            for link in discover_links(body, url, 2026) if is_general_precinct_product(link, 2026)]})
+            {**link, "url": results_granular.transport_url(link["url"]),
+             "requires_scope_or_parser_review": True}
+            for link in discover_links(body, url, 2026) if results_granular.eligible_product(link)]})
         feeds[key] = result
         directories[state] = {"status": result["status"], "url": url,
                               "products": (result.get("data") or {}).get("products", [])}
-    inputs = {"feeds": feeds, "house": house, "districts": declared, "directories": directories}
+        if result["status"] != "reported":
+            continue
+        for link in directories[state]["products"][:30]:
+            if link["role"] != "download_candidate":
+                continue
+            identity = state + "-product-" + digest(link["url"].encode())[:16]
+            products[identity] = collector.capture(identity, link["url"],
+                lambda body, url=link["url"]: results_granular.factual_tables(body, url))
+            feeds[identity] = products[identity]
+    feeds.update(granular)
+    inputs = {"feeds": feeds, "house": house, "districts": declared, "directories": directories,
+              "granular": granular, "products": products}
     inputs["source_stops"] = collector.stopped
     write(work / "state.json", inputs)
     outputs = project(inputs, baseline)
@@ -409,14 +441,15 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                        "inputs/registry.json": encoded(config),
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
-    code = ("results_intake.py", "results_house.py", "nationwide.py", "current.py", "download.py",
+    code = ("results_intake.py", "results_house.py", "results_granular.py", "native_tabular.py",
+            "nationwide.py", "current.py", "download.py",
             "precinct_source_batch.py", "house_clerk_endpoints.py",
             "participation_intake/__init__.py", "participation_intake/engine.py",
             "participation_intake/contract.py", "participation_intake/adapters.py",
             "participation_intake/publisher.py")
     for name in code:
         package_members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
-    for name in ("test_results_intake.py", "test_nationwide.py", "test_current.py"):
+    for name in ("test_results_intake.py", "test_results_granular.py", "test_nationwide.py", "test_current.py"):
         package_members["code/tests/" + name] = (ROOT / "tests" / name).read_bytes()
     version = digest(encoded({"inputs": inputs, "baseline": config["baseline"],
                               "outputs": {name: pin(body) for name, body in outputs.items()},

@@ -20,7 +20,7 @@ checksums. Download `complete-results.zip` using that inventory. Branch history
 retains previous snapshots; 30-day Actions artifacts are an additional convenience,
 not the only copy.
 
-The download contains all 11 complete numerical queries, selected source facts,
+The download contains all 14 complete numerical queries, selected source facts,
 all 51 accepted jurisdiction shards and their complete baseline, source
 qualifications, processing code, tests and checksums. It excludes respondent/voter
 records, private fine cells, and publisher HTML/application templates.
@@ -34,6 +34,9 @@ records, private fine cells, and publisher HTML/application templates.
 | `house-state-results.csv` | Party sums only when every declared district snapshot is available. |
 | `source-status.csv` | Each collected/retained feed, failure status and source URL. |
 | `declared-products.json` | Official-directory discoveries awaiting scope/parser review. |
+| `granular-source-queries.json.gz` | Complete registered county/reporting-unit statistical queries and source dispositions. |
+| `declared-numerical-queries.json.gz` | Complete permitted tabular facts from newly declared products, with unqualified measures held. |
+| `canonical-local-changes.csv` | Every qualified same-identity count update; appearances are not unique people or geographies. |
 | Four `accepted-*.json` queries | Complete accepted House candidates, controls, native scope and state qualification flags. |
 
 After extracting the ZIP into a fresh directory, run its literal command:
@@ -48,7 +51,7 @@ sources or rerunning private survey fits. Optional packaged tests use `pytest`:
 
 ```sh
 cd code
-python3 -m pytest -q tests/test_results_intake.py tests/test_nationwide.py tests/test_current.py
+python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_nationwide.py tests/test_current.py
 ```
 
 ## What updates automatically
@@ -57,6 +60,13 @@ The registry covers every jurisdiction's supplied official-directory disposition
 Existing parsers refresh provider early/mail and supported demographic feeds,
 the four registered statewide administrative feeds (AL, NC, ND, OR), and House
 district returns explicitly declared by the national source.
+
+Registered local adapters also parse North Carolina county statistics, Minnesota
+county/reporting-unit statistics, accepted Alabama general-election workbook
+columns, and Connecticut town statistics. Changed identities/layouts remain held;
+these adapters do not approve new boundaries or guarantee complete precinct coverage.
+Alabama's registered workbook URL is distinct from newly declared ZIP products:
+discovery alone does not alias a new release to that accepted source.
 
 House collection is independent of county geometry/reconciliation. A county-map
 failure cannot abort otherwise usable district returns. Full House baseline
@@ -103,3 +113,43 @@ it makes no election-source requests and still honors durable access stops.
 The initial source state and accepted numerical baseline are pinned in
 `data/results-intake/registry.json`. Add or change sources there only with the
 corresponding native scope review and focused parser tests.
+
+## Automatic website and estimate consumer
+
+The separate `scripts.automatic_runtime` consumer is implemented for the website's
+own GitHub token. Source publication alone does not enable it or establish live
+delivery. The website workflow must pin the reviewed producer revision, and the
+initial website readers must be deployed and verified separately.
+
+```sh
+PYTHONPATH=/path/to/research-source python3 -m scripts.automatic_runtime \
+  --repository /path/to/website --work-dir /tmp/participation-runtime
+```
+
+It reads the pinned `results-data` snapshot once, advances compatible counts,
+existing native bindings and all affected nine House family/profile cases, and
+retains unsupported comparisons. Compatible registered-frame revisions reuse
+the accepted probabilities; unchanged sources do not trigger private fits.
+After the first run, a verified rolling seed is mandatory. Source failure never
+resets estimates to the bootstrap seed or applies older retained local facts
+over the website's last-good counts.
+
+Each runtime packet includes the complete source-results ZIP, before/after
+counts and native bodies, safe aggregate priors, every model query, code, tests
+and checksums. Its fresh extracted command is:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Publication requires successful zero-network, complete-output replay, a
+server-immutable full archive verified both authenticated and anonymously,
+staged-body verification, and one atomic `catalog.json` plus
+`automatic/latest.json` activation on the website's `participation-data` branch.
+Count/native descriptors and models share the same immutable staged commit.
+Interrupted staging is resumable; concurrent branch changes are not overwritten.
+Subsequent numerical activations do not start a Pages build.
+
+These are delivery guarantees, not observed individual switching/nonparticipation,
+new geographic qualifications or final/certified nationwide results. Actual
+GitHub-job and no-override production acceptance remain separate delivery gates.
