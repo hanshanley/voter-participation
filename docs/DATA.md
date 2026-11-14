@@ -8,6 +8,55 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Oklahoma early ballots and Texas counted-ballot additions
+
+[Complete Oklahoma source facts, all390 query cells, all51 projections, compiler and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-oklahoma-inperson-counts-20261114-01/complete-analysis.zip):
+**11,849,082 bytes/132 members**, SHA256
+`054538556972873d6b1a46905294b0db43a10e447cae4fdf12aba5598523e390`;
+immutable release445204294.
+
+[Complete Uvalde/Caldwell facts, all42 query rows, authority receipts, repaired Oklahoma baseline and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-texas-uvalde-caldwell-native-20261114-01/complete-analysis.zip):
+**11,859,689 bytes/136 members**, SHA256
+`fccfbf2e4bc4a0881fa79917f4986150ff6eed9cc4cc40c4fc6fbd73fb3a3afe`;
+immutable release445206337.
+
+Extract either complete ZIP into its own fresh directory. From that extraction,
+CPython >=3.9 and its standard library are sufficient:
+
+```sh
+python3 -Werror code/reproduce.py --package . --output reproduced
+```
+
+Each package reproduces54 count files byte-exact. Oklahoma passes8 tests and
+four selected process-local API guards; Texas passes9 tests and six guards.
+Both have two fresh extracted executions, independent source/data/typed/SDK
+review and actual public-download reproduction. No OS sandbox is claimed.
+The ZIPs contain complete sufficient factual projections and queries, not
+re-extraction of excluded publisher PDF/HTML originals. No publisher media,
+templates, nested archives, private cases, predictions or estimators are
+distributed. ZIP member locations describe inventory, not extra HTTP assets.
+Frozen creation-time publication flags remain planned; actual immutable and
+anonymous full-body verification receipts are external.
+
+Oklahoma's186,488 in-person-early ballots reconcile across77 counties and an
+unselected state parent. The October31,2026 report is not full-election turnout.
+Registration affiliation is not candidate choice;14 omitted arithmetic-derived
+zeros remain distinct from four printed zeros. All155 older Oklahoma records,
+including separate mail observations, remain.
+
+Uvalde8,545 and Caldwell14,932 are preliminary counted ballots. Texas native
+coverage is13/254 counties, with241 unknown. Received/counted/rejected/pending
+stages, registration context, differences1/8 and Uvalde's92 versus94 provisional
+measures remain separate. Signer dates are not count-update clocks. No new rate,
+geometry, unique-person, local demographic allocation or transition model follows.
+
+The final combined count version459c853f is active at cataloge3a42628, preserving
+all other catalog entries/current data/Kentucky bindings. Actual desktop/mobile
+production checks308 Oklahoma county-mode values,52 Texas native county-mode
+values, separate source modes and real full downloads. All51 interfaces and306
+bindings pass, with eight state references/6,450 retained early rows unchanged.
+All earlier full downloads and113 models remain available.
+
 ## North Carolina and Oregon native successors
 
 [Complete permitted native aggregates, all51 count shards, numerical queries, code and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-nc-or-native-counts-20261114-01/complete-analysis.zip):

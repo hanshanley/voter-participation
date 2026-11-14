@@ -13,6 +13,49 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Oklahoma early ballots and two Texas counted-ballot additions
+
+The qualified count successor is live at catalog
+`e3a42628eedd41f5ff66b4afae3b68479bf7f29f`, count version
+`459c853f0d8216494a8f9e67f8bcf5cdc8923d9b5f4454a2d7b464a8208aa060`.
+Its single activation preserves both state integrations, all other49 state/DC
+shards, Kentucky's exact reference preimage, the full current snapshot and all
+other catalog entries. Both complete immutable SDKs have independent source,
+typed-data and package review, two fresh replays and actual public-download
+reproduction. See [complete downloads](docs/DATA.md#oklahoma-early-ballots-and-texas-counted-ballot-additions).
+
+Oklahoma now has77 source-native in-person-early county observations summing
+to186,488, plus an unselected state reconciliation parent. Its October31
+printed report is not full-election turnout. All155 older Oklahoma records,
+including the distinct mail observations, remain. Administrative affiliation
+is not candidate choice;14 arithmetic-derived zero cells remain distinguished
+from four printed zeros. The stopped results portal remains stopped, so the
+full-election state/county/precinct gap is not closed.
+
+Uvalde8,545 and Caldwell14,932 are preliminary counted ballots. Texas native
+county coverage is13/254;241 remain unknown, not zero. All42 source facts,
+received/counted/rejected/pending stages, registration context, discrepancies
+and null count clocks remain. Attestation dates are not update clocks. Both
+official indexes are pinned to their exact declared PDFs. All1,029 prior Texas
+records, all233 repaired Oklahoma records and separate early/mail modes survive.
+No new geometry, rate, unique-person count or local demographic allocation is
+qualified.
+
+Actual no-override production passes all51 interfaces/306 count bindings, the
+unchanged eight reporting references/6,450 early rows,308 Oklahoma county-mode
+values and52 Texas native county-mode values at desktop/phone widths, with real
+full SDK downloads. The county detail's required display fields were repaired
+before publication; earlier private candidates remain preserved, not deployed.
+Website0c6f2be also distinguishes a missing statewide total from separate local
+reports without inventing a statewide sum. Actual native artifact14108859409
+is997,366,958 payload bytes/999,966,720 raw tar bytes;436 old download pins remain.
+
+These are administrative source additions, not new matched population frames.
+House endpoints, swing units, all113 existing models, fitted probabilities,
+survey weights and conditional nonparticipation/switching estimates do not
+change. Continue the nationwide source, joint-frame and estimation gaps;
+the full audit THEN beautification remain pending.
+
 ## Live NC/OR successors and Jefferson reference: retain model-frame gaps
 
 Three complete immutable SDKs are now public: NC/OR count445143216,

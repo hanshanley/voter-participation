@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Oklahoma/Texas native counts | [77 in-person-early counties, two counted-ballot additions and complete fact-only replays](#2026-oklahoma-early-ballots-and-texas-counted-ballot-additions) |
 | Published NC/OR successor packets | [Native revisions, unchanged probabilities and complete count/model replays](#2026-north-carolina-and-oregon-native-successor-packets) |
 | Published Jefferson reference packet | [529 literal reference joins, 117 explicit holds and complete geometry/replay](#2026-jefferson-kentucky-partial-lojic-reference) |
 | Current Jefferson Kentucky native facts | [268,257 Ballots Cast, 646 literal reporting labels and complete fact-only replay](#2026-jefferson-kentucky-native-participation-statistics) |
@@ -67,6 +68,75 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Oklahoma early ballots and Texas counted-ballot additions
+
+The complete immutable fact-only SDKs are releases445204294 (Oklahoma) and
+445206337 (Texas), with exact pins and commands in
+[complete downloads](docs/DATA.md#oklahoma-early-ballots-and-texas-counted-ballot-additions).
+Each contains complete accepted all51 numerical projections, source facts,
+queries, compiler, tests and54 reproduced count files. Public replay starts
+from accepted sufficient factual inputs, not excluded publisher PDF/HTML
+extraction. Every archive member and106 decompressed GZIP bodies were checked
+for private paths/session markers; neither package contains publisher media,
+templates, nested archives, private respondents, predictions or estimators.
+ZIP member locations are inventories, not phantom standalone release assets.
+
+The official Oklahoma absentee-statistics index declares the October31,2026
+in-person absentee report. All78 pages were independently parsed twice with
+exact agreement. Its186,488 ballots reconcile across77 counties and the state
+parent; the printed8:34 PM clock has no supplied timezone. Republican89,779,
+Democrat71,679, Libertarian780 and Independent24,250 are administrative party
+affiliations, not vote choices. Of312 affiliation query cells,298 are printed
+and14 omitted Libertarian cells are uniquely forced to zero by nonnegative
+exhaustive accounting; four zeros are explicitly printed. Including the78
+printed totals, all390 query cells remain downloadable with provenance.
+
+Only the77 county observations enter the `in_person_early` view; the state
+parent is unselected reconciliation evidence. All155 older Oklahoma records,
+the distinct mail view, current snapshot and other50 jurisdiction shards stay
+exact. The results portal's actual403 remains stopped. No full-election
+turnout, registration denominator, rate, unique-person, precinct or map
+qualification follows from this early report.
+
+Actual official Uvalde and Caldwell county result indexes independently
+declare the exact retained reconciliation PDFs. Their body pins and exact
+index-to-PDF mappings are preserved. Uvalde's printed counted total is8,545;
+Caldwell's is14,932. All42 source facts retain received/counted stages,
+registered-voter context, rejected/pending/outstanding measures and source
+discrepancies. Uvalde's92 rejected/pending provisionals are not its94 estimated
+provisionals. Differences1 and8 are not repaired. Native signer dates11/3/26
+and11/3/2026 are attestation provenance, never count-update clocks/timezones.
+The reviewed Census county identities are derived, not FIPS printed on forms.
+
+Texas native county coverage increases11 ->13 of254;241 remain unknown.
+Both additions remain preliminary/unofficial and rate/geometry holds remain.
+All1,029 older Texas records, all233 corrected Oklahoma records and all other
+shards are preserved; counted totals do not enter early/mail frames.
+The combined count version459c853f is atomically active at cataloge3a42628,
+with both compiled source projections retained at immutable stagee188012a.
+All other catalog entries, Kentucky's loaded preimage and the full current
+snapshot are exact. No House endpoint, model, prior, weight or transition
+probability was changed.
+
+Independent source/data/typed/SDK reviews pass. Each SDK has two fresh
+extracted replays and actual public-download execution: Oklahoma8 tests/four
+Python API guards; Texas9 tests/six guards;54 outputs each. They claim
+process-local controls, not an OS sandbox. Whole existing-page previews and
+actual no-override desktop/mobile production check308 Oklahoma county-mode
+values and52 Texas native county-mode values, separate source modes, scope
+holds and all full SDK downloads. Common acceptance preserves all51
+interfaces/306 bindings/eight state references/6,450 early rows.
+
+Website source0c6f2be clarifies missing statewide totals versus actual local
+reports and clears stale error text after a healthy load. No statewide sum is
+synthesized. Its actual artifact14108859409 is997,366,958 payload bytes and
+999,966,720 tar bytes; all436 old complete download pins remain. Unrelated UK
+generated-time/run-id fields account exactly for35 provenance-only artifact
+differences; every other unaffected byte is retained. The independent older
+canonical renderer remains untouched, with the exact two new published
+sources retained separately. Broader all-state/model gaps and the later full
+audit/beautification remain open.
 
 ## 2026 North Carolina and Oregon native successor packets
 
