@@ -1,7 +1,7 @@
 {
-  "snapshot_id": "20261113T234850Z",
+  "snapshot_id": "20261114T065604Z",
   "election_date": "2026-11-03",
-  "retrieved_at": "2026-11-13T23:48:50.936411+00:00",
+  "retrieved_at": "2026-11-14T06:56:04.167485+00:00",
   "status": "preliminary",
   "audit": {
     "jurisdictions_assessed": 51,
@@ -10,38 +10,38 @@
     "jurisdictions_with_demographic_counts": 11,
     "jurisdictions_with_official_ballots": 4,
     "failed_sources": 0,
-    "retained_sources": 0
+    "retained_sources": 1
   },
   "files": [
     {
-      "path": "nationwide/20261113T234850Z/complete-snapshot.zip",
-      "bytes": 428299,
-      "sha256": "f6e7194b6a566f08373916fb6c5637466a25210bc0f99115e18a1c1966fbdc34"
+      "path": "nationwide/20261114T065604Z/complete-snapshot.zip",
+      "bytes": 429314,
+      "sha256": "2c3bc5dac9de9c82068e9acfd38d8a55c086a14aab41601b393c2958bbc57dc9"
     },
     {
-      "path": "nationwide/20261113T234850Z/coverage.csv",
+      "path": "nationwide/20261114T065604Z/coverage.csv",
       "bytes": 6999,
-      "sha256": "8644d77a949ba72d383045da18133ae7b631ce793c48af139c0b43e51dd3114f"
+      "sha256": "8376d03ed7eac3c81affa8dd652ea61d65e2d760572c591eb9649c9272ae8272"
     },
     {
-      "path": "nationwide/20261113T234850Z/demographics.csv",
-      "bytes": 31512,
-      "sha256": "b705e44d2e31494a609ee00daa8ac8986b43bc068ebe9684a37b294a0db5e04e"
+      "path": "nationwide/20261114T065604Z/demographics.csv",
+      "bytes": 31568,
+      "sha256": "8ac0d9e3ac2d7217f16a49ab44df431ce2a02246869cf4578edd648d70463411"
     },
     {
-      "path": "nationwide/20261113T234850Z/early_voting.csv",
+      "path": "nationwide/20261114T065604Z/early_voting.csv",
       "bytes": 1197602,
-      "sha256": "1f0244c1095198f74a4670c2ec7bcabaa0736bb66cdf6fc6173840e9564ac80f"
+      "sha256": "7732788719b400e74491495876bbb02e3153f77310db0caddd2a2f0ed1a1cffa"
     },
     {
-      "path": "nationwide/20261113T234850Z/reporting.csv",
-      "bytes": 1170,
-      "sha256": "42483a40a6d7871ff66fbcf9441602b8aa561bb47214004dfb7a052e47249308"
+      "path": "nationwide/20261114T065604Z/reporting.csv",
+      "bytes": 1172,
+      "sha256": "da80d337b01dedf030ce2ff55d3444e016f920a6e681e67225308d9e50b95607"
     },
     {
-      "path": "nationwide/20261113T234850Z/snapshot.json",
-      "bytes": 4197959,
-      "sha256": "83e34f8a3f6960b965ee1521aebdd2e18e97ced58a4b413cee91e350634a7ef9"
+      "path": "nationwide/20261114T065604Z/snapshot.json",
+      "bytes": 4198055,
+      "sha256": "d8fa9fbec4b0fe4fe58d6cf96b2c38fd49434c181546b23e8df43878a2ccda82"
     }
   ]
 }
