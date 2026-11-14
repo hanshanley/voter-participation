@@ -9,15 +9,26 @@ precincts or matched precinct histories.
 The published projection contains 121,661 source cells in 39 separate
 snapshots across 18 jurisdictions, including DC. All 51 jurisdiction decisions
 are recorded for each of the two projection years. The 12,837 reported zero
-cells remain zero; 115 unknown and 484 withheld cells retain their source
+cells remain zero; 115 unknown and 305 withheld cells retain their source
 literals rather than becoming zero. These are counts of source cells, not
 unique reporting units, people or ballots. Official and compiled versions can
 overlap.
 
-The complete package is immutable445000489, dataset88d51667 is separately
-published and the existing-site reader is verified on desktop and mobile.
-See the [complete download](DATA.md#historical-native-source-cells-and-marion-iowa)
-and [source qualifications](../SOURCES.md#historical-native-administrative-cells-2018-and-2020).
+The integer-format successor is dataset `a8e917a7`; the original `88d51667`
+and its immutable445000489 package remain separately reproducible. The current
+[complete download](DATA.md#historical-native-integer-format-successor) includes
+the entire179-cell before/after query.
+See [source qualifications](../SOURCES.md#historical-native-integer-format-reconciliation).
+
+The earlier generic classifier tagged comma-formatted integers as
+`noninteger_native_literal`. Only that generated status plus proper ASCII
+thousands grouping and an optional all-zero decimal suffix is eligible for
+reviewed integer parsing. The projection independently checks the actual native
+measure/value and safe bounds, retains the original literal/native fields and
+`upstream_source_status`, and marks the explicit formatting qualification.
+All163 PA and16 UT changed source cells are documented. Unknown/suppressed
+values, malformed grouping and actual fractions remain held; these are not179
+new people, inferred rates or newly approved geographic joins.
 
 ## Source and election boundaries
 
@@ -66,7 +77,7 @@ streaming its complete factual query. It writes deterministic, source-separated
 state shards and an all-jurisdiction index. A changed input or output directory
 requires a new version; no source is requested by this projection. The exact
 documented command selects `python3`, sets the startup-guard path, probes six
-network/DNS/child denials, runs eight tests and regenerates all20 output files.
+network/DNS/child denials, runs ten tests and regenerates all20 output files.
 Both clean extracted-download executions match every output byte.
 `dataset.json` contains the data identity. Its complete-download pointer is
 publication metadata supplied only after immutable full-body verification,

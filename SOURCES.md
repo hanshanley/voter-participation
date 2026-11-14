@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current historical integer-format reconciliation | [179 qualified PA/UT native cells; original flags and all fractional/unknown holds retained](#historical-native-integer-format-reconciliation) |
 | Current historical administrative cells | [Source-separated 2018/2020 observations, all51 state/year decisions and complete reproduction](#historical-native-administrative-cells-2018-and-2020) |
 | Current Marion Iowa snapshot | [Unofficial General Election Total Ballots, contextual registration and retained source modes](#2026-marion-iowa-native-general-election-snapshot) |
 | Current regional counts and map bindings | [Seven-state successors, full numerical packages and retained model-frame holds](#2026-regional-native-counts-and-new-mexico-map-bindings) |
@@ -62,7 +63,63 @@ This document is the detailed reference ledger, not the methods introduction.
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
 
+## Historical native integer-format reconciliation
+
+Scientific source `29ec90582cde8134ac904949fae88bafd95d1a60` corrects one
+mechanical parser hold, not a publisher suppression or a new source snapshot.
+The earlier generic classifier accepted only an optional minus sign followed
+by digits. It therefore labeled native `1,054`-style values
+`noninteger_native_literal`, even though the complete native field is an
+unambiguous comma-grouped integer.
+
+Exactly179 administrative source cells are newly qualified: Pennsylvania163
+and Utah16, from the already-held2018/2020 General Election precinct files.
+The bridge accepts only that generated flag plus proper ASCII thousands
+grouping and an optional all-zero decimal suffix. It still independently
+matches native office/value, exact election/source identity and safe integer
+bounds. The original literal, native fields, qualifications and
+`upstream_source_status` remain. Unknown, suppressed, malformed-grouping and
+actual fractional values are not promoted or rounded.
+
+All121,661 source-cell identities and39 snapshots remain;16 other state shards
+are byte-identical. Reported zeros remain12,837; unknowns remain115;305 actual
+fractional holds remain. There are still18 jurisdictions with observations and
+all102 state/year decisions, not universal historical precinct turnout.
+These179 cells are not179 newly identified people or an additive participant
+total. There is no new rate, denominator, boundary join, cross-year identity,
+2026 observation, weight or behavioral fit.
+
+The complete554,009,197-byte standalone successor has SHA256
+`2d5961cef2a4e4c44d479eb686aea9e941f93dbd41f6220edec47484637d1b05`.
+All three full factual inputs, exact code, ten tests, all20 numerical outputs
+and the complete179-cell before/after source query are included. Both fresh
+replays and a genuinely extracted download execute the literal
+`sh -eu REPRODUCE.txt`, with six network/DNS/child-denial probes and every output
+byte-exact. The source/data and full package are independently reviewed.
+[Complete successor](docs/DATA.md#historical-native-integer-format-successor).
+
+History version `a8e917a7` supersedes `88d51667` only in this reviewed source-
+format qualification. The earlier package remains immutable and reproducible;
+its original484 holds are not silently rewritten. Current2026 counts `900c675c`,
+native `b591e846`, fitted means, priors, weights, endpoints and33/17 House
+qualification remain unchanged.
+
+The successor is immutable **445021938**, asset746326173, with authenticated
+and anonymous full-body verification. Catalog
+`6f5c68a9b8d76f5bf599cbca34fdce92f55a16a7` activates the independently verified
+20-file version; only `states/PA.json.gz` and `states/UT.json.gz` change.
+Actual no-override1440/390 acceptance renders every affected source cell:
+358 exact count/native-field checks, plus both full554,009,197-byte ZIP hashes.
+Ten canonical tests pass. No site rebuild was needed: all32 current live
+bodies and the publication manifest remain byte-exact to accepted artifact
+14098410480, whose997,339,994 payload/999,936,000 tar bytes remain below1e9.
+The prior actual115-body/436-download/113-original preservation proof is reused
+for that unchanged native delivery, not claimed as a new build.
+[Complete actual acceptance](data/participation-access/20261114-historical-native-integer-01/website-acceptance.json).
+
 ## Historical native administrative cells: 2018 and 2020
+
+Original accepted delivery, retained by the integer-format successor above.
 
 Scientific source `8d4e6ea5ce6ff1f1cee821b9ec8b4654e91276e1` projects only
 explicit native Ballots Cast and registration-stock cells from three already

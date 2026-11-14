@@ -8,7 +8,43 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Historical native integer-format successor
+
+[Complete standalone analysis and reproduction](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-native-integer-review-20261114-01/complete-analysis.zip):
+**554,009,197 bytes/38 members**, SHA256
+`2d5961cef2a4e4c44d479eb686aea9e941f93dbd41f6220edec47484637d1b05`.
+It includes all three complete factual input components, exact producing code/
+tests, all20 outputs, all102 jurisdiction/year decisions and every one of the
+179 before/after cells with full native fields and original qualifications.
+
+From the extracted download run `sh -eu REPRODUCE.txt` using Python3.9+.
+No third-party packages are needed. Both fresh isolated executions and a real
+extracted-SDK execution run ten tests, probe six network/DNS/child denials and
+reproduce all20 output files exactly.
+
+Version `a8e917a7` repairs the mechanical classification of163 PA and16 UT
+comma-grouped integer literals. All original source flags/literals/native fields
+remain; only these179 count qualifications change. The16 other state shards,
+all121,661 identities/39 snapshots,12,837 zeros,115 unknowns and305 genuine
+fractional holds are preserved. No new rates, denominator/geography approvals,
+individual participation/transition claims or current2026 model changes follow.
+The original `88d51667` package below remains available with its original484
+holds, rather than being silently replaced.
+[Detailed scope](../SOURCES.md#historical-native-integer-format-reconciliation).
+
+Immutable445021938/asset746326173 has full authenticated and anonymous body
+verification. Catalog6f5c68a9 activates the verified20-file version; only the
+PA/UT state bodies change. Actual no-override1440/390 tests render all179
+affected counts and original fields at each width and hash both complete
+downloads. Ten canonical tests pass. The unchanged website's32 current bodies
+and native manifest match accepted artifact14098410480, whose actual payload/
+tar remain997,339,994/999,936,000 bytes below1e9; no new build is claimed.
+[Full actual acceptance](../data/participation-access/20261114-historical-native-integer-01/website-acceptance.json).
+
 ## Historical native source cells and Marion Iowa
+
+Original accepted historical delivery retained by the source-format successor;
+Marion and all current2026 counts remain unchanged.
 
 Both complete packages have authenticated-draft and anonymous-public full-body
 verification and immutable release assets. They contain numerical inputs and

@@ -13,7 +13,39 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Exact historical integer-format holds reconciled
+
+The native source-format successor qualifies179 previously held administrative
+cells: Pennsylvania163 and Utah16. A digits-only upstream classifier had labeled
+proper comma-grouped integers as noninteger. Source29ec905 corrects only that
+generated flag and exact integer format, independently checks the native
+measure/value, and retains the original flag/literal/native fields. Unknowns,
+suppression, malformed grouping and actual fractions are not turned into counts.
+
+History `a8e917a7` retains all121,661 cell identities/39 snapshots/102 decisions,
+12,837 zeros and115 unknowns. The305 genuine fractional holds and all16 other
+state shards remain exact. The complete554,009,197-byte successor includes
+all three inputs, code, ten tests, every query/output and the179-cell comparison;
+two fresh replays and a genuinely extracted download reproduce all20 files.
+This is not179 people, new turnout rates or qualified historical boundaries.
+Current2026 counts900c/nativeb591 and every model/weight/House gate stay unchanged.
+
+The full successor is immutable445021938 and active in catalog6f5c68a9.
+All20 immutable paths verify anonymously; only the PA/UT state bodies change.
+Actual no-override desktop/mobile checks cover all358 affected row renderings
+and both complete554,009,197-byte ZIP hashes. Ten canonical tests pass; current
+site bodies/manifest remain exact to the already accepted native artifact,
+without another build, source acquisition or model refit.
+[Actual source-format acceptance](data/participation-access/20261114-historical-native-integer-01/website-acceptance.json).
+
+Continue the substantive all-state joint-source, population/frame and supported
+local-model gaps below; do not refit unchanged NORC observations for activity.
+The previous bounded delivery remains accepted and reproducible.
+[Complete source-format successor](docs/DATA.md#historical-native-integer-format-successor).
+
 ## Historical source cells and Marion counts: retain the model-frame gaps
+
+Earlier accepted delivery retained by the exact source-format successor above.
 
 The historical projection now exposes121,661 source-separated administrative
 cells in39 snapshots across18 jurisdictions for2018/2020, with all102 state/

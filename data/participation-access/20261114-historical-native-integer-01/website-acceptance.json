@@ -1,0 +1,5132 @@
+{
+  "actual_production": {
+    "actual_production_acceptance": true,
+    "all_browsers_closed": true,
+    "browser_errors": [],
+    "cases": [
+      {
+        "all_179_counts_and_original_native_fields_exact": true,
+        "changed_cells_actually_rendered": [
+          {
+            "id": "5a063be03e4bbec143afdc8f49272981",
+            "literal": "1,054",
+            "state": "PA",
+            "value": 1054,
+            "year": 2018
+          },
+          {
+            "id": "01e4c936754a267e7fe54f571cc72b19",
+            "literal": "1,070",
+            "state": "PA",
+            "value": 1070,
+            "year": 2020
+          },
+          {
+            "id": "02d39669cdc64174b4a95771a4a2726e",
+            "literal": "1,115",
+            "state": "PA",
+            "value": 1115,
+            "year": 2020
+          },
+          {
+            "id": "0408d83dda0c0504fb6d997e2463ef0a",
+            "literal": "1,351",
+            "state": "PA",
+            "value": 1351,
+            "year": 2020
+          },
+          {
+            "id": "0458681dc2ee3aed2b9e0c0022fed4f5",
+            "literal": "1,729",
+            "state": "PA",
+            "value": 1729,
+            "year": 2020
+          },
+          {
+            "id": "04a2c696ed2724df7373f901c49103af",
+            "literal": "1,069",
+            "state": "PA",
+            "value": 1069,
+            "year": 2020
+          },
+          {
+            "id": "076acd958c9d54db3af28f56085f7c61",
+            "literal": "1,520",
+            "state": "PA",
+            "value": 1520,
+            "year": 2020
+          },
+          {
+            "id": "0bd44cec7d4373fe580c11bf9dedbf55",
+            "literal": "1,662",
+            "state": "PA",
+            "value": 1662,
+            "year": 2020
+          },
+          {
+            "id": "0df63800a789864db4872b672dd276e2",
+            "literal": "1,573",
+            "state": "PA",
+            "value": 1573,
+            "year": 2020
+          },
+          {
+            "id": "105ce48078ea0546d349fd343a201b61",
+            "literal": "1,174",
+            "state": "PA",
+            "value": 1174,
+            "year": 2020
+          },
+          {
+            "id": "10b26b179de25a00ed8cb1ff7f262a01",
+            "literal": "2,030",
+            "state": "PA",
+            "value": 2030,
+            "year": 2020
+          },
+          {
+            "id": "1770322fb4c0e8a4af73e1e41b22559b",
+            "literal": "1,390",
+            "state": "PA",
+            "value": 1390,
+            "year": 2020
+          },
+          {
+            "id": "1960f5eab33b2d0335c2a236da33525e",
+            "literal": "1,792",
+            "state": "PA",
+            "value": 1792,
+            "year": 2020
+          },
+          {
+            "id": "1b15bc94815ff6bae1280d1892401a34",
+            "literal": "1,009",
+            "state": "PA",
+            "value": 1009,
+            "year": 2020
+          },
+          {
+            "id": "1bb1e267cb9d86a2e1d1a382f2537b62",
+            "literal": "1,593",
+            "state": "PA",
+            "value": 1593,
+            "year": 2020
+          },
+          {
+            "id": "1cc1cb081e19a317eb43dc1592186c32",
+            "literal": "1,139",
+            "state": "PA",
+            "value": 1139,
+            "year": 2020
+          },
+          {
+            "id": "1fbd556ae577df71d3986c895b752b53",
+            "literal": "1,483",
+            "state": "PA",
+            "value": 1483,
+            "year": 2020
+          },
+          {
+            "id": "253230fad4eaa63cbeb07dc74cb9441e",
+            "literal": "1,193",
+            "state": "PA",
+            "value": 1193,
+            "year": 2020
+          },
+          {
+            "id": "2691f13d71e90cb550c50286577de85c",
+            "literal": "1,449",
+            "state": "PA",
+            "value": 1449,
+            "year": 2020
+          },
+          {
+            "id": "2b97c84a1d11870937a3aefe839e691c",
+            "literal": "1,261",
+            "state": "PA",
+            "value": 1261,
+            "year": 2020
+          },
+          {
+            "id": "2dd0bba32667f16e678671ac2cb59c12",
+            "literal": "1,236",
+            "state": "PA",
+            "value": 1236,
+            "year": 2020
+          },
+          {
+            "id": "2f6c2c60c9a25438ad4fe7fdbad7c65d",
+            "literal": "1,070",
+            "state": "PA",
+            "value": 1070,
+            "year": 2020
+          },
+          {
+            "id": "330c68fd234e982925ac1baadb1c9126",
+            "literal": "1,199",
+            "state": "PA",
+            "value": 1199,
+            "year": 2020
+          },
+          {
+            "id": "383a83a823389537f9eab6ebcea203ff",
+            "literal": "1,230",
+            "state": "PA",
+            "value": 1230,
+            "year": 2020
+          },
+          {
+            "id": "3c70f7a1df13a6053bc7fe5e57f60b71",
+            "literal": "1,698",
+            "state": "PA",
+            "value": 1698,
+            "year": 2020
+          },
+          {
+            "id": "3ced12aaba2841bd69bd132018f46ce2",
+            "literal": "1,184",
+            "state": "PA",
+            "value": 1184,
+            "year": 2020
+          },
+          {
+            "id": "3d8d230dc28904b1c29c4a279be1e140",
+            "literal": "1,056",
+            "state": "PA",
+            "value": 1056,
+            "year": 2020
+          },
+          {
+            "id": "3dfea163055c7bb8d0822e719a1de057",
+            "literal": "1,666",
+            "state": "PA",
+            "value": 1666,
+            "year": 2020
+          },
+          {
+            "id": "445174fea3443825e68e3d79674a2466",
+            "literal": "1,143",
+            "state": "PA",
+            "value": 1143,
+            "year": 2020
+          },
+          {
+            "id": "49b3a649fccc2547a3d93aa0eb48a065",
+            "literal": "1,430",
+            "state": "PA",
+            "value": 1430,
+            "year": 2020
+          },
+          {
+            "id": "4c968b336a085975a7bc2f6670630661",
+            "literal": "1,113",
+            "state": "PA",
+            "value": 1113,
+            "year": 2020
+          },
+          {
+            "id": "4d49c362de36e4dc199d7e26a1e6310a",
+            "literal": "1,412",
+            "state": "PA",
+            "value": 1412,
+            "year": 2020
+          },
+          {
+            "id": "507963487b51b64815b4d5cfeb7f12b5",
+            "literal": "1,036",
+            "state": "PA",
+            "value": 1036,
+            "year": 2020
+          },
+          {
+            "id": "51559765839bf3d3136dad3e613aa720",
+            "literal": "1,310",
+            "state": "PA",
+            "value": 1310,
+            "year": 2020
+          },
+          {
+            "id": "5181fa7984bacdc71db2a937fd936f1b",
+            "literal": "1,286",
+            "state": "PA",
+            "value": 1286,
+            "year": 2020
+          },
+          {
+            "id": "518bb1fa0c110b2d122ae01e854a0df2",
+            "literal": "1,756",
+            "state": "PA",
+            "value": 1756,
+            "year": 2020
+          },
+          {
+            "id": "51d91452a68e9a07052a7ac0fa7d851b",
+            "literal": "1,757",
+            "state": "PA",
+            "value": 1757,
+            "year": 2020
+          },
+          {
+            "id": "5419f86c6344509d27885477fd036d3f",
+            "literal": "1,329",
+            "state": "PA",
+            "value": 1329,
+            "year": 2020
+          },
+          {
+            "id": "57fd69eeb22f654a0eea7ac0d43ce423",
+            "literal": "1,821",
+            "state": "PA",
+            "value": 1821,
+            "year": 2020
+          },
+          {
+            "id": "58d458a4b28258eb727de7aec4ed8cae",
+            "literal": "1,200",
+            "state": "PA",
+            "value": 1200,
+            "year": 2020
+          },
+          {
+            "id": "5b11cb21c087af2f7ead43a4e1b5a813",
+            "literal": "1,242",
+            "state": "PA",
+            "value": 1242,
+            "year": 2020
+          },
+          {
+            "id": "614adb286569366f5b95b296ff61084a",
+            "literal": "1,162",
+            "state": "PA",
+            "value": 1162,
+            "year": 2020
+          },
+          {
+            "id": "645491926eb405a6496145bf9a2d34e4",
+            "literal": "1,127",
+            "state": "PA",
+            "value": 1127,
+            "year": 2020
+          },
+          {
+            "id": "6526ce7c005c0d9593d6499ed7fad078",
+            "literal": "1,323",
+            "state": "PA",
+            "value": 1323,
+            "year": 2020
+          },
+          {
+            "id": "67671125119ddfcfd04d348b7328037e",
+            "literal": "1,742",
+            "state": "PA",
+            "value": 1742,
+            "year": 2020
+          },
+          {
+            "id": "69a62fd928d8b1227c0460d913e3c838",
+            "literal": "1,123",
+            "state": "PA",
+            "value": 1123,
+            "year": 2020
+          },
+          {
+            "id": "6c6842f9e31f0952e9d788082768a80d",
+            "literal": "1,282",
+            "state": "PA",
+            "value": 1282,
+            "year": 2020
+          },
+          {
+            "id": "6e7f7d277b201d1994d9b75381d8becf",
+            "literal": "1,600",
+            "state": "PA",
+            "value": 1600,
+            "year": 2020
+          },
+          {
+            "id": "71579627e769cceaa654196fb37f25b7",
+            "literal": "1,510",
+            "state": "PA",
+            "value": 1510,
+            "year": 2020
+          },
+          {
+            "id": "731284d794052a8d31dfe634444ac03d",
+            "literal": "1,093",
+            "state": "PA",
+            "value": 1093,
+            "year": 2020
+          },
+          {
+            "id": "737c97401de1c0dd057909e98785d15b",
+            "literal": "1,506",
+            "state": "PA",
+            "value": 1506,
+            "year": 2020
+          },
+          {
+            "id": "75463f12c68c8f7d79f5a7204502809d",
+            "literal": "1,081",
+            "state": "PA",
+            "value": 1081,
+            "year": 2020
+          },
+          {
+            "id": "79831b4876a7f66cb0ffc8ac34c33b4b",
+            "literal": "1,126",
+            "state": "PA",
+            "value": 1126,
+            "year": 2020
+          },
+          {
+            "id": "7a27eaa7849bf2caa9fe31a736d7c155",
+            "literal": "1,103",
+            "state": "PA",
+            "value": 1103,
+            "year": 2020
+          },
+          {
+            "id": "7c5446b6e40b5a1696ef99ce2bab49c1",
+            "literal": "1,543",
+            "state": "PA",
+            "value": 1543,
+            "year": 2020
+          },
+          {
+            "id": "81150052d43534ddffed3d8c5f6fc6aa",
+            "literal": "1,312",
+            "state": "PA",
+            "value": 1312,
+            "year": 2020
+          },
+          {
+            "id": "81815dcc9ef1d66decebc80cc303e2ab",
+            "literal": "1,497",
+            "state": "PA",
+            "value": 1497,
+            "year": 2020
+          },
+          {
+            "id": "82da4d9d936a56bf68e9216c82f88a42",
+            "literal": "1,434",
+            "state": "PA",
+            "value": 1434,
+            "year": 2020
+          },
+          {
+            "id": "83c5d1407ec8c9e456624d9dee30a777",
+            "literal": "1,460",
+            "state": "PA",
+            "value": 1460,
+            "year": 2020
+          },
+          {
+            "id": "88ca4d8e622b0361edb9870d7a90d6b2",
+            "literal": "1,241",
+            "state": "PA",
+            "value": 1241,
+            "year": 2020
+          },
+          {
+            "id": "8d70d440487183abc6a2bce29784cae3",
+            "literal": "1,077",
+            "state": "PA",
+            "value": 1077,
+            "year": 2020
+          },
+          {
+            "id": "8ff0065f52783e6e5527c037cbcbb5bc",
+            "literal": "1,177",
+            "state": "PA",
+            "value": 1177,
+            "year": 2020
+          },
+          {
+            "id": "90dc31c2f3a5eed000dc0757d5467597",
+            "literal": "1,073",
+            "state": "PA",
+            "value": 1073,
+            "year": 2020
+          },
+          {
+            "id": "917a6676c442e79fc28092e8a8fcde6b",
+            "literal": "1,209",
+            "state": "PA",
+            "value": 1209,
+            "year": 2020
+          },
+          {
+            "id": "975e05bd12123c66796a7dd6b3720199",
+            "literal": "1,600",
+            "state": "PA",
+            "value": 1600,
+            "year": 2020
+          },
+          {
+            "id": "977eddc8e8612c3ad8f906fb09bc717b",
+            "literal": "1,522",
+            "state": "PA",
+            "value": 1522,
+            "year": 2020
+          },
+          {
+            "id": "9c9bd4046917b5b9710b181a6848302d",
+            "literal": "1,365",
+            "state": "PA",
+            "value": 1365,
+            "year": 2020
+          },
+          {
+            "id": "9d98e320ed97b9973a1d12028bbab0c0",
+            "literal": "1,292",
+            "state": "PA",
+            "value": 1292,
+            "year": 2020
+          },
+          {
+            "id": "9e8735351f11a5f311e54bd75f2a2333",
+            "literal": "1,742",
+            "state": "PA",
+            "value": 1742,
+            "year": 2020
+          },
+          {
+            "id": "a039fd7c5fa258110695de0ef5f77542",
+            "literal": "1,516",
+            "state": "PA",
+            "value": 1516,
+            "year": 2020
+          },
+          {
+            "id": "a1a0baef2e0a5f6411d1d67c6e3db39b",
+            "literal": "1,104",
+            "state": "PA",
+            "value": 1104,
+            "year": 2020
+          },
+          {
+            "id": "a1d0c7bda7cdca9ff8d2ca4dc1fff08c",
+            "literal": "1,517",
+            "state": "PA",
+            "value": 1517,
+            "year": 2020
+          },
+          {
+            "id": "a1ea8d0214314f05c4447fbb9a8f2d50",
+            "literal": "1,241",
+            "state": "PA",
+            "value": 1241,
+            "year": 2020
+          },
+          {
+            "id": "a390bb51ed3821156c3048c8ebe7793d",
+            "literal": "1,544",
+            "state": "PA",
+            "value": 1544,
+            "year": 2020
+          },
+          {
+            "id": "a8096cc41a73692df50d2815ffef4fef",
+            "literal": "1,555",
+            "state": "PA",
+            "value": 1555,
+            "year": 2020
+          },
+          {
+            "id": "a9cc5b3e23c1656c23d9174048e082ea",
+            "literal": "1,040",
+            "state": "PA",
+            "value": 1040,
+            "year": 2020
+          },
+          {
+            "id": "aec266d3146182ef2f50f0fc6d84ad33",
+            "literal": "1,095",
+            "state": "PA",
+            "value": 1095,
+            "year": 2020
+          },
+          {
+            "id": "b086cc3f514af57dca5cb8a95283c554",
+            "literal": "1,028",
+            "state": "PA",
+            "value": 1028,
+            "year": 2020
+          },
+          {
+            "id": "b0d37dabee48a5d4cdd5eccec527b162",
+            "literal": "1,218",
+            "state": "PA",
+            "value": 1218,
+            "year": 2020
+          },
+          {
+            "id": "b0e6d90b379da35e4fa0d7f6eb091b2f",
+            "literal": "1,282",
+            "state": "PA",
+            "value": 1282,
+            "year": 2020
+          },
+          {
+            "id": "b24a2985b037224a418f4bc76d9a58b1",
+            "literal": "1,087",
+            "state": "PA",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "b2cc4e9f7447985c3acc59e6cb5b2fbb",
+            "literal": "1,269",
+            "state": "PA",
+            "value": 1269,
+            "year": 2020
+          },
+          {
+            "id": "b6cdf631be1b63f315ce5740432cc106",
+            "literal": "1,106",
+            "state": "PA",
+            "value": 1106,
+            "year": 2020
+          },
+          {
+            "id": "b89e394e644da18842f10ddb9873ef53",
+            "literal": "1,054",
+            "state": "PA",
+            "value": 1054,
+            "year": 2020
+          },
+          {
+            "id": "bbae04de979872b9e30eb903cdc1bc5c",
+            "literal": "1,243",
+            "state": "PA",
+            "value": 1243,
+            "year": 2020
+          },
+          {
+            "id": "bd3df8f8675e22f7e603a796b6f12e47",
+            "literal": "1,098",
+            "state": "PA",
+            "value": 1098,
+            "year": 2020
+          },
+          {
+            "id": "bef0126707599c953b5be2c2f5e0d88f",
+            "literal": "1,267",
+            "state": "PA",
+            "value": 1267,
+            "year": 2020
+          },
+          {
+            "id": "bfa5b15679384e3d0daeffe8875bab2d",
+            "literal": "1,208",
+            "state": "PA",
+            "value": 1208,
+            "year": 2020
+          },
+          {
+            "id": "c03ca44177edab69bab375c86b3f326f",
+            "literal": "1,438",
+            "state": "PA",
+            "value": 1438,
+            "year": 2020
+          },
+          {
+            "id": "c1fdd6e0096ed822eafe2169aeb570bd",
+            "literal": "1,203",
+            "state": "PA",
+            "value": 1203,
+            "year": 2020
+          },
+          {
+            "id": "c7cc5856d4cb1e308f809409b5a09770",
+            "literal": "1,463",
+            "state": "PA",
+            "value": 1463,
+            "year": 2020
+          },
+          {
+            "id": "ca1d78a76084260874af6775e3198540",
+            "literal": "1,022",
+            "state": "PA",
+            "value": 1022,
+            "year": 2020
+          },
+          {
+            "id": "cab706cbbbb8a5e40da13c2ff8144fc5",
+            "literal": "1,160",
+            "state": "PA",
+            "value": 1160,
+            "year": 2020
+          },
+          {
+            "id": "cd154c0decb2aef9f0372690dce5d66f",
+            "literal": "1,300",
+            "state": "PA",
+            "value": 1300,
+            "year": 2020
+          },
+          {
+            "id": "cd3c5a6ba11656ce89d9c6116529cb2b",
+            "literal": "1,102",
+            "state": "PA",
+            "value": 1102,
+            "year": 2020
+          },
+          {
+            "id": "cf59d4f7d5aee94db1fd54b9823ba906",
+            "literal": "1,549",
+            "state": "PA",
+            "value": 1549,
+            "year": 2020
+          },
+          {
+            "id": "d08e24df819680ca172825a7b1b2772f",
+            "literal": "1,583",
+            "state": "PA",
+            "value": 1583,
+            "year": 2020
+          },
+          {
+            "id": "d2a9116e7d20687c3d9fd12305f23299",
+            "literal": "1,327",
+            "state": "PA",
+            "value": 1327,
+            "year": 2020
+          },
+          {
+            "id": "d2be033076d2cbab7dbaf714a82cc497",
+            "literal": "2,055",
+            "state": "PA",
+            "value": 2055,
+            "year": 2020
+          },
+          {
+            "id": "d360c19271f477cbae4900a9985076a5",
+            "literal": "1,262",
+            "state": "PA",
+            "value": 1262,
+            "year": 2020
+          },
+          {
+            "id": "d51ee43ff7ccd3e67c4dee952ac5e9bd",
+            "literal": "1,105",
+            "state": "PA",
+            "value": 1105,
+            "year": 2020
+          },
+          {
+            "id": "da1a66e249f533465b740d51bb0c3642",
+            "literal": "1,118",
+            "state": "PA",
+            "value": 1118,
+            "year": 2020
+          },
+          {
+            "id": "de75c5c1deae945232138dff863474bd",
+            "literal": "1,165",
+            "state": "PA",
+            "value": 1165,
+            "year": 2020
+          },
+          {
+            "id": "e28f7d23b974000f640344c826608a4c",
+            "literal": "1,389",
+            "state": "PA",
+            "value": 1389,
+            "year": 2020
+          },
+          {
+            "id": "e55f8a08ff25be30847b336d8be92525",
+            "literal": "1,115",
+            "state": "PA",
+            "value": 1115,
+            "year": 2020
+          },
+          {
+            "id": "eb92292e0082694d893fb5deda861ac0",
+            "literal": "1,013",
+            "state": "PA",
+            "value": 1013,
+            "year": 2020
+          },
+          {
+            "id": "ec33c986df8ea7b7bb5ba0edeb48a422",
+            "literal": "1,134",
+            "state": "PA",
+            "value": 1134,
+            "year": 2020
+          },
+          {
+            "id": "ef1deb7d35e53013eed69390a10fc814",
+            "literal": "1,192",
+            "state": "PA",
+            "value": 1192,
+            "year": 2020
+          },
+          {
+            "id": "f06a8cd7c169a413895a690ee2932b80",
+            "literal": "1,476",
+            "state": "PA",
+            "value": 1476,
+            "year": 2020
+          },
+          {
+            "id": "f1b2215a776ede54cc4797f33b256e6a",
+            "literal": "1,118",
+            "state": "PA",
+            "value": 1118,
+            "year": 2020
+          },
+          {
+            "id": "f28d201120e6d9e545ec0bd153cefeb1",
+            "literal": "1,173",
+            "state": "PA",
+            "value": 1173,
+            "year": 2020
+          },
+          {
+            "id": "f30dec932cd23721e9df2af8aa0aeedd",
+            "literal": "1,214",
+            "state": "PA",
+            "value": 1214,
+            "year": 2020
+          },
+          {
+            "id": "fd823f5e2dd6b85f26ca3c9a7309238a",
+            "literal": "1,304",
+            "state": "PA",
+            "value": 1304,
+            "year": 2020
+          },
+          {
+            "id": "02b8fc16c81cbf2405e0a44da51522d7",
+            "literal": "1,289",
+            "state": "PA",
+            "value": 1289,
+            "year": 2020
+          },
+          {
+            "id": "04705ae837abdc06a29ee3432be8f57a",
+            "literal": "1,620",
+            "state": "PA",
+            "value": 1620,
+            "year": 2020
+          },
+          {
+            "id": "0841976f7e3b45f0935f5c04b0c29bf6",
+            "literal": "1,700",
+            "state": "PA",
+            "value": 1700,
+            "year": 2020
+          },
+          {
+            "id": "123450b5fd9a3be5a42e4fd576d72e71",
+            "literal": "1,193",
+            "state": "PA",
+            "value": 1193,
+            "year": 2020
+          },
+          {
+            "id": "228d3a5a621f41572f2f79c5e7661b1a",
+            "literal": "1,333",
+            "state": "PA",
+            "value": 1333,
+            "year": 2020
+          },
+          {
+            "id": "350ed2633b8170b8e755be26d39a843e",
+            "literal": "1,073",
+            "state": "PA",
+            "value": 1073,
+            "year": 2020
+          },
+          {
+            "id": "3a006a4e526c811d1eaf0f2ec2fd7de6",
+            "literal": "1,072",
+            "state": "PA",
+            "value": 1072,
+            "year": 2020
+          },
+          {
+            "id": "3e548a31118c9b685ccd87cd1432e914",
+            "literal": "1,307",
+            "state": "PA",
+            "value": 1307,
+            "year": 2020
+          },
+          {
+            "id": "3f8eb186f860de9cbcc0f27e7dccd16b",
+            "literal": "1,184",
+            "state": "PA",
+            "value": 1184,
+            "year": 2020
+          },
+          {
+            "id": "44d6a1653d3cb86305e84314fc17ec86",
+            "literal": "1,679",
+            "state": "PA",
+            "value": 1679,
+            "year": 2020
+          },
+          {
+            "id": "525933e44ccd04c8d6d763105e9d8248",
+            "literal": "1,329",
+            "state": "PA",
+            "value": 1329,
+            "year": 2020
+          },
+          {
+            "id": "568c444e3ac2b735d5a095c42e9aae04",
+            "literal": "1,132",
+            "state": "PA",
+            "value": 1132,
+            "year": 2020
+          },
+          {
+            "id": "5e0a8379b8550765c41c5a65ced54714",
+            "literal": "1,260",
+            "state": "PA",
+            "value": 1260,
+            "year": 2020
+          },
+          {
+            "id": "64580273db9e74200688a89e5a48a751",
+            "literal": "1,425",
+            "state": "PA",
+            "value": 1425,
+            "year": 2020
+          },
+          {
+            "id": "67ac6055fead9a20dfd19e37f75e86de",
+            "literal": "1,311",
+            "state": "PA",
+            "value": 1311,
+            "year": 2020
+          },
+          {
+            "id": "6900621f72587ea02d443f673179a926",
+            "literal": "1,341",
+            "state": "PA",
+            "value": 1341,
+            "year": 2020
+          },
+          {
+            "id": "6ad56d43bf44077068a0a71204853b93",
+            "literal": "1,278",
+            "state": "PA",
+            "value": 1278,
+            "year": 2020
+          },
+          {
+            "id": "74225fab47811108e815adb5c60853d2",
+            "literal": "1,001",
+            "state": "PA",
+            "value": 1001,
+            "year": 2020
+          },
+          {
+            "id": "81327e70041ba08e23c593a87da28cd6",
+            "literal": "1,470",
+            "state": "PA",
+            "value": 1470,
+            "year": 2020
+          },
+          {
+            "id": "846981d5e9cc0a2b1910a04ec93f8efb",
+            "literal": "1,918",
+            "state": "PA",
+            "value": 1918,
+            "year": 2020
+          },
+          {
+            "id": "8b189ef0702483ab9ce23619282f6636",
+            "literal": "1,113",
+            "state": "PA",
+            "value": 1113,
+            "year": 2020
+          },
+          {
+            "id": "904471bbad69732e03b74cfa0d045d3e",
+            "literal": "1,206",
+            "state": "PA",
+            "value": 1206,
+            "year": 2020
+          },
+          {
+            "id": "94829e87b0146c8a71263a45731f2a62",
+            "literal": "1,035",
+            "state": "PA",
+            "value": 1035,
+            "year": 2020
+          },
+          {
+            "id": "94b7ba8d6ff55b79c04333ce37289973",
+            "literal": "1,731",
+            "state": "PA",
+            "value": 1731,
+            "year": 2020
+          },
+          {
+            "id": "9921c9ebd00fa53c07e032ca17272b1a",
+            "literal": "1,037",
+            "state": "PA",
+            "value": 1037,
+            "year": 2020
+          },
+          {
+            "id": "a33310e3278d7b1c273f81303bad21cb",
+            "literal": "1,084",
+            "state": "PA",
+            "value": 1084,
+            "year": 2020
+          },
+          {
+            "id": "a428f86c98eb4206212631a5fc0589ea",
+            "literal": "1,087",
+            "state": "PA",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "a532fdb9719f04f26da1fe11a23742b4",
+            "literal": "1,065",
+            "state": "PA",
+            "value": 1065,
+            "year": 2020
+          },
+          {
+            "id": "a8e79a86e748b92dd6f253cf8dfc3fc5",
+            "literal": "1,245",
+            "state": "PA",
+            "value": 1245,
+            "year": 2020
+          },
+          {
+            "id": "aa21a7423b70ce39f0cb39d5c21d6180",
+            "literal": "1,090",
+            "state": "PA",
+            "value": 1090,
+            "year": 2020
+          },
+          {
+            "id": "ab30799dce0e9ab0844ceac4c062149e",
+            "literal": "1,016",
+            "state": "PA",
+            "value": 1016,
+            "year": 2020
+          },
+          {
+            "id": "ad1f283e4a247564584aa79240c82857",
+            "literal": "1,164",
+            "state": "PA",
+            "value": 1164,
+            "year": 2020
+          },
+          {
+            "id": "aeeb4745f7029cf6eb47f83a17f5e1c5",
+            "literal": "1,100",
+            "state": "PA",
+            "value": 1100,
+            "year": 2020
+          },
+          {
+            "id": "b944cda923c018424ebc2aaebe279552",
+            "literal": "1,244",
+            "state": "PA",
+            "value": 1244,
+            "year": 2020
+          },
+          {
+            "id": "c6155819cf76056dd19daef6feb8e562",
+            "literal": "1,163",
+            "state": "PA",
+            "value": 1163,
+            "year": 2020
+          },
+          {
+            "id": "c65513196f57249c12deec9dfa29f9b6",
+            "literal": "1,340",
+            "state": "PA",
+            "value": 1340,
+            "year": 2020
+          },
+          {
+            "id": "c863b76f3c1528edfa965dca63df82c0",
+            "literal": "1,681",
+            "state": "PA",
+            "value": 1681,
+            "year": 2020
+          },
+          {
+            "id": "c94c5fe09d68fbb5ff0c4db3e3f39acc",
+            "literal": "1,405",
+            "state": "PA",
+            "value": 1405,
+            "year": 2020
+          },
+          {
+            "id": "daad089a415157af0ab23efa599dfb86",
+            "literal": "1,185",
+            "state": "PA",
+            "value": 1185,
+            "year": 2020
+          },
+          {
+            "id": "dbc8358f192eb8627b00a418ca477931",
+            "literal": "1,171",
+            "state": "PA",
+            "value": 1171,
+            "year": 2020
+          },
+          {
+            "id": "e24a76a90fb6bf20cb08a2da39118f31",
+            "literal": "1,158",
+            "state": "PA",
+            "value": 1158,
+            "year": 2020
+          },
+          {
+            "id": "e2cdb0892d0f5197a78e41099427278c",
+            "literal": "1,048",
+            "state": "PA",
+            "value": 1048,
+            "year": 2020
+          },
+          {
+            "id": "e328a39799b566afcf0ef8b6947675a1",
+            "literal": "1,022",
+            "state": "PA",
+            "value": 1022,
+            "year": 2020
+          },
+          {
+            "id": "ea8f4efec909f69ab2d68dd7bd23a2d9",
+            "literal": "1,403",
+            "state": "PA",
+            "value": 1403,
+            "year": 2020
+          },
+          {
+            "id": "ee397da1369540ca94ee3c9c56515cdc",
+            "literal": "1,023",
+            "state": "PA",
+            "value": 1023,
+            "year": 2020
+          },
+          {
+            "id": "f0091525cdf71b24dab6dead29985bc6",
+            "literal": "1,203",
+            "state": "PA",
+            "value": 1203,
+            "year": 2020
+          },
+          {
+            "id": "f4b04c16ef8f11b87a0f580dd491872b",
+            "literal": "1,354",
+            "state": "PA",
+            "value": 1354,
+            "year": 2020
+          },
+          {
+            "id": "f5ccc00f8d222f23b47eb3e0f4d470d2",
+            "literal": "1,039",
+            "state": "PA",
+            "value": 1039,
+            "year": 2020
+          },
+          {
+            "id": "f9ec3d230db1c5c0ac49c79ff9ca5727",
+            "literal": "1,659",
+            "state": "PA",
+            "value": 1659,
+            "year": 2020
+          },
+          {
+            "id": "ff864751e6b0cb1aa8b5a6997aba4ea0",
+            "literal": "1,148",
+            "state": "PA",
+            "value": 1148,
+            "year": 2020
+          },
+          {
+            "id": "0fe4f7b8e51e83e214cb77b9ce4b4856",
+            "literal": "1,119",
+            "state": "UT",
+            "value": 1119,
+            "year": 2020
+          },
+          {
+            "id": "100eb3bd0db43f0e11c714732ec248fb",
+            "literal": "1,698",
+            "state": "UT",
+            "value": 1698,
+            "year": 2020
+          },
+          {
+            "id": "2ff2cbee3d8c0c796287af26b5321ba9",
+            "literal": "1,555",
+            "state": "UT",
+            "value": 1555,
+            "year": 2020
+          },
+          {
+            "id": "443b7b65d45a41da086575728dd316cc",
+            "literal": "1,678",
+            "state": "UT",
+            "value": 1678,
+            "year": 2020
+          },
+          {
+            "id": "814f0d90b236a2441393372867312bc9",
+            "literal": "1,876",
+            "state": "UT",
+            "value": 1876,
+            "year": 2020
+          },
+          {
+            "id": "8335d83c85d6b751cc84ea4b6e77a196",
+            "literal": "1,304",
+            "state": "UT",
+            "value": 1304,
+            "year": 2020
+          },
+          {
+            "id": "88bca226805c7d0b8679534a94e25c19",
+            "literal": "1,766",
+            "state": "UT",
+            "value": 1766,
+            "year": 2020
+          },
+          {
+            "id": "a27a7c7b3ca7eaadec386a897d3d7eea",
+            "literal": "1,087",
+            "state": "UT",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "a55b1757c2223ff3d43e68fe0077719c",
+            "literal": "1,426",
+            "state": "UT",
+            "value": 1426,
+            "year": 2020
+          },
+          {
+            "id": "aedfd544b1f6512a535ed9b156286ae3",
+            "literal": "1,153",
+            "state": "UT",
+            "value": 1153,
+            "year": 2020
+          },
+          {
+            "id": "bf580008ba4132c6c5f96f1b23449c0b",
+            "literal": "1,122",
+            "state": "UT",
+            "value": 1122,
+            "year": 2020
+          },
+          {
+            "id": "c4c79043f6359bbc6c3193ba90f2ef60",
+            "literal": "1,563",
+            "state": "UT",
+            "value": 1563,
+            "year": 2020
+          },
+          {
+            "id": "e86b29703d85e8c43d01095e445e3f19",
+            "literal": "1,255",
+            "state": "UT",
+            "value": 1255,
+            "year": 2020
+          },
+          {
+            "id": "eee508b0301c215bd03dae7e5bd48ee5",
+            "literal": "1,051",
+            "state": "UT",
+            "value": 1051,
+            "year": 2020
+          },
+          {
+            "id": "f74fa83465c121170b840d3a534fb149",
+            "literal": "1,202",
+            "state": "UT",
+            "value": 1202,
+            "year": 2020
+          },
+          {
+            "id": "ff7d451d1c16350ba08408a1afb7e5d6",
+            "literal": "1,175",
+            "state": "UT",
+            "value": 1175,
+            "year": 2020
+          }
+        ],
+        "complete_download": {
+          "bytes": 554009197,
+          "sha256": "2d5961cef2a4e4c44d479eb686aea9e941f93dbd41f6220edec47484637d1b05"
+        },
+        "width": 1440
+      },
+      {
+        "all_179_counts_and_original_native_fields_exact": true,
+        "changed_cells_actually_rendered": [
+          {
+            "id": "5a063be03e4bbec143afdc8f49272981",
+            "literal": "1,054",
+            "state": "PA",
+            "value": 1054,
+            "year": 2018
+          },
+          {
+            "id": "01e4c936754a267e7fe54f571cc72b19",
+            "literal": "1,070",
+            "state": "PA",
+            "value": 1070,
+            "year": 2020
+          },
+          {
+            "id": "02d39669cdc64174b4a95771a4a2726e",
+            "literal": "1,115",
+            "state": "PA",
+            "value": 1115,
+            "year": 2020
+          },
+          {
+            "id": "0408d83dda0c0504fb6d997e2463ef0a",
+            "literal": "1,351",
+            "state": "PA",
+            "value": 1351,
+            "year": 2020
+          },
+          {
+            "id": "0458681dc2ee3aed2b9e0c0022fed4f5",
+            "literal": "1,729",
+            "state": "PA",
+            "value": 1729,
+            "year": 2020
+          },
+          {
+            "id": "04a2c696ed2724df7373f901c49103af",
+            "literal": "1,069",
+            "state": "PA",
+            "value": 1069,
+            "year": 2020
+          },
+          {
+            "id": "076acd958c9d54db3af28f56085f7c61",
+            "literal": "1,520",
+            "state": "PA",
+            "value": 1520,
+            "year": 2020
+          },
+          {
+            "id": "0bd44cec7d4373fe580c11bf9dedbf55",
+            "literal": "1,662",
+            "state": "PA",
+            "value": 1662,
+            "year": 2020
+          },
+          {
+            "id": "0df63800a789864db4872b672dd276e2",
+            "literal": "1,573",
+            "state": "PA",
+            "value": 1573,
+            "year": 2020
+          },
+          {
+            "id": "105ce48078ea0546d349fd343a201b61",
+            "literal": "1,174",
+            "state": "PA",
+            "value": 1174,
+            "year": 2020
+          },
+          {
+            "id": "10b26b179de25a00ed8cb1ff7f262a01",
+            "literal": "2,030",
+            "state": "PA",
+            "value": 2030,
+            "year": 2020
+          },
+          {
+            "id": "1770322fb4c0e8a4af73e1e41b22559b",
+            "literal": "1,390",
+            "state": "PA",
+            "value": 1390,
+            "year": 2020
+          },
+          {
+            "id": "1960f5eab33b2d0335c2a236da33525e",
+            "literal": "1,792",
+            "state": "PA",
+            "value": 1792,
+            "year": 2020
+          },
+          {
+            "id": "1b15bc94815ff6bae1280d1892401a34",
+            "literal": "1,009",
+            "state": "PA",
+            "value": 1009,
+            "year": 2020
+          },
+          {
+            "id": "1bb1e267cb9d86a2e1d1a382f2537b62",
+            "literal": "1,593",
+            "state": "PA",
+            "value": 1593,
+            "year": 2020
+          },
+          {
+            "id": "1cc1cb081e19a317eb43dc1592186c32",
+            "literal": "1,139",
+            "state": "PA",
+            "value": 1139,
+            "year": 2020
+          },
+          {
+            "id": "1fbd556ae577df71d3986c895b752b53",
+            "literal": "1,483",
+            "state": "PA",
+            "value": 1483,
+            "year": 2020
+          },
+          {
+            "id": "253230fad4eaa63cbeb07dc74cb9441e",
+            "literal": "1,193",
+            "state": "PA",
+            "value": 1193,
+            "year": 2020
+          },
+          {
+            "id": "2691f13d71e90cb550c50286577de85c",
+            "literal": "1,449",
+            "state": "PA",
+            "value": 1449,
+            "year": 2020
+          },
+          {
+            "id": "2b97c84a1d11870937a3aefe839e691c",
+            "literal": "1,261",
+            "state": "PA",
+            "value": 1261,
+            "year": 2020
+          },
+          {
+            "id": "2dd0bba32667f16e678671ac2cb59c12",
+            "literal": "1,236",
+            "state": "PA",
+            "value": 1236,
+            "year": 2020
+          },
+          {
+            "id": "2f6c2c60c9a25438ad4fe7fdbad7c65d",
+            "literal": "1,070",
+            "state": "PA",
+            "value": 1070,
+            "year": 2020
+          },
+          {
+            "id": "330c68fd234e982925ac1baadb1c9126",
+            "literal": "1,199",
+            "state": "PA",
+            "value": 1199,
+            "year": 2020
+          },
+          {
+            "id": "383a83a823389537f9eab6ebcea203ff",
+            "literal": "1,230",
+            "state": "PA",
+            "value": 1230,
+            "year": 2020
+          },
+          {
+            "id": "3c70f7a1df13a6053bc7fe5e57f60b71",
+            "literal": "1,698",
+            "state": "PA",
+            "value": 1698,
+            "year": 2020
+          },
+          {
+            "id": "3ced12aaba2841bd69bd132018f46ce2",
+            "literal": "1,184",
+            "state": "PA",
+            "value": 1184,
+            "year": 2020
+          },
+          {
+            "id": "3d8d230dc28904b1c29c4a279be1e140",
+            "literal": "1,056",
+            "state": "PA",
+            "value": 1056,
+            "year": 2020
+          },
+          {
+            "id": "3dfea163055c7bb8d0822e719a1de057",
+            "literal": "1,666",
+            "state": "PA",
+            "value": 1666,
+            "year": 2020
+          },
+          {
+            "id": "445174fea3443825e68e3d79674a2466",
+            "literal": "1,143",
+            "state": "PA",
+            "value": 1143,
+            "year": 2020
+          },
+          {
+            "id": "49b3a649fccc2547a3d93aa0eb48a065",
+            "literal": "1,430",
+            "state": "PA",
+            "value": 1430,
+            "year": 2020
+          },
+          {
+            "id": "4c968b336a085975a7bc2f6670630661",
+            "literal": "1,113",
+            "state": "PA",
+            "value": 1113,
+            "year": 2020
+          },
+          {
+            "id": "4d49c362de36e4dc199d7e26a1e6310a",
+            "literal": "1,412",
+            "state": "PA",
+            "value": 1412,
+            "year": 2020
+          },
+          {
+            "id": "507963487b51b64815b4d5cfeb7f12b5",
+            "literal": "1,036",
+            "state": "PA",
+            "value": 1036,
+            "year": 2020
+          },
+          {
+            "id": "51559765839bf3d3136dad3e613aa720",
+            "literal": "1,310",
+            "state": "PA",
+            "value": 1310,
+            "year": 2020
+          },
+          {
+            "id": "5181fa7984bacdc71db2a937fd936f1b",
+            "literal": "1,286",
+            "state": "PA",
+            "value": 1286,
+            "year": 2020
+          },
+          {
+            "id": "518bb1fa0c110b2d122ae01e854a0df2",
+            "literal": "1,756",
+            "state": "PA",
+            "value": 1756,
+            "year": 2020
+          },
+          {
+            "id": "51d91452a68e9a07052a7ac0fa7d851b",
+            "literal": "1,757",
+            "state": "PA",
+            "value": 1757,
+            "year": 2020
+          },
+          {
+            "id": "5419f86c6344509d27885477fd036d3f",
+            "literal": "1,329",
+            "state": "PA",
+            "value": 1329,
+            "year": 2020
+          },
+          {
+            "id": "57fd69eeb22f654a0eea7ac0d43ce423",
+            "literal": "1,821",
+            "state": "PA",
+            "value": 1821,
+            "year": 2020
+          },
+          {
+            "id": "58d458a4b28258eb727de7aec4ed8cae",
+            "literal": "1,200",
+            "state": "PA",
+            "value": 1200,
+            "year": 2020
+          },
+          {
+            "id": "5b11cb21c087af2f7ead43a4e1b5a813",
+            "literal": "1,242",
+            "state": "PA",
+            "value": 1242,
+            "year": 2020
+          },
+          {
+            "id": "614adb286569366f5b95b296ff61084a",
+            "literal": "1,162",
+            "state": "PA",
+            "value": 1162,
+            "year": 2020
+          },
+          {
+            "id": "645491926eb405a6496145bf9a2d34e4",
+            "literal": "1,127",
+            "state": "PA",
+            "value": 1127,
+            "year": 2020
+          },
+          {
+            "id": "6526ce7c005c0d9593d6499ed7fad078",
+            "literal": "1,323",
+            "state": "PA",
+            "value": 1323,
+            "year": 2020
+          },
+          {
+            "id": "67671125119ddfcfd04d348b7328037e",
+            "literal": "1,742",
+            "state": "PA",
+            "value": 1742,
+            "year": 2020
+          },
+          {
+            "id": "69a62fd928d8b1227c0460d913e3c838",
+            "literal": "1,123",
+            "state": "PA",
+            "value": 1123,
+            "year": 2020
+          },
+          {
+            "id": "6c6842f9e31f0952e9d788082768a80d",
+            "literal": "1,282",
+            "state": "PA",
+            "value": 1282,
+            "year": 2020
+          },
+          {
+            "id": "6e7f7d277b201d1994d9b75381d8becf",
+            "literal": "1,600",
+            "state": "PA",
+            "value": 1600,
+            "year": 2020
+          },
+          {
+            "id": "71579627e769cceaa654196fb37f25b7",
+            "literal": "1,510",
+            "state": "PA",
+            "value": 1510,
+            "year": 2020
+          },
+          {
+            "id": "731284d794052a8d31dfe634444ac03d",
+            "literal": "1,093",
+            "state": "PA",
+            "value": 1093,
+            "year": 2020
+          },
+          {
+            "id": "737c97401de1c0dd057909e98785d15b",
+            "literal": "1,506",
+            "state": "PA",
+            "value": 1506,
+            "year": 2020
+          },
+          {
+            "id": "75463f12c68c8f7d79f5a7204502809d",
+            "literal": "1,081",
+            "state": "PA",
+            "value": 1081,
+            "year": 2020
+          },
+          {
+            "id": "79831b4876a7f66cb0ffc8ac34c33b4b",
+            "literal": "1,126",
+            "state": "PA",
+            "value": 1126,
+            "year": 2020
+          },
+          {
+            "id": "7a27eaa7849bf2caa9fe31a736d7c155",
+            "literal": "1,103",
+            "state": "PA",
+            "value": 1103,
+            "year": 2020
+          },
+          {
+            "id": "7c5446b6e40b5a1696ef99ce2bab49c1",
+            "literal": "1,543",
+            "state": "PA",
+            "value": 1543,
+            "year": 2020
+          },
+          {
+            "id": "81150052d43534ddffed3d8c5f6fc6aa",
+            "literal": "1,312",
+            "state": "PA",
+            "value": 1312,
+            "year": 2020
+          },
+          {
+            "id": "81815dcc9ef1d66decebc80cc303e2ab",
+            "literal": "1,497",
+            "state": "PA",
+            "value": 1497,
+            "year": 2020
+          },
+          {
+            "id": "82da4d9d936a56bf68e9216c82f88a42",
+            "literal": "1,434",
+            "state": "PA",
+            "value": 1434,
+            "year": 2020
+          },
+          {
+            "id": "83c5d1407ec8c9e456624d9dee30a777",
+            "literal": "1,460",
+            "state": "PA",
+            "value": 1460,
+            "year": 2020
+          },
+          {
+            "id": "88ca4d8e622b0361edb9870d7a90d6b2",
+            "literal": "1,241",
+            "state": "PA",
+            "value": 1241,
+            "year": 2020
+          },
+          {
+            "id": "8d70d440487183abc6a2bce29784cae3",
+            "literal": "1,077",
+            "state": "PA",
+            "value": 1077,
+            "year": 2020
+          },
+          {
+            "id": "8ff0065f52783e6e5527c037cbcbb5bc",
+            "literal": "1,177",
+            "state": "PA",
+            "value": 1177,
+            "year": 2020
+          },
+          {
+            "id": "90dc31c2f3a5eed000dc0757d5467597",
+            "literal": "1,073",
+            "state": "PA",
+            "value": 1073,
+            "year": 2020
+          },
+          {
+            "id": "917a6676c442e79fc28092e8a8fcde6b",
+            "literal": "1,209",
+            "state": "PA",
+            "value": 1209,
+            "year": 2020
+          },
+          {
+            "id": "975e05bd12123c66796a7dd6b3720199",
+            "literal": "1,600",
+            "state": "PA",
+            "value": 1600,
+            "year": 2020
+          },
+          {
+            "id": "977eddc8e8612c3ad8f906fb09bc717b",
+            "literal": "1,522",
+            "state": "PA",
+            "value": 1522,
+            "year": 2020
+          },
+          {
+            "id": "9c9bd4046917b5b9710b181a6848302d",
+            "literal": "1,365",
+            "state": "PA",
+            "value": 1365,
+            "year": 2020
+          },
+          {
+            "id": "9d98e320ed97b9973a1d12028bbab0c0",
+            "literal": "1,292",
+            "state": "PA",
+            "value": 1292,
+            "year": 2020
+          },
+          {
+            "id": "9e8735351f11a5f311e54bd75f2a2333",
+            "literal": "1,742",
+            "state": "PA",
+            "value": 1742,
+            "year": 2020
+          },
+          {
+            "id": "a039fd7c5fa258110695de0ef5f77542",
+            "literal": "1,516",
+            "state": "PA",
+            "value": 1516,
+            "year": 2020
+          },
+          {
+            "id": "a1a0baef2e0a5f6411d1d67c6e3db39b",
+            "literal": "1,104",
+            "state": "PA",
+            "value": 1104,
+            "year": 2020
+          },
+          {
+            "id": "a1d0c7bda7cdca9ff8d2ca4dc1fff08c",
+            "literal": "1,517",
+            "state": "PA",
+            "value": 1517,
+            "year": 2020
+          },
+          {
+            "id": "a1ea8d0214314f05c4447fbb9a8f2d50",
+            "literal": "1,241",
+            "state": "PA",
+            "value": 1241,
+            "year": 2020
+          },
+          {
+            "id": "a390bb51ed3821156c3048c8ebe7793d",
+            "literal": "1,544",
+            "state": "PA",
+            "value": 1544,
+            "year": 2020
+          },
+          {
+            "id": "a8096cc41a73692df50d2815ffef4fef",
+            "literal": "1,555",
+            "state": "PA",
+            "value": 1555,
+            "year": 2020
+          },
+          {
+            "id": "a9cc5b3e23c1656c23d9174048e082ea",
+            "literal": "1,040",
+            "state": "PA",
+            "value": 1040,
+            "year": 2020
+          },
+          {
+            "id": "aec266d3146182ef2f50f0fc6d84ad33",
+            "literal": "1,095",
+            "state": "PA",
+            "value": 1095,
+            "year": 2020
+          },
+          {
+            "id": "b086cc3f514af57dca5cb8a95283c554",
+            "literal": "1,028",
+            "state": "PA",
+            "value": 1028,
+            "year": 2020
+          },
+          {
+            "id": "b0d37dabee48a5d4cdd5eccec527b162",
+            "literal": "1,218",
+            "state": "PA",
+            "value": 1218,
+            "year": 2020
+          },
+          {
+            "id": "b0e6d90b379da35e4fa0d7f6eb091b2f",
+            "literal": "1,282",
+            "state": "PA",
+            "value": 1282,
+            "year": 2020
+          },
+          {
+            "id": "b24a2985b037224a418f4bc76d9a58b1",
+            "literal": "1,087",
+            "state": "PA",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "b2cc4e9f7447985c3acc59e6cb5b2fbb",
+            "literal": "1,269",
+            "state": "PA",
+            "value": 1269,
+            "year": 2020
+          },
+          {
+            "id": "b6cdf631be1b63f315ce5740432cc106",
+            "literal": "1,106",
+            "state": "PA",
+            "value": 1106,
+            "year": 2020
+          },
+          {
+            "id": "b89e394e644da18842f10ddb9873ef53",
+            "literal": "1,054",
+            "state": "PA",
+            "value": 1054,
+            "year": 2020
+          },
+          {
+            "id": "bbae04de979872b9e30eb903cdc1bc5c",
+            "literal": "1,243",
+            "state": "PA",
+            "value": 1243,
+            "year": 2020
+          },
+          {
+            "id": "bd3df8f8675e22f7e603a796b6f12e47",
+            "literal": "1,098",
+            "state": "PA",
+            "value": 1098,
+            "year": 2020
+          },
+          {
+            "id": "bef0126707599c953b5be2c2f5e0d88f",
+            "literal": "1,267",
+            "state": "PA",
+            "value": 1267,
+            "year": 2020
+          },
+          {
+            "id": "bfa5b15679384e3d0daeffe8875bab2d",
+            "literal": "1,208",
+            "state": "PA",
+            "value": 1208,
+            "year": 2020
+          },
+          {
+            "id": "c03ca44177edab69bab375c86b3f326f",
+            "literal": "1,438",
+            "state": "PA",
+            "value": 1438,
+            "year": 2020
+          },
+          {
+            "id": "c1fdd6e0096ed822eafe2169aeb570bd",
+            "literal": "1,203",
+            "state": "PA",
+            "value": 1203,
+            "year": 2020
+          },
+          {
+            "id": "c7cc5856d4cb1e308f809409b5a09770",
+            "literal": "1,463",
+            "state": "PA",
+            "value": 1463,
+            "year": 2020
+          },
+          {
+            "id": "ca1d78a76084260874af6775e3198540",
+            "literal": "1,022",
+            "state": "PA",
+            "value": 1022,
+            "year": 2020
+          },
+          {
+            "id": "cab706cbbbb8a5e40da13c2ff8144fc5",
+            "literal": "1,160",
+            "state": "PA",
+            "value": 1160,
+            "year": 2020
+          },
+          {
+            "id": "cd154c0decb2aef9f0372690dce5d66f",
+            "literal": "1,300",
+            "state": "PA",
+            "value": 1300,
+            "year": 2020
+          },
+          {
+            "id": "cd3c5a6ba11656ce89d9c6116529cb2b",
+            "literal": "1,102",
+            "state": "PA",
+            "value": 1102,
+            "year": 2020
+          },
+          {
+            "id": "cf59d4f7d5aee94db1fd54b9823ba906",
+            "literal": "1,549",
+            "state": "PA",
+            "value": 1549,
+            "year": 2020
+          },
+          {
+            "id": "d08e24df819680ca172825a7b1b2772f",
+            "literal": "1,583",
+            "state": "PA",
+            "value": 1583,
+            "year": 2020
+          },
+          {
+            "id": "d2a9116e7d20687c3d9fd12305f23299",
+            "literal": "1,327",
+            "state": "PA",
+            "value": 1327,
+            "year": 2020
+          },
+          {
+            "id": "d2be033076d2cbab7dbaf714a82cc497",
+            "literal": "2,055",
+            "state": "PA",
+            "value": 2055,
+            "year": 2020
+          },
+          {
+            "id": "d360c19271f477cbae4900a9985076a5",
+            "literal": "1,262",
+            "state": "PA",
+            "value": 1262,
+            "year": 2020
+          },
+          {
+            "id": "d51ee43ff7ccd3e67c4dee952ac5e9bd",
+            "literal": "1,105",
+            "state": "PA",
+            "value": 1105,
+            "year": 2020
+          },
+          {
+            "id": "da1a66e249f533465b740d51bb0c3642",
+            "literal": "1,118",
+            "state": "PA",
+            "value": 1118,
+            "year": 2020
+          },
+          {
+            "id": "de75c5c1deae945232138dff863474bd",
+            "literal": "1,165",
+            "state": "PA",
+            "value": 1165,
+            "year": 2020
+          },
+          {
+            "id": "e28f7d23b974000f640344c826608a4c",
+            "literal": "1,389",
+            "state": "PA",
+            "value": 1389,
+            "year": 2020
+          },
+          {
+            "id": "e55f8a08ff25be30847b336d8be92525",
+            "literal": "1,115",
+            "state": "PA",
+            "value": 1115,
+            "year": 2020
+          },
+          {
+            "id": "eb92292e0082694d893fb5deda861ac0",
+            "literal": "1,013",
+            "state": "PA",
+            "value": 1013,
+            "year": 2020
+          },
+          {
+            "id": "ec33c986df8ea7b7bb5ba0edeb48a422",
+            "literal": "1,134",
+            "state": "PA",
+            "value": 1134,
+            "year": 2020
+          },
+          {
+            "id": "ef1deb7d35e53013eed69390a10fc814",
+            "literal": "1,192",
+            "state": "PA",
+            "value": 1192,
+            "year": 2020
+          },
+          {
+            "id": "f06a8cd7c169a413895a690ee2932b80",
+            "literal": "1,476",
+            "state": "PA",
+            "value": 1476,
+            "year": 2020
+          },
+          {
+            "id": "f1b2215a776ede54cc4797f33b256e6a",
+            "literal": "1,118",
+            "state": "PA",
+            "value": 1118,
+            "year": 2020
+          },
+          {
+            "id": "f28d201120e6d9e545ec0bd153cefeb1",
+            "literal": "1,173",
+            "state": "PA",
+            "value": 1173,
+            "year": 2020
+          },
+          {
+            "id": "f30dec932cd23721e9df2af8aa0aeedd",
+            "literal": "1,214",
+            "state": "PA",
+            "value": 1214,
+            "year": 2020
+          },
+          {
+            "id": "fd823f5e2dd6b85f26ca3c9a7309238a",
+            "literal": "1,304",
+            "state": "PA",
+            "value": 1304,
+            "year": 2020
+          },
+          {
+            "id": "02b8fc16c81cbf2405e0a44da51522d7",
+            "literal": "1,289",
+            "state": "PA",
+            "value": 1289,
+            "year": 2020
+          },
+          {
+            "id": "04705ae837abdc06a29ee3432be8f57a",
+            "literal": "1,620",
+            "state": "PA",
+            "value": 1620,
+            "year": 2020
+          },
+          {
+            "id": "0841976f7e3b45f0935f5c04b0c29bf6",
+            "literal": "1,700",
+            "state": "PA",
+            "value": 1700,
+            "year": 2020
+          },
+          {
+            "id": "123450b5fd9a3be5a42e4fd576d72e71",
+            "literal": "1,193",
+            "state": "PA",
+            "value": 1193,
+            "year": 2020
+          },
+          {
+            "id": "228d3a5a621f41572f2f79c5e7661b1a",
+            "literal": "1,333",
+            "state": "PA",
+            "value": 1333,
+            "year": 2020
+          },
+          {
+            "id": "350ed2633b8170b8e755be26d39a843e",
+            "literal": "1,073",
+            "state": "PA",
+            "value": 1073,
+            "year": 2020
+          },
+          {
+            "id": "3a006a4e526c811d1eaf0f2ec2fd7de6",
+            "literal": "1,072",
+            "state": "PA",
+            "value": 1072,
+            "year": 2020
+          },
+          {
+            "id": "3e548a31118c9b685ccd87cd1432e914",
+            "literal": "1,307",
+            "state": "PA",
+            "value": 1307,
+            "year": 2020
+          },
+          {
+            "id": "3f8eb186f860de9cbcc0f27e7dccd16b",
+            "literal": "1,184",
+            "state": "PA",
+            "value": 1184,
+            "year": 2020
+          },
+          {
+            "id": "44d6a1653d3cb86305e84314fc17ec86",
+            "literal": "1,679",
+            "state": "PA",
+            "value": 1679,
+            "year": 2020
+          },
+          {
+            "id": "525933e44ccd04c8d6d763105e9d8248",
+            "literal": "1,329",
+            "state": "PA",
+            "value": 1329,
+            "year": 2020
+          },
+          {
+            "id": "568c444e3ac2b735d5a095c42e9aae04",
+            "literal": "1,132",
+            "state": "PA",
+            "value": 1132,
+            "year": 2020
+          },
+          {
+            "id": "5e0a8379b8550765c41c5a65ced54714",
+            "literal": "1,260",
+            "state": "PA",
+            "value": 1260,
+            "year": 2020
+          },
+          {
+            "id": "64580273db9e74200688a89e5a48a751",
+            "literal": "1,425",
+            "state": "PA",
+            "value": 1425,
+            "year": 2020
+          },
+          {
+            "id": "67ac6055fead9a20dfd19e37f75e86de",
+            "literal": "1,311",
+            "state": "PA",
+            "value": 1311,
+            "year": 2020
+          },
+          {
+            "id": "6900621f72587ea02d443f673179a926",
+            "literal": "1,341",
+            "state": "PA",
+            "value": 1341,
+            "year": 2020
+          },
+          {
+            "id": "6ad56d43bf44077068a0a71204853b93",
+            "literal": "1,278",
+            "state": "PA",
+            "value": 1278,
+            "year": 2020
+          },
+          {
+            "id": "74225fab47811108e815adb5c60853d2",
+            "literal": "1,001",
+            "state": "PA",
+            "value": 1001,
+            "year": 2020
+          },
+          {
+            "id": "81327e70041ba08e23c593a87da28cd6",
+            "literal": "1,470",
+            "state": "PA",
+            "value": 1470,
+            "year": 2020
+          },
+          {
+            "id": "846981d5e9cc0a2b1910a04ec93f8efb",
+            "literal": "1,918",
+            "state": "PA",
+            "value": 1918,
+            "year": 2020
+          },
+          {
+            "id": "8b189ef0702483ab9ce23619282f6636",
+            "literal": "1,113",
+            "state": "PA",
+            "value": 1113,
+            "year": 2020
+          },
+          {
+            "id": "904471bbad69732e03b74cfa0d045d3e",
+            "literal": "1,206",
+            "state": "PA",
+            "value": 1206,
+            "year": 2020
+          },
+          {
+            "id": "94829e87b0146c8a71263a45731f2a62",
+            "literal": "1,035",
+            "state": "PA",
+            "value": 1035,
+            "year": 2020
+          },
+          {
+            "id": "94b7ba8d6ff55b79c04333ce37289973",
+            "literal": "1,731",
+            "state": "PA",
+            "value": 1731,
+            "year": 2020
+          },
+          {
+            "id": "9921c9ebd00fa53c07e032ca17272b1a",
+            "literal": "1,037",
+            "state": "PA",
+            "value": 1037,
+            "year": 2020
+          },
+          {
+            "id": "a33310e3278d7b1c273f81303bad21cb",
+            "literal": "1,084",
+            "state": "PA",
+            "value": 1084,
+            "year": 2020
+          },
+          {
+            "id": "a428f86c98eb4206212631a5fc0589ea",
+            "literal": "1,087",
+            "state": "PA",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "a532fdb9719f04f26da1fe11a23742b4",
+            "literal": "1,065",
+            "state": "PA",
+            "value": 1065,
+            "year": 2020
+          },
+          {
+            "id": "a8e79a86e748b92dd6f253cf8dfc3fc5",
+            "literal": "1,245",
+            "state": "PA",
+            "value": 1245,
+            "year": 2020
+          },
+          {
+            "id": "aa21a7423b70ce39f0cb39d5c21d6180",
+            "literal": "1,090",
+            "state": "PA",
+            "value": 1090,
+            "year": 2020
+          },
+          {
+            "id": "ab30799dce0e9ab0844ceac4c062149e",
+            "literal": "1,016",
+            "state": "PA",
+            "value": 1016,
+            "year": 2020
+          },
+          {
+            "id": "ad1f283e4a247564584aa79240c82857",
+            "literal": "1,164",
+            "state": "PA",
+            "value": 1164,
+            "year": 2020
+          },
+          {
+            "id": "aeeb4745f7029cf6eb47f83a17f5e1c5",
+            "literal": "1,100",
+            "state": "PA",
+            "value": 1100,
+            "year": 2020
+          },
+          {
+            "id": "b944cda923c018424ebc2aaebe279552",
+            "literal": "1,244",
+            "state": "PA",
+            "value": 1244,
+            "year": 2020
+          },
+          {
+            "id": "c6155819cf76056dd19daef6feb8e562",
+            "literal": "1,163",
+            "state": "PA",
+            "value": 1163,
+            "year": 2020
+          },
+          {
+            "id": "c65513196f57249c12deec9dfa29f9b6",
+            "literal": "1,340",
+            "state": "PA",
+            "value": 1340,
+            "year": 2020
+          },
+          {
+            "id": "c863b76f3c1528edfa965dca63df82c0",
+            "literal": "1,681",
+            "state": "PA",
+            "value": 1681,
+            "year": 2020
+          },
+          {
+            "id": "c94c5fe09d68fbb5ff0c4db3e3f39acc",
+            "literal": "1,405",
+            "state": "PA",
+            "value": 1405,
+            "year": 2020
+          },
+          {
+            "id": "daad089a415157af0ab23efa599dfb86",
+            "literal": "1,185",
+            "state": "PA",
+            "value": 1185,
+            "year": 2020
+          },
+          {
+            "id": "dbc8358f192eb8627b00a418ca477931",
+            "literal": "1,171",
+            "state": "PA",
+            "value": 1171,
+            "year": 2020
+          },
+          {
+            "id": "e24a76a90fb6bf20cb08a2da39118f31",
+            "literal": "1,158",
+            "state": "PA",
+            "value": 1158,
+            "year": 2020
+          },
+          {
+            "id": "e2cdb0892d0f5197a78e41099427278c",
+            "literal": "1,048",
+            "state": "PA",
+            "value": 1048,
+            "year": 2020
+          },
+          {
+            "id": "e328a39799b566afcf0ef8b6947675a1",
+            "literal": "1,022",
+            "state": "PA",
+            "value": 1022,
+            "year": 2020
+          },
+          {
+            "id": "ea8f4efec909f69ab2d68dd7bd23a2d9",
+            "literal": "1,403",
+            "state": "PA",
+            "value": 1403,
+            "year": 2020
+          },
+          {
+            "id": "ee397da1369540ca94ee3c9c56515cdc",
+            "literal": "1,023",
+            "state": "PA",
+            "value": 1023,
+            "year": 2020
+          },
+          {
+            "id": "f0091525cdf71b24dab6dead29985bc6",
+            "literal": "1,203",
+            "state": "PA",
+            "value": 1203,
+            "year": 2020
+          },
+          {
+            "id": "f4b04c16ef8f11b87a0f580dd491872b",
+            "literal": "1,354",
+            "state": "PA",
+            "value": 1354,
+            "year": 2020
+          },
+          {
+            "id": "f5ccc00f8d222f23b47eb3e0f4d470d2",
+            "literal": "1,039",
+            "state": "PA",
+            "value": 1039,
+            "year": 2020
+          },
+          {
+            "id": "f9ec3d230db1c5c0ac49c79ff9ca5727",
+            "literal": "1,659",
+            "state": "PA",
+            "value": 1659,
+            "year": 2020
+          },
+          {
+            "id": "ff864751e6b0cb1aa8b5a6997aba4ea0",
+            "literal": "1,148",
+            "state": "PA",
+            "value": 1148,
+            "year": 2020
+          },
+          {
+            "id": "0fe4f7b8e51e83e214cb77b9ce4b4856",
+            "literal": "1,119",
+            "state": "UT",
+            "value": 1119,
+            "year": 2020
+          },
+          {
+            "id": "100eb3bd0db43f0e11c714732ec248fb",
+            "literal": "1,698",
+            "state": "UT",
+            "value": 1698,
+            "year": 2020
+          },
+          {
+            "id": "2ff2cbee3d8c0c796287af26b5321ba9",
+            "literal": "1,555",
+            "state": "UT",
+            "value": 1555,
+            "year": 2020
+          },
+          {
+            "id": "443b7b65d45a41da086575728dd316cc",
+            "literal": "1,678",
+            "state": "UT",
+            "value": 1678,
+            "year": 2020
+          },
+          {
+            "id": "814f0d90b236a2441393372867312bc9",
+            "literal": "1,876",
+            "state": "UT",
+            "value": 1876,
+            "year": 2020
+          },
+          {
+            "id": "8335d83c85d6b751cc84ea4b6e77a196",
+            "literal": "1,304",
+            "state": "UT",
+            "value": 1304,
+            "year": 2020
+          },
+          {
+            "id": "88bca226805c7d0b8679534a94e25c19",
+            "literal": "1,766",
+            "state": "UT",
+            "value": 1766,
+            "year": 2020
+          },
+          {
+            "id": "a27a7c7b3ca7eaadec386a897d3d7eea",
+            "literal": "1,087",
+            "state": "UT",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "a55b1757c2223ff3d43e68fe0077719c",
+            "literal": "1,426",
+            "state": "UT",
+            "value": 1426,
+            "year": 2020
+          },
+          {
+            "id": "aedfd544b1f6512a535ed9b156286ae3",
+            "literal": "1,153",
+            "state": "UT",
+            "value": 1153,
+            "year": 2020
+          },
+          {
+            "id": "bf580008ba4132c6c5f96f1b23449c0b",
+            "literal": "1,122",
+            "state": "UT",
+            "value": 1122,
+            "year": 2020
+          },
+          {
+            "id": "c4c79043f6359bbc6c3193ba90f2ef60",
+            "literal": "1,563",
+            "state": "UT",
+            "value": 1563,
+            "year": 2020
+          },
+          {
+            "id": "e86b29703d85e8c43d01095e445e3f19",
+            "literal": "1,255",
+            "state": "UT",
+            "value": 1255,
+            "year": 2020
+          },
+          {
+            "id": "eee508b0301c215bd03dae7e5bd48ee5",
+            "literal": "1,051",
+            "state": "UT",
+            "value": 1051,
+            "year": 2020
+          },
+          {
+            "id": "f74fa83465c121170b840d3a534fb149",
+            "literal": "1,202",
+            "state": "UT",
+            "value": 1202,
+            "year": 2020
+          },
+          {
+            "id": "ff7d451d1c16350ba08408a1afb7e5d6",
+            "literal": "1,175",
+            "state": "UT",
+            "value": 1175,
+            "year": 2020
+          }
+        ],
+        "complete_download": {
+          "bytes": 554009197,
+          "sha256": "2d5961cef2a4e4c44d479eb686aea9e941f93dbd41f6220edec47484637d1b05"
+        },
+        "width": 390
+      }
+    ],
+    "catalog_and_dataset_routes_overridden": false,
+    "explicit_private_candidate_data_fixture": false,
+    "passed": true,
+    "predecessor_package_metadata_for_private_ui_schema_only": false,
+    "source_or_dom_or_style_overrides": false,
+    "version": "a8e917a7758dd094af52d7d445dd84de326e47bc4caddfc2376de5d4780059fe"
+  },
+  "all_358_actual_new_cell_renderings_and_native_fields_exact": true,
+  "all_six_final_records_require_independent_review": true,
+  "canonical_source_sync": {
+    "baseline": "5bdc2e6ce386a47af37517bfd3c85191e75a6019",
+    "canonical_heads_indexes_and_unrelated_files_preserved": true,
+    "files": {
+      "scripts/historical_native_counts.py": {
+        "bytes": 12577,
+        "sha256": "b193d8e64536f77cde9e4efb162d650fc9e1f47c4ba42d58ce09e9a37caa48de"
+      },
+      "tests/test_historical_native_counts.py": {
+        "bytes": 10184,
+        "sha256": "ad2041d95c3bae9c7742455e0bf9e3ae797620915a107706ac5decc486084e9b"
+      }
+    },
+    "passed": true,
+    "protected": {
+      "public/data/nationwide/latest.json": "01b6464073e01d447d99a30dfb0591d9fde2c034032a3469aaae6d8f7bf61b53",
+      "research": {
+        "head": "792e3d91609f7ee929c35b5ec15c13710db94be8",
+        "index_sha256": "025fd19b901260ff11ef4316592cbaa1efb4ceeea09497cf0fd2a21d8591aee1"
+      },
+      "scripts/nationwide.py": "8003411fe67a0a664f79477ccdd8ed367165f8bb498a27b327a3b6e68aacab81",
+      "tests/test_nationwide.py": "2543eef4da0f99ccf32b39d149e9a1035990d36f8f66ac7ac562ad1935041d96",
+      "website": {
+        "head": "cb263a70f4c00dcddce34f9cae367a1f524c5376",
+        "index_sha256": "a5809faddc5e47eacd85ae5be0a3c703b8e3557be2d69c43b7962180bbc3b9e0"
+      }
+    },
+    "source_commit": "29ec90582cde8134ac904949fae88bafd95d1a60"
+  },
+  "canonical_tests": {
+    "detailed_result": "test_candidate_rows_are_excluded_and_forged_administrative_labels_rejected (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_duplicate_native_count_columns_are_not_qualified (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_exact_zero_unknown_and_noninteger_remain_distinct (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_format_review_does_not_promote_unknown_suppressed_fraction_or_malformed_grouping (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_grouped_native_integer_retains_upstream_flag_and_independent_native_match (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_native_style_modes_and_alternative_files_are_not_summed_or_merged (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_native_value_or_election_changes_are_not_silently_repaired (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_official_ballot_cell_is_not_a_rate_or_geography_join (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_primary_wrong_year_and_non_general_workbooks_are_rejected (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\ntest_projection_is_deterministic_and_keeps_all_state_decisions_and_stock_cells (test_historical_native_counts.HistoricalNativeCountsTests) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.009s\n\nOK\n",
+    "passed": true,
+    "runner": "python3 -m unittest discover -s tests -p test_historical_native_counts.py -v",
+    "tests": 10
+  },
+  "explicit_private_179_cell_prepublication_check": {
+    "actual_production_acceptance": false,
+    "all_browsers_closed": true,
+    "browser_errors": [],
+    "cases": [
+      {
+        "all_179_counts_and_original_native_fields_exact": true,
+        "changed_cells_actually_rendered": [
+          {
+            "id": "5a063be03e4bbec143afdc8f49272981",
+            "literal": "1,054",
+            "state": "PA",
+            "value": 1054,
+            "year": 2018
+          },
+          {
+            "id": "01e4c936754a267e7fe54f571cc72b19",
+            "literal": "1,070",
+            "state": "PA",
+            "value": 1070,
+            "year": 2020
+          },
+          {
+            "id": "02d39669cdc64174b4a95771a4a2726e",
+            "literal": "1,115",
+            "state": "PA",
+            "value": 1115,
+            "year": 2020
+          },
+          {
+            "id": "0408d83dda0c0504fb6d997e2463ef0a",
+            "literal": "1,351",
+            "state": "PA",
+            "value": 1351,
+            "year": 2020
+          },
+          {
+            "id": "0458681dc2ee3aed2b9e0c0022fed4f5",
+            "literal": "1,729",
+            "state": "PA",
+            "value": 1729,
+            "year": 2020
+          },
+          {
+            "id": "04a2c696ed2724df7373f901c49103af",
+            "literal": "1,069",
+            "state": "PA",
+            "value": 1069,
+            "year": 2020
+          },
+          {
+            "id": "076acd958c9d54db3af28f56085f7c61",
+            "literal": "1,520",
+            "state": "PA",
+            "value": 1520,
+            "year": 2020
+          },
+          {
+            "id": "0bd44cec7d4373fe580c11bf9dedbf55",
+            "literal": "1,662",
+            "state": "PA",
+            "value": 1662,
+            "year": 2020
+          },
+          {
+            "id": "0df63800a789864db4872b672dd276e2",
+            "literal": "1,573",
+            "state": "PA",
+            "value": 1573,
+            "year": 2020
+          },
+          {
+            "id": "105ce48078ea0546d349fd343a201b61",
+            "literal": "1,174",
+            "state": "PA",
+            "value": 1174,
+            "year": 2020
+          },
+          {
+            "id": "10b26b179de25a00ed8cb1ff7f262a01",
+            "literal": "2,030",
+            "state": "PA",
+            "value": 2030,
+            "year": 2020
+          },
+          {
+            "id": "1770322fb4c0e8a4af73e1e41b22559b",
+            "literal": "1,390",
+            "state": "PA",
+            "value": 1390,
+            "year": 2020
+          },
+          {
+            "id": "1960f5eab33b2d0335c2a236da33525e",
+            "literal": "1,792",
+            "state": "PA",
+            "value": 1792,
+            "year": 2020
+          },
+          {
+            "id": "1b15bc94815ff6bae1280d1892401a34",
+            "literal": "1,009",
+            "state": "PA",
+            "value": 1009,
+            "year": 2020
+          },
+          {
+            "id": "1bb1e267cb9d86a2e1d1a382f2537b62",
+            "literal": "1,593",
+            "state": "PA",
+            "value": 1593,
+            "year": 2020
+          },
+          {
+            "id": "1cc1cb081e19a317eb43dc1592186c32",
+            "literal": "1,139",
+            "state": "PA",
+            "value": 1139,
+            "year": 2020
+          },
+          {
+            "id": "1fbd556ae577df71d3986c895b752b53",
+            "literal": "1,483",
+            "state": "PA",
+            "value": 1483,
+            "year": 2020
+          },
+          {
+            "id": "253230fad4eaa63cbeb07dc74cb9441e",
+            "literal": "1,193",
+            "state": "PA",
+            "value": 1193,
+            "year": 2020
+          },
+          {
+            "id": "2691f13d71e90cb550c50286577de85c",
+            "literal": "1,449",
+            "state": "PA",
+            "value": 1449,
+            "year": 2020
+          },
+          {
+            "id": "2b97c84a1d11870937a3aefe839e691c",
+            "literal": "1,261",
+            "state": "PA",
+            "value": 1261,
+            "year": 2020
+          },
+          {
+            "id": "2dd0bba32667f16e678671ac2cb59c12",
+            "literal": "1,236",
+            "state": "PA",
+            "value": 1236,
+            "year": 2020
+          },
+          {
+            "id": "2f6c2c60c9a25438ad4fe7fdbad7c65d",
+            "literal": "1,070",
+            "state": "PA",
+            "value": 1070,
+            "year": 2020
+          },
+          {
+            "id": "330c68fd234e982925ac1baadb1c9126",
+            "literal": "1,199",
+            "state": "PA",
+            "value": 1199,
+            "year": 2020
+          },
+          {
+            "id": "383a83a823389537f9eab6ebcea203ff",
+            "literal": "1,230",
+            "state": "PA",
+            "value": 1230,
+            "year": 2020
+          },
+          {
+            "id": "3c70f7a1df13a6053bc7fe5e57f60b71",
+            "literal": "1,698",
+            "state": "PA",
+            "value": 1698,
+            "year": 2020
+          },
+          {
+            "id": "3ced12aaba2841bd69bd132018f46ce2",
+            "literal": "1,184",
+            "state": "PA",
+            "value": 1184,
+            "year": 2020
+          },
+          {
+            "id": "3d8d230dc28904b1c29c4a279be1e140",
+            "literal": "1,056",
+            "state": "PA",
+            "value": 1056,
+            "year": 2020
+          },
+          {
+            "id": "3dfea163055c7bb8d0822e719a1de057",
+            "literal": "1,666",
+            "state": "PA",
+            "value": 1666,
+            "year": 2020
+          },
+          {
+            "id": "445174fea3443825e68e3d79674a2466",
+            "literal": "1,143",
+            "state": "PA",
+            "value": 1143,
+            "year": 2020
+          },
+          {
+            "id": "49b3a649fccc2547a3d93aa0eb48a065",
+            "literal": "1,430",
+            "state": "PA",
+            "value": 1430,
+            "year": 2020
+          },
+          {
+            "id": "4c968b336a085975a7bc2f6670630661",
+            "literal": "1,113",
+            "state": "PA",
+            "value": 1113,
+            "year": 2020
+          },
+          {
+            "id": "4d49c362de36e4dc199d7e26a1e6310a",
+            "literal": "1,412",
+            "state": "PA",
+            "value": 1412,
+            "year": 2020
+          },
+          {
+            "id": "507963487b51b64815b4d5cfeb7f12b5",
+            "literal": "1,036",
+            "state": "PA",
+            "value": 1036,
+            "year": 2020
+          },
+          {
+            "id": "51559765839bf3d3136dad3e613aa720",
+            "literal": "1,310",
+            "state": "PA",
+            "value": 1310,
+            "year": 2020
+          },
+          {
+            "id": "5181fa7984bacdc71db2a937fd936f1b",
+            "literal": "1,286",
+            "state": "PA",
+            "value": 1286,
+            "year": 2020
+          },
+          {
+            "id": "518bb1fa0c110b2d122ae01e854a0df2",
+            "literal": "1,756",
+            "state": "PA",
+            "value": 1756,
+            "year": 2020
+          },
+          {
+            "id": "51d91452a68e9a07052a7ac0fa7d851b",
+            "literal": "1,757",
+            "state": "PA",
+            "value": 1757,
+            "year": 2020
+          },
+          {
+            "id": "5419f86c6344509d27885477fd036d3f",
+            "literal": "1,329",
+            "state": "PA",
+            "value": 1329,
+            "year": 2020
+          },
+          {
+            "id": "57fd69eeb22f654a0eea7ac0d43ce423",
+            "literal": "1,821",
+            "state": "PA",
+            "value": 1821,
+            "year": 2020
+          },
+          {
+            "id": "58d458a4b28258eb727de7aec4ed8cae",
+            "literal": "1,200",
+            "state": "PA",
+            "value": 1200,
+            "year": 2020
+          },
+          {
+            "id": "5b11cb21c087af2f7ead43a4e1b5a813",
+            "literal": "1,242",
+            "state": "PA",
+            "value": 1242,
+            "year": 2020
+          },
+          {
+            "id": "614adb286569366f5b95b296ff61084a",
+            "literal": "1,162",
+            "state": "PA",
+            "value": 1162,
+            "year": 2020
+          },
+          {
+            "id": "645491926eb405a6496145bf9a2d34e4",
+            "literal": "1,127",
+            "state": "PA",
+            "value": 1127,
+            "year": 2020
+          },
+          {
+            "id": "6526ce7c005c0d9593d6499ed7fad078",
+            "literal": "1,323",
+            "state": "PA",
+            "value": 1323,
+            "year": 2020
+          },
+          {
+            "id": "67671125119ddfcfd04d348b7328037e",
+            "literal": "1,742",
+            "state": "PA",
+            "value": 1742,
+            "year": 2020
+          },
+          {
+            "id": "69a62fd928d8b1227c0460d913e3c838",
+            "literal": "1,123",
+            "state": "PA",
+            "value": 1123,
+            "year": 2020
+          },
+          {
+            "id": "6c6842f9e31f0952e9d788082768a80d",
+            "literal": "1,282",
+            "state": "PA",
+            "value": 1282,
+            "year": 2020
+          },
+          {
+            "id": "6e7f7d277b201d1994d9b75381d8becf",
+            "literal": "1,600",
+            "state": "PA",
+            "value": 1600,
+            "year": 2020
+          },
+          {
+            "id": "71579627e769cceaa654196fb37f25b7",
+            "literal": "1,510",
+            "state": "PA",
+            "value": 1510,
+            "year": 2020
+          },
+          {
+            "id": "731284d794052a8d31dfe634444ac03d",
+            "literal": "1,093",
+            "state": "PA",
+            "value": 1093,
+            "year": 2020
+          },
+          {
+            "id": "737c97401de1c0dd057909e98785d15b",
+            "literal": "1,506",
+            "state": "PA",
+            "value": 1506,
+            "year": 2020
+          },
+          {
+            "id": "75463f12c68c8f7d79f5a7204502809d",
+            "literal": "1,081",
+            "state": "PA",
+            "value": 1081,
+            "year": 2020
+          },
+          {
+            "id": "79831b4876a7f66cb0ffc8ac34c33b4b",
+            "literal": "1,126",
+            "state": "PA",
+            "value": 1126,
+            "year": 2020
+          },
+          {
+            "id": "7a27eaa7849bf2caa9fe31a736d7c155",
+            "literal": "1,103",
+            "state": "PA",
+            "value": 1103,
+            "year": 2020
+          },
+          {
+            "id": "7c5446b6e40b5a1696ef99ce2bab49c1",
+            "literal": "1,543",
+            "state": "PA",
+            "value": 1543,
+            "year": 2020
+          },
+          {
+            "id": "81150052d43534ddffed3d8c5f6fc6aa",
+            "literal": "1,312",
+            "state": "PA",
+            "value": 1312,
+            "year": 2020
+          },
+          {
+            "id": "81815dcc9ef1d66decebc80cc303e2ab",
+            "literal": "1,497",
+            "state": "PA",
+            "value": 1497,
+            "year": 2020
+          },
+          {
+            "id": "82da4d9d936a56bf68e9216c82f88a42",
+            "literal": "1,434",
+            "state": "PA",
+            "value": 1434,
+            "year": 2020
+          },
+          {
+            "id": "83c5d1407ec8c9e456624d9dee30a777",
+            "literal": "1,460",
+            "state": "PA",
+            "value": 1460,
+            "year": 2020
+          },
+          {
+            "id": "88ca4d8e622b0361edb9870d7a90d6b2",
+            "literal": "1,241",
+            "state": "PA",
+            "value": 1241,
+            "year": 2020
+          },
+          {
+            "id": "8d70d440487183abc6a2bce29784cae3",
+            "literal": "1,077",
+            "state": "PA",
+            "value": 1077,
+            "year": 2020
+          },
+          {
+            "id": "8ff0065f52783e6e5527c037cbcbb5bc",
+            "literal": "1,177",
+            "state": "PA",
+            "value": 1177,
+            "year": 2020
+          },
+          {
+            "id": "90dc31c2f3a5eed000dc0757d5467597",
+            "literal": "1,073",
+            "state": "PA",
+            "value": 1073,
+            "year": 2020
+          },
+          {
+            "id": "917a6676c442e79fc28092e8a8fcde6b",
+            "literal": "1,209",
+            "state": "PA",
+            "value": 1209,
+            "year": 2020
+          },
+          {
+            "id": "975e05bd12123c66796a7dd6b3720199",
+            "literal": "1,600",
+            "state": "PA",
+            "value": 1600,
+            "year": 2020
+          },
+          {
+            "id": "977eddc8e8612c3ad8f906fb09bc717b",
+            "literal": "1,522",
+            "state": "PA",
+            "value": 1522,
+            "year": 2020
+          },
+          {
+            "id": "9c9bd4046917b5b9710b181a6848302d",
+            "literal": "1,365",
+            "state": "PA",
+            "value": 1365,
+            "year": 2020
+          },
+          {
+            "id": "9d98e320ed97b9973a1d12028bbab0c0",
+            "literal": "1,292",
+            "state": "PA",
+            "value": 1292,
+            "year": 2020
+          },
+          {
+            "id": "9e8735351f11a5f311e54bd75f2a2333",
+            "literal": "1,742",
+            "state": "PA",
+            "value": 1742,
+            "year": 2020
+          },
+          {
+            "id": "a039fd7c5fa258110695de0ef5f77542",
+            "literal": "1,516",
+            "state": "PA",
+            "value": 1516,
+            "year": 2020
+          },
+          {
+            "id": "a1a0baef2e0a5f6411d1d67c6e3db39b",
+            "literal": "1,104",
+            "state": "PA",
+            "value": 1104,
+            "year": 2020
+          },
+          {
+            "id": "a1d0c7bda7cdca9ff8d2ca4dc1fff08c",
+            "literal": "1,517",
+            "state": "PA",
+            "value": 1517,
+            "year": 2020
+          },
+          {
+            "id": "a1ea8d0214314f05c4447fbb9a8f2d50",
+            "literal": "1,241",
+            "state": "PA",
+            "value": 1241,
+            "year": 2020
+          },
+          {
+            "id": "a390bb51ed3821156c3048c8ebe7793d",
+            "literal": "1,544",
+            "state": "PA",
+            "value": 1544,
+            "year": 2020
+          },
+          {
+            "id": "a8096cc41a73692df50d2815ffef4fef",
+            "literal": "1,555",
+            "state": "PA",
+            "value": 1555,
+            "year": 2020
+          },
+          {
+            "id": "a9cc5b3e23c1656c23d9174048e082ea",
+            "literal": "1,040",
+            "state": "PA",
+            "value": 1040,
+            "year": 2020
+          },
+          {
+            "id": "aec266d3146182ef2f50f0fc6d84ad33",
+            "literal": "1,095",
+            "state": "PA",
+            "value": 1095,
+            "year": 2020
+          },
+          {
+            "id": "b086cc3f514af57dca5cb8a95283c554",
+            "literal": "1,028",
+            "state": "PA",
+            "value": 1028,
+            "year": 2020
+          },
+          {
+            "id": "b0d37dabee48a5d4cdd5eccec527b162",
+            "literal": "1,218",
+            "state": "PA",
+            "value": 1218,
+            "year": 2020
+          },
+          {
+            "id": "b0e6d90b379da35e4fa0d7f6eb091b2f",
+            "literal": "1,282",
+            "state": "PA",
+            "value": 1282,
+            "year": 2020
+          },
+          {
+            "id": "b24a2985b037224a418f4bc76d9a58b1",
+            "literal": "1,087",
+            "state": "PA",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "b2cc4e9f7447985c3acc59e6cb5b2fbb",
+            "literal": "1,269",
+            "state": "PA",
+            "value": 1269,
+            "year": 2020
+          },
+          {
+            "id": "b6cdf631be1b63f315ce5740432cc106",
+            "literal": "1,106",
+            "state": "PA",
+            "value": 1106,
+            "year": 2020
+          },
+          {
+            "id": "b89e394e644da18842f10ddb9873ef53",
+            "literal": "1,054",
+            "state": "PA",
+            "value": 1054,
+            "year": 2020
+          },
+          {
+            "id": "bbae04de979872b9e30eb903cdc1bc5c",
+            "literal": "1,243",
+            "state": "PA",
+            "value": 1243,
+            "year": 2020
+          },
+          {
+            "id": "bd3df8f8675e22f7e603a796b6f12e47",
+            "literal": "1,098",
+            "state": "PA",
+            "value": 1098,
+            "year": 2020
+          },
+          {
+            "id": "bef0126707599c953b5be2c2f5e0d88f",
+            "literal": "1,267",
+            "state": "PA",
+            "value": 1267,
+            "year": 2020
+          },
+          {
+            "id": "bfa5b15679384e3d0daeffe8875bab2d",
+            "literal": "1,208",
+            "state": "PA",
+            "value": 1208,
+            "year": 2020
+          },
+          {
+            "id": "c03ca44177edab69bab375c86b3f326f",
+            "literal": "1,438",
+            "state": "PA",
+            "value": 1438,
+            "year": 2020
+          },
+          {
+            "id": "c1fdd6e0096ed822eafe2169aeb570bd",
+            "literal": "1,203",
+            "state": "PA",
+            "value": 1203,
+            "year": 2020
+          },
+          {
+            "id": "c7cc5856d4cb1e308f809409b5a09770",
+            "literal": "1,463",
+            "state": "PA",
+            "value": 1463,
+            "year": 2020
+          },
+          {
+            "id": "ca1d78a76084260874af6775e3198540",
+            "literal": "1,022",
+            "state": "PA",
+            "value": 1022,
+            "year": 2020
+          },
+          {
+            "id": "cab706cbbbb8a5e40da13c2ff8144fc5",
+            "literal": "1,160",
+            "state": "PA",
+            "value": 1160,
+            "year": 2020
+          },
+          {
+            "id": "cd154c0decb2aef9f0372690dce5d66f",
+            "literal": "1,300",
+            "state": "PA",
+            "value": 1300,
+            "year": 2020
+          },
+          {
+            "id": "cd3c5a6ba11656ce89d9c6116529cb2b",
+            "literal": "1,102",
+            "state": "PA",
+            "value": 1102,
+            "year": 2020
+          },
+          {
+            "id": "cf59d4f7d5aee94db1fd54b9823ba906",
+            "literal": "1,549",
+            "state": "PA",
+            "value": 1549,
+            "year": 2020
+          },
+          {
+            "id": "d08e24df819680ca172825a7b1b2772f",
+            "literal": "1,583",
+            "state": "PA",
+            "value": 1583,
+            "year": 2020
+          },
+          {
+            "id": "d2a9116e7d20687c3d9fd12305f23299",
+            "literal": "1,327",
+            "state": "PA",
+            "value": 1327,
+            "year": 2020
+          },
+          {
+            "id": "d2be033076d2cbab7dbaf714a82cc497",
+            "literal": "2,055",
+            "state": "PA",
+            "value": 2055,
+            "year": 2020
+          },
+          {
+            "id": "d360c19271f477cbae4900a9985076a5",
+            "literal": "1,262",
+            "state": "PA",
+            "value": 1262,
+            "year": 2020
+          },
+          {
+            "id": "d51ee43ff7ccd3e67c4dee952ac5e9bd",
+            "literal": "1,105",
+            "state": "PA",
+            "value": 1105,
+            "year": 2020
+          },
+          {
+            "id": "da1a66e249f533465b740d51bb0c3642",
+            "literal": "1,118",
+            "state": "PA",
+            "value": 1118,
+            "year": 2020
+          },
+          {
+            "id": "de75c5c1deae945232138dff863474bd",
+            "literal": "1,165",
+            "state": "PA",
+            "value": 1165,
+            "year": 2020
+          },
+          {
+            "id": "e28f7d23b974000f640344c826608a4c",
+            "literal": "1,389",
+            "state": "PA",
+            "value": 1389,
+            "year": 2020
+          },
+          {
+            "id": "e55f8a08ff25be30847b336d8be92525",
+            "literal": "1,115",
+            "state": "PA",
+            "value": 1115,
+            "year": 2020
+          },
+          {
+            "id": "eb92292e0082694d893fb5deda861ac0",
+            "literal": "1,013",
+            "state": "PA",
+            "value": 1013,
+            "year": 2020
+          },
+          {
+            "id": "ec33c986df8ea7b7bb5ba0edeb48a422",
+            "literal": "1,134",
+            "state": "PA",
+            "value": 1134,
+            "year": 2020
+          },
+          {
+            "id": "ef1deb7d35e53013eed69390a10fc814",
+            "literal": "1,192",
+            "state": "PA",
+            "value": 1192,
+            "year": 2020
+          },
+          {
+            "id": "f06a8cd7c169a413895a690ee2932b80",
+            "literal": "1,476",
+            "state": "PA",
+            "value": 1476,
+            "year": 2020
+          },
+          {
+            "id": "f1b2215a776ede54cc4797f33b256e6a",
+            "literal": "1,118",
+            "state": "PA",
+            "value": 1118,
+            "year": 2020
+          },
+          {
+            "id": "f28d201120e6d9e545ec0bd153cefeb1",
+            "literal": "1,173",
+            "state": "PA",
+            "value": 1173,
+            "year": 2020
+          },
+          {
+            "id": "f30dec932cd23721e9df2af8aa0aeedd",
+            "literal": "1,214",
+            "state": "PA",
+            "value": 1214,
+            "year": 2020
+          },
+          {
+            "id": "fd823f5e2dd6b85f26ca3c9a7309238a",
+            "literal": "1,304",
+            "state": "PA",
+            "value": 1304,
+            "year": 2020
+          },
+          {
+            "id": "02b8fc16c81cbf2405e0a44da51522d7",
+            "literal": "1,289",
+            "state": "PA",
+            "value": 1289,
+            "year": 2020
+          },
+          {
+            "id": "04705ae837abdc06a29ee3432be8f57a",
+            "literal": "1,620",
+            "state": "PA",
+            "value": 1620,
+            "year": 2020
+          },
+          {
+            "id": "0841976f7e3b45f0935f5c04b0c29bf6",
+            "literal": "1,700",
+            "state": "PA",
+            "value": 1700,
+            "year": 2020
+          },
+          {
+            "id": "123450b5fd9a3be5a42e4fd576d72e71",
+            "literal": "1,193",
+            "state": "PA",
+            "value": 1193,
+            "year": 2020
+          },
+          {
+            "id": "228d3a5a621f41572f2f79c5e7661b1a",
+            "literal": "1,333",
+            "state": "PA",
+            "value": 1333,
+            "year": 2020
+          },
+          {
+            "id": "350ed2633b8170b8e755be26d39a843e",
+            "literal": "1,073",
+            "state": "PA",
+            "value": 1073,
+            "year": 2020
+          },
+          {
+            "id": "3a006a4e526c811d1eaf0f2ec2fd7de6",
+            "literal": "1,072",
+            "state": "PA",
+            "value": 1072,
+            "year": 2020
+          },
+          {
+            "id": "3e548a31118c9b685ccd87cd1432e914",
+            "literal": "1,307",
+            "state": "PA",
+            "value": 1307,
+            "year": 2020
+          },
+          {
+            "id": "3f8eb186f860de9cbcc0f27e7dccd16b",
+            "literal": "1,184",
+            "state": "PA",
+            "value": 1184,
+            "year": 2020
+          },
+          {
+            "id": "44d6a1653d3cb86305e84314fc17ec86",
+            "literal": "1,679",
+            "state": "PA",
+            "value": 1679,
+            "year": 2020
+          },
+          {
+            "id": "525933e44ccd04c8d6d763105e9d8248",
+            "literal": "1,329",
+            "state": "PA",
+            "value": 1329,
+            "year": 2020
+          },
+          {
+            "id": "568c444e3ac2b735d5a095c42e9aae04",
+            "literal": "1,132",
+            "state": "PA",
+            "value": 1132,
+            "year": 2020
+          },
+          {
+            "id": "5e0a8379b8550765c41c5a65ced54714",
+            "literal": "1,260",
+            "state": "PA",
+            "value": 1260,
+            "year": 2020
+          },
+          {
+            "id": "64580273db9e74200688a89e5a48a751",
+            "literal": "1,425",
+            "state": "PA",
+            "value": 1425,
+            "year": 2020
+          },
+          {
+            "id": "67ac6055fead9a20dfd19e37f75e86de",
+            "literal": "1,311",
+            "state": "PA",
+            "value": 1311,
+            "year": 2020
+          },
+          {
+            "id": "6900621f72587ea02d443f673179a926",
+            "literal": "1,341",
+            "state": "PA",
+            "value": 1341,
+            "year": 2020
+          },
+          {
+            "id": "6ad56d43bf44077068a0a71204853b93",
+            "literal": "1,278",
+            "state": "PA",
+            "value": 1278,
+            "year": 2020
+          },
+          {
+            "id": "74225fab47811108e815adb5c60853d2",
+            "literal": "1,001",
+            "state": "PA",
+            "value": 1001,
+            "year": 2020
+          },
+          {
+            "id": "81327e70041ba08e23c593a87da28cd6",
+            "literal": "1,470",
+            "state": "PA",
+            "value": 1470,
+            "year": 2020
+          },
+          {
+            "id": "846981d5e9cc0a2b1910a04ec93f8efb",
+            "literal": "1,918",
+            "state": "PA",
+            "value": 1918,
+            "year": 2020
+          },
+          {
+            "id": "8b189ef0702483ab9ce23619282f6636",
+            "literal": "1,113",
+            "state": "PA",
+            "value": 1113,
+            "year": 2020
+          },
+          {
+            "id": "904471bbad69732e03b74cfa0d045d3e",
+            "literal": "1,206",
+            "state": "PA",
+            "value": 1206,
+            "year": 2020
+          },
+          {
+            "id": "94829e87b0146c8a71263a45731f2a62",
+            "literal": "1,035",
+            "state": "PA",
+            "value": 1035,
+            "year": 2020
+          },
+          {
+            "id": "94b7ba8d6ff55b79c04333ce37289973",
+            "literal": "1,731",
+            "state": "PA",
+            "value": 1731,
+            "year": 2020
+          },
+          {
+            "id": "9921c9ebd00fa53c07e032ca17272b1a",
+            "literal": "1,037",
+            "state": "PA",
+            "value": 1037,
+            "year": 2020
+          },
+          {
+            "id": "a33310e3278d7b1c273f81303bad21cb",
+            "literal": "1,084",
+            "state": "PA",
+            "value": 1084,
+            "year": 2020
+          },
+          {
+            "id": "a428f86c98eb4206212631a5fc0589ea",
+            "literal": "1,087",
+            "state": "PA",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "a532fdb9719f04f26da1fe11a23742b4",
+            "literal": "1,065",
+            "state": "PA",
+            "value": 1065,
+            "year": 2020
+          },
+          {
+            "id": "a8e79a86e748b92dd6f253cf8dfc3fc5",
+            "literal": "1,245",
+            "state": "PA",
+            "value": 1245,
+            "year": 2020
+          },
+          {
+            "id": "aa21a7423b70ce39f0cb39d5c21d6180",
+            "literal": "1,090",
+            "state": "PA",
+            "value": 1090,
+            "year": 2020
+          },
+          {
+            "id": "ab30799dce0e9ab0844ceac4c062149e",
+            "literal": "1,016",
+            "state": "PA",
+            "value": 1016,
+            "year": 2020
+          },
+          {
+            "id": "ad1f283e4a247564584aa79240c82857",
+            "literal": "1,164",
+            "state": "PA",
+            "value": 1164,
+            "year": 2020
+          },
+          {
+            "id": "aeeb4745f7029cf6eb47f83a17f5e1c5",
+            "literal": "1,100",
+            "state": "PA",
+            "value": 1100,
+            "year": 2020
+          },
+          {
+            "id": "b944cda923c018424ebc2aaebe279552",
+            "literal": "1,244",
+            "state": "PA",
+            "value": 1244,
+            "year": 2020
+          },
+          {
+            "id": "c6155819cf76056dd19daef6feb8e562",
+            "literal": "1,163",
+            "state": "PA",
+            "value": 1163,
+            "year": 2020
+          },
+          {
+            "id": "c65513196f57249c12deec9dfa29f9b6",
+            "literal": "1,340",
+            "state": "PA",
+            "value": 1340,
+            "year": 2020
+          },
+          {
+            "id": "c863b76f3c1528edfa965dca63df82c0",
+            "literal": "1,681",
+            "state": "PA",
+            "value": 1681,
+            "year": 2020
+          },
+          {
+            "id": "c94c5fe09d68fbb5ff0c4db3e3f39acc",
+            "literal": "1,405",
+            "state": "PA",
+            "value": 1405,
+            "year": 2020
+          },
+          {
+            "id": "daad089a415157af0ab23efa599dfb86",
+            "literal": "1,185",
+            "state": "PA",
+            "value": 1185,
+            "year": 2020
+          },
+          {
+            "id": "dbc8358f192eb8627b00a418ca477931",
+            "literal": "1,171",
+            "state": "PA",
+            "value": 1171,
+            "year": 2020
+          },
+          {
+            "id": "e24a76a90fb6bf20cb08a2da39118f31",
+            "literal": "1,158",
+            "state": "PA",
+            "value": 1158,
+            "year": 2020
+          },
+          {
+            "id": "e2cdb0892d0f5197a78e41099427278c",
+            "literal": "1,048",
+            "state": "PA",
+            "value": 1048,
+            "year": 2020
+          },
+          {
+            "id": "e328a39799b566afcf0ef8b6947675a1",
+            "literal": "1,022",
+            "state": "PA",
+            "value": 1022,
+            "year": 2020
+          },
+          {
+            "id": "ea8f4efec909f69ab2d68dd7bd23a2d9",
+            "literal": "1,403",
+            "state": "PA",
+            "value": 1403,
+            "year": 2020
+          },
+          {
+            "id": "ee397da1369540ca94ee3c9c56515cdc",
+            "literal": "1,023",
+            "state": "PA",
+            "value": 1023,
+            "year": 2020
+          },
+          {
+            "id": "f0091525cdf71b24dab6dead29985bc6",
+            "literal": "1,203",
+            "state": "PA",
+            "value": 1203,
+            "year": 2020
+          },
+          {
+            "id": "f4b04c16ef8f11b87a0f580dd491872b",
+            "literal": "1,354",
+            "state": "PA",
+            "value": 1354,
+            "year": 2020
+          },
+          {
+            "id": "f5ccc00f8d222f23b47eb3e0f4d470d2",
+            "literal": "1,039",
+            "state": "PA",
+            "value": 1039,
+            "year": 2020
+          },
+          {
+            "id": "f9ec3d230db1c5c0ac49c79ff9ca5727",
+            "literal": "1,659",
+            "state": "PA",
+            "value": 1659,
+            "year": 2020
+          },
+          {
+            "id": "ff864751e6b0cb1aa8b5a6997aba4ea0",
+            "literal": "1,148",
+            "state": "PA",
+            "value": 1148,
+            "year": 2020
+          },
+          {
+            "id": "0fe4f7b8e51e83e214cb77b9ce4b4856",
+            "literal": "1,119",
+            "state": "UT",
+            "value": 1119,
+            "year": 2020
+          },
+          {
+            "id": "100eb3bd0db43f0e11c714732ec248fb",
+            "literal": "1,698",
+            "state": "UT",
+            "value": 1698,
+            "year": 2020
+          },
+          {
+            "id": "2ff2cbee3d8c0c796287af26b5321ba9",
+            "literal": "1,555",
+            "state": "UT",
+            "value": 1555,
+            "year": 2020
+          },
+          {
+            "id": "443b7b65d45a41da086575728dd316cc",
+            "literal": "1,678",
+            "state": "UT",
+            "value": 1678,
+            "year": 2020
+          },
+          {
+            "id": "814f0d90b236a2441393372867312bc9",
+            "literal": "1,876",
+            "state": "UT",
+            "value": 1876,
+            "year": 2020
+          },
+          {
+            "id": "8335d83c85d6b751cc84ea4b6e77a196",
+            "literal": "1,304",
+            "state": "UT",
+            "value": 1304,
+            "year": 2020
+          },
+          {
+            "id": "88bca226805c7d0b8679534a94e25c19",
+            "literal": "1,766",
+            "state": "UT",
+            "value": 1766,
+            "year": 2020
+          },
+          {
+            "id": "a27a7c7b3ca7eaadec386a897d3d7eea",
+            "literal": "1,087",
+            "state": "UT",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "a55b1757c2223ff3d43e68fe0077719c",
+            "literal": "1,426",
+            "state": "UT",
+            "value": 1426,
+            "year": 2020
+          },
+          {
+            "id": "aedfd544b1f6512a535ed9b156286ae3",
+            "literal": "1,153",
+            "state": "UT",
+            "value": 1153,
+            "year": 2020
+          },
+          {
+            "id": "bf580008ba4132c6c5f96f1b23449c0b",
+            "literal": "1,122",
+            "state": "UT",
+            "value": 1122,
+            "year": 2020
+          },
+          {
+            "id": "c4c79043f6359bbc6c3193ba90f2ef60",
+            "literal": "1,563",
+            "state": "UT",
+            "value": 1563,
+            "year": 2020
+          },
+          {
+            "id": "e86b29703d85e8c43d01095e445e3f19",
+            "literal": "1,255",
+            "state": "UT",
+            "value": 1255,
+            "year": 2020
+          },
+          {
+            "id": "eee508b0301c215bd03dae7e5bd48ee5",
+            "literal": "1,051",
+            "state": "UT",
+            "value": 1051,
+            "year": 2020
+          },
+          {
+            "id": "f74fa83465c121170b840d3a534fb149",
+            "literal": "1,202",
+            "state": "UT",
+            "value": 1202,
+            "year": 2020
+          },
+          {
+            "id": "ff7d451d1c16350ba08408a1afb7e5d6",
+            "literal": "1,175",
+            "state": "UT",
+            "value": 1175,
+            "year": 2020
+          }
+        ],
+        "complete_download": null,
+        "width": 1440
+      },
+      {
+        "all_179_counts_and_original_native_fields_exact": true,
+        "changed_cells_actually_rendered": [
+          {
+            "id": "5a063be03e4bbec143afdc8f49272981",
+            "literal": "1,054",
+            "state": "PA",
+            "value": 1054,
+            "year": 2018
+          },
+          {
+            "id": "01e4c936754a267e7fe54f571cc72b19",
+            "literal": "1,070",
+            "state": "PA",
+            "value": 1070,
+            "year": 2020
+          },
+          {
+            "id": "02d39669cdc64174b4a95771a4a2726e",
+            "literal": "1,115",
+            "state": "PA",
+            "value": 1115,
+            "year": 2020
+          },
+          {
+            "id": "0408d83dda0c0504fb6d997e2463ef0a",
+            "literal": "1,351",
+            "state": "PA",
+            "value": 1351,
+            "year": 2020
+          },
+          {
+            "id": "0458681dc2ee3aed2b9e0c0022fed4f5",
+            "literal": "1,729",
+            "state": "PA",
+            "value": 1729,
+            "year": 2020
+          },
+          {
+            "id": "04a2c696ed2724df7373f901c49103af",
+            "literal": "1,069",
+            "state": "PA",
+            "value": 1069,
+            "year": 2020
+          },
+          {
+            "id": "076acd958c9d54db3af28f56085f7c61",
+            "literal": "1,520",
+            "state": "PA",
+            "value": 1520,
+            "year": 2020
+          },
+          {
+            "id": "0bd44cec7d4373fe580c11bf9dedbf55",
+            "literal": "1,662",
+            "state": "PA",
+            "value": 1662,
+            "year": 2020
+          },
+          {
+            "id": "0df63800a789864db4872b672dd276e2",
+            "literal": "1,573",
+            "state": "PA",
+            "value": 1573,
+            "year": 2020
+          },
+          {
+            "id": "105ce48078ea0546d349fd343a201b61",
+            "literal": "1,174",
+            "state": "PA",
+            "value": 1174,
+            "year": 2020
+          },
+          {
+            "id": "10b26b179de25a00ed8cb1ff7f262a01",
+            "literal": "2,030",
+            "state": "PA",
+            "value": 2030,
+            "year": 2020
+          },
+          {
+            "id": "1770322fb4c0e8a4af73e1e41b22559b",
+            "literal": "1,390",
+            "state": "PA",
+            "value": 1390,
+            "year": 2020
+          },
+          {
+            "id": "1960f5eab33b2d0335c2a236da33525e",
+            "literal": "1,792",
+            "state": "PA",
+            "value": 1792,
+            "year": 2020
+          },
+          {
+            "id": "1b15bc94815ff6bae1280d1892401a34",
+            "literal": "1,009",
+            "state": "PA",
+            "value": 1009,
+            "year": 2020
+          },
+          {
+            "id": "1bb1e267cb9d86a2e1d1a382f2537b62",
+            "literal": "1,593",
+            "state": "PA",
+            "value": 1593,
+            "year": 2020
+          },
+          {
+            "id": "1cc1cb081e19a317eb43dc1592186c32",
+            "literal": "1,139",
+            "state": "PA",
+            "value": 1139,
+            "year": 2020
+          },
+          {
+            "id": "1fbd556ae577df71d3986c895b752b53",
+            "literal": "1,483",
+            "state": "PA",
+            "value": 1483,
+            "year": 2020
+          },
+          {
+            "id": "253230fad4eaa63cbeb07dc74cb9441e",
+            "literal": "1,193",
+            "state": "PA",
+            "value": 1193,
+            "year": 2020
+          },
+          {
+            "id": "2691f13d71e90cb550c50286577de85c",
+            "literal": "1,449",
+            "state": "PA",
+            "value": 1449,
+            "year": 2020
+          },
+          {
+            "id": "2b97c84a1d11870937a3aefe839e691c",
+            "literal": "1,261",
+            "state": "PA",
+            "value": 1261,
+            "year": 2020
+          },
+          {
+            "id": "2dd0bba32667f16e678671ac2cb59c12",
+            "literal": "1,236",
+            "state": "PA",
+            "value": 1236,
+            "year": 2020
+          },
+          {
+            "id": "2f6c2c60c9a25438ad4fe7fdbad7c65d",
+            "literal": "1,070",
+            "state": "PA",
+            "value": 1070,
+            "year": 2020
+          },
+          {
+            "id": "330c68fd234e982925ac1baadb1c9126",
+            "literal": "1,199",
+            "state": "PA",
+            "value": 1199,
+            "year": 2020
+          },
+          {
+            "id": "383a83a823389537f9eab6ebcea203ff",
+            "literal": "1,230",
+            "state": "PA",
+            "value": 1230,
+            "year": 2020
+          },
+          {
+            "id": "3c70f7a1df13a6053bc7fe5e57f60b71",
+            "literal": "1,698",
+            "state": "PA",
+            "value": 1698,
+            "year": 2020
+          },
+          {
+            "id": "3ced12aaba2841bd69bd132018f46ce2",
+            "literal": "1,184",
+            "state": "PA",
+            "value": 1184,
+            "year": 2020
+          },
+          {
+            "id": "3d8d230dc28904b1c29c4a279be1e140",
+            "literal": "1,056",
+            "state": "PA",
+            "value": 1056,
+            "year": 2020
+          },
+          {
+            "id": "3dfea163055c7bb8d0822e719a1de057",
+            "literal": "1,666",
+            "state": "PA",
+            "value": 1666,
+            "year": 2020
+          },
+          {
+            "id": "445174fea3443825e68e3d79674a2466",
+            "literal": "1,143",
+            "state": "PA",
+            "value": 1143,
+            "year": 2020
+          },
+          {
+            "id": "49b3a649fccc2547a3d93aa0eb48a065",
+            "literal": "1,430",
+            "state": "PA",
+            "value": 1430,
+            "year": 2020
+          },
+          {
+            "id": "4c968b336a085975a7bc2f6670630661",
+            "literal": "1,113",
+            "state": "PA",
+            "value": 1113,
+            "year": 2020
+          },
+          {
+            "id": "4d49c362de36e4dc199d7e26a1e6310a",
+            "literal": "1,412",
+            "state": "PA",
+            "value": 1412,
+            "year": 2020
+          },
+          {
+            "id": "507963487b51b64815b4d5cfeb7f12b5",
+            "literal": "1,036",
+            "state": "PA",
+            "value": 1036,
+            "year": 2020
+          },
+          {
+            "id": "51559765839bf3d3136dad3e613aa720",
+            "literal": "1,310",
+            "state": "PA",
+            "value": 1310,
+            "year": 2020
+          },
+          {
+            "id": "5181fa7984bacdc71db2a937fd936f1b",
+            "literal": "1,286",
+            "state": "PA",
+            "value": 1286,
+            "year": 2020
+          },
+          {
+            "id": "518bb1fa0c110b2d122ae01e854a0df2",
+            "literal": "1,756",
+            "state": "PA",
+            "value": 1756,
+            "year": 2020
+          },
+          {
+            "id": "51d91452a68e9a07052a7ac0fa7d851b",
+            "literal": "1,757",
+            "state": "PA",
+            "value": 1757,
+            "year": 2020
+          },
+          {
+            "id": "5419f86c6344509d27885477fd036d3f",
+            "literal": "1,329",
+            "state": "PA",
+            "value": 1329,
+            "year": 2020
+          },
+          {
+            "id": "57fd69eeb22f654a0eea7ac0d43ce423",
+            "literal": "1,821",
+            "state": "PA",
+            "value": 1821,
+            "year": 2020
+          },
+          {
+            "id": "58d458a4b28258eb727de7aec4ed8cae",
+            "literal": "1,200",
+            "state": "PA",
+            "value": 1200,
+            "year": 2020
+          },
+          {
+            "id": "5b11cb21c087af2f7ead43a4e1b5a813",
+            "literal": "1,242",
+            "state": "PA",
+            "value": 1242,
+            "year": 2020
+          },
+          {
+            "id": "614adb286569366f5b95b296ff61084a",
+            "literal": "1,162",
+            "state": "PA",
+            "value": 1162,
+            "year": 2020
+          },
+          {
+            "id": "645491926eb405a6496145bf9a2d34e4",
+            "literal": "1,127",
+            "state": "PA",
+            "value": 1127,
+            "year": 2020
+          },
+          {
+            "id": "6526ce7c005c0d9593d6499ed7fad078",
+            "literal": "1,323",
+            "state": "PA",
+            "value": 1323,
+            "year": 2020
+          },
+          {
+            "id": "67671125119ddfcfd04d348b7328037e",
+            "literal": "1,742",
+            "state": "PA",
+            "value": 1742,
+            "year": 2020
+          },
+          {
+            "id": "69a62fd928d8b1227c0460d913e3c838",
+            "literal": "1,123",
+            "state": "PA",
+            "value": 1123,
+            "year": 2020
+          },
+          {
+            "id": "6c6842f9e31f0952e9d788082768a80d",
+            "literal": "1,282",
+            "state": "PA",
+            "value": 1282,
+            "year": 2020
+          },
+          {
+            "id": "6e7f7d277b201d1994d9b75381d8becf",
+            "literal": "1,600",
+            "state": "PA",
+            "value": 1600,
+            "year": 2020
+          },
+          {
+            "id": "71579627e769cceaa654196fb37f25b7",
+            "literal": "1,510",
+            "state": "PA",
+            "value": 1510,
+            "year": 2020
+          },
+          {
+            "id": "731284d794052a8d31dfe634444ac03d",
+            "literal": "1,093",
+            "state": "PA",
+            "value": 1093,
+            "year": 2020
+          },
+          {
+            "id": "737c97401de1c0dd057909e98785d15b",
+            "literal": "1,506",
+            "state": "PA",
+            "value": 1506,
+            "year": 2020
+          },
+          {
+            "id": "75463f12c68c8f7d79f5a7204502809d",
+            "literal": "1,081",
+            "state": "PA",
+            "value": 1081,
+            "year": 2020
+          },
+          {
+            "id": "79831b4876a7f66cb0ffc8ac34c33b4b",
+            "literal": "1,126",
+            "state": "PA",
+            "value": 1126,
+            "year": 2020
+          },
+          {
+            "id": "7a27eaa7849bf2caa9fe31a736d7c155",
+            "literal": "1,103",
+            "state": "PA",
+            "value": 1103,
+            "year": 2020
+          },
+          {
+            "id": "7c5446b6e40b5a1696ef99ce2bab49c1",
+            "literal": "1,543",
+            "state": "PA",
+            "value": 1543,
+            "year": 2020
+          },
+          {
+            "id": "81150052d43534ddffed3d8c5f6fc6aa",
+            "literal": "1,312",
+            "state": "PA",
+            "value": 1312,
+            "year": 2020
+          },
+          {
+            "id": "81815dcc9ef1d66decebc80cc303e2ab",
+            "literal": "1,497",
+            "state": "PA",
+            "value": 1497,
+            "year": 2020
+          },
+          {
+            "id": "82da4d9d936a56bf68e9216c82f88a42",
+            "literal": "1,434",
+            "state": "PA",
+            "value": 1434,
+            "year": 2020
+          },
+          {
+            "id": "83c5d1407ec8c9e456624d9dee30a777",
+            "literal": "1,460",
+            "state": "PA",
+            "value": 1460,
+            "year": 2020
+          },
+          {
+            "id": "88ca4d8e622b0361edb9870d7a90d6b2",
+            "literal": "1,241",
+            "state": "PA",
+            "value": 1241,
+            "year": 2020
+          },
+          {
+            "id": "8d70d440487183abc6a2bce29784cae3",
+            "literal": "1,077",
+            "state": "PA",
+            "value": 1077,
+            "year": 2020
+          },
+          {
+            "id": "8ff0065f52783e6e5527c037cbcbb5bc",
+            "literal": "1,177",
+            "state": "PA",
+            "value": 1177,
+            "year": 2020
+          },
+          {
+            "id": "90dc31c2f3a5eed000dc0757d5467597",
+            "literal": "1,073",
+            "state": "PA",
+            "value": 1073,
+            "year": 2020
+          },
+          {
+            "id": "917a6676c442e79fc28092e8a8fcde6b",
+            "literal": "1,209",
+            "state": "PA",
+            "value": 1209,
+            "year": 2020
+          },
+          {
+            "id": "975e05bd12123c66796a7dd6b3720199",
+            "literal": "1,600",
+            "state": "PA",
+            "value": 1600,
+            "year": 2020
+          },
+          {
+            "id": "977eddc8e8612c3ad8f906fb09bc717b",
+            "literal": "1,522",
+            "state": "PA",
+            "value": 1522,
+            "year": 2020
+          },
+          {
+            "id": "9c9bd4046917b5b9710b181a6848302d",
+            "literal": "1,365",
+            "state": "PA",
+            "value": 1365,
+            "year": 2020
+          },
+          {
+            "id": "9d98e320ed97b9973a1d12028bbab0c0",
+            "literal": "1,292",
+            "state": "PA",
+            "value": 1292,
+            "year": 2020
+          },
+          {
+            "id": "9e8735351f11a5f311e54bd75f2a2333",
+            "literal": "1,742",
+            "state": "PA",
+            "value": 1742,
+            "year": 2020
+          },
+          {
+            "id": "a039fd7c5fa258110695de0ef5f77542",
+            "literal": "1,516",
+            "state": "PA",
+            "value": 1516,
+            "year": 2020
+          },
+          {
+            "id": "a1a0baef2e0a5f6411d1d67c6e3db39b",
+            "literal": "1,104",
+            "state": "PA",
+            "value": 1104,
+            "year": 2020
+          },
+          {
+            "id": "a1d0c7bda7cdca9ff8d2ca4dc1fff08c",
+            "literal": "1,517",
+            "state": "PA",
+            "value": 1517,
+            "year": 2020
+          },
+          {
+            "id": "a1ea8d0214314f05c4447fbb9a8f2d50",
+            "literal": "1,241",
+            "state": "PA",
+            "value": 1241,
+            "year": 2020
+          },
+          {
+            "id": "a390bb51ed3821156c3048c8ebe7793d",
+            "literal": "1,544",
+            "state": "PA",
+            "value": 1544,
+            "year": 2020
+          },
+          {
+            "id": "a8096cc41a73692df50d2815ffef4fef",
+            "literal": "1,555",
+            "state": "PA",
+            "value": 1555,
+            "year": 2020
+          },
+          {
+            "id": "a9cc5b3e23c1656c23d9174048e082ea",
+            "literal": "1,040",
+            "state": "PA",
+            "value": 1040,
+            "year": 2020
+          },
+          {
+            "id": "aec266d3146182ef2f50f0fc6d84ad33",
+            "literal": "1,095",
+            "state": "PA",
+            "value": 1095,
+            "year": 2020
+          },
+          {
+            "id": "b086cc3f514af57dca5cb8a95283c554",
+            "literal": "1,028",
+            "state": "PA",
+            "value": 1028,
+            "year": 2020
+          },
+          {
+            "id": "b0d37dabee48a5d4cdd5eccec527b162",
+            "literal": "1,218",
+            "state": "PA",
+            "value": 1218,
+            "year": 2020
+          },
+          {
+            "id": "b0e6d90b379da35e4fa0d7f6eb091b2f",
+            "literal": "1,282",
+            "state": "PA",
+            "value": 1282,
+            "year": 2020
+          },
+          {
+            "id": "b24a2985b037224a418f4bc76d9a58b1",
+            "literal": "1,087",
+            "state": "PA",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "b2cc4e9f7447985c3acc59e6cb5b2fbb",
+            "literal": "1,269",
+            "state": "PA",
+            "value": 1269,
+            "year": 2020
+          },
+          {
+            "id": "b6cdf631be1b63f315ce5740432cc106",
+            "literal": "1,106",
+            "state": "PA",
+            "value": 1106,
+            "year": 2020
+          },
+          {
+            "id": "b89e394e644da18842f10ddb9873ef53",
+            "literal": "1,054",
+            "state": "PA",
+            "value": 1054,
+            "year": 2020
+          },
+          {
+            "id": "bbae04de979872b9e30eb903cdc1bc5c",
+            "literal": "1,243",
+            "state": "PA",
+            "value": 1243,
+            "year": 2020
+          },
+          {
+            "id": "bd3df8f8675e22f7e603a796b6f12e47",
+            "literal": "1,098",
+            "state": "PA",
+            "value": 1098,
+            "year": 2020
+          },
+          {
+            "id": "bef0126707599c953b5be2c2f5e0d88f",
+            "literal": "1,267",
+            "state": "PA",
+            "value": 1267,
+            "year": 2020
+          },
+          {
+            "id": "bfa5b15679384e3d0daeffe8875bab2d",
+            "literal": "1,208",
+            "state": "PA",
+            "value": 1208,
+            "year": 2020
+          },
+          {
+            "id": "c03ca44177edab69bab375c86b3f326f",
+            "literal": "1,438",
+            "state": "PA",
+            "value": 1438,
+            "year": 2020
+          },
+          {
+            "id": "c1fdd6e0096ed822eafe2169aeb570bd",
+            "literal": "1,203",
+            "state": "PA",
+            "value": 1203,
+            "year": 2020
+          },
+          {
+            "id": "c7cc5856d4cb1e308f809409b5a09770",
+            "literal": "1,463",
+            "state": "PA",
+            "value": 1463,
+            "year": 2020
+          },
+          {
+            "id": "ca1d78a76084260874af6775e3198540",
+            "literal": "1,022",
+            "state": "PA",
+            "value": 1022,
+            "year": 2020
+          },
+          {
+            "id": "cab706cbbbb8a5e40da13c2ff8144fc5",
+            "literal": "1,160",
+            "state": "PA",
+            "value": 1160,
+            "year": 2020
+          },
+          {
+            "id": "cd154c0decb2aef9f0372690dce5d66f",
+            "literal": "1,300",
+            "state": "PA",
+            "value": 1300,
+            "year": 2020
+          },
+          {
+            "id": "cd3c5a6ba11656ce89d9c6116529cb2b",
+            "literal": "1,102",
+            "state": "PA",
+            "value": 1102,
+            "year": 2020
+          },
+          {
+            "id": "cf59d4f7d5aee94db1fd54b9823ba906",
+            "literal": "1,549",
+            "state": "PA",
+            "value": 1549,
+            "year": 2020
+          },
+          {
+            "id": "d08e24df819680ca172825a7b1b2772f",
+            "literal": "1,583",
+            "state": "PA",
+            "value": 1583,
+            "year": 2020
+          },
+          {
+            "id": "d2a9116e7d20687c3d9fd12305f23299",
+            "literal": "1,327",
+            "state": "PA",
+            "value": 1327,
+            "year": 2020
+          },
+          {
+            "id": "d2be033076d2cbab7dbaf714a82cc497",
+            "literal": "2,055",
+            "state": "PA",
+            "value": 2055,
+            "year": 2020
+          },
+          {
+            "id": "d360c19271f477cbae4900a9985076a5",
+            "literal": "1,262",
+            "state": "PA",
+            "value": 1262,
+            "year": 2020
+          },
+          {
+            "id": "d51ee43ff7ccd3e67c4dee952ac5e9bd",
+            "literal": "1,105",
+            "state": "PA",
+            "value": 1105,
+            "year": 2020
+          },
+          {
+            "id": "da1a66e249f533465b740d51bb0c3642",
+            "literal": "1,118",
+            "state": "PA",
+            "value": 1118,
+            "year": 2020
+          },
+          {
+            "id": "de75c5c1deae945232138dff863474bd",
+            "literal": "1,165",
+            "state": "PA",
+            "value": 1165,
+            "year": 2020
+          },
+          {
+            "id": "e28f7d23b974000f640344c826608a4c",
+            "literal": "1,389",
+            "state": "PA",
+            "value": 1389,
+            "year": 2020
+          },
+          {
+            "id": "e55f8a08ff25be30847b336d8be92525",
+            "literal": "1,115",
+            "state": "PA",
+            "value": 1115,
+            "year": 2020
+          },
+          {
+            "id": "eb92292e0082694d893fb5deda861ac0",
+            "literal": "1,013",
+            "state": "PA",
+            "value": 1013,
+            "year": 2020
+          },
+          {
+            "id": "ec33c986df8ea7b7bb5ba0edeb48a422",
+            "literal": "1,134",
+            "state": "PA",
+            "value": 1134,
+            "year": 2020
+          },
+          {
+            "id": "ef1deb7d35e53013eed69390a10fc814",
+            "literal": "1,192",
+            "state": "PA",
+            "value": 1192,
+            "year": 2020
+          },
+          {
+            "id": "f06a8cd7c169a413895a690ee2932b80",
+            "literal": "1,476",
+            "state": "PA",
+            "value": 1476,
+            "year": 2020
+          },
+          {
+            "id": "f1b2215a776ede54cc4797f33b256e6a",
+            "literal": "1,118",
+            "state": "PA",
+            "value": 1118,
+            "year": 2020
+          },
+          {
+            "id": "f28d201120e6d9e545ec0bd153cefeb1",
+            "literal": "1,173",
+            "state": "PA",
+            "value": 1173,
+            "year": 2020
+          },
+          {
+            "id": "f30dec932cd23721e9df2af8aa0aeedd",
+            "literal": "1,214",
+            "state": "PA",
+            "value": 1214,
+            "year": 2020
+          },
+          {
+            "id": "fd823f5e2dd6b85f26ca3c9a7309238a",
+            "literal": "1,304",
+            "state": "PA",
+            "value": 1304,
+            "year": 2020
+          },
+          {
+            "id": "02b8fc16c81cbf2405e0a44da51522d7",
+            "literal": "1,289",
+            "state": "PA",
+            "value": 1289,
+            "year": 2020
+          },
+          {
+            "id": "04705ae837abdc06a29ee3432be8f57a",
+            "literal": "1,620",
+            "state": "PA",
+            "value": 1620,
+            "year": 2020
+          },
+          {
+            "id": "0841976f7e3b45f0935f5c04b0c29bf6",
+            "literal": "1,700",
+            "state": "PA",
+            "value": 1700,
+            "year": 2020
+          },
+          {
+            "id": "123450b5fd9a3be5a42e4fd576d72e71",
+            "literal": "1,193",
+            "state": "PA",
+            "value": 1193,
+            "year": 2020
+          },
+          {
+            "id": "228d3a5a621f41572f2f79c5e7661b1a",
+            "literal": "1,333",
+            "state": "PA",
+            "value": 1333,
+            "year": 2020
+          },
+          {
+            "id": "350ed2633b8170b8e755be26d39a843e",
+            "literal": "1,073",
+            "state": "PA",
+            "value": 1073,
+            "year": 2020
+          },
+          {
+            "id": "3a006a4e526c811d1eaf0f2ec2fd7de6",
+            "literal": "1,072",
+            "state": "PA",
+            "value": 1072,
+            "year": 2020
+          },
+          {
+            "id": "3e548a31118c9b685ccd87cd1432e914",
+            "literal": "1,307",
+            "state": "PA",
+            "value": 1307,
+            "year": 2020
+          },
+          {
+            "id": "3f8eb186f860de9cbcc0f27e7dccd16b",
+            "literal": "1,184",
+            "state": "PA",
+            "value": 1184,
+            "year": 2020
+          },
+          {
+            "id": "44d6a1653d3cb86305e84314fc17ec86",
+            "literal": "1,679",
+            "state": "PA",
+            "value": 1679,
+            "year": 2020
+          },
+          {
+            "id": "525933e44ccd04c8d6d763105e9d8248",
+            "literal": "1,329",
+            "state": "PA",
+            "value": 1329,
+            "year": 2020
+          },
+          {
+            "id": "568c444e3ac2b735d5a095c42e9aae04",
+            "literal": "1,132",
+            "state": "PA",
+            "value": 1132,
+            "year": 2020
+          },
+          {
+            "id": "5e0a8379b8550765c41c5a65ced54714",
+            "literal": "1,260",
+            "state": "PA",
+            "value": 1260,
+            "year": 2020
+          },
+          {
+            "id": "64580273db9e74200688a89e5a48a751",
+            "literal": "1,425",
+            "state": "PA",
+            "value": 1425,
+            "year": 2020
+          },
+          {
+            "id": "67ac6055fead9a20dfd19e37f75e86de",
+            "literal": "1,311",
+            "state": "PA",
+            "value": 1311,
+            "year": 2020
+          },
+          {
+            "id": "6900621f72587ea02d443f673179a926",
+            "literal": "1,341",
+            "state": "PA",
+            "value": 1341,
+            "year": 2020
+          },
+          {
+            "id": "6ad56d43bf44077068a0a71204853b93",
+            "literal": "1,278",
+            "state": "PA",
+            "value": 1278,
+            "year": 2020
+          },
+          {
+            "id": "74225fab47811108e815adb5c60853d2",
+            "literal": "1,001",
+            "state": "PA",
+            "value": 1001,
+            "year": 2020
+          },
+          {
+            "id": "81327e70041ba08e23c593a87da28cd6",
+            "literal": "1,470",
+            "state": "PA",
+            "value": 1470,
+            "year": 2020
+          },
+          {
+            "id": "846981d5e9cc0a2b1910a04ec93f8efb",
+            "literal": "1,918",
+            "state": "PA",
+            "value": 1918,
+            "year": 2020
+          },
+          {
+            "id": "8b189ef0702483ab9ce23619282f6636",
+            "literal": "1,113",
+            "state": "PA",
+            "value": 1113,
+            "year": 2020
+          },
+          {
+            "id": "904471bbad69732e03b74cfa0d045d3e",
+            "literal": "1,206",
+            "state": "PA",
+            "value": 1206,
+            "year": 2020
+          },
+          {
+            "id": "94829e87b0146c8a71263a45731f2a62",
+            "literal": "1,035",
+            "state": "PA",
+            "value": 1035,
+            "year": 2020
+          },
+          {
+            "id": "94b7ba8d6ff55b79c04333ce37289973",
+            "literal": "1,731",
+            "state": "PA",
+            "value": 1731,
+            "year": 2020
+          },
+          {
+            "id": "9921c9ebd00fa53c07e032ca17272b1a",
+            "literal": "1,037",
+            "state": "PA",
+            "value": 1037,
+            "year": 2020
+          },
+          {
+            "id": "a33310e3278d7b1c273f81303bad21cb",
+            "literal": "1,084",
+            "state": "PA",
+            "value": 1084,
+            "year": 2020
+          },
+          {
+            "id": "a428f86c98eb4206212631a5fc0589ea",
+            "literal": "1,087",
+            "state": "PA",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "a532fdb9719f04f26da1fe11a23742b4",
+            "literal": "1,065",
+            "state": "PA",
+            "value": 1065,
+            "year": 2020
+          },
+          {
+            "id": "a8e79a86e748b92dd6f253cf8dfc3fc5",
+            "literal": "1,245",
+            "state": "PA",
+            "value": 1245,
+            "year": 2020
+          },
+          {
+            "id": "aa21a7423b70ce39f0cb39d5c21d6180",
+            "literal": "1,090",
+            "state": "PA",
+            "value": 1090,
+            "year": 2020
+          },
+          {
+            "id": "ab30799dce0e9ab0844ceac4c062149e",
+            "literal": "1,016",
+            "state": "PA",
+            "value": 1016,
+            "year": 2020
+          },
+          {
+            "id": "ad1f283e4a247564584aa79240c82857",
+            "literal": "1,164",
+            "state": "PA",
+            "value": 1164,
+            "year": 2020
+          },
+          {
+            "id": "aeeb4745f7029cf6eb47f83a17f5e1c5",
+            "literal": "1,100",
+            "state": "PA",
+            "value": 1100,
+            "year": 2020
+          },
+          {
+            "id": "b944cda923c018424ebc2aaebe279552",
+            "literal": "1,244",
+            "state": "PA",
+            "value": 1244,
+            "year": 2020
+          },
+          {
+            "id": "c6155819cf76056dd19daef6feb8e562",
+            "literal": "1,163",
+            "state": "PA",
+            "value": 1163,
+            "year": 2020
+          },
+          {
+            "id": "c65513196f57249c12deec9dfa29f9b6",
+            "literal": "1,340",
+            "state": "PA",
+            "value": 1340,
+            "year": 2020
+          },
+          {
+            "id": "c863b76f3c1528edfa965dca63df82c0",
+            "literal": "1,681",
+            "state": "PA",
+            "value": 1681,
+            "year": 2020
+          },
+          {
+            "id": "c94c5fe09d68fbb5ff0c4db3e3f39acc",
+            "literal": "1,405",
+            "state": "PA",
+            "value": 1405,
+            "year": 2020
+          },
+          {
+            "id": "daad089a415157af0ab23efa599dfb86",
+            "literal": "1,185",
+            "state": "PA",
+            "value": 1185,
+            "year": 2020
+          },
+          {
+            "id": "dbc8358f192eb8627b00a418ca477931",
+            "literal": "1,171",
+            "state": "PA",
+            "value": 1171,
+            "year": 2020
+          },
+          {
+            "id": "e24a76a90fb6bf20cb08a2da39118f31",
+            "literal": "1,158",
+            "state": "PA",
+            "value": 1158,
+            "year": 2020
+          },
+          {
+            "id": "e2cdb0892d0f5197a78e41099427278c",
+            "literal": "1,048",
+            "state": "PA",
+            "value": 1048,
+            "year": 2020
+          },
+          {
+            "id": "e328a39799b566afcf0ef8b6947675a1",
+            "literal": "1,022",
+            "state": "PA",
+            "value": 1022,
+            "year": 2020
+          },
+          {
+            "id": "ea8f4efec909f69ab2d68dd7bd23a2d9",
+            "literal": "1,403",
+            "state": "PA",
+            "value": 1403,
+            "year": 2020
+          },
+          {
+            "id": "ee397da1369540ca94ee3c9c56515cdc",
+            "literal": "1,023",
+            "state": "PA",
+            "value": 1023,
+            "year": 2020
+          },
+          {
+            "id": "f0091525cdf71b24dab6dead29985bc6",
+            "literal": "1,203",
+            "state": "PA",
+            "value": 1203,
+            "year": 2020
+          },
+          {
+            "id": "f4b04c16ef8f11b87a0f580dd491872b",
+            "literal": "1,354",
+            "state": "PA",
+            "value": 1354,
+            "year": 2020
+          },
+          {
+            "id": "f5ccc00f8d222f23b47eb3e0f4d470d2",
+            "literal": "1,039",
+            "state": "PA",
+            "value": 1039,
+            "year": 2020
+          },
+          {
+            "id": "f9ec3d230db1c5c0ac49c79ff9ca5727",
+            "literal": "1,659",
+            "state": "PA",
+            "value": 1659,
+            "year": 2020
+          },
+          {
+            "id": "ff864751e6b0cb1aa8b5a6997aba4ea0",
+            "literal": "1,148",
+            "state": "PA",
+            "value": 1148,
+            "year": 2020
+          },
+          {
+            "id": "0fe4f7b8e51e83e214cb77b9ce4b4856",
+            "literal": "1,119",
+            "state": "UT",
+            "value": 1119,
+            "year": 2020
+          },
+          {
+            "id": "100eb3bd0db43f0e11c714732ec248fb",
+            "literal": "1,698",
+            "state": "UT",
+            "value": 1698,
+            "year": 2020
+          },
+          {
+            "id": "2ff2cbee3d8c0c796287af26b5321ba9",
+            "literal": "1,555",
+            "state": "UT",
+            "value": 1555,
+            "year": 2020
+          },
+          {
+            "id": "443b7b65d45a41da086575728dd316cc",
+            "literal": "1,678",
+            "state": "UT",
+            "value": 1678,
+            "year": 2020
+          },
+          {
+            "id": "814f0d90b236a2441393372867312bc9",
+            "literal": "1,876",
+            "state": "UT",
+            "value": 1876,
+            "year": 2020
+          },
+          {
+            "id": "8335d83c85d6b751cc84ea4b6e77a196",
+            "literal": "1,304",
+            "state": "UT",
+            "value": 1304,
+            "year": 2020
+          },
+          {
+            "id": "88bca226805c7d0b8679534a94e25c19",
+            "literal": "1,766",
+            "state": "UT",
+            "value": 1766,
+            "year": 2020
+          },
+          {
+            "id": "a27a7c7b3ca7eaadec386a897d3d7eea",
+            "literal": "1,087",
+            "state": "UT",
+            "value": 1087,
+            "year": 2020
+          },
+          {
+            "id": "a55b1757c2223ff3d43e68fe0077719c",
+            "literal": "1,426",
+            "state": "UT",
+            "value": 1426,
+            "year": 2020
+          },
+          {
+            "id": "aedfd544b1f6512a535ed9b156286ae3",
+            "literal": "1,153",
+            "state": "UT",
+            "value": 1153,
+            "year": 2020
+          },
+          {
+            "id": "bf580008ba4132c6c5f96f1b23449c0b",
+            "literal": "1,122",
+            "state": "UT",
+            "value": 1122,
+            "year": 2020
+          },
+          {
+            "id": "c4c79043f6359bbc6c3193ba90f2ef60",
+            "literal": "1,563",
+            "state": "UT",
+            "value": 1563,
+            "year": 2020
+          },
+          {
+            "id": "e86b29703d85e8c43d01095e445e3f19",
+            "literal": "1,255",
+            "state": "UT",
+            "value": 1255,
+            "year": 2020
+          },
+          {
+            "id": "eee508b0301c215bd03dae7e5bd48ee5",
+            "literal": "1,051",
+            "state": "UT",
+            "value": 1051,
+            "year": 2020
+          },
+          {
+            "id": "f74fa83465c121170b840d3a534fb149",
+            "literal": "1,202",
+            "state": "UT",
+            "value": 1202,
+            "year": 2020
+          },
+          {
+            "id": "ff7d451d1c16350ba08408a1afb7e5d6",
+            "literal": "1,175",
+            "state": "UT",
+            "value": 1175,
+            "year": 2020
+          }
+        ],
+        "complete_download": null,
+        "width": 390
+      }
+    ],
+    "catalog_and_dataset_routes_overridden": true,
+    "explicit_private_candidate_data_fixture": true,
+    "passed": true,
+    "predecessor_package_metadata_for_private_ui_schema_only": true,
+    "source_or_dom_or_style_overrides": false,
+    "version": "a8e917a7758dd094af52d7d445dd84de326e47bc4caddfc2376de5d4780059fe"
+  },
+  "full_new_numerical_package_hash_verified_at_both_widths": true,
+  "no_new_site_build_or_weakened_native_limits": true,
+  "old_436_download_pins_and_113_original_publication_entries_retained": true,
+  "passed": true,
+  "prior_actual_115_asset_body_verification_reused_for_unchanged_site": true,
+  "prior_actual_native_artifact": 14098410480,
+  "prior_actual_payload_bytes": 997339994,
+  "prior_actual_tar_bytes": 999936000,
+  "unchanged_site_and_native_artifact_verification": {
+    "accepted_native_payload_bytes": 997339994,
+    "accepted_native_tar_bytes": 999936000,
+    "accepted_unchanged_native_artifact": 14098410480,
+    "actual_current_publication_manifest_byte_exact": true,
+    "actual_served_bodies_checked": 32,
+    "all_current_served_bodies_exact_to_accepted_native_artifact": true,
+    "passed": true,
+    "prior_actual_115_asset_body_verification_reused_without_new_site_build": true,
+    "source_or_data_dom_style_overrides": false,
+    "website_source": "ea329b3396c2fb5829eeb93b0e97d61d354f17cc"
+  },
+  "whole_project_complete": false
+}
