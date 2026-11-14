@@ -6,6 +6,59 @@ Ledger updated: 2026-11-14 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Expanded cross-state automatic intake and native maps
+
+Producer `ed0f48d` and collector43641019948 passed actual GitHub collection,
+anonymous full-source download and literal14-output offline replay. The full
+251,284,623-byte decoded snapshot fits the unchanged300MB guard; complete
+directory-product facts remain in the pinned query, not dropped for size.
+All51 jurisdiction decisions and all178 existing durable stops are retained.
+
+| State | Qualified refreshed record appearances in this hosted run |
+|---|---:|
+| Alabama | 1,233 |
+| California | 58 |
+| Michigan | 770 |
+| Minnesota | 4,279 |
+| Montana | 2 |
+| New Mexico | 2,237 |
+| Nevada | 2 |
+| Texas | 4 |
+
+The8,585 appearances include parent/unit or repeated source representations;
+they are not unique people, newly counted ballots or disjoint geographies.
+Wayne's758 main and12 supplement units retain distinct workbook clocks and
+scope;747,004 remains an administrative combination, not a printed county
+parent or unique-person count. Texas requires explicit preliminary C/F/I or
+official E/H/M roles, strict OCR confidence/physical alignment and unchanged
+identity tuples. Attestations are not count-update clocks.
+Colorado's64-county returned/processed parser passed actual retained-original
+checks, but its stopped URL remained stopped: no fresh acquisition is claimed.
+The registry's29 primary-product states include unadapted facts, not29 complete
+county collectors. Changed or unqualified products keep last verified values.
+
+Website `05974f91` and actual consumer43641766958 activate runtime `ad3a4827`
+atomically. Its full171,891,898-byte immutable packet freshly reproduces all113
+outputs offline, including the complete source packet and preceding rolling
+last-good seed. Fits, weights, geography and the33-directional/17-neutral
+comparison mask remain unchanged; compatible estimates and counts share one
+version. No Pages build is needed for subsequent numerical activations.
+
+The deployed native-reader repair preserves independently reviewed native IDs
+instead of falsely joining them to table IDs. Invalid automatic bodies restart
+the entire loader against its accepted snapshot and that snapshot's geometry.
+Actual no-override desktop/mobile checks pass all306 reader frames, eight-state
+county selections, NM2,177/MN4,105 map attributes, nine model controls and existing
+registered scenarios. NM969 unknown counts/six held rates and MN32 zeros/no
+precinct rates survive. Actual artifact14132732841 and38 served bodies pass;
+all437 prior full-download pins and both strict size caps are preserved.
+
+[Complete state/source decisions](data/participation-access/20261114-cross-state-automatic-intake-01/observations.json),
+[actual acceptance](data/participation-access/20261114-cross-state-automatic-intake-01/acceptance.json)
+and [complete source/runtime downloads](docs/DATA.md#expanded-cross-state-automatic-intake)
+record the scope. Earlier dated delivery sections remain history, not claims
+that every state's county/precinct collection is complete or certified.
+
 ## Maine House round-source context
 
 The separately permitted November12,2026 CD2 article is retained as a distinct
@@ -55,6 +108,7 @@ govern this increment; earlier dated entries below are retained history.
 
 | Reference area | Jump to |
 |---|---|
+| Expanded automatic intake | [Actual eight-state refresh, complete source/runtime replays and native maps](#expanded-cross-state-automatic-intake-and-native-maps) |
 | Maine House round-source context | [Complete selected facts and diagnostics; statewide/model hold retained](#maine-house-round-source-context) |
 | Automatic live delivery | [Qualified sources, hourly counts/estimates and complete replay](#automatic-qualified-source-website-delivery) |
 | Nationwide swing correction | [All-state source audit and neutral comparison holds](#nationwide-house-display-comparability-correction) |

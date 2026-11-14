@@ -8,12 +8,53 @@ nonparticipation and new/returning-voter estimates, then their tested integratio
 into the existing project. Do not stop at an inventory or another audit.
 
 The single assistant continuation runs every **45 minutes**
-(schedule 126; schedules 125, 124, 123, 122 and earlier continuations are stopped).
+(schedule 127; schedules 126, 125, 124, 123, 122 and earlier continuations are stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Expanded automatic intake and native-map delivery verified
+
+The expanded producer `ed0f48d`, website reader `05974f91` and atomic runtime
+`ad3a4827` passed actual hosted collection/publication and no-override production
+checks. Collector43641019948 refreshed **8,585 record appearances across eight
+states**, including770 Wayne reporting units and four Texas reconciliation
+parents. These are source refreshes, not8,585 new people or disjoint precincts.
+The [complete state/source outcomes](data/participation-access/20261114-cross-state-automatic-intake-01/observations.json)
+retain all51 jurisdiction decisions and178 durable access stops.
+
+The source packet reproduces all14 complete outputs; the full171,891,898-byte
+runtime archive reproduces all113 outputs offline. Consumer43641766958 retained
+the preceding verified rolling seed and activated count/native/model descriptors
+together, without a numerical-update Pages build or a source-model refit.
+Both hourly GitHub workflows remain active independently of this assistant.
+Unchanged/incompatible model inputs do not become new estimates.
+
+A genuine native-reader namespace/fallback error is fixed: independently keyed
+native projections no longer require a false same-ID match to canonical tables.
+Actual desktop/mobile checks pass all306 complete reader frames, the refreshed
+eight-state county selections, all2,177 NM and4,105 MN native-map values, allnine
+model controls and existing registered scenarios. NM969 unknown map counts and
+six held rates remain held; MN32 native zeros remain zero, with no precinct rate.
+Actual Pages43641653596/artifact14132732841 passes994,240,543 payload and
+996,843,520 tar bytes, both below the unchanged limit, with all437 download pins
+and38 served bodies verified.
+
+**Nationwide county/precinct completeness remains open.** Primary products are
+registered in29 states, including unadapted factual captures, not29 complete
+collectors. Colorado's64-county workbook parser passed retained-original tests,
+but its stopped hosted URL was not retrieved. Texas's retained-source five-parent
+parser acceptance is distinct from this run's four reachable reports. Remaining
+source/layout/boundary/history/model gaps require substantive work; no missing
+count becomes zero and no state estimate is allocated to precincts.
+[Full acceptance](data/participation-access/20261114-cross-state-automatic-intake-01/acceptance.json)
+and [both complete downloads](docs/DATA.md#expanded-cross-state-automatic-intake)
+govern this increment. Older entries below are retained delivery history.
+Full audit THEN beautification remain pending behind the genuine gaps.
+
 ## Automatic source-to-website delivery verified
+
+The following is the initial delivery record; the expanded scope above is current.
 
 The unattended pipeline is enabled on GitHub, independently of the assistant:
 research **Update election results** collects registered sources hourly at

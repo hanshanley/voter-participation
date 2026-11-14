@@ -56,6 +56,19 @@ python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py
 
 ## What updates automatically
 
+Actual hosted acceptance at producer `ed0f48d` (collector43641019948) refreshed
+8,585 source-record appearances: AL1,233/CA58/MI770/MN4,279/MT2/NM2,237/NV2/TX4.
+These are not new people or disjoint precincts. The complete source packet's14
+outputs and consumer43641766958's113 runtime outputs freshly replay offline.
+Runtime `ad3a4827` is live through website `05974f91`; actual desktop/mobile
+checks cover all306 reader frames, eight-state county selections, both NM/MN
+native maps and allnine model controls. All178 durable stops and the preceding
+rolling last-good seed survive. Colorado parser capability is retained-original
+acceptance, not fresh retrieval of its stopped workbook URL.
+[Complete hosted outcomes and production acceptance](../data/participation-access/20261114-cross-state-automatic-intake-01/acceptance.json)
+and [full source/runtime downloads](DATA.md#expanded-cross-state-automatic-intake)
+govern this increment; the scope below is not universal county/precinct coverage.
+
 The registry covers every jurisdiction's supplied official-directory disposition.
 Existing parsers refresh provider early/mail and supported demographic feeds,
 the four registered statewide administrative feeds (AL, NC, ND, OR), and House

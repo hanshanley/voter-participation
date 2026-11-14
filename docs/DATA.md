@@ -8,6 +8,46 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Expanded cross-state automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/e9e2544b81f1a67d743a1d1c56881b0d91081fb8/snapshots/f79a8fc1daefd010c3f03a3ef4d7fd7684225aa2d0aa30c568d41cb73b904875/complete-results.zip)
+is **28,174,618 bytes**, SHA256
+`6b6933dc5d577b22751a6c404e6f88315daaa5608aeea01c57623d2d410bf8ab`.
+Its96 members retain all14 complete queries, selected input facts, all51
+jurisdiction decisions, full accepted baselines, code, tests and checksums.
+Actual anonymous download and fresh extraction reproduce every output:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete automatic runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-ad3a4827f6e45be7714ef0ef2935888cb1b77d1f336f5c0623b97817478a50df/complete-analysis.zip)
+is **171,891,898 bytes**, SHA256
+`481c3e76ce6384b135903af5daae16c9e6187be0d879e48eddbb0b1acbaa0504`.
+This server-immutable full archive nests that entire source ZIP and the verified
+preceding rolling seed, complete before/after count/native datasets, allnine
+model cases and every numerical query. Its actual public fresh-extraction replay
+reproduces all113 outputs with zero network requests:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both use Python3.9+ and the existing `requests` dependency. These are full
+permitted numerical downloads, never metadata-only replacements. Publisher
+templates, private respondents/histories/identifiers and fine cells are excluded;
+replay does not re-extract excluded originals, perform OCR or refit surveys.
+The source package's portable workbook tests pass without private originals.
+
+Actual hosted refresh appearances are AL1,233/CA58/MI770/MN4,279/MT2/NM2,237/
+NV2/TX4, not unique people or disjoint geographies. Colorado's stopped source
+is retained, not newly acquired. The active runtime and repaired native maps
+passed no-override desktop/mobile checks, and all178 source stops survive.
+[Complete acceptance](../data/participation-access/20261114-cross-state-automatic-intake-01/acceptance.json)
+and [all51 source decisions](../data/participation-access/20261114-cross-state-automatic-intake-01/observations.json)
+retain the remaining coverage and scientific holds. Every older complete
+download below remains intact.
+
 ## Maine House round source context
 
 The [complete selected-facts numerical SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-maine-house-round-context-20261114-01/complete-analysis.zip)
