@@ -232,7 +232,9 @@ def test_summary_final_edition_rejects_unreviewed_or_mixed_page_status(monkeypat
         native.summary_statistics(header + b"\f" + later, [row], profile)
 
 
-def test_summary_registered_sources_refresh_actual_projection_without_changing_other_states(tmp_path, monkeypatch):
+@pytest.mark.parametrize("legacy_notes", [None, "Earlier report printed 70.0%."])
+def test_summary_registered_sources_refresh_actual_projection_without_changing_other_states(
+        tmp_path, monkeypatch, legacy_notes):
     pdf_reader(monkeypatch)
     before = baseline(("NY",))
     index = json.loads(before["index.json"])
@@ -241,7 +243,10 @@ def test_summary_registered_sources_refresh_actual_projection_without_changing_o
         body, row, profile = summary_fixture(layout)
         body = body.replace(b"REPORT 3", b"FINAL")
         row["view"].update(source_status_literal="REPORT 3", native_printed_pct="70.0%",
-                           notes="Earlier report printed 70.0%.")
+                           quality=["Earlier report printed 70.0%.",
+                                    "Earlier source clock is not the current report clock."])
+        if legacy_notes is not None:
+            row["view"]["notes"] = legacy_notes
         originals[row["view"]["source_url"]] = body
         state = profile["state"]
         name = "states/" + state + ".json.gz"
@@ -267,6 +272,7 @@ def test_summary_registered_sources_refresh_actual_projection_without_changing_o
         assert current["views"] == old["views"]
         assert current["records"][0]["geography"] == old["records"][0]["geography"]
         assert current["records"][0]["id"] == old["records"][0]["id"]
+        assert current["records"][0]["quality"] == old["records"][0]["quality"]
         assert current["records"][0]["count"]["value"] == 9
         assert current["records"][0]["denominator"] is None
         view = current["records"][0]["view"]
@@ -274,9 +280,11 @@ def test_summary_registered_sources_refresh_actual_projection_without_changing_o
         assert view["native_printed_pct"] == ("90.0%" if state == "HI" else "90.00%")
         assert view["reported_pct"] is None
         assert current["records"][0]["source"]["fields"] == view
-        assert view["notes"] == (
-            "Retained earlier-report context (not current report statistics): "
-            "Earlier report printed 70.0%.")
+        prefix = "Retained earlier-report context (not current report statistics): "
+        assert view.get("notes") == (prefix + legacy_notes if legacy_notes is not None else None)
+        assert view["quality"] == [
+            prefix + "Earlier report printed 70.0%.",
+            "Earlier source clock is not the current report clock."]
         if state == "HI":
             assert current["records"][0]["reporting_status"]["literal"] == "FINAL"
         assert current["records"][0]["reporting_status"]["complete"] is None

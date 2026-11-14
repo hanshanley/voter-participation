@@ -552,6 +552,8 @@ def project(baseline, granular):
                     prefix = "Retained earlier-report context (not current report statistics): "
                     if view.get("notes") and not view["notes"].startswith(prefix):
                         view["notes"] = prefix + view["notes"]
+                    if view.get("quality") and not view["quality"][0].startswith(prefix):
+                        view["quality"] = [prefix + view["quality"][0], *view["quality"][1:]]
                 view["source_reporting_label"] = (
                     "Automatic same-source native statistical refresh. Missing reporting stays unknown; "
                     "source counts are not certification or independently observed people. "
