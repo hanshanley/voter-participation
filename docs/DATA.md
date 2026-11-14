@@ -8,6 +8,63 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Tennessee and Montana partial native participation
+
+The current coherent all51 projection is the
+[complete combined Tennessee/Montana numerical SDK](https://github.com/hanshanley/margin_of_error/releases/download/participation-tennessee-williamson-mt-rebase-20261114-02/complete-analysis.zip):
+**11,959,280 bytes**, SHA256
+`5612c21350ffae6f3bfe967bd6d16b86bf54d43ff4998fd2dff665eee9e96ed6`;
+immutable release445327488. Extract into a fresh directory, then run:
+
+```sh
+python3 -Werror code/reproduce.py --package . --output reproduced --seed 137
+```
+
+The native detail links deliberately retain their own frozen source SDKs:
+
+- [Complete original Tennessee Williamson facts, queries and projection](https://github.com/hanshanley/margin_of_error/releases/download/participation-tennessee-williamson-unofficial-20261114-01/complete-analysis.zip):
+  **11,903,212 bytes**, SHA256
+  `09f2e6e4955ca00a58a3de1f46df8ea1ba2daa214b5f92dc53b2a986448dfa04`;
+  immutable release445325984.
+- [Complete repaired Montana Gallatin/Yellowstone facts, queries and projection](https://github.com/hanshanley/margin_of_error/releases/download/participation-montana-gallatin-yellowstone-native-20261114-01/complete-analysis.zip):
+  **11,893,406 bytes**, SHA256
+  `99d7aab341c35cd93dd7c7944aad6315a5fd3db3795b89d8865740476f377574`;
+  immutable release445326040.
+
+For either individual source SDK, the literal extracted command is:
+
+```sh
+python3 -Werror code/reproduce.py --package . --output reproduced --seed 17
+```
+
+CPython >=3.9 standard library is sufficient. Independent reviews, fresh
+offline replays and actual full public-download extractions pass17 combined,
+15 Tennessee and24 Montana tests; each reproduces54 complete count files.
+The individual archives retain their creation-time lineage; the combined ZIP
+is the coherent current successor, not a rewrite of either original SDK.
+Every archive includes complete permitted facts, queries, qualifications,
+compiler/test/replay code and outputs, not metadata-only. Publisher originals,
+media/templates, people/individual histories and private estimators are excluded.
+Replay starts from selected facts, not re-extraction of excluded originals.
+Selected Python API guards are not an OS sandbox or universal interception.
+Self-pins remain external; frozen planned flags are not silently rewritten.
+
+The `official` view adds Williamson105,105 ballots with193,367 contextual
+registrations and57 native reporting rows, Gallatin58,188/99,944 and
+Yellowstone63,982 with unknown denominator/basis/fraction. These are partial,
+unofficial county sources:94 Tennessee and54 Montana county totals remain
+unknown. Tennessee's separate58 reporting counter, seven-ballot/11-registration
+differences and unit5-3's printed55.98 versus arithmetic55.97 remain unrepaired;
+the conflicting analytic fraction is withheld. All native zeros and separate
+source clocks/unknown timezones remain.
+
+Actual desktop/phone production verifies all302 prior provider values, six
+native-county and114 reporting-row values, source/status/unknown/hold semantics,
+no invented map joins and eight full ZIP downloads. All51 interfaces/306 mode
+bindings/current snapshot/Ohio context and436 earlier download pins remain.
+Website95e33a39/catalog518ec401 activates count894d9a68; no statewide total,
+new FIPS/geometry, local allocation or model/House/weight/refit update follows.
+
 ## Kansas Greeley official source turnout
 
 [Complete permitted Greeley facts, numerical queries, all51 projections, collector guards, compiler and tests](https://github.com/hanshanley/margin_of_error/releases/download/participation-kansas-greeley-official-20261114-01/complete-analysis.zip):

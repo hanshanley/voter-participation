@@ -13,6 +13,46 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Tennessee/Montana partial native delivery complete; statewide gaps remain
+
+The coherent successor is live at website95e33a39, catalog518ec401 and count
+version894d9a68. Tennessee adds Williamson's105,105 Ballots Cast - Total and
+57 literal, table-only reporting rows; Montana adds Gallatin58,188 and
+Yellowstone63,982. These are one of95 Tennessee counties and two of56
+Montana counties, not whole-state coverage. The remaining94/54 native county
+totals stay unknown. Source reports are unofficial, and the `official` view
+does not imply certification.
+
+Preserve Tennessee's separate57-block/58-counter mismatch, seven-ballot and
+11-registration differences, unit5-3's held printed fraction, and Yellowstone's
+unknown denominator/basis/fraction. No missing value, map join or statewide
+total is invented. All original provider/early/mail frames, other49 state/DC
+shards, current snapshot, Kentucky references and separate Ohio context remain.
+All113 models, House endpoints, probabilities, fits and weights are unchanged;
+partial county reports are not statewide transition-model controls.
+
+All three full immutable SDKs are public and have actual anonymous-download
+extracted replays: releases445325984/445326040/445327488,15/24/17 tests,
+54 exact outputs each. Actual no-override desktop/phone checks pass302 retained
+provider values, six native-county values,114 reporting-row values and eight
+full ZIP downloads. All51 interfaces/306 bindings/eight state references/
+6,450 early rows and the separate Ohio regression pass. Actual native artifact
+14116712517 fits both unchanged size limits and preserves436 old download pins.
+The nullable-basis renderer crash is fixed; full source/publication records and
+versioned canonical sources preserve independent legacy files and HEAD/indexes.
+See [complete downloads](docs/DATA.md#tennessee-and-montana-partial-native-participation).
+
+Maine's new November12 announcement supplies final major-party counts, but
+not complete final Other/blank/accounting or a qualified statewide common-round
+vector. Its declared CSV returned403 and remains stopped. A bounded complete
+source-context packet has passed independent source/code/package review and
+two fresh offline replays; publication and durable source integration are next,
+not a completed model update. The original source-qualification gaps remain.
+
+Continue genuine all-state/model gaps, then the requested full audit followed
+by understated beautification. Do not equate this bounded delivery with project
+completion or artificially close prerequisites to unlock the final review.
+
 ## Kansas partial official source delivered; nationwide gaps remain
 
 The qualified Greeley observation is live in the `official` view at website

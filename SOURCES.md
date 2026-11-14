@@ -8,6 +8,7 @@ This document is the detailed reference ledger, not the methods introduction.
 
 | Reference area | Jump to |
 |---|---|
+| Current Tennessee/Montana native observations | [Three county reports, 57 table-only reporting rows and complete numerical SDKs](#2026-tennessee-and-montana-partial-native-participation) |
 | Current Kansas official source observation | [Greeley source-reported turnout, explicit partial coverage and complete replay](#2026-kansas-greeley-official-source-turnout) |
 | Mississippi publication hold | [Unverified declaration mapping; accepted-table projection not promoted](#2026-mississippi-absentee-product-authority-hold) |
 | Current Ohio administrative context | [Separate registry-date-token channel, preserved county frames and complete replay](#2026-ohio-separate-current-registry-history-context) |
@@ -72,6 +73,60 @@ This document is the detailed reference ledger, not the methods introduction.
 | Survey definitions and current analyses | [Studies](#surveys-participation-histories-and-vote-choice-evidence), [derived outputs](#current-derived-analyses-and-remaining-reconciliation) |
 | Collection rules and access holds | [Source classes](#status-and-source-classes), [access](#access-methodology-and-paidreference-only-leads), [automation](#automation-contract) |
 | Website acceptance records | [Short Methods and GitHub docs](#website-methods-and-github-documentation), [source-backed navigation](#website-repair-source-backed-navigation-and-precinct-coverage) |
+
+## 2026 Tennessee and Montana partial native participation
+
+The coherent count successor is live at website
+`95e33a39efc115f722d071784eee59108bf57c8d`, catalog
+`518ec40179094c4ee062cda0f2251d405d9e128d`, count version
+`894d9a68adeb53269cce3517b517d80342403431a89e54172995785240e4286b`.
+The `official` view denotes a primary administrative source, not certification.
+These reports remain unofficial; filename/title wording does not override that.
+
+Tennessee's Williamson report supplies105,105 Ballots Cast - Total and193,367
+registered voters, printed54.36%. Native components are31,304 Election Day,
+71,744 early,2,057 absentee and zero provisional. Its county clock is
+11/03/2026 10:06PM; the reporting-row report is10:43PM, both with unknown
+timezone. Preserve57 distinct printed statistics blocks versus the separate
+58-unit reporting counter, seven unallocated ballots and11 registrations
+between county and printed-row sums. Unit5-3 retains2,417 ballots/4,318
+registrations and printed55.98%, while arithmetic rounds55.97%; its analytic
+fraction remains null. Neither the difference nor a missing reporting row is
+reconstructed. Coverage is one of95 counties, with94 native totals unknown.
+
+Montana's Gallatin report supplies58,188 ballots/99,944 registered, printed
+58.22%; Yellowstone supplies63,982 ballots with denominator, denominator
+basis and fraction all unknown. Their separate native Election Summary
+clocks are11/09/2026 07:03PM and04:42PM, respectively, timezone unknown.
+Coverage is two of56 counties;54 native totals and the statewide total remain
+unknown. No candidate-vote sum or inverted percentage fills a missing value.
+
+Three complete immutable SDKs are necessary: original Tennessee
+release445325984, repaired Montana445326040 and coherent combined445327488.
+Each actual public ZIP was fully byte-verified, freshly extracted and executed:
+15,24 and17 tests respectively, with54 exact count files each. Independent
+source/typed/package reviews and fresh replay proofs are retained. Montana's
+collector now fails closed before transport on newly discovered or malformed/
+corrupt/unreadable/oversized stop ledgers. Original held packets and failed
+proofs remain, not overwritten. See [complete downloads](docs/DATA.md#tennessee-and-montana-partial-native-participation).
+
+Actual no-override desktop/phone acceptance checks302 prior provider values,
+six native-county values,114 native reporting-row values and eight full source/
+combined ZIP downloads. All51 interfaces/306 state-mode bindings, eight
+current state references/6,450 early rows and Ohio's separate registry context
+remain exact. Native artifact14116712517 has997,372,464 payload bytes and
+999,966,720 raw tar bytes, both below the unchanged limit; all436 old
+download pins remain. The nullable electorate basis no longer crashes the
+renderer or invents a denominator, native codes are not called row ordinals,
+and adjacent original-source/package links are separated.
+
+All49 other state/DC shards, previous mode frames, current snapshot and native
+reference remain unchanged. No new FIPS/geometry/cross-year match, precinct
+map join, unique-person count or local demographic allocation is qualified.
+All113 models, House endpoints, probabilities, fits and survey weights remain
+unchanged: these partial county reports do not supply a compatible statewide
+joint population frame. Exact new sources are retained in a versioned canonical
+snapshot without replacing the independent legacy renderer, reader or tests.
 
 ## 2026 Kansas Greeley official source turnout
 
