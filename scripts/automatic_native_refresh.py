@@ -316,13 +316,87 @@ def refresh_source_rows(data: Any, before: dict[str, dict[str, Any]],
     return data, changed
 
 
+def refresh_reference(data: dict[str, Any], before_files: dict[str, bytes],
+                      after_files: dict[str, bytes]) -> tuple[dict[str, Any], set[str]]:
+    """Revalidate complete reference observations before rebinding their source shard."""
+    original = copy.deepcopy(data)
+    code, origin = data.get("state_code"), data.get("source_counts", {})
+    review = data.get("review", {})
+    if (data.get("id") != f"precinct/{code}" or not isinstance(origin, dict)
+            or type(origin.get("bytes")) is not int or origin["bytes"] <= 0
+            or not isinstance(origin.get("sha256"), str) or len(origin["sha256"]) != 64
+            or any(char not in "0123456789abcdef" for char in origin["sha256"])
+            or not isinstance(origin.get("source_id"), str) or not origin["source_id"]
+            or type(origin.get("source_rows")) is not int or origin["source_rows"] <= 0
+            or review.get("reviewed") is not True
+            or review.get("scope") != "public_authoritative_reference_context"
+            or review.get("matching") != "exact_literal_only"
+            or review.get("source_observations_preserved") is not True
+            or review.get("legal_election_boundaries_certified") is not False
+            or review.get("rates_approved") is not False):
+        raise ValueError("Unqualified separate reference refresh")
+    declarations, groups = [], []
+    for files in (before_files, after_files):
+        index = read_json("index.json", files["index.json"])
+        declaration = index["states"].get(code, {})
+        name = declaration.get("file")
+        if (name != origin.get("file") or name not in files
+                or pin(files[name]) != {key: declaration.get(key) for key in ("bytes", "sha256")}):
+            raise ValueError("Separate reference canonical source shard differs")
+        records = state_records(files, index, code)
+        groups.append({identity: row for identity, row in records.items()
+                       if row.get("source", {}).get("id") == origin["source_id"]})
+        declarations.append(declaration)
+    old_records, new_records = groups
+    if (len(old_records) != origin["source_rows"] or set(old_records) != set(new_records)
+            or len(data.get("rows", [])) + len(data.get("held_rows", [])) != len(old_records)):
+        raise ValueError("Separate reference source inventory differs")
+    seen, keys = set(), set()
+    for row in data["rows"]:
+        observation = row.get("observation", {})
+        identity = observation.get("id")
+        old, new = old_records.get(identity), new_records.get(identity)
+        properties = row.get("properties")
+        if (old is None or observation != old or identity in seen
+                or observation_identity(old) != observation_identity(new)
+                or row.get("key") != old["geography"]["name"] or row["key"] in keys
+                or row.get("geometry_type") not in ("Polygon", "MultiPolygon")
+                or old["denominator"] is not None or new["denominator"] is not None
+                or not isinstance(properties, dict)
+                or properties.get("key") != row["key"]
+                or properties.get("source_count_observation_id") != identity
+                or properties.get("maps_approved") is not True
+                or properties.get("reference_context_only") is not True
+                or properties.get("legal_election_boundaries_certified") is not False):
+            raise ValueError("Separate reference observation or qualification preimage differs")
+        for key, value in old["view"].items():
+            if key != "maps_approved" and key in properties and properties[key] != value:
+                raise ValueError(f"Separate reference display preimage differs: {identity}:{key}")
+        properties.update({key: copy.deepcopy(value) for key, value in new["view"].items()
+                           if key != "maps_approved"})
+        row["observation"] = copy.deepcopy(new)
+        seen.add(identity)
+        keys.add(row["key"])
+    for held in data["held_rows"]:
+        identity = held.get("observation_id")
+        old, new = old_records.get(identity), new_records.get(identity)
+        if (old is None or identity in seen or held.get("native_label") != old["geography"]["name"]
+                or observation_identity(old) != observation_identity(new)
+                or not isinstance(held.get("reason"), str) or not held["reason"]):
+            raise ValueError("Separate reference held identity or qualification differs")
+        seen.add(identity)
+    if seen != set(old_records):
+        raise ValueError("Separate reference source disposition missing")
+    # Full observation checks also allow repair of a previously stale shard pin.
+    origin.update({key: declarations[1][key] for key in ("file", "bytes", "sha256")})
+    return data, set(new_records) if data != original else set()
+
+
 def refresh(before_count_files: dict[str, bytes], after_count_files: dict[str, bytes],
             native_files: dict[str, bytes]) -> dict[str, bytes]:
     """Return a deterministic native successor with only existing approved count rows refreshed."""
     before, after, changed_states = changed_records(before_count_files, after_count_files)
     output = dict(native_files)
-    if not before:
-        return output
     index = read_json("index.json", native_files["index.json"])
     if index.get("contract") != "participation.native_index.v1" or index.get("year") != 2026:
         raise ValueError("Wrong native binding index contract or election")
@@ -334,14 +408,17 @@ def refresh(before_count_files: dict[str, bytes], after_count_files: dict[str, b
         if not name.startswith(NATIVE_PREFIXES) or not name.endswith(".json.gz"):
             continue
         data = read_json(name, native_files[name])
-        data, embedded = refresh_embedded(
-            data, before, after, compatible, used_compatible)
-        data, source_rows = refresh_source_rows(data, before, after)
-        touched = embedded | source_rows
+        if isinstance(data, dict) and data.get("contract") == "participation.reference_bindings.v1":
+            data, touched = refresh_reference(data, before_count_files, after_count_files)
+        else:
+            data, embedded = refresh_embedded(
+                data, before, after, compatible, used_compatible)
+            data, source_rows = refresh_source_rows(data, before, after)
+            touched = embedded | source_rows
         if touched:
             output[name] = compressed(data)
             changed_files.add(name)
-            refreshed_ids.update(touched)
+            refreshed_ids.update(touched & set(after))
     if not changed_files:
         return output
     for identity in refreshed_ids:

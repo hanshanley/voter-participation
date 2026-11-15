@@ -74,6 +74,21 @@ cd code
 python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_results_json_statistics.py tests/test_results_pdf_boston.py tests/test_results_pdf_periodic.py tests/test_results_pdf_affiliations.py tests/test_results_pdf_jefferson.py tests/test_nationwide.py tests/test_current.py
 ```
 
+## Separate reference/count dependencies
+
+The runtime producer revalidates every mapped observation against its complete
+canonical preimage and preserves every held source identity before updating a
+separate reference layer. It refreshes the exact count-shard byte length/hash
+and all native display fields together; geometry, reference-only map approval,
+held units and withheld rates do not change.
+
+The same complete-observation checks allow repair of stale derived metadata
+when no new count changes arrive. Production testing of runtime `956242c7`
+exposed an old Jefferson shard pin and a missing new source-hash display field;
+the browser correctly rejected that layer. The producer repair passes the
+unchanged browser contract for all 529 mapped and 117 held observations.
+Hosted successor runtime and production acceptance are separate delivery gates.
+
 ## County affiliation and repeated-unit statistical PDFs
 
 The shared collector includes explicit adapters for Oklahoma's 78-page

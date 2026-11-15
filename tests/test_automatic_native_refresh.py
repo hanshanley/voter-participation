@@ -304,3 +304,114 @@ def test_native_statistical_units_refresh_across_distinct_ids_and_wrapped_facts(
     broken[native_name] = compressed(layer)
     with pytest.raises(ValueError, match="vector preimage"):
         refresh(before, after, broken)
+
+
+def reference_fixtures():
+    before, native, state_name, native_name = fixtures()
+    state = read_json(state_name, before[state_name])
+    old = state["records"][0]
+    old["view"]["key"] = old["geography"]["name"]
+    old["view"]["maps_approved"] = False
+    old["source"]["fields"] = copy.deepcopy(old["view"])
+    held = copy.deepcopy(old)
+    held["id"] = "2" * 32
+    held["geography"]["name"] = "HELD"
+    held["view"].update(key="HELD", unit="HELD", unit_key="MN|01|0006")
+    held["view"]["native_record"].update(precinct_id="0006", precinct_name="HELD")
+    held["source"]["fields"] = copy.deepcopy(held["view"])
+    state["records"].append(held)
+    before[state_name] = compressed(state)
+    index = read_json("index.json", before["index.json"])
+    index["states"]["MN"].update(pin(before[state_name]))
+    before["index.json"] = encoded(index)
+    layer = read_json(native_name, native[native_name])
+    layer.update(contract="participation.reference_bindings.v1",
+                 source_counts={**index["states"]["MN"], "source_id": "accepted", "source_rows": 2},
+                 review={"reviewed": True, "scope": "public_authoritative_reference_context",
+                         "matching": "exact_literal_only", "source_observations_preserved": True,
+                         "legal_election_boundaries_certified": False, "rates_approved": False},
+                 held_rows=[{"observation_id": held["id"], "native_label": "HELD",
+                             "reason": "unmapped literal source unit"}])
+    layer["rows"] = [{
+        "key": "AITKIN", "geometry_type": "Polygon", "observation": copy.deepcopy(old),
+        "properties": {**copy.deepcopy(old["view"]), "source_count_observation_id": old["id"],
+                       "maps_approved": True, "reference_context_only": True,
+                       "legal_election_boundaries_certified": False},
+    }]
+    native[native_name] = compressed(layer)
+    return before, native, state_name, native_name
+
+
+@pytest.mark.parametrize("ballots", (0, 929))
+def test_reference_refresh_rebinds_shard_and_complete_view_without_promoting_holds(ballots):
+    before, native, state_name, native_name = reference_fixtures()
+    after = changed(before, state_name)
+    state = read_json(state_name, after[state_name])
+    state["records"][0]["count"].update(value=ballots, literal=ballots)
+    state["records"][0]["view"].update(
+        ballots=ballots, source_sha256="e" * 64, quality=["new native report"])
+    state["records"][0]["view"]["native_record"]["total_number_voted"] = ballots
+    state["records"][0]["source"]["fields"] = copy.deepcopy(state["records"][0]["view"])
+    after[state_name] = compressed(state)
+    index = read_json("index.json", after["index.json"])
+    index["states"]["MN"].update(pin(after[state_name]))
+    after["index.json"] = encoded(index)
+    result = refresh(before, after, native)
+    old, new = read_json(native_name, native[native_name]), read_json(native_name, result[native_name])
+    assert new["source_counts"] == {
+        **index["states"]["MN"], "source_id": "accepted", "source_rows": 2}
+    assert new["rows"][0]["observation"] == state["records"][0]
+    assert new["rows"][0]["properties"]["source_sha256"] == "e" * 64
+    assert new["rows"][0]["properties"]["ballots"] == ballots
+    assert new["rows"][0]["properties"]["quality"] == ["new native report"]
+    assert new["rows"][0]["properties"]["maps_approved"] is True
+    assert new["rows"][0]["observation"]["view"]["maps_approved"] is False
+    assert new["held_rows"] == old["held_rows"]
+    assert new["geometry"] == old["geometry"]
+    assert new["review"] == old["review"]
+    assert refresh(after, after, result) == result
+
+
+def test_reference_pin_refreshes_when_only_a_held_source_observation_changes():
+    before, native, state_name, native_name = reference_fixtures()
+    after = dict(before)
+    state = read_json(state_name, after[state_name])
+    state["records"][1]["count"].update(value=0, literal=0)
+    state["records"][1]["view"]["ballots"] = 0
+    state["records"][1]["source"]["fields"] = copy.deepcopy(state["records"][1]["view"])
+    after[state_name] = compressed(state)
+    index = read_json("index.json", after["index.json"])
+    index["states"]["MN"].update(pin(after[state_name]))
+    after["index.json"] = encoded(index)
+    result = refresh(before, after, native)
+    old, new = read_json(native_name, native[native_name]), read_json(native_name, result[native_name])
+    assert new["source_counts"]["sha256"] == pin(after[state_name])["sha256"]
+    assert new["rows"] == old["rows"] and new["held_rows"] == old["held_rows"]
+
+
+def test_reference_revalidates_and_repairs_stale_pin_without_new_count_changes():
+    before, native, state_name, native_name = reference_fixtures()
+    after = changed(before, state_name)
+    valid = refresh(before, after, native)
+    stale = dict(valid)
+    data = read_json(native_name, valid[native_name])
+    data["source_counts"] = read_json(native_name, native[native_name])["source_counts"]
+    del data["rows"][0]["properties"]["automatic_source_refresh"]
+    stale[native_name] = compressed(data)
+    assert refresh(after, after, stale) == valid
+
+
+@pytest.mark.parametrize("mutate", (
+    lambda data: data["rows"][0]["observation"]["count"].__setitem__("value", 999),
+    lambda data: data["rows"][0]["properties"].__setitem__("ballots", 999),
+    lambda data: data["held_rows"][0].__setitem__("native_label", "Changed"),
+    lambda data: data["source_counts"].__setitem__("source_id", "unreviewed"),
+    lambda data: data["review"].__setitem__("rates_approved", True),
+))
+def test_reference_repair_refuses_corrupt_preimages_and_qualifications(mutate):
+    before, native, _, native_name = reference_fixtures()
+    data = read_json(native_name, native[native_name])
+    mutate(data)
+    native[native_name] = compressed(data)
+    with pytest.raises(ValueError, match="reference"):
+        refresh(before, before, native)
