@@ -8,12 +8,35 @@ nonparticipation and new/returning-voter estimates, then their tested integratio
 into the existing project. Do not stop at an inventory or another audit.
 
 The single assistant continuation runs every **45 minutes**
-(schedule 129; schedules 128, 127, 126, 125, 124, 123, 122 and earlier continuations are stopped).
+(schedule 130; schedules 129, 128, 127, 126, 125, 124, 123, 122 and earlier continuations are stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
-## Verified Greeley delivery; single-main cleanup is the immediate priority
+## Single-main cleanup complete; nationwide source integration remains open
+
+Both repositories now have exactly one branch, **main**: research 42 to one,
+website 119 to one. All 159 extra branches were removed after all original heads
+were preserved in one archive tag per repository. Automatic data now uses the
+same-name `results-data`, `participation-data` and legacy
+`participation-local-data` tags, not branches.
+
+Research `a132ac4b` and website `ca09ebe6` are public and canonically persistent.
+All 67 relevant publisher/collector/runtime tests pass. Two actual live data-tag
+writes passed forward-only exact-head publication without changing any data
+tree, mutable pointer body, immutable snapshot or complete-download URL.
+**Both scheduled data writers are restored and verified active.**
+The publication guard prevents future data updates from recreating branches.
+No scientific refit or repeated Pages build was needed.
+[Acceptance](data/participation-access/20261115-single-main-branch-01/acceptance.json).
+
+Continue the substantive source/frame/boundary gaps, using retained originals
+first. Cole's statistical-grid PDF adapter is the next scoped implementation:
+the native Ballots Cast field is a column, not the row expected by the generic
+parser. Do not repeat accepted Kansas, Boone, Broome or historical campaigns.
+The full project audit and then understated usability polish remain pending.
+
+## Verified Greeley delivery
 
 Kansas's bounded Greeley adapter is delivered: research `a7ff57fa`, actual
 collector **43762978023**, numerical runtime **43765536710** / `b598df77`,
@@ -31,14 +54,8 @@ remain public. Fresh 18,288 refresh appearances across 30 states do not establis
 complete county/precinct coverage. All 186 source stops remain.
 [Acceptance](data/participation-access/20261115-ks-greeley-automatic-01/acceptance.json).
 
-The user's newer priority is exactly one main branch per repository. All old
-heads are preserved in one archive tag per repository; 156 obsolete branches
-have been removed. The three remaining data branches are being migrated to
-forward-only data tags so existing raw URLs and immutable complete packages
-remain intact. Both GitHub data writers are briefly paused for that migration;
-they MUST be re-enabled and verified before declaring cleanup complete.
-Do not begin Cole or repeat accepted scientific campaigns during this work.
-The session TOP plan and single-main SQL tasks hold current migration state.
+The subsequent single-main cleanup above is complete and both GitHub writers
+are active. The session TOP plan and SQL track the remaining nationwide work.
 Nationwide intake, then the full audit, then usability polish remain open.
 
 ## Verified Boone intake and last-good website propagation

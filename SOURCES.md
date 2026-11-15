@@ -6,6 +6,28 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Single-main cleanup and verified automatic data tags
+
+Both repositories now have exactly one branch, **main**. Research went from
+42 branches to one; the website went from 119 to one. All 159 extra branches
+were removed with exact-head leases after preserving every original head in
+one `archive/branch-cleanup-20261115-01` tag per repository.
+
+Research `a132ac4b` and website `ca09ebe6` move automatic data publication to
+the `results-data` and `participation-data` tags; legacy
+`participation-local-data` is also retained as a tag. Existing raw data URLs,
+all immutable snapshot bodies and every complete-download URL stay unchanged.
+The publisher requires forward ancestry and an exact-head lease. Sixty-seven
+tests pass, including real tag updates and stale-writer/rollback rejection.
+Actual live tag writes to both active data stores preserve their entire data
+trees and all three existing pointer bodies.
+
+Both scheduled GitHub writers are re-enabled and API-verified active. No new
+source retrieval, numerical refit or Pages build was required. Protected local
+HEAD/index pairs, unrelated work and canonical source differences remain intact.
+This cleanup does not complete nationwide intake.
+[Acceptance](data/participation-access/20261115-single-main-branch-01/acceptance.json).
+
 ## Verified Greeley automatic intake and current-status display
 
 The actual hosted collector now reads Greeley County's native workbook without
