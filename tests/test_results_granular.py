@@ -61,6 +61,38 @@ def test_native_mn_zeros_unknowns_parent_scope_and_invented_clock_are_separate()
             granular.minnesota(changed, templates)
 
 
+@pytest.mark.parametrize("value", [0, 9, None])
+def test_failed_capture_projects_last_good_count_zero_or_unknown_not_frozen_baseline(value):
+    row = mn_templates()[0]
+    body = gzip.compress(encoded({"records": [row], "views": {
+        "official": {"precincts": [row["id"]]}}}), mtime=0)
+    baseline = {"states/MN.json.gz": body, "index.json": encoded({
+        "states": {"MN": {"file": "states/MN.json.gz", **pin(body)}}})}
+    native_body = (
+        f"MN;01;0001;UNIT;{int(value is not None)};10;0;0;0;0;0;{value or 0}\n").encode()
+    entry = {
+        "status": "reported", "error": None,
+        "data": granular.minnesota(native_body, [row]),
+        "source": {"url": granular.MN_URL, **pin(native_body)},
+        "first_observed_at": "2026-11-14T12:00:00+00:00",
+    }
+    fresh, _ = granular.project(baseline, {"MN-native": entry})
+    held = {**copy.deepcopy(entry), "status": "retained_after_failure", "error": "source_stopped"}
+    retained, changes = granular.project(baseline, {"MN-native": held})
+    assert retained == fresh
+    current = granular.selected_records(retained, "MN")[0]
+    assert current["count"]["value"] == value
+    assert current["source"]["input_sha256"] == entry["source"]["sha256"]
+    assert current["source_clock"]["literal"] is None
+    assert changes[0]["source_status"] == "retained_after_failure"
+    assert held["first_observed_at"] == entry["first_observed_at"]
+    assert held["status"] != "reported" and held["error"] == "source_stopped"
+    newer = copy.deepcopy(entry)
+    newer["data"] = granular.minnesota(b"MN;01;0001;UNIT;1;10;0;0;0;0;0;10\n", [row])
+    advanced, _ = granular.project(baseline, {"MN-native": newer})
+    assert granular.project(advanced, {"MN-native": held}) == (advanced, [])
+
+
 def test_successor_preserves_identity_views_holds_and_previous_bodies():
     templates = mn_templates()
     shard = {"records": templates, "views": {"official": {"counties": [templates[1]["id"]],

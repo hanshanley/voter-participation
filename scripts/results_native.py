@@ -679,6 +679,14 @@ def workbook_statistics(body, templates, profile):
 def pdf_measure(template):
     native = template["view"].get("native_record") or {}
     label = native.get("selected_native_parent_literal") or template["measure"]["literal"]
+    if (not native.get("selected_native_parent_literal") and label == "Ballots Cast"
+            and native.get("native_unit") == "Ballots Cast - Total"):
+        source = template.get("source") or {}
+        if (template["measure"]["kind"] != "ballots_cast"
+                or (source.get("fields") or {}).get("native_unit") != native["native_unit"]
+                or (source.get("selector") or {}).get("native_unit") != native["native_unit"]):
+            return None
+        label = native["native_unit"]
     return label if isinstance(label, str) and label in PDF_MEASURES else None
 
 
@@ -1035,6 +1043,43 @@ def clock_value(literal):
     raise ValueError("Unreviewed native report-clock format")
 
 
+def pdf_split_total_header(lines):
+    matches = []
+    for position, line in enumerate(lines[:-1]):
+        match = re.fullmatch(
+            r"Statistics TOTAL Election Absentee((?: Central [1-9][0-9]*)+)", line)
+        if match and lines[position + 1] == "Day":
+            central = [int(value) for value in re.findall(r"Central ([0-9]+)", match.group(1))]
+            if central != list(range(1, len(central) + 1)):
+                raise ValueError("Native statistical central columns are missing or duplicated")
+            matches.append((2 + len(central), lines[position:position + 2]))
+    if len(matches) > 1:
+        raise ValueError("Ambiguous native statistical column headers")
+    return matches[0] if matches else None
+
+
+def pdf_mapped_parent_context(lines, query):
+    registrations = [match for line in lines for match in [re.fullmatch(
+        r"Registered Voters - Total (" + COUNT_LITERAL + r")", line)] if match]
+    fractions = [match for line in lines for match in [re.fullmatch(
+        r"Voter Turnout - Total ([0-9]+\.[0-9]+%)", line)] if match]
+    statuses = [match for line in lines[:4] for match in [re.fullmatch(
+        r"Summary Results Report (Final Official|Official|Unofficial)", line)] if match]
+    if len(registrations) != 1 or len(fractions) != 1 or len(statuses) != 1:
+        raise ValueError("Mapped native PDF registration, fraction or report status changed")
+    registered = int(registrations[0].group(1).replace(",", ""))
+    fraction = fractions[0].group(1)
+    if registered and (Decimal(query["count"]) * 100 / registered).quantize(
+            Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(fraction[:-1]):
+        raise ValueError("Mapped native PDF printed fraction disagrees with its native counts")
+    query.update(
+        registered=registered, native_registration_line=registrations[0].group(0),
+        native_fraction_literal=fraction, native_report_status_literal=statuses[0].group(1),
+        native_fraction_reconciliation="matched" if registered else "undefined_zero_register",
+        registered_denominator_not_refreshed=True)
+    return registered
+
+
 def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
     if len({(row["geography"]["state_code"], row["geography"]["name"])
             for row in templates}) != 1:
@@ -1106,14 +1151,18 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
                                  + r"(?:\s+[0-9]+\.[0-9]+%)?", line, re.I)
             if match:
                 header = lines[:position]
+                split_header = pdf_split_total_header(header)
                 if any(re.search(r"\b(?:Election\s*Day|Absentee|Early\s*Voting)\b.*\bTOTAL\b",
                                  item, re.I) for item in header):
                     raise ValueError("Native statistical total is not the first count column")
                 single_total = ("total" in label.lower()
                     and re.fullmatch(label_pattern + r"\s+" + COUNT_LITERAL, line, re.I))
-                if not single_total and not any(TOTAL_HEADER.fullmatch(item) for item in header):
+                if (not single_total and split_header is None
+                        and not any(TOTAL_HEADER.fullmatch(item) for item in header)):
                     raise ValueError("Native statistical total column is not explicitly identified")
                 components = match.group(2).split()
+                if split_header is not None and len(components) != split_header[0]:
+                    raise ValueError("Native statistical component columns differ from their header")
                 if components and sum(int(item.replace(",", "")) for item in components) != int(
                         match.group(1).replace(",", "")):
                     raise ValueError("Native statistical ballot components disagree with total")
@@ -1172,15 +1221,66 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
         query["pdf_report_timezone_literal"] = zone.group(0) if zone else None
         if numeric_confidence is not None:
             query["ocr_selected_count_minimum_confidence"] = numeric_confidence
+        native = query
+        rate_compatible = registered is not None
+        mapped_measure = (label == "Ballots Cast - Total"
+            and template["measure"]["literal"] == "Ballots Cast"
+            and not (template["view"].get("native_record") or {}).get(
+                "selected_native_parent_literal"))
+        if mapped_measure:
+            if confidence is not None or denominator is not None:
+                raise ValueError("Mapped native PDF requires text-layer review and an unqualified frame")
+            registered = pdf_mapped_parent_context(lines, query)
+            query["template_measure_literal"] = template["measure"]["literal"]
+            split_header = pdf_split_total_header(lines[:matches[0][0] - 1])
+            if split_header is not None:
+                query["native_statistical_column_header"] = split_header[1]
+            native = {**query, "query": query, "retained_source_context_is_historical": True,
+                      "native_reporting_complete_qualified": False}
+            rate_compatible = False
         queries.append(query)
-        updates.append(change(template, value, query, registered=registered, clock=clock,
-                              rate_compatible=registered is not None))
+        updates.append(change(template, value, native, registered=registered, clock=clock,
+                              rate_compatible=rate_compatible))
     return {"updates": updates, "complete_native_query": queries,
             "geographic_joins_changed": False, "analytical_rates_promoted": False,
             "pdf_report_clock_is_not_certification": True}
 
 
-def pdf_parent_statistics(body, templates):
+def pdf_mapped_prior_guard(result, templates, prior):
+    if (not any("template_measure_literal" in query for query in result["complete_native_query"])
+            or prior is None or prior.get("data") is None):
+        return result
+    expected = {template["id"]: template for template in templates}
+    old = prior["data"]
+    updates = old.get("updates")
+    queries = old.get("complete_native_query")
+    if (not isinstance(updates, list) or not isinstance(queries, list)
+            or len(updates) != len(expected) or len(queries) != len(expected)
+            or {update.get("id") for update in updates} != set(expected)
+            or (prior.get("source") or {}).get("url") not in
+                {template["view"]["source_url"] for template in templates}):
+        raise ValueError("Mapped native PDF last-good source, identity or query scope changed")
+    current = {update["id"]: update for update in result["updates"]}
+    for update in updates:
+        query = (update.get("native") or {}).get("query")
+        template = expected[update["id"]]
+        if (not isinstance(query, dict) or query not in queries
+                or query.get("county") != template["geography"]["name"]
+                or query.get("native_measure_literal") != pdf_measure(template)
+                or query.get("native_scope") != "county_statistical_parent"
+                or query.get("election_date") != "2026-11-03"
+                or update.get("value") != query.get("count")
+                or update.get("registered") != query.get("registered")
+                or update.get("clock") != query.get("pdf_report_clock_literal")):
+            raise ValueError("Mapped native PDF last-good numerical facts are not query-bound")
+        clock = current[update["id"]]["clock"]
+        if update["clock"] and (
+                clock is None or clock_value(clock) < clock_value(update["clock"])):
+            raise ValueError("Mapped native PDF clock rolled back behind its last-good report")
+    return result
+
+
+def pdf_parent_statistics(body, templates, prior=None):
     from pypdf import PdfReader
 
     reader = PdfReader(io.BytesIO(body))
@@ -1188,7 +1288,8 @@ def pdf_parent_statistics(body, templates):
         raise ValueError("Unqualified native statistical PDF")
     page = reader.pages[0].extract_text(extraction_mode="layout")
     if page.strip():
-        return pdf_text_statistics(page, templates, len(reader.pages))
+        result = pdf_text_statistics(page, templates, len(reader.pages))
+        return pdf_mapped_prior_guard(result, templates, prior)
     from scripts.results_pdf_ocr import first_page_views
 
     views = first_page_views(body)
@@ -2011,8 +2112,9 @@ def collect_sources(collector, baseline):
                 def parse(body, templates=templates, profile=SUMMARY_PROFILES[url]):
                     return summary_statistics(body, templates, profile)
             elif source["adapter"] == "reviewed_pdf_county_parent":
-                def parse(body, templates=templates):
-                    return pdf_parent_statistics(body, templates)
+                prior = collector.prior.get(identity)
+                def parse(body, templates=templates, prior=prior):
+                    return pdf_parent_statistics(body, templates, prior=prior)
             elif source["adapter"] == "reviewed_texas_reconciliation_parent":
                 def parse(body, templates=templates):
                     return texas_reconciliation_statistics(body, templates)

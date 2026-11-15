@@ -45,11 +45,26 @@ def selected_records(baseline, state):
     return [row for row in shard["records"] if row["id"] in selected]
 
 
+def native_template_pin(template):
+    required = ("id", "election", "geography", "measure", "denominator",
+                "count", "source_clock", "source")
+    if any(key not in template for key in required) or "value" not in template["count"]:
+        return None
+    source = template["source"]
+    return pin(encoded({
+        **{key: template[key] for key in ("id", "election", "geography", "measure", "denominator")},
+        "count": {key: template["count"][key] for key in ("value", "status")},
+        "source_clock": {key: template["source_clock"].get(key) for key in ("literal", "timezone")},
+        "source": {key: source.get(key) for key in ("id", "url", "classification")},
+    }))
+
+
 def change(template, value, native, *, registered=None, clock=None,
            reported=None, total=None, rate_compatible=False):
     return {"id": template["id"], "value": value, "native": native,
             "registered": registered, "clock": clock, "reported_units": reported,
-            "total_units": total, "rate_compatible": rate_compatible}
+            "total_units": total, "rate_compatible": rate_compatible,
+            "reviewed_template_pin": native_template_pin(template)}
 
 
 def north_carolina(body, templates):
@@ -621,7 +636,8 @@ def project(baseline, granular):
     changed = addition_changes
     by_state = {}
     for key, entry in sorted(granular.items()):
-        if entry.get("status") == "reported" and entry.get("data") is not None:
+        if (entry.get("status") in ("reported", "retained_after_failure")
+                and entry.get("data") is not None):
             by_state.setdefault(key.split("-")[0], []).append(entry)
     for state, entries in by_state.items():
         path = index["states"][state]["file"]
@@ -629,6 +645,15 @@ def project(baseline, granular):
         rows = {row["id"]: row for row in shard["records"]}
         state_changed = False
         for entry in entries:
+            if entry["status"] == "retained_after_failure":
+                updates = entry["data"].get("updates", [])
+                if (not isinstance(entry.get("first_observed_at"), str)
+                        or not entry["first_observed_at"] or not updates
+                        or any(update.get("id") not in rows
+                            or update.get("reviewed_template_pin") is None
+                            or update.get("reviewed_template_pin") != native_template_pin(
+                                rows[update["id"]]) for update in updates)):
+                    continue
             reviewed_source_bridge(entry, rows)
             for update in entry["data"].get("updates", []):
                 old = rows.get(update["id"])

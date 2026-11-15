@@ -12,6 +12,34 @@ The tool publishes data to the separate `results-data` branch. It does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Boone County: reviewed statistical PDF mapping
+
+The shared county-PDF adapter recognizes the native **Ballots Cast - Total**
+label when the accepted observation's native record, source fields and physical
+selector explicitly agree on it. It does not guess aliases from candidate votes.
+The statistical header's wrapped Election Day label and ordered Central columns
+are checked against every ballot component and the printed total.
+
+The current native registration stock, printed fraction, report status and
+unknown-timezone report clock remain available in the complete numerical query.
+These are source context, not newly qualified turnout denominators, certification,
+map joins or cross-year estimates. A missing count is not converted to zero;
+changed roles or inconsistent statistics hold the last-good observation.
+Subsequent captures also reject clocks older than the last-good full query,
+not merely older than the frozen initial observation. Source stops are enforced
+before acquisition. Retained-original regression checks and actual hosted
+collection are separate acceptance steps.
+
+Last-good native updates are projected even when the next capture fails. Their
+original source pin, clock and complete query remain attached; the failure is
+still reported as `retained_after_failure`, not counted as a fresh capture.
+This requires a preserved observation receipt and an exact pin of the accepted
+identity, election, geography, measure, count, denominator, report clock and
+source identity against which the update was parsed. Mutable presentation/query
+metadata is not part of that frame pin. It preserves revised counts,
+true zeroes and unknowns instead of reverting them to the frozen initial count,
+without overwriting an independently advanced baseline with older retained facts.
+
 ## Broome County: automatic contest-scoped report intake
 
 The default collector follows Broome's official results page and its declared

@@ -511,6 +511,138 @@ def test_pdf_total_column_components_and_whitespace_are_checked():
         native.pdf_text_statistics(text + "\nSecond County", [row, other], 1)
 
 
+def mapped_pdf_fixture():
+    before = baseline(("MO", "TX"))
+    shard = json.loads(gzip.decompress(before["states/MO.json.gz"]))
+    row = shard["records"][0]
+    row["measure"].update(kind="ballots_cast", literal="Ballots Cast")
+    row["view"]["native_record"] = {"native_unit": "Ballots Cast - Total"}
+    row["view"]["registered"] = 100
+    row["source"]["fields"] = {"native_unit": "Ballots Cast - Total"}
+    row["source"]["selector"] = {"native_unit": "Ballots Cast - Total"}
+    before["states/MO.json.gz"] = intake.compressed(encoded(shard))
+    index = json.loads(before["index.json"])
+    index["states"]["MO"].update(pin(before["states/MO.json.gz"]))
+    before["index.json"] = encoded(index)
+    text = (
+        "Summary Results Report Final Official\nNovember 3, 2026\nGeneral Election\n"
+        "MO County\nStatistics TOTAL Election Absentee Central 1 Central 2 Central 3 Central 4\n"
+        "Day\nRegistered Voters - Total 100\n"
+        "Ballots Cast - Total 9 4 1 1 1 1 1\nVoter Turnout - Total 9.00%\n"
+        "Election Summary - 11/04/2026 10:00PM")
+    return before, row, text
+
+
+@pytest.mark.parametrize("value", [0, 9])
+def test_mapped_pdf_refreshes_native_context_without_promoting_rates(monkeypatch, value):
+    pdf_reader(monkeypatch)
+    before, row, text = mapped_pdf_fixture()
+    if value == 0:
+        text = text.replace("9 4 1 1 1 1 1", "0 0 0 0 0 0 0").replace("9.00%", "0.00%")
+    result = native.pdf_parent_statistics(text.encode(), [row])
+    entry = {"status": "reported", "data": result,
+             "source": {"url": row["view"]["source_url"], **pin(text.encode())}}
+    after, changes = granular.project(before, {"MO-native": entry})
+    current = granular.selected_records(after, "MO")[0]
+    query = result["complete_native_query"][0]
+    assert current["count"]["value"] == query["count"] == value
+    assert query["native_measure_literal"] == "Ballots Cast - Total"
+    assert query["template_measure_literal"] == "Ballots Cast"
+    assert current["id"] == row["id"] and current["measure"] == row["measure"]
+    assert current["geography"] == row["geography"]
+    assert current["denominator"] is None and current["view"]["reported_pct"] is None
+    assert current["view"]["registered"] == 100
+    assert current["view"]["native_printed_pct"] == f"{value}.00%"
+    assert current["view"]["source_status_literal"] == "Final Official"
+    assert current["reporting_status"]["complete"] is None
+    assert current["source_clock"]["timezone"] is None
+    assert after["states/TX.json.gz"] == before["states/TX.json.gz"]
+    assert len(changes) == 1 and not result["updates"][0]["rate_compatible"]
+    validate(current)
+
+
+@pytest.mark.parametrize("old,new", [
+    ("Central 2", "Central 1"), ("Central 2", "Central 3"), ("\nDay\n", "\nOther\n"),
+    ("TOTAL Election Absentee", "Election Absentee TOTAL"),
+    ("9 4 1 1 1 1 1", "9 4 1 1 1 2"), ("9 4 1 1 1 1 1", "9 4 1 1 1 1 2"),
+    ("9 4 1 1 1 1 1", "- 4 1 1 1 1 1"), ("9.00%", "8.00%"),
+    ("General Election", "Primary Election"), ("November 3, 2026", "November 3, 2024"),
+    ("MO County", "Other County"), ("11/04/2026", "11/02/2026"),
+    ("Ballots Cast - Total", "Candidate Votes"), ("Registered Voters - Total", "Other Register"),
+])
+def test_mapped_pdf_rejects_changed_roles_scope_unknown_count_and_discrepancies(old, new):
+    _, row, text = mapped_pdf_fixture()
+    with pytest.raises(ValueError):
+        native.pdf_text_statistics(text.replace(old, new), [row], 1)
+
+
+@pytest.mark.parametrize("part", ["fields", "selector"])
+def test_mapped_pdf_requires_matching_reviewed_field_and_selector(part):
+    _, row, text = mapped_pdf_fixture()
+    row["source"][part]["native_unit"] = "Candidate Votes"
+    with pytest.raises(ValueError, match="explicit reviewed parent"):
+        native.pdf_text_statistics(text, [row], 1)
+
+
+def test_existing_explicit_pdf_parent_selection_does_not_inherit_the_new_mapping():
+    _, row, text = mapped_pdf_fixture()
+    row["view"]["native_record"]["selected_native_parent_literal"] = "Total Ballots"
+    text = text.replace("Ballots Cast - Total", "Total Ballots")
+    result = native.pdf_text_statistics(text, [row], 1)
+    assert result["updates"][0]["value"] == 9
+    assert result["complete_native_query"][0]["native_measure_literal"] == "Total Ballots"
+    assert "template_measure_literal" not in result["complete_native_query"][0]
+
+
+def test_mapped_pdf_default_collector_holds_last_good_on_rollback_and_source_stop(tmp_path, monkeypatch):
+    pdf_reader(monkeypatch)
+    before, row, text = mapped_pdf_fixture()
+    bodies = {"MO": text.encode(), "TX": pdf_text("TX")}
+    calls = []
+    def acquire(self, url):
+        self.guard(url)
+        calls.append(url)
+        state = url.split("//")[1].split(".")[0].upper()
+        return bodies[state], {"url": url, "origin": "fixture_transport", **pin(bodies[state])}
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    stops = {"urls": [], "prefixes": [], "hosts": []}
+    now = datetime(2026, 11, 15, tzinfo=timezone.utc)
+    first = native.collect_sources(intake.Collector(tmp_path / "first", {}, stops, now), before)
+    identity = next(key for key in first if key.startswith("MO-"))
+    assert first[identity]["status"] == "reported"
+    bodies["MO"] = text.replace("11/04/2026", "11/03/2026").encode()
+    second = native.collect_sources(
+        intake.Collector(tmp_path / "second", first, stops, now), before)
+    assert second[identity]["status"] == "retained_after_failure"
+    assert second[identity]["data"] == first[identity]["data"]
+    assert second[identity]["source"] == first[identity]["source"]
+    assert second[identity]["error"] == "schema_or_source_semantics_changed"
+    first_projection, _ = granular.project(before, first)
+    second_projection, changes = granular.project(before, second)
+    assert second_projection == first_projection
+    assert next(item for item in changes if item["state_code"] == "MO")[
+        "source_status"] == "retained_after_failure"
+    calls.clear()
+    held = {"urls": [row["view"]["source_url"]], "prefixes": [], "hosts": []}
+    third = native.collect_sources(
+        intake.Collector(tmp_path / "third", second, held, now), before)
+    assert third[identity]["error"] == "source_stopped"
+    assert third[identity]["data"] == first[identity]["data"]
+    assert row["view"]["source_url"] not in calls
+    assert granular.project(before, third)[0] == first_projection
+
+
+def test_mapped_pdf_rejects_unbound_last_good_query(monkeypatch):
+    pdf_reader(monkeypatch)
+    _, row, text = mapped_pdf_fixture()
+    result = native.pdf_parent_statistics(text.encode(), [row])
+    prior = {"source": {"url": row["view"]["source_url"], **pin(text.encode())},
+             "data": copy.deepcopy(result)}
+    prior["data"]["complete_native_query"][0]["county"] = "Other County"
+    with pytest.raises(ValueError, match="query-bound"):
+        native.pdf_parent_statistics(text.encode(), [row], prior=prior)
+
+
 def test_ocr_groups_physical_rows_not_reading_order_and_keeps_numeric_confidence():
     from scripts.results_pdf_ocr import physical_lines, vertical_layout
     def box(x, y, width=10):
