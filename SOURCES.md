@@ -6,6 +6,41 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Verified current-source qualification
+
+**The unattended pipeline now checks mixed-source estimate eligibility for
+all 50 states plus D.C.** The added ledger records source population, registration
+frame, election stage and endpoint compatibility before numerical updates.
+It preserves the existing 33 directional House comparisons, 17 held comparisons
+and 34 registered-frame scenarios. Source availability alone does not approve
+new probabilities, survey fits, demographic turnout or local allocation.
+
+Actual scheduled collector 43726706434 supplied source `4175130d`
+at its truthful older producer `e2efb0bd`. Separately reviewed
+estimate engine `85f55ce0` and website workflow
+`66f245c9` produced runtime `a41c1024`
+in hosted job 43740356899. This reuses automatic collection,
+not manual election-result retrieval or a new website build.
+
+The refresh contains **18,285 record appearances across 28 states**, not people
+or complete county/precinct coverage. Montana has one fresh appearance instead
+of two; all last-good Yellowstone records, including 63,982 native ballots and
+their original clocks, remain unchanged. All 51 decisions and 184 URL stops persist.
+
+The complete source/runtime downloads reproduce **14/113 outputs offline**;
+all 113 anonymous runtime bodies and the real preceding rolling seed match.
+Actual desktop/mobile checks pass every 306 reader frames, the full current
+snapshot, nine model controls, 34 scenarios and 51 decisions. Both actual
+screenshots were viewed. Frozen study probabilities, weights, fits, existing
+qualification masks and every other model-query body remain unchanged.
+
+**This is not nationwide precinct completion.** Historical integration and
+genuine access, source-frame, identification and boundary holds remain open.
+Finish substantive prerequisites, then the full audit, then usability polish.
+[Acceptance](data/participation-access/20261115-current-source-qualification-01/acceptance.json),
+[all decisions](data/participation-access/20261115-current-source-qualification-01/observations.json) and
+[both complete downloads](docs/DATA.md#current-source-qualification).
+
 ## Verified NC/UT automatic intake
 
 **Utah now passes actual unattended hosted capture and data-only website delivery for four reviewed county totals**: Cache, Kane, Millard and Piute. The other

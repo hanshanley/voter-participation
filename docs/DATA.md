@@ -8,6 +8,31 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Current-source qualification
+
+The [complete source ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/079b2c577d53a221470621d4f4c5abd2dd9ffd6b/snapshots/4175130dbcd604b34b4208e216bad8d57d2aa6391db7334f8aa927fb218db392/complete-results.zip) contains every permitted
+source fact/query, all 51 decisions, code, tests and fixtures:
+**55,507,757 bytes**, SHA256 `1813657ecec0be138e3e1bb7e57dc66d7a64b58cf25bc10e7cb11a8071a63a1f`.
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-a41c10240bd7ce4c561a80993f3b85d71688adb20cb8d969c0a1db4f6da6b22b/complete-analysis.zip) contains the entire source
+packet, real rolling seed, complete before/after datasets, numerical engine and
+all nine model cases: **201,789,492 bytes**,
+SHA256 `05cf9548676c271cfced1842eb4daac5845a30ba67ccc5a3235bc5d56bebc390`.
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Extract each into a separate fresh directory. Both literal commands pass offline
+with zero requests and 14/113 complete outputs. They reproduce numerical facts,
+not private survey fitting or excluded publisher-document extraction.
+All earlier full downloads remain below.
+[Verified scope](../data/participation-access/20261115-current-source-qualification-01/acceptance.json).
+
 ## NC-UT automatic intake
 
 The [complete source ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/9ddeed61b98ba95e07e62556c3b7e5f279e46414/snapshots/97ce3ef072fc4f14c2c24f1291cb10d030b5d698121cacab0de3762396c918e1/complete-results.zip) is **55,509,808 bytes**,
