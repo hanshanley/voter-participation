@@ -6,6 +6,44 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Current SC refresh and DE/DC access holds
+
+South Carolina's native statewide **2,054,835** participation snapshot now
+passes unattended hosted capture and data-only website delivery. Its complete
+mode query, printed-percentage anomaly, unknown exact registration stock and
+missing count clock remain explicit; publication/certification is not a count clock.
+
+Delaware and D.C. adapters pass full retained-original and revised-input tests,
+but their actual hosted routes are **source-stopped: zero fresh updates**.
+Their last-good count shards and Delaware's visible statewide mirror remain exact;
+D.C. and North Dakota's existing native map bodies also remain exact. Do not retry
+or bypass stopped routes. A runtime repair now propagates future same-identity,
+exact-prior-view statewide updates to the visible counter, including true zero.
+Its controlled revised/zero tests are not new publisher observations.
+
+Source `fc7581a7` / collector 43709515573,
+engine `2e0e2507` / workflow `6cd0fdc4` and
+runtime `7416e6a3` / job 43710775489 are verified.
+The hourly GitHub pipeline, not assistant retrieval, updates qualified counts and
+compatible estimates. This delivery starts **no Pages build** and makes no new
+fit, demographic-turnout, geographic-allocation or map-approval claim.
+Actual granular refresh remains **18,242 record appearances across 26 states**,
+not people or complete local coverage; SC's state-only feed is separate.
+All **51 decisions and 184 URL stops** persist.
+
+Canonical tests pass **438 / nine optional skips**. Full downloads reproduce
+**14 source / 113 runtime outputs offline**; all 113 anonymous runtime bodies and
+the actual preceding rolling seed match. Actual desktop/mobile checks cover all
+306 reader frames, the entire current snapshot, DE/DC/SC counters, 14 existing
+native-map cases and all nine model controls. Representative images were viewed.
+The 33-directional/17-held comparison policy is unchanged.
+
+**Nationwide intake is not finished.** DE/DC, ND, FL/NH and remaining genuine
+source/history/model/boundary gaps remain open before the full audit THEN polish.
+[Acceptance](data/participation-access/20261115-de-dc-sc-automatic-intake-01/acceptance.json),
+[all decisions and source holds](data/participation-access/20261115-de-dc-sc-automatic-intake-01/observations.json) and
+[both complete query-set downloads](docs/DATA.md#de-dc-sc-automatic-intake).
+
 ## Current VA/ND/LA automatic-source delivery
 
 Virginia's 133 reviewed locality parents and Louisiana's newly onboarded

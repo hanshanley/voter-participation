@@ -8,6 +8,32 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## DE-DC-SC automatic intake
+
+The [complete source ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/cde3ee0192e423694151aad44e4e7ad8383b69bc/snapshots/50cd3b48f99f8d5a944b9da1cae357dee480cac2496e62d634e5c7bdeccc70a4/complete-results.zip) is **54,873,583 bytes**,
+SHA256 `e9d9a0316555590fc4a489cfeef73acc70a8c97174dd6ce2bc849e8302b07753`. It includes all permitted source facts,
+all 51 decisions, full native queries, accepted inputs, code, tests and fixtures.
+Extract into a fresh directory:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-7416e6a395cd0d494b69720db4819a852f12b9c16599fb6eb4c67c06f19bd326/complete-analysis.zip) is **201,139,121 bytes**,
+SHA256 `0aca9f4e4f65fbfe8e4a96c6c8cf78ae3ca15ba900ff27abb1f4bc5ee7fd6da6`. It nests the entire source packet and actual rolling
+seed, complete before/after count/native datasets, reviewed engine, nine model
+cases and every numerical query. Extract separately:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both documented commands pass offline: **14/113 outputs**, zero requests.
+These reproduce numerical facts, not private survey fitting or excluded
+publisher-document extraction. DE/DC are source-stopped, not fresh observations.
+All earlier full downloads remain below.
+[Actual scope and acceptance](../data/participation-access/20261115-de-dc-sc-automatic-intake-01/acceptance.json).
+
 ## VA-ND-LA automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/f1f70064863c3237925d86eb27ac9df687ee860b/snapshots/9f6ca43a85017117ff30a2e7ef4f24944eafa96d34012daddc139df78404b04f/complete-results.zip) is **54,838,784 bytes**,
