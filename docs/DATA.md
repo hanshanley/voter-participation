@@ -8,6 +8,35 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Native-JSON automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/151ae3fa6621cfc2dba291d3947ce1999f4e28e7/snapshots/edcbc7d3503cd15e028489e2d827d6a9749e0ae125ceedcce784c2a9956000ae/complete-results.zip) is **37,882,298 bytes**,
+SHA256 `88dd5f7487e04e42d8903b99244a29c1ef16db8ef4091ec92559fcc4e5e85dd0`. It includes all 51 decisions,
+complete permitted facts and original numerical queries, all 14 outputs,
+accepted baselines, adapter code, portable tests and fixtures. Extract fresh:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete automatic runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-ed6113f1e451c78c8eb4138c0f9dc2ca387d716bdddabd83883a5e3edf41bd30/complete-analysis.zip) is **183,405,979 bytes**,
+SHA256 `fc2afcafaa03d4d57b804e9f2d7718506b59913867ec1d6a16c77e842289c090`. It nests the entire source packet and actual prior
+rolling seed, complete before/after count/native datasets, current engine code,
+all nine model cases and every numerical query. Extract into another fresh directory:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both literal commands were verified with zero requests: 14/113 outputs.
+These reproduce full numerical facts, not excluded publisher-document extraction
+or private survey fitting. The reporting reader exposes this current full
+runtime ZIP and the complete current native table alongside both original
+saved-source downloads. Saved AK/HI source rows are not fresh automated intake.
+Every older complete download below remains available.
+[Actual scope and acceptance](../data/participation-access/20261115-native-json-automatic-intake-01/acceptance.json).
+
+
 ## Cass-Dunn automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/d6d05ffffdad82aedfd314a54ac3a1c09b2fc029/snapshots/322f3d426ff4b1ea07de3d77e0d7ab2b6361006bf210b1336a4af48c563f0ddb/complete-results.zip) is **39,642,433 bytes**,

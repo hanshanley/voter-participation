@@ -13,6 +13,48 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Current native JSON automatic intake
+
+Native-source JSON intake and the reporting-table reader are verified through
+collector **43682681316**, producer/engine `25239bca`,
+runtime `ed6113f1` (job 43684173907) and
+frontend `a4ff8b0a` (actual Pages job 43688125297).
+The collector refreshes **14,290 record appearances across 23 states**,
+not unique people, disjoint populations or nationwide local completeness.
+This increment refreshed **1,738 Arizona reporting units across 14 county APIs**
+and **432 Wyoming units**; one additional Montana record refreshed compared
+with the prior run. Arkansas remains source-stopped; Mohave's 25 Arizona
+units remain on a source-schema/semantic hold. Both retain accepted counts and
+their original clocks. All 51 jurisdiction decisions and 179 URL stops persist.
+
+The actual browser's AR/AZ/WY reporting-table rejection is repaired with strict
+source, identity, complete-vector, count, clock and held-rate checks. All seven
+reporting tables (6,660 rows) now load. Alaska's 523 and Hawaii's 496 rows are
+separately keyed, immutable **saved** exports, not new automated collectors.
+Unknowns remain distinct from zeros; pooled, overseas and mode-specific units
+are not residential precinct allocations. No new turnout rate, boundary join,
+source-model refit or certification is inferred.
+
+Maintained 360 and canonical 366 tests pass. The actual complete source packet
+passes 124 portable tests with nine optional original-file skips and reproduces
+all 14 numerical outputs offline. The complete runtime packet reproduces all
+113 outputs offline; all 113 public bodies, nested source and actual preceding
+rolling seed match. Actual no-override desktop/mobile checks cover all 306 count
+frames, all seven tables, current plus original downloads, the preserved
+KY/IN/MA/NM/MN maps and all nine model controls. Reviewed production images are
+hash-bound. The actual Pages payload (994,246,111 bytes) and tar
+(996,843,520 bytes) both remain below 1 GB; all 437 prior complete
+downloads and all unrelated/scope bodies are preserved. Numerical updates
+activate counts/native data/compatible estimates atomically without rebuilding
+Pages; the one-time build here repairs the reader.
+
+**Nationwide county/precinct intake is not finished.** Historical, source,
+model and boundary gaps remain open, before full audit THEN beautification.
+[Acceptance](data/participation-access/20261115-native-json-automatic-intake-01/acceptance.json),
+[all 51 decisions and source holds](data/participation-access/20261115-native-json-automatic-intake-01/observations.json), and
+[both complete query-set downloads](docs/DATA.md#native-json-automatic-intake).
+
+
 ## Current Cass/Dunn automatic intake
 
 Cass County, Indiana and Dunn County, Wisconsin are verified through
