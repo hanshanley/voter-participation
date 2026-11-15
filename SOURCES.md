@@ -6,6 +6,42 @@ Ledger updated: 2026-11-14 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Current statistical PDF automatic-source delivery
+
+Reviewed statistical PDF intake is verified through producer `214ae009`,
+actual collector 43659940796, website workflow `3a28d572` and
+runtime `f548be7f` (job 43660460633).
+The run refreshed **10,999 record appearances across 17 states**, not unique
+people or disjoint geographies. Five newly connected products refresh
+**289 appearances across four states**: Vermont 247 municipalities,
+Somerville one city plus 32 source units, Dover one city plus six wards,
+and the separate Wood and Kanawha county parents.
+
+Native counts, registrations, labels, source pages, physical coordinates,
+clocks and controls equal the independently reviewed retained originals.
+Vermont's sole cross-environment query difference is extraction-local
+block/line/span/character glyph ordinals; both complete query bodies remain.
+Native part totals, parent controls and printed percentages are not added
+together or promoted to new analytical rates. Missing city clocks remain
+unknown; Dover's native 2026 header governs despite its 2025-named file.
+Somerville's above-registration contradictions and all reporting holds remain.
+
+The maintained 187-test and canonical 193-test suites pass, with 23 packaged
+PDF behavior cases. Complete public source/runtime downloads freshly reproduce
+14/113 outputs offline with zero requests; all 113 public runtime bodies match.
+Actual desktop/mobile production checks every PDF appearance, all 306 reader
+frames, every Wisconsin ward, all nine model controls and both NM/MN native
+maps; actual images were inspected. All 51 decisions and 178 durable stops
+survive. No survey fits, weights, boundaries or comparison masks changed.
+This workflow-only consumer pin required no new static Pages build.
+
+[Complete acceptance](data/participation-access/20261114-statistical-pdf-automatic-intake-01/acceptance.json),
+[all jurisdiction decisions](data/participation-access/20261114-statistical-pdf-automatic-intake-01/observations.json) and
+[both complete downloads](docs/DATA.md#statistical-pdf-automatic-intake)
+retain the scope. Nationwide county/precinct completeness is still open;
+the full audit THEN beautification remain pending genuine prerequisites.
+
+
 ## Current statistical HTML automatic-source delivery
 
 Shared statistical HTML intake is verified through producer `a5f9ab2b`,
