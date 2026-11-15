@@ -484,6 +484,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
              "results_json_statistics.py", "automatic_native_refresh.py",
              "results_pdf_periodic.py", "results_pdf_periodic_grids.json",
              "results_pdf_periodic_ocr.py", "results_pdf_periodic_sussex.json",
+             "results_pdf_affiliations.py", "results_pdf_jefferson.py",
              "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
             "nationwide.py", "current.py", "download.py",
             "precinct_source_batch.py", "house_clerk_endpoints.py",
@@ -496,12 +497,15 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                  "test_results_native_workbooks.py",
                  "test_results_pdf_tables.py", "test_results_pdf_boston.py",
                  "test_results_json_statistics.py", "test_results_pdf_periodic.py",
+                 "test_results_pdf_affiliations.py", "test_results_pdf_jefferson.py",
                  "test_automatic_native_refresh.py",
                  "test_nationwide.py", "test_current.py"):
         package_members["code/tests/" + name] = (ROOT / "tests" / name).read_bytes()
     for name in ("complete-products.json.gz", "sussex-ocr-views.json.gz"):
         package_members["code/tests/fixtures/results_pdf_periodic/" + name] = (
             ROOT / "tests/fixtures/results_pdf_periodic" / name).read_bytes()
+    name = "tests/fixtures/results_pdf_jefferson/complete-pages.json.gz"
+    package_members["code/" + name] = (ROOT / name).read_bytes()
     version = digest(encoded({"inputs": inputs, "baseline": config["baseline"],
                               "outputs": {name: pin(body) for name, body in outputs.items()},
                               "code": {name: pin(body) for name, body in package_members.items()

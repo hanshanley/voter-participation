@@ -71,8 +71,32 @@ sources or rerunning private survey fits. Optional packaged tests use `pytest`:
 
 ```sh
 cd code
-python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_results_json_statistics.py tests/test_results_pdf_boston.py tests/test_results_pdf_periodic.py tests/test_nationwide.py tests/test_current.py
+python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_results_json_statistics.py tests/test_results_pdf_boston.py tests/test_results_pdf_periodic.py tests/test_results_pdf_affiliations.py tests/test_results_pdf_jefferson.py tests/test_nationwide.py tests/test_current.py
 ```
+
+## County affiliation and repeated-unit statistical PDFs
+
+The shared collector includes explicit adapters for Oklahoma's 78-page
+Absentee In-person Totals by Affiliation report and Jefferson County, Kentucky's
+4,773-page general-election precinct report. Source planning retains all 77
+accepted Oklahoma county templates and all 646 accepted Jefferson reporting
+units. These are parser capabilities; hosted/live delivery requires its own
+acceptance record.
+
+Oklahoma updates only the existing in-person-early observations. Its separate
+printed state total is an accounting control, not a new statewide observation.
+Absent affiliation cells remain unknown; a printed zero remains zero.
+Affiliation is administrative accounting, not candidate choice. County codes
+are native identifiers, not declared FIPS, and no new denominator is supplied.
+
+Jefferson checks every repeated page's election, literal unit and report clock,
+and reads statistics only from the first page of each contiguous unit group.
+All 60 suffix labels and 19 native zero totals remain literal. The separate
+county-summary observation is not reconstructed from unit sums, and native
+Mail is not relabeled returned envelopes. Reporting 646 of 646 is not
+certification. Neither adapter adds geometry, rates or behavioral model fits.
+Changed inventories, ambiguous statistics or regressed clocks retain last-good
+observations. Complete queries, code, tests and safe fixtures remain in the ZIP.
 
 ## Indiana, Boston and New Jersey statistical adapters
 

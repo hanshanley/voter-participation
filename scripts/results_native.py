@@ -22,6 +22,12 @@ from scripts.results_pdf_periodic import (
     statistics as nj_periodic_pdf_statistics,
 )
 from scripts.results_json_statistics import PROFILES as JSON_STATISTICS_PROFILES, statistics as json_statistics
+from scripts.results_pdf_affiliations import (
+    PROFILES as AFFILIATION_PDF_PROFILES, statistics as affiliation_pdf_statistics,
+)
+from scripts.results_pdf_jefferson import (
+    PROFILES as JEFFERSON_PDF_PROFILES, statistics as jefferson_pdf_statistics,
+)
 
 
 CA_URL = "https://media.sos.ca.gov/media/status_GG.json"
@@ -1780,6 +1786,8 @@ def source_plan(baseline):
             pdf_profile = PDF_STATISTICS_PROFILES.get(url)
             nj_periodic_profile = NJ_PERIODIC_PDF_PROFILES.get(url)
             json_profile = JSON_STATISTICS_PROFILES.get(url)
+            affiliation_profile = AFFILIATION_PDF_PROFILES.get(url)
+            jefferson_profile = JEFFERSON_PDF_PROFILES.get(url)
             native = view.get("native_record") or {}
             if summary_profile and state == summary_profile["state"]:
                 adapter = "reviewed_summary_statistics"
@@ -1802,6 +1810,10 @@ def source_plan(baseline):
                 adapter = "reviewed_statistical_json"
             elif nj_periodic_profile and state == nj_periodic_profile["state"]:
                 adapter = "reviewed_nj_periodic_pdf"
+            elif affiliation_profile and state == affiliation_profile["state"]:
+                adapter = "reviewed_county_affiliation_pdf"
+            elif jefferson_profile and state == jefferson_profile["state"]:
+                adapter = "reviewed_jefferson_precinct_pdf"
             elif pdf_profile and state == pdf_profile["state"]:
                 adapter = "reviewed_statistical_pdf"
             elif texas_reconciliation_role(template):
@@ -1868,6 +1880,12 @@ def collect_sources(collector, baseline):
             elif source["adapter"] == "reviewed_nj_periodic_pdf":
                 def parse(body, templates=templates, url=url):
                     return nj_periodic_pdf_statistics(body, templates, url)
+            elif source["adapter"] == "reviewed_county_affiliation_pdf":
+                def parse(body, templates=templates, url=url):
+                    return affiliation_pdf_statistics(body, templates, url)
+            elif source["adapter"] == "reviewed_jefferson_precinct_pdf":
+                def parse(body, templates=templates, url=url):
+                    return jefferson_pdf_statistics(body, templates, url)
             else:
                 def parse(body, url=url):
                     return {"updates": [], "factual_product": factual_tables(body, url),
