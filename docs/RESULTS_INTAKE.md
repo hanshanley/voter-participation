@@ -20,6 +20,26 @@ checksums. Download `complete-results.zip` using that inventory. Branch history
 retains previous snapshots; 30-day Actions artifacts are an additional convenience,
 not the only copy.
 
+Published collector state uses a checksum-bound gzip/base64 JSON envelope so
+complete retained facts do not exceed Git's per-file limit. Decoding is bounded
+and verified before reuse; older uncompressed states remain readable. This is
+lossless storage, not a smaller query set or a changed runtime size limit.
+
+If collection succeeded but publication failed, recover the completed Actions
+packet without requesting the sources again:
+
+```sh
+gh workflow run election-night.yml --repo hanshanley/voter-participation --ref main \
+  -f reuse_collection_run=COMPLETED_RUN_ID
+```
+
+Recovery requires a completed collector run with successful source collection.
+It verifies every packet member, the original report and version, reproduces
+every numerical query, and refuses to discard any current durable access stop.
+It also refuses to roll back a newer published collection.
+The original packet, queries, source clocks and failed-run evidence are retained.
+The recovery run's status does not change the original failed run's conclusion.
+
 The download contains all 14 complete numerical queries, selected source facts,
 all 51 accepted jurisdiction shards and their complete baseline, source
 qualifications, processing code, tests and checksums. It excludes respondent/voter

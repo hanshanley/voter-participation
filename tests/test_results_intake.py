@@ -293,6 +293,12 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(tmp_path
     result = intake.publish(repo, "results-data", "fixture/results", work)
     assert result["status"] == "published"
     assert result["version"] == report["version"]
+    published = json.loads(subprocess.check_output(
+        ["git", "-C", str(repo), "show", result["data_commit"] + ":state.json"]))
+    assert published["contract"] == intake.STATE_CONTRACT
+    assert intake.unpack_state(published) == intake.read(work / "state.json")
+    _, restored = intake.publisher_state(repo, "results-data", "fixture/results", tmp_path / "next")
+    assert restored == intake.read(work / "state.json")
     assert subprocess.check_output(["git", "-C", str(repo), "symbolic-ref", "HEAD"]).strip() == b"refs/heads/main"
     intake.write(work / "publication-parent.json", {"parent": result["data_commit"]})
     assert intake.publish(repo, "results-data", "fixture/results", work)["status"] == "unchanged"
@@ -306,3 +312,63 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(tmp_path
     assert json.loads(subprocess.check_output(["git", "-C", str(repo), "show", head + ":latest.json"]))["version"] == report["version"]
     assert "https://example.test/stopped" in json.loads(
         subprocess.check_output(["git", "-C", str(repo), "show", head + ":state.json"]))["source_stops"]["urls"]
+    interrupted = intake.unpack_state(json.loads(subprocess.check_output(
+        ["git", "-C", str(repo), "show", head + ":state.json"])))
+    assert interrupted["feeds"] == restored["feeds"]
+
+
+def test_complete_state_storage_preserves_legacy_unknown_zero_and_full_native_facts(monkeypatch):
+    state = {"source_stops": EMPTY_STOPS,
+             "feeds": {"zero": {"data": {"count": 0, "native": ["literal", None, 17]}},
+                       "unknown": {"data": {"count": None, "clock": None}}},
+             "facts": "complete numerical cells " * 1000}
+    envelope = json.loads(intake.pack_state(state))
+    assert len(intake.pack_state(state)) < len(encoded(state))
+    assert intake.unpack_state(envelope) == state
+    assert intake.unpack_state(copy.deepcopy(state)) == state
+    mutations = [
+        {**envelope, "contract": "unrecognized"},
+        {**envelope, "decoded": {**envelope["decoded"], "sha256": "0" * 64}},
+        {**envelope, "decoded": {**envelope["decoded"], "bytes": 1}},
+        {**envelope, "gzip_base64": "!invalid"},
+        {**envelope, "source_stops": {**EMPTY_STOPS, "hosts": ["stopped.test"]}},
+    ]
+    for changed in mutations:
+        with pytest.raises((ValueError, EOFError, OSError)):
+            intake.unpack_state(changed)
+    monkeypatch.setattr(intake, "MAX_STATE_BYTES", 10)
+    with pytest.raises(ValueError, match="size"):
+        intake.unpack_state(envelope)
+
+
+def test_completed_collection_restores_without_transport_and_rejects_lost_stops(tmp_path, monkeypatch):
+    registry = fixture(tmp_path)
+    monkeypatch.setattr(intake.Collector, "acquire", unavailable)
+    original = tmp_path / "original"
+    report = intake.collect(registry, original, now=NOW)
+    def forbidden(*args, **kwargs):
+        raise AssertionError("Recovery must never acquire a source")
+    monkeypatch.setattr(intake.Collector, "acquire", forbidden)
+    packet, report_path = original / "complete-results.zip", original / "report.json"
+    with pytest.raises(ValueError, match="refusing recovery rollback"):
+        intake.restore(packet, report_path, tmp_path / "older",
+                       latest={"checked_at": NOW.replace(hour=1).isoformat()})
+    assert not (tmp_path / "older").exists()
+    lost_stop = {"source_stops": {**EMPTY_STOPS, "hosts": ["new-stop.test"]}}
+    with pytest.raises(ValueError, match="drop current durable"):
+        intake.restore(packet, report_path, tmp_path / "rejected", lost_stop)
+    assert not (tmp_path / "rejected").exists()
+    destination = tmp_path / "restored"
+    result = intake.restore(packet, report_path, destination)
+    assert result["network_requests"] == 0 and result["original_packet_and_queries_unchanged"]
+    assert result["version"] == report["version"]
+    for name in (*report["files"], "state.json", "report.json", "source-stops.json"):
+        assert (destination / name).read_bytes() == (original / name).read_bytes()
+    with pytest.raises(ValueError, match="fresh publication"):
+        intake.restore(packet, report_path, destination)
+    changed = {**report, "files": {**report["files"],
+               "complete-results.zip": {**report["files"]["complete-results.zip"], "sha256": "0" * 64}}}
+    intake.write(tmp_path / "changed-report.json", changed)
+    with pytest.raises(ValueError, match="Changed or unvalidated"):
+        intake.restore(packet, tmp_path / "changed-report.json", tmp_path / "changed")
+    assert not (tmp_path / "changed").exists()

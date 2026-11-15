@@ -1,6 +1,7 @@
 """Refresh reviewed election feeds; preserve independent results and durable access holds."""
 
 import argparse
+import base64
 from concurrent.futures import ThreadPoolExecutor
 import copy
 import csv
@@ -10,6 +11,8 @@ import io
 import json
 from pathlib import Path, PurePosixPath
 import re
+import shutil
+import tempfile
 import threading
 from urllib.parse import unquote, urlsplit, urlunsplit
 import zipfile
@@ -29,6 +32,8 @@ from scripts import results_granular
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = "participation.automatic_results_registry.v1"
+STATE_CONTRACT = "participation.automatic_results_compressed_state.v1"
+MAX_STATE_BYTES = 300_000_000
 CHALLENGES = [r"verify (?:that )?you are human", r"cf-chl-",
               r"incapsula incident id", r"captcha challenge"]
 
@@ -557,13 +562,107 @@ def replay(package, output):
     return {"passed": True, "complete_outputs": len(outputs), "network_requests": 0}
 
 
+def pack_state(state):
+    body = encoded(state)
+    if len(body) > MAX_STATE_BYTES:
+        raise ValueError("Complete collector state exceeds the size guard")
+    return encoded({"contract": STATE_CONTRACT, "source_stops": stops(state["source_stops"]),
+                    "decoded": pin(body),
+                    "gzip_base64": base64.b64encode(compressed(body)).decode("ascii")})
+
+
+def unpack_state(value):
+    if not isinstance(value, dict):
+        raise ValueError("Malformed complete collector state")
+    if "contract" not in value:
+        stops(value["source_stops"])
+        return value
+    if (value.get("contract") != STATE_CONTRACT
+            or set(value) != {"contract", "source_stops", "decoded", "gzip_base64"}):
+        raise ValueError("Unknown compressed collector state contract")
+    expected = value["decoded"]
+    if (not isinstance(expected, dict) or set(expected) != {"bytes", "sha256"}
+            or type(expected["bytes"]) is not int
+            or not 0 < expected["bytes"] <= MAX_STATE_BYTES):
+        raise ValueError("Invalid complete collector state size")
+    body = base64.b64decode(value["gzip_base64"], validate=True)
+    with gzip.GzipFile(fileobj=io.BytesIO(body)) as stream:
+        decoded = stream.read(expected["bytes"] + 1)
+    if pin(decoded) != expected:
+        raise ValueError("Changed complete collector state")
+    state = json.loads(decoded)
+    if (not isinstance(state, dict)
+            or stops(state["source_stops"]) != stops(value["source_stops"])):
+        raise ValueError("Changed durable stops in complete collector state")
+    return state
+
+
+def restore(package, report_path, work, previous=None, latest=None):
+    package, report_path, work = Path(package), Path(report_path), Path(work)
+    if any((work / name).exists() for name in ("report.json", "state.json", "complete-results.zip")):
+        raise ValueError("Recovery needs fresh publication outputs")
+    report_body = report_path.read_bytes()
+    report = json.loads(report_body)
+    if (report.get("passed") is not True or report.get("jurisdictions") != 51
+            or pin(package.read_bytes()) != report["files"]["complete-results.zip"]):
+        raise ValueError("Changed or unvalidated completed collection")
+    if latest and datetime.fromisoformat(latest["checked_at"]) > datetime.fromisoformat(report["checked_at"]):
+        raise ValueError("A newer collection is already published; refusing recovery rollback")
+    with tempfile.TemporaryDirectory(prefix="election-results-recovery-") as directory:
+        root = Path(directory)
+        with zipfile.ZipFile(package) as archive:
+            names = archive.namelist()
+            if (len(names) != len(set(names))
+                    or sum(item.file_size for item in archive.infolist()) > MAX_STATE_BYTES):
+                raise ValueError("Invalid complete recovery packet inventory or size")
+            manifest = json.loads(archive.read("checksums.json"))
+            if set(names) != set(manifest) | {"checksums.json"}:
+                raise ValueError("Incomplete recovery packet inventory")
+            for name in names:
+                path = root / str(relative(name))
+                body = archive.read(name)
+                if name != "checksums.json" and pin(body) != manifest[name]:
+                    raise ValueError("Changed recovery packet member: " + name)
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(body)
+        result = replay(root, root / "reproduced")
+        query_names = {name.removeprefix("queries/") for name in manifest if name.startswith("queries/")}
+        if set(report["files"]) != query_names | {"complete-results.zip"}:
+            raise ValueError("Incomplete completed collection report")
+        for name in query_names:
+            if pin((root / "queries" / name).read_bytes()) != report["files"][name]:
+                raise ValueError("Changed completed collection query")
+        state = read(root / "inputs/selected-source-facts.json")
+        config = read(root / "inputs/registry.json")
+        version = digest(encoded({
+            "inputs": state, "baseline": config["baseline"],
+            "outputs": {name: report["files"][name] for name in query_names},
+            "code": {name: value for name, value in manifest.items()
+                     if name.startswith("code/") and name != "code/reproduce.py"}}))
+        if version != report["version"]:
+            raise ValueError("Changed completed collection version")
+        stopped = stops(state["source_stops"])
+        if previous and merge_stops(stopped, previous["source_stops"]) != stopped:
+            raise ValueError("Completed packet would drop current durable access stops")
+        work.mkdir(parents=True, exist_ok=True)
+        for name in query_names:
+            shutil.copyfile(root / "queries" / name, work / name)
+        shutil.copyfile(package, work / "complete-results.zip")
+        shutil.copyfile(root / "inputs/selected-source-facts.json", work / "state.json")
+        (work / "report.json").write_bytes(report_body)
+        write(work / "source-stops.json", stopped)
+    return {**result, "version": version, "original_report": pin(report_body),
+            "complete_packet": report["files"]["complete-results.zip"],
+            "original_packet_and_queries_unchanged": True}
+
+
 def publisher_state(repository, ref, github_repository, work):
     publisher = GitPublisher(repository, ref=ref, github_repository=github_repository)
     parent = publisher.remote_head()
     if parent:
         publisher.git("fetch", "--no-tags", "--depth=1", "--filter=blob:none",
                       publisher.remote, "refs/heads/" + ref)
-        prior = json.loads(publisher.git("show", parent + ":state.json"))
+        prior = unpack_state(json.loads(publisher.git("show", parent + ":state.json")))
     else:
         prior = {}
     write(Path(work) / "publication-parent.json", {"parent": parent})
@@ -579,11 +678,11 @@ def publish(repository, ref, github_repository, work):
     if not report_path.exists():
         bodies = {"source-stops.json": encoded(stopped)}
         if parent:
-            prior = json.loads(publisher.git("show", parent + ":state.json"))
+            prior = unpack_state(json.loads(publisher.git("show", parent + ":state.json")))
             prior["source_stops"] = merge_stops(prior["source_stops"], stopped)
-            bodies["state.json"] = encoded(prior)
+            bodies["state.json"] = pack_state(prior)
         else:
-            bodies["state.json"] = encoded({"source_stops": stopped})
+            bodies["state.json"] = pack_state({"source_stops": stopped})
         commit = publisher.commit(publisher.tree(parent, bodies), parent,
                                   "Preserve election source access holds after interrupted intake")
         publisher.promote(commit, parent)
@@ -602,7 +701,8 @@ def publish(repository, ref, github_repository, work):
         if pin(body) != expected:
             raise ValueError("Changed validated publication output")
         bodies[prefix + name] = body
-    bodies.update({"state.json": (work / "state.json").read_bytes(),
+    state_body = pack_state(read(work / "state.json"))
+    bodies.update({"state.json": state_body,
                    "source-stops.json": encoded(stopped)})
     staged = publisher.commit(publisher.tree(parent, bodies), parent,
                               "Preserve validated complete election results " + report["version"][:12])
@@ -612,7 +712,7 @@ def publish(repository, ref, github_repository, work):
               "checked_at": report["checked_at"], "results_commit": staged,
               "base_url": f"https://raw.githubusercontent.com/{github_repository}/{staged}/{prefix}",
               "files": report["files"], "all_states_certified": False}
-    promoted_bodies = {"latest.json": encoded(latest), "state.json": (work / "state.json").read_bytes(),
+    promoted_bodies = {"latest.json": encoded(latest), "state.json": state_body,
                        "source-stops.json": encoded(stopped)}
     promoted = publisher.commit(publisher.tree(staged, promoted_bodies), staged,
                                 "Activate current validated election results and persistent source states")
@@ -640,12 +740,24 @@ def main():
     reproduce = commands.add_parser("replay")
     reproduce.add_argument("--package", type=Path, required=True)
     reproduce.add_argument("--output", type=Path, required=True)
+    recover = commands.add_parser("restore")
+    recover.add_argument("--package", type=Path, required=True)
+    recover.add_argument("--report", type=Path, required=True)
+    recover.add_argument("--work-dir", type=Path, required=True)
+    recover.add_argument("--repository", type=Path, default=ROOT)
+    recover.add_argument("--ref", default="results-data")
+    recover.add_argument("--github-repository", default="hanshanley/voter-participation")
     args = parser.parse_args()
     if args.command == "collect":
         _, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
         result = collect(args.registry, args.work_dir, previous, offline=args.offline)
     elif args.command == "publish":
         result = publish(args.repository, args.ref, args.github_repository, args.work_dir)
+    elif args.command == "restore":
+        publisher, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
+        parent = read(args.work_dir / "publication-parent.json")["parent"]
+        latest = json.loads(publisher.git("show", parent + ":latest.json", check=False) or "{}") if parent else {}
+        result = restore(args.package, args.report, args.work_dir, previous, latest)
     else:
         result = replay(args.package, args.output)
     print(json.dumps(result, sort_keys=True))
