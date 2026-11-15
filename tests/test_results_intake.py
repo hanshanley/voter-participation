@@ -391,6 +391,38 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(tmp_path
     interrupted = intake.unpack_state(json.loads(subprocess.check_output(
         ["git", "-C", str(repo), "show", head + ":state.json"])))
     assert interrupted["feeds"] == restored["feeds"]
+    assert subprocess.check_output(
+        ["git", "-C", str(repo), "ls-remote", "--heads", "origin"]) == b""
+    assert subprocess.check_output(
+        ["git", "-C", str(repo), "ls-remote", "--tags", "origin", "refs/tags/results-data"]
+    ).decode().split()[0] == head
+
+
+def test_data_tag_updates_preserve_main_and_reject_stale_or_backward_publication(tmp_path):
+    repo, remote = tmp_path / "repository", tmp_path / "remote.git"
+    subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)
+    subprocess.run(["git", "init", "-b", "main", str(repo)], check=True, capture_output=True)
+    subprocess.run(["git", "-C", str(repo), "remote", "add", "origin", str(remote)], check=True)
+    code = GitPublisher(repo, ref="main")
+    main = code.commit(code.tree(None, {"README": b"Retained website source\n"}), None, "Source")
+    code.promote(main, None)
+    data = GitPublisher(repo)
+    first = data.commit(data.tree(None, {"catalog.json": b'{"value":0}\n'}), None, "First data")
+    data.promote(first, None)
+    data.fetch_parent(first)
+    second = data.commit(
+        data.tree(first, {"catalog.json": b'{"value":1}\n'}), first, "Next data")
+    data.promote(second, first)
+    assert data.remote_head() == second
+    with pytest.raises(IntakeError, match="advanced"):
+        data.promote(first, first)
+    with pytest.raises(IntakeError, match="discarding history"):
+        data.promote(first, second)
+    assert data.remote_head() == second
+    assert code.remote_head() == main
+    assert subprocess.check_output(
+        ["git", "-C", str(repo), "ls-remote", "--heads", "origin"]
+    ).decode().splitlines() == [main + "\trefs/heads/main"]
 
 
 

@@ -905,7 +905,7 @@ def publisher_state(repository, ref, github_repository, work):
     parent = publisher.remote_head()
     if parent:
         publisher.git("fetch", "--no-tags", "--depth=1", "--filter=blob:none",
-                      publisher.remote, "refs/heads/" + ref)
+                      publisher.remote, publisher.ref_path)
         prior = unpack_state(json.loads(publisher.git("show", parent + ":state.json")))
     else:
         prior = {}

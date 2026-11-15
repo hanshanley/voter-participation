@@ -8,7 +8,14 @@ manually from Actions, including outside that election window:
 gh workflow run election-night.yml --repo hanshanley/voter-participation --ref main
 ```
 
-The tool publishes data to the separate `results-data` branch. It does not
+The tool publishes data through the `results-data` tag. The website runtime
+likewise uses the `participation-data` tag; `main` is the only code branch.
+Existing raw data URLs and immutable snapshot/download URLs remain unchanged.
+Data tags advance with an exact-head lease and an ancestry check, so a stale
+writer or rollback cannot discard published history. Do not recreate data,
+feature, diagnostic or source-publication branches.
+
+The tool does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 

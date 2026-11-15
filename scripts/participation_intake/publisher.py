@@ -50,6 +50,7 @@ class GitPublisher:
                  github_repository="hanshanley/margin_of_error"):
         self.repository = Path(repository)
         self.remote, self.ref, self.github_repository = remote, ref, github_repository
+        self.ref_path = ("refs/heads/" if ref == "main" else "refs/tags/") + ref
 
     def git(self, *args, body=None, env=None, check=True):
         return subprocess.run(["git", "-C", str(self.repository), *args],
@@ -57,7 +58,7 @@ class GitPublisher:
             env=env, check=check).stdout.decode().strip()
 
     def remote_head(self):
-        output = self.git("ls-remote", self.remote, "refs/heads/" + self.ref)
+        output = self.git("ls-remote", self.remote, self.ref_path)
         return output.split()[0] if output else None
 
     def tree(self, parent, files):
@@ -82,11 +83,20 @@ class GitPublisher:
     def promote(self, commit, expected):
         if self.remote_head() != expected:
             raise IntakeError("publication_conflict", "Data catalog advanced; staged bytes are retained without overwriting it")
-        self.git("push", self.remote, commit + ":refs/heads/" + self.ref)
+        if expected:
+            try:
+                self.git("merge-base", "--is-ancestor", expected, commit)
+            except subprocess.CalledProcessError:
+                raise IntakeError("publication_conflict", "Publication refs must advance without discarding history") from None
+        args = ["push"]
+        if self.ref_path.startswith("refs/tags/"):
+            # Git requires an explicit tag update; the lease and ancestry check prevent rollback.
+            args.append("--force-with-lease=" + self.ref_path + ":" + (expected or ""))
+        self.git(*args, self.remote, commit + ":" + self.ref_path)
 
     def fetch_parent(self, parent):
         if parent:
-            self.git("fetch", "--no-tags", self.remote, "refs/heads/" + self.ref)
+            self.git("fetch", "--no-tags", self.remote, self.ref_path)
 
     def catalog(self, parent):
         if not parent:
