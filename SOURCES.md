@@ -6,6 +6,39 @@ Ledger updated: 2026-11-14 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Current statistical HTML automatic-source delivery
+
+Shared statistical HTML intake is verified through producer `a5f9ab2b`,
+actual collector 43653231307, website workflow `e254d8f4` and
+runtime `508a79e0` (job 43653666760).
+The run refreshed 10,710 record appearances across
+14 states, not unique people or disjoint geographies.
+
+Clark County retains both accepted appearances of its native turnout parent;
+Jefferson County supplies one parent and all 32 literal ward groups, including
+the true zero/zero row; Monongalia County retains its separate complete/partial
+reporting counters. The Wisconsin 32/32 counter is not all-machine completeness,
+and literal Official Results does not cancel the native unfinished-canvass
+caveat. Missing/held analytical rates remain held. Registration revisions
+refresh existing display mirrors and withhold incompatible rates.
+
+All 40 selected statistical rows and 173 complete factual tables are retained.
+The maintained 164-test and canonical 170-test
+suites pass, plus 11 packaged behavior tests. Fresh anonymous source/runtime
+downloads reproduce all 14/113 outputs offline with zero requests. Actual
+desktop/mobile production passes all 306 reader frames, every Wisconsin ward,
+all nine model controls and both NM/MN native maps; images were inspected.
+All 51 decisions and prior durable access stops survive. No fits, weights,
+boundaries or comparison masks changed; the workflow-only engine pin needs no
+new static Pages build.
+
+[Complete acceptance](data/participation-access/20261114-statistical-html-automatic-intake-01/acceptance.json),
+[all jurisdiction decisions](data/participation-access/20261114-statistical-html-automatic-intake-01/observations.json) and
+[both complete downloads](docs/DATA.md#statistical-html-automatic-intake)
+record the scope. Nationwide county/precinct completeness is still open;
+the full audit THEN beautification remain pending genuine prerequisites.
+
+
 ## Current native webforms automatic-source delivery
 
 Shared producer `f19ea9c9` passed actual collector43650846819;

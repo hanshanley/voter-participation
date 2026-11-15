@@ -8,6 +8,35 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Statistical HTML automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/a704389f4759c24f71a84af9ec24e78ed5042c64/snapshots/02364bb6e0f8137870c5f8d7800fe7f8c3f790ea33ed531522ccdbe86ec293ce/complete-results.zip) is **30,056,306 bytes**,
+SHA256 `e8d746b08970dccee6b3222b6a3850348b511bd95d21e9ae0ff514894ba1a8cb`. It contains all 51 jurisdiction
+decisions, complete permitted facts and all 14 outputs, full accepted baselines,
+code, tests and checksums. Extract into a fresh directory, then run:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete automatic runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-508a79e072aeb8e1dddf2b20c6a61b4f0f4f51f5d363b911c368e80da98f94b5/complete-analysis.zip) is **174,653,421 bytes**,
+SHA256 `580c815c302ff6ae2bb253ef864dbe3b233c0a59cbafbaadee3092744d10c6d9`. Its server-immutable full archive nests the entire
+source packet and actual preceding rolling seed, complete before/after count
+and native datasets, all nine model cases and every numerical query. Extract
+into another fresh directory, then run:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both literal commands were verified with Python 3.9+ and the existing requests
+dependency: 14/113 outputs, zero requests. Replay does not re-extract excluded
+publisher HTML/templates, refit private surveys or expose respondents/histories.
+All previous complete downloads below are retained.
+[Actual scope and acceptance](../data/participation-access/20261114-statistical-html-automatic-intake-01/acceptance.json) preserve source,
+rate, reporting, model and geographic qualifications.
+
+
 ## Current webforms-source automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/02e314a2fbdd5f8cb187c5970e54c712060e45ae/snapshots/8b3f43499cef833222611b83901fbbbf668f2d4a72a30e151a2ea7ed5297efe2/complete-results.zip) is **29,995,981 bytes**,
