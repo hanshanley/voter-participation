@@ -50,6 +50,39 @@ source/history/model/boundary gaps remain open before the full audit THEN polish
 [all decisions and source holds](../data/participation-access/20261115-de-dc-sc-automatic-intake-01/observations.json) and
 [both complete query-set downloads](DATA.md#de-dc-sc-automatic-intake).
 
+## Reviewed Idaho and Rhode Island adapters
+
+The default collector also routes the existing Idaho and Rhode Island slots to
+their reviewed official products. This is source-adapter capability, not a claim
+of fresh acquisition or website activation. Idaho's required API is already in
+the durable stop policy; it must remain unrequested and retain its last-good
+counts, native maps and original clocks.
+
+Idaho's retained report explicitly identifies the **November 3, 2026 general
+election**, with `isPrimary=false`; older descriptions calling this product a
+primary are incorrect. Its 44 county parents and 986 reporting units are separate
+complete representations, not additive populations. The county/API and workbook
+registration disagreement in Twin Falls remains held. Existing denominator and
+map qualifications are preserved, not newly approved. Workbook rows have no
+established own update clock: their clock stays unknown, while the separate
+parent API clocks remain explicitly labeled context.
+
+Rhode Island retains all 39 municipalities plus the separate Federal reporting
+unit. The native statewide zero remains an unqualified backend placeholder;
+neither it nor a derived locality sum becomes statewide turnout. Federal counts
+remain unallocated, registration is not promoted to an analytical denominator,
+and existing geography/reference holds survive. Explicit native `Z` clocks
+retain UTC.
+
+Both adapters compare each locality's source clocks against the last internally
+consistent successful capture, not just the frozen registration templates.
+Idaho additionally checks each county's last-updated clock and official-status
+regressions. A partial rollback, malformed source or incoherent prior query
+rejects the whole successor and retains the complete prior data and clocks.
+Literal zero remains distinct from missing or unknown. Full numerical queries,
+portable tests and fixtures travel in the complete source package; hosted and
+live delivery require separate acceptance.
+
 ## Reviewed Delaware, D.C. and South Carolina adapters
 
 The default collector now connects Delaware's declared 2026 turnout JSON,

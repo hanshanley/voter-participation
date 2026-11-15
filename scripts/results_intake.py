@@ -645,6 +645,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
              "results_state_statistics.py",
              "results_native_delaware.py", "results_native_dc.py",
              "results_native_state_family.py", "results_native_oregon.py",
+             "results_native_rhode_island.py",
+             "results_native_idaho.py",
              "results_native_virginia.py", "results_native_north_dakota.py",
              "results_native_louisiana.py", "results_native_louisiana_runtime.py",
              "louisiana_onboarding.py", "louisiana_bootstrap.py",
@@ -674,6 +676,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                  "test_results_pdf_cass.py", "test_results_native_cass.py",
                  "test_results_pdf_dunn.py",
                  "test_results_native_state_family.py", "test_results_native_oregon.py",
+                 "test_results_native_rhode_island.py",
+                 "test_results_native_idaho.py",
                  "test_results_native_virginia.py",
                  "test_results_native_virginia_repair.py",
                  "test_results_native_north_dakota.py",
@@ -697,7 +701,13 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/oregon-accepted.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
+    name = "tests/fixtures/rhode-island-native-accepted.json.gz"
+    package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/dc-native-accepted.json"
+    fixture_root = ROOT / "tests/fixtures/idaho-native"
+    for path in sorted(fixture_root.rglob("*")):
+        if path.is_file():
+            package_members["code/" + str(path.relative_to(ROOT))] = path.read_bytes()
     package_members["code/" + name] = (ROOT / name).read_bytes()
     for name in ("accepted-de-shard.json", "complete-turnout.json"):
         relative_name = "tests/fixtures/delaware-native/" + name

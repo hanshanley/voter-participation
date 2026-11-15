@@ -40,6 +40,18 @@ from scripts.results_native_oregon import (
     statistics as oregon_statistics,
     validate_plan as validate_oregon_plan,
 )
+from scripts.results_native_idaho import (
+    ADAPTER as IDAHO_ADAPTER,
+    route as idaho_route,
+    statistics as idaho_statistics,
+    validate_plan as validate_idaho_plan,
+)
+from scripts.results_native_rhode_island import (
+    ADAPTER as RHODE_ISLAND_ADAPTER,
+    route as rhode_island_route,
+    statistics as rhode_island_statistics,
+    validate_plan as validate_rhode_island_plan,
+)
 from scripts.results_native_delaware import (
     ADAPTER as DELAWARE_ADAPTER,
     extend_templates as extend_delaware_templates,
@@ -1828,6 +1840,8 @@ def source_plan(baseline):
                 or dc_route(template)
                 or native_state_family_route(template)
                 or oregon_route(template)
+                or idaho_route(template)
+                or rhode_island_route(template)
                 or virginia_route(template)
                 or north_dakota_route(template)
                 or louisiana_route(template)
@@ -1915,7 +1929,9 @@ def source_plan(baseline):
         result[state] = sources
     result = validate_delaware_plan(validate_dc_plan(result))
     return validate_louisiana_plan(validate_north_dakota_plan(validate_virginia_plan(
-        validate_oregon_plan(validate_native_state_family_plan(result)))))
+        validate_idaho_plan(validate_rhode_island_plan(
+            validate_oregon_plan(
+                validate_native_state_family_plan(result)))))))
 
 
 def collect_sources(collector, baseline):
@@ -1926,6 +1942,17 @@ def collect_sources(collector, baseline):
             if source["adapter"] == OREGON_ADAPTER:
                 def parse(body, templates=templates, url=url):
                     return oregon_statistics(body, templates, url, acquire=collector.acquire)
+            elif source["adapter"] == IDAHO_ADAPTER:
+                previous = collector.prior.get(identity)
+                def parse(body, templates=templates, url=url, previous=previous):
+                    return idaho_statistics(
+                        body, templates, url, acquire=collector.acquire,
+                        prior=previous)
+            elif source["adapter"] == RHODE_ISLAND_ADAPTER:
+                prior = collector.prior.get(identity)
+                def parse(body, templates=templates, url=url, prior=prior):
+                    return rhode_island_statistics(
+                        body, templates, url, prior=prior)
             elif source["adapter"] == DELAWARE_ADAPTER:
                 def parse(body, templates=templates, url=url):
                     return delaware_statistics(body, templates, url)

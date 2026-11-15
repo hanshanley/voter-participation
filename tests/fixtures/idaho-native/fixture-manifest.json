@@ -1,0 +1,29 @@
+{
+  "contract": "participation.idaho_native_safe_fixture.v1",
+  "frozen_registration_shard": {
+    "bytes": 272061,
+    "sha256": "2d47fd4dd8ec649c4897a0ebd14c1a914a916326095ac1a55a15ac9831a8c132"
+  },
+  "official_originals": {
+    "ballots_workbook": {
+      "bytes": 44341,
+      "sha256": "2c78333c826cad738ce1c4c997379fe9a5279d24ddf5dde43e297d2c6602e5e7"
+    },
+    "data_api": {
+      "bytes": 522644,
+      "sha256": "939dba8e14b4d996cbcd67fc33bd75d7dd75667562dd901720a07c7aaa2233a8",
+      "url": "https://results.voteidaho.gov/results/public/api/elections/id/nov2026/data"
+    }
+  },
+  "privacy": "Official aggregate election/county/reporting-unit facts only; no individual voter records.",
+  "source_archive": {
+    "bytes": 4016510,
+    "path_hint": "complete-idaho-2026-source-review.zip",
+    "sha256": "0b7eb5da2d55c80c9bb005741d2e95774d45db209d21f9cd753dc99b764bd8be"
+  },
+  "templates": {
+    "records": 1030,
+    "sha256": "107cb851a19cabb34bc18b6179c4ef9cf91b9d5fb474cc7dce57eb2465ccebca",
+    "uncompressed_bytes": 6709574
+  }
+}
