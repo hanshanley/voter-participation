@@ -6,6 +6,16 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Verified unattended Broome report intake
+
+The maintained GitHub collector now automatically captures Broome County's 2026 governor-context ballot report and retains its complete **144 native rows**. Hosted run **43751551942** succeeded at the published adapter revision; this is actual hosted collection, not a local fixture or a promise to retrieve reports manually.
+
+These are **contest-scoped counts, not whole-election turnout**. Different contest controls in the retained source review remain unexplained. No Broome count is promoted to canonical participation, a turnout denominator, a rate, a precinct map or an estimate. True zeros and the source's above-registration fraction remain literal. The municipality report's missing count clock stays missing; the separate summary clock is not borrowed.
+
+The full immutable [current-source query-set ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/62d3ee2fc1c3fc7b51c899734be4e04d471c6077/snapshots/83900ad4981605f8967a26fe4ab51d7fbaa273579fb52d9acb31f8d51a83c159/complete-results.zip) contains the complete selected facts and queries, code, tests and documented offline replay. Its anonymous public bytes were verified; fresh extracted execution reproduced all **14 outputs**, with zero network requests. All 51 coverage decisions and previous source stops remain. This run records **18,286 native refresh appearances across 28 states**, not unique people or complete local coverage; the Broome rows are excluded from that participation-refresh count.
+
+The existing hourly intake and compatible website/model consumer remain the automatic update path. The numerical engine is unchanged; this source-only delivery starts no website build and claims no new numerical runtime. Nationwide source, population-frame and boundary gaps remain open; the full audit and then usability polish are still pending. [Hosted acceptance](data/participation-access/20261115-broome-scoped-intake-01/hosted-acceptance.json).
+
 ## New York automatic-intake access check
 
 Two genuinely independent county routes were checked on November 15, 2026: Allegany's Board of Elections page and Albany's official results archive. Both returned HTTP 403 before an authority page or numerical report could be retained. Neither route is retried through another client, cache, mirror or linked child product. Search snippets and candidate votes are not substituted for participation.
