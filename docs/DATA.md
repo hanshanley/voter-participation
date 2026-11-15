@@ -8,6 +8,31 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## VA-ND-LA automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/f1f70064863c3237925d86eb27ac9df687ee860b/snapshots/9f6ca43a85017117ff30a2e7ef4f24944eafa96d34012daddc139df78404b04f/complete-results.zip) is **54,838,784 bytes**,
+SHA256 `58a9e7053045b63e367422e858d99dbd000949059b0f3ae3f10eff11ba444880`. It contains complete permitted
+source facts, all 51 decisions, full native queries, accepted baselines,
+adapter code, portable tests and fixtures. Extract into a fresh directory:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-a8ec84612cef720f20474241fe070385493b5964d096df799168645587616ac1/complete-analysis.zip) is **199,424,263 bytes**,
+SHA256 `8b001813b557863e7b39dade8dd95b613ee4faa45457cfbd876174c240ce610c`. It nests the entire source packet, actual prior
+rolling seed, complete before/after count/native datasets, reviewed engine,
+all nine model cases and every numerical query. Extract separately:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both literal commands pass offline: **14/113 outputs**, zero requests.
+These reproduce full numerical facts, not private survey fitting or excluded
+publisher-document extraction. No prior complete download is removed.
+[Actual scope and acceptance](../data/participation-access/20261115-va-la-nd-automatic-intake-01/acceptance.json).
+
 ## Oregon-counties automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/0cdf4e4d8e72c8b3646440b90ce25dd5317724c0/snapshots/ee5f0b3ac368b9575437725337f3b9cf93d2e3d0268d1902483c2e324fbb0ed8/complete-results.zip) is **37,951,276 bytes**,

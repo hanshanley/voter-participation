@@ -6,21 +6,48 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
-## Louisiana onboarding and current access policy
+## Current VA/ND/LA automatic-source delivery
 
-Louisiana's private parser is not integrated or live. Its native participation
-frame has no compatible existing observation slots: saved early/mail activity
-must remain separate. Controlled onboarding, source-authority qualification,
-portable replay and actual hosted/website acceptance are still required.
+Virginia's 133 reviewed locality parents and Louisiana's newly onboarded
+3,783 observations now pass actual hosted collection, complete offline replay
+and production acceptance. North Dakota's implemented adapter is source-stopped:
+its required full-data feed was denied and was not retried. Its 53 county parents,
+358 source-unit rows, native map, counts and original clocks remain last-verified,
+not fresh. The entire North Dakota count and native bodies remain byte-identical.
+Source `38bda148`, collector 43704470689, engine
+`38bda148`, runtime `a8ec8461`
+(job 43705844196) and workflow `a8d7b4b7` are pinned.
+The hourly source/consumer workflows update qualified counts and compatible
+estimates without assistant retrieval or a Pages rebuild for each report.
 
-The current durable ledger contains **181 stopped URLs**, with no host or prefix
-stops. The newly observed Louisiana results-workbook HTTP 403 was not retried.
-Policy-only `results-data` commit `2dbc32e8` preserves all 180 previous stops and
-changes only the stop ledger and packed state. All nonpolicy facts, the latest
-valid numerical pointer and every complete numerical package remain unchanged.
-The accepted Oregon packet still contains its original 179 source-time stops;
-its later Florida and Louisiana stops do not rewrite that historical packet.
-[Access-policy receipt](data/participation-access/20261115-louisiana-access-stop-01/observations.json).
+The actual collector refreshes **18,242 record appearances
+across 26 states**, not unique people, disjoint populations or
+nationwide local completeness. Louisiana preserves all 258 older observations
+and their modes; new rows enter only the official view: 64 parish parents,
+3,718 precinct rows and one unselected state control. Its literal **# VOTING**
+is source-defined participation, not candidate votes or independently qualified
+physical ballots/unique people. Missing clocks/counters remain missing.
+Virginia uses locality `ballotsCast`, not precinct `voterTurnout`.
+North Dakota keeps native ballot buckets separate from House candidate votes.
+No new rate, map, geographic join, survey fit or 33-directional/17-held
+comparison qualification is inferred.
+
+Canonical validation passes **397 tests**, with nine optional skips. The complete
+source/runtime downloads reproduce all **14/113 outputs** offline, with zero
+requests; all 113 anonymous runtime bodies and the actual preceding rolling seed
+match. Desktop/mobile production checks cover all 306 count frames per width,
+every selected LA/VA/ND parent/unit detail, preserved native maps and all nine
+model controls. Eight representative images are physically reviewed and hash-bound.
+All 51 decisions and 182 durable URL stops persist.
+
+**Nationwide county/precinct intake is not finished.** Remaining source,
+historical, model, boundary and held-extraction gaps stay open before the full
+audit THEN beautification. Source failures retain last-good values and clocks.
+North Dakota's automatic-refresh child remains blocked, not completed.
+[Acceptance](data/participation-access/20261115-va-la-nd-automatic-intake-01/acceptance.json),
+[all 51 decisions and source holds](data/participation-access/20261115-va-la-nd-automatic-intake-01/observations.json),
+[both complete query-set downloads](docs/DATA.md#va-nd-la-automatic-intake), and
+[earlier access-policy receipt](data/participation-access/20261115-louisiana-access-stop-01/observations.json).
 
 ## Current Oregon county automatic-source delivery
 
