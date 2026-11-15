@@ -6,6 +6,38 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Verified Boone intake and last-good website propagation
+
+Boone County's native **67,527 ballots** now pass the default automatic collector.
+The reviewed source explicitly binds the native **Ballots Cast - Total** row and
+its wrapped mode headers; component totals are checked, not candidate votes.
+Native registration **130,157**, printed **51.88%**, report status and
+**11/09/2026 1:36 PM** with unknown timezone remain source context.
+They do not approve an analytical turnout denominator, rate, precinct join or
+local estimate.
+
+The shared projection now preserves last-good revised counts, true zeros and
+unknowns after a failed capture when the original observation receipt and pinned
+scientific frame agree. Older retained facts cannot overwrite an advanced
+baseline; failures remain visible rather than being relabeled fresh.
+
+Actual collector **43757306774** at research `775acae4` and data-only website
+runtime **43758889101** / `70a6d9f8` at website `7ae3e65c` are accepted.
+The [complete source-query ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/5830f3b29ecd45a861a801775d03112e8a78d83d/snapshots/2e656a4981082b8fea48c7693d1bfbca7f76d285497b1bf832cc32cb42ad8650/complete-results.zip)
+reproduces all **14 outputs**, and the [complete numerical analysis ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-70a6d9f86358b92cb1c33176adf4be97a1076f61390f6b38c01e247a46ea909d/complete-analysis.zip)
+reproduces all **113 outputs**, offline with zero network requests.
+All 113 public runtime bodies and all 19 packaged engine bodies match their
+reviewed sources. Only the directly dependent retention engine file changed.
+
+This capture records **18,287 refresh appearances across 29 states**, not people
+or complete county/precinct coverage. All 51 decisions and 186 prior URL stops
+remain. Desktop/mobile production checks pass all 306 count frames per width,
+the complete current snapshot, nine model controls and existing qualification
+holds. All 437 older download pins remain; native payload and tar remain below
+the size cap. No model refit, new geographic qualification or Pages build.
+Nationwide gaps, the full audit and later usability polish remain open.
+[Acceptance](data/participation-access/20261115-mo-boone-automatic-01/acceptance.json).
+
 ## Verified unattended Broome report intake
 
 The maintained GitHub collector now automatically captures Broome County's 2026 governor-context ballot report and retains its complete **144 native rows**. Hosted run **43751551942** succeeded at the published adapter revision; this is actual hosted collection, not a local fixture or a promise to retrieve reports manually.
