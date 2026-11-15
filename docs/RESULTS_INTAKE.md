@@ -12,6 +12,29 @@ The tool publishes data to the separate `results-data` branch. It does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Reviewed Oregon county turnout adapter
+
+The collector supports the 36 already reviewed Oregon county observations using
+the current turnout API declared by the official turnout page's own scripts.
+It retains the complete native county records and independently verifies the
+page's election date, count labels, county identities, statewide ballot count
+and active-registration total. The initial exported frame and stable identities
+are checksum-bound; later updates must retain matching native vectors and
+non-regressing county count clocks.
+
+`calcVoterTurnout` is the native **ballots counted** field, not candidate votes.
+Native `IsReported=false` and ancillary zero counters do not erase positive
+counts or establish completion. County timestamps have no supplied timezone;
+the separate statewide `PT` label is not assigned to county clocks. Zero is
+distinct from missing or malformed input, which retains the last accepted data.
+Source status may change from unofficial to official without qualifying a new
+rate, map join, unique-voter count or certification.
+
+Only the reviewed county frame is refreshed. Saved mail/early frames and older
+state observations are separate appearances, never added or silently relabeled.
+This adapter does not by itself establish live deployment: the accepted delivery
+records and complete downloads below identify what has actually been activated.
+
 ## Get the complete results
 
 Read `latest.json` on `results-data`. Its `results_commit`, `base_url` and `files`
