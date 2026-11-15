@@ -25,6 +25,11 @@ district counts and registrations checked against the state controls. Those
 contexts do not become new county/district/precinct slots or map approvals.
 The source supplies no turnout update clock; candidate/cache timestamps are not
 substituted. Literal official status may advance but must not roll back.
+The numerical runtime also refreshes the separate visible statewide mirror only
+when its entire prior view matches one canonical state observation and the
+successor preserves that observation's identity. Unmatched reviewed rows remain
+unchanged; canonical count updates cannot silently leave the matched sidebar
+counter on its old value. This does not select statewide data as county coverage.
 
 D.C. refreshes its one existing citywide observation only after the two literal
 participation contests, full 144-unit identity inventory, source registration

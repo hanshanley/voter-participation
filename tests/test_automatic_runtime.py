@@ -55,6 +55,61 @@ def test_current_only_updates_matching_fresh_native_measure_and_preserves_every_
     assert runtime.refresh_current(files, snapshot) == files
 
 
+@pytest.mark.parametrize("ballots", [11, 0])
+def test_reviewed_state_mirror_follows_exact_canonical_successor(ballots):
+    row = {
+        "state_code": "DE", "year": 2026, "mode": "official", "ballots": 10,
+        "denominator": 20, "validated_pct": 50,
+        "maps_approved": False, "source_update_label": "Native clock not supplied",
+        "source_url": "https://official.test/turnout.json",
+        "native_record": {"query": {"ballots_cast": 10}},
+    }
+    record = {
+        "id": "reviewed-state", "geography": {"level": "state", "state_code": "DE"},
+        "election": {"year": 2026}, "measure": {"literal": "Ballots Cast"},
+        "view": row,
+    }
+    current = {"reviewed_states": [row, {"state_code": "GA", "ballots": 7}],
+               "snapshot": {"reporting": [], "early_voting": [{"ballots": 2}]}}
+    old_body = gzip.compress(encoded({"records": [record], "views": {}}), mtime=0)
+    body = gzip.compress(encoded(current), mtime=0)
+    files = {"current.json.gz": body, "states/DE.json.gz": old_body, "index.json": encoded({
+        "current_snapshot": {"file": "current.json.gz", **pin(body)},
+        "states": {"DE": {"file": "states/DE.json.gz", **pin(old_body)}}})}
+    successor = copy.deepcopy(record)
+    successor["view"].update(ballots=ballots, validated_pct=100 * ballots / 20,
+                             automatic_source_refresh=True, source_sha256="b" * 64)
+    successor["view"]["native_record"]["query"]["ballots_cast"] = ballots
+    after = dict(files)
+    after["states/DE.json.gz"] = gzip.compress(
+        encoded({"records": [successor], "views": {}}), mtime=0)
+    unchanged = copy.deepcopy(files)
+    snapshot = {"jurisdictions": [], "source_status": []}
+
+    result = runtime.refresh_current(after, snapshot, previous_files=files)
+    visible = json.loads(gzip.decompress(result["current.json.gz"]))
+    assert visible["reviewed_states"][0] == successor["view"]
+    assert visible["reviewed_states"][1] == current["reviewed_states"][1]
+    assert visible["snapshot"] == current["snapshot"]
+    assert visible["reviewed_states"][0]["maps_approved"] is False
+    assert visible["reviewed_states"][0]["source_update_label"] == "Native clock not supplied"
+    assert files == unchanged
+    assert runtime.refresh_current(result, snapshot, previous_files=result) == result
+    assert runtime.refresh_current(files, snapshot, previous_files=files) == files
+
+    stale = copy.deepcopy(current)
+    stale["reviewed_states"][0]["ballots"] = 9
+    mismatch = dict(after, **{"current.json.gz": gzip.compress(encoded(stale), mtime=0)})
+    assert runtime.refresh_current(mismatch, snapshot, previous_files=files) == mismatch
+    corrupt = copy.deepcopy(successor)
+    corrupt["geography"]["level"] = "county"
+    invalid = dict(after)
+    invalid["states/DE.json.gz"] = gzip.compress(
+        encoded({"records": [corrupt], "views": {}}), mtime=0)
+    with pytest.raises(ValueError, match="reviewed statewide mirror"):
+        runtime.refresh_current(invalid, snapshot, previous_files=files)
+
+
 def test_full_archive_is_deterministic_and_never_just_a_pointer():
     members = {"inputs/native-query.csv": b"county,count\nA,0\n",
                "queries/result.json": b'{"value":0}\n', "code/reproduce.py": b"print(0)\n"}

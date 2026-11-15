@@ -231,13 +231,36 @@ def bind_datasets(catalog, descriptions, staged, repository):
     return candidate, checks
 
 
-def refresh_current(files, snapshot):
+def refresh_current(files, snapshot, previous_files=None):
     index = json.loads(files["index.json"])
     declaration = index.get("current_snapshot")
     if not declaration:
         return files
     before = json.loads(uncompressed(files[declaration["file"]]))
     current = copy.deepcopy(before)
+    if previous_files is not None:
+        from scripts.automatic_native_refresh import observation_identity
+
+        previous_index = json.loads(previous_files["index.json"])
+        for row in current.get("reviewed_states", []):
+            state = row.get("state_code")
+            prior = previous_index.get("states", {}).get(state)
+            if prior is None:
+                continue
+            old = json.loads(uncompressed(previous_files[prior["file"]]))
+            matches = [item for item in old["records"] if item.get("view") == row]
+            if not matches:
+                continue
+            if len(matches) != 1 or matches[0].get("geography", {}).get("level") != "state":
+                raise ValueError("Ambiguous canonical binding for reviewed statewide mirror")
+            old_record = matches[0]
+            updated = json.loads(uncompressed(files[index["states"][state]["file"]]))
+            successors = [item for item in updated["records"] if item["id"] == old_record["id"]]
+            if len(successors) != 1 or observation_identity(successors[0]) != observation_identity(
+                    old_record):
+                raise ValueError("Changed canonical identity for reviewed statewide mirror")
+            row.clear()
+            row.update(copy.deepcopy(successors[0]["view"]))
     for row in current.get("snapshot", {}).get("reporting", []):
         state = row["state_code"]
         decision = next((item for item in snapshot["jurisdictions"]
@@ -400,7 +423,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
 
     snapshot = hydrate_granular_sources(snapshot, source_packet)
     updated, changes = results_granular.project(count_files, snapshot.get("granular_sources", {}))
-    updated = refresh_current(updated, snapshot)
+    updated = refresh_current(updated, snapshot, previous_files=count_files)
     native = refresh(count_files, updated, native_files)
     estimates = build(snapshot, seed)
     artifacts = render_artifacts(estimates)
