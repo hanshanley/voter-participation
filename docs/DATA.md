@@ -8,6 +8,35 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## County-unit automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/79a759a6fed119c90ab3a6d64b353c2f572a5156/snapshots/b580e16273b111ef5cc10448291a8ae822861ffa6591b8fc32edb15542d5c585/complete-results.zip) is **39,624,969 bytes**,
+SHA256 `536e0285494a89886dc6888b09134ad60ad910866d4bf33a5e415bd85687de91`. It includes all 51 decisions,
+complete permitted facts and original numerical queries, all 14 outputs,
+accepted baselines, adapters, portable tests and fixtures. Extract fresh:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete automatic runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-d051a6cb66f7d9abad7413db0e84f85e3bd46b9cb20690704da429c2cfee0375/complete-analysis.zip) is **187,786,719 bytes**,
+SHA256 `8c5823aa84f6ef596f03f28323cb386aaef34031facecedaaee0ee86d0d08bab`. It nests the entire source packet and actual prior
+rolling seed, complete before/after count/native datasets, code, tests,
+all nine model cases and every numerical query. Extract into another fresh directory:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both literal commands were verified with Python 3.9+ and the existing requests
+dependency: 14/113 outputs, zero requests. They replay complete numerical facts,
+not excluded publisher document extraction or private survey fitting.
+Native PDF collection uses the separately pinned reviewed extraction engine.
+All previous complete downloads below remain available.
+[Actual scope and acceptance](../data/participation-access/20261114-county-unit-automatic-intake-01/acceptance.json) preserve source,
+rate, clock, reporting, model and geographic qualifications.
+
+
 ## Statistical-family automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/100d876bc75002cc6e029b0b88aa39267803a916/snapshots/8dd63219e8f92ac2d5239aecfa21f90b6e1b636c36674aec5458bf503aff08e5/complete-results.zip) is **38,423,708 bytes**,

@@ -6,6 +6,77 @@ Ledger updated: 2026-11-14 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Current county/unit automatic-source delivery
+
+Oklahoma's in-person-early PDF and Jefferson County, Kentucky's precinct
+statistics are verified through producer `8e72a462`,
+collector 43670260974 and runtime `d051a6cb`
+(job 43672808862). These two products refresh **723 existing
+records**: all 77 Oklahoma counties and 646 literal Jefferson units. Their
+current counts agree with the previously accepted counts; this connects
+unattended revised-report extraction rather than inventing new participation.
+The full collector refreshes **12,118 record appearances across 21 states**,
+not unique people, disjoint populations or nationwide local completeness.
+
+Oklahoma remains early-only: its 186,488 printed state parent is a control,
+not a new all-method observation. Fourteen absent affiliation cells stay
+unknown; printed zeros remain zero, and affiliation is not candidate choice.
+Jefferson preserves all 60 suffix labels and 19 zero totals, all repeated
+page contexts and the native clock. Its separate county parent is unchanged;
+Mail is not returned envelopes and 646/646 is not certification.
+
+The first hosted run, 43669246178, withheld Jefferson correctly: an unbounded
+dependency installed pypdf 7.1.0, whose extracted header differs. Cache-only
+Linux diagnosis 43669998932 reproduced the failure with zero source requests.
+The collector and PDF extras now pin reviewed `pypdf==6.16.0`; election,
+column, inventory, clock and numerical guards were not relaxed. Original
+failed-family evidence remains. Maintained 272 and
+canonical 278 source tests pass.
+
+Production testing of the first runtime `956242c7` exposed stale separate-
+reference metadata: an old count-shard pin and a missing source-hash field.
+The browser correctly withheld that layer. Engine `d01dccf4`
+revalidates every full observation and held identity before rebinding;
+it also repairs that active input when no count changes arrive. Its
+281 maintained and 287
+canonical tests pass. The unchanged browser validator and all 14 geometry
+bodies remain intact; original failed-runtime evidence is retained.
+
+A separate asynchronous-loader regression found that current-download link
+decoration changed the full records used for strict reference comparison.
+Frontend `54956bb7` validates the original checksum-verified
+full count shard instead. The strict reference validator and download
+decoration remain unchanged. All 38 focused tests, the complete count
+contract command, exact build, whole-runtime loader and ten built-page
+map cases pass. Actual Pages 43673824614 and its source guard
+pass: 994,240,640 payload and 996,843,520 tar bytes,
+both strictly below one billion; all 437 prior full-download pins and
+actual served bodies match. Independent older canonical website sources
+are preserved beside the exact published source snapshot.
+
+Complete source/runtime packets reproduce 14/113 outputs offline with zero
+requests; all 113 public runtime bodies match. Actual desktop/mobile checks
+cover all 723 new records, all 306 reader frames, Jefferson's 529 reference
+joins and 117 holds, preserved IN/MA/NM/MN maps and all nine model controls.
+Screenshots are physically reviewed and hash-bound. All 51 decisions and
+prior stops persist; no geometry, rate or private survey fit changes.
+Numerical activations still require zero static builds. A pin-only consumer
+selects the repaired engine; a separate tested frontend code deployment
+corrects canonical-reference loading without changing count-download links.
+
+There are still 20 reported but unadapted source captures across
+8 states. Manchester handwriting remains
+numerically held after both RapidOCR and native macOS Vision proved unreliable;
+an unchanged-hash count lookup is not revised-count automation. Broader
+source, historical, model and boundary gaps remain open, before full audit
+THEN beautification.
+
+[Complete acceptance](data/participation-access/20261114-county-unit-automatic-intake-01/acceptance.json),
+[all jurisdiction decisions](data/participation-access/20261114-county-unit-automatic-intake-01/observations.json) and
+[both complete downloads](docs/DATA.md#county-unit-automatic-intake)
+retain the evidence and limitations.
+
+
 ## Current statistical-family automatic-source delivery
 
 Indiana statistical JSON, Boston's statement and all 15 registered
