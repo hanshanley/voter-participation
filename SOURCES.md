@@ -6,6 +6,49 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Verified ID/RI automatic intake
+
+**Rhode Island now passes actual unattended hosted capture and data-only website delivery for all 40 reviewed source slots**: 39 municipalities plus the separate Federal reporting
+unit. Federal is not allocated to towns or precincts. The native statewide zero
+is an unqualified backend placeholder, not observed statewide turnout; no
+locality sum is promoted to a new statewide count or analytical rate.
+
+**Idaho remains source-stopped: zero fresh updates.** Its complete last-good
+count shard, 44 county parents, 986 separate reporting units, native geometry,
+qualification masks and original clocks remain exact. County and unit frames
+are not additive populations. The retained authority identifies the November 3,
+2026 **general election**, not a primary. Twin Falls' registration discrepancy
+stays held; the workbook's own clock stays unknown, not borrowed from its parent.
+
+Both adapters guard every locality against rollback from the last successful
+capture while using frozen registration templates. Complete prior pin/query/
+update validation, partial rollback, malformed source, true zero and repeat
+cases pass. Controlled revised inputs are tests, not new publisher observations.
+The hourly GitHub pipeline updates qualified counts and compatible estimates
+without assistant retrieval or a Pages rebuild. It approves no new rate, map,
+demographic turnout, allocation or survey fit; the 33-directional/17-held
+comparison policy is unchanged.
+
+Producer `ee9b9cca` / collector 43715085278,
+unchanged engine `2e0e2507` / workflow `6cd0fdc4`
+and runtime `67db0820` / job 43716771839 are verified.
+Actual granular refresh is **18,281 record appearances across 27 states**,
+not people or complete local coverage. A temporary Yellowstone County source
+failure is not counted as fresh; its last-good observations and clocks stay exact.
+All **51 decisions and 184 URL stops**
+persist. Canonical tests: **453 passed / 9 optional skips**.
+Both full downloads reproduce **14 source / 113 runtime outputs offline**;
+all 113 anonymous runtime bodies and the actual preceding rolling seed match.
+Production checks cover all 306 frames, the full current snapshot, every ID/RI
+parent/unit detail, 14 existing native-map cases and all nine model controls
+at desktop/mobile widths. Representative actual images were viewed.
+
+**Nationwide intake is not finished.** Stopped feeds and remaining genuine
+source, historical, model and boundary gaps remain open before the full audit
+THEN polish. [Acceptance](data/participation-access/20261115-id-ri-automatic-intake-01/acceptance.json),
+[all decisions and holds](data/participation-access/20261115-id-ri-automatic-intake-01/observations.json) and
+[both complete query-set downloads](docs/DATA.md#id-ri-automatic-intake).
+
 ## Current SC refresh and DE/DC access holds
 
 South Carolina's native statewide **2,054,835** participation snapshot now

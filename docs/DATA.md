@@ -8,6 +8,32 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## ID-RI automatic intake
+
+The [complete source ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/8489951fd41b465c8573d09d715c2980a3f7dc3c/snapshots/ea7c3461f283ac33df9cd82e8a4101798bf0fb1e60cfde14d0c97f4a931a9df8/complete-results.zip) is **55,150,195 bytes**,
+SHA256 `0ac4fdecd00bb9b6a3f8d7163a35acedd7f70b1514d6e273dc3510ab310eabd5`. It includes all permitted source facts,
+all 51 decisions, complete native numerical queries, accepted inputs, code, tests
+and fixtures. Extract into a fresh directory:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-67db0820594123253c30e5659511170b69f72ea48894bdbf83110cdb29f3881d/complete-analysis.zip) is **201,416,872 bytes**,
+SHA256 `f89138546c3f8d600487a4a51353114fff973f1eea7e091cd2e6563f2726f23c`. It includes the full source packet, actual rolling
+seed, complete before/after count/native datasets, reviewed engine, nine model
+cases and every numerical query. Extract separately:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both literal commands pass offline: **14/113 outputs**, zero requests.
+These reproduce numerical facts, not private survey fits or excluded publisher
+document extraction. Source-stop outcomes are not fresh observations.
+All earlier full downloads remain below.
+[Actual scope and acceptance](../data/participation-access/20261115-id-ri-automatic-intake-01/acceptance.json).
+
 ## DE-DC-SC automatic intake
 
 The [complete source ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/cde3ee0192e423694151aad44e4e7ad8383b69bc/snapshots/50cd3b48f99f8d5a944b9da1cae357dee480cac2496e62d634e5c7bdeccc70a4/complete-results.zip) is **54,873,583 bytes**,
