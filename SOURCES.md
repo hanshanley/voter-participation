@@ -6,6 +6,22 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Louisiana onboarding and current access policy
+
+Louisiana's private parser is not integrated or live. Its native participation
+frame has no compatible existing observation slots: saved early/mail activity
+must remain separate. Controlled onboarding, source-authority qualification,
+portable replay and actual hosted/website acceptance are still required.
+
+The current durable ledger contains **181 stopped URLs**, with no host or prefix
+stops. The newly observed Louisiana results-workbook HTTP 403 was not retried.
+Policy-only `results-data` commit `2dbc32e8` preserves all 180 previous stops and
+changes only the stop ledger and packed state. All nonpolicy facts, the latest
+valid numerical pointer and every complete numerical package remain unchanged.
+The accepted Oregon packet still contains its original 179 source-time stops;
+its later Florida and Louisiana stops do not rewrite that historical packet.
+[Access-policy receipt](data/participation-access/20261115-louisiana-access-stop-01/observations.json).
+
 ## Current Oregon county automatic-source delivery
 
 Oregon's **36 reviewed county observations** now refresh unattended from the

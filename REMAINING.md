@@ -13,6 +13,22 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Louisiana controlled onboarding in progress
+
+Louisiana's private native-participation parser passes five focused tests, but
+has **zero compatible existing observation slots**. It is not integrated, live
+or an additional automated state. Add reviewed identities without replacing
+the 258 saved early/mail observations, qualify actual source declarations,
+verify repeated and revised-input refreshes, and complete hosted/runtime/website
+acceptance. Native registration stocks do not automatically qualify rates or
+maps; absent source clocks remain absent.
+
+The newly observed Louisiana workbook HTTP 403 is persisted without retry:
+the current ledger has **181 stopped URLs**. Policy-only `results-data`
+commit `2dbc32e8` changes no nonpolicy source facts, current numerical pointer
+or complete download. The accepted 24-state delivery below remains unchanged.
+[Access-policy receipt](data/participation-access/20261115-louisiana-access-stop-01/observations.json).
+
 ## Current Oregon county automatic intake
 
 Oregon's **36 reviewed county observations** now refresh unattended from the
