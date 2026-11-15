@@ -1,164 +1,59 @@
-name: Update election results
-
+name: Diagnose cached Jefferson extraction
 on:
-  schedule:
-    - cron: "23 * * * *"
   workflow_dispatch:
-    inputs:
-      reuse_collection_run:
-        description: "Optional completed collector run to publish without collecting sources again"
-        required: false
-        type: string
-
 permissions:
-  actions: read
-  contents: write
-
+  contents: read
 concurrency:
-  group: election-night-participation
+  group: jefferson-extraction-diagnostic
   cancel-in-progress: false
-
 jobs:
-  refresh:
+  inspect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     steps:
-      - name: Limit automatic collection to this election
-        id: window
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-        run: |
-          python - <<'PY'
-          import os
-          from datetime import datetime, timezone
-          now = datetime.now(timezone.utc)
-          active = os.environ["EVENT_NAME"] == "workflow_dispatch" or (
-              datetime(2026, 11, 3, tzinfo=timezone.utc) <= now <
-              datetime(2027, 2, 1, tzinfo=timezone.utc)
-          )
-          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
-              output.write(f"active={str(active).lower()}\n")
-          PY
-
-      - name: Checkout the intake tool and complete baseline only
-        if: steps.window.outputs.active == 'true'
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
         with:
-          ref: main
-          sparse-checkout: |
-            scripts
-            tests
-            data/results-intake
-
-      - name: Set up Python
-        if: steps.window.outputs.active == 'true'
-        uses: actions/setup-python@v6
+          sparse-checkout: scripts
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-
-      - name: Install existing intake dependencies
-        if: steps.window.outputs.active == 'true'
-        run: python -m pip install 'requests>=2.31' 'pytest>=8' 'xlrd>=2' 'pypdf>=4' 'PyMuPDF>=1.23' 'pdfplumber>=0.10' 'rapidocr-onnxruntime==1.4.4'
-
-      - name: Test source identities, stops, complete queries and publication
-        if: steps.window.outputs.active == 'true'
-        run: python -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_results_json_statistics.py tests/test_results_pdf_boston.py tests/test_results_pdf_periodic.py tests/test_results_pdf_affiliations.py tests/test_results_pdf_jefferson.py tests/test_automatic_native_refresh.py tests/test_nationwide.py tests/test_current.py
-
-      - name: Reuse conditional HTTP cache
-        if: steps.window.outputs.active == 'true'
-        uses: actions/cache@v5
+      - name: Match the failed hosted parser versions
+        run: python -m pip install 'requests==2.34.2' 'pypdf==7.1.0'
+      - uses: actions/cache/restore@v5
         with:
           path: ${{ runner.temp }}/election-intake/cache
-          key: election-intake-${{ github.run_id }}-${{ github.run_attempt }}
-          restore-keys: election-intake-
-
-      - name: Collect independent House and participation results
-        if: steps.window.outputs.active == 'true' && inputs.reuse_collection_run == ''
-        id: capture
-        continue-on-error: true
-        run: |
-          python -m scripts.results_intake collect \
-            --registry data/results-intake/registry.json \
-            --work-dir "$RUNNER_TEMP/election-intake"
-
-      - name: Recover an already completed collection without source requests
-        if: steps.window.outputs.active == 'true' && inputs.reuse_collection_run != ''
-        id: restore
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          COLLECTION_RUN: ${{ inputs.reuse_collection_run }}
+          key: election-intake-43669246178-1
+          fail-on-cache-miss: true
+      - name: Inspect the exact captured PDF with source networking blocked
         run: |
           python - <<'PY'
-          import json, os, re, subprocess
-          run = os.environ["COLLECTION_RUN"]
-          if not re.fullmatch(r"[1-9][0-9]*", run):
-              raise ValueError("A completed collector run ID is required")
-          metadata = json.loads(subprocess.check_output(["gh", "api", f"repos/{os.environ['GH_REPO']}/actions/runs/{run}"]))
-          if metadata["path"] != ".github/workflows/election-night.yml" or metadata["status"] != "completed":
-              raise ValueError("Recovery requires a completed run of this collector")
-          jobs = json.loads(subprocess.check_output(["gh", "api", f"repos/{os.environ['GH_REPO']}/actions/runs/{run}/jobs"]))
-          if not any(step["name"] == "Collect independent House and participation results" and step["conclusion"] == "success"
-                     for job in jobs["jobs"] for step in job["steps"]):
-              raise ValueError("The original source collection did not succeed")
-          subprocess.run(["gh", "run", "download", run, "--name", f"election-results-{run}",
-                          "--dir", os.environ["RUNNER_TEMP"] + "/completed-election-collection"], check=True)
-          PY
-          mkdir -p "$RUNNER_TEMP/election-intake"
-          python -m scripts.results_intake restore \
-            --package "$RUNNER_TEMP/completed-election-collection/complete-results.zip" \
-            --report "$RUNNER_TEMP/completed-election-collection/report.json" \
-            --work-dir "$RUNNER_TEMP/election-intake" \
-            > "$RUNNER_TEMP/election-intake/recovery.json"
-
-      - name: Publish valid results or preserve new access stops
-        id: publication
-        if: always() && steps.window.outputs.active == 'true' && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure' || steps.restore.outcome == 'success')
-        run: |
-          python -m scripts.results_intake publish \
-            --work-dir "$RUNNER_TEMP/election-intake" \
-            > "$RUNNER_TEMP/election-intake/publication.json"
-
-      - name: Write current-results summary
-        if: always() && steps.window.outputs.active == 'true'
-        run: |
-          python - <<'PY'
-          import json, os
+          import hashlib, json, os, platform, socket, traceback
           from pathlib import Path
-          report = Path(os.environ["RUNNER_TEMP"]) / "election-intake/report.json"
-          publication = report.with_name("publication.json")
-          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as out:
-              if report.exists():
-                  data = json.loads(report.read_bytes())
-                  out.write("# Current election results\n\n")
-                  out.write(f"Jurisdictions: {data['jurisdictions']}. ")
-                  out.write(f"House districts with available returns: {data['house_districts_available']}")
-                  out.write(f"/{data['house_districts_declared']}.\n\n")
-                  body = publication.read_bytes() if publication.exists() else b""
-                  status = json.loads(body)["status"] if body else "not completed"
-                  out.write(f"Data publication: **{status}**. ")
-                  out.write("On successful publication, `results-data/latest.json` pins the ")
-                  out.write("immutable complete queries and reproducible ZIP.\n\n")
-                  out.write("Counting completeness is not certification. Candidate votes are not ballots. ")
-                  out.write("New source layouts remain explicit review items; failed sources retain prior data.\n")
-              else:
-                  out.write("Intake failed. Last valid results remain active; inspect the retained report.\n")
+          import pypdf
+          from scripts import results_pdf_jefferson as jefferson
+          def deny(*args, **kwargs):
+              raise AssertionError("This diagnosis must not acquire sources")
+          socket.socket = socket.create_connection = socket.getaddrinfo = deny
+          expected = jefferson.QUALIFICATION_SOURCE
+          body = (Path(os.environ["RUNNER_TEMP"]) /
+                  "election-intake/cache/objects" / expected["sha256"]).read_bytes()
+          assert len(body) == expected["bytes"]
+          assert hashlib.sha256(body).hexdigest() == expected["sha256"]
+          output = Path(os.environ["RUNNER_TEMP"]) / "jefferson-host-diagnostic"
+          output.mkdir()
+          result = {"source_requests": 0, "source": expected,
+                    "python": platform.python_version(), "pypdf": pypdf.__version__}
+          try:
+              query = jefferson.factual_query(body)
+              result.update(extraction_passed=True, units=query["native_unit_count"])
+          except Exception as error:
+              result.update(extraction_passed=False, error_type=type(error).__name__,
+                            error=str(error), traceback=traceback.format_exc())
+          (output / "diagnostic.json").write_text(json.dumps(result, indent=2) + "\n")
+          print(json.dumps(result))
           PY
-
-      - name: Retain the report and complete numerical package
-        if: always() && steps.window.outputs.active == 'true'
-        uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v6
         with:
-          name: election-results-${{ github.run_id }}
-          if-no-files-found: warn
-          retention-days: 30
-          path: |
-            ${{ runner.temp }}/election-intake/report.json
-            ${{ runner.temp }}/election-intake/source-stops.json
-            ${{ runner.temp }}/election-intake/publication.json
-            ${{ runner.temp }}/election-intake/recovery.json
-            ${{ runner.temp }}/election-intake/complete-results.zip
-
-      - name: Fail visibly if collection did not finish
-        if: always() && steps.window.outputs.active == 'true' && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure')
-        run: exit 1
+          name: jefferson-host-diagnostic
+          retention-days: 7
+          path: ${{ runner.temp }}/jefferson-host-diagnostic
