@@ -6,6 +6,47 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Verified NC/UT automatic intake
+
+**Utah now passes actual unattended hosted capture and data-only website delivery for four reviewed county totals**: Cache, Kane, Millard and Piute. The other
+25 counties keep their independently qualified last-good observations and holds;
+this is not statewide, precinct-complete or newly certified participation.
+Each PDF retains its own printed clock with unknown timezone. API/upload clocks
+are separate. Cache/Millard use agreeing embedded-text readers; Kane/Piute use
+RapidOCR at two resolutions, the same engine rather than independent algorithms.
+No registration denominator, turnout rate, boundary or model is newly approved.
+
+**North Carolina's existing 100-county automatic intake is hardened, not new
+coverage. Its required API remains source-stopped: zero fresh updates.**
+The full prior body, selected queries, update vector and all 100 last-good county
+counts/clocks remain intact. Coherent first-failure recovery and unselected
+state-parent rollback guards pass. A shared archived export ID cannot route
+Nebraska as North Carolina. The old duplicate NC dispatch is removed.
+
+Source/engine `e2efb0bd` / collector 43725870163,
+workflow `ce36ca7e` and runtime `a73df8b1`
+/ job 43728465099 are verified. Advancing the engine pin records
+the collection-dispatch change; numerical projector algorithms are unchanged.
+The hourly GitHub pipeline updates qualified counts and compatible estimates
+without assistant retrieval or a Pages rebuild. It does not refit unchanged
+survey models or allocate demographic estimates to counties or precincts.
+
+Actual granular refresh is **18,286 record appearances across 28 states**,
+not people or complete local coverage. The refresh-appearance changes from the preceding accepted collection are MT +1, UT +4; these are not additional people. All **51 decisions and 184
+URL stops** persist. Unchanged canonical code suite: **465 passed /
+9 optional skips**. Both full downloads reproduce
+**14 source / 113 runtime outputs offline**; all 113 anonymous runtime bodies and
+the actual preceding rolling seed match. Actual desktop/mobile checks cover all
+306 reader frames, the full current snapshot, every NC/UT county detail, unknowns
+versus zero, 14 existing native-map cases and all nine model controls.
+Representative actual images were viewed.
+
+**Nationwide intake is not finished.** Genuine source-access, extraction,
+historical, model and boundary gaps remain open before the full audit THEN polish.
+[Acceptance](data/participation-access/20261115-nc-ut-automatic-intake-01/acceptance.json),
+[all decisions and holds](data/participation-access/20261115-nc-ut-automatic-intake-01/observations.json) and
+[both complete query-set downloads](docs/DATA.md#nc-ut-automatic-intake).
+
 ## Verified ID/RI automatic intake
 
 **Rhode Island now passes actual unattended hosted capture and data-only website delivery for all 40 reviewed source slots**: 39 municipalities plus the separate Federal reporting

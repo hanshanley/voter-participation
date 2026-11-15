@@ -8,6 +8,32 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## NC-UT automatic intake
+
+The [complete source ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/9ddeed61b98ba95e07e62556c3b7e5f279e46414/snapshots/97ce3ef072fc4f14c2c24f1291cb10d030b5d698121cacab0de3762396c918e1/complete-results.zip) is **55,509,808 bytes**,
+SHA256 `442423c4239e2a290d95b490648e3045115bf6879d1eb7dc9d6a0ca991601eda`. It includes all permitted source facts,
+all 51 decisions, complete native numerical queries, inputs, code, tests and fixtures.
+Extract into a fresh directory:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-a73df8b1d1a6907affb8694b3057b500747b9ac621ed7cdc0f1f6f69251a037c/complete-analysis.zip) is **201,786,279 bytes**,
+SHA256 `0dc504da087b8f39439e4af99086166243e7235df7666b4590ebbc98101e2300`. It includes the full source packet, actual rolling
+seed, complete before/after count/native datasets, reviewed engine, nine model
+cases and every numerical query. Extract separately:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both literal commands pass offline: **14/113 outputs**, zero requests.
+These reproduce numerical facts, not private survey fits or excluded publisher
+document extraction. Source-stop outcomes are not fresh observations.
+All earlier full downloads remain below.
+[Actual scope and acceptance](../data/participation-access/20261115-nc-ut-automatic-intake-01/acceptance.json).
+
 ## ID-RI automatic intake
 
 The [complete source ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/8489951fd41b465c8573d09d715c2980a3f7dc3c/snapshots/ea7c3461f283ac33df9cd82e8a4101798bf0fb1e60cfde14d0c97f4a931a9df8/complete-results.zip) is **55,150,195 bytes**,
