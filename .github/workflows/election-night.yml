@@ -58,7 +58,7 @@ jobs:
 
       - name: Install existing intake dependencies
         if: steps.window.outputs.active == 'true'
-        run: python -m pip install 'requests>=2.31' 'pytest>=8' 'openpyxl>=3.1' 'xlrd>=2' 'pypdf==6.16.0' 'PyMuPDF>=1.23' 'pdfplumber>=0.10' 'rapidocr-onnxruntime==1.4.4'
+        run: python -m pip install 'requests>=2.31' 'pytest>=8' 'openpyxl>=3.1' 'xlrd>=2' 'pypdf==6.16.0' 'PyMuPDF==1.26.5' 'pdfplumber==0.11.8' 'rapidocr-onnxruntime==1.4.4'
 
       - name: Test source identities, stops, complete queries and publication
         if: steps.window.outputs.active == 'true'
