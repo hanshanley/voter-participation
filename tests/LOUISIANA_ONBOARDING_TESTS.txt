@@ -1,0 +1,5 @@
+From a maintained source root:
+python3 -m pytest -q -p no:cacheprovider tests/test_louisiana_onboarding.py tests/test_results_intake.py
+
+From an extracted complete source packet:
+PYTHONPATH=code python3 -m pytest -q -p no:cacheprovider code/tests/test_louisiana_onboarding.py code/tests/test_results_intake.py

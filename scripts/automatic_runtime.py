@@ -31,7 +31,10 @@ RESULTS_POINTER = ("https://raw.githubusercontent.com/" + RESULTS_REPOSITORY
                    + "/results-data/latest.json")
 CODE_PATHS = (
     "automatic_runtime.py", "automatic_estimates.py", "automatic_native_refresh.py",
-    "results_granular.py", "norc_house_model.py", "current.py", "download.py",
+    "results_granular.py", "results_native_louisiana.py",
+    "results_native_louisiana_runtime.py", "louisiana_onboarding.py",
+    "louisiana_bootstrap.py", "participation_count_additions.py",
+    "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
@@ -304,6 +307,11 @@ def hydrate_granular_sources(snapshot, source_packet):
             raise ValueError("Malformed granular replay-data reference")
         references[identity] = reference
     if not references:
+        if any(isinstance(row, dict) and isinstance(row.get("observation"), dict)
+               and row["observation"].get("contract")
+               == "participation.externalized_native_query.v1"
+               for row in snapshot.get("participation_observations", [])):
+            raise ValueError("Externalized participation observation has no granular query")
         return snapshot
     if not isinstance(source_packet, bytes):
         raise ValueError("Referenced granular replay data requires the complete source packet")
@@ -355,6 +363,29 @@ def hydrate_granular_sources(snapshot, source_packet):
             raise ValueError("Granular replay source bridge changed: " + identity)
     hydrated = copy.deepcopy(snapshot)
     hydrated["granular_sources"] = full
+    for row in hydrated.get("participation_observations", []):
+        observation = row.get("observation") if isinstance(row, dict) else None
+        if not isinstance(observation, dict) or observation.get("contract") \
+                != "participation.externalized_native_query.v1":
+            continue
+        reference = observation.get("full_data")
+        identity = row.get("channel")
+        expected = references.get(identity)
+        if (
+            expected is None or reference != {
+                **expected,
+                "qualification": (
+                    "Lossless exact native data externalized from the bounded snapshot."),
+            }
+            or identity not in full
+            or full[identity].get("data") is None
+            or observation.get("summary") != compact[identity]["data"].get("summary")
+            or row.get("source") != full[identity].get("source")
+            or row.get("status") != full[identity].get("status")
+            or row.get("state_code") != identity.split("-")[0]
+        ):
+            raise ValueError("Externalized participation observation reference changed")
+        row["observation"] = copy.deepcopy(full[identity]["data"])
     return hydrated
 
 

@@ -40,6 +40,25 @@ from scripts.results_native_oregon import (
     statistics as oregon_statistics,
     validate_plan as validate_oregon_plan,
 )
+from scripts.results_native_virginia import (
+    ADAPTER as VIRGINIA_ADAPTER,
+    route as virginia_route,
+    statistics as virginia_statistics,
+    validate_plan as validate_virginia_plan,
+)
+from scripts.results_native_north_dakota import (
+    ADAPTER as NORTH_DAKOTA_ADAPTER,
+    route as north_dakota_route,
+    statistics as north_dakota_statistics,
+    validate_plan as validate_north_dakota_plan,
+)
+from scripts.results_native_louisiana_runtime import (
+    ADAPTER as LOUISIANA_ADAPTER,
+    extend_templates as extend_louisiana_templates,
+    route as louisiana_route,
+    statistics as louisiana_statistics,
+    validate_plan as validate_louisiana_plan,
+)
 from scripts.results_pdf_cass import (
     PROFILES as CASS_PDF_PROFILES, statistics as cass_pdf_statistics,
 )
@@ -1781,13 +1800,21 @@ def source_plan(baseline):
     result = {}
     for state in sorted(index["states"]):
         templates = selected_records(baseline, state)
+        if state == "LA":
+            templates = extend_louisiana_templates(baseline, templates)
         sources = {}
         for template in templates:
             view = template.get("view") or {}
             url = view.get("source_url")
             if not isinstance(url, str):
                 continue
-            family_route = native_state_family_route(template) or oregon_route(template)
+            family_route = (
+                native_state_family_route(template)
+                or oregon_route(template)
+                or virginia_route(template)
+                or north_dakota_route(template)
+                or louisiana_route(template)
+            )
             if family_route is not None:
                 url = family_route["url"]
             bridged_url = dunn_source_url(template)
@@ -1869,7 +1896,8 @@ def source_plan(baseline):
                 continue
             source["templates"].append(template)
         result[state] = sources
-    return validate_oregon_plan(validate_native_state_family_plan(result))
+    return validate_louisiana_plan(validate_north_dakota_plan(validate_virginia_plan(
+        validate_oregon_plan(validate_native_state_family_plan(result)))))
 
 
 def collect_sources(collector, baseline):
@@ -1880,6 +1908,16 @@ def collect_sources(collector, baseline):
             if source["adapter"] == OREGON_ADAPTER:
                 def parse(body, templates=templates, url=url):
                     return oregon_statistics(body, templates, url, acquire=collector.acquire)
+            elif source["adapter"] == VIRGINIA_ADAPTER:
+                def parse(body, templates=templates, url=url):
+                    return virginia_statistics(body, templates, url, acquire=collector.acquire)
+            elif source["adapter"] == NORTH_DAKOTA_ADAPTER:
+                def parse(body, templates=templates, url=url):
+                    return north_dakota_statistics(
+                        body, templates, url, acquire=collector.acquire)
+            elif source["adapter"] == LOUISIANA_ADAPTER:
+                def parse(body, templates=templates, url=url):
+                    return louisiana_statistics(body, templates, url, acquire=collector.acquire)
             elif source["adapter"] == NATIVE_STATE_FAMILY_ADAPTER:
                 def parse(body, templates=templates, url=url):
                     return native_state_family_statistics(

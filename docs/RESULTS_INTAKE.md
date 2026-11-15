@@ -12,6 +12,59 @@ The tool publishes data to the separate `results-data` branch. It does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+
+## Reviewed Louisiana post-election onboarding
+
+The default registry binds the reviewed official navigation and publisher-script
+evidence to the exact statewide and parish workbook routes. Without that complete
+authority declaration, onboarding is held. A successful capture adds 3,783
+source-defined observations: one unselected state parent, 64 parish parents and
+3,718 precinct rows. The 258 saved early/mail observations remain unchanged;
+new local rows enter only the official view.
+
+The literal measure is **# VOTING**, not candidate votes, independently verified
+unique people or automatically qualified physical ballots. Source registration
+stocks remain context; analytical rates and new map joins are withheld. Missing
+source clocks and reporting counters remain missing. Repeated collection preserves
+identities; revised counts use the same validated projection and failures retain
+last-good values.
+
+## Reviewed North Dakota native ballot adapter
+
+The reviewed election-348/House-22055 family refreshes 53 county parents and 358
+source units from the full-results, election and turnout JSON products. Explicit
+native ballot buckets and county/state controls reconcile independently of House
+candidate votes, which are consistency checks only. Legacy county ordinals are
+not FIPS codes. Existing 338 map joins, 20 geometry holds and all held rates remain
+unchanged. Native projection requires matching complete prior vectors and exact
+source lineage, including on subsequent updates.
+
+These are producer capabilities, not claims of successful hosted acquisition or
+live activation. Accepted delivery receipts identify the actual deployed scope.
+
+## Reviewed Virginia native locality adapter
+
+The collector supports the 133 already reviewed Virginia locality parent
+observations from the official 2026 general-election JSON family. The exact
+state root and all 133 reviewed locality URLs are source-identity pinned.
+The parent projection uses each locality election's literal `ballotsCast`;
+it never substitutes precinct `voterTurnout`, candidate votes, a locality
+sum for the statewide zero, or pooled voting modes.
+
+The complete native query retains all 2,529 precinct rows, including both
+`ballotsCast` and `voterTurnout`, registrations, UUIDs, names, reporting
+vectors and distinct source clocks. Precinct registrations reconcile to
+locality and statewide `totalVoters`, but remain unqualified rate context.
+The statewide `ballotsCast=0` is retained as an unqualified control.
+Existing early/mail/history frames, all geographic joins and every rate hold
+remain unchanged. The separate 710-row mapped native layer is verified
+against `ballotsCast` but is not rewritten by this source-only integration;
+the other 1,819 native units remain held.
+
+This adapter is a producer capability, not a claim of hosted collection,
+runtime activation or website acceptance. Those require separately pinned
+complete packets and live acceptance.
+
 ## Reviewed Oregon county turnout adapter
 
 The collector supports the 36 already reviewed Oregon county observations using
@@ -47,6 +100,9 @@ Published collector state uses a checksum-bound gzip/base64 JSON envelope so
 complete retained facts do not exceed Git's per-file limit. Decoding is bounded
 and verified before reuse; older uncompressed states remain readable. This is
 lossless storage, not a smaller query set or a changed runtime size limit.
+Exact duplicate feed payloads may reference their full granular-state entry.
+Collection, recovery and publication validate the alias target and checksum;
+repacking an already compact state is idempotent.
 
 Granular source facts are stored once in the complete
 `granular-source-queries.json.gz` query. The bounded snapshot retains exact

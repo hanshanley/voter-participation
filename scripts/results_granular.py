@@ -596,9 +596,29 @@ def reviewed_source_bridge(entry, rows):
 
 def project(baseline, granular):
     """Create successor bodies, preserving old versions, IDs, views and join decisions."""
+    addition_changes = []
+    for entry in granular.values():
+        data = entry.get("data") if isinstance(entry, dict) else None
+        addition = data.get("reviewed_count_addition") if isinstance(data, dict) else None
+        if entry.get("status") == "reported" and addition is not None:
+            from scripts.louisiana_bootstrap import apply_addition
+            before_index = json.loads(baseline["index.json"])
+            before_path = before_index["states"]["LA"]["file"]
+            before_ids = {row["id"] for row in json.loads(
+                gzip.decompress(baseline[before_path]))["records"]}
+            baseline = apply_addition(baseline, addition)
+            after_index = json.loads(baseline["index.json"])
+            after_path = after_index["states"]["LA"]["file"]
+            for row in json.loads(gzip.decompress(baseline[after_path]))["records"]:
+                if row["id"] not in before_ids:
+                    addition_changes.append({
+                        "state_code": "LA", "id": row["id"], "previous": None,
+                        "current": row["count"]["value"],
+                        "source_status": "reviewed_addition",
+                    })
     result = dict(baseline)
     index = json.loads(baseline["index.json"])
-    changed = []
+    changed = addition_changes
     by_state = {}
     for key, entry in sorted(granular.items()):
         if entry.get("status") == "reported" and entry.get("data") is not None:
@@ -629,9 +649,22 @@ def project(baseline, granular):
                 row["count"] = {"value": value, "literal": value,
                                 "status": "reported" if value is not None else "unknown"}
                 source = entry["source"]
-                numerical_pin = entry["data"].get("numerical_input_pins", {}).get(
-                    "voterTurnout_Electiondata", source)
-                url = entry["data"].get("source_url", source["url"])
+                numerical_pins = entry["data"].get("numerical_input_pins", {})
+                source_input = update.get("source_input")
+                if source_input is None:
+                    numerical_pin = numerical_pins.get("voterTurnout_Electiondata", source)
+                    url = entry["data"].get("source_url", source["url"])
+                else:
+                    numerical_pin = numerical_pins.get(source_input)
+                    declared = native.get("source_original_pin")
+                    if (not isinstance(numerical_pin, dict)
+                            or not isinstance(declared, dict)
+                            or numerical_pin.get("url") != declared.get("url")
+                            or numerical_pin.get("sha256") != declared.get("sha256")
+                            or numerical_pin.get("bytes") != declared.get("bytes")
+                            or native.get("source_input") != source_input):
+                        raise ValueError("Native per-update numerical input declaration differs")
+                    url = numerical_pin["url"]
                 row["source"].update(url=url, input_sha256=numerical_pin["sha256"],
                                      selector={"native_refresh": native})
                 timezone = native.get("source_clock_timezone_literal",

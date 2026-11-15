@@ -28,6 +28,32 @@ REVIEWED_FAMILY_SOURCE_IDS = {
     "AZ": "accepted-export:bc9f1e93785e4a83148b96afa6855701f511be995f7469b8e9e4dfcb7e6cb51f:reporting/AZ",
     "WY": "accepted-export:cea7eba88d5ae521db73653ce33992dbe2d253a2854cd81d27655890e74be161:reporting/WY",
 }
+ND_CANONICAL_SOURCE_ID = (
+    "accepted-export:14ba49ba698b3fa4ebe3ee2e846f964f4f13e7b882f7a3cd66a89eee7df77783:"
+    "precincts"
+)
+ND_MATCHED_SOURCE_ID = (
+    "accepted-export:cbc13e678def482cbc9bdc74d690694eab6d148c9ed71365269bb2b21ecce9e1:"
+    "matched/ND"
+)
+ND_GEOMETRY_SHA = "cbc13e678def482cbc9bdc74d690694eab6d148c9ed71365269bb2b21ecce9e1"
+ND_EXPORT_SHA = "14ba49ba698b3fa4ebe3ee2e846f964f4f13e7b882f7a3cd66a89eee7df77783"
+ND_STORED_SOURCE_URL = "https://www.themarginoferror.com/participation-local/ND.json.gz"
+ND_STORED_UNIT_URL = (
+    "https://raw.githubusercontent.com/hanshanley/margin_of_error/"
+    "2e7b240d3cece70001ef573dd487538d46ebd5cd/data/precinct-results/"
+    "20261105-north-dakota-02/participation.json.gz"
+)
+ND_RESULTS_URL = (
+    "https://resultsnd.sos.nd.gov/results/north-dakota/348/FullDataFile.json"
+)
+ND_GEOMETRY_URL = (
+    "https://raw.githubusercontent.com/hanshanley/margin_of_error/"
+    "2e7b240d3cece70001ef573dd487538d46ebd5cd/data/precinct-results/"
+    "20261105-north-dakota-02/2026/ND.geojson.gz"
+)
+ND_VECTOR_KEY = "automatic_native_refresh_source_vector"
+ND_VECTOR_CONTRACT = "participation.nd_native_refresh_source_vector.v1"
 
 
 def encoded(value: Any) -> bytes:
@@ -132,7 +158,23 @@ def changed_records(before_files: dict[str, bytes], after_files: dict[str, bytes
         old = state_records(before_files, before_index, code)
         new = state_records(after_files, after_index, code)
         if set(old) != set(new):
-            raise ValueError(f"Automatic refresh may update only existing count IDs: {code}")
+            removed = set(old) - set(new)
+            added = set(new) - set(old)
+            reviewed = (
+                code == "LA" and not removed and len(added) == 3783
+                and all(
+                    new[identity].get("source", {}).get("id")
+                        == "la-sos-post-election-statistics-2026-11-03"
+                    and new[identity].get("denominator") is None
+                    and new[identity].get("view", {}).get("maps_approved") is False
+                    and new[identity].get("view", {}).get(
+                        "frontend_activation_approved") is False
+                    for identity in added
+                )
+            )
+            if not reviewed:
+                raise ValueError(
+                    f"Automatic refresh may update only existing count IDs unless explicitly reviewed: {code}")
         for identity in old:
             if old[identity] != new[identity]:
                 if observation_identity(old[identity]) != observation_identity(new[identity]):
@@ -142,7 +184,330 @@ def changed_records(before_files: dict[str, bytes], after_files: dict[str, bytes
     return before, after, changed_states
 
 
+def _north_dakota_identity(value: Any) -> dict[str, str] | None:
+    if not isinstance(value, dict):
+        return None
+    county_id = value.get("county_id", value.get("county"))
+    county_name = value.get("county_name")
+    precinct_id = value.get("precinct_id", value.get("precinct"))
+    precinct_name = value.get("precinct_name")
+    if (
+        not isinstance(county_id, str)
+        or len(county_id) != 5
+        or not county_id.startswith("38")
+        or not county_id[2:].isdigit()
+        or not all(isinstance(item, str) and item for item in (
+            county_name, precinct_id, precinct_name))
+    ):
+        return None
+    return {
+        "state_code": "ND", "county_id": county_id, "county_name": county_name,
+        "precinct_id": precinct_id, "precinct_name": precinct_name,
+    }
+
+
+def _north_dakota_row_identity(row: dict[str, Any]) -> dict[str, str] | None:
+    if (
+        row.get("geography", {}).get("state_code") != "ND"
+        or row.get("geography", {}).get("level") != "reporting_unit"
+    ):
+        return None
+    view, source = row.get("view", {}), row.get("source", {})
+    if source.get("id") == ND_CANONICAL_SOURCE_ID:
+        native = view.get("native_record")
+        if isinstance(native, dict) and isinstance(native.get("canonical_identity"), dict):
+            return _north_dakota_identity(native["canonical_identity"])
+        return _north_dakota_identity(native)
+    if source.get("id") == ND_MATCHED_SOURCE_ID:
+        return _north_dakota_identity(view.get("participation"))
+    return None
+
+
+def _north_dakota_common(row: dict[str, Any]) -> None:
+    if (
+        row.get("contract") != "participation.observation.v1"
+        or row.get("election") != {
+            "date": None, "id": "us-2026-general-previously-reviewed",
+            "qualification": "previously_reviewed", "type": "general", "year": 2026,
+        }
+        or row.get("measure") != {
+            "id": "previously-reviewed-participation-count",
+            "kind": "participation_reported",
+            "literal": "Reported ballots (previously reviewed export label, not a new native qualification)",
+            "mode": "source_defined", "unit": "source_reported_count",
+        }
+        or row.get("denominator") is not None
+        or row.get("source", {}).get("classification") != "public_aggregate"
+        or row.get("source", {}).get("fields") != row.get("view")
+    ):
+        raise ValueError("North Dakota native/canonical qualification vector changed")
+
+
+def _north_dakota_legacy_canonical(row: dict[str, Any],
+                                   identity: dict[str, str]) -> None:
+    _north_dakota_common(row)
+    source, view = row["source"], row["view"]
+    expected_native = {
+        "ballots": row["count"]["value"], "candidate_votes_exceed_ballots": False,
+        "county": identity["county_id"], "county_name": identity["county_name"],
+        "denominator": None,
+        "key": f"ND|{identity['county_id']}|{identity['precinct_id']}",
+        "measure": "reported_ballots", "precinct": identity["precinct_id"],
+        "precinct_name": identity["precinct_name"],
+        "quality": "No precinct electorate denominator. Do not reuse county/state voting-age estimates.",
+        "reported_pct": None, "state_code": "ND", "year": 2026,
+    }
+    if (
+        source.get("id") != ND_CANONICAL_SOURCE_ID
+        or source.get("url") != ND_STORED_SOURCE_URL
+        or source.get("input_sha256") != ND_EXPORT_SHA
+        or not isinstance(source.get("selector"), dict)
+        or source["selector"].get("input") != "additional/ND.json.gz"
+        or source["selector"].get("partition") != "precincts"
+        or isinstance(source["selector"].get("ordinal"), bool)
+        or not isinstance(source["selector"].get("ordinal"), int)
+        or source["selector"]["ordinal"] < 0
+        or row.get("source_clock") != {
+            "literal": "See frozen source snapshot",
+            "qualification": "previously_reviewed_export_label_not_new_native_clock",
+            "timezone": None,
+        }
+        or row.get("reporting_status") != {
+            "complete": None, "literal": None, "reported_units": None, "total_units": None}
+        or view.get("native_record") != expected_native
+        or view.get("ballots") != row["count"]["value"]
+        or view.get("county") != identity["county_name"]
+        or view.get("county_id") != "additional:ND:" + identity["county_id"]
+        or view.get("denominator") is not None
+        or view.get("denominator_basis") != "electorate_not_supplied"
+        or view.get("geography_level") != "county"
+        or view.get("maps_approved") is not False
+        or view.get("native_printed_pct") is not None
+        or view.get("reported_pct") is not None
+        or view.get("reported_units") is not None
+        or view.get("total_units") is not None
+        or view.get("review_id") != "additional:20261105-north-dakota-02"
+        or view.get("source_rows") != 0
+        or view.get("source_status_literal") is not None
+        or view.get("source_update_label") != "See frozen source snapshot"
+        or view.get("source_url") != ND_STORED_UNIT_URL
+        or view.get("state_code") != "ND"
+        or view.get("unit") != identity["precinct_name"]
+        or view.get("unit_key")
+           != f"ND|{identity['county_id']}|{identity['precinct_id']}"
+        or view.get("unit_kind") != "source_reporting_unit"
+        or view.get("year") != 2026
+        or row.get("geography", {}).get("name") != identity["precinct_name"]
+        or row.get("geography", {}).get("parent_id")
+           != "ND|additional:ND:" + identity["county_id"]
+    ):
+        raise ValueError("North Dakota legacy canonical source vector changed")
+
+
+def _north_dakota_record_count(record: dict[str, Any]) -> int | None:
+    value = record.get("TotalBallotsCast")
+    buckets = record.get("BallotsCast")
+    if value is None:
+        if buckets in (None, []):
+            return None
+        if (
+            isinstance(buckets, list)
+            and len(buckets) == 1
+            and buckets[0] == {
+                "BallotsCast": 0, "BallotsReceived": 0,
+                "VotePercent": 0, "VoteTypeID": "1",
+            }
+            and record.get("PrecinctsReporting") == record.get("TotalPrecincts")
+        ):
+            return 0
+        raise ValueError("North Dakota reviewed native count vector changed")
+    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+        raise ValueError("North Dakota reviewed native count vector changed")
+    expected = [{
+        "BallotsCast": value, "BallotsReceived": value,
+        "VotePercent": 0 if value == 0 else 100, "VoteTypeID": "1",
+    }]
+    if buckets != expected or record.get("TotalBallotsReceived", value) != value:
+        raise ValueError("North Dakota reviewed native count vector changed")
+    return value
+
+
+def _north_dakota_reviewed_canonical(row: dict[str, Any],
+                                     identity: dict[str, str]) -> None:
+    _north_dakota_common(row)
+    source, view = row["source"], row["view"]
+    native = view.get("native_record")
+    record = native.get("record") if isinstance(native, dict) else None
+    if (
+        source.get("id") != ND_CANONICAL_SOURCE_ID
+        or source.get("url") != ND_RESULTS_URL
+        or not isinstance(source.get("input_sha256"), str)
+        or len(source["input_sha256"]) != 64
+        or source.get("selector") != {"native_refresh": native}
+        or view.get("source_url") != ND_RESULTS_URL
+        or view.get("source_sha256") != source["input_sha256"]
+        or view.get("ballots") != row["count"]["value"]
+        or view.get("denominator") is not None
+        or view.get("reported_pct") is not None
+        or not isinstance(native, dict)
+        or native.get("canonical_identity") != identity
+        or native.get("analytical_denominator") is not None
+        or native.get("analytical_rate") is not None
+        or native.get("geographic_join_changed") is not False
+        or native.get("native_reporting_complete_qualified") is not False
+        or native.get("source_clock_timezone_literal") != "UTC"
+        or native.get("query") != {
+            "canonical_identity": identity, "source_clock_timezone_literal": "UTC"}
+        or not isinstance(record, dict)
+        or record.get("LocationID") != identity["precinct_id"]
+        or _north_dakota_record_count(record) != row["count"]["value"]
+        or record.get("PrecinctsReporting")
+           != row.get("reporting_status", {}).get("reported_units")
+        or record.get("TotalPrecincts")
+           != row.get("reporting_status", {}).get("total_units")
+        or native.get("registered_voters_retained_not_analytical_denominator") is not None
+        or isinstance(native.get("house_candidate_votes_not_ballots"), bool)
+        or not isinstance(native.get("house_candidate_votes_not_ballots"), int)
+        or native["house_candidate_votes_not_ballots"] < 0
+        or (row["count"]["value"] is not None
+            and native["house_candidate_votes_not_ballots"] > row["count"]["value"])
+        or not isinstance(native.get("source_version"), str)
+        or not native["source_version"].startswith("v")
+        or not native["source_version"][1:].isdigit()
+        or native.get("source_status_literal") not in (
+            "IsOfficial=false", "IsOfficial=true")
+        or row.get("source_clock", {}).get("literal") != view.get("source_update_label")
+        or row.get("source_clock", {}).get("timezone") != "UTC"
+        or row.get("source_clock", {}).get("qualification")
+           != "native_clock_or_explicitly_not_supplied"
+        or row.get("reporting_status", {}).get("reported_units")
+           != view.get("reported_units")
+        or row.get("reporting_status", {}).get("total_units") != view.get("total_units")
+        or row.get("reporting_status", {}).get("complete") is not None
+        or view.get("automatic_source_refresh") is not True
+    ):
+        raise ValueError("North Dakota reviewed canonical source vector changed")
+
+
+def _north_dakota_native(row: dict[str, Any],
+                         identity: dict[str, str]) -> dict[str, Any]:
+    _north_dakota_common(row)
+    source, view = row["source"], row["view"]
+    participation = view.get("participation")
+    key = f"ND|{identity['county_id']}|{identity['precinct_id']}"
+    if (
+        source.get("id") != ND_MATCHED_SOURCE_ID
+        or source.get("url") != ND_GEOMETRY_URL
+        or source.get("input_sha256") != ND_GEOMETRY_SHA
+        or not isinstance(source.get("selector"), dict)
+        or source["selector"].get("input")
+           != "data/precinct-results/20261105-north-dakota-02/2026/ND.geojson.gz"
+        or source["selector"].get("partition") != "matched/ND"
+        or isinstance(source["selector"].get("ordinal"), bool)
+        or not isinstance(source["selector"].get("ordinal"), int)
+        or source["selector"]["ordinal"] < 0
+        or view.get("source_url") != ND_RESULTS_URL
+        or view.get("state_code") != "ND"
+        or view.get("county_id") != identity["county_id"]
+        or view.get("county") != identity["county_name"]
+        or view.get("key") != key
+        or view.get("unit_key") != key
+        or view.get("precinct_code") != identity["precinct_id"]
+        or view.get("precinct") != identity["precinct_name"]
+        or view.get("unit") != identity["precinct_name"]
+        or view.get("year") != 2026
+        or view.get("denominator") is not None
+        or view.get("reported_pct") is not None
+        or view.get("denominator_basis") != "previously_reviewed_native_denominator"
+        or not isinstance(participation, dict)
+        or _north_dakota_identity(participation) != identity
+        or participation.get("key") != key
+        or participation.get("ballots") != row["count"]["value"]
+        or participation.get("denominator") is not None
+        or participation.get("reported_pct") is not None
+        or participation.get("measure") != "reported_ballots"
+        or participation.get("year") != 2026
+        or row.get("geography", {}).get("name") != identity["precinct_name"]
+        or row.get("geography", {}).get("parent_id") != "ND|" + identity["county_id"]
+        or row.get("geography", {}).get("join") != {
+            "evidence": "Existing source-specific qualification retained from accepted c4ccdf4; no new geographic approval.",
+            "feature_key": key, "reference_id": ND_GEOMETRY_SHA, "status": "approved",
+        }
+    ):
+        raise ValueError("North Dakota approved native source vector changed")
+    return participation
+
+
+def _north_dakota_preimage(native: dict[str, Any],
+                           previous: dict[str, Any]) -> None:
+    identity = _north_dakota_row_identity(native)
+    if identity is None or identity != _north_dakota_row_identity(previous):
+        raise ValueError("North Dakota native/canonical literal identity differs")
+    participation = _north_dakota_native(native, identity)
+    if (
+        native.get("count") != previous.get("count")
+        or native.get("denominator") != previous.get("denominator")
+        or native.get("election") != previous.get("election")
+        or native.get("measure") != previous.get("measure")
+    ):
+        raise ValueError("North Dakota native/canonical count or qualification differs")
+    mirror = native["view"].get(ND_VECTOR_KEY)
+    if mirror is None:
+        _north_dakota_legacy_canonical(previous, identity)
+        if (
+            participation != previous["view"]["native_record"]
+            or native.get("source_clock") != {
+                "literal": None,
+                "qualification": "previously_reviewed_export_label_not_new_native_clock",
+                "timezone": None,
+            }
+            or native.get("reporting_status") != previous.get("reporting_status")
+            or native.get("quality", {}).get("conflicts")
+               != previous.get("quality", {}).get("conflicts")
+            or native.get("quality", {}).get("native_conflict_status")
+               != previous.get("quality", {}).get("native_conflict_status")
+            or native.get("quality", {}).get("notes", [])[-2:]
+               != previous.get("quality", {}).get("notes", [])[-2:]
+        ):
+            raise ValueError("North Dakota legacy saved-format normalization differs")
+        return
+    _north_dakota_reviewed_canonical(previous, identity)
+    expected = {
+        "contract": ND_VECTOR_CONTRACT,
+        "source_family": "north_dakota_reviewed_native_turnout",
+        "canonical_observation_id": previous["id"],
+        "canonical_vector": pin(encoded(previous)),
+    }
+    if (
+        mirror != expected
+        or native.get("source_clock") != previous.get("source_clock")
+        or native.get("reporting_status") != previous.get("reporting_status")
+        or native["view"].get("ballots") != previous["count"]["value"]
+        or native["view"].get("source_url") != previous["view"].get("source_url")
+        or native["view"].get("source_update_label")
+           != previous["view"].get("source_update_label")
+    ):
+        raise ValueError("North Dakota saved canonical source vector preimage differs")
+
+
+def north_dakota_compatibility_identity(row: dict[str, Any]) -> bytes | None:
+    identity = _north_dakota_row_identity(row)
+    if identity is None:
+        return None
+    return encoded({
+        "schema": "reviewed_north_dakota_literal_reporting_unit",
+        **identity,
+        "election_date": "2026-11-03",
+        "measure_kind": "participation_reported",
+        "measure_unit": "source_reported_count",
+        "measure_mode": "source_defined",
+    })
+
+
 def compatibility_identity(row: dict[str, Any]) -> bytes | None:
+    north_dakota = north_dakota_compatibility_identity(row)
+    if north_dakota is not None:
+        return north_dakota
     view = row.get("view", {})
     native = view.get("native_record")
     if not isinstance(native, dict):
@@ -210,7 +575,14 @@ def project_compatible_observation(native: dict[str, Any],
     if not (compatibility_identity(native) == compatibility_identity(previous)
             == compatibility_identity(current)):
         raise ValueError("Compatible native/canonical source identity differs")
-    if native.get("view", {}).get("native_record") != previous.get("view", {}).get("native_record"):
+    north_dakota = north_dakota_compatibility_identity(native) is not None
+    if north_dakota:
+        _north_dakota_preimage(native, previous)
+        identity = _north_dakota_row_identity(current)
+        if identity is None:
+            raise ValueError("North Dakota current canonical identity differs")
+        _north_dakota_reviewed_canonical(current, identity)
+    elif native.get("view", {}).get("native_record") != previous.get("view", {}).get("native_record"):
         raise ValueError("Compatible native vector preimage differs")
     if native.get("count") != previous.get("count"):
         raise ValueError("Compatible native count preimage differs")
@@ -226,7 +598,22 @@ def project_compatible_observation(native: dict[str, Any],
             result["reporting_status"][key] = copy.deepcopy(current["reporting_status"][key])
     result["source_clock"]["literal"] = current.get("source_clock", {}).get("literal")
     result["source_clock"]["timezone"] = current.get("source_clock", {}).get("timezone")
+    if north_dakota:
+        result["source_clock"]["qualification"] = current.get(
+            "source_clock", {}).get("qualification")
     result["view"] = projected(result["view"], current["view"])
+    if north_dakota:
+        participation = copy.deepcopy(result["view"]["participation"])
+        participation["ballots"] = current["count"]["value"]
+        participation["denominator"] = None
+        participation["reported_pct"] = None
+        result["view"]["participation"] = participation
+        result["view"][ND_VECTOR_KEY] = {
+            "contract": ND_VECTOR_CONTRACT,
+            "source_family": "north_dakota_reviewed_native_turnout",
+            "canonical_observation_id": current["id"],
+            "canonical_vector": pin(encoded(current)),
+        }
     result["source"]["fields"] = copy.deepcopy(result["view"])
     return result
 

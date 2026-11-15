@@ -204,7 +204,7 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         "from scripts import results_pdf_boston, results_json_statistics, results_pdf_periodic; "
         "from scripts import results_pdf_periodic_ocr, automatic_native_refresh; "
         "from scripts import results_pdf_affiliations, results_pdf_jefferson, results_pdf_cass, results_pdf_dunn; "
-        "from scripts import results_native_state_family; "
+        "from scripts import results_native_state_family, results_native_virginia; "
         "from scripts import native_pdf, pdf_group_queries; "
         "import json; "
         "assert pdf.Path('code/scripts/results_pdf_cass.py').is_file(); "
@@ -213,6 +213,16 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         "assert pdf.Path('code/scripts/results_pdf_dunn.py').is_file(); "
         "assert pdf.Path('code/tests/test_results_pdf_dunn.py').is_file(); "
         "assert pdf.Path('code/tests/test_results_native_state_family.py').is_file(); "
+        "assert pdf.Path('code/scripts/results_native_virginia.py').is_file(); "
+        "assert pdf.Path('code/tests/test_results_native_virginia.py').is_file(); "
+        "assert pdf.Path('code/tests/test_results_native_virginia_repair.py').is_file(); "
+        "assert pdf.Path('code/scripts/results_native_louisiana_runtime.py').is_file(); "
+        "assert pdf.Path('code/scripts/louisiana_bootstrap.py').is_file(); "
+        "assert pdf.Path('code/tests/test_louisiana_onboarding.py').is_file(); "
+        "assert pdf.Path('code/tests/LOUISIANA_ONBOARDING_TESTS.txt').is_file(); "
+        "assert pdf.Path('code/tests/fixtures/louisiana-native/authority-resolution.json').is_file(); "
+        "assert pdf.Path('code/tests/fixtures/louisiana-native/route-authority.json').is_file(); "
+        "assert pdf.Path('code/tests/fixtures/louisiana-native/source-baseline/index.json').is_file(); "
         "assert pdf.Path('code/tests/fixtures/dunn-accepted.json').is_file(); "
         "assert (pdf.Path('code/tests/fixtures/results_pdf_periodic') / "
         "'complete-products.json.gz').is_file(); "
@@ -227,7 +237,9 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         "'code/tests/test_results_pdf_cass.py', "
         "'code/tests/test_results_native_cass.py', "
         "'code/tests/test_results_pdf_dunn.py', "
-        "'code/tests/test_results_native_state_family.py']) == 0"],
+        "'code/tests/test_results_native_state_family.py', "
+        "'code/tests/test_results_native_virginia.py', "
+        "'code/tests/test_results_native_virginia_repair.py']) == 0"],
         cwd=packet, check=True, capture_output=True)
     assert (tmp_path / "reproduced/granular-source-queries.json.gz").is_file()
     assert (tmp_path / "reproduced/declared-numerical-queries.json.gz").is_file()
@@ -297,6 +309,17 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(tmp_path
     monkeypatch.setattr(intake.Collector, "acquire", unavailable)
     work = tmp_path / "run"
     report = intake.collect(registry, work, now=NOW)
+    collected = intake.read(work / "state.json")
+    full_entry = {
+        "status": "reported",
+        "source": {"url": "https://official.example/native"},
+        "data": {"updates": [{"id": "one", "value": 0}],
+                 "complete_native_query": [0, None, 7]},
+    }
+    collected.setdefault("feeds", {})["LA-native"] = copy.deepcopy(full_entry)
+    collected.setdefault("granular", {})["LA-native"] = copy.deepcopy(full_entry)
+    collected = intake.compact_collector_state(collected)
+    intake.write(work / "state.json", collected)
     repo = tmp_path / "repository"
     remote = tmp_path / "remote.git"
     subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)
@@ -316,6 +339,8 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(tmp_path
     assert intake.unpack_state(published) == intake.read(work / "state.json")
     _, restored = intake.publisher_state(repo, "results-data", "fixture/results", tmp_path / "next")
     assert restored == intake.read(work / "state.json")
+    hydrated = intake.hydrate_collector_state(restored)
+    assert hydrated["feeds"]["LA-native"]["data"] == full_entry["data"]
     assert subprocess.check_output(["git", "-C", str(repo), "symbolic-ref", "HEAD"]).strip() == b"refs/heads/main"
     intake.write(work / "publication-parent.json", {"parent": result["data_commit"]})
     assert intake.publish(repo, "results-data", "fixture/results", work)["status"] == "unchanged"
@@ -332,6 +357,64 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(tmp_path
     interrupted = intake.unpack_state(json.loads(subprocess.check_output(
         ["git", "-C", str(repo), "show", head + ":state.json"])))
     assert interrupted["feeds"] == restored["feeds"]
+
+
+
+def test_granular_alias_compaction_is_idempotent_strict_and_publishable():
+    full_entry = {
+        "status": "reported",
+        "source": {"url": "https://official.example/native"},
+        "data": {"updates": [{"id": "one", "value": 0}],
+                 "complete_native_query": [0, None, 7]},
+    }
+    state = {
+        "source_stops": copy.deepcopy(EMPTY_STOPS),
+        "feeds": {"LA-native": copy.deepcopy(full_entry)},
+        "granular": {"LA-native": copy.deepcopy(full_entry)},
+        "house": {}, "districts": {}, "directories": {}, "products": {},
+    }
+    compact = intake.compact_collector_state(state)
+    assert intake.compact_collector_state(compact) == compact
+    assert intake.pack_state(state) == intake.pack_state(compact)
+    unpacked = intake.unpack_state(json.loads(intake.pack_state(compact)))
+    assert unpacked == compact
+    assert intake.hydrate_collector_state(unpacked) == state
+    legacy = {"source_stops": copy.deepcopy(EMPTY_STOPS),
+              "feeds": {"old": {"data": 0}}}
+    assert intake.hydrate_collector_state(
+        intake.compact_collector_state(legacy)) == legacy
+    for mutation in ("contract", "key", "pin", "missing_pin", "extra"):
+        broken = copy.deepcopy(compact)
+        alias = broken["feeds"]["LA-native"]["data"]
+        if mutation == "contract":
+            alias["contract"] = "changed"
+        elif mutation == "key":
+            alias["granular_key"] = "different"
+        elif mutation == "pin":
+            alias["data_pin"]["sha256"] = "0" * 64
+        elif mutation == "missing_pin":
+            alias.pop("data_pin")
+        else:
+            alias["extra"] = True
+        with pytest.raises(ValueError):
+            intake.compact_collector_state(broken)
+        with pytest.raises(ValueError):
+            intake.hydrate_collector_state(broken)
+        with pytest.raises(ValueError):
+            intake.pack_state(broken)
+    missing = copy.deepcopy(compact)
+    del missing["granular"]["LA-native"]
+    with pytest.raises(ValueError, match="target is missing"):
+        intake.pack_state(missing)
+    null_full = copy.deepcopy(compact)
+    null_full["granular"]["LA-native"]["data"] = None
+    with pytest.raises(ValueError, match="no full data"):
+        intake.pack_state(null_full)
+    alias_full = copy.deepcopy(compact)
+    alias_full["granular"]["LA-native"]["data"] = copy.deepcopy(
+        alias_full["feeds"]["LA-native"]["data"])
+    with pytest.raises(ValueError, match="full data is an alias"):
+        intake.pack_state(alias_full)
 
 
 def test_complete_state_storage_preserves_legacy_unknown_zero_and_full_native_facts(monkeypatch):

@@ -116,6 +116,44 @@ def test_checksum_bound_granular_hydration_restores_exact_full_updates():
     assert runtime.hydrate_granular_sources(hydrated, None) is hydrated
 
 
+@pytest.mark.parametrize("change", [None, "reference", "summary", "source", "missing_granular"])
+def test_externalized_observation_restores_full_query_and_rejects_mismatched_mirrors(change):
+    snapshot, packet, full = granular_reference_fixture()
+    compact = snapshot["granular_sources"]["AZ-native"]["data"]
+    snapshot["participation_observations"] = [{
+        "state_code": "AZ", "channel": "AZ-native",
+        "status": full["AZ-native"]["status"],
+        "source": copy.deepcopy(full["AZ-native"]["source"]),
+        "observation": {
+            "contract": "participation.externalized_native_query.v1",
+            "summary": copy.deepcopy(compact["summary"]),
+            "full_data": {
+                **compact["full_data"],
+                "qualification": (
+                    "Lossless exact native data externalized from the bounded snapshot."),
+            },
+        },
+    }]
+    observation = snapshot["participation_observations"][0]
+    if change == "reference":
+        observation["observation"]["full_data"]["sha256"] = "b" * 64
+    elif change == "summary":
+        observation["observation"]["summary"]["projected_updates"]["records"] = 2
+    elif change == "source":
+        observation["source"]["sha256"] = "b" * 64
+    elif change == "missing_granular":
+        snapshot["granular_sources"] = {}
+    if change:
+        with pytest.raises(ValueError, match="Externalized"):
+            runtime.hydrate_granular_sources(snapshot, packet)
+    else:
+        before = copy.deepcopy(snapshot)
+        hydrated = runtime.hydrate_granular_sources(snapshot, packet)
+        assert hydrated["participation_observations"][0]["observation"] == full["AZ-native"]["data"]
+        assert snapshot == before
+        assert runtime.hydrate_granular_sources(hydrated, None) is hydrated
+
+
 @pytest.mark.parametrize("change", ["missing_packet", "wrong_hash", "wrong_key", "wrong_summary"])
 def test_granular_hydration_refuses_missing_or_changed_replay_data(change):
     snapshot, packet, _ = granular_reference_fixture()

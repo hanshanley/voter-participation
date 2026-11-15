@@ -109,6 +109,87 @@ def compressed(body):
     return bytes(result)
 
 
+GRANULAR_ALIAS_CONTRACT = "participation.granular_state_alias.v1"
+GRANULAR_ALIAS_QUALIFICATION = (
+    "Lossless duplicate indexed to the complete granular state entry.")
+GRANULAR_ALIAS_KEYS = {
+    "contract", "granular_key", "data_pin", "qualification"}
+
+
+def _is_granular_alias_candidate(value):
+    return isinstance(value, dict) and (
+        value.get("contract") == GRANULAR_ALIAS_CONTRACT
+        or {"granular_key", "data_pin"} <= set(value))
+
+
+def _validate_granular_alias(identity, alias, full_data):
+    if full_data is None:
+        raise ValueError("Collector granular alias has no full data")
+    if not isinstance(alias, dict) or set(alias) != GRANULAR_ALIAS_KEYS:
+        raise ValueError("Collector granular alias shape differs")
+    if alias["contract"] != GRANULAR_ALIAS_CONTRACT:
+        raise ValueError("Collector granular alias contract differs")
+    if alias["granular_key"] != identity:
+        raise ValueError("Collector granular alias key differs")
+    if alias["qualification"] != GRANULAR_ALIAS_QUALIFICATION:
+        raise ValueError("Collector granular alias qualification differs")
+    if alias["data_pin"] != pin(encoded(full_data)):
+        raise ValueError("Collector granular alias pin differs")
+
+
+def compact_collector_state(state):
+    result = copy.deepcopy(state)
+    granular = result.get("granular", {})
+    feeds = result.get("feeds", {})
+    for identity, entry in feeds.items():
+        feed_data = entry.get("data")
+        if identity not in granular and _is_granular_alias_candidate(feed_data):
+            raise ValueError("Collector granular alias target is missing")
+    for identity, entry in granular.items():
+        if identity not in feeds:
+            continue
+        feed_data = feeds[identity].get("data")
+        full_data = entry.get("data")
+        if _is_granular_alias_candidate(full_data):
+            raise ValueError("Collector granular full data is an alias")
+        if full_data is None:
+            if _is_granular_alias_candidate(feed_data):
+                raise ValueError("Collector granular alias has no full data")
+            continue
+        if feed_data != full_data:
+            _validate_granular_alias(identity, feed_data, full_data)
+            continue
+        full_data = copy.deepcopy(full_data)
+        granular[identity] = copy.deepcopy(entry)
+        feeds[identity] = copy.deepcopy(feeds[identity])
+        feeds[identity]["data"] = {
+            "contract": GRANULAR_ALIAS_CONTRACT,
+            "granular_key": identity,
+            "data_pin": pin(encoded(full_data)),
+            "qualification": GRANULAR_ALIAS_QUALIFICATION,
+        }
+    return result
+
+
+def hydrate_collector_state(state):
+    result = copy.deepcopy(state)
+    granular = result.get("granular", {})
+    for identity, entry in result.get("feeds", {}).items():
+        feed_data = entry.get("data")
+        if identity not in granular:
+            if _is_granular_alias_candidate(feed_data):
+                raise ValueError("Collector granular alias target is missing")
+            continue
+        full_data = granular[identity].get("data")
+        if _is_granular_alias_candidate(full_data):
+            raise ValueError("Collector granular full data is an alias")
+        if feed_data == full_data:
+            continue
+        _validate_granular_alias(identity, feed_data, full_data)
+        entry["data"] = copy.deepcopy(full_data)
+    return result
+
+
 def baseline_inputs(folder, declaration):
     result = {}
     for name, expected in declaration["files"].items():
@@ -242,7 +323,7 @@ class Collector:
         return result
 
 
-def numeric_observations(baseline, feeds):
+def numeric_observations(baseline, feeds, granular_reference=None, granular_keys=()):
     rows = []
     index = json.loads(baseline["index.json"])
     for state, item in sorted(index["states"].items()):
@@ -254,9 +335,36 @@ def numeric_observations(baseline, feeds):
         if (entry.get("data") is not None and identity.split("-")[0] in STATES
                 and not identity.endswith(("-capabilities", "-directory"))
                 and entry["data"].get("numerical_data_qualified") is not False):
+            observation = entry["data"]
+            if identity in granular_keys:
+                if not isinstance(granular_reference, dict):
+                    raise ValueError("Granular observation externalization requires its full query")
+                data = observation if isinstance(observation, dict) else {}
+                updates = data.get("updates")
+                summary = {
+                    key: value for key, value in data.items()
+                    if value is None or isinstance(value, (bool, int, float, str))
+                }
+                if isinstance(updates, list):
+                    summary["projected_updates"] = {
+                        "records": len(updates),
+                        "reported": sum(item.get("value") is not None for item in updates),
+                        "unknown": sum(item.get("value") is None for item in updates),
+                        "observation_ids_pin": digest(encoded(sorted(
+                            item["id"] for item in updates))),
+                    }
+                observation = {
+                    "contract": "participation.externalized_native_query.v1",
+                    "summary": summary,
+                    "full_data": {
+                        **granular_reference, "key": identity,
+                        "qualification": (
+                            "Lossless exact native data externalized from the bounded snapshot."),
+                    },
+                }
             rows.append({"state_code": identity.split("-")[0], "channel": identity,
                          "status": entry["status"], "source": entry["source"],
-                         "observation": entry["data"]})
+                         "observation": observation})
     return rows
 
 
@@ -298,7 +406,10 @@ def snapshot_granular_sources(granular, query_reference):
 
 def project(inputs, baseline):
     feeds, house, declared = (inputs[key] for key in ("feeds", "house", "districts"))
-    observations = numeric_observations(baseline, feeds)
+    granular_query = compressed(encoded(inputs.get("granular", {})))
+    granular_reference = {"file": "granular-source-queries.json.gz", **pin(granular_query)}
+    observations = numeric_observations(
+        baseline, feeds, granular_reference, set(inputs.get("granular", {})))
     house_states = state_totals(house, declared)
     coverage = []
     for state, name in STATES.items():
@@ -352,8 +463,6 @@ def project(inputs, baseline):
                    for key, entry in sorted({**feeds, **{"house-" + k: v for k, v in house.items()}}.items())]
     products_query = compressed(encoded(inputs.get("products", {})))
     products_reference = {"file": "declared-numerical-queries.json.gz", **pin(products_query)}
-    granular_query = compressed(encoded(inputs.get("granular", {})))
-    granular_reference = {"file": "granular-source-queries.json.gz", **pin(granular_query)}
     products_index = {
         identity: {**{key: value for key, value in entry.items() if key != "data"},
                    "factual_data_available": entry.get("data") is not None,
@@ -405,6 +514,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
             raise ValueError("Initial complete numerical source state changed")
         seed = json.loads(seed_body)
         previous = {**seed, **previous}
+    previous = hydrate_collector_state(previous)
     extras = {}
     for name, declaration in config.get("accepted_queries", {}).items():
         body = (registry_path.parent / str(relative(declaration["file"]))).read_bytes()
@@ -457,7 +567,15 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
             return data
         key = state + "-official"
         feeds[key] = collector.capture(key, url, parse)
+    from scripts.louisiana_bootstrap import IDENTITY as LA_BOOTSTRAP_ID
+    from scripts.louisiana_bootstrap import collect_bootstrap as collect_la_bootstrap
+    la_bootstrap = collect_la_bootstrap(
+        collector, baseline, config.get("louisiana_post_election_authority"))
     granular = results_granular.collect(collector, baseline)
+    if la_bootstrap.get("status") == "reported":
+        granular[LA_BOOTSTRAP_ID] = la_bootstrap
+    else:
+        feeds[LA_BOOTSTRAP_ID] = la_bootstrap
     for key, entry in prior.items():
         if key not in feeds:
             feeds[key] = {**copy.deepcopy(entry), "status": "retained_after_failure",
@@ -510,15 +628,20 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     inputs = {"feeds": feeds, "house": house, "districts": declared, "directories": directories,
               "granular": granular, "products": products}
     inputs["source_stops"] = collector.stopped
-    write(work / "state.json", inputs)
+    stored_inputs = compact_collector_state(inputs)
+    write(work / "state.json", stored_inputs)
     outputs = project(inputs, baseline)
     outputs.update(extras)
-    package_members = {"inputs/selected-source-facts.json": encoded(inputs),
+    package_members = {"inputs/selected-source-facts.json": encoded(stored_inputs),
                        "inputs/registry.json": encoded(config),
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_granular.py", "results_native.py",
              "results_native_state_family.py", "results_native_oregon.py",
+             "results_native_virginia.py", "results_native_north_dakota.py",
+             "results_native_louisiana.py", "results_native_louisiana_runtime.py",
+             "louisiana_onboarding.py", "louisiana_bootstrap.py",
+             "participation_count_additions.py",
              "results_pdf_ocr.py", "results_pdf_tables.py", "results_pdf_boston.py",
              "results_pdf_grids.json",
              "results_json_statistics.py", "automatic_native_refresh.py",
@@ -542,9 +665,20 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                  "test_results_pdf_cass.py", "test_results_native_cass.py",
                  "test_results_pdf_dunn.py",
                  "test_results_native_state_family.py", "test_results_native_oregon.py",
+                 "test_results_native_virginia.py",
+                 "test_results_native_virginia_repair.py",
+                 "test_results_native_north_dakota.py",
+                 "test_results_native_north_dakota_repair.py",
+                 "test_results_intake_north_dakota_package.py",
+                 "test_louisiana_onboarding.py",
                  "test_automatic_native_refresh.py",
                  "test_nationwide.py", "test_current.py"):
         package_members["code/tests/" + name] = (ROOT / "tests" / name).read_bytes()
+    name = "tests/nd_native_fixture_support.py"
+    package_members["code/" + name] = (ROOT / name).read_bytes()
+    for name in ("accepted-templates.json.gz", "nd-complete-facts.json.gz"):
+        relative_name = "tests/fixtures/nd-native-automatic/" + name
+        package_members["code/" + relative_name] = (ROOT / relative_name).read_bytes()
     for name in ("complete-products.json.gz", "sussex-ocr-views.json.gz"):
         package_members["code/tests/fixtures/results_pdf_periodic/" + name] = (
             ROOT / "tests/fixtures/results_pdf_periodic" / name).read_bytes()
@@ -553,6 +687,20 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     name = "tests/fixtures/dunn-accepted.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/oregon-accepted.json"
+    package_members["code/" + name] = (ROOT / name).read_bytes()
+    for fixture in ("authority-resolution.json", "route-authority.json",
+            "election-dates.json", "state-source-declaration.json",
+            "parish-source-declaration.json", "2026_1103_sta.xlsx",
+            "2026_1103_par.xlsx"):
+        name = "tests/fixtures/louisiana-native/" + fixture
+        package_members["code/" + name] = (ROOT / name).read_bytes()
+    fixture_root = ROOT / "tests/fixtures/louisiana-native/source-baseline"
+    for path in sorted(fixture_root.rglob("*")):
+        if path.is_file():
+            name = "tests/fixtures/louisiana-native/source-baseline/" + str(
+                path.relative_to(fixture_root))
+            package_members["code/" + name] = path.read_bytes()
+    name = "tests/LOUISIANA_ONBOARDING_TESTS.txt"
     package_members["code/" + name] = (ROOT / name).read_bytes()
     version = digest(encoded({"inputs": inputs, "baseline": config["baseline"],
                               "outputs": {name: pin(body) for name, body in outputs.items()},
@@ -576,7 +724,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
             archive.writestr(info, body)
     for name, body in {**outputs, "complete-results.zip": buffer.getvalue()}.items():
         (work / name).write_bytes(body)
-    write(work / "state.json", inputs)
+    write(work / "state.json", stored_inputs)
     report = {"passed": True, "version": version, "checked_at": now.isoformat(),
               "jurisdictions": 51, "house_districts_declared": len(declared),
               "house_districts_available": sum(item.get("data") is not None for item in house.values()),
@@ -596,7 +744,8 @@ def replay(package, output):
             raise ValueError("Changed complete packet member: " + name)
     config = read(package / "inputs/registry.json")
     baseline = baseline_inputs(package / "inputs/accepted-counts", config["baseline"])
-    outputs = project(read(package / "inputs/selected-source-facts.json"), baseline)
+    outputs = project(hydrate_collector_state(
+        read(package / "inputs/selected-source-facts.json")), baseline)
     for name in config.get("accepted_queries", {}):
         body = (package / "queries" / str(relative(name))).read_bytes()
         expected = config["accepted_queries"][name]
@@ -615,6 +764,7 @@ def replay(package, output):
 
 
 def pack_state(state):
+    state = compact_collector_state(state)
     body = encoded(state)
     if len(body) > MAX_STATE_BYTES:
         raise ValueError("Complete collector state exceeds the size guard")

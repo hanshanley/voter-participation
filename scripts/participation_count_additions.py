@@ -87,6 +87,19 @@ def append_reviewed(state, source, baseline_pin):
                 raise IntakeError("addition_scope", "New sources cannot silently shadow selected display identities")
             frame[partition].extend(new)
             selected.update(new)
+    unselected = binding.get("unselected", [])
+    if (not isinstance(unselected, list) or len(unselected) != len(set(unselected))
+            or any(key not in by_id or key in selected for key in unselected)):
+        raise IntakeError("addition_scope", "Reviewed unselected additions are absent, duplicated or selected")
+    for key in unselected:
+        row, view = by_id[key], by_id[key]["view"]
+        if (row["geography"]["level"] != "state"
+                or row["geography"]["parent_id"] is not None
+                or view.get("native_parent_only") is not True
+                or view.get("maps_approved") is not False
+                or view.get("frontend_activation_approved") is not False):
+            raise IntakeError("addition_scope", "Only an explicit nonvisual state parent may remain unselected")
+    selected.update(unselected)
     if selected != set(by_id):
         raise IntakeError("addition_scope", "Every new observation needs a reviewed access path")
     result["records"].extend(copy.deepcopy(rows))
