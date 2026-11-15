@@ -69,6 +69,49 @@ def test_full_archive_is_deterministic_and_never_just_a_pointer():
         runtime.archive_bytes({"../outside": b"not allowed"})
 
 
+def test_state_only_statistics_refresh_does_not_leave_old_numeric_query_or_invent_clock():
+    from scripts import results_state_statistics as state
+
+    text = ("<h1>" + state.TITLE + "</h1><p>" + state.HEADING + "</p>"
+            "<p>Early Voting Turnout: 0 (0.0%)</p><p>Absentee Voting: 2 (40.0%)</p>"
+            "<p>Election Day Turnout: 3 (60.0%)</p><p>Total Voter Turnout: 5</p>"
+            "<p>Turnout of Active Registered Voters: 59.8%</p>")
+    data = state.statistics(text.encode(), "SC")
+    old = {
+        "state_code": "SC", "county_id": "native:SC:statewide", "geography_level": "statewide",
+        "mode": "official", "source_url": state.URL, "ballots": 4,
+        "participation_measure_kind": "source_defined_participation_count",
+        "cast_ballot_count_qualified": False, "unique_voter_count_qualified": False,
+        "maps_approved": False, "denominator": None, "denominator_basis": state.BASIS,
+        "native_statistics": {"retained_original": 4}}
+    current = {"snapshot": {"reporting": [old, {"state_code": "ND", "ballots": 7}],
+                            "early_voting": [{"state_code": "SC", "ballots": 2}]}}
+    body = gzip.compress(encoded(current), mtime=0)
+    files = {"current.json.gz": body, "index.json": encoded({
+        "current_snapshot": {"file": "current.json.gz", **pin(body)}})}
+    original = copy.deepcopy(files)
+    snapshot = {
+        "jurisdictions": [{"state_code": "SC", "statewide_administrative_status": "reported",
+                          "statewide_administrative_observation": data}],
+        "source_status": [{"source": "SC-official", "source_url": state.URL}],
+        "participation_observations": [{"channel": "SC-official", "status": "reported",
+            "observation": data, "source": {"url": state.URL, "sha256": "b" * 64}}]}
+    result = runtime.refresh_current(files, snapshot)
+    changed = json.loads(gzip.decompress(result["current.json.gz"]))
+    row = changed["snapshot"]["reporting"][0]
+    assert row["ballots"] == row["native_statistics"]["fields"]["total"]["value"] == 5
+    assert row["native_statistics"]["fields"]["early"]["value"] == 0
+    assert row["accepted_source_provenance"]["native_statistics"] == {"retained_original": 4}
+    assert row["denominator"] is row["reported_pct"] is row["source_update_label"] is None
+    assert row["maps_approved"] is row["unique_voter_count_qualified"] is False
+    assert changed["snapshot"]["reporting"][1] == current["snapshot"]["reporting"][1]
+    assert changed["snapshot"]["early_voting"] == current["snapshot"]["early_voting"]
+    assert files == original
+    assert runtime.refresh_current(result, snapshot) == result
+    snapshot["jurisdictions"][0]["statewide_administrative_status"] = "retained_after_failure"
+    assert runtime.refresh_current(files, snapshot) == files
+
+
 def granular_reference_fixture():
     update = {"id": "synthetic-observation", "value": 0}
     full_entry = {

@@ -28,6 +28,10 @@ from scripts.participation_intake.publisher import GitPublisher
 from scripts.precinct_source_batch import discover_links, is_general_precinct_product
 from scripts.results_house import NATIONAL_URL, candidate_results, districts, state_totals
 from scripts import results_granular
+from scripts import results_state_statistics
+
+
+OFFICIAL = {**OFFICIAL, **results_state_statistics.OFFICIAL}
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -561,7 +565,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
             feeds.update(group)
     for state, url in OFFICIAL.items():
         def parse(body, state=state):
-            data = parse_official(body, state)
+            data = (results_state_statistics.statistics(body, state)
+                    if state in results_state_statistics.OFFICIAL else parse_official(body, state))
             if state == "NC":
                 data["complete_county_query"], data["county_reconciliation"] = reporting_counts(json.loads(body))
             return data
@@ -637,6 +642,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_granular.py", "results_native.py",
+             "results_state_statistics.py",
+             "results_native_delaware.py", "results_native_dc.py",
              "results_native_state_family.py", "results_native_oregon.py",
              "results_native_virginia.py", "results_native_north_dakota.py",
              "results_native_louisiana.py", "results_native_louisiana_runtime.py",
@@ -658,6 +665,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     for name in code:
         package_members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_results_intake.py", "test_results_granular.py", "test_results_native.py",
+                 "test_results_state_statistics.py",
+                 "test_results_native_delaware.py", "test_results_native_dc.py",
                  "test_results_native_workbooks.py",
                  "test_results_pdf_tables.py", "test_results_pdf_boston.py",
                  "test_results_json_statistics.py", "test_results_pdf_periodic.py",
@@ -688,6 +697,11 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/oregon-accepted.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
+    name = "tests/fixtures/dc-native-accepted.json"
+    package_members["code/" + name] = (ROOT / name).read_bytes()
+    for name in ("accepted-de-shard.json", "complete-turnout.json"):
+        relative_name = "tests/fixtures/delaware-native/" + name
+        package_members["code/" + relative_name] = (ROOT / relative_name).read_bytes()
     for fixture in ("authority-resolution.json", "route-authority.json",
             "election-dates.json", "state-source-declaration.json",
             "parish-source-declaration.json", "2026_1103_sta.xlsx",

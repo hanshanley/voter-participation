@@ -12,6 +12,42 @@ The tool publishes data to the separate `results-data` branch. It does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Reviewed Delaware, D.C. and South Carolina adapters
+
+The default collector now connects Delaware's declared 2026 turnout JSON,
+D.C.'s election declaration, voter summary and full participation CSV, and
+South Carolina's statewide statistical announcement. These are bounded producer
+capabilities; hosted capture and live activation require separate acceptance.
+
+Delaware refreshes its one existing statewide observation. The complete query
+retains the statewide row and all 41 representative-district contexts, with
+district counts and registrations checked against the state controls. Those
+contexts do not become new county/district/precinct slots or map approvals.
+The source supplies no turnout update clock; candidate/cache timestamps are not
+substituted. Literal official status may advance but must not roll back.
+
+D.C. refreshes its one existing citywide observation only after the two literal
+participation contests, full 144-unit identity inventory, source registration
+and ballot totals reconcile. Candidate votes are not turnout. The election's
+native UTC update clock is checked for rollback. Separate September registration,
+early voting and received-mail reports are neither substituted nor added.
+Existing provisional/reference qualifications and map holds remain unchanged.
+
+South Carolina refreshes only the existing current-snapshot statewide
+source-defined participation count. Statistical labels, complete mode components,
+literal printed percentages and full selected factual queries are validated.
+Printed percentage disagreements remain unrepaired. The unsupplied exact
+registration stock, analytical rate, count clock, timezone and reporting counters
+remain unknown; publication/certification dates do not fill them. Prior native
+statistics are retained as historical provenance, not left as the current query.
+
+All three adapters preserve existing identities, views, literal measures and
+qualification holds, retain last-good values after failure, and export complete
+factual queries with portable tests. No new local coverage, demographic turnout,
+geographic join, model fit or nationwide-completeness claim follows from them.
+South Carolina's current-snapshot projection changes the numerical runtime engine
+and therefore requires a deliberate consumer engine-pin delivery.
+
 
 ## Verified VA/ND/LA delivery
 

@@ -1,0 +1,450 @@
+{
+  "contract": "participation.delaware_native_fixture.v1",
+  "rows": [
+    {
+      "Ballots Cast": "8,082",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 42.71,
+      "Reg Voters": "18,925",
+      "Representative District": "01",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "5,824",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 31.8,
+      "Reg Voters": "18,317",
+      "Representative District": "02",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "5,456",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 31.84,
+      "Reg Voters": "17,134",
+      "Representative District": "03",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "15,820",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 58.27,
+      "Reg Voters": "27,150",
+      "Representative District": "04",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "7,238",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 42.12,
+      "Reg Voters": "17,186",
+      "Representative District": "05",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "10,380",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 55.06,
+      "Reg Voters": "18,852",
+      "Representative District": "06",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "7,786",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 45.03,
+      "Reg Voters": "17,290",
+      "Representative District": "07",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "10,404",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 48.0,
+      "Reg Voters": "21,674",
+      "Representative District": "08",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "13,382",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 55.21,
+      "Reg Voters": "24,239",
+      "Representative District": "09",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "10,025",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 53.89,
+      "Reg Voters": "18,603",
+      "Representative District": "10",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "9,009",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 45.65,
+      "Reg Voters": "19,734",
+      "Representative District": "11",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "13,072",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 58.84,
+      "Reg Voters": "22,216",
+      "Representative District": "12",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "6,982",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 38.63,
+      "Reg Voters": "18,073",
+      "Representative District": "13",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "14,965",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 63.81,
+      "Reg Voters": "23,452",
+      "Representative District": "14",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "8,936",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 44.87,
+      "Reg Voters": "19,915",
+      "Representative District": "15",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "7,284",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 37.99,
+      "Reg Voters": "19,171",
+      "Representative District": "16",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "7,505",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 39.56,
+      "Reg Voters": "18,973",
+      "Representative District": "17",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "7,217",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 40.95,
+      "Reg Voters": "17,626",
+      "Representative District": "18",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "8,074",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 43.01,
+      "Reg Voters": "18,773",
+      "Representative District": "19",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "15,126",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 63.2,
+      "Reg Voters": "23,933",
+      "Representative District": "20",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "9,386",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 50.0,
+      "Reg Voters": "18,773",
+      "Representative District": "21",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "12,027",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 57.22,
+      "Reg Voters": "21,019",
+      "Representative District": "22",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "8,518",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 54.68,
+      "Reg Voters": "15,579",
+      "Representative District": "23",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "6,839",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 38.35,
+      "Reg Voters": "17,834",
+      "Representative District": "24",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "6,879",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 46.77,
+      "Reg Voters": "14,708",
+      "Representative District": "25",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "6,607",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 40.98,
+      "Reg Voters": "16,122",
+      "Representative District": "26",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "10,471",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 51.24,
+      "Reg Voters": "20,434",
+      "Representative District": "27",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "8,317",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 41.9,
+      "Reg Voters": "19,849",
+      "Representative District": "28",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "11,442",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 50.3,
+      "Reg Voters": "22,749",
+      "Representative District": "29",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "8,830",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 42.36,
+      "Reg Voters": "20,845",
+      "Representative District": "30",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "6,851",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 39.85,
+      "Reg Voters": "17,190",
+      "Representative District": "31",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "5,633",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 34.22,
+      "Reg Voters": "16,463",
+      "Representative District": "32",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "9,199",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 46.06,
+      "Reg Voters": "19,972",
+      "Representative District": "33",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "9,796",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 45.98,
+      "Reg Voters": "21,303",
+      "Representative District": "34",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "8,005",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 41.3,
+      "Reg Voters": "19,384",
+      "Representative District": "35",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "9,830",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 48.5,
+      "Reg Voters": "20,269",
+      "Representative District": "36",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "9,660",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 52.19,
+      "Reg Voters": "18,508",
+      "Representative District": "37",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "18,090",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 65.94,
+      "Reg Voters": "27,432",
+      "Representative District": "38",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "6,664",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 37.36,
+      "Reg Voters": "17,835",
+      "Representative District": "39",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "7,215",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 37.38,
+      "Reg Voters": "19,304",
+      "Representative District": "40",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "12,036",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 51.0,
+      "Reg Voters": "23,599",
+      "Representative District": "41",
+      "Results Type": "UNOFFICIAL RESULTS"
+    },
+    {
+      "Ballots Cast": "384,862",
+      "Election Id": "GE2026",
+      "Election Name": "2026 General Election",
+      "Percentage": 47.49,
+      "Reg Voters": "810,407",
+      "Representative District": "ALL",
+      "Results Type": "UNOFFICIAL RESULTS"
+    }
+  ],
+  "source_qualification": {
+    "all_mode_complete": false,
+    "analysis_rate_approved": false,
+    "certified": false,
+    "complete_independent_json_decoders": [
+      "Python standard-library json",
+      "Node JSON.parse",
+      "Chromium JSON.parse"
+    ],
+    "complete_independent_numerical_reviewers": [
+      "Python Decimal",
+      "Node numeric/vector assertions"
+    ],
+    "declaring_page_url": "https://elections.delaware.gov/results/enr/GE2026.html?group=state",
+    "election_date": "2026-11-03",
+    "election_id": "GE2026",
+    "entire_native_fields": 4510,
+    "entire_native_records": 290,
+    "hardcoded_display_registration_not_used_as_evidence": true,
+    "maps_approved": false,
+    "native_fips": null,
+    "native_inputs": {
+      "native-county-candidate-results.json": {
+        "bytes": 45414,
+        "cache_key_is_client_generated_not_source_report_time": true,
+        "exact_declared_election_id": "GE2026",
+        "requested_url": "https://elections.delaware.gov/results/enr/Election_ByCountyWithWilmington_ID_GE2026.json?t=1793998067092",
+        "response_url": "https://elections.delaware.gov/results/enr/Election_ByCountyWithWilmington_ID_GE2026.json?t=1793998067092",
+        "retrieved_at_utc": "2026-11-06T20:47:47.268086+00:00",
+        "sha256": "595050d1ea97fab154d3d61f328138c53e63688c16dc51b06b8679387f086cff",
+        "source_script_sha256": "ee821c831ae08bdfb53294692807dc67efd8896ab04eb02deb889f3e0598be58",
+        "source_template": "/results/enr/Election_ByCountyWithWilmington_ID_${electionId}.json?t=${tstamp}",
+        "status": 200,
+        "verified_tls": true
+      },
+      "native-state-candidate-results.json": {
+        "bytes": 65250,
+        "cache_key_is_client_generated_not_source_report_time": true,
+        "exact_declared_election_id": "GE2026",
+        "requested_url": "https://elections.delaware.gov/results/enr/Election_StatewideResults_ID_GE2026.json?t=1793998066988",
+        "response_url": "https://elections.delaware.gov/results/enr/Election_StatewideResults_ID_GE2026.json?t=1793998066988",
+        "retrieved_at_utc": "2026-11-06T20:47:47.091986+00:00",
+        "sha256": "a7a8282f4a70eafcfb05fc932e2becc0df8371ed69ffef28f05391684ba3ca1c",
+        "source_script_sha256": "ee821c831ae08bdfb53294692807dc67efd8896ab04eb02deb889f3e0598be58",
+        "source_template": "/results/enr/Election_StatewideResults_ID_${electionId}.json?t=${tstamp}",
+        "status": 200,
+        "verified_tls": true
+      },
+      "native-turnout.json": {
+        "bytes": 8250,
+        "cache_key_is_client_generated_not_source_report_time": true,
+        "exact_declared_election_id": "GE2026",
+        "requested_url": "https://elections.delaware.gov/results/enr/Election_VoterTurnout_ID_GE2026.json?t=1793998066823",
+        "response_url": "https://elections.delaware.gov/results/enr/Election_VoterTurnout_ID_GE2026.json?t=1793998066823",
+        "retrieved_at_utc": "2026-11-06T20:47:46.988753+00:00",
+        "sha256": "97e93fa638ec4dac3f784d6bd8975cfcac230e7788ad37e86fcbe79443010433",
+        "source_script_sha256": "ee821c831ae08bdfb53294692807dc67efd8896ab04eb02deb889f3e0598be58",
+        "source_template": "/results/enr/Election_VoterTurnout_ID_${electionId}.json?t=${tstamp}",
+        "status": 200,
+        "verified_tls": true
+      }
+    },
+    "native_turnout_timezone": null,
+    "native_turnout_update_clock": null,
+    "no_district_turnout_apportioned_to_counties": true,
+    "separate_candidate_clock": "2026-11-04T03:03:18.364-05:00"
+  }
+}

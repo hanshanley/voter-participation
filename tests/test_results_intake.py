@@ -205,6 +205,7 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         "from scripts import results_pdf_periodic_ocr, automatic_native_refresh; "
         "from scripts import results_pdf_affiliations, results_pdf_jefferson, results_pdf_cass, results_pdf_dunn; "
         "from scripts import results_native_state_family, results_native_virginia; "
+        "from scripts import results_native_delaware, results_native_dc, results_state_statistics; "
         "from scripts import native_pdf, pdf_group_queries; "
         "import json; "
         "assert pdf.Path('code/scripts/results_pdf_cass.py').is_file(); "
@@ -216,6 +217,15 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         "assert pdf.Path('code/scripts/results_native_virginia.py').is_file(); "
         "assert pdf.Path('code/tests/test_results_native_virginia.py').is_file(); "
         "assert pdf.Path('code/tests/test_results_native_virginia_repair.py').is_file(); "
+        "assert pdf.Path('code/scripts/results_native_delaware.py').is_file(); "
+        "assert pdf.Path('code/tests/test_results_native_delaware.py').is_file(); "
+        "assert pdf.Path('code/tests/fixtures/delaware-native/accepted-de-shard.json').is_file(); "
+        "assert pdf.Path('code/tests/fixtures/delaware-native/complete-turnout.json').is_file(); "
+        "assert pdf.Path('code/scripts/results_native_dc.py').is_file(); "
+        "assert pdf.Path('code/tests/test_results_native_dc.py').is_file(); "
+        "assert pdf.Path('code/tests/fixtures/dc-native-accepted.json').is_file(); "
+        "assert pdf.Path('code/scripts/results_state_statistics.py').is_file(); "
+        "assert pdf.Path('code/tests/test_results_state_statistics.py').is_file(); "
         "assert pdf.Path('code/scripts/results_native_louisiana_runtime.py').is_file(); "
         "assert pdf.Path('code/scripts/louisiana_bootstrap.py').is_file(); "
         "assert pdf.Path('code/tests/test_louisiana_onboarding.py').is_file(); "
@@ -239,7 +249,10 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         "'code/tests/test_results_pdf_dunn.py', "
         "'code/tests/test_results_native_state_family.py', "
         "'code/tests/test_results_native_virginia.py', "
-        "'code/tests/test_results_native_virginia_repair.py']) == 0"],
+        "'code/tests/test_results_native_virginia_repair.py', "
+        "'code/tests/test_results_native_delaware.py', "
+        "'code/tests/test_results_native_dc.py', "
+        "'code/tests/test_results_state_statistics.py']) == 0"],
         cwd=packet, check=True, capture_output=True)
     assert (tmp_path / "reproduced/granular-source-queries.json.gz").is_file()
     assert (tmp_path / "reproduced/declared-numerical-queries.json.gz").is_file()

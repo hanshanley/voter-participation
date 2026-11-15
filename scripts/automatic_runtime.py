@@ -36,6 +36,7 @@ CODE_PATHS = (
     "louisiana_bootstrap.py", "participation_count_additions.py",
     "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
+    "results_state_statistics.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
 
@@ -257,6 +258,10 @@ def refresh_current(files, snapshot):
                 r"[a-f0-9]{64}", observations[0]["source"].get("sha256", "")):
             raise ValueError("Fresh statewide values need their exact native source pin")
         provenance = observations[0]["source"]
+        if "native_state_statistics" in data:
+            from scripts.results_state_statistics import refresh as refresh_state_statistics
+            row.update(refresh_state_statistics(row, data, provenance))
+            continue
         row.setdefault("accepted_source_provenance", {
             name: copy.deepcopy(row.get(name)) for name in (
                 "source_sha256", "source_snapshot", "source_date", "source_retrieved_at",

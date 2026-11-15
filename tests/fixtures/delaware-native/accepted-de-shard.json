@@ -1,0 +1,1427 @@
+{
+  "contract": "participation.count_snapshot.v1",
+  "records": [
+    {
+      "contract": "participation.observation.v1",
+      "count": {
+        "literal": 384862,
+        "status": "reported",
+        "value": 384862
+      },
+      "denominator": {
+        "basis": "native_registered_voters",
+        "literal": "native_registered_voters",
+        "qualified": true,
+        "value": 810407
+      },
+      "election": {
+        "date": null,
+        "id": "us-2026-general-previously-reviewed",
+        "qualification": "previously_reviewed",
+        "type": "general",
+        "year": 2026
+      },
+      "geography": {
+        "id": "DE|state|",
+        "join": {
+          "evidence": "Existing export map qualifications and reference bindings remain literal in source.fields and view; this migration approves no new join.",
+          "feature_key": null,
+          "reference_id": null,
+          "status": "unreviewed"
+        },
+        "level": "state",
+        "name": "Delaware",
+        "parent_id": null,
+        "state_code": "DE"
+      },
+      "id": "e277d3329267a8248624951a9888232c",
+      "measure": {
+        "id": "previously-reviewed-participation-count",
+        "kind": "participation_reported",
+        "literal": "Ballots Cast",
+        "mode": "source_defined",
+        "unit": "source_reported_count"
+      },
+      "quality": {
+        "conflicts": [],
+        "native_conflict_status": "retained_in_source_fields_not_newly_classified",
+        "notes": [
+          "Native statewide ALL Ballots Cast snapshot; all 41 representative-district ballots and registrations reconcile to this separate aggregate.",
+          "Same-report Reg Voters fraction only, not CVAP, VAP, VEP, CPS or demographic turnout. The source does not supply a separate denominator reference date.",
+          "Native turnout update clock and timezone not supplied; candidate ReportTime, retrieval time and client cache keys are not turnout clocks.",
+          "UNOFFICIAL RESULTS does not establish completed all-mode counting, certification or final independently deduplicated unique voters.",
+          "All 124 state candidate vectors, 124 county/city vectors and literal party labels remain separate. Senate selections 378111 are not the 384862 participation count.",
+          "No representative-district turnout is apportioned to counties; the immutable afternoon county observation remains separately preserved.",
+          "One-time migration of accepted public aggregate export; not a new source parse, conflict adjudication, election/boundary certification or independent validation.",
+          "All native fields, conflicts, holds and existing rate decisions remain unchanged in source.fields and view. Export partitions are separate appearances, never additive populations."
+        ]
+      },
+      "reporting_status": {
+        "complete": null,
+        "literal": "UNOFFICIAL RESULTS",
+        "reported_units": null,
+        "total_units": null
+      },
+      "source": {
+        "classification": "public_aggregate",
+        "fields": {
+          "ballots": 384862,
+          "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-state-delaware-native-participation-20261106-01/complete-query.zip",
+          "denominator": 810407,
+          "denominator_basis": "native_registered_voters",
+          "geography_level": "statewide",
+          "maps_approved": false,
+          "mode": "official",
+          "native_printed_pct": "47.49%",
+          "native_record": {
+            "all_mode_complete": "False",
+            "analysis_rate_approved": "False",
+            "ballots_cast": "384862",
+            "certified": "False",
+            "declared_timezone": "",
+            "geography_level": "statewide",
+            "independently_derived_registered_fraction_percent": "47.48996491886175711710288781",
+            "maps_approved": "False",
+            "native_denominator_literal": "Reg Voters",
+            "native_fips": "",
+            "native_measure_literal": "Ballots Cast",
+            "native_printed_percent": "47.49",
+            "native_representative_district": "ALL",
+            "native_update_clock": "",
+            "registered_voters": "810407",
+            "source_status_literal": "UNOFFICIAL RESULTS"
+          },
+          "native_source_updates": [],
+          "observation_type": "Native Ballots Cast (reported statewide snapshot)",
+          "participation_measure_kind": "source_defined_participation_count",
+          "participation_measure_label": "Native Ballots Cast (reported statewide snapshot)",
+          "participation_measure_literal": "Ballots Cast",
+          "quality": [
+            "Native statewide ALL Ballots Cast snapshot; all 41 representative-district ballots and registrations reconcile to this separate aggregate.",
+            "Same-report Reg Voters fraction only, not CVAP, VAP, VEP, CPS or demographic turnout. The source does not supply a separate denominator reference date.",
+            "Native turnout update clock and timezone not supplied; candidate ReportTime, retrieval time and client cache keys are not turnout clocks.",
+            "UNOFFICIAL RESULTS does not establish completed all-mode counting, certification or final independently deduplicated unique voters.",
+            "All 124 state candidate vectors, 124 county/city vectors and literal party labels remain separate. Senate selections 378111 are not the 384862 participation count.",
+            "No representative-district turnout is apportioned to counties; the immutable afternoon county observation remains separately preserved."
+          ],
+          "reported_pct": 47.48996491886176,
+          "reported_units": null,
+          "review_id": "delaware-statewide-participation-20261106-01",
+          "source_date": "Native turnout update clock/timezone not supplied; candidate clock is separate and not substituted.",
+          "source_reporting_label": "Native statewide ALL Ballots Cast snapshot; all 41 representative-district ballots and registrations reconcile to this separate aggregate. Same-report Reg Voters fraction only, not CVAP, VAP, VEP, CPS or demographic turnout. The source does not supply a separate denominator reference date. Native turnout update clock and timezone not supplied; candidate ReportTime, retrieval time and client cache keys are not turnout clocks. UNOFFICIAL RESULTS does not establish completed all-mode counting, certification or final independently deduplicated unique voters. All 124 state candidate vectors, 124 county/city vectors and literal party labels remain separate. Senate selections 378111 are not the 384862 participation count. No representative-district turnout is apportioned to counties; the immutable afternoon county observation remains separately preserved.",
+          "source_rows": 1,
+          "source_status_literal": "UNOFFICIAL RESULTS",
+          "source_update_label": "Native turnout update clock/timezone not supplied; candidate clock is separate and not substituted.",
+          "source_url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/64d0fd238464211b9634b83a8b3f27490f1141ab/data/county-source-reviews/20261106-delaware-statewide-native-01/statewide-participation.csv",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reviewed_unofficial_snapshot",
+          "total_units": null,
+          "validated_pct": 47.48996491886176,
+          "year": 2026
+        },
+        "id": "accepted-export:9dfbfe6ce11851be136dd9036c45b5a52c38bffbfb0231865b4c427c6bb84dd3:states",
+        "input_sha256": "9dfbfe6ce11851be136dd9036c45b5a52c38bffbfb0231865b4c427c6bb84dd3",
+        "selector": {
+          "input": "reviewed.json",
+          "ordinal": 2,
+          "partition": "states"
+        },
+        "url": "https://www.themarginoferror.com/voter-participation/"
+      },
+      "source_clock": {
+        "literal": "Native turnout update clock/timezone not supplied; candidate clock is separate and not substituted.",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "view": {
+        "ballots": 384862,
+        "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-state-delaware-native-participation-20261106-01/complete-query.zip",
+        "denominator": 810407,
+        "denominator_basis": "native_registered_voters",
+        "geography_level": "statewide",
+        "maps_approved": false,
+        "mode": "official",
+        "native_printed_pct": "47.49%",
+        "native_record": {
+          "all_mode_complete": "False",
+          "analysis_rate_approved": "False",
+          "ballots_cast": "384862",
+          "certified": "False",
+          "declared_timezone": "",
+          "geography_level": "statewide",
+          "independently_derived_registered_fraction_percent": "47.48996491886175711710288781",
+          "maps_approved": "False",
+          "native_denominator_literal": "Reg Voters",
+          "native_fips": "",
+          "native_measure_literal": "Ballots Cast",
+          "native_printed_percent": "47.49",
+          "native_representative_district": "ALL",
+          "native_update_clock": "",
+          "registered_voters": "810407",
+          "source_status_literal": "UNOFFICIAL RESULTS"
+        },
+        "native_source_updates": [],
+        "observation_type": "Native Ballots Cast (reported statewide snapshot)",
+        "participation_measure_kind": "source_defined_participation_count",
+        "participation_measure_label": "Native Ballots Cast (reported statewide snapshot)",
+        "participation_measure_literal": "Ballots Cast",
+        "quality": [
+          "Native statewide ALL Ballots Cast snapshot; all 41 representative-district ballots and registrations reconcile to this separate aggregate.",
+          "Same-report Reg Voters fraction only, not CVAP, VAP, VEP, CPS or demographic turnout. The source does not supply a separate denominator reference date.",
+          "Native turnout update clock and timezone not supplied; candidate ReportTime, retrieval time and client cache keys are not turnout clocks.",
+          "UNOFFICIAL RESULTS does not establish completed all-mode counting, certification or final independently deduplicated unique voters.",
+          "All 124 state candidate vectors, 124 county/city vectors and literal party labels remain separate. Senate selections 378111 are not the 384862 participation count.",
+          "No representative-district turnout is apportioned to counties; the immutable afternoon county observation remains separately preserved."
+        ],
+        "reported_pct": 47.48996491886176,
+        "reported_units": null,
+        "review_id": "delaware-statewide-participation-20261106-01",
+        "source_date": "Native turnout update clock/timezone not supplied; candidate clock is separate and not substituted.",
+        "source_reporting_label": "Native statewide ALL Ballots Cast snapshot; all 41 representative-district ballots and registrations reconcile to this separate aggregate. Same-report Reg Voters fraction only, not CVAP, VAP, VEP, CPS or demographic turnout. The source does not supply a separate denominator reference date. Native turnout update clock and timezone not supplied; candidate ReportTime, retrieval time and client cache keys are not turnout clocks. UNOFFICIAL RESULTS does not establish completed all-mode counting, certification or final independently deduplicated unique voters. All 124 state candidate vectors, 124 county/city vectors and literal party labels remain separate. Senate selections 378111 are not the 384862 participation count. No representative-district turnout is apportioned to counties; the immutable afternoon county observation remains separately preserved.",
+        "source_rows": 1,
+        "source_status_literal": "UNOFFICIAL RESULTS",
+        "source_update_label": "Native turnout update clock/timezone not supplied; candidate clock is separate and not substituted.",
+        "source_url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/64d0fd238464211b9634b83a8b3f27490f1141ab/data/county-source-reviews/20261106-delaware-statewide-native-01/statewide-participation.csv",
+        "state": "Delaware",
+        "state_code": "DE",
+        "status": "reviewed_unofficial_snapshot",
+        "total_units": null,
+        "validated_pct": 47.48996491886176,
+        "year": 2026
+      }
+    },
+    {
+      "contract": "participation.observation.v1",
+      "count": {
+        "literal": 148738,
+        "status": "reported",
+        "value": 148738
+      },
+      "denominator": null,
+      "election": {
+        "date": null,
+        "id": "us-2026-general-previously-reviewed",
+        "qualification": "collector_context",
+        "type": "general",
+        "year": 2026
+      },
+      "geography": {
+        "id": "DE|current:state:STATEWIDE:https://civicapi.org/api/v2/early-vote/DE/returned|",
+        "join": {
+          "evidence": "Existing export map qualifications and reference bindings remain literal in source.fields and view; this migration approves no new join.",
+          "feature_key": null,
+          "reference_id": null,
+          "status": "unreviewed"
+        },
+        "level": "state",
+        "name": "STATEWIDE",
+        "parent_id": null,
+        "state_code": "DE"
+      },
+      "id": "ba3810e1b5f9b0477d2e2a45393b26cd",
+      "measure": {
+        "id": "previously-reviewed-participation-count",
+        "kind": "returned",
+        "literal": "Reported ballots (previously reviewed export label, not a new native qualification)",
+        "mode": "mail_returned",
+        "unit": "source_reported_count"
+      },
+      "quality": {
+        "conflicts": [],
+        "native_conflict_status": "retained_in_source_fields_not_newly_classified",
+        "notes": [
+          "One-time migration of accepted public aggregate export; not a new source parse, conflict adjudication, election/boundary certification or independent validation.",
+          "All native fields, conflicts, holds and existing rate decisions remain unchanged in source.fields and view. Export partitions are separate appearances, never additive populations."
+        ]
+      },
+      "reporting_status": {
+        "complete": null,
+        "literal": null,
+        "reported_units": null,
+        "total_units": null
+      },
+      "source": {
+        "classification": "public_aggregate",
+        "fields": {
+          "ballots": 148738,
+          "county": "STATEWIDE",
+          "county_id": "current:state:STATEWIDE:https://civicapi.org/api/v2/early-vote/DE/returned",
+          "denominator": null,
+          "geography": "STATEWIDE",
+          "geography_level": "state",
+          "mode": "mail_returned",
+          "native_election_id_qualified": false,
+          "native_record": {
+            "ballots": 148738,
+            "geography": "STATEWIDE",
+            "geography_level": "state",
+            "mode": "mail_returned",
+            "quality": [],
+            "source_date": "2026-11-02",
+            "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+            "source_snapshot": "20261104T220425Z",
+            "source_update_label": null,
+            "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+            "state": "Delaware",
+            "state_code": "DE",
+            "status": "reported"
+          },
+          "quality": [],
+          "reported_pct": null,
+          "source_date": "2026-11-02",
+          "source_mode": "mail_returned",
+          "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+          "source_snapshot": "20261104T220425Z",
+          "source_update_label": null,
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reported",
+          "year": 2026
+        },
+        "id": "accepted-export:8678a67c8e104a761169e954e15103b0182b10eeb3f7a5452e5ddb29e241a3dd:early_voting",
+        "input_sha256": "8678a67c8e104a761169e954e15103b0182b10eeb3f7a5452e5ddb29e241a3dd",
+        "selector": {
+          "input": "current.json",
+          "ordinal": 587,
+          "partition": "early_voting"
+        },
+        "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dc81c095cec959910c6dfb82da8c9184d7a993f9/public/participation-current/20261104T220424Z/snapshot.json"
+      },
+      "source_clock": {
+        "literal": null,
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "view": {
+        "ballots": 148738,
+        "county": "STATEWIDE",
+        "county_id": "current:state:STATEWIDE:https://civicapi.org/api/v2/early-vote/DE/returned",
+        "denominator": null,
+        "geography": "STATEWIDE",
+        "geography_level": "state",
+        "mode": "mail_returned",
+        "native_election_id_qualified": false,
+        "native_record": {
+          "ballots": 148738,
+          "geography": "STATEWIDE",
+          "geography_level": "state",
+          "mode": "mail_returned",
+          "quality": [],
+          "source_date": "2026-11-02",
+          "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+          "source_snapshot": "20261104T220425Z",
+          "source_update_label": null,
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reported"
+        },
+        "quality": [],
+        "reported_pct": null,
+        "source_date": "2026-11-02",
+        "source_mode": "mail_returned",
+        "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+        "source_snapshot": "20261104T220425Z",
+        "source_update_label": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+        "state": "Delaware",
+        "state_code": "DE",
+        "status": "reported",
+        "year": 2026
+      }
+    },
+    {
+      "contract": "participation.observation.v1",
+      "count": {
+        "literal": 23112,
+        "status": "reported",
+        "value": 23112
+      },
+      "denominator": null,
+      "election": {
+        "date": null,
+        "id": "us-2026-general-previously-reviewed",
+        "qualification": "collector_context",
+        "type": "general",
+        "year": 2026
+      },
+      "geography": {
+        "id": "DE|current:source_region:Kent:https://civicapi.org/api/v2/early-vote/DE/returned|",
+        "join": {
+          "evidence": "Existing export map qualifications and reference bindings remain literal in source.fields and view; this migration approves no new join.",
+          "feature_key": null,
+          "reference_id": null,
+          "status": "unreviewed"
+        },
+        "level": "source_region",
+        "name": "Kent",
+        "parent_id": null,
+        "state_code": "DE"
+      },
+      "id": "59ff20205e2c8b1ed6ba09633a90eb10",
+      "measure": {
+        "id": "previously-reviewed-participation-count",
+        "kind": "returned",
+        "literal": "Reported ballots (previously reviewed export label, not a new native qualification)",
+        "mode": "mail_returned",
+        "unit": "source_reported_count"
+      },
+      "quality": {
+        "conflicts": [],
+        "native_conflict_status": "retained_in_source_fields_not_newly_classified",
+        "notes": [
+          "One-time migration of accepted public aggregate export; not a new source parse, conflict adjudication, election/boundary certification or independent validation.",
+          "All native fields, conflicts, holds and existing rate decisions remain unchanged in source.fields and view. Export partitions are separate appearances, never additive populations."
+        ]
+      },
+      "reporting_status": {
+        "complete": null,
+        "literal": null,
+        "reported_units": null,
+        "total_units": null
+      },
+      "source": {
+        "classification": "public_aggregate",
+        "fields": {
+          "ballots": 23112,
+          "county": "Kent",
+          "county_id": "current:source_region:Kent:https://civicapi.org/api/v2/early-vote/DE/returned",
+          "denominator": null,
+          "geography": "Kent",
+          "geography_level": "source_region",
+          "mode": "mail_returned",
+          "native_election_id_qualified": false,
+          "native_record": {
+            "ballots": 23112,
+            "geography": "Kent",
+            "geography_level": "source_region",
+            "mode": "mail_returned",
+            "quality": [],
+            "source_date": "2026-11-02",
+            "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+            "source_snapshot": "20261104T220425Z",
+            "source_update_label": null,
+            "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+            "state": "Delaware",
+            "state_code": "DE",
+            "status": "reported"
+          },
+          "quality": [],
+          "reported_pct": null,
+          "source_date": "2026-11-02",
+          "source_mode": "mail_returned",
+          "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+          "source_snapshot": "20261104T220425Z",
+          "source_update_label": null,
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reported",
+          "year": 2026
+        },
+        "id": "accepted-export:8678a67c8e104a761169e954e15103b0182b10eeb3f7a5452e5ddb29e241a3dd:early_voting",
+        "input_sha256": "8678a67c8e104a761169e954e15103b0182b10eeb3f7a5452e5ddb29e241a3dd",
+        "selector": {
+          "input": "current.json",
+          "ordinal": 588,
+          "partition": "early_voting"
+        },
+        "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dc81c095cec959910c6dfb82da8c9184d7a993f9/public/participation-current/20261104T220424Z/snapshot.json"
+      },
+      "source_clock": {
+        "literal": null,
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "view": {
+        "ballots": 23112,
+        "county": "Kent",
+        "county_id": "current:source_region:Kent:https://civicapi.org/api/v2/early-vote/DE/returned",
+        "denominator": null,
+        "geography": "Kent",
+        "geography_level": "source_region",
+        "mode": "mail_returned",
+        "native_election_id_qualified": false,
+        "native_record": {
+          "ballots": 23112,
+          "geography": "Kent",
+          "geography_level": "source_region",
+          "mode": "mail_returned",
+          "quality": [],
+          "source_date": "2026-11-02",
+          "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+          "source_snapshot": "20261104T220425Z",
+          "source_update_label": null,
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reported"
+        },
+        "quality": [],
+        "reported_pct": null,
+        "source_date": "2026-11-02",
+        "source_mode": "mail_returned",
+        "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+        "source_snapshot": "20261104T220425Z",
+        "source_update_label": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+        "state": "Delaware",
+        "state_code": "DE",
+        "status": "reported",
+        "year": 2026
+      }
+    },
+    {
+      "contract": "participation.observation.v1",
+      "count": {
+        "literal": 59170,
+        "status": "reported",
+        "value": 59170
+      },
+      "denominator": null,
+      "election": {
+        "date": null,
+        "id": "us-2026-general-previously-reviewed",
+        "qualification": "collector_context",
+        "type": "general",
+        "year": 2026
+      },
+      "geography": {
+        "id": "DE|current:source_region:New Castle:https://civicapi.org/api/v2/early-vote/DE/returned|",
+        "join": {
+          "evidence": "Existing export map qualifications and reference bindings remain literal in source.fields and view; this migration approves no new join.",
+          "feature_key": null,
+          "reference_id": null,
+          "status": "unreviewed"
+        },
+        "level": "source_region",
+        "name": "New Castle",
+        "parent_id": null,
+        "state_code": "DE"
+      },
+      "id": "ea4800f6f543d504d35826d9f6d21dff",
+      "measure": {
+        "id": "previously-reviewed-participation-count",
+        "kind": "returned",
+        "literal": "Reported ballots (previously reviewed export label, not a new native qualification)",
+        "mode": "mail_returned",
+        "unit": "source_reported_count"
+      },
+      "quality": {
+        "conflicts": [],
+        "native_conflict_status": "retained_in_source_fields_not_newly_classified",
+        "notes": [
+          "One-time migration of accepted public aggregate export; not a new source parse, conflict adjudication, election/boundary certification or independent validation.",
+          "All native fields, conflicts, holds and existing rate decisions remain unchanged in source.fields and view. Export partitions are separate appearances, never additive populations."
+        ]
+      },
+      "reporting_status": {
+        "complete": null,
+        "literal": null,
+        "reported_units": null,
+        "total_units": null
+      },
+      "source": {
+        "classification": "public_aggregate",
+        "fields": {
+          "ballots": 59170,
+          "county": "New Castle",
+          "county_id": "current:source_region:New Castle:https://civicapi.org/api/v2/early-vote/DE/returned",
+          "denominator": null,
+          "geography": "New Castle",
+          "geography_level": "source_region",
+          "mode": "mail_returned",
+          "native_election_id_qualified": false,
+          "native_record": {
+            "ballots": 59170,
+            "geography": "New Castle",
+            "geography_level": "source_region",
+            "mode": "mail_returned",
+            "quality": [],
+            "source_date": "2026-11-02",
+            "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+            "source_snapshot": "20261104T220425Z",
+            "source_update_label": null,
+            "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+            "state": "Delaware",
+            "state_code": "DE",
+            "status": "reported"
+          },
+          "quality": [],
+          "reported_pct": null,
+          "source_date": "2026-11-02",
+          "source_mode": "mail_returned",
+          "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+          "source_snapshot": "20261104T220425Z",
+          "source_update_label": null,
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reported",
+          "year": 2026
+        },
+        "id": "accepted-export:8678a67c8e104a761169e954e15103b0182b10eeb3f7a5452e5ddb29e241a3dd:early_voting",
+        "input_sha256": "8678a67c8e104a761169e954e15103b0182b10eeb3f7a5452e5ddb29e241a3dd",
+        "selector": {
+          "input": "current.json",
+          "ordinal": 589,
+          "partition": "early_voting"
+        },
+        "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dc81c095cec959910c6dfb82da8c9184d7a993f9/public/participation-current/20261104T220424Z/snapshot.json"
+      },
+      "source_clock": {
+        "literal": null,
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "view": {
+        "ballots": 59170,
+        "county": "New Castle",
+        "county_id": "current:source_region:New Castle:https://civicapi.org/api/v2/early-vote/DE/returned",
+        "denominator": null,
+        "geography": "New Castle",
+        "geography_level": "source_region",
+        "mode": "mail_returned",
+        "native_election_id_qualified": false,
+        "native_record": {
+          "ballots": 59170,
+          "geography": "New Castle",
+          "geography_level": "source_region",
+          "mode": "mail_returned",
+          "quality": [],
+          "source_date": "2026-11-02",
+          "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+          "source_snapshot": "20261104T220425Z",
+          "source_update_label": null,
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reported"
+        },
+        "quality": [],
+        "reported_pct": null,
+        "source_date": "2026-11-02",
+        "source_mode": "mail_returned",
+        "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+        "source_snapshot": "20261104T220425Z",
+        "source_update_label": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+        "state": "Delaware",
+        "state_code": "DE",
+        "status": "reported",
+        "year": 2026
+      }
+    },
+    {
+      "contract": "participation.observation.v1",
+      "count": {
+        "literal": 66456,
+        "status": "reported",
+        "value": 66456
+      },
+      "denominator": null,
+      "election": {
+        "date": null,
+        "id": "us-2026-general-previously-reviewed",
+        "qualification": "collector_context",
+        "type": "general",
+        "year": 2026
+      },
+      "geography": {
+        "id": "DE|current:source_region:Sussex:https://civicapi.org/api/v2/early-vote/DE/returned|",
+        "join": {
+          "evidence": "Existing export map qualifications and reference bindings remain literal in source.fields and view; this migration approves no new join.",
+          "feature_key": null,
+          "reference_id": null,
+          "status": "unreviewed"
+        },
+        "level": "source_region",
+        "name": "Sussex",
+        "parent_id": null,
+        "state_code": "DE"
+      },
+      "id": "c7e0f0ca397b7558d325c4b0a6b930f4",
+      "measure": {
+        "id": "previously-reviewed-participation-count",
+        "kind": "returned",
+        "literal": "Reported ballots (previously reviewed export label, not a new native qualification)",
+        "mode": "mail_returned",
+        "unit": "source_reported_count"
+      },
+      "quality": {
+        "conflicts": [],
+        "native_conflict_status": "retained_in_source_fields_not_newly_classified",
+        "notes": [
+          "One-time migration of accepted public aggregate export; not a new source parse, conflict adjudication, election/boundary certification or independent validation.",
+          "All native fields, conflicts, holds and existing rate decisions remain unchanged in source.fields and view. Export partitions are separate appearances, never additive populations."
+        ]
+      },
+      "reporting_status": {
+        "complete": null,
+        "literal": null,
+        "reported_units": null,
+        "total_units": null
+      },
+      "source": {
+        "classification": "public_aggregate",
+        "fields": {
+          "ballots": 66456,
+          "county": "Sussex",
+          "county_id": "current:source_region:Sussex:https://civicapi.org/api/v2/early-vote/DE/returned",
+          "denominator": null,
+          "geography": "Sussex",
+          "geography_level": "source_region",
+          "mode": "mail_returned",
+          "native_election_id_qualified": false,
+          "native_record": {
+            "ballots": 66456,
+            "geography": "Sussex",
+            "geography_level": "source_region",
+            "mode": "mail_returned",
+            "quality": [],
+            "source_date": "2026-11-02",
+            "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+            "source_snapshot": "20261104T220425Z",
+            "source_update_label": null,
+            "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+            "state": "Delaware",
+            "state_code": "DE",
+            "status": "reported"
+          },
+          "quality": [],
+          "reported_pct": null,
+          "source_date": "2026-11-02",
+          "source_mode": "mail_returned",
+          "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+          "source_snapshot": "20261104T220425Z",
+          "source_update_label": null,
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reported",
+          "year": 2026
+        },
+        "id": "accepted-export:8678a67c8e104a761169e954e15103b0182b10eeb3f7a5452e5ddb29e241a3dd:early_voting",
+        "input_sha256": "8678a67c8e104a761169e954e15103b0182b10eeb3f7a5452e5ddb29e241a3dd",
+        "selector": {
+          "input": "current.json",
+          "ordinal": 590,
+          "partition": "early_voting"
+        },
+        "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dc81c095cec959910c6dfb82da8c9184d7a993f9/public/participation-current/20261104T220424Z/snapshot.json"
+      },
+      "source_clock": {
+        "literal": null,
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "view": {
+        "ballots": 66456,
+        "county": "Sussex",
+        "county_id": "current:source_region:Sussex:https://civicapi.org/api/v2/early-vote/DE/returned",
+        "denominator": null,
+        "geography": "Sussex",
+        "geography_level": "source_region",
+        "mode": "mail_returned",
+        "native_election_id_qualified": false,
+        "native_record": {
+          "ballots": 66456,
+          "geography": "Sussex",
+          "geography_level": "source_region",
+          "mode": "mail_returned",
+          "quality": [],
+          "source_date": "2026-11-02",
+          "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+          "source_snapshot": "20261104T220425Z",
+          "source_update_label": null,
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state": "Delaware",
+          "state_code": "DE",
+          "status": "reported"
+        },
+        "quality": [],
+        "reported_pct": null,
+        "source_date": "2026-11-02",
+        "source_mode": "mail_returned",
+        "source_retrieved_at": "2026-11-04T22:04:30.586133+00:00",
+        "source_snapshot": "20261104T220425Z",
+        "source_update_label": null,
+        "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+        "state": "Delaware",
+        "state_code": "DE",
+        "status": "reported",
+        "year": 2026
+      }
+    },
+    {
+      "contract": "participation.observation.v1",
+      "count": {
+        "literal": 23112,
+        "status": "reported",
+        "value": 23112
+      },
+      "denominator": null,
+      "election": {
+        "date": null,
+        "id": "us-2026-general-previously-reviewed",
+        "qualification": "collector_context",
+        "type": "general",
+        "year": 2026
+      },
+      "geography": {
+        "id": "DE|additional:DE:10001|",
+        "join": {
+          "evidence": "Existing export map qualifications and reference bindings remain literal in source.fields and view; this migration approves no new join.",
+          "feature_key": null,
+          "reference_id": null,
+          "status": "unreviewed"
+        },
+        "level": "county",
+        "name": "Kent County",
+        "parent_id": null,
+        "state_code": "DE"
+      },
+      "id": "db462cd6e179bbaa56a7078d2f392bee",
+      "measure": {
+        "id": "previously-reviewed-participation-count",
+        "kind": "returned",
+        "literal": "Provider returned activity (native votes counts; not cast ballots)",
+        "mode": "mail_returned",
+        "unit": "source_reported_count"
+      },
+      "quality": {
+        "conflicts": [],
+        "native_conflict_status": "retained_in_source_fields_not_newly_classified",
+        "notes": [
+          "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+          "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred.",
+          "One-time migration of accepted public aggregate export; not a new source parse, conflict adjudication, election/boundary certification or independent validation.",
+          "All native fields, conflicts, holds and existing rate decisions remain unchanged in source.fields and view. Export partitions are separate appearances, never additive populations."
+        ]
+      },
+      "reporting_status": {
+        "complete": null,
+        "literal": "Provider-reported early activity; not a certified government turnout series",
+        "reported_units": null,
+        "total_units": null
+      },
+      "source": {
+        "classification": "public_aggregate",
+        "fields": {
+          "ballots": 23112,
+          "cast_ballot_count_qualified": false,
+          "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip",
+          "county": "Kent County",
+          "county_fips": "10001",
+          "county_id": "additional:DE:10001",
+          "denominator": null,
+          "denominator_basis": "provider_electorate_not_qualified",
+          "geography_level": "county",
+          "maps_approved": true,
+          "native_election_id_qualified": false,
+          "native_printed_pct": null,
+          "native_record": {
+            "categories": {
+              "Democratic": {
+                "color": "#4874a3",
+                "votes": 11905
+              },
+              "Other": {
+                "color": "#e0bb24",
+                "votes": 4557
+              },
+              "Republican": {
+                "color": "#c6606b",
+                "votes": 6650
+              }
+            },
+            "category": "returned",
+            "election_name": "Delaware Ballots Returned",
+            "literal_count_field": "votes",
+            "snapshot_date": "2026-11-02",
+            "source_region": "Kent",
+            "state": "DE"
+          },
+          "participation_measure_label": "Provider returned activity (native votes counts; not cast ballots)",
+          "quality": [
+            "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+            "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+            "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred."
+          ],
+          "reference_geometry": {
+            "boundary_year": 2026,
+            "counties": 3,
+            "path": "data/county-results/20261105-house-02/geometry/DE.geojson.gz",
+            "review_id": "provider-contextual-county-identities-20261109-01",
+            "sha256": "1166cbe39d9ff0dda0cb3122ba784913cb2a1648d7c0ead49d26c13ca1980aed",
+            "uncompressed_sha256": "25ed55c8fcdc0eddcc4483793743e76e14aa14c6cc0529b8a625775ba402b65f",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/6b6b96caed4fa4f7c66fd206a64bd709310a69f2/data/county-results/20261105-house-02/geometry/DE.geojson.gz"
+          },
+          "reported_pct": null,
+          "reported_units": null,
+          "review_id": "additional:20261109-provider-county-frames-01",
+          "source_count_qualified": true,
+          "source_date": "2026-11-02",
+          "source_mode": "mail_returned",
+          "source_provider": "civicAPI early activity",
+          "source_reporting_label": "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "source_rows": 0,
+          "source_status_literal": "Provider-reported early activity; not a certified government turnout series",
+          "source_update_label": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state_code": "DE",
+          "total_units": null,
+          "unique_voter_count_qualified": false,
+          "year": 2026
+        },
+        "id": "accepted-export:b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8:county_frames/mail_returned",
+        "input_sha256": "b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8",
+        "selector": {
+          "input": "additional/DE.json.gz",
+          "ordinal": 0,
+          "partition": "county_frames/mail_returned"
+        },
+        "url": "https://www.themarginoferror.com/participation-local/DE.json.gz"
+      },
+      "source_clock": {
+        "literal": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "view": {
+        "ballots": 23112,
+        "cast_ballot_count_qualified": false,
+        "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip",
+        "county": "Kent County",
+        "county_fips": "10001",
+        "county_id": "additional:DE:10001",
+        "denominator": null,
+        "denominator_basis": "provider_electorate_not_qualified",
+        "geography_level": "county",
+        "maps_approved": true,
+        "native_election_id_qualified": false,
+        "native_printed_pct": null,
+        "native_record": {
+          "categories": {
+            "Democratic": {
+              "color": "#4874a3",
+              "votes": 11905
+            },
+            "Other": {
+              "color": "#e0bb24",
+              "votes": 4557
+            },
+            "Republican": {
+              "color": "#c6606b",
+              "votes": 6650
+            }
+          },
+          "category": "returned",
+          "election_name": "Delaware Ballots Returned",
+          "literal_count_field": "votes",
+          "snapshot_date": "2026-11-02",
+          "source_region": "Kent",
+          "state": "DE"
+        },
+        "participation_measure_label": "Provider returned activity (native votes counts; not cast ballots)",
+        "quality": [
+          "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+          "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred."
+        ],
+        "reference_geometry": {
+          "boundary_year": 2026,
+          "counties": 3,
+          "path": "data/county-results/20261105-house-02/geometry/DE.geojson.gz",
+          "review_id": "provider-contextual-county-identities-20261109-01",
+          "sha256": "1166cbe39d9ff0dda0cb3122ba784913cb2a1648d7c0ead49d26c13ca1980aed",
+          "uncompressed_sha256": "25ed55c8fcdc0eddcc4483793743e76e14aa14c6cc0529b8a625775ba402b65f",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/6b6b96caed4fa4f7c66fd206a64bd709310a69f2/data/county-results/20261105-house-02/geometry/DE.geojson.gz"
+        },
+        "reported_pct": null,
+        "reported_units": null,
+        "review_id": "additional:20261109-provider-county-frames-01",
+        "source_count_qualified": true,
+        "source_date": "2026-11-02",
+        "source_mode": "mail_returned",
+        "source_provider": "civicAPI early activity",
+        "source_reporting_label": "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+        "source_rows": 0,
+        "source_status_literal": "Provider-reported early activity; not a certified government turnout series",
+        "source_update_label": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+        "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+        "state_code": "DE",
+        "total_units": null,
+        "unique_voter_count_qualified": false,
+        "year": 2026
+      }
+    },
+    {
+      "contract": "participation.observation.v1",
+      "count": {
+        "literal": 59170,
+        "status": "reported",
+        "value": 59170
+      },
+      "denominator": null,
+      "election": {
+        "date": null,
+        "id": "us-2026-general-previously-reviewed",
+        "qualification": "collector_context",
+        "type": "general",
+        "year": 2026
+      },
+      "geography": {
+        "id": "DE|additional:DE:10003|",
+        "join": {
+          "evidence": "Existing export map qualifications and reference bindings remain literal in source.fields and view; this migration approves no new join.",
+          "feature_key": null,
+          "reference_id": null,
+          "status": "unreviewed"
+        },
+        "level": "county",
+        "name": "New Castle County",
+        "parent_id": null,
+        "state_code": "DE"
+      },
+      "id": "dc9f22683e3635fc2e062ffe6ae466b5",
+      "measure": {
+        "id": "previously-reviewed-participation-count",
+        "kind": "returned",
+        "literal": "Provider returned activity (native votes counts; not cast ballots)",
+        "mode": "mail_returned",
+        "unit": "source_reported_count"
+      },
+      "quality": {
+        "conflicts": [],
+        "native_conflict_status": "retained_in_source_fields_not_newly_classified",
+        "notes": [
+          "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+          "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred.",
+          "One-time migration of accepted public aggregate export; not a new source parse, conflict adjudication, election/boundary certification or independent validation.",
+          "All native fields, conflicts, holds and existing rate decisions remain unchanged in source.fields and view. Export partitions are separate appearances, never additive populations."
+        ]
+      },
+      "reporting_status": {
+        "complete": null,
+        "literal": "Provider-reported early activity; not a certified government turnout series",
+        "reported_units": null,
+        "total_units": null
+      },
+      "source": {
+        "classification": "public_aggregate",
+        "fields": {
+          "ballots": 59170,
+          "cast_ballot_count_qualified": false,
+          "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip",
+          "county": "New Castle County",
+          "county_fips": "10003",
+          "county_id": "additional:DE:10003",
+          "denominator": null,
+          "denominator_basis": "provider_electorate_not_qualified",
+          "geography_level": "county",
+          "maps_approved": true,
+          "native_election_id_qualified": false,
+          "native_printed_pct": null,
+          "native_record": {
+            "categories": {
+              "Democratic": {
+                "color": "#4874a3",
+                "votes": 38822
+              },
+              "Other": {
+                "color": "#e0bb24",
+                "votes": 10668
+              },
+              "Republican": {
+                "color": "#c6606b",
+                "votes": 9680
+              }
+            },
+            "category": "returned",
+            "election_name": "Delaware Ballots Returned",
+            "literal_count_field": "votes",
+            "snapshot_date": "2026-11-02",
+            "source_region": "New Castle",
+            "state": "DE"
+          },
+          "participation_measure_label": "Provider returned activity (native votes counts; not cast ballots)",
+          "quality": [
+            "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+            "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+            "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred."
+          ],
+          "reference_geometry": {
+            "boundary_year": 2026,
+            "counties": 3,
+            "path": "data/county-results/20261105-house-02/geometry/DE.geojson.gz",
+            "review_id": "provider-contextual-county-identities-20261109-01",
+            "sha256": "1166cbe39d9ff0dda0cb3122ba784913cb2a1648d7c0ead49d26c13ca1980aed",
+            "uncompressed_sha256": "25ed55c8fcdc0eddcc4483793743e76e14aa14c6cc0529b8a625775ba402b65f",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/6b6b96caed4fa4f7c66fd206a64bd709310a69f2/data/county-results/20261105-house-02/geometry/DE.geojson.gz"
+          },
+          "reported_pct": null,
+          "reported_units": null,
+          "review_id": "additional:20261109-provider-county-frames-01",
+          "source_count_qualified": true,
+          "source_date": "2026-11-02",
+          "source_mode": "mail_returned",
+          "source_provider": "civicAPI early activity",
+          "source_reporting_label": "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "source_rows": 0,
+          "source_status_literal": "Provider-reported early activity; not a certified government turnout series",
+          "source_update_label": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state_code": "DE",
+          "total_units": null,
+          "unique_voter_count_qualified": false,
+          "year": 2026
+        },
+        "id": "accepted-export:b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8:county_frames/mail_returned",
+        "input_sha256": "b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8",
+        "selector": {
+          "input": "additional/DE.json.gz",
+          "ordinal": 1,
+          "partition": "county_frames/mail_returned"
+        },
+        "url": "https://www.themarginoferror.com/participation-local/DE.json.gz"
+      },
+      "source_clock": {
+        "literal": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "view": {
+        "ballots": 59170,
+        "cast_ballot_count_qualified": false,
+        "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip",
+        "county": "New Castle County",
+        "county_fips": "10003",
+        "county_id": "additional:DE:10003",
+        "denominator": null,
+        "denominator_basis": "provider_electorate_not_qualified",
+        "geography_level": "county",
+        "maps_approved": true,
+        "native_election_id_qualified": false,
+        "native_printed_pct": null,
+        "native_record": {
+          "categories": {
+            "Democratic": {
+              "color": "#4874a3",
+              "votes": 38822
+            },
+            "Other": {
+              "color": "#e0bb24",
+              "votes": 10668
+            },
+            "Republican": {
+              "color": "#c6606b",
+              "votes": 9680
+            }
+          },
+          "category": "returned",
+          "election_name": "Delaware Ballots Returned",
+          "literal_count_field": "votes",
+          "snapshot_date": "2026-11-02",
+          "source_region": "New Castle",
+          "state": "DE"
+        },
+        "participation_measure_label": "Provider returned activity (native votes counts; not cast ballots)",
+        "quality": [
+          "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+          "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred."
+        ],
+        "reference_geometry": {
+          "boundary_year": 2026,
+          "counties": 3,
+          "path": "data/county-results/20261105-house-02/geometry/DE.geojson.gz",
+          "review_id": "provider-contextual-county-identities-20261109-01",
+          "sha256": "1166cbe39d9ff0dda0cb3122ba784913cb2a1648d7c0ead49d26c13ca1980aed",
+          "uncompressed_sha256": "25ed55c8fcdc0eddcc4483793743e76e14aa14c6cc0529b8a625775ba402b65f",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/6b6b96caed4fa4f7c66fd206a64bd709310a69f2/data/county-results/20261105-house-02/geometry/DE.geojson.gz"
+        },
+        "reported_pct": null,
+        "reported_units": null,
+        "review_id": "additional:20261109-provider-county-frames-01",
+        "source_count_qualified": true,
+        "source_date": "2026-11-02",
+        "source_mode": "mail_returned",
+        "source_provider": "civicAPI early activity",
+        "source_reporting_label": "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+        "source_rows": 0,
+        "source_status_literal": "Provider-reported early activity; not a certified government turnout series",
+        "source_update_label": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+        "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+        "state_code": "DE",
+        "total_units": null,
+        "unique_voter_count_qualified": false,
+        "year": 2026
+      }
+    },
+    {
+      "contract": "participation.observation.v1",
+      "count": {
+        "literal": 66456,
+        "status": "reported",
+        "value": 66456
+      },
+      "denominator": null,
+      "election": {
+        "date": null,
+        "id": "us-2026-general-previously-reviewed",
+        "qualification": "collector_context",
+        "type": "general",
+        "year": 2026
+      },
+      "geography": {
+        "id": "DE|additional:DE:10005|",
+        "join": {
+          "evidence": "Existing export map qualifications and reference bindings remain literal in source.fields and view; this migration approves no new join.",
+          "feature_key": null,
+          "reference_id": null,
+          "status": "unreviewed"
+        },
+        "level": "county",
+        "name": "Sussex County",
+        "parent_id": null,
+        "state_code": "DE"
+      },
+      "id": "032e7816024a08744add4b3f4dcab0fa",
+      "measure": {
+        "id": "previously-reviewed-participation-count",
+        "kind": "returned",
+        "literal": "Provider returned activity (native votes counts; not cast ballots)",
+        "mode": "mail_returned",
+        "unit": "source_reported_count"
+      },
+      "quality": {
+        "conflicts": [],
+        "native_conflict_status": "retained_in_source_fields_not_newly_classified",
+        "notes": [
+          "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+          "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred.",
+          "One-time migration of accepted public aggregate export; not a new source parse, conflict adjudication, election/boundary certification or independent validation.",
+          "All native fields, conflicts, holds and existing rate decisions remain unchanged in source.fields and view. Export partitions are separate appearances, never additive populations."
+        ]
+      },
+      "reporting_status": {
+        "complete": null,
+        "literal": "Provider-reported early activity; not a certified government turnout series",
+        "reported_units": null,
+        "total_units": null
+      },
+      "source": {
+        "classification": "public_aggregate",
+        "fields": {
+          "ballots": 66456,
+          "cast_ballot_count_qualified": false,
+          "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip",
+          "county": "Sussex County",
+          "county_fips": "10005",
+          "county_id": "additional:DE:10005",
+          "denominator": null,
+          "denominator_basis": "provider_electorate_not_qualified",
+          "geography_level": "county",
+          "maps_approved": true,
+          "native_election_id_qualified": false,
+          "native_printed_pct": null,
+          "native_record": {
+            "categories": {
+              "Democratic": {
+                "color": "#4874a3",
+                "votes": 28029
+              },
+              "Other": {
+                "color": "#e0bb24",
+                "votes": 13609
+              },
+              "Republican": {
+                "color": "#c6606b",
+                "votes": 24818
+              }
+            },
+            "category": "returned",
+            "election_name": "Delaware Ballots Returned",
+            "literal_count_field": "votes",
+            "snapshot_date": "2026-11-02",
+            "source_region": "Sussex",
+            "state": "DE"
+          },
+          "participation_measure_label": "Provider returned activity (native votes counts; not cast ballots)",
+          "quality": [
+            "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+            "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+            "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred."
+          ],
+          "reference_geometry": {
+            "boundary_year": 2026,
+            "counties": 3,
+            "path": "data/county-results/20261105-house-02/geometry/DE.geojson.gz",
+            "review_id": "provider-contextual-county-identities-20261109-01",
+            "sha256": "1166cbe39d9ff0dda0cb3122ba784913cb2a1648d7c0ead49d26c13ca1980aed",
+            "uncompressed_sha256": "25ed55c8fcdc0eddcc4483793743e76e14aa14c6cc0529b8a625775ba402b65f",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/6b6b96caed4fa4f7c66fd206a64bd709310a69f2/data/county-results/20261105-house-02/geometry/DE.geojson.gz"
+          },
+          "reported_pct": null,
+          "reported_units": null,
+          "review_id": "additional:20261109-provider-county-frames-01",
+          "source_count_qualified": true,
+          "source_date": "2026-11-02",
+          "source_mode": "mail_returned",
+          "source_provider": "civicAPI early activity",
+          "source_reporting_label": "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "source_rows": 0,
+          "source_status_literal": "Provider-reported early activity; not a certified government turnout series",
+          "source_update_label": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+          "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+          "state_code": "DE",
+          "total_units": null,
+          "unique_voter_count_qualified": false,
+          "year": 2026
+        },
+        "id": "accepted-export:b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8:county_frames/mail_returned",
+        "input_sha256": "b8b116ceac1a24c027e9b777dd48b3939841c9947789ceed4131ef842303bfd8",
+        "selector": {
+          "input": "additional/DE.json.gz",
+          "ordinal": 2,
+          "partition": "county_frames/mail_returned"
+        },
+        "url": "https://www.themarginoferror.com/participation-local/DE.json.gz"
+      },
+      "source_clock": {
+        "literal": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+        "qualification": "previously_reviewed_export_label_not_new_native_clock",
+        "timezone": null
+      },
+      "view": {
+        "ballots": 66456,
+        "cast_ballot_count_qualified": false,
+        "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/voter-provider-county-frames-20261109-01/complete-analysis.zip",
+        "county": "Sussex County",
+        "county_fips": "10005",
+        "county_id": "additional:DE:10005",
+        "denominator": null,
+        "denominator_basis": "provider_electorate_not_qualified",
+        "geography_level": "county",
+        "maps_approved": true,
+        "native_election_id_qualified": false,
+        "native_printed_pct": null,
+        "native_record": {
+          "categories": {
+            "Democratic": {
+              "color": "#4874a3",
+              "votes": 28029
+            },
+            "Other": {
+              "color": "#e0bb24",
+              "votes": 13609
+            },
+            "Republican": {
+              "color": "#c6606b",
+              "votes": 24818
+            }
+          },
+          "category": "returned",
+          "election_name": "Delaware Ballots Returned",
+          "literal_count_field": "votes",
+          "snapshot_date": "2026-11-02",
+          "source_region": "Sussex",
+          "state": "DE"
+        },
+        "participation_measure_label": "Provider returned activity (native votes counts; not cast ballots)",
+        "quality": [
+          "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+          "Provider source activity, not an official all-method or independently certified 2026 turnout observation.",
+          "Collector 2026 context and native snapshot date are retained separately; no native election ID is inferred."
+        ],
+        "reference_geometry": {
+          "boundary_year": 2026,
+          "counties": 3,
+          "path": "data/county-results/20261105-house-02/geometry/DE.geojson.gz",
+          "review_id": "provider-contextual-county-identities-20261109-01",
+          "sha256": "1166cbe39d9ff0dda0cb3122ba784913cb2a1648d7c0ead49d26c13ca1980aed",
+          "uncompressed_sha256": "25ed55c8fcdc0eddcc4483793743e76e14aa14c6cc0529b8a625775ba402b65f",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/6b6b96caed4fa4f7c66fd206a64bd709310a69f2/data/county-results/20261105-house-02/geometry/DE.geojson.gz"
+        },
+        "reported_pct": null,
+        "reported_units": null,
+        "review_id": "additional:20261109-provider-county-frames-01",
+        "source_count_qualified": true,
+        "source_date": "2026-11-02",
+        "source_mode": "mail_returned",
+        "source_provider": "civicAPI early activity",
+        "source_reporting_label": "Sum of native source-category votes counts in this one reported activity frame. Source party/bucket categories are not candidate choices; operational affiliation definition is unqualified. Do not add early and returned frames, treat them as full-election turnout, or infer unique people. County identity is separately matched to the complete 2026 Census reference, not a native FIPS or precinct claim. All analysis denominators/rates withheld.",
+        "source_rows": 0,
+        "source_status_literal": "Provider-reported early activity; not a certified government turnout series",
+        "source_update_label": "2026-11-02 provider snapshot date; native clock/timezone not supplied. Collected for the 2026 project; native election identifier is not independently qualified.",
+        "source_url": "https://civicapi.org/api/v2/early-vote/DE/returned",
+        "state_code": "DE",
+        "total_units": null,
+        "unique_voter_count_qualified": false,
+        "year": 2026
+      }
+    }
+  ],
+  "state_code": "DE",
+  "views": {
+    "available": {
+      "counties": [
+        "db462cd6e179bbaa56a7078d2f392bee",
+        "dc9f22683e3635fc2e062ffe6ae466b5",
+        "032e7816024a08744add4b3f4dcab0fa"
+      ],
+      "holds": [],
+      "nongeographic": [],
+      "precincts": [],
+      "qualified": true
+    },
+    "in_person_early": {
+      "counties": [],
+      "holds": [],
+      "mode_review_complete_download": "https://github.com/hanshanley/margin_of_error/releases/download/voter-native-mode-frames-20261110-01/complete-analysis.zip",
+      "nongeographic": [],
+      "precincts": [],
+      "qualified": false,
+      "unavailable_note": "No qualified in-person early local frame for DE. Other source counts are retained under Available / official source, not reused for this mode. Missing mode counts are unknown, not zero."
+    },
+    "mail_returned": {
+      "counties": [
+        "db462cd6e179bbaa56a7078d2f392bee",
+        "dc9f22683e3635fc2e062ffe6ae466b5",
+        "032e7816024a08744add4b3f4dcab0fa"
+      ],
+      "holds": [],
+      "nongeographic": [],
+      "precincts": [],
+      "qualified": true
+    },
+    "official": {
+      "counties": [],
+      "holds": [],
+      "nongeographic": [],
+      "precincts": [],
+      "qualified": true
+    },
+    "uf_vap": {
+      "counties": [],
+      "holds": [],
+      "nongeographic": [],
+      "precincts": [],
+      "qualified": true
+    },
+    "uf_vep": {
+      "counties": [],
+      "holds": [],
+      "nongeographic": [],
+      "precincts": [],
+      "qualified": true
+    }
+  },
+  "year": 2026
+}

@@ -40,6 +40,19 @@ from scripts.results_native_oregon import (
     statistics as oregon_statistics,
     validate_plan as validate_oregon_plan,
 )
+from scripts.results_native_delaware import (
+    ADAPTER as DELAWARE_ADAPTER,
+    extend_templates as extend_delaware_templates,
+    route as delaware_route,
+    statistics as delaware_statistics,
+    validate_plan as validate_delaware_plan,
+)
+from scripts.results_native_dc import (
+    ADAPTER as DC_ADAPTER,
+    route as dc_route,
+    statistics as dc_statistics,
+    validate_plan as validate_dc_plan,
+)
 from scripts.results_native_virginia import (
     ADAPTER as VIRGINIA_ADAPTER,
     route as virginia_route,
@@ -1800,6 +1813,8 @@ def source_plan(baseline):
     result = {}
     for state in sorted(index["states"]):
         templates = selected_records(baseline, state)
+        if state == "DE":
+            templates = extend_delaware_templates(baseline, templates)
         if state == "LA":
             templates = extend_louisiana_templates(baseline, templates)
         sources = {}
@@ -1809,7 +1824,9 @@ def source_plan(baseline):
             if not isinstance(url, str):
                 continue
             family_route = (
-                native_state_family_route(template)
+                delaware_route(template)
+                or dc_route(template)
+                or native_state_family_route(template)
                 or oregon_route(template)
                 or virginia_route(template)
                 or north_dakota_route(template)
@@ -1896,6 +1913,7 @@ def source_plan(baseline):
                 continue
             source["templates"].append(template)
         result[state] = sources
+    result = validate_delaware_plan(validate_dc_plan(result))
     return validate_louisiana_plan(validate_north_dakota_plan(validate_virginia_plan(
         validate_oregon_plan(validate_native_state_family_plan(result)))))
 
@@ -1908,6 +1926,12 @@ def collect_sources(collector, baseline):
             if source["adapter"] == OREGON_ADAPTER:
                 def parse(body, templates=templates, url=url):
                     return oregon_statistics(body, templates, url, acquire=collector.acquire)
+            elif source["adapter"] == DELAWARE_ADAPTER:
+                def parse(body, templates=templates, url=url):
+                    return delaware_statistics(body, templates, url)
+            elif source["adapter"] == DC_ADAPTER:
+                def parse(body, templates=templates, url=url):
+                    return dc_statistics(body, templates, url, acquire=collector.acquire)
             elif source["adapter"] == VIRGINIA_ADAPTER:
                 def parse(body, templates=templates, url=url):
                     return virginia_statistics(body, templates, url, acquire=collector.acquire)
