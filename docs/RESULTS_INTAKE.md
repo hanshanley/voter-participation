@@ -25,6 +25,13 @@ complete retained facts do not exceed Git's per-file limit. Decoding is bounded
 and verified before reuse; older uncompressed states remain readable. This is
 lossless storage, not a smaller query set or a changed runtime size limit.
 
+Granular source facts are stored once in the complete
+`granular-source-queries.json.gz` query. The bounded snapshot retains exact
+checksum-bound references, source metadata, scalar qualifications and update
+inventories. The runtime verifies and restores the complete facts before count
+projection or estimation; a missing query, changed checksum or mismatched
+inventory stops activation. No query rows are dropped to meet the size limit.
+
 If collection succeeded but publication failed, recover the completed Actions
 packet without requesting the sources again:
 
@@ -71,7 +78,7 @@ sources or rerunning private survey fits. Optional packaged tests use `pytest`:
 
 ```sh
 cd code
-python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_results_json_statistics.py tests/test_results_pdf_boston.py tests/test_results_pdf_periodic.py tests/test_results_pdf_affiliations.py tests/test_results_pdf_jefferson.py tests/test_nationwide.py tests/test_current.py
+python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_state_family.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_results_json_statistics.py tests/test_results_pdf_boston.py tests/test_results_pdf_periodic.py tests/test_results_pdf_affiliations.py tests/test_results_pdf_jefferson.py tests/test_results_pdf_cass.py tests/test_results_native_cass.py tests/test_results_pdf_dunn.py tests/test_automatic_native_refresh.py tests/test_nationwide.py tests/test_current.py
 ```
 
 ## Separate reference/count dependencies
@@ -88,6 +95,43 @@ exposed an old Jefferson shard pin and a missing new source-hash display field;
 the browser correctly rejected that layer. The producer repair passes the
 unchanged browser contract for all 529 mapped and 117 held observations.
 Hosted successor runtime and production acceptance are separate delivery gates.
+
+## Arkansas, Arizona and Wyoming native-unit sources
+
+The shared source planner includes the 2,768 accepted Arkansas reporting units,
+1,763 Arizona reporting units across all 15 county APIs, and 432 Wyoming
+reporting units. These are parser capabilities, not a claim that every future
+source is discoverable or that hosted/live delivery has passed.
+
+Arkansas reads the reviewed full native turnout export, not its application
+shell. Native county/precinct IDs are checked against the complete accepted
+inventory. Where the body supplies no labels, retained accepted labels remain
+explicitly identity context, not newly observed native labels. Missing ballot
+or registration cells remain unknown and may become reported in later
+snapshots; a true zero remains zero. The reviewed download asset does **not**
+establish a stable successor-export discovery route. That discovery gap remains
+an explicit hold; no endpoint is guessed.
+
+Arizona uses literal county/precinct UUIDs and the public root declaration to
+reconcile precinct, county and registration totals. A zero in the statewide
+backend is not substituted for positive county observations. Positive
+statewide totals that reconcile to the declared county totals are
+accepted when that backend zero is corrected. Duplicate locality UUIDs are
+rejected rather than overwritten. Only supported
+literal UTC clocks are assigned UTC; malformed clocks and rollbacks are
+rejected. January 2027 updates still refer to the declared 2026 election.
+Explicit boolean official-status changes in Arkansas or Arizona are retained
+as source status, not promoted to certification or analytical-rate approval.
+
+Wyoming reads the direct Total Ballots Cast workbooks, checks the exact 2026
+general-election/OFFICIAL headings and all 23 county/state parent controls,
+and retains candidate/write-in/overvote/undervote accounting only as a check
+against direct ballot counts. Candidate totals are not substituted for ballots.
+No registration denominator or result clock is invented.
+
+All three adapters preserve existing observation identities, geography and
+rate/measure holds. Complete native queries and replay inputs remain in the
+download; no new boundary matches, rates or behavioral fits are authorized.
 
 ## County affiliation and repeated-unit statistical PDFs
 

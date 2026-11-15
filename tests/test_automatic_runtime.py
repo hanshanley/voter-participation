@@ -69,6 +69,388 @@ def test_full_archive_is_deterministic_and_never_just_a_pointer():
         runtime.archive_bytes({"../outside": b"not allowed"})
 
 
+def granular_reference_fixture():
+    update = {"id": "synthetic-observation", "value": 0}
+    full_entry = {
+        "status": "reported",
+        "adapter": "reviewed_test",
+        "source": {"url": "https://official.test/native", "bytes": 7, "sha256": "a" * 64},
+        "data": {
+            "updates": [update],
+            "geographic_joins_changed": False,
+            "numerical_data_qualified": False,
+        },
+    }
+    full = {"AZ-native": full_entry}
+    body = gzip.compress(encoded(full), mtime=0)
+    reference = {
+        "file": "granular-source-queries.json.gz", **pin(body),
+        "key": "AZ-native",
+        "qualification": "Exact full native query and replay updates retained externally.",
+    }
+    compact = {
+        key: copy.deepcopy(value) for key, value in full_entry.items() if key != "data"
+    }
+    compact["data"] = {
+        "summary": {
+            "geographic_joins_changed": False,
+            "numerical_data_qualified": False,
+            "projected_updates": {
+                "records": 1, "reported": 1, "unknown": 0,
+                "observation_ids_pin": runtime.digest(encoded(["synthetic-observation"])),
+            },
+        },
+        "full_data": reference,
+    }
+    snapshot = {"granular_sources": {"AZ-native": compact}}
+    packet = runtime.archive_bytes({"queries/granular-source-queries.json.gz": body})
+    return snapshot, packet, full
+
+
+def test_checksum_bound_granular_hydration_restores_exact_full_updates():
+    snapshot, packet, full = granular_reference_fixture()
+    hydrated = runtime.hydrate_granular_sources(snapshot, packet)
+    assert hydrated is not snapshot
+    assert hydrated["granular_sources"] == full
+    assert snapshot["granular_sources"]["AZ-native"]["data"].get("updates") is None
+    assert runtime.hydrate_granular_sources(hydrated, None) is hydrated
+
+
+@pytest.mark.parametrize("change", ["missing_packet", "wrong_hash", "wrong_key", "wrong_summary"])
+def test_granular_hydration_refuses_missing_or_changed_replay_data(change):
+    snapshot, packet, _ = granular_reference_fixture()
+    if change == "missing_packet":
+        packet = runtime.archive_bytes({"queries/other.json.gz": gzip.compress(b"{}\n")})
+    elif change == "wrong_hash":
+        snapshot["granular_sources"]["AZ-native"]["data"]["full_data"]["sha256"] = "b" * 64
+    elif change == "wrong_key":
+        snapshot["granular_sources"]["AZ-native"]["data"]["full_data"]["key"] = "other"
+    else:
+        snapshot["granular_sources"]["AZ-native"]["data"]["summary"][
+            "projected_updates"]["records"] = 2
+    with pytest.raises(ValueError, match="granular|Granular|source packet"):
+        runtime.hydrate_granular_sources(snapshot, packet)
+
+
+def test_literal_extracted_runtime_replay_hydrates_before_actual_producer_call(
+        monkeypatch, tmp_path):
+    from scripts import automatic_estimates
+
+    snapshot, source_packet, full = granular_reference_fixture()
+    package = tmp_path / "packet"
+    output = tmp_path / "output"
+    seed = gzip.compress(b"{}\n", mtime=0)
+    members = {
+        "inputs/snapshot.json": encoded(snapshot),
+        "inputs/complete-source-results.zip": source_packet,
+        "inputs/before-counts/index.json": b"before-counts",
+        "inputs/before-native/index.json": b"before-native",
+        "inputs/model-seed/rolling-seed.json.gz": seed,
+        "inputs/model-seed/rolling-seed-descriptor.json": encoded({"synthetic": True}),
+        "queries/after-counts/index.json": b"after-counts",
+        "queries/after-native/index.json": b"after-native",
+        "queries/model-queries/result.json": b"model-result",
+    }
+    for name, body in members.items():
+        path = package / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(body)
+    (package / "checksums.json").write_bytes(encoded(
+        {name: pin(body) for name, body in members.items()}))
+    monkeypatch.setattr(automatic_estimates, "load_rolling_seed_bytes",
+                        lambda body, declaration: {"seed": True})
+    observed = {}
+
+    def compile_runtime(snapshot, counts, native, seed, packet):
+        observed.update(snapshot=snapshot, counts=counts, native=native, seed=seed, packet=packet)
+        return {
+            "counts": {"index.json": b"after-counts"},
+            "native": {"index.json": b"after-native"},
+            "model_files": {"result.json": b"model-result"},
+            "local_changes": [{"id": "synthetic-observation"}],
+        }
+
+    monkeypatch.setattr(runtime, "compile_runtime", compile_runtime)
+    result = runtime.replay(package, output)
+    assert result == {
+        "passed": True, "complete_outputs": 3,
+        "network_requests": 0, "external_operations_blocked": True,
+    }
+    assert observed["snapshot"]["granular_sources"] == full
+    assert observed["packet"] == source_packet
+    assert observed["seed"] == {"seed": True}
+    assert (output / "queries/after-counts/index.json").read_bytes() == b"after-counts"
+
+
+def native_refresh_fixture(family=False, maps_approved=False):
+    from scripts import automatic_native_refresh as native_refresh
+
+    source_id = (native_refresh.REVIEWED_FAMILY_SOURCE_IDS["WY"]
+                 if family else "ordinary-approved-native-source")
+
+    def row(ballots, url, sha, vector):
+        status = "unknown" if ballots is None else "reported"
+        view = {
+            "state_code": "WY", "key": "WY|unit", "unit": "UNIT",
+            "maps_approved": maps_approved, "ballots": ballots,
+            "denominator": 10, "registered": 10, "reported_pct": None,
+            "source_url": url, "native_record": {
+                "native_original_pin": {"bytes": 7, "sha256": sha},
+                "vector": {"other": vector},
+            },
+        }
+        return {
+            "id": "observation",
+            "count": {"value": ballots, "literal": ballots, "status": status},
+            "denominator": {"value": 10, "literal": "registered",
+                            "basis": "registered", "qualified": False},
+            "election": {"id": "general-2026", "year": 2026,
+                         "date": "2026-11-03", "type": "general",
+                         "qualification": "native"},
+            "geography": {
+                "id": "WY-unit", "name": "UNIT", "state_code": "WY",
+                "level": "reporting_unit", "parent_id": "WY-parent",
+                "join": {"status": "unreviewed", "reference_id": None,
+                         "feature_key": None, "evidence": "synthetic"}},
+            "measure": {"id": "native-count", "literal": "Native count",
+                        "kind": "participation_reported", "mode": "source_defined",
+                        "unit": "source_count"},
+            "reporting_status": {"literal": None, "reported_units": None,
+                                 "total_units": None, "complete": None},
+            "source_clock": {"literal": None, "timezone": None,
+                             "qualification": "native_clock_not_supplied"},
+            "quality": {"notes": ["held"], "conflicts": []},
+            "source": {"id": source_id, "input_sha256": sha, "url": url,
+                       "classification": "public_aggregate",
+                       "selector": {"frame": vector}, "fields": copy.deepcopy(view)},
+            "view": view,
+        }
+
+    before_row = row(None, "https://official.test/prior", "a" * 64, 1)
+    after_row = row(0, "https://official.test/current", "b" * 64, 2)
+
+    def files(value):
+        body = gzip.compress(encoded({
+            "contract": "participation.count_snapshot.v1",
+            "state_code": "WY", "records": [value]}), mtime=0)
+        return {"index.json": encoded({
+            "contract": "participation.count_index.v1", "year": 2026,
+            "states": {"WY": {"file": "states/WY.json.gz", **pin(body)}}}),
+            "states/WY.json.gz": body}
+
+    native_observation = copy.deepcopy(before_row)
+    native_observation["source"]["fields"] = copy.deepcopy(native_observation["view"])
+    source_value = [{
+        "state_code": "WY", "key": "WY|unit", "unit": "UNIT",
+        "maps_approved": maps_approved, "ballots": None, "registered": 10,
+        "reported_pct": None, "source_url": "https://official.test/prior",
+        "native_record": copy.deepcopy(before_row["view"]["native_record"]),
+    }]
+    table_value = {"contract": "participation.reporting_units.v1", "state_code": "WY",
+                   "records": [{"observation": native_observation,
+                                "properties": copy.deepcopy(source_value[0])}]}
+    table = gzip.compress(encoded(table_value), mtime=0)
+    source = gzip.compress(encoded(source_value), mtime=0)
+    native = {
+        "index.json": encoded({
+            "contract": "participation.native_index.v1", "year": 2026,
+            "reporting_tables": {"WY": {
+                "file": "tables/WY.json.gz", "rows": 1, **pin(table)}},
+            "reporting_sources": {"WY": {"rows": 1, "sha256": pin(source)["sha256"]}},
+        }),
+        "tables/WY.json.gz": table,
+        "source-reporting/WY.json.gz": source,
+    }
+    return files(before_row), files(after_row), native
+
+
+def repin_native(native, table_value=None, source_value=None):
+    result = copy.deepcopy(native)
+    index = json.loads(result["index.json"])
+    if table_value is not None:
+        body = gzip.compress(encoded(table_value), mtime=0)
+        result["tables/WY.json.gz"] = body
+        index["reporting_tables"]["WY"].update(pin(body))
+    if source_value is not None:
+        body = gzip.compress(encoded(source_value), mtime=0)
+        result["source-reporting/WY.json.gz"] = body
+        index["reporting_sources"]["WY"]["rows"] = len(source_value)
+        index["reporting_sources"]["WY"]["sha256"] = pin(body)["sha256"]
+    result["index.json"] = encoded(index)
+    return result
+
+
+def state_row(files):
+    return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][0]
+
+
+def native_rows(files):
+    table = json.loads(gzip.decompress(files["tables/WY.json.gz"]))
+    source = json.loads(gzip.decompress(files["source-reporting/WY.json.gz"]))
+    return table["records"][0]["observation"], source[0]
+
+
+def test_original_ordinary_approved_native_refresh_remains_unchanged():
+    from scripts import automatic_native_refresh as native_refresh
+
+    before, after, native = native_refresh_fixture(maps_approved=True)
+    result = native_refresh.refresh(before, after, native)
+    observation, source = native_rows(result)
+    assert observation == state_row(after)
+    assert source["ballots"] == 0
+    assert source["registered"] == 10
+    assert source["maps_approved"] is True
+    assert native_refresh.refresh(after, after, result) == result
+
+
+def test_reviewed_family_bridge_synchronizes_true_zero_repeat_and_second_successor():
+    from scripts import automatic_native_refresh as native_refresh
+
+    before, after, native = native_refresh_fixture(family=True)
+    result = native_refresh.refresh(before, after, native)
+    observation, source = native_rows(result)
+    successor = state_row(after)
+    assert observation["count"] == successor["count"]
+    assert observation["source"]["input_sha256"] == "b" * 64
+    assert observation["source"]["url"] == "https://official.test/current"
+    assert observation["view"]["native_record"] == successor["view"]["native_record"]
+    assert source["ballots"] == 0
+    assert source["registered"] == 10
+    assert source["native_record"] == successor["view"]["native_record"]
+    assert native_refresh.refresh(after, after, result) == result
+
+    second_row = copy.deepcopy(successor)
+    second_row["count"] = {"value": 3, "literal": 3, "status": "reported"}
+    second_row["view"].update(ballots=3, source_url="https://official.test/second")
+    second_row["view"]["native_record"] = {
+        "native_original_pin": {"bytes": 7, "sha256": "c" * 64},
+        "vector": {"other": 3},
+    }
+    second_row["source"].update(input_sha256="c" * 64,
+                                url="https://official.test/second",
+                                selector={"frame": 3})
+    second_row["source"]["fields"] = copy.deepcopy(second_row["view"])
+    second = copy.deepcopy(after)
+    body = gzip.compress(encoded({"contract": "participation.count_snapshot.v1",
+                                  "state_code": "WY", "records": [second_row]}), mtime=0)
+    second["states/WY.json.gz"] = body
+    index = json.loads(second["index.json"])
+    index["states"]["WY"].update(pin(body))
+    second["index.json"] = encoded(index)
+    advanced = native_refresh.refresh(after, second, result)
+    advanced_observation, advanced_source = native_rows(advanced)
+    assert advanced_observation["count"]["value"] == 3
+    assert advanced_observation["source"]["input_sha256"] == "c" * 64
+    assert advanced_source["ballots"] == 3
+    assert advanced_source["registered"] == 10
+    assert native_refresh.refresh(second, second, advanced) == advanced
+
+
+def test_family_source_rows_may_omit_the_observations_display_unit():
+    from scripts import automatic_native_refresh as native_refresh
+
+    before, after, native = native_refresh_fixture(family=True)
+    table = json.loads(gzip.decompress(native["tables/WY.json.gz"]))
+    source = json.loads(gzip.decompress(native["source-reporting/WY.json.gz"]))
+    table["records"][0]["properties"].pop("unit")
+    source[0].pop("unit")
+    native = repin_native(native, table_value=table, source_value=source)
+    result = native_refresh.refresh(before, after, native)
+    observation, source = native_rows(result)
+    assert observation["view"]["unit"] == "UNIT"
+    assert observation["count"]["value"] == source["ballots"] == 0
+    assert "unit" not in source
+
+
+@pytest.mark.parametrize("state", ["AR", "AZ"])
+def test_family_tables_with_external_legacy_sources_need_no_separate_source_file(state):
+    from scripts import automatic_native_refresh as native_refresh
+
+    before, after, native = native_refresh_fixture(family=True)
+
+    def restate(observation):
+        observation["geography"]["state_code"] = state
+        observation["view"].update(state_code=state, key=state + "|unit")
+        observation["source"]["id"] = native_refresh.REVIEWED_FAMILY_SOURCE_IDS[state]
+        observation["source"]["fields"] = copy.deepcopy(observation["view"])
+        return observation
+
+    def canonical(files):
+        observation = restate(state_row(files))
+        name = "states/" + state + ".json.gz"
+        body = gzip.compress(encoded({
+            "contract": "participation.count_snapshot.v1",
+            "state_code": state, "records": [observation],
+        }), mtime=0)
+        return {name: body, "index.json": encoded({
+            "contract": "participation.count_index.v1", "year": 2026,
+            "states": {state: {"file": name, **pin(body)}},
+        })}
+
+    table = json.loads(gzip.decompress(native["tables/WY.json.gz"]))
+    table["state_code"] = state
+    table["records"][0]["observation"] = restate(table["records"][0]["observation"])
+    table["records"][0]["properties"].update(state_code=state, key=state + "|unit")
+    name = "tables/" + state + ".json.gz"
+    body = gzip.compress(encoded(table), mtime=0)
+    native = {name: body, "index.json": encoded({
+        "contract": "participation.native_index.v1", "year": 2026,
+        "reporting_tables": {state: {"file": name, "rows": 1, **pin(body)}},
+        "reporting_sources": {state: {
+            "rows": 1, "data_url": "/retained/" + state + ".json.gz",
+            "sha256": "a" * 64,
+        }},
+    })}
+    result = native_refresh.refresh(canonical(before), canonical(after), native)
+    observation = json.loads(gzip.decompress(result[name]))["records"][0]["observation"]
+    assert observation["count"]["value"] == 0
+    assert observation["source"]["input_sha256"] == "b" * 64
+    assert "source-reporting/" + state + ".json.gz" not in result
+
+
+@pytest.mark.parametrize("change", [
+    "maps", "unit", "duplicate_key", "missing_key", "missing_file",
+    "vector", "source_pin", "selector",
+])
+def test_reviewed_family_bridge_fails_closed_for_corruption(change):
+    from scripts import automatic_native_refresh as native_refresh
+
+    before, after, native = native_refresh_fixture(family=True)
+    if change == "missing_file":
+        native.pop("source-reporting/WY.json.gz")
+    elif change in ("maps", "unit", "source_pin", "selector"):
+        source_rows = None
+        table = json.loads(gzip.decompress(native["tables/WY.json.gz"]))
+        observation = table["records"][0]["observation"]
+        if change == "maps":
+            observation["view"]["maps_approved"] = True
+            observation["source"]["fields"] = copy.deepcopy(observation["view"])
+            table["records"][0]["properties"]["maps_approved"] = True
+        elif change == "unit":
+            observation["view"]["unit"] = "CHANGED"
+            observation["source"]["fields"] = copy.deepcopy(observation["view"])
+            table["records"][0]["properties"]["unit"] = "CHANGED"
+            source_rows = json.loads(gzip.decompress(native["source-reporting/WY.json.gz"]))
+            source_rows[0]["unit"] = "CHANGED"
+        else:
+            if change == "source_pin":
+                observation["source"]["input_sha256"] = "d" * 64
+            else:
+                observation["source"]["selector"] = {"changed": True}
+        native = repin_native(native, table_value=table, source_value=source_rows)
+    else:
+        values = json.loads(gzip.decompress(native["source-reporting/WY.json.gz"]))
+        if change == "duplicate_key":
+            values.append(copy.deepcopy(values[0]))
+        elif change == "missing_key":
+            values = []
+        else:
+            values[0]["native_record"]["vector"]["other"] = 999
+        native = repin_native(native, source_value=values)
+    with pytest.raises(ValueError):
+        native_refresh.refresh(before, after, native)
+
+
 def test_successor_descriptor_does_not_inherit_the_previous_publication_origin():
     before = {"contract": "participation.dataset.v1", "record_contract": "count-contract",
               "id": "test", "version": "old", "base_url": "https://old.test/",

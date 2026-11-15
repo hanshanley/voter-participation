@@ -556,6 +556,44 @@ def reviewed_replacement(old, update, entry):
     return row
 
 
+def reviewed_source_bridge(entry, rows):
+    data = entry.get("data") or {}
+    bridge = data.get("reviewed_source_url_bridge")
+    updates = data.get("updates")
+    if bridge is None or (
+            isinstance(updates, list)
+            and any(isinstance(update, dict) and "replacement" in update for update in updates)):
+        return None
+    source = entry.get("source") or {}
+    query = data.get("complete_native_query")
+    if (
+        not isinstance(bridge, dict)
+        or bridge.get("contract") != "participation.reviewed_source_url_bridge.v1"
+        or not isinstance(updates, list) or not updates
+        or bridge.get("observation_ids_pin")
+            != digest(encoded(sorted(update.get("id") for update in updates)))
+        or not isinstance(bridge.get("prior_full_inventory_pin"), str)
+        or not re.fullmatch(r"[a-f0-9]{64}", bridge["prior_full_inventory_pin"])
+        or source.get("url") != bridge.get("reviewed_url")
+        or not isinstance(query, list) or len(query) != 1
+        or query[0].get("source_pin")
+            != {"bytes": source.get("bytes"), "sha256": source.get("sha256")}
+    ):
+        raise ValueError("Reviewed source URL bridge declaration is incomplete")
+    stored = bridge.get("stored_source_url"), bridge.get("stored_view_source_url")
+    reviewed = bridge.get("reviewed_url")
+    for update in updates:
+        old = rows.get(update.get("id"))
+        if (
+            old is None
+            or old["source"]["id"] != bridge.get("source_id")
+            or (old["source"]["url"], old["view"].get("source_url"))
+                not in (stored, (reviewed, reviewed))
+        ):
+            raise ValueError("Reviewed source URL bridge prior observation changed")
+    return bridge
+
+
 def project(baseline, granular):
     """Create successor bodies, preserving old versions, IDs, views and join decisions."""
     result = dict(baseline)
@@ -571,6 +609,7 @@ def project(baseline, granular):
         rows = {row["id"]: row for row in shard["records"]}
         state_changed = False
         for entry in entries:
+            reviewed_source_bridge(entry, rows)
             for update in entry["data"].get("updates", []):
                 old = rows.get(update["id"])
                 if old is None:

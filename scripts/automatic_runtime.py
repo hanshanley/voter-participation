@@ -278,10 +278,91 @@ def refresh_current(files, snapshot):
     return result
 
 
-def compile_runtime(snapshot, count_files, native_files, seed):
+def hydrate_granular_sources(snapshot, source_packet):
+    """Restore checksum-bound granular replay data externalized from the bounded snapshot."""
+    compact = snapshot.get("granular_sources", {})
+    if not isinstance(compact, dict):
+        raise ValueError("Malformed compact granular source inventory")
+    references = {}
+    for identity, entry in compact.items():
+        if not isinstance(entry, dict):
+            raise ValueError("Malformed compact granular source entry")
+        data = entry.get("data")
+        if data is None:
+            continue
+        reference = data.get("full_data") if isinstance(data, dict) else None
+        if reference is None:
+            continue
+        if (
+            not isinstance(reference, dict)
+            or reference.get("file") != "granular-source-queries.json.gz"
+            or reference.get("key") != identity
+            or type(reference.get("bytes")) is not int
+            or reference["bytes"] <= 0
+            or not re.fullmatch(r"[a-f0-9]{64}", reference.get("sha256", ""))
+        ):
+            raise ValueError("Malformed granular replay-data reference")
+        references[identity] = reference
+    if not references:
+        return snapshot
+    if not isinstance(source_packet, bytes):
+        raise ValueError("Referenced granular replay data requires the complete source packet")
+    with zipfile.ZipFile(io.BytesIO(source_packet)) as archive:
+        packet_manifest(archive)
+        name = "queries/granular-source-queries.json.gz"
+        if name not in archive.namelist():
+            raise ValueError("Complete source packet is missing granular replay data")
+        body = archive.read(name)
+    declared = {(item["bytes"], item["sha256"]) for item in references.values()}
+    if len(declared) != 1 or pin(body) != {
+            "bytes": next(iter(declared))[0], "sha256": next(iter(declared))[1]}:
+        raise ValueError("Granular replay data disagrees with its snapshot checksum")
+    full = json.loads(uncompressed(body))
+    if not isinstance(full, dict) or set(full) != set(compact):
+        raise ValueError("Granular replay inventory differs from the compact snapshot")
+    for identity, compact_entry in compact.items():
+        full_entry = full.get(identity)
+        if not isinstance(full_entry, dict):
+            raise ValueError("Missing granular replay entry: " + identity)
+        if ({key: value for key, value in compact_entry.items() if key != "data"}
+                != {key: value for key, value in full_entry.items() if key != "data"}):
+            raise ValueError("Granular replay entry metadata changed: " + identity)
+        compact_data, full_data = compact_entry.get("data"), full_entry.get("data")
+        if compact_data is None:
+            if full_data is not None:
+                raise ValueError("Compact granular absence disagrees with replay data")
+            continue
+        if identity not in references or not isinstance(full_data, dict):
+            raise ValueError(
+                "Compact granular data is missing its exact replay reference: " + identity)
+        summary = compact_data.get("summary")
+        expected_summary = {
+            key: value for key, value in full_data.items()
+            if value is None or isinstance(value, (bool, int, float, str))
+        }
+        updates = full_data.get("updates")
+        if isinstance(updates, list):
+            expected_summary["projected_updates"] = {
+                "records": len(updates),
+                "reported": sum(update.get("value") is not None for update in updates),
+                "unknown": sum(update.get("value") is None for update in updates),
+                "observation_ids_pin": digest(encoded(sorted(update["id"] for update in updates))),
+            }
+        if summary != expected_summary:
+            raise ValueError("Granular replay summary changed: " + identity)
+        bridge = compact_data.get("reviewed_source_url_bridge")
+        if bridge != full_data.get("reviewed_source_url_bridge"):
+            raise ValueError("Granular replay source bridge changed: " + identity)
+    hydrated = copy.deepcopy(snapshot)
+    hydrated["granular_sources"] = full
+    return hydrated
+
+
+def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None):
     from scripts.automatic_estimates import build, render_artifacts
     from scripts.automatic_native_refresh import refresh
 
+    snapshot = hydrate_granular_sources(snapshot, source_packet)
     updated, changes = results_granular.project(count_files, snapshot.get("granular_sources", {}))
     updated = refresh_current(updated, snapshot)
     native = refresh(count_files, updated, native_files)
@@ -373,9 +454,12 @@ def replay(package, output):
         seed = load_rolling_seed_bytes(body, read(seed_directory / "rolling-seed-descriptor.json"))
     else:
         raise ValueError("Incomplete rolling last-good seed in scientific packet")
+    source_packet = (package / "inputs/complete-source-results.zip").read_bytes()
+    snapshot = hydrate_granular_sources(
+        read(package / "inputs/snapshot.json"), source_packet)
     with offline() as attempts:
-        compiled = compile_runtime(read(package / "inputs/snapshot.json"),
-            files("before-counts"), files("before-native"), seed)
+        compiled = compile_runtime(
+            snapshot, files("before-counts"), files("before-native"), seed, source_packet)
     outputs = {}
     for role in ("counts", "native", "model_files"):
         label = {"counts": "after-counts", "native": "after-native",
@@ -479,7 +563,9 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     native_description = catalog["datasets"]["participation-native-bindings-2026"]
     counts, native = dataset_files(count_description), dataset_files(native_description)
     seed, seed_inputs = select_seed(previous or None, seed_dir)
-    compiled = compile_runtime(snapshot, counts, native, seed)
+    runtime_snapshot = hydrate_granular_sources(snapshot, source["complete-results.zip"])
+    compiled = compile_runtime(
+        runtime_snapshot, counts, native, seed, source["complete-results.zip"])
     packet = scientific_package(snapshot, source["complete-results.zip"], counts, native, seed_inputs, compiled)
     version = digest(encoded({"input_results_version": pointer["version"],
         "packet": pin(packet), "counts": {name: pin(body) for name, body in compiled["counts"].items()},

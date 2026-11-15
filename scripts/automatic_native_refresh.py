@@ -23,6 +23,11 @@ STATIC_PROJECTION_KEYS = (
     "match_status", "reporting_unit_kind", "rate_withheld_reason",
     "source_count_qualified", "quality",
 )
+REVIEWED_FAMILY_SOURCE_IDS = {
+    "AR": "accepted-export:b128dc3cef02ae063e840495611b3747dc9454692d2788a8cb94e3b160f4908a:reporting/AR",
+    "AZ": "accepted-export:bc9f1e93785e4a83148b96afa6855701f511be995f7469b8e9e4dfcb7e6cb51f:reporting/AZ",
+    "WY": "accepted-export:cea7eba88d5ae521db73653ce33992dbe2d253a2854cd81d27655890e74be161:reporting/WY",
+}
 
 
 def encoded(value: Any) -> bytes:
@@ -316,6 +321,263 @@ def refresh_source_rows(data: Any, before: dict[str, dict[str, Any]],
     return data, changed
 
 
+def family_selector_matches(source: dict[str, Any], canonical: dict[str, Any]) -> bool:
+    if source.get("selector") == canonical.get("source", {}).get("selector"):
+        return True
+    if canonical.get("geography", {}).get("state_code") != "WY":
+        return False
+    native = canonical.get("view", {}).get("native_record", {})
+    ballots = native.get("ballot_count_query", {})
+    expected = {
+        "native_query": "wy-precinct-ballots",
+        "native_selector": {
+            "county": ballots.get("county"),
+            "precinct": ballots.get("precinct"),
+        },
+        "source_rows": ballots.get("source_rows"),
+    }
+    return all(value is not None for value in expected["native_selector"].values()) \
+        and expected["source_rows"] is not None and source.get("selector") == expected
+
+
+def family_frame_matches(native: dict[str, Any], canonical: dict[str, Any],
+                         source_id: str) -> bool:
+    view, source = native.get("view", {}), native.get("source", {})
+    canonical_view, canonical_source = canonical.get("view", {}), canonical.get("source", {})
+    if (
+        native.get("id") != canonical.get("id")
+        or native.get("election") != canonical.get("election")
+        or native.get("measure") != canonical.get("measure")
+        or native.get("count") != canonical.get("count")
+        or native.get("denominator") != canonical.get("denominator")
+        or source.get("id") != source_id
+        or canonical_source.get("id") != source_id
+        or source.get("input_sha256") != canonical_source.get("input_sha256")
+        or source.get("url") != canonical_source.get("url")
+        or source.get("classification") != canonical_source.get("classification")
+        or not family_selector_matches(source, canonical)
+        or source.get("fields") != view
+        or view.get("native_record") != canonical_view.get("native_record")
+        or view.get("ballots") != canonical_view.get("ballots")
+        or view.get("denominator") != canonical_view.get("denominator")
+        or view.get("registered") != canonical_view.get("registered")
+        or view.get("reported_pct") != canonical_view.get("reported_pct")
+        or view.get("source_url") != canonical_view.get("source_url")
+        or any(view.get(key) != canonical_view.get(key)
+               for key in ("state_code", "key", "unit", "year"))
+    ):
+        return False
+    native_pin = (view.get("native_record") or {}).get("native_original_pin")
+    if native_pin is not None and native_pin.get("sha256") != source.get("input_sha256"):
+        return False
+    native_geo, canonical_geo = native.get("geography", {}), canonical.get("geography", {})
+    if any(native_geo.get(key) != canonical_geo.get(key)
+           for key in ("id", "name", "state_code", "level", "join")):
+        return False
+    return (
+        view.get("maps_approved") is not True
+        and view.get("cast_ballot_count_qualified", False) is not True
+        and view.get("unique_voter_count_qualified", False) is not True
+    )
+
+
+def project_family_observation(native: dict[str, Any],
+                               previous: dict[str, Any],
+                               current: dict[str, Any],
+                               source_id: str) -> dict[str, Any]:
+    previous_match = family_frame_matches(native, previous, source_id)
+    current_match = family_frame_matches(native, current, source_id)
+    if not previous_match and not current_match:
+        raise ValueError(f"Reviewed family native frame differs: {native.get('id')}")
+    result = copy.deepcopy(native)
+    result["count"] = copy.deepcopy(current["count"])
+    result["denominator"] = copy.deepcopy(current.get("denominator"))
+    for key in ("literal", "reported_units", "total_units", "complete"):
+        if key in current.get("reporting_status", {}):
+            result["reporting_status"][key] = copy.deepcopy(current["reporting_status"][key])
+    result["source_clock"]["literal"] = current.get("source_clock", {}).get("literal")
+    result["source_clock"]["timezone"] = current.get("source_clock", {}).get("timezone")
+    result["view"] = projected(result["view"], current["view"])
+    for key in ("ballots", "denominator", "registered", "reported_pct",
+                "source_url", "native_record"):
+        if key in result["view"]:
+            result["view"][key] = copy.deepcopy(current["view"].get(key))
+    result["source"] = {
+        key: copy.deepcopy(value) for key, value in current["source"].items()
+        if key != "fields"
+    }
+    result["source"]["fields"] = copy.deepcopy(result["view"])
+    if observation_identity(result) != observation_identity(native):
+        raise ValueError(f"Reviewed family native identity changed: {native.get('id')}")
+    return result
+
+
+def family_source_frame_matches(row: dict[str, Any], canonical: dict[str, Any]) -> bool:
+    view = canonical.get("view", {})
+    return (
+        all(row.get(key) == view.get(key) for key in (
+            "ballots", "registered", "reported_pct", "source_url", "native_record"))
+        and all(row[key] == view.get(key)
+                for key in ("state_code", "key", "unit") if key in row)
+    )
+
+
+def reviewed_family_contexts(before_files: dict[str, bytes],
+                             after_files: dict[str, bytes],
+                             native_files: dict[str, bytes],
+                             native_index: dict[str, Any],
+                             changed_before: dict[str, dict[str, Any]],
+                             changed_after: dict[str, dict[str, Any]],
+                             changed_states: set[str]) -> dict[str, dict[str, Any]]:
+    before_index = read_json("index.json", before_files["index.json"])
+    after_index = read_json("index.json", after_files["index.json"])
+    contexts = {}
+    for code, source_id in REVIEWED_FAMILY_SOURCE_IDS.items():
+        if code not in changed_states:
+            continue
+        changed = {
+            identity for identity, row in changed_after.items()
+            if row.get("source", {}).get("id") == source_id
+        }
+        if not changed:
+            continue
+        if any(changed_before[identity].get("source", {}).get("id") != source_id
+               for identity in changed):
+            raise ValueError(f"Reviewed family source identity changed: {code}")
+        old_all = state_records(before_files, before_index, code)
+        new_all = state_records(after_files, after_index, code)
+        old = {identity: row for identity, row in old_all.items()
+               if row.get("source", {}).get("id") == source_id}
+        new = {identity: row for identity, row in new_all.items()
+               if row.get("source", {}).get("id") == source_id}
+        if not old or set(old) != set(new):
+            raise ValueError(f"Reviewed family canonical membership changed: {code}")
+        declaration = native_index.get("reporting_tables", {}).get(code)
+        name = declaration.get("file") if isinstance(declaration, dict) else None
+        if (
+            not isinstance(name, str)
+            or name not in native_files
+            or pin(native_files[name]) != {
+                key: declaration.get(key) for key in ("bytes", "sha256")
+            }
+        ):
+            raise ValueError(f"Reviewed family reporting-table pin changed: {code}")
+        table = read_json(name, native_files[name])
+        records = table.get("records") if isinstance(table, dict) else None
+        if (
+            not isinstance(table, dict)
+            or
+            table.get("contract") != "participation.reporting_units.v1"
+            or table.get("state_code") != code
+            or not isinstance(records, list)
+            or len(records) != declaration.get("rows")
+        ):
+            raise ValueError(f"Reviewed family reporting-table inventory changed: {code}")
+        table_rows = {}
+        for record in records:
+            observation = record.get("observation") if isinstance(record, dict) else None
+            identity = observation.get("id") if isinstance(observation, dict) else None
+            properties = record.get("properties") if isinstance(record, dict) else None
+            if not identity or identity in table_rows or not isinstance(properties, dict):
+                raise ValueError(f"Duplicate reviewed family native identity: {code}")
+            for key in IDENTITY_VIEW_KEYS:
+                if key in properties and properties.get(key) != observation.get("view", {}).get(key):
+                    raise ValueError(f"Reviewed family property identity changed: {identity}")
+            if not (
+                family_frame_matches(observation, old.get(identity, {}), source_id)
+                or family_frame_matches(observation, new.get(identity, {}), source_id)
+            ):
+                raise ValueError(f"Reviewed family native vector differs: {identity}")
+            table_rows[identity] = record
+        if set(table_rows) != set(old):
+            raise ValueError(f"Reviewed family reporting-table membership changed: {code}")
+        context = {
+            "code": code, "source_id": source_id, "old": old, "new": new,
+            "table_name": name, "table_rows": table_rows,
+        }
+        source_name = f"source-reporting/{code}.json.gz"
+        source_declaration = native_index.get("reporting_sources", {}).get(code)
+        if code == "WY" and source_name not in native_files:
+            raise ValueError(f"Reviewed family source-reporting file is missing: {code}")
+        if source_name in native_files:
+            if (
+                not isinstance(source_declaration, dict)
+                or pin(native_files[source_name])["sha256"]
+                    != source_declaration.get("sha256")
+            ):
+                raise ValueError(f"Reviewed family source-reporting pin changed: {code}")
+            source_rows = read_json(source_name, native_files[source_name])
+            if not isinstance(source_rows, list) or len(source_rows) != source_declaration.get("rows"):
+                raise ValueError(f"Reviewed family source-reporting inventory changed: {code}")
+            keyed = {}
+            for identity, row in new.items():
+                key = row.get("view", {}).get("state_code"), row.get("view", {}).get("key")
+                if not all(key) or key in keyed:
+                    raise ValueError(f"Duplicate reviewed family canonical key: {code}")
+                keyed[key] = identity
+            seen = set()
+            for row in source_rows:
+                if not isinstance(row, dict):
+                    raise ValueError(f"Malformed reviewed family source row: {code}")
+                identity = keyed.get((row.get("state_code"), row.get("key")))
+                if identity is None or identity in seen:
+                    raise ValueError(f"Duplicate reviewed family source key: {code}")
+                if not (
+                    family_source_frame_matches(row, old[identity])
+                    or family_source_frame_matches(row, new[identity])
+                ):
+                    raise ValueError(f"Reviewed family source vector differs: {identity}")
+                if row != table_rows[identity]["properties"]:
+                    raise ValueError(f"Reviewed family source/table row differs: {identity}")
+                seen.add(identity)
+            if seen != set(old):
+                raise ValueError(f"Reviewed family source-reporting membership changed: {code}")
+            context["source_name"] = source_name
+            context["source_keys"] = keyed
+        contexts[code] = context
+    return contexts
+
+
+def refresh_family_table(data: dict[str, Any], context: dict[str, Any]) -> tuple[
+        dict[str, Any], set[str]]:
+    changed = set()
+    for record in data["records"]:
+        identity = record["observation"]["id"]
+        original = copy.deepcopy(record["observation"])
+        refreshed = project_family_observation(
+            original, context["old"][identity], context["new"][identity],
+            context["source_id"])
+        properties, paths = record["properties"], record.get("paths", {})
+        original_identity = {key: properties.get(key) for key in IDENTITY_VIEW_KEYS}
+        updated = projected(properties, refreshed["view"])
+        put(updated, paths.get("count"), refreshed["count"]["value"])
+        put(updated, paths.get("denominator"),
+            (refreshed.get("denominator") or {}).get("value"))
+        put(updated, paths.get("rate"), refreshed["view"].get("reported_pct"))
+        if {key: updated.get(key) for key in IDENTITY_VIEW_KEYS} != original_identity:
+            raise ValueError(f"Reviewed family projection metadata changed: {identity}")
+        record["observation"], record["properties"] = refreshed, updated
+        if record["observation"] != original:
+            changed.add(identity)
+    return data, changed
+
+
+def refresh_family_source(data: list[dict[str, Any]], context: dict[str, Any]) -> tuple[
+        list[dict[str, Any]], set[str]]:
+    changed = set()
+    for row in data:
+        identity = context["source_keys"][(row.get("state_code"), row.get("key"))]
+        original = copy.deepcopy(row)
+        original_identity = {key: row.get(key) for key in IDENTITY_VIEW_KEYS}
+        row.update(projected(row, context["new"][identity]["view"]))
+        row["registered"] = copy.deepcopy(context["new"][identity]["view"].get("registered"))
+        if {key: row.get(key) for key in IDENTITY_VIEW_KEYS} != original_identity:
+            raise ValueError(f"Reviewed family source identity changed: {identity}")
+        if row != original:
+            changed.add(identity)
+    return data, changed
+
+
 def refresh_reference(data: dict[str, Any], before_files: dict[str, bytes],
                       after_files: dict[str, bytes]) -> tuple[dict[str, Any], set[str]]:
     """Revalidate complete reference observations before rebinding their source shard."""
@@ -401,6 +663,14 @@ def refresh(before_count_files: dict[str, bytes], after_count_files: dict[str, b
     if index.get("contract") != "participation.native_index.v1" or index.get("year") != 2026:
         raise ValueError("Wrong native binding index contract or election")
     original_static = copy.deepcopy(index)
+    family_contexts = reviewed_family_contexts(
+        before_count_files, after_count_files, native_files, index,
+        before, after, changed_states)
+    family_files = {
+        context[key]: (context, key)
+        for context in family_contexts.values()
+        for key in ("table_name", "source_name") if key in context
+    }
     compatible = compatibility_map(before)
     used_compatible = set()
     changed_files, refreshed_ids = set(), set()
@@ -408,7 +678,13 @@ def refresh(before_count_files: dict[str, bytes], after_count_files: dict[str, b
         if not name.startswith(NATIVE_PREFIXES) or not name.endswith(".json.gz"):
             continue
         data = read_json(name, native_files[name])
-        if isinstance(data, dict) and data.get("contract") == "participation.reference_bindings.v1":
+        if name in family_files:
+            context, role = family_files[name]
+            if role == "table_name":
+                data, touched = refresh_family_table(data, context)
+            else:
+                data, touched = refresh_family_source(data, context)
+        elif isinstance(data, dict) and data.get("contract") == "participation.reference_bindings.v1":
             data, touched = refresh_reference(data, before_count_files, after_count_files)
         else:
             data, embedded = refresh_embedded(

@@ -260,6 +260,42 @@ def numeric_observations(baseline, feeds):
     return rows
 
 
+def snapshot_granular_sources(granular, query_reference):
+    """Reference exact replay data instead of duplicating it inside the bounded snapshot."""
+    result = copy.deepcopy(granular)
+    for identity, entry in result.items():
+        data = entry.get("data")
+        if data is None:
+            continue
+        if not isinstance(data, dict):
+            continue
+        updates = data.get("updates")
+        summary = {
+            key: value for key, value in data.items()
+            if value is None or isinstance(value, (bool, int, float, str))
+        }
+        if isinstance(updates, list):
+            summary["projected_updates"] = {
+                "records": len(updates),
+                "reported": sum(update.get("value") is not None for update in updates),
+                "unknown": sum(update.get("value") is None for update in updates),
+                "observation_ids_pin": digest(encoded(sorted(update["id"] for update in updates))),
+            }
+        bridge = data.get("reviewed_source_url_bridge")
+        compact = {
+            "summary": summary,
+            "full_data": {
+                **query_reference,
+                "key": identity,
+                "qualification": "Exact full native query and replay updates retained externally.",
+            },
+        }
+        if isinstance(bridge, dict):
+            compact["reviewed_source_url_bridge"] = bridge
+        entry["data"] = compact
+    return result
+
+
 def project(inputs, baseline):
     feeds, house, declared = (inputs[key] for key in ("feeds", "house", "districts"))
     observations = numeric_observations(baseline, feeds)
@@ -316,6 +352,8 @@ def project(inputs, baseline):
                    for key, entry in sorted({**feeds, **{"house-" + k: v for k, v in house.items()}}.items())]
     products_query = compressed(encoded(inputs.get("products", {})))
     products_reference = {"file": "declared-numerical-queries.json.gz", **pin(products_query)}
+    granular_query = compressed(encoded(inputs.get("granular", {})))
+    granular_reference = {"file": "granular-source-queries.json.gz", **pin(granular_query)}
     products_index = {
         identity: {**{key: value for key, value in entry.items() if key != "data"},
                    "factual_data_available": entry.get("data") is not None,
@@ -330,7 +368,8 @@ def project(inputs, baseline):
         "all_states_certified_or_precinct_complete": False,
         "source_clock_not_replaced_by_retrieval_time": True,
         "baseline_and_fresh_source_frames_are_separate_not_added": True,
-        "granular_sources": inputs.get("granular", {}),
+        "granular_sources": snapshot_granular_sources(
+            inputs.get("granular", {}), granular_reference),
         "declared_numerical_products": products_index,
     }
     outputs = {
@@ -345,7 +384,7 @@ def project(inputs, baseline):
         snapshot["canonical_local_changes"] = changes
         snapshot["declared_numerical_products_query"] = products_reference
         outputs["snapshot.json.gz"] = compressed(encoded(snapshot))
-        outputs["granular-source-queries.json.gz"] = compressed(encoded(inputs["granular"]))
+        outputs["granular-source-queries.json.gz"] = granular_query
         outputs["declared-numerical-queries.json.gz"] = products_query
         outputs["canonical-local-changes.csv"] = csv_body(changes)
     return outputs
@@ -479,6 +518,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_granular.py", "results_native.py",
+             "results_native_state_family.py",
              "results_pdf_ocr.py", "results_pdf_tables.py", "results_pdf_boston.py",
              "results_pdf_grids.json",
              "results_json_statistics.py", "automatic_native_refresh.py",
@@ -501,6 +541,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                  "test_results_pdf_affiliations.py", "test_results_pdf_jefferson.py",
                  "test_results_pdf_cass.py", "test_results_native_cass.py",
                  "test_results_pdf_dunn.py",
+                 "test_results_native_state_family.py",
                  "test_automatic_native_refresh.py",
                  "test_nationwide.py", "test_current.py"):
         package_members["code/tests/" + name] = (ROOT / "tests" / name).read_bytes()

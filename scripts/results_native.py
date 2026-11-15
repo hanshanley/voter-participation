@@ -28,6 +28,12 @@ from scripts.results_pdf_affiliations import (
 from scripts.results_pdf_jefferson import (
     PROFILES as JEFFERSON_PDF_PROFILES, statistics as jefferson_pdf_statistics,
 )
+from scripts.results_native_state_family import (
+    ADAPTER as NATIVE_STATE_FAMILY_ADAPTER,
+    route as native_state_family_route,
+    statistics as native_state_family_statistics,
+    validate_plan as validate_native_state_family_plan,
+)
 from scripts.results_pdf_cass import (
     PROFILES as CASS_PDF_PROFILES, statistics as cass_pdf_statistics,
 )
@@ -1775,6 +1781,9 @@ def source_plan(baseline):
             url = view.get("source_url")
             if not isinstance(url, str):
                 continue
+            family_route = native_state_family_route(template)
+            if family_route is not None:
+                url = family_route["url"]
             bridged_url = dunn_source_url(template)
             if bridged_url is not None:
                 url = bridged_url
@@ -1783,7 +1792,7 @@ def source_plan(baseline):
                     "raw.githubusercontent.com", "github.com", "www.themarginoferror.com",
                     "themarginoferror.com", "civicapi.org")
                     or parsed.hostname and parsed.hostname.endswith(".civicapi.org")
-                    or NOT_RESULTS.search(parsed.path)):
+                    or family_route is None and NOT_RESULTS.search(parsed.path)):
                 continue
             if (url == MN_URL or url.startswith(CT_ROOT)
                     or parsed.hostname == "er.ncsbe.gov"
@@ -1801,7 +1810,9 @@ def source_plan(baseline):
             jefferson_profile = JEFFERSON_PDF_PROFILES.get(url)
             cass_profile = CASS_PDF_PROFILES.get(url)
             native = view.get("native_record") or {}
-            if bridged_url == DUNN_UNOFFICIAL_URL and state == "WI":
+            if family_route is not None and family_route["state"] == state:
+                adapter = NATIVE_STATE_FAMILY_ADAPTER
+            elif bridged_url == DUNN_UNOFFICIAL_URL and state == "WI":
                 adapter = "reviewed_dunn_unofficial_pdf"
             elif summary_profile and state == summary_profile["state"]:
                 adapter = "reviewed_summary_statistics"
@@ -1852,7 +1863,7 @@ def source_plan(baseline):
                 continue
             source["templates"].append(template)
         result[state] = sources
-    return result
+    return validate_native_state_family_plan(result)
 
 
 def collect_sources(collector, baseline):
@@ -1860,7 +1871,11 @@ def collect_sources(collector, baseline):
         result = {}
         for identity, source in group:
             url, templates = source["url"], source["templates"]
-            if source["adapter"] == "reviewed_dunn_unofficial_pdf":
+            if source["adapter"] == NATIVE_STATE_FAMILY_ADAPTER:
+                def parse(body, templates=templates, url=url):
+                    return native_state_family_statistics(
+                        body, templates, url, acquire=collector.acquire)
+            elif source["adapter"] == "reviewed_dunn_unofficial_pdf":
                 def parse(body, templates=templates):
                     return dunn_statistics(body, templates)
             elif source["adapter"] == "reviewed_record_statistics":
