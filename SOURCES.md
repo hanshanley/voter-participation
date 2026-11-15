@@ -6,6 +6,39 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## Verified Greeley automatic intake and current-status display
+
+The actual hosted collector now reads Greeley County's native workbook without
+the XLSX dimension crash. It validates the source's turnout equation and keeps
+all workbook cells. The count is **460 source-reported voters**, not ballots or
+unique people. The existing **853 same-report registered-voter** denominator and
+printed **53.93%** remain narrowly qualified; they are not eligible-population
+turnout. Missing count clocks remain missing. The current label no longer embeds
+the original 451-plus-9 equation when future counts change.
+
+Research `a7ff57fa`, collector **43762978023**, website workflow `1151f07f` and
+actual runtime **43765536710** / `b598df77` are accepted. The full
+[source-query ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/901bd5dee0d15ba4b4e7d1cab42e41257a5b4f1b/snapshots/caefd008479c40846943d3b5754195f9b7143e3957d6b9917f6a9ded86bdcc7c/complete-results.zip)
+reproduces all **14 outputs** and the full
+[numerical-query ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-b598df776c8d6eff91d10c34208e673b4a063cfa5e836adca451cb2c07c4e2c0/complete-analysis.zip)
+reproduces all **113 outputs**, offline with no source requests. All public
+runtime bodies and packaged engine bodies match their reviewed source.
+Controlled revised-count and true-zero workbooks pass the default collector.
+
+Reader `8a403f81` also keeps explicitly missing native result status unknown,
+rather than calling it unofficial. Its 68 contract tests and actual Pages
+**43767355142** / source guard **43767355170** pass. Actual desktop/mobile
+checks cover all 306 count frames per width, nine model controls, 34 registered
+scenarios, 51 decisions and the Greeley card. Images were physically reviewed.
+The complete actual native artifact stays below both strict size caps; all
+437 older complete-download pins remain. No model refit or new geographic join.
+
+This capture contains **18,288 refresh appearances across 30 states**, not
+people or complete local coverage. Greeley is one of 105 Kansas counties; the
+other 104 remain unknown. All 186 prior access stops remain. Nationwide gaps,
+the full audit and later polish remain open.
+[Acceptance](data/participation-access/20261115-ks-greeley-automatic-01/acceptance.json).
+
 ## Verified Boone intake and last-good website propagation
 
 Boone County's native **67,527 ballots** now pass the default automatic collector.

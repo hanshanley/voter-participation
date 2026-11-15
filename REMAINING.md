@@ -13,6 +13,34 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Verified Greeley delivery; single-main cleanup is the immediate priority
+
+Kansas's bounded Greeley adapter is delivered: research `a7ff57fa`, actual
+collector **43762978023**, numerical runtime **43765536710** / `b598df77`,
+reader `8a403f81` and Pages **43767355142** all pass. Full source and numerical
+packages reproduce 14 and 113 outputs offline. Actual desktop/mobile checks
+cover all 306 frames, nine model controls and the Greeley card; actual native
+artifact size caps and all 437 prior download pins pass. Missing native status
+now stays unknown. The native count is 460 source-reported voters with the
+existing same-report registered denominator 853, not ballots, unique people or
+eligible-population turnout. One Kansas county is covered; 104 remain unknown.
+
+The [complete source-query ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/901bd5dee0d15ba4b4e7d1cab42e41257a5b4f1b/snapshots/caefd008479c40846943d3b5754195f9b7143e3957d6b9917f6a9ded86bdcc7c/complete-results.zip)
+and [complete numerical-query ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-b598df776c8d6eff91d10c34208e673b4a063cfa5e836adca451cb2c07c4e2c0/complete-analysis.zip)
+remain public. Fresh 18,288 refresh appearances across 30 states do not establish
+complete county/precinct coverage. All 186 source stops remain.
+[Acceptance](data/participation-access/20261115-ks-greeley-automatic-01/acceptance.json).
+
+The user's newer priority is exactly one main branch per repository. All old
+heads are preserved in one archive tag per repository; 156 obsolete branches
+have been removed. The three remaining data branches are being migrated to
+forward-only data tags so existing raw URLs and immutable complete packages
+remain intact. Both GitHub data writers are briefly paused for that migration;
+they MUST be re-enabled and verified before declaring cleanup complete.
+Do not begin Cole or repeat accepted scientific campaigns during this work.
+The session TOP plan and single-main SQL tasks hold current migration state.
+Nationwide intake, then the full audit, then usability polish remain open.
+
 ## Verified Boone intake and last-good website propagation
 
 Boone County's native **67,527 ballots** now pass the default automatic collector.
