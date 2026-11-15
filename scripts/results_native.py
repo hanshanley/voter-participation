@@ -28,6 +28,14 @@ from scripts.results_pdf_affiliations import (
 from scripts.results_pdf_jefferson import (
     PROFILES as JEFFERSON_PDF_PROFILES, statistics as jefferson_pdf_statistics,
 )
+from scripts.results_pdf_cass import (
+    PROFILES as CASS_PDF_PROFILES, statistics as cass_pdf_statistics,
+)
+from scripts.results_pdf_dunn import (
+    URL as DUNN_UNOFFICIAL_URL,
+    source_url as dunn_source_url,
+    statistics as dunn_statistics,
+)
 
 
 CA_URL = "https://media.sos.ca.gov/media/status_GG.json"
@@ -1767,6 +1775,9 @@ def source_plan(baseline):
             url = view.get("source_url")
             if not isinstance(url, str):
                 continue
+            bridged_url = dunn_source_url(template)
+            if bridged_url is not None:
+                url = bridged_url
             parsed = urlsplit(url)
             if (parsed.scheme != "https" or parsed.hostname in (
                     "raw.githubusercontent.com", "github.com", "www.themarginoferror.com",
@@ -1788,8 +1799,11 @@ def source_plan(baseline):
             json_profile = JSON_STATISTICS_PROFILES.get(url)
             affiliation_profile = AFFILIATION_PDF_PROFILES.get(url)
             jefferson_profile = JEFFERSON_PDF_PROFILES.get(url)
+            cass_profile = CASS_PDF_PROFILES.get(url)
             native = view.get("native_record") or {}
-            if summary_profile and state == summary_profile["state"]:
+            if bridged_url == DUNN_UNOFFICIAL_URL and state == "WI":
+                adapter = "reviewed_dunn_unofficial_pdf"
+            elif summary_profile and state == summary_profile["state"]:
                 adapter = "reviewed_summary_statistics"
             elif workbook_profile and state == workbook_profile["state"]:
                 adapter = "reviewed_workbook_statistics"
@@ -1814,6 +1828,8 @@ def source_plan(baseline):
                 adapter = "reviewed_county_affiliation_pdf"
             elif jefferson_profile and state == jefferson_profile["state"]:
                 adapter = "reviewed_jefferson_precinct_pdf"
+            elif cass_profile and state == cass_profile["state"]:
+                adapter = "reviewed_cass_turnout_pdf"
             elif pdf_profile and state == pdf_profile["state"]:
                 adapter = "reviewed_statistical_pdf"
             elif texas_reconciliation_role(template):
@@ -1844,7 +1860,10 @@ def collect_sources(collector, baseline):
         result = {}
         for identity, source in group:
             url, templates = source["url"], source["templates"]
-            if source["adapter"] == "reviewed_record_statistics":
+            if source["adapter"] == "reviewed_dunn_unofficial_pdf":
+                def parse(body, templates=templates):
+                    return dunn_statistics(body, templates)
+            elif source["adapter"] == "reviewed_record_statistics":
                 def parse(body, templates=templates, profile=RECORD_PROFILES[url]):
                     return record_statistics(body, templates, profile)
             elif source["adapter"] == "reviewed_workbook_statistics":
@@ -1886,6 +1905,9 @@ def collect_sources(collector, baseline):
             elif source["adapter"] == "reviewed_jefferson_precinct_pdf":
                 def parse(body, templates=templates, url=url):
                     return jefferson_pdf_statistics(body, templates, url)
+            elif source["adapter"] == "reviewed_cass_turnout_pdf":
+                def parse(body, templates=templates, url=url):
+                    return cass_pdf_statistics(body, templates, url)
             else:
                 def parse(body, url=url):
                     return {"updates": [], "factual_product": factual_tables(body, url),

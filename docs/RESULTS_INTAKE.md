@@ -121,6 +121,23 @@ upgrades require native-layout requalification, not relaxed column guards.
 
 ## Indiana, Boston and New Jersey statistical adapters
 
+The Cass County, Indiana cumulative-report adapter refreshes its existing
+turnout-display observation, not cast ballots. It checks every page's election,
+county, edition, clock and columns. The printed registration reference remains
+context, not an analytical denominator; the simultaneous unofficial/official
+literals, partial reporting and unknown timezone remain explicit. Neither a
+FINAL filename nor a reporting fraction establishes certification.
+
+Dunn County, Wisconsin uses a separately reviewed source-URL correction: its
+accepted count and original-file hash identify the unofficial report, while
+both stored URLs incorrectly named the distinct official report. The initial
+correction requires the complete prior-row hash and retained original-file hash.
+Later updates must preserve the same identity and strict measure/status contract.
+The official report remains a separate control, never a contest-vote fallback;
+the absent count clock and held rates remain absent and held. Complete packets
+include both adapters, portable behavior tests and the safe Dunn fixture.
+These are parser capabilities, not a claim of hosted or live acceptance.
+
 The shared collector also recognizes Porter and Monroe statistical JSON,
 Boston's statement and 15 registered New Jersey periodic reports. These
 adapters refresh 396 existing record appearances, not distinct people or

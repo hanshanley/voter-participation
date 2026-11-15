@@ -1,0 +1,122 @@
+{
+  "contract": "participation.observation.v1",
+  "count": {
+    "literal": 19896,
+    "status": "reported",
+    "value": 19896
+  },
+  "denominator": null,
+  "election": {
+    "date": "2026-11-03",
+    "id": "wi-2026-11-03-general",
+    "qualification": "native",
+    "type": "general",
+    "year": 2026
+  },
+  "geography": {
+    "id": "native:WI:county:dunn-county",
+    "join": {
+      "evidence": null,
+      "feature_key": null,
+      "reference_id": null,
+      "status": "unreviewed"
+    },
+    "level": "county",
+    "name": "Dunn County",
+    "parent_id": null,
+    "state_code": "WI"
+  },
+  "id": "88eca302e65a1f5224df5cf0673b4aa3",
+  "measure": {
+    "id": "total-votes-cast",
+    "kind": "ballots_cast",
+    "literal": "Total Votes Cast",
+    "mode": "source_defined",
+    "unit": "source_reported_count"
+  },
+  "quality": {
+    "conflicts": [],
+    "notes": [
+      "analytical_denominators_and_rates_withheld: True",
+      "official_canvass_has_contest_totals_not_a_ballot_parent: True",
+      "source_clock_absent: True"
+    ]
+  },
+  "reporting_status": {
+    "complete": null,
+    "literal": "UNOFFICIAL RESULTS",
+    "reported_units": null,
+    "total_units": null
+  },
+  "source": {
+    "classification": "public_aggregate",
+    "fields": {
+      "eligible_voters": 37812,
+      "official_board_report_pin": {
+        "bytes": 1570293,
+        "path": "originals/wi-dunn-official.pdf",
+        "sha256": "e2bfb1cfd7fa24a7d29ee1000b28c9c498606efa93e641408a07edc3f12c0742"
+      },
+      "official_max_governor_contest_total": 19758,
+      "printed_eligible_percent": "53%",
+      "printed_registered_percent": "73%",
+      "registered_voters": 27173
+    },
+    "id": "wi-dunn-unofficial-20261113",
+    "input_sha256": "0dcb0761ba33936d3b14e43d415bab86fa96fbc13879fdbf6c1a5fc2e421d5a0",
+    "selector": {
+      "id": "voter-participation-total"
+    },
+    "url": "https://dunncountywi.govoffice2.com/vertical/Sites/%7B97C2FC1A-69D7-4F5C-BA23-79B5C833BED5%7D/uploads/Dunn_County_-_November_3_2026_Geneal_Election_Official_Results.pdf"
+  },
+  "source_clock": {
+    "literal": null,
+    "timezone": null
+  },
+  "view": {
+    "ballots": 19896,
+    "cast_ballot_count_qualified": false,
+    "complete_download_url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-native-regional-merge-20261113-02/complete-analysis.zip",
+    "county": "Dunn County",
+    "county_fips": null,
+    "county_id": "native:WI:county:dunn-county",
+    "denominator": null,
+    "denominator_basis": "analysis_denominator_withheld_or_not_supplied",
+    "geography_level": "county",
+    "maps_approved": false,
+    "native_printed_pct": null,
+    "native_record": {
+      "eligible_voters": 37812,
+      "official_board_report_pin": {
+        "bytes": 1570293,
+        "path": "originals/wi-dunn-official.pdf",
+        "sha256": "e2bfb1cfd7fa24a7d29ee1000b28c9c498606efa93e641408a07edc3f12c0742"
+      },
+      "official_max_governor_contest_total": 19758,
+      "printed_eligible_percent": "53%",
+      "printed_registered_percent": "73%",
+      "registered_voters": 27173
+    },
+    "official": false,
+    "participation_measure_kind": "total-votes-cast",
+    "participation_measure_label": "Total Votes Cast",
+    "participation_measure_literal": "Total Votes Cast",
+    "quality": [
+      "analytical_denominators_and_rates_withheld: True",
+      "official_canvass_has_contest_totals_not_a_ballot_parent: True",
+      "source_clock_absent: True"
+    ],
+    "registered": 27173,
+    "reported_pct": null,
+    "review_id": "native-central-integration-20261113-01",
+    "source_mode": "source_defined",
+    "source_reporting_label": "analytical_denominators_and_rates_withheld: True; official_canvass_has_contest_totals_not_a_ballot_parent: True; source_clock_absent: True",
+    "source_status_literal": "UNOFFICIAL RESULTS",
+    "source_update_label": null,
+    "source_update_timezone": null,
+    "source_url": "https://dunncountywi.govoffice2.com/vertical/Sites/%7B97C2FC1A-69D7-4F5C-BA23-79B5C833BED5%7D/uploads/Dunn_County_-_November_3_2026_Geneal_Election_Official_Results.pdf",
+    "state_code": "WI",
+    "unique_voter_count_qualified": false,
+    "year": 2026
+  }
+}

@@ -203,9 +203,15 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         "from scripts import results_pdf_tables as pdf; "
         "from scripts import results_pdf_boston, results_json_statistics, results_pdf_periodic; "
         "from scripts import results_pdf_periodic_ocr, automatic_native_refresh; "
-        "from scripts import results_pdf_affiliations, results_pdf_jefferson; "
+        "from scripts import results_pdf_affiliations, results_pdf_jefferson, results_pdf_cass, results_pdf_dunn; "
         "from scripts import native_pdf, pdf_group_queries; "
         "import json; "
+        "assert pdf.Path('code/scripts/results_pdf_cass.py').is_file(); "
+        "assert pdf.Path('code/tests/test_results_pdf_cass.py').is_file(); "
+        "assert pdf.Path('code/tests/test_results_native_cass.py').is_file(); "
+        "assert pdf.Path('code/scripts/results_pdf_dunn.py').is_file(); "
+        "assert pdf.Path('code/tests/test_results_pdf_dunn.py').is_file(); "
+        "assert pdf.Path('code/tests/fixtures/dunn-accepted.json').is_file(); "
         "assert (pdf.Path('code/tests/fixtures/results_pdf_periodic') / "
         "'complete-products.json.gz').is_file(); "
         "assert (pdf.Path('code/tests/fixtures/results_pdf_periodic') / "
@@ -213,7 +219,12 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         "assert pdf.Path('code/tests/fixtures/results_pdf_jefferson/"
         "complete-pages.json.gz').is_file(); "
         "p=json.loads(pdf.Path(pdf.__file__).with_name('results_pdf_grids.json').read_bytes()); "
-        "assert len(p['source']['grids']) == 14"],
+        "assert len(p['source']['grids']) == 14; "
+        "import pytest; "
+        "assert pytest.main(['-q', '-p', 'no:cacheprovider', "
+        "'code/tests/test_results_pdf_cass.py', "
+        "'code/tests/test_results_native_cass.py', "
+        "'code/tests/test_results_pdf_dunn.py']) == 0"],
         cwd=packet, check=True, capture_output=True)
     assert (tmp_path / "reproduced/granular-source-queries.json.gz").is_file()
     assert (tmp_path / "reproduced/declared-numerical-queries.json.gz").is_file()

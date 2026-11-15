@@ -486,6 +486,73 @@ def validate_projected_row(old, row):
     return expected
 
 
+def _changed_leaf_paths(before, after, prefix=()):
+    if isinstance(before, dict) and isinstance(after, dict):
+        result = set()
+        for key in set(before) | set(after):
+            if key not in before or key not in after:
+                result.add(".".join((*prefix, key)))
+            else:
+                result.update(_changed_leaf_paths(before[key], after[key], (*prefix, key)))
+        return result
+    return set() if before == after else {".".join(prefix)}
+
+
+def reviewed_replacement(old, update, entry):
+    bridge = update.get("reviewed_source_url_bridge")
+    row = update.get("replacement")
+    if (
+        not isinstance(bridge, dict)
+        or bridge.get("contract") != "participation.reviewed_source_url_bridge.v1"
+        or not isinstance(row, dict)
+        or bridge.get("observation_id") != old["id"]
+        or bridge.get("source_id") != old["source"]["id"]
+        or update.get("id") != old["id"]
+    ):
+        raise ValueError("Reviewed source URL replacement declaration is incomplete")
+    old_urls = old["source"]["url"], old["view"].get("source_url")
+    reviewed_url = bridge.get("reviewed_url")
+    stored_urls = bridge.get("stored_source_url"), bridge.get("stored_view_source_url")
+    if old_urls == stored_urls:
+        if (
+            digest(encoded(old)) != bridge.get("accepted_prior_row_sha256")
+            or old["source"]["input_sha256"] != bridge.get("retained_input_sha256")
+        ):
+            raise ValueError("Reviewed source URL bridge prior observation changed")
+    elif old_urls != (reviewed_url, reviewed_url):
+        raise ValueError("Reviewed source URL bridge does not authorize these stored URLs")
+    source = entry.get("source") or {}
+    query = (entry.get("data") or {}).get("complete_native_query")
+    if (
+        source.get("url") != reviewed_url
+        or row.get("source", {}).get("url") != reviewed_url
+        or row.get("view", {}).get("source_url") != reviewed_url
+        or row.get("source", {}).get("input_sha256") != source.get("sha256")
+        or not isinstance(query, list)
+        or len(query) != 1
+        or query[0].get("source_pin")
+        != {"bytes": source.get("bytes"), "sha256": source.get("sha256")}
+    ):
+        raise ValueError("Reviewed source URL replacement disagrees with the captured input")
+    allowed = bridge.get("allowed_replacement_paths")
+    if (
+        not isinstance(allowed, list)
+        or any(not isinstance(path, str) or not path for path in allowed)
+        or not _changed_leaf_paths(old, row) <= set(allowed)
+        or identity_fields(row) != identity_fields(old)
+        or row["id"] != old["id"]
+        or row["count"]["value"] != update.get("value")
+        or row["count"]["literal"] != update.get("value")
+        or row["count"]["status"] != "reported"
+        or row["source_clock"] != old["source_clock"]
+        or row["reporting_status"] != old["reporting_status"]
+        or row["denominator"] != old["denominator"]
+    ):
+        raise ValueError("Reviewed source URL replacement exceeded its explicit field scope")
+    validate_projected_row(old, row)
+    return copy.deepcopy(row)
+
+
 def project(baseline, granular):
     """Create successor bodies, preserving old versions, IDs, views and join decisions."""
     result = dict(baseline)
@@ -505,6 +572,16 @@ def project(baseline, granular):
                 old = rows.get(update["id"])
                 if old is None:
                     raise ValueError("A local refresh cannot invent an existing native identity")
+                if "replacement" in update or "reviewed_source_url_bridge" in update:
+                    row = reviewed_replacement(old, update, entry)
+                    if row != old:
+                        state_changed = True
+                        changed.append({"state_code": state, "id": row["id"],
+                                        "previous": old["count"]["value"],
+                                        "current": row["count"]["value"],
+                                        "source_status": entry["status"]})
+                    rows[row["id"]] = row
+                    continue
                 row = copy.deepcopy(old)
                 value, native = update["value"], update["native"]
                 row["count"] = {"value": value, "literal": value,
