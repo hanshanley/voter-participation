@@ -240,6 +240,24 @@ def test_workbook_inventory_retains_native_shapes_without_promoting_unknown_meas
     assert result["numerical_data_qualified"] is False
 
 
+def test_real_sparse_xlsx_retains_all_cells_when_reader_dimensions_are_unknown():
+    openpyxl = pytest.importorskip("openpyxl")
+    book = openpyxl.Workbook()
+    book.active["A1"], book.active["C9"], book.active["B12"] = "Native count", 0, "=1+2"
+    stream = io.BytesIO()
+    book.save(stream)
+    book.close()
+    result = granular.factual_tables(stream.getvalue(), "general.xlsx")
+    assert result["native_inventory"] == [{"name": "Sheet", "rows": None, "columns": None}]
+    cells = {cell["address"]: cell for row in result["tables"][0]["rows"] for cell in row["cells"]}
+    assert cells["C9"]["value"] == 0
+    assert cells["B12"]["formula"]["text"] == "1+2"
+    assert cells["B12"]["cached_literal"] is None
+    assert result["complete_native_cells_retained"] is True
+    assert result["numerical_data_qualified"] is False
+    assert result["candidate_votes_are_ballots"] is False
+
+
 def test_complete_workbook_cells_survive_nested_zip_with_formula_cache_zero_and_blank(monkeypatch):
     from scripts import native_tabular
     tables = [{"name": "Statistics", "nrows": 3, "ncols": 2, "rows": [

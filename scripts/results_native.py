@@ -132,6 +132,12 @@ COUNTY_WORKBOOK_SHEETS = {
     "In_Person_Ballots_By_County": "IN PERSON BALLOTS",
 }
 WORKBOOK_PROFILES = {
+    "https://greeleycountyks.gov/documents/elections/official-general-election-results-2026-11-03.xlsx": {
+        "state": "KS", "kind": "county_turnout_equation",
+        "url": ("https://greeleycountyks.gov/documents/elections/"
+                "official-general-election-results-2026-11-03.xlsx"),
+        "sheets": ["OfficialNational,State,Co", "OfficialQuestions&Referenda"],
+    },
     CO_WORKBOOK_URL: {
         "state": "CO", "kind": "county_mode_tables",
         "query_id": "co-returned-processed-county-modes",
@@ -669,6 +675,9 @@ def workbook_statistics(body, templates, profile):
         raise ValueError("Reviewed native workbook state scope changed")
     workbook = xlsx(body)
     public_facts(workbook)
+    if profile["kind"] == "county_turnout_equation":
+        from scripts.results_native_kansas import statistics
+        return statistics(body, templates, profile, workbook)
     if profile["kind"] == "county_mode_tables":
         return county_mode_statistics(body, templates, profile, workbook)
     if profile["kind"] == "statistical_mode_blocks":

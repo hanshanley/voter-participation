@@ -75,8 +75,47 @@ def read_json(name: str, body: bytes) -> Any:
     return json.loads(raw)
 
 
+def reviewed_measure_label(row: dict[str, Any]) -> str | None:
+    source, geography = row.get("source", {}), row.get("geography", {})
+    election, measure = row.get("election", {}), row.get("measure", {})
+    view, denominator = row.get("view", {}), row.get("denominator") or {}
+    label = "Source-reported turnout total"
+    if (
+        source.get("id") == "ks-greeley-official-general-20261103"
+        and source.get("url") == (
+            "https://greeleycountyks.gov/documents/elections/"
+            "official-general-election-results-2026-11-03.xlsx")
+        and (geography.get("state_code"), geography.get("level"), geography.get("name"),
+             geography.get("id")) == (
+                 "KS", "county", "Greeley County", "ks-greeley-county-official-general-20261103")
+        and (election.get("year"), election.get("type"), election.get("date")) == (
+            2026, "general", "2026-11-03")
+        and (measure.get("id"), measure.get("kind"), measure.get("unit"),
+             measure.get("literal")) == (
+                 "native-source-reported-turnout-total", "voters_reported",
+                 "source_reported_voters_in_turnout_total",
+                 "451 voted ... 9 provisionals = 460")
+        and view.get("participation_measure_literal") == (
+            "Source-reported turnout total (451 voted + 9 counted provisionals)")
+        and view.get("participation_measure_label") in (None, label)
+        and view.get("cast_ballot_count_qualified") is False
+        and view.get("unique_voter_count_qualified") is False
+        and view.get("maps_approved") is False
+        and denominator.get("basis") == "native_registered_voters_same_official_county_report"
+        and denominator.get("literal") == "Registered Voters"
+        and denominator.get("qualified") is True
+    ):
+        return label
+    return None
+
+
 def observation_identity(row: dict[str, Any]) -> bytes:
     denominator = row.get("denominator")
+    view = {key: row.get("view", {}).get(key) for key in IDENTITY_VIEW_KEYS}
+    label = reviewed_measure_label(row)
+    if label is not None:
+        # This reviewed display alias removes frozen numbers, not a measure or frame.
+        view["participation_measure_label"] = label
     return encoded({
         "id": row.get("id"),
         "election": row.get("election"),
@@ -87,7 +126,7 @@ def observation_identity(row: dict[str, Any]) -> bytes:
             "basis": denominator.get("basis"),
             "qualified": denominator.get("qualified"),
         },
-        "view": {key: row.get("view", {}).get(key) for key in IDENTITY_VIEW_KEYS},
+        "view": view,
     })
 
 

@@ -394,8 +394,8 @@ def factual_tables(body, name, *, _budget=None, _depth=0):
         product = (xlsx if suffix == ".xlsx" else xls)(body)
         public_facts(product)
         return {"status": "native_workbook_requires_measure_adapter",
-                "native_inventory": [{"name": table["name"], "rows": table["nrows"],
-                                      "columns": table["ncols"]} for table in product],
+                "native_inventory": [{"name": table["name"], "rows": table.get("nrows"),
+                                      "columns": table.get("ncols")} for table in product],
                 "tables": product, "complete_native_cells_retained": True,
                 "numerical_data_qualified": False, "candidate_votes_are_ballots": False}
     elif suffix == ".zip":
@@ -722,6 +722,20 @@ def project(baseline, granular):
                     native_printed_pct=None)
                 if "registered" in view:
                     view["registered"] = update["registered"]
+                if "reviewed_measure_presentation_label" in native:
+                    from scripts.automatic_native_refresh import reviewed_measure_label
+                    label = native["reviewed_measure_presentation_label"]
+                    query = native.get("query") or {}
+                    if (label is None or label != reviewed_measure_label(old)
+                            or label != query.get("reviewed_measure_presentation_label")
+                            or query.get("source_url") != url
+                            or query.get("source_pin") != {
+                                key: numerical_pin[key] for key in ("bytes", "sha256")}):
+                        raise ValueError("Reviewed measure display label is not source/query-bound")
+                    view["participation_measure_label"] = label
+                    view["participation_measure_literal_qualification"] = (
+                        "Initial accepted source literal; current numerical equation is retained "
+                        "in native_record, not reused as a fixed measure label.")
                 if "native_fraction_literal" in native:
                     query = native.get("query") or {}
                     fraction = native["native_fraction_literal"]

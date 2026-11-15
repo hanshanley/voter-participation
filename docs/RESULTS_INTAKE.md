@@ -12,6 +12,28 @@ The tool publishes data to the separate `results-data` branch. It does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Greeley County: source-defined workbook turnout
+
+The reviewed Greeley workbook profile reads the three literal statistical
+header cells, not candidate totals. It checks the source's administrative and
+counted-provisional equations and preserves every workbook cell in the complete
+query packet. Unknown XLSX dimensions stay unknown instead of causing a BIFF
+`nrows`/`ncols` schema failure.
+
+The reported total remains `voters_reported`, not ballots cast or unique people.
+Its existing same-report registered-voter fraction stays qualified only within
+that source frame; it is not eligible-population turnout or a new estimate.
+The native count clock remains missing. Server metadata is not substituted.
+One county is covered; the other 104 county totals remain unknown.
+
+The display uses a reviewed count-independent measure label. The initial
+accepted numeric literal remains explicitly historical, while the current
+equation, registration stock and printed fraction are refreshed from the new
+source. This narrowly scoped display alias does not change observation IDs,
+source units, denominator basis, geometry or other identity checks. Invalid
+equations, unknown counts, formulas and changed source frames fail closed and
+retain the last-good observation.
+
 ## Boone County: reviewed statistical PDF mapping
 
 The shared county-PDF adapter recognizes the native **Ballots Cast - Total**
