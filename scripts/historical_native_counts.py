@@ -191,6 +191,16 @@ def compile_dataset(specification, output):
             records[row["state_code"]].append(row)
     output.mkdir(parents=True)
     (output / "states").mkdir()
+    qualification = None
+    qualification_spec = spec.get("historical_precinct_qualification")
+    if qualification_spec is not None:
+        from scripts.historical_precinct_qualification import integration_descriptor
+        qualification_root = specification.parent / qualification_spec["directory"]
+        descriptor = integration_descriptor(qualification_root, qualification_spec)
+        name = "qualified-precinct-observations.jsonl.gz"
+        body = (qualification_root / "qualified-participation-observations.jsonl.gz").read_bytes()
+        (output / name).write_bytes(body)
+        qualification = {**descriptor, "file": name}
     states, decisions = {}, []
     for state in STATES:
         rows = sorted(records[state], key=lambda row: (row["year"], row["snapshot_id"], row["id"]))
@@ -230,6 +240,8 @@ def compile_dataset(specification, output):
         "registration_stocks_are_denominators": False,
         "outside_projection_years_are_not_classified_as_missing": True,
     }
+    if qualification is not None:
+        index["historical_precinct_qualification"] = qualification
     (output / "index.json").write_bytes(encoded(index))
     files = {str(path.relative_to(output)): pin(path.read_bytes())
              for path in sorted(output.rglob("*")) if path.is_file()}
@@ -240,8 +252,11 @@ def compile_dataset(specification, output):
         "complete_download": spec.get("complete_download"),
     }
     (output / "dataset.json").write_bytes(encoded(description))
-    return {"records": len(seen), "jurisdictions": len(STATES), "source_states": len(states),
-            "decisions": len(decisions), "version": description["version"]}
+    result = {"records": len(seen), "jurisdictions": len(STATES), "source_states": len(states),
+              "decisions": len(decisions), "version": description["version"]}
+    if qualification is not None:
+        result["qualified_precinct_observations"] = qualification["qualified_observations"]
+    return result
 
 
 def main():
