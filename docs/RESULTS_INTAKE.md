@@ -98,6 +98,12 @@ certification. Neither adapter adds geometry, rates or behavioral model fits.
 Changed inventories, ambiguous statistics or regressed clocks retain last-good
 observations. Complete queries, code, tests and safe fixtures remain in the ZIP.
 
+PDF extras and the hosted collector pin `pypdf==6.16.0`, the reviewed extraction
+engine. An unbounded dependency installed 7.1.0 in collector 43669246178;
+cache-only Linux diagnosis reproduced changed statistical-header extraction
+from the identical Jefferson PDF, correctly withholding its update. Dependency
+upgrades require native-layout requalification, not relaxed column guards.
+
 ## Indiana, Boston and New Jersey statistical adapters
 
 The shared collector also recognizes Porter and Monroe statistical JSON,
