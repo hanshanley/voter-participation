@@ -8,6 +8,35 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Oregon-counties automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/0cdf4e4d8e72c8b3646440b90ce25dd5317724c0/snapshots/ee5f0b3ac368b9575437725337f3b9cf93d2e3d0268d1902483c2e324fbb0ed8/complete-results.zip) is **37,951,276 bytes**,
+SHA256 `48ab898024b7f20e6e53d6d56ebbd26e931aeca420d974eb3e9b84925ceb117c`. It includes all 51 decisions,
+complete native county records and numerical queries, all 14 outputs, accepted
+baselines, adapter code, portable tests and the complete 36-county factual fixture.
+Extract into a fresh directory:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete automatic runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-01378416bdf74bb26c0697e78f079ebaaa64254255c49d0faa5e327004c71d5f/complete-analysis.zip) is **183,477,381 bytes**,
+SHA256 `6ebdc7c7f3736f9279ccbf356ac4abd5cbe6e928aa0336095ceae00addf268ef`. It nests the entire source packet and actual prior
+rolling seed, complete before/after count/native datasets, unchanged reviewed
+engine, all nine model cases and every numerical query. Extract separately:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both literal commands were verified with zero requests: 14/113 outputs.
+These reproduce full numerical facts, not excluded publisher HTML extraction or
+private survey fitting. The source's active-registration fraction is not a new
+analytical turnout rate; saved mail/early appearances are not added to the
+county counted-ballot frame. Every older complete download below remains.
+[Actual scope and acceptance](../data/participation-access/20261115-oregon-county-automatic-intake-01/acceptance.json).
+
+
 ## Native-JSON automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/151ae3fa6621cfc2dba291d3947ce1999f4e28e7/snapshots/edcbc7d3503cd15e028489e2d827d6a9749e0ae125ceedcce784c2a9956000ae/complete-results.zip) is **37,882,298 bytes**,

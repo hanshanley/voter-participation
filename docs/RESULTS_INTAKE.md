@@ -277,6 +277,53 @@ The complete source download includes the shared PDF reader, grouping code,
 reviewed layout data and tests. Full numerical replay uses selected facts and does
 not claim extraction of excluded publisher PDFs.
 
+## Verified Oregon county delivery
+
+Oregon's **36 reviewed county observations** now refresh unattended from the
+official page's declared turnout API. Collector 43691974826 at producer
+`99504042` and runtime `01378416`
+(job 43693287439) are accepted. The numerical engine `25239bca` is unchanged.
+The two-file reader repair at `9b8d5979` (actual Pages job
+43695104630) fixes a current-ZIP link that was stale when native
+dataset contents were reused across a count-only update. No numerical engine
+pin or source-model refit changed. This corrective reader build is not a build
+per numerical activation; all 437 prior complete-download pins remain intact.
+
+The actual collector refreshes **14,326 record appearances across 24 states**,
+not unique people, disjoint populations or nationwide local completeness.
+Oregon's complete native county query reports
+**1,992,463 ballots counted** and
+**3,109,123 active registrations**, matching its
+independently parsed statewide header. **27 county count values** changed from
+the previous saved frame; unchanged values remain present, not discarded.
+`IsReported=false` and ancillary zeros do not erase positive native counts or
+establish completion. Native county IDs are not FIPS. County clocks retain their
+literal timestamps without an invented timezone; statewide `PT` remains separate.
+Saved mail/early frames and older state observations are not added or silently
+relabeled. All county analytical rates and geographic joins remain held.
+
+Maintained 366 and canonical 372 tests pass. The actual complete source packet
+passes 130 portable tests with nine optional original-file skips and reproduces
+all 14 numerical outputs offline. The complete runtime packet reproduces all
+113 outputs offline; all 113 anonymous public bodies, exact nested source and
+actual preceding rolling seed match. Actual no-override desktop/mobile checks
+cover every Oregon county detail/current full download, all 306 count frames,
+all seven reporting tables (6,660 rows), the preserved native maps and all nine
+model controls. Eight representative production screenshots are physically
+reviewed and hash-bound. All 51 decisions and the numerical packet's 179 URL
+stops persist. A later observed Florida HTTP 403 is separately persisted as the
+**180th current URL stop**, without rewriting either numerical ZIP or treating
+the retained November 6 Florida evidence as fresh data.
+
+**Nationwide county/precinct intake is not finished.** Arkansas and Mohave holds,
+Manchester ward OCR ambiguities, remaining source, multiyear, model and boundary
+gaps remain open, before full audit THEN beautification. Separate private Florida
+work is not included or claimed live in this acceptance.
+[Acceptance](../data/participation-access/20261115-oregon-county-automatic-intake-01/acceptance.json),
+[all 51 decisions and source holds](../data/participation-access/20261115-oregon-county-automatic-intake-01/observations.json), and
+[both complete query-set downloads](DATA.md#oregon-counties-automatic-intake).
+
+
 ## Verified native JSON delivery
 
 Native-source JSON intake and the reporting-table reader are verified through
