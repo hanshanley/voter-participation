@@ -8,6 +8,33 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Historical precinct qualification
+
+The complete immutable archive is **898,920,880 bytes**, SHA256 `c8fa6b5a915175f1d6f0b37df4b25e9627bb504788ed44ae8a1604a9cd268bfb`. All eight full assets were compared while draft and again anonymously after immutable publication.
+
+- [REPRODUCE.txt](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/REPRODUCE.txt) - 722 bytes; SHA256 `7dec766ad295e6779de04a3ec6fe3f1b579cda48866f8de857e4681633192b99`.
+- [all-255-state-year-decisions.csv](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/all-255-state-year-decisions.csv) - 349,876 bytes; SHA256 `93caf00b286b529b54cf2384810286e208cdc90b43d11492d598f4b6744fe338`.
+- [complete-analysis.zip](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/complete-analysis.zip) - 898,920,880 bytes; SHA256 `c8fa6b5a915175f1d6f0b37df4b25e9627bb504788ed44ae8a1604a9cd268bfb`.
+- [held-participation-pairs.jsonl.gz](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/held-participation-pairs.jsonl.gz) - 156,860 bytes; SHA256 `0638efa1e9a413ee1c8ae5c080413adfadf7405b28e62d9ecda4a0326d749fd1`.
+- [qualified-participation-observations.jsonl.gz](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/qualified-participation-observations.jsonl.gz) - 248,205 bytes; SHA256 `31ae6c95fac386086ae8b6351bb27cdf06a9b096d7808dd5b9fc1aa4468bd23c`.
+- [state-year-product-qualifications.csv](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/state-year-product-qualifications.csv) - 747,296 bytes; SHA256 `715cee330a92e6ecad43a81c44d69b87c1dffba1990cca835a7fd75d6e5d3b44`.
+- [state-year-qualifications.csv](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/state-year-qualifications.csv) - 53,367 bytes; SHA256 `c8122d2c8d37549f79aa00e6cb96b7dd322652b0c0374287805ac500c7832de7`.
+- [summary.json](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/summary.json) - 2,612 bytes; SHA256 `4fdc12d39d2279c342a7f97abeca692bd5c15c8cf057f8c4d7f0ccc7eaad9c71`.
+
+Extract the complete ZIP into a fresh directory, then run:
+
+```sh
+python3 -I -S code/reproduce.py --output reproduced
+```
+
+The standard-library replay verifies packaged pins and reproduces all 48 complete
+outputs offline, including 255 scope decisions and 2,286 qualified fractions.
+Its four process-local offline denial probes and zero requests were checked.
+It does not repeat private survey fitting or excluded publisher-document extraction.
+The complete 874,127,644-byte earlier source authority and six complete component
+packets are embedded, not replaced with metadata. All previous downloads below
+remain available.
+
 ## Current-source qualification
 
 The [complete source ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/079b2c577d53a221470621d4f4c5abd2dd9ffd6b/snapshots/4175130dbcd604b34b4208e216bad8d57d2aa6391db7334f8aa927fb218db392/complete-results.zip) contains every permitted

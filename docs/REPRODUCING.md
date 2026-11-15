@@ -3,6 +3,26 @@
 [Overview](../README.md) | [Methods](../METHODOLOGY.md) |
 [Choose a package](DATA.md) | [Source notes](../SOURCES.md)
 
+## Historical precinct qualification
+
+Use the [complete historical ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/complete-analysis.zip) (898,920,880 bytes, SHA256 `c8fa6b5a915175f1d6f0b37df4b25e9627bb504788ed44ae8a1604a9cd268bfb`).
+
+Extract the complete ZIP into a fresh directory, then run:
+
+```sh
+python3 -I -S code/reproduce.py --output reproduced
+```
+
+The standard-library replay verifies packaged pins and reproduces all 48 complete
+outputs offline, including 255 scope decisions and 2,286 qualified fractions.
+Its four process-local offline denial probes and zero requests were checked.
+It does not repeat private survey fitting or excluded publisher-document extraction.
+The complete 874,127,644-byte earlier source authority and six complete component
+packets are embedded, not replaced with metadata. All previous downloads below
+remain available.
+
+The source compiler checks native measure/election/year/unit labels, safe integer bounds, duplicate pairs and compatible registration frames. Positive/negative/default-preservation integration is covered by 24 maintained coupled tests; the embedded portable suite has 22 tests. The website count/native/history contract passes 67 tests.
+
 ## Complete-package workflow
 
 Download and unpack the relevant complete ZIP into a new directory. Read its

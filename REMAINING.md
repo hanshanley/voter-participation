@@ -13,6 +13,42 @@ It must read this file and the source ledger, update actual progress, and contin
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
 
+## Verified historical precinct qualification
+
+**Historical qualification is now integrated, not just inventoried.**
+The complete 2016, 2018, 2020, 2022 and 2024 source packet retains all
+255 jurisdiction/year decisions and streams 22,830,843 numerical rows across
+758 query products. Candidate votes are never substituted for ballot counts.
+The 97 geometry-context-only products remain held.
+
+A separate optional download supplies **2,286 Alabama native-unit ballot /
+registration fractions**: 1,082 for 2018 and 1,204 for 2020. Another 2,065
+pairs remain held: 2,063 zero denominators, one unknown/withheld pair and one
+numerator above its matching registration stock. These are source-frame
+fractions, not population or demographic turnout, certified precinct boundaries,
+cross-year person histories, first-ever voting, switching or staying home.
+County, office, election stage, mode and literal native-unit identity are checked;
+alternative snapshots and overlapping modes are never added.
+
+All **121,661 older source cells in 18 state shards remain byte-identical**.
+The existing 2018/2020 table retains 12,837 zeros, 115 unknown counts and
+305 withheld nonintegral counts; raw analytical rates and denominators stay null.
+The five-year qualification decisions are available in the complete supplement,
+not silently promoted into unsupported table years or new precinct maps.
+
+The immutable complete download includes every permitted numerical input,
+all queries and holds, source authority, maintained code, tests and a literal
+offline command. A fresh extraction reproduced all 48 outputs byte-for-byte
+with zero network requests. Actual desktop/mobile production checks pass
+complete sidecar contents, all old source cells, source switching, paging,
+zero/unknown/withheld states and native fields. Both actual images were viewed.
+This is not a completed full audit or usability-polish claim.
+
+The unattended current-results/count/model pipeline remains unchanged.
+Genuine nationwide source, population-frame, identification and boundary gaps
+remain open; finish substantive work, then the full audit, then understated polish.
+[Acceptance](data/participation-access/20261115-historical-qualification-01/acceptance.json), [all 255 decisions](data/participation-access/20261115-historical-qualification-01/observations.json), [live verification](data/participation-access/20261115-historical-qualification-01/production.json) and [complete downloads](docs/DATA.md#historical-precinct-qualification).
+
 ## Verified current-source qualification
 
 **The unattended pipeline now checks mixed-source estimate eligibility for
