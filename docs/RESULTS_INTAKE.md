@@ -51,8 +51,44 @@ sources or rerunning private survey fits. Optional packaged tests use `pytest`:
 
 ```sh
 cd code
-python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_nationwide.py tests/test_current.py
+python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_results_json_statistics.py tests/test_results_pdf_boston.py tests/test_results_pdf_periodic.py tests/test_nationwide.py tests/test_current.py
 ```
+
+## Indiana, Boston and New Jersey statistical adapters
+
+The shared collector also recognizes Porter and Monroe statistical JSON,
+Boston's statement and 15 registered New Jersey periodic reports. These
+adapters refresh 396 existing record appearances, not distinct people or
+nationwide county/precinct coverage. Hosted/live acceptance is separate from
+retained-source parser capability.
+
+Porter preserves its literal UTC source clock, including subsecond precision.
+Monroe retains all 103 distinct native units and its publisher-defined parent;
+missing update clocks stay missing and genuine zero counts stay zero.
+Native registration stocks are not automatically analytical denominators.
+Existing map projections match exact native unit identities and complete prior
+vectors across the older map/table IDs; geometry and map-specific qualifications
+remain unchanged. Statement source-defined/all-method labels retain their own
+original modes rather than promoting one representation's scope to the other.
+
+Boston retains all 44 statistical contexts and 5,775 context rows. The selected
+Senate context's Ballots Cast / Times Cast measure stays separate from the
+contradictory summary Voters Cast total and zero registration. Current summary
+parents must reconcile with current native units, not an old hardcoded count.
+Candidate totals never replace statistical participation fields.
+
+New Jersey retains literal selected parent roles, all native cells and clocks,
+and the provisional-excluded EV + ED + mail-tallied subtotal. Union's
+congressional parent is not its differing municipal parent. Middlesex's differing
+county and municipal mail totals remain distinct. Sussex requires agreeing
+complete OCR vectors at two resolutions and selected numeric confidence of at
+least 0.98; this same-engine comparison is not independent validation.
+
+The complete download includes every adapter, layout profile, portable test and
+disclosure-safe aggregate fixture. Native labels, identities, views, geometry
+holds, raw contradictions and unknowns survive. Failed source/clock/layout checks
+retain last-good observations; no new rates, certified completion or demographic
+model allocation follows from a successful capture.
 
 ## Reviewed statistical PDF adapters
 

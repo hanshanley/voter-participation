@@ -552,6 +552,38 @@ def test_pdf_projection_preserves_only_explicit_native_timezone_and_all_other_st
     assert len(changes) == 1
 
 
+def test_json_projection_preserves_query_bound_utc_and_clears_obsolete_status():
+    before = baseline(("IN", "TX"))
+    row = granular.selected_records(before, "IN")[0]
+    query = {"native_report_status_literal": None, "source_clock_timezone_literal": "UTC"}
+    facts = {"query": query, "native_report_status_literal": None,
+             "source_clock_timezone_literal": "UTC",
+             "native_reporting_complete_qualified": False}
+    update = granular.change(row, 34, facts, clock="2026-11-10T22:08:21.2472948Z")
+    entry = {"status": "reported", "data": {"updates": [update]},
+             "source": {"url": row["view"]["source_url"], **pin(b"native JSON facts")}}
+    after, changes = granular.project(before, {"IN-native": entry})
+    current = granular.selected_records(after, "IN")[0]
+    assert current["source_clock"]["literal"] == update["clock"]
+    assert current["source_clock"]["timezone"] == "UTC"
+    assert current["reporting_status"]["literal"] is None
+    assert current["view"]["source_status_literal"] is None
+    assert current["source"]["fields"] == current["view"]
+    assert after["states/TX.json.gz"] == before["states/TX.json.gz"]
+    assert len(changes) == 1
+    for changed in ("timezone", "query", "clock"):
+        broken = copy.deepcopy(entry)
+        item = broken["data"]["updates"][0]
+        if changed == "clock":
+            item["clock"] = item["clock"][:-1]
+        elif changed == "query":
+            item["native"]["query"]["source_clock_timezone_literal"] = None
+        else:
+            item["native"]["source_clock_timezone_literal"] = "EST"
+        with pytest.raises(ValueError, match="UTC"):
+            granular.project(before, {"IN-native": broken})
+
+
 def test_pdf_refresh_preserves_existing_qualified_frame_only_with_native_registration():
     from scripts.automatic_native_refresh import observation_identity
     before = baseline(("NY",))

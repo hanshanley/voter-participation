@@ -515,8 +515,15 @@ def project(baseline, granular):
                 url = entry["data"].get("source_url", source["url"])
                 row["source"].update(url=url, input_sha256=numerical_pin["sha256"],
                                      selector={"native_refresh": native})
+                timezone = native.get("source_clock_timezone_literal",
+                                      native.get("pdf_report_timezone_literal"))
+                if "source_clock_timezone_literal" in native and (
+                        timezone != "UTC" or not isinstance(update["clock"], str)
+                        or not update["clock"].endswith("Z")
+                        or (native.get("query") or {}).get("source_clock_timezone_literal") != timezone):
+                    raise ValueError("Native UTC clock/timezone disagrees with the complete query")
                 row["source_clock"] = {"literal": update["clock"],
-                                      "timezone": native.get("pdf_report_timezone_literal"),
+                                      "timezone": timezone,
                                       "qualification": "native_clock_or_explicitly_not_supplied"}
                 denominator = row["denominator"]
                 if denominator is not None:
@@ -550,8 +557,7 @@ def project(baseline, granular):
                                 not isinstance(status, str) or not status.strip())):
                         raise ValueError("Native summary display facts disagree with the complete query")
                     view.update(native_printed_pct=fraction, source_status_literal=status)
-                    if status is not None:
-                        row["reporting_status"]["literal"] = status
+                    row["reporting_status"]["literal"] = status
                 elif "native_report_status_literal" in native:
                     status = native["native_report_status_literal"]
                     if (status != (native.get("query") or {}).get("native_report_status_literal")
@@ -559,8 +565,7 @@ def project(baseline, granular):
                                 not isinstance(status, str) or not status.strip())):
                         raise ValueError("Native PDF status disagrees with the complete query")
                     view["source_status_literal"] = status
-                    if status is not None:
-                        row["reporting_status"]["literal"] = status
+                    row["reporting_status"]["literal"] = status
                 if ("native_fraction_literal" in native
                         or native.get("retained_source_context_is_historical")):
                     prefix = "Retained earlier-report context (not current report statistics): "

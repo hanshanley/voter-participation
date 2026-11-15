@@ -147,6 +147,39 @@ def compatibility_identity(row: dict[str, Any]) -> bytes | None:
     if election_date is None and election.get("year") == 2026 \
             and election.get("type") == "general":
         election_date = "2026-11-03"
+    facts = native.get("native_fields", native.get("query", native))
+    unit = None
+    if isinstance(facts, dict):
+        if (type(facts.get("Precinct_ID")) is int
+                and isinstance(facts.get("Precinct"), str)
+                and "Ballots_Cast" in facts):
+            unit = {"schema": "native_arcgis_ballots_cast",
+                    "id": facts["Precinct_ID"], "label": facts["Precinct"]}
+        elif ("times_cast_literal" in facts
+              and all(isinstance(facts.get(key), str) and facts[key]
+                      for key in ("city", "native_context", "native_label", "ward", "precinct"))):
+            unit = {key: facts[key] for key in (
+                "city", "native_context", "native_label", "ward", "precinct")}
+            unit["schema"] = "native_statement_times_cast"
+    if unit is not None:
+        mode = row.get("measure", {}).get("mode")
+        if unit["schema"] == "native_statement_times_cast" \
+                and mode in ("source_defined", "all_methods"):
+            mode = "native_statement_times_cast"
+        fields = {
+            "state": row.get("geography", {}).get("state_code"),
+            "county_id": view.get("county_id"), "native_unit": unit,
+            "source_url": view.get("source_url"),
+            "measure_kind": row.get("measure", {}).get("kind"),
+            "measure_unit": row.get("measure", {}).get("unit"),
+            "measure_mode": mode,
+            "geography_level": row.get("geography", {}).get("level"),
+            "election_year": election.get("year"), "election_date": election_date,
+            "election_type": election.get("type"),
+        }
+        if any(value is None or value == "" for value in fields.values()):
+            return None
+        return encoded(fields)
     fields = {
         "state": native.get("state"),
         "county_id": native.get("county_id"),

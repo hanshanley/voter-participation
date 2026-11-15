@@ -474,7 +474,11 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_granular.py", "results_native.py",
-             "results_pdf_ocr.py", "results_pdf_tables.py", "results_pdf_grids.json",
+             "results_pdf_ocr.py", "results_pdf_tables.py", "results_pdf_boston.py",
+             "results_pdf_grids.json",
+             "results_json_statistics.py", "automatic_native_refresh.py",
+             "results_pdf_periodic.py", "results_pdf_periodic_grids.json",
+             "results_pdf_periodic_ocr.py", "results_pdf_periodic_sussex.json",
              "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
             "nationwide.py", "current.py", "download.py",
             "precinct_source_batch.py", "house_clerk_endpoints.py",
@@ -485,9 +489,14 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
         package_members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_results_intake.py", "test_results_granular.py", "test_results_native.py",
                  "test_results_native_workbooks.py",
-                 "test_results_pdf_tables.py",
+                 "test_results_pdf_tables.py", "test_results_pdf_boston.py",
+                 "test_results_json_statistics.py", "test_results_pdf_periodic.py",
+                 "test_automatic_native_refresh.py",
                  "test_nationwide.py", "test_current.py"):
         package_members["code/tests/" + name] = (ROOT / "tests" / name).read_bytes()
+    for name in ("complete-products.json.gz", "sussex-ocr-views.json.gz"):
+        package_members["code/tests/fixtures/results_pdf_periodic/" + name] = (
+            ROOT / "tests/fixtures/results_pdf_periodic" / name).read_bytes()
     version = digest(encoded({"inputs": inputs, "baseline": config["baseline"],
                               "outputs": {name: pin(body) for name, body in outputs.items()},
                               "code": {name: pin(body) for name, body in package_members.items()

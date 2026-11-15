@@ -246,3 +246,61 @@ def test_list_shaped_source_reporting_rows_refresh_by_exact_existing_key():
     source = read_json("index.json", result["index.json"])["reporting_sources"]["MN"]
     assert source["rows"] == 1
     assert source["sha256"] == pin(result[source_name])["sha256"]
+
+
+@pytest.mark.parametrize("family", ("arcgis", "statement"))
+def test_native_statistical_units_refresh_across_distinct_ids_and_wrapped_facts(family):
+    before, native, state_name, native_name = fixtures()
+    if family == "arcgis":
+        facts = {"Precinct_ID": 7, "Precinct": "Split unit", "Ballots_Cast": 928,
+                 "Registered_Voters": 1234}
+        next_facts = {**facts, "Ballots_Cast": 0}
+    else:
+        facts = {"city": "Example", "native_context": "SENATOR (Vote for 1)",
+                 "native_label": "WARD 1, PRECINCT 2", "ward": "1", "precinct": "2",
+                 "times_cast_literal": 928, "registered_voters_literal": 0}
+        next_facts = {**facts, "times_cast_literal": 0}
+    state = read_json(state_name, before[state_name])
+    if family == "statement":
+        state["records"][0]["measure"]["mode"] = "all_methods"
+    state["records"][0]["view"]["native_record"] = copy.deepcopy(facts)
+    state["records"][0]["source"]["fields"] = copy.deepcopy(state["records"][0]["view"])
+    before[state_name] = compressed(state)
+    index = read_json("index.json", before["index.json"])
+    index["states"]["MN"].update(pin(before[state_name]))
+    before["index.json"] = encoded(index)
+    layer = read_json(native_name, native[native_name])
+    layer["rows"][0]["observation"]["view"]["native_record"] = copy.deepcopy(facts)
+    layer["rows"][0]["observation"]["source"]["fields"] = \
+        copy.deepcopy(layer["rows"][0]["observation"]["view"])
+    layer["rows"][0]["properties"]["native_record"] = copy.deepcopy(facts)
+    native[native_name] = compressed(layer)
+    after = dict(before)
+    state = read_json(state_name, before[state_name])
+    row = state["records"][0]
+    row["count"].update(value=0, literal=0)
+    row["view"].update(ballots=0, automatic_source_refresh=True,
+                       native_record={"native_fields" if family == "arcgis" else "query":
+                                      copy.deepcopy(next_facts)})
+    row["source"]["fields"] = copy.deepcopy(row["view"])
+    row["source_clock"]["literal"] = None
+    after[state_name] = compressed(state)
+    index["states"]["MN"].update(pin(after[state_name]))
+    after["index.json"] = encoded(index)
+    result = refresh(before, after, native)
+    updated = read_json(native_name, result[native_name])["rows"][0]
+    assert updated["properties"]["ballots"] == 0
+    assert updated["properties"]["native_record"] == row["view"]["native_record"]
+    assert updated["observation"]["count"] == row["count"]
+    assert updated["observation"]["id"] == "f" * 32
+    assert updated["observation"]["geography"] == layer["rows"][0]["observation"]["geography"]
+    assert updated["properties"]["reference_geometry"] == \
+        layer["rows"][0]["properties"]["reference_geometry"]
+    assert updated["observation"]["denominator"] is None
+    assert updated["observation"]["measure"] == layer["rows"][0]["observation"]["measure"]
+    assert refresh(after, after, result) == result
+    broken = dict(native)
+    layer["rows"][0]["observation"]["view"]["native_record"] = {**facts, "unreviewed": True}
+    broken[native_name] = compressed(layer)
+    with pytest.raises(ValueError, match="vector preimage"):
+        refresh(before, after, broken)

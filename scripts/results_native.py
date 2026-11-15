@@ -16,6 +16,12 @@ from scripts.results_granular import (
     public_facts, selected_records, transport_url,
 )
 from scripts.results_pdf_tables import PROFILES as PDF_STATISTICS_PROFILES, statistics as pdf_statistics
+from scripts.results_pdf_boston import URL as BOSTON_STATEMENT_URL, statistics as boston_statistics
+from scripts.results_pdf_periodic import (
+    PROFILES as NJ_PERIODIC_PDF_PROFILES,
+    statistics as nj_periodic_pdf_statistics,
+)
+from scripts.results_json_statistics import PROFILES as JSON_STATISTICS_PROFILES, statistics as json_statistics
 
 
 CA_URL = "https://media.sos.ca.gov/media/status_GG.json"
@@ -1772,6 +1778,8 @@ def source_plan(baseline):
             legacy_webforms_profile = LEGACY_WEBFORMS_PROFILES.get(url)
             html_profile = HTML_STATISTICS_PROFILES.get(url)
             pdf_profile = PDF_STATISTICS_PROFILES.get(url)
+            nj_periodic_profile = NJ_PERIODIC_PDF_PROFILES.get(url)
+            json_profile = JSON_STATISTICS_PROFILES.get(url)
             native = view.get("native_record") or {}
             if summary_profile and state == summary_profile["state"]:
                 adapter = "reviewed_summary_statistics"
@@ -1788,6 +1796,12 @@ def source_plan(baseline):
                 adapter = "reviewed_legacy_webforms_statistics"
             elif html_profile and state == html_profile["state"]:
                 adapter = "reviewed_statistical_html"
+            elif url == BOSTON_STATEMENT_URL and state == "MA":
+                adapter = "reviewed_boston_statement"
+            elif json_profile and state == json_profile["state"]:
+                adapter = "reviewed_statistical_json"
+            elif nj_periodic_profile and state == nj_periodic_profile["state"]:
+                adapter = "reviewed_nj_periodic_pdf"
             elif pdf_profile and state == pdf_profile["state"]:
                 adapter = "reviewed_statistical_pdf"
             elif texas_reconciliation_role(template):
@@ -1842,9 +1856,18 @@ def collect_sources(collector, baseline):
             elif source["adapter"] == "reviewed_statistical_html":
                 def parse(body, templates=templates, url=url):
                     return statistical_html(body, templates, url)
+            elif source["adapter"] == "reviewed_boston_statement":
+                def parse(body, templates=templates, url=url):
+                    return boston_statistics(body, templates, url)
             elif source["adapter"] == "reviewed_statistical_pdf":
                 def parse(body, templates=templates, url=url):
                     return pdf_statistics(body, templates, url)
+            elif source["adapter"] == "reviewed_statistical_json":
+                def parse(body, templates=templates, url=url):
+                    return json_statistics(body, templates, url)
+            elif source["adapter"] == "reviewed_nj_periodic_pdf":
+                def parse(body, templates=templates, url=url):
+                    return nj_periodic_pdf_statistics(body, templates, url)
             else:
                 def parse(body, url=url):
                     return {"updates": [], "factual_product": factual_tables(body, url),

@@ -201,8 +201,14 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
     subprocess.run([sys.executable, "-c",
         "import sys; sys.path[:0]=['code']; "
         "from scripts import results_pdf_tables as pdf; "
+        "from scripts import results_pdf_boston, results_json_statistics, results_pdf_periodic; "
+        "from scripts import results_pdf_periodic_ocr, automatic_native_refresh; "
         "from scripts import native_pdf, pdf_group_queries; "
         "import json; "
+        "assert (pdf.Path('code/tests/fixtures/results_pdf_periodic') / "
+        "'complete-products.json.gz').is_file(); "
+        "assert (pdf.Path('code/tests/fixtures/results_pdf_periodic') / "
+        "'sussex-ocr-views.json.gz').is_file(); "
         "p=json.loads(pdf.Path(pdf.__file__).with_name('results_pdf_grids.json').read_bytes()); "
         "assert len(p['source']['grids']) == 14"],
         cwd=packet, check=True, capture_output=True)
