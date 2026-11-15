@@ -40,6 +40,12 @@ from scripts.results_native_oregon import (
     statistics as oregon_statistics,
     validate_plan as validate_oregon_plan,
 )
+from scripts.results_native_north_carolina import (
+    ADAPTER as NORTH_CAROLINA_ADAPTER,
+    route as north_carolina_route,
+    statistics as north_carolina_statistics,
+    validate_plan as validate_north_carolina_plan,
+)
 from scripts.results_native_idaho import (
     ADAPTER as IDAHO_ADAPTER,
     route as idaho_route,
@@ -51,6 +57,12 @@ from scripts.results_native_rhode_island import (
     route as rhode_island_route,
     statistics as rhode_island_statistics,
     validate_plan as validate_rhode_island_plan,
+)
+from scripts.results_native_utah import (
+    ADAPTER as UTAH_ADAPTER,
+    route as utah_route,
+    statistics as utah_statistics,
+    validate_plan as validate_utah_plan,
 )
 from scripts.results_native_delaware import (
     ADAPTER as DELAWARE_ADAPTER,
@@ -1839,9 +1851,11 @@ def source_plan(baseline):
                 delaware_route(template)
                 or dc_route(template)
                 or native_state_family_route(template)
+                or north_carolina_route(template)
                 or oregon_route(template)
                 or idaho_route(template)
                 or rhode_island_route(template)
+                or utah_route(template)
                 or virginia_route(template)
                 or north_dakota_route(template)
                 or louisiana_route(template)
@@ -1859,7 +1873,7 @@ def source_plan(baseline):
                     or family_route is None and NOT_RESULTS.search(parsed.path)):
                 continue
             if (url == MN_URL or url.startswith(CT_ROOT)
-                    or parsed.hostname == "er.ncsbe.gov"
+                    or parsed.hostname == "er.ncsbe.gov" and family_route is None
                     or state == "AL" and parsed.path.lower().endswith(".zip")):
                 continue
             profile = RECORD_PROFILES.get(url)
@@ -1929,9 +1943,10 @@ def source_plan(baseline):
         result[state] = sources
     result = validate_delaware_plan(validate_dc_plan(result))
     return validate_louisiana_plan(validate_north_dakota_plan(validate_virginia_plan(
-        validate_idaho_plan(validate_rhode_island_plan(
+        validate_idaho_plan(validate_rhode_island_plan(validate_utah_plan(
             validate_oregon_plan(
-                validate_native_state_family_plan(result)))))))
+                validate_north_carolina_plan(
+                    validate_native_state_family_plan(result)))))))))
 
 
 def collect_sources(collector, baseline):
@@ -1942,6 +1957,10 @@ def collect_sources(collector, baseline):
             if source["adapter"] == OREGON_ADAPTER:
                 def parse(body, templates=templates, url=url):
                     return oregon_statistics(body, templates, url, acquire=collector.acquire)
+            elif source["adapter"] == NORTH_CAROLINA_ADAPTER:
+                prior = collector.prior.get(identity)
+                def parse(body, templates=templates, url=url, prior=prior):
+                    return north_carolina_statistics(body, templates, url, prior=prior)
             elif source["adapter"] == IDAHO_ADAPTER:
                 previous = collector.prior.get(identity)
                 def parse(body, templates=templates, url=url, previous=previous):
@@ -1953,6 +1972,12 @@ def collect_sources(collector, baseline):
                 def parse(body, templates=templates, url=url, prior=prior):
                     return rhode_island_statistics(
                         body, templates, url, prior=prior)
+            elif source["adapter"] == UTAH_ADAPTER:
+                prior = collector.prior.get(identity)
+                def parse(body, templates=templates, url=url, prior=prior):
+                    return utah_statistics(
+                        body, templates, url, acquire=collector.acquire,
+                        prior=prior)
             elif source["adapter"] == DELAWARE_ADAPTER:
                 def parse(body, templates=templates, url=url):
                     return delaware_statistics(body, templates, url)

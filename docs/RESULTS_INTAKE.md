@@ -93,6 +93,38 @@ THEN polish. [Acceptance](../data/participation-access/20261115-id-ri-automatic-
 [all decisions and holds](../data/participation-access/20261115-id-ri-automatic-intake-01/observations.json) and
 [both complete query-set downloads](DATA.md#id-ri-automatic-intake).
 
+## Reviewed Utah and North Carolina adapters
+
+The collector also routes the four existing Utah county totals for Cache, Kane,
+Millard and Piute to the official API-declared summary PDFs. The measure is the
+literal **Ballots Cast - Total**, not candidate votes or a registration stock.
+The other 25 counties remain held. Each report retains its own printed local
+clock with an unknown timezone; API clocks are separate context. Registrations
+and printed percentages are not promoted to analytical denominators or rates,
+county totals are not added into a statewide result, and existing map and
+completion qualifications are preserved.
+
+Cache and Millard require agreeing PyMuPDF/pdfplumber embedded-text reads.
+Kane and Piute use pinned RapidOCR at two resolutions: these are **the same
+engine, not independent algorithmic validation**. Exact election/county/measure
+labels, agreeing selected counts and the confidence threshold remain required.
+Malformed or ambiguous inputs retain the whole last-good four-report family.
+
+North Carolina's existing 100-county `bct` reported-ballot family now has a single
+prior-aware route instead of duplicate legacy collection. Its full query still
+requires the statewide control and all 100 counties to reconcile. The 403 other
+NC observations and early/mail frames are not replaced or added. The exact
+official URL remains source-stopped; this adapter must open no transport while
+that policy applies. A coherent first-attempt outage can recover on a later
+permitted valid response, but corrupted priors and county or unselected-state
+clock/status rollbacks reject the complete successor.
+
+Both adapters use frozen registration templates and validate the last successful
+capture's complete pin/query/update vectors. Their source fixtures and portable
+tests are included in the complete source ZIP. This describes reviewed adapter
+capability, not fresh acquisition, hosted delivery, a new fit or nationwide
+completion; those require their own actual acceptance.
+
 ## Reviewed Idaho and Rhode Island adapters
 
 The default collector also routes the existing Idaho and Rhode Island slots to

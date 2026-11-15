@@ -1,0 +1,31 @@
+{
+  "created_at": "2026-11-15T12:39:02.409681+00:00",
+  "files": {
+    "accepted-reporting.json.gz": {
+      "bytes": 4897,
+      "decoded_bytes": 27005,
+      "decoded_sha256": "9fc1b775d96cba4bf8da176be8351cf3b3b216969d69a3e88eb9a6c9c8c7a409",
+      "sha256": "2682de7686637b7206b6680eafc68b742cbffa14483dfccac6829d9e54b14968"
+    },
+    "accepted-templates.json.gz": {
+      "bytes": 21779,
+      "decoded_bytes": 721279,
+      "decoded_sha256": "fc360a8a500f6d376cd246fa9aaa662f0baf57fcd2ec002e9dde488b75b2c4af",
+      "sha256": "eb84de918545ce6c350f074990d5d6079463acf26433ca00a5a865466894ec23"
+    }
+  },
+  "fresh_capture": false,
+  "frozen_registration": {
+    "archive_member": "inputs/accepted-counts/states/NC.json.gz",
+    "held_unrelated_records": 403,
+    "records_total": 503,
+    "selected_family_records": 100
+  },
+  "retained_only": true,
+  "source_original": {
+    "bytes": 27005,
+    "fixture": "accepted-reporting.json.gz",
+    "sha256": "9fc1b775d96cba4bf8da176be8351cf3b3b216969d69a3e88eb9a6c9c8c7a409",
+    "url": "https://er.ncsbe.gov/enr/20261103/data/county.txt"
+  }
+}

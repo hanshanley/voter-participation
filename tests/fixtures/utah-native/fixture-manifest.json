@@ -1,0 +1,60 @@
+{
+  "api_url": "https://electionresults.utah.gov/results/public/api/elections/Utah/General11032026/data",
+  "contract": "participation.utah_native_fixture_manifest.v1",
+  "created_at_utc": "2026-11-15T12:42:41.801315+00:00",
+  "entry_url": "https://electionresults.utah.gov/results/public/Utah/elections/General11032026",
+  "files": {
+    "api-data.json.gz": {
+      "bytes": 23896,
+      "original_bytes": 342439,
+      "original_sha256": "f82bc182cca3d4f00a0bb9b236b4031593693659de35e3c978816cd37bff78a5",
+      "sha256": "87506eacc27d740345b634e199cf6b412e3ef785df632296c21bc0ee45597e06"
+    },
+    "frozen-ut.json.gz": {
+      "bytes": 38280,
+      "sha256": "a555c939e084c6e5cf0ce05ba200020a8987deda51e60f010e0a89a22b509b83"
+    },
+    "rolling7416-ut.json.gz": {
+      "bytes": 38280,
+      "sha256": "a555c939e084c6e5cf0ce05ba200020a8987deda51e60f010e0a89a22b509b83"
+    },
+    "summaries/cache-summary.pdf.gz": {
+      "bytes": 17827,
+      "original_bytes": 21203,
+      "original_sha256": "c266bfe51c945936aa6a758e9bc3a996ffe6efe149897a9044d3cbe3780fd397",
+      "sha256": "13f592af57367693bfbd3a15d34ff35921f5bad88118de28525afb5af8e0a2f0"
+    },
+    "summaries/kane-summary.pdf.gz": {
+      "bytes": 132923,
+      "original_bytes": 144430,
+      "original_sha256": "abaeaccdb534bb89e28e66ec9a9876b383a63b91838d3288140581a49ed3bd4e",
+      "sha256": "15d8cc8135f684495b3c6fd111038c208a96eea6640a0ff82540eb0594e11d52"
+    },
+    "summaries/millard-summary.pdf.gz": {
+      "bytes": 13160,
+      "original_bytes": 17156,
+      "original_sha256": "3ab749c722174178a7e3ac918332798f133458a6c442c4e8023fb78c6861a026",
+      "sha256": "cc9be42708fbab7161cc497e8dcdc2ebda59aca91c5fb6c1b3d9a00e8a06fcda"
+    },
+    "summaries/piute-summary.pdf.gz": {
+      "bytes": 37556,
+      "original_bytes": 40185,
+      "original_sha256": "1593ee8a56ccc1ee64e82466952784c936a7805fa873692e50d22032a0fc4447",
+      "sha256": "6e44586c7205460faaa4c9f70cd941fb7245fb2a1e4bc6c9872219925d4e8f88"
+    }
+  },
+  "fresh_capture": false,
+  "live_acceptance": false,
+  "retained_origins": {
+    "api-data.json.gz": "utah-declared-successors-20261111-01/native-data.json",
+    "frozen-ut.json.gz": "research-calibrated-swing-build-01/data/results-intake/baseline/counts/states/UT.json.gz",
+    "rolling7416-ut.json.gz": "de-dc-sc-automatic-delivery-20261115-01/public-runtime-43710775489/extracted/queries/after-counts/states/UT.json.gz",
+    "summaries/*.pdf.gz": "utah-declared-successors-20261111-01/*-summary.pdf"
+  },
+  "selected_counties": [
+    "Cache County",
+    "Kane County",
+    "Millard County",
+    "Piute County"
+  ]
+}

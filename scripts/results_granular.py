@@ -420,11 +420,11 @@ def factual_tables(body, name, *, _budget=None, _depth=0):
 
 def collect(collector, baseline):
     jobs = {}
-    for state, parser in (("NC", north_carolina), ("MN", minnesota)):
+    for state, parser in (("MN", minnesota),):
         templates = selected_records(baseline, state)
         if not templates:
             continue
-        url = ("https://er.ncsbe.gov/enr/20261103/data/county.txt" if state == "NC" else MN_URL)
+        url = MN_URL
         jobs[state + "-native-local"] = collector.capture(state + "-native-local", url,
             lambda body, parser=parser, templates=templates: parser(body, templates))
     templates = selected_records(baseline, "AL")

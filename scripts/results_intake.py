@@ -645,7 +645,9 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
              "results_state_statistics.py",
              "results_native_delaware.py", "results_native_dc.py",
              "results_native_state_family.py", "results_native_oregon.py",
+             "results_native_north_carolina.py",
              "results_native_rhode_island.py",
+             "results_native_utah.py",
              "results_native_idaho.py",
              "results_native_virginia.py", "results_native_north_dakota.py",
              "results_native_louisiana.py", "results_native_louisiana_runtime.py",
@@ -676,7 +678,9 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                  "test_results_pdf_cass.py", "test_results_native_cass.py",
                  "test_results_pdf_dunn.py",
                  "test_results_native_state_family.py", "test_results_native_oregon.py",
+                 "test_results_native_north_carolina.py",
                  "test_results_native_rhode_island.py",
+                 "test_results_native_utah.py",
                  "test_results_native_idaho.py",
                  "test_results_native_virginia.py",
                  "test_results_native_virginia_repair.py",
@@ -692,6 +696,10 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     for name in ("accepted-templates.json.gz", "nd-complete-facts.json.gz"):
         relative_name = "tests/fixtures/nd-native-automatic/" + name
         package_members["code/" + relative_name] = (ROOT / relative_name).read_bytes()
+    for name in ("accepted-reporting.json.gz", "accepted-templates.json.gz",
+                 "fixture-manifest.json"):
+        relative_name = "tests/fixtures/north-carolina-native/" + name
+        package_members["code/" + relative_name] = (ROOT / relative_name).read_bytes()
     for name in ("complete-products.json.gz", "sussex-ocr-views.json.gz"):
         package_members["code/tests/fixtures/results_pdf_periodic/" + name] = (
             ROOT / "tests/fixtures/results_pdf_periodic" / name).read_bytes()
@@ -703,6 +711,10 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/rhode-island-native-accepted.json.gz"
     package_members["code/" + name] = (ROOT / name).read_bytes()
+    fixture_root = ROOT / "tests/fixtures/utah-native"
+    for path in sorted(fixture_root.rglob("*")):
+        if path.is_file():
+            package_members["code/" + str(path.relative_to(ROOT))] = path.read_bytes()
     name = "tests/fixtures/dc-native-accepted.json"
     fixture_root = ROOT / "tests/fixtures/idaho-native"
     for path in sorted(fixture_root.rglob("*")):
