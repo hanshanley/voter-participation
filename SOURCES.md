@@ -6,6 +6,12 @@ Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## New York automatic-intake access check
+
+Two genuinely independent county routes were checked on November 15, 2026: Allegany's Board of Elections page and Albany's official results archive. Both returned HTTP 403 before an authority page or numerical report could be retained. Neither route is retried through another client, cache, mirror or linked child product. Search snippets and candidate votes are not substituted for participation.
+
+The shared unattended collector now retains these stops, preserving all prior stops, last-good numerical observations, clocks and complete downloads. This adds no counts, estimates, coverage or new numerical download. The hourly collection and compatible website/model update workflows remain enabled; these two route holds do not establish that all New York products are unavailable. [Access record](data/participation-access/20261115-ny-independent-access-02/observations.json).
+
 ## Verified historical precinct qualification
 
 **Historical qualification is now integrated, not just inventoried.**
