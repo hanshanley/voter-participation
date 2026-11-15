@@ -210,6 +210,45 @@ The complete source download includes the shared PDF reader, grouping code,
 reviewed layout data and tests. Full numerical replay uses selected facts and does
 not claim extraction of excluded publisher PDFs.
 
+## Verified Cass/Dunn delivery
+
+Cass County, Indiana and Dunn County, Wisconsin are verified through
+collector 43676304421 at producer `2fa2b159`,
+engine `ec838082`, consumer `7b2cdcf4` and
+runtime `1b0bdc1f` (job 43677587999).
+Two existing county observations now support unattended revised-report extraction;
+the accepted counts remain 9,699 and 19,896, not newly discovered participants.
+The actual collector refreshes **12,119 record appearances across 21 states**,
+not unique people, disjoint populations or nationwide local completeness.
+
+Cass retains its literal turnout-display numerator, separate registration
+reference, partial reporting, simultaneous unofficial/official text and unknown
+timezone. It is not promoted to cast ballots or a new analytical turnout rate.
+Dunn's accepted original and count identify the unofficial report; the prior
+stored URLs incorrectly named the separate official report. A pinned reviewed
+bridge corrects only those URLs, while the projector supplies the automatic
+download marker. Its missing count clock, held rates and geographic hold remain.
+The official report is a control, never a candidate-vote replacement.
+
+Maintained 326 and canonical 332 tests pass. The actual complete source packet
+passes 49 portable tests with nine optional original-file skips and reproduces
+all 14 numerical outputs offline. The complete runtime packet reproduces all
+113 outputs offline; all 113 public bodies, nested source packet and actual
+preceding rolling seed match. Actual desktop/mobile checks cover both county
+details and current full-download links, all 306 reader frames, the preserved
+KY/IN/MA/NM/MN maps and all nine model controls. Reviewed screenshots are
+hash-bound. All 51 decisions and 178 source stops persist. No private survey
+refit, new rate, geometry change or static Pages build occurred.
+
+Broader source, historical, model and boundary gaps remain open, before full
+audit THEN beautification. The private next JSON-family patch is not included
+or claimed live by this acceptance.
+
+[Complete acceptance](../data/participation-access/20261115-cass-dunn-automatic-intake-01/acceptance.json) and
+[all jurisdiction and native-source queries](../data/participation-access/20261115-cass-dunn-automatic-intake-01/observations.json);
+[both complete downloads](DATA.md#cass-dunn-automatic-intake).
+
+
 ## Verified county/unit delivery
 
 Oklahoma's in-person-early PDF and Jefferson County, Kentucky's precinct
