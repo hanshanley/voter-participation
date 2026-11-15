@@ -142,6 +142,52 @@ The complete source download includes the shared PDF reader, grouping code,
 reviewed layout data and tests. Full numerical replay uses selected facts and does
 not claim extraction of excluded publisher PDFs.
 
+## Verified statistical-family delivery
+
+Indiana statistical JSON, Boston's statement and all 15 registered
+New Jersey periodic reports are verified through producer `595cb89c`,
+collector 43665245545, publication recovery 43666625907,
+consumer `4662aee3` and runtime
+`8e86de8e` (job 43667024340).
+These 18 products refresh **396 existing appearances**. The full collector now
+refreshes **11,395 appearances across 19 states**, not unique people, disjoint
+populations or nationwide county/precinct completeness.
+
+All 103 Monroe units remain, including the changed split counts 69 and zero.
+Porter is 59,951; Middlesex is 248,685. Boston preserves 275 units and all
+44 statistical contexts; its selected Times Cast measure is not its conflicting
+summary Voters Cast total. New Jersey retains provisional-excluded subtotals,
+literal parent roles and source discrepancies. Sussex's two-resolution OCR
+agreement is a same-engine check, not independent validation. Unknown clocks,
+raw registers and held analytical rates stay qualified.
+
+The original collection completed, but its 127.9 MB state file exceeded the
+Git blob limit. A checksum-bound lossless 13.1 MB representation fixes storage;
+the original complete packet and all queries were recovered without collecting
+again. The original failed run remains failed. Sussex's renderer metadata,
+confidence scores and three derived OCR token centers differ across platforms;
+all 348 decoded numerical positions, native text, clocks and physical column
+bands match. Both complete rendered image pins and OCR model pins match;
+the selected numeric confidence threshold remains 0.98.
+
+Exact native source identities and full prior vectors refresh existing Indiana
+and Boston map dependencies despite older map/table IDs. No geometry, original
+measure mode or rate qualification is promoted. The maintained
+243-test and canonical 249-test suites pass.
+Complete source/runtime packets freshly reproduce 14/113 outputs offline with
+zero requests; all 113 public runtime bodies match. Actual desktop/mobile checks
+cover all 396 new appearances, all 306 reader frames, the IN/MA/NM/MN native maps
+and all nine model controls. Reviewed screenshots are hash-bound. All 51 source
+decisions and prior access stops survive. No private survey refit, new geographic
+join or static Pages rebuild occurred.
+
+[Complete acceptance](../data/participation-access/20261114-statistical-families-automatic-intake-01/acceptance.json),
+[all jurisdiction decisions](../data/participation-access/20261114-statistical-families-automatic-intake-01/observations.json) and
+[both complete downloads](DATA.md#statistical-family-automatic-intake)
+retain the scope. Broader source, historical, model and boundary gaps remain
+open; the full audit THEN beautification still follow their genuine prerequisites.
+
+
 ## Verified statistical PDF delivery
 
 Reviewed statistical PDF intake is verified through producer `214ae009`,

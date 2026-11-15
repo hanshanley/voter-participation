@@ -8,6 +8,35 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Statistical-family automatic intake
+
+The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/100d876bc75002cc6e029b0b88aa39267803a916/snapshots/8dd63219e8f92ac2d5239aecfa21f90b6e1b636c36674aec5458bf503aff08e5/complete-results.zip) is **38,423,708 bytes**,
+SHA256 `38e97dcd2b7bb3879c98e7f8e41735f79482f595581537fb27ea77b818f87545`. It includes all 51 decisions,
+complete permitted facts and original numerical queries, all 14 outputs,
+accepted baselines, every adapter/configuration, portable tests and fixtures.
+Extract into a fresh directory and run:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The [complete automatic runtime ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-8e86de8e9495173f7a8c359a4bcd87aebadba12f94ed2adacbdc2c6909c42dcc/complete-analysis.zip) is **185,715,333 bytes**,
+SHA256 `1fbc5e3d69fbcdef28007a5f68bce9353b9dd9fcbdc5c986c794790299bf001d`. It nests the entire source packet and actual prior
+rolling seed, complete before/after count/native datasets, code, tests, all nine
+model cases and every numerical query. Extract into another fresh directory:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+Both literal commands were verified with Python 3.9+ and the existing requests
+dependency: 14/113 outputs, zero requests. They replay complete numerical facts,
+not excluded publisher document extraction or private survey fitting.
+All previous complete downloads below remain available.
+[Actual scope and acceptance](../data/participation-access/20261114-statistical-families-automatic-intake-01/acceptance.json) preserve source,
+rate, clock, reporting, model and geographic qualifications.
+
+
 ## Statistical PDF automatic intake
 
 The [complete source-results ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/3620220eedf942614950a6a02ded6ac1395434f4/snapshots/fbec91011ed1fbbdcf6983594a9ba99d28f938b6fcf7aa6d9609846145beb01e/complete-results.zip) is **31,089,457 bytes**,
