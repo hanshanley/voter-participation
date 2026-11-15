@@ -29,6 +29,7 @@ from scripts.precinct_source_batch import discover_links, is_general_precinct_pr
 from scripts.results_house import NATIONAL_URL, candidate_results, districts, state_totals
 from scripts import results_granular
 from scripts import results_state_statistics
+from scripts import results_native_broome
 
 
 OFFICIAL = {**OFFICIAL, **results_state_statistics.OFFICIAL}
@@ -572,6 +573,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
             return data
         key = state + "-official"
         feeds[key] = collector.capture(key, url, parse)
+    feeds[results_native_broome.IDENTITY] = results_native_broome.collect_statistics(collector)
     from scripts.louisiana_bootstrap import IDENTITY as LA_BOOTSTRAP_ID
     from scripts.louisiana_bootstrap import collect_bootstrap as collect_la_bootstrap
     la_bootstrap = collect_la_bootstrap(
@@ -652,6 +654,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
              "results_native_virginia.py", "results_native_north_dakota.py",
              "results_native_louisiana.py", "results_native_louisiana_runtime.py",
              "louisiana_onboarding.py", "louisiana_bootstrap.py",
+             "results_native_broome.py",
              "participation_count_additions.py",
              "results_pdf_ocr.py", "results_pdf_tables.py", "results_pdf_boston.py",
              "results_pdf_grids.json",
@@ -671,6 +674,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     for name in ("test_results_intake.py", "test_results_granular.py", "test_results_native.py",
                  "test_results_state_statistics.py",
                  "test_results_native_delaware.py", "test_results_native_dc.py",
+                 "test_results_native_broome.py",
                  "test_results_native_workbooks.py",
                  "test_results_pdf_tables.py", "test_results_pdf_boston.py",
                  "test_results_json_statistics.py", "test_results_pdf_periodic.py",
@@ -716,6 +720,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
         if path.is_file():
             package_members["code/" + str(path.relative_to(ROOT))] = path.read_bytes()
     name = "tests/fixtures/dc-native-accepted.json"
+    broome_fixture = "tests/fixtures/broome-contest-2026.json"
+    package_members["code/" + broome_fixture] = (ROOT / broome_fixture).read_bytes()
     fixture_root = ROOT / "tests/fixtures/idaho-native"
     for path in sorted(fixture_root.rglob("*")):
         if path.is_file():

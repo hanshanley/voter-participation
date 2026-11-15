@@ -12,6 +12,35 @@ The tool publishes data to the separate `results-data` branch. It does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Broome County: automatic contest-scoped report intake
+
+The default collector follows Broome's official results page and its declared
+dashboard, client and election metadata to two native reports. Its complete
+governor-context query retains **126 reporting units, 17 municipality controls
+and one contest control: 144 rows**, with literal labels, counts, registration
+stocks, printed percentages, source pins and protection notices. The complete
+query is retained in the source packet; its factual fixture and behavioral
+tests are also exported for portable execution.
+
+These are **not qualified whole-election turnout totals**. The governor-context
+control is 68,955, while a separately printed congressional control is 69,086.
+The unexplained 131-count difference is not repaired or assigned a cause.
+The actual 0/0 row remains distinct from missing data; Dickinson 3's native
+611/122/500.82% is preserved without approving a turnout rate. Raw registration
+stocks are not analytical denominators.
+
+The municipality report supplies no count-update clock. The separate summary's
+11/09/2026 16:53:10 has no timezone and belongs only to that summary.
+API publication clocks are used for edition-rollback checks, not substituted
+for either report's count clock. Changed or protected layouts fail closed;
+stopped sources retain the entire last-good query and original observation metadata.
+
+This adapter produces **zero canonical count updates** and withholds rate,
+whole-election, unique-person, geography, cross-year and estimate-update
+qualification. Retained-original/default-collector and portable package checks
+are distinct from accepting an actual new hosted capture. No new website count,
+map or estimate activation is claimed by this source-only integration.
+
 ## Verified SC delivery and DE/DC holds
 
 South Carolina's native statewide **2,054,835** participation snapshot now
