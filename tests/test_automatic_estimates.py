@@ -8,7 +8,11 @@ from scripts.automatic_estimates import (
     bind_publication, build, load_rolling_seed, load_rolling_seed_bytes,
     load_seed, render_artifacts,
 )
-from scripts import norc_house_model
+from scripts import automatic_estimates, norc_house_model
+from scripts.current_source_reconciliation import (
+    BRIDGE_CONTRACT, ELECTION_DATE, EVIDENCE_CONTRACT, PROPOSAL_CONTRACT,
+    STATE_CODES, canonical_sha256,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,6 +67,144 @@ class AutomaticEstimateTests(unittest.TestCase):
         return result["artifacts"][
             "house/{}/{}/complete-result.json.gz".format(profile, family)
         ]["content"]
+
+    def synthetic_participation_seed(self, extra_scenario=False):
+        display = {
+            "contract": "participation.registered_control_display.v2",
+            "states": [
+                {
+                    "state_code": state,
+                    "control_id": "control-" + state,
+                    "control_denominator_basis": "active_registered_voters",
+                    "control_registered_denominator": "1000",
+                    "control_native_time": None,
+                    "control_source_url": "fixture://accepted",
+                }
+                for state in STATE_CODES
+            ],
+            "scenarios": [{
+                "state_code": "OR",
+                "control_id": "control-OR",
+                "native_denominator_basis": "active_registered_voters",
+                "native_registered_denominator": "1000",
+                "conditional_modeled_voter_count": "600",
+                "conditional_modeled_nonvoter_count": "400",
+                "source_time_label": None,
+                "source_url": "fixture://accepted",
+            }],
+        }
+        if extra_scenario:
+            display["scenarios"].append({
+                **display["scenarios"][0],
+                "control_id": "legacy-OR",
+            })
+        states = [state for state in STATE_CODES if state != "DC"]
+        return {
+            "participation_state_controls": display,
+            "qualification": {
+                "qualified_state_codes": states[:33],
+                "held_state_codes": states[33:],
+            },
+        }
+
+    def synthetic_participation_snapshot(self):
+        return {
+            "contract": "participation.automatic_results_snapshot.v1",
+            "election_date": ELECTION_DATE,
+            "participation_observations": [],
+        }
+
+    def cross_source_update(
+        self, numerator="7", denominator="10", proposal_id="proposal-OR-01",
+        observation_control="control-OR", target_control="control-OR",
+        source_population="active_registered_voters",
+    ):
+        source_domain = {
+            "election_date": ELECTION_DATE,
+            "election_year": 2026,
+            "geography": "state:OR",
+            "population": source_population,
+            "office_endpoint": "all_method_participation",
+            "ballot_stage": "counted_all_methods",
+        }
+        target_domain = {
+            **source_domain,
+            "population": "active_registered_voters",
+        }
+        proposal = {
+            "contract": PROPOSAL_CONTRACT,
+            "proposal_id": proposal_id,
+            "state_code": "OR",
+            "kind": "cross_source_registered_probability",
+            "source_role": "point_estimate_joint_bridge",
+            "operation": "replace_registered_probability",
+            "target_control_id": target_control,
+            "bridge_id": "bridge-OR-01",
+            "source_domain": source_domain,
+            "target_domain": target_domain,
+            "probability_numerator": numerator,
+            "probability_denominator": denominator,
+        }
+        evidence = {
+            "contract": EVIDENCE_CONTRACT,
+            "evidence_id": "evidence-OR-01",
+            "state_code": "OR",
+            "target_control_id": target_control,
+            "source_domain": source_domain,
+            "target_domain": target_domain,
+            "operation": proposal["operation"],
+            "sufficient_aggregate_joint_counts": True,
+            "source_provenance": {
+                "source_id": "fixture-reviewed-joint",
+                "source_url": "fixture://reviewed-joint",
+                "source_clock": "2026-11-04T00:00:00Z",
+                "source_artifact_sha256": "b" * 64,
+            },
+            "joint_counts": {
+                "participation_numerator": numerator,
+                "population_denominator": denominator,
+                "nonparticipant_complement": str(
+                    int(denominator) - int(numerator)
+                ),
+            },
+        }
+        bridge = {
+            "contract": BRIDGE_CONTRACT,
+            "bridge_id": proposal["bridge_id"],
+            "review_status": "approved",
+            "review_scope": (
+                "same_election_year_geography_population_endpoint_stage_joint"
+            ),
+            "reviewed_by": "fixture-reviewer",
+            "reviewed_at": "synthetic-fixture-not-observed-time",
+            "joint_population_observed": True,
+            "supports_point_estimate_update": True,
+            "supports_proposal_ids": [proposal_id],
+            "proposal_sha256": canonical_sha256(proposal),
+            "evidence_id": evidence["evidence_id"],
+            "evidence_sha256": canonical_sha256(evidence),
+            "target_control_id": target_control,
+            "probability_numerator": numerator,
+            "probability_denominator": denominator,
+            "source_domain": source_domain,
+            "target_domain": target_domain,
+        }
+        observation = {
+            "state_code": "OR",
+            "channel": "OR-fixture-joint-bridge",
+            "status": "reported",
+            "estimate_update": proposal,
+            "observation": {
+                "ballots": 500,
+                "denominator": 1000,
+                "denominator_basis": "active_registered_voters",
+                "control_id": observation_control,
+                "source_update_label": "fixture-joint-bridge",
+                "source_url": "fixture://current",
+                "estimate_domain": target_domain,
+            },
+        }
+        return observation, bridge, evidence
 
     def test_real_accepted_seed_unchanged_reuses_every_state_and_query(self):
         result = build(self.snapshot(), self.seed)
@@ -284,6 +426,144 @@ class AutomaticEstimateTests(unittest.TestCase):
             new["conditional_modeled_nonvoter_count"],
             old["conditional_modeled_nonvoter_count"],
         )
+
+    def test_pinned_sufficient_evidence_is_qualified_but_held_for_v1_consumer(self):
+        seed = self.synthetic_participation_seed()
+        observation, bridge, evidence = self.cross_source_update()
+        snapshot = self.synthetic_participation_snapshot()
+        snapshot["participation_observations"] = [observation]
+        snapshot["reviewed_joint_bridges"] = [bridge]
+        snapshot["reviewed_joint_evidence"] = [evidence]
+        result = automatic_estimates._participation(snapshot, seed)
+        updated = result["scenarios"][0]
+        self.assertEqual(updated["conditional_modeled_voter_count"], "600")
+        self.assertEqual(updated["conditional_modeled_nonvoter_count"], "400")
+        decision = result["automatic_update"]["decisions"][0]
+        self.assertEqual(
+            decision["decision"],
+            "native_registered_reference_only",
+        )
+        self.assertEqual(
+            decision["qualification"]["disposition"],
+            "qualified_reviewed_joint_bridge",
+        )
+        self.assertEqual(
+            decision["gate_subreason"],
+            "requires_versioned_probability_consumer_contract",
+        )
+        self.assertEqual(
+            result["automatic_update"]["qualified_cross_source_proposals_held"], 1
+        )
+
+    def test_wrong_observation_target_is_held_without_mutation(self):
+        seed = self.synthetic_participation_seed(extra_scenario=True)
+        observation, bridge, evidence = self.cross_source_update(
+            observation_control="legacy-OR"
+        )
+        snapshot = self.synthetic_participation_snapshot()
+        snapshot["participation_observations"] = [observation]
+        snapshot["reviewed_joint_bridges"] = [bridge]
+        snapshot["reviewed_joint_evidence"] = [evidence]
+        result = automatic_estimates._participation(snapshot, seed)
+        self.assertEqual(
+            result["automatic_update"]["decisions"][0]["gate_subreason"],
+            "held_observation_target_control_mismatch",
+        )
+        self.assertEqual(result["scenarios"], seed["participation_state_controls"][
+            "scenarios"
+        ])
+
+    def test_duplicate_proposal_identity_holds_both_but_legacy_update_continues(self):
+        seed = self.synthetic_participation_seed(extra_scenario=True)
+        valid, bridge, evidence = self.cross_source_update()
+        invalid, _, _ = self.cross_source_update(
+            source_population="current_voters"
+        )
+        legacy = {
+            "state_code": "OR",
+            "channel": "legacy",
+            "status": "reported",
+            "observation": {
+                "ballots": 500,
+                "denominator": 1001,
+                "denominator_basis": "active_registered_voters",
+                "control_id": "legacy-OR",
+                "source_url": "fixture://legacy",
+            },
+        }
+        snapshot = self.synthetic_participation_snapshot()
+        snapshot["participation_observations"] = [invalid, valid, legacy]
+        snapshot["reviewed_joint_bridges"] = [bridge]
+        snapshot["reviewed_joint_evidence"] = [evidence]
+        result = automatic_estimates._participation(snapshot, seed)
+        self.assertEqual(
+            [row["qualification"]["disposition"]
+             for row in result["automatic_update"]["decisions"][:2]],
+            ["held_duplicate_proposal_identity"] * 2,
+        )
+        self.assertEqual(
+            result["automatic_update"]["decisions"][2]["decision"],
+            "compatible_registered_frame_R_times_p_changed",
+        )
+        legacy_result = next(
+            row for row in result["scenarios"] if row["control_id"] == "legacy-OR"
+        )
+        target_result = next(
+            row for row in result["scenarios"] if row["control_id"] == "control-OR"
+        )
+        self.assertEqual(legacy_result["native_registered_denominator"], "1001")
+        self.assertEqual(target_result["conditional_modeled_voter_count"], "600")
+
+    def test_malformed_proposal_is_held_not_exception(self):
+        seed = self.synthetic_participation_seed()
+        snapshot = self.synthetic_participation_snapshot()
+        malformed = {
+            "state_code": "OR",
+            "channel": "malformed",
+            "status": "reported",
+            "estimate_update": [],
+            "observation": {
+                "denominator": 1000,
+                "denominator_basis": "active_registered_voters",
+                "control_id": "control-OR",
+            },
+        }
+        snapshot["participation_observations"] = [malformed]
+        result = automatic_estimates._participation(snapshot, seed)
+        self.assertEqual(
+            result["automatic_update"]["decisions"][0]["qualification"][
+                "disposition"
+            ],
+            "held_invalid_proposal",
+        )
+
+    def test_zero_probability_qualifies_but_v1_estimator_keeps_frozen_probability(self):
+        seed = self.synthetic_participation_seed()
+        zero, bridge, evidence = self.cross_source_update("0", "10")
+        snapshot = self.synthetic_participation_snapshot()
+        snapshot["participation_observations"] = [zero]
+        snapshot["reviewed_joint_bridges"] = [bridge]
+        snapshot["reviewed_joint_evidence"] = [evidence]
+        result = automatic_estimates._participation(snapshot, seed)
+        self.assertEqual(result["scenarios"][0]["conditional_modeled_voter_count"], "600")
+        self.assertEqual(
+            result["automatic_update"]["decisions"][0]["gate_subreason"],
+            "requires_versioned_probability_consumer_contract",
+        )
+
+        retained, bridge, evidence = self.cross_source_update("3", "5")
+        snapshot["participation_observations"] = [retained]
+        snapshot["reviewed_joint_bridges"] = [bridge]
+        snapshot["reviewed_joint_evidence"] = [evidence]
+        result = automatic_estimates._participation(snapshot, seed)
+        update = result["automatic_update"]
+        self.assertEqual(
+            update["decisions"][0]["decision"],
+            "native_registered_reference_only",
+        )
+        self.assertEqual(update["qualified_cross_source_proposals_held"], 1)
+        self.assertEqual(update["changed_registered_frames"], 0)
+        self.assertEqual(update["fresh_jurisdictions"], [])
 
     def test_rolling_seed_retains_run1_through_failure_then_accepts_run3(self):
         with patch(

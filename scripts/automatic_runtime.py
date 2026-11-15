@@ -31,6 +31,7 @@ RESULTS_POINTER = ("https://raw.githubusercontent.com/" + RESULTS_REPOSITORY
                    + "/results-data/latest.json")
 CODE_PATHS = (
     "automatic_runtime.py", "automatic_estimates.py", "automatic_native_refresh.py",
+    "current_source_reconciliation.py",
     "results_granular.py", "results_native_louisiana.py",
     "results_native_louisiana_runtime.py", "louisiana_onboarding.py",
     "louisiana_bootstrap.py", "participation_count_additions.py",
@@ -457,7 +458,8 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
     for name in CODE_PATHS:
         members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_automatic_runtime.py", "test_results_granular.py",
-                 "test_automatic_estimates.py", "test_automatic_native_refresh.py"):
+                 "test_automatic_estimates.py", "test_automatic_native_refresh.py",
+                 "test_current_source_reconciliation.py"):
         path = ROOT / "tests" / name
         if path.is_file():
             members["code/tests/" + name] = path.read_bytes()

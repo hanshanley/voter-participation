@@ -15,6 +15,7 @@ import math
 from pathlib import Path
 
 from scripts import norc_house_model as accepted_model
+from scripts import current_source_reconciliation
 
 
 CONTRACT = "participation.automatic_estimates.v1"
@@ -606,10 +607,48 @@ def _participation(snapshot, seed):
     display = copy.deepcopy(seed["participation_state_controls"])
     scenarios = {row["control_id"]: row for row in display["scenarios"]}
     selected_states = {row["state_code"]: row for row in display["states"]}
+    reconciliation = current_source_reconciliation.build_reconciliation(
+        snapshot, display, seed["qualification"]
+    )
+    proposal_decisions = {
+        decision["observation_index"]: decision
+        for row in reconciliation["states"]
+        for decision in row["proposed_updates"]
+    }
     decisions = []
-    for item in snapshot.get("participation_observations", []):
+    for observation_index, item in enumerate(
+        snapshot.get("participation_observations", [])
+    ):
+        if not isinstance(item, dict):
+            continue
         state = item.get("state_code")
-        if not state or item.get("status") != "reported":
+        if (
+            not isinstance(state, str)
+            or state not in selected_states
+            or item.get("status") != "reported"
+        ):
+            continue
+        proposal = item.get("estimate_update")
+        if proposal is not None:
+            proposal_decision = proposal_decisions.get(observation_index) or {
+                "proposal_id": None,
+                "eligible": False,
+                "disposition": "held_invalid_proposal_binding",
+                "point_estimate_change_allowed": False,
+            }
+            decisions.append({
+                "state_code": state,
+                "decision": "native_registered_reference_only",
+                "proposal_id": proposal_decision.get("proposal_id"),
+                "observation_index": observation_index,
+                "qualification": proposal_decision,
+                "gate_subreason": (
+                    "requires_versioned_probability_consumer_contract"
+                    if proposal_decision.get("point_estimate_change_allowed")
+                    else proposal_decision["disposition"]
+                ),
+                "local_or_demographic_estimate": False,
+            })
             continue
         observation = item.get("observation") or {}
         ballots = observation.get("ballots")
@@ -698,6 +737,7 @@ def _participation(snapshot, seed):
                 if new_registered != old_registered
                 else "compatible_registered_frame_R_times_p_retained"
             ),
+            "observation_index": observation_index,
             "denominator_basis": basis,
             "previous_registered_denominator": format(old_registered, "f"),
             "current_registered_denominator": format(new_registered, "f"),
@@ -742,6 +782,10 @@ def _participation(snapshot, seed):
         row for row in decisions
         if row["decision"].startswith("compatible_registered_frame_R_times_p_")
     ]
+    qualified_proposals_held = sum(
+        row.get("qualification", {}).get("point_estimate_change_allowed") is True
+        for row in decisions
+    )
     display["automatic_update"] = {
         "contract": "participation.automatic_registered_control_update.v1",
         "base_native_control_version": 35,
@@ -751,11 +795,13 @@ def _participation(snapshot, seed):
         "changed_registered_frames": len(changed),
         "fresh_jurisdictions": sorted({row["state_code"] for row in compatible}),
         "decisions": decisions,
+        "qualified_cross_source_proposals_held": qualified_proposals_held,
         "new_scenarios_created": 0,
         "source_weights_probabilities_or_fits_changed": False,
         "frame_exchangeability_or_observed_staying_home_qualified": False,
         "native_outcome_fitting_applied": False,
         "unsupported_local_or_demographic_estimates_created": False,
+        "current_source_reconciliation": reconciliation,
         "coverage_claim": (
             "All 51 accepted control decisions and 34 accepted scenarios are retained; "
             "only explicitly listed fresh compatible scenarios were refreshed."
