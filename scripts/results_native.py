@@ -15,6 +15,7 @@ from scripts.results_granular import (
     CT_ROOT, MN_URL, NOT_RESULTS, PRIVATE_HEADERS, change, factual_tables,
     public_facts, selected_records, transport_url,
 )
+from scripts.results_pdf_tables import PROFILES as PDF_STATISTICS_PROFILES, statistics as pdf_statistics
 
 
 CA_URL = "https://media.sos.ca.gov/media/status_GG.json"
@@ -1770,6 +1771,7 @@ def source_plan(baseline):
             summary_profile = SUMMARY_PROFILES.get(url)
             legacy_webforms_profile = LEGACY_WEBFORMS_PROFILES.get(url)
             html_profile = HTML_STATISTICS_PROFILES.get(url)
+            pdf_profile = PDF_STATISTICS_PROFILES.get(url)
             native = view.get("native_record") or {}
             if summary_profile and state == summary_profile["state"]:
                 adapter = "reviewed_summary_statistics"
@@ -1786,6 +1788,8 @@ def source_plan(baseline):
                 adapter = "reviewed_legacy_webforms_statistics"
             elif html_profile and state == html_profile["state"]:
                 adapter = "reviewed_statistical_html"
+            elif pdf_profile and state == pdf_profile["state"]:
+                adapter = "reviewed_statistical_pdf"
             elif texas_reconciliation_role(template):
                 adapter = "reviewed_texas_reconciliation_parent"
             elif (template["geography"]["level"] == "county" and pdf_measure(template)
@@ -1838,6 +1842,9 @@ def collect_sources(collector, baseline):
             elif source["adapter"] == "reviewed_statistical_html":
                 def parse(body, templates=templates, url=url):
                     return statistical_html(body, templates, url)
+            elif source["adapter"] == "reviewed_statistical_pdf":
+                def parse(body, templates=templates, url=url):
+                    return pdf_statistics(body, templates, url)
             else:
                 def parse(body, url=url):
                     return {"updates": [], "factual_product": factual_tables(body, url),

@@ -552,6 +552,17 @@ def project(baseline, granular):
                     view.update(native_printed_pct=fraction, source_status_literal=status)
                     if status is not None:
                         row["reporting_status"]["literal"] = status
+                elif "native_report_status_literal" in native:
+                    status = native["native_report_status_literal"]
+                    if (status != (native.get("query") or {}).get("native_report_status_literal")
+                            or status is not None and (
+                                not isinstance(status, str) or not status.strip())):
+                        raise ValueError("Native PDF status disagrees with the complete query")
+                    view["source_status_literal"] = status
+                    if status is not None:
+                        row["reporting_status"]["literal"] = status
+                if ("native_fraction_literal" in native
+                        or native.get("retained_source_context_is_historical")):
                     prefix = "Retained earlier-report context (not current report statistics): "
                     if view.get("notes") and not view["notes"].startswith(prefix):
                         view["notes"] = prefix + view["notes"]

@@ -5,6 +5,7 @@ import io
 import json
 from pathlib import Path
 import subprocess
+import sys
 from urllib.error import HTTPError
 from urllib.request import Request
 import zipfile
@@ -197,6 +198,14 @@ def test_all51_full_queries_and_extracted_packet_replay_without_network(tmp_path
         archive.extractall(packet)
     replayed = intake.replay(packet, tmp_path / "reproduced")
     assert replayed["complete_outputs"] == 10
+    subprocess.run([sys.executable, "-c",
+        "import sys; sys.path[:0]=['code']; "
+        "from scripts import results_pdf_tables as pdf; "
+        "from scripts import native_pdf, pdf_group_queries; "
+        "import json; "
+        "p=json.loads(pdf.Path(pdf.__file__).with_name('results_pdf_grids.json').read_bytes()); "
+        "assert len(p['source']['grids']) == 14"],
+        cwd=packet, check=True, capture_output=True)
     assert (tmp_path / "reproduced/granular-source-queries.json.gz").is_file()
     assert (tmp_path / "reproduced/declared-numerical-queries.json.gz").is_file()
     (packet / "queries/coverage.csv").write_bytes(b"changed")

@@ -51,8 +51,40 @@ sources or rerunning private survey fits. Optional packaged tests use `pytest`:
 
 ```sh
 cd code
-python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_nationwide.py tests/test_current.py
+python3 -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_nationwide.py tests/test_current.py
 ```
+
+## Reviewed statistical PDF adapters
+
+The shared PDF adapter recognizes five explicitly reviewed products: Vermont's
+247 municipalities, Somerville's city parent and 32 precinct/subprecinct rows,
+Dover's city parent and six wards, and Wood/Kanawha county parents in West Virginia.
+These 289 existing record appearances are not disjoint populations or nationwide
+coverage. Hosted delivery acceptance is recorded separately from parser capability.
+
+Vermont retains all 283 legislative reporting parts, 14 county controls, separate
+summary controls and its printed state parent. Exact column/header rectangles,
+complete numeric-cell coverage and all count reconciliations are required.
+Wrapped labels remain literal alongside whitespace-only identity comparisons.
+The date-only report clock must agree across pages and cannot regress; it is not
+an invented midnight timestamp. Revised registration stocks withhold previously
+qualified fractions instead of approving a new denominator.
+
+Somerville retains every printed ward and city control, split-unit identity and
+above-registration contradiction. Dover retains both complete statistical tables,
+including physical column binding for adjacent registration cells; registration
+affiliation is not vote choice. Its native 2026 election header governs, not the
+2025 filename. Neither city supplies a count-update clock or an approved analytic
+denominator. West Virginia uses literal statistical ballot parents, not contest
+totals, and checks every page's election, county, status, clock and page index.
+Complete/partial reporting counters do not establish certification.
+
+New layouts, changed inventories, missing counts, ambiguous columns, regressed
+clocks or failed reconciliation retain the last verified observations. Existing
+geographic joins, identities, views, unknowns and qualification holds survive.
+The complete source download includes the shared PDF reader, grouping code,
+reviewed layout data and tests. Full numerical replay uses selected facts and does
+not claim extraction of excluded publisher PDFs.
 
 ## Verified statistical HTML delivery
 

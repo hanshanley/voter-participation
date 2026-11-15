@@ -474,7 +474,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_granular.py", "results_native.py",
-             "results_pdf_ocr.py", "native_tabular.py", "native_products.py",
+             "results_pdf_ocr.py", "results_pdf_tables.py", "results_pdf_grids.json",
+             "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
             "nationwide.py", "current.py", "download.py",
             "precinct_source_batch.py", "house_clerk_endpoints.py",
             "participation_intake/__init__.py", "participation_intake/engine.py",
@@ -484,6 +485,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
         package_members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_results_intake.py", "test_results_granular.py", "test_results_native.py",
                  "test_results_native_workbooks.py",
+                 "test_results_pdf_tables.py",
                  "test_nationwide.py", "test_current.py"):
         package_members["code/tests/" + name] = (ROOT / "tests" / name).read_bytes()
     version = digest(encoded({"inputs": inputs, "baseline": config["baseline"],
