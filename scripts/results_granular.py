@@ -505,6 +505,7 @@ def reviewed_replacement(old, update, entry):
         not isinstance(bridge, dict)
         or bridge.get("contract") != "participation.reviewed_source_url_bridge.v1"
         or not isinstance(row, dict)
+        or not isinstance(row.get("view"), dict)
         or bridge.get("observation_id") != old["id"]
         or bridge.get("source_id") != old["source"]["id"]
         or update.get("id") != old["id"]
@@ -534,11 +535,13 @@ def reviewed_replacement(old, update, entry):
         != {"bytes": source.get("bytes"), "sha256": source.get("sha256")}
     ):
         raise ValueError("Reviewed source URL replacement disagrees with the captured input")
+    row = copy.deepcopy(row)
+    row["view"]["automatic_source_refresh"] = True
     allowed = bridge.get("allowed_replacement_paths")
     if (
         not isinstance(allowed, list)
         or any(not isinstance(path, str) or not path for path in allowed)
-        or not _changed_leaf_paths(old, row) <= set(allowed)
+        or not _changed_leaf_paths(old, row) <= set(allowed) | {"view.automatic_source_refresh"}
         or identity_fields(row) != identity_fields(old)
         or row["id"] != old["id"]
         or row["count"]["value"] != update.get("value")
@@ -550,7 +553,7 @@ def reviewed_replacement(old, update, entry):
     ):
         raise ValueError("Reviewed source URL replacement exceeded its explicit field scope")
     validate_projected_row(old, row)
-    return copy.deepcopy(row)
+    return row
 
 
 def project(baseline, granular):

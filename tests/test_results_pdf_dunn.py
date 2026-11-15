@@ -202,11 +202,25 @@ def test_collector_project_applies_only_explicit_bridge_and_repeats_byte_exact(
     expected["source"]["url"] = dunn.URL
     expected["source"]["input_sha256"] = hashlib.sha256(b"synthetic-dunn-pdf").hexdigest()
     expected["view"]["source_url"] = dunn.URL
+    expected["view"]["automatic_source_refresh"] = True
     assert row == expected
+    assert entries[key]["data"]["updates"][0]["replacement"]["view"].get(
+        "automatic_source_refresh") is None
+    assert granular.project(after, entries) == (after, [])
     repeat_entries = native.collect_sources(LocalCollector(), after)
     repeated, repeat_changes = granular.project(after, repeat_entries)
     assert repeat_changes == []
     assert repeated == after
+    install_synthetic_parser(
+        monkeypatch, pages("20,101", "27,300", "74%", "38,000", "53%"))
+    changed_entries = native.collect_sources(LocalCollector(body=b"revised-dunn-pdf"), after)
+    revised, changes = granular.project(after, changed_entries)
+    assert len(changes) == 1 and changes[0]["current"] == 20101
+    current = json.loads(gzip.decompress(revised["states/WI.json.gz"]))["records"][0]
+    assert current["view"]["automatic_source_refresh"] is True
+    assert current["denominator"] is None
+    assert current["view"]["reported_pct"] is None
+    assert granular.project(revised, changed_entries) == (revised, [])
 
 
 def test_collector_stop_rolls_back_to_exact_baseline(monkeypatch):

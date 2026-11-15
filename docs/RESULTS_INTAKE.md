@@ -138,6 +138,12 @@ the absent count clock and held rates remain absent and held. Complete packets
 include both adapters, portable behavior tests and the safe Dunn fixture.
 These are parser capabilities, not a claim of hosted or live acceptance.
 
+The projector marks validated URL replacements as automatic refreshes, just as
+it does ordinary updates. This producer-owned download marker binds the browser's
+complete-analysis link to the current immutable runtime packet, retaining the
+older download separately. It does not expand the source adapter's allowed
+count, identity, clock, denominator or geographic changes.
+
 The shared collector also recognizes Porter and Monroe statistical JSON,
 Boston's statement and 15 registered New Jersey periodic reports. These
 adapters refresh 396 existing record appearances, not distinct people or
