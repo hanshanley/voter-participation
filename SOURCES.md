@@ -1,10 +1,49 @@
 # Voter-participation source ledger
 
-Ledger updated: 2026-11-15 UTC. Source-specific clocks remain as recorded.
+Ledger updated: 2026-11-16 UTC. Source-specific clocks remain as recorded.
 
 **Start here:** [Overview](README.md) | [Estimation methods](METHODOLOGY.md) |
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
+
+## Verified Cole automatic grid refresh and live propagation
+
+Cole County's native statistical grid now refreshes all **30 existing reviewed
+rows**: 28 locality labels, a separate ABSENTEE row and the county parent.
+The parent remains **29,108 Ballots Cast**, with native registration **55,406**
+and printed **52.54%** as source context only. Absentee repeats that registration
+stock; it is not added again. The native **November 9, 2026, 10:05:40 AM** clock
+retains its unknown timezone. The source's OFFICIAL RESULTS wording is not an
+independent certification or completed-counting determination. No analytical
+denominator, rate, unique-person count or new precinct geography is qualified.
+
+The original default OCR rotated a printed 999 into 666 at both resolutions.
+The reviewed upright profile reads 999 directly with text-angle classification
+disabled; it does not substitute a count inferred from totals. Other OCR
+profiles keep their defaults. Full row inventories, physical column roles,
+numeric confidence, printed percentages, ballot sums and registration controls
+must agree. Two resolutions of one engine are not independent validation.
+
+Research `f1ae694d` and actual hosted collector **43779440390** pass **587 tests**,
+11 optional skips and 17 subtests. The complete
+[source-query ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/7e2074c3412b68785964315fa9f1932fa832ca35/snapshots/2de89a69a31bc24c6d0732ef618488e8b0157e83198b80532faeadf56fbbb98b/complete-results.zip)
+contains the full selected facts, queries and code; all **14 outputs** and
+25 portable Cole tests pass offline. Actual runtime **43781869985** /
+`10a60b6a` at existing website `ca09ebe6` publishes the complete
+[numerical-query ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-10a60b6a260eeed749ab1ebd97d4a14ca8e560489e1a57235acec21f3fa8ccc3/complete-analysis.zip).
+All **113 outputs** reproduce offline and all 113 public bodies match.
+The real preceding rolling seed is retained; no bootstrap rollback, refit,
+new joins, static website edit or Pages build occurred.
+
+Actual desktop/mobile production checks pass all six Missouri reader frames,
+the county and all 29 reporting-row details, complete runtime links and withheld
+rates; both images were physically reviewed. Yellowstone's unavailable-source
+case retains 63,982 and its original clock. This capture has **18,317 reported
+refresh appearances across 30 states**, not people or full local coverage;
+that tally excludes the retained Yellowstone record. All prior access stops,
+51 decisions, older downloads, source qualifications and single-main branches
+remain intact. Nationwide gaps, the full audit and later polish remain open.
+[Acceptance](data/participation-access/20261115-mo-cole-automatic-01/acceptance.json).
 
 ## Single-main cleanup and verified automatic data tags
 

@@ -1,6 +1,6 @@
 # Remaining work: participation and election-transition estimates
 
-Updated: 2026-11-15 UTC. Source catalog: [SOURCES.md](SOURCES.md).
+Updated: 2026-11-16 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 **The project is not finished when the files are downloaded.** Acquisition and
 reconciliation must feed the participation, switching, modeled/reported
@@ -8,10 +8,46 @@ nonparticipation and new/returning-voter estimates, then their tested integratio
 into the existing project. Do not stop at an inventory or another audit.
 
 The single assistant continuation runs every **45 minutes**
-(schedule 130; schedules 129, 128, 127, 126, 125, 124, 123, 122 and earlier continuations are stopped).
+(schedule 131; schedules 130, 129, 128, 127, 126, 125, 124, 123, 122 and earlier continuations are stopped).
 It must read this file and the source ledger, update actual progress, and continue
 downstream work. Older notes saying the prompt is stopped are superseded.
 This document itself does not install a cron job or enable a website workflow.
+
+## Cole automatic intake delivered; continue genuine cross-state gaps
+
+Cole's corrected grid adapter is live: research `f1ae694d`, actual collector
+**43779440390** / source `2de89a69`, actual numerical runtime **43781869985** /
+`10a60b6a`, using existing website `ca09ebe6`. All 30 pre-existing reviewed rows
+refresh automatically, including the separate ABSENTEE row, without inventing
+precinct geography. The county count is 29,108; native registration 55,406 and
+52.54% remain unqualified source context. The original November 9 clock and
+unknown timezone remain; retrieval time is not a new count clock.
+
+The [complete source-query ZIP](https://raw.githubusercontent.com/hanshanley/voter-participation/7e2074c3412b68785964315fa9f1932fa832ca35/snapshots/2de89a69a31bc24c6d0732ef618488e8b0157e83198b80532faeadf56fbbb98b/complete-results.zip)
+and [complete numerical-query ZIP](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-10a60b6a260eeed749ab1ebd97d4a14ca8e560489e1a57235acec21f3fa8ccc3/complete-analysis.zip)
+pass 14 and 113 complete offline outputs with no network requests. Actual hosted
+587 tests, 11 optional skips and 17 subtests pass; portable Cole tests pass.
+All 19 numerical-engine bodies remain unchanged. Actual desktop/mobile checks
+pass all six Missouri reader frames, the county and 29 reporting-row details,
+withheld rates and full downloads; both images were physically reviewed.
+Yellowstone's temporary failure retains 63,982 and its original clock.
+No new refit, geographic qualification, website edit or Pages build.
+[Acceptance](data/participation-access/20261115-mo-cole-automatic-01/acceptance.json).
+
+There are 18,317 reported refresh appearances across 30 states, not people or
+complete county/precinct coverage. The retained Yellowstone record is not a
+fresh reported appearance. All 186 prior stops and 51 decisions remain.
+Do not repeat accepted Cole, Kansas, Boone, Broome, historical or map-correction
+campaigns. The finite all-state false-swing/map-reconciliation fix is delivered;
+its broader source, joint-frame, population and boundary limitations are not.
+
+Next, review actionable registered-source/schema failures as shared families,
+using retained originals and reviewed templates before new retrieval. Prefer
+shared fixes over serial optional county acquisitions or more model variants.
+Keep genuine access/authority/identification/boundary holds explicit and do not
+close broader prerequisites artificially. Complete substantive actionable
+integration, then the requested full audit/fixes, then understated usability
+polish. The nationwide parent remains open.
 
 ## Single-main cleanup complete; nationwide source integration remains open
 
@@ -31,9 +67,8 @@ No scientific refit or repeated Pages build was needed.
 [Acceptance](data/participation-access/20261115-single-main-branch-01/acceptance.json).
 
 Continue the substantive source/frame/boundary gaps, using retained originals
-first. Cole's statistical-grid PDF adapter is the next scoped implementation:
-the native Ballots Cast field is a column, not the row expected by the generic
-parser. Do not repeat accepted Kansas, Boone, Broome or historical campaigns.
+first. Cole's statistical-grid adapter is now delivered as recorded above.
+Do not repeat accepted Kansas, Boone, Broome or historical campaigns.
 The full project audit and then understated usability polish remain pending.
 
 ## Verified Greeley delivery
