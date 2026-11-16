@@ -465,9 +465,15 @@ def archive_bytes(members):
     return buffer.getvalue()
 
 
+def numerical_runtime():
+    return {"implementation": sys.implementation.name,
+            "python_major_minor": list(sys.version_info[:2])}
+
+
 def scientific_package(snapshot, source_packet, count_files, native_files, seed_inputs, compiled):
     members = {"inputs/snapshot.json": encoded(snapshot),
-               "inputs/complete-source-results.zip": source_packet}
+               "inputs/complete-source-results.zip": source_packet,
+               "inputs/numerical-runtime.json": encoded(numerical_runtime())}
     for role, files in (("before-counts", count_files), ("before-native", native_files),
                         ("after-counts", compiled["counts"]), ("after-native", compiled["native"]),
                         ("model-queries", compiled["model_files"])):
@@ -497,9 +503,12 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         "import sys\nfrom pathlib import Path\n"
         "sys.path.insert(0,str(Path(__file__).resolve().parent))\n"
         "from scripts.automatic_runtime import main\nmain()\n").encode()
+    python_version = ".".join(map(str, sys.version_info[:2]))
     members["REPRODUCE.txt"] = (
-        "Python >=3.9; requests>=2.31 is an existing project dependency.\n"
-        "python3 code/reproduce.py --replay-package . --output reproduced\n"
+        f"{sys.implementation.name} {python_version}; requests>=2.31 is an existing project dependency.\n"
+        f"python{python_version} code/reproduce.py --replay-package . --output reproduced\n"
+        "Use the producer's Python major/minor and implementation from inputs/numerical-runtime.json;\n"
+        "floating-point summation differs between Python versions. No numerical tolerance is substituted.\n"
         "Recomputes the complete count/native/model numerical query sets from included\n"
         "public aggregate source facts and safe accepted priors. No source requests,\n"
         "private survey refits, new geographic joins or observed-history claims.\n").encode()
@@ -528,6 +537,12 @@ def replay(package, output):
     for name, expected in manifest.items():
         if pin((package / relative(name)).read_bytes()) != expected:
             raise ValueError("Changed scientific packet member: " + name)
+    if "inputs/numerical-runtime.json" in manifest:
+        expected_runtime = read(package / "inputs/numerical-runtime.json")
+        if expected_runtime != numerical_runtime():
+            raise ValueError(
+                "Exact numerical replay requires the producer's Python implementation and major/minor: "
+                + json.dumps(expected_runtime, sort_keys=True))
     def files(role):
         prefix = "inputs/" + role + "/"
         return {name[len(prefix):]: (package / name).read_bytes()
@@ -646,6 +661,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     analytical_path = ROOT / REVIEW_PATH
     analytical_review = load_review(ROOT) if analytical_path.exists() else None
     processing = digest(encoded({
+        "numerical_runtime": numerical_runtime(),
         "code": {name: pin((ROOT / "scripts" / name).read_bytes()) for name in CODE_PATHS},
         "seed": {name: pin(body) for name, body in seed_files(seed_dir).items()},
         "supported_release_review": pin(encoded(release_review)) if release_review else None,

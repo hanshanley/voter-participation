@@ -139,6 +139,20 @@ Ordinary replay uses included compiled native facts; optional regeneration
 of official baselines requires the existing `openpyxl>=3.1` and
 `pypdf==6.16.0` source-reader dependencies. Neither path refits respondents.
 
+Exact numerical replay uses the producer's Python implementation and
+major/minor version, recorded in `inputs/numerical-runtime.json` and the
+packet's command. The hourly producer uses CPython 3.12. Python 3.9's different
+floating-point summation does not reproduce newly conditioned outputs byte
+for byte; the retained hosted packet does reproduce all 147 outputs under
+CPython 3.12 with zero requests. New packets reject an incompatible interpreter
+before computation rather than weakening numerical equality. Runtime identity
+also includes this interpreter declaration.
+
+Readable endpoint labels abbreviate long hashes and spell out hold codes so
+they wrap on narrow screens. Full `current_snapshot_identity`,
+`last_good_snapshot`, stable provider IDs and literal hold codes remain in
+the complete results and decision downloads; no source identity is shortened.
+
 ### Previously delivered collector coverage and verification
 
 Two actual hosted bulk collections, 43879718273 and 43881898831, each

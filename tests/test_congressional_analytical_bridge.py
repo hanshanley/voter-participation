@@ -161,6 +161,34 @@ def test_frozen_labels_preserve_original_clocks_numerics_and_do_not_accumulate()
     assert bridge.annotate_result(result, handoff) == first
 
 
+def test_display_labels_wrap_without_losing_source_identity_or_hold_codes():
+    snapshot, seed, key = fixture()
+    result = copy.deepcopy(seed["scenarios"]["original/accepted_ridge_multinomial"]["accepted_result"])
+    handoff = bridge.evaluate(snapshot, seed)
+    bridge.annotate_result(result, handoff)
+    comparison = result["rows"][0]["reported_comparison"]
+    assert len(comparison["current_snapshot_identity"].split()[-1]) == 64
+    assert max(map(len, comparison["current_snapshot"].split())) <= 12
+
+    identity = "native-query:" + "a" * 64
+    row = result["rows"][0]
+    row["congressional_analytical_status"]["last_good_snapshot"] = identity
+    handoff["states"]["AR"].update(
+        automatic_update_eligible=False, decision="frozen_dated_result",
+        holds=[key + ":aggregate_other_not_reconciled"])
+    bridge.annotate_result(result, handoff)
+    assert row["point"] == {"switching": 1.25}
+    assert row["congressional_analytical_status"]["last_good_snapshot"] == identity
+    assert row["reported_comparison"]["current_snapshot_identity"] == identity
+    assert row["congressional_analytical_status"]["holds"] == [
+        key + ":aggregate_other_not_reconciled"]
+    assert max(map(len, row["reported_comparison"][
+        "current_native_control_scope_qualification"].split())) < 40
+    assert identity not in row["reported_comparison"]["current_snapshot"]
+    first = copy.deepcopy(result)
+    assert bridge.annotate_result(result, handoff) == first
+
+
 def test_unchanged_reviewed_inputs_are_exact_and_source_frames_cannot_change():
     snapshot, seed, key = fixture()
     first = bridge.evaluate(snapshot, seed)

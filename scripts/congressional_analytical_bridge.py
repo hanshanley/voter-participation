@@ -307,6 +307,10 @@ def apply_decisions(decisions, endpoints, recorded, handoff):
                 action, [], False)
 
 
+def snapshot_label(value):
+    return re.sub(r"\b[0-9a-f]{64}\b", lambda match: match.group()[:12] + " (short ID)", str(value))
+
+
 def annotate_result(result, handoff):
     for row in result["rows"]:
         decision = handoff["states"][row["state_code"]]
@@ -317,8 +321,10 @@ def annotate_result(result, handoff):
             fingerprint = pin(encoded({"counts": decision["counts"],
                                        "source_update_labels": decision["source_update_labels"],
                                        "source_urls": decision["source_urls"]}))["sha256"]
+            snapshot = "reviewed NPR/AP endpoint " + fingerprint
             comparison.update(
-                current_snapshot="reviewed NPR/AP endpoint " + fingerprint,
+                current_snapshot=snapshot_label(snapshot),
+                current_snapshot_identity=snapshot,
                 current_native_clock=decision["source_update_labels"],
                 current_native_control_scope_qualification=(
                     "Fresh NPR/AP category D/R/O endpoints under reviewed stable-ID bridge "
@@ -337,21 +343,24 @@ def annotate_result(result, handoff):
         else:
             old = row.get("congressional_analytical_status", {})
             snapshot = old.get("last_good_snapshot", comparison.get("current_snapshot"))
-            comparison["current_snapshot"] = "FROZEN ANALYTICAL RESULT: " + str(snapshot)
+            comparison["current_snapshot"] = "FROZEN ANALYTICAL RESULT: " + snapshot_label(snapshot)
+            comparison["current_snapshot_identity"] = snapshot
             comparison["current_native_control_scope_qualification"] = (
-                "Not conditioned on fresh congressional returns. " + "; ".join(decision["holds"])
+                "Not conditioned on fresh congressional returns. "
+                + "; ".join(reason.replace(":", " / ").replace("_", " ")
+                            for reason in decision["holds"])
                 + ". Fresh recorded results remain available separately.")
         row["congressional_analytical_status"] = {
             "review_version": VERSION, "decision": decision["decision"],
             "holds": decision["holds"], "conditioned_on_fresh_returns": decision["automatic_update_eligible"],
-            "last_good_snapshot": (comparison["current_snapshot"]
-                                   if decision["automatic_update_eligible"] else snapshot),
+            "last_good_snapshot": snapshot,
         }
         if "source_aggregate_comparison" in row:
             if decision["automatic_update_eligible"]:
                 row["source_aggregate_comparison"] = copy.deepcopy(comparison)
             else:
                 row["source_aggregate_comparison"]["current_snapshot"] = comparison["current_snapshot"]
+                row["source_aggregate_comparison"]["current_snapshot_identity"] = snapshot
     return result
 
 

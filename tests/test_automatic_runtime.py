@@ -268,8 +268,9 @@ def test_granular_hydration_refuses_missing_or_changed_replay_data(change):
         runtime.hydrate_granular_sources(snapshot, packet)
 
 
+@pytest.mark.parametrize("runtime_declaration", ["legacy", "matching", "different"])
 def test_literal_extracted_runtime_replay_hydrates_before_actual_producer_call(
-        monkeypatch, tmp_path):
+        monkeypatch, tmp_path, runtime_declaration):
     from scripts import automatic_estimates
 
     snapshot, source_packet, full = granular_reference_fixture()
@@ -287,6 +288,11 @@ def test_literal_extracted_runtime_replay_hydrates_before_actual_producer_call(
         "queries/after-native/index.json": b"after-native",
         "queries/model-queries/result.json": b"model-result",
     }
+    if runtime_declaration != "legacy":
+        declaration = runtime.numerical_runtime()
+        if runtime_declaration == "different":
+            declaration["python_major_minor"] = [0, 0]
+        members["inputs/numerical-runtime.json"] = encoded(declaration)
     for name, body in members.items():
         path = package / name
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -307,6 +313,11 @@ def test_literal_extracted_runtime_replay_hydrates_before_actual_producer_call(
         }
 
     monkeypatch.setattr(runtime, "compile_runtime", compile_runtime)
+    if runtime_declaration == "different":
+        with pytest.raises(ValueError, match="producer's Python"):
+            runtime.replay(package, output)
+        assert not observed and not output.exists()
+        return
     result = runtime.replay(package, output)
     assert result == {
         "passed": True, "complete_outputs": 3,
@@ -704,6 +715,8 @@ def test_complete_packet_includes_accepted_numerical_engine_and_only_selected_se
         assert {name for name in archive.namelist() if name.startswith("inputs/model-seed/")} == {
             "inputs/model-seed/rolling-seed.json.gz"}
         assert archive.read("queries/model-queries/all-nine-results.json.gz") == b"complete-model-queries"
+        assert json.loads(archive.read("inputs/numerical-runtime.json")) == runtime.numerical_runtime()
+        assert b"code/reproduce.py --replay-package . --output reproduced" in archive.read("REPRODUCE.txt")
 
 
 @pytest.fixture
