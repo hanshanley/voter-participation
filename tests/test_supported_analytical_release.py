@@ -98,6 +98,14 @@ def test_count_handoff_does_not_turn_county_fraction_into_a_state_model_update()
     assert not effect["conditional_model_updated_by_this_count"]
     assert "local/reporting-unit" in effect["missing_model_prerequisite"]
     assert not effect["recorded_electoral_comparison_updated_by_this_count"]
+    reused, = release.change_effects(
+        [{"observation_id": "cape", "previous": 42442, "current": 42442}], [record], {"walworth"})
+    assert not reused["source_capture_refreshed"]
+    assert not reused["compatible_participation_rate_updated"]
+    assert reused["compatible_participation_rate_available"]
+    retained, = release.change_effects([{"observation_id": "cape", "previous": 42442,
+        "current": 42442, "source_status": "retained_after_failure"}], [record])
+    assert not retained["source_capture_refreshed"]
 
 
 def test_held_group_and_frozen_source_tampering_do_not_become_numerical_outputs():

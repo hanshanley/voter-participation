@@ -255,7 +255,7 @@ def recorded_districts(review, estimates):
     return result
 
 
-def change_effects(changes, records):
+def change_effects(changes, records, selected_observation_ids=None):
     by_id = {row["observation_id"]: row for row in records}
     result = []
     for change in changes:
@@ -264,11 +264,16 @@ def change_effects(changes, records):
         if row is None:
             continue
         state_level = row["geography_level"] == "state"
+        refreshed = (selected_observation_ids is None or identity in selected_observation_ids
+                     ) and change.get("source_status", "reported") == "reported"
+        count_changed = change.get("previous") != change.get("current")
         result.append({
             "observation_id": identity, "state_code": row["state_code"],
-            "source_capture_refreshed": True,
-            "numerical_count_changed": change.get("previous") != change.get("current"),
-            "compatible_participation_rate_updated": row["compatible_source_fraction_pct"] is not None,
+            "source_capture_refreshed": refreshed,
+            "numerical_count_changed": count_changed,
+            "compatible_participation_rate_updated": (
+                row["compatible_source_fraction_pct"] is not None and (refreshed or count_changed)),
+            "compatible_participation_rate_available": row["compatible_source_fraction_pct"] is not None,
             "recorded_electoral_comparison_updated_by_this_count": False,
             "conditional_model_updated_by_this_count": False,
             "missing_electoral_prerequisite": "Same-office D/R candidate endpoints and comparison-stage "
@@ -354,7 +359,12 @@ def build(snapshot, count_files, seed, estimates, changes):
     recorded = recorded_states(estimates, model_rows)
     districts = recorded_districts(review, estimates)
     modeled, groups = explanations(estimates)
-    effects = change_effects(changes, admin)
+    scope = snapshot.get("collection_scope") or {}
+    selected = None
+    if scope.get("mode") == "selected_registered_source_refresh":
+        selected = {update["id"] for identity in scope["source_ids"]
+                    for update in snapshot["granular_sources"][identity]["data"]["updates"]}
+    effects = change_effects(changes, admin, selected)
     raw_files = {
         "participation-administrative.csv": csv_bytes(admin),
         "participation-historical-survey.csv": historical,
