@@ -95,6 +95,26 @@ def test_one_failed_state_does_not_stop_others_or_roll_back_retained_counts(tmp_
     assert next(row for key, row in entries.items() if key.startswith("TX-"))["data"] is None
 
 
+def test_unadapted_product_is_not_misreported_as_a_reviewed_numerical_parser_failure(tmp_path, monkeypatch):
+    before = baseline(("IN",))
+    shard = json.loads(gzip.decompress(before["states/IN.json.gz"]))
+    shard["records"][0]["measure"]["literal"] = "Source-specific unsupported measure"
+    before["states/IN.json.gz"] = intake.compressed(encoded(shard))
+    def acquire(self, url):
+        return b"fixture", {"origin": "retained_fixture", **pin(b"fixture")}
+    def unsupported(body, url):
+        raise ValueError("This product needs a structural adapter")
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    monkeypatch.setattr(native, "factual_tables", unsupported)
+    collector = intake.Collector(tmp_path, {}, {"urls": [], "prefixes": [], "hosts": []},
+                                 datetime(2026, 11, 16, tzinfo=timezone.utc))
+    entry, = native.collect_sources(collector, before).values()
+    assert entry["adapter"] == "unadapted_primary_product"
+    assert entry["error"] == entry["status"] == "unsupported_primary_product"
+    assert entry["attempted_source_url"] == "https://in.official.test/2026-general.pdf"
+    assert entry["data"] is None
+
+
 def summary_fixture(layout, value=9):
     url, profile = next((url, profile) for url, profile in native.SUMMARY_PROFILES.items()
                         if profile["layout"] == layout)
@@ -614,6 +634,131 @@ def test_plain_pdf_rejects_clock_rollback_behind_advanced_last_good(monkeypatch,
     broken["data"]["updates"][0]["value"] = 9999
     with pytest.raises(ValueError, match="query-bound"):
         parse(accepted, broken)
+
+
+def retained_parent_fixture(state):
+    row = granular.selected_records(baseline((state,)), state)[0]
+    if state == "WI":
+        row["geography"]["name"] = "Walworth County"
+        row["measure"].update(literal="Ballots Cast", kind="ballots_cast")
+        row["source_clock"]["literal"] = "11/3/2026 9:36:49 PM"
+        return row, (
+            "Page: 1 of 8 11/3/2026 9:36:49 PM\n"
+            "COMPLETE FINAL UNOFFICIAL ELECTION NIGHT RESULTS\n"
+            "GENERAL ELECTION\nNOVEMBER 3, 2026\nWALWORTH COUNTY, WISCONSIN\n"
+            "Precincts Reported: 38 of 38 (100.00%)\n"
+            "Registered Voters: 46,612 of 0 (N/A)\nBallots Cast: 46,612\n"
+            "Governor / Lieutenant Governor (Vote for 1)\n"
+            "Candidate Party Total\nTotal Votes 46,261")
+    row["geography"]["name"] = "Cape May County"
+    row["denominator"] = {
+        "qualified": True, "basis": "native_registered_voters",
+        "literal": "native_registered_voters", "value": 76899}
+    row["source_clock"]["literal"] = "Election Summary - 11/12/2026 03:34PM"
+    url = ("https://nj.gov/state/elections/assets/pdf/periodic-report/2026/"
+           "2026-1112-capemay-periodic-report.pdf")
+    sha = "ad9f416a54062c82b545140f1ac8da201a647d830b06a0c5d89ba766356a98aa"
+    row["source"].update(
+        id="native-nj-capemay-summary-20261112", url=url, input_sha256=sha,
+        selector={"measure": "total", "native_unit": "Ballots Cast - Total",
+                  "source_id": "nj-capemay", "source_page": 2,
+                  "table_id": "capemay-summary-page-2-section-1"})
+    row["view"].update(source_url=url, native_record={
+        "native_source_pin": {"sha256": sha, "bytes": 80305},
+        "native_summary_statistics": {
+            label: {"native_unit": label}
+            for label in ("Registered Voters - Total", "Ballots Cast - Total")}})
+    return row, (
+        "Summary Report UNOFFICIAL RESULTS\n2026 General Election\n"
+        "November 3, 2026 Cape May County\n"
+        "Statistics TOTAL Early Election Mail-inProvisional Emergenc State/Fed\n"
+        "Voting Day y\nElection Day Precincts Reporting 127 of 128 0 127 127 105 0 0\n"
+        "Registered Voters - Total 76,899\n"
+        "Ballots Cast - Total 42,442 9,678 24,033 8,340 335 0 56\n"
+        "Voter Turnout - Total 55.19%\n"
+        "Election Summary - 11/12/2026 03:34PM 1 of 10")
+
+
+@pytest.mark.parametrize("state", ["NJ", "WI"])
+def test_retained_statistical_parent_selects_native_count_not_cover_or_candidate_votes(monkeypatch, state):
+    pdf_reader(monkeypatch)
+    row, text = retained_parent_fixture(state)
+    body = ("11/12/2026 3:38 PM\nIntroductory administrative report\f" + text
+            if state == "NJ" else text).encode()
+    result = native.pdf_parent_statistics(body, [row])
+    update, = result["updates"]
+    query, = result["complete_native_query"]
+    assert update["value"] == (42442 if state == "NJ" else 46612)
+    assert query["page"] == (2 if state == "NJ" else 1)
+    assert update["registered"] == (76899 if state == "NJ" else None)
+    assert update["rate_compatible"] is (state == "NJ")
+    assert query["pdf_report_timezone_literal"] is None
+    if state == "NJ":
+        assert query["pdf_report_clock_literal"] == "11/12/2026 03:34PM"
+        assert query["native_fraction_literal"] == "55.19%"
+        assert query["native_report_status_literal"] == "UNOFFICIAL RESULTS"
+        assert len(query["native_statistical_column_header"]) == 2
+    else:
+        assert query["native_statistical_line"] == "Ballots Cast: 46,612"
+        assert update["value"] != 46261
+
+
+@pytest.mark.parametrize("state,old,new", [
+    ("NJ", "42,442 9,678", "? 9,678"),
+    ("NJ", "42,442 9,678", "42,442 9,679"),
+    ("NJ", "55.19%", "55.18%"),
+    ("NJ", "Cape May County", "Other County"),
+    ("NJ", "November 3, 2026", "November 3, 2024"),
+    ("NJ", "Ballots Cast - Total", "Candidate Votes"),
+    ("NJ", "Voting Day y", "Day Voting y"),
+    ("WI", "Ballots Cast: 46,612", "Ballots Cast: ?"),
+    ("WI", "Ballots Cast: 46,612", "Ballots Cast: -1"),
+    ("WI", "Ballots Cast: 46,612", "Total Votes: 46,612"),
+    ("WI", "Ballots Cast: 46,612", "Candidate Party Total\nBallots Cast: 46,612"),
+    ("WI", "Precincts Reported:", "Contest Precincts Reported:"),
+    ("WI", "WALWORTH COUNTY", "OTHER COUNTY"),
+])
+def test_retained_parent_rejects_changed_scope_missing_counts_and_candidate_substitution(
+        monkeypatch, state, old, new):
+    pdf_reader(monkeypatch)
+    row, text = retained_parent_fixture(state)
+    body = ("\f" if state == "NJ" else "") + text.replace(old, new)
+    with pytest.raises(ValueError):
+        native.pdf_parent_statistics(body.encode(), [row])
+
+
+@pytest.mark.parametrize("field", ["page", "source", "identity", "register"])
+def test_second_page_requires_its_exact_reviewed_source_and_registered_frame(monkeypatch, field):
+    pdf_reader(monkeypatch)
+    row, text = retained_parent_fixture("NJ")
+    if field == "page":
+        row["source"]["selector"]["source_page"] = 1
+    elif field == "source":
+        row["source"]["input_sha256"] = "0" * 64
+    elif field == "identity":
+        row["geography"]["name"] = "Other County"
+    else:
+        row["denominator"]["basis"] = "eligible_population"
+    with pytest.raises(ValueError):
+        native.pdf_parent_statistics(("\f" + text).encode(), [row])
+
+
+@pytest.mark.parametrize("state", ["NJ", "WI"])
+def test_retained_parent_holds_an_advanced_last_good_clock_and_wrong_physical_page(monkeypatch, state):
+    pdf_reader(monkeypatch)
+    row, text = retained_parent_fixture(state)
+    old_date, new_date = (("11/12/2026", "11/14/2026") if state == "NJ"
+                          else ("11/3/2026", "11/5/2026"))
+    prefix = "\f" if state == "NJ" else ""
+    accepted = native.pdf_parent_statistics((prefix + text.replace(old_date, new_date)).encode(), [row])
+    prior = {"source": {"url": row["view"]["source_url"]}, "data": accepted}
+    with pytest.raises(ValueError, match="last-good"):
+        native.pdf_parent_statistics((prefix + text).encode(), [row], prior)
+    if state == "NJ":
+        with pytest.raises(ValueError, match="physical page"):
+            native.pdf_text_statistics(text, [row], 11)
+        with pytest.raises(ValueError, match="page is missing"):
+            native.pdf_parent_statistics(text.encode(), [row])
 
 
 @pytest.mark.parametrize("value", [0, 9])

@@ -302,8 +302,10 @@ class Collector:
 
     def capture(self, identity, url, parser):
         old = self.prior.get(identity)
+        stage, attempted_pin = "acquisition", None
         try:
             body, receipt = self.acquire(url)
+            stage, attempted_pin = "parsing", pin(body)
             data = parser(body)
             if (old and old.get("data") and data.get("date") and old["data"].get("date")
                     and data["date"] < old["data"]["date"]):
@@ -316,13 +318,16 @@ class Collector:
                 result = {"status": "reported", "data": data, "source": source, "error": None,
                           "first_observed_at": self.now.isoformat()}
             attempt = {"id": identity, "status": receipt["origin"], **source}
+            result.update(error_detail=None, error_stage=None)
         except Exception as error:
             code = source_error(error)
             result = copy.deepcopy(old) if old and old.get("data") is not None else {
                 "data": None, "source": None, "first_observed_at": None}
             result.update(status="retained_after_failure" if result["data"] is not None else code,
-                          error=code)
+                          error=code, error_stage=stage,
+                          error_detail=str(error) if isinstance(error, (ValueError, IntakeError)) else None)
             attempt = {"id": identity, "url": url, "status": code}
+        result.update(attempted_source_url=url, attempted_source_pin=attempted_pin)
         with self.lock:
             self.attempts.append(attempt)
         return result
@@ -464,7 +469,11 @@ def project(inputs, baseline):
                                "source_update_label": data["source_update_label"]})
     status_rows = [{"source": key, "status": entry["status"], "error": entry.get("error"),
                     "data_retained": entry.get("data") is not None,
-                    "source_url": (entry.get("source") or {}).get("url")}
+                    "source_url": (entry.get("source") or {}).get("url")
+                        or entry.get("attempted_source_url"),
+                    "attempted_source_url": entry.get("attempted_source_url"),
+                    "error_stage": entry.get("error_stage"),
+                    "error_detail": entry.get("error_detail")}
                    for key, entry in sorted({**feeds, **{"house-" + k: v for k, v in house.items()}}.items())]
     products_query = compressed(encoded(inputs.get("products", {})))
     products_reference = {"file": "declared-numerical-queries.json.gz", **pin(products_query)}

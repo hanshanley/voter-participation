@@ -138,6 +138,27 @@ def test_source_failure_keeps_prior_counts_and_clocks(tmp_path, monkeypatch):
     assert result["status"] == "retained_after_failure"
 
 
+def test_failed_capture_preserves_attempt_url_input_pin_and_specific_parser_reason(tmp_path, monkeypatch):
+    body = b"permitted public aggregate fixture"
+    monkeypatch.setattr(intake.Collector, "acquire", lambda self, url: (
+        body, {"origin": "retained_fixture", **pin(body)}))
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    def parse(body):
+        raise ValueError("Native precinct/county totals disagree")
+    result = collector.capture("WI-registered-fixture", "https://official.test/report", parse)
+    assert result["source"] is None
+    assert result["attempted_source_url"] == "https://official.test/report"
+    assert result["attempted_source_pin"] == pin(body)
+    assert result["error_stage"] == "parsing"
+    assert result["error_detail"] == "Native precinct/county totals disagree"
+    assert result["error"] == "schema_or_source_semantics_changed"
+    collector.prior["WI-registered-fixture"] = result
+    recovered = collector.capture(
+        "WI-registered-fixture", "https://official.test/report", lambda body: {"total": 0})
+    assert recovered["status"] == "reported" and recovered["data"]["total"] == 0
+    assert recovered["error_detail"] is None and recovered["error_stage"] is None
+
+
 def test_accepted_candidate_strings_survive_a_blocked_live_declaration(tmp_path, monkeypatch):
     registry = fixture(tmp_path)
     rows = [{"state_code": row["state_code"], "district": row["district"],

@@ -1071,9 +1071,51 @@ def pdf_split_total_header(lines):
         if (line == "Statistics TOTAL Election Mail Walk-in Walk-in Provision"
                 and lines[position + 1] == "Day Excuse Early al"):
             matches.append((5, lines[position:position + 2]))
+        if (line == "Statistics TOTAL Early Election Mail-inProvisional Emergenc State/Fed"
+                and lines[position + 1] == "Voting Day y"):
+            matches.append((6, lines[position:position + 2]))
     if len(matches) > 1:
         raise ValueError("Ambiguous native statistical column headers")
     return matches[0] if matches else None
+
+
+def pdf_parent_page(template):
+    source = template["source"]
+    url = ("https://nj.gov/state/elections/assets/pdf/periodic-report/2026/"
+           "2026-1112-capemay-periodic-report.pdf")
+    if template["view"]["source_url"] != url:
+        return 1
+    native = template["view"].get("native_record") or {}
+    summary = native.get("native_summary_statistics") or {}
+    if (source["id"] != "native-nj-capemay-summary-20261112"
+            or source["url"] != url
+            or source["input_sha256"] !=
+                "ad9f416a54062c82b545140f1ac8da201a647d830b06a0c5d89ba766356a98aa"
+            or source["selector"] != {
+                "measure": "total", "native_unit": "Ballots Cast - Total",
+                "source_id": "nj-capemay", "source_page": 2,
+                "table_id": "capemay-summary-page-2-section-1"}
+            or template["geography"]["state_code"] != "NJ"
+            or template["geography"]["level"] != "county"
+            or template["geography"]["name"] not in ("Cape May", "Cape May County")
+            or (native.get("native_source_pin") or {}).get("sha256") != source["input_sha256"]
+            or (summary.get("Registered Voters - Total") or {}).get("native_unit")
+                != "Registered Voters - Total"
+            or (summary.get("Ballots Cast - Total") or {}).get("native_unit")
+                != "Ballots Cast - Total"):
+        raise ValueError("Reviewed second-page PDF source, identity or selector changed")
+    return 2
+
+
+def pdf_registration_literal(template):
+    denominator = template["denominator"]
+    if pdf_parent_page(template) == 2:
+        if (denominator["basis"] != "native_registered_voters"
+                or denominator["literal"] != "native_registered_voters"
+                or denominator["qualified"] is not True):
+            raise ValueError("Reviewed native registered-voter frame changed")
+        return "Registered Voters - Total"
+    return denominator["literal"]
 
 
 def pdf_mapped_parent_context(lines, query):
@@ -1098,7 +1140,7 @@ def pdf_mapped_parent_context(lines, query):
     return registered
 
 
-def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
+def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None, page_number=1):
     if len({(row["geography"]["state_code"], row["geography"]["name"])
             for row in templates}) != 1:
         raise ValueError("A shared PDF county parent cannot stand in for multiple counties")
@@ -1139,7 +1181,22 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
         matches = []
         label_pattern = r"\s*-\s*".join(
             r"\s+".join(map(re.escape, part.split())) for part in label.split("-"))
+        if page_number != pdf_parent_page(template):
+            raise ValueError("Native statistical PDF physical page differs from its reviewed selector")
         for position, line in enumerate(lines):
+            standalone = re.fullmatch(label_pattern + r":\s*(" + COUNT_LITERAL + r")", line, re.I)
+            if standalone:
+                prefix = lines[:position]
+                if (not any(re.fullmatch(
+                        r"Precincts Reported:\s*[0-9]+ of [0-9]+ \([0-9.]+%\)", item, re.I)
+                        for item in prefix)
+                        or not any(re.fullmatch(r"Registered Voters:\s*.+", item, re.I)
+                                   for item in prefix)
+                        or any(re.search(r"\b(?:Vote\s+for|Candidate|Total Votes|Times Cast)\b",
+                                         item, re.I) for item in prefix)):
+                    raise ValueError("Standalone PDF count is outside its county statistical section")
+                matches.append((position + 1, standalone.group(1), standalone.span(1)))
+                continue
             inline = re.fullmatch(
                 r"Registered\s+Voters\s+(" + COUNT_LITERAL + r")\s*-\s*Total\s+Ballots\s+("
                 + COUNT_LITERAL + r")\s*:?\s*([0-9]+\.[0-9]+)%\s*-\s*Blank\s+Ballots\s+("
@@ -1196,7 +1253,7 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
         denominator = template.get("denominator")
         registration_line = None
         if denominator and denominator["qualified"]:
-            literal = denominator["literal"]
+            literal = pdf_registration_literal(template)
             pattern = r"\s*-\s*".join(
                 r"\s+".join(map(re.escape, part.split())) for part in literal.split("-"))
             registrations = [(position, match) for position, line in enumerate(lines)
@@ -1228,7 +1285,7 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
         if numeric_confidence is not None and numeric_confidence < .98:
             raise ValueError("Native PDF count OCR confidence requires review")
         query = {"native_measure_literal": label, "native_count_literal": matches[0][1],
-                 "count": value, "county": name, "page": 1, "statistic_line": matches[0][0],
+                 "count": value, "county": name, "page": page_number, "statistic_line": matches[0][0],
                  "pdf_pages": pages, "pdf_report_clock_literal": clock,
                  "native_statistical_line": lines[matches[0][0] - 1],
                  "election_date": "2026-11-03", "native_scope": "county_statistical_parent",
@@ -1242,6 +1299,17 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
         split_header = pdf_split_total_header(lines[:matches[0][0] - 1])
         if split_header is not None:
             query["native_statistical_column_header"] = split_header[1]
+        if page_number == 2:
+            fractions = [match for line in lines for match in [re.fullmatch(
+                r"Voter Turnout - Total ([0-9]+\.[0-9]+%)", line)] if match]
+            if len(fractions) != 1 or not registered or (
+                    Decimal(value) * 100 / registered).quantize(
+                        Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(fractions[0].group(1)[:-1]):
+                raise ValueError("Reviewed statistical parent fraction disagrees with native counts")
+            query["native_fraction_literal"] = fractions[0].group(1)
+            query["native_reporting_statistics"] = [
+                line for line in lines[:matches[0][0] - 1]
+                if re.match(r"(?:Election Day|Absentee/ Early|Precincts)", line)]
         native = query
         rate_compatible = registered is not None
         mapped_measure = (label == "Ballots Cast - Total"
@@ -1261,7 +1329,7 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
             rate_compatible = False
         elif split_header is not None:
             statuses = [match.group(1) for line in lines[:4] for match in [re.fullmatch(
-                r"Summary Results Report (UNOFFICIAL RESULTS|OFFICIAL RESULTS|Final Official|"
+                r"Summary(?: Results)? Report (UNOFFICIAL RESULTS|OFFICIAL RESULTS|Final Official|"
                 r"Official|Unofficial)", line, re.I)] if match]
             if len(statuses) > 1:
                 raise ValueError("Ambiguous native statistical report status")
@@ -1298,6 +1366,7 @@ def pdf_prior_guard(result, templates, prior):
         if (not isinstance(query, dict) or query not in queries
                 or query.get("county") != template["geography"]["name"]
                 or query.get("native_measure_literal") != pdf_measure(template)
+                or query.get("page") != pdf_parent_page(template)
                 or query.get("native_scope") != "county_statistical_parent"
                 or query.get("election_date") != "2026-11-03"
                 or update.get("value") != query.get("count")
@@ -1317,10 +1386,18 @@ def pdf_parent_statistics(body, templates, prior=None):
     reader = PdfReader(io.BytesIO(body))
     if reader.is_encrypted or not reader.pages or len(reader.pages) > 6000:
         raise ValueError("Unqualified native statistical PDF")
-    page = reader.pages[0].extract_text(extraction_mode="layout")
+    selected_pages = {pdf_parent_page(template) for template in templates}
+    if len(selected_pages) != 1:
+        raise ValueError("A shared PDF parent cannot mix physical page selectors")
+    number, = selected_pages
+    if len(reader.pages) < number:
+        raise ValueError("Reviewed native statistical PDF page is missing")
+    page = reader.pages[number - 1].extract_text(extraction_mode="layout")
     if page.strip():
-        result = pdf_text_statistics(page, templates, len(reader.pages))
+        result = pdf_text_statistics(page, templates, len(reader.pages), page_number=number)
         return pdf_prior_guard(result, templates, prior)
+    if number != 1:
+        raise ValueError("Reviewed statistical text page lost its text layer")
     from scripts.results_pdf_ocr import first_page_views
 
     views = first_page_views(body)
@@ -2195,7 +2272,17 @@ def collect_sources(collector, baseline):
                     return cass_pdf_statistics(body, templates, url)
             else:
                 def parse(body, url=url):
-                    return {"updates": [], "factual_product": factual_tables(body, url),
+                    from scripts.participation_intake.contract import IntakeError
+                    from scripts.nationwide import NoData
+                    try:
+                        product = factual_tables(body, url)
+                    except (ValueError, NoData) as error:
+                        raise IntakeError(
+                            "unsupported_primary_product",
+                            "No reviewed numerical adapter for this primary product; "
+                            "factual extraction requires a structural adapter: " + str(error),
+                        ) from error
+                    return {"updates": [], "factual_product": product,
                             "numerical_data_qualified": False,
                             "semantic_review_required_before_projection": True}
             entry = collector.capture(identity, transport_url(url), parse)
