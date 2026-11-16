@@ -8,6 +8,37 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Integrated supported analytical release
+
+The automatic runtime's complete archive now includes a `release/` directory:
+administrative observations and compatible rates; unchanged complete historical
+survey queries and separate early source-point populations; separately labeled
+2026 modeled demographic participation; raw and qualified House state comparisons;
+435 raw district source-ID comparisons; conditional model mechanisms and
+demographic contributions; and every eligibility, source-disposition and
+source-to-analysis update decision. CSV bodies are gzip-compressed; the
+`coverage-and-eligibility.json` query supplies their exact pins and coverage.
+The existing 35 Senate and 28 governor source snapshots are included separately
+with their counts, literal source qualifications, clocks and complete model
+queries. Their 54 available endpoint-constrained scenarios retain their original
+frozen inputs and assumptions; this export is not a fresh retrieval or a new
+comparison qualification.
+
+Modeled switching, exit, entry/return, Other and unresolved terms reconcile on
+the stated D-minus-R margin scale. Residuals are explicit. Numerator/denominator
+accounting is an alternative partition, not extra additive mechanisms.
+Separate demographic dimensions are not additive to one another.
+Held prior-only model scenarios are not explanations of observed electoral change.
+District IDs alone do not qualify cross-year boundaries or RCV rounds.
+Native source clocks remain distinct from collection time; statewide survey
+estimates are never allocated to local geography.
+
+Versioned decisions in `data/results-intake/reviewed-eligibility.json` review
+all 17 House holds and all 51 registration dispositions. The evidence resolves
+none of those specific holds: 33 comparisons and 34 registration scenarios
+across 31 states remain supported under their existing assumptions, not because
+the old totals were treated as targets. Old seeds and downloads are preserved.
+
 ## Historical precinct qualification
 
 The complete immutable archive is **898,920,880 bytes**, SHA256 `c8fa6b5a915175f1d6f0b37df4b25e9627bb504788ed44ae8a1604a9cd268bfb`. All eight full assets were compared while draft and again anonymously after immutable publication.

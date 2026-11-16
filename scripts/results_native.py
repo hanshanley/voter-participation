@@ -10,7 +10,7 @@ import json
 import re
 from urllib.parse import urlsplit
 
-from scripts.participation_intake.contract import count, digest, pin
+from scripts.participation_intake.contract import count, digest, encoded, pin
 from scripts.results_granular import (
     CT_ROOT, MN_URL, NOT_RESULTS, PRIVATE_HEADERS, change, factual_tables,
     public_facts, selected_records, transport_url,
@@ -1107,6 +1107,64 @@ def pdf_parent_page(template):
     return 2
 
 
+WALWORTH_STORED_URL = (
+    "https://www.co.walworth.wi.us/DocumentCenter/View/22458/11-03-2026-by-Municipality-PDF"
+)
+WALWORTH_SUMMARY_URL = (
+    "https://www.co.walworth.wi.us/DocumentCenter/View/22455/"
+    "Unofficial-Complete-11-03-2026-General-Election-Night-Results-PDF"
+)
+
+
+def pdf_parent_source_url(template):
+    source, view = template["source"], template["view"]
+    if source["id"] != "wi-walworth-summary-20261113":
+        return view["source_url"]
+    if (template["geography"]["state_code"] != "WI"
+            or template["geography"]["level"] != "county"
+            or template["geography"]["name"] != "Walworth County"
+            or template["measure"]["literal"] != "Ballots Cast"
+            or template["measure"]["kind"] != "ballots_cast"
+            or template["denominator"] is not None
+            or view["source_url"] not in (WALWORTH_STORED_URL, WALWORTH_SUMMARY_URL)
+            or source["url"] != view["source_url"]
+            or view["source_url"] == WALWORTH_STORED_URL and (
+                source["input_sha256"] !=
+                    "27543a638edf4c80039d865ee670d69c332b3a1c895f6425fd5d24d330c4d108"
+                or source["selector"] != {"id": "election-statistics"})):
+        raise ValueError("Reviewed Walworth summary document identity changed")
+    return WALWORTH_SUMMARY_URL
+
+
+def pdf_parent_bridge(result, templates, body):
+    if not templates or pdf_parent_source_url(templates[0]) != WALWORTH_SUMMARY_URL:
+        return result
+    for query in result["complete_native_query"]:
+        query["source_pin"] = pin(body)
+    for update in result["updates"]:
+        native = update["native"]
+        if "query" not in native:
+            update["native"] = {
+                **native, "query": native, "retained_source_context_is_historical": True,
+                "native_reporting_complete_qualified": False,
+            }
+    template = templates[0]
+    result["reviewed_source_url_bridge"] = {
+        "contract": "participation.reviewed_source_url_bridge.v1",
+        "source_id": template["source"]["id"],
+        "stored_source_url": template["source"]["url"],
+        "stored_view_source_url": template["view"]["source_url"],
+        "reviewed_url": WALWORTH_SUMMARY_URL,
+        "prior_full_inventory_pin": digest(encoded(templates)),
+        "observation_ids_pin": digest(encoded(sorted(row["id"] for row in templates))),
+        "declaration_status": "Both summary and municipality URLs were declared in the "
+            "retained original acquisition. The summary input hash and Ballots Cast parent "
+            "belong to DocumentCenter/22455, not the sibling Cards Cast/Voters Cast report.",
+        "municipality_voters_or_cards_not_relabelled_as_ballots": True,
+    }
+    return result
+
+
 def pdf_registration_literal(template):
     denominator = template["denominator"]
     if pdf_parent_page(template) == 2:
@@ -1356,7 +1414,7 @@ def pdf_prior_guard(result, templates, prior):
             or len(updates) != len(expected) or len(queries) != len(expected)
             or {update.get("id") for update in updates} != set(expected)
             or (prior.get("source") or {}).get("url") not in
-                {template["view"]["source_url"] for template in templates}):
+                {pdf_parent_source_url(template) for template in templates}):
         raise ValueError("Native PDF last-good source, identity or query scope changed")
     current = {update["id"]: update for update in result["updates"]}
     for update in updates:
@@ -1395,7 +1453,7 @@ def pdf_parent_statistics(body, templates, prior=None):
     page = reader.pages[number - 1].extract_text(extraction_mode="layout")
     if page.strip():
         result = pdf_text_statistics(page, templates, len(reader.pages), page_number=number)
-        return pdf_prior_guard(result, templates, prior)
+        return pdf_parent_bridge(pdf_prior_guard(result, templates, prior), templates, body)
     if number != 1:
         raise ValueError("Reviewed statistical text page lost its text layer")
     from scripts.results_pdf_ocr import first_page_views
@@ -1412,7 +1470,7 @@ def pdf_parent_statistics(body, templates, prior=None):
     result = results[0]
     result["ocr"] = {"passes": [view["receipt"] for view in views],
                      "same_engine_resolution_check_not_independent_validation": True}
-    return pdf_prior_guard(result, templates, prior)
+    return pdf_parent_bridge(pdf_prior_guard(result, templates, prior), templates, body)
 
 
 def summary_page_statistics(page, number, pages, profile):
@@ -2074,6 +2132,8 @@ def source_plan(baseline):
             bridged_url = dunn_source_url(template)
             if bridged_url is not None:
                 url = bridged_url
+            if template["source"]["id"] == "wi-walworth-summary-20261113":
+                url = pdf_parent_source_url(template)
             parsed = urlsplit(url)
             if (parsed.scheme != "https" or parsed.hostname in (
                     "raw.githubusercontent.com", "github.com", "www.themarginoferror.com",
@@ -2144,7 +2204,9 @@ def source_plan(baseline):
                 adapter = "reviewed_pdf_county_parent"
             else:
                 adapter = "unadapted_primary_product"
-            key = state + "-registered-" + digest(url.encode())[:16]
+            identity_url = (WALWORTH_STORED_URL
+                if template["source"]["id"] == "wi-walworth-summary-20261113" else url)
+            key = state + "-registered-" + digest(identity_url.encode())[:16]
             source = sources.setdefault(key, {"url": url, "adapter": adapter, "templates": []})
             if source["adapter"] != adapter:
                 if source["adapter"] == "unadapted_primary_product":
@@ -2164,7 +2226,7 @@ def source_plan(baseline):
                     validate_native_state_family_plan(result)))))))))
 
 
-def collect_sources(collector, baseline):
+def collect_sources(collector, baseline, source_ids=None):
     def collect_url(group):
         result = {}
         for identity, source in group:
@@ -2293,6 +2355,8 @@ def collect_sources(collector, baseline):
     groups = {}
     for sources in source_plan(baseline).values():
         for identity, source in sources.items():
+            if source_ids is not None and identity not in source_ids:
+                continue
             groups.setdefault(transport_url(source["url"]), []).append((identity, source))
     result = {}
     with ThreadPoolExecutor(max_workers=4) as pool:

@@ -761,6 +761,49 @@ def test_retained_parent_holds_an_advanced_last_good_clock_and_wrong_physical_pa
             native.pdf_parent_statistics(text.encode(), [row])
 
 
+def test_walworth_summary_bridge_uses_the_declared_document_not_the_municipality_sibling(
+        tmp_path, monkeypatch):
+    pdf_reader(monkeypatch)
+    row, text = retained_parent_fixture("WI")
+    row["source"].update(
+        id="wi-walworth-summary-20261113", url=native.WALWORTH_STORED_URL,
+        input_sha256="27543a638edf4c80039d865ee670d69c332b3a1c895f6425fd5d24d330c4d108",
+        selector={"id": "election-statistics"})
+    row["view"]["source_url"] = native.WALWORTH_STORED_URL
+    before = baseline(("WI",))
+    before["states/WI.json.gz"] = intake.compressed(encoded({
+        "records": [row], "views": {"official": {"counties": [row["id"]]}}}))
+    source, = native.source_plan(before)["WI"].values()
+    assert source["url"] == native.WALWORTH_SUMMARY_URL
+    assert source["adapter"] == "reviewed_pdf_county_parent"
+    calls = []
+    def acquire(self, url):
+        calls.append(url)
+        assert url == native.WALWORTH_SUMMARY_URL
+        return text.encode(), {"origin": "retained_summary", **pin(text.encode())}
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    collector = intake.Collector(tmp_path, {}, {"urls": [], "prefixes": [], "hosts": []},
+                                 datetime(2026, 11, 16, tzinfo=timezone.utc))
+    entries = native.collect_sources(collector, before)
+    assert list(entries) == ["WI-registered-87e0d6c3aa94b8a6"]
+    entry, = entries.values()
+    assert entry["status"] == "reported" and calls == [native.WALWORTH_SUMMARY_URL]
+    after, _ = granular.project(before, entries)
+    current, = granular.selected_records(after, "WI")
+    assert current["id"] == row["id"] and current["measure"] == row["measure"]
+    assert current["source"]["url"] == current["view"]["source_url"] == native.WALWORTH_SUMMARY_URL
+    assert current["source_clock"]["literal"] == "11/3/2026 9:36:49 PM"
+    assert current["denominator"] is None and current["view"]["reported_pct"] is None
+    assert current["source"]["selector"]["native_refresh"][
+        "retained_source_context_is_historical"]
+    municipality = text.replace("Ballots Cast: 46,612", "Cards Cast Voters Cast\n46,612 46,612")
+    with pytest.raises(ValueError, match="absent"):
+        native.pdf_parent_statistics(municipality.encode(), [row])
+    row["measure"]["literal"] = "Voters Cast"
+    with pytest.raises(ValueError, match="document identity"):
+        native.pdf_parent_source_url(row)
+
+
 @pytest.mark.parametrize("value", [0, 9])
 def test_mapped_pdf_refreshes_native_context_without_promoting_rates(monkeypatch, value):
     pdf_reader(monkeypatch)

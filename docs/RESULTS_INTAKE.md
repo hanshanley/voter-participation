@@ -19,6 +19,43 @@ The tool does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Supported analytical release and selective recovery
+
+The handoff is `results_intake` -> `automatic_native_refresh` ->
+`automatic_estimates` -> `automatic_runtime` -> the existing explorer.
+The reviewed release adds complete administrative/rate, historical survey,
+2026 modeled demographic, recorded/qualified House comparison and conditional
+mechanism CSVs to the same runtime archive. Each changed observation has a
+source-to-analysis decision explaining which analytical prerequisite is absent.
+Existing Senate/governor snapshots and complete queries remain a distinct frozen
+product with their own source clocks and qualifications, not hourly refreshed races.
+Local counts do not become statewide registered controls or choice histories.
+No new fit or statewide-to-local allocation is performed.
+
+For a diagnosed source-only failure, `refresh-selected --sources SOURCE_ID`
+starts from the latest validated complete collector state, acquires only those
+registered products, and reuses all other observations, candidate facts and
+native clocks. Unknown IDs, incomplete prior state and failed captures refuse
+replacement publication. `collection_scope` records this reuse explicitly.
+The normal hourly collection remains unchanged.
+
+Cape May uses the reviewed PDF-parent dispatch and physical page 2, not the
+administrative-subtotal parser. Its wrapped six-method header and native
+`Registered Voters - Total` label bind the existing compatible fraction.
+The native clock is `11/12/2026 03:34PM`, with no inferred timezone.
+
+Walworth's original summary was incorrectly assigned its declared municipality
+sibling URL. A source/observation/inventory-pinned bridge selects the originally
+declared summary document 22455, preserving the registered source ID and
+`Ballots Cast: 46,612` measure. Municipality Cards Cast/Voters Cast and candidate
+Total Votes remain distinct and cannot substitute for that statistic or clock.
+The corrected summary supplies no qualified registration denominator.
+
+The pinned 19-error review distinguishes two implementation defects, seven
+unsupported numerical products, nine source-evidence holds and Mohave's
+four-ballot native reconciliation conflict. Williamson and unreadable handwritten
+Texas evidence retain the existing confidence thresholds.
+
 ## Shared statistical headers and reviewed report pages
 
 The shared county-PDF reader recognizes Jefferson's wrapped TOTAL-first header

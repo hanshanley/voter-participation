@@ -159,6 +159,45 @@ def test_failed_capture_preserves_attempt_url_input_pin_and_specific_parser_reas
     assert recovered["error_detail"] is None and recovered["error_stage"] is None
 
 
+def test_selected_refresh_reuses_every_other_capture_and_rejects_unknown_sources(tmp_path, monkeypatch):
+    from scripts import results_native
+    registry = fixture(tmp_path)
+    identity = "WI-registered-87e0d6c3aa94b8a6"
+    previous = {
+        "feeds": {"unchanged-feed": {"status": "reported", "data": {"total": 12}}},
+        "granular": {"unchanged": {"status": "reported", "data": {"updates": []}}},
+        "districts": {str(index): {} for index in range(435)},
+        "house": {str(index): {"status": "reported", "data": {"count": index}} for index in range(435)},
+        "directories": {state: {} for state in intake.STATES}, "source_stops": EMPTY_STOPS,
+    }
+    original = copy.deepcopy(previous)
+    calls = []
+    monkeypatch.setattr(results_native, "source_plan", lambda baseline: {
+        "WI": {identity: {"adapter": "reviewed_pdf_county_parent"}}})
+    def selected(collector, baseline, source_ids=None):
+        calls.append(source_ids)
+        return {identity: {"status": "reported", "data": {"updates": []}}}
+    monkeypatch.setattr(results_native, "collect_sources", selected)
+    monkeypatch.setattr(intake, "export_collection",
+                        lambda work, config, baseline, inputs, extras, now, attempts: inputs)
+    result = intake.refresh_selected(registry, tmp_path / "scoped", previous, [identity], NOW)
+    assert calls == [{identity}] and previous == original
+    assert result["house"] == original["house"]
+    assert result["feeds"]["unchanged-feed"] == original["feeds"]["unchanged-feed"]
+    assert result["granular"]["unchanged"] == original["granular"]["unchanged"]
+    assert result["collection_scope"]["source_ids"] == [identity]
+    with pytest.raises(ValueError, match="dispatch plan"):
+        intake.refresh_selected(registry, tmp_path / "wrong", previous, ["WI-registered-" + "0" * 16], NOW)
+    assert len(calls) == 1
+    monkeypatch.setattr(results_native, "collect_sources", lambda *args, **kwargs: {
+        identity: {"status": "schema_or_source_semantics_changed", "data": None}})
+    monkeypatch.setattr(intake, "export_collection",
+                        lambda *args: pytest.fail("A failed selected capture must not be published"))
+    with pytest.raises(ValueError, match="no replacement publication"):
+        intake.refresh_selected(registry, tmp_path / "failed", previous, [identity], NOW)
+    assert previous == original
+
+
 def test_accepted_candidate_strings_survive_a_blocked_live_declaration(tmp_path, monkeypatch):
     registry = fixture(tmp_path)
     rows = [{"state_code": row["state_code"], "district": row["district"],

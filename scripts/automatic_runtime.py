@@ -38,6 +38,7 @@ CODE_PATHS = (
     "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py",
+    "supported_analytical_release.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
 
@@ -428,8 +429,15 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     native = refresh(count_files, updated, native_files)
     estimates = build(snapshot, seed)
     artifacts = render_artifacts(estimates)
-    return {"counts": updated, "native": native, "estimates": estimates,
-            "model_files": artifacts, "local_changes": changes}
+    result = {"counts": updated, "native": native, "estimates": estimates,
+              "model_files": artifacts, "local_changes": changes}
+    if "supported_release_review" in seed:
+        from scripts.supported_analytical_release import build as build_release
+        release = build_release(snapshot, updated, seed, estimates, changes)
+        artifacts.update(release["files"])
+        estimates["house_sources"]["supported_release"] = release["descriptor"]
+        result["release_review"] = seed["supported_release_review"]
+    return result
 
 
 def archive_bytes(members):
@@ -455,11 +463,13 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
             members[("inputs/" if role.startswith("before-") else "queries/") + role + "/" + name] = body
     for name, body in seed_inputs.items():
         members["inputs/model-seed/" + relative(name)] = body
+    if "release_review" in compiled:
+        members["inputs/supported-release-review.json"] = encoded(compiled["release_review"])
     for name in CODE_PATHS:
         members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_automatic_runtime.py", "test_results_granular.py",
                  "test_automatic_estimates.py", "test_automatic_native_refresh.py",
-                 "test_current_source_reconciliation.py"):
+                 "test_current_source_reconciliation.py", "test_supported_analytical_release.py"):
         path = ROOT / "tests" / name
         if path.is_file():
             members["code/tests/" + name] = path.read_bytes()
@@ -515,6 +525,8 @@ def replay(package, output):
         seed = load_rolling_seed_bytes(body, read(seed_directory / "rolling-seed-descriptor.json"))
     else:
         raise ValueError("Incomplete rolling last-good seed in scientific packet")
+    if "inputs/supported-release-review.json" in manifest:
+        seed["supported_release_review"] = read(package / "inputs/supported-release-review.json")
     source_packet = (package / "inputs/complete-source-results.zip").read_bytes()
     snapshot = hydrate_granular_sources(
         read(package / "inputs/snapshot.json"), source_packet)
@@ -606,9 +618,12 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     catalog = publisher.catalog(parent)
     pointer, snapshot, source = results(pointer_url)
     seed_dir = Path(seed_dir or ROOT / "data/results-intake/model-seed")
+    review_path = ROOT / "data/results-intake/reviewed-eligibility.json"
+    release_review = read(review_path) if review_path.exists() else None
     processing = digest(encoded({
         "code": {name: pin((ROOT / "scripts" / name).read_bytes()) for name in CODE_PATHS},
-        "seed": {name: pin(body) for name, body in seed_files(seed_dir).items()}}))
+        "seed": {name: pin(body) for name, body in seed_files(seed_dir).items()},
+        "supported_release_review": pin(encoded(release_review)) if release_review else None}))
     previous = publisher.git("show", parent + ":automatic/latest.json", check=False) if parent else ""
     if previous:
         previous = json.loads(previous)
@@ -624,6 +639,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     native_description = catalog["datasets"]["participation-native-bindings-2026"]
     counts, native = dataset_files(count_description), dataset_files(native_description)
     seed, seed_inputs = select_seed(previous or None, seed_dir)
+    if release_review is not None:
+        seed["supported_release_review"] = release_review
     runtime_snapshot = hydrate_granular_sources(snapshot, source["complete-results.zip"])
     compiled = compile_runtime(
         runtime_snapshot, counts, native, seed, source["complete-results.zip"])

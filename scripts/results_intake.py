@@ -495,6 +495,8 @@ def project(inputs, baseline):
             inputs.get("granular", {}), granular_reference),
         "declared_numerical_products": products_index,
     }
+    if "collection_scope" in inputs:
+        snapshot["collection_scope"] = inputs["collection_scope"]
     outputs = {
         "snapshot.json.gz": compressed(encoded(snapshot)), "coverage.csv": csv_body(coverage),
         "participation-observations.csv.gz": compressed(csv_body(observations)),
@@ -644,6 +646,15 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     inputs = {"feeds": feeds, "house": house, "districts": declared, "directories": directories,
               "granular": granular, "products": products}
     inputs["source_stops"] = collector.stopped
+    return export_collection(
+        work, config, baseline, inputs, extras, now,
+        collector.attempts + house_collector.attempts)
+
+
+def export_collection(work, config, baseline, inputs, extras, now, source_attempts):
+    work = Path(work)
+    work.mkdir(parents=True, exist_ok=True)
+    write(work / "source-stops.json", inputs["source_stops"])
     stored_inputs = compact_collector_state(inputs)
     write(work / "state.json", stored_inputs)
     outputs = project(inputs, baseline)
@@ -779,12 +790,59 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
         (work / name).write_bytes(body)
     write(work / "state.json", stored_inputs)
     report = {"passed": True, "version": version, "checked_at": now.isoformat(),
-              "jurisdictions": 51, "house_districts_declared": len(declared),
-              "house_districts_available": sum(item.get("data") is not None for item in house.values()),
-              "source_attempts": collector.attempts + house_collector.attempts,
+              "jurisdictions": 51, "house_districts_declared": len(inputs["districts"]),
+              "house_districts_available": sum(
+                  item.get("data") is not None for item in inputs["house"].values()),
+              "source_attempts": source_attempts,
               "files": {name: pin((work / name).read_bytes()) for name in (*outputs, "complete-results.zip")}}
+    if "collection_scope" in inputs:
+        report["collection_scope"] = inputs["collection_scope"]
     write(work / "report.json", report)
     return report
+
+
+def refresh_selected(registry_path, work, previous, source_ids, now=None):
+    from scripts import results_native
+
+    registry_path, work = Path(registry_path), Path(work)
+    config = read(registry_path)
+    now = now or datetime.now(timezone.utc)
+    previous = hydrate_collector_state(previous)
+    if (not source_ids or len(source_ids) != len(set(source_ids))
+            or not all(re.fullmatch(r"[A-Z]{2}-registered-[a-f0-9]{16}", item) for item in source_ids)
+            or not {"feeds", "granular", "house", "districts", "directories", "source_stops"} <= set(previous)
+            or config.get("contract") != CONTRACT or config.get("election_date") != "2026-11-03"
+            or set(config["jurisdictions"]) != set(STATES)
+            or len(previous["districts"]) != 435 or set(previous["house"]) != set(previous["districts"])):
+        raise ValueError("Selected refresh requires complete accepted inputs and exact registered source IDs")
+    baseline = baseline_inputs(registry_path.parent / config["baseline"]["root"], config["baseline"])
+    plan = {key: value for sources in results_native.source_plan(baseline).values()
+            for key, value in sources.items()}
+    if not set(source_ids) <= set(plan):
+        raise ValueError("Selected refresh source is not in the actual registered dispatch plan")
+    if any(plan[identity]["adapter"] == "unadapted_primary_product" for identity in source_ids):
+        raise ValueError("Selected numerical refresh requires a reviewed source adapter")
+    stopped = merge_stops(config["source_stops"], previous["source_stops"])
+    collector = Collector(work, previous["granular"], stopped, now)
+    entries = results_native.collect_sources(collector, baseline, source_ids=set(source_ids))
+    if set(entries) != set(source_ids) or any(entry["status"] != "reported" for entry in entries.values()):
+        raise ValueError("Selected numerical refresh did not succeed; no replacement publication")
+    inputs = copy.deepcopy(previous)
+    inputs["granular"].update(entries)
+    inputs["feeds"].update(entries)
+    inputs["source_stops"] = collector.stopped
+    inputs["collection_scope"] = {
+        "mode": "selected_registered_source_refresh",
+        "source_ids": sorted(source_ids),
+        "all_other_acquisitions_and_native_count_clocks_reused_not_retrieved_again": True,
+    }
+    extras = {}
+    for name, declaration in config.get("accepted_queries", {}).items():
+        body = (registry_path.parent / str(relative(declaration["file"]))).read_bytes()
+        if pin(body) != {key: declaration[key] for key in ("bytes", "sha256")}:
+            raise ValueError("Accepted query changed during selected refresh")
+        extras[str(relative(name))] = body
+    return export_collection(work, config, baseline, inputs, extras, now, collector.attempts)
 
 
 def replay(package, output):
@@ -986,6 +1044,13 @@ def main():
     capture.add_argument("--ref", default="results-data")
     capture.add_argument("--github-repository", default="hanshanley/voter-participation")
     capture.add_argument("--offline", action="store_true")
+    selected = commands.add_parser("refresh-selected")
+    selected.add_argument("--registry", type=Path, required=True)
+    selected.add_argument("--work-dir", type=Path, required=True)
+    selected.add_argument("--sources", required=True, help="Comma-separated registered source IDs")
+    selected.add_argument("--repository", type=Path, default=ROOT)
+    selected.add_argument("--ref", default="results-data")
+    selected.add_argument("--github-repository", default="hanshanley/voter-participation")
     upload = commands.add_parser("publish")
     for action in (upload,):
         action.add_argument("--work-dir", type=Path, required=True)
@@ -1006,6 +1071,9 @@ def main():
     if args.command == "collect":
         _, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
         result = collect(args.registry, args.work_dir, previous, offline=args.offline)
+    elif args.command == "refresh-selected":
+        _, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
+        result = refresh_selected(args.registry, args.work_dir, previous, args.sources.split(","))
     elif args.command == "publish":
         result = publish(args.repository, args.ref, args.github_repository, args.work_dir)
     elif args.command == "restore":

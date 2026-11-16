@@ -3,6 +3,24 @@
 [Overview](../README.md) | [Methods](../METHODOLOGY.md) |
 [Choose a package](DATA.md) | [Source notes](../SOURCES.md)
 
+## Integrated supported analytical release
+
+Extract the complete automatic runtime archive into a fresh directory, then run:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+The package includes the entire pinned source packet, actual preceding rolling
+seed, reviewed eligibility/frozen public aggregates, engine and complete outputs.
+Replay recomputes the additional `release/` CSV/query products as well as the
+existing datasets and models. It does not repeat private survey fitting or
+publisher-document acquisition. The coverage query lists the exact output
+inventory; do not assume the previous 113-output count for this successor.
+The source packet has its separate literal `code/reproduce.py replay` command.
+An immutable `results_pointer` workflow input can pin acceptance without
+following the independently advancing hourly latest pointer.
+
 ## Historical precinct qualification
 
 Use the [complete historical ZIP](https://github.com/hanshanley/margin_of_error/releases/download/participation-historical-qualification-20261115-01/complete-analysis.zip) (898,920,880 bytes, SHA256 `c8fa6b5a915175f1d6f0b37df4b25e9627bb504788ed44ae8a1604a9cd268bfb`).

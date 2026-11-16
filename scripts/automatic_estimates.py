@@ -1037,6 +1037,9 @@ def bind_publication(result, base_url, complete_download):
     bind(sources["sensitivity"])
     bind(sources["participation_state_projections"])
     bind(sources["next_seed"])
+    if sources.get("supported_release"):
+        for item in sources["supported_release"]["downloads"].values():
+            bind(item)
     return bound
 
 

@@ -9,6 +9,10 @@ on:
         description: "Optional completed collector run to publish without collecting sources again"
         required: false
         type: string
+      refresh_sources:
+        description: "Optional comma-separated registered sources; reuse all other accepted inputs"
+        required: false
+        type: string
 
 permissions:
   actions: read
@@ -69,6 +73,7 @@ jobs:
           tests/test_results_native_kansas.py
           tests/test_results_pdf_cole.py
           tests/test_results_pdf_platte.py
+          tests/test_supported_analytical_release.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
 
       - name: Reuse conditional HTTP cache
@@ -83,10 +88,19 @@ jobs:
         if: steps.window.outputs.active == 'true' && inputs.reuse_collection_run == ''
         id: capture
         continue-on-error: true
+        env:
+          REFRESH_SOURCES: ${{ inputs.refresh_sources }}
         run: |
-          python -m scripts.results_intake collect \
-            --registry data/results-intake/registry.json \
-            --work-dir "$RUNNER_TEMP/election-intake"
+          if [ -n "$REFRESH_SOURCES" ]; then
+            python -m scripts.results_intake refresh-selected \
+              --sources "$REFRESH_SOURCES" \
+              --registry data/results-intake/registry.json \
+              --work-dir "$RUNNER_TEMP/election-intake"
+          else
+            python -m scripts.results_intake collect \
+              --registry data/results-intake/registry.json \
+              --work-dir "$RUNNER_TEMP/election-intake"
+          fi
 
       - name: Recover an already completed collection without source requests
         if: steps.window.outputs.active == 'true' && inputs.reuse_collection_run != ''
