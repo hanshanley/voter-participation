@@ -810,6 +810,21 @@ def _participation(snapshot, seed):
     return display
 
 
+def _viewer_result(result):
+    viewer = copy.deepcopy({
+        name: value for name, value in result.items()
+        if not name.startswith("complete_")
+    })
+    for row in viewer["rows"]:
+        comparison = row["reported_comparison"]
+        clock = comparison.get("current_native_clock")
+        if isinstance(clock, list):
+            if any(not isinstance(value, str) or not value for value in clock):
+                raise ValueError("Invalid native clock in model viewer")
+            comparison["current_native_clock"] = "; ".join(clock) if clock else None
+    return viewer
+
+
 def _metric_values(row, group=None):
     point = row["point"] if group is None else group
     contributions = point["contributions_pp"]
@@ -1251,10 +1266,7 @@ def build(snapshot, seed):
             result_path = "house/" + key + "/complete-result.json.gz"
             viewer_path = "house/" + key + "/viewer-data.json.gz"
             result_artifact = _artifact(result)
-            viewer_artifact = _artifact({
-                name: value for name, value in result.items()
-                if not name.startswith("complete_")
-            })
+            viewer_artifact = _artifact(_viewer_result(result))
             artifacts[result_path] = result_artifact
             artifacts[viewer_path] = viewer_artifact
             scenario_version = hashlib.sha256(
@@ -1309,10 +1321,7 @@ def build(snapshot, seed):
         results = profile_results[profile]
         viewer = copy.deepcopy(seed["profile_viewers"][profile])
         viewer["families"] = {
-            family: {
-                name: value for name, value in result.items()
-                if not name.startswith("complete_")
-            }
+            family: _viewer_result(result)
             for family, result in results.items()
         }
         viewer["state_comparisons"] = _state_comparisons(results)

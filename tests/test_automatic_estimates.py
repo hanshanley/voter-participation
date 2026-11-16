@@ -261,6 +261,24 @@ class AutomaticEstimateTests(unittest.TestCase):
                 ]
                 self.assertEqual(retained_new, retained_old)
         viewer = result["artifacts"]["house/viewer-original.json.gz"]["content"]
+        sensitivity = result["artifacts"]["house/sensitivity.json.gz"]["content"]
+        endpoint = next(
+            row["endpoint"] for row in sensitivity["rows"] if row["state_code"] == "AR"
+        )
+        for profile in automatic_estimates.PROFILES:
+            for family in automatic_estimates.FAMILIES:
+                complete = self.artifact_model(result, profile, family)
+                full_row = next(row for row in complete["rows"] if row["state_code"] == "AR")
+                projected = result["artifacts"][
+                    "house/viewer-" + profile + ".json.gz"
+                ]["content"]["families"][family]
+                projected_row = next(row for row in projected["rows"] if row["state_code"] == "AR")
+                self.assertEqual(full_row["reported_comparison"]["current_native_clock"],
+                                 ["fixture-complete-1"])
+                self.assertEqual(projected_row["reported_comparison"]["current_native_clock"],
+                                 "fixture-complete-1")
+                self.assertEqual(endpoint["native_clock"],
+                                 projected_row["reported_comparison"]["current_native_clock"])
         row = next(
             row for row in viewer["state_comparisons"]
             if row["family"] == "accepted_ridge_multinomial"
@@ -276,6 +294,30 @@ class AutomaticEstimateTests(unittest.TestCase):
                 and value["state_code"] == "AR"
             )["observed_margin_change_pp"],
         )
+
+    def test_viewer_clock_projection_preserves_complete_source_clocks(self):
+        source = {
+            "rows": [{"reported_comparison": {"current_native_clock": ["first", "second"]},
+                      "point": {"value": 1}}],
+            "complete_queries": [{"native_clock": ["first", "second"]}],
+        }
+        before = copy.deepcopy(source)
+        viewer = automatic_estimates._viewer_result(source)
+        self.assertEqual(viewer["rows"][0]["reported_comparison"]["current_native_clock"],
+                         "first; second")
+        self.assertEqual(source, before)
+        self.assertNotIn("complete_queries", viewer)
+        for clock in (None, "literal", []):
+            source["rows"][0]["reported_comparison"]["current_native_clock"] = clock
+            projected = automatic_estimates._viewer_result(source)
+            self.assertEqual(
+                projected["rows"][0]["reported_comparison"]["current_native_clock"],
+                None if clock == [] else clock,
+            )
+        for clock in ([None], [1], [""]):
+            source["rows"][0]["reported_comparison"]["current_native_clock"] = clock
+            with self.assertRaisesRegex(ValueError, "Invalid native clock"):
+                automatic_estimates._viewer_result(source)
 
     def test_held_state_can_change_recorded_counts_but_never_behavioral_mask(self):
         snapshot = self.snapshot()
