@@ -87,6 +87,54 @@ def test_unchanged_collection_is_exact_noop(tmp_path):
     assert collect(tmp_path, sources(), first) == first
 
 
+@pytest.mark.parametrize("chamber", ["house", "senate"])
+def test_tabulation_status_can_advance_without_changing_the_count_clock(tmp_path, chamber):
+    bodies = sources()
+    bodies[chamber][0]["tabulationStatus"] = "Active Tabulation"
+    first = collect(tmp_path, bodies)
+    bodies[chamber][0]["tabulationStatus"] = "Gathering Certified Results"
+    updated = collect(tmp_path, bodies, first)
+    old = next(row["data"] for row in first["races"].values() if row["data"]["chamber"] == chamber)
+    current = next(row for row in updated["races"].values() if row["data"]["chamber"] == chamber)
+    assert current["status"] == "reported"
+    assert current["data"]["candidates"] == old["candidates"]
+    assert current["data"]["source_updated_at"] == old["source_updated_at"]
+    assert current["data"]["native_certified"] is None
+    assert current["data"]["native_facts"] == bodies[chamber][0]
+    assert collect(tmp_path, bodies, updated) == updated
+
+
+@pytest.mark.parametrize("change", ["counts", "reporting", "round", "certified", "rollback",
+                                   "results_type", "invalid_status"])
+def test_status_update_cannot_authorize_unversioned_source_changes(tmp_path, change):
+    bodies = sources()
+    first = collect(tmp_path, bodies)
+    row = bodies["house"][0]
+    row["tabulationStatus"] = "Gathering Certified Results"
+    if change == "counts":
+        row["candidates"][0]["votes"] -= 1
+    elif change == "reporting":
+        row["reporting"] = 1
+    elif change == "round":
+        row["round"] = 2
+        row["updated"] -= 1
+    elif change == "certified":
+        row["certified"] = True
+    elif change == "rollback":
+        row["updated"] -= 1
+    elif change == "results_type":
+        row["resultsType"] = "final"
+    else:
+        row["tabulationStatus"] = []
+    updated = collect(tmp_path, bodies, first)
+    retained = next(entry for entry in updated["races"].values()
+                    if entry.get("data", {}).get("chamber") == "house")
+    original = next(entry for entry in first["races"].values()
+                    if entry["data"]["chamber"] == "house")
+    assert retained["status"] == "retained_after_failure"
+    assert retained["data"] == original["data"] and retained["source"] == original["source"]
+
+
 def test_special_class_two_cannot_borrow_regular_same_class_baseline(tmp_path):
     bodies = sources()
     bodies["senate"] = [race("senate", seat="2", special=True)]

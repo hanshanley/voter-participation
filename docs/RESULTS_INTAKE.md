@@ -86,6 +86,13 @@ race approval. Later-clock decreases and zeroes are accepted; missing counts,
 new identities, outages, changed party coverage and clock rollback hold the
 affected analytical frame.
 
+Descriptive `tabulationStatus` updates can arrive without a changed native
+count clock. They refresh the literal source metadata only when every other
+normalized and native fact is identical. They neither authorize same-clock
+count corrections nor imply certification. The hosted November 16 batch
+exposed this distinction in eleven races; the shared revision check now
+handles it without race-specific exceptions.
+
 Arkansas, Tennessee and Vermont have compatible complete D/R/O endpoints under
 this review. Their subsequent revisions automatically recondition all nine
 existing profile/family variants, without fitting respondents. In the retained

@@ -86,6 +86,9 @@ def normalize(row, chamber):
             "Wrong national race geography")
     require(chamber == "house" or row["state"] in HOUSE_STATES, "Senate geography differs")
     require(row.get("electionDate", ELECTION)[:10] == ELECTION, "Election date differs")
+    status = row.get("tabulationStatus")
+    require(status is None or isinstance(status, str) and bool(status.strip()),
+            "Invalid native tabulation status")
     kind, stage = STAGES.get(row.get("type"), (None, None))
     require(stage is not None, "Unreviewed election stage")
     native_id = text(row.get("id"), "provider race ID")
@@ -175,8 +178,12 @@ def check_revision(old, new):
                 "Candidate count missing; last-good counts retained")
     prior_clock, clock = old["source_updated_epoch_ms"], new["source_updated_epoch_ms"]
     require(clock >= prior_clock, "Native source clock regressed")
-    require(clock > prior_clock or old == new,
-            "Counts or source facts changed without a newer native version")
+    if clock == prior_clock:
+        before, after = copy.deepcopy(old), copy.deepcopy(new)
+        # Descriptive tabulation status can advance independently of the count clock.
+        for data in (before, after):
+            data["native_facts"].pop("tabulationStatus", None)
+        require(before == after, "Counts or source facts changed without a newer native version")
 
 
 def collect(collector, previous, configuration):
