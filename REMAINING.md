@@ -1,5 +1,15 @@
 # Remaining work: participation and election-transition estimates
 
+## November 16 reviewed automatic analytical handoff
+
+Actual hosted source **43920096796**, data-only consumer **43933156698**, and identical-input no-op **43933995521** are accepted. **435 House / 35 Senate** races refresh through the existing hourly bulk system. Recorded qualification is **32 House states / 28 Senate contests**, versus 32/24; the unchanged deployed reader badges 25 Senate comparisons and retains explicit reader-limit explanations for FL/OH/GA. All 28 are qualified in full CSV/query exports.
+
+**AR/TN/VT automatically recondition all nine accepted model variants** when compatible counts change; the delivered release numerically changes AR/TN. The final replay/display repair preserves all 450 already-published state/variant numerical results. A diagnosed missing per-family endpoint receipt is also repaired: the unchanged strict live loader now accepts the fresh conditional models instead of falling back to embedded older estimates. Unchanged rolling runs preserve the actual last numerical endpoint's receipt. A subsequent physical screenshot review exposed equal array-valued clocks being rejected by the sensitivity reader. The compact exports now use matching literal clock strings; all full scientific results and original clocks are unchanged. Fresh nine-variant ranges are verified in the unchanged live reader, not merely present in a manifest. The other 30 formerly qualified states remain explicitly dated frozen results, alongside all 17 original scientific holds. Every old candidate record remains. All 435 district comparisons remain raw/boundary-held; Senate models lack a reviewed seat/stage/source-to-prior bridge. Candidate totals supply no new turnout denominator. No respondent refit, Pages deployment or assistant continuation is used.
+
+For example, the original ridge Tennessee model now uses D **896,349** / R **1,095,895**, rather than 903,874 / 1,088,370. Its same-office D-minus-R margin change moves **22.417948 to 21.662519 pp**; modeled switching moves **8.908411 to 8.620090 pp**, and modeled net participation **12.351412 to 11.923061 pp**. These are conditional model components, not observed individual behavior. Full-precision before/after counts and points for all nine variants are included in the coverage/download record.
+
+[Full coverage and 15 complete exports](data/participation-access/20261116-congressional-analytical-handoff-01/coverage-and-downloads.json), [hosted/offline acceptance](data/participation-access/20261116-congressional-analytical-handoff-01/acceptance.json), and [production verification](data/participation-access/20261116-congressional-analytical-handoff-01/production-acceptance.json).
+
 Updated: 2026-11-16 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 ## Automatic national congressional delivery

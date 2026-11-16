@@ -1,0 +1,129 @@
+{
+  "accepted_congress_source_snapshot_exact": true,
+  "actual_preceding_next_seed_consumed": true,
+  "affected_integrated_tests": 152,
+  "all_15_export_bodies_anonymously_verified": true,
+  "canonical_bridge_baseline_tests": 28,
+  "canonical_clock_projection_tests": 2,
+  "canonical_family_receipt_tests": 2,
+  "canonical_final_repair_tests": 5,
+  "canonical_status_repair_tests": 40,
+  "compact_sensitivity_clock_repair": {
+    "actual_unmodified_reader_scope_checks": 14850,
+    "all_nine_complete_model_bodies_exact": true,
+    "model_recomputations": 0,
+    "previous_run": 43930548988,
+    "reader_guards_weakened": false,
+    "repair": "Only compact viewers join the exact literal clocks into a shared primitive string; full model results and original clock arrays remain byte-identical.",
+    "source_recollection": false,
+    "symptom": "The strict live sensitivity reader rejected equal multi-district source-clock arrays parsed as separate JSON objects."
+  },
+  "complete_runtime_offline_replay": {
+    "all_bytes_exact": true,
+    "command": [
+      "python3.12",
+      "code/reproduce.py",
+      "--replay-package",
+      ".",
+      "--output",
+      "reproduced"
+    ],
+    "log": {
+      "bytes": 102,
+      "sha256": "86bb9b324a733c48bf3ce1a428b4685497dba518f1d993d43ef8603b14cc8dfb"
+    },
+    "outputs": 147,
+    "selected_python_network_dns_and_child_process_apis_blocked": true
+  },
+  "complete_source_offline_replay": {
+    "all_bytes_exact": true,
+    "command": [
+      "python3",
+      "code/reproduce.py",
+      "replay",
+      "--package",
+      ".",
+      "--output",
+      "reproduced"
+    ],
+    "log": {
+      "bytes": 341,
+      "sha256": "f37fb764d9871e338912fc40173448ab2fe5609304db74dedeadf14ff3629a14"
+    },
+    "outputs": 18,
+    "selected_python_network_dns_and_child_process_apis_blocked": true
+  },
+  "consumer": "b3bb965aa01c0256541ce6ec4ce8906846d264ae",
+  "controlled_evidence": "Reused accepted real-input correction proof; no additional source collection",
+  "controlled_revisions": {
+    "house": {
+      "conditional_outputs_changed": true,
+      "delta": -7,
+      "state": "AR"
+    },
+    "senate": {
+      "conditional_model_promoted": false,
+      "delta": 11,
+      "election_kind": "special",
+      "recorded_outputs_changed": true,
+      "state": "FL"
+    }
+  },
+  "display_identity_repair": "Short wrapping display labels; full fingerprints and literal machine hold codes retained in complete queries",
+  "exact_replay_runtime": "CPython 3.12, declared and checksum-bound in the packet",
+  "final_repair_numerically_changed_states": [],
+  "final_repair_preserves_all_450_state_variant_numerics": true,
+  "first_publication_exact_replay": {
+    "network_requests": 0,
+    "outputs": 147,
+    "qualification": "Original packet replay on Python 3.9 exposed interpreter-dependent floating summation; the same immutable packet reproduces all 147 outputs exactly on 3.12. New packets reject mismatched declared interpreters before computing.",
+    "run": 43922559660,
+    "runtime": "CPython 3.12"
+  },
+  "fresh_conditional_endpoint_and_accounting_checks": 27,
+  "hosted_runs": {
+    "runtime": 43933156698,
+    "source": 43920096796,
+    "unchanged_runtime": 43933995521
+  },
+  "hosted_unchanged_noop": {
+    "active_manifest_unchanged": true,
+    "actual_hosted_run": "https://github.com/hanshanley/margin_of_error/actions/runs/43933995521",
+    "data_commit": "67d82b2d4058583697616e95b5bf531d9e60bdda",
+    "data_head_unchanged": true,
+    "passed": true,
+    "same_pinned_source": true,
+    "status": "unchanged",
+    "version": "f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a",
+    "website_builds_started": 0
+  },
+  "implementation": "874c5c19fc92b136638de200d2ee2650dc924e2f",
+  "initial_hosted_source_run": {
+    "house_refreshed": 425,
+    "house_retained": 10,
+    "reason": "Descriptive tabulation status changed without changing count clocks",
+    "repair": "Shared status-only revision acceptance; all other source facts and counts remain checked",
+    "run": 43916142996,
+    "senate_refreshed": 34,
+    "senate_retained": 1,
+    "successor_only_necessary_bulk_dependency": 43920096796
+  },
+  "passed": true,
+  "per_family_endpoint_receipt_repair": {
+    "all_450_state_variant_rows_preserved": true,
+    "previous_run": 43926078163,
+    "reader_guards_weakened": false,
+    "real_loader_negative_cases": 12,
+    "real_loader_positive_profiles": 3,
+    "repair": "Each family now carries its actual last numerical endpoint's reviewed qualification-mask receipt, including unchanged rolling runs.",
+    "source_recollection": false,
+    "symptom": "The strict live lazy loader rejected missing per-family automatic-update receipts and retained the dated embedded model."
+  },
+  "runtime": "f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a",
+  "source_models_refitted": false,
+  "source_snapshot": "2dc6440ea849fdd2d7365962140eb7b713044ce878ceb44a4f652f0f319715ef",
+  "source_to_runtime_candidates_exact": 1226,
+  "source_to_runtime_native_clocks_exact": 470,
+  "website_builds_started": 0,
+  "zero_missing_candidate_outage_coverage_clock_tests_passed": true
+}

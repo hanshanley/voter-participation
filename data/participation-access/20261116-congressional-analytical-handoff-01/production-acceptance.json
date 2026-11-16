@@ -1,0 +1,227 @@
+{
+  "conditional_models": {
+    "outcomes": [
+      {
+        "current_or_frozen_endpoint_checks": 54,
+        "exact_rendered_sensitivity_ranges": 324,
+        "images": [
+          {
+            "bytes": 268571,
+            "path": "analytical-clock-production-model-TN-1440.png",
+            "sha256": "ab0f01e475dd9bafb5346b66b65b45d4e296de56fc934670d83b193dc439e8f4"
+          },
+          {
+            "bytes": 308143,
+            "path": "analytical-clock-production-model-AZ-1440.png",
+            "sha256": "57fd1f16d2a53b826546e2b08ad4e828dd26514fefc3d516e0f2d89e8cbf15f3"
+          }
+        ],
+        "map_values": 2295,
+        "profile_family_variants": 9,
+        "width": 1440
+      },
+      {
+        "current_or_frozen_endpoint_checks": 54,
+        "exact_rendered_sensitivity_ranges": 324,
+        "images": [
+          {
+            "bytes": 140033,
+            "path": "analytical-clock-production-model-TN-390.png",
+            "sha256": "bdb6d4730379018b00da5d88f328fe8ce9b9c087eeae193ab4951111e770388e"
+          },
+          {
+            "bytes": 149443,
+            "path": "analytical-clock-production-model-AZ-390.png",
+            "sha256": "fd1c40e1626f7749027596ebc510c10a999f02a2d0c5313ab76ab14a5d4c25ea"
+          }
+        ],
+        "map_values": 2295,
+        "profile_family_variants": 9,
+        "width": 390
+      }
+    ],
+    "passed": true,
+    "production": true,
+    "runtime": "f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a",
+    "valid_data_overrides": false
+  },
+  "congressional": {
+    "outcomes": [
+      {
+        "candidates": 131,
+        "downloads": [
+          {
+            "text": "All race totals and source dates \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-races.csv"
+          },
+          {
+            "text": "Every literal candidate and count \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-candidates.csv"
+          },
+          {
+            "text": "Every coverage and freshness decision \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-coverage.csv"
+          },
+          {
+            "text": "All raw and qualified comparisons \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-comparisons.csv"
+          },
+          {
+            "text": "Complete statewide House comparisons \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-house-states.csv"
+          },
+          {
+            "text": "Complete current and previous queries (JSON gzip) \u00b7 JSON",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/queries.json.gz"
+          },
+          {
+            "text": "Complete reproducible runtime and source package \u00b7 ZIP",
+            "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/complete-analysis.zip"
+          }
+        ],
+        "house_states": 50,
+        "images": [
+          {
+            "bytes": 264280,
+            "path": "analytical-clock-production-congress-house-1440.png",
+            "sha256": "1c7a264c6e8ff760f974064c847e02a5778e4cb7ba86621b76d403a8146af3b2"
+          },
+          {
+            "bytes": 259781,
+            "path": "analytical-clock-production-congress-senate-1440.png",
+            "sha256": "a1ce421e7d67a857ecb53e27024110bd6d6910bb2e11e54853838993449b1995"
+          }
+        ],
+        "races": 53,
+        "single_runtime_pointer": [
+          "https://raw.githubusercontent.com/hanshanley/margin_of_error/participation-data/automatic/latest.json"
+        ],
+        "width": 1440
+      },
+      {
+        "candidates": 131,
+        "downloads": [
+          {
+            "text": "All race totals and source dates \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-races.csv"
+          },
+          {
+            "text": "Every literal candidate and count \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-candidates.csv"
+          },
+          {
+            "text": "Every coverage and freshness decision \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-coverage.csv"
+          },
+          {
+            "text": "All raw and qualified comparisons \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-comparisons.csv"
+          },
+          {
+            "text": "Complete statewide House comparisons \u00b7 CSV",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/congress-house-states.csv"
+          },
+          {
+            "text": "Complete current and previous queries (JSON gzip) \u00b7 JSON",
+            "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e78306df8f133d84a116cca99b6c103850a2b353/automatic/versions/f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/congressional/queries.json.gz"
+          },
+          {
+            "text": "Complete reproducible runtime and source package \u00b7 ZIP",
+            "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a/complete-analysis.zip"
+          }
+        ],
+        "house_states": 50,
+        "images": [
+          {
+            "bytes": 138272,
+            "path": "analytical-clock-production-congress-house-390.png",
+            "sha256": "1ada5bcbe933abd762b9603a6c5001ce1a4f8099ea2521edda7c374960e1d469"
+          },
+          {
+            "bytes": 137234,
+            "path": "analytical-clock-production-congress-senate-390.png",
+            "sha256": "5a41070a0f582a289cfb051d6781f9423f94390f01b9d7ac3e4f5c4a9fa363cf"
+          }
+        ],
+        "races": 53,
+        "single_runtime_pointer": [
+          "https://raw.githubusercontent.com/hanshanley/margin_of_error/participation-data/automatic/latest.json"
+        ],
+        "width": 390
+      }
+    ],
+    "passed": true,
+    "production": true,
+    "runtime": "f54bc0588c86a6786ca2ee8efc4279d514a4738789617289418ea5918e8bb29a",
+    "smoke": true,
+    "unchanged_full_candidate_detail_acceptance": {
+      "current_complete_results_sha256": "766ee2341e5ca7db53b97631ee9b36ce530b886fedc05a1144d24ec7d8676d23",
+      "full_races_previously_checked_per_width": 470,
+      "only_excluded_unrendered_field": "analytical_handoff",
+      "previous_complete_results_sha256": "34f6f7c616461d87634b3b81c868bd62d8413348712bb96cea82bfbd9509046a",
+      "proof": "analytical-production-congress.json",
+      "proof_sha256": "32636d34b90309d29362037f0a0a20b0dba283797dae2cc03e17b26a9f9c0a6a",
+      "qualification": "Reuse only complete candidate-detail checks on exactly unchanged renderer inputs; the rolling analytical decision metadata is checked separately. Current rows, clocks, filters, pointer and links are checked again.",
+      "reader_sha256": "5a2f64249a575100437cd899088b378b534360a04a93d112978237edeaf20437",
+      "unchanged_rendered_payload_sha256": "bbe9b0980aad65dc045491a62bade42f92374e1bcde563f4be16182dd5e4404a"
+    },
+    "valid_data_overrides": false
+  },
+  "passed": true,
+  "physically_reviewed_screenshots": {
+    "dated_AZ_frozen_result_and_specific_holds_visible": true,
+    "fresh_TN_sensitivity_ranges_visible_both_widths": true,
+    "house_raw_boundary_holds_preserved": true,
+    "limitations": [
+      "Mobile captures show portions of long existing source qualifications.",
+      "Wide congressional tables retain horizontal scrolling; captures do not show every column.",
+      "This verifies delivery and range repair, not a website redesign or complete usability audit."
+    ],
+    "no_valid_data_script_or_style_overrides": true,
+    "passed": true,
+    "physically_viewed_images": [
+      {
+        "bytes": 268571,
+        "path": "analytical-clock-production-model-TN-1440.png",
+        "sha256": "ab0f01e475dd9bafb5346b66b65b45d4e296de56fc934670d83b193dc439e8f4"
+      },
+      {
+        "bytes": 308143,
+        "path": "analytical-clock-production-model-AZ-1440.png",
+        "sha256": "57fd1f16d2a53b826546e2b08ad4e828dd26514fefc3d516e0f2d89e8cbf15f3"
+      },
+      {
+        "bytes": 140033,
+        "path": "analytical-clock-production-model-TN-390.png",
+        "sha256": "bdb6d4730379018b00da5d88f328fe8ce9b9c087eeae193ab4951111e770388e"
+      },
+      {
+        "bytes": 149443,
+        "path": "analytical-clock-production-model-AZ-390.png",
+        "sha256": "fd1c40e1626f7749027596ebc510c10a999f02a2d0c5313ab76ab14a5d4c25ea"
+      },
+      {
+        "bytes": 264280,
+        "path": "analytical-clock-production-congress-house-1440.png",
+        "sha256": "1c7a264c6e8ff760f974064c847e02a5778e4cb7ba86621b76d403a8146af3b2"
+      },
+      {
+        "bytes": 259781,
+        "path": "analytical-clock-production-congress-senate-1440.png",
+        "sha256": "a1ce421e7d67a857ecb53e27024110bd6d6910bb2e11e54853838993449b1995"
+      },
+      {
+        "bytes": 138272,
+        "path": "analytical-clock-production-congress-house-390.png",
+        "sha256": "1ada5bcbe933abd762b9603a6c5001ce1a4f8099ea2521edda7c374960e1d469"
+      },
+      {
+        "bytes": 137234,
+        "path": "analytical-clock-production-congress-senate-390.png",
+        "sha256": "5a41070a0f582a289cfb051d6781f9423f94390f01b9d7ac3e4f5c4a9fa363cf"
+      }
+    ],
+    "senate_special_seat_and_explicit_reader_limitation_visible": true
+  },
+  "production": true
+}
