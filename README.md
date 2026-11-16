@@ -1,91 +1,28 @@
-# Voter participation
+<div align="center">
+  <h1>Voter participation</h1>
+  <p>
+    <a href="https://www.themarginoferror.com/voter-participation/">Live explorer</a> &middot;
+    <a href="METHODOLOGY.md">Methods</a> &middot;
+    <a href="docs/DATA.md">Data &amp; downloads</a> &middot;
+    <a href="docs/REPRODUCING.md">Reproduce</a>
+  </p>
+</div>
 
-**Who participates in elections, how participation changes over time, and where
-the evidence supports a local map.** The project covers presidential and midterm
-elections, with historical demographic series and separately labeled 2026 results
-and survey estimates.
+---
 
-[Open the explorer](https://www.themarginoferror.com/voter-participation/) |
-[Estimation methods](METHODOLOGY.md) |
-[Complete downloads](docs/DATA.md) |
-[Automatic 2026 intake](docs/RESULTS_INTAKE.md) |
-[Reproduce an analysis](docs/REPRODUCING.md)
+Voter participation across US presidential and midterm elections: historical
+demographic rates, administrative counts, supported local maps, and automatically
+updated House and Senate results.
 
-## How the estimates work
-
-We calculate demographic participation rates using each survey's own weights,
-population and participation definitions. We retain unknown responses rather
-than assuming everyone without a recorded vote stayed home.
-
-Official election records provide a separate check on counts, reporting coverage
-and denominators. A survey rate becomes a count estimate only when a suitable
-population or registration frame exists, with its assumptions stated explicitly.
-Candidate votes are contest results, not ballots or demographic turnout.
-
-Historical comparisons keep presidential and midterm elections separate.
-Projections are tested against simple historical baselines; precinct maps require
-supported election-year counts and geography, not state rates spread across a map.
-
-## What the explorer shows
-
-| View | What it means |
-|---|---|
-| Historical demographic and state rates | Survey-reported participation; population definitions and available years vary. |
-| Current survey studies | Source-weighted modeled or reported participation, not certified turnout. |
-| Administrative participation | Source-defined counts and rates, with reporting status and denominator identified. |
-| Automatic congressional returns | All advertised House/Senate contests, native candidate counts and dates, raw changes and qualified same-office comparisons. |
-| Precinct maps | Participation where supported; candidate results are a separate layer. Coverage is partial. |
-
-**Automatic House and Senate results:** open Swings, then the closed
-Congressional results disclosure. The national collector discovers both chamber
-inventories in bulk; the existing hourly data-only consumer updates this table
-and its complete CSV/query downloads without individual race maintenance or a
-website rebuild. Candidate votes are not turnout. New returns do not
-automatically replace the existing behavioral models.
-[Coverage, source qualifications and complete downloads](docs/DATA.md#automatic-house-and-senate-results).
-
-**Every-state demographics:** select Demographics, then 2022 or 2024 and a
-Geography. All 50 states plus D.C. have source-weighted age, sex, education and
-exclusive race/Hispanic-origin queries, with unknown responses and small-sample
-diagnostics retained. [Complete reproducible data](docs/DATA.md).
-
-**2026 state models:** select Demographics, 2026, and Civic modeled participation.
-All 50 survey states have an overall model estimate; 671 supported group
-estimates are available across age, education, source sex, race/Hispanic origin,
-native income and county context. D.C. and held groups remain explicitly
-unavailable. These are source model shares, **not observed 2026 turnout**.
-[Current release audit](docs/AUDIT.md) | [Complete query downloads](docs/DATA.md).
-
-**Limits:** These sources do not form one linked electorate. Missing data are not
-zero, modeled nonparticipation is not observed staying home, and repeated survey
-waves do not identify individual switching. Broad 2026 group denominators and
-some historical/local coverage remain unresolved.
+Recorded results and assumption-dependent modeled explanations are kept separate.
+Local coverage is partial; candidate votes are not turnout, and modeled mechanisms
+are not observed individual behavior.
 
 ## Documentation
 
-The website keeps Methods short; details live here.
+- [Coverage and limitations](docs/AUDIT.md)
+- [Automatic results intake](docs/RESULTS_INTAKE.md)
+- [Source ledger](SOURCES.md) and [research gaps](REMAINING.md)
 
-| Read | Purpose |
-|---|---|
-| [Methods](METHODOLOGY.md) | Estimands, weighted rates, conditional counts, historical tests and uncertainty. |
-| [Data catalog](docs/DATA.md) | Choose a complete, versioned analysis download. |
-| [Reproduction guide](docs/REPRODUCING.md) | Run a saved analysis without reacquiring its inputs. |
-| [Current release audit](docs/AUDIT.md) | Verified coverage, disclosure, downloads and live-interface limits. |
-| [Source ledger](SOURCES.md) | Technical provenance, native definitions, access holds and verification records. |
-| [Remaining work](REMAINING.md) | Current research gaps and execution queue. |
-
-## Repository layout
-
-| Path | Contents |
-|---|---|
-| `scripts/`, `tests/` | Maintained readers, estimators and focused tests. |
-| `data/` | Versioned source manifests and qualified analysis inputs. |
-| `public/` | Historical explorer export, observations and complete downloads. |
-| `docs/` | Reproduction, package references and the original research protocol. |
-
-The historical website export remains reviewed and pinned. Registered source
-updates reach the explorer through its separate automatic data-only channel;
-new research or candidate returns do not automatically qualify behavioral
-estimates. Public packages contain complete
-permitted inputs, queries, results and code, never metadata-only substitutes.
-Privately supplied respondent records and private fine cells are not published.
+Complete downloads include all permitted inputs, code, queries, and results.
+The [website repository](https://github.com/hanshanley/margin_of_error) hosts the explorer.
