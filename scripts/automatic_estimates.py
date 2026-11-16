@@ -1232,6 +1232,18 @@ def build(snapshot, seed):
             result = _incremental_result(
                 scenario["prior"], scenario["accepted_result"], endpoints, changed_states
             )
+            update = result.get("endpoint_update", {})
+            if update.get("contract") == CONTRACT:
+                receipt = {
+                    "contract": CONTRACT,
+                    "changed_states": copy.deepcopy(update["changed_states"]),
+                    "qualification_mask_sha256": seed["qualification"]["mask_sha256"],
+                    "existing_17_behavioral_holds_preserved": True,
+                    "official_HI_WY_scope_guarded": True,
+                }
+                if not changed_states and result.get("automatic_estimate_update", receipt) != receipt:
+                    raise ValueError("Retained model automatic-update receipt contradicts its endpoint")
+                result["automatic_estimate_update"] = receipt
             if handoff is not None:
                 from scripts.congressional_analytical_bridge import annotate_result
                 annotate_result(result, handoff)

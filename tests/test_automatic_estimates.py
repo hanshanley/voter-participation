@@ -1,3 +1,4 @@
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -235,6 +236,10 @@ class AutomaticEstimateTests(unittest.TestCase):
             self.assertEqual(scenario["recomputed_states"], ["AR"])
             old = self.seed["scenarios"][key]["accepted_result"]
             new = self.artifact_model(result, *key.split("/"))
+            self.assertEqual(
+                new["automatic_estimate_update"]["changed_states"],
+                new["endpoint_update"]["changed_states"],
+            )
             old_rows = {row["state_code"]: row for row in old["rows"]}
             new_rows = {row["state_code"]: row for row in new["rows"]}
             self.assertNotEqual(new_rows["AR"]["point"], old_rows["AR"]["point"])
@@ -619,6 +624,16 @@ class AutomaticEstimateTests(unittest.TestCase):
             run2_model = self.artifact_model(run2, *key.split("/"))
             run3_model = self.artifact_model(run3, *key.split("/"))
             self.assertEqual(run2_model, run1_model)
+            self.assertEqual(
+                run2_model["automatic_estimate_update"]["changed_states"], ["AR"]
+            )
+            profile, family = key.split("/")
+            self.assertEqual(
+                run2["artifacts"]["house/viewer-" + profile + ".json.gz"]["content"][
+                    "families"
+                ][family]["automatic_estimate_update"],
+                run1_model["automatic_estimate_update"],
+            )
             by_state1 = {row["state_code"]: row for row in run1_model["rows"]}
             by_state3 = {row["state_code"]: row for row in run3_model["rows"]}
             self.assertNotEqual(by_state3["AR"]["point"], by_state1["AR"]["point"])
@@ -640,6 +655,46 @@ class AutomaticEstimateTests(unittest.TestCase):
             and row["name"] == "Terri Yarbrough Green"
         )
         self.assertEqual(ar_seed2["votes"], "61144")
+
+    def test_retained_automatic_endpoint_repairs_missing_family_receipt_without_refit(self):
+        snapshot = self.snapshot()
+        self.report_state(snapshot, "AR", delta=1000)
+        first = build(snapshot, self.seed)
+        seed = load_rolling_seed(
+            first["artifacts"]["rolling/next-seed.json.gz"]["content"]
+        )
+        for scenario in seed["scenarios"].values():
+            scenario["accepted_result"].pop("automatic_estimate_update", None)
+        with patch(
+            "scripts.automatic_estimates.accepted_model.build",
+            side_effect=AssertionError("Unchanged endpoints must not be reconditioned"),
+        ):
+            repaired = build(self.snapshot(seed), seed)
+            following = build(
+                self.snapshot(repaired["artifacts"]["rolling/next-seed.json.gz"]["content"]),
+                repaired["artifacts"]["rolling/next-seed.json.gz"]["content"],
+            )
+        self.assertEqual(repaired["decisions"]["summary"]["changed_behavioral"], 0)
+        for key in first["scenarios"]:
+            profile, family = key.split("/")
+            model = self.artifact_model(repaired, profile, family)
+            self.assertEqual(model, self.artifact_model(first, profile, family))
+            self.assertEqual(model, self.artifact_model(following, profile, family))
+            self.assertEqual(model["automatic_estimate_update"]["changed_states"], ["AR"])
+            self.assertEqual(
+                repaired["artifacts"]["house/viewer-" + profile + ".json.gz"]["content"][
+                    "families"
+                ][family]["automatic_estimate_update"],
+                model["automatic_estimate_update"],
+            )
+        broken_seed = copy.deepcopy(
+            repaired["artifacts"]["rolling/next-seed.json.gz"]["content"]
+        )
+        next(iter(broken_seed["scenarios"].values()))[
+            "accepted_result"
+        ]["automatic_estimate_update"]["changed_states"] = []
+        with self.assertRaisesRegex(ValueError, "receipt contradicts"):
+            build(self.snapshot(broken_seed), broken_seed)
 
     def test_descriptor_pins_controls_and_rendered_accounting(self):
         result = build(self.snapshot(), self.seed)
