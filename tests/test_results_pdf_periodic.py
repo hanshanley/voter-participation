@@ -150,7 +150,8 @@ def test_public_fixtures_are_complete_and_disclosure_safe(products, ocr_views):
     assert not granular.PRIVATE_HEADERS.search(serialized)
     assert {tuple(path.suffixes) for path in FIXTURES.iterdir()} == {
         (".json", ".gz")}
-    package_source = inspect.getsource(intake.collect)
+    assert "export_collection(" in inspect.getsource(intake.collect)
+    package_source = inspect.getsource(intake.export_collection)
     assert "code/tests/fixtures/results_pdf_periodic/" in package_source
     assert all(name in package_source for name in (
         "complete-products.json.gz", "sussex-ocr-views.json.gz",

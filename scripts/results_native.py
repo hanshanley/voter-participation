@@ -1118,7 +1118,7 @@ WALWORTH_SUMMARY_URL = (
 
 def pdf_parent_source_url(template):
     source, view = template["source"], template["view"]
-    if source["id"] != "wi-walworth-summary-20261113":
+    if source.get("id") != "wi-walworth-summary-20261113":
         return view["source_url"]
     if (template["geography"]["state_code"] != "WI"
             or template["geography"]["level"] != "county"
@@ -2132,7 +2132,7 @@ def source_plan(baseline):
             bridged_url = dunn_source_url(template)
             if bridged_url is not None:
                 url = bridged_url
-            if template["source"]["id"] == "wi-walworth-summary-20261113":
+            if template["source"].get("id") == "wi-walworth-summary-20261113":
                 url = pdf_parent_source_url(template)
             parsed = urlsplit(url)
             if (parsed.scheme != "https" or parsed.hostname in (
@@ -2205,7 +2205,7 @@ def source_plan(baseline):
             else:
                 adapter = "unadapted_primary_product"
             identity_url = (WALWORTH_STORED_URL
-                if template["source"]["id"] == "wi-walworth-summary-20261113" else url)
+                if template["source"].get("id") == "wi-walworth-summary-20261113" else url)
             key = state + "-registered-" + digest(identity_url.encode())[:16]
             source = sources.setdefault(key, {"url": url, "adapter": adapter, "templates": []})
             if source["adapter"] != adapter:
