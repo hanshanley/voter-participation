@@ -1,0 +1,46 @@
+{
+  "schema": "participation.maine_county_navigation_acceptance.v1",
+  "passed": true,
+  "commit": "32c9c5d0010f2a1f51f1bd0db1ec7b4971177642",
+  "actual_native_pages_run": 43974335585,
+  "source_guard": 43974335442,
+  "actual_payload_bytes": 994299652,
+  "actual_tar_bytes": 996894720,
+  "contract_tests_passed": 77,
+  "desktop_and_mobile_browser_passed_without_normal_overrides": true,
+  "source_artifact_and_live_renderer_match": true,
+  "maine_counties_selectable": 16,
+  "boundary_context_year": 2024,
+  "county_results_status": "withheld_source_reconciliation",
+  "county_results_hold": "Not every declared state district passed source and vector reconciliation",
+  "county_display": "Neutral selectable dated reference geometry; unavailable results are not zeroes",
+  "administrative_and_electoral_values_inferred": false,
+  "new_election_counts_rates_or_model_estimates": false,
+  "new_scientific_or_boundary_eligibility": false,
+  "separate_locality_early_and_returned_activity_changed": false,
+  "old_complete_download_pins_preserved": 437,
+  "old_static_participation_assets_unchanged": 841,
+  "old_embedded_scientific_payloads_unchanged": 3,
+  "existing_hourly_collectors_and_data_only_consumer_preserved": true,
+  "complete_downloads_replaced_with_metadata": false,
+  "source": {
+    "repository": "hanshanley/margin_of_error",
+    "renderer": "public/scripts/participation-explorer.js",
+    "sha256": "40ecfdd028fdfd38281dfd9893dbbf631fb1519f8ef754379495751d2f579ff3"
+  },
+  "validation": {
+    "build_check_and_preparation": true,
+    "actual_desktop_and_mobile": true,
+    "widths": [1440, 390],
+    "all_16_keyboard_selections_per_width": true,
+    "pointer_selection_and_reset": true,
+    "supported_state_year_and_color_transitions": true,
+    "outage_retry_and_late_response_isolation_local": true,
+    "production_images_physically_reviewed": true
+  },
+  "limits": [
+    "The 2024 reference outlines do not certify legal 2026 election boundaries",
+    "Navigation cannot resolve missing or conflicting source candidate counts",
+    "No county result, turnout rate or modeled individual behavior is newly qualified"
+  ]
+}

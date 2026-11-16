@@ -1,5 +1,22 @@
 # Remaining work: participation and election-transition estimates
 
+## November 16 Maine county navigation: delivered; results hold retained
+
+Maine's county deep link now works at website `32c9c5d`: **16 selectable,
+neutral county outlines** with explicit **2024 reference context** and an
+immediate results-unavailable explanation. Desktop/mobile checks, the build
+and 77 contracts pass; all 437 prior complete-download pins are preserved.
+[Acceptance](data/participation-access/20261116-maine-county-navigation-01/acceptance.json).
+
+This closes the navigation defect, not the underlying county-results hold.
+Displaying 2026 county returns requires corrected source candidate vectors
+that reconcile to their district totals in a compatible election/RCV round.
+No residual is allocated to counties, no unknown value becomes zero, and no
+county turnout rate or model estimate is inferred. Existing Maine locality
+early/returned activity is a separate unchanged product. The repair and its
+actual Pages deployment are complete; do not restart them or the accepted
+congressional collection, models or replay campaigns.
+
 ## November 16 reviewed automatic analytical handoff
 
 Actual hosted source **43920096796**, data-only consumer **43933156698**, and identical-input no-op **43933995521** are accepted. **435 House / 35 Senate** races refresh through the existing hourly bulk system. Recorded qualification is **32 House states / 28 Senate contests**, versus 32/24; the unchanged deployed reader badges 25 Senate comparisons and retains explicit reader-limit explanations for FL/OH/GA. All 28 are qualified in full CSV/query exports.
@@ -14,6 +31,10 @@ Updated: 2026-11-16 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
 ## Automatic national congressional delivery
 
+This section describes the earlier intake-only release, not an open replacement
+for the completed analytical handoff above. Its original records and complete
+downloads remain pinned.
+
 Nationwide House and Senate collection and downstream delivery are implemented
 in the existing hourly workflows, not a race-by-race assistant campaign.
 Both real hosted bulk captures refreshed 435 House and 35 Senate contests
@@ -25,20 +46,23 @@ freshness decision, with all seven full CSV/query products and complete archives
 and [production checks](data/participation-access/20261116-congressional-automatic-01/production-acceptance.json)
 record the finite delivery and subsequent genuine bulk revisions.
 
-The current results channel has 32 qualified statewide House comparisons and
-24 qualified Senate comparisons. Its 18 House state holds and 11 Senate holds
-have complete per-contest reasons; all 435 district comparisons remain raw,
-not boundary-qualified. Same-seat regular/special and general/runoff/RCV
+The earlier results channel had 32 qualified statewide House comparisons and
+24 qualified Senate comparisons, with 18 House state holds and 11 Senate holds.
+The reviewed successor supports 32/28; its 25 deployed-reader Senate badges and
+FL/OH/GA reader limits are explicit above. All 435 district comparisons remain
+raw, not boundary-qualified. Same-seat regular/special and general/runoff/RCV
 identities are never merged. Nonvoting House contests, when advertised, remain
 separate from the 435 voting districts.
 
-This does not resolve a new participation rate or behavioral-model frame.
-Candidate votes are not ballots/participants or group denominators. A reviewed
-candidate/provider/source-frame bridge and the existing scientific eligibility
-requirements are necessary before new returns can update modeled mechanisms.
-The preserved 33 qualified/17 held model policy, 34 registration scenarios,
-existing fits and immutable downloads remain unchanged. No refit or new
-model-family experiment is needed to display the new results.
+Candidate votes do not supply a new participation rate, participant count or
+group denominator. The reviewed candidate/provider/source-frame bridge is now
+delivered: compatible hourly revisions automatically recondition AR/TN/VT
+across all nine accepted variants. The other 30 formerly qualified states stay
+dated frozen, alongside all 17 original scientific holds; Senate model frames
+still lack their reviewed compatible seat/stage/provider-to-prior inputs.
+The frozen 33/17 mask, 34 registration scenarios, existing fits and immutable
+downloads remain unchanged. No new respondent fit or model-family experiment
+is needed to display fresh recorded results.
 
 Civic provider access is still stopped; independent NPR/AP bulk retrieval
 succeeded in actual hosted jobs. A future outage is handled per feed/race with

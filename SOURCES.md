@@ -1,5 +1,26 @@
 # Voter-participation source ledger
 
+## November 16 Maine county navigation repair
+
+The Maine county deep link is repaired and live at website commit
+[`32c9c5d`](https://github.com/hanshanley/margin_of_error/commit/32c9c5d0010f2a1f51f1bd0db1ec7b4971177642).
+It displays all **16 selectable, neutral county outlines**, explicitly dated
+**2024 reference context**, with an immediate explanation when results are
+unavailable. It no longer substitutes a statewide fill for missing county results.
+
+Actual 2026 county returns remain **withheld**, not zero. The retained source
+does not reconcile every district/county candidate vector; navigation and
+context geometry do not resolve that evidence hold or qualify a turnout rate.
+The separate Maine locality early/returned activity product is unchanged.
+
+Actual [Pages run 43974335585](https://github.com/hanshanley/margin_of_error/actions/runs/43974335585)
+and [source guard 43974335442](https://github.com/hanshanley/margin_of_error/actions/runs/43974335442)
+succeeded. Build checks, 77 contracts and actual desktop/mobile county-selection
+checks passed. All 437 complete-download pins and prior scientific payloads
+remain intact. This is a navigation/missing-data repair, not new election
+counts, rates, geographic eligibility or model estimates.
+[Acceptance record](data/participation-access/20261116-maine-county-navigation-01/acceptance.json).
+
 ## November 16 reviewed automatic analytical handoff
 
 Actual hosted source **43920096796**, data-only consumer **43933156698**, and identical-input no-op **43933995521** are accepted. **435 House / 35 Senate** races refresh through the existing hourly bulk system. Recorded qualification is **32 House states / 28 Senate contests**, versus 32/24; the unchanged deployed reader badges 25 Senate comparisons and retains explicit reader-limit explanations for FL/OH/GA. All 28 are qualified in full CSV/query exports.
@@ -17,6 +38,10 @@ Ledger updated: 2026-11-16 UTC. Source-specific clocks remain as recorded.
 This document is the detailed reference ledger, not the methods introduction.
 
 ## November 16 automatic national House and Senate delivery
+
+This section records the earlier intake-only release. The reviewed analytical
+handoff above supersedes its comparison counts and missing-bridge limitation;
+the original acceptance records and complete downloads remain available.
 
 The existing explorer's Swings view now includes a default-closed Congressional
 results table and complete downloads. One reviewed provider declaration follows
@@ -38,14 +63,14 @@ runtime rerun was an actual unchanged no-op with zero Pages builds.
 Controlled House decreases and Senate increases additionally passed through
 collection, all seven exports and the actual JavaScript consumer.
 
-Current returns support **32 qualified statewide House comparisons** and
-**24 same-seat Senate comparisons**. All 435 district raw changes are inspectable
-but boundary-held. The remaining 18 statewide House and 11 Senate decisions
-retain specific party-coverage, candidate, seat-baseline, special or RCV reasons
-in the complete tables. The current channel does not replace the frozen
-33/17 House behavioral-model eligibility mask.
+That intake-only version supported **32 qualified statewide House comparisons**
+and **24 same-seat Senate comparisons**, with 18 House and 11 Senate holds.
+The reviewed successor supports 32/28, with 25 Senate badges in the unchanged
+deployed reader and explicit FL/OH/GA reader limits. All 435 district raw changes
+remain boundary-held. Original per-contest decisions and the frozen 33/17 House
+scientific mask remain preserved, not silently rewritten.
 
-All 1,226 current candidate observations and 470 native clocks are checked
+All 1,226 candidate observations and 470 native clocks in that version are checked
 through source, published runtime and explorer. Both chambers have complete
 race/candidate/coverage/comparison tables, statewide House totals, full queries
 and full source/runtime archives. The hourly collector and data-only consumer
@@ -61,11 +86,13 @@ each complete source packet contains 18. Existing scientific fits, participation
 numerics, seeds and all older immutable downloads are preserved.
 
 Candidate selections do not supply all-ballot participants, a compatible
-demographic denominator or a linked choice/participation history. The NPR
-candidate/provider inventory has no reviewed bridge to the frozen scientific
-endpoint frame; therefore it cannot automatically recondition or qualify the
-existing behavioral explanations. No model is refitted or state estimate
-allocated locally.
+demographic denominator or a linked choice/participation history. The initially
+missing candidate/provider/source-frame bridge is now delivered for the already
+supported AR/TN/VT House frames, across all nine accepted model variants.
+Thirty other formerly qualified state results remain explicitly dated frozen,
+and the 17 original scientific holds remain. Senate conditional models still
+lack a compatible reviewed seat/stage/provider-to-prior bridge. No respondent
+model is refitted or state estimate allocated locally.
 
 ## November 16 preserved supported analytical release
 
