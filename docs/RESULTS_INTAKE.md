@@ -19,6 +19,58 @@ The tool does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Nationwide congressional returns
+
+The same hourly collector also reads the two national NPR/AP bulk inventories
+declared by the published 2026 House and Senate pages and their `app.js`.
+`data/results-intake/congress.json` is the single reviewed provider declaration;
+there is no manually maintained list of race endpoints. Advertised additions
+are discovered on the next collection. Civic's stopped national feed and
+documentation routes remain stopped; NPR is an independently published source.
+Local participation-reader holds do not block these two bulk requests.
+
+`results_congress.py` keeps provider IDs, Senate seat classes, regular/special
+elections, general/runoff stages and RCV phases/rounds separate. Nonvoting
+House jurisdictions are not counted as voting districts. Each candidate keeps
+its literal party, native ID, zero or explicit unknown count, and aggregate
+Other role. Missing candidate inventories, changed identity, older native
+clocks and same-clock fact changes retain the last good race, not a false zero.
+Genuine increases and decreases require a newer native count clock.
+
+The additive `congress` snapshot follows the existing intake/runtime handoff.
+The existing explorer provides current race/candidate tables, complete statewide
+House comparisons, seat-qualified Senate comparisons, per-contest source dates,
+freshness and every raw/held decision. Complete queries include both current
+source facts and the delivered previous-election inputs. Full CSVs and the
+complete reproducible source/runtime ZIPs accompany every version.
+
+House statewide comparisons use the complete previous House inventory.
+District-ID arithmetic remains visible but is held when cross-year boundary
+stability is not qualified. Changed party coverage, unopposed races, multiple
+nominees, missing counts, stages and RCV rounds retain their own qualifications.
+The reviewed 2020 regular-seat-cycle Senate baseline binds Class II only;
+special/unexpired or intervening-special seats cannot borrow it. Native clocks
+are source epochs; the election date is explicitly the reviewed national-index
+context, not an invented per-race field. Candidate votes are never turnout.
+
+New returns do not automatically replace frozen behavioral-model inputs.
+Those require a separately reviewed candidate/source/frame match. Existing
+scientific seeds, fitted models, participation frames and immutable downloads
+are preserved.
+
+For a bounded national refresh using the latest complete accepted state:
+
+```sh
+gh workflow run election-night.yml --repo hanshanley/voter-participation \
+  --ref main -f congressional_only=true
+```
+
+This acquires both national feeds and retains all noncongressional inputs
+without reacquiring them. Normal hourly collection still updates its registered
+participation sources as well. The existing minute-31 website workflow publishes
+data only, atomically, through `participation-data`; later returns require
+neither an assistant nor a Pages build.
+
 ## Supported analytical release and selective recovery
 
 The accepted finite release is source `30bb6e95` / runtime `9c7117fb`.

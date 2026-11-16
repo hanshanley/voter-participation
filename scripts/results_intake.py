@@ -30,6 +30,7 @@ from scripts.results_house import NATIONAL_URL, candidate_results, districts, st
 from scripts import results_granular
 from scripts import results_state_statistics
 from scripts import results_native_broome
+from scripts import results_congress
 
 
 OFFICIAL = {**OFFICIAL, **results_state_statistics.OFFICIAL}
@@ -497,6 +498,8 @@ def project(inputs, baseline):
     }
     if "collection_scope" in inputs:
         snapshot["collection_scope"] = inputs["collection_scope"]
+    if "congress" in inputs:
+        snapshot["congress"] = inputs["congress"]
     outputs = {
         "snapshot.json.gz": compressed(encoded(snapshot)), "coverage.csv": csv_body(coverage),
         "participation-observations.csv.gz": compressed(csv_body(observations)),
@@ -512,12 +515,31 @@ def project(inputs, baseline):
         outputs["granular-source-queries.json.gz"] = granular_query
         outputs["declared-numerical-queries.json.gz"] = products_query
         outputs["canonical-local-changes.csv"] = csv_body(changes)
+    if "congress" in inputs:
+        outputs.update(results_congress.exports(inputs["congress"]))
+        outputs["congress-queries.json.gz"] = compressed(encoded(inputs["congress"]))
+        outputs["snapshot.json.gz"] = compressed(encoded(snapshot))
     return outputs
+
+
+def registry_config(registry_path):
+    registry_path = Path(registry_path)
+    config = read(registry_path)
+    congressional = registry_path.with_name("congress.json")
+    if congressional.exists():
+        declaration = read(congressional)
+        if (declaration.get("contract") != "participation.congressional_provider.v1"
+                or declaration.get("election_date") != config["election_date"]
+                or set(declaration.get("feeds", {})) != {"house", "senate"}):
+            raise ValueError("Invalid reviewed congressional provider configuration")
+        config["congressional"] = declaration
+        config["source_stops"] = merge_stops(config["source_stops"], declaration["source_stops"])
+    return config
 
 
 def collect(registry_path, work, previous=None, now=None, offline=False):
     registry_path, work = Path(registry_path), Path(work)
-    config = read(registry_path)
+    config = registry_config(registry_path)
     now = now or datetime.now(timezone.utc)
     if (config["contract"] != CONTRACT or config["election_date"] != "2026-11-03"
             or set(config["jurisdictions"]) != set(STATES)):
@@ -645,6 +667,9 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     feeds.update(granular)
     inputs = {"feeds": feeds, "house": house, "districts": declared, "directories": directories,
               "granular": granular, "products": products}
+    if "congressional" in config:
+        inputs["congress"] = results_congress.collect(
+            collector, previous.get("congress"), config["congressional"])
     inputs["source_stops"] = collector.stopped
     return export_collection(
         work, config, baseline, inputs, extras, now,
@@ -663,7 +688,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                        "inputs/registry.json": encoded(config),
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
-    code = ("results_intake.py", "results_house.py", "results_granular.py", "results_native.py",
+    code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
              "results_state_statistics.py",
              "results_native_delaware.py", "results_native_dc.py",
              "results_native_state_family.py", "results_native_oregon.py",
@@ -692,7 +717,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
             "participation_intake/publisher.py")
     for name in code:
         package_members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
-    for name in ("test_results_intake.py", "test_results_granular.py", "test_results_native.py",
+    for name in ("test_results_intake.py", "test_results_congress.py", "test_results_granular.py", "test_results_native.py",
                  "test_results_state_statistics.py",
                  "test_results_native_delaware.py", "test_results_native_dc.py",
                  "test_results_native_broome.py", "test_results_native_kansas.py",
@@ -797,8 +822,40 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
               "files": {name: pin((work / name).read_bytes()) for name in (*outputs, "complete-results.zip")}}
     if "collection_scope" in inputs:
         report["collection_scope"] = inputs["collection_scope"]
+    if "congress" in inputs:
+        report["congressional"] = results_congress.summary(inputs["congress"])
     write(work / "report.json", report)
     return report
+
+
+def refresh_congress(registry_path, work, previous, now=None, offline=False):
+    registry_path, work = Path(registry_path), Path(work)
+    config, now = registry_config(registry_path), now or datetime.now(timezone.utc)
+    previous = hydrate_collector_state(previous)
+    if ("congressional" not in config or len(previous.get("districts", {})) != 435
+            or not all(key in previous for key in ("feeds", "house", "granular", "directories", "source_stops"))
+            or set(previous["house"]) != set(previous["districts"])
+            or set(previous["directories"]) != set(STATES)):
+        raise ValueError("Congressional refresh requires the complete accepted collector state")
+    baseline = baseline_inputs(registry_path.parent / config["baseline"]["root"], config["baseline"])
+    extras = {}
+    for name, declaration in config.get("accepted_queries", {}).items():
+        body = (registry_path.parent / str(relative(declaration["file"]))).read_bytes()
+        if pin(body) != {key: declaration[key] for key in ("bytes", "sha256")}:
+            raise ValueError("Accepted query changed")
+        extras[str(relative(name))] = body
+    stopped = merge_stops(previous["source_stops"], config["source_stops"],
+                         read(work / "source-stops.json") if (work / "source-stops.json").exists()
+                         else config["source_stops"])
+    collector = Collector(work, {}, stopped, now, offline=offline)
+    inputs = copy.deepcopy(previous)
+    inputs["congress"] = results_congress.collect(
+        collector, previous.get("congress"), config["congressional"])
+    inputs["source_stops"] = collector.stopped
+    inputs["collection_scope"] = {
+        "kind": "congressional_bulk_refresh", "chambers": ["house", "senate"],
+        "all_noncongressional_inputs_retained_not_reacquired": True}
+    return export_collection(work, config, baseline, inputs, extras, now, collector.attempts)
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None):
@@ -1044,6 +1101,13 @@ def main():
     capture.add_argument("--ref", default="results-data")
     capture.add_argument("--github-repository", default="hanshanley/voter-participation")
     capture.add_argument("--offline", action="store_true")
+    congress = commands.add_parser("refresh-congress")
+    congress.add_argument("--registry", type=Path, required=True)
+    congress.add_argument("--work-dir", type=Path, required=True)
+    congress.add_argument("--repository", type=Path, default=ROOT)
+    congress.add_argument("--ref", default="results-data")
+    congress.add_argument("--github-repository", default="hanshanley/voter-participation")
+    congress.add_argument("--offline", action="store_true")
     selected = commands.add_parser("refresh-selected")
     selected.add_argument("--registry", type=Path, required=True)
     selected.add_argument("--work-dir", type=Path, required=True)
@@ -1071,6 +1135,9 @@ def main():
     if args.command == "collect":
         _, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
         result = collect(args.registry, args.work_dir, previous, offline=args.offline)
+    elif args.command == "refresh-congress":
+        _, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
+        result = refresh_congress(args.registry, args.work_dir, previous, offline=args.offline)
     elif args.command == "refresh-selected":
         _, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
         result = refresh_selected(args.registry, args.work_dir, previous, args.sources.split(","))

@@ -1,0 +1,29 @@
+{
+  "contract": "participation.congressional_provider.v1",
+  "provider": "NPR national election results / AP",
+  "election_date": "2026-11-03",
+  "feeds": {
+    "house": {
+      "url": "https://apps.npr.org/2026-election-results/data/house.json",
+      "index_url": "https://apps.npr.org/2026-election-results/house.html"
+    },
+    "senate": {
+      "url": "https://apps.npr.org/2026-election-results/data/senate.json",
+      "index_url": "https://apps.npr.org/2026-election-results/senate.html"
+    }
+  },
+  "declaration_url": "https://apps.npr.org/2026-election-results/app.js",
+  "declaration_basis": "Both published national pages declare app.js; its House and Senate components explicitly fetch these two national JSON inventories.",
+  "date_qualification": "Election date is reviewed index context, not a native per-race date field. Count clocks are native updated epoch milliseconds, never retrieval times.",
+  "party_rule": "Exact native Dem=D and GOP=R. All other literal labels, aggregate Other and unknown counts remain distinct.",
+  "nonvoting_house_seats": "Kept separately if advertised; never counted among the 435 voting districts.",
+  "senate_baseline_rule": "Only the delivered explicitly reviewed 2020 regular-seat-cycle FEC comparison binds Class II. Special/unexpired, intervening-special and unmatched stages remain held.",
+  "source_stops": {
+    "urls": [
+      "https://civicapi.org/api-documentation",
+      "https://civicapi.org/"
+    ],
+    "hosts": [],
+    "prefixes": []
+  }
+}

@@ -13,6 +13,11 @@ on:
         description: "Optional comma-separated registered sources; reuse all other accepted inputs"
         required: false
         type: string
+      congressional_only:
+        description: "Refresh both national congressional inventories; retain all participation sources"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   actions: read
@@ -74,6 +79,7 @@ jobs:
           tests/test_results_pdf_cole.py
           tests/test_results_pdf_platte.py
           tests/test_supported_analytical_release.py
+          tests/test_results_congress.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
 
       - name: Reuse conditional HTTP cache
@@ -90,8 +96,13 @@ jobs:
         continue-on-error: true
         env:
           REFRESH_SOURCES: ${{ inputs.refresh_sources }}
+          CONGRESSIONAL_ONLY: ${{ inputs.congressional_only }}
         run: |
-          if [ -n "$REFRESH_SOURCES" ]; then
+          if [ "$CONGRESSIONAL_ONLY" = "true" ]; then
+            python -m scripts.results_intake refresh-congress \
+              --registry data/results-intake/registry.json \
+              --work-dir "$RUNNER_TEMP/election-intake"
+          elif [ -n "$REFRESH_SOURCES" ]; then
             python -m scripts.results_intake refresh-selected \
               --sources "$REFRESH_SOURCES" \
               --registry data/results-intake/registry.json \
@@ -155,6 +166,11 @@ jobs:
                   out.write(f"Jurisdictions: {data['jurisdictions']}. ")
                   out.write(f"House districts with available returns: {data['house_districts_available']}")
                   out.write(f"/{data['house_districts_declared']}.\n\n")
+                  for chamber, counts in data.get("congressional", {}).items():
+                      out.write(f"National {chamber}: {counts['discovered']} discovered; ")
+                      out.write(f"{counts['refreshed']} source-verified; {counts['retained']} retained; ")
+                      out.write(f"{counts['held']} held; {counts['unknown_count_races']} unknown-count races. ")
+                      out.write(f"Nonvoting House seats: {counts['nonvoting_house_seats']}.\n\n")
                   body = publication.read_bytes() if publication.exists() else b""
                   status = json.loads(body)["status"] if body else "not completed"
                   out.write(f"Data publication: **{status}**. ")

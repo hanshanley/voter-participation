@@ -38,6 +38,7 @@ CODE_PATHS = (
     "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py",
+    "results_congress.py", "results_house.py",
     "supported_analytical_release.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
@@ -437,6 +438,12 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         artifacts.update(release["files"])
         estimates["house_sources"]["supported_release"] = release["descriptor"]
         result["release_review"] = seed["supported_release_review"]
+        if "congress" in snapshot:
+            from scripts.results_congress import runtime as congressional_runtime
+            congressional_files, declaration = congressional_runtime(
+                snapshot["congress"], seed["supported_release_review"])
+            artifacts.update(congressional_files)
+            result["congressional"] = declaration
     return result
 
 
@@ -720,6 +727,11 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "house_sources": bound["house_sources"], "complete_download": download,
         "source_models_refitted": False, "geographic_joins_changed": False,
         "all_states_certified_or_precinct_complete": False}
+    if "congressional" in compiled:
+        manifest["congressional"] = {
+            **compiled["congressional"],
+            "base_url": f"https://raw.githubusercontent.com/{github_repository}/{staged}/{model_prefix}",
+            "complete_download": download}
     activation = {"catalog.json": encoded(candidate), "automatic/latest.json": encoded(manifest)}
     if "promoted" not in journal:
         journal["promoted"] = publisher.commit(publisher.tree(staged, activation), staged,
