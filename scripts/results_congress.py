@@ -335,7 +335,7 @@ def exports(congress):
         ("races", races), ("candidates", candidates), ("coverage", coverage))}
 
 
-def comparisons(congress, review):
+def comparisons(congress, review, historical_senate=None):
     previous_house = {row["district"]: row for row in review["previous_district_queries"]}
     old_models = json.loads(review["frozen_inputs"]["existing_other_office_models"]["body"])
     previous_senate = {row["state_code"]: row for row in old_models["rows"] if row["office"] == "senate"}
@@ -370,7 +370,29 @@ def comparisons(congress, review):
                 reasons.append("No reviewed previous same-district House query")
         else:
             source = (previous_senate.get(race["state_code"]) or {}).get("reported_comparison", {})
-            if (race["seat"] == "2" and race["election_kind"] == "regular"
+            if historical_senate is not None:
+                from scripts.congressional_baselines import select_reference
+                reference = select_reference(historical_senate, race["state_code"], race["seat"])
+                if reference is None:
+                    reasons.append("No reviewed same-seat historical election")
+                else:
+                    previous = reference["counts"]
+                    previous_candidates = reference["candidate_facts"]
+                    baseline = {
+                        "year": reference["year"], "cycle_year": reference["cycle_year"],
+                        "stage": reference["stage"], "seat": reference["seat"],
+                        "election_kind": reference["election_kind"],
+                        "source_urls": reference["source_urls"],
+                        "comparison_policy": "latest_completed_same_seat_final_election_to_final_election",
+                        "previous_stage_differs": reference["stage"] != race["stage"],
+                        "previous_regular_special_differs": reference["election_kind"] != race["election_kind"],
+                    }
+                    if reference["ranked_choice"]:
+                        reasons.append("Previous RCV round is not qualified")
+                    for party in "DR":
+                        if reference["major_party_nominees"][party] != 1:
+                            reasons.append("Previous " + party + " nominee is absent or not unique")
+            elif (race["seat"] == "2" and race["election_kind"] == "regular"
                     and source.get("baseline_cycle_year") == 2020
                     and source.get("scope") == "Statewide regular-seat candidate counts; special/unexpired seat rows excluded"):
                 previous = source["previous"]
@@ -501,8 +523,30 @@ def house_state_comparisons(congress, review):
     return result
 
 
-def runtime(congress, review):
-    compared = comparisons(congress, review)
+def legacy_comparison_view(rows):
+    result = copy.deepcopy(rows)
+    for row in result:
+        if (row["qualified_comparison"] and row["chamber"] == "senate"
+                and (row["seat"] != "2" or row["election_kind"] != "regular"
+                     or row["baseline"]["seat"] != "2"
+                     or row["baseline"]["stage"] != row["stage"])):
+            row.update(
+                reviewed_qualified_comparison=True,
+                reviewed_qualified_margin_change_pp=row["qualified_margin_change_pp"],
+                qualified_comparison=False, qualified_margin_change_pp=None,
+                comparison_holds=[
+                    "Reviewed same-seat comparison is qualified in congress-comparisons.csv; "
+                    "the deployed v1 reader can badge only regular Class II, same-stage comparisons. "
+                    "Raw counts and changes remain available here."
+                ],
+                legacy_reader_display_limit=True,
+            )
+    return result
+
+
+def runtime(congress, review, analytical_review=None, estimates=None):
+    history = analytical_review["historical_senate"] if analytical_review else None
+    compared = comparisons(congress, review, history)
     states = house_state_comparisons(congress, review)
     races, candidates, coverage = tables(congress)
     payload = {"contract": CONTRACT, "election_date": ELECTION, "races": compared,
@@ -519,6 +563,48 @@ def runtime(congress, review):
              **{"congressional/" + name: body for name, body in exports(congress).items()},
              "congressional/congress-comparisons.csv": csv_bytes(compared),
              "congressional/congress-house-states.csv": csv_bytes(states)}
+    if analytical_review is not None:
+        decisions = (estimates or {}).get("decisions", {}).get("states", [])
+        handoff = (estimates or {}).get("congressional_analytical_handoff", {})
+        next_seed = (estimates or {}).get("artifacts", {}).get("rolling/next-seed.json.gz", {}).get("content", {})
+        current_models = {key: scenario["accepted_result"] for key, scenario in next_seed.get("scenarios", {}).items()}
+        files.update({
+            "congressional/analytical-review.json.gz": compressed(analytical_review),
+            "congressional/congress-candidate-crosswalk.csv": csv_bytes(analytical_review["candidate_crosswalk"]),
+            "congressional/congress-analytical-decisions.csv": csv_bytes(decisions),
+            "congressional/congress-race-analytical-decisions.csv": csv_bytes(
+                list(handoff.get("races", {}).values())),
+            "congressional/congress-scientific-eligibility.csv": csv_bytes([
+                {"state_code": state, **decision} for state, decision in analytical_review["states"].items()]),
+            "congressional/senate-historical-queries.json.gz": compressed(history),
+            "congressional/senate-historical-candidates.csv": csv_bytes([
+                row for dataset in history["datasets"] for row in dataset["candidate_stage_records"]]),
+            "congressional/conditional-results.json.gz": compressed(current_models),
+        })
+        query = decode(files["congressional/queries.json.gz"])
+        query.update(
+            reviewed_analytical_policy=analytical_review,
+            current_analytical_decisions={
+                "states": handoff.get("states", {}), "races": handoff.get("races", {})},
+            reviewed_race_comparisons=compared,
+            conditional_results=current_models,
+        )
+        files["congressional/queries.json.gz"] = compressed(query)
+        payload["analytical_handoff"] = {
+            "review_version": analytical_review["version"], "states": decisions,
+            "Senate_models": analytical_review["Senate_models"],
+            "legacy_candidates_preserved": len(analytical_review["legacy_candidates_preserved"]),
+        }
+        payload["reviewed_races"] = compared
+        payload["races"] = legacy_comparison_view(compared)
+        payload["scientific_comparison_coverage"] = {
+            "reviewed_qualified_senate": sum(
+                row["chamber"] == "senate" and row["qualified_comparison"] for row in compared),
+            "legacy_reader_qualified_senate": sum(
+                row["chamber"] == "senate" and row["qualified_comparison"] for row in payload["races"]),
+            "reviewed_qualified_house_states": sum(row["qualified_comparison"] for row in states),
+        }
+        files["congressional/results.json.gz"] = compressed(payload)
     decoded = encoded(payload)
     descriptor = {"contract": CONTRACT, "path": "congressional/results.json.gz",
                   **pin(files["congressional/results.json.gz"]), "compression": "gzip",

@@ -48,13 +48,15 @@ House statewide comparisons use the complete previous House inventory.
 District-ID arithmetic remains visible but is held when cross-year boundary
 stability is not qualified. Changed party coverage, unopposed races, multiple
 nominees, missing counts, stages and RCV rounds retain their own qualifications.
-The reviewed 2020 regular-seat-cycle Senate baseline binds Class II only;
-special/unexpired or intervening-special seats cannot borrow it. Native clocks
+The original 2020 regular-seat-cycle Senate baseline binds Class II only;
+the reviewed analytical successor below adds complete official, seat-aware inputs.
+Native clocks
 are source epochs; the election date is explicitly the reviewed national-index
 context, not an invented per-race field. Candidate votes are never turnout.
 
-New returns do not automatically replace frozen behavioral-model inputs.
-Those require a separately reviewed candidate/source/frame match. Existing
+New returns do not replace frozen behavioral-model inputs without a reviewed
+candidate/source/frame match. The versioned successor below supplies that match
+for compatible existing frames. Existing
 scientific seeds, fitted models, participation frames and immutable downloads
 are preserved.
 
@@ -71,7 +73,66 @@ participation sources as well. The existing minute-31 website workflow publishes
 data only, atomically, through `participation-data`; later returns require
 neither an assistant nor a Pages build.
 
-### Delivered coverage and verification
+### Reviewed automatic analytical handoff
+
+`data/results-intake/analytical-handoff/review.json.gz`, version `20261116-01`,
+reviews the complete provider inventory against all 1,401 retained legacy
+candidate records and all 50 state decisions. Initial matching requires
+district/office/election/stage, literal-party classification and a reviewed
+name rule; names alone cannot grant scientific eligibility. Subsequent hourly
+revisions use frozen provider race/candidate IDs, literal names/parties/roles,
+source URLs and monotone native clocks, not repeated name matching or manual
+race approval. Later-clock decreases and zeroes are accepted; missing counts,
+new identities, outages, changed party coverage and clock rollback hold the
+affected analytical frame.
+
+Arkansas, Tennessee and Vermont have compatible complete D/R/O endpoints under
+this review. Their subsequent revisions automatically recondition all nine
+existing profile/family variants, without fitting respondents. In the retained
+real-input proof Arkansas and Tennessee change numerically; Vermont is a genuine
+unchanged endpoint. The old 33-qualified/17-held science mask remains frozen.
+The other 30 formerly qualified states keep explicitly **FROZEN ANALYTICAL
+RESULT** labels, original native clocks and old numerics, separately from
+fresh recorded returns. The 17 original scientific holds remain; none is
+promoted by the bridge. Arizona alone explains the old 33 versus current 32
+state masks: AZ-03 changed major-party coverage. Hawaii/Wyoming retain their
+protected official source frames. Other states have specific candidate-name,
+new-candidate or unresolved aggregate-Other frame differences in the complete
+decision export. An Other bucket is not allocated to omitted candidates:
+every old minor-candidate identity/count remains dated and downloadable.
+
+The complete FEC 2020/2022 Senate workbooks and complete Nebraska 2024 canvass
+are pinned and included once. Rules select the latest completed **same-seat
+final election**, retaining regular/special and general/runoff identities.
+This resolves Florida/Ohio Class III, Oklahoma 2022 special, Nebraska 2024
+special, Oregon's literal `DEM/IP/WF` classification, and an explicitly labeled
+Georgia decisive-runoff-to-final-general comparison. Reviewed Senate swings
+increase **24 to 28**: FL/OH/OK/OR/GA resolve, while Louisiana acquires a genuine
+prior multiple-nominee hold. Nebraska's prior-seat gap resolves but its current
+absent-D hold remains. Remaining Senate holds are AK/AR/ID/LA/ME/NE/SD;
+RCV, absent-party and multiple-nominee reasons remain independent.
+All 435 House district comparisons remain raw/boundary-held.
+
+The deployed v1 reader can badge only regular Class II, same-stage Senate
+comparisons. With **no Pages deployment**, it displays all current counts and
+raw changes, 25 compatible badges and an explicit reader-limit explanation
+for the other three reviewed comparisons. All **28** qualified comparisons
+are in `congress-comparisons.csv` and the existing complete-query download;
+seat or stage identities are never falsified to satisfy the old reader.
+Existing Senate conditional models remain separately dated: no reviewed
+seat/stage/provider-to-prior bridge exists for them.
+
+The existing query link now includes the complete policy/crosswalk, latest
+race/state decisions, official seat references, all reviewed comparisons and
+all nine complete conditional results. Separate CSVs additionally expose
+candidate crosswalks, scientific eligibility, current analytical decisions
+and every historical Senate candidate. The same complete runtime ZIP contains
+all originals, public synthetic priors, frozen inputs, code and exact outputs.
+Ordinary replay uses included compiled native facts; optional regeneration
+of official baselines requires the existing `openpyxl>=3.1` and
+`pypdf==6.16.0` source-reader dependencies. Neither path refits respondents.
+
+### Previously delivered collector coverage and verification
 
 Two actual hosted bulk collections, 43879718273 and 43881898831, each
 discovered/refreshed 435 House and 35 Senate contests, zero retained/held in

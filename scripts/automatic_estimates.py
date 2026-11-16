@@ -1092,7 +1092,8 @@ def _advanced_seed(snapshot, seed, decisions, artifacts, participation):
         "retained_fresh_unchanged",
     }
     accepted_states = {
-        row["state_code"] for row in decisions if row["decision"] in accepted_actions
+        row["state_code"] for row in decisions
+        if row["decision"] in accepted_actions and not row.get("provider_bridge")
     }
     incoming = {state: {} for state in accepted_states}
     for row in snapshot.get("house_candidates", []):
@@ -1191,13 +1192,17 @@ def advance_seed(snapshot, seed, result):
     """Create the safe last-good seed for the next automatic run."""
     if result.get("contract") != CONTRACT:
         raise ValueError("Wrong automatic-estimates result contract")
-    return _advanced_seed(
+    advanced = _advanced_seed(
         snapshot,
         seed,
         result["decisions"]["states"],
         result["artifacts"],
         result["participation"],
     )
+    if "congressional_analytical_handoff" in result:
+        advanced["congressional_analytical_last_good"] = copy.deepcopy(
+            result["congressional_analytical_handoff"]["last_good"])
+    return advanced
 
 
 def build(snapshot, seed):
@@ -1209,6 +1214,11 @@ def build(snapshot, seed):
     ):
         raise ValueError("Wrong results-intake snapshot contract or election")
     decisions, endpoints, recorded, global_issues = _house_decisions(snapshot, seed)
+    handoff = None
+    if "congressional_analytical_review" in seed:
+        from scripts.congressional_analytical_bridge import evaluate, apply_decisions
+        handoff = evaluate(snapshot, seed)
+        apply_decisions(decisions, endpoints, recorded, handoff)
     changed_states = {
         row["state_code"] for row in decisions
         if row["decision"] == "changed_recompute_behavioral"
@@ -1222,6 +1232,9 @@ def build(snapshot, seed):
             result = _incremental_result(
                 scenario["prior"], scenario["accepted_result"], endpoints, changed_states
             )
+            if handoff is not None:
+                from scripts.congressional_analytical_bridge import annotate_result
+                annotate_result(result, handoff)
             profile_results[profile][family] = result
             result_path = "house/" + key + "/complete-result.json.gz"
             viewer_path = "house/" + key + "/viewer-data.json.gz"
@@ -1379,6 +1392,8 @@ def build(snapshot, seed):
     next_seed = _advanced_seed(
         snapshot, seed, decisions, artifacts, participation
     )
+    if handoff is not None:
+        next_seed["congressional_analytical_last_good"] = handoff["last_good"]
     next_seed_artifact = _artifact(next_seed)
     artifacts["rolling/next-seed.json.gz"] = next_seed_artifact
     global_version = hashlib.sha256(_encoded({
@@ -1445,7 +1460,7 @@ def build(snapshot, seed):
         },
         "atomic_rejection_required_if_any_selected_body_pin_or_identity_fails": True,
     }
-    return {
+    answer = {
         "contract": CONTRACT,
         "election_date": ELECTION_DATE,
         "house_sources": house_sources,
@@ -1463,3 +1478,6 @@ def build(snapshot, seed):
         "source_raw_respondents_or_private_fine_cells_exported": False,
         "preserved_original_model_count": seed["provenance"]["preserved_original_model_count"],
     }
+    if handoff is not None:
+        answer["congressional_analytical_handoff"] = handoff
+    return answer

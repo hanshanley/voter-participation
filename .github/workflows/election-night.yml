@@ -80,6 +80,7 @@ jobs:
           tests/test_results_pdf_platte.py
           tests/test_supported_analytical_release.py
           tests/test_results_congress.py
+          tests/test_congressional_analytical_bridge.py tests/test_congressional_baselines.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
 
       - name: Reuse conditional HTTP cache

@@ -39,6 +39,7 @@ CODE_PATHS = (
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py",
     "results_congress.py", "results_house.py",
+    "congressional_analytical_bridge.py", "congressional_baselines.py",
     "supported_analytical_release.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
@@ -441,9 +442,13 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         if "congress" in snapshot:
             from scripts.results_congress import runtime as congressional_runtime
             congressional_files, declaration = congressional_runtime(
-                snapshot["congress"], seed["supported_release_review"])
+                snapshot["congress"], seed["supported_release_review"],
+                analytical_review=seed.get("congressional_analytical_review"),
+                estimates=estimates)
             artifacts.update(congressional_files)
             result["congressional"] = declaration
+    if "congressional_analytical_review" in seed:
+        result["congressional_analytical_review"] = seed["congressional_analytical_review"]
     return result
 
 
@@ -472,11 +477,19 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         members["inputs/model-seed/" + relative(name)] = body
     if "release_review" in compiled:
         members["inputs/supported-release-review.json"] = encoded(compiled["release_review"])
+    if "congressional_analytical_review" in compiled:
+        from scripts.congressional_analytical_bridge import DATA_PATHS
+        members["inputs/congressional-analytical-review.json"] = encoded(
+            compiled["congressional_analytical_review"])
+        for name in DATA_PATHS:
+            members["inputs/reviewed-congressional-sources/" + name] = (ROOT / name).read_bytes()
     for name in CODE_PATHS:
         members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_automatic_runtime.py", "test_results_granular.py",
                  "test_automatic_estimates.py", "test_automatic_native_refresh.py",
-                 "test_current_source_reconciliation.py", "test_supported_analytical_release.py"):
+                 "test_current_source_reconciliation.py", "test_supported_analytical_release.py",
+                 "test_congressional_analytical_bridge.py", "test_congressional_baselines.py",
+                 "test_results_congress.py"):
         path = ROOT / "tests" / name
         if path.is_file():
             members["code/tests/" + name] = path.read_bytes()
@@ -534,6 +547,8 @@ def replay(package, output):
         raise ValueError("Incomplete rolling last-good seed in scientific packet")
     if "inputs/supported-release-review.json" in manifest:
         seed["supported_release_review"] = read(package / "inputs/supported-release-review.json")
+    if "inputs/congressional-analytical-review.json" in manifest:
+        seed["congressional_analytical_review"] = read(package / "inputs/congressional-analytical-review.json")
     source_packet = (package / "inputs/complete-source-results.zip").read_bytes()
     snapshot = hydrate_granular_sources(
         read(package / "inputs/snapshot.json"), source_packet)
@@ -627,10 +642,16 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     seed_dir = Path(seed_dir or ROOT / "data/results-intake/model-seed")
     review_path = ROOT / "data/results-intake/reviewed-eligibility.json"
     release_review = read(review_path) if review_path.exists() else None
+    from scripts.congressional_analytical_bridge import DATA_PATHS, REVIEW_PATH, load_review
+    analytical_path = ROOT / REVIEW_PATH
+    analytical_review = load_review(ROOT) if analytical_path.exists() else None
     processing = digest(encoded({
         "code": {name: pin((ROOT / "scripts" / name).read_bytes()) for name in CODE_PATHS},
         "seed": {name: pin(body) for name, body in seed_files(seed_dir).items()},
-        "supported_release_review": pin(encoded(release_review)) if release_review else None}))
+        "supported_release_review": pin(encoded(release_review)) if release_review else None,
+        "congressional_analytical_review": {
+            name: pin((ROOT / name).read_bytes()) for name in DATA_PATHS
+        } if analytical_review else None}))
     previous = publisher.git("show", parent + ":automatic/latest.json", check=False) if parent else ""
     if previous:
         previous = json.loads(previous)
@@ -648,6 +669,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     seed, seed_inputs = select_seed(previous or None, seed_dir)
     if release_review is not None:
         seed["supported_release_review"] = release_review
+    if analytical_review is not None:
+        seed["congressional_analytical_review"] = analytical_review
     runtime_snapshot = hydrate_granular_sources(snapshot, source["complete-results.zip"])
     compiled = compile_runtime(
         runtime_snapshot, counts, native, seed, source["complete-results.zip"])
@@ -675,7 +698,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         raise ValueError("Fresh extracted replay did not verify every output offline")
     write(work / "report.json", {"version": version, "input_results_version": pointer["version"],
         "local_changes": compiled["local_changes"], "complete_download": pin(packet),
-        "estimate_summary": compiled["estimates"].get("decision_summary"),
+        "estimate_summary": compiled["estimates"].get("decisions", {}).get("summary"),
         "offline_replay": proof, "website_builds_started": 0, "source_models_refitted": False})
     if not publish:
         return {"status": "prepared_not_published", "version": version, "work_dir": str(work)}
