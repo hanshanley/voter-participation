@@ -71,13 +71,67 @@ participation sources as well. The existing minute-31 website workflow publishes
 data only, atomically, through `participation-data`; later returns require
 neither an assistant nor a Pages build.
 
+### Delivered coverage and verification
+
+Two actual hosted bulk collections, 43879718273 and 43881898831, each
+discovered/refreshed 435 House and 35 Senate contests, zero retained/held in
+either chamber. There are 1,226 candidate observations: 1,121 House and
+105 Senate, with 33 regular and two separate special Senate contests.
+No nonvoting House seats are advertised in this particular national inventory.
+
+The first runtime, 43882019877, delivered all 470 contests and 1,226 candidate
+counts/parties with exact native clocks. Its identical-input hosted rerun,
+43883308494, was an unchanged no-op: same runtime/data commit, zero Pages
+builds. The second source collection was different: 27 candidate counts changed
+in 14 House races and six further races changed their native clock only.
+These are real bulk-source updates, separate from the controlled
+House-minus-seven/Senate-plus-eleven propagation tests.
+
+Runtime 43885363583 published that second batch. Independent acceptance
+verified all 139 offline outputs, seven public congressional exports, 1,226
+candidate counts/parties and 470 native clocks. The actual desktop/mobile
+production consumer passed against runtime `196439d6`; both numerical updates
+started zero Pages builds. Explicit HTTP-503/checksum failure and real retry,
+plus the dated no-JavaScript full-package fallback, also passed.
+
+Recorded qualification is 32 statewide House comparisons and 24 same-seat
+Senate comparisons. Eighteen House state and eleven Senate holds remain
+inspectable, as do all 435 raw, boundary-held district changes. These are not
+the frozen behavioral model's separate 33/17 qualification decisions.
+New candidate returns lack a reviewed provider/candidate/source-frame bridge
+to that scientific input, and do not supply all-ballot participation or a
+compatible group denominator. Existing fits and probabilities are not changed.
+
+The complete source packages reproduce 18 outputs; the complete runtime
+reproduces 139, including seven new congressional products. Actual hosted
+collector tests passed 688 cases with 11 optional skips and 17 subtests.
+The extracted collector suite and canonical installed source each pass
+31 congressional behavior tests, including additions, revised/decreased
+counts, unchanged data, partial outages, missing candidates, last-good
+retention, special seats, runoff and RCV separation.
+
+The existing explorer was updated once for the new consumer. Subsequent
+numerical publication is data-only. Its actual Pages artifact preserves all
+437 previous complete-download pins, 5,386 previous table rows and three
+embedded scientific payloads; actual payload 994,287,197 bytes and raw tar
+996,884,480 bytes both remain strictly below 1,000,000,000.
+The no-JavaScript/failure fallback is a specifically dated saved complete
+release, not a falsely current table; live full download links advance
+automatically.
+
+[Complete coverage/download pins](../data/participation-access/20261116-congressional-automatic-01/coverage-and-downloads.json)
+and [hosted/offline acceptance](../data/participation-access/20261116-congressional-automatic-01/acceptance.json)
+retain actual run IDs and distinguish fixtures, real acquisition, no-op,
+offline reproduction and actual production browser verification.
+
 ## Supported analytical release and selective recovery
 
 The accepted finite release is source `30bb6e95` / runtime `9c7117fb`.
 [Exact coverage and complete downloads](../data/participation-access/20261116-supported-analytical-release-01/coverage-and-downloads.json)
 include 18 compressed CSV/query products in the same complete numerical
 archive, with native dates, qualifications and explicit omitted-frame reasons.
-There are now 132 complete runtime outputs, versus the previous 113.
+That preserved version has 132 complete runtime outputs, versus its previous 113;
+the congressional successor above has 139.
 This increases integrated/exported product coverage, not the number of people
 observed or newly qualified comparisons.
 
@@ -88,7 +142,8 @@ The reviewed release adds complete administrative/rate, historical survey,
 mechanism CSVs to the same runtime archive. Each changed observation has a
 source-to-analysis decision explaining which analytical prerequisite is absent.
 Existing Senate/governor snapshots and complete queries remain a distinct frozen
-product with their own source clocks and qualifications, not hourly refreshed races.
+product with their own source clocks and qualifications, separate from the new
+hourly congressional returns.
 Local counts do not become statewide registered controls or choice histories.
 No new fit or statewide-to-local allocation is performed.
 

@@ -1,0 +1,2070 @@
+{
+  "actual_hosted_collector_tests": {
+    "optional_skips": 11,
+    "passed": 688,
+    "subtests_passed": 17
+  },
+  "actual_live_revisions": {
+    "candidates_with_count_changes": 27,
+    "clock_only_races": 6,
+    "count_changes_by_chamber": {
+      "house": 14
+    },
+    "first_source_run": 43879718273,
+    "races_with_count_changes": 14,
+    "races_with_new_native_clocks": 20,
+    "second_source_run": 43881898831,
+    "source_changed_not_an_unchanged_collection": true
+  },
+  "actual_unchanged_runtime": {
+    "actual_hosted_run": 43883308494,
+    "no_replay_or_publication_repeated": true,
+    "passed": true,
+    "result": {
+      "data_commit": "8fae9b9458f9a470cd674f7d33b8d10eaf524068",
+      "status": "unchanged",
+      "version": "a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247",
+      "website_builds_started": 0
+    }
+  },
+  "canonical_congressional_tests_passed": 31,
+  "controlled_revision_proof": {
+    "actual_explorer_validator_accepts_both_versions": true,
+    "actual_preceding_runtime": "9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288",
+    "all_participation_count_and_native_bytes_unchanged": true,
+    "candidate_rows": 1226,
+    "changed_revision_outputs": [
+      "congressional/results.json.gz",
+      "congressional/queries.json.gz",
+      "congressional/congress-races.csv",
+      "congressional/congress-candidates.csv",
+      "congressional/congress-coverage.csv",
+      "congressional/congress-comparisons.csv",
+      "congressional/congress-house-states.csv"
+    ],
+    "complete_runtime_output_count": 139,
+    "controlled_revision_behavioral_model_bytes_unchanged": true,
+    "controlled_revisions": {
+      "house": {
+        "candidate_id": "171283",
+        "delta": -7,
+        "race_id": "1005",
+        "votes": 94933
+      },
+      "senate": {
+        "candidate_id": "171276",
+        "delta": 11,
+        "race_id": "1755",
+        "votes": 759332
+      }
+    },
+    "initial_changes_to_previous_model_outputs": [
+      "rolling/next-seed.json.gz",
+      "release/source-to-analysis-effects.csv.gz",
+      "release/coverage-and-eligibility.json"
+    ],
+    "normalized_races": 470,
+    "passed": true,
+    "retained_sources_not_live_collection": true,
+    "unchanged_second_collection_exact_noop": true,
+    "uses_actual_accepted_next_seed": {
+      "bytes": 20922201,
+      "sha256": "cc1ce40a94132bab3a57add14efda2f973075aec956b1d16534f011aac8ee14f"
+    }
+  },
+  "controlled_revisions_are_not_live_returns": true,
+  "passed": true,
+  "portable_congressional_tests_passed": 31,
+  "real_hosted_runtime_runs": {
+    "43882019877": {
+      "complete_download": {
+        "bytes": 213995007,
+        "immutable": true,
+        "media_type": "application/zip",
+        "sha256": "a422b133742ecdb7f268b08247b758aada8ed32ff25ad5ac3c3bfe989306e8bf",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/complete-analysis.zip",
+        "verified_anonymously": true
+      },
+      "input_results_version": "1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9",
+      "native_clocks_exact": 470,
+      "offline_replay": {
+        "all_bytes_exact": true,
+        "command": [
+          "python3",
+          "code/reproduce.py",
+          "--replay-package",
+          ".",
+          "--output",
+          "reproduced"
+        ],
+        "log": {
+          "bytes": 379,
+          "sha256": "3eb0677df312cffd39c5844bac9461ebd493751cd600d9f567943ac439ed8b96"
+        },
+        "outputs": 139,
+        "selected_python_network_dns_and_child_process_apis_blocked": true
+      },
+      "passed": true,
+      "public_bodies": {
+        "congressional/congress-candidates.csv": {
+          "bytes": 462725,
+          "sha256": "1016375476ada2c820ccd0e8b769c4cbc5253b90c603f59c99f382f7118a12cb",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e8d8bc9405b3c0bc258ff2e8ea61f5dcd93657e7/automatic/versions/a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/congressional/congress-candidates.csv"
+        },
+        "congressional/congress-comparisons.csv": {
+          "bytes": 963257,
+          "sha256": "9fa10768a04b69e0ec23cc95fdc430e1645c1a84d9cfcdf80e8a37aa78eec58b",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e8d8bc9405b3c0bc258ff2e8ea61f5dcd93657e7/automatic/versions/a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/congressional/congress-comparisons.csv"
+        },
+        "congressional/congress-coverage.csv": {
+          "bytes": 80804,
+          "sha256": "8637a6ccdeb9819a98266ef61273a674281baf875a703a34fa138be80be4015e",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e8d8bc9405b3c0bc258ff2e8ea61f5dcd93657e7/automatic/versions/a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/congressional/congress-coverage.csv"
+        },
+        "congressional/congress-house-states.csv": {
+          "bytes": 80709,
+          "sha256": "521b1b362d8534f2c64553dea2549364d51040c47048d7e5d23d9c363eff180a",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e8d8bc9405b3c0bc258ff2e8ea61f5dcd93657e7/automatic/versions/a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/congressional/congress-house-states.csv"
+        },
+        "congressional/congress-races.csv": {
+          "bytes": 257020,
+          "sha256": "1ec178f5515a1047fc39869ce595a4445e7f3c1fa820929e198f86f8733f9219",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e8d8bc9405b3c0bc258ff2e8ea61f5dcd93657e7/automatic/versions/a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/congressional/congress-races.csv"
+        },
+        "congressional/queries.json.gz": {
+          "bytes": 206985,
+          "sha256": "bfc3fe02f71893d15e32f672eb0039cc065a58299d140339f57f2f0f34e84504",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e8d8bc9405b3c0bc258ff2e8ea61f5dcd93657e7/automatic/versions/a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/congressional/queries.json.gz"
+        },
+        "congressional/results.json.gz": {
+          "bytes": 186142,
+          "sha256": "31aae13ffeed0b8223cb07cb0c182b0fc3b9827ed21bcfe57504d4c673afd24e",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/e8d8bc9405b3c0bc258ff2e8ea61f5dcd93657e7/automatic/versions/a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/congressional/results.json.gz"
+        }
+      },
+      "qualified_house_state_comparisons": 32,
+      "qualified_senate_comparisons": 24,
+      "source_to_runtime_candidates_exact": 1226,
+      "summary": {
+        "house": {
+          "discovered": 435,
+          "held": 0,
+          "nonvoting_house_seats": 0,
+          "refreshed": 435,
+          "retained": 0,
+          "unknown_count_races": 0
+        },
+        "senate": {
+          "discovered": 35,
+          "held": 0,
+          "nonvoting_house_seats": 0,
+          "refreshed": 35,
+          "retained": 0,
+          "unknown_count_races": 0
+        }
+      },
+      "version": "a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247"
+    },
+    "43885363583": {
+      "complete_download": {
+        "bytes": 213908118,
+        "immutable": true,
+        "media_type": "application/zip",
+        "sha256": "d9fb234a9f526213d6719059f1539547b63b8784177434f1c4daed1abc8acff1",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/complete-analysis.zip",
+        "verified_anonymously": true
+      },
+      "input_results_version": "f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96",
+      "native_clocks_exact": 470,
+      "offline_replay": {
+        "all_bytes_exact": true,
+        "command": [
+          "python3",
+          "code/reproduce.py",
+          "--replay-package",
+          ".",
+          "--output",
+          "reproduced"
+        ],
+        "log": {
+          "bytes": 379,
+          "sha256": "3eb0677df312cffd39c5844bac9461ebd493751cd600d9f567943ac439ed8b96"
+        },
+        "outputs": 139,
+        "selected_python_network_dns_and_child_process_apis_blocked": true
+      },
+      "passed": true,
+      "public_bodies": {
+        "congressional/congress-candidates.csv": {
+          "bytes": 462725,
+          "sha256": "288f4ccf91914b2c64fa164686da08afa353fb44b1e407b701612385c5455726",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-candidates.csv"
+        },
+        "congressional/congress-comparisons.csv": {
+          "bytes": 963252,
+          "sha256": "18ed97593e53aa73f1c23dcce5a1022343006b186d9f02fb44eeae3990198f83",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-comparisons.csv"
+        },
+        "congressional/congress-coverage.csv": {
+          "bytes": 80804,
+          "sha256": "ac89d8b41da45b497661c8b920c7e9aa8fb8ad6d5b9ba0ec23fcb08a72d6ceb0",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-coverage.csv"
+        },
+        "congressional/congress-house-states.csv": {
+          "bytes": 80710,
+          "sha256": "aefc74b90479fe0069ac72ad6126375c84f4462ee0a185dc5c1198bb0c80d05c",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-house-states.csv"
+        },
+        "congressional/congress-races.csv": {
+          "bytes": 257017,
+          "sha256": "d74627d6b525e752b682dd9fac7182796706983b120d10fdebe876b10992006c",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-races.csv"
+        },
+        "congressional/queries.json.gz": {
+          "bytes": 206916,
+          "sha256": "bbd01fe4cd00eb4a4297b3086d46274631c5c865c0c64b9c8c0e590832172b55",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/queries.json.gz"
+        },
+        "congressional/results.json.gz": {
+          "bytes": 186064,
+          "sha256": "963195183af0dd23e7d941b7fab9936b198f45c0af9144558aee730aa304be53",
+          "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/results.json.gz"
+        }
+      },
+      "qualified_house_state_comparisons": 32,
+      "qualified_senate_comparisons": 24,
+      "source_to_runtime_candidates_exact": 1226,
+      "summary": {
+        "house": {
+          "discovered": 435,
+          "held": 0,
+          "nonvoting_house_seats": 0,
+          "refreshed": 435,
+          "retained": 0,
+          "unknown_count_races": 0
+        },
+        "senate": {
+          "discovered": 35,
+          "held": 0,
+          "nonvoting_house_seats": 0,
+          "refreshed": 35,
+          "retained": 0,
+          "unknown_count_races": 0
+        }
+      },
+      "version": "196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5"
+    }
+  },
+  "real_hosted_source_runs": {
+    "43879718273": {
+      "actual_hosted_run": "https://github.com/hanshanley/voter-participation/actions/runs/43879718273",
+      "complete_download": {
+        "bytes": 58384877,
+        "sha256": "12daf680f29319a93e963a61bddea84b2e9a761ba95b3765c2c0acaf3a46bcb5",
+        "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/complete-results.zip"
+      },
+      "exported_code": {
+        "code/reproduce.py": {
+          "bytes": 139,
+          "sha256": "a646c8777d2dac79d8b949c0160dc62a46d20d080e766263f1240a971d9a78cd"
+        },
+        "code/scripts/automatic_native_refresh.py": {
+          "bytes": 58755,
+          "sha256": "16a512ca4f2cb3d8632e8c269ed0617c0a1d397317be1a468d48f8eb3dba88c5"
+        },
+        "code/scripts/current.py": {
+          "bytes": 15634,
+          "sha256": "198ed4b744b0364502cecd1c6d5f533e671a4c067eaf0779a061a2f907b7ce9f"
+        },
+        "code/scripts/download.py": {
+          "bytes": 9205,
+          "sha256": "dce6d553250682f5b59475a64e5ecfb215466ac73823681c1e6330ff903054fa"
+        },
+        "code/scripts/house_clerk_endpoints.py": {
+          "bytes": 13626,
+          "sha256": "c3730a609057b95915500686564cc3b5ca0a44b44abdb068cd1a89186d4a2c35"
+        },
+        "code/scripts/louisiana_bootstrap.py": {
+          "bytes": 9779,
+          "sha256": "4fe7be4065d98c7c3afa98836a8a7b0ccb738b263911a2fab4bc28395ffd1de0"
+        },
+        "code/scripts/louisiana_onboarding.py": {
+          "bytes": 6388,
+          "sha256": "cb567bfe58ce4c83bc1004a495646edf4b04679e3513f5f064ab5ca501796944"
+        },
+        "code/scripts/nationwide.py": {
+          "bytes": 22844,
+          "sha256": "a791f1cefe72ae62ee82f30d474df4eacb1ba1c7666122f9aa826fda646e020e"
+        },
+        "code/scripts/native_pdf.py": {
+          "bytes": 9605,
+          "sha256": "a34867d39aa64217db136f3224bc0d6fb0e93ab4efec0c316eed1382619a1ccf"
+        },
+        "code/scripts/native_products.py": {
+          "bytes": 17149,
+          "sha256": "63bc65ec7b2a51d5f33464bfa6f1fd482a0b2d1a9d649002b38d611bcdbdd5bb"
+        },
+        "code/scripts/native_tabular.py": {
+          "bytes": 10414,
+          "sha256": "a5aebb5d3f25a6ceada3453f09dff25977c9c627f3940785a0c7b9f4be3ce961"
+        },
+        "code/scripts/participation_count_additions.py": {
+          "bytes": 10337,
+          "sha256": "4b95796b8de14e4dc22df3ca28104a3ac1d990e2ca6a6be10edfc1df09426bb9"
+        },
+        "code/scripts/participation_intake/__init__.py": {
+          "bytes": 81,
+          "sha256": "9cf4f030414255eff678cc0d0bfec792f14df3e8e9156766f99a6c2cca2bb6a5"
+        },
+        "code/scripts/participation_intake/adapters.py": {
+          "bytes": 34312,
+          "sha256": "b80c4fe5452651f6505abccc279e50775fdeef8e795a7ad549cce8b7f0054db4"
+        },
+        "code/scripts/participation_intake/contract.py": {
+          "bytes": 13466,
+          "sha256": "eda9c2f0743dd73ea2ea50fd158242b3f2d3646a520463f3fd9c95d8560e908d"
+        },
+        "code/scripts/participation_intake/engine.py": {
+          "bytes": 26862,
+          "sha256": "be8bfc4001f196f18c25bc993401d89acecc060d01997753d3a1df97ca1abceb"
+        },
+        "code/scripts/participation_intake/publisher.py": {
+          "bytes": 8269,
+          "sha256": "3e2a56f36556425527617489e986d52c93c858a06407f23df5e8a048f85cc436"
+        },
+        "code/scripts/pdf_group_queries.py": {
+          "bytes": 7254,
+          "sha256": "36296ce77960e54c9da8fe2e99755092abc03da17f93c31672bf028f3bd62af2"
+        },
+        "code/scripts/precinct_source_batch.py": {
+          "bytes": 17868,
+          "sha256": "c71c67a12a305dbfc331ffd01b5e2956af07519431bea95fc2b5f33f6d3624aa"
+        },
+        "code/scripts/results_congress.py": {
+          "bytes": 30406,
+          "sha256": "78a8d34d226769a7e5212ea60a0c7c2c38133bf61d1e2a2b5736d3ec416e197d"
+        },
+        "code/scripts/results_granular.py": {
+          "bytes": 45052,
+          "sha256": "7bf1040d7341729c18f06ff3d3bffa30280efa16946109410571f1916a81c383"
+        },
+        "code/scripts/results_house.py": {
+          "bytes": 4465,
+          "sha256": "74a80baaac887c4c7c35bf4054569154b27250ee3708d58ffda6f5f95bd96bb1"
+        },
+        "code/scripts/results_intake.py": {
+          "bytes": 62676,
+          "sha256": "b8423927da379a90587a7d9df7fc22b798448dd60f14cdb41ebf830eac4ec2ab"
+        },
+        "code/scripts/results_json_statistics.py": {
+          "bytes": 12439,
+          "sha256": "f81af249cc12d711cd4fec08b8e1fb35ce1d0e5f9064db98d68d1a93ef733958"
+        },
+        "code/scripts/results_native.py": {
+          "bytes": 131669,
+          "sha256": "b78c6734ac52c41809bbc8a0b2692284c98d1c75c0771ea76c89d667c8b92217"
+        },
+        "code/scripts/results_native_broome.py": {
+          "bytes": 18570,
+          "sha256": "ec101b05b8c5a9eae0fcf2723c072f396824fb55e304940ed8ac9dae01deb8a1"
+        },
+        "code/scripts/results_native_dc.py": {
+          "bytes": 18080,
+          "sha256": "1d12a06359309fc6d98ef9e14a09814b1c49a6b7bf90d8414dea572eafc5f18f"
+        },
+        "code/scripts/results_native_delaware.py": {
+          "bytes": 14591,
+          "sha256": "58432711432c3153894fd884371e8ff9ea1ab1681ce156c06aece1edc6d1a166"
+        },
+        "code/scripts/results_native_idaho.py": {
+          "bytes": 58006,
+          "sha256": "165add67bafcf9460226f452e315db0f9898588f2f2472f6d80e3351980c59b0"
+        },
+        "code/scripts/results_native_kansas.py": {
+          "bytes": 5747,
+          "sha256": "b217d0201f48ccb127a7b7c061ec2584bba1190474301b1be84e2ab0b626de3e"
+        },
+        "code/scripts/results_native_louisiana.py": {
+          "bytes": 20066,
+          "sha256": "94adabec898f61c9ab6e032d7d181e2c73676ce76069b2f922169b23bc5a424b"
+        },
+        "code/scripts/results_native_louisiana_runtime.py": {
+          "bytes": 21006,
+          "sha256": "86004fbd6629120973251a753d156a5688b98e0be1f31a6f718abed1c6a7da38"
+        },
+        "code/scripts/results_native_north_carolina.py": {
+          "bytes": 21241,
+          "sha256": "32ee1cefce83746506bd834e5297bd039fc0562c43fea1ac04c0721f92f252e5"
+        },
+        "code/scripts/results_native_north_dakota.py": {
+          "bytes": 28620,
+          "sha256": "684c877886f26e872de9ffa14e44fa42ee676c9d1139abf7512f8a85873dec0f"
+        },
+        "code/scripts/results_native_oregon.py": {
+          "bytes": 14280,
+          "sha256": "782283376057aee6008d316a12152463a8e7dd96b19113a126e61ea22206a8f1"
+        },
+        "code/scripts/results_native_rhode_island.py": {
+          "bytes": 23367,
+          "sha256": "9b41b4be0cf6221aa4c92721d7882471b8bde1e7894caa13796270e68c3fdb53"
+        },
+        "code/scripts/results_native_state_family.py": {
+          "bytes": 43049,
+          "sha256": "c6d0f27a950b96ef81ad222dba7cd683f367a75a1216e03ae4125da1ea218881"
+        },
+        "code/scripts/results_native_utah.py": {
+          "bytes": 34665,
+          "sha256": "6700b18b653aab63bfcc6d80dc8f5f9e3c540da1189d66deb12bdb40823fec77"
+        },
+        "code/scripts/results_native_virginia.py": {
+          "bytes": 24940,
+          "sha256": "e2f77ded49a450970c517f78deeff33dbd030d9f24ed2cacdb61c73bda058980"
+        },
+        "code/scripts/results_pdf_affiliations.py": {
+          "bytes": 7279,
+          "sha256": "710a8a659c32962883f67cd6ee3ae7947a3460912208d9b9dc6ba777125c5418"
+        },
+        "code/scripts/results_pdf_boston.py": {
+          "bytes": 25468,
+          "sha256": "663be15facb5caf8e77d472356f6e194f4cdae31fb5293728d72ae05311e3271"
+        },
+        "code/scripts/results_pdf_cass.py": {
+          "bytes": 13092,
+          "sha256": "e6e52b16c40e2fef328f665c93c32e5aee5368377df7111c6bdb617395a66843"
+        },
+        "code/scripts/results_pdf_cole.py": {
+          "bytes": 13200,
+          "sha256": "d987da697b62fdf52b7115b003b52663fbbc55570ec7b4507bb26329fc4f286b"
+        },
+        "code/scripts/results_pdf_dunn.py": {
+          "bytes": 14150,
+          "sha256": "6a42ff753ba200f8f43a4d741da6ed8b36c9e0e3a01da9dd27486ea6a533722f"
+        },
+        "code/scripts/results_pdf_grids.json": {
+          "bytes": 36454,
+          "sha256": "122449409ec779ebd7690910dcb086b47dece5e0259ea2a5b72a80854c1c1750"
+        },
+        "code/scripts/results_pdf_jefferson.py": {
+          "bytes": 13892,
+          "sha256": "037c241175c9d4ff020ff302709c109359b97e1511b4953cecdee921bc7fc626"
+        },
+        "code/scripts/results_pdf_ocr.py": {
+          "bytes": 7125,
+          "sha256": "41c27e09b8e77a1f866028301e844240df68a060a8aa892d13a31607850f7827"
+        },
+        "code/scripts/results_pdf_periodic.py": {
+          "bytes": 14852,
+          "sha256": "7ac19d4430f0905e2b969bc665f877352a7fd5e120c869f7f76bc7b12ebe6e93"
+        },
+        "code/scripts/results_pdf_periodic_grids.json": {
+          "bytes": 168085,
+          "sha256": "70d86a71b12a0af717d2fa26933e7a2fa6e844f52fdac59eadd7105b1032869b"
+        },
+        "code/scripts/results_pdf_periodic_ocr.py": {
+          "bytes": 17208,
+          "sha256": "445d90ce55201ef4c52a129683997d26d711bbc3782052e21c8f110379e15c74"
+        },
+        "code/scripts/results_pdf_periodic_sussex.json": {
+          "bytes": 2806,
+          "sha256": "c5e144e28af2d24151f5acb063f7b26f69e04b3e96465dcd23236c101641fb41"
+        },
+        "code/scripts/results_pdf_platte.py": {
+          "bytes": 12219,
+          "sha256": "119b29ddf71d798e0b96f5cc2e43733120c76c7cc6e303201e1ccad22328d99e"
+        },
+        "code/scripts/results_pdf_tables.py": {
+          "bytes": 25038,
+          "sha256": "d97704329fd1f1a1adbeaaa86c2c4880396c0b042a87a0fa5b101f0446aa3e81"
+        },
+        "code/scripts/results_state_statistics.py": {
+          "bytes": 9938,
+          "sha256": "7b76730504517843e27d58741dacf22d2b0bf4535f68dd357db6e8e9d2de5aa0"
+        },
+        "code/tests/LOUISIANA_ONBOARDING_TESTS.txt": {
+          "bytes": 309,
+          "sha256": "a322363b1dea059eb5f077a76b69db718344a623f9608f1fed74669c63ed177c"
+        },
+        "code/tests/fixtures/broome-contest-2026.json": {
+          "bytes": 29046,
+          "sha256": "e2fcae815050b1bee763da06ec5de36d6f6817039ad6ad80c17c26339fe99f8d"
+        },
+        "code/tests/fixtures/dc-native-accepted.json": {
+          "bytes": 34110,
+          "sha256": "d63f1b578493602c386001d72402f891b9ecd0e5e6e30389f784797081b220d4"
+        },
+        "code/tests/fixtures/delaware-native/accepted-de-shard.json": {
+          "bytes": 71400,
+          "sha256": "7e2d889da71a543012d244ac8582c0c9c1dce49d7e2137386f6e3cfdfb933b3d"
+        },
+        "code/tests/fixtures/delaware-native/complete-turnout.json": {
+          "bytes": 14615,
+          "sha256": "81ee919294c0b800a53fabd151e1192e10027174b3c7934d7c9afff2bcb71550"
+        },
+        "code/tests/fixtures/dunn-accepted.json": {
+          "bytes": 4191,
+          "sha256": "fda3291017225c2b90a235d9c905aa4d33cb508118e55d7de753bd205e1a408d"
+        },
+        "code/tests/fixtures/idaho-native/accepted-ballots.xlsx.gz": {
+          "bytes": 40473,
+          "sha256": "d2dfd29e7e915c1ee9b53e5544b4a89053a4d2a3baeb5e30fd7ea6ede9bb0714"
+        },
+        "code/tests/fixtures/idaho-native/accepted-data.json.gz": {
+          "bytes": 33827,
+          "sha256": "0f2d04147b5e4b2a1e4b21f72a20dd1a32704fcb02b443dfa74e47624a871c25"
+        },
+        "code/tests/fixtures/idaho-native/accepted-templates.json.gz": {
+          "bytes": 169456,
+          "sha256": "4d69eef4aa9014cd8d6aef289b49564a302005378cf1953b4af1c5517d276055"
+        },
+        "code/tests/fixtures/idaho-native/fixture-manifest.json": {
+          "bytes": 1047,
+          "sha256": "8a55db63d002cecfad92a6a265c37bfbe9245e6653b6fb71ef0df0dbfb42256d"
+        },
+        "code/tests/fixtures/louisiana-native/2026_1103_par.xlsx": {
+          "bytes": 1271325,
+          "sha256": "f10cbfd1af4bec0b3647ac70db5025281431fc2963a37b79ff63b074e437dfff"
+        },
+        "code/tests/fixtures/louisiana-native/2026_1103_sta.xlsx": {
+          "bytes": 398157,
+          "sha256": "e3a4a4aaf7d41b54827729a953f70f5ad34678b854db37733312a05414a7bb34"
+        },
+        "code/tests/fixtures/louisiana-native/authority-resolution.json": {
+          "bytes": 2244,
+          "sha256": "5cb5abb0c9971a6fba5e7fed75eddead1002c9d7272d7f4121443b7d45a7c3b5"
+        },
+        "code/tests/fixtures/louisiana-native/election-dates.json": {
+          "bytes": 91491,
+          "sha256": "beb3946488b8ac2bb3cacab0e4adb6152be3390c437b6dcfb576f9dd10958dbb"
+        },
+        "code/tests/fixtures/louisiana-native/parish-source-declaration.json": {
+          "bytes": 632,
+          "sha256": "cf6002a2dc8584bea8eccb18f85692f1c63f0552b56a5079c94e36188dc99abb"
+        },
+        "code/tests/fixtures/louisiana-native/route-authority.json": {
+          "bytes": 1278,
+          "sha256": "dd4a876c1da37abcd1a5816da003a760a08c8a83164bee00f1bb8c8b395d3544"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/current.json.gz": {
+          "bytes": 96501,
+          "sha256": "cb5fe892b3dc0866cc49ddf391cb92835cca752a579e1332e6893b44fd0dc30a"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/dataset.json": {
+          "bytes": 6569,
+          "sha256": "88b993aef5758461d79fda39962e7de66311ccf37ea4e5425cf5811a57de7017"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/index.json": {
+          "bytes": 144528,
+          "sha256": "a87f2521a5179732ab8458e8522261838f9553a3b4702adef30a17b970937e8e"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/AK.json.gz": {
+          "bytes": 1683,
+          "sha256": "8a869e42a4aca5f43a43bfb7114a2ede960db6467a780e9b374171e136b98832"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/AL.json.gz": {
+          "bytes": 348426,
+          "sha256": "d580a41ea3f2f0ad659b4b4c1ff5f406bb8da518aca9950bc6665f528ea96931"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/AR.json.gz": {
+          "bytes": 716286,
+          "sha256": "bb97ef2b21532612a0e2de42da73e0d9c932e924eb8377e6e3e9116594324417"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/AZ.json.gz": {
+          "bytes": 467111,
+          "sha256": "686c0aed12780619b3242314c67f973d40c207197343a43aa3a1d8a3d3ded833"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/CA.json.gz": {
+          "bytes": 50370,
+          "sha256": "28c233078acbdebfcfb34b299bca615ffb4057fa340da86a977f21f0fc3dadc0"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/CO.json.gz": {
+          "bytes": 54813,
+          "sha256": "c81c878f638a390bf64bb37dc8bbc5b86b9549f6927e1fe55b51fa196fa23a27"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/CT.json.gz": {
+          "bytes": 54994,
+          "sha256": "8bafc24c01dfa9b3fb1f48cd10415d3dc5b03a9f09af5a74e55ab96ddcfc114a"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/DC.json.gz": {
+          "bytes": 2126,
+          "sha256": "05eeb1aec958b71bec85f279d00440301e2ee07b48e4e5e67dc614e3093ca8a3"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/DE.json.gz": {
+          "bytes": 4563,
+          "sha256": "43effa5da35e4e90c119f2d25a563a47f98eab509ec6a2d8b8cf7753d936cbf7"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/FL.json.gz": {
+          "bytes": 56985,
+          "sha256": "34c4c4499f1be338032c688d63c1a069e1d7a6e3c7cc420fba1ddf395c5c1266"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/GA.json.gz": {
+          "bytes": 141678,
+          "sha256": "812e18fabb26707e15a191880799427f71cf27c6e3011ce97e7b9a70c06303d6"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/HI.json.gz": {
+          "bytes": 4861,
+          "sha256": "566a0d1e1ac3f1403dd9fbfa550f5a6e2ae64b4977d326992cfb6e07129fa5a2"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/IA.json.gz": {
+          "bytes": 58511,
+          "sha256": "62404971d8bdadb2da0e5458c8382992bee2bb075f960d457c74bb357008a70e"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/ID.json.gz": {
+          "bytes": 272061,
+          "sha256": "2d47fd4dd8ec649c4897a0ebd14c1a914a916326095ac1a55a15ac9831a8c132"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/IL.json.gz": {
+          "bytes": 57407,
+          "sha256": "04243ff2abfb320d736b9e00bf1d8db69be22f45bf805ce7bd004ba1d8a8539c"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/IN.json.gz": {
+          "bytes": 86960,
+          "sha256": "455ba57d0902f2cb90824f93ee9aed2579376fdcf38095521a4b26506d6ba874"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/KS.json.gz": {
+          "bytes": 60149,
+          "sha256": "c234f394e493c700ba277d0892b757175303f07685cf0749bfc17e58527720b6"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/KY.json.gz": {
+          "bytes": 190761,
+          "sha256": "970fd956963db8ab293494343275f8875b5bb6d51dee95be8f147a991f7e4201"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/LA.json.gz": {
+          "bytes": 36964,
+          "sha256": "b873b944ea1cdd1ca0d2881cf59b9474345c10c257e1cdf851219ad220512808"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MA.json.gz": {
+          "bytes": 46850,
+          "sha256": "b4515d748a8ded6c7e036154537f51a6f1c6923018e1db8c87cc56597fd27f36"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MD.json.gz": {
+          "bytes": 14882,
+          "sha256": "18966998bf5474a9ebed2b50ff9de267ca1d1d4afce7c8f0574ab77b79ee1f9d"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/ME.json.gz": {
+          "bytes": 268161,
+          "sha256": "a1859896aeee2669d61c9804c037d6216b0b0986db6bcd89f590bf0deee264ad"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MI.json.gz": {
+          "bytes": 276995,
+          "sha256": "f5356b587acf065de1412d041f9444c7e8f99ffb6c3b1c2fef9b31918b63c9fb"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MN.json.gz": {
+          "bytes": 1017377,
+          "sha256": "06e27350ded7b40c4fb3ad8538235e4348740e928155fbf9c37371d77788ebf3"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MO.json.gz": {
+          "bytes": 10233,
+          "sha256": "b836e712877ea736619b287c3f2ee9360533af3363f990cfed34ad42f15ec9b8"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MS.json.gz": {
+          "bytes": 24416,
+          "sha256": "140f214d3b55de58d88f2502d0cf9cb6981c623609540341f70b7515c647da80"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MT.json.gz": {
+          "bytes": 19800,
+          "sha256": "1b1ae5e442f48fef7877ff4296dfa9a812eab95a3de9ab395da203c7c16a11e5"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NC.json.gz": {
+          "bytes": 81647,
+          "sha256": "cc366eefd524f3d163e78d20ac107fba35015a3056313c213e7eea783489896a"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/ND.json.gz": {
+          "bytes": 82665,
+          "sha256": "4f8f7fc22fdce84e841763a43d976f57372fd3cdd5f5b328cedbdc0f0fe31a15"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NE.json.gz": {
+          "bytes": 324493,
+          "sha256": "5a90d9140d278a560500b37ae1e573eba9ba23d12f87cdf2056ced2fee390e6a"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NH.json.gz": {
+          "bytes": 13112,
+          "sha256": "71754e5e4910fa669356972ce2ed2dcea49da256ce69f35144629f39fc52ba8f"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NJ.json.gz": {
+          "bytes": 32118,
+          "sha256": "d9fb30f25edb34ec9b0d992c2b9d9c8f7956ef38a3bb71ce06160a69871982fe"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NM.json.gz": {
+          "bytes": 505065,
+          "sha256": "badc4a93cb903865d2ab46f1e8f7ae88fdafef90a38a00057810aab7446d2a5b"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NV.json.gz": {
+          "bytes": 23614,
+          "sha256": "5c3642f17cc40df366e2aea931a0521493bd7e330b5c9d499dd77efef3a62b51"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NY.json.gz": {
+          "bytes": 19538,
+          "sha256": "06ece982e25562ba2d6e3fabf6ffb45808f716d6bfde36ce0dc49fd4d0e1d549"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/OH.json.gz": {
+          "bytes": 51170,
+          "sha256": "e8c32a0dc87d485e01ba495d0bc22e1386758396f1f221524726e9087a6bb6ea"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/OK.json.gz": {
+          "bytes": 38207,
+          "sha256": "984b13d3c76508649196aa94db87e6531ffe64839ac6f637583116f25e1f5d90"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/OR.json.gz": {
+          "bytes": 22194,
+          "sha256": "c8eb6a16c466ffb1981066e34bf300f3e79197b35b1700ceb809617abdb19dda"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/PA.json.gz": {
+          "bytes": 52133,
+          "sha256": "d970733e029133ee2b27b72fa88f2eaa520efaae90f5d33e20bab73741a6a0eb"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/RI.json.gz": {
+          "bytes": 17406,
+          "sha256": "33365b1d114b965a3223abd011eb51d9306962973d261d1e55f7d97d3671ba87"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/SC.json.gz": {
+          "bytes": 27488,
+          "sha256": "c0ecbeb3bfed9824aa134bab56880bff10ab5cf4c51f083eeaaaa8d68786ace8"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/SD.json.gz": {
+          "bytes": 112803,
+          "sha256": "a50e9b6c015e7314ba7e6c9739d756251c7982a6c5c04632f9994160027533a0"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/TN.json.gz": {
+          "bytes": 40997,
+          "sha256": "a89a50f3a9021aec28463ba6321e73605a357c17b8d58056a0a1ec974535d0f5"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/TX.json.gz": {
+          "bytes": 141602,
+          "sha256": "5a344bf0d6986d29d2e746447363b8d759cd1aa35087df0aa8dac75670c2e8c0"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/UT.json.gz": {
+          "bytes": 38280,
+          "sha256": "a555c939e084c6e5cf0ce05ba200020a8987deda51e60f010e0a89a22b509b83"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/VA.json.gz": {
+          "bytes": 96127,
+          "sha256": "dd40a0038a5ccf8c0f182736ae70a0edd97952173f2f47c94a630000e78c5205"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/VT.json.gz": {
+          "bytes": 72435,
+          "sha256": "6b444bc0e8eac62a33eb8b3cf5b87d7114726caa4fb72885f5871ac769dcd61b"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/WA.json.gz": {
+          "bytes": 26355,
+          "sha256": "f6900e44522de1b8da1f849b234a79a67f4b755996642dd13a8c841520654092"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/WI.json.gz": {
+          "bytes": 59564,
+          "sha256": "6f320801105287856df664e21e3a718fa28e67b41c57064eecb6cabcee153bd2"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/WV.json.gz": {
+          "bytes": 42328,
+          "sha256": "d2c2a2d869e320683b5e0e23bab0e77eadb19681fd673132720ba00288753131"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/WY.json.gz": {
+          "bytes": 97348,
+          "sha256": "d9b783dd7d63f39259d55edb1613355135f5b35cbbefc70f8f644b911b53c657"
+        },
+        "code/tests/fixtures/louisiana-native/state-source-declaration.json": {
+          "bytes": 638,
+          "sha256": "7f43f16c2a503edd932e4c7dc0e35b22c0bf8ad54356773e5828097848d0c41a"
+        },
+        "code/tests/fixtures/nd-native-automatic/accepted-templates.json.gz": {
+          "bytes": 58606,
+          "sha256": "a8027b96bfdd7f92d3459676fdfbe4aa9150e73fd83f7f0c234bd7328bc3ed59"
+        },
+        "code/tests/fixtures/nd-native-automatic/nd-complete-facts.json.gz": {
+          "bytes": 6281,
+          "sha256": "dac098e26af57ce0deb58ba3ad07080a48f2c4fb7595f2dc8566a9a6c906f827"
+        },
+        "code/tests/fixtures/north-carolina-native/accepted-reporting.json.gz": {
+          "bytes": 4897,
+          "sha256": "2682de7686637b7206b6680eafc68b742cbffa14483dfccac6829d9e54b14968"
+        },
+        "code/tests/fixtures/north-carolina-native/accepted-templates.json.gz": {
+          "bytes": 21779,
+          "sha256": "eb84de918545ce6c350f074990d5d6079463acf26433ca00a5a865466894ec23"
+        },
+        "code/tests/fixtures/north-carolina-native/fixture-manifest.json": {
+          "bytes": 1095,
+          "sha256": "21fcd7d7edf0c6508cae53acfc6b5e3565b656162f37e5d56b25634b0270f669"
+        },
+        "code/tests/fixtures/oregon-accepted.json": {
+          "bytes": 315375,
+          "sha256": "6f3714cfeccef1041fccf50e84fc8d5df6ee2f5e0f72081646b96458d7e413a3"
+        },
+        "code/tests/fixtures/results_pdf_jefferson/complete-pages.json.gz": {
+          "bytes": 455,
+          "sha256": "5fd2ee51c1499c74c6fc8fb09689907f15968407e777e7f3e9d27353032d603c"
+        },
+        "code/tests/fixtures/results_pdf_periodic/complete-products.json.gz": {
+          "bytes": 329675,
+          "sha256": "9e2d539f1b3cf7fe4bccfaeadb99b545c41df7474bc760b9eaded5f641bdda13"
+        },
+        "code/tests/fixtures/results_pdf_periodic/sussex-ocr-views.json.gz": {
+          "bytes": 26234,
+          "sha256": "6655917261f39c89268eeda8df6e89ef29277fb8e9e1f69b3edb8db681bc8def"
+        },
+        "code/tests/fixtures/rhode-island-native-accepted.json.gz": {
+          "bytes": 9081,
+          "sha256": "b5789e8309dd20c08efccd882a3f80bfc9ba0f37cd5e988432a99b2001ae4532"
+        },
+        "code/tests/fixtures/utah-native/api-data.json.gz": {
+          "bytes": 23896,
+          "sha256": "87506eacc27d740345b634e199cf6b412e3ef785df632296c21bc0ee45597e06"
+        },
+        "code/tests/fixtures/utah-native/fixture-manifest.json": {
+          "bytes": 2612,
+          "sha256": "49f87015a019728a2de715951880d492ac2ea0eabb848dc23b73b045d6541552"
+        },
+        "code/tests/fixtures/utah-native/frozen-ut.json.gz": {
+          "bytes": 38280,
+          "sha256": "a555c939e084c6e5cf0ce05ba200020a8987deda51e60f010e0a89a22b509b83"
+        },
+        "code/tests/fixtures/utah-native/rolling7416-ut.json.gz": {
+          "bytes": 38280,
+          "sha256": "a555c939e084c6e5cf0ce05ba200020a8987deda51e60f010e0a89a22b509b83"
+        },
+        "code/tests/fixtures/utah-native/summaries/cache-summary.pdf.gz": {
+          "bytes": 17827,
+          "sha256": "13f592af57367693bfbd3a15d34ff35921f5bad88118de28525afb5af8e0a2f0"
+        },
+        "code/tests/fixtures/utah-native/summaries/kane-summary.pdf.gz": {
+          "bytes": 132923,
+          "sha256": "15d8cc8135f684495b3c6fd111038c208a96eea6640a0ff82540eb0594e11d52"
+        },
+        "code/tests/fixtures/utah-native/summaries/millard-summary.pdf.gz": {
+          "bytes": 13160,
+          "sha256": "cc9be42708fbab7161cc497e8dcdc2ebda59aca91c5fb6c1b3d9a00e8a06fcda"
+        },
+        "code/tests/fixtures/utah-native/summaries/piute-summary.pdf.gz": {
+          "bytes": 37556,
+          "sha256": "6e44586c7205460faaa4c9f70cd941fb7245fb2a1e4bc6c9872219925d4e8f88"
+        },
+        "code/tests/nd_native_fixture_support.py": {
+          "bytes": 9085,
+          "sha256": "3ad63d45147dbdc38ba16b1996f2a41c2d47d3fb65d0006e135be546910a88a1"
+        },
+        "code/tests/test_automatic_native_refresh.py": {
+          "bytes": 21118,
+          "sha256": "ecc2008568ce816565340002aff44b2da6c5c0ef09d33fa7f8dff351c1774b1e"
+        },
+        "code/tests/test_current.py": {
+          "bytes": 9170,
+          "sha256": "bb342dc1d096c0e7b9cb196576c979ca0507c51737748ff16ced638fdf84958f"
+        },
+        "code/tests/test_louisiana_onboarding.py": {
+          "bytes": 9789,
+          "sha256": "6b8276e9429bbe1a19cf913deb9f6d907eccb603190f27c4c8be153c20c13d23"
+        },
+        "code/tests/test_nationwide.py": {
+          "bytes": 9845,
+          "sha256": "e8263b7d976cbbd311ec619ae996a78692fe22499f5ac3a30f08bf4650291d2b"
+        },
+        "code/tests/test_results_congress.py": {
+          "bytes": 15389,
+          "sha256": "20accf0921a64bf40de740cae7babcced8f628c94d385b0f9e14faa4d7a85fb2"
+        },
+        "code/tests/test_results_granular.py": {
+          "bytes": 17898,
+          "sha256": "beba2e5b2f805993bc7e5bc7cbc30246165e213227ec03faf6722edc3535b89b"
+        },
+        "code/tests/test_results_intake.py": {
+          "bytes": 33381,
+          "sha256": "f283c13054bcd5ed5483fccb4e49c02c008e694809d16d2d6de7c7e9643ac668"
+        },
+        "code/tests/test_results_intake_north_dakota_package.py": {
+          "bytes": 7088,
+          "sha256": "f45ff2c655b4957e3ef03ccb458283d03394defbf6d004a4f4fa9b5bb49cd509"
+        },
+        "code/tests/test_results_json_statistics.py": {
+          "bytes": 8154,
+          "sha256": "e7d3816cc5b857547e9465fa10fc7c0da6ff602ee4793bf246329d1d3dd67a3c"
+        },
+        "code/tests/test_results_native.py": {
+          "bytes": 85931,
+          "sha256": "57aa0e8e5221bdf3a6267dd39af9444233f59b6d92261fc942c80ab315f34d75"
+        },
+        "code/tests/test_results_native_broome.py": {
+          "bytes": 14204,
+          "sha256": "67274ccf0c8c47ea1596dc378b258b709b92041c33de9ed506a8b39f29758f3f"
+        },
+        "code/tests/test_results_native_cass.py": {
+          "bytes": 7241,
+          "sha256": "f38297da26f136a85703e8d19a5a806d533290704e9098c2faf245b595023eca"
+        },
+        "code/tests/test_results_native_dc.py": {
+          "bytes": 9464,
+          "sha256": "af3a41e1871435a8fdef4d7d9fa3e9b31af542cde1337b517acb4c3d4bff6fd3"
+        },
+        "code/tests/test_results_native_delaware.py": {
+          "bytes": 10240,
+          "sha256": "2ec36b8af7a185df98202ac41b2285abb51b1a7709351e9edca6d3b440e79371"
+        },
+        "code/tests/test_results_native_idaho.py": {
+          "bytes": 21032,
+          "sha256": "8d3c85fe5c991d4cc46b3e4f6e8a3e41d762b78cc53a3ad181b6a4fff2b702f2"
+        },
+        "code/tests/test_results_native_kansas.py": {
+          "bytes": 9712,
+          "sha256": "d79f31ee0f88a4286ed78a4d3620290e38d9380345904ef9fe6722d91d1f53ad"
+        },
+        "code/tests/test_results_native_north_carolina.py": {
+          "bytes": 13416,
+          "sha256": "a85e144da14ca7cefe85ecf8bcb07b4bf79e4c0a5e2679c1fb8dd68e1dd8ba7c"
+        },
+        "code/tests/test_results_native_north_dakota.py": {
+          "bytes": 5996,
+          "sha256": "8b13d2354e5a72af245a895ae025b3b47b0dd95206403a94e70dbf90f04891a8"
+        },
+        "code/tests/test_results_native_north_dakota_repair.py": {
+          "bytes": 10702,
+          "sha256": "f96e06ce75fe73d90c9ac2d176982bf5dd0ee9afceda7a915c28e92032fa246f"
+        },
+        "code/tests/test_results_native_oregon.py": {
+          "bytes": 7993,
+          "sha256": "a6fd80775845bbb0bb2f2b3dbad394c2fee46ac6857416d19a02f7c1056e8a65"
+        },
+        "code/tests/test_results_native_rhode_island.py": {
+          "bytes": 16326,
+          "sha256": "892c776b83304cc14b90dc5c180e7324eba2a177f152f0402d7d175646615cbb"
+        },
+        "code/tests/test_results_native_state_family.py": {
+          "bytes": 19228,
+          "sha256": "fe35aa3cc576244a83da184fc5476cf4b5785141df8965696f8c01d792fc2403"
+        },
+        "code/tests/test_results_native_utah.py": {
+          "bytes": 17292,
+          "sha256": "13bb9441df5ea8e9fbf7143739c29a960d1280c86c00e675dd253bb7cfcc2208"
+        },
+        "code/tests/test_results_native_virginia.py": {
+          "bytes": 15087,
+          "sha256": "8fc322dd39fda34edea9aa4f1333c9fdc4e3c71058482d4e0eccbf94000ba0db"
+        },
+        "code/tests/test_results_native_virginia_repair.py": {
+          "bytes": 5189,
+          "sha256": "c05c0c0ed533dc022fb9ac5dff962af4ca17ae1e96e5b475fdb416cef7548694"
+        },
+        "code/tests/test_results_native_workbooks.py": {
+          "bytes": 17078,
+          "sha256": "84ce8e3c757b56d1edad8da6058b1398daae711865526272501174f4e846e6a2"
+        },
+        "code/tests/test_results_pdf_affiliations.py": {
+          "bytes": 6342,
+          "sha256": "8a9d03476b36700450fb0d7ecdfa9e3a4284a7defc9eeb898a3d83d62225a80d"
+        },
+        "code/tests/test_results_pdf_boston.py": {
+          "bytes": 9157,
+          "sha256": "dcf3e7e3697fe73cf8851830f9698b2082be86f697920ffa92282620567d7c7e"
+        },
+        "code/tests/test_results_pdf_cass.py": {
+          "bytes": 6786,
+          "sha256": "5777eca55db8d0c1e06eb7bd80dfa7a2a695203cec32b747a97f493fdf59cc52"
+        },
+        "code/tests/test_results_pdf_cole.py": {
+          "bytes": 9859,
+          "sha256": "e3217a8741a23354b1ada20f497c582b944601c13a806d38f9c85e00fb5bcc88"
+        },
+        "code/tests/test_results_pdf_dunn.py": {
+          "bytes": 9144,
+          "sha256": "b8b1e393e3babb7856e7b29baf3d025160ff4e415b382fc01df609b4d1161b19"
+        },
+        "code/tests/test_results_pdf_jefferson.py": {
+          "bytes": 7176,
+          "sha256": "f418196616aee9aa329976d89a397f27ed9bff8290512a3e8cad392e1d3f43b0"
+        },
+        "code/tests/test_results_pdf_periodic.py": {
+          "bytes": 14678,
+          "sha256": "e4750b841f5e810fe9f2844599916410ac5cdc458010e60849134e84a16fdc78"
+        },
+        "code/tests/test_results_pdf_platte.py": {
+          "bytes": 10318,
+          "sha256": "4eef9e50c5a5729626dec5a7311667bde838976fbe79f15cc0cfd4daae90e023"
+        },
+        "code/tests/test_results_pdf_tables.py": {
+          "bytes": 14505,
+          "sha256": "e971388ea9be090b393c92e2a281a5aea35c7f86ac054451ebfd732a1361293e"
+        },
+        "code/tests/test_results_state_statistics.py": {
+          "bytes": 5544,
+          "sha256": "e1d1efe5b5623bdac64127ffba54f760895a4c3a339f067ed0bf413129916883"
+        }
+      },
+      "offline_replay": {
+        "all_bytes_exact": true,
+        "command": [
+          "python3",
+          "code/reproduce.py",
+          "replay",
+          "--package",
+          ".",
+          "--output",
+          "reproduced"
+        ],
+        "log": {
+          "bytes": 341,
+          "sha256": "f37fb764d9871e338912fc40173448ab2fe5609304db74dedeadf14ff3629a14"
+        },
+        "outputs": 18,
+        "selected_python_network_dns_and_child_process_apis_blocked": true
+      },
+      "passed": true,
+      "portable_test_log": {
+        "bytes": 636,
+        "sha256": "bd99b12c87ded301cbde237eda585f719125485db0cabecc91af24faa158db78"
+      },
+      "producer": "fd6886bb5cb827b2bb8d614b2d74f7497ab1e16b",
+      "public_bodies": {
+        "accepted-current-House-controls.json": {
+          "bytes": 435587,
+          "sha256": "a64fc02aa942ffa443a62a1d17aaacc7f7861ce45c80bb201bb9e79156152ce0",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/accepted-current-House-controls.json"
+        },
+        "accepted-current-candidate-queries.json": {
+          "bytes": 330707,
+          "sha256": "d608fdc17156f1fb91ccc49aa23e8c91cadae1bbaa5a50ec681b38eaf9c67632",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/accepted-current-candidate-queries.json"
+        },
+        "accepted-house-state-status-flags.json": {
+          "bytes": 7099,
+          "sha256": "a89af8185f357110f09a30f2d3763f5ad5802e4adb44862755e19918fedca38d",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/accepted-house-state-status-flags.json"
+        },
+        "accepted-official-native-scope.json": {
+          "bytes": 3026,
+          "sha256": "a8b39d8c9406ec35aacea30205baef166aab53f8c39e7f42a34ea43e9d1caa9e",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/accepted-official-native-scope.json"
+        },
+        "canonical-local-changes.csv": {
+          "bytes": 997737,
+          "sha256": "c4f8df6f33b558f7234ea9456af5d9cb2895131417ee184b52b596a3ebca118f",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/canonical-local-changes.csv"
+        },
+        "complete-results.zip": {
+          "bytes": 58384877,
+          "sha256": "12daf680f29319a93e963a61bddea84b2e9a761ba95b3765c2c0acaf3a46bcb5",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/complete-results.zip"
+        },
+        "congress-candidates.csv": {
+          "bytes": 462725,
+          "sha256": "1016375476ada2c820ccd0e8b769c4cbc5253b90c603f59c99f382f7118a12cb",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/congress-candidates.csv"
+        },
+        "congress-coverage.csv": {
+          "bytes": 80804,
+          "sha256": "8637a6ccdeb9819a98266ef61273a674281baf875a703a34fa138be80be4015e",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/congress-coverage.csv"
+        },
+        "congress-queries.json.gz": {
+          "bytes": 124316,
+          "sha256": "dc8dafe66e3c9e01fe29a9975114c17afa462091796db48dd3a5c7eff84dffc4",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/congress-queries.json.gz"
+        },
+        "congress-races.csv": {
+          "bytes": 257020,
+          "sha256": "1ec178f5515a1047fc39869ce595a4445e7f3c1fa820929e198f86f8733f9219",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/congress-races.csv"
+        },
+        "coverage.csv": {
+          "bytes": 33271,
+          "sha256": "2d0fdf88e56a2a31fd775ec152bf413000dda8f3e770e8464976ac910082791d",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/coverage.csv"
+        },
+        "declared-numerical-queries.json.gz": {
+          "bytes": 2761521,
+          "sha256": "1c4097ffd72dfe2d79905cde662d55047d2c19a11e2f699c8550556a6149c7eb",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/declared-numerical-queries.json.gz"
+        },
+        "declared-products.json": {
+          "bytes": 11087,
+          "sha256": "15365ae92f47780615bc5bf3ca37e8cb795c01e2e91c8b46750244ec21062198",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/declared-products.json"
+        },
+        "granular-source-queries.json.gz": {
+          "bytes": 12152419,
+          "sha256": "6d400afdbdc3c94e27b267220ed17711bc7213612e33d715e399fb1226ffa67f",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/granular-source-queries.json.gz"
+        },
+        "house-candidates.csv": {
+          "bytes": 277553,
+          "sha256": "65142c50ba5b71fbd685ca36b8fe7aa7eb613bcad16b29e2e154f1d0c1fd22f3",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/house-candidates.csv"
+        },
+        "house-state-results.csv": {
+          "bytes": 8968,
+          "sha256": "6234f441e491bf01a18bab9915627b386b9706cc984f0eb6bddc84cf47524ef4",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/house-state-results.csv"
+        },
+        "participation-observations.csv.gz": {
+          "bytes": 5745442,
+          "sha256": "cb13e1dca38928e145d98242174fda592363775ec86a1c6fb6c91a73d65cab44",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/participation-observations.csv.gz"
+        },
+        "snapshot.json.gz": {
+          "bytes": 6046331,
+          "sha256": "ab998264aaa82b50178eee976ec2e56a5953e88d4ec2e67494d654669439c96d",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/snapshot.json.gz"
+        },
+        "source-status.csv": {
+          "bytes": 127742,
+          "sha256": "c44625ed758422126f4c24a5a8f9511a22f0feb551c11ef64f6bb487550c8e16",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/c2907029325d3ded85e6fa5c1575f69c36a5f2cd/snapshots/1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9/source-status.csv"
+        }
+      },
+      "summary": {
+        "house": {
+          "discovered": 435,
+          "held": 0,
+          "nonvoting_house_seats": 0,
+          "refreshed": 435,
+          "retained": 0,
+          "unknown_count_races": 0
+        },
+        "senate": {
+          "discovered": 35,
+          "held": 0,
+          "nonvoting_house_seats": 0,
+          "refreshed": 35,
+          "retained": 0,
+          "unknown_count_races": 0
+        }
+      },
+      "two_bulk_requests_no_individual_races_or_local_sources": true,
+      "version": "1ae4dd4b65b50f062344d1f38c47f9c704ed6c639c610a615024a37d343340c9"
+    },
+    "43881898831": {
+      "actual_hosted_run": "https://github.com/hanshanley/voter-participation/actions/runs/43881898831",
+      "complete_download": {
+        "bytes": 58388206,
+        "sha256": "32acf26d3cc904e6133dc67ffd070bb7bb07dc8ce752dbe613937e86ca99426d",
+        "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/complete-results.zip"
+      },
+      "exported_code": {
+        "code/reproduce.py": {
+          "bytes": 139,
+          "sha256": "a646c8777d2dac79d8b949c0160dc62a46d20d080e766263f1240a971d9a78cd"
+        },
+        "code/scripts/automatic_native_refresh.py": {
+          "bytes": 58755,
+          "sha256": "16a512ca4f2cb3d8632e8c269ed0617c0a1d397317be1a468d48f8eb3dba88c5"
+        },
+        "code/scripts/current.py": {
+          "bytes": 15634,
+          "sha256": "198ed4b744b0364502cecd1c6d5f533e671a4c067eaf0779a061a2f907b7ce9f"
+        },
+        "code/scripts/download.py": {
+          "bytes": 9205,
+          "sha256": "dce6d553250682f5b59475a64e5ecfb215466ac73823681c1e6330ff903054fa"
+        },
+        "code/scripts/house_clerk_endpoints.py": {
+          "bytes": 13626,
+          "sha256": "c3730a609057b95915500686564cc3b5ca0a44b44abdb068cd1a89186d4a2c35"
+        },
+        "code/scripts/louisiana_bootstrap.py": {
+          "bytes": 9779,
+          "sha256": "4fe7be4065d98c7c3afa98836a8a7b0ccb738b263911a2fab4bc28395ffd1de0"
+        },
+        "code/scripts/louisiana_onboarding.py": {
+          "bytes": 6388,
+          "sha256": "cb567bfe58ce4c83bc1004a495646edf4b04679e3513f5f064ab5ca501796944"
+        },
+        "code/scripts/nationwide.py": {
+          "bytes": 22844,
+          "sha256": "a791f1cefe72ae62ee82f30d474df4eacb1ba1c7666122f9aa826fda646e020e"
+        },
+        "code/scripts/native_pdf.py": {
+          "bytes": 9605,
+          "sha256": "a34867d39aa64217db136f3224bc0d6fb0e93ab4efec0c316eed1382619a1ccf"
+        },
+        "code/scripts/native_products.py": {
+          "bytes": 17149,
+          "sha256": "63bc65ec7b2a51d5f33464bfa6f1fd482a0b2d1a9d649002b38d611bcdbdd5bb"
+        },
+        "code/scripts/native_tabular.py": {
+          "bytes": 10414,
+          "sha256": "a5aebb5d3f25a6ceada3453f09dff25977c9c627f3940785a0c7b9f4be3ce961"
+        },
+        "code/scripts/participation_count_additions.py": {
+          "bytes": 10337,
+          "sha256": "4b95796b8de14e4dc22df3ca28104a3ac1d990e2ca6a6be10edfc1df09426bb9"
+        },
+        "code/scripts/participation_intake/__init__.py": {
+          "bytes": 81,
+          "sha256": "9cf4f030414255eff678cc0d0bfec792f14df3e8e9156766f99a6c2cca2bb6a5"
+        },
+        "code/scripts/participation_intake/adapters.py": {
+          "bytes": 34312,
+          "sha256": "b80c4fe5452651f6505abccc279e50775fdeef8e795a7ad549cce8b7f0054db4"
+        },
+        "code/scripts/participation_intake/contract.py": {
+          "bytes": 13466,
+          "sha256": "eda9c2f0743dd73ea2ea50fd158242b3f2d3646a520463f3fd9c95d8560e908d"
+        },
+        "code/scripts/participation_intake/engine.py": {
+          "bytes": 26862,
+          "sha256": "be8bfc4001f196f18c25bc993401d89acecc060d01997753d3a1df97ca1abceb"
+        },
+        "code/scripts/participation_intake/publisher.py": {
+          "bytes": 8269,
+          "sha256": "3e2a56f36556425527617489e986d52c93c858a06407f23df5e8a048f85cc436"
+        },
+        "code/scripts/pdf_group_queries.py": {
+          "bytes": 7254,
+          "sha256": "36296ce77960e54c9da8fe2e99755092abc03da17f93c31672bf028f3bd62af2"
+        },
+        "code/scripts/precinct_source_batch.py": {
+          "bytes": 17868,
+          "sha256": "c71c67a12a305dbfc331ffd01b5e2956af07519431bea95fc2b5f33f6d3624aa"
+        },
+        "code/scripts/results_congress.py": {
+          "bytes": 30406,
+          "sha256": "78a8d34d226769a7e5212ea60a0c7c2c38133bf61d1e2a2b5736d3ec416e197d"
+        },
+        "code/scripts/results_granular.py": {
+          "bytes": 45052,
+          "sha256": "7bf1040d7341729c18f06ff3d3bffa30280efa16946109410571f1916a81c383"
+        },
+        "code/scripts/results_house.py": {
+          "bytes": 4465,
+          "sha256": "74a80baaac887c4c7c35bf4054569154b27250ee3708d58ffda6f5f95bd96bb1"
+        },
+        "code/scripts/results_intake.py": {
+          "bytes": 62676,
+          "sha256": "b8423927da379a90587a7d9df7fc22b798448dd60f14cdb41ebf830eac4ec2ab"
+        },
+        "code/scripts/results_json_statistics.py": {
+          "bytes": 12439,
+          "sha256": "f81af249cc12d711cd4fec08b8e1fb35ce1d0e5f9064db98d68d1a93ef733958"
+        },
+        "code/scripts/results_native.py": {
+          "bytes": 131669,
+          "sha256": "b78c6734ac52c41809bbc8a0b2692284c98d1c75c0771ea76c89d667c8b92217"
+        },
+        "code/scripts/results_native_broome.py": {
+          "bytes": 18570,
+          "sha256": "ec101b05b8c5a9eae0fcf2723c072f396824fb55e304940ed8ac9dae01deb8a1"
+        },
+        "code/scripts/results_native_dc.py": {
+          "bytes": 18080,
+          "sha256": "1d12a06359309fc6d98ef9e14a09814b1c49a6b7bf90d8414dea572eafc5f18f"
+        },
+        "code/scripts/results_native_delaware.py": {
+          "bytes": 14591,
+          "sha256": "58432711432c3153894fd884371e8ff9ea1ab1681ce156c06aece1edc6d1a166"
+        },
+        "code/scripts/results_native_idaho.py": {
+          "bytes": 58006,
+          "sha256": "165add67bafcf9460226f452e315db0f9898588f2f2472f6d80e3351980c59b0"
+        },
+        "code/scripts/results_native_kansas.py": {
+          "bytes": 5747,
+          "sha256": "b217d0201f48ccb127a7b7c061ec2584bba1190474301b1be84e2ab0b626de3e"
+        },
+        "code/scripts/results_native_louisiana.py": {
+          "bytes": 20066,
+          "sha256": "94adabec898f61c9ab6e032d7d181e2c73676ce76069b2f922169b23bc5a424b"
+        },
+        "code/scripts/results_native_louisiana_runtime.py": {
+          "bytes": 21006,
+          "sha256": "86004fbd6629120973251a753d156a5688b98e0be1f31a6f718abed1c6a7da38"
+        },
+        "code/scripts/results_native_north_carolina.py": {
+          "bytes": 21241,
+          "sha256": "32ee1cefce83746506bd834e5297bd039fc0562c43fea1ac04c0721f92f252e5"
+        },
+        "code/scripts/results_native_north_dakota.py": {
+          "bytes": 28620,
+          "sha256": "684c877886f26e872de9ffa14e44fa42ee676c9d1139abf7512f8a85873dec0f"
+        },
+        "code/scripts/results_native_oregon.py": {
+          "bytes": 14280,
+          "sha256": "782283376057aee6008d316a12152463a8e7dd96b19113a126e61ea22206a8f1"
+        },
+        "code/scripts/results_native_rhode_island.py": {
+          "bytes": 23367,
+          "sha256": "9b41b4be0cf6221aa4c92721d7882471b8bde1e7894caa13796270e68c3fdb53"
+        },
+        "code/scripts/results_native_state_family.py": {
+          "bytes": 43049,
+          "sha256": "c6d0f27a950b96ef81ad222dba7cd683f367a75a1216e03ae4125da1ea218881"
+        },
+        "code/scripts/results_native_utah.py": {
+          "bytes": 34665,
+          "sha256": "6700b18b653aab63bfcc6d80dc8f5f9e3c540da1189d66deb12bdb40823fec77"
+        },
+        "code/scripts/results_native_virginia.py": {
+          "bytes": 24940,
+          "sha256": "e2f77ded49a450970c517f78deeff33dbd030d9f24ed2cacdb61c73bda058980"
+        },
+        "code/scripts/results_pdf_affiliations.py": {
+          "bytes": 7279,
+          "sha256": "710a8a659c32962883f67cd6ee3ae7947a3460912208d9b9dc6ba777125c5418"
+        },
+        "code/scripts/results_pdf_boston.py": {
+          "bytes": 25468,
+          "sha256": "663be15facb5caf8e77d472356f6e194f4cdae31fb5293728d72ae05311e3271"
+        },
+        "code/scripts/results_pdf_cass.py": {
+          "bytes": 13092,
+          "sha256": "e6e52b16c40e2fef328f665c93c32e5aee5368377df7111c6bdb617395a66843"
+        },
+        "code/scripts/results_pdf_cole.py": {
+          "bytes": 13200,
+          "sha256": "d987da697b62fdf52b7115b003b52663fbbc55570ec7b4507bb26329fc4f286b"
+        },
+        "code/scripts/results_pdf_dunn.py": {
+          "bytes": 14150,
+          "sha256": "6a42ff753ba200f8f43a4d741da6ed8b36c9e0e3a01da9dd27486ea6a533722f"
+        },
+        "code/scripts/results_pdf_grids.json": {
+          "bytes": 36454,
+          "sha256": "122449409ec779ebd7690910dcb086b47dece5e0259ea2a5b72a80854c1c1750"
+        },
+        "code/scripts/results_pdf_jefferson.py": {
+          "bytes": 13892,
+          "sha256": "037c241175c9d4ff020ff302709c109359b97e1511b4953cecdee921bc7fc626"
+        },
+        "code/scripts/results_pdf_ocr.py": {
+          "bytes": 7125,
+          "sha256": "41c27e09b8e77a1f866028301e844240df68a060a8aa892d13a31607850f7827"
+        },
+        "code/scripts/results_pdf_periodic.py": {
+          "bytes": 14852,
+          "sha256": "7ac19d4430f0905e2b969bc665f877352a7fd5e120c869f7f76bc7b12ebe6e93"
+        },
+        "code/scripts/results_pdf_periodic_grids.json": {
+          "bytes": 168085,
+          "sha256": "70d86a71b12a0af717d2fa26933e7a2fa6e844f52fdac59eadd7105b1032869b"
+        },
+        "code/scripts/results_pdf_periodic_ocr.py": {
+          "bytes": 17208,
+          "sha256": "445d90ce55201ef4c52a129683997d26d711bbc3782052e21c8f110379e15c74"
+        },
+        "code/scripts/results_pdf_periodic_sussex.json": {
+          "bytes": 2806,
+          "sha256": "c5e144e28af2d24151f5acb063f7b26f69e04b3e96465dcd23236c101641fb41"
+        },
+        "code/scripts/results_pdf_platte.py": {
+          "bytes": 12219,
+          "sha256": "119b29ddf71d798e0b96f5cc2e43733120c76c7cc6e303201e1ccad22328d99e"
+        },
+        "code/scripts/results_pdf_tables.py": {
+          "bytes": 25038,
+          "sha256": "d97704329fd1f1a1adbeaaa86c2c4880396c0b042a87a0fa5b101f0446aa3e81"
+        },
+        "code/scripts/results_state_statistics.py": {
+          "bytes": 9938,
+          "sha256": "7b76730504517843e27d58741dacf22d2b0bf4535f68dd357db6e8e9d2de5aa0"
+        },
+        "code/tests/LOUISIANA_ONBOARDING_TESTS.txt": {
+          "bytes": 309,
+          "sha256": "a322363b1dea059eb5f077a76b69db718344a623f9608f1fed74669c63ed177c"
+        },
+        "code/tests/fixtures/broome-contest-2026.json": {
+          "bytes": 29046,
+          "sha256": "e2fcae815050b1bee763da06ec5de36d6f6817039ad6ad80c17c26339fe99f8d"
+        },
+        "code/tests/fixtures/dc-native-accepted.json": {
+          "bytes": 34110,
+          "sha256": "d63f1b578493602c386001d72402f891b9ecd0e5e6e30389f784797081b220d4"
+        },
+        "code/tests/fixtures/delaware-native/accepted-de-shard.json": {
+          "bytes": 71400,
+          "sha256": "7e2d889da71a543012d244ac8582c0c9c1dce49d7e2137386f6e3cfdfb933b3d"
+        },
+        "code/tests/fixtures/delaware-native/complete-turnout.json": {
+          "bytes": 14615,
+          "sha256": "81ee919294c0b800a53fabd151e1192e10027174b3c7934d7c9afff2bcb71550"
+        },
+        "code/tests/fixtures/dunn-accepted.json": {
+          "bytes": 4191,
+          "sha256": "fda3291017225c2b90a235d9c905aa4d33cb508118e55d7de753bd205e1a408d"
+        },
+        "code/tests/fixtures/idaho-native/accepted-ballots.xlsx.gz": {
+          "bytes": 40473,
+          "sha256": "d2dfd29e7e915c1ee9b53e5544b4a89053a4d2a3baeb5e30fd7ea6ede9bb0714"
+        },
+        "code/tests/fixtures/idaho-native/accepted-data.json.gz": {
+          "bytes": 33827,
+          "sha256": "0f2d04147b5e4b2a1e4b21f72a20dd1a32704fcb02b443dfa74e47624a871c25"
+        },
+        "code/tests/fixtures/idaho-native/accepted-templates.json.gz": {
+          "bytes": 169456,
+          "sha256": "4d69eef4aa9014cd8d6aef289b49564a302005378cf1953b4af1c5517d276055"
+        },
+        "code/tests/fixtures/idaho-native/fixture-manifest.json": {
+          "bytes": 1047,
+          "sha256": "8a55db63d002cecfad92a6a265c37bfbe9245e6653b6fb71ef0df0dbfb42256d"
+        },
+        "code/tests/fixtures/louisiana-native/2026_1103_par.xlsx": {
+          "bytes": 1271325,
+          "sha256": "f10cbfd1af4bec0b3647ac70db5025281431fc2963a37b79ff63b074e437dfff"
+        },
+        "code/tests/fixtures/louisiana-native/2026_1103_sta.xlsx": {
+          "bytes": 398157,
+          "sha256": "e3a4a4aaf7d41b54827729a953f70f5ad34678b854db37733312a05414a7bb34"
+        },
+        "code/tests/fixtures/louisiana-native/authority-resolution.json": {
+          "bytes": 2244,
+          "sha256": "5cb5abb0c9971a6fba5e7fed75eddead1002c9d7272d7f4121443b7d45a7c3b5"
+        },
+        "code/tests/fixtures/louisiana-native/election-dates.json": {
+          "bytes": 91491,
+          "sha256": "beb3946488b8ac2bb3cacab0e4adb6152be3390c437b6dcfb576f9dd10958dbb"
+        },
+        "code/tests/fixtures/louisiana-native/parish-source-declaration.json": {
+          "bytes": 632,
+          "sha256": "cf6002a2dc8584bea8eccb18f85692f1c63f0552b56a5079c94e36188dc99abb"
+        },
+        "code/tests/fixtures/louisiana-native/route-authority.json": {
+          "bytes": 1278,
+          "sha256": "dd4a876c1da37abcd1a5816da003a760a08c8a83164bee00f1bb8c8b395d3544"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/current.json.gz": {
+          "bytes": 96501,
+          "sha256": "cb5fe892b3dc0866cc49ddf391cb92835cca752a579e1332e6893b44fd0dc30a"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/dataset.json": {
+          "bytes": 6569,
+          "sha256": "88b993aef5758461d79fda39962e7de66311ccf37ea4e5425cf5811a57de7017"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/index.json": {
+          "bytes": 144528,
+          "sha256": "a87f2521a5179732ab8458e8522261838f9553a3b4702adef30a17b970937e8e"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/AK.json.gz": {
+          "bytes": 1683,
+          "sha256": "8a869e42a4aca5f43a43bfb7114a2ede960db6467a780e9b374171e136b98832"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/AL.json.gz": {
+          "bytes": 348426,
+          "sha256": "d580a41ea3f2f0ad659b4b4c1ff5f406bb8da518aca9950bc6665f528ea96931"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/AR.json.gz": {
+          "bytes": 716286,
+          "sha256": "bb97ef2b21532612a0e2de42da73e0d9c932e924eb8377e6e3e9116594324417"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/AZ.json.gz": {
+          "bytes": 467111,
+          "sha256": "686c0aed12780619b3242314c67f973d40c207197343a43aa3a1d8a3d3ded833"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/CA.json.gz": {
+          "bytes": 50370,
+          "sha256": "28c233078acbdebfcfb34b299bca615ffb4057fa340da86a977f21f0fc3dadc0"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/CO.json.gz": {
+          "bytes": 54813,
+          "sha256": "c81c878f638a390bf64bb37dc8bbc5b86b9549f6927e1fe55b51fa196fa23a27"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/CT.json.gz": {
+          "bytes": 54994,
+          "sha256": "8bafc24c01dfa9b3fb1f48cd10415d3dc5b03a9f09af5a74e55ab96ddcfc114a"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/DC.json.gz": {
+          "bytes": 2126,
+          "sha256": "05eeb1aec958b71bec85f279d00440301e2ee07b48e4e5e67dc614e3093ca8a3"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/DE.json.gz": {
+          "bytes": 4563,
+          "sha256": "43effa5da35e4e90c119f2d25a563a47f98eab509ec6a2d8b8cf7753d936cbf7"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/FL.json.gz": {
+          "bytes": 56985,
+          "sha256": "34c4c4499f1be338032c688d63c1a069e1d7a6e3c7cc420fba1ddf395c5c1266"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/GA.json.gz": {
+          "bytes": 141678,
+          "sha256": "812e18fabb26707e15a191880799427f71cf27c6e3011ce97e7b9a70c06303d6"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/HI.json.gz": {
+          "bytes": 4861,
+          "sha256": "566a0d1e1ac3f1403dd9fbfa550f5a6e2ae64b4977d326992cfb6e07129fa5a2"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/IA.json.gz": {
+          "bytes": 58511,
+          "sha256": "62404971d8bdadb2da0e5458c8382992bee2bb075f960d457c74bb357008a70e"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/ID.json.gz": {
+          "bytes": 272061,
+          "sha256": "2d47fd4dd8ec649c4897a0ebd14c1a914a916326095ac1a55a15ac9831a8c132"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/IL.json.gz": {
+          "bytes": 57407,
+          "sha256": "04243ff2abfb320d736b9e00bf1d8db69be22f45bf805ce7bd004ba1d8a8539c"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/IN.json.gz": {
+          "bytes": 86960,
+          "sha256": "455ba57d0902f2cb90824f93ee9aed2579376fdcf38095521a4b26506d6ba874"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/KS.json.gz": {
+          "bytes": 60149,
+          "sha256": "c234f394e493c700ba277d0892b757175303f07685cf0749bfc17e58527720b6"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/KY.json.gz": {
+          "bytes": 190761,
+          "sha256": "970fd956963db8ab293494343275f8875b5bb6d51dee95be8f147a991f7e4201"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/LA.json.gz": {
+          "bytes": 36964,
+          "sha256": "b873b944ea1cdd1ca0d2881cf59b9474345c10c257e1cdf851219ad220512808"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MA.json.gz": {
+          "bytes": 46850,
+          "sha256": "b4515d748a8ded6c7e036154537f51a6f1c6923018e1db8c87cc56597fd27f36"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MD.json.gz": {
+          "bytes": 14882,
+          "sha256": "18966998bf5474a9ebed2b50ff9de267ca1d1d4afce7c8f0574ab77b79ee1f9d"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/ME.json.gz": {
+          "bytes": 268161,
+          "sha256": "a1859896aeee2669d61c9804c037d6216b0b0986db6bcd89f590bf0deee264ad"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MI.json.gz": {
+          "bytes": 276995,
+          "sha256": "f5356b587acf065de1412d041f9444c7e8f99ffb6c3b1c2fef9b31918b63c9fb"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MN.json.gz": {
+          "bytes": 1017377,
+          "sha256": "06e27350ded7b40c4fb3ad8538235e4348740e928155fbf9c37371d77788ebf3"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MO.json.gz": {
+          "bytes": 10233,
+          "sha256": "b836e712877ea736619b287c3f2ee9360533af3363f990cfed34ad42f15ec9b8"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MS.json.gz": {
+          "bytes": 24416,
+          "sha256": "140f214d3b55de58d88f2502d0cf9cb6981c623609540341f70b7515c647da80"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/MT.json.gz": {
+          "bytes": 19800,
+          "sha256": "1b1ae5e442f48fef7877ff4296dfa9a812eab95a3de9ab395da203c7c16a11e5"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NC.json.gz": {
+          "bytes": 81647,
+          "sha256": "cc366eefd524f3d163e78d20ac107fba35015a3056313c213e7eea783489896a"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/ND.json.gz": {
+          "bytes": 82665,
+          "sha256": "4f8f7fc22fdce84e841763a43d976f57372fd3cdd5f5b328cedbdc0f0fe31a15"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NE.json.gz": {
+          "bytes": 324493,
+          "sha256": "5a90d9140d278a560500b37ae1e573eba9ba23d12f87cdf2056ced2fee390e6a"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NH.json.gz": {
+          "bytes": 13112,
+          "sha256": "71754e5e4910fa669356972ce2ed2dcea49da256ce69f35144629f39fc52ba8f"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NJ.json.gz": {
+          "bytes": 32118,
+          "sha256": "d9fb30f25edb34ec9b0d992c2b9d9c8f7956ef38a3bb71ce06160a69871982fe"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NM.json.gz": {
+          "bytes": 505065,
+          "sha256": "badc4a93cb903865d2ab46f1e8f7ae88fdafef90a38a00057810aab7446d2a5b"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NV.json.gz": {
+          "bytes": 23614,
+          "sha256": "5c3642f17cc40df366e2aea931a0521493bd7e330b5c9d499dd77efef3a62b51"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/NY.json.gz": {
+          "bytes": 19538,
+          "sha256": "06ece982e25562ba2d6e3fabf6ffb45808f716d6bfde36ce0dc49fd4d0e1d549"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/OH.json.gz": {
+          "bytes": 51170,
+          "sha256": "e8c32a0dc87d485e01ba495d0bc22e1386758396f1f221524726e9087a6bb6ea"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/OK.json.gz": {
+          "bytes": 38207,
+          "sha256": "984b13d3c76508649196aa94db87e6531ffe64839ac6f637583116f25e1f5d90"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/OR.json.gz": {
+          "bytes": 22194,
+          "sha256": "c8eb6a16c466ffb1981066e34bf300f3e79197b35b1700ceb809617abdb19dda"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/PA.json.gz": {
+          "bytes": 52133,
+          "sha256": "d970733e029133ee2b27b72fa88f2eaa520efaae90f5d33e20bab73741a6a0eb"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/RI.json.gz": {
+          "bytes": 17406,
+          "sha256": "33365b1d114b965a3223abd011eb51d9306962973d261d1e55f7d97d3671ba87"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/SC.json.gz": {
+          "bytes": 27488,
+          "sha256": "c0ecbeb3bfed9824aa134bab56880bff10ab5cf4c51f083eeaaaa8d68786ace8"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/SD.json.gz": {
+          "bytes": 112803,
+          "sha256": "a50e9b6c015e7314ba7e6c9739d756251c7982a6c5c04632f9994160027533a0"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/TN.json.gz": {
+          "bytes": 40997,
+          "sha256": "a89a50f3a9021aec28463ba6321e73605a357c17b8d58056a0a1ec974535d0f5"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/TX.json.gz": {
+          "bytes": 141602,
+          "sha256": "5a344bf0d6986d29d2e746447363b8d759cd1aa35087df0aa8dac75670c2e8c0"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/UT.json.gz": {
+          "bytes": 38280,
+          "sha256": "a555c939e084c6e5cf0ce05ba200020a8987deda51e60f010e0a89a22b509b83"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/VA.json.gz": {
+          "bytes": 96127,
+          "sha256": "dd40a0038a5ccf8c0f182736ae70a0edd97952173f2f47c94a630000e78c5205"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/VT.json.gz": {
+          "bytes": 72435,
+          "sha256": "6b444bc0e8eac62a33eb8b3cf5b87d7114726caa4fb72885f5871ac769dcd61b"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/WA.json.gz": {
+          "bytes": 26355,
+          "sha256": "f6900e44522de1b8da1f849b234a79a67f4b755996642dd13a8c841520654092"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/WI.json.gz": {
+          "bytes": 59564,
+          "sha256": "6f320801105287856df664e21e3a718fa28e67b41c57064eecb6cabcee153bd2"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/WV.json.gz": {
+          "bytes": 42328,
+          "sha256": "d2c2a2d869e320683b5e0e23bab0e77eadb19681fd673132720ba00288753131"
+        },
+        "code/tests/fixtures/louisiana-native/source-baseline/states/WY.json.gz": {
+          "bytes": 97348,
+          "sha256": "d9b783dd7d63f39259d55edb1613355135f5b35cbbefc70f8f644b911b53c657"
+        },
+        "code/tests/fixtures/louisiana-native/state-source-declaration.json": {
+          "bytes": 638,
+          "sha256": "7f43f16c2a503edd932e4c7dc0e35b22c0bf8ad54356773e5828097848d0c41a"
+        },
+        "code/tests/fixtures/nd-native-automatic/accepted-templates.json.gz": {
+          "bytes": 58606,
+          "sha256": "a8027b96bfdd7f92d3459676fdfbe4aa9150e73fd83f7f0c234bd7328bc3ed59"
+        },
+        "code/tests/fixtures/nd-native-automatic/nd-complete-facts.json.gz": {
+          "bytes": 6281,
+          "sha256": "dac098e26af57ce0deb58ba3ad07080a48f2c4fb7595f2dc8566a9a6c906f827"
+        },
+        "code/tests/fixtures/north-carolina-native/accepted-reporting.json.gz": {
+          "bytes": 4897,
+          "sha256": "2682de7686637b7206b6680eafc68b742cbffa14483dfccac6829d9e54b14968"
+        },
+        "code/tests/fixtures/north-carolina-native/accepted-templates.json.gz": {
+          "bytes": 21779,
+          "sha256": "eb84de918545ce6c350f074990d5d6079463acf26433ca00a5a865466894ec23"
+        },
+        "code/tests/fixtures/north-carolina-native/fixture-manifest.json": {
+          "bytes": 1095,
+          "sha256": "21fcd7d7edf0c6508cae53acfc6b5e3565b656162f37e5d56b25634b0270f669"
+        },
+        "code/tests/fixtures/oregon-accepted.json": {
+          "bytes": 315375,
+          "sha256": "6f3714cfeccef1041fccf50e84fc8d5df6ee2f5e0f72081646b96458d7e413a3"
+        },
+        "code/tests/fixtures/results_pdf_jefferson/complete-pages.json.gz": {
+          "bytes": 455,
+          "sha256": "5fd2ee51c1499c74c6fc8fb09689907f15968407e777e7f3e9d27353032d603c"
+        },
+        "code/tests/fixtures/results_pdf_periodic/complete-products.json.gz": {
+          "bytes": 329675,
+          "sha256": "9e2d539f1b3cf7fe4bccfaeadb99b545c41df7474bc760b9eaded5f641bdda13"
+        },
+        "code/tests/fixtures/results_pdf_periodic/sussex-ocr-views.json.gz": {
+          "bytes": 26234,
+          "sha256": "6655917261f39c89268eeda8df6e89ef29277fb8e9e1f69b3edb8db681bc8def"
+        },
+        "code/tests/fixtures/rhode-island-native-accepted.json.gz": {
+          "bytes": 9081,
+          "sha256": "b5789e8309dd20c08efccd882a3f80bfc9ba0f37cd5e988432a99b2001ae4532"
+        },
+        "code/tests/fixtures/utah-native/api-data.json.gz": {
+          "bytes": 23896,
+          "sha256": "87506eacc27d740345b634e199cf6b412e3ef785df632296c21bc0ee45597e06"
+        },
+        "code/tests/fixtures/utah-native/fixture-manifest.json": {
+          "bytes": 2612,
+          "sha256": "49f87015a019728a2de715951880d492ac2ea0eabb848dc23b73b045d6541552"
+        },
+        "code/tests/fixtures/utah-native/frozen-ut.json.gz": {
+          "bytes": 38280,
+          "sha256": "a555c939e084c6e5cf0ce05ba200020a8987deda51e60f010e0a89a22b509b83"
+        },
+        "code/tests/fixtures/utah-native/rolling7416-ut.json.gz": {
+          "bytes": 38280,
+          "sha256": "a555c939e084c6e5cf0ce05ba200020a8987deda51e60f010e0a89a22b509b83"
+        },
+        "code/tests/fixtures/utah-native/summaries/cache-summary.pdf.gz": {
+          "bytes": 17827,
+          "sha256": "13f592af57367693bfbd3a15d34ff35921f5bad88118de28525afb5af8e0a2f0"
+        },
+        "code/tests/fixtures/utah-native/summaries/kane-summary.pdf.gz": {
+          "bytes": 132923,
+          "sha256": "15d8cc8135f684495b3c6fd111038c208a96eea6640a0ff82540eb0594e11d52"
+        },
+        "code/tests/fixtures/utah-native/summaries/millard-summary.pdf.gz": {
+          "bytes": 13160,
+          "sha256": "cc9be42708fbab7161cc497e8dcdc2ebda59aca91c5fb6c1b3d9a00e8a06fcda"
+        },
+        "code/tests/fixtures/utah-native/summaries/piute-summary.pdf.gz": {
+          "bytes": 37556,
+          "sha256": "6e44586c7205460faaa4c9f70cd941fb7245fb2a1e4bc6c9872219925d4e8f88"
+        },
+        "code/tests/nd_native_fixture_support.py": {
+          "bytes": 9085,
+          "sha256": "3ad63d45147dbdc38ba16b1996f2a41c2d47d3fb65d0006e135be546910a88a1"
+        },
+        "code/tests/test_automatic_native_refresh.py": {
+          "bytes": 21118,
+          "sha256": "ecc2008568ce816565340002aff44b2da6c5c0ef09d33fa7f8dff351c1774b1e"
+        },
+        "code/tests/test_current.py": {
+          "bytes": 9170,
+          "sha256": "bb342dc1d096c0e7b9cb196576c979ca0507c51737748ff16ced638fdf84958f"
+        },
+        "code/tests/test_louisiana_onboarding.py": {
+          "bytes": 9789,
+          "sha256": "6b8276e9429bbe1a19cf913deb9f6d907eccb603190f27c4c8be153c20c13d23"
+        },
+        "code/tests/test_nationwide.py": {
+          "bytes": 9845,
+          "sha256": "e8263b7d976cbbd311ec619ae996a78692fe22499f5ac3a30f08bf4650291d2b"
+        },
+        "code/tests/test_results_congress.py": {
+          "bytes": 15389,
+          "sha256": "20accf0921a64bf40de740cae7babcced8f628c94d385b0f9e14faa4d7a85fb2"
+        },
+        "code/tests/test_results_granular.py": {
+          "bytes": 17898,
+          "sha256": "beba2e5b2f805993bc7e5bc7cbc30246165e213227ec03faf6722edc3535b89b"
+        },
+        "code/tests/test_results_intake.py": {
+          "bytes": 33381,
+          "sha256": "f283c13054bcd5ed5483fccb4e49c02c008e694809d16d2d6de7c7e9643ac668"
+        },
+        "code/tests/test_results_intake_north_dakota_package.py": {
+          "bytes": 7088,
+          "sha256": "f45ff2c655b4957e3ef03ccb458283d03394defbf6d004a4f4fa9b5bb49cd509"
+        },
+        "code/tests/test_results_json_statistics.py": {
+          "bytes": 8154,
+          "sha256": "e7d3816cc5b857547e9465fa10fc7c0da6ff602ee4793bf246329d1d3dd67a3c"
+        },
+        "code/tests/test_results_native.py": {
+          "bytes": 85931,
+          "sha256": "57aa0e8e5221bdf3a6267dd39af9444233f59b6d92261fc942c80ab315f34d75"
+        },
+        "code/tests/test_results_native_broome.py": {
+          "bytes": 14204,
+          "sha256": "67274ccf0c8c47ea1596dc378b258b709b92041c33de9ed506a8b39f29758f3f"
+        },
+        "code/tests/test_results_native_cass.py": {
+          "bytes": 7241,
+          "sha256": "f38297da26f136a85703e8d19a5a806d533290704e9098c2faf245b595023eca"
+        },
+        "code/tests/test_results_native_dc.py": {
+          "bytes": 9464,
+          "sha256": "af3a41e1871435a8fdef4d7d9fa3e9b31af542cde1337b517acb4c3d4bff6fd3"
+        },
+        "code/tests/test_results_native_delaware.py": {
+          "bytes": 10240,
+          "sha256": "2ec36b8af7a185df98202ac41b2285abb51b1a7709351e9edca6d3b440e79371"
+        },
+        "code/tests/test_results_native_idaho.py": {
+          "bytes": 21032,
+          "sha256": "8d3c85fe5c991d4cc46b3e4f6e8a3e41d762b78cc53a3ad181b6a4fff2b702f2"
+        },
+        "code/tests/test_results_native_kansas.py": {
+          "bytes": 9712,
+          "sha256": "d79f31ee0f88a4286ed78a4d3620290e38d9380345904ef9fe6722d91d1f53ad"
+        },
+        "code/tests/test_results_native_north_carolina.py": {
+          "bytes": 13416,
+          "sha256": "a85e144da14ca7cefe85ecf8bcb07b4bf79e4c0a5e2679c1fb8dd68e1dd8ba7c"
+        },
+        "code/tests/test_results_native_north_dakota.py": {
+          "bytes": 5996,
+          "sha256": "8b13d2354e5a72af245a895ae025b3b47b0dd95206403a94e70dbf90f04891a8"
+        },
+        "code/tests/test_results_native_north_dakota_repair.py": {
+          "bytes": 10702,
+          "sha256": "f96e06ce75fe73d90c9ac2d176982bf5dd0ee9afceda7a915c28e92032fa246f"
+        },
+        "code/tests/test_results_native_oregon.py": {
+          "bytes": 7993,
+          "sha256": "a6fd80775845bbb0bb2f2b3dbad394c2fee46ac6857416d19a02f7c1056e8a65"
+        },
+        "code/tests/test_results_native_rhode_island.py": {
+          "bytes": 16326,
+          "sha256": "892c776b83304cc14b90dc5c180e7324eba2a177f152f0402d7d175646615cbb"
+        },
+        "code/tests/test_results_native_state_family.py": {
+          "bytes": 19228,
+          "sha256": "fe35aa3cc576244a83da184fc5476cf4b5785141df8965696f8c01d792fc2403"
+        },
+        "code/tests/test_results_native_utah.py": {
+          "bytes": 17292,
+          "sha256": "13bb9441df5ea8e9fbf7143739c29a960d1280c86c00e675dd253bb7cfcc2208"
+        },
+        "code/tests/test_results_native_virginia.py": {
+          "bytes": 15087,
+          "sha256": "8fc322dd39fda34edea9aa4f1333c9fdc4e3c71058482d4e0eccbf94000ba0db"
+        },
+        "code/tests/test_results_native_virginia_repair.py": {
+          "bytes": 5189,
+          "sha256": "c05c0c0ed533dc022fb9ac5dff962af4ca17ae1e96e5b475fdb416cef7548694"
+        },
+        "code/tests/test_results_native_workbooks.py": {
+          "bytes": 17078,
+          "sha256": "84ce8e3c757b56d1edad8da6058b1398daae711865526272501174f4e846e6a2"
+        },
+        "code/tests/test_results_pdf_affiliations.py": {
+          "bytes": 6342,
+          "sha256": "8a9d03476b36700450fb0d7ecdfa9e3a4284a7defc9eeb898a3d83d62225a80d"
+        },
+        "code/tests/test_results_pdf_boston.py": {
+          "bytes": 9157,
+          "sha256": "dcf3e7e3697fe73cf8851830f9698b2082be86f697920ffa92282620567d7c7e"
+        },
+        "code/tests/test_results_pdf_cass.py": {
+          "bytes": 6786,
+          "sha256": "5777eca55db8d0c1e06eb7bd80dfa7a2a695203cec32b747a97f493fdf59cc52"
+        },
+        "code/tests/test_results_pdf_cole.py": {
+          "bytes": 9859,
+          "sha256": "e3217a8741a23354b1ada20f497c582b944601c13a806d38f9c85e00fb5bcc88"
+        },
+        "code/tests/test_results_pdf_dunn.py": {
+          "bytes": 9144,
+          "sha256": "b8b1e393e3babb7856e7b29baf3d025160ff4e415b382fc01df609b4d1161b19"
+        },
+        "code/tests/test_results_pdf_jefferson.py": {
+          "bytes": 7176,
+          "sha256": "f418196616aee9aa329976d89a397f27ed9bff8290512a3e8cad392e1d3f43b0"
+        },
+        "code/tests/test_results_pdf_periodic.py": {
+          "bytes": 14678,
+          "sha256": "e4750b841f5e810fe9f2844599916410ac5cdc458010e60849134e84a16fdc78"
+        },
+        "code/tests/test_results_pdf_platte.py": {
+          "bytes": 10318,
+          "sha256": "4eef9e50c5a5729626dec5a7311667bde838976fbe79f15cc0cfd4daae90e023"
+        },
+        "code/tests/test_results_pdf_tables.py": {
+          "bytes": 14505,
+          "sha256": "e971388ea9be090b393c92e2a281a5aea35c7f86ac054451ebfd732a1361293e"
+        },
+        "code/tests/test_results_state_statistics.py": {
+          "bytes": 5544,
+          "sha256": "e1d1efe5b5623bdac64127ffba54f760895a4c3a339f067ed0bf413129916883"
+        }
+      },
+      "offline_replay": {
+        "all_bytes_exact": true,
+        "command": [
+          "python3",
+          "code/reproduce.py",
+          "replay",
+          "--package",
+          ".",
+          "--output",
+          "reproduced"
+        ],
+        "log": {
+          "bytes": 341,
+          "sha256": "f37fb764d9871e338912fc40173448ab2fe5609304db74dedeadf14ff3629a14"
+        },
+        "outputs": 18,
+        "selected_python_network_dns_and_child_process_apis_blocked": true
+      },
+      "passed": true,
+      "portable_test_log": {
+        "bytes": 636,
+        "sha256": "bd99b12c87ded301cbde237eda585f719125485db0cabecc91af24faa158db78"
+      },
+      "producer": "fd6886bb5cb827b2bb8d614b2d74f7497ab1e16b",
+      "public_bodies": {
+        "accepted-current-House-controls.json": {
+          "bytes": 435587,
+          "sha256": "a64fc02aa942ffa443a62a1d17aaacc7f7861ce45c80bb201bb9e79156152ce0",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/accepted-current-House-controls.json"
+        },
+        "accepted-current-candidate-queries.json": {
+          "bytes": 330707,
+          "sha256": "d608fdc17156f1fb91ccc49aa23e8c91cadae1bbaa5a50ec681b38eaf9c67632",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/accepted-current-candidate-queries.json"
+        },
+        "accepted-house-state-status-flags.json": {
+          "bytes": 7099,
+          "sha256": "a89af8185f357110f09a30f2d3763f5ad5802e4adb44862755e19918fedca38d",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/accepted-house-state-status-flags.json"
+        },
+        "accepted-official-native-scope.json": {
+          "bytes": 3026,
+          "sha256": "a8b39d8c9406ec35aacea30205baef166aab53f8c39e7f42a34ea43e9d1caa9e",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/accepted-official-native-scope.json"
+        },
+        "canonical-local-changes.csv": {
+          "bytes": 997737,
+          "sha256": "c4f8df6f33b558f7234ea9456af5d9cb2895131417ee184b52b596a3ebca118f",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/canonical-local-changes.csv"
+        },
+        "complete-results.zip": {
+          "bytes": 58388206,
+          "sha256": "32acf26d3cc904e6133dc67ffd070bb7bb07dc8ce752dbe613937e86ca99426d",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/complete-results.zip"
+        },
+        "congress-candidates.csv": {
+          "bytes": 462725,
+          "sha256": "288f4ccf91914b2c64fa164686da08afa353fb44b1e407b701612385c5455726",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/congress-candidates.csv"
+        },
+        "congress-coverage.csv": {
+          "bytes": 80804,
+          "sha256": "ac89d8b41da45b497661c8b920c7e9aa8fb8ad6d5b9ba0ec23fcb08a72d6ceb0",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/congress-coverage.csv"
+        },
+        "congress-queries.json.gz": {
+          "bytes": 124291,
+          "sha256": "be11195ca87f530e92100a3b51ab1b60f90927de58b6aafe1e5df505d5d910a0",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/congress-queries.json.gz"
+        },
+        "congress-races.csv": {
+          "bytes": 257017,
+          "sha256": "d74627d6b525e752b682dd9fac7182796706983b120d10fdebe876b10992006c",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/congress-races.csv"
+        },
+        "coverage.csv": {
+          "bytes": 33271,
+          "sha256": "2d0fdf88e56a2a31fd775ec152bf413000dda8f3e770e8464976ac910082791d",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/coverage.csv"
+        },
+        "declared-numerical-queries.json.gz": {
+          "bytes": 2761521,
+          "sha256": "1c4097ffd72dfe2d79905cde662d55047d2c19a11e2f699c8550556a6149c7eb",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/declared-numerical-queries.json.gz"
+        },
+        "declared-products.json": {
+          "bytes": 11087,
+          "sha256": "15365ae92f47780615bc5bf3ca37e8cb795c01e2e91c8b46750244ec21062198",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/declared-products.json"
+        },
+        "granular-source-queries.json.gz": {
+          "bytes": 12152419,
+          "sha256": "6d400afdbdc3c94e27b267220ed17711bc7213612e33d715e399fb1226ffa67f",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/granular-source-queries.json.gz"
+        },
+        "house-candidates.csv": {
+          "bytes": 277553,
+          "sha256": "65142c50ba5b71fbd685ca36b8fe7aa7eb613bcad16b29e2e154f1d0c1fd22f3",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/house-candidates.csv"
+        },
+        "house-state-results.csv": {
+          "bytes": 8968,
+          "sha256": "6234f441e491bf01a18bab9915627b386b9706cc984f0eb6bddc84cf47524ef4",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/house-state-results.csv"
+        },
+        "participation-observations.csv.gz": {
+          "bytes": 5745442,
+          "sha256": "cb13e1dca38928e145d98242174fda592363775ec86a1c6fb6c91a73d65cab44",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/participation-observations.csv.gz"
+        },
+        "snapshot.json.gz": {
+          "bytes": 6046586,
+          "sha256": "16029195bc8b01e8f54e78220fccf87795459dede983d3eacaace3ec88e68b12",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/snapshot.json.gz"
+        },
+        "source-status.csv": {
+          "bytes": 127742,
+          "sha256": "c44625ed758422126f4c24a5a8f9511a22f0feb551c11ef64f6bb487550c8e16",
+          "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/source-status.csv"
+        }
+      },
+      "summary": {
+        "house": {
+          "discovered": 435,
+          "held": 0,
+          "nonvoting_house_seats": 0,
+          "refreshed": 435,
+          "retained": 0,
+          "unknown_count_races": 0
+        },
+        "senate": {
+          "discovered": 35,
+          "held": 0,
+          "nonvoting_house_seats": 0,
+          "refreshed": 35,
+          "retained": 0,
+          "unknown_count_races": 0
+        }
+      },
+      "two_bulk_requests_no_individual_races_or_local_sources": true,
+      "version": "f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96"
+    }
+  },
+  "recorded_at": "2026-11-16T14:36:09.542535+00:00",
+  "revised_runtime_preservation": {
+    "actual_preceding_runtime": "a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247",
+    "actual_prior_next_seed_consumed_byte_exact": true,
+    "all_35_native_bodies_byte_exact": true,
+    "all_53_participation_bodies_byte_exact": true,
+    "changed_output_paths": [
+      "congressional/congress-candidates.csv",
+      "congressional/congress-comparisons.csv",
+      "congressional/congress-coverage.csv",
+      "congressional/congress-house-states.csv",
+      "congressional/congress-races.csv",
+      "congressional/queries.json.gz",
+      "congressional/results.json.gz",
+      "release/coverage-and-eligibility.json",
+      "release/source-to-analysis-effects.csv.gz",
+      "rolling/next-seed.json.gz"
+    ],
+    "new_participation_rate_or_behavioral_qualification": false,
+    "passed": true,
+    "source_models_refitted": false,
+    "unchanged_model_query_bodies": [
+      "house/attenuated/accepted_ridge_multinomial/complete-result.json.gz",
+      "house/attenuated/accepted_ridge_multinomial/viewer-data.json.gz",
+      "house/attenuated/extra_randomized_trees/complete-result.json.gz",
+      "house/attenuated/extra_randomized_trees/viewer-data.json.gz",
+      "house/attenuated/histogram_gradient_boosting/complete-result.json.gz",
+      "house/attenuated/histogram_gradient_boosting/viewer-data.json.gz",
+      "house/full/accepted_ridge_multinomial/complete-result.json.gz",
+      "house/full/accepted_ridge_multinomial/viewer-data.json.gz",
+      "house/full/extra_randomized_trees/complete-result.json.gz",
+      "house/full/extra_randomized_trees/viewer-data.json.gz",
+      "house/full/histogram_gradient_boosting/complete-result.json.gz",
+      "house/full/histogram_gradient_boosting/viewer-data.json.gz",
+      "house/original/accepted_ridge_multinomial/complete-result.json.gz",
+      "house/original/accepted_ridge_multinomial/viewer-data.json.gz",
+      "house/original/extra_randomized_trees/complete-result.json.gz",
+      "house/original/extra_randomized_trees/viewer-data.json.gz",
+      "house/original/histogram_gradient_boosting/complete-result.json.gz",
+      "house/original/histogram_gradient_boosting/viewer-data.json.gz",
+      "house/recorded-states.json.gz",
+      "house/sensitivity.json.gz",
+      "house/viewer-attenuated.json.gz",
+      "house/viewer-full.json.gz",
+      "house/viewer-original.json.gz",
+      "participation/registered-control-display.json.gz",
+      "release/electoral-recorded-and-qualified.csv.gz",
+      "release/electoral-recorded-districts.csv.gz",
+      "release/existing-senate-governor-complete-queries.json.gz",
+      "release/existing-senate-governor-counts-and-mechanisms.csv.gz",
+      "release/historical-1996-complete-points.json.gz",
+      "release/historical-1998-complete-points.json.gz",
+      "release/historical-2002-complete-points.json.gz",
+      "release/house-and-control-update-decisions.csv.gz",
+      "release/house-eligibility-decisions.csv.gz",
+      "release/modeled-demographic-explanations.csv.gz",
+      "release/modeled-explanations.csv.gz",
+      "release/participation-administrative.csv.gz",
+      "release/participation-historical-state-demographics.csv.gz",
+      "release/participation-historical-survey.csv.gz",
+      "release/participation-modeled-demographics-2026.csv.gz",
+      "release/registration-control-decisions.csv.gz",
+      "release/scoped-source-dispositions.csv.gz"
+    ]
+  },
+  "runtime_output_count": 139,
+  "source_output_count": 18,
+  "subsequent_numeric_updates_start_pages_builds": false
+}

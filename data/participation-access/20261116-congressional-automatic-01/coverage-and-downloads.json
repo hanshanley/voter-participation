@@ -1,0 +1,688 @@
+{
+  "behavioral_update_prerequisite": "A separately reviewed candidate/provider/source-frame bridge and existing model eligibility.",
+  "candidate_rows": {
+    "house": 1121,
+    "senate": 105
+  },
+  "candidate_votes_are_not_ballots_or_turnout": true,
+  "checked_at": "2026-11-16T14:13:57.249501+00:00",
+  "clock_convention": "Collection time is not a native count clock; see each contest.",
+  "complete_exports": {
+    "congressional/congress-candidates.csv": {
+      "bytes": 462725,
+      "sha256": "288f4ccf91914b2c64fa164686da08afa353fb44b1e407b701612385c5455726",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-candidates.csv"
+    },
+    "congressional/congress-comparisons.csv": {
+      "bytes": 963252,
+      "sha256": "18ed97593e53aa73f1c23dcce5a1022343006b186d9f02fb44eeae3990198f83",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-comparisons.csv"
+    },
+    "congressional/congress-coverage.csv": {
+      "bytes": 80804,
+      "sha256": "ac89d8b41da45b497661c8b920c7e9aa8fb8ad6d5b9ba0ec23fcb08a72d6ceb0",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-coverage.csv"
+    },
+    "congressional/congress-house-states.csv": {
+      "bytes": 80710,
+      "sha256": "aefc74b90479fe0069ac72ad6126375c84f4462ee0a185dc5c1198bb0c80d05c",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-house-states.csv"
+    },
+    "congressional/congress-races.csv": {
+      "bytes": 257017,
+      "sha256": "d74627d6b525e752b682dd9fac7182796706983b120d10fdebe876b10992006c",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-races.csv"
+    },
+    "congressional/queries.json.gz": {
+      "bytes": 206916,
+      "sha256": "bbd01fe4cd00eb4a4297b3086d46274631c5c865c0c64b9c8c0e590832172b55",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/queries.json.gz"
+    },
+    "congressional/results.json.gz": {
+      "bytes": 186064,
+      "sha256": "963195183af0dd23e7d941b7fab9936b198f45c0af9144558aee730aa304be53",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/results.json.gz"
+    }
+  },
+  "complete_runtime": {
+    "bytes": 213908118,
+    "immutable": true,
+    "media_type": "application/zip",
+    "sha256": "d9fb234a9f526213d6719059f1539547b63b8784177434f1c4daed1abc8acff1",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "complete_source": {
+    "bytes": 58388206,
+    "sha256": "32acf26d3cc904e6133dc67ffd070bb7bb07dc8ce752dbe613937e86ca99426d",
+    "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/complete-results.zip"
+  },
+  "contract": "participation.congressional_delivery.v1",
+  "house_district_boundary_qualified_comparisons": 0,
+  "house_district_raw_comparisons": 435,
+  "house_state_comparison_decisions": [
+    {
+      "comparison_holds": [
+        "Multiple same-party nominees: AK-AL",
+        "Stage or RCV round not qualified: AK-AL"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "AK"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: AL-03",
+        "Major-party candidate coverage changed: AL-04",
+        "Major-party candidate coverage changed: AL-05"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "AL"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "AR"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: AZ-03"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "AZ"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: CA-04",
+        "Major-party candidate coverage changed: CA-06",
+        "Major-party candidate coverage changed: CA-07",
+        "Major-party candidate coverage changed: CA-11",
+        "Major-party candidate coverage changed: CA-14",
+        "Major-party candidate coverage changed: CA-16",
+        "Major-party candidate coverage changed: CA-20",
+        "Major-party candidate coverage changed: CA-29",
+        "Major-party candidate coverage changed: CA-40",
+        "Multiple same-party nominees: CA-04",
+        "Multiple same-party nominees: CA-07",
+        "Multiple same-party nominees: CA-11",
+        "Multiple same-party nominees: CA-12",
+        "Multiple same-party nominees: CA-14",
+        "Multiple same-party nominees: CA-16",
+        "Multiple same-party nominees: CA-20",
+        "Multiple same-party nominees: CA-29",
+        "Multiple same-party nominees: CA-34",
+        "Multiple same-party nominees: CA-37",
+        "Multiple same-party nominees: CA-40"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "CA"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "CO"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "CT"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "DE"
+    },
+    {
+      "comparison_holds": [
+        "Candidate counts missing: FL-20",
+        "Major-party candidate coverage changed: FL-10",
+        "Major-party candidate coverage changed: FL-20"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "FL"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "GA"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "HI"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "IA"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "ID"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: IL-15",
+        "Major-party candidate coverage changed: IL-16"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "IL"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "IN"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "KS"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: KY-04",
+        "Major-party candidate coverage changed: KY-05"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "KY"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: LA-04",
+        "Multiple same-party nominees: LA-01",
+        "Multiple same-party nominees: LA-02",
+        "Multiple same-party nominees: LA-03",
+        "Multiple same-party nominees: LA-04",
+        "Multiple same-party nominees: LA-05",
+        "Multiple same-party nominees: LA-06",
+        "Stage or RCV round not qualified: LA-01",
+        "Stage or RCV round not qualified: LA-02",
+        "Stage or RCV round not qualified: LA-03",
+        "Stage or RCV round not qualified: LA-04",
+        "Stage or RCV round not qualified: LA-05",
+        "Stage or RCV round not qualified: LA-06"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "LA"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: MA-03",
+        "Major-party candidate coverage changed: MA-04",
+        "Major-party candidate coverage changed: MA-06"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "MA"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "MD"
+    },
+    {
+      "comparison_holds": [
+        "Stage or RCV round not qualified: ME-02"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "ME"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "MI"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "MN"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "MO"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: MS-03"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "MS"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "MT"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: NC-03",
+        "Major-party candidate coverage changed: NC-06"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "NC"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "ND"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "NE"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "NH"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: NJ-08"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "NJ"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "NM"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: NV-02"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "NV"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "NY"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "OH"
+    },
+    {
+      "comparison_holds": [
+        "Candidate counts missing: OK-03",
+        "Major-party candidate coverage changed: OK-03"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "OK"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "OR"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "PA"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "RI"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "SC"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "SD"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "TN"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: TX-01",
+        "Major-party candidate coverage changed: TX-09",
+        "Major-party candidate coverage changed: TX-11",
+        "Major-party candidate coverage changed: TX-13",
+        "Major-party candidate coverage changed: TX-19",
+        "Major-party candidate coverage changed: TX-20",
+        "Major-party candidate coverage changed: TX-25",
+        "Major-party candidate coverage changed: TX-30"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "TX"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "UT"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "VA"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "VT"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: WA-04",
+        "Major-party candidate coverage changed: WA-09",
+        "Multiple same-party nominees: WA-04",
+        "Multiple same-party nominees: WA-09"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "WA"
+    },
+    {
+      "comparison_holds": [
+        "Major-party candidate coverage changed: WI-02"
+      ],
+      "qualified_comparison": "False",
+      "state_code": "WI"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "WV"
+    },
+    {
+      "comparison_holds": [],
+      "qualified_comparison": "True",
+      "state_code": "WY"
+    }
+  ],
+  "nonvoting_seats": "Not advertised in these feeds; not proof no such contests exist.",
+  "producer_commit": "fd6886bb5cb827b2bb8d614b2d74f7497ab1e16b",
+  "race_coverage": {
+    "house": {
+      "discovered": 435,
+      "held": 0,
+      "nonvoting_house_seats": 0,
+      "refreshed": 435,
+      "retained": 0,
+      "unknown_count_races": 0
+    },
+    "senate": {
+      "discovered": 35,
+      "held": 0,
+      "nonvoting_house_seats": 0,
+      "refreshed": 35,
+      "retained": 0,
+      "unknown_count_races": 0
+    }
+  },
+  "runtime_data_commit": "91600b21d3febd7213669cfe5baf8afd1dfb52fd",
+  "runtime_staged_commit": "dd121c9b61de6476bafc7f228b4e63d4bd0a81e5",
+  "runtime_version": "196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5",
+  "saved_no_javascript_fallback": {
+    "checked_at": "2026-11-16T13:57Z",
+    "complete_runtime": {
+      "bytes": 213995007,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "a422b133742ecdb7f268b08247b758aada8ed32ff25ad5ac3c3bfe989306e8bf",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "explicitly_dated_not_latest": true
+  },
+  "senate_comparison_decisions": [
+    {
+      "comparison_holds": [
+        "A matching previous/current RCV round has not been qualified",
+        "Both periods need a reported D and R contest; no coalition is inferred.",
+        "Current R nominee is absent or not unique"
+      ],
+      "id": "npr:senate:AK:2:regular:general:rcv-unspecified",
+      "qualified_comparison": "False",
+      "state_code": "AK"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:AL:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "AL"
+    },
+    {
+      "comparison_holds": [
+        "Both periods need a reported D and R contest; no coalition is inferred."
+      ],
+      "id": "npr:senate:AR:2:regular:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "AR"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:CO:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "CO"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:DE:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "DE"
+    },
+    {
+      "comparison_holds": [
+        "No qualified prior same-seat general election is in the held FEC reference."
+      ],
+      "id": "npr:senate:FL:3:special:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "FL"
+    },
+    {
+      "comparison_holds": [
+        "Previous and current election stages differ"
+      ],
+      "id": "npr:senate:GA:2:regular:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "GA"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:IA:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "IA"
+    },
+    {
+      "comparison_holds": [
+        "Both periods need a reported D and R contest; no coalition is inferred.",
+        "Current D nominee is absent or not unique",
+        "Current D/R counts are unknown or nonpositive"
+      ],
+      "id": "npr:senate:ID:2:regular:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "ID"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:IL:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "IL"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:KS:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "KS"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:KY:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "KY"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:LA:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "LA"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:MA:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "MA"
+    },
+    {
+      "comparison_holds": [
+        "A matching previous/current RCV round has not been qualified"
+      ],
+      "id": "npr:senate:ME:2:regular:general:rcv-unspecified",
+      "qualified_comparison": "False",
+      "state_code": "ME"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:MI:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "MI"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:MN:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "MN"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:MS:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "MS"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:MT:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "MT"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:NC:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "NC"
+    },
+    {
+      "comparison_holds": [
+        "Current D nominee is absent or not unique",
+        "Current D/R counts are unknown or nonpositive",
+        "The 2024 same-seat special election is not in this verified reference."
+      ],
+      "id": "npr:senate:NE:2:regular:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "NE"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:NH:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "NH"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:NJ:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "NJ"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:NM:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "NM"
+    },
+    {
+      "comparison_holds": [
+        "No qualified prior same-seat general election is in the held FEC reference."
+      ],
+      "id": "npr:senate:OH:3:special:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "OH"
+    },
+    {
+      "comparison_holds": [
+        "The 2022 same-seat special election is not in this verified reference."
+      ],
+      "id": "npr:senate:OK:2:regular:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "OK"
+    },
+    {
+      "comparison_holds": [
+        "Both periods need a reported D and R contest; no coalition is inferred."
+      ],
+      "id": "npr:senate:OR:2:regular:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "OR"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:RI:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "RI"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:SC:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "SC"
+    },
+    {
+      "comparison_holds": [
+        "Both periods need a reported D and R contest; no coalition is inferred.",
+        "Current D nominee is absent or not unique",
+        "Current D/R counts are unknown or nonpositive"
+      ],
+      "id": "npr:senate:SD:2:regular:general:not_ranked",
+      "qualified_comparison": "False",
+      "state_code": "SD"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:TN:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "TN"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:TX:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "TX"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:VA:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "VA"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:WV:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "WV"
+    },
+    {
+      "comparison_holds": [],
+      "id": "npr:senate:WY:2:regular:general:not_ranked",
+      "qualified_comparison": "True",
+      "state_code": "WY"
+    }
+  ],
+  "senate_contest_kinds": {
+    "regular": 33,
+    "special": 2
+  },
+  "source_failure_policy": "Independent race/feed last-good retention with original native clocks.",
+  "source_version": "f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96",
+  "statewide_survey_allocation_to_local_geography": false,
+  "website_commit": "133e3c092717ae831ecee597598d211c129f23fd"
+}

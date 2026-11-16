@@ -33,7 +33,16 @@ supported election-year counts and geography, not state rates spread across a ma
 | Historical demographic and state rates | Survey-reported participation; population definitions and available years vary. |
 | Current survey studies | Source-weighted modeled or reported participation, not certified turnout. |
 | Administrative participation | Source-defined counts and rates, with reporting status and denominator identified. |
+| Automatic congressional returns | All advertised House/Senate contests, native candidate counts and dates, raw changes and qualified same-office comparisons. |
 | Precinct maps | Participation where supported; candidate results are a separate layer. Coverage is partial. |
+
+**Automatic House and Senate results:** open Swings, then the closed
+Congressional results disclosure. The national collector discovers both chamber
+inventories in bulk; the existing hourly data-only consumer updates this table
+and its complete CSV/query downloads without individual race maintenance or a
+website rebuild. Candidate votes are not turnout. New returns do not
+automatically replace the existing behavioral models.
+[Coverage, source qualifications and complete downloads](docs/DATA.md#automatic-house-and-senate-results).
 
 **Every-state demographics:** select Demographics, then 2022 or 2024 and a
 Geography. All 50 states plus D.C. have source-weighted age, sex, education and
@@ -74,7 +83,9 @@ The website keeps Methods short; details live here.
 | `public/` | Historical explorer export, observations and complete downloads. |
 | `docs/` | Reproduction, package references and the original research protocol. |
 
-The website uses a reviewed, pinned export; a research update does not
-automatically change its displayed estimates. Public packages contain complete
+The historical website export remains reviewed and pinned. Registered source
+updates reach the explorer through its separate automatic data-only channel;
+new research or candidate returns do not automatically qualify behavioral
+estimates. Public packages contain complete
 permitted inputs, queries, results and code, never metadata-only substitutes.
 Privately supplied respondent records and private fine cells are not published.

@@ -3,6 +3,33 @@
 [Overview](../README.md) | [Methods](../METHODOLOGY.md) |
 [Choose a package](DATA.md) | [Source notes](../SOURCES.md)
 
+## Automatic House and Senate results
+
+The [complete congressional/runtime download](DATA.md#automatic-house-and-senate-results)
+includes the entire source packet, all previous-election comparison inputs and
+seven new congressional CSV/query outputs alongside the preserved analytical
+products. In a fresh extraction, run:
+
+```sh
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
+The first delivered congressional runtime reproduces **139 complete outputs**;
+read the packaged inventory rather than assuming this count for future versions.
+This reuses existing fitted public models and does not refit private respondents.
+To reproduce its complete source package separately, extract that ZIP into a
+different fresh directory and run:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+```
+
+The source package reproduces **18 complete outputs**, including normalized
+race/candidate results, coverage and full query facts. Neither command
+reacquires publisher sources. Source timestamps, retained status and comparison
+holds are reproduced, not replaced by the replay clock. The downloadable full
+query inputs preserve Senate seats, special contests, stages and rounds.
+
 ## Integrated supported analytical release
 
 Extract the complete automatic runtime archive into a fresh directory, then run:

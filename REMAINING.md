@@ -2,7 +2,42 @@
 
 Updated: 2026-11-16 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
-## Finite supported analytical release delivered
+## Automatic national congressional delivery
+
+Nationwide House and Senate collection and downstream delivery are implemented
+in the existing hourly workflows, not a race-by-race assistant campaign.
+Both real hosted bulk captures refreshed 435 House and 35 Senate contests
+(33 regular plus two special), zero retained/held in either chamber. The
+explorer exposes every current race/candidate count, literal party, clock and
+freshness decision, with all seven full CSV/query products and complete archives.
+[Coverage/downloads](data/participation-access/20261116-congressional-automatic-01/coverage-and-downloads.json),
+[hosted/offline validation](data/participation-access/20261116-congressional-automatic-01/acceptance.json)
+and [production checks](data/participation-access/20261116-congressional-automatic-01/production-acceptance.json)
+record the finite delivery and subsequent genuine bulk revisions.
+
+The current results channel has 32 qualified statewide House comparisons and
+24 qualified Senate comparisons. Its 18 House state holds and 11 Senate holds
+have complete per-contest reasons; all 435 district comparisons remain raw,
+not boundary-qualified. Same-seat regular/special and general/runoff/RCV
+identities are never merged. Nonvoting House contests, when advertised, remain
+separate from the 435 voting districts.
+
+This does not resolve a new participation rate or behavioral-model frame.
+Candidate votes are not ballots/participants or group denominators. A reviewed
+candidate/provider/source-frame bridge and the existing scientific eligibility
+requirements are necessary before new returns can update modeled mechanisms.
+The preserved 33 qualified/17 held model policy, 34 registration scenarios,
+existing fits and immutable downloads remain unchanged. No refit or new
+model-family experiment is needed to display the new results.
+
+Civic provider access is still stopped; independent NPR/AP bulk retrieval
+succeeded in actual hosted jobs. A future outage is handled per feed/race with
+last-good retention and explicit clocks, not a promise of universal access.
+The seven unsupported local participation products below are separate and do
+not block national congressional discovery, collection or display. No optional
+county campaign or assistant continuation is part of this delivery.
+
+## Preserved finite supported analytical release
 
 The requested supported release is complete, not another county milestone.
 The existing explorer integrates participation, raw/qualified electoral swings

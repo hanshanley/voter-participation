@@ -6,10 +6,61 @@ Ledger updated: 2026-11-16 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
-## November 16 supported analytical release
+## November 16 automatic national House and Senate delivery
+
+The existing explorer's Swings view now includes a default-closed Congressional
+results table and complete downloads. One reviewed provider declaration follows
+the published NPR/AP national House and Senate bulk inventories, not a
+hand-maintained race list. Civic's denied national feed/documentation remain
+stopped; this is an independently published alternative.
+
+Both real hosted collections discovered and freshly refreshed **435 House and
+35 Senate contests**, with **zero retained and zero held races** in each
+chamber. The Senate inventory includes 33 regular contests and separate Florida
+and Ohio special contests. These are advertised voting-seat inventories, not
+proof that no nonvoting-seat contests exist. Native candidate parties, IDs,
+zeros/unknowns and source clocks remain literal.
+
+The second live batch changed **27 candidate counts in 14 House races**, plus
+six clock-only races. All 20 revised native clocks remain distinct from collection
+time. It was not an unchanged source run. The separate identical-input hosted
+runtime rerun was an actual unchanged no-op with zero Pages builds.
+Controlled House decreases and Senate increases additionally passed through
+collection, all seven exports and the actual JavaScript consumer.
+
+Current returns support **32 qualified statewide House comparisons** and
+**24 same-seat Senate comparisons**. All 435 district raw changes are inspectable
+but boundary-held. The remaining 18 statewide House and 11 Senate decisions
+retain specific party-coverage, candidate, seat-baseline, special or RCV reasons
+in the complete tables. The current channel does not replace the frozen
+33/17 House behavioral-model eligibility mask.
+
+All 1,226 current candidate observations and 470 native clocks are checked
+through source, published runtime and explorer. Both chambers have complete
+race/candidate/coverage/comparison tables, statewide House totals, full queries
+and full source/runtime archives. The hourly collector and data-only consumer
+perform subsequent updates without visiting individual races or rebuilding the
+website. Failed races retain their own last-good facts and clock; one failure
+does not abort the other races.
+
+[Complete downloads and coverage](data/participation-access/20261116-congressional-automatic-01/coverage-and-downloads.json),
+[hosted/offline acceptance](data/participation-access/20261116-congressional-automatic-01/acceptance.json)
+and [actual production acceptance](data/participation-access/20261116-congressional-automatic-01/production-acceptance.json)
+pin the delivered batches. The full runtime contains 139 reproducible outputs;
+each complete source packet contains 18. Existing scientific fits, participation
+numerics, seeds and all older immutable downloads are preserved.
+
+Candidate selections do not supply all-ballot participants, a compatible
+demographic denominator or a linked choice/participation history. The NPR
+candidate/provider inventory has no reviewed bridge to the frozen scientific
+endpoint frame; therefore it cannot automatically recondition or qualify the
+existing behavioral explanations. No model is refitted or state estimate
+allocated locally.
+
+## November 16 preserved supported analytical release
 
 The [existing explorer](https://www.themarginoferror.com/voter-participation/)
-and one pinned complete runtime now deliver participation, recorded/qualified
+and the earlier pinned complete runtime delivered participation, recorded/qualified
 electoral changes and assumption-qualified explanations together. Runtime
 `9c7117fb` uses source `30bb6e95` and reviewed eligibility version
 `20261116-supported-release-03`. Its

@@ -8,6 +8,71 @@ permitted sufficient inputs, code, tests, queries and results**, not a metadata-
 inventory. Coverage and exclusions remain in its full queries. Separate packages
 are not automatically compatible populations.
 
+## Automatic House and Senate results
+
+The [existing explorer](https://www.themarginoferror.com/voter-participation/)'s
+Swings view includes the closed **Current nationwide
+House and Senate returns** disclosure. Both actual hosted collections discovered
+and freshly refreshed **435 House and 35 Senate contests**, with zero retained
+or unavailable races. Senate has 33 regular contests and two separate special
+contests. Candidate selections are not ballots, participants or demographic
+turnout denominators.
+
+The pinned delivery below was checked **November 16, 2026 at
+14:13:57.249501 UTC**. This is collection time: every contest's native count
+clock, freshness and literal parties are retained separately in the full tables.
+Hourly live links advance automatically; these immutable links do not.
+
+- [Complete reproducible runtime](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/complete-analysis.zip):
+  **213,908,118 bytes**, SHA256
+  `d9fb234a9f526213d6719059f1539547b63b8784177434f1c4daed1abc8acff1`.
+  Includes the entire source package, actual preceding rolling seed, previous
+  election inputs, code, tests and **139 complete outputs**.
+- [Complete source-query package](https://raw.githubusercontent.com/hanshanley/voter-participation/95162cc9a557385b92d782a6481dcb1c74081fee/snapshots/f74a9ee0c9dee132159137d29dcacdc2d86a09e2b8974f22f12b087f07a59a96/complete-results.zip):
+  **58,388,206 bytes**, SHA256
+  `32acf26d3cc904e6133dc67ffd070bb7bb07dc8ce752dbe613937e86ca99426d`.
+  Includes **18 complete reproducible source outputs**, not just receipts.
+
+| Complete CSV/query | Bytes |
+| --- | ---: |
+| [Every race, total and source date](https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-races.csv) | 257,017 |
+| [Every candidate, literal party and count](https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-candidates.csv) | 462,725 |
+| [Every coverage and freshness decision](https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-coverage.csv) | 80,804 |
+| [All raw and qualified comparisons](https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-comparisons.csv) | 963,252 |
+| [All statewide House comparisons](https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/congress-house-states.csv) | 80,710 |
+| [Complete current and previous queries, JSON gzip](https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/queries.json.gz) | 206,916 |
+| [Complete normalized results, JSON gzip](https://raw.githubusercontent.com/hanshanley/margin_of_error/dd121c9b61de6476bafc7f228b4e63d4bd0a81e5/automatic/versions/196439d64a8f5698573457948a2c8650497a83a6d50c0b380949ae31957caae5/congressional/results.json.gz) | 186,064 |
+
+There are **32 qualified statewide House comparisons** and **24 qualified
+same-seat Senate comparisons**. Eighteen House state and eleven Senate holds
+retain their exact candidate-coverage, stage, same-seat baseline or RCV reasons.
+All 435 district raw source-ID comparisons remain inspectable but
+boundary-held; matching district numbers are not a cross-year boundary review.
+Unopposed races, independents, aggregate Other and unknown counts are not
+silently converted into ordinary two-party contests.
+
+The second live batch changed 27 candidate counts in 14 House races and six
+further race clocks, and reached the actual production consumer. A separate
+identical-input hosted runtime rerun was a genuine unchanged no-op. Controlled
+House decreases and Senate increases also propagated through all seven exports
+and the actual consumer validator; those controlled tests are not live returns.
+[Coverage, every comparison decision and file hashes](../data/participation-access/20261116-congressional-automatic-01/coverage-and-downloads.json),
+[hosted/offline acceptance](../data/participation-access/20261116-congressional-automatic-01/acceptance.json)
+and [production acceptance](../data/participation-access/20261116-congressional-automatic-01/production-acceptance.json)
+distinguish these proofs.
+
+Existing participation numerics, fitted explanations, the scientific 33/17
+House eligibility mask and 34 registration scenarios are preserved. Updating
+behavioral mechanisms requires a reviewed candidate/provider/source-frame
+bridge to those scientific inputs, not merely new candidate counts.
+No statewide estimate is allocated to districts or precincts.
+
+Without JavaScript, the page retains its specifically dated
+[first accepted congressional archive](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-a0e36c10c6600463bb6a76c47c081f000bc4e82167752f2e68bfb09e13743247/complete-analysis.zip)
+(November 16, 2026, 13:57 UTC); it does not pretend that saved release is the
+latest live table. All older complete downloads below remain available.
+[Offline reproduction commands](REPRODUCING.md#automatic-house-and-senate-results).
+
 ## Integrated supported analytical release
 
 The automatic runtime's complete archive now includes a `release/` directory:
@@ -41,8 +106,8 @@ the old totals were treated as targets. Old seeds and downloads are preserved.
 
 ### Accepted pinned release and complete downloads
 
-The [existing explorer](https://www.themarginoferror.com/voter-participation/)
-uses runtime `9c7117fb` / source `30bb6e95`. The
+The preserved pre-congressional release uses runtime `9c7117fb` / source
+`30bb6e95`. The
 [complete numerical archive](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/complete-analysis.zip)
 is **211,490,506 bytes**, SHA256
 `a28afede6d91c1f3502bfe22e4f7e7ae582a657ac8139fe5db641ee40a45c767`.
