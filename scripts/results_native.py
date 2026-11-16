@@ -107,6 +107,9 @@ from scripts.results_pdf_dunn import (
 from scripts.results_pdf_cole import (
     PROFILES as COLE_PDF_PROFILES, statistics as cole_pdf_statistics,
 )
+from scripts.results_pdf_platte import (
+    PROFILES as PLATTE_PDF_PROFILES, statistics as platte_pdf_statistics,
+)
 
 
 CA_URL = "https://media.sos.ca.gov/media/status_GG.json"
@@ -1065,6 +1068,9 @@ def pdf_split_total_header(lines):
             if central != list(range(1, len(central) + 1)):
                 raise ValueError("Native statistical central columns are missing or duplicated")
             matches.append((2 + len(central), lines[position:position + 2]))
+        if (line == "Statistics TOTAL Election Mail Walk-in Walk-in Provision"
+                and lines[position + 1] == "Day Excuse Early al"):
+            matches.append((5, lines[position:position + 2]))
     if len(matches) > 1:
         raise ValueError("Ambiguous native statistical column headers")
     return matches[0] if matches else None
@@ -1233,6 +1239,9 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
         query["pdf_report_timezone_literal"] = zone.group(0) if zone else None
         if numeric_confidence is not None:
             query["ocr_selected_count_minimum_confidence"] = numeric_confidence
+        split_header = pdf_split_total_header(lines[:matches[0][0] - 1])
+        if split_header is not None:
+            query["native_statistical_column_header"] = split_header[1]
         native = query
         rate_compatible = registered is not None
         mapped_measure = (label == "Ballots Cast - Total"
@@ -1250,6 +1259,15 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
             native = {**query, "query": query, "retained_source_context_is_historical": True,
                       "native_reporting_complete_qualified": False}
             rate_compatible = False
+        elif split_header is not None:
+            statuses = [match.group(1) for line in lines[:4] for match in [re.fullmatch(
+                r"Summary Results Report (UNOFFICIAL RESULTS|OFFICIAL RESULTS|Final Official|"
+                r"Official|Unofficial)", line, re.I)] if match]
+            if len(statuses) > 1:
+                raise ValueError("Ambiguous native statistical report status")
+            query["native_report_status_literal"] = statuses[0] if statuses else None
+            native = {**query, "query": query, "retained_source_context_is_historical": True,
+                      "native_reporting_complete_qualified": False}
         queries.append(query)
         updates.append(change(template, value, native, registered=registered, clock=clock,
                               rate_compatible=rate_compatible))
@@ -1258,11 +1276,11 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None):
             "pdf_report_clock_is_not_certification": True}
 
 
-def pdf_mapped_prior_guard(result, templates, prior):
-    if (not any("template_measure_literal" in query for query in result["complete_native_query"])
-            or prior is None or prior.get("data") is None):
+def pdf_prior_guard(result, templates, prior):
+    if prior is None or prior.get("data") is None:
         return result
-    expected = {template["id"]: template for template in templates}
+    expected = {template["id"]: template for template in templates
+                if template["count"]["status"] == "reported"}
     old = prior["data"]
     updates = old.get("updates")
     queries = old.get("complete_native_query")
@@ -1271,10 +1289,11 @@ def pdf_mapped_prior_guard(result, templates, prior):
             or {update.get("id") for update in updates} != set(expected)
             or (prior.get("source") or {}).get("url") not in
                 {template["view"]["source_url"] for template in templates}):
-        raise ValueError("Mapped native PDF last-good source, identity or query scope changed")
+        raise ValueError("Native PDF last-good source, identity or query scope changed")
     current = {update["id"]: update for update in result["updates"]}
     for update in updates:
-        query = (update.get("native") or {}).get("query")
+        native = update.get("native") or {}
+        query = native.get("query", native)
         template = expected[update["id"]]
         if (not isinstance(query, dict) or query not in queries
                 or query.get("county") != template["geography"]["name"]
@@ -1284,11 +1303,11 @@ def pdf_mapped_prior_guard(result, templates, prior):
                 or update.get("value") != query.get("count")
                 or update.get("registered") != query.get("registered")
                 or update.get("clock") != query.get("pdf_report_clock_literal")):
-            raise ValueError("Mapped native PDF last-good numerical facts are not query-bound")
+            raise ValueError("Native PDF last-good numerical facts are not query-bound")
         clock = current[update["id"]]["clock"]
         if update["clock"] and (
                 clock is None or clock_value(clock) < clock_value(update["clock"])):
-            raise ValueError("Mapped native PDF clock rolled back behind its last-good report")
+            raise ValueError("Native PDF clock rolled back behind its last-good report")
     return result
 
 
@@ -1301,7 +1320,7 @@ def pdf_parent_statistics(body, templates, prior=None):
     page = reader.pages[0].extract_text(extraction_mode="layout")
     if page.strip():
         result = pdf_text_statistics(page, templates, len(reader.pages))
-        return pdf_mapped_prior_guard(result, templates, prior)
+        return pdf_prior_guard(result, templates, prior)
     from scripts.results_pdf_ocr import first_page_views
 
     views = first_page_views(body)
@@ -1316,7 +1335,7 @@ def pdf_parent_statistics(body, templates, prior=None):
     result = results[0]
     result["ocr"] = {"passes": [view["receipt"] for view in views],
                      "same_engine_resolution_check_not_independent_validation": True}
-    return result
+    return pdf_prior_guard(result, templates, prior)
 
 
 def summary_page_statistics(page, number, pages, profile):
@@ -2001,6 +2020,7 @@ def source_plan(baseline):
             jefferson_profile = JEFFERSON_PDF_PROFILES.get(url)
             cass_profile = CASS_PDF_PROFILES.get(url)
             cole_profile = COLE_PDF_PROFILES.get(url)
+            platte_profile = PLATTE_PDF_PROFILES.get(url)
             native = view.get("native_record") or {}
             if family_route is not None and family_route["state"] == state:
                 adapter = family_route["adapter"]
@@ -2035,6 +2055,8 @@ def source_plan(baseline):
                 adapter = "reviewed_cass_turnout_pdf"
             elif cole_profile and state == cole_profile["state"]:
                 adapter = "reviewed_cole_statistical_grid"
+            elif platte_profile and state == platte_profile["state"]:
+                adapter = "reviewed_platte_statistical_grid"
             elif pdf_profile and state == pdf_profile["state"]:
                 adapter = "reviewed_statistical_pdf"
             elif texas_reconciliation_role(template):
@@ -2134,6 +2156,10 @@ def collect_sources(collector, baseline):
                 prior = collector.prior.get(identity)
                 def parse(body, templates=templates, url=url, prior=prior):
                     return cole_pdf_statistics(body, templates, url, prior=prior)
+            elif source["adapter"] == "reviewed_platte_statistical_grid":
+                prior = collector.prior.get(identity)
+                def parse(body, templates=templates, url=url, prior=prior):
+                    return platte_pdf_statistics(body, templates, url, prior=prior)
             elif source["adapter"] == "reviewed_texas_reconciliation_parent":
                 def parse(body, templates=templates):
                     return texas_reconciliation_statistics(body, templates)

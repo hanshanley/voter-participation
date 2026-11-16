@@ -19,6 +19,32 @@ The tool does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Shared statistical headers and reviewed report pages
+
+The shared county-PDF reader recognizes Jefferson's wrapped TOTAL-first header
+with Election Day, Mail, Walk-in Excuse, Walk-in Early and Provisional columns.
+All five components must be present in their reviewed order and reconcile with
+the native total. The complete header and statistical row remain in the query.
+The current literal result status is refreshed; a missing status stays unknown,
+not the initial report's label or an independent certification.
+Both text-layer and scanned county totals reject clocks older than their
+query-bound last-good capture, not just the frozen initial observation.
+
+Platte's reviewed selector is retained verbatim: `physical_page: 20` identifies
+the reviewed printed page 20/26, physically PDF page 21 after an affidavit.
+This explicit profile does not reinterpret page selectors for other sources.
+It binds the native Turnout registration, Ballots Cast and percentage columns,
+never the adjacent proposition-vote columns. All four displayed turnout rows
+are retained, but their contest-filtered children are not a complete county
+partition and are not summed to replace the printed county total.
+
+Platte uses the reviewed upright OCR mode at two resolutions. A bounded crop
+of its native Date/Time fields meets the same .98 clock confidence threshold;
+it must agree with the full-page reading. The literal CST timezone is retained.
+Missing absentee registration/percentage remains missing, not zero. Source
+registration stocks and percentages remain context only: no new denominator,
+analytical rate, completed-counting, geography or estimate qualification.
+
 ## Cole County: upright precinct-statistics grid
 
 Cole's reviewed profile reads the native Ballots Cast column and Total row,

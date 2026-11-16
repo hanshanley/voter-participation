@@ -533,6 +533,89 @@ def mapped_pdf_fixture():
     return before, row, text
 
 
+def wrapped_pdf_fixture(value=9, clock="11/04/2026"):
+    row = granular.selected_records(baseline(("KY",)), "KY")[0]
+    components = "4 1 1 3 0" if value else "0 0 0 0 0"
+    text = (
+        "Summary Results Report UNOFFICIAL RESULTS\nKY County\nGeneral Election\n"
+        "November 3, 2026\nStatistics TOTAL Election Mail Walk-in Walk-in Provision\n"
+        "Day Excuse Early al\nBallots Cast - Total " + str(value) + " " + components
+        + "\nElection Summary - " + clock + " 3:07 PM")
+    return row, text
+
+
+@pytest.mark.parametrize("value", [0, 9])
+def test_wrapped_method_header_retains_explicit_total_and_complete_components(value):
+    row, text = wrapped_pdf_fixture(value)
+    result = native.pdf_text_statistics(text, [row], 53)
+    update, = result["updates"]
+    query, = result["complete_native_query"]
+    assert update["value"] == value and update["registered"] is None
+    assert update["rate_compatible"] is False
+    assert query["native_statistical_column_header"] == [
+        "Statistics TOTAL Election Mail Walk-in Walk-in Provision", "Day Excuse Early al"]
+    assert query["native_statistical_line"] == text.splitlines()[6]
+    assert query["pdf_report_timezone_literal"] is None
+    assert not result["analytical_rates_promoted"] and not result["geographic_joins_changed"]
+
+
+@pytest.mark.parametrize("old,new", [
+    ("TOTAL Election", "Election TOTAL"),
+    ("Day Excuse Early al", "Day Early Excuse al"),
+    ("Walk-in Walk-in", "Walk-in"),
+    ("Provision", "Candidate"),
+    ("9 4 1 1 3 0", "9 4 1 1 3"),
+    ("9 4 1 1 3 0", "9 4 1 1 3 0 0"),
+    ("9 4 1 1 3 0", "9 4 1 1 4 0"),
+    ("9 4 1 1 3 0", "? 4 1 1 3 0"),
+    ("Day Excuse Early al", "Day Excuse Early al\nStatistics TOTAL Election Mail "
+        "Walk-in Walk-in Provision\nDay Excuse Early al"),
+])
+def test_wrapped_header_rejects_reordered_missing_duplicate_and_unreconciled_columns(old, new):
+    row, text = wrapped_pdf_fixture()
+    with pytest.raises(ValueError):
+        native.pdf_text_statistics(text.replace(old, new), [row], 53)
+
+
+@pytest.mark.parametrize("status", ["OFFICIAL RESULTS", None])
+def test_wrapped_pdf_status_refresh_does_not_reuse_the_initial_result_label(status):
+    before = baseline(("KY",))
+    row, text = wrapped_pdf_fixture()
+    text = text.replace(" UNOFFICIAL RESULTS", " " + status if status else "")
+    result = native.pdf_text_statistics(text, [row], 53)
+    after, _ = granular.project(before, {"KY-summary": {
+        "status": "reported", "source": {"url": row["view"]["source_url"], **pin(text.encode())},
+        "data": result}})
+    current, = granular.selected_records(after, "KY")
+    assert current["view"]["source_status_literal"] == status
+    assert current["reporting_status"]["literal"] == status
+    assert current["reporting_status"]["complete"] is None
+
+
+@pytest.mark.parametrize("text_layer", [True, False])
+def test_plain_pdf_rejects_clock_rollback_behind_advanced_last_good(monkeypatch, text_layer):
+    from scripts import results_pdf_ocr as ocr
+    pdf_reader(monkeypatch)
+    row = granular.selected_records(baseline(("KY",)), "KY")[0]
+    accepted = pdf_text("KY").decode().replace("11/04/2026", "11/06/2026")
+    older = accepted.replace("11/06/2026", "11/05/2026")
+    def parse(text, prior=None):
+        if not text_layer:
+            view = {"text": text, "confidence": [1.] * len(text.splitlines()), "receipt": {}}
+            monkeypatch.setattr(ocr, "first_page_views", lambda body: [view, copy.deepcopy(view)])
+        return native.pdf_parent_statistics(text.encode() if text_layer else b"", [row], prior)
+    result = parse(accepted)
+    prior = {"source": {"url": row["view"]["source_url"], **pin(accepted.encode())},
+             "data": result}
+    with pytest.raises(ValueError, match="last-good"):
+        parse(older, prior)
+    assert parse(accepted, prior)["updates"] == result["updates"]
+    broken = copy.deepcopy(prior)
+    broken["data"]["updates"][0]["value"] = 9999
+    with pytest.raises(ValueError, match="query-bound"):
+        parse(accepted, broken)
+
+
 @pytest.mark.parametrize("value", [0, 9])
 def test_mapped_pdf_refreshes_native_context_without_promoting_rates(monkeypatch, value):
     pdf_reader(monkeypatch)

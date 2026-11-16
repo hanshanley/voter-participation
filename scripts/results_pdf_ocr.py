@@ -1,4 +1,4 @@
-"""Bounded local OCR for image-only statistical first pages; never a text-layer override."""
+"""Bounded local OCR for reviewed image-only statistical pages."""
 
 from importlib.metadata import version
 from pathlib import Path
@@ -79,11 +79,18 @@ def physical_lines(items, strict_role_alignment=False):
     return result
 
 
-def first_page_views(body, strict_role_alignment=False, text_angle_classifier=True):
+def page_views(body, strict_role_alignment=False, text_angle_classifier=True,
+               page_index=0, region=None):
     import fitz
     import rapidocr_onnxruntime
     from rapidocr_onnxruntime import RapidOCR
 
+    if type(page_index) is not int or page_index < 0:
+        raise ValueError("Native statistical PDF page index must be a nonnegative integer")
+    if region is not None and (
+            len(region) != 4 or not 0 <= region[0] < region[2] <= 1
+            or not 0 <= region[1] < region[3] <= 1):
+        raise ValueError("Native statistical PDF region must be a bounded normalized rectangle")
     if not hasattr(_local, "engine"):
         _local.engine = RapidOCR(intra_op_num_threads=1, inter_op_num_threads=1)
         root = Path(rapidocr_onnxruntime.__file__).parent
@@ -93,18 +100,27 @@ def first_page_views(body, strict_role_alignment=False, text_angle_classifier=Tr
     views = []
     options = {} if text_angle_classifier else {"use_cls": False}
     with fitz.open(stream=body, filetype="pdf") as document:
-        page = document[0]
+        page = document[page_index]
+        rectangle = page.rect
+        options_region = {}
+        if region is not None:
+            rectangle = fitz.Rect(
+                page.rect.x0 + page.rect.width * region[0],
+                page.rect.y0 + page.rect.height * region[1],
+                page.rect.x0 + page.rect.width * region[2],
+                page.rect.y0 + page.rect.height * region[3])
+            options_region["clip"] = rectangle
         for dpi in (180, 240):
-            if page.rect.width * page.rect.height * (dpi / 72) ** 2 > 15_000_000:
+            if rectangle.width * rectangle.height * (dpi / 72) ** 2 > 15_000_000:
                 raise ValueError("Native statistical PDF page exceeds the OCR pixel budget")
-            image = page.get_pixmap(dpi=dpi, alpha=False).tobytes("png")
+            image = page.get_pixmap(dpi=dpi, alpha=False, **options_region).tobytes("png")
             items, _timings = _local.engine(image, **options)
             if not items:
                 raise ValueError("Native statistical PDF has no readable OCR statistics")
             rotation = 0
             if strict_role_alignment and vertical_layout(items):
                 matrix = fitz.Matrix(dpi / 72, dpi / 72).prerotate(90)
-                image = page.get_pixmap(matrix=matrix, alpha=False).tobytes("png")
+                image = page.get_pixmap(matrix=matrix, alpha=False, **options_region).tobytes("png")
                 items, _timings = _local.engine(image, **options)
                 rotation = 90
                 if not items or vertical_layout(items):
@@ -113,8 +129,10 @@ def first_page_views(body, strict_role_alignment=False, text_angle_classifier=Tr
             receipt = {"engine": "rapidocr_onnxruntime",
                 "version": version("rapidocr_onnxruntime"), "models": _local.models,
                 "renderer": "PyMuPDF", "renderer_version": version("PyMuPDF"),
-                "dpi": dpi, "page": 1,
+                "dpi": dpi, "page": page_index + 1,
                 "image": pin(image), "count_minimum_confidence": .98}
+            if region is not None:
+                receipt["normalized_region"] = list(region)
             if strict_role_alignment:
                 receipt["rotation_degrees"] = rotation
             if not text_angle_classifier:
@@ -122,3 +140,8 @@ def first_page_views(body, strict_role_alignment=False, text_angle_classifier=Tr
             view["receipt"] = receipt
             views.append(view)
     return views
+
+
+def first_page_views(body, strict_role_alignment=False, text_angle_classifier=True):
+    return page_views(body, strict_role_alignment=strict_role_alignment,
+                      text_angle_classifier=text_angle_classifier)
