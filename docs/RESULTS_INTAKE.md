@@ -19,6 +19,22 @@ The tool does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Cole County: upright precinct-statistics grid
+
+Cole's reviewed profile reads the native Ballots Cast column and Total row,
+not candidate votes. It retains all 28 locality rows, the separate ABSENTEE
+row, and the printed county parent. Absentee repeats the county registration
+stock; that stock is not added a second time. Row percentages, locality stocks,
+ballot components, physical columns and both OCR resolutions must reconcile.
+The profile disables text-angle classification for this reviewed upright grid:
+the generic classifier can rotate a printed 999 into 666. Other profiles keep
+their existing OCR defaults. Missing or low-confidence counts fail closed,
+not to zero; source clocks cannot regress behind the last-good report.
+
+The native registered counts and percentages remain source context only.
+This adapter does not qualify an analytical denominator, completed counting,
+precinct geometry or new estimates.
+
 ## Greeley County: source-defined workbook turnout
 
 The reviewed Greeley workbook profile reads the three literal statistical

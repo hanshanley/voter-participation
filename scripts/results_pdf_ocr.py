@@ -79,7 +79,7 @@ def physical_lines(items, strict_role_alignment=False):
     return result
 
 
-def first_page_views(body, strict_role_alignment=False):
+def first_page_views(body, strict_role_alignment=False, text_angle_classifier=True):
     import fitz
     import rapidocr_onnxruntime
     from rapidocr_onnxruntime import RapidOCR
@@ -91,20 +91,21 @@ def first_page_views(body, strict_role_alignment=False):
         if not _local.models:
             raise ValueError("OCR model inventory is missing")
     views = []
+    options = {} if text_angle_classifier else {"use_cls": False}
     with fitz.open(stream=body, filetype="pdf") as document:
         page = document[0]
         for dpi in (180, 240):
             if page.rect.width * page.rect.height * (dpi / 72) ** 2 > 15_000_000:
                 raise ValueError("Native statistical PDF page exceeds the OCR pixel budget")
             image = page.get_pixmap(dpi=dpi, alpha=False).tobytes("png")
-            items, _timings = _local.engine(image)
+            items, _timings = _local.engine(image, **options)
             if not items:
                 raise ValueError("Native statistical PDF has no readable OCR statistics")
             rotation = 0
             if strict_role_alignment and vertical_layout(items):
                 matrix = fitz.Matrix(dpi / 72, dpi / 72).prerotate(90)
                 image = page.get_pixmap(matrix=matrix, alpha=False).tobytes("png")
-                items, _timings = _local.engine(image)
+                items, _timings = _local.engine(image, **options)
                 rotation = 90
                 if not items or vertical_layout(items):
                     raise ValueError("Native statistical PDF orientation requires review")
@@ -116,6 +117,8 @@ def first_page_views(body, strict_role_alignment=False):
                 "image": pin(image), "count_minimum_confidence": .98}
             if strict_role_alignment:
                 receipt["rotation_degrees"] = rotation
+            if not text_angle_classifier:
+                receipt["text_angle_classifier_enabled"] = False
             view["receipt"] = receipt
             views.append(view)
     return views

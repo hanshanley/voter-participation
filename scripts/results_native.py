@@ -104,6 +104,9 @@ from scripts.results_pdf_dunn import (
     source_url as dunn_source_url,
     statistics as dunn_statistics,
 )
+from scripts.results_pdf_cole import (
+    PROFILES as COLE_PDF_PROFILES, statistics as cole_pdf_statistics,
+)
 
 
 CA_URL = "https://media.sos.ca.gov/media/status_GG.json"
@@ -1997,6 +2000,7 @@ def source_plan(baseline):
             affiliation_profile = AFFILIATION_PDF_PROFILES.get(url)
             jefferson_profile = JEFFERSON_PDF_PROFILES.get(url)
             cass_profile = CASS_PDF_PROFILES.get(url)
+            cole_profile = COLE_PDF_PROFILES.get(url)
             native = view.get("native_record") or {}
             if family_route is not None and family_route["state"] == state:
                 adapter = family_route["adapter"]
@@ -2029,6 +2033,8 @@ def source_plan(baseline):
                 adapter = "reviewed_jefferson_precinct_pdf"
             elif cass_profile and state == cass_profile["state"]:
                 adapter = "reviewed_cass_turnout_pdf"
+            elif cole_profile and state == cole_profile["state"]:
+                adapter = "reviewed_cole_statistical_grid"
             elif pdf_profile and state == pdf_profile["state"]:
                 adapter = "reviewed_statistical_pdf"
             elif texas_reconciliation_role(template):
@@ -2124,6 +2130,10 @@ def collect_sources(collector, baseline):
                 prior = collector.prior.get(identity)
                 def parse(body, templates=templates, prior=prior):
                     return pdf_parent_statistics(body, templates, prior=prior)
+            elif source["adapter"] == "reviewed_cole_statistical_grid":
+                prior = collector.prior.get(identity)
+                def parse(body, templates=templates, url=url, prior=prior):
+                    return cole_pdf_statistics(body, templates, url, prior=prior)
             elif source["adapter"] == "reviewed_texas_reconciliation_parent":
                 def parse(body, templates=templates):
                     return texas_reconciliation_statistics(body, templates)

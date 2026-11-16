@@ -67,6 +67,7 @@ jobs:
           tests/test_current_source_reconciliation.py tests/test_automatic_estimates.py
           tests/test_results_native_broome.py
           tests/test_results_native_kansas.py
+          tests/test_results_pdf_cole.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
 
       - name: Reuse conditional HTTP cache
