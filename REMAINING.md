@@ -2,16 +2,66 @@
 
 Updated: 2026-11-16 UTC. Source catalog: [SOURCES.md](SOURCES.md).
 
-**The project is not finished when the files are downloaded.** Acquisition and
-reconciliation must feed the participation, switching, modeled/reported
-nonparticipation and new/returning-voter estimates, then their tested integration
-into the existing project. Do not stop at an inventory or another audit.
+## Finite supported analytical release delivered
 
-The single assistant continuation runs every **45 minutes**
-(schedule 131; schedules 130, 129, 128, 127, 126, 125, 124, 123, 122 and earlier continuations are stopped).
-It must read this file and the source ledger, update actual progress, and continue
-downstream work. Older notes saying the prompt is stopped are superseded.
-This document itself does not install a cron job or enable a website workflow.
+The requested supported release is complete, not another county milestone.
+The existing explorer integrates participation, raw/qualified electoral swings
+and assumption-qualified explanations with complete CSV/query downloads and
+native source dates. [Coverage and downloads](data/participation-access/20261116-supported-analytical-release-01/coverage-and-downloads.json),
+[validation](data/participation-access/20261116-supported-analytical-release-01/acceptance.json)
+and [production acceptance](data/participation-access/20261116-supported-analytical-release-01/production-acceptance.json)
+pin runtime `9c7117fb` / source `30bb6e95`.
+
+Actual coverage is **4,857 compatible administrative rate frames in 23
+jurisdictions**, including eight statewide frames; **33 qualified House
+state comparisons** out of 50 recorded comparisons; and **297 qualified
+House explanations across nine existing model variants**. The 671 supported
+2026 demographic participation cells are separately labeled source-model
+estimates, not observed turnout. Counts, rates, geographic coverage and source
+refresh appearances are different quantities.
+
+Both reproducible parser defects in the pinned 19-item ingestion queue are
+repaired and accepted. Two coupled hosted integration defects are also fixed.
+There is **no remaining reproducible implementation defect in this scoped
+queue**. The complete [19-item disposition ledger](data/results-intake/source-product-dispositions.json)
+distinguishes seven unsupported products, nine external evidence holds and one
+native reconciliation conflict. It includes actual dispatch/attempted URLs.
+Unsupported products are IN Fulton/Wayne, NH Concord/Nashua, NV Washoe, the
+TN precinct report and WI Oconto. Evidence holds are Williamson TN and TX
+Wise/Archer/Caldwell/Moore/Cameron/Nolan/Uvalde/Bexar. Mohave's conflicting
+native parent and precinct controls require source clarification, not a sum
+substitution. Confidence thresholds and original evidence are preserved.
+
+The [versioned eligibility review](data/results-intake/reviewed-eligibility.json)
+rechecked all 17 House holds and 51 registration decisions. None currently
+resolves its specific evidence requirement. The House holds remain AK, AL,
+CA, FL, IL, KY, LA, MA, ME, MS, NC, NJ, NV, OK, TX, WA and WI; Maine's
+unmatched RCV round remains distinct from candidate-coverage/count holds.
+The other states' candidate-count, unopposed/changed-coverage or multiple-nominee
+reasons remain explicit rather than being hidden by a sign rule.
+Twenty jurisdictions have no registration scenario; their individual
+date/status/population/denominator or sample reasons are retained in the
+complete decisions. The supported 34 scenarios span 31 states; no new
+probability, qualified control or scientific successor seed is inferred from
+a county count.
+
+Missing group denominators, linked choice/participation histories, compatible
+district boundaries and RCV rounds remain scientific/source limits. No state
+survey is allocated down to local geography; no modeled mechanism is
+represented as observed staying home, first-ever voting or newly acquired
+eligibility. All omitted frames have machine-readable reasons. Existing 63
+other-office source snapshots and 54 conditional models retain their frozen
+inputs and are not new comparable-election qualifications.
+
+The assistant continuation **131 ends after final remote acceptance**.
+It is not the automatic intake engine. The hourly GitHub source collector
+and data-only runtime consumer remain active, using tags for data and only
+`main` as a code branch. Old seeds and every immutable download remain.
+No optional county campaign, model-family experiment, website redesign or
+Pages deployment is part of this release. Unavailable nationwide evidence
+does not keep it open indefinitely. The older sections below describe
+historical increments and broader evidence backlogs; they do not reopen this
+finished release or authorize restarting accepted campaigns.
 
 ## Cole automatic intake delivered; continue genuine cross-state gaps
 

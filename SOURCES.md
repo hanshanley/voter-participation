@@ -6,6 +6,96 @@ Ledger updated: 2026-11-16 UTC. Source-specific clocks remain as recorded.
 [Complete downloads](docs/DATA.md) | [Reproduce](docs/REPRODUCING.md).
 This document is the detailed reference ledger, not the methods introduction.
 
+## November 16 supported analytical release
+
+The [existing explorer](https://www.themarginoferror.com/voter-participation/)
+and one pinned complete runtime now deliver participation, recorded/qualified
+electoral changes and assumption-qualified explanations together. Runtime
+`9c7117fb` uses source `30bb6e95` and reviewed eligibility version
+`20261116-supported-release-03`. Its
+[complete numerical archive](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/complete-analysis.zip)
+is **211,490,506 bytes**, SHA256
+`a28afede6d91c1f3502bfe22e4f7e7ae582a657ac8139fe5db641ee40a45c767`.
+It contains all permitted inputs, code, tests, complete queries and results;
+all old immutable downloads remain. [Coverage and all 18 CSV/query downloads](data/participation-access/20261116-supported-analytical-release-01/coverage-and-downloads.json)
+and the [download guide](docs/DATA.md) identify exact source dates and pins.
+
+| Product | Actual supported coverage |
+| --- | --- |
+| Administrative participation | 36,561 source observations; 36,372 have reported counts. There are 4,857 compatible source-rate frames in 23 jurisdictions, including eight statewide rate frames: AL, CA, DE, NC, NE, NM, OR and SD. |
+| Historical surveys | 13,156 native history cells and 1,734 state-demographic queries for 2022/2024; 1996/1998/2002 point queries retain their separate populations. |
+| 2026 demographic participation | 671 supported broad source-model cells out of 1,530 queries, not administratively observed or population-certified turnout. |
+| House electoral changes | 50 raw state comparisons; 33 qualified and 17 held. All 435 raw district source-ID comparisons remain downloadable, without new cross-year district-map approval. |
+| House explanations | 297 qualified comparison explanations across nine existing profile/family variants, not 297 independent elections. The other 153 scenarios remain prior-only, not explanations of observed change. There are 8,289 available demographic mechanism cells out of 14,400 queries. |
+| Registration controls | All 51 decisions are explicit; 34 existing conditional scenarios span 31 states. |
+| Other offices | 35 Senate and 28 governor frozen source snapshots, with 54 existing conditional models. These are not new same-office comparison qualifications or fresh acquisitions. |
+
+Source observations overlap in geography, mode and vintage: they are not unique
+people or nationwide complete coverage, and "reported" does not mean freshly
+captured by this release. Native clocks remain separate from retrieval clocks.
+Rates use each approved source denominator, not an interchangeable VEP/CVAP or
+unique-person population. Statewide survey estimates are never allocated locally.
+
+The shared repair batch resolves both reproducible source-parser defects in
+the pinned 19-item queue. Cape May's actual `source_plan()` dispatch is the
+reviewed PDF-parent reader, not the New Jersey administrative-subtotal reader:
+physical page 2, the wrapped six-method header and native registration label
+yield **42,442 / 76,899**, with printed **55.19%** and the exact native
+`11/12/2026 03:34PM` clock. Walworth's standalone **Ballots Cast: 46,612**
+is bound to the county/election/statistical section. Its summary observation
+had been assigned the declared municipality sibling `22458`; the exact
+source/observation/inventory bridge uses the originally declared summary
+`22455`, not a guessed endpoint or an alias of Cards Cast/Voters Cast.
+Its own clock is `11/3/2026 9:36:49 PM`; registration and the rate stay null.
+Both timezones remain unknown. Wrong page, candidate substitution, identity,
+missing-count and rollback regressions fail closed.
+
+All remaining queue entries have specific [source-product dispositions](data/results-intake/source-product-dispositions.json):
+**seven unsupported products, nine external evidence holds and one native
+reconciliation hold**. Attempted URLs are recovered from the actual dispatch,
+including entries with blank source-status URLs. Williamson's low-confidence
+OCR and Wise/Bexar's handwritten evidence remain holds; no threshold was
+lowered or count inferred from candidate sums. Mohave's 79,836 precinct versus
+79,840 parent discrepancy is not silently repaired.
+
+Every changed observation has a complete source-to-analysis decision.
+Walworth supplies a county count but no compatible registration denominator;
+neither county source supplies the missing statewide control, complete
+candidate endpoints, linked choice histories or new model probabilities.
+Cape May's narrow same-report fraction remains available. All 17 House holds
+and 51 registration decisions were re-evaluated against their specific
+requirements; none resolved. No successor scientific seed or new fit was
+fabricated to change the coverage totals. Switching, exit, entry/return,
+Other/unresolved and explicit residuals reconcile on the stated D-minus-R
+margin scale. Numerator/denominator accounting is an alternative partition,
+not extra additive mechanisms; modeled entry is not first-ever voting.
+
+Validation: **270 integrated local tests**, **19 coupled repair tests**,
+**657 actual hosted source tests**, 11 optional skips and 17 subtests.
+The selected source's 14 outputs and runtime's **132 outputs** reproduce
+offline with zero network requests; all public bodies match. Nonselected
+collector entries and native clocks match the actual immutable predecessor.
+Actual desktop/mobile production acceptance covers all 306 count frames per
+width, all nine model controls, source counts/clocks/rates and all 18 browser
+CSV/query downloads. All six production captures were physically reviewed.
+[Validation and recovery provenance](data/participation-access/20261116-supported-analytical-release-01/acceptance.json)
+and [production acceptance](data/participation-access/20261116-supported-analytical-release-01/production-acceptance.json)
+retain the evidence.
+
+Runtime run **43799309629** first completed computation and replay, then failed
+its Git staging-tag push with exit 128; the underlying stderr was not exposed,
+so its precise cause is unknown. Publication alone was recovered from the same
+existing immutable archive, staged at `52b29715` and atomically activated at
+`066c8851`. Actual hosted attempt 2 succeeded as an **unchanged** no-op against
+that exact version and data commit. No source was recollected or analysis
+rebuilt for recovery. Accepted Jefferson/Platte run **43788860169** and source
+**43786513279** were reused, not restarted. Research `30d2b8d9`, `16edf578`
+and `746e19ca`, plus website workflow-only `4f49ba7c`, supply the implementation.
+No static website change, Pages deployment, new geographic join or refit was
+made. Both hourly GitHub writers and the single `main` branch in each
+repository are preserved. This finite release is complete; the older entries
+below are historical, not instructions to restart their delivery campaigns.
+
 ## Verified Cole automatic grid refresh and live propagation
 
 Cole County's native statistical grid now refreshes all **30 existing reviewed

@@ -21,6 +21,14 @@ switching/nonparticipation models.
 
 ## Supported analytical release and selective recovery
 
+The accepted finite release is source `30bb6e95` / runtime `9c7117fb`.
+[Exact coverage and complete downloads](../data/participation-access/20261116-supported-analytical-release-01/coverage-and-downloads.json)
+include 18 compressed CSV/query products in the same complete numerical
+archive, with native dates, qualifications and explicit omitted-frame reasons.
+There are now 132 complete runtime outputs, versus the previous 113.
+This increases integrated/exported product coverage, not the number of people
+observed or newly qualified comparisons.
+
 The handoff is `results_intake` -> `automatic_native_refresh` ->
 `automatic_estimates` -> `automatic_runtime` -> the existing explorer.
 The reviewed release adds complete administrative/rate, historical survey,
@@ -31,6 +39,40 @@ Existing Senate/governor snapshots and complete queries remain a distinct frozen
 product with their own source clocks and qualifications, not hourly refreshed races.
 Local counts do not become statewide registered controls or choice histories.
 No new fit or statewide-to-local allocation is performed.
+
+The complete `source-to-analysis-effects.csv.gz` distinguishes a captured
+source, changed count, available compatible fraction, changed fraction,
+recorded electoral comparison and conditional model update. Reused observations
+keep their own clocks and are not relabeled fresh. In this selected capture,
+only Walworth is newly captured; all other collector entries and native clocks
+are exactly preserved against the actual immutable preceding collector state.
+Walworth's 46,612 county ballots do not supply a registration denominator,
+statewide control, candidate-choice endpoint or joint history. Cape May retains
+its compatible 42,442/76,899 native-registration fraction and exact
+`11/12/2026 03:34PM` clock. Neither licenses a new model probability.
+
+`reviewed-eligibility.json` version `20261116-supported-release-03` records
+the actual 17 House and 51 registration reviews. None of their specific holds
+resolved, so the existing 33 qualified comparisons, 34 scenarios and old
+scientific seed remain for evidenced reasons. `source-product-dispositions.json`
+accounts for every pinned source-semantics error: two repaired parser defects,
+seven unsupported products, nine external evidence holds and one native
+reconciliation conflict. It recovers attempted URLs from `source_plan()` when
+source-status rows leave them blank. These are distinct from transport failures
+and from the two subsequently repaired hosted integration defects.
+
+Source run 43797815095 passes 657 tests, 11 optional skips and 17 subtests;
+all 14 source outputs reproduce offline. Runtime run 43799309629 computed and
+replayed all 132 outputs before its original Git stage-tag push failed with
+exit 128. Its precise Git cause is unknown because stderr was not exposed.
+Publication alone was recovered from the exact already-published immutable
+archive, without recollection, recomputation or fitting. Actual hosted attempt
+2 then succeeded as an unchanged no-op against that runtime and data commit.
+Final full public-body, extracted offline replay and desktop/mobile acceptance
+are recorded in the [release validation](../data/participation-access/20261116-supported-analytical-release-01/acceptance.json).
+Preserve the original failed run and journal when diagnosing a post-computation
+publication failure; do not restart accepted collection or replace immutable
+analysis bodies merely to retry Git publication.
 
 For a diagnosed source-only failure, `refresh-selected --sources SOURCE_ID`
 starts from the latest validated complete collector state, acquires only those

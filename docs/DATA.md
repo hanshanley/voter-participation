@@ -39,6 +39,58 @@ none of those specific holds: 33 comparisons and 34 registration scenarios
 across 31 states remain supported under their existing assumptions, not because
 the old totals were treated as targets. Old seeds and downloads are preserved.
 
+### Accepted pinned release and complete downloads
+
+The [existing explorer](https://www.themarginoferror.com/voter-participation/)
+uses runtime `9c7117fb` / source `30bb6e95`. The
+[complete numerical archive](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/complete-analysis.zip)
+is **211,490,506 bytes**, SHA256
+`a28afede6d91c1f3502bfe22e4f7e7ae582a657ac8139fe5db641ee40a45c767`.
+It includes the complete
+[source-query archive](https://raw.githubusercontent.com/hanshanley/voter-participation/de231e7f0615296d898e069aa0f3708d329d256f/snapshots/30bb6e9509fedd1c6daf76402812e7bca735b6c5762de168d68a0289f43fd864/complete-results.zip)
+(57,917,508 bytes), permitted inputs, all code/tests and every complete
+query/result. All **132 runtime outputs** and **14 source outputs** reproduce
+offline without network access; their public bodies were verified.
+The [coverage/download descriptor](../data/participation-access/20261116-supported-analytical-release-01/coverage-and-downloads.json)
+contains exact per-file hashes, native dates/qualification conventions and
+coverage. It supplements these full datasets; it does not replace them.
+
+| Complete CSV/query | Compressed bytes |
+| --- | ---: |
+| [Administrative participation and compatible fractions](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/participation-administrative.csv.gz) | 1,438,439 |
+| [Historical survey rates](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/participation-historical-survey.csv.gz) | 106,483 |
+| [2022/2024 state-demographic participation](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/participation-historical-state-demographics.csv.gz) | 396,112 |
+| [2026 modeled demographic participation](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/participation-modeled-demographics-2026.csv.gz) | 97,304 |
+| [Raw and qualified House state electoral comparisons](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/electoral-recorded-and-qualified.csv.gz) | 7,906 |
+| [435 raw district source-ID comparisons](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/electoral-recorded-districts.csv.gz) | 43,966 |
+| [Conditional state explanations and residuals](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/modeled-explanations.csv.gz) | 119,600 |
+| [Conditional demographic explanations](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/modeled-demographic-explanations.csv.gz) | 1,973,765 |
+| [All House eligibility decisions](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/house-eligibility-decisions.csv.gz) | 5,970 |
+| [All registration-control decisions](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/registration-control-decisions.csv.gz) | 5,057 |
+| [House/control update decisions](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/house-and-control-update-decisions.csv.gz) | 3,028 |
+| [All 19 scoped source dispositions](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/scoped-source-dispositions.csv.gz) | 3,849 |
+| [Source-to-analysis effects and exact prerequisites](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/source-to-analysis-effects.csv.gz) | 98,820 |
+| [Frozen Senate/governor counts and mechanisms](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/existing-senate-governor-counts-and-mechanisms.csv.gz) | 20,251 |
+| [Frozen Senate/governor complete queries](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/existing-senate-governor-complete-queries.json.gz) | 62,786 |
+| [1996 complete source-point queries](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/historical-1996-complete-points.json.gz) | 237,645 |
+| [1998 complete source-point queries](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/historical-1998-complete-points.json.gz) | 91,850 |
+| [2002 complete source-point queries](https://raw.githubusercontent.com/hanshanley/margin_of_error/52b29715f3d9dcedb0630cf0a296d4e462538af3/automatic/versions/9c7117fb5fca4854ea05a1adb432c0beac04d8dc4772f6ba03721f5f17634288/release/historical-2002-complete-points.json.gz) | 74,458 |
+
+Coverage is 36,561 administrative source observations with 4,857 compatible
+fractions in 23 jurisdictions, including eight statewide fractions; 50 raw
+House state comparisons with 33 qualified/17 held; and 297 qualified
+explanations across nine existing model variants. There are 671 supported
+2026 demographic participation cells out of 1,530 queries, not observed
+turnout; 13,156 historical survey cells and 1,734 state-demographic queries
+remain complete. Repeated frames, modes, model variants and demographic
+dimensions are not independent/additive populations. Raw district source IDs
+do not establish compatible boundaries. All dates remain source-specific,
+including explicitly missing clocks; model build time is not a count clock.
+The [release acceptance](../data/participation-access/20261116-supported-analytical-release-01/acceptance.json)
+records the original failed Git publication, same-archive publication-only
+recovery and successful hosted unchanged retry. Desktop/mobile verification
+checked every CSV/query URL with actual browser CORS and full-body hashes.
+
 ## Historical precinct qualification
 
 The complete immutable archive is **898,920,880 bytes**, SHA256 `c8fa6b5a915175f1d6f0b37df4b25e9627bb504788ed44ae8a1604a9cd268bfb`. All eight full assets were compared while draft and again anonymously after immutable publication.
