@@ -36,6 +36,24 @@ count-update timestamp. Unchanged accepted observations remain exact no-ops.
 
 ## Separate statewide turnout intake
 
+California's existing native `status_GG.json` family refreshes its separately
+declared Statewide parent as well as all 58 counties. Complete native county
+counts and registrations must reconcile to that parent, which is excluded from
+the county sums. The statewide observation keeps its source-defined
+`voterTurnout` measure and existing native-registration denominator qualification;
+neither reporting completeness nor literal SF/F status establishes certification.
+The source-printed percentage and three native report timestamps remain distinct
+from the calculated registered-frame fraction. Existing percentage mirrors are
+updated together; held denominator qualifications remain held.
+
+The runtime migrates the exact hash-pinned legacy California statewide display
+to its existing canonical observation once, then follows the normal exact-view
+successor binding. Other stale or edited display records are not rebound.
+Source failures retain last-good counts, fractions and clocks. This is newly
+automated integration of an existing source and observation, not new geographic
+coverage or an eligible-population/group turnout estimate. It needs the updated
+runtime engine pin, not a Pages deployment.
+
 `data/results-intake/uf-turnout.json` enables the shared collector's
 `UF-national-turnout` adapter. It discovers the highest advertised 2026 dataset
 edition on UF Election Lab's landing page and follows that edition's declared

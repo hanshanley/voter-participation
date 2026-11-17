@@ -401,6 +401,113 @@ def test_california_family_requires_complete_county_state_closure_and_general_el
             native.record_statistics(encoded(values), [row], profile)
 
 
+@pytest.mark.parametrize("value", [10, 6, 0])
+@pytest.mark.parametrize("migrate", [False, True])
+@pytest.mark.parametrize("qualified", [False, True])
+def test_record_family_refreshes_explicit_reviewed_parent_once_through_consumer(
+        value, migrate, qualified, monkeypatch):
+    from scripts import automatic_runtime as runtime
+
+    url, profile = native.CA_URL, native.RECORD_PROFILES[native.CA_URL]
+    county = template("CA", "County A", "county", {
+        "query": {"county_id": "1", "query_id": profile["query_id"]}})
+    parent = template("CA", "Statewide", "state", {
+        "query": {"county_id": "59", "query_id": profile["query_id"]}})
+    for row in (county, parent):
+        row["measure"]["literal"] = "voterTurnout"
+        row["geography"]["id"] = "CA-" + row["geography"]["level"]
+        row["id"] = observation_id("native-source", "general-2026", row["geography"]["id"],
+                                   "native-statistics", "source_defined")
+        row["source"]["url"] = row["view"]["source_url"] = url
+        row["source_clock"]["literal"] = None
+        row["view"].update(maps_approved=False, state_code="CA")
+    parent["view"]["geography_level"] = "statewide"
+    parent["denominator"] = {"value": 100, "literal": "native_registered_voters",
+                             "basis": "native_registered_voters", "qualified": qualified}
+    parent["view"].update(denominator=100, validated_pct=3 if qualified else None,
+                         native_printed_pct="3.0%", source_date="Older report",
+                         native_source_updates=[{"source": "timestamp", "native_update_literal": "old"}])
+    shard = {"records": [county, parent], "views": {
+        "official": {"counties": [county["id"]]}}}
+    old_state = intake.compressed(encoded(shard))
+    current = {"reviewed_states": [copy.deepcopy(parent["view"])], "snapshot": {"reporting": []}}
+    if migrate:
+        current["reviewed_states"][0].update(ballots=3, source_url="https://retained.test/ca.csv")
+        monkeypatch.setitem(runtime.REVIEWED_STATE_MIRROR_MIGRATIONS, "CA", {
+            "observation_id": parent["id"],
+            "legacy_view_pin": pin(encoded(current["reviewed_states"][0])),
+            "source_url": url, "measure_literal": "voterTurnout",
+        })
+    old_current = intake.compressed(encoded(current))
+    before = {"states/CA.json.gz": old_state, "current.json.gz": old_current,
+              "index.json": encoded({
+                  "states": {"CA": {"file": "states/CA.json.gz", **pin(old_state)}},
+                  "current_snapshot": {"file": "current.json.gz", **pin(old_current)}})}
+    original = copy.deepcopy(before)
+    source, = native.source_plan(before)["CA"].values()
+    assert [row["id"] for row in source["templates"]] == [county["id"], parent["id"]]
+    assert native.extend_record_parent_templates(before, source["templates"], "CA") == source["templates"]
+    raw = {"county": 1, "countyName": "County A", "voterTurnout": str(value),
+           "totalRegisteredVoters": "100", "timestamp": "November 17, 2026",
+           "voterTurnoutPercentage": f"{value:.1f}", "reportType": "SF", "reportTypeCode": "F",
+           "precinctsReporting": "1", "precinctsTotal": "1",
+           "firstReportTimestamp": "202611032001", "lastReportTimestamp": "202611171200"}
+    body = encoded([raw, {**raw, "county": 59, "countyName": "Statewide"}])
+    facts = native.record_statistics(body, source["templates"], profile)
+    county_only = native.record_statistics(body, [county], profile)
+    assert facts["updates"][0] == county_only["updates"][0]
+    entry = {"status": "reported", "source": {"url": url, **pin(body)}, "data": facts}
+    projected, changes = granular.project(before, {"CA-records": entry})
+    result = runtime.refresh_current(projected, {"jurisdictions": [], "source_status": []},
+                                     previous_files=before)
+    after = json.loads(gzip.decompress(result["states/CA.json.gz"]))
+    refreshed = next(row for row in after["records"] if row["id"] == parent["id"])
+    visible = json.loads(gzip.decompress(result["current.json.gz"]))
+    assert refreshed["count"]["value"] == value
+    assert visible["reviewed_states"][0] == refreshed["view"]
+    assert refreshed["view"]["validated_pct"] == (value if qualified else None)
+    assert refreshed["view"]["native_printed_pct"] == f"{value:.1f}%"
+    assert refreshed["view"]["source_status_literal"] == "reportType: SF; reportTypeCode: F"
+    assert refreshed["view"]["source_date"] == raw["timestamp"]
+    assert refreshed["view"]["native_source_updates"][-1] == {
+        "source": "timestamp", "native_update_literal": raw["timestamp"], "declared_timezone": ""}
+    unbound = copy.deepcopy(entry)
+    unbound["data"]["updates"][-1]["native"]["native_source_updates"][-1][
+        "native_update_literal"] = "Not in the complete query"
+    with pytest.raises(ValueError, match="display facts"):
+        granular.project(before, {"CA-records": unbound})
+    if migrate:
+        assert visible["reviewed_state_mirror_bindings"]["CA"]["observation_id"] == parent["id"]
+        corrupt_current = copy.deepcopy(current)
+        corrupt_current["reviewed_states"][0]["ballots"] = 4
+        different = {**before, "current.json.gz": intake.compressed(encoded(corrupt_current))}
+        unchanged = runtime.refresh_current(
+            {**projected, "current.json.gz": different["current.json.gz"]},
+            {"jurisdictions": [], "source_status": []}, previous_files=different)
+        assert json.loads(gzip.decompress(unchanged["current.json.gz"])) == corrupt_current
+    assert refreshed["measure"] == parent["measure"]
+    assert refreshed["geography"] == parent["geography"]
+    assert refreshed["denominator"] == parent["denominator"]
+    assert after["views"] == shard["views"]
+    assert len(changes) == 2
+    assert before == original
+    repeat, repeated_changes = granular.project(result, {"CA-records": entry})
+    assert repeat == result and repeated_changes == []
+    assert runtime.refresh_current(repeat, {"jurisdictions": [], "source_status": []},
+                                   previous_files=result) == result
+    failed, changes = granular.project(result, {"CA-records": {
+        "status": "retained_after_failure", "error": "source_unavailable", "data": None}})
+    assert failed == result and changes == []
+    with pytest.raises(ValueError, match="disagree"):
+        native.record_statistics(encoded([raw, {**raw, "county": 59, "countyName": "Statewide",
+                                                 "voterTurnout": str(value + 1)}]),
+                                 source["templates"], profile)
+    corrupt = copy.deepcopy(shard)
+    corrupt["records"][1]["geography"]["level"] = "county"
+    with pytest.raises(ValueError, match="parent scope"):
+        native.source_plan({**before, "states/CA.json.gz": intake.compressed(encoded(corrupt))})
+
+
 def test_indiana_keeps_false_zero_holds_and_independent_overrides():
     reported = template("IN", "Adams County", "county", {"County": "Adams"})
     unknown = template("IN", "Allen County", "county", {"County": "Allen"})

@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 from decimal import Decimal, ROUND_HALF_UP
 from html.parser import HTMLParser
 import html
+import gzip
 import io
 import json
 import re
@@ -182,6 +183,9 @@ RECORD_PROFILES = {
         "parent": "59", "parent_name": "Statewide",
         "first_report": "firstReportTimestamp",
         "edition_clock": "lastReportTimestamp",
+        "refresh_reviewed_state_parent": True,
+        "parent_fraction": "voterTurnoutPercentage",
+        "parent_status": ("reportType", "reportTypeCode"),
     },
     IN_URL: {
         "state": "IN", "query_id": "in-native-voters-voting",
@@ -289,6 +293,39 @@ def native_identity(template, path):
     return str(value)
 
 
+def extend_record_parent_templates(baseline, templates, state):
+    profiles = [(url, profile) for url, profile in RECORD_PROFILES.items()
+                if profile["state"] == state and profile.get("refresh_reviewed_state_parent")]
+    if not profiles:
+        return templates
+    declaration = json.loads(baseline["index.json"])["states"][state]
+    shard = json.loads(gzip.decompress(baseline[declaration["file"]]))
+    result = list(templates)
+    for url, profile in profiles:
+        matches = [row for row in shard["records"]
+                   if row.get("view", {}).get("source_url") == url
+                   and row["view"].get("native_record", {}).get("query", {}).get(
+                       "query_id") == profile["query_id"]
+                   and native_identity(row, profile["template_identity"]) == str(profile["parent"])]
+        if not matches:
+            continue
+        if len(matches) != 1:
+            raise ValueError("Reviewed native statewide parent is ambiguous")
+        row, = matches
+        if (row["geography"]["state_code"] != state or row["geography"]["level"] != "state"
+                or row["geography"]["name"] != profile["parent_name"]
+                or row["source"]["url"] != url
+                or row["measure"]["literal"] != profile["count"]
+                or row["measure"]["kind"] != "participation_reported"
+                or row["measure"]["mode"] != "source_defined"
+                or row["view"].get("geography_level") != "statewide"
+                or row["view"].get("maps_approved") is not False):
+            raise ValueError("Reviewed native statewide parent scope or measure changed")
+        if not any(item["id"] == row["id"] for item in result):
+            result.append(row)
+    return result
+
+
 def record_statistics(body, templates, profile):
     from scripts.native_tabular import json_records
 
@@ -394,6 +431,25 @@ def record_statistics(body, templates, profile):
             facts = {"query": query, "native_fields": row,
                      "private_original_pin": pin(body),
                      "whole_publisher_html_redistributed": False}
+            if identity == parent and profile.get("refresh_reviewed_state_parent"):
+                fraction = row.get(profile["parent_fraction"])
+                statuses = profile["parent_status"]
+                if (not isinstance(fraction, str)
+                        or re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", fraction) is None
+                        or any(not isinstance(row.get(key), str) or not row[key].strip()
+                               for key in statuses)):
+                    raise ValueError("Native statewide display facts are missing or malformed")
+                query.update(
+                    native_fraction_literal=fraction + "%",
+                    native_report_status_literal="; ".join(key + ": " + row[key] for key in statuses),
+                    source_date_literal=clock,
+                    native_source_updates=[
+                        {"source": profile[key], "native_update_literal": str(row[profile[key]]),
+                         "declared_timezone": ""}
+                        for key in ("first_report", "edition_clock", "clock")])
+                facts.update({key: query[key] for key in (
+                    "native_fraction_literal", "native_report_status_literal", "source_date_literal")})
+                facts["native_source_updates"] = [dict(item) for item in query["native_source_updates"]]
             updates.append(change(template, value, facts, registered=registered, clock=clock,
                 reported=reported, total=total,
                 rate_compatible=bool(registered and value <= registered
@@ -2104,6 +2160,7 @@ def source_plan(baseline):
     result = {}
     for state in sorted(index["states"]):
         templates = selected_records(baseline, state)
+        templates = extend_record_parent_templates(baseline, templates, state)
         if state == "DE":
             templates = extend_delaware_templates(baseline, templates)
         if state == "LA":

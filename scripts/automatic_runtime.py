@@ -44,6 +44,17 @@ CODE_PATHS = (
     "supported_analytical_release.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
+REVIEWED_STATE_MIRROR_MIGRATIONS = {
+    "CA": {
+        "observation_id": "a96982ff0425b036eeaf1fa394c3b866",
+        "legacy_view_pin": {
+            "bytes": 3320,
+            "sha256": "14f7aeb52f6534e5192f05bb9d8af8590315d7cebf9d36f398bd0db4d8856462",
+        },
+        "source_url": "https://media.sos.ca.gov/media/status_GG.json",
+        "measure_literal": "voterTurnout",
+    },
+}
 
 
 def read(path):
@@ -254,6 +265,11 @@ def refresh_current(files, snapshot, previous_files=None):
                 continue
             old = json.loads(uncompressed(previous_files[prior["file"]]))
             matches = [item for item in old["records"] if item.get("view") == row]
+            migration = REVIEWED_STATE_MIRROR_MIGRATIONS.get(state)
+            migrating = not matches and migration and pin(encoded(row)) == migration["legacy_view_pin"]
+            if migrating:
+                matches = [item for item in old["records"]
+                           if item["id"] == migration["observation_id"]]
             if not matches:
                 continue
             if len(matches) != 1 or matches[0].get("geography", {}).get("level") != "state":
@@ -264,6 +280,16 @@ def refresh_current(files, snapshot, previous_files=None):
             if len(successors) != 1 or observation_identity(successors[0]) != observation_identity(
                     old_record):
                 raise ValueError("Changed canonical identity for reviewed statewide mirror")
+            if migrating:
+                successor = successors[0]
+                if (successor["view"].get("automatic_source_refresh") is not True
+                        or successor["source"].get("url") != migration["source_url"]
+                        or successor["measure"].get("literal") != migration["measure_literal"]):
+                    continue
+                current.setdefault("reviewed_state_mirror_bindings", {})[state] = {
+                    "contract": "participation.reviewed_state_mirror_migration.v1",
+                    **copy.deepcopy(migration),
+                }
             row.clear()
             row.update(copy.deepcopy(successors[0]["view"]))
     for row in current.get("snapshot", {}).get("reporting", []):

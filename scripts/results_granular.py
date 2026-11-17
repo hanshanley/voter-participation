@@ -722,6 +722,23 @@ def project(baseline, granular):
                     native_printed_pct=None)
                 if "registered" in view:
                     view["registered"] = update["registered"]
+                if "validated_pct" in view:
+                    view["validated_pct"] = view["reported_pct"]
+                if "native_source_updates" in native:
+                    query = native.get("query") or {}
+                    clocks = native["native_source_updates"]
+                    if (clocks != query.get("native_source_updates")
+                            or not isinstance(clocks, list) or not clocks
+                            or any(not isinstance(item, dict)
+                                or set(item) != {"source", "native_update_literal", "declared_timezone"}
+                                or any(not isinstance(value, str) for value in item.values())
+                                for item in clocks)
+                            or native.get("source_date_literal") != update["clock"]
+                            or native.get("source_date_literal") != query.get("source_date_literal")
+                            or clocks[-1]["native_update_literal"] != update["clock"]):
+                        raise ValueError("Native source-clock display facts disagree with the complete query")
+                    view.update(source_date=native["source_date_literal"],
+                                native_source_updates=copy.deepcopy(clocks))
                 if "reviewed_measure_presentation_label" in native:
                     from scripts.automatic_native_refresh import reviewed_measure_label
                     label = native["reviewed_measure_presentation_label"]
