@@ -60,6 +60,55 @@ All existing full downloads and historical matrix versions remain available.
 
 ## Reviewed official category reconciliation
 
+### Automatically retained official candidate frames
+
+The reviewed `data/results-intake/official-congress.json` declaration registers
+Nebraska's complete statewide `resultsSW.aspx` House tables as a separate
+candidate-evidence family. Ordinary hourly collection refreshes it once per
+source body; selected refresh can acquire only this product:
+
+```sh
+python -m scripts.results_intake refresh-selected \
+  --registry data/results-intake/registry.json --work-dir /tmp/election-intake \
+  --sources NE-official-house-candidates
+```
+
+The selected command requires the existing accepted collector state in that work
+directory, as does any selected refresh. It retains all other acquisitions.
+The workflow equivalent is:
+
+```sh
+gh workflow run election-night.yml --repo hanshanley/voter-participation \
+  --ref main -f refresh_sources=NE-official-house-candidates
+```
+
+All three districts, literal names/parties, source identifiers, printed totals
+and reporting counters are retained. Partial reporting is explicit, never
+certification. A missing native update clock remains null. Upward and downward
+count corrections and explicit zeroes are accepted only after source identity,
+complete table inventory and printed-total checks; missing/invalid counts or
+changed layouts retain the last-good frame and its own provenance.
+
+The complete source download adds `congress-official-candidates.csv`; the
+analytical download includes it under `congressional/`, together with full
+official candidate queries and signed named-minor-versus-provider-Other
+differences. The runtime JSON exposes `official_candidate_evidence` and
+`official_candidate_reconciliation`. Provider counts are never added to or
+silently replaced by these counts. No absent generic write-in row is treated as
+an observed zero. Equal subtotals alone never prove universe equivalence.
+
+This evidence is excluded from participation observations and never supplies
+ballots, unique voters, a denominator, new swing qualification or a conditional
+model endpoint. The unresolved counted write-in universe, source precedence
+and candidate-to-model bridge remain separate evidence requirements. Reproduction
+uses the existing literal commands from each complete archive:
+
+```sh
+python3 code/reproduce.py replay --package . --output reproduced
+# In the separate complete analytical archive:
+python3 code/reproduce.py --replay-package . --output reproduced
+```
+
 `congressional_category_reconciliation.py` validates a complete official
 candidate inventory before approving a source-category bridge. Its reviewed
 Minnesota statewide semicolon family requires all eight districts, every named

@@ -136,6 +136,33 @@ def test_statewide_only_refresh_does_not_refresh_reused_local_observations():
     assert release.selected_local_observation_ids(snapshot) is None
 
 
+def test_official_candidate_refresh_is_not_mislabeled_as_local_participation():
+    from scripts.results_official_congress import CONTRACT, IDENTITY
+
+    data = {"contract": CONTRACT, "participation_observation_qualified": False,
+            "provider_other_equivalence_qualified": False, "conditional_model_eligible": False}
+    snapshot = {
+        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": [IDENTITY]},
+        "congress": {"official_candidate_evidence": {IDENTITY: {"data": data}}},
+        "granular_sources": {"local": {"data": {"updates": [{"id": "county"}]}}},
+    }
+    assert release.selected_local_observation_ids(snapshot) == set()
+    snapshot["collection_scope"]["source_ids"].append("local")
+    assert release.selected_local_observation_ids(snapshot) == {"county"}
+    for key in ("participation_observation_qualified", "provider_other_equivalence_qualified",
+                "conditional_model_eligible"):
+        data[key] = True
+        with pytest.raises(ValueError, match="official candidate evidence missing or promoted"):
+            release.selected_local_observation_ids(snapshot)
+        data[key] = False
+    data["contract"] = "unreviewed"
+    with pytest.raises(ValueError, match="official candidate evidence missing or promoted"):
+        release.selected_local_observation_ids(snapshot)
+    snapshot["congress"]["official_candidate_evidence"].clear()
+    with pytest.raises(ValueError, match="official candidate evidence missing or promoted"):
+        release.selected_local_observation_ids(snapshot)
+
+
 def test_held_group_and_frozen_source_tampering_do_not_become_numerical_outputs():
     held = {"contributions_pp": None, "total_contribution_pp": None}
     assert all(value is None for value in release.mechanisms(held, modeled_row()).values())

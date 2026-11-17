@@ -360,6 +360,7 @@ def numeric_observations(baseline, feeds, granular_reference=None, granular_keys
     for identity, entry in sorted(feeds.items()):
         if (entry.get("data") is not None and identity.split("-")[0] in STATES
                 and not identity.endswith(("-capabilities", "-directory"))
+                and entry["data"].get("participation_observation_qualified") is not False
                 and entry["data"].get("numerical_data_qualified") is not False):
             observation = entry["data"]
             if identity in granular_keys:
@@ -562,6 +563,13 @@ def registry_config(registry_path):
         if declaration != CONFIG:
             raise ValueError("Invalid reviewed statewide UF provider configuration")
         config["uf_turnout"] = declaration
+    official_path = registry_path.with_name("official-congress.json")
+    if official_path.exists():
+        from scripts.results_official_congress import CONFIG
+        declaration = read(official_path)
+        if declaration != CONFIG:
+            raise ValueError("Invalid reviewed official candidate evidence configuration")
+        config["official_congress"] = declaration
     return config
 
 
@@ -638,6 +646,10 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     if "uf_turnout" in config:
         from scripts import results_uf_turnout
         feeds[results_uf_turnout.IDENTITY] = results_uf_turnout.collect(collector, config["uf_turnout"])
+    if "official_congress" in config:
+        from scripts import results_official_congress
+        feeds[results_official_congress.IDENTITY] = results_official_congress.collect(
+            collector, config["official_congress"])
     from scripts.louisiana_bootstrap import IDENTITY as LA_BOOTSTRAP_ID
     from scripts.louisiana_bootstrap import collect_bootstrap as collect_la_bootstrap
     la_bootstrap = collect_la_bootstrap(
@@ -701,6 +713,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     if "congressional" in config:
         inputs["congress"] = results_congress.collect(
             collector, previous.get("congress"), config["congressional"])
+        if "official_congress" in config:
+            inputs["congress"] = results_official_congress.attach(inputs["congress"], feeds)
     inputs["source_stops"] = collector.stopped
     return export_collection(
         work, config, baseline, inputs, extras, now,
@@ -720,7 +734,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
-             "results_state_statistics.py", "results_uf_turnout.py",
+             "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
              "results_native_delaware.py", "results_native_dc.py",
              "results_native_state_family.py", "results_native_oregon.py",
              "results_native_north_carolina.py",
@@ -750,6 +764,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
         package_members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_results_intake.py", "test_results_congress.py", "test_results_granular.py", "test_results_native.py",
                  "test_results_state_statistics.py", "test_results_uf_turnout.py",
+                 "test_results_official_congress.py",
                  "test_results_native_delaware.py", "test_results_native_dc.py",
                  "test_results_native_broome.py", "test_results_native_kansas.py",
                  "test_results_native_workbooks.py",
@@ -893,6 +908,9 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
     inputs = copy.deepcopy(previous)
     inputs["congress"] = results_congress.collect(
         collector, previous.get("congress"), config["congressional"])
+    if "official_congress" in config:
+        from scripts import results_official_congress
+        inputs["congress"] = results_official_congress.attach(inputs["congress"], previous["feeds"])
     inputs["source_stops"] = collector.stopped
     inputs["collection_scope"] = {
         "kind": "congressional_bulk_refresh", "chambers": ["house", "senate"],
@@ -903,13 +921,14 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 def refresh_selected(registry_path, work, previous, source_ids, now=None):
     from scripts import results_native
     from scripts import results_uf_turnout
+    from scripts import results_official_congress
 
     registry_path, work = Path(registry_path), Path(work)
     config = registry_config(registry_path)
     now = now or datetime.now(timezone.utc)
     previous = hydrate_collector_state(previous)
     if (not source_ids or len(source_ids) != len(set(source_ids))
-            or not all(item == results_uf_turnout.IDENTITY or re.fullmatch(
+            or not all(item in (results_uf_turnout.IDENTITY, results_official_congress.IDENTITY) or re.fullmatch(
                 r"[A-Z]{2}-registered-[a-f0-9]{16}", item) for item in source_ids)
             or not {"feeds", "granular", "house", "districts", "directories", "source_stops"} <= set(previous)
             or config.get("contract") != CONTRACT or config.get("election_date") != "2026-11-03"
@@ -921,21 +940,28 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
             for key, value in sources.items()}
     if "uf_turnout" in config:
         plan[results_uf_turnout.IDENTITY] = {"adapter": "reviewed_statewide_uf_turnout"}
+    if "official_congress" in config:
+        plan[results_official_congress.IDENTITY] = {"adapter": "reviewed_official_candidate_evidence"}
     if not set(source_ids) <= set(plan):
         raise ValueError("Selected refresh source is not in the actual registered dispatch plan")
     if any(plan[identity]["adapter"] == "unadapted_primary_product" for identity in source_ids):
         raise ValueError("Selected numerical refresh requires a reviewed source adapter")
     stopped = merge_stops(config["source_stops"], previous["source_stops"])
-    native_ids = set(source_ids) - {results_uf_turnout.IDENTITY}
+    native_ids = set(source_ids) - {results_uf_turnout.IDENTITY, results_official_congress.IDENTITY}
     collector = Collector(work, {**previous["granular"], **previous["feeds"]}, stopped, now)
     entries = results_native.collect_sources(collector, baseline, source_ids=native_ids) if native_ids else {}
     if results_uf_turnout.IDENTITY in source_ids:
         entries[results_uf_turnout.IDENTITY] = results_uf_turnout.collect(collector, config["uf_turnout"])
+    if results_official_congress.IDENTITY in source_ids:
+        entries[results_official_congress.IDENTITY] = results_official_congress.collect(
+            collector, config["official_congress"])
     if set(entries) != set(source_ids) or any(entry["status"] != "reported" for entry in entries.values()):
         raise ValueError("Selected numerical refresh did not succeed; no replacement publication")
     inputs = copy.deepcopy(previous)
     inputs["granular"].update({key: value for key, value in entries.items() if key in native_ids})
     inputs["feeds"].update(entries)
+    if "congress" in inputs and "official_congress" in config:
+        inputs["congress"] = results_official_congress.attach(inputs["congress"], inputs["feeds"])
     inputs["source_stops"] = collector.stopped
     inputs["collection_scope"] = {
         "mode": "selected_registered_source_refresh",

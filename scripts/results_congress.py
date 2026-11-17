@@ -339,8 +339,12 @@ def compressed(value):
 
 def exports(congress):
     races, candidates, coverage = tables(congress)
-    return {"congress-" + name + ".csv": csv_bytes(rows) for name, rows in (
+    result = {"congress-" + name + ".csv": csv_bytes(rows) for name, rows in (
         ("races", races), ("candidates", candidates), ("coverage", coverage))}
+    if "official_candidate_evidence" in congress:
+        from scripts.results_official_congress import rows
+        result["congress-official-candidates.csv"] = csv_bytes(rows(congress))
+    return result
 
 
 def comparisons(congress, review, historical_senate=None, boundary_review=None):
@@ -571,6 +575,10 @@ def runtime(congress, review, analytical_review=None, estimates=None):
                "candidates": candidates, "coverage": coverage, "summary": summary(congress),
                "house_states": states,
                "source_models_refitted": False, "observed_individual_behavior": False}
+    if "official_candidate_evidence" in congress:
+        from scripts.results_official_congress import reconciliation
+        payload["official_candidate_evidence"] = copy.deepcopy(congress["official_candidate_evidence"])
+        payload["official_candidate_reconciliation"] = reconciliation(congress)
     files = {"congressional/results.json.gz": compressed(payload),
              "congressional/queries.json.gz": compressed({
                  "congressional_sources": congress,
