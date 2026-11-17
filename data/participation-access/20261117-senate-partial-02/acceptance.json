@@ -1,0 +1,264 @@
+{
+  "consumer_build_passed": true,
+  "consumer_publication": {
+    "commit": "bcf72930a3ee225284dbb788c95b6b4cd7a2c788",
+    "parent": "b86cc71919b4ca2855786026f08bb54db73d9892"
+  },
+  "coupled_tests": {
+    "log_sha256": "c29d8c119b759419772603d6fbcdcfc86f6acec1e17400006c4921413efda23e",
+    "passed": true,
+    "source_pins": {
+      "scripts/automatic_runtime.py": "bbb970ceeea88e9a84b0de20c4a08657d28433ddb07c8e71c0fe4f8e4c1be4ed",
+      "scripts/senate_legacy_bridge.py": "e0b2fe7fdacd0c40a40d9cadf223526d9bff948b96c11cb441ffbe234e6b2dee",
+      "tests/test_automatic_estimates.py": "db785b1385f137eafb8259fa1571da40dc08af4ca928b07db8182ff758f7d776",
+      "tests/test_automatic_runtime.py": "da6ee1583c19ab4172f97e2cd518d1eccb6490a31ada6b42158aa86bfb797a9b",
+      "tests/test_congressional_candidate_identity.py": "9f7096f8fd2bce18b0ce703c3f0e0343301249a7af0cb57b3d429a09c3d639e8",
+      "tests/test_senate_legacy_bridge.py": "37ff2eca898597f7910f550f7947086e2ab6d401a1086ce9fce3c5b75c77478e"
+    },
+    "tests": 139,
+    "warnings": 1
+  },
+  "local_corrections_and_retention": {
+    "Alabama_numerical_model_exact": true,
+    "House_outputs_byte_identical": 23,
+    "controlled_source_revisions": [
+      {
+        "House_outputs_preserved": 23,
+        "after_margin_change_pp": 20.249696142754352,
+        "all_nine_scenarios_exported": true,
+        "before_margin_change_pp": 20.24898687555662,
+        "controlled_D_revision": 7,
+        "network_requests": 0
+      },
+      {
+        "House_outputs_preserved": 23,
+        "after_margin_change_pp": 20.247669628718576,
+        "all_nine_scenarios_exported": true,
+        "before_margin_change_pp": 20.24898687555662,
+        "controlled_D_revision": -13,
+        "network_requests": 0
+      }
+    ],
+    "counts_and_native_files_preserved": 88,
+    "current_other_observed": false,
+    "failure_retains_own_model_and_clock": true,
+    "other_24_held_decisions_exact": true
+  },
+  "pages_deployment_requested": false,
+  "passed": true,
+  "prepared_reader_against_public_data": {
+    "cases": [
+      {
+        "actual_components_checked": 8,
+        "all_113_archived_rows_retained": true,
+        "held_state": "CO",
+        "one_shared_manifest_and_sidecar": true,
+        "screenshots": [
+          {
+            "bytes": 69415,
+            "path": "public-reader-senate-AL-1440.png",
+            "sha256": "1126a57ac6a16c689babc4f43f513b4e31a4899257d4ad03275b39e7e9a9309d"
+          },
+          {
+            "bytes": 70099,
+            "path": "public-reader-senate-NM-1440.png",
+            "sha256": "1ba29acdd6680cd76fdd51adb49eb041db6909bce2a86e53f2a9b80c025fb267"
+          }
+        ],
+        "states": [
+          "AL",
+          "NM"
+        ],
+        "width": 1440
+      },
+      {
+        "actual_components_checked": 8,
+        "all_113_archived_rows_retained": true,
+        "held_state": "CO",
+        "one_shared_manifest_and_sidecar": true,
+        "screenshots": [
+          {
+            "bytes": 65050,
+            "path": "public-reader-senate-AL-390.png",
+            "sha256": "53d1e1af72a5e674f01c9f20937f82e1c2006c4a3c89612f097000ec4705fff0"
+          },
+          {
+            "bytes": 65032,
+            "path": "public-reader-senate-NM-390.png",
+            "sha256": "b84bf6cf224937f6f83f248cfb350ea778f55c96bf1964f61f431ae85db4788e"
+          }
+        ],
+        "states": [
+          "AL",
+          "NM"
+        ],
+        "width": 390
+      }
+    ],
+    "complete_download": {
+      "bytes": 304421522,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "163d9d99190b9bb72629e83c6bea182d31ae480fce7d536c7a557ad2fd300fd6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-1364db054b24734bc2b8406eca039e8e3c002914a4ff3834eb76a7fc2a3e53de/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "generated_sidecar": {
+      "bytes": 9833,
+      "sha256": "b1fb58faddf6200100b047046cc7b8dc1e83cb36b1fd6024074382dde89e3c95"
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "public_data": true,
+    "runtime_version": "1364db054b24734bc2b8406eca039e8e3c002914a4ff3834eb76a7fc2a3e53de",
+    "transport": "Prepared local reader with actual public data and no data/script/style overrides; not a deployed frontend."
+  },
+  "research_publication": {
+    "commit": "331d48409b1c8dafd37b8c06d03d510d8dcfd442",
+    "parent": "d6cd33f0f768b6d14ec00a60ec50d0f4c1444a8c"
+  },
+  "reviewed_images": {
+    "frontend_deployed": false,
+    "images": {
+      "public-reader-senate-AL-1440.png": {
+        "bytes": 69415,
+        "sha256": "1126a57ac6a16c689babc4f43f513b4e31a4899257d4ad03275b39e7e9a9309d"
+      },
+      "public-reader-senate-AL-390.png": {
+        "bytes": 65050,
+        "sha256": "53d1e1af72a5e674f01c9f20937f82e1c2006c4a3c89612f097000ec4705fff0"
+      },
+      "public-reader-senate-NM-1440.png": {
+        "bytes": 70099,
+        "sha256": "1ba29acdd6680cd76fdd51adb49eb041db6909bce2a86e53f2a9b80c025fb267"
+      },
+      "public-reader-senate-NM-390.png": {
+        "bytes": 65032,
+        "sha256": "b84bf6cf224937f6f83f248cfb350ea778f55c96bf1964f61f431ae85db4788e"
+      }
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "physical_review": "Four actual AL/NM desktop/mobile prepared-reader captures viewed. Tables, literal native clocks, synthetic-prior and unknown-Other qualifications, non-CI sensitivity and complete-package anchors are legible.",
+    "public_data": true
+  },
+  "runtime": {
+    "Alabama_numerical_model_exact": true,
+    "actual_AL_margin_change_pp": 10.968434568775848,
+    "actual_NM_margin_change_pp": 20.24898687555662,
+    "automatic_states": [
+      "AR",
+      "DE",
+      "MN",
+      "NM",
+      "SD",
+      "TN",
+      "VT"
+    ],
+    "automatic_variant_frames": 63,
+    "complete_download": {
+      "bytes": 304421522,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "163d9d99190b9bb72629e83c6bea182d31ae480fce7d536c7a557ad2fd300fd6",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-1364db054b24734bc2b8406eca039e8e3c002914a4ff3834eb76a7fc2a3e53de/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "complete_public_output_bodies_verified": 161,
+    "congressional_summary": {
+      "house": {
+        "discovered": 435,
+        "held": 0,
+        "nonvoting_house_seats": 0,
+        "refreshed": 435,
+        "retained": 0,
+        "unknown_count_races": 0
+      },
+      "senate": {
+        "discovered": 35,
+        "held": 0,
+        "nonvoting_house_seats": 0,
+        "refreshed": 35,
+        "retained": 0,
+        "unknown_count_races": 0
+      }
+    },
+    "data_commit": "c094efd7601dadb11d7424aacfef947d62a39e36",
+    "input_results_version": "9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd",
+    "new_election_source_requests": 0,
+    "new_participation_observations": 0,
+    "offline_replay": {
+      "complete_outputs": 161,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "other_24_held_decisions_exact": true,
+    "pages_deployment_requested": false,
+    "passed": true,
+    "preserved": {
+      "House_outputs": 23,
+      "counts_native": 88
+    },
+    "previously_qualified_frozen_states": [
+      "AZ",
+      "CO",
+      "CT",
+      "GA",
+      "HI",
+      "IA",
+      "ID",
+      "IN",
+      "KS",
+      "MD",
+      "MI",
+      "MO",
+      "MT",
+      "ND",
+      "NE",
+      "NH",
+      "NY",
+      "OH",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "UT",
+      "VA",
+      "WV",
+      "WY"
+    ],
+    "research_commit": "331d48409b1c8dafd37b8c06d03d510d8dcfd442",
+    "run": 44200445314,
+    "run_url": "https://github.com/hanshanley/margin_of_error/actions/runs/44200445314",
+    "scientific_comparison_coverage": {
+      "legacy_reader_qualified_senate": 25,
+      "reviewed_qualified_house_districts": 259,
+      "reviewed_qualified_house_states": 32,
+      "reviewed_qualified_senate": 28
+    },
+    "senate_summary": {
+      "empirical_senate_models_added": 0,
+      "fresh_partial_scenarios": 2,
+      "fresh_sensitivity_fits": 18,
+      "legacy_fitted_decisions": 26,
+      "retained_partial_scenarios": 0,
+      "strict_legacy_models_refreshed": 0
+    },
+    "staged_commit": "0feaf3c1dcffdfe35777e2d5894da0c33beb5415",
+    "version": "1364db054b24734bc2b8406eca039e8e3c002914a4ff3834eb76a7fc2a3e53de",
+    "website_commit": "bcf72930a3ee225284dbb788c95b6b4cd7a2c788"
+  },
+  "unchanged_noop": {
+    "data_commit": "c094efd7601dadb11d7424aacfef947d62a39e36",
+    "pages_deployment_requested": false,
+    "passed": true,
+    "run": 44201708876,
+    "run_url": "https://github.com/hanshanley/margin_of_error/actions/runs/44201708876",
+    "source_collection_requested": false,
+    "unchanged_data_head_and_manifest": true,
+    "version": "1364db054b24734bc2b8406eca039e8e3c002914a4ff3834eb76a7fc2a3e53de",
+    "website_builds_started": 0
+  },
+  "whole_project_complete": false
+}

@@ -1,0 +1,95 @@
+{
+  "Alabama_numerical_model_exact": true,
+  "limitations": [
+    "Transported President/House synthetic associations, not empirical Senate respondent fitting.",
+    "Current Other/write-ins remain unknown; historical Other is retained, never erased.",
+    "Nine assumption scenarios are sensitivity, not confidence intervals or measured behavior.",
+    "No measured staying-home, first-time-voter, turnout, causal or local-allocation claim.",
+    "FEC establishes candidate identity here, not ballot presence, complete inventory, stage or counts."
+  ],
+  "new_acquisition": false,
+  "new_numerical_product": "Separately versioned New Mexico partial scenario with nine assumptions.",
+  "new_participation_observations": 0,
+  "other_24_held_decisions_exact": true,
+  "partial_scenarios": {
+    "AL-senate-86907": {
+      "components_pp": {
+        "entry": 5.773590056843445,
+        "nonparticipation": 0.42556252008092754,
+        "other_choice": 0.10318364084883669,
+        "switching": 4.666098351002637
+      },
+      "conditioned_change_pp": 10.968434568775848,
+      "current": {
+        "D": 759321,
+        "R": 917338
+      },
+      "previous": {
+        "D": 920478,
+        "O": 3891,
+        "R": 1392076
+      },
+      "ranges_pp": {
+        "entry": {
+          "maximum": 9.387272578428417,
+          "minimum": 2.629464470673571
+        },
+        "nonparticipation": {
+          "maximum": 3.3201891365377336,
+          "minimum": -2.6696895203971494
+        },
+        "other_choice": {
+          "maximum": 0.13972089575456423,
+          "minimum": 0.07358926131231192
+        },
+        "switching": {
+          "maximum": 6.885995907341611,
+          "minimum": 3.556637068870588
+        }
+      },
+      "reported_change_pp": 10.968434568823927,
+      "source_clock": "2026-11-10T21:59:55.308+00:00"
+    },
+    "NM-senate-87288": {
+      "components_pp": {
+        "entry": 4.609498001672549,
+        "nonparticipation": 11.18928937142279,
+        "other_choice": 0.3765086051356488,
+        "switching": 4.073690897325651
+      },
+      "conditioned_change_pp": 20.24898687555662,
+      "current": {
+        "D": 458756,
+        "R": 266434
+      },
+      "previous": {
+        "D": 474483,
+        "O": 24271,
+        "R": 418483
+      },
+      "ranges_pp": {
+        "entry": {
+          "maximum": 5.574555708739689,
+          "minimum": 2.9694745639256994
+        },
+        "nonparticipation": {
+          "maximum": 11.862633806797785,
+          "minimum": 10.220064646679706
+        },
+        "other_choice": {
+          "maximum": 0.5119151590298168,
+          "minimum": 0.25164542876570234
+        },
+        "switching": {
+          "maximum": 6.72961345390645,
+          "minimum": 2.7530399192816186
+        }
+      },
+      "reported_change_pp": 20.24898687559448,
+      "source_clock": "2026-11-11T16:39:16.795+00:00"
+    }
+  },
+  "passed": true,
+  "reclassified_retained_evidence": "Complete pinned FEC candidate master resolves Ben Ray Lujan / Ben Lujan within the same Senate state, office, party and cycle.",
+  "reused_source_pointer": "https://raw.githubusercontent.com/hanshanley/voter-participation/54fbdd10b792ffd845c0a18387bd0ee27a15d414/latest.json"
+}

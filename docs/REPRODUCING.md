@@ -1,5 +1,31 @@
 # Reproduce a saved analysis
 
+## Current collection, analytical refresh and offline reproduction
+
+The existing hourly writers perform normal updates. Manual equivalents are:
+
+```sh
+gh workflow run election-night.yml --repo hanshanley/voter-participation --ref main
+gh workflow run automatic-runtime.yml --repo hanshanley/margin_of_error \
+  --ref main -f results_pointer=https://raw.githubusercontent.com/hanshanley/voter-participation/54fbdd10b792ffd845c0a18387bd0ee27a15d414/latest.json
+```
+
+The pinned pointer reproduces this accepted source; omit results_pointer for the default latest-source refresh. The latter workflow publishes analytical data only, not Pages. Extract each complete package into its own fresh directory.
+
+Complete source-package reproduction:
+
+```sh
+python3.12 code/reproduce.py replay --package . --output reproduced
+```
+
+Complete analytical-package reproduction (161 outputs, no network or private fitting):
+
+```sh
+python3.12 code/reproduce.py --replay-package . --output reproduced
+```
+
+[Complete analytical packet](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-1364db054b24734bc2b8406eca039e8e3c002914a4ff3834eb76a7fc2a3e53de/complete-analysis.zip); [complete selected source](https://raw.githubusercontent.com/hanshanley/voter-participation/254c986e1e8035dbb879209946aa035d89cf53ad/snapshots/9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd/complete-results.zip). Engine `331d48409b1c8dafd37b8c06d03d510d8dcfd442`; consumer source `bcf72930a3ee225284dbb788c95b6b4cd7a2c788`. Both AL and NM include nine transported-prior assumptions, not empirical Senate fits. Failed/incompatible updates retain last-good data and their own native clocks. The reader patch is tested against actual public data but is not deployed.
+
 ## Current Senate extension, collection and literal reproduction
 
 Use the published engine and consumer commits recorded in the coverage/downloads record. The existing hourly collector remains the broad intake; this increment reuses its accepted immutable source rather than running it again.
