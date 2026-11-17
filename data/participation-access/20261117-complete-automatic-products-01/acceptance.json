@@ -1,0 +1,337 @@
+{
+  "central_policy": {
+    "all_nonpolicy_state_and_latest_pointer_preserved": true,
+    "commit": "eed9f0c1dc9918dd5ab258b2f2a904dc76045d28",
+    "complete_public_bodies_verified": 2,
+    "files": {
+      "source-stops.json": {
+        "bytes": 14145,
+        "sha256": "125e37f5d76c84d847d8eb94766d4eebd987efd7f1d7ba0ba214e77779012691"
+      },
+      "state.json": {
+        "bytes": 27330670,
+        "sha256": "a5b8e76ab94369365299eee31b39742ef935c1573c2131632695bed0d3d764fb"
+      }
+    },
+    "new_numerical_observations": 0,
+    "new_scientific_qualifications": 0,
+    "observed_sources": {
+      "https://dekalbgop.org/june-2026-chairmans-letter/": {
+        "pin": {
+          "bytes": 14460,
+          "sha256": "ef5498600f32ea1dc21685a8530e6117342601aa8b1457188b0bcbb45f0fcfc3"
+        },
+        "receipt": "acquisition.json"
+      }
+    },
+    "offline_denial_probes": 1,
+    "pages_deployment_requested": false,
+    "parent": "54fbdd10b792ffd845c0a18387bd0ee27a15d414",
+    "passed": true,
+    "prior_url_count": 194,
+    "source_requests": 0,
+    "url_count": 195
+  },
+  "contract": "participation.automatic_product_acceptance.v1",
+  "controlled_upward_downward_noops_and_outage": {
+    "controlled_revisions_not_actual_source_observations": true,
+    "network_requests": 0,
+    "new_participation_or_model_qualification": false,
+    "outage_preserves_last_good_candidate_frame_and_own_provenance": true,
+    "passed": true,
+    "source_to_runtime_json_and_complete_csv": [
+      {
+        "candidate": 128779,
+        "complete_candidate_rows": 12,
+        "csv_pin": {
+          "bytes": 18022,
+          "sha256": "5480862d7ac8ffb8f791ff16532ac3d5ac0d7f758fce357373c1632d4b80dbb9"
+        },
+        "delta": 7,
+        "direction": "up",
+        "nonselected_sources_counts_clocks_and_all_nine_models_exact": true,
+        "printed_contest_total": 259367,
+        "source_pin": {
+          "bytes": 4004941,
+          "sha256": "cab12481099a0b55e3e2fc5db1f540d65e7fdd8ea7e54178bfb49a5386294ea3"
+        },
+        "unchanged_noop": true
+      },
+      {
+        "candidate": 128759,
+        "complete_candidate_rows": 12,
+        "csv_pin": {
+          "bytes": 18022,
+          "sha256": "eca083202b8b9200cee244be60a291edc178024fc42c7f6dd09b68a3564ff4cd"
+        },
+        "delta": -13,
+        "direction": "down",
+        "nonselected_sources_counts_clocks_and_all_nine_models_exact": true,
+        "printed_contest_total": 259347,
+        "source_pin": {
+          "bytes": 4004941,
+          "sha256": "8346a3ef5ec663961051467e877cfb5500db5e370b0ff2ce41e5d6d99a079ed7"
+        },
+        "unchanged_noop": true
+      }
+    ]
+  },
+  "earlier_accepted_runs_not_repeated": {
+    "ca_runtime": 44148027851,
+    "guard_noop": 44169727481,
+    "guard_runtime": 44168644162,
+    "minnesota_noop": 44154372720,
+    "minnesota_runtime": 44152594587,
+    "nebraska_noop": 44167360674,
+    "nebraska_runtime": 44166216209,
+    "nebraska_source": 44163104135,
+    "retained_returns_source": 44141306771,
+    "south_dakota_noop": 44158010404,
+    "south_dakota_runtime": 44156680371
+  },
+  "hosted_runtime": {
+    "all_counts_native_geometry_and_nine_model_points_preserved": true,
+    "automatic_states": [
+      "AR",
+      "DE",
+      "MN",
+      "NM",
+      "SD",
+      "TN",
+      "VT"
+    ],
+    "automatic_variant_frames": 63,
+    "complete_download": {
+      "bytes": 287879349,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "ba89eca711d227701fd076efb4a3b6e72d0eb55125c5dfaca81127129799a4b0",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-6a4c35f8998b6a4ad7e168c22334e33e2419e7947aa6765fb560cf42a4a7c46e/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "complete_public_output_bodies_verified": 153,
+    "congressional_summary": {
+      "house": {
+        "discovered": 435,
+        "held": 0,
+        "nonvoting_house_seats": 0,
+        "refreshed": 435,
+        "retained": 0,
+        "unknown_count_races": 0
+      },
+      "senate": {
+        "discovered": 35,
+        "held": 0,
+        "nonvoting_house_seats": 0,
+        "refreshed": 35,
+        "retained": 0,
+        "unknown_count_races": 0
+      }
+    },
+    "consumer": {
+      "additive_matrix_accepted": true,
+      "count_values_unchanged": true,
+      "jurisdictions": 51,
+      "observations": 36561,
+      "passed": true,
+      "prepared_reader_only_not_a_pages_deployment": true,
+      "senate_export_comparisons": 28,
+      "senate_reader_comparisons": 28,
+      "validated_count_frames": 306
+    },
+    "data_commit": "380425f83f7d6567b23a797f6909348e4db39173",
+    "input_results_version": "9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd",
+    "new_participation_observations": 0,
+    "new_scientific_qualifications": 0,
+    "official_candidate_rows": 12,
+    "official_house_districts": 3,
+    "offline_replay": {
+      "complete_outputs": 153,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "previously_qualified_frozen_states": [
+      "AZ",
+      "CO",
+      "CT",
+      "GA",
+      "HI",
+      "IA",
+      "ID",
+      "IN",
+      "KS",
+      "MD",
+      "MI",
+      "MO",
+      "MT",
+      "ND",
+      "NE",
+      "NH",
+      "NY",
+      "OH",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "UT",
+      "VA",
+      "WV",
+      "WY"
+    ],
+    "research_commit": "586eae0664b4fcedec8cd831034cf6dac13f8e8e",
+    "run": 44180129899,
+    "run_url": "https://github.com/hanshanley/margin_of_error/actions/runs/44180129899",
+    "scientific_comparison_coverage": {
+      "legacy_reader_qualified_senate": 25,
+      "reviewed_qualified_house_districts": 259,
+      "reviewed_qualified_house_states": 32,
+      "reviewed_qualified_senate": 28
+    },
+    "staged_commit": "25415932c997a85c3a1b2cc6a22624816f39957d",
+    "version": "6a4c35f8998b6a4ad7e168c22334e33e2419e7947aa6765fb560cf42a4a7c46e",
+    "website_commit": "916aedefbc7489e17c3fd89eb6f2e6f517c3c727"
+  },
+  "hosted_source": {
+    "all_nonselected_sources_counts_clocks_and_prior_stops_exact": true,
+    "complete_download": {
+      "bytes": 61229122,
+      "sha256": "be0122b63c73e81ada6660b4bdba89ac923cfc6a0dff3924088f465a033214df",
+      "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/254c986e1e8035dbb879209946aa035d89cf53ad/snapshots/9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd/complete-results.zip"
+    },
+    "complete_public_bodies_verified": 23,
+    "fresh_selected_capture": true,
+    "immutable_pointer": "https://raw.githubusercontent.com/hanshanley/voter-participation/54fbdd10b792ffd845c0a18387bd0ee27a15d414/latest.json",
+    "new_participation_observations": 0,
+    "new_scientific_qualifications": 0,
+    "official_candidate_rows": 12,
+    "official_contest_totals": [
+      259360,
+      256800,
+      245480
+    ],
+    "official_house_districts": 3,
+    "offline_replay": {
+      "complete_outputs": 22,
+      "network_requests": 0,
+      "passed": true
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "portable_official_candidate_tests": 18,
+    "provider_reconciliation": [
+      {
+        "counts_combined_or_replaced": false,
+        "district": "NE-01",
+        "named_minor_minus_provider_other": -9,
+        "official_generic_write_in_votes": null,
+        "official_named_minor_votes": 9248,
+        "official_reporting_complete": true,
+        "official_source": {
+          "bytes": 4004941,
+          "sha256": "b0a73afba9ec9c2d989affb3e14cd1519aa764e73d48c2454432b108b5e2cd46",
+          "url": "https://electionresults.nebraska.gov/resultsSW.aspx"
+        },
+        "official_source_update_label": null,
+        "official_status": "reported",
+        "provider_aggregate_other": 9257,
+        "provider_race_id": "npr:house:NE:1:regular:general:not_ranked",
+        "provider_source": {
+          "bytes": 54529,
+          "sha256": "95f210683c365ceb36aed38683880737a2feece2a18621098cc236e4ce7457a4",
+          "url": "https://apps.npr.org/2026-election-results/data/house.json"
+        },
+        "provider_source_updated_at": "2026-11-16T22:59:55.861+00:00",
+        "provider_status": "reported",
+        "synchronized_snapshots_qualified": false,
+        "universe_equivalence_qualified": false
+      },
+      {
+        "counts_combined_or_replaced": false,
+        "district": "NE-02",
+        "named_minor_minus_provider_other": -132,
+        "official_generic_write_in_votes": null,
+        "official_named_minor_votes": 6686,
+        "official_reporting_complete": true,
+        "official_source": {
+          "bytes": 4004941,
+          "sha256": "b0a73afba9ec9c2d989affb3e14cd1519aa764e73d48c2454432b108b5e2cd46",
+          "url": "https://electionresults.nebraska.gov/resultsSW.aspx"
+        },
+        "official_source_update_label": null,
+        "official_status": "reported",
+        "provider_aggregate_other": 6818,
+        "provider_race_id": "npr:house:NE:2:regular:general:not_ranked",
+        "provider_source": {
+          "bytes": 54529,
+          "sha256": "95f210683c365ceb36aed38683880737a2feece2a18621098cc236e4ce7457a4",
+          "url": "https://apps.npr.org/2026-election-results/data/house.json"
+        },
+        "provider_source_updated_at": "2026-11-16T23:04:15.164+00:00",
+        "provider_status": "reported",
+        "synchronized_snapshots_qualified": false,
+        "universe_equivalence_qualified": false
+      },
+      {
+        "counts_combined_or_replaced": false,
+        "district": "NE-03",
+        "named_minor_minus_provider_other": -38,
+        "official_generic_write_in_votes": null,
+        "official_named_minor_votes": 22125,
+        "official_reporting_complete": true,
+        "official_source": {
+          "bytes": 4004941,
+          "sha256": "b0a73afba9ec9c2d989affb3e14cd1519aa764e73d48c2454432b108b5e2cd46",
+          "url": "https://electionresults.nebraska.gov/resultsSW.aspx"
+        },
+        "official_source_update_label": null,
+        "official_status": "reported",
+        "provider_aggregate_other": 22163,
+        "provider_race_id": "npr:house:NE:3:regular:general:not_ranked",
+        "provider_source": {
+          "bytes": 54529,
+          "sha256": "95f210683c365ceb36aed38683880737a2feece2a18621098cc236e4ce7457a4",
+          "url": "https://apps.npr.org/2026-election-results/data/house.json"
+        },
+        "provider_source_updated_at": "2026-11-16T22:57:22.681+00:00",
+        "provider_status": "reported",
+        "synchronized_snapshots_qualified": false,
+        "universe_equivalence_qualified": false
+      }
+    ],
+    "research_commit": "586eae0664b4fcedec8cd831034cf6dac13f8e8e",
+    "run": 44176337651,
+    "run_url": "https://github.com/hanshanley/voter-participation/actions/runs/44176337651",
+    "source_attempts": [
+      {
+        "bytes": 4004941,
+        "id": "NE-official-house-candidates",
+        "sha256": "b0a73afba9ec9c2d989affb3e14cd1519aa764e73d48c2454432b108b5e2cd46",
+        "status": "new_source_response",
+        "url": "https://electionresults.nebraska.gov/resultsSW.aspx"
+      }
+    ],
+    "version": "9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd"
+  },
+  "hosted_unchanged_noop": {
+    "data_commit": "380425f83f7d6567b23a797f6909348e4db39173",
+    "pages_deployment_requested": false,
+    "passed": true,
+    "run": 44181283213,
+    "run_url": "https://github.com/hanshanley/margin_of_error/actions/runs/44181283213",
+    "source_collection_requested": false,
+    "unchanged_data_head_and_manifest": true,
+    "version": "6a4c35f8998b6a4ad7e168c22334e33e2419e7947aa6765fb560cf42a4a7c46e",
+    "website_builds_started": 0
+  },
+  "local_affected_tests": 90,
+  "new_geographic_qualifications": 0,
+  "pages_deployment_requested": false,
+  "passed": true,
+  "recovery_qualification": "Actual disk-full failures retained. Completed archives and saved outputs were hash-verified; interrupted invocations are not relabeled successful.",
+  "source_models_refitted": false,
+  "source_portable_candidate_tests": 18,
+  "whole_project_complete": false
+}

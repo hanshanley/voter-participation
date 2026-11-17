@@ -1,0 +1,211 @@
+{
+  "california_retained_evidence_integration": {
+    "after_both": 13386237,
+    "before_canonical": 12898770,
+    "before_legacy_display": 8928966,
+    "county_updates_preserved_exactly": 58,
+    "fresh_source_acquisitions": 0,
+    "native_clock": {
+      "literal": "November 16, 2026, 7:12 p.m.",
+      "qualification": "native_clock_or_explicitly_not_supplied",
+      "timezone": null
+    },
+    "native_measure": {
+      "id": "previously-reviewed-participation-count",
+      "kind": "participation_reported",
+      "literal": "voterTurnout",
+      "mode": "source_defined",
+      "unit": "source_reported_count"
+    },
+    "original_retained_source": {
+      "bytes": 33908,
+      "sha256": "95340f678349f61f8af9f968b6c8fec6f6261779a13728f90782fd8988dbf69b",
+      "url": "https://media.sos.ca.gov/media/status_GG.json"
+    },
+    "registered_frame": {
+      "basis": "native_registered_voters",
+      "literal": "native_registered_voters",
+      "qualified": true,
+      "value": 23273590
+    },
+    "source_printed_percentage": "57.5%"
+  },
+  "contract": "participation.automatic_product_observations.v1",
+  "controlled_revisions_are_not_observations": true,
+  "inherited_uf_automatic_coverage_not_new_acquisition_in_this_batch": {
+    "ballot_status": {
+      "estimate": 45,
+      "source_reported_not_independently_certified": 6,
+      "unrecognized_source_status": 1
+    },
+    "estimates_are_not_certified_observations": true,
+    "jurisdictions": 51,
+    "runtime_run": 44119537873,
+    "separate_us_rows": 1,
+    "source_run": 44113797612,
+    "unchanged_noop_run": 44121161955,
+    "unknown_status_is_not_promoted": true,
+    "version": "0.3"
+  },
+  "nebraska_fresh_participation": {
+    "after": 775942,
+    "before": 767046,
+    "canonical_state_update": {
+      "clock": null,
+      "id": "c776dee50bc9a20b89b0291777f7ce96",
+      "native": {
+        "current_native_count_clock_not_supplied": true,
+        "native_statewide_header": true,
+        "prior_accepted_source_clock": null,
+        "private_original_pin": {
+          "bytes": 1255899,
+          "sha256": "3abdb383211b178a2e42b80e67d592e3709429bc1093d81c8a64f7f8710205db"
+        },
+        "query": {
+          "count": 775942,
+          "count_literal": "775,942",
+          "geography_level": "state",
+          "native_fraction_literal": "61.33%",
+          "native_measure_literal": "Ballots Cast",
+          "native_report_status_literal": "Unofficial Results",
+          "query_id": "native-webforms-state-statistics",
+          "registered": 1265162,
+          "registered_literal": "1,265,162",
+          "reported_units": 1322,
+          "source_clock": null,
+          "total_units": 1322
+        },
+        "whole_publisher_html_redistributed": false
+      },
+      "rate_compatible": true,
+      "registered": 1265162,
+      "reported_units": 1322,
+      "reviewed_template_pin": {
+        "bytes": 1218,
+        "sha256": "c3f9c9ee15046f2f5383062132431aa81fb83558205053b8b9ddd2d4a0d72c51"
+      },
+      "total_units": 1322,
+      "value": 775942
+    },
+    "change": 8896,
+    "complete_download": {
+      "bytes": 61209036,
+      "sha256": "ef7562d10beae903577acf3a15666fabb9835ebd79405d1bbd37c12d91e4512e",
+      "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/2cc0cfa2fbb4fae379cfe87110aa2f95b6ad9828/snapshots/0cadaceb4e9276b52e73d4994daa99869b0dae4dcc9f4864afdba0a4ea289bd4/complete-results.zip"
+    },
+    "native_clock": {
+      "literal": null,
+      "timezone": null
+    },
+    "native_printed_pct": "61.33%",
+    "registration_context": 1265162,
+    "run": 44163104135
+  },
+  "nebraska_separate_official_candidates": {
+    "complete_download": {
+      "bytes": 61229122,
+      "sha256": "be0122b63c73e81ada6660b4bdba89ac923cfc6a0dff3924088f465a033214df",
+      "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/254c986e1e8035dbb879209946aa035d89cf53ad/snapshots/9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd/complete-results.zip"
+    },
+    "official_candidate_rows": 12,
+    "official_contest_totals": [
+      259360,
+      256800,
+      245480
+    ],
+    "official_house_districts": 3,
+    "provider_reconciliation": [
+      {
+        "counts_combined_or_replaced": false,
+        "district": "NE-01",
+        "named_minor_minus_provider_other": -9,
+        "official_generic_write_in_votes": null,
+        "official_named_minor_votes": 9248,
+        "official_reporting_complete": true,
+        "official_source": {
+          "bytes": 4004941,
+          "sha256": "b0a73afba9ec9c2d989affb3e14cd1519aa764e73d48c2454432b108b5e2cd46",
+          "url": "https://electionresults.nebraska.gov/resultsSW.aspx"
+        },
+        "official_source_update_label": null,
+        "official_status": "reported",
+        "provider_aggregate_other": 9257,
+        "provider_race_id": "npr:house:NE:1:regular:general:not_ranked",
+        "provider_source": {
+          "bytes": 54529,
+          "sha256": "95f210683c365ceb36aed38683880737a2feece2a18621098cc236e4ce7457a4",
+          "url": "https://apps.npr.org/2026-election-results/data/house.json"
+        },
+        "provider_source_updated_at": "2026-11-16T22:59:55.861+00:00",
+        "provider_status": "reported",
+        "synchronized_snapshots_qualified": false,
+        "universe_equivalence_qualified": false
+      },
+      {
+        "counts_combined_or_replaced": false,
+        "district": "NE-02",
+        "named_minor_minus_provider_other": -132,
+        "official_generic_write_in_votes": null,
+        "official_named_minor_votes": 6686,
+        "official_reporting_complete": true,
+        "official_source": {
+          "bytes": 4004941,
+          "sha256": "b0a73afba9ec9c2d989affb3e14cd1519aa764e73d48c2454432b108b5e2cd46",
+          "url": "https://electionresults.nebraska.gov/resultsSW.aspx"
+        },
+        "official_source_update_label": null,
+        "official_status": "reported",
+        "provider_aggregate_other": 6818,
+        "provider_race_id": "npr:house:NE:2:regular:general:not_ranked",
+        "provider_source": {
+          "bytes": 54529,
+          "sha256": "95f210683c365ceb36aed38683880737a2feece2a18621098cc236e4ce7457a4",
+          "url": "https://apps.npr.org/2026-election-results/data/house.json"
+        },
+        "provider_source_updated_at": "2026-11-16T23:04:15.164+00:00",
+        "provider_status": "reported",
+        "synchronized_snapshots_qualified": false,
+        "universe_equivalence_qualified": false
+      },
+      {
+        "counts_combined_or_replaced": false,
+        "district": "NE-03",
+        "named_minor_minus_provider_other": -38,
+        "official_generic_write_in_votes": null,
+        "official_named_minor_votes": 22125,
+        "official_reporting_complete": true,
+        "official_source": {
+          "bytes": 4004941,
+          "sha256": "b0a73afba9ec9c2d989affb3e14cd1519aa764e73d48c2454432b108b5e2cd46",
+          "url": "https://electionresults.nebraska.gov/resultsSW.aspx"
+        },
+        "official_source_update_label": null,
+        "official_status": "reported",
+        "provider_aggregate_other": 22163,
+        "provider_race_id": "npr:house:NE:3:regular:general:not_ranked",
+        "provider_source": {
+          "bytes": 54529,
+          "sha256": "95f210683c365ceb36aed38683880737a2feece2a18621098cc236e4ce7457a4",
+          "url": "https://apps.npr.org/2026-election-results/data/house.json"
+        },
+        "provider_source_updated_at": "2026-11-16T22:57:22.681+00:00",
+        "provider_status": "reported",
+        "synchronized_snapshots_qualified": false,
+        "universe_equivalence_qualified": false
+      }
+    ],
+    "research_commit": "586eae0664b4fcedec8cd831034cf6dac13f8e8e",
+    "run": 44176337651
+  },
+  "new_exact_access_stop": {
+    "central_policy_commit": "eed9f0c1dc9918dd5ab258b2f2a904dc76045d28",
+    "current_url_stop_count": 195,
+    "historical_source_packet_stop_inventory_is_not_rewritten": true,
+    "model_identity_approved": false,
+    "original_acquired": false,
+    "status": 403,
+    "url": "https://dekalbgop.org/june-2026-chairmans-letter/"
+  },
+  "new_participation_observation_ids": 0,
+  "not_ballots_or_a_model_approval": true
+}

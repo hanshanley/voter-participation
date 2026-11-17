@@ -1,5 +1,27 @@
 # Remaining work: participation and election-transition estimates
 
+## November 17 accepted automatic products and complete downloads
+
+**435 House and 35 Senate returns refresh; no House race is retained.** Qualified current comparisons are **259 districts, 32 House states and 28 Senate contests**. The one district increase from the reported 258 baseline is FL-05 recovering source freshness, not a new boundary qualification.
+
+**Seven House states automatically recondition all nine existing variants:** AR/DE/MN/NM/SD/TN/VT, **63 state/variant frames**, versus the reported 4/36 baseline. **26 formerly qualified states remain frozen**, versus 29; each retains its own counts, dates and exact overlapping guards. No respondent refit or universal behavioral identification is claimed.
+
+California's existing statewide voterTurnout observation advances from 12,898,770 to 13,386,237 using retained official evidence; its older display had 8,928,966. All 58 county observations remain separate. A fresh selected Nebraska administrative capture advances its existing statewide count from 767,046 to 775,942 (+8,896); native registration context is 1,265,162 and printed 61.33%, with no supplied native count clock. These changes add **zero participation observation IDs or new rate/geography approvals**.
+
+The inherited hourly UF v0.3 adapter covers 51 jurisdictions plus a separate U.S. row: 45 estimates, six source-reported counts without independent certification, and one unrecognized source status. These are not 52 certified administrative observations; source-defined denominators, documentation inconsistencies and revisions remain separate.
+
+The new hourly official-candidate adapter separately retains all three Nebraska House districts and 12 literal candidate/party rows. Complete CSV/JSON exports show discrepancies against the national provider without adding the providers or treating absent write-ins as zero. It supplies no participation numerator or conditional-model approval.
+
+Actual selected source **44176337651**, analytical runtime **44180129899** and unchanged no-op **44181283213** are accepted. **22 complete source outputs and 153 complete analytical outputs reproduce offline**, with every public output verified. Controlled +7/-13 revisions propagate through JSON/CSV; unchanged reruns and an outage preserve last-good values and provenance. Controlled revisions are not observed election results.
+
+**Live versus prepared:** the deployed Senate reader still displays 25 of the 28 exported comparisons. The tested 28-comparison reader and Maine partial county-count reader are source-published but **undeployed**. No Pages deployment, redesign or assistant continuation was requested. Legacy frozen scientific comparisons are distinct from current qualified returns.
+
+**Senate models are not absent:** 26 legacy conditional fits are retained with an explicit recalled-president/House synthetic-prior transport assumption. They are not fresh Senate respondent fits. Their frozen prior and current same-seat/stage/provider endpoints need a reviewed, separately versioned bridge before automatic conditioning; a genuinely empirical Senate extension additionally needs matching questions, weights and historical evidence.
+
+[Complete coverage, every state guard and current download pins](data/participation-access/20261117-complete-automatic-products-01/coverage-and-downloads.json), [observations and source distinctions](data/participation-access/20261117-complete-automatic-products-01/observations.json), and [hosted/offline/correction acceptance](data/participation-access/20261117-complete-automatic-products-01/acceptance.json).
+
+The overall project remains open. Missing alias declarations, complete Other/write-in/fusion universes and reviewed provider precedence block further compatible models. Changed/split districts need actual historical reconstruction. Senate conditional estimates need their own reviewed respondent/weight/seat-stage bridge. Source stops remain enforced; unavailable evidence is not replaced with candidate-vote turnout, registration-only numerators or state-to-local allocation. Earlier dated sections below are historical.
+
 ## November 17 official identity successor and remaining analytical bottlenecks
 
 Minnesota hosted runtime 44152594587 is accepted: six automatically updating

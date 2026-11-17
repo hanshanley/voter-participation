@@ -1,5 +1,12 @@
 # Complete analysis downloads
 
+## Current complete immutable packages
+
+- [Complete source/query package](https://raw.githubusercontent.com/hanshanley/voter-participation/254c986e1e8035dbb879209946aa035d89cf53ad/snapshots/9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd/complete-results.zip): 61,229,122 bytes; SHA256 `be0122b63c73e81ada6660b4bdba89ac923cfc6a0dff3924088f465a033214df`; 22 offline outputs.
+- [Complete analytical package](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-6a4c35f8998b6a4ad7e168c22334e33e2419e7947aa6765fb560cf42a4a7c46e/complete-analysis.zip): 287,879,349 bytes; SHA256 `ba89eca711d227701fd076efb4a3b6e72d0eb55125c5dfaca81127129799a4b0`; 153 offline outputs.
+
+The analytical package contains the entire selected source package, actual preceding rolling seed, historical inputs, reviewed identities/categories/geography, code/tests and every numerical query. Earlier complete downloads below are preserved.
+
 ## November 16 reviewed automatic analytical handoff
 
 Actual hosted source **43920096796**, data-only consumer **43933156698**, and identical-input no-op **43933995521** are accepted. **435 House / 35 Senate** races refresh through the existing hourly bulk system. Recorded qualification is **32 House states / 28 Senate contests**, versus 32/24; the unchanged deployed reader badges 25 Senate comparisons and retains explicit reader-limit explanations for FL/OH/GA. All 28 are qualified in full CSV/query exports.

@@ -1,5 +1,36 @@
 # Reproduce a saved analysis
 
+## Current automatic collection and literal offline replay
+
+From a checkout of the published research engine identified in the coverage record:
+
+```sh
+gh workflow run election-night.yml --repo hanshanley/voter-participation --ref main
+gh workflow run election-night.yml --repo hanshanley/voter-participation \
+  --ref main -f refresh_sources=NE-official-house-candidates
+```
+
+Selected refresh requires the existing accepted collector state; it does not reacquire all other sources. The normal hourly collector includes the new candidate product. To pin the analytical refresh to this accepted immutable source:
+
+```sh
+gh workflow run automatic-runtime.yml --repo hanshanley/margin_of_error \
+  --ref main -f results_pointer=https://raw.githubusercontent.com/hanshanley/voter-participation/54fbdd10b792ffd845c0a18387bd0ee27a15d414/latest.json
+```
+
+This is a data-only analytical publication, not a Pages deployment. Download each complete archive into its own fresh directory. In the source extraction:
+
+```sh
+python3.12 code/reproduce.py replay --package . --output reproduced
+```
+
+In the separate analytical extraction:
+
+```sh
+python3.12 code/reproduce.py --replay-package . --output reproduced
+```
+
+These accepted commands reproduce all 22/153 complete outputs without publisher requests or private respondent fitting. Preserve the packaged interpreter contract, complete inputs and checksums; do not substitute a metadata-only package.
+
 ## November 16 reviewed automatic analytical handoff
 
 Actual hosted source **43920096796**, data-only consumer **43933156698**, and identical-input no-op **43933995521** are accepted. **435 House / 35 Senate** races refresh through the existing hourly bulk system. Recorded qualification is **32 House states / 28 Senate contests**, versus 32/24; the unchanged deployed reader badges 25 Senate comparisons and retains explicit reader-limit explanations for FL/OH/GA. All 28 are qualified in full CSV/query exports.
