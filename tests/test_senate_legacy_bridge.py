@@ -1,10 +1,15 @@
 import copy
+import gzip
 import json
 from pathlib import Path
+import shutil
+import tempfile
 import unittest
 
+from scripts.congressional_candidate_identity import DATA_PATHS as FEC_PATHS, Evidence
 from scripts.participation_intake.contract import encoded, pin
 from scripts.results_congress import normalize
+from scripts import senate_legacy_bridge as bridge
 from scripts.senate_legacy_bridge import build, exports, load_review
 
 
@@ -172,6 +177,146 @@ class SenateLegacyBridgeTests(unittest.TestCase):
         self.assertEqual(len(cases), 9)
         self.assertEqual(len(cells), 144)
         self.assertEqual({row["source_joint_observation"] for row in cells}, {"False"})
+
+
+class SenateFecIdentityTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        fixture = json.loads((ROOT / "tests/fixtures/senate-legacy-new-mexico.json").read_bytes())
+        cls.snapshot = {"congress": fixture["congress"]}
+        cls.review = load_review(REVIEW_ROOT)
+        cls.seed = {"senate_legacy_review": cls.review,
+                    "congressional_analytical_review": {"historical_senate": fixture["historical_senate"]}}
+        cls.fec = json.loads(gzip.decompress((REVIEW_ROOT / FEC_PATHS[1]).read_bytes()))
+        cls.evidence = Evidence(cls.fec)
+        cls.key = "NM-senate-87288"
+        cls.race = "npr:senate:NM:2:regular:general:not_ranked"
+        cls.frame = cls.review["models"][cls.key]["identity"]
+        cls.old = cls.review["models"][cls.key]["legacy_native_control"]["full_candidate_rows"][0]
+        cls.current = next(row for row in cls.snapshot["congress"]["races"][cls.race]["data"]["candidates"]
+                           if row["party_group"] == "D")
+
+    def test_full_fec_identity_resolves_diacritic_and_middle_name_without_ballot_inference(self):
+        proof = bridge.fec_identity(self.old, self.current, self.frame, self.evidence)
+        self.assertEqual(proof["fec_candidate"]["candidate_id"], "S0NM00058")
+        self.assertEqual(proof["legacy_literal_name"], "Ben Ray Luján")
+        self.assertEqual(proof["provider_literal_name"], "Ben Lujan")
+        self.assertFalse(proof["ballot_inventory_counts_seat_or_stage_qualified_by_FEC"])
+        self.assertEqual(self.old["name"], "Ben Ray Luján")
+
+    def test_ambiguous_wrong_office_state_party_cycle_and_district_do_not_resolve(self):
+        for field, value in (("office", "H"), ("office_state", "AZ"), ("literal_party", "REP"),
+                             ("election_year", "2028"), ("district", "01"), ("ambiguous", None)):
+            with self.subTest(field=field):
+                source = copy.deepcopy(self.fec)
+                candidate = next(row for row in source["candidates"]
+                                 if row["candidate_id"] == "S0NM00058")
+                if field == "ambiguous":
+                    source["candidates"].append({**candidate, "candidate_id": "S9NM99999"})
+                else:
+                    candidate[field] = value
+                self.assertIsNone(bridge.fec_identity(
+                    self.old, self.current, self.frame, Evidence(source)))
+
+    def test_initials_nicknames_partial_surnames_and_unsupported_stages_stay_held(self):
+        for name in ("B. Lujan", "Ben Luj", "Benny Lujan", "Ben Ray"):
+            with self.subTest(name=name):
+                self.assertIsNone(bridge.fec_identity(
+                    self.old, {**self.current, "name": name}, self.frame, self.evidence))
+        for field, value in (("stage", "runoff"), ("election_kind", "special"),
+                             ("ranked_choice", True), ("election_date", "2026-06-02")):
+            with self.subTest(field=field):
+                self.assertIsNone(bridge.fec_identity(
+                    self.old, self.current, {**self.frame, field: value}, self.evidence))
+
+    def test_all_other_decisions_and_original_other_mass_are_preserved(self):
+        previous = json.loads((REVIEW_ROOT / bridge.PREVIOUS_REVIEW_PATH).read_bytes())
+        current = json.loads((REVIEW_ROOT / bridge.REVIEW_PATH).read_bytes())
+        for key in previous["models"]:
+            if key != self.key:
+                self.assertEqual(current["models"][key], previous["models"][key])
+        result = build(copy.deepcopy(self.snapshot), copy.deepcopy(self.seed))
+        self.assertEqual(result["result"]["summary"]["fresh_sensitivity_fits"], 18)
+        self.assertEqual(sum(bool(row["holds"]) for row in result["result"]["rows"]), 24)
+        model = result["last_good"][self.key]["model"]
+        self.assertEqual(model["reported_comparison"]["previous"]["O"], 24271)
+        self.assertNotIn("O", model["reported_comparison"]["current"])
+        self.assertEqual(model["observed_other_vote_endpoints"], [True, False])
+
+    def test_fec_rule_cannot_erase_added_other_even_when_zero(self):
+        previous = json.loads((REVIEW_ROOT / bridge.PREVIOUS_REVIEW_PATH).read_bytes())
+        controls = {key: row["legacy_native_control"] for key, row in self.review["models"].items()}
+        for votes in (0, 3):
+            with self.subTest(votes=votes):
+                context = copy.deepcopy(self.review["candidate_identity_successor"]["context"])
+                raw = context["races"][self.race]["data"]["native_facts"]
+                raw["candidates"].append({"id": "other-added", "first": "", "last": "Other",
+                                          "party": "Lib", "votes": votes})
+                context["races"][self.race]["data"] = normalize(raw, "senate")
+                result = bridge.fec_successor(
+                    previous, controls, context, self.evidence,
+                    self.review["candidate_identity_successor"]["files"])
+                self.assertEqual(result["models"][self.key], previous["models"][self.key])
+
+    def test_both_model_revisions_failure_and_unchanged_repeat(self):
+        snapshot, seed = copy.deepcopy(self.snapshot), copy.deepcopy(self.seed)
+        original = build(snapshot, seed)
+        seed["senate_legacy_last_good"] = original["last_good"]
+        initial = original["last_good"][self.key]["model"]["point"]["reported_change_pp"]
+        for delta in (7, -13):
+            raw = snapshot["congress"]["races"][self.race]["data"]["native_facts"]
+            raw["updated"] += 1000
+            next(row for row in raw["candidates"] if row["party"] == "Dem")["votes"] += delta
+            entry = snapshot["congress"]["races"][self.race]
+            entry["data"] = normalize(raw, "senate")
+            entry["source"].update(pin(encoded({"results": [raw]})))
+            revised = build(snapshot, seed)
+            point = revised["last_good"][self.key]["model"]["point"]["reported_change_pp"]
+            self.assertTrue(point > initial if delta > 0 else point < initial)
+            self.assertEqual(revised["last_good"][KEY]["model"], original["last_good"][KEY]["model"])
+            seed["senate_legacy_last_good"] = revised["last_good"]
+        repeated = build(snapshot, seed)
+        self.assertEqual(repeated["last_good"], revised["last_good"])
+        entry["status"] = "retained_after_failure"
+        held = build(snapshot, seed)
+        self.assertEqual(held["last_good"], revised["last_good"])
+        row = next(row for row in held["result"]["rows"] if row["id"] == self.key)
+        self.assertEqual(row["model_source_clock"], entry["data"]["source_updated_at"])
+        self.assertEqual(row["status"], "held_retain_last_good_partial_scenario")
+
+    def test_previous_alabama_checkpoint_migrates_but_new_mexico_cannot_claim_old_review(self):
+        snapshot, seed = copy.deepcopy(self.snapshot), copy.deepcopy(self.seed)
+        original = build(snapshot, seed)
+        saved = copy.deepcopy(original["last_good"][KEY])
+        saved["review_version"] = bridge.PREVIOUS_VERSION
+        seed["senate_legacy_last_good"] = {KEY: saved}
+        migrated = build(snapshot, seed)
+        self.assertEqual(migrated["last_good"][KEY]["model"], saved["model"])
+        self.assertEqual(migrated["last_good"][KEY]["review_version"], bridge.VERSION)
+        seed["senate_legacy_last_good"][self.key] = copy.deepcopy(original["last_good"][self.key])
+        seed["senate_legacy_last_good"][self.key]["review_version"] = bridge.PREVIOUS_VERSION
+        with self.assertRaisesRegex(ValueError, "last-good"):
+            build(snapshot, seed)
+
+    def test_changed_review_or_fec_evidence_refuses_before_fitting(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for path in bridge.DATA_PATHS:
+                target = root / path
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(REVIEW_ROOT / path, target)
+            path = root / bridge.REVIEW_PATH
+            original = path.read_bytes()
+            review = json.loads(original)
+            review["models"][self.key]["checkpoint"]["data"]["candidates"][0]["votes"] += 1
+            path.write_bytes(encoded(review))
+            with self.assertRaisesRegex(ValueError, "reproduce"):
+                load_review(root)
+            path.write_bytes(original)
+            evidence = root / FEC_PATHS[1]
+            evidence.write_bytes(evidence.read_bytes() + b"\n")
+            with self.assertRaisesRegex(ValueError, "FEC identity evidence"):
+                load_review(root)
 
 
 if __name__ == "__main__":

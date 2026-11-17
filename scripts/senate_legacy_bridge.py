@@ -1,27 +1,144 @@
 """Refresh reviewed D/R-only Senate scenarios, never Senate respondent fits."""
 
 import copy
+import gzip
 import io
 import json
 from pathlib import Path
+import unicodedata
 import zipfile
 
 from scripts import calibrated_swing
 from scripts.congressional_analytical_bridge import identity, review_names
+from scripts.congressional_candidate_identity import DATA_PATHS as FEC_PATHS, Evidence
 from scripts.participation_intake.contract import encoded, pin
 from scripts.results_congress import check_revision, compressed, normalize, require
 
 
-VERSION = "20261117-01"
+PREVIOUS_VERSION = "20261117-01"
+VERSION = "20261117-02"
 CONTRACT = "participation.senate_legacy_partial_scenarios.v1"
-REVIEW_PATH = "data/results-intake/senate-legacy/review.json"
+PREVIOUS_REVIEW_PATH = "data/results-intake/senate-legacy/review.json"
+REVIEW_PATH = "data/results-intake/senate-legacy/review-02.json"
 SCIENCE_PATH = "data/results-intake/senate-legacy/complete-predecessor.zip"
-DATA_PATHS = (REVIEW_PATH, SCIENCE_PATH)
+DATA_PATHS = (PREVIOUS_REVIEW_PATH, REVIEW_PATH, SCIENCE_PATH, *FEC_PATHS)
 MODEL_PATH = "senate/legacy-partial-results.json.gz"
 SCIENCE_PIN = {
     "bytes": 14943668,
     "sha256": "2377ea253d33b88af3146bad4e2a52c9936d97b178c00a4fa0e3be022aadeae1",
 }
+IDENTITY_HOLD = "Reported full candidate identity/universe differs; no minor/write-in mass discarded"
+
+
+def _latin_name(value):
+    normalized = "".join(character for character in unicodedata.normalize("NFD", value.casefold())
+                         if not unicodedata.combining(character))
+    return normalized if all(not character.isalpha() or character.isascii()
+                             for character in normalized) else None
+
+
+def fec_identity(old, current, frame, evidence):
+    group = {"Democratic": "D", "Republican": "R"}.get(old["party"])
+    if (group not in ("D", "R") or current["party_group"] != group
+            or current["role"] != "named_candidate"
+            or frame["chamber"] != "senate" or frame["election_date"] != "2026-11-03"
+            or frame["election_kind"] != "regular" or frame["stage"] != "general"
+            or frame["ranked_choice"] is not False):
+        return None
+    names = [_latin_name(row["name"]) for row in (old, current)]
+    if any(name is None for name in names):
+        return None
+    candidates = []
+    for candidate in evidence.candidates.values():
+        if (candidate["office"] == "S" and candidate["election_year"] == "2026"
+                and candidate["office_state"] == frame["state_code"]
+                and candidate["district"] == "00"
+                and candidate["literal_party"] == {"D": "DEM", "R": "REP"}[group]):
+            folded = _latin_name(candidate["name"])
+            if folded is not None:
+                candidates.append((candidate, {**candidate, "name": folded}))
+    matches = [
+        [(candidate, proof) for candidate, folded in candidates
+         if (proof := evidence.support(name, folded)) is not None]
+        for name in names]
+    if len(matches[0]) != 1 or len(matches[1]) != 1:
+        return None
+    before, after = matches[0][0], matches[1][0]
+    if before[0]["candidate_id"] != after[0]["candidate_id"]:
+        return None
+    return {
+        "fec_candidate": copy.deepcopy(before[0]),
+        "legacy_literal_name": old["name"], "provider_literal_name": current["name"],
+        "legacy_support": before[1], "provider_support": after[1],
+        "name_normalization": "Unicode NFD; remove combining diacritics; casefold; no nickname inference",
+        "ballot_inventory_counts_seat_or_stage_qualified_by_FEC": False,
+    }
+
+
+def fec_successor(previous, controls, context, evidence, files):
+    require(previous["contract"] == CONTRACT and previous["version"] == PREVIOUS_VERSION,
+            "Senate identity review needs its complete frozen predecessor")
+    review, resolved = copy.deepcopy(previous), []
+    for key, decision in review["models"].items():
+        if decision["enabled"] or decision["holds"] != [IDENTITY_HOLD]:
+            continue
+        control = controls[key]
+        options = [row for row in context["comparisons"]
+                   if row["chamber"] == "senate" and row["state_code"] == control["state_code"]
+                   and row["qualified_comparison"]
+                   and all(row["previous"].get(party) ==
+                           context["legacy_comparisons"][key]["previous"].get(party)
+                           for party in "DRO")]
+        if len(options) != 1:
+            continue
+        selected = options[0]
+        entry = context["races"].get(selected["id"])
+        if not entry or not isinstance(entry.get("data"), dict):
+            continue
+        data, reported = entry["data"], control["full_candidate_rows"]
+        if (len(reported) != len(data["candidates"]) or len(reported) != 2
+                or data["id"] != selected["id"]
+                or sorted(row["party_group"] for row in data["candidates"]) != ["D", "R"]
+                or any(row["role"] != "named_candidate" for row in data["candidates"])
+                or control["year"] != 2026 or control["office"] != "senate"
+                or control["source_election_scope"] != "General"):
+            continue
+        frame, proofs, matched = identity(data), [], []
+        for candidate in data["candidates"]:
+            choices = []
+            for old in reported:
+                if {"Democratic": "D", "Republican": "R"}.get(old["party"]) != candidate["party_group"]:
+                    continue
+                proof = None if review_names(old["name"], candidate["name"]) else fec_identity(
+                    old, candidate, frame, evidence)
+                if proof is not None or review_names(old["name"], candidate["name"]):
+                    choices.append((old, proof))
+            if len(choices) != 1:
+                break
+            matched.append(choices[0][0]["candidate_id"])
+            if choices[0][1] is not None:
+                proofs.append({"model_id": key, "provider_candidate_id": candidate["candidate_id"],
+                               **choices[0][1]})
+        if len(set(matched)) != len(reported) or not proofs:
+            continue
+        decision.update(
+            enabled=True, holds=[], unmatched_legacy_candidates=[], unmatched_current_candidates=[],
+            identity=frame, checkpoint=copy.deepcopy(entry),
+            previous={party: selected["previous"][party] for party in "DRO"},
+            previous_candidates=copy.deepcopy(selected["previous_candidates"]),
+            baseline=copy.deepcopy(selected["baseline"]),
+            conditioning_scope="reported_DR_only_current_O_unknown",
+            candidate_identity_evidence=proofs)
+        resolved.extend(proofs)
+    review["version"] = VERSION
+    review["candidate_identity_successor"] = {
+        "contract": "participation.senate_fec_identity.v1",
+        "predecessor_review_pin": pin(encoded(previous)), "files": copy.deepcopy(files),
+        "context": copy.deepcopy(context), "resolved_identities": resolved,
+        "previously_enabled_models": sorted(key for key, row in previous["models"].items() if row["enabled"]),
+        "FEC_is_not_a_complete_ballot_or_seat_or_stage_inventory": True,
+    }
+    return review
 
 
 def load_review(root):
@@ -46,6 +163,20 @@ def load_review(root):
             and prior["private_joint_cells_reconstructed"] is False,
             "Only existing disclosed synthetic priors are supported")
     source_controls = {row["id"]: row for row in controls}
+    previous = json.loads((root / PREVIOUS_REVIEW_PATH).read_bytes())
+    successor = review.get("candidate_identity_successor") or {}
+    require(successor.get("context", {}).get("legacy_comparisons") == {
+        key: row["reported_comparison"] for key, row in models.items()},
+        "Changed original Senate historical comparison evidence")
+    require(set(successor.get("files", {})) == set(FEC_PATHS),
+            "Incomplete Senate FEC identity evidence")
+    for path in FEC_PATHS:
+        require(pin((root / path).read_bytes()) == successor["files"][path],
+                "Changed complete Senate FEC identity evidence")
+    evidence = Evidence(json.loads(gzip.decompress((root / FEC_PATHS[1]).read_bytes())))
+    require(review == fec_successor(
+        previous, source_controls, successor["context"], evidence, successor["files"]),
+        "Senate identity decisions do not reproduce from complete pinned evidence")
     approved = []
     for key, decision in review["models"].items():
         old = models[key]
@@ -61,7 +192,9 @@ def load_review(root):
             reported = source_controls[key]["full_candidate_rows"]
             require(len(reported) == len(data["candidates"]), "Different reported candidate universes")
             for candidate in data["candidates"]:
-                matches = [row for row in reported if review_names(row["name"], candidate["name"])
+                matches = [row for row in reported if (
+                           review_names(row["name"], candidate["name"])
+                           or fec_identity(row, candidate, decision["identity"], evidence) is not None)
                            and {"Democratic": "D", "Republican": "R"}.get(row["party"])
                            == candidate["party_group"]]
                 require(len(matches) == 1, "Unreviewed cross-provider Senate candidate identity")
@@ -69,7 +202,10 @@ def load_review(root):
                     "Different historical candidate endpoints")
             require(decision["conditioning_scope"] == "reported_DR_only_current_O_unknown",
                     "Unreported Other is not an observed zero")
-    require(approved == ["AL-senate-86907"], "Unreviewed Senate partial-scenario extension")
+    require(set(approved) == {
+        key for key, row in previous["models"].items() if row["enabled"]
+    } | {row["model_id"] for row in successor["resolved_identities"]},
+        "Unreviewed Senate partial-scenario extension")
     states = {row["state_code"] for row in models.values()}
     factor = prior["persistence_calibration"]["selected_factor"]
     factors = [value for value in prior["effective_persistence_factors"]
@@ -159,7 +295,10 @@ def build(snapshot, seed):
     for key, decision in sorted(review["models"].items()):
         saved = previous.get(key)
         if saved is not None:
-            require(saved.get("review_version") == VERSION
+            allowed_versions = {VERSION}
+            if key in review["candidate_identity_successor"]["previously_enabled_models"]:
+                allowed_versions.add(PREVIOUS_VERSION)
+            require(saved.get("review_version") in allowed_versions
                     and saved.get("model_pin") == pin(encoded(saved.get("model")))
                     and saved["model"]["id"] == key,
                     "Changed last-good Senate model")

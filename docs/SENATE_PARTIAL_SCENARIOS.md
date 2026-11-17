@@ -10,9 +10,23 @@ The initial reviewed bridge supports Alabama's regular Class II Senate seat,
 seat, stage, round, full native facts, source identity and revision clocks are
 checked on every automatic analytical refresh. A changed candidate inventory or
 incompatible comparison is held, not automatically approved by a matching name
-or matching major-party totals. The other 25 original decisions remain explicit
-holds with their missing evidence recorded in
+or matching major-party totals. Its version-01 decisions remain intact in
 `data/results-intake/senate-legacy/review.json`.
+
+The version-02 successor also supports New Mexico's regular Class II seat,
+2020 general election to the reported 2026 general election. The retained complete
+FEC candidate master identifies both `Ben Ray Lujan` (with the original accented
+surname preserved in the evidence) and provider `Ben Lujan` as `S0NM00058`.
+The reusable identity rule requires unique agreement on office, state, cycle,
+party, full surname and given-name prefix or an explicit source alias. It uses
+Latin diacritic normalization, not nickname inference or general fuzzy matching.
+FEC registration proves neither ballot presence, complete candidate coverage,
+counts, seat nor stage; those require the separate native and historical evidence.
+
+All 26 original decisions are recomputed from complete pinned evidence. Exactly
+one identity-only hold is resolved; the other 24 holds remain unchanged in
+`data/results-intake/senate-legacy/review-02.json`. The successor retains the
+complete original science, both review versions and full FEC evidence tables.
 
 ## What is conditioned, and what is not observed
 
@@ -34,6 +48,14 @@ transitions. These are conditional accounting components, not identified
 individual behavior or observed staying home. Nine persistence/frame assumption
 combinations are exported; their ranges are not confidence intervals.
 
+New Mexico's historical endpoint is Democratic 474,483, Republican 418,483 and
+Other 24,271. Its current reported D/R endpoint is 458,756/266,434, with current
+Other still unknown. The reported D-minus-R margin change is +20.248987 points.
+The reference conditional components are switching +4.073691, modeled
+nonparticipation +11.189289, entry +4.609498 and Other-choice +0.376509 points.
+These share Alabama's transported-prior limitations; they are not observed
+individual transitions or an empirical Senate respondent model.
+
 ## Automatic updates and failure behavior
 
 The existing hourly source collector remains unchanged. The analytical producer
@@ -42,6 +64,8 @@ It reconditions compatible changed counts without private respondent fitting.
 It preserves last-good scenarios and their own native model clocks on a failed or
 incompatible update. Saved last-good native evidence is revalidated and the model
 regenerated before reuse; a rechecksummed but altered checkpoint is rejected.
+Version-01 Alabama last-good checkpoints can migrate only after exact native,
+prior and numerical revalidation; New Mexico cannot claim a version-01 approval.
 An identical input, processing fingerprint and dataset version exits before
 compilation, publication or website building.
 
@@ -55,7 +79,8 @@ map. Reader source preparation is not a Pages deployment.
 
 Each complete analytical archive contains the full original predecessor,
 reviewed native evidence, all 26 decisions, both endpoints, all nine scenarios,
-all 144 synthetic transition cells, code, tests and checksums. The current
+all 288 synthetic transition cells across the two supported states, code, tests
+and checksums. Alabama's original numerical model is preserved. The current
 extension's CSV and JSON exports are under `queries/model-queries/senate/`;
 read the packaged inventory rather than assuming a fixed output count.
 

@@ -557,8 +557,9 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         members["inputs/senate-legacy-review.json"] = encoded(compiled["senate_legacy_review"])
         for name in SENATE_PATHS:
             members["inputs/reviewed-senate-sources/" + name] = (ROOT / name).read_bytes()
-        fixture = "tests/fixtures/senate-legacy-alabama.json"
-        members["code/" + fixture] = (ROOT / fixture).read_bytes()
+        for fixture in ("tests/fixtures/senate-legacy-alabama.json",
+                        "tests/fixtures/senate-legacy-new-mexico.json"):
+            members["code/" + fixture] = (ROOT / fixture).read_bytes()
     for name in CODE_PATHS:
         members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_automatic_runtime.py", "test_results_granular.py",
