@@ -221,6 +221,27 @@ The congressional reader patch explicitly accepts this reviewed version and
 rejects unknown future versions; activating frontend source still requires a
 separately authorized deployment. This work does not deploy Pages.
 
+The actual hosted identity successor **44125854174** publishes Delaware's
+new numerical results, not just its bridge: automatic conditioning increases
+from three to four states and from 27 to 36 variant frames. The existing
+production House reader matches all nine Delaware variants at desktop and
+mobile widths without a Pages deployment. A controlled seven-vote decrease
+also propagates through normalization, all nine models, complete exports and
+the semantic readers; it is a controlled revision, not fresh acquisition.
+Actual hosted rerun **44128294150** reports unchanged and preserves both the
+data head and complete manifest byte-for-byte.
+
+The actual 286,877,646-byte immutable runtime ZIP independently reproduces all
+152 outputs offline under CPython 3.12. All 64 public model/query bodies and
+17 congressional download declarations are verified. Collection freshness is
+428 refreshed / seven retained House races and 35 refreshed Senate races;
+comparison qualification remains 258 districts, 32 House states and 28 Senate
+contests. The undeployed congressional reader still badges 25 Senate
+comparisons; production acceptance of the existing House model reader does
+not activate that separate patch. Full before/after points, source queries,
+download pins, exact commands and remaining holds are in the
+[hosted acceptance record](../data/participation-access/20261117-house-identity-automatic-01/acceptance.json).
+
 The predecessor `data/results-intake/analytical-handoff/review.json.gz`, version `20261116-01`,
 reviews the complete provider inventory against all 1,401 retained legacy
 candidate records and all 50 state decisions. Initial matching requires
