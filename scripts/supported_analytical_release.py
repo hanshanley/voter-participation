@@ -341,6 +341,23 @@ def other_offices(review):
     return rows
 
 
+def selected_local_observation_ids(snapshot):
+    from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
+
+    scope = snapshot.get("collection_scope") or {}
+    if scope.get("mode") != "selected_registered_source_refresh":
+        return None
+    selected = set()
+    for identity in scope["source_ids"]:
+        if identity == UF_IDENTITY:
+            require(snapshot.get("uf_turnout") is not None, "Selected statewide turnout source missing")
+            continue
+        entry = snapshot.get("granular_sources", {}).get(identity)
+        require(entry is not None, "Selected local source missing: " + identity)
+        selected.update(update["id"] for update in entry["data"]["updates"])
+    return selected
+
+
 def build(snapshot, count_files, seed, estimates, changes):
     review = seed["supported_release_review"]
     require(review.get("contract") == REVIEW_CONTRACT, "unreviewed eligibility document")
@@ -359,11 +376,7 @@ def build(snapshot, count_files, seed, estimates, changes):
     recorded = recorded_states(estimates, model_rows)
     districts = recorded_districts(review, estimates)
     modeled, groups = explanations(estimates)
-    scope = snapshot.get("collection_scope") or {}
-    selected = None
-    if scope.get("mode") == "selected_registered_source_refresh":
-        selected = {update["id"] for identity in scope["source_ids"]
-                    for update in snapshot["granular_sources"][identity]["data"]["updates"]}
+    selected = selected_local_observation_ids(snapshot)
     effects = change_effects(changes, admin, selected)
     raw_files = {
         "participation-administrative.csv": csv_bytes(admin),

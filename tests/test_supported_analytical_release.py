@@ -108,6 +108,34 @@ def test_count_handoff_does_not_turn_county_fraction_into_a_state_model_update()
     assert not retained["source_capture_refreshed"]
 
 
+def test_statewide_only_refresh_does_not_refresh_reused_local_observations():
+    snapshot = {
+        "collection_scope": {"mode": "selected_registered_source_refresh",
+                             "source_ids": ["UF-national-turnout"]},
+        "uf_turnout": {"status": "reported"},
+        "granular_sources": {"local": {"data": {"updates": [{"id": "county"}]}}},
+    }
+    selected = release.selected_local_observation_ids(snapshot)
+    assert selected == set()
+    effect, = release.change_effects(
+        [{"observation_id": "county", "previous": 0, "current": 0}],
+        [{"observation_id": "county", "state_code": "ME", "geography_level": "county",
+          "compatible_source_fraction_pct": None, "denominator_basis": None,
+          "source_count_clock": None}], selected)
+    assert not effect["source_capture_refreshed"]
+    snapshot["collection_scope"]["source_ids"].append("local")
+    assert release.selected_local_observation_ids(snapshot) == {"county"}
+    snapshot["collection_scope"]["source_ids"] = ["unknown"]
+    with pytest.raises(ValueError, match="Selected local source missing"):
+        release.selected_local_observation_ids(snapshot)
+    snapshot["collection_scope"]["source_ids"] = ["UF-national-turnout"]
+    del snapshot["uf_turnout"]
+    with pytest.raises(ValueError, match="Selected statewide turnout source missing"):
+        release.selected_local_observation_ids(snapshot)
+    snapshot.pop("collection_scope")
+    assert release.selected_local_observation_ids(snapshot) is None
+
+
 def test_held_group_and_frozen_source_tampering_do_not_become_numerical_outputs():
     held = {"contributions_pp": None, "total_contribution_pp": None}
     assert all(value is None for value in release.mechanisms(held, modeled_row()).values())
