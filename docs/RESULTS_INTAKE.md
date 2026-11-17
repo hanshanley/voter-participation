@@ -34,6 +34,30 @@ plus elapsed monotonic time, not the stale start clock after earlier source
 families have completed. Retrieval/validation time never replaces a native
 count-update timestamp. Unchanged accepted observations remain exact no-ops.
 
+## Current state-by-guard downloads
+
+Each analytical runtime generates a versioned state-by-guard matrix from its
+actual decisions, rather than reusing a hand-maintained coverage snapshot.
+`congressional/results.json.gz` contains it under
+`analytical_handoff.state_guard_matrix`; the complete
+`congressional/queries.json.gz` retains the same matrix alongside every exact
+state/race decision. The existing `congress-analytical-decisions.csv` adds
+`overlapping_guard_families` and `missing_evidence` columns.
+
+Classification examines the reason after a race identifier: `not_ranked` in
+that identifier is not evidence of an unresolved election-stage restriction.
+Actual ranked-choice/stage restrictions remain. Identity, Other/write-in,
+party coverage, source universe, geography, denominator, freshness and original
+scientific restrictions are separate, overlapping diagnostics. Unknown future
+reasons remain exact and explicitly unclassified, not silently approved.
+
+This diagnostic never changes qualification, source counts, model points or
+original hold strings. Outage, recovery and newly compatible observations
+change its current classification through the existing hourly runtime. Frozen
+models retain their last-good counts and source clocks; evidence requirements
+describe the observed hold, not a claim that the missing source does not exist.
+All existing full downloads and historical matrix versions remain available.
+
 ## Reviewed official category reconciliation
 
 `congressional_category_reconciliation.py` validates a complete official

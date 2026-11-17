@@ -359,6 +359,80 @@ def snapshot_label(value):
     return re.sub(r"\b[0-9a-f]{64}\b", lambda match: match.group()[:12] + " (short ID)", str(value))
 
 
+def hold_reason(hold):
+    require(isinstance(hold, str) and bool(hold), "Nonliteral analytical hold")
+    if hold.startswith("npr:"):
+        fields = hold.split(":", 7)
+        require(len(fields) == 8 and fields[1] in ("house", "senate") and bool(fields[7]),
+                "Malformed race-scoped analytical hold")
+        return fields[7].casefold()
+    return hold.casefold()
+
+
+def state_guard_matrix(handoff):
+    requirements = {
+        "candidate_identity": "Explicit primary-source identity declarations or a complete compatible candidate crosswalk.",
+        "other_write_in": "Complete named-minor/write-in inventory and explicit source-category equivalence; retain omitted mass.",
+        "source_universe": "Compatible complete source inventory without replacing protected official frames.",
+        "party_coverage": "Comparable candidate-party coverage; unchanged district numbers or equal major-party totals are insufficient.",
+        "election_stage": "Compatible office, seat, election-stage and round evidence.",
+        "denominator": "Compatible source-defined denominator evidence.",
+        "geography": "Comparable electorate and boundary evidence for the actual election-year pair.",
+        "source_freshness": "A successful compatible source observation; retained values keep their original clocks.",
+        "scientific_eligibility": "Resolve retained scientific comparison restrictions; fresh returns alone are insufficient.",
+        "unclassified": "Inspect the exact unresolved guard; no reviewed automatic remedy is established.",
+    }
+    terms = {
+        "candidate_identity": ("unmatched", "ambiguous_named", "candidate_identity", "identity_changed"),
+        "other_write_in": ("aggregate_other", "write-in", "write_in", "aggregate_other_role"),
+        "source_universe": ("protected_official", "inventory", "source_frame", "source_url",
+                            "counts missing", "missing_count", "unknown_party",
+                            "normalized_result_differs", "native_candidate_source"),
+        "party_coverage": ("party", "nominee", "nonpartisan", "unopposed", "no-ballot"),
+        "election_stage": ("stage", "ranked", "runoff", "round"),
+        "denominator": ("denominator",),
+        "geography": ("boundary", "geography", "electorate"),
+        "source_freshness": ("fresh", "source_unavailable", "source_missing", "not_advertised",
+                             "revision", "rollback", "clock", "version"),
+    }
+    rows = []
+    for state, decision in sorted(handoff.get("states", {}).items()):
+        holds = copy.deepcopy(decision["holds"])
+        reasons = [hold_reason(hold) for hold in holds]
+        families = {family: any(any(term in reason for term in words) for reason in reasons)
+                    for family, words in terms.items()}
+        families["scientific_eligibility"] = not decision["frozen_scientific_comparison_qualified"]
+        families["unclassified"] = any(
+            not reason.startswith("frozen_scientific_hold:")
+            and not any(term in reason for words in terms.values() for term in words)
+            for reason in reasons)
+        rows.append({
+            "state_code": state, "decision": decision["decision"],
+            "automatic_update_eligible": decision["automatic_update_eligible"],
+            "frozen_scientific_comparison_qualified": decision["frozen_scientific_comparison_qualified"],
+            "overlapping_guard_families": families, "exact_holds": holds,
+            "missing_evidence": [text for family, text in requirements.items() if families[family]],
+            "last_good_model_counts": copy.deepcopy(decision["last_good_model_counts"]),
+            "current_compatible_counts": copy.deepcopy(decision["counts"]),
+            "source_update_labels": copy.deepcopy(decision["source_update_labels"]),
+            "source_urls": copy.deepcopy(decision["source_urls"]),
+        })
+    return {
+        "contract": "participation.house_state_guard_matrix.v2",
+        "review_version": handoff.get("review_version"),
+        "states": rows,
+        "automatic_states": [row["state_code"] for row in rows if row["automatic_update_eligible"]],
+        "previously_qualified_frozen_states": [
+            row["state_code"] for row in rows if row["frozen_scientific_comparison_qualified"]
+            and not row["automatic_update_eligible"]],
+        "overlapping_guard_counts": {
+            family: sum(row["overlapping_guard_families"][family] for row in rows)
+            for family in requirements},
+        "classification_changes_eligibility": False,
+        "snapshot_classification_not_claim_of_source_absence": True,
+    }
+
+
 def current_comparability(audit, comparison, decision):
     audit = copy.deepcopy(audit)
     audit.update(previous_counts=copy.deepcopy(comparison["previous"]),

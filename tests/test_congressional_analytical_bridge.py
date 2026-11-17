@@ -1,4 +1,8 @@
 import copy
+import csv
+import gzip
+import io
+import json
 
 import pytest
 
@@ -53,6 +57,84 @@ def revise(snapshot, key, votes=101, **changes):
     native.update(changes)
     entry["data"] = congress.normalize(native, "house")
     return native
+
+
+def test_guard_matrix_classifies_reasons_not_race_identity_and_preserves_decisions():
+    snapshot, seed, key = fixture()
+    handoff = bridge.evaluate(snapshot, seed)
+    held = handoff["states"]["AR"]
+    held.update(
+        holds=[key + ":aggregate_other_not_reconciled_to_retained_minor_candidate_mass",
+               key + ":unmatched_new_named_candidate"],
+        automatic_update_eligible=False, decision="frozen_dated_result", counts=None)
+    before = copy.deepcopy(handoff)
+    matrix = bridge.state_guard_matrix(handoff)
+    row = matrix["states"][0]
+    assert row["overlapping_guard_families"]["other_write_in"]
+    assert row["overlapping_guard_families"]["candidate_identity"]
+    assert not row["overlapping_guard_families"]["election_stage"]
+    assert not row["overlapping_guard_families"]["unclassified"]
+    assert row["exact_holds"] == held["holds"]
+    assert matrix["automatic_states"] == []
+    assert matrix["previously_qualified_frozen_states"] == ["AR"]
+    assert handoff == before
+    row["last_good_model_counts"]["D"] += 1
+    assert handoff == before
+
+
+def test_guard_matrix_updates_after_outage_recovery_and_keeps_real_stage_holds():
+    snapshot, seed, key = fixture()
+    snapshot["congress"]["races"][key]["status"] = "retained_after_failure"
+    held = bridge.state_guard_matrix(bridge.evaluate(snapshot, seed))
+    assert held["automatic_states"] == []
+    assert not held["states"][0]["overlapping_guard_families"]["election_stage"]
+    snapshot["congress"]["races"][key]["status"] = "reported"
+    recovered = bridge.state_guard_matrix(bridge.evaluate(snapshot, seed))
+    assert recovered["automatic_states"] == ["AR"]
+    assert recovered["states"][0]["missing_evidence"] == []
+    assert recovered == bridge.state_guard_matrix(bridge.evaluate(snapshot, seed))
+    decision = bridge.evaluate(snapshot, seed)
+    decision["states"]["AR"]["holds"] = [key + ":ranked_choice_round_changed",
+                                         "Major-party candidate coverage changed: AR-AL",
+                                         "unrecognized_future_guard"]
+    row = bridge.state_guard_matrix(decision)["states"][0]
+    assert row["overlapping_guard_families"]["election_stage"]
+    assert row["overlapping_guard_families"]["party_coverage"]
+    assert row["overlapping_guard_families"]["unclassified"]
+    assert row["exact_holds"][-1] == "unrecognized_future_guard"
+
+
+@pytest.mark.parametrize("hold", [None, {}, "", "npr:house:PA:5"])
+def test_guard_matrix_rejects_malformed_reason(hold):
+    with pytest.raises(ValueError):
+        bridge.hold_reason(hold)
+
+
+def test_runtime_exports_current_guard_matrix_without_mutating_analytical_decisions():
+    snapshot, seed, key = fixture()
+    handoff = bridge.evaluate(snapshot, seed)
+    handoff["states"]["AR"].update(
+        automatic_update_eligible=False, decision="frozen_dated_result", counts=None,
+        holds=[key + ":aggregate_other_not_reconciled_to_retained_minor_candidate_mass"])
+    estimates = {
+        "decisions": {"states": [{"state_code": "AR", "decision": "held_retain_last_good"}]},
+        "congressional_analytical_handoff": handoff,
+    }
+    before = copy.deepcopy(estimates)
+    files, descriptor = congress.runtime(
+        snapshot["congress"], review(), seed["congressional_analytical_review"], estimates)
+    matrix = bridge.state_guard_matrix(handoff)
+    payload = json.loads(gzip.decompress(files[descriptor["path"]]))
+    query = json.loads(gzip.decompress(files["congressional/queries.json.gz"]))
+    exported = next(csv.DictReader(io.StringIO(
+        files["congressional/congress-analytical-decisions.csv"].decode())))
+    assert payload["analytical_handoff"]["state_guard_matrix"] == matrix
+    assert query["state_guard_matrix"] == matrix
+    assert json.loads(exported["overlapping_guard_families"]) == matrix[
+        "states"][0]["overlapping_guard_families"]
+    assert json.loads(exported["missing_evidence"]) == matrix["states"][0]["missing_evidence"]
+    assert query["current_analytical_decisions"]["states"] == handoff["states"]
+    assert estimates == before
 
 
 @pytest.mark.parametrize("votes", [101, 83, 0])

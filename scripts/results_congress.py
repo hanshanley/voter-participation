@@ -596,14 +596,24 @@ def runtime(congress, review, analytical_review=None, estimates=None):
                                                   and row["qualified_comparison"] for row in compared),
         }
     if analytical_review is not None:
+        from scripts.congressional_analytical_bridge import state_guard_matrix
+
         decisions = (estimates or {}).get("decisions", {}).get("states", [])
         handoff = (estimates or {}).get("congressional_analytical_handoff", {})
+        guard_matrix = state_guard_matrix(handoff)
+        guard_rows = {row["state_code"]: row for row in guard_matrix["states"]}
+        exported_decisions = copy.deepcopy(decisions)
+        for row in exported_decisions:
+            guard = guard_rows.get(row["state_code"])
+            if guard is not None:
+                row["overlapping_guard_families"] = guard["overlapping_guard_families"]
+                row["missing_evidence"] = guard["missing_evidence"]
         next_seed = (estimates or {}).get("artifacts", {}).get("rolling/next-seed.json.gz", {}).get("content", {})
         current_models = {key: scenario["accepted_result"] for key, scenario in next_seed.get("scenarios", {}).items()}
         files.update({
             "congressional/analytical-review.json.gz": compressed(analytical_review),
             "congressional/congress-candidate-crosswalk.csv": csv_bytes(analytical_review["candidate_crosswalk"]),
-            "congressional/congress-analytical-decisions.csv": csv_bytes(decisions),
+            "congressional/congress-analytical-decisions.csv": csv_bytes(exported_decisions),
             "congressional/congress-race-analytical-decisions.csv": csv_bytes(
                 list(handoff.get("races", {}).values())),
             "congressional/congress-scientific-eligibility.csv": csv_bytes([
@@ -618,12 +628,14 @@ def runtime(congress, review, analytical_review=None, estimates=None):
             reviewed_analytical_policy=analytical_review,
             current_analytical_decisions={
                 "states": handoff.get("states", {}), "races": handoff.get("races", {})},
+            state_guard_matrix=guard_matrix,
             reviewed_race_comparisons=compared,
             conditional_results=current_models,
         )
         files["congressional/queries.json.gz"] = compressed(query)
         payload["analytical_handoff"] = {
             "review_version": analytical_review["version"], "states": decisions,
+            "state_guard_matrix": guard_matrix,
             "Senate_models": analytical_review["Senate_models"],
             "legacy_candidates_preserved": len(analytical_review["legacy_candidates_preserved"]),
         }
