@@ -346,3 +346,74 @@ def test_complete_primary_evidence_and_full_fec_predecessor_chain_are_packaged(t
     path.write_bytes(bridge.compressed({**fec, "sources": ["changed"]}))
     with pytest.raises(ValueError, match="Changed complete"):
         identity.load_declaration_successor(tmp_path, result)
+
+
+def official_declaration_fixture():
+    from scripts.congressional_category_reconciliation import VERSION as CATEGORY_VERSION
+
+    fec, previous, value, key = declaration_fixture()
+    previous["version"] = CATEGORY_VERSION
+    source = value["sources"][0]
+    source.update(kind="official_election_report", url="https://elections.example.gov/precinct.pdf")
+    source["facts"].update(role="United States Representative", state="Arkansas",
+                           election_date="11/03/2026", election_stage="State General")
+    value["declarations"][0]["relationship"] = "same_native_candidate_row"
+    return fec, previous, value, key
+
+
+def test_official_literal_alias_updates_identity_without_importing_local_counts():
+    fec, previous, value, key = official_declaration_fixture()
+    saved = copy.deepcopy(previous)
+    result = identity.official_declaration_successor(previous, value, fec, {})
+    assert previous == saved
+    assert result["states"]["AR"]["automatic_update_reviewed"]
+    assert result["races"][key]["accepted_native"] == previous["races"][key]["accepted_native"]
+    assert result["legacy_candidates_preserved"] == previous["legacy_candidates_preserved"]
+    assert result["frozen_qualification"] == previous["frozen_qualification"]
+    assert result["candidate_identity_successor"] == previous["candidate_identity_successor"]
+    assert len(result["official_name_declarations"]["resolved_identities"]) == 1
+    assert set(identity.OFFICIAL_DECLARATION_PATHS) <= set(bridge.data_paths(result))
+    with pytest.raises(ValueError, match="primary source receipt"):
+        identity.DeclaredEvidence(fec, value)
+
+
+@pytest.mark.parametrize("field,value", [
+    ("role", "United States Senator"), ("state", "South Dakota"),
+    ("election_date", "11/05/2024"), ("election_stage", "State Primary"),
+])
+def test_official_report_wrong_office_state_year_or_stage_refuses(field, value):
+    fec, _, source, _ = official_declaration_fixture()
+    source["sources"][0]["facts"][field] = value
+    with pytest.raises(ValueError, match="exact at-large"):
+        identity.OfficialDeclaredEvidence(fec, source)
+
+
+def test_unqualified_authority_or_non_at_large_office_cannot_supply_official_alias():
+    fec, _, value, _ = official_declaration_fixture()
+    value["sources"][0]["url"] = "https://elections.example.org/precinct.pdf"
+    with pytest.raises(ValueError, match="exact at-large"):
+        identity.OfficialDeclaredEvidence(fec, value)
+    value["sources"][0]["url"] = "https://elections.example.gov/precinct.pdf"
+    fec["candidates"][0]["district"] = value["declarations"][0]["district"] = "01"
+    with pytest.raises(ValueError, match="exact at-large"):
+        identity.OfficialDeclaredEvidence(fec, value)
+
+
+def test_official_alias_keeps_independent_other_source_and_scientific_holds():
+    fec, previous, value, key = official_declaration_fixture()
+    reason = "aggregate_other_not_reconciled_to_retained_minor_candidate_mass"
+    previous["races"][key]["initial_holds"].append(reason)
+    previous["states"]["AR"]["holds"].extend([key + ":" + reason, "frozen_scientific_hold"])
+    previous["states"]["AR"]["frozen_scientific_comparison_qualified"] = False
+    result = identity.official_declaration_successor(previous, value, fec, {})
+    assert result["states"]["AR"]["holds"] == ["frozen_scientific_hold", key + ":" + reason]
+    assert not result["states"]["AR"]["automatic_update_reviewed"]
+
+
+def test_official_declaration_needs_existing_fec_chain_and_a_resolved_guard():
+    fec, previous, value, _ = official_declaration_fixture()
+    with pytest.raises(ValueError, match="same complete FEC"):
+        identity.official_declaration_successor(previous, value, {**fec, "sources": ["changed"]}, {})
+    value["sources"][0]["facts"]["name"] = 'Joseph "Joey" Doe'
+    with pytest.raises(ValueError, match="resolve no existing"):
+        identity.official_declaration_successor(previous, value, fec, {})

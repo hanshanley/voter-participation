@@ -1,5 +1,41 @@
 # Remaining work: participation and election-transition estimates
 
+## November 17 official identity successor and remaining analytical bottlenecks
+
+Minnesota hosted runtime 44152594587 is accepted: six automatically updating
+House states, 54 variant frames, 27 formerly qualified frozen states and all
+152 literal offline outputs. Its actual output rolling seed, not its bootstrap
+or input seed, is the next analytical predecessor.
+
+South Dakota's remaining Nikki/Nicole identity hold is now supported by one
+new official general-election report and the complete existing FEC bridge.
+The versioned official at-large source family is implemented and all nine
+numerical variants change without respondent refitting. Its complete private
+152-output replay and reader tests pass. The successor supports seven states,
+63 frames and 26 formerly qualified frozen states; publication and actual hosted
+acceptance remain delivery steps, not assumed live functionality.
+
+[All 50 state decisions and exact missing evidence](data/participation-access/20261117-sd-official-name-01/state-guard-matrix.json)
+retain overlapping candidate identity, named-minor/write-in/fusion inventory,
+source-universe, stage and scientific guards. A local identity report does not
+supply statewide results, a complete ballot inventory or turnout observations.
+Future compatible counts can update automatically; new identities or incompatible
+frames preserve last-good models and visible hold reasons.
+
+The next independent substantive products remain complete official source-frame
+reconciliation for the other frozen states, actual administrative participation
+and historical comparisons, supported Senate-specific respondent bridges and
+changed/split-district historical reconstruction. Candidate votes are not ballots;
+registration stocks are not participation numerators. No new participation
+observation or new boundary qualification is claimed in this identity increment.
+
+All 435 House and 35 Senate returns refresh. Qualified comparisons remain
+259 districts, 32 House states and 28 Senate contests. The prepared reader
+accepts all 28; the production reader still displays 25. The Senate reader and
+Maine county-count fixes need separately authorized deployment. No Pages
+deployment, assistant continuation, redesign or new respondent fit is authorized.
+The broader project remains open; completed earlier campaigns stay closed.
+
 ## November 17 substantive analytical delivery
 
 Minnesota's complete retained official candidate inventory now resolves its

@@ -1,5 +1,42 @@
 # Voter-participation source ledger
 
+## November 17 official at-large identity bridge: South Dakota successor tested
+
+One newly acquired official Brookings County general-election report explicitly
+connects Nicole and Nikki Gronli in the same United States Representative
+candidate row. Two distinct native PDF readers agree on the name and election
+frame. The complete existing FEC evidence supplies the unique stable identity
+H6SD01141. FEC registration alone does not establish ballot presence, complete
+candidate coverage or a general-election stage.
+
+The reusable, separately versioned official-report declaration bridge removes
+only that identity hold. Its current approval requires an exact at-large House,
+state, November 3, 2026 general-election frame; later cycles or changed candidate
+inventories are not automatically approved. Current statewide endpoint counts
+remain the national feed's D 109,997 / R 195,589 / O 0, not this local report's
+counts. All legacy candidates, unmatched Other mass and scientific restrictions
+remain intact. Subsequent compatible revisions use the existing hourly pipeline
+without respondent refitting or per-refresh assistant approval.
+
+All nine South Dakota variants change; the complete private archive reproduces
+all 152 outputs offline. The prepared successor supports seven automatic states
+(AR/DE/MN/NM/SD/TN/VT), 63 variant frames and 26 formerly qualified frozen states.
+Actual accepted Minnesota hosted runtime 44152594587 already supports six states
+and 54 frames; South Dakota hosted delivery is not yet accepted. Returns and
+comparison eligibility remain 435 House / 35 Senate refreshed and
+259 districts / 32 House states / 28 Senate contests.
+
+This adds one primary identity source and zero participation observations.
+The public evidence contains the selected identity facts, original byte pins
+and independent extraction receipts, not the publisher's full PDF or prose.
+Offline reproduction validates those factual declarations and the complete
+predecessor/FEC/category chain; it does not re-extract an excluded PDF.
+Production's Senate reader remains at 25 comparisons. Its tested 28-comparison
+patch and Maine county-count patch are still undeployed.
+
+[Complete successor proof and all-state guard matrix](data/participation-access/20261117-sd-official-name-01/prepared-acceptance.json).
+Earlier dated entries below are historical and do not supersede this status.
+
 ## November 17 Minnesota official category bridge: tested, hosted delivery pending
 
 The retained official statewide House file supplies the complete eight-district,

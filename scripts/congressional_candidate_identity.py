@@ -21,6 +21,11 @@ DECLARATION_CONTRACT = "participation.congressional_primary_name_declarations.v1
 DECLARATION_PATHS = tuple("data/results-intake/analytical-handoff/name-declarations/" + name
                          for name in ("predecessor-review.json.gz", "evidence.json.gz",
                                       "independent-native-verification.json"))
+OFFICIAL_DECLARATION_VERSION = "20261117-declarations-02"
+OFFICIAL_DECLARATION_PATHS = tuple(
+    "data/results-intake/analytical-handoff/official-name-declarations/" + name
+    for name in ("predecessor-review.json.gz", "evidence.json.gz",
+                 "independent-native-verification.json"))
 FIELDS = {
     "candidates": {
         "candidate_id", "name", "literal_party", "election_year", "office_state",
@@ -218,6 +223,14 @@ def full_name_key(name):
 
 
 class DeclaredEvidence(Evidence):
+    source_kinds = ("candidate_campaign", "nominating_party")
+    relationship = "same_candidate_biography"
+
+    def check_role(self, source, declaration, candidate):
+        role = source["facts"][declaration["role_fact"]]
+        require(tokens(role) == ["us", "representative", "district", str(int(candidate["district"]))],
+                "Primary declaration does not identify its congressional district")
+
     def __init__(self, fec, value):
         super().__init__(fec)
         require(set(value) == {"contract", "sources", "declarations"}
@@ -230,7 +243,7 @@ class DeclaredEvidence(Evidence):
                     "Unexpected primary evidence fields")
             url = urlsplit(source["url"])
             require(url.scheme == "https" and url.netloc and not url.username and not url.password
-                    and source["kind"] in ("candidate_campaign", "nominating_party")
+                    and source["kind"] in self.source_kinds
                     and type(source["bytes"]) is int and source["bytes"] > 0
                     and re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
                     and isinstance(source["checked_at"], str) and source["checked_at"],
@@ -253,7 +266,7 @@ class DeclaredEvidence(Evidence):
                     and all(declaration[key] == candidate[other] for key, other in (
                         ("state_code", "office_state"), ("district", "district"),
                         ("literal_party", "literal_party"), ("election_year", "election_year")))
-                    and declaration["relationship"] == "same_candidate_biography",
+                    and declaration["relationship"] == self.relationship,
                     "Primary declaration frame differs from FEC identity")
             key = (declaration["fec_candidate_id"], declaration["source_id"])
             require(key not in seen, "Duplicate candidate declaration")
@@ -262,9 +275,7 @@ class DeclaredEvidence(Evidence):
             require(isinstance(ids, list) and ids and len(ids) == len(set(ids))
                     and all(item in source["facts"] for item in ids)
                     and declaration["role_fact"] in source["facts"], "Incomplete declared identity facts")
-            role = source["facts"][declaration["role_fact"]]
-            require(tokens(role) == ["us", "representative", "district", str(int(candidate["district"]))],
-                    "Primary declaration does not identify its congressional district")
+            self.check_role(source, declaration, candidate)
             names = [name for item in ids for name in declared_names(source["facts"][item])]
             family = tokens(candidate["name"].partition(",")[0])
             require(len({tuple(full_name_key(name)) for name in names}) >= 2
@@ -291,6 +302,68 @@ class DeclaredEvidence(Evidence):
         if matches:
             return {"method": "reviewed_explicit_primary_name_declaration", "declarations": matches}
         return None
+
+
+class OfficialDeclaredEvidence(DeclaredEvidence):
+    source_kinds = ("official_election_report",)
+    relationship = "same_native_candidate_row"
+
+    def check_role(self, source, declaration, candidate):
+        from scripts.nationwide import STATES
+
+        facts = source["facts"]
+        require((urlsplit(source["url"]).hostname or "").endswith(".gov")
+                and candidate["district"] == "00"
+                and tokens(facts[declaration["role_fact"]]) == ["united", "states", "representative"]
+                and facts.get("state") == STATES.get(candidate["office_state"])
+                and facts.get("election_date") == "11/03/2026"
+                and facts.get("election_stage") == "State General",
+                "Official name declaration lacks its exact at-large general-election frame")
+
+
+def official_declaration_successor(previous, value, fec, files):
+    from scripts.congressional_category_reconciliation import VERSION as CATEGORY_VERSION
+
+    require(previous.get("version") == CATEGORY_VERSION,
+            "Official declarations need the complete reviewed category predecessor")
+    require(pin(encoded(fec))["sha256"] == previous["candidate_identity_successor"]["evidence_sha256"],
+            "Official declarations need the same complete FEC evidence")
+    review, changed = _apply_evidence(previous, OfficialDeclaredEvidence(fec, value),
+                                     "reviewed_official_name_declaration_and_FEC_stable_identity")
+    require(bool(changed), "Official name declarations resolve no existing identity guard")
+    review["version"] = OFFICIAL_DECLARATION_VERSION
+    review["official_name_declarations"] = {
+        "contract": DECLARATION_CONTRACT, "version": OFFICIAL_DECLARATION_VERSION,
+        "files": copy.deepcopy(files), "predecessor_review_sha256": pin(encoded(previous))["sha256"],
+        "evidence_sha256": pin(encoded(value))["sha256"], "resolved_identities": changed,
+        "local_counts_not_used_as_statewide_endpoints": True,
+        "declarations_do_not_establish_complete_ballot_inventory_or_stage": True,
+        "all_legacy_candidates_and_unmatched_Other_mass_preserved": True,
+        "nickname_dictionary_or_initial_only_aliases_used": False,
+    }
+    return review
+
+
+def load_official_declaration_successor(root, review):
+    from scripts.congressional_category_reconciliation import load_successor as load_categories
+
+    require(review.get("version") == OFFICIAL_DECLARATION_VERSION,
+            "Unreviewed official name declaration successor")
+    files = (review.get("official_name_declarations") or {}).get("files") or {}
+    require(set(files) == set(OFFICIAL_DECLARATION_PATHS),
+            "Incomplete official name declaration evidence package")
+    bodies = {}
+    for name in OFFICIAL_DECLARATION_PATHS:
+        body = (Path(root) / name).read_bytes()
+        require(pin(body) == files[name], "Changed complete official name declaration evidence")
+        bodies[name] = body
+    previous = json.loads(gzip.decompress(bodies[OFFICIAL_DECLARATION_PATHS[0]]))
+    load_categories(root, previous)
+    value = json.loads(gzip.decompress(bodies[OFFICIAL_DECLARATION_PATHS[1]]))
+    fec = json.loads(gzip.decompress((Path(root) / DATA_PATHS[1]).read_bytes()))
+    require(official_declaration_successor(previous, value, fec, files) == review,
+            "Official name declaration decisions do not reproduce from complete pinned evidence")
+    return review
 
 
 def declaration_successor(previous, value, fec, files):

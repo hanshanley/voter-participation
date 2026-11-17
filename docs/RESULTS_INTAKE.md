@@ -59,6 +59,30 @@ outputs. Providers' named-count discrepancies remain inspectable; the broad
 national feed supplies the selected current endpoint and is not added to the
 official inventory's totals.
 
+## Official at-large candidate name declarations
+
+The official-report successor to `congressional_candidate_identity.py` accepts
+an explicitly declared name/quoted alias from the same native candidate row in
+an official `.gov` general-election report. Approval requires the exact source
+state, election date and stage, at-large House office, and a unique full-name
+anchor in the complete retained FEC evidence. The older campaign/party
+declaration contract is unchanged. This is not a nickname dictionary or
+initial-only match, and a local report does not supply statewide endpoints.
+
+The successor retains the complete category, primary-declaration and FEC
+predecessors and all old candidates. It removes only resolved identity guards;
+independent scientific, write-in, source-universe, stage and geography holds
+survive. Stable provider IDs and advancing native clocks then permit compatible
+hourly corrections, including decreases. A changed inventory or incompatible
+frame keeps the last compatible conditional model with its own dates.
+
+The complete archive includes every selected identity fact, original source
+byte pin, independent extraction receipt, decision, test, predecessor and
+numerical query. The original official PDF stays private; offline reproduction
+revalidates selected factual declarations rather than re-extracting excluded
+publisher material. Neither FEC registration nor name equivalence independently
+qualifies complete ballot coverage, unique participants or a turnout denominator.
+
 ## Separate statewide turnout intake
 
 California's existing native `status_GG.json` family refreshes its separately

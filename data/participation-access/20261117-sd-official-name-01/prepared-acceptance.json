@@ -1,0 +1,195 @@
+{
+  "actual_javascript_tests": 12,
+  "actual_preceding_hosted_runtime": {
+    "complete_download": {
+      "bytes": 287533661,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "542f79dba9576361bfdca14560b9c11fa24b465ff3f2a383067517a0a88a443a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-3070596e41b93aa04e52dc072c16d554c8cc303343bffdef63a85f8eef1e86af/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "data_commit": "8317c42b190812e07855928b4ce4d95565dd62fb",
+    "run": 44152594587,
+    "version": "3070596e41b93aa04e52dc072c16d554c8cc303343bffdef63a85f8eef1e86af"
+  },
+  "controlled_corrections": {
+    "actual_output_seed_bytes_and_all_baseline_outputs_equal_private_proof_inputs": true,
+    "actual_preceding_public_archive": {
+      "bytes": 287533661,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "542f79dba9576361bfdca14560b9c11fa24b465ff3f2a383067517a0a88a443a",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-3070596e41b93aa04e52dc072c16d554c8cc303343bffdef63a85f8eef1e86af/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "actual_preceding_runtime": "3070596e41b93aa04e52dc072c16d554c8cc303343bffdef63a85f8eef1e86af",
+    "baseline_consumer": {
+      "passed": true,
+      "races": 470,
+      "senate": 28,
+      "viewers": 9
+    },
+    "cases": [
+      {
+        "case": "upward",
+        "consumer": {
+          "passed": true,
+          "races": 470,
+          "senate": 28,
+          "viewers": 9
+        },
+        "delta_D": 7,
+        "modeled_counts": {
+          "D": 110004,
+          "O": 0,
+          "R": 195589
+        },
+        "numerically_changed_variants": 9,
+        "recorded_counts": {
+          "D": 110004,
+          "O": 0,
+          "R": 195589
+        },
+        "zero_count_retained_without_forcing_two_party_model": false
+      },
+      {
+        "case": "downward",
+        "consumer": {
+          "passed": true,
+          "races": 470,
+          "senate": 28,
+          "viewers": 9
+        },
+        "delta_D": -7,
+        "modeled_counts": {
+          "D": 109990,
+          "O": 0,
+          "R": 195589
+        },
+        "numerically_changed_variants": 9,
+        "recorded_counts": {
+          "D": 109990,
+          "O": 0,
+          "R": 195589
+        },
+        "zero_count_retained_without_forcing_two_party_model": false
+      },
+      {
+        "case": "explicit_zero",
+        "consumer": {
+          "passed": true,
+          "races": 470,
+          "senate": 28,
+          "viewers": 9
+        },
+        "delta_D": -109997,
+        "modeled_counts": {
+          "D": 109997,
+          "O": 0,
+          "R": 195589
+        },
+        "numerically_changed_variants": 0,
+        "recorded_counts": {
+          "D": 0,
+          "O": 0,
+          "R": 195589
+        },
+        "zero_count_retained_without_forcing_two_party_model": true
+      }
+    ],
+    "controlled_native_revisions_not_fresh_acquisition": true,
+    "outage_retains_all_nine_last_good_points_and_dated_counts": true,
+    "passed": true,
+    "preceding_output_seed": {
+      "bytes": 21671947,
+      "sha256": "27b618739f9f634dbb2354fc474503e662fc2e7e083cbceed395dff73a38cd4a"
+    },
+    "public_seed_descriptor_adds_only_url": true,
+    "source_models_refitted": false,
+    "source_requests": 0,
+    "stale_clock_candidate_inventory_and_party_changes_refused": true,
+    "unchanged_consumer": {
+      "passed": true,
+      "races": 470,
+      "senate": 28,
+      "viewers": 9
+    },
+    "unchanged_repeat_all_output_bytes_equal": true
+  },
+  "delivery_stage": "prepared_not_hosted_or_pages_deployed",
+  "focused_python_tests": 91,
+  "new_participation_observations": 0,
+  "new_primary_identity_sources": 1,
+  "numerical_proof": {
+    "SD_counts": {
+      "D": 109997,
+      "O": 0,
+      "R": 195589
+    },
+    "actual_JS_reader": {
+      "passed": true,
+      "races": 470,
+      "senate": 28,
+      "viewers": 9
+    },
+    "all_other_state_decisions_and_points_preserved": true,
+    "automatic_states_after": [
+      "AR",
+      "DE",
+      "MN",
+      "NM",
+      "SD",
+      "TN",
+      "VT"
+    ],
+    "automatic_states_before": [
+      "AR",
+      "DE",
+      "MN",
+      "NM",
+      "TN",
+      "VT"
+    ],
+    "complete_download": {
+      "bytes": 287883508,
+      "sha256": "94cf52554e217e2b8153c9fa8e23d37d49071d6e6339d1ee85594a7d796402ef"
+    },
+    "count_output_changes": [],
+    "literal_offline_replay": {
+      "complete_outputs": 152,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "native_output_changes": [],
+    "new_participation_observations": 0,
+    "new_primary_identity_sources": 1,
+    "newly_conditioned_variants": 9,
+    "numerically_changed_variants": 9,
+    "passed": true,
+    "preceding_category_packet": {
+      "bytes": 287586431,
+      "sha256": "6ffc6d62acd2332fb9d03f709209a005aec425d434c7b92f9748e7bd0fa480e8"
+    },
+    "preceding_output_seed": {
+      "bytes": 21671947,
+      "compression": "gzip",
+      "contract": "participation.automatic_estimates_seed.v1",
+      "decoded_bytes": 98933120,
+      "decoded_sha256": "27ee50cbb15664142fea8f051ff04cbb969659b94a3de4aa83ddcf8723f2c50b",
+      "media_type": "application/json",
+      "path": "rolling/next-seed.json.gz",
+      "sha256": "27b618739f9f634dbb2354fc474503e662fc2e7e083cbceed395dff73a38cd4a"
+    },
+    "private_preparation_not_hosted_acceptance": true,
+    "scientific_qualification_preserved": true,
+    "source_models_refitted": false,
+    "variant_frames_after": 63,
+    "variant_frames_before": 54
+  },
+  "passed": true,
+  "private_archive_is_not_a_published_download": true,
+  "runtime_estimator_tests": 64,
+  "state_guard_matrix": "state-guard-matrix.json"
+}
