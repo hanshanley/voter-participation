@@ -7,11 +7,13 @@ import json
 import re
 import shutil
 from collections import defaultdict
+from fractions import Fraction
 from pathlib import Path
 
 from scripts.participation_intake.contract import encoded, pin
 from scripts.results_congress import check_revision, house_state_comparisons, normalize
 from scripts.congressional_geography import DATA_PATHS as GEOGRAPHY_PATHS
+from scripts.congressional_candidate_identity import VERSION as IDENTITY_VERSION, DATA_PATHS as IDENTITY_PATHS
 
 
 CONTRACT = "participation.congressional_analytical_review.v1"
@@ -23,8 +25,9 @@ DATA_PATHS = (REVIEW_PATH,) + tuple(
 
 
 def data_paths(review):
-    return tuple(name for name in DATA_PATHS
+    result = tuple(name for name in DATA_PATHS
                  if name not in GEOGRAPHY_PATHS or review.get("house_boundaries") is not None)
+    return result + (IDENTITY_PATHS if review.get("version") == IDENTITY_VERSION else ())
 
 FRAME_FIELDS = (
     "id", "provider_race_id", "chamber", "state_code", "seat", "seat_label",
@@ -45,8 +48,11 @@ def compressed(value):
 def load_review(root):
     root = Path(root)
     review = json.loads(gzip.decompress((root / REVIEW_PATH).read_bytes()))
-    require(review.get("contract") == CONTRACT and review.get("version") == VERSION,
+    require(review.get("contract") == CONTRACT and review.get("version") in (VERSION, IDENTITY_VERSION),
             "Unreviewed congressional analytical successor")
+    if review["version"] == IDENTITY_VERSION:
+        from scripts.congressional_candidate_identity import load_successor
+        load_successor(root, review)
     for dataset in review["historical_senate"]["datasets"]:
         original = dataset["original"]
         body = (root / "data/results-intake/analytical-handoff" / original["path"]).read_bytes()
@@ -205,7 +211,7 @@ def prepare_review(congress, seed, scientific_review, baselines):
 
 def evaluate(snapshot, seed):
     review = seed["congressional_analytical_review"]
-    require(review.get("contract") == CONTRACT and review.get("version") == VERSION,
+    require(review.get("contract") == CONTRACT and review.get("version") in (VERSION, IDENTITY_VERSION),
             "Unreviewed congressional analytical successor")
     require(pin(encoded(catalog_identity(seed["accepted_candidates"])))["sha256"]
             == review["legacy_candidate_identity_sha256"], "Legacy scientific identity changed")
@@ -275,6 +281,14 @@ def evaluate(snapshot, seed):
             "holds": sorted(set(reasons)), "counts": counts if active else None,
             "changed": bool(active and counts != old),
             "last_good_model_counts": copy.deepcopy(old),
+            "current_district_counts": {
+                review["races"][key]["district"]: {
+                    party: sum(candidate["votes"] for candidate in checkpoints[key]["candidates"]
+                               if candidate["party_group"] == party) for party in "DRO"}
+                for key in expected
+            } if active else None,
+            "current_stages": sorted({checkpoints[key]["stage"] for key in expected}) if active else [],
+            "current_rounds": sorted({checkpoints[key]["round"] for key in expected}) if active else [],
             "source_update_labels": sorted({races[key]["source_updated_at"] for key in expected
                                             if races[key].get("source_updated_at")}),
             "source_urls": sorted({congress["races"][key]["source"]["url"] for key in expected
@@ -322,7 +336,32 @@ def snapshot_label(value):
     return re.sub(r"\b[0-9a-f]{64}\b", lambda match: match.group()[:12] + " (short ID)", str(value))
 
 
+def current_comparability(audit, comparison, decision):
+    audit = copy.deepcopy(audit)
+    audit.update(previous_counts=copy.deepcopy(comparison["previous"]),
+                 current_counts=copy.deepcopy(comparison["current"]),
+                 raw_reported_aggregate_margin_change_pp=comparison["reported_change_pp"])
+    districts = audit.get("common_reported_DR_district_ids")
+    if districts is not None:
+        require(len(districts) == len(set(districts))
+                and set(districts) <= set(decision["current_district_counts"]),
+                "Reviewed common-district diagnostic inventory changed")
+        current = {party: sum(decision["current_district_counts"][district][party]
+                              for district in districts) for party in "DRO"}
+        previous = audit["common_source_id_previous_counts"]
+        def margin(counts):
+            total = counts["D"] + counts["R"]
+            return float(Fraction(100 * (counts["D"] - counts["R"]), total)) if total else None
+        before, after = margin(previous), margin(current)
+        change = after - before if before is not None and after is not None else None
+        audit.update(common_source_id_current_counts=current, common_source_id_margin_change_pp=change,
+                     aggregate_minus_common_source_id_change_pp=(
+                         comparison["reported_change_pp"] - change if change is not None else None))
+    return audit
+
+
 def annotate_result(result, handoff):
+    version = handoff["review_version"]
     for row in result["rows"]:
         decision = handoff["states"][row["state_code"]]
         comparison = row["reported_comparison"]
@@ -337,9 +376,11 @@ def annotate_result(result, handoff):
                 current_snapshot=snapshot_label(snapshot),
                 current_snapshot_identity=snapshot,
                 current_native_clock=decision["source_update_labels"],
+                current_stage=decision["current_stages"][0] if len(decision["current_stages"]) == 1 else None,
+                current_round=decision["current_rounds"][0] if len(decision["current_rounds"]) == 1 else None,
                 current_native_control_scope_qualification=(
                     "Fresh NPR/AP category D/R/O endpoints under reviewed stable-ID bridge "
-                    + VERSION + ". O may be an aggregate bucket; omitted legacy candidates and "
+                    + version + ". O may be an aggregate bucket; omitted legacy candidates and "
                     "their dated individual counts remain in the full crosswalk. No individual "
                     "Other allocation, respondent refit or new scientific eligibility."),
                 current_source_scope="Reviewed same-office statewide provider D/R/O category frame; "
@@ -347,10 +388,10 @@ def annotate_result(result, handoff):
             )
             audit = copy.deepcopy(decision["reviewed_comparability"])
             if audit is not None:
-                audit.update(previous_counts=copy.deepcopy(comparison["previous"]),
-                             current_counts=copy.deepcopy(comparison["current"]),
-                             congressional_analytical_review=VERSION)
+                audit = current_comparability(audit, comparison, decision)
+                audit["congressional_analytical_review"] = version
                 row["contest_comparability"] = audit
+                comparison["contest_comparability"] = copy.deepcopy(audit)
         else:
             old = row.get("congressional_analytical_status", {})
             snapshot = old.get("last_good_snapshot", comparison.get("current_snapshot"))
@@ -362,7 +403,7 @@ def annotate_result(result, handoff):
                             for reason in decision["holds"])
                 + ". Fresh recorded results remain available separately.")
         row["congressional_analytical_status"] = {
-            "review_version": VERSION, "decision": decision["decision"],
+            "review_version": version, "decision": decision["decision"],
             "holds": decision["holds"], "conditioned_on_fresh_returns": decision["automatic_update_eligible"],
             "last_good_snapshot": snapshot,
         }

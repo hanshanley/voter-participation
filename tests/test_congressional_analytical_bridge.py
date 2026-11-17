@@ -147,6 +147,45 @@ def test_qualified_current_frame_keeps_a_versioned_comparability_audit():
     assert row["source_aggregate_comparison"] == row["reported_comparison"]
 
 
+@pytest.mark.parametrize("votes", [101, 83])
+def test_fresh_comparison_diagnostics_follow_increases_and_downward_corrections(votes):
+    snapshot, seed, key = fixture()
+    audit = {
+        "state_code": "AR", "previous_counts": {"D": 110, "R": 90, "O": 0},
+        "current_counts": {"D": 100, "R": 90, "O": 7},
+        "common_reported_DR_district_ids": ["AR-AL"],
+        "common_source_id_previous_counts": {"D": 110, "R": 90, "O": 0},
+        "common_source_id_current_counts": {"D": 100, "R": 90, "O": 7},
+        "common_source_id_margin_change_pp": -1,
+        "raw_reported_aggregate_margin_change_pp": -1,
+        "aggregate_minus_common_source_id_change_pp": 0,
+        "common_source_id_boundary_stability_qualified": False,
+    }
+    seed["congressional_analytical_review"]["states"]["AR"]["reviewed_comparability"] = audit
+    before = copy.deepcopy(audit)
+    revise(snapshot, key, votes)
+    handoff = bridge.evaluate(snapshot, seed)
+    result = copy.deepcopy(seed["scenarios"]["original/accepted_ridge_multinomial"]["accepted_result"])
+    change = 100 * (votes - 90) / (votes + 90) - 10
+    result["rows"][0]["reported_comparison"].update(
+        current={"D": votes, "R": 90, "O": 7}, reported_change_pp=change,
+        contest_comparability=copy.deepcopy(audit))
+    bridge.annotate_result(result, handoff)
+    row = result["rows"][0]
+    current = row["contest_comparability"]
+    assert current["current_counts"] == {"D": votes, "R": 90, "O": 7}
+    assert current["common_source_id_current_counts"] == current["current_counts"]
+    assert current["raw_reported_aggregate_margin_change_pp"] == pytest.approx(change)
+    assert current["common_source_id_margin_change_pp"] == pytest.approx(change)
+    assert current["aggregate_minus_common_source_id_change_pp"] == pytest.approx(0)
+    assert current["common_source_id_boundary_stability_qualified"] is False
+    assert row["reported_comparison"]["contest_comparability"] == current
+    assert row["source_aggregate_comparison"]["contest_comparability"] == current
+    assert row["reported_comparison"]["current_stage"] == "general"
+    assert row["reported_comparison"]["current_round"] == "not_ranked"
+    assert audit == before
+
+
 def test_frozen_labels_preserve_original_clocks_numerics_and_do_not_accumulate():
     snapshot, seed, key = fixture()
     snapshot["congress"]["races"][key]["status"] = "retained_after_failure"

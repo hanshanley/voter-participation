@@ -188,7 +188,40 @@ respondent refit is needed for routine return updates or numerical replay.
 
 #### Candidate and scientific source frames
 
-`data/results-intake/analytical-handoff/review.json.gz`, version `20261116-01`,
+The reviewed identity successor, `20261117-identity-01`, evaluates the complete
+470-race inventory using retained FEC candidate, committee and candidate-committee
+linkage tables. It resolves 18 previously ambiguous candidate identities using
+stable FEC IDs and literal full names or explicitly authorized committee names.
+It does not use a nickname dictionary, surname/initial matching, or FEC filings
+as evidence of ballot completeness, election stage or candidate vote counts.
+Subsequent hourly returns still must match the reviewed provider IDs, candidate
+inventory, parties, source frame and advancing native clock.
+
+Only Delaware clears every remaining compatibility requirement. Together with
+Arkansas, Tennessee and Vermont, it can automatically recondition all nine
+existing model variants: four states / 36 variant frames, versus three / 27.
+The other 29 previously qualified House-state models remain explicitly dated
+and frozen. The original 33/17 scientific mask, official Hawaii/Wyoming frames,
+all 1,401 legacy candidate records and unresolved aggregate-Other mass remain.
+Resolving an identity alone does not remove a separate coverage or model hold.
+Senate conditional-model eligibility is unchanged.
+
+Every eligible refresh also updates raw margin arithmetic and common-source-ID
+diagnostics in each result's comparison metadata. Those diagnostics retain
+their original geography qualification; matching IDs never grants boundary
+compatibility. Frozen results keep their own dated counts and diagnostics.
+
+The complete runtime includes the frozen predecessor review, full allowlisted
+FEC identity tables, source/schema receipts, identity evidence and reproducible
+successor decisions under `data/results-intake/analytical-handoff/fec-identity/`.
+Contact/address fields from the original FEC files are excluded. Existing
+candidate crosswalk, state/race decision and conditional-result downloads
+contain the successor's actual effect, not merely a bridge manifest.
+The congressional reader patch explicitly accepts this reviewed version and
+rejects unknown future versions; activating frontend source still requires a
+separately authorized deployment. This work does not deploy Pages.
+
+The predecessor `data/results-intake/analytical-handoff/review.json.gz`, version `20261116-01`,
 reviews the complete provider inventory against all 1,401 retained legacy
 candidate records and all 50 state decisions. Initial matching requires
 district/office/election/stage, literal-party classification and a reviewed
@@ -211,7 +244,7 @@ this review. Their subsequent revisions automatically recondition all nine
 existing profile/family variants, without fitting respondents. In the retained
 real-input proof Arkansas and Tennessee change numerically; Vermont is a genuine
 unchanged endpoint. The old 33-qualified/17-held science mask remains frozen.
-The other 30 formerly qualified states keep explicitly **FROZEN ANALYTICAL
+Under the predecessor review, the other 30 formerly qualified states keep explicitly **FROZEN ANALYTICAL
 RESULT** labels, original native clocks and old numerics, separately from
 fresh recorded returns. The 17 original scientific holds remain; none is
 promoted by the bridge. Arizona alone explains the old 33 versus current 32
@@ -231,7 +264,8 @@ increase **24 to 28**: FL/OH/OK/OR/GA resolve, while Louisiana acquires a genuin
 prior multiple-nominee hold. Nebraska's prior-seat gap resolves but its current
 absent-D hold remains. Remaining Senate holds are AK/AR/ID/LA/ME/NE/SD;
 RCV, absent-party and multiple-nominee reasons remain independent.
-All 435 House district comparisons remain raw/boundary-held.
+Before the separate geography successor above, all 435 House district
+comparisons remained raw/boundary-held.
 
 The deployed v1 reader can badge only regular Class II, same-stage Senate
 comparisons. With **no Pages deployment**, it displays all current counts and
