@@ -1,0 +1,54 @@
+{
+  "Alabama": {
+    "components_pp": {
+      "entry": 5.773590056843445,
+      "nonparticipation": 0.42556252008092754,
+      "other_choice": 0.10318364084883669,
+      "switching": 4.666098351002637
+    },
+    "current": {
+      "D": 759321,
+      "R": 917338
+    },
+    "current_O_unknown": true,
+    "empirical_Senate_respondent_model": false,
+    "id": "AL-senate-86907",
+    "previous": {
+      "D": 920478,
+      "O": 3891,
+      "R": 1392076
+    },
+    "ranges_pp": {
+      "entry": {
+        "maximum": 9.387272578428417,
+        "minimum": 2.629464470673571
+      },
+      "nonparticipation": {
+        "maximum": 3.3201891365377336,
+        "minimum": -2.6696895203971494
+      },
+      "other_choice": {
+        "maximum": 0.13972089575456423,
+        "minimum": 0.07358926131231192
+      },
+      "switching": {
+        "maximum": 6.885995907341611,
+        "minimum": 3.556637068870588
+      }
+    },
+    "reported_change_pp": 10.968434568775848,
+    "source_clock": "2026-11-10T21:59:55.308+00:00"
+  },
+  "limitations": [
+    "President/House synthetic associations are transported priors, not Senate respondent fitting.",
+    "Current unreported Other/write-ins are unknown; historical Other remains observed.",
+    "Ranges are assumption sensitivity, not confidence intervals or identified behavior.",
+    "No measured staying-home, first-time-voter, turnout, causal or local-allocation claim.",
+    "All archived maps and scenarios remain distinct and dated."
+  ],
+  "new_acquisition": false,
+  "new_numerical_product": "Separately versioned Alabama D/R-only partial scenario with nine assumptions.",
+  "passed": true,
+  "reclassified_retained_evidence": "Recovered and reviewed complete original science and all 26 original fitted Senate decisions.",
+  "reused_source_pointer": "https://raw.githubusercontent.com/hanshanley/voter-participation/54fbdd10b792ffd845c0a18387bd0ee27a15d414/latest.json"
+}

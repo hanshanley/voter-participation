@@ -1,0 +1,285 @@
+{
+  "consumer_component_source_commits": [
+    "9d37dc91cda34365308a32cd4f2bbe1f53cc9ca2",
+    "b86cc71919b4ca2855786026f08bb54db73d9892"
+  ],
+  "consumer_publication": {
+    "commit": "b86cc71919b4ca2855786026f08bb54db73d9892",
+    "parent": "9d37dc91cda34365308a32cd4f2bbe1f53cc9ca2"
+  },
+  "local_corrections_and_retention": {
+    "House_outputs_byte_identical": 23,
+    "controlled_source_revisions": [
+      {
+        "House_outputs_preserved": 23,
+        "after_margin_change_pp": 10.968891410874265,
+        "all_nine_scenarios_exported": true,
+        "before_margin_change_pp": 10.968434568775848,
+        "controlled_D_revision": 7,
+        "network_requests": 0
+      },
+      {
+        "House_outputs_preserved": 23,
+        "after_margin_change_pp": 10.967586137615474,
+        "all_nine_scenarios_exported": true,
+        "before_margin_change_pp": 10.968434568775848,
+        "controlled_D_revision": -13,
+        "network_requests": 0
+      }
+    ],
+    "counts_and_native_files_preserved": 88,
+    "current_other_observed": false,
+    "failure_retains_own_model_and_clock": true
+  },
+  "original_failed_runtime": {
+    "cause": "Sparse checkout omitted the required Senate fixture and packaged regression tests.",
+    "ci_log": {
+      "bytes": 147226,
+      "sha256": "1d2fdfcdba464f0374438dc0d01c144ecbdf9d9cf983ec7787a53afc1d0804d9"
+    },
+    "conclusion": "failure",
+    "run": 44190863931,
+    "url": "https://github.com/hanshanley/margin_of_error/actions/runs/44190863931"
+  },
+  "pages_deployment_requested": false,
+  "passed": true,
+  "prepared_reader_against_public_data": {
+    "cases": [
+      {
+        "actual_default_loader_gzip_and_decoded_pins": true,
+        "all_113_archived_model_and_calibration_rows_retained": true,
+        "all_four_actual_components": true,
+        "held_state": "CO",
+        "one_shared_manifest_and_one_sidecar": true,
+        "real_explorer_office_view_and_state_controls": true,
+        "screenshot": {
+          "bytes": 69415,
+          "path": "public-reader-senate-1440.png",
+          "sha256": "1126a57ac6a16c689babc4f43f513b4e31a4899257d4ad03275b39e7e9a9309d"
+        },
+        "width": 1440
+      },
+      {
+        "actual_default_loader_gzip_and_decoded_pins": true,
+        "all_113_archived_model_and_calibration_rows_retained": true,
+        "all_four_actual_components": true,
+        "held_state": "CO",
+        "one_shared_manifest_and_one_sidecar": true,
+        "real_explorer_office_view_and_state_controls": true,
+        "screenshot": {
+          "bytes": 65032,
+          "path": "public-reader-senate-390.png",
+          "sha256": "68b65449f2f220742ac470dd36e5242992437dea35bcfc60df3d8f78084d4e07"
+        },
+        "width": 390
+      }
+    ],
+    "complete_public_packet": {
+      "bytes": 303169696,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "b31b2cd5205d1e090a63fe45f6869ad8224bb3f1a330aa23ca9169a520a3b3b7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-e7a8cddafaa79c3194f75aa3065f0b316f58aca8d2d2fd2737a98a3794f37eb0/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "generated_sidecar": {
+      "bytes": 6052,
+      "sha256": "93aab2e3a510f118a346fc886c986dff795e40ed2afd31e6713dab8faee9b65f"
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "public_data": true,
+    "runtime_version": "e7a8cddafaa79c3194f75aa3065f0b316f58aca8d2d2fd2737a98a3794f37eb0",
+    "transport": "Prepared local reader with actual public manifest and sidecar, no data/script/style overrides; not a deployed production frontend."
+  },
+  "repaired_sparse_checkout_package": {
+    "actual_git_sparse_checkout": true,
+    "after": {
+      "bytes": 2608,
+      "complete_packet_byte_identical": true,
+      "packaged_test_modules": 13,
+      "packet_bytes": 303169487,
+      "packet_sha256": "98fb36e1eb4863f76569d814cdee3183a4841e45492085fad69ed3995d62a2e1",
+      "passed": true,
+      "sha256": "17d061a4494ea47b8f74c10500c5db8d9920f59a77ea3c6a315a961b785176bb"
+    },
+    "before": {
+      "bytes": 2590,
+      "sha256": "18711c456ea4ab233b97ccec77b8c0df97c2839e69ffdb0d6aa86ab74d11f955"
+    },
+    "before_missing_fixture_reproduced": true,
+    "engine": "6f9e7b1906b42086c9300544625e42cf090be190",
+    "pages_deployment_requested": false,
+    "partial_clone_objects_restored_from_exact_retained_bodies": [],
+    "passed": true,
+    "source_collection_requested": false
+  },
+  "research_publication": {
+    "commit": "6f9e7b1906b42086c9300544625e42cf090be190",
+    "parent": "bb37322c40c2e9cf56aacf04cbec51d0e6d148fe"
+  },
+  "reviewed_images": {
+    "findings": [
+      "All four component rows and assumption ranges are readable at both widths.",
+      "The source clock, unknown current Other, transported-prior limitations and non-confidence-interval label are visible.",
+      "Mobile prose, table labels and the complete analytical ZIP link wrap within the captured panel.",
+      "This verifies the optional partial-scenario panel, not a deployed map or an empirical Senate respondent model."
+    ],
+    "images": [
+      {
+        "bytes": 69415,
+        "path": "public-reader-senate-1440.png",
+        "sha256": "1126a57ac6a16c689babc4f43f513b4e31a4899257d4ad03275b39e7e9a9309d"
+      },
+      {
+        "bytes": 65032,
+        "path": "public-reader-senate-390.png",
+        "sha256": "68b65449f2f220742ac470dd36e5242992437dea35bcfc60df3d8f78084d4e07"
+      }
+    ],
+    "pages_deployment_requested": false,
+    "passed": true,
+    "review": "Both actual prepared-reader screenshots were visually inspected after the public-data browser checks passed.",
+    "scope": "Prepared local frontend using the actual public manifest and sidecar, not the live production frontend."
+  },
+  "runtime": {
+    "actual_AL_margin_change_pp": 10.968434568775848,
+    "automatic_states": [
+      "AR",
+      "DE",
+      "MN",
+      "NM",
+      "SD",
+      "TN",
+      "VT"
+    ],
+    "automatic_variant_frames": 63,
+    "complete_download": {
+      "bytes": 303169696,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "b31b2cd5205d1e090a63fe45f6869ad8224bb3f1a330aa23ca9169a520a3b3b7",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-e7a8cddafaa79c3194f75aa3065f0b316f58aca8d2d2fd2737a98a3794f37eb0/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "complete_public_output_bodies_verified": 161,
+    "congressional_summary": {
+      "house": {
+        "discovered": 435,
+        "held": 0,
+        "nonvoting_house_seats": 0,
+        "refreshed": 435,
+        "retained": 0,
+        "unknown_count_races": 0
+      },
+      "senate": {
+        "discovered": 35,
+        "held": 0,
+        "nonvoting_house_seats": 0,
+        "refreshed": 35,
+        "retained": 0,
+        "unknown_count_races": 0
+      }
+    },
+    "data_commit": "ddd606d1a7aa172027b9afe5342bc08137bf0bfe",
+    "input_results_version": "9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd",
+    "new_election_source_requests": 0,
+    "new_participation_observations": 0,
+    "offline_replay": {
+      "complete_outputs": 161,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "preserved": {
+      "House_outputs": 23,
+      "counts_native": 88
+    },
+    "previously_qualified_frozen_states": [
+      "AZ",
+      "CO",
+      "CT",
+      "GA",
+      "HI",
+      "IA",
+      "ID",
+      "IN",
+      "KS",
+      "MD",
+      "MI",
+      "MO",
+      "MT",
+      "ND",
+      "NE",
+      "NH",
+      "NY",
+      "OH",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "UT",
+      "VA",
+      "WV",
+      "WY"
+    ],
+    "research_commit": "6f9e7b1906b42086c9300544625e42cf090be190",
+    "run": 44195140086,
+    "run_url": "https://github.com/hanshanley/margin_of_error/actions/runs/44195140086",
+    "scientific_comparison_coverage": {
+      "legacy_reader_qualified_senate": 25,
+      "reviewed_qualified_house_districts": 259,
+      "reviewed_qualified_house_states": 32,
+      "reviewed_qualified_senate": 28
+    },
+    "senate_summary": {
+      "empirical_senate_models_added": 0,
+      "fresh_partial_scenarios": 1,
+      "fresh_sensitivity_fits": 9,
+      "legacy_fitted_decisions": 26,
+      "retained_partial_scenarios": 0,
+      "strict_legacy_models_refreshed": 0
+    },
+    "staged_commit": "ee39f276f0c1ae2b546516fdb419749ba1328bba",
+    "version": "e7a8cddafaa79c3194f75aa3065f0b316f58aca8d2d2fd2737a98a3794f37eb0",
+    "website_commit": "b86cc71919b4ca2855786026f08bb54db73d9892"
+  },
+  "unchanged_noop": {
+    "data_commit": "ddd606d1a7aa172027b9afe5342bc08137bf0bfe",
+    "event": "schedule",
+    "existing_scheduled_run_adopted": true,
+    "new_workflow_dispatch_requested": false,
+    "pages_deployment_requested": false,
+    "passed": true,
+    "run": 44196056693,
+    "run_url": "https://github.com/hanshanley/margin_of_error/actions/runs/44196056693",
+    "source_collection_requested": false,
+    "unchanged_data_head_and_manifest": true,
+    "version": "e7a8cddafaa79c3194f75aa3065f0b316f58aca8d2d2fd2737a98a3794f37eb0",
+    "website_builds_started": 0
+  },
+  "whole_project_complete": false,
+  "workflow_repair": {
+    "commit": "b86cc71919b4ca2855786026f08bb54db73d9892",
+    "failed_run_preserved": 44190863931,
+    "files": {
+      ".github/workflows/automatic-runtime.yml": {
+        "bytes": 2608,
+        "sha256": "17d061a4494ea47b8f74c10500c5db8d9920f59a77ea3c6a315a961b785176bb"
+      }
+    },
+    "local_heads_or_indexes_modified": false,
+    "pages_deployment_requested": false,
+    "parent": "9d37dc91cda34365308a32cd4f2bbe1f53cc9ca2",
+    "passed": true,
+    "preimages": {
+      ".github/workflows/automatic-runtime.yml": {
+        "bytes": 2590,
+        "sha256": "18711c456ea4ab233b97ccec77b8c0df97c2839e69ffdb0d6aa86ab74d11f955"
+      }
+    },
+    "repository": "hanshanley/margin_of_error"
+  }
+}

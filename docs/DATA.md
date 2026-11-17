@@ -1,5 +1,17 @@
 # Complete analysis downloads
 
+## Current separately versioned Senate partial scenario
+
+The existing hourly source-to-analysis pipeline now supports one reviewed Alabama Senate D/R-only partial scenario across nine assumptions. This is a new conditional numerical product from retained evidence, not a fresh source acquisition, empirical Senate respondent model, strict legacy-model refresh or participation observation. Current unreported Other/write-ins remain unknown; historical Other remains observed. President/House synthetic associations are disclosed transported priors, not Senate fitting. No measured staying-home, first-time-voter, causal or local allocation is claimed.
+
+Alabama's reported margin change is 10.96843457 pp. The four contributions and all nine assumption fits are in the complete downloads. Actual model source clock: `2026-11-10T21:59:55.308+00:00`. A failed or incompatible revision retains this model's own clock and last-good result. Controlled upward/downward revisions and an actual hosted unchanged no-op are accepted.
+
+Returns remain 435 refreshed House/zero retained and 35 refreshed Senate; seven automatic House states/63 variant frames; 26 formerly qualified House states remain frozen. Qualified comparisons remain 259 districts, 32 House states and 28 Senate contests. The live Senate reader still shows 25; the tested source patch supports 28. The new optional panel, Senate fix and Maine partial-county fix are published but undeployed. No Pages deployment was requested. Participation coverage does not increase in this batch: 36,561 source observations (36,372 reported), 4,857 compatible rate frames across 23 jurisdictions including eight statewide frames, and 671 supported modeled demographic cells out of 1,530 queries. These are source frames, not unique people or complete local coverage.
+
+[Complete current analytical packet](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-e7a8cddafaa79c3194f75aa3065f0b316f58aca8d2d2fd2737a98a3794f37eb0/complete-analysis.zip): 303,169,696 bytes; SHA256 `b31b2cd5205d1e090a63fe45f6869ad8224bb3f1a330aa23ca9169a520a3b3b7`. All 161 outputs reproduce offline and match actual public bodies; all 88 count/native files and 23 House outputs remain byte-identical. The packet contains the complete selected source, complete original scientific archive, actual preceding rolling seed, all 26 decisions, nine scenarios, cells, code and tests.
+
+Full [numerical evidence](../data/participation-access/20261117-senate-partial-01/observations.json), [acceptance](../data/participation-access/20261117-senate-partial-01/acceptance.json) and [coverage/downloads](../data/participation-access/20261117-senate-partial-01/coverage-and-downloads.json). The overall project remains open; earlier dated sections below are historical.
+
 ## Current complete immutable packages
 
 - [Complete source/query package](https://raw.githubusercontent.com/hanshanley/voter-participation/254c986e1e8035dbb879209946aa035d89cf53ad/snapshots/9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd/complete-results.zip): 61,229,122 bytes; SHA256 `be0122b63c73e81ada6660b4bdba89ac923cfc6a0dff3924088f465a033214df`; 22 offline outputs.

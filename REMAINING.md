@@ -1,5 +1,17 @@
 # Remaining work: participation and election-transition estimates
 
+## Current separately versioned Senate partial scenario
+
+The existing hourly source-to-analysis pipeline now supports one reviewed Alabama Senate D/R-only partial scenario across nine assumptions. This is a new conditional numerical product from retained evidence, not a fresh source acquisition, empirical Senate respondent model, strict legacy-model refresh or participation observation. Current unreported Other/write-ins remain unknown; historical Other remains observed. President/House synthetic associations are disclosed transported priors, not Senate fitting. No measured staying-home, first-time-voter, causal or local allocation is claimed.
+
+Alabama's reported margin change is 10.96843457 pp. The four contributions and all nine assumption fits are in the complete downloads. Actual model source clock: `2026-11-10T21:59:55.308+00:00`. A failed or incompatible revision retains this model's own clock and last-good result. Controlled upward/downward revisions and an actual hosted unchanged no-op are accepted.
+
+Returns remain 435 refreshed House/zero retained and 35 refreshed Senate; seven automatic House states/63 variant frames; 26 formerly qualified House states remain frozen. Qualified comparisons remain 259 districts, 32 House states and 28 Senate contests. The live Senate reader still shows 25; the tested source patch supports 28. The new optional panel, Senate fix and Maine partial-county fix are published but undeployed. No Pages deployment was requested. Participation coverage does not increase in this batch: 36,561 source observations (36,372 reported), 4,857 compatible rate frames across 23 jurisdictions including eight statewide frames, and 671 supported modeled demographic cells out of 1,530 queries. These are source frames, not unique people or complete local coverage.
+
+[Complete current analytical packet](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-e7a8cddafaa79c3194f75aa3065f0b316f58aca8d2d2fd2737a98a3794f37eb0/complete-analysis.zip): 303,169,696 bytes; SHA256 `b31b2cd5205d1e090a63fe45f6869ad8224bb3f1a330aa23ca9169a520a3b3b7`. All 161 outputs reproduce offline and match actual public bodies; all 88 count/native files and 23 House outputs remain byte-identical. The packet contains the complete selected source, complete original scientific archive, actual preceding rolling seed, all 26 decisions, nine scenarios, cells, code and tests.
+
+Full [numerical evidence](data/participation-access/20261117-senate-partial-01/observations.json), [acceptance](data/participation-access/20261117-senate-partial-01/acceptance.json) and [coverage/downloads](data/participation-access/20261117-senate-partial-01/coverage-and-downloads.json). The overall project remains open; earlier dated sections below are historical.
+
 ## November 17 accepted automatic products and complete downloads
 
 **435 House and 35 Senate returns refresh; no House race is retained.** Qualified current comparisons are **259 districts, 32 House states and 28 Senate contests**. The one district increase from the reported 258 baseline is FL-05 recovering source freshness, not a new boundary qualification.

@@ -1,5 +1,29 @@
 # Reproduce a saved analysis
 
+## Current Senate extension, collection and literal reproduction
+
+Use the published engine and consumer commits recorded in the coverage/downloads record. The existing hourly collector remains the broad intake; this increment reuses its accepted immutable source rather than running it again.
+
+```sh
+gh workflow run election-night.yml --repo hanshanley/voter-participation --ref main
+gh workflow run automatic-runtime.yml --repo hanshanley/margin_of_error \
+  --ref main -f results_pointer=https://raw.githubusercontent.com/hanshanley/voter-participation/54fbdd10b792ffd845c0a18387bd0ee27a15d414/latest.json
+```
+
+The latter is analytical data-only publication, not Pages deployment. Download each complete archive into its own fresh directory. Source extraction:
+
+```sh
+python3.12 code/reproduce.py replay --package . --output reproduced
+```
+
+Analytical extraction (all 161 complete outputs, no network or private fitting):
+
+```sh
+python3.12 code/reproduce.py --replay-package . --output reproduced
+```
+
+[Complete analytical packet](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-e7a8cddafaa79c3194f75aa3065f0b316f58aca8d2d2fd2737a98a3794f37eb0/complete-analysis.zip); [complete selected source](https://raw.githubusercontent.com/hanshanley/voter-participation/254c986e1e8035dbb879209946aa035d89cf53ad/snapshots/9aab983ff3fcf686677dba0bc02a327931830eb8a864d44eda5f9d3c38d5febd/complete-results.zip). Failed/incompatible updates preserve last-good outputs and their own source clocks. No source refit, changed precinct geography or inferred turnout is introduced.
+
 ## Current automatic collection and literal offline replay
 
 From a checkout of the published research engine identified in the coverage record:
