@@ -1356,6 +1356,166 @@ def test_legacy_webforms_native_rows_do_not_invent_parent_or_clock(monkeypatch):
     assert native.legacy_webforms_statistics(changed, rows, url)["updates"][0]["value"] == 7
 
 
+def ne_state_header_fixture(monkeypatch):
+    from scripts import results_state_statistics as statistics
+
+    url = next(iter(statistics.WEBFORMS_STATE_PROFILES))
+    url, body, rows = legacy_webforms_fixture(monkeypatch, url)
+    gauge = (
+        '<canvas id="voter-turnout{suffix}-canvas"></canvas>'
+        '<div class="dough-percent"><span class="int">50</span><span class="dec">.00%</span></div>')
+    body += "".join(gauge.format(suffix=suffix) for suffix in ("", "-mobile")).encode()
+    row = template("NE", "Nebraska", "state")
+    row["source"].update(id="ne-sos-turnout-20261113", url=url)
+    row["geography"]["id"] = "NE"
+    row["measure"] = copy.deepcopy(native.LEGACY_WEBFORMS_MEASURE)
+    row["id"] = observation_id(*granular.identity_fields(row))
+    row["count"] = {"value": 90, "literal": "90", "status": "reported"}
+    row["denominator"] = {
+        "value": 200, "qualified": True, "basis": "registered_voters_source_definition",
+        "literal": "Registered Voters"}
+    row["source_clock"]["literal"] = None
+    row["view"].update(
+        state_code="NE", geography_level="statewide", source_url=url, ballots=90,
+        denominator=200, registered=200, denominator_basis="registered_voters_source_definition",
+        reported_pct=45, published_pct=44, native_published_pct="44%", validated_pct=44,
+        source_update_label=None, source_sha256="a" * 64, maps_approved=False)
+    mirror = {
+        "state_code": "NE", "source_url": url, "ballots": 90, "denominator": 200,
+        "denominator_basis": "registered_voters_source_definition", "published_pct": 45,
+        "validated_pct": 45, "maps_approved": False,
+    }
+    monkeypatch.setitem(statistics.WEBFORMS_STATE_PROFILES, url, {
+        **statistics.WEBFORMS_STATE_PROFILES[url], "observation_id": row["id"],
+        "legacy_mirror_pin": pin(encoded(mirror))})
+    shard = {"records": [*rows, row], "views": {
+        "official": {"counties": [rows[0]["id"]], "precincts": [rows[1]["id"]]}}}
+    current = {"snapshot": {"reporting": [mirror], "early_voting": [{"ballots": 4}]}}
+    files = {"states/NE.json.gz": intake.compressed(encoded(shard)),
+             "current.json.gz": intake.compressed(encoded(current))}
+    files["index.json"] = encoded({
+        "states": {"NE": {"file": "states/NE.json.gz", **pin(files["states/NE.json.gz"])}},
+        "current_snapshot": {"file": "current.json.gz", **pin(files["current.json.gz"])}})
+    return url, body, row, mirror, files
+
+
+@pytest.mark.parametrize("count,percent", [(120, "60.00%"), (80, "40.00%"), (0, "0.00%")])
+def test_state_header_uses_direct_parent_in_default_pipeline_and_global_mirror(
+        tmp_path, monkeypatch, count, percent):
+    from scripts import automatic_runtime as runtime
+
+    url, body, parent, mirror, files = ne_state_header_fixture(monkeypatch)
+    whole, fraction = percent.split(".")
+    body = body.replace(
+        b'header-ballot-number">100', ('header-ballot-number">' + str(count)).encode())
+    body = body.replace(b'">50</span><span class="dec">.00%',
+                        ('">' + whole + '</span><span class="dec">.' + fraction).encode())
+    calls = []
+
+    def acquire(self, target):
+        self.guard(target)
+        calls.append(target)
+        assert target == url
+        return body, {"url": url, "origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    collector = intake.Collector(tmp_path, {}, {"urls": [], "hosts": [], "prefixes": []},
+                                 datetime(2026, 11, 17, tzinfo=timezone.utc))
+    plan = native.source_plan(files)["NE"]
+    assert len(plan) == 1
+    assert parent["id"] in [r["id"] for r in next(iter(plan.values()))["templates"]]
+    original = copy.deepcopy(files)
+    entries = native.collect_sources(collector, files)
+    key, entry = next(iter(entries.items()))
+    assert entry["status"] == "reported"
+    preserved_entry = copy.deepcopy(entry)
+    projected, _ = granular.project(files, entries)
+    assert entries[key] == preserved_entry
+    snapshot = {"jurisdictions": [], "source_status": []}
+    result = runtime.refresh_current(projected, snapshot, previous_files=files)
+    shard = json.loads(gzip.decompress(result["states/NE.json.gz"]))
+    changed = next(r for r in shard["records"] if r["id"] == parent["id"])
+    visible = json.loads(gzip.decompress(result["current.json.gz"]))["snapshot"]
+    assert changed["count"]["value"] == changed["view"]["ballots"] == count
+    assert changed["view"]["published_pct"] == changed["view"]["validated_pct"] == count / 2
+    assert changed["view"]["native_published_pct"] == percent
+    assert changed["view"]["native_record"]["state_reference"]["count"] == count
+    assert changed["source_clock"]["literal"] is changed["view"]["source_update_label"] is None
+    assert changed["source"]["input_sha256"] == pin(body)["sha256"]
+    assert visible["reporting"][0]["ballots"] == count
+    assert visible["reporting"][0]["validated_pct"] == count / 2
+    assert visible["reporting"][0]["maps_approved"] is False
+    assert visible["early_voting"] == [{"ballots": 4}]
+    assert shard["records"][0] == json.loads(gzip.decompress(files["states/NE.json.gz"]))["records"][0]
+    assert entry["data"]["native_unit_count_sum"] == 0
+    assert calls == [url] and files == original
+    repeated, changes = granular.project(result, entries)
+    assert not changes and repeated == result
+    assert runtime.refresh_current(repeated, snapshot, previous_files=result) == result
+    independent = copy.deepcopy(visible)
+    independent["reporting"][0]["ballots"] += 1
+    corrupt = dict(result, **{"current.json.gz": intake.compressed(encoded({"snapshot": independent}))})
+    with pytest.raises(ValueError, match="Independently changed"):
+        runtime.refresh_current(corrupt, snapshot, previous_files=result)
+    collector.state = entries
+    monkeypatch.setattr(intake.Collector, "acquire",
+                        lambda *args: (_ for _ in ()).throw(IntakeError("source_unavailable", "outage")))
+    failed = native.collect_sources(collector, result)
+    retained, changes = granular.project(result, failed)
+    assert not changes and retained == result
+    assert runtime.refresh_current(retained, snapshot, previous_files=result) == result
+
+
+def test_state_header_changed_registration_preserves_count_but_withholds_fraction(monkeypatch):
+    url, body, parent, _, files = ne_state_header_fixture(monkeypatch)
+    body = body.replace(b'header-voter-number">200', b'header-voter-number">201')
+    data = native.legacy_webforms_statistics(body, [parent], url)
+    projected, _ = granular.project(files, {"NE-header": {
+        "status": "reported", "data": data, "source": {"url": url, **pin(body)},
+        "first_observed_at": "2026-11-17T19:00:00+00:00"}})
+    row = next(r for r in json.loads(gzip.decompress(projected["states/NE.json.gz"]))["records"]
+               if r["id"] == parent["id"])
+    assert row["count"]["value"] == 100
+    assert row["denominator"]["value"] == row["view"]["registered"] == 201
+    assert row["denominator"]["qualified"] is False
+    assert row["view"]["validated_pct"] is row["view"]["reported_pct"] is None
+    assert row["view"]["native_published_pct"] == "50.00%"
+
+
+def test_state_header_scope_percentage_and_rollback_refuse_without_promoting_units(monkeypatch):
+    url, body, parent, _, files = ne_state_header_fixture(monkeypatch)
+    for replacement in (
+            (b"November 3, 2026", b"May 5, 2026"),
+            (b'header-partial-number">0', b'header-partial-number">1'),
+            (b'header-ballot-number">100', b'header-ballot-number">'),
+            (b'header-ballot-number">100', b'header-ballot-number">-1'),
+            (b'header-ballot-number">100', b'header-ballot-number">9,99'),
+            (b'header-ballot-number">100', b'header-ballot-number">9007199254740992'),
+            (b'voter-turnout-mobile-canvas', b'other-canvas'),
+            (b'voter-turnout-mobile-canvas', b'voter-turnout-canvas'),
+            (b'">50</span>', b'">51</span>', 1)):
+        changed = body.replace(*replacement)
+        with pytest.raises(ValueError):
+            native.legacy_webforms_statistics(changed, [parent], url)
+    missing = body[:body.index(b'<canvas id="voter-turnout-canvas">')]
+    with pytest.raises(ValueError, match="percentage is missing"):
+        native.legacy_webforms_statistics(missing, [parent], url)
+    contradictory_zero = body.replace(b'header-ballot-number">100', b'header-ballot-number">0')
+    contradictory_zero = contradictory_zero.replace(b"<span>0</span>", b"<span>1</span>")
+    with pytest.raises(ValueError, match="below a reported unit"):
+        native.legacy_webforms_statistics(contradictory_zero, [parent], url)
+    parent["view"]["native_record"]["prior_accepted_source_clock"] = "11/16/2026 10:00PM"
+    rolled_back = body.replace(
+        b"<h1>Unofficial", b"Results last updated:</span><span>11/15/2026 10:00PM</span><h1>Unofficial")
+    with pytest.raises(ValueError, match="regressed"):
+        native.legacy_webforms_statistics(rolled_back, [parent], url)
+    shard = json.loads(gzip.decompress(files["states/NE.json.gz"]))
+    shard["records"][-1]["measure"]["mode"] = "early"
+    files["states/NE.json.gz"] = intake.compressed(encoded(shard))
+    with pytest.raises(ValueError, match="scope or measure"):
+        native.source_plan(files)
+
+
 def test_legacy_webforms_ambiguous_and_renamed_labels_never_join_by_position(monkeypatch):
     url, body, rows = legacy_webforms_fixture(monkeypatch)
     block = body[body.index(b'<div class="odd">'):body.index(b"</form>")]

@@ -103,6 +103,25 @@ automated integration of an existing source and observation, not new geographic
 coverage or an eligible-population/group turnout estimate. It needs the updated
 runtime engine pin, not a Pages deployment.
 
+Nebraska's already scheduled `VoterTurnoutDetails.aspx?map=PREC` source also
+refreshes its directly printed statewide header. The canonical statewide
+observation is deliberately separate from the selected county/unit inventories.
+Its exact source, measure, election and observation identity are required;
+matching desktop/mobile turnout gauges and complete reporting counters are
+checked. A statewide value below any individual reported unit is inconsistent
+and refused, but unit counts are never summed to manufacture the statewide
+parent or county parents.
+
+The same captured query binds the canonical record and the existing global
+statewide mirror. A one-time exact legacy preimage permits migration; subsequent
+updates require the prior canonical binding, so independently edited mirrors
+fail closed. Printed percentages stay separate from calculated native-registration
+fractions. A changed registration stock withholds the previous rate qualification;
+missing update clocks stay unknown. Upward/downward revisions and true zeroes
+propagate automatically; source failures preserve last-good values and clocks.
+This repairs an existing observation, not new county coverage, unique-person
+validation, an eligible-population denominator or a conditional House bridge.
+
 `data/results-intake/uf-turnout.json` enables the shared collector's
 `UF-national-turnout` adapter. It discovers the highest advertised 2026 dataset
 edition on UF Election Lab's landing page and follows that edition's declared

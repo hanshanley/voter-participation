@@ -1772,40 +1772,14 @@ def _webforms_label(text):
 
 
 def legacy_webforms_statistics(body, templates, url):
+    from scripts.results_state_statistics import webforms_header, webforms_state_template
+
     profile = LEGACY_WEBFORMS_PROFILES[url]
     text = body.decode("utf-8-sig")
-    title = re.findall(r"<title>(.*?)</title>", text, re.S)
-    if len(title) != 1 or _webforms_label(title[0]) != profile["title"]:
-        raise ValueError("Native statistical publisher identity changed")
-    if (len(re.findall(r"<h2>\s*General Election November 3, 2026\s*</h2>", text)) != 1
-            or len(re.findall(r"<h1>\s*Unofficial Results\s*</h1>", text)) != 1):
-        raise ValueError("Native statistical election/status changed")
-
-    def header(css, expected_label=None):
-        matches = re.findall(r'<span class="' + css + r'">(.*?)</span>', text, re.S)
-        if len(matches) != 1:
-            raise ValueError("Missing or repeated native statistical header")
-        value = _webforms_label(matches[0])
-        if expected_label is not None:
-            if value != expected_label:
-                raise ValueError("Native statistical measure changed")
-            return value
-        if re.fullmatch(COUNT_LITERAL, value) is None:
-            raise ValueError("Missing native statistic is not a recorded zero")
-        return int(value.replace(",", ""))
-
-    header("header-ballot-text", "Ballots Cast")
-    header("header-voter-text", "Registered Voters")
-    state_count, state_registered = header("header-ballot-number"), header("header-voter-number")
-    partial, reported, total = (
-        header(name) for name in (
-            "header-partial-number", "header-total-number", "header-totalprecincts-text"))
-    if partial != 0 or reported != total:
-        raise ValueError("Native statistical reporting scope requires review")
-    updated = re.findall(r"Results last updated:</span><span>([^<]+)</span>", text)
-    if len(updated) > 1:
-        raise ValueError("Conflicting native update clocks")
-    clock = html.unescape(updated[0]) if updated else None
+    state_query = webforms_header(body, profile["title"])
+    state_count, state_registered = state_query["count"], state_query["registered"]
+    reported, total = state_query["reported_units"], state_query["total_units"]
+    clock = state_query["source_clock"]
     if clock is not None:
         clock_value(clock)
     sections = re.findall(
@@ -1871,6 +1845,35 @@ def legacy_webforms_statistics(body, templates, url):
                 or template["measure"] != LEGACY_WEBFORMS_MEASURE
                 or view.get("source_url") != url):
             raise ValueError("Reviewed native statistical source scope changed")
+        if template["geography"]["level"] == "state":
+            if not webforms_state_template(template, url):
+                raise ValueError("Unreviewed native statewide header template")
+            if state_query["native_fraction_literal"] is None:
+                raise ValueError("Native statewide turnout percentage is missing")
+            if any(row["count"] > state_count for row in facts):
+                raise ValueError("Native statewide count is below a reported unit count")
+            prior_clock = template["source_clock"]["literal"]
+            retained_clock = (view.get("native_record") or {}).get("prior_accepted_source_clock")
+            if prior_clock is not None and prior_clock != clock:
+                retained_clock = prior_clock
+            rollback_clock = prior_clock or retained_clock
+            if clock is not None and rollback_clock is not None and clock_value(clock) < clock_value(
+                    rollback_clock):
+                raise ValueError("Native statistical edition regressed")
+            denominator = template["denominator"]
+            compatible = bool(denominator and denominator["qualified"]
+                              and denominator["value"] == state_registered
+                              and state_registered and state_count <= state_registered)
+            native = {"query": state_query, "private_original_pin": pin(body),
+                      "native_statewide_header": True,
+                      "prior_accepted_source_clock": retained_clock,
+                      "current_native_count_clock_not_supplied": clock is None,
+                      "whole_publisher_html_redistributed": False}
+            updates.append(change(
+                template, state_count, native, registered=state_registered, clock=clock,
+                reported=reported, total=total, rate_compatible=compatible))
+            decisions.append({"id": template["id"], "status": "reported_native_state_header"})
+            continue
         county_id = str(view.get("county_id", ""))
         if county_id not in counties or view.get("county") != counties[county_id]:
             raise ValueError("Reviewed literal native county changed")
@@ -1917,7 +1920,8 @@ def legacy_webforms_statistics(body, templates, url):
         "geography_level": "state", "count": state_count, "registered": state_registered,
         "native_measure_literal": "Ballots Cast",
         "source_clock": clock, "reported_units": reported, "total_units": total,
-        "state_parent_not_a_projection_target": True,
+        "state_parent_not_a_projection_target": not any(
+            template["geography"]["level"] == "state" for template in templates),
     })
     return {
         "updates": updates, "complete_native_query": facts,
@@ -2156,11 +2160,27 @@ def statistical_html(body, templates, url):
 
 
 def source_plan(baseline):
+    from scripts.results_state_statistics import WEBFORMS_STATE_PROFILES, webforms_state_template
+
     index = json.loads(baseline["index.json"])
     result = {}
     for state in sorted(index["states"]):
         templates = selected_records(baseline, state)
         templates = extend_record_parent_templates(baseline, templates, state)
+        if any(profile["state_code"] == state for profile in WEBFORMS_STATE_PROFILES.values()):
+            declaration = index["states"][state]
+            shard = json.loads(gzip.decompress(baseline[declaration["file"]]))
+            for url, profile in WEBFORMS_STATE_PROFILES.items():
+                if profile["state_code"] != state:
+                    continue
+                matches = [row for row in shard["records"]
+                           if row["id"] == profile["observation_id"]]
+                if len(matches) > 1:
+                    raise ValueError("Reviewed native statewide header is ambiguous")
+                for row in matches:
+                    if webforms_state_template(row, url) and not any(
+                            item["id"] == row["id"] for item in templates):
+                        templates.append(row)
         if state == "DE":
             templates = extend_delaware_templates(baseline, templates)
         if state == "LA":

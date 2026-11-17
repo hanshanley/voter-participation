@@ -786,6 +786,9 @@ def project(baseline, granular):
                     "source counts are not certification or independently observed people. "
                     "Prior geographic qualifications retained; no new boundary join or local model.")
                 view["automatic_source_refresh"] = True
+                if native.get("native_statewide_header") is True:
+                    from scripts.results_state_statistics import apply_webforms_state_context
+                    apply_webforms_state_context(old, row, numerical_pin)
                 expected_identity = validate_projected_row(old, row)
                 if expected_identity is not None:
                     view["legacy_stable_observation_id"] = {

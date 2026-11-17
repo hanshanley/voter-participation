@@ -293,6 +293,28 @@ def refresh_current(files, snapshot, previous_files=None):
                 }
             row.clear()
             row.update(copy.deepcopy(successors[0]["view"]))
+    from scripts.results_state_statistics import WEBFORMS_STATE_PROFILES, refresh_webforms_mirror
+    for row in current.get("snapshot", {}).get("reporting", []):
+        profile = WEBFORMS_STATE_PROFILES.get(row.get("source_url"))
+        if profile is None or row.get("state_code") != profile["state_code"]:
+            continue
+        state = profile["state_code"]
+        state_declaration = index.get("states", {}).get(state)
+        if state_declaration is None:
+            continue
+        shard = json.loads(uncompressed(files[state_declaration["file"]]))
+        matches = [record for record in shard["records"]
+                   if record["id"] == profile["observation_id"]]
+        if len(matches) != 1:
+            raise ValueError("Ambiguous native statewide header mirror")
+        if matches[0].get("view", {}).get("automatic_source_refresh") is True:
+            previous = previous_files if previous_files is not None else files
+            previous_index = json.loads(previous["index.json"])
+            prior_shard = json.loads(uncompressed(previous[
+                previous_index["states"][state]["file"]]))
+            prior, = [record for record in prior_shard["records"]
+                      if record["id"] == profile["observation_id"]]
+            refresh_webforms_mirror(row, matches[0], prior)
     for row in current.get("snapshot", {}).get("reporting", []):
         state = row["state_code"]
         decision = next((item for item in snapshot["jurisdictions"]
