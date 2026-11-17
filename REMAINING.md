@@ -1,5 +1,34 @@
 # Remaining work: participation and election-transition estimates
 
+## November 17 substantive analytical delivery
+
+Minnesota's complete retained official candidate inventory now resolves its
+generic write-in category hold. All nine variants and the complete 152-output
+offline package pass, including upward/downward/zero revisions, outage retention
+and an unchanged byte-identical repeat. This is tested preparation, not yet
+accepted hosted delivery. The actual accepted hosted baseline is five automatic
+states/45 frames; the successor supports six/54, leaving 27 formerly qualified
+states frozen. No respondent refit or participation observation is claimed.
+
+[All 50 state decisions, overlapping guards and missing evidence](data/participation-access/20261117-minnesota-official-categories-01/state-guard-matrix.json)
+are generated from the actual evaluated successor, not manually inferred from
+source availability. Complete candidate/write-in/fusion inventories, explicit
+candidate identity declarations and protected official-source compatibility
+remain separate requirements. Genuine omitted mass must not be erased.
+
+Returns refresh all 435 House and 35 Senate races. Qualified comparisons remain
+259 districts, 32 House states and 28 Senate contests; FL-05's restored freshness
+explains the one-district increase. Changed/split district electorates still need
+compatible historical reconstruction. Senate conditional estimates still require
+Senate-specific respondent questions, weights, historical inputs and a validated
+seat/stage bridge, not relabeled House models.
+
+Next delivery is the hosted data-only Minnesota successor and identical-input
+no-op, followed by the remaining actionable source/category, participation and
+consumer batches. Production's 25-versus-28 Senate reader discrepancy and Maine
+county-count patch remain deployment-dependent: no Pages deployment is authorized.
+The broader project remains open; earlier completed increments below stay closed.
+
 ## November 16 Maine county navigation: delivered; results hold retained
 
 Maine's county deep link now works at website `32c9c5d`: **16 selectable,

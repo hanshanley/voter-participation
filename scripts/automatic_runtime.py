@@ -40,6 +40,7 @@ CODE_PATHS = (
     "results_state_statistics.py", "results_uf_turnout.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",
+    "congressional_category_reconciliation.py",
     "congressional_baselines.py", "congressional_geography.py",
     "supported_analytical_release.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
@@ -531,6 +532,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_current_source_reconciliation.py", "test_supported_analytical_release.py",
                  "test_congressional_analytical_bridge.py", "test_congressional_baselines.py",
                  "test_congressional_candidate_identity.py",
+                 "test_congressional_category_reconciliation.py",
                  "test_congressional_geography.py",
                  "test_results_congress.py"):
         path = ROOT / "tests" / name

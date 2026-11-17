@@ -1,0 +1,491 @@
+{
+  "actual_javascript_tests": 11,
+  "controlled_corrections": {
+    "baseline_consumer": {
+      "passed": true,
+      "races": 470,
+      "senate": 28,
+      "viewers": 9
+    },
+    "cases": [
+      {
+        "case": "upward",
+        "consumer": {
+          "passed": true,
+          "races": 470,
+          "senate": 28,
+          "viewers": 9
+        },
+        "counts": {
+          "D": 1574253,
+          "O": 27770,
+          "R": 1214756
+        },
+        "delta_O": 7,
+        "numerically_changed_variants": 9,
+        "updated_variants": 9
+      },
+      {
+        "case": "downward",
+        "consumer": {
+          "passed": true,
+          "races": 470,
+          "senate": 28,
+          "viewers": 9
+        },
+        "counts": {
+          "D": 1574253,
+          "O": 27756,
+          "R": 1214756
+        },
+        "delta_O": -7,
+        "numerically_changed_variants": 9,
+        "updated_variants": 9
+      },
+      {
+        "case": "explicit_zero",
+        "consumer": {
+          "passed": true,
+          "races": 470,
+          "senate": 28,
+          "viewers": 9
+        },
+        "counts": {
+          "D": 1574253,
+          "O": 27428,
+          "R": 1214756
+        },
+        "delta_O": -335,
+        "numerically_changed_variants": 9,
+        "updated_variants": 9
+      }
+    ],
+    "controlled_native_revisions_not_fresh_acquisition": true,
+    "outage_retains_all_nine_last_good_points_and_dated_counts": true,
+    "passed": true,
+    "source_models_refitted": false,
+    "source_requests": 0,
+    "stale_clock_candidate_inventory_and_party_changes_refused": true,
+    "unchanged_consumer": {
+      "passed": true,
+      "races": 470,
+      "senate": 28,
+      "viewers": 9
+    },
+    "unchanged_repeat_all_output_bytes_equal": true
+  },
+  "delivery_stage": "prepared_not_hosted_or_pages_deployed",
+  "district_coverage_reconciliation": {
+    "current_count": 259,
+    "decisions": [
+      {
+        "boundary_decision_unchanged": true,
+        "changed_fields": {
+          "D": {
+            "after": 145345,
+            "before": 145296
+          },
+          "D_minus_R_margin_pp": {
+            "after": -12.81592941056502,
+            "before": -12.828850665050787
+          },
+          "D_two_party_share_pct": {
+            "after": 43.59203529471749,
+            "before": 43.58557466747461
+          },
+          "O": {
+            "after": 26,
+            "before": 0
+          },
+          "R": {
+            "after": 188076,
+            "before": 188062
+          },
+          "R_two_party_share_pct": {
+            "after": 56.40796470528251,
+            "before": 56.41442533252539
+          },
+          "candidate_ids": {
+            "after": [
+              "166531",
+              "65658",
+              "other-10015"
+            ],
+            "before": [
+              "166531",
+              "65658"
+            ]
+          },
+          "comparison_holds": {
+            "after": [],
+            "before": [
+              "Current source retained, not refreshed: Candidate inventory changed or incomplete"
+            ]
+          },
+          "freshness": {
+            "after": "source_verified",
+            "before": "retained_last_good"
+          },
+          "hold_reason": {
+            "after": null,
+            "before": "Candidate inventory changed or incomplete"
+          },
+          "native_certified": {
+            "after": true,
+            "before": null
+          },
+          "native_results_type": {
+            "after": "certified",
+            "before": "live"
+          },
+          "qualified_comparison": {
+            "after": true,
+            "before": false
+          },
+          "qualified_margin_change_pp": {
+            "after": 13.337437834583442,
+            "before": null
+          },
+          "raw_recorded_D_share_change_pp": {
+            "after": 6.668718917291721,
+            "before": 6.662258290048838
+          },
+          "raw_recorded_margin_change_pp": {
+            "after": 13.337437834583442,
+            "before": 13.324516580097676
+          },
+          "reporting": {
+            "after": 130,
+            "before": 128
+          },
+          "source": {
+            "after": {
+              "bytes": 54529,
+              "sha256": "95f210683c365ceb36aed38683880737a2feece2a18621098cc236e4ce7457a4",
+              "url": "https://apps.npr.org/2026-election-results/data/house.json"
+            },
+            "before": {
+              "bytes": 54608,
+              "sha256": "d1027e808e4eed8cee8ff9dfd7e6e2c6aac639beae988cf338bed534f8ab5731",
+              "url": "https://apps.npr.org/2026-election-results/data/house.json"
+            }
+          },
+          "source_updated_at": {
+            "after": "2026-11-16T20:37:29.734+00:00",
+            "before": "2026-11-16T17:35:53.978+00:00"
+          },
+          "source_updated_epoch_ms": {
+            "after": 1794861449734,
+            "before": 1794850553978
+          },
+          "status": {
+            "after": "reported",
+            "before": "retained_after_failure"
+          }
+        },
+        "race_id": "npr:house:FL:5:regular:general:not_ranked"
+      }
+    ],
+    "new_geographic_qualification_claimed": false,
+    "newly_held": [],
+    "newly_qualified": [
+      "npr:house:FL:5:regular:general:not_ranked"
+    ],
+    "passed": true,
+    "previous_count": 258
+  },
+  "focused_python_tests": 132,
+  "new_participation_observations": 0,
+  "new_source_acquisitions": 0,
+  "numerical_proof": {
+    "MN_counts": {
+      "D": 1574253,
+      "O": 27763,
+      "R": 1214756
+    },
+    "MN_native_candidate_vectors": [
+      {
+        "first": "Jake",
+        "id": "177170",
+        "last": "Johnson",
+        "party": "Dem",
+        "race_id": "npr:house:MN:1:regular:general:not_ranked",
+        "votes": 163054
+      },
+      {
+        "first": "Brad",
+        "id": "55192",
+        "incumbent": true,
+        "last": "Finstad",
+        "party": "GOP",
+        "race_id": "npr:house:MN:1:regular:general:not_ranked",
+        "votes": 162733
+      },
+      {
+        "first": "",
+        "id": "other-24007",
+        "last": "Other",
+        "party": "Other",
+        "race_id": "npr:house:MN:1:regular:general:not_ranked",
+        "votes": 391
+      },
+      {
+        "first": "Matt",
+        "id": "126020",
+        "last": "Little",
+        "party": "Dem",
+        "race_id": "npr:house:MN:2:regular:general:not_ranked",
+        "votes": 214254
+      },
+      {
+        "first": "Eric",
+        "id": "124448",
+        "last": "Pratt",
+        "party": "GOP",
+        "race_id": "npr:house:MN:2:regular:general:not_ranked",
+        "votes": 160636
+      },
+      {
+        "first": "",
+        "id": "other-24010",
+        "last": "Other",
+        "party": "Other",
+        "race_id": "npr:house:MN:2:regular:general:not_ranked",
+        "votes": 335
+      },
+      {
+        "first": "Kelly",
+        "id": "126730",
+        "incumbent": true,
+        "last": "Morrison",
+        "party": "Dem",
+        "race_id": "npr:house:MN:3:regular:general:not_ranked",
+        "votes": 242079
+      },
+      {
+        "first": "Tyler",
+        "id": "177176",
+        "last": "Bass",
+        "party": "GOP",
+        "race_id": "npr:house:MN:3:regular:general:not_ranked",
+        "votes": 135505
+      },
+      {
+        "first": "",
+        "id": "other-24013",
+        "last": "Other",
+        "party": "Other",
+        "race_id": "npr:house:MN:3:regular:general:not_ranked",
+        "votes": 413
+      },
+      {
+        "first": "Betty",
+        "id": "989",
+        "incumbent": true,
+        "last": "McCollum",
+        "party": "Dem",
+        "race_id": "npr:house:MN:4:regular:general:not_ranked",
+        "votes": 245699
+      },
+      {
+        "first": "Paul",
+        "id": "164734",
+        "last": "Wikstrom",
+        "party": "GOP",
+        "race_id": "npr:house:MN:4:regular:general:not_ranked",
+        "votes": 90067
+      },
+      {
+        "first": "",
+        "id": "other-24016",
+        "last": "Other",
+        "party": "Other",
+        "race_id": "npr:house:MN:4:regular:general:not_ranked",
+        "votes": 477
+      },
+      {
+        "first": "Ilhan",
+        "id": "67375",
+        "incumbent": true,
+        "last": "Omar",
+        "party": "Dem",
+        "race_id": "npr:house:MN:5:regular:general:not_ranked",
+        "votes": 262702
+      },
+      {
+        "first": "John",
+        "id": "164742",
+        "last": "Nagel",
+        "party": "GOP",
+        "race_id": "npr:house:MN:5:regular:general:not_ranked",
+        "votes": 55765
+      },
+      {
+        "first": "DeVelle",
+        "id": "179589",
+        "last": "Jackson",
+        "party": "Ind",
+        "race_id": "npr:house:MN:5:regular:general:not_ranked",
+        "votes": 24110
+      },
+      {
+        "first": "",
+        "id": "other-24019",
+        "last": "Other",
+        "party": "Other",
+        "race_id": "npr:house:MN:5:regular:general:not_ranked",
+        "votes": 931
+      },
+      {
+        "first": "Tom",
+        "id": "60721",
+        "incumbent": true,
+        "last": "Emmer",
+        "party": "GOP",
+        "race_id": "npr:house:MN:6:regular:general:not_ranked",
+        "votes": 204706
+      },
+      {
+        "first": "Doug",
+        "id": "177185",
+        "last": "Chapin",
+        "party": "Dem",
+        "race_id": "npr:house:MN:6:regular:general:not_ranked",
+        "votes": 162213
+      },
+      {
+        "first": "",
+        "id": "other-24022",
+        "last": "Other",
+        "party": "Other",
+        "race_id": "npr:house:MN:6:regular:general:not_ranked",
+        "votes": 427
+      },
+      {
+        "first": "Michelle",
+        "id": "55298",
+        "incumbent": true,
+        "last": "Fischbach",
+        "party": "GOP",
+        "race_id": "npr:house:MN:7:regular:general:not_ranked",
+        "votes": 214675
+      },
+      {
+        "first": "Erik",
+        "id": "177186",
+        "last": "Osberg",
+        "party": "Dem",
+        "race_id": "npr:house:MN:7:regular:general:not_ranked",
+        "votes": 115825
+      },
+      {
+        "first": "",
+        "id": "other-24025",
+        "last": "Other",
+        "party": "Other",
+        "race_id": "npr:house:MN:7:regular:general:not_ranked",
+        "votes": 320
+      },
+      {
+        "first": "Pete",
+        "id": "67384",
+        "incumbent": true,
+        "last": "Stauber",
+        "party": "GOP",
+        "race_id": "npr:house:MN:8:regular:general:not_ranked",
+        "votes": 190669
+      },
+      {
+        "first": "Trina",
+        "id": "177189",
+        "last": "Swanson",
+        "party": "Dem",
+        "race_id": "npr:house:MN:8:regular:general:not_ranked",
+        "votes": 168427
+      },
+      {
+        "first": "",
+        "id": "other-24028",
+        "last": "Other",
+        "party": "Other",
+        "race_id": "npr:house:MN:8:regular:general:not_ranked",
+        "votes": 359
+      }
+    ],
+    "actual_preceding_next_seed": {
+      "bytes": 21669184,
+      "compression": "gzip",
+      "contract": "participation.automatic_estimates_seed.v1",
+      "decoded_bytes": 98917730,
+      "decoded_sha256": "a4c71b752ac93c5be24faf41167052eb16177bd68354a0a285c94d990e545ccf",
+      "media_type": "application/json",
+      "path": "rolling/next-seed.json.gz",
+      "sha256": "26030264a18eb42503d80329a3a4ee716de5451c75fa5402a72fb1de2e02362c",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/b58358ee15748a9f11b12c612fd352727c9e0a82/automatic/versions/8f8db3d902e1562dfa6b89f78ab92f0678e3c34a5458cc1958489998794ef819/rolling/next-seed.json.gz"
+    },
+    "actual_preceding_runtime": "8f8db3d902e1562dfa6b89f78ab92f0678e3c34a5458cc1958489998794ef819",
+    "all_other_state_decisions_and_points_preserved": true,
+    "automatic_states_after": [
+      "AR",
+      "DE",
+      "MN",
+      "NM",
+      "TN",
+      "VT"
+    ],
+    "automatic_states_before": [
+      "AR",
+      "DE",
+      "NM",
+      "TN",
+      "VT"
+    ],
+    "complete_download": {
+      "bytes": 287586431,
+      "sha256": "6ffc6d62acd2332fb9d03f709209a005aec425d434c7b92f9748e7bd0fa480e8"
+    },
+    "count_output_changes": [],
+    "evidence_files_in_packet": [
+      "data/results-intake/analytical-handoff/review.json.gz",
+      "data/results-intake/analytical-handoff/fec-2020.xlsx",
+      "data/results-intake/analytical-handoff/fec-2022.xlsx",
+      "data/results-intake/analytical-handoff/nebraska-2024.pdf",
+      "data/results-intake/district-boundaries/20261117-01/review.json.gz",
+      "data/results-intake/district-boundaries/20261117-01/cd119.zip",
+      "data/results-intake/district-boundaries/20261117-01/cd120.zip",
+      "data/results-intake/district-boundaries/20261117-01/CD119_BlockSplits.pdf",
+      "data/results-intake/district-boundaries/20261117-01/CD120_BlockSplits.pdf",
+      "data/results-intake/analytical-handoff/fec-identity/predecessor-review.json.gz",
+      "data/results-intake/analytical-handoff/fec-identity/evidence.json.gz",
+      "data/results-intake/analytical-handoff/fec-identity/independent-native-verification.json",
+      "data/results-intake/analytical-handoff/name-declarations/predecessor-review.json.gz",
+      "data/results-intake/analytical-handoff/name-declarations/evidence.json.gz",
+      "data/results-intake/analytical-handoff/name-declarations/independent-native-verification.json",
+      "data/results-intake/analytical-handoff/official-categories/predecessor-review.json.gz",
+      "data/results-intake/analytical-handoff/official-categories/evidence.json.gz",
+      "data/results-intake/analytical-handoff/official-categories/MN-ushouse.txt",
+      "data/results-intake/analytical-handoff/official-categories/independent-native-verification.json"
+    ],
+    "literal_offline_replay": {
+      "complete_outputs": 152,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "native_output_changes": [],
+    "network_requests": 0,
+    "newly_conditioned_variants": 9,
+    "numerically_changed_variants": 9,
+    "passed": true,
+    "previous_category_review": "20261117-declarations-01",
+    "private_retained_source_proof_not_fresh_acquisition": true,
+    "scientific_qualification_preserved": true,
+    "source_models_refitted": false,
+    "variant_frames_after": 54,
+    "variant_frames_before": 45
+  },
+  "passed": true,
+  "private_archive_is_not_a_published_download": true,
+  "runtime_estimator_tests": 64,
+  "state_guard_matrix": "state-guard-matrix.json"
+}

@@ -1,5 +1,34 @@
 # Voter-participation source ledger
 
+## November 17 Minnesota official category bridge: tested, hosted delivery pending
+
+The retained official statewide House file supplies the complete eight-district,
+25-candidate inventory. Named independent DeVelle L. Jackson's 24,110 votes stay
+separate from MN-05's 931 generic write-ins. MN-02's generic write-in count is
+335 in both the official inventory and reviewed provider, versus 314 in the
+legacy frame. Named-candidate discrepancies remain explicit; providers are
+never added together or assumed to have simultaneous snapshots.
+
+The strict, versioned category adapter resolves that category hold without
+discarding candidates, allocating Other to individuals or refitting respondents.
+All nine Minnesota variants change using D 1,574,253 / R 1,214,756 / O 27,763.
+Private complete-package reproduction passes all 152 outputs; upward, downward,
+explicit-zero, outage and unchanged-repeat checks pass through all nine models
+and the prepared JavaScript reader. This is reclassification of retained
+evidence, not a new acquisition or participation observation.
+
+The tested successor supports six automatic states (AR/DE/MN/NM/TN/VT),
+54 state/variant frames and 27 formerly qualified frozen states. Actual hosted
+delivery still uses five states/45 frames until its successor is accepted.
+Current returns are 435 House and 35 Senate refreshed; qualified comparisons
+are 259 districts, 32 House states and 28 Senate contests. The 258-to-259
+district change is FL-05 recovering source freshness, not new boundary evidence.
+Production still displays 25 Senate comparisons; the 28-comparison reader and
+Maine county-count patches require separately authorized deployment.
+
+[Complete state-by-guard matrix and numerical proof](data/participation-access/20261117-minnesota-official-categories-01/prepared-acceptance.json).
+Earlier dated entries below are historical and do not supersede this status.
+
 ## November 16 Maine county navigation repair
 
 The Maine county deep link is repaired and live at website commit

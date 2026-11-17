@@ -15,6 +15,8 @@ from scripts.results_congress import check_revision, house_state_comparisons, no
 from scripts.congressional_geography import DATA_PATHS as GEOGRAPHY_PATHS
 from scripts.congressional_candidate_identity import VERSION as IDENTITY_VERSION, DATA_PATHS as IDENTITY_PATHS
 from scripts.congressional_candidate_identity import DECLARATION_VERSION, DECLARATION_PATHS
+from scripts.congressional_category_reconciliation import VERSION as CATEGORY_VERSION
+from scripts.congressional_category_reconciliation import DATA_PATHS as CATEGORY_PATHS
 
 
 CONTRACT = "participation.congressional_analytical_review.v1"
@@ -28,6 +30,8 @@ DATA_PATHS = (REVIEW_PATH,) + tuple(
 def data_paths(review):
     result = tuple(name for name in DATA_PATHS
                  if name not in GEOGRAPHY_PATHS or review.get("house_boundaries") is not None)
+    if review.get("version") == CATEGORY_VERSION:
+        return result + IDENTITY_PATHS + DECLARATION_PATHS + CATEGORY_PATHS
     if review.get("version") == DECLARATION_VERSION:
         return result + IDENTITY_PATHS + DECLARATION_PATHS
     return result + (IDENTITY_PATHS if review.get("version") == IDENTITY_VERSION else ())
@@ -52,9 +56,12 @@ def load_review(root):
     root = Path(root)
     review = json.loads(gzip.decompress((root / REVIEW_PATH).read_bytes()))
     require(review.get("contract") == CONTRACT
-            and review.get("version") in (VERSION, IDENTITY_VERSION, DECLARATION_VERSION),
+            and review.get("version") in (VERSION, IDENTITY_VERSION, DECLARATION_VERSION, CATEGORY_VERSION),
             "Unreviewed congressional analytical successor")
-    if review["version"] == IDENTITY_VERSION:
+    if review["version"] == CATEGORY_VERSION:
+        from scripts.congressional_category_reconciliation import load_successor
+        load_successor(root, review)
+    elif review["version"] == IDENTITY_VERSION:
         from scripts.congressional_candidate_identity import load_successor
         load_successor(root, review)
     elif review["version"] == DECLARATION_VERSION:
@@ -219,7 +226,7 @@ def prepare_review(congress, seed, scientific_review, baselines):
 def evaluate(snapshot, seed):
     review = seed["congressional_analytical_review"]
     require(review.get("contract") == CONTRACT
-            and review.get("version") in (VERSION, IDENTITY_VERSION, DECLARATION_VERSION),
+            and review.get("version") in (VERSION, IDENTITY_VERSION, DECLARATION_VERSION, CATEGORY_VERSION),
             "Unreviewed congressional analytical successor")
     require(pin(encoded(catalog_identity(seed["accepted_candidates"])))["sha256"]
             == review["legacy_candidate_identity_sha256"], "Legacy scientific identity changed")

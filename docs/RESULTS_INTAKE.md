@@ -34,6 +34,31 @@ plus elapsed monotonic time, not the stale start clock after earlier source
 families have completed. Retrieval/validation time never replaces a native
 count-update timestamp. Unchanged accepted observations remain exact no-ops.
 
+## Reviewed official category reconciliation
+
+`congressional_category_reconciliation.py` validates a complete official
+candidate inventory before approving a source-category bridge. Its reviewed
+Minnesota statewide semicolon family requires all eight districts, every named
+candidate and a distinct generic write-in row, exact election/stage identities,
+native control equations and the original evidence pins. Named minor candidates
+are never folded into generic write-ins. Native candidate identifiers retain
+leading zeroes; absent capture/update clocks stay unknown.
+
+The approved successor removes only the reconciled category guard. Independent
+identity, scientific, source-universe, geography and election-stage guards remain.
+Future observations use the ordinary stable provider/candidate identity and
+native-clock checks automatically, including downward revisions and explicit
+zeroes. No assistant approval is required for each refresh. Inventory or identity
+changes fail closed and retain the last compatible model result with its own
+source dates. This approval does not establish current counting completion,
+certification, ballots, unique participants or a turnout denominator.
+
+The complete runtime package includes the original official file, independent
+verification, predecessor review, full category decisions and all nine numerical
+outputs. Providers' named-count discrepancies remain inspectable; the broad
+national feed supplies the selected current endpoint and is not added to the
+official inventory's totals.
+
 ## Separate statewide turnout intake
 
 California's existing native `status_GG.json` family refreshes its separately
