@@ -105,6 +105,26 @@ retained evidence, not newly collected election observations. House state
 comparisons remain 32, Senate comparisons 28, and automatic conditional
 House updates AR/TN/VT across nine variants; no frozen model is promoted.
 
+The actual hosted successor `44103888973` publishes **258** qualified district
+comparisons using the source checked November 17, 2026 at 04:49 UTC: 432 House
+races refreshed, three retained, and all 35 Senate races refreshed. FL-05 is
+the sole qualification difference from the older retained-packet proof: the
+newer source omits or changes its candidate inventory. Its last-good counts,
+original clock and raw arithmetic remain available; the comparison is held.
+
+The identical-input hosted run `44105172617` is a genuine no-op: unchanged
+runtime `743b081c`, unchanged data tag, and zero website builds. The complete
+285,601,535-byte published archive independently reproduces all 149 outputs
+offline, with zero requests; all 17 congressional exports match their full
+public downloads. The built reader passes all 435 House rows and 28 Senate
+comparisons at desktop and mobile widths, including reviewed FL/OH/GA details.
+This is built-reader acceptance using actual published data, **not** a new
+frontend production deployment; no Pages deployment was requested.
+
+Complete hashes, all query/download URLs, controlled count corrections, source
+freshness, explicit holds and the exact offline command are recorded in
+[`hosted-acceptance.json`](../data/participation-access/20261117-house-boundaries-01/hosted-acceptance.json).
+
 Every hourly runtime reapplies these rules to its actual race inventory.
 Missing or incompatible returns retain raw changes and explicit holds.
 `congressional/congress-house-boundaries.csv` contains all 435 decisions;

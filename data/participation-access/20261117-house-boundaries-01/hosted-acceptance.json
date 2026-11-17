@@ -1,0 +1,291 @@
+{
+  "complete_congressional_downloads": {
+    "congressional/analytical-review.json.gz": {
+      "bytes": 353941,
+      "sha256": "5c02f3a926f29e55dc2fd41ea42f658fea6b87ad94e61e56969ffb58ec9e6d32",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/analytical-review.json.gz"
+    },
+    "congressional/conditional-results.json.gz": {
+      "bytes": 11755566,
+      "sha256": "c8c329a9b1736af76c4654a305c006df15c7f5fb80dc0b9f9f173e739cea5baf",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/conditional-results.json.gz"
+    },
+    "congressional/congress-analytical-decisions.csv": {
+      "bytes": 226361,
+      "sha256": "63b2295ee92c37afc04bac1c7a71ca1b3012b58ebd2349259f33df180f14ea4f",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-analytical-decisions.csv"
+    },
+    "congressional/congress-candidate-crosswalk.csv": {
+      "bytes": 570413,
+      "sha256": "903751588a1517bf52bb9c0dc2287bca1f7d44ae1303ceca80fd51b6933d1cc4",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-candidate-crosswalk.csv"
+    },
+    "congressional/congress-candidates.csv": {
+      "bytes": 463075,
+      "sha256": "a2a5a3ff19bd9e2177c430a33abc05819beb88f345bde3be8d3104b99b3059a4",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-candidates.csv"
+    },
+    "congressional/congress-comparisons.csv": {
+      "bytes": 1371053,
+      "sha256": "d41133ac1bf8bd1c51acc353ca404edc2214b01bddb31b536250fc79c17bbf0a",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-comparisons.csv"
+    },
+    "congressional/congress-coverage.csv": {
+      "bytes": 80978,
+      "sha256": "2b31119b9d8ca6e6dc711b2cb2e9975b00dbef4fef314aa91632dc25eb45fbb1",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-coverage.csv"
+    },
+    "congressional/congress-house-boundaries.csv": {
+      "bytes": 155683,
+      "sha256": "1cc596f8ee92df0e05642a2206f01f2af10565f01719e80f5ecb1a0cb909a64d",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-house-boundaries.csv"
+    },
+    "congressional/congress-house-states.csv": {
+      "bytes": 80842,
+      "sha256": "471fa32b9981f903566de37e6f4d5886d43d9e18d72a0d60766505c1d6a11c5a",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-house-states.csv"
+    },
+    "congressional/congress-race-analytical-decisions.csv": {
+      "bytes": 63365,
+      "sha256": "90a30921b19e45acf7dc49fcfc8118fb249cf67051b9159c1b0e77f6f0bf8636",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-race-analytical-decisions.csv"
+    },
+    "congressional/congress-races.csv": {
+      "bytes": 257442,
+      "sha256": "cd047fbd2bed9e1092a8547e8d37f046a4eb145eb3348b6ac4108394f894d2d2",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-races.csv"
+    },
+    "congressional/congress-scientific-eligibility.csv": {
+      "bytes": 129857,
+      "sha256": "9ee174bd5d3a9ddc869d9465757517c73e6a4a3593d177cbc1820b8f233ba01d",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/congress-scientific-eligibility.csv"
+    },
+    "congressional/house-boundary-queries.json.gz": {
+      "bytes": 73456,
+      "sha256": "3c23f5dbed9d4114d425ff2e3af088fcca441a48d0c7513fc60894080f5c2d3f",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/house-boundary-queries.json.gz"
+    },
+    "congressional/queries.json.gz": {
+      "bytes": 12506310,
+      "sha256": "2a3b456ee2f543a3bc31f970577505f28f66b8e54bc5abfb86d23a7aac12042a",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/queries.json.gz"
+    },
+    "congressional/results.json.gz": {
+      "bytes": 414752,
+      "sha256": "e5bbab5bf5a92247887e6d406f603f269c55e544596d71532d1f8634e5f10623",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/results.json.gz"
+    },
+    "congressional/senate-historical-candidates.csv": {
+      "bytes": 86787,
+      "sha256": "e69c4acfda21d5263fb8c256aed5269ddc69793d1a7bd522503bcb650278559c",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/senate-historical-candidates.csv"
+    },
+    "congressional/senate-historical-queries.json.gz": {
+      "bytes": 81343,
+      "sha256": "b24c2d54099994cf5195dd8e4bb09a20ce31589ee7b60d8d0d7cdc928bdbf480",
+      "url": "https://raw.githubusercontent.com/hanshanley/margin_of_error/0a68a31870446c0aa8fcbef8bafaab72e2bd6bcd/automatic/versions/743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/congressional/senate-historical-queries.json.gz"
+    }
+  },
+  "complete_download": {
+    "bytes": 285601535,
+    "immutable": true,
+    "media_type": "application/zip",
+    "sha256": "def177045bc46ed18e904b828e61dac52c83f047dda26c072bffe3d2e0b9a85c",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "consumer_commit": "9ebe8166668f3ff376bb449058c8643285661dc6",
+  "consumer_verification": {
+    "actual_published_data": true,
+    "browser_data_overrides": false,
+    "built_shell_sha256": "b4f051ab80fdfe8983c07a5dfab6401b248497f2be0095d5266b21995bdbb65b",
+    "outcomes": [
+      {
+        "executed_reader_bundles": [
+          {
+            "path": "/_astro/ParticipationReturnDrivers.astro_astro_type_script_index_0_lang.BOXsVsu_.js",
+            "sha256": "2e5257ff8c0321973b8b932084f20dc65fc3001ea5ef159f309d1f154b6fb9d6"
+          }
+        ],
+        "house_races_checked": 435,
+        "images": {
+          "boundary-preview-compatible-1440.png": "a0d4760ae4fabb01aa740592bd6416f6449121eb9aee7cfd9de5e66a3b0f51eb",
+          "boundary-preview-split-1440.png": "0383d4d326766544934b1753b65541e96515c2e71c0f5a55d3912727bb7b536f"
+        },
+        "page_errors": [],
+        "qualified_house_districts": 258,
+        "qualified_senate": 28,
+        "retained_source_hold_verified": "npr:house:FL:5:regular:general:not_ranked",
+        "runtime_version": "743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076",
+        "senate_reviewed_details": [
+          "FL",
+          "OH",
+          "GA"
+        ],
+        "split_block_hold_verified": "CO-07",
+        "width": 1440
+      },
+      {
+        "executed_reader_bundles": [
+          {
+            "path": "/_astro/ParticipationReturnDrivers.astro_astro_type_script_index_0_lang.BOXsVsu_.js",
+            "sha256": "2e5257ff8c0321973b8b932084f20dc65fc3001ea5ef159f309d1f154b6fb9d6"
+          }
+        ],
+        "house_races_checked": 435,
+        "images": {
+          "boundary-preview-compatible-390.png": "9b222e87cd515a1551304b784e7b5976af4f4b509c5e6512d2885f6c8909b9a6",
+          "boundary-preview-split-390.png": "67106930584db3d3a1599fad72966dffc6cb8e4022402306af32c3cf4bbedaf2"
+        },
+        "page_errors": [],
+        "qualified_house_districts": 258,
+        "qualified_senate": 28,
+        "retained_source_hold_verified": "npr:house:FL:5:regular:general:not_ranked",
+        "runtime_version": "743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076",
+        "senate_reviewed_details": [
+          "FL",
+          "OH",
+          "GA"
+        ],
+        "split_block_hold_verified": "CO-07",
+        "width": 390
+      }
+    ],
+    "pages_deployment_requested": false,
+    "passed": true,
+    "production": false,
+    "reader_sha256": "281f86112b352dac4c4bc15281e5cf87c3df37264da0c0e05529b8271becd279"
+  },
+  "contract": "participation.congressional_boundary_delivery.v1",
+  "controlled_revisions": [
+    {
+      "D": 60163,
+      "case": "increase",
+      "export_consumer_agree": true,
+      "id": "npr:house:AR:1:regular:general:not_ranked",
+      "qualified_comparison": true,
+      "qualified_margin_change_pp": 14.713311533814064,
+      "raw_recorded_margin_change_pp": 14.713311533814064,
+      "repeat_noop": true
+    },
+    {
+      "D": 60143,
+      "case": "downward_correction",
+      "export_consumer_agree": true,
+      "id": "npr:house:AR:1:regular:general:not_ranked",
+      "qualified_comparison": true,
+      "qualified_margin_change_pp": 14.69881220247396,
+      "raw_recorded_margin_change_pp": 14.69881220247396,
+      "repeat_noop": true
+    },
+    {
+      "D": 0,
+      "case": "zero",
+      "export_consumer_agree": true,
+      "id": "npr:house:AR:1:regular:general:not_ranked",
+      "qualified_comparison": false,
+      "qualified_margin_change_pp": null,
+      "raw_recorded_margin_change_pp": -49.541773560411706,
+      "repeat_noop": true
+    },
+    {
+      "case": "outage_retains_raw_values_but_holds_comparison",
+      "passed": true
+    }
+  ],
+  "frontend_production_acceptance": false,
+  "geographic_decisions": {
+    "changed_membership": 145,
+    "compatible": 288,
+    "districts": 435,
+    "unresolved_split_geometry": 2
+  },
+  "implementation_commit": "4ed8ede82fad65d1e5d1f345503480cbaac5aaad",
+  "offline_reproduction": {
+    "all_17_public_congressional_exports_match": true,
+    "all_member_checksums_verified": true,
+    "archive_members": 281,
+    "command": "python3.12 code/reproduce.py --replay-package . --output reproduced",
+    "complete_outputs": 149,
+    "external_operations_blocked": true,
+    "network_requests": 0,
+    "passed": true
+  },
+  "pages_deployment_requested": false,
+  "passed": true,
+  "qualified_comparisons": {
+    "house_districts_after": 258,
+    "house_districts_before": 0,
+    "house_states": 32,
+    "senate": 28
+  },
+  "retained_packet_qualification": {
+    "current_difference": "npr:house:FL:5:regular:general:not_ranked",
+    "new_election_observations": false,
+    "qualified_districts": 259,
+    "reason": "Current candidate inventory changed or incomplete; last-good counts retained.",
+    "run": 43933156698
+  },
+  "runtime_data_commit": "5d1caa2cada14792e16b76a349275cb0028d4eea",
+  "runtime_run": 44103888973,
+  "runtime_version": "743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076",
+  "source_checked_at": "2026-11-17T04:49:07.396212+00:00",
+  "source_coverage": {
+    "house": {
+      "discovered": 435,
+      "held": 0,
+      "nonvoting_house_seats": 0,
+      "refreshed": 432,
+      "retained": 3,
+      "unknown_count_races": 0
+    },
+    "senate": {
+      "discovered": 35,
+      "held": 0,
+      "nonvoting_house_seats": 0,
+      "refreshed": 35,
+      "retained": 0,
+      "unknown_count_races": 0
+    }
+  },
+  "source_models_refitted": false,
+  "source_pointer": "https://raw.githubusercontent.com/hanshanley/voter-participation/9ff4f2be16eb1fea4f6ea7177298cc57afc8be36/latest.json",
+  "source_version": "e9856337a11cdfc455d0324c299783e338300de0f167a68d41145d20c32ea089",
+  "unchanged_analytical_limits": {
+    "automatic_house_states": [
+      "AR",
+      "TN",
+      "VT"
+    ],
+    "formerly_qualified_frozen_house_states": 30,
+    "model_variants": 9,
+    "new_district_map_or_certified_legal_boundary_claim": false,
+    "new_participation_observations": 0,
+    "original_house_holds": 17,
+    "senate_conditional_model_bridge": false
+  },
+  "unchanged_hosted_rerun": {
+    "data_tag_unchanged": true,
+    "manifest_bytes_unchanged": true,
+    "metadata": {
+      "conclusion": "success",
+      "createdAt": "2026-11-17T14:37:37Z",
+      "event": "workflow_dispatch",
+      "headSha": "9ebe8166668f3ff376bb449058c8643285661dc6",
+      "updatedAt": "2026-11-17T14:38:45Z",
+      "url": "https://github.com/hanshanley/margin_of_error/actions/runs/44105172617"
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "publication": {
+      "data_commit": "5d1caa2cada14792e16b76a349275cb0028d4eea",
+      "status": "unchanged",
+      "version": "743b081c0477a64353ec71d1737fe94eae9852c1fc131af2836a3cf2aaf84076",
+      "website_builds_started": 0
+    },
+    "run": 44105172617,
+    "source_collection_requested": false
+  },
+  "verified_at": "2026-11-17T14:43:29.750048+00:00",
+  "whole_project_complete": false
+}
