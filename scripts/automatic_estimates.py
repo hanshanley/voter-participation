@@ -1052,6 +1052,8 @@ def bind_publication(result, base_url, complete_download):
     bind(sources["sensitivity"])
     bind(sources["participation_state_projections"])
     bind(sources["next_seed"])
+    if sources.get("senate_partial_scenarios"):
+        bind(sources["senate_partial_scenarios"])
     if sources.get("supported_release"):
         for item in sources["supported_release"]["downloads"].values():
             bind(item)
@@ -1217,6 +1219,8 @@ def advance_seed(snapshot, seed, result):
     if "congressional_analytical_handoff" in result:
         advanced["congressional_analytical_last_good"] = copy.deepcopy(
             result["congressional_analytical_handoff"]["last_good"])
+    if "senate_legacy_handoff" in result:
+        advanced["senate_legacy_last_good"] = copy.deepcopy(result["senate_legacy_handoff"]["last_good"])
     return advanced
 
 
@@ -1410,11 +1414,18 @@ def build(snapshot, seed):
         "qualified_states": 33,
         "held_states": 17,
     }
+    senate_handoff = None
+    if "senate_legacy_review" in seed:
+        from scripts.senate_legacy_bridge import build as build_senate, MODEL_PATH
+        senate_handoff = build_senate(snapshot, seed)
+        artifacts[MODEL_PATH] = _artifact(senate_handoff["result"])
     next_seed = _advanced_seed(
         snapshot, seed, decisions, artifacts, participation
     )
     if handoff is not None:
         next_seed["congressional_analytical_last_good"] = handoff["last_good"]
+    if senate_handoff is not None:
+        next_seed["senate_legacy_last_good"] = senate_handoff["last_good"]
     next_seed_artifact = _artifact(next_seed)
     artifacts["rolling/next-seed.json.gz"] = next_seed_artifact
     global_version = hashlib.sha256(_encoded({
@@ -1501,4 +1512,12 @@ def build(snapshot, seed):
     }
     if handoff is not None:
         answer["congressional_analytical_handoff"] = handoff
+    if senate_handoff is not None:
+        from scripts.senate_legacy_bridge import CONTRACT as SENATE_CONTRACT, MODEL_PATH
+        answer["senate_legacy_handoff"] = senate_handoff
+        house_sources["senate_partial_scenarios"] = {
+            "contract": SENATE_CONTRACT, "path": MODEL_PATH,
+            **{name: artifacts[MODEL_PATH][name] for name in (
+                "compression", "media_type", "bytes", "sha256", "decoded_bytes", "decoded_sha256")},
+        }
     return answer

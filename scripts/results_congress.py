@@ -659,6 +659,13 @@ def runtime(congress, review, analytical_review=None, estimates=None):
         if boundaries is not None:
             payload["scientific_comparison_coverage"]["reviewed_qualified_house_districts"] = sum(
                 row["chamber"] == "house" and row["qualified_comparison"] for row in compared)
+    senate = (estimates or {}).get("senate_legacy_handoff")
+    if senate is not None:
+        payload["senate_partial_scenarios"] = {
+            "contract": senate["result"]["contract"], "summary": senate["result"]["summary"],
+            "current_other_writeins_unknown": True, "strict_legacy_models_refreshed": 0,
+            "empirical_senate_models_added": 0,
+        }
     files["congressional/results.json.gz"] = compressed(payload)
     decoded = encoded(payload)
     descriptor = {"contract": CONTRACT, "path": "congressional/results.json.gz",

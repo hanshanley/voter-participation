@@ -43,6 +43,7 @@ CODE_PATHS = (
     "congressional_category_reconciliation.py",
     "congressional_baselines.py", "congressional_geography.py",
     "supported_analytical_release.py",
+    "senate_legacy_bridge.py", "calibrated_swing.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
 REVIEWED_STATE_MIRROR_MIGRATIONS = {
@@ -507,6 +508,10 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
             result["congressional"] = declaration
     if "congressional_analytical_review" in seed:
         result["congressional_analytical_review"] = seed["congressional_analytical_review"]
+    if "senate_legacy_review" in seed:
+        from scripts.senate_legacy_bridge import exports as senate_exports
+        artifacts.update(senate_exports(estimates["senate_legacy_handoff"]["result"]))
+        result["senate_legacy_review"] = seed["senate_legacy_review"]
     return result
 
 
@@ -547,6 +552,13 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
             compiled["congressional_analytical_review"])
         for name in data_paths(compiled["congressional_analytical_review"]):
             members["inputs/reviewed-congressional-sources/" + name] = (ROOT / name).read_bytes()
+    if "senate_legacy_review" in compiled:
+        from scripts.senate_legacy_bridge import DATA_PATHS as SENATE_PATHS
+        members["inputs/senate-legacy-review.json"] = encoded(compiled["senate_legacy_review"])
+        for name in SENATE_PATHS:
+            members["inputs/reviewed-senate-sources/" + name] = (ROOT / name).read_bytes()
+        fixture = "tests/fixtures/senate-legacy-alabama.json"
+        members["code/" + fixture] = (ROOT / fixture).read_bytes()
     for name in CODE_PATHS:
         members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_automatic_runtime.py", "test_results_granular.py",
@@ -556,6 +568,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_congressional_candidate_identity.py",
                  "test_congressional_category_reconciliation.py",
                  "test_congressional_geography.py",
+                 "test_senate_legacy_bridge.py",
                  "test_results_congress.py"):
         path = ROOT / "tests" / name
         if path.is_file():
@@ -625,6 +638,12 @@ def replay(package, output):
         seed["supported_release_review"] = read(package / "inputs/supported-release-review.json")
     if "inputs/congressional-analytical-review.json" in manifest:
         seed["congressional_analytical_review"] = read(package / "inputs/congressional-analytical-review.json")
+    if "inputs/senate-legacy-review.json" in manifest:
+        from scripts.senate_legacy_bridge import load_review as load_senate_review
+        senate_review = load_senate_review(package / "inputs/reviewed-senate-sources")
+        if senate_review != read(package / "inputs/senate-legacy-review.json"):
+            raise ValueError("Packaged Senate review differs from its original scientific evidence")
+        seed["senate_legacy_review"] = senate_review
     source_packet = (package / "inputs/complete-source-results.zip").read_bytes()
     snapshot = hydrate_granular_sources(
         read(package / "inputs/snapshot.json"), source_packet)
@@ -721,6 +740,9 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     from scripts.congressional_analytical_bridge import REVIEW_PATH, data_paths, load_review
     analytical_path = ROOT / REVIEW_PATH
     analytical_review = load_review(ROOT) if analytical_path.exists() else None
+    from scripts.senate_legacy_bridge import (
+        REVIEW_PATH as SENATE_REVIEW_PATH, DATA_PATHS as SENATE_PATHS, load_review as load_senate_review)
+    senate_review = load_senate_review(ROOT) if (ROOT / SENATE_REVIEW_PATH).exists() else None
     processing = digest(encoded({
         "numerical_runtime": numerical_runtime(),
         "code": {name: pin((ROOT / "scripts" / name).read_bytes()) for name in CODE_PATHS},
@@ -728,7 +750,10 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "supported_release_review": pin(encoded(release_review)) if release_review else None,
         "congressional_analytical_review": {
             name: pin((ROOT / name).read_bytes()) for name in data_paths(analytical_review)
-        } if analytical_review else None}))
+        } if analytical_review else None,
+        "senate_legacy_review": {
+            name: pin((ROOT / name).read_bytes()) for name in SENATE_PATHS
+        } if senate_review else None}))
     previous = publisher.git("show", parent + ":automatic/latest.json", check=False) if parent else ""
     if previous:
         previous = json.loads(previous)
@@ -748,6 +773,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         seed["supported_release_review"] = release_review
     if analytical_review is not None:
         seed["congressional_analytical_review"] = analytical_review
+    if senate_review is not None:
+        seed["senate_legacy_review"] = senate_review
     runtime_snapshot = hydrate_granular_sources(snapshot, source["complete-results.zip"])
     compiled = compile_runtime(
         runtime_snapshot, counts, native, seed, source["complete-results.zip"])
