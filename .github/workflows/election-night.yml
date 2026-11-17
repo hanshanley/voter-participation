@@ -82,6 +82,7 @@ jobs:
           tests/test_results_congress.py
           tests/test_congressional_analytical_bridge.py tests/test_congressional_baselines.py
           tests/test_congressional_geography.py
+          tests/test_results_uf_turnout.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
 
       - name: Reuse conditional HTTP cache
@@ -173,6 +174,12 @@ jobs:
                       out.write(f"{counts['refreshed']} source-verified; {counts['retained']} retained; ")
                       out.write(f"{counts['held']} held; {counts['unknown_count_races']} unknown-count races. ")
                       out.write(f"Nonvoting House seats: {counts['nonvoting_house_seats']}.\n\n")
+                  uf = data.get("uf_turnout")
+                  if uf:
+                      out.write(f"UF statewide turnout: **{uf['status']}**, version {uf['version']}; ")
+                      out.write(f"{uf['jurisdiction_rows']} jurisdictions plus {uf['separate_us_rows']} US row. ")
+                      out.write(f"Native status classifications: {uf['ballot_status']}. ")
+                      out.write("Not independently certified or allocated to localities/groups.\n\n")
                   body = publication.read_bytes() if publication.exists() else b""
                   status = json.loads(body)["status"] if body else "not completed"
                   out.write(f"Data publication: **{status}**. ")

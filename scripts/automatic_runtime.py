@@ -37,7 +37,7 @@ CODE_PATHS = (
     "louisiana_bootstrap.py", "participation_count_additions.py",
     "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
-    "results_state_statistics.py",
+    "results_state_statistics.py", "results_uf_turnout.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_baselines.py", "congressional_geography.py",
     "supported_analytical_release.py",
@@ -302,6 +302,10 @@ def refresh_current(files, snapshot, previous_files=None):
                    source_date=data.get("source_date"),
                    source_retrieved_at=data.get("source_retrieved_at"),
                    source_update_timezone=data.get("source_update_timezone"))
+    uf = snapshot.get("uf_turnout")
+    if uf is not None and uf.get("data") is not None:
+        from scripts.results_uf_turnout import view as uf_view
+        current["uf_turnout"] = uf_view(uf)
     if current == before:
         return files
     result = dict(files)
@@ -431,6 +435,10 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     native = refresh(count_files, updated, native_files)
     estimates = build(snapshot, seed)
     artifacts = render_artifacts(estimates)
+    uf = snapshot.get("uf_turnout")
+    if uf is not None and uf.get("data") is not None:
+        from scripts.results_uf_turnout import exports as uf_exports
+        artifacts.update({"participation/" + name: body for name, body in uf_exports(uf).items()})
     result = {"counts": updated, "native": native, "estimates": estimates,
               "model_files": artifacts, "local_changes": changes}
     if "supported_release_review" in seed:

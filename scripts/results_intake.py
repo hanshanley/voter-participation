@@ -4,6 +4,7 @@ import argparse
 import base64
 from concurrent.futures import ThreadPoolExecutor
 import copy
+from collections import Counter
 import csv
 from datetime import datetime, timezone
 import gzip
@@ -301,6 +302,15 @@ class Collector:
             self.bodies[url] = body, receipt
         return body, receipt
 
+    def public_edition(self, url):
+        source = self.context.store.db.execute(
+            "SELECT sha,etag,modified,stopped FROM inputs WHERE url=?", (url,)).fetchone()
+        if not source or not source[0] or source[3]:
+            raise ValueError("Source edition requires an accepted cached original")
+        return {"body_sha256": source[0], "http_etag": source[1],
+                "http_last_modified": source[2],
+                "qualification": "HTTP representation edition, not a native count-update clock"}
+
     def capture(self, identity, url, parser):
         old = self.prior.get(identity)
         stage, attempted_pin = "acquisition", None
@@ -500,6 +510,10 @@ def project(inputs, baseline):
         snapshot["collection_scope"] = inputs["collection_scope"]
     if "congress" in inputs:
         snapshot["congress"] = inputs["congress"]
+    from scripts import results_uf_turnout
+    uf = feeds.get(results_uf_turnout.IDENTITY)
+    if uf is not None:
+        snapshot["uf_turnout"] = copy.deepcopy(uf)
     outputs = {
         "snapshot.json.gz": compressed(encoded(snapshot)), "coverage.csv": csv_body(coverage),
         "participation-observations.csv.gz": compressed(csv_body(observations)),
@@ -519,6 +533,8 @@ def project(inputs, baseline):
         outputs.update(results_congress.exports(inputs["congress"]))
         outputs["congress-queries.json.gz"] = compressed(encoded(inputs["congress"]))
         outputs["snapshot.json.gz"] = compressed(encoded(snapshot))
+    if uf is not None and uf.get("data") is not None:
+        outputs.update(results_uf_turnout.exports(uf))
     return outputs
 
 
@@ -534,6 +550,13 @@ def registry_config(registry_path):
             raise ValueError("Invalid reviewed congressional provider configuration")
         config["congressional"] = declaration
         config["source_stops"] = merge_stops(config["source_stops"], declaration["source_stops"])
+    uf_path = registry_path.with_name("uf-turnout.json")
+    if uf_path.exists():
+        from scripts.results_uf_turnout import CONFIG
+        declaration = read(uf_path)
+        if declaration != CONFIG:
+            raise ValueError("Invalid reviewed statewide UF provider configuration")
+        config["uf_turnout"] = declaration
     return config
 
 
@@ -607,6 +630,9 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
         key = state + "-official"
         feeds[key] = collector.capture(key, url, parse)
     feeds[results_native_broome.IDENTITY] = results_native_broome.collect_statistics(collector)
+    if "uf_turnout" in config:
+        from scripts import results_uf_turnout
+        feeds[results_uf_turnout.IDENTITY] = results_uf_turnout.collect(collector, config["uf_turnout"])
     from scripts.louisiana_bootstrap import IDENTITY as LA_BOOTSTRAP_ID
     from scripts.louisiana_bootstrap import collect_bootstrap as collect_la_bootstrap
     la_bootstrap = collect_la_bootstrap(
@@ -689,7 +715,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
-             "results_state_statistics.py",
+             "results_state_statistics.py", "results_uf_turnout.py",
              "results_native_delaware.py", "results_native_dc.py",
              "results_native_state_family.py", "results_native_oregon.py",
              "results_native_north_carolina.py",
@@ -718,7 +744,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     for name in code:
         package_members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_results_intake.py", "test_results_congress.py", "test_results_granular.py", "test_results_native.py",
-                 "test_results_state_statistics.py",
+                 "test_results_state_statistics.py", "test_results_uf_turnout.py",
                  "test_results_native_delaware.py", "test_results_native_dc.py",
                  "test_results_native_broome.py", "test_results_native_kansas.py",
                  "test_results_native_workbooks.py",
@@ -820,6 +846,17 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                   item.get("data") is not None for item in inputs["house"].values()),
               "source_attempts": source_attempts,
               "files": {name: pin((work / name).read_bytes()) for name in (*outputs, "complete-results.zip")}}
+    if "UF-national-turnout" in inputs["feeds"]:
+        entry = inputs["feeds"]["UF-national-turnout"]
+        rows = (entry.get("data") or {}).get("rows", [])
+        report["uf_turnout"] = {
+            "status": entry["status"], "version": (entry.get("data") or {}).get("version"),
+            "jurisdiction_rows": sum(row["state_code"] != "US" for row in rows),
+            "separate_us_rows": sum(row["state_code"] == "US" for row in rows),
+            "ballot_status": dict(sorted(Counter(row["ballots_status"] for row in rows).items())),
+            "error": entry.get("error"),
+            "not_independently_certified_or_locally_allocated": True,
+        }
     if "collection_scope" in inputs:
         report["collection_scope"] = inputs["collection_scope"]
     if "congress" in inputs:
@@ -860,13 +897,15 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None):
     from scripts import results_native
+    from scripts import results_uf_turnout
 
     registry_path, work = Path(registry_path), Path(work)
-    config = read(registry_path)
+    config = registry_config(registry_path)
     now = now or datetime.now(timezone.utc)
     previous = hydrate_collector_state(previous)
     if (not source_ids or len(source_ids) != len(set(source_ids))
-            or not all(re.fullmatch(r"[A-Z]{2}-registered-[a-f0-9]{16}", item) for item in source_ids)
+            or not all(item == results_uf_turnout.IDENTITY or re.fullmatch(
+                r"[A-Z]{2}-registered-[a-f0-9]{16}", item) for item in source_ids)
             or not {"feeds", "granular", "house", "districts", "directories", "source_stops"} <= set(previous)
             or config.get("contract") != CONTRACT or config.get("election_date") != "2026-11-03"
             or set(config["jurisdictions"]) != set(STATES)
@@ -875,17 +914,22 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     baseline = baseline_inputs(registry_path.parent / config["baseline"]["root"], config["baseline"])
     plan = {key: value for sources in results_native.source_plan(baseline).values()
             for key, value in sources.items()}
+    if "uf_turnout" in config:
+        plan[results_uf_turnout.IDENTITY] = {"adapter": "reviewed_statewide_uf_turnout"}
     if not set(source_ids) <= set(plan):
         raise ValueError("Selected refresh source is not in the actual registered dispatch plan")
     if any(plan[identity]["adapter"] == "unadapted_primary_product" for identity in source_ids):
         raise ValueError("Selected numerical refresh requires a reviewed source adapter")
     stopped = merge_stops(config["source_stops"], previous["source_stops"])
-    collector = Collector(work, previous["granular"], stopped, now)
-    entries = results_native.collect_sources(collector, baseline, source_ids=set(source_ids))
+    native_ids = set(source_ids) - {results_uf_turnout.IDENTITY}
+    collector = Collector(work, {**previous["granular"], **previous["feeds"]}, stopped, now)
+    entries = results_native.collect_sources(collector, baseline, source_ids=native_ids) if native_ids else {}
+    if results_uf_turnout.IDENTITY in source_ids:
+        entries[results_uf_turnout.IDENTITY] = results_uf_turnout.collect(collector, config["uf_turnout"])
     if set(entries) != set(source_ids) or any(entry["status"] != "reported" for entry in entries.values()):
         raise ValueError("Selected numerical refresh did not succeed; no replacement publication")
     inputs = copy.deepcopy(previous)
-    inputs["granular"].update(entries)
+    inputs["granular"].update({key: value for key, value in entries.items() if key in native_ids})
     inputs["feeds"].update(entries)
     inputs["source_stops"] = collector.stopped
     inputs["collection_scope"] = {

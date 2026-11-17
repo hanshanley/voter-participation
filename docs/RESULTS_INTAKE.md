@@ -19,6 +19,48 @@ The tool does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Separate statewide turnout intake
+
+`data/results-intake/uf-turnout.json` enables the shared collector's
+`UF-national-turnout` adapter. It discovers the highest advertised 2026 dataset
+edition on UF Election Lab's landing page and follows that edition's declared
+CSV and documentation. No future download URLs are guessed. It requires the
+reviewed STATUS schema, all 50 states, D.C. and the separate US row, consistent
+native counts/rates, matching documentation and retained attribution.
+
+Blank STATUS is estimated even when SOURCE links to an official agency.
+Official/Final remain source-reported, not independently certified; unknown
+status strings remain unresolved. VAP/VEP are estimated population frames,
+not registration stocks. Missing numerators/rates stay null; real zeroes stay
+zero. Documentation anomalies remain inspectable. HTTP Last-Modified is a
+representation edition, never a native count-update clock.
+
+Same-edition count changes, including decreases, require a strictly advancing
+HTTP edition. Advertised successor versions must pass the same identity and
+schema checks. Failures retain last-good counts and their original observation
+receipt; durable access stops apply before any cache or transport request.
+
+The existing hourly runtime adds these rows to the current count snapshot and
+exports `participation/uf-turnout.csv`, `uf-turnout.json` and the complete
+`uf-turnout-queries.json`, including both original numerical/documentation
+files and source pins. The existing state participation reader consumes this
+optional payload; older runtimes retain the explicitly dated saved fallback.
+No county/precinct/group allocation, conditional-model promotion or refit is
+authorized. Reader source changes require a separately authorized deployment;
+this intake does not deploy Pages.
+
+For a selected-source refresh that preserves every other input:
+
+```sh
+gh workflow run election-night.yml --repo hanshanley/voter-participation \
+  --ref main -f refresh_sources=UF-national-turnout
+```
+
+The complete source download reproduces with
+`python -m scripts.results_intake replay --package . --output reproduced`.
+The runtime ZIP's `REPRODUCE.txt` specifies its exact producer Python version
+and complete offline command. Neither replay acquires election sources.
+
 ## Nationwide congressional returns
 
 The same hourly collector also reads the two national NPR/AP bulk inventories

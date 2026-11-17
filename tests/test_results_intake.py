@@ -198,6 +198,36 @@ def test_selected_refresh_reuses_every_other_capture_and_rejects_unknown_sources
     assert previous == original
 
 
+def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp_path, monkeypatch):
+    from scripts import results_native, results_uf_turnout as uf
+    registry = fixture(tmp_path)
+    intake.write(registry.parent / "uf-turnout.json", uf.CONFIG)
+    previous = {
+        "feeds": {"unchanged-feed": {"status": "reported", "data": {"total": 12}}},
+        "granular": {"unchanged": {"status": "reported", "data": {"updates": []}}},
+        "districts": {str(index): {} for index in range(435)},
+        "house": {str(index): {"status": "reported", "data": {"count": index}} for index in range(435)},
+        "congress": {"native_clock": "must stay unchanged"},
+        "directories": {state: {} for state in intake.STATES}, "source_stops": EMPTY_STOPS,
+    }
+    original, calls = copy.deepcopy(previous), []
+    monkeypatch.setattr(results_native, "source_plan", lambda baseline: {})
+    monkeypatch.setattr(results_native, "collect_sources",
+                        lambda *args, **kwargs: pytest.fail("UF refresh must not acquire local sources"))
+    def collect(collector, config):
+        calls.append(config)
+        return {"status": "reported", "data": {"rows": []}}
+    monkeypatch.setattr(uf, "collect", collect)
+    monkeypatch.setattr(intake, "export_collection",
+                        lambda work, config, baseline, inputs, extras, now, attempts: inputs)
+    result = intake.refresh_selected(registry, tmp_path / "selected", previous, [uf.IDENTITY], NOW)
+    assert calls == [uf.CONFIG] and previous == original
+    for key in ("granular", "districts", "house", "congress", "directories", "source_stops"):
+        assert result[key] == original[key]
+    assert result["feeds"]["unchanged-feed"] == original["feeds"]["unchanged-feed"]
+    assert result["collection_scope"]["source_ids"] == [uf.IDENTITY]
+
+
 def test_accepted_candidate_strings_survive_a_blocked_live_declaration(tmp_path, monkeypatch):
     registry = fixture(tmp_path)
     rows = [{"state_code": row["state_code"], "district": row["district"],
