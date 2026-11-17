@@ -164,13 +164,14 @@ def normalize(row, chamber):
     }
 
 
-def check_revision(old, new):
+def check_revision(old, new, *, allow_additions=False):
     if not old:
         return
     require(old["provider_race_id"] == new["provider_race_id"], "Provider race identity changed")
     before = {row["candidate_id"]: row for row in old["candidates"]}
     after = {row["candidate_id"]: row for row in new["candidates"]}
-    require(before.keys() == after.keys(), "Candidate inventory changed or incomplete")
+    require(before.keys() <= after.keys() if allow_additions else before.keys() == after.keys(),
+            "Candidate inventory changed or incomplete")
     for key in before:
         require(all(before[key][field] == after[key][field] for field in
                     ("first", "last", "literal_party", "role")), "Candidate identity changed")
@@ -234,12 +235,12 @@ def collect(collector, previous, configuration):
                             "Provider contest geography or seat identity changed")
                     require(data["source_updated_epoch_ms"] >= prior["data"]["source_updated_epoch_ms"],
                             "Native source clock regressed across stages or rounds")
-                require(data["source_updated_epoch_ms"] <= collector.now.timestamp() * 1000 + 300_000,
+                require(data["source_updated_epoch_ms"] <= collector.observation_time().timestamp() * 1000 + 300_000,
                         "Native count clock is in the future")
                 identity = data["id"]
                 require(identity not in races, "Duplicate contest seat/stage/round")
                 old = prior_races.get(identity)
-                check_revision(old.get("data") if old else None, data)
+                check_revision(old.get("data") if old else None, data, allow_additions=True)
                 races[identity] = {
                     "data": data, "source": feed["source"], "status": "reported",
                     "freshness": "source_verified", "advertised": True, "error": None,

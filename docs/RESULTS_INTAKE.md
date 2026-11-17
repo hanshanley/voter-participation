@@ -19,6 +19,21 @@ The tool does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+## Congressional revision guards
+
+Recorded-results intake accepts newly advertised candidates or aggregate Other
+categories only with a newer native count version and every previously known
+candidate identity retained. Removed candidates, changed names/parties, lost
+known counts and regressing clocks still retain last-good results. Original and
+successor candidate inventories remain in their complete versioned queries.
+This intake rule does not approve an analytical frame: the model bridge retains
+its exact reviewed candidate-inventory requirement.
+
+The five-minute future-clock tolerance is measured against collection-start UTC
+plus elapsed monotonic time, not the stale start clock after earlier source
+families have completed. Retrieval/validation time never replaces a native
+count-update timestamp. Unchanged accepted observations remain exact no-ops.
+
 ## Separate statewide turnout intake
 
 `data/results-intake/uf-turnout.json` enables the shared collector's

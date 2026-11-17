@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 import copy
 from collections import Counter
 import csv
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import gzip
 import io
 import json
@@ -15,6 +15,7 @@ import re
 import shutil
 import tempfile
 import threading
+import time
 from urllib.parse import unquote, urlsplit, urlunsplit
 import zipfile
 
@@ -245,10 +246,14 @@ def house_baseline(rows):
 class Collector:
     def __init__(self, work, prior, stopped, now, offline=False):
         self.work, self.prior, self.now = Path(work), prior, now
+        self.started_monotonic = time.monotonic()
         self.stopped, self.offline = stops(stopped), offline
         self.lock, self.context = threading.Lock(), threading.local()
         self.attempts, self.bodies = [], {}
         write(self.work / "source-stops.json", self.stopped)
+
+    def observation_time(self):
+        return self.now + timedelta(seconds=max(0, time.monotonic() - self.started_monotonic))
 
     def guard(self, url):
         target = normalized(url)

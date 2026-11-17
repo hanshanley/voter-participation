@@ -87,6 +87,71 @@ def test_unchanged_collection_is_exact_noop(tmp_path):
     assert collect(tmp_path, sources(), first) == first
 
 
+@pytest.mark.parametrize("role", ["aggregate_other", "named_minor"])
+@pytest.mark.parametrize("votes", [0, 26])
+def test_newer_additions_preserve_candidates_without_approving_model_inventory(tmp_path, role, votes):
+    bodies = sources()
+    if role == "aggregate_other":
+        bodies["house"][0]["candidates"].pop()
+    first = collect(tmp_path, bodies)
+    original = next(row["data"] for row in first["races"].values() if row["data"]["chamber"] == "house")
+    added = ({"id": "other-101", "first": "", "last": "Other", "party": "Other", "votes": votes}
+             if role == "aggregate_other" else
+             {"id": "minor", "first": "New", "last": "Candidate", "party": "Lib", "votes": votes})
+    bodies["house"][0]["updated"] += 1
+    bodies["house"][0]["candidates"].append(added)
+    updated = collect(tmp_path, bodies, first)
+    current = updated["races"][original["id"]]
+    assert current["status"] == "reported"
+    by_id = {row["candidate_id"]: row for row in current["data"]["candidates"]}
+    assert [by_id[row["candidate_id"]] for row in original["candidates"]] == original["candidates"]
+    assert by_id[added["id"]]["votes"] == votes
+    with pytest.raises(ValueError, match="Candidate inventory"):
+        congress.check_revision(original, current["data"])
+    assert collect(tmp_path, bodies, updated) == updated
+    # A new source category is not permission to remove it on a later refresh.
+    bodies["house"][0]["updated"] += 1
+    bodies["house"][0]["candidates"].pop()
+    refused = collect(tmp_path, bodies, updated)["races"][original["id"]]
+    assert refused["status"] == "retained_after_failure"
+    assert refused["data"] == current["data"]
+
+
+def test_additive_inventory_still_requires_a_newer_native_clock(tmp_path):
+    bodies = sources()
+    bodies["house"][0]["candidates"].pop()
+    first = collect(tmp_path, bodies)
+    bodies["house"][0]["candidates"].append(
+        {"id": "other-101", "first": "", "last": "Other", "party": "Other", "votes": 0})
+    current = next(row for row in collect(tmp_path, bodies, first)["races"].values()
+                   if row["data"]["chamber"] == "house")
+    assert current["status"] == "retained_after_failure"
+    assert "newer native version" in current["error"]
+
+
+@pytest.mark.parametrize("future_minutes,accepted", [(10, True), (16, False)])
+def test_future_guard_uses_elapsed_acquisition_time_not_collection_start(
+        tmp_path, monkeypatch, future_minutes, accepted):
+    from scripts import results_intake as intake
+
+    elapsed = [0]
+    monkeypatch.setattr(intake.time, "monotonic", lambda: elapsed[0])
+    collector = Collector(tmp_path, {}, STOPS, NOW)
+    bodies = sources()
+    bodies["house"][0]["updated"] = int(NOW.timestamp() * 1000) + future_minutes * 60_000
+    collector.acquire = lambda url: (
+        json.dumps({"results": bodies[url.rsplit("/", 1)[-1]]}).encode(),
+        {"origin": "new_source_response"})
+    # Other source families can precede the national feed in a full collection.
+    elapsed[0] = 600
+    result = congress.collect(collector, None, CONFIG)
+    current = next(row for row in result["races"].values()
+                   if row.get("chamber") == "house" or (row.get("data") or {}).get("chamber") == "house")
+    assert (current["status"] == "reported") is accepted
+    if not accepted:
+        assert current["error"] == "Native count clock is in the future"
+
+
 @pytest.mark.parametrize("chamber", ["house", "senate"])
 def test_tabulation_status_can_advance_without_changing_the_count_clock(tmp_path, chamber):
     bodies = sources()
