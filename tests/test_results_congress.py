@@ -143,6 +143,33 @@ def test_special_class_two_cannot_borrow_regular_same_class_baseline(tmp_path):
     assert row["previous"] is None and not row["qualified_comparison"]
 
 
+@pytest.mark.parametrize("seat,compatible", [("1", False), ("3", True)])
+def test_reviewed_boundary_gate_is_district_specific_and_keeps_other_holds(tmp_path, seat, compatible):
+    from scripts.congressional_geography import load_review
+    from pathlib import Path
+
+    geography = load_review(Path(__file__).resolve().parents[1])
+    scientific = review()
+    template = scientific["previous_district_queries"][0]
+    scientific["previous_district_queries"] = [
+        {**copy.deepcopy(template), "district": "AL-" + str(number).zfill(2)}
+        for number in range(1, 4)]
+    bodies = sources()
+    bodies["house"] = [race(seat=seat)]
+    source = collect(tmp_path, bodies)
+    compared = congress.comparisons(source, scientific, boundary_review=geography)
+    row = next(row for row in compared if row["chamber"] == "house")
+    assert row["qualified_comparison"] is compatible
+    assert row["baseline"]["boundary_eligibility"]["boundary_compatible"] is compatible
+    assert row["raw_recorded_margin_change_pp"] is not None
+    source["races"][row["id"]].update(status="retained_after_failure", freshness="retained_last_good")
+    retained = next(value for value in congress.comparisons(
+        source, scientific, boundary_review=geography) if value["chamber"] == "house")
+    assert not retained["qualified_comparison"]
+    assert any("retained, not refreshed" in hold for hold in retained["comparison_holds"])
+    assert retained["raw_recorded_margin_change_pp"] == row["raw_recorded_margin_change_pp"]
+
+
 def test_default_sidecar_and_bounded_refresh_preserve_other_sources(tmp_path, monkeypatch):
     from scripts import results_intake as intake
     from test_results_intake import fixture

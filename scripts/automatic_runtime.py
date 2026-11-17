@@ -39,7 +39,7 @@ CODE_PATHS = (
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py",
     "results_congress.py", "results_house.py",
-    "congressional_analytical_bridge.py", "congressional_baselines.py",
+    "congressional_analytical_bridge.py", "congressional_baselines.py", "congressional_geography.py",
     "supported_analytical_release.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
@@ -484,10 +484,10 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
     if "release_review" in compiled:
         members["inputs/supported-release-review.json"] = encoded(compiled["release_review"])
     if "congressional_analytical_review" in compiled:
-        from scripts.congressional_analytical_bridge import DATA_PATHS
+        from scripts.congressional_analytical_bridge import data_paths
         members["inputs/congressional-analytical-review.json"] = encoded(
             compiled["congressional_analytical_review"])
-        for name in DATA_PATHS:
+        for name in data_paths(compiled["congressional_analytical_review"]):
             members["inputs/reviewed-congressional-sources/" + name] = (ROOT / name).read_bytes()
     for name in CODE_PATHS:
         members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
@@ -495,6 +495,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_automatic_estimates.py", "test_automatic_native_refresh.py",
                  "test_current_source_reconciliation.py", "test_supported_analytical_release.py",
                  "test_congressional_analytical_bridge.py", "test_congressional_baselines.py",
+                 "test_congressional_geography.py",
                  "test_results_congress.py"):
         path = ROOT / "tests" / name
         if path.is_file():
@@ -657,7 +658,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     seed_dir = Path(seed_dir or ROOT / "data/results-intake/model-seed")
     review_path = ROOT / "data/results-intake/reviewed-eligibility.json"
     release_review = read(review_path) if review_path.exists() else None
-    from scripts.congressional_analytical_bridge import DATA_PATHS, REVIEW_PATH, load_review
+    from scripts.congressional_analytical_bridge import REVIEW_PATH, data_paths, load_review
     analytical_path = ROOT / REVIEW_PATH
     analytical_review = load_review(ROOT) if analytical_path.exists() else None
     processing = digest(encoded({
@@ -666,7 +667,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "seed": {name: pin(body) for name, body in seed_files(seed_dir).items()},
         "supported_release_review": pin(encoded(release_review)) if release_review else None,
         "congressional_analytical_review": {
-            name: pin((ROOT / name).read_bytes()) for name in DATA_PATHS
+            name: pin((ROOT / name).read_bytes()) for name in data_paths(analytical_review)
         } if analytical_review else None}))
     previous = publisher.git("show", parent + ":automatic/latest.json", check=False) if parent else ""
     if previous:

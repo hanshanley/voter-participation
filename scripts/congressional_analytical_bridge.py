@@ -11,6 +11,7 @@ from pathlib import Path
 
 from scripts.participation_intake.contract import encoded, pin
 from scripts.results_congress import check_revision, house_state_comparisons, normalize
+from scripts.congressional_geography import DATA_PATHS as GEOGRAPHY_PATHS
 
 
 CONTRACT = "participation.congressional_analytical_review.v1"
@@ -18,7 +19,13 @@ VERSION = "20261116-01"
 REVIEW_PATH = "data/results-intake/analytical-handoff/review.json.gz"
 ORIGINAL_PATHS = ("fec-2020.xlsx", "fec-2022.xlsx", "nebraska-2024.pdf")
 DATA_PATHS = (REVIEW_PATH,) + tuple(
-    "data/results-intake/analytical-handoff/" + name for name in ORIGINAL_PATHS)
+    "data/results-intake/analytical-handoff/" + name for name in ORIGINAL_PATHS) + GEOGRAPHY_PATHS
+
+
+def data_paths(review):
+    return tuple(name for name in DATA_PATHS
+                 if name not in GEOGRAPHY_PATHS or review.get("house_boundaries") is not None)
+
 FRAME_FIELDS = (
     "id", "provider_race_id", "chamber", "state_code", "seat", "seat_label",
     "election_date", "election_kind", "stage", "ranked_choice", "round",
@@ -45,6 +52,10 @@ def load_review(root):
         body = (root / "data/results-intake/analytical-handoff" / original["path"]).read_bytes()
         require(pin(body) == {key: original[key] for key in ("bytes", "sha256")},
                 "Changed complete official congressional baseline")
+    from scripts.congressional_geography import load_review as load_geography
+    geography = load_geography(root)
+    if geography is not None:
+        review["house_boundaries"] = geography
     return review
 
 

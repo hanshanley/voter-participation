@@ -75,6 +75,57 @@ neither an assistant nor a Pages build.
 
 ### Reviewed automatic analytical handoff
 
+#### Comparison-specific House geography
+
+The separately pinned boundary review `20261117-01` replaces the blanket
+district hold for supported **2024 House to 2026 House** comparisons. It does
+not qualify a behavioral model, participation numerator, legal boundary
+certification, or district map. The complete 119th/120th Congress national
+Census block-equivalency ZIPs and both complete split-block PDFs accompany
+`data/results-intake/district-boundaries/20261117-01/review.json.gz`.
+
+The compiler checks every regional copy against its national member, preserves
+leading-zero block IDs, and compares sorted, exact original 2020 Census block
+memberships. Equal district numbers are not evidence. Split blocks touching
+either district in either edition keep both comparisons held: equal whole-block
+assignments do not prove equal split geometry. Colorado 07/08 therefore remain
+held. Changed memberships remain held without allocating historical votes.
+
+The selected 120th national BEF incorporates Census's Missouri correction;
+the superseded Missouri TIGER geometry is not used. Census's general page
+mentions both October 6 and October 7, 2026; its specific BEF page says the
+national file was regenerated October 7. Exact original-byte hashes, rather
+than an assumed universally consistent documentation date, select the edition.
+
+All 435 voting districts receive a decision: 288 have compatible boundaries,
+145 have changed memberships, and two have unresolved split geometry. Applying
+the independent candidate/count/stage/round/freshness guards to the retained
+hosted run `43933156698` qualifies **259**, previously zero. This reclassifies
+retained evidence, not newly collected election observations. House state
+comparisons remain 32, Senate comparisons 28, and automatic conditional
+House updates AR/TN/VT across nine variants; no frozen model is promoted.
+
+Every hourly runtime reapplies these rules to its actual race inventory.
+Missing or incompatible returns retain raw changes and explicit holds.
+`congressional/congress-house-boundaries.csv` contains all 435 decisions;
+`congressional/house-boundary-queries.json.gz` contains the complete reviewed
+memberships, splits, evidence pins and decisions. Both accompany the existing
+candidate, race, comparison and scientific-eligibility exports and complete ZIP.
+
+To recompile the geographic review using the four packaged originals:
+
+```sh
+python3 -m scripts.congressional_geography \
+  --originals data/results-intake/district-boundaries/20261117-01 \
+  --output /tmp/congressional-boundary-review
+```
+
+Use a new output directory. The complete automatic runtime's `REPRODUCE.txt`
+specifies its exact Python version and offline command; no Census download or
+respondent refit is needed for routine return updates or numerical replay.
+
+#### Candidate and scientific source frames
+
 `data/results-intake/analytical-handoff/review.json.gz`, version `20261116-01`,
 reviews the complete provider inventory against all 1,401 retained legacy
 candidate records and all 50 state decisions. Initial matching requires

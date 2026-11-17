@@ -342,7 +342,10 @@ def exports(congress):
         ("races", races), ("candidates", candidates), ("coverage", coverage))}
 
 
-def comparisons(congress, review, historical_senate=None):
+def comparisons(congress, review, historical_senate=None, boundary_review=None):
+    if boundary_review is not None:
+        from scripts.congressional_geography import validate_review
+        validate_review(boundary_review)
     previous_house = {row["district"]: row for row in review["previous_district_queries"]}
     old_models = json.loads(review["frozen_inputs"]["existing_other_office_models"]["body"])
     previous_senate = {row["state_code"]: row for row in old_models["rows"] if row["office"] == "senate"}
@@ -371,7 +374,13 @@ def comparisons(congress, review, historical_senate=None):
                                       for c in data["candidates"]) for party in "DR"}
                 if present != query["previous"]["major_party_presence"]:
                     reasons.append("Major-party candidate coverage changed")
-                if not query.get("geographic_boundary_stability_independently_qualified", False):
+                if boundary_review is not None:
+                    from scripts.congressional_geography import comparison_decision
+                    boundary = comparison_decision(boundary_review, key, race)
+                    baseline["boundary_eligibility"] = copy.deepcopy(boundary)
+                    if not boundary["boundary_compatible"]:
+                        reasons.extend("House boundary hold: " + reason for reason in boundary["holds"])
+                elif not query.get("geographic_boundary_stability_independently_qualified", False):
                     reasons.append("Cross-year district boundary stability is not independently qualified")
             else:
                 reasons.append("No reviewed previous same-district House query")
@@ -553,7 +562,8 @@ def legacy_comparison_view(rows):
 
 def runtime(congress, review, analytical_review=None, estimates=None):
     history = analytical_review["historical_senate"] if analytical_review else None
-    compared = comparisons(congress, review, history)
+    boundaries = analytical_review.get("house_boundaries") if analytical_review else None
+    compared = comparisons(congress, review, history, boundaries)
     states = house_state_comparisons(congress, review)
     races, candidates, coverage = tables(congress)
     payload = {"contract": CONTRACT, "election_date": ELECTION, "races": compared,
@@ -570,6 +580,20 @@ def runtime(congress, review, analytical_review=None, estimates=None):
              **{"congressional/" + name: body for name, body in exports(congress).items()},
              "congressional/congress-comparisons.csv": csv_bytes(compared),
              "congressional/congress-house-states.csv": csv_bytes(states)}
+    if boundaries is not None:
+        files.update({
+            "congressional/house-boundary-queries.json.gz": compressed(boundaries),
+            "congressional/congress-house-boundaries.csv": csv_bytes(
+                list(boundaries["decisions"].values())),
+        })
+        payload["house_boundary_review"] = {
+            "contract": boundaries["contract"], "version": boundaries["version"],
+            "evidence": boundaries["evidence"], "districts": len(boundaries["decisions"]),
+            "boundary_compatible": sum(row["boundary_compatible"]
+                                       for row in boundaries["decisions"].values()),
+            "qualified_recorded_comparisons": sum(row["chamber"] == "house"
+                                                  and row["qualified_comparison"] for row in compared),
+        }
     if analytical_review is not None:
         decisions = (estimates or {}).get("decisions", {}).get("states", [])
         handoff = (estimates or {}).get("congressional_analytical_handoff", {})
@@ -611,7 +635,10 @@ def runtime(congress, review, analytical_review=None, estimates=None):
                 row["chamber"] == "senate" and row["qualified_comparison"] for row in payload["races"]),
             "reviewed_qualified_house_states": sum(row["qualified_comparison"] for row in states),
         }
-        files["congressional/results.json.gz"] = compressed(payload)
+        if boundaries is not None:
+            payload["scientific_comparison_coverage"]["reviewed_qualified_house_districts"] = sum(
+                row["chamber"] == "house" and row["qualified_comparison"] for row in compared)
+    files["congressional/results.json.gz"] = compressed(payload)
     decoded = encoded(payload)
     descriptor = {"contract": CONTRACT, "path": "congressional/results.json.gz",
                   **pin(files["congressional/results.json.gz"]), "compression": "gzip",
