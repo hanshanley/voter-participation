@@ -6,6 +6,7 @@ import json
 import re
 from collections import defaultdict
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from scripts.participation_intake.contract import encoded, pin
 
@@ -15,6 +16,11 @@ CONTRACT = "participation.congressional_fec_identity.v1"
 DATA_ROOT = "data/results-intake/analytical-handoff/fec-identity/"
 DATA_PATHS = tuple(DATA_ROOT + name for name in (
     "predecessor-review.json.gz", "evidence.json.gz", "independent-native-verification.json"))
+DECLARATION_VERSION = "20261117-declarations-01"
+DECLARATION_CONTRACT = "participation.congressional_primary_name_declarations.v1"
+DECLARATION_PATHS = tuple("data/results-intake/analytical-handoff/name-declarations/" + name
+                         for name in ("predecessor-review.json.gz", "evidence.json.gz",
+                                      "independent-native-verification.json"))
 FIELDS = {
     "candidates": {
         "candidate_id", "name", "literal_party", "election_year", "office_state",
@@ -119,11 +125,9 @@ class Evidence:
                 "ballot_stage_and_counts_qualified_by_FEC": False}
 
 
-def successor(previous, value, files):
+def _apply_evidence(previous, evidence, rule):
     from scripts.automatic_estimates import _party_group
 
-    require(previous.get("version") == "20261116-01", "Identity review needs its frozen predecessor")
-    evidence = Evidence(value)
     review = copy.deepcopy(previous)
     changed = []
     crosswalk = {(row["race_id"], row["legacy_index"]): row for row in review["candidate_crosswalk"]}
@@ -154,7 +158,7 @@ def successor(previous, value, files):
             row.update(provider_candidate_id=candidate["candidate_id"],
                        provider_literal_name=candidate["name"],
                        provider_literal_party=candidate["literal_party"],
-                       decision="reviewed_named_identity", rule="reviewed_FEC_stable_identity",
+                       decision="reviewed_named_identity", rule=rule,
                        identity_evidence=proof)
             changed.append({"race_id": key, "legacy_index": index,
                             "provider_candidate_id": candidate["candidate_id"], **proof})
@@ -181,6 +185,12 @@ def successor(previous, value, files):
             require(decision["frozen_scientific_comparison_qualified"]
                     and decision["initial_recorded_comparison_qualified"] and state not in ("HI", "WY"),
                     "Candidate identity evidence cannot grant new scientific eligibility")
+    return review, changed
+
+
+def successor(previous, value, files):
+    require(previous.get("version") == "20261116-01", "Identity review needs its frozen predecessor")
+    review, changed = _apply_evidence(previous, Evidence(value), "reviewed_FEC_stable_identity")
     review["version"] = VERSION
     review["candidate_identity_successor"] = {
         "contract": CONTRACT, "version": VERSION, "files": copy.deepcopy(files),
@@ -191,6 +201,131 @@ def successor(previous, value, files):
         "all_legacy_candidates_and_unmatched_Other_mass_preserved": True,
         "nickname_dictionary_or_initial_only_aliases_used": False,
     }
+    return review
+
+
+def declared_names(literal):
+    quoted = re.fullmatch(r'(.+?)\s+["\u201c]([^"\u201d]+)["\u201d]\s+(.+)', literal)
+    if quoted:
+        given, alias, family = quoted.groups()
+        return [given + " " + family, alias + " " + family]
+    return [literal]
+
+
+def full_name_key(name):
+    words = tokens(name)
+    return [words[0], *[word for word in words[1:-1] if len(word) > 1], words[-1]] if len(words) >= 2 else []
+
+
+class DeclaredEvidence(Evidence):
+    def __init__(self, fec, value):
+        super().__init__(fec)
+        require(set(value) == {"contract", "sources", "declarations"}
+                and value["contract"] == DECLARATION_CONTRACT, "Unreviewed primary name declarations")
+        require(isinstance(value["sources"], list) and isinstance(value["declarations"], list),
+                "Missing primary name evidence tables")
+        sources = {}
+        for source in value["sources"]:
+            require(set(source) == {"id", "url", "bytes", "sha256", "checked_at", "kind", "facts"},
+                    "Unexpected primary evidence fields")
+            url = urlsplit(source["url"])
+            require(url.scheme == "https" and url.netloc and not url.username and not url.password
+                    and source["kind"] in ("candidate_campaign", "nominating_party")
+                    and type(source["bytes"]) is int and source["bytes"] > 0
+                    and re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+                    and isinstance(source["checked_at"], str) and source["checked_at"],
+                    "Unqualified primary source receipt")
+            require(source["id"] not in sources, "Duplicate primary source")
+            require(isinstance(source["facts"], dict) and source["facts"]
+                    and all(isinstance(key, str) and isinstance(text, str) and text
+                            for key, text in source["facts"].items()), "Nonliteral primary name facts")
+            sources[source["id"]] = source
+        self.declarations = defaultdict(list)
+        seen = set()
+        for declaration in value["declarations"]:
+            require(set(declaration) == {"fec_candidate_id", "state_code", "district", "literal_party",
+                                        "election_year", "source_id", "name_facts", "role_fact",
+                                        "relationship"}, "Unexpected name declaration fields")
+            candidate = self.candidates.get(declaration["fec_candidate_id"])
+            source = sources.get(declaration["source_id"])
+            require(candidate is not None and source is not None, "Unbound primary declaration")
+            require(candidate["office"] == "H" and candidate["election_year"] == "2026"
+                    and all(declaration[key] == candidate[other] for key, other in (
+                        ("state_code", "office_state"), ("district", "district"),
+                        ("literal_party", "literal_party"), ("election_year", "election_year")))
+                    and declaration["relationship"] == "same_candidate_biography",
+                    "Primary declaration frame differs from FEC identity")
+            key = (declaration["fec_candidate_id"], declaration["source_id"])
+            require(key not in seen, "Duplicate candidate declaration")
+            seen.add(key)
+            ids = declaration["name_facts"]
+            require(isinstance(ids, list) and ids and len(ids) == len(set(ids))
+                    and all(item in source["facts"] for item in ids)
+                    and declaration["role_fact"] in source["facts"], "Incomplete declared identity facts")
+            role = source["facts"][declaration["role_fact"]]
+            require(tokens(role) == ["us", "representative", "district", str(int(candidate["district"]))],
+                    "Primary declaration does not identify its congressional district")
+            names = [name for item in ids for name in declared_names(source["facts"][item])]
+            family = tokens(candidate["name"].partition(",")[0])
+            require(len({tuple(full_name_key(name)) for name in names}) >= 2
+                    and all(len(tokens(name)) > len(family)
+                            and len(tokens(name)[0]) > 1
+                            and tokens(name)[-len(family):] == family for name in names)
+                    and any(super(DeclaredEvidence, self).support(
+                        " ".join(full_name_key(name)), candidate) for name in names),
+                    "Declared aliases lack a full-surname FEC anchor")
+            self.declarations[candidate["candidate_id"]].append((source, ids, names))
+
+    def support(self, name, candidate):
+        ordinary = super().support(name, candidate)
+        if ordinary is not None:
+            return ordinary
+        matches = []
+        for source, ids, names in self.declarations[candidate["candidate_id"]]:
+            if full_name_key(name) in [full_name_key(item) for item in names]:
+                matches.append({
+                    "source_id": source["id"], "source_url": source["url"],
+                    "source_pin": {key: source[key] for key in ("bytes", "sha256")},
+                    "name_facts": {key: source["facts"][key] for key in ids},
+                })
+        if matches:
+            return {"method": "reviewed_explicit_primary_name_declaration", "declarations": matches}
+        return None
+
+
+def declaration_successor(previous, value, fec, files):
+    require(previous.get("version") == VERSION, "Name declarations need the reviewed FEC predecessor")
+    require(pin(encoded(fec))["sha256"] == previous["candidate_identity_successor"]["evidence_sha256"],
+            "Name declarations need the same complete FEC evidence")
+    review, changed = _apply_evidence(previous, DeclaredEvidence(fec, value),
+                                    "reviewed_primary_declaration_and_FEC_stable_identity")
+    review["version"] = DECLARATION_VERSION
+    review["candidate_name_declarations"] = {
+        "contract": DECLARATION_CONTRACT, "version": DECLARATION_VERSION,
+        "files": copy.deepcopy(files), "predecessor_review_sha256": pin(encoded(previous))["sha256"],
+        "evidence_sha256": pin(encoded(value))["sha256"], "resolved_identities": changed,
+        "declarations_do_not_establish_ballot_inventory_or_stage": True,
+        "all_legacy_candidates_and_unmatched_Other_mass_preserved": True,
+        "nickname_dictionary_or_initial_only_aliases_used": False,
+    }
+    return review
+
+
+def load_declaration_successor(root, review):
+    require(review.get("version") == DECLARATION_VERSION, "Unreviewed primary declaration successor")
+    files = (review.get("candidate_name_declarations") or {}).get("files") or {}
+    require(set(files) == set(DECLARATION_PATHS), "Incomplete primary declaration evidence package")
+    bodies = {}
+    for name in DECLARATION_PATHS:
+        body = (Path(root) / name).read_bytes()
+        require(pin(body) == files[name], "Changed complete primary declaration evidence")
+        bodies[name] = body
+    previous = json.loads(gzip.decompress(bodies[DECLARATION_PATHS[0]]))
+    load_successor(root, previous)
+    value = json.loads(gzip.decompress(bodies[DECLARATION_PATHS[1]]))
+    fec = json.loads(gzip.decompress((Path(root) / DATA_PATHS[1]).read_bytes()))
+    require(declaration_successor(previous, value, fec, files) == review,
+            "Primary declaration decisions do not reproduce from complete pinned evidence")
     return review
 
 

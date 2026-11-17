@@ -223,3 +223,126 @@ def test_two_legacy_names_cannot_consume_the_same_provider_candidate():
     assert result["candidate_identity_successor"]["resolved_identities"] == []
     assert result["races"][key]["named_crosswalk"] == previous["races"][key]["named_crosswalk"]
     assert result["legacy_candidates_preserved"] == previous["legacy_candidates_preserved"]
+
+
+def declaration_fixture():
+    fec = evidence()
+    fec["candidates"][0]["name"] = "DOE, JOSEPH"
+    fec["committees"] = []
+    fec["linkages"] = []
+    previous, key = unresolved_review()
+    previous = identity.successor(previous, fec, {})
+    value = {
+        "contract": identity.DECLARATION_CONTRACT,
+        "sources": [{
+            "id": "party-bios", "url": "https://example.org/candidates",
+            "bytes": 1000, "sha256": "a" * 64, "checked_at": "2026-11-17T17:00:00Z",
+            "kind": "nominating_party",
+            "facts": {"name": 'Joseph "Joe" Doe', "role": "Us Representative - District 0"},
+        }],
+        "declarations": [{
+            "fec_candidate_id": "H6AR00001", "state_code": "AR", "district": "00",
+            "literal_party": "DEM", "election_year": "2026", "source_id": "party-bios",
+            "name_facts": ["name"], "role_fact": "role", "relationship": "same_candidate_biography",
+        }],
+    }
+    return fec, previous, value, key
+
+
+def test_primary_declaration_resolves_only_the_explicit_full_name_pair():
+    fec, previous, value, key = declaration_fixture()
+    before = copy.deepcopy(previous)
+    assert previous["states"]["AR"]["holds"]
+    result = identity.declaration_successor(previous, value, fec, {})
+    assert previous == before
+    assert result["states"]["AR"]["automatic_update_reviewed"]
+    assert result["legacy_candidates_preserved"] == previous["legacy_candidates_preserved"]
+    assert result["candidate_crosswalk"][2] == previous["candidate_crosswalk"][2]
+    assert identity.DeclaredEvidence(fec, value).resolve(*candidates()) is not None
+    old, current, race = candidates()
+    old["name"] = "Joey Doe"
+    assert identity.DeclaredEvidence(fec, value).resolve(old, current, race) is None
+
+
+def test_two_literal_names_in_one_reviewed_biography_allow_only_optional_middle_initials():
+    fec, _, value, _ = declaration_fixture()
+    fec["candidates"][0]["name"] = "DOE, JOE"
+    value["sources"][0]["facts"].update(name="Joseph C. Doe", short="Joe Doe")
+    value["declarations"][0]["name_facts"].append("short")
+    old, current, race = candidates()
+    assert identity.DeclaredEvidence(fec, value).resolve(old, current, race) is not None
+    current["name"] = "Joseph Charles Doe"
+    assert identity.DeclaredEvidence(fec, value).resolve(old, current, race) is None
+
+
+def test_smart_quoted_declaration_preserves_literal_middle_initial_without_requiring_it_in_feed():
+    fec, _, value, _ = declaration_fixture()
+    value["sources"][0]["facts"]["name"] = "Joseph \u201cJoe\u201d C. Doe"
+    result = identity.DeclaredEvidence(fec, value).resolve(*candidates())
+    assert result["legacy_support"]["declarations"][0]["name_facts"] == {
+        "name": "Joseph \u201cJoe\u201d C. Doe"}
+
+
+@pytest.mark.parametrize("target,field,value", [
+    ("declarations", "state_code", "CA"), ("declarations", "district", "01"),
+    ("declarations", "election_year", "2024"), ("declarations", "literal_party", "REP"),
+    ("declarations", "relationship", "similar_names"),
+    ("sources", "kind", "search_snippet"), ("sources", "url", "http://example.org/candidates"),
+    ("sources", "sha256", "not-a-hash"),
+])
+def test_unqualified_declaration_context_cannot_resolve_identity(target, field, value):
+    fec, _, declarations, _ = declaration_fixture()
+    declarations[target][0][field] = value
+    with pytest.raises(ValueError):
+        identity.DeclaredEvidence(fec, declarations)
+
+
+@pytest.mark.parametrize("literal", ["State Representative - District 0",
+                                    "Us Representative - District 1", "Senate"])
+def test_other_office_or_district_declaration_stays_held(literal):
+    fec, _, value, _ = declaration_fixture()
+    value["sources"][0]["facts"]["role"] = literal
+    with pytest.raises(ValueError, match="congressional district"):
+        identity.DeclaredEvidence(fec, value)
+
+
+def test_primary_identity_bridge_preserves_overlapping_other_and_source_holds():
+    fec, previous, value, key = declaration_fixture()
+    reason = "aggregate_other_not_reconciled_to_retained_minor_candidate_mass"
+    previous["races"][key]["initial_holds"].append(reason)
+    previous["states"]["AR"]["holds"].append(key + ":" + reason)
+    result = identity.declaration_successor(previous, value, fec, {})
+    assert result["states"]["AR"]["holds"] == [key + ":" + reason]
+    assert result["states"]["AR"]["automatic_update_reviewed"] is False
+    assert result["races"][key]["accepted_native"] == previous["races"][key]["accepted_native"]
+
+
+def test_complete_primary_evidence_and_full_fec_predecessor_chain_are_packaged(tmp_path):
+    fec, previous, value, _ = declaration_fixture()
+    base = unresolved_review()[0]
+    fec_bodies = {
+        identity.DATA_PATHS[0]: bridge.compressed(base),
+        identity.DATA_PATHS[1]: bridge.compressed(fec),
+        identity.DATA_PATHS[2]: encoded({"passed": True}),
+    }
+    previous = identity.successor(base, fec, {name: pin(body) for name, body in fec_bodies.items()})
+    bodies = {
+        identity.DECLARATION_PATHS[0]: bridge.compressed(previous),
+        identity.DECLARATION_PATHS[1]: bridge.compressed(value),
+        identity.DECLARATION_PATHS[2]: encoded({"passed": True}),
+    }
+    result = identity.declaration_successor(previous, value, fec,
+                                            {name: pin(body) for name, body in bodies.items()})
+    for name, body in {**fec_bodies, **bodies}.items():
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(body)
+    assert set(identity.DATA_PATHS + identity.DECLARATION_PATHS) <= set(bridge.data_paths(result))
+    assert identity.load_declaration_successor(tmp_path, result) == result
+    result["states"]["AR"]["automatic_update_reviewed"] = False
+    with pytest.raises(ValueError, match="do not reproduce"):
+        identity.load_declaration_successor(tmp_path, result)
+    path = tmp_path / identity.DATA_PATHS[1]
+    path.write_bytes(bridge.compressed({**fec, "sources": ["changed"]}))
+    with pytest.raises(ValueError, match="Changed complete"):
+        identity.load_declaration_successor(tmp_path, result)

@@ -275,6 +275,41 @@ not activate that separate patch. Full before/after points, source queries,
 download pins, exact commands and remaining holds are in the
 [hosted acceptance record](../data/participation-access/20261117-house-identity-automatic-01/acceptance.json).
 
+#### Explicit primary-source name declarations
+
+The separately reviewed `20261117-declarations-01` successor accepts explicit
+same-candidate full-name/nickname declarations from a candidate or nominating
+party. It requires the complete preceding FEC identity chain, the same stable
+FEC candidate and congressional frame, an exact source role, a full surname,
+and a noninitial first-name anchor. Optional single-letter middle initials and
+straight/smart quotation marks are supported; a generic nickname dictionary,
+initial-only matches and different full middle names are not.
+
+The selected Valencia County Republican Party biographies explicitly supply
+Ndidiamaka "Didi" C. Okpareke for New Mexico District 1 and Gregory C. Cunningham
+for District 2, whose biography also uses Greg. These declarations resolve two
+identity holds, not ballot presence or vote counts. The retained national feed
+supplies six candidates across the three districts, totaling D 444,863 /
+R 277,531 / Other 0 in the numerical proof. Those are retained-source counts,
+not a claim of fresh acquisition or certification.
+
+New Mexico consequently joins AR/DE/TN/VT for automatic reconditioning across
+the existing nine variants: five states / 45 variant frames rather than four /
+36. The remaining 28 previously qualified state models stay frozen where
+independent guards still fail. The 33/17 scientific mask, all legacy candidates,
+unmatched minor/write-in mass, protected official frames and Senate model
+requirements are unchanged. Each hourly runtime reapplies the reviewed rules;
+no assistant approval or respondent refit is needed for compatible revisions.
+
+`data/results-intake/analytical-handoff/name-declarations/` retains the complete
+preceding review, safe factual declarations, source/schema receipts and a
+separate native verification. The loader recomputes the full evidence chain
+before accepting its decisions. Complete runtime downloads embed all six
+FEC/declaration evidence files alongside the existing geography originals,
+candidate crosswalks, decisions, numerical outputs and literal offline replay.
+The congressional frontend accepts only the explicitly reviewed version;
+source publication does not deploy that frontend patch.
+
 The predecessor `data/results-intake/analytical-handoff/review.json.gz`, version `20261116-01`,
 reviews the complete provider inventory against all 1,401 retained legacy
 candidate records and all 50 state decisions. Initial matching requires
