@@ -1,5 +1,23 @@
 # Reproduce a saved analysis
 
+## November 18 current collection and complete offline replay
+
+[Complete current runbook](../data/participation-access/20261118-complete-automatic-products-02/REPORT.md#collection-and-analytical-refresh). Accepted immutable source pointer: `https://raw.githubusercontent.com/hanshanley/voter-participation/13799554103654952200909a14af770cea8d3d55/latest.json`. Omit results_pointer in the existing workflow for ordinary latest-source refresh. Analytical runtime is data-only; it does not deploy Pages.
+
+Extract each full package into a separate fresh directory. Analytical/source replay uses CPython 3.12 for analysis and Python 3.9+ for the source packet. Use each package's runtime/dependency declarations, not a floating-point tolerance.
+
+```sh
+# Complete analytical packet: 171 outputs, no network/private refitting
+python3.12 code/reproduce.py --replay-package . --output reproduced
+# Complete selected source packet: 22 outputs
+python3 code/reproduce.py replay --package . --output reproduced
+# Separate complete display-geography packet, using its requirements.txt
+python -m scripts.replay_house_district_map --inputs inputs --expected expected --output reproduced
+python -m scripts.verify_house_district_map --inputs inputs --output reproduced
+```
+
+All commands were accepted against their actual packaged code. An unchanged geography replay preserves bytes/mtimes. These are selected-fact numerical replays, not fresh source acquisition or empirical validation of individual histories. **Earlier runbooks below are preserved version-specific history, including their older pointers, output counts and delivery labels.**
+
 ## Current collection, analytical refresh and offline reproduction
 
 The existing hourly writers perform normal updates. Manual equivalents are:

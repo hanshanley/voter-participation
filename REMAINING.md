@@ -1,5 +1,19 @@
 # Remaining work: participation and election-transition estimates
 
+## November 18: accepted automatic products and actual map delivery
+
+**435 House and 35 Senate returns refresh, with zero retained races. Eleven House states update 99 variant frames automatically (reported baseline: 4/36); 22 formerly qualified states remain frozen (was 29). Current qualified comparisons: 259 districts, 32 House states and 28 Senate contests.**
+
+**Actual production now passes 28 Senate reader comparisons = 28 exports, and all 16 Maine counties' retained round-one D/R partial counts on desktop/mobile.** Those readers arrived via an independently existing scheduled deployment, not an assistant deployment request. Maine is not final RCV, turnout or a qualified cross-election swing. The new all-435-district map is source-published, built, visually/browser tested and **not live** under the explicit no-Pages-deployment instruction; 259 qualified values and 176 hatched holds are preserved. Dated TIGER display outlines do not certify legal boundaries or remove split-block/effective-plan holds.
+
+Participation has 36,562 source appearances (36,373 reported), including one newly integrated retained official Wyoming statewide observation: 191,713 ballots, no new rate/denominator. Compatible rate coverage remains 4,857 frames in 23 jurisdictions, including eight statewide frames. CA's retained official integration advances 12,898,770 to 13,386,237; a fresh NE capture advances 767,046 to 775,942. These are not unique-person counts or complete nationwide local/group turnout.
+
+RI has one complete transported-prior Senate scenario/nine fits; AL and NM have two partial scenarios/18 fits. Zero empirical Senate respondent models were added. All 171 current numerical outputs reproduce offline and match public bodies; an actual unchanged hosted run preserves the data/manifest and starts zero site builds.
+
+[Complete project handoff and commands](data/participation-access/20261118-complete-automatic-products-02/REPORT.md), [current coverage and full downloads](data/participation-access/20261118-complete-automatic-products-02/coverage-and-downloads.json), [all 50 state guards](data/participation-access/20261118-complete-automatic-products-02/state-guard-matrix.json), [district decisions](data/participation-access/20261118-complete-automatic-products-02/house-district-decisions.csv), [source distinctions](data/participation-access/20261118-complete-automatic-products-02/observations.json), [acceptance and live/prepared evidence](data/participation-access/20261118-complete-automatic-products-02/acceptance.json).
+
+The overall scientific project remains open. Missing identity/category universes, effective-boundary historical returns, matched participation denominators and actual Senate respondent evidence are not resolved by documentation. **Every earlier section below is preserved historical provenance; its 'current', 7-state, 25-reader or Maine-undeployed wording does not supersede this section.** All old complete URLs remain.
+
 ## Current automatic partial Senate scenarios: Alabama and New Mexico
 
 The existing hourly pipeline now reconditions two reviewed D/R-only partial Senate scenarios, each across nine assumptions. New Mexico is newly supported using retained FEC identity evidence; Alabama's numerical model is unchanged. This is not a new source acquisition, empirical Senate respondent fit, strict legacy-model refresh or participation observation. Historical Other remains observed; current unreported Other remains unknown.

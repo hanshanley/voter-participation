@@ -1,0 +1,1028 @@
+{
+  "actual_live_readers": {
+    "assistant_requested_deployment": false,
+    "images": {
+      "maine-production-01-1440.png": {
+        "bytes": 207769,
+        "sha256": "4ea4c89602e0317213040699e166fb758938d4cde67e4130ba346cab3857eba4"
+      },
+      "maine-production-01-390.png": {
+        "bytes": 96073,
+        "sha256": "c60080ef4b968c5056b8a7a7ccf149690c91c1700e2b761d0c1d786d5a04dd0d"
+      },
+      "maine-production-01-detail-1440.png": {
+        "bytes": 193450,
+        "sha256": "50a0b4b85b2372e685303bf4d0cc71ed4df177ffc0203d51886b5fcc5902613f"
+      },
+      "maine-production-01-detail-390.png": {
+        "bytes": 103282,
+        "sha256": "d96d4f4b9e10afcb4cc2be548d9d2afb8759345d2a745e1401c9acb78fc9a261"
+      },
+      "senate-1440.png": {
+        "bytes": 267961,
+        "sha256": "48aceaadd1ab7975a175f3e16b24458d34e444f65d4115020ce4502895c51f43"
+      },
+      "senate-390.png": {
+        "bytes": 191552,
+        "sha256": "214c8cdc7ca67ec349822d0f2aaa3610050f2f09d79fb470c282104af3fc7a0b"
+      }
+    },
+    "maine": {
+      "base": "https://www.themarginoferror.com",
+      "normal_cases_use_actual_published_data": true,
+      "outcomes": [
+        {
+          "cached_reload": true,
+          "counties": 16,
+          "detail_image": "maine-production-01-detail-1440.png",
+          "detail_image_sha256": "50a0b4b85b2372e685303bf4d0cc71ed4df177ffc0203d51886b5fcc5902613f",
+          "image": "maine-production-01-1440.png",
+          "image_sha256": "4ea4c89602e0317213040699e166fb758938d4cde67e4130ba346cab3857eba4",
+          "keyboard_selections": 16,
+          "native_count_cells": 32,
+          "page_errors": [],
+          "physical_county_click": true,
+          "width": 1440
+        },
+        {
+          "cached_reload": true,
+          "counties": 16,
+          "detail_image": "maine-production-01-detail-390.png",
+          "detail_image_sha256": "d96d4f4b9e10afcb4cc2be548d9d2afb8759345d2a745e1401c9acb78fc9a261",
+          "image": "maine-production-01-390.png",
+          "image_sha256": "c60080ef4b968c5056b8a7a7ccf149690c91c1700e2b761d0c1d786d5a04dd0d",
+          "keyboard_selections": 16,
+          "native_count_cells": 32,
+          "page_errors": [],
+          "physical_county_click": true,
+          "width": 390
+        },
+        {
+          "availability_or_corruption_injected": true,
+          "fault": "http503",
+          "passed": true,
+          "valid_source_data_replaced": false
+        },
+        {
+          "availability_or_corruption_injected": true,
+          "fault": "checksum",
+          "passed": true,
+          "valid_source_data_replaced": false
+        },
+        {
+          "availability_or_corruption_injected": true,
+          "fault": "delayed",
+          "passed": true,
+          "valid_source_data_replaced": false
+        }
+      ],
+      "passed": true,
+      "production": true
+    },
+    "not_a_new_browser_run": true,
+    "passed": true,
+    "senate": {
+      "actual_production": true,
+      "cases": [
+        {
+          "literal_candidate_categories_checked": 140,
+          "page_errors": [],
+          "qualified_export": 28,
+          "qualified_reader": 28,
+          "races": 35,
+          "runtime": "ccc97d3e7a304728c301cbc78081e3555c224609a2b394a7b67f5817af43e418",
+          "seat_stage_details_checked": [
+            "FL",
+            "OH",
+            "GA"
+          ],
+          "width": 1440
+        },
+        {
+          "literal_candidate_categories_checked": 140,
+          "page_errors": [],
+          "qualified_export": 28,
+          "qualified_reader": 28,
+          "races": 35,
+          "runtime": "0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0",
+          "seat_stage_details_checked": [
+            "FL",
+            "OH",
+            "GA"
+          ],
+          "width": 390
+        }
+      ],
+      "deployment_requested": false,
+      "passed": true,
+      "script_style_overrides": false,
+      "valid_data_overrides": false
+    },
+    "served_source": {
+      "congress": {
+        "bytes": 30211,
+        "matches_latest_existing_scheduled_deployment_source": true,
+        "sha256": "d6ea6f7fcb455cd50e116be06e7ce2f7d230b744f5584560173fe67ec3e04d54",
+        "url": "https://www.themarginoferror.com/scripts/participation-congress.js"
+      },
+      "drivers": {
+        "bytes": 52588,
+        "includes_new_district_module": false,
+        "matches_latest_existing_scheduled_deployment_source": true,
+        "sha256": "558159b4b091513073d043ab73fb3bf240b91f3bb613db3d41911943c9bdacad",
+        "url": "https://www.themarginoferror.com/scripts/participation-return-drivers.js"
+      },
+      "page": {
+        "bytes": 6800398,
+        "sha256": "d83bf39a2c4980f07e5f417916b0bc93b45aa85b6af0af41d5b9fc1c2c57e532",
+        "url": "https://www.themarginoferror.com/voter-participation/"
+      }
+    },
+    "visual_review": "All six actual production captures were physically inspected in the accepted browser-review continuation: Maine county counts and selected details, and Senate seat/stage comparisons, at desktop and mobile widths."
+  },
+  "assistant_requested_pages_deployment": false,
+  "contract": "participation.complete_project_acceptance.v2",
+  "controlled_revisions_are_not_observed_election_results": true,
+  "controlled_source_revisions": {
+    "controlled_revisions_not_actual_source_observations": true,
+    "network_requests": 0,
+    "new_participation_or_model_qualification": false,
+    "outage_preserves_last_good_candidate_frame_and_own_provenance": true,
+    "passed": true,
+    "source_to_runtime_json_and_complete_csv": [
+      {
+        "candidate": 128779,
+        "complete_candidate_rows": 12,
+        "csv_pin": {
+          "bytes": 18022,
+          "sha256": "5480862d7ac8ffb8f791ff16532ac3d5ac0d7f758fce357373c1632d4b80dbb9"
+        },
+        "delta": 7,
+        "direction": "up",
+        "nonselected_sources_counts_clocks_and_all_nine_models_exact": true,
+        "printed_contest_total": 259367,
+        "source_pin": {
+          "bytes": 4004941,
+          "sha256": "cab12481099a0b55e3e2fc5db1f540d65e7fdd8ea7e54178bfb49a5386294ea3"
+        },
+        "unchanged_noop": true
+      },
+      {
+        "candidate": 128759,
+        "complete_candidate_rows": 12,
+        "csv_pin": {
+          "bytes": 18022,
+          "sha256": "eca083202b8b9200cee244be60a291edc178024fc42c7f6dd09b68a3564ff4cd"
+        },
+        "delta": -13,
+        "direction": "down",
+        "nonselected_sources_counts_clocks_and_all_nine_models_exact": true,
+        "printed_contest_total": 259347,
+        "source_pin": {
+          "bytes": 4004941,
+          "sha256": "8346a3ef5ec663961051467e877cfb5500db5e370b0ff2ce41e5d6d99a079ed7"
+        },
+        "unchanged_noop": true
+      }
+    ]
+  },
+  "district_geography_replay": {
+    "complete_packet": {
+      "bytes": 84131767,
+      "sha256": "7cd27f414ec1ec4f701dca83d8f06fd124e49e1ebd02a124728d6d2da08399cb"
+    },
+    "independent_PROJ_orientation_test_rejects_old_sign": true,
+    "literal_extracted_replays": 2,
+    "native": {
+      "independent_stdlib_shp_dbf_reader": true,
+      "native_records": 876,
+      "native_vertices": 8113804,
+      "new_electoral_qualifications": 0,
+      "original_archives": 100,
+      "passed": true,
+      "unassigned_areas": 3,
+      "voting_districts": 435
+    },
+    "native_decisions_and_csv_byte_identical": true,
+    "native_proof_reused_with_all_input_bytes_checked": true,
+    "network_requests": 0,
+    "passed": true,
+    "replays": [
+      {
+        "dependencies": {
+          "pyproj": "3.6.1",
+          "pyshp": "3.1.6",
+          "shapely": "2.0.7"
+        },
+        "external_operations_blocked": true,
+        "network_requests": 0,
+        "outputs": {
+          "district-geography.csv": {
+            "bytes": 40251,
+            "sha256": "3325a00924d0ec38ee33961d5361107206c2694881e8bf726d58cfc40c87afa9"
+          },
+          "district-geography.json.gz": {
+            "bytes": 74248,
+            "sha256": "d04a23c3284d5e7c6301a13c99c11bcce09a702b59bf2ca79d8a6892216c1f6f"
+          },
+          "district-paths.json.gz": {
+            "bytes": 168220,
+            "sha256": "566b5c5d4f03e3c464021c3a2a1ab45ad54a26b14e1f3b98cb91c4901bea4f4d"
+          },
+          "manifest.json": {
+            "bytes": 502,
+            "sha256": "fbf9b4dd7698bda1183921c181a12fbbcf31c41c498168efb9f747a178d23924"
+          }
+        },
+        "passed": true,
+        "runtime": "3.9.6",
+        "tests": 7
+      },
+      {
+        "dependencies": {
+          "pyproj": "3.6.1",
+          "pyshp": "3.1.6",
+          "shapely": "2.0.7"
+        },
+        "external_operations_blocked": true,
+        "network_requests": 0,
+        "outputs": {
+          "district-geography.csv": {
+            "bytes": 40251,
+            "sha256": "3325a00924d0ec38ee33961d5361107206c2694881e8bf726d58cfc40c87afa9"
+          },
+          "district-geography.json.gz": {
+            "bytes": 74248,
+            "sha256": "d04a23c3284d5e7c6301a13c99c11bcce09a702b59bf2ca79d8a6892216c1f6f"
+          },
+          "district-paths.json.gz": {
+            "bytes": 168220,
+            "sha256": "566b5c5d4f03e3c464021c3a2a1ab45ad54a26b14e1f3b98cb91c4901bea4f4d"
+          },
+          "manifest.json": {
+            "bytes": 502,
+            "sha256": "fbf9b4dd7698bda1183921c181a12fbbcf31c41c498168efb9f747a178d23924"
+          }
+        },
+        "passed": true,
+        "runtime": "3.9.6",
+        "tests": 7
+      }
+    ],
+    "unchanged_bytes_and_mtimes": true
+  },
+  "district_map_build": {
+    "base_commit": "170571753c8dc9e24c2732a92342b658989914d6",
+    "pages_deployment_requested": false,
+    "passed": true,
+    "payload_bytes": 984599693,
+    "preserved_downloads": 437,
+    "source_pins": {
+      "data/participation-house-districts/20261118-02/receipt.json": "0946f0d2dce30b360e5d953e83823576670ad097186023defd59be47a1305a54",
+      "package.json": "6cae969aae09dd1d5f3ec490fa68a8ab509f563712d78be00e2df7bb30ac567b",
+      "public/scripts/participation-house-districts.js": "374afe4446678d9d9c0f44f3d84a314de2c6aa966f6496698ddb265eac78ba91",
+      "public/scripts/participation-return-drivers.js": "437117c171b96f2f5a29e8b5811a2ccf63c13d8904fb468e47a5e88bd61a4879",
+      "scripts/fixtures/district-congress.json.gz": "ff0b62f11cb15c32dd8448fad1ab711f74c9d744aa6680fd9ecf656cb639e082",
+      "scripts/fixtures/district-paths.json.gz": "566b5c5d4f03e3c464021c3a2a1ab45ad54a26b14e1f3b98cb91c4901bea4f4d",
+      "scripts/participation-house-districts.test.mjs": "da02e7bb896693e2be82ada349ad2a7134456f3188196cbdc6654e7fa96e9fc1",
+      "src/components/ParticipationReturnDrivers.astro": "49282da1b9f939be50573e523a525d50f8473635c32adc9d5310462108a512f7"
+    },
+    "tar_bytes": 987156480
+  },
+  "district_map_faults": {
+    "cases": [
+      {
+        "cleared_and_recovered_or_ignored": true,
+        "fault": "http503",
+        "width": 1440
+      },
+      {
+        "cleared_and_recovered_or_ignored": true,
+        "fault": "checksum",
+        "width": 1440
+      },
+      {
+        "cleared_and_recovered_or_ignored": true,
+        "fault": "delayed-filter",
+        "width": 1440
+      },
+      {
+        "cleared_and_recovered_or_ignored": true,
+        "fault": "delayed-leave",
+        "width": 1440
+      },
+      {
+        "cleared_and_recovered_or_ignored": true,
+        "fault": "http503",
+        "width": 390
+      },
+      {
+        "cleared_and_recovered_or_ignored": true,
+        "fault": "checksum",
+        "width": 390
+      },
+      {
+        "cleared_and_recovered_or_ignored": true,
+        "fault": "delayed-filter",
+        "width": 390
+      },
+      {
+        "cleared_and_recovered_or_ignored": true,
+        "fault": "delayed-leave",
+        "width": 390
+      }
+    ],
+    "frontend": "prepared_not_deployed",
+    "pages_deployment_requested": false,
+    "passed": true,
+    "transport": "Actual built current-main explorer with public automatic manifest, congressional data and pinned geography. No data, script or style overrides in normal checks; fault checks intercept only the stated geometry failure/delay."
+  },
+  "district_map_images": {
+    "frontend": "prepared_not_deployed",
+    "images": {
+      "district-national-1440.png": {
+        "bytes": 170263,
+        "sha256": "5864ad66bdb6f5e5eeeec914cb8c56c861c4fcea7d4f95a2608df3e8e4b01614"
+      },
+      "district-national-390.png": {
+        "bytes": 52086,
+        "sha256": "eaa53bd4233a265d8237c2d77067d86e876e21404cd0f74e8a9583447b9b93ef"
+      },
+      "district-ri-1440.png": {
+        "bytes": 65242,
+        "sha256": "0960c31cc75e1260cb59b44d2846874618fdf7d6f2908945f43ca2c6b6d26bf5"
+      },
+      "district-ri-390.png": {
+        "bytes": 18172,
+        "sha256": "34899cfa430691ca8c099b4c012f4c2c6b06896bca3e0dba64e6e83bf1be1053"
+      }
+    },
+    "passed": true,
+    "visual_review": "All four actual built-browser captures physically inspected: upright national geography, Alaska/Hawaii insets, visible district boundaries and neutral hatches; Rhode Island selected-border state detail at both widths."
+  },
+  "district_map_normal": {
+    "cases": [
+      {
+        "all_map_values": 435,
+        "full_DROU_both_years": 435,
+        "held": 176,
+        "physical_tiny_district": "AZ-04",
+        "qualified": 259,
+        "runtime_version": "ccc97d3e7a304728c301cbc78081e3555c224609a2b394a7b67f5817af43e418",
+        "shared_manifest_requests": 1,
+        "state_filter_units_resize_keyboard_and_DC": true,
+        "width": 1440
+      },
+      {
+        "all_map_values": 435,
+        "full_DROU_both_years": 435,
+        "held": 176,
+        "physical_tiny_district": "AL-03",
+        "qualified": 259,
+        "runtime_version": "ccc97d3e7a304728c301cbc78081e3555c224609a2b394a7b67f5817af43e418",
+        "shared_manifest_requests": 1,
+        "state_filter_units_resize_keyboard_and_DC": true,
+        "width": 390
+      }
+    ],
+    "frontend": "prepared_not_deployed",
+    "pages_deployment_requested": false,
+    "passed": true,
+    "transport": "Actual built current-main explorer with public automatic manifest, congressional data and pinned geography. No data, script or style overrides in normal checks; fault checks intercept only the stated geometry failure/delay."
+  },
+  "hosted_runtime": {
+    "all_171_outputs_equal_accepted_actual_predecessor_successor": true,
+    "all_35_native_files_and_other_50_state_shards_preserved": true,
+    "automatic_states": [
+      "AR",
+      "DE",
+      "GA",
+      "HI",
+      "MN",
+      "NM",
+      "RI",
+      "SD",
+      "TN",
+      "VT",
+      "WY"
+    ],
+    "automatic_variant_frames": 99,
+    "complete_download": {
+      "bytes": 305697376,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "7f9f3e49b7a190a8d9a65bc76194847dc12dca133c4f55bb48ab395f5d818046",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "complete_public_output_bodies_verified": 171,
+    "congressional_summary": {
+      "house": {
+        "discovered": 435,
+        "held": 0,
+        "nonvoting_house_seats": 0,
+        "refreshed": 435,
+        "retained": 0,
+        "unknown_count_races": 0
+      },
+      "senate": {
+        "discovered": 35,
+        "held": 0,
+        "nonvoting_house_seats": 0,
+        "refreshed": 35,
+        "retained": 0,
+        "unknown_count_races": 0
+      }
+    },
+    "data_commit": "200cca8549a26aaec5a546feb09a0171bb39cb46",
+    "input_results_version": "2d0961ef07b6235ac89c89b2424a23bd62da3e76dcce3e226e545d5fcdd01bdb",
+    "new_acquisitions": 0,
+    "new_canonical_participation_observations": 1,
+    "new_qualified_turnout_rates": 0,
+    "offline_replay": {
+      "complete_outputs": 171,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "prepared_frontend_not_deployed": true,
+    "previous_WY_502_records_and_all_view_selections_preserved": true,
+    "previously_qualified_frozen_states": [
+      "AZ",
+      "CO",
+      "CT",
+      "IA",
+      "ID",
+      "IN",
+      "KS",
+      "MD",
+      "MI",
+      "MO",
+      "MT",
+      "ND",
+      "NE",
+      "NH",
+      "NY",
+      "OH",
+      "OR",
+      "PA",
+      "SC",
+      "UT",
+      "VA",
+      "WV"
+    ],
+    "research_commit": "3385b01fc050c02943d6b451fd58596d7e7c66bd",
+    "retained_evidence_newly_qualified": true,
+    "run": 44236648813,
+    "run_url": "https://github.com/hanshanley/margin_of_error/actions/runs/44236648813",
+    "scientific_comparison_coverage": {
+      "legacy_reader_qualified_senate": 25,
+      "reviewed_qualified_house_districts": 259,
+      "reviewed_qualified_house_states": 32,
+      "reviewed_qualified_senate": 28
+    },
+    "source_models_refitted": false,
+    "staged_commit": "9083f8d15ee17c56691c4db0aaa81b3aa5e3686c",
+    "statewide_ballots": {
+      "WY": 191713
+    },
+    "version": "0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0",
+    "website_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+  },
+  "hosted_unchanged_noop": {
+    "data_commit": "200cca8549a26aaec5a546feb09a0171bb39cb46",
+    "pages_deployment_requested": false,
+    "passed": true,
+    "run": 44237687150,
+    "run_url": "https://github.com/hanshanley/margin_of_error/actions/runs/44237687150",
+    "source_collection_requested": false,
+    "unchanged_data_head_and_manifest": true,
+    "version": "0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0",
+    "website_builds_started": 0
+  },
+  "new_denial_policy": {
+    "all_nonpolicy_state_facts_preserved": true,
+    "candidate_identity_qualification_changed": false,
+    "data_commit": "5ad40de3ea3f90a1203d555fc31b481fd5efc5dc",
+    "durable_exact_url_stops": 196,
+    "latest_numerical_pointer_preserved": true,
+    "new_denial_not_numerical_evidence": {
+      "checked_at": "2026-11-18T04:25:38.954812+00:00",
+      "detail": "HTTP 403; original not replaced or retried",
+      "error": "source_access",
+      "status": "held",
+      "url": "https://broadandliberty.com/2026/04/07/delco-republican-nicholas-manganaro-is-running-for-pa-5-seat/"
+    },
+    "pages_deployment_requested": false,
+    "parent": "13799554103654952200909a14af770cea8d3d55",
+    "passed": true,
+    "source_acquisition_retried": false
+  },
+  "no_new_broad_build_replay_or_browser_campaign_for_this_report": true,
+  "passed": true,
+  "source_persistence": {
+    "bounded_source_snapshots_not_standalone_sites": true,
+    "component_publications": {
+      "margin_of_error": [
+        "a6c9e5dc6c8ec05653561f45321e4159eba38214",
+        "f08649eeabef92dc40370e2149810eff420d88d7",
+        "da7045375a3fe543da6631f85d9bf6b924e6b053",
+        "977c56ac307bc94591ccc68ac751b0c708359976",
+        "916aedefbc7489e17c3fd89eb6f2e6f517c3c727",
+        "9728e730d31a2a77bdca965562cd7c10c56e17cc",
+        "9263f4b8cc0ab0089ee7e07a46bb83d7325b8734",
+        "bd8b035e6988ea5934a46f49a652c3f64470849f",
+        "bcf72930a3ee225284dbb788c95b6b4cd7a2c788",
+        "9d37dc91cda34365308a32cd4f2bbe1f53cc9ca2",
+        "b86cc71919b4ca2855786026f08bb54db73d9892",
+        "170571753c8dc9e24c2732a92342b658989914d6",
+        "8a42cc1c989d80b7ed19f1636a38df20767764cc",
+        "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      ],
+      "voter-participation": [
+        "d6b835df4453ea90d93b821a36a01013e1c4c3b6",
+        "e89ec5b53fd04bbf88a90f7774131bff3ba43a6b",
+        "e08177e301ecf9d02ce394a5a31573f7406c58e1",
+        "586eae0664b4fcedec8cd831034cf6dac13f8e8e",
+        "f438b606f0668a55888aac2d359bb96c1a9fdfcf",
+        "ced9d09acea089173e293de37b7bb1800da7d3eb",
+        "9f55b2bc644833bf114cf8e1aff80625bcd10f0a",
+        "1394202147c5ac13b7c4e3d558ee7c646fe7cbe1",
+        "331d48409b1c8dafd37b8c06d03d510d8dcfd442",
+        "6f9e7b1906b42086c9300544625e42cf090be190",
+        "dbe1e5d4bb0034aa41dc117674f8900d9ed6060e",
+        "3385b01fc050c02943d6b451fd58596d7e7c66bd"
+      ]
+    },
+    "copies": {
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/.github/workflows/automatic-runtime.yml": {
+        "bytes": 2724,
+        "published_git_blob": "1d912bcc056870f344df2d7ecdeffdd66ee9c212",
+        "sha256": "67d4cd6b464b7a6b0d2257589f0da9c2f1e1c881207c0ef5d1ed876506255e1c",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/data/participation-house-districts/20261118-02/receipt.json": {
+        "bytes": 1068,
+        "published_git_blob": "929490e5781117565d5e05bf929c29bb7c1e3a75",
+        "sha256": "0946f0d2dce30b360e5d953e83823576670ad097186023defd59be47a1305a54",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/package.json": {
+        "bytes": 9456,
+        "published_git_blob": "22f579f6ff6273ec62bdb5aff1b06637048f1db8",
+        "sha256": "6cae969aae09dd1d5f3ec490fa68a8ab509f563712d78be00e2df7bb30ac567b",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/public/scripts/participation-automatic-runtime.js": {
+        "bytes": 22747,
+        "published_git_blob": "1a77bb038db0561975346881c25c0df20f1bbeba",
+        "sha256": "8fc2070f8fcfe406ecc3833c31c606f8a60e5ebc9aa774f289bb8bf6d0b1a983",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/public/scripts/participation-congress.js": {
+        "bytes": 30211,
+        "published_git_blob": "f0e04a0629c8e53aac097fec0dcfaf421e7075dd",
+        "sha256": "d6ea6f7fcb455cd50e116be06e7ce2f7d230b744f5584560173fe67ec3e04d54",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/public/scripts/participation-house-districts.js": {
+        "bytes": 21329,
+        "published_git_blob": "20951c321705332fe3af069105b299bcecf5c7b4",
+        "sha256": "374afe4446678d9d9c0f44f3d84a314de2c6aa966f6496698ddb265eac78ba91",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/public/scripts/participation-return-drivers.js": {
+        "bytes": 54466,
+        "published_git_blob": "be685f422b2e36d60175a5a44573c1d8ad43e9ee",
+        "sha256": "437117c171b96f2f5a29e8b5811a2ccf63c13d8904fb468e47a5e88bd61a4879",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/public/scripts/participation-senate-complete.js": {
+        "bytes": 14113,
+        "published_git_blob": "b1c6ffac295363b6094c138f6c4bdcf42a4183be",
+        "sha256": "12cd7b7e5b2ade4b16cf416bf2bdd9fb76ba8c872e5fba56a0678e193b90c535",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/public/scripts/participation-senate-partial.js": {
+        "bytes": 9468,
+        "published_git_blob": "0eee56a5f579eaf24bdaad18ed3fe9e1b8d513db",
+        "sha256": "6901fb0416bfe040216bb73d8960ac2dca676fbc7ee6b914ff4e0defaab3f30b",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/fixtures/district-congress.json.gz": {
+        "bytes": 435183,
+        "published_git_blob": "ce5233411e4aa3328b9f155ae7d9fa0cbe219a6d",
+        "sha256": "ff0b62f11cb15c32dd8448fad1ab711f74c9d744aa6680fd9ecf656cb639e082",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/fixtures/district-paths.json.gz": {
+        "bytes": 168220,
+        "published_git_blob": "c59d509c0b720f3c17569ec3e8dea45da150cff7",
+        "sha256": "566b5c5d4f03e3c464021c3a2a1ab45ad54a26b14e1f3b98cb91c4901bea4f4d",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/fixtures/senate-complete-official.json": {
+        "bytes": 30103,
+        "published_git_blob": "16a52510f998c6c0567c88481204a160ca309f13",
+        "sha256": "7dc935f6445ffb2dba05a68f74d8852dabbad68211972fec68b8ce250106a529",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/fixtures/senate-complete.json": {
+        "bytes": 724218,
+        "published_git_blob": "c0d1bcce17418060bec14f9891f5aa685cd9c2a4",
+        "sha256": "084b9e7d844f7bcd1165d3390c79399aafe0cd91bbe8b419edd548505a488820",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/fixtures/senate-partial-new-mexico.json": {
+        "bytes": 737250,
+        "published_git_blob": "7201b92ae690ad83dab3f1c7a351408a54649bd7",
+        "sha256": "419f3d3cf8a42f4b9ff2605816a4dbbfd3e7479f04934566a459ed3d570b4b88",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/fixtures/senate-partial.json": {
+        "bytes": 721817,
+        "published_git_blob": "7c42b43d84bfcbd55c80a1839a7909c434a8ec3a",
+        "sha256": "1bcb367b5099d8e575eaba632c73da2032801e436be7ffb846809b23bc1640aa",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/participation-automatic-runtime.test.mjs": {
+        "bytes": 16240,
+        "published_git_blob": "9130518ffcdef8aea74f6e27db3c5f46bb1f9d82",
+        "sha256": "23772bff7f2a48bf659b5d729efae44dff523cf999098f820ebc1d2612009bc0",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/participation-congress.test.mjs": {
+        "bytes": 15041,
+        "published_git_blob": "5d3ef98e29db7282e32c9d7c2cc40530f8975015",
+        "sha256": "8a1d9fc433250985208fffd483c6a164d2ce7bcf8a09e3ef00fcdf6e4f804247",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/participation-house-districts.test.mjs": {
+        "bytes": 7437,
+        "published_git_blob": "295cc839b0a3f39cf6573a1ab33f9529ab04a277",
+        "sha256": "da02e7bb896693e2be82ada349ad2a7134456f3188196cbdc6654e7fa96e9fc1",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/participation-senate-complete.test.mjs": {
+        "bytes": 6617,
+        "published_git_blob": "aafdc5fe9d0927c77dddb0fb2fba4c6efef117ef",
+        "sha256": "03e642e3eb42d6e6d2b91f449448855282aa07939d22cda8d978257652408769",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/participation-senate-partial.test.mjs": {
+        "bytes": 4845,
+        "published_git_blob": "a43d20dce454c43ce56df4aa80ba5b31aa72e01c",
+        "sha256": "1a554bbbb2574230374931c43b17c66e4b8352999d674af4acfac2ad743344f0",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "margin_of_error/data/participation-publication-source/20261118-complete-automatic-products-02/src/components/ParticipationReturnDrivers.astro": {
+        "bytes": 37632,
+        "published_git_blob": "50f3cf9a7ad6a7472333bc72fc1b9e922290e0e9",
+        "sha256": "49282da1b9f939be50573e523a525d50f8473635c32adc9d5310462108a512f7",
+        "source_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/.github/workflows/election-night.yml": {
+        "bytes": 11938,
+        "published_git_blob": "a84bd46cb8714e990dd0ab920060a06da92b8879",
+        "sha256": "2f51e6d464f62dcc6a1f8bf515361f493a14813efe77a04fe13295b72296beef",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/analytical-handoff/complete-categories/evidence.json.gz": {
+        "bytes": 1868,
+        "published_git_blob": "ff5f1cf333144503c092a0087ee1507b24dcb6f1",
+        "sha256": "113517aa3f4ea3d957d26daf47b25a37008228b11ec6a23d4d19dc937c0ea844",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/analytical-handoff/complete-categories/independent-native-verification.json": {
+        "bytes": 622,
+        "published_git_blob": "4bc5547e79d4981b239f1a3808cef4c1caae4dfb",
+        "sha256": "0dd2cad08d41100ca2e12dabc22450d77a952ba13c123c7516ad12bd337b5b86",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/analytical-handoff/complete-categories/predecessor-review.json.gz": {
+        "bytes": 290468,
+        "published_git_blob": "75628b1deb81138d4f77d15a387e5320c5417659",
+        "sha256": "8e149a37ba1ec8cc6bb388ec57c17a13af27e62e1357eca9e513737b32baf298",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/analytical-handoff/filing-name-declarations/evidence.json.gz": {
+        "bytes": 1347,
+        "published_git_blob": "9cbaaba017a0cf3a9d7642935c41523480fc4434",
+        "sha256": "62b0edee127d89df7ef894cd4a55c20c2152daebfd9492375d88b3e28ff8071a",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/analytical-handoff/filing-name-declarations/independent-native-verification.json": {
+        "bytes": 3693,
+        "published_git_blob": "9d95b916be472b4cfa5b543603fbffc0f0eedaaf",
+        "sha256": "ca929e570b0f1ae1cc5c54de6290ee4d0db9a733447ff864ad52a12918ffa2a3",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/analytical-handoff/filing-name-declarations/predecessor-review.json.gz": {
+        "bytes": 288348,
+        "published_git_blob": "d776fd435546ef6b8821b806ee2caea80c0b23f3",
+        "sha256": "ed0bca785235c4aab5d0d64161b252c192b530bfc9ab827cf522b2d79f188824",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/analytical-handoff/review.json.gz": {
+        "bytes": 291517,
+        "published_git_blob": "0cde3e162f381075f1aef925a29f44c108a57752",
+        "sha256": "1e8c73dd0015adc90fdcb6701cba7553edcdfc5f188a4d1a1ebafa0abd2079a6",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/official-congress.json": {
+        "bytes": 709,
+        "published_git_blob": "64428815a7b27c8b7e84360ce68d1a537f6ff83a",
+        "sha256": "8fc3428add3aa6bd4db4188c63b1d63a3f4da5a1df7e61a0ec11b6b72c470294",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/protected-official-house/hi-summary.txt": {
+        "bytes": 22026,
+        "published_git_blob": "a6e2c026639c6413090129be95ee0851d250d17b",
+        "sha256": "b262fa9df3b4d828468dbb2ad2f28f2273455af190b79cb2948073265c835db4",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/protected-official-house/review.json.gz": {
+        "bytes": 9706,
+        "published_git_blob": "20279a2608c34ee331d47799f0c5ca72bde08c9e",
+        "sha256": "76a77669d7ed1de3ed33b20b1e533a89492c4ad1ac21c25a8b2c836404350d9c",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/protected-official-house/wy-summary-facts.json.gz": {
+        "bytes": 4900,
+        "published_git_blob": "6e8af33c8c7252e095344b1e3b4c50a95d87a618",
+        "sha256": "0999af49575eeb6c54c9414a4412482e7500c68aa16a348075ff02698528439d",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/senate-complete-categories/evidence.json.gz": {
+        "bytes": 1762,
+        "published_git_blob": "bc6dc9ef0141c1be15dd1c92b7b0ed644a3701c3",
+        "sha256": "38f195b5f9f2732c9a723e2385cc6ec9947a2d8221a709c921d6c29caa19ec23",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/senate-complete-categories/independent-native-verification.json": {
+        "bytes": 1017,
+        "published_git_blob": "827b2d8c656730477f5fcefbde3f3d40d7b9179a",
+        "sha256": "8fb48974df3ba4513dc98e155caa8d362c17a08a84b2de04319cadf38fdbc962",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/senate-complete-categories/review.json.gz": {
+        "bytes": 78689,
+        "published_git_blob": "eeac1dc718dfe2a80a603465f6cd9a942a8b0f73",
+        "sha256": "c9044373a88eaa98cbc62689072ebe890f3e8a1300edf6bc06b408983e0ed808",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/senate-legacy/complete-predecessor.zip": {
+        "bytes": 14943668,
+        "published_git_blob": "3a949b105f9a1a803d59c9b2227b93ccc0a24c0e",
+        "sha256": "2377ea253d33b88af3146bad4e2a52c9936d97b178c00a4fa0e3be022aadeae1",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/senate-legacy/review-02.json": {
+        "bytes": 333333,
+        "published_git_blob": "66d5ee211f20e2c57b9e313f9885a5aa5fde40c5",
+        "sha256": "5651e1ea2a8aacc262738fcd08166a477bb4cf532c7a47c7d4b633b7e9b468fd",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/data/results-intake/senate-legacy/review.json": {
+        "bytes": 45409,
+        "published_git_blob": "c510cfcde93cae3919f222d302a45a01bad6fd0b",
+        "sha256": "26da8ddea965a6ec311c1630e480af19ed5929a623ab05b5649fc7500111d735",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/docs/RESULTS_INTAKE.md": {
+        "bytes": 124013,
+        "published_git_blob": "f91070ce775b81b0c08f296fa56f602b1171cd1c",
+        "sha256": "26a33c2e26947cb5df6f47a7fbe0b42ebdb298d79d21033e3d24d300a41b573f",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/docs/SENATE_PARTIAL_SCENARIOS.md": {
+        "bytes": 6283,
+        "published_git_blob": "cd6f2ba32ed1c41dd2c3af0fe0ef4c4fcaa9d061",
+        "sha256": "e8b59435ca3c3d54b9d9bc65a42e9b73204464957b0e851ba443fb8146f28aa2",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/docs/STATEWIDE_BALLOT_TOTALS.md": {
+        "bytes": 1883,
+        "published_git_blob": "c552425a9e98f2423777404cfec85b36ad09efae",
+        "sha256": "8198f31f347d9c101f6b3b5779dfc2a113141903efe78284692ab6d31c98546a",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/automatic_estimates.py": {
+        "bytes": 68387,
+        "published_git_blob": "415f4414e397fd05e1b8d48cac5548a2916532b7",
+        "sha256": "1bbd85ec9a378d17dd3c7470a51a1f57a4eab9088b6ae8b9ed60570fbf2dadef",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/automatic_native_refresh.py": {
+        "bytes": 58997,
+        "published_git_blob": "3e4a98cb095e129911271b2cd2ac138327e767b6",
+        "sha256": "1e25493874a2440517fc40ce3daaafa089a2958cad6e903ca3e63c4b3af4f683",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/automatic_runtime.py": {
+        "bytes": 54152,
+        "published_git_blob": "b5788cdce219613f9230b04515b877d1cfee4edc",
+        "sha256": "34ce7a4ab71979b7e1baea83c08a79570930c65fc8684b1ab0c55ef34cd5f80d",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/congressional_analytical_bridge.py": {
+        "bytes": 33565,
+        "published_git_blob": "4cd731d826fa13ad7c715a10f8d587624d4f53e8",
+        "sha256": "8a27e18f5861141fede7fc0b19289105c8fe81318ce52b326ce28d97bfe0572f",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/congressional_complete_categories.py": {
+        "bytes": 19979,
+        "published_git_blob": "48ed2bab0f194519929e0a34ec2a9be13482394e",
+        "sha256": "0561770c40289cab00df15746bcc4d92fea0ff9f24c8314149733d9b0653c1a0",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/congressional_filing_identity.py": {
+        "bytes": 12790,
+        "published_git_blob": "ebb9c250931c0be9dfa4777ebb0f37ee889c3bb6",
+        "sha256": "bb9a2f4d80f9165fb0546ac0db63f619c92f3f732eda0e44e33519d8d42f698d",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/protected_official_house.py": {
+        "bytes": 21069,
+        "published_git_blob": "00feb85f826722e56e52e1f1d19dbcefc8111711",
+        "sha256": "ea1e9cec25a5c60666fb2630495517acf81166b70a68607bbda635a8e1bf18b6",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/protected_official_wyoming.py": {
+        "bytes": 11258,
+        "published_git_blob": "4e3ba1505468511db8f338eef8dd63787378b5ff",
+        "sha256": "7a906e551d833f19a2b7f674b173d12d762f2e6016e7439cda167f985c4935f0",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/results_congress.py": {
+        "bytes": 39739,
+        "published_git_blob": "233cc67dd597ca914446de035fcb23f3ef0b76d9",
+        "sha256": "13757c39b02d09e6a08e5248870f69e1c6952ab2acf25ddba4c06dae78d7a181",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/results_granular.py": {
+        "bytes": 46556,
+        "published_git_blob": "4c84633e21e0acaf8997a09882dea711f51a9a89",
+        "sha256": "6a386a52dbb199f291817fcc874a83f01d6ab901332dbd548772b9fa748e3d2e",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/results_intake.py": {
+        "bytes": 67949,
+        "published_git_blob": "895d541c512270746336e45e2368631f8582c615",
+        "sha256": "61905d8c18daf7fc89ea174169cb93205f79f32444950eba93b48d588497b8b5",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/results_native.py": {
+        "bytes": 136616,
+        "published_git_blob": "d54faa322050f22de1dfa63a5274fabf5585db2c",
+        "sha256": "f919f051e3e376844b2370efcba27ed1074de391b869cbd52421c2967f46214a",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/results_official_congress.py": {
+        "bytes": 13407,
+        "published_git_blob": "74c74bf1113aab59228bbb30ecb3f54552a06834",
+        "sha256": "bdf4fc50070a9fca3984495e92fb70d33bf55ef5f73dbfd03340ba8b017d36cd",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/results_state_statistics.py": {
+        "bytes": 20469,
+        "published_git_blob": "4c5081c4070f62813f50029dabb4e20e56e906bf",
+        "sha256": "5b71e4a78c71a3fa2f2bdbb7c829667eb3cee8dfc0b90c821a303ee9c77d95b8",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/senate_complete_categories.py": {
+        "bytes": 22094,
+        "published_git_blob": "c479678a17b7d403b1a8a0f5fe3622e8acbab4bc",
+        "sha256": "66f997520f2c97b4e0a356ffc2d251826c52e1347ac221a857c54cec04eddcb7",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/senate_legacy_bridge.py": {
+        "bytes": 20847,
+        "published_git_blob": "9d5de6532edd3d42f9c6092fbfb30c03ad78bf99",
+        "sha256": "e0b2fe7fdacd0c40a40d9cadf223526d9bff948b96c11cb441ffbe234e6b2dee",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/statewide_ballot_totals.py": {
+        "bytes": 13723,
+        "published_git_blob": "ae0caf3e6d25f25c0da9efefb76592a11073cd9e",
+        "sha256": "c404970709bed303418e3d26d2cc13048bde4f88838dee7e92498c077555a887",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/scripts/supported_analytical_release.py": {
+        "bytes": 28590,
+        "published_git_blob": "487c769b2c818a5092d8de93ececed7b2f1b4500",
+        "sha256": "959fbdb5b283901aa99eedf90c2a74e115ab9d4cd675229c034d53041dc6d3f1",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/fixtures/ri-official-congress.json": {
+        "bytes": 6130,
+        "published_git_blob": "36e0be98b80c8a4490a65fb749558aa38e297c0a",
+        "sha256": "e7c3050052da73e87522586dee048a1a80c4201fd1ecce28f867b86db7bb402a",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/fixtures/ri-official-senate.json": {
+        "bytes": 13484,
+        "published_git_blob": "5a902902e6d62c664eff14e3d443e0763b3d9404",
+        "sha256": "41facf3a3264c9e60ea21fa7d4d37ebfbf72c4582e7de3b5cdc18654b1ca8cdf",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/fixtures/senate-legacy-alabama.json": {
+        "bytes": 712925,
+        "published_git_blob": "2a0937fc62c8882c2caaf3055b1ddd6677a2514e",
+        "sha256": "702430bf8f9a551e67c848e4d9efb27b7dbf98fed3d28e9247f6805a70d6e728",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/fixtures/senate-legacy-new-mexico.json": {
+        "bytes": 714792,
+        "published_git_blob": "892bf9e9f7ee4fa5082f9ff8926ee967c3b6e4f0",
+        "sha256": "cfd0790d1cd630e94f792de3d9b2cdc5146870cff4d4c2ca4d833eb50b7add45",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_congressional_analytical_bridge.py": {
+        "bytes": 16278,
+        "published_git_blob": "0d2648475a2659d489233359e984a636b018b1f7",
+        "sha256": "906b5201b4d04110b0d909728e1c3b982c9366bbbf474b352f9ba66ae9982d00",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_congressional_candidate_identity.py": {
+        "bytes": 28541,
+        "published_git_blob": "d1af1a425c3a3458185db7d5d2c802f1938f13df",
+        "sha256": "807f5653634cbdeca89a8a990ebf510a2ae3cc3609d066376ffc919cf9a3630e",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_congressional_category_reconciliation.py": {
+        "bytes": 12803,
+        "published_git_blob": "c6a8f050880d4ada2af156b77e1b1676fc01e530",
+        "sha256": "ee0519f265ffc94a8f00e55e8a2feaeb24b58307db08981ffd9325eeb0e59d50",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_congressional_complete_categories.py": {
+        "bytes": 10160,
+        "published_git_blob": "e7bdc8424b78cc95512fa0be1c81a84ce5e6d96a",
+        "sha256": "8b1d09e22ebdd4d48f31133cda9225325038952de5f83fbd5973d475564d668e",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_protected_official_house.py": {
+        "bytes": 16190,
+        "published_git_blob": "a9d7a766005380b743ef1348ea2431033ae5bea1",
+        "sha256": "2e7f7607c6b32a957375aa25e57634c53ddf69d94a4881a066673f2e78322a2f",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_protected_official_wyoming.py": {
+        "bytes": 13137,
+        "published_git_blob": "b2ca059fe6a43fc918f9119b881854fb5983d1d3",
+        "sha256": "b9b41f4169978a5e55015343ef199a54179ca9ccdec7ec54943bfa5ac03a1932",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_results_native.py": {
+        "bytes": 102223,
+        "published_git_blob": "8b27cd891d5832abf16aabb54cd39ad14aeda5da",
+        "sha256": "d6fef0f96ac62a2c913da75eff0f10252f756c11ff25dbbc20f7169feed019a2",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_results_official_congress.py": {
+        "bytes": 10041,
+        "published_git_blob": "5df98627dc4dcc91d2a594b149190c53daaf33b7",
+        "sha256": "0aeadbb503aae634a4c9ee9127664660b18d6fed9da51ee931a5493d5b2c6dab",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_senate_complete_categories.py": {
+        "bytes": 17849,
+        "published_git_blob": "4c7d6aba26ac2a8a53044ab1a24d80e8eb406eab",
+        "sha256": "4fe2ad16c4d8cccf9d3869c164daf9500de908b8c53dbb8500def7f00455f140",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_senate_legacy_bridge.py": {
+        "bytes": 17672,
+        "published_git_blob": "9a574e9947d0a2a8ac19c0d723bf91fcb415d475",
+        "sha256": "37ff2eca898597f7910f550f7947086e2ab6d401a1086ce9fce3c5b75c77478e",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_statewide_ballot_totals.py": {
+        "bytes": 8952,
+        "published_git_blob": "4b9bae7437ec4aadc04b3d0b7f95aa2885054b92",
+        "sha256": "32b752a5380bf11585bc1c84f160ff4072be35da349e89b7c80ec4632cb2831b",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      },
+      "voter-participation/data/participation-publication-source/20261118-complete-automatic-products-02/tests/test_supported_analytical_release.py": {
+        "bytes": 10336,
+        "published_git_blob": "ffda4329a002161eccbee798367c39139330a7f1",
+        "sha256": "d5a794c32970ba0801f10a5adce0590840c70bba31ab7417b9d357d554466ac4",
+        "source_commit": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+      }
+    },
+    "heads": {
+      "margin_of_error": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0",
+      "voter-participation": "f8d4f56a75589d7ca13f56957f5b993e5f3040b7"
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "protected_local_work_preserved": true,
+    "root_code_heads_and_indexes_not_replaced": true
+  },
+  "source_scope_revision_demo": "NE +7/-13 candidate corrections flow from source through actual runtime JSON and complete CSV; all unselected frames/models remain unchanged. Actual hosted unchanged run preserves the full data head/manifest and starts zero builds.",
+  "whole_project_complete": false
+}

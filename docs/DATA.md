@@ -1,5 +1,15 @@
 # Complete analysis downloads
 
+## November 18 complete immutable downloads
+
+- [Complete analytical packet](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0/complete-analysis.zip): 305,697,376 bytes; SHA256 `7f9f3e49b7a190a8d9a65bc76194847dc12dca133c4f55bb48ab395f5d818046`; all 171 numerical outputs.
+- [Complete selected source](https://raw.githubusercontent.com/hanshanley/voter-participation/9590fde995d1a8e6b7a75f97b8d08490492ec6c6/snapshots/2d0961ef07b6235ac89c89b2424a23bd62da3e76dcce3e226e545d5fcdd01bdb/complete-results.zip): 61,323,541 bytes; SHA256 `fe7ff4a7446549355bd975de313c1fafc26e4558ed06cf635797016a26bb0f1c`; 22 offline outputs.
+- [Complete Census display geography](https://github.com/hanshanley/margin_of_error/releases/download/participation-house-district-geography-20261118-02/complete-analysis.zip): 84,131,767 bytes; SHA256 `7cd27f414ec1ec4f701dca83d8f06fd124e49e1ebd02a124728d6d2da08399cb`; 100 whole original archives, 876 records, all 435 voting districts plus three unassigned areas, code, tests, queries and four reproduced outputs.
+
+The analytical packet includes the complete selected source, actual preceding rolling seed, retained scientific predecessors, permitted fitted/synthetic aggregates, complete candidate/category/boundary decisions and every numerical output. Private respondents are not redistributed or refitted. These are full query-set downloads, not metadata substitutes.
+
+[Complete handoff, figures and exact replay commands](../data/participation-access/20261118-complete-automatic-products-02/REPORT.md); [all output hashes and current coverage](../data/participation-access/20261118-complete-automatic-products-02/coverage-and-downloads.json). Earlier downloads remain valid historical versions, not the current snapshot.
+
 ## Current automatic partial Senate scenarios: Alabama and New Mexico
 
 The existing hourly pipeline now reconditions two reviewed D/R-only partial Senate scenarios, each across nine assumptions. New Mexico is newly supported using retained FEC identity evidence; Alabama's numerical model is unchanged. This is not a new source acquisition, empirical Senate respondent fit, strict legacy-model refresh or participation observation. Historical Other remains observed; current unreported Other remains unknown.

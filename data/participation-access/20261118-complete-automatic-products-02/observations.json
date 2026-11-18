@@ -1,0 +1,169 @@
+{
+  "all_original_evidence_and_scientific_versions_preserved": true,
+  "california": {
+    "after_both": 13386237,
+    "before_canonical": 12898770,
+    "before_legacy_display": 8928966,
+    "county_updates_preserved_exactly": 58,
+    "fresh_source_acquisitions": 0,
+    "native_clock": {
+      "literal": "November 16, 2026, 7:12 p.m.",
+      "qualification": "native_clock_or_explicitly_not_supplied",
+      "timezone": null
+    },
+    "native_measure": {
+      "id": "previously-reviewed-participation-count",
+      "kind": "participation_reported",
+      "literal": "voterTurnout",
+      "mode": "source_defined",
+      "unit": "source_reported_count"
+    },
+    "original_retained_source": {
+      "bytes": 33908,
+      "sha256": "95340f678349f61f8af9f968b6c8fec6f6261779a13728f90782fd8988dbf69b",
+      "url": "https://media.sos.ca.gov/media/status_GG.json"
+    },
+    "registered_frame": {
+      "basis": "native_registered_voters",
+      "literal": "native_registered_voters",
+      "qualified": true,
+      "value": 23273590
+    },
+    "source_printed_percentage": "57.5%"
+  },
+  "contract": "participation.complete_project_observations.v2",
+  "current_source_capture_reused_not_reacquired": {
+    "acceptance_reused_from": "full-project-senate-official-precedence-20261118-01",
+    "all_nonselected_sources_counts_clocks_and_prior_stops_exact": true,
+    "complete_download": {
+      "bytes": 61323541,
+      "sha256": "fe7ff4a7446549355bd975de313c1fafc26e4558ed06cf635797016a26bb0f1c",
+      "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/9590fde995d1a8e6b7a75f97b8d08490492ec6c6/snapshots/2d0961ef07b6235ac89c89b2424a23bd62da3e76dcce3e226e545d5fcdd01bdb/complete-results.zip"
+    },
+    "complete_public_bodies_verified": 23,
+    "fresh_selected_capture": false,
+    "immutable_pointer": "https://raw.githubusercontent.com/hanshanley/voter-participation/13799554103654952200909a14af770cea8d3d55/latest.json",
+    "new_election_source_collection_requested": false,
+    "new_original_bytes": false,
+    "new_participation_observations": 0,
+    "official_candidate_rows": 5,
+    "official_house_districts": 1,
+    "offline_replay": {
+      "complete_outputs": 22,
+      "network_requests": 0,
+      "passed": true
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "research_commit": "9f55b2bc644833bf114cf8e1aff80625bcd10f0a",
+    "reused_previously_accepted_capture": true,
+    "run": 44226023987,
+    "run_url": "https://github.com/hanshanley/voter-participation/actions/runs/44226023987",
+    "source_attempts": [
+      {
+        "bytes": 647239,
+        "id": "WY-official-house-candidates",
+        "sha256": "c378306bd8df97437a3d11fac7792e23a8297a7e3eded8129a9cd61e3e654ff1",
+        "status": "unchanged_conditional_response",
+        "url": "https://sos.wyo.gov/Elections/Docs/2026/Results/General/2026_Wyoming_General_Results.zip"
+      }
+    ],
+    "version": "2d0961ef07b6235ac89c89b2424a23bd62da3e76dcce3e226e545d5fcdd01bdb"
+  },
+  "durable_pa_denial": {
+    "all_nonpolicy_state_facts_preserved": true,
+    "candidate_identity_qualification_changed": false,
+    "data_commit": "5ad40de3ea3f90a1203d555fc31b481fd5efc5dc",
+    "durable_exact_url_stops": 196,
+    "latest_numerical_pointer_preserved": true,
+    "new_denial_not_numerical_evidence": {
+      "checked_at": "2026-11-18T04:25:38.954812+00:00",
+      "detail": "HTTP 403; original not replaced or retried",
+      "error": "source_access",
+      "status": "held",
+      "url": "https://broadandliberty.com/2026/04/07/delco-republican-nicholas-manganaro-is-running-for-pa-5-seat/"
+    },
+    "pages_deployment_requested": false,
+    "parent": "13799554103654952200909a14af770cea8d3d55",
+    "passed": true,
+    "source_acquisition_retried": false
+  },
+  "nebraska": {
+    "after": 775942,
+    "before": 767046,
+    "complete_download": {
+      "bytes": 61209036,
+      "sha256": "ef7562d10beae903577acf3a15666fabb9835ebd79405d1bbd37c12d91e4512e",
+      "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/2cc0cfa2fbb4fae379cfe87110aa2f95b6ad9828/snapshots/0cadaceb4e9276b52e73d4994daa99869b0dae4dcc9f4864afdba0a4ea289bd4/complete-results.zip"
+    },
+    "fresh_selected_capture_run": 44163104135,
+    "native_clock": {
+      "literal": null,
+      "timezone": null
+    },
+    "native_printed_pct": "61.33%",
+    "not_a_new_observation_identity_or_population_rate": true,
+    "registration_context": 1265162
+  },
+  "no_invented_cross_batch_total_of_new_primary_acquisitions": true,
+  "rhode_island_official_senate": {
+    "current": {
+      "D": 240707,
+      "O": 14258,
+      "R": 105459
+    },
+    "not_participation_or_respondent_refitting": true,
+    "official_minus_national": {
+      "D": 13,
+      "O": 0,
+      "R": 5
+    },
+    "source_reconciliation": {
+      "counts_agree": false,
+      "individual_votes_allocated_from_Other": false,
+      "national_counts": {
+        "D": 240694,
+        "O": 14258,
+        "R": 105454
+      },
+      "national_native_clock": "2026-11-12T20:16:27.921+00:00",
+      "national_source": {
+        "bytes": 5959,
+        "sha256": "0dbe4722091010b9fd3b588328ef53d3e21bb858e7702e00d3f80c69818425d4",
+        "url": "https://apps.npr.org/2026-election-results/data/senate.json"
+      },
+      "official_counts": {
+        "D": 240707,
+        "O": 14258,
+        "R": 105459
+      },
+      "official_minus_national": {
+        "D": 13,
+        "O": 0,
+        "R": 5
+      },
+      "official_native_clock": "2026-11-18T01:05:46.0614199Z",
+      "official_source": {
+        "bytes": 1513484,
+        "sha256": "fe1eb65d82cf7efbc32cc7db8fcd3750e1786bb2b3685ca5d8ca026596c6358b",
+        "url": "https://electionresults.ri.gov/results/public/api/elections/rhodeisland/2026StatewideGeneralElection/data"
+      },
+      "provider_and_official_counts_added": false,
+      "rule": "reviewed_complete_official_inventory_with_strictly_newer_native_clock"
+    }
+  },
+  "uf_separate_statuses": {
+    "estimate": 45,
+    "source_reported_not_independently_certified": 6,
+    "unrecognized_source_status": 1
+  },
+  "wyoming": {
+    "ballots": 191713,
+    "new_acquisitions": 0,
+    "new_canonical_observations": 1,
+    "new_rates": 0,
+    "no_registered_denominator_or_downward_allocation": true,
+    "old_502_WY_records_and_selections_preserved": true,
+    "retained_official_evidence_newly_integrated": true
+  }
+}
