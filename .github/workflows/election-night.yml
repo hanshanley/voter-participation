@@ -85,6 +85,7 @@ jobs:
           tests/test_congressional_category_reconciliation.py
           tests/test_congressional_geography.py
           tests/test_senate_legacy_bridge.py
+          tests/test_senate_complete_categories.py
           tests/test_results_uf_turnout.py
           tests/test_results_official_congress.py
           tests/test_congressional_complete_categories.py

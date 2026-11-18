@@ -58,14 +58,16 @@ def identifier(value):
     return value
 
 
-def selected_native(document):
+def selected_native(document, chamber="house"):
     """Keep the entire selected federal tables, without unrelated publisher material."""
+    require(chamber in ("house", "senate"), "Unreviewed federal office")
+    prefix = "Representative in Congress" if chamber == "house" else "Senator in Congress"
     election = document["election"]
     fields = ("id", "jurisdictionId", "name", "electionDate", "isProduction",
               "isOfficialResults", "isPrimary", "asOf")
     result = {"election": {key: copy.deepcopy(election[key]) for key in fields}, "ballotItems": []}
     for row in document["ballotItems"]:
-        if not text(row["name"]).startswith("Representative in Congress"):
+        if not text(row["name"]).startswith(prefix):
             continue
         contest = {key: copy.deepcopy(row[key]) for key in (
             "id", "parentId", "publishPublicElectionId", "name", "voteFor",
@@ -82,11 +84,11 @@ def selected_native(document):
     return result
 
 
-def parse(body):
+def parse(body, chamber="house"):
     from scripts.results_official_congress import CONTRACT as OFFICIAL_CONTRACT
 
     document = json.loads(body)
-    native = selected_native(document)
+    native = selected_native(document, chamber)
     election = native["election"]
     require(election["id"] == "01000000-eac8-8412-859d-08df1e279809"
             and election["jurisdictionId"] == "8ffc83e2-a526-4cb5-9f8f-f87fef52d125"
@@ -98,7 +100,9 @@ def parse(body):
     clock(election["asOf"])
     races = []
     for row in native["ballotItems"]:
-        match = re.fullmatch(r"Representative in Congress District ([12])", text(row["name"]))
+        match = re.fullmatch(
+            r"Representative in Congress District ([12])" if chamber == "house"
+            else r"Senator in Congress", text(row["name"]))
         require(match is not None and row["parentId"] is None
                 and row["publishPublicElectionId"] == "2026StatewideGeneralElection"
                 and row["contestType"] == "Candidate"
@@ -155,8 +159,10 @@ def parse(body):
                 and all(sum(candidate["party_group"] == group for candidate in candidates) == 1
                         for group in "DR"),
                 "Complete official candidate inventory does not reconcile to its contest control")
+        seat = match[1] if chamber == "house" else "2"
         races.append({
-            "state_code": "RI", "district": "RI-0" + match[1], "seat": match[1],
+            "state_code": "RI", "district": ("RI-0" if chamber == "house" else "RI-S") + seat,
+            "seat": seat,
             "native_contest_id": identifier(row["id"]), "native_office_label": text(row["name"]),
             "election_date": "2026-11-03", "stage": "general", "election_kind": "regular",
             "native_status_literal": "Official Results" if election["isOfficialResults"] else "Unofficial Results",
@@ -164,7 +170,12 @@ def parse(body):
             "reported_units": reported, "total_units": total, "partial_units": 0,
             "complete_reporting": True, "contest_total": row["voteTotal"], "candidates": candidates,
         })
-    require(len(races) == 2 and {row["seat"] for row in races} == {"1", "2"},
+        if chamber == "senate":
+            races[-1].update(
+                chamber="senate", native_seat_declared=False,
+                seat_basis="reviewed_2026_regular_Class_II_cycle_not_a_native_seat_field")
+    require((len(races) == 2 and {row["seat"] for row in races} == {"1", "2"})
+            if chamber == "house" else (len(races) == 1 and races[0]["seat"] == "2"),
             "Incomplete or duplicate statewide official House district inventory")
     return {
         "contract": OFFICIAL_CONTRACT, "election_date": "2026-11-03",

@@ -810,6 +810,8 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/ri-official-congress.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
+    name = "tests/fixtures/ri-official-senate.json"
+    package_members["code/" + name] = (ROOT / name).read_bytes()
     fixture_root = ROOT / "tests/fixtures/utah-native"
     for path in sorted(fixture_root.rglob("*")):
         if path.is_file():

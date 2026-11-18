@@ -174,13 +174,37 @@ def test_default_config_exports_and_category_identity_guard(tmp_path):
 
     collector.acquire = acquire
     entries = official.collect_sources(collector, official.COMPLETE_CONFIG)
-    assert set(entries) == set(official.IDENTITIES) and len(calls) == 2
+    assert set(entries) == set(official.COMPLETE_CONFIG["sources"]) and len(calls) == 2
     congress = official.attach({"races": {}}, entries)
     exported = results_congress.exports(congress)
     rows = list(csv.DictReader(io.StringIO(exported["congress-official-candidates.csv"].decode())))
-    assert len(rows) == 16 and {row["evidence_id"] for row in rows} == set(official.IDENTITIES)
+    assert len(rows) == 16 and {row["evidence_id"] for row in rows} == set(official.COMPLETE_CONFIG["sources"])
     assert results_intake.numeric_observations({"index.json": encoded({"states": {}})}, entries) == []
     changed = copy.deepcopy(entries[categories.IDENTITY])
     changed["data"]["races"][0]["candidates"][0]["candidate_id"] = "changed"
     assert categories.current_hold(official.attach({}, {categories.IDENTITY: changed}), "ri1",
                                    policy(entries[categories.IDENTITY]), provider()) is not None
+
+
+def test_senate_reuses_one_guarded_statewide_response_without_changing_house_tables(tmp_path):
+    senate = json.loads((Path(__file__).parent / "fixtures/ri-official-senate.json").read_bytes())
+    native = original()
+    native["ballotItems"] += senate["native_facts"]["ballotItems"]
+    body = encoded(native)
+    collector = results_intake.Collector(
+        tmp_path, {}, {"urls": [], "prefixes": [], "hosts": []},
+        datetime(2026, 11, 18, tzinfo=timezone.utc))
+    collector.bodies[categories.URL] = (body, {"origin": "supplied_original", **pin(body)})
+    entries = official.collect_sources(collector, official.SENATE_CONFIG,
+        selected={categories.IDENTITY, official.SENATE_IDENTITY})
+    assert entries[categories.IDENTITY]["status"] == entries[official.SENATE_IDENTITY]["status"] == "reported"
+    assert entries[categories.IDENTITY]["data"] == categories.parse(encoded(original()))
+    assert entries[official.SENATE_IDENTITY]["data"] == categories.parse(encoded(native), "senate")
+    race = entries[official.SENATE_IDENTITY]["data"]["races"][0]
+    assert race["seat"] == "2" and not race["native_seat_declared"]
+    assert sum(row["votes"] for row in race["candidates"]) == race["contest_total"]
+    assert results_intake.numeric_observations({"index.json": encoded({"states": {}})}, entries) == []
+    collector.stopped["urls"].append(categories.URL)
+    refused = official.collect_sources(collector, official.SENATE_CONFIG,
+        selected={official.SENATE_IDENTITY})[official.SENATE_IDENTITY]
+    assert refused["status"] != "reported" and refused["data"] is None

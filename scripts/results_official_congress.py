@@ -13,7 +13,10 @@ CONTRACT = "participation.official_congressional_candidate_evidence.v1"
 CONFIG = {"contract": CONTRACT, "election_date": "2026-11-03",
           "sources": {IDENTITY: URL}}
 COMPLETE_CONFIG = {**CONFIG, "sources": {IDENTITY: URL, COMPLETE_IDENTITY: COMPLETE_URL}}
-IDENTITIES = (IDENTITY, COMPLETE_IDENTITY)
+SENATE_IDENTITY = "RI-official-senate-candidates"
+SENATE_CONFIG = {**COMPLETE_CONFIG, "sources": {
+    **COMPLETE_CONFIG["sources"], SENATE_IDENTITY: COMPLETE_URL}}
+IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY)
 INTEGER = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
 PARTIES = {"Democratic": "D", "Republican": "R", "Libertarian": "O",
            "America First": "O", "Legal Marijuana Now": "O",
@@ -131,7 +134,8 @@ def collect(collector, config):
 
 
 def source_ids(config):
-    require(config in (CONFIG, COMPLETE_CONFIG), "Unreviewed official congressional source configuration")
+    require(config in (CONFIG, COMPLETE_CONFIG, SENATE_CONFIG),
+            "Unreviewed official congressional source configuration")
     return tuple(config["sources"])
 
 
@@ -145,17 +149,19 @@ def collect_sources(collector, config, selected=None):
     result = {}
     if IDENTITY in identities:
         result[IDENTITY] = collect(collector, CONFIG)
-    if COMPLETE_IDENTITY in identities:
-        def guarded(body):
-            data = parse(body)
-            prior = (collector.prior.get(COMPLETE_IDENTITY) or {}).get("data") or {}
+    for source_id, chamber in ((COMPLETE_IDENTITY, "house"), (SENATE_IDENTITY, "senate")):
+        if source_id not in identities:
+            continue
+        def guarded(body, source_id=source_id, chamber=chamber):
+            data = parse(body, chamber)
+            prior = (collector.prior.get(source_id) or {}).get("data") or {}
             require(clock(data["source_updated_at"]) <= collector.observation_time(),
                     "Official category clock is in the future")
             if prior:
                 require(clock(data["source_updated_at"]) >= clock(prior["source_updated_at"]),
                         "Official category clock regressed")
             return data
-        result[COMPLETE_IDENTITY] = collector.capture(COMPLETE_IDENTITY, COMPLETE_URL, guarded)
+        result[source_id] = collector.capture(source_id, COMPLETE_URL, guarded)
     return result
 
 
@@ -177,7 +183,8 @@ def reconciliation(congress):
         matching = [
             (identity, candidate) for identity, candidate in congress.get("races", {}).items()
             if candidate.get("data") and all(candidate["data"].get(key) == value for key, value in {
-                "chamber": "house", "state_code": race["state_code"], "seat": race["seat"],
+                "chamber": "senate" if evidence_id == SENATE_IDENTITY else "house",
+                "state_code": race["state_code"], "seat": race["seat"],
                 "election_date": race["election_date"], "election_kind": "regular",
                 "stage": "general", "round": "not_ranked"}.items())]
         provider_id, provider = matching[0] if len(matching) == 1 else (None, {})
