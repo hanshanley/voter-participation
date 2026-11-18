@@ -735,7 +735,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
              "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
-             "results_aspx_congress.py", "results_native_congress.py",
+             "results_aspx_congress.py", "results_native_congress.py", "results_json_congress.py",
              "congressional_complete_categories.py", "protected_official_house.py",
              "protected_official_wyoming.py",
              "results_native_delaware.py", "results_native_dc.py",
@@ -769,6 +769,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                  "test_results_state_statistics.py", "test_results_uf_turnout.py",
                  "test_results_official_congress.py", "test_results_aspx_congress.py",
                  "test_results_native_congress.py",
+                 "test_results_json_congress.py",
                  "test_congressional_complete_categories.py",
                  "test_protected_official_house.py",
                  "test_protected_official_wyoming.py",
@@ -816,6 +817,8 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     name = "tests/fixtures/virginia-federal-candidates.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/oregon-federal-candidates.json"
+    package_members["code/" + name] = (ROOT / name).read_bytes()
+    name = "tests/fixtures/utah-federal-candidates.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/rhode-island-native-accepted.json.gz"
     package_members["code/" + name] = (ROOT / name).read_bytes()

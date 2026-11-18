@@ -161,7 +161,7 @@ def test_default_registered_source_exports_complete_partial_evidence(tmp_path):
     declaration = (results_intake.read(declaration_path) if declaration_path.exists() else
                    results_intake.read(results_intake.ROOT.parent / "inputs/registry.json")[
                        "official_congress"])
-    assert declaration == results_official_congress.ASPX_CONFIG
+    assert declaration in (results_official_congress.ASPX_CONFIG, results_official_congress.JSON_CONFIG)
     entry, calls = capture(tmp_path, facts())
     assert entry["status"] == "reported" and calls == [source.URL]
     attached = results_official_congress.attach({"races": {}}, {source.IDENTITY: entry})

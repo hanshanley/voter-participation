@@ -1,0 +1,611 @@
+{
+  "ballotItems": [
+    {
+      "contestType": "Candidate",
+      "id": "18bd0000-4292-09ee-2072-08df2b02c31c",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "U.S. House District 1"
+        }
+      ],
+      "parentId": null,
+      "publishPublicElectionId": "General11032026",
+      "rankedChoiceSummaryResults": null,
+      "reportingStatus": {
+        "asOf": "2026-11-11T03:03:24.6796079Z",
+        "reportingStatusDetails": null,
+        "reportingUnits": 1,
+        "totalUnits": 1
+      },
+      "summaryResults": {
+        "ballotOptions": [
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-271f-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "BEN MCADAMS"
+              }
+            ],
+            "nativeId": "636639717",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-10e7-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Democratic"
+                }
+              ]
+            },
+            "voteCount": 174492
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-224e-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "RILEY OWEN"
+              }
+            ],
+            "nativeId": "637531264",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-e991-08df2b02c2fb",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Republican"
+                }
+              ]
+            },
+            "voteCount": 65190
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-23bf-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "JESSE WEST"
+              }
+            ],
+            "nativeId": "637843142",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-23d9-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Libertarian"
+                }
+              ]
+            },
+            "voteCount": 5707
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-255e-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "ELIAS HENRY MONTGOMERY"
+              }
+            ],
+            "nativeId": "641825679",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-24e4-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Unaffiliated"
+                }
+              ]
+            },
+            "voteCount": 3593
+          },
+          {
+            "groupResults": null,
+            "id": "01000000-b2cc-68ac-609a-08df2fa3963d",
+            "isQualifiedWriteIn": true,
+            "isWriteIn": true,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "BABAK \"BOBBY\" DARVISH "
+              }
+            ],
+            "nativeId": "BABAK\"BOBBY\"DARVISH-5-Unaffiliated",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-24e4-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Unaffiliated"
+                }
+              ]
+            },
+            "voteCount": 76
+          }
+        ]
+      },
+      "voteFor": [],
+      "voteTotal": 249058
+    },
+    {
+      "contestType": "Candidate",
+      "id": "18bd0000-4292-09ee-28a3-08df2b02c31c",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "U.S. House District 2"
+        }
+      ],
+      "parentId": null,
+      "publishPublicElectionId": "General11032026",
+      "rankedChoiceSummaryResults": null,
+      "reportingStatus": {
+        "asOf": "2026-11-11T03:03:24.6796079Z",
+        "reportingStatusDetails": null,
+        "reportingUnits": 5,
+        "totalUnits": 5
+      },
+      "summaryResults": {
+        "ballotOptions": [
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-2d36-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "BLAKE D. MOORE"
+              }
+            ],
+            "nativeId": "636548019",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-e991-08df2b02c2fb",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Republican"
+                }
+              ]
+            },
+            "voteCount": 127143
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-2bf0-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "PETER CROSBY"
+              }
+            ],
+            "nativeId": "637829213",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-10e7-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Democratic"
+                }
+              ]
+            },
+            "voteCount": 107530
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-2e7e-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "CARLTON E. BOWEN"
+              }
+            ],
+            "nativeId": "637902161",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-265b-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Independent American"
+                }
+              ]
+            },
+            "voteCount": 8432
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-2a97-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "ROBERT M. MOESINGER"
+              }
+            ],
+            "nativeId": "639460760",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-24e4-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Unaffiliated"
+                }
+              ]
+            },
+            "voteCount": 6517
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-2fd2-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "DANIEL COTTAM"
+              }
+            ],
+            "nativeId": "637902358",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-23d9-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Libertarian"
+                }
+              ]
+            },
+            "voteCount": 4566
+          }
+        ]
+      },
+      "voteFor": [],
+      "voteTotal": 254188
+    },
+    {
+      "contestType": "Candidate",
+      "id": "18bd0000-4292-09ee-3148-08df2b02c31c",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "U.S. House District 3"
+        }
+      ],
+      "parentId": null,
+      "publishPublicElectionId": "General11032026",
+      "rankedChoiceSummaryResults": null,
+      "reportingStatus": {
+        "asOf": "2026-11-11T03:03:24.6796079Z",
+        "reportingStatusDetails": null,
+        "reportingUnits": 19,
+        "totalUnits": 19
+      },
+      "summaryResults": {
+        "ballotOptions": [
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-3335-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "CELESTE MALOY"
+              }
+            ],
+            "nativeId": "637830393",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-e991-08df2b02c2fb",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Republican"
+                }
+              ]
+            },
+            "voteCount": 144800
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-3a12-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "KENT S. UDELL"
+              }
+            ],
+            "nativeId": "637531431",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-10e7-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Democratic"
+                }
+              ]
+            },
+            "voteCount": 90812
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-38b3-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "CASSIE EASLEY"
+              }
+            ],
+            "nativeId": "637858608",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-6c82-08df2b02c2ee",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Constitution"
+                }
+              ]
+            },
+            "voteCount": 7970
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-3607-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "MICHAEL R. STODDARD"
+              }
+            ],
+            "nativeId": "637895227",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-23d9-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Libertarian"
+                }
+              ]
+            },
+            "voteCount": 5701
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-3746-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "AYDEN SCOTT"
+              }
+            ],
+            "nativeId": "641321905",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-24e4-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Unaffiliated"
+                }
+              ]
+            },
+            "voteCount": 4196
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-349d-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "ADONIS HOOSLYN"
+              }
+            ],
+            "nativeId": "642021192",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-24e4-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Unaffiliated"
+                }
+              ]
+            },
+            "voteCount": 1817
+          }
+        ]
+      },
+      "voteFor": [],
+      "voteTotal": 255296
+    },
+    {
+      "contestType": "Candidate",
+      "id": "18bd0000-4292-09ee-3b8d-08df2b02c31c",
+      "name": [
+        {
+          "languageId": "en",
+          "text": "U.S. House District 4"
+        }
+      ],
+      "parentId": null,
+      "publishPublicElectionId": "General11032026",
+      "rankedChoiceSummaryResults": null,
+      "reportingStatus": {
+        "asOf": "2026-11-11T03:03:24.6796079Z",
+        "reportingStatusDetails": null,
+        "reportingUnits": 7,
+        "totalUnits": 7
+      },
+      "summaryResults": {
+        "ballotOptions": [
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-3edc-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "MIKE KENNEDY"
+              }
+            ],
+            "nativeId": "637867413",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-e991-08df2b02c2fb",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Republican"
+                }
+              ]
+            },
+            "voteCount": 142547
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-403c-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "JONNY LARSEN"
+              }
+            ],
+            "nativeId": "637828433",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-10e7-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Democratic"
+                }
+              ]
+            },
+            "voteCount": 103867
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-417d-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "STEVEN BURT"
+              }
+            ],
+            "nativeId": "637897470",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-24e4-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Unaffiliated"
+                }
+              ]
+            },
+            "voteCount": 11528
+          },
+          {
+            "groupResults": null,
+            "id": "18bd0000-4292-09ee-3d71-08df2b02c31c",
+            "isQualifiedWriteIn": false,
+            "isWriteIn": false,
+            "name": [
+              {
+                "languageId": "en",
+                "text": "TAYLOR WRIGHT"
+              }
+            ],
+            "nativeId": "637835795",
+            "party": {
+              "abbreviation": null,
+              "id": "18bd0000-4292-09ee-23d9-08df2b02c2fc",
+              "name": [
+                {
+                  "languageId": "en",
+                  "text": "Libertarian"
+                }
+              ]
+            },
+            "voteCount": 8648
+          }
+        ]
+      },
+      "voteFor": [],
+      "voteTotal": 266590
+    }
+  ],
+  "contract": "participation.statewide_json_federal_candidate_facts.v1",
+  "election": {
+    "asOf": "2026-11-11T03:03:24.6796079Z",
+    "electionDate": "2026-11-03",
+    "id": "01000000-3eb9-2098-2ce9-08df22ebab67",
+    "isOfficialResults": false,
+    "isPrimary": false,
+    "isProduction": true,
+    "jurisdictionId": "a7510980-7b10-4aca-a2d8-ff92951aca1c",
+    "lastUpdated": "2026-11-11T03:03:20.2147476Z",
+    "name": [
+      {
+        "languageId": "en",
+        "text": "2026 General Election"
+      }
+    ]
+  },
+  "jurisdiction": {
+    "id": "a7510980-7b10-4aca-a2d8-ff92951aca1c",
+    "name": [
+      {
+        "languageId": "en",
+        "text": "Utah"
+      }
+    ],
+    "shortName": "Utah"
+  }
+}

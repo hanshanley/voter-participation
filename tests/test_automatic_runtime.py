@@ -712,6 +712,8 @@ def test_complete_packet_includes_accepted_numerical_engine_and_only_selected_se
         runtime.packet_manifest(archive)
         assert archive.read("code/scripts/norc_house_model.py") == (
             runtime.ROOT / "scripts/norc_house_model.py").read_bytes()
+        assert archive.read("code/scripts/results_json_congress.py") == (
+            runtime.ROOT / "scripts/results_json_congress.py").read_bytes()
         assert {name for name in archive.namelist() if name.startswith("inputs/model-seed/")} == {
             "inputs/model-seed/rolling-seed.json.gz"}
         assert archive.read("queries/model-queries/all-nine-results.json.gz") == b"complete-model-queries"

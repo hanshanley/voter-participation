@@ -32,6 +32,33 @@ or respondent refit is required to consume a compatible new source snapshot.
 
 ## Congressional revision guards
 
+### Utah statewide JSON candidate evidence
+
+`UT-official-house-candidates` independently captures the already-declared
+Utah statewide general-election JSON product. The common collector acquires
+that root once per run; the existing four-county PDF adapter reuses its verified
+body without changing its county queries or requiring PDF success for federal
+candidate evidence. Source-stop checks precede even a warmed-body lookup.
+
+All four House contests and 20 retained candidate rows remain inspectable,
+including literal native names, party names and null abbreviations, named
+write-in flags, stable identifiers, vote counts and original UTC clocks.
+The adapter checks election/production/office identity, complete district
+inventory, candidate sums, integer safety and prior identity/finality.
+Clock comparisons retain all seven native fractional digits. Upward, downward
+and true-zero corrections are supported; failures, missing candidates and
+clock rollback retain the last-good observation and its own clocks.
+An identical capture remains a no-op. A selected refresh can use this source
+ID without recollecting the national feed or the separate county PDFs.
+
+The official named write-in does not explain the national provider's distinct
+generic write-in row. Both remain separate evidence; no count is erased,
+allocated or added across providers. Exhaustive write-in coverage, provider
+equivalence, conditional-model eligibility and participation qualification
+remain false. Native reporting fragments are not certified precinct counts.
+The full official exports and complete reproducible source/analytical packets
+retain the candidate facts, holds, adapter, tests and factual fixture.
+
 ### Virginia's derived complete federal frame
 
 The existing Virginia statewide/locality collector already retrieves the state

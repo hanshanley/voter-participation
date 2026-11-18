@@ -24,8 +24,14 @@ WY_CONFIG = {**PROTECTED_CONFIG, "sources": {**PROTECTED_CONFIG["sources"], WY_I
 ASPX_IDENTITY = "OR-official-house-candidates"
 ASPX_URL = "https://results.oregonvotes.gov/resultsSW.aspx?type=FED&map=CTY"
 ASPX_CONFIG = {**WY_CONFIG, "sources": {**WY_CONFIG["sources"], ASPX_IDENTITY: ASPX_URL}}
+JSON_IDENTITY = "UT-official-house-candidates"
+JSON_URL = (
+    "https://electionresults.utah.gov/results/public/api/elections/Utah/"
+    "General11032026/data"
+)
+JSON_CONFIG = {**ASPX_CONFIG, "sources": {**ASPX_CONFIG["sources"], JSON_IDENTITY: JSON_URL}}
 IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY, PROTECTED_IDENTITY, WY_IDENTITY,
-              ASPX_IDENTITY, "VA-official-house-candidates")
+              ASPX_IDENTITY, JSON_IDENTITY, "VA-official-house-candidates")
 INTEGER = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
 PARTIES = {"Democratic": "D", "Republican": "R", "Libertarian": "O",
            "America First": "O", "Legal Marijuana Now": "O",
@@ -144,7 +150,7 @@ def collect(collector, config):
 
 def source_ids(config):
     require(config in (CONFIG, COMPLETE_CONFIG, SENATE_CONFIG, PROTECTED_CONFIG, WY_CONFIG,
-                       ASPX_CONFIG),
+                       ASPX_CONFIG, JSON_CONFIG),
             "Unreviewed official congressional source configuration")
     return tuple(config["sources"])
 
@@ -168,6 +174,9 @@ def collect_sources(collector, config, selected=None):
     if ASPX_IDENTITY in identities:
         from scripts.results_aspx_congress import collect as collect_aspx
         result[ASPX_IDENTITY] = collect_aspx(collector)
+    if JSON_IDENTITY in identities:
+        from scripts.results_json_congress import collect as collect_json
+        result[JSON_IDENTITY] = collect_json(collector)
     for source_id, chamber in ((COMPLETE_IDENTITY, "house"), (SENATE_IDENTITY, "senate")):
         if source_id not in identities:
             continue
@@ -258,5 +267,8 @@ def rows(congress):
                         "write_in_scope_notice": data["native_facts"]["write_in_scope_notice"],
                         "source_scope_holds": copy.deepcopy(data["holds"])}
                        if identity == ASPX_IDENTITY else {}),
+                    **({"exhaustive_write_in_universe_qualified": False,
+                        "source_scope_holds": copy.deepcopy(data["holds"])}
+                       if identity == JSON_IDENTITY else {}),
                 })
     return result
