@@ -95,6 +95,7 @@ jobs:
           tests/test_results_uf_turnout.py
           tests/test_results_official_congress.py
           tests/test_congressional_complete_categories.py
+          tests/test_official_house_precedence.py
           tests/test_protected_official_house.py
           tests/test_protected_official_wyoming.py
           tests/test_statewide_ballot_totals.py

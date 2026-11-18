@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 from scripts import congressional_complete_categories as categories
-from scripts import results_congress, results_intake
+from scripts import results_congress
 from scripts import results_official_congress as official
 from scripts.participation_intake.contract import encoded, pin
 
@@ -18,6 +18,8 @@ def original():
 
 
 def capture(tmp_path, native, previous=None, stopped=False):
+    from scripts import results_intake
+
     collector = results_intake.Collector(
         tmp_path, {categories.IDENTITY: previous} if previous else {},
         {"urls": [categories.URL] if stopped else [], "prefixes": [], "hosts": []},
@@ -160,6 +162,7 @@ def test_unchanged_outage_stop_and_latest_clock_preserve_last_good(tmp_path):
 
 
 def test_default_config_exports_and_category_identity_guard(tmp_path):
+    from scripts import results_intake
     from test_results_official_congress import original as nebraska_original
 
     collector = results_intake.Collector(
@@ -187,6 +190,8 @@ def test_default_config_exports_and_category_identity_guard(tmp_path):
 
 
 def test_senate_reuses_one_guarded_statewide_response_without_changing_house_tables(tmp_path):
+    from scripts import results_intake
+
     senate = json.loads((Path(__file__).parent / "fixtures/ri-official-senate.json").read_bytes())
     native = original()
     native["ballotItems"] += senate["native_facts"]["ballotItems"]

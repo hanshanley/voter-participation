@@ -37,6 +37,9 @@ def data_paths(review):
     if (review.get("house_boundaries") or {}).get("split_geometry_review") is not None:
         from scripts.congressional_split_blocks import DATA_PATHS as SPLIT_PATHS
         result += SPLIT_PATHS
+    if review.get("official_house_precedence") is not None:
+        from scripts.official_house_precedence import DATA_PATHS as PRECEDENCE_PATHS
+        result += PRECEDENCE_PATHS
     if review.get("version") in (OFFICIAL_DECLARATION_VERSION, FILING_VERSION, COMPLETE_CATEGORY_VERSION):
         if review["version"] == COMPLETE_CATEGORY_VERSION:
             result += COMPLETE_CATEGORY_PATHS
@@ -65,7 +68,7 @@ def compressed(value):
     return body[:9] + bytes([3]) + body[10:]
 
 
-def load_review(root):
+def load_review(root, *, include_split_geometry=True):
     root = Path(root)
     review = json.loads(gzip.decompress((root / REVIEW_PATH).read_bytes()))
     require(review.get("contract") == CONTRACT
@@ -96,9 +99,12 @@ def load_review(root):
         require(pin(body) == {key: original[key] for key in ("bytes", "sha256")},
                 "Changed complete official congressional baseline")
     from scripts.congressional_geography import load_review as load_geography
-    geography = load_geography(root)
+    geography = load_geography(root, include_split_geometry=include_split_geometry)
     if geography is not None:
         review["house_boundaries"] = geography
+    from scripts.official_house_precedence import REVIEW_PATH as PRECEDENCE_PATH, load_review as load_precedence
+    if (root / PRECEDENCE_PATH).exists():
+        review["official_house_precedence"] = load_precedence(root, review)
     return review
 
 
@@ -405,7 +411,8 @@ def state_guard_matrix(handoff):
     }
     terms = {
         "candidate_identity": ("unmatched", "ambiguous_named", "candidate_identity", "identity_changed"),
-        "other_write_in": ("aggregate_other", "write-in", "write_in", "aggregate_other_role"),
+        "other_write_in": ("aggregate_other", "write-in", "write_in", "aggregate_other_role",
+                           "official_category_other_mass"),
         "source_universe": ("protected_official", "inventory", "source_frame", "source_url",
                             "counts missing", "missing_count", "unknown_party",
                             "normalized_result_differs", "native_candidate_source"),
@@ -499,8 +506,9 @@ def annotate_result(result, handoff):
                 current_stage=decision["current_stages"][0] if len(decision["current_stages"]) == 1 else None,
                 current_round=decision["current_rounds"][0] if len(decision["current_rounds"]) == 1 else None,
                 current_native_control_scope_qualification=(
-                    "Direct original official candidate inventory under protected review "
-                    + handoff["protected_official_review_version"]
+                    "Direct original official candidate inventory under reviewed source policy "
+                    + decision.get("direct_official_review_version",
+                                   handoff.get("protected_official_review_version", version))
                     + ". All supplied named minor candidates and source-unassigned write-ins retained; no provider substitution, "
                     "respondent refit, new scientific eligibility or inferred count clock."
                     if direct else

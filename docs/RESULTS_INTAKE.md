@@ -117,6 +117,49 @@ All existing full downloads and historical matrix versions remain available.
 
 ## Reviewed official category reconciliation
 
+### Whole-official-frame analytical precedence
+
+The hourly runtime defaults to the deployed whole-block boundary-reader contract.
+The exact Colorado split-fragment proof remains preserved and reproducible, but
+its two additional comparisons require the compatible reader to be delivered
+before enabling `--accept-reviewed-house-split-geometry`. This is a delivery
+dependency, not a withdrawal of the geographic finding. Numerical packages
+preserve the effective boundary policy and replay it explicitly; the complete
+successor package also retains the separately reproducible split evidence.
+
+`official_house_precedence.py` supplies a separately reviewed successor for
+Rhode Island, not a waiver of the original provider-category checks. Its
+`data/results-intake/official-house-precedence/review.json` is reproduced from
+the complete retained official candidate query and previously reviewed
+candidate/category equivalence. Scientific eligibility, historical endpoints,
+both districts, every named minor candidate and generic write-in remain pinned.
+
+Subsequent hourly observations can condition all nine existing model variants
+on the **entire** compatible official D/R/O vector. National-provider counts
+are neither added to it nor substituted for individual official categories.
+The national feed remains the raw broad intake; full official queries,
+provider frames, signed disagreements and provider-path holds stay downloadable.
+This matters when a newer official write-in/minor revision differs from a stale
+provider aggregate: the original equality guard still refuses that provider
+path, while a separately qualified complete official endpoint can advance.
+
+The official source must report the complete reviewed election, stage,
+district, candidate and voting-mode inventory. Its native count clock cannot
+regress against its rolling last-good observation or exceed its own acquisition
+receipt. Count decreases and actual zeroes are legitimate corrections; missing
+or changed identities, incomplete reporting, outages and incompatible clocks
+retain the last-good numerical results and their dates. Failure does **not**
+fall back to the discrepant national frame. An unchanged input remains a no-op.
+The official checkpoint remains separate from the national candidate seed;
+advancing one never rewrites the other provider's candidate identities or counts.
+No new respondent fit, scientific comparison, turnout numerator or denominator
+is introduced. Other states still require their own compatible evidence.
+
+The existing complete analytical archive includes the new policy, original
+category evidence, code/tests, full nine-variant outputs and rolling checkpoint.
+Its literal replay command below revalidates the policy against that evidence
+before reproducing the outputs; no further source acquisition is required.
+
 ### Automatically retained official candidate frames
 
 The reviewed `data/results-intake/official-congress.json` declaration registers

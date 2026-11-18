@@ -1113,6 +1113,7 @@ def _advanced_seed(snapshot, seed, decisions, artifacts, participation):
     accepted_states = {
         row["state_code"] for row in decisions
         if row["decision"] in accepted_actions and not row.get("provider_bridge")
+        and not row.get("congressional_analytical_status", {}).get("source_revision_policy")
     }
     incoming = {state: {} for state in accepted_states}
     for row in snapshot.get("house_candidates", []):
@@ -1221,6 +1222,9 @@ def advance_seed(snapshot, seed, result):
     if "congressional_analytical_handoff" in result:
         advanced["congressional_analytical_last_good"] = copy.deepcopy(
             result["congressional_analytical_handoff"]["last_good"])
+        if "official_house_precedence_last_good" in result["congressional_analytical_handoff"]:
+            advanced["official_house_precedence_last_good"] = copy.deepcopy(
+                result["congressional_analytical_handoff"]["official_house_precedence_last_good"])
     if "senate_legacy_handoff" in result:
         advanced["senate_legacy_last_good"] = copy.deepcopy(result["senate_legacy_handoff"]["last_good"])
     if "senate_complete_handoff" in result:
@@ -1243,6 +1247,8 @@ def build(snapshot, seed):
     if "congressional_analytical_review" in seed:
         from scripts.congressional_analytical_bridge import evaluate, apply_decisions
         handoff = evaluate(snapshot, seed)
+        from scripts.official_house_precedence import evaluate as official_precedence
+        handoff = official_precedence(snapshot, seed, handoff)
         handoff = protected_evaluate(snapshot, seed, handoff)
         apply_decisions(decisions, endpoints, recorded, handoff)
     changed_states = {
@@ -1436,6 +1442,8 @@ def build(snapshot, seed):
     )
     if handoff is not None:
         next_seed["congressional_analytical_last_good"] = handoff["last_good"]
+        if "official_house_precedence_last_good" in handoff:
+            next_seed["official_house_precedence_last_good"] = handoff["official_house_precedence_last_good"]
         if "protected_official_last_good" in handoff:
             next_seed["protected_official_house_last_good"] = handoff["protected_official_last_good"]
     if senate_handoff is not None:

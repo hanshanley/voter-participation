@@ -45,6 +45,7 @@ CODE_PATHS = (
     "congressional_complete_categories.py",
     "congressional_baselines.py", "congressional_geography.py",
     "congressional_split_blocks.py", "house_district_map.py",
+    "official_house_precedence.py",
     "supported_analytical_release.py",
     "senate_legacy_bridge.py", "senate_complete_categories.py", "protected_official_house.py",
     "protected_official_wyoming.py", "statewide_ballot_totals.py", "calibrated_swing.py",
@@ -564,8 +565,15 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         from scripts.congressional_analytical_bridge import data_paths
         members["inputs/congressional-analytical-review.json"] = encoded(
             compiled["congressional_analytical_review"])
-        for name in data_paths(compiled["congressional_analytical_review"]):
+        reviewed_paths = data_paths(compiled["congressional_analytical_review"])
+        if "official_house_precedence" in compiled["congressional_analytical_review"]:
+            from scripts.congressional_split_blocks import DATA_PATHS as SPLIT_PATHS
+            reviewed_paths = tuple(dict.fromkeys(reviewed_paths + SPLIT_PATHS))
+        for name in reviewed_paths:
             members["inputs/reviewed-congressional-sources/" + name] = (ROOT / name).read_bytes()
+        if "official_house_precedence" in compiled["congressional_analytical_review"]:
+            name = "tests/fixtures/ri-official-congress.json"
+            members["code/" + name] = (ROOT / name).read_bytes()
     if "senate_legacy_review" in compiled:
         from scripts.senate_legacy_bridge import DATA_PATHS as SENATE_PATHS
         members["inputs/senate-legacy-review.json"] = encoded(compiled["senate_legacy_review"])
@@ -595,8 +603,10 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_congressional_analytical_bridge.py", "test_congressional_baselines.py",
                  "test_congressional_candidate_identity.py",
                  "test_congressional_category_reconciliation.py",
+                 "test_congressional_complete_categories.py",
                  "test_congressional_geography.py",
                  "test_congressional_split_blocks.py",
+                 "test_official_house_precedence.py",
                  "test_senate_legacy_bridge.py", "test_senate_complete_categories.py", "test_protected_official_house.py",
                  "test_protected_official_wyoming.py", "test_statewide_ballot_totals.py",
                  "test_results_congress.py"):
@@ -616,8 +626,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         "Recomputes the complete count/native/model numerical query sets from included\n"
         "public aggregate source facts and safe accepted priors. No source requests,\n"
         "private survey refits, new geographic joins or observed-history claims.\n").encode()
-    if (compiled.get("congressional_analytical_review", {}).get("house_boundaries") or {}).get(
-            "split_geometry_review") is not None:
+    if "inputs/reviewed-congressional-sources/data/results-intake/district-splits/20261118-01/review.json" in members:
         members["REPRODUCE.txt"] += (
             "\nSeparate split-geometry evidence reproduction uses the project's existing\n"
             "shapely>=2.0, pyshp>=2.3 and pyproj>=3.6 dependencies:\n"
@@ -685,6 +694,12 @@ def replay(package, output):
             from scripts.congressional_geography import load_review as load_boundaries
             if load_boundaries(package / "inputs/reviewed-congressional-sources") != boundaries:
                 raise ValueError("Packaged House boundary review differs from its original evidence")
+        if seed["congressional_analytical_review"].get("official_house_precedence") is not None:
+            from scripts.congressional_analytical_bridge import load_review as load_analytical
+            if load_analytical(package / "inputs/reviewed-congressional-sources",
+                               include_split_geometry="split_geometry_review" in boundaries) != seed[
+                    "congressional_analytical_review"]:
+                raise ValueError("Packaged official precedence differs from its complete reviewed evidence")
     if "inputs/senate-legacy-review.json" in manifest:
         from scripts.senate_legacy_bridge import load_review as load_senate_review
         senate_review = load_senate_review(package / "inputs/reviewed-senate-sources")
@@ -783,8 +798,14 @@ def complete_release(repository, version, path, journal, checkpoint=lambda: None
             "immutable": True, "verified_anonymously": True}
 
 
+def analytical_policy(root, *, split_block_geometry=False):
+    from scripts.congressional_analytical_bridge import REVIEW_PATH, load_review
+    return (load_review(root, include_split_geometry=split_block_geometry)
+            if (Path(root) / REVIEW_PATH).exists() else None)
+
+
 def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
-        github_repository=WEBSITE_REPOSITORY, publish=True):
+        github_repository=WEBSITE_REPOSITORY, publish=True, split_block_geometry=False):
     from scripts.automatic_estimates import bind_publication
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
@@ -796,9 +817,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     seed_dir = Path(seed_dir or ROOT / "data/results-intake/model-seed")
     review_path = ROOT / "data/results-intake/reviewed-eligibility.json"
     release_review = read(review_path) if review_path.exists() else None
-    from scripts.congressional_analytical_bridge import REVIEW_PATH, data_paths, load_review
-    analytical_path = ROOT / REVIEW_PATH
-    analytical_review = load_review(ROOT) if analytical_path.exists() else None
+    from scripts.congressional_analytical_bridge import data_paths
+    analytical_review = analytical_policy(ROOT, split_block_geometry=split_block_geometry)
     from scripts.senate_legacy_bridge import (
         REVIEW_PATH as SENATE_REVIEW_PATH, DATA_PATHS as SENATE_PATHS, load_review as load_senate_review)
     senate_review = load_senate_review(ROOT) if (ROOT / SENATE_REVIEW_PATH).exists() else None
@@ -962,6 +982,8 @@ def main():
     parser.add_argument("--github-repository", default=WEBSITE_REPOSITORY)
     parser.add_argument("--model-seed", type=Path)
     parser.add_argument("--no-publish", action="store_true")
+    parser.add_argument("--accept-reviewed-house-split-geometry", action="store_true",
+                        help="Enable only after delivery of the compatible district reader")
     parser.add_argument("--replay-package", type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
@@ -973,7 +995,8 @@ def main():
         if not args.repository or not args.work_dir:
             parser.error("--repository and --work-dir are required for automatic delivery")
         result = run(args.repository, args.work_dir, args.results_pointer, args.model_seed,
-                     args.github_repository, publish=not args.no_publish)
+                     args.github_repository, publish=not args.no_publish,
+                     split_block_geometry=args.accept_reviewed_house_split_geometry)
     print(json.dumps(result, sort_keys=True))
 
 
