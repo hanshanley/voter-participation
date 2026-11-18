@@ -15,11 +15,12 @@ IDENTITY = "HI-official-house-candidates"
 URL = "https://elections.hawaii.gov/wp-content/results/2026%20General/summary.txt"
 CONTRACT = "participation.official_congressional_candidate_evidence.v1"
 REVIEW_CONTRACT = "participation.protected_official_house_review.v1"
-VERSION = "20261118-02"
+VERSION = "20261118-03"
 DATA_ROOT = "data/results-intake/protected-official-house"
 REVIEW_PATH = DATA_ROOT + "/review.json.gz"
 ORIGINAL_PATH = DATA_ROOT + "/hi-summary.txt"
-DATA_PATHS = (REVIEW_PATH, ORIGINAL_PATH)
+WY_FACTS_PATH = DATA_ROOT + "/wy-summary-facts.json.gz"
+DATA_PATHS = (REVIEW_PATH, ORIGINAL_PATH, WY_FACTS_PATH)
 HEADERS = (
     "#Contest ID", "Contest Title", "Contest Seq Nbr", "Contest Type", "Contest Party",
     "Mail Blank Votes", "In-Person Blank Votes", "Mail Over Votes", "In-Person Over Votes",
@@ -144,6 +145,9 @@ def parse(body):
 
 
 def from_facts(facts):
+    if isinstance(facts, dict) and facts.get("format") == "wyoming_general_house_summary_2026.v1":
+        from scripts.protected_official_wyoming import from_facts as wyoming_from_facts
+        return wyoming_from_facts(facts)
     require(isinstance(facts, dict) and set(facts) == {"format", "headers", "rows"}
             and facts["headers"] == list(HEADERS) and isinstance(facts["rows"], list),
             "Changed protected official native facts")
@@ -168,8 +172,14 @@ def check_revision(previous, current):
     for row in current["races"]:
         prior = old[row["district"]]
         require(row["total_units"] == prior["total_units"]
-                and row["reported_units"] >= prior["reported_units"],
+                and ((row["reported_units"] is None and prior["reported_units"] is None)
+                     or (type(row["reported_units"]) is int and type(prior["reported_units"]) is int
+                         and row["reported_units"] >= prior["reported_units"])),
                 "Protected official reporting coverage regressed or changed")
+        if row["state_code"] == "WY":
+            require([item["county"] for item in row["native_contest_controls"]["counties"]] ==
+                    [item["county"] for item in prior["native_contest_controls"]["counties"]],
+                    "Protected Wyoming county inventory changed")
 
 
 def collect(collector):
@@ -181,7 +191,7 @@ def collect(collector):
     return collector.capture(IDENTITY, URL, guarded)
 
 
-def prepare_review(seed, original):
+def prepare_review(seed, original, wyoming=None):
     data = parse(original)
     guard = copy.deepcopy(seed["official_source_guards"]["HI"])
     candidates = sorted([race["district"], row["name"], row["literal_party"], str(row["votes"])]
@@ -190,7 +200,7 @@ def prepare_review(seed, original):
     require(guard["state_code"] == "HI" and guard["source_election_scope"] == "general"
             and guard["districts"] == ["HI-01", "HI-02"],
             "Protected original source scope changed")
-    return {
+    result = {
         "contract": REVIEW_CONTRACT, "version": VERSION,
         "states": {"HI": {
             "source_id": IDENTITY, "source_url": URL, "accepted_guard": guard,
@@ -200,41 +210,68 @@ def prepare_review(seed, original):
         }},
         "source_model_refitting_allowed": False, "new_scientific_eligibility_allowed": False,
     }
+    if wyoming is not None:
+        from scripts import protected_official_wyoming as wy
+        data = wy.from_facts(wyoming)
+        guard = copy.deepcopy(seed["official_source_guards"]["WY"])
+        require(sorted([race["district"], row["name"], row["literal_party"], str(row["votes"])]
+                       for race in data["races"] for row in race["candidates"]) == guard["candidates"]
+                and guard["state_code"] == "WY" and guard["source_election_scope"] == "general"
+                and guard["districts"] == ["WY-AL"],
+                "Protected Wyoming original differs from accepted scientific frame")
+        result["states"]["WY"] = {
+            "source_id": wy.IDENTITY, "source_url": wy.URL, "accepted_guard": guard,
+            "candidate_inventory": signature(data["races"]), "accepted_native": data,
+            "original": copy.deepcopy(wyoming["original"]), "missing_count_clock_preserved": True,
+            "provider_substitution_allowed": False,
+        }
+    return result
 
 
 def load_review(root, seed=None):
     original = (Path(root) / ORIGINAL_PATH).read_bytes()
     review = json.loads(gzip.decompress((Path(root) / REVIEW_PATH).read_bytes()))
     require(review.get("contract") == REVIEW_CONTRACT and review.get("version") == VERSION
-            and set(review.get("states", {})) == {"HI"}, "Unreviewed protected official review")
+            and set(review.get("states", {})) in ({"HI"}, {"HI", "WY"}),
+            "Unreviewed protected official review")
     if seed is None:
-        seed = {"official_source_guards": {"HI": review["states"]["HI"]["accepted_guard"]}}
-    require(review == prepare_review(seed, original), "Protected official source review does not reproduce")
+        seed = {"official_source_guards": {
+            state: policy["accepted_guard"] for state, policy in review["states"].items()}}
+    wyoming = (json.loads(gzip.decompress((Path(root) / WY_FACTS_PATH).read_bytes()))
+               if "WY" in review["states"] else None)
+    require(review == prepare_review(seed, original, wyoming),
+            "Protected official source review does not reproduce")
     return review
 
 
 def validate_review(review, seed):
     require(isinstance(review, dict) and review.get("contract") == REVIEW_CONTRACT
             and review.get("version") == VERSION and isinstance(review.get("states"), dict)
-            and set(review["states"]) == {"HI"}
+            and set(review["states"]) in ({"HI"}, {"HI", "WY"})
             and review.get("source_model_refitting_allowed") is False
             and review.get("new_scientific_eligibility_allowed") is False,
             "Unreviewed protected official successor")
-    policy = review["states"]["HI"]
-    require(isinstance(policy, dict) and policy.get("source_id") == IDENTITY
-            and policy.get("source_url") == URL
-            and policy.get("accepted_guard") == seed["official_source_guards"]["HI"]
-            and policy.get("missing_count_clock_preserved") is True
-            and policy.get("provider_substitution_allowed") is False,
-            "Protected original source guard changed")
-    data = policy.get("accepted_native")
-    check_revision(None, data)
-    require(policy.get("candidate_inventory") == signature(data["races"]),
-            "Protected original candidate inventory changed")
-    require(sorted([race["district"], row["name"], row["literal_party"], str(row["votes"])]
-                   for race in data["races"] for row in race["candidates"])
-            == policy["accepted_guard"]["candidates"],
-            "Protected original counts differ from the accepted scientific frame")
+    from scripts import protected_official_wyoming as wy
+    sources = {"HI": (IDENTITY, URL), "WY": (wy.IDENTITY, wy.URL)}
+    for state, policy in review["states"].items():
+        require(isinstance(policy, dict) and policy.get("source_id") == sources[state][0]
+                and policy.get("source_url") == sources[state][1]
+                and policy.get("accepted_guard") == seed["official_source_guards"][state]
+                and policy.get("missing_count_clock_preserved") is True
+                and policy.get("provider_substitution_allowed") is False,
+                "Protected original source guard changed")
+        data = policy.get("accepted_native")
+        check_revision(None, data)
+        if state == "WY":
+            require(policy.get("original") == data["native_facts"]["original"],
+                    "Protected Wyoming accepted original pin differs from native facts")
+        require(policy.get("candidate_inventory") == signature(data["races"])
+                and all(race["state_code"] == state for race in data["races"]),
+                "Protected original candidate inventory changed")
+        require(sorted([race["district"], row["name"], row["literal_party"], str(row["votes"])]
+                       for race in data["races"] for row in race["candidates"])
+                == policy["accepted_guard"]["candidates"],
+                "Protected original counts differ from the accepted scientific frame")
 
 
 def current(entry, policy, previous=None):
@@ -243,6 +280,10 @@ def current(entry, policy, previous=None):
             "protected_official_source_URL_changed")
     data = entry.get("data")
     check_revision(previous or policy["accepted_native"], data)
+    if data["races"][0]["state_code"] == "WY":
+        require({key: entry["source"].get(key) for key in ("bytes", "sha256")} ==
+                data["native_facts"]["original"],
+                "Protected Wyoming current original pin differs from native facts")
     require(signature(data["races"]) == policy["candidate_inventory"],
             "protected_official_candidate_inventory_changed")
     return data

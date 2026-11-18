@@ -45,7 +45,8 @@ CODE_PATHS = (
     "congressional_complete_categories.py",
     "congressional_baselines.py", "congressional_geography.py",
     "supported_analytical_release.py",
-    "senate_legacy_bridge.py", "senate_complete_categories.py", "protected_official_house.py", "calibrated_swing.py",
+    "senate_legacy_bridge.py", "senate_complete_categories.py", "protected_official_house.py",
+    "protected_official_wyoming.py", "calibrated_swing.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
 REVIEWED_STATE_MIRROR_MIGRATIONS = {
@@ -591,6 +592,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_congressional_category_reconciliation.py",
                  "test_congressional_geography.py",
                  "test_senate_legacy_bridge.py", "test_senate_complete_categories.py", "test_protected_official_house.py",
+                 "test_protected_official_wyoming.py",
                  "test_results_congress.py"):
         path = ROOT / "tests" / name
         if path.is_file():

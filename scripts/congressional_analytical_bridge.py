@@ -498,7 +498,7 @@ def annotate_result(result, handoff):
                 current_native_control_scope_qualification=(
                     "Direct original official candidate inventory under protected review "
                     + handoff["protected_official_review_version"]
-                    + ". All named minor candidates retained; no provider substitution, "
+                    + ". All supplied named minor candidates and source-unassigned write-ins retained; no provider substitution, "
                     "respondent refit, new scientific eligibility or inferred count clock."
                     if direct else
                     "Fresh NPR/AP category D/R/O endpoints under reviewed stable-ID bridge "
@@ -506,7 +506,8 @@ def annotate_result(result, handoff):
                     "their dated individual counts remain in the full crosswalk. No individual "
                     "Other allocation, respondent refit or new scientific eligibility."),
                 current_source_scope=(
-                    "Complete reviewed same-office original official named-candidate frame; "
+                    "Complete reviewed same-office original official candidate-choice frame, "
+                    "including separately identified unassigned write-ins where supplied; "
                     "candidate counts are not ballots or turnout" if direct else
                     "Reviewed same-office statewide provider D/R/O category frame; "
                     "individual omitted candidate counts are not allocated"),

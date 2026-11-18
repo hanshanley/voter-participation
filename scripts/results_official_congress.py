@@ -6,6 +6,7 @@ from html import unescape
 
 from scripts.congressional_complete_categories import IDENTITY as COMPLETE_IDENTITY, URL as COMPLETE_URL
 from scripts.protected_official_house import IDENTITY as PROTECTED_IDENTITY, URL as PROTECTED_URL
+from scripts.protected_official_wyoming import IDENTITY as WY_IDENTITY, URL as WY_URL
 
 
 IDENTITY = "NE-official-house-candidates"
@@ -19,7 +20,8 @@ SENATE_CONFIG = {**COMPLETE_CONFIG, "sources": {
     **COMPLETE_CONFIG["sources"], SENATE_IDENTITY: COMPLETE_URL}}
 PROTECTED_CONFIG = {**SENATE_CONFIG, "sources": {
     **SENATE_CONFIG["sources"], PROTECTED_IDENTITY: PROTECTED_URL}}
-IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY, PROTECTED_IDENTITY)
+WY_CONFIG = {**PROTECTED_CONFIG, "sources": {**PROTECTED_CONFIG["sources"], WY_IDENTITY: WY_URL}}
+IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY, PROTECTED_IDENTITY, WY_IDENTITY)
 INTEGER = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
 PARTIES = {"Democratic": "D", "Republican": "R", "Libertarian": "O",
            "America First": "O", "Legal Marijuana Now": "O",
@@ -137,7 +139,7 @@ def collect(collector, config):
 
 
 def source_ids(config):
-    require(config in (CONFIG, COMPLETE_CONFIG, SENATE_CONFIG, PROTECTED_CONFIG),
+    require(config in (CONFIG, COMPLETE_CONFIG, SENATE_CONFIG, PROTECTED_CONFIG, WY_CONFIG),
             "Unreviewed official congressional source configuration")
     return tuple(config["sources"])
 
@@ -155,6 +157,9 @@ def collect_sources(collector, config, selected=None):
     if PROTECTED_IDENTITY in identities:
         from scripts.protected_official_house import collect as collect_protected
         result[PROTECTED_IDENTITY] = collect_protected(collector)
+    if WY_IDENTITY in identities:
+        from scripts.protected_official_wyoming import collect as collect_wyoming
+        result[WY_IDENTITY] = collect_wyoming(collector)
     for source_id, chamber in ((COMPLETE_IDENTITY, "house"), (SENATE_IDENTITY, "senate")):
         if source_id not in identities:
             continue

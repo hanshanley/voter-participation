@@ -734,6 +734,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
              "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
              "congressional_complete_categories.py", "protected_official_house.py",
+             "protected_official_wyoming.py",
              "results_native_delaware.py", "results_native_dc.py",
              "results_native_state_family.py", "results_native_oregon.py",
              "results_native_north_carolina.py",
@@ -766,6 +767,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                  "test_results_official_congress.py",
                  "test_congressional_complete_categories.py",
                  "test_protected_official_house.py",
+                 "test_protected_official_wyoming.py",
                  "test_results_native_delaware.py", "test_results_native_dc.py",
                  "test_results_native_broome.py", "test_results_native_kansas.py",
                  "test_results_native_workbooks.py",
@@ -813,6 +815,8 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/ri-official-senate.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
+    from scripts.protected_official_wyoming import FACTS_PATH as WY_FACTS_PATH
+    package_members["code/" + WY_FACTS_PATH] = (ROOT / WY_FACTS_PATH).read_bytes()
     fixture_root = ROOT / "tests/fixtures/utah-native"
     for path in sorted(fixture_root.rglob("*")):
         if path.is_file():
