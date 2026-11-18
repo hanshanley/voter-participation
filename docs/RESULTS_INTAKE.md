@@ -32,6 +32,52 @@ or respondent refit is required to consume a compatible new source snapshot.
 
 ## Congressional revision guards
 
+### Separately reviewed split-block boundary evidence
+
+The immutable national 119th/120th Congress BEF review is retained unchanged.
+`data/results-intake/district-splits/20261118-01/` adds a separately pinned review
+for Colorado block `080010096072000`, affecting CO-07 and CO-08 in 2024-to-2026
+comparisons. It contains both complete original congressional geometry ZIPs,
+the complete 2020 Census block polygon response, layer metadata and acquisition
+receipts. This is new split-geometry evidence, not new election returns.
+
+The compiler requires equal complete BEF memberships, the same full split-block
+declaration, all eight Colorado districts, valid unsimplified NAD83 district
+polygons and the exact full-resolution block query. Both original district
+partitions must cover the block with nonoverlapping interiors; each positive-area
+fragment must be exactly geometrically equal across congresses. There is no
+coordinate tolerance, geometry repair, simplification, population weighting or
+allocation of historical votes. Coverage is tested on original polygons before
+clipping, avoiding floating-point artifacts from dissolving separately clipped
+pieces. A changed fragment, additional unresolved split, wrong cycle, missing
+original or changed review refuses qualification.
+
+The rule removes only these two boundary holds. Candidate, party, stage, round,
+missing-count and freshness guards still apply on every automatic refresh.
+No House-state behavioral model is qualified by this geographic evidence.
+These source-product comparisons are not certification of legal boundaries.
+
+Reproduce the geometry review from the repository with its existing geographic
+dependencies, without acquiring anything:
+
+```sh
+python3 -m scripts.congressional_split_blocks \
+  --repository . --output /tmp/reproduced-split-review.json
+cmp /tmp/reproduced-split-review.json \
+  data/results-intake/district-splits/20261118-01/review.json
+```
+
+The analytical complete download includes every original above and its compiler.
+Within an extracted analytical packet, the equivalent command is:
+
+```sh
+PYTHONPATH=code python3 -m scripts.congressional_split_blocks \
+  --repository inputs/reviewed-congressional-sources \
+  --output reproduced-split-review.json
+cmp reproduced-split-review.json \
+  inputs/reviewed-congressional-sources/data/results-intake/district-splits/20261118-01/review.json
+```
+
 Recorded-results intake accepts newly advertised candidates or aggregate Other
 categories only with a newer native count version and every previously known
 candidate identity retained. Removed candidates, changed names/parties, lost

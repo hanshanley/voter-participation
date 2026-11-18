@@ -44,6 +44,7 @@ CODE_PATHS = (
     "congressional_category_reconciliation.py",
     "congressional_complete_categories.py",
     "congressional_baselines.py", "congressional_geography.py",
+    "congressional_split_blocks.py", "house_district_map.py",
     "supported_analytical_release.py",
     "senate_legacy_bridge.py", "senate_complete_categories.py", "protected_official_house.py",
     "protected_official_wyoming.py", "statewide_ballot_totals.py", "calibrated_swing.py",
@@ -595,6 +596,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_congressional_candidate_identity.py",
                  "test_congressional_category_reconciliation.py",
                  "test_congressional_geography.py",
+                 "test_congressional_split_blocks.py",
                  "test_senate_legacy_bridge.py", "test_senate_complete_categories.py", "test_protected_official_house.py",
                  "test_protected_official_wyoming.py", "test_statewide_ballot_totals.py",
                  "test_results_congress.py"):
@@ -614,6 +616,18 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         "Recomputes the complete count/native/model numerical query sets from included\n"
         "public aggregate source facts and safe accepted priors. No source requests,\n"
         "private survey refits, new geographic joins or observed-history claims.\n").encode()
+    if (compiled.get("congressional_analytical_review", {}).get("house_boundaries") or {}).get(
+            "split_geometry_review") is not None:
+        members["REPRODUCE.txt"] += (
+            "\nSeparate split-geometry evidence reproduction uses the project's existing\n"
+            "shapely>=2.0, pyshp>=2.3 and pyproj>=3.6 dependencies:\n"
+            "PYTHONPATH=code python3 -m scripts.congressional_split_blocks "
+            "--repository inputs/reviewed-congressional-sources "
+            "--output reproduced-split-review.json\n"
+            "cmp reproduced-split-review.json inputs/reviewed-congressional-sources/"
+            "data/results-intake/district-splits/20261118-01/review.json\n"
+            "Both complete original district ZIPs and the full Census block response are included.\n"
+        ).encode()
     return archive_bytes(members)
 
 
@@ -666,6 +680,11 @@ def replay(package, output):
         seed["supported_release_review"] = read(package / "inputs/supported-release-review.json")
     if "inputs/congressional-analytical-review.json" in manifest:
         seed["congressional_analytical_review"] = read(package / "inputs/congressional-analytical-review.json")
+        boundaries = seed["congressional_analytical_review"].get("house_boundaries") or {}
+        if "split_geometry_review" in boundaries:
+            from scripts.congressional_geography import load_review as load_boundaries
+            if load_boundaries(package / "inputs/reviewed-congressional-sources") != boundaries:
+                raise ValueError("Packaged House boundary review differs from its original evidence")
     if "inputs/senate-legacy-review.json" in manifest:
         from scripts.senate_legacy_bridge import load_review as load_senate_review
         senate_review = load_senate_review(package / "inputs/reviewed-senate-sources")

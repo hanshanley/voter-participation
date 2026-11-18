@@ -13,7 +13,7 @@ from scripts import congressional_geography as geography
 @pytest.fixture(scope="module")
 def reviewed():
     root = Path(__file__).resolve().parents[1]
-    return geography.load_review(root)
+    return geography.load_review(root, include_split_geometry=False)
 
 
 def test_unordered_blocks_preserve_leading_zeroes_and_unassigned_records():
@@ -100,12 +100,12 @@ def test_changed_review_body_and_changed_originals_refuse_loading(tmp_path, revi
     value["split_blocks"]["119"] = []
     path.write_bytes(gzip.compress(json.dumps(value).encode()))
     with pytest.raises(ValueError, match="Changed reviewed House boundary policy"):
-        geography.load_review(tmp_path)
+        geography.load_review(tmp_path, include_split_geometry=False)
     path.write_bytes(original)
     for name in geography.NAMES:
         (path.parent / name).symlink_to(root / geography.DIRECTORY / name)
-    assert geography.load_review(tmp_path) == reviewed
+    assert geography.load_review(tmp_path, include_split_geometry=False) == reviewed
     (path.parent / "cd120.zip").unlink()
     (path.parent / "cd120.zip").write_bytes(b"changed")
     with pytest.raises(ValueError, match="Changed original Census evidence"):
-        geography.load_review(tmp_path)
+        geography.load_review(tmp_path, include_split_geometry=False)

@@ -34,6 +34,9 @@ DATA_PATHS = (REVIEW_PATH,) + tuple(
 def data_paths(review):
     result = tuple(name for name in DATA_PATHS
                  if name not in GEOGRAPHY_PATHS or review.get("house_boundaries") is not None)
+    if (review.get("house_boundaries") or {}).get("split_geometry_review") is not None:
+        from scripts.congressional_split_blocks import DATA_PATHS as SPLIT_PATHS
+        result += SPLIT_PATHS
     if review.get("version") in (OFFICIAL_DECLARATION_VERSION, FILING_VERSION, COMPLETE_CATEGORY_VERSION):
         if review["version"] == COMPLETE_CATEGORY_VERSION:
             result += COMPLETE_CATEGORY_PATHS

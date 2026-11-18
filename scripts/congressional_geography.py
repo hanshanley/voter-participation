@@ -188,6 +188,16 @@ def compile_review(originals):
 
 
 def validate_review(review):
+    if "split_geometry_review" in review:
+        import copy
+        from scripts.congressional_split_blocks import apply_review
+        original = copy.deepcopy(review)
+        extension = original.pop("split_geometry_review")
+        original["decisions"] = decisions(original["national_memberships"], original["split_blocks"])
+        validate_review(original)
+        require(review == apply_review(original, extension),
+                "Boundary decisions differ from reviewed split geometry")
+        return review
     require(review.get("contract") == CONTRACT and review.get("version") == VERSION,
             "Unreviewed House boundary successor")
     require(set(review.get("evidence", {})) == set(NAMES)
@@ -211,7 +221,7 @@ def validate_review(review):
     return review
 
 
-def load_review(root):
+def load_review(root, *, include_split_geometry=True):
     path = Path(root) / REVIEW_PATH
     if not path.exists():
         return None
@@ -222,6 +232,9 @@ def load_review(root):
         expected = review["evidence"][name]
         require(pin((path.parent / name).read_bytes()) == {
             key: expected[key] for key in ("bytes", "sha256")}, "Changed original Census evidence")
+    if include_split_geometry:
+        from scripts import congressional_split_blocks as split
+        return split.apply_review(review, split.load_review(root))
     return review
 
 

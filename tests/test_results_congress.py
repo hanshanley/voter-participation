@@ -271,6 +271,48 @@ def test_default_sidecar_and_bounded_refresh_preserve_other_sources(tmp_path, mo
         intake.refresh_congress(registry, tmp_path / "invalid", previous, NOW)
 
 
+@pytest.mark.parametrize("seat", ["7", "8"])
+def test_split_block_successor_qualifies_recorded_revisions_not_retained_results(tmp_path, seat):
+    from pathlib import Path
+    from scripts.congressional_geography import load_review
+
+    root = Path(__file__).resolve().parents[1]
+    original = load_review(root, include_split_geometry=False)
+    successor = load_review(root)
+    scientific = review()
+    template = scientific["previous_district_queries"][0]
+    scientific["previous_district_queries"] = [
+        {**copy.deepcopy(template), "district": f"CO-{number:02d}"}
+        for number in range(1, 9)]
+    source = collect(tmp_path, {
+        "house": [race(state="CO", seat=seat)], "senate": []})
+    old = congress.comparisons(source, scientific, boundary_review=original)[0]
+    assert old["comparison_holds"] == ["House boundary hold: split_block_geometry_unresolved"]
+    new = congress.comparisons(source, scientific, boundary_review=successor)[0]
+    assert new["qualified_comparison"]
+    assert new["raw_recorded_margin_change_pp"] == old["raw_recorded_margin_change_pp"]
+    for delta in (7, -13):
+        revised = race(state="CO", seat=seat)
+        revised["updated"] += 60000
+        revised["candidates"][0]["votes"] += delta
+        updated = collect(tmp_path / str(delta), {"house": [revised], "senate": []}, source)
+        compared = congress.comparisons(updated, scientific, boundary_review=successor)[0]
+        assert compared["qualified_comparison"]
+        assert compared["D"] == 100 + delta
+        assert compared["raw_recorded_margin_change_pp"] != new["raw_recorded_margin_change_pp"]
+        repeated = collect(tmp_path / (str(delta) + "-repeat"),
+                           {"house": [revised], "senate": []}, updated)
+        assert repeated == updated
+        assert congress.comparisons(repeated, scientific, boundary_review=successor) == [
+            compared]
+    source["races"][new["id"]].update(
+        status="retained_after_failure", freshness="retained_last_good")
+    retained = congress.comparisons(source, scientific, boundary_review=successor)[0]
+    assert not retained["qualified_comparison"]
+    assert any("retained, not refreshed" in hold for hold in retained["comparison_holds"])
+    assert retained["raw_recorded_margin_change_pp"] == old["raw_recorded_margin_change_pp"]
+
+
 @pytest.mark.parametrize("votes", [101, 83, 0])
 def test_newer_corrections_including_decrease_zero_unknown(tmp_path, votes):
     bodies = sources()
