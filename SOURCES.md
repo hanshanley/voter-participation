@@ -1,5 +1,16 @@
 # Voter-participation source ledger
 
+## November 18, 2026: district map verified live
+
+The user authorized publication; actual Pages `44321582964` at consumer
+`b8d7993f2ee4fbd1fe44537d78f5d07698f801d0` is successful. All 435 districts, 259 qualified comparisons
+and 176 hatched holds are live and desktop/mobile verified. Maine16/Senate28
+remain verified. All437 complete-download pins and protected local work
+are preserved; no acquisition, refit or scientific qualification was added.
+[Production evidence](data/participation-access/20261118-district-map-live-01/production-acceptance.json) and
+[updated full handoff](data/participation-access/20261118-complete-automatic-products-02/REPORT.md). Earlier deployment-blocked entries below
+are historical; the separate scientific evidence holds remain.
+
 ## November 18: accepted automatic products and actual map delivery
 
 **435 House and 35 Senate returns refresh, with zero retained races. Eleven House states update 99 variant frames automatically (reported baseline: 4/36); 22 formerly qualified states remain frozen (was 29). Current qualified comparisons: 259 districts, 32 House states and 28 Senate contests.**

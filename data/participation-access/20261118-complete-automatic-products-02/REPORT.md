@@ -17,7 +17,7 @@ snapshot `0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0`, not
 | Qualified House-state comparisons | 32 | 32 |
 | Senate qualified exports / actual live reader | 28 / 25 reported | 28 / 28 verified |
 | Maine retained round-one county D/R display | User reported missing | All 16 live, desktop and mobile |
-| New district map | No all-district reader | All 435 built/tested; **not live** |
+| New district map | No all-district reader | All 435 **live**, desktop/mobile verified |
 
 The one district increase is FL-05 recovering freshness, not newly proved boundary
 equivalence. Display geometry does not itself qualify any comparison. The map uses
@@ -35,19 +35,23 @@ including five complete and eleven partial county vectors. Unallocated 165 distr
 write-ins are not guessed into counties. Conservative margin bounds and incomplete
 Other remain explicit. This is not final RCV, turnout or cross-election swing.
 Senate FL/OH/GA seat/stage details and all 35 races pass actual production checks.
-Those older readers arrived through an independently existing scheduled deployment;
-no assistant Pages deployment was requested.
+Those readers first arrived through an independently existing scheduled deployment;
+they were rechecked after the authorized district-map deployment below.
 
 The district frontend is published in `hanshanley/margin_of_error` main at
 `b8d7993f2ee4fbd1fe44537d78f5d07698f801d0` and tested against actual public data. It is
-**prepared but undeployed** under the explicit no-Pages instruction. Served
-return-driver JavaScript lacks the new district module. National outlines are dated
+**live** after the user's explicit November 18 authorization. Pages run
+`44321582964` deployed the tested revision; the served page and scripts match
+the actual native artifact. All 435 district values, both-year candidate counts,
+259 qualified comparisons, 176 hatched holds, keyboard/small-target selection,
+state filters and eight failure/race cases pass actual desktop/mobile checks.
+[Production acceptance and reviewed images](../20261118-district-map-live-01/production-acceptance.json). National outlines are dated
 TIGER display references, not certification of an effective legal plan. Missouri's
 separate errata page was denied; no errata body was acquired or recovered.
 Leading-zero identifiers, split-block and actual comparison-year restrictions remain.
 
-![Prepared district map, desktop](images/district-national-1440.png)
-![Prepared district map, mobile](images/district-national-390.png)
+![Live district map, desktop](../20261118-district-map-live-01/images/district-national-1440.png)
+![Live district map, mobile](../20261118-district-map-live-01/images/district-national-390.png)
 ![Live retained Maine county detail, mobile](images/maine-production-01-detail-390.png)
 ![Live Senate reader, desktop](images/senate-1440.png)
 
@@ -125,7 +129,11 @@ all 435 D/R/O/U district vectors, 259 qualified/176 held displays, actual tiny-d
 clicks, filter/unit changes, resize, keyboard and DC handling. Eight availability,
 checksum and delayed-response cases clear/recover or ignore stale results. Four
 map images and six live Maine/Senate images were physically inspected and hash-bound.
-This is built-source acceptance, not a new deployed Pages artifact.
+That earlier built-source proof is now supplemented by actual Pages `44321582964`
+artifact `14435077907`: 994,460,735 payload bytes and
+997,068,800 uncompressed tar bytes, both below the unchanged 1 GB cap.
+All 437 prior complete-download pins and the actual served participation bodies
+are verified; normal production checks replace no valid data, script or style.
 
 [Complete acceptance](acceptance.json) distinguishes those proofs, source snapshot
 persistence, denial policy and observed live readers. Seventy-six exact current
@@ -238,7 +246,7 @@ documents, fresh source requests, private respondents or legal boundary certific
 | 176 district comparisons | Actual effective-cycle boundary/split-block evidence or reconstructible historical returns, plus the race-specific election/party/stage rules |
 | Empirical Senate explanations | Actual compatible respondent questions, weights, historical inputs and separately validated bridge; endpoint swing alone is insufficient |
 | Local/group participation | Actual matching numerator/denominator/history evidence; no candidate-vote proxy or statewide downward allocation |
-| New district map activation | Separately authorized deployment; intentionally not performed |
+| New district map activation | Delivered after explicit authorization; not a remaining blocker |
 
 The frozen 22-state subset has no denominator, stage, geography, freshness or
 source-universe guard failures. Those are not its bottleneck; its identity/category/

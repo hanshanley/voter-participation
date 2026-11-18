@@ -1,0 +1,516 @@
+{
+  "passed": true,
+  "checked_at": "2026-11-18T14:25:56.098396+00:00",
+  "actual_production": true,
+  "consumer_commit": "b8d7993f2ee4fbd1fe44537d78f5d07698f801d0",
+  "pages_run": 44321582964,
+  "pages_artifact_id": 14435077907,
+  "native_archive": {
+    "bytes": 529088469,
+    "sha256": "f4a2d793448710c24abd94fc13582aa69bf9f3c20a6a8b1ca244c6a33abc5ba5"
+  },
+  "actual_payload_bytes": 994460735,
+  "actual_tar_bytes": 997068800,
+  "preserved_complete_download_pins": 437,
+  "participation_files_compared": 914,
+  "qualified_build_preview": {
+    "actual": {
+      "bytes": 65934,
+      "sha256": "8a5e5562f596d7ca10ca04ac179c82d5e69d531462aac9388cdd9ac129cc97f9"
+    },
+    "prepared": {
+      "bytes": 65734,
+      "sha256": "2d320ffbb0d30ee939cd93344ac41320f98679a205cf5061dbf9fa297c6c7783"
+    },
+    "all_non_text_pixels_exact": true,
+    "text_regions": [
+      [
+        70,
+        50,
+        1150,
+        93
+      ],
+      [
+        70,
+        95,
+        1150,
+        176
+      ],
+      [
+        70,
+        178,
+        1150,
+        212
+      ],
+      [
+        90,
+        515,
+        160,
+        545
+      ],
+      [
+        1010,
+        515,
+        1090,
+        545
+      ],
+      [
+        140,
+        570,
+        430,
+        605
+      ],
+      [
+        490,
+        570,
+        650,
+        605
+      ],
+      [
+        90,
+        620,
+        1150,
+        650
+      ],
+      [
+        0,
+        410,
+        90,
+        447
+      ],
+      [
+        0,
+        360,
+        90,
+        397
+      ],
+      [
+        0,
+        310,
+        90,
+        347
+      ],
+      [
+        0,
+        260,
+        90,
+        297
+      ]
+    ],
+    "only_manifest_change": "preview.png bytes and sha256",
+    "exact_published_stager": {
+      "bytes": 8971,
+      "sha256": "c24607972ca9c9f45812b904dd65b68c885738774a20ba35c72e0c531d19d3c3"
+    },
+    "unchanged_complete_national_input": {
+      "bytes": 690638,
+      "sha256": "af4c43575acb64a6985eea9c47e4b1ba7bebc8f7befd3497c04baedff41fe3e5"
+    }
+  },
+  "preview_guard_tests": {
+    "passed": true,
+    "exact_non_text_pixels": true,
+    "unrelated_manifest_mutation_refused": true,
+    "non_text_pixel_mutation_refused": true,
+    "preview": {
+      "actual": {
+        "bytes": 65934,
+        "sha256": "8a5e5562f596d7ca10ca04ac179c82d5e69d531462aac9388cdd9ac129cc97f9"
+      },
+      "prepared": {
+        "bytes": 65734,
+        "sha256": "2d320ffbb0d30ee939cd93344ac41320f98679a205cf5061dbf9fa297c6c7783"
+      },
+      "all_non_text_pixels_exact": true,
+      "text_regions": [
+        [
+          70,
+          50,
+          1150,
+          93
+        ],
+        [
+          70,
+          95,
+          1150,
+          176
+        ],
+        [
+          70,
+          178,
+          1150,
+          212
+        ],
+        [
+          90,
+          515,
+          160,
+          545
+        ],
+        [
+          1010,
+          515,
+          1090,
+          545
+        ],
+        [
+          140,
+          570,
+          430,
+          605
+        ],
+        [
+          490,
+          570,
+          650,
+          605
+        ],
+        [
+          90,
+          620,
+          1150,
+          650
+        ],
+        [
+          0,
+          410,
+          90,
+          447
+        ],
+        [
+          0,
+          360,
+          90,
+          397
+        ],
+        [
+          0,
+          310,
+          90,
+          347
+        ],
+        [
+          0,
+          260,
+          90,
+          297
+        ]
+      ],
+      "only_manifest_change": "preview.png bytes and sha256"
+    }
+  },
+  "source_bodies_equal_deployed_artifact": {
+    "participation-downloads.json": {
+      "bytes": 190025,
+      "sha256": "1c82e8a5b0283bf27f6139cdf4ce1e237d7c0201dd19578f25bc098fc4c4297c"
+    },
+    "voter-participation/index.html": {
+      "bytes": 6802679,
+      "sha256": "dcb3c8ce809f0bdea3fe4d225f55c8d8f7e33d9c52c9f9e7220b5cd31e807fad"
+    },
+    "voter-participation/publication-manifest.json": {
+      "bytes": 22634,
+      "sha256": "8001aa07c7fc1da31440d6750c514f35abe31fe01a14c6b875aa909023b82379"
+    },
+    "voter-participation/preview.png": {
+      "bytes": 65934,
+      "sha256": "8a5e5562f596d7ca10ca04ac179c82d5e69d531462aac9388cdd9ac129cc97f9"
+    },
+    "county-candidate-subsets.json": {
+      "bytes": 1062,
+      "sha256": "8b102ce910d6a731fe3af7085ee1167ec7a0e4cefb0c93c68c854c26d1f4e8c6"
+    },
+    "scripts/participation-house-districts.js": {
+      "bytes": 21329,
+      "sha256": "374afe4446678d9d9c0f44f3d84a314de2c6aa966f6496698ddb265eac78ba91"
+    },
+    "scripts/participation-county-context.js": {
+      "bytes": 1798,
+      "sha256": "c23837f6178c121051fd5d1454f7d27690dc1002baaf7392cc4a983001865c05"
+    },
+    "scripts/participation-registered-controls.js": {
+      "bytes": 11574,
+      "sha256": "0d3361b816c5cbe23dd439c62ac1f76aea5a51653a436a34e24e1d4d8bacdbe1"
+    },
+    "scripts/participation-explorer.js": {
+      "bytes": 279986,
+      "sha256": "cbd9213a9a891c354edf3b667f2f622457569e6ac647769531f32e67e2e272f5"
+    },
+    "scripts/participation-house-sensitivity.js": {
+      "bytes": 7673,
+      "sha256": "484246ce4f893280f319154095299ee7ed2e722fc3a138183f0af55ee7454732"
+    },
+    "scripts/participation-historical-native.js": {
+      "bytes": 19068,
+      "sha256": "f30ce991782276ca51846b36d4f21f7b65e825d3a7970122fafd731e3d97dbfe"
+    },
+    "scripts/participation-senate-partial.js": {
+      "bytes": 9468,
+      "sha256": "6901fb0416bfe040216bb73d8960ac2dca676fbc7ee6b914ff4e0defaab3f30b"
+    },
+    "scripts/participation-native-bindings.js": {
+      "bytes": 19410,
+      "sha256": "2708e83a396053a5c696681554ff72c2da0bb2f81b578ac189f4a6ef9f0c5223"
+    },
+    "scripts/participation-civic-state-demographics.js": {
+      "bytes": 4149,
+      "sha256": "66913f5636120c6de8264ce8756054bbbced194b1d5255ec524c70ebcf0da0e6"
+    },
+    "scripts/participation-county-subsets.js": {
+      "bytes": 8992,
+      "sha256": "51d85702fb833b04b52d9eb4bff37cbcc55e34fe076e12a0577a302c2d4dc56e"
+    },
+    "scripts/participation-calibrated-swing.js": {
+      "bytes": 6433,
+      "sha256": "62625193c2dae3e1acefb6773b558881e6f7bc70dba4b07fcde0419ccf71a115"
+    },
+    "scripts/participation-transition-scenarios.js": {
+      "bytes": 7455,
+      "sha256": "83606a63d4e9c8e2db8f04b0d2e73859ecd4438c51d5a4ac7b83843fca57c37e"
+    },
+    "scripts/participation-norc-house.js": {
+      "bytes": 45510,
+      "sha256": "d628018bf1c76a34cda64b88a62d09acc24289d8055cba2f8d33043a5f1f3d47"
+    },
+    "scripts/participation-senate-complete.js": {
+      "bytes": 14113,
+      "sha256": "12cd7b7e5b2ade4b16cf416bf2bdd9fb76ba8c872e5fba56a0678e193b90c535"
+    },
+    "scripts/participation-louisiana-native-groups.js": {
+      "bytes": 18189,
+      "sha256": "e1a4f5f7774e321f596e719b9e16262900bfa1394daa7a13650ca0c84df53c2f"
+    },
+    "scripts/participation-coverage.js": {
+      "bytes": 5579,
+      "sha256": "12fa282fd3603946fbe35de0527e53b4b5b83147517fb25dab5698ac245ef198"
+    },
+    "scripts/participation-ap-history.js": {
+      "bytes": 4818,
+      "sha256": "ebc440cb3ca4a67a5ae7b1e40bfdd692084a4553cf766fc378047899be40ca08"
+    },
+    "scripts/participation-cps-2002.js": {
+      "bytes": 4206,
+      "sha256": "b6e3e532ef46327b9c64f16baea5b7a65cc0a8178316b18be96755609c26e5f5"
+    },
+    "scripts/participation-downloads.js": {
+      "bytes": 7073,
+      "sha256": "ffb1f3abde4612c8576aa2ff2598a49889be401d75db5304b9af66309c7c1d73"
+    },
+    "scripts/participation-map-projection.js": {
+      "bytes": 2389,
+      "sha256": "d87f44a0ade1be193860c1db28722bbe73674532e7331e6703b3edcd8de74c7a"
+    },
+    "scripts/participation-dataset.js": {
+      "bytes": 4019,
+      "sha256": "4d4aba1fc99e2ef0aa232c139d5b56c9b6472a3b80786afa3a8ef479b96df491"
+    },
+    "scripts/participation-resident-context.js": {
+      "bytes": 13801,
+      "sha256": "a96da05062a26d6cf2d32c7403ac5272e6eb81458d04b4dd740c572dd9dd3260"
+    },
+    "scripts/participation-automatic-runtime.js": {
+      "bytes": 22747,
+      "sha256": "8fc2070f8fcfe406ecc3833c31c606f8a60e5ebc9aa774f289bb8bf6d0b1a983"
+    },
+    "scripts/participation-cps-1998.js": {
+      "bytes": 4291,
+      "sha256": "3d526ac6f0e9666bc3c251e2ff5d030ac371a309fc6c2278087f6ccd2940589c"
+    },
+    "scripts/participation-geography.js": {
+      "bytes": 51748,
+      "sha256": "f6139ae64bfee83c6ab020ba724d75696168b7cee9934e41743c394980ca86f3"
+    },
+    "scripts/participation-reference-bindings.js": {
+      "bytes": 5447,
+      "sha256": "17a66e9dc926acca9d6d53a65a6e4cb94d76a888b1db800d2b0f7d1498d42a16"
+    },
+    "scripts/participation-counts.js": {
+      "bytes": 18638,
+      "sha256": "dba4e0babdf1f41331c679114560131bd01811f1cabbc3cdf35f14cbb1296100"
+    },
+    "scripts/participation-congress.js": {
+      "bytes": 30211,
+      "sha256": "d6ea6f7fcb455cd50e116be06e7ce2f7d230b744f5584560173fe67ec3e04d54"
+    },
+    "scripts/participation-return-drivers.js": {
+      "bytes": 54466,
+      "sha256": "437117c171b96f2f5a29e8b5811a2ccf63c13d8904fb468e47a5e88bd61a4879"
+    },
+    "scripts/participation-cps-1996.js": {
+      "bytes": 5447,
+      "sha256": "a5d03985e995bbd975980c7fadd51021ebf8973e9416cb19430a3ccf4d264400"
+    },
+    "scripts/participation-swing.js": {
+      "bytes": 4686,
+      "sha256": "cdae0c2e5f77a2744a5117ff3e995375025041151d5ab1ce657024560739abf8"
+    },
+    "scripts/participation-state-demographics.js": {
+      "bytes": 4906,
+      "sha256": "0f3bbab2b430894a6fa91b2b5752e9c2709e86b7015f103160850ec81360afdf"
+    }
+  },
+  "districts": [
+    {
+      "width": 1440,
+      "all_map_values": 435,
+      "full_DROU_both_years": 435,
+      "qualified": 259,
+      "held": 176,
+      "physical_tiny_district": "AZ-04",
+      "state_filter_units_resize_keyboard_and_DC": true,
+      "runtime_version": "0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0",
+      "shared_manifest_requests": 1
+    },
+    {
+      "width": 390,
+      "all_map_values": 435,
+      "full_DROU_both_years": 435,
+      "qualified": 259,
+      "held": 176,
+      "physical_tiny_district": "AL-03",
+      "state_filter_units_resize_keyboard_and_DC": true,
+      "runtime_version": "0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0",
+      "shared_manifest_requests": 1
+    }
+  ],
+  "district_fault_cases": [
+    {
+      "width": 1440,
+      "fault": "http503",
+      "cleared_and_recovered_or_ignored": true
+    },
+    {
+      "width": 1440,
+      "fault": "checksum",
+      "cleared_and_recovered_or_ignored": true
+    },
+    {
+      "width": 1440,
+      "fault": "delayed-filter",
+      "cleared_and_recovered_or_ignored": true
+    },
+    {
+      "width": 1440,
+      "fault": "delayed-leave",
+      "cleared_and_recovered_or_ignored": true
+    },
+    {
+      "width": 390,
+      "fault": "http503",
+      "cleared_and_recovered_or_ignored": true
+    },
+    {
+      "width": 390,
+      "fault": "checksum",
+      "cleared_and_recovered_or_ignored": true
+    },
+    {
+      "width": 390,
+      "fault": "delayed-filter",
+      "cleared_and_recovered_or_ignored": true
+    },
+    {
+      "width": 390,
+      "fault": "delayed-leave",
+      "cleared_and_recovered_or_ignored": true
+    }
+  ],
+  "senate": [
+    {
+      "width": 1440,
+      "runtime": "0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0",
+      "races": 35,
+      "qualified_reader": 28,
+      "qualified_export": 28,
+      "literal_candidate_categories_checked": 140,
+      "seat_stage_details_checked": [
+        "FL",
+        "OH",
+        "GA"
+      ],
+      "page_errors": []
+    },
+    {
+      "width": 390,
+      "runtime": "0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0",
+      "races": 35,
+      "qualified_reader": 28,
+      "qualified_export": 28,
+      "literal_candidate_categories_checked": 140,
+      "seat_stage_details_checked": [
+        "FL",
+        "OH",
+        "GA"
+      ],
+      "page_errors": []
+    }
+  ],
+  "maine": [
+    {
+      "cached_reload": true,
+      "counties": 16,
+      "detail_image": "maine-production-detail-1440.png",
+      "detail_image_sha256": "50a0b4b85b2372e685303bf4d0cc71ed4df177ffc0203d51886b5fcc5902613f",
+      "image": "maine-production-1440.png",
+      "image_sha256": "4ea4c89602e0317213040699e166fb758938d4cde67e4130ba346cab3857eba4",
+      "keyboard_selections": 16,
+      "native_count_cells": 32,
+      "page_errors": [],
+      "physical_county_click": true,
+      "width": 1440
+    },
+    {
+      "cached_reload": true,
+      "counties": 16,
+      "detail_image": "maine-production-detail-390.png",
+      "detail_image_sha256": "d96d4f4b9e10afcb4cc2be548d9d2afb8759345d2a745e1401c9acb78fc9a261",
+      "image": "maine-production-390.png",
+      "image_sha256": "c60080ef4b968c5056b8a7a7ccf149690c91c1700e2b761d0c1d786d5a04dd0d",
+      "keyboard_selections": 16,
+      "native_count_cells": 32,
+      "page_errors": [],
+      "physical_county_click": true,
+      "width": 390
+    },
+    {
+      "availability_or_corruption_injected": true,
+      "fault": "http503",
+      "passed": true,
+      "valid_source_data_replaced": false
+    },
+    {
+      "availability_or_corruption_injected": true,
+      "fault": "checksum",
+      "passed": true,
+      "valid_source_data_replaced": false
+    },
+    {
+      "availability_or_corruption_injected": true,
+      "fault": "delayed",
+      "passed": true,
+      "valid_source_data_replaced": false
+    }
+  ],
+  "reviewed_production_images": {
+    "district-national-1440.png": {
+      "bytes": 170263,
+      "sha256": "5864ad66bdb6f5e5eeeec914cb8c56c861c4fcea7d4f95a2608df3e8e4b01614"
+    },
+    "district-national-390.png": {
+      "bytes": 52086,
+      "sha256": "eaa53bd4233a265d8237c2d77067d86e876e21404cd0f74e8a9583447b9b93ef"
+    },
+    "district-ri-1440.png": {
+      "bytes": 65242,
+      "sha256": "0960c31cc75e1260cb59b44d2846874618fdf7d6f2908945f43ca2c6b6d26bf5"
+    },
+    "district-ri-390.png": {
+      "bytes": 18154,
+      "sha256": "55eb497d376f726a138b2af24fe992d45488a9bf0d8dc105e4ff640e1b153ddd"
+    }
+  },
+  "normal_checks_replace_no_valid_data_scripts_or_styles": true,
+  "new_source_acquisition_or_model_refit": false,
+  "scientific_holds_removed_by_deployment": false,
+  "whole_project_complete": false
+}
