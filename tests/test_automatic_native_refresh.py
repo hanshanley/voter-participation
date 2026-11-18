@@ -189,6 +189,93 @@ def test_noop_and_changed_count_without_native_dependency_preserve_every_native_
     assert refresh(before, changed(before, state_name), empty_native) == empty_native
 
 
+def qualified_fixtures(direct):
+    before, native, state_name, native_name = fixtures()
+    state = read_json(state_name, before[state_name])
+    old = state["records"][0]
+    old["denominator"] = {
+        "literal": "Native registered", "basis": "previously_reviewed_native_denominator",
+        "qualified": True, "value": 2000,
+    }
+    old["view"].update(denominator=2000, registered=2000, reported_pct=46.4,
+                       validated_pct=46.4)
+    old["source"]["url"] = old["view"]["source_url"]
+    old["source"]["fields"] = copy.deepcopy(old["view"])
+    before[state_name] = compressed(state)
+    index = read_json("index.json", before["index.json"])
+    index["states"]["MN"].update(pin(before[state_name]))
+    before["index.json"] = encoded(index)
+    data = read_json(native_name, native[native_name])
+    embedded = copy.deepcopy(old)
+    if not direct:
+        embedded["id"] = "f" * 32
+    data["rows"][0]["observation"] = embedded
+    data["rows"][0]["properties"].update(
+        denominator=2000, registered=2000, reported_pct=46.4, validated_pct=46.4)
+    native[native_name] = compressed(data)
+    return before, native, state_name, native_name
+
+
+@pytest.mark.parametrize("direct", [True, False])
+@pytest.mark.parametrize("ballots,registered", [(935, 2100), (915, 1900), (0, 0), (None, None)])
+def test_native_refresh_propagates_projected_rate_withdrawal(direct, ballots, registered):
+    from scripts import results_granular
+
+    before, native, state_name, native_name = qualified_fixtures(direct)
+    old = read_json(state_name, before[state_name])["records"][0]
+    update = results_granular.change(
+        old, ballots, {"state": "MN", "county_id": "01", "precinct_id": "0005",
+                      "precinct_name": "AITKIN", "total_number_voted": ballots},
+        registered=registered, rate_compatible=False)
+    after, _ = results_granular.project(before, {"MN-test": {
+        "status": "reported", "source": {"url": old["source"]["url"], "sha256": "d" * 64},
+        "data": {"updates": [update]},
+    }})
+    result = refresh(before, after, native)
+    data = read_json(native_name, result[native_name])
+    row = data["rows"][0]
+    assert row["observation"]["count"]["value"] == ballots
+    assert row["observation"]["denominator"]["value"] == registered
+    assert row["observation"]["denominator"]["qualified"] is False
+    assert row["properties"]["ballots"] == ballots
+    assert row["properties"]["reported_pct"] is None
+    assert row["properties"]["validated_pct"] is None
+    assert row["properties"]["reference_geometry"] == {"sha256": GEOMETRY}
+    index = read_json("index.json", result["index.json"])
+    assert index["layers"]["precinct/MN"]["coverage"]["fractions"] == 0
+    assert refresh(after, after, result) == result
+
+
+@pytest.mark.parametrize("mutation", ["upgrade", "measure", "geography", "basis", "rate"])
+def test_rate_withdrawal_never_relaxes_other_identity_or_rate_guards(mutation):
+    before, native, state_name, _ = qualified_fixtures(True)
+    after = changed(before, state_name)
+    state = read_json(state_name, after[state_name])
+    row = state["records"][0]
+    row["denominator"]["qualified"] = False
+    row["view"].update(reported_pct=None, validated_pct=None)
+    if mutation == "upgrade":
+        prior = read_json(state_name, before[state_name])
+        prior["records"][0]["denominator"]["qualified"] = False
+        before[state_name] = compressed(prior)
+        row["denominator"]["qualified"] = True
+    elif mutation == "measure":
+        row["measure"]["unit"] = "unique_people"
+    elif mutation == "geography":
+        row["geography"]["join"]["reference_id"] = "e" * 64
+    elif mutation == "basis":
+        row["denominator"]["basis"] = "different_population"
+    else:
+        row["view"]["reported_pct"] = 46.45
+    after[state_name] = compressed(state)
+    for files in (before, after):
+        index = read_json("index.json", files["index.json"])
+        index["states"]["MN"].update(pin(files[state_name]))
+        files["index.json"] = encoded(index)
+    with pytest.raises(ValueError, match="identity, geography, label or qualification"):
+        refresh(before, after, native)
+
+
 def test_ambiguous_compatible_canonical_preimages_fail_closed():
     before, native, state_name, _ = fixtures()
     state = read_json(state_name, before[state_name])

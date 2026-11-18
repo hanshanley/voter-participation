@@ -98,6 +98,14 @@ class GitPublisher:
         if parent:
             self.git("fetch", "--no-tags", self.remote, self.ref_path)
 
+    def parent_of(self, commit):
+        # Unlike rev-parse commit^, this also reads the real parent in a shallow checkout.
+        headers = self.git("cat-file", "commit", commit).split("\n\n", 1)[0].splitlines()
+        parents = [line.removeprefix("parent ") for line in headers if line.startswith("parent ")]
+        if len(parents) > 1:
+            raise ValueError("A staged publication must not be a merge commit")
+        return parents[0] if parents else None
+
     def catalog(self, parent):
         if not parent:
             return dict(contract=CATALOG_CONTRACT, datasets={})

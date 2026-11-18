@@ -1132,6 +1132,8 @@ def publisher_state(repository, ref, github_repository, work):
     if parent:
         publisher.git("fetch", "--no-tags", "--depth=1", "--filter=blob:none",
                       publisher.remote, publisher.ref_path)
+        if pending_publication(publisher, parent) is not None:
+            raise ValueError("A staged collection must be activated before starting another collection")
         prior = unpack_state(json.loads(publisher.git("show", parent + ":state.json")))
     else:
         prior = {}
@@ -1139,10 +1141,78 @@ def publisher_state(repository, ref, github_repository, work):
     return publisher, prior
 
 
+PENDING_PUBLICATION = "pending-results-publication.json"
+
+
+def pending_publication(publisher, head):
+    body = publisher.git("show", head + ":" + PENDING_PUBLICATION, check=False) if head else ""
+    return json.loads(body) if body else None
+
+
+def activate_staged_results(publisher, staged, pending):
+    if publisher.remote_head() != staged or pending["parent"] != publisher.parent_of(staged):
+        raise ValueError("Staged source receipt was superseded or does not belong to this commit")
+    version = pending["version"]
+    if not isinstance(version, str) or not re.fullmatch(r"[a-f0-9]{64}", version):
+        raise ValueError("Invalid staged collection version")
+    prefix = "snapshots/" + version + "/"
+    latest_body = publisher.git("show", staged + ":latest.json", check=False)
+    latest_before = json.loads(latest_body) if latest_body else None
+    if pin(encoded(latest_before)) != pending["previous_pointer"]:
+        raise ValueError("Staged source snapshot does not match the previous active pointer")
+    prior_body = publisher.git("show", staged + ":state.json", check=False)
+    if pin(encoded(json.loads(prior_body) if prior_body else None)) != pending["previous_state"]:
+        raise ValueError("Staged source snapshot does not match the previous collector state")
+    checked_at = datetime.fromisoformat(pending["checked_at"])
+    if (checked_at.utcoffset() is None or latest_before
+            and checked_at < datetime.fromisoformat(latest_before["checked_at"])):
+        raise ValueError("Staged source snapshot has an invalid or older check time")
+    files = pending["files"]
+    if not {"snapshot.json.gz", "complete-results.zip"} <= files.keys():
+        raise ValueError("Incomplete staged collection")
+    state = encoded(json.loads(publisher.git("show", staged + ":" + prefix + "collector-state.json")))
+    stop_body = encoded(json.loads(publisher.git("show", staged + ":source-stops.json")))
+    if pin(state) != pending["collector_state"] or pin(stop_body) != pending["stops"]:
+        raise ValueError("Changed staged source state or access stops")
+    stopped = stops(json.loads(stop_body))
+    if (unpack_state(json.loads(state))["source_stops"] != stopped
+            or prior_body and merge_stops(stopped, unpack_state(json.loads(prior_body))["source_stops"]) != stopped):
+        raise ValueError("Staged source state would alter or drop durable access stops")
+    publisher.verify_files(staged, {
+        **{prefix + str(relative(name)): expected for name, expected in files.items()},
+        prefix + "collector-state.json": pending["collector_state"],
+        "source-stops.json": pending["stops"],
+    })
+    latest = {"contract": "participation.automatic_results_latest.v1", "version": version,
+              "checked_at": pending["checked_at"], "results_commit": staged,
+              "base_url": f"https://raw.githubusercontent.com/{publisher.github_repository}/{staged}/{prefix}",
+              "files": files, "all_states_certified": False}
+    bodies = {"latest.json": encoded(latest), "state.json": state, PENDING_PUBLICATION: encoded(None)}
+    promoted = publisher.commit(publisher.tree(staged, bodies), staged,
+                                "Activate current validated election results and persistent source states")
+    publisher.promote(promoted, staged)
+    publisher.verify_files(promoted, {name: pin(body) for name, body in bodies.items()})
+    return {"status": "published", "data_commit": promoted, "results_commit": staged, **latest}
+
+
+def resume_publication(repository, ref, github_repository):
+    publisher = GitPublisher(repository, ref=ref, github_repository=github_repository)
+    head = publisher.remote_head()
+    if head:
+        publisher.git("fetch", "--no-tags", "--depth=1", "--filter=blob:none",
+                      publisher.remote, publisher.ref_path)
+    pending = pending_publication(publisher, head)
+    if pending is None:
+        return {"status": "no_pending_publication", "data_commit": head}
+    return activate_staged_results(publisher, head, pending)
+
+
 def publish(repository, ref, github_repository, work):
     work = Path(work)
     publisher = GitPublisher(repository, ref=ref, github_repository=github_repository)
     parent = read(work / "publication-parent.json")["parent"]
+    if pending_publication(publisher, parent) is not None:
+        raise ValueError("Resume the staged collection before publishing another")
     stopped = stops(read(work / "source-stops.json"))
     report_path = work / "report.json"
     if not report_path.exists():
@@ -1160,10 +1230,13 @@ def publish(repository, ref, github_repository, work):
     report = read(report_path)
     if not report["passed"] or report["jurisdictions"] != 51:
         raise ValueError("Unvalidated current results")
+    latest = None
     if parent:
         latest = json.loads(publisher.git("show", parent + ":latest.json", check=False) or "{}")
         if latest.get("version") == report["version"]:
             return {"status": "unchanged", "data_commit": parent}
+        if latest and datetime.fromisoformat(latest["checked_at"]) > datetime.fromisoformat(report["checked_at"]):
+            raise ValueError("Source snapshot predates the accepted collection; refusing rollback")
     bodies = {}
     prefix = "snapshots/" + report["version"] + "/"
     for name, expected in report["files"].items():
@@ -1172,23 +1245,18 @@ def publish(repository, ref, github_repository, work):
             raise ValueError("Changed validated publication output")
         bodies[prefix + name] = body
     state_body = pack_state(read(work / "state.json"))
-    bodies.update({"state.json": state_body,
-                   "source-stops.json": encoded(stopped)})
+    stop_body = encoded(stopped)
+    prior_body = publisher.git("show", parent + ":state.json", check=False) if parent else ""
+    pending = {"version": report["version"], "checked_at": report["checked_at"], "parent": parent,
+               "files": report["files"], "previous_pointer": pin(encoded(latest or None)),
+               "previous_state": pin(encoded(json.loads(prior_body) if prior_body else None)),
+               "collector_state": pin(state_body), "stops": pin(stop_body)}
+    bodies.update({prefix + "collector-state.json": state_body,
+                   "source-stops.json": stop_body, PENDING_PUBLICATION: encoded(pending)})
     staged = publisher.commit(publisher.tree(parent, bodies), parent,
                               "Preserve validated complete election results " + report["version"][:12])
     publisher.promote(staged, parent)
-    publisher.verify_files(staged, {name: pin(body) for name, body in bodies.items()})
-    latest = {"contract": "participation.automatic_results_latest.v1", "version": report["version"],
-              "checked_at": report["checked_at"], "results_commit": staged,
-              "base_url": f"https://raw.githubusercontent.com/{github_repository}/{staged}/{prefix}",
-              "files": report["files"], "all_states_certified": False}
-    promoted_bodies = {"latest.json": encoded(latest), "state.json": state_body,
-                       "source-stops.json": encoded(stopped)}
-    promoted = publisher.commit(publisher.tree(staged, promoted_bodies), staged,
-                                "Activate current validated election results and persistent source states")
-    publisher.promote(promoted, staged)
-    publisher.verify_files(promoted, {name: pin(body) for name, body in promoted_bodies.items()})
-    return {"status": "published", "data_commit": promoted, "results_commit": staged, **latest}
+    return activate_staged_results(publisher, staged, pending)
 
 
 def main():
@@ -1221,12 +1289,18 @@ def main():
         action.add_argument("--repository", type=Path, default=ROOT)
         action.add_argument("--ref", default="results-data")
         action.add_argument("--github-repository", default="hanshanley/voter-participation")
+    resume = commands.add_parser("resume-publication")
+    resume.add_argument("--repository", type=Path, default=ROOT)
+    resume.add_argument("--ref", default="results-data")
+    resume.add_argument("--github-repository", default="hanshanley/voter-participation")
     reproduce = commands.add_parser("replay")
     reproduce.add_argument("--package", type=Path, required=True)
     reproduce.add_argument("--output", type=Path, required=True)
     recover = commands.add_parser("restore")
     recover.add_argument("--package", type=Path, required=True)
     recover.add_argument("--report", type=Path, required=True)
+    recover.add_argument("--require-predecessor", type=Path,
+                         help="Automatically restore only against the checkpoint's original data ref")
     recover.add_argument("--work-dir", type=Path, required=True)
     recover.add_argument("--repository", type=Path, default=ROOT)
     recover.add_argument("--ref", default="results-data")
@@ -1243,11 +1317,16 @@ def main():
         result = refresh_selected(args.registry, args.work_dir, previous, args.sources.split(","))
     elif args.command == "publish":
         result = publish(args.repository, args.ref, args.github_repository, args.work_dir)
+    elif args.command == "resume-publication":
+        result = resume_publication(args.repository, args.ref, args.github_repository)
     elif args.command == "restore":
         publisher, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
         parent = read(args.work_dir / "publication-parent.json")["parent"]
-        latest = json.loads(publisher.git("show", parent + ":latest.json", check=False) or "{}") if parent else {}
-        result = restore(args.package, args.report, args.work_dir, previous, latest)
+        if args.require_predecessor and read(args.require_predecessor) != {"parent": parent}:
+            result = {"status": "superseded"}
+        else:
+            latest = json.loads(publisher.git("show", parent + ":latest.json", check=False) or "{}") if parent else {}
+            result = restore(args.package, args.report, args.work_dir, previous, latest)
     else:
         result = replay(args.package, args.output)
     print(json.dumps(result, sort_keys=True))

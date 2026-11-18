@@ -130,6 +130,23 @@ def observation_identity(row: dict[str, Any]) -> bytes:
     })
 
 
+def compatible_refresh_identity(previous: dict[str, Any], current: dict[str, Any]) -> bool:
+    old = json.loads(observation_identity(previous))
+    new = json.loads(observation_identity(current))
+    if old == new:
+        return True
+    old_denominator, new_denominator = old["denominator"], new["denominator"]
+    if (old_denominator is None or new_denominator is None
+            or old_denominator.get("qualified") is not True
+            or new_denominator.get("qualified") is not False
+            or current.get("view", {}).get("reported_pct") is not None
+            or current.get("view", {}).get("validated_pct") is not None):
+        return False
+    # Withdrawing a rate is safe; it cannot change the underlying population or map.
+    old_denominator["qualified"] = False
+    return old == new
+
+
 def projected(properties: dict[str, Any], view: dict[str, Any]) -> dict[str, Any]:
     result = copy.deepcopy(properties)
     for key in tuple(result):
@@ -220,7 +237,7 @@ def changed_records(before_files: dict[str, bytes], after_files: dict[str, bytes
                     f"Automatic refresh may update only existing count IDs unless explicitly reviewed: {code}")
         for identity in old:
             if old[identity] != new[identity]:
-                if observation_identity(old[identity]) != observation_identity(new[identity]):
+                if not compatible_refresh_identity(old[identity], new[identity]):
                     raise ValueError(f"Changed count identity, geography, label or qualification: {identity}")
                 before[identity], after[identity] = old[identity], new[identity]
         changed_states.add(code)
@@ -636,6 +653,8 @@ def project_compatible_observation(native: dict[str, Any],
         raise ValueError("Compatible native denominator scope differs")
     if old_denominator is not None:
         old_denominator["value"] = new_denominator["value"]
+        old_denominator["qualified"] = bool(
+            old_denominator.get("qualified") and new_denominator.get("qualified"))
     for key in ("literal", "reported_units", "total_units", "complete"):
         if key in current.get("reporting_status", {}):
             result["reporting_status"][key] = copy.deepcopy(current["reporting_status"][key])
@@ -645,6 +664,10 @@ def project_compatible_observation(native: dict[str, Any],
         result["source_clock"]["qualification"] = current.get(
             "source_clock", {}).get("qualification")
     result["view"] = projected(result["view"], current["view"])
+    if old_denominator is not None and not old_denominator["qualified"]:
+        result["view"]["reported_pct"] = None
+        if "validated_pct" in result["view"]:
+            result["view"]["validated_pct"] = None
     if north_dakota:
         participation = copy.deepcopy(result["view"]["participation"])
         participation["ballots"] = current["count"]["value"]
@@ -837,7 +860,7 @@ def project_family_observation(native: dict[str, Any],
         if key != "fields"
     }
     result["source"]["fields"] = copy.deepcopy(result["view"])
-    if observation_identity(result) != observation_identity(native):
+    if not compatible_refresh_identity(native, result):
         raise ValueError(f"Reviewed family native identity changed: {native.get('id')}")
     return result
 

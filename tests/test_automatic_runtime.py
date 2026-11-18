@@ -739,6 +739,7 @@ def publication(monkeypatch, tmp_path):
             self.compilations = 0
             self.releases = 0
             self.interrupt = None
+            self.parents = {}
 
         def remote_head(self):
             return self.head
@@ -761,7 +762,11 @@ def publication(monkeypatch, tmp_path):
             identity = runtime.digest(encoded({
                 "parent": parent, "files": {name: pin(body) for name, body in tree.items()}}))[:40]
             self.objects[identity] = tree
+            self.parents[identity] = parent
             return identity
+
+        def parent_of(self, commit):
+            return self.parents[commit]
 
         def promote(self, commit, expected):
             if self.head != expected:
@@ -779,8 +784,9 @@ def publication(monkeypatch, tmp_path):
 
     publisher = Publisher()
     monkeypatch.setattr(runtime, "GitPublisher", lambda *args, **kwargs: publisher)
-    monkeypatch.setattr(runtime, "results", lambda _: (
-        {"version": "f" * 64, "checked_at": "2026-11-14T16:00:00+00:00"},
+    pointer = {"version": "f" * 64, "checked_at": "2026-11-14T16:00:00+00:00"}
+    monkeypatch.setattr(runtime, "results_pointer", lambda _: pointer)
+    monkeypatch.setattr(runtime, "result_bodies", lambda _: (
         {}, {"complete-results.zip": b"full-source-packet"}))
     monkeypatch.setattr(runtime, "dataset_files", lambda _: {"index.json": b"{}\n"})
     monkeypatch.setattr(runtime, "seed_files", lambda _: {"manifest.json": b"safe"})
@@ -816,7 +822,8 @@ def publication(monkeypatch, tmp_path):
 
 
 @pytest.mark.parametrize("interrupt", [None, "staging", "activation"])
-def test_publication_resume_and_unchanged_input_do_not_reset_or_duplicate_activation(publication, interrupt):
+def test_publication_resume_and_unchanged_input_do_not_reset_or_duplicate_activation(
+        publication, interrupt, monkeypatch):
     publisher, work, _ = publication
     original_catalog = publisher.catalog(publisher.head)
     publisher.interrupt = interrupt
@@ -826,6 +833,9 @@ def test_publication_resume_and_unchanged_input_do_not_reset_or_duplicate_activa
         if interrupt == "staging":
             assert publisher.catalog(publisher.head) == original_catalog
             assert "automatic/latest.json" not in publisher.objects[publisher.head]
+        # A fresh Actions runner has no checkout-local work directory or journal.
+        work = work.with_name("fresh-runner")
+        monkeypatch.setattr(runtime, "result_bodies", lambda _: pytest.fail("Recovery fetched bulk data"))
     result = runtime.run("not-used", work)
     assert result["status"] in ("published", "unchanged")
     current = json.loads(publisher.objects[publisher.head]["automatic/latest.json"])
@@ -834,11 +844,56 @@ def test_publication_resume_and_unchanged_input_do_not_reset_or_duplicate_activa
     assert current["native"] == catalog["datasets"]["participation-native-bindings-2026"]
     assert current["native"]["version"] == "b" * 64
     assert current["counts"]["staged_commit"] == current["native"]["staged_commit"]
-    assert publisher.releases == 1 and publisher.promotions == 2
+    assert publisher.releases == 1 and publisher.promotions == 2 and publisher.compilations == 1
     compilations, head = publisher.compilations, publisher.head
+    monkeypatch.setattr(runtime, "result_bodies", lambda _: pytest.fail("No-op fetched bulk source data"))
     assert runtime.run("not-used", work)["status"] == "unchanged"
     assert publisher.compilations == compilations and publisher.head == head
     assert publisher.promotions == 2
+
+
+@pytest.mark.parametrize(("changes", "message"), [
+    ({"version": "e" * 64, "checked_at": "2026-11-14T15:59:59+00:00"}, "refusing rollback"),
+    ({"checked_at": "2026-11-14T16:00:01+00:00"}, "changed its immutable pointer"),
+])
+def test_runtime_rejects_stale_or_rebound_source_before_downloading(publication, monkeypatch, changes, message):
+    publisher, work, _ = publication
+    runtime.run("not-used", work)
+    old_pointer = runtime.results_pointer(runtime.RESULTS_POINTER)
+    monkeypatch.setattr(runtime, "results_pointer", lambda _: {**old_pointer, **changes})
+    monkeypatch.setattr(runtime, "result_bodies", lambda _: pytest.fail("Unsafe source requested"))
+    head = publisher.head
+    with pytest.raises(ValueError, match=message):
+        runtime.run("not-used", work)
+    assert publisher.head == head
+
+
+@pytest.mark.parametrize("changed", ["catalog", "body", "parent"])
+def test_staged_successor_refuses_changed_predecessor_or_payload(publication, monkeypatch, changed):
+    publisher, work, _ = publication
+    runtime.run("not-used", work)
+    old_head = publisher.head
+    pointer = {"version": "e" * 64, "checked_at": "2026-11-14T17:00:00+00:00"}
+    monkeypatch.setattr(runtime, "results_pointer", lambda _: pointer)
+    publisher.interrupt = "staging"
+    with pytest.raises(OSError, match="Interrupted staging"):
+        runtime.run("not-used", work)
+    staged = publisher.head
+    assert publisher.objects[staged]["automatic/latest.json"] == publisher.objects[old_head]["automatic/latest.json"]
+    if changed == "catalog":
+        catalog = publisher.catalog(staged)
+        catalog["extra"] = "unrelated newer catalog edit"
+        publisher.objects[staged]["catalog.json"] = encoded(catalog)
+    elif changed == "body":
+        files = json.loads(publisher.objects[staged][runtime.PENDING_RUNTIME])["files"]
+        publisher.objects[staged][next(iter(files))] = b"changed"
+    else:
+        publisher.parents[staged] = "d" * 40
+    monkeypatch.setattr(runtime, "result_bodies", lambda _: pytest.fail("Unsafe source requested"))
+    with pytest.raises((ValueError, AssertionError)):
+        runtime.run("not-used", work.with_name("fresh-runner"))
+    assert publisher.head == staged
+    assert publisher.objects[staged]["automatic/latest.json"] == publisher.objects[old_head]["automatic/latest.json"]
 
 
 def test_concurrent_catalog_change_is_not_overwritten_after_archive_verification(publication, monkeypatch):

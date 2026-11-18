@@ -133,9 +133,10 @@ def fetch(url, expected=None, maximum=250_000_000):
     return body
 
 
-def results(pointer_url):
+def results_pointer(pointer_url):
     pointer = json.loads(fetch(pointer_url, maximum=1_000_000))
-    if (pointer.get("contract") != "participation.automatic_results_latest.v1"
+    if (not isinstance(pointer, dict)
+            or pointer.get("contract") != "participation.automatic_results_latest.v1"
             or not re.fullmatch(r"[a-f0-9]{64}", pointer.get("version", ""))
             or not re.fullmatch(r"[a-f0-9]{40}", pointer.get("results_commit", ""))):
         raise ValueError("Unqualified automatic results pointer")
@@ -143,12 +144,34 @@ def results(pointer_url):
             f"{pointer['results_commit']}/snapshots/{pointer['version']}/")
     if pointer.get("base_url") != base:
         raise ValueError("Result bodies must come from their exact immutable source commit")
-    bodies = {}
+    files = pointer.get("files")
+    if not isinstance(files, dict):
+        raise ValueError("Incomplete source results: full snapshot and package required")
     for name in ("snapshot.json.gz", "complete-results.zip"):
-        expected = pointer["files"].get(name)
-        if expected is None:
-            raise ValueError("Incomplete source results: full snapshot and package required")
-        bodies[name] = fetch(base + name, expected)
+        expected = files.get(name)
+        if (not isinstance(expected, dict) or set(expected) != {"bytes", "sha256"}
+                or type(expected["bytes"]) is not int or not 0 < expected["bytes"] <= 250_000_000
+                or not isinstance(expected["sha256"], str)
+                or not re.fullmatch(r"[a-f0-9]{64}", expected["sha256"])):
+            raise ValueError("Incomplete or invalid source snapshot/package declaration")
+    result_time(pointer.get("checked_at"))
+    return pointer
+
+
+def result_time(value):
+    from datetime import datetime
+
+    if not isinstance(value, str):
+        raise ValueError("Missing source snapshot check time")
+    observed = datetime.fromisoformat(value)
+    if observed.utcoffset() is None:
+        raise ValueError("Source snapshot check time has no offset")
+    return observed
+
+
+def result_bodies(pointer):
+    bodies = {name: fetch(pointer["base_url"] + name, pointer["files"][name])
+              for name in ("snapshot.json.gz", "complete-results.zip")}
     snapshot = json.loads(uncompressed(bodies["snapshot.json.gz"]))
     if (snapshot.get("contract") != "participation.automatic_results_snapshot.v1"
             or snapshot.get("election_date") != "2026-11-03"
@@ -160,6 +183,12 @@ def results(pointer_url):
         packet_manifest(archive)
         if archive.read("queries/snapshot.json.gz") != bodies["snapshot.json.gz"]:
             raise ValueError("Source packet and runtime snapshot disagree")
+    return snapshot, bodies
+
+
+def results(pointer_url):
+    pointer = results_pointer(pointer_url)
+    snapshot, bodies = result_bodies(pointer)
     return pointer, snapshot, bodies
 
 
@@ -812,16 +841,57 @@ def analytical_policy(root, *, split_block_geometry=False):
             if (Path(root) / REVIEW_PATH).exists() else None)
 
 
+PENDING_RUNTIME = "automatic/pending-publication.json"
+
+
+def activate_staged_runtime(publisher, staged, catalog, pending, repository):
+    from scripts.automatic_estimates import bind_publication
+
+    if publisher.remote_head() != staged:
+        raise ValueError("Staged runtime was superseded; last-good version preserved")
+    if pending["parent"] != publisher.parent_of(staged):
+        raise ValueError("Staged runtime receipt does not belong to this commit")
+    version = pending["manifest"]["version"]
+    if not isinstance(version, str) or not re.fullmatch(r"[a-f0-9]{64}", version):
+        raise ValueError("Invalid staged runtime version")
+    if pending["catalog"] != pin(encoded(catalog)):
+        raise ValueError("Staged runtime no longer matches the active catalog")
+    previous = publisher.git("show", staged + ":automatic/latest.json", check=False)
+    if pending["previous"] != pin(encoded(json.loads(previous) if previous else None)):
+        raise ValueError("Staged runtime no longer matches the rolling predecessor")
+    model_prefix = f"automatic/versions/{version}/"
+    base = f"https://raw.githubusercontent.com/{repository}/{staged}/{model_prefix}"
+    candidate, checks = bind_datasets(catalog, pending["datasets"], staged, repository)
+    if any(pending["files"].get(name, expected) != expected for name, expected in checks.items()):
+        raise ValueError("Staged files do not match the dataset descriptors")
+    publisher.verify_files(staged, {**checks, **pending["files"]})
+    manifest = copy.deepcopy(pending["manifest"])
+    download = manifest["complete_download"]
+    manifest["counts"] = candidate["datasets"]["participation-counts-2026"]
+    manifest["native"] = candidate["datasets"]["participation-native-bindings-2026"]
+    manifest["house_sources"] = bind_publication(pending["estimates"], base, download)["house_sources"]
+    if "congressional" in manifest:
+        manifest["congressional"].update(base_url=base, complete_download=download)
+    activation = {"catalog.json": encoded(candidate), "automatic/latest.json": encoded(manifest),
+                  PENDING_RUNTIME: encoded(None)}
+    promoted = publisher.commit(publisher.tree(staged, activation), staged,
+                                "Atomically activate automatic counts and qualified estimates")
+    publisher.promote(promoted, staged)
+    publisher.verify_files(promoted, {name: pin(body) for name, body in activation.items()})
+    return {"status": "published", "version": version, "data_commit": promoted,
+            "staged_commit": staged, "website_builds_started": 0, "complete_download": download}
+
+
 def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         github_repository=WEBSITE_REPOSITORY, publish=True, split_block_geometry=False):
-    from scripts.automatic_estimates import bind_publication
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
     publisher = GitPublisher(repository, github_repository=github_repository)
     parent = publisher.remote_head()
     publisher.fetch_parent(parent)
     catalog = publisher.catalog(parent)
-    pointer, snapshot, source = results(pointer_url)
+    pointer = results_pointer(pointer_url)
+    source_pin = pin(encoded(pointer))
     seed_dir = Path(seed_dir or ROOT / "data/results-intake/model-seed")
     review_path = ROOT / "data/results-intake/reviewed-eligibility.json"
     release_review = read(review_path) if review_path.exists() else None
@@ -859,14 +929,33 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     previous = publisher.git("show", parent + ":automatic/latest.json", check=False) if parent else ""
     if previous:
         previous = json.loads(previous)
-        if (previous.get("input_results_version") == pointer["version"]
+        same_input = previous.get("input_results_version") == pointer["version"]
+        prior_source_pin = previous.get("input_results_pointer")
+        if same_input and prior_source_pin is not None and prior_source_pin != source_pin:
+            raise ValueError("Accepted source version changed its immutable pointer")
+        if (not same_input and result_time(pointer["checked_at"]) < result_time(previous["checked_at"])):
+            raise ValueError("Source snapshot predates the active runtime; refusing rollback")
+        if (same_input and prior_source_pin == source_pin
                 and previous.get("processing_version") == processing
-                and all(previous.get(field, {}).get("version")
-                        == catalog["datasets"].get(identity, {}).get("version")
+                and all(previous.get(field) == catalog["datasets"].get(identity)
                         for field, identity in (("counts", "participation-counts-2026"),
                                                 ("native", "participation-native-bindings-2026")))):
             return {"status": "unchanged", "version": previous["version"],
                     "data_commit": parent, "website_builds_started": 0}
+    pending = publisher.git("show", parent + ":" + PENDING_RUNTIME, check=False) if parent else ""
+    staged_work = json.loads(pending) if pending else None
+    if publish and staged_work is not None:
+        staged_manifest = staged_work["manifest"]
+        same_staged_input = staged_manifest["input_results_version"] == pointer["version"]
+        if same_staged_input and staged_manifest["input_results_pointer"] != source_pin:
+            raise ValueError("Staged source version changed its immutable pointer")
+        if same_staged_input and staged_manifest["processing_version"] == processing:
+            result = activate_staged_runtime(publisher, parent, catalog, staged_work, github_repository)
+            write(work / "publication.json", result)
+            return {**result, "resumed_staging": True}
+        if result_time(staged_manifest["checked_at"]) > result_time(pointer["checked_at"]):
+            raise ValueError("Source snapshot predates the staged runtime; refusing rollback")
+    snapshot, source = result_bodies(pointer)
     count_description = catalog["datasets"]["participation-counts-2026"]
     native_description = catalog["datasets"]["participation-native-bindings-2026"]
     counts, native = dataset_files(count_description), dataset_files(native_description)
@@ -914,13 +1003,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         return {"status": "prepared_not_published", "version": version, "work_dir": str(work)}
     journal_path = work / ("publication-" + version + ".json")
     journal = read(journal_path) if journal_path.exists() else {"parent": parent, "version": version}
-    if parent not in (journal["parent"], journal.get("staged"), journal.get("promoted")):
-        raise ValueError("Active data advanced outside this publication; prepare against its new catalog")
     if parent != journal["parent"]:
-        original_catalog = publisher.catalog(journal["parent"])
-        if original_catalog != catalog:
-            raise ValueError("Interrupted publication no longer matches its original catalog")
-        parent = journal["parent"]
+        raise ValueError("Active data advanced outside this publication; prepare against its new catalog")
     download = complete_release(github_repository, version, packet_path, journal,
                                 checkpoint=lambda: write(journal_path, journal))
     write(journal_path, journal)
@@ -937,47 +1021,27 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         descriptions[identity] = description
     model_prefix = "automatic/versions/" + version + "/"
     bodies.update({model_prefix + name: body for name, body in compiled["model_files"].items()})
-    if "staged" not in journal:
-        staged = publisher.commit(publisher.tree(parent, bodies), parent,
-                                  "Stage automatic count and estimate successors")
-        journal["staged"] = staged
-        write(journal_path, journal)
-    staged = journal["staged"]
-    if publisher.remote_head() == parent:
-        publisher.promote(staged, parent)
-    elif publisher.remote_head() not in (staged, journal.get("promoted")):
-        raise ValueError("Data branch advanced; rebase without overwriting active data")
-    publisher.verify_files(staged, {name: pin(body) for name, body in bodies.items()})
-    candidate, coherent_checks = bind_datasets(catalog, descriptions, staged, github_repository)
-    publisher.verify_files(staged, coherent_checks)
-    bound = bind_publication(compiled["estimates"],
-        f"https://raw.githubusercontent.com/{github_repository}/{staged}/{model_prefix}", download)
     manifest = {"contract": CONTRACT, "version": version, "election_date": "2026-11-03",
         "processing_version": processing,
         "input_results_version": pointer["version"], "checked_at": pointer["checked_at"],
-        "counts": candidate["datasets"]["participation-counts-2026"],
-        "native": candidate["datasets"]["participation-native-bindings-2026"],
-        "house_sources": bound["house_sources"], "complete_download": download,
+        "input_results_pointer": source_pin,
+        "complete_download": download,
         "source_models_refitted": False, "geographic_joins_changed": False,
         "all_states_certified_or_precinct_complete": False}
     if "congressional" in compiled:
-        manifest["congressional"] = {
-            **compiled["congressional"],
-            "base_url": f"https://raw.githubusercontent.com/{github_repository}/{staged}/{model_prefix}",
-            "complete_download": download}
-    activation = {"catalog.json": encoded(candidate), "automatic/latest.json": encoded(manifest)}
-    if "promoted" not in journal:
-        journal["promoted"] = publisher.commit(publisher.tree(staged, activation), staged,
-            "Atomically activate automatic counts and qualified estimates")
-        write(journal_path, journal)
-    promoted = journal["promoted"]
-    if publisher.remote_head() == staged:
-        publisher.promote(promoted, staged)
-    elif publisher.remote_head() != promoted:
-        raise ValueError("Active data advanced; last-good version preserved")
-    publisher.verify_files(promoted, {name: pin(body) for name, body in activation.items()})
-    result = {"status": "published", "version": version, "data_commit": promoted,
-              "staged_commit": staged, "website_builds_started": 0, "complete_download": download}
+        manifest["congressional"] = compiled["congressional"]
+    pending = {"manifest": manifest, "catalog": pin(encoded(catalog)), "parent": parent,
+               "previous": pin(encoded(previous or None)), "datasets": descriptions,
+               "files": {name: pin(body) for name, body in bodies.items()},
+               "estimates": {key: compiled["estimates"][key] for key in ("contract", "house_sources")
+                             if key in compiled["estimates"]}}
+    bodies[PENDING_RUNTIME] = encoded(pending)
+    staged = publisher.commit(publisher.tree(parent, bodies), parent,
+                              "Stage automatic count and estimate successors")
+    if publisher.remote_head() != parent:
+        raise ValueError("Data branch advanced; last-good version preserved")
+    publisher.promote(staged, parent)
+    result = activate_staged_runtime(publisher, staged, catalog, pending, github_repository)
     write(work / "publication.json", result)
     return result
 

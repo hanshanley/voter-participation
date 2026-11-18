@@ -4,6 +4,7 @@ import gzip
 import io
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 from urllib.error import HTTPError
@@ -428,7 +429,9 @@ def test_invalid_stop_seed_is_fail_closed_before_transport(tmp_path):
         intake.Collector(tmp_path, {}, {"urls": None, "prefixes": [], "hosts": []}, NOW)
 
 
-def test_real_git_publication_keeps_main_and_persists_last_good_results(tmp_path, monkeypatch):
+@pytest.mark.parametrize("interrupt_staging", [False, True, "successor"])
+def test_real_git_publication_keeps_main_and_persists_last_good_results(
+        tmp_path, monkeypatch, interrupt_staging):
     registry = fixture(tmp_path)
     monkeypatch.setattr(intake.Collector, "acquire", unavailable)
     work = tmp_path / "run"
@@ -449,12 +452,55 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(tmp_path
     subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)
     subprocess.run(["git", "init", "-b", "main", str(repo)], check=True, capture_output=True)
     subprocess.run(["git", "-C", str(repo), "remote", "add", "origin", str(remote)], check=True)
+    interrupted_once = False
+
     def verify(self, commit, files):
+        nonlocal interrupted_once
+        if interrupt_staging and not interrupted_once and any(
+                name.startswith("snapshots/" + report["version"]) for name in files):
+            interrupted_once = True
+            raise OSError("Temporary verification outage")
         for name, expected in files.items():
-            assert pin(subprocess.check_output(["git", "-C", str(repo), "show", commit + ":" + name])) == expected
+            assert pin(subprocess.check_output(
+                ["git", "-C", str(self.repository), "show", commit + ":" + name])) == expected
     monkeypatch.setattr(GitPublisher, "verify_files", verify)
     intake.write(work / "publication-parent.json", {"parent": None})
-    result = intake.publish(repo, "results-data", "fixture/results", work)
+    git = GitPublisher(repo, ref="results-data")
+    previous_head = None
+    before_latest = before_state = ""
+    if interrupt_staging == "successor":
+        prior = tmp_path / "prior"
+        shutil.copytree(work, prior)
+        intake.write(prior / "report.json", {**report, "version": "a" * 64})
+        previous_head = intake.publish(repo, "results-data", "fixture/results", prior)["data_commit"]
+        before_latest = git.git("show", previous_head + ":latest.json")
+        before_state = git.git("show", previous_head + ":state.json")
+        intake.write(work / "publication-parent.json", {"parent": previous_head})
+        collected["source_stops"]["urls"].append("https://example.test/newly-stopped")
+        intake.write(work / "state.json", collected)
+        intake.write(work / "source-stops.json", collected["source_stops"])
+    if interrupt_staging:
+        with pytest.raises(OSError, match="Temporary verification outage"):
+            intake.publish(repo, "results-data", "fixture/results", work)
+        stage = git.remote_head()
+        assert git.git("show", stage + ":latest.json", check=False) == before_latest
+        assert git.git("show", stage + ":state.json", check=False) == before_state
+        if previous_head is not None:
+            assert "https://example.test/newly-stopped" in json.loads(
+                git.git("show", stage + ":source-stops.json"))["urls"]
+        with pytest.raises(ValueError, match="staged collection must be activated"):
+            intake.publisher_state(repo, "results-data", "fixture/results", tmp_path / "next")
+        intake_checkout = tmp_path / "next-runner"
+        subprocess.run(["git", "init", "-b", "main", str(intake_checkout)], check=True, capture_output=True)
+        subprocess.run(["git", "-C", str(intake_checkout), "remote", "add", "origin", str(remote)], check=True)
+        monkeypatch.setattr(intake.Collector, "acquire", lambda *args: pytest.fail("Recollected after staging"))
+        result = intake.resume_publication(intake_checkout, "results-data", "fixture/results")
+        assert result["results_commit"] == stage
+        assert intake.resume_publication(intake_checkout, "results-data", "fixture/results")["status"] == (
+            "no_pending_publication")
+        git.fetch_parent(result["data_commit"])
+    else:
+        result = intake.publish(repo, "results-data", "fixture/results", work)
     assert result["status"] == "published"
     assert result["version"] == report["version"]
     published = json.loads(subprocess.check_output(

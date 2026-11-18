@@ -36,11 +36,35 @@ def test_collection_has_its_own_budget_after_successful_pinned_validation():
     assert capture["continue-on-error"] == "true"
     publication = next(step for step in refresh["steps"] if step.get("id") == "publication")
     assert "steps.capture.outcome == 'failure'" in publication["if"]
-    assert "steps.restore.outcome == 'success'" in publication["if"]
-    artifact = next(step for step in refresh["steps"] if step.get("uses", "").startswith("actions/upload-artifact@"))
-    assert artifact["if"] == "always()"
-    assert "complete-results.zip" in artifact["with"]["path"]
+    assert "steps.restore.outputs.status == 'restored'" in publication["if"]
+    assert "steps.saved.outcome == 'success'" in publication["if"]
+    checkpoint = next(step for step in refresh["steps"] if step.get("id") == "saved")
+    assert refresh["steps"].index(capture) < refresh["steps"].index(checkpoint) < refresh["steps"].index(publication)
+    assert "complete-results.zip" in checkpoint["with"]["path"]
+    assert "publication-parent.json" in checkpoint["with"]["path"]
     assert refresh["steps"][-1]["run"] == "exit 1"
+
+
+@pytest.mark.parametrize("publication, recoverable", [
+    ("skipped", True), ("cancelled", True), ("failure", False), ("success", False),
+])
+def test_scheduled_checkpoint_is_reused_only_for_interrupted_publication(
+        tmp_path, publication, recoverable):
+    step = next(step for step in workflow()["jobs"]["refresh"]["steps"] if step.get("id") == "checkpoint")
+    script = step["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
+    output = tmp_path / "github-output"
+    output.touch()
+    metadata = [
+        b'{"workflow_runs":[{"id":123,"conclusion":"cancelled"}]}',
+        ("{\"jobs\":[{\"steps\":["
+         "{\"name\":\"Checkpoint the completed collection before publication\",\"conclusion\":\"success\"},"
+         "{\"name\":\"Publish valid results or preserve new access stops\",\"conclusion\":\""
+         + publication + "\"}]}]}").encode(),
+    ]
+    with patch.dict(os.environ, {"GH_REPO": "fixture/fixture", "GITHUB_OUTPUT": str(output)}):
+        with patch("subprocess.check_output", side_effect=metadata):
+            exec(compile(script, str(WORKFLOW), "exec"), {})
+    assert output.read_text() == ("run=123\n" if recoverable else "")
 
 
 @pytest.mark.parametrize(

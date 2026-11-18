@@ -24,11 +24,50 @@ Validation and collection run in separate dependent jobs, each with the existing
 collection or publication starts. Both jobs check out the workflow's exact commit,
 not a newer `main` that the tests did not inspect. Outside the automatic election
 window neither job acquires sources; manual dispatch retains its explicit override.
-The hourly cron, selected-source and recovery modes, durable access stops, last-good
-retention and complete-query artifacts are unchanged. This separation prevents
+The hourly cron, selected-source mode, durable access stops, last-good retention
+and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.
 The website's existing hourly data-only consumer remains separate; no Pages build
 or respondent refit is required to consume a compatible new source snapshot.
+
+### Unattended handoff and recovery
+
+The collector checkpoints its complete packet before publication. A later
+scheduled run first resumes any staged publication. If the preceding scheduled
+run stopped after its checkpoint but before staging, it can reuse the complete
+artifact only against the original data ref. A scientific or integrity failure
+is not an automatic replay trigger. The public source pointer and accepted
+collector state advance together; newly encountered access stops survive staging.
+
+The website resolves the accepted source commit once per cycle. A matching source
+and engine skip bulk download, compilation and publication. A fresh runner can
+verify and activate a staged runtime for the same source and engine; a stale or
+changed staging receipt cannot overwrite newer accepted data. Publication keeps
+the complete analysis ZIP, the rolling model seed, and exact predecessor bindings.
+If the publisher stops before either a source checkpoint or a runtime stage is
+durable, the unfinished work may need to run again.
+
+The separate website health workflow checks scheduled successes and source-to-site
+lag. It opens or updates one issue for repeated failures, a missed three-hour
+success window, a runtime/catalog mismatch, or a revision not active after two
+hours. A newer source revision does not reset the handoff timer. Verified catch-up closes
+the issue. Source-native result clocks and expected analytical holds do not by
+themselves trigger an alert. The monitor runs in GitHub; it cannot alert during a
+GitHub-wide outage.
+
+```sh
+# Collect into a fresh work directory using the reviewed registry.
+python -m scripts.results_intake collect --registry data/results-intake/registry.json --work-dir "$WORK"
+# Resume a staged source packet without reopening any election source.
+python -m scripts.results_intake resume-publication
+# Prepare the analytical refresh without changing active publication.
+python -m scripts.automatic_runtime --repository "$WEBSITE_CHECKOUT" --work-dir "$RUNTIME_WORK" --results-pointer "$PINNED_POINTER_URL" --no-publish
+# Inspect production handoff health without issuing writes.
+python -m scripts.automatic_health
+# In the extracted complete results / analysis ZIP, respectively:
+python3 code/reproduce.py replay --package . --output reproduced
+python3 code/reproduce.py --replay-package . --output reproduced
+```
 
 ## Congressional revision guards
 
