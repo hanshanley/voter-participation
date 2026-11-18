@@ -417,3 +417,166 @@ def test_official_declaration_needs_existing_fec_chain_and_a_resolved_guard():
     value["sources"][0]["facts"]["name"] = 'Joseph "Joey" Doe'
     with pytest.raises(ValueError, match="resolve no existing"):
         identity.official_declaration_successor(previous, value, fec, {})
+
+
+def filing_fixture(party=False):
+    from scripts import congressional_filing_identity as filing
+
+    fec = evidence()
+    fec["candidates"][0]["name"] = "DOE, JOSEPH"
+    fec["committees"][0]["name"] = "DOE FOR CONGRESS"
+    previous, key = unresolved_review()
+    previous = identity.successor(previous, fec, {})
+    previous["version"] = identity.OFFICIAL_DECLARATION_VERSION
+    urls = [
+        "https://www.fec.gov/data/candidate/H6AR00001/?cycle=2026&tab=about-candidate",
+        "https://www.fec.gov/data/committee/C00000001/?cycle=2026",
+        "https://www.fec.gov/data/committee/C00000001/?cycle=2026&tab=about-committee#section-2",
+        "https://docquery.fec.gov/pdf/123/202601010000000123/202601010000000123.pdf",
+    ]
+    sources = []
+    for index, kind in enumerate(("fec_candidate", "fec_committee", "fec_committee_about", "fec_form1")):
+        facts = ({("committee_url", "about_url", "filing_url")[index]: urls[index + 1]}
+                 if index < 3 else {
+                     "committee_id": "C00000001", "committee_id_page": 1,
+                     "candidate_name": "DOE, JOSEPH, , ," if party else "DOE, JOE, R, ,",
+                     "state": "AR", "district": "00", "literal_party": "DEM", "office": "H",
+                     "designation": "P", "physical_page": 2, "section": "5",
+                     "field_role": "Name of Candidate", "campaign_website": "DOEFORCONGRESS.EXAMPLE",
+                 })
+        sources.append({
+            "id": kind, "kind": kind, "url": urls[index], "facts": facts,
+            "bytes": 1000, "sha256": "a" * 64, "checked_at": "2026-11-17T17:00:00Z",
+        })
+    if party:
+        sources.append({
+            **sources[0], "id": "party", "kind": "nominating_party",
+            "url": "https://party.example/candidates",
+            "facts": {"anchor_label": "Joe Doe | CD0", "candidate_anchor_labels": ["Joe Doe | CD0"],
+                      "href": "https://doeforcongress.example", "election_year": "2026"},
+        })
+    value = {"contract": filing.CONTRACT, "sources": sources, "filings": [{
+        "fec_candidate_id": "H6AR00001", "committee_id": "C00000001",
+        "candidate_source": "fec_candidate", "committee_source": "fec_committee",
+        "committee_about_source": "fec_committee_about", "filing_source": "fec_form1",
+        "party_source": "party" if party else None,
+    }]}
+    return fec, previous, value, key
+
+
+@pytest.mark.parametrize("party", [False, True])
+def test_authorized_filing_or_named_party_campaign_link_resolves_only_pinned_identity(party):
+    from scripts import congressional_filing_identity as filing
+
+    fec, previous, value, key = filing_fixture(party)
+    saved = copy.deepcopy(previous)
+    assert identity.Evidence(fec).resolve(*candidates()) is None
+    resolved = filing.FilingEvidence(fec, value).resolve(*candidates())
+    assert resolved["fec_candidate"]["candidate_id"] == "H6AR00001"
+    result = filing.successor(previous, value, fec, {})
+    assert previous == saved
+    assert result["states"]["AR"]["automatic_update_reviewed"]
+    assert result["races"][key]["accepted_native"] == previous["races"][key]["accepted_native"]
+    assert result["legacy_candidates_preserved"] == previous["legacy_candidates_preserved"]
+    assert result["frozen_qualification"] == previous["frozen_qualification"]
+    assert set(filing.DATA_PATHS) <= set(bridge.data_paths(result))
+
+
+@pytest.mark.parametrize("field,value", [
+    ("field_role", "Name of Treasurer"), ("designation", "U"), ("office", "S"),
+    ("state", "GA"), ("district", "01"), ("literal_party", "REP"),
+    ("committee_id", "C00000002"), ("candidate_name", "DOE, J, R, ,"),
+    ("candidate_name", "OTHER, JOE, , ,"),
+])
+def test_filing_rejects_officer_names_and_wrong_candidate_designation(field, value):
+    from scripts import congressional_filing_identity as filing
+
+    fec, _, source, _ = filing_fixture()
+    source["sources"][3]["facts"][field] = value
+    with pytest.raises(ValueError):
+        filing.FilingEvidence(fec, source)
+
+
+@pytest.mark.parametrize("table,field,value", [
+    ("committees", "candidate_id", "H6AR00002"), ("committees", "literal_party", "REP"),
+    ("linkages", "candidate_election_year", "2024"), ("linkages", "fec_election_year", "2024"),
+    ("linkages", "designation", "U"),
+])
+def test_filing_cannot_supply_its_own_authorization_or_cycle(table, field, value):
+    from scripts import congressional_filing_identity as filing
+
+    fec, _, source, _ = filing_fixture()
+    fec[table][0][field] = value
+    with pytest.raises(ValueError, match="authorized FEC linkage"):
+        filing.FilingEvidence(fec, source)
+
+
+@pytest.mark.parametrize("field,value", [
+    ("href", "https://www.doeforcongress.example"), ("href", "https://other.example"),
+    ("anchor_label", "Joe Doe | CD1"), ("election_year", "2024"),
+    ("candidate_anchor_labels", ["Joe Doe | CD0", "Other Doe | CD0"]),
+])
+def test_party_nickname_requires_exact_unique_candidate_link_and_district(field, value):
+    from scripts import congressional_filing_identity as filing
+
+    fec, _, source, _ = filing_fixture(True)
+    source["sources"][4]["facts"][field] = value
+    with pytest.raises(ValueError, match="Party anchor"):
+        filing.FilingEvidence(fec, source)
+
+
+def test_filing_chain_and_both_unique_fec_anchors_are_required():
+    from scripts import congressional_filing_identity as filing
+
+    fec, _, source, _ = filing_fixture()
+    source["sources"][2]["facts"]["filing_url"] += "?unlinked"
+    with pytest.raises(ValueError, match="declaration chain"):
+        filing.FilingEvidence(fec, source)
+    fec, _, source, _ = filing_fixture()
+    fec["candidates"].append({**fec["candidates"][0], "candidate_id": "H6AR00002"})
+    assert filing.FilingEvidence(fec, source).resolve(*candidates()) is None
+
+
+def test_filing_successor_preserves_other_and_scientific_holds_and_checks_evidence():
+    from scripts import congressional_filing_identity as filing
+
+    fec, previous, source, key = filing_fixture()
+    reason = "aggregate_other_not_reconciled_to_retained_minor_candidate_mass"
+    previous["races"][key]["initial_holds"].append(reason)
+    previous["states"]["AR"]["holds"].extend([key + ":" + reason, "frozen_scientific_hold"])
+    previous["states"]["AR"]["frozen_scientific_comparison_qualified"] = False
+    result = filing.successor(previous, source, fec, {})
+    assert set(result["states"]["AR"]["holds"]) == {"frozen_scientific_hold", key + ":" + reason}
+    assert not result["states"]["AR"]["automatic_update_reviewed"]
+    with pytest.raises(ValueError, match="same complete FEC"):
+        filing.successor(previous, source, {**fec, "sources": ["changed"]}, {})
+
+
+def test_filing_loader_pins_full_evidence_and_recursively_validates_predecessor(tmp_path, monkeypatch):
+    from scripts import congressional_filing_identity as filing
+
+    fec, previous, source, _ = filing_fixture()
+    bodies = {
+        filing.DATA_PATHS[0]: bridge.compressed(previous),
+        filing.DATA_PATHS[1]: bridge.compressed(source),
+        filing.DATA_PATHS[2]: encoded({"passed": True}),
+        identity.DATA_PATHS[1]: bridge.compressed(fec),
+    }
+    files = {name: pin(bodies[name]) for name in filing.DATA_PATHS}
+    result = filing.successor(previous, source, fec, files)
+    for name, body in bodies.items():
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(body)
+    calls = []
+    monkeypatch.setattr(filing, "load_official_declaration_successor",
+                        lambda root, value: calls.append((root, value)))
+    assert filing.load_successor(tmp_path, result) == result
+    assert calls == [(tmp_path, previous)]
+    changed = copy.deepcopy(result)
+    changed["states"]["AR"]["automatic_update_reviewed"] = False
+    with pytest.raises(ValueError, match="do not reproduce"):
+        filing.load_successor(tmp_path, changed)
+    (tmp_path / filing.DATA_PATHS[1]).write_bytes(bridge.compressed({**source, "filings": []}))
+    with pytest.raises(ValueError, match="Changed complete"):
+        filing.load_successor(tmp_path, result)
