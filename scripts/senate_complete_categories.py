@@ -1,9 +1,11 @@
 """Recondition existing Senate scenarios using complete official candidate categories."""
 
 import copy
+from decimal import Decimal
 import gzip
 import json
 from pathlib import Path
+import re
 
 from scripts import calibrated_swing
 from scripts.congressional_analytical_bridge import identity, name_tokens, review_names
@@ -14,7 +16,9 @@ from scripts.results_official_congress import SENATE_IDENTITY
 from scripts.senate_legacy_bridge import load_review as load_legacy_review
 
 
-VERSION = "20261118-01"
+VERSION = "20261118-02"
+LEGACY_VERSION = "20261118-01"
+SOURCE_PRECEDENCE = "reviewed_complete_official_inventory_with_strictly_newer_native_clock"
 CONTRACT = "participation.senate_complete_category_scenarios.v1"
 REVIEW_CONTRACT = "participation.senate_complete_category_review.v1"
 DATA_ROOT = "data/results-intake/senate-complete-categories/"
@@ -24,6 +28,14 @@ VERIFICATION_PATH = DATA_ROOT + "independent-native-verification.json"
 DATA_PATHS = (REVIEW_PATH, EVIDENCE_PATH, VERIFICATION_PATH)
 MODEL_PATH = "senate/legacy-complete-results.json.gz"
 SCOPE = "complete_reported_DRO_candidate_universe_not_ballots_or_turnout"
+
+
+def _clock_key(value):
+    require(isinstance(value, str), "Missing UTC source count clock")
+    native = value[:-6] + "Z" if value.endswith("+00:00") else value
+    match = re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.([0-9]+))?Z", native)
+    require(match is not None, "Unreviewed UTC source count clock")
+    return clock(native).replace(microsecond=0), Decimal("0." + (match[1] or "0"))
 
 
 def _official(entry):
@@ -41,7 +53,7 @@ def _official(entry):
     return data["races"][0], data["source_updated_at"]
 
 
-def _reconcile(data, official, legacy):
+def _reconcile(data, official, legacy, official_clock=None):
     from scripts.automatic_estimates import _party_group
 
     named = [row for row in data["candidates"] if row["role"] == "named_candidate"]
@@ -51,6 +63,7 @@ def _reconcile(data, official, legacy):
             and sorted(row["party_group"] for row in named) == ["D", "R"],
             "Unreviewed complete provider Senate candidate categories")
     provider_ids, legacy_ids, omitted = set(), set(), []
+    counts_match = True
     for candidate in official["candidates"]:
         old = [row for row in legacy
                if _party_group(row["party"]) == candidate["party_group"]
@@ -65,9 +78,9 @@ def _reconcile(data, official, legacy):
                    and row["party_group"] == candidate["party_group"]
                    and review_names(row["name"], candidate["name"])]
         if matched:
-            require(len(matched) == 1 and matched[0]["candidate_id"] not in provider_ids
-                    and matched[0]["votes"] == candidate["votes"],
-                    "Official and provider named Senate counts or identities differ")
+            require(len(matched) == 1 and matched[0]["candidate_id"] not in provider_ids,
+                    "Official and provider named Senate identities differ")
+            counts_match = counts_match and matched[0]["votes"] == candidate["votes"]
             provider_ids.add(matched[0]["candidate_id"])
         else:
             require(candidate["party_group"] == "O",
@@ -75,9 +88,12 @@ def _reconcile(data, official, legacy):
             omitted.append(candidate)
     require(legacy_ids == {row["candidate_id"] for row in legacy}
             and len(legacy_ids) == len(legacy)
-            and provider_ids == {row["candidate_id"] for row in named}
-            and sum(row["votes"] for row in omitted) == aggregate[0]["votes"],
-            "Complete Senate candidate inventory or provider Other mass differs")
+            and provider_ids == {row["candidate_id"] for row in named},
+            "Complete Senate candidate inventory differs")
+    counts_match = counts_match and sum(row["votes"] for row in omitted) == aggregate[0]["votes"]
+    require(counts_match or official_clock is not None
+            and _clock_key(official_clock) > _clock_key(data["source_updated_at"]),
+            "Different Senate counts require a strictly newer complete official report")
     return {
         "official_inventory": signature(official),
         "provider_inventory": [
@@ -86,7 +102,7 @@ def _reconcile(data, official, legacy):
         "omitted_official_candidate_ids": sorted(row["candidate_id"] for row in omitted),
         "retained_legacy_candidate_ids": sorted(legacy_ids),
         "provider_aggregate_id": aggregate[0]["candidate_id"],
-        "all_provider_category_counts_reconciled": True,
+        "all_provider_category_counts_reconciled": counts_match,
         "individual_votes_allocated_from_Other": False,
         "provider_and_official_counts_added": False,
     }
@@ -94,7 +110,7 @@ def _reconcile(data, official, legacy):
 
 def successor(previous, evidence):
     require(evidence.get("contract") == REVIEW_CONTRACT
-            and evidence.get("version") == VERSION
+            and evidence.get("version") == LEGACY_VERSION
             and set(evidence.get("official_entries", {})) == {SENATE_IDENTITY},
             "Unreviewed complete Senate evidence inventory")
     official, source_clock = _official(evidence["official_entries"][SENATE_IDENTITY])
@@ -137,6 +153,7 @@ def successor(previous, evidence):
             previous_candidates=copy.deepcopy(selected["previous_candidates"]),
             baseline=copy.deepcopy(selected["baseline"]),
             conditioning_scope=SCOPE,
+            source_precedence=SOURCE_PRECEDENCE,
         )
     require(any(row["enabled"] for row in decisions.values()), "No complete Senate model bridge was qualified")
     return {
@@ -180,20 +197,27 @@ def _checkpoint(entry, official_entry, decision, saved):
             "National Senate source URL or pin changed")
     check_revision(saved["native"] if saved else decision["checkpoint"]["data"], data)
     official, official_clock = _official(official_entry)
+    require(all(row["votes"] > 0 for row in official["candidates"] if row["party_group"] in "DR"),
+            "Positive reported official Senate major-party counts are required")
     before = saved["official_evidence"] if saved else decision["official_checkpoint"]
     _, previous_clock = _official(before)
-    require(clock(official_clock) >= clock(previous_clock), "Complete official Senate clock regressed")
-    require(official_clock != previous_clock or official_entry["data"] == before["data"],
+    require(_clock_key(official_clock) >= _clock_key(previous_clock), "Complete official Senate clock regressed")
+    require(_clock_key(official_clock) != _clock_key(previous_clock) or official_entry["data"] == before["data"],
             "Complete official Senate facts changed without a new native clock")
     require(all(type(row["votes"]) is int and row["votes"] >= 0 for row in data["candidates"])
             and all(row["votes"] > 0 for row in data["candidates"] if row["party_group"] in "DR"),
             "Positive reported Senate major-party counts are required")
-    require(_reconcile(data, official, decision["legacy_native_control"]["full_candidate_rows"])
-            == decision["reconciliation"], "Reviewed complete Senate inventory changed")
+    require(decision.get("source_precedence") == SOURCE_PRECEDENCE,
+            "Complete Senate source precedence is unreviewed")
+    reconciliation = _reconcile(
+        data, official, decision["legacy_native_control"]["full_candidate_rows"], official_clock)
+    require(all(reconciliation[key] == value for key, value in decision["reconciliation"].items()
+                if key != "all_provider_category_counts_reconciled"),
+            "Reviewed complete Senate inventory changed")
     return data, source
 
 
-def _estimate(data, source, decision, prior):
+def _estimate(data, source, decision, prior, official_entry=None):
     before = decision["previous"]
     current = {row["party_group"]: row["votes"] for row in data["candidates"]}
     comparison = {
@@ -208,6 +232,34 @@ def _estimate(data, source, decision, prior):
         current_percent_reporting=None, current_snapshot=None, current_source_scope=SCOPE,
         qualification="Complete official named/minor/write-in inventory matches the original Senate "
         "model and every national provider category; original same-seat historical endpoints retained.")
+    if official_entry is not None:
+        official, official_clock = _official(official_entry)
+        provider_counts = current
+        current = {
+            party: sum(row["votes"] for row in official["candidates"] if row["party_group"] == party)
+            for party in "DRO"}
+        comparison.update(
+            current=current,
+            current_margin_pp=calibrated_swing.margin(current["D"], current["R"]),
+            current_native_clock=official_clock,
+            current_source_url=official_entry["source"]["url"],
+            qualification="Complete official named/minor/write-in inventory matches the original Senate "
+            "model and reviewed provider identities. Official counts take precedence over a differing "
+            "strictly older national report; no votes are allocated or added between providers.",
+            source_reconciliation={
+                "rule": SOURCE_PRECEDENCE,
+                "official_counts": current,
+                "national_counts": provider_counts,
+                "official_minus_national": {
+                    party: current[party] - provider_counts[party] for party in "DRO"},
+                "official_native_clock": official_clock,
+                "national_native_clock": data["source_updated_at"],
+                "official_source": copy.deepcopy(official_entry["source"]),
+                "national_source": copy.deepcopy(source),
+                "counts_agree": current == provider_counts,
+                "individual_votes_allocated_from_Other": False,
+                "provider_and_official_counts_added": False,
+            })
     comparison["reported_change_pp"] = comparison["current_margin_pp"] - comparison["previous_margin_pp"]
     model = calibrated_swing.estimate({
         "id": decision["legacy_native_control"]["id"], "office": "senate",
@@ -237,20 +289,27 @@ def build(snapshot, seed):
     for key, decision in sorted(review["models"].items()):
         saved = previous.get(key)
         if saved:
-            require(saved.get("review_version") == VERSION
+            require(saved.get("review_version") in (LEGACY_VERSION, VERSION)
                     and saved.get("model_pin") == pin(encoded(saved.get("model"))),
                     "Changed last-good complete Senate scenario")
             data, source = _checkpoint({
                 "status": "reported", "advertised": True, "freshness": "source_verified",
                 "data": saved["native"], "source": saved["source"]},
                 saved["official_evidence"], decision, None)
-            require(saved["model"] == _estimate(data, source, decision, review["prior"]),
+            if saved["review_version"] == LEGACY_VERSION:
+                _reconcile(data, _official(saved["official_evidence"])[0],
+                           decision["legacy_native_control"]["full_candidate_rows"])
+            require(saved["model"] == _estimate(
+                data, source, decision, review["prior"],
+                saved["official_evidence"] if saved["review_version"] == VERSION else None),
                     "Last-good complete Senate model differs from its original evidence")
         row = {
             "id": key, "office": "senate", "state_code": decision["state_code"],
             "status": "held_no_compatible_complete_bridge", "holds": copy.deepcopy(decision["holds"]),
             "legacy_source_clock": decision["legacy_comparison"].get("current_native_clock"),
-            "model_source_clock": saved["native"]["source_updated_at"] if saved else None,
+            "model_review_version": saved["review_version"] if saved else None,
+            "model_source_clock": saved["model"]["reported_comparison"]["current_native_clock"] if saved else None,
+            "national_source_clock": saved["native"]["source_updated_at"] if saved else None,
             "official_evidence_clock": saved["official_evidence"]["data"]["source_updated_at"] if saved else None,
             "official_source": copy.deepcopy(saved["official_evidence"]["source"]) if saved else None,
             "current_identity": copy.deepcopy(decision.get("identity")),
@@ -264,7 +323,7 @@ def build(snapshot, seed):
         try:
             entry = congress.get("races", {}).get(decision["identity"]["id"])
             data, source = _checkpoint(entry, official_entry, decision, saved)
-            model = _estimate(data, source, decision, review["prior"])
+            model = _estimate(data, source, decision, review["prior"], official_entry)
             status = ("fresh_unchanged_complete_scenario" if saved
                       and saved["native"] == data and saved["source"] == source
                       and saved["official_evidence"] == official_entry else "fresh_complete_scenario")
@@ -272,7 +331,10 @@ def build(snapshot, seed):
                 "review_version": VERSION, "native": copy.deepcopy(data), "source": copy.deepcopy(source),
                 "official_evidence": copy.deepcopy(official_entry),
                 "model": model, "model_pin": pin(encoded(model))}
-            row.update(status=status, holds=[], model=model, model_source_clock=data["source_updated_at"],
+            row.update(status=status, holds=[], model=model,
+                       model_review_version=VERSION,
+                       model_source_clock=model["reported_comparison"]["current_native_clock"],
+                       national_source_clock=data["source_updated_at"],
                        official_evidence_clock=official_entry["data"]["source_updated_at"],
                        official_source=copy.deepcopy(official_entry["source"]),
                        strict_legacy_model_refreshed=True)

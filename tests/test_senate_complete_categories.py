@@ -1,5 +1,5 @@
 import copy
-from datetime import timedelta
+from datetime import datetime, timedelta
 import gzip
 import json
 import math
@@ -94,6 +94,109 @@ class CompleteSenateTests(unittest.TestCase):
         unchanged = bridge.build(snapshot, seed)
         self.assertEqual(unchanged["last_good"], revised["last_good"])
         self.assertEqual(self.row(unchanged)["status"], "fresh_unchanged_complete_scenario")
+
+    def test_newer_official_only_revisions_preserve_all_other_mass_and_both_sources(self):
+        snapshot, seed = self.inputs()
+        national = copy.deepcopy(snapshot["congress"]["races"][RACE])
+        original = self.row(self.good)["model"]["point"]["reported_change_pp"]
+        for delta in (7, -13):
+            snapshot, seed = self.inputs()
+            self.revise(snapshot, delta)
+            snapshot["congress"]["races"][RACE] = copy.deepcopy(national)
+            official = snapshot["congress"]["official_candidate_evidence"][bridge.SENATE_IDENTITY]
+            raw = official["data"]["native_facts"]
+            stamp = (max(clock(raw["election"]["asOf"]),
+                         datetime.fromisoformat(
+                             national["data"]["source_updated_at"]))
+                     + timedelta(seconds=1)).isoformat().replace("+00:00", "Z")
+            raw["election"]["asOf"] = raw["ballotItems"][0]["reportingStatus"]["asOf"] = stamp
+            official["data"] = parse(encoded(raw), "senate")
+            official["source"].update(pin(encoded(raw)))
+            revised = bridge.build(snapshot, seed)
+            row = self.row(revised)
+            self.assertTrue(row["strict_legacy_model_refreshed"], row["holds"])
+            comparison = row["model"]["reported_comparison"]
+            audit = comparison["source_reconciliation"]
+            self.assertEqual(audit["official_minus_national"], {"D": delta, "R": 0, "O": 0})
+            self.assertFalse(audit["counts_agree"])
+            self.assertFalse(audit["provider_and_official_counts_added"])
+            self.assertEqual(comparison["current"]["O"],
+                             self.row(self.good)["model"]["reported_comparison"]["current"]["O"])
+            self.assertEqual(row["model_source_clock"], stamp)
+            self.assertEqual(row["national_source_clock"], national["data"]["source_updated_at"])
+            value = row["model"]["point"]["reported_change_pp"]
+            self.assertTrue(value > original if delta > 0 else value < original)
+            self.assertEqual(len(row["model"]["complete_scenarios"]), 9)
+
+    def test_newer_official_other_revision_is_not_allocated_to_named_candidates(self):
+        snapshot, seed = self.inputs()
+        official = snapshot["congress"]["official_candidate_evidence"][bridge.SENATE_IDENTITY]
+        raw = official["data"]["native_facts"]
+        stamp = (datetime.fromisoformat(
+            snapshot["congress"]["races"][RACE]["data"]["source_updated_at"])
+            + timedelta(seconds=1)).isoformat().replace("+00:00", "Z")
+        raw["election"]["asOf"] = raw["ballotItems"][0]["reportingStatus"]["asOf"] = stamp
+        contest = raw["ballotItems"][0]
+        candidate = next(row for row in contest["summaryResults"]["ballotOptions"] if row["isWriteIn"])
+        candidate["voteCount"] += 5
+        candidate["groupResults"][0]["voteCount"] += 5
+        contest["voteTotal"] += 5
+        official["data"] = parse(encoded(raw), "senate")
+        official["source"].update(pin(encoded(raw)))
+        revised = self.row(bridge.build(snapshot, seed))
+        self.assertTrue(revised["strict_legacy_model_refreshed"], revised["holds"])
+        audit = revised["model"]["reported_comparison"]["source_reconciliation"]
+        self.assertEqual(audit["official_minus_national"], {"D": 0, "R": 0, "O": 5})
+        self.assertFalse(audit["individual_votes_allocated_from_Other"])
+
+    def test_submicrosecond_official_revision_and_rollback_keep_exact_native_order(self):
+        snapshot, seed = self.inputs()
+        national = copy.deepcopy(snapshot["congress"]["races"][RACE])
+        self.revise(snapshot, 7)
+        snapshot["congress"]["races"][RACE] = national
+        official = snapshot["congress"]["official_candidate_evidence"][bridge.SENATE_IDENTITY]
+        raw = official["data"]["native_facts"]
+        second = national["data"]["source_updated_at"][:19]
+        national_fraction = national["data"]["source_updated_at"][19:].removesuffix("+00:00")
+        later = second + national_fraction.ljust(7, "0") + "1Z"
+        raw["election"]["asOf"] = raw["ballotItems"][0]["reportingStatus"]["asOf"] = later
+        official["data"] = parse(encoded(raw), "senate")
+        official["source"].update(pin(encoded(raw)))
+        revised = bridge.build(snapshot, seed)
+        self.assertTrue(self.row(revised)["strict_legacy_model_refreshed"], self.row(revised)["holds"])
+        seed["senate_complete_last_good"] = revised["last_good"]
+        earlier = later[:-2] + "0Z"
+        raw["election"]["asOf"] = raw["ballotItems"][0]["reportingStatus"]["asOf"] = earlier
+        official["data"] = parse(encoded(raw), "senate")
+        official["source"].update(pin(encoded(raw)))
+        held = bridge.build(snapshot, seed)
+        self.assertEqual(self.row(held)["status"], "held_retain_last_good_complete_scenario")
+        self.assertEqual(held["last_good"], revised["last_good"])
+        self.assertIn("clock regressed", self.row(held)["holds"][0])
+
+    def test_legacy_last_good_migrates_only_after_exact_original_model_validation(self):
+        snapshot, seed = self.inputs()
+        saved = seed["senate_complete_last_good"][KEY]
+        saved["review_version"] = bridge.LEGACY_VERSION
+        decision = self.review["models"][KEY]
+        saved["model"] = bridge._estimate(
+            saved["native"], saved["source"], decision, self.review["prior"])
+        saved["model_pin"] = pin(encoded(saved["model"]))
+        outage = copy.deepcopy(snapshot)
+        outage["congress"]["official_candidate_evidence"][bridge.SENATE_IDENTITY]["status"] = "retained_after_failure"
+        retained = bridge.build(outage, seed)
+        self.assertEqual(retained["last_good"][KEY], saved)
+        self.assertEqual(self.row(retained)["model"], saved["model"])
+        self.assertEqual(self.row(retained)["model_review_version"], bridge.LEGACY_VERSION)
+        self.assertEqual(self.row(retained)["status"], "held_retain_last_good_complete_scenario")
+        migrated = bridge.build(snapshot, seed)
+        self.assertEqual(migrated["last_good"][KEY]["review_version"], bridge.VERSION)
+        self.assertEqual(self.row(migrated)["model_review_version"], bridge.VERSION)
+        self.assertEqual(self.row(migrated)["model"]["point"], saved["model"]["point"])
+        saved["model"]["point"]["components_pp"]["entry"] += 1
+        saved["model_pin"] = pin(encoded(saved["model"]))
+        with self.assertRaisesRegex(ValueError, "Last-good"):
+            bridge.build(snapshot, seed)
 
     def test_outage_and_unsynchronized_official_counts_retain_own_last_good_clock(self):
         for cause in ("provider", "official", "different_counts"):
