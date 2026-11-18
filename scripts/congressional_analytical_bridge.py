@@ -34,6 +34,9 @@ DATA_PATHS = (REVIEW_PATH,) + tuple(
 def data_paths(review):
     result = tuple(name for name in DATA_PATHS
                  if name not in GEOGRAPHY_PATHS or review.get("house_boundaries") is not None)
+    if review.get("explicit_reference_names") is not None:
+        from scripts.congressional_reference_identity import DATA_PATHS as REFERENCE_PATHS
+        result += REFERENCE_PATHS
     if (review.get("house_boundaries") or {}).get("split_geometry_review") is not None:
         from scripts.congressional_split_blocks import DATA_PATHS as SPLIT_PATHS
         result += SPLIT_PATHS
@@ -98,6 +101,8 @@ def load_review(root, *, include_split_geometry=True):
         body = (root / "data/results-intake/analytical-handoff" / original["path"]).read_bytes()
         require(pin(body) == {key: original[key] for key in ("bytes", "sha256")},
                 "Changed complete official congressional baseline")
+    from scripts.congressional_reference_identity import load_optional as load_reference_names
+    review = load_reference_names(root, review)
     from scripts.congressional_geography import load_review as load_geography
     geography = load_geography(root, include_split_geometry=include_split_geometry)
     if geography is not None:

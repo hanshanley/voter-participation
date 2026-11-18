@@ -516,6 +516,44 @@ not activate that separate patch. Full before/after points, source queries,
 download pins, exact commands and remaining holds are in the
 [hosted acceptance record](../data/participation-access/20261117-house-identity-automatic-01/acceptance.json).
 
+#### Explicit quoted reference names and authorized candidate designations
+
+The optional `congressional_reference_identity.py` extension resolves the retained
+Pennsylvania District 5 Nick/Nicholas identity discrepancy. It requires the
+literal full formal name and quoted nickname in the same native candidate cell
+as its stable FEC identifier, a separate primary nominating-party page naming
+that nickname and district, and the complete existing authorized FEC
+candidate-to-committee-to-current-Form-1 chain. It does not infer a nickname
+from a surname, campaign hostname, registration alone, or a nickname dictionary.
+
+The selected independent candidate reference is **identity evidence only**,
+not official ballot-presence, completeness, vote-count or election-stage
+evidence. The safe bounded facts, complete predecessor chain, original body
+pins and independent native verification are included under
+`data/results-intake/explicit-reference-names/`; full publisher HTML and private
+contact/finance fields are excluded. The retained Form 1 facts reuse the earlier
+dual-reader/cache binding; a complete historical HTTP receipt was not recovered.
+
+Only the existing PA identity guard is removed. All candidate counts, literal
+parties, named minor candidates, Other/write-in mass, historical endpoints,
+scientific eligibility and other state decisions are preserved. The top-level
+review contract remains the already supported complete-category version; the
+identity extension has its own version and pinned, replayed evidence.
+Subsequent compatible source revisions automatically recondition all nine
+existing variants without another name review or respondent refit. Changed
+candidate inventories, stages, source frames, native clocks and missing counts
+continue to fail closed and retain the last-good outputs with their own dates.
+
+The controlled retained-source proof advances only PA across nine variants,
+then verifies native-source upward and downward corrections, outage retention
+and byte-identical no-ops. It supports twelve automatic House states / 108
+variant frames and leaves twenty-one previously qualified state models frozen.
+This is not new return acquisition, participation observations, empirical
+individual-transition validation or a claim that the consumer is already live.
+The complete analytical packet includes the extension, all selected evidence,
+tests, rolling predecessor and full numerical query set; the documented
+CPython 3.12 offline command revalidates the evidence before reproducing it.
+
 #### Explicit primary-source name declarations
 
 The separately reviewed `20261117-declarations-01` successor accepts explicit
