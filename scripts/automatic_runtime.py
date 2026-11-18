@@ -46,7 +46,7 @@ CODE_PATHS = (
     "congressional_baselines.py", "congressional_geography.py",
     "supported_analytical_release.py",
     "senate_legacy_bridge.py", "senate_complete_categories.py", "protected_official_house.py",
-    "protected_official_wyoming.py", "calibrated_swing.py",
+    "protected_official_wyoming.py", "statewide_ballot_totals.py", "calibrated_swing.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
 REVIEWED_STATE_MIRROR_MIGRATIONS = {
@@ -482,13 +482,17 @@ def hydrate_granular_sources(snapshot, source_packet):
 def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None):
     from scripts.automatic_estimates import build, render_artifacts
     from scripts.automatic_native_refresh import refresh
+    from scripts.statewide_ballot_totals import project as state_totals, exports as state_exports
 
     snapshot = hydrate_granular_sources(snapshot, source_packet)
     updated, changes = results_granular.project(count_files, snapshot.get("granular_sources", {}))
     updated = refresh_current(updated, snapshot, previous_files=count_files)
+    updated, state_changes = state_totals(updated, snapshot)
+    changes.extend(state_changes)
     native = refresh(count_files, updated, native_files)
     estimates = build(snapshot, seed)
     artifacts = render_artifacts(estimates)
+    artifacts.update(state_exports(updated))
     uf = snapshot.get("uf_turnout")
     if uf is not None and uf.get("data") is not None:
         from scripts.results_uf_turnout import exports as uf_exports
@@ -592,7 +596,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_congressional_category_reconciliation.py",
                  "test_congressional_geography.py",
                  "test_senate_legacy_bridge.py", "test_senate_complete_categories.py", "test_protected_official_house.py",
-                 "test_protected_official_wyoming.py",
+                 "test_protected_official_wyoming.py", "test_statewide_ballot_totals.py",
                  "test_results_congress.py"):
         path = ROOT / "tests" / name
         if path.is_file():

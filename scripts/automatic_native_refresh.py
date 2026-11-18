@@ -212,6 +212,10 @@ def changed_records(before_files: dict[str, bytes], after_files: dict[str, bytes
                 )
             )
             if not reviewed:
+                from scripts.statewide_ballot_totals import reviewed_addition
+                reviewed = reviewed_addition(
+                    code, old, new, {key: old_decl[key] for key in ("bytes", "sha256")})
+            if not reviewed:
                 raise ValueError(
                     f"Automatic refresh may update only existing count IDs unless explicitly reviewed: {code}")
         for identity in old:
