@@ -1,5 +1,9 @@
 # Remaining work: participation and election-transition estimates
 
+## November 18: RI and PA automatic models verified live
+
+Twelve House states now update 108 existing variant frames automatically; 21 formerly qualified states remain frozen. All 171 public outputs reproduce offline; actual unchanged run 44389935936 preserves the data/runtime and starts zero site builds. PA adds 36,310 candidate votes, not participation observations. 259 district comparisons and Senate reader/export agreement 28/28 remain live; the two additional CO comparisons require undeployed reader support. [Complete numerical handoff, downloads, commands and remaining dependencies](data/participation-access/20261118-ri-pa-automatic-models-01/REPORT.md). Earlier coverage snapshots below remain historical.
+
 ## November 18, 2026: district map verified live
 
 The user authorized publication; actual Pages `44321582964` at consumer

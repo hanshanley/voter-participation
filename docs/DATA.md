@@ -1,5 +1,9 @@
 # Complete analysis downloads
 
+## November 18: RI and PA automatic models verified live
+
+Twelve House states now update 108 existing variant frames automatically; 21 formerly qualified states remain frozen. All 171 public outputs reproduce offline; actual unchanged run 44389935936 preserves the data/runtime and starts zero site builds. PA adds 36,310 candidate votes, not participation observations. 259 district comparisons and Senate reader/export agreement 28/28 remain live; the two additional CO comparisons require undeployed reader support. [Complete numerical handoff, downloads, commands and remaining dependencies](../data/participation-access/20261118-ri-pa-automatic-models-01/REPORT.md). Earlier coverage snapshots below remain historical.
+
 ## November 18 complete immutable downloads
 
 - [Complete analytical packet](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-0ae8bf1bb1400699808f9eab3f16fda40f9c9dfe7903ad18850f7a4cdbeb7cd0/complete-analysis.zip): 305,697,376 bytes; SHA256 `7f9f3e49b7a190a8d9a65bc76194847dc12dca133c4f55bb48ab395f5d818046`; all 171 numerical outputs.

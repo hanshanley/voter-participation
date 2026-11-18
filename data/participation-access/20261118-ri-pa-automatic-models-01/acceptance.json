@@ -1,0 +1,227 @@
+{
+  "RI_reused_accepted_evidence": {
+    "all_previous_acceptance_campaigns_reused_not_repeated": true,
+    "runtime_run": 44383365851,
+    "runtime_version": "8b8223dde4dc71bd1befd4b50190182f16f2cebb193c90ef8d3bad550eec84a7",
+    "unchanged_run": 44384927084
+  },
+  "candidate_vote_revision_PA": {
+    "candidate_votes_added": 36310,
+    "current": {
+      "D": 2832536,
+      "O": 17628,
+      "R": 2148710
+    },
+    "not_ballots_or_unique_participants": true,
+    "previous": {
+      "D": 2803188,
+      "O": 17361,
+      "R": 2142015
+    }
+  },
+  "consumer": "92b56c19a4e2790c29792ba2f75130adfdbadf49",
+  "coverage": {
+    "after_PA": {
+      "automatic_house_states": 12,
+      "frozen": 21,
+      "variant_frames": 108
+    },
+    "after_RI": {
+      "automatic_house_states": 11,
+      "frozen": 22,
+      "variant_frames": 99
+    },
+    "before_RI": {
+      "automatic_house_states": 10,
+      "frozen": 23,
+      "variant_frames": 90
+    },
+    "qualified_districts_live": 259,
+    "qualified_districts_prepared": 261,
+    "qualified_house_states": 32,
+    "qualified_senate_exports": 28,
+    "qualified_senate_reader": 28
+  },
+  "new_participation_observations": 0,
+  "pages_deployment_requested": false,
+  "physical_images": {
+    "findings": [
+      "Both map widths show Pennsylvania's 17 district outlines with one hatched comparison hold.",
+      "Both model tables show the updated endpoint, all contribution rows and qualified sensitivity explanations.",
+      "Long literal native-clock lists and the existing mobile skip-navigation affordance remain; this is not a usability-polish claim.",
+      "No screenshot, page style, valid script or production data was replaced for these checks."
+    ],
+    "images": {
+      "pa-districts-1440.png": "6c449c255375d90b7bcf69a7997b0ab0428d29f37225247f9357086b74d22eda",
+      "pa-districts-390.png": "02654da77cdb50b421b8b70012cca6b4d9b174c9ca972a66225d39aea43e3ea1",
+      "pa-model-1440.png": "b10d2ab57bb2483bc26a82c824d8970a81a62ba7a250971195e7f51b26e929f2",
+      "pa-model-390.png": "8611fc8e186da3b9200be3ff1f597568e94c629a565fe23354bba64c447d42df"
+    },
+    "passed": true,
+    "review": "All four actual production images were opened and visually inspected after browser acceptance."
+  },
+  "production_reader": {
+    "all_435_district_decisions_preservation": "Verified separately in the full numerical packet",
+    "cases": [
+      {
+        "districts": 17,
+        "exact_PA_map_values": 144,
+        "model_variants": [
+          "attenuated/accepted_ridge_multinomial",
+          "attenuated/extra_randomized_trees",
+          "attenuated/histogram_gradient_boosting",
+          "full/accepted_ridge_multinomial",
+          "full/extra_randomized_trees",
+          "full/histogram_gradient_boosting",
+          "original/accepted_ridge_multinomial",
+          "original/extra_randomized_trees",
+          "original/histogram_gradient_boosting"
+        ],
+        "page_errors": [],
+        "qualified_districts": 16,
+        "runtime_version": "24c37fbad5ff2e8e89c504333b1d7aacc229c87af1486560f6476d4b96fb5d8c",
+        "shared_manifest_requests": 1,
+        "width": 1440
+      },
+      {
+        "districts": 17,
+        "exact_PA_map_values": 144,
+        "model_variants": [
+          "attenuated/accepted_ridge_multinomial",
+          "attenuated/extra_randomized_trees",
+          "attenuated/histogram_gradient_boosting",
+          "full/accepted_ridge_multinomial",
+          "full/extra_randomized_trees",
+          "full/histogram_gradient_boosting",
+          "original/accepted_ridge_multinomial",
+          "original/extra_randomized_trees",
+          "original/histogram_gradient_boosting"
+        ],
+        "page_errors": [],
+        "qualified_districts": 16,
+        "runtime_version": "24c37fbad5ff2e8e89c504333b1d7aacc229c87af1486560f6476d4b96fb5d8c",
+        "shared_manifest_requests": 1,
+        "width": 390
+      }
+    ],
+    "images": {
+      "pa-districts-1440.png": {
+        "bytes": 58642,
+        "sha256": "6c449c255375d90b7bcf69a7997b0ab0428d29f37225247f9357086b74d22eda"
+      },
+      "pa-districts-390.png": {
+        "bytes": 18631,
+        "sha256": "02654da77cdb50b421b8b70012cca6b4d9b174c9ca972a66225d39aea43e3ea1"
+      },
+      "pa-model-1440.png": {
+        "bytes": 204413,
+        "sha256": "b10d2ab57bb2483bc26a82c824d8970a81a62ba7a250971195e7f51b26e929f2"
+      },
+      "pa-model-390.png": {
+        "bytes": 197563,
+        "sha256": "8611fc8e186da3b9200be3ff1f597568e94c629a565fe23354bba64c447d42df"
+      }
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "physical_image_review_recorded_separately": true,
+    "transport": "Actual production page, scripts and public data; no route, data, DOM or style overrides."
+  },
+  "research_engine": "fcf98a24a07b85d83d3d51cd04622da5140fd53e",
+  "runtime_acceptance": {
+    "PA_counts": {
+      "D": 2832536,
+      "O": 17628,
+      "R": 2148710
+    },
+    "actual_preceding_count_native_and_rolling_seed_inputs_verified": true,
+    "all_candidate_counts_and_470_comparisons_preserved": true,
+    "all_count_and_native_files_preserved": true,
+    "all_nine_variants_verified": [
+      "attenuated/accepted_ridge_multinomial",
+      "attenuated/extra_randomized_trees",
+      "attenuated/histogram_gradient_boosting",
+      "full/accepted_ridge_multinomial",
+      "full/extra_randomized_trees",
+      "full/histogram_gradient_boosting",
+      "original/accepted_ridge_multinomial",
+      "original/extra_randomized_trees",
+      "original/histogram_gradient_boosting"
+    ],
+    "automatic_house_states": [
+      "AR",
+      "DE",
+      "GA",
+      "HI",
+      "MN",
+      "NM",
+      "PA",
+      "RI",
+      "SD",
+      "TN",
+      "VT",
+      "WY"
+    ],
+    "automatic_state_variants": 108,
+    "changed_model_states": [
+      "PA"
+    ],
+    "complete_download": {
+      "bytes": 307072899,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "4e3e28421252354b33778346a84aef52b647278c7d4d7741b41340538cd8603d",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-24c37fbad5ff2e8e89c504333b1d7aacc229c87af1486560f6476d4b96fb5d8c/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "coverage": {
+      "legacy_reader_qualified_senate": 25,
+      "reviewed_qualified_house_districts": 259,
+      "reviewed_qualified_house_states": 32,
+      "reviewed_qualified_senate": 28
+    },
+    "formerly_qualified_frozen_states": 21,
+    "models_refitted": false,
+    "national_candidate_and_control_seed_preserved": true,
+    "new_participation_observations": 0,
+    "offline_replay": {
+      "complete_outputs": 171,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "pages_deployment_requested": false,
+    "public_outputs_verified": 171,
+    "runtime": {
+      "complete_download": {
+        "bytes": 307072899,
+        "immutable": true,
+        "media_type": "application/zip",
+        "sha256": "4e3e28421252354b33778346a84aef52b647278c7d4d7741b41340538cd8603d",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-24c37fbad5ff2e8e89c504333b1d7aacc229c87af1486560f6476d4b96fb5d8c/complete-analysis.zip",
+        "verified_anonymously": true
+      },
+      "data_commit": "7fad2975163850c899df39cc90ee25a514899811",
+      "staged_commit": "5106fd61db705e9744b628628890d7f29454d5fd",
+      "status": "published",
+      "version": "24c37fbad5ff2e8e89c504333b1d7aacc229c87af1486560f6476d4b96fb5d8c",
+      "website_builds_started": 0
+    },
+    "same_previously_accepted_source_reused": "b2adec49c9db173294b95e0d9f1677c37e0a6684f645262c7e0a0185425a02f1",
+    "separate_RI_official_checkpoint_preserved": true,
+    "split_geometry_delivery_gate_preserved": true,
+    "status": "PASS"
+  },
+  "runtime_run": 44388241229,
+  "source_models_refitted": false,
+  "status": "PASS",
+  "unchanged_acceptance": {
+    "data_commit": "7fad2975163850c899df39cc90ee25a514899811",
+    "no_publication_or_pages_build": true,
+    "run": 44389935936,
+    "runtime_version": "24c37fbad5ff2e8e89c504333b1d7aacc229c87af1486560f6476d4b96fb5d8c",
+    "status": "PASS"
+  },
+  "unchanged_run": 44389935936,
+  "whole_project_complete": false
+}
