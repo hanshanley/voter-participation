@@ -1,0 +1,444 @@
+{
+  "after": {
+    "automatic_house_states": 13,
+    "frozen": 20,
+    "qualified_districts_live": 259,
+    "qualified_districts_prepared": 261,
+    "qualified_house_states": 32,
+    "qualified_senate_exports": 28,
+    "qualified_senate_reader": 28,
+    "variant_frames": 117
+  },
+  "before": {
+    "automatic_house_states": 12,
+    "frozen": 21,
+    "qualified_districts_live": 259,
+    "qualified_house_states": 32,
+    "qualified_senate_exports": 28,
+    "qualified_senate_reader": 28,
+    "variant_frames": 108
+  },
+  "consumer": "cd4618a8e00c908909024296c2b1732d2fe13fc1",
+  "controlled_offline_acceptance": {
+    "all_nine_variants_and_own_clock_retention": true,
+    "controlled_revisions": {
+      "down": {
+        "D": 2156770,
+        "O": 61053,
+        "R": 1436343
+      },
+      "up": {
+        "D": 2156790,
+        "O": 61053,
+        "R": 1436343
+      },
+      "zero": {
+        "D": 2156783,
+        "O": 60032,
+        "R": 1436343
+      }
+    },
+    "literal_analysis_replay": {
+      "complete_outputs": 171,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "literal_source_replay": {
+      "complete_outputs": 22,
+      "network_requests": 0,
+      "passed": true
+    },
+    "native_candidate_counts": {
+      "D": 2156783,
+      "O": 61053,
+      "R": 1436343
+    },
+    "numerical_stages_reused_from_completed_execution": {
+      "all_packaged_scripts_and_tests_match_current_source": true,
+      "completed_stages_reused_from_that_execution": [
+        "Complete source: 11 districts/47 candidates/133 localities; all other source facts exact",
+        "Controlled native up: all nine model variants and existing outputs PASS",
+        "Controlled native down: all nine model variants and existing outputs PASS",
+        "Controlled native zero: all nine model variants and existing outputs PASS",
+        "Last-good outage: all nine numerical results and own clocks retained",
+        "Last-good inventory: all nine numerical results and own clocks retained",
+        "Last-good rollback: all nine numerical results and own clocks retained",
+        "Actual unchanged runner: zero compilation/publication/network/file changes (offline fixture)"
+      ],
+      "failed_execution_log": {
+        "bytes": 1851,
+        "sha256": "364a2c1033a6667c5fcb3ae5d66afe992cfd0f16250200283d479bf320739b94"
+      },
+      "passed": true,
+      "repair": "Create missing replay parent; do not repeat completed numerical calculations",
+      "runtime_package": {
+        "bytes": 308769406,
+        "sha256": "cc668a676a093d2906d43be203823d62e7b3d4c1fc3b385b2966f022b347dfc2"
+      },
+      "source_package": {
+        "bytes": 61925193,
+        "sha256": "58680d9605ac447799744a9f88bf1e9fd2eb864abef12e84f1b6f5a03c7e4a36"
+      },
+      "tested_source_delta": {
+        ".github/workflows/election-night.yml": {
+          "bytes": 12912,
+          "sha256": "be39a55ac6508b72705d78efffbba5b69a0a4a17b8806ddba8dfa1a5c51c14d4"
+        },
+        "data/results-intake/native-official-house/accepted-source.json.gz": {
+          "bytes": 73876,
+          "sha256": "84838c689ebc184b6cda788a3e6cc0d2e571ec2ed3d4c1bbd5706029ec13e560"
+        },
+        "data/results-intake/native-official-house/review.json": {
+          "bytes": 351054,
+          "sha256": "ccb18b39e3feba1fb4348c920a3062f9e9ee597f6ca2604c6ac8fc86bc9d9ebe"
+        },
+        "docs/RESULTS_INTAKE.md": {
+          "bytes": 136727,
+          "sha256": "fd38161182da0abed4984a402c261b1c8ba041c1f0d89ba50a3d0f25fa5ab284"
+        },
+        "scripts/automatic_estimates.py": {
+          "bytes": 69650,
+          "sha256": "5e837e53ba6b07aa53db5cc698c64ecfc43664cade0462e8e64913a132a1ad5c"
+        },
+        "scripts/automatic_runtime.py": {
+          "bytes": 57779,
+          "sha256": "98b7e16399f6022c857160ca6bd0f49086e3865c6457daf0f83fb87ed694b9a5"
+        },
+        "scripts/congressional_analytical_bridge.py": {
+          "bytes": 35113,
+          "sha256": "86957fa14c772fabed01bca8760bd85e27d2e06965cda5a72ac6d89e3d072c2c"
+        },
+        "scripts/native_official_house.py": {
+          "bytes": 13418,
+          "sha256": "8398b70e85a18f67b092a0d1fc91a652ed5efe94a8bc92baa4d62bdac9139f4f"
+        },
+        "scripts/official_house_precedence.py": {
+          "bytes": 8735,
+          "sha256": "00976f2412a1bbbda9d2c970131bd5cb8e0f3926e71b2d04af9d3f3a41860c11"
+        },
+        "scripts/results_intake.py": {
+          "bytes": 68665,
+          "sha256": "dbe9c7869b8f5f166dbf93ea35b7de64423408bbd63518eb81f26ae8780706ac"
+        },
+        "scripts/results_native_congress.py": {
+          "bytes": 17675,
+          "sha256": "c09b6de49fd012be7b87d61444fd77653e312c9dfa2bf7ed828608c67e262f15"
+        },
+        "scripts/results_official_congress.py": {
+          "bytes": 14191,
+          "sha256": "ffb6ee79d528fb23e9fdab16c9d6d51000fd685776dddb90733e0805c9d40416"
+        },
+        "tests/fixtures/virginia-federal-candidates.json": {
+          "bytes": 1488060,
+          "sha256": "3b7eb70b1ffe47feaedff9125716d0ab4a3ba7a00515a6b06c14a029f83d63bb"
+        },
+        "tests/test_native_official_house.py": {
+          "bytes": 9871,
+          "sha256": "11bc92212a2445c48fc58a789169b56d00f77429b55d3f61394a63e0c7bc2603"
+        },
+        "tests/test_official_house_precedence.py": {
+          "bytes": 12663,
+          "sha256": "b60a308e9508a2857f6dc06a6e0da2fd06c8e5592faf6a9fd5bcad07e49c46be"
+        },
+        "tests/test_results_native_congress.py": {
+          "bytes": 13515,
+          "sha256": "1774d883c2bafaa23a115c9357a9b76f8e61afc564b5bc326a16450f2d03c8f5"
+        }
+      }
+    },
+    "runner_noop": {
+      "actual_runner_processing_version": "a5238f941d3f01dd643174ad27230c04eacb3b9ba21c881127508778e018d9df",
+      "backend": "explicit_in_memory_publisher_fixture",
+      "compilations": 0,
+      "network_requests": 0,
+      "passed": true,
+      "publications": 0,
+      "work_file_changes": 0
+    }
+  },
+  "pages_deployment_requested": false,
+  "participation": {
+    "compatible_rate_frames": 4857,
+    "jurisdictions": 23,
+    "new_observation_ids": 0,
+    "statewide_frames": 8
+  },
+  "physical_images": {
+    "images": {
+      "va-districts-1440.png": "695492ef0009858fc5d912ea6a3d09080b72b1a6647370508a957ac0f28b4491",
+      "va-districts-390.png": "25e4bd59887172f077ca21798996d2cc32560b41b2d8943f367f1dd4064eca79",
+      "va-model-1440.png": "2047ff6b73ee15ed7dbb7e011758c78e7695f3f79a61551a744d516002ac9df8",
+      "va-model-390.png": "9f6e63b6f71e11fec9a32c58644bf932855dc93759bf8b2141ca43db70fdaa4f"
+    },
+    "passed": true
+  },
+  "production_reader": {
+    "all_435_district_decisions_preservation": "Verified separately in the full numerical packet",
+    "cases": [
+      {
+        "districts": 11,
+        "exact_VA_map_values": 144,
+        "model_variants": [
+          "attenuated/accepted_ridge_multinomial",
+          "attenuated/extra_randomized_trees",
+          "attenuated/histogram_gradient_boosting",
+          "full/accepted_ridge_multinomial",
+          "full/extra_randomized_trees",
+          "full/histogram_gradient_boosting",
+          "original/accepted_ridge_multinomial",
+          "original/extra_randomized_trees",
+          "original/histogram_gradient_boosting"
+        ],
+        "page_errors": [],
+        "qualified_districts": 11,
+        "runtime_version": "2462d069f7c7be3912d019bcddcb9b8330de29bd9e451ec03338f9f3493e6c8b",
+        "shared_manifest_requests": 1,
+        "width": 1440
+      },
+      {
+        "districts": 11,
+        "exact_VA_map_values": 144,
+        "model_variants": [
+          "attenuated/accepted_ridge_multinomial",
+          "attenuated/extra_randomized_trees",
+          "attenuated/histogram_gradient_boosting",
+          "full/accepted_ridge_multinomial",
+          "full/extra_randomized_trees",
+          "full/histogram_gradient_boosting",
+          "original/accepted_ridge_multinomial",
+          "original/extra_randomized_trees",
+          "original/histogram_gradient_boosting"
+        ],
+        "page_errors": [],
+        "qualified_districts": 11,
+        "runtime_version": "2462d069f7c7be3912d019bcddcb9b8330de29bd9e451ec03338f9f3493e6c8b",
+        "shared_manifest_requests": 1,
+        "width": 390
+      }
+    ],
+    "images": {
+      "va-districts-1440.png": {
+        "bytes": 44113,
+        "sha256": "695492ef0009858fc5d912ea6a3d09080b72b1a6647370508a957ac0f28b4491"
+      },
+      "va-districts-390.png": {
+        "bytes": 14443,
+        "sha256": "25e4bd59887172f077ca21798996d2cc32560b41b2d8943f367f1dd4064eca79"
+      },
+      "va-model-1440.png": {
+        "bytes": 176187,
+        "sha256": "2047ff6b73ee15ed7dbb7e011758c78e7695f3f79a61551a744d516002ac9df8"
+      },
+      "va-model-390.png": {
+        "bytes": 176079,
+        "sha256": "9f6e63b6f71e11fec9a32c58644bf932855dc93759bf8b2141ca43db70fdaa4f"
+      }
+    },
+    "pages_deployment_requested": false,
+    "passed": true,
+    "physical_image_review_recorded_separately": true,
+    "transport": "Actual production page, scripts and public data; no route, data, DOM or style overrides."
+  },
+  "research_engine": "b3729bf217f4f2c6ee80f746feb111761a4af178",
+  "runtime_acceptance": {
+    "actual_preceding_count_native_and_rolling_seed_inputs_verified": true,
+    "all_nine_variants_verified": [
+      "attenuated/accepted_ridge_multinomial",
+      "attenuated/extra_randomized_trees",
+      "attenuated/histogram_gradient_boosting",
+      "full/accepted_ridge_multinomial",
+      "full/extra_randomized_trees",
+      "full/histogram_gradient_boosting",
+      "original/accepted_ridge_multinomial",
+      "original/extra_randomized_trees",
+      "original/histogram_gradient_boosting"
+    ],
+    "all_nonupdated_and_frozen_model_numerics_preserved": true,
+    "automatic_house_states": [
+      "AR",
+      "DE",
+      "GA",
+      "HI",
+      "MN",
+      "NM",
+      "PA",
+      "RI",
+      "SD",
+      "TN",
+      "VA",
+      "VT",
+      "WY"
+    ],
+    "automatic_state_variants": 117,
+    "candidate_rows_in_new_official_exports": {
+      "OR": 20,
+      "VA": 47
+    },
+    "changed_model_states_by_variant": {
+      "attenuated/accepted_ridge_multinomial": [
+        "PA",
+        "VA"
+      ],
+      "attenuated/extra_randomized_trees": [
+        "PA",
+        "VA"
+      ],
+      "attenuated/histogram_gradient_boosting": [
+        "PA",
+        "VA"
+      ],
+      "full/accepted_ridge_multinomial": [
+        "PA",
+        "VA"
+      ],
+      "full/extra_randomized_trees": [
+        "PA",
+        "VA"
+      ],
+      "full/histogram_gradient_boosting": [
+        "PA",
+        "VA"
+      ],
+      "original/accepted_ridge_multinomial": [
+        "PA",
+        "VA"
+      ],
+      "original/extra_randomized_trees": [
+        "PA",
+        "VA"
+      ],
+      "original/histogram_gradient_boosting": [
+        "PA",
+        "VA"
+      ]
+    },
+    "complete_download": {
+      "bytes": 308904215,
+      "immutable": true,
+      "media_type": "application/zip",
+      "sha256": "d9d1dbbfbe6c28b53d779a7d4db4c1d1aa3609706a698310362eb684b8ce1d53",
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-2462d069f7c7be3912d019bcddcb9b8330de29bd9e451ec03338f9f3493e6c8b/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "coverage": {
+      "legacy_reader_qualified_senate": 25,
+      "reviewed_qualified_house_districts": 259,
+      "reviewed_qualified_house_states": 32,
+      "reviewed_qualified_senate": 28
+    },
+    "formerly_qualified_frozen_states": 20,
+    "models_refitted": false,
+    "national_1401_candidate_and_control_seed_preserved": true,
+    "new_participation_observations": 0,
+    "offline_replay": {
+      "complete_outputs": 171,
+      "external_operations_blocked": true,
+      "network_requests": 0,
+      "passed": true
+    },
+    "pages_deployment_requested": false,
+    "public_outputs_verified": 171,
+    "runtime": {
+      "complete_download": {
+        "bytes": 308904215,
+        "immutable": true,
+        "media_type": "application/zip",
+        "sha256": "d9d1dbbfbe6c28b53d779a7d4db4c1d1aa3609706a698310362eb684b8ce1d53",
+        "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-2462d069f7c7be3912d019bcddcb9b8330de29bd9e451ec03338f9f3493e6c8b/complete-analysis.zip",
+        "verified_anonymously": true
+      },
+      "data_commit": "c46298ba573a21dea820b31421f1092a27ed1ec3",
+      "staged_commit": "3b9020b9110148f867d968ad8a5a233cfff2b256",
+      "status": "published",
+      "version": "2462d069f7c7be3912d019bcddcb9b8330de29bd9e451ec03338f9f3493e6c8b",
+      "website_builds_started": 0
+    },
+    "selected_source_increment_preserves_470_national_contests": true,
+    "status": "PASS"
+  },
+  "runtime_run": 44409300973,
+  "source_acceptance": {
+    "all_470_national_contests_preserved": true,
+    "all_nonselected_source_records_clocks_and_stops_exact": true,
+    "candidate_rows": {
+      "OR": 20,
+      "VA": 47
+    },
+    "complete_download": {
+      "bytes": 61918274,
+      "sha256": "a215aac9ed52290fbeb160bbc707ec067a353f0da06c17b218e32a08e121a437",
+      "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/a3ea2382e8a1935351bd5875fe28a67ba3098322/snapshots/620198a29e1bf2a48ff7c26f5ca3c59fce1472dc7d4b3d56993d122bf655b4f7/complete-results.zip"
+    },
+    "complete_public_bodies_verified": 23,
+    "existing_virginia_administrative_source_refreshed": true,
+    "new_participation_observations": 0,
+    "offline_replay": {
+      "complete_outputs": 22,
+      "network_requests": 0,
+      "passed": true
+    },
+    "pages_deployment_requested": false,
+    "research_commit": "b3729bf217f4f2c6ee80f746feb111761a4af178",
+    "run": 44404611606,
+    "selected_source_ids": [
+      "OR-official-house-candidates",
+      "VA-registered-1657a8451bae522c"
+    ],
+    "status": "PASS",
+    "version": "620198a29e1bf2a48ff7c26f5ca3c59fce1472dc7d4b3d56993d122bf655b4f7",
+    "virginia_candidate_counts": {
+      "D": 2156783,
+      "O": 61053,
+      "R": 1436340
+    }
+  },
+  "source_models_refitted": false,
+  "source_run": 44404611606,
+  "status": "PASS",
+  "unchanged_acceptance": {
+    "data_commit": "c46298ba573a21dea820b31421f1092a27ed1ec3",
+    "no_publication_or_pages_build": true,
+    "run": 44410571469,
+    "runtime_version": "2462d069f7c7be3912d019bcddcb9b8330de29bd9e451ec03338f9f3493e6c8b",
+    "status": "PASS"
+  },
+  "unchanged_run": 44410571469,
+  "virginia_reference": {
+    "conditional_point": {
+      "allocated_change_pp": 16.252800983456854,
+      "contributions_pp": {
+        "entry": 0.9426918580639301,
+        "exit": 5.993261788933701,
+        "other_choice": 0.5819929085522338,
+        "switching": 8.165638869182317,
+        "unresolved": 0.5692155587246721
+      },
+      "current_margin_pp": 20.050607786040167,
+      "net_participation_pp": 6.935953646997631,
+      "previous_margin_pp": 3.7978068025833074,
+      "total_change_pp": 16.25280098345686
+    },
+    "current_counts": {
+      "D": 2156783,
+      "O": 61053,
+      "R": 1436340
+    },
+    "gross_outcomes": {
+      "current_N": 0.4208660938798392,
+      "exit": 0.19481342383130873,
+      "other": 0.011729418931679291,
+      "retaining": 0.7206286765189368,
+      "switching": 0.060406355150689726,
+      "unresolved": 0.012422125567385417
+    },
+    "not_observed_personal_histories": true,
+    "previous_current_counts": {
+      "D": 2105772,
+      "O": 58819,
+      "R": 1422580
+    },
+    "variant": "original/accepted_ridge_multinomial"
+  },
+  "whole_project_complete": false
+}

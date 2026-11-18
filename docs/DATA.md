@@ -1,5 +1,9 @@
 # Complete analysis downloads
 
+## November 18: Virginia automatic models and Oregon evidence verified live
+
+Thirteen House states now update all nine variants: 117 frames, up from 12/108; 20 formerly qualified states remain frozen. Oregon's six contests/20 candidates refresh automatically but retain their explicit write-in/model hold. Virginia supplies 11 reconciled contests/47 candidates. Actual hosted revision delivery, 22+171 public/offline outputs, unchanged no-op and 288 production model values pass. Participation coverage does not increase; 259 district comparisons and Senate reader/export agreement 28/28 remain. [Complete numerical handoff, sources, downloads and commands](../data/participation-access/20261118-or-va-automatic-models-01/REPORT.md). Two additional CO comparisons remain prepared, not deployed. Earlier coverage snapshots below are historical.
+
 ## November 18: RI and PA automatic models verified live
 
 Twelve House states now update 108 existing variant frames automatically; 21 formerly qualified states remain frozen. All 171 public outputs reproduce offline; actual unchanged run 44389935936 preserves the data/runtime and starts zero site builds. PA adds 36,310 candidate votes, not participation observations. 259 district comparisons and Senate reader/export agreement 28/28 remain live; the two additional CO comparisons require undeployed reader support. [Complete numerical handoff, downloads, commands and remaining dependencies](../data/participation-access/20261118-ri-pa-automatic-models-01/REPORT.md). Earlier coverage snapshots below remain historical.
