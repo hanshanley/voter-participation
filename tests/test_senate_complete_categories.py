@@ -2,6 +2,7 @@ import copy
 from datetime import timedelta
 import gzip
 import json
+import math
 from pathlib import Path
 import unittest
 
@@ -179,8 +180,26 @@ class CompleteSenateTests(unittest.TestCase):
             candidate["votes"] = decision["legacy_comparison"]["current"][candidate["party_group"]]
         reproduced = bridge._estimate(
             data, self.fixture["provider_entry"]["source"], decision, self.review["prior"])
+
+        def compare(actual, expected, path):
+            self.assertIs(type(actual), type(expected), path)
+            if isinstance(actual, dict):
+                self.assertEqual(actual.keys(), expected.keys(), path)
+                for key in actual:
+                    compare(actual[key], expected[key], path + "/" + key)
+            elif isinstance(actual, list):
+                self.assertEqual(len(actual), len(expected), path)
+                for index, (left, right) in enumerate(zip(actual, expected)):
+                    compare(left, right, path + "/" + str(index))
+            elif isinstance(actual, float):
+                # The historical archive predates Python 3.12's improved float summation.
+                self.assertTrue(math.isclose(actual, expected, rel_tol=2e-14, abs_tol=2e-12),
+                                (path, actual, expected))
+            else:
+                self.assertEqual(actual, expected, path)
+
         for field in ("point", "ranges_pp", "complete_scenarios", "observed_other_vote_endpoints"):
-            self.assertEqual(reproduced[field], original[field], field)
+            compare(reproduced[field], original[field], field)
 
 
 if __name__ == "__main__":
