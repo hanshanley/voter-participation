@@ -5,7 +5,7 @@ import zipfile
 import shapefile
 
 from scripts.house_district_map import (
-    CRS, compressed, district_key, display_paths, read_archive,
+    CRS, compressed, conic, district_key, display_paths, read_archive,
 )
 
 
@@ -32,6 +32,23 @@ def source(rows=None, projection=PRJ, congress=120, rings=None):
 
 
 class DistrictMapTests(unittest.TestCase):
+    def test_projection_matches_independent_proj_and_north_is_up(self):
+        from pyproj import Proj
+
+        for meridian, lower, upper in ((-96, 29.5, 45.5), (-154, 55, 65), (-157, 8, 18)):
+            project = conic(meridian, lower, upper)
+            reference = Proj(
+                f"+proj=aea +R=1 +lon_0={meridian} +lat_1={lower} +lat_2={upper}")
+            origin = (meridian, (lower + upper) / 2)
+            actual_origin, expected_origin = project(*origin), reference(*origin)
+            for lon, lat in ((meridian - 10, lower), (meridian, upper), (meridian + 10, lower)):
+                with self.subTest(meridian=meridian, lon=lon, lat=lat):
+                    actual, expected = project(lon, lat), reference(lon, lat)
+                    for axis in (0, 1):
+                        self.assertAlmostEqual(actual[axis] - actual_origin[axis],
+                                               expected[axis] - expected_origin[axis], places=12)
+            self.assertGreater(project(meridian, upper)[1], project(meridian, lower)[1])
+
     def test_literal_at_large_and_leading_zero_identifiers(self):
         records, shapes = read_archive(source(), "DE", 2026, 120)
         self.assertEqual(records[0]["district"], "DE-AL")

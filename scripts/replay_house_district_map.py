@@ -38,7 +38,7 @@ def main():
         setattr(owner, name, blocked)
     suite = unittest.defaultTestLoader.discover("tests", pattern="test_house_district_map.py")
     result = unittest.TextTestRunner(verbosity=2).run(suite)
-    if not result.wasSuccessful() or result.testsRun != 6:
+    if not result.wasSuccessful() or result.testsRun != 7:
         raise RuntimeError("Packaged geography tests failed or inventory differs")
     sys.argv = ["scripts.house_district_map", "--inputs", str(args.inputs), "--output", str(args.output)]
     with contextlib.redirect_stdout(io.StringIO()):

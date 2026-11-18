@@ -15,7 +15,7 @@ from scripts.congressional_geography import FIPS
 
 
 CONTRACT = "participation.house_district_geometry.v1"
-METHOD = "nad83_albers_display_only_topology_preserving_0.25_viewbox_units"
+METHOD = "nad83_albers_north_up_display_only_topology_preserving_0.25_viewbox_units"
 CRS = "EPSG:4269"
 
 
@@ -112,7 +112,7 @@ def conic(meridian, lower, upper):
     def project(lon, lat, z=None):
         theta = n * (((lon - meridian + 540) % 360) - 180) * radians
         rho = math.sqrt(c - 2 * n * math.sin(lat * radians)) / n
-        return rho * math.sin(theta), rho * math.cos(theta)
+        return rho * math.sin(theta), -rho * math.cos(theta)
 
     return project
 
