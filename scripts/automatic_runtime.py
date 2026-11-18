@@ -42,6 +42,7 @@ CODE_PATHS = (
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",
     "congressional_filing_identity.py",
     "congressional_category_reconciliation.py",
+    "congressional_complete_categories.py",
     "congressional_baselines.py", "congressional_geography.py",
     "supported_analytical_release.py",
     "senate_legacy_bridge.py", "calibrated_swing.py",

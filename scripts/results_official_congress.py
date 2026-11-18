@@ -4,12 +4,16 @@ import copy
 import re
 from html import unescape
 
+from scripts.congressional_complete_categories import IDENTITY as COMPLETE_IDENTITY, URL as COMPLETE_URL
+
 
 IDENTITY = "NE-official-house-candidates"
 URL = "https://electionresults.nebraska.gov/resultsSW.aspx"
 CONTRACT = "participation.official_congressional_candidate_evidence.v1"
 CONFIG = {"contract": CONTRACT, "election_date": "2026-11-03",
           "sources": {IDENTITY: URL}}
+COMPLETE_CONFIG = {**CONFIG, "sources": {IDENTITY: URL, COMPLETE_IDENTITY: COMPLETE_URL}}
+IDENTITIES = (IDENTITY, COMPLETE_IDENTITY)
 INTEGER = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
 PARTIES = {"Democratic": "D", "Republican": "R", "Libertarian": "O",
            "America First": "O", "Legal Marijuana Now": "O",
@@ -126,17 +130,50 @@ def collect(collector, config):
     return collector.capture(IDENTITY, URL, nebraska_house)
 
 
+def source_ids(config):
+    require(config in (CONFIG, COMPLETE_CONFIG), "Unreviewed official congressional source configuration")
+    return tuple(config["sources"])
+
+
+def collect_sources(collector, config, selected=None):
+    from scripts.congressional_complete_categories import parse, clock
+
+    identities = source_ids(config)
+    if selected is not None:
+        require(set(selected) <= set(identities), "Unregistered official congressional source")
+        identities = tuple(identity for identity in identities if identity in selected)
+    result = {}
+    if IDENTITY in identities:
+        result[IDENTITY] = collect(collector, CONFIG)
+    if COMPLETE_IDENTITY in identities:
+        def guarded(body):
+            data = parse(body)
+            prior = (collector.prior.get(COMPLETE_IDENTITY) or {}).get("data") or {}
+            require(clock(data["source_updated_at"]) <= collector.observation_time(),
+                    "Official category clock is in the future")
+            if prior:
+                require(clock(data["source_updated_at"]) >= clock(prior["source_updated_at"]),
+                        "Official category clock regressed")
+            return data
+        result[COMPLETE_IDENTITY] = collector.capture(COMPLETE_IDENTITY, COMPLETE_URL, guarded)
+    return result
+
+
 def attach(congress, feeds):
     result = copy.deepcopy(congress)
-    if IDENTITY in feeds:
-        result["official_candidate_evidence"] = {IDENTITY: copy.deepcopy(feeds[IDENTITY])}
+    evidence = {identity: copy.deepcopy(feeds[identity]) for identity in IDENTITIES if identity in feeds}
+    if evidence:
+        result["official_candidate_evidence"] = evidence
     return result
 
 
 def reconciliation(congress):
-    entry = congress.get("official_candidate_evidence", {}).get(IDENTITY, {})
     result = []
-    for race in (entry.get("data") or {}).get("races", []):
+    evidence = congress.get("official_candidate_evidence", {})
+    for evidence_id, race in (
+            (identity, race) for identity, entry in sorted(evidence.items())
+            for race in (entry.get("data") or {}).get("races", [])):
+        entry = evidence[evidence_id]
         matching = [
             (identity, candidate) for identity, candidate in congress.get("races", {}).items()
             if candidate.get("data") and all(candidate["data"].get(key) == value for key, value in {
@@ -177,7 +214,7 @@ def rows(congress):
         data = entry.get("data")
         if data is None:
             continue
-        require(identity == IDENTITY and data.get("contract") == CONTRACT
+        require(identity in IDENTITIES and data.get("contract") == CONTRACT
                 and data.get("conditional_model_eligible") is False
                 and data.get("provider_other_equivalence_qualified") is False,
                 "Unreviewed official candidate evidence")

@@ -19,6 +19,8 @@ from scripts.congressional_candidate_identity import OFFICIAL_DECLARATION_VERSIO
 from scripts.congressional_category_reconciliation import VERSION as CATEGORY_VERSION
 from scripts.congressional_category_reconciliation import DATA_PATHS as CATEGORY_PATHS
 from scripts.congressional_filing_identity import VERSION as FILING_VERSION, DATA_PATHS as FILING_PATHS
+from scripts.congressional_complete_categories import VERSION as COMPLETE_CATEGORY_VERSION
+from scripts.congressional_complete_categories import DATA_PATHS as COMPLETE_CATEGORY_PATHS
 
 
 CONTRACT = "participation.congressional_analytical_review.v1"
@@ -32,8 +34,10 @@ DATA_PATHS = (REVIEW_PATH,) + tuple(
 def data_paths(review):
     result = tuple(name for name in DATA_PATHS
                  if name not in GEOGRAPHY_PATHS or review.get("house_boundaries") is not None)
-    if review.get("version") in (OFFICIAL_DECLARATION_VERSION, FILING_VERSION):
-        if review["version"] == FILING_VERSION:
+    if review.get("version") in (OFFICIAL_DECLARATION_VERSION, FILING_VERSION, COMPLETE_CATEGORY_VERSION):
+        if review["version"] == COMPLETE_CATEGORY_VERSION:
+            result += COMPLETE_CATEGORY_PATHS
+        if review["version"] in (FILING_VERSION, COMPLETE_CATEGORY_VERSION):
             result += FILING_PATHS
         return result + IDENTITY_PATHS + DECLARATION_PATHS + CATEGORY_PATHS + OFFICIAL_DECLARATION_PATHS
     if review.get("version") == CATEGORY_VERSION:
@@ -63,9 +67,12 @@ def load_review(root):
     review = json.loads(gzip.decompress((root / REVIEW_PATH).read_bytes()))
     require(review.get("contract") == CONTRACT
             and review.get("version") in (VERSION, IDENTITY_VERSION, DECLARATION_VERSION, CATEGORY_VERSION,
-                                         OFFICIAL_DECLARATION_VERSION, FILING_VERSION),
+                                         OFFICIAL_DECLARATION_VERSION, FILING_VERSION, COMPLETE_CATEGORY_VERSION),
             "Unreviewed congressional analytical successor")
-    if review["version"] == FILING_VERSION:
+    if review["version"] == COMPLETE_CATEGORY_VERSION:
+        from scripts.congressional_complete_categories import load_successor
+        load_successor(root, review)
+    elif review["version"] == FILING_VERSION:
         from scripts.congressional_filing_identity import load_successor
         load_successor(root, review)
     elif review["version"] == OFFICIAL_DECLARATION_VERSION:
@@ -240,7 +247,7 @@ def evaluate(snapshot, seed):
     review = seed["congressional_analytical_review"]
     require(review.get("contract") == CONTRACT
             and review.get("version") in (VERSION, IDENTITY_VERSION, DECLARATION_VERSION, CATEGORY_VERSION,
-                                         OFFICIAL_DECLARATION_VERSION, FILING_VERSION),
+                                         OFFICIAL_DECLARATION_VERSION, FILING_VERSION, COMPLETE_CATEGORY_VERSION),
             "Unreviewed congressional analytical successor")
     require(pin(encoded(catalog_identity(seed["accepted_candidates"])))["sha256"]
             == review["legacy_candidate_identity_sha256"], "Legacy scientific identity changed")
@@ -265,6 +272,10 @@ def evaluate(snapshot, seed):
                 require(all(type(row["votes"]) is int and 0 <= row["votes"] <= 9007199254740991
                             and row["party_group"] in "DRO" for row in data["candidates"]),
                         "missing_count_or_unknown_party")
+                from scripts.congressional_complete_categories import current_hold
+                category_hold = current_hold(congress, key, reviewed, data)
+                if category_hold:
+                    reasons.append(category_hold)
             except (ValueError, TypeError, KeyError, OverflowError) as error:
                 reasons.append(str(error))
         races[key] = {"race_id": key, "state_code": reviewed["identity"]["state_code"],

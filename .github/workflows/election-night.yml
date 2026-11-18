@@ -87,6 +87,7 @@ jobs:
           tests/test_senate_legacy_bridge.py
           tests/test_results_uf_turnout.py
           tests/test_results_official_congress.py
+          tests/test_congressional_complete_categories.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
 
       - name: Reuse conditional HTTP cache

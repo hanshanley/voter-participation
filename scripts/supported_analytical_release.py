@@ -343,7 +343,7 @@ def other_offices(review):
 
 def selected_local_observation_ids(snapshot):
     from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
-    from scripts.results_official_congress import CONTRACT as OFFICIAL_CONTRACT, IDENTITY as OFFICIAL_IDENTITY
+    from scripts.results_official_congress import CONTRACT as OFFICIAL_CONTRACT, IDENTITIES as OFFICIAL_IDENTITIES
 
     scope = snapshot.get("collection_scope") or {}
     if scope.get("mode") != "selected_registered_source_refresh":
@@ -353,7 +353,7 @@ def selected_local_observation_ids(snapshot):
         if identity == UF_IDENTITY:
             require(snapshot.get("uf_turnout") is not None, "Selected statewide turnout source missing")
             continue
-        if identity == OFFICIAL_IDENTITY:
+        if identity in OFFICIAL_IDENTITIES:
             entry = (snapshot.get("congress") or {}).get("official_candidate_evidence", {}).get(identity)
             data = (entry or {}).get("data")
             require(isinstance(data, dict) and data.get("contract") == OFFICIAL_CONTRACT

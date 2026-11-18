@@ -134,3 +134,98 @@ def test_other_scientific_holds_cannot_be_removed_by_category_evidence():
     review = categories.successor(previous, value, {categories.DATA_PATHS[2]: body}, {})
     assert review["states"]["MN"]["holds"] == ["different_historical_source_frame"]
     assert not review["states"]["MN"]["automatic_update_reviewed"]
+
+
+def complete_ri_fixture(monkeypatch):
+    from scripts import congressional_complete_categories as complete
+    from scripts.congressional_filing_identity import VERSION
+
+    previous = {"version": VERSION, "races": {}, "states": {},
+                "legacy_candidates_preserved": [], "candidate_crosswalk": []}
+    query = {"native_facts": {}, "source_updated_at": "2026-11-12T18:11:44.6650464Z", "races": []}
+    for seat in (1, 2):
+        key = f"npr:house:RI:{seat}:regular:general:not_ranked"
+        candidates, provider, mapped, unmatched = [], [], {}, []
+        identities = [("Dylan Democrat", "D", 10), ("Robin Republican", "R", 20)]
+        if seat == 1:
+            identities.append(("Pat Independent", "O", 7))
+        identities.append(("Write-in", "O", 3))
+        for index, (name, group, votes) in enumerate(identities):
+            candidate_id = f"{seat}-{index}"
+            legacy_index = len(previous["legacy_candidates_preserved"])
+            previous["legacy_candidates_preserved"].append(
+                {"name": name, "party": group, "votes": str(votes - 1)})
+            candidate = {"candidate_id": candidate_id, "native_id": str(index),
+                         "name": name, "literal_party": None if name == "Write-in" else group,
+                         "party_group": group, "votes": votes,
+                         "role": "generic_write_in" if name == "Write-in" else "named_candidate"}
+            candidates.append(candidate)
+            if group in "DR":
+                provider.append(copy.deepcopy(candidate))
+                mapped[candidate_id] = legacy_index
+            else:
+                unmatched.append(legacy_index)
+        provider.append({"candidate_id": f"other-{seat}", "role": "provider_aggregate_other",
+                         "party_group": "O", "votes": sum(row["votes"] for row in candidates
+                                                        if row["party_group"] == "O")})
+        previous["races"][key] = {
+            "identity": {"state_code": "RI", "chamber": "house", "seat": str(seat),
+                         "election_date": "2026-11-03", "stage": "general",
+                         "election_kind": "regular", "ranked_choice": False, "round": "not_ranked"},
+            "accepted_native": {"candidates": provider}, "named_crosswalk": mapped,
+            "unmatched_legacy_indices": unmatched, "initial_holds": [categories.MASS_HOLD],
+        }
+        query["races"].append({"seat": str(seat), "native_contest_id": f"contest-{seat}",
+                               "candidates": candidates})
+    keys = list(previous["races"])
+    previous["states"]["RI"] = {
+        "expected_race_ids": keys, "frozen_scientific_comparison_qualified": True,
+        "initial_recorded_comparison_qualified": True, "automatic_update_reviewed": False,
+        "holds": [key + ":" + categories.MASS_HOLD for key in keys],
+    }
+    value = {"contract": complete.CONTRACT, "source_url": complete.URL,
+             "native_original": pin(b"reviewed native evidence"), "captured_at": "2026-11-18T00:00:00Z",
+             "official_house_query": query}
+    monkeypatch.setattr(complete, "parse", lambda body: copy.deepcopy(query))
+    return complete, previous, value
+
+
+def test_complete_minor_and_write_in_evidence_preserves_legacy_counts(monkeypatch):
+    complete, previous, value = complete_ri_fixture(monkeypatch)
+    saved = copy.deepcopy(previous)
+    review = complete.successor(previous, value, {})
+    assert previous == saved
+    assert review["legacy_candidates_preserved"] == saved["legacy_candidates_preserved"]
+    assert review["states"]["RI"]["automatic_update_reviewed"]
+    assert len(review["complete_category_successor"]["resolved_races"]) == 2
+    decision = review["races"][previous["states"]["RI"]["expected_race_ids"][0]][
+        "complete_official_categories"]
+    assert [row["name"] for row in decision["official_omitted_candidates"]] == [
+        "Pat Independent", "Write-in"]
+    assert not decision["individual_count_allocated_from_Other"]
+
+
+@pytest.mark.parametrize("change", ["missing_minor", "major_legacy", "different_other", "extra_provider"])
+def test_complete_category_evidence_cannot_hide_inventory_mismatch(monkeypatch, change):
+    complete, previous, value = complete_ri_fixture(monkeypatch)
+    race = previous["races"][previous["states"]["RI"]["expected_race_ids"][0]]
+    if change == "missing_minor":
+        value["official_house_query"]["races"][0]["candidates"].pop(2)
+    elif change == "major_legacy":
+        previous["legacy_candidates_preserved"][race["unmatched_legacy_indices"][0]]["party"] = "Democrat"
+    elif change == "different_other":
+        race["accepted_native"]["candidates"][-1]["votes"] += 1
+    else:
+        race["accepted_native"]["candidates"].append({
+            "candidate_id": "extra", "name": "Unreviewed Candidate", "party_group": "O",
+            "role": "named_candidate", "votes": 0})
+    with pytest.raises(ValueError):
+        complete.successor(previous, value, {})
+
+
+def test_complete_categories_preserve_unrelated_scientific_guard(monkeypatch):
+    complete, previous, value = complete_ri_fixture(monkeypatch)
+    previous["states"]["RI"]["holds"].append("different_historical_source_frame")
+    review = complete.successor(previous, value, {})
+    assert review["states"]["RI"]["holds"] == ["different_historical_source_frame"]
+    assert not review["states"]["RI"]["automatic_update_reviewed"]
