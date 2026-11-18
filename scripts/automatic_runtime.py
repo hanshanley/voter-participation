@@ -38,6 +38,7 @@ CODE_PATHS = (
     "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
+    "results_aspx_congress.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",
     "congressional_filing_identity.py",

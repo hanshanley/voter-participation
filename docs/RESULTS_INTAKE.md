@@ -32,6 +32,31 @@ or respondent refit is required to consume a compatible new source snapshot.
 
 ## Congressional revision guards
 
+### Oregon statewide printed candidate evidence
+
+The existing hourly collector includes the Oregon Secretary of State's single
+statewide federal-results product, reached from its declared export page.
+`OR-official-house-candidates` preserves all six House contests, literal candidate
+and fusion-party labels, named minor candidates, generic write-in rows, printed
+totals, native reporting counters and its independently dated PT source clock.
+Select that source ID to refresh it without recollecting the national feed.
+
+The parser checks each candidate/total's native contest identity, the complete
+six-district inventory, exact integer totals and reviewed party roles. Subsequent
+captures reject regressing/future clocks, lost candidate identities, changed
+contest IDs or source-unit inventories. Upward, downward and true-zero corrections
+are accepted; a failure retains the complete prior observation and its own clock.
+An identical capture remains a no-op. No provider counts are added together.
+
+The native notice says "Write-in results are not reported on this site." Printed
+generic write-in rows are retained, but this unresolved scope statement prevents
+claiming an exhaustive counted write-in universe. Zero reported precinct counters
+remain literal even beside positive candidate counts. This scheduled partial
+evidence **does not qualify an Oregon model**, participation numerator, synchronized
+provider comparison or certified result. Existing analytical holds stay in force.
+Both full official exports and source/analytical complete downloads retain the
+selected facts, scope notice, code, tests, and all candidate/category discrepancies.
+
 ### Separately reviewed split-block boundary evidence
 
 The immutable national 119th/120th Congress BEF review is retained unchanged.

@@ -1,0 +1,184 @@
+{
+  "contract": "participation.aspx_federal_candidate_facts.v1",
+  "election_label": "General Election November 3, 2026",
+  "publisher": "Oregon Secretary of State",
+  "races": [
+    {
+      "candidates": [
+        {
+          "candidate_id": "bar300038696300060170",
+          "name_literal": "Barbara J Kahl",
+          "party_literal": "Republican",
+          "votes_literal": "92,675"
+        },
+        {
+          "candidate_id": "bar300038696300024797",
+          "name_literal": "Suzanne Bonamici",
+          "party_literal": "Democrat, Working Families",
+          "votes_literal": "230,771"
+        },
+        {
+          "candidate_id": "bar3000386969901",
+          "name_literal": "Write-in",
+          "party_literal": "",
+          "votes_literal": "535"
+        }
+      ],
+      "contest_id": "300038696",
+      "contest_total_literal": "323,981",
+      "office_label": "US Representative, 1st District",
+      "reported_literal": "0",
+      "total_units_literal": "218"
+    },
+    {
+      "candidates": [
+        {
+          "candidate_id": "bar300038697300060172",
+          "name_literal": "Chris Beck",
+          "party_literal": "Democrat, Independent",
+          "votes_literal": "118,865"
+        },
+        {
+          "candidate_id": "bar300038697300060173",
+          "name_literal": "Cliff Bentz",
+          "party_literal": "Republican",
+          "votes_literal": "189,878"
+        },
+        {
+          "candidate_id": "bar3000386979901",
+          "name_literal": "Write-in",
+          "party_literal": "",
+          "votes_literal": "402"
+        }
+      ],
+      "contest_id": "300038697",
+      "contest_total_literal": "309,145",
+      "office_label": "US Representative, 2nd District",
+      "reported_literal": "0",
+      "total_units_literal": "370"
+    },
+    {
+      "candidates": [
+        {
+          "candidate_id": "bar300038698300060178",
+          "name_literal": "Maxine E Dexter",
+          "party_literal": "Democrat",
+          "votes_literal": "236,642"
+        },
+        {
+          "candidate_id": "bar300038698300060177",
+          "name_literal": "Loran Ayles",
+          "party_literal": "Republican",
+          "votes_literal": "68,585"
+        },
+        {
+          "candidate_id": "bar3000386989901",
+          "name_literal": "Write-in",
+          "party_literal": "",
+          "votes_literal": "681"
+        }
+      ],
+      "contest_id": "300038698",
+      "contest_total_literal": "305,908",
+      "office_label": "US Representative, 3rd District",
+      "reported_literal": "0",
+      "total_units_literal": "118"
+    },
+    {
+      "candidates": [
+        {
+          "candidate_id": "bar300038699300060179",
+          "name_literal": "Monique DeSpain",
+          "party_literal": "Republican, Libertarian",
+          "votes_literal": "146,022"
+        },
+        {
+          "candidate_id": "bar300038699300060180",
+          "name_literal": "Val Hoyle",
+          "party_literal": "Democrat, Working Families",
+          "votes_literal": "183,146"
+        },
+        {
+          "candidate_id": "bar300038699300060181",
+          "name_literal": "Justin Filip",
+          "party_literal": "Pacific Green, Progressive",
+          "votes_literal": "11,857"
+        },
+        {
+          "candidate_id": "bar3000386999901",
+          "name_literal": "Write-in",
+          "party_literal": "",
+          "votes_literal": "328"
+        }
+      ],
+      "contest_id": "300038699",
+      "contest_total_literal": "341,353",
+      "office_label": "US Representative, 4th District",
+      "reported_literal": "0",
+      "total_units_literal": "187"
+    },
+    {
+      "candidates": [
+        {
+          "candidate_id": "bar300038700300046872",
+          "name_literal": "Janelle S Bynum",
+          "party_literal": "Democrat",
+          "votes_literal": "195,975"
+        },
+        {
+          "candidate_id": "bar300038700300060183",
+          "name_literal": "Andrea Townsend",
+          "party_literal": "Pacific Green",
+          "votes_literal": "8,082"
+        },
+        {
+          "candidate_id": "bar300038700300060182",
+          "name_literal": "Patti Adair",
+          "party_literal": "Republican, Libertarian",
+          "votes_literal": "159,356"
+        },
+        {
+          "candidate_id": "bar3000387009901",
+          "name_literal": "Write-in",
+          "party_literal": "",
+          "votes_literal": "296"
+        }
+      ],
+      "contest_id": "300038700",
+      "contest_total_literal": "363,709",
+      "office_label": "US Representative, 5th District",
+      "reported_literal": "0",
+      "total_units_literal": "249"
+    },
+    {
+      "candidates": [
+        {
+          "candidate_id": "bar300038701100084021",
+          "name_literal": "Andrea Salinas",
+          "party_literal": "Democrat, Independent",
+          "votes_literal": "177,727"
+        },
+        {
+          "candidate_id": "bar300038701300060184",
+          "name_literal": "David Russ",
+          "party_literal": "Republican",
+          "votes_literal": "126,331"
+        },
+        {
+          "candidate_id": "bar3000387019901",
+          "name_literal": "Write-in",
+          "party_literal": "",
+          "votes_literal": "355"
+        }
+      ],
+      "contest_id": "300038701",
+      "contest_total_literal": "304,413",
+      "office_label": "US Representative, 6th District",
+      "reported_literal": "0",
+      "total_units_literal": "183"
+    }
+  ],
+  "source_update_label": "11/18/2026 | 12:15 PM PT",
+  "status_literal": "Unofficial",
+  "write_in_scope_notice": "Write-in results are not reported on this site."
+}

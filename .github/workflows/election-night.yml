@@ -94,6 +94,7 @@ jobs:
           tests/test_senate_complete_categories.py
           tests/test_results_uf_turnout.py
           tests/test_results_official_congress.py
+          tests/test_results_aspx_congress.py
           tests/test_congressional_complete_categories.py
           tests/test_official_house_precedence.py
           tests/test_congressional_reference_identity.py

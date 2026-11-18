@@ -21,7 +21,11 @@ SENATE_CONFIG = {**COMPLETE_CONFIG, "sources": {
 PROTECTED_CONFIG = {**SENATE_CONFIG, "sources": {
     **SENATE_CONFIG["sources"], PROTECTED_IDENTITY: PROTECTED_URL}}
 WY_CONFIG = {**PROTECTED_CONFIG, "sources": {**PROTECTED_CONFIG["sources"], WY_IDENTITY: WY_URL}}
-IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY, PROTECTED_IDENTITY, WY_IDENTITY)
+ASPX_IDENTITY = "OR-official-house-candidates"
+ASPX_URL = "https://results.oregonvotes.gov/resultsSW.aspx?type=FED&map=CTY"
+ASPX_CONFIG = {**WY_CONFIG, "sources": {**WY_CONFIG["sources"], ASPX_IDENTITY: ASPX_URL}}
+IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY, PROTECTED_IDENTITY, WY_IDENTITY,
+              ASPX_IDENTITY)
 INTEGER = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
 PARTIES = {"Democratic": "D", "Republican": "R", "Libertarian": "O",
            "America First": "O", "Legal Marijuana Now": "O",
@@ -139,7 +143,8 @@ def collect(collector, config):
 
 
 def source_ids(config):
-    require(config in (CONFIG, COMPLETE_CONFIG, SENATE_CONFIG, PROTECTED_CONFIG, WY_CONFIG),
+    require(config in (CONFIG, COMPLETE_CONFIG, SENATE_CONFIG, PROTECTED_CONFIG, WY_CONFIG,
+                       ASPX_CONFIG),
             "Unreviewed official congressional source configuration")
     return tuple(config["sources"])
 
@@ -160,6 +165,9 @@ def collect_sources(collector, config, selected=None):
     if WY_IDENTITY in identities:
         from scripts.protected_official_wyoming import collect as collect_wyoming
         result[WY_IDENTITY] = collect_wyoming(collector)
+    if ASPX_IDENTITY in identities:
+        from scripts.results_aspx_congress import collect as collect_aspx
+        result[ASPX_IDENTITY] = collect_aspx(collector)
     for source_id, chamber in ((COMPLETE_IDENTITY, "house"), (SENATE_IDENTITY, "senate")):
         if source_id not in identities:
             continue
@@ -246,5 +254,9 @@ def rows(congress):
                     **copy.deepcopy(candidate), "conditional_model_eligible": False,
                     "provider_other_equivalence_qualified": False,
                     "provider_reconciliation": copy.deepcopy(compared[race["district"]]),
+                    **({"exhaustive_write_in_universe_qualified": False,
+                        "write_in_scope_notice": data["native_facts"]["write_in_scope_notice"],
+                        "source_scope_holds": copy.deepcopy(data["holds"])}
+                       if identity == ASPX_IDENTITY else {}),
                 })
     return result
