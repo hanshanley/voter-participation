@@ -355,11 +355,12 @@ def apply_decisions(decisions, endpoints, recorded, handoff):
         active = bridge["automatic_update_eligible"]
         action = ("changed_recompute_behavioral" if bridge["changed"] else "retained_fresh_unchanged"
                   ) if active else "held_retain_last_good"
-        row.update(decision=action, provider_bridge=True, reason="; ".join(bridge["holds"]) or None,
+        provider_bridge = not bridge.get("official_direct_source", False)
+        row.update(decision=action, provider_bridge=provider_bridge, reason="; ".join(bridge["holds"]) or None,
                    recorded_counts_changed=bridge["changed"],
                    congressional_analytical_status=copy.deepcopy(bridge))
         endpoints[state].update(
-            fresh_complete=active, changed=bridge["changed"], provider_bridge=True,
+            fresh_complete=active, changed=bridge["changed"], provider_bridge=provider_bridge,
             source_urls=bridge["source_urls"], source_update_labels=bridge["source_update_labels"])
         if active:
             endpoints[state]["counts"] = copy.deepcopy(bridge["counts"])
@@ -482,23 +483,33 @@ def annotate_result(result, handoff):
         if not row["source_comparison_available"]:
             continue
         if decision["automatic_update_eligible"]:
+            direct = decision.get("official_direct_source", False)
             fingerprint = pin(encoded({"counts": decision["counts"],
                                        "source_update_labels": decision["source_update_labels"],
                                        "source_urls": decision["source_urls"]}))["sha256"]
-            snapshot = "reviewed NPR/AP endpoint " + fingerprint
+            snapshot = ("reviewed direct official endpoint " if direct else "reviewed NPR/AP endpoint ") + fingerprint
             comparison.update(
                 current_snapshot=snapshot_label(snapshot),
                 current_snapshot_identity=snapshot,
-                current_native_clock=decision["source_update_labels"],
+                current_native_clock=(decision["source_update_labels"] or None) if direct
+                                     else decision["source_update_labels"],
                 current_stage=decision["current_stages"][0] if len(decision["current_stages"]) == 1 else None,
                 current_round=decision["current_rounds"][0] if len(decision["current_rounds"]) == 1 else None,
                 current_native_control_scope_qualification=(
+                    "Direct original official candidate inventory under protected review "
+                    + handoff["protected_official_review_version"]
+                    + ". All named minor candidates retained; no provider substitution, "
+                    "respondent refit, new scientific eligibility or inferred count clock."
+                    if direct else
                     "Fresh NPR/AP category D/R/O endpoints under reviewed stable-ID bridge "
                     + version + ". O may be an aggregate bucket; omitted legacy candidates and "
                     "their dated individual counts remain in the full crosswalk. No individual "
                     "Other allocation, respondent refit or new scientific eligibility."),
-                current_source_scope="Reviewed same-office statewide provider D/R/O category frame; "
-                                     "individual omitted candidate counts are not allocated",
+                current_source_scope=(
+                    "Complete reviewed same-office original official named-candidate frame; "
+                    "candidate counts are not ballots or turnout" if direct else
+                    "Reviewed same-office statewide provider D/R/O category frame; "
+                    "individual omitted candidate counts are not allocated"),
             )
             audit = copy.deepcopy(decision["reviewed_comparability"])
             if audit is not None:

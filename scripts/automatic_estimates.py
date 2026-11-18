@@ -480,7 +480,7 @@ def _incremental_result(prior, accepted, endpoint_states, changed_states):
         "complete_demographic_seed_cases",
     ):
         retained = [
-            row for row in accepted[field] if row["state_code"] not in changed_states
+            row for row in result[field] if row["state_code"] not in changed_states
         ]
         result[field] = sorted(
             retained + calculated[field],
@@ -1236,11 +1236,14 @@ def build(snapshot, seed):
         or snapshot.get("election_date") != ELECTION_DATE
     ):
         raise ValueError("Wrong results-intake snapshot contract or election")
+    from scripts.protected_official_house import project_snapshot, evaluate as protected_evaluate
+    snapshot = project_snapshot(snapshot, seed)
     decisions, endpoints, recorded, global_issues = _house_decisions(snapshot, seed)
     handoff = None
     if "congressional_analytical_review" in seed:
         from scripts.congressional_analytical_bridge import evaluate, apply_decisions
         handoff = evaluate(snapshot, seed)
+        handoff = protected_evaluate(snapshot, seed, handoff)
         apply_decisions(decisions, endpoints, recorded, handoff)
     changed_states = {
         row["state_code"] for row in decisions
@@ -1433,6 +1436,8 @@ def build(snapshot, seed):
     )
     if handoff is not None:
         next_seed["congressional_analytical_last_good"] = handoff["last_good"]
+        if "protected_official_last_good" in handoff:
+            next_seed["protected_official_house_last_good"] = handoff["protected_official_last_good"]
     if senate_handoff is not None:
         next_seed["senate_legacy_last_good"] = senate_handoff["last_good"]
     if senate_complete is not None:
