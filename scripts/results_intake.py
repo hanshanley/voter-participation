@@ -706,6 +706,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                 lambda body, url=link["url"]: results_granular.factual_tables(body, url))
             feeds[identity] = products[identity]
     feeds.update(granular)
+    from scripts.results_native_congress import derive as derive_native_congress
+    feeds = derive_native_congress(feeds)
     inputs = {"feeds": feeds, "house": house, "districts": declared, "directories": directories,
               "granular": granular, "products": products}
     if "congressional" in config:
@@ -733,7 +735,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                        **{"queries/" + key: body for key, body in outputs.items()}}
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
              "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
-             "results_aspx_congress.py",
+             "results_aspx_congress.py", "results_native_congress.py",
              "congressional_complete_categories.py", "protected_official_house.py",
              "protected_official_wyoming.py",
              "results_native_delaware.py", "results_native_dc.py",
@@ -766,6 +768,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     for name in ("test_results_intake.py", "test_results_congress.py", "test_results_granular.py", "test_results_native.py",
                  "test_results_state_statistics.py", "test_results_uf_turnout.py",
                  "test_results_official_congress.py", "test_results_aspx_congress.py",
+                 "test_results_native_congress.py",
                  "test_congressional_complete_categories.py",
                  "test_protected_official_house.py",
                  "test_protected_official_wyoming.py",
@@ -809,6 +812,8 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     name = "tests/fixtures/dunn-accepted.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/oregon-accepted.json"
+    package_members["code/" + name] = (ROOT / name).read_bytes()
+    name = "tests/fixtures/virginia-federal-candidates.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
     name = "tests/fixtures/oregon-federal-candidates.json"
     package_members["code/" + name] = (ROOT / name).read_bytes()
@@ -974,6 +979,9 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     inputs = copy.deepcopy(previous)
     inputs["granular"].update({key: value for key, value in entries.items() if key in native_ids})
     inputs["feeds"].update(entries)
+    from scripts.results_native_congress import PARENT_ID, derive as derive_native_congress
+    if PARENT_ID in entries:
+        inputs["feeds"] = derive_native_congress(inputs["feeds"])
     if "congress" in inputs and "official_congress" in config:
         inputs["congress"] = results_official_congress.attach(inputs["congress"], inputs["feeds"])
     inputs["source_stops"] = collector.stopped

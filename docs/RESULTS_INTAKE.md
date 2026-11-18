@@ -32,6 +32,46 @@ or respondent refit is required to consume a compatible new source snapshot.
 
 ## Congressional revision guards
 
+### Virginia's derived complete federal frame
+
+The existing Virginia statewide/locality collector already retrieves the state
+document and all 133 declared locality documents. `results_native_congress.py`
+derives the complete 11-district House frame from that same query, without a
+second collector or duplicate requests. A selected refresh of
+`VA-registered-1657a8451bae522c` also refreshes this dependent federal evidence;
+an unrelated selected source leaves it unchanged.
+
+The derivation checks all 47 candidates, 11 generic write-in rows, 145 locality
+contest fragments, five voting methods and every candidate/method/component
+sum. Native candidate identifiers, literal parties, locality-election UUIDs,
+method labels/group UUIDs and the full source-receipt manifest remain bound.
+Missing or contradictory data, changed identities, primary/test products,
+future clocks and any locality-clock rollback retain last-good evidence.
+Candidate votes remain candidate votes, never a participation numerator.
+
+`native_official_house.py` separately reproduces an explicit full-frame
+analytical review from retained official facts, the historical scientific
+comparison and retained FEC candidate/authorized-committee evidence. Every
+retained candidate maps one-to-one, including all minors and generic write-ins.
+Literal formal-name formatting and documented initials/suffixes may support
+identity; guessed nicknames, conflicting suffixes and ambiguous matches refuse.
+FEC supports identity only, not ballot presence, vote counts or completeness.
+
+A compatible native revision conditions all nine existing Virginia model
+variants on the complete official D/R/O vector, without refitting respondents.
+It never mixes provider and official counts, allocates aggregate Other, erases
+provider discrepancies or grants new scientific/historical eligibility.
+The independent native last-good checkpoint preserves numerical outputs and
+their own clocks after failure, rather than falling back to an incompatible
+national-provider frame. Complete source and analytical packets retain all
+queries, review/crosswalk, code, tests, inputs and numerical outputs.
+
+Whole-frame precedence explicitly disables changes to the separate national
+candidate seed for RI and VA. That restriction does not apply to the existing
+protected Hawaii path, whose exact same-inventory official candidate/control
+seed must continue advancing. Having source-revision metadata alone is not a
+reason to suppress that previously supported update.
+
 ### Oregon statewide printed candidate evidence
 
 The existing hourly collector includes the Oregon Secretary of State's single

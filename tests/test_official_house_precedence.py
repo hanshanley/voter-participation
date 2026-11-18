@@ -94,6 +94,7 @@ def test_selected_official_endpoint_clocks_and_review_reach_existing_model_annot
         "accepted_result"]["rows"][0]["reported_comparison"])]
     decisions, endpoints = [{"state_code": "RI"}], {"RI": {}}
     bridge.apply_decisions(decisions, endpoints, recorded, result)
+    assert decisions[0]["congressional_analytical_status"]["accepted_candidate_seed_update_allowed"] is False
     assert endpoints["RI"]["counts"] == result["states"]["RI"]["counts"]
     assert not endpoints["RI"]["provider_bridge"]
     model = copy.deepcopy(seed["scenarios"]["original/accepted_ridge_multinomial"]["accepted_result"])

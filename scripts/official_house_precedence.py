@@ -156,6 +156,7 @@ def evaluate(snapshot, seed, handoff):
             source_urls=[reviewed["source_url"]], official_direct_source=True,
             official_source_clock_supplied=True, direct_official_review_version=VERSION,
             source_revision_policy=policy["policy"], national_provider_frames=provider,
+            accepted_candidate_seed_update_allowed=False,
             provider_fallback_on_official_failure_allowed=False,
             provider_counts_added_to_official_counts=False,
         )

@@ -43,6 +43,9 @@ def data_paths(review):
     if review.get("official_house_precedence") is not None:
         from scripts.official_house_precedence import DATA_PATHS as PRECEDENCE_PATHS
         result += PRECEDENCE_PATHS
+    if review.get("native_official_house") is not None:
+        from scripts.native_official_house import DATA_PATHS as NATIVE_PATHS
+        result += NATIVE_PATHS
     if review.get("version") in (OFFICIAL_DECLARATION_VERSION, FILING_VERSION, COMPLETE_CATEGORY_VERSION):
         if review["version"] == COMPLETE_CATEGORY_VERSION:
             result += COMPLETE_CATEGORY_PATHS
@@ -110,6 +113,9 @@ def load_review(root, *, include_split_geometry=True):
     from scripts.official_house_precedence import REVIEW_PATH as PRECEDENCE_PATH, load_review as load_precedence
     if (root / PRECEDENCE_PATH).exists():
         review["official_house_precedence"] = load_precedence(root, review)
+    from scripts.native_official_house import REVIEW_PATH as NATIVE_PATH, load_review as load_native
+    if (root / NATIVE_PATH).exists():
+        review["native_official_house"] = load_native(root, review)
     return review
 
 

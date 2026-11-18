@@ -38,7 +38,7 @@ CODE_PATHS = (
     "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
-    "results_aspx_congress.py",
+    "results_aspx_congress.py", "results_native_congress.py", "results_native_virginia.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",
     "congressional_filing_identity.py",
@@ -46,7 +46,7 @@ CODE_PATHS = (
     "congressional_complete_categories.py",
     "congressional_baselines.py", "congressional_geography.py",
     "congressional_split_blocks.py", "house_district_map.py",
-    "official_house_precedence.py",
+    "official_house_precedence.py", "native_official_house.py",
     "congressional_reference_identity.py",
     "supported_analytical_release.py",
     "senate_legacy_bridge.py", "senate_complete_categories.py", "protected_official_house.py",
@@ -576,6 +576,9 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         if "official_house_precedence" in compiled["congressional_analytical_review"]:
             name = "tests/fixtures/ri-official-congress.json"
             members["code/" + name] = (ROOT / name).read_bytes()
+        if "native_official_house" in compiled["congressional_analytical_review"]:
+            name = "tests/fixtures/virginia-federal-candidates.json"
+            members["code/" + name] = (ROOT / name).read_bytes()
     if "senate_legacy_review" in compiled:
         from scripts.senate_legacy_bridge import DATA_PATHS as SENATE_PATHS
         members["inputs/senate-legacy-review.json"] = encoded(compiled["senate_legacy_review"])
@@ -608,7 +611,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_congressional_complete_categories.py",
                  "test_congressional_geography.py",
                  "test_congressional_split_blocks.py",
-                 "test_official_house_precedence.py",
+                 "test_official_house_precedence.py", "test_native_official_house.py",
                  "test_congressional_reference_identity.py",
                  "test_senate_legacy_bridge.py", "test_senate_complete_categories.py", "test_protected_official_house.py",
                  "test_protected_official_wyoming.py", "test_statewide_ballot_totals.py",
@@ -698,7 +701,7 @@ def replay(package, output):
             if load_boundaries(package / "inputs/reviewed-congressional-sources") != boundaries:
                 raise ValueError("Packaged House boundary review differs from its original evidence")
         if any(seed["congressional_analytical_review"].get(key) is not None
-               for key in ("official_house_precedence", "explicit_reference_names")):
+               for key in ("official_house_precedence", "native_official_house", "explicit_reference_names")):
             from scripts.congressional_analytical_bridge import load_review as load_analytical
             if load_analytical(package / "inputs/reviewed-congressional-sources",
                                include_split_geometry="split_geometry_review" in boundaries) != seed[

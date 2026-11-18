@@ -25,7 +25,7 @@ ASPX_IDENTITY = "OR-official-house-candidates"
 ASPX_URL = "https://results.oregonvotes.gov/resultsSW.aspx?type=FED&map=CTY"
 ASPX_CONFIG = {**WY_CONFIG, "sources": {**WY_CONFIG["sources"], ASPX_IDENTITY: ASPX_URL}}
 IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY, PROTECTED_IDENTITY, WY_IDENTITY,
-              ASPX_IDENTITY)
+              ASPX_IDENTITY, "VA-official-house-candidates")
 INTEGER = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
 PARTIES = {"Democratic": "D", "Republican": "R", "Libertarian": "O",
            "America First": "O", "Legal Marijuana Now": "O",
