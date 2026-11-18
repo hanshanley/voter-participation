@@ -28,9 +28,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  refresh:
+  validate:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: read
+    outputs:
+      active: ${{ steps.window.outputs.active }}
     steps:
       - name: Limit automatic collection to this election
         id: window
@@ -53,8 +57,9 @@ jobs:
         if: steps.window.outputs.active == 'true'
         uses: actions/checkout@v7
         with:
-          ref: main
+          ref: ${{ github.sha }}
           sparse-checkout: |
+            .github
             scripts
             tests
             data/results-intake
@@ -67,7 +72,7 @@ jobs:
 
       - name: Install existing intake dependencies
         if: steps.window.outputs.active == 'true'
-        run: python -m pip install 'requests>=2.31' 'pytest>=8' 'openpyxl>=3.1' 'xlrd>=2' 'pypdf==6.16.0' 'PyMuPDF==1.26.5' 'pdfplumber==0.11.8' 'rapidocr-onnxruntime==1.4.4'
+        run: python -m pip install 'requests>=2.31' 'pytest>=8' 'PyYAML>=6' 'openpyxl>=3.1' 'xlrd>=2' 'pypdf==6.16.0' 'PyMuPDF==1.26.5' 'pdfplumber==0.11.8' 'rapidocr-onnxruntime==1.4.4'
 
       - name: Test source identities, stops, complete queries and publication
         if: steps.window.outputs.active == 'true'
@@ -93,9 +98,32 @@ jobs:
           tests/test_protected_official_wyoming.py
           tests/test_statewide_ballot_totals.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
+          tests/test_election_night_workflow.py
+
+  refresh:
+    needs: validate
+    if: needs.validate.outputs.active == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout the tested intake tool and complete baseline only
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          sparse-checkout: |
+            scripts
+            tests
+            data/results-intake
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install existing intake dependencies
+        run: python -m pip install 'requests>=2.31' 'pytest>=8' 'openpyxl>=3.1' 'xlrd>=2' 'pypdf==6.16.0' 'PyMuPDF==1.26.5' 'pdfplumber==0.11.8' 'rapidocr-onnxruntime==1.4.4'
 
       - name: Reuse conditional HTTP cache
-        if: steps.window.outputs.active == 'true'
         uses: actions/cache@v5
         with:
           path: ${{ runner.temp }}/election-intake/cache
@@ -103,7 +131,7 @@ jobs:
           restore-keys: election-intake-
 
       - name: Collect independent House and participation results
-        if: steps.window.outputs.active == 'true' && inputs.reuse_collection_run == ''
+        if: inputs.reuse_collection_run == ''
         id: capture
         continue-on-error: true
         env:
@@ -126,7 +154,7 @@ jobs:
           fi
 
       - name: Recover an already completed collection without source requests
-        if: steps.window.outputs.active == 'true' && inputs.reuse_collection_run != ''
+        if: inputs.reuse_collection_run != ''
         id: restore
         env:
           GH_TOKEN: ${{ github.token }}
@@ -157,14 +185,14 @@ jobs:
 
       - name: Publish valid results or preserve new access stops
         id: publication
-        if: always() && steps.window.outputs.active == 'true' && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure' || steps.restore.outcome == 'success')
+        if: always() && (steps.capture.outcome == 'success' || steps.capture.outcome == 'failure' || steps.restore.outcome == 'success')
         run: |
           python -m scripts.results_intake publish \
             --work-dir "$RUNNER_TEMP/election-intake" \
             > "$RUNNER_TEMP/election-intake/publication.json"
 
       - name: Write current-results summary
-        if: always() && steps.window.outputs.active == 'true'
+        if: always()
         run: |
           python - <<'PY'
           import json, os
@@ -201,7 +229,7 @@ jobs:
           PY
 
       - name: Retain the report and complete numerical package
-        if: always() && steps.window.outputs.active == 'true'
+        if: always()
         uses: actions/upload-artifact@v6
         with:
           name: election-results-${{ github.run_id }}
@@ -215,5 +243,5 @@ jobs:
             ${{ runner.temp }}/election-intake/complete-results.zip
 
       - name: Fail visibly if collection did not finish
-        if: always() && steps.window.outputs.active == 'true' && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure')
+        if: always() && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure')
         run: exit 1

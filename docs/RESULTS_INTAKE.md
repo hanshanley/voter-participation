@@ -19,6 +19,17 @@ The tool does not
 rebuild the website, overwrite its reviewed participation catalog, or refit
 switching/nonparticipation models.
 
+Validation and collection run in separate dependent jobs, each with the existing
+30-minute execution limit. Full source/analysis regressions must pass before any
+collection or publication starts. Both jobs check out the workflow's exact commit,
+not a newer `main` that the tests did not inspect. Outside the automatic election
+window neither job acquires sources; manual dispatch retains its explicit override.
+The hourly cron, selected-source and recovery modes, durable access stops, last-good
+retention and complete-query artifacts are unchanged. This separation prevents
+the regression suite from consuming the collection/publication/cache-save budget.
+The website's existing hourly data-only consumer remains separate; no Pages build
+or respondent refit is required to consume a compatible new source snapshot.
+
 ## Congressional revision guards
 
 Recorded-results intake accepts newly advertised candidates or aggregate Other

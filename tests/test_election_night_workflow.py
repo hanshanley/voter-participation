@@ -1,0 +1,69 @@
+from datetime import datetime, timezone
+import os
+from pathlib import Path
+import textwrap
+from unittest.mock import patch
+
+import pytest
+import yaml
+
+
+WORKFLOW = Path(__file__).resolve().parents[1] / ".github/workflows/election-night.yml"
+
+
+def workflow():
+    return yaml.load(WORKFLOW.read_text(), Loader=yaml.BaseLoader)
+
+
+def test_collection_has_its_own_budget_after_successful_pinned_validation():
+    jobs = workflow()["jobs"]
+    refresh = jobs["refresh"]
+    validation = jobs[refresh["needs"]]
+    assert refresh["if"] == "needs.validate.outputs.active == 'true'"
+    assert validation["outputs"]["active"] == "${{ steps.window.outputs.active }}"
+    assert refresh["timeout-minutes"] == validation["timeout-minutes"] == "30"
+    assert validation["permissions"] == {"contents": "read"}
+    for job in (validation, refresh):
+        checkout = next(step for step in job["steps"] if step.get("uses", "").startswith("actions/checkout@"))
+        assert checkout["with"]["ref"] == "${{ github.sha }}"
+    checkout = next(step for step in validation["steps"] if step.get("uses", "").startswith("actions/checkout@"))
+    assert ".github" in checkout["with"]["sparse-checkout"].split()
+    assert any("python -m pytest" in step.get("run", "") for step in validation["steps"])
+    assert not any("scripts.results_intake" in step.get("run", "") for step in validation["steps"])
+    assert not any("python -m pytest" in step.get("run", "") for step in refresh["steps"])
+    assert not any("steps.window" in step.get("if", "") for step in refresh["steps"])
+    capture = next(step for step in refresh["steps"] if step.get("id") == "capture")
+    assert capture["continue-on-error"] == "true"
+    publication = next(step for step in refresh["steps"] if step.get("id") == "publication")
+    assert "steps.capture.outcome == 'failure'" in publication["if"]
+    assert "steps.restore.outcome == 'success'" in publication["if"]
+    artifact = next(step for step in refresh["steps"] if step.get("uses", "").startswith("actions/upload-artifact@"))
+    assert artifact["if"] == "always()"
+    assert "complete-results.zip" in artifact["with"]["path"]
+    assert refresh["steps"][-1]["run"] == "exit 1"
+
+
+@pytest.mark.parametrize(
+    "now,event,active",
+    [
+        ("2026-11-02T23:59:59+00:00", "schedule", False),
+        ("2026-11-03T00:00:00+00:00", "schedule", True),
+        ("2027-01-31T23:59:59+00:00", "schedule", True),
+        ("2027-02-01T00:00:00+00:00", "schedule", False),
+        ("2027-02-01T00:00:00+00:00", "workflow_dispatch", True),
+    ],
+)
+def test_actual_window_output_controls_downstream_collection(tmp_path, now, event, active):
+    gate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "window")
+    script = textwrap.dedent(gate["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0])
+    output = tmp_path / "github-output"
+
+    class FrozenDateTime(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return datetime.fromisoformat(now).astimezone(tz or timezone.utc)
+
+    with patch.dict(os.environ, {"EVENT_NAME": event, "GITHUB_OUTPUT": str(output)}):
+        with patch("datetime.datetime", FrozenDateTime):
+            exec(compile(script, str(WORKFLOW), "exec"), {})
+    assert output.read_text() == f"active={str(active).lower()}\n"
