@@ -1056,8 +1056,8 @@ def bind_publication(result, base_url, complete_download):
         bind(sources["senate_partial_scenarios"])
     if sources.get("senate_complete_scenarios"):
         bind(sources["senate_complete_scenarios"])
-    if sources.get("supported_release"):
-        for item in sources["supported_release"]["downloads"].values():
+    for product in ("supported_release", "historical_eac_counties"):
+        for item in sources.get(product, {}).get("downloads", {}).values():
             bind(item)
     for series in sources.get("general_election_turnout_history", {}).values():
         bind(series["data"])
