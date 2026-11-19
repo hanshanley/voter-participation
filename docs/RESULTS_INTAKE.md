@@ -71,6 +71,23 @@ python3 code/reproduce.py --replay-package . --output reproduced
 
 ## Congressional revision guards
 
+### Iowa versioned returns and county ballot counts
+
+The hourly collector reads Iowa's published Clarity version pointer and
+reconciles the federal JSON returns and the same edition's statistical text
+report. House and Senate candidate rows remain separate from the administrative
+ballot counts. Blank party labels remain unknown; named and generic write-ins
+are not merged. The separate Iowa evidence does not replace the national
+provider or qualify a conditional model.
+
+The runtime selects the all-method ballot frame only when all 99 county
+counts reconcile to the statewide control and match the pinned 2026 county
+reference. Early-vote and mail-return records and the earlier Linn and Marion
+observations remain in the complete download. Counts and publication metadata
+retain their original edition on failure; source registrations and printed
+percentages are context only. Reporting completeness is not certification, and
+the website publication timestamp is not a ballot-update timestamp.
+
 ### Utah statewide JSON candidate evidence
 
 `UT-official-house-candidates` independently captures the already-declared

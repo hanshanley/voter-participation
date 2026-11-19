@@ -39,6 +39,7 @@ CODE_PATHS = (
     "native_tabular.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
     "results_aspx_congress.py", "results_json_congress.py",
+    "results_clarity_congress.py", "results_county_frame.py",
     "results_native_congress.py", "results_native_virginia.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",
@@ -516,6 +517,7 @@ def hydrate_granular_sources(snapshot, source_packet):
 def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None):
     from scripts.automatic_estimates import build, render_artifacts
     from scripts.automatic_native_refresh import refresh
+    from scripts.results_county_frame import project as county_frames
     from scripts.statewide_ballot_totals import project as state_totals, exports as state_exports
 
     snapshot = hydrate_granular_sources(snapshot, source_packet)
@@ -524,6 +526,8 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     updated, state_changes = state_totals(updated, snapshot)
     changes.extend(state_changes)
     native = refresh(count_files, updated, native_files)
+    updated, native, county_changes = county_frames(updated, native, snapshot)
+    changes.extend(county_changes)
     estimates = build(snapshot, seed)
     artifacts = render_artifacts(estimates)
     artifacts.update(state_exports(updated))

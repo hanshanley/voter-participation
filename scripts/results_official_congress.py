@@ -30,8 +30,12 @@ JSON_URL = (
     "General11032026/data"
 )
 JSON_CONFIG = {**ASPX_CONFIG, "sources": {**ASPX_CONFIG["sources"], JSON_IDENTITY: JSON_URL}}
+CLARITY_IDENTITY = "IA-official-statewide-results"
+CLARITY_URL = "https://electionresults.iowa.gov/IA/127077/current_ver.txt"
+CLARITY_CONFIG = {**JSON_CONFIG, "sources": {
+    **JSON_CONFIG["sources"], CLARITY_IDENTITY: CLARITY_URL}}
 IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY, PROTECTED_IDENTITY, WY_IDENTITY,
-              ASPX_IDENTITY, JSON_IDENTITY, "VA-official-house-candidates")
+              ASPX_IDENTITY, JSON_IDENTITY, CLARITY_IDENTITY, "VA-official-house-candidates")
 INTEGER = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
 PARTIES = {"Democratic": "D", "Republican": "R", "Libertarian": "O",
            "America First": "O", "Legal Marijuana Now": "O",
@@ -150,7 +154,7 @@ def collect(collector, config):
 
 def source_ids(config):
     require(config in (CONFIG, COMPLETE_CONFIG, SENATE_CONFIG, PROTECTED_CONFIG, WY_CONFIG,
-                       ASPX_CONFIG, JSON_CONFIG),
+                       ASPX_CONFIG, JSON_CONFIG, CLARITY_CONFIG),
             "Unreviewed official congressional source configuration")
     return tuple(config["sources"])
 
@@ -177,6 +181,9 @@ def collect_sources(collector, config, selected=None):
     if JSON_IDENTITY in identities:
         from scripts.results_json_congress import collect as collect_json
         result[JSON_IDENTITY] = collect_json(collector)
+    if CLARITY_IDENTITY in identities:
+        from scripts.results_clarity_congress import collect as collect_clarity
+        result[CLARITY_IDENTITY] = collect_clarity(collector)
     for source_id, chamber in ((COMPLETE_IDENTITY, "house"), (SENATE_IDENTITY, "senate")):
         if source_id not in identities:
             continue
@@ -211,7 +218,7 @@ def reconciliation(congress):
         matching = [
             (identity, candidate) for identity, candidate in congress.get("races", {}).items()
             if candidate.get("data") and all(candidate["data"].get(key) == value for key, value in {
-                "chamber": "senate" if evidence_id == SENATE_IDENTITY else "house",
+                "chamber": race.get("chamber", "senate" if evidence_id == SENATE_IDENTITY else "house"),
                 "state_code": race["state_code"], "seat": race["seat"],
                 "election_date": race["election_date"], "election_kind": "regular",
                 "stage": "general", "round": "not_ranked"}.items())]
@@ -269,6 +276,6 @@ def rows(congress):
                        if identity == ASPX_IDENTITY else {}),
                     **({"exhaustive_write_in_universe_qualified": False,
                         "source_scope_holds": copy.deepcopy(data["holds"])}
-                       if identity == JSON_IDENTITY else {}),
+                       if identity in (JSON_IDENTITY, CLARITY_IDENTITY) else {}),
                 })
     return result
