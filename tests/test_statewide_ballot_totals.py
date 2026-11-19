@@ -786,11 +786,26 @@ def test_texas_archive_ignores_primaries_and_activates_only_on_a_general_row(tmp
     revised = collect(published)
     changed, [change] = totals.project(projected, {"granular_sources": revised})
     assert change["current"] == 499
-    assert json.loads(gzip.decompress(changed[path]))["records"][-1]["view"]["validated_pct"] is None
+    withdrawn = json.loads(gzip.decompress(changed[path]))["records"][-1]
+    assert withdrawn["view"]["validated_pct"] is None
+    assert native.compatible_refresh_identity(row, withdrawn)
+    data = f"<table>{section('2026 - November (Gubernatorial)', 499, '49.9%')}{past}</table>".encode()
+    corrected = collect(revised)
+    recovered, [change] = totals.project(changed, {"granular_sources": corrected})
+    restored = json.loads(gzip.decompress(recovered[path]))["records"][-1]
+    assert change["previous"] == change["current"] == 499
+    assert restored["view"]["validated_pct"] == 49.9
+    assert native.compatible_refresh_identity(withdrawn, restored)
+    bad = copy.deepcopy(restored)
+    bad["view"]["statewide_ballot_parent"]["native_row"]["published_turnout"] = "51.0%"
+    assert not native.compatible_refresh_identity(withdrawn, bad)
+    bad = copy.deepcopy(restored)
+    bad["denominator"]["basis"] = "different_population"
+    assert not native.compatible_refresh_identity(withdrawn, bad)
     data = f"<table>{past}</table>".encode()
-    failed = collect(revised)
+    failed = collect(corrected)
     assert failed[h.TX_FEED]["status"] == "retained_after_failure"
-    assert totals.project(changed, {"granular_sources": failed})[1][0]["current"] == 499
+    assert totals.project(recovered, {"granular_sources": failed})[1][0]["current"] == 499
 
 
 @pytest.mark.parametrize("code", ["VA", "WA"])

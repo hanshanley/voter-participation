@@ -136,9 +136,26 @@ def compatible_refresh_identity(previous: dict[str, Any], current: dict[str, Any
     if old == new:
         return True
     old_denominator, new_denominator = old["denominator"], new["denominator"]
-    if (old_denominator is None or new_denominator is None
-            or old_denominator.get("qualified") is not True
-            or new_denominator.get("qualified") is not False
+    if old_denominator is None or new_denominator is None:
+        return False
+    before, after = old_denominator.get("qualified"), new_denominator.get("qualified")
+    if before is False and after is True:
+        code = (current.get("geography") or {}).get("state_code")
+        if code not in {"TX", "VA", "WA"} or old["geography"].get("level") != "state":
+            return False
+        old_denominator["qualified"] = True
+        if old != new:
+            return False
+        from scripts.statewide_ballot_totals import identity, validate_existing
+        if current["id"] != identity(code):
+            return False
+        try:
+            validate_existing(code, previous)
+            validate_existing(code, current)
+        except (ValueError, KeyError, TypeError):
+            return False
+        return True
+    if (before is not True or after is not False
             or current.get("view", {}).get("reported_pct") is not None
             or current.get("view", {}).get("validated_pct") is not None):
         return False
