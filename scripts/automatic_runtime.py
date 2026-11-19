@@ -541,6 +541,10 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     if history.get("data"):
         artifacts["participation/washington-general-election-turnout-history.csv"] = (
             turnout_history.washington_csv(history))
+    virginia = snapshot.get("granular_sources", {}).get(turnout_history.VA_FEED, {})
+    if virginia.get("data"):
+        artifacts["participation/virginia-general-election-turnout-history.csv"] = (
+            turnout_history.history_csv(virginia, virginia=True))
     uf = snapshot.get("uf_turnout")
     if uf is not None and uf.get("data") is not None:
         from scripts.results_uf_turnout import exports as uf_exports

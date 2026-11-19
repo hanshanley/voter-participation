@@ -2317,3 +2317,13 @@ says 401 of 403. Both inventories are preserved. No completeness, unique
 voter, or substate result is inferred; the same-report fraction remains valid
 for the reported counts. Candidate selections and contest scopes are not
 added or substituted for the statewide parent.
+
+### Virginia: certified-series statewide participation
+
+The same history-table collector reads Virginia's November General Elections
+series starting in 1976. The archive exports all six native columns, including
+the absentee missingness and registration change notes, plus the rate audit.
+The Department adds annual rows after certification. A new 2026 `Total Voting`
+row will populate the statewide view without substituting candidate totals or
+the live API's conflicting zero. The same-row `Total Registered` includes
+active, inactive and overseas voters; no local or demographic rate follows.

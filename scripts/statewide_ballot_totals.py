@@ -32,6 +32,8 @@ PROFILES = {
            "feed": "AZ-official", "url": AZ_URL},
     "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
            "feed": mn.IDENTITY, "url": mn.URL},
+    "VA": {"state": "Virginia", "source_id": "va-elect-general-election-turnout",
+           "feed": history.VA_FEED, "url": history.VA_URL},
     "VT": {"state": "Vermont", "source_id": "vt-sos-registered-turnout-20261103",
            "feed": "VT-registered-5a18635647c699ea", "url": VT_URL},
     "WA": {"state": "Washington", "source_id": "wa-sos-general-election-turnout",
@@ -84,8 +86,9 @@ def identity(code):
                           code + "-native-statewide-total",
                           {"AK": "native-voters-cast", "VT": "native-votes-cast-including-absentee",
                            "MN": "native-total-number-voted",
+                           "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "VT", "MN"} else "all_methods")
+                          "source_defined" if code in {"AK", "VA", "VT", "MN"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -120,8 +123,8 @@ def observation(code, summary, retained=False):
         return vermont_observation(summary, retained)
     if code == "MN":
         return minnesota_observation(summary, retained)
-    if code == "WA":
-        return washington_observation(summary, retained)
+    if code in {"VA", "WA"}:
+        return turnout_history_observation(code, summary, retained)
     arizona = code == "AZ"
     selector = ({"scope": "all_15_reported_county_declarations"} if arizona else
                 {key: profile[key] for key in ("workbook", "sheet", "cell")})
@@ -431,8 +434,8 @@ def minnesota_observation(summary, retained):
         "quality": {"conflicts": [], "notes": notes}, "view": view})
 
 
-def washington_summary(snapshot):
-    entry = snapshot.get("granular_sources", {}).get(history.WA_FEED, {})
+def turnout_history_summary(snapshot, code):
+    entry = snapshot.get("granular_sources", {}).get(PROFILES[code]["feed"], {})
     if entry.get("status") != "reported":
         return None
     data = entry["data"]
@@ -440,58 +443,75 @@ def washington_summary(snapshot):
         return None
     row = data["complete_native_query"][0]
     require(data["current_election_status"] == "row_published" and row["year"] == 2026,
-            "Washington general-election table has no 2026 parent")
-    return {"contract": CONTRACT, "source": entry["source"], "native_row": row}
+            f"{code} general-election table has no 2026 parent")
+    summary = {"contract": CONTRACT, "source": entry["source"], "native_row": row}
+    if code == "VA":
+        require(data["published_after_certification"] is True and data["native_measure"] == "Total Voting",
+                "Virginia source publication policy changed")
+        summary["published_after_certification"] = True
+    return summary
 
 
-def washington_observation(summary, retained):
+def turnout_history_observation(code, summary, retained):
     source, native = summary["source"], summary["native_row"]
-    profile = PROFILES["WA"]
-    registered, ballots, printed = (native[k] for k in ("registered_voters", "ballots_counted", "published_turnout"))
+    profile, virginia = PROFILES[code], code == "VA"
+    measure = "Total Voting" if virginia else "Ballots Counted"
+    count_field = "total_voting" if virginia else "ballots_counted"
+    registered, ballots, printed = (native[k] for k in ("registered_voters", count_field, "published_turnout"))
+    status = "Published after certification" if virginia else None
+    if virginia:
+        require(summary["published_after_certification"] is True and native["native_year"] == "2026",
+                "Virginia source publication scope changed")
     require(summary["contract"] == CONTRACT and set(source) == {"url", "sha256", "bytes"}
             and source["url"] == profile["url"] and type(source["bytes"]) is int and source["bytes"] > 0
             and isinstance(printed, str) and re.fullmatch(r"[0-9]{1,3}(?:\.[0-9]{1,2})?%", printed)
             and native["year"] == 2026 and type(registered) is type(ballots) is int
             and count(registered) == registered and count(ballots) == ballots and 0 < ballots <= registered,
-            "Washington statewide statistical parent changed")
+            f"{code} statewide statistical parent changed")
     places = len(printed.partition(".")[2].removesuffix("%"))
     exact = Decimal(ballots) * 100 / registered
     compatible = exact.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP) == Decimal(printed[:-1])
-    require(native["rate_qualified"] is compatible, "Washington published rate audit differs")
-    notes = ["Washington statewide general-election table; ballots counted and registrations are from one printed row.",
-             "Calendar-year row has no native count-update clock or explicit certification statement.",
+    require(native["rate_qualified"] is compatible, f"{code} published rate audit differs")
+    notes = [f"{profile['state']} statewide general-election table; {measure} and registrations are from one printed row.",
+             "The Department publishes this series after certification; no native count-update clock is supplied."
+             if virginia else "Calendar-year row has no native count-update clock or explicit certification statement.",
              "No county/precinct allocation, CVAP, VEP or unique-voter claim."]
+    if virginia:
+        notes.append("The source register includes active, inactive and overseas voters.")
     if not compatible:
         notes.append("Printed fraction disagrees with the source counts; no turnout rate is qualified.")
     rate = float(exact) if compatible else None
     basis = "native_registered_voters_same_statewide_general_election_table"
-    view = {"state": "Washington", "state_code": "WA", "year": 2026, "mode": "official",
+    kind = "participation_reported" if virginia else "ballots_cast"
+    view = {"state": profile["state"], "state_code": code, "year": 2026, "mode": "official",
             "geography_level": "statewide", "status": "retained_after_failure" if retained else "reported",
             "ballots": ballots, "denominator": registered, "denominator_basis": basis,
             "reported_pct": rate, "validated_pct": rate, "published_pct": None,
             "native_printed_pct": printed, "source_date": None, "source_update_label": None,
-            "source_update_timezone": None, "source_status_literal": None,
+            "source_update_timezone": None, "source_status_literal": status,
             "reported_units": None, "total_units": None, "source_url": source["url"],
             "source_sha256": source["sha256"], "complete_download_url": None, "automatic_source_refresh": True,
-            "participation_measure_kind": "ballots_cast", "participation_measure_literal": "Ballots Counted",
-            "participation_measure_label": "Statewide ballots counted", "cast_ballot_count_qualified": True,
+            "participation_measure_kind": kind, "participation_measure_literal": measure,
+            "participation_measure_label": "Statewide Total Voting" if virginia else "Statewide ballots counted",
+            "cast_ballot_count_qualified": not virginia,
             "unique_voter_count_qualified": False, "native_election_id_qualified": True,
             "maps_approved": False, "quality": notes, "source_reporting_label": " ".join(notes),
             "statewide_ballot_parent": copy.deepcopy(summary)}
     return validate({
-        "contract": VERSION, "id": identity("WA"),
-        "election": {"id": "WA-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+        "contract": VERSION, "id": identity(code),
+        "election": {"id": code + "-2026-11-03-general", "year": 2026, "date": "2026-11-03",
                      "type": "general", "qualification": "native"},
-        "geography": {"id": "WA-native-statewide-total", "name": "Washington", "state_code": "WA",
+        "geography": {"id": code + "-native-statewide-total", "name": profile["state"], "state_code": code,
                       "level": "state", "parent_id": None, "join": {"status": "nongeographic",
                           "reference_id": None, "feature_key": None, "evidence": None}},
-        "measure": {"id": "native-ballots-counted", "literal": "Ballots Counted",
-                    "kind": "ballots_cast", "mode": "all_methods", "unit": "ballots"},
+        "measure": {"id": "native-total-voting" if virginia else "native-ballots-counted", "literal": measure,
+                    "kind": kind, "mode": "source_defined" if virginia else "all_methods",
+                    "unit": "source_reporting_count" if virginia else "ballots"},
         "count": {"value": ballots, "literal": ballots, "status": "reported"},
         "denominator": {"value": registered, "literal": "Registered Voters", "basis": basis,
                         "qualified": compatible},
         "source_clock": {"literal": None, "timezone": None},
-        "reporting_status": {"literal": None, "reported_units": None, "total_units": None, "complete": None},
+        "reporting_status": {"literal": status, "reported_units": None, "total_units": None, "complete": None},
         "source": {"id": profile["source_id"], "url": source["url"], "input_sha256": source["sha256"],
                    "classification": "public_aggregate", "selector": {"Year": 2026},
                    "fields": copy.deepcopy(view)},
@@ -577,7 +597,7 @@ def project(files, snapshot):
     changes = []
     feeds = snapshot.get("congress", {}).get("official_candidate_evidence", {})
     statewide_sources = {"AK": alaska_summary, "AZ": arizona_summary, "MN": minnesota_summary,
-                         "VT": vermont_summary, "WA": washington_summary}
+                         "VT": vermont_summary}
     for code, profile in PROFILES.items():
         if code not in index["states"]:
             continue
@@ -596,7 +616,8 @@ def project(files, snapshot):
         if previous is not None:
             validate_existing(code, previous)
         entry = feeds.get(profile["feed"])
-        summary = (statewide_sources[code](snapshot) if code in statewide_sources else
+        summary = (turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
+                   statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
             if previous is None:

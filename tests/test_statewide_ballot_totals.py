@@ -78,37 +78,55 @@ def test_alaska_preserves_precinct_inventory_disagreement_and_uses_report_fracti
         ak.reconcile(pdf, feed)
 
 
-def test_washington_history_activates_only_on_a_published_general_election_row(monkeypatch):
+@pytest.mark.parametrize("code", ["VA", "WA"])
+def test_history_activates_only_on_a_published_general_election_row(monkeypatch, code):
     history = totals.history
+    va = code == "VA"
+    parser = history.parse_virginia if va else history.parse_washington
+    feed, url = (history.VA_FEED, history.VA_URL) if va else (history.WA_FEED, history.WA_URL)
     files = baseline(monkeypatch)
     index = json.loads(files["index.json"])
-    path = "states/WA.json.gz"
+    path = f"states/{code}.json.gz"
     files[path] = totals.compressed({"contract": "participation.count_snapshot.v1",
-                                   "state_code": "WA", "year": 2026, "records": [], "views": {}})
-    index["states"]["WA"] = {"file": path, **pin(files[path])}
+                                   "state_code": code, "year": 2026, "records": [], "views": {}})
+    index["states"][code] = {"file": path, **pin(files[path])}
     files["index.json"] = encoded(index)
-    header = "<tr>" + "".join(f"<th>{cell}</th>" for cell in history.WA_HEADER) + "</tr>"
-    old = "".join(f"<tr><td>{year}</td><td>1000</td><td>500</td><td>50.00%</td></tr>"
-                  for year in range(2025, 1979, -1))
+    header = "<tr>" + "".join(f"<th>{cell}</th>" for cell in (history.VA_HEADER if va else history.WA_HEADER)) + "</tr>"
+    notes = ""
+    if va:
+        header = f"<tr><td>{history.VA_TITLE}</td></tr>" + header
+        notes = f"<p>{history.VA_CERTIFICATION}</p><p>* NVRA</p><p>** Roll purges</p><p>*** Absentee unavailable</p>"
 
+    def row_markup(year, value, rate):
+        lead = f"<td>{year}</td><td>1000</td>"
+        measure = f"<td>{value}</td><td>{rate}</td>"
+        return "<tr>" + lead + ("<td>0.00%</td>" if va else "") + measure + ("<td>***</td>" if va else "") + "</tr>"
+
+    old = "".join(row_markup("1996*" if va and y == 1996 else y, 500, "50.00%")
+                  for y in range(2025, 1975 if va else 1979, -1))
     def snapshot(current="", status="reported"):
-        body = f"<table>{header}{current}{old}</table>".encode()
-        return {"granular_sources": {history.WA_FEED: {
-            "status": status, "source": {"url": history.WA_URL, **pin(body)},
-            "data": history.parse_washington(body)}}}
+        body = f"{notes}<table>{header}{current}{old}</table>".encode()
+        return {"granular_sources": {feed: {
+            "status": status, "source": {"url": url, **pin(body)}, "data": parser(body)}}}
 
     unavailable = snapshot()
     assert totals.project(files, unavailable) == (files, [])
-    dated = unavailable["granular_sources"][history.WA_FEED]
+    dated = unavailable["granular_sources"][feed]
     assert dated["data"]["current_election_status"] == "not_yet_published"
-    assert len(history.washington_csv(dated).splitlines()) == 47
-    row_html = "<tr><td>2026</td><td>1000</td><td>550</td><td>55.00%</td></tr>"
+    assert len(history.history_csv(dated, virginia=va).splitlines()) == (51 if va else 47)
+    if va:
+        assert b"1996*,0.00%,***" in history.history_csv(dated, virginia=True)
+    row_html = row_markup(2026, 550, "55.00%")
     present = snapshot(row_html)
     current, changes = totals.project(files, present)
     assert changes[0]["current"] == 550
     observation, = json.loads(gzip.decompress(current[path]))["records"]
     assert observation["denominator"]["qualified"] and observation["view"]["validated_pct"] == 55
     assert observation["source_clock"]["literal"] is None
+    if va:
+        assert observation["measure"]["literal"] == "Total Voting"
+        assert observation["view"]["source_status_literal"] == "Published after certification"
+        assert not observation["view"]["cast_ballot_count_qualified"]
     assert totals.project(current, present) == (current, [])
     inconsistent = snapshot(row_html.replace("55.00%", "54.00%"))
     conflict, _ = totals.project(current, inconsistent)
