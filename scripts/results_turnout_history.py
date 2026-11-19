@@ -48,6 +48,9 @@ OH_NS = {"n": "http://grouper.ieee.org/groups/1622/groups/2/V1/1622_2-election_r
 OH_FIELDS = ("ballotCast", "registeredVoterTotal", "reportedPrecincts", "totalPrecincts",
              "outAbsentees", "outProvisionals")
 OH_XML_FIELDS = ("VotersParticipated", "VotersRegistered", "SubUnitsReported", "TotalSubUnits")
+MT_FEED = "MT-statewide-reported-turnout"
+MT_URL = "https://electionresults.mt.gov/"
+MT_TITLE = "General Election - November 3, 2026"
 NJ_COUNTIES = (
     "Atlantic", "Bergen", "Burlington", "Camden", "Cape May", "Cumberland", "Essex",
     "Gloucester", "Hudson", "Hunterdon", "Mercer", "Middlesex", "Monmouth", "Morris", "Ocean",
@@ -362,6 +365,60 @@ def collect_ohio(collector):
                 "date": query["election"]["generated_at"], "participation_observation_qualified": False}
 
     return collector.capture(OH_FEED, OH_BALLOTS, parse)
+
+
+def montana_controls(query):
+    turnout, registered = query["total_turnout"], query["registered_voters"]
+    fully, partial, missing = query["precincts"]
+    printed = query["printed_rate"]
+    clock = datetime.strptime(query["clock"], "%m/%d/%Y %I:%M:%S %p MT")
+    if (query["election"] != MT_TITLE or clock.date().isoformat() < "2026-11-03"
+            or any(type(n) is not int or n < 0 for n in (turnout, registered, fully, partial, missing))
+            or not 0 <= turnout <= registered or not registered or not fully + partial + missing
+            or turnout != query["chart_turnout"] or registered - turnout != query["chart_remainder"]
+            or not re.fullmatch(r"[0-9]+\.[0-9]{2}%", printed)
+            or (Decimal(turnout) * 100 / registered).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(printed[:-1])
+            or (Decimal(fully) * 100 / (fully + partial + missing)).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(query["precinct_rate"][:-1])):
+        raise ValueError("Montana statewide election, turnout or reporting fields do not reconcile")
+    return turnout, registered, clock
+
+
+def montana_report(body):
+    html = body.decode("utf-8-sig")
+
+    def fields(pattern):
+        hits = re.findall(pattern, html)
+        if len(hits) != 1:
+            raise ValueError("Missing or repeated Montana statewide report field")
+        return hits[0]
+
+    election = fields(r"<h2>(General Election - [^<]+)</h2>")
+    turnout, registered = fields(
+        r"<h2>Total Turnout <span>([\d,]+)</span><br\s*/>\s*Registered Voters <span[^>]*>([\d,]+)</span></h2>")
+    chart = r"<canvas id=\"{}\" {}></canvas><div class=\"dough-percent\">"
+    rate = r'<span class="int">(\d+)</span><span class="dec">(\.\d{{2}}%)</span>'
+    desktop, remainder, pct, decimal = fields((chart + rate).format(
+        "voter-turnout", r"voterturnout='(\d+)' votertotal='(\d+)'"))
+    fully, partial, missing, ppct, pdecimal = fields((chart + rate).format(
+        "precinct-reported", r"precinctsreported='(\d+)' precinctspartial='(\d+)' precinctsnotreported='(\d+)'"))
+    printed_partial, printed_fully = fields(
+        r"Partially <span[^>]*>([\d,]+)</span><br/>\s*<div[^>]*></div>Fully <span>([\d,]+)</span>")
+    if (integer(printed_partial), integer(printed_fully)) != (int(partial), int(fully)):
+        raise ValueError("Montana printed precinct counts differ from the chart")
+    query = {"election": election, "total_turnout": integer(turnout), "registered_voters": integer(registered),
+             "chart_turnout": int(desktop), "chart_remainder": int(remainder), "printed_rate": pct + decimal,
+             "clock": fields(r"Results last updated:\s*([0-9/]+ [0-9:]+ [AP]M MT)"),
+             "precincts": [int(fully), int(partial), int(missing)], "precinct_rate": ppct + pdecimal}
+    _, _, clock = montana_controls(query)
+    return {"report": {"url": MT_URL, **pin(body)}, "complete_native_query": query,
+            "date": clock.isoformat(), "participation_observation_qualified": False}
+
+
+def collect_montana(collector):
+    return collector.capture(MT_FEED, MT_URL, montana_report,
+                             equivalent=lambda old, new: old["complete_native_query"] == new["complete_native_query"])
 
 
 def integer(value):

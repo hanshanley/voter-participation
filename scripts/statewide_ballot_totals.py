@@ -74,6 +74,8 @@ PROFILES = {
            "feed": history.NJ_FEED, "url": history.NJ_URL},
     "OH": {"state": "Ohio", "source_id": history.OH_FEED,
            "feed": history.OH_FEED, "url": history.OH_BALLOTS},
+    "MT": {"state": "Montana", "source_id": history.MT_FEED,
+           "feed": history.MT_FEED, "url": history.MT_URL},
     "SC": {"state": "South Carolina", "source_id": "sc-sec-statewide-turnout-20261103",
            "feed": "SC-official", "url": state_statistics.URL},
     "VA": {"state": "Virginia", "source_id": "va-elect-general-election-turnout",
@@ -132,11 +134,12 @@ def identity(code):
                            "FL": "native-reported-participation",
                            "CT": "native-voters-voted",
                            "HI": "native-total-turnout",
+                           "MT": "native-total-turnout",
                            "MN": "native-total-number-voted",
                            "SC": "native-total-voter-turnout",
                            "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "CT", "FL", "HI", "SC", "VA", "VT", "MN"} else "all_methods")
+                          "source_defined" if code in {"AK", "CT", "FL", "HI", "SC", "VA", "VT", "MN", "MT"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -181,6 +184,8 @@ def observation(code, summary, retained=False):
         return new_jersey_observation(summary, retained)
     if code == "OH":
         return ohio_observation(summary, retained)
+    if code == "MT":
+        return montana_observation(summary, retained)
     if code == "VT":
         return vermont_observation(summary, retained)
     if code == "MN":
@@ -940,20 +945,43 @@ def ohio_observation(summary, retained):
         query["total"][8] + "%", None, "Totals")
 
 
+def montana_observation(summary, retained):
+    source = summary["source"]
+    require(summary["contract"] == CONTRACT and summary["index"] == source and source["url"] == history.MT_URL
+            and type(source["bytes"]) is int and source["bytes"] > 0
+            and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]), "Montana turnout receipt changed")
+    query = summary["query"]
+    ballots, registered, clock = history.montana_controls(query)
+    fully, partial, missing = query["precincts"]
+    notes = ["Native Total Turnout and Registered Voters from the same statewide results header.",
+             f"{fully:,} precincts fully reported, {partial:,} partial, {missing:,} not reported.",
+             "The source does not establish certification, a unique-person count or a county allocation."]
+    return archive_observation(
+        "MT", summary, retained, ballots, registered, "Total Turnout", "Registered Voters",
+        "native_registered_voters_same_montana_header", "Unofficial statewide results", notes,
+        query["printed_rate"], clock.date().isoformat(), "Statewide Voter Turnout",
+        source_clock=query["clock"], source_timezone="MT", reporting=(fully, fully + partial + missing))
+
+
 def archive_observation(code, summary, retained, ballots, registered, measure, register,
-                        basis, label, notes, printed_rate, edition, selector):
+                        basis, label, notes, printed_rate, edition, selector, *,
+                        source_clock=None, source_timezone=None, reporting=(None, None)):
     profile, source = PROFILES[code], summary["source"]
     rate = 100 * ballots / registered
+    direct_ballots = code != "MT"
+    kind, mode = ("ballots_cast", "all_methods") if direct_ballots else ("participation_reported", "source_defined")
+    reported, total = reporting
     view = {"state": profile["state"], "state_code": code, "year": 2026, "mode": "official",
             "geography_level": "statewide", "status": "retained_after_failure" if retained else "reported",
             "ballots": ballots, "denominator": registered, "denominator_basis": basis,
             "reported_pct": rate, "validated_pct": rate, "native_printed_pct": printed_rate,
-            "source_update_label": None, "source_update_timezone": None, "source_date": edition,
-            "source_status_literal": label, "reported_units": None, "total_units": None,
+            "source_update_label": source_clock, "source_update_timezone": source_timezone, "source_date": edition,
+            "source_status_literal": label, "reported_units": reported, "total_units": total,
             "source_url": source["url"], "source_sha256": source["sha256"], "complete_download_url": None,
             "automatic_source_refresh": True, "maps_approved": False,
-            "participation_measure_kind": "ballots_cast", "participation_measure_literal": measure,
-            "participation_measure_label": "Native statewide ballots cast", "cast_ballot_count_qualified": True,
+            "participation_measure_kind": kind, "participation_measure_literal": measure,
+            "participation_measure_label": "Native statewide ballots cast" if direct_ballots else "Native statewide reported turnout",
+            "cast_ballot_count_qualified": direct_ballots,
             "unique_voter_count_qualified": False, "quality": notes,
             "source_reporting_label": " ".join(notes), "statewide_ballot_parent": copy.deepcopy(summary)}
     return validate({
@@ -963,12 +991,13 @@ def archive_observation(code, summary, retained, ballots, registered, measure, r
         "geography": {"id": code + "-native-statewide-total", "name": profile["state"], "state_code": code,
                       "level": "state", "parent_id": None, "join": {"status": "nongeographic",
                           "reference_id": None, "feature_key": None, "evidence": None}},
-        "measure": {"id": "native-total-ballots-cast", "literal": measure,
-                    "kind": "ballots_cast", "mode": "all_methods", "unit": "ballots"},
+        "measure": {"id": "native-total-ballots-cast" if direct_ballots else "native-total-turnout", "literal": measure,
+                    "kind": kind, "mode": mode, "unit": "ballots" if direct_ballots else "source_reported_count"},
         "count": {"value": ballots, "literal": ballots, "status": "reported"},
         "denominator": {"value": registered, "literal": register, "basis": basis, "qualified": True},
-        "source_clock": {"literal": None, "timezone": None},
-        "reporting_status": {"literal": label, "reported_units": None, "total_units": None, "complete": None},
+        "source_clock": {"literal": source_clock, "timezone": source_timezone},
+        "reporting_status": {"literal": label, "reported_units": reported, "total_units": total,
+                             "complete": reported == total if total is not None else None},
         "source": {"id": profile["source_id"], "url": source["url"], "input_sha256": source["sha256"],
                    "classification": "public_aggregate", "selector": {"native_row": selector},
                    "fields": copy.deepcopy(view)},
@@ -1125,7 +1154,7 @@ def project(files, snapshot):
                    florida_summary(shard) if code == "FL" else
                    south_carolina_summary(snapshot) if code == "SC" else
                    turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
-                   archive_report_summary(snapshot, code) if code in {"KS", "NJ", "OH"} else
+                   archive_report_summary(snapshot, code) if code in {"KS", "MT", "NJ", "OH"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
@@ -1154,6 +1183,8 @@ def project(files, snapshot):
                 if code == "NJ" and after["query"]["published_date"] < before["query"]["published_date"]:
                     row = observation(code, before, retained=True)
                 if code == "OH" and after["query"]["election"]["generated_at"] < before["query"]["election"]["generated_at"]:
+                    row = observation(code, before, retained=True)
+                if code == "MT" and history.montana_controls(after["query"])[2] < history.montana_controls(before["query"])[2]:
                     row = observation(code, before, retained=True)
                 if code == "AR" and before["status"] == "OFFICIAL" and after["status"] != "OFFICIAL":
                     row = observation(code, before, retained=True)

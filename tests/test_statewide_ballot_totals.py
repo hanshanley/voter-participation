@@ -243,6 +243,51 @@ def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_confli
     assert frame.project_ohio(retained_counties, retained_bindings) == (retained_counties, retained_bindings, [])
 
 
+def test_montana_heading_rate_and_reporting_must_reconcile(tmp_path, monkeypatch):
+    from scripts.results_intake import Collector
+
+    history = totals.history
+    html = (
+        "<h2>General Election - November 3, 2026</h2>"
+        "Results last updated: 11/19/2026 12:20:20 AM MT"
+        "<h2>Total Turnout <span>300</span><br />Registered Voters <span>1,000</span></h2>"
+        """<canvas id="voter-turnout" voterturnout='300' votertotal='700'></canvas>"""
+        '<div class="dough-percent"><span class="int">30</span><span class="dec">.00%</span></div>'
+        """<canvas id="precinct-reported" precinctsreported='9' precinctspartial='1' """
+        """precinctsnotreported='0'></canvas>"""
+        '<div class="dough-percent"><span class="int">90</span><span class="dec">.00%</span></div>'
+        "Partially <span>1</span><br/><div></div>Fully <span>9</span>"
+    ).encode()
+
+    def acquire(self, url):
+        assert url == history.MT_URL
+        return html, {"origin": "fixture_transport", **pin(html)}
+
+    monkeypatch.setattr(Collector, "acquire", acquire)
+
+    def collect(prior=None):
+        collector = Collector(tmp_path, prior or {}, {"urls": [], "prefixes": [], "hosts": []},
+                              datetime(2026, 11, 19, tzinfo=timezone.utc))
+        return {history.MT_FEED: history.collect_montana(collector)}
+
+    accepted = collect()
+    snapshot = {"granular_sources": accepted}
+    summary = totals.archive_report_summary(snapshot, "MT")
+    row = totals.observation("MT", summary)
+    assert row["count"]["value"] == 300 and row["view"]["validated_pct"] == 30
+    assert row["measure"]["kind"] == "participation_reported"
+    assert row["reporting_status"]["complete"] is False
+    assert row["reporting_status"]["reported_units"] == 9
+    html += b"<!-- changed page footer -->"
+    assert collect(accepted) == accepted
+    for wrong in (html.replace(b"11/19/2026", b"11/18/2026"),
+                  html.replace(b"votertotal='700'", b"votertotal='701'"),
+                  html.replace(b"General Election - November", b"Primary Election - November")):
+        html = wrong
+        held = collect(accepted)[history.MT_FEED]
+        assert held["status"] == "retained_after_failure"
+        assert held["data"] == accepted[history.MT_FEED]["data"]
+
 def test_connecticut_retained_control_and_versioned_successor(monkeypatch):
     files = baseline(monkeypatch)
     path = "states/CT.json.gz"
