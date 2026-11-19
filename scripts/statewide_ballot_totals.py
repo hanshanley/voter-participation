@@ -11,6 +11,7 @@ from decimal import Decimal, ROUND_HALF_UP
 
 from scripts import protected_official_wyoming, results_minnesota_turnout as mn
 from scripts import results_alaska_turnout as alaska
+from scripts import results_native_dc as dc
 from scripts import results_native_state_family as state_family
 from scripts import results_turnout_history as history
 from scripts.results_state_statistics import AZ_URL
@@ -850,6 +851,26 @@ def project(files, snapshot):
             changes.append({"state_code": code, "id": selected,
                             "previous": previous["count"]["value"] if previous else None,
                             "current": row["count"]["value"], "source_status": row["view"]["status"]})
+    if "DC" in index["states"]:
+        declaration = index["states"]["DC"]
+        dc_body = result[declaration["file"]]
+        require(pin(dc_body) == {key: declaration[key] for key in ("bytes", "sha256")},
+                "D.C. canonical shard pin changed")
+        source_entry = snapshot.get("granular_sources", {}).get(dc.FEED, {})
+        selected = [view for record in json.loads(gzip.decompress(dc_body))["records"]
+                    if (view := dc.citywide_view(record, retained=source_entry.get("status") != "reported"))
+                    is not None]
+        if selected:
+            require(len(selected) == 1, "Ambiguous D.C. citywide canonical record")
+            view, = selected
+            reporting = current["snapshot"]["reporting"]
+            mirrors = [row for row in reporting if row["state_code"] == "DC"]
+            require(len(mirrors) <= 1 and (not mirrors or mirrors[0].get("equivalent_county_observation_id")
+                    == view["equivalent_county_observation_id"]), "D.C. citywide display preimage changed")
+            if mirrors:
+                reporting[reporting.index(mirrors[0])] = view
+            else:
+                reporting.append(view)
     if current != original_current:
         result["current.json.gz"] = compressed(current)
         if "current_snapshot" in index:
@@ -864,7 +885,7 @@ def project(files, snapshot):
 def exports(files):
     current = json.loads(gzip.decompress(files["current.json.gz"]))
     rows = [row for row in current["snapshot"]["reporting"]
-            if "statewide_ballot_parent" in row]
+            if "statewide_ballot_parent" in row or "equivalent_county_observation_id" in row]
     fields = ("state_code", "year", "ballots", "status", "denominator", "validated_pct",
               "source_update_label", "source_update_timezone", "source_url", "source_sha256")
     output = io.StringIO(newline="")

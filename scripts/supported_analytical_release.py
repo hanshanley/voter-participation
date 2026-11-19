@@ -84,6 +84,8 @@ def mechanisms(row, state_row):
 
 
 def administrative(files):
+    from scripts import results_native_dc as dc
+
     index = decoded(files, "index.json")
     rows = []
     for state, declaration in sorted(index["states"].items()):
@@ -97,6 +99,7 @@ def administrative(files):
                 "observation_id": record["id"], "state_code": state,
                 "year": record["election"]["year"], "geography_level": record["geography"]["level"],
                 "geography_id": record["geography"]["id"], "geography": record["geography"]["name"],
+                "also_covers_full_jurisdiction": state == "DC" and dc.citywide_view(record) is not None,
                 "measure": record["measure"]["literal"], "measure_kind": record["measure"]["kind"],
                 "unit": record["measure"]["unit"], "mode": record["measure"]["mode"],
                 "count_status": count["status"], "source_count": value,
@@ -127,21 +130,23 @@ def administrative_coverage(rows):
         counts = inventory[row["state_code"]]
         level = levels.get(row["geography_level"], "other_geography")
         status = row["count_status"]
-        counts[f"{level}_{status}_records"] += 1
-        if status != "reported":
-            continue
-        if row["measure_kind"] in {"returned", "early_activity"} or row["mode"] in {
-            "in_person_early", "mail_returned"
-        }:
-            counts[f"{level}_early_or_returned_records"] += 1
-            continue
-        if row["measure_kind"] not in {
-            "ballots_cast", "voters_reported", "cards_cast", "participation_reported"
-        }:
-            continue
-        counts[f"{level}_election_participation_count_records"] += 1
-        if row["compatible_source_fraction_pct"] is not None:
-            counts[f"{level}_election_participation_rate_records"] += 1
+        covered = ("county_or_equivalent", "statewide") if row.get("also_covers_full_jurisdiction") else (level,)
+        for scope in covered:
+            counts[f"{scope}_{status}_records"] += 1
+            if status != "reported":
+                continue
+            if row["measure_kind"] in {"returned", "early_activity"} or row["mode"] in {
+                "in_person_early", "mail_returned"
+            }:
+                counts[f"{scope}_early_or_returned_records"] += 1
+                continue
+            if row["measure_kind"] not in {
+                "ballots_cast", "voters_reported", "cards_cast", "participation_reported"
+            }:
+                continue
+            counts[f"{scope}_election_participation_count_records"] += 1
+            if row["compatible_source_fraction_pct"] is not None:
+                counts[f"{scope}_election_participation_rate_records"] += 1
     fields = ("reported", "unknown", "withheld", "early_or_returned",
               "election_participation_count", "election_participation_rate")
     return [

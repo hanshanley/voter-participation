@@ -42,6 +42,31 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_dc_citywide_scope_projects_without_duplicating_the_count(monkeypatch):
+    from scripts.supported_analytical_release import administrative, administrative_coverage
+
+    files = baseline(monkeypatch)
+    path = "states/DC.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["DC"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    projected, changes = totals.project(files, {})
+    assert changes == [] and files[path] == projected[path]
+    state, = json.loads(gzip.decompress(projected["current.json.gz"]))["snapshot"]["reporting"]
+    assert state["state_code"] == "DC" and state["status"] == "retained_after_failure"
+    assert (state["ballots"], state["denominator"], state["validated_pct"]) == (
+        185086, 457371, 100 * 185086 / 457371)
+    admin = administrative(projected)
+    count, = [r for r in admin if r["also_covers_full_jurisdiction"]]
+    assert count["observation_id"] == state["equivalent_county_observation_id"]
+    coverage = next(r for r in administrative_coverage(admin) if r["state_code"] == "DC")
+    assert coverage["statewide_election_participation_count_records"] == 1
+    assert coverage["county_or_equivalent_election_participation_count_records"] == 1
+    assert totals.project(projected, {}) == (projected, [])
+
+
 def test_arkansas_retained_count_and_checked_successors(monkeypatch):
     files = baseline(monkeypatch)
     path = "states/AR.json.gz"

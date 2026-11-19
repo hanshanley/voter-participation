@@ -1329,6 +1329,14 @@ native UTC update clock is checked for rollback. Separate September registration
 early voting and received-mail reports are neither substituted nor added.
 Existing provisional/reference qualifications and map holds remain unchanged.
 
+The reviewed D.C. citywide voter-summary row covers the entire jurisdiction
+and its coextensive county equivalent, 11001. The statewide reader mirrors
+that existing canonical observation by ID without adding another count. The
+administrative query marks `also_covers_full_jurisdiction`; the coverage
+table therefore recognizes both scopes, not two independent observations.
+The archived unofficial count and same-report registered-voter fraction
+remain dated until a compatible official source revision is accepted.
+
 South Carolina refreshes only the existing current-snapshot statewide
 source-defined participation count. Statistical labels, complete mode components,
 literal printed percentages and full selected factual queries are validated.

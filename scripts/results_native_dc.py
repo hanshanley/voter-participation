@@ -17,6 +17,7 @@ ELECTION_URL = (
     "https://electionresults.dcboe.org/electionResults/getElectionInfo/"
     "2026-General-Election"
 )
+FEED = "DC-registered-" + digest(ELECTION_URL.encode())[:16]
 VOTERS_URL = (
     "https://electionresults.dcboe.org/cityWide/getVoterSummaryInfo/"
     "2026-General-Election"
@@ -191,6 +192,36 @@ def validate_plan(plan):
         raise ValueError("Exactly one complete reviewed D.C. source is required")
     validate_templates(selected[0]["templates"])
     return plan
+
+
+def citywide_view(record, *, retained=False):
+    """Expose the same native observation at both coextensive display levels."""
+    if route(record) is None:
+        return None
+    validate_templates([record])
+    view = copy.deepcopy(record["view"])
+    ballots = record["count"]["value"]
+    registered = record["denominator"]["value"]
+    if ballots is None or registered is None or registered <= 0 or ballots > registered:
+        raise ValueError("Invalid reviewed D.C. citywide participation fraction")
+    clock = _accepted_clock(record["source_clock"]["literal"])
+    _clock(clock)
+    archived = record["source"]["url"] == STORED_URL
+    if archived:
+        source_hash = "fd6e5c4d2349d7b536734a31ccdb1ef20eeedc9ed2110dddcb3263268b159887"
+    else:
+        source_hash = view["native_record"]["numerical_input_manifest"]["voter_summary"]["sha256"]
+    for key in ("county", "county_id"):
+        view.pop(key, None)
+    view.update(state="District of Columbia", geography_level="statewide", mode="official",
+                status="retained_after_failure" if archived or retained else "reported",
+                source_update_label=clock, source_update_timezone="UTC",
+                source_url=VOTERS_URL, source_sha256=source_hash, automatic_source_refresh=True,
+                equivalent_county_observation_id=record["id"],
+                validated_pct=100 * ballots / registered, reported_pct=100 * ballots / registered)
+    view["quality"].append(
+        "District-wide and county-equivalent views show the same citywide report; do not add them together.")
+    return view
 
 
 def _source_url(value, *, suffix=None):
