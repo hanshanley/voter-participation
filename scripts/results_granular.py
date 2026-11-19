@@ -434,14 +434,9 @@ def factual_tables(body, name, *, _budget=None, _depth=0):
 
 
 def collect(collector, baseline):
-    jobs = {}
-    for state, parser in (("MN", minnesota),):
-        templates = selected_records(baseline, state)
-        if not templates:
-            continue
-        url = MN_URL
-        jobs[state + "-native-local"] = collector.capture(state + "-native-local", url,
-            lambda body, parser=parser, templates=templates: parser(body, templates))
+    from scripts import results_minnesota_turnout
+
+    jobs = results_minnesota_turnout.collect_pair(collector, baseline)
     templates = selected_records(baseline, "AL")
     urls = {row["view"].get("source_url") for row in templates
             if row.get("view", {}).get("native_record", {}).get("source_rows")
@@ -474,12 +469,9 @@ def collect(collector, baseline):
         jobs["CT-native-local"] = collector.capture("CT-native-local", CT_VERSION, capture_ct)
     from scripts.results_native import collect_sources
     from scripts import (
-        results_alaska_turnout, results_minnesota_turnout, results_pa_vote_history,
+        results_alaska_turnout, results_pa_vote_history,
         results_pdf_county_parent, results_turnout_history,
     )
-    if "MN-native-local" in jobs:
-        jobs[results_minnesota_turnout.IDENTITY] = results_minnesota_turnout.collect(
-            collector, jobs["MN-native-local"])
     jobs.update(collect_sources(collector, baseline))
     jobs[results_alaska_turnout.FEED] = results_alaska_turnout.collect(collector)
     from scripts.results_state_statistics import HI_FEED, collect_hawaii

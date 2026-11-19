@@ -281,7 +281,8 @@ def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp
 @pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
 def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
     from scripts import (
-        philadelphia_divisions, results_native, results_pa_vote_history, results_pdf_county_parent,
+        philadelphia_divisions, results_minnesota_turnout as mn, results_native,
+        results_pa_vote_history, results_pdf_county_parent,
         results_turnout_history,
     )
 
@@ -324,6 +325,20 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
         monkeypatch.setattr(results_turnout_history, "collect_" + name, adapter(feed))
     monkeypatch.setattr(results_turnout_history, "collect_votingworks_town",
                         lambda collector, profile: adapter(profile.feed)(collector))
+    assert set(mn.SOURCE_IDS) <= set(intake.late_archive_sources())
+    with pytest.raises(ValueError, match="both linked source IDs"):
+        intake.refresh_selected(registry, tmp_path / "scoped", previous, [mn.IDENTITY], NOW)
+    assert not calls
+    pair_status = ohio_status
+
+    def collect_pair(collector, baseline):
+        assert baseline
+        calls.extend(mn.SOURCE_IDS)
+        return {key: {"status": pair_status,
+                      "data": None if pair_status == "source_stopped" else {"identity": key}}
+                for key in mn.SOURCE_IDS}
+
+    monkeypatch.setattr(mn, "collect_pair", collect_pair)
     selected.extend(key for key in intake.late_archive_sources() if key not in selected)
     monkeypatch.setattr(results_native, "collect_sources",
                         lambda *args, **kwargs: pytest.fail("Scoped refresh must not acquire unrelated sources"))
@@ -332,9 +347,12 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
 
     result = intake.refresh_selected(registry, tmp_path / "scoped", previous, selected, NOW)
     persisted = intake.hydrate_collector_state(intake.unpack_state(json.loads(intake.pack_state(result))))
-    assert calls == selected and set(result["granular"]) == set(selected)
+    assert calls == [key for key in selected if key not in mn.SOURCE_IDS] + list(mn.SOURCE_IDS)
+    assert set(result["granular"]) == set(selected)
     assert result["granular"][selected[0]]["status"] == ohio_status
-    assert all(result["granular"][identity]["status"] == "reported" for identity in selected[1:])
+    assert all(result["granular"][identity]["status"] == pair_status for identity in mn.SOURCE_IDS)
+    assert all(result["granular"][identity]["status"] == "reported"
+               for identity in selected[1:] if identity not in mn.SOURCE_IDS)
     assert persisted["feeds"][selected[0]] == persisted["granular"][selected[0]]
     assert set(persisted["feeds"]) == set(previous["feeds"])
     assert persisted["feeds"]["unchanged"] == previous["feeds"]["unchanged"]

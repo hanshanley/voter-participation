@@ -428,7 +428,7 @@ def other_offices(review):
 
 def selected_local_observation_ids(snapshot, counts=None):
     from scripts import (
-        philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent,
+        philadelphia_divisions, results_minnesota_turnout, results_pa_vote_history, results_pdf_county_parent,
         results_turnout_history, statewide_ballot_totals,
     )
     from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
@@ -472,6 +472,13 @@ def selected_local_observation_ids(snapshot, counts=None):
         require(entry is not None, "Selected local source missing: " + identity)
         if identity == philadelphia_divisions.FEED or identity in results_pa_vote_history.FEEDS.values():
             continue  # These products do not update a canonical cast-ballot count.
+        if identity == results_minnesota_turnout.IDENTITY:
+            local = snapshot["granular_sources"].get(results_minnesota_turnout.LOCAL_IDENTITY, {})
+            if entry["status"] == local.get("status") == "reported":
+                selected.add(statewide_ballot_totals.identity("MN"))
+            continue
+        if identity == results_minnesota_turnout.LOCAL_IDENTITY and entry["status"] != "reported":
+            continue
         if identity in administrative_sources:
             if entry["status"] == "reported" and counts is not None:
                 state = administrative_sources[identity]

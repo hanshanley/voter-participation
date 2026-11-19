@@ -8,6 +8,8 @@ from scripts.participation_intake.contract import count
 
 
 IDENTITY = "MN-statewide-reporting"
+LOCAL_IDENTITY = "MN-native-local"
+SOURCE_IDS = (LOCAL_IDENTITY, IDENTITY)
 URL = "https://electionresults.sos.mn.gov/Results/CountyStatisticsStatewide/Index?ersElectionId=201"
 TITLE = "Minnesota Statewide Reporting Statistics"
 ELECTION = "Tuesday, November 3, 2026"
@@ -122,3 +124,13 @@ def collect(collector, local):
         return {**report, "statistical_txt": local["source"], "reconciliation": result}
 
     return collector.capture(IDENTITY, URL, parse_and_reconcile)
+
+
+def collect_pair(collector, baseline):
+    from scripts.results_granular import MN_URL, minnesota, selected_records
+
+    templates = selected_records(baseline, "MN")
+    if not templates:
+        return {}
+    local = collector.capture(LOCAL_IDENTITY, MN_URL, lambda body: minnesota(body, templates))
+    return {LOCAL_IDENTITY: local, IDENTITY: collect(collector, local)}

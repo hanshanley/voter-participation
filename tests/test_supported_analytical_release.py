@@ -320,6 +320,23 @@ def test_scoped_statewide_archives_attribute_only_the_canonical_source(code):
     assert release.selected_local_observation_ids(snapshot, counts) == set()
 
 
+def test_scoped_minnesota_pair_reports_only_available_changes():
+    from scripts import results_minnesota_turnout as mn, statewide_ballot_totals
+
+    local = {"status": "reported", "data": {"updates": [{"id": "native-local-count"}]}}
+    report = {"status": "reported", "data": {"reconciliation": {}}}
+    snapshot = {
+        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": mn.SOURCE_IDS},
+        "granular_sources": {mn.LOCAL_IDENTITY: local, mn.IDENTITY: report},
+    }
+    ids = release.selected_local_observation_ids
+    assert ids(snapshot) == {"native-local-count", statewide_ballot_totals.identity("MN")}
+    report["status"] = "retained_after_failure"
+    assert ids(snapshot) == {"native-local-count"}
+    local.update(status="source_stopped", data=None)
+    assert ids(snapshot) == set()
+
+
 def test_held_group_and_frozen_source_tampering_do_not_become_numerical_outputs():
     held = {"contributions_pp": None, "total_contribution_pp": None}
     assert all(value is None for value in release.mechanisms(held, modeled_row()).values())

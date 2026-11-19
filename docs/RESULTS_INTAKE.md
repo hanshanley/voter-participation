@@ -24,7 +24,8 @@ Validation and collection run in separate dependent jobs, each with the existing
 collection or publication starts. Both jobs check out the workflow's exact commit,
 not a newer `main` that the tests did not inspect. Starting February 1, 2027 UTC,
 the Monday 10:19 UTC sweep checks only the reviewed late archives. It includes
-the six existing state-level products, Bath, Buxton and every town in the shared
+the six existing state-level products, Minnesota's paired statistical TXT and
+statewide reporting table, Bath, Buxton and every town in the shared
 VotingWorks registry. Hourly and weekly collection and scoped export attribution
 use the same municipal registrations. Newly reviewed VotingWorks registrations
 do not require a workflow change. The sweep runs `refresh-selected --late-archives`;
