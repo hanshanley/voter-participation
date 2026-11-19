@@ -555,13 +555,15 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     changes.extend(county_changes)
     updated, native = philadelphia_divisions.project(updated, native, snapshot)
     model_seed = {key: value for key, value in seed.items()
-                  if key not in {"historical_eac_county_facts", "nc_retained_original"}}
+                  if key not in {"historical_eac_county_facts", "nc_retained_original", "tx_retained_history"}}
     estimates = build(snapshot, model_seed)
     history_exports = {}
     for code, feed, state_name in (("WA", turnout_history.WA_FEED, "washington"),
                                   ("VA", turnout_history.VA_FEED, "virginia"),
                                   ("TX", turnout_history.TX_FEED, "texas")):
         entry = snapshot.get("granular_sources", {}).get(feed, {})
+        if code == "TX":
+            entry = turnout_history.texas_history_entry(entry, seed.get("tx_retained_history"))
         if not entry.get("data"):
             continue
         prefix = f"participation/{state_name}-general-election-turnout-history"
@@ -587,6 +589,8 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
               "model_files": artifacts, "local_changes": changes}
     if "nc_retained_original" in seed:
         result["nc_retained_original"] = seed["nc_retained_original"]
+    if "tx_retained_history" in seed:
+        result["tx_retained_history"] = seed["tx_retained_history"]
     if "historical_eac_county_facts" in seed:
         from scripts.eac_county_turnout import exports as eac_exports
         eac_files, descriptor = eac_exports(seed["historical_eac_county_facts"])
@@ -655,6 +659,8 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         members["inputs/historical-eac-county-facts.json.gz"] = compiled["historical_eac_county_facts"]
     if "nc_retained_original" in compiled:
         members["inputs/nc-retained-original.json"] = compiled["nc_retained_original"]
+    if "tx_retained_history" in compiled:
+        members["inputs/tx-retained-history.json"] = compiled["tx_retained_history"]
     if "release_review" in compiled:
         members["inputs/supported-release-review.json"] = encoded(compiled["release_review"])
     if "congressional_analytical_review" in compiled:
@@ -791,6 +797,8 @@ def replay(package, output):
         seed["historical_eac_county_facts"] = (package / "inputs/historical-eac-county-facts.json.gz").read_bytes()
     if "inputs/nc-retained-original.json" in manifest:
         seed["nc_retained_original"] = (package / "inputs/nc-retained-original.json").read_bytes()
+    if "inputs/tx-retained-history.json" in manifest:
+        seed["tx_retained_history"] = (package / "inputs/tx-retained-history.json").read_bytes()
     if "inputs/congressional-analytical-review.json" in manifest:
         seed["congressional_analytical_review"] = read(package / "inputs/congressional-analytical-review.json")
         boundaries = seed["congressional_analytical_review"].get("house_boundaries") or {}
@@ -979,10 +987,13 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     protected_review = load_protected_review(ROOT) if (ROOT / PROTECTED_REVIEW_PATH).exists() else None
     from scripts.eac_county_turnout import INPUT as EAC_INPUT
     from scripts.statewide_ballot_totals import NC_INPUT
+    from scripts.results_turnout_history import TX_ARCHIVE_INPUT
     eac_path = ROOT / EAC_INPUT
     eac_facts = eac_path.read_bytes() if eac_path.exists() else None
     nc_path = ROOT / NC_INPUT
     nc_original = nc_path.read_bytes() if nc_path.exists() else None
+    tx_path = ROOT / TX_ARCHIVE_INPUT
+    tx_archive = tx_path.read_bytes() if tx_path.exists() else None
     processing = digest(encoded({
         "numerical_runtime": numerical_runtime(),
         "code": {name: pin((ROOT / "scripts" / name).read_bytes()) for name in CODE_PATHS},
@@ -990,6 +1001,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "supported_release_review": pin(encoded(release_review)) if release_review else None,
         "historical_eac_counties": pin(eac_facts) if eac_facts is not None else None,
         "nc_retained_original": pin(nc_original) if nc_original is not None else None,
+        "tx_retained_history": pin(tx_archive) if tx_archive is not None else None,
         "congressional_analytical_review": {
             name: pin((ROOT / name).read_bytes()) for name in data_paths(analytical_review)
         } if analytical_review else None,
@@ -1042,6 +1054,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         seed["historical_eac_county_facts"] = eac_facts
     if nc_original is not None:
         seed["nc_retained_original"] = nc_original
+    if tx_archive is not None:
+        seed["tx_retained_history"] = tx_archive
     if analytical_review is not None:
         seed["congressional_analytical_review"] = analytical_review
     if senate_review is not None:

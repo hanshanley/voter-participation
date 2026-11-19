@@ -29,6 +29,8 @@ VA_CERTIFICATION = ("The Department of Elections only publishes turnout statisti
 VA_FIELDS = ("native_year", "registration_change_literal", "voting_absentee_literal")
 TX_FEED = "TX-general-election-turnout"
 TX_URL = "https://www.sos.state.tx.us/elections/historical/70-92.shtml"
+TX_ARCHIVE_INPUT = "data/results-intake/tx-reviewed-turnout-history.json"
+TX_ARCHIVE_PIN = {"bytes": 9746, "sha256": "94c22d392d24d2d9082b189a86a1f6b32ee2a847079aba6e65be99c3961959c5"}
 TX_FIELDS = ("native_heading", "registered_literal", "voting_age_population",
              "published_registration_to_vap", "published_turnout_to_vap", "vap_rate_qualified")
 TX_GENERAL = re.compile(
@@ -705,6 +707,21 @@ def collect_virginia(collector):
 
 def collect_texas(collector):
     return collect_history(collector, TX_FEED, TX_URL, parse_texas)
+
+
+def texas_history_entry(entry, retained_archive):
+    if entry.get("data") or retained_archive is None:
+        return entry
+    if pin(retained_archive) != TX_ARCHIVE_PIN:
+        raise ValueError("Texas retained turnout archive checksum differs")
+    data = json.loads(retained_archive)
+    source = data.pop("source")
+    if (source["url"] != TX_URL or data["current_election_status"] != "not_yet_published"
+            or data["native_measure"] != "Turnout"
+            or [row["year"] for row in data["complete_native_query"]] != list(range(2024, 1969, -2))):
+        raise ValueError("Texas retained turnout archive scope differs")
+    data["latest_attempt_status"] = entry.get("status", "not_reported")
+    return {"status": "retained_after_failure", "source": source, "data": data}
 
 
 def history_csv(entry, *, virginia=False, texas=False):

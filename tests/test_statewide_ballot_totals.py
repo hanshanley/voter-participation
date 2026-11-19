@@ -729,6 +729,22 @@ def test_alaska_preserves_precinct_inventory_disagreement_and_uses_report_fracti
         ak.reconcile(pdf, feed)
 
 
+def test_texas_retained_archive_never_qualifies_2026_or_displaces_accepted_source():
+    h = totals.history
+    archive = (Path(__file__).resolve().parents[1] / h.TX_ARCHIVE_INPUT).read_bytes()
+    unavailable = {"status": "source_access"}
+    fallback = h.texas_history_entry(unavailable, archive)
+    assert fallback["status"] == "retained_after_failure"
+    assert fallback["data"]["latest_attempt_status"] == "source_access"
+    assert fallback["data"]["current_election_status"] == "not_yet_published"
+    assert fallback["data"]["complete_native_query"][0]["total_voting"] == 11388674
+    assert b",retained_after_failure," in h.history_csv(fallback, texas=True)
+    accepted = {"status": "reported", "data": {"current_election_status": "row_published"}}
+    assert h.texas_history_entry(accepted, archive) == accepted
+    with pytest.raises(ValueError, match="checksum"):
+        h.texas_history_entry(unavailable, archive + b"\n")
+
+
 def test_texas_archive_ignores_primaries_and_activates_only_on_a_general_row(tmp_path, monkeypatch):
     from scripts.results_intake import Collector
 
