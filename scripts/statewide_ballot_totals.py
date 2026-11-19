@@ -63,6 +63,17 @@ OR_BASELINE_ID = "20e024e22223bce619b8d76b6d468c52"
 NC_BASELINE_ID = "723967930e4366f2cf9c150b1fe976d0"
 ND_BASELINE_ID = "4f4e246b7a458ae250add2fb372b2765"
 ND_ELECTION_NIGHT_URL = "https://www.sos.nd.gov/news/398-voter-turnout-north-dakota-general-election"
+ND_RETAINED_CANVASS_SOURCE = {
+    "url": history.ND_CANVASS_URL,
+    "bytes": 137967,
+    "sha256": "e8c015daa6f27a7a3ac122027a69554b142179ba97ac126a739cde987cfc2b6b",
+}
+ND_RETAINED_CANVASS_QUERY = {
+    "title": history.ND_CANVASS_TITLE,
+    "publication_date": "2026-11-18",
+    "voters_cast_ballots": "239,442",
+    "printed_pct": "39.8%",
+}
 NC_FEED = "NC-registered-d6712073694b63cd"
 NC_INPUT = "data/results-intake/nc-20261113-statewide-and-counties.json"
 NC_PIN = {"bytes": 27005, "sha256": "9fc1b775d96cba4bf8da176be8351cf3b3b216969d69a3e88eb9a6c9c8c7a409"}
@@ -946,6 +957,18 @@ def archive_report_summary(snapshot, code):
             "index": entry["source"], "query": entry["data"]["complete_native_query"]}
 
 
+def north_dakota_canvass_summary(snapshot, previous):
+    summary = archive_report_summary(snapshot, "ND")
+    if summary is not None or previous is not None:
+        return summary, False
+    entry = snapshot.get("granular_sources", {}).get(history.ND_CANVASS_FEED, {})
+    if (entry.get("status") != "source_stopped" or entry.get("data") is not None
+            or entry.get("attempted_source_url") != history.ND_CANVASS_URL):
+        return None, False
+    return {"contract": CONTRACT, "source": dict(ND_RETAINED_CANVASS_SOURCE),
+            "index": dict(ND_RETAINED_CANVASS_SOURCE), "query": dict(ND_RETAINED_CANVASS_QUERY)}, True
+
+
 def kansas_observation(summary, retained):
     source, index = summary["source"], summary["index"]
     require(summary["contract"] == CONTRACT and index["url"] == history.KS_URL
@@ -1148,12 +1171,17 @@ def north_dakota_canvass_observation(summary, retained):
             and type(source["bytes"]) is int and source["bytes"] > 0
             and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]), "North Dakota canvass bulletin receipt changed")
     voters, printed = history.north_dakota_canvass_controls(query)
+    if source == ND_RETAINED_CANVASS_SOURCE:
+        require(query == ND_RETAINED_CANVASS_QUERY, "North Dakota retained bulletin facts changed")
+    notes = ["Statewide voter count from the November 18 canvass bulletin, not a contest total.",
+             f"The bulletin prints {printed} without its numerical eligible-voter denominator; no rate is qualified.",
+             "Publication date is not a count-update clock. No local or demographic allocation."]
+    if retained and source == ND_RETAINED_CANVASS_SOURCE:
+        notes.append("Reviewed facts from the original captured before the access stop; not a fresh download.")
     return archive_observation(
         "ND", summary, retained, voters, None, "Eligible voters who cast ballots (source reported)",
         None, "electorate_not_supplied", "State Canvassing Board results bulletin",
-        ["Statewide voter count from the November 18 canvass bulletin, not a contest total.",
-         f"The bulletin prints {printed} without its numerical eligible-voter denominator; no rate is qualified.",
-         "Publication date is not a count-update clock. No local or demographic allocation."],
+        notes,
         printed, query["publication_date"], "Statewide voters who cast ballots")
 
 
@@ -1392,6 +1420,7 @@ def project(files, snapshot, nc_retained_original=None):
         if previous is not None:
             validate_existing(code, previous)
         entry = feeds.get(profile["feed"])
+        nd_summary, nd_retained = north_dakota_canvass_summary(snapshot, previous) if code == "ND" else (None, False)
         summary = (arkansas_summary(snapshot, shard, previous) if code == "AR" else
                    connecticut_summary(snapshot, shard, previous) if code == "CT" else
                    florida_summary(shard) if code == "FL" else
@@ -1400,7 +1429,8 @@ def project(files, snapshot, nc_retained_original=None):
                    oregon_summary(snapshot) if code == "OR" else
                    north_carolina_summary(snapshot, nc_retained_original if previous is None else None) if code == "NC" else
                    turnout_history_summary(snapshot, code) if code in {"TX", "VA", "WA"} else
-                   archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "ND", "NJ", "OH", "WV"} else
+                   nd_summary if code == "ND" else
+                   archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "NJ", "OH", "WV"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
@@ -1408,7 +1438,7 @@ def project(files, snapshot, nc_retained_original=None):
                 continue
             row = observation(code, previous["view"]["statewide_ballot_parent"], retained=True)
         else:
-            row = observation(code, summary, retained=code in {"FL", "ID"}
+            row = observation(code, summary, retained=nd_retained or code in {"FL", "ID"}
                               or code == "NC" and snapshot.get("granular_sources", {}).get(NC_FEED, {}).get("status") != "reported"
                               or code == "CT" and summary["archived"]
                               or code == "AR" and summary["archived_capture"] is not None)
@@ -1510,6 +1540,8 @@ def project(files, snapshot, nc_retained_original=None):
                       and mirrors[0].get("denominator") is None
                       and mirrors[0].get("source_update_label") == "Tuesday, November 3, 2026 - 11:30pm"
                       and mirrors[0].get("ballots") == rows.get(ND_BASELINE_ID, {}).get("count", {}).get("value") == 239057)
+        if nd_retained and not initial_nd:
+            continue
         require(len(mirrors) <= 1 and (not mirrors or previous is not None
                 and mirrors[0] == previous["view"] or initial_sc or initial_or or initial_nc or initial_nd),
                 "Statewide ballot display preimage changed")

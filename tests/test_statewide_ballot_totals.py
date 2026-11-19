@@ -80,6 +80,32 @@ def test_north_dakota_canvass_supersedes_election_night_without_inventing_a_deno
     held, changes = totals.project(out, {})
     assert changes[0]["source_status"] == "retained_after_failure"
     assert totals.project(held, snapshot)[0] == out
+    stopped = {"granular_sources": {history.ND_CANVASS_FEED: {
+        "status": "source_stopped", "attempted_source_url": history.ND_CANVASS_URL,
+        "data": None, "source": None,
+    }}}
+    retained, changes = totals.project(files, stopped)
+    assert changes == [{"state_code": "ND", "id": successor, "previous": None,
+                        "current": 239442, "source_status": "retained_after_failure"}]
+    original_rows = json.loads(gzip.decompress(files[path]))["records"]
+    retained_rows = json.loads(gzip.decompress(retained[path]))["records"]
+    assert retained_rows[:-1] == original_rows
+    assert retained_rows[-1]["source"]["input_sha256"] == totals.ND_RETAINED_CANVASS_SOURCE["sha256"]
+    assert retained_rows[-1]["denominator"] is None
+    assert retained_rows[-1]["source_clock"]["literal"] is None
+    assert totals.project(retained, stopped) == (retained, [])
+    assert totals.project(out, stopped) == (held, [{
+        "state_code": "ND", "id": successor, "previous": 239442, "current": 239442,
+        "source_status": "retained_after_failure",
+    }])
+    assert totals.project(retained, snapshot)[0] == out
+    wrong_route = copy.deepcopy(stopped)
+    wrong_route["granular_sources"][history.ND_CANVASS_FEED]["attempted_source_url"] = history.WA_URL
+    assert totals.project(files, wrong_route) == (files, [])
+    no_mirror = {**files, "current.json.gz": totals.compressed({
+        **json.loads(gzip.decompress(files["current.json.gz"])), "snapshot": {"reporting": []},
+    })}
+    assert totals.project(no_mirror, stopped) == (no_mirror, [])
 
 
 def test_west_virginia_preliminary_bulletin_keeps_publication_and_count_clocks_separate():
