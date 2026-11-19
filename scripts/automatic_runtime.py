@@ -557,7 +557,8 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     estimates = build(snapshot, model_seed)
     history_exports = {}
     for code, feed, state_name in (("WA", turnout_history.WA_FEED, "washington"),
-                                  ("VA", turnout_history.VA_FEED, "virginia")):
+                                  ("VA", turnout_history.VA_FEED, "virginia"),
+                                  ("TX", turnout_history.TX_FEED, "texas")):
         entry = snapshot.get("granular_sources", {}).get(feed, {})
         if not entry.get("data"):
             continue
@@ -567,7 +568,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         artifact = _artifact(data)
         path, csv_path = prefix + ".json.gz", prefix + ".csv"
         estimates["artifacts"][path] = artifact
-        csv_body = turnout_history.history_csv(entry, virginia=code == "VA")
+        csv_body = turnout_history.history_csv(entry, virginia=code == "VA", texas=code == "TX")
         history_exports[csv_path] = csv_body
         estimates["house_sources"].setdefault("general_election_turnout_history", {})[code] = {
             "data": {"path": path, **{key: value for key, value in artifact.items() if key != "content"}},

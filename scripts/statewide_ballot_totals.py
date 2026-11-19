@@ -94,6 +94,8 @@ PROFILES = {
            "feed": NC_FEED, "url": nc.URL},
     "SC": {"state": "South Carolina", "source_id": "sc-sec-statewide-turnout-20261103",
            "feed": "SC-official", "url": state_statistics.URL},
+    "TX": {"state": "Texas", "source_id": history.TX_FEED,
+           "feed": history.TX_FEED, "url": history.TX_URL},
     "VA": {"state": "Virginia", "source_id": "va-elect-general-election-turnout",
            "feed": history.VA_FEED, "url": history.VA_URL},
     "VT": {"state": "Vermont", "source_id": "vt-sos-registered-turnout-20261103",
@@ -151,11 +153,12 @@ def identity(code):
                            "CT": "native-voters-voted",
                            "HI": "native-total-turnout",
                            "MT": "native-total-turnout",
+                           "TX": "native-total-turnout",
                            "MN": "native-total-number-voted",
                            "SC": "native-total-voter-turnout",
                            "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "CT", "FL", "HI", "SC", "VA", "VT", "MN", "MT"} else "all_methods")
+                          "source_defined" if code in {"AK", "CT", "FL", "HI", "SC", "TX", "VA", "VT", "MN", "MT"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -214,7 +217,7 @@ def observation(code, summary, retained=False):
         return north_carolina_observation(summary, retained)
     if code == "SC":
         return south_carolina_observation(summary, retained)
-    if code in {"VA", "WA"}:
+    if code in {"TX", "VA", "WA"}:
         return turnout_history_observation(code, summary, retained)
     arizona = code == "AZ"
     selector = ({"scope": "all_15_reported_county_declarations"} if arizona else
@@ -540,28 +543,37 @@ def turnout_history_summary(snapshot, code):
         require(data["published_after_certification"] is True and data["native_measure"] == "Total Voting",
                 "Virginia source publication policy changed")
         summary["published_after_certification"] = True
+    elif code == "TX":
+        require(data["native_measure"] == "Turnout", "Texas historical turnout measure changed")
     return summary
 
 
 def turnout_history_observation(code, summary, retained):
     source, native = summary["source"], summary["native_row"]
-    profile, virginia = PROFILES[code], code == "VA"
-    measure = "Total Voting" if virginia else "Ballots Counted"
-    count_field = "total_voting" if virginia else "ballots_counted"
+    profile, virginia, texas = PROFILES[code], code == "VA", code == "TX"
+    participation_only = virginia or texas
+    measure = "Total Voting" if virginia else "Turnout" if texas else "Ballots Counted"
+    count_field = "total_voting" if participation_only else "ballots_counted"
     registered, ballots, printed = (native[k] for k in ("registered_voters", count_field, "published_turnout"))
     status = "Published after certification" if virginia else None
     if virginia:
         require(summary["published_after_certification"] is True and native["native_year"] == "2026",
                 "Virginia source publication scope changed")
+    if texas:
+        heading = history.TX_GENERAL.fullmatch(native["native_heading"])
+        require(heading and heading[1] == "2026"
+                and history.integer(native["registered_literal"]) == registered,
+                "Texas current general-election row changed")
     require(summary["contract"] == CONTRACT and set(source) == {"url", "sha256", "bytes"}
             and source["url"] == profile["url"] and type(source["bytes"]) is int and source["bytes"] > 0
-            and isinstance(printed, str) and re.fullmatch(r"[0-9]{1,3}(?:\.[0-9]{1,2})?%", printed)
+            and isinstance(printed, str) and re.fullmatch(
+                r"[0-9]{1,3}(?:\.[0-9]{1,2})?%?" if texas else r"[0-9]{1,3}(?:\.[0-9]{1,2})?%", printed)
             and native["year"] == 2026 and type(registered) is type(ballots) is int
             and count(registered) == registered and count(ballots) == ballots and 0 < ballots <= registered,
             f"{code} statewide statistical parent changed")
     places = len(printed.partition(".")[2].removesuffix("%"))
     exact = Decimal(ballots) * 100 / registered
-    compatible = exact.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP) == Decimal(printed[:-1])
+    compatible = exact.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP) == Decimal(printed.rstrip("%"))
     require(native["rate_qualified"] is compatible, f"{code} published rate audit differs")
     notes = [f"{profile['state']} statewide general-election table; {measure} and registrations are from one printed row.",
              "The Department publishes this series after certification; no native count-update clock is supplied."
@@ -573,7 +585,7 @@ def turnout_history_observation(code, summary, retained):
         notes.append("Printed fraction disagrees with the source counts; no turnout rate is qualified.")
     rate = float(exact) if compatible else None
     basis = "native_registered_voters_same_statewide_general_election_table"
-    kind = "participation_reported" if virginia else "ballots_cast"
+    kind = "participation_reported" if participation_only else "ballots_cast"
     view = {"state": profile["state"], "state_code": code, "year": 2026, "mode": "official",
             "geography_level": "statewide", "status": "retained_after_failure" if retained else "reported",
             "ballots": ballots, "denominator": registered, "denominator_basis": basis,
@@ -583,8 +595,8 @@ def turnout_history_observation(code, summary, retained):
             "reported_units": None, "total_units": None, "source_url": source["url"],
             "source_sha256": source["sha256"], "complete_download_url": None, "automatic_source_refresh": True,
             "participation_measure_kind": kind, "participation_measure_literal": measure,
-            "participation_measure_label": "Statewide Total Voting" if virginia else "Statewide ballots counted",
-            "cast_ballot_count_qualified": not virginia,
+            "participation_measure_label": "Statewide " + measure if participation_only else "Statewide ballots counted",
+            "cast_ballot_count_qualified": not participation_only,
             "unique_voter_count_qualified": False, "native_election_id_qualified": True,
             "maps_approved": False, "quality": notes, "source_reporting_label": " ".join(notes),
             "statewide_ballot_parent": copy.deepcopy(summary)}
@@ -595,9 +607,9 @@ def turnout_history_observation(code, summary, retained):
         "geography": {"id": code + "-native-statewide-total", "name": profile["state"], "state_code": code,
                       "level": "state", "parent_id": None, "join": {"status": "nongeographic",
                           "reference_id": None, "feature_key": None, "evidence": None}},
-        "measure": {"id": "native-total-voting" if virginia else "native-ballots-counted", "literal": measure,
-                    "kind": kind, "mode": "source_defined" if virginia else "all_methods",
-                    "unit": "source_reporting_count" if virginia else "ballots"},
+        "measure": {"id": "native-total-voting" if virginia else "native-total-turnout" if texas else "native-ballots-counted",
+                    "literal": measure, "kind": kind, "mode": "source_defined" if participation_only else "all_methods",
+                    "unit": "source_reporting_count" if participation_only else "ballots"},
         "count": {"value": ballots, "literal": ballots, "status": "reported"},
         "denominator": {"value": registered, "literal": "Registered Voters", "basis": basis,
                         "qualified": compatible},
@@ -1285,7 +1297,7 @@ def project(files, snapshot, nc_retained_original=None):
                    south_carolina_summary(snapshot) if code == "SC" else
                    oregon_summary(snapshot) if code == "OR" else
                    north_carolina_summary(snapshot, nc_retained_original if previous is None else None) if code == "NC" else
-                   turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
+                   turnout_history_summary(snapshot, code) if code in {"TX", "VA", "WA"} else
                    archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "NJ", "OH"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)

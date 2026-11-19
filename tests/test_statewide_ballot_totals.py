@@ -729,6 +729,70 @@ def test_alaska_preserves_precinct_inventory_disagreement_and_uses_report_fracti
         ak.reconcile(pdf, feed)
 
 
+def test_texas_archive_ignores_primaries_and_activates_only_on_a_general_row(tmp_path, monkeypatch):
+    from scripts.results_intake import Collector
+
+    h = totals.history
+    files = baseline(monkeypatch)
+    path = "states/TX.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["TX"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+
+    def section(heading, turnout, rate):
+        fields = (
+            ("Registered Voters", "1,000"), ("Voting Age Population (VAP)", "2,000"),
+            ("Percentage of VAP Registered", "50%"), ("Turnout", turnout),
+            ("Percent of Turnout to Registered Voters", rate),
+            ("Percent of Turnout to VAP", "25%"),
+        )
+        return f"<tr><th>{heading}</th></tr>" + "".join(
+            f"<tr><td>{label}</td><td>{value}</td></tr>" for label, value in fields)
+
+    past = section("2026 - Primary, March (Gubernatorial) Republican", 500, "50%") + "".join(
+        section(f"{year} - General Election, November", 500, "50")
+        for year in range(2024, 1969, -2))
+    data = f"<table>{past}</table>".encode()
+
+    def acquire(self, url):
+        assert url == h.TX_URL
+        return data, {"origin": "fixture_transport", **pin(data)}
+
+    monkeypatch.setattr(Collector, "acquire", acquire)
+
+    def collect(prior=None):
+        collector = Collector(tmp_path, prior or {}, {"urls": [], "prefixes": [], "hosts": []},
+                              datetime(2026, 11, 19, tzinfo=timezone.utc))
+        return {h.TX_FEED: h.collect_texas(collector)}
+
+    history = collect()
+    result = history[h.TX_FEED]
+    assert result["data"]["current_election_status"] == "not_yet_published"
+    assert len(h.history_csv(result, texas=True).splitlines()) == 29
+    assert totals.project(files, {"granular_sources": history}) == (files, [])
+    data = f"<table>{section('2026 - November (Gubernatorial)', 501, '50.1%')}{past}</table>".encode()
+    published = collect(history)
+    projected, [change] = totals.project(files, {"granular_sources": published})
+    assert change["current"] == 501
+    row = json.loads(gzip.decompress(projected[path]))["records"][-1]
+    assert row["view"]["validated_pct"] == 50.1
+    assert row["measure"]["literal"] == "Turnout" and row["measure"]["kind"] == "participation_reported"
+    assert not row["view"]["cast_ballot_count_qualified"]
+    assert collect(published) == published
+    assert totals.project(projected, {"granular_sources": published}) == (projected, [])
+    data = f"<table>{section('2026 - November (Gubernatorial)', 499, '50.0%')}{past}</table>".encode()
+    revised = collect(published)
+    changed, [change] = totals.project(projected, {"granular_sources": revised})
+    assert change["current"] == 499
+    assert json.loads(gzip.decompress(changed[path]))["records"][-1]["view"]["validated_pct"] is None
+    data = f"<table>{past}</table>".encode()
+    failed = collect(revised)
+    assert failed[h.TX_FEED]["status"] == "retained_after_failure"
+    assert totals.project(changed, {"granular_sources": failed})[1][0]["current"] == 499
+
+
 @pytest.mark.parametrize("code", ["VA", "WA"])
 def test_history_activates_only_on_a_published_general_election_row(monkeypatch, code):
     history = totals.history

@@ -419,6 +419,7 @@ def selected_local_observation_ids(snapshot, counts=None):
         results_turnout_history.GA_FEED: "GA",
         results_turnout_history.OH_FEED: "OH",
         results_turnout_history.MT_FEED: "MT",
+        results_turnout_history.TX_FEED: "TX",
         results_pdf_county_parent.PHILADELPHIA_FEED: "PA",
     }
     selected = set()

@@ -27,6 +27,13 @@ VA_TITLE = "November General Elections: 1976 \u2013 Present"
 VA_CERTIFICATION = ("The Department of Elections only publishes turnout statistics for November Elections "
                     "and turnout figures are only published after the election is certified.")
 VA_FIELDS = ("native_year", "registration_change_literal", "voting_absentee_literal")
+TX_FEED = "TX-general-election-turnout"
+TX_URL = "https://www.sos.state.tx.us/elections/historical/70-92.shtml"
+TX_FIELDS = ("native_heading", "registered_literal", "voting_age_population",
+             "published_registration_to_vap", "published_turnout_to_vap", "vap_rate_qualified")
+TX_GENERAL = re.compile(
+    r"(\d{4}) [-\u2013] (?:General|General Election,? November|November General|"
+    r"(?:General, )?November \((?:Presidential|Gubernatorial)\))", re.I)
 CURRENT_YEAR = 2026
 KS_FEED = "KS-general-election-turnout-workbook"
 KS_URL = "https://www.sos.ks.gov/elections/election-results.html"
@@ -622,6 +629,52 @@ def parse_virginia(body):
                 "** marks earlier roll purges; *** marks no separately reported absentee total."]}
 
 
+def parse_texas(body):
+    def printed(literal, numerator, denominator):
+        if not re.fullmatch(r"[0-9]{1,3}(?:\.[0-9]{1,2})?%?", literal):
+            raise ValueError("Invalid Texas printed turnout fraction")
+        number = Decimal(literal.rstrip("%"))
+        period = Decimal(1).scaleb(number.as_tuple().exponent)
+        return (Decimal(numerator) * 100 / denominator).quantize(
+            period, rounding=ROUND_HALF_UP) == number
+
+    tables = [table for table in html_tables(body) if any(len(row) == 1 and TX_GENERAL.fullmatch(row[0])
+                                                          for row in table)]
+    if len(tables) != 1:
+        raise ValueError("Missing or ambiguous Texas election turnout table")
+    table, = tables
+    labels = ("Registered Voters", "Voting Age Population (VAP)", "Percentage of VAP Registered",
+              "Turnout", "Percent of Turnout to Registered", "Percent of Turnout to VAP")
+    facts = []
+    for offset, heading in enumerate(table):
+        match = TX_GENERAL.fullmatch(heading[0]) if len(heading) == 1 else None
+        if not match:
+            continue
+        fields = table[offset + 1:offset + 7]
+        if (len(fields) != 6 or any(len(row) != 2 for row in fields)
+                or tuple(key.removesuffix(" Voters") if key.startswith("Percent of Turnout to Registered")
+                         else key for key, _ in fields) != labels):
+            raise ValueError("Texas election turnout field labels changed")
+        register, vap, reg_pct, turnout, turnout_pct, vap_pct = (value for _, value in fields)
+        year = int(match[1])
+        registered, population, reported = integer(register.rstrip("*")), integer(vap), integer(turnout)
+        if (not registered or not population or not reported
+                or not reported <= min(registered, population)
+                or year == CURRENT_YEAR and register.endswith("*")):
+            raise ValueError("Texas election turnout counts do not fit their denominators")
+        rate = printed(turnout_pct, reported, registered) and not register.endswith("*")
+        vap_rate = printed(vap_pct, reported, population)
+        facts.append({"year": year, "registered_voters": registered, "total_voting": reported,
+                      "published_turnout": turnout_pct, "rate_qualified": rate,
+                      **dict(zip(TX_FIELDS, (heading[0], register, population, reg_pct, vap_pct, vap_rate)))})
+    expected = list(range(2024, 1969, -2))
+    if [row["year"] for row in facts] not in (expected, [CURRENT_YEAR, *expected]):
+        raise ValueError("Texas November general-election inventory changed")
+    return {"complete_native_query": facts, "native_measure": "Turnout",
+            "current_election_status": "row_published" if facts[0]["year"] == CURRENT_YEAR else "not_yet_published",
+            "participation_observation_qualified": False}
+
+
 def history_query(facts):
     if facts[0]["year"] == CURRENT_YEAR and not facts[0]["ballots_counted"]:
         raise ValueError("Current statewide count must be positive")
@@ -650,16 +703,20 @@ def collect_virginia(collector):
     return collect_history(collector, VA_FEED, VA_URL, parse_virginia)
 
 
-def history_csv(entry, *, virginia=False):
+def collect_texas(collector):
+    return collect_history(collector, TX_FEED, TX_URL, parse_texas)
+
+
+def history_csv(entry, *, virginia=False, texas=False):
     out = io.StringIO(newline="")
-    count_field = "total_voting" if virginia else "ballots_counted"
+    count_field = "total_voting" if virginia or texas else "ballots_counted"
     columns = ("year", "registered_voters", count_field, "published_turnout", "rate_qualified")
-    columns += (VA_FIELDS if virginia else ()) + ("publication_status", "source_url", "source_sha256")
+    columns += (VA_FIELDS if virginia else TX_FIELDS if texas else ()) + ("publication_status", "source_url", "source_sha256")
     writer = csv.DictWriter(out, fieldnames=columns, lineterminator="\n")
     writer.writeheader()
     for row in entry["data"]["complete_native_query"]:
         writer.writerow({**row, "publication_status": entry["status"],
-                         "source_url": VA_URL if virginia else WA_URL, "source_sha256": entry["source"]["sha256"]})
+                         "source_url": entry["source"]["url"], "source_sha256": entry["source"]["sha256"]})
     return out.getvalue().encode()
 
 
