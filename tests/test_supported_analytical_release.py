@@ -65,6 +65,35 @@ def test_admin_export_preserves_zero_unknown_and_unqualified_context_as_distinct
     assert context["rate_omission_reason"]
 
 
+def test_administrative_coverage_keeps_partial_modes_and_reporting_units_separate():
+    def row(level, kind="ballots_cast", mode="all_methods", status="reported", rate=None):
+        return {"state_code": "ME", "geography_level": level, "measure_kind": kind,
+                "mode": mode, "count_status": status, "compatible_source_fraction_pct": rate}
+
+    states = release.administrative_coverage([
+        row("state", rate=0),
+        row("state", "returned", "mail_returned", rate=15),
+        row("county_equivalent", "cards_cast", "source_defined"),
+        row("county", status="unknown"),
+        row("precinct", status="withheld"),
+        row("reporting_unit", rate=20),
+    ])
+    by_state = {state["state_code"]: state for state in states}
+    assert len(states) == len(by_state) == 51
+    me = by_state["ME"]
+    assert me["statewide_reported_records"] == 2
+    assert me["statewide_early_or_returned_records"] == 1
+    assert me["statewide_election_participation_count_records"] == 1
+    assert me["statewide_election_participation_rate_records"] == 1
+    assert me["county_or_equivalent_election_participation_count_records"] == 1
+    assert me["county_or_equivalent_election_participation_rate_records"] == 0
+    assert me["county_or_equivalent_unknown_records"] == 1
+    assert me["precinct_withheld_records"] == 1
+    assert me["precinct_election_participation_rate_records"] == 0
+    assert me["other_geography_election_participation_rate_records"] == 1
+    assert by_state["DC"]["statewide_reported_records"] == 0
+
+
 def test_recorded_unopposed_change_is_descriptive_not_promoted_to_qualified_swing():
     estimates = {"artifacts": {"house/recorded-states.json.gz": {"content": {"states": [{
         "state_code": "VT", "previous": {"D": 0, "R": 100, "O": 20},

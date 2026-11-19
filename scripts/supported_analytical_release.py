@@ -7,6 +7,7 @@ import json
 import math
 from collections import Counter
 
+from scripts.nationwide import STATES
 from scripts.participation_intake.contract import encoded, pin
 
 
@@ -112,6 +113,43 @@ def administrative(files):
                     "No positive denominator qualified for this exact source measure, mode and geography."),
             })
     return rows
+
+
+def administrative_coverage(rows):
+    """Count export records, not people or proof of complete geography."""
+    levels = {
+        "state": "statewide", "county": "county_or_equivalent",
+        "county_equivalent": "county_or_equivalent", "precinct": "precinct",
+    }
+    columns = ("statewide", "county_or_equivalent", "precinct", "other_geography")
+    inventory = {code: Counter() for code in STATES}
+    for row in rows:
+        counts = inventory[row["state_code"]]
+        level = levels.get(row["geography_level"], "other_geography")
+        status = row["count_status"]
+        counts[f"{level}_{status}_records"] += 1
+        if status != "reported":
+            continue
+        if row["measure_kind"] in {"returned", "early_activity"} or row["mode"] in {
+            "in_person_early", "mail_returned"
+        }:
+            counts[f"{level}_early_or_returned_records"] += 1
+            continue
+        if row["measure_kind"] not in {
+            "ballots_cast", "voters_reported", "cards_cast", "participation_reported"
+        }:
+            continue
+        counts[f"{level}_election_participation_count_records"] += 1
+        if row["compatible_source_fraction_pct"] is not None:
+            counts[f"{level}_election_participation_rate_records"] += 1
+    fields = ("reported", "unknown", "withheld", "early_or_returned",
+              "election_participation_count", "election_participation_rate")
+    return [
+        {"state_code": code, "state": STATES[code], "year": 2026,
+         **{f"{level}_{field}_records": counts[f"{level}_{field}_records"]
+            for level in columns for field in fields}}
+        for code, counts in sorted(inventory.items())
+    ]
 
 
 def recorded_states(estimates, model_rows):
@@ -390,6 +428,7 @@ def build(snapshot, count_files, seed, estimates, changes):
     effects = change_effects(changes, admin, selected)
     raw_files = {
         "participation-administrative.csv": csv_bytes(admin),
+        "participation-administrative-coverage.csv": csv_bytes(administrative_coverage(admin)),
         "participation-historical-survey.csv": historical,
         "participation-historical-state-demographics.csv": csv_bytes(cps),
         "participation-modeled-demographics-2026.csv": csv_bytes(civic),
