@@ -288,7 +288,7 @@ def test_bath_turnout_refreshes_revisions_and_rejects_ambiguous_editions(tmp_pat
         assert failed["data"] == before["data"]
 
 
-@pytest.mark.parametrize("locality", ["Hollis", "Fixture Town"])
+@pytest.mark.parametrize("locality", ["Hollis", "Fixture Town", "Bedford", "Hanover"])
 def test_votingworks_town_report_retains_last_good_across_revisions(tmp_path, monkeypatch, locality):
     from dataclasses import replace
     from types import SimpleNamespace
@@ -296,14 +296,21 @@ def test_votingworks_town_report_retains_last_good_across_revisions(tmp_path, mo
 
     pypdf = pytest.importorskip("pypdf")
     history = frame.history
-    profile = history.VOTINGWORKS_TOWNS[history.HOLLIS_FEED]
-    if locality != "Hollis":
+    if locality == "Fixture Town":
+        profile = history.VOTINGWORKS_TOWNS[history.HOLLIS_FEED]
         profile = replace(profile, feed="NH-fixture-town-votingworks", town=locality, feature_key="3399999",
                           index="https://fixture-town.example/elections", election_id="1234567-abcdef0")
         monkeypatch.setitem(history.VOTINGWORKS_TOWNS, profile.feed, profile)
+    else:
+        profile, = (row for row in history.VOTINGWORKS_TOWNS.values() if row.town == locality)
     title = "Official Tally Report"
     town = locality
-    initial_url = urljoin(profile.index, f"/DocumentCenter/View/6048/{profile.document_slug}")
+    path = "/DocumentCenter/View/6048"
+    if profile.document_slug is not None:
+        path += f"/{profile.document_slug}"
+    if profile.timestamped_slug:
+        path += "__2026-11-03_21-21-40"
+    initial_url = urljoin(profile.index, path)
     report_url = initial_url
     extra_link = ""
     election_id = profile.election_id
@@ -315,7 +322,7 @@ def test_votingworks_town_report_retains_last_good_across_revisions(tmp_path, mo
 
     def acquire(self, url):
         self.guard(url)
-        declaration = (f'<a href="{report_url}">General Election (PDF)</a>' + extra_link).encode()
+        declaration = (f'<a href="{report_url}">{profile.link_label}</a>' + extra_link).encode()
         body = {profile.index: declaration, report_url: attempt}[url]
         if body is None:
             raise TimeoutError("offline")
@@ -354,7 +361,9 @@ def test_votingworks_town_report_retains_last_good_across_revisions(tmp_path, mo
     assert increased["status"] == "reported" and collect(increased) == increased
     assert history.votingworks_town_controls(increased["data"], profile)[0][0] == 5006
     total, manual, clock = "5,002", 25, "9:21:44 PM"
-    report_url = initial_url.replace("/6048/", "/6050/")
+    report_url = initial_url.replace("/6048", "/6050")
+    if profile.timestamped_slug:
+        report_url = report_url.replace("__2026-11-03_21-21-40", "__2026-11-04_21-21-40")
     successor = collect(increased)
     assert successor["status"] == "reported"
     assert successor["data"]["report"]["url"] == report_url
@@ -365,11 +374,15 @@ def test_votingworks_town_report_retains_last_good_across_revisions(tmp_path, mo
     assert collect(successor) == successor
     stopped = collect(successor, stopped=[report_url])
     assert stopped["error"] == "source_stopped" and stopped["data"] == successor["data"]
-    extra_link = f'<a href="{initial_url}">General Election (PDF)</a>'
+    extra_link = f'<a href="{initial_url}">{profile.link_label}</a>'
     assert collect(successor)["status"] == "retained_after_failure"
     extra_link = ""
-    report_url = f"https://example.org/DocumentCenter/View/6050/{profile.document_slug}"
-    assert collect()["data"] is None
+    for unapproved in ("https://example.org" + path, initial_url + "?bidId=", initial_url + "/extra"):
+        report_url = unapproved
+        assert collect()["data"] is None
+    if profile.timestamped_slug:
+        report_url = initial_url.replace("/official-", "/unofficial-")
+        assert collect()["data"] is None
     report_url = initial_url
     clock = "9:21:43 PM"
     assert collect(successor)["data"] == successor["data"]

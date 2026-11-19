@@ -2353,14 +2353,16 @@ queries, original source pins, and replay code, not publisher PDF or HTML.
 
 Register a compatible town once in `VOTINGWORKS_TOWNS` in
 `scripts/results_turnout_history.py`: the stable feed ID, literal town name,
-reviewed municipal feature key, official election index, report link label and
-document slug, and the native election ID. The hourly collector, selected
+reviewed municipal feature key, official election index, report link label,
+document path convention, and the native election ID. The hourly collector, selected
 refresh, analysis, map binding, and coverage export all use that registration.
 No new workflow or per-town projector is needed.
 
 The official index must declare exactly one matching report. The document
-number can change without code changes; the report must still use the approved
-HTTPS host and path pattern and pass the same native title, election, town,
+number and, where declared, a timestamped filename suffix can change without
+code changes. A numeric-only DocumentCenter route is allowed only for a
+reviewed registration with a date-specific link label. The report must use the
+approved HTTPS host and path pattern and pass the same native title, election, town,
 edition, and count arithmetic checks. A newer report can correct the count in
 either direction. Outages, stops, old editions, and incompatible reports retain
 the last-good record. Image-only layouts are not auto-qualified.
@@ -2372,6 +2374,10 @@ is contextual, not a 2026 precinct boundary. Complete factual queries and
 source pins are packaged; signatures and original municipal PDFs are not
 redistributed. Use the existing `refresh-selected` command with
 `NH-hollis-municipal-turnout`.
+
+The same collector handles Bedford's timestamped official report (11,766
+ballots) and Hanover's numeric-only declaration (5,592 ballots). Neither
+source supplies a matched denominator or native count-update clock.
 
 ### Minnesota: statewide count from complete precinct statistics
 

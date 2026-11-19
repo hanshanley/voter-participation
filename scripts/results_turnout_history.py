@@ -11,6 +11,7 @@ import io
 import json
 import re
 import unicodedata
+from typing import Optional
 from urllib.parse import urljoin, urlsplit
 import xml.etree.ElementTree as ET
 
@@ -65,21 +66,37 @@ class VotingWorksTown:
     feature_key: str
     index: str
     link_label: str
-    document_slug: str
+    document_slug: Optional[str]
     election_id: str
+    timestamped_slug: bool = False
 
     def permits_report(self, url):
         authority, candidate = urlsplit(self.index), urlsplit(url)
+        path = r"/DocumentCenter/View/[1-9][0-9]*"
+        if self.document_slug is None:
+            if self.timestamped_slug or self.link_label != f"November 3, {CURRENT_YEAR} General Election":
+                return False
+        else:
+            path += "/" + re.escape(self.document_slug)
+            if self.timestamped_slug:
+                path += r"__[0-9]{4}-[0-9]{2}-[0-9]{2}_[0-9]{2}-[0-9]{2}-[0-9]{2}"
         return (candidate.scheme == authority.scheme == "https"
                 and candidate.netloc == authority.netloc and not candidate.query and not candidate.fragment
-                and re.fullmatch(rf"/DocumentCenter/View/[1-9][0-9]*/{re.escape(self.document_slug)}",
-                                 candidate.path) is not None)
+                and re.fullmatch(path, candidate.path) is not None)
 
 
 VOTINGWORKS_TOWNS = {
     HOLLIS_FEED: VotingWorksTown(HOLLIS_FEED, "Hollis", "3337140", HOLLIS_INDEX,
                                "General Election (PDF)", "2026-General-Election-Results-PDF",
                                "a2c1dd6-9bf2c33"),
+    "NH-bedford-municipal-turnout": VotingWorksTown(
+        "NH-bedford-municipal-turnout", "Bedford", "3304500",
+        "https://www.bedfordnh.gov/514/Election-Results", "Results",
+        "official-full-election-tally-report", "663d329-455bc00", timestamped_slug=True),
+    "NH-hanover-municipal-turnout": VotingWorksTown(
+        "NH-hanover-municipal-turnout", "Hanover", "3333860",
+        "https://hanovernh.org/359/Voting-Information", "November 3, 2026 General Election",
+        None, "9b5c84a-d362699"),
 }
 
 BATH_INDEX = "https://www.cityofbathmaine.gov/Departments/City-Clerk/Elections/Past-Election-Results"
