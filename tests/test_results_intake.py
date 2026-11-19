@@ -376,7 +376,8 @@ def test_nc_age_archive_waits_for_both_links_and_preserves_last_good(tmp_path, m
         fields = nc.HEADERS[kind].split()
         lines = ["\t".join(fields)]
         for county in counties:
-            for age in nc.AGES:
+            ages = (*nc.AGES, nc.REGISTRATION_ONLY_AGE) if kind == "voter" else nc.AGES
+            for age in ages:
                 row = dict(county_desc=county, election_date="11/03/2026", stats_type=kind,
                            update_date=updated, age=age, total_voters=str(value))
                 lines.append("\t".join(row.get(key, "") for key in fields))
@@ -413,6 +414,7 @@ def test_nc_age_archive_waits_for_both_links_and_preserves_last_good(tmp_path, m
              r["source_defined_rate_pct"]) for r in rows] == [(400, 1000, 40)] * 4
     assert all(r["geography_level"] == "state" and not r["reporting_completeness_or_certification_established"]
                for r in rows)
+    assert all(r["registrations_outside_the_four_paired_age_groups"] == 1000 for r in rows)
     assert nc.collect(intake.Collector(work, prior, EMPTY_STOPS, NOW)) == accepted
 
     bodies[reports["history"]] = report("history", "11/30/2026", 5)

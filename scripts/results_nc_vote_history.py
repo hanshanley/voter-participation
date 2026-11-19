@@ -18,6 +18,7 @@ CATALOGS = {
 }
 BASE = "https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/"
 AGES = ("Age 18 - 25", "Age 26 - 40", "Age 41 - 65", "Age Over 66")
+REGISTRATION_ONLY_AGE = "Age < 18 Or Invalid Birth Dates"
 COUNTY_PIN = "bd1ee4825fb7de37c7c1efd80d0ca28d45e9e3c4b65bb79d0fac9cd38248849c"
 HEADERS = {
     "history": ("county_desc precinct_abbrv vtd_abbrv age party_cd race_code ethnic_code sex_code "
@@ -35,6 +36,8 @@ def extract(body, kind, election):
     member = f"{kind}_stats_{election:%Y%m%d}.txt"
     expected_date = election.strftime("%m/%d/%Y")
     ages = dict.fromkeys(AGES, 0)
+    if kind == "voter":
+        ages[REGISTRATION_ONLY_AGE] = 0
     counties, editions = set(), set()
     with ZipFile(io.BytesIO(body)) as archive:
         contents = archive.infolist()
@@ -60,13 +63,15 @@ def extract(body, kind, election):
                 editions.add(updated)
     if (len(counties) != 100
             or digest(("\n".join(sorted(counties)) + "\n").encode()) != COUNTY_PIN
-            or len(editions) != 1 or min(ages.values()) <= 0):
+            or len(editions) != 1 or any(ages[age] <= 0 for age in AGES)):
         raise ValueError("Incomplete or mixed-edition North Carolina aggregate")
     month, day, year = (int(part) for part in next(iter(editions)).split("/"))
     edition = date(year, month, day)
     if edition < election:
         raise ValueError("North Carolina aggregate predates its election")
+    unpaired = ages.pop(REGISTRATION_ONLY_AGE, None)
     return {"edition": edition.isoformat(), "statewide_by_age": ages,
+            "registration_only_age_count": unpaired,
             "county_inventory_sha256": COUNTY_PIN, "source": {"url": report_url(kind, election), **pin(body)}}
 
 
@@ -112,6 +117,9 @@ def rows(entries):
                    for kind in CATALOGS)):
         raise ValueError("Incompatible North Carolina paired aggregate evidence")
     result = []
+    unpaired = pair["voter"].get("registration_only_age_count", 0)
+    if type(unpaired) is not int or unpaired < 0:
+        raise ValueError("Invalid unpaired North Carolina registration age count")
     for age in AGES:
         voted = pair["history"]["statewide_by_age"][age]
         registered = pair["voter"]["statewide_by_age"][age]
@@ -125,6 +133,7 @@ def rows(entries):
             "history_sha256": pair["history"]["source"]["sha256"],
             "registration_sha256": pair["voter"]["source"]["sha256"],
             "history_edition": pair["history"]["edition"], "registration_edition": pair["voter"]["edition"],
+            "registrations_outside_the_four_paired_age_groups": unpaired,
             "rate_hold": "History count exceeds the registration count" if voted > registered else None,
             "not_a_ballot_count_or_population_turnout_rate": True,
             "reporting_completeness_or_certification_established": False,
