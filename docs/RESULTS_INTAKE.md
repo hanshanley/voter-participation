@@ -40,12 +40,16 @@ or respondent refit is required to consume a compatible new source snapshot.
 
 The collector checkpoints its complete packet before publication. A later
 run first resumes any staged publication. If the preceding full collection
-stopped after its checkpoint but before staging, a native schedule or a
-no-input dispatch (including the independent fallback) can reuse the complete
-artifact only against the original data ref. Scoped or explicit replays are not
-automatic checkpoint candidates. An explicit failed publication step is not
-an automatic replay trigger. The public source pointer and accepted collector
-state advance together; newly encountered access stops survive staging.
+or weekly archive sweep stopped after its checkpoint but before publication,
+the next run in the same lane can reuse the complete artifact only against
+the original data ref. Weekly recovery also requires the packet to cover
+exactly the current weekly registry; if the registry has changed, it checks
+the current sources instead. Hourly runs (including skipped runs after the
+cutoff) do not occupy the weekly recovery slot. Ad hoc scoped collections and
+explicit replays are not automatic checkpoint candidates. An explicit failed
+publication step is not an automatic replay trigger. The public source pointer
+and accepted collector state advance together; newly encountered access stops
+survive staging.
 
 The website resolves the accepted source commit once per cycle. A matching source
 and engine skip bulk download, compilation and publication. A fresh runner can

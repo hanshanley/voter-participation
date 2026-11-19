@@ -1128,7 +1128,7 @@ def unpack_state(value):
     return state
 
 
-def restore(package, report_path, work, previous=None, latest=None):
+def restore(package, report_path, work, previous=None, latest=None, *, require_late_archive_scope=False):
     package, report_path, work = Path(package), Path(report_path), Path(work)
     if any((work / name).exists() for name in ("report.json", "state.json", "complete-results.zip")):
         raise ValueError("Recovery needs fresh publication outputs")
@@ -1156,6 +1156,17 @@ def restore(package, report_path, work, previous=None, latest=None):
                     raise ValueError("Changed recovery packet member: " + name)
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(body)
+        state = read(root / "inputs/selected-source-facts.json")
+        if require_late_archive_scope:
+            scope = state.get("collection_scope")
+            if scope != report.get("collection_scope"):
+                raise ValueError("Completed archive checkpoint report disagrees with its packet scope")
+            if scope != {
+                "mode": "selected_registered_source_refresh",
+                "source_ids": sorted(late_archive_sources()),
+                "all_other_acquisitions_and_native_count_clocks_reused_not_retrieved_again": True,
+            }:
+                return {"status": "superseded"}
         result = replay(root, root / "reproduced")
         query_names = {name.removeprefix("queries/") for name in manifest if name.startswith("queries/")}
         if set(report["files"]) != query_names | {"complete-results.zip"}:
@@ -1163,7 +1174,6 @@ def restore(package, report_path, work, previous=None, latest=None):
         for name in query_names:
             if pin((root / "queries" / name).read_bytes()) != report["files"][name]:
                 raise ValueError("Changed completed collection query")
-        state = read(root / "inputs/selected-source-facts.json")
         config = read(root / "inputs/registry.json")
         version = digest(encoded({
             "inputs": state, "baseline": config["baseline"],
@@ -1365,6 +1375,8 @@ def main():
     recover.add_argument("--report", type=Path, required=True)
     recover.add_argument("--require-predecessor", type=Path,
                          help="Automatically restore only against the checkpoint's original data ref")
+    recover.add_argument("--require-late-archive-scope", action="store_true",
+                         help="Require a complete checkpoint for the current weekly archive registry")
     recover.add_argument("--work-dir", type=Path, required=True)
     recover.add_argument("--repository", type=Path, default=ROOT)
     recover.add_argument("--ref", default="results-data")
@@ -1385,13 +1397,16 @@ def main():
     elif args.command == "resume-publication":
         result = resume_publication(args.repository, args.ref, args.github_repository)
     elif args.command == "restore":
+        if args.require_late_archive_scope and not args.require_predecessor:
+            parser.error("--require-late-archive-scope requires --require-predecessor")
         publisher, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
         parent = read(args.work_dir / "publication-parent.json")["parent"]
         if args.require_predecessor and read(args.require_predecessor) != {"parent": parent}:
             result = {"status": "superseded"}
         else:
             latest = json.loads(publisher.git("show", parent + ":latest.json", check=False) or "{}") if parent else {}
-            result = restore(args.package, args.report, args.work_dir, previous, latest)
+            result = restore(args.package, args.report, args.work_dir, previous, latest,
+                             require_late_archive_scope=args.require_late_archive_scope)
     else:
         result = replay(args.package, args.output)
     print(json.dumps(result, sort_keys=True))

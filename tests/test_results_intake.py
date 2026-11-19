@@ -834,3 +834,38 @@ def test_completed_collection_restores_without_transport_and_rejects_lost_stops(
     with pytest.raises(ValueError, match="Changed or unvalidated"):
         intake.restore(packet, tmp_path / "changed-report.json", tmp_path / "changed")
     assert not (tmp_path / "changed").exists()
+
+
+def test_weekly_checkpoint_requires_the_full_current_registry(tmp_path, monkeypatch):
+    registry = fixture(tmp_path)
+    monkeypatch.setattr(intake.Collector, "acquire", unavailable)
+    original = tmp_path / "original"
+    intake.collect(registry, original, now=NOW)
+    config = intake.registry_config(registry)
+    baseline = intake.baseline_inputs(registry.parent / config["baseline"]["root"], config["baseline"])
+    inputs = intake.hydrate_collector_state(intake.read(original / "state.json"))
+    feeds = intake.late_archive_sources()
+    weekly = tmp_path / "weekly"
+    inputs["collection_scope"] = {
+        "mode": "selected_registered_source_refresh",
+        "source_ids": sorted(feeds),
+        "all_other_acquisitions_and_native_count_clocks_reused_not_retrieved_again": True,
+    }
+    report = intake.export_collection(weekly, config, baseline, inputs, {}, NOW, [])
+    monkeypatch.setattr(intake.Collector, "acquire", lambda *_: pytest.fail("Recovery attempted transport"))
+    packet, report_path = weekly / "complete-results.zip", weekly / "report.json"
+    restored = tmp_path / "restored-weekly"
+    result = intake.restore(packet, report_path, restored, require_late_archive_scope=True)
+    assert result["version"] == report["version"] and result["network_requests"] == 0
+    assert all((weekly / name).read_bytes() == (restored / name).read_bytes() for name in report["files"])
+
+    forged = tmp_path / "mislabelled.json"
+    intake.write(forged, {**report, "collection_scope": {"source_ids": []}})
+    with pytest.raises(ValueError, match="disagrees with its packet scope"):
+        intake.restore(packet, forged, tmp_path / "mislabelled", require_late_archive_scope=True)
+    monkeypatch.setattr(intake, "late_archive_sources", lambda: (*feeds, "new-reviewed-feed"))
+    for candidate in (weekly, original):
+        output = tmp_path / "superseded"
+        assert intake.restore(candidate / "complete-results.zip", candidate / "report.json", output,
+                              require_late_archive_scope=True) == {"status": "superseded"}
+        assert not output.exists()

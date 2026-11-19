@@ -246,25 +246,44 @@ jobs:
             cp "$RUNNER_TEMP/election-intake/resume.json" "$RUNNER_TEMP/election-intake/publication.json"
           fi
 
-      - name: Find a durable collection checkpoint from an interrupted full run
-        if: steps.resume.outputs.status == 'no_pending_publication' && needs.validate.outputs.late_archives != 'true' && (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only))
+      - name: Find a durable checkpoint from the same collection lane
+        if: steps.resume.outputs.status == 'no_pending_publication' && (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only))
         id: checkpoint
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          LATE_ARCHIVES: ${{ needs.validate.outputs.late_archives }}
         run: |
           python - <<'PY'
           import json, os, subprocess
+          from datetime import datetime, timedelta, timezone
+          from urllib.parse import urlencode
 
           base = f"repos/{os.environ['GH_REPO']}/actions"
           def get(path):
               return json.loads(subprocess.check_output(["gh", "api", base + path]))
 
-          runs = get("/workflows/election-night.yml/runs?branch=main&status=completed&per_page=20")
-          run = next((run for run in runs["workflow_runs"]
-                      if (run["event"] == "schedule" and run["display_title"] != "Check late participation archives") or (
-                          run["event"] == "workflow_dispatch"
-                          and run["display_title"] == "Collect full election results")), None)
+          late = os.environ["LATE_ARCHIVES"] == "true"
+          late_title = "Check late participation archives"
+          params = {"branch": "main", "status": "completed", "per_page": 100 if late else 20}
+          if late:
+              # After the cutoff, skipped hourly runs still fill the intervening history.
+              since = datetime.now(timezone.utc) - timedelta(days=14)
+              params["created"] = since.strftime(">=%Y-%m-%dT%H:%M:%SZ")
+          run = None
+          for page in range(1, 5 if late else 2):
+              params["page"] = page
+              runs = get("/workflows/election-night.yml/runs?" + urlencode(params))["workflow_runs"]
+              if late:
+                  run = next((run for run in runs if run["event"] in ("schedule", "workflow_dispatch")
+                              and run["display_title"] == late_title), None)
+              else:
+                  run = next((run for run in runs
+                              if (run["event"] == "schedule" and run["display_title"] != late_title)
+                              or (run["event"] == "workflow_dispatch"
+                                  and run["display_title"] == "Collect full election results")), None)
+              if run or len(runs) < params["per_page"]:
+                  break
           if run and run["conclusion"] in ("cancelled", "timed_out", "failure"):
               steps = {step["name"]: step["conclusion"] for job in get(f"/runs/{run['id']}/jobs")["jobs"]
                        for step in job["steps"]}
@@ -282,6 +301,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
           COLLECTION_RUN: ${{ inputs.reuse_collection_run || steps.checkpoint.outputs.run }}
           AUTO_RECOVERY: ${{ steps.checkpoint.outputs.run != '' }}
+          LATE_ARCHIVES: ${{ needs.validate.outputs.late_archives }}
         run: |
           python - <<'PY'
           import json, os, re, subprocess
@@ -312,6 +332,8 @@ jobs:
                   "--report", str(directory / "report.json"), "--work-dir", str(work)]
           if os.environ["AUTO_RECOVERY"] == "true":
               args += ["--require-predecessor", str(directory / "publication-parent.json")]
+              if os.environ["LATE_ARCHIVES"] == "true":
+                  args += ["--require-late-archive-scope"]
           with (work / "recovery.json").open("w") as out:
               subprocess.run(args, stdout=out, check=True)
           recovery = json.loads((work / "recovery.json").read_bytes())
@@ -426,5 +448,5 @@ jobs:
             ${{ runner.temp }}/election-intake/resume.json
 
       - name: Fail visibly if collection did not finish
-        if: always() && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure' || (needs.validate.outputs.late_archives == 'true' && steps.capture.outcome != 'success'))
+        if: always() && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure' || (needs.validate.outputs.late_archives == 'true' && steps.capture.outcome != 'success' && steps.restore.outputs.status != 'restored'))
         run: exit 1

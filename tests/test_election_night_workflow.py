@@ -122,12 +122,48 @@ def test_full_checkpoint_is_reused_only_for_interrupted_publication(
             {"name": "Publish valid results or preserve new access stops", "conclusion": publication},
         ]}]},
     ]
-    with patch.dict(os.environ, {"GH_REPO": "fixture/fixture", "GITHUB_OUTPUT": str(output)}):
+    with patch.dict(os.environ, {"GH_REPO": "fixture/fixture", "GITHUB_OUTPUT": str(output),
+                                 "LATE_ARCHIVES": "false"}):
         with patch("subprocess.check_output", side_effect=[json.dumps(body).encode() for body in metadata]) as api:
             exec(compile(script, str(WORKFLOW), "exec"), {})
     assert api.call_count == (2 if (event == "schedule" and title != "Check late participation archives") or (
         title == "Collect full election results" and conclusion != "success") else 1)
     if api.call_count == 2:
+        assert api.call_args.args[0][-1].endswith("/runs/123/jobs")
+    assert output.read_text() == ("run=123\n" if recoverable else "")
+
+
+@pytest.mark.parametrize("event,conclusion,publication,recoverable", [
+    ("schedule", "cancelled", "skipped", True),
+    ("workflow_dispatch", "timed_out", "cancelled", True),
+    ("schedule", "failure", "failure", False),
+    ("schedule", "success", "success", False),
+])
+def test_weekly_checkpoint_search_skips_hourly_pages(tmp_path, event, conclusion, publication, recoverable):
+    step = next(step for step in workflow()["jobs"]["refresh"]["steps"] if step.get("id") == "checkpoint")
+    script = step["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
+    output = tmp_path / "github-output"
+    output.touch()
+    hourly = {"event": "schedule", "display_title": "Collect full election results", "conclusion": "success"}
+    manual = {"event": "workflow_dispatch", "display_title": "Run scoped election results update",
+              "id": 124, "conclusion": "cancelled"}
+    weekly = {"event": event, "display_title": "Check late participation archives",
+              "id": 123, "conclusion": conclusion}
+    metadata = [
+        {"workflow_runs": [{**hourly, "id": 1000 + index} for index in range(100)]},
+        {"workflow_runs": [manual, weekly, {**weekly, "id": 122, "conclusion": "cancelled"}]},
+        {"jobs": [{"steps": [
+            {"name": "Checkpoint the completed collection before publication", "conclusion": "success"},
+            {"name": "Publish valid results or preserve new access stops", "conclusion": publication},
+        ]}]},
+    ]
+    with patch.dict(os.environ, {"GH_REPO": "fixture/fixture", "GITHUB_OUTPUT": str(output),
+                                 "LATE_ARCHIVES": "true"}):
+        with patch("subprocess.check_output", side_effect=[json.dumps(body).encode() for body in metadata]) as api:
+            exec(compile(script, str(WORKFLOW), "exec"), {})
+    assert api.call_count == (2 if conclusion == "success" else 3)
+    assert api.call_args_list[1].args[0][-1].endswith("&page=2")
+    if api.call_count == 3:
         assert api.call_args.args[0][-1].endswith("/runs/123/jobs")
     assert output.read_text() == ("run=123\n" if recoverable else "")
 
@@ -195,10 +231,9 @@ def test_staged_publication_does_not_replace_the_weekly_check(tmp_path, late_arc
     steps = workflow()["jobs"]["refresh"]["steps"]
     resume = next(step for step in steps if step.get("id") == "resume")
     capture = next(step for step in steps if step.get("id") == "capture")
-    checkpoint = next(step for step in steps if step.get("id") == "checkpoint")
-    assert "needs.validate.outputs.late_archives != 'true'" in checkpoint["if"]
     assert "(needs.validate.outputs.late_archives == 'true' && steps.resume.outputs.status == 'published')" in capture["if"]
-    assert "(needs.validate.outputs.late_archives == 'true' && steps.capture.outcome != 'success')" in steps[-1]["if"]
+    assert "steps.restore.outputs.status == 'superseded'" in capture["if"]
+    assert "(needs.validate.outputs.late_archives == 'true' && steps.capture.outcome != 'success' && steps.restore.outputs.status != 'restored')" in steps[-1]["if"]
 
     commands = tmp_path / "commands"
     env = {**os.environ, "RUNNER_TEMP": str(tmp_path), "GITHUB_OUTPUT": str(tmp_path / "output"),
