@@ -174,6 +174,35 @@ def test_recorded_unopposed_change_is_descriptive_not_promoted_to_qualified_swin
     assert row["candidate_votes_are_not_ballots_or_turnout"]
 
 
+def test_district_raw_export_links_map_status_without_relabeling_raw_votes():
+    def race(district, *, advertised=True, qualified=True, voting=True):
+        return {
+            "id": district + ("-current" if advertised else "-retained"), "chamber": "house",
+            "voting_house_seat": voting, "advertised": advertised, "qualified_comparison": qualified,
+            "baseline": {"district": district, "boundary_eligibility": {
+                "boundary_compatible": qualified, "method": "test-boundary",
+                "holds": [] if qualified else ["changed_2020_block_membership"],
+            }},
+            "comparison_holds": [] if qualified else ["House boundary hold"],
+            "source_updated_at": "source-clock",
+        }
+
+    raw = [{"district_source_id": district, "qualified_geographic_comparison": False, "current_D": 42}
+           for district in ("AK-AL", "CO-07", "CO-08", "AZ-01")]
+    release.attach_district_map_decisions(raw, [
+        race("AK-AL", advertised=False), race("AK-AL", qualified=False),
+        race("CO-07"), race("CO-07", voting=False),
+        race("CO-08"), {**race("CO-08"), "id": "second-current"},
+    ])
+    assert [row["map_comparison_status"] for row in raw] == ["held", "qualified", "ambiguous", "unavailable"]
+    assert raw[0]["map_comparison_race_id"] == "AK-AL-current"
+    assert raw[0]["map_comparison_holds"] == ["House boundary hold"]
+    assert raw[0]["map_boundary_holds"] == ["changed_2020_block_membership"]
+    assert raw[1]["map_current_source_updated_at"] == "source-clock"
+    assert all("map_comparison_race_id" not in row for row in raw[2:])
+    assert all(row["current_D"] == 42 and row["qualified_geographic_comparison"] is False for row in raw)
+
+
 def test_count_handoff_does_not_turn_county_fraction_into_a_state_model_update():
     record = {
         "observation_id": "cape", "state_code": "NJ", "geography_level": "county",

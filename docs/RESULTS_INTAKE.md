@@ -202,6 +202,13 @@ selected facts, scope notice, code, tests, and all candidate/category discrepanc
 
 ### Separately reviewed split-block boundary evidence
 
+The raw `electoral-recorded-districts.csv.gz` download retains its recorded
+endpoints. Its `map_*` columns link each district to the separate map comparison,
+with that comparison's actual source clock, boundary method and holds. These
+columns do not qualify the raw endpoints as map values. Only an unambiguous,
+advertised voting-seat race with the reviewed historical district is linked;
+retained, non-advertised alternatives remain in the full congressional queries.
+
 The immutable national 119th/120th Congress BEF review is retained unchanged.
 `data/results-intake/district-splits/20261118-01/` adds a separately pinned review
 for Colorado block `080010096072000`, affecting CO-07 and CO-08 in 2024-to-2026

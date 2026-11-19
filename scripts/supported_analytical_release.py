@@ -340,6 +340,35 @@ def recorded_districts(review, estimates):
     return result
 
 
+def attach_district_map_decisions(districts, congressional_races):
+    by_district = {}
+    for race in congressional_races:
+        district = race["baseline"].get("district")
+        if (district and race["chamber"] == "house"
+                and race["voting_house_seat"] and race["advertised"]):
+            by_district.setdefault(district, []).append(race)
+    for row in districts:
+        candidates = by_district.get(row["district_source_id"], [])
+        if len(candidates) != 1:
+            row.update(
+                map_comparison_status="ambiguous" if candidates else "unavailable",
+                map_comparison_holds=["Multiple advertised map races for this district" if candidates
+                                      else "No advertised map race with this historical district"],
+            )
+            continue
+        race, = candidates
+        boundary = race["baseline"].get("boundary_eligibility", {})
+        row.update(
+            map_comparison_status="qualified" if race["qualified_comparison"] else "held",
+            map_comparison_race_id=race["id"],
+            map_current_source_updated_at=race["source_updated_at"],
+            map_comparison_holds=race["comparison_holds"],
+            map_boundary_compatible=boundary.get("boundary_compatible"),
+            map_boundary_method=boundary.get("method"),
+            map_boundary_holds=boundary.get("holds"),
+        )
+
+
 def change_effects(changes, records, selected_observation_ids=None):
     by_id = {row["observation_id"]: row for row in records}
     result = []
@@ -537,7 +566,7 @@ def house_model_guard_matrix(decisions):
         }
 
 
-def build(snapshot, count_files, seed, estimates, changes):
+def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None):
     review = seed["supported_release_review"]
     require(review.get("contract") == REVIEW_CONTRACT, "unreviewed eligibility document")
     require(review["qualification_mask_sha256"] == seed["qualification"]["mask_sha256"],
@@ -555,6 +584,8 @@ def build(snapshot, count_files, seed, estimates, changes):
     }
     recorded = recorded_states(estimates, model_rows)
     districts = recorded_districts(review, estimates)
+    if congressional_races is not None:
+        attach_district_map_decisions(districts, congressional_races)
     modeled, groups = explanations(estimates)
     selected = selected_local_observation_ids(snapshot, count_files)
     effects = change_effects(changes, admin, selected)
@@ -632,6 +663,9 @@ def build(snapshot, count_files, seed, estimates, changes):
             "recorded_state_comparisons": len(recorded),
             "raw_district_source_id_comparisons": len(districts),
             "new_cross_year_district_map_qualifications": 0,
+            **({"linked_district_map_status_counts": dict(Counter(
+                row["map_comparison_status"] for row in districts))}
+               if congressional_races is not None else {}),
             "qualified_state_comparisons": sum(row["qualified_comparison"] for row in recorded),
             "held_states": [row["state_code"] for row in recorded if not row["qualified_comparison"]],
             "raw_recorded_changes_separate_from_qualified_comparisons": True,
