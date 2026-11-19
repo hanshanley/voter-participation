@@ -282,6 +282,8 @@ def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_pa
         "VA-general-election-turnout", "WA-general-election-turnout",
         "MN-native-local", "MN-statewide-reporting",
         "NC-2026-general-vote-history",
+        "IN-2022-general-turnout-and-registration", "IN-2024-general-turnout-and-registration",
+        "IN-2026-general-turnout-and-registration",
         "ME-bath-municipal-turnout", "ME-buxton-town-turnout", "NH-bedford-municipal-turnout",
         "NH-hanover-municipal-turnout", "NH-hollis-municipal-turnout", town,
     }

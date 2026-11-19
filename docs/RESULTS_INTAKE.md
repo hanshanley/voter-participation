@@ -40,6 +40,17 @@ separate original-file pins and report editions, in the complete analysis ZIP.
 The source-defined fractions use active and inactive registration, not VEP
 or ballots cast. Listing, statewide county inventory and a computed fraction
 do not establish certification or completion. No source fine cells are exported.
+
+Indiana's Election Division archive supplies its own statewide and 92-county
+`Voters Voting` and `Registered Voters` series. The same hourly and weekly
+adapter checks the exact 2022, 2024 and 2026 general-election links, not the
+live contest feed or primary reports. The complete analysis download carries
+the report's columns, edition and original-file pin, and keeps any raw count
+disagreement visible. The 2022 statewide mode sum is 5,464 higher than the
+printed `Voters Voting` total; the state and four affected county fractions
+are withheld. The 2024 columns reconcile. This separate archive series does
+not automatically replace the live administrative map or imply a ballot count.
+
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

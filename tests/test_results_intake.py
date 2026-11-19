@@ -281,7 +281,8 @@ def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp
 @pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
 def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
     from scripts import (
-        philadelphia_divisions, results_minnesota_turnout as mn, results_native, results_nc_vote_history,
+        philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout as mn, results_native,
+        results_nc_vote_history,
         results_pa_vote_history, results_pdf_county_parent,
         results_turnout_history,
     )
@@ -322,6 +323,9 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
                         lambda collector, year: adapter(results_pa_vote_history.FEEDS[year])(collector))
     selected.append(results_nc_vote_history.FEED)
     monkeypatch.setattr(results_nc_vote_history, "collect", adapter(results_nc_vote_history.FEED))
+    selected.extend(results_indiana_turnout.FEEDS.values())
+    monkeypatch.setattr(results_indiana_turnout, "collect",
+                        lambda collector, year: adapter(results_indiana_turnout.FEEDS[year])(collector))
     for feed, name in ((results_turnout_history.BUXTON_FEED, "buxton"),
                        (results_turnout_history.BATH_FEED, "bath")):
         monkeypatch.setattr(results_turnout_history, "collect_" + name, adapter(feed))
@@ -361,6 +365,35 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     for key in ("districts", "house", "congress", "directories", "source_stops"):
         assert result[key] == previous[key]
     assert intake.refresh_selected(registry, tmp_path / "scoped", persisted, selected, NOW) == result
+
+
+def test_indiana_archive_uses_only_declared_general_report_and_keeps_count_conflicts(monkeypatch):
+    from scripts import results_indiana_turnout as indiana
+
+    url = "https://www.in.gov/dA/0123456789/turnout.pdf?language_id=1"
+    assert indiana.report_link(f'<a href="{url}">2026 Primary Election Registration and Turnout Data</a>'.encode(),
+                               2026) is None
+    assert indiana.report_link(f'<a href="{url}"><strong>2026 General Election</strong> '
+                               'Registration and Turnout Data</a>'.encode(), 2026) == url
+    with pytest.raises(ValueError, match="outside the reviewed archive"):
+        indiana.report_link(b'<a href="https://outside.test/2026.pdf">'
+                            b'2026 General Election Registration and Turnout Data</a>', 2026)
+    counties = ["County " + chr(65 + i // 26) + chr(65 + i % 26) for i in range(92)]
+    monkeypatch.setattr(indiana, "COUNTIES_SHA", indiana.digest(("\n".join(counties) + "\n").encode()))
+    lines = ["2026 General Election", "Tuesday, November 3, 2026  General Election Turnout and Registration",
+             indiana.HEADER, *(f"{county}  100  40  40 %  25  15  38 %" for county in counties)]
+    lines[3] = f"{counties[0]}  100  40  40 %  30  15  38 %"
+    lines += ["9,200 3,680 40 % 2,305 1,380 38 %", "Page 1 of 1  Monday, November 16, 2026"]
+    parsed = indiana.parse_pages(["\n".join(lines)], 2026)
+    data = {**parsed, "report": {"url": url, "sha256": "a" * 64, "bytes": 42}}
+    rows = indiana.rows({indiana.FEEDS[2026]: {"status": "reported", "data": data}})
+    assert len(rows) == 93
+    assert rows[-1]["voters_voting"] == 3680 and rows[-1]["mode_count_minus_voters_voting"] == 5
+    assert rows[-1]["qualified_registered_fraction_pct"] is rows[0]["qualified_registered_fraction_pct"] is None
+    assert rows[1]["qualified_registered_fraction_pct"] == 40
+    data["complete_native_query"][-1][1] += 1
+    with pytest.raises(ValueError, match="column totals do not reconcile"):
+        indiana.rows({indiana.FEEDS[2026]: {"status": "reported", "data": data}})
 
 
 def test_nc_age_archive_waits_for_both_links_and_preserves_last_good(tmp_path, monkeypatch):
