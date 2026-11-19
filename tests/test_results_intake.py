@@ -256,6 +256,9 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
 
     selected = [results_turnout_history.OH_FEED, results_pdf_county_parent.PHILADELPHIA_FEED,
                 philadelphia_divisions.FEED]
+    prior_ohio = {"status": "reported", "data": {"total": 42}, "first_observed_at": "old"}
+    previous["feeds"][selected[0]] = previous["granular"][selected[0]] = prior_ohio
+    previous = intake.compact_collector_state(previous)
     monkeypatch.setattr(results_turnout_history, "collect_ohio", adapter(selected[0]))
     monkeypatch.setattr(results_pdf_county_parent, "collect_philadelphia", adapter(selected[1]))
     monkeypatch.setattr(philadelphia_divisions, "collect", adapter(selected[2]))
@@ -273,10 +276,14 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
                         lambda work, config, baseline, inputs, extras, now, attempts: inputs)
 
     result = intake.refresh_selected(registry, tmp_path / "scoped", previous, selected, NOW)
+    persisted = intake.hydrate_collector_state(intake.unpack_state(json.loads(intake.pack_state(result))))
     assert calls == selected and set(result["granular"]) == set(selected)
     assert result["granular"][selected[0]]["status"] == ohio_status
     assert all(result["granular"][identity]["status"] == "reported" for identity in selected[1:])
-    for key in ("feeds", "districts", "house", "congress", "directories", "source_stops"):
+    assert persisted["feeds"][selected[0]] == persisted["granular"][selected[0]]
+    assert set(persisted["feeds"]) == set(previous["feeds"])
+    assert persisted["feeds"]["unchanged"] == previous["feeds"]["unchanged"]
+    for key in ("districts", "house", "congress", "directories", "source_stops"):
         assert result[key] == previous[key]
 
 

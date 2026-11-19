@@ -1023,7 +1023,9 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     inputs = copy.deepcopy(previous)
     inputs["granular"].update({key: value for key, value in entries.items()
                                if key in native_ids or key in administrative_ids})
-    inputs["feeds"].update({key: value for key, value in entries.items() if key not in administrative_ids})
+    # Full collections mirror granular entries in feeds; keep any existing mirror in sync.
+    inputs["feeds"].update({key: value for key, value in entries.items()
+                            if key not in administrative_ids or key in previous["feeds"]})
     from scripts.results_native_congress import PARENT_ID, derive as derive_native_congress
     if PARENT_ID in entries:
         inputs["feeds"] = derive_native_congress(inputs["feeds"])

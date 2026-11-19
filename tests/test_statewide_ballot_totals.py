@@ -381,6 +381,8 @@ def test_new_jersey_future_archive_publication_retains_last_good(tmp_path, monke
     assert row["source"]["url"] == url and row["denominator"]["value"] == 42000
     assert row["view"]["validated_pct"] == 50 and row["source_clock"]["literal"] is None
     assert collect(accepted) == accepted
+    links += b"<!-- unrelated archive markup changed -->"
+    assert collect(accepted) == accepted
     assert totals.project(projected, {"granular_sources": accepted}) == (projected, [])
     report = report.replace("21,000 42", "21,001 42")
     failed = collect(accepted)
@@ -389,6 +391,59 @@ def test_new_jersey_future_archive_publication_retains_last_good(tmp_path, monke
     retained, changes = totals.project(projected, {"granular_sources": failed})
     assert changes[0]["current"] == 21000 and changes[0]["source_status"] == "retained_after_failure"
     assert totals.project(retained, {"granular_sources": failed}) == (retained, [])
+
+
+@pytest.mark.parametrize("code", ["KS", "TX", "VA", "WA"])
+def test_archive_markup_changes_do_not_replace_accepted_facts(tmp_path, monkeypatch, code):
+    from scripts.results_intake import Collector
+
+    h = totals.history
+    feed = getattr(h, f"{code}_FEED")
+    url = getattr(h, f"{code}_URL")
+    collect = getattr(h, {"KS": "collect_kansas", "TX": "collect_texas",
+                         "VA": "collect_virginia", "WA": "collect_washington"}[code])
+    index = b"<html>Original layout</html>"
+    count = 500
+    if code != "KS":
+        def parse(_):
+            return {"current_election_status": "row_published", "complete_native_query": [
+                {"year": 2026, "count": count},
+            ]}
+        monkeypatch.setattr(h, {"TX": "parse_texas", "VA": "parse_virginia",
+                                "WA": "parse_washington"}[code], parse)
+    else:
+        report_url = "https://www.sos.ks.gov/elections/26elec/2026-General-Election-Turnout-Information.xlsx"
+        index += f'<a href="{report_url}">Turnout Information</a>'.encode()
+        names = [f"COUNTY {n:03}" for n in range(105)]
+        monkeypatch.setattr(h, "KS_COUNTIES", pin(encoded(names)))
+        monkeypatch.setattr(h, "kansas_workbook", lambda _: {
+            "counties": [[name, 0, count, 1000] for name in names],
+            "total": [0, count * len(names), 1000 * len(names)],
+        })
+
+    def acquire(self, target):
+        body = index if target == url else str(count).encode()
+        return body, {"origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(Collector, "acquire", acquire)
+
+    def refresh(day, prior=None):
+        collector = Collector(tmp_path, prior or {}, {"urls": [], "prefixes": [], "hosts": []},
+                              datetime(2026, 12, day, tzinfo=timezone.utc))
+        return collect(collector), collector.attempts[0]
+
+    initial, _ = refresh(1)
+    assert initial["status"] == "reported"
+    index += b"<!-- unrelated archive markup changed -->"
+    unchanged, attempt = refresh(2, {feed: initial})
+    assert unchanged == initial
+    assert attempt["sha256"] == pin(index)["sha256"]
+    assert attempt["accepted_equivalent_source"] == initial["source"]
+    count = 499
+    revised, _ = refresh(3, {feed: unchanged})
+    assert revised["status"] == "reported" and revised["data"] != initial["data"]
+    assert revised["source"]["sha256"] == pin(index)["sha256"]
+    assert revised["first_observed_at"] == "2026-12-03T00:00:00+00:00"
 
 
 def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_conflicts(tmp_path, monkeypatch):

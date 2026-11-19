@@ -172,7 +172,7 @@ def collect_kansas(collector):
         return {"report": {"url": url, **pin(body)}, "complete_native_query": query,
                 "current_election_status": "row_published", "participation_observation_qualified": False}
 
-    return collector.capture(KS_FEED, KS_URL, parse)
+    return collector.capture(KS_FEED, KS_URL, parse, equivalent=lambda old, new: old == new)
 
 
 def new_jersey_controls(query, election_date):
@@ -242,7 +242,7 @@ def collect_new_jersey(collector):
                 "date": query["published_date"], "current_election_status": "row_published",
                 "participation_observation_qualified": False}
 
-    return collector.capture(NJ_FEED, NJ_URL, parse)
+    return collector.capture(NJ_FEED, NJ_URL, parse, equivalent=lambda old, new: old == new)
 
 
 def buxton_controls(data):
@@ -773,7 +773,7 @@ def collect_history(collector, feed, url, parser):
             raise ValueError("Previously published general-election row is missing")
         return data
 
-    return collector.capture(feed, url, parse)
+    return collector.capture(feed, url, parse, equivalent=lambda old, new: old == new)
 
 
 def collect_washington(collector):
