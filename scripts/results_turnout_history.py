@@ -65,6 +65,9 @@ WV_FEED = "WV-statewide-preliminary-turnout-bulletin"
 WV_URL = ("https://sos.wv.gov/article/"
           "wv-secretary-state-kris-warner-announces-canvassing-will-start-monday-november-9")
 WV_TITLE = "WV Secretary of State Kris Warner announces canvassing will start on Monday, November 9"
+ND_CANVASS_FEED = "ND-statewide-canvass-turnout-bulletin"
+ND_CANVASS_URL = "https://www.sos.nd.gov/news/state-canvassing-board-certifies-2026-general-election-results"
+ND_CANVASS_TITLE = "State Canvassing Board Certifies 2026 General Election Results"
 GA_FEED = "GA-statewide-county-ballots-cast"
 GA_URL = "https://results.sos.ga.gov/results/public/api/elections/Georgia/11032026GeneralAndSpecialElection/data"
 GA_ELECTION = "01000000-70f4-ca87-08cb-08df23e5fea8"
@@ -507,6 +510,40 @@ def west_virginia_report(body):
 def collect_west_virginia(collector):
     return collector.capture(WV_FEED, WV_URL, west_virginia_report,
                              equivalent=lambda old, new: old["complete_native_query"] == new["complete_native_query"])
+
+
+def north_dakota_canvass_controls(query):
+    if (set(query) != {"title", "publication_date", "voters_cast_ballots", "printed_pct"}
+            or query["title"] != ND_CANVASS_TITLE or query["publication_date"] != "2026-11-18"
+            or not re.fullmatch(r"\d{1,3}\.\d%", query["printed_pct"])):
+        raise ValueError("North Dakota canvass bulletin scope changed")
+    voters = integer(query["voters_cast_ballots"])
+    if not voters or not 0 < Decimal(query["printed_pct"][:-1]) <= 100:
+        raise ValueError("Invalid North Dakota canvass turnout")
+    return voters, query["printed_pct"]
+
+
+def north_dakota_canvass_report(body):
+    text = body.decode("utf-8-sig")
+    titles = re.findall(r"<h1\b[^>]*>([^<>]+)</h1>", text)
+    dates = re.findall(r'<time class="news-date" datetime="(\d{4}-\d\d-\d\d)T[^"]+">', text)
+    totals = re.findall(
+        r"<p>In the 2026 General Election,\s*([\d,]+) eligible voters cast ballots "
+        r"for a statewide voter turnout of (\d{1,3}\.\d%)\.</p>", text)
+    if len(titles) != 1 or len(dates) != 1 or len(totals) != 1:
+        raise ValueError("Missing or repeated North Dakota canvass turnout fields")
+    voters, printed = totals[0]
+    query = {"title": titles[0], "publication_date": dates[0],
+             "voters_cast_ballots": voters, "printed_pct": printed}
+    north_dakota_canvass_controls(query)
+    return {"report": {"url": ND_CANVASS_URL, **pin(body)}, "complete_native_query": query,
+            "date": dates[0], "participation_observation_qualified": False}
+
+
+def collect_north_dakota_canvass(collector):
+    return collector.capture(
+        ND_CANVASS_FEED, ND_CANVASS_URL, north_dakota_canvass_report,
+        equivalent=lambda old, new: old["complete_native_query"] == new["complete_native_query"])
 
 
 def georgia_edition(value):

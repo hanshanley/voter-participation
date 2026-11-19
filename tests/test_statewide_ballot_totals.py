@@ -45,6 +45,43 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_north_dakota_canvass_supersedes_election_night_without_inventing_a_denominator():
+    from scripts import supported_analytical_release as release
+
+    history = totals.history
+    html = (
+        f"<h1>{history.ND_CANVASS_TITLE}</h1>"
+        '<time class="news-date" datetime="2026-11-18T18:12:00-06:00">November 18, 2026</time>'
+        "<p>In the 2026 General Election, 239,442 eligible voters cast ballots "
+        "for a statewide voter turnout of 39.8%.</p>"
+    )
+    data = history.north_dakota_canvass_report(html.encode())
+    with pytest.raises(ValueError):
+        history.north_dakota_canvass_report(html.replace("39.8%", "139.8%").encode())
+    root = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts"
+    if not (root / "current.json.gz").is_file():
+        pytest.skip("Retained collector baseline is not part of this runtime-only archive")
+    path = "states/ND.json.gz"
+    files = {name: (root / name).read_bytes() for name in ("index.json", "current.json.gz", path)}
+    index = json.loads(files["index.json"])
+    index["states"] = {"ND": index["states"]["ND"]}
+    files["index.json"] = encoded(index)
+    snapshot = {"granular_sources": {history.ND_CANVASS_FEED: {
+        "status": "reported", "source": data["report"], "data": data,
+    }}}
+    out, changes = totals.project(files, snapshot)
+    assert changes[0]["current"] == 239442
+    rows = {item["observation_id"]: item for item in release.administrative(out)}
+    successor = totals.identity("ND")
+    assert rows[successor]["compatible_source_fraction_pct"] is None
+    assert rows[totals.ND_BASELINE_ID]["source_count"] == 239057
+    assert rows[totals.ND_BASELINE_ID]["superseded_by_observation_id"] == successor
+    assert totals.project(out, snapshot) == (out, [])
+    held, changes = totals.project(out, {})
+    assert changes[0]["source_status"] == "retained_after_failure"
+    assert totals.project(held, snapshot)[0] == out
+
+
 def test_west_virginia_preliminary_bulletin_keeps_publication_and_count_clocks_separate():
     history = totals.history
     html = (

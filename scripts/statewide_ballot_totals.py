@@ -61,6 +61,8 @@ OR_FEED = "OR-registered-395ba5d378c8d69d"
 OR_DISPLAY_URL = "https://results.oregonvotes.gov/?ID=39"
 OR_BASELINE_ID = "20e024e22223bce619b8d76b6d468c52"
 NC_BASELINE_ID = "723967930e4366f2cf9c150b1fe976d0"
+ND_BASELINE_ID = "4f4e246b7a458ae250add2fb372b2765"
+ND_ELECTION_NIGHT_URL = "https://www.sos.nd.gov/news/398-voter-turnout-north-dakota-general-election"
 NC_FEED = "NC-registered-d6712073694b63cd"
 NC_INPUT = "data/results-intake/nc-20261113-statewide-and-counties.json"
 NC_PIN = {"bytes": 27005, "sha256": "9fc1b775d96cba4bf8da176be8351cf3b3b216969d69a3e88eb9a6c9c8c7a409"}
@@ -100,6 +102,8 @@ PROFILES = {
            "feed": history.MT_FEED, "url": history.MT_URL},
     "NC": {"state": "North Carolina", "source_id": "nc-ncsbe-reconciled-statewide-turnout-20261103",
            "feed": NC_FEED, "url": nc.URL},
+    "ND": {"state": "North Dakota", "source_id": history.ND_CANVASS_FEED,
+           "feed": history.ND_CANVASS_FEED, "url": history.ND_CANVASS_URL},
     "SC": {"state": "South Carolina", "source_id": "sc-sec-statewide-turnout-20261103",
            "feed": "SC-official", "url": state_statistics.URL},
     "TX": {"state": "Texas", "source_id": history.TX_FEED,
@@ -164,12 +168,13 @@ def identity(code):
                            "HI": "native-total-turnout",
                            "ID": "native-county-ballot-subtotal",
                            "MT": "native-total-turnout",
+                           "ND": "native-total-turnout",
                            "TX": "native-total-turnout",
                            "MN": "native-total-number-voted",
                            "SC": "native-total-voter-turnout",
                            "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "CT", "FL", "HI", "ID", "SC", "TX", "VA", "VT", "MN", "MT"} else "all_methods")
+                          "source_defined" if code in {"AK", "CT", "FL", "HI", "ID", "SC", "TX", "VA", "VT", "MN", "MT", "ND"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -224,6 +229,8 @@ def observation(code, summary, retained=False):
         return montana_observation(summary, retained)
     if code == "WV":
         return west_virginia_observation(summary, retained)
+    if code == "ND":
+        return north_dakota_canvass_observation(summary, retained)
     if code == "VT":
         return vermont_observation(summary, retained)
     if code == "MN":
@@ -1135,6 +1142,21 @@ def west_virginia_observation(summary, retained):
         printed, query["publication_date"], "Preliminary statewide turnout passage")
 
 
+def north_dakota_canvass_observation(summary, retained):
+    source, query = summary["source"], summary["query"]
+    require(summary["contract"] == CONTRACT and summary["index"] == source and source["url"] == history.ND_CANVASS_URL
+            and type(source["bytes"]) is int and source["bytes"] > 0
+            and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]), "North Dakota canvass bulletin receipt changed")
+    voters, printed = history.north_dakota_canvass_controls(query)
+    return archive_observation(
+        "ND", summary, retained, voters, None, "Eligible voters who cast ballots (source reported)",
+        None, "electorate_not_supplied", "State Canvassing Board results bulletin",
+        ["Statewide voter count from the November 18 canvass bulletin, not a contest total.",
+         f"The bulletin prints {printed} without its numerical eligible-voter denominator; no rate is qualified.",
+         "Publication date is not a count-update clock. No local or demographic allocation."],
+        printed, query["publication_date"], "Statewide voters who cast ballots")
+
+
 def idaho_summary(shard):
     rows = [row for row in shard["records"] if row["source"]["id"] in idaho.SOURCE_IDS]
     vectors = {"counties": [], "units": []}
@@ -1184,7 +1206,7 @@ def archive_observation(code, summary, retained, ballots, registered, measure, r
                         source_clock=None, source_timezone=None, reporting=(None, None)):
     profile, source = PROFILES[code], summary["source"]
     rate = 100 * ballots / registered if registered is not None else None
-    direct_ballots = code not in {"ID", "MT"}
+    direct_ballots = code not in {"ID", "MT", "ND"}
     kind, mode = ("ballots_cast", "all_methods") if direct_ballots else ("participation_reported", "source_defined")
     measure_id = ("native-county-ballot-subtotal" if code == "ID" else
                   "native-total-ballots-cast" if direct_ballots else "native-total-turnout")
@@ -1378,7 +1400,7 @@ def project(files, snapshot, nc_retained_original=None):
                    oregon_summary(snapshot) if code == "OR" else
                    north_carolina_summary(snapshot, nc_retained_original if previous is None else None) if code == "NC" else
                    turnout_history_summary(snapshot, code) if code in {"TX", "VA", "WA"} else
-                   archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "NJ", "OH", "WV"} else
+                   archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "ND", "NJ", "OH", "WV"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
@@ -1482,8 +1504,14 @@ def project(files, snapshot, nc_retained_original=None):
                 continue
             initial_nc = new_clock > mirror_clock or (
                 mirror["ballots"] == row["count"]["value"] and mirror["denominator"] == row["denominator"]["value"])
+        initial_nd = (code == "ND" and previous is None and len(mirrors) == 1
+                      and mirrors[0].get("source_url") == ND_ELECTION_NIGHT_URL
+                      and mirrors[0].get("county_id") is None
+                      and mirrors[0].get("denominator") is None
+                      and mirrors[0].get("source_update_label") == "Tuesday, November 3, 2026 - 11:30pm"
+                      and mirrors[0].get("ballots") == rows.get(ND_BASELINE_ID, {}).get("count", {}).get("value") == 239057)
         require(len(mirrors) <= 1 and (not mirrors or previous is not None
-                and mirrors[0] == previous["view"] or initial_sc or initial_or or initial_nc),
+                and mirrors[0] == previous["view"] or initial_sc or initial_or or initial_nc or initial_nd),
                 "Statewide ballot display preimage changed")
         if previous is None:
             require(code != "WY" or pin(result[path]) == profile["initial_shard"],

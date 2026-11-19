@@ -88,14 +88,14 @@ def administrative(files):
     from scripts.results_county_frame import SUMMIT_PREDECESSOR, SUSSEX_PREDECESSOR
     from scripts.results_pdf_county_parent import SUMMIT_FEED, SUSSEX_FEED
     from scripts.results_turnout_history import GA_FEED
-    from scripts.statewide_ballot_totals import NC_BASELINE_ID, OR_BASELINE_ID, identity as statewide_id
+    from scripts.statewide_ballot_totals import NC_BASELINE_ID, ND_BASELINE_ID, OR_BASELINE_ID, identity as statewide_id
 
     index = decoded(files, "index.json")
     rows = []
     for state, declaration in sorted(index["states"].items()):
         shard = decoded(files, declaration["file"])
         records = shard["records"]
-        legacy = {"NC": NC_BASELINE_ID, "OR": OR_BASELINE_ID}
+        legacy = {"NC": NC_BASELINE_ID, "ND": ND_BASELINE_ID, "OR": OR_BASELINE_ID}
         successor = statewide_id(state) if state in legacy and any(
             record["id"] == statewide_id(state) for record in records) else None
         superseded = {legacy[state]: successor} if successor else {}
@@ -432,6 +432,7 @@ def selected_local_observation_ids(snapshot, counts=None):
         results_turnout_history.OH_FEED: "OH",
         results_turnout_history.MT_FEED: "MT",
         results_turnout_history.WV_FEED: "WV",
+        results_turnout_history.ND_CANVASS_FEED: "ND",
         results_turnout_history.TX_FEED: "TX",
         results_pdf_county_parent.PHILADELPHIA_FEED: "PA",
         results_pdf_county_parent.SUMMIT_FEED: "UT",
