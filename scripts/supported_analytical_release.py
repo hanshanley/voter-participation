@@ -86,16 +86,17 @@ def mechanisms(row, state_row):
 def administrative(files):
     from scripts import results_native_dc as dc
     from scripts.results_turnout_history import GA_FEED
-    from scripts.statewide_ballot_totals import OR_BASELINE_ID, identity as statewide_id
+    from scripts.statewide_ballot_totals import NC_BASELINE_ID, OR_BASELINE_ID, identity as statewide_id
 
     index = decoded(files, "index.json")
     rows = []
     for state, declaration in sorted(index["states"].items()):
         shard = decoded(files, declaration["file"])
         records = shard["records"]
-        successor = statewide_id("OR") if state == "OR" and any(
-            record["id"] == statewide_id("OR") for record in records) else None
-        superseded = {OR_BASELINE_ID: successor} if successor else {}
+        legacy = {"NC": NC_BASELINE_ID, "OR": OR_BASELINE_ID}
+        successor = statewide_id(state) if state in legacy and any(
+            record["id"] == statewide_id(state) for record in records) else None
+        superseded = {legacy[state]: successor} if successor else {}
         if state == "GA":
             newer = {record["geography"]["name"]: record["id"] for record in records
                      if record["source"]["id"] == GA_FEED and record["geography"]["level"] == "county"}
@@ -449,8 +450,8 @@ def selected_local_observation_ids(snapshot, counts=None):
         require(isinstance(data, dict) and isinstance(data.get("updates"), list),
                 "Selected local source has no observation updates: " + identity)
         selected.update(update["id"] for update in data["updates"])
-        if identity == statewide_ballot_totals.OR_FEED and entry["status"] == "reported":
-            selected.add(statewide_ballot_totals.identity("OR"))
+        if identity in (statewide_ballot_totals.OR_FEED, statewide_ballot_totals.NC_FEED) and entry["status"] == "reported":
+            selected.add(statewide_ballot_totals.identity(identity[:2]))
     return selected
 
 

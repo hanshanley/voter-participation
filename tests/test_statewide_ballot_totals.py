@@ -84,6 +84,32 @@ def test_kansas_waits_for_a_declared_workbook_and_preserves_a_reconciled_count(m
         totals.project(projected, snapshot)
 
 
+def test_north_carolina_exports_retained_report_without_stale_baseline_double_count(monkeypatch):
+    from scripts.supported_analytical_release import administrative, administrative_coverage
+
+    root = Path(__file__).resolve().parents[1]
+    original = (root / totals.NC_INPUT).read_bytes()
+    files = baseline(monkeypatch)
+    path = "states/NC.json.gz"
+    files[path] = (root / "data/results-intake/baseline/counts" / path).read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["NC"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    projected, [change] = totals.project(files, {}, original)
+    assert change["current"] == 4242662 and change["source_status"] == "retained_after_failure"
+    assert totals.project(projected, {}, original) == (projected, [])
+    admin = administrative(projected)
+    superseded = next(x for x in admin if x["observation_id"] == totals.NC_BASELINE_ID)
+    current = next(x for x in admin if x["observation_id"] == totals.identity("NC"))
+    assert superseded["superseded_by_observation_id"] == current["observation_id"]
+    assert current["registered_or_other_denominator"] == 7885046
+    assert current["source_timezone"] is None
+    coverage = next(x for x in administrative_coverage(admin) if x["state_code"] == "NC")
+    assert coverage["statewide_election_participation_count_records"] == 1
+    with pytest.raises(ValueError, match="retained original hash changed"):
+        totals.project(files, {}, original + b" ")
+
+
 def test_oregon_projects_same_report_statewide_rate_without_changing_county_views(monkeypatch):
     files = baseline(monkeypatch)
     path = "states/OR.json.gz"
