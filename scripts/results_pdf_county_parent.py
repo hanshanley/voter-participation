@@ -723,8 +723,9 @@ OKTIBBEHA_REVIEWED_QUERY = {
 
 
 class OktibbehaLinks(HTMLParser):
-    def __init__(self):
+    def __init__(self, label=OKTIBBEHA_LABEL):
         super().__init__()
+        self.label = label
         self.anchor = None
         self.matches = []
 
@@ -740,7 +741,7 @@ class OktibbehaLinks(HTMLParser):
         if tag == "a" and self.anchor is not None:
             href, text = self.anchor
             self.anchor = None
-            if " ".join("".join(text).split()) == OKTIBBEHA_LABEL:
+            if " ".join("".join(text).split()) == self.label:
                 self.matches.append(href)
 
 
@@ -846,3 +847,247 @@ def collect_oktibbeha(collector):
 
     return collector.capture(OKTIBBEHA_FEED, OKTIBBEHA_INDEX, parse,
                              equivalent=lambda old, new: old == new)
+
+
+WOODFORD_FEED = "IL-woodford-countywide-turnout"
+WOODFORD_INDEX = "https://www.woodfordcountyelections.com/"
+WOODFORD_REPORT = urljoin(WOODFORD_INDEX, "results.html")
+WOODFORD_COUNTY = "WOODFORD COUNTY, IL"
+WOODFORD_HEADER = "SUMMARY REPORT GENERAL ELECTION OFFICIAL RESULTS"
+WOODFORD_INDEX_TITLE = "WOODFORD COUNTY, ILLINOIS - GENERAL ELECTION - November 3, 2026"
+SUMMARY_INT = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
+
+
+def summary_control(county, query):
+    if not isinstance(query, list) or not 9 <= len(query) <= 200 or any(
+            not isinstance(line, str) or len(line) > 160 or "\n" in line for line in query):
+        raise ValueError("Invalid county summary statistical block")
+    header, run_date, run_time, columns, *rows = query
+    header_ok = (
+        header == WOODFORD_HEADER
+        and (date := re.fullmatch(r"RUN DATE:\s*(\d{2}/\d{2}/26) NOVEMBER 3, 2026", run_date))
+        and (clock := re.fullmatch(r"RUN TIME:\s*(\d{1,2}:\d{2} [AP]M) " + re.escape(county), run_time))
+        and columns == "VOTES PERCENT"
+    )
+    if not header_ok:
+        raise ValueError("Not the official 2026 county general-election summary")
+    when = datetime.strptime(f"{date[1]} {clock[1]}", "%m/%d/%y %I:%M %p").isoformat()
+    if when < ELECTION:
+        raise ValueError("County summary predates the election")
+    labels = {}
+    for row in rows:
+        match = re.fullmatch(r"(.+?)\s*(?:\.[ \t]*)+\s+(" + SUMMARY_INT
+                             + r")(?: ((?:[0-9]{1,3})?\.[0-9]{2}))?", row)
+        if not match or match[1] in labels:
+            raise ValueError("Incomplete or ambiguous county summary statistical rows")
+        labels[match[1]] = (count(match[2].replace(",", "")), match[3])
+    reported_labels = [label for label in labels if re.fullmatch(r"PRECINCTS COUNTED \(OF [1-9][0-9]*\)", label)]
+    if len(reported_labels) != 1:
+        raise ValueError("Missing or repeated county summary reporting counter")
+    reported, = reported_labels
+    units, completion = labels.pop(reported)
+    if units != int(reported.split()[-1][:-1]) or completion != "100.00":
+        raise ValueError("County summary does not cover all precincts")
+    registered, registration_pct = labels.pop("REGISTERED VOTERS - TOTAL", (None, None))
+    ballots, ballot_pct = labels.pop("BALLOTS CAST - TOTAL", (None, None))
+    blanks, blank_pct = labels.pop("BALLOTS CAST - BLANK", (None, None))
+    styles = labels
+    if (registration_pct is not None or ballot_pct is not None
+            or not ballots or registered is None or blanks is None
+            or not 0 <= blanks <= ballots
+            or not styles or any(not re.fullmatch(r"BALLOTS CAST - STYLE [0-9]{5}", key)
+                                 or value is None or pct is not None
+                                 for key, (value, pct) in styles.items())
+            or sum(value for value, _ in styles.values()) != ballots):
+        raise ValueError("Countywide ballot statistics or voting-style totals do not reconcile")
+    if blank_pct is not None and (100 * Decimal(blanks) / ballots).quantize(
+            Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(blank_pct):
+        raise ValueError("Blank ballot percentage does not reconcile")
+    return when, ballots, registered, units
+
+
+def woodford_controls(data):
+    report, query = data["report"], data["complete_native_query"]
+    if (set(report) != {"url", "bytes", "sha256"} or report["url"] != WOODFORD_REPORT
+            or type(report["bytes"]) is not int or not 0 < report["bytes"] <= 1_000_000
+            or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
+        raise ValueError("Woodford summary report identity changed")
+    controls = summary_control(WOODFORD_COUNTY, query)
+    if controls[0] != data["date"]:
+        raise ValueError("Woodford summary generation clock differs")
+    return controls
+
+
+def collect_woodford(collector):
+    def parse(index):
+        text = index.decode("utf-8-sig")
+        if (text.count(f"<b>{WOODFORD_INDEX_TITLE}</b>") != 1
+                or re.findall(r'<iframe\b[^>]*\bsrc="([^"]+)"', text, re.I) != ["results.html"]):
+            raise ValueError("Woodford county report declaration changed")
+        body, _ = collector.acquire(WOODFORD_REPORT)
+        if len(body) > 1_000_000:
+            raise ValueError("Woodford county summary exceeds the supported size")
+        match = re.fullmatch(r"\s*<html>\s*<pre>([^<]+)</pre>\s*</html>\s*", body.decode("utf-8-sig"), re.I)
+        if not match:
+            raise ValueError("Woodford county report is not a complete preformatted summary")
+        lines = [line for line in unescape(match[1]).splitlines() if line.strip()]
+        # The contests are outside the countywide statistics block.
+        end = next((i for i in range(4, len(lines)) if re.match(r"\s*\(VOTE FOR\)", lines[i])), 0)
+        query = [" ".join(line.split()) for line in lines[:max(0, end - 1)]]
+        when = summary_control(WOODFORD_COUNTY, query)[0]
+        data = {"report": {"url": WOODFORD_REPORT, **pin(body)}, "complete_native_query": query, "date": when}
+        woodford_controls(data)
+        prior = (collector.prior.get(WOODFORD_FEED) or {}).get("data")
+        if prior and county_summary_regressed(prior, data):
+            raise ValueError("Woodford summary clock regressed or its same-clock statistics conflict")
+        return data
+
+    return collector.capture(WOODFORD_FEED, WOODFORD_INDEX, parse, equivalent=lambda old, new:
+                             old["complete_native_query"] == new["complete_native_query"])
+
+
+LAWRENCE_FEED = "IL-lawrence-countywide-turnout"
+LAWRENCE_INDEX = "https://lawrencecounty.illinois.gov/election"
+LAWRENCE_PATH = re.compile(r"/uploads/media/2026/11/[0-3]\d/[a-f0-9]{40}/NOVTWSXSUMMRY\.pdf")
+LAWRENCE_LABELS = ("Unofficial Summary Election Results", "Official Summary Election Results")
+LAWRENCE_REVIEWED = {
+    "url": urljoin(LAWRENCE_INDEX, "/uploads/media/2026/11/04/"
+                   "cd99b79bf6cb81848e0866579c1c6d9d3f22ccea/NOVTWSXSUMMRY.pdf"),
+    "bytes": 55429,
+    "sha256": "ae7524cef9184639b39bdf77de7ac003c3b8c55f94c7ceaf77c0ee01c1737a7f",
+}
+LAWRENCE_QUERY = {
+    "title": "SUMMARY REPORT",
+    "election": "NOVEMBER 3, 2026 GENERAL ELECTION",
+    "county": "LAWRENCE COUNTY, ILLINOIS",
+    "report": "REPORT-EL45 PAGE 001",
+    "status": "UNOFFICIAL RESULTS",
+    "columns": "VOTES PERCENT",
+    "clock": "11/03/26 08:49 PM",
+    "precincts": ["17", "17", "100.00"],
+    "registered": "9,034",
+    "ballots": "4,507",
+    "blank": ["1", ".02"],
+    "pct": "49.89",
+    "blank_pct": ".01",
+}
+
+
+def lawrence_discovery(body):
+    matches = []
+    for label in LAWRENCE_LABELS:
+        links = OktibbehaLinks(label)
+        links.feed(body.decode("utf-8-sig"))
+        links.close()
+        matches.extend(links.matches)
+    if len(matches) != 1 or not lawrence_url(matches[0]):
+        raise ValueError("Missing or ambiguous Lawrence general-election summary declaration")
+    return matches[0]
+
+
+def lawrence_url(url):
+    parts = urlsplit(url)
+    return (parts.scheme == "https" and parts.netloc == urlsplit(LAWRENCE_INDEX).netloc
+            and not parts.query and not parts.fragment and LAWRENCE_PATH.fullmatch(parts.path))
+
+
+def lawrence_controls(data):
+    source, q = data["report"], data["complete_native_query"]
+    if (set(source) != {"url", "bytes", "sha256"} or not lawrence_url(source["url"])
+            or type(source["bytes"]) is not int or not 0 < source["bytes"] <= 4_000_000
+            or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or set(q) != set(LAWRENCE_QUERY)
+            or any(q[key] != LAWRENCE_QUERY[key] for key in ("title", "election", "county", "report", "columns"))
+            or q["status"] not in {"UNOFFICIAL RESULTS", "OFFICIAL RESULTS"}):
+        raise ValueError("Lawrence election, county or statistical report identity differs")
+    if data["extraction"] == "visually_reviewed_exact_edition":
+        if source != LAWRENCE_REVIEWED or q != LAWRENCE_QUERY:
+            raise ValueError("Lawrence reviewed scan does not match the exact edition")
+    elif data["extraction"] != "native_text":
+        raise ValueError("Unsupported Lawrence extraction method")
+    clock = datetime.strptime(q["clock"], "%m/%d/%y %I:%M %p").isoformat()
+    limit, units, completion = q["precincts"]
+    blank, blank_of_ballots = q["blank"]
+    integers = [limit, units, blank, q["ballots"], q["registered"]]
+    if any(not re.fullmatch(SUMMARY_INT, x) for x in integers):
+        raise ValueError("Invalid Lawrence native count")
+    limit, units, blank, ballots, registered = (count(x.replace(",", "")) for x in integers)
+    if (clock != data["date"] or not ELECTION <= clock < "2027"
+            or any(x is None for x in (limit, units, blank, ballots, registered))
+            or not limit == units > 0 or completion != "100.00"
+            or not 0 <= blank <= ballots <= registered or ballots == 0):
+        raise ValueError("Lawrence date, reporting or countywide counts differ")
+    for printed, numerator, denominator in (
+            (q["pct"], ballots, registered), (blank_of_ballots, blank, ballots),
+            (q["blank_pct"], blank, registered)):
+        if (not re.fullmatch(r"\d{0,3}\.\d{2}", printed)
+                or (100 * Decimal(numerator) / denominator).quantize(
+                    Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(printed)):
+            raise ValueError("Lawrence printed fraction differs from its native counts")
+    return clock, ballots, registered, q["pct"] + "%", q["status"], units
+
+
+def lawrence_text_query(text):
+    physical = [line.strip() for line in text.splitlines() if line.strip()]
+    lines = [" ".join(line.split()) for line in physical]
+    line_pattern = r"SUMMARY REPORT NOVEMBER 3, 2026 ((?:UN)?OFFICIAL RESULTS)"
+    clock_pattern = r"RUN DATE:\s*(\d{2}/\d{2}/26 \d{1,2}:\d\d [AP]M) REPORT-EL45 PAGE 001"
+    if (len(lines) < 11 or not (header := re.fullmatch(line_pattern, lines[0]))
+            or lines[1:3] != ["GENERAL ELECTION", "LAWRENCE COUNTY, ILLINOIS"]
+            or not (clock := re.fullmatch(clock_pattern, lines[3]))
+            or lines[4] not in ("VOTES PERCENT", "VOTES PERCENT VOTES PERCENT")):
+        raise ValueError("Lawrence PDF has no verified statistical header")
+    labels = [
+        ("precincts", r"PRECINCTS COUNTED \(OF (\d+)\)", r"(\d+) (100\.00)"),
+        ("registered", r"REGISTERED VOTERS - TOTAL", f"({SUMMARY_INT})"),
+        ("ballots", r"BALLOTS CAST - TOTAL", f"({SUMMARY_INT})"),
+        ("blank", r"BALLOTS CAST - BLANK", rf"({SUMMARY_INT}) (\d{{0,3}}\.\d{{2}})"),
+        ("pct", r"VOTER TURNOUT - TOTAL", r"(\d{0,3}\.\d{2})"),
+        ("blank_pct", r"VOTER TURNOUT - BLANK", r"(\d{0,3}\.\d{2})"),
+    ]
+    query = {key: LAWRENCE_QUERY[key] for key in ("title", "election", "county", "report", "columns")}
+    query.update(clock=clock[1], status=header[1])
+    for physical_line, (key, label, values) in zip(physical[5:11], labels):
+        # EL45 prints independent contests in the right column; only consider the left half.
+        left = re.split(r" {8,}(?=[A-Za-z(])", physical_line, maxsplit=1)[0]
+        match = re.fullmatch(label + r"\s*(?:\.[ \t]*)+\s+" + values, " ".join(left.split()))
+        if not match:
+            raise ValueError("Lawrence PDF statistical row changed: " + key)
+        query[key] = list(match.groups()) if key in {"precincts", "blank"} else match[1]
+    return query
+
+
+def collect_lawrence(collector):
+    def parse(index):
+        from pypdf import PdfReader
+
+        url = lawrence_discovery(index)
+        body, _ = collector.acquire(url)
+        report = {"url": url, **pin(body)}
+        if report == LAWRENCE_REVIEWED:
+            query, method = copy.deepcopy(LAWRENCE_QUERY), "visually_reviewed_exact_edition"
+        else:
+            if (not body.startswith(b"%PDF-") or len(body) > 4_000_000
+                    or not body.rstrip().endswith(b"%%EOF")):
+                raise ValueError("Incomplete Lawrence county summary")
+            pdf = PdfReader(io.BytesIO(body), strict=True)
+            if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 100:
+                raise ValueError("Unreviewed Lawrence county summary PDF")
+            query = lawrence_text_query(pdf.pages[0].extract_text(extraction_mode="layout"))
+            method = "native_text"
+        clock = datetime.strptime(query["clock"], "%m/%d/%y %I:%M %p").isoformat()
+        data = {"report": report, "complete_native_query": query, "date": clock, "extraction": method}
+        lawrence_controls(data)
+        prior = (collector.prior.get(LAWRENCE_FEED) or {}).get("data")
+        if prior and county_summary_regressed(prior, data):
+            raise ValueError("Lawrence summary clock or report status regressed, or statistics conflict")
+        return data
+
+    return collector.capture(LAWRENCE_FEED, LAWRENCE_INDEX, parse)
+
+
+def county_summary_regressed(old, new):
+    before, after = old["complete_native_query"], new["complete_native_query"]
+    return (new["date"] < old["date"] or (new["date"] == old["date"] and before != after)
+            or (isinstance(before, dict) and before.get("status") == "OFFICIAL RESULTS"
+                and after.get("status") != "OFFICIAL RESULTS"))

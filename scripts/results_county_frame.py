@@ -300,6 +300,15 @@ OKTIBBEHA = ("MS", "Mississippi", "Oktibbeha County", "28105",
              "f92866ca5d6384cc3db5caaa52a66a442753296f8cf8de06ec62a355b32066ea",
              county_pdf.OKTIBBEHA_FEED, county_pdf.OKTIBBEHA_INDEX, "MS:official-ballot-statistics:28105",
              "MS-2026-11-03-general", "native_registered_voters_same_oktibbeha_county_summary")
+WOODFORD = ("IL", "Illinois", "Woodford County", "17203",
+            "ddc8ec595021ed04413207a23410d297a8c538d4c5ebbbe135f37c5d8bde5039",
+            county_pdf.WOODFORD_FEED, county_pdf.WOODFORD_INDEX, "IL:official-ballot-statistics:17203",
+            "IL-2026-11-03-general", "registration_not_qualified_from_woodford_summary")
+LAWRENCE = ("IL", "Illinois", "Lawrence County", "17101", WOODFORD[4],
+            county_pdf.LAWRENCE_FEED, county_pdf.LAWRENCE_INDEX, "IL:official-ballot-statistics:17101",
+            "IL-2026-11-03-general", "native_registered_voters_same_lawrence_county_summary")
+ILLINOIS_COUNTY_PARENTS = (LAWRENCE, WOODFORD)
+SPARSE_COUNTY_PARENTS = (PHILADELPHIA, OKTIBBEHA, *ILLINOIS_COUNTY_PARENTS)
 RETAINED_CANVASSES_INPUT = "data/results-intake/retained-county-canvasses-20261119.json"
 RETAINED_CANVASSES_SHA256 = "c37079cc1274b752a2c5ab4be3e26eb46d4febc091ac95f32ac5ccfdbe1aaaee"
 
@@ -385,6 +394,25 @@ def county_parent_observation(profile, data, reference, status):
             "The fraction uses the same report's registrations, not the eligible population.",
             "The PDF's generation time is not a count-update clock and has no declared timezone.",
         ]
+    elif profile == WOODFORD:
+        clock, ballots, registered, units = county_pdf.woodford_controls(data)
+        fraction, label = None, "OFFICIAL RESULTS"
+        measure, register = "Ballots Cast - Total", "Registered Voters - Total"
+        selector = {"scope": "countywide statistics before first contest", "native_label": measure}
+        notes = [
+            f"The county summary shows {units} of {units} precincts counted; ballot-style totals reconcile.",
+            f"The report's registration field is {registered:,}; no matching denominator or rate is qualified.",
+            "The generation time has no declared timezone and is not a count-update clock.",
+        ]
+    elif profile == LAWRENCE:
+        clock, ballots, registered, fraction, label, units = county_pdf.lawrence_controls(data)
+        measure, register = "BALLOTS CAST - TOTAL", "REGISTERED VOTERS - TOTAL"
+        selector = {"scope": "countywide statistics", "physical_page": 1, "native_label": measure}
+        notes = [
+            f"The county summary shows {units} of {units} precincts counted; this is not certification.",
+            "The fraction uses the same summary's registrations, not an eligible-population estimate.",
+            "The generation time has no declared timezone and is not a count-update clock.",
+        ]
     elif profile == BUXTON:
         ballots, registered, fraction = history.buxton_controls(data)
         clock = None
@@ -414,12 +442,13 @@ def county_parent_observation(profile, data, reference, status):
         notes.append("Not a statewide total, unique-voter count or precinct allocation.")
     else:
         notes.append("Not a statewide total, certification claim, unique-voter count or precinct allocation.")
-    rate = 100 * ballots / registered
+    rate = None if profile == WOODFORD else 100 * ballots / registered
+    denominator = None if profile == WOODFORD else registered
     view = {
         "state_code": code, "state": state, "year": 2026, "county": county,
         "county_id": geo, "county_fips": None if town else fips, "geography_level": level,
         "mode": "official", "status": status, "source_mode": "all_methods",
-        "ballots": ballots, "denominator": registered, "registered": registered,
+        "ballots": ballots, "denominator": denominator, "registered": denominator,
         "denominator_basis": basis, "reported_pct": rate, "validated_pct": rate,
         "native_printed_pct": fraction, "source_status_literal": label,
         "source_date": clock[:10] if clock else None, "source_update_label": None, "source_update_timezone": None,
@@ -435,7 +464,7 @@ def county_parent_observation(profile, data, reference, status):
     }
     if town:
         view["reference_municipality_key"] = fips
-    elif profile in (PHILADELPHIA, OKTIBBEHA):
+    elif profile in SPARSE_COUNTY_PARENTS:
         if profile == PHILADELPHIA:
             view.update(source_publication_label=published, source_publication_timezone="EST")
         view["supplemental_reference_geometry"] = view.pop("reference_geometry")
@@ -454,8 +483,8 @@ def county_parent_observation(profile, data, reference, status):
         "measure": {"id": measure_id, "literal": measure,
                     "kind": "ballots_cast", "mode": "all_methods", "unit": "ballots"},
         "count": {"value": ballots, "literal": ballots, "status": "reported"},
-        "denominator": {"value": registered, "literal": register,
-                        "basis": basis, "qualified": True},
+        "denominator": {"value": denominator, "literal": register,
+                        "basis": basis, "qualified": denominator is not None},
         "source": {"id": feed, "url": report["url"], "input_sha256": report["sha256"],
                    "classification": "public_aggregate", "fields": copy.deepcopy(view),
                    "selector": selector},
@@ -513,7 +542,7 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
     native_index = json.loads(native["index.json"])
     mappings = native_index["county_bindings"][code]
     reference_mode = ("available" if predecessor else "mail_returned"
-                      if profile in (PHILADELPHIA, OKTIBBEHA) else "in_person_early")
+                      if profile in SPARSE_COUNTY_PARENTS else "in_person_early")
     early = mappings[reference_mode]
     geometry = {key: copy.deepcopy(early[key]) for key in ("feature_keys", "feature_scopes", "features", "sha256")}
     matches = [item for item in early["rows"] if item["feature_key"] == fips]
@@ -531,7 +560,7 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
         require(refs[0]["geography_scope"] == "provider_partial_locality_activity",
                 "Maine contextual reference scope changed")
         refs[0] = {**refs[0], "geography_scope": "native_partial_town_turnout"}
-    elif profile in (PHILADELPHIA, OKTIBBEHA):
+    elif profile in SPARSE_COUNTY_PARENTS:
         refs[0] = {**refs[0], "geography_scope": "native_partial_county_context",
                    "partial_county_fips": [fips]}
         geometry["embedded_reference_required"] = False
@@ -556,10 +585,8 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
         elif profile == PHILADELPHIA:
             regression |= (old["complete_native_query"]["status"] == "Official"
                            and data["complete_native_query"]["status"] != "Official")
-        elif profile == OKTIBBEHA:
-            regression |= (data["date"] < old["date"] or (
-                data["date"] == old["date"]
-                and data["complete_native_query"] != old["complete_native_query"]))
+        elif profile in (OKTIBBEHA, *ILLINOIS_COUNTY_PARENTS):
+            regression |= county_pdf.county_summary_regressed(old, data)
         if regression or entry["status"] == "retained_after_failure":
             candidate = copy.deepcopy(prior)
             candidate["source"]["fields"]["status"] = candidate["view"]["status"] = "retained_after_failure"
@@ -644,6 +671,14 @@ def project_douglas(counts, native, snapshot, *, retained_canvasses=None):
 
 def project_oktibbeha(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, OKTIBBEHA)
+
+
+def project_illinois(counts, native, snapshot):
+    changes = []
+    for profile in ILLINOIS_COUNTY_PARENTS:
+        counts, native, delta = project_county_parent(counts, native, snapshot, profile)
+        changes.extend(delta)
+    return counts, native, changes
 
 
 def project_georgia(counts, native):

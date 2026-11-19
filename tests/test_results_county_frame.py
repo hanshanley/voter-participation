@@ -92,6 +92,93 @@ def test_oktibbeha_visual_transcription_is_bound_to_exact_original():
         parser.oktibbeha_controls(data)
 
 
+def test_woodford_revisions_reconcile_and_preserve_count_only(tmp_path, monkeypatch):
+    p = frame.county_pdf
+    header = f"<b>{p.WOODFORD_INDEX_TITLE}</b><iframe src=\"results.html\"></iframe>"
+    body = (
+        f"{p.WOODFORD_HEADER}\nRUN DATE: 11/18/26 NOVEMBER 3, 2026\n"
+        f"RUN TIME: 11:24 AM {p.WOODFORD_COUNTY}\nVOTES PERCENT\n"
+        "PRECINCTS COUNTED (OF 37). 37 100.00\nREGISTERED VOTERS - TOTAL. 0\n"
+        "BALLOTS CAST - TOTAL. 16,366\nBALLOTS CAST - BLANK. 2 .01\n"
+        "BALLOTS CAST - STYLE 00001. 16,366\nBALLOTS CAST - STYLE 00002. 0\n"
+        "A CONTEST\n(VOTE FOR) 1\nCANDIDATE. 16,365"
+    )
+
+    def collect(report, prior=None, declaration=header):
+        hits = []
+
+        def acquire(self, url):
+            hits.append(url)
+            if url == p.WOODFORD_REPORT and report is None:
+                raise TimeoutError
+            source = declaration if url == p.WOODFORD_INDEX else f"<html><pre>{report}</pre></html>"
+            return source.encode(), {"origin": "fixture_transport"}
+
+        monkeypatch.setattr(results_intake.Collector, "acquire", acquire)
+        collector = results_intake.Collector(
+            tmp_path, {p.WOODFORD_FEED: prior} if prior else {},
+            {"urls": [], "prefixes": [], "hosts": []}, datetime(2026, 11, 19, tzinfo=timezone.utc))
+        return p.collect_woodford(collector), hits
+
+    first, _ = collect(body)
+    assert first["status"] == "reported", first
+    assert collect(body, first)[0] == first
+    proposal = body.replace("16,366", "16,365")
+    assert collect(proposal, first)[0]["status"] == "retained_after_failure"
+    down, _ = collect(proposal.replace("11:24 AM", "11:25 AM"), first)
+    up, _ = collect(body.replace("16,366", "16,368").replace("11:24 AM", "11:26 AM"), down)
+    assert [p.woodford_controls(v["data"])[1] for v in (first, down, up)] == [16366, 16365, 16368]
+    row = frame.county_parent_observation(frame.WOODFORD, up["data"], {"review_id": "reference"}, "reported")
+    assert row["denominator"]["value"] is None and not row["denominator"]["qualified"]
+    assert row["view"]["reported_pct"] is None and row["source_clock"]["literal"] is None
+    for rejected in (None, body, body.replace("GENERAL ELECTION", "PRIMARY ELECTION"),
+                     body.replace(p.WOODFORD_COUNTY, "OTHER COUNTY, IL"),
+                     body.replace("37 100.00", "36 97.30"),
+                     body.replace("STYLE 00002", "STYLE 00001"),
+                     body.replace("TOTAL. 16,366", "TOTAL. 163,66"),
+                     body.replace("TOTAL. 16,366", "TOTAL. 16,365"),
+                     body.replace("BLANK. 2 .01", "BLANK. 2 9.99")):
+        held, _ = collect(rejected.replace("11:24 AM", "11:27 AM") if rejected not in (None, body) else rejected, up)
+        assert held["status"] == "retained_after_failure" and held["data"] == up["data"]
+    held, hits = collect(body, up, header.replace("GENERAL", "PRIMARY"))
+    assert hits == [p.WOODFORD_INDEX] and held["data"] == up["data"]
+
+
+def test_lawrence_binds_reviewed_scan_and_checks_native_text_successor():
+    p = frame.county_pdf
+    q = p.lawrence_text_query(
+        "SUMMARY REPORT NOVEMBER 3, 2026 OFFICIAL RESULTS\n"
+        "GENERAL ELECTION\nLAWRENCE COUNTY, ILLINOIS\n"
+        "RUN DATE: 11/19/26 08:49 PM REPORT-EL45 PAGE 001\n"
+        "VOTES PERCENT              VOTES PERCENT\n"
+        "PRECINCTS COUNTED (OF 17). 17 100.00         STATE SENATOR\n"
+        "REGISTERED VOTERS - TOTAL. 9,034             (VOTE FOR) 1\n"
+        "BALLOTS CAST - TOTAL. 4,508                   Not a turnout value 22\n"
+        "BALLOTS CAST - BLANK. 1 .02\n"
+        "VOTER TURNOUT - TOTAL. 49.90\nVOTER TURNOUT - BLANK. .01"
+    )
+    reviewed = {"report": dict(p.LAWRENCE_REVIEWED), "complete_native_query": dict(p.LAWRENCE_QUERY),
+                "date": "2026-11-03T20:49:00", "extraction": "visually_reviewed_exact_edition"}
+    row = frame.county_parent_observation(frame.LAWRENCE, reviewed, {"review_id": "reference"}, "reported")
+    assert (row["count"]["value"], row["denominator"]["value"]) == (4507, 9034)
+    assert row["view"]["source_status_literal"] == "UNOFFICIAL RESULTS"
+    updated = {**reviewed, "complete_native_query": q, "date": "2026-11-19T20:49:00",
+               "extraction": "native_text"}
+    assert p.lawrence_controls(updated)[1:3] == (4508, 9034)
+    assert not p.county_summary_regressed(reviewed, updated)
+    assert p.county_summary_regressed(updated, reviewed)
+    for bad in ({"pct": "80.00"}, {"precincts": ["17", "16", "94.12"]}, {"ballots": "4,509"},
+                {"county": "OTHER COUNTY, ILLINOIS"}):
+        with pytest.raises(ValueError):
+            p.lawrence_controls({**updated, "complete_native_query": {**q, **bad}})
+    with pytest.raises(ValueError, match="exact edition"):
+        p.lawrence_controls({**reviewed, "report": {**reviewed["report"], "sha256": "0" * 64}})
+    link = f'<a href="{p.LAWRENCE_REVIEWED["url"]}">Unofficial Summary Election Results</a>'
+    assert p.lawrence_discovery(link.encode()) == p.LAWRENCE_REVIEWED["url"]
+    with pytest.raises(ValueError, match="ambiguous"):
+        p.lawrence_discovery((link + link).encode())
+
+
 def test_buxton_turnout_accepts_consistent_revisions_and_rejects_wrong_scope(tmp_path, monkeypatch):
     history = frame.history
     heading = f"<h2>{history.BUXTON_TITLE}</h2>"
