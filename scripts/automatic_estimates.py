@@ -1059,6 +1059,9 @@ def bind_publication(result, base_url, complete_download):
     if sources.get("supported_release"):
         for item in sources["supported_release"]["downloads"].values():
             bind(item)
+    for series in sources.get("general_election_turnout_history", {}).values():
+        bind(series["data"])
+        bind(series["csv"])
     return bound
 
 

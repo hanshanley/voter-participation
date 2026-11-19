@@ -519,7 +519,7 @@ def hydrate_granular_sources(snapshot, source_packet):
 
 def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None):
     from scripts import results_turnout_history as turnout_history
-    from scripts.automatic_estimates import build, render_artifacts
+    from scripts.automatic_estimates import _artifact, build, render_artifacts
     from scripts.automatic_native_refresh import refresh
     from scripts.results_county_frame import project as county_frames, project_cuyahoga
     from scripts.statewide_ballot_totals import project as state_totals, exports as state_exports
@@ -535,16 +535,27 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     updated, native, county_changes = project_cuyahoga(updated, native, snapshot)
     changes.extend(county_changes)
     estimates = build(snapshot, seed)
+    history_exports = {}
+    for code, feed, state_name in (("WA", turnout_history.WA_FEED, "washington"),
+                                  ("VA", turnout_history.VA_FEED, "virginia")):
+        entry = snapshot.get("granular_sources", {}).get(feed, {})
+        if not entry.get("data"):
+            continue
+        prefix = f"participation/{state_name}-general-election-turnout-history"
+        data = {"contract": "participation.statewide_general_election_history.v1",
+                "state_code": code, "status": entry["status"], "source": entry["source"], **entry["data"]}
+        artifact = _artifact(data)
+        path, csv_path = prefix + ".json.gz", prefix + ".csv"
+        estimates["artifacts"][path] = artifact
+        csv_body = turnout_history.history_csv(entry, virginia=code == "VA")
+        history_exports[csv_path] = csv_body
+        estimates["house_sources"].setdefault("general_election_turnout_history", {})[code] = {
+            "data": {"path": path, **{key: value for key, value in artifact.items() if key != "content"}},
+            "csv": {"path": csv_path, **pin(csv_body)},
+        }
     artifacts = render_artifacts(estimates)
     artifacts.update(state_exports(updated))
-    history = snapshot.get("granular_sources", {}).get(turnout_history.WA_FEED, {})
-    if history.get("data"):
-        artifacts["participation/washington-general-election-turnout-history.csv"] = (
-            turnout_history.washington_csv(history))
-    virginia = snapshot.get("granular_sources", {}).get(turnout_history.VA_FEED, {})
-    if virginia.get("data"):
-        artifacts["participation/virginia-general-election-turnout-history.csv"] = (
-            turnout_history.history_csv(virginia, virginia=True))
+    artifacts.update(history_exports)
     uf = snapshot.get("uf_turnout")
     if uf is not None and uf.get("data") is not None:
         from scripts.results_uf_turnout import exports as uf_exports
