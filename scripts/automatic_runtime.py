@@ -43,7 +43,7 @@ CODE_PATHS = (
     "results_minnesota_turnout.py", "results_turnout_history.py", "results_pa_vote_history.py", "results_alaska_turnout.py",
     "eac_county_turnout.py", "philadelphia_divisions.py",
     "results_native_congress.py", "results_native_dc.py", "results_native_state_family.py",
-    "results_native_oregon.py", "results_native_north_carolina.py", "results_native_virginia.py",
+    "results_native_oregon.py", "results_native_north_carolina.py", "results_native_idaho.py", "results_native_virginia.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",
     "congressional_filing_identity.py",

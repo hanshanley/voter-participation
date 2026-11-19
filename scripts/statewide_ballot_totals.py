@@ -12,6 +12,7 @@ from decimal import Decimal, ROUND_HALF_UP
 from scripts import protected_official_wyoming, results_minnesota_turnout as mn
 from scripts import results_alaska_turnout as alaska
 from scripts import results_native_dc as dc
+from scripts import results_native_idaho as idaho
 from scripts import results_native_north_carolina as nc
 from scripts import results_native_oregon as oregon
 from scripts import results_native_state_family as state_family
@@ -64,6 +65,11 @@ NC_FEED = "NC-registered-d6712073694b63cd"
 NC_INPUT = "data/results-intake/nc-20261113-statewide-and-counties.json"
 NC_PIN = {"bytes": 27005, "sha256": "9fc1b775d96cba4bf8da176be8351cf3b3b216969d69a3e88eb9a6c9c8c7a409"}
 OR_COUNTIES = {"bytes": 531, "sha256": "81968386770cafeed21ad8fb51afd37fe455ad0c4beedb329247f63bd3057585"}
+ID_SOURCE = {"url": idaho.STORED_URL, "sha256": idaho.COUNTY_SOURCE_ID.split(":")[1]}
+ID_VECTORS = {
+    "counties": {"bytes": 2593, "sha256": "e97adead59487097111aaa9563c0980b11384bce8146200b0c1fb07ace1de7e7"},
+    "units": {"bytes": 56776, "sha256": "b40febaa44ee2b74e3f4b7d318a1dd32e167b9f89754dbd35b2ff2d18d93c880"},
+}
 PROFILES = {
     "AK": {"state": "Alaska", "source_id": "ak-doe-statewide-voters-cast-20261103",
            "feed": alaska.FEED, "url": alaska.REPORT},
@@ -78,6 +84,8 @@ PROFILES = {
            "feed": history.GA_FEED, "url": history.GA_URL},
     "HI": {"state": "Hawaii", "source_id": "hi-oe-final-statewide-turnout-20261103",
            "feed": state_statistics.HI_FEED, "url": state_statistics.HI_URL},
+    "ID": {"state": "Idaho", "source_id": "idaho-2026-reviewed-county-ballot-subtotal",
+           "feed": "ID-registered-cad5e8d0e5a9c701", "url": idaho.DATA_URL},
     "KS": {"state": "Kansas", "source_id": history.KS_FEED,
            "feed": history.KS_FEED, "url": history.KS_URL},
     "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
@@ -154,13 +162,14 @@ def identity(code):
                            "FL": "native-reported-participation",
                            "CT": "native-voters-voted",
                            "HI": "native-total-turnout",
+                           "ID": "native-county-ballot-subtotal",
                            "MT": "native-total-turnout",
                            "TX": "native-total-turnout",
                            "MN": "native-total-number-voted",
                            "SC": "native-total-voter-turnout",
                            "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "CT", "FL", "HI", "SC", "TX", "VA", "VT", "MN", "MT"} else "all_methods")
+                          "source_defined" if code in {"AK", "CT", "FL", "HI", "ID", "SC", "TX", "VA", "VT", "MN", "MT"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -201,6 +210,8 @@ def observation(code, summary, retained=False):
         return georgia_observation(summary, retained)
     if code == "HI":
         return hawaii_observation(summary, retained)
+    if code == "ID":
+        return idaho_observation(summary, retained)
     if code == "KS":
         return kansas_observation(summary, retained)
     if code == "NJ":
@@ -1124,13 +1135,61 @@ def west_virginia_observation(summary, retained):
         printed, query["publication_date"], "Preliminary statewide turnout passage")
 
 
+def idaho_summary(shard):
+    rows = [row for row in shard["records"] if row["source"]["id"] in idaho.SOURCE_IDS]
+    vectors = {"counties": [], "units": []}
+    for row in rows:
+        if (row["source"]["url"] != ID_SOURCE["url"] or row["source"]["input_sha256"] != ID_SOURCE["sha256"]
+                or row["count"]["status"] != "reported"):
+            return None
+        native = row["view"]["native_record"]
+        county = idaho._native_identity(row)["county"]
+        is_county = row["source"]["id"] == idaho.COUNTY_SOURCE_ID
+        value = row["count"]["value"]
+        literal = native["locality_election"]["ballotsCast"] if is_county else native["ballots"]
+        if value != literal:
+            return None
+        vectors["counties" if is_county else "units"].append([row["id"], county, value])
+    for items in vectors.values():
+        items.sort()
+    if {kind: pin(encoded(items)) for kind, items in vectors.items()} != ID_VECTORS:
+        return None
+    idaho.validate_templates(rows)
+    return {"contract": CONTRACT, "source": ID_SOURCE, "vectors": vectors, "edition": "2026-11-04"}
+
+
+def idaho_observation(summary, retained):
+    vectors = summary["vectors"]
+    require(retained and summary["source"] == ID_SOURCE and summary["contract"] == CONTRACT
+            and summary["edition"] == "2026-11-04"
+            and {kind: pin(encoded(items)) for kind, items in vectors.items()} == ID_VECTORS,
+            "Idaho retained ballot query or edition changed")
+    county_counts = {county: value for _, county, value in vectors["counties"]}
+    grouped = {}
+    for _, county, value in vectors["units"]:
+        grouped[county] = grouped.get(county, 0) + value
+    require(len(county_counts) == 44 and len(vectors["units"]) == 986 and grouped == county_counts,
+            "Idaho county counts disagree with the ballot workbook by county")
+    return archive_observation(
+        "ID", summary, retained, sum(county_counts.values()), None, "Sum of county-reported ballots",
+        None, "electorate_not_supplied", "Retained unofficial county reconciliation",
+        ["November 4 snapshot: all 44 county counts agree with the 986 workbook reporting units by county.",
+         "Derived from county totals, not a published statewide parent or a certified result.",
+         "No statewide rate: Twin Falls County registration differs between the two native sources."],
+        None, summary["edition"], "44 county parents reconciled against 986 ballot-report rows")
+
+
 def archive_observation(code, summary, retained, ballots, registered, measure, register,
                         basis, label, notes, printed_rate, edition, selector, *,
                         source_clock=None, source_timezone=None, reporting=(None, None)):
     profile, source = PROFILES[code], summary["source"]
-    rate = 100 * ballots / registered
-    direct_ballots = code != "MT"
+    rate = 100 * ballots / registered if registered is not None else None
+    direct_ballots = code not in {"ID", "MT"}
     kind, mode = ("ballots_cast", "all_methods") if direct_ballots else ("participation_reported", "source_defined")
+    measure_id = ("native-county-ballot-subtotal" if code == "ID" else
+                  "native-total-ballots-cast" if direct_ballots else "native-total-turnout")
+    measure_label = ("Reported statewide county-ballot subtotal" if code == "ID" else
+                     "Native statewide ballots cast" if direct_ballots else "Native statewide reported turnout")
     reported, total = reporting
     view = {"state": profile["state"], "state_code": code, "year": 2026, "mode": "official",
             "geography_level": "statewide", "status": "retained_after_failure" if retained else "reported",
@@ -1141,7 +1200,7 @@ def archive_observation(code, summary, retained, ballots, registered, measure, r
             "source_url": source["url"], "source_sha256": source["sha256"], "complete_download_url": None,
             "automatic_source_refresh": True, "maps_approved": False,
             "participation_measure_kind": kind, "participation_measure_literal": measure,
-            "participation_measure_label": "Native statewide ballots cast" if direct_ballots else "Native statewide reported turnout",
+            "participation_measure_label": measure_label,
             "cast_ballot_count_qualified": direct_ballots,
             "unique_voter_count_qualified": False, "quality": notes,
             "source_reporting_label": " ".join(notes), "statewide_ballot_parent": copy.deepcopy(summary)}
@@ -1152,10 +1211,11 @@ def archive_observation(code, summary, retained, ballots, registered, measure, r
         "geography": {"id": code + "-native-statewide-total", "name": profile["state"], "state_code": code,
                       "level": "state", "parent_id": None, "join": {"status": "nongeographic",
                           "reference_id": None, "feature_key": None, "evidence": None}},
-        "measure": {"id": "native-total-ballots-cast" if direct_ballots else "native-total-turnout", "literal": measure,
+        "measure": {"id": measure_id, "literal": measure,
                     "kind": kind, "mode": mode, "unit": "ballots" if direct_ballots else "source_reported_count"},
         "count": {"value": ballots, "literal": ballots, "status": "reported"},
-        "denominator": {"value": registered, "literal": register, "basis": basis, "qualified": True},
+        "denominator": ({"value": registered, "literal": register, "basis": basis, "qualified": True}
+                        if registered is not None else None),
         "source_clock": {"literal": source_clock, "timezone": source_timezone},
         "reporting_status": {"literal": label, "reported_units": reported, "total_units": total,
                              "complete": reported == total if total is not None else None},
@@ -1313,6 +1373,7 @@ def project(files, snapshot, nc_retained_original=None):
         summary = (arkansas_summary(snapshot, shard, previous) if code == "AR" else
                    connecticut_summary(snapshot, shard, previous) if code == "CT" else
                    florida_summary(shard) if code == "FL" else
+                   idaho_summary(shard) if code == "ID" else
                    south_carolina_summary(snapshot) if code == "SC" else
                    oregon_summary(snapshot) if code == "OR" else
                    north_carolina_summary(snapshot, nc_retained_original if previous is None else None) if code == "NC" else
@@ -1325,7 +1386,7 @@ def project(files, snapshot, nc_retained_original=None):
                 continue
             row = observation(code, previous["view"]["statewide_ballot_parent"], retained=True)
         else:
-            row = observation(code, summary, retained=code == "FL"
+            row = observation(code, summary, retained=code in {"FL", "ID"}
                               or code == "NC" and snapshot.get("granular_sources", {}).get(NC_FEED, {}).get("status") != "reported"
                               or code == "CT" and summary["archived"]
                               or code == "AR" and summary["archived_capture"] is not None)

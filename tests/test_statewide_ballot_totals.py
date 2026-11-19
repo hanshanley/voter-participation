@@ -747,6 +747,41 @@ def test_florida_projects_only_the_unchanged_retained_statewide_total(monkeypatc
     assert totals.project(files, {}) == (files, [])
 
 
+def test_idaho_retained_subtotal_matches_every_county_and_withholds_rate(monkeypatch):
+    path = "states/ID.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    if not original.is_file():
+        pytest.skip("Retained collector baseline is not part of this runtime-only archive")
+    files = baseline(monkeypatch)
+    files[path] = original.read_bytes()
+    before = json.loads(gzip.decompress(files[path]))
+    index = json.loads(files["index.json"])
+    index["states"]["ID"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    stopped = {"granular_sources": {totals.PROFILES["ID"]["feed"]: {"status": "source_stopped"}}}
+    projected, changes = totals.project(files, stopped)
+    assert changes == [{"state_code": "ID", "id": totals.identity("ID"), "previous": None,
+                        "current": 731980, "source_status": "retained_after_failure"}]
+    after = json.loads(gzip.decompress(projected[path]))
+    record = after["records"][-1]
+    assert after["records"][:-1] == before["records"] and after["views"] == before["views"]
+    assert record["denominator"] is record["view"]["validated_pct"] is None
+    assert record["measure"]["kind"] == "participation_reported"
+    assert record["reporting_status"]["complete"] is record["source_clock"]["literal"] is None
+    assert b",731980,retained_after_failure,,," in totals.exports(projected)[
+        "participation/native-statewide-ballot-totals.csv"]
+    assert totals.project(projected, stopped) == (projected, [])
+    for candidate in before["records"]:
+        if candidate["source"]["id"] == totals.idaho.UNIT_SOURCE_ID:
+            candidate["count"]["value"] += 1
+            candidate["view"]["native_record"]["ballots"] += 1
+            break
+    files[path] = totals.compressed(before)
+    index["states"]["ID"].update(pin(files[path]))
+    files["index.json"] = encoded(index)
+    assert totals.project(files, stopped) == (files, [])
+
+
 def test_alaska_preserves_precinct_inventory_disagreement_and_uses_report_fraction(monkeypatch):
     ak = totals.alaska
     files = baseline(monkeypatch)
