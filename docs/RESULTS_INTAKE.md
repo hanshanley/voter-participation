@@ -33,11 +33,13 @@ or respondent refit is required to consume a compatible new source snapshot.
 ### Unattended handoff and recovery
 
 The collector checkpoints its complete packet before publication. A later
-scheduled run first resumes any staged publication. If the preceding scheduled
-run stopped after its checkpoint but before staging, it can reuse the complete
-artifact only against the original data ref. A scientific or integrity failure
-is not an automatic replay trigger. The public source pointer and accepted
-collector state advance together; newly encountered access stops survive staging.
+run first resumes any staged publication. If the preceding full collection
+stopped after its checkpoint but before staging, a native schedule or a
+no-input dispatch (including the independent fallback) can reuse the complete
+artifact only against the original data ref. Scoped or explicit replays are not
+automatic checkpoint candidates. An explicit failed publication step is not
+an automatic replay trigger. The public source pointer and accepted collector
+state advance together; newly encountered access stops survive staging.
 
 The website resolves the accepted source commit once per cycle. A matching source
 and engine skip bulk download, compilation and publication. A fresh runner can

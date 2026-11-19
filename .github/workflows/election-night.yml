@@ -1,4 +1,5 @@
 name: Update election results
+run-name: ${{ (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only)) && 'Collect full election results' || 'Run scoped election results update' }}
 
 on:
   schedule:
@@ -150,8 +151,8 @@ jobs:
             cp "$RUNNER_TEMP/election-intake/resume.json" "$RUNNER_TEMP/election-intake/publication.json"
           fi
 
-      - name: Find a durable collection checkpoint from an interrupted scheduled run
-        if: steps.resume.outputs.status == 'no_pending_publication' && github.event_name == 'schedule'
+      - name: Find a durable collection checkpoint from an interrupted full run
+        if: steps.resume.outputs.status == 'no_pending_publication' && (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only))
         id: checkpoint
         env:
           GH_TOKEN: ${{ github.token }}
@@ -164,10 +165,12 @@ jobs:
           def get(path):
               return json.loads(subprocess.check_output(["gh", "api", base + path]))
 
-          runs = get("/workflows/election-night.yml/runs?branch=main&event=schedule&status=completed&per_page=1")
-          for run in runs["workflow_runs"]:
-              if run["conclusion"] not in ("cancelled", "timed_out", "failure"):
-                  continue
+          runs = get("/workflows/election-night.yml/runs?branch=main&status=completed&per_page=20")
+          run = next((run for run in runs["workflow_runs"]
+                      if run["event"] == "schedule" or (
+                          run["event"] == "workflow_dispatch"
+                          and run["display_title"] == "Collect full election results")), None)
+          if run and run["conclusion"] in ("cancelled", "timed_out", "failure"):
               steps = {step["name"]: step["conclusion"] for job in get(f"/runs/{run['id']}/jobs")["jobs"]
                        for step in job["steps"]}
               if (steps.get("Checkpoint the completed collection before publication") == "success"

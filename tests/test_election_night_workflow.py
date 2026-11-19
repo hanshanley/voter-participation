@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import json
 import os
 from pathlib import Path
 import textwrap
@@ -45,25 +46,41 @@ def test_collection_has_its_own_budget_after_successful_pinned_validation():
     assert refresh["steps"][-1]["run"] == "exit 1"
 
 
-@pytest.mark.parametrize("publication, recoverable", [
-    ("skipped", True), ("cancelled", True), ("failure", False), ("success", False),
+@pytest.mark.parametrize("event,title,conclusion,publication,recoverable", [
+    ("schedule", "Old title", "cancelled", "skipped", True),
+    ("workflow_dispatch", "Collect full election results", "timed_out", "cancelled", True),
+    ("workflow_dispatch", "Collect full election results", "failure", "failure", False),
+    ("workflow_dispatch", "Collect full election results", "success", "success", False),
+    ("workflow_dispatch", "Old title", "cancelled", "skipped", False),
 ])
-def test_scheduled_checkpoint_is_reused_only_for_interrupted_publication(
-        tmp_path, publication, recoverable):
+def test_full_checkpoint_is_reused_only_for_interrupted_publication(
+        tmp_path, event, title, conclusion, publication, recoverable):
     step = next(step for step in workflow()["jobs"]["refresh"]["steps"] if step.get("id") == "checkpoint")
+    assert "inputs.refresh_sources == ''" in step["if"]
+    assert "inputs.reuse_collection_run == ''" in step["if"]
+    assert "!inputs.congressional_only" in step["if"]
     script = step["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
     output = tmp_path / "github-output"
     output.touch()
     metadata = [
-        b'{"workflow_runs":[{"id":123,"conclusion":"cancelled"}]}',
-        ("{\"jobs\":[{\"steps\":["
-         "{\"name\":\"Checkpoint the completed collection before publication\",\"conclusion\":\"success\"},"
-         "{\"name\":\"Publish valid results or preserve new access stops\",\"conclusion\":\""
-         + publication + "\"}]}]}").encode(),
+        {"workflow_runs": [
+            {"id": 124, "event": "workflow_dispatch", "display_title": "Run scoped election results update",
+             "conclusion": "cancelled"},
+            {"id": 123, "event": event, "display_title": title, "conclusion": conclusion},
+            {"id": 122, "event": "workflow_dispatch", "display_title": title, "conclusion": "cancelled"},
+        ]},
+        {"jobs": [{"steps": [
+            {"name": "Checkpoint the completed collection before publication", "conclusion": "success"},
+            {"name": "Publish valid results or preserve new access stops", "conclusion": publication},
+        ]}]},
     ]
     with patch.dict(os.environ, {"GH_REPO": "fixture/fixture", "GITHUB_OUTPUT": str(output)}):
-        with patch("subprocess.check_output", side_effect=metadata):
+        with patch("subprocess.check_output", side_effect=[json.dumps(body).encode() for body in metadata]) as api:
             exec(compile(script, str(WORKFLOW), "exec"), {})
+    assert api.call_count == (2 if event == "schedule" or (
+        title == "Collect full election results" and conclusion != "success") else 1)
+    if api.call_count == 2:
+        assert api.call_args.args[0][-1].endswith("/runs/123/jobs")
     assert output.read_text() == ("run=123\n" if recoverable else "")
 
 
