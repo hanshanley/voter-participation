@@ -12,6 +12,7 @@ from decimal import Decimal, ROUND_HALF_UP
 from scripts import protected_official_wyoming, results_minnesota_turnout as mn
 from scripts import results_alaska_turnout as alaska
 from scripts import results_native_dc as dc
+from scripts import results_native_oregon as oregon
 from scripts import results_native_state_family as state_family
 from scripts import results_state_statistics as state_statistics
 from scripts import results_turnout_history as history
@@ -54,6 +55,10 @@ CT_TOTAL = ("2102250", "1150127", "53091", "52940", "381498", "381490", "15015",
 CT_TOWNS = {"bytes": 11331, "sha256": "a108e82ffad5eeb905fbdf137e503e97d53a38da34af776f174aed738c29a260"}
 CT_PARENT = {"ID": "108", "BC": "1,150,127", "PR": "775 of 776 (99.87%)", "RV": "2,102,250",
              "T": "169 of 169", "PT": "0 of 169", "TO": "54.71", "SVT": True}
+OR_FEED = "OR-registered-395ba5d378c8d69d"
+OR_DISPLAY_URL = "https://results.oregonvotes.gov/?ID=39"
+OR_BASELINE_ID = "20e024e22223bce619b8d76b6d468c52"
+OR_COUNTIES = {"bytes": 531, "sha256": "81968386770cafeed21ad8fb51afd37fe455ad0c4beedb329247f63bd3057585"}
 PROFILES = {
     "AK": {"state": "Alaska", "source_id": "ak-doe-statewide-voters-cast-20261103",
            "feed": alaska.FEED, "url": alaska.REPORT},
@@ -74,6 +79,8 @@ PROFILES = {
            "feed": history.NJ_FEED, "url": history.NJ_URL},
     "OH": {"state": "Ohio", "source_id": history.OH_FEED,
            "feed": history.OH_FEED, "url": history.OH_BALLOTS},
+    "OR": {"state": "Oregon", "source_id": "or-sos-reconciled-statewide-turnout-20261103",
+           "feed": OR_FEED, "url": oregon.PAGE_URL},
     "MT": {"state": "Montana", "source_id": history.MT_FEED,
            "feed": history.MT_FEED, "url": history.MT_URL},
     "SC": {"state": "South Carolina", "source_id": "sc-sec-statewide-turnout-20261103",
@@ -184,6 +191,8 @@ def observation(code, summary, retained=False):
         return new_jersey_observation(summary, retained)
     if code == "OH":
         return ohio_observation(summary, retained)
+    if code == "OR":
+        return oregon_observation(summary, retained)
     if code == "MT":
         return montana_observation(summary, retained)
     if code == "VT":
@@ -952,6 +961,51 @@ def ohio_observation(summary, retained):
         None if derived else query["total"][8] + "%", None, query["total"][1])
 
 
+def oregon_summary(snapshot):
+    entry = snapshot.get("granular_sources", {}).get(OR_FEED, {})
+    if entry.get("status") != "reported":
+        return None
+    require(entry["adapter"] == oregon.ADAPTER and entry["source"]["url"] == oregon.API_URL,
+            "Oregon statewide turnout requires its reviewed county feed")
+    query, = entry["data"]["complete_native_query"]
+    return {"contract": CONTRACT, "query": query, "county_source": entry["source"],
+            "source": {"url": oregon.PAGE_URL, **query["independent_official_header"]["source_pin"]}}
+
+
+def oregon_clock(value):
+    return datetime.strptime(value, "%m/%d/%Y | %I:%M %p PT")
+
+
+def oregon_observation(summary, retained):
+    source, county_source, query = (summary[k] for k in ("source", "county_source", "query"))
+    header, rows = query["independent_official_header"], query["county_records"]
+    require(summary["contract"] == CONTRACT and source == {"url": oregon.PAGE_URL, **header["source_pin"]}
+            and county_source == {"url": oregon.API_URL, **query["source_pin"]}
+            and all(type(s["bytes"]) is int and s["bytes"] > 0 and
+                    re.fullmatch(r"[a-f0-9]{64}", s["sha256"]) for s in (source, county_source))
+            and header["election_date"] == "11/3/2026" and header["election_type"] == "General"
+            and header["status"] in ("Unofficial", "Official") and header["statewide_clock_zone_literal"] == "PT"
+            and datetime(2026, 11, 3) <= oregon_clock(header["source_update_label"]) < datetime(2027, 2, 1)
+            and len(rows) == 36 and pin(encoded(header["counties"])) == OR_COUNTIES
+            and {r["CountyID"]: r["CountyName"] for r in rows} == header["counties"],
+            "Oregon statewide turnout receipt or inventory changed")
+    ballots, registered = header["ballots_counted"], header["active_registered_voters"]
+    require(all(r["PrecinctName"] == "Countywide"
+                and type(r["calcVoterTurnout"]) is int and type(r["Voters"]) is int
+                and 0 <= r["calcVoterTurnout"] <= r["Voters"] for r in rows)
+            and type(ballots) is int and type(registered) is int and 0 <= ballots <= registered
+            and registered > 0 and sum(r["calcVoterTurnout"] for r in rows) == ballots
+            and sum(r["Voters"] for r in rows) == registered,
+            "Oregon statewide turnout and active registration do not reconcile")
+    notes = ["Statewide Ballots Counted and Active Registered Voters agree with all 36 county rows.",
+             "This is a same-report active-registration fraction, not VAP, VEP or a demographic rate.",
+             "County rate and geography decisions are unchanged. Report status is as declared by the source."]
+    return archive_observation("OR", summary, retained, ballots, registered, "Ballots Counted",
+                               "Active Registered Voters", "active_registered_voters", header["status"],
+                               notes, None, None, "Statewide Voter Turnout",
+                               source_clock=header["source_update_label"], source_timezone="PT")
+
+
 def montana_observation(summary, retained):
     source = summary["source"]
     require(summary["contract"] == CONTRACT and summary["index"] == source and source["url"] == history.MT_URL
@@ -1160,6 +1214,7 @@ def project(files, snapshot):
                    connecticut_summary(snapshot, shard, previous) if code == "CT" else
                    florida_summary(shard) if code == "FL" else
                    south_carolina_summary(snapshot) if code == "SC" else
+                   oregon_summary(snapshot) if code == "OR" else
                    turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
                    archive_report_summary(snapshot, code) if code in {"KS", "MT", "NJ", "OH"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
@@ -1182,6 +1237,8 @@ def project(files, snapshot):
                         or code in {"KS", "NJ"} and before["query"] == after["query"]
                         or code == "OH" and {key: value for key, value in before["query"].items() if key != "election"}
                         == {key: value for key, value in after["query"].items() if key != "election"}
+                        or code == "OR" and before["query"]["independent_official_header"]
+                        == after["query"]["independent_official_header"]
                         or code == "CT" and before["towns"] == after["towns"] and before["total"] == after["total"]
                         or code == "MN" and before["statistical_txt"] != after["statistical_txt"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
@@ -1191,6 +1248,11 @@ def project(files, snapshot):
                     row = observation(code, before, retained=True)
                 if code == "OH" and after["query"]["election"]["generated_at"] < before["query"]["election"]["generated_at"]:
                     row = observation(code, before, retained=True)
+                if code == "OR":
+                    old_header, new_header = (value["query"]["independent_official_header"] for value in (before, after))
+                    if (oregon_clock(new_header["source_update_label"]) < oregon_clock(old_header["source_update_label"])
+                            or old_header["status"] == "Official" and new_header["status"] != "Official"):
+                        row = observation(code, before, retained=True)
                 if code == "MT" and history.montana_controls(after["query"])[2] < history.montana_controls(before["query"])[2]:
                     row = observation(code, before, retained=True)
                 if code == "AR" and before["status"] == "OFFICIAL" and after["status"] != "OFFICIAL":
@@ -1217,8 +1279,22 @@ def project(files, snapshot):
                       and mirrors[0].get("native_statistics") == row["view"]["native_statistics"]
                       and mirrors[0].get("ballots") == row["count"]["value"]
                       and mirrors[0].get("denominator") is None)
+        initial_or = False
+        if code == "OR" and previous is None and len(mirrors) == 1:
+            mirror = mirrors[0]
+            require(mirror.get("source_url") == OR_DISPLAY_URL and mirror.get("county_id") is None
+                    and mirror.get("denominator_basis") == "active_registered_voters",
+                    "Oregon statewide display scope changed")
+            mirror_clock = oregon_clock(mirror["source_update_label"])
+            new_clock = oregon_clock(row["source_clock"]["literal"])
+            if new_clock < mirror_clock:
+                continue
+            initial_or = new_clock > mirror_clock or (
+                mirror["ballots"] == row["count"]["value"]
+                and mirror["denominator"] == row["denominator"]["value"])
         require(len(mirrors) <= 1 and (not mirrors or previous is not None
-                and mirrors[0] == previous["view"] or initial_sc), "Statewide ballot display preimage changed")
+                and mirrors[0] == previous["view"] or initial_sc or initial_or),
+                "Statewide ballot display preimage changed")
         if previous is None:
             require(code != "WY" or pin(result[path]) == profile["initial_shard"],
                     "Unreviewed initial statewide ballot inventory")

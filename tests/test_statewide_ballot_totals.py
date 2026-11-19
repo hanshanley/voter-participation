@@ -84,6 +84,76 @@ def test_kansas_waits_for_a_declared_workbook_and_preserves_a_reconciled_count(m
         totals.project(projected, snapshot)
 
 
+def test_oregon_projects_same_report_statewide_rate_without_changing_county_views(monkeypatch):
+    files = baseline(monkeypatch)
+    path = "states/OR.json.gz"
+    original_path = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    shard = json.loads(gzip.decompress(original_path.read_bytes()))
+    original_statewide = next(row for row in shard["records"] if row["id"] == totals.OR_BASELINE_ID)
+    files[path] = totals.compressed(shard)
+    index = json.loads(files["index.json"])
+    index["states"]["OR"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    current = json.loads(gzip.decompress(files["current.json.gz"]))
+    clock = "11/18/2026 | 10:45 PM PT"
+    current["snapshot"]["reporting"].append({
+        "state_code": "OR", "source_url": totals.OR_DISPLAY_URL,
+        "source_update_label": clock, "ballots": 360, "denominator": 720,
+        "denominator_basis": "active_registered_voters",
+    })
+    files["current.json.gz"] = totals.compressed(current)
+    counties = {str(i): f"County {i}" for i in range(36)}
+    monkeypatch.setattr(totals, "OR_COUNTIES", pin(encoded(counties)))
+    header = {"election_date": "11/3/2026", "election_type": "General", "status": "Unofficial",
+              "statewide_clock_zone_literal": "PT", "source_update_label": clock, "counties": counties,
+              "ballots_counted": 360, "active_registered_voters": 720, "source_pin": pin(b"header")}
+    query = {"independent_official_header": header, "source_pin": pin(b"counties"), "county_records": [
+        {"CountyID": key, "CountyName": name, "PrecinctName": "Countywide",
+         "calcVoterTurnout": 10, "Voters": 20} for key, name in counties.items()
+    ]}
+    entry = {"status": "reported", "adapter": totals.oregon.ADAPTER,
+             "source": {"url": totals.oregon.API_URL, **query["source_pin"]},
+             "data": {"complete_native_query": [query], "updates": []}}
+    snapshot = {"granular_sources": {totals.OR_FEED: entry}}
+    projected, [change] = totals.project(files, snapshot)
+    state = json.loads(gzip.decompress(projected[path]))
+    original = state["records"][-1]
+    assert state["records"][:-1] == shard["records"]
+    assert state["views"] == shard["views"]
+    assert change["current"] == 360 and original["view"]["validated_pct"] == 50
+    assert original["source_clock"] == {"literal": clock, "timezone": "PT"}
+    assert totals.project(projected, snapshot) == (projected, [])
+    assert b"OR,2026,360,reported,720,50.0" in totals.exports(projected)[
+        "participation/native-statewide-ballot-totals.csv"]
+    snapshot["collection_scope"] = {"mode": "selected_registered_source_refresh",
+                                    "source_ids": [totals.OR_FEED]}
+    from scripts.supported_analytical_release import administrative, administrative_coverage, selected_local_observation_ids
+    assert selected_local_observation_ids(snapshot, projected) == {original["id"]}
+    admin = administrative(projected)
+    audit = next(row for row in admin if row["observation_id"] == totals.OR_BASELINE_ID)
+    assert audit["source_count"] == original_statewide["count"]["value"]
+    assert audit["superseded_by_observation_id"] == original["id"]
+    coverage = next(row for row in administrative_coverage(admin) if row["state_code"] == "OR")
+    assert coverage["statewide_superseded_records"] == 1
+    assert coverage["statewide_election_participation_count_records"] == 1
+    revised = copy.deepcopy(snapshot)
+    new_query, = revised["granular_sources"][totals.OR_FEED]["data"]["complete_native_query"]
+    new_query["county_records"][0]["calcVoterTurnout"] -= 1
+    with pytest.raises(ValueError, match="do not reconcile"):
+        totals.project(projected, revised)
+    new_query["independent_official_header"].update(ballots_counted=359, source_pin=pin(b"new"))
+    new_query["source_pin"] = pin(b"new counties")
+    revised["granular_sources"][totals.OR_FEED]["source"].update(new_query["source_pin"])
+    revised_files, [change] = totals.project(projected, revised)
+    assert change["previous"] == 360 and change["current"] == 359
+    assert totals.project(revised_files, revised) == (revised_files, [])
+    new_query["independent_official_header"].update(
+        source_update_label="11/17/2026 | 10:45 PM PT", source_pin=pin(b"older header"))
+    retained, [change] = totals.project(revised_files, revised)
+    assert change["current"] == 359 and change["source_status"] == "retained_after_failure"
+    assert totals.project(retained, {}) == (retained, [])
+
+
 def test_new_jersey_future_archive_publication_retains_last_good(tmp_path, monkeypatch):
     import pypdf
     from scripts.results_intake import Collector

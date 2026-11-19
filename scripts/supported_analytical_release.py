@@ -85,11 +85,15 @@ def mechanisms(row, state_row):
 
 def administrative(files):
     from scripts import results_native_dc as dc
+    from scripts.statewide_ballot_totals import OR_BASELINE_ID, identity as statewide_id
 
     index = decoded(files, "index.json")
     rows = []
     for state, declaration in sorted(index["states"].items()):
-        for record in decoded(files, declaration["file"])["records"]:
+        records = decoded(files, declaration["file"])["records"]
+        successor = statewide_id("OR") if state == "OR" and any(
+            record["id"] == statewide_id("OR") for record in records) else None
+        for record in records:
             count, denominator = record["count"], record.get("denominator")
             qualified = bool(denominator and denominator.get("qualified"))
             value = count.get("value") if count["status"] == "reported" else None
@@ -103,6 +107,7 @@ def administrative(files):
                 "measure": record["measure"]["literal"], "measure_kind": record["measure"]["kind"],
                 "unit": record["measure"]["unit"], "mode": record["measure"]["mode"],
                 "count_status": count["status"], "source_count": value,
+                "superseded_by_observation_id": successor if record["id"] == OR_BASELINE_ID else None,
                 "registered_or_other_denominator": stock,
                 "denominator_basis": denominator.get("basis") if denominator else None,
                 "denominator_qualified": qualified, "compatible_source_fraction_pct": rate,
@@ -132,6 +137,9 @@ def administrative_coverage(rows):
         status = row["count_status"]
         covered = ("county_or_equivalent", "statewide") if row.get("also_covers_full_jurisdiction") else (level,)
         for scope in covered:
+            if row.get("superseded_by_observation_id"):
+                counts[f"{scope}_superseded_records"] += 1
+                continue
             counts[f"{scope}_{status}_records"] += 1
             if status != "reported":
                 continue
@@ -147,7 +155,7 @@ def administrative_coverage(rows):
             counts[f"{scope}_election_participation_count_records"] += 1
             if row["compatible_source_fraction_pct"] is not None:
                 counts[f"{scope}_election_participation_rate_records"] += 1
-    fields = ("reported", "unknown", "withheld", "early_or_returned",
+    fields = ("reported", "unknown", "withheld", "superseded", "early_or_returned",
               "election_participation_count", "election_participation_rate")
     return [
         {"state_code": code, "state": STATES[code], "year": 2026,
@@ -385,7 +393,7 @@ def other_offices(review):
 
 
 def selected_local_observation_ids(snapshot, counts=None):
-    from scripts import philadelphia_divisions, results_pdf_county_parent, results_turnout_history
+    from scripts import philadelphia_divisions, results_pdf_county_parent, results_turnout_history, statewide_ballot_totals
     from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
     from scripts.results_official_congress import CONTRACT as OFFICIAL_CONTRACT, IDENTITIES as OFFICIAL_IDENTITIES
 
@@ -426,6 +434,8 @@ def selected_local_observation_ids(snapshot, counts=None):
         require(isinstance(data, dict) and isinstance(data.get("updates"), list),
                 "Selected local source has no observation updates: " + identity)
         selected.update(update["id"] for update in data["updates"])
+        if identity == statewide_ballot_totals.OR_FEED and entry["status"] == "reported":
+            selected.add(statewide_ballot_totals.identity("OR"))
     return selected
 
 
@@ -529,11 +539,13 @@ def build(snapshot, count_files, seed, estimates, changes):
         path = f"release/historical-{year}-complete-points.json.gz"
         files[path] = compressed(input_body(review, key))
         media_types[path] = "application/json"
-    rate_rows = [row for row in admin if row["compatible_source_fraction_pct"] is not None]
+    current_admin = [row for row in admin if not row["superseded_by_observation_id"]]
+    rate_rows = [row for row in current_admin if row["compatible_source_fraction_pct"] is not None]
     coverage = {
         "administrative": {
             "source_observations": len(admin),
-            "reported_source_observations": sum(row["count_status"] == "reported" for row in admin),
+            "reported_source_observations": sum(row["count_status"] == "reported" for row in current_admin),
+            "superseded_source_observations": len(admin) - len(current_admin),
             "compatible_rate_frames": len(rate_rows),
             "rate_states": sorted({row["state_code"] for row in rate_rows}),
             "statewide_rate_states": [row["state_code"] for row in admin_coverage
