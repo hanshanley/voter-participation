@@ -22,6 +22,92 @@ LINK = re.compile(REPORT + r"[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}/", re.I
 STATISTICS = re.compile(
     r"Total Ballots Cast: ([0-9]+), Registered Voters: ([0-9]+), Overall Turnout: ([0-9]+\.[0-9]{2})%")
 STATUSES = ("Unofficial Results by Contest", "Official Results by Contest")
+PHILADELPHIA_FEED = "PA-philadelphia-countywide-turnout"
+PHILADELPHIA_URL = "https://philadelphiaresults.azurewebsites.us/VoterTurnoutDetails.aspx"
+PHILADELPHIA_DIVISION = re.compile(
+    r'<div class="county-precinct (odd|even)">\s*([0-9]{2}-[0-9]{2,3})\s*</div>'
+    r'((?:(?:\s*<div class="vertical-line-turnout"></div>)?\s*'
+    r'<div class="county-cast \1">[0-9,]+</div>){5})')
+
+
+def philadelphia_controls(data):
+    source, query = data["report"], data["complete_native_query"]
+    status, clock = query["status"], query["clock"]
+    ballots, registered, mail, polls, provisional, reported, divisions = query["parent"]
+    rate = query["printed_rate"]
+    rows = query["divisions"]
+    if (source["url"] != PHILADELPHIA_URL or type(source["bytes"]) is not int or source["bytes"] <= 0
+            or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or status not in {"Official", "Unofficial"} or query["election_date"] != ELECTION
+            or not re.fullmatch(r"[0-9]+\.[0-9]{2}%", rate)
+            or any(type(n) is not int or n < 0 for n in query["parent"])
+            or not 0 < ballots <= registered or mail + polls + provisional != ballots
+            or (Decimal(ballots) * 100 / registered).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(rate[:-1])
+            or not 0 <= reported <= divisions or divisions != len(rows)
+            or len({row[0] for row in rows}) != divisions
+            or {row[0][:2] for row in rows} != {f"{i:02}" for i in range(1, 67)}):
+        raise ValueError("Philadelphia turnout summary, division inventory or source scope changed")
+    if datetime.strptime(clock, "%m/%d/%Y %I:%M:%S %p EST").date().isoformat() < ELECTION:
+        raise ValueError("Philadelphia report clock predates the election")
+    for key, reg, total, place, mailed, prov in rows:
+        if (not re.fullmatch(r"[0-9]{2}-[0-9]{2,3}", key)
+                or any(type(n) is not int or n < 0 for n in (reg, total, place, mailed, prov))
+                or total > reg or total != place + mailed + prov):
+            raise ValueError("Invalid Philadelphia division turnout row: " + key)
+    sum_reg, sum_total, sum_polls, sum_mail, sum_prov = map(sum, zip(*(r[1:] for r in rows)))
+    if (sum_reg, sum_polls, sum_prov) != (registered, polls, provisional) or not (
+            0 <= mail - sum_mail == ballots - sum_total):
+        raise ValueError("Philadelphia division totals differ outside the unassigned mail residual")
+    return ballots, registered, rate, status, clock, mail - sum_mail
+
+
+def philadelphia_report(body):
+    html = body.decode("utf-8-sig")
+    number = r"([0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)"
+
+    def single(pattern):
+        matches = re.findall(pattern, html)
+        if len(matches) != 1:
+            raise ValueError("Missing or repeated Philadelphia turnout field: " + pattern)
+        return matches[0]
+
+    testing = single(r'<div id="pnlTestBanner"[^>]+style="([^"]*)"')
+    if "display:none" not in re.sub(r"\s+", "", testing).lower().split(";"):
+        raise ValueError("Philadelphia results portal is in testing mode")
+    status = single(r'<a id="lnkElectionInfo"[^>]+><h1><span>(Unofficial|Official)</span>'
+                    r' 2026 General Election Results</h1><h2>November 3, 2026</h2>')
+    clock = single(r'class="turnout-last-updated-time">([^<]+)</span>')
+    registered = single(r'Total Ballots Cast<span>' + number + r'</span><br/>Registered Voters<span>'
+                        + number + r'</span>')
+    modes = single(r'Ballots Cast by Mail:<span>' + number + r'</span><br/>Ballots Cast at Polling Place:<span>'
+                   + number + r'</span><br/>Ballots Cast by Provisional:<span>' + number + r'</span>')
+    reporting = single(r'Divisions Reported<span>' + number + r'</span><br/>Total Divisions<span>' + number + r'</span>')
+    rate = "".join(single(r'<canvas id="voter-turnout"[^>]*></canvas><div class="dough-percent">'
+                          r'<span class="int">([0-9]+)</span><span class="dec">(\.[0-9]{2}%)</span>'))
+    parse_int = lambda value: int(value.replace(",", ""))
+    rows = [[key, *(parse_int(n) for n in re.findall(r">([0-9,]+)</div>", cells))]
+            for _, key, cells in PHILADELPHIA_DIVISION.findall(html)]
+    data = {"report": {"url": PHILADELPHIA_URL, **pin(body)}, "complete_native_query": {
+        "status": status, "election_date": ELECTION, "clock": clock, "printed_rate": rate,
+        "parent": [parse_int(n) for n in (*registered, *modes, *reporting)], "divisions": rows,
+    }}
+    philadelphia_controls(data)
+    return data
+
+
+def collect_philadelphia(collector):
+    def parse(body):
+        data = philadelphia_report(body)
+        clock = data["complete_native_query"]["clock"]
+        data["date"] = datetime.strptime(clock, "%m/%d/%Y %I:%M:%S %p EST").isoformat()
+        prior = (collector.prior.get(PHILADELPHIA_FEED) or {}).get("data")
+        if prior and prior["complete_native_query"]["status"] == "Official" and (
+                data["complete_native_query"]["status"] != "Official"):
+            raise ValueError("Philadelphia official results reverted to unofficial")
+        return data
+
+    return collector.capture(PHILADELPHIA_FEED, PHILADELPHIA_URL, parse)
 
 
 class ReportLinks(HTMLParser):

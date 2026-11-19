@@ -48,6 +48,39 @@ def test_buxton_turnout_accepts_consistent_revisions_and_rejects_wrong_scope(tmp
     assert collect(revised)["status"] == "retained_after_failure"
 
 
+def test_philadelphia_turnout_keeps_parent_residual_and_holds_testing_or_invalid_divisions():
+    parser = frame.county_pdf
+    header = (
+        '<div id="pnlTestBanner" style="display:none"></div>'
+        '<a id="lnkElectionInfo" href="/"><h1><span>Unofficial</span> 2026 General Election Results</h1>'
+        '<h2>November 3, 2026</h2></a>'
+        '<span class="turnout-last-updated-time">11/18/2026 10:18:46 AM EST</span>'
+        'Total Ballots Cast<span>134</span><br/>Registered Voters<span>264</span>'
+        'Ballots Cast by Mail:<span>68</span><br/>Ballots Cast at Polling Place:<span>66</span>'
+        '<br/>Ballots Cast by Provisional:<span>0</span>'
+        'Divisions Reported<span>66</span><br/>Total Divisions<span>66</span>'
+        '<canvas id="voter-turnout"></canvas><div class="dough-percent">'
+        '<span class="int">50</span><span class="dec">.76%</span>'
+    )
+    rows = "".join(
+        f'<div class="county-precinct odd">{ward:02}-01</div>'
+        + "".join(f'<div class="county-cast odd">{count}</div>' for count in (4, 2, 1, 1, 0))
+        for ward in range(1, 67)
+    )
+    body = (header + rows).encode()
+    result = parser.philadelphia_report(body)
+    assert parser.philadelphia_controls(result) == (
+        134, 264, "50.76%", "Unofficial", "11/18/2026 10:18:46 AM EST", 2)
+    assert result["complete_native_query"]["divisions"][0] == ["01-01", 4, 2, 1, 1, 0]
+    with pytest.raises(ValueError, match="testing mode"):
+        parser.philadelphia_report(body.replace(b"display:none", b"display:block"))
+    with pytest.raises(ValueError, match="division inventory"):
+        parser.philadelphia_report(body.replace(b"02-01</div>", b"01-01</div>"))
+    with pytest.raises(ValueError, match="outside the unassigned mail residual"):
+        parser.philadelphia_report(body.replace(b"Mail:<span>68", b"Mail:<span>67")
+                                  .replace(b"Polling Place:<span>66", b"Polling Place:<span>67"))
+
+
 def baseline(value):
     profile = frame.IA
     bounds = {"sha256": profile["reference_sha256"], "boundary_year": 2026,

@@ -272,6 +272,11 @@ BUXTON = ("ME", "Maine", "Buxton", "2309410",
           "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc",
           history.BUXTON_FEED, history.BUXTON_URL, "ME:town-ballot-statistics:2309410",
           "ME-2026-11-03-general", "native_registered_voters_same_buxton_report")
+PHILADELPHIA = ("PA", "Pennsylvania", "Philadelphia County", "42101",
+                "76496baea4bf48228d8c9891aafdf76090f1267764ea38f4305889e36d9249e6",
+                county_pdf.PHILADELPHIA_FEED, county_pdf.PHILADELPHIA_URL,
+                "PA:official-ballot-statistics:42101", "PA-2026-11-03-general",
+                "native_registered_voters_same_philadelphia_report")
 
 
 def county_parent_observation(profile, data, reference, status):
@@ -303,8 +308,7 @@ def county_parent_observation(profile, data, reference, status):
             "The same scanned report supplies the countywide count and registration, checked at two OCR resolutions.",
             "The three voting modes reconcile to PUBLIC COUNT. The report generation clock is not a count-update time.",
         ]
-    else:
-        require(profile == BUXTON, "Unknown local source profile")
+    elif profile == BUXTON:
         ballots, registered, fraction = history.buxton_controls(data)
         clock = None
         label = "Town clerk state-and-town results; certification not established"
@@ -313,6 +317,18 @@ def county_parent_observation(profile, data, reference, status):
         notes = [
             "The town clerk's absentee and in-person counts reconcile to the townwide total.",
             "This is a same-report registered-voter fraction, not a York County rate.",
+        ]
+    else:
+        require(profile == PHILADELPHIA, "Unknown local source profile")
+        ballots, registered, fraction, status_literal, published, residual = county_pdf.philadelphia_controls(data)
+        clock = data["date"]
+        label = f"{status_literal} Philadelphia County Board of Elections results"
+        measure, register = "Total Ballots Cast", "Registered Voters"
+        selector = {"scope": "countywide turnout header", "native_label": measure}
+        notes = [
+            f"The countywide total includes {residual:,} mail ballots not assigned to a division in this report.",
+            "The public query includes all native division rows; no residual is allocated and no division geography is inferred.",
+            "The site update time is separate from certification and does not establish a count-update time.",
         ]
     town = profile == BUXTON
     level = "municipality" if town else "county"
@@ -339,6 +355,8 @@ def county_parent_observation(profile, data, reference, status):
     }
     if town:
         view["reference_municipality_key"] = fips
+    elif profile == PHILADELPHIA:
+        view.update(source_publication_label=published, source_publication_timezone="EST")
     return {
         "contract": VERSION,
         "id": observation_id(feed, election, geo, measure_id, "all_methods"),
@@ -393,18 +411,19 @@ def project_county_parent(counts, native, snapshot, profile):
         require(entry["status"] in {"reported", "retained_after_failure"}
                 and entry["source"]["url"] == url
                 and isinstance(entry.get("first_observed_at"), str), f"{county} collection receipt differs")
-        if profile in (WILSON, BUXTON):
+        if profile in (WILSON, BUXTON, PHILADELPHIA):
             require(entry["source"] == data["report"], "Wilson receipt differs from report evidence")
     native_index = json.loads(native["index.json"])
     mappings = native_index["county_bindings"][code]
-    early = mappings["in_person_early"]
+    reference_mode = "mail_returned" if profile == PHILADELPHIA else "in_person_early"
+    early = mappings[reference_mode]
     geometry = {key: copy.deepcopy(early[key]) for key in ("feature_keys", "feature_scopes", "features", "sha256")}
     matches = [item for item in early["rows"] if item["feature_key"] == fips]
     require(len(matches) == 1 and early["sha256"] == reference_sha
             and fips in early["feature_keys"]
             and early["feature_scopes"][fips] == {"state_code": code, "name": county, "boundary_year": year},
             f"{county} reference identity changed")
-    refs = [rows[key]["view"]["reference_geometry"] for key in shard["views"]["in_person_early"]["counties"]
+    refs = [rows[key]["view"]["reference_geometry"] for key in shard["views"][reference_mode]["counties"]
             if rows[key]["view"]["county_id"] == matches[0]["county_id"]
             and rows[key]["view"].get(reference_key) == fips]
     require(len(refs) == 1 and refs[0]["sha256"] == reference_sha
@@ -413,6 +432,9 @@ def project_county_parent(counts, native, snapshot, profile):
         require(refs[0]["geography_scope"] == "provider_partial_locality_activity",
                 "Maine contextual reference scope changed")
         refs[0] = {**refs[0], "geography_scope": "native_partial_town_turnout"}
+    elif profile == PHILADELPHIA:
+        refs[0] = {**refs[0], "geography_scope": "native_partial_county_context",
+                   "partial_county_fips": [fips]}
     if data is None:
         old = prior["view"]
         require(old["status"] in {"reported", "retained_after_failure"} and prior ==
@@ -423,13 +445,16 @@ def project_county_parent(counts, native, snapshot, profile):
         candidate = county_parent_observation(profile, data, refs[0], entry["status"])
     if prior and data is not None:
         old = prior["view"]["native_record"]
-        regression = (data["date"] < old["date"] if profile in (CUYAHOGA, SUMNER) else False)
+        regression = (data["date"] < old["date"] if profile in (CUYAHOGA, SUMNER, PHILADELPHIA) else False)
         if profile == CUYAHOGA:
             regression |= (old["report_status"] == county_pdf.STATUSES[1]
                            and data["report_status"] != county_pdf.STATUSES[1])
         elif profile == WILSON:
             regression |= (prior["view"]["source_status_literal"] == "OFFICIAL RESULTS"
                            and candidate["view"]["source_status_literal"] != "OFFICIAL RESULTS")
+        elif profile == PHILADELPHIA:
+            regression |= (old["complete_native_query"]["status"] == "Official"
+                           and data["complete_native_query"]["status"] != "Official")
         if regression or entry["status"] == "retained_after_failure":
             candidate = copy.deepcopy(prior)
             candidate["source"]["fields"]["status"] = candidate["view"]["status"] = "retained_after_failure"
@@ -483,3 +508,7 @@ def project_sumner(counts, native, snapshot):
 
 def project_buxton(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, BUXTON)
+
+
+def project_philadelphia(counts, native, snapshot):
+    return project_county_parent(counts, native, snapshot, PHILADELPHIA)
