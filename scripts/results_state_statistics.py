@@ -2,10 +2,13 @@
 
 import copy
 import json
+from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 from html import escape, unescape
 from html.parser import HTMLParser
 import re
+
+from scripts.participation_intake.contract import pin
 
 
 URL = "https://scvotes.gov/state-election-commission-certifies-2026-statewide-general-election/"
@@ -379,6 +382,90 @@ def statistics(body, state):
             "This state-only report supplies no new county, precinct, demographic or behavioral-model qualification.",
         ],
     }
+
+
+HI_FEED = "HI-statewide-summary-turnout"
+HI_ROOT = "https://elections.hawaii.gov/wp-content/results/2026%20General/"
+HI_URL = HI_ROOT + "histatewide.pdf"
+HI_REPORTS = ("histatewide", "cch", "coh", "cok", "com")
+HI_FIELDS = ("TOTAL REGISTRATION", "TOTAL TURNOUT", "Mail TURNOUT", "In-Person TURNOUT")
+
+
+def hawaii_report(body, name):
+    import io
+    from pypdf import PdfReader
+    from scripts.results_native import SUMMARY_PROFILES, summary_page_statistics
+
+    url = HI_ROOT + name + ".pdf"
+    if name not in HI_REPORTS or not body.startswith(b"%PDF-") or not body.rstrip().endswith(b"%%EOF"):
+        raise ValueError("Invalid Hawaii summary report")
+    profile = ({"layout": "column_turnout", "title": "GENERAL ELECTION 2026 - State of Hawaii - Statewide"}
+               if name == "histatewide" else SUMMARY_PROFILES[url])
+    pdf = PdfReader(io.BytesIO(body), strict=True)
+    if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 100:
+        raise ValueError("Invalid Hawaii summary page inventory")
+    pages = [summary_page_statistics(page.extract_text(extraction_mode="layout"), i, len(pdf.pages), profile)
+             for i, page in enumerate(pdf.pages, 1)]
+    return {"source": {"url": url, **pin(body)}, "pages": pages}
+
+
+def hawaii_controls(reports):
+    if set(reports) != set(HI_REPORTS):
+        raise ValueError("Incomplete Hawaii statewide and administration report inventory")
+    selected = {}
+    for name in HI_REPORTS:
+        source, pages = (reports[name][key] for key in ("source", "pages"))
+        parents = [page for page in pages if "native_values" in page]
+        if (set(source) != {"url", "bytes", "sha256"} or source["url"] != HI_ROOT + name + ".pdf"
+                or type(source["bytes"]) is not int or not 0 < source["bytes"] <= 4_000_000
+                or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+                or not 1 <= len(pages) <= 100 or len(parents) != 1
+                or any(page["page"] != i or page["source_clock"] != pages[0]["source_clock"]
+                       or page["native_report_status_literal"] != "FINAL" for i, page in enumerate(pages, 1))):
+            raise ValueError("Incompatible Hawaii report identity, page sequence, clock or status")
+        parent, = parents
+        clock = datetime.strptime(parent["source_clock"], "Printed on: %m/%d/%Y at %I:%M:%S %p")
+        cells = parent["statistical_cells"]
+        counts = parent["native_values"]
+        if (clock.date().isoformat() < "2026-11-03" or set(cells) != set(HI_FIELDS)
+                or set(counts) != set(HI_FIELDS)
+                or any(type(counts[key]) is not int or not 0 <= counts[key] <= 2**53 - 1
+                       or cells[key]["value"] != counts[key] for key in HI_FIELDS)):
+            raise ValueError("Invalid Hawaii native turnout cells")
+        registered, turnout, mail, in_person = (counts[key] for key in HI_FIELDS)
+        if (not 0 < turnout <= registered or turnout != mail + in_person
+                or any((100 * Decimal(counts[key]) / registered).quantize(
+                    Decimal(".1"), rounding=ROUND_HALF_UP) != Decimal(cells[key]["fraction"])
+                    for key in HI_FIELDS[1:]) or turnout != parent["count"] or registered != parent["registered"]
+                or parent["native_fraction_literal"] != cells["TOTAL TURNOUT"]["fraction"] + "%"):
+            raise ValueError("Hawaii native turnout components or fractions disagree")
+        selected[name] = parent
+    state = selected["histatewide"]
+    differences = {key: sum(selected[name]["native_values"][key] for name in HI_REPORTS[1:])
+                   - state["native_values"][key] for key in HI_FIELDS}
+    if (differences["TOTAL REGISTRATION"] != 0 or differences["Mail TURNOUT"] != 0
+            or differences["In-Person TURNOUT"] not in (0, 2)):
+        raise ValueError("Hawaii has a new cross-scope discrepancy requiring review")
+    return {"statewide": state, "administration_minus_statewide": differences}
+
+
+def collect_hawaii(collector):
+    def parse(body):
+        reports = {"histatewide": hawaii_report(body, "histatewide")}
+        for name in HI_REPORTS[1:]:
+            child, _ = collector.acquire(HI_ROOT + name + ".pdf")
+            reports[name] = hawaii_report(child, name)
+        facts = hawaii_controls(reports)
+        prior = (collector.prior.get(HI_FEED) or {}).get("data") or {}
+        previous = prior.get("complete_native_query") or {}
+        for name in previous:
+            clock = lambda report: datetime.strptime(report["pages"][0]["source_clock"],
+                                                      "Printed on: %m/%d/%Y at %I:%M:%S %p")
+            if clock(reports[name]) < clock(previous[name]):
+                raise ValueError("Hawaii summary clock regressed")
+        return {"complete_native_query": reports, "reconciliation": facts}
+
+    return collector.capture(HI_FEED, HI_URL, parse)
 
 
 def refresh(row, data, provenance):

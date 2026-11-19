@@ -51,6 +51,8 @@ PROFILES = {
     "AZ": {"state": "Arizona", "source_id": "az-sos-county-ballots-20261103",
            "feed": "AZ-official", "url": AZ_URL},
     "FL": {"state": "Florida", "source_id": FL_REVIEW, "feed": None, "url": FL_SOURCE["url"]},
+    "HI": {"state": "Hawaii", "source_id": "hi-oe-final-statewide-turnout-20261103",
+           "feed": state_statistics.HI_FEED, "url": state_statistics.HI_URL},
     "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
            "feed": mn.IDENTITY, "url": mn.URL},
     "SC": {"state": "South Carolina", "source_id": "sc-sec-statewide-turnout-20261103",
@@ -109,11 +111,12 @@ def identity(code):
                           code + "-native-statewide-total",
                           {"AK": "native-voters-cast", "VT": "native-votes-cast-including-absentee",
                            "FL": "native-reported-participation",
+                           "HI": "native-total-turnout",
                            "MN": "native-total-number-voted",
                            "SC": "native-total-voter-turnout",
                            "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "FL", "SC", "VA", "VT", "MN"} else "all_methods")
+                          "source_defined" if code in {"AK", "FL", "HI", "SC", "VA", "VT", "MN"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -148,6 +151,8 @@ def observation(code, summary, retained=False):
         return arkansas_observation(summary, retained)
     if code == "FL":
         return florida_observation(summary, retained)
+    if code == "HI":
+        return hawaii_observation(summary, retained)
     if code == "VT":
         return vermont_observation(summary, retained)
     if code == "MN":
@@ -699,6 +704,63 @@ def arkansas_observation(summary, retained):
     })
 
 
+def hawaii_summary(snapshot):
+    entry = snapshot.get("granular_sources", {}).get(state_statistics.HI_FEED, {})
+    if entry.get("status") != "reported":
+        return None
+    data = entry["data"]
+    reports = data["complete_native_query"]
+    require(data["reconciliation"] == state_statistics.hawaii_controls(reports)
+            and reports["histatewide"]["source"] == entry["source"],
+            "Hawaii statewide facts differ from their complete report query")
+    return {"contract": CONTRACT, "source": entry["source"], "reports": reports}
+
+
+def hawaii_observation(summary, retained):
+    require(summary["contract"] == CONTRACT, "Malformed Hawaii statewide report")
+    facts = state_statistics.hawaii_controls(summary["reports"])
+    parent, source = facts["statewide"], summary["source"]
+    require(source == summary["reports"]["histatewide"]["source"], "Hawaii statewide source receipt differs")
+    difference = facts["administration_minus_statewide"]["In-Person TURNOUT"]
+    notes = ["Direct statewide TOTAL TURNOUT, not candidate votes or a sum of local reports.",
+             "The statewide mail and in-person counts reconcile internally. The four separately printed "
+             f"administration reports have an in-person difference of {difference:+d} versus statewide.",
+             "The native FINAL label does not independently establish certification. The print time is not "
+             "a count-update clock. No turnout rate, unique-voter estimate or new map join is qualified."]
+    measure, profile = "TOTAL TURNOUT", PROFILES["HI"]
+    clock = parent["source_clock"]
+    view = {"state": "Hawaii", "state_code": "HI", "year": 2026, "mode": "official",
+            "geography_level": "statewide", "status": "retained_after_failure" if retained else "reported",
+            "ballots": parent["count"], "registered": parent["registered"], "denominator": None,
+            "denominator_basis": "electorate_not_supplied", "reported_pct": None, "validated_pct": None,
+            "native_printed_pct": parent["native_fraction_literal"], "source_update_label": None,
+            "source_update_timezone": None, "source_date": None, "source_publication_label": clock,
+            "source_status_literal": "FINAL", "reported_units": None, "total_units": None,
+            "source_url": source["url"], "source_sha256": source["sha256"], "complete_download_url": None,
+            "automatic_source_refresh": True, "maps_approved": False,
+            "participation_measure_kind": "participation_reported", "participation_measure_literal": measure,
+            "participation_measure_label": "Native statewide total turnout", "cast_ballot_count_qualified": False,
+            "unique_voter_count_qualified": False, "quality": notes,
+            "source_reporting_label": " ".join(notes), "statewide_ballot_parent": copy.deepcopy(summary)}
+    return validate({
+        "contract": VERSION, "id": identity("HI"),
+        "election": {"id": "HI-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": "HI-native-statewide-total", "name": "Hawaii", "state_code": "HI",
+                      "level": "state", "parent_id": None, "join": {"status": "nongeographic",
+                          "reference_id": None, "feature_key": None, "evidence": None}},
+        "measure": {"id": "native-total-turnout", "literal": measure,
+                    "kind": "participation_reported", "mode": "source_defined", "unit": "source_reported_count"},
+        "count": {"value": parent["count"], "literal": parent["count"], "status": "reported"},
+        "denominator": None, "source_clock": {"literal": None, "timezone": None},
+        "reporting_status": {"literal": "FINAL", "reported_units": None, "total_units": None, "complete": None},
+        "source": {"id": profile["source_id"], "url": source["url"], "input_sha256": source["sha256"],
+                   "classification": "public_aggregate", "selector": {"native_label": measure, "page": parent["page"]},
+                   "fields": copy.deepcopy(view)},
+        "quality": {"conflicts": [], "notes": notes}, "view": view,
+    })
+
+
 def south_carolina_summary(snapshot):
     entries = [item for item in snapshot.get("participation_observations", [])
                if item.get("channel") == "SC-official" and item.get("status") == "reported"]
@@ -822,7 +884,7 @@ def project(files, snapshot):
             "Wrong statewide ballot count input contract")
     changes = []
     feeds = snapshot.get("congress", {}).get("official_candidate_evidence", {})
-    statewide_sources = {"AK": alaska_summary, "AZ": arizona_summary, "MN": minnesota_summary,
+    statewide_sources = {"AK": alaska_summary, "AZ": arizona_summary, "HI": hawaii_summary, "MN": minnesota_summary,
                          "VT": vermont_summary}
     for code, profile in PROFILES.items():
         if code not in index["states"]:
@@ -861,6 +923,7 @@ def project(files, snapshot):
                 require(before["source"]["sha256"] != after["source"]["sha256"]
                         or code == "AR" and {**before, "archived_capture": None} == after
                         or code == "AK" and before["statewide_feed"] != after["statewide_feed"]
+                        or code == "HI" and before["reports"]["histatewide"] == after["reports"]["histatewide"]
                         or code == "MN" and before["statistical_txt"] != after["statistical_txt"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
                 if code == "AR" and before["status"] == "OFFICIAL" and after["status"] != "OFFICIAL":

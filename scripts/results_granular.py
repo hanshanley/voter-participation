@@ -481,6 +481,8 @@ def collect(collector, baseline):
             collector, jobs["MN-native-local"])
     jobs.update(collect_sources(collector, baseline))
     jobs[results_alaska_turnout.FEED] = results_alaska_turnout.collect(collector)
+    from scripts.results_state_statistics import HI_FEED, collect_hawaii
+    jobs[HI_FEED] = collect_hawaii(collector)
     jobs[results_pdf_county_parent.IDENTITY] = results_pdf_county_parent.collect(collector)
     jobs[results_turnout_history.WA_FEED] = results_turnout_history.collect_washington(collector)
     jobs[results_turnout_history.VA_FEED] = results_turnout_history.collect_virginia(collector)

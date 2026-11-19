@@ -42,6 +42,51 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_hawaii_direct_parent_preserves_known_cross_scope_difference(monkeypatch):
+    from decimal import Decimal
+
+    def report(name, registered, mail, in_person):
+        counts = dict(zip(stats.HI_FIELDS, (registered, mail + in_person, mail, in_person)))
+        fractions = {key: f"{Decimal(counts[key]) * 100 / registered:.1f}"
+                     for key in stats.HI_FIELDS[1:]}
+        return {"source": {"url": stats.HI_ROOT + name + ".pdf", "bytes": 1000, "sha256": "a" * 64},
+                "pages": [{"page": 1, "source_clock": "Printed on: 11/10/2026 at 08:00:08 pm",
+                           "native_report_status_literal": "FINAL", "count": mail + in_person,
+                           "registered": registered, "native_values": counts,
+                           "native_fraction_literal": fractions["TOTAL TURNOUT"] + "%",
+                           "statistical_cells": {key: {"value": value, "fraction": fractions.get(key)}
+                                                 for key, value in counts.items()}}]}
+
+    reports = {name: report(name, *values) for name, values in zip(stats.HI_REPORTS, (
+        (853399, 374918, 17510), (550792, 244938, 9548), (135544, 59040, 3517),
+        (49337, 23244, 1485), (117726, 47696, 2962)))}
+    facts = stats.hawaii_controls(reports)
+    assert facts["administration_minus_statewide"]["In-Person TURNOUT"] == 2
+    files = baseline(monkeypatch)
+    path = "states/HI.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["HI"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    snapshot = {"granular_sources": {stats.HI_FEED: {
+        "status": "reported", "source": reports["histatewide"]["source"],
+        "data": {"complete_native_query": reports, "reconciliation": facts}}}}
+    projected, changes = totals.project(files, snapshot)
+    assert len(changes) == 1 and changes[0]["current"] == 392428
+    after = json.loads(gzip.decompress(projected[path]))
+    before = json.loads(gzip.decompress(files[path]))
+    assert before["records"] == after["records"][:-1] and before["views"] == after["views"]
+    assert after["records"][-1]["denominator"] is None
+    assert totals.project(projected, snapshot) == (projected, [])
+    held, changes = totals.project(projected, {})
+    assert changes[0]["current"] == 392428 and changes[0]["source_status"] == "retained_after_failure"
+    assert totals.project(held, {}) == (held, [])
+    reports["com"] = report("com", 117726, 47696, 2963)
+    with pytest.raises(ValueError, match="new cross-scope discrepancy"):
+        stats.hawaii_controls(reports)
+
+
 def test_south_carolina_binds_existing_reader_to_one_count_only_observation(monkeypatch):
     from test_results_state_statistics import document, template
 
