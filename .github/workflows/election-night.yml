@@ -241,12 +241,14 @@ jobs:
 
       - name: Activate any previously staged verified collection before acquiring again
         id: resume
+        env:
+          ARCHIVE_SOURCES: ${{ needs.validate.outputs.archive_sources }}
         run: |
           mkdir -p "$RUNNER_TEMP/election-intake"
           python -m scripts.results_intake resume-publication > "$RUNNER_TEMP/election-intake/resume.json"
           status="$(python -c 'import json, sys; print(json.load(open(sys.argv[1]))["status"])' "$RUNNER_TEMP/election-intake/resume.json")"
           echo "status=$status" >> "$GITHUB_OUTPUT"
-          if [ "$status" = "published" ]; then
+          if [ "$status" = "published" ] && [ -z "$ARCHIVE_SOURCES" ]; then
             cp "$RUNNER_TEMP/election-intake/resume.json" "$RUNNER_TEMP/election-intake/publication.json"
           fi
 
@@ -324,7 +326,9 @@ jobs:
           PY
 
       - name: Collect independent House and participation results
-        if: steps.resume.outputs.status == 'no_pending_publication' && inputs.reuse_collection_run == '' && (steps.checkpoint.outputs.run == '' || steps.restore.outputs.status == 'superseded')
+        # A resumed packet does not fulfill the weekly check. The scoped CLI reloads
+        # the active collector state before collecting the archives.
+        if: (steps.resume.outputs.status == 'no_pending_publication' || (needs.validate.outputs.archive_sources != '' && steps.resume.outputs.status == 'published')) && inputs.reuse_collection_run == '' && (steps.checkpoint.outputs.run == '' || steps.restore.outputs.status == 'superseded')
         id: capture
         continue-on-error: true
         env:
@@ -423,5 +427,5 @@ jobs:
             ${{ runner.temp }}/election-intake/resume.json
 
       - name: Fail visibly if collection did not finish
-        if: always() && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure')
+        if: always() && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure' || (needs.validate.outputs.archive_sources != '' && steps.capture.outcome != 'success'))
         run: exit 1

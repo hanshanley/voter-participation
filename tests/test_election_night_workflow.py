@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
+import subprocess
 import textwrap
 from unittest.mock import patch
 
@@ -190,3 +191,38 @@ def test_archive_recovery_is_scoped_or_refused(tmp_path, early, override):
                 "active=true\narchive_sources=KS-general-election-turnout-workbook,"
                 "NJ-general-election-turnout-pdf,PA-2026-general-vote-history,"
                 "TX-general-election-turnout,VA-general-election-turnout,WA-general-election-turnout\n")
+
+
+@pytest.mark.parametrize("archive_sources", ["", "KS,NJ,PA,TX,VA,WA"])
+def test_staged_publication_does_not_replace_the_weekly_check(tmp_path, archive_sources):
+    steps = workflow()["jobs"]["refresh"]["steps"]
+    resume = next(step for step in steps if step.get("id") == "resume")
+    capture = next(step for step in steps if step.get("id") == "capture")
+    checkpoint = next(step for step in steps if step.get("id") == "checkpoint")
+    assert "needs.validate.outputs.archive_sources == ''" in checkpoint["if"]
+    assert "(needs.validate.outputs.archive_sources != '' && steps.resume.outputs.status == 'published')" in capture["if"]
+    assert "(needs.validate.outputs.archive_sources != '' && steps.capture.outcome != 'success')" in steps[-1]["if"]
+
+    commands = tmp_path / "commands"
+    env = {**os.environ, "RUNNER_TEMP": str(tmp_path), "GITHUB_OUTPUT": str(tmp_path / "output"),
+           "ARCHIVE_SOURCES": archive_sources, "REFRESH_SOURCES": archive_sources,
+           "CONGRESSIONAL_ONLY": "false", "COMMANDS": str(commands)}
+    stub = """python() {
+      if [ "$1" = "-c" ]; then
+        printf 'published\\n'
+      elif [ "$3" = "resume-publication" ]; then
+        printf '{"status":"published"}\\n'
+      else
+        printf '%s\\n' "$@" > "$COMMANDS"
+      fi
+    }
+    """
+    subprocess.run(["bash", "-e", "-c", stub + resume["run"]], env=env, check=True)
+    work = tmp_path / "election-intake"
+    assert json.loads((work / "resume.json").read_bytes()) == {"status": "published"}
+    assert (work / "publication.json").exists() is (not archive_sources)
+    if archive_sources:
+        subprocess.run(["bash", "-e", "-c", stub + capture["run"]], env=env, check=True)
+        assert commands.read_text().splitlines()[:5] == [
+            "-m", "scripts.results_intake", "refresh-selected", "--sources", archive_sources,
+        ]
