@@ -69,6 +69,8 @@ PROFILES = {
     "CT": {"state": "Connecticut", "source_id": "ct-sots-statewide-vv-20261103",
            "feed": CT_FEED, "url": CT_SOURCE["url"]},
     "FL": {"state": "Florida", "source_id": FL_REVIEW, "feed": None, "url": FL_SOURCE["url"]},
+    "GA": {"state": "Georgia", "source_id": history.GA_FEED,
+           "feed": history.GA_FEED, "url": history.GA_URL},
     "HI": {"state": "Hawaii", "source_id": "hi-oe-final-statewide-turnout-20261103",
            "feed": state_statistics.HI_FEED, "url": state_statistics.HI_URL},
     "KS": {"state": "Kansas", "source_id": history.KS_FEED,
@@ -183,6 +185,8 @@ def observation(code, summary, retained=False):
         return connecticut_observation(summary, retained)
     if code == "FL":
         return florida_observation(summary, retained)
+    if code == "GA":
+        return georgia_observation(summary, retained)
     if code == "HI":
         return hawaii_observation(summary, retained)
     if code == "KS":
@@ -976,6 +980,29 @@ def oregon_clock(value):
     return datetime.strptime(value, "%m/%d/%Y | %I:%M %p PT")
 
 
+def georgia_observation(summary, retained):
+    source, query = summary["source"], summary["query"]
+    require(summary["contract"] == CONTRACT and summary["index"] == source and source["url"] == history.GA_URL
+            and type(source["bytes"]) is int and source["bytes"] > 0
+            and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]), "Georgia turnout receipt changed")
+    ballots, registered = history.georgia_controls(query)
+    official = sum(row["official"] for row in query["counties"])
+    reporting = sum(row["precincts_reporting"] == 1 for row in query["counties"])
+    notes = [
+        "Statewide count sums county BallotsCast across all 159 counties, not candidate votes.",
+        ("The statewide feed's zero is a placeholder for this count, not zero turnout."
+         if not query["state_ballots"] else "The published statewide ballot count agrees with the county sum."),
+        f"Same-feed registered voters reconcile across all counties. "
+        f"{official} county entries are marked official; {reporting} report all precincts.",
+        f"Feed edition published {query['published']}; this is not a common county count-update clock.",
+    ]
+    return archive_observation(
+        "GA", summary, retained, ballots, registered, "County ballots cast, summed statewide",
+        "Source-reported total voters", "native_registered_voters_same_georgia_bulk_report",
+        "Official per feed" if query["official"] else "Unofficial per statewide feed",
+        notes, None, query["published"][:10], "159 county turnout rows")
+
+
 def oregon_observation(summary, retained):
     source, county_source, query = (summary[k] for k in ("source", "county_source", "query"))
     header, rows = query["independent_official_header"], query["county_records"]
@@ -1216,7 +1243,7 @@ def project(files, snapshot):
                    south_carolina_summary(snapshot) if code == "SC" else
                    oregon_summary(snapshot) if code == "OR" else
                    turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
-                   archive_report_summary(snapshot, code) if code in {"KS", "MT", "NJ", "OH"} else
+                   archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "NJ", "OH"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
@@ -1248,6 +1275,16 @@ def project(files, snapshot):
                     row = observation(code, before, retained=True)
                 if code == "OH" and after["query"]["election"]["generated_at"] < before["query"]["election"]["generated_at"]:
                     row = observation(code, before, retained=True)
+                if code == "GA":
+                    old_query, new_query = before["query"], after["query"]
+                    previous_counties = {r["id"]: r for r in old_query["counties"]}
+                    if (history.georgia_edition(new_query["published"]) < history.georgia_edition(old_query["published"])
+                            or old_query["official"] and not new_query["official"]
+                            or any(history.georgia_edition(r["updated"]) <
+                                   history.georgia_edition(previous_counties[r["id"]]["updated"])
+                                   or previous_counties[r["id"]]["official"] and not r["official"]
+                                   for r in new_query["counties"])):
+                        row = observation(code, before, retained=True)
                 if code == "OR":
                     old_header, new_header = (value["query"]["independent_official_header"] for value in (before, after))
                     if (oregon_clock(new_header["source_update_label"]) < oregon_clock(old_header["source_update_label"])

@@ -960,6 +960,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     administrative = {
         results_turnout_history.OH_FEED: results_turnout_history.collect_ohio,
         results_turnout_history.MT_FEED: results_turnout_history.collect_montana,
+        results_turnout_history.GA_FEED: results_turnout_history.collect_georgia,
         results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
         philadelphia_divisions.FEED: philadelphia_divisions.collect,
     }

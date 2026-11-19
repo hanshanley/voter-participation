@@ -23,6 +23,11 @@ IA = {
     "old_selections": ["6ba72e1e991fcf5fecbef0471e988fc1", "966f5584a55c79e0d736a48c9ec2c8af"],
 }
 MODES = ("available", "official", "uf_vap", "uf_vep")
+GA = {
+    "code": "GA", "county_count": 159, "fips_prefix": "13",
+    "reference_source": "in_person_early",
+    "reference_sha256": "219c1cd18773865615eebeb9eeccc92e3095dcab0b1af4b4150226d4af105249",
+}
 NOTES = [
     "Official statewide results site, Ballots Cast statistics; not candidate votes.",
     "Registration and printed percentages are source context, not qualified turnout rates.",
@@ -515,6 +520,99 @@ def project_buxton(counts, native, snapshot):
 
 def project_philadelphia(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, PHILADELPHIA)
+
+
+def project_georgia(counts, native):
+    index = json.loads(counts["index.json"])
+    declaration = index["states"].get("GA")
+    if declaration is None:
+        return counts, native, []
+    path = declaration["file"]
+    require(pin(counts[path]) == {k: declaration[k] for k in ("bytes", "sha256")},
+            "Georgia county shard pin differs")
+    shard = decode(counts[path])
+    rows = {r["id"]: r for r in shard["records"]}
+    state = rows.get(statewide_identity("GA"))
+    if state is None:
+        return counts, native, []
+    native_index = json.loads(native["index.json"])
+    bindings = native_index["county_bindings"]["GA"]
+    names, context, reference = county_reference(GA, native_index, shard)
+    query = state["view"]["statewide_ballot_parent"]["query"]
+    history.georgia_controls(query)
+    require({row["name"] for row in query["counties"]} == set(names),
+            "Georgia source and map county identities differ")
+    common = {key: value for key, value in state["view"].items() if key != "statewide_ballot_parent"}
+    projected = {}
+    for row in query["counties"]:
+        name, ballots, registered = row["name"], row["ballots"], row["registered"]
+        fips = names[name]
+        geo = "GA:official-ballot-statistics:" + fips
+        key = observation_id(history.GA_FEED, state["election"]["id"], geo, "countywide-ballots-cast", "all_methods")
+        status = "Official per county feed" if row["official"] else "Unofficial per county feed"
+        notes = ["BallotsCast and registered voters come from this county's row in the same statewide release.",
+                 "Precinct reporting fraction is source context, not independent evidence of certification."]
+        rate = 100 * ballots / registered
+        clock = {"literal": row["updated"], "timezone": "UTC"}
+        view = {**common, "geography_level": "county", "county_id": geo, "county": name,
+                "county_fips": fips, "maps_approved": True, "reference_geometry": reference,
+                "ballots": ballots, "denominator": registered, "reported_pct": rate, "validated_pct": rate,
+                "source_mode": "all_methods", "source_status_literal": status,
+                "source_update_label": clock["literal"], "source_update_timezone": clock["timezone"],
+                "source_reporting_label": " ".join(notes), "native_record": row, "quality": notes,
+                "participation_measure_label": "Countywide ballots cast",
+                "participation_measure_literal": "BallotsCast"}
+        projected[key] = {**{k: state[k] for k in ("contract", "election")}, "id": key,
+            "geography": {"id": geo, "name": name, "state_code": "GA", "level": "county",
+                          "parent_id": state["geography"]["id"], "join": {
+                              "status": "approved", "reference_id": reference["review_id"],
+                              "feature_key": fips, "evidence": "Exact named county on the pinned Georgia reference"}},
+            "measure": {**state["measure"], "id": "countywide-ballots-cast", "literal": "BallotsCast"},
+            "count": {"value": ballots, "literal": ballots, "status": "reported"},
+            "denominator": {**state["denominator"], "value": registered},
+            "source": {**state["source"], "fields": view, "selector": {"native_id": row["id"]}},
+            "source_clock": clock,
+            "reporting_status": {"literal": status, "reported_units": None, "total_units": None, "complete": None},
+            "quality": {"notes": notes, "conflicts": []}, "view": view}
+    validate_all(projected.values())
+    old = {key: row for key, row in rows.items()
+           if row["source"]["id"] == history.GA_FEED and row["geography"]["level"] == "county"}
+    require(not old or list(old) == list(projected), "Georgia county source inventory changed")
+
+    def binding(records):
+        return {**{k: context[k] for k in ("sha256", "features", "feature_keys", "feature_scopes")},
+                "rows": [{"feature_key": row["view"]["county_fips"], "county_id": row["view"]["county_id"],
+                          "qualifier": {k: row["view"].get(k) for k in COUNTY_QUALIFIERS}}
+                         for row in records.values()]}
+
+    legacy = shard["views"]["available"]["counties"]
+    require(len(legacy) == 159 and {rows[key]["view"]["county"] for key in legacy} == set(names)
+            and all(rows[key]["measure"]["literal"] == "ballotsCast" for key in legacy),
+            "Georgia legacy county observation scope changed")
+    for mode in ("official", "uf_vap", "uf_vep"):
+        frame = shard["views"][mode]
+        require(frame["qualified"] and frame["counties"] == (list(old) if old else legacy)
+                and bindings.get(mode) == (binding(old) if old else None),
+                "Georgia county selector or map preimage differs")
+        frame["counties"] = list(projected)
+        bindings[mode] = binding(projected)
+        declaration["views"][mode]["counties"] = len(projected)
+        declaration["views"][mode]["dispositions"]["counties"] = {
+            **coverage(projected.values()), "geography_levels": ["county"]}
+    if old == projected:
+        return counts, native, []
+    rows.update(projected)
+    shard["records"] = list(rows.values())
+    counts = dict(counts, **{path: compressed(shard)})
+    declaration.update(pin(counts[path]), records=len(rows))
+    index["coverage"]["GA"].update(records=len(rows), **coverage(rows.values()),
+                                   zeros=sum(row["count"]["value"] == 0 for row in rows.values()))
+    counts["index.json"] = encoded(index)
+    native = dict(native, **{"index.json": encoded(native_index)})
+    changes = [{"state_code": "GA", "id": key, "previous": old[key]["count"]["value"] if key in old else None,
+                "current": row["count"]["value"], "source_status": row["view"]["status"]}
+               for key, row in projected.items() if old.get(key) != row]
+    return counts, native, changes
 
 
 def project_ohio(counts, native):

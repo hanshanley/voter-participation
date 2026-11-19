@@ -154,6 +154,60 @@ def test_oregon_projects_same_report_statewide_rate_without_changing_county_view
     assert totals.project(retained, {}) == (retained, [])
 
 
+def test_georgia_reconciles_county_ballots_and_retains_a_bad_revision(tmp_path, monkeypatch):
+    from scripts.results_intake import Collector
+
+    h = totals.history
+    files = baseline(monkeypatch)
+    path = "states/GA.json.gz"
+    shard = {"contract": "participation.count_snapshot.v1", "state_code": "GA", "year": 2026,
+             "records": [], "views": {}}
+    files[path] = totals.compressed(shard)
+    index = json.loads(files["index.json"])
+    index["states"]["GA"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    counties = {f"{i:036x}": f"County {i}" for i in range(159)}
+    monkeypatch.setattr(h, "GA_COUNTIES", pin(encoded(counties)))
+    name = lambda text: [{"languageId": "en", "text": text}]
+    election = {"id": h.GA_ELECTION, "jurisdictionId": h.GA_JURISDICTION,
+                "electionDate": "2026-11-03", "isPrimary": False, "isProduction": True,
+                "name": name("November 3, 2026 - General & Special Elections"),
+                "publishDate": "2026-11-18T21:00:00Z", "isOfficialResults": False,
+                "ballotsCast": 0.0, "totalVoters": 1590.0}
+    body = {"election": election, "jurisdiction": {"id": h.GA_JURISDICTION, "name": name("Georgia"),
+            "childLocalities": [{"id": key.upper(), "name": name(label)} for key, label in counties.items()]},
+            "localityElections": [{**election, "id": f"{i + 159:036x}", "jurisdictionId": key,
+                "ballotsCast": 5.0, "totalVoters": 10.0, "lastUpdated": "2026-11-17T00:00:00Z",
+                "precinctsReporting": 1.0} for i, key in enumerate(counties)],
+            "voterRegistration": [{"id": key, "localityName": name(label), "total": 10}
+                                  for key, label in counties.items()]}
+
+    def acquire(self, _url):
+        blob = encoded(body)
+        return blob, {"origin": "fixture_transport", **pin(blob)}
+
+    monkeypatch.setattr(Collector, "acquire", acquire)
+
+    def collect(prior=None):
+        collector = Collector(tmp_path, prior or {}, {"urls": [], "prefixes": [], "hosts": []},
+                              datetime(2026, 11, 19, tzinfo=timezone.utc))
+        return {h.GA_FEED: h.collect_georgia(collector)}
+
+    accepted = collect()
+    assert collect(accepted) == accepted
+    projected, [change] = totals.project(files, {"granular_sources": accepted})
+    assert change["current"] == 795
+    body["localityElections"][0]["ballotsCast"] -= 1
+    revised = collect(accepted)
+    projected, [change] = totals.project(projected, {"granular_sources": revised})
+    assert change["current"] == 794 and totals.project(projected, {"granular_sources": revised}) == (projected, [])
+    body["voterRegistration"][0]["total"] = 9
+    failed = collect(revised)
+    assert failed[h.GA_FEED]["status"] == "retained_after_failure"
+    _, [change] = totals.project(projected, {"granular_sources": failed})
+    assert change["current"] == 794 and change["source_status"] == "retained_after_failure"
+
+
 def test_new_jersey_future_archive_publication_retains_last_good(tmp_path, monkeypatch):
     import pypdf
     from scripts.results_intake import Collector

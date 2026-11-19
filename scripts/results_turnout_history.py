@@ -52,6 +52,11 @@ OH_COUNTY_NAMES = {"bytes": 852, "sha256": "3d981909d6bb6f7addb671c20cf9e503e51f
 MT_FEED = "MT-statewide-reported-turnout"
 MT_URL = "https://electionresults.mt.gov/"
 MT_TITLE = "General Election - November 3, 2026"
+GA_FEED = "GA-statewide-county-ballots-cast"
+GA_URL = "https://results.sos.ga.gov/results/public/api/elections/Georgia/11032026GeneralAndSpecialElection/data"
+GA_ELECTION = "01000000-70f4-ca87-08cb-08df23e5fea8"
+GA_JURISDICTION = "09378a07-e6cf-4f66-be7c-ca4aa534f99a"
+GA_COUNTIES = {"bytes": 8830, "sha256": "20c0309221a8d7a606eda3f5f90f7b074241c275be772e9bafde0bf024e1ec7f"}
 NJ_COUNTIES = (
     "Atlantic", "Bergen", "Burlington", "Camden", "Cape May", "Cumberland", "Essex",
     "Gloucester", "Hudson", "Hunterdon", "Mercer", "Middlesex", "Monmouth", "Morris", "Ocean",
@@ -450,6 +455,99 @@ def montana_report(body):
 
 def collect_montana(collector):
     return collector.capture(MT_FEED, MT_URL, montana_report,
+                             equivalent=lambda old, new: old["complete_native_query"] == new["complete_native_query"])
+
+
+def georgia_edition(value):
+    if not isinstance(value, str) or not re.fullmatch(r"202[67]-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,7})?Z", value):
+        raise ValueError("Invalid Georgia publication or county timestamp")
+    parsed = datetime.fromisoformat(value[:-1])
+    if not datetime(2026, 11, 3) <= parsed < datetime(2027, 2, 1):
+        raise ValueError("Georgia timestamp outside the 2026 general-election window")
+    return parsed
+
+
+def georgia_controls(query):
+    rows = query["counties"]
+    georgia_edition(query["published"])
+    if (query["election_id"] != GA_ELECTION or query["jurisdiction_id"] != GA_JURISDICTION
+            or query["election_date"] != "2026-11-03" or type(query["official"]) is not bool
+            or len(rows) != 159 or pin(encoded({row["id"]: row["name"] for row in rows})) != GA_COUNTIES):
+        raise ValueError("Georgia election scope or county inventory changed")
+    for row in rows:
+        ballots, registered = row["ballots"], row["registered"]
+        if (type(ballots) is not int or type(registered) is not int or not 0 < ballots <= registered
+                or type(row["official"]) is not bool
+                or not re.fullmatch(r"[a-f0-9-]{36}", row["election_id"])
+                or type(row["precincts_reporting"]) not in (int, float)
+                or not 0 <= row["precincts_reporting"] <= 1):
+            raise ValueError("Missing or invalid Georgia county turnout fields")
+        if georgia_edition(row["updated"]) > georgia_edition(query["published"]):
+            raise ValueError("Georgia county count postdates its statewide publication")
+    ballots = sum(row["ballots"] for row in rows)
+    registered = sum(row["registered"] for row in rows)
+    if (len({row["election_id"] for row in rows}) != 159 or query["state_registered"] != registered
+            or query["state_ballots"] not in (0, ballots)):
+        raise ValueError("Georgia statewide and county reporting frames disagree")
+    return ballots, registered
+
+
+def georgia_report(body):
+    if len(body) > 10_000_000:
+        raise ValueError("Georgia bulk results exceed reviewed document bounds")
+    document = json.loads(body)
+    election, jurisdiction = document["election"], document["jurisdiction"]
+
+    def name(row, field):
+        text, = (label["text"] for label in row[field] if label["languageId"] == "en")
+        return text
+
+    def indexed(rows, field):
+        result = {row[field].lower(): row for row in rows}
+        if len(result) != len(rows):
+            raise ValueError("Duplicate Georgia county identity")
+        return result
+
+    def total(value):
+        if type(value) not in (int, float) or not 0 <= value <= 20_000_000 or int(value) != value:
+            raise ValueError("Georgia counts must be nonnegative whole numbers")
+        return int(value)
+
+    if (name(jurisdiction, "name") != "Georgia" or jurisdiction["id"] != GA_JURISDICTION
+            or name(election, "name") != "November 3, 2026 - General & Special Elections"
+            or election["isPrimary"] is not False or election["isProduction"] is not True):
+        raise ValueError("Georgia feed does not declare reviewed production general election")
+    localities = indexed(jurisdiction["childLocalities"], "id")
+    results = indexed(document["localityElections"], "jurisdictionId")
+    registrations = indexed(document["voterRegistration"], "id")
+    if set(localities) != set(results) or set(localities) != set(registrations):
+        raise ValueError("Georgia county results, registrations and localities differ")
+    rows = []
+    for key in sorted(localities):
+        local, result, registration = localities[key], results[key], registrations[key]
+        county = name(local, "name")
+        registered = total(result["totalVoters"])
+        if (name(registration, "localityName") != county or total(registration["total"]) != registered
+                or result["electionDate"] != election["electionDate"]
+                or name(result, "name") != name(election, "name")
+                or result["isPrimary"] is not False or result["isProduction"] is not True):
+            raise ValueError("Georgia county count and registration evidence disagree")
+        rows.append({"id": key, "name": county, "election_id": result["id"],
+                     "ballots": total(result["ballotsCast"]), "registered": registered,
+                     "updated": result["lastUpdated"], "official": result["isOfficialResults"],
+                     "precincts_reporting": result["precinctsReporting"]})
+    query = {"election_id": election["id"], "election_date": election["electionDate"],
+             "jurisdiction_id": election["jurisdictionId"], "published": election["publishDate"],
+             "official": election["isOfficialResults"], "state_ballots": total(election["ballotsCast"]),
+             "state_registered": total(election["totalVoters"]), "counties": rows}
+    georgia_controls(query)
+    return {"report": {"url": GA_URL, **pin(body)}, "complete_native_query": query,
+            "date": georgia_edition(query["published"]).isoformat(timespec="microseconds"),
+            "participation_observation_qualified": False}
+
+
+def collect_georgia(collector):
+    return collector.capture(GA_FEED, GA_URL, georgia_report,
                              equivalent=lambda old, new: old["complete_native_query"] == new["complete_native_query"])
 
 
