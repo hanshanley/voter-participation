@@ -199,6 +199,55 @@ def test_selected_refresh_reuses_every_other_capture_and_rejects_unknown_sources
     assert previous == original
 
 
+def test_selected_retry_preserves_new_denial_before_publication(tmp_path, monkeypatch):
+    from urllib.error import HTTPError
+    from scripts import results_native
+
+    registry = fixture(tmp_path)
+    work = tmp_path / "scoped-retry"
+    identity = "WI-registered-87e0d6c3aa94b8a6"
+    url = "https://official.test/report"
+    previous = {
+        "feeds": {}, "granular": {},
+        "districts": {str(index): {} for index in range(435)},
+        "house": {str(index): {} for index in range(435)},
+        "directories": {state: {} for state in intake.STATES},
+        "source_stops": {**EMPTY_STOPS, "hosts": ["previously-stopped.test"]},
+    }
+    monkeypatch.setattr(results_native, "source_plan", lambda baseline: {
+        "WI": {identity: {"adapter": "reviewed_pdf_county_parent"}}})
+    captures = []
+
+    def selected(collector, baseline, source_ids=None):
+        assert source_ids == {identity}
+        entry = collector.capture(identity, url, lambda _: pytest.fail("No source body expected"))
+        captures.append(entry)
+        return {identity: entry}
+
+    requests = []
+
+    def denied(self, spec, *, access_guard):
+        access_guard(spec["url"])
+        requests.append(spec["url"])
+        if len(requests) > 1:
+            pytest.fail("Retried a persisted denial")
+        raise intake.IntakeError("source_access", "Forbidden") from HTTPError(
+            url, 403, "Forbidden", {}, None)
+
+    monkeypatch.setattr(results_native, "collect_sources", selected)
+    monkeypatch.setattr(intake.Store, "acquire", denied)
+    monkeypatch.setattr(intake, "export_collection",
+                        lambda *args: pytest.fail("A failed selected capture must not be published"))
+    for _ in range(2):
+        with pytest.raises(ValueError, match="no replacement publication"):
+            intake.refresh_selected(registry, work, previous, [identity], NOW)
+        assert intake.read(work / "source-stops.json") == {
+            "hosts": ["previously-stopped.test"], "prefixes": [], "urls": [url]}
+    assert [entry["status"] for entry in captures] == ["source_stopped", "source_stopped"]
+    assert requests == [url]
+    assert previous["source_stops"]["urls"] == []
+
+
 def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp_path, monkeypatch):
     from scripts import results_native, results_uf_turnout as uf
     registry = fixture(tmp_path)

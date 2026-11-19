@@ -1008,7 +1008,9 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
         raise ValueError("Selected refresh source is not in the actual registered dispatch plan")
     if any(plan[identity]["adapter"] == "unadapted_primary_product" for identity in source_ids):
         raise ValueError("Selected numerical refresh requires a reviewed source adapter")
-    stopped = merge_stops(config["source_stops"], previous["source_stops"])
+    stopped = merge_stops(config["source_stops"], previous["source_stops"],
+                         read(work / "source-stops.json") if (work / "source-stops.json").exists()
+                         else config["source_stops"])
     native_ids = set(source_ids) - {results_uf_turnout.IDENTITY, *results_official_congress.IDENTITIES}
     administrative_ids = native_ids & administrative.keys()
     native_ids -= administrative_ids
