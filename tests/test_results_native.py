@@ -868,6 +868,72 @@ def test_retained_parent_holds_an_advanced_last_good_clock_and_wrong_physical_pa
             native.pdf_parent_statistics(text.encode(), [row])
 
 
+def test_cape_may_index_refresh_preserves_row_and_retains_failed_revision(tmp_path, monkeypatch):
+    pdf_reader(monkeypatch)
+    row, old = retained_parent_fixture("NJ")
+    files = baseline(("NJ",))
+    path = "states/NJ.json.gz"
+    shard = {"records": [row], "views": {"official": {"counties": [row["id"]]}}}
+    files[path] = intake.compressed(encoded(shard))
+    urls = []
+    day, text = "18", old.replace("11/12/2026", "11/16/2026").replace(
+        "42,442", "42,446").replace("8,340", "8,344").replace("55.19%", "55.20%")
+    text = text.replace("UNOFFICIAL RESULTS", "OFFICIAL RESULTS").replace(
+        "Registered Voters", "Precincts Complete 0 of 127 0 0 0 0 0 0\nRegistered Voters")
+    def report(suffix):
+        return "assets/pdf/periodic-report/2026/2026-11" + suffix + "-capemay-periodic-report.pdf"
+
+    def acquire(self, url):
+        self.guard(url)
+        urls.append(url)
+        if url == native.NJ_PERIODIC_INDEX:
+            body = ('<h3>2026 General Election</h3><a href="' + report(day) + '">New</a>'
+                    '<a href="' + report("12") + '">Old</a>'
+                    '<h3>2026 Primary Election</h3><a href="' + report("30") + '">Wrong</a>').encode()
+        else:
+            assert url == "https://www.nj.gov/state/elections/" + report(day)
+            body = ("Cover page\f" + text).encode()
+        return body, {"origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    stops = {"urls": [], "prefixes": [], "hosts": []}
+    def collect(prior=None):
+        return native.collect_sources(intake.Collector(tmp_path, prior or {}, stops,
+            datetime(2026, 11, 20, tzinfo=timezone.utc)), files)
+
+    accepted = collect()
+    identity, entry = next(iter(accepted.items()))
+    assert identity == "NJ-registered-" + native.digest(native.NJ_CAPE_MAY_ARCHIVE.encode())[:16]
+    assert urls == [native.NJ_PERIODIC_INDEX, "https://www.nj.gov/state/elections/" + report("18")]
+    after, changes = granular.project(files, accepted)
+    successor = json.loads(gzip.decompress(after[path]))
+    current, = successor["records"]
+    assert successor["views"] == shard["views"]
+    assert current["geography"] == row["geography"]
+    assert native.source_plan(after)["NJ"][identity]["url"] == native.NJ_PERIODIC_INDEX
+    assert changes[0]["current"] == 42446
+    assert current["denominator"]["value"] == 76899
+    assert current["view"]["native_printed_pct"] == "55.20%"
+    assert current["source"]["url"] == urls[-1]
+    assert current["source"]["input_sha256"] != entry["source"]["sha256"]
+    assert current["reporting_status"]["complete"] is not True
+    assert collect(accepted) == accepted
+
+    day, text = "19", text.replace("42,446", "42,441").replace(
+        "8,344", "8,339").replace("55.20%", "55.19%").replace("11/16/2026", "11/17/2026")
+    revised = collect(accepted)
+    assert revised[identity]["data"]["updates"][0]["value"] == 42441
+    stops["urls"].append("https://www.nj.gov/state/elections/" + report(day))
+    held = collect(revised)
+    assert held[identity]["status"] == "retained_after_failure"
+    assert held[identity]["data"] == revised[identity]["data"]
+    retained, _ = granular.project(files, held)
+    assert json.loads(gzip.decompress(retained[path]))["records"][0]["count"]["value"] == 42441
+
+    day, text = "17", text.replace("11/17/2026", "11/15/2026")
+    assert collect(revised)[identity]["status"] == "retained_after_failure"
+
+
 def test_walworth_summary_bridge_uses_the_declared_document_not_the_municipality_sibling(
         tmp_path, monkeypatch):
     pdf_reader(monkeypatch)

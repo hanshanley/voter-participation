@@ -9,7 +9,7 @@ import gzip
 import io
 import json
 import re
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 
 from scripts.participation_intake.contract import count, digest, encoded, pin
 from scripts.results_granular import (
@@ -1135,30 +1135,95 @@ def pdf_split_total_header(lines):
     return matches[0] if matches else None
 
 
+NJ_CAPE_MAY_SOURCE_ID = "native-nj-capemay-summary-20261112"
+NJ_PERIODIC_INDEX = "https://www.nj.gov/state/elections/election-results-information.shtml"
+NJ_CAPE_MAY_ARCHIVE = (
+    "https://nj.gov/state/elections/assets/pdf/periodic-report/2026/"
+    "2026-1112-capemay-periodic-report.pdf"
+)
+NJ_CAPE_MAY_PATH = (
+    r"assets/pdf/periodic-report/2026/"
+    r"2026-(?P<edition>[0-9]{4})-capemay-periodic-report\.pdf"
+)
+
+
+class CapeMayGeneralReportLinks(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.heading = None
+        self.in_general = False
+        self.general_sections = 0
+        self.links = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "h3":
+            self.heading = []
+            self.in_general = False
+        if tag == "a" and self.in_general:
+            href = dict(attrs).get("href") or ""
+            match = re.fullmatch(r"(?:/state/elections/)?" + NJ_CAPE_MAY_PATH, href)
+            if match:
+                date = datetime.strptime("2026-" + match["edition"], "%Y-%m%d").date()
+                if date >= datetime(2026, 11, 12).date():
+                    self.links.append((date, urljoin(NJ_PERIODIC_INDEX, href)))
+
+    def handle_data(self, text):
+        if self.heading is not None:
+            self.heading.append(text)
+
+    def handle_endtag(self, tag):
+        if tag == "h3" and self.heading is not None:
+            self.in_general = " ".join("".join(self.heading).split()) == "2026 General Election"
+            self.general_sections += int(self.in_general)
+            self.heading = None
+
+
 def pdf_parent_page(template):
-    source = template["source"]
-    url = ("https://nj.gov/state/elections/assets/pdf/periodic-report/2026/"
-           "2026-1112-capemay-periodic-report.pdf")
-    if template["view"]["source_url"] != url:
+    source, view = template["source"], template["view"]
+    if source.get("id") != NJ_CAPE_MAY_SOURCE_ID and view["source_url"] != NJ_CAPE_MAY_ARCHIVE:
         return 1
-    native = template["view"].get("native_record") or {}
+    native = view.get("native_record") or {}
     summary = native.get("native_summary_statistics") or {}
-    if (source["id"] != "native-nj-capemay-summary-20261112"
-            or source["url"] != url
-            or source["input_sha256"] !=
+    archived = (
+        source["url"] == view["source_url"] == NJ_CAPE_MAY_ARCHIVE
+        and source["input_sha256"] ==
                 "ad9f416a54062c82b545140f1ac8da201a647d830b06a0c5d89ba766356a98aa"
-            or source["selector"] != {
-                "measure": "total", "native_unit": "Ballots Cast - Total",
-                "source_id": "nj-capemay", "source_page": 2,
-                "table_id": "capemay-summary-page-2-section-1"}
+    )
+    initial = (
+        source["selector"] == {
+            "measure": "total", "native_unit": "Ballots Cast - Total",
+            "source_id": "nj-capemay", "source_page": 2,
+            "table_id": "capemay-summary-page-2-section-1"}
+        and (native.get("native_source_pin") or {}).get("sha256") == source["input_sha256"]
+        and (summary.get("Registered Voters - Total") or {}).get("native_unit")
+            == "Registered Voters - Total"
+        and (summary.get("Ballots Cast - Total") or {}).get("native_unit") == "Ballots Cast - Total"
+    )
+    query = native.get("query") or {}
+    projected_parent = (
+        source["selector"] == {"native_refresh": native}
+        and query.get("page") == native.get("page") == 2
+        and query.get("native_measure_literal") == "Ballots Cast - Total"
+        and query.get("native_scope") == "county_statistical_parent"
+        and query.get("county") == template["geography"]["name"]
+        and query.get("election_date") == "2026-11-03"
+    )
+    report = native.get("source_original_pin") or {}
+    refreshed = (
+        projected_parent
+        and query.get("periodic_index_url") == NJ_PERIODIC_INDEX
+        and native.get("source_input") == "county_summary_pdf"
+        and query.get("source_original_pin") == report
+        and source["url"] == view["source_url"] == report.get("url")
+        and source["input_sha256"] == report.get("sha256")
+        and re.fullmatch(r"https://www\.nj\.gov/state/elections/" + NJ_CAPE_MAY_PATH,
+                         source["url"])
+    )
+    if (source["id"] != NJ_CAPE_MAY_SOURCE_ID
+            or not (archived and (initial or projected_parent) or refreshed)
             or template["geography"]["state_code"] != "NJ"
             or template["geography"]["level"] != "county"
-            or template["geography"]["name"] not in ("Cape May", "Cape May County")
-            or (native.get("native_source_pin") or {}).get("sha256") != source["input_sha256"]
-            or (summary.get("Registered Voters - Total") or {}).get("native_unit")
-                != "Registered Voters - Total"
-            or (summary.get("Ballots Cast - Total") or {}).get("native_unit")
-                != "Ballots Cast - Total"):
+            or template["geography"]["name"] not in ("Cape May", "Cape May County")):
         raise ValueError("Reviewed second-page PDF source, identity or selector changed")
     return 2
 
@@ -1458,7 +1523,7 @@ def pdf_text_statistics(page, templates, pages, confidence=None, tokens=None, pa
             "pdf_report_clock_is_not_certification": True}
 
 
-def pdf_prior_guard(result, templates, prior):
+def pdf_prior_guard(result, templates, prior, *, discovery_url=None):
     if prior is None or prior.get("data") is None:
         return result
     expected = {template["id"]: template for template in templates
@@ -1469,8 +1534,9 @@ def pdf_prior_guard(result, templates, prior):
     if (not isinstance(updates, list) or not isinstance(queries, list)
             or len(updates) != len(expected) or len(queries) != len(expected)
             or {update.get("id") for update in updates} != set(expected)
-            or (prior.get("source") or {}).get("url") not in
-                {pdf_parent_source_url(template) for template in templates}):
+            or (prior.get("source") or {}).get("url") not in (
+                {pdf_parent_source_url(template) for template in templates}
+                | ({discovery_url, NJ_CAPE_MAY_ARCHIVE} if discovery_url else set()))):
         raise ValueError("Native PDF last-good source, identity or query scope changed")
     current = {update["id"]: update for update in result["updates"]}
     for update in updates:
@@ -1527,6 +1593,47 @@ def pdf_parent_statistics(body, templates, prior=None):
     result["ocr"] = {"passes": [view["receipt"] for view in views],
                      "same_engine_resolution_check_not_independent_validation": True}
     return pdf_parent_bridge(pdf_prior_guard(result, templates, prior), templates, body)
+
+
+def nj_cape_may_statistics(index, templates, *, acquire, prior=None):
+    if len(templates) != 1 or pdf_parent_page(templates[0]) != 2:
+        raise ValueError("Periodic discovery requires the reviewed Cape May county parent")
+    parser = CapeMayGeneralReportLinks()
+    parser.feed(index.decode("utf-8-sig"))
+    parser.close()
+    if parser.general_sections != 1 or not parser.links:
+        raise ValueError("Cape May periodic report is missing from the general-election index")
+    edition, url = max(parser.links)
+    if len({link for date, link in parser.links if date == edition}) != 1:
+        raise ValueError("Cape May periodic report edition is ambiguous")
+    body, _ = acquire(url)
+    result = pdf_parent_statistics(body, templates)
+    result = pdf_prior_guard(result, templates, prior, discovery_url=NJ_PERIODIC_INDEX)
+    query, = result["complete_native_query"]
+    update, = result["updates"]
+    clock = query["pdf_report_clock_literal"]
+    if (not clock or clock_value(clock).date() > edition
+            or not query["native_report_status_literal"]
+            or not any(line.startswith("Precincts Complete ") for line in
+                       query["native_reporting_statistics"])):
+        raise ValueError("Cape May summary clock, status or reporting statistics changed")
+    report_pin = {"url": url, **pin(body)}
+    table_clocks = [{
+        "source": "Attached county summary, PDF page 2",
+        "native_update_literal": clock,
+        "declared_timezone": query["pdf_report_timezone_literal"] or "",
+    }]
+    query.update(
+        periodic_index_url=NJ_PERIODIC_INDEX, periodic_index_pin=pin(index),
+        archive_edition=edition.isoformat(), source_original_pin=report_pin,
+        source_date_literal=clock, native_source_updates=table_clocks,
+    )
+    update.update(source_input="county_summary_pdf", native={
+        **update["native"], **query, "query": query,
+        "source_input": "county_summary_pdf",
+    })
+    result.update(date=edition.isoformat(), numerical_input_pins={"county_summary_pdf": report_pin})
+    return result
 
 
 def summary_page_statistics(page, number, pages, profile):
@@ -2211,6 +2318,9 @@ def source_plan(baseline):
                 url = bridged_url
             if template["source"].get("id") == "wi-walworth-summary-20261113":
                 url = pdf_parent_source_url(template)
+            if template["source"].get("id") == NJ_CAPE_MAY_SOURCE_ID:
+                pdf_parent_page(template)
+                url = NJ_PERIODIC_INDEX
             parsed = urlsplit(url)
             if (parsed.scheme != "https" or parsed.hostname in (
                     "raw.githubusercontent.com", "github.com", "www.themarginoferror.com",
@@ -2238,6 +2348,8 @@ def source_plan(baseline):
             native = view.get("native_record") or {}
             if family_route is not None and family_route["state"] == state:
                 adapter = family_route["adapter"]
+            elif url == NJ_PERIODIC_INDEX and state == "NJ":
+                adapter = "reviewed_nj_cape_may_index"
             elif bridged_url == DUNN_UNOFFICIAL_URL and state == "WI":
                 adapter = "reviewed_dunn_unofficial_pdf"
             elif summary_profile and state == summary_profile["state"]:
@@ -2283,6 +2395,8 @@ def source_plan(baseline):
                 adapter = "unadapted_primary_product"
             identity_url = (WALWORTH_STORED_URL
                 if template["source"].get("id") == "wi-walworth-summary-20261113" else url)
+            if adapter == "reviewed_nj_cape_may_index":
+                identity_url = NJ_CAPE_MAY_ARCHIVE
             key = state + "-registered-" + digest(identity_url.encode())[:16]
             source = sources.setdefault(key, {"url": url, "adapter": adapter, "templates": []})
             if source["adapter"] != adapter:
@@ -2368,6 +2482,11 @@ def collect_sources(collector, baseline, source_ids=None):
                 prior = collector.prior.get(identity)
                 def parse(body, templates=templates, prior=prior):
                     return pdf_parent_statistics(body, templates, prior=prior)
+            elif source["adapter"] == "reviewed_nj_cape_may_index":
+                prior = collector.prior.get(identity)
+                def parse(body, templates=templates, prior=prior):
+                    return nj_cape_may_statistics(
+                        body, templates, acquire=collector.acquire, prior=prior)
             elif source["adapter"] == "reviewed_cole_statistical_grid":
                 prior = collector.prior.get(identity)
                 def parse(body, templates=templates, url=url, prior=prior):
