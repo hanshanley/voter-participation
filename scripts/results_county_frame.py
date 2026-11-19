@@ -264,6 +264,9 @@ WILSON = ("TN", "Tennessee", county_pdf.WILSON_COUNTY, "47189",
           "458587d28a6301475c907be4e2a0385e05b5acaad2cf622baafcae0578e8b67d",
           county_pdf.WILSON_FEED, county_pdf.WILSON_URL, "TN:official-ballot-statistics:47189",
           "TN-2026-11-03-general", "native_registered_voters_same_wilson_county_summary")
+SUMNER = ("TN", "Tennessee", "Sumner County", "47165", WILSON[4],
+          county_pdf.SUMNER_FEED, county_pdf.SUMNER_INDEX, "TN:official-ballot-statistics:47165",
+          "TN-2026-11-03-general", "native_registered_voters_same_sumner_county_summary")
 
 
 def county_parent_observation(profile, data, reference, status):
@@ -279,13 +282,23 @@ def county_parent_observation(profile, data, reference, status):
             "Countywide ballots and registrations from the same PDF parent, checked across every page.",
             "The report generation clock is not an independently identified count-update time.",
         ]
-    else:
+    elif profile == WILSON:
         ballots, registered, fraction, label = county_pdf.wilson_controls(data)
         clock = None
         measure, register = "Ballots Cast - Total", "Registered Voters - Total"
         selector = {"scope": "countywide statistics", "physical_page": 1, "native_label": measure}
         notes = ["The four native voting-mode counts sum to the countywide ballot total.",
                  "The same report supplies registered voters, but no count-update clock."]
+    else:
+        require(profile == SUMNER, "Unknown countywide source profile")
+        clock, ballots, registered, fraction = county_pdf.sumner_controls(data)
+        label = "Complete reporting in native summary; certification not established"
+        measure, register = "PUBLIC COUNT", "REGISTERED VOTERS"
+        selector = {"scope": "countywide statistics", "physical_page": 1, "native_label": measure}
+        notes = [
+            "The same scanned report supplies the countywide count and registration, checked at two OCR resolutions.",
+            "The three voting modes reconcile to PUBLIC COUNT. The report generation clock is not a count-update time.",
+        ]
     notes.append("Not a statewide total, certification claim, unique-voter count or precinct allocation.")
     rate = 100 * ballots / registered
     view = {
@@ -368,10 +381,13 @@ def project_county_parent(counts, native, snapshot, profile):
     prior = rows.get(key)
     if prior:
         old = prior["view"]["native_record"]
-        regression = (entry["data"]["date"] < old["date"] or old["report_status"] == county_pdf.STATUSES[1]
-                      and entry["data"]["report_status"] != county_pdf.STATUSES[1]) if profile == CUYAHOGA else (
-                          prior["view"]["source_status_literal"] == "OFFICIAL RESULTS"
-                          and candidate["view"]["source_status_literal"] != "OFFICIAL RESULTS")
+        regression = (entry["data"]["date"] < old["date"] if profile in (CUYAHOGA, SUMNER) else False)
+        if profile == CUYAHOGA:
+            regression |= (old["report_status"] == county_pdf.STATUSES[1]
+                           and entry["data"]["report_status"] != county_pdf.STATUSES[1])
+        elif profile == WILSON:
+            regression |= (prior["view"]["source_status_literal"] == "OFFICIAL RESULTS"
+                           and candidate["view"]["source_status_literal"] != "OFFICIAL RESULTS")
         if regression or entry["status"] == "retained_after_failure":
             candidate = copy.deepcopy(prior)
             candidate["source"]["fields"]["status"] = candidate["view"]["status"] = "retained_after_failure"
@@ -417,3 +433,7 @@ def project_cuyahoga(counts, native, snapshot):
 
 def project_wilson(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, WILSON)
+
+
+def project_sumner(counts, native, snapshot):
+    return project_county_parent(counts, native, snapshot, SUMNER)

@@ -522,7 +522,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     from scripts import results_turnout_history as turnout_history
     from scripts.automatic_estimates import _artifact, build, render_artifacts
     from scripts.automatic_native_refresh import refresh
-    from scripts.results_county_frame import project as county_frames, project_cuyahoga, project_wilson
+    from scripts.results_county_frame import project as county_frames, project_cuyahoga, project_wilson, project_sumner
     from scripts.statewide_ballot_totals import project as state_totals, exports as state_exports
 
     snapshot = hydrate_granular_sources(snapshot, source_packet)
@@ -536,6 +536,8 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     updated, native, county_changes = project_cuyahoga(updated, native, snapshot)
     changes.extend(county_changes)
     updated, native, county_changes = project_wilson(updated, native, snapshot)
+    changes.extend(county_changes)
+    updated, native, county_changes = project_sumner(updated, native, snapshot)
     changes.extend(county_changes)
     estimates = build(snapshot, seed)
     history_exports = {}

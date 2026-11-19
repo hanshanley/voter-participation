@@ -152,6 +152,31 @@ def test_wilson_uses_positioned_countywide_cells_not_candidate_totals(delta):
         parser.wilson_summary(html[:-7])
 
 
+def test_sumner_rejects_disagreement_and_incomplete_reporting():
+    parser = frame.county_pdf
+    header = ("11/9/2026-10:43:27AM\nElection Date:11/3/2026\nElection Summary Report\n"
+              "Sumner County, Tennessee\n2026 General Election\nTNSUMG26\n")
+    values = (28277, 1598, 36168, 66043, 145728, "45.32%", 33, 33, 0, 0, 182, 182)
+    text = header + "\n".join(f"{key} {value}" for key, value in zip(parser.SUMNER_ROLES, values))
+
+    def view(body, dpi):
+        return parser.sumner_view({"text": body, "receipt": {
+            "dpi": dpi, "page": 1, "rotation_degrees": 0, "text_angle_classifier_enabled": False}})
+
+    data = {"date": "2026-11-09T10:43:27",
+            "report": {"url": "https://www.votesumnertn.org/uploads/files/" + "a" * 40 + ".pdf",
+                       **pin(b"report")},
+            "complete_native_query": [view(text, dpi) for dpi in (180, 240)]}
+    assert parser.sumner_controls(data) == ("2026-11-09T10:43:27", 66043, 145728, "45.32%")
+    data["complete_native_query"][1] = view(text.replace("66043", "66042"), 240)
+    with pytest.raises(ValueError, match="passes disagree"):
+        parser.sumner_controls(data)
+    partial = text.replace("#OFPRECINCTSREPORTED: 33", "#OFPRECINCTSREPORTED: 32")
+    data["complete_native_query"] = [view(partial, dpi) for dpi in (180, 240)]
+    with pytest.raises(ValueError, match="completeness"):
+        parser.sumner_controls(data)
+
+
 def revised_ballots(value, delta):
     value = copy.deepcopy(value)
     value["version"] = str(int(value["version"]) + 1)

@@ -204,3 +204,112 @@ def collect_wilson(collector):
         return data
 
     return collector.capture(WILSON_FEED, WILSON_URL, parse)
+
+
+SUMNER_FEED = "TN-sumner-countywide-turnout"
+SUMNER_INDEX = "https://www.votesumnertn.org/november-general-and-city-elections/"
+SUMNER_LINK = re.compile(r"/uploads/files/[a-f0-9]{40}\.pdf")
+SUMNER_ROLES = {
+    "E-#OFELECTIONDAY": "election_day",
+    "A-#OFPAPERABSENTEE": "absentee",
+    "W-#OFWALK-INEARLYVOTING": "early",
+    "PUBLICCOUNT:": "ballots",
+    "REGISTEREDVOTERS:": "registered",
+    "VOTERTURNOUT:": "printed",
+    "NUMBEROFPRECINCTS:": "total",
+    "#OFPRECINCTSREPORTED:": "reported",
+    "#OFPRECINCTSNOTREPORTED:": "missing",
+    "#OFPRECINCTSINCOMPLETE:": "incomplete",
+    "#OFEQUIPMENTPROGRAMMED:": "equipment",
+    "#OFEQUIPMENTREPORTED:": "equipment_reported",
+}
+
+
+def sumner_discovery(body):
+    text = body.decode("utf-8-sig")
+    sections = re.findall(r"<h2><strong>2026</strong></h2>(.*?)(?=<h2>)", text, re.S)
+    if len(sections) != 1:
+        raise ValueError("Missing or repeated Sumner election archive section")
+    links = re.findall(r'<a\b[^>]*href="([^"]+)"[^>]*>\s*Federal and State, County General, and Municipal Elections\b',
+                       sections[0])
+    if len(links) != 1 or not SUMNER_LINK.fullmatch(links[0]):
+        raise ValueError("Missing or ambiguous Sumner county summary link")
+    return urljoin(SUMNER_INDEX, links[0])
+
+
+def sumner_view(view):
+    lines = [re.sub(r"\s+", "", line.upper()) for line in view["text"].splitlines()[:24]]
+    clock = re.fullmatch(r"(\d{1,2}/\d{1,2}/2026)-(\d{1,2}:\d\d:\d\d)(AM|PM)", lines[0])
+    if (clock is None or not {"ELECTIONDATE:11/3/2026", "SUMNERCOUNTY,TENNESSEE",
+                              "2026GENERALELECTION", "TNSUMG26"} <= set(lines)):
+        raise ValueError("Sumner countywide report identity changed")
+    text = "\n".join(lines)
+    if "ELECTIONSUMMARYREPORT" not in text or "PRECINCTSUMMARYREPORT" in text:
+        raise ValueError("Sumner report is not a countywide summary")
+    # The upright OCR occasionally reads the I in Walk-In as a lowercase l.
+    text = text.replace("WALK-LNEARLYVOTING", "WALK-INEARLYVOTING")
+    values = {}
+    for label, key in SUMNER_ROLES.items():
+        pattern = r"(\d{1,3}\.\d{2}%)" if key == "printed" else r"(\d+)(?![\d.,])"
+        found = re.findall(re.escape(label) + r"\n?" + pattern, text)
+        if len(found) != 1:
+            raise ValueError("Missing or ambiguous Sumner statistics cell: " + key)
+        values[key] = found[0] if key == "printed" else count(found[0])
+    native_clock = datetime.strptime(" ".join(clock.groups()), "%m/%d/%Y %I:%M:%S %p").isoformat()
+    return {"date": native_clock, "values": values, "native_lines": lines,
+            "receipt": view["receipt"]}
+
+
+def sumner_controls(data):
+    source, views = data["report"], data["complete_native_query"]
+    parts = urlsplit(source["url"])
+    if (set(source) != {"url", "bytes", "sha256"} or parts.scheme != "https"
+            or parts.netloc != urlsplit(SUMNER_INDEX).netloc or not SUMNER_LINK.fullmatch(parts.path)
+            or parts.query or parts.fragment or type(source["bytes"]) is not int
+            or not 0 < source["bytes"] <= 4_000_000 or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or len(views) != 2 or [row["receipt"]["dpi"] for row in views] != [180, 240]):
+        raise ValueError("Invalid Sumner scanned report receipt")
+    for item in views:
+        receipt = item["receipt"]
+        replay = sumner_view({"text": "\n".join(item["native_lines"]), "receipt": receipt})
+        if (replay != item or receipt["page"] != 1 or receipt["rotation_degrees"] != 0
+                or receipt["text_angle_classifier_enabled"] is not False):
+            raise ValueError("Sumner OCR evidence changed")
+    if any(views[0][field] != views[1][field] for field in ("date", "values")):
+        raise ValueError("Sumner OCR passes disagree")
+    values, clock = views[0]["values"], views[0]["date"]
+    ballots, registered = (values[key] for key in ("ballots", "registered"))
+    if (clock != data["date"] or clock < ELECTION
+            or any(value is None for value in values.values()) or not 0 < ballots <= registered
+            or sum(values[key] for key in ("election_day", "absentee", "early")) != ballots
+            or not (values["reported"] == values["total"] > 0 and values["missing"] == values["incomplete"] == 0
+                    and values["equipment"] == values["equipment_reported"] > 0)
+            or (100 * Decimal(ballots) / registered).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(values["printed"][:-1])):
+        raise ValueError("Sumner scanned counts, report completeness or rate disagree")
+    return clock, ballots, registered, values["printed"]
+
+
+def collect_sumner(collector):
+    def parse(index):
+        from pypdf import PdfReader
+        from scripts.results_pdf_ocr import first_page_views
+
+        url = sumner_discovery(index)
+        body, _ = collector.acquire(url)
+        if (len(body) > 4_000_000 or not body.startswith(b"%PDF-")
+                or not body.rstrip().endswith(b"%%EOF")):
+            raise ValueError("Incomplete Sumner county summary PDF")
+        pdf = PdfReader(io.BytesIO(body), strict=True)
+        if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 100 or pdf.pages[0].extract_text().strip():
+            raise ValueError("Unreviewed Sumner scanned PDF")
+        views = [sumner_view(view) for view in first_page_views(
+            body, strict_role_alignment=True, text_angle_classifier=False)]
+        data = {"report": {"url": url, **pin(body)}, "complete_native_query": views, "date": views[0]["date"]}
+        sumner_controls(data)
+        prior = (collector.prior.get(SUMNER_FEED) or {}).get("data")
+        if prior and data["date"] < prior["date"]:
+            raise ValueError("Sumner county report clock regressed")
+        return data
+
+    return collector.capture(SUMNER_FEED, SUMNER_INDEX, parse)
