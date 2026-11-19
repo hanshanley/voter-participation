@@ -43,6 +43,17 @@ AR_SOURCE = {"url": state_family.AR_REVIEWED_URL, "bytes": 55645416,
 AR_REVIEW = "additional:AR-2026-native-counts"
 AR_TOTAL = [893026, 1856404, 2761, 2768, 7]
 AR_COUNTIES = {"bytes": 2385, "sha256": "e3ff11ddb2e0b2d94a817a72109708add0cbcb83214fb050ed4b9ae9ee7c6ebc"}
+CT_FEED = "CT-native-local"
+CT_ROOT = "https://ctemspublic.tgstg.net/ng-app/data/election/108/"
+CT_SOURCE = {
+    "url": CT_ROOT + "52337/voterTurnout_Electiondata.json", "bytes": 25884,
+    "sha256": "4edd27b258832d7ab7013f404383f273fc292bbd9f91e131c4e5aa953ee42404",
+}
+CT_FIELDS = ("EV", "VV", "ABR", "ABC", "EBR", "EBC", "EDR", "EDC")
+CT_TOTAL = ("2102250", "1150127", "53091", "52940", "381498", "381490", "15015", "14945")
+CT_TOWNS = {"bytes": 11331, "sha256": "a108e82ffad5eeb905fbdf137e503e97d53a38da34af776f174aed738c29a260"}
+CT_PARENT = {"ID": "108", "BC": "1,150,127", "PR": "775 of 776 (99.87%)", "RV": "2,102,250",
+             "T": "169 of 169", "PT": "0 of 169", "TO": "54.71", "SVT": True}
 PROFILES = {
     "AK": {"state": "Alaska", "source_id": "ak-doe-statewide-voters-cast-20261103",
            "feed": alaska.FEED, "url": alaska.REPORT},
@@ -50,6 +61,8 @@ PROFILES = {
            "feed": AR_FEED, "url": AR_SOURCE["url"]},
     "AZ": {"state": "Arizona", "source_id": "az-sos-county-ballots-20261103",
            "feed": "AZ-official", "url": AZ_URL},
+    "CT": {"state": "Connecticut", "source_id": "ct-sots-statewide-vv-20261103",
+           "feed": CT_FEED, "url": CT_SOURCE["url"]},
     "FL": {"state": "Florida", "source_id": FL_REVIEW, "feed": None, "url": FL_SOURCE["url"]},
     "HI": {"state": "Hawaii", "source_id": "hi-oe-final-statewide-turnout-20261103",
            "feed": state_statistics.HI_FEED, "url": state_statistics.HI_URL},
@@ -111,12 +124,13 @@ def identity(code):
                           code + "-native-statewide-total",
                           {"AK": "native-voters-cast", "VT": "native-votes-cast-including-absentee",
                            "FL": "native-reported-participation",
+                           "CT": "native-voters-voted",
                            "HI": "native-total-turnout",
                            "MN": "native-total-number-voted",
                            "SC": "native-total-voter-turnout",
                            "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "FL", "HI", "SC", "VA", "VT", "MN"} else "all_methods")
+                          "source_defined" if code in {"AK", "CT", "FL", "HI", "SC", "VA", "VT", "MN"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -149,6 +163,8 @@ def observation(code, summary, retained=False):
         return alaska_observation(summary, retained)
     if code == "AR":
         return arkansas_observation(summary, retained)
+    if code == "CT":
+        return connecticut_observation(summary, retained)
     if code == "FL":
         return florida_observation(summary, retained)
     if code == "HI":
@@ -704,6 +720,90 @@ def arkansas_observation(summary, retained):
     })
 
 
+def connecticut_summary(snapshot, shard, previous):
+    entry = snapshot.get("granular_sources", {}).get(CT_FEED, {})
+    if entry.get("status") == "reported":
+        data = entry["data"]
+        rows = data["complete_native_query"]
+        require(set(rows) == {str(i) for i in range(1, 171)} and rows["170"]["NM"] == "Total",
+                "Connecticut statewide town inventory changed")
+        version = data["source_version"]
+        return {"contract": CONTRACT, "version": version, "archived": False,
+                "source": {"url": data["source_url"], **data["numerical_input_pins"]["voterTurnout_Electiondata"]},
+                "parent": data["election_parent"], "total": [rows["170"][key] for key in CT_FIELDS],
+                "towns": [[str(i), rows[str(i)]["NM"], *[rows[str(i)][key] for key in CT_FIELDS]]
+                          for i in range(1, 170)]}
+    if previous is not None:
+        return None
+    towns = [[row["view"]["source_town_id"], row["geography"]["name"],
+              *[row["view"]["native_record"][key] for key in CT_FIELDS]]
+             for row in shard["records"] if row["view"].get("source_town_id")]
+    if not towns:
+        return None
+    towns.sort(key=lambda town: int(town[0]))
+    return {"contract": CONTRACT, "version": 52337, "archived": True, "source": CT_SOURCE,
+            "parent": CT_PARENT, "total": list(CT_TOTAL), "towns": towns}
+
+
+def connecticut_observation(summary, retained):
+    source, towns, totals, parent, version = (summary[k] for k in ("source", "towns", "total", "parent", "version"))
+    require(summary["contract"] == CONTRACT and type(version) is int and version >= 52337
+            and set(source) == {"url", "bytes", "sha256"} and type(source["bytes"]) is int and source["bytes"] > 0
+            and re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            and source["url"] == f"{CT_ROOT}{version}/voterTurnout_Electiondata.json"
+            and [row[0] for row in towns] == [str(i) for i in range(1, 170)]
+            and len({row[1] for row in towns}) == 169
+            and all(len(row) == len(CT_FIELDS) + 2 for row in towns) and len(totals) == len(CT_FIELDS),
+            "Connecticut statewide evidence or edition changed")
+    if summary["archived"]:
+        require(retained and source == CT_SOURCE and parent == CT_PARENT and totals == list(CT_TOTAL)
+                and pin(encoded(towns)) == CT_TOWNS, "Retained Connecticut town evidence changed")
+    values = [[count(value) for value in row[2:]] for row in towns]
+    totals = [count(value) for value in totals]
+    require(None not in totals and all(None not in row for row in values)
+            and [sum(column) for column in zip(*values)] == totals
+            and parent["ID"] == "108" and [count(parent[key]) for key in ("RV", "BC")] == totals[:2],
+            "Connecticut town controls and direct statewide parent disagree")
+    registered, total = totals[:2]
+    measure = "Voters voted (native VV)"
+    profile = PROFILES["CT"]
+    notes = ["Direct statewide VV checked against the separate election parent and all 169 town rows.",
+             "The eligible-voter field and printed fraction are source context, not a qualified turnout rate.",
+             "No clock, certification, unique-voter count or map join is inferred."]
+    if summary["archived"]:
+        notes.insert(0, "Retained November 5, 2026 capture. The parent reported 775 of 776 reporting units.")
+    view = {"state": "Connecticut", "state_code": "CT", "year": 2026, "mode": "official",
+            "geography_level": "statewide", "status": "retained_after_failure" if retained else "reported",
+            "ballots": total, "registered": registered, "denominator": None,
+            "denominator_basis": "electorate_not_supplied", "reported_pct": None, "validated_pct": None,
+            "native_printed_pct": parent["TO"], "source_update_label": None,
+            "source_update_timezone": None, "source_date": None, "source_version": version,
+            "source_status_literal": "Source-reported turnout", "reported_units": None, "total_units": None,
+            "source_url": source["url"], "source_sha256": source["sha256"], "complete_download_url": None,
+            "automatic_source_refresh": True, "maps_approved": False,
+            "participation_measure_kind": "participation_reported", "participation_measure_literal": measure,
+            "participation_measure_label": measure, "cast_ballot_count_qualified": False,
+            "unique_voter_count_qualified": False, "quality": notes,
+            "source_reporting_label": " ".join(notes), "statewide_ballot_parent": copy.deepcopy(summary)}
+    return validate({
+        "contract": VERSION, "id": identity("CT"),
+        "election": {"id": "CT-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": "CT-native-statewide-total", "name": "Connecticut", "state_code": "CT",
+                      "level": "state", "parent_id": None, "join": {"status": "nongeographic",
+                          "reference_id": None, "feature_key": None, "evidence": None}},
+        "measure": {"id": "native-voters-voted", "literal": measure,
+                    "kind": "participation_reported", "mode": "source_defined", "unit": "source_reported_count"},
+        "count": {"value": total, "literal": total, "status": "reported"},
+        "denominator": None, "source_clock": {"literal": None, "timezone": None},
+        "reporting_status": {"literal": None, "reported_units": None, "total_units": None, "complete": None},
+        "source": {"id": profile["source_id"], "url": source["url"], "input_sha256": source["sha256"],
+                   "classification": "public_aggregate", "selector": {"native_row": "170", "field": "VV"},
+                   "fields": copy.deepcopy(view)},
+        "quality": {"conflicts": [], "notes": notes}, "view": view,
+    })
+
+
 def hawaii_summary(snapshot):
     entry = snapshot.get("granular_sources", {}).get(state_statistics.HI_FEED, {})
     if entry.get("status") != "reported":
@@ -905,6 +1005,7 @@ def project(files, snapshot):
             validate_existing(code, previous)
         entry = feeds.get(profile["feed"])
         summary = (arkansas_summary(snapshot, shard, previous) if code == "AR" else
+                   connecticut_summary(snapshot, shard, previous) if code == "CT" else
                    florida_summary(shard) if code == "FL" else
                    south_carolina_summary(snapshot) if code == "SC" else
                    turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
@@ -916,6 +1017,7 @@ def project(files, snapshot):
             row = observation(code, previous["view"]["statewide_ballot_parent"], retained=True)
         else:
             row = observation(code, summary, retained=code == "FL"
+                              or code == "CT" and summary["archived"]
                               or code == "AR" and summary["archived_capture"] is not None)
             if previous is not None:
                 before = previous["view"]["statewide_ballot_parent"]
@@ -924,8 +1026,11 @@ def project(files, snapshot):
                         or code == "AR" and {**before, "archived_capture": None} == after
                         or code == "AK" and before["statewide_feed"] != after["statewide_feed"]
                         or code == "HI" and before["reports"]["histatewide"] == after["reports"]["histatewide"]
+                        or code == "CT" and before["towns"] == after["towns"] and before["total"] == after["total"]
                         or code == "MN" and before["statistical_txt"] != after["statistical_txt"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
+                if code == "CT" and after["version"] < before["version"]:
+                    row = observation(code, before, retained=True)
                 if code == "AR" and before["status"] == "OFFICIAL" and after["status"] != "OFFICIAL":
                     row = observation(code, before, retained=True)
                 if code == "MN" and (after["source_edition"] < before["source_edition"]

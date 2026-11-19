@@ -42,6 +42,42 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_connecticut_retained_control_and_versioned_successor(monkeypatch):
+    files = baseline(monkeypatch)
+    path = "states/CT.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["CT"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    retained, changes = totals.project(files, {})
+    assert changes == [{"state_code": "CT", "id": totals.identity("CT"), "previous": None,
+                        "current": 1150127, "source_status": "retained_after_failure"}]
+    original_shard = json.loads(gzip.decompress(files[path]))
+    shard = json.loads(gzip.decompress(retained[path]))
+    assert shard["views"] == original_shard["views"] and shard["records"][:-1] == original_shard["records"]
+    row = shard["records"][-1]
+    assert row["denominator"] is None and totals.project(retained, {}) == (retained, [])
+    archive = row["view"]["statewide_ballot_parent"]
+    query = {key: {"NM": name, **dict(zip(totals.CT_FIELDS, values))}
+             for key, name, *values in archive["towns"]}
+    query["1"]["VV"] = str(int(query["1"]["VV"]) + 10)
+    query["170"] = {"NM": "Total", **dict(zip(totals.CT_FIELDS, archive["total"])), "VV": "1150137"}
+    entry = {"status": "reported", "data": {
+        "complete_native_query": query, "source_version": 52338,
+        "source_url": totals.CT_ROOT + "52338/voterTurnout_Electiondata.json",
+        "numerical_input_pins": {"voterTurnout_Electiondata": pin(encoded(query))},
+        "election_parent": {**archive["parent"], "BC": "1,150,137"}}}
+    snapshot = {"granular_sources": {totals.CT_FEED: entry}}
+    changed, changes = totals.project(retained, snapshot)
+    assert changes[0]["current"] == 1150137 and changes[0]["source_status"] == "reported"
+    assert totals.project(changed, snapshot) == (changed, [])
+    assert totals.project(changed, {})[1][0]["source_status"] == "retained_after_failure"
+    query["1"]["VV"] = "0"
+    with pytest.raises(ValueError, match="controls and direct statewide parent disagree"):
+        totals.project(retained, snapshot)
+
+
 def test_hawaii_direct_parent_preserves_known_cross_scope_difference(monkeypatch):
     from decimal import Decimal
 
