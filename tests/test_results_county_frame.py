@@ -106,6 +106,29 @@ def test_philadelphia_turnout_keeps_parent_residual_and_holds_testing_or_invalid
     assert revised["source"]["sha256"] == pin(body)["sha256"]
 
 
+def test_philadelphia_division_geometry_keeps_leading_zero_and_holds_changed_polygons(monkeypatch):
+    from scripts import philadelphia_divisions as divisions
+
+    polygon = {"type": "Polygon", "coordinates": [[[-75.2, 40], [-75.1, 40],
+                                                   [-75.1, 40.1], [-75.2, 40]]]}
+    monkeypatch.setattr(divisions, "KEYS", pin(encoded(["0101"])))
+    monkeypatch.setattr(divisions, "POLYGONS", pin(encoded([["0101", polygon]])))
+    shape = {"type": "FeatureCollection", "features": [
+        {"type": "Feature", "properties": {"division_num": "0101", "short_div_num": "13"},
+         "geometry": polygon},
+    ]}
+    data = divisions.parse_geometry(encoded(shape))
+    assert data["features"] == [["0101", polygon]]
+    assert data["short_field_conflicts"] == [["0101", "13"]]
+    changed = copy.deepcopy(shape)
+    changed["features"][0]["properties"]["division_num"] = "0102"
+    with pytest.raises(ValueError, match="reviewed election inventory"):
+        divisions.parse_geometry(encoded(changed))
+    polygon["coordinates"][0][1][0] = -75.08
+    with pytest.raises(ValueError, match="reviewed election inventory"):
+        divisions.parse_geometry(encoded(shape))
+
+
 def baseline(value):
     profile = frame.IA
     bounds = {"sha256": profile["reference_sha256"], "boundary_year": 2026,

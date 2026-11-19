@@ -41,7 +41,7 @@ CODE_PATHS = (
     "results_aspx_congress.py", "results_json_congress.py",
     "results_clarity_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
     "results_minnesota_turnout.py", "results_turnout_history.py", "results_alaska_turnout.py",
-    "eac_county_turnout.py",
+    "eac_county_turnout.py", "philadelphia_divisions.py",
     "results_native_congress.py", "results_native_dc.py", "results_native_state_family.py",
     "results_native_virginia.py",
     "results_congress.py", "results_house.py",
@@ -520,7 +520,7 @@ def hydrate_granular_sources(snapshot, source_packet):
 
 
 def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None):
-    from scripts import results_turnout_history as turnout_history
+    from scripts import philadelphia_divisions, results_turnout_history as turnout_history
     from scripts.automatic_estimates import _artifact, build, render_artifacts
     from scripts.automatic_native_refresh import refresh
     from scripts.results_county_frame import (
@@ -549,6 +549,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     changes.extend(town_changes)
     updated, native, county_changes = project_philadelphia(updated, native, snapshot)
     changes.extend(county_changes)
+    updated, native = philadelphia_divisions.project(updated, native, snapshot)
     model_seed = {key: value for key, value in seed.items() if key != "historical_eac_county_facts"}
     estimates = build(snapshot, model_seed)
     history_exports = {}
