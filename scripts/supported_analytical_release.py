@@ -102,7 +102,7 @@ def administrative(files):
         reviewed = {"UT": (SUMMIT_FEED, SUMMIT_PREDECESSOR), "NJ": (SUSSEX_FEED, SUSSEX_PREDECESSOR)}
         if state in reviewed:
             feed, predecessor = reviewed[state]
-            canvass = [record["id"] for record in records if record["source"]["id"] == feed]
+            canvass = [record["id"] for record in records if record["source"].get("id") == feed]
             require(len(canvass) <= 1, f"Ambiguous {feed} countywide canvass")
             if canvass:
                 superseded[predecessor] = canvass[0]
