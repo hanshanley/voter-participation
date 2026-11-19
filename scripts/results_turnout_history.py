@@ -461,10 +461,11 @@ def collect_montana(collector):
 def georgia_edition(value):
     if not isinstance(value, str) or not re.fullmatch(r"202[67]-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,7})?Z", value):
         raise ValueError("Invalid Georgia publication or county timestamp")
-    parsed = datetime.fromisoformat(value[:-1])
+    whole, _, fraction = value[:-1].partition(".")
+    parsed = datetime.fromisoformat(whole)
     if not datetime(2026, 11, 3) <= parsed < datetime(2027, 2, 1):
         raise ValueError("Georgia timestamp outside the 2026 general-election window")
-    return parsed
+    return whole + "." + fraction.ljust(7, "0") + "Z"
 
 
 def georgia_controls(query):
@@ -542,7 +543,7 @@ def georgia_report(body):
              "state_registered": total(election["totalVoters"]), "counties": rows}
     georgia_controls(query)
     return {"report": {"url": GA_URL, **pin(body)}, "complete_native_query": query,
-            "date": georgia_edition(query["published"]).isoformat(timespec="microseconds"),
+            "date": georgia_edition(query["published"]),
             "participation_observation_qualified": False}
 
 

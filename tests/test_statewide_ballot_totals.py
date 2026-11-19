@@ -172,7 +172,7 @@ def test_georgia_reconciles_county_ballots_and_retains_a_bad_revision(tmp_path, 
     election = {"id": h.GA_ELECTION, "jurisdictionId": h.GA_JURISDICTION,
                 "electionDate": "2026-11-03", "isPrimary": False, "isProduction": True,
                 "name": name("November 3, 2026 - General & Special Elections"),
-                "publishDate": "2026-11-18T21:00:00Z", "isOfficialResults": False,
+                "publishDate": "2026-11-18T21:00:00.1234567Z", "isOfficialResults": False,
                 "ballotsCast": 0.0, "totalVoters": 1590.0}
     body = {"election": election, "jurisdiction": {"id": h.GA_JURISDICTION, "name": name("Georgia"),
             "childLocalities": [{"id": key.upper(), "name": name(label)} for key, label in counties.items()]},
