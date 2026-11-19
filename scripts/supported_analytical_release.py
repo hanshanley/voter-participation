@@ -384,13 +384,19 @@ def other_offices(review):
     return rows
 
 
-def selected_local_observation_ids(snapshot):
+def selected_local_observation_ids(snapshot, counts=None):
+    from scripts import philadelphia_divisions, results_pdf_county_parent, results_turnout_history
     from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
     from scripts.results_official_congress import CONTRACT as OFFICIAL_CONTRACT, IDENTITIES as OFFICIAL_IDENTITIES
 
     scope = snapshot.get("collection_scope") or {}
     if scope.get("mode") != "selected_registered_source_refresh":
         return None
+    administrative_sources = {
+        results_turnout_history.OH_FEED: "OH",
+        results_turnout_history.MT_FEED: "MT",
+        results_pdf_county_parent.PHILADELPHIA_FEED: "PA",
+    }
     selected = set()
     for identity in scope["source_ids"]:
         if identity == UF_IDENTITY:
@@ -407,7 +413,19 @@ def selected_local_observation_ids(snapshot):
             continue
         entry = snapshot.get("granular_sources", {}).get(identity)
         require(entry is not None, "Selected local source missing: " + identity)
-        selected.update(update["id"] for update in entry["data"]["updates"])
+        if identity == philadelphia_divisions.FEED:
+            continue  # Geometry can qualify a map join, but does not refresh any count.
+        if identity in administrative_sources:
+            if entry["status"] == "reported" and counts is not None:
+                state = administrative_sources[identity]
+                declaration = decoded(counts, "index.json")["states"][state]
+                selected.update(row["id"] for row in decoded(counts, declaration["file"])["records"]
+                                if row["source"]["id"] == identity)
+            continue
+        data = entry.get("data")
+        require(isinstance(data, dict) and isinstance(data.get("updates"), list),
+                "Selected local source has no observation updates: " + identity)
+        selected.update(update["id"] for update in data["updates"])
     return selected
 
 
@@ -470,7 +488,7 @@ def build(snapshot, count_files, seed, estimates, changes):
     recorded = recorded_states(estimates, model_rows)
     districts = recorded_districts(review, estimates)
     modeled, groups = explanations(estimates)
-    selected = selected_local_observation_ids(snapshot)
+    selected = selected_local_observation_ids(snapshot, count_files)
     effects = change_effects(changes, admin, selected)
     house_guards = list(house_model_guard_matrix(estimates["decisions"]["states"]))
     raw_files = {

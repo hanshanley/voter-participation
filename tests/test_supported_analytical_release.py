@@ -210,6 +210,38 @@ def test_official_candidate_refresh_is_not_mislabeled_as_local_participation():
         release.selected_local_observation_ids(snapshot)
 
 
+def test_scoped_administrative_refresh_attributes_only_matching_reported_counts():
+    import json
+
+    from scripts import philadelphia_divisions, results_pdf_county_parent, results_turnout_history
+
+    mt = results_turnout_history.MT_FEED
+    oh = results_turnout_history.OH_FEED
+    phl = results_pdf_county_parent.PHILADELPHIA_FEED
+    geo = philadelphia_divisions.FEED
+    snapshot = {
+        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": [geo, mt, oh]},
+        "granular_sources": {
+            mt: {"status": "reported", "data": {"complete_native_query": {}}},
+            oh: {"status": "retained_after_failure", "data": None},
+            geo: {"status": "reported", "data": {"features": []}},
+            phl: {"status": "reported", "data": {"complete_native_query": {}}},
+        },
+    }
+    counts = {"index.json": json.dumps({"states": {
+        state: {"file": state + ".json.gz"} for state in ("MT", "OH", "PA")
+    }}).encode()}
+    for state, rows in {"MT": [("state", mt)], "OH": [("ohio", oh), ("cuyahoga", "other")],
+                        "PA": [("philadelphia", phl), ("elsewhere", "other")]}.items():
+        counts[state + ".json.gz"] = release.compressed(json.dumps({"records": [
+            {"id": identity, "source": {"id": source}} for identity, source in rows
+        ]}).encode())
+    assert release.selected_local_observation_ids(snapshot, counts) == {"state"}
+    snapshot["collection_scope"]["source_ids"].append(phl)
+    snapshot["granular_sources"][oh]["status"] = "reported"
+    assert release.selected_local_observation_ids(snapshot, counts) == {"state", "ohio", "philadelphia"}
+
+
 def test_held_group_and_frozen_source_tampering_do_not_become_numerical_outputs():
     held = {"contributions_pp": None, "total_contribution_pp": None}
     assert all(value is None for value in release.mechanisms(held, modeled_row()).values())
