@@ -1,6 +1,7 @@
 import copy
 import gzip
 import json
+from pathlib import Path
 
 import pytest
 
@@ -39,6 +40,43 @@ def baseline(monkeypatch):
 
 def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
+
+
+def test_florida_projects_only_the_unchanged_retained_statewide_total(monkeypatch):
+    baseline_path = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts/states/FL.json.gz"
+    if not baseline_path.is_file():
+        pytest.skip("Retained collector baseline is not part of this runtime-only archive")
+    files = baseline(monkeypatch)
+    path = "states/FL.json.gz"
+    files[path] = baseline_path.read_bytes()
+    before = json.loads(gzip.decompress(files[path]))
+    index = json.loads(files["index.json"])
+    index["states"]["FL"] = {"file": path, **pin(files[path])}
+    old_current = files["current.json.gz"]
+    index["current_snapshot"] = {"file": "current.json.gz", **pin(old_current)}
+    files["index.json"] = encoded(index)
+    projected, changes = totals.project(files, {})
+    assert changes == [{"state_code": "FL", "id": totals.identity("FL"), "previous": None,
+                        "current": 8335497, "source_status": "retained_after_failure"}]
+    after = json.loads(gzip.decompress(projected[path]))
+    record = after["records"][-1]
+    assert after["records"][:-1] == before["records"] and after["views"] == before["views"]
+    assert record["denominator"] is record["view"]["validated_pct"] is None
+    assert record["view"]["source_capture_date"] == "2026-11-06"
+    assert record["source_clock"]["literal"] is record["reporting_status"]["complete"] is None
+    assert json.loads(projected["index.json"])["current_snapshot"] == {
+        "file": "current.json.gz", **pin(projected["current.json.gz"])}
+    reporting, = json.loads(gzip.decompress(projected["current.json.gz"]))["snapshot"]["reporting"]
+    assert reporting == record["view"]
+    assert totals.project(projected, {}) == (projected, [])
+    for candidate in before["records"]:
+        if candidate["view"].get("review_id") == totals.FL_REVIEW:
+            candidate["view"]["native_record"]["reported_participants"] = "0"
+            break
+    files[path] = totals.compressed(before)
+    index["states"]["FL"].update(pin(files[path]))
+    files["index.json"] = encoded(index)
+    assert totals.project(files, {}) == (files, [])
 
 
 def test_alaska_preserves_precinct_inventory_disagreement_and_uses_report_fraction(monkeypatch):

@@ -25,11 +25,20 @@ VT_COUNTIES = ("ADDISON", "BENNINGTON", "CALEDONIA", "CHITTENDEN", "ESSEX", "FRA
                "GRAND ISLE", "LAMOILLE", "ORANGE", "ORLEANS", "RUTLAND", "WASHINGTON",
                "WINDHAM", "WINDSOR")
 VT_FIELDS = ("total_votes_cast_includes_absentee", "registered_voters", "absentee_votes_cast")
+FL_REVIEW = "florida-consolidated-turnout-20261106-01"
+FL_SOURCE = {
+    "url": "https://floridaelectionwatch.gov/CountyReportingStatus",
+    "bytes": 169716,
+    "sha256": "f4a4ff86238aadf10336ba428aaef8a8c04374e0774642734968d7d14362ce72",
+}
+FL_COUNTIES = {"bytes": 38823, "sha256": "a170d6f84bc4c4abea37238dc52a7d92235978ac1ab6e0f11f8eaa19458b94bf"}
+FL_TOTAL = ("TOTAL", "8,335,497", "13,704,495", "60.82%", "100%", "", "", "", "", "")
 PROFILES = {
     "AK": {"state": "Alaska", "source_id": "ak-doe-statewide-voters-cast-20261103",
            "feed": alaska.FEED, "url": alaska.REPORT},
     "AZ": {"state": "Arizona", "source_id": "az-sos-county-ballots-20261103",
            "feed": "AZ-official", "url": AZ_URL},
+    "FL": {"state": "Florida", "source_id": FL_REVIEW, "feed": None, "url": FL_SOURCE["url"]},
     "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
            "feed": mn.IDENTITY, "url": mn.URL},
     "VA": {"state": "Virginia", "source_id": "va-elect-general-election-turnout",
@@ -85,10 +94,11 @@ def identity(code):
     return observation_id(PROFILES[code]["source_id"], code + "-2026-11-03-general",
                           code + "-native-statewide-total",
                           {"AK": "native-voters-cast", "VT": "native-votes-cast-including-absentee",
+                           "FL": "native-reported-participation",
                            "MN": "native-total-number-voted",
                            "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "VA", "VT", "MN"} else "all_methods")
+                          "source_defined" if code in {"AK", "FL", "VA", "VT", "MN"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -119,6 +129,8 @@ def observation(code, summary, retained=False):
     profile = PROFILES[code]
     if code == "AK":
         return alaska_observation(summary, retained)
+    if code == "FL":
+        return florida_observation(summary, retained)
     if code == "VT":
         return vermont_observation(summary, retained)
     if code == "MN":
@@ -586,6 +598,69 @@ def alaska_observation(summary, retained):
         "quality": {"conflicts": [], "notes": notes}, "view": view})
 
 
+def florida_summary(shard):
+    rows = sorted(
+        (row["view"]["native_record"] for row in shard["records"]
+         if row["view"].get("review_id") == FL_REVIEW and row["geography"]["level"] == "county"),
+        key=lambda row: row["native_county_code"])
+    if pin(encoded(rows)) != FL_COUNTIES:
+        return None
+    return {"contract": CONTRACT, "source": FL_SOURCE, "printed_statewide_total": list(FL_TOTAL),
+            "county_query_pin": FL_COUNTIES, "county_queries": rows,
+            "capture_date": "2026-11-06"}
+
+
+def florida_observation(summary, retained):
+    rows = summary["county_queries"]
+    require(retained and summary["contract"] == CONTRACT and summary["source"] == FL_SOURCE
+            and summary["capture_date"] == "2026-11-06"
+            and summary["printed_statewide_total"] == list(FL_TOTAL)
+            and summary["county_query_pin"] == pin(encoded(rows)) == FL_COUNTIES
+            and len(rows) == len({row["native_county_code"] for row in rows}) == 67,
+            "Florida retained report or county inventory differs")
+    total, registered = (int(value.replace(",", "")) for value in FL_TOTAL[1:3])
+    require(sum(int(row["reported_participants"]) for row in rows) == total
+            and sum(int(row["eligible_active_registered_voters"]) for row in rows) == registered,
+            "Florida statewide and county totals disagree")
+    status = "Unofficial Election Night Results"
+    notes = ["Dated November 6 capture; retained as source-reported participation, not a fresh or final count.",
+             "The printed statewide count agrees with all 67 counties from that report.",
+             "Provisional and overseas reporting was incomplete; the printed registration fraction is not a qualified rate.",
+             "No native count-update clock, independent certification, unique-voter count or new local map join."]
+    view = {"state": "Florida", "state_code": "FL", "year": 2026, "mode": "official",
+            "geography_level": "statewide", "status": "retained_after_failure",
+            "ballots": total, "registered": registered, "denominator": None,
+            "denominator_basis": "electorate_not_supplied", "reported_pct": None,
+            "validated_pct": None, "published_pct": None, "native_printed_pct": FL_TOTAL[3],
+            "source_date": None, "source_update_label": None, "source_update_timezone": None,
+            "source_capture_date": summary["capture_date"], "source_status_literal": status,
+            "reported_units": None, "total_units": None, "source_url": FL_SOURCE["url"],
+            "source_sha256": FL_SOURCE["sha256"], "complete_download_url": None,
+            "automatic_source_refresh": True, "participation_measure_kind": "participation_reported",
+            "participation_measure_literal": "Voter Turnout",
+            "participation_measure_label": "Dated statewide reported participation",
+            "native_election_id_qualified": True, "cast_ballot_count_qualified": False,
+            "unique_voter_count_qualified": False, "maps_approved": False,
+            "quality": notes, "source_reporting_label": " ".join(notes),
+            "statewide_ballot_parent": copy.deepcopy(summary)}
+    return validate({
+        "contract": VERSION, "id": identity("FL"),
+        "election": {"id": "FL-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": "FL-native-statewide-total", "name": "Florida", "state_code": "FL",
+                      "level": "state", "parent_id": None, "join": {"status": "nongeographic",
+                          "reference_id": None, "feature_key": None, "evidence": None}},
+        "measure": {"id": "native-reported-participation", "literal": "Voter Turnout",
+                    "kind": "participation_reported", "mode": "source_defined", "unit": "source_reporting_count"},
+        "count": {"value": total, "literal": total, "status": "reported"},
+        "denominator": None, "source_clock": {"literal": None, "timezone": None},
+        "reporting_status": {"literal": status, "reported_units": None, "total_units": None, "complete": None},
+        "source": {"id": FL_REVIEW, "url": FL_SOURCE["url"], "input_sha256": FL_SOURCE["sha256"],
+                   "classification": "public_aggregate", "selector": {"native_row": "TOTAL"},
+                   "fields": copy.deepcopy(view)},
+        "quality": {"conflicts": [], "notes": notes}, "view": view})
+
+
 def project(files, snapshot):
     result = dict(files)
     index = json.loads(files["index.json"])
@@ -616,7 +691,8 @@ def project(files, snapshot):
         if previous is not None:
             validate_existing(code, previous)
         entry = feeds.get(profile["feed"])
-        summary = (turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
+        summary = (florida_summary(shard) if code == "FL" else
+                   turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
@@ -624,7 +700,7 @@ def project(files, snapshot):
                 continue
             row = observation(code, previous["view"]["statewide_ballot_parent"], retained=True)
         else:
-            row = observation(code, summary)
+            row = observation(code, summary, retained=code == "FL")
             if previous is not None:
                 before = previous["view"]["statewide_ballot_parent"]
                 after = row["view"]["statewide_ballot_parent"]
