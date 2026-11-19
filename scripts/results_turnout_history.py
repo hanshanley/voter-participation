@@ -1,6 +1,7 @@
 """Read a public statewide general-election turnout series without guessing a missing year."""
 
 import csv
+from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 from email.utils import parsedate_to_datetime
@@ -9,7 +10,8 @@ from html.parser import HTMLParser
 import io
 import json
 import re
-from urllib.parse import urljoin
+import unicodedata
+from urllib.parse import urljoin, urlsplit
 import xml.etree.ElementTree as ET
 
 from scripts.participation_intake.contract import IntakeError, count, encoded, pin
@@ -51,6 +53,35 @@ BUXTON_TITLE = "Election Results for the Town of Buxton, Maine - November 3, 202
 BUXTON_FIELDS = ("Registered Voters", "Absentee Ballots Cast", "Ballots Cast in Person",
                  "Total Ballots Cast", "Voter Turn Out Percent")
 BATH_FEED = "ME-bath-municipal-turnout"
+HOLLIS_FEED = "NH-hollis-municipal-turnout"
+HOLLIS_INDEX = "https://www.hollisnh.gov/1447/Elections"
+HOLLIS_REPORT = urljoin(HOLLIS_INDEX, "/DocumentCenter/View/6048/2026-General-Election-Results-PDF")
+
+
+@dataclass(frozen=True)
+class VotingWorksTown:
+    feed: str
+    town: str
+    feature_key: str
+    index: str
+    link_label: str
+    document_slug: str
+    election_id: str
+
+    def permits_report(self, url):
+        authority, candidate = urlsplit(self.index), urlsplit(url)
+        return (candidate.scheme == authority.scheme == "https"
+                and candidate.netloc == authority.netloc and not candidate.query and not candidate.fragment
+                and re.fullmatch(rf"/DocumentCenter/View/[1-9][0-9]*/{re.escape(self.document_slug)}",
+                                 candidate.path) is not None)
+
+
+VOTINGWORKS_TOWNS = {
+    HOLLIS_FEED: VotingWorksTown(HOLLIS_FEED, "Hollis", "3337140", HOLLIS_INDEX,
+                               "General Election (PDF)", "2026-General-Election-Results-PDF",
+                               "a2c1dd6-9bf2c33"),
+}
+
 BATH_INDEX = "https://www.cityofbathmaine.gov/Departments/City-Clerk/Elections/Past-Election-Results"
 BATH_PDF = ("https://www.cityofbathmaine.gov/files/assets/bath/v/1/city-clerk/documents/"
             "election-night-results.pdf")
@@ -421,6 +452,116 @@ def collect_bath(collector):
 
     return collector.capture(BATH_FEED, BATH_INDEX, parse, equivalent=lambda old, new:
                              bath_controls(old) == bath_controls(new) and not bath_precedes(old, new))
+
+
+def votingworks_controls(data, town, report_url):
+    source = data["report"]
+    query = data["complete_native_query"]
+    if (source["url"] != report_url or type(source["bytes"]) is not int or source["bytes"] <= 0
+            or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or query["title"] != "Official Tally Report"
+            or query["election"] != f"General Election, Nov 3, 2026, {town}, NH"):
+        raise ValueError("VotingWorks report authority or election differs")
+    generated = datetime.strptime(query["generated"], "%b %d, %Y, %I:%M:%S %p")
+    if (generated.date() < datetime(2026, 11, 3).date()
+            or not re.fullmatch(r"[0-9a-f]{7}-[0-9a-f]{7}", query["election_id"])):
+        raise ValueError("VotingWorks report generation or election ID differs")
+    values = []
+    for label, line in zip(("Ballot Count", "Scanned", "Manually Entered"), query["statistics"]):
+        match = re.fullmatch(rf"{label} (0|[1-9]\d{{0,2}}(?:,\d{{3}})*|[1-9]\d{{3,}})", line, re.ASCII)
+        if not match:
+            raise ValueError("VotingWorks report-level ballot table differs")
+        values.append(int(match[1].replace(",", "")))
+    if len(query["statistics"]) != 3 or len(values) != 3 or values[0] != sum(values[1:]):
+        raise ValueError("VotingWorks report-level ballot components do not reconcile")
+    return tuple(values), generated
+
+
+def votingworks_report(body, town, report_url):
+    from pypdf import PdfReader
+
+    pdf = PdfReader(io.BytesIO(body), strict=True)
+    if not pdf.pages:
+        raise ValueError("Missing VotingWorks title page")
+    lines = [" ".join(line.split()) for line in
+             unicodedata.normalize("NFKC", pdf.pages[0].extract_text()).splitlines() if line.strip()]
+    if (len(lines) < 8 or not lines[3].startswith("Certification Signatures:")
+            or any(re.search(r"\b(?:scanner|batch)\s+(?:id|number|report|tally)\b", line, re.I)
+                   for line in lines[:7])
+            or sum(line.startswith("Ballot Count ") for line in lines) != 1):
+        raise ValueError("Missing VotingWorks whole-town report header or ballot table")
+    meta = re.fullmatch(r"Report Generated: (.+?)\s*Election ID: ([0-9a-f-]+)", lines[2])
+    if not meta:
+        raise ValueError("Missing VotingWorks report metadata")
+    data = {"report": {"url": report_url, **pin(body)}, "complete_native_query": {
+        "title": lines[0], "election": lines[1], "generated": meta[1], "election_id": meta[2],
+        "statistics": lines[4:7]}}
+    votingworks_controls(data, town, report_url)
+    return data
+
+
+def votingworks_successor(old, new, town, report_url):
+    previous, previous_edition = votingworks_controls(old, town, old["report"]["url"])
+    current, current_edition = votingworks_controls(new, town, report_url)
+    if (old["complete_native_query"]["election_id"] != new["complete_native_query"]["election_id"]
+            or current_edition < previous_edition
+            or (current != previous and current_edition == previous_edition)):
+        raise ValueError("VotingWorks election identity or report edition regressed or conflicts")
+    return (previous == current and previous_edition == current_edition
+            and old["report"]["url"] == report_url)
+
+
+def votingworks_town_controls(data, profile):
+    url = data["report"]["url"]
+    if not profile.permits_report(url) or data["complete_native_query"]["election_id"] != profile.election_id:
+        raise ValueError("VotingWorks town report route or reviewed election ID differs")
+    return votingworks_controls(data, profile.town, url)
+
+
+def votingworks_declared_report(body, profile):
+    class Links(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.matches = []
+            self.href = None
+            self.parts = []
+
+        def handle_starttag(self, tag, attrs):
+            if tag == "a":
+                self.href = dict(attrs).get("href")
+                self.parts = []
+
+        def handle_data(self, text):
+            if self.href:
+                self.parts.append(text)
+
+        def handle_endtag(self, tag):
+            if tag == "a" and self.href:
+                url = urljoin(profile.index, self.href)
+                if profile.permits_report(url) and " ".join("".join(self.parts).split()) == profile.link_label:
+                    self.matches.append(url)
+                self.href = None
+
+    parser = Links()
+    parser.feed(body.decode("utf-8-sig"))
+    if len(parser.matches) != 1:
+        raise ValueError(f"{profile.town} general-election report declaration missing or ambiguous")
+    return parser.matches[0]
+
+
+def collect_votingworks_town(collector, profile):
+    def parse(body):
+        report_url = votingworks_declared_report(body, profile)
+        report, _ = collector.acquire(report_url)
+        data = votingworks_report(report, profile.town, report_url)
+        votingworks_town_controls(data, profile)
+        return data
+
+    def equivalent(old, new):
+        votingworks_town_controls(old, profile)
+        return votingworks_successor(old, new, profile.town, new["report"]["url"])
+
+    return collector.capture(profile.feed, profile.index, parse, equivalent=equivalent)
 
 
 def ohio_election(body):

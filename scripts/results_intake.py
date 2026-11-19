@@ -982,6 +982,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     }
     administrative.update({feed: partial(results_pa_vote_history.collect, year=year)
                            for year, feed in results_pa_vote_history.FEEDS.items()})
+    administrative.update({feed: partial(results_turnout_history.collect_votingworks_town, profile=town)
+                           for feed, town in results_turnout_history.VOTINGWORKS_TOWNS.items()})
     registry_path, work = Path(registry_path), Path(work)
     config = registry_config(registry_path)
     now = now or datetime.now(timezone.utc)

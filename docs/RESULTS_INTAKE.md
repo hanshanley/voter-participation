@@ -2349,6 +2349,30 @@ reports use the normal revision path; no stopped URL is retried and no retained
 edition is marked fresh. The analytical archive contains the full factual
 queries, original source pins, and replay code, not publisher PDF or HTML.
 
+### New Hampshire: municipal VotingWorks tally reports
+
+Register a compatible town once in `VOTINGWORKS_TOWNS` in
+`scripts/results_turnout_history.py`: the stable feed ID, literal town name,
+reviewed municipal feature key, official election index, report link label and
+document slug, and the native election ID. The hourly collector, selected
+refresh, analysis, map binding, and coverage export all use that registration.
+No new workflow or per-town projector is needed.
+
+The official index must declare exactly one matching report. The document
+number can change without code changes; the report must still use the approved
+HTTPS host and path pattern and pass the same native title, election, town,
+edition, and count arithmetic checks. A newer report can correct the count in
+either direction. Outages, stops, old editions, and incompatible reports retain
+the last-good record. Image-only layouts are not auto-qualified.
+
+Hollis's retained report supplies 5,005 ballots (4,977 scanned and 28 manually
+entered), no registration denominator, and no count-update clock. Report
+generation time is separate. The match to the pinned 2024 municipal reference
+is contextual, not a 2026 precinct boundary. Complete factual queries and
+source pins are packaged; signatures and original municipal PDFs are not
+redistributed. Use the existing `refresh-selected` command with
+`NH-hollis-municipal-turnout`.
+
 ### Minnesota: statewide count from complete precinct statistics
 
 The hourly collector reconciles the statewide reporting page against the

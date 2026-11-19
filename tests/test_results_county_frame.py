@@ -288,6 +288,107 @@ def test_bath_turnout_refreshes_revisions_and_rejects_ambiguous_editions(tmp_pat
         assert failed["data"] == before["data"]
 
 
+@pytest.mark.parametrize("locality", ["Hollis", "Fixture Town"])
+def test_votingworks_town_report_retains_last_good_across_revisions(tmp_path, monkeypatch, locality):
+    from dataclasses import replace
+    from types import SimpleNamespace
+    from urllib.parse import urljoin
+
+    pypdf = pytest.importorskip("pypdf")
+    history = frame.history
+    profile = history.VOTINGWORKS_TOWNS[history.HOLLIS_FEED]
+    if locality != "Hollis":
+        profile = replace(profile, feed="NH-fixture-town-votingworks", town=locality, feature_key="3399999",
+                          index="https://fixture-town.example/elections", election_id="1234567-abcdef0")
+        monkeypatch.setitem(history.VOTINGWORKS_TOWNS, profile.feed, profile)
+    title = "Official Tally Report"
+    town = locality
+    initial_url = urljoin(profile.index, f"/DocumentCenter/View/6048/{profile.document_slug}")
+    report_url = initial_url
+    extra_link = ""
+    election_id = profile.election_id
+    clock, total, scanned, manual = "9:21:41 PM", "5,005", "4,977", 28
+    attempt = b"%PDF-1 original"
+    text = ""
+    monkeypatch.setattr(pypdf, "PdfReader", lambda _body, *, strict: SimpleNamespace(
+        pages=[SimpleNamespace(extract_text=lambda: text)]))
+
+    def acquire(self, url):
+        self.guard(url)
+        declaration = (f'<a href="{report_url}">General Election (PDF)</a>' + extra_link).encode()
+        body = {profile.index: declaration, report_url: attempt}[url]
+        if body is None:
+            raise TimeoutError("offline")
+        return body, {"origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(results_intake.Collector, "acquire", acquire)
+
+    def collect(prior=None, *, stopped=()):
+        nonlocal text
+        text = (f"{title}\nGeneral Election, Nov 3, 2026, {town}, NH\n"
+                f"Report Generated: Nov 3, 2026, {clock}Election ID: {election_id}\n"
+                f"Certification Signatures: We, the undersigned\nBallot Count {total}\n"
+                f"Scanned {scanned}\nManually Entered {manual}\nGovernor\nBallots Cast 12 3 15")
+        collector = results_intake.Collector(
+            tmp_path, {profile.feed: prior} if prior else {},
+            {"urls": list(stopped), "prefixes": [], "hosts": []}, datetime(2026, 11, 19, tzinfo=timezone.utc))
+        return history.collect_votingworks_town(collector, profile)
+
+    first = collect()
+    assert first["status"] == "reported"
+    observation = frame.county_parent_observation(frame.votingworks_parent(profile), first["data"],
+                                                  {"review_id": "test"}, "reported")
+    assert observation["count"]["value"] == 5005
+    assert observation["source_clock"]["literal"] is None
+    assert observation["denominator"]["value"] is None
+    assert observation["view"]["source_publication_label"] == "Nov 3, 2026, 9:21:41 PM"
+    assert collect(first) == first
+    total, manual = "5,004", 27
+    assert collect(first)["status"] == "retained_after_failure"
+    clock = "9:21:42 PM"
+    decreased = collect(first)
+    assert decreased["status"] == "reported"
+    assert history.votingworks_town_controls(decreased["data"], profile)[0][0] == 5004
+    total, manual, clock = "5,006", 29, "9:21:43 PM"
+    increased = collect(decreased)
+    assert increased["status"] == "reported" and collect(increased) == increased
+    assert history.votingworks_town_controls(increased["data"], profile)[0][0] == 5006
+    total, manual, clock = "5,002", 25, "9:21:44 PM"
+    report_url = initial_url.replace("/6048/", "/6050/")
+    successor = collect(increased)
+    assert successor["status"] == "reported"
+    assert successor["data"]["report"]["url"] == report_url
+    next_observation = frame.county_parent_observation(frame.votingworks_parent(profile), successor["data"],
+                                                       {"review_id": "test"}, "reported")
+    assert next_observation["id"] == observation["id"]
+    assert next_observation["count"]["value"] == 5002
+    assert collect(successor) == successor
+    stopped = collect(successor, stopped=[report_url])
+    assert stopped["error"] == "source_stopped" and stopped["data"] == successor["data"]
+    extra_link = f'<a href="{initial_url}">General Election (PDF)</a>'
+    assert collect(successor)["status"] == "retained_after_failure"
+    extra_link = ""
+    report_url = f"https://example.org/DocumentCenter/View/6050/{profile.document_slug}"
+    assert collect()["data"] is None
+    report_url = initial_url
+    clock = "9:21:43 PM"
+    assert collect(successor)["data"] == successor["data"]
+    clock = "9:21:45 PM"
+    election_id = "0000000-0000000"
+    assert collect(successor)["data"] == successor["data"]
+    election_id = profile.election_id
+    for bad_title, bad_town, bad_total in (
+        ("Scanner Batch Report", locality, "5,002"), ("Official Tally Report", "Hampton", "5,002"),
+        ("Official Tally Report", locality, "5,003"),
+    ):
+        title, town, total = bad_title, bad_town, bad_total
+        rejected = collect(increased)
+        assert rejected["status"] == "retained_after_failure"
+        assert rejected["data"] == increased["data"]
+    attempt = None
+    assert collect(increased)["data"] == increased["data"]
+
+
 def test_philadelphia_turnout_keeps_parent_residual_and_holds_testing_or_invalid_divisions(tmp_path, monkeypatch):
     parser = frame.county_pdf
     header = (

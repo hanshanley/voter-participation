@@ -280,7 +280,17 @@ BUXTON = ("ME", "Maine", "Buxton", "2309410",
 BATH = ("ME", "Maine", "Bath", "2303355", BUXTON[4],
         history.BATH_FEED, history.BATH_INDEX, "ME:municipal-turnout:2303355",
         "ME-2026-11-03-general", "native_registered_voters_same_bath_report")
-MUNICIPAL_PARENTS = (BUXTON, BATH)
+def votingworks_parent(profile):
+    return ("NH", "New Hampshire", profile.town, profile.feature_key,
+            "b74e8b9c197371af4f093dbdc2916cb18aaa1bc2ff498e2f875642f2f7e5fdee",
+            profile.feed, profile.index, f"NH:town-ballot-statistics:{profile.feature_key}",
+            "NH-2026-11-03-general", "registration_not_reported")
+
+
+def municipal_parent(profile):
+    return profile in (BUXTON, BATH) or profile[5] in history.VOTINGWORKS_TOWNS
+
+
 PHILADELPHIA = ("PA", "Pennsylvania", "Philadelphia County", "42101",
                 "76496baea4bf48228d8c9891aafdf76090f1267764ea38f4305889e36d9249e6",
                 county_pdf.PHILADELPHIA_FEED, county_pdf.PHILADELPHIA_URL,
@@ -438,6 +448,16 @@ def county_parent_observation(profile, data, reference, status):
             "The city's turnout statistic is separate from individual contest totals.",
             "This is a same-report registered-voter fraction for Bath, not a county or statewide rate.",
         ]
+    elif feed in history.VOTINGWORKS_TOWNS:
+        (ballots, _, _), _ = history.votingworks_town_controls(data, history.VOTINGWORKS_TOWNS[feed])
+        registered = fraction = clock = None
+        label = "Official Tally Report"
+        measure, register = "Ballot Count", "Not supplied"
+        selector = {"scope": "townwide general-election tally", "physical_page": 1, "native_label": measure}
+        notes = [
+            "The report-level count reconciles scanned and manually entered ballots; contest totals are excluded.",
+            "Registered voters are not supplied. The generation time is not a count-update clock.",
+        ]
     else:
         require(profile == PHILADELPHIA, "Unknown local source profile")
         ballots, registered, fraction, status_literal, published, residual = county_pdf.philadelphia_controls(data)
@@ -450,7 +470,7 @@ def county_parent_observation(profile, data, reference, status):
             "The public query includes all native division rows; no residual is allocated and no division geography is inferred.",
             "The site update time is separate from certification and does not establish a count-update time.",
         ]
-    town = profile in MUNICIPAL_PARENTS
+    town = municipal_parent(profile)
     level = "municipality" if town else "county"
     measure_id = parent_measure_id(profile)
     bath = profile == BATH
@@ -459,8 +479,8 @@ def county_parent_observation(profile, data, reference, status):
         notes.append("Not a statewide total, unique-voter count or precinct allocation.")
     else:
         notes.append("Not a statewide total, certification claim, unique-voter count or precinct allocation.")
-    rate = None if profile == WOODFORD else 100 * ballots / registered
     denominator = None if profile == WOODFORD else registered
+    rate = None if denominator is None else 100 * ballots / denominator
     view = {
         "state_code": code, "state": state, "year": 2026, "county": county,
         "county_id": geo, "county_fips": None if town else fips, "geography_level": level,
@@ -482,6 +502,8 @@ def county_parent_observation(profile, data, reference, status):
     }
     if town:
         view["reference_municipality_key"] = fips
+        if feed in history.VOTINGWORKS_TOWNS:
+            view["source_publication_label"] = data["complete_native_query"]["generated"]
     elif profile in SPARSE_COUNTY_PARENTS:
         if profile == PHILADELPHIA:
             view.update(source_publication_label=published, source_publication_timezone="EST")
@@ -496,7 +518,7 @@ def county_parent_observation(profile, data, reference, status):
                       "level": level, "parent_id": None, "join": {
                           "status": "approved", "reference_id": reference["review_id"],
                           "feature_key": fips,
-                          "evidence": "Exact named town in pinned 2024 Maine contextual reference"
+                          "evidence": f"Exact named town in pinned 2024 {state} contextual reference"
                           if town else f"Exact countywide authority and named county in pinned {state} reference"}},
         "measure": {"id": measure_id, "literal": measure,
                     "kind": measure_kind, "mode": "all_methods",
@@ -517,12 +539,13 @@ def county_parent_observation(profile, data, reference, status):
 def parent_measure_id(profile):
     if profile == BATH:
         return "municipal-reported-turnout"
-    return "townwide-ballots-cast" if profile == BUXTON else "countywide-ballots-cast"
+    return "townwide-ballots-cast" if municipal_parent(profile) else "countywide-ballots-cast"
 
 
 def project_county_parent(counts, native, snapshot, profile, *, retained_canvasses=None):
     code, _, county, fips, reference_sha, feed, url, geo, election, _ = profile
-    town = profile in MUNICIPAL_PARENTS
+    votingworks = history.VOTINGWORKS_TOWNS.get(feed)
+    town = municipal_parent(profile)
     predecessor = {SUMMIT: SUMMIT_PREDECESSOR, SUSSEX: SUSSEX_PREDECESSOR}.get(profile)
     year = 2024 if town or predecessor else 2026
     reference_key = "reference_municipality_key" if town else "county_fips"
@@ -565,22 +588,29 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
             require(entry["source"] == data["report"], "Wilson receipt differs from report evidence")
     native_index = json.loads(native["index.json"])
     mappings = native_index["county_bindings"][code]
-    reference_mode = ("available" if predecessor else "mail_returned"
+    reference_mode = ("available" if predecessor or votingworks else "mail_returned"
                       if profile in SPARSE_COUNTY_PARENTS else "in_person_early")
     early = mappings[reference_mode]
     geometry = {key: copy.deepcopy(early[key]) for key in ("feature_keys", "feature_scopes", "features", "sha256")}
     matches = [item for item in early["rows"] if item["feature_key"] == fips]
-    require(len(matches) == 1 and early["sha256"] == reference_sha
+    require(len(matches) == (bool(prior) if votingworks else 1) and early["sha256"] == reference_sha
             and fips in early["feature_keys"]
             and early["feature_scopes"][fips] == {"state_code": code, "name": county, "boundary_year": year},
             f"{county} reference identity changed")
-    refs = [rows[key]["view"]["reference_geometry"] for key in shard["views"][reference_mode]["counties"]
-            if rows[key]["view"]["county_id"] == matches[0]["county_id"]
-            and (key == predecessor and rows[key]["geography"]["join"]["feature_key"] == fips
-                 if predecessor else rows[key]["view"].get(reference_key) == fips)]
+    if votingworks:
+        existing = [rows[item]["view"].get("reference_geometry") for item in shard["views"][reference_mode]["counties"]]
+        require(existing and all(ref == existing[0] for ref in existing)
+                and existing[0] and existing[0]["geography_scope"] == "native_partial_city_reporting_context",
+                "New Hampshire municipal reference contract differs")
+        refs = [existing[0]]
+    else:
+        refs = [rows[key]["view"]["reference_geometry"] for key in shard["views"][reference_mode]["counties"]
+                if rows[key]["view"]["county_id"] == matches[0]["county_id"]
+                and (key == predecessor and rows[key]["geography"]["join"]["feature_key"] == fips
+                     if predecessor else rows[key]["view"].get(reference_key) == fips)]
     require(len(refs) == 1 and refs[0]["sha256"] == reference_sha
             and refs[0]["boundary_year"] == year, f"{county} reference provenance differs")
-    if town:
+    if town and not votingworks:
         require(refs[0]["geography_scope"] == "provider_partial_locality_activity",
                 "Maine contextual reference scope changed")
         refs[0] = {**refs[0], "geography_scope": "native_partial_town_turnout"}
@@ -612,6 +642,12 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
         elif profile == BATH:
             regression |= (history.bath_controls(old) != history.bath_controls(data)
                            and not history.bath_precedes(old, data))
+        elif votingworks:
+            try:
+                history.votingworks_town_controls(old, votingworks)
+                history.votingworks_successor(old, data, county, data["report"]["url"])
+            except ValueError:
+                regression = True
         elif profile in (OKTIBBEHA, *ILLINOIS_COUNTY_PARENTS):
             regression |= county_pdf.county_summary_regressed(old, data)
         if regression or entry["status"] == "retained_after_failure":
@@ -624,7 +660,8 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
              "qualifier": {field: candidate["view"].get(field) for field in COUNTY_QUALIFIERS}}
     rows[key] = candidate
     # Keep the complete early-activity overview separate from this partial full-election frame.
-    for mode in ("official", "uf_vap", "uf_vep"):
+    for mode in (("available", "official", "uf_vap", "uf_vep") if votingworks
+                 else ("official", "uf_vap", "uf_vep")):
         frame = shard["views"][mode]
         binding = mappings.setdefault(mode, {**copy.deepcopy(geometry), "rows": []})
         require(frame["qualified"] and all(binding[field] == value for field, value in geometry.items())
@@ -682,6 +719,14 @@ def project_buxton(counts, native, snapshot):
 
 def project_bath(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, BATH)
+
+
+def project_votingworks_towns(counts, native, snapshot):
+    changes = []
+    for town in history.VOTINGWORKS_TOWNS.values():
+        counts, native, town_changes = project_county_parent(counts, native, snapshot, votingworks_parent(town))
+        changes.extend(town_changes)
+    return counts, native, changes
 
 
 def project_philadelphia(counts, native, snapshot):
