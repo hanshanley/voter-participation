@@ -952,16 +952,23 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None):
+    from scripts import philadelphia_divisions, results_pdf_county_parent, results_turnout_history
     from scripts import results_native
     from scripts import results_uf_turnout
     from scripts import results_official_congress
 
+    administrative = {
+        results_turnout_history.OH_FEED: results_turnout_history.collect_ohio,
+        results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
+        philadelphia_divisions.FEED: philadelphia_divisions.collect,
+    }
     registry_path, work = Path(registry_path), Path(work)
     config = registry_config(registry_path)
     now = now or datetime.now(timezone.utc)
     previous = hydrate_collector_state(previous)
     if (not source_ids or len(source_ids) != len(set(source_ids))
-            or not all(item in (results_uf_turnout.IDENTITY,) + results_official_congress.IDENTITIES or re.fullmatch(
+            or not all(item in administrative
+                or item in (results_uf_turnout.IDENTITY,) + results_official_congress.IDENTITIES or re.fullmatch(
                 r"[A-Z]{2}-registered-[a-f0-9]{16}", item) for item in source_ids)
             or not {"feeds", "granular", "house", "districts", "directories", "source_stops"} <= set(previous)
             or config.get("contract") != CONTRACT or config.get("election_date") != "2026-11-03"
@@ -971,6 +978,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     baseline = baseline_inputs(registry_path.parent / config["baseline"]["root"], config["baseline"])
     plan = {key: value for sources in results_native.source_plan(baseline).values()
             for key, value in sources.items()}
+    plan.update({key: {"adapter": "reviewed_administrative_participation"} for key in administrative})
     if "uf_turnout" in config:
         plan[results_uf_turnout.IDENTITY] = {"adapter": "reviewed_statewide_uf_turnout"}
     if "official_congress" in config:
@@ -982,8 +990,11 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
         raise ValueError("Selected numerical refresh requires a reviewed source adapter")
     stopped = merge_stops(config["source_stops"], previous["source_stops"])
     native_ids = set(source_ids) - {results_uf_turnout.IDENTITY, *results_official_congress.IDENTITIES}
+    administrative_ids = native_ids & administrative.keys()
+    native_ids -= administrative_ids
     collector = Collector(work, {**previous["granular"], **previous["feeds"]}, stopped, now)
     entries = results_native.collect_sources(collector, baseline, source_ids=native_ids) if native_ids else {}
+    entries.update((key, administrative[key](collector)) for key in source_ids if key in administrative_ids)
     if results_uf_turnout.IDENTITY in source_ids:
         entries[results_uf_turnout.IDENTITY] = results_uf_turnout.collect(collector, config["uf_turnout"])
     official_ids = set(source_ids) & set(results_official_congress.IDENTITIES)
@@ -993,8 +1004,9 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     if set(entries) != set(source_ids) or any(entry["status"] != "reported" for entry in entries.values()):
         raise ValueError("Selected numerical refresh did not succeed; no replacement publication")
     inputs = copy.deepcopy(previous)
-    inputs["granular"].update({key: value for key, value in entries.items() if key in native_ids})
-    inputs["feeds"].update(entries)
+    inputs["granular"].update({key: value for key, value in entries.items()
+                               if key in native_ids or key in administrative_ids})
+    inputs["feeds"].update({key: value for key, value in entries.items() if key not in administrative_ids})
     from scripts.results_native_congress import PARENT_ID, derive as derive_native_congress
     if PARENT_ID in entries:
         inputs["feeds"] = derive_native_congress(inputs["feeds"])

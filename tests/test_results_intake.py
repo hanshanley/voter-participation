@@ -229,6 +229,42 @@ def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp
     assert result["collection_scope"]["source_ids"] == [uf.IDENTITY]
 
 
+def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch):
+    from scripts import philadelphia_divisions, results_native, results_pdf_county_parent, results_turnout_history
+
+    registry = fixture(tmp_path)
+    previous = {
+        "feeds": {"unchanged": {"status": "reported", "data": {"total": 12}}},
+        "granular": {},
+        "districts": {str(index): {} for index in range(435)},
+        "house": {str(index): {"status": "reported", "data": {"count": index}} for index in range(435)},
+        "congress": {"native_clock": "must stay unchanged"},
+        "directories": {state: {} for state in intake.STATES}, "source_stops": EMPTY_STOPS,
+    }
+    calls = []
+
+    def adapter(identity):
+        def capture(_):
+            calls.append(identity)
+            return {"status": "reported", "data": {"identity": identity}}
+        return capture
+
+    selected = [results_turnout_history.OH_FEED, results_pdf_county_parent.PHILADELPHIA_FEED,
+                philadelphia_divisions.FEED]
+    monkeypatch.setattr(results_turnout_history, "collect_ohio", adapter(selected[0]))
+    monkeypatch.setattr(results_pdf_county_parent, "collect_philadelphia", adapter(selected[1]))
+    monkeypatch.setattr(philadelphia_divisions, "collect", adapter(selected[2]))
+    monkeypatch.setattr(results_native, "collect_sources",
+                        lambda *args, **kwargs: pytest.fail("Scoped refresh must not acquire unrelated sources"))
+    monkeypatch.setattr(intake, "export_collection",
+                        lambda work, config, baseline, inputs, extras, now, attempts: inputs)
+
+    result = intake.refresh_selected(registry, tmp_path / "scoped", previous, selected, NOW)
+    assert calls == selected and set(result["granular"]) == set(selected)
+    for key in ("feeds", "districts", "house", "congress", "directories", "source_stops"):
+        assert result[key] == previous[key]
+
+
 def test_accepted_candidate_strings_survive_a_blocked_live_declaration(tmp_path, monkeypatch):
     registry = fixture(tmp_path)
     rows = [{"state_code": row["state_code"], "district": row["district"],
