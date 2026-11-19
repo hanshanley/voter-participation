@@ -277,6 +277,10 @@ BUXTON = ("ME", "Maine", "Buxton", "2309410",
           "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc",
           history.BUXTON_FEED, history.BUXTON_URL, "ME:town-ballot-statistics:2309410",
           "ME-2026-11-03-general", "native_registered_voters_same_buxton_report")
+BATH = ("ME", "Maine", "Bath", "2303355", BUXTON[4],
+        history.BATH_FEED, history.BATH_INDEX, "ME:municipal-turnout:2303355",
+        "ME-2026-11-03-general", "native_registered_voters_same_bath_report")
+MUNICIPAL_PARENTS = (BUXTON, BATH)
 PHILADELPHIA = ("PA", "Pennsylvania", "Philadelphia County", "42101",
                 "76496baea4bf48228d8c9891aafdf76090f1267764ea38f4305889e36d9249e6",
                 county_pdf.PHILADELPHIA_FEED, county_pdf.PHILADELPHIA_URL,
@@ -423,6 +427,17 @@ def county_parent_observation(profile, data, reference, status):
             "The town clerk's absentee and in-person counts reconcile to the townwide total.",
             "This is a same-report registered-voter fraction, not a York County rate.",
         ]
+    elif profile == BATH:
+        ballots, registered, fraction = history.bath_controls(data)
+        clock = None
+        label = "Preliminary general-election results published by the Bath city clerk"
+        measure, register = "Total State Votes Cast", "Total registered voters"
+        selector = {"scope": "Bath municipal state general-election turnout", "physical_page": 1,
+                    "native_label": measure}
+        notes = [
+            "The city's turnout statistic is separate from individual contest totals.",
+            "This is a same-report registered-voter fraction for Bath, not a county or statewide rate.",
+        ]
     else:
         require(profile == PHILADELPHIA, "Unknown local source profile")
         ballots, registered, fraction, status_literal, published, residual = county_pdf.philadelphia_controls(data)
@@ -435,9 +450,11 @@ def county_parent_observation(profile, data, reference, status):
             "The public query includes all native division rows; no residual is allocated and no division geography is inferred.",
             "The site update time is separate from certification and does not establish a count-update time.",
         ]
-    town = profile == BUXTON
+    town = profile in MUNICIPAL_PARENTS
     level = "municipality" if town else "county"
-    measure_id = "townwide-ballots-cast" if town else "countywide-ballots-cast"
+    measure_id = parent_measure_id(profile)
+    bath = profile == BATH
+    measure_kind = "participation_reported" if bath else "ballots_cast"
     if profile in (SUSSEX, DOUGLAS):
         notes.append("Not a statewide total, unique-voter count or precinct allocation.")
     else:
@@ -454,10 +471,11 @@ def county_parent_observation(profile, data, reference, status):
         "source_date": clock[:10] if clock else None, "source_update_label": None, "source_update_timezone": None,
         "source_publication_label": clock.replace("T", " ") if clock else None, "source_publication_timezone": None,
         "source_url": report["url"], "source_sha256": report["sha256"],
-        "source_count_qualified": True, "cast_ballot_count_qualified": True,
+        "source_count_qualified": True, "cast_ballot_count_qualified": not bath,
         "native_election_id_qualified": True, "unique_voter_count_qualified": False,
-        "participation_measure_kind": "ballots_cast", "participation_measure_literal": measure,
-        "participation_measure_label": "Townwide ballots cast" if town else "Countywide ballots cast",
+        "participation_measure_kind": measure_kind, "participation_measure_literal": measure,
+        "participation_measure_label": ("Citywide reported turnout" if bath else
+                                        "Townwide ballots cast" if town else "Countywide ballots cast"),
         "complete_download_url": None, "automatic_source_refresh": True, "maps_approved": True,
         "reported_units": None, "total_units": None, "native_record": data,
         "reference_geometry": reference, "quality": notes,
@@ -481,7 +499,8 @@ def county_parent_observation(profile, data, reference, status):
                           "evidence": "Exact named town in pinned 2024 Maine contextual reference"
                           if town else f"Exact countywide authority and named county in pinned {state} reference"}},
         "measure": {"id": measure_id, "literal": measure,
-                    "kind": "ballots_cast", "mode": "all_methods", "unit": "ballots"},
+                    "kind": measure_kind, "mode": "all_methods",
+                    "unit": "source_reported_count" if bath else "ballots"},
         "count": {"value": ballots, "literal": ballots, "status": "reported"},
         "denominator": {"value": denominator, "literal": register,
                         "basis": basis, "qualified": denominator is not None},
@@ -495,9 +514,15 @@ def county_parent_observation(profile, data, reference, status):
     }
 
 
+def parent_measure_id(profile):
+    if profile == BATH:
+        return "municipal-reported-turnout"
+    return "townwide-ballots-cast" if profile == BUXTON else "countywide-ballots-cast"
+
+
 def project_county_parent(counts, native, snapshot, profile, *, retained_canvasses=None):
     code, _, county, fips, reference_sha, feed, url, geo, election, _ = profile
-    town = profile == BUXTON
+    town = profile in MUNICIPAL_PARENTS
     predecessor = {SUMMIT: SUMMIT_PREDECESSOR, SUSSEX: SUSSEX_PREDECESSOR}.get(profile)
     year = 2024 if town or predecessor else 2026
     reference_key = "reference_municipality_key" if town else "county_fips"
@@ -515,8 +540,7 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
     shard = decode(counts[path])
     require(shard["state_code"] == code and shard["year"] == 2026, f"{code} shard scope differs")
     rows = {record["id"]: record for record in shard["records"]}
-    key = observation_id(feed, election, geo,
-                         "townwide-ballots-cast" if town else "countywide-ballots-cast", "all_methods")
+    key = observation_id(feed, election, geo, parent_measure_id(profile), "all_methods")
     prior = rows.get(key)
     retained = False
     if data is None and prior is None:
@@ -585,6 +609,9 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
         elif profile == PHILADELPHIA:
             regression |= (old["complete_native_query"]["status"] == "Official"
                            and data["complete_native_query"]["status"] != "Official")
+        elif profile == BATH:
+            regression |= (history.bath_controls(old) != history.bath_controls(data)
+                           and not history.bath_precedes(old, data))
         elif profile in (OKTIBBEHA, *ILLINOIS_COUNTY_PARENTS):
             regression |= county_pdf.county_summary_regressed(old, data)
         if regression or entry["status"] == "retained_after_failure":
@@ -651,6 +678,10 @@ def project_sumner(counts, native, snapshot):
 
 def project_buxton(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, BUXTON)
+
+
+def project_bath(counts, native, snapshot):
+    return project_county_parent(counts, native, snapshot, BATH)
 
 
 def project_philadelphia(counts, native, snapshot):

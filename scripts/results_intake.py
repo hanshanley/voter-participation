@@ -970,6 +970,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
         results_turnout_history.TX_FEED: results_turnout_history.collect_texas,
         results_turnout_history.VA_FEED: results_turnout_history.collect_virginia,
         results_turnout_history.WA_FEED: results_turnout_history.collect_washington,
+        results_turnout_history.BATH_FEED: results_turnout_history.collect_bath,
         results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
         results_pdf_county_parent.SUMMIT_FEED: results_pdf_county_parent.collect_summit,
         results_pdf_county_parent.SUSSEX_FEED: results_pdf_county_parent.collect_sussex,

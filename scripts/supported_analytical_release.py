@@ -438,6 +438,7 @@ def selected_local_observation_ids(snapshot, counts=None):
         results_turnout_history.MT_FEED: "MT",
         results_turnout_history.WV_FEED: "WV",
         results_turnout_history.ND_CANVASS_FEED: "ND",
+        results_turnout_history.BATH_FEED: "ME",
         **{statewide_ballot_totals.PROFILES[code]["feed"]: code
            for code in ("KS", "NJ", "TX", "VA", "WA")},
         results_pdf_county_parent.PHILADELPHIA_FEED: "PA",

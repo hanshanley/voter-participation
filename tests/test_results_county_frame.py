@@ -215,6 +215,79 @@ def test_buxton_turnout_accepts_consistent_revisions_and_rejects_wrong_scope(tmp
     assert collect(revised)["status"] == "retained_after_failure"
 
 
+def test_bath_turnout_refreshes_revisions_and_rejects_ambiguous_editions(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+
+    import pypdf
+
+    history = frame.history
+    declaration = f'<a href="{history.BATH_PDF}">2026 Preliminary Election Results<span>(PDF,&nbsp;101KB)</span></a>'.encode()
+    body = declaration
+    page_one = ("STATE GENERAL ELECTION TOTALS\nNovember 3, 2026\nCandidate 9999\n"
+                "Total State Votes Cast: {count} Total registered voters: 5962 % of Voter Turnout: {pct}")
+    next_page = "CITY OF BATH ELECTION TOTALS\nNovember 3, 2026\nCandidate 4444"
+    pdf, counts, pct, day = b"%PDF-1 first", 4760, "79.8%", 4
+    monkeypatch.setattr(pypdf, "PdfReader", lambda _: SimpleNamespace(pages=[
+        SimpleNamespace(extract_text=lambda: page_one.format(count=counts, pct=pct)),
+        SimpleNamespace(extract_text=lambda: next_page),
+    ]))
+
+    def acquire(self, url):
+        assert url in {history.BATH_INDEX, history.BATH_PDF}
+        content = body if url == history.BATH_INDEX else pdf
+        if content is None:
+            raise TimeoutError("unavailable")
+        return content, {"origin": "fixture_transport", **pin(content)}
+
+    def edition(self, url):
+        assert url == history.BATH_PDF
+        return {"body_sha256": pin(pdf)["sha256"], "http_last_modified": f"{day} Nov 2026 13:10:05 GMT"}
+
+    monkeypatch.setattr(results_intake.Collector, "acquire", acquire)
+    monkeypatch.setattr(results_intake.Collector, "public_edition", edition)
+
+    def collect(prior=None):
+        return history.collect_bath(results_intake.Collector(
+            tmp_path, {history.BATH_FEED: prior} if prior else {},
+            {"urls": [], "prefixes": [], "hosts": []}, datetime(2026, 11, 19, tzinfo=timezone.utc)))
+
+    before = collect()
+    assert history.bath_controls(before["data"]) == (4760, 5962, "79.8%")
+    assert collect(before) == before
+    pdf, day = b"%PDF-1 reformatted, same facts", 5
+    refreshed = collect(before)
+    assert history.bath_controls(refreshed["data"]) == history.bath_controls(before["data"])
+    assert refreshed["data"]["report"]["sha256"] == pin(pdf)["sha256"]
+    assert history.bath_precedes(before["data"], refreshed["data"])
+    assert collect(refreshed) == refreshed
+    pdf, day = b"%PDF-1 first", 4
+    assert collect(refreshed)["data"] == refreshed["data"]
+    for day, counts, pct in ((5, 4757, "79.8%"), (6, 4766, "79.9%")):
+        pdf = f"%PDF-1 edition {day}".encode()
+        after = collect(before)
+        assert after["status"] == "reported"
+        assert history.bath_controls(after["data"]) == (counts, 5962, pct)
+        before = after
+
+    counts, day, pct = 4760, 6, "79.8%"
+    assert collect(before)["data"] == before["data"]
+    for invalid in ("duplicate", "wrong_city", "rate", "outage"):
+        counts, day, pct = 4760, 7, "79.8%"
+        next_page = "CITY OF BATH ELECTION TOTALS\nNovember 3, 2026"
+        body, pdf = declaration, b"%PDF-1 invalid"
+        if invalid == "duplicate":
+            body += declaration
+        elif invalid == "wrong_city":
+            next_page = next_page.replace("BATH", "OTHER")
+        elif invalid == "rate":
+            pct = "80.0%"
+        else:
+            pdf = None
+        failed = collect(before)
+        assert failed["status"] == "retained_after_failure"
+        assert failed["data"] == before["data"]
+
+
 def test_philadelphia_turnout_keeps_parent_residual_and_holds_testing_or_invalid_divisions(tmp_path, monkeypatch):
     parser = frame.county_pdf
     header = (

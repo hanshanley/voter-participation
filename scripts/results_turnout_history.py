@@ -3,6 +3,7 @@
 import csv
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
+from email.utils import parsedate_to_datetime
 from html import unescape
 from html.parser import HTMLParser
 import io
@@ -49,6 +50,12 @@ BUXTON_URL = "https://www.buxton.me.us/news/11-3-2026-election-results"
 BUXTON_TITLE = "Election Results for the Town of Buxton, Maine - November 3, 2026 State and Town Elections"
 BUXTON_FIELDS = ("Registered Voters", "Absentee Ballots Cast", "Ballots Cast in Person",
                  "Total Ballots Cast", "Voter Turn Out Percent")
+BATH_FEED = "ME-bath-municipal-turnout"
+BATH_INDEX = "https://www.cityofbathmaine.gov/Departments/City-Clerk/Elections/Past-Election-Results"
+BATH_PDF = ("https://www.cityofbathmaine.gov/files/assets/bath/v/1/city-clerk/documents/"
+            "election-night-results.pdf")
+BATH_STATISTICS = re.compile(
+    r"Total State Votes Cast: ([0-9]+) Total registered voters: ([0-9]+) % of Voter Turnout: ([0-9]+\.[0-9]%)")
 OH_FEED = "OH-statewide-ballots-counted"
 OH_BASE = "https://liveresults.ohiosos.gov/Api/v1/"
 OH_BALLOTS = OH_BASE + "Contest/getBallotsCastByCounty"
@@ -312,6 +319,108 @@ def buxton_report(body):
 
 def collect_buxton(collector):
     return collector.capture(BUXTON_FEED, BUXTON_URL, buxton_report)
+
+
+def bath_declared_report(body):
+    class Links(HTMLParser):
+        href = None
+
+        def __init__(self):
+            super().__init__()
+            self.matches = []
+            self.parts = []
+
+        def handle_starttag(self, tag, attrs):
+            if tag == "a":
+                self.href = dict(attrs).get("href")
+                self.parts = []
+
+        def handle_data(self, text):
+            if self.href:
+                self.parts.append(text)
+
+        def handle_endtag(self, tag):
+            if tag == "a" and self.href:
+                label = " ".join("".join(self.parts).split())
+                if re.fullmatch(r"2026 Preliminary Election Results(?:\s*\(PDF, [0-9,]+\s*KB\))?", label):
+                    self.matches.append(urljoin(BATH_INDEX, self.href))
+                self.href = None
+
+    parser = Links()
+    parser.feed(body.decode("utf-8-sig"))
+    if parser.matches != [BATH_PDF]:
+        raise ValueError("Bath preliminary general-election report declaration missing or changed")
+    return parser.matches[0]
+
+
+def bath_controls(data):
+    source, query = data["report"], data["complete_native_query"]
+    if (source["url"] != BATH_PDF or type(source["bytes"]) is not int or source["bytes"] <= 0
+            or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or query["state_heading"] != ["STATE GENERAL ELECTION TOTALS", "November 3, 2026"]
+            or query["municipal_heading"] != ["CITY OF BATH ELECTION TOTALS", "November 3, 2026"]):
+        raise ValueError("Bath municipal general-election identity or receipt changed")
+    match = BATH_STATISTICS.fullmatch(query["statistics"])
+    if not match:
+        raise ValueError("Bath report does not supply a separate municipal turnout total")
+    ballots, registered = map(integer, match.groups()[:2])
+    pct = match[3]
+    if (not registered or ballots > registered or
+            (Decimal(ballots) * 100 / registered).quantize(
+                Decimal(".1"), rounding=ROUND_HALF_UP) != Decimal(pct[:-1])):
+        raise ValueError("Bath municipal register or printed rate disagrees")
+    return ballots, registered, pct
+
+
+def bath_report(body):
+    from pypdf import PdfReader
+
+    if not body.startswith(b"%PDF-") or len(body) > 2_000_000:
+        raise ValueError("Unexpected Bath turnout PDF")
+    pdf = PdfReader(io.BytesIO(body))
+    if len(pdf.pages) != 2:
+        raise ValueError("Bath report page inventory changed")
+    first, second = ([" ".join(line.split()) for line in page.extract_text().splitlines() if line.strip()]
+                     for page in pdf.pages)
+    if not first or sum(bool(BATH_STATISTICS.fullmatch(line)) for line in first + second) != 1:
+        raise ValueError("Missing or repeated Bath municipal turnout totals")
+    data = {"report": {"url": BATH_PDF, **pin(body)}, "complete_native_query": {
+        "state_heading": first[:2], "municipal_heading": second[:2], "statistics": first[-1]}}
+    bath_controls(data)
+    return data
+
+
+def bath_edition(value):
+    if not isinstance(value, str):
+        return None
+    try:
+        date = parsedate_to_datetime(value)
+    except ValueError:
+        return None
+    return date if date.tzinfo is not None else None
+
+
+def bath_precedes(old, new):
+    old_edition, new_edition = (bath_edition(item.get("report_http_last_modified")) for item in (old, new))
+    return old_edition is not None and new_edition is not None and new_edition > old_edition
+
+
+def collect_bath(collector):
+    def parse(body):
+        url = bath_declared_report(body)
+        report, _ = collector.acquire(url)
+        data = bath_report(report)
+        edition = collector.public_edition(url)
+        if edition["body_sha256"] != data["report"]["sha256"]:
+            raise ValueError("Bath PDF and HTTP edition receipt disagree")
+        data["report_http_last_modified"] = edition["http_last_modified"]
+        previous = (collector.prior.get(BATH_FEED) or {}).get("data")
+        if previous and bath_controls(previous) != bath_controls(data) and not bath_precedes(previous, data):
+            raise ValueError("Changed Bath counts lack a newer ordered HTTP edition of the same official report")
+        return data
+
+    return collector.capture(BATH_FEED, BATH_INDEX, parse, equivalent=lambda old, new:
+                             bath_controls(old) == bath_controls(new) and not bath_precedes(old, new))
 
 
 def ohio_election(body):
