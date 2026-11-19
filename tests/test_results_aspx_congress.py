@@ -133,7 +133,7 @@ def test_primary_heading_and_removed_notice_are_not_accepted_from_html():
             source.parse(changed)
 
 
-def capture(tmp_path, value, prior=None, stopped=False):
+def capture(tmp_path, value, prior=None, stopped=False, *, config=results_official_congress.ASPX_CONFIG):
     collector = results_intake.Collector(
         tmp_path, {source.IDENTITY: prior} if prior else {},
         {"urls": [source.URL] if stopped else [], "prefixes": [], "hosts": []},
@@ -150,7 +150,7 @@ def capture(tmp_path, value, prior=None, stopped=False):
 
     collector.acquire = acquire
     result = results_official_congress.collect_sources(
-        collector, results_official_congress.ASPX_CONFIG, selected=(source.IDENTITY,))
+        collector, config, selected=(source.IDENTITY,))
     return result[source.IDENTITY], calls
 
 
@@ -161,8 +161,8 @@ def test_default_registered_source_exports_complete_partial_evidence(tmp_path):
     declaration = (results_intake.read(declaration_path) if declaration_path.exists() else
                    results_intake.read(results_intake.ROOT.parent / "inputs/registry.json")[
                        "official_congress"])
-    assert declaration in (results_official_congress.ASPX_CONFIG, results_official_congress.JSON_CONFIG)
-    entry, calls = capture(tmp_path, facts())
+    assert declaration["sources"].get(source.IDENTITY) == source.URL
+    entry, calls = capture(tmp_path, facts(), config=declaration)
     assert entry["status"] == "reported" and calls == [source.URL]
     attached = results_official_congress.attach({"races": {}}, {source.IDENTITY: entry})
     exports = results_congress.exports(attached)
