@@ -319,6 +319,12 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     selected.append(results_pa_vote_history.FEEDS[2026])
     monkeypatch.setattr(results_pa_vote_history, "collect",
                         lambda collector, year: adapter(results_pa_vote_history.FEEDS[year])(collector))
+    for feed, name in ((results_turnout_history.BUXTON_FEED, "buxton"),
+                       (results_turnout_history.BATH_FEED, "bath")):
+        monkeypatch.setattr(results_turnout_history, "collect_" + name, adapter(feed))
+    monkeypatch.setattr(results_turnout_history, "collect_votingworks_town",
+                        lambda collector, profile: adapter(profile.feed)(collector))
+    selected.extend(key for key in intake.late_archive_sources() if key not in selected)
     monkeypatch.setattr(results_native, "collect_sources",
                         lambda *args, **kwargs: pytest.fail("Scoped refresh must not acquire unrelated sources"))
     monkeypatch.setattr(intake, "export_collection",
@@ -334,6 +340,7 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     assert persisted["feeds"]["unchanged"] == previous["feeds"]["unchanged"]
     for key in ("districts", "house", "congress", "directories", "source_stops"):
         assert result[key] == previous[key]
+    assert intake.refresh_selected(registry, tmp_path / "scoped", persisted, selected, NOW) == result
 
 
 def test_accepted_candidate_strings_survive_a_blocked_live_declaration(tmp_path, monkeypatch):

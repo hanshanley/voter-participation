@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 from email.utils import parsedate_to_datetime
+from functools import partial
 from html import unescape
 from html.parser import HTMLParser
 import io
@@ -579,6 +580,15 @@ def collect_votingworks_town(collector, profile):
         return votingworks_successor(old, new, profile.town, new["report"]["url"])
 
     return collector.capture(profile.feed, profile.index, parse, equivalent=equivalent)
+
+
+def municipal_feeds():
+    return {
+        BUXTON_FEED: ("ME", collect_buxton),
+        BATH_FEED: ("ME", collect_bath),
+        **{town.feed: ("NH", partial(collect_votingworks_town, profile=town))
+           for town in VOTINGWORKS_TOWNS.values()},
+    }
 
 
 def ohio_election(body):

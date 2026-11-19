@@ -953,6 +953,16 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
     return export_collection(work, config, baseline, inputs, extras, now, collector.attempts)
 
 
+def late_archive_sources():
+    from scripts import results_pa_vote_history, results_turnout_history as history
+
+    return (
+        history.KS_FEED, history.NJ_FEED, results_pa_vote_history.FEEDS[history.CURRENT_YEAR],
+        history.TX_FEED, history.VA_FEED, history.WA_FEED,
+        *sorted(history.municipal_feeds()),
+    )
+
+
 def refresh_selected(registry_path, work, previous, source_ids, now=None):
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
     from scripts import results_native
@@ -970,7 +980,6 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
         results_turnout_history.TX_FEED: results_turnout_history.collect_texas,
         results_turnout_history.VA_FEED: results_turnout_history.collect_virginia,
         results_turnout_history.WA_FEED: results_turnout_history.collect_washington,
-        results_turnout_history.BATH_FEED: results_turnout_history.collect_bath,
         results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
         results_pdf_county_parent.SUMMIT_FEED: results_pdf_county_parent.collect_summit,
         results_pdf_county_parent.SUSSEX_FEED: results_pdf_county_parent.collect_sussex,
@@ -982,8 +991,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     }
     administrative.update({feed: partial(results_pa_vote_history.collect, year=year)
                            for year, feed in results_pa_vote_history.FEEDS.items()})
-    administrative.update({feed: partial(results_turnout_history.collect_votingworks_town, profile=town)
-                           for feed, town in results_turnout_history.VOTINGWORKS_TOWNS.items()})
+    administrative.update({feed: capture for feed, (_, capture)
+                           in results_turnout_history.municipal_feeds().items()})
     registry_path, work = Path(registry_path), Path(work)
     config = registry_config(registry_path)
     now = now or datetime.now(timezone.utc)
@@ -1331,7 +1340,10 @@ def main():
     selected = commands.add_parser("refresh-selected")
     selected.add_argument("--registry", type=Path, required=True)
     selected.add_argument("--work-dir", type=Path, required=True)
-    selected.add_argument("--sources", required=True, help="Comma-separated registered source IDs")
+    selection = selected.add_mutually_exclusive_group(required=True)
+    selection.add_argument("--sources", help="Comma-separated registered source IDs")
+    selection.add_argument("--late-archives", action="store_true",
+                           help="Select the reviewed statewide and municipal archive feeds")
     selected.add_argument("--repository", type=Path, default=ROOT)
     selected.add_argument("--ref", default="results-data")
     selected.add_argument("--github-repository", default="hanshanley/voter-participation")
@@ -1366,7 +1378,8 @@ def main():
         result = refresh_congress(args.registry, args.work_dir, previous, offline=args.offline)
     elif args.command == "refresh-selected":
         _, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
-        result = refresh_selected(args.registry, args.work_dir, previous, args.sources.split(","))
+        source_ids = list(late_archive_sources()) if args.late_archives else args.sources.split(",")
+        result = refresh_selected(args.registry, args.work_dir, previous, source_ids)
     elif args.command == "publish":
         result = publish(args.repository, args.ref, args.github_repository, args.work_dir)
     elif args.command == "resume-publication":

@@ -1,8 +1,10 @@
+from dataclasses import replace
 from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 import textwrap
 from unittest.mock import patch
 
@@ -131,20 +133,18 @@ def test_full_checkpoint_is_reused_only_for_interrupted_publication(
 
 
 @pytest.mark.parametrize(
-    "now,event,schedule,active,archive_sources",
+    "now,event,schedule,active,late_archives",
     [
-        ("2026-11-02T23:59:59+00:00", "schedule", "23 * * * *", False, ""),
-        ("2026-11-03T00:00:00+00:00", "schedule", "23 * * * *", True, ""),
-        ("2027-01-31T23:59:59+00:00", "schedule", "23 * * * *", True, ""),
-        ("2027-02-01T00:00:00+00:00", "schedule", "23 * * * *", False, ""),
-        ("2027-01-25T10:19:00+00:00", "schedule", "19 10 * * 1", False, ""),
-        ("2027-02-01T10:19:00+00:00", "schedule", "19 10 * * 1", True,
-         "KS-general-election-turnout-workbook,NJ-general-election-turnout-pdf,PA-2026-general-vote-history,"
-         "TX-general-election-turnout,VA-general-election-turnout,WA-general-election-turnout"),
-        ("2027-02-01T00:00:00+00:00", "workflow_dispatch", "", True, ""),
+        ("2026-11-02T23:59:59+00:00", "schedule", "23 * * * *", False, False),
+        ("2026-11-03T00:00:00+00:00", "schedule", "23 * * * *", True, False),
+        ("2027-01-31T23:59:59+00:00", "schedule", "23 * * * *", True, False),
+        ("2027-02-01T00:00:00+00:00", "schedule", "23 * * * *", False, False),
+        ("2027-01-25T10:19:00+00:00", "schedule", "19 10 * * 1", False, False),
+        ("2027-02-01T10:19:00+00:00", "schedule", "19 10 * * 1", True, True),
+        ("2027-02-01T00:00:00+00:00", "workflow_dispatch", "", True, False),
     ],
 )
-def test_actual_window_output_controls_downstream_collection(tmp_path, now, event, schedule, active, archive_sources):
+def test_actual_window_output_controls_downstream_collection(tmp_path, now, event, schedule, active, late_archives):
     gate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "window")
     script = textwrap.dedent(gate["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0])
     output = tmp_path / "github-output"
@@ -159,7 +159,7 @@ def test_actual_window_output_controls_downstream_collection(tmp_path, now, even
                                  "CONGRESSIONAL_ONLY": "", "GITHUB_REF": "refs/heads/main"}):
         with patch("datetime.datetime", FrozenDateTime):
             exec(compile(script, str(WORKFLOW), "exec"), {})
-    assert output.read_text() == f"active={str(active).lower()}\narchive_sources={archive_sources}\n"
+    assert output.read_text() == f"active={str(active).lower()}\nlate_archives={str(late_archives).lower()}\n"
 
 
 @pytest.mark.parametrize("early,override", [
@@ -187,25 +187,22 @@ def test_archive_recovery_is_scoped_or_refused(tmp_path, early, override):
             assert not output.exists()
         else:
             exec(compile(script, str(WORKFLOW), "exec"), {})
-            assert output.read_text() == (
-                "active=true\narchive_sources=KS-general-election-turnout-workbook,"
-                "NJ-general-election-turnout-pdf,PA-2026-general-vote-history,"
-                "TX-general-election-turnout,VA-general-election-turnout,WA-general-election-turnout\n")
+            assert output.read_text() == "active=true\nlate_archives=true\n"
 
 
-@pytest.mark.parametrize("archive_sources", ["", "KS,NJ,PA,TX,VA,WA"])
-def test_staged_publication_does_not_replace_the_weekly_check(tmp_path, archive_sources):
+@pytest.mark.parametrize("late_archives", [False, True])
+def test_staged_publication_does_not_replace_the_weekly_check(tmp_path, late_archives):
     steps = workflow()["jobs"]["refresh"]["steps"]
     resume = next(step for step in steps if step.get("id") == "resume")
     capture = next(step for step in steps if step.get("id") == "capture")
     checkpoint = next(step for step in steps if step.get("id") == "checkpoint")
-    assert "needs.validate.outputs.archive_sources == ''" in checkpoint["if"]
-    assert "(needs.validate.outputs.archive_sources != '' && steps.resume.outputs.status == 'published')" in capture["if"]
-    assert "(needs.validate.outputs.archive_sources != '' && steps.capture.outcome != 'success')" in steps[-1]["if"]
+    assert "needs.validate.outputs.late_archives != 'true'" in checkpoint["if"]
+    assert "(needs.validate.outputs.late_archives == 'true' && steps.resume.outputs.status == 'published')" in capture["if"]
+    assert "(needs.validate.outputs.late_archives == 'true' && steps.capture.outcome != 'success')" in steps[-1]["if"]
 
     commands = tmp_path / "commands"
     env = {**os.environ, "RUNNER_TEMP": str(tmp_path), "GITHUB_OUTPUT": str(tmp_path / "output"),
-           "ARCHIVE_SOURCES": archive_sources, "REFRESH_SOURCES": archive_sources,
+           "LATE_ARCHIVES": str(late_archives).lower(), "REFRESH_SOURCES": "",
            "CONGRESSIONAL_ONLY": "false", "COMMANDS": str(commands)}
     stub = """python() {
       if [ "$1" = "-c" ]; then
@@ -220,9 +217,34 @@ def test_staged_publication_does_not_replace_the_weekly_check(tmp_path, archive_
     subprocess.run(["bash", "-e", "-c", stub + resume["run"]], env=env, check=True)
     work = tmp_path / "election-intake"
     assert json.loads((work / "resume.json").read_bytes()) == {"status": "published"}
-    assert (work / "publication.json").exists() is (not archive_sources)
-    if archive_sources:
+    assert (work / "publication.json").exists() is (not late_archives)
+    if late_archives:
         subprocess.run(["bash", "-e", "-c", stub + capture["run"]], env=env, check=True)
-        assert commands.read_text().splitlines()[:5] == [
-            "-m", "scripts.results_intake", "refresh-selected", "--sources", archive_sources,
+        assert commands.read_text().splitlines()[:4] == [
+            "-m", "scripts.results_intake", "refresh-selected", "--late-archives",
         ]
+
+
+def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_path, monkeypatch):
+    from scripts import results_intake, results_turnout_history as history
+
+    town = "NH-test-municipal-turnout"
+    monkeypatch.setitem(history.VOTINGWORKS_TOWNS, town, replace(
+        history.VOTINGWORKS_TOWNS[history.HOLLIS_FEED], feed=town))
+    monkeypatch.setattr(sys, "argv", ["results_intake", "refresh-selected", "--late-archives",
+                                     "--registry", "registry.json", "--work-dir", str(tmp_path)])
+    prev = {"source_stops": {"urls": ["https://example.test/denied"]}}
+    with patch.object(results_intake, "publisher_state", return_value=(None, prev)), \
+            patch.object(results_intake, "refresh_selected", return_value={}) as selected, \
+            patch.object(results_intake, "collect", side_effect=AssertionError("unexpected full collection")):
+        results_intake.main()
+    _, _, state, sources = selected.call_args.args
+    assert state is prev
+    assert len(sources) == len(set(sources))
+    assert set(sources) == {
+        "KS-general-election-turnout-workbook", "NJ-general-election-turnout-pdf",
+        "PA-2026-general-vote-history", "TX-general-election-turnout",
+        "VA-general-election-turnout", "WA-general-election-turnout",
+        "ME-bath-municipal-turnout", "ME-buxton-town-turnout", "NH-bedford-municipal-turnout",
+        "NH-hanover-municipal-turnout", "NH-hollis-municipal-turnout", town,
+    }

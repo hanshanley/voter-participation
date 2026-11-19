@@ -22,8 +22,14 @@ switching/nonparticipation models.
 Validation and collection run in separate dependent jobs, each with the existing
 30-minute execution limit. Full source/analysis regressions must pass before any
 collection or publication starts. Both jobs check out the workflow's exact commit,
-not a newer `main` that the tests did not inspect. Outside the automatic election
-window neither job acquires sources; manual dispatch retains its explicit override.
+not a newer `main` that the tests did not inspect. Starting February 1, 2027 UTC,
+the Monday 10:19 UTC sweep checks only the reviewed late archives. It includes
+the six existing state-level products, Bath, Buxton and every town in the shared
+VotingWorks registry. Hourly and weekly collection and scoped export attribution
+use the same municipal registrations. Newly reviewed VotingWorks registrations
+do not require a workflow change. The sweep runs `refresh-selected --late-archives`;
+it does not recollect congressional races or any other unselected feed. Manual dispatch
+retains its explicit override.
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

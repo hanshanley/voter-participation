@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       archive_only:
-        description: "Check only the six registered late participation archives after the hourly window"
+        description: "Check only the reviewed late participation archives after the hourly window"
         required: false
         type: boolean
         default: false
@@ -42,7 +42,7 @@ jobs:
       contents: read
     outputs:
       active: ${{ steps.window.outputs.active }}
-      archive_sources: ${{ steps.window.outputs.archive_sources }}
+      late_archives: ${{ steps.window.outputs.late_archives }}
     steps:
       - name: Limit automatic collection to this election
         id: window
@@ -72,17 +72,9 @@ jobs:
           archive = manual_archive or (event == "schedule" and schedule == "19 10 * * 1" and now >= cutoff)
           full = event == "schedule" and schedule == "23 * * * *" and start <= now < cutoff
           active = event == "workflow_dispatch" or full or archive
-          archive_sources = (
-              "KS-general-election-turnout-workbook",
-              "NJ-general-election-turnout-pdf",
-              "PA-2026-general-vote-history",
-              "TX-general-election-turnout",
-              "VA-general-election-turnout",
-              "WA-general-election-turnout",
-          )
           with open(os.environ["GITHUB_OUTPUT"], "a") as output:
               output.write(f"active={str(active).lower()}\n")
-              output.write("archive_sources=" + (",".join(archive_sources) if archive else "") + "\n")
+              output.write(f"late_archives={str(archive).lower()}\n")
           PY
 
       - name: Checkout the intake tool and complete baseline only
@@ -244,18 +236,18 @@ jobs:
       - name: Activate any previously staged verified collection before acquiring again
         id: resume
         env:
-          ARCHIVE_SOURCES: ${{ needs.validate.outputs.archive_sources }}
+          LATE_ARCHIVES: ${{ needs.validate.outputs.late_archives }}
         run: |
           mkdir -p "$RUNNER_TEMP/election-intake"
           python -m scripts.results_intake resume-publication > "$RUNNER_TEMP/election-intake/resume.json"
           status="$(python -c 'import json, sys; print(json.load(open(sys.argv[1]))["status"])' "$RUNNER_TEMP/election-intake/resume.json")"
           echo "status=$status" >> "$GITHUB_OUTPUT"
-          if [ "$status" = "published" ] && [ -z "$ARCHIVE_SOURCES" ]; then
+          if [ "$status" = "published" ] && [ "$LATE_ARCHIVES" != "true" ]; then
             cp "$RUNNER_TEMP/election-intake/resume.json" "$RUNNER_TEMP/election-intake/publication.json"
           fi
 
       - name: Find a durable collection checkpoint from an interrupted full run
-        if: steps.resume.outputs.status == 'no_pending_publication' && needs.validate.outputs.archive_sources == '' && (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only))
+        if: steps.resume.outputs.status == 'no_pending_publication' && needs.validate.outputs.late_archives != 'true' && (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only))
         id: checkpoint
         env:
           GH_TOKEN: ${{ github.token }}
@@ -330,14 +322,19 @@ jobs:
       - name: Collect independent House and participation results
         # A resumed packet does not fulfill the weekly check. The scoped CLI reloads
         # the active collector state before collecting the archives.
-        if: (steps.resume.outputs.status == 'no_pending_publication' || (needs.validate.outputs.archive_sources != '' && steps.resume.outputs.status == 'published')) && inputs.reuse_collection_run == '' && (steps.checkpoint.outputs.run == '' || steps.restore.outputs.status == 'superseded')
+        if: (steps.resume.outputs.status == 'no_pending_publication' || (needs.validate.outputs.late_archives == 'true' && steps.resume.outputs.status == 'published')) && inputs.reuse_collection_run == '' && (steps.checkpoint.outputs.run == '' || steps.restore.outputs.status == 'superseded')
         id: capture
         continue-on-error: true
         env:
-          REFRESH_SOURCES: ${{ needs.validate.outputs.archive_sources || inputs.refresh_sources }}
+          LATE_ARCHIVES: ${{ needs.validate.outputs.late_archives }}
+          REFRESH_SOURCES: ${{ inputs.refresh_sources }}
           CONGRESSIONAL_ONLY: ${{ inputs.congressional_only }}
         run: |
-          if [ "$CONGRESSIONAL_ONLY" = "true" ]; then
+          if [ "$LATE_ARCHIVES" = "true" ]; then
+            python -m scripts.results_intake refresh-selected --late-archives \
+              --registry data/results-intake/registry.json \
+              --work-dir "$RUNNER_TEMP/election-intake"
+          elif [ "$CONGRESSIONAL_ONLY" = "true" ]; then
             python -m scripts.results_intake refresh-congress \
               --registry data/results-intake/registry.json \
               --work-dir "$RUNNER_TEMP/election-intake"
@@ -429,5 +426,5 @@ jobs:
             ${{ runner.temp }}/election-intake/resume.json
 
       - name: Fail visibly if collection did not finish
-        if: always() && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure' || (needs.validate.outputs.archive_sources != '' && steps.capture.outcome != 'success'))
+        if: always() && (steps.capture.outcome == 'failure' || steps.restore.outcome == 'failure' || (needs.validate.outputs.late_archives == 'true' && steps.capture.outcome != 'success'))
         run: exit 1

@@ -290,6 +290,10 @@ def test_scoped_administrative_refresh_attributes_only_matching_reported_counts(
     snapshot["granular_sources"][ms]["status"] = "retained_after_failure"
     snapshot["granular_sources"][bath]["status"] = "retained_after_failure"
     assert release.selected_local_observation_ids(snapshot, counts) == {"state", "ohio", "philadelphia"}
+    buxton = results_turnout_history.BUXTON_FEED
+    snapshot["collection_scope"]["source_ids"].append(buxton)
+    snapshot["granular_sources"][buxton] = {"status": "reported", "data": {"complete_native_query": {}}}
+    assert release.selected_local_observation_ids(snapshot, counts) == {"state", "ohio", "philadelphia", "buxton"}
 
 
 @pytest.mark.parametrize("code", ["KS", "NJ", "TX", "VA", "WA"])
