@@ -218,27 +218,31 @@ def test_scoped_administrative_refresh_attributes_only_matching_reported_counts(
     mt = results_turnout_history.MT_FEED
     oh = results_turnout_history.OH_FEED
     phl = results_pdf_county_parent.PHILADELPHIA_FEED
+    ms = results_pdf_county_parent.OKTIBBEHA_FEED
     geo = philadelphia_divisions.FEED
     snapshot = {
-        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": [geo, mt, oh]},
+        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": [geo, mt, oh, ms]},
         "granular_sources": {
             mt: {"status": "reported", "data": {"complete_native_query": {}}},
             oh: {"status": "retained_after_failure", "data": None},
             geo: {"status": "reported", "data": {"features": []}},
             phl: {"status": "reported", "data": {"complete_native_query": {}}},
+            ms: {"status": "reported", "data": {"complete_native_query": {}}},
         },
     }
     counts = {"index.json": json.dumps({"states": {
-        state: {"file": state + ".json.gz"} for state in ("MT", "OH", "PA")
+        state: {"file": state + ".json.gz"} for state in ("MT", "OH", "PA", "MS")
     }}).encode()}
     for state, rows in {"MT": [("state", mt)], "OH": [("ohio", oh), ("cuyahoga", "other")],
-                        "PA": [("philadelphia", phl), ("elsewhere", "other")]}.items():
+                        "PA": [("philadelphia", phl), ("elsewhere", "other")],
+                        "MS": [("oktibbeha", ms), ("mail", "other")]}.items():
         counts[state + ".json.gz"] = release.compressed(json.dumps({"records": [
             {"id": identity, "source": {"id": source}} for identity, source in rows
         ]}).encode())
-    assert release.selected_local_observation_ids(snapshot, counts) == {"state"}
+    assert release.selected_local_observation_ids(snapshot, counts) == {"state", "oktibbeha"}
     snapshot["collection_scope"]["source_ids"].append(phl)
     snapshot["granular_sources"][oh]["status"] = "reported"
+    snapshot["granular_sources"][ms]["status"] = "retained_after_failure"
     assert release.selected_local_observation_ids(snapshot, counts) == {"state", "ohio", "philadelphia"}
 
 

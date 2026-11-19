@@ -1,6 +1,7 @@
 import copy
 from decimal import Decimal, ROUND_HALF_UP
 from datetime import datetime, timezone
+import io
 import json
 import re
 
@@ -10,6 +11,85 @@ from scripts import results_county_frame as frame
 from scripts import results_intake
 from scripts.participation_intake.contract import encoded, pin
 from test_results_clarity_congress import capture, facts
+
+
+def test_oktibbeha_keeps_last_good_and_accepts_reconciled_native_successors(tmp_path, monkeypatch):
+    pypdf = pytest.importorskip("pypdf")
+    from pypdf.generic import DecodedStreamObject, DictionaryObject, NameObject
+
+    parser = frame.county_pdf
+    report = parser.OKTIBBEHA_REVIEWED["url"]
+    path = "/" + report.split("/", 3)[-1]
+    index = f'<a href="{path}">{parser.OKTIBBEHA_LABEL}</a>'.encode()
+    text = (
+        "Summary Results\nOFFICIAL RESULTS\n2026 General Election\nNovember 3, 2026\n"
+        "Oktibbeha County\n"
+        "Statistics TOTAL Election Day In Person Absentee Mail in Absentee 5 Day Absentee Affidavit\n"
+        "Election Day Precincts Reporting 20 of 20 20 0 0 0 20\n"
+        "Registered Voters - Total 27,148\nBallots Cast - Total 15,771 13,319 1,768 161 10 513\n"
+        "Voter Turnout - Total 58.09%\nElection Summary - 11/12/2026 12:07 PM 1 of 1"
+    )
+
+    def pdf(text):
+        writer = pypdf.PdfWriter()
+        page = writer.add_blank_page(width=612, height=792)
+        name = NameObject
+        font = DictionaryObject({name("/Type"): name("/Font"), name("/Subtype"): name("/Type1"),
+                                 name("/BaseFont"): name("/Helvetica")})
+        page[name("/Resources")] = DictionaryObject({name("/Font"): DictionaryObject({name("/F1"): font})})
+        stream = DecodedStreamObject()
+        stream.set_data(("BT /F1 8 Tf 10 TL 10 760 Td "
+                         + " T* ".join(f"({line}) Tj" for line in text.splitlines()) + " ET").encode())
+        page[name("/Contents")] = writer._add_object(stream)
+        result = io.BytesIO()
+        writer.write(result)
+        return result.getvalue()
+
+    def collect(text, prior=None, declaration=index):
+        body = pdf(text)
+        calls = []
+
+        def acquire(self, url):
+            calls.append(url)
+            source = {parser.OKTIBBEHA_INDEX: declaration, report: body}[url]
+            return source, {"origin": "fixture_transport", **pin(source)}
+
+        monkeypatch.setattr(results_intake.Collector, "acquire", acquire)
+        collector = results_intake.Collector(
+            tmp_path, {parser.OKTIBBEHA_FEED: prior} if prior else {},
+            {"urls": [], "prefixes": [], "hosts": []}, datetime(2026, 11, 19, tzinfo=timezone.utc))
+        return parser.collect_oktibbeha(collector), calls
+
+    first, _ = collect(text)
+    assert first["status"] == "reported", first
+    assert collect(text, first)[0] == first
+    proposal = text.replace("15,771", "15,770").replace("513", "512")
+    assert collect(proposal, first)[0]["status"] == "retained_after_failure"
+    revised, _ = collect(proposal.replace("11/12/", "11/13/"), first)
+    assert revised["status"] == "reported", revised
+    assert parser.oktibbeha_controls(revised["data"])[1:3] == (15770, 27148)
+    for rejected in (text, proposal.replace("15,770", "15,772"),
+                     proposal.replace("OFFICIAL RESULTS", "UNOFFICIAL RESULTS"),
+                     proposal.replace("Oktibbeha County", "Oktibbeha County Congressional District 1"),
+                     proposal.replace("5 Day Absentee Affidavit", "Affidavit 5 Day Absentee"), ""):
+        held, _ = collect(rejected, revised)
+        assert held["status"] == "retained_after_failure" and held["data"] == revised["data"]
+    held, calls = collect(text, revised, index + index)
+    assert calls == [parser.OKTIBBEHA_INDEX] and held["data"] == revised["data"]
+
+
+def test_oktibbeha_visual_transcription_is_bound_to_exact_original():
+    parser = frame.county_pdf
+    data = {"report": dict(parser.OKTIBBEHA_REVIEWED),
+            "complete_native_query": copy.deepcopy(parser.OKTIBBEHA_REVIEWED_QUERY),
+            "extraction": "visually_reviewed_exact_edition", "date": "2026-11-12T12:07:00"}
+    row = frame.county_parent_observation(frame.OKTIBBEHA, data, {"review_id": "reference"}, "reported")
+    assert (row["count"]["value"], row["denominator"]["value"]) == (15771, 27148)
+    assert row["source_clock"]["literal"] is None and not row["view"]["maps_approved"]
+    assert row["view"]["source_publication_label"] == "2026-11-12 12:07:00"
+    data["report"]["sha256"] = "0" * 64
+    with pytest.raises(ValueError, match="reviewed edition differs"):
+        parser.oktibbeha_controls(data)
 
 
 def test_buxton_turnout_accepts_consistent_revisions_and_rejects_wrong_scope(tmp_path, monkeypatch):

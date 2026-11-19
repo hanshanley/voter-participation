@@ -1,5 +1,6 @@
 """Discover and validate complete county statistical parents, not contest totals."""
 
+import copy
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 from html import unescape
@@ -694,3 +695,154 @@ def collect_sumner(collector):
         return data
 
     return collector.capture(SUMNER_FEED, SUMNER_INDEX, parse)
+
+
+OKTIBBEHA_FEED = "MS-oktibbeha-countywide-turnout"
+OKTIBBEHA_INDEX = "https://www.oktibbeha.ms.gov/332/2026-Election-Results"
+OKTIBBEHA_LABEL = "2026 General Election Official Results"
+OKTIBBEHA_PATH = re.compile(r"/DocumentCenter/View/[1-9]\d*/2026-General-Election-Official-Results")
+OKTIBBEHA_REVIEWED = {
+    "url": urljoin(OKTIBBEHA_INDEX, "/DocumentCenter/View/537/2026-General-Election-Official-Results"),
+    "bytes": 198490,
+    "sha256": "08d63cb418816839263b2e529e9e3651ac33a7e3f07a20d3ad0aff5942a3178e",
+}
+OKTIBBEHA_COLUMNS = ("TOTAL", "Election Day", "In Person Absentee", "Mail in Absentee",
+                     "5 Day Absentee", "Affidavit")
+OKTIBBEHA_REVIEWED_QUERY = {
+    "election": ELECTION,
+    "county": "Oktibbeha County",
+    "status": "OFFICIAL RESULTS",
+    "columns": list(OKTIBBEHA_COLUMNS),
+    "precincts_reporting": ["20 of 20", "20", "0", "0", "0", "20"],
+    "registered_voters": "27,148",
+    "ballots_cast": ["15,771", "13,319", "1,768", "161", "10", "513"],
+    "voter_turnout": "58.09%",
+    "report_clock": "11/12/2026 12:07 PM",
+    "physical_page": 1,
+}
+
+
+class OktibbehaLinks(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.anchor = None
+        self.matches = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self.anchor = (dict(attrs).get("href") or "", [])
+
+    def handle_data(self, data):
+        if self.anchor is not None:
+            self.anchor[1].append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self.anchor is not None:
+            href, text = self.anchor
+            self.anchor = None
+            if " ".join("".join(text).split()) == OKTIBBEHA_LABEL:
+                self.matches.append(href)
+
+
+def oktibbeha_discovery(body):
+    parser = OktibbehaLinks()
+    parser.feed(body.decode("utf-8-sig"))
+    if len(parser.matches) != 1 or not OKTIBBEHA_PATH.fullmatch(parser.matches[0]):
+        raise ValueError("Missing or ambiguous Oktibbeha official general-election report")
+    return urljoin(OKTIBBEHA_INDEX, parser.matches[0])
+
+
+def oktibbeha_controls(data):
+    report, q = data["report"], data["complete_native_query"]
+    parts = urlsplit(report["url"])
+    if (set(report) != {"url", "bytes", "sha256"} or parts.scheme != "https"
+            or parts.netloc != urlsplit(OKTIBBEHA_INDEX).netloc or parts.query or parts.fragment
+            or not OKTIBBEHA_PATH.fullmatch(parts.path) or type(report["bytes"]) is not int
+            or not 0 < report["bytes"] <= 4_000_000 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])
+            or set(q) != set(OKTIBBEHA_REVIEWED_QUERY) or type(q["physical_page"]) is not int
+            or (q["election"], q["county"], q["status"], q["columns"], q["physical_page"])
+            != (ELECTION, "Oktibbeha County", "OFFICIAL RESULTS", list(OKTIBBEHA_COLUMNS), 1)):
+        raise ValueError("Oktibbeha official report identity changed")
+    if data["extraction"] == "visually_reviewed_exact_edition":
+        if report != OKTIBBEHA_REVIEWED or q != OKTIBBEHA_REVIEWED_QUERY:
+            raise ValueError("Oktibbeha reviewed edition differs")
+    elif data["extraction"] != "native_text":
+        raise ValueError("Unknown Oktibbeha extraction method")
+    def integer(value):
+        if not re.fullmatch(r"(?:0|[1-9]\d{0,2}(?:,\d{3})*)", value, re.ASCII):
+            raise ValueError("Invalid Oktibbeha statistical count")
+        return int(value.replace(",", ""))
+    registered = integer(q["registered_voters"])
+    ballots, *modes = map(integer, q["ballots_cast"])
+    reporting, *reporting_modes = q["precincts_reporting"]
+    pair = re.fullmatch(r"([1-9]\d*) of \1", reporting)
+    if (len(modes) != 5 or len(reporting_modes) != 5 or pair is None
+            or integer(reporting_modes[0]) != int(pair[1])
+            or any(integer(value) > int(pair[1]) for value in reporting_modes)
+            or not 0 < ballots <= registered or sum(modes) != ballots
+            or not re.fullmatch(r"\d{1,3}\.\d{2}%", q["voter_turnout"], re.ASCII)
+            or (100 * Decimal(ballots) / registered).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(q["voter_turnout"][:-1])):
+        raise ValueError("Oktibbeha reporting, ballot modes or turnout fraction do not reconcile")
+    clock = datetime.strptime(q["report_clock"], "%m/%d/%Y %I:%M %p").isoformat()
+    if clock != data["date"] or not ELECTION <= clock < "2027":
+        raise ValueError("Invalid Oktibbeha report clock")
+    return clock, ballots, registered, q["voter_turnout"]
+
+
+def oktibbeha_text_query(text):
+    lines = [" ".join(line.split()) for line in text.splitlines() if line.strip()]
+    # Keep the six printed roles and the direct TOTAL cell mandatory for revisions.
+    required = ("Summary Results", "OFFICIAL RESULTS", "2026 General Election",
+                "November 3, 2026", "Oktibbeha County")
+    if any(lines.count(label) != 1 for label in required) or any("UNOFFICIAL" in line for line in lines):
+        raise ValueError("Oktibbeha PDF is not the official county summary")
+    def one(pattern):
+        found = [match.groups() for line in lines if (match := re.fullmatch(pattern, line))]
+        if len(found) != 1:
+            raise ValueError("Missing or ambiguous Oktibbeha native statistical row")
+        return found[0]
+    one(r"Statistics TOTAL Election Day In Person Absentee Mail in Absentee 5 Day Absentee Affidavit")
+    cell = r"([0-9,]+)"
+    return {
+        "election": ELECTION, "county": "Oktibbeha County", "status": "OFFICIAL RESULTS",
+        "columns": list(OKTIBBEHA_COLUMNS), "physical_page": 1,
+        "precincts_reporting": list(one(r"Election Day Precincts Reporting (\d+ of \d+)" + (" " + cell) * 5)),
+        "registered_voters": one(r"Registered Voters - Total " + cell)[0],
+        "ballots_cast": list(one(r"Ballots Cast - Total" + (" " + cell) * 6)),
+        "voter_turnout": one(r"Voter Turnout - Total (\d{1,3}\.\d{2}%)")[0],
+        "report_clock": one(r"Election Summary - (\d{1,2}/\d{1,2}/2026 \d{1,2}:\d\d [AP]M) 1 of \d+")[0],
+    }
+
+
+def collect_oktibbeha(collector):
+    def parse(index):
+        url = oktibbeha_discovery(index)
+        body, _ = collector.acquire(url)
+        report = {"url": url, **pin(body)}
+        if report == OKTIBBEHA_REVIEWED:
+            query, method = copy.deepcopy(OKTIBBEHA_REVIEWED_QUERY), "visually_reviewed_exact_edition"
+        else:
+            from pypdf import PdfReader
+
+            if (not body.startswith(b"%PDF-") or len(body) > 4_000_000
+                    or not body.rstrip().endswith(b"%%EOF")):
+                raise ValueError("Incomplete Oktibbeha county summary PDF")
+            pdf = PdfReader(io.BytesIO(body), strict=True)
+            if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 100:
+                raise ValueError("Unreviewed Oktibbeha county summary PDF")
+            text = pdf.pages[0].extract_text()
+            if not text.strip():
+                raise ValueError("New Oktibbeha scan has no verified statistical transcription")
+            query, method = oktibbeha_text_query(text), "native_text"
+        clock = datetime.strptime(query["report_clock"], "%m/%d/%Y %I:%M %p").isoformat()
+        data = {"report": report, "complete_native_query": query, "extraction": method, "date": clock}
+        oktibbeha_controls(data)
+        prior = (collector.prior.get(OKTIBBEHA_FEED) or {}).get("data")
+        if prior and (clock < prior["date"] or (clock == prior["date"] and
+                     query != prior["complete_native_query"])):
+            raise ValueError("Oktibbeha county report clock regressed or conflicts at the same clock")
+        return data
+
+    return collector.capture(OKTIBBEHA_FEED, OKTIBBEHA_INDEX, parse,
+                             equivalent=lambda old, new: old == new)

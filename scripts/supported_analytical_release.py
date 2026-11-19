@@ -439,6 +439,7 @@ def selected_local_observation_ids(snapshot, counts=None):
         results_pdf_county_parent.SUMMIT_FEED: "UT",
         results_pdf_county_parent.SUSSEX_FEED: "NJ",
         results_pdf_county_parent.DOUGLAS_FEED: "WI",
+        results_pdf_county_parent.OKTIBBEHA_FEED: "MS",
     }
     selected = set()
     for identity in scope["source_ids"]:

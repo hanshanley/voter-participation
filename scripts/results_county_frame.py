@@ -296,6 +296,10 @@ DOUGLAS = ("WI", "Wisconsin", "Douglas County", "55031",
            "4f53e9b43faa1cf6dd9e1f9b893993fe6f4aa42a78cfbb1afbeb39d3f6db5f74",
            county_pdf.DOUGLAS_FEED, county_pdf.DOUGLAS_INDEX, "WI:official-ballot-statistics:55031",
            "WI-2026-11-03-general", "native_registered_voters_same_douglas_county_summary")
+OKTIBBEHA = ("MS", "Mississippi", "Oktibbeha County", "28105",
+             "f92866ca5d6384cc3db5caaa52a66a442753296f8cf8de06ec62a355b32066ea",
+             county_pdf.OKTIBBEHA_FEED, county_pdf.OKTIBBEHA_INDEX, "MS:official-ballot-statistics:28105",
+             "MS-2026-11-03-general", "native_registered_voters_same_oktibbeha_county_summary")
 RETAINED_CANVASSES_INPUT = "data/results-intake/retained-county-canvasses-20261119.json"
 RETAINED_CANVASSES_SHA256 = "c37079cc1274b752a2c5ab4be3e26eb46d4febc091ac95f32ac5ccfdbe1aaaee"
 
@@ -371,6 +375,16 @@ def county_parent_observation(profile, data, reference, status):
             "The same summary supplies ballots and registrations; no reporting-unit allocation.",
             "Report generation time has no declared timezone and is not a count-update clock.",
         ]
+    elif profile == OKTIBBEHA:
+        clock, ballots, registered, fraction = county_pdf.oktibbeha_controls(data)
+        label = "OFFICIAL RESULTS"
+        measure, register = "Ballots Cast - Total", "Registered Voters - Total"
+        selector = {"scope": "countywide statistics", "physical_page": 1, "native_label": measure}
+        notes = [
+            "The five voting-mode counts, including affidavit ballots, reconcile to the countywide total.",
+            "The fraction uses the same report's registrations, not the eligible population.",
+            "The PDF's generation time is not a count-update clock and has no declared timezone.",
+        ]
     elif profile == BUXTON:
         ballots, registered, fraction = history.buxton_controls(data)
         clock = None
@@ -421,8 +435,9 @@ def county_parent_observation(profile, data, reference, status):
     }
     if town:
         view["reference_municipality_key"] = fips
-    elif profile == PHILADELPHIA:
-        view.update(source_publication_label=published, source_publication_timezone="EST")
+    elif profile in (PHILADELPHIA, OKTIBBEHA):
+        if profile == PHILADELPHIA:
+            view.update(source_publication_label=published, source_publication_timezone="EST")
         view["supplemental_reference_geometry"] = view.pop("reference_geometry")
         view["maps_approved"] = False
     return {
@@ -497,7 +512,8 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
             require(entry["source"] == data["report"], "Wilson receipt differs from report evidence")
     native_index = json.loads(native["index.json"])
     mappings = native_index["county_bindings"][code]
-    reference_mode = "available" if predecessor else "mail_returned" if profile == PHILADELPHIA else "in_person_early"
+    reference_mode = ("available" if predecessor else "mail_returned"
+                      if profile in (PHILADELPHIA, OKTIBBEHA) else "in_person_early")
     early = mappings[reference_mode]
     geometry = {key: copy.deepcopy(early[key]) for key in ("feature_keys", "feature_scopes", "features", "sha256")}
     matches = [item for item in early["rows"] if item["feature_key"] == fips]
@@ -515,7 +531,7 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
         require(refs[0]["geography_scope"] == "provider_partial_locality_activity",
                 "Maine contextual reference scope changed")
         refs[0] = {**refs[0], "geography_scope": "native_partial_town_turnout"}
-    elif profile == PHILADELPHIA:
+    elif profile in (PHILADELPHIA, OKTIBBEHA):
         refs[0] = {**refs[0], "geography_scope": "native_partial_county_context",
                    "partial_county_fips": [fips]}
         geometry["embedded_reference_required"] = False
@@ -540,6 +556,10 @@ def project_county_parent(counts, native, snapshot, profile, *, retained_canvass
         elif profile == PHILADELPHIA:
             regression |= (old["complete_native_query"]["status"] == "Official"
                            and data["complete_native_query"]["status"] != "Official")
+        elif profile == OKTIBBEHA:
+            regression |= (data["date"] < old["date"] or (
+                data["date"] == old["date"]
+                and data["complete_native_query"] != old["complete_native_query"]))
         if regression or entry["status"] == "retained_after_failure":
             candidate = copy.deepcopy(prior)
             candidate["source"]["fields"]["status"] = candidate["view"]["status"] = "retained_after_failure"
@@ -620,6 +640,10 @@ def project_sussex(counts, native, snapshot, *, retained_canvasses=None):
 
 def project_douglas(counts, native, snapshot, *, retained_canvasses=None):
     return project_county_parent(counts, native, snapshot, DOUGLAS, retained_canvasses=retained_canvasses)
+
+
+def project_oktibbeha(counts, native, snapshot):
+    return project_county_parent(counts, native, snapshot, OKTIBBEHA)
 
 
 def project_georgia(counts, native):
