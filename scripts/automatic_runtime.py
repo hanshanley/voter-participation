@@ -40,7 +40,7 @@ CODE_PATHS = (
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
     "results_aspx_congress.py", "results_json_congress.py",
     "results_clarity_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
-    "results_minnesota_turnout.py", "results_turnout_history.py", "results_alaska_turnout.py",
+    "results_minnesota_turnout.py", "results_turnout_history.py", "results_pa_vote_history.py", "results_alaska_turnout.py",
     "eac_county_turnout.py", "philadelphia_divisions.py",
     "results_native_congress.py", "results_native_dc.py", "results_native_state_family.py",
     "results_native_oregon.py", "results_native_north_carolina.py", "results_native_virginia.py",
@@ -520,7 +520,7 @@ def hydrate_granular_sources(snapshot, source_packet):
 
 
 def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None):
-    from scripts import philadelphia_divisions, results_turnout_history as turnout_history
+    from scripts import philadelphia_divisions, results_pa_vote_history, results_turnout_history as turnout_history
     from scripts.automatic_estimates import _artifact, build, render_artifacts
     from scripts.automatic_native_refresh import refresh
     from scripts.results_county_frame import (
@@ -579,6 +579,17 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         estimates["house_sources"].setdefault("general_election_turnout_history", {})[code] = {
             "data": {"path": path, **{key: value for key, value in artifact.items() if key != "content"}},
             "csv": {"path": csv_path, **pin(csv_body)},
+        }
+    pa_history, pa_csv = results_pa_vote_history.exports(snapshot.get("granular_sources", {}))
+    if pa_history is not None:
+        prefix = "participation/pennsylvania-general-election-vote-history"
+        path, csv_path = prefix + ".json.gz", prefix + ".csv"
+        artifact = _artifact(pa_history)
+        estimates["artifacts"][path] = artifact
+        history_exports[csv_path] = pa_csv
+        estimates["house_sources"]["pennsylvania_general_vote_history"] = {
+            "data": {"path": path, **{key: value for key, value in artifact.items() if key != "content"}},
+            "csv": {"path": csv_path, **pin(pa_csv)},
         }
     artifacts = render_artifacts(estimates)
     artifacts.update(state_exports(updated))

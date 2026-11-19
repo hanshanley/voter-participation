@@ -7,6 +7,7 @@ import copy
 from collections import Counter
 import csv
 from datetime import datetime, timedelta, timezone
+from functools import partial
 import gzip
 import io
 import json
@@ -767,7 +768,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_cass.py", "results_pdf_dunn.py", "results_pdf_cole.py",
              "results_pdf_platte.py", "results_pdf_county_parent.py", "results_minnesota_turnout.py",
              "philadelphia_divisions.py",
-             "results_turnout_history.py", "results_alaska_turnout.py",
+             "results_turnout_history.py", "results_pa_vote_history.py", "results_alaska_turnout.py",
              "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
             "nationwide.py", "current.py", "download.py",
             "precinct_source_batch.py", "house_clerk_endpoints.py",
@@ -953,7 +954,7 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None):
-    from scripts import philadelphia_divisions, results_pdf_county_parent, results_turnout_history
+    from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
     from scripts import results_native
     from scripts import results_uf_turnout
     from scripts import results_official_congress
@@ -968,6 +969,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
         results_pdf_county_parent.SUSSEX_FEED: results_pdf_county_parent.collect_sussex,
         philadelphia_divisions.FEED: philadelphia_divisions.collect,
     }
+    administrative.update({feed: partial(results_pa_vote_history.collect, year=year)
+                           for year, feed in results_pa_vote_history.FEEDS.items()})
     registry_path, work = Path(registry_path), Path(work)
     config = registry_config(registry_path)
     now = now or datetime.now(timezone.utc)

@@ -417,7 +417,10 @@ def other_offices(review):
 
 
 def selected_local_observation_ids(snapshot, counts=None):
-    from scripts import philadelphia_divisions, results_pdf_county_parent, results_turnout_history, statewide_ballot_totals
+    from scripts import (
+        philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent,
+        results_turnout_history, statewide_ballot_totals,
+    )
     from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
     from scripts.results_official_congress import CONTRACT as OFFICIAL_CONTRACT, IDENTITIES as OFFICIAL_IDENTITIES
 
@@ -449,8 +452,8 @@ def selected_local_observation_ids(snapshot, counts=None):
             continue
         entry = snapshot.get("granular_sources", {}).get(identity)
         require(entry is not None, "Selected local source missing: " + identity)
-        if identity == philadelphia_divisions.FEED:
-            continue  # Geometry can qualify a map join, but does not refresh any count.
+        if identity == philadelphia_divisions.FEED or identity in results_pa_vote_history.FEEDS.values():
+            continue  # These products do not update a canonical cast-ballot count.
         if identity in administrative_sources:
             if entry["status"] == "reported" and counts is not None:
                 state = administrative_sources[identity]

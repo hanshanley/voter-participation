@@ -10,6 +10,7 @@ import pytest
 from scripts import statewide_ballot_totals as totals
 from scripts import automatic_native_refresh as native
 from scripts import results_state_statistics as stats
+from scripts import results_pa_vote_history as pa
 from scripts.results_native_state_family import AZ_COUNTIES
 from scripts.participation_intake.contract import encoded, pin
 from test_protected_official_wyoming import entry, native as workbook, changed
@@ -42,6 +43,35 @@ def baseline(monkeypatch):
 
 def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
+
+
+def test_pennsylvania_vote_history_keeps_age_residual_and_excludes_primary_from_general():
+    url = ("https://www.pa.gov/content/dam/copapwp-pagov/en/dos/resources/voting-and-elections/"
+           "bulk-data/2026-general-election/voter-registration-vote-history-summary-2026-general.xlsx")
+    primary = url.replace("2026-general-election/", "2026-general-primary/").replace(
+        "2026-general.xlsx", "2026-primary.xlsx")
+    index = f'<a href="{url}">General</a><a href="{primary}">Primary</a>'.encode()
+    assert pa.archive_link(index, pa.INDEX, pa.report_pattern(2026)) == url
+    assert pa.archive_link(index.replace(url.encode(), b"/elsewhere"), pa.INDEX, pa.report_pattern(2026)) is None
+    tables = {name: [list(header)] for name, header in pa.HEADERS.items()}
+    for county in [*pa.COUNTIES, "TOTAL"]:
+        scale = len(pa.COUNTIES) if county == "TOTAL" else 1
+        tables["By county"].append([county, 8 * scale, 16 * scale, 50])
+        tables["By vote method"].append([county, scale, 4 * scale, 2 * scale, scale])
+        tables["By county & age"].append([county] + [scale] * 7 + [2 * scale] * 7 + [50] * 7)
+    data = {"year": 2026, "election_date": "2026-11-03", "tables": tables,
+            "report": {"url": url, **pin(b"fixture")}}
+    exported, csv_body = pa.exports({pa.FEEDS[2026]: {"status": "reported", "data": data}})
+    total = exported["editions"][0]["rows"][-1]
+    assert total["age_not_tabulated"] == {"vote_history": 67, "registered": 134}
+    assert b",TOTAL,18 to 24,67,134,50.0," in csv_body
+    assert len(csv_body.splitlines()) == 1 + 68 * 8
+    assert exported["certified_ballots_cast"] is False
+    for sheet, column in (("By vote method", 2), ("By county & age", 1), ("By county", 2)):
+        corrupt = copy.deepcopy(data)
+        corrupt["tables"][sheet][-1][column] += 1
+        with pytest.raises(ValueError):
+            pa.queries(corrupt)
 
 
 def test_kansas_waits_for_a_declared_workbook_and_preserves_a_reconciled_count(monkeypatch):
