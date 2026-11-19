@@ -153,7 +153,40 @@ def test_actual_window_output_controls_downstream_collection(tmp_path, now, even
         def now(cls, tz=None):
             return datetime.fromisoformat(now).astimezone(tz or timezone.utc)
 
-    with patch.dict(os.environ, {"EVENT_NAME": event, "SCHEDULE": schedule, "GITHUB_OUTPUT": str(output)}):
+    with patch.dict(os.environ, {"EVENT_NAME": event, "SCHEDULE": schedule, "GITHUB_OUTPUT": str(output),
+                                 "ARCHIVE_ONLY": "", "REUSE_COLLECTION_RUN": "", "REFRESH_SOURCES": "",
+                                 "CONGRESSIONAL_ONLY": "", "GITHUB_REF": "refs/heads/main"}):
         with patch("datetime.datetime", FrozenDateTime):
             exec(compile(script, str(WORKFLOW), "exec"), {})
     assert output.read_text() == f"active={str(active).lower()}\narchive_sources={archive_sources}\n"
+
+
+@pytest.mark.parametrize("early,override", [
+    (False, {}), (False, {"GITHUB_REF": "refs/heads/other"}), (False, {"REFRESH_SOURCES": "not-an-archive"}),
+    (False, {"REUSE_COLLECTION_RUN": "123"}), (False, {"CONGRESSIONAL_ONLY": "true"}), (True, {}),
+])
+def test_archive_recovery_is_scoped_or_refused(tmp_path, early, override):
+    gate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "window")
+    script = textwrap.dedent(gate["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0])
+    output = tmp_path / "github-output"
+    env = {"EVENT_NAME": "workflow_dispatch", "SCHEDULE": "", "GITHUB_OUTPUT": str(output),
+           "ARCHIVE_ONLY": "true", "REUSE_COLLECTION_RUN": "", "REFRESH_SOURCES": "",
+           "CONGRESSIONAL_ONLY": "false", "GITHUB_REF": "refs/heads/main"}
+
+    class FrozenDateTime(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return datetime(2027, 1, 31, 23, 59, tzinfo=tz) if early else datetime(
+                2027, 2, 1, 10, 20, tzinfo=tz)
+
+    with patch.dict(os.environ, {**env, **override}), patch("datetime.datetime", FrozenDateTime):
+        if early or override:
+            with pytest.raises(SystemExit, match="Archive recovery requires"):
+                exec(compile(script, str(WORKFLOW), "exec"), {})
+            assert not output.exists()
+        else:
+            exec(compile(script, str(WORKFLOW), "exec"), {})
+            assert output.read_text() == (
+                "active=true\narchive_sources=KS-general-election-turnout-workbook,"
+                "NJ-general-election-turnout-pdf,PA-2026-general-vote-history,"
+                "TX-general-election-turnout,VA-general-election-turnout,WA-general-election-turnout\n")

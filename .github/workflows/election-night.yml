@@ -1,5 +1,5 @@
 name: Update election results
-run-name: ${{ github.event.schedule == '19 10 * * 1' && 'Check late participation archives' || ((github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only)) && 'Collect full election results' || 'Run scoped election results update') }}
+run-name: ${{ (github.event.schedule == '19 10 * * 1' || inputs.archive_only) && 'Check late participation archives' || ((github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only)) && 'Collect full election results' || 'Run scoped election results update') }}
 
 on:
   schedule:
@@ -7,6 +7,11 @@ on:
     - cron: "19 10 * * 1"
   workflow_dispatch:
     inputs:
+      archive_only:
+        description: "Check only the six registered late participation archives after the hourly window"
+        required: false
+        type: boolean
+        default: false
       reuse_collection_run:
         description: "Optional completed collector run to publish without collecting sources again"
         required: false
@@ -44,6 +49,10 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
           SCHEDULE: ${{ github.event.schedule }}
+          ARCHIVE_ONLY: ${{ inputs.archive_only }}
+          REUSE_COLLECTION_RUN: ${{ inputs.reuse_collection_run }}
+          REFRESH_SOURCES: ${{ inputs.refresh_sources }}
+          CONGRESSIONAL_ONLY: ${{ inputs.congressional_only }}
         run: |
           python - <<'PY'
           import os
@@ -53,7 +62,14 @@ jobs:
           cutoff = datetime(2027, 2, 1, tzinfo=timezone.utc)
           event = os.environ["EVENT_NAME"]
           schedule = os.environ["SCHEDULE"]
-          archive = event == "schedule" and schedule == "19 10 * * 1" and now >= cutoff
+          manual_archive = event == "workflow_dispatch" and os.environ["ARCHIVE_ONLY"] == "true"
+          if manual_archive and (
+              now < cutoff or os.environ["GITHUB_REF"] != "refs/heads/main"
+              or os.environ["REUSE_COLLECTION_RUN"] or os.environ["REFRESH_SOURCES"]
+              or os.environ["CONGRESSIONAL_ONLY"] == "true"
+          ):
+              raise SystemExit("Archive recovery requires main, the late window, and no other collection mode")
+          archive = manual_archive or (event == "schedule" and schedule == "19 10 * * 1" and now >= cutoff)
           full = event == "schedule" and schedule == "23 * * * *" and start <= now < cutoff
           active = event == "workflow_dispatch" or full or archive
           archive_sources = (
