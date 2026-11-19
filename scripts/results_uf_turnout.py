@@ -197,6 +197,11 @@ def check_revision(prior, current):
     require(after >= before, "UF advertised edition regressed")
     require(current["contract"] == prior["contract"]
             and current["election_date"] == prior["election_date"], "UF source frame changed")
+    previous_rows = {row["state_code"]: row for row in prior["rows"]}
+    missing = [f"{row['state_code']}:{field}" for row in current["rows"]
+               for field in ("ballots", "vep", "vap", "vep_rate", "vap_rate")
+               if row[field] is None and previous_rows[row["state_code"]][field] is not None]
+    require(not missing, "UF successor dropped previously reported map values: " + ", ".join(missing))
     if after > before:
         return
     require(current["declarations"] == prior["declarations"], "UF same-edition source route changed")

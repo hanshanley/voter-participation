@@ -111,6 +111,25 @@ def test_unchanged_response_is_exact_and_new_advertised_version_is_discovered(tm
     assert older["status"] == "retained_after_failure" and older["data"] == new["data"]
 
 
+def test_new_edition_cannot_silently_drop_a_state_map_value(tmp_path):
+    first, _, _ = capture(tmp_path / "first", source_bodies())
+    successor = source_bodies(493, version="0.4")
+    url = next(url for url in successor if url.endswith(".csv"))
+    rows = list(csv.DictReader(io.StringIO(successor[url].decode())))
+    row = next(row for row in rows if row["STATE_ABV"] == "ME")
+    row["VEP_TURNOUT_RATE"] = ""
+    output = io.StringIO(newline="")
+    writer = csv.DictWriter(output, fieldnames=sorted(uf.FIELDS), lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(rows)
+    successor[url] = output.getvalue().encode()
+    held, _, _ = capture(tmp_path / "incomplete", successor, first)
+    assert held["status"] == "retained_after_failure" and "ME:vep_rate" in held["error_detail"]
+    assert held["data"] == first["data"] and len(uf.view(held)["rows"]) == 52
+    recovered, _, _ = capture(tmp_path / "recovered", source_bodies(493, version="0.4"), held)
+    assert recovered["status"] == "reported" and recovered["data"]["version"] == "0.4"
+
+
 def test_outage_and_stopped_child_preserve_last_good_without_transport(tmp_path):
     bodies = source_bodies()
     first, _, _ = capture(tmp_path / "first", bodies)
