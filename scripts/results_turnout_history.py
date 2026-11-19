@@ -33,6 +33,11 @@ KS_HEADER = [["COUNTY", "ADVANCE BALLOTS", None, "TOTAL BALLOTS CAST", None, "RE
              [None, "RETURNED BY MAIL", None, None, None, "VOTERS"]]
 NJ_FEED = "NJ-general-election-turnout-pdf"
 NJ_URL = "https://www.nj.gov/state/elections/election-information-ballots-cast.shtml"
+BUXTON_FEED = "ME-buxton-town-turnout"
+BUXTON_URL = "https://www.buxton.me.us/news/11-3-2026-election-results"
+BUXTON_TITLE = "Election Results for the Town of Buxton, Maine - November 3, 2026 State and Town Elections"
+BUXTON_FIELDS = ("Registered Voters", "Absentee Ballots Cast", "Ballots Cast in Person",
+                 "Total Ballots Cast", "Voter Turn Out Percent")
 NJ_COUNTIES = (
     "Atlantic", "Bergen", "Burlington", "Camden", "Cape May", "Cumberland", "Essex",
     "Gloucester", "Hudson", "Hunterdon", "Mercer", "Middlesex", "Monmouth", "Morris", "Ocean",
@@ -203,6 +208,75 @@ def collect_new_jersey(collector):
                 "participation_observation_qualified": False}
 
     return collector.capture(NJ_FEED, NJ_URL, parse)
+
+
+def buxton_controls(data):
+    source, query = data["report"], data["complete_native_query"]
+    if (source["url"] != BUXTON_URL or type(source["bytes"]) is not int or source["bytes"] <= 0
+            or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or query["heading"] != BUXTON_TITLE or len(query["statistics"]) != len(BUXTON_FIELDS)):
+        raise ValueError("Buxton town election identity or source receipt changed")
+    values = []
+    for label, line in zip(BUXTON_FIELDS, query["statistics"]):
+        number = r"[0-9]+\.[0-9]{2}%" if label == BUXTON_FIELDS[-1] else r"(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)"
+        match = re.fullmatch(f"({number}) {label}", line)
+        if not match:
+            raise ValueError("Buxton town statistic missing or changed: " + label)
+        values.append(match[1])
+    registered, absentee, in_person, ballots = (int(value.replace(",", "")) for value in values[:-1])
+    pct = values[-1]
+    if (not registered or ballots > registered or absentee + in_person != ballots
+            or (Decimal(ballots) * 100 / registered).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(pct[:-1])):
+        raise ValueError("Buxton town ballot components, register or printed rate disagree")
+    return ballots, registered, pct
+
+
+def buxton_report(body):
+    class Blocks(HTMLParser):
+        inside = False
+        text = None
+        tag = None
+
+        def __init__(self):
+            super().__init__()
+            self.blocks = []
+
+        def handle_starttag(self, tag, attrs):
+            if tag == "article":
+                self.inside = True
+            if self.inside and tag in {"h2", "p"}:
+                self.tag, self.text = tag, []
+
+        def handle_data(self, text):
+            if self.text is not None:
+                self.text.append(text)
+
+        def handle_endtag(self, tag):
+            if tag == self.tag:
+                self.blocks.append((tag, " ".join("".join(self.text).split())))
+                self.tag = self.text = None
+            if tag == "article":
+                self.inside = False
+
+    parser = Blocks()
+    parser.feed(body.decode("utf-8-sig"))
+    headings = [i for i, block in enumerate(parser.blocks) if block == ("h2", BUXTON_TITLE)]
+    if len(headings) != 1:
+        raise ValueError("Missing or repeated Buxton state-and-town election heading")
+    start = headings[0] + 1
+    fields = parser.blocks[start:start + 6]
+    if not fields or fields[-1] != ("p", "State of Maine General Election") or any(
+            tag != "p" for tag, _ in fields):
+        raise ValueError("Buxton turnout is not in the reviewed pre-contest section")
+    data = {"report": {"url": BUXTON_URL, **pin(body)}, "complete_native_query": {
+        "heading": BUXTON_TITLE, "statistics": [text for _, text in fields[:-1]]}}
+    buxton_controls(data)
+    return data
+
+
+def collect_buxton(collector):
+    return collector.capture(BUXTON_FEED, BUXTON_URL, buxton_report)
 
 
 def integer(value):

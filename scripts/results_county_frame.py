@@ -10,6 +10,7 @@ from scripts.participation_intake.contract import VERSION, encoded, observation_
 from scripts.statewide_ballot_totals import compressed, require
 from scripts import results_clarity_congress as clarity
 from scripts import results_pdf_county_parent as county_pdf
+from scripts import results_turnout_history as history
 
 
 IA = {
@@ -267,6 +268,10 @@ WILSON = ("TN", "Tennessee", county_pdf.WILSON_COUNTY, "47189",
 SUMNER = ("TN", "Tennessee", "Sumner County", "47165", WILSON[4],
           county_pdf.SUMNER_FEED, county_pdf.SUMNER_INDEX, "TN:official-ballot-statistics:47165",
           "TN-2026-11-03-general", "native_registered_voters_same_sumner_county_summary")
+BUXTON = ("ME", "Maine", "Buxton", "2309410",
+          "cf02fa319f1e54c65a679dd25b79813988e10dd0a800c3511b68d3fc448259bc",
+          history.BUXTON_FEED, history.BUXTON_URL, "ME:town-ballot-statistics:2309410",
+          "ME-2026-11-03-general", "native_registered_voters_same_buxton_report")
 
 
 def county_parent_observation(profile, data, reference, status):
@@ -289,8 +294,7 @@ def county_parent_observation(profile, data, reference, status):
         selector = {"scope": "countywide statistics", "physical_page": 1, "native_label": measure}
         notes = ["The four native voting-mode counts sum to the countywide ballot total.",
                  "The same report supplies registered voters, but no count-update clock."]
-    else:
-        require(profile == SUMNER, "Unknown countywide source profile")
+    elif profile == SUMNER:
         clock, ballots, registered, fraction = county_pdf.sumner_controls(data)
         label = "Complete reporting in native summary; certification not established"
         measure, register = "PUBLIC COUNT", "REGISTERED VOTERS"
@@ -299,11 +303,25 @@ def county_parent_observation(profile, data, reference, status):
             "The same scanned report supplies the countywide count and registration, checked at two OCR resolutions.",
             "The three voting modes reconcile to PUBLIC COUNT. The report generation clock is not a count-update time.",
         ]
+    else:
+        require(profile == BUXTON, "Unknown local source profile")
+        ballots, registered, fraction = history.buxton_controls(data)
+        clock = None
+        label = "Town clerk state-and-town results; certification not established"
+        measure, register = "Total Ballots Cast", "Registered Voters"
+        selector = {"scope": "townwide state-and-town election statistics", "native_label": measure}
+        notes = [
+            "The town clerk's absentee and in-person counts reconcile to the townwide total.",
+            "This is a same-report registered-voter fraction, not a York County rate.",
+        ]
+    town = profile == BUXTON
+    level = "municipality" if town else "county"
+    measure_id = "townwide-ballots-cast" if town else "countywide-ballots-cast"
     notes.append("Not a statewide total, certification claim, unique-voter count or precinct allocation.")
     rate = 100 * ballots / registered
     view = {
         "state_code": code, "state": state, "year": 2026, "county": county,
-        "county_id": geo, "county_fips": fips, "geography_level": "county",
+        "county_id": geo, "county_fips": None if town else fips, "geography_level": level,
         "mode": "official", "status": status, "source_mode": "all_methods",
         "ballots": ballots, "denominator": registered, "registered": registered,
         "denominator_basis": basis, "reported_pct": rate, "validated_pct": rate,
@@ -314,23 +332,25 @@ def county_parent_observation(profile, data, reference, status):
         "source_count_qualified": True, "cast_ballot_count_qualified": True,
         "native_election_id_qualified": True, "unique_voter_count_qualified": False,
         "participation_measure_kind": "ballots_cast", "participation_measure_literal": measure,
-        "participation_measure_label": "Countywide ballots cast",
+        "participation_measure_label": "Townwide ballots cast" if town else "Countywide ballots cast",
         "complete_download_url": None, "automatic_source_refresh": True, "maps_approved": True,
         "reported_units": None, "total_units": None, "native_record": data,
         "reference_geometry": reference, "quality": notes,
     }
+    if town:
+        view["reference_municipality_key"] = fips
     return {
         "contract": VERSION,
-        "id": observation_id(feed, election, geo,
-                             "countywide-ballots-cast", "all_methods"),
+        "id": observation_id(feed, election, geo, measure_id, "all_methods"),
         "election": {"id": election, "year": 2026, "date": county_pdf.ELECTION,
                      "type": "general", "qualification": "native"},
         "geography": {"id": geo, "name": county, "state_code": code,
-                      "level": "county", "parent_id": None, "join": {
+                      "level": level, "parent_id": None, "join": {
                           "status": "approved", "reference_id": reference["review_id"],
                           "feature_key": fips,
-                          "evidence": f"Exact countywide authority and named county in pinned {state} reference"}},
-        "measure": {"id": "countywide-ballots-cast", "literal": measure,
+                          "evidence": "Exact named town in pinned 2024 Maine contextual reference"
+                          if town else f"Exact countywide authority and named county in pinned {state} reference"}},
+        "measure": {"id": measure_id, "literal": measure,
                     "kind": "ballots_cast", "mode": "all_methods", "unit": "ballots"},
         "count": {"value": ballots, "literal": ballots, "status": "reported"},
         "denominator": {"value": registered, "literal": register,
@@ -347,6 +367,9 @@ def county_parent_observation(profile, data, reference, status):
 
 def project_county_parent(counts, native, snapshot, profile):
     code, _, county, fips, reference_sha, feed, url, geo, election, _ = profile
+    town = profile == BUXTON
+    year = 2024 if town else 2026
+    reference_key = "reference_municipality_key" if town else "county_fips"
     entry = snapshot.get("granular_sources", {}).get(feed, {})
     data = entry.get("data")
     require(data is not None or entry.get("status") != "reported",
@@ -361,7 +384,8 @@ def project_county_parent(counts, native, snapshot, profile):
     shard = decode(counts[path])
     require(shard["state_code"] == code and shard["year"] == 2026, f"{code} shard scope differs")
     rows = {record["id"]: record for record in shard["records"]}
-    key = observation_id(feed, election, geo, "countywide-ballots-cast", "all_methods")
+    key = observation_id(feed, election, geo,
+                         "townwide-ballots-cast" if town else "countywide-ballots-cast", "all_methods")
     prior = rows.get(key)
     if data is None and prior is None:
         return counts, native, []
@@ -369,7 +393,7 @@ def project_county_parent(counts, native, snapshot, profile):
         require(entry["status"] in {"reported", "retained_after_failure"}
                 and entry["source"]["url"] == url
                 and isinstance(entry.get("first_observed_at"), str), f"{county} collection receipt differs")
-        if profile == WILSON:
+        if profile in (WILSON, BUXTON):
             require(entry["source"] == data["report"], "Wilson receipt differs from report evidence")
     native_index = json.loads(native["index.json"])
     mappings = native_index["county_bindings"][code]
@@ -378,13 +402,17 @@ def project_county_parent(counts, native, snapshot, profile):
     matches = [item for item in early["rows"] if item["feature_key"] == fips]
     require(len(matches) == 1 and early["sha256"] == reference_sha
             and fips in early["feature_keys"]
-            and early["feature_scopes"][fips] == {"state_code": code, "name": county, "boundary_year": 2026},
+            and early["feature_scopes"][fips] == {"state_code": code, "name": county, "boundary_year": year},
             f"{county} reference identity changed")
     refs = [rows[key]["view"]["reference_geometry"] for key in shard["views"]["in_person_early"]["counties"]
             if rows[key]["view"]["county_id"] == matches[0]["county_id"]
-            and rows[key]["view"]["county_fips"] == fips]
+            and rows[key]["view"].get(reference_key) == fips]
     require(len(refs) == 1 and refs[0]["sha256"] == reference_sha
-            and refs[0]["boundary_year"] == 2026, f"{county} reference provenance differs")
+            and refs[0]["boundary_year"] == year, f"{county} reference provenance differs")
+    if town:
+        require(refs[0]["geography_scope"] == "provider_partial_locality_activity",
+                "Maine contextual reference scope changed")
+        refs[0] = {**refs[0], "geography_scope": "native_partial_town_turnout"}
     if data is None:
         old = prior["view"]
         require(old["status"] in {"reported", "retained_after_failure"} and prior ==
@@ -419,7 +447,7 @@ def project_county_parent(counts, native, snapshot, profile):
                 and (key in frame["counties"]) == bool(prior), f"{county} selected mode preimage differs")
         known = [row for row in binding["rows"] if row["feature_key"] == fips]
         require(known == ([bound] if prior else []) and not any(
-            rows[selected]["view"].get("county_fips") == fips and selected != key
+            rows[selected]["view"].get(reference_key) == fips and selected != key
             for selected in frame["counties"]), f"{county} frame would shadow another source")
         if not prior:
             frame["counties"].append(key)
@@ -451,3 +479,7 @@ def project_wilson(counts, native, snapshot):
 
 def project_sumner(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, SUMNER)
+
+
+def project_buxton(counts, native, snapshot):
+    return project_county_parent(counts, native, snapshot, BUXTON)

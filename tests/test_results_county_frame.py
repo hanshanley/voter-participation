@@ -12,6 +12,42 @@ from scripts.participation_intake.contract import encoded, pin
 from test_results_clarity_congress import capture, facts
 
 
+def test_buxton_turnout_accepts_consistent_revisions_and_rejects_wrong_scope(tmp_path, monkeypatch):
+    history = frame.history
+    heading = f"<h2>{history.BUXTON_TITLE}</h2>"
+    paragraphs = (
+        "<p>6,386 Registered Voters</p><p>2,250 Absentee Ballots Cast</p>"
+        "<p>2,307 Ballots Cast in Person</p><p>4,557 Total Ballots Cast</p>"
+        "<p>71.36% Voter Turn Out Percent</p><p><strong>State of Maine General Election</strong></p>"
+    )
+    body = f"<article>{heading}{paragraphs}<p>5,000 Candidate Votes</p></article>".encode()
+    now = datetime(2026, 11, 19, tzinfo=timezone.utc)
+
+    def acquire(self, url):
+        assert url == history.BUXTON_URL
+        return body, {"origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(results_intake.Collector, "acquire", acquire)
+
+    def collect(prior=None):
+        collector = results_intake.Collector(tmp_path, {history.BUXTON_FEED: prior} if prior else {},
+             {"urls": [], "prefixes": [], "hosts": []}, now)
+        return history.collect_buxton(collector)
+
+    entry = collect()
+    assert history.buxton_controls(entry["data"]) == (4557, 6386, "71.36%")
+    assert collect(entry) == entry
+    original = body
+    body = body.replace(b"2,250", b"2,249").replace(b"4,557", b"4,556").replace(b"71.36%", b"71.34%")
+    revised = collect(entry)
+    assert history.buxton_controls(revised["data"]) == (4556, 6386, "71.34%")
+    body = original.replace(b"4,557", b"4,558")
+    failed = collect(revised)
+    assert failed["status"] == "retained_after_failure" and failed["data"] == revised["data"]
+    body = original.replace(b"State and Town Elections", b"Town Elections")
+    assert collect(revised)["status"] == "retained_after_failure"
+
+
 def baseline(value):
     profile = frame.IA
     bounds = {"sha256": profile["reference_sha256"], "boundary_year": 2026,
