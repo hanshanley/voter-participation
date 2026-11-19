@@ -187,7 +187,50 @@ def test_revised_count_and_true_zero_preserve_literal_roles_and_separate_federal
     assert all(row["view"]["reported_pct"] is None for row in rows)
 
 
-def test_parent_placeholder_inventory_identity_registration_and_clock_fail_closed():
+def test_reconciled_positive_parent_does_not_interrupt_locality_refresh(tmp_path):
+    baseline = full_baseline()
+    initial, _ = collect(tmp_path, baseline, name="placeholder")
+    current, _ = project(baseline, initial)
+    document = source_document()
+    parent = document["election"]
+    parent["ballotsCast"] = sum(row["ballotsCast"] for row in document["localityElections"])
+    assert parent["ballotsCast"] > 0
+    with pytest.raises(ValueError, match="without a newer count clock"):
+        adapter.statistics(source_body(document), FIXTURE["templates"], adapter.API_URL,
+                           prior=next(iter(initial.values())))
+    parent["asOf"] = "2026-11-15T12:00:00Z"
+    feeds, _ = collect(tmp_path, current, source_body(document), prior=initial, name="positive")
+    entry = next(iter(feeds.values()))
+    assert entry["status"] == "reported"
+    query = entry["data"]["complete_native_query"][0]
+    assert query["separate_source_parent"]["ballots"] == parent["ballotsCast"]
+    assert query["separate_source_parent"]["ballots_qualified_for_projection"] is False
+    assert query["reconciliation"]["federal_ballots_unallocated"] > 0
+    updated, _ = project(current, feeds)
+    assert len(json.loads(gzip.decompress(updated["states/RI.json.gz"]))["records"]) == 40
+    repeated, _ = collect(tmp_path, updated, source_body(document), prior=feeds, name="repeat-positive")
+    assert project(updated, repeated) == (updated, [])
+
+    before = parent["ballotsCast"]
+    for hour, delta in ((13, -2), (14, 3)):
+        clock = f"2026-11-15T{hour}:00:00Z"
+        document["localityElections"][0]["ballotsCast"] += delta
+        document["localityElections"][0]["asOf"] = parent["asOf"] = clock
+        held, _ = collect(tmp_path, updated, source_body(document), prior=feeds, name=f"mismatch-{hour}")
+        assert next(iter(held.values()))["status"] == "retained_after_failure"
+        assert project(updated, held) == (updated, [])
+
+        parent["ballotsCast"] += delta
+        feeds, _ = collect(tmp_path, updated, source_body(document), prior=held, name=f"corrected-{hour}")
+        entry = next(iter(feeds.values()))
+        assert entry["status"] == "reported"
+        assert entry["data"]["complete_native_query"][0]["separate_source_parent"]["ballots"] == before + delta
+        updated, changes = project(updated, feeds)
+        assert sum(row["current"] - row["previous"] for row in changes) == delta
+        before += delta
+
+
+def test_parent_and_locality_inventory_identity_registration_and_clock_fail_closed():
     cases = []
     missing_parent = source_document()
     missing_parent.pop("election")

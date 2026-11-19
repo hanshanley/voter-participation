@@ -119,6 +119,7 @@ def administrative(files):
                 superseded.update({identity: newer[name] for name, identity in older.items()})
         for record in records:
             count, denominator = record["count"], record.get("denominator")
+            view = record.get("view") or {}
             qualified = bool(denominator and denominator.get("qualified"))
             value = count.get("value") if count["status"] == "reported" else None
             stock = denominator.get("value") if denominator else None
@@ -137,6 +138,10 @@ def administrative(files):
                 "denominator_qualified": qualified, "compatible_source_fraction_pct": rate,
                 "source_count_clock": record["source_clock"]["literal"],
                 "source_timezone": record["source_clock"].get("timezone"),
+                "source_publication_label": view.get("source_publication_label"),
+                "source_publication_timezone": view.get("source_publication_timezone"),
+                "source_view_status": view.get("status"),
+                "source_reporting_status": (record.get("reporting_status") or {}).get("literal"),
                 "source_url": record["source"]["url"],
                 "input_sha256": record["source"]["input_sha256"],
                 "not_unique_people_unless_separately_qualified": True,

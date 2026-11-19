@@ -83,6 +83,35 @@ def test_admin_export_preserves_zero_unknown_and_unqualified_context_as_distinct
     assert context["rate_omission_reason"]
 
 
+def test_admin_export_keeps_report_edition_retention_and_count_time_separate():
+    retained = count_row("retained")
+    retained["view"] = {
+        "status": "retained_after_failure",
+        "source_publication_label": "2026-11-18 11:24:00",
+        "source_update_label": "A view label is not a canonical count clock",
+    }
+    retained["reporting_status"] = {"literal": "OFFICIAL RESULTS"}
+    fresh = count_row("fresh")
+    fresh["source_clock"] = {"literal": "2026-11-18T20:00:00Z", "timezone": "UTC"}
+    fresh["view"] = {"status": "reported", "source_publication_label": "Nov 18, 4:07 PM",
+                     "source_publication_timezone": "EST"}
+    files = {"index.json": encoded({"states": {"IL": {"file": "IL.json.gz"}}}),
+             "IL.json.gz": gzip.compress(encoded({"records": [retained, fresh, count_row("legacy")]}))}
+    old, new, legacy = release.administrative(files)
+    assert old["count_status"] == "reported"
+    assert old["source_view_status"] == "retained_after_failure"
+    assert old["source_reporting_status"] == "OFFICIAL RESULTS"
+    assert old["source_publication_label"] == "2026-11-18 11:24:00"
+    assert old["source_publication_timezone"] is old["source_count_clock"] is None
+    assert new["source_view_status"] == "reported"
+    assert new["source_count_clock"] == "2026-11-18T20:00:00Z"
+    assert new["source_timezone"] == "UTC"
+    assert new["source_publication_label"] == "Nov 18, 4:07 PM"
+    assert new["source_publication_timezone"] == "EST"
+    assert legacy["source_view_status"] is legacy["source_reporting_status"] is None
+    assert legacy["source_publication_label"] is legacy["source_publication_timezone"] is None
+
+
 def test_administrative_coverage_keeps_partial_modes_and_reporting_units_separate():
     def row(level, kind="ballots_cast", mode="all_methods", status="reported", rate=None):
         return {"state_code": "ME", "geography_level": level, "measure_kind": kind,

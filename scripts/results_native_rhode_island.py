@@ -224,6 +224,11 @@ def validate_plan(plan):
     return plan
 
 
+def _check_parent_ballots(parent_ballots, rows):
+    if parent_ballots and parent_ballots != sum(row["ballots"] for row in rows):
+        raise ValueError("Rhode Island reported parent ballots disagree with the complete locality sum")
+
+
 def _prior_success(prior, templates):
     if prior is None:
         return None
@@ -330,9 +335,9 @@ def _prior_success(prior, templates):
     parent_clock = parent.get("source_updated")
     parent_ballots = _integer(parent.get("ballots"))
     parent_registered = _integer(parent.get("registered"))
+    _check_parent_ballots(parent_ballots, prior_rows.values())
     if (
-        parent_ballots != 0
-        or sum(row["registered"] for row in prior_rows.values()) != parent_registered
+        sum(row["registered"] for row in prior_rows.values()) != parent_registered
         or any(_clock(row["source_updated"]) > _clock(parent_clock)
                for row in prior_rows.values())
         or type(parent.get("is_official_results")) is not bool
@@ -393,8 +398,6 @@ def statistics(body, templates, url, *, prior=None):
     _clock(parent_clock)
     parent_ballots = _integer(election.get("ballotsCast"))
     parent_registered = _integer(election.get("totalVoters"))
-    if parent_ballots != 0:
-        raise ValueError("Rhode Island source parent ballots are no longer the reviewed zero placeholder")
 
     children = jurisdiction.get("childLocalities")
     if not isinstance(children, list):
@@ -485,11 +488,14 @@ def statistics(body, templates, url, *, prior=None):
 
     if sum(row["registered"] for row in ordered_rows) != parent_registered:
         raise ValueError("Rhode Island locality registrations disagree with the separate source parent")
-    if (
-        prior_success is not None
-        and _clock(parent_clock) < _clock(prior_success["parent"]["source_updated"])
-    ):
-        raise ValueError("Rhode Island source parent clock regressed from prior capture")
+    _check_parent_ballots(parent_ballots, ordered_rows)
+    if prior_success is not None:
+        prior_parent = prior_success["parent"]
+        if _clock(parent_clock) < _clock(prior_parent["source_updated"]):
+            raise ValueError("Rhode Island source parent clock regressed from prior capture")
+        if (parent_ballots != prior_parent["ballots"]
+                and _clock(parent_clock) == _clock(prior_parent["source_updated"])):
+            raise ValueError("Rhode Island parent ballots changed without a newer count clock")
     municipal_ballots = sum(
         row["ballots"] for row in ordered_rows if row["locality"] != "Federal"
     )
