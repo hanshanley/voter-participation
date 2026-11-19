@@ -492,6 +492,7 @@ def collect(collector, baseline):
     jobs[results_turnout_history.KS_FEED] = results_turnout_history.collect_kansas(collector)
     jobs[results_turnout_history.NJ_FEED] = results_turnout_history.collect_new_jersey(collector)
     jobs[results_turnout_history.BUXTON_FEED] = results_turnout_history.collect_buxton(collector)
+    jobs[results_turnout_history.OH_FEED] = results_turnout_history.collect_ohio(collector)
     return jobs
 
 

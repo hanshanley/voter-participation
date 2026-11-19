@@ -6,8 +6,10 @@ from decimal import Decimal, ROUND_HALF_UP
 from html import unescape
 from html.parser import HTMLParser
 import io
+import json
 import re
 from urllib.parse import urljoin
+import xml.etree.ElementTree as ET
 
 from scripts.participation_intake.contract import count, encoded, pin
 
@@ -38,6 +40,14 @@ BUXTON_URL = "https://www.buxton.me.us/news/11-3-2026-election-results"
 BUXTON_TITLE = "Election Results for the Town of Buxton, Maine - November 3, 2026 State and Town Elections"
 BUXTON_FIELDS = ("Registered Voters", "Absentee Ballots Cast", "Ballots Cast in Person",
                  "Total Ballots Cast", "Voter Turn Out Percent")
+OH_FEED = "OH-statewide-ballots-counted"
+OH_BASE = "https://liveresults.ohiosos.gov/Api/v1/"
+OH_BALLOTS = OH_BASE + "Contest/getBallotsCastByCounty"
+OH_ELECTION = OH_BASE + "download?filename=VSSC1622XmlFileBlob"
+OH_NS = {"n": "http://grouper.ieee.org/groups/1622/groups/2/V1/1622_2-election_results_reporting.xsd"}
+OH_FIELDS = ("ballotCast", "registeredVoterTotal", "reportedPrecincts", "totalPrecincts",
+             "outAbsentees", "outProvisionals")
+OH_XML_FIELDS = ("VotersParticipated", "VotersRegistered", "SubUnitsReported", "TotalSubUnits")
 NJ_COUNTIES = (
     "Atlantic", "Bergen", "Burlington", "Camden", "Cape May", "Cumberland", "Essex",
     "Gloucester", "Hudson", "Hunterdon", "Mercer", "Middlesex", "Monmouth", "Morris", "Ocean",
@@ -277,6 +287,81 @@ def buxton_report(body):
 
 def collect_buxton(collector):
     return collector.capture(BUXTON_FEED, BUXTON_URL, buxton_report)
+
+
+def ohio_election(body):
+    if len(body) > 15_000_000 or re.search(r"<!DOCTYPE|<!ENTITY", body.decode("utf-8-sig"), re.I):
+        raise ValueError("Ohio election XML exceeds reviewed document bounds")
+    root = ET.fromstring(body)
+    elections = root.findall("n:Election", OH_NS)
+    if len(elections) != 1 or elections[0].attrib != {"Date": "2026-11-03", "Type": "General"}:
+        raise ValueError("Ohio election XML does not declare the November 2026 general election")
+    title = elections[0].findtext("n:Name/n:LanguageString", namespaces=OH_NS)
+    clock = root.get("GeneratedDate")
+    status = root.get("Status")
+    if (root.tag != f"{{{OH_NS['n']}}}ElectionReport"
+            or root.get("IssuerAbbreviation") != "OH"
+            or status not in {"UnofficialComplete", "UnofficialPartial"}
+            or title != "November 3, 2026 General Unofficial Canvass"
+            or not re.fullmatch(r"202[67]-\d\d-\d\dT\d\d:\d\d:\d\dZ", clock or "")
+            or datetime.strptime(clock, "%Y-%m-%dT%H:%M:%SZ").date().isoformat() < "2026-11-03"):
+        raise ValueError("Ohio election XML issuer, status or report clock changed")
+    rows = [[unit.get("ObjectId"), unit.get("Name"),
+             *[integer(unit.get(field, "")) for field in OH_XML_FIELDS]]
+            for unit in root.findall("n:GpUnitCollection/n:GpUnit", OH_NS)
+            if unit.get("Type") == "County" and unit.get("IsElectoralDistrict") == "false"]
+    return {"source": {"url": OH_ELECTION, **pin(body)}, "date": "2026-11-03",
+            "title": title, "status": status, "generated_at": clock, "counties": rows}
+
+
+def ohio_controls(query):
+    rows, total, control = query["counties"], query["total"], query["election"]
+    if (len(rows) != 88 or len({row[0] for row in rows}) != 88
+            or len({row[1] for row in rows}) != 88
+            or total[:2] != [None, "Totals"] or len(total) != 9
+            or len(control["counties"]) != 88
+            or control["source"]["url"] != OH_ELECTION or control["source"]["bytes"] <= 0
+            or not re.fullmatch(r"[a-f0-9]{64}", control["source"]["sha256"])
+            or control["date"] != "2026-11-03"
+            or control["title"] != "November 3, 2026 General Unofficial Canvass"
+            or control["status"] not in {"UnofficialComplete", "UnofficialPartial"}
+            or sorted(row[:6] for row in rows) != sorted(control["counties"])):
+        raise ValueError("Ohio ballot county frame is not reconciled to its dated XML")
+    for row in rows + [total]:
+        ballots, registered, reported, units, absentee, provisional = row[2:8]
+        if (len(row) != 9 or any(type(n) is not int or n < 0 for n in row[2:8])
+                or not registered or ballots > registered or not 0 <= reported <= units
+                or not re.fullmatch(r"[0-9]+\.[0-9]{2}", row[8])
+                or (Decimal(ballots) * 100 / registered).quantize(
+                    Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(row[8])):
+            raise ValueError("Ohio turnout count, denominator or reported fraction changed")
+    if [sum(row[n] for row in rows) for n in range(2, 8)] != total[2:8]:
+        raise ValueError("Ohio county totals do not reconcile to the printed statewide rows")
+    return total[2], total[3]
+
+
+def ohio_ballots(body, control):
+    entries = json.loads(body)
+    if len(entries) != 90:
+        raise ValueError("Ohio ballot table inventory changed")
+    rows = [[entry["objectId"], entry["name"],
+             *[integer(entry[field]) for field in OH_FIELDS], entry["ballotCastPercent"]]
+            for entry in entries]
+    if rows[0] != rows[-1]:
+        raise ValueError("Ohio's two printed statewide totals disagree")
+    query = {"counties": rows[1:-1], "total": rows[0], "election": control}
+    ohio_controls(query)
+    return query
+
+
+def collect_ohio(collector):
+    def parse(body):
+        control, _ = collector.acquire(OH_ELECTION)
+        query = ohio_ballots(body, ohio_election(control))
+        return {"report": {"url": OH_BALLOTS, **pin(body)}, "complete_native_query": query,
+                "date": query["election"]["generated_at"], "participation_observation_qualified": False}
+
+    return collector.capture(OH_FEED, OH_BALLOTS, parse)
 
 
 def integer(value):

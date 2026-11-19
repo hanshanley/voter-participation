@@ -149,6 +149,63 @@ def test_new_jersey_future_archive_publication_retains_last_good(tmp_path, monke
     assert totals.project(retained, {"granular_sources": failed}) == (retained, [])
 
 
+def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_conflicts(tmp_path, monkeypatch):
+    from scripts.results_intake import Collector
+
+    history = totals.history
+    files = baseline(monkeypatch)
+    path = "states/OH.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    ndx = json.loads(files["index.json"])
+    ndx["states"]["OH"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(ndx)
+    county = ["20", "40", "1", "1", "2", "3"]
+    control = [str(88 * int(value)) for value in county]
+    parent = dict(zip(history.OH_FIELDS, control), objectId=None, name="Totals", ballotCastPercent="50.00")
+    rows = [dict(zip(history.OH_FIELDS, county), objectId=f"_{i}", name=f"County {i}",
+                 ballotCastPercent="50.00") for i in range(88)]
+    xml = (f'<ElectionReport xmlns="{history.OH_NS["n"]}" IssuerAbbreviation="OH" '
+           'Status="UnofficialComplete" GeneratedDate="2026-11-13T09:43:04Z">'
+           '<Election Date="2026-11-03" Type="General"><Name><LanguageString>'
+           'November 3, 2026 General Unofficial Canvass</LanguageString></Name></Election><GpUnitCollection>'
+           + "".join(f'<GpUnit ObjectId="_{i}" Name="County {i}" Type="County" IsElectoralDistrict="false" '
+                     'VotersParticipated="20" VotersRegistered="40" SubUnitsReported="1" TotalSubUnits="1"/>'
+                     for i in range(88))
+           + '</GpUnitCollection></ElectionReport>').encode()
+
+    def acquire(self, url):
+        body = xml if url == history.OH_ELECTION else encoded([parent, *rows, parent])
+        return body, {"origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(Collector, "acquire", acquire)
+    feed = history.OH_FEED
+
+    def collect(prior=None):
+        collector = Collector(tmp_path, prior or {}, {"urls": [], "prefixes": [], "hosts": []},
+                              datetime(2026, 11, 19, tzinfo=timezone.utc))
+        return {feed: history.collect_ohio(collector)}
+
+    accepted = collect()
+    assert accepted[feed]["status"] == "reported"
+    assert collect(accepted) == accepted
+    updated, changes = totals.project(files, {"granular_sources": accepted})
+    assert [(r["state_code"], r["current"]) for r in changes] == [("OH", 1760)]
+    before, after = [json.loads(gzip.decompress(value[path])) for value in (files, updated)]
+    assert before["views"] == after["views"]
+    row = after["records"][-1]
+    assert row["denominator"]["value"] == 3520 and row["reporting_status"]["complete"] is None
+    assert row["view"]["validated_pct"] == 50
+    assert totals.project(updated, {"granular_sources": accepted}) == (updated, [])
+    xml = xml.replace(b'VotersParticipated="20"', b'VotersParticipated="19"', 1)
+    failed = collect(accepted)
+    assert failed[feed]["status"] == "retained_after_failure"
+    assert "not reconciled" in failed[feed]["error_detail"]
+    retained, changes = totals.project(updated, {"granular_sources": failed})
+    assert changes[0]["current"] == 1760 and changes[0]["source_status"] == "retained_after_failure"
+    assert totals.project(retained, {"granular_sources": failed}) == (retained, [])
+
+
 def test_connecticut_retained_control_and_versioned_successor(monkeypatch):
     files = baseline(monkeypatch)
     path = "states/CT.json.gz"

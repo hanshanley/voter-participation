@@ -72,6 +72,8 @@ PROFILES = {
            "feed": mn.IDENTITY, "url": mn.URL},
     "NJ": {"state": "New Jersey", "source_id": history.NJ_FEED,
            "feed": history.NJ_FEED, "url": history.NJ_URL},
+    "OH": {"state": "Ohio", "source_id": history.OH_FEED,
+           "feed": history.OH_FEED, "url": history.OH_BALLOTS},
     "SC": {"state": "South Carolina", "source_id": "sc-sec-statewide-turnout-20261103",
            "feed": "SC-official", "url": state_statistics.URL},
     "VA": {"state": "Virginia", "source_id": "va-elect-general-election-turnout",
@@ -177,6 +179,8 @@ def observation(code, summary, retained=False):
         return kansas_observation(summary, retained)
     if code == "NJ":
         return new_jersey_observation(summary, retained)
+    if code == "OH":
+        return ohio_observation(summary, retained)
     if code == "VT":
         return vermont_observation(summary, retained)
     if code == "MN":
@@ -919,6 +923,23 @@ def new_jersey_observation(summary, retained):
         query["published_date"], "TOTAL")
 
 
+def ohio_observation(summary, retained):
+    source, receipt = summary["source"], summary["index"]
+    require(summary["contract"] == CONTRACT and receipt == source and source["url"] == history.OH_BALLOTS
+            and type(source["bytes"]) is int and source["bytes"] > 0
+            and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]),
+            "Ohio turnout report or collection receipt changed")
+    query = summary["query"]
+    ballots, registered = history.ohio_controls(query)
+    notes = ["Ohio's two printed statewide totals agree with all 88 county rows and the dated unofficial XML.",
+             "This is ballots counted divided by the same report's registered voters, not VAP, VEP or a demographic rate.",
+             "Outstanding overseas and provisional ballots are separate. Complete precinct reporting is not certification."]
+    return archive_observation(
+        "OH", summary, retained, ballots, registered, "Ballots Counted", "Registered Voters",
+        "native_registered_voters_same_ohio_report", "Unofficial election-night canvass", notes,
+        query["total"][8] + "%", None, "Totals")
+
+
 def archive_observation(code, summary, retained, ballots, registered, measure, register,
                         basis, label, notes, printed_rate, edition, selector):
     profile, source = PROFILES[code], summary["source"]
@@ -1104,7 +1125,7 @@ def project(files, snapshot):
                    florida_summary(shard) if code == "FL" else
                    south_carolina_summary(snapshot) if code == "SC" else
                    turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
-                   archive_report_summary(snapshot, code) if code in {"KS", "NJ"} else
+                   archive_report_summary(snapshot, code) if code in {"KS", "NJ", "OH"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
@@ -1123,12 +1144,16 @@ def project(files, snapshot):
                         or code == "AK" and before["statewide_feed"] != after["statewide_feed"]
                         or code == "HI" and before["reports"]["histatewide"] == after["reports"]["histatewide"]
                         or code in {"KS", "NJ"} and before["query"] == after["query"]
+                        or code == "OH" and {key: value for key, value in before["query"].items() if key != "election"}
+                        == {key: value for key, value in after["query"].items() if key != "election"}
                         or code == "CT" and before["towns"] == after["towns"] and before["total"] == after["total"]
                         or code == "MN" and before["statistical_txt"] != after["statistical_txt"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
                 if code == "CT" and after["version"] < before["version"]:
                     row = observation(code, before, retained=True)
                 if code == "NJ" and after["query"]["published_date"] < before["query"]["published_date"]:
+                    row = observation(code, before, retained=True)
+                if code == "OH" and after["query"]["election"]["generated_at"] < before["query"]["election"]["generated_at"]:
                     row = observation(code, before, retained=True)
                 if code == "AR" and before["status"] == "OFFICIAL" and after["status"] != "OFFICIAL":
                     row = observation(code, before, retained=True)
