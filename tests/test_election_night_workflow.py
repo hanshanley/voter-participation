@@ -92,6 +92,7 @@ def test_validation_cache_changes_with_code_or_environment(tmp_path):
 
 @pytest.mark.parametrize("event,title,conclusion,publication,recoverable", [
     ("schedule", "Old title", "cancelled", "skipped", True),
+    ("schedule", "Check late participation archives", "cancelled", "skipped", False),
     ("workflow_dispatch", "Collect full election results", "timed_out", "cancelled", True),
     ("workflow_dispatch", "Collect full election results", "failure", "failure", False),
     ("workflow_dispatch", "Collect full election results", "success", "success", False),
@@ -121,7 +122,7 @@ def test_full_checkpoint_is_reused_only_for_interrupted_publication(
     with patch.dict(os.environ, {"GH_REPO": "fixture/fixture", "GITHUB_OUTPUT": str(output)}):
         with patch("subprocess.check_output", side_effect=[json.dumps(body).encode() for body in metadata]) as api:
             exec(compile(script, str(WORKFLOW), "exec"), {})
-    assert api.call_count == (2 if event == "schedule" or (
+    assert api.call_count == (2 if (event == "schedule" and title != "Check late participation archives") or (
         title == "Collect full election results" and conclusion != "success") else 1)
     if api.call_count == 2:
         assert api.call_args.args[0][-1].endswith("/runs/123/jobs")
@@ -129,16 +130,18 @@ def test_full_checkpoint_is_reused_only_for_interrupted_publication(
 
 
 @pytest.mark.parametrize(
-    "now,event,active",
+    "now,event,schedule,active,archive_sources",
     [
-        ("2026-11-02T23:59:59+00:00", "schedule", False),
-        ("2026-11-03T00:00:00+00:00", "schedule", True),
-        ("2027-01-31T23:59:59+00:00", "schedule", True),
-        ("2027-02-01T00:00:00+00:00", "schedule", False),
-        ("2027-02-01T00:00:00+00:00", "workflow_dispatch", True),
+        ("2026-11-02T23:59:59+00:00", "schedule", "23 * * * *", False, ""),
+        ("2026-11-03T00:00:00+00:00", "schedule", "23 * * * *", True, ""),
+        ("2027-01-31T23:59:59+00:00", "schedule", "23 * * * *", True, ""),
+        ("2027-02-01T00:00:00+00:00", "schedule", "23 * * * *", False, ""),
+        ("2027-01-25T10:19:00+00:00", "schedule", "19 10 * * 1", False, ""),
+        ("2027-02-01T10:19:00+00:00", "schedule", "19 10 * * 1", True, "PA-2026-general-vote-history"),
+        ("2027-02-01T00:00:00+00:00", "workflow_dispatch", "", True, ""),
     ],
 )
-def test_actual_window_output_controls_downstream_collection(tmp_path, now, event, active):
+def test_actual_window_output_controls_downstream_collection(tmp_path, now, event, schedule, active, archive_sources):
     gate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "window")
     script = textwrap.dedent(gate["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0])
     output = tmp_path / "github-output"
@@ -148,7 +151,7 @@ def test_actual_window_output_controls_downstream_collection(tmp_path, now, even
         def now(cls, tz=None):
             return datetime.fromisoformat(now).astimezone(tz or timezone.utc)
 
-    with patch.dict(os.environ, {"EVENT_NAME": event, "GITHUB_OUTPUT": str(output)}):
+    with patch.dict(os.environ, {"EVENT_NAME": event, "SCHEDULE": schedule, "GITHUB_OUTPUT": str(output)}):
         with patch("datetime.datetime", FrozenDateTime):
             exec(compile(script, str(WORKFLOW), "exec"), {})
-    assert output.read_text() == f"active={str(active).lower()}\n"
+    assert output.read_text() == f"active={str(active).lower()}\narchive_sources={archive_sources}\n"
