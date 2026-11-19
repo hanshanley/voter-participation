@@ -1,6 +1,7 @@
 """Read a public statewide general-election turnout series without guessing a missing year."""
 
 import csv
+from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 from html import unescape
 from html.parser import HTMLParser
@@ -30,25 +31,46 @@ KS_URL = "https://www.sos.ks.gov/elections/election-results.html"
 KS_COUNTIES = {"bytes": 1737, "sha256": "a7dc594edcdb462f76861c8f1dfbc7f186b8929737c502771c7c3d264265b981"}
 KS_HEADER = [["COUNTY", "ADVANCE BALLOTS", None, "TOTAL BALLOTS CAST", None, "REGISTERED"],
              [None, "RETURNED BY MAIL", None, None, None, "VOTERS"]]
+NJ_FEED = "NJ-general-election-turnout-pdf"
+NJ_URL = "https://www.nj.gov/state/elections/election-information-ballots-cast.shtml"
+NJ_COUNTIES = (
+    "Atlantic", "Bergen", "Burlington", "Camden", "Cape May", "Cumberland", "Essex",
+    "Gloucester", "Hudson", "Hunterdon", "Mercer", "Middlesex", "Monmouth", "Morris", "Ocean",
+    "Passaic", "Salem", "Somerset", "Sussex", "Union", "Warren",
+)
+NJ_HEADER = [
+    "Total Number of Registered Voters, Ballots Cast, Ballots Rejected, Percentage of Ballots Cast and the",
+    "Total Number of Election Districts in New Jersey",
+    "COUNTY Total Number of Total Number of Total Number of Percent of Ballots Number of",
+    "Registered Voters Ballots Cast Ballots Rejected Cast Election Districts",
+]
 
 
-def kansas_link(body, year):
+def archive_link(body, url, pattern):
     class Links(HTMLParser):
         links = set()
 
         def handle_starttag(self, tag, attrs):
-            href = dict(attrs).get("href")
-            if tag == "a" and href:
-                self.links.add(urljoin(KS_URL, href))
+            if tag == "a" and (href := dict(attrs).get("href")):
+                self.links.add(urljoin(url, href))
 
     parser = Links()
     parser.feed(body.decode("utf-8-sig"))
-    links = [url for url in parser.links if re.fullmatch(
-        rf"https://(?:www\.)?sos\.ks\.gov/elections/{year % 100:02d}elec/"
-        rf"{year}-General-Election-Turnout-Information\.xlsx", url)]
+    links = [link for link in parser.links if re.fullmatch(pattern, link)]
     if len(links) > 1:
-        raise ValueError("Ambiguous Kansas general-election turnout workbook")
+        raise ValueError("Ambiguous general-election turnout archive report")
     return links[0] if links else None
+
+
+def kansas_link(body, year):
+    return archive_link(body, KS_URL,
+        rf"https://(?:www\.)?sos\.ks\.gov/elections/{year % 100:02d}elec/"
+        rf"{year}-General-Election-Turnout-Information\.xlsx")
+
+
+def new_jersey_report_url(year):
+    return (r"https://(?:www\.)?nj\.gov/state/elections/assets/pdf/election-results/"
+            rf"{year}/{year}-official-general-voter-turnout\.pdf")
 
 
 def kansas_workbook(body):
@@ -111,6 +133,76 @@ def collect_kansas(collector):
                 "current_election_status": "row_published", "participation_observation_qualified": False}
 
     return collector.capture(KS_FEED, KS_URL, parse)
+
+
+def new_jersey_controls(query, election_date):
+    counties, total = query["counties"], query["total"]
+    if (query["election_date"] != election_date
+            or query["published_date"] < election_date
+            or [row["county"] for row in counties] != list(NJ_COUNTIES)
+            or total["county"] != "TOTAL"):
+        raise ValueError("New Jersey turnout report election or county inventory changed")
+    fields = ("registered", "ballots_cast", "ballots_rejected", "election_districts")
+    for row in counties + [total]:
+        registered, ballots, rejected, districts = (row[field] for field in fields)
+        reported = row["printed_percent"]
+        if (any(type(row[field]) is not int for field in fields)
+                or not registered or not 0 <= ballots <= registered
+                or rejected < 0 or districts <= 0
+                or type(reported) is not int
+                or reported != (Decimal(ballots) * 100 / registered).quantize(
+                    Decimal(1), rounding=ROUND_HALF_UP)):
+            raise ValueError("New Jersey turnout report has an invalid count or printed percentage")
+    if any(total[field] != sum(row[field] for row in counties) for field in fields):
+        raise ValueError("New Jersey turnout report county and statewide totals disagree")
+    return total["ballots_cast"], total["registered"]
+
+
+def new_jersey_report(body, election_date):
+    from pypdf import PdfReader
+
+    if len(body) > 2_000_000 or not body.startswith(b"%PDF-"):
+        raise ValueError("New Jersey turnout report is not a bounded PDF")
+    pdf = PdfReader(io.BytesIO(body))
+    if pdf.is_encrypted or len(pdf.pages) != 1:
+        raise ValueError("New Jersey turnout report page inventory changed")
+    lines = [" ".join(line.split()) for line in
+             pdf.pages[0].extract_text(extraction_mode="layout").splitlines() if line.strip()]
+    if len(lines) != 28 or lines[:2] + lines[3:5] != NJ_HEADER:
+        raise ValueError("New Jersey turnout report headings or row inventory changed")
+    election = datetime.strptime(lines[2], "General Election %B %d, %Y").date().isoformat()
+    published = datetime.strptime(lines[-1], "NJDOE-%m/%d/%Y").date().isoformat()
+    rows = []
+    number = r"(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)"
+    for county, line in zip((*NJ_COUNTIES, "TOTAL"), lines[5:-1]):
+        match = re.fullmatch(re.escape(county) + rf" ({number}) ({number}) ({number}) ([0-9]+)% ({number})",
+                             line)
+        if not match:
+            raise ValueError("New Jersey official turnout row changed: " + county)
+        values = [int(value.replace(",", "")) for value in match.groups()]
+        rows.append(dict(zip(("county", "registered", "ballots_cast", "ballots_rejected",
+                              "printed_percent", "election_districts"), (county, *values))))
+    query = {"election_date": election, "published_date": published,
+             "counties": rows[:-1], "total": rows[-1]}
+    new_jersey_controls(query, election_date)
+    return query
+
+
+def collect_new_jersey(collector):
+    def parse(index):
+        url = archive_link(index, NJ_URL, new_jersey_report_url(CURRENT_YEAR))
+        prior = collector.prior.get(NJ_FEED, {}).get("data") or {}
+        if url is None:
+            if prior.get("report"):
+                raise ValueError("Previously reported New Jersey turnout PDF is no longer linked")
+            return {"current_election_status": "report_not_linked", "participation_observation_qualified": False}
+        body, _ = collector.acquire(url)
+        query = new_jersey_report(body, "2026-11-03")
+        return {"report": {"url": url, **pin(body)}, "complete_native_query": query,
+                "date": query["published_date"], "current_election_status": "row_published",
+                "participation_observation_qualified": False}
+
+    return collector.capture(NJ_FEED, NJ_URL, parse)
 
 
 def integer(value):

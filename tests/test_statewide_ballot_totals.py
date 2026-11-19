@@ -1,7 +1,9 @@
 import copy
+from datetime import datetime, timezone
 import gzip
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -80,6 +82,71 @@ def test_kansas_waits_for_a_declared_workbook_and_preserves_a_reconciled_count(m
     query["counties"][0][2] += 1
     with pytest.raises(ValueError, match="statewide totals disagree"):
         totals.project(projected, snapshot)
+
+
+def test_new_jersey_future_archive_publication_retains_last_good(tmp_path, monkeypatch):
+    import pypdf
+    from scripts.results_intake import Collector
+
+    def pdf_reader(stream):
+        body = stream.read().removeprefix(b"%PDF- ").decode()
+        return SimpleNamespace(is_encrypted=False, pages=[
+            SimpleNamespace(extract_text=lambda **_: body),
+        ])
+
+    monkeypatch.setattr(pypdf, "PdfReader", pdf_reader)
+    history = totals.history
+    files = baseline(monkeypatch)
+    path = "states/NJ.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    ndx = json.loads(files["index.json"])
+    ndx["states"]["NJ"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(ndx)
+    url = history.NJ_URL.rsplit("/", 1)[0] + "/assets/pdf/election-results/2026/2026-official-general-voter-turnout.pdf"
+    links = b'<a href="2026-official-primary-voter-turnout.pdf">Primary turnout</a>'
+    report = "\n".join((
+        *history.NJ_HEADER[:2], "General Election November 3, 2026", *history.NJ_HEADER[2:],
+        *[f"{name} 2,000 1,000 2 50% 8" for name in history.NJ_COUNTIES],
+        "TOTAL 42,000 21,000 42 50% 168", "NJDOE-11/30/2026",
+    ))
+
+    def acquire(self, source):
+        assert source in (history.NJ_URL, url)
+        body = links if source == history.NJ_URL else b"%PDF- " + report.encode()
+        return body, {"origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(Collector, "acquire", acquire)
+    feed = history.NJ_FEED
+    def collect(prior=None):
+        collector = Collector(tmp_path, prior or {}, {"urls": [], "prefixes": [], "hosts": []},
+                              datetime(2026, 12, 1, tzinfo=timezone.utc))
+        return {feed: history.collect_new_jersey(collector)}
+
+    missing = collect()
+    assert missing[feed]["data"]["current_election_status"] == "report_not_linked"
+    assert totals.project(files, {"granular_sources": missing}) == (files, [])
+    links += f'<a href="{url}">General turnout</a>'.encode()
+    accepted = collect(missing)
+    assert accepted[feed]["status"] == "reported"
+    projected, changes = totals.project(files, {"granular_sources": accepted})
+    assert changes == [{"state_code": "NJ", "id": totals.identity("NJ"), "previous": None,
+                        "current": 21000, "source_status": "reported"}]
+    original_shard, next_shard = (json.loads(gzip.decompress(value[path])) for value in (files, projected))
+    assert original_shard["views"] == next_shard["views"]
+    assert original_shard["records"] == next_shard["records"][:-1]
+    row = next_shard["records"][-1]
+    assert row["source"]["url"] == url and row["denominator"]["value"] == 42000
+    assert row["view"]["validated_pct"] == 50 and row["source_clock"]["literal"] is None
+    assert collect(accepted) == accepted
+    assert totals.project(projected, {"granular_sources": accepted}) == (projected, [])
+    report = report.replace("21,000 42", "21,001 42")
+    failed = collect(accepted)
+    assert failed[feed]["status"] == "retained_after_failure"
+    assert failed[feed]["error_detail"] == "New Jersey turnout report county and statewide totals disagree"
+    retained, changes = totals.project(projected, {"granular_sources": failed})
+    assert changes[0]["current"] == 21000 and changes[0]["source_status"] == "retained_after_failure"
+    assert totals.project(retained, {"granular_sources": failed}) == (retained, [])
 
 
 def test_connecticut_retained_control_and_versioned_successor(monkeypatch):

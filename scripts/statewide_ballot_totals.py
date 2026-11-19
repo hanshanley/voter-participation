@@ -70,6 +70,8 @@ PROFILES = {
            "feed": history.KS_FEED, "url": history.KS_URL},
     "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
            "feed": mn.IDENTITY, "url": mn.URL},
+    "NJ": {"state": "New Jersey", "source_id": history.NJ_FEED,
+           "feed": history.NJ_FEED, "url": history.NJ_URL},
     "SC": {"state": "South Carolina", "source_id": "sc-sec-statewide-turnout-20261103",
            "feed": "SC-official", "url": state_statistics.URL},
     "VA": {"state": "Virginia", "source_id": "va-elect-general-election-turnout",
@@ -173,6 +175,8 @@ def observation(code, summary, retained=False):
         return hawaii_observation(summary, retained)
     if code == "KS":
         return kansas_observation(summary, retained)
+    if code == "NJ":
+        return new_jersey_observation(summary, retained)
     if code == "VT":
         return vermont_observation(summary, retained)
     if code == "MN":
@@ -865,11 +869,12 @@ def hawaii_observation(summary, retained):
     })
 
 
-def kansas_summary(snapshot):
-    entry = snapshot.get("granular_sources", {}).get(history.KS_FEED, {})
+def archive_report_summary(snapshot, code):
+    profile = PROFILES[code]
+    entry = snapshot.get("granular_sources", {}).get(profile["feed"], {})
     if entry.get("status") != "reported" or not entry["data"].get("report"):
         return None
-    require(entry["source"]["url"] == history.KS_URL, "Kansas turnout workbook is not archive-bound")
+    require(entry["source"]["url"] == profile["url"], "Turnout report is not archive-bound")
     return {"contract": CONTRACT, "source": entry["data"]["report"],
             "index": entry["source"], "query": entry["data"]["complete_native_query"]}
 
@@ -890,11 +895,39 @@ def kansas_observation(summary, retained):
     notes = ["The printed statewide ballot and registration totals agree with all 105 county rows.",
              "This is a same-workbook registered-voter fraction, not VAP, VEP or a demographic rate.",
              "No native count-update clock, separate certification evidence or new local map join is inferred."]
-    view = {"state": "Kansas", "state_code": "KS", "year": 2026, "mode": "official",
+    return archive_observation("KS", summary, retained, ballots, registered, measure, register,
+                               basis, label, notes, None, None, "statewide total")
+
+
+def new_jersey_observation(summary, retained):
+    source, index = summary["source"], summary["index"]
+    require(summary["contract"] == CONTRACT and index["url"] == history.NJ_URL
+            and re.fullmatch(history.new_jersey_report_url(2026), source["url"])
+            and all(type(receipt["bytes"]) is int and receipt["bytes"] > 0
+                    and re.fullmatch(r"[a-f0-9]{64}", receipt["sha256"]) for receipt in (source, index)),
+            "New Jersey turnout report or archive receipt changed")
+    query = summary["query"]
+    ballots, registered = history.new_jersey_controls(query, "2026-11-03")
+    notes = ["The printed statewide totals agree with all 21 county rows from the same PDF.",
+             "This is ballots cast divided by the report's registered voters, not VAP, VEP or a demographic rate.",
+             "The NJDOE footer dates the report edition, not count updates or separate certification.",
+             "Rejected ballots and district counts remain in the native query, not additions to turnout."]
+    return archive_observation(
+        "NJ", summary, retained, ballots, registered, "Total Number of Ballots Cast",
+        "Total Number of Registered Voters", "native_registered_voters_same_nj_report",
+        "General-election turnout report", notes, str(query["total"]["printed_percent"]) + "%",
+        query["published_date"], "TOTAL")
+
+
+def archive_observation(code, summary, retained, ballots, registered, measure, register,
+                        basis, label, notes, printed_rate, edition, selector):
+    profile, source = PROFILES[code], summary["source"]
+    rate = 100 * ballots / registered
+    view = {"state": profile["state"], "state_code": code, "year": 2026, "mode": "official",
             "geography_level": "statewide", "status": "retained_after_failure" if retained else "reported",
             "ballots": ballots, "denominator": registered, "denominator_basis": basis,
-            "reported_pct": rate, "validated_pct": rate, "native_printed_pct": None,
-            "source_update_label": None, "source_update_timezone": None, "source_date": None,
+            "reported_pct": rate, "validated_pct": rate, "native_printed_pct": printed_rate,
+            "source_update_label": None, "source_update_timezone": None, "source_date": edition,
             "source_status_literal": label, "reported_units": None, "total_units": None,
             "source_url": source["url"], "source_sha256": source["sha256"], "complete_download_url": None,
             "automatic_source_refresh": True, "maps_approved": False,
@@ -903,10 +936,10 @@ def kansas_observation(summary, retained):
             "unique_voter_count_qualified": False, "quality": notes,
             "source_reporting_label": " ".join(notes), "statewide_ballot_parent": copy.deepcopy(summary)}
     return validate({
-        "contract": VERSION, "id": identity("KS"),
-        "election": {"id": "KS-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+        "contract": VERSION, "id": identity(code),
+        "election": {"id": code + "-2026-11-03-general", "year": 2026, "date": "2026-11-03",
                      "type": "general", "qualification": "native"},
-        "geography": {"id": "KS-native-statewide-total", "name": "Kansas", "state_code": "KS",
+        "geography": {"id": code + "-native-statewide-total", "name": profile["state"], "state_code": code,
                       "level": "state", "parent_id": None, "join": {"status": "nongeographic",
                           "reference_id": None, "feature_key": None, "evidence": None}},
         "measure": {"id": "native-total-ballots-cast", "literal": measure,
@@ -915,8 +948,8 @@ def kansas_observation(summary, retained):
         "denominator": {"value": registered, "literal": register, "basis": basis, "qualified": True},
         "source_clock": {"literal": None, "timezone": None},
         "reporting_status": {"literal": label, "reported_units": None, "total_units": None, "complete": None},
-        "source": {"id": history.KS_FEED, "url": source["url"], "input_sha256": source["sha256"],
-                   "classification": "public_aggregate", "selector": {"native_row": "statewide total"},
+        "source": {"id": profile["source_id"], "url": source["url"], "input_sha256": source["sha256"],
+                   "classification": "public_aggregate", "selector": {"native_row": selector},
                    "fields": copy.deepcopy(view)},
         "quality": {"conflicts": [], "notes": notes}, "view": view,
     })
@@ -1046,7 +1079,7 @@ def project(files, snapshot):
     changes = []
     feeds = snapshot.get("congress", {}).get("official_candidate_evidence", {})
     statewide_sources = {"AK": alaska_summary, "AZ": arizona_summary, "HI": hawaii_summary,
-                         "KS": kansas_summary, "MN": minnesota_summary,
+                         "MN": minnesota_summary,
                          "VT": vermont_summary}
     for code, profile in PROFILES.items():
         if code not in index["states"]:
@@ -1071,6 +1104,7 @@ def project(files, snapshot):
                    florida_summary(shard) if code == "FL" else
                    south_carolina_summary(snapshot) if code == "SC" else
                    turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
+                   archive_report_summary(snapshot, code) if code in {"KS", "NJ"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
@@ -1088,11 +1122,13 @@ def project(files, snapshot):
                         or code == "AR" and {**before, "archived_capture": None} == after
                         or code == "AK" and before["statewide_feed"] != after["statewide_feed"]
                         or code == "HI" and before["reports"]["histatewide"] == after["reports"]["histatewide"]
-                        or code == "KS" and before["query"] == after["query"]
+                        or code in {"KS", "NJ"} and before["query"] == after["query"]
                         or code == "CT" and before["towns"] == after["towns"] and before["total"] == after["total"]
                         or code == "MN" and before["statistical_txt"] != after["statistical_txt"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
                 if code == "CT" and after["version"] < before["version"]:
+                    row = observation(code, before, retained=True)
+                if code == "NJ" and after["query"]["published_date"] < before["query"]["published_date"]:
                     row = observation(code, before, retained=True)
                 if code == "AR" and before["status"] == "OFFICIAL" and after["status"] != "OFFICIAL":
                     row = observation(code, before, retained=True)
