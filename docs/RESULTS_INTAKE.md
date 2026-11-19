@@ -2266,3 +2266,20 @@ These are delivery guarantees, not observed individual switching/nonparticipatio
 new geographic qualifications or final/certified nationwide results. The actual
 GitHub-job, public full-packet replay and no-override production gates passed for
 this increment; future parser/reader changes must satisfy the same gates.
+
+### Cuyahoga County, Ohio: full-election participation
+
+The hourly collector follows the county's November 3, 2026 election index to a
+uniquely identified countywide results PDF. It requires the complete numbered
+page series, matching county/election/scope, and identical statistical headers
+on every page. The November 4 unofficial report yields 482,011 ballots and
+878,381 same-report registrations (54.87%). The printed clock is report
+generation, not a separately verified count-update clock. The count is not a
+sum of candidate votes, a complete statewide count, or certified turnout.
+
+The analytical runtime joins only this county to the pinned Ohio reference
+and exposes it in the government-source view and local drill-down from the
+state estimate views. It does not modify Ohio's 88-county early or mail
+activity frames. Compatible reports can revise counts in either direction;
+incompatible or unavailable reports retain the last qualified observation.
+The source packet includes every native statistical header used by the query.

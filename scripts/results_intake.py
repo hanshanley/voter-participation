@@ -757,7 +757,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_periodic_ocr.py", "results_pdf_periodic_sussex.json",
              "results_pdf_affiliations.py", "results_pdf_jefferson.py",
              "results_pdf_cass.py", "results_pdf_dunn.py", "results_pdf_cole.py",
-             "results_pdf_platte.py",
+             "results_pdf_platte.py", "results_pdf_county_parent.py",
              "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
             "nationwide.py", "current.py", "download.py",
             "precinct_source_batch.py", "house_clerk_endpoints.py",

@@ -9,6 +9,7 @@ from scripts.participation_count_additions import COUNTY_QUALIFIERS
 from scripts.participation_intake.contract import VERSION, encoded, observation_id, pin, validate_all
 from scripts.statewide_ballot_totals import compressed, require
 from scripts import results_clarity_congress as clarity
+from scripts import results_pdf_county_parent as county_pdf
 
 
 IA = {
@@ -248,3 +249,139 @@ def project(counts, native, snapshot):
                 "current": row["count"]["value"], "source_status": row["view"]["status"]}
                for key, row in new.items() if previous.get(key) != row]
     return counts, native, changes
+
+
+CUYAHOGA_FIPS = "39035"
+CUYAHOGA_GEO = "OH:countywide-ballot-report:39035"
+CUYAHOGA_ELECTION = "OH-2026-11-03-general"
+CUYAHOGA_BASIS = "native_registered_voters_same_official_county_report"
+CUYAHOGA_REFERENCE = "a9cb5f455b746d94a0ccf9c18c36d804ef0e728d9f63e119da69b40ce5e764e8"
+
+
+def cuyahoga_observation(data, reference, status):
+    clock, ballots, registered, fraction = county_pdf.validate_data(data)
+    report, label = data["report"], data["report_status"]
+    notes = [
+        "Countywide ballots and registrations from the same PDF parent, checked across every page.",
+        "The report generation clock is not an independently identified count-update time.",
+        "Not a statewide total, certification claim, unique-voter count or precinct allocation.",
+    ]
+    rate = 100 * ballots / registered
+    view = {
+        "state_code": "OH", "state": "Ohio", "year": 2026, "county": county_pdf.COUNTY,
+        "county_id": CUYAHOGA_GEO, "county_fips": CUYAHOGA_FIPS, "geography_level": "county",
+        "mode": "official", "status": status, "source_mode": "all_methods",
+        "ballots": ballots, "denominator": registered, "registered": registered,
+        "denominator_basis": CUYAHOGA_BASIS, "reported_pct": rate, "validated_pct": rate,
+        "native_printed_pct": fraction, "source_status_literal": label,
+        "source_date": clock[:10], "source_update_label": None, "source_update_timezone": None,
+        "source_publication_label": clock.replace("T", " "), "source_publication_timezone": None,
+        "source_url": report["url"], "source_sha256": report["sha256"],
+        "source_count_qualified": True, "cast_ballot_count_qualified": True,
+        "native_election_id_qualified": True, "unique_voter_count_qualified": False,
+        "participation_measure_kind": "ballots_cast", "participation_measure_literal": "Total Ballots Cast",
+        "participation_measure_label": "Countywide ballots cast",
+        "complete_download_url": None, "automatic_source_refresh": True, "maps_approved": True,
+        "reported_units": None, "total_units": None, "native_record": data,
+        "reference_geometry": reference, "quality": notes,
+    }
+    return {
+        "contract": VERSION,
+        "id": observation_id(county_pdf.IDENTITY, CUYAHOGA_ELECTION, CUYAHOGA_GEO,
+                             "countywide-ballots-cast", "all_methods"),
+        "election": {"id": CUYAHOGA_ELECTION, "year": 2026, "date": county_pdf.ELECTION,
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": CUYAHOGA_GEO, "name": county_pdf.COUNTY, "state_code": "OH",
+                      "level": "county", "parent_id": None, "join": {
+                          "status": "approved", "reference_id": reference["review_id"],
+                          "feature_key": CUYAHOGA_FIPS,
+                          "evidence": "Exact countywide authority and named county in pinned Ohio reference"}},
+        "measure": {"id": "countywide-ballots-cast", "literal": "Total Ballots Cast",
+                    "kind": "ballots_cast", "mode": "all_methods", "unit": "ballots"},
+        "count": {"value": ballots, "literal": ballots, "status": "reported"},
+        "denominator": {"value": registered, "literal": "Registered Voters",
+                        "basis": CUYAHOGA_BASIS, "qualified": True},
+        "source": {"id": county_pdf.IDENTITY, "url": report["url"], "input_sha256": report["sha256"],
+                   "classification": "public_aggregate", "fields": copy.deepcopy(view),
+                   "selector": {"physical_pages": list(range(1, len(data["complete_native_query"]) + 1)),
+                                "scope": county_pdf.SCOPE}},
+        "source_clock": {"literal": None, "timezone": None},
+        "reporting_status": {"literal": label, "reported_units": None, "total_units": None, "complete": None},
+        "quality": {"notes": notes, "conflicts": []},
+        "view": view,
+    }
+
+
+def project_cuyahoga(counts, native, snapshot):
+    entry = snapshot.get("granular_sources", {}).get(county_pdf.IDENTITY, {})
+    if not entry.get("data"):
+        return counts, native, []
+    require(entry["status"] in {"reported", "retained_after_failure"}
+            and entry["source"]["url"] == county_pdf.INDEX_URL
+            and isinstance(entry.get("first_observed_at"), str), "Cuyahoga collection receipt differs")
+    index = json.loads(counts["index.json"])
+    declaration = index["states"]["OH"]
+    path = declaration["file"]
+    require(pin(counts[path]) == {k: declaration[k] for k in ("bytes", "sha256")}, "Ohio shard pin differs")
+    shard = decode(counts[path])
+    require(shard["state_code"] == "OH" and shard["year"] == 2026, "Ohio shard scope differs")
+    rows = {record["id"]: record for record in shard["records"]}
+    native_index = json.loads(native["index.json"])
+    mappings = native_index["county_bindings"]["OH"]
+    early = mappings["in_person_early"]
+    geometry = {key: copy.deepcopy(early[key]) for key in ("feature_keys", "feature_scopes", "features", "sha256")}
+    matches = [item for item in early["rows"] if item["feature_key"] == CUYAHOGA_FIPS]
+    require(len(matches) == 1 and early["sha256"] == CUYAHOGA_REFERENCE
+            and CUYAHOGA_FIPS in early["feature_keys"]
+            and early["feature_scopes"][CUYAHOGA_FIPS] == {
+                "state_code": "OH", "name": county_pdf.COUNTY, "boundary_year": 2026},
+            "Cuyahoga county reference identity changed")
+    refs = [rows[key]["view"]["reference_geometry"] for key in shard["views"]["in_person_early"]["counties"]
+            if rows[key]["view"]["county_id"] == matches[0]["county_id"]
+            and rows[key]["view"]["county_fips"] == CUYAHOGA_FIPS]
+    require(len(refs) == 1 and refs[0]["sha256"] == CUYAHOGA_REFERENCE
+            and refs[0]["boundary_year"] == 2026, "Cuyahoga reference provenance differs")
+    candidate = cuyahoga_observation(entry["data"], refs[0], entry["status"])
+    key = candidate["id"]
+    prior = rows.get(key)
+    if prior:
+        old = prior["view"]["native_record"]
+        if (entry["data"]["date"] < old["date"] or old["report_status"] == county_pdf.STATUSES[1]
+                and entry["data"]["report_status"] != county_pdf.STATUSES[1]
+                or entry["status"] == "retained_after_failure"):
+            candidate = copy.deepcopy(prior)
+            candidate["source"]["fields"]["status"] = candidate["view"]["status"] = "retained_after_failure"
+    if prior == candidate:
+        return counts, native, []
+    validate_all([candidate])
+    bound = {"county_id": CUYAHOGA_GEO, "feature_key": CUYAHOGA_FIPS,
+             "qualifier": {field: candidate["view"].get(field) for field in COUNTY_QUALIFIERS}}
+    rows[key] = candidate
+    # Keep Ohio's complete early-activity overview separate from this partial full-election frame.
+    for mode in ("official", "uf_vap", "uf_vep"):
+        frame = shard["views"][mode]
+        binding = mappings.setdefault(mode, {**copy.deepcopy(geometry), "rows": []})
+        require(frame["qualified"] and all(binding[field] == value for field, value in geometry.items())
+                and (key in frame["counties"]) == bool(prior), "Cuyahoga selected mode preimage differs")
+        known = [row for row in binding["rows"] if row["feature_key"] == CUYAHOGA_FIPS]
+        require(known == ([bound] if prior else []) and not any(
+            rows[selected]["view"].get("county_fips") == CUYAHOGA_FIPS and selected != key
+            for selected in frame["counties"]), "Cuyahoga frame would shadow another source")
+        if not prior:
+            frame["counties"].append(key)
+            binding["rows"].append(copy.deepcopy(bound))
+        selected = [rows[item] for item in frame["counties"]]
+        declaration["views"][mode]["counties"] = len(selected)
+        declaration["views"][mode]["dispositions"]["counties"] = {
+            **coverage(selected), "geography_levels": sorted({r["geography"]["level"] for r in selected})}
+    shard["records"] = list(rows.values())
+    counts = dict(counts, **{path: compressed(shard)})
+    declaration.update(pin(counts[path]), records=len(rows))
+    index["coverage"]["OH"].update(records=len(rows), **coverage(rows.values()),
+                                      zeros=sum(row["count"]["value"] == 0 for row in rows.values()))
+    counts["index.json"] = encoded(index)
+    native = dict(native, **{"index.json": encoded(native_index)})
+    return counts, native, [{"state_code": "OH", "id": key,
+                            "previous": prior["count"]["value"] if prior else None,
+                            "current": candidate["count"]["value"],
+                            "source_status": candidate["view"]["status"]}]

@@ -1,11 +1,13 @@
 import copy
 from decimal import Decimal, ROUND_HALF_UP
+from datetime import datetime, timezone
 import json
 import re
 
 import pytest
 
 from scripts import results_county_frame as frame
+from scripts import results_intake
 from scripts.participation_intake.contract import encoded, pin
 from test_results_clarity_congress import capture, facts
 
@@ -56,6 +58,78 @@ def baseline(value):
 
 def snapshot(entry):
     return {"congress": {"official_candidate_evidence": {frame.clarity.IDENTITY: entry}}}
+
+
+def test_cuyahoga_complete_scope_revision_and_failure(tmp_path, monkeypatch):
+    parser = frame.county_pdf
+    _, native = baseline(facts())
+    counts_root = results_intake.ROOT / "data/results-intake/baseline/counts"
+    counts = {name: (counts_root / name).read_bytes() for name in ("index.json", "states/OH.json.gz")}
+    shard = frame.decode(counts["states/OH.json.gz"])
+    early = next(row["view"] for row in shard["records"]
+                 if row["view"].get("county_fips") == frame.CUYAHOGA_FIPS
+                 and row["id"] in shard["views"]["in_person_early"]["counties"])
+    code = "OH"
+    bounds = {"feature_keys": [frame.CUYAHOGA_FIPS], "features": 1,
+              "feature_scopes": {frame.CUYAHOGA_FIPS: dict(state_code=code, name=parser.COUNTY, boundary_year=2026)},
+              "sha256": early["reference_geometry"]["sha256"],
+              "rows": [dict(feature_key=frame.CUYAHOGA_FIPS, county_id=early["county_id"])]}
+    native["index.json"] = encoded({"county_bindings": {code: {"in_person_early": bounds}}})
+    route = parser.REPORT + "20096519-6ca4-4375-b2f3-d07c61762bfb/"
+    report = b"fixture PDF body"
+    label = parser.STATUSES[0]
+    pages = [dict(title=label, election=parser.TITLE, scope=parser.SCOPE,
+                  statistics="Total Ballots Cast: 482011, Registered Voters: 878381, Overall Turnout: 54.87%",
+                  clock="2026-11-04 05:29:45", page=f"Page: {number} of 2") for number in (1, 2)]
+    monkeypatch.setattr(parser, "parse_report", lambda body: copy.deepcopy(pages))
+    def collect(previous=None, body=report):
+        collector = results_intake.Collector(tmp_path, {parser.IDENTITY: previous},
+            {"urls": [], "hosts": [], "prefixes": []}, datetime(2026, 11, 19, tzinfo=timezone.utc))
+        index_body = f'<a href="{route}"> {label} </a>'.encode()
+        def acquire(url):
+            if url == parser.INDEX_URL:
+                return index_body, {"origin": "test"}
+            assert url.endswith(route)
+            if body is None:
+                raise ValueError("Incomplete report transport")
+            return body, {"origin": "test"}
+        collector.acquire = acquire
+        return parser.collect(collector)
+
+    def project(previous_counts, previous_native, entry):
+        return frame.project_cuyahoga(previous_counts, previous_native, {"granular_sources": {parser.IDENTITY: entry}})
+
+    initial = collect()
+    assert initial["status"] == "reported"
+    result, mapped, changes = project(counts, native, initial)
+    assert changes[0]["current"] == 482011
+    after = frame.decode(result["states/OH.json.gz"])
+    assert after["records"][:-1] == shard["records"]
+    row = after["records"][-1]
+    assert row["denominator"]["value"] == 878381 and row["denominator"]["qualified"]
+    assert row["view"]["native_printed_pct"] == "54.87%" and row["source_clock"]["literal"] is None
+    for mode in ("available", "in_person_early", "mail_returned"):
+        assert after["views"][mode] == shard["views"][mode]
+    for mode in ("official", "uf_vap", "uf_vep"):
+        assert row["id"] in after["views"][mode]["counties"]
+        binding = json.loads(mapped["index.json"])["county_bindings"][code][mode]
+        assert binding["rows"][-1]["feature_key"] == frame.CUYAHOGA_FIPS
+    assert project(result, mapped, collect(initial)) == (result, mapped, [])
+    for value, fraction, clock in [(482111, "54.89", "2026-11-05 05:29:45"),
+                                  (481911, "54.86", "2026-11-06 05:29:45")]:
+        for page in pages:
+            page.update(clock=clock, statistics=f"Total Ballots Cast: {value}, Registered Voters: 878381, Overall Turnout: {fraction}%")
+        initial = collect(initial, body=str(value).encode())
+        assert initial["status"] == "reported"
+        result, mapped, changes = project(result, mapped, initial)
+        assert changes[0]["current"] == value
+    pages.pop()
+    rejected = collect(initial)
+    assert rejected["status"] == "retained_after_failure"
+    assert "page sequence" in rejected["error_detail"]
+    result, mapped, changes = project(result, mapped, rejected)
+    assert changes[0]["current"] == 481911 and changes[0]["source_status"] == "retained_after_failure"
+    assert project(result, mapped, collect(initial, body=None)) == (result, mapped, [])
 
 
 def revised_ballots(value, delta):

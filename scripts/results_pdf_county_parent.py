@@ -1,0 +1,132 @@
+"""Discover and validate complete county statistical parents, not contest totals."""
+
+from datetime import datetime
+from decimal import Decimal, ROUND_HALF_UP
+from html.parser import HTMLParser
+import io
+import re
+from urllib.parse import urljoin, urlsplit
+
+from scripts.participation_intake.contract import count, pin
+
+
+IDENTITY = "OH-cuyahoga-countywide-turnout"
+INDEX_URL = "https://www.boe.cuyahogacounty.gov/elections/GetElectionById/269/"
+COUNTY = "Cuyahoga County"
+ELECTION = "2026-11-03"
+TITLE = f"{COUNTY}, November 3, 2026 General Election"
+SCOPE = "All Precincts, All Districts, All Counter Groups, All ScanStations, All Contests, All Boxes"
+REPORT = "/elections/GetDocumentById/"
+LINK = re.compile(REPORT + r"[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}/", re.I)
+STATISTICS = re.compile(
+    r"Total Ballots Cast: ([0-9]+), Registered Voters: ([0-9]+), Overall Turnout: ([0-9]+\.[0-9]{2})%")
+STATUSES = ("Unofficial Results by Contest", "Official Results by Contest")
+
+
+class ReportLinks(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.anchor = None
+        self.links = {status: set() for status in STATUSES}
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self.anchor = (dict(attrs).get("href") or "", [])
+
+    def handle_data(self, data):
+        if self.anchor is not None:
+            self.anchor[1].append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self.anchor is not None:
+            href, text = self.anchor
+            self.anchor = None
+            label = " ".join(" ".join(text).split())
+            if label in self.links and LINK.fullmatch(href):
+                self.links[label].add(urljoin(INDEX_URL, href))
+
+
+def discovery(body):
+    parser = ReportLinks()
+    parser.feed(body.decode("utf-8-sig"))
+    label = STATUSES[1] if parser.links[STATUSES[1]] else STATUSES[0]
+    urls = parser.links[label]
+    if len(urls) != 1:
+        raise ValueError("County contest report link is missing or ambiguous")
+    return label, next(iter(urls))
+
+
+def checked_pages(pages, label):
+    if not 1 <= len(pages) <= 150 or label not in STATUSES:
+        raise ValueError("Unreviewed county report status or page inventory")
+    for number, page in enumerate(pages, 1):
+        if (set(page) != {"title", "election", "scope", "statistics", "clock", "page"}
+                or page["title"] != label or page["election"] != TITLE or page["scope"] != SCOPE
+                or page["page"] != f"Page: {number} of {len(pages)}"
+                or any(page[key] != pages[0][key] for key in ("statistics", "clock"))):
+            raise ValueError("County report scope, clock, totals or page sequence differs")
+    match = STATISTICS.fullmatch(pages[0]["statistics"])
+    if not match:
+        raise ValueError("Countywide ballot and same-report registration row is absent")
+    ballots, registered = map(count, match.groups()[:2])
+    fraction = Decimal(match[3])
+    clock = datetime.strptime(pages[0]["clock"], "%Y-%m-%d %H:%M:%S")
+    if (clock.date().isoformat() < ELECTION or ballots is None or registered is None
+            or not 0 < ballots <= registered
+            or (Decimal(ballots) * 100 / registered).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != fraction):
+        raise ValueError("County report date, numerator, denominator or printed fraction disagrees")
+    return clock.isoformat(), ballots, registered, f"{fraction}%"
+
+
+def parse_report(body):
+    from pypdf import PdfReader
+
+    if not body.startswith(b"%PDF-") or not body.rstrip().endswith(b"%%EOF"):
+        raise ValueError("Missing complete county report PDF")
+    reader = PdfReader(io.BytesIO(body), strict=True)
+    if reader.is_encrypted or not 1 <= len(reader.pages) <= 150:
+        raise ValueError("Unreviewed county PDF inventory")
+    pages = []
+    for page in reader.pages:
+        lines = [" ".join(line.split()) for line in page.extract_text().splitlines() if line.strip()]
+        footers = [line for line in lines if re.fullmatch(r"Page: [0-9]+ of [0-9]+", line)]
+        if len(lines) < 7 or len(footers) != 1 or lines.count("NOV26GEN") != 1:
+            raise ValueError("Missing native county election report selectors")
+        pages.append(dict(zip(("title", "election", "scope", "statistics", "clock", "page"),
+                              (*lines[:4], " ".join(lines[4:6]), footers[0]))))
+    return pages
+
+
+def validate_data(data):
+    source = data["report"]
+    parts = urlsplit(source["url"])
+    if (data["source_url"] != source["url"] or data["election_date"] != ELECTION
+            or set(source) != {"url", "bytes", "sha256"} or parts.scheme != "https"
+            or parts.netloc != urlsplit(INDEX_URL).netloc or not LINK.fullmatch(parts.path)
+            or parts.query or parts.fragment or type(source["bytes"]) is not int
+            or not 0 < source["bytes"] <= 4_000_000 or not re.fullmatch("[a-f0-9]{64}", source["sha256"])):
+        raise ValueError("County report URL or complete body receipt differs")
+    evidence = checked_pages(data["complete_native_query"], data["report_status"])
+    if data["date"] != evidence[0]:
+        raise ValueError("County report summary clock differs")
+    return evidence
+
+
+def collect(collector):
+    def parse(index):
+        label, url = discovery(index)
+        old = (collector.prior.get(IDENTITY) or {}).get("data") or {}
+        if old.get("report_status") == STATUSES[1] and label != STATUSES[1]:
+            raise ValueError("Previously accepted official county report is missing")
+        body, _ = collector.acquire(url)
+        if len(body) > 4_000_000:
+            raise ValueError("County aggregate report exceeds reviewed size bound")
+        pages = parse_report(body)
+        data = {"source_url": url, "report": {"url": url, **pin(body)},
+                "report_status": label, "election_date": ELECTION,
+                "complete_native_query": pages, "date": checked_pages(pages, label)[0]}
+        validate_data(data)
+        return data
+
+    return collector.capture(IDENTITY, INDEX_URL, parse)

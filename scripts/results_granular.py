@@ -473,7 +473,9 @@ def collect(collector, baseline):
             return result
         jobs["CT-native-local"] = collector.capture("CT-native-local", CT_VERSION, capture_ct)
     from scripts.results_native import collect_sources
+    from scripts import results_pdf_county_parent
     jobs.update(collect_sources(collector, baseline))
+    jobs[results_pdf_county_parent.IDENTITY] = results_pdf_county_parent.collect(collector)
     return jobs
 
 
