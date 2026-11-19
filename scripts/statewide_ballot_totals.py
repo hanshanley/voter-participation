@@ -13,6 +13,7 @@ from scripts import protected_official_wyoming, results_minnesota_turnout as mn
 from scripts import results_alaska_turnout as alaska
 from scripts import results_native_dc as dc
 from scripts import results_native_state_family as state_family
+from scripts import results_state_statistics as state_statistics
 from scripts import results_turnout_history as history
 from scripts.results_state_statistics import AZ_URL
 from scripts.participation_intake.contract import (
@@ -52,6 +53,8 @@ PROFILES = {
     "FL": {"state": "Florida", "source_id": FL_REVIEW, "feed": None, "url": FL_SOURCE["url"]},
     "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
            "feed": mn.IDENTITY, "url": mn.URL},
+    "SC": {"state": "South Carolina", "source_id": "sc-sec-statewide-turnout-20261103",
+           "feed": "SC-official", "url": state_statistics.URL},
     "VA": {"state": "Virginia", "source_id": "va-elect-general-election-turnout",
            "feed": history.VA_FEED, "url": history.VA_URL},
     "VT": {"state": "Vermont", "source_id": "vt-sos-registered-turnout-20261103",
@@ -107,9 +110,10 @@ def identity(code):
                           {"AK": "native-voters-cast", "VT": "native-votes-cast-including-absentee",
                            "FL": "native-reported-participation",
                            "MN": "native-total-number-voted",
+                           "SC": "native-total-voter-turnout",
                            "VA": "native-total-voting",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"AK", "FL", "VA", "VT", "MN"} else "all_methods")
+                          "source_defined" if code in {"AK", "FL", "SC", "VA", "VT", "MN"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -148,6 +152,8 @@ def observation(code, summary, retained=False):
         return vermont_observation(summary, retained)
     if code == "MN":
         return minnesota_observation(summary, retained)
+    if code == "SC":
+        return south_carolina_observation(summary, retained)
     if code in {"VA", "WA"}:
         return turnout_history_observation(code, summary, retained)
     arizona = code == "AZ"
@@ -693,6 +699,56 @@ def arkansas_observation(summary, retained):
     })
 
 
+def south_carolina_summary(snapshot):
+    entries = [item for item in snapshot.get("participation_observations", [])
+               if item.get("channel") == "SC-official" and item.get("status") == "reported"]
+    if not entries:
+        return None
+    require(len(entries) == 1, "Ambiguous South Carolina statewide source")
+    entry, = entries
+    return {"contract": CONTRACT, "source": entry["source"], "query": entry["observation"]}
+
+
+def south_carolina_observation(summary, retained):
+    source, data = summary["source"], summary["query"]
+    profile = PROFILES["SC"]
+    require(summary["contract"] == CONTRACT and set(source) == {"url", "bytes", "sha256"}
+            and type(source["bytes"]) is int and source["bytes"] > 0,
+            "Malformed South Carolina statewide receipt")
+    measure = "Total Voter Turnout"
+    view = state_statistics.refresh({
+        "state": profile["state"], "state_code": "SC", "source_url": profile["url"],
+        "year": 2026, "county_id": "native:SC:statewide", "geography_level": "statewide",
+        "mode": "official", "status": "retained_after_failure" if retained else "reported",
+        "participation_measure_kind": "source_defined_participation_count",
+        "participation_measure_literal": measure, "participation_measure_label": measure,
+        "cast_ballot_count_qualified": False, "unique_voter_count_qualified": False,
+        "maps_approved": False, "denominator_basis": state_statistics.BASIS,
+        "denominator": None, "complete_download_url": None,
+    }, data, source)
+    view.pop("accepted_source_provenance")
+    view["statewide_ballot_parent"] = copy.deepcopy(summary)
+    return validate({
+        "contract": VERSION, "id": identity("SC"),
+        "election": {"id": "SC-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": "SC-native-statewide-total", "name": profile["state"], "state_code": "SC",
+                      "level": "state", "parent_id": None, "join": {"status": "nongeographic",
+                          "reference_id": None, "feature_key": None, "evidence": None}},
+        "measure": {"id": "native-total-voter-turnout", "literal": measure,
+                    "kind": "participation_reported", "mode": "source_defined", "unit": "source_reported_count"},
+        "count": {"value": data["ballots"],
+                  "literal": data["native_state_statistics"]["fields"]["total"]["literal"], "status": "reported"},
+        "denominator": None, "source_clock": {"literal": None, "timezone": None},
+        "reporting_status": {"literal": state_statistics.TITLE, "reported_units": None,
+                             "total_units": None, "complete": None},
+        "source": {"id": profile["source_id"], "url": source["url"], "input_sha256": source["sha256"],
+                   "classification": "public_aggregate", "selector": {"native_label": measure},
+                   "fields": copy.deepcopy(view)},
+        "quality": {"conflicts": [], "notes": data["quality"]}, "view": view,
+    })
+
+
 def florida_summary(shard):
     rows = sorted(
         (row["view"]["native_record"] for row in shard["records"]
@@ -788,6 +844,7 @@ def project(files, snapshot):
         entry = feeds.get(profile["feed"])
         summary = (arkansas_summary(snapshot, shard, previous) if code == "AR" else
                    florida_summary(shard) if code == "FL" else
+                   south_carolina_summary(snapshot) if code == "SC" else
                    turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
@@ -823,8 +880,15 @@ def project(files, snapshot):
                     row = observation(code, before, retained=True)
         reporting = current["snapshot"]["reporting"]
         mirrors = [item for item in reporting if item["state_code"] == code]
+        initial_sc = (code == "SC" and previous is None and len(mirrors) == 1
+                      and mirrors[0].get("review_id") == "participation-native-declarations-20261113-02"
+                      and mirrors[0].get("source_url") == profile["url"]
+                      and mirrors[0].get("county_id") == "native:SC:statewide"
+                      and mirrors[0].get("native_statistics") == row["view"]["native_statistics"]
+                      and mirrors[0].get("ballots") == row["count"]["value"]
+                      and mirrors[0].get("denominator") is None)
         require(len(mirrors) <= 1 and (not mirrors or previous is not None
-                and mirrors[0] == previous["view"]), "Statewide ballot display preimage changed")
+                and mirrors[0] == previous["view"] or initial_sc), "Statewide ballot display preimage changed")
         if previous is None:
             require(code != "WY" or pin(result[path]) == profile["initial_shard"],
                     "Unreviewed initial statewide ballot inventory")

@@ -42,6 +42,43 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_south_carolina_binds_existing_reader_to_one_count_only_observation(monkeypatch):
+    from test_results_state_statistics import document, template
+
+    files = baseline(monkeypatch)
+    path = "states/SC.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["SC"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    current = json.loads(gzip.decompress(files["current.json.gz"]))
+    source = {"url": stats.URL, **pin(document())}
+    data = stats.statistics(document(), "SC")
+    current["snapshot"]["reporting"] = [stats.refresh(
+        {**template(), "review_id": "participation-native-declarations-20261113-02"}, data, source)]
+    files["current.json.gz"] = totals.compressed(current)
+    captured = {"participation_observations": [
+        {"channel": "SC-official", "status": "reported", "source": source, "observation": data}]}
+    out, changes = totals.project(files, captured)
+    assert changes == [{"state_code": "SC", "id": totals.identity("SC"), "previous": None,
+                        "current": 2054835, "source_status": "reported"}]
+    new = json.loads(gzip.decompress(out[path]))["records"][-1]
+    assert new["count"]["value"] == 2054835 and new["denominator"] is None
+    assert new["view"]["native_printed_pct"] == "59.8%" and new["view"]["validated_pct"] is None
+    assert new["view"]["cast_ballot_count_qualified"] is False
+    assert totals.project(out, captured) == (out, [])
+    updated = document(early="1,043,811", total="2,054,836")
+    captured["participation_observations"][0].update(
+        source={"url": stats.URL, **pin(updated)}, observation=stats.statistics(updated, "SC"))
+    out, changes = totals.project(out, captured)
+    assert changes[0]["current"] == 2054836
+    held, changes = totals.project(out, {})
+    assert changes[0]["source_status"] == "retained_after_failure"
+    assert changes[0]["current"] == 2054836
+    assert totals.project(held, {}) == (held, [])
+
+
 def test_dc_citywide_scope_projects_without_duplicating_the_count(monkeypatch):
     from scripts.supported_analytical_release import administrative, administrative_coverage
 
