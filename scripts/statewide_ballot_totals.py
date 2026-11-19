@@ -10,6 +10,7 @@ from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 
 from scripts import protected_official_wyoming, results_minnesota_turnout as mn
+from scripts import results_alaska_turnout as alaska
 from scripts import results_turnout_history as history
 from scripts.results_state_statistics import AZ_URL
 from scripts.participation_intake.contract import (
@@ -25,6 +26,8 @@ VT_COUNTIES = ("ADDISON", "BENNINGTON", "CALEDONIA", "CHITTENDEN", "ESSEX", "FRA
                "WINDHAM", "WINDSOR")
 VT_FIELDS = ("total_votes_cast_includes_absentee", "registered_voters", "absentee_votes_cast")
 PROFILES = {
+    "AK": {"state": "Alaska", "source_id": "ak-doe-statewide-voters-cast-20261103",
+           "feed": alaska.FEED, "url": alaska.REPORT},
     "AZ": {"state": "Arizona", "source_id": "az-sos-county-ballots-20261103",
            "feed": "AZ-official", "url": AZ_URL},
     "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
@@ -79,10 +82,10 @@ def compressed(value):
 def identity(code):
     return observation_id(PROFILES[code]["source_id"], code + "-2026-11-03-general",
                           code + "-native-statewide-total",
-                          {"VT": "native-votes-cast-including-absentee",
+                          {"AK": "native-voters-cast", "VT": "native-votes-cast-including-absentee",
                            "MN": "native-total-number-voted",
                            "WA": "native-ballots-counted"}.get(code, "native-total-ballots-cast"),
-                          "source_defined" if code in {"VT", "MN"} else "all_methods")
+                          "source_defined" if code in {"AK", "VT", "MN"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -111,6 +114,8 @@ def native_summary(code, entry):
 
 def observation(code, summary, retained=False):
     profile = PROFILES[code]
+    if code == "AK":
+        return alaska_observation(summary, retained)
     if code == "VT":
         return vermont_observation(summary, retained)
     if code == "MN":
@@ -494,6 +499,73 @@ def washington_observation(summary, retained):
         "view": view})
 
 
+def alaska_summary(snapshot):
+    entry = snapshot.get("granular_sources", {}).get(alaska.FEED, {})
+    if entry.get("status") != "reported":
+        return None
+    data = entry["data"]
+    query = data["complete_native_query"]
+    result = alaska.reconcile(query["pdf"], query["statewide_feed"])
+    require(data["date"] == result["date"] and data["reconciliation"] == result,
+            "Alaska participation controls differ from the complete native query")
+    return {"contract": CONTRACT, "source": data["report"], "statewide_feed": entry["source"],
+            "source_edition": data["date"], "complete_native_query": query}
+
+
+def alaska_observation(summary, retained):
+    profile, query = PROFILES["AK"], summary["complete_native_query"]
+    facts = alaska.reconcile(query["pdf"], query["statewide_feed"])
+    for key, url in (("source", alaska.REPORT), ("statewide_feed", alaska.URL)):
+        receipt = summary[key]
+        require(set(receipt) == {"url", "bytes", "sha256"} and receipt["url"] == url
+                and type(receipt["bytes"]) is int and receipt["bytes"] > 0
+                and re.fullmatch(r"[a-f0-9]{64}", receipt["sha256"]),
+                "Alaska statewide report receipt differs")
+    require(summary["contract"] == CONTRACT and summary["source_edition"] == facts["date"],
+            "Alaska statewide report edition differs")
+    ballots, registered = facts["voters"], facts["registered"]
+    rate = 100 * ballots / registered
+    label, basis = "Voters Cast", "native_registered_voters_same_alaska_summary"
+    notes = [
+        "Statewide Voters Cast and registration from one election summary, corroborated by federal b/v controls, not candidate votes.",
+        "Precinct inventories may differ between the summary PDF and statewide feed. Neither completeness nor a unique-voter count is inferred.",
+        "Report generation and feed update clocks are retained separately; their timezone and a count clock are not independently declared.",
+    ]
+    view = {"state": "Alaska", "state_code": "AK", "year": 2026, "mode": "official",
+            "geography_level": "statewide", "status": "retained_after_failure" if retained else "reported",
+            "ballots": ballots, "denominator": registered, "denominator_basis": basis,
+            "reported_pct": rate, "validated_pct": rate, "published_pct": None,
+            "native_printed_pct": facts["printed_fraction"], "source_date": facts["date"][:10],
+            "source_update_label": None, "source_update_timezone": None,
+            "source_publication_label": query["pdf"]["page_clocks_and_ordinals"][0][0],
+            "source_status_literal": facts["source_status"], "reported_units": facts["reported_precincts"],
+            "total_units": None, "source_url": profile["url"], "source_sha256": summary["source"]["sha256"],
+            "complete_download_url": None, "automatic_source_refresh": True, "maps_approved": False,
+            "participation_measure_kind": "voters_reported", "participation_measure_literal": label,
+            "participation_measure_label": "Statewide Voters Cast (source-reported)",
+            "native_election_id_qualified": True, "cast_ballot_count_qualified": False,
+            "unique_voter_count_qualified": False, "quality": notes,
+            "source_reporting_label": " ".join(notes), "statewide_ballot_parent": copy.deepcopy(summary)}
+    return validate({
+        "contract": VERSION, "id": identity("AK"),
+        "election": {"id": "AK-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": "AK-native-statewide-total", "name": "Alaska", "state_code": "AK",
+                      "level": "state", "parent_id": None, "join": {"status": "nongeographic",
+                          "reference_id": None, "feature_key": None, "evidence": None}},
+        "measure": {"id": "native-voters-cast", "literal": label, "kind": "voters_reported",
+                    "mode": "source_defined", "unit": "source_reporting_count"},
+        "count": {"value": ballots, "literal": ballots, "status": "reported"},
+        "denominator": {"value": registered, "literal": "Registered Voters", "basis": basis, "qualified": True},
+        "source_clock": {"literal": None, "timezone": None},
+        "reporting_status": {"literal": facts["source_status"], "reported_units": facts["reported_precincts"],
+                             "total_units": None, "complete": None},
+        "source": {"id": profile["source_id"], "url": profile["url"],
+                   "input_sha256": summary["source"]["sha256"], "classification": "public_aggregate",
+                   "selector": {"physical_page": 1, "statistic": label}, "fields": copy.deepcopy(view)},
+        "quality": {"conflicts": [], "notes": notes}, "view": view})
+
+
 def project(files, snapshot):
     result = dict(files)
     index = json.loads(files["index.json"])
@@ -504,7 +576,7 @@ def project(files, snapshot):
             "Wrong statewide ballot count input contract")
     changes = []
     feeds = snapshot.get("congress", {}).get("official_candidate_evidence", {})
-    statewide_sources = {"AZ": arizona_summary, "MN": minnesota_summary,
+    statewide_sources = {"AK": alaska_summary, "AZ": arizona_summary, "MN": minnesota_summary,
                          "VT": vermont_summary, "WA": washington_summary}
     for code, profile in PROFILES.items():
         if code not in index["states"]:
@@ -536,6 +608,7 @@ def project(files, snapshot):
                 before = previous["view"]["statewide_ballot_parent"]
                 after = row["view"]["statewide_ballot_parent"]
                 require(before["source"]["sha256"] != after["source"]["sha256"]
+                        or code == "AK" and before["statewide_feed"] != after["statewide_feed"]
                         or code == "MN" and before["statistical_txt"] != after["statistical_txt"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
                 if code == "MN" and (after["source_edition"] < before["source_edition"]
@@ -547,6 +620,10 @@ def project(files, snapshot):
                     edition_clock = _clock if code == "AZ" else versioned_report_date
                     if edition_clock(after["source_edition"]) < edition_clock(before["source_edition"]):
                         row = observation(code, before, retained=True)
+                if code == "AK" and (after["source_edition"] < before["source_edition"]
+                        or before["complete_native_query"]["statewide_feed"]["certified"]
+                        and not after["complete_native_query"]["statewide_feed"]["certified"]):
+                    row = observation(code, before, retained=True)
         reporting = current["snapshot"]["reporting"]
         mirrors = [item for item in reporting if item["state_code"] == code]
         require(len(mirrors) <= 1 and (not mirrors or previous is not None

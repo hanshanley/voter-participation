@@ -2306,3 +2306,14 @@ registered-voter rate is calculated only when the printed percentage agrees.
 The source does not establish a native count clock, certification, or county
 or precinct totals. If the current row disappears, the last qualified count
 is retained and labeled accordingly.
+
+### Alaska: statewide Voters Cast
+
+The collector checks the complete summary PDF against both federal
+participation controls in the public statewide feed. For November 18 the
+standalone header shows 290,323 Voters Cast / 605,433 registered (47.95%),
+unofficial. The PDF says 401 of 401 reporting precincts; the statewide feed
+says 401 of 403. Both inventories are preserved. No completeness, unique
+voter, or substate result is inferred; the same-report fraction remains valid
+for the reported counts. Candidate selections and contest scopes are not
+added or substituted for the statewide parent.

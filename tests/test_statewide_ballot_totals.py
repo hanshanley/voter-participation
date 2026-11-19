@@ -41,6 +41,43 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_alaska_preserves_precinct_inventory_disagreement_and_uses_report_fraction(monkeypatch):
+    ak = totals.alaska
+    files = baseline(monkeypatch)
+    index = json.loads(files["index.json"])
+    path = "states/AK.json.gz"
+    files[path] = totals.compressed({"contract": "participation.count_snapshot.v1",
+                                   "state_code": "AK", "year": 2026, "records": [], "views": {}})
+    index["states"]["AK"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    pdf = {"statewide_header": ["401", "401", "100.00%", "290,323", "605,433", "47.95%",
+                                "UNOFFICIAL RESULTS"],
+           "page_clocks_and_ordinals": [["11/18/2026 5:25:35 PM", "1", "1"]]}
+    feed = ak.controls(encoded({"name": "Alaska 2026 General Election", "format": "2024",
+        "summaryReportUrl": ak.REPORT, "certified": False, "updated": "11/18/2026 5:56 PM",
+        "contestNames": list(ak.OFFICES), "totals": [
+            {"n": i, "b": 290323, "t": 288207, "v": 605433, "p": 403, "r": 401} for i in range(2)]}))
+    entry = {"status": "reported", "source": {"url": ak.URL, **pin(encoded(feed))},
+             "data": {"date": "2026-11-18T17:25:35", "report": {"url": ak.REPORT, **pin(encoded(pdf))},
+                      "complete_native_query": {"pdf": pdf, "statewide_feed": feed},
+                      "reconciliation": ak.reconcile(pdf, feed)}}
+    packet = {"granular_sources": {ak.FEED: entry}}
+    updated, changes = totals.project(files, packet)
+    assert changes[0]["current"] == 290323
+    observation, = json.loads(gzip.decompress(updated[path]))["records"]
+    assert observation["denominator"]["value"] == 605433 and observation["denominator"]["qualified"]
+    assert observation["view"]["native_printed_pct"] == "47.95%"
+    assert observation["reporting_status"]["complete"] is observation["reporting_status"]["total_units"] is None
+    assert observation["source_clock"]["literal"] is None
+    assert totals.project(updated, packet) == (updated, [])
+    entry["status"] = "retained_after_failure"
+    _, changes = totals.project(updated, packet)
+    assert changes[0]["source_status"] == "retained_after_failure" and changes[0]["current"] == 290323
+    feed["federal_controls"][1]["b"] -= 1
+    with pytest.raises(ValueError, match="controls disagree"):
+        ak.reconcile(pdf, feed)
+
+
 def test_washington_history_activates_only_on_a_published_general_election_row(monkeypatch):
     history = totals.history
     files = baseline(monkeypatch)
