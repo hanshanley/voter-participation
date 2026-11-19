@@ -70,6 +70,10 @@ class GitPublisher:
                 blob = self.git("hash-object", "-w", "--stdin", body=body)
                 lines.append(f"100644 {blob}\t{name}\n")
             self.git("update-index", "--index-info", body="".join(lines).encode(), env=env)
+            # Newly written blobs are local; unchanged entries may belong to the remote parent.
+            if parent and self.git("config", "--bool", "--get",
+                                   f"remote.{self.remote}.promisor", check=False) == "true":
+                return self.git("write-tree", "--missing-ok", env=env)
             return self.git("write-tree", env=env)
 
     def commit(self, tree, parent, message):

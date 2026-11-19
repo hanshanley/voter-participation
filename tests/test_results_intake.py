@@ -469,6 +469,26 @@ def test_invalid_stop_seed_is_fail_closed_before_transport(tmp_path):
         intake.Collector(tmp_path, {}, {"urls": None, "prefixes": [], "hosts": []}, NOW)
 
 
+def test_partial_clone_publisher_does_not_fetch_unchanged_blobs(tmp_path):
+    remote = tmp_path / "remote"
+    local = tmp_path / "publisher"
+    subprocess.run(["git", "init", str(remote)], check=True, capture_output=True)
+    original = GitPublisher(remote, ref="results-data")
+    original.git("config", "uploadpack.allowFilter", "true")
+    parent = original.commit(original.tree(None, {"archive.txt": b"unchanged"}), None, "Original")
+    original.git("update-ref", original.ref_path, parent)
+    old_blob = original.git("rev-parse", parent + ":archive.txt")
+    subprocess.run(["git", "clone", "--no-checkout", "--filter=blob:none", remote.as_uri(), str(local)],
+                   check=True, capture_output=True)
+    publisher = GitPublisher(local, ref="results-data")
+    assert "?" + old_blob in publisher.git("rev-list", "--objects", "--missing=print", parent)
+    staged = publisher.commit(publisher.tree(parent, {"latest.json": b"new"}), parent, "Successor")
+    assert "?" + old_blob in publisher.git("rev-list", "--objects", "--missing=print", staged)
+    publisher.promote(staged, parent)
+    assert original.git("rev-parse", staged + ":archive.txt") == old_blob
+    assert original.git("show", staged + ":latest.json") == "new"
+
+
 @pytest.mark.parametrize("interrupt_staging", [False, True, "successor"])
 def test_real_git_publication_keeps_main_and_persists_last_good_results(
         tmp_path, monkeypatch, interrupt_staging):
