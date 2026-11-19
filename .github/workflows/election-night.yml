@@ -1,9 +1,10 @@
 name: Update election results
-run-name: ${{ (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only)) && 'Collect full election results' || 'Run scoped election results update' }}
+run-name: ${{ github.event.schedule == '19 10 * * 1' && 'Check late participation archives' || ((github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only)) && 'Collect full election results' || 'Run scoped election results update') }}
 
 on:
   schedule:
     - cron: "23 * * * *"
+    - cron: "19 10 * * 1"
   workflow_dispatch:
     inputs:
       reuse_collection_run:
@@ -36,22 +37,28 @@ jobs:
       contents: read
     outputs:
       active: ${{ steps.window.outputs.active }}
+      archive_sources: ${{ steps.window.outputs.archive_sources }}
     steps:
       - name: Limit automatic collection to this election
         id: window
         env:
           EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
         run: |
           python - <<'PY'
           import os
           from datetime import datetime, timezone
           now = datetime.now(timezone.utc)
-          active = os.environ["EVENT_NAME"] == "workflow_dispatch" or (
-              datetime(2026, 11, 3, tzinfo=timezone.utc) <= now <
-              datetime(2027, 2, 1, tzinfo=timezone.utc)
-          )
+          start = datetime(2026, 11, 3, tzinfo=timezone.utc)
+          cutoff = datetime(2027, 2, 1, tzinfo=timezone.utc)
+          event = os.environ["EVENT_NAME"]
+          schedule = os.environ["SCHEDULE"]
+          archive = event == "schedule" and schedule == "19 10 * * 1" and now >= cutoff
+          full = event == "schedule" and schedule == "23 * * * *" and start <= now < cutoff
+          active = event == "workflow_dispatch" or full or archive
           with open(os.environ["GITHUB_OUTPUT"], "a") as output:
               output.write(f"active={str(active).lower()}\n")
+              output.write("archive_sources=" + ("PA-2026-general-vote-history" if archive else "") + "\n")
           PY
 
       - name: Checkout the intake tool and complete baseline only
@@ -220,7 +227,7 @@ jobs:
           fi
 
       - name: Find a durable collection checkpoint from an interrupted full run
-        if: steps.resume.outputs.status == 'no_pending_publication' && (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only))
+        if: steps.resume.outputs.status == 'no_pending_publication' && needs.validate.outputs.archive_sources == '' && (github.event_name == 'schedule' || (inputs.reuse_collection_run == '' && inputs.refresh_sources == '' && !inputs.congressional_only))
         id: checkpoint
         env:
           GH_TOKEN: ${{ github.token }}
@@ -235,7 +242,7 @@ jobs:
 
           runs = get("/workflows/election-night.yml/runs?branch=main&status=completed&per_page=20")
           run = next((run for run in runs["workflow_runs"]
-                      if run["event"] == "schedule" or (
+                      if (run["event"] == "schedule" and run["display_title"] != "Check late participation archives") or (
                           run["event"] == "workflow_dispatch"
                           and run["display_title"] == "Collect full election results")), None)
           if run and run["conclusion"] in ("cancelled", "timed_out", "failure"):
@@ -297,7 +304,7 @@ jobs:
         id: capture
         continue-on-error: true
         env:
-          REFRESH_SOURCES: ${{ inputs.refresh_sources }}
+          REFRESH_SOURCES: ${{ needs.validate.outputs.archive_sources || inputs.refresh_sources }}
           CONGRESSIONAL_ONLY: ${{ inputs.congressional_only }}
         run: |
           if [ "$CONGRESSIONAL_ONLY" = "true" ]; then
