@@ -346,22 +346,31 @@ def county_parent_observation(profile, data, reference, status):
 
 
 def project_county_parent(counts, native, snapshot, profile):
-    code, _, county, fips, reference_sha, feed, url, geo, _, _ = profile
+    code, _, county, fips, reference_sha, feed, url, geo, election, _ = profile
     entry = snapshot.get("granular_sources", {}).get(feed, {})
-    if not entry.get("data"):
-        return counts, native, []
-    require(entry["status"] in {"reported", "retained_after_failure"}
-            and entry["source"]["url"] == url
-            and isinstance(entry.get("first_observed_at"), str), f"{county} collection receipt differs")
-    if profile == WILSON:
-        require(entry["source"] == entry["data"]["report"], "Wilson receipt differs from report evidence")
+    data = entry.get("data")
+    require(data is not None or entry.get("status") != "reported",
+            f"{county} reported source is missing its facts")
     index = json.loads(counts["index.json"])
-    declaration = index["states"][code]
+    declaration = index["states"].get(code)
+    if declaration is None and data is None:
+        return counts, native, []
+    require(declaration is not None, f"{county} canonical shard missing")
     path = declaration["file"]
     require(pin(counts[path]) == {k: declaration[k] for k in ("bytes", "sha256")}, f"{code} shard pin differs")
     shard = decode(counts[path])
     require(shard["state_code"] == code and shard["year"] == 2026, f"{code} shard scope differs")
     rows = {record["id"]: record for record in shard["records"]}
+    key = observation_id(feed, election, geo, "countywide-ballots-cast", "all_methods")
+    prior = rows.get(key)
+    if data is None and prior is None:
+        return counts, native, []
+    if data is not None:
+        require(entry["status"] in {"reported", "retained_after_failure"}
+                and entry["source"]["url"] == url
+                and isinstance(entry.get("first_observed_at"), str), f"{county} collection receipt differs")
+        if profile == WILSON:
+            require(entry["source"] == data["report"], "Wilson receipt differs from report evidence")
     native_index = json.loads(native["index.json"])
     mappings = native_index["county_bindings"][code]
     early = mappings["in_person_early"]
@@ -376,15 +385,20 @@ def project_county_parent(counts, native, snapshot, profile):
             and rows[key]["view"]["county_fips"] == fips]
     require(len(refs) == 1 and refs[0]["sha256"] == reference_sha
             and refs[0]["boundary_year"] == 2026, f"{county} reference provenance differs")
-    candidate = county_parent_observation(profile, entry["data"], refs[0], entry["status"])
-    key = candidate["id"]
-    prior = rows.get(key)
-    if prior:
+    if data is None:
+        old = prior["view"]
+        require(old["status"] in {"reported", "retained_after_failure"} and prior ==
+                county_parent_observation(profile, old["native_record"], refs[0], old["status"]),
+                f"{county} last-good count differs from its reviewed evidence")
+        candidate = county_parent_observation(profile, old["native_record"], refs[0], "retained_after_failure")
+    else:
+        candidate = county_parent_observation(profile, data, refs[0], entry["status"])
+    if prior and data is not None:
         old = prior["view"]["native_record"]
-        regression = (entry["data"]["date"] < old["date"] if profile in (CUYAHOGA, SUMNER) else False)
+        regression = (data["date"] < old["date"] if profile in (CUYAHOGA, SUMNER) else False)
         if profile == CUYAHOGA:
             regression |= (old["report_status"] == county_pdf.STATUSES[1]
-                           and entry["data"]["report_status"] != county_pdf.STATUSES[1])
+                           and data["report_status"] != county_pdf.STATUSES[1])
         elif profile == WILSON:
             regression |= (prior["view"]["source_status_literal"] == "OFFICIAL RESULTS"
                            and candidate["view"]["source_status_literal"] != "OFFICIAL RESULTS")

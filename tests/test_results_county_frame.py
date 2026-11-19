@@ -115,6 +115,13 @@ def test_cuyahoga_complete_scope_revision_and_failure(tmp_path, monkeypatch):
         binding = json.loads(mapped["index.json"])["county_bindings"][code][mode]
         assert binding["rows"][-1]["feature_key"] == frame.CUYAHOGA_FIPS
     assert project(result, mapped, collect(initial)) == (result, mapped, [])
+    for outage in ({}, {"status": "source_stopped", "data": None}):
+        held, same_map, updates = project(result, mapped, outage)
+        assert updates[0]["current"] == 482011 and updates[0]["source_status"] == "retained_after_failure"
+        assert same_map == mapped and project(held, same_map, outage) == (held, same_map, [])
+        assert project(held, same_map, initial)[:2] == (result, mapped)
+    with pytest.raises(ValueError, match="reported source is missing"):
+        project(result, mapped, {"status": "reported"})
     for value, fraction, clock in [(482111, "54.89", "2026-11-05 05:29:45"),
                                   (481911, "54.86", "2026-11-06 05:29:45")]:
         for page in pages:
