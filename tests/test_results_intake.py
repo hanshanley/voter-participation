@@ -229,7 +229,8 @@ def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp
     assert result["collection_scope"]["source_ids"] == [uf.IDENTITY]
 
 
-def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch):
+@pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
+def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
     from scripts import philadelphia_divisions, results_native, results_pdf_county_parent, results_turnout_history
 
     registry = fixture(tmp_path)
@@ -246,7 +247,8 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     def adapter(identity):
         def capture(_):
             calls.append(identity)
-            return {"status": "reported", "data": {"identity": identity}}
+            status = ohio_status if identity == selected[0] else "reported"
+            return {"status": status, "data": None if status == "source_stopped" else {"identity": identity}}
         return capture
 
     selected = [results_turnout_history.OH_FEED, results_pdf_county_parent.PHILADELPHIA_FEED,
@@ -261,6 +263,8 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
 
     result = intake.refresh_selected(registry, tmp_path / "scoped", previous, selected, NOW)
     assert calls == selected and set(result["granular"]) == set(selected)
+    assert result["granular"][selected[0]]["status"] == ohio_status
+    assert result["granular"][selected[1]]["status"] == result["granular"][selected[2]]["status"] == "reported"
     for key in ("feeds", "districts", "house", "congress", "directories", "source_stops"):
         assert result[key] == previous[key]
 

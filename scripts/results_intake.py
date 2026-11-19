@@ -1002,7 +1002,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     if official_ids:
         entries.update(results_official_congress.collect_sources(
             collector, config["official_congress"], selected=official_ids))
-    if set(entries) != set(source_ids) or any(entry["status"] != "reported" for entry in entries.values()):
+    if set(entries) != set(source_ids) or any(
+            entries[key]["status"] != "reported" for key in entries.keys() - administrative_ids):
         raise ValueError("Selected numerical refresh did not succeed; no replacement publication")
     inputs = copy.deepcopy(previous)
     inputs["granular"].update({key: value for key, value in entries.items()

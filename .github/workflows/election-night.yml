@@ -346,6 +346,8 @@ jobs:
           from pathlib import Path
           report = Path(os.environ["RUNNER_TEMP"]) / "election-intake/report.json"
           publication = report.with_name("publication.json")
+          body = publication.read_bytes().strip() if publication.exists() else b""
+          status = json.loads(body)["status"] if body else "not completed"
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as out:
               if report.exists():
                   data = json.loads(report.read_bytes())
@@ -364,14 +366,12 @@ jobs:
                       out.write(f"{uf['jurisdiction_rows']} jurisdictions plus {uf['separate_us_rows']} US row. ")
                       out.write(f"Native status classifications: {uf['ballot_status']}. ")
                       out.write("Not independently certified or allocated to localities/groups.\n\n")
-                  body = publication.read_bytes() if publication.exists() else b""
-                  status = json.loads(body)["status"] if body else "not completed"
                   out.write(f"Data publication: **{status}**. ")
                   out.write("On successful publication, `results-data/latest.json` pins the ")
                   out.write("immutable complete queries and reproducible ZIP.\n\n")
                   out.write("Counting completeness is not certification. Candidate votes are not ballots. ")
                   out.write("New source layouts remain explicit review items; failed sources retain prior data.\n")
-              elif publication.exists() and json.loads(publication.read_bytes())["status"] == "published":
+              elif status == "published":
                   out.write("Activated a previously staged complete source packet without reacquiring sources.\n")
               else:
                   out.write("Intake failed. Last valid results remain active; inspect the retained report.\n")
