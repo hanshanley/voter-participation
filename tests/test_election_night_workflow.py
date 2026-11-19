@@ -46,6 +46,50 @@ def test_collection_has_its_own_budget_after_successful_pinned_validation():
     assert refresh["steps"][-1]["run"] == "exit 1"
 
 
+@pytest.mark.parametrize("receipt,matched", [
+    (None, False), (b"other\n", False), (b"expected\nextra", False), (b"expected\n", True),
+])
+def test_repeat_validation_requires_an_exact_success_receipt(tmp_path, receipt, matched):
+    steps = workflow()["jobs"]["validate"]["steps"]
+    restore = next(step for step in steps if step.get("id") == "prior_validation")
+    check = next(step for step in steps if step.get("id") == "validation_receipt")
+    tests = next(step for step in steps if step.get("id") == "validation_tests")
+    save = next(step for step in steps if step.get("uses", "").startswith("actions/cache/save@"))
+    assert "restore-keys" not in restore["with"] and restore["with"] == save["with"]
+    assert "steps.prior_validation.outputs.cache-hit == 'true'" in check["if"]
+    assert "steps.validation_receipt.outputs.matched != 'true'" in tests["if"]
+    assert "steps.validation_tests.outcome == 'success'" in save["if"]
+    output = tmp_path / "github-output"
+    if receipt is not None:
+        (tmp_path / "election-validation-receipt").write_bytes(receipt)
+    script = check["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
+    with patch.dict(os.environ, {"RUNNER_TEMP": str(tmp_path), "GITHUB_OUTPUT": str(output), "EXPECTED": "expected"}):
+        exec(compile(script, str(WORKFLOW), "exec"), {})
+    assert output.read_text() == f"matched={str(matched).lower()}\n"
+
+
+def test_validation_cache_changes_with_code_or_environment(tmp_path):
+    gate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "validation_env")
+    script = gate["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
+    output = tmp_path / "github-output"
+
+    def fingerprint(sha="a" * 40, image="1", installed="pytest==8.4\n"):
+        output.write_text("")
+        with patch.dict(os.environ, {"GITHUB_SHA": sha, "ImageOS": "ubuntu24", "ImageVersion": image,
+                                     "GITHUB_OUTPUT": str(output)}):
+            with patch("subprocess.check_output", return_value=installed):
+                exec(compile(script, str(WORKFLOW), "exec"), {})
+        return output.read_text()
+
+    baseline = fingerprint()
+    assert baseline.startswith("fingerprint=") and len(baseline.strip().split("=", 1)[1]) == 64
+    assert fingerprint() == baseline
+    assert fingerprint(sha="b" * 40) != baseline
+    assert fingerprint(image="2") != baseline
+    assert fingerprint(installed="pytest==8.5\n") != baseline
+    assert fingerprint(image="") == ""
+
+
 @pytest.mark.parametrize("event,title,conclusion,publication,recoverable", [
     ("schedule", "Old title", "cancelled", "skipped", True),
     ("workflow_dispatch", "Collect full election results", "timed_out", "cancelled", True),
