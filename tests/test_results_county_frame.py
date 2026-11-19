@@ -356,6 +356,31 @@ def test_sussex_selects_certified_county_summary_and_validates_ballot_modes():
             parser.sussex_statistics(stats.replace(old, new), date)
 
 
+def test_douglas_discovery_and_certified_county_scope():
+    parser = frame.county_pdf
+    path = "/Archive.aspx?ADID=3836"
+    index = (f'<h1>November 3, 2026 Election Results</h1><ul><li><a href="{path}">'
+             "Results County-wide</a> - COMPLETE</li></ul>")
+    url = parser.douglas_discovery(index.encode())
+    assert url.endswith(path)
+    with pytest.raises(ValueError, match="summary link"):
+        parser.douglas_discovery(index.replace(path, "//example.test" + path).encode())
+    header = ("Summary Results Report General Election November 3, 2026 CERTIFIED RESULTS "
+              "26 of 26 Reporting COMPLETE Douglas County, Wisconsin")
+    stats = ("Statistics TOTAL Registered Voters - Total 26,599 Ballots Cast - Total 19,423 "
+             "Voter Turnout - Total 73.02%")
+    footer = "Election Summary - 11/10/2026 10:37 AM {} of 2 Report generated with Electionware Copyright © 2007-2019"
+    pages = [f"{header} {stats} {footer.format(1)}", f"{header} {footer.format(2)}"]
+    data = {"date": "2026-11-10T10:37:00", "report": {"url": url, **pin(b"fixture")},
+            "complete_native_query": pages}
+    assert parser.douglas_controls(data) == ("2026-11-10T10:37:00", 19423, 26599, "73.02%", 26)
+    for edit in (lambda text: text.replace("CERTIFIED RESULTS", "UNOFFICIAL RESULTS"),
+                 lambda text: text.replace("73.02%", "73.01%"),
+                 lambda text: text.replace("1 of 2", "2 of 2")):
+        with pytest.raises(ValueError):
+            parser.douglas_controls({**data, "complete_native_query": [edit(pages[0]), pages[1]]})
+
+
 def revised_ballots(value, delta):
     value = copy.deepcopy(value)
     value["version"] = str(int(value["version"]) + 1)

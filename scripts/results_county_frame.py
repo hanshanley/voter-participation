@@ -292,6 +292,10 @@ SUSSEX = ("NJ", "New Jersey", "Sussex County", "34037",
           county_pdf.SUSSEX_FEED, county_pdf.SUSSEX_INDEX, "NJ:official-ballot-statistics:34037",
           "NJ-2026-11-03-general", "native_registered_voters_same_sussex_county_summary")
 SUSSEX_PREDECESSOR = "1d35a9ce3b9d96be8c2a08d106d34637"
+DOUGLAS = ("WI", "Wisconsin", "Douglas County", "55031",
+           "4f53e9b43faa1cf6dd9e1f9b893993fe6f4aa42a78cfbb1afbeb39d3f6db5f74",
+           county_pdf.DOUGLAS_FEED, county_pdf.DOUGLAS_INDEX, "WI:official-ballot-statistics:55031",
+           "WI-2026-11-03-general", "native_registered_voters_same_douglas_county_summary")
 
 
 def county_parent_observation(profile, data, reference, status):
@@ -343,6 +347,16 @@ def county_parent_observation(profile, data, reference, status):
             "Uses the same report's registrations, not an eligible-population estimate.",
             "Report generation time has no declared timezone and is not a count-update clock.",
         ]
+    elif profile == DOUGLAS:
+        clock, ballots, registered, fraction, units = county_pdf.douglas_controls(data)
+        label = "CERTIFIED RESULTS"
+        measure, register = "Ballots Cast - Total", "Registered Voters - Total"
+        selector = {"scope": "countywide statistics", "physical_page": 1, "native_label": measure}
+        notes = [
+            f"The certified countywide summary shows {units} of {units} reporting.",
+            "The same summary supplies ballots and registrations; no reporting-unit allocation.",
+            "Report generation time has no declared timezone and is not a count-update clock.",
+        ]
     elif profile == BUXTON:
         ballots, registered, fraction = history.buxton_controls(data)
         clock = None
@@ -368,7 +382,7 @@ def county_parent_observation(profile, data, reference, status):
     town = profile == BUXTON
     level = "municipality" if town else "county"
     measure_id = "townwide-ballots-cast" if town else "countywide-ballots-cast"
-    if profile == SUSSEX:
+    if profile in (SUSSEX, DOUGLAS):
         notes.append("Not a statewide total, unique-voter count or precinct allocation.")
     else:
         notes.append("Not a statewide total, certification claim, unique-voter count or precinct allocation.")
@@ -488,7 +502,7 @@ def project_county_parent(counts, native, snapshot, profile):
         candidate = county_parent_observation(profile, data, refs[0], entry["status"])
     if prior and data is not None:
         old = prior["view"]["native_record"]
-        regression = data["date"] < old["date"] if profile in (CUYAHOGA, SUMNER, PHILADELPHIA, SUMMIT, SUSSEX) else False
+        regression = profile in (CUYAHOGA, SUMNER, PHILADELPHIA, SUMMIT, SUSSEX, DOUGLAS) and data["date"] < old["date"]
         if profile == CUYAHOGA:
             regression |= (old["report_status"] == county_pdf.STATUSES[1]
                            and data["report_status"] != county_pdf.STATUSES[1])
@@ -574,6 +588,10 @@ def project_summit(counts, native, snapshot):
 
 def project_sussex(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, SUSSEX)
+
+
+def project_douglas(counts, native, snapshot):
+    return project_county_parent(counts, native, snapshot, DOUGLAS)
 
 
 def project_georgia(counts, native):

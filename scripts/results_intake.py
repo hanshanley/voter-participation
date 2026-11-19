@@ -968,6 +968,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
         results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
         results_pdf_county_parent.SUMMIT_FEED: results_pdf_county_parent.collect_summit,
         results_pdf_county_parent.SUSSEX_FEED: results_pdf_county_parent.collect_sussex,
+        results_pdf_county_parent.DOUGLAS_FEED: results_pdf_county_parent.collect_douglas,
         philadelphia_divisions.FEED: philadelphia_divisions.collect,
     }
     administrative.update({feed: partial(results_pa_vote_history.collect, year=year)

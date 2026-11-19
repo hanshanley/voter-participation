@@ -36,6 +36,93 @@ SUSSEX_FEED = "NJ-sussex-county-canvass"
 SUSSEX_INDEX = "https://www.sussexcountyclerk.org/939/General-Election"
 SUSSEX_PATH = re.compile(r"/DocumentCenter/View/[0-9]+/2026-NOV-3-GE---OFFICIAL-results---countywide-SUPP")
 SUSSEX_MODES = ("Election Day", "Early Voting", "Mail-In", "Provisional", "Emergency", "Overseas")
+DOUGLAS_FEED = "WI-douglas-county-canvass"
+DOUGLAS_INDEX = "https://www.douglascountywi.gov/1237/Election-Results"
+DOUGLAS_PATH = re.compile(r"/Archive\.aspx\?ADID=[1-9][0-9]*")
+DOUGLAS_HEADER = (
+    r"Summary Results Report General Election November 3, 2026 CERTIFIED RESULTS "
+    r"([1-9]\d*) of \1 Reporting COMPLETE Douglas County, Wisconsin"
+)
+DOUGLAS_FOOTER = (
+    r"Election Summary - (\d{1,2}/\d{1,2}/2026) (\d{1,2}:\d\d [AP]M) "
+    r"(?:Page )?([1-9]\d*) of ([1-9]\d*) Report generated with Electionware Copyright © \d{4}-\d{4}"
+)
+
+
+def douglas_discovery(body):
+    text = body.decode("utf-8-sig")
+    sections = re.findall(r">November 3, 2026 Election Results</h1>\s*<ul>(.*?)</ul>", text, re.S)
+    if len(sections) != 1:
+        raise ValueError("Douglas County general-election archive section changed")
+    links = re.findall(r'<a\b[^>]*href="([^"]+)"[^>]*>Results County-wide</a>\s*-\s*COMPLETE', sections[0])
+    if len(links) != 1 or not DOUGLAS_PATH.fullmatch(unescape(links[0])):
+        raise ValueError("Missing or incompatible Douglas County countywide summary link")
+    return urljoin(DOUGLAS_INDEX, unescape(links[0]))
+
+
+def douglas_controls(data):
+    report, pages = data["report"], data["complete_native_query"]
+    parts = urlsplit(report["url"])
+    if (parts.scheme != "https" or parts.netloc != urlsplit(DOUGLAS_INDEX).netloc or parts.fragment
+            or not DOUGLAS_PATH.fullmatch(parts.path + "?" + parts.query)
+            or type(report["bytes"]) is not int or not 0 < report["bytes"] <= 4_000_000
+            or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])
+            or not isinstance(pages, list) or not 1 <= len(pages) <= 100):
+        raise ValueError("Invalid Douglas County countywide report receipt")
+    clocks = []
+    number = r"([1-9]\d{0,2}(?:,\d{3})+|0|[1-9]\d*)"
+    statistics = (
+        rf"Statistics TOTAL Registered Voters - Total {number} Ballots Cast - Total {number} "
+        r"Voter Turnout - Total (\d{1,3}\.\d{2}%)"
+    )
+    first = None
+    for physical_page, text in enumerate(pages, 1):
+        content = f" {statistics} " if physical_page == 1 else " "
+        match = re.fullmatch(DOUGLAS_HEADER + content + DOUGLAS_FOOTER, text)
+        if not match:
+            raise ValueError("Douglas County certified scope or statistics changed")
+        if first is None:
+            first = match
+        *_, date, clock, page, total = match.groups()
+        if (int(page), int(total)) != (physical_page, len(pages)) or match[1] != first[1]:
+            raise ValueError("Douglas County report page or reporting inventory changed")
+        clocks.append(datetime.strptime(f"{date} {clock}", "%m/%d/%Y %I:%M %p"))
+    registered, ballots = (count(first[i].replace(",", "")) for i in (2, 3))
+    printed = first[4]
+    if (len(set(clocks)) != 1 or clocks[0] < datetime(2026, 11, 3) or data["date"] != clocks[0].isoformat()
+            or not 0 < ballots <= registered
+            or (100 * Decimal(ballots) / registered).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
+            != Decimal(printed[:-1])):
+        raise ValueError("Douglas County ballot counts, registration fraction or report clocks do not reconcile")
+    return clocks[0].isoformat(), ballots, registered, printed, int(first[1])
+
+
+def collect_douglas(collector):
+    def parse(index):
+        from pypdf import PdfReader
+
+        url = douglas_discovery(index)
+        body, _ = collector.acquire(url)
+        if len(body) > 4_000_000 or not body.startswith(b"%PDF-") or not body.rstrip().endswith(b"%%EOF"):
+            raise ValueError("Incomplete Douglas County report")
+        pdf = PdfReader(io.BytesIO(body), strict=True)
+        if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 100:
+            raise ValueError("Unreviewed Douglas County report shape")
+        pages = []
+        for i, original in enumerate(pdf.pages):
+            page = " ".join(original.extract_text().split())
+            header = re.match(DOUGLAS_HEADER, page)
+            footer = re.search(DOUGLAS_FOOTER + r"$", page)
+            if not header or not footer:
+                raise ValueError("Douglas County report header or footer changed")
+            pages.append(page if i == 0 else f"{header[0]} {footer[0]}")
+        date = datetime.strptime(f"{footer[1]} {footer[2]}", "%m/%d/%Y %I:%M %p").isoformat()
+        data = {"report": {"url": url, **pin(body)}, "complete_native_query": pages, "date": date,
+                "participation_observation_qualified": False}
+        douglas_controls(data)
+        return data
+
+    return collector.capture(DOUGLAS_FEED, DOUGLAS_INDEX, parse)
 
 
 def sussex_discovery(body):
