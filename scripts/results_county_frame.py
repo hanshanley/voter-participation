@@ -556,7 +556,9 @@ def project_ohio(counts, native):
                              state["measure"]["id"], "all_methods")
         notes = [
             "County ballots counted and registration reconcile to the dated statewide unofficial frame.",
-            "Outstanding UOCAVA and provisional ballots are separate; election-day precinct reporting is not certification.",
+            ("The XML does not report outstanding ballots." if query.get("basis") == "dated_xml_county_sum"
+             else "Outstanding UOCAVA and provisional ballots are separate."),
+            "Election-day precinct reporting is not certification.",
         ]
         rate = 100 * ballots / registered
         native_row = {"county_object_id": native_id, "outstanding_uocava": absentee,
@@ -564,7 +566,8 @@ def project_ohio(counts, native):
         view = {**common, "geography_level": "county", "county_id": geo, "county": name,
                 "county_fips": fips, "maps_approved": True, "reference_geometry": reference,
                 "ballots": ballots, "denominator": registered, "reported_pct": rate,
-                "validated_pct": rate, "native_printed_pct": printed + "%", "source_mode": "all_methods",
+                "validated_pct": rate, "native_printed_pct": printed + "%" if printed else None,
+                "source_mode": "all_methods",
                 "reported_units": reported, "total_units": units, "native_record": native_row,
                 "participation_measure_label": "County ballots counted", "quality": notes}
         projected[key] = {**stable, "id": key, "geography": {

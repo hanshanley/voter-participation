@@ -11,7 +11,7 @@ import re
 from urllib.parse import urljoin
 import xml.etree.ElementTree as ET
 
-from scripts.participation_intake.contract import count, encoded, pin
+from scripts.participation_intake.contract import IntakeError, count, encoded, pin
 
 
 WA_FEED = "WA-general-election-turnout"
@@ -48,6 +48,7 @@ OH_NS = {"n": "http://grouper.ieee.org/groups/1622/groups/2/V1/1622_2-election_r
 OH_FIELDS = ("ballotCast", "registeredVoterTotal", "reportedPrecincts", "totalPrecincts",
              "outAbsentees", "outProvisionals")
 OH_XML_FIELDS = ("VotersParticipated", "VotersRegistered", "SubUnitsReported", "TotalSubUnits")
+OH_COUNTY_NAMES = {"bytes": 852, "sha256": "3d981909d6bb6f7addb671c20cf9e503e51f520909781c702ca1cc2b7c06d75c"}
 MT_FEED = "MT-statewide-reported-turnout"
 MT_URL = "https://electionresults.mt.gov/"
 MT_TITLE = "General Election - November 3, 2026"
@@ -319,9 +320,11 @@ def ohio_election(body):
 
 def ohio_controls(query):
     rows, total, control = query["counties"], query["total"], query["election"]
+    derived = query.get("basis") == "dated_xml_county_sum"
     if (len(rows) != 88 or len({row[0] for row in rows}) != 88
-            or len({row[1] for row in rows}) != 88
-            or total[:2] != [None, "Totals"] or len(total) != 9
+            or any(not isinstance(row[1], str) for row in rows)
+            or pin(encoded(sorted(row[1] for row in rows))) != OH_COUNTY_NAMES
+            or total[:2] != [None, "County sum" if derived else "Totals"] or len(total) != 9
             or len(control["counties"]) != 88
             or control["source"]["url"] != OH_ELECTION or control["source"]["bytes"] <= 0
             or not re.fullmatch(r"[a-f0-9]{64}", control["source"]["sha256"])
@@ -332,13 +335,16 @@ def ohio_controls(query):
         raise ValueError("Ohio ballot county frame is not reconciled to its dated XML")
     for row in rows + [total]:
         ballots, registered, reported, units, absentee, provisional = row[2:8]
-        if (len(row) != 9 or any(type(n) is not int or n < 0 for n in row[2:8])
+        if (len(row) != 9 or any(type(n) is not int or n < 0 for n in row[2:6])
                 or not registered or ballots > registered or not 0 <= reported <= units
-                or not re.fullmatch(r"[0-9]+\.[0-9]{2}", row[8])
-                or (Decimal(ballots) * 100 / registered).quantize(
-                    Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(row[8])):
+                or (derived and (absentee, provisional, row[8]) != (None, None, None))
+                or (not derived and (any(type(n) is not int or n < 0 for n in (absentee, provisional))
+                    or not re.fullmatch(r"[0-9]+\.[0-9]{2}", row[8])
+                    or (Decimal(ballots) * 100 / registered).quantize(
+                        Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(row[8])))):
             raise ValueError("Ohio turnout count, denominator or reported fraction changed")
-    if [sum(row[n] for row in rows) for n in range(2, 8)] != total[2:8]:
+    stop = 6 if derived else 8
+    if [sum(row[n] for row in rows) for n in range(2, stop)] != total[2:stop]:
         raise ValueError("Ohio county totals do not reconcile to the printed statewide rows")
     return total[2], total[3]
 
@@ -358,13 +364,39 @@ def ohio_ballots(body, control):
 
 
 def collect_ohio(collector):
+    def parse_xml(body):
+        control = ohio_election(body)
+        rows = [row + [None, None, None] for row in control["counties"]]
+        total = [None, "County sum", *[sum(row[i] for row in rows) for i in range(2, 6)],
+                 None, None, None]
+        query = {"basis": "dated_xml_county_sum", "counties": rows, "total": total, "election": control}
+        ohio_controls(query)
+        return {"report": control["source"], "complete_native_query": query,
+                "date": control["generated_at"], "participation_observation_qualified": False}
+
+    def stopped():
+        try:
+            collector.guard(OH_BALLOTS)
+        except IntakeError as error:
+            if error.code == "source_stopped":
+                return True
+            raise
+        return False
+
     def parse(body):
         control, _ = collector.acquire(OH_ELECTION)
         query = ohio_ballots(body, ohio_election(control))
         return {"report": {"url": OH_BALLOTS, **pin(body)}, "complete_native_query": query,
                 "date": query["election"]["generated_at"], "participation_observation_qualified": False}
 
-    return collector.capture(OH_FEED, OH_BALLOTS, parse)
+    previous = collector.prior.get(OH_FEED) or {}
+    keep_direct = (previous.get("source") or {}).get("url") == OH_BALLOTS
+    if stopped() and not keep_direct:
+        return collector.capture(OH_FEED, OH_ELECTION, parse_xml)
+    result = collector.capture(OH_FEED, OH_BALLOTS, parse)
+    if not keep_direct and result["status"] != "reported" and stopped():
+        return collector.capture(OH_FEED, OH_ELECTION, parse_xml)
+    return result
 
 
 def montana_controls(query):

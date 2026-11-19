@@ -883,7 +883,9 @@ def archive_report_summary(snapshot, code):
     entry = snapshot.get("granular_sources", {}).get(profile["feed"], {})
     if entry.get("status") != "reported" or not entry["data"].get("report"):
         return None
-    require(entry["source"]["url"] == profile["url"], "Turnout report is not archive-bound")
+    require(entry["source"]["url"] == profile["url"] or
+            code == "OH" and entry["source"]["url"] == history.OH_ELECTION,
+            "Turnout report is not archive-bound")
     return {"contract": CONTRACT, "source": entry["data"]["report"],
             "index": entry["source"], "query": entry["data"]["complete_native_query"]}
 
@@ -930,19 +932,24 @@ def new_jersey_observation(summary, retained):
 
 def ohio_observation(summary, retained):
     source, receipt = summary["source"], summary["index"]
-    require(summary["contract"] == CONTRACT and receipt == source and source["url"] == history.OH_BALLOTS
+    query = summary["query"]
+    derived = query.get("basis") == "dated_xml_county_sum"
+    require(summary["contract"] == CONTRACT and receipt == source
+            and (source == query["election"]["source"] if derived else source["url"] == history.OH_BALLOTS)
             and type(source["bytes"]) is int and source["bytes"] > 0
             and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]),
             "Ohio turnout report or collection receipt changed")
-    query = summary["query"]
     ballots, registered = history.ohio_controls(query)
     notes = ["Ohio's two printed statewide totals agree with all 88 county rows and the dated unofficial XML.",
              "This is ballots counted divided by the same report's registered voters, not VAP, VEP or a demographic rate.",
              "Outstanding overseas and provisional ballots are separate. Complete precinct reporting is not certification."]
+    if derived:
+        notes[0] = "Statewide total sums VotersParticipated across all 88 counties in the dated unofficial XML."
+        notes[2] = "Outstanding ballot counts are not given by this XML. Complete precinct reporting is not certification."
     return archive_observation(
         "OH", summary, retained, ballots, registered, "Ballots Counted", "Registered Voters",
         "native_registered_voters_same_ohio_report", "Unofficial election-night canvass", notes,
-        query["total"][8] + "%", None, "Totals")
+        None if derived else query["total"][8] + "%", None, query["total"][1])
 
 
 def montana_observation(summary, retained):

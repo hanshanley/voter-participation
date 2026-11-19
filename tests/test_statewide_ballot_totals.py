@@ -199,14 +199,15 @@ def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_confli
            + '</GpUnitCollection></ElectionReport>').encode()
 
     def acquire(self, url):
+        self.guard(url)
         body = xml if url == history.OH_ELECTION else encoded([parent, *rows, parent])
         return body, {"origin": "fixture_transport", **pin(body)}
 
     monkeypatch.setattr(Collector, "acquire", acquire)
     feed = history.OH_FEED
 
-    def collect(prior=None):
-        collector = Collector(tmp_path, prior or {}, {"urls": [], "prefixes": [], "hosts": []},
+    def collect(prior=None, stopped=()):
+        collector = Collector(tmp_path, prior or {}, {"urls": list(stopped), "prefixes": [], "hosts": []},
                               datetime(2026, 11, 19, tzinfo=timezone.utc))
         return {feed: history.collect_ohio(collector)}
 
@@ -229,10 +230,36 @@ def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_confli
     assert all(len(after_counties["views"][mode]["counties"]) == 88
                and after_counties["views"][mode]["counties"][0] == cuyahoga for mode in modes)
     assert frame.project_ohio(counties, bindings) == (counties, bindings, [])
+
+    xml_only = collect(stopped=[history.OH_BALLOTS])
+    assert xml_only[feed]["status"] == "reported"
+    assert xml_only[feed]["source"]["url"] == history.OH_ELECTION
+    assert collect(xml_only, [history.OH_BALLOTS]) == xml_only
+    assert collect(accepted, [history.OH_BALLOTS])[feed]["status"] == "retained_after_failure"
+    derived, changes = totals.project(files, {"granular_sources": xml_only})
+    assert [r["current"] for r in changes] == [1760]
+    source_view = frame.decode(derived[path])["records"][-1]["view"]
+    assert source_view["validated_pct"] == 50
+    assert "sums VotersParticipated" in " ".join(source_view["quality"])
+    mapped, _, additions = frame.project_ohio(derived, native)
+    assert len(additions) == 87
+    county_view = frame.decode(mapped[path])["records"][-1]["view"]
+    assert county_view["native_printed_pct"] is None
+    assert county_view["native_record"]["outstanding_provisional"] is None
+
     xml = xml.replace(b'VotersParticipated="20"', b'VotersParticipated="19"', 1)
+    revised = collect(xml_only, [history.OH_BALLOTS])
+    revised_files, changes = totals.project(derived, {"granular_sources": revised})
+    assert [r["current"] for r in changes] == [1759]
+    assert revised_files[path] != derived[path]
+    assert collect(revised, [history.OH_BALLOTS]) == revised
     failed = collect(accepted)
     assert failed[feed]["status"] == "retained_after_failure"
     assert "not reconciled" in failed[feed]["error_detail"]
+    xml = xml.replace(f'Name="{names[0]}"'.encode(), b'Name="Unknown County"', 1)
+    rejected = collect(revised, [history.OH_BALLOTS])[feed]
+    assert rejected["status"] == "retained_after_failure"
+    assert rejected["source"] == revised[feed]["source"]
     retained, changes = totals.project(updated, {"granular_sources": failed})
     assert changes[0]["current"] == 1760 and changes[0]["source_status"] == "retained_after_failure"
     assert totals.project(retained, {"granular_sources": failed}) == (retained, [])
