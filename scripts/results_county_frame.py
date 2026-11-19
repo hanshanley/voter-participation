@@ -357,6 +357,8 @@ def county_parent_observation(profile, data, reference, status):
         view["reference_municipality_key"] = fips
     elif profile == PHILADELPHIA:
         view.update(source_publication_label=published, source_publication_timezone="EST")
+        view["supplemental_reference_geometry"] = view.pop("reference_geometry")
+        view["maps_approved"] = False
     return {
         "contract": VERSION,
         "id": observation_id(feed, election, geo, measure_id, "all_methods"),
@@ -435,6 +437,7 @@ def project_county_parent(counts, native, snapshot, profile):
     elif profile == PHILADELPHIA:
         refs[0] = {**refs[0], "geography_scope": "native_partial_county_context",
                    "partial_county_fips": [fips]}
+        geometry["embedded_reference_required"] = False
     if data is None:
         old = prior["view"]
         require(old["status"] in {"reported", "retained_after_failure"} and prior ==
