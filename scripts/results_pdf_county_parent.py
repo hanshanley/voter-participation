@@ -24,6 +24,110 @@ STATISTICS = re.compile(
 STATUSES = ("Unofficial Results by Contest", "Official Results by Contest")
 PHILADELPHIA_FEED = "PA-philadelphia-countywide-turnout"
 PHILADELPHIA_URL = "https://philadelphiaresults.azurewebsites.us/VoterTurnoutDetails.aspx"
+SUMMIT_FEED = "UT-summit-county-canvass"
+SUMMIT_INDEX = "https://www.summitcountyutah.gov/281/Voter-Registration-Elections"
+SUMMIT_PATH = re.compile(r"/DocumentCenter/View/[0-9]+/2026-General-Canvass-Packet(?:-[a-zA-Z0-9]+)*")
+SUMMIT_MODES = (
+    "Mail ballots counted", "In-person early voting period ballots counted",
+    "In-person election day ballots counted", "Disability ballots counted returned electronically",
+    "UOCAVA ballots counted returned electronically", "Provisional ballots counted", "Emergency ballots counted",
+)
+
+
+def summit_discovery(body):
+    text = body.decode("utf-8-sig")
+    sections = re.findall(r"Official results for the 2026 General Election:</strong></p>\s*(<ul>.*?</ul>)", text, re.S)
+    if len(sections) != 1:
+        raise ValueError("Summit County 2026 general-election archive section changed")
+    links = re.findall(r'<a\b[^>]*href="([^"]+)"[^>]*>\s*Canvass Packet\s*</a>', sections[0])
+    if len(links) != 1:
+        raise ValueError("Missing or repeated Summit County canvass packet")
+    url = urljoin(SUMMIT_INDEX, unescape(links[0]))
+    summit_url(url)
+    return url
+
+
+def summit_url(url):
+    parts = urlsplit(url)
+    if (parts.scheme != "https" or parts.netloc != urlsplit(SUMMIT_INDEX).netloc
+            or not SUMMIT_PATH.fullmatch(parts.path) or parts.query or parts.fragment):
+        raise ValueError("Unreviewed Summit County canvass packet destination")
+
+
+def summit_pages(pages):
+    cover, form, summary = (" ".join(page.split()) for page in pages)
+    number = r"([0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?![\d,])"
+
+    def field(pattern, text):
+        matches = re.findall(pattern, text)
+        if len(matches) != 1:
+            raise ValueError("Missing or repeated Summit canvass field: " + pattern)
+        return matches[0]
+
+    prefix = ("Summit County General Election November 3, 2026 OFFICIAL RESULTS "
+              "General 2026 County Summary Results STATISTICS TOTAL ")
+    if (not summary.startswith(prefix) or "Summit County General Election 11/3/26 Final Ballot Summary" not in cover
+            or not all(label in form for label in ("Standardized Canvass Statistics Report",
+                "County Name - November 3, 2026", "Yes Does total ballots counted match the number of voters given vote history in VISTA?"))):
+        raise ValueError("Summit canvass election, county or scope changed")
+    ballot_clock, time, meridiem = field(
+        r"General 2026 County Summary Results - (\d{1,2}/\d{1,2}/2026) (\d{1,2}:\d\d)(AM|PM)", summary)
+    if not cover.startswith(ballot_clock + " "):
+        raise ValueError("Summit County canvass dates disagree")
+    date = datetime.strptime(f"{ballot_clock} {time} {meridiem}", "%m/%d/%Y %I:%M %p").isoformat()
+    def as_count(pattern, text):
+        return count(field(pattern, text).replace(",", ""))
+    ballots = as_count(number + r"\s*Ballots Cast - Total", summary)
+    registered = as_count(r"Registered Voters - Total " + number, summary)
+    counted_section = form.split("Vote histories given", 1)[0]
+    modes = {label: as_count(r"(?<![\d,])" + number + " " + re.escape(label), counted_section)
+             for label in SUMMIT_MODES}
+    printed = field(r"Voter Turnout - Total ([0-9]{1,3}\.[0-9]{2}%)", summary)
+    form_rate = field(r"([0-9]{1,3}\.[0-9]%) Voter turnout", form)
+    if (not 0 < ballots <= registered or date[:10] < "2026-11-17"
+            or ballots != sum(modes.values())
+            or ballots != as_count(r"Number of Ballots Counted: " + number, cover)
+            or ballots != as_count(r"(?<![\d,])" + number + r" Total ballots counted", form)
+            or ballots != as_count(r"(?<![\d,])" + number + r" Vote histories given", form)
+            or registered != as_count(r"(?<![\d,])" + number + r" Active voters \(use only", form)
+            or any((100 * Decimal(ballots) / registered).quantize(precision, rounding=ROUND_HALF_UP)
+                   != Decimal(rate[:-1]) for precision, rate in ((Decimal(".01"), printed), (Decimal(".1"), form_rate)))):
+        raise ValueError("Summit countywide ballot modes, registrations or rates do not reconcile")
+    return date, ballots, registered, printed, modes
+
+
+def summit_controls(data):
+    source, pages = data["report"], data["complete_native_query"]
+    summit_url(source["url"])
+    if (type(source["bytes"]) is not int or not 0 < source["bytes"] <= 16_000_000
+            or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or not isinstance(pages, list) or len(pages) != 3):
+        raise ValueError("Invalid Summit countywide report receipt")
+    result = summit_pages(pages)
+    if data["date"] != result[0]:
+        raise ValueError("Summit County report clock changed")
+    return result
+
+
+def collect_summit(collector):
+    def parse(index):
+        from pypdf import PdfReader
+
+        url = summit_discovery(index)
+        body, _ = collector.acquire(url)
+        if len(body) > 16_000_000 or not body.startswith(b"%PDF-") or not body.rstrip().endswith(b"%%EOF"):
+            raise ValueError("Incomplete Summit County canvass packet")
+        pdf = PdfReader(io.BytesIO(body), strict=True)
+        if pdf.is_encrypted or not 3 <= len(pdf.pages) <= 200:
+            raise ValueError("Unreviewed Summit County canvass packet shape")
+        pages = [pdf.pages[i].extract_text() for i in range(3)]
+        date, *_ = summit_pages(pages)
+        return {"report": {"url": url, **pin(body)}, "complete_native_query": pages, "date": date,
+                "participation_observation_qualified": False}
+
+    return collector.capture(SUMMIT_FEED, SUMMIT_INDEX, parse)
+
+
 PHILADELPHIA_DIVISION = re.compile(
     r'<div class="county-precinct (odd|even)">\s*([0-9]{2}-[0-9]{2,3})\s*</div>'
     r'((?:(?:\s*<div class="vertical-line-turnout"></div>)?\s*'

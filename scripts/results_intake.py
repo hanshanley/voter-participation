@@ -964,6 +964,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
         results_turnout_history.GA_FEED: results_turnout_history.collect_georgia,
         results_turnout_history.TX_FEED: results_turnout_history.collect_texas,
         results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
+        results_pdf_county_parent.SUMMIT_FEED: results_pdf_county_parent.collect_summit,
         philadelphia_divisions.FEED: philadelphia_divisions.collect,
     }
     registry_path, work = Path(registry_path), Path(work)

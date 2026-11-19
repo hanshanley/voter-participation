@@ -85,6 +85,8 @@ def mechanisms(row, state_row):
 
 def administrative(files):
     from scripts import results_native_dc as dc
+    from scripts.results_county_frame import SUMMIT_PREDECESSOR
+    from scripts.results_pdf_county_parent import SUMMIT_FEED
     from scripts.results_turnout_history import GA_FEED
     from scripts.statewide_ballot_totals import NC_BASELINE_ID, OR_BASELINE_ID, identity as statewide_id
 
@@ -97,6 +99,11 @@ def administrative(files):
         successor = statewide_id(state) if state in legacy and any(
             record["id"] == statewide_id(state) for record in records) else None
         superseded = {legacy[state]: successor} if successor else {}
+        if state == "UT":
+            summit = [record["id"] for record in records if record["source"]["id"] == SUMMIT_FEED]
+            require(len(summit) <= 1, "Ambiguous Summit countywide canvass")
+            if summit:
+                superseded[SUMMIT_PREDECESSOR] = summit[0]
         if state == "GA":
             newer = {record["geography"]["name"]: record["id"] for record in records
                      if record["source"]["id"] == GA_FEED and record["geography"]["level"] == "county"}
@@ -421,6 +428,7 @@ def selected_local_observation_ids(snapshot, counts=None):
         results_turnout_history.MT_FEED: "MT",
         results_turnout_history.TX_FEED: "TX",
         results_pdf_county_parent.PHILADELPHIA_FEED: "PA",
+        results_pdf_county_parent.SUMMIT_FEED: "UT",
     }
     selected = set()
     for identity in scope["source_ids"]:

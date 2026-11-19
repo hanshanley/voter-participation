@@ -301,6 +301,34 @@ def test_sumner_rejects_disagreement_and_incomplete_reporting():
         parser.sumner_controls(data)
 
 
+def test_summit_binds_complete_counted_modes_to_county_summary():
+    parser = frame.county_pdf
+    labels = zip(parser.SUMMIT_MODES, ("18,367", "302", "1,160", "0", "194", "200", "0"))
+    cover = "11/17/2026 Summit County General Election 11/3/26 Final Ballot Summary Number of Ballots Counted: 20,223"
+    form = (
+        "68.8% Voter turnout\n29,388 Active voters (use only the number given to counties)\n"
+        "20,223 Total ballots counted\n" + "\n".join(f"{value} {label}" for label, value in labels)
+        + "\n20,223 Vote histories given\nYes Does total ballots counted match the number of voters given vote history in VISTA?"
+        + "\n200 Provisional ballots counted\nStandardized Canvass Statistics Report\nCounty Name - November 3, 2026"
+    )
+    summary = (
+        "Summit County General Election November 3, 2026 OFFICIAL RESULTS General 2026 County Summary Results "
+        "STATISTICS TOTAL Registered Voters - Total 29,388 20,223Ballots Cast - Total Voter Turnout - Total 68.81% "
+        "General 2026 County Summary Results - 11/17/2026 05:50PM"
+    )
+    path = "/DocumentCenter/View/27896/2026-General-Canvass-Packet-executed-revised"
+    index = f'<p><strong>Official results for the 2026 General Election:</strong></p><ul><li><a href="{path}">Canvass Packet</a></li></ul>'
+    assert parser.summit_discovery(index.encode()).endswith(path)
+    with pytest.raises(ValueError, match="destination"):
+        parser.summit_discovery(index.replace(path, "https://example.test" + path).encode())
+    assert parser.summit_pages([cover, form, summary])[:4] == ("2026-11-17T17:50:00", 20223, 29388, "68.81%")
+    for changed in (form.replace("18,367", "18,366"), form.replace("29,388", "29,387")):
+        with pytest.raises(ValueError, match="do not reconcile"):
+            parser.summit_pages([cover, changed, summary])
+    with pytest.raises(ValueError, match="scope changed"):
+        parser.summit_pages([cover, form, summary.replace("Summit County", "Other County")])
+
+
 def revised_ballots(value, delta):
     value = copy.deepcopy(value)
     value["version"] = str(int(value["version"]) + 1)
