@@ -501,6 +501,7 @@ def collect(collector, baseline):
     jobs[results_turnout_history.BUXTON_FEED] = results_turnout_history.collect_buxton(collector)
     jobs[results_turnout_history.OH_FEED] = results_turnout_history.collect_ohio(collector)
     jobs[results_turnout_history.MT_FEED] = results_turnout_history.collect_montana(collector)
+    jobs[results_turnout_history.WV_FEED] = results_turnout_history.collect_west_virginia(collector)
     jobs[results_turnout_history.GA_FEED] = results_turnout_history.collect_georgia(collector)
     for year, feed in results_pa_vote_history.FEEDS.items():
         jobs[feed] = results_pa_vote_history.collect(collector, year)

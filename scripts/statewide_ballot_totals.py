@@ -102,6 +102,8 @@ PROFILES = {
            "feed": "VT-registered-5a18635647c699ea", "url": VT_URL},
     "WA": {"state": "Washington", "source_id": "wa-sos-general-election-turnout",
            "feed": history.WA_FEED, "url": history.WA_URL},
+    "WV": {"state": "West Virginia", "source_id": history.WV_FEED,
+           "feed": history.WV_FEED, "url": history.WV_URL},
     "WY": {
         "state": "Wyoming",
         "source_id": "wy-sos-direct-statewide-ballots-20261103",
@@ -209,6 +211,8 @@ def observation(code, summary, retained=False):
         return oregon_observation(summary, retained)
     if code == "MT":
         return montana_observation(summary, retained)
+    if code == "WV":
+        return west_virginia_observation(summary, retained)
     if code == "VT":
         return vermont_observation(summary, retained)
     if code == "MN":
@@ -1105,6 +1109,21 @@ def montana_observation(summary, retained):
         source_clock=query["clock"], source_timezone="MT", reporting=(fully, fully + partial + missing))
 
 
+def west_virginia_observation(summary, retained):
+    source = summary["source"]
+    require(summary["contract"] == CONTRACT and summary["index"] == source and source["url"] == history.WV_URL
+            and type(source["bytes"]) is int and source["bytes"] > 0
+            and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]), "West Virginia preliminary bulletin receipt changed")
+    query = summary["query"]
+    ballots, registered, printed = history.west_virginia_controls(query)
+    return archive_observation(
+        "WV", summary, retained, ballots, registered, "Ballots cast statewide", "Registered voters",
+        "native_registered_voters_same_west_virginia_bulletin", "Preliminary Secretary of State bulletin",
+        ["The November 6 bulletin is a pre-canvass snapshot, not an updated or certified total.",
+         "Same-bulletin registered-voter fraction; no county allocation or unique-voter claim."],
+        printed, query["publication_date"], "Preliminary statewide turnout passage")
+
+
 def archive_observation(code, summary, retained, ballots, registered, measure, register,
                         basis, label, notes, printed_rate, edition, selector, *,
                         source_clock=None, source_timezone=None, reporting=(None, None)):
@@ -1298,7 +1317,7 @@ def project(files, snapshot, nc_retained_original=None):
                    oregon_summary(snapshot) if code == "OR" else
                    north_carolina_summary(snapshot, nc_retained_original if previous is None else None) if code == "NC" else
                    turnout_history_summary(snapshot, code) if code in {"TX", "VA", "WA"} else
-                   archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "NJ", "OH"} else
+                   archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "NJ", "OH", "WV"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:

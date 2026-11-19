@@ -45,6 +45,31 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_west_virginia_preliminary_bulletin_keeps_publication_and_count_clocks_separate():
+    history = totals.history
+    html = (
+        f"<h1><span>{history.WV_TITLE}</span></h1>"
+        '<time datetime="2026-11-06T12:00:00Z">November 6, 2026</time>'
+        "<p>Preliminary turnout totals for West Virginia's November 3 General Election show that "
+        '<a href="/elsewhere">463,912</a> ballots were cast statewide, representing 38.33% of '
+        "West Virginia's 1,210,385 registered voters. Other facts.</p>"
+    )
+    data = history.west_virginia_report(html.encode())
+    snapshot = {"granular_sources": {history.WV_FEED: {
+        "status": "reported", "source": data["report"], "data": data,
+    }}}
+    summary = totals.archive_report_summary(snapshot, "WV")
+    row = totals.observation("WV", summary)
+    assert row["count"]["value"] == 463912
+    assert row["denominator"]["value"] == 1210385
+    assert row["view"]["source_date"] == "2026-11-06"
+    assert row["source_clock"]["literal"] is None
+    assert row["reporting_status"]["complete"] is None
+    assert totals.observation("WV", summary, retained=True)["view"]["status"] == "retained_after_failure"
+    with pytest.raises(ValueError, match="do not reconcile"):
+        history.west_virginia_report(html.replace("38.33%", "39.33%").encode())
+
+
 def test_pennsylvania_vote_history_keeps_age_residual_and_excludes_primary_from_general():
     url = ("https://www.pa.gov/content/dam/copapwp-pagov/en/dos/resources/voting-and-elections/"
            "bulk-data/2026-general-election/voter-registration-vote-history-summary-2026-general.xlsx")

@@ -61,6 +61,10 @@ OH_COUNTY_NAMES = {"bytes": 852, "sha256": "3d981909d6bb6f7addb671c20cf9e503e51f
 MT_FEED = "MT-statewide-reported-turnout"
 MT_URL = "https://electionresults.mt.gov/"
 MT_TITLE = "General Election - November 3, 2026"
+WV_FEED = "WV-statewide-preliminary-turnout-bulletin"
+WV_URL = ("https://sos.wv.gov/article/"
+          "wv-secretary-state-kris-warner-announces-canvassing-will-start-monday-november-9")
+WV_TITLE = "WV Secretary of State Kris Warner announces canvassing will start on Monday, November 9"
 GA_FEED = "GA-statewide-county-ballots-cast"
 GA_URL = "https://results.sos.ga.gov/results/public/api/elections/Georgia/11032026GeneralAndSpecialElection/data"
 GA_ELECTION = "01000000-70f4-ca87-08cb-08df23e5fea8"
@@ -464,6 +468,44 @@ def montana_report(body):
 
 def collect_montana(collector):
     return collector.capture(MT_FEED, MT_URL, montana_report,
+                             equivalent=lambda old, new: old["complete_native_query"] == new["complete_native_query"])
+
+
+def west_virginia_controls(query):
+    if (set(query) != {"title", "publication_date", "turnout_passage"}
+            or query["title"] != WV_TITLE or query["publication_date"] != "2026-11-06"):
+        raise ValueError("West Virginia preliminary bulletin identity changed")
+    match = re.fullmatch(
+        r"Preliminary turnout totals for West Virginia's November 3 General Election show that "
+        r"([\d,]+) ballots were cast statewide, representing (\d{1,3}\.\d{2}%) of "
+        r"West Virgin(?:i)?a's ([\d,]+) registered voters\.", query["turnout_passage"])
+    if match is None:
+        raise ValueError("Missing or incompatible West Virginia statewide turnout passage")
+    ballot_literal, printed, registration_literal = match.groups()
+    ballots, registered = integer(ballot_literal), integer(registration_literal)
+    if not 0 < ballots <= registered or (Decimal(ballots) * 100 / registered).quantize(
+            Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(printed[:-1]):
+        raise ValueError("West Virginia ballot counts and registration fraction do not reconcile")
+    return ballots, registered, printed
+
+
+def west_virginia_report(body):
+    text = body.decode("utf-8-sig")
+    titles = re.findall(r"<h1\b[^>]*><span>([^<>]+)</span></h1>", text)
+    dates = re.findall(r'<time\s+datetime="(\d{4}-\d\d-\d\d)T[^"]+">November 6, 2026</time>', text)
+    passages = re.findall(r"<p>(Preliminary turnout totals for West Virginia's November 3 General Election "
+                          r"show that .*? registered voters\.)", text, re.S)
+    if len(titles) != 1 or len(dates) != 1 or len(passages) != 1:
+        raise ValueError("Missing or repeated West Virginia ballot bulletin fields")
+    passage = " ".join(unescape(re.sub(r"</?a\b[^>]*>", "", passages[0])).split())
+    query = {"title": titles[0], "publication_date": dates[0], "turnout_passage": passage}
+    west_virginia_controls(query)
+    return {"report": {"url": WV_URL, **pin(body)}, "complete_native_query": query,
+            "date": dates[0], "participation_observation_qualified": False}
+
+
+def collect_west_virginia(collector):
+    return collector.capture(WV_FEED, WV_URL, west_virginia_report,
                              equivalent=lambda old, new: old["complete_native_query"] == new["complete_native_query"])
 
 
