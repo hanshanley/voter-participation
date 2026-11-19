@@ -72,6 +72,9 @@ GitHub-wide outage.
 python -m scripts.results_intake collect --registry data/results-intake/registry.json --work-dir "$WORK"
 # Resume a staged source packet without reopening any election source.
 python -m scripts.results_intake resume-publication
+# Merge saved denials while the collector is idle, against a reviewed exact data head.
+# This does not open election sources or replace the accepted numerical snapshot.
+python -m scripts.results_intake merge-source-stops --expected-head "$RESULTS_DATA_HEAD" "$SAVED_LEDGER_1" "$SAVED_LEDGER_2"
 # Prepare the analytical refresh without changing active publication.
 python -m scripts.automatic_runtime --repository "$WEBSITE_CHECKOUT" --work-dir "$RUNTIME_WORK" --results-pointer "$PINNED_POINTER_URL" --no-publish
 # Inspect production handoff health without issuing writes.

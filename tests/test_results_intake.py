@@ -723,6 +723,46 @@ def test_interrupted_publication_merges_stops_without_changing_results(
     assert publisher.remote_head() == successor
 
 
+def test_saved_source_stops_batch_keeps_latest_and_refuses_stale_or_pending_parent(tmp_path):
+    repo, remote = tmp_path / "repository", tmp_path / "remote.git"
+    subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)
+    subprocess.run(["git", "init", "-b", "main", str(repo)], check=True, capture_output=True)
+    publisher = GitPublisher(repo, ref="results-data")
+    publisher.git("remote", "add", "origin", str(remote))
+    state = {"source_stops": EMPTY_STOPS, "feeds": {"retained": {"status": "reported"}}}
+    latest = b'{"version":"last-good"}\n'
+    parent = publisher.commit(publisher.tree(None, {
+        "state.json": intake.pack_state(state),
+        "source-stops.json": intake.encoded(EMPTY_STOPS),
+        "latest.json": latest,
+    }), None, "Original")
+    publisher.promote(parent, None)
+    paths = [tmp_path / "first.json", tmp_path / "second.json"]
+    for i, path in enumerate(paths):
+        intake.write(path, {**EMPTY_STOPS, "urls": [f"https://official.example/{i}"]})
+    result = intake.merge_saved_source_stops(repo, parent, paths)
+    successor = result["data_commit"]
+    assert result["status"] == "published_source_stops"
+    assert publisher.git("show", successor + ":latest.json") == latest.decode().strip()
+    expected = intake.merge_stops(*(intake.read(path) for path in paths))
+    assert json.loads(publisher.git("show", successor + ":source-stops.json")) == expected
+    assert intake.unpack_state(json.loads(publisher.git("show", successor + ":state.json"))) == {
+        **state, "source_stops": expected,
+    }
+    assert intake.merge_saved_source_stops(repo, successor, paths) == {
+        "status": "unchanged", "data_commit": successor,
+    }
+    with pytest.raises(ValueError, match="parent has changed"):
+        intake.merge_saved_source_stops(repo, parent, paths)
+    staged = publisher.commit(publisher.tree(successor, {
+        intake.PENDING_PUBLICATION: b'{"version":"staged"}\n',
+    }), successor, "Staged collection")
+    publisher.promote(staged, successor)
+    with pytest.raises(ValueError, match="Resume the staged collection"):
+        intake.merge_saved_source_stops(repo, staged, paths)
+    assert publisher.remote_head() == staged
+
+
 def test_data_tag_updates_preserve_main_and_reject_stale_or_backward_publication(tmp_path):
     repo, remote = tmp_path / "repository", tmp_path / "remote.git"
     subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)

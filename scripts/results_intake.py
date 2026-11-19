@@ -1278,33 +1278,52 @@ def resume_publication(repository, ref, github_repository):
     return activate_staged_results(publisher, head, pending)
 
 
+def publish_source_stops(publisher, parent, stopped):
+    if publisher.remote_head() != parent:
+        raise ValueError("Source access ledger parent has changed; refusing publication")
+    if pending_publication(publisher, parent) is not None:
+        raise ValueError("Resume the staged collection before publishing another")
+    prior, ledger = {}, None
+    if parent:
+        prior = unpack_state(json.loads(publisher.git("show", parent + ":state.json")))
+        if publisher.git("ls-tree", parent, "--", "source-stops.json"):
+            ledger = stops(json.loads(publisher.git("show", parent + ":source-stops.json")))
+        stopped = merge_stops(prior["source_stops"], stopped)
+        if ledger is not None:
+            stopped = merge_stops(ledger, stopped)
+        if prior["source_stops"] == ledger == stopped:
+            return {"status": "unchanged", "data_commit": parent}
+    bodies = {"source-stops.json": encoded(stopped),
+              "state.json": pack_state({**prior, "source_stops": stopped})}
+    commit = publisher.commit(publisher.tree(parent, bodies), parent,
+                              "Preserve election source access holds")
+    publisher.promote(commit, parent)
+    return {"status": "published_source_stops", "data_commit": commit}
+
+
+def merge_saved_source_stops(repository, expected_head, ledgers):
+    if not re.fullmatch(r"[a-f0-9]{40}", expected_head) or not ledgers:
+        raise ValueError("An exact results-data head and at least one saved ledger are required")
+    stopped = merge_stops(*(read(path) for path in ledgers))
+    publisher = GitPublisher(repository, ref="results-data", github_repository="hanshanley/voter-participation")
+    if publisher.remote_head() != expected_head:
+        raise ValueError("Source access ledger parent has changed; refusing publication")
+    publisher.git("fetch", "--no-tags", "--depth=1", "--filter=blob:none",
+                  publisher.remote, publisher.ref_path)
+    return publish_source_stops(publisher, expected_head, stopped)
+
+
 def publish(repository, ref, github_repository, work):
     work = Path(work)
     publisher = GitPublisher(repository, ref=ref, github_repository=github_repository)
     parent = read(work / "publication-parent.json")["parent"]
-    if pending_publication(publisher, parent) is not None:
-        raise ValueError("Resume the staged collection before publishing another")
     stopped = stops(read(work / "source-stops.json"))
     report_path = work / "report.json"
     if not report_path.exists():
-        if parent:
-            prior = unpack_state(json.loads(publisher.git("show", parent + ":state.json")))
-            ledger = None
-            if publisher.git("ls-tree", parent, "--", "source-stops.json"):
-                ledger = stops(json.loads(publisher.git("show", parent + ":source-stops.json")))
-            stopped = merge_stops(prior["source_stops"], stopped)
-            if ledger is not None:
-                stopped = merge_stops(ledger, stopped)
-            if prior["source_stops"] == ledger == stopped:
-                raise ValueError("Intake failed; durable stops preserved and last valid results retained")
-        else:
-            prior = {}
-        bodies = {"source-stops.json": encoded(stopped),
-                  "state.json": pack_state({**prior, "source_stops": stopped})}
-        commit = publisher.commit(publisher.tree(parent, bodies), parent,
-                                  "Preserve election source access holds after interrupted intake")
-        publisher.promote(commit, parent)
+        publish_source_stops(publisher, parent, stopped)
         raise ValueError("Intake failed; durable stops preserved and last valid results retained")
+    if pending_publication(publisher, parent) is not None:
+        raise ValueError("Resume the staged collection before publishing another")
     report = read(report_path)
     if not report["passed"] or report["jurisdictions"] != 51:
         raise ValueError("Unvalidated current results")
@@ -1374,6 +1393,10 @@ def main():
     resume.add_argument("--repository", type=Path, default=ROOT)
     resume.add_argument("--ref", default="results-data")
     resume.add_argument("--github-repository", default="hanshanley/voter-participation")
+    merge_policy = commands.add_parser("merge-source-stops")
+    merge_policy.add_argument("--repository", type=Path, default=ROOT)
+    merge_policy.add_argument("--expected-head", required=True)
+    merge_policy.add_argument("ledgers", type=Path, nargs="+")
     reproduce = commands.add_parser("replay")
     reproduce.add_argument("--package", type=Path, required=True)
     reproduce.add_argument("--output", type=Path, required=True)
@@ -1403,6 +1426,8 @@ def main():
         result = publish(args.repository, args.ref, args.github_repository, args.work_dir)
     elif args.command == "resume-publication":
         result = resume_publication(args.repository, args.ref, args.github_repository)
+    elif args.command == "merge-source-stops":
+        result = merge_saved_source_stops(args.repository, args.expected_head, args.ledgers)
     elif args.command == "restore":
         if args.require_late_archive_scope and not args.require_predecessor:
             parser.error("--require-late-archive-scope requires --require-predecessor")
