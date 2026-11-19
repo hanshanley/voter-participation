@@ -2,6 +2,8 @@ import copy
 import gzip
 import io
 import json
+import subprocess
+import sys
 import zipfile
 
 import pytest
@@ -703,7 +705,7 @@ def test_unchanged_dataset_keeps_its_values_but_shares_the_atomic_publication_or
     assert result["datasets"][identities[1]]["version"] == "a" * 64
 
 
-def test_complete_packet_includes_accepted_numerical_engine_and_only_selected_seed_bytes():
+def test_complete_packet_includes_accepted_numerical_engine_and_only_selected_seed_bytes(tmp_path):
     seed = {"rolling-seed.json.gz": b"full-public-aggregate-seed"}
     compiled = {"counts": {"index.json": b"count-query"}, "native": {"index.json": b"native-query"},
                 "model_files": {"all-nine-results.json.gz": b"complete-model-queries"}}
@@ -719,6 +721,11 @@ def test_complete_packet_includes_accepted_numerical_engine_and_only_selected_se
         assert archive.read("queries/model-queries/all-nine-results.json.gz") == b"complete-model-queries"
         assert json.loads(archive.read("inputs/numerical-runtime.json")) == runtime.numerical_runtime()
         assert b"code/reproduce.py --replay-package . --output reproduced" in archive.read("REPRODUCE.txt")
+        archive.extractall(tmp_path)
+    subprocess.run([sys.executable, "-E", "-c",
+                    "import sys; sys.path.insert(0, 'code'); "
+                    "from scripts import statewide_ballot_totals, supported_analytical_release"],
+                   cwd=tmp_path, check=True)
 
 
 @pytest.fixture

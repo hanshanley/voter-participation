@@ -43,7 +43,7 @@ CODE_PATHS = (
     "results_minnesota_turnout.py", "results_turnout_history.py", "results_alaska_turnout.py",
     "eac_county_turnout.py", "philadelphia_divisions.py",
     "results_native_congress.py", "results_native_dc.py", "results_native_state_family.py",
-    "results_native_virginia.py",
+    "results_native_oregon.py", "results_native_virginia.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",
     "congressional_filing_identity.py",
@@ -1051,8 +1051,11 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
             archive.extractall(extraction)
         replayed = subprocess.run([sys.executable, "code/reproduce.py", "--replay-package", ".",
             "--output", str(Path(directory) / "reproduced")], cwd=extraction,
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             env={key: value for key, value in os.environ.items() if key != "PYTHONPATH"})
+        if replayed.returncode != 0:
+            raise ValueError(f"Extracted replay exited {replayed.returncode}:\n"
+                             + replayed.stderr.decode(errors="replace")[-4000:])
         proof = json.loads(replayed.stdout)
     if (proof.get("passed") is not True or proof.get("network_requests") != 0
             or proof.get("external_operations_blocked") is not True
