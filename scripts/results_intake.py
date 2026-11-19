@@ -768,7 +768,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_cass.py", "results_pdf_dunn.py", "results_pdf_cole.py",
              "results_pdf_platte.py", "results_pdf_county_parent.py", "results_minnesota_turnout.py",
              "philadelphia_divisions.py",
-             "results_turnout_history.py", "results_pa_vote_history.py", "results_alaska_turnout.py",
+             "results_turnout_history.py", "results_nc_vote_history.py", "results_pa_vote_history.py", "results_alaska_turnout.py",
              "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
             "nationwide.py", "current.py", "download.py",
             "precinct_source_batch.py", "house_clerk_endpoints.py",
@@ -954,10 +954,11 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 
 def late_archive_sources():
-    from scripts import results_minnesota_turnout, results_pa_vote_history, results_turnout_history as history
+    from scripts import results_minnesota_turnout, results_nc_vote_history, results_pa_vote_history
+    from scripts import results_turnout_history as history
 
     return (
-        history.KS_FEED, history.NJ_FEED, results_pa_vote_history.FEEDS[history.CURRENT_YEAR],
+        history.KS_FEED, history.NJ_FEED, results_nc_vote_history.FEED, results_pa_vote_history.FEEDS[history.CURRENT_YEAR],
         history.TX_FEED, history.VA_FEED, history.WA_FEED,
         *results_minnesota_turnout.SOURCE_IDS,
         *sorted(history.municipal_feeds()),
@@ -966,7 +967,7 @@ def late_archive_sources():
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None):
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
-    from scripts import results_minnesota_turnout, results_native
+    from scripts import results_minnesota_turnout, results_native, results_nc_vote_history
     from scripts import results_uf_turnout
     from scripts import results_official_congress
 
@@ -981,6 +982,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
         results_turnout_history.TX_FEED: results_turnout_history.collect_texas,
         results_turnout_history.VA_FEED: results_turnout_history.collect_virginia,
         results_turnout_history.WA_FEED: results_turnout_history.collect_washington,
+        results_nc_vote_history.FEED: results_nc_vote_history.collect,
         results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
         results_pdf_county_parent.SUMMIT_FEED: results_pdf_county_parent.collect_summit,
         results_pdf_county_parent.SUSSEX_FEED: results_pdf_county_parent.collect_sussex,

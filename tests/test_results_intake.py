@@ -281,7 +281,7 @@ def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp
 @pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
 def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
     from scripts import (
-        philadelphia_divisions, results_minnesota_turnout as mn, results_native,
+        philadelphia_divisions, results_minnesota_turnout as mn, results_native, results_nc_vote_history,
         results_pa_vote_history, results_pdf_county_parent,
         results_turnout_history,
     )
@@ -320,6 +320,8 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     selected.append(results_pa_vote_history.FEEDS[2026])
     monkeypatch.setattr(results_pa_vote_history, "collect",
                         lambda collector, year: adapter(results_pa_vote_history.FEEDS[year])(collector))
+    selected.append(results_nc_vote_history.FEED)
+    monkeypatch.setattr(results_nc_vote_history, "collect", adapter(results_nc_vote_history.FEED))
     for feed, name in ((results_turnout_history.BUXTON_FEED, "buxton"),
                        (results_turnout_history.BATH_FEED, "bath")):
         monkeypatch.setattr(results_turnout_history, "collect_" + name, adapter(feed))
@@ -359,6 +361,68 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     for key in ("districts", "house", "congress", "directories", "source_stops"):
         assert result[key] == previous[key]
     assert intake.refresh_selected(registry, tmp_path / "scoped", persisted, selected, NOW) == result
+
+
+def test_nc_age_archive_waits_for_both_links_and_preserves_last_good(tmp_path, monkeypatch):
+    import io
+    from zipfile import ZipFile
+
+    from scripts import results_nc_vote_history as nc
+
+    counties = [f"COUNTY{i:03}" for i in range(100)]
+    monkeypatch.setattr(nc, "COUNTY_PIN", nc.digest(("\n".join(counties) + "\n").encode()))
+
+    def report(kind, updated, value):
+        fields = nc.HEADERS[kind].split()
+        lines = ["\t".join(fields)]
+        for county in counties:
+            for age in nc.AGES:
+                row = dict(county_desc=county, election_date="11/03/2026", stats_type=kind,
+                           update_date=updated, age=age, total_voters=str(value))
+                lines.append("\t".join(row.get(key, "") for key in fields))
+        out = io.BytesIO()
+        with ZipFile(out, "w") as archive:
+            archive.writestr(f"{kind}_stats_20261103.txt", "\n".join(lines))
+        return out.getvalue()
+
+    reports = {kind: nc.report_url(kind, nc.ELECTION) for kind in nc.CATALOGS}
+    bodies = {
+        nc.CATALOGS["history"]: f'<a href="{reports["history"]}">History</a>'.encode(),
+        nc.CATALOGS["voter"]: b"<p>Not yet published</p>",
+        reports["history"]: report("history", "12/01/2026", 4),
+        reports["voter"]: report("voter", "11/03/2026", 10),
+    }
+    calls = []
+
+    def acquire(self, url):
+        calls.append(url)
+        return bodies[url], {"origin": "fixture"}
+
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    work = tmp_path / "nc"
+    initial = nc.collect(intake.Collector(work, {}, EMPTY_STOPS, NOW))
+    assert initial["status"] == "report_not_linked" and initial["data"] is None
+    assert calls == list(nc.CATALOGS.values())
+
+    bodies[nc.CATALOGS["voter"]] = f'<a href="{reports["voter"]}">Registration</a>'.encode()
+    accepted = nc.collect(intake.Collector(work, {}, EMPTY_STOPS, NOW))
+    assert accepted["status"] == "reported"
+    prior = {nc.FEED: accepted}
+    rows = nc.rows(prior)
+    assert [(r["voters_with_history"], r["active_and_inactive_registered_voters"],
+             r["source_defined_rate_pct"]) for r in rows] == [(400, 1000, 40)] * 4
+    assert all(r["geography_level"] == "state" and not r["reporting_completeness_or_certification_established"]
+               for r in rows)
+    assert nc.collect(intake.Collector(work, prior, EMPTY_STOPS, NOW)) == accepted
+
+    bodies[reports["history"]] = report("history", "11/30/2026", 5)
+    retained = nc.collect(intake.Collector(work, prior, EMPTY_STOPS, NOW))
+    assert retained["status"] == "retained_after_failure" and retained["data"] == accepted["data"]
+    bodies[reports["history"]] = report("history", "12/02/2026", 11)
+    revised = nc.collect(intake.Collector(work, prior, EMPTY_STOPS, NOW))
+    assert revised["status"] == "reported"
+    assert all(r["voters_with_history"] == 1100 and r["source_defined_rate_pct"] is None
+               for r in nc.rows({nc.FEED: revised}))
 
 
 def test_accepted_candidate_strings_survive_a_blocked_live_declaration(tmp_path, monkeypatch):

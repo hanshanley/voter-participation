@@ -31,6 +31,15 @@ use the same municipal registrations. Newly reviewed VotingWorks registrations
 do not require a workflow change. The sweep runs `refresh-selected --late-archives`;
 it does not recollect congressional races or any other unselected feed. Manual dispatch
 retains its explicit override.
+
+North Carolina's 2026 voter-history and registration statistics are paired
+only when both official indexes advertise the exact general-election archives.
+The hourly and late-archive paths share this adapter. It checks the complete
+county inventory and publishes only the four statewide age aggregates, with
+separate original-file pins and report editions, in the complete analysis ZIP.
+The source-defined fractions use active and inactive registration, not VEP
+or ballots cast. Listing, statewide county inventory and a computed fraction
+do not establish certification or completion. No source fine cells are exported.
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

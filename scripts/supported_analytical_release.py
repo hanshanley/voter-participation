@@ -457,7 +457,8 @@ def other_offices(review):
 
 def selected_local_observation_ids(snapshot, counts=None):
     from scripts import (
-        philadelphia_divisions, results_minnesota_turnout, results_pa_vote_history, results_pdf_county_parent,
+        philadelphia_divisions, results_minnesota_turnout, results_nc_vote_history,
+        results_pa_vote_history, results_pdf_county_parent,
         results_turnout_history, statewide_ballot_totals,
     )
     from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
@@ -499,7 +500,8 @@ def selected_local_observation_ids(snapshot, counts=None):
             continue
         entry = snapshot.get("granular_sources", {}).get(identity)
         require(entry is not None, "Selected local source missing: " + identity)
-        if identity == philadelphia_divisions.FEED or identity in results_pa_vote_history.FEEDS.values():
+        if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED)
+                or identity in results_pa_vote_history.FEEDS.values()):
             continue  # These products do not update a canonical cast-ballot count.
         if identity == results_minnesota_turnout.IDENTITY:
             local = snapshot["granular_sources"].get(results_minnesota_turnout.LOCAL_IDENTITY, {})
@@ -567,6 +569,8 @@ def house_model_guard_matrix(decisions):
 
 
 def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None):
+    from scripts import results_nc_vote_history
+
     review = seed["supported_release_review"]
     require(review.get("contract") == REVIEW_CONTRACT, "unreviewed eligibility document")
     require(review["qualification_mask_sha256"] == seed["qualification"]["mask_sha256"],
@@ -612,6 +616,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
               for row in estimates["participation"]["automatic_update"]["decisions"]),
         ]),
     }
+    nc_history = results_nc_vote_history.rows(snapshot.get("granular_sources", {}))
+    if nc_history:
+        raw_files["participation-nc-vote-history-age.csv"] = csv_bytes(nc_history)
     files = {"release/" + name + ".gz": compressed(body) for name, body in raw_files.items()}
     media_types = {path: "text/csv" for path in files}
     retained_offices = []

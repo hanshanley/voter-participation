@@ -469,7 +469,7 @@ def collect(collector, baseline):
         jobs["CT-native-local"] = collector.capture("CT-native-local", CT_VERSION, capture_ct)
     from scripts.results_native import collect_sources
     from scripts import (
-        results_alaska_turnout, results_pa_vote_history,
+        results_alaska_turnout, results_nc_vote_history, results_pa_vote_history,
         results_pdf_county_parent, results_turnout_history,
     )
     jobs.update(collect_sources(collector, baseline))
@@ -503,6 +503,7 @@ def collect(collector, baseline):
     jobs[results_turnout_history.GA_FEED] = results_turnout_history.collect_georgia(collector)
     for year, feed in results_pa_vote_history.FEEDS.items():
         jobs[feed] = results_pa_vote_history.collect(collector, year)
+    jobs[results_nc_vote_history.FEED] = results_nc_vote_history.collect(collector)
     return jobs
 
 
