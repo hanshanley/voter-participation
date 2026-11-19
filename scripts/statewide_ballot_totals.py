@@ -5,6 +5,8 @@ import csv
 import gzip
 import io
 import json
+from datetime import datetime
+from decimal import Decimal
 
 from scripts import protected_official_wyoming
 from scripts.results_state_statistics import AZ_URL
@@ -14,9 +16,17 @@ from scripts.participation_intake.contract import (
 
 
 CONTRACT = "participation.reviewed_statewide_ballot_parent.v1"
+VT_URL = ("https://outside.vermont.gov/dept/sos/Elections_Division/election_info_resources/"
+          "elections_results_data/2026_general_election_voter_turnout.pdf")
+VT_COUNTIES = ("ADDISON", "BENNINGTON", "CALEDONIA", "CHITTENDEN", "ESSEX", "FRANKLIN",
+               "GRAND ISLE", "LAMOILLE", "ORANGE", "ORLEANS", "RUTLAND", "WASHINGTON",
+               "WINDHAM", "WINDSOR")
+VT_FIELDS = ("total_votes_cast_includes_absentee", "registered_voters", "absentee_votes_cast")
 PROFILES = {
     "AZ": {"state": "Arizona", "source_id": "az-sos-county-ballots-20261103",
            "feed": "AZ-official", "url": AZ_URL},
+    "VT": {"state": "Vermont", "source_id": "vt-sos-registered-turnout-20261103",
+           "feed": "VT-registered-5a18635647c699ea", "url": VT_URL},
     "WY": {
         "state": "Wyoming",
         "source_id": "wy-sos-direct-statewide-ballots-20261103",
@@ -62,8 +72,9 @@ def compressed(value):
 
 def identity(code):
     return observation_id(PROFILES[code]["source_id"], code + "-2026-11-03-general",
-                          code + "-native-statewide-total", "native-total-ballots-cast",
-                          "all_methods")
+                          code + "-native-statewide-total",
+                          "native-votes-cast-including-absentee" if code == "VT" else
+                          "native-total-ballots-cast", "source_defined" if code == "VT" else "all_methods")
 
 
 def native_summary(code, entry):
@@ -92,6 +103,8 @@ def native_summary(code, entry):
 
 def observation(code, summary, retained=False):
     profile = PROFILES[code]
+    if code == "VT":
+        return vermont_observation(summary, retained)
     arizona = code == "AZ"
     selector = ({"scope": "all_15_reported_county_declarations"} if arizona else
                 {key: profile[key] for key in ("workbook", "sheet", "cell")})
@@ -203,7 +216,7 @@ def validate_existing(code, row):
 
 
 def reviewed_addition(code, old, new, previous_pin):
-    if code not in PROFILES or code != "AZ" and previous_pin != PROFILES[code]["initial_shard"]:
+    if code not in PROFILES or code == "WY" and previous_pin != PROFILES[code]["initial_shard"]:
         return False
     selected = identity(code)
     if selected in old or set(new) != set(old) | {selected}:
@@ -212,7 +225,7 @@ def reviewed_addition(code, old, new, previous_pin):
         validate_existing(code, new[selected])
     except (ValueError, KeyError, TypeError):
         return False
-    return code == "AZ" or all(old[key] == new[key] for key in old)
+    return code != "WY" or all(old[key] == new[key] for key in old)
 
 
 def arizona_summary(snapshot):
@@ -234,6 +247,87 @@ def arizona_summary(snapshot):
             "query_pin": pin(encoded(facts)), "ballots": data["ballots"],
             "counties": facts["county_controls"], "source_edition": facts["source_edition"],
             "backend_statewide_ballots": facts["backend_statewide_ballots"]}
+
+
+def vermont_summary(snapshot):
+    entry = snapshot.get("granular_sources", {}).get(PROFILES["VT"]["feed"], {})
+    if entry.get("status") != "reported":
+        return None
+    data = entry["data"]
+    queries = data["complete_native_query"]["groups"]["queries"]
+    statewide, = queries["summary_total"]["rows"]
+    counties = queries["summary_parents"]["rows"]
+    return {"contract": CONTRACT, "source": entry["source"],
+            "source_edition": data["source_clock"], "statewide": statewide, "counties": counties}
+
+
+def versioned_report_date(literal):
+    value = datetime.strptime(literal, "%m/%d/%Y")
+    require(datetime(2026, 11, 3) <= value < datetime(2027, 2, 1),
+            "Vermont report date is outside the reviewed election window")
+    return value
+
+
+def vermont_observation(summary, retained):
+    require(summary["contract"] == CONTRACT, "Vermont statewide report contract changed")
+    source, statewide, counties = (summary[key] for key in ("source", "statewide", "counties"))
+    require(set(source) == {"url", "bytes", "sha256"} and source["url"] == VT_URL
+            and type(source["bytes"]) is int and source["bytes"] > 0,
+            "Vermont statewide report source changed")
+    require(tuple(row["native_unit"] for row in counties) == VT_COUNTIES
+            and statewide["native_unit"] == statewide["parent"] == "State Total",
+            "Vermont statewide county identity changed")
+    for row in [*counties, statewide]:
+        ballots, registered, absentee = (row[key] for key in VT_FIELDS)
+        require(all(type(row[key]) is int and count(row[key]) == row[key] for key in VT_FIELDS)
+                and 0 <= absentee <= ballots <= registered,
+                "Vermont native participation totals are inconsistent")
+    require(all(sum(row[key] for row in counties) == statewide[key] for key in VT_FIELDS),
+            "Vermont county and statewide totals disagree")
+    ballots, registered, _ = (statewide[key] for key in VT_FIELDS)
+    printed = statewide["native_turnout_percent"]
+    require(registered > 0 and printed.endswith("%")
+            and abs(100 * Decimal(ballots) / registered - Decimal(printed[:-1])) <= Decimal("0.005"),
+            "Vermont statewide printed turnout fraction disagrees")
+    versioned_report_date(summary["source_edition"])
+    status = "retained_after_failure" if retained else "reported"
+    notes = ["Vermont's native State Total reconciles to all 14 county controls.",
+             "The source-defined rate divides Total Votes Cast (includes absentee) by the same report's Registered Voters.",
+             "This is not a population or demographic rate. The report date does not establish a count-update time."]
+    basis = "native_registered_voters_same_vermont_report"
+    measure = "Total Votes Cast (includes absentee)"
+    rate = 100 * ballots / registered
+    view = {"state": "Vermont", "state_code": "VT", "year": 2026,
+            "geography_level": "statewide", "mode": "official", "status": status,
+            "ballots": ballots, "denominator": registered, "denominator_basis": basis,
+            "reported_pct": rate, "validated_pct": rate, "native_printed_pct": printed,
+            "source_date": None, "source_update_label": None, "source_update_timezone": None,
+            "source_publication_label": summary["source_edition"],
+            "reported_units": None, "total_units": None,
+            "source_url": source["url"], "source_sha256": source["sha256"],
+            "complete_download_url": None, "automatic_source_refresh": True, "maps_approved": False,
+            "participation_measure_kind": "participation_reported", "participation_measure_literal": measure,
+            "participation_measure_label": measure, "cast_ballot_count_qualified": False,
+            "unique_voter_count_qualified": False, "quality": notes,
+            "source_reporting_label": " ".join(notes), "statewide_ballot_parent": copy.deepcopy(summary)}
+    return validate({
+        "contract": VERSION, "id": identity("VT"),
+        "election": {"id": "VT-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": "VT-native-statewide-total", "name": "Vermont", "state_code": "VT",
+                      "level": "state", "parent_id": None, "join": {"status": "nongeographic",
+                          "reference_id": None, "feature_key": None, "evidence": None}},
+        "measure": {"id": "native-votes-cast-including-absentee", "literal": measure,
+                    "kind": "participation_reported", "mode": "source_defined", "unit": "source_reported_count"},
+        "count": {"value": ballots, "literal": ballots, "status": "reported"},
+        "denominator": {"value": registered, "literal": "Registered Voters", "basis": basis, "qualified": True},
+        "source_clock": {"literal": None, "timezone": None},
+        "reporting_status": {"literal": None, "reported_units": None, "total_units": None, "complete": None},
+        "source": {"id": PROFILES["VT"]["source_id"], "url": source["url"], "input_sha256": source["sha256"],
+                   "selector": statewide["source_ref"], "classification": "public_aggregate",
+                   "fields": copy.deepcopy(view)},
+        "quality": {"conflicts": [], "notes": notes}, "view": view,
+    })
 
 
 def project(files, snapshot):
@@ -264,7 +358,8 @@ def project(files, snapshot):
         if previous is not None:
             validate_existing(code, previous)
         entry = feeds.get(profile["feed"])
-        summary = (arizona_summary(snapshot) if code == "AZ" else native_summary(code, entry)
+        summary = (arizona_summary(snapshot) if code == "AZ" else vermont_summary(snapshot)
+                   if code == "VT" else native_summary(code, entry)
                    if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
             if previous is None:
@@ -277,16 +372,17 @@ def project(files, snapshot):
                 after = row["view"]["statewide_ballot_parent"]
                 require(before["source"]["sha256"] != after["source"]["sha256"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
-                if code == "AZ":
+                if code in {"AZ", "VT"}:
                     from scripts.results_native_state_family import _clock
-                    if _clock(after["source_edition"]) < _clock(before["source_edition"]):
+                    edition_clock = _clock if code == "AZ" else versioned_report_date
+                    if edition_clock(after["source_edition"]) < edition_clock(before["source_edition"]):
                         row = observation(code, before, retained=True)
         reporting = current["snapshot"]["reporting"]
         mirrors = [item for item in reporting if item["state_code"] == code]
         require(len(mirrors) <= 1 and (not mirrors or previous is not None
                 and mirrors[0] == previous["view"]), "Statewide ballot display preimage changed")
         if previous is None:
-            require(code == "AZ" or pin(result[path]) == profile["initial_shard"],
+            require(code != "WY" or pin(result[path]) == profile["initial_shard"],
                     "Unreviewed initial statewide ballot inventory")
             shard["records"].append(row)
         else:

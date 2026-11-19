@@ -115,6 +115,42 @@ def test_arizona_rollup_withholds_incompatible_editions(change):
         stats.statistics(encoded(root), "AZ")
 
 
+def test_vermont_uses_only_the_reconciled_same_report_denominator(monkeypatch):
+    files = baseline(monkeypatch)
+    index = json.loads(files["index.json"])
+    path = "states/VT.json.gz"
+    files[path] = totals.compressed({"contract": "participation.count_snapshot.v1",
+                                   "state_code": "VT", "year": 2026, "records": [], "views": {}})
+    index["states"]["VT"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    counties = [
+        {"native_unit": name, "total_votes_cast_includes_absentee": 50,
+         "registered_voters": 100, "absentee_votes_cast": 10}
+        for name in totals.VT_COUNTIES]
+    parent = {"native_unit": "State Total", "parent": "State Total",
+              "total_votes_cast_includes_absentee": 700, "registered_voters": 1400,
+              "absentee_votes_cast": 140, "native_turnout_percent": "50.00%",
+              "source_ref": {"page": 13, "row": 15}}
+    data = {"source_clock": "11/09/2026", "complete_native_query": {
+        "groups": {"queries": {"summary_total": {"rows": [parent]},
+                              "summary_parents": {"rows": counties}}}}}
+    entry = {"source": {"url": totals.VT_URL, **pin(encoded(data))}, "status": "reported", "data": data}
+    snapshot = {"granular_sources": {totals.PROFILES["VT"]["feed"]: entry}}
+    active, changes = totals.project(files, snapshot)
+    assert changes[0]["current"] == 700
+    expected, = json.loads(gzip.decompress(active[path]))["records"]
+    assert expected["view"]["validated_pct"] == 50.0
+    assert expected["view"]["cast_ballot_count_qualified"] is False
+    assert expected["source_clock"]["literal"] is None
+    assert totals.project(active, snapshot) == (active, [])
+    held, changes = totals.project(active, {})
+    assert changes[0]["source_status"] == "retained_after_failure"
+    assert totals.project(held, snapshot)[0] == active
+    parent["registered_voters"] = 1399
+    with pytest.raises(ValueError, match="county and statewide totals disagree"):
+        totals.project(files, snapshot)
+
+
 def test_direct_native_parent_is_count_only_and_congressional_contract_stays_separate(monkeypatch):
     initial = baseline(monkeypatch)
     value = entry()
