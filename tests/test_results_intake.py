@@ -464,6 +464,32 @@ def test_complete_factual_products_are_not_duplicated_as_participation_observati
     assert inputs == before
 
 
+def test_source_status_export_includes_current_native_holds(tmp_path):
+    import csv
+    import io
+
+    registry = fixture(tmp_path)
+    config = intake.read(registry)
+    baseline = intake.baseline_inputs(registry.parent / "accepted", config["baseline"])
+    url = "https://example.test/turnout"
+    held = {"status": "source_stopped", "data": None, "source": None,
+            "attempted_source_url": url, "error": "source_stopped",
+            "error_stage": "acquisition", "error_detail": "HTTP 403"}
+    inputs = {"feeds": {"GA-native-test": {"status": "reported"},
+                        "GA-official": {"status": "not_reported"}},
+              "house": {}, "districts": {},
+              "directories": {state: {"status": "not_listed"} for state in intake.STATES},
+              "granular": {"GA-native-test": held}}
+    outputs = intake.project(inputs, baseline)
+    snapshot = json.loads(gzip.decompress(outputs["snapshot.json.gz"]))
+    csv_rows = list(csv.DictReader(io.StringIO(outputs["source-status.csv"].decode())))
+    assert [row["source"] for row in csv_rows] == ["GA-native-test", "GA-official"]
+    row = csv_rows[0]
+    assert (row["status"], row["source_url"], row["error_stage"], row["error_detail"]) == (
+        "source_stopped", url, "acquisition", "HTTP 403")
+    assert snapshot["source_status"][0]["data_retained"] is False
+
+
 def test_invalid_stop_seed_is_fail_closed_before_transport(tmp_path):
     with pytest.raises(ValueError, match="ledger"):
         intake.Collector(tmp_path, {}, {"urls": None, "prefixes": [], "hosts": []}, NOW)

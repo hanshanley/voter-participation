@@ -491,6 +491,7 @@ def project(inputs, baseline):
             candidates.append({"year": 2026, "state_code": data["state_code"], "district": district,
                                **row, "status": entry["status"], "source": entry["source"],
                                "source_update_label": data["source_update_label"]})
+    status_entries = {**feeds, **inputs.get("granular", {}), **{"house-" + k: v for k, v in house.items()}}
     status_rows = [{"source": key, "status": entry["status"], "error": entry.get("error"),
                     "data_retained": entry.get("data") is not None,
                     "source_url": (entry.get("source") or {}).get("url")
@@ -498,7 +499,7 @@ def project(inputs, baseline):
                     "attempted_source_url": entry.get("attempted_source_url"),
                     "error_stage": entry.get("error_stage"),
                     "error_detail": entry.get("error_detail")}
-                   for key, entry in sorted({**feeds, **{"house-" + k: v for k, v in house.items()}}.items())]
+                   for key, entry in sorted(status_entries.items())]
     products_query = compressed(encoded(inputs.get("products", {})))
     products_reference = {"file": "declared-numerical-queries.json.gz", **pin(products_query)}
     products_index = {
