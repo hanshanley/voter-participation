@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 
@@ -18,6 +19,9 @@ MONITORS = {
 }
 NO_SUCCESS_LIMIT = timedelta(hours=3)
 HANDOFF_LIMIT = timedelta(hours=2)
+HOURLY_START = datetime(2026, 11, 3, tzinfo=timezone.utc)
+ARCHIVE_START = datetime(2027, 2, 1, tzinfo=timezone.utc)
+ARCHIVE_TITLE = "Check late participation archives"
 TITLE = "Automatic voter-participation updates need attention"
 MARKER = "<!-- voter-participation-automatic-health:v1 -->"
 
@@ -150,13 +154,54 @@ def update_issue(report, request):
     return "unchanged"
 
 
+def weekly_archive_status(now, request):
+    due = (now - NO_SUCCESS_LIMIT).astimezone(timezone.utc)
+    slot = (due - timedelta(days=due.weekday())).replace(hour=10, minute=19, second=0, microsecond=0)
+    if slot > due:
+        slot -= timedelta(days=7)
+    if slot < ARCHIVE_START:
+        return None
+
+    repo, workflow = MONITORS["collection"]
+    endpoint = f"repos/{repo}/actions/workflows/{workflow}/runs"
+    seen = set()
+    archive_runs = []
+    for page in range(1, 5):
+        created = f"{slot:%Y-%m-%dT%H:%M:%SZ}..{now.astimezone(timezone.utc):%Y-%m-%dT%H:%M:%SZ}"
+        query = urlencode({"branch": "main", "created": created, "per_page": 100, "page": page})
+        response = request(f"{endpoint}?{query}")
+        history = response["workflow_runs"]
+        for run in history:
+            if (type(run["id"]) is not int or run["id"] in seen or run["head_branch"] != "main"
+                    or not slot <= clock(run["created_at"]) <= now):
+                raise ValueError("Inconsistent weekly collection history")
+            seen.add(run["id"])
+            if run.get("display_title") == ARCHIVE_TITLE and run["event"] in {"schedule", "workflow_dispatch"}:
+                archive_runs.append(run)
+        if len(seen) == response["total_count"]:
+            break
+        if len(history) < 100:
+            raise ValueError("Incomplete weekly collection history")
+    else:
+        raise ValueError("Weekly collection history exceeded the inspection bound")
+    ordered = sorted(archive_runs, key=lambda run: (clock(run["created_at"]), run["id"]), reverse=True)
+    latest = next(iter(ordered), None)
+    success = next((run for run in ordered if run["status"] == "completed" and run["conclusion"] == "success"), None)
+    return {"due_at": slot.isoformat(), "last_run_id": latest["id"] if latest else None,
+            "last_run_at": latest["created_at"] if latest else None,
+            "last_success_id": success["id"] if success else None,
+            "last_success_at": success["updated_at"] if success else None}
+
+
 def check(now, request=api, *, write_issue=False):
-    if not (datetime(2026, 11, 3, tzinfo=timezone.utc) <= now <
-            datetime(2027, 2, 1, tzinfo=timezone.utc)):
+    if now < HOURLY_START:
         return {"status": "outside_collection_window"}
-    runs = {stage: request(
-        f"repos/{repo}/actions/workflows/{name}/runs?branch=main&event=schedule&per_page=10"
-    )["workflow_runs"] for stage, (repo, name) in MONITORS.items()}
+    hourly = now < ARCHIVE_START
+    runs = {}
+    if hourly:
+        runs = {stage: request(
+            f"repos/{repo}/actions/workflows/{name}/runs?branch=main&event=schedule&per_page=10"
+        )["workflow_runs"] for stage, (repo, name) in MONITORS.items()}
     source_commit = data_commit(SOURCE, "results-data", request)
     runtime_commit = data_commit(WEBSITE, "participation-data", request)
     source = contents(SOURCE, source_commit, "latest.json", request)
@@ -177,6 +222,11 @@ def check(now, request=api, *, write_issue=False):
             source_at_cutoff = contents(SOURCE, previous, "latest.json", request)
     report = assess(now, runs, source, active, source_at_cutoff=source_at_cutoff,
                     catalog=catalog)
+    if not hourly and (weekly := weekly_archive_status(now, request)) is not None:
+        report["scheduled_writers"]["weekly_archive"] = weekly
+        if weekly["last_success_id"] is None:
+            report["persistent_problems"]["weekly_archive"] = (
+                f"weekly archive: no successful collection for the {weekly['due_at']} slot after the three-hour grace period.")
     report["issue_action"] = update_issue(report, request) if write_issue else "read_only"
     return report
 

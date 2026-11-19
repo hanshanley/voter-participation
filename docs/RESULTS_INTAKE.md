@@ -64,7 +64,11 @@ The separate website health workflow checks scheduled successes and source-to-si
 lag. It opens or updates one issue for repeated failures, a missed three-hour
 success window, a runtime/catalog mismatch, or a revision not active after two
 hours. A newer source revision does not reset the handoff timer. Verified catch-up closes
-the issue. Source-native result clocks and expected analytical holds do not by
+the issue. After the hourly cutoff, the monitor checks the Monday archive slot
+after a three-hour grace period and still checks publication handoff and
+catalog consistency. Skipped hourly collection jobs do not satisfy the weekly
+check; a successful scheduled run or archive-only fallback does.
+Source-native result clocks and expected analytical holds do not by
 themselves trigger an alert. The monitor runs in GitHub; it cannot alert during a
 GitHub-wide outage.
 

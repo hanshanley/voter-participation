@@ -1,4 +1,7 @@
 from datetime import datetime, timedelta, timezone
+from urllib.parse import parse_qs, urlsplit
+
+import pytest
 
 from scripts import automatic_health as health
 
@@ -70,7 +73,7 @@ def test_outside_election_window_does_not_query_or_write():
     def unexpected(*args, **kwargs):
         raise AssertionError("Unexpected GitHub request")
 
-    assert health.check(datetime(2027, 2, 1, tzinfo=timezone.utc), unexpected,
+    assert health.check(datetime(2026, 11, 2, tzinfo=timezone.utc), unexpected,
                         write_issue=True) == {"status": "outside_collection_window"}
 
 
@@ -106,3 +109,58 @@ def test_fresh_arrival_does_not_hide_unconsumed_predecessor_or_catalog_drift():
     old.update(version=active["input_results_version"], checked_at=active["checked_at"])
     catalog["datasets"]["participation-native-bindings-2026"] = active["native"]
     assert not health.check(NOW, request)["persistent_problems"]
+
+
+@pytest.mark.parametrize("archive_event", [None, "schedule", "workflow_dispatch"])
+def test_weekly_health_only_accepts_named_success_and_checks_handoff(archive_event):
+    now = datetime(2027, 2, 6, 19, tzinfo=timezone.utc)
+    source_ref, runtime_ref = "1" * 40, "2" * 40
+    active = {"version": "c" * 64, "input_results_version": "b" * 64,
+              "checked_at": "2027-01-30T00:00:00Z", "counts": {}, "native": {}}
+    source = {"version": "a" * 64, "checked_at": "2027-02-01T10:20:00Z"}
+    catalog = {"datasets": {"participation-counts-2026": {}, "participation-native-bindings-2026": {}}}
+    ordinary = {**run(1, 0), "created_at": "2027-02-01T12:23:00Z", "updated_at": "2027-02-01T12:24:00Z",
+                "head_branch": "main", "event": "schedule", "display_title": "Collect full election results"}
+    archive = {**ordinary, "id": 101, "event": archive_event or "schedule",
+               "display_title": health.ARCHIVE_TITLE,
+               "conclusion": "cancelled" if archive_event is None else "success",
+               "created_at": "2027-02-01T10:19:00Z", "updated_at": "2027-02-01T10:25:00Z"}
+    pages = []
+
+    def request(path, raw=False):
+        if "/actions/" in path:
+            query = parse_qs(urlsplit(path).query)
+            assert "event" not in query and query["created"] == ["2027-02-01T10:19:00Z..2027-02-06T19:00:00Z"]
+            page = int(query["page"][0])
+            pages.append(page)
+            history = [{**ordinary, "id": i} for i in range(1, 101)] if page == 1 else [archive]
+            return {"total_count": 101, "workflow_runs": history}
+        return {
+            f"repos/{health.SOURCE}/git/ref/tags/results-data": {"object": {"type": "commit", "sha": source_ref}},
+            f"repos/{health.WEBSITE}/git/ref/tags/participation-data": {"object": {"type": "commit", "sha": runtime_ref}},
+            f"repos/{health.SOURCE}/contents/latest.json?ref={source_ref}": source,
+            f"repos/{health.WEBSITE}/contents/automatic/latest.json?ref={runtime_ref}": active,
+            f"repos/{health.WEBSITE}/contents/catalog.json?ref={runtime_ref}": catalog,
+        }[path]
+
+    observed = health.check(now, request)
+    assert pages == [1, 2]
+    assert set(observed["scheduled_writers"]) == {"weekly_archive"}
+    if archive_event is None:
+        assert set(observed["persistent_problems"]) == {"weekly_archive", "handoff"}
+        assert observed["scheduled_writers"]["weekly_archive"]["last_success_id"] is None
+    else:
+        assert set(observed["persistent_problems"]) == {"handoff"}
+        assert observed["scheduled_writers"]["weekly_archive"]["last_success_id"] == 101
+        active["input_results_version"] = source["version"]
+        assert not health.check(now, request)["persistent_problems"]
+
+
+def test_first_weekly_slot_is_not_due_during_grace_and_incomplete_history_is_not_a_miss():
+    def unexpected(*args):
+        pytest.fail("No archive run is due")
+
+    assert health.weekly_archive_status(datetime(2027, 2, 1, 13, 18, tzinfo=timezone.utc), unexpected) is None
+    with pytest.raises(ValueError, match="Incomplete weekly collection history"):
+        health.weekly_archive_status(datetime(2027, 2, 1, 13, 19, tzinfo=timezone.utc),
+                                    lambda _: {"total_count": 1, "workflow_runs": []})
