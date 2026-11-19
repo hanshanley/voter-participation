@@ -56,9 +56,17 @@ jobs:
           archive = event == "schedule" and schedule == "19 10 * * 1" and now >= cutoff
           full = event == "schedule" and schedule == "23 * * * *" and start <= now < cutoff
           active = event == "workflow_dispatch" or full or archive
+          archive_sources = (
+              "KS-general-election-turnout-workbook",
+              "NJ-general-election-turnout-pdf",
+              "PA-2026-general-vote-history",
+              "TX-general-election-turnout",
+              "VA-general-election-turnout",
+              "WA-general-election-turnout",
+          )
           with open(os.environ["GITHUB_OUTPUT"], "a") as output:
               output.write(f"active={str(active).lower()}\n")
-              output.write("archive_sources=" + ("PA-2026-general-vote-history" if archive else "") + "\n")
+              output.write("archive_sources=" + (",".join(archive_sources) if archive else "") + "\n")
           PY
 
       - name: Checkout the intake tool and complete baseline only

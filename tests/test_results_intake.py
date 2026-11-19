@@ -231,7 +231,10 @@ def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp
 
 @pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
 def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
-    from scripts import philadelphia_divisions, results_native, results_pdf_county_parent, results_turnout_history
+    from scripts import (
+        philadelphia_divisions, results_native, results_pa_vote_history, results_pdf_county_parent,
+        results_turnout_history,
+    )
 
     registry = fixture(tmp_path)
     previous = {
@@ -256,6 +259,14 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     monkeypatch.setattr(results_turnout_history, "collect_ohio", adapter(selected[0]))
     monkeypatch.setattr(results_pdf_county_parent, "collect_philadelphia", adapter(selected[1]))
     monkeypatch.setattr(philadelphia_divisions, "collect", adapter(selected[2]))
+    for code, name in (("KS", "kansas"), ("NJ", "new_jersey"), ("TX", "texas"),
+                       ("VA", "virginia"), ("WA", "washington")):
+        identity = getattr(results_turnout_history, code + "_FEED")
+        selected.append(identity)
+        monkeypatch.setattr(results_turnout_history, "collect_" + name, adapter(identity))
+    selected.append(results_pa_vote_history.FEEDS[2026])
+    monkeypatch.setattr(results_pa_vote_history, "collect",
+                        lambda collector, year: adapter(results_pa_vote_history.FEEDS[year])(collector))
     monkeypatch.setattr(results_native, "collect_sources",
                         lambda *args, **kwargs: pytest.fail("Scoped refresh must not acquire unrelated sources"))
     monkeypatch.setattr(intake, "export_collection",
@@ -264,7 +275,7 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     result = intake.refresh_selected(registry, tmp_path / "scoped", previous, selected, NOW)
     assert calls == selected and set(result["granular"]) == set(selected)
     assert result["granular"][selected[0]]["status"] == ohio_status
-    assert result["granular"][selected[1]]["status"] == result["granular"][selected[2]]["status"] == "reported"
+    assert all(result["granular"][identity]["status"] == "reported" for identity in selected[1:])
     for key in ("feeds", "districts", "house", "congress", "directories", "source_stops"):
         assert result[key] == previous[key]
 

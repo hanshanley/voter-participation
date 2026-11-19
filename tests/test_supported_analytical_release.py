@@ -242,6 +242,30 @@ def test_scoped_administrative_refresh_attributes_only_matching_reported_counts(
     assert release.selected_local_observation_ids(snapshot, counts) == {"state", "ohio", "philadelphia"}
 
 
+@pytest.mark.parametrize("code", ["KS", "NJ", "TX", "VA", "WA"])
+def test_scoped_statewide_archives_attribute_only_the_canonical_source(code):
+    import json
+
+    from scripts import statewide_ballot_totals
+
+    profile = statewide_ballot_totals.PROFILES[code]
+    feed = profile["feed"]
+    snapshot = {
+        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": [feed]},
+        "granular_sources": {feed: {"status": "reported", "data": {"current_election_status": "row_published"}}},
+    }
+    counts = {
+        "index.json": json.dumps({"states": {code: {"file": "state.json.gz"}}}).encode(),
+        "state.json.gz": release.compressed(json.dumps({"records": [
+            {"id": "new", "source": {"id": profile["source_id"]}},
+            {"id": "unrelated", "source": {"id": "unrelated"}},
+        ]}).encode()),
+    }
+    assert release.selected_local_observation_ids(snapshot, counts) == {"new"}
+    snapshot["granular_sources"][feed]["status"] = "retained_after_failure"
+    assert release.selected_local_observation_ids(snapshot, counts) == set()
+
+
 def test_held_group_and_frozen_source_tampering_do_not_become_numerical_outputs():
     held = {"contributions_pp": None, "total_contribution_pp": None}
     assert all(value is None for value in release.mechanisms(held, modeled_row()).values())

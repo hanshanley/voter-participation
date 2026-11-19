@@ -137,7 +137,9 @@ def test_full_checkpoint_is_reused_only_for_interrupted_publication(
         ("2027-01-31T23:59:59+00:00", "schedule", "23 * * * *", True, ""),
         ("2027-02-01T00:00:00+00:00", "schedule", "23 * * * *", False, ""),
         ("2027-01-25T10:19:00+00:00", "schedule", "19 10 * * 1", False, ""),
-        ("2027-02-01T10:19:00+00:00", "schedule", "19 10 * * 1", True, "PA-2026-general-vote-history"),
+        ("2027-02-01T10:19:00+00:00", "schedule", "19 10 * * 1", True,
+         "KS-general-election-turnout-workbook,NJ-general-election-turnout-pdf,PA-2026-general-vote-history,"
+         "TX-general-election-turnout,VA-general-election-turnout,WA-general-election-turnout"),
         ("2027-02-01T00:00:00+00:00", "workflow_dispatch", "", True, ""),
     ],
 )

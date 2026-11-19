@@ -433,7 +433,8 @@ def selected_local_observation_ids(snapshot, counts=None):
         results_turnout_history.MT_FEED: "MT",
         results_turnout_history.WV_FEED: "WV",
         results_turnout_history.ND_CANVASS_FEED: "ND",
-        results_turnout_history.TX_FEED: "TX",
+        **{statewide_ballot_totals.PROFILES[code]["feed"]: code
+           for code in ("KS", "NJ", "TX", "VA", "WA")},
         results_pdf_county_parent.PHILADELPHIA_FEED: "PA",
         results_pdf_county_parent.SUMMIT_FEED: "UT",
         results_pdf_county_parent.SUSSEX_FEED: "NJ",
@@ -460,9 +461,11 @@ def selected_local_observation_ids(snapshot, counts=None):
         if identity in administrative_sources:
             if entry["status"] == "reported" and counts is not None:
                 state = administrative_sources[identity]
+                source_id = (statewide_ballot_totals.PROFILES[state]["source_id"]
+                             if state in {"KS", "NJ", "TX", "VA", "WA"} else identity)
                 declaration = decoded(counts, "index.json")["states"][state]
                 selected.update(row["id"] for row in decoded(counts, declaration["file"])["records"]
-                                if row["source"]["id"] == identity)
+                                if row["source"]["id"] == source_id)
             continue
         data = entry.get("data")
         require(isinstance(data, dict) and isinstance(data.get("updates"), list),
