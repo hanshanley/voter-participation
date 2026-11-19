@@ -783,6 +783,11 @@ class AutomaticEstimateTests(unittest.TestCase):
             sources["next_seed"],
         )
         self.assertEqual(rolling["contract"], "participation.automatic_estimates_seed.v1")
+        history = {
+            "data": {"path": "participation/pennsylvania-general-election-vote-history.json.gz"},
+            "csv": {"path": "participation/pennsylvania-general-election-vote-history.csv"},
+        }
+        sources["pennsylvania_general_vote_history"] = history
         bound = bind_publication(
             result,
             "https://raw.githubusercontent.com/example/repo/" + "a" * 40
@@ -795,6 +800,9 @@ class AutomaticEstimateTests(unittest.TestCase):
             },
         )
         self.assertTrue(bound["house_sources"]["publication_bound"])
+        for kind, descriptor in bound["house_sources"]["pennsylvania_general_vote_history"].items():
+            self.assertEqual(descriptor["url"], bound["house_sources"]["base_url"] + "/" + history[kind]["path"])
+            self.assertNotIn("url", history[kind])
         self.assertTrue(
             bound["house_sources"]["profile_viewers"]["original"][
                 "viewer_data"
