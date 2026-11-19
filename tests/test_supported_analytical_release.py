@@ -51,6 +51,24 @@ def count_row(identity, *, qualified=True, unknown=False):
     }
 
 
+def test_guard_matrix_separates_frozen_models_and_preserves_every_evidence_reason():
+    other = "npr:house:NE:1:regular:general:not_ranked:aggregate_other_not_reconciled_to_retained_minor_candidate_mass"
+    stage = "Stage or RCV round not qualified: NE-01"
+    unknown = "new_guard"
+    frozen, active = release.house_model_guard_matrix([
+        {"state_code": "NE", "decision": "held_retain_last_good", "behaviorally_qualified": True,
+         "congressional_analytical_status": {"automatic_update_eligible": False, "holds": [other, stage, unknown]}},
+        {"state_code": "RI", "decision": "retained_fresh_unchanged", "behaviorally_qualified": True,
+         "congressional_analytical_status": {"automatic_update_eligible": True, "holds": []}},
+    ])
+    assert frozen["previously_qualified_model_frozen"]
+    assert frozen["other_write_in_holds"] == [other]
+    assert frozen["election_stage_holds"] == [stage]
+    assert frozen["unclassified_holds"] == [unknown]
+    assert frozen["all_holds"] == [other, stage, unknown]
+    assert active["automatically_refreshable"] and not active["previously_qualified_model_frozen"]
+
+
 def test_admin_export_preserves_zero_unknown_and_unqualified_context_as_distinct():
     rows = [count_row("zero"), count_row("unknown", unknown=True),
             count_row("context", qualified=False)]

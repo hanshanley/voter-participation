@@ -406,6 +406,46 @@ def selected_local_observation_ids(snapshot):
     return selected
 
 
+def house_model_guard_matrix(decisions):
+    families = {
+        "candidate_identity": ("unmatched_new_named_candidate", "unmatched_or_ambiguous_named_major_candidate:",
+                               "Major-party candidate coverage changed:", "Multiple same-party nominees:",
+                               "Candidate inventory changed"),
+        "other_write_in": ("aggregate_other_", "ambiguous_aggregate_other", "write_in_"),
+        "source_universe": ("current_source_", "Candidate counts missing:", "native_official_source_",
+                            "official_precedence_source_", "protected_official_source_"),
+        "election_stage": ("Stage or RCV round not qualified:", "current_stage_", "current_round_"),
+        "geography": ("current_state_district_inventory_changed", "current_district_inventory_"),
+        "denominator": ("historical_statewide_source_frame_differs", "current_denominator_"),
+        "scientific_eligibility": ("frozen_scientific_hold:",),
+    }
+    for row in decisions:
+        bridge = row.get("congressional_analytical_status") or {}
+        qualified = row["behaviorally_qualified"]
+        eligible = bridge.get("automatic_update_eligible")
+        if eligible is None:
+            eligible = qualified and row["decision"] in {
+                "changed_recompute_behavioral", "retained_fresh_unchanged"}
+        reasons = bridge.get("holds")
+        if reasons is None:
+            reasons = [row["reason"]] if row.get("reason") else []
+        grouped = {family: [] for family in (*families, "unclassified")}
+        for reason in reasons:
+            prefix = reason
+            if reason.startswith("npr:house:"):
+                prefix = reason.split(":", 7)[-1]
+            matched = [family for family, prefixes in families.items() if prefix.startswith(prefixes)]
+            for family in matched or ["unclassified"]:
+                grouped[family].append(reason)
+        yield {
+            "state_code": row["state_code"], "decision": row["decision"],
+            "scientific_comparison_qualified": qualified, "automatically_refreshable": eligible,
+            "previously_qualified_model_frozen": qualified and not eligible,
+            **{family + "_holds": value for family, value in grouped.items()},
+            "all_holds": reasons,
+        }
+
+
 def build(snapshot, count_files, seed, estimates, changes):
     review = seed["supported_release_review"]
     require(review.get("contract") == REVIEW_CONTRACT, "unreviewed eligibility document")
@@ -426,6 +466,7 @@ def build(snapshot, count_files, seed, estimates, changes):
     modeled, groups = explanations(estimates)
     selected = selected_local_observation_ids(snapshot)
     effects = change_effects(changes, admin, selected)
+    house_guards = list(house_model_guard_matrix(estimates["decisions"]["states"]))
     raw_files = {
         "participation-administrative.csv": csv_bytes(admin),
         "participation-administrative-coverage.csv": csv_bytes(administrative_coverage(admin)),
@@ -438,6 +479,7 @@ def build(snapshot, count_files, seed, estimates, changes):
         "modeled-demographic-explanations.csv": csv_bytes(groups),
         "source-to-analysis-effects.csv": csv_bytes(effects),
         "house-eligibility-decisions.csv": csv_bytes(review["house_decisions"]),
+        "house-model-guard-matrix.csv": csv_bytes(house_guards),
         "registration-control-decisions.csv": csv_bytes(review["registration_decisions"]),
         "scoped-source-dispositions.csv": csv_bytes(review["source_dispositions"]["decisions"]),
         "house-and-control-update-decisions.csv": csv_bytes([
@@ -508,6 +550,12 @@ def build(snapshot, count_files, seed, estimates, changes):
             "demographic_query_cells": len(groups),
             "available_demographic_cells": sum(row["available"] for row in groups),
             "all_released_accounts_reconcile_on_stated_scale": True,
+        },
+        "house_model_automation": {
+            "automatically_refreshable_states": sum(row["automatically_refreshable"] for row in house_guards),
+            "previously_qualified_frozen_states": sum(row["previously_qualified_model_frozen"] for row in house_guards),
+            "state_rows": len(house_guards),
+            "qualification_unchanged": True,
         },
         "registered_controls": {
             "state_dispositions": len(estimates["participation"]["states"]),
