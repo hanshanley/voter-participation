@@ -141,6 +141,12 @@ def reconcile(counties, jurisdictions):
                                 direct_turnout, fraction)))
 
 
+def compressed(body):
+    result = bytearray(gzip.compress(body, mtime=0))
+    result[9] = 3
+    return bytes(result)
+
+
 def exports(body):
     packet = json.loads(gzip.decompress(body))
     if (packet.get("contract") != CONTRACT or set(packet["sources"]) != set(SOURCES)
@@ -151,7 +157,7 @@ def exports(body):
     writer = csv.DictWriter(csv_file, fieldnames=FIELDS, lineterminator="\n")
     writer.writeheader()
     writer.writerows(rows)
-    queries = gzip.compress(csv_file.getvalue().encode(), mtime=0)
+    queries = compressed(csv_file.getvalue().encode())
     direct = [row for row in rows if row["direct_reported_turnout"] is not None]
     rates = [row for row in direct if row["same_report_registration_fraction_pct"] is not None]
     report = {
@@ -179,7 +185,7 @@ def build(county, jurisdiction, output):
               "jurisdiction": cells(jurisdiction, JURISDICTION),
               "sources": {name: {"url": SOURCES[name], **pin(path.read_bytes())}
                           for name, path in (("county", county), ("jurisdiction", jurisdiction))}}
-    body = gzip.compress(encoded(packet), mtime=0)
+    body = compressed(encoded(packet))
     files, report = exports(body)
     output.mkdir()
     (output / Path(INPUT).name).write_bytes(body)

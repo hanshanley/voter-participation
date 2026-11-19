@@ -30,7 +30,7 @@ def test_direct_scope_keeps_zero_and_rejects_county_mismatch_or_candidate_proxy(
         assert held["direct_reported_turnout"] is held["same_report_registration_fraction_pct"] is None
 
 
-def test_full_download_preserves_source_fields_when_rate_flag_is_unavailable():
+def test_full_download_preserves_source_fields_and_is_platform_stable(monkeypatch):
     packet = {"contract": CONTRACT, "county": [county(highest="-66")], "jurisdiction": [jurisdiction()],
               "sources": {name: {"url": url} for name, url in SOURCES.items()}}
     data = gzip.compress(encoded(packet), mtime=0)
@@ -40,4 +40,11 @@ def test_full_download_preserves_source_fields_when_rate_flag_is_unavailable():
     assert row["county_fips"] == "01001" and row["county_highest_office_flag"] == "-66"
     assert row["direct_reported_turnout"] == "10" and row["same_report_registration_fraction_pct"] == ""
     assert descriptor["direct_count_rows"] == 1 and descriptor["same_report_registration_fraction_rows"] == 0
-    assert files == exports(data)[0]
+    compress = gzip.compress
+
+    def alternate_platform(*args, **kwargs):
+        body = compress(*args, **kwargs)
+        return body[:9] + bytes([19 if body[9] != 19 else 3]) + body[10:]
+
+    monkeypatch.setattr(gzip, "compress", alternate_platform)
+    assert (files, descriptor) == exports(data)
