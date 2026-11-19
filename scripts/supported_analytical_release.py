@@ -153,13 +153,18 @@ def administrative_coverage(rows):
         "state": "statewide", "county": "county_or_equivalent",
         "county_equivalent": "county_or_equivalent", "precinct": "precinct",
     }
-    columns = ("statewide", "county_or_equivalent", "precinct", "other_geography")
+    # Keep the existing catch-all totals. The new columns break out two of its
+    # subgroups without changing the historical interpretation of that field.
+    detail_levels = ("municipality", "reporting_unit")
+    columns = ("statewide", "county_or_equivalent", "precinct", "other_geography", *detail_levels)
     inventory = {code: Counter() for code in STATES}
     for row in rows:
         counts = inventory[row["state_code"]]
         level = levels.get(row["geography_level"], "other_geography")
         status = row["count_status"]
         covered = ("county_or_equivalent", "statewide") if row.get("also_covers_full_jurisdiction") else (level,)
+        if level == "other_geography" and row["geography_level"] in detail_levels:
+            covered += (row["geography_level"],)
         for scope in covered:
             if row.get("superseded_by_observation_id"):
                 counts[f"{scope}_superseded_records"] += 1

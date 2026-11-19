@@ -94,7 +94,12 @@ def test_administrative_coverage_keeps_partial_modes_and_reporting_units_separat
         row("county_equivalent", "cards_cast", "source_defined"),
         row("county", status="unknown"),
         row("precinct", status="withheld"),
+        row("municipality"),
+        row("municipality", "returned", "mail_returned", rate=15),
+        {**row("municipality", rate=55), "superseded_by_observation_id": "successor"},
         row("reporting_unit", rate=20),
+        row("reporting_unit", status="unknown"),
+        row("nongeographic"),
     ])
     by_state = {state["state_code"]: state for state in states}
     assert len(states) == len(by_state) == 51
@@ -108,7 +113,15 @@ def test_administrative_coverage_keeps_partial_modes_and_reporting_units_separat
     assert me["county_or_equivalent_unknown_records"] == 1
     assert me["precinct_withheld_records"] == 1
     assert me["precinct_election_participation_rate_records"] == 0
+    assert me["other_geography_election_participation_count_records"] == 3
     assert me["other_geography_election_participation_rate_records"] == 1
+    assert me["municipality_election_participation_count_records"] == 1
+    assert me["municipality_election_participation_rate_records"] == 0
+    assert me["municipality_early_or_returned_records"] == 1
+    assert me["municipality_superseded_records"] == 1
+    assert me["reporting_unit_election_participation_count_records"] == 1
+    assert me["reporting_unit_election_participation_rate_records"] == 1
+    assert me["reporting_unit_unknown_records"] == 1
     assert by_state["DC"]["statewide_reported_records"] == 0
 
 
