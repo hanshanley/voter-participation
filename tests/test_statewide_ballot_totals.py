@@ -42,6 +42,53 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_arkansas_retained_count_and_checked_successors(monkeypatch):
+    files = baseline(monkeypatch)
+    path = "states/AR.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["AR"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    stopping = {"granular_sources": {totals.AR_FEED: {"status": "source_stopped"}}}
+    archived, changes = totals.project(files, stopping)
+    assert changes == [{"state_code": "AR", "id": totals.identity("AR"), "previous": None,
+                        "current": 893026, "source_status": "retained_after_failure"}]
+    original_rows = json.loads(gzip.decompress(files[path]))
+    shard = json.loads(gzip.decompress(archived[path]))
+    assert shard["views"] == original_rows["views"]
+    assert shard["records"][:-1] == original_rows["records"]
+    row = shard["records"][-1]
+    assert row["denominator"] is None
+    assert row["reporting_status"] == {"literal": "UNOFFICIAL", "reported_units": 2761,
+                                       "total_units": 2768, "complete": False}
+    assert row["source_clock"]["literal"] is None
+    assert totals.project(archived, stopping) == (archived, [])
+
+    parent = copy.deepcopy(row["view"]["statewide_ballot_parent"])
+    data = {key: parent[key] for key in ("statewide", "counties", "election_id", "count_source_clock")}
+    previous = archived
+    for delta, size in ((120, 10), (-200, 11)):
+        data["statewide"][0] += delta
+        data["counties"][0][1] += delta
+        data["status"] = "OFFICIAL"
+        capture = {"granular_sources": {totals.AR_FEED: {
+            "status": "reported", "source": {"url": parent["source"]["url"], "bytes": size,
+                                             "sha256": str(size % 10) * 64},
+            "data": {"statewide_ballot_parent": data},
+        }}}
+        latest, changed = totals.project(previous, capture)
+        assert changed[0]["current"] - changed[0]["previous"] == delta
+        assert totals.project(latest, capture) == (latest, [])
+        previous = latest
+    assert totals.project(previous, stopping)[1][0] == {
+        "state_code": "AR", "id": totals.identity("AR"), "previous": 892946,
+        "current": 892946, "source_status": "retained_after_failure"}
+    data["counties"][0][1] += 1
+    with pytest.raises(ValueError, match="statewide and county"):
+        totals.project(previous, capture)
+
+
 def test_florida_projects_only_the_unchanged_retained_statewide_total(monkeypatch):
     baseline_path = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts/states/FL.json.gz"
     if not baseline_path.is_file():

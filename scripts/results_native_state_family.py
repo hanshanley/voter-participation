@@ -27,6 +27,9 @@ AR_REVIEWED_URL = (
     "2026_General_Election_%26_Judical_Runoff.json"
 )
 AR_ELECTION_ID = "11b07106-031e-4d7c-911a-d01fb473d6dd"
+AR_PARENT_FIELDS = ("TotalBallotsCast", "RegisteredVoters", "PrecinctsReporting",
+                    "TotalPrecincts", "PrecinctsPartiallyReporting")
+AR_COUNTY_IDS = tuple(f"05{i:03}" for i in range(1, 150, 2))
 AR_SOURCE_ID = (
     "accepted-export:b128dc3cef02ae063e840495611b3747dc9454692d2788a8cb94e3b160f4908a:"
     "reporting/AR"
@@ -345,6 +348,28 @@ def _source_bridge(templates, url, state):
     }
 
 
+def arkansas_parent(statewide, counties):
+    def values(node, *, county=False):
+        counts = [None if county and field in {"PrecinctsReporting", "PrecinctsPartiallyReporting"}
+                  and node.get(field) is None else _exact_count(node.get(field))
+                  for field in AR_PARENT_FIELDS]
+        ballots, registered, reported, total, partial = counts
+        if (ballots > registered or total == 0 or (reported or 0) + (partial or 0) > total
+                or ((reported is None or partial is None) and (reported or partial) != total)):
+            raise ValueError("Arkansas statewide reporting controls changed")
+        return counts
+
+    if tuple(sorted(counties)) != AR_COUNTY_IDS or any(
+        county.get("LocationID") != code for code, county in counties.items()
+    ):
+        raise ValueError("Arkansas statewide county identities changed")
+    rows = [[code, *values(counties[code], county=True)] for code in AR_COUNTY_IDS]
+    parent = values(statewide)
+    if [sum(value or 0 for value in column) for column in zip(*(row[1:] for row in rows))] != parent:
+        raise ValueError("Arkansas statewide and county reporting controls disagree")
+    return {"statewide": parent, "counties": rows}
+
+
 def _arkansas(body, templates, url):
     accepted = {}
     for template in templates:
@@ -462,7 +487,17 @@ def _arkansas(body, templates, url):
     updates = _updates(templates, facts, source_pin, url, "AR")
     missing_ballots = sum(row["ballots"] is None for row in query_rows)
     missing_registrations = sum(row["registered_voters"] is None for row in query_rows)
+    parent = {}
+    if tuple(sorted(counties)) == AR_COUNTY_IDS:
+        try:
+            parent["statewide_ballot_parent"] = {
+                **arkansas_parent(turnout, counties), "election_id": AR_ELECTION_ID,
+                "status": status, "count_source_clock": None,
+            }
+        except ValueError as exc:
+            parent["statewide_ballot_hold"] = str(exc)
     return {
+        **parent,
         "updates": updates,
         "complete_native_query": [{
             "state_code": "AR", "election_date": "2026-11-03",

@@ -11,6 +11,7 @@ from decimal import Decimal, ROUND_HALF_UP
 
 from scripts import protected_official_wyoming, results_minnesota_turnout as mn
 from scripts import results_alaska_turnout as alaska
+from scripts import results_native_state_family as state_family
 from scripts import results_turnout_history as history
 from scripts.results_state_statistics import AZ_URL
 from scripts.participation_intake.contract import (
@@ -33,9 +34,18 @@ FL_SOURCE = {
 }
 FL_COUNTIES = {"bytes": 38823, "sha256": "a170d6f84bc4c4abea37238dc52a7d92235978ac1ab6e0f11f8eaa19458b94bf"}
 FL_TOTAL = ("TOTAL", "8,335,497", "13,704,495", "60.82%", "100%", "", "", "", "", "")
+AR_FEED = "AR-registered-a7d02a1142f7e41c"
+AR_CAPTURE = "2026-11-05T11:43:56.646427+00:00"
+AR_SOURCE = {"url": state_family.AR_REVIEWED_URL, "bytes": 55645416,
+             "sha256": "079518a65d5f66385ec1cb5cedcd93a02973d6ae24a0793427af8d08c9fe14bd"}
+AR_REVIEW = "additional:AR-2026-native-counts"
+AR_TOTAL = [893026, 1856404, 2761, 2768, 7]
+AR_COUNTIES = {"bytes": 2385, "sha256": "e3ff11ddb2e0b2d94a817a72109708add0cbcb83214fb050ed4b9ae9ee7c6ebc"}
 PROFILES = {
     "AK": {"state": "Alaska", "source_id": "ak-doe-statewide-voters-cast-20261103",
            "feed": alaska.FEED, "url": alaska.REPORT},
+    "AR": {"state": "Arkansas", "source_id": "ar-sos-statewide-ballots-cast-20261103",
+           "feed": AR_FEED, "url": AR_SOURCE["url"]},
     "AZ": {"state": "Arizona", "source_id": "az-sos-county-ballots-20261103",
            "feed": "AZ-official", "url": AZ_URL},
     "FL": {"state": "Florida", "source_id": FL_REVIEW, "feed": None, "url": FL_SOURCE["url"]},
@@ -129,6 +139,8 @@ def observation(code, summary, retained=False):
     profile = PROFILES[code]
     if code == "AK":
         return alaska_observation(summary, retained)
+    if code == "AR":
+        return arkansas_observation(summary, retained)
     if code == "FL":
         return florida_observation(summary, retained)
     if code == "VT":
@@ -598,6 +610,88 @@ def alaska_observation(summary, retained):
         "quality": {"conflicts": [], "notes": notes}, "view": view})
 
 
+def arkansas_summary(snapshot, shard, previous):
+    entry = snapshot.get("granular_sources", {}).get(AR_FEED, {})
+    facts = (entry.get("data") or {}).get("statewide_ballot_parent")
+    if entry.get("status") == "reported" and facts is not None:
+        return {"contract": CONTRACT, "source": entry["source"], "archived_capture": None, **facts}
+    if previous is not None:
+        return None
+    records = [row for row in shard["records"] if row["view"].get("review_id") == AR_REVIEW
+               and row["geography"]["level"] in {"county", "county_equivalent"}]
+    if not records:
+        return None
+    counties = {row["view"]["county_id"].removeprefix("additional:AR:"): row["view"]["native_record"]
+                for row in records}
+    require(len(counties) == len(records), "Duplicate retained Arkansas county controls")
+    facts = state_family.arkansas_parent(dict(zip(state_family.AR_PARENT_FIELDS, AR_TOTAL)), counties)
+    require(pin(encoded(facts["counties"])) == AR_COUNTIES, "Retained Arkansas county controls changed")
+    return {"contract": CONTRACT, "source": AR_SOURCE, "archived_capture": AR_CAPTURE,
+            "election_id": state_family.AR_ELECTION_ID, "status": "UNOFFICIAL",
+            "count_source_clock": None, **facts}
+
+
+def arkansas_observation(summary, retained):
+    source, statewide, counties = (summary[key] for key in ("source", "statewide", "counties"))
+    archive = summary["archived_capture"]
+    require(summary["contract"] == CONTRACT and summary["election_id"] == state_family.AR_ELECTION_ID
+            and summary["status"] in {"OFFICIAL", "UNOFFICIAL"} and summary["count_source_clock"] is None
+            and set(source) == {"url", "bytes", "sha256"} and source["url"] == AR_SOURCE["url"]
+            and type(source["bytes"]) is int and source["bytes"] > 0
+            and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]),
+            "Arkansas statewide report identity or receipt changed")
+    if archive is not None:
+        require(retained and archive == AR_CAPTURE and source == AR_SOURCE and statewide == AR_TOTAL
+                and summary["status"] == "UNOFFICIAL" and pin(encoded(counties)) == AR_COUNTIES,
+                "Retained Arkansas statewide edition changed")
+    fields = state_family.AR_PARENT_FIELDS
+    require(all(len(row) == len(fields) + 1 for row in counties) and len(statewide) == len(fields),
+            "Arkansas statewide query fields changed")
+    native = {row[0]: {"LocationID": row[0], **dict(zip(fields, row[1:]))} for row in counties}
+    require(state_family.arkansas_parent(dict(zip(fields, statewide)), native)
+            == {"statewide": statewide, "counties": counties}, "Arkansas statewide query changed")
+    ballots, registered, reported, total, partial = statewide
+    measure = "Total Ballots Cast"
+    status = "retained_after_failure" if retained else "reported"
+    notes = ["Arkansas's direct statewide total agrees with all 75 counties in the same full-election export.",
+             "The registration stock and reporting-unit counters are contextual. No rate, certification, "
+             "unique-voter estimate or new local map join is qualified.",
+             "The capture time is not a native count-update clock."]
+    if archive:
+        notes.insert(0, "Retained from the November 5, 2026 capture; not a current or final total.")
+    view = {"state": "Arkansas", "state_code": "AR", "year": 2026, "mode": "official",
+            "geography_level": "statewide", "status": status, "ballots": ballots,
+            "registered": registered, "denominator": None, "denominator_basis": "electorate_not_supplied",
+            "reported_pct": None, "validated_pct": None, "native_printed_pct": None,
+            "source_update_label": None, "source_update_timezone": None,
+            "source_date": None, "source_capture_date": archive, "source_status_literal": summary["status"],
+            "reported_units": reported, "total_units": total, "partially_reported_units": partial,
+            "source_url": source["url"], "source_sha256": source["sha256"], "complete_download_url": None,
+            "automatic_source_refresh": True, "maps_approved": False,
+            "participation_measure_kind": "ballots_cast", "participation_measure_literal": measure,
+            "participation_measure_label": "Native statewide ballots cast", "cast_ballot_count_qualified": True,
+            "unique_voter_count_qualified": False, "quality": notes,
+            "source_reporting_label": " ".join(notes), "statewide_ballot_parent": copy.deepcopy(summary)}
+    return validate({
+        "contract": VERSION, "id": identity("AR"),
+        "election": {"id": "AR-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": "AR-native-statewide-total", "name": "Arkansas", "state_code": "AR",
+                      "level": "state", "parent_id": None, "join": {"status": "nongeographic",
+                          "reference_id": None, "feature_key": None, "evidence": None}},
+        "measure": {"id": "native-total-ballots-cast", "literal": measure,
+                    "kind": "ballots_cast", "mode": "all_methods", "unit": "ballots"},
+        "count": {"value": ballots, "literal": ballots, "status": "reported"},
+        "denominator": None, "source_clock": {"literal": None, "timezone": None},
+        "reporting_status": {"literal": summary["status"], "reported_units": reported,
+                             "total_units": total, "complete": False if reported < total else None},
+        "source": {"id": PROFILES["AR"]["source_id"], "url": source["url"], "input_sha256": source["sha256"],
+                   "classification": "public_aggregate", "selector": {"path": "TurnoutData.TotalBallotsCast"},
+                   "fields": copy.deepcopy(view)},
+        "quality": {"conflicts": [], "notes": notes}, "view": view,
+    })
+
+
 def florida_summary(shard):
     rows = sorted(
         (row["view"]["native_record"] for row in shard["records"]
@@ -691,7 +785,8 @@ def project(files, snapshot):
         if previous is not None:
             validate_existing(code, previous)
         entry = feeds.get(profile["feed"])
-        summary = (florida_summary(shard) if code == "FL" else
+        summary = (arkansas_summary(snapshot, shard, previous) if code == "AR" else
+                   florida_summary(shard) if code == "FL" else
                    turnout_history_summary(snapshot, code) if code in {"VA", "WA"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
@@ -700,14 +795,18 @@ def project(files, snapshot):
                 continue
             row = observation(code, previous["view"]["statewide_ballot_parent"], retained=True)
         else:
-            row = observation(code, summary, retained=code == "FL")
+            row = observation(code, summary, retained=code == "FL"
+                              or code == "AR" and summary["archived_capture"] is not None)
             if previous is not None:
                 before = previous["view"]["statewide_ballot_parent"]
                 after = row["view"]["statewide_ballot_parent"]
                 require(before["source"]["sha256"] != after["source"]["sha256"]
+                        or code == "AR" and {**before, "archived_capture": None} == after
                         or code == "AK" and before["statewide_feed"] != after["statewide_feed"]
                         or code == "MN" and before["statistical_txt"] != after["statistical_txt"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
+                if code == "AR" and before["status"] == "OFFICIAL" and after["status"] != "OFFICIAL":
+                    row = observation(code, before, retained=True)
                 if code == "MN" and (after["source_edition"] < before["source_edition"]
                         or before["source_status"] == "Official Results"
                         and after["source_status"] != "Official Results"):

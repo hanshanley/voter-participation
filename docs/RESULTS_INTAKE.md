@@ -1566,6 +1566,17 @@ snapshots; a true zero remains zero. The reviewed download asset does **not**
 establish a stable successor-export discovery route. That discovery gap remains
 an explicit hold; no endpoint is guessed.
 
+The statewide release also preserves the direct `TurnoutData.TotalBallotsCast`
+from the November 5, 2026 capture: 893,026, reconciled against all 75 counties
+and bound to the original receipt and exact county control vector. Of 2,768
+reporting units, 2,761 were fully reported and seven were partial. A sparse
+county counter stays blank in the packaged query; it can contribute zero to
+the reconciliation only when the other counter accounts for every unit.
+The release labels this edition retained and unofficial, reports no rate,
+and does not retry the stopped route. A future accepted snapshot of the
+reviewed native export can replace it automatically using the same parent
+checks; an incompatible parent leaves the prior statewide count in place.
+
 Arizona uses literal county/precinct UUIDs and the public root declaration to
 reconcile precinct, county and registration totals. A zero in the statewide
 backend is not substituted for positive county observations. Positive
