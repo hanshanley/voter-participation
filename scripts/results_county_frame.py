@@ -7,7 +7,7 @@ import re
 
 from scripts.participation_count_additions import COUNTY_QUALIFIERS
 from scripts.participation_intake.contract import VERSION, encoded, observation_id, pin, validate_all
-from scripts.statewide_ballot_totals import compressed, require
+from scripts.statewide_ballot_totals import compressed, identity as statewide_identity, require
 from scripts import results_clarity_congress as clarity
 from scripts import results_pdf_county_parent as county_pdf
 from scripts import results_turnout_history as history
@@ -515,3 +515,101 @@ def project_buxton(counts, native, snapshot):
 
 def project_philadelphia(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, PHILADELPHIA)
+
+
+def project_ohio(counts, native):
+    index = json.loads(counts["index.json"])
+    declaration = index["states"].get("OH")
+    if declaration is None:
+        return counts, native, []
+    path = declaration["file"]
+    shard = decode(counts[path])
+    rows = {r["id"]: r for r in shard["records"]}
+    state = rows.get(statewide_identity("OH"))
+    if state is None:
+        return counts, native, []
+    native_index = json.loads(native["index.json"])
+    mappings = native_index["county_bindings"]["OH"]
+    names, context, reference = county_reference({
+        "code": "OH", "county_count": 88, "fips_prefix": "39",
+        "reference_source": "in_person_early", "reference_sha256": CUYAHOGA_REFERENCE,
+    }, native_index, shard)
+    summary = state["view"]["statewide_ballot_parent"]
+    query = summary["query"]
+    history.ohio_controls(query)
+    require({row[1] + " County" for row in query["counties"]} == set(names)
+            and names["Cuyahoga County"] == CUYAHOGA_FIPS, "Ohio county identity differs")
+    cuyahoga_id = observation_id(CUYAHOGA[5], CUYAHOGA_ELECTION, CUYAHOGA_GEO,
+                                 "countywide-ballots-cast", "all_methods")
+    if cuyahoga_id not in rows:
+        return counts, native, []
+    stable = {key: copy.deepcopy(state[key]) for key in ("contract", "election", "measure", "source_clock")}
+    source = {key: value for key, value in state["source"].items() if key != "fields"}
+    common = {key: value for key, value in state["view"].items() if key != "statewide_ballot_parent"}
+    projected = {}
+    for native_id, county, ballots, registered, reported, units, absentee, provisional, printed in query["counties"]:
+        fips = names[county + " County"]
+        if fips == CUYAHOGA_FIPS:
+            continue
+        name, geo = county + " County", "OH:enr-county:" + fips
+        key = observation_id(source["id"], state["election"]["id"], geo,
+                             state["measure"]["id"], "all_methods")
+        notes = [
+            "County ballots counted and registration reconcile to the dated statewide unofficial frame.",
+            "Outstanding UOCAVA and provisional ballots are separate; election-day precinct reporting is not certification.",
+        ]
+        rate = 100 * ballots / registered
+        native_row = {"county_object_id": native_id, "outstanding_uocava": absentee,
+                      "outstanding_provisional": provisional, "xml_edition": query["election"]["source"]}
+        view = {**common, "geography_level": "county", "county_id": geo, "county": name,
+                "county_fips": fips, "maps_approved": True, "reference_geometry": reference,
+                "ballots": ballots, "denominator": registered, "reported_pct": rate,
+                "validated_pct": rate, "native_printed_pct": printed + "%", "source_mode": "all_methods",
+                "reported_units": reported, "total_units": units, "native_record": native_row,
+                "participation_measure_label": "County ballots counted", "quality": notes}
+        projected[key] = {**stable, "id": key, "geography": {
+            "id": geo, "name": name, "state_code": "OH", "level": "county",
+            "parent_id": state["geography"]["id"], "join": {
+                "status": "approved", "reference_id": reference["review_id"], "feature_key": fips,
+                "evidence": "Exact Ohio county identity on the pinned 2026 county context",
+            }},
+            "source": {**source, "selector": {"native_id": native_id}, "fields": copy.deepcopy(view)},
+            "source_clock": state["source_clock"], "count": {"value": ballots, "literal": ballots, "status": "reported"},
+            "denominator": {**state["denominator"], "value": registered},
+            "reporting_status": {"literal": view["source_status_literal"], "reported_units": reported,
+                                 "total_units": units, "complete": None},
+            "quality": {"notes": notes, "conflicts": []}, "view": view}
+    validate_all(projected.values())
+    old = {key: rows[key] for key in projected if key in rows}
+    require(not old or set(old) == set(projected), "Ohio county source inventory was partially projected")
+    for mode in ("official", "uf_vap", "uf_vep"):
+        frame, binding = shard["views"][mode], mappings[mode]
+        old_ids = [cuyahoga_id, *old]
+        require(frame["qualified"] and frame["counties"] == old_ids
+                and len(binding["rows"]) == len(old_ids)
+                and {item["feature_key"] for item in binding["rows"]} ==
+                    {CUYAHOGA_FIPS, *(row["view"]["county_fips"] for row in old.values())}
+                and all(binding[field] == context[field] for field in ("sha256", "features", "feature_keys", "feature_scopes")),
+                "Ohio county selection or map preimage changed")
+        frame["counties"] = [cuyahoga_id, *projected]
+        binding["rows"] = [item for item in binding["rows"] if item["feature_key"] == CUYAHOGA_FIPS] + [
+            {"feature_key": row["view"]["county_fips"], "county_id": row["view"]["county_id"],
+             "qualifier": {field: row["view"].get(field) for field in COUNTY_QUALIFIERS}}
+            for row in projected.values()]
+        declaration["views"][mode]["counties"] = len(frame["counties"])
+        declaration["views"][mode]["dispositions"]["counties"] = {
+            **coverage([rows[cuyahoga_id], *projected.values()]), "geography_levels": ["county"]}
+    if old == projected:
+        return counts, native, []
+    rows.update(projected)
+    shard["records"] = list(rows.values())
+    counts = dict(counts, **{path: compressed(shard)})
+    declaration.update(pin(counts[path]), records=len(rows))
+    index["coverage"]["OH"].update(records=len(rows), **coverage(rows.values()),
+                                   zeros=sum(row["count"]["value"] == 0 for row in rows.values()))
+    counts["index.json"] = encoded(index)
+    native = dict(native, **{"index.json": encoded(native_index)})
+    changes = [{"state_code": "OH", "id": key, "previous": old[key]["count"]["value"] if key in old else None,
+                "current": row["count"]["value"], "source_status": row["view"]["status"]}
+               for key, row in projected.items() if old.get(key) != row]
+    return counts, native, changes

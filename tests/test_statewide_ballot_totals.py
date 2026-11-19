@@ -150,28 +150,52 @@ def test_new_jersey_future_archive_publication_retains_last_good(tmp_path, monke
 
 
 def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_conflicts(tmp_path, monkeypatch):
+    from scripts import results_county_frame as frame
     from scripts.results_intake import Collector
+    from scripts.participation_intake.contract import observation_id
 
     history = totals.history
     files = baseline(monkeypatch)
     path = "states/OH.json.gz"
     original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
-    files[path] = original.read_bytes()
+    shard = frame.decode(original.read_bytes())
+    by_id = {row["id"]: row for row in shard["records"]}
+    early = [by_id[key]["view"] for key in shard["views"]["in_person_early"]["counties"]]
+    cuyahoga = observation_id(frame.CUYAHOGA[5], frame.CUYAHOGA_ELECTION, frame.CUYAHOGA_GEO,
+                               "countywide-ballots-cast", "all_methods")
+    shard["records"].append({"id": cuyahoga, "source": {"id": frame.CUYAHOGA[5]}, "denominator": None,
+                            "count": {"status": "reported", "value": 21}, "view": {}})
+    modes = ("official", "uf_vap", "uf_vep")
+    for mode in modes:
+        shard["views"][mode]["counties"] = [cuyahoga]
+    files[path] = totals.compressed(shard)
     ndx = json.loads(files["index.json"])
-    ndx["states"]["OH"] = {"file": path, **pin(files[path])}
+    ndx["states"]["OH"] = {"file": path, **pin(files[path]),
+                          "views": {mode: {"dispositions": {}} for mode in modes}}
+    ndx["coverage"]["OH"] = {}
     files["index.json"] = encoded(ndx)
+    scopes = {view["county_fips"]: {"state_code": "OH", "name": view["county"], "boundary_year": 2026}
+              for view in early}
+    bounds = {"feature_scopes": scopes, "features": len(scopes), "feature_keys": list(scopes),
+              "sha256": frame.CUYAHOGA_REFERENCE}
+    native = {"index.json": encoded({"county_bindings": {"OH": {
+        "in_person_early": {**bounds, "rows": [{"feature_key": view["county_fips"], "county_id": view["county_id"]}
+                                            for view in early]},
+        **{mode: {**bounds, "rows": [{"feature_key": frame.CUYAHOGA_FIPS}]} for mode in modes},
+    }}})}
     county = ["20", "40", "1", "1", "2", "3"]
     control = [str(88 * int(value)) for value in county]
     parent = dict(zip(history.OH_FIELDS, control), objectId=None, name="Totals", ballotCastPercent="50.00")
-    rows = [dict(zip(history.OH_FIELDS, county), objectId=f"_{i}", name=f"County {i}",
-                 ballotCastPercent="50.00") for i in range(88)]
+    names = [view["county"].removesuffix(" County") for view in early]
+    rows = [dict(zip(history.OH_FIELDS, county), objectId=f"_{i}", name=name,
+                 ballotCastPercent="50.00") for i, name in enumerate(names)]
     xml = (f'<ElectionReport xmlns="{history.OH_NS["n"]}" IssuerAbbreviation="OH" '
            'Status="UnofficialComplete" GeneratedDate="2026-11-13T09:43:04Z">'
            '<Election Date="2026-11-03" Type="General"><Name><LanguageString>'
            'November 3, 2026 General Unofficial Canvass</LanguageString></Name></Election><GpUnitCollection>'
-           + "".join(f'<GpUnit ObjectId="_{i}" Name="County {i}" Type="County" IsElectoralDistrict="false" '
+           + "".join(f'<GpUnit ObjectId="_{i}" Name="{name}" Type="County" IsElectoralDistrict="false" '
                      'VotersParticipated="20" VotersRegistered="40" SubUnitsReported="1" TotalSubUnits="1"/>'
-                     for i in range(88))
+                     for i, name in enumerate(names))
            + '</GpUnitCollection></ElectionReport>').encode()
 
     def acquire(self, url):
@@ -197,6 +221,14 @@ def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_confli
     assert row["denominator"]["value"] == 3520 and row["reporting_status"]["complete"] is None
     assert row["view"]["validated_pct"] == 50
     assert totals.project(updated, {"granular_sources": accepted}) == (updated, [])
+    counties, bindings, additions = frame.project_ohio(updated, native)
+    assert len(additions) == 87
+    after_counties = frame.decode(counties[path])
+    assert all(after_counties["views"][mode] == shard["views"][mode]
+               for mode in ("available", "in_person_early", "mail_returned"))
+    assert all(len(after_counties["views"][mode]["counties"]) == 88
+               and after_counties["views"][mode]["counties"][0] == cuyahoga for mode in modes)
+    assert frame.project_ohio(counties, bindings) == (counties, bindings, [])
     xml = xml.replace(b'VotersParticipated="20"', b'VotersParticipated="19"', 1)
     failed = collect(accepted)
     assert failed[feed]["status"] == "retained_after_failure"
@@ -204,6 +236,11 @@ def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_confli
     retained, changes = totals.project(updated, {"granular_sources": failed})
     assert changes[0]["current"] == 1760 and changes[0]["source_status"] == "retained_after_failure"
     assert totals.project(retained, {"granular_sources": failed}) == (retained, [])
+    retained_state, _ = totals.project(counties, {"granular_sources": failed})
+    retained_counties, retained_bindings, held = frame.project_ohio(retained_state, bindings)
+    assert len(held) == 87 and all(item["previous"] == item["current"] == 20
+                                   and item["source_status"] == "retained_after_failure" for item in held)
+    assert frame.project_ohio(retained_counties, retained_bindings) == (retained_counties, retained_bindings, [])
 
 
 def test_connecticut_retained_control_and_versioned_successor(monkeypatch):
