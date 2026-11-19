@@ -85,14 +85,28 @@ def mechanisms(row, state_row):
 
 def administrative(files):
     from scripts import results_native_dc as dc
+    from scripts.results_turnout_history import GA_FEED
     from scripts.statewide_ballot_totals import OR_BASELINE_ID, identity as statewide_id
 
     index = decoded(files, "index.json")
     rows = []
     for state, declaration in sorted(index["states"].items()):
-        records = decoded(files, declaration["file"])["records"]
+        shard = decoded(files, declaration["file"])
+        records = shard["records"]
         successor = statewide_id("OR") if state == "OR" and any(
             record["id"] == statewide_id("OR") for record in records) else None
+        superseded = {OR_BASELINE_ID: successor} if successor else {}
+        if state == "GA":
+            newer = {record["geography"]["name"]: record["id"] for record in records
+                     if record["source"]["id"] == GA_FEED and record["geography"]["level"] == "county"}
+            if newer:
+                available = set(shard["views"]["available"]["counties"])
+                older = {record["geography"]["name"]: record["id"] for record in records
+                         if record["id"] in available and record["geography"]["level"] == "county"
+                         and record["measure"]["literal"] == "ballotsCast"}
+                require(len(older) == len(newer) == 159 and set(older) == set(newer),
+                        "Georgia legacy county export does not match the reviewed successors")
+                superseded.update({identity: newer[name] for name, identity in older.items()})
         for record in records:
             count, denominator = record["count"], record.get("denominator")
             qualified = bool(denominator and denominator.get("qualified"))
@@ -107,7 +121,7 @@ def administrative(files):
                 "measure": record["measure"]["literal"], "measure_kind": record["measure"]["kind"],
                 "unit": record["measure"]["unit"], "mode": record["measure"]["mode"],
                 "count_status": count["status"], "source_count": value,
-                "superseded_by_observation_id": successor if record["id"] == OR_BASELINE_ID else None,
+                "superseded_by_observation_id": superseded.get(record["id"]),
                 "registered_or_other_denominator": stock,
                 "denominator_basis": denominator.get("basis") if denominator else None,
                 "denominator_qualified": qualified, "compatible_source_fraction_pct": rate,
