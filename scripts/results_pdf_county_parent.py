@@ -107,7 +107,10 @@ def collect_philadelphia(collector):
             raise ValueError("Philadelphia official results reverted to unofficial")
         return data
 
-    return collector.capture(PHILADELPHIA_FEED, PHILADELPHIA_URL, parse)
+    return collector.capture(PHILADELPHIA_FEED, PHILADELPHIA_URL, parse,
+                             equivalent=lambda old, new: {
+                                 key: value for key, value in old.items() if key != "report"
+                             } == {key: value for key, value in new.items() if key != "report"})
 
 
 class ReportLinks(HTMLParser):

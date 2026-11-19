@@ -48,7 +48,7 @@ def test_buxton_turnout_accepts_consistent_revisions_and_rejects_wrong_scope(tmp
     assert collect(revised)["status"] == "retained_after_failure"
 
 
-def test_philadelphia_turnout_keeps_parent_residual_and_holds_testing_or_invalid_divisions():
+def test_philadelphia_turnout_keeps_parent_residual_and_holds_testing_or_invalid_divisions(tmp_path, monkeypatch):
     parser = frame.county_pdf
     header = (
         '<div id="pnlTestBanner" style="display:none"></div>'
@@ -79,6 +79,31 @@ def test_philadelphia_turnout_keeps_parent_residual_and_holds_testing_or_invalid
     with pytest.raises(ValueError, match="outside the unassigned mail residual"):
         parser.philadelphia_report(body.replace(b"Mail:<span>68", b"Mail:<span>67")
                                   .replace(b"Polling Place:<span>66", b"Polling Place:<span>67"))
+
+    def acquire(self, url):
+        assert url == parser.PHILADELPHIA_URL
+        return body, {"origin": "fixture_transport", **pin(body)}
+
+    monkeypatch.setattr(results_intake.Collector, "acquire", acquire)
+
+    def collect(prior=None):
+        collector = results_intake.Collector(
+            tmp_path, {parser.PHILADELPHIA_FEED: prior} if prior else {},
+            {"urls": [], "prefixes": [], "hosts": []}, datetime(2026, 11, 19, tzinfo=timezone.utc))
+        return parser.collect_philadelphia(collector), collector.attempts[-1]
+
+    first, _ = collect()
+    body += b"<!-- different request-specific HTML -->"
+    again, attempt = collect(first)
+    assert again == first
+    assert attempt["sha256"] == pin(body)["sha256"] != first["source"]["sha256"]
+    assert attempt["accepted_equivalent_source"] == first["source"]
+    body = body.replace(b"134</span>", b"133</span>").replace(b"Mail:<span>68", b"Mail:<span>67")
+    body = body.replace(b".76%", b".38%").replace(b"10:18:46 AM EST", b"10:19:00 AM EST")
+    revised, _ = collect(first)
+    assert revised["status"] == "reported"
+    assert parser.philadelphia_controls(revised["data"])[:3] == (133, 264, "50.38%")
+    assert revised["source"]["sha256"] == pin(body)["sha256"]
 
 
 def baseline(value):

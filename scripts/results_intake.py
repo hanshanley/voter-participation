@@ -316,7 +316,7 @@ class Collector:
                 "http_last_modified": source[2],
                 "qualification": "HTTP representation edition, not a native count-update clock"}
 
-    def capture(self, identity, url, parser):
+    def capture(self, identity, url, parser, *, equivalent=None):
         old = self.prior.get(identity)
         stage, attempted_pin = "acquisition", None
         try:
@@ -327,13 +327,20 @@ class Collector:
                     and data["date"] < old["data"]["date"]):
                 raise ValueError("Source data date regressed")
             source = {"url": url, **pin(body)}
-            if old and old.get("source") == source and old.get("data") == data:
+            same_facts = (equivalent is not None and old and old.get("data") is not None
+                          and (old.get("source") or {}).get("url") == url
+                          and equivalent(old["data"], data))
+            if same_facts or (old and old.get("source") == source and old.get("data") == data):
                 result = copy.deepcopy(old)
                 result.update(status="reported", error=None)
             else:
                 result = {"status": "reported", "data": data, "source": source, "error": None,
                           "first_observed_at": self.now.isoformat()}
             attempt = {"id": identity, "status": receipt["origin"], **source}
+            if same_facts and old["source"] != source:
+                # Volatile transport bytes do not replace the exact prior analytical input.
+                attempt["accepted_equivalent_source"] = old["source"]
+                attempted_pin = {key: old["source"][key] for key in ("bytes", "sha256")}
             result.update(error_detail=None, error_stage=None)
         except Exception as error:
             code = source_error(error)
