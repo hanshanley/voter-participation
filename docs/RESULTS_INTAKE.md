@@ -2296,12 +2296,33 @@ on every page. The November 4 unofficial report yields 482,011 ballots and
 generation, not a separately verified count-update clock. The count is not a
 sum of candidate votes, a complete statewide count, or certified turnout.
 
-The analytical runtime joins only this county to the pinned Ohio reference
-and exposes it in the government-source view and local drill-down from the
-state estimate views. It does not modify Ohio's 88-county early or mail
-activity frames. Compatible reports can revise counts in either direction;
-incompatible or unavailable reports retain the last qualified observation.
-The source packet includes every native statistical header used by the query.
+This county's report takes precedence in the government-source view and the
+local drill-down from the state estimate views. Compatible reports can revise
+counts in either direction; incompatible or unavailable reports retain the
+last qualified observation. The source packet includes every native
+statistical header used by the query.
+
+### Ohio: retained statewide and county participation
+
+The November 13, 2026 unofficial edition reports 4,658,250 counted ballots and
+8,018,054 registered voters (58.10%). Both statewide controls match the full
+88-county table, and every county's counted ballots, registrations and reporting
+counters match the dated XML. Outstanding overseas and provisional ballots are
+separate. The XML generation timestamp is not a ballot-count update time;
+complete precinct reporting does not establish certification.
+
+When the exact XML route is stopped at acquisition and there is no accepted
+statewide predecessor, the runtime can use the checksum-pinned aggregate query
+at `data/results-intake/oh-20261113-statewide-and-counties.json`. It does not
+revisit stopped routes or treat those observations as fresh. After bootstrap,
+the runtime retains the last accepted edition on failure and consumes qualified
+revisions from the regular collector. The government-source county view selects
+the independent Cuyahoga report and the other 87 records from the statewide
+query; do not sum this mixed-edition map to obtain the statewide fraction. The
+early and mail activity frames and the existing county geometry are unchanged.
+The complete analytical download includes the aggregate input, original source
+pins, replay code and all queries. It does not include unrelated XML contest
+records or imply any precinct or demographic participation rate.
 
 ### Minnesota: statewide count from complete precinct statistics
 

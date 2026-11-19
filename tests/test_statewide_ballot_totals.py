@@ -564,7 +564,7 @@ def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_confli
     source_view = frame.decode(derived[path])["records"][-1]["view"]
     assert source_view["validated_pct"] == 50
     assert "sums VotersParticipated" in " ".join(source_view["quality"])
-    mapped, _, additions = frame.project_ohio(derived, native)
+    mapped, mapped_bindings, additions = frame.project_ohio(derived, native)
     assert len(additions) == 87
     county_view = frame.decode(mapped[path])["records"][-1]["view"]
     assert county_view["native_printed_pct"] is None
@@ -572,13 +572,38 @@ def test_ohio_accepts_reconciled_unofficial_statewide_turnout_and_retains_confli
 
     xml = xml.replace(b'VotersParticipated="20"', b'VotersParticipated="19"', 1)
     revised = collect(xml_only, [history.OH_BALLOTS])
-    revised_files, changes = totals.project(derived, {"granular_sources": revised})
+    revised_files, changes = totals.project(mapped, {"granular_sources": revised})
     assert [r["current"] for r in changes] == [1759]
-    assert revised_files[path] != derived[path]
+    revised_files, revised_bindings, additions = frame.project_ohio(revised_files, mapped_bindings)
+    assert [(r["previous"], r["current"]) for r in additions if r["previous"] != r["current"]] == [(20, 19)]
     assert collect(revised, [history.OH_BALLOTS]) == revised
     failed = collect(accepted)
     assert failed[feed]["status"] == "retained_after_failure"
     assert "not reconciled" in failed[feed]["error_detail"]
+
+    xml = xml.replace(b'VotersParticipated="19"', b'VotersParticipated="21"', 1)
+    xml = xml.replace(b"2026-11-13T09:43:04Z", b"2026-11-14T09:43:04Z")
+    corrected = {"granular_sources": collect(revised, [history.OH_BALLOTS])}
+    advanced, changes = totals.project(revised_files, corrected)
+    assert [r["current"] for r in changes] == [1761]
+    advanced, advanced_bindings, additions = frame.project_ohio(advanced, revised_bindings)
+    assert len(additions) == 87  # Every county has new edition provenance.
+    assert [(r["previous"], r["current"]) for r in additions if r["previous"] != r["current"]] == [(19, 21)]
+    assert totals.project(advanced, corrected) == (advanced, [])
+    assert frame.project_ohio(advanced, advanced_bindings) == (advanced, advanced_bindings, [])
+
+    stopped = {"granular_sources": {feed: {"status": "source_stopped"}}}
+    held, _ = totals.project(advanced, stopped)
+    held, held_bindings, changes = frame.project_ohio(held, advanced_bindings)
+    assert len(changes) == 87 and all(r["previous"] == r["current"] for r in changes)
+    held_view = frame.decode(held[path])["records"][-1]["view"]
+    assert held_view["status"] == "retained_after_failure"
+    assert "Retained from the XML edition generated 2026-11-14T09:43:04Z" in held_view["quality"][-1]
+    assert held_view["source_update_label"] is None
+    recovered, _ = totals.project(held, corrected)
+    recovered, _, _ = frame.project_ohio(recovered, held_bindings)
+    assert frame.decode(recovered[path]) == frame.decode(advanced[path])
+
     xml = xml.replace(f'Name="{names[0]}"'.encode(), b'Name="Unknown County"', 1)
     rejected = collect(revised, [history.OH_BALLOTS])[feed]
     assert rejected["status"] == "retained_after_failure"

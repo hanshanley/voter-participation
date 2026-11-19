@@ -730,6 +730,9 @@ def project_ohio(counts, native):
              else "Outstanding UOCAVA and provisional ballots are separate."),
             "Election-day precinct reporting is not certification.",
         ]
+        if common["status"] == "retained_after_failure":
+            notes.append(f"Retained from the XML edition generated {query['election']['generated_at']} after a "
+                         "source failure. The edition timestamp is not a ballot-count update time.")
         rate = 100 * ballots / registered
         native_row = {"county_object_id": native_id, "outstanding_uocava": absentee,
                       "outstanding_provisional": provisional, "xml_edition": query["election"]["source"]}
