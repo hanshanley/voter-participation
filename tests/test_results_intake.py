@@ -674,24 +674,53 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(
     assert subprocess.check_output(["git", "-C", str(repo), "symbolic-ref", "HEAD"]).strip() == b"refs/heads/main"
     intake.write(work / "publication-parent.json", {"parent": result["data_commit"]})
     assert intake.publish(repo, "results-data", "fixture/results", work)["status"] == "unchanged"
-    failed = tmp_path / "failed"
-    intake.write(failed / "publication-parent.json", {"parent": result["data_commit"]})
-    intake.write(failed / "source-stops.json",
-                 {"urls": ["https://example.test/stopped"], "prefixes": [], "hosts": []})
-    with pytest.raises(ValueError, match="durable stops preserved"):
-        intake.publish(repo, "results-data", "fixture/results", failed)
-    head = GitPublisher(repo, ref="results-data").remote_head()
-    assert json.loads(subprocess.check_output(["git", "-C", str(repo), "show", head + ":latest.json"]))["version"] == report["version"]
-    assert "https://example.test/stopped" in json.loads(
-        subprocess.check_output(["git", "-C", str(repo), "show", head + ":state.json"]))["source_stops"]["urls"]
-    interrupted = intake.unpack_state(json.loads(subprocess.check_output(
-        ["git", "-C", str(repo), "show", head + ":state.json"])))
-    assert interrupted["feeds"] == restored["feeds"]
+    head = result["data_commit"]
     assert subprocess.check_output(
         ["git", "-C", str(repo), "ls-remote", "--heads", "origin"]) == b""
     assert subprocess.check_output(
         ["git", "-C", str(repo), "ls-remote", "--tags", "origin", "refs/tags/results-data"]
     ).decode().split()[0] == head
+
+
+@pytest.mark.parametrize("separate_ledger_only_stop", [False, True])
+def test_interrupted_publication_merges_stops_without_changing_results(
+        tmp_path, separate_ledger_only_stop):
+    repo, remote = tmp_path / "repository", tmp_path / "remote.git"
+    subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)
+    subprocess.run(["git", "init", "-b", "main", str(repo)], check=True, capture_output=True)
+    publisher = GitPublisher(repo, ref="results-data")
+    publisher.git("remote", "add", "origin", str(remote))
+    old = {**EMPTY_STOPS, "hosts": ["previously-stopped.test"]}
+    ledger = {**old, "prefixes": ["https://separately-stopped.test/"]} if separate_ledger_only_stop else old
+    new = {**EMPTY_STOPS, "urls": ["https://example.test/stopped"]}
+    state = {"source_stops": old, "feeds": {"retained": {"status": "reported"}}}
+    latest = b'{"version":"last-good"}\n'
+    parent = publisher.commit(publisher.tree(None, {
+        "state.json": intake.pack_state(state),
+        "source-stops.json": intake.encoded(ledger),
+        "latest.json": latest,
+        "snapshots/last-good/complete-results.zip": b"immutable original packet",
+    }), None, "Original")
+    publisher.promote(parent, None)
+
+    failed = tmp_path / "failed"
+    intake.write(failed / "publication-parent.json", {"parent": parent})
+    intake.write(failed / "source-stops.json", new)
+    with pytest.raises(ValueError, match="durable stops preserved"):
+        intake.publish(repo, "results-data", "fixture/results", failed)
+    successor = publisher.remote_head()
+    expected = intake.merge_stops(old, ledger, new)
+    assert json.loads(publisher.git("show", successor + ":source-stops.json")) == expected
+    assert intake.unpack_state(json.loads(publisher.git("show", successor + ":state.json"))) == {
+        **state, "source_stops": expected,
+    }
+    assert set(publisher.git("diff", "--name-only", parent, successor).splitlines()) == {
+        "source-stops.json", "state.json",
+    }
+    intake.write(failed / "publication-parent.json", {"parent": successor})
+    with pytest.raises(ValueError, match="durable stops preserved"):
+        intake.publish(repo, "results-data", "fixture/results", failed)
+    assert publisher.remote_head() == successor
 
 
 def test_data_tag_updates_preserve_main_and_reject_stale_or_backward_publication(tmp_path):

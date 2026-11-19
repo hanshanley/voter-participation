@@ -1287,13 +1287,20 @@ def publish(repository, ref, github_repository, work):
     stopped = stops(read(work / "source-stops.json"))
     report_path = work / "report.json"
     if not report_path.exists():
-        bodies = {"source-stops.json": encoded(stopped)}
         if parent:
             prior = unpack_state(json.loads(publisher.git("show", parent + ":state.json")))
-            prior["source_stops"] = merge_stops(prior["source_stops"], stopped)
-            bodies["state.json"] = pack_state(prior)
+            ledger = None
+            if publisher.git("ls-tree", parent, "--", "source-stops.json"):
+                ledger = stops(json.loads(publisher.git("show", parent + ":source-stops.json")))
+            stopped = merge_stops(prior["source_stops"], stopped)
+            if ledger is not None:
+                stopped = merge_stops(ledger, stopped)
+            if prior["source_stops"] == ledger == stopped:
+                raise ValueError("Intake failed; durable stops preserved and last valid results retained")
         else:
-            bodies["state.json"] = pack_state({"source_stops": stopped})
+            prior = {}
+        bodies = {"source-stops.json": encoded(stopped),
+                  "state.json": pack_state({**prior, "source_stops": stopped})}
         commit = publisher.commit(publisher.tree(parent, bodies), parent,
                                   "Preserve election source access holds after interrupted intake")
         publisher.promote(commit, parent)
