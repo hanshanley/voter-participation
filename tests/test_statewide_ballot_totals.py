@@ -42,6 +42,46 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_kansas_waits_for_a_declared_workbook_and_preserves_a_reconciled_count(monkeypatch):
+    history = totals.history
+    files = baseline(monkeypatch)
+    path = "states/KS.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["KS"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    archive = {"url": history.KS_URL, **pin(b"index")}
+    entry = {"status": "reported", "source": archive, "data": {"current_election_status": "workbook_not_linked"}}
+    snapshot = {"granular_sources": {history.KS_FEED: entry}}
+    assert totals.project(files, snapshot) == (files, [])
+    original_url = "/elections/22elec/2022-General-Election-Turnout-Information.xlsx"
+    current_url = "/elections/26elec/2026-General-Election-Turnout-Information.xlsx"
+    link = lambda url: f'<a href="{url}">Turnout Information</a>'.encode()
+    assert history.kansas_link(link(original_url), 2026) is None
+    assert history.kansas_link(link("https://example.org" + current_url), 2026) is None
+    declared = history.kansas_link(link(original_url) + link(current_url), 2026)
+    assert declared == "https://www.sos.ks.gov" + current_url
+    names = [f"COUNTY {n:03}" for n in range(105)]
+    monkeypatch.setattr(history, "KS_COUNTIES", pin(encoded(names)))
+    query = {"counties": [[name, "N/A", 100, 200] for name in names], "total": [0, 10500, 21000]}
+    entry["data"] = {"report": {"url": declared, **pin(b"workbook")}, "complete_native_query": query}
+    projected, changes = totals.project(files, snapshot)
+    assert changes == [{"state_code": "KS", "id": totals.identity("KS"), "previous": None,
+                        "current": 10500, "source_status": "reported"}]
+    original_shard, next_shard = (json.loads(gzip.decompress(value[path])) for value in (files, projected))
+    assert original_shard["views"] == next_shard["views"]
+    row = next_shard["records"][-1]
+    assert row["view"]["validated_pct"] == 50 and row["source_clock"]["literal"] is None
+    assert totals.project(projected, snapshot) == (projected, [])
+    retained, changes = totals.project(projected, {})
+    assert changes[0]["current"] == 10500 and changes[0]["source_status"] == "retained_after_failure"
+    assert totals.project(retained, {}) == (retained, [])
+    query["counties"][0][2] += 1
+    with pytest.raises(ValueError, match="statewide totals disagree"):
+        totals.project(projected, snapshot)
+
+
 def test_connecticut_retained_control_and_versioned_successor(monkeypatch):
     files = baseline(monkeypatch)
     path = "states/CT.json.gz"

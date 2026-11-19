@@ -488,6 +488,7 @@ def collect(collector, baseline):
     jobs[results_pdf_county_parent.SUMNER_FEED] = results_pdf_county_parent.collect_sumner(collector)
     jobs[results_turnout_history.WA_FEED] = results_turnout_history.collect_washington(collector)
     jobs[results_turnout_history.VA_FEED] = results_turnout_history.collect_virginia(collector)
+    jobs[results_turnout_history.KS_FEED] = results_turnout_history.collect_kansas(collector)
     return jobs
 
 

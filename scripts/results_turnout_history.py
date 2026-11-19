@@ -3,10 +3,12 @@
 import csv
 from decimal import Decimal, ROUND_HALF_UP
 from html import unescape
+from html.parser import HTMLParser
 import io
 import re
+from urllib.parse import urljoin
 
-from scripts.participation_intake.contract import count
+from scripts.participation_intake.contract import count, encoded, pin
 
 
 WA_FEED = "WA-general-election-turnout"
@@ -23,6 +25,92 @@ VA_CERTIFICATION = ("The Department of Elections only publishes turnout statisti
                     "and turnout figures are only published after the election is certified.")
 VA_FIELDS = ("native_year", "registration_change_literal", "voting_absentee_literal")
 CURRENT_YEAR = 2026
+KS_FEED = "KS-general-election-turnout-workbook"
+KS_URL = "https://www.sos.ks.gov/elections/election-results.html"
+KS_COUNTIES = {"bytes": 1737, "sha256": "a7dc594edcdb462f76861c8f1dfbc7f186b8929737c502771c7c3d264265b981"}
+KS_HEADER = [["COUNTY", "ADVANCE BALLOTS", None, "TOTAL BALLOTS CAST", None, "REGISTERED"],
+             [None, "RETURNED BY MAIL", None, None, None, "VOTERS"]]
+
+
+def kansas_link(body, year):
+    class Links(HTMLParser):
+        links = set()
+
+        def handle_starttag(self, tag, attrs):
+            href = dict(attrs).get("href")
+            if tag == "a" and href:
+                self.links.add(urljoin(KS_URL, href))
+
+    parser = Links()
+    parser.feed(body.decode("utf-8-sig"))
+    links = [url for url in parser.links if re.fullmatch(
+        rf"https://(?:www\.)?sos\.ks\.gov/elections/{year % 100:02d}elec/"
+        rf"{year}-General-Election-Turnout-Information\.xlsx", url)]
+    if len(links) > 1:
+        raise ValueError("Ambiguous Kansas general-election turnout workbook")
+    return links[0] if links else None
+
+
+def kansas_workbook(body):
+    from openpyxl import load_workbook
+
+    with io.BytesIO(body) as stream:
+        workbook = load_workbook(stream, read_only=True, data_only=True)
+        try:
+            if len(workbook.worksheets) != 1 or workbook.active.max_column != 6 or not 110 <= workbook.active.max_row <= 150:
+                raise ValueError("Kansas turnout workbook dimensions changed")
+            rows = [list(row) for row in workbook.active.values]
+        finally:
+            workbook.close()
+    if rows[:2] != KS_HEADER:
+        raise ValueError("Kansas turnout workbook column labels changed")
+    nonblank = [row for row in rows[2:] if any(value is not None for value in row)]
+    if len(nonblank) != 106 or any(row[2] is not None or row[4] is not None for row in nonblank):
+        raise ValueError("Kansas turnout workbook row inventory changed")
+    counties, total = nonblank[:-1], nonblank[-1]
+    query = {"counties": [[row[0], row[1], row[3], row[5]] for row in counties],
+             "total": [total[1], total[3], total[5]]}
+    if total[0] not in (None, "TOTAL", "STATE TOTAL"):
+        raise ValueError("Kansas turnout workbook statewide selector changed")
+    kansas_controls(query, allow_county_conflicts=True)
+    return query
+
+
+def kansas_controls(query, *, allow_county_conflicts=False):
+    counties, total = query["counties"], query["total"]
+    if (len(counties) != 105 or any(len(row) != 4 or not isinstance(row[0], str) for row in counties)
+            or pin(encoded(sorted(row[0] for row in counties))) != KS_COUNTIES
+            or len(total) != 3):
+        raise ValueError("Kansas turnout county identities changed")
+    for mail, ballots, registered in [row[1:] for row in counties] + [total]:
+        if (type(ballots) is not int or type(registered) is not int or min(ballots, registered) < 0
+                or not (mail == "N/A" or type(mail) is int and 0 <= mail <= ballots)):
+            raise ValueError("Invalid Kansas turnout workbook figures")
+    if (sum(row[2] for row in counties) != total[1] or sum(row[3] for row in counties) != total[2]
+            or not 0 < total[1] <= total[2]):
+        raise ValueError("Kansas county and statewide totals disagree")
+    conflicts = [name for name, _, ballots, registered in counties if ballots > registered]
+    if conflicts and not allow_county_conflicts:
+        raise ValueError("Kansas county ballot counts exceed reported registrations: " + ", ".join(conflicts))
+    return total[1], total[2]
+
+
+def collect_kansas(collector):
+    def parse(index):
+        url = kansas_link(index, CURRENT_YEAR)
+        if url is None:
+            if (collector.prior.get(KS_FEED, {}).get("data") or {}).get("report"):
+                raise ValueError("Previously reported Kansas turnout workbook is no longer linked")
+            return {"current_election_status": "workbook_not_linked", "participation_observation_qualified": False}
+        body, _ = collector.acquire(url)
+        if len(body) > 2_000_000:
+            raise ValueError("Kansas turnout workbook exceeds reviewed size bound")
+        query = kansas_workbook(body)
+        kansas_controls(query)
+        return {"report": {"url": url, **pin(body)}, "complete_native_query": query,
+                "current_election_status": "row_published", "participation_observation_qualified": False}
+
+    return collector.capture(KS_FEED, KS_URL, parse)
 
 
 def integer(value):
