@@ -41,6 +41,59 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_minnesota_requires_complete_matching_dual_sources(monkeypatch):
+    from scripts.results_granular import MN_URL
+
+    mn = totals.mn
+    files = baseline(monkeypatch)
+    index = json.loads(files["index.json"])
+    path = "states/MN.json.gz"
+    files[path] = totals.compressed({"contract": "participation.count_snapshot.v1",
+                                   "state_code": "MN", "year": 2026, "records": [], "views": {}})
+    index["states"]["MN"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    fields = {"Eligible Population": "8,700", "Estimated Voters": "4,350",
+              "Estimated Turnout": "50.00%", "Counties Reporting": "87 of 87",
+              "Counties Complete": "87", "Precincts Reporting in State": "100% 87 of 87",
+              "Last Updated": "11/13/26 1:38 PM", "Voters Registered at 7AM": "6,960"}
+    header = "<tr>" + "".join(f"<th>{cell}</th>" for cell in mn.HEADER) + "</tr>"
+    county_rows = "".join(
+        f'<tr><td><a href="/Results/CountyPrecinctStatisticsStatewide/Index?ersElectionId=201&amp;countyid={i}">'
+        f'County {i}</a></td><td>1</td><td>1</td><td>100%</td><td>date</td><td>80</td><td>50</td></tr>'
+        for i in range(1, 88))
+    summary = "".join(f"<td>{key}: {value}</td>" for key, value in fields.items())
+    body = (f"<div>Unofficial Results {mn.ELECTION}</div><table><tr><td>{mn.TITLE}</td></tr>"
+            f"<tr>{summary}</tr></table><table>{header}{county_rows}</table>").encode()
+    report = mn.parse(body)
+    units = [dict(state="MN", county_id=f"{i:02}", precinct_id="001", has_reported_statistics="1",
+                  registered_7am=80, total_number_voted=50) for i in range(1, 88)]
+    txt = {"url": MN_URL, **pin(encoded(units))}
+    result = mn.reconcile(report, units)
+    entries = {
+        mn.IDENTITY: {"status": "reported", "source": {"url": mn.URL, **pin(body)},
+                      "data": {**report, "statistical_txt": txt, "reconciliation": result}},
+        "MN-native-local": {"status": "reported", "source": txt,
+                            "data": {"complete_native_query": units}},
+    }
+    def project(previous):
+        return totals.project(previous, {"granular_sources": entries})
+
+    fresh, changes = project(files)
+    assert changes[0]["current"] == 4350
+    observation, = json.loads(gzip.decompress(fresh[path]))["records"]
+    assert observation["denominator"] is None and observation["view"]["reported_pct"] is None
+    assert observation["view"]["statewide_ballot_parent"]["fields"] == fields
+    assert project(fresh) == (fresh, [])
+    entries[mn.IDENTITY]["status"] = "retained_after_failure"
+    stale, changes = project(fresh)
+    assert changes[0]["source_status"] == "retained_after_failure" and changes[0]["current"] == 4350
+    assert project(stale) == (stale, [])
+    units[0]["total_number_voted"] -= 1
+    units[1]["total_number_voted"] += 1
+    with pytest.raises(ValueError, match="disagree by county"):
+        mn.reconcile(report, units)
+
+
 def arizona_root():
     def label(value):
         return [{"languageId": "en", "text": value}]

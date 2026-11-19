@@ -8,7 +8,7 @@ import json
 from datetime import datetime
 from decimal import Decimal
 
-from scripts import protected_official_wyoming
+from scripts import protected_official_wyoming, results_minnesota_turnout as mn
 from scripts.results_state_statistics import AZ_URL
 from scripts.participation_intake.contract import (
     VERSION, count, encoded, observation_id, pin, validate,
@@ -25,6 +25,8 @@ VT_FIELDS = ("total_votes_cast_includes_absentee", "registered_voters", "absente
 PROFILES = {
     "AZ": {"state": "Arizona", "source_id": "az-sos-county-ballots-20261103",
            "feed": "AZ-official", "url": AZ_URL},
+    "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
+           "feed": mn.IDENTITY, "url": mn.URL},
     "VT": {"state": "Vermont", "source_id": "vt-sos-registered-turnout-20261103",
            "feed": "VT-registered-5a18635647c699ea", "url": VT_URL},
     "WY": {
@@ -73,8 +75,9 @@ def compressed(value):
 def identity(code):
     return observation_id(PROFILES[code]["source_id"], code + "-2026-11-03-general",
                           code + "-native-statewide-total",
-                          "native-votes-cast-including-absentee" if code == "VT" else
-                          "native-total-ballots-cast", "source_defined" if code == "VT" else "all_methods")
+                          {"VT": "native-votes-cast-including-absentee",
+                           "MN": "native-total-number-voted"}.get(code, "native-total-ballots-cast"),
+                          "source_defined" if code in {"VT", "MN"} else "all_methods")
 
 
 def native_summary(code, entry):
@@ -105,6 +108,8 @@ def observation(code, summary, retained=False):
     profile = PROFILES[code]
     if code == "VT":
         return vermont_observation(summary, retained)
+    if code == "MN":
+        return minnesota_observation(summary, retained)
     arizona = code == "AZ"
     selector = ({"scope": "all_15_reported_county_declarations"} if arizona else
                 {key: profile[key] for key in ("workbook", "sheet", "cell")})
@@ -330,6 +335,90 @@ def vermont_observation(summary, retained):
     })
 
 
+def minnesota_summary(snapshot):
+    sources = snapshot.get("granular_sources", {})
+    report, local = sources.get(mn.IDENTITY, {}), sources.get("MN-native-local", {})
+    if report.get("status") != "reported" or local.get("status") != "reported":
+        return None
+    data = report["data"]
+    facts = mn.reconcile(data, local["data"]["complete_native_query"])
+    require(data["reconciliation"] == facts and data["statistical_txt"] == local["source"],
+            "Minnesota statewide report does not match the retained statistical TXT")
+    return {"contract": CONTRACT, "source": report["source"], "statistical_txt": local["source"],
+            "source_edition": data["date"], "source_status": data["status"],
+            "fields": data["fields"], "counties": data["counties"],
+            "county_count": facts["counties"], "precincts": facts["precincts"],
+            "total_number_voted": facts["total_number_voted"]}
+
+
+def minnesota_observation(summary, retained):
+    from scripts.results_granular import MN_URL
+
+    profile = PROFILES["MN"]
+    for field, url in (("source", profile["url"]), ("statistical_txt", MN_URL)):
+        receipt = summary[field]
+        require(set(receipt) == {"url", "bytes", "sha256"} and receipt["url"] == url
+                and type(receipt["bytes"]) is int and receipt["bytes"] > 0
+                and len(receipt["sha256"]) == 64
+                and all(char in "0123456789abcdef" for char in receipt["sha256"]),
+                "Minnesota statewide original receipt changed")
+    fields, counties = summary["fields"], summary["counties"]
+    total, precincts = summary["total_number_voted"], summary["precincts"]
+    literal = summary["source_status"]
+    require(summary["contract"] == CONTRACT and len(counties) == summary["county_count"] == 87
+            and len({row["county_id"] for row in counties}) == 87
+            and sum(row["total_number_voted"] for row in counties) == total
+            and sum(row["precincts"] for row in counties) == precincts
+            and mn.integer(fields["Estimated Voters"]) == total
+            and summary["source_edition"] == datetime.strptime(
+                fields["Last Updated"], "%m/%d/%y %I:%M %p").isoformat()
+            and literal in {"Unofficial Results", "Official Results"},
+            "Minnesota statewide ballot evidence differs")
+    status = "retained_after_failure" if retained else "reported"
+    notes = [
+        "Statewide source Total Number Voted from complete reporting precinct statistics; "
+        "matches the state's printed Estimated Voters in every county.",
+        "Published Estimated Turnout uses a separate UF electorate estimate. "
+        "No administrative turnout rate or unique-voter count is qualified.",
+        "Source status is shown as printed. The reporting page does not itself establish certification.",
+    ]
+    measure = "Total Number Voted"
+    view = {"state": profile["state"], "state_code": "MN", "year": 2026,
+        "geography_level": "statewide", "mode": "official", "status": status,
+        "ballots": total, "denominator": None, "denominator_basis": "electorate_not_supplied",
+        "reported_pct": None, "validated_pct": None, "published_pct": None,
+        "native_printed_pct": None, "source_date": summary["source_edition"][:10],
+        "source_update_label": fields["Last Updated"], "source_update_timezone": None,
+        "source_status_literal": literal, "reported_units": precincts, "total_units": precincts,
+        "source_url": profile["url"], "source_sha256": summary["source"]["sha256"],
+        "complete_download_url": None, "automatic_source_refresh": True,
+        "participation_measure_kind": "participation_reported", "participation_measure_literal": measure,
+        "participation_measure_label": "Total number voted (precinct statistics)",
+        "cast_ballot_count_qualified": False, "unique_voter_count_qualified": False,
+        "native_election_id_qualified": True, "maps_approved": False,
+        "quality": notes, "source_reporting_label": " ".join(notes),
+        "statewide_ballot_parent": copy.deepcopy(summary)}
+    return validate({
+        "contract": VERSION, "id": identity("MN"),
+        "election": {"id": "MN-2026-11-03-general", "year": 2026, "date": "2026-11-03",
+                     "type": "general", "qualification": "native"},
+        "geography": {"id": "MN-native-statewide-total", "name": profile["state"],
+                      "state_code": "MN", "level": "state", "parent_id": None,
+                      "join": {"status": "nongeographic", "reference_id": None,
+                               "feature_key": None, "evidence": None}},
+        "measure": {"id": "native-total-number-voted", "literal": measure,
+                    "kind": "participation_reported", "mode": "source_defined", "unit": "source_reporting_count"},
+        "count": {"value": total, "literal": total, "status": "reported"},
+        "denominator": None, "source_clock": {"literal": fields["Last Updated"], "timezone": None},
+        "reporting_status": {"literal": literal, "reported_units": precincts,
+                             "total_units": precincts, "complete": True},
+        "source": {"id": profile["source_id"], "url": profile["url"],
+                   "input_sha256": summary["source"]["sha256"], "classification": "public_aggregate",
+                   "selector": {"ersElectionId": 201, "html_statistic": "Estimated Voters",
+                                "txt_statistic": measure}, "fields": copy.deepcopy(view)},
+        "quality": {"conflicts": [], "notes": notes}, "view": view})
+
+
 def project(files, snapshot):
     result = dict(files)
     index = json.loads(files["index.json"])
@@ -359,7 +448,7 @@ def project(files, snapshot):
             validate_existing(code, previous)
         entry = feeds.get(profile["feed"])
         summary = (arizona_summary(snapshot) if code == "AZ" else vermont_summary(snapshot)
-                   if code == "VT" else native_summary(code, entry)
+                   if code == "VT" else minnesota_summary(snapshot) if code == "MN" else native_summary(code, entry)
                    if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
             if previous is None:
@@ -370,8 +459,13 @@ def project(files, snapshot):
             if previous is not None:
                 before = previous["view"]["statewide_ballot_parent"]
                 after = row["view"]["statewide_ballot_parent"]
-                require(before["source"]["sha256"] != after["source"]["sha256"] or before == after,
+                require(before["source"]["sha256"] != after["source"]["sha256"]
+                        or code == "MN" and before["statistical_txt"] != after["statistical_txt"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
+                if code == "MN" and (after["source_edition"] < before["source_edition"]
+                        or before["source_status"] == "Official Results"
+                        and after["source_status"] != "Official Results"):
+                    row = observation(code, before, retained=True)
                 if code in {"AZ", "VT"}:
                     from scripts.results_native_state_family import _clock
                     edition_clock = _clock if code == "AZ" else versioned_report_date

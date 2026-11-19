@@ -473,7 +473,10 @@ def collect(collector, baseline):
             return result
         jobs["CT-native-local"] = collector.capture("CT-native-local", CT_VERSION, capture_ct)
     from scripts.results_native import collect_sources
-    from scripts import results_pdf_county_parent
+    from scripts import results_minnesota_turnout, results_pdf_county_parent
+    if "MN-native-local" in jobs:
+        jobs[results_minnesota_turnout.IDENTITY] = results_minnesota_turnout.collect(
+            collector, jobs["MN-native-local"])
     jobs.update(collect_sources(collector, baseline))
     jobs[results_pdf_county_parent.IDENTITY] = results_pdf_county_parent.collect(collector)
     return jobs

@@ -40,6 +40,7 @@ CODE_PATHS = (
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
     "results_aspx_congress.py", "results_json_congress.py",
     "results_clarity_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
+    "results_minnesota_turnout.py",
     "results_native_congress.py", "results_native_state_family.py", "results_native_virginia.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",

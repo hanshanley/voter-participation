@@ -2283,3 +2283,14 @@ state estimate views. It does not modify Ohio's 88-county early or mail
 activity frames. Compatible reports can revise counts in either direction;
 incompatible or unavailable reports retain the last qualified observation.
 The source packet includes every native statistical header used by the query.
+
+### Minnesota: statewide count from complete precinct statistics
+
+The hourly collector reconciles the statewide reporting page against the
+statistical TXT by all 87 native county IDs. A statewide count requires
+complete precinct statistics and agreement on every county's total number
+voted, precinct inventory and 7 a.m. registrations, not just agreement on a
+statewide sum. The two retained products agree on 2,851,615 in 4,105 precincts.
+The source's printed result status and update label are retained. The page's
+separate turnout percentage uses a UF electorate estimate; neither it nor the
+7 a.m. registration figure establishes a qualifying administrative rate.
