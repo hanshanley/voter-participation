@@ -132,6 +132,26 @@ def test_cuyahoga_complete_scope_revision_and_failure(tmp_path, monkeypatch):
     assert project(result, mapped, collect(initial, body=None)) == (result, mapped, [])
 
 
+@pytest.mark.parametrize("delta", [0, -205, 200])
+def test_wilson_uses_positioned_countywide_cells_not_candidate_totals(delta):
+    parser = frame.county_pdf
+    ballots, registered = 57_775 + delta, 115_323
+    rate = (100 * Decimal(ballots) / registered).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
+    values = ("UNOFFICIAL RESULTS", str(registered), str(ballots), str(1_158 + delta),
+              "35,619", "20,998", "0", f"{rate}%")
+    cells = {**parser.WILSON_CELLS, **dict(zip(parser.WILSON_VALUES, values))}
+    page = "".join(f'<div style="position:absolute;left:{x}px;top:{y}px;">{value}</div>'
+                   for (x, y), value in reversed(list(cells.items())))
+    html = ('<html><body><a name="JR_PAGE_ANCHOR_0_1"></a>' + page
+            + '<a name="JR_PAGE_ANCHOR_0_2"></a>Candidate total is 99999</body></html>').encode()
+    data = parser.wilson_summary(html)
+    assert parser.wilson_controls(data) == (ballots, registered, f"{rate}%", "UNOFFICIAL RESULTS")
+    with pytest.raises(ValueError, match="do not reconcile"):
+        parser.wilson_summary(html.replace(b">20,998<", b">20,997<"))
+    with pytest.raises(ValueError, match="Incomplete Wilson"):
+        parser.wilson_summary(html[:-7])
+
+
 def revised_ballots(value, delta):
     value = copy.deepcopy(value)
     value["version"] = str(int(value["version"]) + 1)

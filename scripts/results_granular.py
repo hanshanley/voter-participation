@@ -484,6 +484,7 @@ def collect(collector, baseline):
     from scripts.results_state_statistics import HI_FEED, collect_hawaii
     jobs[HI_FEED] = collect_hawaii(collector)
     jobs[results_pdf_county_parent.IDENTITY] = results_pdf_county_parent.collect(collector)
+    jobs[results_pdf_county_parent.WILSON_FEED] = results_pdf_county_parent.collect_wilson(collector)
     jobs[results_turnout_history.WA_FEED] = results_turnout_history.collect_washington(collector)
     jobs[results_turnout_history.VA_FEED] = results_turnout_history.collect_virginia(collector)
     return jobs

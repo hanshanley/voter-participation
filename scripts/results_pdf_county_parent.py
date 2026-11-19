@@ -2,6 +2,7 @@
 
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
+from html import unescape
 from html.parser import HTMLParser
 import io
 import re
@@ -130,3 +131,76 @@ def collect(collector):
         return data
 
     return collector.capture(IDENTITY, INDEX_URL, parse)
+
+
+WILSON_FEED = "TN-wilson-countywide-turnout"
+WILSON_URL = "https://www.wilsontnvotes.gov/election-results-reporting/"
+WILSON_COUNTY = "Wilson County"
+WILSON_CELLS = {
+    (0, 0): "Election Summary Results Report",
+    (0, 20): "STATE/FEDERAL GENERAL AND MUNICIPAL ELECTIONS",
+    (0, 40): "NOVEMBER 3, 2026",
+    (311, 40): "WILSON COUNTY, TENNESSEE",
+    (1, 70): "STATISTICS",
+    (171, 87): "TOTAL", (231, 87): "Absentee", (286, 87): "Early Voting",
+    (341, 87): "Election Day", (396, 87): "Provisional",
+    (1, 127): "Registered Voters - Total",
+    (1, 146): "Ballots Cast - Total", (1, 165): "Voter Turnout - Total",
+}
+WILSON_VALUES = ((311, 0), (171, 127), (171, 146), (231, 146), (286, 146),
+                 (341, 146), (396, 146), (171, 165))
+
+
+def wilson_controls(data):
+    source = data["report"]
+    cells = {(x, y): text for x, y, text in data["complete_native_query"]}
+    if (source["url"] != WILSON_URL or set(source) != {"url", "bytes", "sha256"}
+            or type(source["bytes"]) is not int or not 0 < source["bytes"] <= 4_000_000
+            or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or len(cells) != len(data["complete_native_query"]) or set(cells) != set(WILSON_CELLS) | set(WILSON_VALUES)
+            or any(cells[key] != value for key, value in WILSON_CELLS.items())):
+        raise ValueError("Wilson County report identity or statistics grid changed")
+    status, registered, ballots, *modes, printed = (cells[key] for key in WILSON_VALUES)
+    if (status not in {"UNOFFICIAL RESULTS", "OFFICIAL RESULTS"}
+            or any(not re.fullmatch(r"0|[1-9]\d{0,2}(?:,\d{3})*|[1-9]\d*", value)
+                   for value in (registered, ballots, *modes))
+            or not re.fullmatch(r"\d{1,3}\.\d{2}%", printed)):
+        raise ValueError("Invalid Wilson County native count or report status")
+    registered, ballots, *modes = (count(value.replace(",", "")) for value in (registered, ballots, *modes))
+    if (any(value is None for value in (registered, ballots, *modes)) or not 0 < ballots <= registered
+            or sum(modes) != ballots
+            or (100 * Decimal(ballots) / registered).quantize(
+                Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(printed[:-1])):
+        raise ValueError("Wilson County counts or printed rate do not reconcile")
+    return ballots, registered, printed, status
+
+
+def wilson_summary(body):
+    text = body.decode("utf-8-sig")
+    anchors = ('<a name="JR_PAGE_ANCHOR_0_1"></a>', '<a name="JR_PAGE_ANCHOR_0_2"></a>')
+    if (any(text.count(anchor) != 1 for anchor in anchors)
+            or not text.rstrip().endswith("</html>")):
+        raise ValueError("Incomplete Wilson County election report")
+    page = text.split(anchors[0], 1)[1].split(anchors[1], 1)[0]
+    cells = []
+    for x, y, cell in re.findall(
+        r'<div style="position:absolute;left:(\d+)px;top:(\d+)px;[^>]*>(.*?)</div>', page, re.S
+    ):
+        cell = " ".join(unescape(re.sub(r"<[^>]+>", " ", cell)).split())
+        if cell:
+            cells.append([int(x), int(y), cell])
+    data = {"report": {"url": WILSON_URL, **pin(body)}, "complete_native_query": sorted(cells)}
+    wilson_controls(data)
+    return data
+
+
+def collect_wilson(collector):
+    def parse(body):
+        data = wilson_summary(body)
+        prior = (collector.prior.get(WILSON_FEED) or {}).get("data")
+        if (prior and wilson_controls(prior)[3] == "OFFICIAL RESULTS"
+                and wilson_controls(data)[3] != "OFFICIAL RESULTS"):
+            raise ValueError("Wilson County report status regressed")
+        return data
+
+    return collector.capture(WILSON_FEED, WILSON_URL, parse)
