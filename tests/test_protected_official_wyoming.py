@@ -76,11 +76,11 @@ def native(value=None):
     output = io.BytesIO()
     with zipfile.ZipFile(output, "w") as archive:
         for name, body in contents.items():
-            archive.writestr(name, body)
+            archive.writestr(zipfile.ZipInfo(name), body)
     bulk = io.BytesIO()
     with zipfile.ZipFile(bulk, "w") as archive:
         for name in official.MEMBERS:
-            archive.writestr(name, output.getvalue())
+            archive.writestr(zipfile.ZipInfo(name), output.getvalue())
     return bulk.getvalue()
 
 
