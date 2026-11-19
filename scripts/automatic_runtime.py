@@ -40,7 +40,7 @@ CODE_PATHS = (
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
     "results_aspx_congress.py", "results_json_congress.py",
     "results_clarity_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
-    "results_minnesota_turnout.py",
+    "results_minnesota_turnout.py", "results_turnout_history.py",
     "results_native_congress.py", "results_native_state_family.py", "results_native_virginia.py",
     "results_congress.py", "results_house.py",
     "congressional_analytical_bridge.py", "congressional_candidate_identity.py",
@@ -518,6 +518,7 @@ def hydrate_granular_sources(snapshot, source_packet):
 
 
 def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None):
+    from scripts import results_turnout_history as turnout_history
     from scripts.automatic_estimates import build, render_artifacts
     from scripts.automatic_native_refresh import refresh
     from scripts.results_county_frame import project as county_frames, project_cuyahoga
@@ -536,6 +537,10 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     estimates = build(snapshot, seed)
     artifacts = render_artifacts(estimates)
     artifacts.update(state_exports(updated))
+    history = snapshot.get("granular_sources", {}).get(turnout_history.WA_FEED, {})
+    if history.get("data"):
+        artifacts["participation/washington-general-election-turnout-history.csv"] = (
+            turnout_history.washington_csv(history))
     uf = snapshot.get("uf_turnout")
     if uf is not None and uf.get("data") is not None:
         from scripts.results_uf_turnout import exports as uf_exports

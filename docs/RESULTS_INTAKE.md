@@ -2294,3 +2294,15 @@ statewide sum. The two retained products agree on 2,851,615 in 4,105 precincts.
 The source's printed result status and update label are retained. The page's
 separate turnout percentage uses a UF electorate estimate; neither it nor the
 7 a.m. registration figure establishes a qualifying administrative rate.
+
+### Washington: general-election turnout table
+
+The collector polls the Secretary of State's statewide turnout series.
+The complete table is included in the source queries and exported as
+`queries/model-queries/participation/washington-general-election-turnout-history.csv`
+in the analytical archive. A missing 2026 row means not yet published, not
+zero turnout. A new 2026 row qualifies a statewide count directly; its
+registered-voter rate is calculated only when the printed percentage agrees.
+The source does not establish a native count clock, certification, or county
+or precinct totals. If the current row disappears, the last qualified count
+is retained and labeled accordingly.

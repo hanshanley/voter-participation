@@ -41,6 +41,48 @@ def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
 
 
+def test_washington_history_activates_only_on_a_published_general_election_row(monkeypatch):
+    history = totals.history
+    files = baseline(monkeypatch)
+    index = json.loads(files["index.json"])
+    path = "states/WA.json.gz"
+    files[path] = totals.compressed({"contract": "participation.count_snapshot.v1",
+                                   "state_code": "WA", "year": 2026, "records": [], "views": {}})
+    index["states"]["WA"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    header = "<tr>" + "".join(f"<th>{cell}</th>" for cell in history.WA_HEADER) + "</tr>"
+    old = "".join(f"<tr><td>{year}</td><td>1000</td><td>500</td><td>50.00%</td></tr>"
+                  for year in range(2025, 1979, -1))
+
+    def snapshot(current="", status="reported"):
+        body = f"<table>{header}{current}{old}</table>".encode()
+        return {"granular_sources": {history.WA_FEED: {
+            "status": status, "source": {"url": history.WA_URL, **pin(body)},
+            "data": history.parse_washington(body)}}}
+
+    unavailable = snapshot()
+    assert totals.project(files, unavailable) == (files, [])
+    dated = unavailable["granular_sources"][history.WA_FEED]
+    assert dated["data"]["current_election_status"] == "not_yet_published"
+    assert len(history.washington_csv(dated).splitlines()) == 47
+    row_html = "<tr><td>2026</td><td>1000</td><td>550</td><td>55.00%</td></tr>"
+    present = snapshot(row_html)
+    current, changes = totals.project(files, present)
+    assert changes[0]["current"] == 550
+    observation, = json.loads(gzip.decompress(current[path]))["records"]
+    assert observation["denominator"]["qualified"] and observation["view"]["validated_pct"] == 55
+    assert observation["source_clock"]["literal"] is None
+    assert totals.project(current, present) == (current, [])
+    inconsistent = snapshot(row_html.replace("55.00%", "54.00%"))
+    conflict, _ = totals.project(current, inconsistent)
+    observation, = json.loads(gzip.decompress(conflict[path]))["records"]
+    assert observation["count"]["value"] == 550 and observation["view"]["validated_pct"] is None
+    assert observation["view"]["native_printed_pct"] == "54.00%"
+    retained, changes = totals.project(current, snapshot(row_html, status="retained_after_failure"))
+    assert changes[0]["current"] == 550 and changes[0]["source_status"] == "retained_after_failure"
+    assert totals.project(retained, unavailable) == (retained, [])
+
+
 def test_minnesota_requires_complete_matching_dual_sources(monkeypatch):
     from scripts.results_granular import MN_URL
 
