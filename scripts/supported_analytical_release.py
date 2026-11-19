@@ -462,6 +462,7 @@ def build(snapshot, count_files, seed, estimates, changes):
     civic_data = json.loads(input_body(review, "modeled_demographics"))
     civic = civic_data["groups"]
     admin = administrative(count_files)
+    admin_coverage = administrative_coverage(admin)
     model_rows = {
         row["state_code"]: row for row in estimates["artifacts"][
             "house/attenuated/accepted_ridge_multinomial/complete-result.json.gz"]["content"]["rows"]
@@ -474,7 +475,7 @@ def build(snapshot, count_files, seed, estimates, changes):
     house_guards = list(house_model_guard_matrix(estimates["decisions"]["states"]))
     raw_files = {
         "participation-administrative.csv": csv_bytes(admin),
-        "participation-administrative-coverage.csv": csv_bytes(administrative_coverage(admin)),
+        "participation-administrative-coverage.csv": csv_bytes(admin_coverage),
         "participation-historical-survey.csv": historical,
         "participation-historical-state-demographics.csv": csv_bytes(cps),
         "participation-modeled-demographics-2026.csv": csv_bytes(civic),
@@ -517,8 +518,8 @@ def build(snapshot, count_files, seed, estimates, changes):
             "reported_source_observations": sum(row["count_status"] == "reported" for row in admin),
             "compatible_rate_frames": len(rate_rows),
             "rate_states": sorted({row["state_code"] for row in rate_rows}),
-            "statewide_rate_states": sorted({row["state_code"] for row in rate_rows
-                                            if row["geography_level"] == "state"}),
+            "statewide_rate_states": [row["state_code"] for row in admin_coverage
+                                      if row["statewide_election_participation_rate_records"]],
             "rates_by_denominator_basis": dict(Counter(row["denominator_basis"] for row in rate_rows)),
             "records_are_not_unique_people_or_complete_geographic_coverage": True,
         },
