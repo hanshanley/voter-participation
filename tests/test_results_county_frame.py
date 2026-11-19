@@ -329,6 +329,33 @@ def test_summit_binds_complete_counted_modes_to_county_summary():
         parser.summit_pages([cover, form, summary.replace("Summit County", "Other County")])
 
 
+def test_sussex_selects_certified_county_summary_and_validates_ballot_modes():
+    parser = frame.county_pdf
+    path = "/DocumentCenter/View/4874/2026-NOV-3-GE---OFFICIAL-results---countywide-SUPP"
+    index = (f'<h2><strong>2026 November 3 General Election</strong></h2><p><a href="{path}">'
+             "<strong>OFFICIAL Results</strong> - Countywide Summary</a> (certified 11/18/2026)</p>")
+    url, date = parser.sussex_discovery(index.encode())
+    assert url.endswith(path) and date == "11/18/2026"
+    for changed in (index.replace("Countywide Summary", "District Report"),
+                    index.replace(path, "//example.com" + path)):
+        with pytest.raises(ValueError):
+            parser.sussex_discovery(changed.encode())
+    stats = (
+        "Countywide OFFICIAL RESULTSSussex County, New Jersey General Election Summary Results ReportNovember 3, 2026 "
+        "Statistics TOTAL Election Day Early Voting Mail-InProvisional Emergenc y Overseas "
+        "Election Day Precincts Reporting 119 of 119 119 0 0 0 0 0 Precincts Complete 119 of 119 119 0 0 0 0 0 "
+        "Registered Voters - Total 112,512 57,818Ballots Cast - Total 38,037 11,227 8,145 294 1 114 "
+        "Voter Turnout - Total 51.39% Election Summary - 11/18/2026 01:44PM 14Page 1 of"
+    )
+    assert parser.sussex_statistics(stats, date) == (
+        "2026-11-18T13:44:00", 57818, 112512, "51.39%",
+        dict(zip(parser.SUSSEX_MODES, (38037, 11227, 8145, 294, 1, 114))), 119)
+    for old, new in (("119 of 119", "118 of 119"), ("38,037", "38,036"),
+                     ("51.39%", "51.38%"), ("11/18/2026", "11/17/2026")):
+        with pytest.raises(ValueError):
+            parser.sussex_statistics(stats.replace(old, new), date)
+
+
 def revised_ballots(value, delta):
     value = copy.deepcopy(value)
     value["version"] = str(int(value["version"]) + 1)

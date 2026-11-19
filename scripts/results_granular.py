@@ -487,6 +487,7 @@ def collect(collector, baseline):
     jobs[results_pdf_county_parent.WILSON_FEED] = results_pdf_county_parent.collect_wilson(collector)
     jobs[results_pdf_county_parent.SUMNER_FEED] = results_pdf_county_parent.collect_sumner(collector)
     jobs[results_pdf_county_parent.SUMMIT_FEED] = results_pdf_county_parent.collect_summit(collector)
+    jobs[results_pdf_county_parent.SUSSEX_FEED] = results_pdf_county_parent.collect_sussex(collector)
     jobs[results_pdf_county_parent.PHILADELPHIA_FEED] = results_pdf_county_parent.collect_philadelphia(collector)
     if jobs[results_pdf_county_parent.PHILADELPHIA_FEED].get("data") is not None:
         from scripts import philadelphia_divisions

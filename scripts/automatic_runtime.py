@@ -525,7 +525,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     from scripts.automatic_native_refresh import refresh
     from scripts.results_county_frame import (
         project as county_frames, project_buxton, project_cuyahoga, project_georgia, project_ohio, project_philadelphia,
-        project_sumner, project_summit, project_wilson,
+        project_sumner, project_summit, project_sussex, project_wilson,
     )
     from scripts.statewide_ballot_totals import project as state_totals, exports as state_exports
 
@@ -548,6 +548,8 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     updated, native, county_changes = project_sumner(updated, native, snapshot)
     changes.extend(county_changes)
     updated, native, county_changes = project_summit(updated, native, snapshot)
+    changes.extend(county_changes)
+    updated, native, county_changes = project_sussex(updated, native, snapshot)
     changes.extend(county_changes)
     updated, native, town_changes = project_buxton(updated, native, snapshot)
     changes.extend(town_changes)

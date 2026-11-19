@@ -32,6 +32,107 @@ SUMMIT_MODES = (
     "In-person election day ballots counted", "Disability ballots counted returned electronically",
     "UOCAVA ballots counted returned electronically", "Provisional ballots counted", "Emergency ballots counted",
 )
+SUSSEX_FEED = "NJ-sussex-county-canvass"
+SUSSEX_INDEX = "https://www.sussexcountyclerk.org/939/General-Election"
+SUSSEX_PATH = re.compile(r"/DocumentCenter/View/[0-9]+/2026-NOV-3-GE---OFFICIAL-results---countywide-SUPP")
+SUSSEX_MODES = ("Election Day", "Early Voting", "Mail-In", "Provisional", "Emergency", "Overseas")
+
+
+def sussex_discovery(body):
+    text = body.decode("utf-8-sig")
+    heading = r">2026 November 3 General Election</strong></h2>"
+    sections = re.findall(heading + r"(.*?)(?:</p>)", text, re.S)
+    if len(sections) != 1:
+        raise ValueError("Sussex 2026 general-election archive section changed")
+    links = re.findall(
+        r'<a\b[^>]*href="([^"]+)"[^>]*><strong\b[^>]*>OFFICIAL Results</strong>'
+        r"\s*-\s*Countywide Summary</a>\s*\(certified (\d{1,2}/\d{1,2}/2026)\)",
+        sections[0],
+    )
+    if len(links) != 1:
+        raise ValueError("Missing or repeated Sussex certified countywide summary")
+    path, date = links[0]
+    url = urljoin(SUSSEX_INDEX, unescape(path))
+    sussex_url(url)
+    return url, date
+
+
+def sussex_url(url):
+    parts = urlsplit(url)
+    if (parts.scheme != "https" or parts.netloc != urlsplit(SUSSEX_INDEX).netloc
+            or not SUSSEX_PATH.fullmatch(parts.path) or parts.query or parts.fragment):
+        raise ValueError("Unreviewed Sussex countywide report destination")
+
+
+def sussex_statistics(text, certification_date):
+    prefix = ("Countywide OFFICIAL RESULTSSussex County, New Jersey General Election "
+              "Summary Results ReportNovember 3, 2026 Statistics TOTAL Election Day Early Voting "
+              "Mail-InProvisional Emergenc y Overseas ")
+    if not text.startswith(prefix):
+        raise ValueError("Sussex election, geography, official status or mode order changed")
+    number = r"([1-9]\d{0,2}(?:,\d{3})+|0|[1-9]\d*)(?![\d,])"
+    match = re.fullmatch(
+        r"Election Day Precincts Reporting ([1-9]\d*) of \1 \1 0 0 0 0 0 "
+        r"Precincts Complete \1 of \1 \1 0 0 0 0 0 "
+        rf"Registered Voters - Total {number} {number}\s*Ballots Cast - Total "
+        + " ".join([number] * len(SUSSEX_MODES))
+        + r" Voter Turnout - Total (\d{1,3}\.\d{2}%) (?:Election Summary - )"
+        r"(\d{1,2}/\d{1,2}/2026) (\d{1,2}:\d\d[AP]M) \d+Page 1 of",
+        text[len(prefix):],
+    )
+    if not match:
+        raise ValueError("Missing or incompatible Sussex countywide statistics")
+    precincts, registered, ballots, *rest = match.groups()
+    *components, printed, report_date, clock = rest
+    date = datetime.strptime(f"{report_date} {clock}", "%m/%d/%Y %I:%M%p")
+    certified = datetime.strptime(certification_date, "%m/%d/%Y")
+    def as_count(value):
+        return count(value.replace(",", ""))
+    registered, ballots = as_count(registered), as_count(ballots)
+    modes = dict(zip(SUSSEX_MODES, map(as_count, components)))
+    if (date.date() != certified.date() or certified <= datetime(2026, 11, 3)
+            or not 0 < ballots <= registered or sum(modes.values()) != ballots
+            or (100 * Decimal(ballots) / registered).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
+            != Decimal(printed[:-1])):
+        raise ValueError("Sussex ballot modes, registrations, rate or certification date do not reconcile")
+    return date.isoformat(), ballots, registered, printed, modes, int(precincts)
+
+
+def sussex_controls(data):
+    source, facts = data["report"], data["complete_native_query"]
+    sussex_url(source["url"])
+    if (type(source["bytes"]) is not int or not 0 < source["bytes"] <= 4_000_000
+            or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+            or set(facts) != {"statistics", "archive_certification_date"}):
+        raise ValueError("Invalid Sussex countywide report receipt")
+    result = sussex_statistics(facts["statistics"], facts["archive_certification_date"])
+    if data["date"] != result[0]:
+        raise ValueError("Sussex County report clock changed")
+    return result
+
+
+def collect_sussex(collector):
+    def parse(index):
+        from pypdf import PdfReader
+
+        url, certification = sussex_discovery(index)
+        body, _ = collector.acquire(url)
+        if len(body) > 4_000_000 or not body.startswith(b"%PDF-") or not body.rstrip().endswith(b"%%EOF"):
+            raise ValueError("Incomplete Sussex countywide report")
+        pdf = PdfReader(io.BytesIO(body), strict=True)
+        if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 100:
+            raise ValueError("Unreviewed Sussex countywide report shape")
+        page = " ".join(pdf.pages[0].extract_text().split())
+        stats = re.match(r".*? Voter Turnout - Total \d{1,3}\.\d{2}%(?= )", page)
+        footer = re.search(r"Election Summary - \d{1,2}/\d{1,2}/2026 \d{1,2}:\d\d[AP]M \d+Page 1 of$", page)
+        if not stats or not footer or not footer[0].endswith(f" {len(pdf.pages)}Page 1 of"):
+            raise ValueError("Sussex first-page scope or document pagination changed")
+        facts = {"statistics": f"{stats[0]} {footer[0]}", "archive_certification_date": certification}
+        date, *_ = sussex_statistics(facts["statistics"], certification)
+        return {"report": {"url": url, **pin(body)}, "complete_native_query": facts, "date": date,
+                "participation_observation_qualified": False}
+
+    return collector.capture(SUSSEX_FEED, SUSSEX_INDEX, parse)
 
 
 def summit_discovery(body):

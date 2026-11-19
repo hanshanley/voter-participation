@@ -287,6 +287,11 @@ SUMMIT = ("UT", "Utah", "Summit County", "49043",
           county_pdf.SUMMIT_FEED, county_pdf.SUMMIT_INDEX, "UT:official-ballot-statistics:49043",
           "UT-2026-11-03-general", "native_pre_election_active_voters_same_summit_canvass")
 SUMMIT_PREDECESSOR = "e25c5ea44c920c6b693895259496e6d0"
+SUSSEX = ("NJ", "New Jersey", "Sussex County", "34037",
+          "489eabbafe98495645d95ddb65581f5204b3bd7871b001d02d3aaa3ffa11733b",
+          county_pdf.SUSSEX_FEED, county_pdf.SUSSEX_INDEX, "NJ:official-ballot-statistics:34037",
+          "NJ-2026-11-03-general", "native_registered_voters_same_sussex_county_summary")
+SUSSEX_PREDECESSOR = "1d35a9ce3b9d96be8c2a08d106d34637"
 
 
 def county_parent_observation(profile, data, reference, status):
@@ -328,6 +333,16 @@ def county_parent_observation(profile, data, reference, status):
             "The denominator is the pre-election active registration stock, not all eligible residents.",
             "Report generation time has no declared timezone and is not a count-update clock.",
         ]
+    elif profile == SUSSEX:
+        clock, ballots, registered, fraction, _, _ = county_pdf.sussex_controls(data)
+        label = "Official county summary; county clerk archive marks results certified"
+        measure, register = "Ballots Cast - Total", "Registered Voters - Total"
+        selector = {"scope": "countywide statistics", "physical_page": 1, "native_label": measure}
+        notes = [
+            "All six reported voting modes reconcile to the countywide total.",
+            "Uses the same report's registrations, not an eligible-population estimate.",
+            "Report generation time has no declared timezone and is not a count-update clock.",
+        ]
     elif profile == BUXTON:
         ballots, registered, fraction = history.buxton_controls(data)
         clock = None
@@ -353,7 +368,10 @@ def county_parent_observation(profile, data, reference, status):
     town = profile == BUXTON
     level = "municipality" if town else "county"
     measure_id = "townwide-ballots-cast" if town else "countywide-ballots-cast"
-    notes.append("Not a statewide total, certification claim, unique-voter count or precinct allocation.")
+    if profile == SUSSEX:
+        notes.append("Not a statewide total, unique-voter count or precinct allocation.")
+    else:
+        notes.append("Not a statewide total, certification claim, unique-voter count or precinct allocation.")
     rate = 100 * ballots / registered
     view = {
         "state_code": code, "state": state, "year": 2026, "county": county,
@@ -408,8 +426,8 @@ def county_parent_observation(profile, data, reference, status):
 def project_county_parent(counts, native, snapshot, profile):
     code, _, county, fips, reference_sha, feed, url, geo, election, _ = profile
     town = profile == BUXTON
-    summit = profile == SUMMIT
-    year = 2024 if town or summit else 2026
+    predecessor = {SUMMIT: SUMMIT_PREDECESSOR, SUSSEX: SUSSEX_PREDECESSOR}.get(profile)
+    year = 2024 if town or predecessor else 2026
     reference_key = "reference_municipality_key" if town else "county_fips"
     entry = snapshot.get("granular_sources", {}).get(feed, {})
     data = entry.get("data")
@@ -438,7 +456,7 @@ def project_county_parent(counts, native, snapshot, profile):
             require(entry["source"] == data["report"], "Wilson receipt differs from report evidence")
     native_index = json.loads(native["index.json"])
     mappings = native_index["county_bindings"][code]
-    reference_mode = "available" if summit else "mail_returned" if profile == PHILADELPHIA else "in_person_early"
+    reference_mode = "available" if predecessor else "mail_returned" if profile == PHILADELPHIA else "in_person_early"
     early = mappings[reference_mode]
     geometry = {key: copy.deepcopy(early[key]) for key in ("feature_keys", "feature_scopes", "features", "sha256")}
     matches = [item for item in early["rows"] if item["feature_key"] == fips]
@@ -448,8 +466,8 @@ def project_county_parent(counts, native, snapshot, profile):
             f"{county} reference identity changed")
     refs = [rows[key]["view"]["reference_geometry"] for key in shard["views"][reference_mode]["counties"]
             if rows[key]["view"]["county_id"] == matches[0]["county_id"]
-            and (key == SUMMIT_PREDECESSOR and rows[key]["geography"]["join"]["feature_key"] == fips
-                 if summit else rows[key]["view"].get(reference_key) == fips)]
+            and (key == predecessor and rows[key]["geography"]["join"]["feature_key"] == fips
+                 if predecessor else rows[key]["view"].get(reference_key) == fips)]
     require(len(refs) == 1 and refs[0]["sha256"] == reference_sha
             and refs[0]["boundary_year"] == year, f"{county} reference provenance differs")
     if town:
@@ -470,7 +488,7 @@ def project_county_parent(counts, native, snapshot, profile):
         candidate = county_parent_observation(profile, data, refs[0], entry["status"])
     if prior and data is not None:
         old = prior["view"]["native_record"]
-        regression = (data["date"] < old["date"] if profile in (CUYAHOGA, SUMNER, PHILADELPHIA, SUMMIT) else False)
+        regression = data["date"] < old["date"] if profile in (CUYAHOGA, SUMNER, PHILADELPHIA, SUMMIT, SUSSEX) else False
         if profile == CUYAHOGA:
             regression |= (old["report_status"] == county_pdf.STATUSES[1]
                            and data["report_status"] != county_pdf.STATUSES[1])
@@ -496,13 +514,13 @@ def project_county_parent(counts, native, snapshot, profile):
         require(frame["qualified"] and all(binding[field] == value for field, value in geometry.items())
                 and (key in frame["counties"]) == bool(prior), f"{county} selected mode preimage differs")
         known = [row for row in binding["rows"] if row["feature_key"] == fips]
-        if summit and not prior:
-            require(SUMMIT_PREDECESSOR in frame["counties"] and len(known) == 1
-                    and rows[SUMMIT_PREDECESSOR]["view"]["county_id"] == known[0]["county_id"] == matches[0]["county_id"]
-                    and rows[SUMMIT_PREDECESSOR]["view"]["county"] == county
-                    and rows[SUMMIT_PREDECESSOR]["geography"]["join"]["feature_key"] == fips,
-                    "Summit predecessor does not match the reviewed county selector")
-            frame["counties"][frame["counties"].index(SUMMIT_PREDECESSOR)] = key
+        if predecessor and not prior:
+            require(predecessor in frame["counties"] and len(known) == 1
+                    and rows[predecessor]["view"]["county_id"] == known[0]["county_id"] == matches[0]["county_id"]
+                    and rows[predecessor]["view"]["county"] == ("Sussex" if profile == SUSSEX else county)
+                    and rows[predecessor]["geography"]["join"]["feature_key"] == fips,
+                    f"{county} predecessor does not match the reviewed county selector")
+            frame["counties"][frame["counties"].index(predecessor)] = key
             binding["rows"][binding["rows"].index(known[0])] = copy.deepcopy(bound)
             known = [bound]
         else:
@@ -510,7 +528,7 @@ def project_county_parent(counts, native, snapshot, profile):
         require(not any(
             rows[selected]["view"].get(reference_key) == fips and selected != key
             for selected in frame["counties"]), f"{county} frame would shadow another source")
-        if not prior and not summit:
+        if not prior and not predecessor:
             frame["counties"].append(key)
             binding["rows"].append(copy.deepcopy(bound))
         selected = [rows[item] for item in frame["counties"]]
@@ -552,6 +570,10 @@ def project_philadelphia(counts, native, snapshot):
 
 def project_summit(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, SUMMIT)
+
+
+def project_sussex(counts, native, snapshot):
+    return project_county_parent(counts, native, snapshot, SUSSEX)
 
 
 def project_georgia(counts, native):
