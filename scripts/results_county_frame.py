@@ -152,6 +152,11 @@ def project(counts, native, snapshot):
     require(shard["contract"] == "participation.count_snapshot.v1"
             and shard["state_code"] == code and shard["year"] == 2026, "County count shard scope differs")
     previous = {row["id"]: row for row in shard["records"] if row["source"]["id"] == clarity.IDENTITY}
+    status = "reported"
+    if (not previous and entry and entry["status"] == "retained_after_failure"
+            and entry.get("reviewed_retained_capture") is True):
+        require(clarity.retained_capture_matches(entry), "Reviewed Iowa retained capture pin differs")
+        data, status = entry["data"], "retained_after_failure"
     if data is None and not previous:
         return counts, native, []
     native_index = json.loads(native["index.json"])
@@ -178,13 +183,13 @@ def project(counts, native, snapshot):
         is_complete = all(row["native_status"] in (0, 4) and
                           0 < row["total_units"] == row["reported_units"] for row in rows)
         if is_complete:
-            selected = [observation(profile, row, reference, data, original, "reported",
+            selected = [observation(profile, row, reference, data, original, status,
                                     names[row["county"] + " County"]) for row in rows]
             state = {"county": None, "native_id": "Total:", "ballots": stats["state_ballots"],
                      "registered_stock": stats["state_registered_stock"], "printed_fraction": None,
                      "reported_units": len(rows), "total_units": len(rows),
                      "native_status": None}
-            selected.append(observation(profile, state, reference, data, original, "reported"))
+            selected.append(observation(profile, state, reference, data, original, status))
         else:
             data = None
     if data is None:

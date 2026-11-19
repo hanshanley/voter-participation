@@ -6,10 +6,11 @@ from decimal import Decimal, ROUND_HALF_UP
 import gzip
 import io
 import json
+from pathlib import Path
 import re
 import zipfile
 
-from scripts.participation_intake.contract import pin
+from scripts.participation_intake.contract import IntakeError, encoded, pin
 from scripts.results_official_congress import CONTRACT, require
 
 
@@ -18,6 +19,9 @@ ROOT = "https://electionresults.iowa.gov/IA/127077"
 URL = ROOT + "/current_ver.txt"
 PAGE = ROOT + "/web.345435/"
 FACT_CONTRACT = "participation.clarity_versioned_federal_facts.v1"
+RETAINED_CAPTURE = Path("data/results-intake/iowa-retained-capture.json.gz")
+RETAINED_PIN = {"bytes": 1498552,
+                "sha256": "a5c9bbbb8b6bf7082c36a0f85c6d6be81327a3ad8a60088d551539e93a4f6479"}
 ELECTION_FIELDS = (
     "internalname", "electionid", "electiondate", "isstateelection",
     "parentelectionid", "istestmode", "showtestdatawatermark",
@@ -355,6 +359,11 @@ def compatible(data, previous, observed):
             "Clarity certified county status regressed")
 
 
+def retained_capture_matches(entry):
+    return all(key in entry for key in ("source", "first_observed_at", "data")) and pin(encoded(
+        {key: entry[key] for key in ("source", "first_observed_at", "data")})) == RETAINED_PIN
+
+
 def collect(collector):
     def parse_version(body):
         version = decode(body).decode("ascii").strip()
@@ -371,4 +380,26 @@ def collect(collector):
             for key, value in bodies.items()
         }
         return data
-    return collector.capture(IDENTITY, URL, parse_version)
+    entry = collector.capture(IDENTITY, URL, parse_version)
+    if entry["status"] == "reported":
+        entry.pop("reviewed_retained_capture", None)
+    if (entry.get("data") is None and entry["error_stage"] == "acquisition"
+            and (entry["error"] == "source_unavailable" or entry["error_detail"] ==
+                 "Source did not return a complete successful original")):
+        path = Path(__file__).resolve().parents[1] / RETAINED_CAPTURE
+        if path.is_file():
+            saved = document(path.read_bytes())
+            require(set(saved) == {"source", "first_observed_at", "data"}
+                    and retained_capture_matches(saved), "Reviewed Iowa retained capture pin differs")
+            observed = datetime.fromisoformat(saved["first_observed_at"])
+            require(observed <= collector.observation_time(), "Iowa retained capture is in the future")
+            compatible(saved["data"], None, observed)
+            for original in saved["data"]["numerical_input_manifest"].values():
+                try:
+                    collector.guard(original["url"])
+                except IntakeError as error:
+                    if error.code == "source_stopped":
+                        return entry
+                    raise
+            entry.update(saved, status="retained_after_failure", reviewed_retained_capture=True)
+    return entry

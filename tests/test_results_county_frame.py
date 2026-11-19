@@ -171,3 +171,44 @@ def test_missing_source_data_marks_only_existing_iowa_frame_retained(tmp_path, m
 def test_reported_source_without_facts_is_an_integrity_failure():
     with pytest.raises(ValueError, match="missing its facts"):
         frame.project({}, {}, snapshot({"status": "reported"}))
+
+
+def test_reviewed_retained_capture_bootstraps_only_a_dated_count_frame(tmp_path, monkeypatch):
+    from scripts import results_intake
+    from scripts.participation_intake.contract import IntakeError
+
+    source = frame.clarity
+    path = results_intake.ROOT / source.RETAINED_CAPTURE
+    if not path.is_file():
+        pytest.skip("Retained collector bootstrap input is not part of this runtime-only archive")
+    saved = source.document(path.read_bytes())
+    counts, native = baseline(saved["data"]["native_facts"])
+    collector = results_intake.Collector(
+        tmp_path, {}, {"urls": [], "prefixes": [], "hosts": []},
+        source.datetime.fromisoformat(saved["first_observed_at"]))
+
+    def incomplete(url):
+        collector.guard(url)
+        assert url == source.URL
+        raise IntakeError("source_access", "Source did not return a complete successful original")
+
+    monkeypatch.setattr(collector, "acquire", incomplete)
+    held = source.collect(collector)
+    assert held["reviewed_retained_capture"] is True
+    assert held["first_observed_at"] == saved["first_observed_at"]
+    assert held["status"] == "retained_after_failure"
+    projected, mapping, changes = frame.project(counts, native, snapshot(held))
+    state, = frame.decode(projected["current.json.gz"])["snapshot"]["reporting"]
+    assert len(changes) == 100
+    assert len(json.loads(mapping["index.json"])["county_bindings"]["IA"]["official"]["rows"]) == 99
+    assert state["ballots"] == 1382511 and state["validated_pct"] is None
+    assert state["status"] == "retained_after_failure"
+    assert frame.project(projected, mapping, snapshot(held)) == (projected, mapping, [])
+    held["first_observed_at"] = "2026-11-19T00:00:00+00:00"
+    with pytest.raises(ValueError, match="retained capture pin"):
+        frame.project(counts, native, snapshot(held))
+    collector.stopped["urls"].append(source.report_url(saved["data"]["source_version"]))
+    assert source.collect(collector)["data"] is None
+    collector.stopped["urls"].append(source.URL)
+    stopped = source.collect(collector)
+    assert stopped["status"] == "source_stopped" and stopped["data"] is None
