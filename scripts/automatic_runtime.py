@@ -356,6 +356,8 @@ def refresh_current(files, snapshot, previous_files=None):
             refresh_webforms_mirror(row, matches[0], prior)
     for row in current.get("snapshot", {}).get("reporting", []):
         state = row["state_code"]
+        if "statewide_ballot_parent" in row:
+            continue
         decision = next((item for item in snapshot["jurisdictions"]
                          if item["state_code"] == state), {})
         data = decision.get("statewide_administrative_observation")

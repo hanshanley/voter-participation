@@ -1,6 +1,7 @@
 """Refresh reviewed state-only participation without inferring an electorate."""
 
 import copy
+import json
 from decimal import Decimal, ROUND_HALF_UP
 from html import escape, unescape
 from html.parser import HTMLParser
@@ -8,7 +9,8 @@ import re
 
 
 URL = "https://scvotes.gov/state-election-commission-certifies-2026-statewide-general-election/"
-OFFICIAL = {"SC": URL}
+AZ_URL = "https://app.enhancedvoting.com/results/public/api/elections/Arizona/110326GeneralElection/data"
+OFFICIAL = {"SC": URL, "AZ": AZ_URL}
 TITLE = "State Election Commission Certifies 2026 Statewide General Election"
 HEADING = "2026 Statewide General Election Statistics"
 PROFILE = "sc-native-state-participation-v1"
@@ -240,7 +242,74 @@ class _Statistics(HTMLParser):
             self.parts.append(data)
 
 
+def arizona_statistics(body):
+    from scripts.results_native_state_family import (
+        AZ_COUNTIES, _api_count, _clock, _english, _indexed_uuids, _utc_clock, _uuid,
+    )
+
+    def fields(pairs):
+        result = dict(pairs)
+        if len(result) != len(pairs):
+            raise ValueError("Duplicate Arizona statewide source field")
+        return result
+
+    root = json.loads(body, object_pairs_hook=fields)
+    election, jurisdiction = root["election"], root["jurisdiction"]
+    if (election["id"] != "01000000-3e48-04ed-11b1-08df1107098b"
+            or election["electionDate"] != "2026-11-03"
+            or _english(election["name"]) != "2026 General Election"
+            or election["isPrimary"] is not False or election["isProduction"] is not True
+            or type(election["isOfficialResults"]) is not bool
+            or jurisdiction["id"] != "01000000-0496-9e5d-0291-08dbda35db79"
+            or jurisdiction["shortName"] != "Arizona" or _english(jurisdiction["name"]) != "Arizona"):
+        raise ValueError("Arizona statewide source identity changed")
+    clock = _utc_clock(election["asOf"])
+    children = _indexed_uuids(jurisdiction["childLocalities"], "id")
+    declarations = _indexed_uuids(root["localityElections"], "jurisdictionId")
+    registrations = _indexed_uuids(root["voterRegistration"], "id")
+    expected = {_uuid(identity) for _, _, identity in AZ_COUNTIES.values()}
+    if set(children) != expected or set(declarations) != expected or set(registrations) != expected:
+        raise ValueError("Arizona statewide county declarations are incomplete")
+    counties = []
+    for code, (name, slug, identity) in sorted(AZ_COUNTIES.items()):
+        key = _uuid(identity)
+        child, declaration, registration = children[key], declarations[key], registrations[key]
+        registered = _api_count(declaration["totalVoters"])
+        ballots = _api_count(declaration["ballotsCast"])
+        updated = _utc_clock(declaration["asOf"])
+        if (_english(child["name"]) != name or child["shortName"] != slug
+                or declaration["electionDate"] != "2026-11-03"
+                or _english(declaration["name"]) != "2026 General Election"
+                or type(declaration["isOfficialResults"]) is not bool
+                or _clock(updated) > _clock(clock)
+                or registered != _api_count(registration["total"])
+                or not 0 <= ballots <= registered <= 2**53 - 1):
+            raise ValueError("Arizona statewide county control changed")
+        counties.append({"county_code": code, "county": name, "county_uuid": identity,
+                         "ballots": ballots, "registration": registered, "as_of": updated,
+                         "official_status": declaration["isOfficialResults"]})
+    ballots = sum(row["ballots"] for row in counties)
+    registered = sum(row["registration"] for row in counties)
+    backend = _api_count(election["ballotsCast"])
+    if (not 0 < ballots <= registered <= 2**53 - 1 or backend not in {0, ballots}
+            or registered != _api_count(election["totalVoters"])):
+        raise ValueError("Arizona statewide and county totals conflict")
+    return {
+        "ballots": ballots, "denominator": None, "validated_pct": None,
+        "denominator_basis": "arizona_registration_stocks_context_only",
+        "native_state_statistics": {
+            "profile": "az-native-county-declaration-rollup-v1", "state_code": "AZ",
+            "election_date": "2026-11-03", "source_url": AZ_URL, "source_edition": clock,
+            "county_controls": counties, "backend_statewide_ballots": backend,
+            "native_statewide_official_status": election["isOfficialResults"],
+            "registration_context": registered,
+        },
+    }
+
+
 def statistics(body, state):
+    if state == "AZ":
+        return arizona_statistics(body)
     if state != "SC":
         raise ValueError("No reviewed state-only statistical profile")
     parser = _Statistics()

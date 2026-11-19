@@ -232,7 +232,12 @@ def project(counts, native, snapshot):
     index["coverage"][code].update(records=len(rows_by_id), **coverage(shard["records"]),
                                    zeros=sum(row["count"]["value"] == 0 for row in shard["records"]))
     declaration.update(pin(counts[path]), records=len(rows_by_id))
-    counts["index.json"], counts["current.json.gz"] = encoded(index), compressed(active)
+    counts["current.json.gz"] = compressed(active)
+    if "current_snapshot" in index:
+        require(index["current_snapshot"]["file"] == "current.json.gz",
+                "Iowa statewide display file differs from its declaration")
+        index["current_snapshot"].update(pin(counts["current.json.gz"]))
+    counts["index.json"] = encoded(index)
     native = dict(native, **{"index.json": encoded(native_index)})
     changes = [{"state_code": code, "id": key, "previous": previous[key]["count"]["value"] if key in previous else None,
                 "current": row["count"]["value"], "source_status": row["view"]["status"]}

@@ -6,6 +6,8 @@ import pytest
 
 from scripts import statewide_ballot_totals as totals
 from scripts import automatic_native_refresh as native
+from scripts import results_state_statistics as stats
+from scripts.results_native_state_family import AZ_COUNTIES
 from scripts.participation_intake.contract import encoded, pin
 from test_protected_official_wyoming import entry, native as workbook, changed
 from scripts import protected_official_wyoming as official
@@ -37,6 +39,80 @@ def baseline(monkeypatch):
 
 def row(files):
     return json.loads(gzip.decompress(files["states/WY.json.gz"]))["records"][-1]
+
+
+def arizona_root():
+    def label(value):
+        return [{"languageId": "en", "text": value}]
+
+    edition = "2026-11-18T15:42:00.028255Z"
+    base = {"electionDate": "2026-11-03", "name": label("2026 General Election"),
+            "asOf": edition, "isOfficialResults": False}
+    return {
+        "election": {**base, "id": "01000000-3e48-04ed-11b1-08df1107098b",
+                     "isPrimary": False, "isProduction": True,
+                     "ballotsCast": 0.0, "totalVoters": 1500.0},
+        "jurisdiction": {"id": "01000000-0496-9e5d-0291-08dbda35db79",
+                         "name": label("Arizona"), "shortName": "Arizona",
+                         "childLocalities": [{"id": uid, "name": label(name), "shortName": slug}
+                                             for name, slug, uid in AZ_COUNTIES.values()]},
+        "localityElections": [{**base, "jurisdictionId": uid, "totalVoters": 100.0,
+                               "ballotsCast": 50.0}
+                              for _, _, uid in AZ_COUNTIES.values()],
+        "voterRegistration": [{"id": uid, "total": 100} for _, _, uid in AZ_COUNTIES.values()],
+    }
+
+
+def test_arizona_rollup_preserves_source_zero_without_replacing_positive_ballots(monkeypatch):
+    files = baseline(monkeypatch)
+    index = json.loads(files["index.json"])
+    az = {"contract": "participation.count_snapshot.v1", "state_code": "AZ",
+          "year": 2026, "records": [], "views": {}}
+    path = "states/AZ.json.gz"
+    files[path] = totals.compressed(az)
+    index["states"]["AZ"] = {"file": path, **pin(files[path])}
+    index["current_snapshot"] = {"file": "current.json.gz", **pin(files["current.json.gz"])}
+    files["index.json"] = encoded(index)
+    root = arizona_root()
+
+    def packet():
+        body = encoded(root)
+        return {"participation_observations": [{
+            "channel": "AZ-official", "status": "reported",
+            "source": {"url": stats.AZ_URL, **pin(body)}, "observation": stats.statistics(body, "AZ"),
+        }]}
+
+    newest, changes = totals.project(files, packet())
+    item, = json.loads(gzip.decompress(newest[path]))["records"]
+    assert changes[0]["current"] == item["count"]["value"] == 750
+    assert item["view"]["statewide_ballot_parent"]["backend_statewide_ballots"] == 0
+    assert item["denominator"] is item["view"]["validated_pct"] is None
+    assert json.loads(newest["index.json"])["current_snapshot"] == {
+        "file": "current.json.gz", **pin(newest["current.json.gz"])}
+    assert totals.reviewed_addition("AZ", {}, {item["id"]: item}, pin(files[path]))
+    assert totals.project(newest, packet()) == (newest, [])
+    for revised_value in (55, 47):
+        root["localityElections"][0]["ballotsCast"] = revised_value
+        newest, changes = totals.project(newest, packet())
+        assert changes[0]["current"] == 700 + revised_value
+    retained, changes = totals.project(newest, {})
+    assert changes[0]["source_status"] == "retained_after_failure"
+    assert changes[0]["current"] == 747
+    assert totals.project(retained, {}) == (retained, [])
+    assert totals.project(retained, packet())[0] == newest
+
+
+@pytest.mark.parametrize("change", ["missing_county", "registration_conflict", "backend_conflict"])
+def test_arizona_rollup_withholds_incompatible_editions(change):
+    root = arizona_root()
+    if change == "missing_county":
+        root["localityElections"].pop()
+    elif change == "registration_conflict":
+        root["voterRegistration"][0]["total"] = 101
+    else:
+        root["election"]["ballotsCast"] = 1
+    with pytest.raises(ValueError):
+        stats.statistics(encoded(root), "AZ")
 
 
 def test_direct_native_parent_is_count_only_and_congressional_contract_stays_separate(monkeypatch):

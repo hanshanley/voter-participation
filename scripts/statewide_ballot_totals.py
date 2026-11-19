@@ -7,6 +7,7 @@ import io
 import json
 
 from scripts import protected_official_wyoming
+from scripts.results_state_statistics import AZ_URL
 from scripts.participation_intake.contract import (
     VERSION, count, encoded, observation_id, pin, validate,
 )
@@ -14,6 +15,8 @@ from scripts.participation_intake.contract import (
 
 CONTRACT = "participation.reviewed_statewide_ballot_parent.v1"
 PROFILES = {
+    "AZ": {"state": "Arizona", "source_id": "az-sos-county-ballots-20261103",
+           "feed": "AZ-official", "url": AZ_URL},
     "WY": {
         "state": "Wyoming",
         "source_id": "wy-sos-direct-statewide-ballots-20261103",
@@ -37,6 +40,12 @@ NOTES = [
     "The workbook filename says OFFICIAL. A native count-update clock, reporting-completion "
     "counter and separate certification evidence are not supplied.",
     "Existing mail activity, county and precinct observations remain separate and are not added.",
+]
+AZ_NOTES = [
+    "Sum of all 15 native county ballotsCast declarations from one Arizona Secretary of State edition.",
+    "Separate from the backend statewide field, which may report zero despite positive county counts.",
+    "County certification statuses can differ. This is not a certified statewide count, a precinct allocation or a unique-voter count.",
+    "County registration values are retained as context, not a qualified turnout denominator.",
 ]
 
 
@@ -83,12 +92,17 @@ def native_summary(code, entry):
 
 def observation(code, summary, retained=False):
     profile = PROFILES[code]
-    require(isinstance(summary, dict) and set(summary) == {
-        "contract", "source", "query_pin", "workbook", "sheet", "cell", "ballots", "counties",
-    }, "Malformed reviewed statewide ballot summary")
-    require(summary["contract"] == CONTRACT and all(
-        summary[key] == profile[key] for key in ("workbook", "sheet", "cell")
-    ), "Statewide ballot physical parent changed")
+    arizona = code == "AZ"
+    selector = ({"scope": "all_15_reported_county_declarations"} if arizona else
+                {key: profile[key] for key in ("workbook", "sheet", "cell")})
+    expected = {"contract", "source", "query_pin", "ballots", "counties",
+                *(() if arizona else ("workbook", "sheet", "cell")),
+                *(("source_edition", "backend_statewide_ballots") if arizona else ())}
+    require(isinstance(summary, dict) and set(summary) == expected
+            and summary["contract"] == CONTRACT, "Malformed reviewed statewide ballot summary")
+    if not arizona:
+        require(all(summary[key] == value for key, value in selector.items()),
+                "Statewide ballot physical parent changed")
     source = summary["source"]
     for selected in (source, summary["query_pin"]):
         require(isinstance(selected, dict) and type(selected.get("bytes")) is int
@@ -100,9 +114,25 @@ def observation(code, summary, retained=False):
     require(set(source) == {"url", "bytes", "sha256"} and source["url"] == profile["url"],
             "Statewide ballot source identity changed")
     counties = summary["counties"]
-    require(isinstance(counties, list) and len(counties) == profile["county_rows"],
+    require(isinstance(counties, list) and len(counties) == (15 if arizona else profile["county_rows"]),
             "Statewide ballot county controls are incomplete")
-    require(all(isinstance(row, dict) and set(row) == {"county", "physical_row", "ballots"}
+    if arizona:
+        from scripts.results_native_state_family import AZ_COUNTIES, _clock, _utc_clock
+        identities = [(key, name, identity) for key, (name, _, identity) in sorted(AZ_COUNTIES.items())]
+        edition = _clock(_utc_clock(summary["source_edition"]))
+        require(all(set(row) == {"county_code", "county", "county_uuid", "ballots",
+                                 "registration", "as_of", "official_status"}
+                    and type(row["registration"]) is int and count(row["registration"]) == row["registration"]
+                    and 0 <= row["ballots"] <= row["registration"]
+                    and type(row["official_status"]) is bool
+                    and _clock(_utc_clock(row["as_of"])) <= edition
+                    for row in counties)
+                and [(row["county_code"], row["county"], row["county_uuid"]) for row in counties] == identities
+                and type(summary["backend_statewide_ballots"]) is int
+                and summary["backend_statewide_ballots"] in {0, summary["ballots"]}
+                and summary["ballots"] > 0, "Arizona county roll-up evidence changed")
+    else:
+        require(all(isinstance(row, dict) and set(row) == {"county", "physical_row", "ballots"}
                 and isinstance(row["county"], str) and row["county"]
                 and type(row["physical_row"]) is int for row in counties)
             and len({row["county"] for row in counties}) == len(counties)
@@ -115,6 +145,8 @@ def observation(code, summary, retained=False):
             and sum(row["ballots"] for row in counties) == total,
             "Statewide ballot controls do not reconcile")
     status = "retained_after_failure" if retained else "reported"
+    notes = AZ_NOTES if arizona else NOTES
+    measure = "County ballotsCast declarations (sum)" if arizona else "Total Ballots Cast"
     view = {
         "state": profile["state"], "state_code": code, "year": 2026,
         "geography_level": "statewide", "mode": "official", "status": status,
@@ -126,13 +158,15 @@ def observation(code, summary, retained=False):
         "source_url": source["url"], "source_sha256": source["sha256"],
         "complete_download_url": None, "automatic_source_refresh": True,
         "participation_measure_kind": "ballots_cast",
-        "participation_measure_literal": "Total Ballots Cast",
-        "participation_measure_label": "Native statewide ballots cast",
+        "participation_measure_literal": measure,
+        "participation_measure_label": "Statewide sum of reported county ballots" if arizona else "Native statewide ballots cast",
         "cast_ballot_count_qualified": True, "unique_voter_count_qualified": False,
-        "maps_approved": False, "quality": list(NOTES),
-        "source_reporting_label": " ".join(NOTES),
+        "maps_approved": False, "quality": list(notes),
+        "source_reporting_label": " ".join(notes),
         "statewide_ballot_parent": copy.deepcopy(summary),
     }
+    if arizona:
+        view["source_publication_label"] = summary["source_edition"]
     row = {
         "contract": VERSION, "id": identity(code),
         "election": {"id": code + "-2026-11-03-general", "year": 2026,
@@ -143,7 +177,7 @@ def observation(code, summary, retained=False):
             "join": {"status": "nongeographic", "reference_id": None,
                      "feature_key": None, "evidence": None},
         },
-        "measure": {"id": "native-total-ballots-cast", "literal": "Total Ballots Cast",
+        "measure": {"id": "native-total-ballots-cast", "literal": measure,
                     "kind": "ballots_cast", "mode": "all_methods", "unit": "ballots"},
         "count": {"value": total, "literal": total, "status": "reported"},
         "denominator": None,
@@ -152,9 +186,9 @@ def observation(code, summary, retained=False):
                              "total_units": None, "complete": None},
         "source": {"id": profile["source_id"], "url": source["url"],
                    "input_sha256": source["sha256"],
-                   "selector": {key: profile[key] for key in ("workbook", "sheet", "cell")},
+                   "selector": selector,
                    "classification": "public_aggregate", "fields": copy.deepcopy(view)},
-        "quality": {"conflicts": [], "notes": list(NOTES)}, "view": view,
+        "quality": {"conflicts": [], "notes": list(notes)}, "view": view,
     }
     return validate(row)
 
@@ -169,7 +203,7 @@ def validate_existing(code, row):
 
 
 def reviewed_addition(code, old, new, previous_pin):
-    if code not in PROFILES or previous_pin != PROFILES[code]["initial_shard"]:
+    if code not in PROFILES or code != "AZ" and previous_pin != PROFILES[code]["initial_shard"]:
         return False
     selected = identity(code)
     if selected in old or set(new) != set(old) | {selected}:
@@ -178,7 +212,28 @@ def reviewed_addition(code, old, new, previous_pin):
         validate_existing(code, new[selected])
     except (ValueError, KeyError, TypeError):
         return False
-    return all(old[key] == new[key] for key in old)
+    return code == "AZ" or all(old[key] == new[key] for key in old)
+
+
+def arizona_summary(snapshot):
+    entries = [item for item in snapshot.get("participation_observations", [])
+               if item.get("channel") == "AZ-official" and item.get("status") == "reported"]
+    if not entries:
+        return None
+    require(len(entries) == 1, "Ambiguous Arizona administrative source")
+    entry, = entries
+    data = entry["observation"]
+    facts = data["native_state_statistics"]
+    source = entry["source"]
+    require(facts["profile"] == "az-native-county-declaration-rollup-v1"
+            and facts["state_code"] == "AZ" and facts["election_date"] == "2026-11-03"
+            and facts["source_url"] == source["url"] == AZ_URL
+            and data["denominator"] is None and data["validated_pct"] is None,
+            "Arizona statewide source measure or election changed")
+    return {"contract": CONTRACT, "source": {key: source[key] for key in ("url", "bytes", "sha256")},
+            "query_pin": pin(encoded(facts)), "ballots": data["ballots"],
+            "counties": facts["county_controls"], "source_edition": facts["source_edition"],
+            "backend_statewide_ballots": facts["backend_statewide_ballots"]}
 
 
 def project(files, snapshot):
@@ -192,6 +247,8 @@ def project(files, snapshot):
     changes = []
     feeds = snapshot.get("congress", {}).get("official_candidate_evidence", {})
     for code, profile in PROFILES.items():
+        if code not in index["states"]:
+            continue
         declaration = index["states"][code]
         path = declaration["file"]
         require(pin(result[path]) == {key: declaration[key] for key in ("bytes", "sha256")},
@@ -207,23 +264,29 @@ def project(files, snapshot):
         if previous is not None:
             validate_existing(code, previous)
         entry = feeds.get(profile["feed"])
-        if not isinstance(entry, dict) or entry.get("status") != "reported":
+        summary = (arizona_summary(snapshot) if code == "AZ" else native_summary(code, entry)
+                   if isinstance(entry, dict) and entry.get("status") == "reported" else None)
+        if summary is None:
             if previous is None:
                 continue
             row = observation(code, previous["view"]["statewide_ballot_parent"], retained=True)
         else:
-            row = observation(code, native_summary(code, entry))
+            row = observation(code, summary)
             if previous is not None:
                 before = previous["view"]["statewide_ballot_parent"]
                 after = row["view"]["statewide_ballot_parent"]
                 require(before["source"]["sha256"] != after["source"]["sha256"] or before == after,
                         "Unchanged statewide ballot original has different native facts")
+                if code == "AZ":
+                    from scripts.results_native_state_family import _clock
+                    if _clock(after["source_edition"]) < _clock(before["source_edition"]):
+                        row = observation(code, before, retained=True)
         reporting = current["snapshot"]["reporting"]
         mirrors = [item for item in reporting if item["state_code"] == code]
         require(len(mirrors) <= 1 and (not mirrors or previous is not None
                 and mirrors[0] == previous["view"]), "Statewide ballot display preimage changed")
         if previous is None:
-            require(pin(result[path]) == profile["initial_shard"],
+            require(code == "AZ" or pin(result[path]) == profile["initial_shard"],
                     "Unreviewed initial statewide ballot inventory")
             shard["records"].append(row)
         else:
@@ -248,10 +311,14 @@ def project(files, snapshot):
             changes.append({"state_code": code, "id": selected,
                             "previous": previous["count"]["value"] if previous else None,
                             "current": row["count"]["value"], "source_status": row["view"]["status"]})
-    if changes:
-        result["index.json"] = encoded(index)
     if current != original_current:
         result["current.json.gz"] = compressed(current)
+        if "current_snapshot" in index:
+            require(index["current_snapshot"]["file"] == "current.json.gz",
+                    "Statewide ballot display file differs from its declaration")
+            index["current_snapshot"].update(pin(result["current.json.gz"]))
+    if changes or current != original_current:
+        result["index.json"] = encoded(index)
     return result, changes
 
 

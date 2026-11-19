@@ -41,14 +41,16 @@ def baseline(value):
              "records": records, "views": modes}
     path = "states/IA.json.gz"
     body = frame.compressed(shard)
+    current = frame.compressed({"snapshot": {"reporting": []}})
     index = {"states": {"IA": {"file": path, **pin(body), "records": len(records),
              "views": {mode: {"counties": 2, "dispositions": {}} for mode in frame.MODES}}},
+             "current_snapshot": {"file": "current.json.gz", **pin(current)},
              "coverage": {"IA": {"unrelated_field": "preserve"}}}
     native = {"county_bindings": {"IA": {"in_person_early": {
         "sha256": bounds["sha256"], "features": len(scopes), "feature_keys": list(scopes),
         "feature_scopes": scopes, "rows": joins}}}}
     return {path: body, "index.json": encoded(index),
-            "current.json.gz": frame.compressed({"snapshot": {"reporting": []}})}, {
+            "current.json.gz": current}, {
                 "index.json": encoded(native)}
 
 
@@ -102,6 +104,8 @@ def test_county_frame_replaces_selections_not_observations_and_has_no_rate(tmp_p
     for mode in ("in_person_early", "mail_returned"):
         assert after["views"][mode] == before["views"][mode]
     state, = frame.decode(counts["current.json.gz"])["snapshot"]["reporting"]
+    assert json.loads(counts["index.json"])["current_snapshot"] == {
+        "file": "current.json.gz", **pin(counts["current.json.gz"])}
     assert state["ballots"] == 1382511 and state["registered"] == 2178374
     assert state["source_update_label"] is None and state["source_publication_label"]
     assert frame.project(counts, native, snapshot(entry)) == (counts, native, [])
