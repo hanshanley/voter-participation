@@ -192,6 +192,7 @@ jobs:
           tests/test_protected_official_wyoming.py
           tests/test_statewide_ballot_totals.py
           tests/test_ohio_retained_turnout.py
+          tests/test_retained_turnout.py
           tests/test_eac_county_turnout.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
           tests/test_election_night_workflow.py tests/test_automatic_health.py

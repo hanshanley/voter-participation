@@ -296,6 +296,20 @@ DOUGLAS = ("WI", "Wisconsin", "Douglas County", "55031",
            "4f53e9b43faa1cf6dd9e1f9b893993fe6f4aa42a78cfbb1afbeb39d3f6db5f74",
            county_pdf.DOUGLAS_FEED, county_pdf.DOUGLAS_INDEX, "WI:official-ballot-statistics:55031",
            "WI-2026-11-03-general", "native_registered_voters_same_douglas_county_summary")
+RETAINED_CANVASSES_INPUT = "data/results-intake/retained-county-canvasses-20261119.json"
+RETAINED_CANVASSES_SHA256 = "c37079cc1274b752a2c5ab4be3e26eb46d4febc091ac95f32ac5ccfdbe1aaaee"
+
+
+def retained_county_canvass(entry, profile, body):
+    if (body is None or profile not in (SUMMIT, SUSSEX, DOUGLAS)
+            or entry.get("status") != "source_stopped" or entry.get("error_stage") != "acquisition"
+            or entry.get("attempted_source_url") != profile[6]
+            or entry.get("data") is not None or entry.get("source") is not None):
+        return None
+    require(pin(body)["sha256"] == RETAINED_CANVASSES_SHA256, "Retained county canvass evidence differs")
+    evidence = json.loads(body)[profile[5]]
+    require(evidence["index"]["url"] == profile[6], "Retained county archive identity differs")
+    return evidence["data"]
 
 
 def county_parent_observation(profile, data, reference, status):
@@ -437,7 +451,7 @@ def county_parent_observation(profile, data, reference, status):
     }
 
 
-def project_county_parent(counts, native, snapshot, profile):
+def project_county_parent(counts, native, snapshot, profile, *, retained_canvasses=None):
     code, _, county, fips, reference_sha, feed, url, geo, election, _ = profile
     town = profile == BUXTON
     predecessor = {SUMMIT: SUMMIT_PREDECESSOR, SUSSEX: SUSSEX_PREDECESSOR}.get(profile)
@@ -460,9 +474,22 @@ def project_county_parent(counts, native, snapshot, profile):
     key = observation_id(feed, election, geo,
                          "townwide-ballots-cast" if town else "countywide-ballots-cast", "all_methods")
     prior = rows.get(key)
+    retained = False
     if data is None and prior is None:
-        return counts, native, []
-    if data is not None:
+        data = retained_county_canvass(entry, profile, retained_canvasses)
+        if data is None:
+            return counts, native, []
+        # A reviewed older selector or an empty slot is required for a retained bootstrap.
+        for mode in ("official", "uf_vap", "uf_vep"):
+            selected = shard["views"][mode]["counties"]
+            if predecessor:
+                if predecessor not in selected:
+                    return counts, native, []
+            elif any(rows[item]["view"].get(reference_key) == fips
+                     or rows[item]["geography"]["join"]["feature_key"] == fips for item in selected):
+                return counts, native, []
+        retained = True
+    if data is not None and not retained:
         require(entry["status"] in {"reported", "retained_after_failure"}
                 and entry["source"]["url"] == url
                 and isinstance(entry.get("first_observed_at"), str), f"{county} collection receipt differs")
@@ -499,7 +526,8 @@ def project_county_parent(counts, native, snapshot, profile):
                 f"{county} last-good count differs from its reviewed evidence")
         candidate = county_parent_observation(profile, old["native_record"], refs[0], "retained_after_failure")
     else:
-        candidate = county_parent_observation(profile, data, refs[0], entry["status"])
+        candidate = county_parent_observation(
+            profile, data, refs[0], "retained_after_failure" if retained else entry["status"])
     if prior and data is not None:
         old = prior["view"]["native_record"]
         regression = profile in (CUYAHOGA, SUMNER, PHILADELPHIA, SUMMIT, SUSSEX, DOUGLAS) and data["date"] < old["date"]
@@ -582,16 +610,16 @@ def project_philadelphia(counts, native, snapshot):
     return project_county_parent(counts, native, snapshot, PHILADELPHIA)
 
 
-def project_summit(counts, native, snapshot):
-    return project_county_parent(counts, native, snapshot, SUMMIT)
+def project_summit(counts, native, snapshot, *, retained_canvasses=None):
+    return project_county_parent(counts, native, snapshot, SUMMIT, retained_canvasses=retained_canvasses)
 
 
-def project_sussex(counts, native, snapshot):
-    return project_county_parent(counts, native, snapshot, SUSSEX)
+def project_sussex(counts, native, snapshot, *, retained_canvasses=None):
+    return project_county_parent(counts, native, snapshot, SUSSEX, retained_canvasses=retained_canvasses)
 
 
-def project_douglas(counts, native, snapshot):
-    return project_county_parent(counts, native, snapshot, DOUGLAS)
+def project_douglas(counts, native, snapshot, *, retained_canvasses=None):
+    return project_county_parent(counts, native, snapshot, DOUGLAS, retained_canvasses=retained_canvasses)
 
 
 def project_georgia(counts, native):
@@ -624,11 +652,15 @@ def project_georgia(counts, native):
         status = "Official per county feed" if row["official"] else "Unofficial per county feed"
         notes = ["BallotsCast and registered voters come from this county's row in the same statewide release.",
                  "Precinct reporting fraction is source context, not independent evidence of certification."]
+        if common["status"] == "retained_after_failure":
+            notes.append(f"Retained county counts from the Georgia feed edition published {query['published']}; "
+                         "the current source did not supply a replacement.")
         rate = 100 * ballots / registered
         clock = {"literal": row["updated"], "timezone": "UTC"}
         view = {**common, "geography_level": "county", "county_id": geo, "county": name,
                 "county_fips": fips, "maps_approved": True, "reference_geometry": reference,
-                "ballots": ballots, "denominator": registered, "reported_pct": rate, "validated_pct": rate,
+                "ballots": ballots, "registered": registered, "denominator": registered,
+                "reported_pct": rate, "validated_pct": rate,
                 "source_mode": "all_methods", "source_status_literal": status,
                 "source_update_label": clock["literal"], "source_update_timezone": clock["timezone"],
                 "source_reporting_label": " ".join(notes), "native_record": row, "quality": notes,

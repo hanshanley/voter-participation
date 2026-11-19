@@ -2324,6 +2324,31 @@ The complete analytical download includes the aggregate input, original source
 pins, replay code and all queries. It does not include unrelated XML contest
 records or imply any precinct or demographic participation rate.
 
+### Georgia and three county canvasses: retained participation
+
+The Georgia feed edition published November 18, 2026 reconciles **4,218,112
+ballots cast / 7,535,442 registered voters (55.98%)** across all 159 counties.
+The numerator is a derived statewide sum, not a published statewide parent:
+the native statewide ballot field is zero. The same-feed registration fields
+reconcile. The statewide feed is unofficial; county status is source-reported,
+and per-county update clocks are not a common statewide count clock.
+
+The retained county reports supply Summit, Utah (20,223 / 29,388 pre-election
+active registrants), Sussex, New Jersey (57,818 / 112,512), and Douglas,
+Wisconsin (19,423 / 26,599). These are countywide, same-report fractions, not
+eligible-population estimates or precinct allocations. A report's generation
+time is not a count-update clock.
+
+The runtime uses the pinned aggregate files under `data/results-intake/` only
+after a recorded acquisition stop on the exact registered route and only if
+the corresponding reviewed observation has not already been adopted. The two
+existing county selections (Summit and Sussex) must still point to the reviewed
+predecessors; an independent Douglas selection is not overwritten. The runtime
+leaves early and mail activity in their own frames. Compatible subsequent
+reports use the normal revision path; no stopped URL is retried and no retained
+edition is marked fresh. The analytical archive contains the full factual
+queries, original source pins, and replay code, not publisher PDF or HTML.
+
 ### Minnesota: statewide count from complete precinct statistics
 
 The hourly collector reconciles the statewide reporting page against the

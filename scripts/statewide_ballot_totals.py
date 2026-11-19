@@ -78,6 +78,8 @@ NC_FEED = "NC-registered-d6712073694b63cd"
 NC_INPUT = "data/results-intake/nc-20261113-statewide-and-counties.json"
 OH_INPUT = "data/results-intake/oh-20261113-statewide-and-counties.json"
 OH_RETAINED_SHA256 = "2351a57bb14da95adb7586ae5e656f14a1759e313ccdec2eff68604ca80bcbe2"
+GA_INPUT = "data/results-intake/ga-20261118-statewide-and-counties.json"
+GA_RETAINED_SHA256 = "4820ce29976b774c81bd79d70c5442f2510940ea6572cf62c9a7fdbccbc0db0b"
 NC_PIN = {"bytes": 27005, "sha256": "9fc1b775d96cba4bf8da176be8351cf3b3b216969d69a3e88eb9a6c9c8c7a409"}
 OR_COUNTIES = {"bytes": 531, "sha256": "81968386770cafeed21ad8fb51afd37fe455ad0c4beedb329247f63bd3057585"}
 ID_SOURCE = {"url": idaho.STORED_URL, "sha256": idaho.COUNTY_SOURCE_ID.split(":")[1]}
@@ -971,17 +973,21 @@ def north_dakota_canvass_summary(snapshot, previous):
             "index": dict(ND_RETAINED_CANVASS_SOURCE), "query": dict(ND_RETAINED_CANVASS_QUERY)}, True
 
 
-def ohio_summary(snapshot, retained_original):
-    summary = archive_report_summary(snapshot, "OH")
-    entry = snapshot.get("granular_sources", {}).get(history.OH_FEED, {})
+def retained_archive_summary(snapshot, code, retained_original, stopped_url, sha256):
+    summary = archive_report_summary(snapshot, code)
+    entry = snapshot.get("granular_sources", {}).get(PROFILES[code]["feed"], {})
     if (summary is not None or retained_original is None or entry.get("status") != "source_stopped"
             or entry.get("error_stage") != "acquisition"
             or entry.get("source") is not None or entry.get("data") is not None
-            or entry.get("attempted_source_url") != history.OH_ELECTION):
+            or entry.get("attempted_source_url") != stopped_url):
         return summary, False
-    require(pin(retained_original)["sha256"] == OH_RETAINED_SHA256,
-            "Ohio retained aggregate evidence differs from the reviewed edition")
+    require(pin(retained_original)["sha256"] == sha256,
+            f"{PROFILES[code]['state']} retained aggregate evidence differs from the reviewed edition")
     return json.loads(retained_original), True
+
+
+def ohio_summary(snapshot, retained_original):
+    return retained_archive_summary(snapshot, "OH", retained_original, history.OH_ELECTION, OH_RETAINED_SHA256)
 
 
 def kansas_observation(summary, retained):
@@ -1406,7 +1412,8 @@ def florida_observation(summary, retained):
         "quality": {"conflicts": [], "notes": notes}, "view": view})
 
 
-def project(files, snapshot, nc_retained_original=None, ohio_retained_original=None):
+def project(files, snapshot, nc_retained_original=None, ohio_retained_original=None, *,
+            georgia_retained_original=None):
     result = dict(files)
     index = json.loads(files["index.json"])
     current = json.loads(gzip.decompress(files["current.json.gz"]))
@@ -1440,6 +1447,9 @@ def project(files, snapshot, nc_retained_original=None, ohio_retained_original=N
         nd_summary, nd_retained = north_dakota_canvass_summary(snapshot, previous) if code == "ND" else (None, False)
         oh_summary, oh_retained = ohio_summary(
             snapshot, ohio_retained_original if previous is None else None) if code == "OH" else (None, False)
+        ga_summary, ga_retained = retained_archive_summary(
+            snapshot, "GA", georgia_retained_original if previous is None else None,
+            history.GA_URL, GA_RETAINED_SHA256) if code == "GA" else (None, False)
         summary = (arkansas_summary(snapshot, shard, previous) if code == "AR" else
                    connecticut_summary(snapshot, shard, previous) if code == "CT" else
                    florida_summary(shard) if code == "FL" else
@@ -1450,7 +1460,8 @@ def project(files, snapshot, nc_retained_original=None, ohio_retained_original=N
                    turnout_history_summary(snapshot, code) if code in {"TX", "VA", "WA"} else
                    nd_summary if code == "ND" else
                    oh_summary if code == "OH" else
-                   archive_report_summary(snapshot, code) if code in {"GA", "KS", "MT", "NJ", "WV"} else
+                   ga_summary if code == "GA" else
+                   archive_report_summary(snapshot, code) if code in {"KS", "MT", "NJ", "WV"} else
                    statewide_sources[code](snapshot) if code in statewide_sources else
                    native_summary(code, entry) if isinstance(entry, dict) and entry.get("status") == "reported" else None)
         if summary is None:
@@ -1458,7 +1469,7 @@ def project(files, snapshot, nc_retained_original=None, ohio_retained_original=N
                 continue
             row = observation(code, previous["view"]["statewide_ballot_parent"], retained=True)
         else:
-            row = observation(code, summary, retained=nd_retained or oh_retained or code in {"FL", "ID"}
+            row = observation(code, summary, retained=nd_retained or oh_retained or ga_retained or code in {"FL", "ID"}
                               or code == "NC" and snapshot.get("granular_sources", {}).get(NC_FEED, {}).get("status") != "reported"
                               or code == "CT" and summary["archived"]
                               or code == "AR" and summary["archived_capture"] is not None)
