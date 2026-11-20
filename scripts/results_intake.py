@@ -621,7 +621,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
                           read(work / "source-stops.json") if (work / "source-stops.json").exists()
                           else {"urls": [], "prefixes": [], "hosts": []})
     prior = previous.get("feeds", {})
-    collector = Collector(work, prior, stopped, now, offline)
+    collector = Collector(work, {**previous.get("granular", {}), **prior}, stopped, now, offline)
     feeds, directories, house = {}, {}, {}
 
     def provider(state):

@@ -880,6 +880,43 @@ def test_colorado_legacy_county_only_respects_historical_roster():
         co.query([*rows, ["County", "Broomfield", "0", "0"]], "2000-11-07")
 
 
+def test_full_refresh_preserves_scoped_county_archive_on_source_failure(tmp_path, monkeypatch):
+    from scripts import colorado_voting_statistics as co, results_granular, results_turnout_history as history
+
+    registry = fixture(tmp_path)
+    election, feed = "2000-11-07", "CO-2000-general-voting-statistics"
+    index, report = co.routes(election)
+    authority = (f"<title>2000 Nov 7 • General • Voting Statistics • State of Colorado | State of Colorado</title>"
+                 f'<a href="{report}">Download</a>').encode()
+    body = "\n".join([",,Registered Voters,Total Ballots Cast", ",,,", "State,Colorado,630,441",
+                      *[f"County,{name},10,7" for name in co.COUNTIES if name != "Broomfield"]]).encode()
+    prior = {"feeds": {}, "granular": {},
+             "directories": {state: {"status": "not_listed_in_directory"} for state in intake.STATES},
+             "source_stops": EMPTY_STOPS,
+             "districts": districts(declaration())}
+    prior["house"] = dict.fromkeys(prior["districts"], {"status": "source_unavailable", "data": None})
+    bodies = {index: authority, report: body}
+    monkeypatch.setattr(intake.Collector, "acquire", lambda _, url: (bodies[url], {"origin": "test"}))
+    intake.refresh_selected(registry, tmp_path / "scoped", prior, [feed], NOW)
+    scoped = intake.hydrate_collector_state(intake.read(tmp_path / "scoped/state.json"))
+    assert feed not in scoped["feeds"]
+
+    monkeypatch.setattr(intake.Collector, "acquire", unavailable)
+    monkeypatch.setattr(results_granular, "collect",
+                        lambda collector, _: {feed: history.collect_county_archive(collector, feed)})
+    intake.collect(registry, tmp_path / "full", scoped, now=NOW)
+    full = intake.hydrate_collector_state(intake.read(tmp_path / "full/state.json"))
+    retained = full["granular"][feed]
+    assert full["feeds"][feed] == retained
+    assert retained["status"] == "retained_after_failure"
+    assert retained["first_observed_at"] == scoped["granular"][feed]["first_observed_at"]
+    assert retained["data"] == scoped["granular"][feed]["data"]
+    rows = history.county_archive_rows(full["granular"])
+    assert len(rows) == 64
+    assert all(row["source_status"] == "retained_after_failure" for row in rows)
+    assert next(row for row in rows if row["geography_level"] == "state")["reported_ballots_cast"] == 441
+
+
 def test_nebraska_current_county_reports_keep_independent_last_good_editions(tmp_path, monkeypatch):
     from scripts import nebraska_county_reports as reports
 
