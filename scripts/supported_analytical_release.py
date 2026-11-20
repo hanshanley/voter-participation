@@ -656,6 +656,11 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     indiana_history = results_indiana_turnout.rows(snapshot.get("granular_sources", {}))
     if indiana_history:
         raw_files["participation-indiana-general-turnout-history.csv"] = csv_bytes(indiana_history)
+    from scripts import washington_participation
+
+    washington_rows = washington_participation.exports(snapshot.get("granular_sources", {}))
+    if washington_rows:
+        raw_files[washington_participation.CSV] = csv_bytes(washington_rows)
     county_archives = results_turnout_history.county_archive_rows(snapshot.get("granular_sources", {}))
     if county_archives:
         raw_files[results_turnout_history.COUNTY_ARCHIVE_CSV] = csv_bytes(county_archives)

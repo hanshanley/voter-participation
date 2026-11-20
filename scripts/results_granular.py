@@ -511,10 +511,11 @@ def collect(collector, baseline):
         jobs[feed] = results_indiana_turnout.collect(collector, year)
     for feed in (*results_turnout_history.COUNTY_ARCHIVES, results_turnout_history.CA_CURRENT_FEED):
         jobs[feed] = results_turnout_history.collect_county_archive(collector, feed, reuse_checked_week=True)
-    from scripts import national_turnout_release_watch, nebraska_county_reports
+    from scripts import national_turnout_release_watch, nebraska_county_reports, washington_participation
 
     for feed in national_turnout_release_watch.INDEXES:
         jobs[feed] = national_turnout_release_watch.collect(collector, feed, reuse_checked_week=True)
+    jobs[washington_participation.FEED] = washington_participation.collect(collector, reuse_checked_week=True)
     jobs[nebraska_county_reports.FEED] = nebraska_county_reports.collect(collector, check_unchanged=False)
     return jobs
 
@@ -654,13 +655,15 @@ def reviewed_source_bridge(entry, rows):
 def project(baseline, granular):
     """Create successor bodies, preserving old versions, IDs, views and join decisions."""
     from scripts.national_turnout_release_watch import INDEXES as NATIONAL_RELEASE_INDEXES
+    from scripts.washington_participation import FEED as WA_AGGREGATE_WORKBOOK
 
-    for key in granular.keys() & NATIONAL_RELEASE_INDEXES.keys():
+    export_only = {*NATIONAL_RELEASE_INDEXES, WA_AGGREGATE_WORKBOOK}
+    for key in granular.keys() & export_only:
         data = granular[key].get("data")
         if data is not None and (data.get("participation_observation_qualified") is not False
                                  or "updates" in data or "reviewed_count_addition" in data):
-            raise ValueError("A national release index cannot project participation")
-    granular = {key: entry for key, entry in granular.items() if key not in NATIONAL_RELEASE_INDEXES}
+            raise ValueError("A historical workbook or national release index cannot project participation")
+    granular = {key: entry for key, entry in granular.items() if key not in export_only}
     addition_changes = []
     for entry in granular.values():
         data = entry.get("data") if isinstance(entry, dict) else None

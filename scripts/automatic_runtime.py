@@ -43,6 +43,7 @@ CODE_PATHS = (
     "results_aspx_congress.py", "results_json_congress.py",
     "results_clarity_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
     "results_minnesota_turnout.py", "results_turnout_history.py", "national_turnout_release_watch.py",
+    "washington_participation.py",
     "wyoming_participation_statistics.py", "nebraska_canvass.py",
     "nebraska_county_reports.py",
     "colorado_voting_statistics.py", "maryland_precinct_history.py", "minnesota_precinct_history.py",

@@ -2820,6 +2820,24 @@ reconciliation.
 
 ### Washington: general-election turnout table
 
+The separate `WA-general-election-age-sex-workbook` source collects the
+Secretary of State's aggregate XLSX by statewide/county geography and age/sex
+for November general elections. The reader/download
+`queries/model-queries/release/participation-wa-general-election-age-sex.csv.gz`
+includes 2005 onward, preserves nulls and source order for duplicate labels,
+and does not substitute these aggregates into current certified counts.
+Workbook ratios divide ballots by the same row's estimated election-period
+registrations or April 1 voting-age population, not eligible population.
+Unknown sex is a published count category, without a displayed rate.
+The workbook's 2026 General rows were initially blank; placeholders are not
+observations. In 2014 Adams County's age labels are held, not relabeled.
+County rollups preserve the 2005 and 2014 differences in total ballots and
+the 2024 offsetting differences in sex categories. The scheduled collector
+reuses successful checks within the UTC week and preserves last-good facts
+on acquisition failure, edition regression, or a new unexplained discrepancy.
+Exact original bytes are pinned in the nested collector package; numerical
+reproduction uses the complete retained source query without requesting the XLSX.
+
 The collector polls the Secretary of State's statewide turnout series.
 The complete table is included in the source queries and exported as
 `queries/model-queries/participation/washington-general-election-turnout-history.csv`

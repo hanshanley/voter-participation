@@ -785,7 +785,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_cass.py", "results_pdf_dunn.py", "results_pdf_cole.py",
              "results_pdf_platte.py", "results_pdf_county_parent.py", "results_minnesota_turnout.py",
              "philadelphia_divisions.py",
-             "results_turnout_history.py", "national_turnout_release_watch.py",
+             "results_turnout_history.py", "national_turnout_release_watch.py", "washington_participation.py",
              "wyoming_participation_statistics.py", "nebraska_canvass.py",
              "nebraska_county_reports.py",
              "colorado_voting_statistics.py", "maryland_precinct_history.py", "minnesota_precinct_history.py",
@@ -987,7 +987,7 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 
 def late_archive_sources():
-    from scripts import national_turnout_release_watch, nebraska_county_reports
+    from scripts import national_turnout_release_watch, nebraska_county_reports, washington_participation
     from scripts import (
         results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_official_congress, results_pa_vote_history, results_uf_turnout,
@@ -1006,12 +1006,13 @@ def late_archive_sources():
         nebraska_county_reports.FEED,
         *history.COUNTY_ARCHIVES,
         *national_turnout_release_watch.INDEXES,
+        washington_participation.FEED,
         *sorted(history.municipal_feeds()),
     )
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None, *, late_archives=False):
-    from scripts import national_turnout_release_watch, nebraska_county_reports
+    from scripts import national_turnout_release_watch, nebraska_county_reports, washington_participation
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
     from scripts import results_indiana_turnout, results_minnesota_turnout, results_native, results_nc_vote_history
     from scripts import results_uf_turnout
@@ -1028,6 +1029,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
         results_turnout_history.TX_FEED: results_turnout_history.collect_texas,
         results_turnout_history.VA_FEED: results_turnout_history.collect_virginia,
         results_turnout_history.WA_FEED: results_turnout_history.collect_washington,
+        washington_participation.FEED: washington_participation.collect,
         results_turnout_history.NC_HISTORY_FEED: results_turnout_history.collect_north_carolina_history,
         results_turnout_history.WY_HISTORY_FEED: results_turnout_history.collect_wyoming_history,
         results_turnout_history.WY_CANVASS_FEED: results_turnout_history.collect_wyoming_precinct_canvass,
