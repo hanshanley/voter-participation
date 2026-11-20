@@ -2818,6 +2818,20 @@ Census detailed tables still require the appropriate denominator and survey
 checks, while EAVS releases require the data, codebook and jurisdiction
 reconciliation.
 
+### Oregon: reconciled statewide general-election history
+
+The weekly collector reads the statewide history and the historical
+general-election totals in the May 2026 turnout report as separate text-PDF
+sources. The export `release/participation-or-general-election-turnout-reconciliation.csv.gz`
+preserves each report's printed rates, counts, registration totals and original
+checksums. Where both count and registration totals agree, it additionally
+reports returned ballots per active voter from the comparison table, not a
+counted-ballot, eligible-population, or precinct turnout rate. The 1960, 1962,
+2016, 2018 and 2020 reports disagree; neither edition supersedes the other in
+this export. An unavailable source leaves a single-report historical series
+without matched rates. The May primary's current-election rows are not part of
+this general-election series.
+
 ### Washington: general-election turnout table
 
 The separate `WA-general-election-age-sex-workbook` source collects the

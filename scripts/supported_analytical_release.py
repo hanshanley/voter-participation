@@ -478,7 +478,7 @@ def selected_local_observation_ids(snapshot, counts=None):
     from scripts import (
         philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_pa_vote_history, results_pdf_county_parent,
-        results_turnout_history, statewide_ballot_totals, washington_participation,
+        oregon_turnout_history, results_turnout_history, statewide_ballot_totals, washington_participation,
     )
     from scripts.national_turnout_release_watch import INDEXES as NATIONAL_RELEASE_INDEXES
     from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
@@ -534,6 +534,7 @@ def selected_local_observation_ids(snapshot, counts=None):
                          results_turnout_history.WY_HISTORY_FEED, results_turnout_history.WY_CANVASS_FEED)
                 or identity in results_indiana_turnout.FEEDS.values()
                 or identity in NATIONAL_RELEASE_INDEXES
+                or identity in oregon_turnout_history.URLS
                 or identity == washington_participation.FEED
                 or identity in results_turnout_history.COUNTY_ARCHIVES
                 or identity in results_pa_vote_history.FEEDS.values()):
@@ -659,11 +660,14 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     indiana_history = results_indiana_turnout.rows(snapshot.get("granular_sources", {}))
     if indiana_history:
         raw_files["participation-indiana-general-turnout-history.csv"] = csv_bytes(indiana_history)
-    from scripts import washington_participation
+    from scripts import oregon_turnout_history, washington_participation
 
     washington_rows = washington_participation.exports(snapshot.get("granular_sources", {}))
     if washington_rows:
         raw_files[washington_participation.CSV] = csv_bytes(washington_rows)
+    oregon_rows = list(oregon_turnout_history.exports(snapshot.get("granular_sources", {})))
+    if oregon_rows:
+        raw_files[oregon_turnout_history.CSV] = csv_bytes(oregon_rows)
     county_archives = results_turnout_history.county_archive_rows(snapshot.get("granular_sources", {}))
     if county_archives:
         raw_files[results_turnout_history.COUNTY_ARCHIVE_CSV] = csv_bytes(county_archives)
