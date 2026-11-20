@@ -357,14 +357,33 @@ def attach_district_map_decisions(districts, congressional_races):
             )
             continue
         race, = candidates
-        boundary = race["baseline"].get("boundary_eligibility", {})
+        baseline = race["baseline"]
+        boundary = baseline.get("boundary_eligibility", {})
+        source = race["source"]
+        qualified = race["qualified_comparison"]
+        previous = race["previous"]
+        swing = race["qualified_margin_change_pp"]
+        require(not qualified or (previous is not None and type(swing) in (int, float)
+                                  and math.isfinite(swing) and not race["comparison_holds"]),
+                "Qualified district map has no verified swing")
         row.update(
-            map_comparison_status="qualified" if race["qualified_comparison"] else "held",
+            map_comparison_status="qualified" if qualified else "held",
             map_comparison_race_id=race["id"],
             map_current_source_updated_at=race["source_updated_at"],
+            map_current_source_url=source.get("url"),
+            map_current_source_sha256=source.get("sha256"),
+            map_previous_year=baseline.get("year"),
+            map_previous_stage=baseline.get("stage"),
+            map_current_stage=race["stage"],
+            map_previous_D=previous["D"] if qualified else None,
+            map_previous_R=previous["R"] if qualified else None,
+            map_current_D=race["D"] if qualified else None,
+            map_current_R=race["R"] if qualified else None,
+            map_qualified_margin_change_pp=swing if qualified else None,
             map_comparison_holds=race["comparison_holds"],
             map_boundary_compatible=boundary.get("boundary_compatible"),
             map_boundary_method=boundary.get("method"),
+            map_boundary_review_version=boundary.get("review_version"),
             map_boundary_holds=boundary.get("holds"),
         )
 
@@ -687,7 +706,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
             "raw_district_source_id_comparisons": len(districts),
             "new_cross_year_district_map_qualifications": 0,
             **({"linked_district_map_status_counts": dict(Counter(
-                row["map_comparison_status"] for row in districts))}
+                row["map_comparison_status"] for row in districts)),
+                "linked_qualified_district_map_comparisons": sum(
+                    row["map_comparison_status"] == "qualified" for row in districts)}
                if congressional_races is not None else {}),
             "qualified_state_comparisons": sum(row["qualified_comparison"] for row in recorded),
             "held_states": [row["state_code"] for row in recorded if not row["qualified_comparison"]],
