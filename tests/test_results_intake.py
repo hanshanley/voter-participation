@@ -893,6 +893,60 @@ def test_virginia_locality_report_replays_and_keeps_curbside_out_of_the_sum(tmp_
     assert failure["status"] == "retained_after_failure" and failure["data"] == result["data"]
 
 
+def test_minnesota_workbook_revisions_and_offline_original(tmp_path, monkeypatch):
+    import io
+    from openpyxl import Workbook
+    from scripts import minnesota_precinct_history as mn, results_turnout_history as history
+
+    date = "2024-11-05"
+    monkeypatch.setitem(mn.EDITIONS, date, (mn.EDITIONS[date][0], 87, 870, 87))
+
+    def workbook(change=0, compensate=True):
+        wb = Workbook()
+        results = wb.active
+        results.title = "Precinct-Results"
+        results.append(mn.FIELDS)
+        definitions = wb.create_sheet("Fields")
+        definitions.append(("TOTVOTING", "Number of voters casting ballots"))
+        definitions.append(("REG7AM", "Registered at 7AM"))
+        definitions.append(("EDR", "Voters registering when they vote"))
+        counties = wb.create_sheet("Counties")
+        counties.append(("County Code", "County Name", "County FIPS"))
+        for i in range(1, 88):
+            name, fips = f"COUNTY {i}", 27000 + 2 * i - 1
+            counties.append((i, name, fips))
+            voting = 10 + (change if i == 1 else -change if i == 2 and compensate else 0)
+            results.append((f"{fips}0001", "Precinct", "0001", "Municipality",
+                            name, i, 9, 1, 7, 3, 0, voting))
+        target = io.BytesIO()
+        wb.save(target)
+        return target.getvalue()
+
+    feed = "MN-2024-general-precinct-turnout-workbook"
+    original = workbook()
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    monkeypatch.setattr(collector, "acquire", lambda url: (original, {"origin": "fixture"}))
+    accepted = history.collect_county_archive(collector, feed)
+    collector.prior = {feed: accepted}
+    repeat = history.collect_county_archive(collector, feed)
+    assert repeat["data"] == accepted["data"]
+    original = workbook(2)
+    revised = history.collect_county_archive(collector, feed)
+    entries = {feed: revised}
+    rows = history.county_archive_rows(entries, minnesota_precincts=True)
+    assert len(rows) == 87 and [r["reported_total_voters"] for r in rows[:2]] == [12, 8]
+    county_rows = history.county_archive_rows(entries)
+    assert len(county_rows) == 88 and county_rows[-1]["reported_total_voters"] == 870
+    assert county_rows[-1]["registered_at_7am"] == 783
+    assert all(r["qualified_same_report_registration_fraction_pct"] is None for r in county_rows)
+    (tmp_path / f"{feed}.xlsx").write_bytes(original)
+    assert history.verify_county_archive_originals(entries, tmp_path) == 1
+    original = workbook(2, compensate=False)
+    collector.prior = entries
+    rejected = history.collect_county_archive(collector, feed)
+    assert rejected["status"] == "retained_after_failure" and rejected["data"] == revised["data"]
+
+
 def test_colorado_legacy_mixed_reporting_labels_do_not_become_precincts():
     from scripts import colorado_voting_statistics as co
 
