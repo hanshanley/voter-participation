@@ -265,8 +265,13 @@ selected facts, scope notice, code, tests, and all candidate/category discrepanc
 
 The raw `electoral-recorded-districts.csv.gz` download retains its recorded
 endpoints. Its `map_*` columns link each district to the separate map comparison,
-with that comparison's actual source clock, boundary method and holds. These
-columns do not qualify the raw endpoints as map values. Only an unambiguous,
+with that comparison's actual source clock, boundary method and holds.
+`map_qualified_margin_change_pp` and the `map_previous_*` and `map_current_*`
+major-party counts come from the linked comparison, not from the raw endpoints.
+The race ID identifies the baseline query in `congressional/results.json.gz`;
+the source URL and checksum identify the current observation, and the boundary
+review version identifies the geography decision where available. Held
+comparisons have no qualified swing value. Only an unambiguous,
 advertised voting-seat race with the reviewed historical district is linked;
 retained, non-advertised alternatives remain in the full congressional queries.
 

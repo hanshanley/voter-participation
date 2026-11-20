@@ -179,12 +179,15 @@ def test_district_raw_export_links_map_status_without_relabeling_raw_votes():
         return {
             "id": district + ("-current" if advertised else "-retained"), "chamber": "house",
             "voting_house_seat": voting, "advertised": advertised, "qualified_comparison": qualified,
-            "baseline": {"district": district, "boundary_eligibility": {
+            "stage": "general", "D": 44, "R": 56, "previous": {"D": 40, "R": 60},
+            "qualified_margin_change_pp": 8 if qualified else None,
+            "baseline": {"district": district, "year": 2024, "stage": "general", "boundary_eligibility": {
                 "boundary_compatible": qualified, "method": "test-boundary",
                 "holds": [] if qualified else ["changed_2020_block_membership"],
             }},
             "comparison_holds": [] if qualified else ["House boundary hold"],
             "source_updated_at": "source-clock",
+            "source": {"url": "https://example.test/house.json", "sha256": "source-sha"},
         }
 
     raw = [{"district_source_id": district, "qualified_geographic_comparison": False, "current_D": 42}
@@ -198,9 +201,16 @@ def test_district_raw_export_links_map_status_without_relabeling_raw_votes():
     assert raw[0]["map_comparison_race_id"] == "AK-AL-current"
     assert raw[0]["map_comparison_holds"] == ["House boundary hold"]
     assert raw[0]["map_boundary_holds"] == ["changed_2020_block_membership"]
+    assert raw[0]["map_qualified_margin_change_pp"] is None
     assert raw[1]["map_current_source_updated_at"] == "source-clock"
-    assert all("map_comparison_race_id" not in row for row in raw[2:])
+    assert raw[1]["map_current_source_sha256"] == "source-sha"
+    assert raw[1]["map_qualified_margin_change_pp"] == 8
+    assert (raw[1]["map_previous_year"], raw[1]["map_previous_D"], raw[1]["map_current_D"]) == (2024, 40, 44)
+    assert all("map_comparison_race_id" not in row and "map_qualified_margin_change_pp" not in row
+               for row in raw[2:])
     assert all(row["current_D"] == 42 and row["qualified_geographic_comparison"] is False for row in raw)
+    with pytest.raises(ValueError, match="no verified swing"):
+        release.attach_district_map_decisions(raw, [{**race("CO-07"), "qualified_margin_change_pp": None}])
 
 
 def test_count_handoff_does_not_turn_county_fraction_into_a_state_model_update():
