@@ -196,7 +196,10 @@ State and county rows appear in the historical archive; the separate
 `participation-co-precinct-voting-statistics.csv.gz` keeps every native ID,
 count, registration field and rate hold. A count above registration is
 preserved but does not produce a rate. Precinct IDs alone do not authorize
-a polygon join. The 2020 export's party subheader is not qualified.
+a polygon join. The 2020 export follows the same count reconciliation but
+carries a party subheader on registration. Its literal columns remain in
+the complete source query; only verified ballot counts appear in the
+display and participation CSVs.
 
 For independent verification from publisher PDFs, extract the nested
 `inputs/complete-source-results.zip` from the analysis download. Its

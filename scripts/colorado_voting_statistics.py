@@ -8,7 +8,10 @@ from html import unescape
 
 from scripts.participation_intake.contract import count
 
-EDITIONS = {"2022-11-08": "25989", "2024-11-05": "26759"}
+EDITIONS = {"2020-11-03": "25358", "2022-11-08": "25989", "2024-11-05": "26759"}
+PARTY_SUBHEADER = ["", "", "Republican", "", "", ""]
+REGISTRATION_HOLD = "registration_column_party_labeled"
+REGISTRATION_BASIS = "Total registration (active plus inactive)"
 REPORT = "https://co.elstats3.civera.com/api/download_contest/{id}_table.csv?split_party=false"
 INDEX = "https://historicalelectiondata.coloradosos.gov/contest/"
 COUNTIES = (
@@ -22,6 +25,7 @@ COUNTIES = (
 LABELS = {
     "Active Voters": "active", "Inactive Voters": "inactive",
     "Total Voters": "registered", "Total Registered Voters": "registered",
+    "Registered Voters": "registered",
     "Total Ballots Cast": "ballots_cast",
 }
 
@@ -48,13 +52,15 @@ def discover(body, election):
     return url
 
 
-def parse(body):
-    return query(list(csv.reader(io.StringIO(body.decode("utf-8-sig")))))
+def parse(body, election):
+    return query(list(csv.reader(io.StringIO(body.decode("utf-8-sig")))), election)
 
 
-def query(rows):
+def query(rows, election):
+    count_only = (election == "2020-11-03" and len(rows) >= 2 and rows[:2] == [
+        ["", "", "Registered Voters", "Active Voters", "Inactive Voters", "Total Ballots Cast"], PARTY_SUBHEADER])
     if (len(rows) < 68 or len(rows) > 20_000 or rows[0][:2] != ["", ""]
-            or len(rows[0]) != 6 or rows[1] != [""] * 6
+            or len(rows[0]) != 6 or (not count_only and (rows[1] != [""] * 6 or "Registered Voters" in rows[0]))
             or any(label not in LABELS for label in rows[0][2:])
             or set(map(LABELS.__getitem__, rows[0][2:])) != set(LABELS.values())):
         raise ValueError("Unexpected Colorado voting statistics schema")
@@ -86,7 +92,9 @@ def query(rows):
               for field in fields) for name in COUNTIES):
         raise ValueError("Colorado precincts do not reconcile to the printed county controls")
     return {"native_rows": rows, "counties": [counties[name] for name in COUNTIES], "total": total,
-            "precincts": precincts, "registration_basis": "Total registration (active plus inactive)",
-            "report_note": "Official Voting Statistics export. Registration includes inactive voters. "
-                           "Precinct counts are kept in a separate download.",
+            "precincts": precincts, "registration_basis": None if count_only else REGISTRATION_BASIS,
+            "report_note": ("Official Voting Statistics export. The registration column has a party subheader; "
+                            "counts are shown without registration rates." if count_only else
+                            "Official Voting Statistics export. Registration includes inactive voters. "
+                            "Precinct counts are kept in a separate download."),
             "extraction_method": "state_county_precinct_voting_statistics_csv"}

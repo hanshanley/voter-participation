@@ -766,6 +766,24 @@ def test_colorado_statistics_revisions_reconcile_and_preserve_held_precinct(tmp_
     assert original["filename"].endswith(".csv")
     (tmp_path / original["filename"]).write_bytes(edition(11))
     assert history.verify_county_archive_originals(prior, tmp_path) == 1
+    party_labeled = edition(11).replace(
+        b",,Active Voters,Inactive Voters,Total Voters,Total Ballots Cast\n,,,,,\n",
+        b",,Registered Voters,Active Voters,Inactive Voters,Total Ballots Cast\n,,Republican,,,\n"
+    ).replace(b",1280,0,1280,", b",1280,1280,0,").replace(
+        b",20,0,20,", b",20,20,0,").replace(b",10,0,10,", b",10,10,0,")
+    with pytest.raises(ValueError, match="schema"):
+        co.parse(party_labeled, date)
+    date, feed = "2020-11-03", "CO-2020-general-voting-statistics"
+    index, report = co.routes(date)
+    authority = (title.replace("2024 Nov 5", "2020 Nov 3") + f'<a href="{report}">Download</a>').encode()
+    accepted = refresh(party_labeled)
+    assert accepted["data"]["complete_native_query"]["native_rows"][1] == co.PARTY_SUBHEADER
+    for rows in (history.county_archive_rows({feed: accepted}),
+                 history.county_archive_rows({feed: accepted}, colorado_precincts=True)):
+        assert all(row["rate_hold_reason"] == co.REGISTRATION_HOLD
+                   and row["qualified_same_report_registration_fraction_pct"] is None for row in rows)
+        assert sum(row["reported_ballots_cast"] if "reported_ballots_cast" in row else row["ballots_cast"]
+                   for row in rows if row.get("geography_level") != "state") == 74
 
 
 def test_nebraska_current_county_reports_keep_independent_last_good_editions(tmp_path, monkeypatch):

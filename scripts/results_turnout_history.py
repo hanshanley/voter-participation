@@ -879,7 +879,7 @@ def collect_county_archive(collector, feed):
             rejected_scan = None
             return previous
         if state == "CO":
-            query = colorado_voting_statistics.parse(body)
+            query = colorado_voting_statistics.parse(body, election)
         elif state == "CA":
             query = (california_scan(report, election) if election in CA_SCAN_DATES
                      else california_report(body, election))
@@ -973,7 +973,7 @@ def verify_county_archive_originals(entries, directory):
         body = checked_original(feed)
         state, election = COUNTY_ARCHIVES[feed]
         parse = {"WV": west_virginia_archive_report, "WY": wyoming_archive_report,
-                 "NE": nebraska_canvass.parse, "CO": lambda body, _: colorado_voting_statistics.parse(body)}[state]
+                 "NE": nebraska_canvass.parse, "CO": colorado_voting_statistics.parse}[state]
         query = (nebraska_canvass.parse_blue_book(checked_original(feed + "-blue-book"), body)
                  if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION else parse(body, election))
         if query != entries[feed]["data"]["complete_native_query"]:
@@ -1013,14 +1013,18 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError("Invalid historical county report binding")
         if state == "CO":
-            if query != colorado_voting_statistics.query(query["native_rows"]):
+            if query != colorado_voting_statistics.query(query["native_rows"], election):
                 raise ValueError("Colorado turnout differs from its retained source rows")
+            count_only = query["registration_basis"] is None
             if colorado_precincts:
                 for county, units in query["precincts"].items():
                     for unit in units:
                         n, d = unit["ballots_cast"], unit["registered"]
-                        hold = ("ballots_exceed_registered" if n > d else
+                        hold = (colorado_voting_statistics.REGISTRATION_HOLD if count_only else
+                                "ballots_exceed_registered" if n > d else
                                 "no_positive_registration_denominator" if not d else None)
+                        if count_only:
+                            unit = {**unit, **dict.fromkeys(("registered", "active", "inactive"))}
                         rows.append({"state_code": "CO", "election_date": election, "county": county, **unit,
                                      "registration_basis": query["registration_basis"],
                                      "qualified_same_report_registration_fraction_pct": None if hold else 100 * n / d,
@@ -1029,7 +1033,10 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                                      "source_bytes": report["bytes"]})
                 continue
             counties = [*query["counties"], query["total"]]
-            county_conflict = any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
+            if count_only:
+                counties = [{**row, "registered": None, "rate_hold_reason": colorado_voting_statistics.REGISTRATION_HOLD}
+                            for row in counties]
+            county_conflict = not count_only and any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
         elif state == "KS":
             kansas_controls(query, allow_county_conflicts=True)
             counties = [{"county": name, "advance_ballots_returned_by_mail": mail,
@@ -1067,7 +1074,7 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             county, registered, ballots = native["county"], native["registered"], native["ballots_cast"]
             statewide = county == "TOTAL"
             hold = ("county_conflict_included_in_statewide_total" if statewide and county_conflict
-                    else "registration_not_in_report" if registered is None
+                    else (native.get("rate_hold_reason") or "registration_not_in_report") if registered is None
                     else "ballots_exceed_registered" if ballots > registered
                     else "no_positive_registration_denominator" if not registered else native.get("rate_hold_reason"))
             if state == "CA" and not hold and (
