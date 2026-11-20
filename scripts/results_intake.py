@@ -671,6 +671,9 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
     la_bootstrap = collect_la_bootstrap(
         collector, baseline, config.get("louisiana_post_election_authority"))
     granular = results_granular.collect(collector, baseline)
+    from scripts.cps_published_state_tables import CURRENT_FEED as CPS_FEED
+    if CPS_FEED in previous.get("granular", {}):
+        granular[CPS_FEED] = copy.deepcopy(previous["granular"][CPS_FEED])
     if la_bootstrap.get("status") == "reported":
         granular[LA_BOOTSTRAP_ID] = la_bootstrap
     else:
@@ -778,6 +781,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_platte.py", "results_pdf_county_parent.py", "results_minnesota_turnout.py",
              "philadelphia_divisions.py",
              "results_turnout_history.py", "results_indiana_turnout.py", "results_nc_vote_history.py",
+             "cps_published_state_tables.py",
              "results_ca_county_scan_transcriptions.json",
              "results_pa_vote_history.py", "results_alaska_turnout.py",
              "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
@@ -966,7 +970,7 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 def late_archive_sources():
     from scripts import (
-        results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
+        cps_published_state_tables, results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_pa_vote_history, results_uf_turnout,
     )
     from scripts import results_turnout_history as history
@@ -978,12 +982,14 @@ def late_archive_sources():
         *results_minnesota_turnout.SOURCE_IDS,
         *results_indiana_turnout.FEEDS.values(),
         history.CA_CURRENT_FEED,
+        cps_published_state_tables.CURRENT_FEED,
         *history.COUNTY_ARCHIVES,
         *sorted(history.municipal_feeds()),
     )
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None, *, late_archives=False):
+    from scripts import cps_published_state_tables
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
     from scripts import results_indiana_turnout, results_minnesota_turnout, results_native, results_nc_vote_history
     from scripts import results_uf_turnout
@@ -1009,6 +1015,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
         results_pdf_county_parent.WOODFORD_FEED: results_pdf_county_parent.collect_woodford,
         results_pdf_county_parent.LAWRENCE_FEED: results_pdf_county_parent.collect_lawrence,
         philadelphia_divisions.FEED: philadelphia_divisions.collect,
+        cps_published_state_tables.CURRENT_FEED: cps_published_state_tables.collect_current,
     }
     administrative.update({feed: partial(results_pa_vote_history.collect, year=year)
                            for year, feed in results_pa_vote_history.FEEDS.items()})

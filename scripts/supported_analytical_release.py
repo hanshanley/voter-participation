@@ -476,7 +476,7 @@ def other_offices(review):
 
 def selected_local_observation_ids(snapshot, counts=None):
     from scripts import (
-        philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
+        cps_published_state_tables, philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_pa_vote_history, results_pdf_county_parent,
         results_turnout_history, statewide_ballot_totals,
     )
@@ -524,6 +524,7 @@ def selected_local_observation_ids(snapshot, counts=None):
                 selected.add(statewide_ballot_totals.identity("IN"))
             continue
         if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED, results_turnout_history.CA_CURRENT_FEED)
+                or identity == cps_published_state_tables.CURRENT_FEED
                 or identity in results_indiana_turnout.FEEDS.values()
                 or identity in results_turnout_history.COUNTY_ARCHIVES
                 or identity in results_pa_vote_history.FEEDS.values()):
@@ -657,6 +658,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
         raw_files[results_turnout_history.CA_CURRENT_CSV] = csv_bytes(current_ca)
     cps_workbooks = seed.get("cps_published_state_workbooks")
     published_rows = published_cps.build(cps_workbooks) if cps_workbooks is not None else []
+    current_cps = snapshot.get("granular_sources", {}).get(published_cps.CURRENT_FEED, {})
+    current_cps_rows = published_cps.current_rows(current_cps)
+    published_rows.extend(current_cps_rows)
     if published_rows:
         raw_files[published_cps.CSV] = published_cps.csv_body(published_rows)
     files = {"release/" + name + ".gz": compressed(body) for name, body in raw_files.items()}
@@ -694,6 +698,10 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
             "state_demographic_query_cells": len(cps),
             "state_demographic_years": sorted({row["year"] for row in cps}),
             **({"published_state_tables": published_cps.summary(published_rows)} if published_rows else {}),
+            **({"current_published_state_tables": {
+                "status": current_cps["status"], "error": current_cps.get("error"),
+                "rows": len(current_cps_rows),
+            }} if current_cps else {}),
             "early_native_source_point_years_kept_as_separate_populations": [1996, 1998, 2002],
             "statewide_survey_rates_not_allocated_locally": True,
         },

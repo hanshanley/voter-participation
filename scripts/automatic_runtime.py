@@ -20,7 +20,7 @@ import zipfile
 from scripts.participation_intake.contract import digest, encoded, pin
 from scripts.participation_intake.publisher import GitPublisher
 from scripts import results_granular
-from scripts.cps_published_state_tables import INPUT as CPS_INPUT, INPUT_PATH as CPS_INPUT_PATH
+from scripts.cps_published_state_tables import CURRENT_FEED as CPS_CURRENT_FEED, INPUT as CPS_INPUT, INPUT_PATH as CPS_INPUT_PATH
 from scripts.nationwide import STATES
 
 
@@ -787,12 +787,16 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         "Recomputes the complete count/native/model numerical query sets from included\n"
         "public aggregate source facts and safe accepted priors. No source requests,\n"
         "private survey refits, new geographic joins or observed-history claims.\n").encode()
-    if "inputs/" + CPS_INPUT in members:
+    if "inputs/" + CPS_INPUT in members or (
+            (snapshot.get("granular_sources", {}).get(CPS_CURRENT_FEED) or {}).get("data") is not None):
         members["REPRODUCE.txt"] += (
             "\nThe published CPS tables require openpyxl==3.1.5. The included original "
             "workbooks and source checksums reproduce the comprehensive state CSV.\n"
-            f"PYTHONPATH=code python{python_version} -m scripts.cps_published_state_tables "
-            f"inputs/{CPS_INPUT} reproduced-cps.csv\n"
+        ).encode()
+    if "inputs/" + CPS_INPUT in members:
+        members["REPRODUCE.txt"] += (
+            f"To reproduce only the frozen 2016–2024 inputs: PYTHONPATH=code python{python_version} "
+            f"-m scripts.cps_published_state_tables inputs/{CPS_INPUT} reproduced-historical-cps.csv\n"
         ).encode()
     if "inputs/reviewed-congressional-sources/data/results-intake/district-splits/20261118-01/review.json" in members:
         members["REPRODUCE.txt"] += (

@@ -645,6 +645,10 @@ def reviewed_source_bridge(entry, rows):
 
 def project(baseline, granular):
     """Create successor bodies, preserving old versions, IDs, views and join decisions."""
+    from scripts.cps_published_state_tables import CURRENT_FEED as CPS_FEED
+
+    if CPS_FEED in granular:
+        granular = {key: entry for key, entry in granular.items() if key != CPS_FEED}
     addition_changes = []
     for entry in granular.values():
         data = entry.get("data") if isinstance(entry, dict) else None

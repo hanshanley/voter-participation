@@ -304,7 +304,7 @@ def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp
 @pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
 def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
     from scripts import (
-        philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout as mn, results_native,
+        cps_published_state_tables, philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout as mn, results_native,
         results_nc_vote_history,
         results_pa_vote_history, results_pdf_county_parent, results_uf_turnout,
         results_turnout_history,
@@ -351,6 +351,8 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
                         lambda collector, year: adapter(results_indiana_turnout.FEEDS[year])(collector))
     monkeypatch.setattr(results_turnout_history, "collect_county_archive",
                         lambda collector, feed: adapter(feed)(collector))
+    monkeypatch.setattr(cps_published_state_tables, "collect_current",
+                        adapter(cps_published_state_tables.CURRENT_FEED))
     for feed, name in ((results_turnout_history.BUXTON_FEED, "buxton"),
                        (results_turnout_history.BATH_FEED, "bath")):
         monkeypatch.setattr(results_turnout_history, "collect_" + name, adapter(feed))

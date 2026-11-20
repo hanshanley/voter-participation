@@ -101,6 +101,12 @@ thousands; `B` and `-` remain source markers rather than reconstructed rates.
 Both workbook totals and the original group labels are preserved. The race and
 Hispanic-origin groups are not exclusive. This is not a new respondent model,
 an administrative vote count, or a method for allocating state rates locally.
+The weekly archive sweep and the scoped `US-cps-2026-published-state-tables`
+refresh follow the Census landing page for the November 2026 release. Both
+linked statewide tables must pass the same roster, units, uncertainty and
+matching-total checks before any 2026 rows are appended. Original workbooks
+and link pages are kept in the source packet. A failed check preserves the
+last verified pair; a denied source remains stopped.
 
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
