@@ -840,6 +840,46 @@ def test_colorado_retains_reviewed_ballot_shortfalls_but_rejects_new_ones(tmp_pa
     assert "state_ballot_shortfall" not in query and "Larimer" not in query["county_ballot_shortfalls"]
 
 
+def test_colorado_legacy_mixed_reporting_labels_do_not_become_precincts():
+    from scripts import colorado_voting_statistics as co
+
+    def edition(election, mixed=False):
+        labels = co.MODES if mixed else ["Active Voters"]
+        rows = [["", "", *labels, co.BALLOTS], [""] * (len(labels) + 3)]
+        for i, name in enumerate(co.COUNTIES):
+            values = ["1", "2", "0", "0", "3"] if mixed else ["4", "3"]
+            rows.extend([["County", name, *values],
+                         ["Precinct", "Absentee" if mixed else f"{i:010d}", *values]])
+        rows.insert(2, ["State", "Colorado", *[str(int(v) * 64) for v in rows[2][2:]]])
+        return co.query(rows, election)
+
+    mixed = edition("2004-11-02", mixed=True)
+    assert mixed["precincts"] == {}
+    assert mixed["registration_hold"] == co.REGISTRATION_NOT_REPORTED
+    assert mixed["total"]["ballots_cast"] == 192
+    assert len(mixed["native_rows"]) == 131
+    regular = edition("2010-11-02")
+    assert len(regular["precincts"]) == 64
+    assert regular["registration_hold"] == co.ACTIVE_REGISTRATION_HOLD
+    with pytest.raises(ValueError, match="voting modes"):
+        changed = copy.deepcopy(mixed["native_rows"])
+        changed[4][-1] = "2"
+        co.query(changed, "2004-11-02")
+
+
+def test_colorado_legacy_county_only_respects_historical_roster():
+    from scripts import colorado_voting_statistics as co
+
+    rows = [["", "", "Registered Voters", co.BALLOTS], [""] * 4,
+            ["State", "Colorado", "630", "441"],
+            *[["County", name, "10", "7"] for name in co.COUNTIES if name != "Broomfield"]]
+    query = co.query(rows, "2000-11-07")
+    assert len(query["counties"]) == 63 and query["total"]["registered"] == 630
+    assert query["registration_basis"] == "Registered voters in the same report"
+    with pytest.raises(ValueError, match="geography"):
+        co.query([*rows, ["County", "Broomfield", "0", "0"]], "2000-11-07")
+
+
 def test_nebraska_current_county_reports_keep_independent_last_good_editions(tmp_path, monkeypatch):
     from scripts import nebraska_county_reports as reports
 

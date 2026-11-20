@@ -209,6 +209,21 @@ counts and their same-report registration fractions are retained. The
 collector accepts a corrected zero gap but rejects any unreviewed gap;
 registration reconciliation remains exact.
 
+The same archive also supplies nine pre-2014 federal general elections
+(1992, 1996, and every even year from 2000 through 2012). The bounded
+archive search selects the Voting Statistics office (ID 29), general
+election and statewide division (ID 83); scheduled collection checks each
+reviewed contest page and its exact CSV instead of downloading all races.
+The early county tables use the 63-county roster through 2000. Only the
+2000 edition qualifies a same-report registration fraction. The earlier
+mixed reporting-unit layouts (2004, 2006 and 2008) are reconciled to their
+county controls and retained in the complete source query, not drawn as
+precincts. The 2010 and 2012 precinct inventories are count-only. The 1992
+and 2012 statewide totals exceed their county sums by 30 and 1,240,
+respectively; the export preserves those gaps and reviewed 2012 county
+controls, never allocating the difference. Sources with a party-labeled
+ballot column or without an explicit all-ballot field are not admitted.
+
 For independent verification from publisher PDFs, extract the nested
 `inputs/complete-source-results.zip` from the analysis download. Its
 `inputs/county-report-originals.json` lists the exact URLs, checksums and

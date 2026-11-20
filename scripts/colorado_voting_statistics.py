@@ -2,21 +2,35 @@
 
 import csv
 import io
+import json
 import re
 from datetime import date
+from hashlib import sha256
 from html import unescape
 
 from scripts.participation_intake.contract import count
 
 EDITIONS = {
+    "1992-11-03": "25290", "1996-11-05": "8245", "2000-11-07": "7901",
+    "2002-11-05": "25268", "2004-11-02": "15046", "2006-11-07": "15044",
+    "2008-11-04": "25357", "2010-11-02": "25359", "2012-11-06": "25363",
     "2014-11-04": "25361", "2016-11-08": "25362", "2018-11-06": "25360",
     "2020-11-03": "25358", "2022-11-08": "25989", "2024-11-05": "26759",
 }
 PARTY_SUBHEADER = ["", "", "Republican", "", "", ""]
 REGISTRATION_HOLD = "registration_column_party_labeled"
 REGISTRATION_BASIS = "Total registration (active plus inactive)"
-STATE_BALLOT_GAPS = {"2014-11-04": 36}
+ACTIVE_REGISTRATION_HOLD = "active_registration_only"
+REGISTRATION_NOT_REPORTED = "registration_not_in_report"
+PARTY_EDITIONS = {"2012-11-06", "2018-11-06", "2020-11-03"}
+STATE_BALLOT_GAPS = {"1992-11-03": 30, "2012-11-06": 1240, "2014-11-04": 36}
 COUNTY_BALLOT_GAPS = {
+    "2012-11-06": {
+        "Broomfield": 474, "Clear Creek": 126, "Conejos": 59, "Delta": 224, "Dolores": 27,
+        "Douglas": 3635, "Grand": 168, "Gunnison": 97, "Kit Carson": 178, "Larimer": 2052,
+        "Moffat": 126, "Montrose": 383, "Pitkin": 205, "Rio Blanco": 43, "San Miguel": 2,
+        "Summit": 229, "Weld": 2662, "Yuma": 64,
+    },
     "2014-11-04": {"Larimer": 43, "Rio Grande": 48, "Summit": 78},
     "2016-11-08": {"Larimer": 32},
 }
@@ -36,6 +50,91 @@ LABELS = {
     "Registered Voters": "registered",
     "Total Ballots Cast": "ballots_cast",
 }
+WIDE_HEADERS = {
+    "1992-11-03": "8d7c03ece1f505d40d45570ee64da48f58a886e6d495012700efb811cefa43c0",
+    "1996-11-05": "a57bfd2cacb91724c52b9bb800e8d19671b4f1646180fa4589cb546ba90f1c5d",
+    "2002-11-05": "aafe55d6099cfeba021c68471dc86ee014dc18877839fdc33a358e61d242fe4c",
+}
+MODES = ["Early Voting", "Absentee Ballot", "Provisional Ballot", "Regular Ballot"]
+BALLOTS = "Total Ballots Cast"
+
+
+def ballot_gap(parent, children, reviewed_gap, description):
+    gap = parent["ballots_cast"] - sum(row["ballots_cast"] for row in children)
+    if (not children or gap not in (0, reviewed_gap)
+            or any(sum(row[field] for row in children) != parent[field] for field in parent
+                   if field not in ("ballots_cast", "county", "precinct"))):
+        raise ValueError(f"Colorado {description} do not reconcile")
+    return gap
+
+
+def legacy_query(rows, election):
+    names = [name for name in COUNTIES if name != "Broomfield" or election >= "2002"]
+    county_only = election <= "2002-11-05"
+    mode_report = election in ("2004-11-02", "2006-11-07")
+    precinct_export = election == "2010-11-02"
+    if election in WIDE_HEADERS:
+        identity = sha256(json.dumps(rows[:2], separators=(",", ":"), ensure_ascii=True).encode()).hexdigest()
+        if identity != WIDE_HEADERS[election]:
+            raise ValueError("Unexpected Colorado legacy wide header")
+        hold, basis = REGISTRATION_HOLD, None
+    else:
+        labels, hold, basis = (
+            (["Registered Voters", BALLOTS], None, "Registered voters in the same report")
+            if county_only else (MODES + [BALLOTS], REGISTRATION_NOT_REPORTED, None)
+            if mode_report else (["Active Voters", BALLOTS], ACTIVE_REGISTRATION_HOLD, None)
+        )
+        if rows[:2] != [["", "", *labels], [""] * (len(labels) + 2)]:
+            raise ValueError("Unexpected Colorado legacy voting statistics schema")
+    fields = rows[0][2:]
+    native_fields = [LABELS.get(field, field) for field in fields]
+    total, counties, units, ids = None, {}, {}, set()
+    for row in rows[2:]:
+        if len(row) != len(fields) + 2 or not all(re.fullmatch(r"[0-9]+", value) for value in row[2:]):
+            raise ValueError("Missing or noninteger Colorado legacy voting statistics")
+        level, name = row[:2]
+        facts = dict(zip(native_fields, map(count, row[2:]), strict=True))
+        if mode_report and sum(facts[key] for key in MODES) != facts["ballots_cast"]:
+            raise ValueError("Colorado voting modes do not reconcile")
+        if level == "State" and name == "Colorado" and total is None:
+            total = {"county": "TOTAL", **facts}
+        elif level == "County" and total is not None and name in names and name not in counties:
+            county = name
+            counties[name], units[name] = {"county": name, **facts}, []
+        elif level == "Precinct" and counties and not county_only:
+            key = name if precinct_export else (county, name)
+            pattern = r"[0-9]{10}" if precinct_export else r"[A-Za-z0-9][A-Za-z0-9 .&'/-]{0,59}"
+            if key in ids or not re.fullmatch(pattern, name) or name != name.strip():
+                raise ValueError("Unexpected or duplicate Colorado legacy reporting label")
+            ids.add(key)
+            units[county].append({"precinct": name, **facts})
+        else:
+            raise ValueError("Unexpected or duplicate Colorado legacy geography")
+    if total is None or set(counties) != set(names):
+        raise ValueError("Incomplete Colorado legacy county roster")
+    state_gap = ballot_gap(total, counties.values(), STATE_BALLOT_GAPS.get(election, 0), "counties to the state control")
+    if not county_only:
+        for name in names:
+            ballot_gap(counties[name], units[name], 0, f"{name} reporting units to the county control")
+    note = {
+        REGISTRATION_HOLD: "The registration column has a party subheader; counts only.",
+        ACTIVE_REGISTRATION_HOLD: "Only active registration is reported; counts only.",
+        REGISTRATION_NOT_REPORTED: "The report has voting modes but no registration denominator.",
+        None: "Registration and ballot counts come from the same report.",
+    }[hold]
+    if not county_only and not precinct_export:
+        note += " Mixed reporting labels are retained in the complete source query, not treated as precincts."
+    if state_gap:
+        note += f" Printed statewide ballots exceed the sum of county counts by {state_gap}."
+
+    def published(row):
+        return {key: row.get(key) for key in ("county", "ballots_cast", "registered")}
+
+    return {"native_rows": rows, "counties": [published(counties[name]) for name in names],
+            "total": published(total), "precincts": units if precinct_export else {},
+            "registration_basis": basis, "registration_hold": hold, "report_note": note,
+            **({"state_ballot_shortfall": state_gap} if state_gap else {}),
+            "extraction_method": "historical_voting_statistics_csv"}
 
 
 def routes(election):
@@ -65,7 +164,11 @@ def parse(body, election):
 
 
 def query(rows, election):
-    count_only = (election in ("2018-11-06", "2020-11-03") and len(rows) >= 2 and rows[:2] == [
+    if not 66 <= len(rows) <= 20_000:
+        raise ValueError("Unexpected Colorado voting statistics row inventory")
+    if election < "2012":
+        return legacy_query(rows, election)
+    count_only = (election in PARTY_EDITIONS and rows[:2] == [
         ["", "", "Registered Voters", "Active Voters", "Inactive Voters", "Total Ballots Cast"], PARTY_SUBHEADER])
     if (len(rows) < 68 or len(rows) > 20_000 or rows[0][:2] != ["", ""]
             or len(rows[0]) != 6 or (not count_only and (rows[1] != [""] * 6 or "Registered Voters" in rows[0]))
@@ -94,14 +197,6 @@ def query(rows, election):
             raise ValueError("Unexpected or duplicate Colorado geography")
     if total is None or set(counties) != set(COUNTIES):
         raise ValueError("Incomplete Colorado county roster")
-    def ballot_gap(parent, children, reviewed_gap, description):
-        gap = parent["ballots_cast"] - sum(row["ballots_cast"] for row in children)
-        if (not children or gap not in (0, reviewed_gap)
-                or any(sum(row[field] for row in children) != parent[field]
-                       for field in ("registered", "active", "inactive"))):
-            raise ValueError(f"Colorado {description} do not reconcile")
-        return gap
-
     state_gap = ballot_gap(total, counties.values(), STATE_BALLOT_GAPS.get(election, 0), "counties to the state control")
     county_gaps = {}
     for name in COUNTIES:

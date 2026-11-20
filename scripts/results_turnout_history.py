@@ -1056,12 +1056,13 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             if query != colorado_voting_statistics.query(query["native_rows"], election):
                 raise ValueError("Colorado turnout differs from its retained source rows")
             count_only = query["registration_basis"] is None
+            registration_hold = query.get("registration_hold", colorado_voting_statistics.REGISTRATION_HOLD)
             if colorado_precincts:
                 for county, units in query["precincts"].items():
                     shortfall = query.get("county_ballot_shortfalls", {}).get(county)
                     for unit in units:
-                        n, d = unit["ballots_cast"], unit["registered"]
-                        hold = (colorado_voting_statistics.REGISTRATION_HOLD if count_only else
+                        n, d = unit["ballots_cast"], unit.get("registered")
+                        hold = (registration_hold if count_only else
                                 "county_ballot_control_disagrees" if shortfall else
                                 "ballots_exceed_registered" if n > d else
                                 "no_positive_registration_denominator" if not d else None)
@@ -1082,7 +1083,7 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             counties = [{**row, "county_ballot_shortfall": query["county_ballot_shortfalls"][row["county"]]}
                         if row["county"] in query.get("county_ballot_shortfalls", {}) else row for row in counties]
             if count_only:
-                counties = [{**row, "registered": None, "rate_hold_reason": colorado_voting_statistics.REGISTRATION_HOLD}
+                counties = [{**row, "registered": None, "rate_hold_reason": registration_hold}
                             for row in counties]
             county_conflict = not count_only and any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
         elif state == "KS":
