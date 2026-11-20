@@ -25,7 +25,8 @@ def test_collection_has_its_own_budget_after_successful_pinned_validation():
     validation = jobs[refresh["needs"]]
     assert refresh["if"] == "needs.validate.outputs.active == 'true'"
     assert validation["outputs"]["active"] == "${{ steps.window.outputs.active }}"
-    assert refresh["timeout-minutes"] == validation["timeout-minutes"] == "30"
+    assert refresh["timeout-minutes"] == "30"
+    assert validation["timeout-minutes"] == "40"
     assert validation["permissions"] == {"contents": "read"}
     for job in (validation, refresh):
         checkout = next(step for step in job["steps"] if step.get("uses", "").startswith("actions/checkout@"))
