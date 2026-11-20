@@ -1062,7 +1062,7 @@ def bind_publication(result, base_url, complete_download):
     for series in sources.get("general_election_turnout_history", {}).values():
         bind(series["data"])
         bind(series["csv"])
-    for product in ("pennsylvania_general_vote_history", "wyoming_turnout_profile"):
+    for product in ("pennsylvania_general_vote_history", "wyoming_turnout_profile", "wyoming_precinct_canvass"):
         if series := sources.get(product):
             bind(series["data"])
             bind(series["csv"])

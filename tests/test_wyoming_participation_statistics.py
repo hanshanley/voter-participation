@@ -69,6 +69,52 @@ def test_scheduled_profile_accepts_revision_and_retains_last_good(tmp_path, monk
             assert retained[field] == correction[field]
 
 
+def test_official_precinct_ballot_canvass_reconciles_every_county_and_preserves_zero(tmp_path, monkeypatch):
+    import pytest
+    from scripts import results_intake as intake, results_turnout_history as history
+
+    def pages(value):
+        election = "Wyoming General Election - November 3, 2026"
+        state = "\n".join(("Page 1 of 1", "Statewide Total Ballots Cast", election, "Total Ballots Cast",
+                           *(f"{name} {value}" for name in history.WY_COUNTIES),
+                           f"{len(history.WY_COUNTIES)*value}Total"))
+        local = [f"Page 1 of 1\n{name} County Official Precinct-by-Precinct Total Ballots Summary\n"
+                 f"{election}\nTotal\nPrecinct\n01-01 {value}\n01-02 0\n{value}\nTotal Ballots Cast"
+                 for name in history.WY_COUNTIES]
+        return ["SUMMARY\nTotal Ballots Cast\n2026 GENERAL\nELECTION", state, *local]
+
+    first, corrected = pages(100), pages(99)
+    for bad in (first[:-1],
+                [*first[:2], first[2].replace("01-02 0", "1-1 0"), *first[3:]],
+                [*first[:2], first[2].replace("01-01 100", "01-01 99"), *first[3:]],
+                [*first[:2], first[2].replace("Official", "Unofficial"), *first[3:]]):
+        with pytest.raises(ValueError):
+            history.wyoming_precinct_query(bad)
+    edits = iter((first, corrected, corrected,
+                  [*corrected[:2], corrected[2].replace("01-02 0\n", ""), *corrected[3:]]))
+    prior = {}
+    monkeypatch.setattr(history, "wyoming_precinct_canvass", lambda body: history.wyoming_precinct_query(
+        body.decode().split("\f")))
+
+    def collect(day):
+        collector = intake.Collector(tmp_path, prior, {"hosts": [], "prefixes": [], "urls": []},
+                                     datetime(2026, 11, day, tzinfo=timezone.utc))
+        body = "\f".join(next(edits)).encode()
+        monkeypatch.setattr(collector, "acquire", lambda url: (body, {"origin": "test"}))
+        entry = history.collect_wyoming_precinct_canvass(collector)
+        prior[history.WY_CANVASS_FEED] = entry
+        return entry
+
+    assert collect(12)["data"]["state_ballots_cast"] == 2300
+    revision = collect(13)
+    facts, body = history.wyoming_precinct_exports(revision)
+    assert facts["state_ballots_cast"] == 2277
+    assert read(body)[1]["ballots_cast"] == "0" and read(body)[1]["turnout_rate"] == ""
+    assert collect(14) == revision
+    held = collect(15)
+    assert held["status"] == "retained_after_failure" and held["data"] == revision["data"]
+
+
 class WyomingParticipationStatisticsTests(unittest.TestCase):
     def test_primary_general_and_unreported_cells_remain_distinct(self):
         rows = parse_profile(fixture())

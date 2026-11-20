@@ -30,6 +30,9 @@ NC_HISTORY_FEED = "NC-general-election-turnout-history"
 NC_HISTORY_URL = "https://www.ncsbe.gov/results-data/voter-turnout"
 NC_HISTORY_HEADER = ("Election", "Eligible Voters", "Ballots Cast", "Turnout (%)")
 WY_HISTORY_FEED = "WY-primary-general-turnout-profile"
+WY_CANVASS_FEED = "WY-2026-precinct-ballot-canvass"
+WY_CANVASS_URL = ("https://sos.wyo.gov/Elections/Docs/2026/Results/General/"
+                  "2026_Wyoming_General_Election_Results.pdf")
 VA_FEED = "VA-general-election-turnout"
 VA_URL = "https://www.elections.virginia.gov/resultsreports/registrationturnout-statistics/"
 VA_HEADER = ("Year", "Total Registered", "Percentage Change from Previous Year", "Total Voting",
@@ -738,6 +741,95 @@ def wyoming_history_exports(entry):
              "first_observed_at": entry["first_observed_at"],
              "error_stage": entry.get("error_stage"), "error": entry.get("error")},
             wy_profile.csv_bytes(rows))
+
+
+def wyoming_precinct_query(pages):
+    election = "Wyoming General Election - November 3, 2026"
+    if len(pages) != len(WY_COUNTIES) + 2:
+        raise ValueError("Incomplete statewide and county precinct ballot tables")
+    cover = pages[0].split()
+    if cover != "SUMMARY Total Ballots Cast 2026 GENERAL ELECTION".split():
+        raise ValueError("Wyoming canvass is not the ballot summary section")
+
+    def lines(page):
+        return [" ".join(line.split()) for line in page.splitlines() if line.strip()]
+
+    amount = r"(?:0|[1-9]\d*|[1-9]\d{0,2}(?:,\d{3})+)"
+    statewide = lines(pages[1])
+    total = re.fullmatch(rf"({amount}) ?Total", statewide[-1]) if statewide else None
+    expected_header = ["Page 1 of 1", "Statewide Total Ballots Cast", election, "Total Ballots Cast"]
+    if statewide[:4] != expected_header or len(statewide) != len(WY_COUNTIES) + 5 or total is None:
+        raise ValueError("Changed statewide ballot control table")
+    state_ballots = count(total[1])
+    rows, controls = [], []
+    for county, county_line, page, text in zip(WY_COUNTIES, statewide[4:-1], range(3, 26), pages[2:]):
+        control = re.fullmatch(rf"{re.escape(county)} ({amount})", county_line)
+        if control is None:
+            raise ValueError("Missing or out-of-order statewide county control: " + county)
+        expected = rf"{re.escape(county)} County Official Precinct-by[- ]Precinct Total Ballots Summary"
+        # Natrona's PDF text layer joins the header and election line.
+        local = lines(text.replace("Summary" + election, "Summary\n" + election))
+        if (len(local) < 8 or local[0] != "Page 1 of 1" or not re.fullmatch(expected, local[1])
+                or local[2:5] != [election, "Total", "Precinct"] or local[-1] != "Total Ballots Cast"
+                or not re.fullmatch(amount, local[-2])):
+            raise ValueError("Changed precinct ballot table: " + county)
+        seen, ballots = set(), 0
+        for line in local[5:-2]:
+            match = re.fullmatch(rf"([0-9]{{1,2}}-[0-9]{{1,2}}) ({amount})", line)
+            if not match:
+                raise ValueError("Malformed precinct ballot row: " + county)
+            native, value = match[1], count(match[2])
+            key = "-".join(str(int(part)) for part in native.split("-"))
+            if key in seen:
+                raise ValueError("Ambiguous precinct ID: " + county)
+            seen.add(key)
+            ballots += value
+            rows.append({"state_code": "WY", "election_date": "2026-11-03", "county": county,
+                         "native_precinct": native, "precinct_key": key, "ballots_cast": value,
+                         "pdf_page": page, "registration": None, "turnout_rate": None,
+                         "geometry_qualified": False})
+        if ballots != count(control[1]) or ballots != count(local[-2]):
+            raise ValueError("Precinct and statewide-county ballot controls differ: " + county)
+        controls.append({"county": county, "ballots_cast": ballots, "precinct_rows": len(seen),
+                         "pdf_page": page})
+    if sum(row["ballots_cast"] for row in controls) != state_ballots:
+        raise ValueError("County controls do not match the printed state total")
+    return {"contract": "participation.wyoming_precinct_ballot_canvass.v1", "state_code": "WY",
+            "election_date": "2026-11-03", "participation_observation_qualified": True,
+            "source_stage": "official_general_canvass", "geographic_allocation": False,
+            "state_ballots_cast": state_ballots, "county_controls": controls,
+            "complete_native_query": rows}
+
+
+def wyoming_precinct_canvass(body):
+    from pypdf import PdfReader
+
+    if not body.startswith(b"%PDF-") or len(body) > 10_000_000:
+        raise ValueError("Wyoming precinct canvass is not a bounded PDF")
+    pdf = PdfReader(io.BytesIO(body), strict=True)
+    return wyoming_precinct_query([page.extract_text() for page in pdf.pages[:len(WY_COUNTIES) + 2]])
+
+
+def collect_wyoming_precinct_canvass(collector):
+    def parse(body):
+        data = wyoming_precinct_canvass(body)
+        prior = (collector.prior.get(WY_CANVASS_FEED) or {}).get("data") or {}
+        keys = {(row["county"], row["precinct_key"]) for row in data["complete_native_query"]}
+        if any((row["county"], row["precinct_key"]) not in keys for row in prior.get("complete_native_query", [])):
+            raise ValueError("Wyoming precinct canvass dropped a previously published unit")
+        return data
+
+    return collector.capture(WY_CANVASS_FEED, WY_CANVASS_URL, parse)
+
+
+def wyoming_precinct_exports(entry):
+    data = entry["data"]
+    rows = [{**row, "source_url": entry["source"]["url"], "source_sha256": entry["source"]["sha256"],
+             "status": entry["status"], "first_observed_at": entry["first_observed_at"]}
+            for row in data["complete_native_query"]]
+    return ({**data, "status": entry["status"], "source": entry["source"],
+             "first_observed_at": entry["first_observed_at"], "error": entry.get("error"),
+             "error_stage": entry.get("error_stage")}, wy_profile.csv_bytes(rows))
 
 
 def collect_county_archive(collector, feed):

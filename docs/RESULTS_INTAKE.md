@@ -48,6 +48,15 @@ For a source-only refresh without national reacquisition, use
 `refresh-selected --sources WY-primary-general-turnout-profile` with the same
 registry and work-directory arguments as the weekly command.
 
+`WY-2026-precinct-ballot-canvass` reads the combined official general-election
+PDF, not the separately linked preliminary county editions. It reads all
+23 county tables in one request and reconciles each printed county subtotal
+against the separately printed state summary. Corrections can move either
+direction; a missing formerly reported precinct, scope change, outage or
+failed control retains the prior edition. The full CSV preserves native
+precinct identifiers, zeros, and source page, and excludes unsupported rates.
+No county/precinct geometry or registration frame is inferred from this report.
+
 The weekly UF check follows the same advertised edition, schema and license
 guards as hourly intake. An inaccessible or incompatible UF edition leaves
 its last-good values and source edition intact and marks them retained; it

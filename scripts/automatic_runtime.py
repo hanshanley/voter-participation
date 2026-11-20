@@ -605,15 +605,22 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
             "data": {"path": path, **{key: value for key, value in artifact.items() if key != "content"}},
             "csv": {"path": csv_path, **pin(csv_body)},
         }
-    wy_entry = snapshot.get("granular_sources", {}).get(turnout_history.WY_HISTORY_FEED, {})
-    if wy_entry.get("data"):
-        data, csv_body = turnout_history.wyoming_history_exports(wy_entry)
-        path = "participation/wyoming-primary-general-turnout-profile"
+    for feed, product, filename, export in (
+        (turnout_history.WY_HISTORY_FEED, "wyoming_turnout_profile",
+         "wyoming-primary-general-turnout-profile", turnout_history.wyoming_history_exports),
+        (turnout_history.WY_CANVASS_FEED, "wyoming_precinct_canvass",
+         "wyoming-2026-precinct-ballot-canvass", turnout_history.wyoming_precinct_exports),
+    ):
+        wy_entry = snapshot.get("granular_sources", {}).get(feed, {})
+        if not wy_entry.get("data"):
+            continue
+        data, csv_body = export(wy_entry)
+        path = "participation/" + filename
         data_path, csv_path = path + ".json.gz", path + ".csv"
         artifact = _artifact(data)
         estimates["artifacts"][data_path] = artifact
         history_exports[csv_path] = csv_body
-        estimates["house_sources"]["wyoming_turnout_profile"] = {
+        estimates["house_sources"][product] = {
             "data": {"path": data_path, **{key: value for key, value in artifact.items() if key != "content"}},
             "csv": {"path": csv_path, **pin(csv_body)},
         }

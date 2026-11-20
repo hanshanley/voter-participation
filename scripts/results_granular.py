@@ -492,6 +492,7 @@ def collect(collector, baseline):
     jobs[results_turnout_history.WA_FEED] = results_turnout_history.collect_washington(collector)
     jobs[results_turnout_history.NC_HISTORY_FEED] = results_turnout_history.collect_north_carolina_history(collector)
     jobs[results_turnout_history.WY_HISTORY_FEED] = results_turnout_history.collect_wyoming_history(collector)
+    jobs[results_turnout_history.WY_CANVASS_FEED] = results_turnout_history.collect_wyoming_precinct_canvass(collector)
     jobs[results_turnout_history.VA_FEED] = results_turnout_history.collect_virginia(collector)
     jobs[results_turnout_history.TX_FEED] = results_turnout_history.collect_texas(collector)
     jobs[results_turnout_history.KS_FEED] = results_turnout_history.collect_kansas(collector)

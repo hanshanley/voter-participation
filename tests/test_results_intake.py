@@ -385,6 +385,9 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     selected.append(results_turnout_history.WY_HISTORY_FEED)
     monkeypatch.setattr(results_turnout_history, "collect_wyoming_history",
                         adapter(results_turnout_history.WY_HISTORY_FEED))
+    selected.append(results_turnout_history.WY_CANVASS_FEED)
+    monkeypatch.setattr(results_turnout_history, "collect_wyoming_precinct_canvass",
+                        adapter(results_turnout_history.WY_CANVASS_FEED))
     selected.extend(results_indiana_turnout.FEEDS.values())
     monkeypatch.setattr(results_indiana_turnout, "collect",
                         lambda collector, year: adapter(results_indiana_turnout.FEEDS[year])(collector))
