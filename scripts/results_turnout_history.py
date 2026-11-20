@@ -591,7 +591,8 @@ def collect_county_archive(collector, feed):
             data["date"] = query["published_date"]
         return data
 
-    return collector.capture(feed, index_url, parse, equivalent=lambda old, new: old == new)
+    return collector.capture(feed, index_url, parse, equivalent=lambda old, new: old == new,
+                             shared_acquisition=True)
 
 
 def county_archive_rows(entries, *, current_california=False):

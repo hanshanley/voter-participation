@@ -440,6 +440,45 @@ def test_county_archive_revisions_keep_full_facts(tmp_path, monkeypatch):
     assert history.county_archive_rows({feed: retained})[0]["source_status"] == "retained_after_failure"
 
 
+def test_county_archive_outage_attempts_shared_index_once_per_collection(tmp_path, monkeypatch):
+    from scripts import results_turnout_history as history
+
+    feeds = [feed for feed, (state, _) in history.COUNTY_ARCHIVES.items() if state == "CA"]
+    prior = {feed: {"status": "reported", "data": {"election_date": date},
+                    "first_observed_at": "old"}
+             for feed, (state, date) in history.COUNTY_ARCHIVES.items() if state == "CA"}
+    calls = []
+
+    def acquire(_, source, *, access_guard):
+        url = source["url"]
+        access_guard(url)
+        calls.append(url)
+        if len(calls) == 1:
+            raise IntakeError("source_unavailable", "Fixture index timeout")
+        return b"<html>No report links</html>", {"origin": "fixture"}
+
+    monkeypatch.setattr(Store, "acquire", acquire)
+    batch = [*feeds, history.CA_CURRENT_FEED]
+    collector = intake.Collector(tmp_path, prior, EMPTY_STOPS, NOW)
+    results = {feed: history.collect_county_archive(collector, feed) for feed in batch}
+    assert calls == [history.CA_URL]
+    assert all(result["error"] == "source_unavailable" and result["error_stage"] == "acquisition"
+               for result in results.values())
+    assert len(collector.attempts) == len(batch)
+    for feed in feeds:
+        assert results[feed]["status"] == "retained_after_failure"
+        assert results[feed]["data"] == prior[feed]["data"]
+        assert results[feed]["first_observed_at"] == "old"
+    assert results[history.CA_CURRENT_FEED]["data"] is None
+    assert collector.stopped == EMPTY_STOPS
+
+    next_run = intake.Collector(tmp_path, results, EMPTY_STOPS, NOW)
+    recovered = {feed: history.collect_county_archive(next_run, feed) for feed in batch}
+    assert calls == [history.CA_URL, history.CA_URL]
+    assert all(result["error"] == "report_not_linked" and result["error_stage"] == "parsing"
+               for result in recovered.values())
+
+
 def test_california_checked_scan_keeps_denominators_and_source_conflicts_separate():
     from scripts import results_turnout_history as history
 

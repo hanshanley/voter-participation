@@ -251,6 +251,7 @@ class Collector:
         self.stopped, self.offline = stops(stopped), offline
         self.lock, self.context = threading.Lock(), threading.local()
         self.attempts, self.bodies = [], {}
+        self.shared_acquisition_errors = {}
         write(self.work / "source-stops.json", self.stopped)
 
     def observation_time(self):
@@ -317,11 +318,19 @@ class Collector:
                 "http_last_modified": source[2],
                 "qualification": "HTTP representation edition, not a native count-update clock"}
 
-    def capture(self, identity, url, parser, *, equivalent=None):
+    def capture(self, identity, url, parser, *, equivalent=None, shared_acquisition=False):
         old = self.prior.get(identity)
         stage, attempted_pin = "acquisition", None
         try:
-            body, receipt = self.acquire(url)
+            if shared_acquisition and url in self.shared_acquisition_errors:
+                self.guard(url)
+                raise IntakeError(*self.shared_acquisition_errors[url])
+            try:
+                body, receipt = self.acquire(url)
+            except IntakeError as error:
+                if shared_acquisition:
+                    self.shared_acquisition_errors[url] = (source_error(error), str(error))
+                raise
             stage, attempted_pin = "parsing", pin(body)
             data = parser(body)
             if (old and old.get("data") and data.get("date") and old["data"].get("date")

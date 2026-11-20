@@ -67,6 +67,9 @@ checked by the same hourly collector and weekly sweep, using the exact
 general-election reports linked by their official indexes. The complete
 `release/participation-state-county-turnout-archives.csv.gz` query retains all
 printed county and state totals, available report editions and report hashes.
+An index acquisition failure is shared across its archive feeds for that run.
+Each feed records its own failure and retains its last verified report, if any.
+The next run can retry a transient outage; durable access stops still apply.
 Kansas's 2022 Stevens County and statewide registration fractions are withheld:
 the workbook prints 7,979 ballots against 3,246 registered for Stevens and
 includes that count in the state total. New Jersey's 2023 and 2025 elections are
