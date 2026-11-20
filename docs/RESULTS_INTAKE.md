@@ -2818,6 +2818,22 @@ Census detailed tables still require the appropriate denominator and survey
 checks, while EAVS releases require the data, codebook and jurisdiction
 reconciliation.
 
+### Alabama age participation and South Carolina statewide history
+
+The weekly bulk workflow collects the 2018 Alabama age workbook and 2020/2024
+text reports. It checks all 67 county totals and every statewide age total.
+The source's blanks remain null, including ten 2018 county `100+` cells.
+These are age-report counts, not statewide canvass totals or rates: the Alabama
+age reports fall short of its separate comprehensive report by 2,913 (2018),
+4,195 (2020) and 3,795 (2024). The export does not allocate those differences.
+
+The South Carolina export separates reported ballots cast (2008 onward) from
+voter-history credits (1998–2006). Both the source's printed percentage and the
+arithmetic from its counts are saved; South Carolina printed 50.0% in 2018
+but the counts imply approximately 55.0%. Neither statewide historical product
+replaces the live count map. Both complete factual queries and original pins are
+available in the release for offline reproduction.
+
 ### Oregon: reconciled statewide general-election history
 
 The weekly collector reads the statewide history and the historical

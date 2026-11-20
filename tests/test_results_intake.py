@@ -343,7 +343,7 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
         results_minnesota_turnout as mn, results_native,
         results_nc_vote_history, results_official_congress,
         results_pa_vote_history, results_pdf_county_parent, results_uf_turnout,
-        results_turnout_history, washington_participation,
+        results_turnout_history, southeast_turnout, washington_participation,
     )
 
     registry = fixture(tmp_path)
@@ -401,6 +401,8 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
                         lambda collector, feed: adapter(feed)(collector))
     monkeypatch.setattr(washington_participation, "collect", adapter(washington_participation.FEED))
     monkeypatch.setattr(oregon_turnout_history, "collect",
+                        lambda collector, feed: adapter(feed)(collector))
+    monkeypatch.setattr(southeast_turnout, "collect",
                         lambda collector, feed: adapter(feed)(collector))
     for feed, name in ((results_turnout_history.BUXTON_FEED, "buxton"),
                        (results_turnout_history.BATH_FEED, "bath")):

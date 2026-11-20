@@ -189,7 +189,7 @@ jobs:
           tests/test_eac_county_turnout.py
           tests/test_historical_native_counts.py tests/test_historical_precinct_qualification.py tests/test_historical_precinct_integration.py tests/test_historical_precinct_coverage.py
           tests/test_election_night_workflow.py tests/test_automatic_health.py
-          tests/test_washington_participation.py tests/test_oregon_turnout_history.py
+          tests/test_washington_participation.py tests/test_oregon_turnout_history.py tests/test_southeast_turnout.py
 
       - name: Record a passing validation for the exact environment
         if: steps.validation_tests.outcome == 'success' && steps.validation_env.outputs.fingerprint != ''

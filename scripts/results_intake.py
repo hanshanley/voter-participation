@@ -786,7 +786,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_platte.py", "results_pdf_county_parent.py", "results_minnesota_turnout.py",
              "philadelphia_divisions.py",
              "results_turnout_history.py", "national_turnout_release_watch.py", "washington_participation.py",
-             "oregon_turnout_history.py", "retained_bulk_turnout.py",
+             "oregon_turnout_history.py", "retained_bulk_turnout.py", "southeast_turnout.py",
              "wyoming_participation_statistics.py", "nebraska_canvass.py",
              "nebraska_county_reports.py",
              "colorado_voting_statistics.py", "maryland_precinct_history.py", "minnesota_precinct_history.py",
@@ -989,7 +989,7 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 def late_archive_sources():
     from scripts import national_turnout_release_watch, nebraska_county_reports
-    from scripts import oregon_turnout_history, washington_participation
+    from scripts import oregon_turnout_history, southeast_turnout, washington_participation
     from scripts import (
         results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_official_congress, results_pa_vote_history, results_uf_turnout,
@@ -1010,13 +1010,14 @@ def late_archive_sources():
         *national_turnout_release_watch.INDEXES,
         washington_participation.FEED,
         *oregon_turnout_history.URLS,
+        *southeast_turnout.URLS,
         *sorted(history.municipal_feeds()),
     )
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None, *, late_archives=False):
     from scripts import national_turnout_release_watch, nebraska_county_reports
-    from scripts import oregon_turnout_history, washington_participation
+    from scripts import oregon_turnout_history, southeast_turnout, washington_participation
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
     from scripts import results_indiana_turnout, results_minnesota_turnout, results_native, results_nc_vote_history
     from scripts import results_uf_turnout
@@ -1058,6 +1059,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
                            for feed in national_turnout_release_watch.INDEXES})
     administrative.update({feed: partial(oregon_turnout_history.collect, feed=feed)
                            for feed in oregon_turnout_history.URLS})
+    administrative.update({feed: partial(southeast_turnout.collect, feed=feed)
+                           for feed in southeast_turnout.URLS})
     administrative.update({feed: capture for feed, (_, capture)
                            in results_turnout_history.municipal_feeds().items()})
     registry_path, work = Path(registry_path), Path(work)
