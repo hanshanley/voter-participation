@@ -2792,6 +2792,19 @@ metadata and all statewide factual query rows for that edition. Other
 localities remain table-only; for example, Somerset's archived polygons
 overlap even at full precision.
 
+### National 2026 participation release discovery
+
+The full collector checks the official Census voting-table index and EAVS
+report-year index once per UTC week after a successful check. The late archive
+sweep continues those checks after the hourly window ends. Checks retain the
+complete list of qualifying release links and the index source pins. A missing
+link is not a zero observation; a questionnaire, policy file or submission
+portal is not an EAVS dataset. A previously listed release is retained and
+labeled if its links disappear. Discovery does not qualify observations:
+Census detailed tables still require the appropriate denominator and survey
+checks, while EAVS releases require the data, codebook and jurisdiction
+reconciliation.
+
 ### Washington: general-election turnout table
 
 The collector polls the Secretary of State's statewide turnout series.

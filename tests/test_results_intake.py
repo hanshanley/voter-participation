@@ -893,6 +893,62 @@ def test_virginia_locality_report_replays_and_keeps_curbside_out_of_the_sum(tmp_
     assert failure["status"] == "retained_after_failure" and failure["data"] == result["data"]
 
 
+def test_national_release_discovery_distinguishes_links_from_participation(tmp_path, monkeypatch):
+    from scripts import national_turnout_release_watch as watch
+
+    def census(year, url):
+        return (f'<a title="Voting and Registration in the Election of November {year}" '
+                f'href="{url}"><span>Detailed tables</span></a>').encode()
+
+    path = "/data/tables/time-series/demo/voting-and-registration/"
+    prior = census(2024, path + "p20-590.html")
+    candidate = census(2026, path + "next.html")
+    body = prior + census(2026, "https://example.test" + path + "unofficial.html")
+    calls = []
+
+    def acquire(url):
+        calls.append(url)
+        return body, {"origin": "fixture"}
+
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    monkeypatch.setattr(collector, "acquire", acquire)
+    initial = watch.collect(collector, watch.CENSUS)
+    assert initial["data"]["complete_native_query"] == {"release_status": "not_yet_linked", "links": []}
+    collector.prior = {watch.CENSUS: initial}
+    assert watch.collect(collector, watch.CENSUS, reuse_checked_week=True) == initial
+    assert calls == [watch.INDEXES[watch.CENSUS]]
+    body = candidate
+    linked = watch.collect(collector, watch.CENSUS)
+    assert linked["data"]["participation_observation_qualified"] is False
+    assert linked["data"]["complete_native_query"]["release_status"] == "candidate_links_require_admission"
+    from scripts import results_granular
+    baseline = {"index.json": b'{"states": {}}'}
+    assert results_granular.project(baseline, {watch.CENSUS: linked}) == (baseline, [])
+    invalid = {**linked, "data": {**linked["data"], "updates": [{"id": "not-an-observation"}]}}
+    with pytest.raises(ValueError, match="cannot project participation"):
+        results_granular.project(baseline, {watch.CENSUS: invalid})
+    collector.prior = {watch.CENSUS: linked}
+    body = prior
+    retained = watch.collect(collector, watch.CENSUS)
+    assert retained["status"] == "retained_after_failure"
+    assert retained["error"] == "release_index_regressed" and retained["data"] == linked["data"]
+    with pytest.raises(ValueError, match="series not found"):
+        watch.discover(b"<html>Unrecognized page</html>", watch.CENSUS)
+
+    eac = b'''<button aria-controls="a"><span>2026</span></button>
+      <a href="/sites/default/files/2026-09/2026_EAVS_Instrument.pdf">2026 Survey</a>
+      <a href="/sites/default/files/2027-06/2026_Policy_Dataset.zip">CSV</a>'''
+    older = b'''<button aria-controls="b">2024</button>
+      <a href="/sites/default/files/2026-02/2024_EAVS_for_Public_Release_V2_csv.zip">CSV</a>'''
+    csv = b'<a href="/sites/default/files/2027-06/2026_EAVS_for_Public_Release_V1_csv.zip">CSV</a>'
+    codebook = b'<a href="/sites/default/files/2027-06/2026_EAVS_Codebook.xlsx">EAVS Codebook</a>'
+    for new, status in [(b"", "not_yet_linked"), (csv, "incomplete_release_links"),
+                        (csv + codebook, "candidate_links_require_admission")]:
+        data = watch.discover(eac + new + older, watch.EAC)
+        assert data["complete_native_query"]["release_status"] == status
+        assert data["participation_observation_qualified"] is False
+
+
 def test_maryland_registration_groups_preserve_unlocated_activity_and_retain_valid_pair(tmp_path, monkeypatch):
     from scripts import maryland_precinct_history as md, results_turnout_history as history
 
