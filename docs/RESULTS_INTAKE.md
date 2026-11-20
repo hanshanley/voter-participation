@@ -138,6 +138,13 @@ editions keep the source's `Ballots Cast` label. Rates use the registration
 denominator printed in the same report. The resulting query is separate
 from EAC and does not change modern count shards or certify any 2026 result.
 
+The post-hourly Monday sweep also checks the eight registered standalone
+official congressional sources. An inaccessible or incompatible source can
+retain its last-good entry without holding unrelated weekly updates. A first
+failed check records its source status, not a numerical observation. National
+returns and their clocks are retained in this scoped lane; the existing
+compatibility guards still govern each official candidate frame.
+
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

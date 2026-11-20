@@ -967,7 +967,7 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 def late_archive_sources():
     from scripts import (
         results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
-        results_pa_vote_history, results_uf_turnout,
+        results_official_congress, results_pa_vote_history, results_uf_turnout,
     )
     from scripts import results_turnout_history as history
 
@@ -975,6 +975,7 @@ def late_archive_sources():
         history.KS_FEED, history.NJ_FEED, results_nc_vote_history.FEED, results_pa_vote_history.FEEDS[history.CURRENT_YEAR],
         history.TX_FEED, history.VA_FEED, history.WA_FEED, history.NC_HISTORY_FEED,
         results_uf_turnout.IDENTITY,
+        *results_official_congress.source_ids(results_official_congress.CLARITY_CONFIG),
         *results_minnesota_turnout.SOURCE_IDS,
         *results_indiana_turnout.FEEDS.values(),
         history.CA_CURRENT_FEED,
@@ -1069,7 +1070,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
     if official_ids:
         entries.update(results_official_congress.collect_sources(
             collector, config["official_congress"], selected=official_ids))
-    independent_holds = administrative_ids | ({results_uf_turnout.IDENTITY} if late_archives else set())
+    independent_holds = administrative_ids | (
+        {results_uf_turnout.IDENTITY} | official_ids if late_archives else set())
     if set(entries) != set(source_ids) or any(
             entries[key]["status"] != "reported" for key in entries.keys() - independent_holds):
         raise ValueError("Selected numerical refresh did not succeed; no replacement publication")

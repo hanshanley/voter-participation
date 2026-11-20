@@ -286,6 +286,12 @@ def test_official_candidate_refresh_is_not_mislabeled_as_local_participation():
     data["contract"] = "unreviewed"
     with pytest.raises(ValueError, match="official candidate evidence missing or promoted"):
         release.selected_local_observation_ids(snapshot)
+    evidence = snapshot["congress"]["official_candidate_evidence"]
+    evidence[IDENTITY] = {"data": None, "status": "source_stopped", "error": "source_stopped"}
+    assert release.selected_local_observation_ids(snapshot) == {"county"}
+    evidence[IDENTITY]["status"] = "reported"
+    with pytest.raises(ValueError, match="official candidate evidence missing or promoted"):
+        release.selected_local_observation_ids(snapshot)
     snapshot["congress"]["official_candidate_evidence"].clear()
     with pytest.raises(ValueError, match="official candidate evidence missing or promoted"):
         release.selected_local_observation_ids(snapshot)

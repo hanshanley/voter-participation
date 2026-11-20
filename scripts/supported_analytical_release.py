@@ -511,6 +511,10 @@ def selected_local_observation_ids(snapshot, counts=None):
         if identity in OFFICIAL_IDENTITIES:
             entry = (snapshot.get("congress") or {}).get("official_candidate_evidence", {}).get(identity)
             data = (entry or {}).get("data")
+            if (data is None and entry and entry.get("status")
+                    and entry["status"] == entry.get("error")
+                    and entry["status"] not in ("reported", "retained_after_failure")):
+                continue  # An explicitly unsuccessful first check is not a turnout observation.
             require(isinstance(data, dict) and data.get("contract") == OFFICIAL_CONTRACT
                     and data.get("participation_observation_qualified") is False
                     and data.get("provider_other_equivalence_qualified") is False
