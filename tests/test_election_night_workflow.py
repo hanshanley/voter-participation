@@ -261,7 +261,7 @@ def test_staged_publication_does_not_replace_the_weekly_check(tmp_path, late_arc
         ]
 
 
-def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_path, monkeypatch):
+def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_path, monkeypatch):
     from scripts import results_intake, results_turnout_history as history
 
     town = "NH-test-municipal-turnout"
@@ -283,6 +283,8 @@ def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_pa
         "PA-2026-general-vote-history", "TX-general-election-turnout",
         "VA-general-election-turnout", "VA-2022-general-election-locality-turnout", "WA-general-election-turnout",
         "MN-native-local", "MN-statewide-reporting",
+        *(f"MN-{year}-general-precinct-turnout-workbook" for year in range(2012, 2025, 2)),
+        "MD-2022-general-precinct-affiliation-turnout", "MD-2024-general-precinct-affiliation-turnout",
         "NC-2026-general-vote-history", "NC-general-election-turnout-history", "UF-national-turnout",
         "WY-primary-general-turnout-profile", "WY-2026-precinct-ballot-canvass",
         "HI-official-house-candidates", "IA-official-statewide-results", "NE-official-house-candidates",
