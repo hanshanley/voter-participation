@@ -506,7 +506,7 @@ def collect(collector, baseline):
     jobs[results_nc_vote_history.FEED] = results_nc_vote_history.collect(collector)
     for year, feed in results_indiana_turnout.FEEDS.items():
         jobs[feed] = results_indiana_turnout.collect(collector, year)
-    for feed in results_turnout_history.COUNTY_ARCHIVES:
+    for feed in (*results_turnout_history.COUNTY_ARCHIVES, results_turnout_history.CA_CURRENT_FEED):
         jobs[feed] = results_turnout_history.collect_county_archive(collector, feed)
     return jobs
 

@@ -467,51 +467,91 @@ def test_california_checked_scan_keeps_denominators_and_source_conflicts_separat
             history.california_scan({**report, "sha256": "0" * 64}, date)
 
 
-def test_california_county_archive_uses_native_measure_and_rejects_bad_revision(tmp_path, monkeypatch):
+@pytest.mark.parametrize("current", [False, True])
+def test_california_county_archive_uses_native_measure_and_rejects_bad_revision(tmp_path, monkeypatch, current):
     from types import SimpleNamespace
 
     import pypdf
 
     from scripts import results_turnout_history as history
 
-    election = "2024-11-05"
-    feed = "CA-2024-general-election-turnout-pdf"
-    url = history.california_report_url(election)
-    landing = f"<a href='{url}'>November 5, 2024 - General Election (PDF)</a>".encode()
+    election = history.CA_CURRENT_ELECTION if current else "2024-11-05"
+    year, day = int(election[:4]), int(election[-2:])
+    feed = f"CA-{year}-general-election-turnout-pdf"
+    url = (history.california_report_url("2024-11-05").replace("2024-general", "2026-general")
+           if current else history.california_report_url(election))
+    landing = f"<a href='{url}'>November {day}, {year} - General Election (PDF)</a>".encode()
 
-    def report(count, total, day=5):
-        return f"""NOVEMBER {day}, 2024, GENERAL ELECTION
+    def report(count, total, report_day=day, note=True):
+        footnote = ("1Registered Voters totals are based on the 15-day Report of Registration and do not "
+                    "include voters registered after the 15-day close of registration." if note else "")
+        return f"""NOVEMBER {report_day}, {year}, GENERAL ELECTION
 VOTER PARTICIPATION STATISTICS BY COUNTY
 County Number of Eligible to Registered Precinct Vote-By-Mail Total Percent of Turnout Turnout
 Precincts Register Voters1 Voters* Voters Voters Vote-By-Mail Registered Eligible
 Alameda 1 200 100 0* * {count} {count} 100.00% {count:.2f}% {count / 2:.2f}%
 State Total 1 200 100 0 {total} {total}
 Percent 50.00% 0.00% 100.00% 100.00% {total:.2f}% {total / 2:.2f}%
+{footnote}
 """.encode()
 
     monkeypatch.setattr(history, "CA_COUNTIES", ["Alameda"])
     monkeypatch.setattr(pypdf, "PdfReader", lambda buf: SimpleNamespace(
         is_encrypted=False, pages=[SimpleNamespace(extract_text=lambda **_: buf.read().decode())]))
     bodies = {history.CA_URL: landing, url: b"%PDF-1.6\n" + report(70, 70)}
-    monkeypatch.setattr(intake.Collector, "acquire", lambda _, target: (bodies[target], {"origin": "fixture"}))
+    requested = []
+
+    def acquire(_, target):
+        requested.append(target)
+        return bodies[target], {"origin": "fixture"}
+
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
     collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    if current:
+        for invalid in (landing.replace(b"General Election", b"Primary Election"),
+                        landing.replace(b"admin.cdn.sos.ca.gov", b"outside.test")):
+            bodies[history.CA_URL] = invalid
+            requested.clear()
+            absent = history.collect_county_archive(collector, feed)
+            assert absent["error"] == "report_not_linked" and absent["data"] is None
+            assert requested == [history.CA_URL]
+        bodies[history.CA_URL] = landing
+
+    def rows_for(entry):
+        return history.county_archive_rows({feed: entry}, current_california=current)
+
     first = history.collect_county_archive(collector, feed)
-    rows = history.county_archive_rows({feed: first})
+    rows = rows_for(first)
     assert len(rows) == 2
     assert rows[0]["reported_ballots_cast"] is None
     assert rows[0]["reported_total_voters"] == 70
     assert rows[0]["reported_eligible_to_register"] == 200
     assert rows[0]["reported_turnout_eligible_pct"] == "35.00%"
     assert rows[0]["qualified_same_report_registration_fraction_pct"] == 70
+    if current:
+        from scripts.supported_analytical_release import selected_local_observation_ids
+
+        assert history.county_archive_rows({feed: first}) == []
+        assert selected_local_observation_ids({
+            "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": [feed]},
+            "granular_sources": {feed: first},
+        }) == set()
+        bodies[url] = b"%PDF-1.6\n" + report(70, 70, note=False)
+        unqualified = rows_for(history.collect_county_archive(collector, feed))
+        assert unqualified[0]["reported_total_voters"] == 70
+        assert unqualified[0]["rate_hold_reason"] == "registration_timing_unqualified"
+        bodies[url] = b"%PDF-1.6\n" + report(70, 70).replace(b"Registered Eligible", b"Eligible Registered")
+        wrong_headers = history.collect_county_archive(collector, feed)
+        assert wrong_headers["data"] is None and "columns differ" in wrong_headers["error_detail"]
     collector.prior = {feed: first}
-    for bad in (report(72, 71), report(70, 70, day=6)):
+    for bad in (report(72, 71), report(70, 70, report_day=6)):
         bodies[url] = b"%PDF-1.6\n" + bad
         retained = history.collect_county_archive(collector, feed)
         assert retained["status"] == "retained_after_failure"
         assert retained["data"] == first["data"]
     bodies[url] = b"%PDF-1.6\n" + report(68, 68)
     revised = history.collect_county_archive(collector, feed)
-    assert history.county_archive_rows({feed: revised})[-1]["reported_total_voters"] == 68
+    assert rows_for(revised)[-1]["reported_total_voters"] == 68
     collector.prior = {feed: revised}
     assert history.collect_county_archive(collector, feed) == revised
 

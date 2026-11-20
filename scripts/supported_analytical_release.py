@@ -504,7 +504,7 @@ def selected_local_observation_ids(snapshot, counts=None):
             if statewide_ballot_totals.indiana_summary(snapshot) is not None:
                 selected.add(statewide_ballot_totals.identity("IN"))
             continue
-        if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED)
+        if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED, results_turnout_history.CA_CURRENT_FEED)
                 or identity in results_indiana_turnout.FEEDS.values()
                 or identity in results_turnout_history.COUNTY_ARCHIVES
                 or identity in results_pa_vote_history.FEEDS.values()):
@@ -631,6 +631,10 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     county_archives = results_turnout_history.county_archive_rows(snapshot.get("granular_sources", {}))
     if county_archives:
         raw_files[results_turnout_history.COUNTY_ARCHIVE_CSV] = csv_bytes(county_archives)
+    current_ca = results_turnout_history.county_archive_rows(
+        snapshot.get("granular_sources", {}), current_california=True)
+    if current_ca:
+        raw_files[results_turnout_history.CA_CURRENT_CSV] = csv_bytes(current_ca)
     files = {"release/" + name + ".gz": compressed(body) for name, body in raw_files.items()}
     media_types = {path: "text/csv" for path in files}
     retained_offices = []

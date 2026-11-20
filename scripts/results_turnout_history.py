@@ -51,6 +51,12 @@ KS_HEADER = [["COUNTY", "ADVANCE BALLOTS", None, "TOTAL BALLOTS CAST", None, "RE
 NJ_FEED = "NJ-general-election-turnout-pdf"
 NJ_URL = "https://www.nj.gov/state/elections/election-information-ballots-cast.shtml"
 CA_URL = "https://www.sos.ca.gov/elections/statistics/voter-participation-stats-county"
+CA_CURRENT_FEED = "CA-2026-general-election-turnout-pdf"
+CA_CURRENT_ELECTION = "2026-11-03"
+CA_CURRENT_CSV = "participation-ca-2026-county-turnout-report.csv"
+CA_CURRENT_ROUTE = (r"https://(?:admin\.cdn\.sos\.ca\.gov/elections|elections\.cdn\.sos\.ca\.gov)"
+                    r"/sov/2026-general/sov/03-voter-participation-stats-by-county\.pdf")
+CA_REGISTRATION_NOTE = "15-day Report of Registration; excludes later registrations"
 CA_SCAN_FILE = "results_ca_county_scan_transcriptions.json"
 CA_SCAN_DATES = ("1990-11-06", "1992-11-03", "1994-11-08")
 CA_ARCHIVES = {
@@ -179,13 +185,33 @@ NJ_HEADER = [
 ]
 
 
-def archive_link(body, url, pattern):
+def archive_link(body, url, pattern, *, label=None):
     class Links(HTMLParser):
-        links = set()
+        def __init__(self):
+            super().__init__()
+            self.links = set()
+            self.active = None
+            self.text = []
 
         def handle_starttag(self, tag, attrs):
             if tag == "a" and (href := dict(attrs).get("href")):
-                self.links.add(urljoin(url, href))
+                target = urljoin(url, href)
+                if label is None:
+                    self.links.add(target)
+                    return
+                self.active = target
+                self.text = []
+
+        def handle_data(self, data):
+            if self.active is not None and label is not None:
+                self.text.append(data)
+
+        def handle_endtag(self, tag):
+            if tag != "a" or self.active is None:
+                return
+            if re.fullmatch(label, " ".join("".join(self.text).split()), re.I):
+                self.links.add(self.active)
+            self.active = None
 
     parser = Links()
     parser.feed(body.decode("utf-8-sig"))
@@ -440,6 +466,11 @@ def california_report(body, election):
     if ("Registered" not in header
             or ("Ballots Cast" if year == 2000 else "Voters") not in header):
         raise ValueError("California turnout table headers differ")
+    if election == CA_CURRENT_ELECTION and not re.fullmatch(
+            r"County Number of Eligible to Registered Precinct Vote-By-Mail Total Percent of Turnout Turnout "
+            r"Precincts Register Voters1? Voters\*? Voters Voters Vote-By-Mail Registered Eligible",
+            header):
+        raise ValueError("California current turnout table columns differ from the reviewed layout")
     counties, total, total_index = [], None, None
     fields = ("election_districts", "eligible", "registered", "precinct_voters", "mail_voters", "ballots_cast")
     integer = r"(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)"
@@ -468,7 +499,7 @@ def california_report(body, election):
             moved = re.fullmatch(rf"({integer}) (.+%)({integer})", values)
             if moved:
                 values = f"{moved[1]} {moved[3]} {moved[2]}"
-        elif year == 2024:
+        elif year >= 2024:
             values = re.sub(r"\* +\*", "**", values)
         tokens = values.split()
         numbers = tokens[:6]
@@ -486,7 +517,8 @@ def california_report(body, election):
             if len(percent_lines) != 1:
                 raise ValueError("Ambiguous California statewide rate line")
             rates = re.findall(pct, percent_lines[0])[-2:]
-        if (len(rates) not in ((2, 3) if not statewide else (2,))
+        allowed_rates = (2,) if statewide else (3,) if election == CA_CURRENT_ELECTION else (2, 3)
+        if (len(rates) not in allowed_rates
                 or not all(re.fullmatch(pct, token) for token in rates)):
             raise ValueError(f"California turnout table includes malformed rates at {name}")
         row.update(county="TOTAL" if statewide else name, county_mark=mark,
@@ -501,11 +533,18 @@ def california_report(body, election):
             counties.append(row)
     if total is None:
         raise ValueError("California turnout report statewide row missing")
+    notes = extracted[total_index + 1:]
+    registration_basis = CA_REGISTRATION_NOTE if year in (2022, 2024) else "Report's registered voters"
+    if election == CA_CURRENT_ELECTION:
+        footnote = " ".join(notes)
+        known_basis = ("based on the 15-day Report of Registration and do not include "
+                       "voters registered after the 15-day close")
+        registration_basis = (CA_REGISTRATION_NOTE if known_basis in footnote
+                              else "Registration timing not independently qualified")
     query = {"election_date": election, "counties": counties, "total": total,
              "native_numerator": "ballots_cast" if year == 2000 else "total_voters",
-             "registration_basis": ("15-day Report of Registration; excludes later registrations"
-                                    if year in (2022, 2024) else "Report's registered voters"),
-             "table_notes": extracted[total_index + 1:]}
+             "registration_basis": registration_basis,
+             "table_notes": notes}
     california_controls(query, election)
     return query
 
@@ -513,16 +552,23 @@ def california_report(body, election):
 def county_archive_routes(state, election):
     year = int(election[:4])
     if state == "CA":
+        if election == CA_CURRENT_ELECTION:
+            return CA_URL, CA_CURRENT_ROUTE
         return CA_URL, re.escape(california_report_url(election))
     return (KS_URL, kansas_report_url(year)) if state == "KS" else (NJ_URL, new_jersey_report_url(year))
 
 
 def collect_county_archive(collector, feed):
-    state, election = COUNTY_ARCHIVES[feed]
+    current = feed == CA_CURRENT_FEED
+    state, election = ("CA", CA_CURRENT_ELECTION) if current else COUNTY_ARCHIVES[feed]
     index_url, report_pattern = county_archive_routes(state, election)
 
     def parse(index):
-        url = archive_link(index, index_url, report_pattern)
+        if current:
+            url = archive_link(index, index_url, report_pattern,
+                               label=r"November 3, 2026\s*[-–]\s*General Election \(PDF\)")
+        else:
+            url = archive_link(index, index_url, report_pattern)
         if url is None:
             raise IntakeError("report_not_linked", f"No {feed} report linked in the official archive")
         body, _ = collector.acquire(url)
@@ -548,9 +594,10 @@ def collect_county_archive(collector, feed):
     return collector.capture(feed, index_url, parse, equivalent=lambda old, new: old == new)
 
 
-def county_archive_rows(entries):
+def county_archive_rows(entries, *, current_california=False):
     rows = []
-    for feed, (state, election) in sorted(COUNTY_ARCHIVES.items()):
+    declarations = ({CA_CURRENT_FEED: ("CA", CA_CURRENT_ELECTION)} if current_california else COUNTY_ARCHIVES)
+    for feed, (state, election) in sorted(declarations.items()):
         entry = entries.get(feed, {})
         data = entry.get("data")
         if data is None:
@@ -593,6 +640,8 @@ def county_archive_rows(entries):
                     (Decimal(ballots) * 100 / registered).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
                     != Decimal(native["printed_registered_percent"][:-1])):
                 hold = "printed_registration_fraction_disagrees"
+            if current_california and not hold and query["registration_basis"] != CA_REGISTRATION_NOTE:
+                hold = "registration_timing_unqualified"
             measure = query.get("native_numerator", "ballots_cast")
             vap_basis = query.get("secondary_denominator") == "voting_age_population"
             rows.append({

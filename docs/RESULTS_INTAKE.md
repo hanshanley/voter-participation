@@ -82,8 +82,12 @@ of exact PDF bytes. Changed scans retain the last accepted edition until reviewe
 The 1992 population column is voting-age population, not eligible to register.
 The 1994 county report and later statewide series disagree on Total Voters;
 the archive preserves the county report figure and documents the discrepancy.
-The 1996 scan still needs transcription checks; the archive did not declare a
-2026 general-election turnout report.
+The 1996 scan still needs transcription checks. The hourly collector and weekly
+sweep also check for the November 3, 2026 report on the official index. A matching
+general-election link and a reconciled report are required for a separate
+`release/participation-ca-2026-county-turnout-report.csv.gz` export. Rates are
+withheld if the registration timing is not verified. The export does not replace
+the current native turnout feed or claim certification.
 
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
