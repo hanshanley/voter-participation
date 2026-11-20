@@ -14,6 +14,15 @@ from scripts.participation_intake.contract import encoded, pin
 INPUT = "cps-published-state-workbooks.zip"
 INPUT_PATH = "data/results-intake/" + INPUT
 CSV = "participation-cps-published-state-tables.csv"
+OVERALL_CSV = "participation-cps-state-overall-history.csv"
+OVERALL_BASE = "https://www2.census.gov/programs-surveys/cps/tables/time-series/voting-historical-time-series/"
+OVERALL_TABLES = {
+    "hst_vote03a.xlsx": ("A-3a", "midterm", "voted"),
+    "hst_vote03b.xlsx": ("A-3b", "midterm", "registered"),
+    "a5a.xlsx": ("A-5a", "presidential", "voted"),
+    "a5b.xlsx": ("A-5b", "presidential", "registered"),
+}
+OVERALL_MANIFEST = "overall-sources.json"
 PUBLICATIONS = {2016: 580, 2018: 583, 2020: 585, 2022: 586, 2024: 587}
 LEGACY_PUBLICATIONS = {
     2008: "562-rv/table-0{table}.xls",
@@ -263,7 +272,10 @@ def build(bundle):
     with zipfile.ZipFile(io.BytesIO(bundle)) as archive:
         inventory = EXPECTED | {CONTROL}
         expected = {filename(y, t) for y, t in inventory}
-        if set(archive.namelist()) != {"sources.json", *expected} or len(archive.namelist()) != len(expected) + 1:
+        members = {"sources.json", *expected}
+        if OVERALL_MANIFEST in archive.namelist():
+            members |= {OVERALL_MANIFEST, *OVERALL_TABLES}
+        if set(archive.namelist()) != members or len(archive.namelist()) != len(members):
             raise ValueError("Incomplete or duplicate CPS workbook bundle")
         sources = json.loads(archive.read("sources.json"))
         if set(sources) != expected:
@@ -296,6 +308,101 @@ def build(bundle):
         elif totals("4b") != totals("4c"):
             raise ValueError(f"CPS 4b and 4c totals differ for {year}")
     return [r for frame in frames.values() for r in frame]
+
+
+def parse_overall_workbook(body, table, election, measure):
+    states = {name: code for code, name in STATES.items()}
+    start, stop, first_citizen = (1974, 2022, 1978) if election == "midterm" else (1972, 2024, 1980)
+    roster = [(year, basis) for year in range(stop, start - 1, -4)
+              for basis in ("vap", "cvap") if basis == "vap" or year >= first_citizen]
+    from openpyxl import load_workbook
+
+    with io.BytesIO(body) as stream:
+        book = load_workbook(stream, read_only=True, data_only=True)
+        try:
+            if len(book.sheetnames) != 1 or book.active.max_column != len(roster) + 1:
+                raise ValueError("CPS overall workbook inventory differs")
+            sheet, rows = book.active.title, list(book.active.values)
+        finally:
+            book.close()
+    topic = "Voting" if measure == "voted" else "Registration"
+    cycle = "Congressional" if election == "midterm" else "Presidential"
+    if (rows[1][0] != f"Table {table}. Reported {topic} for Total and Citizen Voting-Age Populations, "
+            f"by State for {cycle} Elections: {start} to {stop}"
+            or rows[2][0] != "(Percent, Population 18 Years and Over)" or rows[3][0] != "State"
+            or tuple(rows[3][1:]) != tuple(y if b == "vap" else None for y, b in roster)
+            or tuple(rows[4][1:]) != tuple("Total" if b == "vap" else "Citizen" for _, b in roster)
+            or not any(isinstance(r[0], str) and "prior to 1996" in r[0] and "not directly comparable" in r[0]
+                       for r in rows)):
+        raise ValueError("CPS overall workbook definition or years differ")
+    numbers, seen = {}, set()
+    for row_number, (place, *cells) in enumerate(rows[5:], 6):
+        if place not in states:
+            if any(cell is not None for cell in cells):
+                raise ValueError(f"Unknown CPS overall geography at row {row_number}")
+            continue
+        code = states[place]
+        if code in seen:
+            raise ValueError(f"Duplicate CPS overall geography at row {row_number}")
+        seen.add(code)
+        for (year, basis), point in zip(roster, cells, strict=True):
+            if point != "N" and (type(point) not in (int, float) or not math.isfinite(point) or not 0 <= point <= 100):
+                raise ValueError(f"Invalid CPS overall percentage at row {row_number}")
+            numbers[year, code, basis] = (None if point == "N" else point, "N" if point == "N" else "",
+                                          sheet, row_number)
+        for year in range(start, first_citizen, 4):
+            numbers[year, code, "cvap"] = (None, "not_in_table", sheet, row_number)
+    if seen != set(STATES):
+        raise ValueError("Incomplete CPS overall state roster")
+    return numbers
+
+
+def build_overall(bundle):
+    with zipfile.ZipFile(io.BytesIO(bundle)) as archive:
+        if OVERALL_MANIFEST not in archive.namelist():
+            return []
+        receipts = json.loads(archive.read(OVERALL_MANIFEST))
+        if set(receipts) != set(OVERALL_TABLES):
+            raise ValueError("CPS overall manifest differs from workbook bundle")
+        series = {}
+        for name, (table, election, measure) in OVERALL_TABLES.items():
+            body, url = archive.read(name), OVERALL_BASE + name
+            checksum = pin(body)
+            if receipts[name] != {"table": table, "url": url, **checksum}:
+                raise ValueError(f"CPS overall source identity or checksum differs: {name}")
+            series[election, measure] = (parse_overall_workbook(body, table, election, measure), url, checksum["sha256"])
+    out = []
+    for election in ("midterm", "presidential"):
+        voting, vu, vh = series[election, "voted"]
+        registration, ru, rh = series[election, "registered"]
+        if voting.keys() != registration.keys():
+            raise ValueError("CPS overall voting and registration rosters differ")
+        for (year, code, basis), (vp, vm, vs, vr) in voting.items():
+            rp, rm, rs, rr = registration[year, code, basis]
+            out.append({"year": year, "election_type": election, "state_code": code, "denominator_basis": basis,
+                        "reported_voted_pct": vp, "voted_source_marker": vm,
+                        "reported_registered_pct": rp, "registered_source_marker": rm,
+                        "citizenship_measurement_caution": basis == "cvap" and year < 1996,
+                        "voted_source_url": vu, "voted_source_sha256": vh, "voted_source_sheet": vs,
+                        "voted_source_row": vr, "registered_source_url": ru, "registered_source_sha256": rh,
+                        "registered_source_sheet": rs, "registered_source_row": rr})
+    return sorted(out, key=lambda r: (r["state_code"], r["denominator_basis"], r["year"]))
+
+
+def overall_summary(rows):
+    return {"years": sorted({r["year"] for r in rows}), "rows": len(rows),
+            "states_and_dc": len({r["state_code"] for r in rows}),
+            "reported_voting_rates": sum(r["reported_voted_pct"] is not None for r in rows),
+            "reported_registration_rates": sum(r["reported_registered_pct"] is not None for r in rows),
+            "administratively_observed_turnout": False, "published_margins_of_error": False}
+
+
+def overall_csv(rows):
+    out = io.StringIO(newline="")
+    writer = csv.DictWriter(out, list(rows[0]), lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(rows)
+    return out.getvalue().encode()
 
 
 def summary(rows):

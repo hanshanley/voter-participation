@@ -111,6 +111,15 @@ One impossible South Dakota registration percentage and any margins printed
 without a usable estimate are withheld and flagged; the unmodified originals
 are included. No replacement estimates are computed.
 
+The same package includes the original A-3a/b and A-5a/b workbooks. A
+separate `release/participation-cps-state-overall-history.csv.gz` provides
+published overall state voting and registration rates, 1972–2024. The
+workbooks do not publish margins of error or a U.S. benchmark; rates not
+available keep `N` or `not_in_table` instead of a zero. Citizen voting-age
+rates before 1996 use a different citizenship measurement regime and are
+flagged as not directly comparable. This series does not override the
+election-edition estimates, administrative counts, or demographic rates.
+
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

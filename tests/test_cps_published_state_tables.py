@@ -56,3 +56,17 @@ def test_changed_workbook_and_incomplete_bundle_are_rejected():
                 archive.writestr(label, body)
         with pytest.raises(ValueError, match=reason):
             cps.build(out.getvalue())
+
+
+def test_statewide_history_preserves_partial_early_coverage_and_source_definition():
+    rows = cps.build_overall(BUNDLE.read_bytes())
+    keyed = {(r["state_code"], r["year"], r["denominator_basis"]): r for r in rows}
+    assert len(keyed) == len(rows) == 2754
+    assert cps.overall_summary(rows)["reported_voting_rates"] == 2503
+    assert keyed["AK", 1972, "vap"]["voted_source_marker"] == "N"
+    assert keyed["CA", 1972, "cvap"]["voted_source_marker"] == "not_in_table"
+    assert keyed["CA", 1994, "cvap"]["citizenship_measurement_caution"]
+    assert keyed["CA", 1994, "cvap"]["reported_voted_pct"] == 57.5
+    assert keyed["CA", 2024, "cvap"]["reported_voted_pct"] == 64.7
+    assert not keyed["CA", 2024, "cvap"]["citizenship_measurement_caution"]
+    assert "US" not in {row["state_code"] for row in rows}

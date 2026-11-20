@@ -659,6 +659,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     published_rows = published_cps.build(cps_workbooks) if cps_workbooks is not None else []
     if published_rows:
         raw_files[published_cps.CSV] = published_cps.csv_body(published_rows)
+    overall_rows = published_cps.build_overall(cps_workbooks) if cps_workbooks is not None else []
+    if overall_rows:
+        raw_files[published_cps.OVERALL_CSV] = published_cps.overall_csv(overall_rows)
     files = {"release/" + name + ".gz": compressed(body) for name, body in raw_files.items()}
     media_types = {path: "text/csv" for path in files}
     retained_offices = []
@@ -694,6 +697,7 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
             "state_demographic_query_cells": len(cps),
             "state_demographic_years": sorted({row["year"] for row in cps}),
             **({"published_state_tables": published_cps.summary(published_rows)} if published_rows else {}),
+            **({"published_state_overall_history": published_cps.overall_summary(overall_rows)} if overall_rows else {}),
             "early_native_source_point_years_kept_as_separate_populations": [1996, 1998, 2002],
             "statewide_survey_rates_not_allocated_locally": True,
         },
