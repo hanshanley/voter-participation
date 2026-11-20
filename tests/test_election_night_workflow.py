@@ -289,6 +289,8 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "OR-general-election-turnout-history", "OR-general-election-returned-ballot-controls",
         "SC-general-election-participation-history",
         *(f"AL-{year}-general-election-age-participation" for year in (2018, 2020, 2024)),
+        *(f"AL-{year}-general-{name}" for year in (2022, 2024)
+          for name in ("precinct-ballot-archive", "county-ballot-control")),
         *(f"MN-{year}-general-precinct-turnout-workbook" for year in range(2012, 2025, 2)),
         *(f"MD-{year}-general-precinct-affiliation-turnout" for year in range(2016, 2025, 2)),
         "NC-2026-general-vote-history", "NC-general-election-turnout-history", "UF-national-turnout",

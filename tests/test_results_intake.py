@@ -338,7 +338,7 @@ def test_weekly_official_correction_survives_an_independent_source_stop(tmp_path
 @pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
 def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
     from scripts import (
-        national_turnout_release_watch, nebraska_county_reports, oregon_turnout_history,
+        alabama_precinct_history, national_turnout_release_watch, nebraska_county_reports, oregon_turnout_history,
         philadelphia_divisions, results_indiana_turnout,
         results_minnesota_turnout as mn, results_native,
         results_nc_vote_history, results_official_congress,
@@ -403,6 +403,8 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     monkeypatch.setattr(oregon_turnout_history, "collect",
                         lambda collector, feed: adapter(feed)(collector))
     monkeypatch.setattr(southeast_turnout, "collect",
+                        lambda collector, feed: adapter(feed)(collector))
+    monkeypatch.setattr(alabama_precinct_history, "collect",
                         lambda collector, feed: adapter(feed)(collector))
     for feed, name in ((results_turnout_history.BUXTON_FEED, "buxton"),
                        (results_turnout_history.BATH_FEED, "bath")):

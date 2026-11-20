@@ -2827,6 +2827,15 @@ These are age-report counts, not statewide canvass totals or rates: the Alabama
 age reports fall short of its separate comprehensive report by 2,913 (2018),
 4,195 (2020) and 3,795 (2024). The export does not allocate those differences.
 
+For 2022 and 2024, the state ZIPs each contain 67 county workbooks with an
+explicit `Ballots Cast - Total` row. The precinct archive and its independently
+published ballot control PDF are acquired separately so either can be retained
+when the other fails. The paired exports preserve 4,159 reporting units, central
+and provisional categories included. Cullman (2022, +90) and Cleburne (2024,
+−180) disagree with their county controls; no ballot is reassigned. Workbook
+registration cells are preserved but unqualified, and no reporting-unit label
+alone is accepted as a boundary identity.
+
 The South Carolina export separates reported ballots cast (2008 onward) from
 voter-history credits (1998–2006). Both the source's printed percentage and the
 arithmetic from its counts are saved; South Carolina printed 50.0% in 2018

@@ -1,6 +1,6 @@
 import pytest
 
-from scripts import southeast_turnout as se
+from scripts import alabama_precinct_history as precinct, southeast_turnout as se
 from scripts.supported_analytical_release import selected_local_observation_ids
 
 
@@ -46,7 +46,34 @@ def test_al_preserves_unreported_age_cells_and_checks_county_and_state_controls(
 
 
 def test_historical_products_cannot_select_current_counts():
+    scope = [*se.URLS, *precinct.URLS]
     assert selected_local_observation_ids({
-        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": list(se.URLS)},
-        "granular_sources": {feed: {"status": "reported"} for feed in se.URLS},
+        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": scope},
+        "granular_sources": {feed: {"status": "reported"} for feed in scope},
     }) == set()
+
+
+def test_precinct_controls_preserve_conflict_absentee_and_missing_register():
+    archive_feed, control_feed = precinct.FEEDS[2024]
+    rows = {name: [["Town hall", 15 if name == "AUTAUGA" else 8, 0],
+                   ["ABSENTEE", 2, None]] for name in se.COUNTIES}
+    lines = ["General Election - November 5, 2024", "Official Total Ballots Cast",
+             "County Voters Ballots Cast Ballots Ballots Ballots Registered Voters Total Ballots",
+             *(f"{name.replace('_', ' ')} 100 10 0 0 2 10.00% 20.00%" for name in se.COUNTIES),
+             "Total 6700 670 0 0 134 10.00% 20.00%"]
+    def entry(feed, data, native=None):
+        return {"source": {"url": precinct.URLS[feed]}, "status": "reported",
+                "data": {"complete_native_query": data, "native_lines": native}}
+
+    archive = entry(archive_feed, rows)
+    control = entry(control_feed, precinct.control_rows(lines, 2024), lines)
+    units, counties = precinct.exports({archive_feed: archive, control_feed: control})
+    assert counties[0]["archive_minus_control"] == 7
+    assert units[0]["reconciliation"] == "county_control_disagrees"
+    assert units[1]["unit_type"] == "central_mode_or_provisional"
+    assert units[1]["unqualified_registration_cell"] is None
+    assert units[2]["reconciliation"] == "reconciled"
+    assert precinct.exports({archive_feed: archive})[0][0]["reconciliation"] == "not_reconciled_without_both_sources"
+    rows["AUTAUGA"].append(["TOWN HALL", 0, 0])
+    with pytest.raises(ValueError, match="Invalid Alabama reporting unit"):
+        precinct.exports({archive_feed: archive})

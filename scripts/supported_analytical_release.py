@@ -478,7 +478,7 @@ def selected_local_observation_ids(snapshot, counts=None):
     from scripts import (
         philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_pa_vote_history, results_pdf_county_parent,
-        oregon_turnout_history, results_turnout_history, southeast_turnout, statewide_ballot_totals,
+        alabama_precinct_history, oregon_turnout_history, results_turnout_history, southeast_turnout, statewide_ballot_totals,
         washington_participation,
     )
     from scripts.national_turnout_release_watch import INDEXES as NATIONAL_RELEASE_INDEXES
@@ -537,6 +537,7 @@ def selected_local_observation_ids(snapshot, counts=None):
                 or identity in NATIONAL_RELEASE_INDEXES
                 or identity in oregon_turnout_history.URLS
                 or identity in southeast_turnout.URLS
+                or identity in alabama_precinct_history.URLS
                 or identity == washington_participation.FEED
                 or identity in results_turnout_history.COUNTY_ARCHIVES
                 or identity in results_pa_vote_history.FEEDS.values()):
@@ -662,7 +663,8 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     indiana_history = results_indiana_turnout.rows(snapshot.get("granular_sources", {}))
     if indiana_history:
         raw_files["participation-indiana-general-turnout-history.csv"] = csv_bytes(indiana_history)
-    from scripts import oregon_turnout_history, retained_bulk_turnout, southeast_turnout, washington_participation
+    from scripts import alabama_precinct_history, oregon_turnout_history, retained_bulk_turnout, southeast_turnout
+    from scripts import washington_participation
 
     historical_sources = retained_bulk_turnout.historical_entries(
         snapshot.get("granular_sources", {}), seed.get("retained_bulk_turnout"))
@@ -674,6 +676,10 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
         raw_files[oregon_turnout_history.CSV] = csv_bytes(oregon_rows)
     sc_history, al_age = southeast_turnout.exports(historical_sources)
     for name, rows in ((southeast_turnout.SC_CSV, sc_history), (southeast_turnout.AL_CSV, al_age)):
+        if rows:
+            raw_files[name] = csv_bytes(rows)
+    al_units, al_controls = alabama_precinct_history.exports(historical_sources)
+    for name, rows in ((alabama_precinct_history.CSV, al_units), (alabama_precinct_history.CONTROL_CSV, al_controls)):
         if rows:
             raw_files[name] = csv_bytes(rows)
     county_archives = results_turnout_history.county_archive_rows(historical_sources)
