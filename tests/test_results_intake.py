@@ -680,6 +680,35 @@ def test_nebraska_scan_agreement_retention_and_no_reprocessing(tmp_path, monkeyp
     assert "rejected_scan" not in refresh(b"first edition")
 
 
+def test_scanned_panels_handle_wrapped_names_and_check_repeated_printed_controls():
+    from scripts import results_pdf_archive_ocr as scan
+
+    def cell(text, left=2, right=16):
+        return {"text": text, "left": left, "right": right, "confidence": 1}
+
+    first = (0, ("County total",), ("TOTAL", "Red Willow"), (0, 10), (28, 35))
+    repeated = (1, ("County total",), ("TOTAL",), (0, 10), (28, 35))
+
+    def views(page, rows):
+        return [{"receipt": {"page": page, "dpi": dpi}, "text": "County total",
+                 "role_cells": [[{**c, "left": c["left"] * dpi / 72, "right": c["right"] * dpi / 72}
+                                 for c in row] for row in rows]} for dpi in scan.DPI]
+
+    total = [cell("TOTAL"), cell("15", 24, 32)]
+    raw = {0: views(1, [total, [cell("Red"), cell("15", 24, 32)], [cell("Willow")]]),
+           1: views(2, [total])}
+    profile = {"cover_page": 0, "cover_headings": ("County total",), "aliases": {},
+               "tables": {"voted": (first, repeated)}}
+    evidence = {"cover": [{"receipt": v["receipt"], "text": v["text"]} for v in raw[0]],
+                "tables": {"voted": [[{"receipt": v["receipt"], "rows": scan.panel(v, panel, {})}
+                                      for v in raw[panel[0]]] for panel in (first, repeated)]}}
+    assert scan.verify(evidence, profile) == {"voted": {"TOTAL": 15, "Red Willow": 15}}
+    for view in evidence["tables"]["voted"][1]:
+        view["rows"][0].update(total=16, literal_total="16")
+    with pytest.raises(IntakeError, match="disagree"):
+        scan.verify(evidence, profile)
+
+
 def test_nebraska_old_canvass_preserves_printed_total_and_malformed_component():
     from scripts import nebraska_canvass as ne, results_turnout_history as history
 

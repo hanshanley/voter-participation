@@ -207,8 +207,8 @@ query before numerical replay. It never uses the network or silently
 substitutes another edition. The default replay continues to work without
 the PDFs.
 
-Nebraska's 2006 canvass uses a bounded scan profile: one cover and three
-table pages, each rendered twice. The parser admits only the printed
+Nebraska's early canvasses use bounded scan profiles: one cover and three
+or four table pages, each rendered twice. The parser admits only the printed
 registration and total-voting columns, with the exact county roster,
 per-county agreement between renders and independently printed state
 controls. It does not publish voting-method components from the scan.
@@ -216,6 +216,11 @@ Subsequent checks reuse the accepted evidence for unchanged report bytes.
 A failed revision never replaces the last accepted edition; the collector
 reuses the rejection for identical bytes and the same parser and OCR
 versions. Routine offline replay checks the retained cells without OCR.
+The 2000 and 2004 profiles discover the general-election section inside the
+Nebraska Library Commission's combined primary/general editions. The
+2000 scan is withheld if any county total lacks a sufficiently confident
+reading, even when both renders and statewide sums agree. The inspected 2002
+general-election section does not provide both participation tables.
 
 Checkpoint recovery limits the expanded collector state to 300 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.

@@ -9,8 +9,11 @@ from scripts import results_pdf_archive_ocr as scan
 
 INDEX = "https://sos.nebraska.gov/previous-elections"
 BASE = "https://sos.nebraska.gov/sites/default/files/doc/elections/"
+LIBRARY = "https://govdocs.nebraska.gov/epubs/s1200/"
 CURRENT = "2026-11-03"
 BOOKS = {
+    "2000-11-07": LIBRARY + "S001-2000prim_gen.pdf",
+    "2004-11-02": LIBRARY + "S001-2004prim_gen.pdf",
     "2006-11-07": BASE.removesuffix("elections/") + "2006%20General.pdf",
     "2008-11-04": "2008%20General%20Canvass%20Book.pdf",
     "2010-11-02": "2010%20Gen%20Canvass%20Book%2011-30-Final.pdf",
@@ -34,12 +37,50 @@ COUNTIES = (
     "Stanton|Thayer|Thomas|Thurston|Valley|Washington|Wayne|Webster|Wheeler|York"
 ).split("|")
 CSV = "participation-ne-2026-county-canvass.csv"
-MAX_BYTES = 8_000_000
+MAX_BYTES = 16_000_000
+AUTHORITY = ("Official Report", "State Canvassers", "State of Nebraska", "General Election")
 SCANS = {
+    "2000-11-07": {
+        "cover_page": 65,
+        "cover_headings": (*AUTHORITY, "November 7, 2000"),
+        "aliases": {"deue": "deuel", "dougias": "douglas", "harian": "harlan", "hoit": "holt",
+                    "pawnce": "pawnee", "whceler": "wheeler", "knor": "knox",
+                    "greeiey": "greeley", "mofrill": "morrill"},
+        "tables": {
+            "registered": (
+                (67, ("Number of Registered Voters", "Registered Republican Democrat"),
+                 ("TOTAL", *COUNTIES[:45]), (60, 82), (163, 175)),
+                (68, ("Registered Republican Democrat",), ("TOTAL", *COUNTIES[45:]),
+                 (102, 125), (207, 218)),
+            ),
+            "voted": (
+                (69, ("Number of People Voting", "Total Voting"),
+                 ("TOTAL", *COUNTIES[:45]), (60, 96), (450, 470)),
+                (70, ("Total Voting", "At Polls"), ("TOTAL", *COUNTIES[45:]),
+                 (100, 138), (493, 515)),
+            ),
+        },
+    },
+    "2004-11-02": {
+        "cover_page": 55,
+        "cover_headings": (*AUTHORITY, "November 2, 2004"),
+        "aliases": {},
+        "tables": {
+            "registered": (
+                (59, ("Number of Registered Voters", "Total Registered"),
+                 ("TOTAL", *COUNTIES[:45]), (45, 69), (226, 240)),
+                (60, ("County Precincts Total Registered",), COUNTIES[45:], (45, 69), (226, 240)),
+            ),
+            "voted": (
+                (61, ("Total Voters by Location", "Total Voting"),
+                 ("TOTAL", *COUNTIES[:45]), (80, 153), (528, 540)),
+                (62, ("County At the Polls", "Total Voting"), COUNTIES[45:], (80, 155), (528, 541)),
+            ),
+        },
+    },
     "2006-11-07": {
         "cover_page": 0,
-        "cover_headings": ("Official Report", "State Canvassers", "State of Nebraska",
-                           "General Election", "November 7, 2006"),
+        "cover_headings": (*AUTHORITY, "November 7, 2006"),
         "aliases": {"fumas": "furnas", "mermick": "merrick", "poik": "polk", "morill": "morrill"},
         "tables": {
             "registered": (
@@ -85,6 +126,8 @@ def routes(election):
     year = election[:4]
     root = re.escape(BASE + year + "/")
     filename = BOOKS[election]
+    if filename and filename.startswith(LIBRARY):
+        return LIBRARY + "s001.html", re.escape(filename)
     if filename and filename.startswith("https://"):
         return INDEX, re.escape(filename)
     return INDEX, root + (re.escape(filename) if filename else r"[^/?#]{1,140}\.pdf")

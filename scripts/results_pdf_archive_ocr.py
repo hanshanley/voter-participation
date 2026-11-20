@@ -39,8 +39,10 @@ def panel(view, specification, aliases):
     header = heading_key(" ".join(lines[:8]))
     if not all(heading_key(heading) in header for heading in headings):
         fail("Missing scanned table heading")
+    expected_names = {label(name) for name in names}
+    physical_rows = view["role_cells"]
     output = []
-    for physical_row, cells in enumerate(view["role_cells"], 1):
+    for physical_row, cells in enumerate(physical_rows, 1):
         names_here = [cell for cell in cells if name_band[0] <= cell["left"] * scale < name_band[1]]
         totals = [cell for cell in cells if total_band[0] <= cell["right"] * scale < total_band[1]
                   and re.fullmatch(r"[0-9][0-9,]*", cell["text"], flags=re.ASCII)]
@@ -48,12 +50,18 @@ def panel(view, specification, aliases):
             continue
         if len(names_here) != 1 or len(totals) != 1:
             fail("Ambiguous scanned county or total column")
-        observed, total = names_here[0], totals[0]
-        native = label(observed["text"])
+        observed, total = names_here[0]["text"], totals[0]
+        native = label(observed)
+        if (aliases.get(native, native) not in expected_names and physical_row < len(physical_rows)
+                and len(following := physical_rows[physical_row]) == 1
+                and name_band[0] <= following[0]["left"] * scale < name_band[1]
+                and native + label(following[0]["text"]) in expected_names):
+            observed += " " + following[0]["text"]
+            native = label(observed)
         confidence = total["confidence"]
         if not math.isfinite(confidence) or not 0 <= confidence <= 1:
             fail("Invalid OCR confidence")
-        output.append({"name": aliases.get(native, native), "literal_name": observed["text"],
+        output.append({"name": aliases.get(native, native), "literal_name": observed,
                        "literal_total": total["text"], "total": count(total["text"]),
                        "high_confidence": confidence >= MINIMUM, "row": physical_row})
     if [row["name"] for row in output] != [label(name) for name in names]:
@@ -90,13 +98,16 @@ def verify(evidence, profile):
                     fail("Scanned physical row order differs")
             for name, a, b in zip(names, pair[0]["rows"], pair[1]["rows"], strict=True):
                 values = [count(row["literal_total"]) for row in (a, b)]
-                if (name in result[table] or any(
+                previous = result[table].get(name)
+                if ((previous is not None and (name != "TOTAL" or previous != values[0])) or any(
                         row["name"] != label(name) or row["name"] != profile["aliases"].get(
                             label(row["literal_name"]), label(row["literal_name"]))
                         or row["total"] != value or type(row["high_confidence"]) is not bool
                         for row, value in zip((a, b), values, strict=True))
-                        or values[0] != values[1] or not (a["high_confidence"] or b["high_confidence"])):
+                        or values[0] != values[1]):
                     fail("Scanned totals or identities disagree between renders")
+                if not (a["high_confidence"] or b["high_confidence"]):
+                    fail(f"Neither render clears the OCR confidence floor for {table}: {name}")
                 result[table][name] = values[0]
         totals = result[table]
         if "TOTAL" not in totals or sum(v for k, v in totals.items() if k != "TOTAL") != totals["TOTAL"]:
