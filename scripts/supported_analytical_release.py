@@ -500,6 +500,10 @@ def selected_local_observation_ids(snapshot, counts=None):
             continue
         entry = snapshot.get("granular_sources", {}).get(identity)
         require(entry is not None, "Selected local source missing: " + identity)
+        if identity == results_indiana_turnout.FEEDS[2026]:
+            if statewide_ballot_totals.indiana_summary(snapshot) is not None:
+                selected.add(statewide_ballot_totals.identity("IN"))
+            continue
         if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED)
                 or identity in results_indiana_turnout.FEEDS.values()
                 or identity in results_pa_vote_history.FEEDS.values()):

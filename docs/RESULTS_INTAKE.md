@@ -48,8 +48,11 @@ live contest feed or primary reports. The complete analysis download carries
 the report's columns, edition and original-file pin, and keeps any raw count
 disagreement visible. The 2022 statewide mode sum is 5,464 higher than the
 printed `Voters Voting` total; the state and four affected county fractions
-are withheld. The 2024 columns reconcile. This separate archive series does
-not automatically replace the live administrative map or imply a ballot count.
+are withheld. The 2024 columns reconcile. Only a reconciled November 2026
+report can affect the statewide map: all 92 county rows, the printed state
+totals and both mode columns must agree. The map uses the source label
+`Voters Voting`, not ballots cast. Historical rows and county-level archive
+figures remain separate from the current map.
 
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents

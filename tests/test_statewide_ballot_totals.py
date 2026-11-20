@@ -162,6 +162,53 @@ def test_pennsylvania_vote_history_keeps_age_residual_and_excludes_primary_from_
             pa.queries(corrupt)
 
 
+def test_indiana_statewide_projection_preserves_measure_and_retains_on_conflict(monkeypatch):
+    from scripts import results_indiana_turnout as ind, supported_analytical_release as release
+    from scripts.participation_intake.contract import digest
+
+    files = baseline(monkeypatch)
+    path = "states/IN.json.gz"
+    original = Path(__file__).resolve().parents[1] / "data/results-intake/baseline/counts" / path
+    files[path] = original.read_bytes()
+    index = json.loads(files["index.json"])
+    index["states"]["IN"] = {"file": path, **pin(files[path])}
+    files["index.json"] = encoded(index)
+    counties = [f"County {n:02}" for n in range(92)]
+    monkeypatch.setattr(ind, "COUNTIES_SHA", digest(("\n".join(counties) + "\n").encode()))
+    feed = ind.FEEDS[2026]
+
+    def snapshot(*, day=19, delta=0, gap=0):
+        counties_rows = [[name, 1000, 400, 40, 248, 152, 38] for name in counties]
+        counties_rows[0][2] += delta
+        counties_rows[0][4] += delta + gap
+        state = ["", 92000, 36800 + delta, 40, 22816 + delta + gap, 13984, 38]
+        data = {"year": 2026, "date": f"2026-11-{day:02}", "complete_native_query": [*counties_rows, state],
+                "report": {"url": "https://www.in.gov/dA/0123456789/turnout.pdf?language_id=1",
+                           **pin(encoded([day, delta, gap]))}}
+        return {"granular_sources": {feed: {"status": "reported", "data": data}},
+                "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": [feed]}}
+
+    assert totals.project(files, {}) == (files, [])
+    first, changes = totals.project(files, snapshot())
+    assert changes == [{"state_code": "IN", "id": totals.identity("IN"), "previous": None,
+                        "current": 36800, "source_status": "reported"}]
+    record = json.loads(gzip.decompress(first[path]))["records"][-1]
+    assert record["measure"]["literal"] == "Voters Voting" and record["measure"]["kind"] == "participation_reported"
+    assert record["view"]["cast_ballot_count_qualified"] is False
+    assert record["source_clock"]["literal"] is None and record["view"]["validated_pct"] == 40
+    assert totals.project(first, snapshot()) == (first, [])
+    assert release.selected_local_observation_ids(snapshot(), first) == {record["id"]}
+    assert not release.selected_local_observation_ids(snapshot(day=20, gap=10), first)
+    for data in ({}, snapshot(day=20, gap=10), snapshot(day=18, delta=1)):
+        _, changes = totals.project(first, data)
+        assert changes[0]["current"] == 36800
+        assert changes[0]["source_status"] == "retained_after_failure"
+    for delta in (-1, 1):
+        _, changes = totals.project(first, snapshot(day=20, delta=delta))
+        assert changes[0]["current"] == 36800 + delta
+        assert changes[0]["source_status"] == "reported"
+
+
 def test_kansas_waits_for_a_declared_workbook_and_preserves_a_reconciled_count(monkeypatch):
     history = totals.history
     files = baseline(monkeypatch)
