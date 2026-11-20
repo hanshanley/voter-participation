@@ -1,4 +1,4 @@
-"""Reproduce reviewed county layers from original Census cartographic shapefiles."""
+"""Reproduce reviewed county layers from original Census shapefiles."""
 
 import argparse
 import gzip
@@ -22,9 +22,11 @@ EDITIONS = {
            "99d6597b1fc7767deef62e01d28d8b5dcbd578e151855f7dc0d173cbf5bf0868"),
     2025: ("GENZ2025/shp/cb_2025_us_county_500k", "cb_2025_us_county_500k", "STATEFP", "COUNTYFP", 11758981,
            "aa976c00b181939755d0da757f4c7c2dc0103c3b3b4530fb2a91c2bb62fc777c"),
+    2026: ("TIGER2026/COUNTY/tl_2026_us_county", "tl_2026_us_county", "STATEFP", "COUNTYFP", 83378454,
+           "b527c9ba7aeb8f17ef118f026eae5e5a938aa1d00b873bc32342d0dce59321c0"),
 }
 ROSTERS = {
-    "CA": ("06", {f"06{n:03}" for n in range(1, 116, 2)}, {1990, 2000}),
+    "CA": ("06", {f"06{n:03}" for n in range(1, 116, 2)}, {1990, 2000, 2026}),
     "NJ": ("34", {f"34{n:03}" for n in range(1, 42, 2)}, {2023, 2025}),
 }
 
@@ -44,7 +46,8 @@ def build(body, year, state):
             if item.record[state_column] != state_fips:
                 continue
             fips = state_fips + item.record[county_column]
-            if year >= 2023 and (item.record["GEOID"] != fips or item.record["STUSPS"] != state):
+            if year >= 2023 and (item.record["GEOID"] != fips
+                                 or (year in (2023, 2025) and item.record["STUSPS"] != state)):
                 raise ValueError(f"Census county identity differs: {fips}")
             name = item.record["NAME"].strip()
             geom = shape(item.shape.__geo_interface__)
