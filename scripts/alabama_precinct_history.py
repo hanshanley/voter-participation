@@ -12,6 +12,10 @@ CURRENT_CONTROL = "AL-2026-general-county-ballot-control"
 CURRENT_CONTROL_ROUTE = (re.escape(ROOT) + r"20(?:26|27)-(?:0[1-9]|1[0-2])/"
                          r"(?=[^/]*2026)[A-Za-z0-9_%.-]+\.pdf")
 FILES = {
+    2018: ("2018-11/2018-Official-General-Precinct-Results.zip",
+           "2019-01/2018GeneralVoterTurnoutStats.xlsx", "November 6, 2018"),
+    2020: ("2020-12/2020%20General%20Precinct%20Results.zip",
+           "2020-11/2020_General_Total_Ballots_Cast_Report.pdf", "November 3, 2020"),
     2022: ("2022-11/2022%20General%20Precinct%20Level%20Results.zip",
            "2023-05/General%20Election%202022%20Official%20Total%20Ballots%20Cast.pdf", "November 8, 2022"),
     2024: ("2024-12/2024-General%20Precinct%20Level%20Results.zip",
@@ -30,6 +34,17 @@ MODE_LABELS = {
     "ABSENTEE", "PROVISIONAL", "PROVISIONAL ABSENTEE", "ABSENTEE PROVISIONAL",
     "BESSEMER ABSENTEE", "BIRMINGHAM ABSENTEE", "PROVISIONAL OFFICIAL",
 }
+LEGACY_MODE_LABELS = {
+    "PROVISONAL", "BIRMINGHAM ABSENTEE 1", "BIRMINGHAM ABSENTEE 2",
+    "PROVISIONAL 1", "PROVISIONAL 2", "ABSENTEE BS 1-20", "ABSENTEE BS 21-45",
+    "PROVISIONAL BS 1-20", "PROVISIONAL BS 21-45", "ABSENTEE #1", "ABSENTEE #2",
+    "PROVISIONAL #1", "PROVISIONAL #2", "ABSENTEE 1", "ABSENTEE 2",
+}
+CONTROL_2018_HEADER = (
+    "County", "Total Registered Voters", "Total Ballots Cast", "Straight Party Democrat Ballots Cast",
+    "Straight Party Republican Ballots Cast", "Total Absentee Ballots Cast",
+    "Turnout as a Percentage of Registered Voters", "Absentee Ballots Cast as Percentage of Total Ballots Cast",
+)
 
 
 def county_key(name):
@@ -77,9 +92,11 @@ def parse_units(body, year):
             if book.sheet_names() != ["Precinct Results"]:
                 raise ValueError("Alabama precinct results sheet changed")
             sheet = book.sheet_by_index(0)
-            if [str(sheet.cell_value(i, 0)).strip() for i in range(4)] != [
-                    "Contest Title", "REGISTERED VOTERS - TOTAL", "BALLOTS CAST - TOTAL", "BALLOTS CAST - BLANK"
-            ] or [str(v).strip() for v in sheet.row_values(0)[:3]] != ["Contest Title", "Party", "Candidate"]:
+            headings = [str(sheet.cell_value(i, 0)).strip() for i in range(4)]
+            following = {"BALLOTS CAST - BLANK", "STRAIGHT PARTY"} if year <= 2020 else {"BALLOTS CAST - BLANK"}
+            if (headings[:3] != ["Contest Title", "REGISTERED VOTERS - TOTAL", "BALLOTS CAST - TOTAL"]
+                    or headings[3] not in following
+                    or [str(v).strip() for v in sheet.row_values(0)[:3]] != ["Contest Title", "Party", "Candidate"]):
                 raise ValueError("Alabama workbook no longer identifies ballots and registration")
             rows = []
             for col in range(3, sheet.ncols):
@@ -92,25 +109,40 @@ def parse_units(body, year):
 
 
 def control_rows(lines, year):
+    if year == 2018:
+        if not lines or tuple(lines[0]) != CONTROL_2018_HEADER or any(len(row) != 8 for row in lines[1:]):
+            raise ValueError("Alabama county control workbook columns changed")
+        return validate_controls((row[0], row[1], row[2], row[5]) for row in lines[1:])
     titles = {f"General Election {dash} {FILES[year][2]}" for dash in ("-", "–")}
-    columns = {
-        "County Registered Total Ballots Cast Party Republican Absentee Percentage Percentage",
-        "County Voters Ballots Cast Ballots Ballots Ballots Registered Voters Total Ballots",
-    }
-    if not titles.intersection(lines) or "Official Total Ballots Cast" not in lines or not columns.intersection(lines):
+    columns_2022 = "County Registered Total Ballots Cast Party Republican Absentee Percentage Percentage"
+    columns_2024 = "County Voters Ballots Cast Ballots Ballots Ballots Registered Voters Total Ballots"
+    columns = {columns_2022} if year == 2022 else {columns_2024} if year == 2024 else {columns_2022, columns_2024}
+    if year == 2020:
+        titles = {f"Total Ballots Cast ‐ General Election ‐ {FILES[year][2]}"}
+        columns = {"County Voters Ballots Cast Democrat Republican Ballots Registered Voters Total Ballots"}
+    if (not titles.intersection(lines) or not columns.intersection(lines)
+            or year != 2020 and "Official Total Ballots Cast" not in lines):
         raise ValueError("Alabama county ballot control election or measure changed")
     match_row = re.compile(rf"([A-Za-z. ]+) ((?:{NUMBER} ){{5}})\d{{1,3}}\.\d+% \d{{1,3}}\.\d+%")
-    values = {}
+    values = []
     for line in lines:
         match = match_row.fullmatch(line)
         if not match:
             continue
-        key = county_key(match[1])
+        registration, ballots, _, _, absentee = [int(value.replace(",", "")) for value in match[2].split()]
+        values.append((match[1], registration, ballots, absentee))
+    return validate_controls(values)
+
+
+def validate_controls(rows):
+    values = {}
+    for name, registration, ballots, absentee in rows:
+        key = county_key(name) if isinstance(name, str) else None
         county = "TOTAL" if key == "TOTAL" else COUNTY_KEYS.get(key)
         if county is None or county in values:
             raise ValueError("Unexpected Alabama control county")
-        registration, ballots, _, _, absentee = [int(value.replace(",", "")) for value in match[2].split()]
-        if not 0 <= absentee <= ballots <= registration:
+        if (not all(type(v) is int for v in (registration, ballots, absentee))
+                or not 0 <= absentee <= ballots <= registration):
             raise ValueError("Incompatible Alabama county control counts")
         values[county] = [registration, ballots, absentee]
     if set(values) != {*COUNTIES, "TOTAL"} or any(
@@ -126,6 +158,23 @@ def parse(body, feed):
     year = next(year for year, pair in FEEDS.items() if feed in pair)
     if feed == FEEDS[year][0]:
         data, lines = parse_units(body, year), None
+    elif year == 2018:
+        from openpyxl import load_workbook
+
+        with ZipFile(io.BytesIO(body)) as archive:
+            if sum(item.file_size for item in archive.infolist()) > 10_000_000:
+                raise ValueError("Alabama county control workbook exceeds expanded size limit")
+        book = load_workbook(io.BytesIO(body), read_only=True, data_only=True)
+        try:
+            if (book.sheetnames != ["Sheet1", "Sheet2", "Sheet3"]
+                    or any(any(value is not None for row in book[name].values for value in row)
+                           for name in book.sheetnames[1:])):
+                raise ValueError("Alabama county control worksheets changed")
+            lines = [[" ".join(v.split()) if isinstance(v, str) else v for v in row]
+                     for row in book["Sheet1"].values]
+            data = control_rows(lines, year)
+        finally:
+            book.close()
     else:
         from pypdf import PdfReader
 
@@ -206,6 +255,7 @@ def exports(entries):
             units.extend({**provenance, "county": name, "source_unit_ordinal": index,
                           "reporting_unit": label,
                           "unit_type": "central_mode_or_provisional" if label.upper() in MODE_LABELS
+                          or year <= 2020 and label.upper() in LEGACY_MODE_LABELS
                           else "reporting_unit_no_boundary_binding",
                           "reported_ballots": ballots, "unqualified_registration_cell": registration,
                           "reconciliation": decision}
