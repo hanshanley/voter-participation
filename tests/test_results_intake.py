@@ -440,6 +440,55 @@ def test_county_archive_revisions_keep_full_facts(tmp_path, monkeypatch):
     assert history.county_archive_rows({feed: retained})[0]["source_status"] == "retained_after_failure"
 
 
+def test_california_county_archive_uses_native_measure_and_rejects_bad_revision(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+
+    import pypdf
+
+    from scripts import results_turnout_history as history
+
+    election = "2024-11-05"
+    feed = "CA-2024-general-election-turnout-pdf"
+    url = history.california_report_url(election)
+    landing = f"<a href='{url}'>November 5, 2024 - General Election (PDF)</a>".encode()
+
+    def report(count, total, day=5):
+        return f"""NOVEMBER {day}, 2024, GENERAL ELECTION
+VOTER PARTICIPATION STATISTICS BY COUNTY
+County Number of Eligible to Registered Precinct Vote-By-Mail Total Percent of Turnout Turnout
+Precincts Register Voters1 Voters* Voters Voters Vote-By-Mail Registered Eligible
+Alameda 1 200 100 0* * {count} {count} 100.00% {count:.2f}% {count / 2:.2f}%
+State Total 1 200 100 0 {total} {total}
+Percent 50.00% 0.00% 100.00% 100.00% {total:.2f}% {total / 2:.2f}%
+""".encode()
+
+    monkeypatch.setattr(history, "CA_COUNTIES", ["Alameda"])
+    monkeypatch.setattr(pypdf, "PdfReader", lambda buf: SimpleNamespace(
+        is_encrypted=False, pages=[SimpleNamespace(extract_text=lambda **_: buf.read().decode())]))
+    bodies = {history.CA_URL: landing, url: b"%PDF-1.6\n" + report(70, 70)}
+    monkeypatch.setattr(intake.Collector, "acquire", lambda _, target: (bodies[target], {"origin": "fixture"}))
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    first = history.collect_county_archive(collector, feed)
+    rows = history.county_archive_rows({feed: first})
+    assert len(rows) == 2
+    assert rows[0]["reported_ballots_cast"] is None
+    assert rows[0]["reported_total_voters"] == 70
+    assert rows[0]["reported_eligible_to_register"] == 200
+    assert rows[0]["reported_turnout_eligible_pct"] == "35.00%"
+    assert rows[0]["qualified_same_report_registration_fraction_pct"] == 70
+    collector.prior = {feed: first}
+    for bad in (report(72, 71), report(70, 70, day=6)):
+        bodies[url] = b"%PDF-1.6\n" + bad
+        retained = history.collect_county_archive(collector, feed)
+        assert retained["status"] == "retained_after_failure"
+        assert retained["data"] == first["data"]
+    bodies[url] = b"%PDF-1.6\n" + report(68, 68)
+    revised = history.collect_county_archive(collector, feed)
+    assert history.county_archive_rows({feed: revised})[-1]["reported_total_voters"] == 68
+    collector.prior = {feed: revised}
+    assert history.collect_county_archive(collector, feed) == revised
+
+
 def test_indiana_archive_uses_only_declared_general_report_and_keeps_count_conflicts(monkeypatch):
     from scripts import results_indiana_turnout as indiana
 

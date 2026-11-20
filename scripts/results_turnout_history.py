@@ -49,7 +49,30 @@ KS_HEADER = [["COUNTY", "ADVANCE BALLOTS", None, "TOTAL BALLOTS CAST", None, "RE
              [None, "RETURNED BY MAIL", None, None, None, "VOTERS"]]
 NJ_FEED = "NJ-general-election-turnout-pdf"
 NJ_URL = "https://www.nj.gov/state/elections/election-information-ballots-cast.shtml"
+CA_URL = "https://www.sos.ca.gov/elections/statistics/voter-participation-stats-county"
+CA_ARCHIVES = {
+    "1998-11-03": "v.pdf",
+    "2000-11-07": "reg.pdf",
+    "2002-11-05": "reg.pdf",
+    "2004-11-02": "sov_pref_pg7_8_voter_participation_stats.pdf",
+    "2006-11-07": "reg.pdf",
+    "2008-11-04": "3_voter_part_stats_by_county.pdf",
+    "2010-11-02": "03-voter-particpation-stats-by-county.pdf",
+    "2012-11-06": "03-voter-participation-stats-by-county.pdf",
+    "2014-11-04": "pdf/03-voter-particpiation-stats-by-county.pdf",
+    **dict.fromkeys(("2016-11-08", "2018-11-06", "2020-11-03", "2022-11-08", "2024-11-05"),
+                    "sov/03-voter-participation-stats-by-county.pdf"),
+}
+CA_COUNTIES = (
+    "Alameda|Alpine|Amador|Butte|Calaveras|Colusa|Contra Costa|Del Norte|El Dorado|Fresno|Glenn|"
+    "Humboldt|Imperial|Inyo|Kern|Kings|Lake|Lassen|Los Angeles|Madera|Marin|Mariposa|Mendocino|"
+    "Merced|Modoc|Mono|Monterey|Napa|Nevada|Orange|Placer|Plumas|Riverside|Sacramento|San Benito|"
+    "San Bernardino|San Diego|San Francisco|San Joaquin|San Luis Obispo|San Mateo|Santa Barbara|"
+    "Santa Clara|Santa Cruz|Shasta|Sierra|Siskiyou|Solano|Sonoma|Stanislaus|Sutter|Tehama|Trinity|"
+    "Tulare|Tuolumne|Ventura|Yolo|Yuba"
+).split("|")
 COUNTY_ARCHIVES = {
+    **{f"CA-{election[:4]}-general-election-turnout-pdf": ("CA", election) for election in CA_ARCHIVES},
     "KS-2022-general-election-turnout-workbook": ("KS", "2022-11-08"),
     "NJ-2020-general-election-turnout-pdf": ("NJ", "2020-11-03"),
     "NJ-2022-general-election-turnout-pdf": ("NJ", "2022-11-08"),
@@ -331,14 +354,139 @@ def collect_new_jersey(collector):
     return collector.capture(NJ_FEED, NJ_URL, parse, equivalent=lambda old, new: old == new)
 
 
-def county_archive_routes(state, year):
+def california_report_url(election):
+    base = ("https://admin.cdn.sos.ca.gov/elections" if election[:4] == "2024"
+            else "https://elections.cdn.sos.ca.gov")
+    return f"{base}/sov/{election[:4]}-general/{CA_ARCHIVES[election]}"
+
+
+def california_controls(query, election):
+    rows = [*query["counties"], query["total"]]
+    fields = ("election_districts", "eligible", "registered", "precinct_voters", "mail_voters", "ballots_cast")
+    if (query["election_date"] != election or [row["county"] for row in rows] != [*CA_COUNTIES, "TOTAL"]
+            or query["native_numerator"] != ("ballots_cast" if election[:4] == "2000" else "total_voters")):
+        raise ValueError("California turnout report date, measure or county roster differs")
+    for row in rows:
+        if (any(type(row[field]) is not int or row[field] < 0 for field in fields)
+                or not row["registered"] or not row["eligible"]
+                or row["precinct_voters"] + row["mail_voters"] != row["ballots_cast"]):
+            raise ValueError(f"Invalid California voter counts for {row['county']}")
+        for field in ("registered", "eligible"):
+            printed = row[f"printed_{field}_percent"]
+            if not isinstance(printed, str) or not re.fullmatch(r"\d{1,3}\.\d{2}%", printed):
+                raise ValueError("Invalid California printed turnout percentage")
+    if any(rows[-1][field] != sum(row[field] for row in rows[:-1]) for field in fields):
+        raise ValueError("California turnout report county and statewide totals disagree")
+
+
+def california_report(body, election):
+    from pypdf import PdfReader
+
+    if not body.startswith(b"%PDF-") or len(body) > 2_000_000:
+        raise ValueError("California turnout report is not a bounded PDF")
+    pdf = PdfReader(io.BytesIO(body))
+    if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 6:
+        raise ValueError("California turnout report page inventory changed")
+    year = int(election[:4])
+    title = "VOTER PARTICIPATION STATISTICS BY COUNTY"
+    extracted = []
+    for page in pdf.pages:
+        lines = [" ".join(line.split()) for line in page.extract_text(extraction_mode="layout").splitlines()
+                 if line.strip()]
+        if any(line.upper().startswith(title) for line in lines):
+            extracted.extend(lines)
+    if not extracted:
+        raise ValueError("California turnout table heading not found")
+    if year == 2004 or year >= 2020:
+        day = int(election[-2:])
+        if not any(re.fullmatch(rf"NOVEMBER {day}, {year},? GENERAL ELECTION", line.upper())
+                   for line in extracted):
+            raise ValueError("California turnout report election date differs")
+    header = " ".join(line for line in extracted if re.match(
+        r"^(?:County |Number of Eligible|Precincts |Precinct Absentee)", line))
+    if ("Registered" not in header
+            or ("Ballots Cast" if year == 2000 else "Voters") not in header):
+        raise ValueError("California turnout table headers differ")
+    counties, total, total_index = [], None, None
+    fields = ("election_districts", "eligible", "registered", "precinct_voters", "mail_voters", "ballots_cast")
+    integer = r"(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)"
+    pct = r"[0-9]{1,3}\.[0-9]{2}%"
+    names = "|".join(re.escape(name) for name in [*CA_COUNTIES, "STATEWIDE"]) + "|State Totals?"
+    pattern = re.compile(rf"({names})(\*{{0,3}}) (.+)")
+    for index, line in enumerate(extracted):
+        if year == 2006 and index + 1 < len(extracted):
+            for first, last in (("San", "Bernardino"), ("San Luis", "Obispo")):
+                wrapped = re.fullmatch(rf"{last} ({integer})", extracted[index + 1])
+                head = re.fullmatch(rf"{first} ({integer}) (.+)", line)
+                if wrapped and head:
+                    line = f"{first} {last} {head[1]} {wrapped[1]} {head[2]}"
+        match = pattern.fullmatch(line)
+        if not match:
+            continue
+        name, mark, values = match.groups()
+        statewide = name.startswith("State Total") or name == "STATEWIDE"
+        if not statewide and year == 2014:
+            moved = (re.fullmatch(rf"(.+?%)({integer})( .+)?", values) if name != "Shasta"
+                     else re.fullmatch(r"(.+ \d{1,3},\d{3})(\d{1,3})( .+)", values))
+            if not moved:
+                raise ValueError(f"Unrecognized 2014 California precinct field placement at {name}")
+            values = f"{moved[2]} {moved[1]}{moved[3] or ''}"
+        elif year == 2018 and name == "Sutter":
+            moved = re.fullmatch(rf"({integer}) (.+%)({integer})", values)
+            if moved:
+                values = f"{moved[1]} {moved[3]} {moved[2]}"
+        elif year == 2024:
+            values = re.sub(r"\* +\*", "**", values)
+        tokens = values.split()
+        numbers = tokens[:6]
+        if (len(numbers) != 6 or any(not re.fullmatch(
+            rf"{integer}(?:\*{{1,3}})?|-" if key == "precinct_voters" else integer, token)
+                                    for key, token in zip(fields, numbers))
+                or (numbers[3] == "-" and year != 2000)):
+            raise ValueError(f"California turnout table includes malformed counts at {name}")
+        row = dict(zip(fields, (int(x.replace(",", "").rstrip("*")) if x != "-" else 0 for x in numbers)))
+        rates = tokens[6:]
+        if statewide and not rates:
+            if year < 2008:
+                raise ValueError("Missing statewide rates")
+            percent_lines = [l for l in extracted if l.startswith("Percent ")]
+            if len(percent_lines) != 1:
+                raise ValueError("Ambiguous California statewide rate line")
+            rates = re.findall(pct, percent_lines[0])[-2:]
+        if (len(rates) not in ((2, 3) if not statewide else (2,))
+                or not all(re.fullmatch(pct, token) for token in rates)):
+            raise ValueError(f"California turnout table includes malformed rates at {name}")
+        row.update(county="TOTAL" if statewide else name, county_mark=mark,
+                   precinct_literal=numbers[3],
+                   printed_mail_percent=rates[0] if len(rates) == 3 else None,
+                   printed_registered_percent=rates[-2], printed_eligible_percent=rates[-1])
+        if statewide:
+            if total is not None:
+                raise ValueError("California turnout report repeats its statewide row")
+            total, total_index = row, index
+        else:
+            counties.append(row)
+    if total is None:
+        raise ValueError("California turnout report statewide row missing")
+    query = {"election_date": election, "counties": counties, "total": total,
+             "native_numerator": "ballots_cast" if year == 2000 else "total_voters",
+             "registration_basis": ("15-day Report of Registration; excludes later registrations"
+                                    if year in (2022, 2024) else "Report's registered voters"),
+             "table_notes": extracted[total_index + 1:]}
+    california_controls(query, election)
+    return query
+
+
+def county_archive_routes(state, election):
+    year = int(election[:4])
+    if state == "CA":
+        return CA_URL, re.escape(california_report_url(election))
     return (KS_URL, kansas_report_url(year)) if state == "KS" else (NJ_URL, new_jersey_report_url(year))
 
 
 def collect_county_archive(collector, feed):
     state, election = COUNTY_ARCHIVES[feed]
-    year = int(election[:4])
-    index_url, report_pattern = county_archive_routes(state, year)
+    index_url, report_pattern = county_archive_routes(state, election)
 
     def parse(index):
         url = archive_link(index, index_url, report_pattern)
@@ -351,7 +499,7 @@ def collect_county_archive(collector, feed):
         previous = (collector.prior.get(feed) or {}).get("data")
         if previous and previous.get("report") == report:
             return previous
-        query = (kansas_workbook(body) if state == "KS"
+        query = (kansas_workbook(body) if state == "KS" else california_report(body, election) if state == "CA"
                  else new_jersey_report(body, election, allow_amended=True))
         data = {"election_date": election, "report": report, "complete_native_query": query,
                 "participation_observation_qualified": False}
@@ -370,7 +518,7 @@ def county_archive_rows(entries):
         if data is None:
             continue
         year = int(election[:4])
-        index, pattern = county_archive_routes(state, year)
+        index, pattern = county_archive_routes(state, election)
         report, query = data["report"], data["complete_native_query"]
         source = entry.get("source") or {}
         if (data["election_date"] != election or entry["status"] not in ("reported", "retained_after_failure")
@@ -385,6 +533,10 @@ def county_archive_rows(entries):
                          "ballots_cast": ballots, "registered": registered}
                         for name, mail, ballots, registered in [*query["counties"], ["TOTAL", *query["total"]]]]
             county_conflict = any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
+        elif state == "CA":
+            california_controls(query, election)
+            counties = [*query["counties"], query["total"]]
+            county_conflict = False
         else:
             new_jersey_controls(query, election)
             if data.get("date") != query["published_date"]:
@@ -397,17 +549,30 @@ def county_archive_rows(entries):
             hold = ("county_conflict_included_in_statewide_total" if statewide and county_conflict
                     else "ballots_exceed_registered" if ballots > registered
                     else "no_positive_registration_denominator" if not registered else None)
+            if state == "CA" and not hold and (
+                    (Decimal(ballots) * 100 / registered).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
+                    != Decimal(native["printed_registered_percent"][:-1])):
+                hold = "printed_registration_fraction_disagrees"
+            measure = query.get("native_numerator", "ballots_cast")
             rows.append({
                 "state_code": state, "year": year, "election_date": election,
                 "election_type": "off_year_general" if year % 2 else "presidential" if year % 4 == 0 else "midterm",
                 "geography_level": "state" if statewide else "county",
-                "geography": ("Kansas" if state == "KS" else "New Jersey") if statewide else county,
-                "reported_ballots_cast": ballots, "reported_registered_voters": registered,
+                "geography": {"KS": "Kansas", "NJ": "New Jersey", "CA": "California"}[state] if statewide else county,
+                "reported_ballots_cast": ballots if measure == "ballots_cast" else None,
+                "reported_total_voters": ballots if measure == "total_voters" else None,
+                "participation_measure": measure,
+                "reported_registered_voters": registered,
+                "registration_basis": query.get("registration_basis", "Report's registered voters"),
+                "reported_eligible_to_register": native.get("eligible"),
+                "reported_turnout_eligible_pct": native.get("printed_eligible_percent"),
+                "reported_precinct_voters": native.get("precinct_voters"),
+                "reported_mail_voters": native.get("mail_voters"),
                 "qualified_same_report_registration_fraction_pct": None if hold else 100 * ballots / registered,
                 "rate_hold_reason": hold,
                 "advance_ballots_returned_by_mail": native.get("advance_ballots_returned_by_mail"),
                 "reported_ballots_rejected": native.get("ballots_rejected"),
-                "reported_turnout_pct": native.get("printed_percent"),
+                "reported_turnout_pct": native.get("printed_registered_percent", native.get("printed_percent")),
                 "reported_election_districts": native.get("election_districts"),
                 "source_id": feed, "source_status": entry["status"], "report_edition": data.get("date"),
                 "amended_county": query.get("amendment", {}).get("county"),

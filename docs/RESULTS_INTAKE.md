@@ -61,7 +61,8 @@ totals and both mode columns must agree. The map uses the source label
 `Voters Voting`, not ballots cast. Historical rows and county-level archive
 figures remain separate from the current map.
 
-Kansas (2022) and New Jersey (2020 and 2022–2025) county turnout archives are
+California (1998–2024 biennial general elections), Kansas (2022) and New Jersey
+(2020 and 2022–2025) county turnout archives are
 checked by the same hourly collector and weekly sweep, using the exact
 general-election reports linked by their official indexes. The complete
 `release/participation-state-county-turnout-archives.csv.gz` query retains all
@@ -72,6 +73,12 @@ includes that count in the state total. New Jersey's 2023 and 2025 elections are
 identified as off-year, and the 2020 and 2022 amendments retain their edition dates
 and affected counties. These are historical source snapshots, not 2026 observations,
 eligible-population rates, or comparisons that assume stable county boundaries.
+California's reports must reconcile all 58 counties and statewide totals before
+acceptance. The export keeps the published `Total Voters` or `Ballots Cast`
+measure, the separate eligible-to-register series, and any printed registration
+fraction disagreement. The 2022 and 2024 registration bases exclude registrations
+after the 15-day report. The 1990–1996 PDFs require separate transcription checks;
+the archive did not declare a 2026 general-election turnout report.
 
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
