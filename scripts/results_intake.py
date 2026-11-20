@@ -783,7 +783,8 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_cass.py", "results_pdf_dunn.py", "results_pdf_cole.py",
              "results_pdf_platte.py", "results_pdf_county_parent.py", "results_minnesota_turnout.py",
              "philadelphia_divisions.py",
-             "results_turnout_history.py", "results_indiana_turnout.py", "results_nc_vote_history.py",
+             "results_turnout_history.py", "wyoming_participation_statistics.py",
+             "results_indiana_turnout.py", "results_nc_vote_history.py",
              "results_ca_county_scan_transcriptions.json",
              "results_pa_vote_history.py", "results_alaska_turnout.py",
              "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
@@ -824,7 +825,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                  "test_results_intake_north_dakota_package.py",
                  "test_louisiana_onboarding.py",
                  "test_automatic_native_refresh.py",
-                 "test_nationwide.py", "test_current.py"):
+                 "test_nationwide.py", "test_current.py", "test_wyoming_participation_statistics.py"):
         package_members["code/tests/" + name] = (ROOT / "tests" / name).read_bytes()
     name = "tests/nd_native_fixture_support.py"
     package_members["code/" + name] = (ROOT / name).read_bytes()
@@ -988,7 +989,7 @@ def late_archive_sources():
 
     return (
         history.KS_FEED, history.NJ_FEED, results_nc_vote_history.FEED, results_pa_vote_history.FEEDS[history.CURRENT_YEAR],
-        history.TX_FEED, history.VA_FEED, history.WA_FEED, history.NC_HISTORY_FEED,
+        history.TX_FEED, history.VA_FEED, history.WA_FEED, history.NC_HISTORY_FEED, history.WY_HISTORY_FEED,
         results_uf_turnout.IDENTITY,
         *results_official_congress.source_ids(results_official_congress.CLARITY_CONFIG),
         *results_minnesota_turnout.SOURCE_IDS,
@@ -1017,6 +1018,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
         results_turnout_history.VA_FEED: results_turnout_history.collect_virginia,
         results_turnout_history.WA_FEED: results_turnout_history.collect_washington,
         results_turnout_history.NC_HISTORY_FEED: results_turnout_history.collect_north_carolina_history,
+        results_turnout_history.WY_HISTORY_FEED: results_turnout_history.collect_wyoming_history,
         results_nc_vote_history.FEED: results_nc_vote_history.collect,
         results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
         results_pdf_county_parent.SUMMIT_FEED: results_pdf_county_parent.collect_summit,

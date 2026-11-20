@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime, timezone
 from decimal import Decimal
 import io
 import unittest
@@ -20,6 +21,52 @@ def fixture():
 
 def read(raw):
     return list(csv.DictReader(io.StringIO(raw.decode())))
+
+
+def test_scheduled_profile_accepts_revision_and_retains_last_good(tmp_path, monkeypatch):
+    from scripts import results_intake as intake, results_turnout_history as history
+
+    source = fixture()
+    full = source.replace("15.0%\n", "15.0% 29,000 29% 42,000 42.0%\n", 1)
+    editions = iter((source, full, full, full.replace("42,000 42.0%", "40,000 40.0%"),
+                     source, full.replace("08/2026", "07/2026"), None))
+    monkeypatch.setattr(history, "wyoming_profile", lambda body: parse_profile(body.decode()))
+    prior = {}
+
+    def collect(day):
+        body = next(editions)
+        collector = intake.Collector(tmp_path, prior, {"hosts": [], "prefixes": [], "urls": []},
+                                     datetime(2026, 11, day, tzinfo=timezone.utc))
+
+        def acquire(url):
+            assert url == history.wy_profile.SOURCE_URL
+            if body is None:
+                raise intake.IntakeError("source_unavailable", "Fixture outage")
+            return body.encode(), {"origin": "test"}
+
+        monkeypatch.setattr(collector, "acquire", acquire)
+        result = history.collect_wyoming_history(collector)
+        prior[history.WY_HISTORY_FEED] = result
+        return result
+
+    def general(entry):
+        _, csv_body = history.wyoming_history_exports(entry)
+        return next(row for row in read(csv_body) if row["year"] == "2026" and row["election_type"] == "general")
+
+    assert history.WY_HISTORY_FEED in intake.late_archive_sources()
+    assert general(collect(12))["native_voter_turnout"] == ""
+    published = collect(13)
+    assert general(published)["native_voter_turnout"] == "42000"
+    assert collect(14) == published
+    correction = collect(15)
+    assert general(correction)["native_voter_turnout"] == "40000"
+    assert general(correction)["registered_voter_turnout_rate"] == ""
+    for day, stage in ((16, "parsing"), (17, "parsing"), (18, "acquisition")):
+        retained = collect(day)
+        assert retained["status"] == "retained_after_failure"
+        assert retained["error_stage"] == stage
+        for field in ("data", "source", "first_observed_at"):
+            assert retained[field] == correction[field]
 
 
 class WyomingParticipationStatisticsTests(unittest.TestCase):

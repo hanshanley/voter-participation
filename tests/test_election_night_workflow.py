@@ -283,6 +283,7 @@ def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_pa
         "VA-general-election-turnout", "WA-general-election-turnout",
         "MN-native-local", "MN-statewide-reporting",
         "NC-2026-general-vote-history", "NC-general-election-turnout-history", "UF-national-turnout",
+        "WY-primary-general-turnout-profile",
         "HI-official-house-candidates", "IA-official-statewide-results", "NE-official-house-candidates",
         "OR-official-house-candidates", "RI-official-house-candidates", "RI-official-senate-candidates",
         "UT-official-house-candidates", "WY-official-house-candidates",

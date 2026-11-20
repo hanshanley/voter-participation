@@ -60,6 +60,7 @@ def native_percentage(value):
 def parse_profile(text):
     text = re.sub(r"\s+", " ", text).strip()
     text = re.sub(r"([0-9]+)\. +([0-9]+)%", r"\1.\2%", text)
+    text = text.replace("Primary and G eneral Elections", "Primary and General Elections")
     required = (
         "Wyoming Voter Registration and Voter Turnout Statistics",
         "Primary Election", "General Election", "* Voting Age Population figures",
@@ -68,20 +69,22 @@ def parse_profile(text):
     )
     if not all(value in text for value in required):
         raise ValueError("Changed source identity or denominator qualification")
-    revisions = re.findall(r"Revised: ([0-9]{2}/[0-9]{4})", text)
+    revisions = re.findall(r"Revised: ((?:0[1-9]|1[0-2])/[0-9]{4})", text)
     if len(revisions) != 1:
         raise ValueError("Missing or ambiguous source revision")
     table = text.split("* Voting Age Population figures", 1)[0]
     starts = list(re.finditer(r"\b((?:19|20)[0-9]{2}) (?=[0-9]{1,3}(?:,[0-9]{3})+\b)", table))
     years = [int(match[1]) for match in starts]
-    if sorted(years) != list(YEARS):
+    latest = max(years, default=0)
+    if (latest < YEARS[-1] or latest > int(revisions[0][-4:])
+            or sorted(years) != list(range(YEARS[0], latest + 1, 2))):
         raise ValueError("Missing, duplicate or unsupported source years")
     rows = []
     for index, match in enumerate(starts):
         end = starts[index + 1].start() if index + 1 < len(starts) else len(table)
         values = table[match.start():end].split()
         year = int(values[0])
-        if len(values) != (6 if year == 2026 else 10):
+        if len(values) != 10 and not (year == latest and len(values) == 6):
             raise ValueError("Partial or changed primary/general table row")
         vap = native_count(values[1])
         if not vap:
@@ -91,6 +94,8 @@ def parse_profile(text):
             printed_registered = native_percentage(values[offset + 1]) if registered is not None else None
             turnout = native_count(values[offset + 2]) if registered is not None else None
             printed_turnout = native_percentage(values[offset + 3]) if registered is not None else None
+            if turnout is not None and (turnout > vap or Decimal(printed_turnout) > 100):
+                raise ValueError("Turnout does not fit the published voting-age population frame")
             rows.append(dict(
                 year=year, state_code="WY", election_type=election,
                 source_revision=revisions[0], voting_age_population=vap,
@@ -170,7 +175,7 @@ def build(rows, controls):
             "VAP is source-estimated voting-age population, not citizen VAP or eligible voters.",
             "Registration excludes Election Day registrants; no election-time registration denominator is supplied.",
             "Native turnout is not automatically qualified cast ballots; primary and general elections remain distinct.",
-            "Blank 2026 general cells remain unknown; no current votes are copied into this older source revision.",
+            "Blank general-election cells remain unknown; no counts are copied from another source.",
             "Computed percentages are arithmetic ratios, not confidence intervals or demographic estimates.",
             "Equal state totals from the same producer do not provide independent validation.",
         ],

@@ -33,6 +33,21 @@ do not require a workflow change. The sweep runs `refresh-selected --late-archiv
 it does not recollect congressional races or any other unselected feed. Manual dispatch
 retains its explicit override.
 
+The Wyoming Secretary of State's statewide voter profile is a separate
+hourly and weekly source (`WY-primary-general-turnout-profile`). Its November
+2026 edition covers every even-year primary and general election from
+1978 through 2026. The complete runtime download includes the CSV and the
+checksum-bound JSON, including literal printed values and agreement checks.
+General-election blanks, if present in a new year, remain unknown; dropping a
+previously published row or rolling back the source's revision month retains
+the last-good edition. The denominator is the state's estimated voting-age
+population. The separate registration counts exclude Election Day registration
+and cannot be used to calculate registered-voter turnout. This product does not
+certify ballots or change the county, precinct, or conditional model frames.
+For a source-only refresh without national reacquisition, use
+`refresh-selected --sources WY-primary-general-turnout-profile` with the same
+registry and work-directory arguments as the weekly command.
+
 The weekly UF check follows the same advertised edition, schema and license
 guards as hourly intake. An inaccessible or incompatible UF edition leaves
 its last-good values and source edition intact and marks them retained; it

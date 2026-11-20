@@ -18,6 +18,7 @@ from urllib.parse import urljoin, urlsplit
 import xml.etree.ElementTree as ET
 
 from scripts.participation_intake.contract import IntakeError, count, encoded, pin
+from scripts import wyoming_participation_statistics as wy_profile
 
 
 WA_FEED = "WA-general-election-turnout"
@@ -28,6 +29,7 @@ WA_FIRST = 1980
 NC_HISTORY_FEED = "NC-general-election-turnout-history"
 NC_HISTORY_URL = "https://www.ncsbe.gov/results-data/voter-turnout"
 NC_HISTORY_HEADER = ("Election", "Eligible Voters", "Ballots Cast", "Turnout (%)")
+WY_HISTORY_FEED = "WY-primary-general-turnout-profile"
 VA_FEED = "VA-general-election-turnout"
 VA_URL = "https://www.elections.virginia.gov/resultsreports/registrationturnout-statistics/"
 VA_HEADER = ("Year", "Total Registered", "Percentage Change from Previous Year", "Total Voting",
@@ -695,6 +697,47 @@ def county_archive_routes(state, election):
         base = f"{WY_ARCHIVE_BASE}{year}/"
         return f"{base}{year}GeneralResults.aspx", re.escape(base + WY_ARCHIVES[election])
     return (KS_URL, kansas_report_url(year)) if state == "KS" else (NJ_URL, new_jersey_report_url(year))
+
+
+def wyoming_profile(body):
+    from pypdf import PdfReader
+
+    if not body.startswith(b"%PDF-") or len(body) > 2_000_000:
+        raise ValueError("Wyoming turnout profile is not a bounded PDF")
+    pdf = PdfReader(io.BytesIO(body), strict=True)
+    if len(pdf.pages) != 1:
+        raise ValueError("Wyoming turnout profile page inventory differs")
+    return wy_profile.parse_profile(pdf.pages[0].extract_text())
+
+
+def collect_wyoming_history(collector):
+    def parse(body):
+        rows = wyoming_profile(body)
+        month, year = rows[0]["source_revision"].split("/")
+        edition = f"{year}-{month}"
+        prior = (collector.prior.get(WY_HISTORY_FEED) or {}).get("data") or {}
+        accepted = {(row["year"], row["election_type"]) for row in rows
+                    if row["native_voter_turnout"] is not None}
+        previously_reported = {(row["year"], row["election_type"])
+                               for row in prior.get("complete_native_query", [])
+                               if row["native_voter_turnout"] is not None}
+        if not previously_reported <= accepted:
+            raise ValueError("Wyoming turnout profile dropped a previously published election")
+        return {"contract": "participation.wyoming_primary_general_turnout.v1",
+                "date": edition, "complete_native_query": rows,
+                "participation_observation_qualified": True, "certified_ballots_cast": False,
+                "geographic_allocation": False, "registered_turnout_qualified": False}
+
+    return collector.capture(WY_HISTORY_FEED, wy_profile.SOURCE_URL, parse)
+
+
+def wyoming_history_exports(entry):
+    facts = entry["data"]
+    rows = facts["complete_native_query"]
+    return ({**facts, "state_code": "WY", "status": entry["status"], "source": entry["source"],
+             "first_observed_at": entry["first_observed_at"],
+             "error_stage": entry.get("error_stage"), "error": entry.get("error")},
+            wy_profile.csv_bytes(rows))
 
 
 def collect_county_archive(collector, feed):

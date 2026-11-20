@@ -41,7 +41,8 @@ CODE_PATHS = (
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
     "results_aspx_congress.py", "results_json_congress.py",
     "results_clarity_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
-    "results_minnesota_turnout.py", "results_turnout_history.py", "results_indiana_turnout.py",
+    "results_minnesota_turnout.py", "results_turnout_history.py", "wyoming_participation_statistics.py",
+    "results_indiana_turnout.py",
     "results_ca_county_scan_transcriptions.json",
     "results_nc_vote_history.py",
     "results_pa_vote_history.py", "results_alaska_turnout.py",
@@ -602,6 +603,18 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         history_exports[csv_path] = csv_body
         estimates["house_sources"].setdefault("general_election_turnout_history", {})[code] = {
             "data": {"path": path, **{key: value for key, value in artifact.items() if key != "content"}},
+            "csv": {"path": csv_path, **pin(csv_body)},
+        }
+    wy_entry = snapshot.get("granular_sources", {}).get(turnout_history.WY_HISTORY_FEED, {})
+    if wy_entry.get("data"):
+        data, csv_body = turnout_history.wyoming_history_exports(wy_entry)
+        path = "participation/wyoming-primary-general-turnout-profile"
+        data_path, csv_path = path + ".json.gz", path + ".csv"
+        artifact = _artifact(data)
+        estimates["artifacts"][data_path] = artifact
+        history_exports[csv_path] = csv_body
+        estimates["house_sources"]["wyoming_turnout_profile"] = {
+            "data": {"path": data_path, **{key: value for key, value in artifact.items() if key != "content"}},
             "csv": {"path": csv_path, **pin(csv_body)},
         }
     pa_history, pa_csv = results_pa_vote_history.exports(snapshot.get("granular_sources", {}))

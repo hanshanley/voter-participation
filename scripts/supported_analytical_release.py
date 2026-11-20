@@ -528,7 +528,8 @@ def selected_local_observation_ids(snapshot, counts=None):
                 selected.add(statewide_ballot_totals.identity("IN"))
             continue
         if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED,
-                         results_turnout_history.CA_CURRENT_FEED, results_turnout_history.NC_HISTORY_FEED)
+                         results_turnout_history.CA_CURRENT_FEED, results_turnout_history.NC_HISTORY_FEED,
+                         results_turnout_history.WY_HISTORY_FEED)
                 or identity in results_indiana_turnout.FEEDS.values()
                 or identity in results_turnout_history.COUNTY_ARCHIVES
                 or identity in results_pa_vote_history.FEEDS.values()):
