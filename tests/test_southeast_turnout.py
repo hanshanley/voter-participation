@@ -74,6 +74,10 @@ def test_precinct_controls_preserve_conflict_absentee_and_missing_register():
     assert units[1]["unqualified_registration_cell"] is None
     assert units[2]["reconciliation"] == "reconciled"
     assert precinct.exports({archive_feed: archive})[0][0]["reconciliation"] == "not_reconciled_without_both_sources"
+    current, _ = precinct.FEEDS[2026]
+    current_units, current_counties = precinct.exports({current: entry(current, rows)})
+    assert {row["reconciliation"] for row in current_units} == {"not_reconciled_without_both_sources"}
+    assert all(row["county_control_ballots"] is None for row in current_counties)
     rows["AUTAUGA"].append(["TOWN HALL", 0, 0])
     with pytest.raises(ValueError, match="Invalid Alabama reporting unit"):
         precinct.exports({archive_feed: archive})

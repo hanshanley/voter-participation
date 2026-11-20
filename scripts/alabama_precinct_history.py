@@ -1,4 +1,4 @@
-"""Alabama's historical ballot counts, independently checked against county totals."""
+"""Alabama's reporting-unit ballot counts and compatible county controls."""
 import io
 import re
 from zipfile import ZipFile
@@ -11,10 +11,12 @@ FILES = {
            "2023-05/General%20Election%202022%20Official%20Total%20Ballots%20Cast.pdf", "November 8, 2022"),
     2024: ("2024-12/2024-General%20Precinct%20Level%20Results.zip",
            "2025-01/2024GeneralElectionTotalBallotsCast.pdf", "November 5, 2024"),
+    2026: ("2026-11/2026GeneralElectionPrecinctResults.zip", None, "November 3, 2026"),
 }
-FEEDS = {year: (f"AL-{year}-general-precinct-ballot-archive", f"AL-{year}-general-county-ballot-control")
-         for year in FILES}
-URLS = {feed: ROOT + path for year, paths in FILES.items() for feed, path in zip(FEEDS[year], paths[:2])}
+FEEDS = {year: (f"AL-{year}-general-precinct-ballot-archive",
+                f"AL-{year}-general-county-ballot-control" if paths[1] else None)
+         for year, paths in FILES.items()}
+URLS = {feed: ROOT + path for year, paths in FILES.items() for feed, path in zip(FEEDS[year], paths[:2]) if feed}
 CSV = "participation-al-precinct-ballot-archives.csv"
 CONTROL_CSV = "participation-al-precinct-ballot-county-controls.csv"
 COUNTY_KEYS = {county.replace("_", ""): county for county in COUNTIES}
@@ -60,7 +62,8 @@ def parse_units(body, year):
         if len(items) != len(COUNTY_KEYS) or sum(item.file_size for item in items) > 20_000_000:
             raise ValueError("Alabama precinct archive inventory changed")
         for item in items:
-            match = re.fullmatch(rf"{year}-General-([A-Za-z ._'-]+)\.xls", item.filename)
+            prefix = "2026_GENERAL_ELECTION" if year == 2026 else f"{year}-General"
+            match = re.fullmatch(rf"{prefix}-([A-Za-z ._'-]+)\.xls", item.filename)
             county = COUNTY_KEYS.get(county_key(match[1])) if match else None
             if county is None or county in counties or not 0 < item.file_size <= 1_000_000:
                 raise ValueError("Unknown, oversized or repeated Alabama county workbook")
@@ -151,7 +154,7 @@ def exports(entries):
         if workbooks:
             archive_sums["TOTAL"] = sum(archive_sums.values())
         provenance = {"state_code": "AL", "year": year,
-                      "archive_url": URLS[archive_feed], "control_url": URLS[control_feed],
+                      "archive_url": URLS[archive_feed], "control_url": URLS.get(control_feed),
                       "archive_status": archive.get("status"), "control_status": control.get("status"),
                       "archive_checked_week_utc": archive.get("archive_check_week_utc"),
                       "control_checked_week_utc": control.get("archive_check_week_utc"),

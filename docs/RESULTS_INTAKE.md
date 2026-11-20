@@ -2835,6 +2835,9 @@ and provisional categories included. Cullman (2022, +90) and Cleburne (2024,
 −180) disagree with their county controls; no ballot is reassigned. Workbook
 registration cells are preserved but unqualified, and no reporting-unit label
 alone is accepted as a boundary identity.
+The 2026 ZIP enters the same count-only export separately, without a county
+control. The retained election-night county edition differs in 59 counties and
+is not used as a matching control or replaced by the ZIP.
 
 The South Carolina export separates reported ballots cast (2008 onward) from
 voter-history credits (1998–2006). Both the source's printed percentage and the
