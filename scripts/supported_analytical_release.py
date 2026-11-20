@@ -662,6 +662,10 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
         snapshot.get("granular_sources", {}), current_california=True)
     if current_ca:
         raw_files[results_turnout_history.CA_CURRENT_CSV] = csv_bytes(current_ca)
+    current_ne = results_turnout_history.county_archive_rows(
+        snapshot.get("granular_sources", {}), current_nebraska=True)
+    if current_ne:
+        raw_files[results_turnout_history.nebraska_canvass.CSV] = csv_bytes(current_ne)
     cps_workbooks = seed.get("cps_published_state_workbooks")
     published_rows = published_cps.build(cps_workbooks) if cps_workbooks is not None else []
     if published_rows:

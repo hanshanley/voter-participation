@@ -19,6 +19,7 @@ import xml.etree.ElementTree as ET
 
 from scripts.participation_intake.contract import IntakeError, count, encoded, pin
 from scripts import wyoming_participation_statistics as wy_profile
+from scripts import nebraska_canvass
 
 
 WA_FEED = "WA-general-election-turnout"
@@ -129,6 +130,8 @@ COUNTY_ARCHIVES = {
     "NJ-2025-general-election-turnout-pdf": ("NJ", "2025-11-04"),
     **{f"WV-{election[:4]}-general-election-turnout-pdf": ("WV", election) for election in WV_ARCHIVES},
     **{f"WY-{election[:4]}-general-election-ballots-pdf": ("WY", election) for election in WY_ARCHIVES},
+    **{f"NE-{election[:4]}-general-election-canvass": ("NE", election)
+       for election in nebraska_canvass.BOOKS},
 }
 COUNTY_ARCHIVE_CSV = "participation-state-county-turnout-archives.csv"
 BUXTON_FEED = "ME-buxton-town-turnout"
@@ -690,6 +693,8 @@ def wyoming_archive_report(body, election):
 
 def county_archive_routes(state, election):
     year = int(election[:4])
+    if state == "NE":
+        return nebraska_canvass.routes(election)
     if state == "CA":
         if election == CA_CURRENT_ELECTION:
             return CA_URL, CA_CURRENT_ROUTE
@@ -841,12 +846,14 @@ def collect_county_archive(collector, feed):
         if current:
             url = archive_link(index, index_url, report_pattern,
                                label=r"November 3, 2026\s*[-–]\s*General Election \(PDF\)")
+        elif state == "NE" and election == nebraska_canvass.CURRENT:
+            url = archive_link(index, index_url, report_pattern, label="General Election Official Results")
         else:
             url = archive_link(index, index_url, report_pattern)
         if url is None:
             raise IntakeError("report_not_linked", f"No {feed} report linked in the official archive")
         body, _ = collector.acquire(url)
-        if not 0 < len(body) <= 2_000_000:
+        if not 0 < len(body) <= county_archive_limit(state):
             raise ValueError("Historical county report exceeds reviewed size bound")
         report = {"url": url, **pin(body)}
         previous = (collector.prior.get(feed) or {}).get("data")
@@ -861,6 +868,8 @@ def collect_county_archive(collector, feed):
             query = west_virginia_archive_report(body, election)
         elif state == "WY":
             query = wyoming_archive_report(body, election)
+        elif state == "NE":
+            query = nebraska_canvass.parse(body, election)
         else:
             query = new_jersey_report(body, election, allow_amended=True)
         data = {"election_date": election, "report": report, "complete_native_query": query,
@@ -873,16 +882,20 @@ def collect_county_archive(collector, feed):
                              shared_acquisition=True)
 
 
+def county_archive_limit(state):
+    return nebraska_canvass.MAX_BYTES if state == "NE" else 2_000_000
+
+
 def county_archive_originals(entries):
     originals = {}
     for feed, (state, election) in sorted(COUNTY_ARCHIVES.items()):
         data = (entries.get(feed) or {}).get("data")
-        if state not in ("WV", "WY") or data is None:
+        if state not in ("NE", "WV", "WY") or data is None:
             continue
         report = data["report"]
         _, pattern = county_archive_routes(state, election)
         if (data["election_date"] != election or not re.fullmatch(pattern, report["url"])
-                or type(report["bytes"]) is not int or not 0 < report["bytes"] <= 2_000_000
+                or type(report["bytes"]) is not int or not 0 < report["bytes"] <= county_archive_limit(state)
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError(f"Invalid original county report pin: {feed}")
         originals[feed] = {"filename": feed + ".pdf", **{key: report[key] for key in ("url", "bytes", "sha256")}}
@@ -900,15 +913,21 @@ def verify_county_archive_originals(entries, directory):
         if pin(body) != {key: report[key] for key in ("bytes", "sha256")}:
             raise ValueError(f"Changed original county report: {feed}")
         state, election = COUNTY_ARCHIVES[feed]
-        parse = west_virginia_archive_report if state == "WV" else wyoming_archive_report
+        parse = {"WV": west_virginia_archive_report, "WY": wyoming_archive_report,
+                 "NE": nebraska_canvass.parse}[state]
         if parse(body, election) != entries[feed]["data"]["complete_native_query"]:
             raise ValueError(f"County report extraction differs from the accepted query: {feed}")
     return len(originals)
 
 
-def county_archive_rows(entries, *, current_california=False):
+def county_archive_rows(entries, *, current_california=False, current_nebraska=False):
     rows = []
-    declarations = ({CA_CURRENT_FEED: ("CA", CA_CURRENT_ELECTION)} if current_california else COUNTY_ARCHIVES)
+    if current_california:
+        declarations = {CA_CURRENT_FEED: ("CA", CA_CURRENT_ELECTION)}
+    elif current_nebraska:
+        declarations = {nebraska_canvass.CURRENT_FEED: ("NE", nebraska_canvass.CURRENT)}
+    else:
+        declarations = {key: value for key, value in COUNTY_ARCHIVES.items() if key != nebraska_canvass.CURRENT_FEED}
     for feed, (state, election) in sorted(declarations.items()):
         entry = entries.get(feed, {})
         data = entry.get("data")
@@ -921,7 +940,7 @@ def county_archive_rows(entries, *, current_california=False):
         if (data["election_date"] != election or entry["status"] not in ("reported", "retained_after_failure")
                 or data["participation_observation_qualified"] is not False
                 or source.get("url") != index or not re.fullmatch(pattern, report["url"])
-                or type(report["bytes"]) is not int or not 0 < report["bytes"] <= 2_000_000
+                or type(report["bytes"]) is not int or not 0 < report["bytes"] <= county_archive_limit(state)
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError("Invalid historical county report binding")
         if state == "KS":
@@ -946,6 +965,11 @@ def county_archive_rows(entries, *, current_california=False):
                 raise ValueError("Wyoming turnout differs from its retained source rows")
             counties = [*query["counties"], query["total"]]
             county_conflict = False
+        elif state == "NE":
+            if query != nebraska_canvass.query(query["native_lines"], election):
+                raise ValueError("Nebraska turnout differs from its retained source rows")
+            counties = [*query["counties"], query["total"]]
+            county_conflict = any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
         else:
             new_jersey_controls(query, election)
             if data.get("date") != query["published_date"]:
@@ -958,7 +982,7 @@ def county_archive_rows(entries, *, current_california=False):
             hold = ("county_conflict_included_in_statewide_total" if statewide and county_conflict
                     else "registration_not_in_report" if registered is None
                     else "ballots_exceed_registered" if ballots > registered
-                    else "no_positive_registration_denominator" if not registered else None)
+                    else "no_positive_registration_denominator" if not registered else native.get("rate_hold_reason"))
             if state == "CA" and not hold and (
                     (Decimal(ballots) * 100 / registered).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
                     != Decimal(native["printed_registered_percent"][:-1])):
@@ -975,7 +999,7 @@ def county_archive_rows(entries, *, current_california=False):
                 "state_code": state, "year": year, "election_date": election,
                 "election_type": "off_year_general" if year % 2 else "presidential" if year % 4 == 0 else "midterm",
                 "geography_level": "state" if statewide else "county",
-                "geography": {"KS": "Kansas", "NJ": "New Jersey", "CA": "California", "WV": "West Virginia",
+                "geography": {"KS": "Kansas", "NE": "Nebraska", "NJ": "New Jersey", "CA": "California", "WV": "West Virginia",
                               "WY": "Wyoming"}[state]
                 if statewide else county,
                 "reported_ballots_cast": ballots if measure == "ballots_cast" else None,

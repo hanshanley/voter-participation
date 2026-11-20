@@ -560,6 +560,56 @@ def test_wyoming_county_archive_exports_ballots_without_registration(date, headi
         history.verify_county_archive_originals(entries, tmp_path)
 
 
+def test_nebraska_canvass_discovers_current_book_and_rejects_bad_totals(tmp_path, monkeypatch):
+    from scripts import nebraska_canvass as ne, results_turnout_history as history
+
+    url = ne.BASE + "2026/General%20Canvass.pdf"
+    index = f'<a href="{url}">General Election Official Results</a>'.encode()
+    past = b'<a href="2024.pdf">General Election Official Results</a>'
+    feed = ne.CURRENT_FEED
+    phase = iter((past, index, index, past))
+    prior = {}
+
+    def pages(votes):
+        counties = ne.COUNTIES
+        return [
+            ["OFFICIAL REPORT OF THE NEBRASKA BOARD OF STATE CANVASSERS", "GENERAL ELECTION NOVEMBER 3, 2026"],
+            ["Number of Registered Voters", ne.REGISTRATION[2018][0], "Statewide Total 93 93 93 0 0 186",
+             *(f"{name} 1 1 1 0 0 2" for name in counties[:45])],
+            [f"{name} 1 1 1 0 0 2" for name in counties[45:]],
+            ["Total Voting by Method", ne.VOTING[2022][0], f"Statewide Total {votes} 0 0 0 0 {votes}",
+             *(f"{name} 0 0 0 0 0 0" for name in counties[:45])],
+            [*(f"{name} 0 0 0 0 0 0" for name in counties[45:-1]),
+             f"York {votes} 0 0 0 0 {votes}"],
+        ]
+
+    monkeypatch.setattr(ne, "parse", lambda body, date: ne.query(json.loads(body), date))
+
+    def run():
+        collector = intake.Collector(tmp_path, prior, EMPTY_STOPS, NOW)
+        document = next(phase)
+        monkeypatch.setattr(collector, "acquire", lambda link: (
+            document if link == ne.INDEX else encoded(pages(1)), {"origin": "test"}))
+        value = history.collect_county_archive(collector, feed)
+        prior[feed] = value
+        return value
+
+    assert run()["status"] == "report_not_linked"
+    accepted = run()
+    assert run() == accepted
+    held = run()
+    assert held["status"] == "retained_after_failure" and held["data"] == accepted["data"]
+    assert not history.county_archive_rows(prior)
+    rows = history.county_archive_rows(prior, current_nebraska=True)
+    assert len(rows) == 94 and rows[-2]["reported_total_voters"] == 1
+    assert rows[-2]["qualified_same_report_registration_fraction_pct"] == 50
+    assert all(row["reported_ballots_cast"] is None for row in rows)
+    wrong = pages(1)
+    wrong[-1][-1] = "York 0 0 0 0 0 0"
+    with pytest.raises(ValueError, match="state total"):
+        ne.query(wrong, ne.CURRENT)
+
+
 def test_county_archive_outage_attempts_shared_index_once_per_collection(tmp_path, monkeypatch):
     from scripts import results_turnout_history as history
 
