@@ -24,13 +24,20 @@ Validation and collection run in separate dependent jobs, each with the existing
 collection or publication starts. Both jobs check out the workflow's exact commit,
 not a newer `main` that the tests did not inspect. Starting February 1, 2027 UTC,
 the Monday 10:19 UTC sweep checks only the reviewed late archives. It includes
-the six existing state-level products, Minnesota's paired statistical TXT and
-statewide reporting table, Bath, Buxton and every town in the shared
+the UF Election Lab statewide VAP/VEP series for all 50 states and D.C. plus
+the separate U.S. aggregate, the six existing state-level products, Minnesota's
+paired statistical TXT and statewide reporting table, Bath, Buxton and every town in the shared
 VotingWorks registry. Hourly and weekly collection and scoped export attribution
 use the same municipal registrations. Newly reviewed VotingWorks registrations
 do not require a workflow change. The sweep runs `refresh-selected --late-archives`;
 it does not recollect congressional races or any other unselected feed. Manual dispatch
 retains its explicit override.
+
+The weekly UF check follows the same advertised edition, schema and license
+guards as hourly intake. An inaccessible or incompatible UF edition leaves
+its last-good values and source edition intact and marks them retained; it
+does not block a compatible revision in another archive. An explicit
+UF-only `--sources` request still fails closed if acquisition fails.
 
 North Carolina's 2026 voter-history and registration statistics are paired
 only when both official indexes advertise the exact general-election archives.

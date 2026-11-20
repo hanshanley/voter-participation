@@ -955,19 +955,23 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 
 def late_archive_sources():
-    from scripts import results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history, results_pa_vote_history
+    from scripts import (
+        results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
+        results_pa_vote_history, results_uf_turnout,
+    )
     from scripts import results_turnout_history as history
 
     return (
         history.KS_FEED, history.NJ_FEED, results_nc_vote_history.FEED, results_pa_vote_history.FEEDS[history.CURRENT_YEAR],
         history.TX_FEED, history.VA_FEED, history.WA_FEED,
+        results_uf_turnout.IDENTITY,
         *results_minnesota_turnout.SOURCE_IDS,
         *results_indiana_turnout.FEEDS.values(),
         *sorted(history.municipal_feeds()),
     )
 
 
-def refresh_selected(registry_path, work, previous, source_ids, now=None):
+def refresh_selected(registry_path, work, previous, source_ids, now=None, *, late_archives=False):
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
     from scripts import results_indiana_turnout, results_minnesota_turnout, results_native, results_nc_vote_history
     from scripts import results_uf_turnout
@@ -1001,6 +1005,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     administrative.update({feed: capture for feed, (_, capture)
                            in results_turnout_history.municipal_feeds().items()})
     registry_path, work = Path(registry_path), Path(work)
+    if late_archives and set(source_ids) != set(late_archive_sources()):
+        raise ValueError("Weekly refresh requires the complete late archive scope")
     paired = set(results_minnesota_turnout.SOURCE_IDS)
     minnesota_ids = paired.intersection(source_ids)
     if minnesota_ids and minnesota_ids != paired:
@@ -1048,8 +1054,9 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None):
     if official_ids:
         entries.update(results_official_congress.collect_sources(
             collector, config["official_congress"], selected=official_ids))
+    independent_holds = administrative_ids | ({results_uf_turnout.IDENTITY} if late_archives else set())
     if set(entries) != set(source_ids) or any(
-            entries[key]["status"] != "reported" for key in entries.keys() - administrative_ids):
+            entries[key]["status"] != "reported" for key in entries.keys() - independent_holds):
         raise ValueError("Selected numerical refresh did not succeed; no replacement publication")
     inputs = copy.deepcopy(previous)
     inputs["granular"].update({key: value for key, value in entries.items()
@@ -1435,7 +1442,8 @@ def main():
     elif args.command == "refresh-selected":
         _, previous = publisher_state(args.repository, args.ref, args.github_repository, args.work_dir)
         source_ids = list(late_archive_sources()) if args.late_archives else args.sources.split(",")
-        result = refresh_selected(args.registry, args.work_dir, previous, source_ids)
+        result = refresh_selected(args.registry, args.work_dir, previous, source_ids,
+                                  late_archives=args.late_archives)
     elif args.command == "publish":
         result = publish(args.repository, args.ref, args.github_repository, args.work_dir)
     elif args.command == "resume-publication":

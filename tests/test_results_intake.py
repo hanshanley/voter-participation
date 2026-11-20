@@ -249,7 +249,7 @@ def test_selected_retry_preserves_new_denial_before_publication(tmp_path, monkey
 
 
 def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp_path, monkeypatch):
-    from scripts import results_native, results_uf_turnout as uf
+    from scripts import results_native, results_turnout_history as history, results_uf_turnout as uf
     registry = fixture(tmp_path)
     intake.write(registry.parent / "uf-turnout.json", uf.CONFIG)
     previous = {
@@ -277,13 +277,36 @@ def test_uf_only_dispatch_preserves_congress_counties_and_every_other_source(tmp
     assert result["feeds"]["unchanged-feed"] == original["feeds"]["unchanged-feed"]
     assert result["collection_scope"]["source_ids"] == [uf.IDENTITY]
 
+    prior = {"status": "reported", "data": {"rows": [500]}, "first_observed_at": "old"}
+    previous["feeds"][uf.IDENTITY] = prior
+    held = {**prior, "status": "retained_after_failure", "error": "source_unavailable"}
+    monkeypatch.setattr(uf, "collect", lambda *_: held)
+    with pytest.raises(ValueError, match="no replacement publication"):
+        intake.refresh_selected(registry, tmp_path / "strict", previous, [uf.IDENTITY], NOW)
+
+    weekly_sources = [uf.IDENTITY, history.WA_FEED]
+    monkeypatch.setattr(intake, "late_archive_sources", lambda: tuple(weekly_sources))
+    with pytest.raises(ValueError, match="complete late archive scope"):
+        intake.refresh_selected(registry, tmp_path / "partial", previous, [uf.IDENTITY], NOW, late_archives=True)
+    revised_wa = {"status": "reported", "data": {"total": 42}}
+    monkeypatch.setattr(history, "collect_washington", lambda _: revised_wa)
+    weekly = intake.refresh_selected(registry, tmp_path / "weekly", previous, weekly_sources, NOW,
+                                     late_archives=True)
+    assert weekly["feeds"][uf.IDENTITY] == held
+    assert weekly["granular"][history.WA_FEED] == revised_wa
+    assert uf.IDENTITY not in weekly["granular"]
+    for key in ("districts", "house", "congress", "directories", "source_stops"):
+        assert weekly[key] == previous[key]
+    assert intake.refresh_selected(registry, tmp_path / "weekly", weekly, weekly_sources, NOW,
+                                   late_archives=True) == weekly
+
 
 @pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
 def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
     from scripts import (
         philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout as mn, results_native,
         results_nc_vote_history,
-        results_pa_vote_history, results_pdf_county_parent,
+        results_pa_vote_history, results_pdf_county_parent, results_uf_turnout,
         results_turnout_history,
     )
 
@@ -345,7 +368,8 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
                 for key in mn.SOURCE_IDS}
 
     monkeypatch.setattr(mn, "collect_pair", collect_pair)
-    selected.extend(key for key in intake.late_archive_sources() if key not in selected)
+    selected.extend(key for key in intake.late_archive_sources()
+                    if key not in selected and key != results_uf_turnout.IDENTITY)
     monkeypatch.setattr(results_native, "collect_sources",
                         lambda *args, **kwargs: pytest.fail("Scoped refresh must not acquire unrelated sources"))
     monkeypatch.setattr(intake, "export_collection",
