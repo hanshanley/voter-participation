@@ -6,6 +6,49 @@ import pytest
 from scripts import automatic_health as health
 
 
+@pytest.mark.parametrize("http_status,reason,headers,exit_code", [
+    (403, "rate limit exceeded", {}, 75),
+    (429, "Too Many Requests", {"Retry-After": "120"}, 75),
+    (403, "Forbidden", {}, None),
+])
+def test_monitor_reports_rate_limit_without_retry_or_issue_edits(
+        tmp_path, monkeypatch, capsys, http_status, reason, headers, exit_code):
+    import json
+    import sys
+    from urllib.error import HTTPError
+
+    calls = []
+
+    def unavailable(request, *, timeout):
+        calls.append(request.full_url)
+        raise HTTPError(request.full_url, http_status, reason, headers, None)
+
+    class FixedClock(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return NOW.astimezone(tz)
+
+    summary = tmp_path / "summary"
+    monkeypatch.setattr(health, "urlopen", unavailable)
+    monkeypatch.setattr(health, "datetime", FixedClock)
+    monkeypatch.setattr(sys, "argv", ["automatic_health", "--update-issue"])
+    monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(summary))
+    if exit_code:
+        with pytest.raises(SystemExit) as exc:
+            health.main()
+        assert exc.value.code == exit_code
+        assert json.loads(capsys.readouterr().out) == {
+            "status": "monitoring_unavailable", "reason": "github_api_rate_limited",
+            "issue_action": "unchanged",
+        }
+        assert "monitoring_unavailable" in summary.read_text()
+    else:
+        with pytest.raises(HTTPError):
+            health.main()
+        assert not summary.exists()
+    assert len(calls) == 1
+
+
 NOW = datetime(2026, 11, 18, 19, tzinfo=timezone.utc)
 
 

@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
@@ -235,12 +236,25 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--update-issue", action="store_true")
     args = parser.parse_args()
-    report = check(datetime.now(timezone.utc), write_issue=args.update_issue)
+    rate_limited = False
+    try:
+        report = check(datetime.now(timezone.utc), write_issue=args.update_issue)
+    except HTTPError as exc:
+        headers = exc.headers or {}
+        if not (exc.code == 429 or (exc.code == 403 and (
+                headers.get("X-RateLimit-Remaining") == "0"
+                or headers.get("Retry-After") or "rate limit" in str(exc.reason).lower()))):
+            raise
+        rate_limited = True
+        report = {"status": "monitoring_unavailable", "reason": "github_api_rate_limited",
+                  "issue_action": "unchanged"}
     body = json.dumps(report, indent=2)
     print(body)
     if filename := os.environ.get("GITHUB_STEP_SUMMARY"):
         with Path(filename).open("a") as out:
             out.write("### Participation update health\n\n```json\n" + body + "\n```\n")
+    if rate_limited:
+        raise SystemExit(75)
 
 
 if __name__ == "__main__":
