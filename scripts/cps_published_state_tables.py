@@ -397,6 +397,9 @@ def build(bundle):
         members = {"sources.json", *expected}
         if OVERALL_MANIFEST in archive.namelist():
             members |= {OVERALL_MANIFEST, *OVERALL_TABLES}
+        from scripts import cps_archived_state_tables as archived
+        if archived.MANIFEST in archive.namelist():
+            members |= {archived.MANIFEST, *(archived.filename(*key) for key in archived.SOURCES)}
         if set(archive.namelist()) != members or len(archive.namelist()) != len(members):
             raise ValueError("Incomplete or duplicate CPS workbook bundle")
         sources = json.loads(archive.read("sources.json"))

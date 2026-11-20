@@ -5,6 +5,7 @@ import zipfile
 import pytest
 
 from scripts import cps_published_state_tables as cps
+from scripts import cps_archived_state_tables as archived
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,6 +43,44 @@ def test_published_cells_preserve_native_denominators_and_suppression():
     assert sd["cvap_registered_pct"] is sd["cvap_registered_moe_pp"] is None
     assert sd["source_markers"]["cvap_registered_pct"] == "invalid_published_rate"
     assert sd["reported_registered_thousands"] == 423
+
+
+def test_archived_tables_preserve_denominator_and_distinguish_uncertainty():
+    rows = archived.build(BUNDLE.read_bytes())
+    keyed = {(r["year"], r["source_table"], r["state_code"], r["group"]): r for r in rows}
+    assert len(keyed) == len(rows) == 1975
+    for year in (1996, 1998, 2000):
+        assert {r["state_code"] for r in rows if r["year"] == year} == set(archived.PLACES.values())
+    az = keyed[1996, "4c", "AZ", "Male"]
+    assert az["cvap_voted_pct"] == 49.9
+    assert az["cvap_voted_moe_pp"] is None and az["confidence_level_pct"] is None
+    assert az["cvap_registered_pct"] is None
+    assert az["source_markers"]["cvap_registered_pct"] == "source_control_disagreement"
+    assert (1996, "4c", "AZ", "Total") not in keyed
+    usa = keyed[1998, "4", "US", "Total"]
+    assert (usa["vap_voted_pct"], usa["vap_voted_se_pp"], usa["vap_voted_moe_pp"]) == (41.9, 0.2, None)
+    assert usa["cvap_voted_pct"] is None
+    citizen = keyed[2000, "4c", "US", "Total"]
+    assert (citizen["vap_voted_pct"], citizen["cvap_voted_pct"], citizen["cvap_voted_moe_pp"]) == (None, 59.5, 0.3)
+    assert keyed[2000, "4a", "US", "Total"]["vap_voted_pct"] == 54.7
+
+
+def test_archived_sources_reject_underfilled_bundle_and_changed_original():
+    with zipfile.ZipFile(BUNDLE) as source:
+        members = {n: source.read(n) for n in source.namelist()}
+    name = archived.filename(1998, "4")
+    for body, reason in ((None, "Incomplete"), (members[name] + b"changed", "source differs")):
+        out = io.BytesIO()
+        with zipfile.ZipFile(out, "w") as archive:
+            for label, raw in members.items():
+                if label != name or body is not None:
+                    archive.writestr(label, body if label == name else raw)
+        if body is None:
+            with pytest.raises(ValueError, match=reason):
+                cps.build(out.getvalue())
+        else:
+            with pytest.raises(ValueError, match=reason):
+                archived.build(out.getvalue())
 
 
 def test_2006_midterm_has_published_group_rates_but_no_state_age_table():

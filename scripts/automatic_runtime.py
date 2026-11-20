@@ -46,7 +46,7 @@ CODE_PATHS = (
     "results_ca_county_scan_transcriptions.json",
     "results_nc_vote_history.py",
     "results_pa_vote_history.py", "results_alaska_turnout.py",
-    "eac_county_turnout.py", "cps_published_state_tables.py", "philadelphia_divisions.py",
+    "eac_county_turnout.py", "cps_published_state_tables.py", "cps_archived_state_tables.py", "philadelphia_divisions.py",
     "results_native_congress.py", "results_native_dc.py", "results_native_state_family.py",
     "results_native_oregon.py", "results_native_north_carolina.py", "results_native_idaho.py", "results_native_virginia.py",
     "results_congress.py", "results_house.py",

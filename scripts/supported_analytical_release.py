@@ -600,6 +600,7 @@ def house_model_guard_matrix(decisions):
 
 
 def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None):
+    from scripts import cps_archived_state_tables as archived_cps
     from scripts import cps_published_state_tables as published_cps
     from scripts import results_indiana_turnout, results_nc_vote_history, results_turnout_history
 
@@ -665,6 +666,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     published_rows = published_cps.build(cps_workbooks) if cps_workbooks is not None else []
     if published_rows:
         raw_files[published_cps.CSV] = published_cps.csv_body(published_rows)
+    archived_rows = archived_cps.build(cps_workbooks) if cps_workbooks is not None else []
+    if archived_rows:
+        raw_files[archived_cps.CSV] = published_cps.csv_body(archived_rows)
     overall_rows = published_cps.build_overall(cps_workbooks) if cps_workbooks is not None else []
     if overall_rows:
         raw_files[published_cps.OVERALL_CSV] = published_cps.overall_csv(overall_rows)
@@ -703,6 +707,7 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
             "state_demographic_query_cells": len(cps),
             "state_demographic_years": sorted({row["year"] for row in cps}),
             **({"published_state_tables": published_cps.summary(published_rows)} if published_rows else {}),
+            **({"archived_state_tables": published_cps.summary(archived_rows)} if archived_rows else {}),
             **({"published_state_overall_history": published_cps.overall_summary(overall_rows)} if overall_rows else {}),
             "early_native_source_point_years_kept_as_separate_populations": [1996, 1998, 2002],
             "statewide_survey_rates_not_allocated_locally": True,
