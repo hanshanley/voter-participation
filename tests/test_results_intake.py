@@ -654,6 +654,7 @@ def test_nebraska_scan_agreement_retention_and_no_reprocessing(tmp_path, monkeyp
         return ne.scan_query(evidence if body == b"first edition" else disputed, election)
 
     monkeypatch.setattr(ne, "parse", parse)
+    monkeypatch.setattr(ne, "scan_policy", lambda date: "original-policy")
     prior = {}
 
     def refresh(body):
@@ -668,10 +669,15 @@ def test_nebraska_scan_agreement_retention_and_no_reprocessing(tmp_path, monkeyp
     assert first["status"] == "reported"
     assert refresh(b"first edition") == first
     held = refresh(b"changed edition")
+    assert refresh(b"changed edition") == held
     assert calls == [b"first edition", b"changed edition"]
     assert held["status"] == "retained_after_failure" and held["error"] == "scan_reconciliation_failed"
     assert held["data"] == first["data"] and held["source"] == first["source"]
     assert history.county_archive_rows(prior)[-1]["reported_total_voters"] == 186
+    monkeypatch.setattr(ne, "scan_policy", lambda date: "new-policy")
+    assert refresh(b"changed edition")["error"] == "scan_reconciliation_failed"
+    assert calls.count(b"changed edition") == 2
+    assert "rejected_scan" not in refresh(b"first edition")
 
 
 def test_nebraska_old_canvass_preserves_printed_total_and_malformed_component():

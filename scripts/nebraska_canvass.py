@@ -1,9 +1,10 @@
 """Reconcile Nebraska's printed county registration and voting tables."""
 
 import io
+from pathlib import Path
 import re
 
-from scripts.participation_intake.contract import count
+from scripts.participation_intake.contract import count, encoded, pin
 from scripts import results_pdf_archive_ocr as scan
 
 INDEX = "https://sos.nebraska.gov/previous-elections"
@@ -105,6 +106,18 @@ def scan_query(evidence, election):
 def replay_query(facts, election):
     return (scan_query(facts["scan_evidence"], election) if election in SCANS
             else query(facts["native_lines"], election))
+
+
+def scan_policy(election):
+    from importlib.metadata import version
+
+    return pin(encoded({
+        "profile": SCANS[election],
+        "code": [pin(Path(file).read_bytes()) for file in (
+            __file__, scan.__file__, Path(scan.__file__).with_name("results_pdf_ocr.py"))],
+        "versions": {package: version(package) for package in (
+            "pypdf", "PyMuPDF", "rapidocr-onnxruntime", "onnxruntime")},
+    }))["sha256"]
 
 
 def _data(pages, headers, title, *, registration, year):

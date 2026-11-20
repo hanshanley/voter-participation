@@ -212,9 +212,10 @@ table pages, each rendered twice. The parser admits only the printed
 registration and total-voting columns, with the exact county roster,
 per-county agreement between renders and independently printed state
 controls. It does not publish voting-method components from the scan.
-Subsequent checks reuse the accepted evidence for unchanged report bytes;
-a failed revision does not replace the last accepted edition. Routine
-offline replay checks the retained cells without running OCR.
+Subsequent checks reuse the accepted evidence for unchanged report bytes.
+A failed revision never replaces the last accepted edition; the collector
+reuses the rejection for identical bytes and the same parser and OCR
+versions. Routine offline replay checks the retained cells without OCR.
 
 Checkpoint recovery limits the expanded collector state to 300 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.

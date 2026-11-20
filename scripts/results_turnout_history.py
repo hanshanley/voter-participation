@@ -843,8 +843,11 @@ def collect_county_archive(collector, feed):
     current = feed == CA_CURRENT_FEED
     state, election = ("CA", CA_CURRENT_ELECTION) if current else COUNTY_ARCHIVES[feed]
     index_url, report_pattern = county_archive_routes(state, election)
+    old = collector.prior.get(feed) or {}
+    rejected_scan = old.get("rejected_scan")
 
     def parse(index):
+        nonlocal rejected_scan
         if current:
             url = archive_link(index, index_url, report_pattern,
                                label=r"November 3, 2026\s*[-–]\s*General Election \(PDF\)")
@@ -858,8 +861,9 @@ def collect_county_archive(collector, feed):
         if not 0 < len(body) <= county_archive_limit(state):
             raise ValueError("Historical county report exceeds reviewed size bound")
         report = {"url": url, **pin(body)}
-        previous = (collector.prior.get(feed) or {}).get("data")
+        previous = old.get("data")
         if previous and previous.get("report") == report:
+            rejected_scan = None
             return previous
         if state == "CA":
             query = (california_scan(report, election) if election in CA_SCAN_DATES
@@ -871,7 +875,17 @@ def collect_county_archive(collector, feed):
         elif state == "WY":
             query = wyoming_archive_report(body, election)
         elif state == "NE":
-            query = nebraska_canvass.parse(body, election)
+            scan_key = ({"report": report, "policy": nebraska_canvass.scan_policy(election)}
+                        if election in nebraska_canvass.SCANS else None)
+            if scan_key and rejected_scan and rejected_scan["key"] == scan_key:
+                raise IntakeError("scan_reconciliation_failed", rejected_scan["detail"])
+            try:
+                query = nebraska_canvass.parse(body, election)
+            except IntakeError as error:
+                if scan_key and error.code == "scan_reconciliation_failed":
+                    rejected_scan = {"key": scan_key, "detail": str(error)}
+                raise
+            rejected_scan = None
         else:
             query = new_jersey_report(body, election, allow_amended=True)
         data = {"election_date": election, "report": report, "complete_native_query": query,
@@ -880,8 +894,13 @@ def collect_county_archive(collector, feed):
             data["date"] = query["published_date"]
         return data
 
-    return collector.capture(feed, index_url, parse, equivalent=lambda old, new: old == new,
-                             shared_acquisition=True)
+    result = collector.capture(feed, index_url, parse, equivalent=lambda old, new: old == new,
+                               shared_acquisition=True)
+    if rejected_scan is None:
+        result.pop("rejected_scan", None)
+    else:
+        result["rejected_scan"] = rejected_scan
+    return result
 
 
 def county_archive_limit(state):
