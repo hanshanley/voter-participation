@@ -2707,7 +2707,7 @@ separate turnout percentage uses a UF electorate estimate; neither it nor the
 
 #### Minnesota historical precinct participation
 
-The archive collector reads five official Secretary of State precinct
+The archive collector reads seven official Secretary of State precinct
 workbooks with the same adapter. A workbook must contain the complete
 87-county roster, unique full VTD IDs, integer participation fields and
 the number of people voting (`TOTVOTING`) and same-day registrations (`EDR`)
@@ -2719,29 +2719,32 @@ download fails or the statewide controls no longer reconcile.
 
 | General election | Precincts | People voting |
 |---|---:|---:|
+| 2012 | 4,102 | 2,950,780 |
+| 2014 | 4,106 | 1,992,566 |
 | 2016 | 4,120 | 2,968,281 |
 | 2018 | 4,113 | 2,611,365 |
 | 2020 | 4,110 | 3,292,997 |
 | 2022 | 4,103 | 2,525,873 |
 | 2024 | 4,103 | 3,272,414 |
 
-The 440 state/county rows and 20,549 precinct rows are counts, not
+The 616 state/county rows and 28,757 precinct rows are counts, not
 registered-voter rates. `REG7AM` excludes later registrations; `EDR`
 includes re-registrations and is not an independently matched denominator.
 The complete archive preserves both counts separately and does not substitute
-votes in any contest. All five original workbook pins are included for optional
-offline original audit. To check the five editions at once:
+votes in any contest. The 2012 accepted absentee field is kept distinct from
+later combined absentee/mail values. All seven original workbook pins are
+included for optional offline original audit. To check the seven editions at once:
 
 ```bash
 python3.12 -m scripts.results_intake refresh-selected \
   --registry data/results-intake/registry.json --work-dir "$WORK" \
-  --sources MN-2016-general-precinct-turnout-workbook,MN-2018-general-precinct-turnout-workbook,MN-2020-general-precinct-turnout-workbook,MN-2022-general-precinct-turnout-workbook,MN-2024-general-precinct-turnout-workbook
+  --sources MN-2012-general-precinct-turnout-workbook,MN-2014-general-precinct-turnout-workbook,MN-2016-general-precinct-turnout-workbook,MN-2018-general-precinct-turnout-workbook,MN-2020-general-precinct-turnout-workbook,MN-2022-general-precinct-turnout-workbook,MN-2024-general-precinct-turnout-workbook
 ```
 
 The separate display builder joins each election's MnGeo layer by full VTD ID
 and exact `TOTVOTING`. It rejects blanks, duplicates and mixed years. Where
 display simplification generated invalid rings, the builder uses the same
-precinct's unsimplified authority response (30 exact replacements in five
+precinct's unsimplified authority response (49 exact replacements in seven
 requests); it does not repair boundaries or transfer counts between precincts.
 To rebuild the companion layers from pinned originals with Shapely 2.2:
 

@@ -36,14 +36,15 @@ def build(inputs, output, manifest):
             if query != mn.query(query["fields"], query["precincts"], query["county_roster"],
                                  query["printed_total"], election):
                 raise ValueError(f"Retained precinct query differs: {year}")
-        voters = {r["VTDID"]: r["TOTVOTING"] for r in query["precincts"]}
+        voters = {mn.precinct_key(r, election): r["TOTVOTING"] for r in query["precincts"]}
+        id_field = "vtd" if year == "2012" else "vtdid"
         features, invalid = {}, set()
         for offset in range(0, len(voters), 1000):
             batch = json.loads(checked(f"{year}-gis-geometry-{offset}.json"))
             if batch.get("type") != "FeatureCollection" or len(batch["features"]) != min(1000, len(voters) - offset):
                 raise ValueError(f"Unexpected MnGeo response extent: {year}, offset {offset}")
             for f in batch["features"]:
-                key = f["properties"]["vtdid"]
+                key = str(f["properties"][id_field])
                 if key not in voters or key in features or f["properties"]["totvoting"] != voters[key]:
                     raise ValueError(f"Wrong or duplicate MnGeo participation record: {year}, {key}")
                 features[key] = f["geometry"]
@@ -53,7 +54,7 @@ def build(inputs, output, manifest):
         if invalid:
             exact = json.loads(checked(f"{year}-gis-exact-retry.json"))
             for f in exact["features"]:
-                key = f["properties"]["vtdid"]
+                key = str(f["properties"][id_field])
                 if key not in invalid or key in retried or f["properties"]["totvoting"] != voters[key] or not valid(f):
                     raise ValueError(f"Wrong or invalid original polygon: {year}, {key}")
                 retried.add(key)

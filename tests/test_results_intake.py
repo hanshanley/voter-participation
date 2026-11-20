@@ -893,36 +893,43 @@ def test_virginia_locality_report_replays_and_keeps_curbside_out_of_the_sum(tmp_
     assert failure["status"] == "retained_after_failure" and failure["data"] == result["data"]
 
 
-def test_minnesota_workbook_revisions_and_offline_original(tmp_path, monkeypatch):
+@pytest.mark.parametrize("date", ["2012-11-06", "2014-11-04", "2024-11-05"])
+def test_minnesota_workbook_revisions_and_offline_original(tmp_path, monkeypatch, date):
     import io
     from openpyxl import Workbook
     from scripts import minnesota_precinct_history as mn, results_turnout_history as history
 
-    date = "2024-11-05"
+    year = date[:4]
     monkeypatch.setitem(mn.EDITIONS, date, (mn.EDITIONS[date][0], 87, 870, 87))
 
     def workbook(change=0, compensate=True):
         wb = Workbook()
         results = wb.active
-        results.title = "Precinct-Results"
-        results.append(mn.FIELDS)
+        results.title = "Precinct-Results" if year == "2024" else "Results"
+        aliases = {"REG7AM": "7AM", "AB_MB": "REGMILOVAB"} if year == "2012" else {}
+        results.append([aliases.get(k, k) for k in mn.FIELDS])
         definitions = wb.create_sheet("Fields")
         definitions.append(("TOTVOTING", "Number of voters casting ballots"))
-        definitions.append(("REG7AM", "Registered at 7AM"))
-        definitions.append(("EDR", "Voters registering when they vote"))
+        definitions.append((aliases.get("REG7AM", "REG7AM"), "Registered at 7AM"))
+        definitions.append(("EDR", "Voters registering when they vote" if year == "2024"
+                            else "Voters registering in the polling place on election day"))
         counties = wb.create_sheet("Counties")
         counties.append(("County Code", "County Name", "County FIPS"))
         for i in range(1, 88):
             name, fips = f"COUNTY {i}", 27000 + 2 * i - 1
             counties.append((i, name, fips))
             voting = 10 + (change if i == 1 else -change if i == 2 and compensate else 0)
-            results.append((f"{fips}0001", "Precinct", "0001", "Municipality",
+            precinct = f"{fips}0001"
+            results.append((int(precinct) if year == "2014" else precinct, "Precinct", "0001", "Municipality",
                             name, i, 9, 1, 7, 3, 0, voting))
+        if year == "2012":
+            results.append((None, "TOTALS", None, None, None, None, 783, 87, 609, 261, 0,
+                            870 + (change if not compensate else 0)))
         target = io.BytesIO()
         wb.save(target)
         return target.getvalue()
 
-    feed = "MN-2024-general-precinct-turnout-workbook"
+    feed = f"MN-{year}-general-precinct-turnout-workbook"
     original = workbook()
     collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
     monkeypatch.setattr(collector, "acquire", lambda url: (original, {"origin": "fixture"}))
@@ -935,6 +942,10 @@ def test_minnesota_workbook_revisions_and_offline_original(tmp_path, monkeypatch
     entries = {feed: revised}
     rows = history.county_archive_rows(entries, minnesota_precincts=True)
     assert len(rows) == 87 and [r["reported_total_voters"] for r in rows[:2]] == [12, 8]
+    assert rows[0]["precinct_id"] == "270010001"
+    if year == "2012":
+        assert rows[0]["reported_accepted_absentee_mail"] is None
+        assert rows[0]["reported_accepted_regular_military_overseas_absentee"] == 3
     county_rows = history.county_archive_rows(entries)
     assert len(county_rows) == 88 and county_rows[-1]["reported_total_voters"] == 870
     assert county_rows[-1]["registered_at_7am"] == 783

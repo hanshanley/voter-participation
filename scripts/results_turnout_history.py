@@ -1179,14 +1179,18 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 raise ValueError("Minnesota turnout differs from its retained source rows")
             if minnesota_precincts:
                 for unit in query["precincts"]:
+                    precinct = minnesota_precinct_history.precinct_key(unit, election)
+                    legacy_absentee = query.get("native_column_aliases", {}).get("AB_MB")
                     rows.append({
                         "state_code": state, "election_date": election, "county": unit["COUNTYNAME"],
-                        "county_geoid": unit["VTDID"][:5], "precinct_id": unit["VTDID"],
+                        "county_geoid": precinct[:5], "precinct_id": precinct,
                         "precinct_name": unit["PCTNAME"], "municipality": unit["MCDNAME"],
                         "reported_total_voters": unit["TOTVOTING"], "registered_at_7am": unit["REG7AM"],
                         "same_day_registrations": unit["EDR"],
                         "reported_roster_signatures": unit["SIGNATURES"],
-                        "reported_accepted_absentee_mail": unit["AB_MB"],
+                        "reported_accepted_absentee_mail": None if legacy_absentee else unit["AB_MB"],
+                        **({"reported_accepted_regular_military_overseas_absentee": unit["AB_MB"]}
+                           if legacy_absentee == "REGMILOVAB" else {}),
                         "reported_federal_only_absentee": unit["FEDONLYAB"],
                         "reported_presidential_only_absentee": unit.get("PRESONLYAB"),
                         "registration_basis": query["registration_basis"],
