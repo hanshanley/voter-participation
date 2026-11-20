@@ -529,6 +529,7 @@ def selected_local_observation_ids(snapshot, counts=None):
             continue
         if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED,
                          results_turnout_history.CA_CURRENT_FEED, results_turnout_history.NC_HISTORY_FEED,
+                         results_turnout_history.nebraska_county_reports.FEED,
                          results_turnout_history.WY_HISTORY_FEED, results_turnout_history.WY_CANVASS_FEED)
                 or identity in results_indiana_turnout.FEEDS.values()
                 or identity in results_turnout_history.COUNTY_ARCHIVES
@@ -666,6 +667,10 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
         snapshot.get("granular_sources", {}), current_nebraska=True)
     if current_ne:
         raw_files[results_turnout_history.nebraska_canvass.CSV] = csv_bytes(current_ne)
+    partial_ne = results_turnout_history.nebraska_county_reports
+    county_reports = partial_ne.rows(snapshot.get("granular_sources", {}))
+    if any(row.get("ballots") is not None for row in county_reports):
+        raw_files[partial_ne.CSV] = csv_bytes(county_reports)
     cps_workbooks = seed.get("cps_published_state_workbooks")
     published_rows = published_cps.build(cps_workbooks) if cps_workbooks is not None else []
     if published_rows:

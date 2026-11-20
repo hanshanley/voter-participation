@@ -228,6 +228,16 @@ sum of the 93 Blue Book county totals. The Blue Book's conflicting
 487,205 statewide entry remains in the retained query; both PDFs are
 pinned and checked during original-report replay.
 
+The `NE-2026-county-election-reports` feed is a separate, partial county
+product while the statewide canvass is unavailable. It discovers PDFs from
+the state county-results index and accepts only explicit countywide ballot
+totals for the November 3 general election. Mode splits are optional; when
+present they must sum to the printed total. The CSV includes all 93 county
+dispositions, preserves the index status and the native report clock, and
+never substitutes contest votes or sums mixed report editions into a
+statewide result. Hourly checks reuse unchanged index entries; the weekly
+and explicit scoped checks revalidate the linked editions.
+
 Checkpoint recovery limits the expanded collector state to 300 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.
 Recovery still checks the exact predecessor, inventory and checksums.

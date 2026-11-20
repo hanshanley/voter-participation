@@ -718,6 +718,50 @@ def test_scanned_native_control_requires_unique_exact_name_and_component_sum():
         assert scan.native_control(lines, "Red Willow", 3) == (None, None)
 
 
+def test_nebraska_current_county_reports_keep_independent_last_good_editions(tmp_path, monkeypatch):
+    from scripts import nebraska_county_reports as reports
+
+    def index(*names):
+        return ("2026 General Election<table>" + "".join(
+            f"<tr><td>{name}</td><td><a href='election_files/{name}/2026_General_official_results.pdf'>"
+            "Official Results</a></td><td>11/17/2026 10:00 AM</td></tr>" for name in names) + "</table>").encode()
+
+    def lines(name, total, day):
+        return ["Summary Results Report", f"NE {name} 261103 General Election_6110", "November 3, 2026",
+                "Official Results", f"{name} County, Nebraska", "Statistics TOTAL Election Day Early Voting Provisional",
+                f"Ballots Cast - Total {total} {day} 3 2", "Election Summary - 11/17/2026 11:00 AM 1 of 3"]
+
+    def extract(body, county, status):
+        total, day = map(int, body.split())
+        native = lines(county, total, day)
+        return {"native_lines": native, **reports.query(native, county, status)}
+
+    monkeypatch.setattr(reports, "extract", extract)
+    prior = {}
+
+    def refresh(adams, box, names=("Adams", "Box Butte")):
+        bodies = {reports.INDEX: index(*names), reports.report_url("Adams", "Official Results"): adams,
+                  reports.report_url("Box Butte", "Official Results"): box}
+        collector = intake.Collector(tmp_path, prior, EMPTY_STOPS, NOW)
+        monkeypatch.setattr(collector, "acquire", lambda url: (bodies[url], {"origin": "test"}))
+        prior[reports.FEED] = reports.collect(collector)
+        return prior[reports.FEED]
+
+    assert "Box%20Butte" in reports.discovery(index("Box Butte"))["Box Butte"]["url"]
+    first = refresh(b"10 5", b"10 5")
+    assert refresh(b"10 5", b"10 5") == first
+    refresh(b"9 4", b"11 5")
+    rows = {row["county"]: row for row in reports.rows(prior)}
+    assert len(rows) == 93
+    assert rows["Adams"]["ballots"] == 9
+    assert rows["Box Butte"]["ballots"] == 10 and rows["Box Butte"]["disposition"] == "ballot_modes_disagree"
+    assert rows["Blaine"]["disposition"] == "compatible_report_not_linked" and "ballots" not in rows["Blaine"]
+    refresh(b"11 6", b"10 5", names=("Adams",))
+    rows = {row["county"]: row for row in reports.rows(prior)}
+    assert rows["Adams"]["ballots"] == 11
+    assert rows["Box Butte"]["source_status"] == "retained_after_failure"
+
+
 def test_nebraska_paired_sources_preserve_blue_book_discrepancy_and_pin_both(tmp_path, monkeypatch):
     from scripts import nebraska_canvass as ne, results_turnout_history as history
 

@@ -784,6 +784,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_platte.py", "results_pdf_county_parent.py", "results_minnesota_turnout.py",
              "philadelphia_divisions.py",
              "results_turnout_history.py", "wyoming_participation_statistics.py", "nebraska_canvass.py",
+             "nebraska_county_reports.py",
              "results_indiana_turnout.py", "results_nc_vote_history.py",
              "results_ca_county_scan_transcriptions.json",
              "results_pa_vote_history.py", "results_alaska_turnout.py",
@@ -905,9 +906,10 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
         "Does not reacquire sources, extract excluded publisher HTML, fit models or certify results.\n").encode()
     if originals:
         package_members["REPRODUCE.txt"] += (
-            "\nOptional: independently re-extract the West Virginia and Wyoming county reports.\n"
+            "\nOptional: independently re-extract the retained county reports.\n"
             "Place the exact publisher PDFs in a local directory using the filenames and SHA-256\n"
-            "checksums in inputs/county-report-originals.json. Then, with pypdf==6.16.0:\n"
+            "checksums in inputs/county-report-originals.json. Use pypdf==6.16.0 and, for early scanned\n"
+            "Nebraska reports, PyMuPDF==1.26.5 and rapidocr-onnxruntime==1.4.4. Then run:\n"
             "python3 code/reproduce.py replay --package . --output reproduced-from-originals"
             " --county-report-dir /path/to/originals\n"
             "This check makes no requests and never substitutes a newer edition for a missing original.\n"
@@ -981,6 +983,7 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 
 def late_archive_sources():
+    from scripts import nebraska_county_reports
     from scripts import (
         results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_official_congress, results_pa_vote_history, results_uf_turnout,
@@ -996,12 +999,14 @@ def late_archive_sources():
         *results_minnesota_turnout.SOURCE_IDS,
         *results_indiana_turnout.FEEDS.values(),
         history.CA_CURRENT_FEED,
+        nebraska_county_reports.FEED,
         *history.COUNTY_ARCHIVES,
         *sorted(history.municipal_feeds()),
     )
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None, *, late_archives=False):
+    from scripts import nebraska_county_reports
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
     from scripts import results_indiana_turnout, results_minnesota_turnout, results_native, results_nc_vote_history
     from scripts import results_uf_turnout
@@ -1037,6 +1042,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
                            for year, feed in results_indiana_turnout.FEEDS.items()})
     administrative.update({feed: partial(results_turnout_history.collect_county_archive, feed=feed)
                            for feed in (*results_turnout_history.COUNTY_ARCHIVES, results_turnout_history.CA_CURRENT_FEED)})
+    administrative[nebraska_county_reports.FEED] = nebraska_county_reports.collect
     administrative.update({feed: capture for feed, (_, capture)
                            in results_turnout_history.municipal_feeds().items()})
     registry_path, work = Path(registry_path), Path(work)

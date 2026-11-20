@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 
 from scripts.participation_intake.contract import IntakeError, count, encoded, pin
 from scripts import wyoming_participation_statistics as wy_profile
-from scripts import nebraska_canvass
+from scripts import nebraska_canvass, nebraska_county_reports
 
 
 WA_FEED = "WA-general-election-turnout"
@@ -938,6 +938,11 @@ def county_archive_originals(entries):
                 raise ValueError(f"Invalid supporting county report pin: {feed}")
             extra = feed + "-blue-book"
             originals[extra] = {"filename": extra + ".pdf", **supporting}
+    for row in nebraska_county_reports.rows(entries):
+        if "source_url" in row:
+            identity = nebraska_county_reports.FEED + "-" + row["county"].replace(" ", "-")
+            originals[identity] = {"filename": identity + ".pdf", "url": row["source_url"],
+                                   "bytes": row["source_bytes"], "sha256": row["source_sha256"]}
     return originals
 
 
@@ -963,6 +968,12 @@ def verify_county_archive_originals(entries, directory):
                  if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION else parse(body, election))
         if query != entries[feed]["data"]["complete_native_query"]:
             raise ValueError(f"County report extraction differs from the accepted query: {feed}")
+    for county, item in (entries.get(nebraska_county_reports.FEED, {}).get("data") or {}).get("counties", {}).items():
+        if accepted := item["accepted"]:
+            identity = nebraska_county_reports.FEED + "-" + county.replace(" ", "-")
+            if nebraska_county_reports.extract(checked_original(identity), county,
+                    accepted["report"]["status"]) != accepted["facts"]:
+                raise ValueError(f"County report extraction differs from the accepted query: {identity}")
     return len(originals)
 
 

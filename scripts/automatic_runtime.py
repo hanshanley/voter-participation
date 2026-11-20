@@ -42,6 +42,7 @@ CODE_PATHS = (
     "results_aspx_congress.py", "results_json_congress.py",
     "results_clarity_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
     "results_minnesota_turnout.py", "results_turnout_history.py", "wyoming_participation_statistics.py", "nebraska_canvass.py",
+    "nebraska_county_reports.py",
     "results_pdf_archive_ocr.py", "results_pdf_ocr.py",
     "results_indiana_turnout.py",
     "results_ca_county_scan_transcriptions.json",

@@ -301,6 +301,7 @@ def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_pa
         "NE-2000-general-election-canvass",
         "NE-2002-general-election-canvass",
         "NE-2004-general-election-canvass",
+        "NE-2026-county-election-reports",
         "CA-2026-general-election-turnout-pdf",
         "ME-bath-municipal-turnout", "ME-buxton-town-turnout", "NH-bedford-municipal-turnout",
         "NH-hanover-municipal-turnout", "NH-hollis-municipal-turnout", town,

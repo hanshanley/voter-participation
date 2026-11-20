@@ -511,6 +511,9 @@ def collect(collector, baseline):
         jobs[feed] = results_indiana_turnout.collect(collector, year)
     for feed in (*results_turnout_history.COUNTY_ARCHIVES, results_turnout_history.CA_CURRENT_FEED):
         jobs[feed] = results_turnout_history.collect_county_archive(collector, feed)
+    from scripts import nebraska_county_reports
+
+    jobs[nebraska_county_reports.FEED] = nebraska_county_reports.collect(collector, check_unchanged=False)
     return jobs
 
 
