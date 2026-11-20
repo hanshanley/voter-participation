@@ -43,6 +43,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = "participation.automatic_results_registry.v1"
 STATE_CONTRACT = "participation.automatic_results_compressed_state.v1"
 MAX_STATE_BYTES = 300_000_000
+MAX_RECOVERY_NON_STATE_BYTES = 100_000_000
 CHALLENGES = [r"verify (?:that )?you are human", r"cf-chl-",
               r"incapsula incident id", r"captcha challenge"]
 
@@ -740,6 +741,8 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
 
 
 def export_collection(work, config, baseline, inputs, extras, now, source_attempts):
+    from scripts.results_turnout_history import county_archive_originals
+
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
     write(work / "source-stops.json", inputs["source_stops"])
@@ -751,6 +754,9 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
                        "inputs/registry.json": encoded(config),
                        **{"inputs/accepted-counts/" + key: body for key, body in baseline.items()},
                        **{"queries/" + key: body for key, body in outputs.items()}}
+    originals = county_archive_originals(stored_inputs.get("granular", {}))
+    if originals:
+        package_members["inputs/county-report-originals.json"] = encoded(originals)
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
              "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
              "results_aspx_congress.py", "results_native_congress.py", "results_json_congress.py",
@@ -896,6 +902,15 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
         "python3 code/reproduce.py replay --package . --output reproduced\n"
         "Replays all complete numerical queries from selected facts and the full accepted baseline.\n"
         "Does not reacquire sources, extract excluded publisher HTML, fit models or certify results.\n").encode()
+    if originals:
+        package_members["REPRODUCE.txt"] += (
+            "\nOptional: independently re-extract the West Virginia and Wyoming county reports.\n"
+            "Place the exact publisher PDFs in a local directory using the filenames and SHA-256\n"
+            "checksums in inputs/county-report-originals.json. Then, with pypdf==6.16.0:\n"
+            "python3 code/reproduce.py replay --package . --output reproduced-from-originals"
+            " --county-report-dir /path/to/originals\n"
+            "This check makes no requests and never substitutes a newer edition for a missing original.\n"
+        ).encode()
     package_members["checksums.json"] = encoded({key: pin(body) for key, body in package_members.items()})
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED, compresslevel=3) as archive:
@@ -1101,7 +1116,9 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
     return export_collection(work, config, baseline, inputs, extras, now, collector.attempts)
 
 
-def replay(package, output):
+def replay(package, output, *, county_report_dir=None):
+    from scripts.results_turnout_history import county_archive_originals, verify_county_archive_originals
+
     package, output = Path(package), Path(output)
     if output.exists():
         raise ValueError("Reproduction needs a fresh output directory")
@@ -1111,8 +1128,14 @@ def replay(package, output):
             raise ValueError("Changed complete packet member: " + name)
     config = read(package / "inputs/registry.json")
     baseline = baseline_inputs(package / "inputs/accepted-counts", config["baseline"])
-    outputs = project(hydrate_collector_state(
-        read(package / "inputs/selected-source-facts.json")), baseline)
+    state = hydrate_collector_state(read(package / "inputs/selected-source-facts.json"))
+    entries = state.get("granular", {})
+    original_manifest = "inputs/county-report-originals.json"
+    if original_manifest in manifest and read(package / original_manifest) != county_archive_originals(entries):
+        raise ValueError("County report original inventory differs from the accepted checkpoint")
+    original_count = (verify_county_archive_originals(entries, Path(county_report_dir))
+                      if county_report_dir is not None else None)
+    outputs = project(state, baseline)
     for name in config.get("accepted_queries", {}):
         body = (package / "queries" / str(relative(name))).read_bytes()
         expected = config["accepted_queries"][name]
@@ -1127,7 +1150,10 @@ def replay(package, output):
     output.mkdir()
     for name, body in outputs.items():
         (output / name).write_bytes(body)
-    return {"passed": True, "complete_outputs": len(outputs), "network_requests": 0}
+    result = {"passed": True, "complete_outputs": len(outputs), "network_requests": 0}
+    if original_count is not None:
+        result["county_report_originals_verified"] = original_count
+    return result
 
 
 def pack_state(state):
@@ -1179,10 +1205,13 @@ def restore(package, report_path, work, previous=None, latest=None, *, require_l
         raise ValueError("A newer collection is already published; refusing recovery rollback")
     with tempfile.TemporaryDirectory(prefix="election-results-recovery-") as directory:
         root = Path(directory)
+        state_member = "inputs/selected-source-facts.json"
         with zipfile.ZipFile(package) as archive:
             names = archive.namelist()
-            if (len(names) != len(set(names))
-                    or sum(item.file_size for item in archive.infolist()) > MAX_STATE_BYTES):
+            if (len(names) != len(set(names)) or state_member not in names
+                    or not 0 < archive.getinfo(state_member).file_size <= MAX_STATE_BYTES
+                    or sum(item.file_size for item in archive.infolist()
+                           if item.filename != state_member) > MAX_RECOVERY_NON_STATE_BYTES):
                 raise ValueError("Invalid complete recovery packet inventory or size")
             manifest = json.loads(archive.read("checksums.json"))
             if set(names) != set(manifest) | {"checksums.json"}:
@@ -1194,7 +1223,7 @@ def restore(package, report_path, work, previous=None, latest=None, *, require_l
                     raise ValueError("Changed recovery packet member: " + name)
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(body)
-        state = read(root / "inputs/selected-source-facts.json")
+        state = read(root / state_member)
         if require_late_archive_scope:
             scope = state.get("collection_scope")
             if scope != report.get("collection_scope"):
@@ -1214,7 +1243,7 @@ def restore(package, report_path, work, previous=None, latest=None, *, require_l
                 raise ValueError("Changed completed collection query")
         config = read(root / "inputs/registry.json")
         version = digest(encoded({
-            "inputs": state, "baseline": config["baseline"],
+            "inputs": hydrate_collector_state(state), "baseline": config["baseline"],
             "outputs": {name: report["files"][name] for name in query_names},
             "code": {name: value for name, value in manifest.items()
                      if name.startswith("code/") and name != "code/reproduce.py"}}))
@@ -1227,7 +1256,7 @@ def restore(package, report_path, work, previous=None, latest=None, *, require_l
         for name in query_names:
             shutil.copyfile(root / "queries" / name, work / name)
         shutil.copyfile(package, work / "complete-results.zip")
-        shutil.copyfile(root / "inputs/selected-source-facts.json", work / "state.json")
+        shutil.copyfile(root / state_member, work / "state.json")
         (work / "report.json").write_bytes(report_body)
         write(work / "source-stops.json", stopped)
     return {**result, "version": version, "original_report": pin(report_body),
@@ -1438,6 +1467,8 @@ def main():
     reproduce = commands.add_parser("replay")
     reproduce.add_argument("--package", type=Path, required=True)
     reproduce.add_argument("--output", type=Path, required=True)
+    reproduce.add_argument("--county-report-dir", type=Path,
+                           help="Also verify and re-extract the exact local Wyoming and West Virginia PDFs")
     recover = commands.add_parser("restore")
     recover.add_argument("--package", type=Path, required=True)
     recover.add_argument("--report", type=Path, required=True)
@@ -1479,7 +1510,7 @@ def main():
             result = restore(args.package, args.report, args.work_dir, previous, latest,
                              require_late_archive_scope=args.require_late_archive_scope)
     else:
-        result = replay(args.package, args.output)
+        result = replay(args.package, args.output, county_report_dir=args.county_report_dir)
     print(json.dumps(result, sort_keys=True))
 
 

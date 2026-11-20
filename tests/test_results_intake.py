@@ -511,7 +511,7 @@ def test_west_virginia_archive_keeps_literal_basis_and_requires_reconciled_count
     ("2024-11-05", ["Statewide Total Ballots Cast",
                     "Wyoming General Election - November 5, 2024", "Total Ballots Cast"], ["Page 1 of 1"]),
 ])
-def test_wyoming_county_archive_exports_ballots_without_registration(date, heading, trailing):
+def test_wyoming_county_archive_exports_ballots_without_registration(date, heading, trailing, tmp_path, monkeypatch):
     from scripts import results_turnout_history as history
 
     year = date[:4]
@@ -520,8 +520,9 @@ def test_wyoming_county_archive_exports_ballots_without_registration(date, headi
     lines = [*heading, *county_lines, "Total 46", *trailing]
     query = history.wyoming_archive_query(lines, date)
     index, _ = history.county_archive_routes("WY", date)
+    original = b"%PDF-1.7 fixture"
     report = {"url": history.WY_ARCHIVE_BASE + year + "/" + history.WY_ARCHIVES[date],
-              "bytes": 1, "sha256": "a" * 64}
+              **pin(original)}
     entry = {"status": "reported", "source": {"url": index}, "data": {
         "election_date": date, "report": report, "complete_native_query": query,
         "participation_observation_qualified": False}}
@@ -534,6 +535,23 @@ def test_wyoming_county_archive_exports_ballots_without_registration(date, headi
                and row["rate_hold_reason"] == "registration_not_in_report" for row in rows)
     with pytest.raises(ValueError, match="printed statewide total"):
         history.wyoming_archive_query([*heading, *county_lines, "Total 47", *trailing], date)
+
+    entries = {feed: entry}
+    receipt = history.county_archive_originals(entries)[feed]
+    assert receipt == {"filename": feed + ".pdf", **report}
+    file = tmp_path / receipt["filename"]
+    with pytest.raises(FileNotFoundError):
+        history.verify_county_archive_originals(entries, tmp_path)
+    file.write_bytes(original.replace(b"1.7", b"1.6"))
+    with pytest.raises(ValueError, match="Changed original"):
+        history.verify_county_archive_originals(entries, tmp_path)
+    file.write_bytes(original)
+    monkeypatch.setattr(history, "wyoming_archive_report",
+                        lambda body, election: query if (body, election) == (original, date) else None)
+    assert history.verify_county_archive_originals(entries, tmp_path) == 1
+    entry["data"]["complete_native_query"] = {**query, "counties": []}
+    with pytest.raises(ValueError, match="extraction differs"):
+        history.verify_county_archive_originals(entries, tmp_path)
 
 
 def test_county_archive_outage_attempts_shared_index_once_per_collection(tmp_path, monkeypatch):
@@ -1314,10 +1332,18 @@ def test_complete_state_storage_preserves_legacy_unknown_zero_and_full_native_fa
 
 
 def test_completed_collection_restores_without_transport_and_rejects_lost_stops(tmp_path, monkeypatch):
+    from scripts import results_granular
+
     registry = fixture(tmp_path)
     monkeypatch.setattr(intake.Collector, "acquire", unavailable)
+    feed = "WY-test-county-product"
+    monkeypatch.setattr(results_granular, "collect", lambda *_: {
+        feed: {"status": "reported", "source": {"url": "https://example.test/aggregate"},
+               "data": {"participation_observation_qualified": False, "complete_native_query": [7]}}})
     original = tmp_path / "original"
     report = intake.collect(registry, original, now=NOW)
+    compact = intake.read(original / "state.json")
+    assert compact["feeds"][feed]["data"]["contract"] == intake.GRANULAR_ALIAS_CONTRACT
     def forbidden(*args, **kwargs):
         raise AssertionError("Recovery must never acquire a source")
     monkeypatch.setattr(intake.Collector, "acquire", forbidden)
@@ -1330,8 +1356,22 @@ def test_completed_collection_restores_without_transport_and_rejects_lost_stops(
     with pytest.raises(ValueError, match="drop current durable"):
         intake.restore(packet, report_path, tmp_path / "rejected", lost_stop)
     assert not (tmp_path / "rejected").exists()
+    with zipfile.ZipFile(packet) as archive:
+        state_bytes = archive.getinfo("inputs/selected-source-facts.json").file_size
+        overhead = sum(item.file_size for item in archive.infolist()) - state_bytes
+    with monkeypatch.context() as limits:
+        limits.setattr(intake, "MAX_STATE_BYTES", state_bytes - 1)
+        with pytest.raises(ValueError, match="inventory or size"):
+            intake.restore(packet, report_path, tmp_path / "state-too-large")
+    with monkeypatch.context() as limits:
+        limits.setattr(intake, "MAX_RECOVERY_NON_STATE_BYTES", overhead - 1)
+        with pytest.raises(ValueError, match="inventory or size"):
+            intake.restore(packet, report_path, tmp_path / "archive-too-large")
     destination = tmp_path / "restored"
-    result = intake.restore(packet, report_path, destination)
+    with monkeypatch.context() as limits:
+        limits.setattr(intake, "MAX_STATE_BYTES", state_bytes)
+        limits.setattr(intake, "MAX_RECOVERY_NON_STATE_BYTES", overhead)
+        result = intake.restore(packet, report_path, destination)
     assert result["network_requests"] == 0 and result["original_packet_and_queries_unchanged"]
     assert result["version"] == report["version"]
     for name in (*report["files"], "state.json", "report.json", "source-stops.json"):

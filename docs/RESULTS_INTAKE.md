@@ -165,6 +165,26 @@ ballots-cast column, all 23 counties, and an independently printed statewide
 total per report. No county registration denominator is printed, so the
 export contains ballot counts only and does not qualify registration rates.
 
+For independent verification from publisher PDFs, extract the nested
+`inputs/complete-source-results.zip` from the analysis download. Its
+`inputs/county-report-originals.json` lists the exact URLs, checksums and
+local filenames for accepted West Virginia and Wyoming reports. With
+`pypdf==6.16.0`, run the following from the extracted source package:
+
+```sh
+python3.12 code/reproduce.py replay --package . --output reproduced \
+  --county-report-dir /path/to/original-pdfs
+```
+
+The optional check requires every listed edition and re-extracts the complete
+query before numerical replay. It never uses the network or silently
+substitutes another edition. The default replay continues to work without
+the PDFs.
+
+Checkpoint recovery limits the expanded collector state to 300 MB and the
+rest of its source ZIP to 100 MB, including the complete queries and code.
+Recovery still checks the exact predecessor, inventory and checksums.
+
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

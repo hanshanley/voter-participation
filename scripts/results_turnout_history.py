@@ -738,6 +738,39 @@ def collect_county_archive(collector, feed):
                              shared_acquisition=True)
 
 
+def county_archive_originals(entries):
+    originals = {}
+    for feed, (state, election) in sorted(COUNTY_ARCHIVES.items()):
+        data = (entries.get(feed) or {}).get("data")
+        if state not in ("WV", "WY") or data is None:
+            continue
+        report = data["report"]
+        _, pattern = county_archive_routes(state, election)
+        if (data["election_date"] != election or not re.fullmatch(pattern, report["url"])
+                or type(report["bytes"]) is not int or not 0 < report["bytes"] <= 2_000_000
+                or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
+            raise ValueError(f"Invalid original county report pin: {feed}")
+        originals[feed] = {"filename": feed + ".pdf", **{key: report[key] for key in ("url", "bytes", "sha256")}}
+    return originals
+
+
+def verify_county_archive_originals(entries, directory):
+    originals = county_archive_originals(entries)
+    if not originals:
+        raise ValueError("This checkpoint contains no supported county report originals to verify")
+    for feed, report in originals.items():
+        path = directory / report["filename"]
+        with path.open("rb") as source:
+            body = source.read(report["bytes"] + 1)
+        if pin(body) != {key: report[key] for key in ("bytes", "sha256")}:
+            raise ValueError(f"Changed original county report: {feed}")
+        state, election = COUNTY_ARCHIVES[feed]
+        parse = west_virginia_archive_report if state == "WV" else wyoming_archive_report
+        if parse(body, election) != entries[feed]["data"]["complete_native_query"]:
+            raise ValueError(f"County report extraction differs from the accepted query: {feed}")
+    return len(originals)
+
+
 def county_archive_rows(entries, *, current_california=False):
     rows = []
     declarations = ({CA_CURRENT_FEED: ("CA", CA_CURRENT_ELECTION)} if current_california else COUNTY_ARCHIVES)
