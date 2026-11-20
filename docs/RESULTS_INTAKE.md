@@ -115,6 +115,16 @@ One impossible South Dakota registration percentage and any margins printed
 without a usable estimate are withheld and flagged; the unmodified originals
 are included. No replacement estimates are computed.
 
+The 2002 and 2004 original Tables 4a/4b publish sex, race/Hispanic-origin
+and age rates using total voting-age population. Their Table 4c publishes
+citizen voting-age rates only for statewide and U.S. overall groups. The export
+does not back-calculate citizen subgroup rates from rounded counts. Its 2002
+uncertainty columns use the 90-percent confidence level documented in Census
+report P20-552. It holds the 2002 D.C. and Pennsylvania age frames, anomalous
+2002 U.S. and Wisconsin non-Hispanic White cells, and the extra Arizona
+2004 row whose printed label conflicts with the exact duplicate White-alone
+values. All six original workbooks remain in the package.
+
 The same package includes the original A-3a/b and A-5a/b workbooks. A
 separate `release/participation-cps-state-overall-history.csv.gz` provides
 published overall state voting and registration rates, 1972–2024. The

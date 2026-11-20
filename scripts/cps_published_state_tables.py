@@ -25,13 +25,16 @@ OVERALL_TABLES = {
 OVERALL_MANIFEST = "overall-sources.json"
 PUBLICATIONS = {2016: 580, 2018: 583, 2020: 585, 2022: 586, 2024: 587}
 LEGACY_PUBLICATIONS = {
+    2002: "552/tab0{table}.xls",
+    2004: "556/tab0{table}.xls",
     2006: "557/tab0{table}.xls",
     2008: "562-rv/table-0{table}.xls",
     2010: "voting-registration-2010-election/table{table}_2010.xls",
     2012: "568/table0{table}.xls",
     2014: "577/table0{table}.xls",
 }
-YEARS = sorted((PUBLICATIONS.keys() | LEGACY_PUBLICATIONS.keys()) - {2006})
+VAP_YEARS = {2002, 2004}
+YEARS = sorted((PUBLICATIONS.keys() | LEGACY_PUBLICATIONS.keys()) - VAP_YEARS - {2006})
 EXPECTED = {(year, table) for year in YEARS for table in ("4b", "4c")}
 MIDTERM_2006 = {(2006, "4a"), (2006, "4b")}
 CONTROL = (2008, "4a")
@@ -54,6 +57,8 @@ COMMON_HEADER = ("total registered", "percent registered (total)", "moe",
                  "percent registered (citizen)", "moe", "total voted",
                  "percent voted (total)", "moe", "percent voted (citizen)", "moe")
 CONFIDENCE = "1 This figure added to or subtracted from the estimate provides the 90-percent confidence interval."
+VAP_RACE_2002 = ("Non-Hispanic White", "Non-Hispanic Black", "Asian and Pacific Islander",
+                 "Hispanic (any race)", "White", "Black")
 
 
 def filename(year, table):
@@ -175,7 +180,115 @@ def early_workbook(body, year, table):
     return output
 
 
+def legacy_vap_workbook(body, year, table):
+    citizen = table == "4c"
+    has_vap_count = not (citizen and year == 2004)
+    sheet, rows = workbook_rows(body, True, 11 if has_vap_count else 10)
+    description = {"4a": "by Sex, Race and Hispanic Origin",
+                   "4b": "by Age", "4c": "of the Citizen Voting-Age Population"}[table]
+    normalize = lambda label: " ".join((label or "").lower().split())
+    header_kind = "citizen" if citizen else "18+"
+    error = "confidence interval" if year == 2002 else "margin of error1"
+    measure_header = ("total", f"percent registered ({header_kind})", error,
+                      "total", f"percent voted ({header_kind})", error)
+    count_index = 2 if has_vap_count else 1
+    measures_index = count_index + 3
+    if (sheet != (f"Table {table}" if year == 2002 else "Sheet1")
+            or not all(v in rows[1][0] for v in (f"Table {table}. Reported Voting and Registration",
+                                                description, f"November {year}"))
+            or normalize(rows[2][0]) != "(in thousands)"
+            or (not citizen and "of the Total Voting-Age Population" not in rows[1][0])
+            or (has_vap_count and normalize(rows[4][1]) != "population 18 and over")
+            or normalize(rows[4][count_index]) != "total citizen"
+            or tuple(map(normalize, rows[5][measures_index:])) != measure_header
+            or (year == 2004 and not any(r[0] == CONFIDENCE.replace("1 This", "1This") for r in rows))):
+        raise ValueError(f"{year} CPS Table {table} header differs")
+    places = {name.upper(): code for code, name in STATES.items()} | {"UNITED STATES": "US"}
+    expected_groups = {"Total", *(() if citizen else AGES_2010 if table == "4b" else
+                        (*SEX, *(VAP_RACE_2002 if year == 2002 else (*RACE,
+                            "White non-Hispanic alone or in combination"))))}
+    seen, headings, output = set(), set(), []
+    checksum = pin(body)["sha256"]
+    state = None
+    for row_number, row in enumerate(rows[6:], 7):
+        label = (row[0] or "").strip()
+        has_values = any(v is not None and v != " " for v in row[1:])
+        if not has_values:
+            if label in places and not citizen:
+                state = places[label]
+                if state in headings:
+                    raise ValueError("Duplicate historical CPS geography")
+                headings.add(state)
+            elif label:
+                state = None
+            continue
+        if citizen:
+            state, native = places.get(label), "Total"
+        elif label.startswith("."):
+            native = row[0]
+        else:
+            raise ValueError(f"Unknown historical CPS row {year}/{table}/{row_number}")
+        name = label.lstrip(".").strip()
+        group = "Total" if citizen else LABEL_ALIASES.get(name, name)
+        if (year, table, state, row_number, group) == (2004, "4a", "AZ", 50, "Non-Hispanic White"):
+            if rows[row_number][0] != ".White alone" or row[1:] != rows[row_number][1:]:
+                raise ValueError("Unreviewed Arizona CPS label conflict")
+            continue
+        if state is None or group not in expected_groups or (state, group) in seen:
+            raise ValueError(f"Unknown or duplicate historical CPS identity {year}/{table}/{row_number}")
+        seen.add((state, group))
+        markers, values = {}, dict.fromkeys(FIELDS)
+        basis = "cvap" if citizen else "vap"
+        cells = {"citizen_voting_age_population_thousands": row[count_index]}
+        if has_vap_count:
+            cells["voting_age_population_thousands"] = row[1]
+        for i, measure in enumerate(("registered", "voted")):
+            index = measures_index + i * 3
+            cells.update(zip((f"reported_{measure}_thousands", f"{basis}_{measure}_pct",
+                              f"{basis}_{measure}_moe_pp"), row[index:index + 3], strict=True))
+        for field in values:
+            if field not in cells:
+                markers[field] = "not_in_table"
+                continue
+            cell = cells[field]
+            if isinstance(cell, str) and cell.strip() in ("(B)", "-"):
+                markers[field] = cell.strip()
+                continue
+            count = field.endswith("_thousands")
+            if (type(cell) not in (int, float) or not math.isfinite(cell) or cell < 0
+                    or (not count and cell > 100) or (count and not float(cell).is_integer())):
+                raise ValueError(f"Invalid historical CPS field {year}/{table}/{row_number}/{field}")
+            values[field] = int(cell) if count else cell
+        for measure in ("registered", "voted"):
+            if (values[f"{basis}_{measure}_pct"] is None) != (values[f"{basis}_{measure}_moe_pp"] is None):
+                raise ValueError("Historical CPS point and uncertainty availability differs")
+        # The source originals keep the anomalous values. Do not repair them from rounded cells.
+        if (year, table, state, group) == (2002, "4a", "US", "Non-Hispanic White"):
+            if row[1:3] != (105499, 147171):
+                raise ValueError("Unreviewed national estimate in the 2002 CPS workbook")
+            for key, value in values.items():
+                if value is not None:
+                    values[key], markers[key] = None, "invalid_published_rate"
+        if (year, table, state, group) == (2002, "4a", "WI", "Non-Hispanic White"):
+            if row[5:8] != (2650, 70.7, 1.9):
+                raise ValueError("Unreviewed Wisconsin estimate in the 2002 CPS workbook")
+            for key in ("reported_registered_thousands", "vap_registered_pct", "vap_registered_moe_pp"):
+                values[key], markers[key] = None, "invalid_published_rate"
+        output.append({"year": year, "election_type": "presidential" if year % 4 == 0 else "midterm",
+                       "state_code": state, "group": group, "native_group": native,
+                       "dimension": ("overall" if group == "Total" else "age" if table == "4b"
+                                     else "sex" if group in SEX else "race_or_hispanic_origin"),
+                       **values, "source_markers": markers, "confidence_level_pct": 90,
+                       "source_table": table, "source_sheet": sheet, "source_row": row_number,
+                       "source_url": source_url(year, table), "source_sha256": checksum})
+    if seen != {(code, group) for code in places.values() for group in expected_groups}:
+        raise ValueError("Incomplete historical CPS geographic or demographic roster")
+    return output
+
+
 def parse_workbook(body, year, table):
+    if year in VAP_YEARS:
+        return legacy_vap_workbook(body, year, table)
     if year == 2008 or (year, table) in MIDTERM_2006:
         return early_workbook(body, year, table)
     legacy = year in LEGACY_PUBLICATIONS
@@ -276,6 +389,10 @@ def build(bundle):
         inventory = EXPECTED | {CONTROL}
         if any(filename(year, table) in archive.namelist() for year, table in MIDTERM_2006):
             inventory |= MIDTERM_2006
+        for year in VAP_YEARS:
+            trio = {(year, table) for table in ("4a", "4b", "4c")}
+            if any(filename(y, table) in archive.namelist() for y, table in trio):
+                inventory |= trio
         expected = {filename(y, t) for y, t in inventory}
         members = {"sources.json", *expected}
         if OVERALL_MANIFEST in archive.namelist():
@@ -299,6 +416,21 @@ def build(bundle):
         return {r["state_code"]: tuple(r[field] for field in FIELDS)
                 for r in frames[year, table] if r["group"] == "Total"}
 
+    for year in VAP_YEARS:
+        if (year, "4a") not in frames:
+            continue
+        controls = {r["state_code"]: r for r in frames[year, "4a"] if r["group"] == "Total"}
+        count_fields = tuple(f for f in FIELDS if f.endswith("_thousands")
+                             and not (year == 2004 and f == "voting_age_population_thousands"))
+        for row in frames[year, "4c"]:
+            if any(row[key] != controls[row["state_code"]][key] for key in count_fields):
+                raise ValueError(f"Historical CPS citizen controls differ for {year}")
+        age_rows = frames[year, "4b"]
+        age_totals = totals(year, "4b")
+        held = {code for code, total in totals(year, "4a").items() if age_totals[code] != total
+                or not age_frame_compatible(controls[code], [r for r in age_rows
+                    if r["state_code"] == code and r["dimension"] == "age"])}
+        frames[year, "4b"] = [r for r in age_rows if r["state_code"] not in held]
     if MIDTERM_2006 <= frames.keys():
         if totals(2006, "4a") != totals(2006, "4b"):
             raise ValueError("CPS 4a and 4b totals differ for 2006")
@@ -417,6 +549,9 @@ def overall_csv(rows):
 
 def summary(rows):
     early = [r for r in rows if r["year"] == 2008]
+    legacy = {str(year): sorted({r["state_code"] for r in rows if r["year"] == year and r["source_table"] == "4a"}
+                                - {r["state_code"] for r in rows if r["year"] == year and r["source_table"] == "4b"})
+              for year in sorted(VAP_YEARS & {r["year"] for r in rows})}
     return {"years": sorted({r["year"] for r in rows}), "rows": len(rows),
             "states_and_dc": len({r["state_code"] for r in rows} - {"US"}),
             "cvap_voting_rates": sum(r["cvap_voted_pct"] is not None for r in rows),
@@ -426,6 +561,7 @@ def summary(rows):
             **({"held_2008_age_frames": sorted({r["state_code"] for r in early if r["source_table"] == "4b"}
                                              - {r["state_code"] for r in early if r["source_table"] == "4c"})}
                if early else {}),
+            **({"held_vap_age_frames": legacy} if legacy else {}),
             "separate_from_other_survey_series": True, "administratively_observed_turnout": False}
 
 

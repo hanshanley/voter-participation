@@ -15,7 +15,7 @@ if not BUNDLE.exists():
 
 def test_published_cells_preserve_native_denominators_and_suppression():
     rows = cps.build(BUNDLE.read_bytes())
-    assert len(rows) == 8492
+    assert len(rows) == 10300
     keyed = {(r["year"], r["source_table"], r["state_code"], r["group"]): r for r in rows}
     assert len(keyed) == len(rows)
     usa = keyed[2020, "4c", "US", "18 to 24"]
@@ -54,6 +54,26 @@ def test_2006_midterm_has_published_group_rates_but_no_state_age_table():
     benchmark = next(r for r in rows if r["state_code"] == "US" and r["group"] == "Total")
     assert (benchmark["vap_voted_pct"], benchmark["cvap_voted_pct"],
             benchmark["cvap_voted_moe_pp"]) == (43.6, 47.8, 0.3)
+
+
+def test_legacy_vap_groups_do_not_receive_reconstructed_citizen_rates():
+    rows = cps.build(BUNDLE.read_bytes())
+    keyed = {(r["year"], r["source_table"], r["state_code"], r["group"]): r for r in rows}
+    overall_vap = keyed[2004, "4a", "US", "Total"]
+    overall_cvap = keyed[2004, "4c", "US", "Total"]
+    assert (overall_vap["vap_voted_pct"], overall_vap["cvap_voted_pct"]) == (58.3, None)
+    assert (overall_cvap["vap_voted_pct"], overall_cvap["cvap_voted_pct"]) == (None, 63.8)
+    age = keyed[2002, "4b", "US", "18 to 24"]
+    assert age["vap_voted_pct"] == 17.2
+    assert age["cvap_voted_pct"] is None and age["source_markers"]["cvap_voted_pct"] == "not_in_table"
+    assert cps.summary(rows)["held_vap_age_frames"] == {"2002": ["DC", "PA"], "2004": []}
+    assert (2002, "4b", "PA", "65 to 74") not in keyed
+    assert (2004, "4a", "AZ", "Non-Hispanic White") not in keyed
+    assert keyed[2004, "4a", "AZ", "White alone"]["vap_voted_pct"] == 55.9
+    national = keyed[2002, "4a", "US", "Non-Hispanic White"]
+    assert national["vap_voted_pct"] is None and national["source_markers"]["vap_voted_pct"] == "invalid_published_rate"
+    wisconsin = keyed[2002, "4a", "WI", "Non-Hispanic White"]
+    assert (wisconsin["vap_registered_pct"], wisconsin["vap_voted_pct"]) == (None, 52.1)
 
 
 def test_changed_workbook_and_incomplete_bundle_are_rejected():
