@@ -25,6 +25,9 @@ WA_URL = ("https://www.sos.wa.gov/elections/data-research/election-data-and-maps
           "reports-data-and-statistics/general-election-turnout")
 WA_HEADER = ("Year", "Registered Voters", "Ballots Counted", "Turnout")
 WA_FIRST = 1980
+NC_HISTORY_FEED = "NC-general-election-turnout-history"
+NC_HISTORY_URL = "https://www.ncsbe.gov/results-data/voter-turnout"
+NC_HISTORY_HEADER = ("Election", "Eligible Voters", "Ballots Cast", "Turnout (%)")
 VA_FEED = "VA-general-election-turnout"
 VA_URL = "https://www.elections.virginia.gov/resultsreports/registrationturnout-statistics/"
 VA_HEADER = ("Year", "Total Registered", "Percentage Change from Previous Year", "Total Voting",
@@ -1318,13 +1321,71 @@ def table_rows(rows, first, last):
     return result
 
 
-def html_tables(body):
+def html_tables(body, *, with_captions=False):
     from scripts.results_granular import FactualHTMLTables
 
-    parser = FactualHTMLTables()
+    class CaptionedTables(FactualHTMLTables):
+        in_caption = False
+
+        def handle_starttag(self, tag, attributes):
+            super().handle_starttag(tag, attributes)
+            if self.depth == 1 and tag == "caption":
+                self.table["caption"] = ""
+                self.in_caption = True
+
+        def handle_endtag(self, tag):
+            if tag in ("caption", "table"):
+                self.in_caption = False
+            super().handle_endtag(tag)
+
+        def handle_data(self, text):
+            super().handle_data(text)
+            if self.in_caption and self.depth == 1 and not self.hidden:
+                self.table["caption"] += text
+
+    parser = CaptionedTables() if with_captions else FactualHTMLTables()
     parser.feed(body.decode("utf-8-sig"))
-    return [[tuple(" ".join(cell["value"].split()) for cell in row["cells"]) for row in table["rows"]]
-            for table in parser.tables]
+    result = []
+    for table in parser.tables:
+        rows = [tuple(" ".join(cell["value"].split()) for cell in row["cells"]) for row in table["rows"]]
+        result.append((" ".join(table.get("caption", "").split()), rows) if with_captions else rows)
+    return result
+
+
+def north_carolina_tables(tables):
+    facts, native = [], []
+    for number, label, first, last in ((1, "Presidential", 1972, 2024),
+                                       (2, "Non-Presidential", 1974, CURRENT_YEAR)):
+        caption = f"Table {number}: North Carolina {label} General Election Voter Turnout ({first}\u2013Present)"
+        matches = [rows for title, rows in tables if title == caption]
+        if len(matches) != 1 or not matches[0] or tuple(matches[0][0]) != NC_HISTORY_HEADER:
+            raise ValueError("Missing or ambiguous North Carolina general-election turnout table")
+        native.append([caption, [list(row) for row in matches[0]]])
+        rows = matches[0][1:]
+        years = [r[0] for r in rows if r]
+        inventories = [list(range(last, first - 1, -4))]
+        if last == CURRENT_YEAR:
+            inventories.append(inventories[0][1:])
+        if not any(years == [f"{year} General" for year in inventory] for inventory in inventories):
+            raise ValueError("Unexpected North Carolina general-election year inventory")
+        # Reuse the count/percentage guard without renaming the official denominator.
+        for row in rows:
+            year = int(row[0][:4])
+            (fact,) = table_rows([(str(year), *row[1:])], year, year)
+            facts.append({"year": year, "eligible_voters": fact["registered_voters"],
+                          "ballots_cast": fact["ballots_counted"], "published_turnout": fact["published_turnout"],
+                          "rate_qualified": fact["rate_qualified"]})
+    facts.sort(key=lambda row: -row["year"])
+    current = facts[0]["year"] == CURRENT_YEAR
+    if current and facts[0]["ballots_cast"] <= 0:
+        raise ValueError("Current North Carolina statewide historical count must be positive")
+    return {"complete_native_query": facts, "current_election_status": "row_published" if current else "not_yet_published",
+            "native_denominator": "Eligible Voters", "native_measure": "Ballots Cast",
+            "participation_observation_qualified": False, "native_tables": native}
+
+
+def parse_north_carolina_history(body):
+    return north_carolina_tables(html_tables(body, with_captions=True))
 
 
 def parse_washington(body):
@@ -1432,6 +1493,25 @@ def collect_washington(collector):
     return collect_history(collector, WA_FEED, WA_URL, parse_washington)
 
 
+def collect_north_carolina_history(collector):
+    def parse(body):
+        data = parse_north_carolina_history(body)
+        prior = (collector.prior.get(NC_HISTORY_FEED) or {}).get("data") or {}
+        if prior.get("current_election_status") == "row_published" and data["current_election_status"] != "row_published":
+            raise ValueError("Previously published North Carolina general-election row is missing")
+        return data
+
+    return collector.capture(NC_HISTORY_FEED, NC_HISTORY_URL, parse,
+                             equivalent=lambda old, new: old == new)
+
+
+def north_carolina_history_facts(entry):
+    data = entry["data"]
+    if entry["source"]["url"] != NC_HISTORY_URL or data != north_carolina_tables(data["native_tables"]):
+        raise ValueError("North Carolina statewide history differs from its retained source rows")
+    return {key: value for key, value in data.items() if key != "native_tables"}
+
+
 def collect_virginia(collector):
     return collect_history(collector, VA_FEED, VA_URL, parse_virginia)
 
@@ -1455,10 +1535,12 @@ def texas_history_entry(entry, retained_archive):
     return {"status": "retained_after_failure", "source": source, "data": data}
 
 
-def history_csv(entry, *, virginia=False, texas=False):
+def history_csv(entry, *, virginia=False, texas=False, north_carolina=False):
     out = io.StringIO(newline="")
     count_field = "total_voting" if virginia or texas else "ballots_counted"
     columns = ("year", "registered_voters", count_field, "published_turnout", "rate_qualified")
+    if north_carolina:
+        columns = ("year", "eligible_voters", "ballots_cast", "published_turnout", "rate_qualified")
     columns += (VA_FIELDS if virginia else TX_FIELDS if texas else ()) + ("publication_status", "source_url", "source_sha256")
     writer = csv.DictWriter(out, fieldnames=columns, lineterminator="\n")
     writer.writeheader()

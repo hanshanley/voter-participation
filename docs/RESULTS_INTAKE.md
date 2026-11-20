@@ -120,6 +120,15 @@ rates before 1996 use a different citizenship measurement regime and are
 flagged as not directly comparable. This series does not override the
 election-edition estimates, administrative counts, or demographic rates.
 
+The North Carolina State Board of Elections' two statewide general-election
+tables are checked in the regular and late-archive sweeps and the explicit
+`NC-general-election-turnout-history` scope. The historical CSV preserves
+`Ballots Cast` and the source's `Eligible Voters`, not Census CVAP or a
+generic registration estimate. The source query keeps both tables' original
+numeric literals. Primary rows are excluded, missing years are never zero,
+and mismatched printed rates are withheld without replacing the counts.
+This series does not overwrite the current canonical statewide observation.
+
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.
@@ -621,6 +630,11 @@ its literal party, native ID, zero or explicit unknown count, and aggregate
 Other role. Missing candidate inventories, changed identity, older native
 clocks and same-clock fact changes retain the last good race, not a false zero.
 Genuine increases and decreases require a newer native count clock.
+If a withdrawn ranked-choice pending record has a unique, newer, complete,
+source-verified final for the same provider contest, the export additionally
+links it with `superseded_by_race_id`. Both rounds stay in every complete
+query; `superseded_rcv_records` identifies the archived subset of the legacy
+`retained` count. This does not certify the result or qualify a swing.
 
 The additive `congress` snapshot follows the existing intake/runtime handoff.
 The existing explorer provides current race/candidate tables, complete statewide

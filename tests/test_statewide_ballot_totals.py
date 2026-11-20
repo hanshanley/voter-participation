@@ -27,6 +27,64 @@ def snapshot(value):
     return {"congress": {"official_candidate_evidence": {official.IDENTITY: value}}}
 
 
+def nc_history_page(*, current=False, ballots=3, primary=True):
+    history = totals.history
+    header = "<tr>" + "".join(f"<th>{cell}</th>" for cell in history.NC_HISTORY_HEADER) + "</tr>"
+    tables = []
+    for label, first, last in (("Presidential", 1972, 2024), ("Non-Presidential", 1974, 2026 if current else 2022)):
+        caption = f"Table {len(tables) + 1}: North Carolina {label} General Election Voter Turnout ({first}\u2013Present)"
+        rows = "".join(f"<tr><td>{year} General</td><td>10</td><td>{ballots}</td><td>30%</td></tr>"
+                       for year in range(last, first - 1, -4))
+        tables.append(f"<table><caption>{caption}</caption>{header}{rows}</table>")
+    return ("".join(tables) + (f"<table>{header}<tr><td>2026 Primary</td></tr></table>" if primary else "")).encode()
+
+
+def test_nc_history_retains_denominator_and_rejects_missing_or_misidentified_tables():
+    history = totals.history
+    data = history.parse_north_carolina_history(nc_history_page())
+    assert len(data["complete_native_query"]) == 27 and data["current_election_status"] == "not_yet_published"
+    assert data["complete_native_query"][0] == {
+        "year": 2024, "eligible_voters": 10, "ballots_cast": 3, "published_turnout": "30%", "rate_qualified": True}
+    changed = history.parse_north_carolina_history(nc_history_page(current=True, ballots=4))
+    assert changed["current_election_status"] == "row_published"
+    assert changed["complete_native_query"][0]["rate_qualified"] is False
+    for old, new in ((b"2020 General", b"2020 Primary"), (b"Eligible Voters", b"Registered Voters"),
+                     (b"2022 General", b"2018 General")):
+        with pytest.raises(ValueError):
+            history.parse_north_carolina_history(nc_history_page().replace(old, new))
+
+
+def test_nc_history_refresh_retains_last_good_during_outage_or_withdrawal(tmp_path, monkeypatch):
+    from scripts import results_intake as intake
+
+    history = totals.history
+    feed = history.NC_HISTORY_FEED
+    now = datetime(2026, 11, 20, tzinfo=timezone.utc)
+    body = nc_history_page(current=True)
+    stops = {"urls": [], "prefixes": [], "hosts": []}
+
+    def acquire(_, url):
+        assert url == history.NC_HISTORY_URL
+        if body is None:
+            raise OSError("Temporary outage")
+        return body, {"origin": "control"}
+
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    first = history.collect_north_carolina_history(intake.Collector(tmp_path, {}, stops, now))
+    body += b"<!-- Cosmetic page revision -->"
+    same = history.collect_north_carolina_history(intake.Collector(tmp_path, {feed: first}, stops, now))
+    assert same == first
+    for body in (None, nc_history_page()):
+        held = history.collect_north_carolina_history(intake.Collector(tmp_path, {feed: first}, stops, now))
+        assert held["status"] == "retained_after_failure" and held["data"] == first["data"]
+    for ballots in (4, 2):
+        body = nc_history_page(current=True, ballots=ballots)
+        revised = history.collect_north_carolina_history(intake.Collector(tmp_path, {feed: first}, stops, now))
+        assert revised["status"] == "reported" and revised["source"] != first["source"]
+        assert history.north_carolina_history_facts(revised)["complete_native_query"][0]["ballots_cast"] == ballots
+    assert feed in intake.late_archive_sources()
+
+
 def baseline(monkeypatch):
     shard = {"contract": "participation.count_snapshot.v1", "state_code": "WY",
              "year": 2026, "records": [], "views": {"official": {"counties": [], "precincts": []}}}

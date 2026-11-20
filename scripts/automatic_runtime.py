@@ -583,19 +583,22 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     history_exports = {}
     for code, feed, state_name in (("WA", turnout_history.WA_FEED, "washington"),
                                   ("VA", turnout_history.VA_FEED, "virginia"),
-                                  ("TX", turnout_history.TX_FEED, "texas")):
+                                  ("TX", turnout_history.TX_FEED, "texas"),
+                                  ("NC", turnout_history.NC_HISTORY_FEED, "north-carolina")):
         entry = snapshot.get("granular_sources", {}).get(feed, {})
         if code == "TX":
             entry = turnout_history.texas_history_entry(entry, seed.get("tx_retained_history"))
         if not entry.get("data"):
             continue
         prefix = f"participation/{state_name}-general-election-turnout-history"
+        facts = turnout_history.north_carolina_history_facts(entry) if code == "NC" else entry["data"]
         data = {"contract": "participation.statewide_general_election_history.v1",
-                "state_code": code, "status": entry["status"], "source": entry["source"], **entry["data"]}
+                "state_code": code, "status": entry["status"], "source": entry["source"], **facts}
         artifact = _artifact(data)
         path, csv_path = prefix + ".json.gz", prefix + ".csv"
         estimates["artifacts"][path] = artifact
-        csv_body = turnout_history.history_csv(entry, virginia=code == "VA", texas=code == "TX")
+        csv_body = turnout_history.history_csv(entry, virginia=code == "VA", texas=code == "TX",
+                                               north_carolina=code == "NC")
         history_exports[csv_path] = csv_body
         estimates["house_sources"].setdefault("general_election_turnout_history", {})[code] = {
             "data": {"path": path, **{key: value for key, value in artifact.items() if key != "content"}},

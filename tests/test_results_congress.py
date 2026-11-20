@@ -358,6 +358,39 @@ def test_same_provider_rcv_rounds_are_separate_and_literal_unknown_party_is_reta
                for c in congress.tables(result)[1])
 
 
+@pytest.mark.parametrize("final_state", ["accepted", "equal_clock", "different_provider", "unknown", "still_advertised"])
+def test_only_a_verified_later_same_contest_rcv_final_supersedes_a_withdrawn_pending_round(tmp_path, final_state):
+    bodies = sources()
+    before = bodies["house"][0]
+    before.update(rankedChoice=True, rcvResult="pending")
+    prior = collect(tmp_path, bodies)
+    final = copy.deepcopy(before)
+    final.update(rcvResult="final", updated=before["updated"] + (0 if final_state == "equal_clock" else 60000))
+    if final_state == "different_provider":
+        final["id"] = "303"
+    if final_state == "unknown":
+        final["candidates"][0]["votes"] = None
+    bodies["house"] = [before, final] if final_state == "still_advertised" else [final]
+    updated = collect(tmp_path, bodies, prior)
+    races, candidates, coverage = congress.tables(updated)
+    prior_id = next(key for key in prior["races"] if key.endswith("rcv-pending"))
+    pending = next(r for r in races if r["id"] == prior_id)
+    assert pending["D"] == congress.tables(prior)[0][0]["D"]
+    expected = final_state == "accepted"
+    assert ("superseded_by_race_id" in pending) is expected
+    assert congress.summary(updated)["house"]["superseded_rcv_records"] == int(expected)
+    if expected:
+        target = next(r for r in races if r["id"].endswith("rcv-final"))
+        assert target["status"] == "reported" and pending["status"] == "retained_after_failure"
+        assert all(r["superseded_by_race_id"] == target["id"]
+                   for r in (*candidates, *coverage) if r["id"] == prior_id)
+        assert collect(tmp_path, bodies, updated) == updated
+        bodies["house"] = ValueError("provider outage")
+        failed = collect(tmp_path, bodies, updated)
+        assert congress.summary(failed)["house"]["superseded_rcv_records"] == 0
+        assert congress.summary(failed)["house"]["refreshed"] == 0
+
+
 @pytest.mark.parametrize("change", ["rollback", "same_clock", "missing", "identity", "party",
                                    "boolean", "negative", "wrong_office", "test", "date"])
 def test_rejected_race_retains_last_good_without_blocking_others(tmp_path, change):

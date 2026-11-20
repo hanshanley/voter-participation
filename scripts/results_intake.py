@@ -973,7 +973,7 @@ def late_archive_sources():
 
     return (
         history.KS_FEED, history.NJ_FEED, results_nc_vote_history.FEED, results_pa_vote_history.FEEDS[history.CURRENT_YEAR],
-        history.TX_FEED, history.VA_FEED, history.WA_FEED,
+        history.TX_FEED, history.VA_FEED, history.WA_FEED, history.NC_HISTORY_FEED,
         results_uf_turnout.IDENTITY,
         *results_minnesota_turnout.SOURCE_IDS,
         *results_indiana_turnout.FEEDS.values(),
@@ -1000,6 +1000,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
         results_turnout_history.TX_FEED: results_turnout_history.collect_texas,
         results_turnout_history.VA_FEED: results_turnout_history.collect_virginia,
         results_turnout_history.WA_FEED: results_turnout_history.collect_washington,
+        results_turnout_history.NC_HISTORY_FEED: results_turnout_history.collect_north_carolina_history,
         results_nc_vote_history.FEED: results_nc_vote_history.collect,
         results_pdf_county_parent.PHILADELPHIA_FEED: results_pdf_county_parent.collect_philadelphia,
         results_pdf_county_parent.SUMMIT_FEED: results_pdf_county_parent.collect_summit,

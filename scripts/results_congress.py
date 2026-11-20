@@ -283,13 +283,43 @@ def totals(data):
             "D_minus_R_margin_pp": 100 * (d - r) / denominator if denominator else None}
 
 
+def rcv_supersessions(congress):
+    def frame(data):
+        return tuple(data[key] for key in ("provider_race_id", "chamber", "state_code", "seat",
+                                          "election_date", "election_kind", "stage"))
+
+    finals = {}
+    for identity, entry in congress["races"].items():
+        data = entry.get("data") or {}
+        if (entry["status"] == "reported" and entry["advertised"] and data.get("ranked_choice")
+                and data["native_rcv_result"] == "final"
+                and all(candidate["votes"] is not None for candidate in data["candidates"])):
+            finals.setdefault(frame(data), []).append((identity, data))
+    out = {}
+    for identity, entry in congress["races"].items():
+        data = entry.get("data") or {}
+        if (entry["status"] != "retained_after_failure" or entry["advertised"]
+                or entry.get("error") != "Race no longer advertised" or not data.get("ranked_choice")
+                or data["native_rcv_result"] != "pending"):
+            continue
+        replacements = finals.get(frame(data), [])
+        if len(replacements) == 1:
+            target, final = replacements[0]
+            if final["source_updated_epoch_ms"] > data["source_updated_epoch_ms"]:
+                out[identity] = target
+    return out
+
+
 def tables(congress):
     races, candidates, coverage = [], [], []
+    superseded = rcv_supersessions(congress)
     for identity, entry in sorted(congress["races"].items()):
         data = entry.get("data")
         base = {"id": identity, "chamber": data["chamber"] if data else entry.get("chamber"),
                 "status": entry["status"], "freshness": entry["freshness"],
                 "advertised": entry["advertised"], "hold_reason": entry.get("error")}
+        if identity in superseded:
+            base["superseded_by_race_id"] = superseded[identity]
         coverage.append({**base, "state_code": data["state_code"] if data else None,
                          "source_url": (entry.get("source") or entry.get("attempted_source") or {}).get("url"),
                          "source_updated_at": data["source_updated_at"] if data else None})
@@ -314,6 +344,8 @@ def summary(congress):
         "discovered": sum(row["chamber"] == chamber and row["advertised"] for row in coverage),
         "refreshed": sum(row["chamber"] == chamber and row["status"] == "reported" for row in races),
         "retained": sum(row["chamber"] == chamber and row["status"] != "reported" for row in races),
+        "superseded_rcv_records": sum(row["chamber"] == chamber and "superseded_by_race_id" in row
+                                      for row in races),
         "held": sum(row["chamber"] == chamber and row["status"] == "held" for row in coverage),
         "unknown_count_races": sum(row["chamber"] == chamber and not row["count_coverage_complete"] for row in races),
         "nonvoting_house_seats": sum(row["chamber"] == "house" and not row["voting_house_seat"]

@@ -346,6 +346,9 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
                         lambda collector, year: adapter(results_pa_vote_history.FEEDS[year])(collector))
     selected.append(results_nc_vote_history.FEED)
     monkeypatch.setattr(results_nc_vote_history, "collect", adapter(results_nc_vote_history.FEED))
+    selected.append(results_turnout_history.NC_HISTORY_FEED)
+    monkeypatch.setattr(results_turnout_history, "collect_north_carolina_history",
+                        adapter(results_turnout_history.NC_HISTORY_FEED))
     selected.extend(results_indiana_turnout.FEEDS.values())
     monkeypatch.setattr(results_indiana_turnout, "collect",
                         lambda collector, year: adapter(results_indiana_turnout.FEEDS[year])(collector))
