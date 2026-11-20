@@ -338,11 +338,11 @@ def test_weekly_official_correction_survives_an_independent_source_stop(tmp_path
 @pytest.mark.parametrize("ohio_status", ["reported", "source_stopped", "retained_after_failure"])
 def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, monkeypatch, ohio_status):
     from scripts import (
-        nebraska_county_reports, philadelphia_divisions, results_indiana_turnout,
+        national_turnout_release_watch, nebraska_county_reports, philadelphia_divisions, results_indiana_turnout,
         results_minnesota_turnout as mn, results_native,
         results_nc_vote_history, results_official_congress,
         results_pa_vote_history, results_pdf_county_parent, results_uf_turnout,
-        results_turnout_history,
+        results_turnout_history, washington_participation,
     )
 
     registry = fixture(tmp_path)
@@ -396,6 +396,9 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     monkeypatch.setattr(results_turnout_history, "collect_county_archive",
                         lambda collector, feed: adapter(feed)(collector))
     monkeypatch.setattr(nebraska_county_reports, "collect", adapter(nebraska_county_reports.FEED))
+    monkeypatch.setattr(national_turnout_release_watch, "collect",
+                        lambda collector, feed: adapter(feed)(collector))
+    monkeypatch.setattr(washington_participation, "collect", adapter(washington_participation.FEED))
     for feed, name in ((results_turnout_history.BUXTON_FEED, "buxton"),
                        (results_turnout_history.BATH_FEED, "bath")):
         monkeypatch.setattr(results_turnout_history, "collect_" + name, adapter(feed))
