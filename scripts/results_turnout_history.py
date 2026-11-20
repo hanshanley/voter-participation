@@ -1036,7 +1036,9 @@ def county_archive_originals(entries):
                 or type(report["bytes"]) is not int or not 0 < report["bytes"] <= county_archive_limit(state)
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError(f"Invalid original county report pin: {feed}")
-        originals[feed] = {"filename": feed + {"CO": ".csv", "MD": ".csv", "MN": ".xlsx", "VA": ".html"}.get(state, ".pdf"),
+        extension = (".xls" if state == "MN" and election == "2006-11-07"
+                     else {"CO": ".csv", "MD": ".csv", "MN": ".xlsx", "VA": ".html"}.get(state, ".pdf"))
+        originals[feed] = {"filename": feed + extension,
                            **{key: report[key] for key in ("url", "bytes", "sha256")}}
         if state == "MD":
             supporting = data["supporting_report"]
@@ -1220,7 +1222,11 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                         "reported_accepted_absentee_mail": None if legacy_absentee else unit["AB_MB"],
                         **({"reported_accepted_regular_military_overseas_absentee": unit["AB_MB"]}
                            if legacy_absentee == "REGMILOVAB" else {}),
-                        "reported_federal_only_absentee": unit["FEDONLYAB"],
+                        **({"reported_submitted_regular_military_overseas_absentee": unit["AB_MB"],
+                            "reported_submitted_federal_only_absentee": unit["FEDONLYAB"],
+                            "precinct_id_basis": "composite_county_and_source_precinct_not_a_geometry_join"}
+                           if legacy_absentee == "RegMilAB" else {}),
+                        "reported_federal_only_absentee": None if legacy_absentee == "RegMilAB" else unit["FEDONLYAB"],
                         "reported_presidential_only_absentee": unit.get("PRESONLYAB"),
                         "registration_basis": query["registration_basis"],
                         "rate_hold_reason": minnesota_precinct_history.RATE_HOLD,

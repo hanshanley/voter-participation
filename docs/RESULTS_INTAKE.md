@@ -2753,6 +2753,12 @@ python3.12 -m scripts.minnesota_precinct_geometry \
   "$ORIGINALS" geometry-original-pins.json "$TILES"
 ```
 
+The 2006 midterm is a separate, table-only edition. Its legacy XLS supplies
+4,123 precinct counts and 88 state/county rows, reconciling to 2,217,818
+people voting and 292,168 Election Day registrations. The composite county
+and precinct key does not establish a boundary match. The legacy absentee
+fields count submitted ballots and stay separate from accepted ballots.
+
 ### Maryland: precinct turnout activity by registration affiliation
 
 Five official statewide precinct CSVs reconcile in every voting mode and

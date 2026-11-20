@@ -28,6 +28,8 @@ def build(inputs, output, manifest):
     output.mkdir(parents=True, exist_ok=True)
     receipts = {}
     for election in mn.EDITIONS:
+        if election < "2012":
+            continue
         year = election[:4]
         if (inputs / f"{year}.xlsx").exists():
             query = mn.parse(checked(f"{year}.xlsx"), election)

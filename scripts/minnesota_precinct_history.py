@@ -11,6 +11,7 @@ CONTROL_URL = ("https://www.sos.mn.gov/election-administration-campaigns/"
                "data-maps/historical-voter-turnout-statistics/")
 # Media path, precinct inventory, statewide voters and same-day registrations.
 EDITIONS = {
+    "2006-11-07": ("sos.state.mn.us/media/1694", 4123, 2217818, 292168),
     "2012-11-06": ("www.sos.mn.gov/media/1450", 4102, 2950780, 527867),
     "2014-11-04": ("www.sos.mn.gov/media/1448", 4106, 1992566, 152101),
     "2016-11-08": ("www.sos.mn.gov/media/2806", 4120, 2968281, 353179),
@@ -27,12 +28,19 @@ MAX_BYTES = 4_000_000
 
 
 def route(election):
+    if election == "2006-11-07":
+        return "https://sos.state.mn.us/media/1694/2006_general_results.xls"
     if election == "2012-11-06":
         return "https://www.sos.mn.gov/media/1450/2012mngeneralelectionresults_official_postrecounts.xlsx"
     return f"https://{EDITIONS[election][0]}/{election[:4]}-general-federal-state-results-by-precinct-official.xlsx"
 
 
 def aliases(election):
+    if election == "2006-11-07":
+        return dict(zip(FIELDS + ("PRESONLYAB",), (
+            "", "Precinct\nName", "PRCT", "MCDName", "", "County_ID", "Registered\nat 7AM",
+            "EDR", "Signature", "RegMilAB", "FEDAB", "TotVoters", "PresAB",
+        )))
     return {"REG7AM": "7AM", "AB_MB": "REGMILOVAB"} if election.startswith("2012-") else {}
 
 
@@ -57,6 +65,8 @@ def query(fields, precincts, county_roster, printed_total, election):
         if set(row) != set(fields):
             raise IntakeError("mn_schema", "Unexpected Minnesota precinct fields")
         key = str(row["COUNTYCODE"])
+        if election == "2006-11-07" and re.fullmatch(r"[0-9]{2}", key):
+            key = str(int(key))
         p = row["PCTCODE"]
         vtd = precinct_key(row, election)
         if (key not in county_roster or not isinstance(row["COUNTYNAME"], str)
@@ -72,7 +82,7 @@ def query(fields, precincts, county_roster, printed_total, election):
             sums[field] += row[field]
         for i, field in enumerate(("TOTVOTING", "REG7AM", "EDR")):
             totals[key][i] += row[field]
-    has_printed_total = election[:4] in ("2012", "2016", "2018")
+    has_printed_total = election[:4] in ("2006", "2012", "2016", "2018")
     if (set(totals) != set(county_roster)
             or (sums["TOTVOTING"], sums["EDR"]) != (expected_voting, expected_edr)
             or printed_total != (sums if has_printed_total else None)):
@@ -93,11 +103,75 @@ def query(fields, precincts, county_roster, printed_total, election):
             "report_note": "Total people voting. No comparable all-voter registration denominator."}
 
 
+def parse_legacy(body, election):
+    import xlrd
+
+    def integer(value):
+        if type(value) not in (int, float) or not 0 <= value <= 2**53 - 1 or int(value) != value:
+            raise ValueError("Invalid 2006 numeric worksheet cell")
+        return int(value)
+
+    try:
+        if not body.startswith(bytes.fromhex("d0cf11e0a1b11ae1")):
+            raise ValueError("Expected the legacy XLS container")
+        book = xlrd.open_workbook(file_contents=body, on_demand=True)
+        try:
+            results, reference, definitions = (book.sheet_by_name(name) for name in ("Results", "Counties", "Fields"))
+            if not (results.nrows == EDITIONS[election][1] + 3 and results.ncols <= 100
+                    and reference.nrows == 88 and definitions.nrows <= 200):
+                raise ValueError("Unexpected legacy workbook dimensions")
+            legend = {definitions.cell_value(i, 0): definitions.cell_value(i, 1)
+                      for i in range(definitions.nrows)}
+            if (legend.get("TotVoters") != "Number of voters casting ballots"
+                    or "pre-registered" not in legend.get("Registered at 7AM", "")
+                    or "in the polling place on election day" not in legend.get("EDR", "")
+                    or not legend.get("RegMilAB", "").endswith("absentee ballots submitted")):
+                raise ValueError("Legacy participation definitions changed")
+            roster = {}
+            for i in range(1, reference.nrows):
+                code, blank, name, fips = reference.row_values(i)
+                key = str(integer(code))
+                if key in roster or blank or integer(fips) != 27000 + 2 * int(key) - 1:
+                    raise ValueError("Legacy county reference differs")
+                roster[key] = name
+            fields = list(FIELDS) + ["PRESONLYAB"]
+            names = aliases(election)
+            header = results.row_values(0)
+            if header != results.row_values(results.nrows - 2) or any(
+                    header.count(label) != 1 for label in names.values() if label):
+                raise ValueError("Legacy participation columns changed")
+            indices = {key: header.index(label) for key, label in names.items() if label}
+            records = []
+            for i in range(1, results.nrows - 2):
+                row = results.row_values(i)
+                record = {key: row[j] for key, j in indices.items()}
+                county = record["COUNTYCODE"]
+                if not re.fullmatch(r"[0-9]{2}", county):
+                    raise ValueError("Invalid literal legacy county code")
+                key = str(int(county))
+                record["COUNTYNAME"] = roster[key]
+                record["VTDID"] = f"27{2 * int(key) - 1:03}{record['PCTCODE']}"
+                for measure in fields[6:]:
+                    record[measure] = integer(record[measure])
+                records.append(record)
+            footer = results.row_values(results.nrows - 1)
+            if any(footer[j] for key, j in indices.items() if key in fields[:6]):
+                raise ValueError("Invalid legacy turnout summary row")
+            total = {field: integer(footer[indices[field]]) for field in fields[6:]}
+        finally:
+            book.release_resources()
+    except Exception as error:
+        raise IntakeError("mn_workbook_schema", str(error)) from error
+    return query(fields, records, roster, total, election)
+
+
 def parse(body, election):
     from openpyxl import load_workbook
 
     if not 0 < len(body) <= MAX_BYTES:
         raise IntakeError("mn_workbook_size", "Minnesota workbook exceeds size bound")
+    if election == "2006-11-07":
+        return parse_legacy(body, election)
     try:
         with ZipFile(BytesIO(body)) as archive:
             if len(archive.infolist()) > 100 or sum(x.file_size for x in archive.infolist()) > 40_000_000:
