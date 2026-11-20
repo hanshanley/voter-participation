@@ -49,6 +49,15 @@ KS_HEADER = [["COUNTY", "ADVANCE BALLOTS", None, "TOTAL BALLOTS CAST", None, "RE
              [None, "RETURNED BY MAIL", None, None, None, "VOTERS"]]
 NJ_FEED = "NJ-general-election-turnout-pdf"
 NJ_URL = "https://www.nj.gov/state/elections/election-information-ballots-cast.shtml"
+COUNTY_ARCHIVES = {
+    "KS-2022-general-election-turnout-workbook": ("KS", "2022-11-08"),
+    "NJ-2020-general-election-turnout-pdf": ("NJ", "2020-11-03"),
+    "NJ-2022-general-election-turnout-pdf": ("NJ", "2022-11-08"),
+    "NJ-2023-general-election-turnout-pdf": ("NJ", "2023-11-07"),
+    "NJ-2024-general-election-turnout-pdf": ("NJ", "2024-11-05"),
+    "NJ-2025-general-election-turnout-pdf": ("NJ", "2025-11-04"),
+}
+COUNTY_ARCHIVE_CSV = "participation-state-county-turnout-archives.csv"
 BUXTON_FEED = "ME-buxton-town-turnout"
 BUXTON_URL = "https://www.buxton.me.us/news/11-3-2026-election-results"
 BUXTON_TITLE = "Election Results for the Town of Buxton, Maine - November 3, 2026 State and Town Elections"
@@ -158,10 +167,13 @@ def archive_link(body, url, pattern):
     return links[0] if links else None
 
 
+def kansas_report_url(year):
+    return (rf"https://(?:www\.)?sos\.ks\.gov/elections/{year % 100:02d}elec/"
+            rf"{year}-General-Election-Turnout-Information\.xlsx")
+
+
 def kansas_link(body, year):
-    return archive_link(body, KS_URL,
-        rf"https://(?:www\.)?sos\.ks\.gov/elections/{year % 100:02d}elec/"
-        rf"{year}-General-Election-Turnout-Information\.xlsx")
+    return archive_link(body, KS_URL, kansas_report_url(year))
 
 
 def new_jersey_report_url(year):
@@ -254,7 +266,7 @@ def new_jersey_controls(query, election_date):
     return total["ballots_cast"], total["registered"]
 
 
-def new_jersey_report(body, election_date):
+def new_jersey_report(body, election_date, *, allow_amended=False):
     from pypdf import PdfReader
 
     if len(body) > 2_000_000 or not body.startswith(b"%PDF-"):
@@ -264,7 +276,21 @@ def new_jersey_report(body, election_date):
         raise ValueError("New Jersey turnout report page inventory changed")
     lines = [" ".join(line.split()) for line in
              pdf.pages[0].extract_text(extraction_mode="layout").splitlines() if line.strip()]
-    if len(lines) != 28 or lines[:2] + lines[3:5] != NJ_HEADER:
+    amendment = None
+    if allow_amended and lines and lines[0] == "-AMENDED-":
+        footer = re.fullmatch(
+            r"\*?(Based on additional information received by (.+?) County after the results were "
+            r"certified on ([A-Z][a-z]+ \d{1,2}, \d{4})) (NJDOE-\d{1,2}/\d{1,2}/\d{4})",
+            " ".join(lines[28:]),
+        )
+        if not footer or footer[2] not in NJ_COUNTIES:
+            raise ValueError("Unrecognized amended New Jersey election turnout report")
+        amendment = {"note": footer[1], "county": footer[2],
+                     "original_certification_date": datetime.strptime(footer[3], "%B %d, %Y").date().isoformat()}
+        lines = [*lines[1:28], footer[4]]
+    headers = lines[:2] + lines[3:5]
+    amended_headers = [NJ_HEADER[0] + " Total", NJ_HEADER[1].removeprefix("Total "), *NJ_HEADER[2:]]
+    if len(lines) != 28 or not (headers == NJ_HEADER or amendment and headers == amended_headers):
         raise ValueError("New Jersey turnout report headings or row inventory changed")
     election = datetime.strptime(lines[2], "General Election %B %d, %Y").date().isoformat()
     published = datetime.strptime(lines[-1], "NJDOE-%m/%d/%Y").date().isoformat()
@@ -280,6 +306,10 @@ def new_jersey_report(body, election_date):
                               "printed_percent", "election_districts"), (county, *values))))
     query = {"election_date": election, "published_date": published,
              "counties": rows[:-1], "total": rows[-1]}
+    if amendment:
+        if not election < amendment["original_certification_date"] < published:
+            raise ValueError("Amended New Jersey report dates are inconsistent")
+        query["amendment"] = amendment
     new_jersey_controls(query, election_date)
     return query
 
@@ -299,6 +329,92 @@ def collect_new_jersey(collector):
                 "participation_observation_qualified": False}
 
     return collector.capture(NJ_FEED, NJ_URL, parse, equivalent=lambda old, new: old == new)
+
+
+def county_archive_routes(state, year):
+    return (KS_URL, kansas_report_url(year)) if state == "KS" else (NJ_URL, new_jersey_report_url(year))
+
+
+def collect_county_archive(collector, feed):
+    state, election = COUNTY_ARCHIVES[feed]
+    year = int(election[:4])
+    index_url, report_pattern = county_archive_routes(state, year)
+
+    def parse(index):
+        url = archive_link(index, index_url, report_pattern)
+        if url is None:
+            raise IntakeError("report_not_linked", f"No {feed} report linked in the official archive")
+        body, _ = collector.acquire(url)
+        if not 0 < len(body) <= 2_000_000:
+            raise ValueError("Historical county report exceeds reviewed size bound")
+        report = {"url": url, **pin(body)}
+        previous = (collector.prior.get(feed) or {}).get("data")
+        if previous and previous.get("report") == report:
+            return previous
+        query = (kansas_workbook(body) if state == "KS"
+                 else new_jersey_report(body, election, allow_amended=True))
+        data = {"election_date": election, "report": report, "complete_native_query": query,
+                "participation_observation_qualified": False}
+        if state == "NJ":
+            data["date"] = query["published_date"]
+        return data
+
+    return collector.capture(feed, index_url, parse, equivalent=lambda old, new: old == new)
+
+
+def county_archive_rows(entries):
+    rows = []
+    for feed, (state, election) in sorted(COUNTY_ARCHIVES.items()):
+        entry = entries.get(feed, {})
+        data = entry.get("data")
+        if data is None:
+            continue
+        year = int(election[:4])
+        index, pattern = county_archive_routes(state, year)
+        report, query = data["report"], data["complete_native_query"]
+        source = entry.get("source") or {}
+        if (data["election_date"] != election or entry["status"] not in ("reported", "retained_after_failure")
+                or data["participation_observation_qualified"] is not False
+                or source.get("url") != index or not re.fullmatch(pattern, report["url"])
+                or type(report["bytes"]) is not int or not 0 < report["bytes"] <= 2_000_000
+                or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
+            raise ValueError("Invalid historical county report binding")
+        if state == "KS":
+            kansas_controls(query, allow_county_conflicts=True)
+            counties = [{"county": name, "advance_ballots_returned_by_mail": mail,
+                         "ballots_cast": ballots, "registered": registered}
+                        for name, mail, ballots, registered in [*query["counties"], ["TOTAL", *query["total"]]]]
+            county_conflict = any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
+        else:
+            new_jersey_controls(query, election)
+            if data.get("date") != query["published_date"]:
+                raise ValueError("New Jersey historical report edition differs")
+            counties = [*query["counties"], query["total"]]
+            county_conflict = False
+        for native in counties:
+            county, registered, ballots = native["county"], native["registered"], native["ballots_cast"]
+            statewide = county == "TOTAL"
+            hold = ("county_conflict_included_in_statewide_total" if statewide and county_conflict
+                    else "ballots_exceed_registered" if ballots > registered
+                    else "no_positive_registration_denominator" if not registered else None)
+            rows.append({
+                "state_code": state, "year": year, "election_date": election,
+                "election_type": "off_year_general" if year % 2 else "presidential" if year % 4 == 0 else "midterm",
+                "geography_level": "state" if statewide else "county",
+                "geography": ("Kansas" if state == "KS" else "New Jersey") if statewide else county,
+                "reported_ballots_cast": ballots, "reported_registered_voters": registered,
+                "qualified_same_report_registration_fraction_pct": None if hold else 100 * ballots / registered,
+                "rate_hold_reason": hold,
+                "advance_ballots_returned_by_mail": native.get("advance_ballots_returned_by_mail"),
+                "reported_ballots_rejected": native.get("ballots_rejected"),
+                "reported_turnout_pct": native.get("printed_percent"),
+                "reported_election_districts": native.get("election_districts"),
+                "source_id": feed, "source_status": entry["status"], "report_edition": data.get("date"),
+                "amended_county": query.get("amendment", {}).get("county"),
+                "original_certification_date": query.get("amendment", {}).get("original_certification_date"),
+                "source_url": report["url"], "source_sha256": report["sha256"], "source_bytes": report["bytes"],
+            })
+    return rows
 
 
 def buxton_controls(data):

@@ -506,6 +506,7 @@ def selected_local_observation_ids(snapshot, counts=None):
             continue
         if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED)
                 or identity in results_indiana_turnout.FEEDS.values()
+                or identity in results_turnout_history.COUNTY_ARCHIVES
                 or identity in results_pa_vote_history.FEEDS.values()):
             continue  # These products do not update a canonical cast-ballot count.
         if identity == results_minnesota_turnout.IDENTITY:
@@ -574,7 +575,7 @@ def house_model_guard_matrix(decisions):
 
 
 def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None):
-    from scripts import results_indiana_turnout, results_nc_vote_history
+    from scripts import results_indiana_turnout, results_nc_vote_history, results_turnout_history
 
     review = seed["supported_release_review"]
     require(review.get("contract") == REVIEW_CONTRACT, "unreviewed eligibility document")
@@ -627,6 +628,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     indiana_history = results_indiana_turnout.rows(snapshot.get("granular_sources", {}))
     if indiana_history:
         raw_files["participation-indiana-general-turnout-history.csv"] = csv_bytes(indiana_history)
+    county_archives = results_turnout_history.county_archive_rows(snapshot.get("granular_sources", {}))
+    if county_archives:
+        raw_files[results_turnout_history.COUNTY_ARCHIVE_CSV] = csv_bytes(county_archives)
     files = {"release/" + name + ".gz": compressed(body) for name, body in raw_files.items()}
     media_types = {path: "text/csv" for path in files}
     retained_offices = []

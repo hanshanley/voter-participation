@@ -61,6 +61,18 @@ totals and both mode columns must agree. The map uses the source label
 `Voters Voting`, not ballots cast. Historical rows and county-level archive
 figures remain separate from the current map.
 
+Kansas (2022) and New Jersey (2020 and 2022–2025) county turnout archives are
+checked by the same hourly collector and weekly sweep, using the exact
+general-election reports linked by their official indexes. The complete
+`release/participation-state-county-turnout-archives.csv.gz` query retains all
+printed county and state totals, available report editions and report hashes.
+Kansas's 2022 Stevens County and statewide registration fractions are withheld:
+the workbook prints 7,979 ballots against 3,246 registered for Stevens and
+includes that count in the state total. New Jersey's 2023 and 2025 elections are
+identified as off-year, and the 2020 and 2022 amendments retain their edition dates
+and affected counties. These are historical source snapshots, not 2026 observations,
+eligible-population rates, or comparisons that assume stable county boundaries.
+
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

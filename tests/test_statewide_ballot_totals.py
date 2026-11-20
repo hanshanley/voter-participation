@@ -466,6 +466,35 @@ def test_new_jersey_future_archive_publication_retains_last_good(tmp_path, monke
     assert totals.project(retained, {"granular_sources": failed}) == (retained, [])
 
 
+def test_amended_new_jersey_turnout_keeps_edition_and_requires_historical_opt_in(monkeypatch):
+    from types import SimpleNamespace
+
+    pypdf = pytest.importorskip("pypdf")
+    history = totals.history
+    header = history.NJ_HEADER
+    lines = [
+        "-AMENDED-", header[0] + " Total", header[1].removeprefix("Total "),
+        "General Election November 8, 2022", *header[2:],
+        *[f"{name} 2,000 1,000 2 50% 8" for name in history.NJ_COUNTIES],
+        "TOTAL 42,000 21,000 42 50% 168",
+        "Based on additional information received by Hudson County after the results were certified on December 6, 2022",
+        "NJDOE-1/18/2023",
+    ]
+    monkeypatch.setattr(pypdf, "PdfReader", lambda _: SimpleNamespace(
+        is_encrypted=False, pages=[SimpleNamespace(extract_text=lambda **_: "\n".join(lines))]))
+    with pytest.raises(ValueError, match="headings"):
+        history.new_jersey_report(b"%PDF- fake", "2022-11-08")
+    with pytest.raises(ValueError, match="election or county"):
+        history.new_jersey_report(b"%PDF- fake", "2024-11-05", allow_amended=True)
+    query = history.new_jersey_report(b"%PDF- fake", "2022-11-08", allow_amended=True)
+    assert query["published_date"] == "2023-01-18"
+    assert query["amendment"]["county"] == "Hudson"
+    assert query["amendment"]["original_certification_date"] == "2022-12-06"
+    lines[-1] = "NJDOE-11/30/2022"
+    with pytest.raises(ValueError, match="dates are inconsistent"):
+        history.new_jersey_report(b"%PDF- fake", "2022-11-08", allow_amended=True)
+
+
 @pytest.mark.parametrize("code", ["KS", "TX", "VA", "WA"])
 def test_archive_markup_changes_do_not_replace_accepted_facts(tmp_path, monkeypatch, code):
     from scripts.results_intake import Collector

@@ -285,6 +285,10 @@ def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_pa
         "NC-2026-general-vote-history", "UF-national-turnout",
         "IN-2022-general-turnout-and-registration", "IN-2024-general-turnout-and-registration",
         "IN-2026-general-turnout-and-registration",
+        "KS-2022-general-election-turnout-workbook",
+        "NJ-2020-general-election-turnout-pdf", "NJ-2022-general-election-turnout-pdf",
+        "NJ-2023-general-election-turnout-pdf",
+        "NJ-2024-general-election-turnout-pdf", "NJ-2025-general-election-turnout-pdf",
         "ME-bath-municipal-turnout", "ME-buxton-town-turnout", "NH-bedford-municipal-turnout",
         "NH-hanover-municipal-turnout", "NH-hollis-municipal-turnout", town,
     }

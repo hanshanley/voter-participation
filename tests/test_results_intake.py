@@ -349,6 +349,8 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     selected.extend(results_indiana_turnout.FEEDS.values())
     monkeypatch.setattr(results_indiana_turnout, "collect",
                         lambda collector, year: adapter(results_indiana_turnout.FEEDS[year])(collector))
+    monkeypatch.setattr(results_turnout_history, "collect_county_archive",
+                        lambda collector, feed: adapter(feed)(collector))
     for feed, name in ((results_turnout_history.BUXTON_FEED, "buxton"),
                        (results_turnout_history.BATH_FEED, "bath")):
         monkeypatch.setattr(results_turnout_history, "collect_" + name, adapter(feed))
@@ -389,6 +391,53 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     for key in ("districts", "house", "congress", "directories", "source_stops"):
         assert result[key] == previous[key]
     assert intake.refresh_selected(registry, tmp_path / "scoped", persisted, selected, NOW) == result
+
+
+def test_county_archive_revisions_keep_full_facts(tmp_path, monkeypatch):
+    from scripts import results_turnout_history as history
+
+    feed = "KS-2022-general-election-turnout-workbook"
+    url = "https://www.sos.ks.gov/elections/22elec/2022-General-Election-Turnout-Information.xlsx"
+    mock_source = {history.KS_URL: b"<a href='/elections/22elec/2022-General-Election-Turnout-Information.xlsx'>Turnout</a>",
+                   url: b"42"}
+    names = [f"county {i:03d}" for i in range(105)]
+    monkeypatch.setattr(history, "KS_COUNTIES", pin(encoded(names)))
+
+    def workbook(body):
+        ballots = int(body)
+        return {"counties": [[name, 0, ballots if i == 0 else 0, 100 if i == 1 else 40]
+                             for i, name in enumerate(names)],
+                "total": [0, ballots, 4260]}
+
+    monkeypatch.setattr(history, "kansas_workbook", workbook)
+    requested = []
+
+    def acquire(_, target):
+        requested.append(target)
+        return mock_source[target], {"origin": "fixture"}
+
+    monkeypatch.setattr(intake.Collector, "acquire", acquire)
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    first = history.collect_county_archive(collector, feed)
+    rows = history.county_archive_rows({feed: first})
+    assert len(rows) == 106
+    assert rows[0]["reported_ballots_cast"] == 42
+    assert rows[0]["rate_hold_reason"] == "ballots_exceed_registered"
+    assert rows[1]["qualified_same_report_registration_fraction_pct"] == 0
+    assert rows[-1]["rate_hold_reason"] == "county_conflict_included_in_statewide_total"
+    collector.prior = {feed: first}
+    mock_source[url] = b"37"
+    revised = history.collect_county_archive(collector, feed)
+    assert history.county_archive_rows({feed: revised})[-1]["qualified_same_report_registration_fraction_pct"] == 3700 / 4260
+    collector.prior = {feed: revised}
+    assert history.collect_county_archive(collector, feed) == revised
+    mock_source[history.KS_URL] = b"<a href='/elections/26elec/2026-General-Election-Turnout-Information.xlsx'>Turnout</a>"
+    requested.clear()
+    retained = history.collect_county_archive(collector, feed)
+    assert requested == [history.KS_URL]
+    assert retained["data"] == revised["data"]
+    assert retained["error"] == "report_not_linked"
+    assert history.county_archive_rows({feed: retained})[0]["source_status"] == "retained_after_failure"
 
 
 def test_indiana_archive_uses_only_declared_general_report_and_keeps_count_conflicts(monkeypatch):
