@@ -159,8 +159,8 @@ failed check records its source status, not a numerical observation. National
 returns and their clocks are retained in this scoped lane; the existing
 compatibility guards still govern each official candidate frame.
 
-The Wyoming bulk county archive follows the General Election results index
-for 2004, 2006, 2008, 2010 and 2012. It retains the explicitly printed
+The Wyoming bulk county archive follows the General Election results indexes
+for every federal general election from 2004 through 2024. It retains the explicitly printed
 ballots-cast column, all 23 counties, and an independently printed statewide
 total per report. No county registration denominator is printed, so the
 export contains ballot counts only and does not qualify registration rates.

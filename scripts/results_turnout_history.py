@@ -102,6 +102,12 @@ WY_ARCHIVES = {
     "2008-11-04": "08Results/General/SW-TotalBallotsCast.pdf",
     "2010-11-02": "Results/General/2010_Statewide_Total_Ballots_Cast_Summary.pdf",
     "2012-11-06": "Results/General/2012_Statewide_Total_Ballots_Cast_Summary.pdf",
+    "2014-11-04": "Results/General/2014_Statewide_Total_Ballots_Cast_Summary.pdf",
+    "2016-11-08": "Results/General/2016_General_Statewide_Total_Ballots_Cast_Summary.pdf",
+    "2018-11-06": "Results/General/2018_Statewide_Total_Ballots_Cast_Summary.pdf",
+    "2020-11-03": "Results/General/2020_General_Statewide_Total_Ballots_Cast_Summary.pdf",
+    "2022-11-08": "Results/General/2022_General_Statewide_Total_Ballots_Cast_Summary.pdf",
+    "2024-11-05": "Results/General/2024_General_Statewide_Total_Ballots_Cast_Summary.pdf",
 }
 WY_COUNTIES = (
     "Albany|Big Horn|Campbell|Carbon|Converse|Crook|Fremont|Goshen|Hot Springs|Johnson|"
@@ -628,7 +634,9 @@ def wyoming_archive_query(lines, election):
             raise ValueError("Wyoming abstract no longer identifies its printed ballot-count column")
         rows = lines[5:29]
     else:
-        if lines[:2] != ["Statewide Total Ballots Cast Official Summary", f"Wyoming General Election - {date}"]:
+        title = {"2022": "Total Ballots Cast", "2024": "Statewide Total Ballots Cast"}.get(
+            year, "Statewide Total Ballots Cast Official Summary")
+        if lines[:2] != [title, f"Wyoming General Election - {date}"]:
             raise ValueError("Wyoming ballot summary identity differs")
         if year == "2006" and lines[2:3] == ["Total Ballots Cast"]:
             rows = lines[3:]
@@ -636,6 +644,12 @@ def wyoming_archive_query(lines, election):
             rows = lines[3:-2]
         elif lines[2:5] == ["Page 1 of 1", "Total Ballots", "Cast"]:
             rows = lines[5:]
+        elif year == "2016" and lines[-2:] == ["Total Ballots Cast", "Page 1 of 1"]:
+            rows = lines[2:-2]
+        elif year in ("2018", "2020") and lines[2:4] == ["Page 1 of 1", "Total Ballots Cast"]:
+            rows = lines[4:]
+        elif year in ("2022", "2024") and lines[2:3] == ["Total Ballots Cast"] and lines[-1:] == ["Page 1 of 1"]:
+            rows = lines[3:-1]
         else:
             raise ValueError("Wyoming ballot summary header differs")
     names = [*WY_COUNTIES, "Official Totals" if abstract else "Total"]
@@ -660,10 +674,11 @@ def wyoming_archive_report(body, election):
     from pypdf import PdfReader
 
     pdf = PdfReader(io.BytesIO(body), strict=True)
-    if len(pdf.pages) != (8 if election.startswith("2004-") else 1):
+    year = election[:4]
+    if len(pdf.pages) != {"2004": 8, "2024": 2}.get(year, 1):
         raise ValueError("Wyoming turnout report page inventory differs")
-    page = pdf.pages[0]
-    text = page.extract_text(extraction_mode="layout") if election.startswith("2006-") else page.extract_text()
+    page = pdf.pages[1 if year == "2024" else 0]
+    text = page.extract_text(extraction_mode="layout") if year in ("2006", "2022", "2024") else page.extract_text()
     return wyoming_archive_query([" ".join(line.split()) for line in text.splitlines() if line.strip()],
                                  election)
 

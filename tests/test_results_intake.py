@@ -505,16 +505,22 @@ def test_west_virginia_archive_keeps_literal_basis_and_requires_reconciled_count
     assert history.county_archive_rows({feed: data})[-1]["rate_hold_reason"] == "printed_registration_fraction_disagrees"
 
 
-def test_wyoming_county_archive_exports_ballots_without_registration():
+@pytest.mark.parametrize(("date", "heading", "trailing"), [
+    ("2006-11-07", ["Statewide Total Ballots Cast Official Summary",
+                    "Wyoming General Election - November 7, 2006", "Total Ballots Cast"], []),
+    ("2024-11-05", ["Statewide Total Ballots Cast",
+                    "Wyoming General Election - November 5, 2024", "Total Ballots Cast"], ["Page 1 of 1"]),
+])
+def test_wyoming_county_archive_exports_ballots_without_registration(date, heading, trailing):
     from scripts import results_turnout_history as history
 
-    date = "2006-11-07"
-    feed = "WY-2006-general-election-ballots-pdf"
-    lines = ["Statewide Total Ballots Cast Official Summary", "Wyoming General Election - November 7, 2006",
-             "Total Ballots Cast", *(f"{name} 2" for name in history.WY_COUNTIES), "Total 46"]
+    year = date[:4]
+    feed = f"WY-{year}-general-election-ballots-pdf"
+    county_lines = [f"{name} 2" for name in history.WY_COUNTIES]
+    lines = [*heading, *county_lines, "Total 46", *trailing]
     query = history.wyoming_archive_query(lines, date)
     index, _ = history.county_archive_routes("WY", date)
-    report = {"url": history.WY_ARCHIVE_BASE + "2006/" + history.WY_ARCHIVES[date],
+    report = {"url": history.WY_ARCHIVE_BASE + year + "/" + history.WY_ARCHIVES[date],
               "bytes": 1, "sha256": "a" * 64}
     entry = {"status": "reported", "source": {"url": index}, "data": {
         "election_date": date, "report": report, "complete_native_query": query,
@@ -527,7 +533,7 @@ def test_wyoming_county_archive_exports_ballots_without_registration():
                and row["qualified_same_report_registration_fraction_pct"] is None
                and row["rate_hold_reason"] == "registration_not_in_report" for row in rows)
     with pytest.raises(ValueError, match="printed statewide total"):
-        history.wyoming_archive_query([*lines[:-1], "Total 47"], date)
+        history.wyoming_archive_query([*heading, *county_lines, "Total 47", *trailing], date)
 
 
 def test_county_archive_outage_attempts_shared_index_once_per_collection(tmp_path, monkeypatch):
