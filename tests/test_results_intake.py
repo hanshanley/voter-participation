@@ -1,5 +1,6 @@
 import copy
-from datetime import datetime, timezone
+import csv
+from datetime import datetime, timedelta, timezone
 import gzip
 import io
 import json
@@ -471,6 +472,9 @@ def test_county_archive_revisions_keep_full_facts(tmp_path, monkeypatch):
     assert rows[-1]["rate_hold_reason"] == "county_conflict_included_in_statewide_total"
     collector.prior = {feed: first}
     mock_source[url] = b"37"
+    requested.clear()
+    assert history.collect_county_archive(collector, feed, reuse_checked_week=True) == first
+    assert not requested
     revised = history.collect_county_archive(collector, feed)
     assert history.county_archive_rows({feed: revised})[-1]["qualified_same_report_registration_fraction_pct"] == 3700 / 4260
     collector.prior = {feed: revised}
@@ -482,6 +486,20 @@ def test_county_archive_revisions_keep_full_facts(tmp_path, monkeypatch):
     assert retained["data"] == revised["data"]
     assert retained["error"] == "report_not_linked"
     assert history.county_archive_rows({feed: retained})[0]["source_status"] == "retained_after_failure"
+    mock_source[history.KS_URL] = b"<a href='/elections/22elec/2022-General-Election-Turnout-Information.xlsx'>Turnout</a>"
+    mock_source[url] = b"38"
+    collector.prior = {feed: retained}
+    recovered = history.collect_county_archive(collector, feed, reuse_checked_week=True)
+    assert recovered["status"] == "reported"
+    assert recovered["data"]["complete_native_query"]["total"][1] == 38
+    collector.prior = {feed: recovered}
+    mock_source[url] = b"39"
+    next_week = intake.Collector(tmp_path, collector.prior, EMPTY_STOPS, NOW + timedelta(days=2))
+    following = history.collect_county_archive(next_week, feed, reuse_checked_week=True)
+    assert following["archive_check_week_utc"] == "2026-11-16"
+    assert following["data"]["complete_native_query"]["total"][1] == 39
+    cached = intake.Collector(tmp_path, {feed: following}, EMPTY_STOPS, NOW + timedelta(days=9), offline=True)
+    assert history.collect_county_archive(cached, feed)["archive_check_week_utc"] == "2026-11-16"
 
 
 @pytest.mark.parametrize("election,header,measure", [
@@ -902,9 +920,20 @@ def test_full_refresh_preserves_scoped_county_archive_on_source_failure(tmp_path
     assert feed not in scoped["feeds"]
 
     monkeypatch.setattr(intake.Collector, "acquire", unavailable)
-    monkeypatch.setattr(results_granular, "collect",
-                        lambda collector, _: {feed: history.collect_county_archive(collector, feed)})
-    intake.collect(registry, tmp_path / "full", scoped, now=NOW)
+    monkeypatch.setattr(results_granular, "collect", lambda collector, _: {
+        feed: history.collect_county_archive(collector, feed, reuse_checked_week=True)})
+    reuse = tmp_path / "reuse"
+    reused = intake.collect(registry, reuse, scoped, now=NOW)
+    state = intake.hydrate_collector_state(intake.read(reuse / "state.json"))
+    assert state["granular"][feed] == scoped["granular"][feed]
+    assert not any(attempt["id"] == feed for attempt in reused["source_attempts"])
+    with zipfile.ZipFile(reuse / "complete-results.zip") as archive:
+        archive.extractall(tmp_path / "package")
+    assert intake.replay(tmp_path / "package", tmp_path / "replayed")["passed"]
+    status_rows = csv.DictReader(io.StringIO((tmp_path / "replayed/source-status.csv").read_text()))
+    assert next(row for row in status_rows if row["source"] == feed)["archive_check_week_utc"] == "2026-11-09"
+
+    intake.collect(registry, tmp_path / "full", scoped, now=NOW + timedelta(days=2))
     full = intake.hydrate_collector_state(intake.read(tmp_path / "full/state.json"))
     retained = full["granular"][feed]
     assert full["feeds"][feed] == retained
@@ -1246,6 +1275,11 @@ Percent 50.00% 0.00% 100.00% 100.00% {total:.2f}% {total / 2:.2f}%
     assert rows_for(revised)[-1]["reported_total_voters"] == 68
     collector.prior = {feed: revised}
     assert history.collect_county_archive(collector, feed) == revised
+    if current:
+        assert "archive_check_week_utc" not in revised
+        bodies[url] = b"%PDF-1.6\n" + report(67, 67)
+        next_report = history.collect_county_archive(collector, feed, reuse_checked_week=True)
+        assert rows_for(next_report)[-1]["reported_total_voters"] == 67
 
 
 def test_indiana_archive_uses_only_declared_general_report_and_keeps_count_conflicts(monkeypatch):

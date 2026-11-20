@@ -509,7 +509,9 @@ def project(inputs, baseline):
                         or entry.get("attempted_source_url"),
                     "attempted_source_url": entry.get("attempted_source_url"),
                     "error_stage": entry.get("error_stage"),
-                    "error_detail": entry.get("error_detail")}
+                    "error_detail": entry.get("error_detail"),
+                    **({"archive_check_week_utc": entry["archive_check_week_utc"]}
+                       if "archive_check_week_utc" in entry else {})}
                    for key, entry in sorted(status_entries.items())]
     products_query = compressed(encoded(inputs.get("products", {})))
     products_reference = {"file": "declared-numerical-queries.json.gz", **pin(products_query)}

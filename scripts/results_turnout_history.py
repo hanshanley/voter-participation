@@ -2,7 +2,7 @@
 
 import csv
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal, ROUND_HALF_UP
 from email.utils import parsedate_to_datetime
 from functools import partial
@@ -844,11 +844,18 @@ def wyoming_precinct_exports(entry):
              "error_stage": entry.get("error_stage")}, wy_profile.csv_bytes(rows))
 
 
-def collect_county_archive(collector, feed):
+def collect_county_archive(collector, feed, *, reuse_checked_week=False):
     current = feed == CA_CURRENT_FEED
     state, election = ("CA", CA_CURRENT_ELECTION) if current else COUNTY_ARCHIVES[feed]
     index_url, report_pattern = county_archive_routes(state, election)
     old = collector.prior.get(feed) or {}
+    checked_week = None
+    if not collector.offline and int(election[:4]) < CURRENT_YEAR:
+        day = collector.now.astimezone(timezone.utc).date()
+        checked_week = (day - timedelta(days=day.weekday())).isoformat()
+        if (reuse_checked_week and old.get("archive_check_week_utc") == checked_week
+                and old.get("status") == "reported" and old.get("data") is not None):
+            return old
     rejected_scan = old.get("rejected_scan")
 
     def parse(index):
@@ -915,6 +922,8 @@ def collect_county_archive(collector, feed):
 
     result = collector.capture(feed, index_url, parse, equivalent=lambda old, new: old == new,
                                shared_acquisition=True)
+    if checked_week is not None:
+        result["archive_check_week_utc"] = checked_week
     if rejected_scan is None:
         result.pop("rejected_scan", None)
     else:

@@ -167,6 +167,12 @@ numeric literals. Primary rows are excluded, missing years are never zero,
 and mismatched printed rates are withheld without replacing the counts.
 This series does not overwrite the current canonical statewide observation.
 
+Full collections reuse a historical county report after a successful check
+in the same UTC calendar week. Missing or failed reports are retried; the
+current-election reports and explicitly selected refreshes are not deferred.
+The source-status export records the week of the last attempt separately
+from the report's edition and first-observed timestamp.
+
 West Virginia's 2008-2016 general-election county reports use the same
 county-archive sweep. Each PDF must match the declared election, all 55
 counties, and the separately printed statewide counts. The 2008 and 2010
