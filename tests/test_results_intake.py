@@ -720,6 +720,54 @@ def test_scanned_native_control_requires_unique_exact_name_and_component_sum():
         assert scan.native_control(lines, "Red Willow", 3) == (None, None)
 
 
+def test_colorado_statistics_revisions_reconcile_and_preserve_held_precinct(tmp_path, monkeypatch):
+    from scripts import colorado_voting_statistics as co, results_turnout_history as history
+
+    date, feed = "2024-11-05", "CO-2024-general-voting-statistics"
+    index, report = co.routes(date)
+    title = "<title>2024 Nov 5 • General • Voting Statistics • State of Colorado | State of Colorado</title>"
+    authority = (title + f'<a href="{report.replace("co.elstats3.", "co.elstats.")}">Download</a>').encode()
+    with pytest.raises(ValueError, match="election identity"):
+        co.discover(authority.replace(b"Nov 5", b"Jun 5"), date)
+
+    def edition(first):
+        body = [",,Active Voters,Inactive Voters,Total Voters,Total Ballots Cast", ",,,,,",
+                f"State,Colorado,1280,0,1280,{63 + first}"]
+        for i, name in enumerate(co.COUNTIES):
+            ballots = first if i == 0 else 1
+            body.extend([f"County,{name},20,0,20,{ballots}",
+                         f"Precinct,{i:010d},10,0,10,{ballots}",
+                         f"Precinct,{i + 100:010d},10,0,10,0"])
+        return ("\n".join(body) + "\n").encode()
+
+    prior = {}
+
+    def refresh(body):
+        collector = intake.Collector(tmp_path, prior, EMPTY_STOPS, NOW)
+        monkeypatch.setattr(collector, "acquire", lambda url: (authority if url == index else body, {"origin": "test"}))
+        prior[feed] = history.collect_county_archive(collector, feed)
+        return prior[feed]
+
+    first = refresh(edition(9))
+    assert refresh(edition(9)) == first
+    assert refresh(edition(8))["data"]["complete_native_query"]["total"]["ballots_cast"] == 71
+    higher = refresh(edition(11))
+    for bad in (edition(11).replace(b"1280,74", b"1280,75"),
+                edition(11).replace(b"10,0,10,11", b"10,0,10,12")):
+        retained = refresh(bad)
+        assert retained["status"] == "retained_after_failure" and retained["data"] == higher["data"]
+    county = history.county_archive_rows(prior)
+    units = history.county_archive_rows(prior, colorado_precincts=True)
+    assert len(county) == 65 and len(units) == 128
+    assert units[0]["ballots_cast"] == 11 and units[0]["rate_hold_reason"] == "ballots_exceed_registered"
+    assert units[0]["qualified_same_report_registration_fraction_pct"] is None
+    assert units[1]["qualified_same_report_registration_fraction_pct"] == 0
+    original = history.county_archive_originals(prior)[feed]
+    assert original["filename"].endswith(".csv")
+    (tmp_path / original["filename"]).write_bytes(edition(11))
+    assert history.verify_county_archive_originals(prior, tmp_path) == 1
+
+
 def test_nebraska_current_county_reports_keep_independent_last_good_editions(tmp_path, monkeypatch):
     from scripts import nebraska_county_reports as reports
 

@@ -659,6 +659,10 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     county_archives = results_turnout_history.county_archive_rows(snapshot.get("granular_sources", {}))
     if county_archives:
         raw_files[results_turnout_history.COUNTY_ARCHIVE_CSV] = csv_bytes(county_archives)
+    colorado_units = results_turnout_history.county_archive_rows(
+        snapshot.get("granular_sources", {}), colorado_precincts=True)
+    if colorado_units:
+        raw_files["participation-co-precinct-voting-statistics.csv"] = csv_bytes(colorado_units)
     current_ca = results_turnout_history.county_archive_rows(
         snapshot.get("granular_sources", {}), current_california=True)
     if current_ca:

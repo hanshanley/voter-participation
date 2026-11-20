@@ -785,6 +785,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "philadelphia_divisions.py",
              "results_turnout_history.py", "wyoming_participation_statistics.py", "nebraska_canvass.py",
              "nebraska_county_reports.py",
+             "colorado_voting_statistics.py",
              "results_indiana_turnout.py", "results_nc_vote_history.py",
              "results_ca_county_scan_transcriptions.json",
              "results_pa_vote_history.py", "results_alaska_turnout.py",
@@ -907,7 +908,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     if originals:
         package_members["REPRODUCE.txt"] += (
             "\nOptional: independently re-extract the retained county reports.\n"
-            "Place the exact publisher PDFs in a local directory using the filenames and SHA-256\n"
+            "Place the exact publisher PDFs and CSVs in a local directory using the filenames and SHA-256\n"
             "checksums in inputs/county-report-originals.json. Use pypdf==6.16.0 and, for early scanned\n"
             "Nebraska reports, PyMuPDF==1.26.5 and rapidocr-onnxruntime==1.4.4. Then run:\n"
             "python3 code/reproduce.py replay --package . --output reproduced-from-originals"

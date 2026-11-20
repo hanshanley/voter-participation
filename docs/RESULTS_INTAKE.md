@@ -189,10 +189,19 @@ ballots-cast column, all 23 counties, and an independently printed statewide
 total per report. No county registration denominator is printed, so the
 export contains ballot counts only and does not qualify registration rates.
 
+Colorado's 2022 and 2024 Voting Statistics CSVs reconcile each precinct
+inventory to the 64 printed county controls and the counties to the printed
+state control. Total registration includes active and inactive voters.
+State and county rows appear in the historical archive; the separate
+`participation-co-precinct-voting-statistics.csv.gz` keeps every native ID,
+count, registration field and rate hold. A count above registration is
+preserved but does not produce a rate. Precinct IDs alone do not authorize
+a polygon join. The 2020 export's party subheader is not qualified.
+
 For independent verification from publisher PDFs, extract the nested
 `inputs/complete-source-results.zip` from the analysis download. Its
 `inputs/county-report-originals.json` lists the exact URLs, checksums and
-local filenames for accepted Nebraska, West Virginia and Wyoming reports.
+local filenames for accepted Colorado, Nebraska, West Virginia and Wyoming reports.
 Re-extraction needs `pypdf==6.16.0`; for scanned Nebraska reports it also
 needs the collector's `PyMuPDF==1.26.5` and `rapidocr-onnxruntime==1.4.4`
 with its bundled models. Run from the extracted source package:
