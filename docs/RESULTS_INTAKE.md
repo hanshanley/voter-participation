@@ -192,8 +192,10 @@ export contains ballot counts only and does not qualify registration rates.
 For independent verification from publisher PDFs, extract the nested
 `inputs/complete-source-results.zip` from the analysis download. Its
 `inputs/county-report-originals.json` lists the exact URLs, checksums and
-local filenames for accepted West Virginia and Wyoming reports. With
-`pypdf==6.16.0`, run the following from the extracted source package:
+local filenames for accepted Nebraska, West Virginia and Wyoming reports.
+Re-extraction needs `pypdf==6.16.0`; for scanned Nebraska reports it also
+needs the collector's `PyMuPDF==1.26.5` and `rapidocr-onnxruntime==1.4.4`
+with its bundled models. Run from the extracted source package:
 
 ```sh
 python3.12 code/reproduce.py replay --package . --output reproduced \
@@ -204,6 +206,15 @@ The optional check requires every listed edition and re-extracts the complete
 query before numerical replay. It never uses the network or silently
 substitutes another edition. The default replay continues to work without
 the PDFs.
+
+Nebraska's 2006 canvass uses a bounded scan profile: one cover and three
+table pages, each rendered twice. The parser admits only the printed
+registration and total-voting columns, with the exact county roster,
+per-county agreement between renders and independently printed state
+controls. It does not publish voting-method components from the scan.
+Subsequent checks reuse the accepted evidence for unchanged report bytes;
+a failed revision does not replace the last accepted edition. Routine
+offline replay checks the retained cells without running OCR.
 
 Checkpoint recovery limits the expanded collector state to 300 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.

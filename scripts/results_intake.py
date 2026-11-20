@@ -774,7 +774,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "louisiana_onboarding.py", "louisiana_bootstrap.py",
              "results_native_broome.py", "results_native_kansas.py",
              "participation_count_additions.py",
-             "results_pdf_ocr.py", "results_pdf_tables.py", "results_pdf_boston.py",
+             "results_pdf_ocr.py", "results_pdf_archive_ocr.py", "results_pdf_tables.py", "results_pdf_boston.py",
              "results_pdf_grids.json",
              "results_json_statistics.py", "automatic_native_refresh.py",
              "results_pdf_periodic.py", "results_pdf_periodic_grids.json",

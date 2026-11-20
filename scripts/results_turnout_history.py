@@ -968,7 +968,7 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             counties = [*query["counties"], query["total"]]
             county_conflict = False
         elif state == "NE":
-            if query != nebraska_canvass.query(query["native_lines"], election):
+            if query != nebraska_canvass.replay_query(query, election):
                 raise ValueError("Nebraska turnout differs from its retained source rows")
             counties = [*query["counties"], query["total"]]
             county_conflict = any(row["ballots_cast"] > row["registered"] for row in counties[:-1])

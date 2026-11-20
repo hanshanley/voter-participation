@@ -610,6 +610,70 @@ def test_nebraska_canvass_discovers_current_book_and_rejects_bad_totals(tmp_path
         ne.query(wrong, ne.CURRENT)
 
 
+def test_nebraska_scan_agreement_retention_and_no_reprocessing(tmp_path, monkeypatch):
+    from scripts import nebraska_canvass as ne, results_turnout_history as history
+
+    date = "2006-11-07"
+    profile = ne.SCANS[date]
+    feed = "NE-2006-general-election-canvass"
+    report = ne.BOOKS[date]
+    index = f'<a href="{report}">Official Results</a>'.encode()
+    evidence = {"cover": [{"text": " ".join(profile["cover_headings"]),
+                           "receipt": {"page": profile["cover_page"] + 1, "dpi": dpi}}
+                          for dpi in ne.scan.DPI], "tables": {
+        table: [[{"receipt": {"page": page + 1, "dpi": dpi}, "rows": [
+            {"name": ne.scan.label(name), "literal_name": name,
+             "literal_total": str(value * (len(ne.COUNTIES) if name == "TOTAL" else 1)),
+             "total": value * (len(ne.COUNTIES) if name == "TOTAL" else 1),
+             "high_confidence": True, "row": i}
+            for i, name in enumerate(names, 1)]}
+                 for dpi in ne.scan.DPI] for page, _, names, _, _ in panels]
+        for value, (table, panels) in enumerate(profile["tables"].items(), 1)
+    }}
+    disputed = copy.deepcopy(evidence)
+    row = disputed["tables"]["voted"][0][1]["rows"][1]
+    row.update(total=3, literal_total="3")
+    bad_control = copy.deepcopy(evidence)
+    for view in bad_control["tables"]["voted"][0]:
+        row = view["rows"][0]
+        row.update(total=187, literal_total="187")
+    bad_identity = copy.deepcopy(evidence)
+    bad_identity["tables"]["voted"][0][0]["rows"][1]["literal_name"] = "Antelope"
+    bad_date = copy.deepcopy(evidence)
+    for view in bad_date["cover"]:
+        view["text"] = view["text"].replace("2006", "2008")
+    for bad, reason in ((disputed, "disagree between renders"), (bad_control, "printed state total"),
+                        (bad_identity, "identities disagree"), (bad_date, "election date differs")):
+        with pytest.raises(IntakeError, match=reason):
+            ne.scan_query(bad, date)
+
+    calls = []
+
+    def parse(body, election):
+        calls.append(body)
+        return ne.scan_query(evidence if body == b"first edition" else disputed, election)
+
+    monkeypatch.setattr(ne, "parse", parse)
+    prior = {}
+
+    def refresh(body):
+        collector = intake.Collector(tmp_path, prior, EMPTY_STOPS, NOW)
+        monkeypatch.setattr(collector, "acquire", lambda url: (
+            index if url == ne.INDEX else body, {"origin": "test"}))
+        value = history.collect_county_archive(collector, feed)
+        prior[feed] = value
+        return value
+
+    first = refresh(b"first edition")
+    assert first["status"] == "reported"
+    assert refresh(b"first edition") == first
+    held = refresh(b"changed edition")
+    assert calls == [b"first edition", b"changed edition"]
+    assert held["status"] == "retained_after_failure" and held["error"] == "scan_reconciliation_failed"
+    assert held["data"] == first["data"] and held["source"] == first["source"]
+    assert history.county_archive_rows(prior)[-1]["reported_total_voters"] == 186
+
+
 def test_nebraska_old_canvass_preserves_printed_total_and_malformed_component():
     from scripts import nebraska_canvass as ne, results_turnout_history as history
 

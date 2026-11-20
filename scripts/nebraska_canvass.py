@@ -4,11 +4,13 @@ import io
 import re
 
 from scripts.participation_intake.contract import count
+from scripts import results_pdf_archive_ocr as scan
 
 INDEX = "https://sos.nebraska.gov/previous-elections"
 BASE = "https://sos.nebraska.gov/sites/default/files/doc/elections/"
 CURRENT = "2026-11-03"
 BOOKS = {
+    "2006-11-07": BASE.removesuffix("elections/") + "2006%20General.pdf",
     "2008-11-04": "2008%20General%20Canvass%20Book.pdf",
     "2010-11-02": "2010%20Gen%20Canvass%20Book%2011-30-Final.pdf",
     "2012-11-06": "2012-general-canvass.pdf",
@@ -32,6 +34,28 @@ COUNTIES = (
 ).split("|")
 CSV = "participation-ne-2026-county-canvass.csv"
 MAX_BYTES = 8_000_000
+SCANS = {
+    "2006-11-07": {
+        "cover_page": 0,
+        "cover_headings": ("Official Report", "State Canvassers", "State of Nebraska",
+                           "General Election", "November 7, 2006"),
+        "aliases": {"fumas": "furnas", "mermick": "merrick", "poik": "polk", "morill": "morrill"},
+        "tables": {
+            "registered": (
+                (10, ("Number of Registered Voters", "Nebraska Total"),
+                 ("TOTAL", *COUNTIES[:45]), (68, 105), (480, 503)),
+                (11, ("Precincts Republican", "Nebraska Total"),
+                 COUNTIES[45:], (68, 105), (480, 503)),
+            ),
+            "voted": (
+                (12, ("Total Voting By Location", "Polls Overseas Voting Voting"),
+                 ("TOTAL", *COUNTIES[:47]), (48, 105), (262, 298)),
+                (12, ("Total Voting By Location", "Polls Overseas Voting Voting"),
+                 COUNTIES[47:], (305, 361), (519, 557)),
+            ),
+        },
+    },
+}
 REGISTRATION = {
     2008: ("County Democrat Green Libertarian Nebraska Nonpartisan Republican Total", 7),
     2010: ("County Republican Democrat Nonpartisan Libertarian Grand Total", 5),
@@ -60,7 +84,27 @@ def routes(election):
     year = election[:4]
     root = re.escape(BASE + year + "/")
     filename = BOOKS[election]
+    if filename and filename.startswith("https://"):
+        return INDEX, re.escape(filename)
     return INDEX, root + (re.escape(filename) if filename else r"[^/?#]{1,140}\.pdf")
+
+
+def scan_query(evidence, election):
+    profile = SCANS[election]
+    figures = scan.verify(evidence, profile)
+    rows = [{"county": name, "registered": figures["registered"][name],
+             "ballots_cast": figures["voted"][name], "rate_hold_reason": None}
+            for name in (*COUNTIES, "TOTAL")]
+    return {"counties": rows[:-1], "total": rows[-1], "scan_evidence": evidence,
+            "native_numerator": "total_voters", "registration_basis": "Registered voters in the same canvass book",
+            "report_note": "Printed Total Voting and registration columns independently reconcile to statewide controls. "
+                           "OCR did not qualify the voting method breakdown.",
+            "extraction_method": "two_render_ocr_reconciled_nebraska_county_totals"}
+
+
+def replay_query(facts, election):
+    return (scan_query(facts["scan_evidence"], election) if election in SCANS
+            else query(facts["native_lines"], election))
 
 
 def _data(pages, headers, title, *, registration, year):
@@ -154,6 +198,9 @@ def parse(body, election):
     pdf = PdfReader(io.BytesIO(body), strict=True)
     if not 10 <= len(pdf.pages) <= 200:
         raise ValueError("Unreviewed Nebraska canvass pagination")
+    if election in SCANS:
+        _, evidence = scan.parse(body, SCANS[election])
+        return scan_query(evidence, election)
 
     def lines(page):
         return [" ".join(line.split()) for line in page.extract_text(extraction_mode="layout").splitlines() if line.strip()]
