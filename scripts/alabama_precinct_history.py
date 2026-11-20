@@ -3,9 +3,14 @@ import io
 import re
 from zipfile import ZipFile
 
+from scripts.participation_intake.contract import pin
 from scripts.southeast_turnout import COUNTIES, NUMBER, collect_report
 
 ROOT = "https://www.sos.alabama.gov/sites/default/files/election-data/"
+INDEX = "https://www.sos.alabama.gov/alabama-votes/voter/election-data"
+CURRENT_CONTROL = "AL-2026-general-county-ballot-control"
+CURRENT_CONTROL_ROUTE = (re.escape(ROOT) + r"20(?:26|27)-(?:0[1-9]|1[0-2])/"
+                         r"(?=[^/]*2026)[A-Za-z0-9_%.-]+\.pdf")
 FILES = {
     2022: ("2022-11/2022%20General%20Precinct%20Level%20Results.zip",
            "2023-05/General%20Election%202022%20Official%20Total%20Ballots%20Cast.pdf", "November 8, 2022"),
@@ -14,9 +19,10 @@ FILES = {
     2026: ("2026-11/2026GeneralElectionPrecinctResults.zip", None, "November 3, 2026"),
 }
 FEEDS = {year: (f"AL-{year}-general-precinct-ballot-archive",
-                f"AL-{year}-general-county-ballot-control" if paths[1] else None)
+                f"AL-{year}-general-county-ballot-control")
          for year, paths in FILES.items()}
-URLS = {feed: ROOT + path for year, paths in FILES.items() for feed, path in zip(FEEDS[year], paths[:2]) if feed}
+URLS = {feed: ROOT + path for year, paths in FILES.items() for feed, path in zip(FEEDS[year], paths[:2]) if path}
+URLS[CURRENT_CONTROL] = INDEX
 CSV = "participation-al-precinct-ballot-archives.csv"
 CONTROL_CSV = "participation-al-precinct-ballot-county-controls.csv"
 COUNTY_KEYS = {county.replace("_", ""): county for county in COUNTIES}
@@ -86,11 +92,12 @@ def parse_units(body, year):
 
 
 def control_rows(lines, year):
-    title = f"General Election {'–' if year == 2022 else '-'} {FILES[year][2]}"
-    columns = ("County Registered Total Ballots Cast Party Republican Absentee Percentage Percentage"
-               if year == 2022 else
-               "County Voters Ballots Cast Ballots Ballots Ballots Registered Voters Total Ballots")
-    if title not in lines or "Official Total Ballots Cast" not in lines or columns not in lines:
+    titles = {f"General Election {dash} {FILES[year][2]}" for dash in ("-", "–")}
+    columns = {
+        "County Registered Total Ballots Cast Party Republican Absentee Percentage Percentage",
+        "County Voters Ballots Cast Ballots Ballots Ballots Registered Voters Total Ballots",
+    }
+    if not titles.intersection(lines) or "Official Total Ballots Cast" not in lines or not columns.intersection(lines):
         raise ValueError("Alabama county ballot control election or measure changed")
     match_row = re.compile(rf"([A-Za-z. ]+) ((?:{NUMBER} ){{5}})\d{{1,3}}\.\d+% \d{{1,3}}\.\d+%")
     values = {}
@@ -132,7 +139,24 @@ def parse(body, feed):
 
 
 def collect(collector, feed, *, reuse_checked_week=False):
+    if feed == CURRENT_CONTROL:
+        def discovery(index, _):
+            from scripts.results_intake import IntakeError
+
+            url = discover_control(index)
+            if url is None:
+                raise IntakeError("report_not_linked", "Alabama does not yet link a 2026 general-election county control")
+            report, _ = collector.acquire(url)
+            return {**parse(report, feed), "control_report": {"url": url, **pin(report)}}
+
+        return collect_report(collector, feed, INDEX, discovery, reuse_checked_week=reuse_checked_week)
     return collect_report(collector, feed, URLS[feed], parse, reuse_checked_week=reuse_checked_week)
+
+
+def discover_control(index):
+    from scripts.results_turnout_history import archive_link
+
+    return archive_link(index, INDEX, CURRENT_CONTROL_ROUTE, label="Total Ballots Cast - General Election")
 
 
 def exports(entries):
@@ -150,16 +174,24 @@ def exports(entries):
                 or (control_entry is not None and (control["source"]["url"] != URLS[control_feed]
                     or controls != control_entry["complete_native_query"]))):
             raise ValueError("Unbound Alabama original or changed county control query")
+        control_source = control.get("source") or {}
+        if control_feed == CURRENT_CONTROL and control_entry is not None:
+            control_source = control_entry.get("control_report") or {}
+            if not (re.fullmatch(CURRENT_CONTROL_ROUTE, control_source.get("url", ""))
+                    and re.fullmatch(r"[a-f0-9]{64}", control_source.get("sha256", ""))
+                    and type(control_source.get("bytes")) is int and 0 < control_source["bytes"] <= 6_000_000):
+                raise ValueError("Alabama 2026 control is not bound to the discovered report")
         archive_sums = {name: sum(row[1] for row in rows) for name, rows in workbooks.items()}
         if workbooks:
             archive_sums["TOTAL"] = sum(archive_sums.values())
         provenance = {"state_code": "AL", "year": year,
-                      "archive_url": URLS[archive_feed], "control_url": URLS.get(control_feed),
+                      "archive_url": URLS[archive_feed],
+                      "control_url": control_source.get("url", URLS[control_feed]),
                       "archive_status": archive.get("status"), "control_status": control.get("status"),
                       "archive_checked_week_utc": archive.get("archive_check_week_utc"),
                       "control_checked_week_utc": control.get("archive_check_week_utc"),
                       "archive_sha256": (archive.get("source") or {}).get("sha256"),
-                      "control_sha256": (control.get("source") or {}).get("sha256")}
+                      "control_sha256": control_source.get("sha256")}
         for name in (*COUNTIES, "TOTAL"):
             comparison = controls.get(name)
             total = archive_sums.get(name)

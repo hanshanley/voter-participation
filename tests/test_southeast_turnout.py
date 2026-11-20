@@ -1,6 +1,8 @@
+from datetime import datetime, timezone
+
 import pytest
 
-from scripts import alabama_precinct_history as precinct, southeast_turnout as se
+from scripts import alabama_precinct_history as precinct, results_intake, southeast_turnout as se
 from scripts.supported_analytical_release import selected_local_observation_ids
 
 
@@ -81,3 +83,57 @@ def test_precinct_controls_preserve_conflict_absentee_and_missing_register():
     rows["AUTAUGA"].append(["TOWN HALL", 0, 0])
     with pytest.raises(ValueError, match="Invalid Alabama reporting unit"):
         precinct.exports({archive_feed: archive})
+
+
+def test_current_alabama_control_discovery_requires_a_unique_general_report():
+    path = "/sites/default/files/election-data/2026-12/2026%20General%20Total%20Ballots%20Cast.pdf"
+    report = f'<a href="{path}">Total Ballots Cast - General Election</a>'
+    others = (f'<a href="{path.replace("2026", "2024")}">Total Ballots Cast - General Election</a>'
+              f'<a href="{path}">Total Ballots Cast - Primary Election</a>'
+              '<a href="https://example.test/2026.pdf">Total Ballots Cast - General Election</a>')
+    assert precinct.discover_control(others.encode()) is None
+    assert precinct.discover_control((others + report).encode()) == "https://www.sos.alabama.gov" + path
+    with pytest.raises(ValueError, match="Ambiguous"):
+        precinct.discover_control((report + report.replace("2026-12", "2027-01")).encode())
+
+
+def test_current_alabama_control_is_collected_only_after_discovery(tmp_path, monkeypatch):
+    feed = precinct.CURRENT_CONTROL
+    path = "/sites/default/files/election-data/2026-12/2026%20General%20Total%20Ballots%20Cast.pdf"
+    url = "https://www.sos.alabama.gov" + path
+    state = {"urls": [], "prefixes": [], "hosts": []}
+    collector = results_intake.Collector(tmp_path, {}, state, datetime(2026, 12, 12, tzinfo=timezone.utc))
+    calls = []
+    bodies = {precinct.INDEX: b"<p>No report yet</p>"}
+
+    def acquire(target):
+        calls.append(target)
+        if target not in bodies:
+            raise results_intake.IntakeError("source_stopped", "test denial")
+        return bodies[target], {"origin": "fixture"}
+
+    monkeypatch.setattr(collector, "acquire", acquire)
+    missing = precinct.collect(collector, feed)
+    assert missing["status"] == "report_not_linked" and calls == [precinct.INDEX]
+
+    lines = ["General Election - November 3, 2026", "Official Total Ballots Cast",
+             "County Voters Ballots Cast Ballots Ballots Ballots Registered Voters Total Ballots",
+             *(f"{name.replace('_', ' ')} 100 10 0 0 2 10.00% 20.00%" for name in se.COUNTIES),
+             "Total 6700 670 0 0 134 10.00% 20.00%"]
+    bodies[precinct.INDEX] = f'<a href="{path}">Total Ballots Cast - General Election</a>'.encode()
+    bodies[url] = b"fixture PDF"
+
+    def parse(body, identity):
+        assert body == bodies[url] and identity == feed
+        return {"native_lines": lines, "complete_native_query": precinct.control_rows(lines, 2026),
+                "participation_observation_qualified": False}
+
+    monkeypatch.setattr(precinct, "parse", parse)
+    accepted = precinct.collect(collector, feed)
+    assert accepted["status"] == "reported" and calls[-2:] == [precinct.INDEX, url]
+    collector.prior[feed] = accepted
+    del bodies[url]
+    retained = precinct.collect(collector, feed)
+    assert retained["status"] == "retained_after_failure"
+    _, county = precinct.exports({feed: retained})
+    assert county[-1]["county_control_ballots"] == 670 and county[-1]["control_url"] == url
