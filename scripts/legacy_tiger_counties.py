@@ -2,8 +2,10 @@
 
 import argparse
 from collections import defaultdict
+from datetime import datetime, timezone
 import gzip
 import hashlib
+from html.parser import HTMLParser
 import io
 import json
 from pathlib import Path
@@ -17,6 +19,78 @@ from shapely.geometry import mapping
 VERSIONS = {b"0906", b"1006", b"1106", b"1206", b"0107"}
 REFERENCE_DATE = "2006-01-01"
 ARCHIVE = "https://www2.census.gov/geo/tiger/tiger2006se/"
+
+
+def module_roster(body, state_fips):
+    class Links(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.modules = set()
+
+        def handle_starttag(self, tag, attrs):
+            if tag != "a":
+                return
+            href = dict(attrs).get("href") or ""
+            match = re.fullmatch(r"TGR(" + state_fips + r"[0-9]{3})\.ZIP", href)
+            if match:
+                self.modules.add(match[1])
+
+    links = Links()
+    links.feed(body.decode("utf-8"))
+    return links.modules
+
+
+def acquire_modules(collector, roster, originals):
+    from scripts.participation_intake.contract import IntakeError, pin
+    from scripts.results_intake import source_error
+
+    state, fips = roster["state"], roster["state_fips"]
+    if not re.fullmatch(r"[A-Z]{2}", state) or not re.fullmatch(r"[0-9]{2}", fips):
+        raise ValueError("Invalid state identity")
+    modules = roster["modules"]
+    expected = {item["fips"] for item in modules}
+    if not expected or len(expected) != len(modules) or any(
+        not re.fullmatch(fips + r"[0-9]{3}", key) for key in expected
+    ):
+        raise ValueError("Invalid reviewed county roster")
+    index = f"{ARCHIVE}{state}/"
+    body, _ = collector.acquire(index)
+    if module_roster(body, fips) != expected:
+        raise ValueError("Census archive and reviewed county rosters differ")
+    result = {"state": state, "state_name": roster["state_name"], "state_fips": fips,
+              "expected_module_ids": sorted(expected),
+              "index": {"url": index, **pin(body)}, "modules": [], "holds": []}
+    originals.mkdir(parents=True, exist_ok=True)
+    for item in sorted(modules, key=lambda item: item["fips"]):
+        key = item["fips"]
+        filename = f"TGR{key}.ZIP"
+        url = index + filename
+        path = originals / filename
+        try:
+            collector.guard(url)
+            retained = path.read_bytes() if path.exists() else None
+            expected_pin = {k: item.get(k) for k in ("bytes", "sha256")}
+            if retained is not None and all(value is not None for value in expected_pin.values()):
+                if pin(retained) != expected_pin:
+                    raise ValueError("Retained Census module differs from its reviewed pin")
+                data = retained
+            else:
+                data, _ = collector.acquire(url)
+                if retained is not None and retained != data:
+                    raise ValueError("Existing unpinned Census module differs from the verified source")
+            county_outline(data, key, roster["state_name"], item["census_title"])
+            if not path.exists():
+                with path.open("xb") as target:
+                    target.write(data)
+        except (IntakeError, ValueError, zipfile.BadZipFile) as error:
+            result["holds"].append({"fips": key, "url": url, "status": source_error(error), "reason": str(error)})
+        else:
+            result["modules"].append({"fips": key, "name": item["name"], "census_title": item["census_title"],
+                                      "url": url, **pin(data)})
+        finally:
+            # This sequential acquisition does not need to keep each county body in RAM.
+            collector.bodies.pop(url, None)
+    return result
 
 
 def county_outline(body, fips, state_name, county_title):
@@ -105,6 +179,8 @@ def build(manifest, directory):
     state, state_name, features, seen = manifest["state"], manifest["state_name"], [], set()
     if not re.fullmatch(r"[A-Z]{2}", state) or not re.fullmatch(r"[0-9]{2}", manifest["state_fips"]):
         raise ValueError("Invalid state identity")
+    if manifest.get("holds"):
+        raise ValueError("County outline publication requires a complete reviewed roster")
     for module in sorted(manifest["modules"], key=lambda item: item["fips"]):
         fips = module["fips"]
         if not re.fullmatch(manifest["state_fips"] + r"[0-9]{3}", fips) or fips in seen:
@@ -119,8 +195,9 @@ def build(manifest, directory):
                            "boundary_year": 2006, "level": "county"},
             "geometry": county_outline(data, fips, state_name, module["census_title"]),
         })
-    if not features:
-        raise ValueError("No verified county modules")
+    if not features or ("expected_module_ids" in manifest
+                        and sorted(seen) != manifest["expected_module_ids"]):
+        raise ValueError("Incomplete verified county module roster")
     return {"type": "FeatureCollection", "reference_date": REFERENCE_DATE, "features": features}
 
 
@@ -129,8 +206,29 @@ def main():
     parser.add_argument("manifest", type=Path)
     parser.add_argument("originals", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--acquire", action="store_true", help="Acquire a reviewed state roster; output a manifest instead")
+    parser.add_argument("--work-dir", type=Path, help="Cache and durable source-stop directory for acquisition")
+    parser.add_argument("--registry", type=Path, default=Path("data/results-intake/registry.json"))
     args = parser.parse_args()
-    collection = build(json.loads(args.manifest.read_bytes()), args.originals)
+    manifest = json.loads(args.manifest.read_bytes())
+    if args.acquire:
+        from scripts.participation_intake.contract import encoded
+        from scripts.results_intake import Collector, merge_stops, registry_config
+
+        if args.work_dir is None or args.output.exists():
+            parser.error("--acquire requires --work-dir and a new output manifest")
+        prior = args.work_dir / "source-stops.json"
+        config = registry_config(args.registry)
+        stops = config["source_stops"]
+        if prior.exists():
+            stops = merge_stops(stops, json.loads(prior.read_bytes()))
+        collector = Collector(args.work_dir, {}, stops, datetime.now(timezone.utc))
+        captured = acquire_modules(collector, manifest, args.originals)
+        with args.output.open("xb") as target:
+            target.write(encoded(captured))
+        print(f"Verified {len(captured['modules'])} county modules; held {len(captured['holds'])}")
+        return
+    collection = build(manifest, args.originals)
     payload = json.dumps(collection, separators=(",", ":"), sort_keys=True, allow_nan=False).encode() + b"\n"
     with args.output.open("xb") as target:
         target.write(gzip.compress(payload, mtime=0))
