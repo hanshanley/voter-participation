@@ -762,6 +762,28 @@ def test_nebraska_current_county_reports_keep_independent_last_good_editions(tmp
     assert rows["Box Butte"]["source_status"] == "retained_after_failure"
 
 
+def test_nebraska_county_scan_requires_both_editions_and_does_not_accept_precinct_summary():
+    from scripts import nebraska_county_reports as reports
+
+    evidence = [{"receipt": {"page": 1, "dpi": dpi}, "high_confidence": [True] * 4, "cells": [
+        ["Summary Results Report", "Official Results"], ["General Election"],
+        ["November 3, 2026", "Adams County, Nebraska"], ["Statistics", "TOTAL", "Election", "Early", "Provisional"],
+        ["Day", "Voting"], ["Ballots Cast - Total", "10", "5", "3", "2"],
+        ["Election Summary - 11/17/2026 11:00 AM", "1 of 3"],
+    ]} for dpi in reports.DPI]
+    assert reports.scan_query(evidence, "Adams", "Official Results")["ballots"] == 10
+    with pytest.raises(IntakeError, match="Unsupported county scan layout"):
+        reports.scan_query(evidence, "Adams", "Unofficial Results")
+    precinct = copy.deepcopy(evidence)
+    for view in precinct:
+        view["cells"].insert(3, ["Precinct 1"])
+    with pytest.raises(IntakeError, match="countywide"):
+        reports.scan_query(precinct, "Adams", "Official Results")
+    evidence[1]["cells"][5][1:] = ["12", "7", "3", "2"]
+    with pytest.raises(IntakeError, match="did not agree"):
+        reports.scan_query(evidence, "Adams", "Official Results")
+
+
 def test_nebraska_paired_sources_preserve_blue_book_discrepancy_and_pin_both(tmp_path, monkeypatch):
     from scripts import nebraska_canvass as ne, results_turnout_history as history
 

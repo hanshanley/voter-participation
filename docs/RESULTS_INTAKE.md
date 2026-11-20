@@ -237,6 +237,11 @@ dispositions, preserves the index status and the native report clock, and
 never substitutes contest votes or sums mixed report editions into a
 statewide result. Hourly checks reuse unchanged index entries; the weekly
 and explicit scoped checks revalidate the linked editions.
+Image-only PDFs use the bounded two-render first-page fallback. Both
+renders must agree on the countywide identity, election, status, native
+clock and all four ballot fields; the three mode counts must sum to the
+printed total. Unchanged rejected bytes are reconsidered when the parser
+or OCR environment changes.
 
 Checkpoint recovery limits the expanded collector state to 300 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.
