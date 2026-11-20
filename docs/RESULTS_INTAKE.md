@@ -221,7 +221,12 @@ Nebraska Library Commission's combined primary/general editions. The
 2000 registration layout also permits native-text corroboration for
 low-confidence cells: both renders and a unique named native row must
 agree, and the native components must sum to the printed county total.
-The inspected 2002 general-election section does not provide both tables.
+For 2002, the Nebraska Blue Book's complete county table and the official
+canvass statewide historical tabulation are reconciled as a pair. The
+published voter count is the canvass's printed 490,914, which equals the
+sum of the 93 Blue Book county totals. The Blue Book's conflicting
+487,205 statewide entry remains in the retained query; both PDFs are
+pinned and checked during original-report replay.
 
 Checkpoint recovery limits the expanded collector state to 300 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.

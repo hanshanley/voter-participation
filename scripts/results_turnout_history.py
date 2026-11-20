@@ -862,7 +862,13 @@ def collect_county_archive(collector, feed):
             raise ValueError("Historical county report exceeds reviewed size bound")
         report = {"url": url, **pin(body)}
         previous = old.get("data")
-        if previous and previous.get("report") == report:
+        supporting_report = None
+        if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION:
+            supporting, _ = collector.acquire(nebraska_canvass.BLUE_BOOK)
+            if not 0 < len(supporting) <= county_archive_limit(state):
+                raise ValueError("Nebraska Blue Book exceeds reviewed size bound")
+            supporting_report = {"url": nebraska_canvass.BLUE_BOOK, **pin(supporting)}
+        if previous and previous.get("report") == report and previous.get("supporting_report") == supporting_report:
             rejected_scan = None
             return previous
         if state == "CA":
@@ -874,6 +880,8 @@ def collect_county_archive(collector, feed):
             query = west_virginia_archive_report(body, election)
         elif state == "WY":
             query = wyoming_archive_report(body, election)
+        elif supporting_report:
+            query = nebraska_canvass.parse_blue_book(supporting, body)
         elif state == "NE":
             scan_key = ({"report": report, "policy": nebraska_canvass.scan_policy(election)}
                         if election in nebraska_canvass.SCANS else None)
@@ -890,6 +898,8 @@ def collect_county_archive(collector, feed):
             query = new_jersey_report(body, election, allow_amended=True)
         data = {"election_date": election, "report": report, "complete_native_query": query,
                 "participation_observation_qualified": False}
+        if supporting_report:
+            data["supporting_report"] = supporting_report
         if state == "NJ":
             data["date"] = query["published_date"]
         return data
@@ -920,6 +930,14 @@ def county_archive_originals(entries):
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError(f"Invalid original county report pin: {feed}")
         originals[feed] = {"filename": feed + ".pdf", **{key: report[key] for key in ("url", "bytes", "sha256")}}
+        if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION:
+            supporting = data["supporting_report"]
+            if (supporting["url"] != nebraska_canvass.BLUE_BOOK
+                    or type(supporting["bytes"]) is not int or not 0 < supporting["bytes"] <= county_archive_limit(state)
+                    or not re.fullmatch(r"[a-f0-9]{64}", supporting["sha256"])):
+                raise ValueError(f"Invalid supporting county report pin: {feed}")
+            extra = feed + "-blue-book"
+            originals[extra] = {"filename": extra + ".pdf", **supporting}
     return originals
 
 
@@ -927,16 +945,23 @@ def verify_county_archive_originals(entries, directory):
     originals = county_archive_originals(entries)
     if not originals:
         raise ValueError("This checkpoint contains no supported county report originals to verify")
-    for feed, report in originals.items():
+    def checked_original(feed):
+        report = originals[feed]
         path = directory / report["filename"]
         with path.open("rb") as source:
             body = source.read(report["bytes"] + 1)
         if pin(body) != {key: report[key] for key in ("bytes", "sha256")}:
             raise ValueError(f"Changed original county report: {feed}")
+        return body
+
+    for feed in originals.keys() & COUNTY_ARCHIVES.keys():
+        body = checked_original(feed)
         state, election = COUNTY_ARCHIVES[feed]
         parse = {"WV": west_virginia_archive_report, "WY": wyoming_archive_report,
                  "NE": nebraska_canvass.parse}[state]
-        if parse(body, election) != entries[feed]["data"]["complete_native_query"]:
+        query = (nebraska_canvass.parse_blue_book(checked_original(feed + "-blue-book"), body)
+                 if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION else parse(body, election))
+        if query != entries[feed]["data"]["complete_native_query"]:
             raise ValueError(f"County report extraction differs from the accepted query: {feed}")
     return len(originals)
 

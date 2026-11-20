@@ -10,9 +10,12 @@ from scripts import results_pdf_archive_ocr as scan
 INDEX = "https://sos.nebraska.gov/previous-elections"
 BASE = "https://sos.nebraska.gov/sites/default/files/doc/elections/"
 LIBRARY = "https://govdocs.nebraska.gov/epubs/s1200/"
+PAIRED_ELECTION = "2002-11-05"
+BLUE_BOOK = "https://govdocs.nebraska.gov/epubs/L3000/D001-200203.pdf"
 CURRENT = "2026-11-03"
 BOOKS = {
     "2000-11-07": LIBRARY + "S001-2000prim_gen.pdf",
+    PAIRED_ELECTION: LIBRARY + "S001-2002prim_gen.pdf",
     "2004-11-02": LIBRARY + "S001-2004prim_gen.pdf",
     "2006-11-07": BASE.removesuffix("elections/") + "2006%20General.pdf",
     "2008-11-04": "2008%20General%20Canvass%20Book.pdf",
@@ -148,8 +151,74 @@ def scan_query(evidence, election):
 
 
 def replay_query(facts, election):
+    if election == PAIRED_ELECTION:
+        return blue_book_query(facts["native_pages"], facts["canvass_control"])
     return (scan_query(facts["scan_evidence"], election) if election in SCANS
             else query(facts["native_lines"], election))
+
+
+def blue_book_query(pages, control):
+    n = r"[0-9][0-9,]*"
+    row_pattern = re.compile(rf"([A-Za-z ]+?)([1-3])?\s*\.{{2,}}\s+((?:{n}\s+){{10}}{n})")
+    control_match = re.fullmatch(rf"-- November 5, 2002 ({n}) ({n})", control)
+    if len(pages) != 3 or not control_match:
+        raise ValueError("Unexpected 2002 canvass title or turnout control")
+    rows = {}
+    for lines in pages:
+        title = " ".join(lines)
+        if not all(term in title for term in (
+                "Nebraska General Election Statistics", "November 5, 2002", "Abstract of Votes",
+                "Number of People Voting", "Number of Persons Voting", "Registered Voters")):
+            raise ValueError("Unexpected 2002 Blue Book participation heading")
+        for line in lines:
+            match = row_pattern.fullmatch(line)
+            if not match:
+                continue
+            name, marker, numbers = match.groups()
+            name = name.strip()
+            if name in rows or marker != {"Douglas": "1", "Johnson": "2", "Sarpy": "3"}.get(name):
+                raise ValueError("Unexpected or duplicate 2002 county identity")
+            rows[name] = list(map(count, numbers.split()))
+    if list(rows) != [*COUNTIES, "TOTAL"]:
+        raise ValueError("Incomplete 2002 county roster")
+    if any(sum(row[7:10]) != row[10] for row in rows.values()):
+        raise ValueError("2002 voting methods do not reconcile to printed totals")
+    statewide_voters, statewide_registered = map(count, control_match.groups())
+    if (sum(rows[name][6] for name in COUNTIES) != rows["TOTAL"][6] or rows["TOTAL"][6] != statewide_registered
+            or sum(rows[name][10] for name in COUNTIES) != statewide_voters):
+        raise ValueError("2002 Blue Book county totals disagree with the official canvass control")
+    return {
+        "counties": [{"county": name, "registered": rows[name][6], "ballots_cast": rows[name][10],
+                      "rate_hold_reason": None} for name in COUNTIES],
+        "total": {"county": "TOTAL", "registered": statewide_registered, "ballots_cast": statewide_voters,
+                  "rate_hold_reason": None},
+        "native_pages": pages, "canvass_control": control,
+        "blue_book_printed_statewide_voters": rows["TOTAL"][10],
+        "native_numerator": "total_voters",
+        "registration_basis": "Blue Book county registration; official canvass statewide registration",
+        "report_note": f"Blue Book county totals reconcile to the official canvass ({statewide_voters:,}); "
+                       f"the Blue Book's conflicting printed state total ({rows['TOTAL'][10]:,}) is retained.",
+        "extraction_method": "paired_nebraska_blue_book_counties_with_canvass_state_control",
+    }
+
+
+def parse_blue_book(body, canvass):
+    from pypdf import PdfReader
+
+    book = PdfReader(io.BytesIO(body), strict=False)
+    official = PdfReader(io.BytesIO(canvass), strict=False)
+    if not 854 <= len(book.pages) <= 1000 or not 80 <= len(official.pages) <= 200:
+        raise ValueError("Unreviewed 2002 turnout report pagination")
+    lines = [" ".join(line.split()) for line in official.pages[-1].extract_text(
+        extraction_mode="layout").splitlines()]
+    if not any("OFFICIAL TABULATION OF VOTES CAST IN NEBRASKA" in line for line in lines):
+        raise ValueError("Missing official 2002 historical turnout tabulation")
+    controls = [line for line in lines if line.startswith("-- November 5, 2002 ")]
+    if len(controls) != 1:
+        raise ValueError("Missing or ambiguous 2002 canvass turnout control")
+    pages = [[" ".join(line.split()) for line in book.pages[i].extract_text().splitlines()]
+             for i in range(851, 854)]
+    return blue_book_query(pages, controls[0])
 
 
 def scan_policy(election):

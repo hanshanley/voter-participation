@@ -718,6 +718,56 @@ def test_scanned_native_control_requires_unique_exact_name_and_component_sum():
         assert scan.native_control(lines, "Red Willow", 3) == (None, None)
 
 
+def test_nebraska_paired_sources_preserve_blue_book_discrepancy_and_pin_both(tmp_path, monkeypatch):
+    from scripts import nebraska_canvass as ne, results_turnout_history as history
+
+    date, feed = ne.PAIRED_ELECTION, "NE-2002-general-election-canvass"
+    url, _ = ne.routes(date)
+    report = ne.BOOKS[date]
+    header = ("Nebraska General Election Statistics November 5, 2002 Abstract of Votes "
+              "Number of People Voting Number of Persons Voting Registered Voters")
+    markers = {"Douglas": "1", "Johnson": "2", "Sarpy": "3"}
+    county_rows = [f"{name}{markers.get(name, '')} ... 1 4 0 0 0 0 4 0 0 2 2" for name in ne.COUNTIES]
+    native = [[header, *county_rows[:31]], [header, *county_rows[31:62]],
+              [header, *county_rows[62:], "TOTAL ... 93 372 0 0 0 0 372 0 0 184 184"]]
+    control = "-- November 5, 2002 186 372"
+    facts = ne.blue_book_query(native, control)
+    assert facts["blue_book_printed_statewide_voters"] == 184 and facts["total"]["ballots_cast"] == 186
+    with pytest.raises(ValueError, match="disagree with the official canvass"):
+        ne.blue_book_query(native, "-- November 5, 2002 184 372")
+
+    calls = []
+
+    def parse(companion, main):
+        calls.append((companion, main))
+        if companion != b"approved":
+            raise ValueError("Revised report does not reconcile")
+        return facts
+
+    monkeypatch.setattr(ne, "parse_blue_book", parse)
+    prior = {}
+
+    def refresh(companion):
+        bodies = {url: f'<a href="{report}">Official Results</a>'.encode(),
+                  report: b"state control", ne.BLUE_BOOK: companion}
+        collector = intake.Collector(tmp_path, prior, EMPTY_STOPS, NOW)
+        monkeypatch.setattr(collector, "acquire", lambda url: (bodies[url], {"origin": "test"}))
+        prior[feed] = history.collect_county_archive(collector, feed)
+        return prior[feed]
+
+    accepted = refresh(b"approved")
+    assert accepted["status"] == "reported" and refresh(b"approved") == accepted
+    held = refresh(b"revised")
+    assert held["status"] == "retained_after_failure" and held["data"] == accepted["data"]
+    assert calls == [(b"approved", b"state control"), (b"revised", b"state control")]
+    originals = history.county_archive_originals(prior)
+    assert set(originals) == {feed, feed + "-blue-book"}
+    for key, body in ((feed, b"state control"), (feed + "-blue-book", b"approved")):
+        (tmp_path / originals[key]["filename"]).write_bytes(body)
+    assert history.verify_county_archive_originals(prior, tmp_path) == 2
+    assert history.county_archive_rows(prior)[-1]["reported_total_voters"] == 186
+
+
 def test_nebraska_old_canvass_preserves_printed_total_and_malformed_component():
     from scripts import nebraska_canvass as ne, results_turnout_history as history
 
