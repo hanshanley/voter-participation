@@ -129,6 +129,15 @@ numeric literals. Primary rows are excluded, missing years are never zero,
 and mismatched printed rates are withheld without replacing the counts.
 This series does not overwrite the current canonical statewide observation.
 
+West Virginia's 2008-2016 general-election county reports use the same
+county-archive sweep. Each PDF must match the declared election, all 55
+counties, and the separately printed statewide counts. The 2008 and 2010
+reports explicitly derive their numerator from voter history, so their
+counts are exported as `reported_voter_history_credits`. The other three
+editions keep the source's `Ballots Cast` label. Rates use the registration
+denominator printed in the same report. The resulting query is separate
+from EAC and does not change modern count shards or certify any 2026 result.
+
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

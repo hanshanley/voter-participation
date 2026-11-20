@@ -443,6 +443,35 @@ def test_county_archive_revisions_keep_full_facts(tmp_path, monkeypatch):
     assert history.county_archive_rows({feed: retained})[0]["source_status"] == "retained_after_failure"
 
 
+@pytest.mark.parametrize("election,header,measure", [
+    ("2008-11-04", ["County Registered Voters Turnout Ballots Cast", "(based on voter history)"], "voter_history_credits"),
+    ("2014-11-04", ["County Ballots Cast Registered Voters Turnout"], "ballots_cast"),
+])
+def test_west_virginia_archive_keeps_literal_basis_and_requires_reconciled_counties(election, header, measure):
+    from scripts import results_turnout_history as history
+
+    year = election[:4]
+    lines = [f"{year} General", *header, *(f"{name} 2 4 50.0%" for name in history.WV_COUNTIES),
+             "West Virginia 110 220 50.0%"]
+    query = history.west_virginia_archive_query(lines, election)
+    feed = f"WV-{year}-general-election-turnout-pdf"
+    url = f"https://sos.wv.gov/media/{history.WV_ARCHIVES[election]}/download?inline"
+    data = {"status": "reported", "source": {"url": history.WV_ARCHIVE_URL},
+            "data": {"election_date": election, "report": {"url": url, "bytes": 1, "sha256": "a" * 64},
+                     "complete_native_query": query, "participation_observation_qualified": False}}
+    rows = history.county_archive_rows({feed: data})
+    assert len(rows) == 56
+    assert rows[-1]["participation_measure"] == measure
+    assert rows[-1]["qualified_same_report_registration_fraction_pct"] == 50
+    assert rows[-1]["reported_ballots_cast"] == (110 if measure == "ballots_cast" else None)
+    assert rows[-1].get("reported_voter_history_credits") == (110 if measure == "voter_history_credits" else None)
+    with pytest.raises(ValueError, match="state total"):
+        history.west_virginia_archive_query([*lines[:-1], "West Virginia 111 220 50.0%"], election)
+    held = history.west_virginia_archive_query([*lines[:-1], "West Virginia 110 220 49.9%"], election)
+    data["data"]["complete_native_query"] = held
+    assert history.county_archive_rows({feed: data})[-1]["rate_hold_reason"] == "printed_registration_fraction_disagrees"
+
+
 def test_county_archive_outage_attempts_shared_index_once_per_collection(tmp_path, monkeypatch):
     from scripts import results_turnout_history as history
 

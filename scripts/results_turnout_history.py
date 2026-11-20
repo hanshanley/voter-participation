@@ -85,6 +85,16 @@ CA_COUNTIES = (
     "Santa Clara|Santa Cruz|Shasta|Sierra|Siskiyou|Solano|Sonoma|Stanislaus|Sutter|Tehama|Trinity|"
     "Tulare|Tuolumne|Ventura|Yolo|Yuba"
 ).split("|")
+WV_ARCHIVE_URL = "https://sos.wv.gov/elections/election-data/historical-voter-turnout"
+WV_ARCHIVES = {"2008-11-04": 655, "2010-11-02": 647, "2012-11-06": 649, "2014-11-04": 651, "2016-11-08": 653}
+WV_COUNTIES = (
+    "Barbour|Berkeley|Boone|Braxton|Brooke|Cabell|Calhoun|Clay|Doddridge|Fayette|Gilmer|Grant|"
+    "Greenbrier|Hampshire|Hancock|Hardy|Harrison|Jackson|Jefferson|Kanawha|Lewis|Lincoln|Logan|"
+    "Marion|Marshall|Mason|McDowell|Mercer|Mineral|Mingo|Monongalia|Monroe|Morgan|Nicholas|Ohio|"
+    "Pendleton|Pleasants|Pocahontas|Preston|Putnam|Raleigh|Randolph|Ritchie|Roane|Summers|Taylor|"
+    "Tucker|Tyler|Upshur|Wayne|Webster|Wetzel|Wirt|Wood|Wyoming"
+).split("|")
+WV_HISTORY_NOTE = "The source labels the count Ballots Cast (based on voter history)."
 COUNTY_ARCHIVES = {
     **{f"CA-{election[:4]}-general-election-turnout-pdf": ("CA", election) for election in CA_ARCHIVES},
     "KS-2022-general-election-turnout-workbook": ("KS", "2022-11-08"),
@@ -93,6 +103,7 @@ COUNTY_ARCHIVES = {
     "NJ-2023-general-election-turnout-pdf": ("NJ", "2023-11-07"),
     "NJ-2024-general-election-turnout-pdf": ("NJ", "2024-11-05"),
     "NJ-2025-general-election-turnout-pdf": ("NJ", "2025-11-04"),
+    **{f"WV-{election[:4]}-general-election-turnout-pdf": ("WV", election) for election in WV_ARCHIVES},
 }
 COUNTY_ARCHIVE_CSV = "participation-state-county-turnout-archives.csv"
 BUXTON_FEED = "ME-buxton-town-turnout"
@@ -552,12 +563,53 @@ def california_report(body, election):
     return query
 
 
+def west_virginia_archive_query(lines, election):
+    year = int(election[:4])
+    by_history = year in (2008, 2010)
+    header = ["County Registered Voters Turnout Ballots Cast", "(based on voter history)"] if by_history else [
+        "County Ballots Cast Registered Voters Turnout"]
+    if election not in WV_ARCHIVES or lines[:1 + len(header)] != [f"{year} General", *header]:
+        raise ValueError("West Virginia historical election or measure header differs")
+    native = []
+    for line in lines[1 + len(header):]:
+        match = re.fullmatch(r"([A-Za-z ]+?) ([0-9,]+) ([0-9,]+) ([0-9]{1,3}\.[0-9]%)", line)
+        if not match:
+            raise ValueError("Unexpected West Virginia turnout table row")
+        name, numerator, stock, rate = match.groups()
+        votes, registered = integer(numerator), integer(stock)
+        if not 0 <= votes <= registered or Decimal(rate[:-1]) > 100:
+            raise ValueError("West Virginia turnout exceeds its same-report denominator")
+        native.append({"county": name, "ballots_cast": votes, "registered": registered, "printed_percent": rate})
+    if [row["county"] for row in native] != [*WV_COUNTIES, "West Virginia"]:
+        raise ValueError("West Virginia county roster or state total differs")
+    for key in ("ballots_cast", "registered"):
+        if sum(row[key] for row in native[:-1]) != native[-1][key]:
+            raise ValueError("West Virginia county rows do not reconcile to the state total")
+    return {"election_date": election, "counties": native[:-1], "total": {**native[-1], "county": "TOTAL"},
+            "native_numerator": "voter_history_credits" if by_history else "ballots_cast",
+            "registration_basis": "Report's registered voters",
+            "report_note": WV_HISTORY_NOTE if by_history else None,
+            "extraction_method": "pdf_reviewed_county_table", "native_lines": lines}
+
+
+def west_virginia_archive_report(body, election):
+    from pypdf import PdfReader
+
+    pdf = PdfReader(io.BytesIO(body), strict=True)
+    if len(pdf.pages) != 1:
+        raise ValueError("West Virginia historical turnout needs a single report page")
+    lines = [" ".join(line.split()) for line in pdf.pages[0].extract_text(extraction_mode="layout").splitlines()]
+    return west_virginia_archive_query([line for line in lines if line], election)
+
+
 def county_archive_routes(state, election):
     year = int(election[:4])
     if state == "CA":
         if election == CA_CURRENT_ELECTION:
             return CA_URL, CA_CURRENT_ROUTE
         return CA_URL, re.escape(california_report_url(election))
+    if state == "WV":
+        return WV_ARCHIVE_URL, rf"https://sos\.wv\.gov/media/{WV_ARCHIVES[election]}/download\?inline=?"
     return (KS_URL, kansas_report_url(year)) if state == "KS" else (NJ_URL, new_jersey_report_url(year))
 
 
@@ -586,6 +638,8 @@ def collect_county_archive(collector, feed):
                      else california_report(body, election))
         elif state == "KS":
             query = kansas_workbook(body)
+        elif state == "WV":
+            query = west_virginia_archive_report(body, election)
         else:
             query = new_jersey_report(body, election, allow_amended=True)
         data = {"election_date": election, "report": report, "complete_native_query": query,
@@ -628,6 +682,11 @@ def county_archive_rows(entries, *, current_california=False):
                 raise ValueError("California scan query differs from its reviewed transcription")
             counties = [*query["counties"], query["total"]]
             county_conflict = False
+        elif state == "WV":
+            if query != west_virginia_archive_query(query["native_lines"], election):
+                raise ValueError("West Virginia turnout differs from its retained source rows")
+            counties = [*query["counties"], query["total"]]
+            county_conflict = False
         else:
             new_jersey_controls(query, election)
             if data.get("date") != query["published_date"]:
@@ -644,6 +703,10 @@ def county_archive_rows(entries, *, current_california=False):
                     (Decimal(ballots) * 100 / registered).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
                     != Decimal(native["printed_registered_percent"][:-1])):
                 hold = "printed_registration_fraction_disagrees"
+            if state == "WV" and not hold and (
+                    (Decimal(ballots) * 100 / registered).quantize(Decimal(".1"), rounding=ROUND_HALF_UP)
+                    != Decimal(native["printed_percent"][:-1])):
+                hold = "printed_registration_fraction_disagrees"
             if current_california and not hold and query["registration_basis"] != CA_REGISTRATION_NOTE:
                 hold = "registration_timing_unqualified"
             measure = query.get("native_numerator", "ballots_cast")
@@ -652,9 +715,11 @@ def county_archive_rows(entries, *, current_california=False):
                 "state_code": state, "year": year, "election_date": election,
                 "election_type": "off_year_general" if year % 2 else "presidential" if year % 4 == 0 else "midterm",
                 "geography_level": "state" if statewide else "county",
-                "geography": {"KS": "Kansas", "NJ": "New Jersey", "CA": "California"}[state] if statewide else county,
+                "geography": {"KS": "Kansas", "NJ": "New Jersey", "CA": "California", "WV": "West Virginia"}[state]
+                if statewide else county,
                 "reported_ballots_cast": ballots if measure == "ballots_cast" else None,
                 "reported_total_voters": ballots if measure == "total_voters" else None,
+                **({"reported_voter_history_credits": ballots} if measure == "voter_history_credits" else {}),
                 "participation_measure": measure,
                 "reported_registered_voters": registered,
                 "registration_basis": query.get("registration_basis", "Report's registered voters"),
