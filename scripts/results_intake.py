@@ -42,7 +42,7 @@ OFFICIAL = {**OFFICIAL, **results_state_statistics.OFFICIAL}
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = "participation.automatic_results_registry.v1"
 STATE_CONTRACT = "participation.automatic_results_compressed_state.v1"
-MAX_STATE_BYTES = 300_000_000
+MAX_STATE_BYTES = 400_000_000
 MAX_RECOVERY_NON_STATE_BYTES = 100_000_000
 CHALLENGES = [r"verify (?:that )?you are human", r"cf-chl-",
               r"incapsula incident id", r"captcha challenge"]

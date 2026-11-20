@@ -301,7 +301,7 @@ turnout percentage controls. Those controls are retained as evidence,
 not published as turnout rates. A parser or OCR environment change
 reopens unchanged rejected editions for verification.
 
-Checkpoint recovery limits the expanded collector state to 300 MB and the
+Checkpoint recovery limits the expanded collector state to 400 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.
 Recovery still checks the exact predecessor, inventory and checksums.
 
