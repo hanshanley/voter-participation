@@ -786,6 +786,43 @@ def test_colorado_statistics_revisions_reconcile_and_preserve_held_precinct(tmp_
                    for row in rows if row.get("geography_level") != "state") == 74
 
 
+def test_colorado_retains_reviewed_ballot_shortfalls_but_rejects_new_ones(tmp_path, monkeypatch):
+    from scripts import colorado_voting_statistics as co, results_turnout_history as history
+
+    date, feed = "2014-11-04", "CO-2014-general-voting-statistics"
+    index, report = co.routes(date)
+    authority = (f"<title>2014 Nov 4 • General • Voting Statistics • State of Colorado | State of Colorado</title>"
+                 f'<a href="{report}">Download</a>').encode()
+    rows = [",,Active Voters,Inactive Voters,Total Voters,Total Ballots Cast", ",,,,,",
+            "State,Colorado,12800,0,12800,6436"]
+    for i, name in enumerate(co.COUNTIES):
+        gap = co.COUNTY_BALLOT_GAPS[date].get(name, 0)
+        rows.extend([f"County,{name},200,0,200,100", f"Precinct,{i:010d},200,0,200,{100 - gap}"])
+    body = "\n".join(rows).encode()
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    monkeypatch.setattr(collector, "acquire", lambda url: (authority if url == index else body, {"origin": "test"}))
+    accepted = {feed: history.collect_county_archive(collector, feed)}
+    county = history.county_archive_rows(accepted)
+    statewide = next(row for row in county if row["geography_level"] == "state")
+    assert statewide["reported_ballots_cast"] == 6436
+    assert statewide["rate_hold_reason"] == "state_ballot_control_disagrees"
+    assert statewide["state_ballot_shortfall"] == 36
+    assert statewide["qualified_same_report_registration_fraction_pct"] is None
+    assert "by 36" in statewide["report_note"]
+    units = history.county_archive_rows(accepted, colorado_precincts=True)
+    assert {row["county"]: row["county_ballot_shortfall"] for row in units
+            if row["rate_hold_reason"] == "county_ballot_control_disagrees"} == {
+                "Larimer": 43, "Rio Grande": 48, "Summit": 78}
+    assert sum(row["qualified_same_report_registration_fraction_pct"] is None for row in units) == 3
+    with pytest.raises(ValueError, match="state control"):
+        co.parse(body.replace(b",6436\n", b",6437\n"), date)
+    with pytest.raises(ValueError, match="Larimer precincts"):
+        co.parse(body.replace(b",200,0,200,57\n", b",200,0,200,56\n"), date)
+    corrected = body.replace(b",6436\n", b",6400\n").replace(b",200,0,200,57\n", b",200,0,200,100\n")
+    query = co.parse(corrected, date)
+    assert "state_ballot_shortfall" not in query and "Larimer" not in query["county_ballot_shortfalls"]
+
+
 def test_nebraska_current_county_reports_keep_independent_last_good_editions(tmp_path, monkeypatch):
     from scripts import nebraska_county_reports as reports
 

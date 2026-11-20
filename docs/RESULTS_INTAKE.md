@@ -189,17 +189,25 @@ ballots-cast column, all 23 counties, and an independently printed statewide
 total per report. No county registration denominator is printed, so the
 export contains ballot counts only and does not qualify registration rates.
 
-Colorado's 2022 and 2024 Voting Statistics CSVs reconcile each precinct
+Colorado's 2014–2024 Voting Statistics CSVs check each precinct
 inventory to the 64 printed county controls and the counties to the printed
 state control. Total registration includes active and inactive voters.
 State and county rows appear in the historical archive; the separate
 `participation-co-precinct-voting-statistics.csv.gz` keeps every native ID,
 count, registration field and rate hold. A count above registration is
 preserved but does not produce a rate. Precinct IDs alone do not authorize
-a polygon join. The 2020 export follows the same count reconciliation but
-carries a party subheader on registration. Its literal columns remain in
+a polygon join. The 2018 and 2020 exports carry a party subheader on
+registration. Their literal columns remain in
 the complete source query; only verified ballot counts appear in the
-display and participation CSVs.
+display and participation CSVs. The 2014 printed statewide count exceeds
+the sum of printed county counts by 36. Printed county counts also exceed
+the sum of reported precinct counts in Larimer (43), Rio Grande (48), and
+Summit (78) in 2014 and Larimer (32) in 2016. The CSVs preserve the
+published counts and exact gaps, hold the respective statewide or precinct
+rates, and do not allocate the differences. Independently printed county
+counts and their same-report registration fractions are retained. The
+collector accepts a corrected zero gap but rejects any unreviewed gap;
+registration reconciliation remains exact.
 
 For independent verification from publisher PDFs, extract the nested
 `inputs/complete-source-results.zip` from the analysis download. Its

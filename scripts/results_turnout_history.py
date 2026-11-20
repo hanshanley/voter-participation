@@ -1018,9 +1018,11 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             count_only = query["registration_basis"] is None
             if colorado_precincts:
                 for county, units in query["precincts"].items():
+                    shortfall = query.get("county_ballot_shortfalls", {}).get(county)
                     for unit in units:
                         n, d = unit["ballots_cast"], unit["registered"]
                         hold = (colorado_voting_statistics.REGISTRATION_HOLD if count_only else
+                                "county_ballot_control_disagrees" if shortfall else
                                 "ballots_exceed_registered" if n > d else
                                 "no_positive_registration_denominator" if not d else None)
                         if count_only:
@@ -1029,10 +1031,16 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                                      "registration_basis": query["registration_basis"],
                                      "qualified_same_report_registration_fraction_pct": None if hold else 100 * n / d,
                                      "rate_hold_reason": hold, "source_status": entry["status"],
+                                     **({"county_ballot_shortfall": shortfall} if shortfall else {}),
                                      "source_url": report["url"], "source_sha256": report["sha256"],
                                      "source_bytes": report["bytes"]})
                 continue
             counties = [*query["counties"], query["total"]]
+            if query.get("state_ballot_shortfall"):
+                counties[-1] = {**counties[-1], "state_ballot_shortfall": query["state_ballot_shortfall"],
+                                "rate_hold_reason": "state_ballot_control_disagrees"}
+            counties = [{**row, "county_ballot_shortfall": query["county_ballot_shortfalls"][row["county"]]}
+                        if row["county"] in query.get("county_ballot_shortfalls", {}) else row for row in counties]
             if count_only:
                 counties = [{**row, "registered": None, "rate_hold_reason": colorado_voting_statistics.REGISTRATION_HOLD}
                             for row in counties]
@@ -1110,6 +1118,8 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 "reported_mail_voters": native.get("mail_voters"),
                 "qualified_same_report_registration_fraction_pct": None if hold else 100 * ballots / registered,
                 "rate_hold_reason": hold,
+                **{field: native[field] for field in ("state_ballot_shortfall", "county_ballot_shortfall")
+                   if field in native},
                 "advance_ballots_returned_by_mail": native.get("advance_ballots_returned_by_mail"),
                 "reported_ballots_rejected": native.get("ballots_rejected"),
                 "reported_turnout_pct": native.get("printed_registered_percent", native.get("printed_percent")),
