@@ -15,7 +15,7 @@ if not BUNDLE.exists():
 
 def test_published_cells_preserve_native_denominators_and_suppression():
     rows = cps.build(BUNDLE.read_bytes())
-    assert len(rows) == 4420
+    assert len(rows) == 7072
     keyed = {(r["year"], r["source_table"], r["state_code"], r["group"]): r for r in rows}
     assert len(keyed) == len(rows)
     usa = keyed[2020, "4c", "US", "18 to 24"]
@@ -28,6 +28,11 @@ def test_published_cells_preserve_native_denominators_and_suppression():
     assert (mature["native_group"], mature["cvap_voted_pct"], mature["cvap_voted_moe_pp"]) == (
         "65 years and over", 76.1, 3.9)
     assert cps.summary(rows)["states_and_dc"] == 51
+    age_2010 = keyed[2010, "4c", "US", "25 to 44"]
+    assert (age_2010["cvap_voted_pct"], age_2010["cvap_voted_moe_pp"]) == (37.1, 0.5)
+    assert (2010, "4c", "US", "25 to 34") not in keyed
+    assert keyed[2012, "4c", "US", "25 to 34"]["cvap_voted_pct"] == 53.5
+    assert keyed[2014, "4b", "US", "Total"]["cvap_voted_pct"] == 41.9
 
 
 def test_changed_workbook_and_incomplete_bundle_are_rejected():

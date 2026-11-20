@@ -789,7 +789,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         "private survey refits, new geographic joins or observed-history claims.\n").encode()
     if "inputs/" + CPS_INPUT in members:
         members["REPRODUCE.txt"] += (
-            "\nThe published CPS tables require openpyxl==3.1.5. The included original "
+            "\nThe published CPS tables require openpyxl==3.1.5 and xlrd>=2. The included original "
             "workbooks and source checksums reproduce the comprehensive state CSV.\n"
             f"PYTHONPATH=code python{python_version} -m scripts.cps_published_state_tables "
             f"inputs/{CPS_INPUT} reproduced-cps.csv\n"
