@@ -2784,6 +2784,14 @@ python3.12 -m scripts.results_intake refresh-selected \
   --sources MD-2016-general-precinct-affiliation-turnout,MD-2018-general-precinct-affiliation-turnout,MD-2020-general-precinct-affiliation-turnout,MD-2022-general-precinct-affiliation-turnout,MD-2024-general-precinct-affiliation-turnout
 ```
 
+The separate Maryland 2022 map companion joins the 118 Howard and 12 Talbot
+precincts to the election-day reference and the Maryland Department of
+Planning's dated, full-precision GIS layers. It maps 149,586 records and leaves
+24 unassigned in the county totals. The companion retains the original layer
+metadata and all statewide factual query rows for that edition. Other
+localities remain table-only; for example, Somerset's archived polygons
+overlap even at full precision.
+
 ### Washington: general-election turnout table
 
 The collector polls the Secretary of State's statewide turnout series.
