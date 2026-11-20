@@ -35,6 +35,12 @@ WY_CANVASS_FEED = "WY-2026-precinct-ballot-canvass"
 WY_CANVASS_URL = ("https://sos.wyo.gov/Elections/Docs/2026/Results/General/"
                   "2026_Wyoming_General_Election_Results.pdf")
 VA_FEED = "VA-general-election-turnout"
+VA_LOCALITY_DATE = "2022-11-08"
+VA_LOCALITY_URL = ("https://results.elections.virginia.gov/vaelections/"
+                   "2022%20November%20General/Site/Statistics/Turnout.html")
+VA_LOCALITY_HEADER = ("Locality Name", "Early Voting", "Election Day", "By Mail**",
+                     "Provisional", "Totals", "", "Curbside***")
+VA_LOCALITY_ROSTER = "fdd899c080512865c463433dbba8b4de51a5e6344fd65337484267dabdc5f0bf"
 VA_URL = "https://www.elections.virginia.gov/resultsreports/registrationturnout-statistics/"
 VA_HEADER = ("Year", "Total Registered", "Percentage Change from Previous Year", "Total Voting",
              "Turnout (% Voting of Total Registered)", "Voting Absentee (Included in Total Voting)")
@@ -121,6 +127,7 @@ WY_COUNTIES = (
     "Uinta|Washakie|Weston"
 ).split("|")
 COUNTY_ARCHIVES = {
+    "VA-2022-general-election-locality-turnout": ("VA", VA_LOCALITY_DATE),
     **{f"CO-{election[:4]}-general-voting-statistics": ("CO", election)
        for election in colorado_voting_statistics.EDITIONS},
     **{f"CA-{election[:4]}-general-election-turnout-pdf": ("CA", election) for election in CA_ARCHIVES},
@@ -697,6 +704,8 @@ def wyoming_archive_report(body, election):
 
 def county_archive_routes(state, election):
     year = int(election[:4])
+    if state == "VA" and election == VA_LOCALITY_DATE:
+        return VA_LOCALITY_URL, re.escape(VA_LOCALITY_URL)
     if state == "CO":
         index, report = colorado_voting_statistics.routes(election)
         return index, re.escape(report)
@@ -844,6 +853,50 @@ def wyoming_precinct_exports(entry):
              "error_stage": entry.get("error_stage")}, wy_profile.csv_bytes(rows))
 
 
+def virginia_locality_query(rows, clock):
+    if (len(rows) != 135 or any(len(row) != 8 for row in rows)
+            or tuple(rows[0]) != VA_LOCALITY_HEADER or rows[-1][0] != "Total"):
+        raise ValueError("Unexpected Virginia locality turnout table")
+    if pin(encoded(sorted(row[0] for row in rows[1:-1])))["sha256"] != VA_LOCALITY_ROSTER:
+        raise ValueError("Virginia locality roster differs")
+    if not re.fullmatch(r"\d{2}/\d{2}/\d{4} \d{2}:\d{2} [AP]M", clock):
+        raise ValueError("Missing Virginia turnout report clock")
+    edition = datetime.strptime(clock, "%m/%d/%Y %I:%M %p").isoformat()
+    if edition[:10] < VA_LOCALITY_DATE:
+        raise ValueError("Virginia turnout report predates election")
+    fields = ("early_voting", "election_day", "by_mail", "provisional", "ballots_cast", "curbside")
+    facts = []
+    for row in rows[1:]:
+        if row[6] != "":
+            raise ValueError("Unexpected Virginia turnout fields")
+        values = [integer(row[i]) for i in (1, 2, 3, 4, 5, 7)]
+        if sum(values[:4]) != values[4] or values[5] > values[4]:
+            raise ValueError("Virginia locality turnout modes do not reconcile")
+        facts.append({"county": "TOTAL" if row[0] == "Total" else row[0],
+                      "registered": None, **dict(zip(fields, values, strict=True))})
+    if any(sum(row[key] for row in facts[:-1]) != facts[-1][key] for key in fields):
+        raise ValueError("Virginia localities do not reconcile to the printed state control")
+    return {"native_rows": [list(row) for row in rows], "native_clock": clock, "edition": edition,
+            "counties": facts[:-1], "total": facts[-1], "registration_basis": None,
+            "report_note": "Official turnout by county and independent city. Curbside is already included. "
+                           "A compatible registration denominator is not in this report.",
+            "extraction_method": "statewide_locality_turnout_html"}
+
+
+def virginia_locality_report(body, election):
+    text = body.decode("utf-8-sig")
+    clocks = re.findall(r'<p class="asOf">Page generated on ([^<]+)</p>', text)
+    if (election != VA_LOCALITY_DATE or len(clocks) != 1
+            or re.findall(r"<title>\s*([^<]+?)\s*</title>", text) != ["2022 November General"]
+            or '<h2 class="entry-title">Official Results</h2>' not in text
+            or "Curbside numbers are included in the Total." not in text):
+        raise ValueError("Virginia official general-election turnout identity differs")
+    tables = [rows for rows in html_tables(body) if rows and rows[0] == VA_LOCALITY_HEADER]
+    if len(tables) != 1:
+        raise ValueError("Missing or repeated Virginia turnout table")
+    return virginia_locality_query(tables[0], clocks[0])
+
+
 def collect_county_archive(collector, feed, *, reuse_checked_week=False):
     current = feed == CA_CURRENT_FEED
     state, election = ("CA", CA_CURRENT_ELECTION) if current else COUNTY_ARCHIVES[feed]
@@ -860,6 +913,11 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
 
     def parse(index):
         nonlocal rejected_scan
+        if state == "VA":
+            query = virginia_locality_report(index, election)
+            return {"election_date": election, "date": query["edition"],
+                    "report": {"url": index_url, **pin(index)},
+                    "complete_native_query": query, "participation_observation_qualified": False}
         if state == "CO":
             url = colorado_voting_statistics.discover(index, election)
         elif current:
@@ -939,7 +997,7 @@ def county_archive_originals(entries):
     originals = {}
     for feed, (state, election) in sorted(COUNTY_ARCHIVES.items()):
         data = (entries.get(feed) or {}).get("data")
-        if state not in ("CO", "NE", "WV", "WY") or data is None:
+        if state not in ("CO", "NE", "VA", "WV", "WY") or data is None:
             continue
         report = data["report"]
         _, pattern = county_archive_routes(state, election)
@@ -947,7 +1005,7 @@ def county_archive_originals(entries):
                 or type(report["bytes"]) is not int or not 0 < report["bytes"] <= county_archive_limit(state)
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError(f"Invalid original county report pin: {feed}")
-        originals[feed] = {"filename": feed + (".csv" if state == "CO" else ".pdf"),
+        originals[feed] = {"filename": feed + {"CO": ".csv", "VA": ".html"}.get(state, ".pdf"),
                            **{key: report[key] for key in ("url", "bytes", "sha256")}}
         if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION:
             supporting = data["supporting_report"]
@@ -1018,7 +1076,7 @@ def verify_county_archive_originals(entries, directory):
     for feed in originals.keys() & COUNTY_ARCHIVES.keys():
         body = checked_original(feed)
         state, election = COUNTY_ARCHIVES[feed]
-        parse = {"WV": west_virginia_archive_report, "WY": wyoming_archive_report,
+        parse = {"VA": virginia_locality_report, "WV": west_virginia_archive_report, "WY": wyoming_archive_report,
                  "NE": nebraska_canvass.parse, "CO": colorado_voting_statistics.parse}[state]
         query = (nebraska_canvass.parse_blue_book(checked_original(feed + "-blue-book"), body)
                  if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION else parse(body, election))
@@ -1107,6 +1165,13 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 raise ValueError("California scan query differs from its reviewed transcription")
             counties = [*query["counties"], query["total"]]
             county_conflict = False
+        elif state == "VA":
+            if (query != virginia_locality_query(query["native_rows"], query["native_clock"])
+                    or query["edition"] != data.get("date")
+                    or any(source.get(field) != report[field] for field in ("bytes", "sha256"))):
+                raise ValueError("Virginia locality turnout differs from its retained source rows")
+            counties = [*query["counties"], query["total"]]
+            county_conflict = False
         elif state == "WV":
             if query != west_virginia_archive_query(query["native_lines"], election):
                 raise ValueError("West Virginia turnout differs from its retained source rows")
@@ -1150,9 +1215,10 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             rows.append({
                 "state_code": state, "year": year, "election_date": election,
                 "election_type": "off_year_general" if year % 2 else "presidential" if year % 4 == 0 else "midterm",
-                "geography_level": "state" if statewide else "county",
+                "geography_level": ("state" if statewide else "county_equivalent"
+                                    if state == "VA" and county.endswith(" CITY") else "county"),
                 "geography": {"CO": "Colorado", "KS": "Kansas", "NE": "Nebraska", "NJ": "New Jersey", "CA": "California", "WV": "West Virginia",
-                              "WY": "Wyoming"}[state]
+                              "VA": "Virginia", "WY": "Wyoming"}[state]
                 if statewide else county,
                 "reported_ballots_cast": ballots if measure == "ballots_cast" else None,
                 "reported_total_voters": ballots if measure == "total_voters" else None,
@@ -1170,6 +1236,8 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 "rate_hold_reason": hold,
                 **{field: native[field] for field in ("state_ballot_shortfall", "county_ballot_shortfall")
                    if field in native},
+                **{"reported_" + field: native[field] for field in
+                   ("early_voting", "election_day", "by_mail", "provisional", "curbside") if state == "VA"},
                 "advance_ballots_returned_by_mail": native.get("advance_ballots_returned_by_mail"),
                 "reported_ballots_rejected": native.get("ballots_rejected"),
                 "reported_turnout_pct": native.get("printed_registered_percent", native.get("printed_percent")),

@@ -858,6 +858,41 @@ def test_colorado_retains_reviewed_ballot_shortfalls_but_rejects_new_ones(tmp_pa
     assert "state_ballot_shortfall" not in query and "Larimer" not in query["county_ballot_shortfalls"]
 
 
+def test_virginia_locality_report_replays_and_keeps_curbside_out_of_the_sum(tmp_path, monkeypatch):
+    from scripts import results_turnout_history as history
+
+    names = sorted([f"TEST {i} COUNTY" for i in range(95)] + [f"TEST {i} CITY" for i in range(38)])
+    monkeypatch.setattr(history, "VA_LOCALITY_ROSTER", pin(encoded(names))["sha256"])
+    rows = [history.VA_LOCALITY_HEADER, *[(name, "1", "3", "2", "0", "6", "", "1") for name in names],
+            ("Total", "133", "399", "266", "0", "798", "", "133")]
+
+    def report(rows):
+        return ("<title>2022 November General</title><h2 class=\"entry-title\">Official Results</h2>"
+                "<p>Curbside numbers are included in the Total.</p>"
+                "<p class=\"asOf\">Page generated on 12/06/2022 02:16 AM</p><table>"
+                + "".join("<tr>" + "".join(f"<td>{value}</td>" for value in row) + "</tr>" for row in rows)
+                + "</table>").encode()
+
+    feed = "VA-2022-general-election-locality-turnout"
+    original = report(rows)
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    monkeypatch.setattr(collector, "acquire", lambda url: (original, {"origin": "fixture"}))
+    result = history.collect_county_archive(collector, feed)
+    entries = {feed: result}
+    exported = history.county_archive_rows(entries)
+    assert len(exported) == 134
+    assert sum(row["geography_level"] == "county_equivalent" for row in exported) == 38
+    assert all(row["rate_hold_reason"] == "registration_not_in_report" for row in exported)
+    assert exported[-1]["reported_ballots_cast"] == 798
+    assert exported[-1]["reported_curbside"] == 133
+    (tmp_path / f"{feed}.html").write_bytes(original)
+    assert history.verify_county_archive_originals(entries, tmp_path) == 1
+    collector.prior = entries
+    original = report([*rows[:-1], ("Total", "133", "399", "266", "0", "931", "", "133")])
+    failure = history.collect_county_archive(collector, feed)
+    assert failure["status"] == "retained_after_failure" and failure["data"] == result["data"]
+
+
 def test_colorado_legacy_mixed_reporting_labels_do_not_become_precincts():
     from scripts import colorado_voting_statistics as co
 

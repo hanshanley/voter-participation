@@ -281,7 +281,7 @@ def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_pa
     assert set(sources) == {
         "KS-general-election-turnout-workbook", "NJ-general-election-turnout-pdf",
         "PA-2026-general-vote-history", "TX-general-election-turnout",
-        "VA-general-election-turnout", "WA-general-election-turnout",
+        "VA-general-election-turnout", "VA-2022-general-election-locality-turnout", "WA-general-election-turnout",
         "MN-native-local", "MN-statewide-reporting",
         "NC-2026-general-vote-history", "NC-general-election-turnout-history", "UF-national-turnout",
         "WY-primary-general-turnout-profile", "WY-2026-precinct-ballot-canvass",

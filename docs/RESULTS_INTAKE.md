@@ -230,10 +230,17 @@ respectively; the export preserves those gaps and reviewed 2012 county
 controls, never allocating the difference. Sources with a party-labeled
 ballot column or without an explicit all-ballot field are not admitted.
 
-For independent verification from publisher PDFs, extract the nested
+Virginia's 2022 statewide locality table preserves 95 counties, 38
+independent cities, and the printed state total of 3,021,956 ballots.
+The early, Election Day, by-mail and provisional columns reconcile
+within each locality and across the state. Curbside is already included
+in the total. The report does not include a registration denominator,
+so no locality registration fractions are calculated.
+
+For independent verification from publisher originals, extract the nested
 `inputs/complete-source-results.zip` from the analysis download. Its
 `inputs/county-report-originals.json` lists the exact URLs, checksums and
-local filenames for accepted Colorado, Nebraska, West Virginia and Wyoming reports.
+local filenames for accepted Colorado, Nebraska, Virginia, West Virginia and Wyoming reports.
 Re-extraction needs `pypdf==6.16.0`; for scanned Nebraska reports it also
 needs the collector's `PyMuPDF==1.26.5` and `rapidocr-onnxruntime==1.4.4`
 with its bundled models. For historical Nebraska scans, original verification
