@@ -92,8 +92,8 @@ general-election link and a reconciled report are required for a separate
 withheld if the registration timing is not verified. The export does not replace
 the current native turnout feed or claim certification.
 
-The historical survey release also replays the sixteen reviewed original Census CPS
-Table 4b/4c workbooks for 2010–2024. The separate
+The historical survey release also replays the eighteen original Census CPS
+Table 4b/4c workbooks for 2008–2024, plus the 2008 Table 4a control. The separate
 `release/participation-cps-published-state-tables.csv.gz` keeps the Census
 survey estimates and their published 90% margins of error for voting-age and
 citizen voting-age populations. Counts are rounded source estimates in
@@ -102,9 +102,14 @@ Both workbook totals and the original group labels are preserved. The race and
 Hispanic-origin groups are not exclusive. This is not a new respondent model,
 an administrative vote count, or a method for allocating state rates locally.
 Legacy `(B)` suppression is retained. The 2010 age bands include 25–44,
-65–74, and 75+, which are not split or merged into the later bands. The
-2008 workbooks are excluded because some statewide rates differ across the
-two tables and the age partition varies by state.
+65–74, and 75+, which are not split or merged into the later bands. The 2008
+Table 4b totals agree exactly with 4a. Each 4c age frame must match its 4a
+total, preserve native age bands, and reconcile its rounded counts and rates.
+Florida, Georgia, and Hawaii age frames fail and are held; their Table 4b
+overall, sex, race and Hispanic-origin rows are not withheld on that basis.
+One impossible South Dakota registration percentage and any margins printed
+without a usable estimate are withheld and flagged; the unmodified originals
+are included. No replacement estimates are computed.
 
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents

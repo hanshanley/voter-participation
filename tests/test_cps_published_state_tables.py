@@ -15,7 +15,7 @@ if not BUNDLE.exists():
 
 def test_published_cells_preserve_native_denominators_and_suppression():
     rows = cps.build(BUNDLE.read_bytes())
-    assert len(rows) == 7072
+    assert len(rows) == 7920
     keyed = {(r["year"], r["source_table"], r["state_code"], r["group"]): r for r in rows}
     assert len(keyed) == len(rows)
     usa = keyed[2020, "4c", "US", "18 to 24"]
@@ -33,6 +33,15 @@ def test_published_cells_preserve_native_denominators_and_suppression():
     assert (2010, "4c", "US", "25 to 34") not in keyed
     assert keyed[2012, "4c", "US", "25 to 34"]["cvap_voted_pct"] == 53.5
     assert keyed[2014, "4b", "US", "Total"]["cvap_voted_pct"] == 41.9
+    assert cps.summary(rows)["held_2008_age_frames"] == ["FL", "GA", "HI"]
+    assert keyed[2008, "4b", "FL", "Total"]["cvap_voted_pct"] == 63.8
+    assert not any((2008, "4c", "FL", group) in keyed for group in ("Total", "18 to 24"))
+    assert (2008, "4c", "AK", "18 to 44") in keyed
+    assert (2008, "4c", "AK", "18 to 24") not in keyed
+    sd = keyed[2008, "4b", "SD", "White alone or in combination"]
+    assert sd["cvap_registered_pct"] is sd["cvap_registered_moe_pp"] is None
+    assert sd["source_markers"]["cvap_registered_pct"] == "invalid_published_rate"
+    assert sd["reported_registered_thousands"] == 423
 
 
 def test_changed_workbook_and_incomplete_bundle_are_rejected():
