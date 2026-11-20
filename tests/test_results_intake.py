@@ -784,6 +784,25 @@ def test_nebraska_county_scan_requires_both_editions_and_does_not_accept_precinc
         reports.scan_query(evidence, "Adams", "Official Results")
 
 
+def test_nebraska_county_scan_corroborates_a_total_only_report():
+    from scripts import nebraska_county_reports as reports
+
+    evidence = [{"receipt": {"page": 1, "dpi": dpi}, "high_confidence": [True], "cells": [
+        ["Summary Results Report", "Official Results"], ["General Election"],
+        ["November 3, 2026", "Adams County, Nebraska"], ["Statistics"], ["TOTAL"],
+        ["Registered Voters - Total", "30"], ["Ballots Cast - Total", "20"],
+        ["Voter Turnout - Total", "66.67%"],
+        ["1 of 3"], ["Election Summary - 11/17/2026 11:00 AM"],
+    ]} for dpi in reports.DPI]
+    query = reports.scan_query(evidence, "Adams", "Official Results")
+    assert query["ballots"] == 20 and query["election_day"] is None
+    assert query["control_percentage"] == "66.67%"
+    for view in evidence:
+        view["cells"][7][1] = "66.66%"
+    with pytest.raises(IntakeError, match="registration-and-rate control"):
+        reports.scan_query(evidence, "Adams", "Official Results")
+
+
 def test_nebraska_paired_sources_preserve_blue_book_discrepancy_and_pin_both(tmp_path, monkeypatch):
     from scripts import nebraska_canvass as ne, results_turnout_history as history
 

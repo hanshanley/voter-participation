@@ -3,6 +3,7 @@
 import io
 import re
 from datetime import datetime
+from decimal import Decimal, ROUND_HALF_UP
 from html.parser import HTMLParser
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
@@ -25,9 +26,17 @@ CLOCK = r"\d{1,2}/\d{1,2}/2026 \d{1,2}:\d{2} [AP]M"
 BALLOT_LINE = re.compile(rf"(?:Ballots Cast - Total ({STOCK})(?: ({STOCK}) ({STOCK}) ({STOCK}))?"
                          rf"|({STOCK})\s*Ballots Cast - Total ({STOCK}) ({STOCK}) ({STOCK}))")
 FOOTER = re.compile(rf".*\bElection Summary\s*-\s*({CLOCK})(?: (?:Page )?\d+ of \d+)?", re.I)
-SCAN_FOOTER = re.compile(r"^[A-Za-z0-9 ]{3,90}-\s*(\d{1,2}/\d{1,2}/2026)\s*(\d{1,2}:\d{2})\s*([AP]M)$",
+SCAN_FOOTER = re.compile(r"^(?:[A-Za-z0-9 ]{3,90})?-\s*(\d{1,2}/\d{1,2}/2026)\s*(\d{1,2}:\d{2})\s*([AP]M)$",
                          re.I)
 SCAN_PAGE = re.compile(r"(?:Page\s*)?1\s*of\s*\d+", re.I)
+
+
+def scan_footer_rows(rows):
+    pairs = [row for row in rows if len(row) == 2]
+    for a, b in zip(rows, rows[1:]):
+        if len(a) == len(b) == 1 and SCAN_PAGE.fullmatch(a[0]):
+            pairs.append([b[0], a[0]])
+    return [row for row in pairs if SCAN_PAGE.fullmatch(row[1]) and SCAN_FOOTER.fullmatch(row[0])]
 
 
 def report_url(county, status):
@@ -133,7 +142,9 @@ def scan_query(evidence, county, status):
                 or len(indices) != 1):
             raise IntakeError("layout_unqualified", "Unsupported county scan layout")
         index = indices[0]
-        stats = next((i for i, key in enumerate(keys) if key.startswith("statisticstotal")), 0)
+        stats = next((i for i, key in enumerate(keys)
+                      if key.startswith("statisticstotal") or (key == "statistics"
+                          and keys[i + 1:i + 2] == ["total"])), 0)
         expected = {"november32026" + county_key + ending for ending in ("", "county", "countynebraska")}
         if (not 2 <= stats < index <= 24 or keys[stats - 1] not in expected
                 or (stats > 2 and (stats != 3 or keys[1] not in {
@@ -141,20 +152,34 @@ def scan_query(evidence, county, status):
                     f"ne{county_key}261103generalelection6110", f"2026generalelection{county_key}county"}))):
             raise IntakeError("layout_unqualified", "County scan does not identify a countywide general-election table")
         layout = "".join(keys[stats:index])
-        if not layout.startswith(("statisticstotalelectionearlyprovisionaldayvoting",
-                                  "statisticstotalelectiondayearlyvotingprovisional")):
-            raise IntakeError("layout_unqualified", "Unreviewed county scan statistics columns")
         values = cells[index][1:]
         high = view["high_confidence"]
-        if (len(values) != 4 or len(high) != 4 or any(type(v) is not bool for v in high)
+        if (len(values) not in (1, 4) or len(high) != len(values) or any(type(v) is not bool for v in high)
                 or not all(re.fullmatch(STOCK, value) for value in values)):
             raise IntakeError("layout_unqualified", "County scan ballot row was not read unambiguously")
-        total, day, early, provisional = map(count, values)
-        if total != day + early + provisional:
-            raise IntakeError("ballot_modes_disagree", "Scanned voting-mode components do not sum to the total")
-        footers = [match for row in cells[index + 1:] if len(row) == 2
-                   and SCAN_PAGE.fullmatch(row[1])
-                   and (match := SCAN_FOOTER.fullmatch(row[0]))]
+        controls = {}
+        if len(values) == 4:
+            if not layout.startswith(("statisticstotalelectionearlyprovisionaldayvoting",
+                                      "statisticstotalelectiondayearlyvotingprovisional")):
+                raise IntakeError("layout_unqualified", "Unreviewed county scan statistics columns")
+            total, day, early, provisional = map(count, values)
+            if total != day + early + provisional:
+                raise IntakeError("ballot_modes_disagree", "Scanned voting-mode components do not sum to the total")
+        else:
+            if not (keys[stats] == "statisticstotal" or keys[stats:stats + 2] == ["statistics", "total"]):
+                raise IntakeError("layout_unqualified", "No explicit total-only statistics column")
+            stock = [r[1] for r in cells[stats:index] if len(r) == 2
+                     and heading_key(r[0]) == "registeredvoterstotal" and re.fullmatch(STOCK, r[1])]
+            rate = [r[1] for r in cells[index + 1:] if len(r) == 2
+                    and heading_key(r[0]) == "voterturnouttotal" and re.fullmatch(r"\d{1,3}\.\d{2}%", r[1])]
+            total, day, early, provisional = count(values[0]), None, None, None
+            if (len(stock) != 1 or len(rate) != 1 or not 0 < count(stock[0]) or total > count(stock[0])
+                    or (Decimal(total * 100) / count(stock[0])).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
+                    != Decimal(rate[0][:-1])):
+                raise IntakeError("layout_unqualified", "Scanned total lacks the printed registration-and-rate control")
+            controls = {"control_registration": count(stock[0]), "control_percentage": rate[0]}
+        footers = [SCAN_FOOTER.fullmatch(row[0]) for row in scan_footer_rows(cells[index + 1:])
+                   if len(values) == 1 or not row[0].startswith("-")]
         if len(footers) != 1:
             raise IntakeError("layout_unqualified", "Missing or ambiguous scanned native report clock")
         date_text, time_text, meridiem = footers[0].groups()
@@ -162,7 +187,7 @@ def scan_query(evidence, county, status):
         if datetime.strptime(clock, "%m/%d/%Y %I:%M %p").date().isoformat() < DATE:
             raise IntakeError("report_clock_regressed", "Scanned report clock precedes the election")
         results.append({"ballots": total, "election_day": day, "early": early,
-                        "provisional": provisional, "report_clock": clock})
+                        "provisional": provisional, "report_clock": clock, **controls})
         confidences.append(high)
     if results[0] != results[1] or not all(a or b for a, b in zip(*confidences, strict=True)):
         raise IntakeError("layout_unqualified", "County scan totals, clock, or confidence did not agree")
@@ -177,10 +202,11 @@ def scan_evidence(views):
         if len(ballots) != 1:
             raise IntakeError("layout_unqualified", "No unique scanned ballot total")
         i = ballots[0]
-        footers = [row for row in rows[i + 1:] if len(row) == 2 and SCAN_PAGE.fullmatch(row[1])
-                   and SCAN_FOOTER.fullmatch(row[0])]
+        controls = [row for row in rows[i + 1:] if len(rows[i]) == 2 and len(row) == 2
+                    and heading_key(row[0]) == "voterturnouttotal"]
+        footers = scan_footer_rows(rows[i + 1:])
         result.append({"receipt": view["receipt"],
-                       "cells": rows[:i + 1] + footers,
+                       "cells": rows[:i + 1] + controls + footers,
                        "high_confidence": [cell["confidence"] >= MINIMUM
                                            for cell in view["role_cells"][i][1:]]})
     return result

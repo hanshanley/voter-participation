@@ -239,9 +239,11 @@ statewide result. Hourly checks reuse unchanged index entries; the weekly
 and explicit scoped checks revalidate the linked editions.
 Image-only PDFs use the bounded two-render first-page fallback. Both
 renders must agree on the countywide identity, election, status, native
-clock and all four ballot fields; the three mode counts must sum to the
-printed total. Unchanged rejected bytes are reconsidered when the parser
-or OCR environment changes.
+clock and ballot count. The three mode counts must sum to the printed
+total; a total-only layout instead needs matching printed registration and
+turnout percentage controls. Those controls are retained as evidence,
+not published as turnout rates. A parser or OCR environment change
+reopens unchanged rejected editions for verification.
 
 Checkpoint recovery limits the expanded collector state to 300 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.
