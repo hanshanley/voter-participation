@@ -160,7 +160,7 @@ jobs:
           tests/test_results_native_kansas.py
           tests/test_results_pdf_cole.py
           tests/test_results_pdf_platte.py
-          tests/test_supported_analytical_release.py
+          tests/test_supported_analytical_release.py tests/test_cps_published_state_tables.py
           tests/test_results_congress.py
           tests/test_congressional_analytical_bridge.py tests/test_congressional_baselines.py
           tests/test_congressional_candidate_identity.py

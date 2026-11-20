@@ -20,6 +20,7 @@ import zipfile
 from scripts.participation_intake.contract import digest, encoded, pin
 from scripts.participation_intake.publisher import GitPublisher
 from scripts import results_granular
+from scripts.cps_published_state_tables import INPUT as CPS_INPUT, INPUT_PATH as CPS_INPUT_PATH
 from scripts.nationwide import STATES
 
 
@@ -44,7 +45,7 @@ CODE_PATHS = (
     "results_ca_county_scan_transcriptions.json",
     "results_nc_vote_history.py",
     "results_pa_vote_history.py", "results_alaska_turnout.py",
-    "eac_county_turnout.py", "philadelphia_divisions.py",
+    "eac_county_turnout.py", "cps_published_state_tables.py", "philadelphia_divisions.py",
     "results_native_congress.py", "results_native_dc.py", "results_native_state_family.py",
     "results_native_oregon.py", "results_native_north_carolina.py", "results_native_idaho.py", "results_native_virginia.py",
     "results_congress.py", "results_house.py",
@@ -577,7 +578,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     model_seed = {key: value for key, value in seed.items()
                   if key not in {"historical_eac_county_facts", "nc_retained_original", "oh_retained_original",
                                  "ga_retained_original", "retained_county_canvasses",
-                                 "tx_retained_history"}}
+                                 "tx_retained_history", "cps_published_state_workbooks"}}
     estimates = build(snapshot, model_seed)
     history_exports = {}
     for code, feed, state_name in (("WA", turnout_history.WA_FEED, "washington"),
@@ -654,6 +655,8 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         artifacts.update(release["files"])
         estimates["house_sources"]["supported_release"] = release["descriptor"]
         result["release_review"] = seed["supported_release_review"]
+        if "cps_published_state_workbooks" in seed:
+            result["cps_published_state_workbooks"] = seed["cps_published_state_workbooks"]
     if "congressional_analytical_review" in seed:
         result["congressional_analytical_review"] = seed["congressional_analytical_review"]
     if "senate_legacy_review" in seed:
@@ -700,6 +703,8 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         members["inputs/model-seed/" + relative(name)] = body
     if "historical_eac_county_facts" in compiled:
         members["inputs/historical-eac-county-facts.json.gz"] = compiled["historical_eac_county_facts"]
+    if "cps_published_state_workbooks" in compiled:
+        members["inputs/" + CPS_INPUT] = compiled["cps_published_state_workbooks"]
     if "nc_retained_original" in compiled:
         members["inputs/nc-retained-original.json"] = compiled["nc_retained_original"]
     if "oh_retained_original" in compiled:
@@ -754,6 +759,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
     for name in ("test_automatic_runtime.py", "test_results_granular.py",
                  "test_automatic_estimates.py", "test_automatic_native_refresh.py",
                  "test_current_source_reconciliation.py", "test_supported_analytical_release.py",
+                 "test_cps_published_state_tables.py",
                  "test_congressional_analytical_bridge.py", "test_congressional_baselines.py",
                  "test_congressional_candidate_identity.py",
                  "test_congressional_category_reconciliation.py",
@@ -781,6 +787,13 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         "Recomputes the complete count/native/model numerical query sets from included\n"
         "public aggregate source facts and safe accepted priors. No source requests,\n"
         "private survey refits, new geographic joins or observed-history claims.\n").encode()
+    if "inputs/" + CPS_INPUT in members:
+        members["REPRODUCE.txt"] += (
+            "\nThe published CPS tables require openpyxl==3.1.5. The included original "
+            "workbooks and source checksums reproduce the comprehensive state CSV.\n"
+            f"PYTHONPATH=code python{python_version} -m scripts.cps_published_state_tables "
+            f"inputs/{CPS_INPUT} reproduced-cps.csv\n"
+        ).encode()
     if "inputs/reviewed-congressional-sources/data/results-intake/district-splits/20261118-01/review.json" in members:
         members["REPRODUCE.txt"] += (
             "\nSeparate split-geometry evidence reproduction uses the project's existing\n"
@@ -844,6 +857,8 @@ def replay(package, output):
         seed["supported_release_review"] = read(package / "inputs/supported-release-review.json")
     if "inputs/historical-eac-county-facts.json.gz" in manifest:
         seed["historical_eac_county_facts"] = (package / "inputs/historical-eac-county-facts.json.gz").read_bytes()
+    if "inputs/" + CPS_INPUT in manifest:
+        seed["cps_published_state_workbooks"] = (package / "inputs" / CPS_INPUT).read_bytes()
     if "inputs/nc-retained-original.json" in manifest:
         seed["nc_retained_original"] = (package / "inputs/nc-retained-original.json").read_bytes()
     if "inputs/oh-retained-original.json" in manifest:
@@ -1046,6 +1061,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     from scripts.results_turnout_history import TX_ARCHIVE_INPUT
     eac_path = ROOT / EAC_INPUT
     eac_facts = eac_path.read_bytes() if eac_path.exists() else None
+    cps_path = ROOT / CPS_INPUT_PATH
+    cps_workbooks = cps_path.read_bytes() if cps_path.exists() else None
     nc_path = ROOT / NC_INPUT
     nc_original = nc_path.read_bytes() if nc_path.exists() else None
     oh_path = ROOT / OH_INPUT
@@ -1062,6 +1079,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "seed": {name: pin(body) for name, body in seed_files(seed_dir).items()},
         "supported_release_review": pin(encoded(release_review)) if release_review else None,
         "historical_eac_counties": pin(eac_facts) if eac_facts is not None else None,
+        "cps_published_state_workbooks": pin(cps_workbooks) if cps_workbooks is not None else None,
         "nc_retained_original": pin(nc_original) if nc_original is not None else None,
         "oh_retained_original": pin(oh_original) if oh_original is not None else None,
         "ga_retained_original": pin(ga_original) if ga_original is not None else None,
@@ -1117,6 +1135,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         seed["supported_release_review"] = release_review
     if eac_facts is not None:
         seed["historical_eac_county_facts"] = eac_facts
+    if cps_workbooks is not None:
+        seed["cps_published_state_workbooks"] = cps_workbooks
     if nc_original is not None:
         seed["nc_retained_original"] = nc_original
     if oh_original is not None:

@@ -92,6 +92,16 @@ general-election link and a reconciled report are required for a separate
 withheld if the registration timing is not verified. The export does not replace
 the current native turnout feed or claim certification.
 
+The historical survey release also replays the ten reviewed original Census CPS
+Table 4b/4c workbooks for 2016–2024. The separate
+`release/participation-cps-published-state-tables.csv.gz` keeps the Census
+survey estimates and their published 90% margins of error for voting-age and
+citizen voting-age populations. Counts are rounded source estimates in
+thousands; `B` and `-` remain source markers rather than reconstructed rates.
+Both workbook totals and the original group labels are preserved. The race and
+Hispanic-origin groups are not exclusive. This is not a new respondent model,
+an administrative vote count, or a method for allocating state rates locally.
+
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents
 the regression suite from consuming the collection/publication/cache-save budget.

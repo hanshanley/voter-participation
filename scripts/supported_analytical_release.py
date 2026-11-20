@@ -594,6 +594,7 @@ def house_model_guard_matrix(decisions):
 
 
 def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None):
+    from scripts import cps_published_state_tables as published_cps
     from scripts import results_indiana_turnout, results_nc_vote_history, results_turnout_history
 
     review = seed["supported_release_review"]
@@ -654,6 +655,10 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
         snapshot.get("granular_sources", {}), current_california=True)
     if current_ca:
         raw_files[results_turnout_history.CA_CURRENT_CSV] = csv_bytes(current_ca)
+    cps_workbooks = seed.get("cps_published_state_workbooks")
+    published_rows = published_cps.build(cps_workbooks) if cps_workbooks is not None else []
+    if published_rows:
+        raw_files[published_cps.CSV] = published_cps.csv_body(published_rows)
     files = {"release/" + name + ".gz": compressed(body) for name, body in raw_files.items()}
     media_types = {path: "text/csv" for path in files}
     retained_offices = []
@@ -688,6 +693,7 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
             "native_query_cells": sum(1 for _ in csv.DictReader(io.StringIO(historical.decode()))),
             "state_demographic_query_cells": len(cps),
             "state_demographic_years": sorted({row["year"] for row in cps}),
+            **({"published_state_tables": published_cps.summary(published_rows)} if published_rows else {}),
             "early_native_source_point_years_kept_as_separate_populations": [1996, 1998, 2002],
             "statewide_survey_rates_not_allocated_locally": True,
         },
