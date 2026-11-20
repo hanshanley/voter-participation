@@ -478,8 +478,9 @@ def selected_local_observation_ids(snapshot, counts=None):
     from scripts import (
         philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_pa_vote_history, results_pdf_county_parent,
-        results_turnout_history, statewide_ballot_totals,
+        results_turnout_history, statewide_ballot_totals, washington_participation,
     )
+    from scripts.national_turnout_release_watch import INDEXES as NATIONAL_RELEASE_INDEXES
     from scripts.results_uf_turnout import IDENTITY as UF_IDENTITY
     from scripts.results_official_congress import CONTRACT as OFFICIAL_CONTRACT, IDENTITIES as OFFICIAL_IDENTITIES
 
@@ -532,6 +533,8 @@ def selected_local_observation_ids(snapshot, counts=None):
                          results_turnout_history.nebraska_county_reports.FEED,
                          results_turnout_history.WY_HISTORY_FEED, results_turnout_history.WY_CANVASS_FEED)
                 or identity in results_indiana_turnout.FEEDS.values()
+                or identity in NATIONAL_RELEASE_INDEXES
+                or identity == washington_participation.FEED
                 or identity in results_turnout_history.COUNTY_ARCHIVES
                 or identity in results_pa_vote_history.FEEDS.values()):
             continue  # These products do not update a canonical cast-ballot count.

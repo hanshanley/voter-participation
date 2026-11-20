@@ -6,6 +6,8 @@ import pytest
 from openpyxl import Workbook
 
 from scripts import results_intake, washington_participation as wa
+from scripts.national_turnout_release_watch import INDEXES
+from scripts.supported_analytical_release import selected_local_observation_ids
 
 
 def workbook(rows):
@@ -85,3 +87,12 @@ def test_revisions_noop_and_failed_source_retain_last_good(tmp_path, history):
     retained = wa.collect(collector)
     assert retained["status"] == "retained_after_failure"
     assert retained["data"] == entry["data"] and retained["source"] == entry["source"]
+
+
+def test_scoped_history_and_national_discovery_do_not_select_current_count_ids():
+    ids = [wa.FEED, *INDEXES]
+    snapshot = {
+        "collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": ids},
+        "granular_sources": {identity: {"status": "reported", "data": {}} for identity in ids},
+    }
+    assert selected_local_observation_ids(snapshot) == set()
