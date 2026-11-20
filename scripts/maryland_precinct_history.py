@@ -8,12 +8,18 @@ import re
 
 from scripts.participation_intake.contract import IntakeError, count
 
-BASE = "https://elections.maryland.gov/press_room/"
-GUIDE = BASE + "Navigating_Official_Turnout_Statistics.pdf"
+BASE = "https://elections.maryland.gov/"
+GUIDE = BASE + "press_room/Navigating_Official_Turnout_Statistics.pdf"
 EDITIONS = {
-    "2022-11-08": ("2022_stats/GG22/Official%20by%20Party%20and%20", "November 8, 2022",
+    "2016-11-08": ("elections/archive/2016/turnout/general/Official%20by%20Party%20and%20", "November 08, 2016",
+                   "2016 Presidential General Election", None, 12084, None),
+    "2018-11-06": ("elections/archive/2018/turnout/general/Official%20by%20Party%20and%20", "November 06, 2018",
+                   "2018 Gubernatorial General Election", None, 12096, None),
+    "2020-11-03": ("press_room/2020_stats/Official%20by%20Party%20and%20", "November 03, 2020",
+                   "2020 Presidential General Election", None, 16320, None),
+    "2022-11-08": ("press_room/2022_stats/GG22/Official%20by%20Party%20and%20", "November 8, 2022",
                    "2022 Gubernatorial General Election", "December 8, 2022", 14686, "WORKING CLASS PARTY"),
-    "2024-11-05": ("2024_stats/PG24/Updated-Official_by_Party_and_", "November 5, 2024",
+    "2024-11-05": ("press_room/2024_stats/PG24/Updated-Official_by_Party_and_", "November 5, 2024",
                    "2024 Presidential General Election", "April 29, 2026", 13874, "NO LABELS MARYLAND"),
 }
 COUNTIES = (
@@ -34,16 +40,22 @@ def routes(election):
 
 
 def header(election):
-    modes = ("EARLY_VOING", "ABSENTEE") if election.startswith("2022-") else ("EARLY_VOTING", "VBM")
+    modes = ("EARLY_VOTING", "VBM") if election.startswith("2024-") else ("EARLY_VOING", "ABSENTEE")
     return ["LBE", "CONGRESSIONAL_DISTRICT_CODE", "LEGISLATIVE_DISTRICT_CODE", "PRECINCT", "PARTY",
             "POLLS", *modes, "PROVISIONAL", "ELIGIBLE_VOTERS"]
 
 
 def query(native, control, election):
     _, day, title, edition, size, minor = EDITIONS[election]
-    if (len(native) != size or f"Election Date: {day}" not in control
-            or f"Election: {title}" not in control or f"As of: {edition}" not in control):
+    dates = [line.strip() for line in control.splitlines() if line.strip().startswith("Election Date:")]
+    editions = [line.strip() for line in control.splitlines() if line.strip().startswith("As of:")]
+    if (len(native) != size or dates != [f"Election Date: {day}"]
+            or f"Election: {title}" not in control or editions != ([f"As of: {edition}"] if edition else [])):
         raise IntakeError("md_scope", "Maryland precinct inventory or county-control election differs")
+    legacy_fragments = election == "2020-11-03"
+    parties = (PARTIES | {minor}) if minor else (PARTIES - {"DEMOCRATIC"}) | {"DEMOCRAT"}
+    if legacy_fragments:
+        parties |= {"BREAD AND ROSES", "WORKING CLASS PARTY"}
     rows = []
     pattern = re.compile(r"(\D.*?)\s+((?:[\d,]+\s+){5})([\d.]+)%")
     for line in control.splitlines():
@@ -60,6 +72,7 @@ def query(native, control, election):
         raise IntakeError("md_roster", "Maryland county-control roster is incomplete")
 
     totals = defaultdict(lambda: [0] * 5)
+    group_totals = defaultdict(lambda: [0] * 5)
     identities = set()
     unknown = set()
     for row in native:
@@ -69,7 +82,8 @@ def query(native, control, election):
         key = tuple(row[:5])
         values = [count(v) for v in row[5:]]
         unassigned = precinct == "Unable to Determine"
-        if (county not in COUNTIES or party not in PARTIES | {minor} or key in identities
+        if (county not in COUNTIES or party not in parties
+                or (key in identities and not (legacy_fragments and unassigned))
                 or any(v is None for v in values[:4])
                 or (unassigned and (congress or district or values[-1] is not None or any(values[:3])))
                 or (not unassigned and (not congress or not district or values[-1] is None
@@ -82,10 +96,28 @@ def query(native, control, election):
         identities.add(key)
         for i, value in enumerate(values):
             totals[county][i] += value or 0
+            if legacy_fragments:
+                group_totals[(party, county)][i] += value or 0
+                group_totals[(party, "TOTAL")][i] += value or 0
     totals["TOTAL"] = list(map(sum, zip(*totals.values())))
-    if (unknown != {(c, p) for c in COUNTIES for p in PARTIES | {minor}}
+    if (unknown != {(c, p) for c in COUNTIES for p in parties}
             or any(totals[name] != values for name, values, _ in rows)):
         raise IntakeError("md_reconciliation", "Maryland turnout differs from county controls")
+    if legacy_fragments:
+        checked = set()
+        group = None
+        for line in control.splitlines():
+            literal = line.strip()
+            if literal.upper() in parties:
+                group = literal.upper()
+            if group and (match := pattern.fullmatch(literal)):
+                name, values, _ = match.groups()
+                key = (group, name.strip())
+                if key in checked or key not in group_totals or group_totals[key] != [count(v) for v in values.split()]:
+                    raise IntakeError("md_group_control", "2020 unassigned rows no longer reconcile by affiliation")
+                checked.add(key)
+        if checked != set(group_totals):
+            raise IntakeError("md_group_control", "Missing 2020 county/affiliation controls")
     return {"election_date": election, "edition": edition, "header": header(election),
             "native_rows": native, "control_page": control,
             "county_controls": [[name, values, rate] for name, values, rate in rows], "guide_url": GUIDE}
@@ -100,7 +132,11 @@ def parse(body, supporting, election):
     if next(reader, None) != header(election):
         raise IntakeError("md_schema", "Maryland turnout columns changed")
     with BytesIO(supporting) as stream:
-        control = PdfReader(stream).pages[0].extract_text(extraction_mode="layout")
+        pages = PdfReader(stream).pages
+        if election == "2020-11-03" and len(pages) != 6:
+            raise IntakeError("md_group_control", "2020 county/affiliation report page inventory changed")
+        control = "\n".join(p.extract_text(extraction_mode="layout")
+                            for p in (pages if election == "2020-11-03" else pages[:1]))
     return query([r for r in reader if r], control, election)
 
 
@@ -125,12 +161,13 @@ def exports(entries):
                 "source_status": entry["status"], "source_url": url, "source_sha256": report["sha256"],
                 "county_control_url": control_url, "county_control_sha256": supporting["sha256"], "guide_url": GUIDE}
         sums = defaultdict(lambda: [0] * 6)
-        for county, cd, ld, precinct, party, *values in retained["native_rows"]:
+        for source_row, (county, cd, ld, precinct, party, *values) in enumerate(retained["native_rows"], 1):
             mode = [count(v) for v in values]
             located = bool(re.fullmatch(r"[0-9]{3}-[0-9]{3}", precinct))
             units.append({**base, "local_election_board": county, "congressional_district_code": cd,
                           "legislative_district_code": ld, "native_precinct": precinct,
                           "registration_affiliation": party, **dict(zip(MEASURES, mode)),
+                          **({"source_record_ordinal": source_row} if election == "2020-11-03" else {}),
                           "reported_ballot_activity": sum(mode[:4]), "has_native_precinct_id": located})
             for key in ((county, party), ("Maryland", party)):
                 for i, value in enumerate(mode):

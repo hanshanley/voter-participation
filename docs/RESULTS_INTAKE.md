@@ -2755,29 +2755,33 @@ python3.12 -m scripts.minnesota_precinct_geometry \
 
 ### Maryland: precinct turnout activity by registration affiliation
 
-The two official statewide precinct CSVs reconcile in every voting mode and
+Five official statewide precinct CSVs reconcile in every voting mode and
 the eligible-registration count against their paired county reports. The
-collector uses the correctly dated original 2022 pair (December 8, 2022
+2016, 2018 and 2020 reports do not supply a snapshot date. The collector
+uses the correctly dated original 2022 pair (December 8, 2022
 snapshot) and the revised 2024 pair (April 29, 2026 snapshot). The revised
 2022 county control prints a 2024 election date; it is not admitted.
 
-The full exports retain 28,560 native precinct/registration-affiliation rows
-and 350 state/local-election-board group rows. Baltimore City is a separate
+The full exports retain 69,060 native precinct/registration-affiliation rows
+and 850 state/local-election-board group rows. Baltimore City is a separate
 county equivalent. District fragments are kept as published, not joined to
 precinct polygons. `Unable to Determine` rows have no precinct or eligible
 registration count and are included only in the proper board and statewide
-group totals. The 2022 literal `0.1-` rows are observed zeros without a
+group totals. Only 2020 permits repeated unassigned keys: source ordinals
+remain distinct, and all 200 county/state affiliation controls must agree
+with their sums. Printed group percentages are not used. The 2022 literal
+`0.1-` rows are observed zeros without a
 qualified geographic identifier. Activity includes rejected ballots and can
 rarely reflect repeat activity by a voter; it is not a unique-person count or
 an accepted-ballot total. No turnout rate is inferred from this activity.
 
 The ordinary full and late-archive collectors check the paired sources.
-To check both editions together:
+To check all editions together:
 
 ```bash
 python3.12 -m scripts.results_intake refresh-selected \
   --registry data/results-intake/registry.json --work-dir "$WORK" \
-  --sources MD-2022-general-precinct-affiliation-turnout,MD-2024-general-precinct-affiliation-turnout
+  --sources MD-2016-general-precinct-affiliation-turnout,MD-2018-general-precinct-affiliation-turnout,MD-2020-general-precinct-affiliation-turnout,MD-2022-general-precinct-affiliation-turnout,MD-2024-general-precinct-affiliation-turnout
 ```
 
 ### Washington: general-election turnout table

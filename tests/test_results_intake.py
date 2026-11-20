@@ -934,6 +934,32 @@ def test_maryland_registration_groups_preserve_unlocated_activity_and_retain_val
     assert rejected["status"] == "retained_after_failure" and rejected["data"] == accepted["data"]
 
 
+def test_maryland_2020_repeated_keys_require_independent_affiliation_totals(monkeypatch):
+    from scripts import maryland_precinct_history as md
+
+    date = "2020-11-03"
+    edition = md.EDITIONS[date]
+    parties = sorted((md.PARTIES - {"DEMOCRATIC"}) | {"DEMOCRAT", "BREAD AND ROSES", "WORKING CLASS PARTY"})
+    native = [[county, cd, ld, precinct, party, *values]
+              for county in md.COUNTIES for party in parties
+              for cd, ld, precinct, values in (
+                  ("02", "02A", "001-001", ["2", "1", "3", "0", "10"]),
+                  ("", "", "Unable to Determine", ["0", "0", "0", "1", ""]),
+                  ("", "", "Unable to Determine", ["0", "0", "0", "1", ""]),
+              )]
+    monkeypatch.setitem(md.EDITIONS, date, (*edition[:4], len(native), edition[-1]))
+    control = "\n".join([f"Election Date: {edition[1]}", f"Election: {edition[2]}",
+                         *[f"{county} 16 8 24 16 80 80.00%" for county in md.COUNTIES],
+                         "TOTAL 384 192 576 384 1,920 80.00%",
+                         *[line for party in parties for line in
+                           [party.title(), *[f"{county} 2 1 3 2 10 80.00%" for county in md.COUNTIES],
+                            "TOTAL 48 24 72 48 240 80.00%"]]])
+    assert md.query(native, control, date)["native_rows"] == native
+    native[1][8], native[4][8] = "2", "0"
+    with pytest.raises(ValueError, match="no longer reconcile by affiliation"):
+        md.query(native, control, date)
+
+
 @pytest.mark.parametrize("date", ["2012-11-06", "2014-11-04", "2024-11-05"])
 def test_minnesota_workbook_revisions_and_offline_original(tmp_path, monkeypatch, date):
     import io

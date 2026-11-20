@@ -284,7 +284,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "VA-general-election-turnout", "VA-2022-general-election-locality-turnout", "WA-general-election-turnout",
         "MN-native-local", "MN-statewide-reporting",
         *(f"MN-{year}-general-precinct-turnout-workbook" for year in range(2012, 2025, 2)),
-        "MD-2022-general-precinct-affiliation-turnout", "MD-2024-general-precinct-affiliation-turnout",
+        *(f"MD-{year}-general-precinct-affiliation-turnout" for year in range(2016, 2025, 2)),
         "NC-2026-general-vote-history", "NC-general-election-turnout-history", "UF-national-turnout",
         "WY-primary-general-turnout-profile", "WY-2026-precinct-ballot-canvass",
         "HI-official-house-candidates", "IA-official-statewide-results", "NE-official-house-candidates",
