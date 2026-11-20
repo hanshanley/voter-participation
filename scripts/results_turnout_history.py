@@ -95,6 +95,19 @@ WV_COUNTIES = (
     "Tucker|Tyler|Upshur|Wayne|Webster|Wetzel|Wirt|Wood|Wyoming"
 ).split("|")
 WV_HISTORY_NOTE = "The source labels the count Ballots Cast (based on voter history)."
+WY_ARCHIVE_BASE = "https://sos.wyo.gov/Elections/Docs/"
+WY_ARCHIVES = {
+    "2004-11-02": "04Results/04General/04_General_SW_Candidates.pdf",
+    "2006-11-07": "06Results/06General/SW_TB_Summary.pdf",
+    "2008-11-04": "08Results/General/SW-TotalBallotsCast.pdf",
+    "2010-11-02": "Results/General/2010_Statewide_Total_Ballots_Cast_Summary.pdf",
+    "2012-11-06": "Results/General/2012_Statewide_Total_Ballots_Cast_Summary.pdf",
+}
+WY_COUNTIES = (
+    "Albany|Big Horn|Campbell|Carbon|Converse|Crook|Fremont|Goshen|Hot Springs|Johnson|"
+    "Laramie|Lincoln|Natrona|Niobrara|Park|Platte|Sheridan|Sublette|Sweetwater|Teton|"
+    "Uinta|Washakie|Weston"
+).split("|")
 COUNTY_ARCHIVES = {
     **{f"CA-{election[:4]}-general-election-turnout-pdf": ("CA", election) for election in CA_ARCHIVES},
     "KS-2022-general-election-turnout-workbook": ("KS", "2022-11-08"),
@@ -104,6 +117,7 @@ COUNTY_ARCHIVES = {
     "NJ-2024-general-election-turnout-pdf": ("NJ", "2024-11-05"),
     "NJ-2025-general-election-turnout-pdf": ("NJ", "2025-11-04"),
     **{f"WV-{election[:4]}-general-election-turnout-pdf": ("WV", election) for election in WV_ARCHIVES},
+    **{f"WY-{election[:4]}-general-election-ballots-pdf": ("WY", election) for election in WY_ARCHIVES},
 }
 COUNTY_ARCHIVE_CSV = "participation-state-county-turnout-archives.csv"
 BUXTON_FEED = "ME-buxton-town-turnout"
@@ -602,6 +616,58 @@ def west_virginia_archive_report(body, election):
     return west_virginia_archive_query([line for line in lines if line], election)
 
 
+def wyoming_archive_query(lines, election):
+    day = datetime.fromisoformat(election).day
+    year = election[:4]
+    date = f"November {day}, {year}"
+    abstract = year == "2004"
+    if abstract:
+        title = f"Statewide Candidates' Abstract -- Official Wyoming General Election Results -- {date}"
+        if (len(lines) != 31 or lines[0] != title or lines[1:3] != [
+                "Total Presidential Presidential", "Ballots Cast Write-ins Over Votes"]):
+            raise ValueError("Wyoming abstract no longer identifies its printed ballot-count column")
+        rows = lines[5:29]
+    else:
+        if lines[:2] != ["Statewide Total Ballots Cast Official Summary", f"Wyoming General Election - {date}"]:
+            raise ValueError("Wyoming ballot summary identity differs")
+        if year == "2006" and lines[2:3] == ["Total Ballots Cast"]:
+            rows = lines[3:]
+        elif year == "2008" and lines[2:3] == ["Page 1 of 1"] and lines[-2:] == ["Total", "Ballots Cast"]:
+            rows = lines[3:-2]
+        elif lines[2:5] == ["Page 1 of 1", "Total Ballots", "Cast"]:
+            rows = lines[5:]
+        else:
+            raise ValueError("Wyoming ballot summary header differs")
+    names = [*WY_COUNTIES, "Official Totals" if abstract else "Total"]
+    result = []
+    for name, row in zip(names, rows, strict=True):
+        found = re.fullmatch(re.escape(name) + r" ([0-9][0-9,]*)" + (r" .+" if abstract else ""), row)
+        if not found:
+            raise ValueError("Wyoming county ballot roster or column differs")
+        result.append({"county": "TOTAL" if name == names[-1] else name,
+                       "ballots_cast": integer(found[1]), "registered": None})
+    if sum(row["ballots_cast"] for row in result[:-1]) != result[-1]["ballots_cast"]:
+        raise ValueError("Wyoming county counts do not reconcile to printed statewide total")
+    return {
+        "extraction_method": "pdf_reviewed_county_table", "native_lines": lines,
+        "election_date": election, "native_numerator": "ballots_cast", "registration_basis": None,
+        "report_note": "Official ballot counts; the report supplies no registration denominator.",
+        "counties": result[:-1], "total": result[-1],
+    }
+
+
+def wyoming_archive_report(body, election):
+    from pypdf import PdfReader
+
+    pdf = PdfReader(io.BytesIO(body), strict=True)
+    if len(pdf.pages) != (8 if election.startswith("2004-") else 1):
+        raise ValueError("Wyoming turnout report page inventory differs")
+    page = pdf.pages[0]
+    text = page.extract_text(extraction_mode="layout") if election.startswith("2006-") else page.extract_text()
+    return wyoming_archive_query([" ".join(line.split()) for line in text.splitlines() if line.strip()],
+                                 election)
+
+
 def county_archive_routes(state, election):
     year = int(election[:4])
     if state == "CA":
@@ -610,6 +676,9 @@ def county_archive_routes(state, election):
         return CA_URL, re.escape(california_report_url(election))
     if state == "WV":
         return WV_ARCHIVE_URL, rf"https://sos\.wv\.gov/media/{WV_ARCHIVES[election]}/download\?inline=?"
+    if state == "WY":
+        base = f"{WY_ARCHIVE_BASE}{year}/"
+        return f"{base}{year}GeneralResults.aspx", re.escape(base + WY_ARCHIVES[election])
     return (KS_URL, kansas_report_url(year)) if state == "KS" else (NJ_URL, new_jersey_report_url(year))
 
 
@@ -640,6 +709,8 @@ def collect_county_archive(collector, feed):
             query = kansas_workbook(body)
         elif state == "WV":
             query = west_virginia_archive_report(body, election)
+        elif state == "WY":
+            query = wyoming_archive_report(body, election)
         else:
             query = new_jersey_report(body, election, allow_amended=True)
         data = {"election_date": election, "report": report, "complete_native_query": query,
@@ -687,6 +758,11 @@ def county_archive_rows(entries, *, current_california=False):
                 raise ValueError("West Virginia turnout differs from its retained source rows")
             counties = [*query["counties"], query["total"]]
             county_conflict = False
+        elif state == "WY":
+            if query != wyoming_archive_query(query["native_lines"], election):
+                raise ValueError("Wyoming turnout differs from its retained source rows")
+            counties = [*query["counties"], query["total"]]
+            county_conflict = False
         else:
             new_jersey_controls(query, election)
             if data.get("date") != query["published_date"]:
@@ -697,6 +773,7 @@ def county_archive_rows(entries, *, current_california=False):
             county, registered, ballots = native["county"], native["registered"], native["ballots_cast"]
             statewide = county == "TOTAL"
             hold = ("county_conflict_included_in_statewide_total" if statewide and county_conflict
+                    else "registration_not_in_report" if registered is None
                     else "ballots_exceed_registered" if ballots > registered
                     else "no_positive_registration_denominator" if not registered else None)
             if state == "CA" and not hold and (
@@ -715,7 +792,8 @@ def county_archive_rows(entries, *, current_california=False):
                 "state_code": state, "year": year, "election_date": election,
                 "election_type": "off_year_general" if year % 2 else "presidential" if year % 4 == 0 else "midterm",
                 "geography_level": "state" if statewide else "county",
-                "geography": {"KS": "Kansas", "NJ": "New Jersey", "CA": "California", "WV": "West Virginia"}[state]
+                "geography": {"KS": "Kansas", "NJ": "New Jersey", "CA": "California", "WV": "West Virginia",
+                              "WY": "Wyoming"}[state]
                 if statewide else county,
                 "reported_ballots_cast": ballots if measure == "ballots_cast" else None,
                 "reported_total_voters": ballots if measure == "total_voters" else None,

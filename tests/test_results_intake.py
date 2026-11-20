@@ -505,6 +505,31 @@ def test_west_virginia_archive_keeps_literal_basis_and_requires_reconciled_count
     assert history.county_archive_rows({feed: data})[-1]["rate_hold_reason"] == "printed_registration_fraction_disagrees"
 
 
+def test_wyoming_county_archive_exports_ballots_without_registration():
+    from scripts import results_turnout_history as history
+
+    date = "2006-11-07"
+    feed = "WY-2006-general-election-ballots-pdf"
+    lines = ["Statewide Total Ballots Cast Official Summary", "Wyoming General Election - November 7, 2006",
+             "Total Ballots Cast", *(f"{name} 2" for name in history.WY_COUNTIES), "Total 46"]
+    query = history.wyoming_archive_query(lines, date)
+    index, _ = history.county_archive_routes("WY", date)
+    report = {"url": history.WY_ARCHIVE_BASE + "2006/" + history.WY_ARCHIVES[date],
+              "bytes": 1, "sha256": "a" * 64}
+    entry = {"status": "reported", "source": {"url": index}, "data": {
+        "election_date": date, "report": report, "complete_native_query": query,
+        "participation_observation_qualified": False}}
+    rows = history.county_archive_rows({feed: entry})
+    assert len(rows) == 24
+    assert rows[-1]["reported_ballots_cast"] == 46
+    assert any(row["geography_level"] == "state" for row in rows)
+    assert all(row["reported_registered_voters"] is None
+               and row["qualified_same_report_registration_fraction_pct"] is None
+               and row["rate_hold_reason"] == "registration_not_in_report" for row in rows)
+    with pytest.raises(ValueError, match="printed statewide total"):
+        history.wyoming_archive_query([*lines[:-1], "Total 47"], date)
+
+
 def test_county_archive_outage_attempts_shared_index_once_per_collection(tmp_path, monkeypatch):
     from scripts import results_turnout_history as history
 
