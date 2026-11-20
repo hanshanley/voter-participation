@@ -290,6 +290,7 @@ def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_pa
         "NJ-2023-general-election-turnout-pdf",
         "NJ-2024-general-election-turnout-pdf", "NJ-2025-general-election-turnout-pdf",
         *(f"CA-{year}-general-election-turnout-pdf" for year in range(1998, 2025, 2)),
+        *(f"CA-{year}-general-election-turnout-pdf" for year in (1990, 1992, 1994)),
         "ME-bath-municipal-turnout", "ME-buxton-town-turnout", "NH-bedford-municipal-turnout",
         "NH-hanover-municipal-turnout", "NH-hollis-municipal-turnout", town,
     }

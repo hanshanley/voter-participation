@@ -440,6 +440,33 @@ def test_county_archive_revisions_keep_full_facts(tmp_path, monkeypatch):
     assert history.county_archive_rows({feed: retained})[0]["source_status"] == "retained_after_failure"
 
 
+def test_california_checked_scan_keeps_denominators_and_source_conflicts_separate():
+    from scripts import results_turnout_history as history
+
+    scans = json.loads(Path(history.__file__).with_name(history.CA_SCAN_FILE).read_bytes())["reports"]
+    cases = {"1990-11-06": 7899131, "1992-11-03": 11374565, "1994-11-08": 8900632}
+    for date, statewide in cases.items():
+        feed = f"CA-{date[:4]}-general-election-turnout-pdf"
+        report = {"url": history.california_report_url(date), **scans[date]["pdf"]}
+        query = history.california_scan(report, date)
+        rows = history.county_archive_rows({feed: {
+            "status": "reported", "source": {"url": history.CA_URL}, "data": {
+                "election_date": date, "report": report, "complete_native_query": query,
+                "participation_observation_qualified": False,
+            },
+        }})
+        assert len(rows) == 59 and rows[-1]["reported_total_voters"] == statewide
+        if date == "1992-11-03":
+            assert rows[-1]["reported_voting_age_population"] == 20863687
+            assert rows[-1]["reported_eligible_to_register"] is None
+            assert next(row for row in rows if row["geography"] == "Santa Cruz")["rate_hold_reason"] == (
+                "printed_registration_fraction_disagrees")
+        if date == "1994-11-08":
+            assert "8,900,593" in rows[-1]["report_note"]
+        with pytest.raises(intake.IntakeError, match="new checked transcription"):
+            history.california_scan({**report, "sha256": "0" * 64}, date)
+
+
 def test_california_county_archive_uses_native_measure_and_rejects_bad_revision(tmp_path, monkeypatch):
     from types import SimpleNamespace
 

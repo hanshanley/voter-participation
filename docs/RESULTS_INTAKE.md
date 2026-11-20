@@ -61,7 +61,7 @@ totals and both mode columns must agree. The map uses the source label
 `Voters Voting`, not ballots cast. Historical rows and county-level archive
 figures remain separate from the current map.
 
-California (1998–2024 biennial general elections), Kansas (2022) and New Jersey
+California (1990–1994 and 1998–2024 biennial general elections), Kansas (2022) and New Jersey
 (2020 and 2022–2025) county turnout archives are
 checked by the same hourly collector and weekly sweep, using the exact
 general-election reports linked by their official indexes. The complete
@@ -77,8 +77,13 @@ California's reports must reconcile all 58 counties and statewide totals before
 acceptance. The export keeps the published `Total Voters` or `Ballots Cast`
 measure, the separate eligible-to-register series, and any printed registration
 fraction disagreement. The 2022 and 2024 registration bases exclude registrations
-after the 15-day report. The 1990–1996 PDFs require separate transcription checks;
-the archive did not declare a 2026 general-election turnout report.
+after the 15-day report. The 1990, 1992 and 1994 scans use checked transcriptions
+of exact PDF bytes. Changed scans retain the last accepted edition until reviewed.
+The 1992 population column is voting-age population, not eligible to register.
+The 1994 county report and later statewide series disagree on Total Voters;
+the archive preserves the county report figure and documents the discrepancy.
+The 1996 scan still needs transcription checks; the archive did not declare a
+2026 general-election turnout report.
 
 The hourly cron, selected-source mode, durable access stops, last-good retention
 and complete-query artifacts are retained. This separation prevents

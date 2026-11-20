@@ -769,6 +769,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_pdf_platte.py", "results_pdf_county_parent.py", "results_minnesota_turnout.py",
              "philadelphia_divisions.py",
              "results_turnout_history.py", "results_indiana_turnout.py", "results_nc_vote_history.py",
+             "results_ca_county_scan_transcriptions.json",
              "results_pa_vote_history.py", "results_alaska_turnout.py",
              "native_pdf.py", "pdf_group_queries.py", "native_tabular.py", "native_products.py",
             "nationwide.py", "current.py", "download.py",

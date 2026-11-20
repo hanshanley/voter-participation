@@ -10,6 +10,7 @@ from html import unescape
 from html.parser import HTMLParser
 import io
 import json
+from pathlib import Path
 import re
 import unicodedata
 from typing import Optional
@@ -50,7 +51,11 @@ KS_HEADER = [["COUNTY", "ADVANCE BALLOTS", None, "TOTAL BALLOTS CAST", None, "RE
 NJ_FEED = "NJ-general-election-turnout-pdf"
 NJ_URL = "https://www.nj.gov/state/elections/election-information-ballots-cast.shtml"
 CA_URL = "https://www.sos.ca.gov/elections/statistics/voter-participation-stats-county"
+CA_SCAN_FILE = "results_ca_county_scan_transcriptions.json"
+CA_SCAN_DATES = ("1990-11-06", "1992-11-03", "1994-11-08")
 CA_ARCHIVES = {
+    **dict.fromkeys(CA_SCAN_DATES[:2], "voter-participation-statistics.pdf"),
+    "1994-11-08": "voter-participation-statistic.pdf",
     "1998-11-03": "v.pdf",
     "2000-11-07": "reg.pdf",
     "2002-11-05": "reg.pdf",
@@ -379,6 +384,34 @@ def california_controls(query, election):
         raise ValueError("California turnout report county and statewide totals disagree")
 
 
+def california_scan(report, election):
+    source = json.loads(Path(__file__).with_name(CA_SCAN_FILE).read_bytes())
+    if source.get("contract") != "participation.ca_county_scan_transcription.v1":
+        raise ValueError("Unknown California scan transcription contract")
+    scan = source["reports"][election]
+    if scan["pdf"] != {key: report[key] for key in ("bytes", "sha256")}:
+        raise IntakeError("unreviewed_report_revision", "Changed California scan needs a new checked transcription")
+    fields = ("county", "election_districts", "eligible", "registered", "precinct_voters", "mail_voters",
+              "ballots_cast", "printed_registered_percent", "printed_eligible_percent")
+    if any(len(row) != len(fields) for row in scan["rows"]):
+        raise ValueError("Malformed California scan transcription")
+    rows = [dict(zip(fields, row)) for row in scan["rows"]]
+    for row in rows:
+        for field in fields[-2:]:
+            row[field] += "%"
+    query = {
+        "election_date": election, "counties": rows[:-1], "total": rows[-1],
+        "native_numerator": "total_voters", "registration_basis": "Report's registered voters",
+        "secondary_denominator": "voting_age_population" if election == "1992-11-03" else "eligible_to_register",
+        "extraction_method": "checked_transcription_of_pinned_pdf",
+    }
+    if election == "1994-11-08":
+        query["report_note"] = ("County report's statewide Total Voters is 8,900,632. "
+                                "The later statewide historical series reports 8,900,593; not substituted.")
+    california_controls(query, election)
+    return query
+
+
 def california_report(body, election):
     from pypdf import PdfReader
 
@@ -499,8 +532,13 @@ def collect_county_archive(collector, feed):
         previous = (collector.prior.get(feed) or {}).get("data")
         if previous and previous.get("report") == report:
             return previous
-        query = (kansas_workbook(body) if state == "KS" else california_report(body, election) if state == "CA"
-                 else new_jersey_report(body, election, allow_amended=True))
+        if state == "CA":
+            query = (california_scan(report, election) if election in CA_SCAN_DATES
+                     else california_report(body, election))
+        elif state == "KS":
+            query = kansas_workbook(body)
+        else:
+            query = new_jersey_report(body, election, allow_amended=True)
         data = {"election_date": election, "report": report, "complete_native_query": query,
                 "participation_observation_qualified": False}
         if state == "NJ":
@@ -535,6 +573,8 @@ def county_archive_rows(entries):
             county_conflict = any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
         elif state == "CA":
             california_controls(query, election)
+            if election in CA_SCAN_DATES and query != california_scan(report, election):
+                raise ValueError("California scan query differs from its reviewed transcription")
             counties = [*query["counties"], query["total"]]
             county_conflict = False
         else:
@@ -554,6 +594,7 @@ def county_archive_rows(entries):
                     != Decimal(native["printed_registered_percent"][:-1])):
                 hold = "printed_registration_fraction_disagrees"
             measure = query.get("native_numerator", "ballots_cast")
+            vap_basis = query.get("secondary_denominator") == "voting_age_population"
             rows.append({
                 "state_code": state, "year": year, "election_date": election,
                 "election_type": "off_year_general" if year % 2 else "presidential" if year % 4 == 0 else "midterm",
@@ -564,8 +605,10 @@ def county_archive_rows(entries):
                 "participation_measure": measure,
                 "reported_registered_voters": registered,
                 "registration_basis": query.get("registration_basis", "Report's registered voters"),
-                "reported_eligible_to_register": native.get("eligible"),
-                "reported_turnout_eligible_pct": native.get("printed_eligible_percent"),
+                "reported_eligible_to_register": None if vap_basis else native.get("eligible"),
+                "reported_turnout_eligible_pct": None if vap_basis else native.get("printed_eligible_percent"),
+                "reported_voting_age_population": native.get("eligible") if vap_basis else None,
+                "reported_turnout_vap_pct": native.get("printed_eligible_percent") if vap_basis else None,
                 "reported_precinct_voters": native.get("precinct_voters"),
                 "reported_mail_voters": native.get("mail_voters"),
                 "qualified_same_report_registration_fraction_pct": None if hold else 100 * ballots / registered,
@@ -575,6 +618,7 @@ def county_archive_rows(entries):
                 "reported_turnout_pct": native.get("printed_registered_percent", native.get("printed_percent")),
                 "reported_election_districts": native.get("election_districts"),
                 "source_id": feed, "source_status": entry["status"], "report_edition": data.get("date"),
+                "report_note": query.get("report_note"), "extraction_method": query.get("extraction_method"),
                 "amended_county": query.get("amendment", {}).get("county"),
                 "original_certification_date": query.get("amendment", {}).get("original_certification_date"),
                 "source_url": report["url"], "source_sha256": report["sha256"], "source_bytes": report["bytes"],
