@@ -648,6 +648,23 @@ def test_nebraska_scan_agreement_retention_and_no_reprocessing(tmp_path, monkeyp
                         (bad_identity, "identities disagree"), (bad_date, "election date differs")):
         with pytest.raises(IntakeError, match=reason):
             ne.scan_query(bad, date)
+    retained = ne.scan_query(evidence, date)
+    reextracted = copy.deepcopy(evidence)
+    views = reextracted["tables"]["voted"][0]
+    views[1]["rows"][1]["high_confidence"] = False
+    for row in views[1]["rows"][1:]:
+        row["row"] += 1
+    assert history.nebraska_canvass_original_matches(ne.scan_query(reextracted, date), retained, date)
+    reordered = copy.deepcopy(reextracted)
+    broken = reordered["tables"]["voted"][0][1]["rows"]
+    broken[1]["row"] = broken[0]["row"]
+    with pytest.raises(IntakeError, match="physical row order"):
+        history.nebraska_canvass_original_matches({**retained, "scan_evidence": reordered}, retained, date)
+    views[1]["rows"][1]["literal_name"] = views[1]["rows"][1]["literal_name"].upper()
+    assert not history.nebraska_canvass_original_matches(ne.scan_query(reextracted, date), retained, date)
+    views[0]["rows"][1]["high_confidence"] = False
+    with pytest.raises(IntakeError, match="confidence floor"):
+        history.nebraska_canvass_original_matches({**retained, "scan_evidence": reextracted}, retained, date)
 
     calls = []
 
@@ -868,7 +885,7 @@ def test_nebraska_current_county_reports_keep_independent_last_good_editions(tmp
 
 
 def test_nebraska_county_scan_requires_both_editions_and_does_not_accept_precinct_summary():
-    from scripts import nebraska_county_reports as reports
+    from scripts import nebraska_county_reports as reports, results_turnout_history as history
 
     evidence = [{"receipt": {"page": 1, "dpi": dpi}, "high_confidence": [True] * 4, "cells": [
         ["Summary Results Report", "Official Results"], ["General Election"],
@@ -876,7 +893,20 @@ def test_nebraska_county_scan_requires_both_editions_and_does_not_accept_precinc
         ["Day", "Voting"], ["Ballots Cast - Total", "10", "5", "3", "2"],
         ["Election Summary - 11/17/2026 11:00 AM", "1 of 3"],
     ]} for dpi in reports.DPI]
-    assert reports.scan_query(evidence, "Adams", "Official Results")["ballots"] == 10
+    status = "Official Results"
+    facts = reports.scan_query(evidence, "Adams", status)
+    assert facts["ballots"] == 10
+    spaced = copy.deepcopy(evidence)
+    spaced[1]["cells"][2][1] = "AdamsCounty, Nebraska"
+    spaced[1]["cells"][5][0] = "Ballots Cast- Total"
+    spaced[1]["cells"][-1][0] = spaced[1]["cells"][-1][0].replace(" AM", "AM")
+    spaced[1]["cells"][-1][1] = "1of3"
+    spaced[1]["high_confidence"][0] = False
+    assert history.nebraska_county_original_matches({"scan_evidence": spaced, **facts},
+                                                    {"scan_evidence": evidence, **facts}, "Adams", status)
+    spaced[1]["cells"][-1][1] = "1 of 4"
+    assert not history.nebraska_county_original_matches({"scan_evidence": spaced, **facts},
+                                                        {"scan_evidence": evidence, **facts}, "Adams", status)
     with pytest.raises(IntakeError, match="Unsupported county scan layout"):
         reports.scan_query(evidence, "Adams", "Unofficial Results")
     precinct = copy.deepcopy(evidence)

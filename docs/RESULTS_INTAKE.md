@@ -215,7 +215,15 @@ For independent verification from publisher PDFs, extract the nested
 local filenames for accepted Colorado, Nebraska, West Virginia and Wyoming reports.
 Re-extraction needs `pypdf==6.16.0`; for scanned Nebraska reports it also
 needs the collector's `PyMuPDF==1.26.5` and `rapidocr-onnxruntime==1.4.4`
-with its bundled models. Run from the extracted source package:
+with its bundled models. For historical Nebraska scans, original verification
+independently checks both extractions' admission controls and compares the
+literal evidence and results. OCR confidence flags and internal line ordinals
+may vary across machines; the numbers, county order, and transcript must match.
+For current Nebraska county scans, the comparator permits spacing within an
+OCR cell after both extractions pass the original qualification rules. It
+still requires the same rendered-image receipts, cell structure, characters
+other than whitespace, totals and clocks.
+Run from the extracted source package:
 
 ```sh
 python3.12 code/reproduce.py replay --package . --output reproduced \

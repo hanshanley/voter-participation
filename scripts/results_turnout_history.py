@@ -956,6 +956,43 @@ def county_archive_originals(entries):
     return originals
 
 
+def nebraska_canvass_original_matches(extracted, retained, election):
+    if election not in nebraska_canvass.SCANS:
+        return extracted == retained
+    if any(nebraska_canvass.replay_query(facts, election) != facts for facts in (extracted, retained)):
+        return False
+
+    def literal_facts(facts):
+        evidence = facts["scan_evidence"]
+        # Confidence flags and OCR line ordinals can vary after an independently valid extraction.
+        tables = {
+            table: [[{**view, "rows": [
+                {key: value for key, value in row.items() if key not in ("high_confidence", "row")}
+                for row in view["rows"]]} for view in pair] for pair in panels]
+            for table, panels in evidence["tables"].items()
+        }
+        return {**facts, "scan_evidence": {**evidence, "tables": tables}}
+
+    return literal_facts(extracted) == literal_facts(retained)
+
+
+def nebraska_county_original_matches(extracted, retained, county, status):
+    if "scan_evidence" not in extracted or "scan_evidence" not in retained:
+        return extracted == retained
+
+    def literal_facts(facts):
+        evidence = facts["scan_evidence"]
+        counts = {key: value for key, value in facts.items() if key != "scan_evidence"}
+        if nebraska_county_reports.scan_query(evidence, county, status) != counts:
+            raise ValueError("County scan evidence differs from its stored facts")
+        # Compare independently admitted scans, preserving cell boundaries and all non-space characters.
+        views = [{**{key: value for key, value in view.items() if key != "high_confidence"}, "cells": [
+            [re.sub(r"\s+", "", cell) for cell in row] for row in view["cells"]]} for view in evidence]
+        return counts, views
+
+    return literal_facts(extracted) == literal_facts(retained)
+
+
 def verify_county_archive_originals(entries, directory):
     originals = county_archive_originals(entries)
     if not originals:
@@ -976,13 +1013,16 @@ def verify_county_archive_originals(entries, directory):
                  "NE": nebraska_canvass.parse, "CO": colorado_voting_statistics.parse}[state]
         query = (nebraska_canvass.parse_blue_book(checked_original(feed + "-blue-book"), body)
                  if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION else parse(body, election))
-        if query != entries[feed]["data"]["complete_native_query"]:
+        retained = entries[feed]["data"]["complete_native_query"]
+        if not (nebraska_canvass_original_matches(query, retained, election) if state == "NE"
+                else query == retained):
             raise ValueError(f"County report extraction differs from the accepted query: {feed}")
     for county, item in (entries.get(nebraska_county_reports.FEED, {}).get("data") or {}).get("counties", {}).items():
         if accepted := item["accepted"]:
             identity = nebraska_county_reports.FEED + "-" + county.replace(" ", "-")
-            if nebraska_county_reports.extract(checked_original(identity), county,
-                    accepted["report"]["status"]) != accepted["facts"]:
+            status = accepted["report"]["status"]
+            query = nebraska_county_reports.extract(checked_original(identity), county, status)
+            if not nebraska_county_original_matches(query, accepted["facts"], county, status):
                 raise ValueError(f"County report extraction differs from the accepted query: {identity}")
     return len(originals)
 
