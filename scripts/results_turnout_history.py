@@ -19,7 +19,8 @@ import xml.etree.ElementTree as ET
 
 from scripts.participation_intake.contract import IntakeError, count, encoded, pin
 from scripts import wyoming_participation_statistics as wy_profile
-from scripts import colorado_voting_statistics, minnesota_precinct_history, nebraska_canvass, nebraska_county_reports
+from scripts import colorado_voting_statistics, maryland_precinct_history, minnesota_precinct_history
+from scripts import nebraska_canvass, nebraska_county_reports
 
 
 WA_FEED = "WA-general-election-turnout"
@@ -128,6 +129,8 @@ WY_COUNTIES = (
 ).split("|")
 COUNTY_ARCHIVES = {
     "VA-2022-general-election-locality-turnout": ("VA", VA_LOCALITY_DATE),
+    **{f"MD-{election[:4]}-general-precinct-affiliation-turnout": ("MD", election)
+       for election in maryland_precinct_history.EDITIONS},
     **{f"MN-{election[:4]}-general-precinct-turnout-workbook": ("MN", election)
        for election in minnesota_precinct_history.EDITIONS},
     **{f"CO-{election[:4]}-general-voting-statistics": ("CO", election)
@@ -706,6 +709,9 @@ def wyoming_archive_report(body, election):
 
 def county_archive_routes(state, election):
     year = int(election[:4])
+    if state == "MD":
+        url, _ = maryland_precinct_history.routes(election)
+        return url, re.escape(url)
     if state == "MN":
         url = minnesota_precinct_history.route(election)
         return url, re.escape(url)
@@ -918,6 +924,16 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
 
     def parse(index):
         nonlocal rejected_scan
+        if state == "MD":
+            _, control_url = maryland_precinct_history.routes(election)
+            supporting, _ = collector.acquire(control_url)
+            report, control = {"url": index_url, **pin(index)}, {"url": control_url, **pin(supporting)}
+            previous = old.get("data")
+            if previous and previous.get("report") == report and previous.get("supporting_report") == control:
+                return previous
+            query = maryland_precinct_history.parse(index, supporting, election)
+            return {"election_date": election, "report": report, "supporting_report": control,
+                    "complete_native_query": query, "participation_observation_qualified": False}
         if state == "MN":
             report = {"url": index_url, **pin(index)}
             previous = old.get("data")
@@ -1012,7 +1028,7 @@ def county_archive_originals(entries):
     originals = {}
     for feed, (state, election) in sorted(COUNTY_ARCHIVES.items()):
         data = (entries.get(feed) or {}).get("data")
-        if state not in ("CO", "MN", "NE", "VA", "WV", "WY") or data is None:
+        if state not in ("CO", "MD", "MN", "NE", "VA", "WV", "WY") or data is None:
             continue
         report = data["report"]
         _, pattern = county_archive_routes(state, election)
@@ -1020,8 +1036,16 @@ def county_archive_originals(entries):
                 or type(report["bytes"]) is not int or not 0 < report["bytes"] <= county_archive_limit(state)
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError(f"Invalid original county report pin: {feed}")
-        originals[feed] = {"filename": feed + {"CO": ".csv", "MN": ".xlsx", "VA": ".html"}.get(state, ".pdf"),
+        originals[feed] = {"filename": feed + {"CO": ".csv", "MD": ".csv", "MN": ".xlsx", "VA": ".html"}.get(state, ".pdf"),
                            **{key: report[key] for key in ("url", "bytes", "sha256")}}
+        if state == "MD":
+            supporting = data["supporting_report"]
+            if (supporting["url"] != maryland_precinct_history.routes(election)[1]
+                    or type(supporting["bytes"]) is not int or not 0 < supporting["bytes"] <= county_archive_limit(state)
+                    or not re.fullmatch(r"[a-f0-9]{64}", supporting["sha256"])):
+                raise ValueError(f"Invalid Maryland county control pin: {feed}")
+            extra = feed + "-county-control"
+            originals[extra] = {"filename": extra + ".pdf", **supporting}
         if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION:
             supporting = data["supporting_report"]
             if (supporting["url"] != nebraska_canvass.BLUE_BOOK
@@ -1091,11 +1115,15 @@ def verify_county_archive_originals(entries, directory):
     for feed in originals.keys() & COUNTY_ARCHIVES.keys():
         body = checked_original(feed)
         state, election = COUNTY_ARCHIVES[feed]
-        parse = {"VA": virginia_locality_report, "WV": west_virginia_archive_report, "WY": wyoming_archive_report,
-                 "NE": nebraska_canvass.parse, "CO": colorado_voting_statistics.parse,
-                 "MN": minnesota_precinct_history.parse}[state]
-        query = (nebraska_canvass.parse_blue_book(checked_original(feed + "-blue-book"), body)
-                 if state == "NE" and election == nebraska_canvass.PAIRED_ELECTION else parse(body, election))
+        if state == "MD":
+            query = maryland_precinct_history.parse(body, checked_original(feed + "-county-control"), election)
+        elif state == "NE" and election == nebraska_canvass.PAIRED_ELECTION:
+            query = nebraska_canvass.parse_blue_book(checked_original(feed + "-blue-book"), body)
+        else:
+            parse = {"VA": virginia_locality_report, "WV": west_virginia_archive_report, "WY": wyoming_archive_report,
+                     "NE": nebraska_canvass.parse, "CO": colorado_voting_statistics.parse,
+                     "MN": minnesota_precinct_history.parse}[state]
+            query = parse(body, election)
         retained = entries[feed]["data"]["complete_native_query"]
         if not (nebraska_canvass_original_matches(query, retained, election) if state == "NE"
                 else query == retained):
@@ -1122,7 +1150,8 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
     elif minnesota_precincts:
         declarations = {key: value for key, value in COUNTY_ARCHIVES.items() if value[0] == "MN"}
     else:
-        declarations = {key: value for key, value in COUNTY_ARCHIVES.items() if key != nebraska_canvass.CURRENT_FEED}
+        declarations = {key: value for key, value in COUNTY_ARCHIVES.items()
+                        if key != nebraska_canvass.CURRENT_FEED and value[0] != "MD"}
     for feed, (state, election) in sorted(declarations.items()):
         entry = entries.get(feed, {})
         data = entry.get("data")

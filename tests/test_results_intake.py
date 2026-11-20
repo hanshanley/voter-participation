@@ -893,6 +893,47 @@ def test_virginia_locality_report_replays_and_keeps_curbside_out_of_the_sum(tmp_
     assert failure["status"] == "retained_after_failure" and failure["data"] == result["data"]
 
 
+def test_maryland_registration_groups_preserve_unlocated_activity_and_retain_valid_pair(tmp_path, monkeypatch):
+    from scripts import maryland_precinct_history as md, results_turnout_history as history
+
+    date, feed = "2024-11-05", "MD-2024-general-precinct-affiliation-turnout"
+    edition = md.EDITIONS[date]
+    parties = sorted(md.PARTIES | {edition[-1]})
+    native = [[county, cd, ld, precinct, party, *values]
+              for county in md.COUNTIES for party in parties
+              for cd, ld, precinct, values in (
+                  ("02", "02A", "001-001", ["2", "1", "3", "0", "10"]),
+                  ("", "", "Unable to Determine", ["0", "0", "0", "1", ""]),
+              )]
+    monkeypatch.setitem(md.EDITIONS, date, (*edition[:4], len(native), edition[-1]))
+    control = "\n".join([f"Election Date: {edition[1]}", f"Election: {edition[2]}", f"As of: {edition[3]}",
+                         *[f"{county} 14 7 21 7 70 70.00%" for county in md.COUNTIES],
+                         "TOTAL 336 168 504 168 1,680 70.00%"])
+    url, control_url = md.routes(date)
+    bodies = {url: b"precinct query", control_url: b"control PDF"}
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+    monkeypatch.setattr(collector, "acquire", lambda url: (bodies[url], {"origin": "fixture"}))
+    monkeypatch.setattr(md, "parse", lambda body, pdf, election: md.query(native, control, election))
+    accepted = history.collect_county_archive(collector, feed)
+    assert accepted["status"] == "reported"
+    entries = {feed: accepted}
+    units, groups = md.exports(entries)
+    assert len(units) == 336 and len(groups) == 175 and not history.county_archive_rows(entries)
+    unknown = [row for row in units if not row["has_native_precinct_id"]]
+    assert len(unknown) == 168 and all(row["eligible_registered"] is None for row in unknown)
+    assert sum(r["reported_ballot_activity_without_precinct"] for r in groups if r["geography_level"] == "state") == 168
+    assert all(r["participation_measure"] == md.NUMERATOR for r in groups)
+    for spec in history.county_archive_originals(entries).values():
+        (tmp_path / spec["filename"]).write_bytes(bodies[spec["url"]])
+    assert history.verify_county_archive_originals(entries, tmp_path) == 2
+    collector.prior = entries
+    assert history.collect_county_archive(collector, feed)["data"] == accepted["data"]
+    control = control.replace("Election Date: November 5, 2024", "Election Date: November 8, 2022")
+    bodies[control_url] = b"changed control PDF"
+    rejected = history.collect_county_archive(collector, feed)
+    assert rejected["status"] == "retained_after_failure" and rejected["data"] == accepted["data"]
+
+
 @pytest.mark.parametrize("date", ["2012-11-06", "2014-11-04", "2024-11-05"])
 def test_minnesota_workbook_revisions_and_offline_original(tmp_path, monkeypatch, date):
     import io

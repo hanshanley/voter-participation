@@ -787,7 +787,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "philadelphia_divisions.py",
              "results_turnout_history.py", "wyoming_participation_statistics.py", "nebraska_canvass.py",
              "nebraska_county_reports.py",
-             "colorado_voting_statistics.py", "minnesota_precinct_history.py",
+             "colorado_voting_statistics.py", "maryland_precinct_history.py", "minnesota_precinct_history.py",
              "results_indiana_turnout.py", "results_nc_vote_history.py",
              "results_ca_county_scan_transcriptions.json",
              "results_pa_vote_history.py", "results_alaska_turnout.py",
