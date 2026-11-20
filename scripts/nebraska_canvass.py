@@ -9,6 +9,10 @@ INDEX = "https://sos.nebraska.gov/previous-elections"
 BASE = "https://sos.nebraska.gov/sites/default/files/doc/elections/"
 CURRENT = "2026-11-03"
 BOOKS = {
+    "2008-11-04": "2008%20General%20Canvass%20Book.pdf",
+    "2010-11-02": "2010%20Gen%20Canvass%20Book%2011-30-Final.pdf",
+    "2012-11-06": "2012-general-canvass.pdf",
+    "2014-11-04": "2014-General-Canvass-Recount-Final.pdf",
     "2016-11-08": "2016-canvass-book.pdf",
     "2018-11-06": "2018-general-election-official-results.pdf",
     "2020-11-03": "2020-General-Canvass-Book.pdf",
@@ -29,6 +33,10 @@ COUNTIES = (
 CSV = "participation-ne-2026-county-canvass.csv"
 MAX_BYTES = 8_000_000
 REGISTRATION = {
+    2008: ("County Democrat Green Libertarian Nebraska Nonpartisan Republican Total", 7),
+    2010: ("County Republican Democrat Nonpartisan Libertarian Grand Total", 5),
+    2012: ("County Republican Democratic Nonpartisan Libertarian Americans Elect Total", 6),
+    2014: ("County Precincts Republican Democratic Nonpartisan Libertarian Total", 6),
     2016: ("Precincts Republican Democratic Libertarian Nonpartisan Total", 6),
     2018: ("County Precincts Republican Democratic Libertarian Nonpartisan Total", 6),
     2020: ("County Precincts Republican Democratic Libertarian Nonpartisan Total", 6),
@@ -36,6 +44,10 @@ REGISTRATION = {
     2024: ("County Precincts Republican Democratic Libertarian NOW Nebraska Nonpartisan Total", 8),
 }
 VOTING = {
+    2008: ("County At the Polls (EV) Absentees Military/Overseas New/Former Resident Total Voting", 5),
+    2010: ("County Voters at the Polls Early Voters Military Early Voters Total Voting", 4),
+    2012: ("County At the Polls Early Voters Military New/Former Resident Total Voting", 5),
+    2014: ("County At Polls Mail Provisional Early Voting Military/Overseas Total Voting", 6),
     2016: ("Precincts Provisional Early Overseas Resident Total Voting", 7),
     2018: ("County At Polls Precincts Provisional Early Voting Overseas Total Voting", 6),
     2020: ("County At Polls Precincts Provisional Early Voting Overseas Resident Total Voting", 7),
@@ -59,32 +71,43 @@ def _data(pages, headers, title, *, registration, year):
     number = r"(?:[0-9]+|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
     pattern = re.compile(rf"([A-Za-z]+(?: [A-Za-z]+)*) ((?:{number} )+{number})")
     seen = []
+    malformed = set()
     for line in flattened:
+        if (year == 2008 and not registration
+                and line == "Lancaster 98,900 2,9192 517 12 128,621"):
+            # Keep the printed total, not a reconstruction of the malformed component.
+            seen.append(("Lancaster", [None, 128621]))
+            malformed.add("Lancaster")
+            continue
         if match := pattern.fullmatch(line):
             name, literal = match.groups()
-            name = "TOTAL" if name in ("Total", "Statewide", "Statewide Total") else name
+            name = "TOTAL" if name.casefold() in ("total", "totals", "grand total",
+                                                   "statewide", "statewide total") else name
             values = [count(value) for value in literal.split()]
-            if len(values) != width and not (year == 2016 and not registration
-                                             and name != "TOTAL" and len(values) == width - 1):
+            blank_component = ((registration and year == 2010) or
+                               (not registration and year in (2012, 2016)))
+            if len(values) != width and not (blank_component and name != "TOTAL" and len(values) == width - 1):
                 raise ValueError("Unreviewed Nebraska numeric column inventory")
             seen.append((name, values))
-    if [name for name, _ in seen] != ["TOTAL", *COUNTIES]:
+    expected_order = [*COUNTIES, "TOTAL"] if year in (2010, 2014) else ["TOTAL", *COUNTIES]
+    if [name for name, _ in seen] != expected_order:
         raise ValueError("Missing or repeated Nebraska county rows")
-    total = seen[0][1][-1]
-    if sum(values[-1] for _, values in seen[1:]) != total:
+    indexed = dict(seen)
+    if sum(indexed[name][-1] for name in COUNTIES) != indexed["TOTAL"][-1]:
         raise ValueError("Nebraska printed county amounts do not reconcile to the state total")
-    if registration and any(sum(values[1:-1]) != values[-1] for _, values in seen):
+    offset = 0 if year in (2008, 2010, 2012) else 1
+    if registration and any(sum(values[offset:-1]) != values[-1] for _, values in seen):
         raise ValueError("Nebraska native registration components do not reconcile")
-    return dict(seen)
+    return indexed, malformed
 
 
 def query(pages, election):
     year, _, day = election.split("-")
     date = f"NOVEMBER {int(day)}, {year}"
-    if (len(pages) != 5 or date not in " ".join(pages[0])
-            or "STATE CANVASSERS" not in " ".join(pages[0])
-            or "OFFICIAL REPORT" not in " ".join(pages[0])
-            or "GENERAL ELECTION" not in " ".join(pages[0])):
+    cover = " ".join(" ".join(pages[0]).replace("\ufffd", "").upper().split())
+    authority = ("OFFICIAL RESULTS OF NEBRASKA GENERAL ELECTION" in cover if year in ("2008", "2012")
+                 else "STATE CANVASSERS" in cover and "OFFICIAL REPORT" in cover)
+    if len(pages) != 5 or date not in cover or not authority or "GENERAL ELECTION" not in cover:
         raise ValueError("Unreviewed Nebraska report authority or election date")
     year = int(year)
     if year in REGISTRATION:
@@ -104,18 +127,19 @@ def query(pages, election):
     if len(candidates) != 1:
         raise ValueError("Unreviewed Nebraska turnout heading")
     reg_layout, vote_layout = candidates[0]
-    registered = _data(pages[1:3], reg_layout, "Number of Registered Voters", registration=True, year=year)
-    voted = _data(pages[3:], vote_layout,
-                  "Total Voting by Location" if year == 2016 else "Total Voting by Method",
-                  registration=False, year=year)
+    title = ("Total Voting By Location" if year in (2008, 2010, 2012) else "Total Voting By Method"
+             if year == 2014 else "Total Voting by Location" if year == 2016 else "Total Voting by Method")
+    registered, _ = _data(pages[1:3], reg_layout, "Number of Registered Voters", registration=True, year=year)
+    voted, malformed = _data(pages[3:], vote_layout, title, registration=False, year=year)
     rows = []
-    for name in registered:
+    for name in ["TOTAL", *COUNTIES]:
         stock, votes = registered[name][-1], voted[name][-1]
-        mode_disagreement = sum(voted[name][:-1]) != votes
+        mode_disagreement = name not in malformed and sum(voted[name][:-1]) != votes
         if year != 2018 and mode_disagreement:
             raise ValueError("Nebraska printed voting method components do not reconcile")
         rows.append({"county": name, "registered": stock, "ballots_cast": votes,
-                     "rate_hold_reason": "printed_voting_methods_disagree" if mode_disagreement else None})
+                     "rate_hold_reason": ("malformed_printed_voting_method" if name in malformed else
+                                          "printed_voting_methods_disagree" if mode_disagreement else None)})
     return {"counties": rows[1:], "total": rows[0], "native_lines": pages,
             "native_numerator": "total_voters", "registration_basis": "Registered voters in the same canvass book",
             "report_note": "Total Voting is the canvass book's measure; it is not a candidate vote sum.",

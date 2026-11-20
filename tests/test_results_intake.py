@@ -610,6 +610,34 @@ def test_nebraska_canvass_discovers_current_book_and_rejects_bad_totals(tmp_path
         ne.query(wrong, ne.CURRENT)
 
 
+def test_nebraska_old_canvass_preserves_printed_total_and_malformed_component():
+    from scripts import nebraska_canvass as ne, results_turnout_history as history
+
+    date = "2008-11-04"
+    url = ne.BASE + "2008/" + ne.BOOKS[date]
+    link = f'<a href="{url.replace("%20", " ")}">2008 General Election Official Results</a>'
+    assert history.archive_link(link.encode(), *ne.routes(date)) == url
+    names = ne.COUNTIES
+    registration = [f"{name} 150000 0 0 0 0 0 150000" for name in names]
+    voting = [f"{name} 0 0 0 0 0" if name != "Lancaster"
+              else "Lancaster 98,900 2,9192 517 12 128,621" for name in names]
+    pages = [
+        ["Official Results of Nebraska General Election - November 4, 2008"],
+        ["Number of Registered Voters", ne.REGISTRATION[2008][0], "Totals 13950000 0 0 0 0 0 13950000",
+         *registration[:45]],
+        registration[45:],
+        ["Total Voting By Location", ne.VOTING[2008][0], "Totals 98900 29192 517 12 128621", *voting[:45]],
+        voting[45:],
+    ]
+    query = ne.query(pages, date)
+    lancaster = next(row for row in query["counties"] if row["county"] == "Lancaster")
+    assert lancaster["ballots_cast"] == 128621
+    assert lancaster["rate_hold_reason"] == "malformed_printed_voting_method"
+    bad = [*pages[:4], [line.replace("128,621", "128,622") for line in pages[4]]]
+    with pytest.raises(ValueError, match="county rows"):
+        ne.query(bad, date)
+
+
 def test_county_archive_outage_attempts_shared_index_once_per_collection(tmp_path, monkeypatch):
     from scripts import results_turnout_history as history
 

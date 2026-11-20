@@ -297,7 +297,7 @@ def test_late_archive_cli_uses_all_reviewed_towns_without_full_collection(tmp_pa
         *(f"CA-{year}-general-election-turnout-pdf" for year in (1990, 1992, 1994)),
         *(f"WV-{year}-general-election-turnout-pdf" for year in range(2008, 2017, 2)),
         *(f"WY-{year}-general-election-ballots-pdf" for year in range(2004, 2025, 2)),
-        *(f"NE-{year}-general-election-canvass" for year in range(2016, 2027, 2)),
+        *(f"NE-{year}-general-election-canvass" for year in range(2008, 2027, 2)),
         "CA-2026-general-election-turnout-pdf",
         "ME-bath-municipal-turnout", "ME-buxton-town-turnout", "NH-bedford-municipal-turnout",
         "NH-hanover-municipal-turnout", "NH-hollis-municipal-turnout", town,

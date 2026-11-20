@@ -238,6 +238,8 @@ def archive_link(body, url, pattern, *, label=None):
         def handle_starttag(self, tag, attrs):
             if tag == "a" and (href := dict(attrs).get("href")):
                 target = urljoin(url, href)
+                if url == nebraska_canvass.INDEX:
+                    target = target.replace(" ", "%20")
                 if label is None:
                     self.links.add(target)
                     return
