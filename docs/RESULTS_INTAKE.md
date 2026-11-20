@@ -92,8 +92,12 @@ general-election link and a reconciled report are required for a separate
 withheld if the registration timing is not verified. The export does not replace
 the current native turnout feed or claim certification.
 
-The historical survey release also replays the eighteen original Census CPS
-Table 4b/4c workbooks for 2008–2024, plus the 2008 Table 4a control. The separate
+The historical survey release replays the Census CPS Table 4b/4c workbooks
+for 2008–2024 and the 2006 Table 4b workbook, plus separate Table 4a controls
+for 2006 and 2008. The 2006 totals match between tables for all 50 states,
+D.C., and the United States. Table 4b supplies the 2006 sex and
+race/Hispanic-origin groups; no state age estimates are supplied for 2006.
+The separate
 `release/participation-cps-published-state-tables.csv.gz` keeps the Census
 survey estimates and their published 90% margins of error for voting-age and
 citizen voting-age populations. Counts are rounded source estimates in
@@ -483,10 +487,16 @@ count corrections and explicit zeroes are accepted only after source identity,
 complete table inventory and printed-total checks; missing/invalid counts or
 changed layouts retain the last-good frame and its own provenance.
 
-The complete source download adds `congress-official-candidates.csv`; the
-analytical download includes it under `congressional/`, together with full
-official candidate queries and signed named-minor-versus-provider-Other
-differences. The runtime JSON exposes `official_candidate_evidence` and
+The complete source download includes `congress-official-candidates.csv` and
+`congress-official-reconciliation.csv`; the analytical download includes both
+under `congressional/` with the full official candidate queries. The
+reconciliation has one row per official source and native contest, with
+signed official-minus-provider differences for named major-party rows,
+contest vote totals, and named minor votes separately from generic write-ins.
+A combined minor/write-in diagnostic requires a reported generic write-in
+row. An ambiguous contest match or missing provider count leaves affected
+differences blank. Neither source's contest vote total measures ballots cast.
+The runtime JSON exposes `official_candidate_evidence` and
 `official_candidate_reconciliation`. Provider counts are never added to or
 silently replaced by these counts. No absent generic write-in row is treated as
 an observed zero. Equal subtotals alone never prove universe equivalence.

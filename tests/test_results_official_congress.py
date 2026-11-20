@@ -147,7 +147,11 @@ def test_provider_other_differences_are_explicit_not_reconciled_by_major_totals(
     race = {
         "chamber": "house", "state_code": "NE", "seat": "1", "stage": "general",
         "election_kind": "regular", "election_date": "2026-11-03", "round": "not_ranked",
-        "candidates": [{"role": "provider_aggregate_other", "votes": 6}],
+        "candidates": [
+            {"role": "provider_aggregate_other", "votes": 6},
+            {"role": "named_candidate", "party_group": "D", "votes": 0},
+            {"role": "named_candidate", "party_group": "R", "votes": None},
+        ],
     }
     national = official.attach({"races": {"native-race": {
         "status": "reported", "data": race}}}, {official.IDENTITY: entry})
@@ -155,6 +159,10 @@ def test_provider_other_differences_are_explicit_not_reconciled_by_major_totals(
     compared = official.reconciliation(national)
     assert compared[0]["named_minor_minus_provider_other"] == 1
     assert compared[0]["official_generic_write_in_votes"] is None
+    assert compared[0]["named_minor_plus_generic_write_in_minus_provider_other"] is None
+    assert compared[0]["provider_d_named_votes"] == 0
+    assert compared[0]["r_named_votes_difference"] is None
+    assert compared[0]["provider_candidate_vote_sum"] is None
     assert compared[1]["provider_aggregate_other"] is None
     assert all(row["universe_equivalence_qualified"] is False for row in compared)
     assert national == before
@@ -163,6 +171,26 @@ def test_provider_other_differences_are_explicit_not_reconciled_by_major_totals(
     compared = official.reconciliation(national)
     assert compared[0]["named_minor_minus_provider_other"] == 0
     assert compared[0]["universe_equivalence_qualified"] is False
+    assert compared[0]["official_contest_vote_total"] == entry["data"]["races"][0]["contest_total"]
+
+    race["candidates"][2]["votes"] = 20
+    native = national["official_candidate_evidence"][official.IDENTITY]["data"]["races"][0]
+    native["candidates"].append({"role": "generic_write_in", "party_group": "O", "votes": 2})
+    native["contest_total"] += 2
+    rows = list(csv.DictReader(io.StringIO(results_congress.csv_bytes(
+        official.reconciliation(national)).decode())))
+    row = rows[0]
+    assert row["provider_candidate_vote_sum"] == "27"
+    assert row["named_minor_minus_provider_other"] == "0"
+    assert row["named_minor_plus_generic_write_in_minus_provider_other"] == "2"
+    assert row["counts_combined_or_replaced"] == "False"
+
+    national["races"]["wrong-stage"] = {"status": "reported", "data": {**race, "stage": "runoff"}}
+    assert official.reconciliation(national)[0]["provider_match_count"] == 1
+    national["races"]["ambiguous"] = national["races"]["native-race"]
+    ambiguous = official.reconciliation(national)[0]
+    assert ambiguous["provider_match_count"] == 2
+    assert ambiguous["provider_aggregate_other"] is None
 
 
 def test_default_collector_and_complete_extracted_packet_keep_separate_queries(tmp_path, monkeypatch):
@@ -194,6 +222,7 @@ def test_default_collector_and_complete_extracted_packet_keep_separate_queries(t
             results_intake.ROOT / "scripts/results_official_congress.py").read_bytes()
         assert "code/tests/test_results_official_congress.py" in archive.namelist()
         assert "queries/congress-official-candidates.csv" in archive.namelist()
+        assert "queries/congress-official-reconciliation.csv" in archive.namelist()
         archive.extractall(tmp_path / "extracted")
     replay = subprocess.run(
         [sys.executable, "code/reproduce.py", "replay", "--package", ".", "--output", "reproduced"],

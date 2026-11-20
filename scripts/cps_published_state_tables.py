@@ -25,13 +25,15 @@ OVERALL_TABLES = {
 OVERALL_MANIFEST = "overall-sources.json"
 PUBLICATIONS = {2016: 580, 2018: 583, 2020: 585, 2022: 586, 2024: 587}
 LEGACY_PUBLICATIONS = {
+    2006: "557/tab0{table}.xls",
     2008: "562-rv/table-0{table}.xls",
     2010: "voting-registration-2010-election/table{table}_2010.xls",
     2012: "568/table0{table}.xls",
     2014: "577/table0{table}.xls",
 }
-YEARS = sorted(PUBLICATIONS.keys() | LEGACY_PUBLICATIONS.keys())
+YEARS = sorted((PUBLICATIONS.keys() | LEGACY_PUBLICATIONS.keys()) - {2006})
 EXPECTED = {(year, table) for year in YEARS for table in ("4b", "4c")}
+MIDTERM_2006 = {(2006, "4a"), (2006, "4b")}
 CONTROL = (2008, "4a")
 SEX = ("Male", "Female")
 RACE = ("White alone", "White non-Hispanic alone", "Black alone", "Asian alone",
@@ -91,7 +93,7 @@ def workbook_rows(body, legacy, columns=14):
         book.close()
 
 
-def early_workbook(body, table):
+def early_workbook(body, year, table):
     sheet, rows = workbook_rows(body, True, 13)
     title_fragment = {"4a": "of the Citizen Voting-Age Population",
                       "4b": "by Sex, Race and Hispanic Origin", "4c": "by Age"}[table]
@@ -99,12 +101,12 @@ def early_workbook(body, table):
     header = tuple("moe" if normalize(v) == "margin of error1"
                    else normalize(v).replace(" 18+)", ")") for v in rows[5][3:])
     if (sheet != f"Table {table}" or not all(v in rows[1][0] for v in (
-            f"Table {table}. Reported Voting and Registration", title_fragment, "November 2008"))
+            f"Table {table}. Reported Voting and Registration", title_fragment, f"November {year}"))
             or normalize(rows[2][0]) != "(in thousands)"
             or tuple(map(normalize, rows[4][1:4])) != ("total population", "total citizen population", "registered")
             or header != COMMON_HEADER
             or not any(row[0] == CONFIDENCE.replace("1 This", "1This") for row in rows)):
-        raise ValueError("2008 CPS workbook headers differ")
+        raise ValueError(f"{year} CPS workbook headers differ")
     places = {name.upper(): code for code, name in STATES.items()} | {"UNITED STATES": "US"}
     rosters = {
         code: {"Total", *(() if table == "4a" else (*SEX, *RACE) if table == "4b"
@@ -123,7 +125,7 @@ def early_workbook(body, table):
             if label in places and table != "4a":
                 state = places[label]
                 if state in headings:
-                    raise ValueError("Duplicate 2008 CPS geography heading")
+                    raise ValueError(f"Duplicate {year} CPS geography heading")
                 headings.add(state)
             elif isinstance(label, str) and label.strip():
                 state = None
@@ -133,25 +135,25 @@ def early_workbook(body, table):
         elif isinstance(label, str) and label.startswith("."):
             native = label
         else:
-            raise ValueError(f"Unknown 2008 CPS label at row {row_number}")
+            raise ValueError(f"Unknown {year} CPS label at row {row_number}")
         group = native.lstrip(".").strip()
         group = LABEL_ALIASES.get(group, group)
         if state not in rosters or group not in rosters[state] or (state, group) in seen:
-            raise ValueError(f"Unknown or duplicate 2008 CPS geography/group at row {row_number}")
+            raise ValueError(f"Unknown or duplicate {year} CPS geography/group at row {row_number}")
         seen.add((state, group))
         markers, values = {}, {}
         for field, cell in zip(FIELDS, cells, strict=True):
             if cell in ("(B)", "-"):
                 markers[field], values[field] = cell, None
                 continue
-            if (table, state, group, field, cell) == (
-                    "4b", "SD", "White alone or in combination", "cvap_registered_pct", 423):
+            if (year, table, state, group, field, cell) == (
+                    2008, "4b", "SD", "White alone or in combination", "cvap_registered_pct", 423):
                 markers[field], values[field] = "invalid_published_rate", None
                 continue
             count = field.endswith("_thousands")
             if (type(cell) not in (int, float) or not math.isfinite(cell) or cell < 0
                     or (not count and cell > 100) or (count and not float(cell).is_integer())):
-                raise ValueError(f"Invalid 2008 CPS field {field} at row {row_number}")
+                raise ValueError(f"Invalid {year} CPS field {field} at row {row_number}")
             values[field] = int(cell) if count else cell
         for prefix in ("vap_registered", "vap_voted", "cvap_registered", "cvap_voted"):
             marker = markers.get(prefix + "_pct")
@@ -159,22 +161,23 @@ def early_workbook(body, table):
                 values[prefix + "_moe_pp"] = None
                 markers[prefix + "_moe_pp"] = "withheld_without_valid_point"
             if (values[prefix + "_pct"] is None) != (values[prefix + "_moe_pp"] is None):
-                raise ValueError(f"2008 CPS point and margin do not share availability at row {row_number}")
-        output.append({"year": 2008, "election_type": "presidential", "state_code": state, "group": group,
+                raise ValueError(f"{year} CPS point and margin do not share availability at row {row_number}")
+        output.append({"year": year, "election_type": "presidential" if year % 4 == 0 else "midterm",
+                       "state_code": state, "group": group,
                        "native_group": native, "dimension": ("overall" if group == "Total" else "age"
                                      if table == "4c" else "sex" if group in SEX else "race_or_hispanic_origin"),
                        **values, "source_markers": markers, "confidence_level_pct": 90, "source_table": table,
-                       "source_sheet": sheet, "source_row": row_number, "source_url": source_url(2008, table),
+                       "source_sheet": sheet, "source_row": row_number, "source_url": source_url(year, table),
                        "source_sha256": checksum})
     expected_headings = set() if table == "4a" else set(STATES) if table == "4b" else set(places.values())
     if headings != expected_headings or seen != {(code, group) for code, groups in rosters.items() for group in groups}:
-        raise ValueError("Incomplete 2008 CPS geographic or demographic roster")
+        raise ValueError(f"Incomplete {year} CPS geographic or demographic roster")
     return output
 
 
 def parse_workbook(body, year, table):
-    if year == 2008:
-        return early_workbook(body, table)
+    if year == 2008 or (year, table) in MIDTERM_2006:
+        return early_workbook(body, year, table)
     legacy = year in LEGACY_PUBLICATIONS
     sheet_name, rows = workbook_rows(body, legacy)
     title_index = 0 if year == 2010 else 1
@@ -271,6 +274,8 @@ def age_frame_compatible(total, age_rows):
 def build(bundle):
     with zipfile.ZipFile(io.BytesIO(bundle)) as archive:
         inventory = EXPECTED | {CONTROL}
+        if any(filename(year, table) in archive.namelist() for year, table in MIDTERM_2006):
+            inventory |= MIDTERM_2006
         expected = {filename(y, t) for y, t in inventory}
         members = {"sources.json", *expected}
         if OVERALL_MANIFEST in archive.namelist():
@@ -290,22 +295,27 @@ def build(bundle):
                     year, table, source_url(year, table), pin(body)):
                 raise ValueError(f"CPS source identity or checksum differs: {name}")
             frames[year, table] = parse_workbook(body, year, table)
+    def totals(year, table):
+        return {r["state_code"]: tuple(r[field] for field in FIELDS)
+                for r in frames[year, table] if r["group"] == "Total"}
+
+    if MIDTERM_2006 <= frames.keys():
+        if totals(2006, "4a") != totals(2006, "4b"):
+            raise ValueError("CPS 4a and 4b totals differ for 2006")
+        del frames[2006, "4a"]
     for year in YEARS:
-        def totals(table):
-            return {r["state_code"]: tuple(r[field] for field in FIELDS)
-                    for r in frames[year, table] if r["group"] == "Total"}
         if year == 2008:
-            if totals("4a") != totals("4b"):
+            if totals(year, "4a") != totals(year, "4b"):
                 raise ValueError("CPS 4a and 4b totals differ for 2008")
-            controls = totals("4a")
+            controls = totals(year, "4a")
             age = frames[year, "4c"]
-            held = {state for state, total in totals("4c").items() if total != controls[state]}
+            held = {state for state, total in totals(year, "4c").items() if total != controls[state]}
             by_state = {r["state_code"]: r for r in age if r["dimension"] == "overall"}
             held.update(state for state, total in by_state.items() if not age_frame_compatible(
                 total, [r for r in age if r["state_code"] == state and r["dimension"] == "age"]))
             frames[year, "4c"] = [r for r in age if r["state_code"] not in held]
             del frames[CONTROL]
-        elif totals("4b") != totals("4c"):
+        elif totals(year, "4b") != totals(year, "4c"):
             raise ValueError(f"CPS 4b and 4c totals differ for {year}")
     return [r for frame in frames.values() for r in frame]
 

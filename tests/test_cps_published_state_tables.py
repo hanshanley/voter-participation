@@ -15,7 +15,7 @@ if not BUNDLE.exists():
 
 def test_published_cells_preserve_native_denominators_and_suppression():
     rows = cps.build(BUNDLE.read_bytes())
-    assert len(rows) == 7920
+    assert len(rows) == 8492
     keyed = {(r["year"], r["source_table"], r["state_code"], r["group"]): r for r in rows}
     assert len(keyed) == len(rows)
     usa = keyed[2020, "4c", "US", "18 to 24"]
@@ -44,12 +44,25 @@ def test_published_cells_preserve_native_denominators_and_suppression():
     assert sd["reported_registered_thousands"] == 423
 
 
+def test_2006_midterm_has_published_group_rates_but_no_state_age_table():
+    rows = [r for r in cps.build(BUNDLE.read_bytes()) if r["year"] == 2006]
+    assert len(rows) == 572
+    assert {r["source_table"] for r in rows} == {"4b"}
+    assert {r["election_type"] for r in rows} == {"midterm"}
+    assert {r["dimension"] for r in rows} == {"overall", "sex", "race_or_hispanic_origin"}
+    assert sum(r["cvap_voted_pct"] is not None for r in rows) == 443
+    benchmark = next(r for r in rows if r["state_code"] == "US" and r["group"] == "Total")
+    assert (benchmark["vap_voted_pct"], benchmark["cvap_voted_pct"],
+            benchmark["cvap_voted_moe_pp"]) == (43.6, 47.8, 0.3)
+
+
 def test_changed_workbook_and_incomplete_bundle_are_rejected():
     with zipfile.ZipFile(BUNDLE) as source:
         members = {n: source.read(n) for n in source.namelist()}
     name = "2016-table4b.xlsx"
     for changed, reason in (({**members, name: members[name] + b"changed"}, "checksum differs"),
-                            ({k: b for k, b in members.items() if k != name}, "Incomplete")):
+                            ({k: b for k, b in members.items() if k != name}, "Incomplete"),
+                            ({k: b for k, b in members.items() if k != "2006-table4a.xls"}, "Incomplete")):
         out = io.BytesIO()
         with zipfile.ZipFile(out, "w") as archive:
             for label, body in changed.items():

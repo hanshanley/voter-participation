@@ -1,4 +1,5 @@
 import copy
+import csv
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -210,8 +211,8 @@ def test_existing_default_collection_exports_and_literal_portable_replay(tmp_pat
         for name in ("scripts/results_native_congress.py", "tests/test_results_native_congress.py",
                      "tests/fixtures/virginia-federal-candidates.json"):
             assert packet.read("code/" + name) == (results_intake.ROOT / name).read_bytes()
-        assert packet.read("queries/congress-official-candidates.csv").count(
-            source.IDENTITY.encode()) == 47
+        rows = csv.DictReader(packet.read("queries/congress-official-candidates.csv").decode().splitlines())
+        assert sum(row["evidence_id"] == source.IDENTITY for row in rows) == 47
         packet.extractall(tmp_path / "extracted")
     replay = subprocess.run(
         [sys.executable, "code/reproduce.py", "replay", "--package", ".", "--output", "reproduced"],

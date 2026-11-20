@@ -209,49 +209,87 @@ def attach(congress, feeds):
 
 
 def reconciliation(congress):
+    def votes(rows):
+        counts = [row["votes"] for row in rows]
+        return sum(counts) if counts and all(count is not None for count in counts) else None
+
+    def difference(official, provider):
+        return official - provider if official is not None and provider is not None else None
+
     result = []
     evidence = congress.get("official_candidate_evidence", {})
     for evidence_id, race in (
             (identity, race) for identity, entry in sorted(evidence.items())
             for race in (entry.get("data") or {}).get("races", [])):
         entry = evidence[evidence_id]
+        chamber = race.get("chamber", "senate" if evidence_id == SENATE_IDENTITY else "house")
         matching = [
             (identity, candidate) for identity, candidate in congress.get("races", {}).items()
             if candidate.get("data") and all(candidate["data"].get(key) == value for key, value in {
-                "chamber": race.get("chamber", "senate" if evidence_id == SENATE_IDENTITY else "house"),
+                "chamber": chamber,
                 "state_code": race["state_code"], "seat": race["seat"],
-                "election_date": race["election_date"], "election_kind": "regular",
-                "stage": "general", "round": "not_ranked"}.items())]
+                "election_date": race["election_date"], "election_kind": race["election_kind"],
+                "stage": race["stage"], "round": "not_ranked"}.items())]
         provider_id, provider = matching[0] if len(matching) == 1 else (None, {})
         candidates = (provider.get("data") or {}).get("candidates", [])
         other = [row for row in candidates if row["role"] == "provider_aggregate_other"]
         native_minor = [row for row in race["candidates"]
                         if row["party_group"] == "O" and row["role"] == "named_candidate"]
         provider_other = other[0]["votes"] if len(other) == 1 else None
-        native_total = sum(row["votes"] for row in native_minor)
-        write_ins = [row for row in race["candidates"] if row["role"] == "generic_write_in"]
+        native_total = votes(native_minor) if native_minor else 0
+        write_ins = votes(row for row in race["candidates"] if row["role"] == "generic_write_in")
+        official_other_rows_total = native_total + write_ins if (
+            native_total is not None and write_ins is not None) else None
+        official_total = race["contest_total"]
+        provider_total = votes(candidates)
+        major = {}
+        for party in ("D", "R"):
+            totals = [votes(row for row in frame
+                            if row["role"] == "named_candidate" and row.get("party_group") == party)
+                      for frame in (race["candidates"], candidates)]
+            major.update({
+                f"official_{party.lower()}_named_votes": totals[0],
+                f"provider_{party.lower()}_named_votes": totals[1],
+                f"{party.lower()}_named_votes_difference": difference(*totals),
+            })
         result.append({
+            "evidence_id": evidence_id, "native_contest_id": race["native_contest_id"],
+            "state_code": race["state_code"], "chamber": chamber,
+            "seat": race["seat"], "stage": race["stage"],
+            "election_date": race["election_date"], "election_kind": race["election_kind"],
             "district": race["district"], "official_status": entry.get("status"),
+            "official_error": entry.get("error"),
             "official_source": entry.get("source"),
             "official_source_update_label": race["source_update_label"],
             "official_reporting_complete": race["complete_reporting"],
+            "official_contest_vote_total": official_total,
             "official_named_minor_votes": native_total,
-            "official_generic_write_in_votes": sum(row["votes"] for row in write_ins) if write_ins else None,
+            "official_generic_write_in_votes": write_ins,
+            "official_named_minor_plus_generic_write_in_votes": official_other_rows_total,
             "provider_race_id": provider_id, "provider_status": provider.get("status"),
+            "provider_error": provider.get("error"),
             "provider_source": provider.get("source"),
             "provider_source_updated_at": (provider.get("data") or {}).get("source_updated_at"),
+            "provider_match_count": len(matching),
+            "provider_candidate_vote_sum": provider_total,
+            "contest_vote_total_minus_provider_candidate_vote_sum": difference(official_total, provider_total),
             "provider_aggregate_other": provider_other,
-            "named_minor_minus_provider_other": (
-                native_total - provider_other if provider_other is not None else None),
+            "named_minor_minus_provider_other": difference(native_total, provider_other),
+            "named_minor_plus_generic_write_in_minus_provider_other": difference(
+                official_other_rows_total, provider_other),
+            **major,
             "synchronized_snapshots_qualified": False, "universe_equivalence_qualified": False,
             "counts_combined_or_replaced": False,
         })
     return result
 
 
-def rows(congress):
+def rows(congress, comparisons=None):
     result = []
-    compared = {row["district"]: row for row in reconciliation(congress)}
+    if comparisons is None:
+        comparisons = reconciliation(congress)
+    compared = {(row["evidence_id"], row["native_contest_id"]): row for row in comparisons}
+    require(len(compared) == len(comparisons), "Duplicate official contest in candidate reconciliation")
     for identity, entry in sorted(congress.get("official_candidate_evidence", {}).items()):
         data = entry.get("data")
         if data is None:
@@ -269,7 +307,7 @@ def rows(congress):
                     **{key: copy.deepcopy(value) for key, value in race.items() if key != "candidates"},
                     **copy.deepcopy(candidate), "conditional_model_eligible": False,
                     "provider_other_equivalence_qualified": False,
-                    "provider_reconciliation": copy.deepcopy(compared[race["district"]]),
+                    "provider_reconciliation": copy.deepcopy(compared[identity, race["native_contest_id"]]),
                     **({"exhaustive_write_in_universe_qualified": False,
                         "write_in_scope_notice": data["native_facts"]["write_in_scope_notice"],
                         "source_scope_holds": copy.deepcopy(data["holds"])}

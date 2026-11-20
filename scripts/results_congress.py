@@ -374,8 +374,10 @@ def exports(congress):
     result = {"congress-" + name + ".csv": csv_bytes(rows) for name, rows in (
         ("races", races), ("candidates", candidates), ("coverage", coverage))}
     if "official_candidate_evidence" in congress:
-        from scripts.results_official_congress import rows
-        result["congress-official-candidates.csv"] = csv_bytes(rows(congress))
+        from scripts.results_official_congress import reconciliation, rows
+        comparisons = reconciliation(congress)
+        result["congress-official-candidates.csv"] = csv_bytes(rows(congress, comparisons))
+        result["congress-official-reconciliation.csv"] = csv_bytes(comparisons)
     return result
 
 
