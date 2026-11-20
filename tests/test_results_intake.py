@@ -709,6 +709,15 @@ def test_scanned_panels_handle_wrapped_names_and_check_repeated_printed_controls
         scan.verify(evidence, profile)
 
 
+def test_scanned_native_control_requires_unique_exact_name_and_component_sum():
+    from scripts import results_pdf_archive_ocr as scan
+
+    line = "Red Willow 15 9 6"
+    assert scan.native_control((line, "Willow 20 10 10"), "Red Willow", 3) == (line, 15)
+    for lines in ((line, line), ("Red Willow 15 9 5",), ("Willow 15 9 6",)):
+        assert scan.native_control(lines, "Red Willow", 3) == (None, None)
+
+
 def test_nebraska_old_canvass_preserves_printed_total_and_malformed_component():
     from scripts import nebraska_canvass as ne, results_turnout_history as history
 

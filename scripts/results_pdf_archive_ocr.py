@@ -69,6 +69,20 @@ def panel(view, specification, aliases):
     return output
 
 
+def native_control(lines, name, fields):
+    candidates = []
+    for line in lines:
+        parts = line.rsplit(None, fields)
+        if len(parts) != fields + 1 or parts[0].casefold() != name.casefold():
+            continue
+        if not all(re.fullmatch(r"[0-9][0-9,]*", part, flags=re.ASCII) for part in parts[1:]):
+            continue
+        total, *components = map(count, parts[1:])
+        if total == sum(components):
+            candidates.append((line, total))
+    return candidates[0] if len(candidates) == 1 else (None, None)
+
+
 def verify(evidence, profile):
     if set(evidence) != {"cover", "tables"}:
         fail("Incomplete scan evidence")
@@ -107,7 +121,10 @@ def verify(evidence, profile):
                         or values[0] != values[1]):
                     fail("Scanned totals or identities disagree between renders")
                 if not (a["high_confidence"] or b["high_confidence"]):
-                    fail(f"Neither render clears the OCR confidence floor for {table}: {name}")
+                    fields = profile.get("native_controls", {}).get(table)
+                    line = pair[0].get("native_controls", {}).get(name)
+                    if not fields or not line or native_control((line,), name, fields)[1] != values[0]:
+                        fail(f"Neither render clears the OCR confidence floor for {table}: {name}")
                 result[table][name] = values[0]
         totals = result[table]
         if "TOTAL" not in totals or sum(v for k, v in totals.items() if k != "TOTAL") != totals["TOTAL"]:
@@ -115,7 +132,7 @@ def verify(evidence, profile):
     return result
 
 
-def parse(body, profile):
+def parse(body, profile, native_page=None):
     indices = [profile["cover_page"], *(p[0] for panels in profile["tables"].values() for p in panels)]
     views = extract(body, indices)
     evidence = {"cover": [{"text": view["text"], "receipt": view["receipt"]}
@@ -123,4 +140,11 @@ def parse(body, profile):
         table: [[{"receipt": view["receipt"], "rows": panel(view, spec, profile["aliases"])}
                  for view in views[str(spec[0])]] for spec in panels]
         for table, panels in profile["tables"].items()}}
+    for table, fields in profile.get("native_controls", {}).items():
+        for pair, spec in zip(evidence["tables"][table], profile["tables"][table], strict=True):
+            low = [name for name, a, b in zip(spec[2], pair[0]["rows"], pair[1]["rows"], strict=True)
+                   if not (a["high_confidence"] or b["high_confidence"])]
+            if low and native_page is not None:
+                lines = [" ".join(line.split()) for line in native_page(spec[0]).splitlines()]
+                pair[0]["native_controls"] = {name: native_control(lines, name, fields)[0] for name in low}
     return verify(evidence, profile), evidence

@@ -218,9 +218,10 @@ reuses the rejection for identical bytes and the same parser and OCR
 versions. Routine offline replay checks the retained cells without OCR.
 The 2000 and 2004 profiles discover the general-election section inside the
 Nebraska Library Commission's combined primary/general editions. The
-2000 scan is withheld if any county total lacks a sufficiently confident
-reading, even when both renders and statewide sums agree. The inspected 2002
-general-election section does not provide both participation tables.
+2000 registration layout also permits native-text corroboration for
+low-confidence cells: both renders and a unique named native row must
+agree, and the native components must sum to the printed county total.
+The inspected 2002 general-election section does not provide both tables.
 
 Checkpoint recovery limits the expanded collector state to 300 MB and the
 rest of its source ZIP to 100 MB, including the complete queries and code.

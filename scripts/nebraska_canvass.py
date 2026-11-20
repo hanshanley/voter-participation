@@ -43,6 +43,7 @@ SCANS = {
     "2000-11-07": {
         "cover_page": 65,
         "cover_headings": (*AUTHORITY, "November 7, 2000"),
+        "native_controls": {"registered": 7},
         "aliases": {"deue": "deuel", "dougias": "douglas", "harian": "harlan", "hoit": "holt",
                     "pawnce": "pawnee", "whceler": "wheeler", "knor": "knox",
                     "greeiey": "greeley", "mofrill": "morrill"},
@@ -255,7 +256,7 @@ def parse(body, election):
     if not 10 <= len(pdf.pages) <= 200:
         raise ValueError("Unreviewed Nebraska canvass pagination")
     if election in SCANS:
-        _, evidence = scan.parse(body, SCANS[election])
+        _, evidence = scan.parse(body, SCANS[election], lambda page: pdf.pages[page].extract_text())
         return scan_query(evidence, election)
 
     def lines(page):
