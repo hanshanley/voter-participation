@@ -1142,6 +1142,8 @@ def verify_county_archive_originals(entries, directory):
 
 def county_archive_rows(entries, *, current_california=False, current_nebraska=False,
                         colorado_precincts=False, minnesota_precincts=False):
+    from scripts.retained_bulk_turnout import disposition
+
     rows = []
     if current_california:
         declarations = {CA_CURRENT_FEED: ("CA", CA_CURRENT_ELECTION)}
@@ -1232,6 +1234,7 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                         "rate_hold_reason": minnesota_precinct_history.RATE_HOLD,
                         "source_id": feed, "source_status": entry["status"], "source_url": report["url"],
                         "source_sha256": report["sha256"], "source_bytes": report["bytes"],
+                        **disposition(entry),
                     })
                 continue
             counties = [*query["counties"], query["total"]]
@@ -1328,6 +1331,7 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 "reported_turnout_pct": native.get("printed_registered_percent", native.get("printed_percent")),
                 "reported_election_districts": native.get("election_districts"),
                 "source_id": feed, "source_status": entry["status"], "report_edition": data.get("date"),
+                **disposition(entry),
                 "report_note": query.get("report_note"), "extraction_method": query.get("extraction_method"),
                 "amended_county": query.get("amendment", {}).get("county"),
                 "original_certification_date": query.get("amendment", {}).get("original_certification_date"),

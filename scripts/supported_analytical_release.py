@@ -660,15 +660,17 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     indiana_history = results_indiana_turnout.rows(snapshot.get("granular_sources", {}))
     if indiana_history:
         raw_files["participation-indiana-general-turnout-history.csv"] = csv_bytes(indiana_history)
-    from scripts import oregon_turnout_history, washington_participation
+    from scripts import oregon_turnout_history, retained_bulk_turnout, washington_participation
 
-    washington_rows = washington_participation.exports(snapshot.get("granular_sources", {}))
+    historical_sources = retained_bulk_turnout.historical_entries(
+        snapshot.get("granular_sources", {}), seed.get("retained_bulk_turnout"))
+    washington_rows = washington_participation.exports(historical_sources)
     if washington_rows:
         raw_files[washington_participation.CSV] = csv_bytes(washington_rows)
-    oregon_rows = list(oregon_turnout_history.exports(snapshot.get("granular_sources", {})))
+    oregon_rows = list(oregon_turnout_history.exports(historical_sources))
     if oregon_rows:
         raw_files[oregon_turnout_history.CSV] = csv_bytes(oregon_rows)
-    county_archives = results_turnout_history.county_archive_rows(snapshot.get("granular_sources", {}))
+    county_archives = results_turnout_history.county_archive_rows(historical_sources)
     if county_archives:
         raw_files[results_turnout_history.COUNTY_ARCHIVE_CSV] = csv_bytes(county_archives)
     colorado_units = results_turnout_history.county_archive_rows(
@@ -676,7 +678,7 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     if colorado_units:
         raw_files["participation-co-precinct-voting-statistics.csv"] = csv_bytes(colorado_units)
     minnesota_units = results_turnout_history.county_archive_rows(
-        snapshot.get("granular_sources", {}), minnesota_precincts=True)
+        historical_sources, minnesota_precincts=True)
     if minnesota_units:
         raw_files[results_turnout_history.minnesota_precinct_history.CSV] = csv_bytes(minnesota_units)
     maryland = results_turnout_history.maryland_precinct_history

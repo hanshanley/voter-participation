@@ -143,6 +143,8 @@ def collect(collector, *, reuse_checked_week=False):
 
 
 def exports(entries):
+    from scripts.retained_bulk_turnout import disposition
+
     entry = entries.get(FEED, {})
     if entry.get("status") not in ("reported", "retained_after_failure"):
         return []
@@ -176,6 +178,7 @@ def exports(entries):
             "election_type": "presidential" if year % 4 == 0 else "midterm" if year % 2 == 0 else "odd_year",
             "age_group": age, "source_occurrence": occurrences[county, year, age],
             "observation_status": status, "collection_status": entry["status"],
+            **disposition(entry),
             "last_checked_week_utc": entry.get("archive_check_week_utc"),
             "state_ballots_minus_sum_of_counties": delta,
             **ratios,

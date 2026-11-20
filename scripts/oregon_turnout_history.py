@@ -104,6 +104,8 @@ def collect(collector, feed, *, reuse_checked_week=False):
 
 
 def exports(entries):
+    from scripts.retained_bulk_turnout import disposition
+
     by_feed = {}
     for feed, url in URLS.items():
         entry = entries.get(feed, {})
@@ -130,4 +132,5 @@ def exports(entries):
                         f"{prefix}_source_status": entry.get("status"),
                         f"{prefix}_generation_date": entry.get("data", {}).get("date"),
                         f"{prefix}_checked_week_utc": entry.get("archive_check_week_utc")})
+            row.update({f"{prefix}_{name}": val for name, val in disposition(entry).items()})
         yield row

@@ -1,11 +1,12 @@
 import io
 from copy import deepcopy
 from datetime import datetime, timezone
+from pathlib import Path
 
 import pytest
 from openpyxl import Workbook
 
-from scripts import results_intake, washington_participation as wa
+from scripts import results_intake, retained_bulk_turnout, washington_participation as wa
 from scripts.national_turnout_release_watch import INDEXES
 from scripts.supported_analytical_release import selected_local_observation_ids
 
@@ -96,3 +97,19 @@ def test_scoped_history_and_national_discovery_do_not_select_current_count_ids()
         "granular_sources": {identity: {"status": "reported", "data": {}} for identity in ids},
     }
     assert selected_local_observation_ids(snapshot) == set()
+
+
+def test_reviewed_bulk_archive_retains_stopped_facts_without_overwriting_accepted_entries():
+    body = Path(retained_bulk_turnout.INPUT).read_bytes()
+    existing = {"data": {"previously_accepted": True}, "status": "retained_after_failure"}
+    entries = retained_bulk_turnout.historical_entries({
+        wa.FEED: {"status": "source_stopped", "data": None},
+        "MN-2006-general-precinct-turnout-workbook": existing,
+    }, body)
+    assert entries["MN-2006-general-precinct-turnout-workbook"] == existing
+    rows = wa.exports(entries)
+    assert len(rows) == 6160
+    assert {r["latest_acquisition_status"] for r in rows} == {"source_stopped"}
+    assert {r["archive_status"] for r in rows} == {"reviewed_historical_archive"}
+    with pytest.raises(ValueError, match="checksum"):
+        retained_bulk_turnout.historical_entries({}, body + b"\x00")
