@@ -950,6 +950,7 @@ def test_national_release_discovery_distinguishes_links_from_participation(tmp_p
 
 
 def test_maryland_registration_groups_preserve_unlocated_activity_and_retain_valid_pair(tmp_path, monkeypatch):
+    import gzip
     from scripts import maryland_precinct_history as md, results_turnout_history as history
 
     date, feed = "2024-11-05", "MD-2024-general-precinct-affiliation-turnout"
@@ -988,6 +989,19 @@ def test_maryland_registration_groups_preserve_unlocated_activity_and_retain_val
     bodies[control_url] = b"changed control PDF"
     rejected = history.collect_county_archive(collector, feed)
     assert rejected["status"] == "retained_after_failure" and rejected["data"] == accepted["data"]
+    monkeypatch.setattr(md, "EDITIONS", {date: md.EDITIONS[date]})
+    archival = gzip.compress(encoded({feed: {key: accepted[key] for key in ("source", "data")}}), mtime=0)
+    monkeypatch.setattr(md, "ARCHIVE_PIN", pin(archival))
+    with pytest.raises(ValueError, match="archive checksum"):
+        md.exports({}, archival[:-1])
+    assert md.exports(entries, archival) == (units, groups)
+    fallback = md.exports({feed: {"status": "source_stopped", "data": None}}, archival)
+    assert all(row["source_status"] == "retained_after_failure"
+               and row["latest_acquisition_status"] == "source_stopped"
+               and row["archive_status"] == "reviewed_historical_archive"
+               for frame in fallback for row in frame)
+    assert tuple([[{k: v for k, v in row.items() if k not in ("archive_status", "latest_acquisition_status")}
+                   | {"source_status": "reported"} for row in frame] for frame in fallback]) == (units, groups)
 
 
 def test_maryland_2020_repeated_keys_require_independent_affiliation_totals(monkeypatch):

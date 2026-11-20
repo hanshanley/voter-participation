@@ -668,7 +668,8 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     if minnesota_units:
         raw_files[results_turnout_history.minnesota_precinct_history.CSV] = csv_bytes(minnesota_units)
     maryland = results_turnout_history.maryland_precinct_history
-    maryland_units, maryland_groups = maryland.exports(snapshot.get("granular_sources", {}))
+    maryland_units, maryland_groups = maryland.exports(
+        snapshot.get("granular_sources", {}), seed.get("md_retained_history"))
     if maryland_units:
         raw_files[maryland.ROW_CSV] = csv_bytes(maryland_units)
         raw_files[maryland.GROUP_CSV] = csv_bytes(maryland_groups)

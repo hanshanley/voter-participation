@@ -2775,6 +2775,13 @@ qualified geographic identifier. Activity includes rejected ballots and can
 rarely reflect repeat activity by a voter; it is not a unique-person count or
 an accepted-ballot total. No turnout rate is inferred from this activity.
 
+If hosted acquisition is stopped or unavailable, the analytical bundle can
+replay the checksum-pinned `md-reviewed-turnout-archive.json.gz` instead. It
+includes the full extracted factual queries, separate county controls and
+original source pins. Rows from this input are marked `retained_after_failure`
+with their latest acquisition status; it never replaces data already accepted
+by the collector or retries a denied source.
+
 The ordinary full and late-archive collectors check the paired sources.
 To check all editions together:
 

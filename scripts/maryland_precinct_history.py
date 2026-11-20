@@ -3,10 +3,12 @@
 import csv
 from collections import defaultdict
 from decimal import Decimal, ROUND_HALF_UP
+import gzip
 from io import BytesIO, StringIO
+import json
 import re
 
-from scripts.participation_intake.contract import IntakeError, count
+from scripts.participation_intake.contract import IntakeError, count, pin
 
 BASE = "https://elections.maryland.gov/"
 GUIDE = BASE + "press_room/Navigating_Official_Turnout_Statistics.pdf"
@@ -32,6 +34,9 @@ MEASURES = ("polls", "early_voting", "mail", "provisional", "eligible_registered
 ROW_CSV = "participation-md-precinct-affiliation-snapshots.csv"
 GROUP_CSV = "participation-md-county-affiliation-snapshots.csv"
 NUMERATOR = "reported_ballot_activity_voter_file_snapshot"
+ARCHIVE_INPUT = "data/results-intake/md-reviewed-turnout-archive.json.gz"
+ARCHIVE_MEMBER = "md-reviewed-turnout-archive.json.gz"
+ARCHIVE_PIN = {"bytes": 621534, "sha256": "8814d94eb14382212eaea7989da876618584f194a56bb0846b40d767d9681619"}
 
 
 def routes(election):
@@ -140,12 +145,24 @@ def parse(body, supporting, election):
     return query([r for r in reader if r], control, election)
 
 
-def exports(entries):
+def exports(entries, retained_archive=None):
+    archived = {}
+    if retained_archive is not None:
+        if pin(retained_archive) != ARCHIVE_PIN:
+            raise ValueError("Maryland retained turnout archive checksum differs")
+        archived = json.loads(gzip.decompress(retained_archive))
+        if set(archived) != {f"MD-{election[:4]}-general-precinct-affiliation-turnout" for election in EDITIONS}:
+            raise ValueError("Maryland retained turnout archive inventory differs")
     units, groups = [], []
     for election in EDITIONS:
         feed = f"MD-{election[:4]}-general-precinct-affiliation-turnout"
         entry = entries.get(feed) or {}
         data = entry.get("data")
+        acquisition_status = None
+        if data is None and feed in archived:
+            acquisition_status = entry.get("status", "not_checked")
+            entry = {**archived[feed], "status": "retained_after_failure"}
+            data = entry["data"]
         if not data:
             continue
         url, control_url = routes(election)
@@ -160,6 +177,8 @@ def exports(entries):
                 "participation_measure": NUMERATOR, "registration_basis": "active, inactive and pending; excludes incomplete and cancelled",
                 "source_status": entry["status"], "source_url": url, "source_sha256": report["sha256"],
                 "county_control_url": control_url, "county_control_sha256": supporting["sha256"], "guide_url": GUIDE}
+        if acquisition_status:
+            base.update(archive_status="reviewed_historical_archive", latest_acquisition_status=acquisition_status)
         sums = defaultdict(lambda: [0] * 6)
         for source_row, (county, cd, ld, precinct, party, *values) in enumerate(retained["native_rows"], 1):
             mode = [count(v) for v in values]

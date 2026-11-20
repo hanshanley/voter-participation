@@ -20,6 +20,7 @@ import zipfile
 from scripts.participation_intake.contract import digest, encoded, pin
 from scripts.participation_intake.publisher import GitPublisher
 from scripts import results_granular
+from scripts.maryland_precinct_history import ARCHIVE_INPUT as MD_ARCHIVE_INPUT, ARCHIVE_MEMBER as MD_ARCHIVE_MEMBER
 from scripts.cps_published_state_tables import INPUT as CPS_INPUT, INPUT_PATH as CPS_INPUT_PATH
 from scripts.nationwide import STATES
 
@@ -583,7 +584,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
     model_seed = {key: value for key, value in seed.items()
                   if key not in {"historical_eac_county_facts", "nc_retained_original", "oh_retained_original",
                                  "ga_retained_original", "retained_county_canvasses",
-                                 "tx_retained_history", "cps_published_state_workbooks"}}
+                                 "tx_retained_history", "md_retained_history", "cps_published_state_workbooks"}}
     estimates = build(snapshot, model_seed)
     history_exports = {}
     for code, feed, state_name in (("WA", turnout_history.WA_FEED, "washington"),
@@ -658,6 +659,8 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         result["retained_county_canvasses"] = seed["retained_county_canvasses"]
     if "tx_retained_history" in seed:
         result["tx_retained_history"] = seed["tx_retained_history"]
+    if "md_retained_history" in seed:
+        result["md_retained_history"] = seed["md_retained_history"]
     if "historical_eac_county_facts" in seed:
         from scripts.eac_county_turnout import exports as eac_exports
         eac_files, descriptor = eac_exports(seed["historical_eac_county_facts"])
@@ -742,6 +745,8 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         members["inputs/retained-county-canvasses.json"] = compiled["retained_county_canvasses"]
     if "tx_retained_history" in compiled:
         members["inputs/tx-retained-history.json"] = compiled["tx_retained_history"]
+    if "md_retained_history" in compiled:
+        members["inputs/" + MD_ARCHIVE_MEMBER] = compiled["md_retained_history"]
     if "release_review" in compiled:
         members["inputs/supported-release-review.json"] = encoded(compiled["release_review"])
     if "congressional_analytical_review" in compiled:
@@ -896,6 +901,8 @@ def replay(package, output):
         seed["retained_county_canvasses"] = (package / "inputs/retained-county-canvasses.json").read_bytes()
     if "inputs/tx-retained-history.json" in manifest:
         seed["tx_retained_history"] = (package / "inputs/tx-retained-history.json").read_bytes()
+    if "inputs/" + MD_ARCHIVE_MEMBER in manifest:
+        seed["md_retained_history"] = (package / "inputs" / MD_ARCHIVE_MEMBER).read_bytes()
     if "inputs/congressional-analytical-review.json" in manifest:
         seed["congressional_analytical_review"] = read(package / "inputs/congressional-analytical-review.json")
         boundaries = seed["congressional_analytical_review"].get("house_boundaries") or {}
@@ -1100,6 +1107,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     retained_canvasses = canvass_path.read_bytes() if canvass_path.exists() else None
     tx_path = ROOT / TX_ARCHIVE_INPUT
     tx_archive = tx_path.read_bytes() if tx_path.exists() else None
+    md_path = ROOT / MD_ARCHIVE_INPUT
+    md_archive = md_path.read_bytes() if md_path.exists() else None
     processing = digest(encoded({
         "numerical_runtime": numerical_runtime(),
         "code": {name: pin((ROOT / "scripts" / name).read_bytes()) for name in CODE_PATHS},
@@ -1112,6 +1121,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "ga_retained_original": pin(ga_original) if ga_original is not None else None,
         "retained_county_canvasses": pin(retained_canvasses) if retained_canvasses is not None else None,
         "tx_retained_history": pin(tx_archive) if tx_archive is not None else None,
+        "md_retained_history": pin(md_archive) if md_archive is not None else None,
         "congressional_analytical_review": {
             name: pin((ROOT / name).read_bytes()) for name in data_paths(analytical_review)
         } if analytical_review else None,
@@ -1174,6 +1184,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         seed["retained_county_canvasses"] = retained_canvasses
     if tx_archive is not None:
         seed["tx_retained_history"] = tx_archive
+    if md_archive is not None:
+        seed["md_retained_history"] = md_archive
     if analytical_review is not None:
         seed["congressional_analytical_review"] = analytical_review
     if senate_review is not None:
