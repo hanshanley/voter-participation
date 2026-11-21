@@ -2162,6 +2162,21 @@ def test_saved_source_stops_batch_keeps_latest_and_refuses_stale_or_pending_pare
     assert publisher.remote_head() == staged
 
 
+@pytest.mark.parametrize("reply, message", [
+    (b'{"group_members": []}', None),
+    (b'{"group_members": [{"run_id": 17, "status": "in_progress"}]}', "active or queued"),
+    (b'{"group_members": [{"run_id": 17, "status": "pending"}]}', "active or queued"),
+    (b'{"error": "failed"}', "Could not verify"),
+])
+def test_direct_stop_merge_requires_verified_idle_collector(monkeypatch, reply, message):
+    monkeypatch.setattr(subprocess, "check_output", lambda *args, **kwargs: reply)
+    if message:
+        with pytest.raises(ValueError, match=message):
+            intake.require_idle_collector()
+    else:
+        intake.require_idle_collector()
+
+
 def test_data_tag_updates_preserve_main_and_reject_stale_or_backward_publication(tmp_path):
     repo, remote = tmp_path / "repository", tmp_path / "remote.git"
     subprocess.run(["git", "init", "--bare", str(remote)], check=True, capture_output=True)

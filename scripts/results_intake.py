@@ -14,6 +14,7 @@ import json
 from pathlib import Path, PurePosixPath
 import re
 import shutil
+import subprocess
 import tempfile
 import threading
 import time
@@ -1429,6 +1430,19 @@ def merge_saved_source_stops(repository, expected_head, ledgers):
     return publish_source_stops(publisher, expected_head, stopped)
 
 
+def require_idle_collector():
+    endpoint = "repos/hanshanley/voter-participation/actions/concurrency_groups/election-night-participation"
+    try:
+        group = json.loads(subprocess.check_output(["gh", "api", endpoint], timeout=30))
+        members = group["group_members"]
+        if not isinstance(members, list):
+            raise ValueError("Invalid group membership")
+    except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as error:
+        raise ValueError("Could not verify the hosted collector is idle; source stops not published") from error
+    if members:
+        raise ValueError("Hosted collector is active or queued; keep the saved ledgers and merge when idle")
+
+
 def publish(repository, ref, github_repository, work):
     work = Path(work)
     publisher = GitPublisher(repository, ref=ref, github_repository=github_repository)
@@ -1548,6 +1562,7 @@ def main():
     elif args.command == "resume-publication":
         result = resume_publication(args.repository, args.ref, args.github_repository)
     elif args.command == "merge-source-stops":
+        require_idle_collector()
         result = merge_saved_source_stops(args.repository, args.expected_head, args.ledgers)
     elif args.command == "restore":
         if args.require_late_archive_scope and not args.require_predecessor:
