@@ -116,6 +116,26 @@ general-election link and a reconciled report are required for a separate
 withheld if the registration timing is not verified. The export does not replace
 the current native turnout feed or claim certification.
 
+The same hourly collector also reads California's separately published `S26GG`
+and `V26GG` text files as `CA-2026-media-turnout`. The `A` section reports
+ballots cast and registration, with separate county report clocks and one
+transmission clock, all Pacific time. Row `59` is the statewide control, not
+an additional county. Missing counts remain missing; the statewide aggregates
+are checked against the county sums whenever all constituent counts are
+available. Printed registration percentages stay in the table; the reviewed
+county map shades counts only. This corroborates the `status_GG.json` route
+and is not a second statewide observation or a certified result.
+
+`CA-2026-media-house` adds `C26GG` and `R26GG` to read candidate, contest and
+county rows from the `V` section. Listed votes remain separate from ballots
+and are not proof of an exhaustive write-in universe. An incomplete `V`
+section does not prevent admitting a complete numbered `A` section with a
+valid closing record. Each feed independently retains its last good data if
+its own checks fail. The complete package includes
+`release/participation-ca-2026-media-turnout.csv.gz` and
+`release/congressional-ca-2026-media-house.csv.gz`. Exact-original extraction
+uses the `--bulk-report-dir` option in the nested source package.
+
 The historical survey release replays the Census CPS Table 4b/4c workbooks
 for 2008–2024 and the 2006 Table 4b workbook, plus separate Table 4a controls
 for 2006 and 2008. The 2006 totals match between tables for all 50 states,
