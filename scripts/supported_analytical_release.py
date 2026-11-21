@@ -443,9 +443,8 @@ def change_effects(changes, records, selected_observation_ids=None):
                      and change.get("source_status", "reported") == "reported")
         result.append(effect(identity, row, refreshed, change.get("previous") != change.get("current")))
         represented.add(identity)
-    if selected_observation_ids is not None:
-        result.extend(effect(identity, by_id[identity], False, False)
-                      for identity in sorted(by_id.keys() - represented))
+    result.extend(effect(identity, by_id[identity], False, False)
+                  for identity in sorted(by_id.keys() - represented))
     return result
 
 

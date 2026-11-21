@@ -301,6 +301,7 @@ def test_export_only_scope_preserves_observations_without_projected_changes():
     assert rows[0]["source_count_clock"] == county["source_count_clock"]
     assert all(not row[key] for row in rows for key in ("source_capture_refreshed", "numerical_count_changed",
                                                        "compatible_participation_rate_updated"))
+    assert release.change_effects([], [state, county]) == rows
     changed = release.change_effects([{"id": "county", "previous": 1, "current": 2}], [state, county], {"county"})
     assert [row["observation_id"] for row in changed] == ["county", "state"]
     assert changed[0]["source_capture_refreshed"] and changed[0]["numerical_count_changed"]
