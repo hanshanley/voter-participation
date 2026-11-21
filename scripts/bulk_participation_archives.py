@@ -38,10 +38,9 @@ def families():
          (kansas_turnout_history.CSV,), kansas_turnout_history.exports),
         ({hawaii_turnout_history.FEED: hawaii_turnout_history.collect}, True,
          (hawaii_turnout_history.CSV,), hawaii_turnout_history.exports),
-        (routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.FEED,)), True,
-         (hawaii_precinct_turnout.CSV,), hawaii_precinct_turnout.exports),
-        (routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.HISTORICAL_FEED,)), True,
-         (hawaii_precinct_turnout.HISTORICAL_CSV,), partial(hawaii_precinct_turnout.exports, year=2024)),
+        *((routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.feed_for(year),)), True,
+           (hawaii_precinct_turnout.csv_for(year),), partial(hawaii_precinct_turnout.exports, year=year))
+          for year in hawaii_precinct_turnout.ELECTIONS),
         (routes(dakota_turnout_history, dakota_turnout_history.URLS), True,
          (dakota_turnout_history.CSV,), dakota_turnout_history.exports),
         (routes(new_jersey_periodic_counties, new_jersey_periodic_counties.FEEDS), False,
@@ -88,7 +87,8 @@ def original_reports(entries):
 
     age, ct = alaska_age_history, connecticut_turnout_history
     hi = hawaii_precinct_turnout
-    for feed, year in ((hi.FEED, 2026), (hi.HISTORICAL_FEED, 2024)):
+    for year in hi.ELECTIONS:
+        feed = hi.feed_for(year)
         if (data := (entries.get(feed) or {}).get("data")) is None:
             continue
         url, control_url = hi.sources(year)

@@ -91,3 +91,15 @@ def test_historical_detail_requires_its_own_date_and_profile(reports, monkeypatc
     assert hi.parse_detail(historical, year=2024)["mode_blocks"][0][:2] == ["01-01", "Mail"]
     with pytest.raises(ValueError, match="election"):
         hi.parse_detail(historical, year=2026)
+
+
+def test_legacy_pdf_modes_do_not_copy_the_mail_denominator_into_in_person():
+    header = ("**FINAL REPORT**November 3, 2020GENERAL ELECTION 2020 - State of Hawaii – Statewide"
+              "Printed on:  11/19/2020 at 10:18:14 amPAGE 1")
+    footer = hi.FOOTER + "*" * 80 + "GENERAL "
+    mail = header + "MAIL 01-01\n" + footer + "100PRECINCT REGISTRATION 60.0% 60 MAIL TURNOUT\n"
+    in_person = header + "IN-PERSON 01-01\n" + footer + "10 IN-PERSON TURNOUT\n"
+    assert hi.legacy_detail_page(mail, 1)[1] == ["01-01", "Mail", 1, "100", "60", "60.0%"]
+    assert hi.legacy_detail_page(in_person, 1)[1] == ["01-01", "In-Person", 1, None, "10", None]
+    with pytest.raises(ValueError, match="turnout block"):
+        hi.legacy_detail_page(in_person.replace("IN-PERSON TURNOUT", "MAIL TURNOUT"), 1)

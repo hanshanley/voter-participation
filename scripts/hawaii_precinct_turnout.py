@@ -17,10 +17,17 @@ HISTORICAL_FEED = "HI-2024-general-election-precinct-turnout"
 HISTORICAL_CSV = "participation-hi-2024-native-precinct-turnout.csv"
 HISTORICAL_ROOT = "https://files.hawaii.gov/elections/files/results/2024/General/"
 HISTORICAL_ROSTER = "ee25c7e36b9bdc295b62264ad8a15e35441ac14c80b663ee4b8af936a6c1f0c7"
+LEGACY_ROSTERS = {
+    2020: "ea46cc90cc1513a33aba5afdea24c31d454de8843b6da124ef633ac286e7006e",
+    2022: "d7b01f2c58eeb0014c0902c2b9efe27c69fc990d3c04e4d8f7766d2e7f5f6442",
+}
 MAX_BYTES = 10_000_000
 ROSTER = "9392e63c74bac626dee1917ad55ef3d5db603cc7460175713849771890775db3"
 FOOTER = "PRECINCT REGISTRATION AND TURNOUT"
 MODES = ("Mail", "In-Person")
+ELECTIONS = {2020: "2020-11-03", 2022: "2022-11-08", 2024: "2024-11-05", 2026: "2026-11-03"}
+NUMERAL = r"([0-9][0-9,]*)"
+PERCENT = r"([0-9]{1,3}\.[0-9]%)"
 
 
 def clock(value, year=2026):
@@ -37,11 +44,42 @@ def number(text):
 
 
 def election_date(year):
-    return {2024: "2024-11-05", 2026: "2026-11-03"}[year]
+    return ELECTIONS[year]
+
+
+def feed_for(year):
+    election_date(year)
+    return f"HI-{year}-general-election-precinct-turnout"
+
+
+def csv_for(year):
+    return f"participation-hi-{year}-native-precinct-turnout.csv"
 
 
 def sources(year):
-    return (URL, HI_URL) if year == 2026 else (HISTORICAL_ROOT + "precinct.pdf", HISTORICAL_ROOT + "histatewide.pdf")
+    election_date(year)
+    if year == 2026:
+        return URL, HI_URL
+    root = HISTORICAL_ROOT if year == 2024 else f"https://files.hawaii.gov/elections/files/results/{year}/general/"
+    return root + "precinct.pdf", root + "histatewide.pdf"
+
+
+def legacy_detail_page(text, page):
+    header = re.match(
+        r"\*\*FINAL REPORT\*\*November 3, 2020GENERAL ELECTION 2020\s+- State of Hawaii – Statewide"
+        rf"(Printed on:\s+\d{{2}}/\d{{2}}/2020 at \d{{2}}:\d{{2}}:\d{{2}} [ap]m)PAGE {page}"
+        r"(MAIL|IN-PERSON) ([0-9]{2}-[0-9]{2}|Presidential)", text)
+    chunks = text.split(FOOTER)
+    if not header or len(chunks) != 2:
+        raise ValueError("Hawaii 2020 precinct election, mode or page sequence differs")
+    report_clock, mode, unit = header.groups()
+    pattern = (rf"{NUMERAL}PRECINCT REGISTRATION {PERCENT} {NUMERAL}\s+MAIL TURNOUT"
+               if mode == "MAIL" else rf"{NUMERAL}\s+IN-PERSON TURNOUT")
+    values = re.match(r"\*{80}GENERAL " + pattern + r"\s*\n", chunks[1])
+    if not values:
+        raise ValueError("Hawaii 2020 native turnout block differs")
+    registration, printed, ballots = values.groups() if mode == "MAIL" else (None, None, values[1])
+    return clock(" ".join(report_clock.split()), 2020), [unit, mode.title(), page, registration, ballots, printed]
 
 
 def parse_detail(body, *, year=2026):
@@ -56,12 +94,21 @@ def parse_detail(body, *, year=2026):
     records = []
     completed = set()
     previous = None
-    title = f"GENERAL ELECTION {year} - State of Hawaii - Statewide Precinct" + (" Report" if year == 2024 else "")
+    title = f"GENERAL ELECTION {year} - State of Hawaii - Statewide Precinct" + {
+        2022: " Detail", 2024: " Report"}.get(year, "")
+    final = "FINAL REPORT" if year == 2022 else "FINAL"
     day = int(election_date(year)[-2:])
     for page_number, page in enumerate(pdf.pages, 1):
+        if year == 2020:
+            observed, record = legacy_detail_page(page.extract_text(), page_number)
+            source_clock = source_clock or observed
+            if observed != source_clock:
+                raise ValueError("Hawaii precinct PDF mixes report clocks")
+            records.append(record)
+            continue
         lines = [" ".join(line.split()) for line in page.extract_text().splitlines() if line.strip()]
         if (len(lines) < 6 or lines[1] != title or lines[3] != f"November {day}, {year}"
-                or lines[4].upper() != "FINAL" or lines[-1] != f"PAGE {page_number}"):
+                or lines[4].upper() != final or lines[-1] != f"PAGE {page_number}"):
             raise ValueError("Hawaii precinct PDF election, status or page sequence differs")
         observed = clock(lines[0], year)
         if source_clock is None:
@@ -89,7 +136,7 @@ def parse_detail(body, *, year=2026):
             raise ValueError("Hawaii native precinct turnout block differs")
         records.append([unit, mode, page_number, block[5], block[7], block[8]])
         completed.add(identity)
-    if previous not in completed:
+    if year != 2020 and previous not in completed:
         raise ValueError("Last Hawaii precinct mode is missing its native turnout block")
     facts = {"report_clock": source_clock.isoformat(), "pages": len(pdf.pages), "mode_blocks": records}
     detail_rows(facts, year=year)
@@ -100,26 +147,30 @@ def detail_rows(detail, *, year=2026):
     units = {}
     previous_page = 0
     for unit, mode, page, native_reg, native_ballots, printed in detail["mode_blocks"]:
-        reg, ballots = number(native_reg), number(native_ballots)
+        legacy_in_person = year == 2020 and mode == "In-Person"
+        ballots = number(native_ballots)
+        reg = None if legacy_in_person else number(native_reg)
         if (mode not in MODES or type(page) is not int or not previous_page < page <= detail["pages"]
                 or mode in units.setdefault(unit, {})
-                or not re.fullmatch(r"[0-9]{1,3}\.[0-9]%", printed)):
+                or ((native_reg is not None or printed is not None) if legacy_in_person
+                    else not re.fullmatch(PERCENT, printed))):
             raise ValueError("Hawaii turnout block identity or counts differ")
         percentage = (Decimal(100 * ballots) / reg).quantize(
             Decimal(".1"), rounding=ROUND_HALF_UP) if reg else Decimal(0)
-        if percentage != Decimal(printed[:-1]):
+        if not legacy_in_person and percentage != Decimal(printed[:-1]):
             raise ValueError("Hawaii turnout block printed rate differs")
         units[unit][mode] = (reg, ballots, page, printed)
         previous_page = page
-    if digest(("\n".join(sorted(units)) + "\n").encode()) != (ROSTER if year == 2026 else HISTORICAL_ROSTER):
+    roster = LEGACY_ROSTERS.get(year, ROSTER if year == 2026 else HISTORICAL_ROSTER)
+    if digest(("\n".join(sorted(units)) + "\n").encode()) != roster:
         raise ValueError("Hawaii precinct reporting roster differs")
     rows = []
     for unit, modes in sorted(units.items()):
-        if set(modes) != set(MODES) or modes["Mail"][0] != modes["In-Person"][0]:
+        if set(modes) != set(MODES) or (year != 2020 and modes["Mail"][0] != modes["In-Person"][0]):
             raise ValueError("Hawaii precinct modes do not share one registration count")
         (reg, mail, mail_page, mail_pct), (_, in_person, in_person_page, in_person_pct) = (
             modes[mode] for mode in MODES)
-        nongeographic = unit in {"OS I", "OS II", "PRES"}
+        nongeographic = unit in {"OS I", "OS II", "PRES", "Presidential"}
         if nongeographic and (reg or mail or in_person):
             raise ValueError("Hawaii nongeographic reporting unit is no longer empty")
         rows.append({"native_unit": unit, "geography_level": "nongeographic" if nongeographic else "precinct",
@@ -130,47 +181,70 @@ def detail_rows(detail, *, year=2026):
     return rows
 
 
-def historical_statewide_control(body):
+def historical_statewide_control(body, year):
     from pypdf import PdfReader
 
     if not 0 < len(body) <= MAX_BYTES or not body.startswith(b"%PDF-") or not body.rstrip().endswith(b"%%EOF"):
-        raise ValueError("Invalid Hawaii 2024 statewide summary PDF")
+        raise ValueError("Invalid Hawaii historical statewide summary PDF")
     pdf = PdfReader(BytesIO(body), strict=True)
     if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 100:
-        raise ValueError("Hawaii 2024 statewide PDF page inventory differs")
+        raise ValueError("Hawaii historical statewide PDF page inventory differs")
     clocks = set()
     parents = []
     labels = ("TOTAL REGISTRATION", "TOTAL TURNOUT", "Mail TURNOUT", "In-Person TURNOUT")
+    day = int(election_date(year)[-2:])
+    final = "FINAL REPORT" if year == 2022 else "Final"
     for i, page in enumerate(pdf.pages, 1):
-        lines = [" ".join(line.split()) for line in page.extract_text().splitlines() if line.strip()]
-        if lines[:5] != ["GENERAL ELECTION 2024 - State of Hawaii - Statewide", "November 5, 2024",
-                         "SUMMARY REPORT", "Final", f"Page {i}"]:
-            raise ValueError("Hawaii 2024 statewide summary election, stage or page differs")
-        clocks.add(clock(lines[5], 2024))
-        if "REGISTRATION AND TURNOUT" not in lines:
-            continue
-        if lines.count("REGISTRATION AND TURNOUT") != 1:
-            raise ValueError("Hawaii 2024 statewide summary repeats its turnout block")
-        index = lines.index("REGISTRATION AND TURNOUT")
-        cells = lines[index + 1:index + 12]
-        if len(cells) != 11 or tuple(cells[j].upper() for j in (0, 2, 5, 8)) != tuple(s.upper() for s in labels):
-            raise ValueError("Hawaii 2024 statewide statistics columns differ")
-        counts = dict(zip(labels, (number(cells[j]) for j in (1, 3, 6, 9))))
-        for label, j in zip(labels[1:], (4, 7, 10)):
+        text = page.extract_text()
+        if year == 2020:
+            head = re.match(
+                r"(Printed on:\s+\d{2}/\d{2}/2020 at \d{2}:\d{2}:\d{2} [ap]m)"
+                rf"GENERAL ELECTION 2020 - State of Hawaii – Statewide November 3, 2020"
+                rf"\*\*FINAL SUMMARY REPORT\*\*SUMMARY REPORTPage {i}(?![0-9])", text)
+            if not head:
+                raise ValueError("Hawaii 2020 statewide summary header differs")
+            clocks.add(clock(" ".join(head[1].split()), year))
+            chunks = text.split("REGISTRATION AND TURNOUT")
+            if len(chunks) == 1:
+                continue
+            values = re.match(rf"\*{{80}}GENERAL {NUMERAL}TOTAL REGISTRATION {PERCENT} {NUMERAL}TOTAL TURNOUT "
+                              rf"{PERCENT} {NUMERAL}\s+MAIL TURNOUT {PERCENT} {NUMERAL}\s+IN-PERSON TURNOUT\s*\n",
+                              chunks[1])
+            if len(chunks) != 2 or not values:
+                raise ValueError("Hawaii 2020 statewide native statistics columns differ")
+            counts = dict(zip(labels, (number(values[j]) for j in (1, 3, 5, 7))))
+            printed = [values[j] for j in (2, 4, 6)]
+        else:
+            lines = [" ".join(line.split()) for line in text.splitlines() if line.strip()]
+            if lines[:5] != [f"GENERAL ELECTION {year} - State of Hawaii - Statewide", f"November {day}, {year}",
+                             "SUMMARY REPORT", final, f"Page {i}"]:
+                raise ValueError("Hawaii historical statewide summary election, stage or page differs")
+            clocks.add(clock(lines[5], year))
+            if "REGISTRATION AND TURNOUT" not in lines:
+                continue
+            if lines.count("REGISTRATION AND TURNOUT") != 1:
+                raise ValueError("Hawaii statewide summary repeats its turnout block")
+            index = lines.index("REGISTRATION AND TURNOUT")
+            cells = lines[index + 1:index + 12]
+            if len(cells) != 11 or tuple(cells[j].upper() for j in (0, 2, 5, 8)) != tuple(s.upper() for s in labels):
+                raise ValueError("Hawaii historical statewide statistics columns differ")
+            counts = dict(zip(labels, (number(cells[j]) for j in (1, 3, 6, 9))))
+            printed = [cells[j] for j in (4, 7, 10)]
+        for label, percentage in zip(labels[1:], printed):
             denominator = counts[labels[0]]
-            if (not denominator or not re.fullmatch(r"\d{1,3}\.\d%", cells[j])
+            if (not denominator or not re.fullmatch(PERCENT, percentage)
                     or (Decimal(100 * counts[label]) / denominator).quantize(
-                        Decimal(".1"), rounding=ROUND_HALF_UP) != Decimal(cells[j][:-1])):
-                raise ValueError("Hawaii 2024 statewide printed percentage differs")
+                        Decimal(".1"), rounding=ROUND_HALF_UP) != Decimal(percentage[:-1])):
+                raise ValueError("Hawaii statewide printed percentage differs")
         parents.append(counts)
     if len(clocks) != 1 or len(parents) != 1:
-        raise ValueError("Hawaii 2024 statewide summary does not identify a unique edition and control")
+        raise ValueError("Hawaii statewide summary does not identify a unique edition and control")
     return {"report_clock": clocks.pop().isoformat(), "native_values": parents[0]}
 
 
 def statewide_control(body, *, year=2026):
-    if year == 2024:
-        return historical_statewide_control(body)
+    if year != 2026:
+        return historical_statewide_control(body, year)
     report = hawaii_report(body, "histatewide")
     pages = report["pages"]
     parents = [page for page in pages if "native_values" in page]
@@ -202,7 +276,7 @@ def collect(collector, feed, *, reuse_checked_week=False):
     from scripts.southeast_turnout import collect_report
 
     prior = (collector.prior.get(feed) or {}).get("data") or {}
-    year = 2024 if feed == HISTORICAL_FEED else 2026
+    year = next(year for year in ELECTIONS if feed == feed_for(year))
     url, control_url = sources(year)
 
     def checked(body, _):
@@ -224,7 +298,7 @@ def collect(collector, feed, *, reuse_checked_week=False):
 
 
 def exports(entries, *, year=2026):
-    entry = entries.get(FEED if year == 2026 else HISTORICAL_FEED) or {}
+    entry = entries.get(feed_for(year)) or {}
     if (data := entry.get("data")) is None:
         return []
     detail, control = data["detail"], data["control"]
@@ -234,7 +308,8 @@ def exports(entries, *, year=2026):
         raise ValueError("Invalid Hawaii precinct participation source")
     rows, differences = reconcile(detail, control, year=year)
     common = {"state_code": "HI", "election_date": election_date(year), "source_status": entry["status"],
-              "native_status": "FINAL", "certification_independently_verified": False,
+              "native_status": {2020: "**FINAL REPORT**", 2022: "FINAL REPORT"}.get(year, "FINAL"),
+              "certification_independently_verified": False,
               "detail_report_clock": detail["report_clock"],
               "state_report_clock": control["report_clock"], "detail_source_sha256": data["report"]["sha256"],
               "state_source_sha256": data["supporting_report"]["sha256"], "detail_source_url": url,
@@ -260,7 +335,7 @@ def main():
     from scripts.supported_analytical_release import csv_bytes
 
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--year", type=int, choices=(2024, 2026), default=2026)
+    parser.add_argument("--year", type=int, choices=ELECTIONS, default=2026)
     parser.add_argument("--receipts", type=Path, required=True)
     parser.add_argument("--precinct", type=Path, required=True)
     parser.add_argument("--statewide", type=Path, required=True)
@@ -279,7 +354,7 @@ def main():
             raise ValueError(f"Hawaii report differs from the original pin: {key}")
         data[key], data[field] = receipts[key], extract(body, year=args.year)
     data["participation_observation_qualified"] = False
-    feed, filename = (FEED, CSV) if args.year == 2026 else (HISTORICAL_FEED, HISTORICAL_CSV)
+    feed, filename = feed_for(args.year), csv_for(args.year)
     rows = exports({feed: {"status": "reported", "data": data}}, year=args.year)
     args.output.mkdir()
     (args.output / filename).write_bytes(csv_bytes(rows))

@@ -139,10 +139,13 @@ The November 10 precinct edition sums seven ballots above the statewide
 summary; that edition publishes native counts only, not precinct rates.
 `FINAL` is a report label, not a certification finding. No geometry is asserted
 without independent vintage and reporting-unit evidence.
-The same adapter also checks the separately published 2024 presidential
-edition. Its precinct and statewide mode counts reconcile exactly, so the
-export includes same-report registration fractions where the precinct
-denominator is positive. Both elections retain their own roster and clocks.
+The same adapter also checks the separately published 2020, 2022 and 2024
+editions. The 2020 and 2024 precinct and statewide mode counts reconcile
+exactly, so their exports include same-report registration fractions where
+the precinct denominator is positive. The 2020 in-person blocks do not
+repeat registration or a printed rate; neither is imputed. The 2022 precinct
+sum exceeds the statewide summary by two in-person ballots; rates are held.
+Each election retains its own roster and clocks.
 
 The same hourly collector also reads California's separately published `S26GG`
 and `V26GG` text files as `CA-2026-media-turnout`. The `A` section reports
