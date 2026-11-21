@@ -25,6 +25,8 @@ from scripts.results_native_louisiana import (
 INDEXES = {"statewide": (STATE_INDEX_URL, "sta"), "parish": (PARISH_INDEX_URL, "par")}
 FEEDS = {f"LA-{year}-general-election-group-history": year for year in range(1998, 2025, 2)}
 CSV = "participation-la-historical-post-election-groups.csv"
+PRECINCT_FEEDS = {f"LA-{year}-general-election-native-precinct-counts": year for year in range(2006, 2025, 2)}
+PRECINCT_CSV = "participation-la-historical-native-precinct-counts.csv"
 MAX_BYTES = 16_000_000
 
 
@@ -255,7 +257,7 @@ def statewide_groups(state_book, election):
             **{key: ["", "", 0, value] for key, value in statewide.items()}}
 
 
-def parish_groups(parish_book, election):
+def parish_groups(parish_book, election, *, precincts=False):
     expected = {f"PAR {number:02}" for number in range(1, 65)}
     parishes = {}
     for table in parish_book:
@@ -270,10 +272,61 @@ def parish_groups(parish_book, election):
         if identity not in expected or identity in parishes or not isinstance(name, str) or not name.strip():
             raise ValueError("Missing or duplicate Louisiana parish identity")
         vector = _group_vector(rows, row, identity)
-        parishes[identity] = [name.strip(), table["name"], row, vector]
+        data = [name.strip(), table["name"], row, vector]
+        if precincts:
+            data.append(precinct_counts(rows, row, identity, vector))
+        parishes[identity] = data
     if set(parishes) != expected or len({area[0] for area in parishes.values()}) != len(expected):
         raise ValueError("Louisiana parish workbook coverage or names differ")
     return dict(sorted(parishes.items()))
+
+
+def precinct_counts(rows, parent_row, parish, parent):
+    seen, units, children = set(), [], []
+    for row in sorted(rows):
+        if row <= parent_row + 1 or rows[row].get("B") != "# VOTING":
+            continue
+        literal = rows.get(row - 1, {}).get("B")
+        identity = literal.strip() if isinstance(literal, str) else ""
+        if (not re.fullmatch(r"PAR [0-9]{2} W [A-Z0-9-]+ P [A-Z0-9-]+", identity)
+                or not identity.startswith(parish + " ") or identity in seen):
+            raise ValueError(f"Unknown or duplicate Louisiana historical precinct identity: {literal!r}")
+        seen.add(identity)
+        vector = _group_vector(rows, row - 1, identity)
+        children.append({"native_vectors": vector})
+        units.append([identity, literal, row, vector["voters_participating"]["total"]])
+    if not units or any(_sum_vectors(children, role) != parent[role]
+                        for role in ("registered_voters", "voters_participating")):
+        raise ValueError(f"Historical Louisiana precincts do not sum to parish: {parish}")
+    return units
+
+
+def precinct_rows(election, record, workbooks, sources):
+    state, parishes = workbooks["statewide"], workbooks["parish"]
+    if set(state) != set(parishes) | {"STATE"} or len(parishes) != 64:
+        raise ValueError("Incomplete Louisiana historical precinct control inventory")
+    total = state["STATE"][3]["voters_participating"]["total"]
+    if sum(area[3]["voters_participating"]["total"] for key, area in state.items() if key != "STATE") != total:
+        raise ValueError("Statewide Louisiana precinct count controls do not sum to their total")
+    for parish, (name, sheet, parent_row, parent, units) in sorted(parishes.items()):
+        printed = parent["voters_participating"]["total"]
+        control = state[parish][3]["voters_participating"]["total"]
+        if not units or sum(unit[3] for unit in units) != printed:
+            raise ValueError(f"Retained Louisiana native precinct counts differ from the parish: {parish}")
+        for identity, literal, row, count in units:
+            yield {
+                "election_date": str(election), "native_election_id": record["PKElectionID"],
+                "election_cycle": "presidential" if election.year % 4 == 0 else "midterm",
+                "native_parish_id": parish, "parish": name, "native_precinct_id": identity,
+                "native_precinct_literal": literal, "voters_voting": count,
+                "parish_file_voting_control": printed, "statewide_file_parish_voting_control": control,
+                "control_status": "parish_and_statewide_counts_agree" if printed == control else
+                                  "parish_rows_reconcile_statewide_control_differs",
+                "geometry_qualified": "false", "rate_qualified": "false",
+                "source_url": sources["parish"]["url"], "source_sha256": sources["parish"]["sha256"],
+                "control_url": sources["statewide"]["url"], "control_sha256": sources["statewide"]["sha256"],
+                "source_sheet": sheet, "voting_cell": f"D{row}", "parish_control_cell": f"D{parent_row + 1}",
+            }
 
 
 def reconcile(statewide, parishes):
@@ -398,10 +451,12 @@ def event_facts(body, year):
     return record
 
 
-def workbook_facts(body, scope, election, url):
+def workbook_facts(body, scope, election, url, *, precincts=False):
     if Path(url).suffix == ".txt":
+        if precincts:
+            raise ValueError("Legacy precinct rows require separate layout validation")
         return legacy_groups(body, scope, election)
-    query = statewide_groups if scope == "statewide" else parish_groups
+    query = statewide_groups if scope == "statewide" else partial(parish_groups, precincts=precincts)
     return query(_book(body, Path(url).suffix), election)
 
 
@@ -414,6 +469,9 @@ def acquire_catalog_form(collector, url, selection):
     collector.guard(url)
     if collector.offline:
         raise IntakeError("offline", "Use the retained Louisiana catalog original for replay")
+    cache_key = (url, selection)
+    if (cached := collector.bodies.get(cache_key)) is not None:
+        return cached
     try:
         request = Request(url, data=selection)
         with build_opener(_NoRedirect()).open(request, timeout=30) as response:
@@ -437,13 +495,15 @@ def acquire_catalog_form(collector, url, selection):
     if not hasattr(collector.context, "store"):
         collector.context.store = Store(collector.work / "cache")
     collector.context.store.object(body)
+    collector.bodies[cache_key] = body
     return body
 
 
 def collect_year(collector, feed, *, reuse_checked_week=False):
     from scripts.results_intake import source_error
 
-    year = FEEDS[feed]
+    precincts = feed in PRECINCT_FEEDS
+    year = (PRECINCT_FEEDS if precincts else FEEDS)[feed]
     election = federal_general(year)
     old = collector.prior.get(feed) or {}
     day = collector.now.astimezone(timezone.utc).date()
@@ -469,9 +529,13 @@ def collect_year(collector, feed, *, reuse_checked_week=False):
             if len(body) > MAX_BYTES:
                 raise ValueError("Louisiana workbook exceeds the size limit")
             sources[scope] = {"url": url, **pin(body)}
-            workbooks[scope] = workbook_facts(body, scope, election, url)
+            workbooks[scope] = workbook_facts(body, scope, election, url, **({"precincts": True} if precincts else {}))
         stage = "reconciliation"
-        reconcile(workbooks["statewide"], workbooks["parish"])
+        if precincts:
+            for _ in precinct_rows(election, record, workbooks, sources):
+                pass
+        else:
+            reconcile(workbooks["statewide"], workbooks["parish"])
         data = {"record": record, "sources": sources, "catalogs": catalogs, "workbooks": workbooks,
                 "participation_observation_qualified": False}
         prior = old.get("data") or {}
@@ -512,8 +576,21 @@ def exports(entries):
                    "checked_week_utc": entry.get("archive_check_week_utc")}
 
 
+def precinct_exports(entries):
+    for feed, year in PRECINCT_FEEDS.items():
+        entry = entries.get(feed) or {}
+        data = entry.get("data")
+        if data is None:
+            continue
+        if entry["status"] not in {"reported", "retained_after_failure"}:
+            raise ValueError("Louisiana retained precinct history has an invalid source status")
+        for row in precinct_rows(federal_general(year), data["record"], data["workbooks"], data["sources"]):
+            yield {**row, "source_status": entry["status"],
+                   "checked_week_utc": entry.get("archive_check_week_utc")}
+
+
 def original_reports(entries):
-    for feed, year in FEEDS.items():
+    for feed, year in (FEEDS | PRECINCT_FEEDS).items():
         if (data := (entries.get(feed) or {}).get("data")) is None:
             continue
         election = federal_general(year)
@@ -529,10 +606,11 @@ def original_reports(entries):
                    partial(catalog_facts, scope=scope, election=election), data["catalogs"][scope])
             yield (feed + "-" + scope, source, suffix, MAX_BYTES,
                    source["url"] == link and suffix in (".xls", ".xlsx", ".txt"),
-                   partial(workbook_facts, scope=scope, election=election, url=link), data["workbooks"][scope])
+                   partial(workbook_facts, scope=scope, election=election, url=link,
+                           precincts=feed in PRECINCT_FEEDS), data["workbooks"][scope])
 
 
-def replay(directory, output):
+def replay(directory, output, *, precincts=False):
     directory = Path(directory)
     inventory = json.loads((directory / "inventory.json").read_text(), object_pairs_hook=_object)
 
@@ -550,7 +628,7 @@ def replay(directory, output):
         raise ValueError("Louisiana election inventory provenance differs")
     status = {}
     observations = []
-    for election, record, admitted in federal_events(events, 1998, 9998):
+    for election, record, admitted in federal_events(events, 2006 if precincts else 1998, 9998):
         entry = inventory["events"].get(str(election))
         if not entry:
             continue
@@ -573,13 +651,15 @@ def replay(directory, output):
             sources[scope] = source
             books[scope] = body
         try:
-            areas = reconcile(*(workbook_facts(books[scope], scope, election, sources[scope]["url"])
-                                for scope in INDEXES))
+            parsed = {scope: workbook_facts(books[scope], scope, election, sources[scope]["url"], precincts=precincts)
+                      for scope in INDEXES}
+            result = (list(precinct_rows(election, record, parsed, sources)) if precincts else
+                      list(rows(election, record, reconcile(parsed["statewide"], parsed["parish"]), sources)))
         except ValueError as exc:
             status[str(election)] = f"workbook_validation_held: {exc}"
             continue
-        status[str(election)] = "count_vectors_reconciled"
-        observations.extend(rows(election, record, areas, sources))
+        status[str(election)] = "parish_native_counts_reconciled" if precincts else "count_vectors_reconciled"
+        observations.extend(result)
     if not observations:
         raise ValueError("No compatible Louisiana historical election observations")
     with Path(output).open("w", newline="", encoding="utf-8") as handle:
@@ -596,9 +676,10 @@ if __name__ == "__main__":
     parser.add_argument("--end", type=int, default=2024)
     parser.add_argument("--source-stops", type=Path)
     parser.add_argument("--replay", type=Path, metavar="OUTPUT_CSV")
+    parser.add_argument("--precincts", action="store_true", help="Replay native precinct counts for workbook years")
     args = parser.parse_args()
     if args.replay:
-        print(json.dumps(replay(args.directory, args.replay), indent=2))
+        print(json.dumps(replay(args.directory, args.replay, precincts=args.precincts), indent=2))
     else:
         if not args.source_stops:
             parser.error("--source-stops is required for collection")

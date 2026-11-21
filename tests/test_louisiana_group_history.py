@@ -7,6 +7,7 @@ from unittest.mock import Mock, patch
 
 from scripts.louisiana_group_history import (
     ELECTION_DATES_URL, INDEXES, STATE_INDEX_URL, _Catalog, _group_vector, collect, collect_year, federal_events,
+    precinct_rows,
 )
 from scripts.participation_intake.engine import IntakeError
 
@@ -104,3 +105,23 @@ class LouisianaGroupHistoryTest(unittest.TestCase):
             collector.acquire.reset_mock()
             self.assertEqual(collect_year(collector, feed, reuse_checked_week=True), retained)
             collector.acquire.assert_not_called()
+
+    def test_native_precinct_counts_keep_disagreeing_statewide_control_separate(self):
+        election = date(2016, 11, 8)
+        areas = [f"PAR {number:02}" for number in range(1, 65)]
+        counts = lambda value: {"voters_participating": {"total": value}}
+        books = {"statewide": {"STATE": ["Louisiana", "Sheet1", 11, counts(65)],
+                               **{area: ["", "", 0, counts(2 if i == 0 else 1)]
+                                  for i, area in enumerate(areas)}},
+                 "parish": {area: [area, "Sheet1", 11, counts(1), [[area + " W 01 P 01", "", 15, 1]]]
+                            for area in areas}}
+        sources = {scope: {"url": scope, "sha256": ""} for scope in INDEXES}
+        rows = list(precinct_rows(election, {"PKElectionID": "284"}, books, sources))
+        self.assertEqual(len(rows), 64)
+        self.assertEqual(rows[0]["control_status"], "parish_rows_reconcile_statewide_control_differs")
+        self.assertEqual(rows[0]["voters_voting"], 1)
+        self.assertEqual(rows[1]["control_status"], "parish_and_statewide_counts_agree")
+        self.assertTrue(all(row["geometry_qualified"] == row["rate_qualified"] == "false" for row in rows))
+        books["parish"][areas[0]][4][0][3] = 2
+        with self.assertRaisesRegex(ValueError, "differ from the parish"):
+            list(precinct_rows(election, {"PKElectionID": "284"}, books, sources))

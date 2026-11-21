@@ -41,6 +41,8 @@ def families():
         (routes(ct, ct.FEEDS), True, (ct.CSV,), ct.exports),
         ({feed: partial(louisiana_group_history.collect_year, feed=feed) for feed in louisiana_group_history.FEEDS},
          True, (louisiana_group_history.CSV,), louisiana_group_history.exports),
+        ({feed: partial(louisiana_group_history.collect_year, feed=feed) for feed in louisiana_group_history.PRECINCT_FEEDS},
+         True, (louisiana_group_history.PRECINCT_CSV,), louisiana_group_history.precinct_exports),
         ({kansas_turnout_history.FEED: kansas_turnout_history.collect}, True,
          (kansas_turnout_history.CSV,), kansas_turnout_history.exports),
         ({hawaii_turnout_history.FEED: hawaii_turnout_history.collect}, True,

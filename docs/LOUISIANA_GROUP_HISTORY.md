@@ -54,3 +54,19 @@ catalogs and both originals for every admitted event. Its `code/reproduce.py
 replay --package . --output reproduced` command reproduces the checkpoint;
 `--bulk-report-dir` additionally re-extracts the original reports listed in
 `inputs/bulk-report-originals.json` when those exact files are provided.
+
+## Separate native precinct counts
+
+The 2006–2024 spreadsheet years also support 39,428 native precinct count
+rows. Every parish's precinct vectors reconcile to that parish workbook's
+parent. A separate count-only check compares the parish parent with the
+statewide workbook. In 2016, precincts for `PAR 55` retain their reported
+counts but are tagged with the 44,296 versus 44,297 control difference.
+The 2006 disagreement in party-by-race categories does not change the total
+count. These records are not a physical-ballot count, a precinct rate,
+or a cross-year geographic join. The source row, native identifier and
+control provenance travel with each record.
+
+The `LA-2024-general-election-native-precinct-counts` feed is independent of
+the group feed and uses the same catalog acquisitions. Add `--precincts` to
+the offline replay command to reproduce the count-only CSV.
