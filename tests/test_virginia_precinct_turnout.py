@@ -102,6 +102,10 @@ def test_weekly_retention_revisions_and_replay(monkeypatch, tmp_path):
     unchanged, _ = capture(initial, accepted, day=23, reuse=True)
     assert unchanged["first_observed_at"] == accepted["first_observed_at"]
     assert unchanged["archive_check_week_utc"] != accepted["archive_check_week_utc"]
+    parent, index, detail = initial
+    html_only = parent, index + b"<!-- new wrapper -->", detail + b"<!-- new wrapper -->"
+    equivalent, _ = capture(html_only, accepted, day=23, reuse=True)
+    assert equivalent == unchanged
     stale, _ = capture(initial, accepted, day=23, outage=True)
     assert stale["status"] == "retained_after_failure" and stale["error_stage"] == "detail_acquisition"
     assert stale["data"] == accepted["data"]

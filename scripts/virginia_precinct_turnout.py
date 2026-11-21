@@ -133,11 +133,17 @@ def collect(collector, *, reuse_checked_week=False):
             details[name] = {"source": {"url": url, **pin(body)},
                              "rows": parse_detail(body, control=control, clock=report["native_clock"])}
         data = {"index": index, "details": details, "participation_observation_qualified": False}
+        same_rows = bool(prior) and all(
+            detail["rows"] == prior["details"][name]["rows"] for name, detail in details.items())
         if prior and report["edition"] == prior["index"]["report"]["edition"] and (
-                report != prior["index"]["report"]
-                or any(detail["rows"] != prior["details"][name]["rows"] for name, detail in details.items())):
+                report != prior["index"]["report"] or not same_rows):
             raise ValueError("Virginia precinct counts changed without a new report edition")
-        entry = copy.deepcopy(old) if data == prior and source == old.get("source") else {
+        # Publisher HTML can change in transport without changing any accepted source facts.
+        equivalent = (same_rows and prior["index"] == index
+                      and prior.get("participation_observation_qualified") is False
+                      and all(detail["source"]["url"] == prior["details"][name]["source"]["url"]
+                              for name, detail in details.items()))
+        entry = copy.deepcopy(old) if equivalent else {
             "data": data, "source": source, "first_observed_at": collector.observation_time().isoformat(),
         }
         entry.update(status="reported", error=None, error_stage=None, error_detail=None)
