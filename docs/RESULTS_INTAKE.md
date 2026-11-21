@@ -467,6 +467,13 @@ publication step is not an automatic replay trigger. The public source pointer
 and accepted collector state advance together; newly encountered access stops
 survive staging.
 
+The research repository's hosted recovery checks for missed hourly full
+collections at :47 and for the Monday archive slot on Monday and Wednesday
+at 13:47 UTC after the hourly window ends. It does not duplicate a live or
+queued writer, counts only the correct collection lane, and waits after
+failures before dispatching the existing workflow on `main`. Push-triggered
+checks report the decision without dispatching.
+
 The website resolves the accepted source commit once per cycle. A matching source
 and engine skip bulk download, compilation and publication. A fresh runner can
 verify and activate a staged runtime for the same source and engine; a stale or

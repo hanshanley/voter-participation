@@ -1,0 +1,39 @@
+name: Recover missed participation collection
+
+on:
+  schedule:
+    - cron: "47 * * * *"
+    - cron: "47 13 * * 1,3"
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/recover-participation-collection.yml
+      - scripts/recover_participation_collection.py
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: participation-collection-recovery
+  cancel-in-progress: false
+
+jobs:
+  recovery:
+    if: github.repository == 'hanshanley/voter-participation' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            scripts/automatic_health.py
+            scripts/recover_participation_collection.py
+      - name: Recover only the existing collection workflow
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RECOVERY_SCHEDULE: ${{ github.event.schedule }}
+        run: python3 -m scripts.recover_participation_collection | tee -a "$GITHUB_STEP_SUMMARY"
