@@ -5,7 +5,7 @@ import re
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history,
     connecticut_turnout_history, dakota_turnout_history, hawaii_turnout_history, kansas_turnout_history,
-    national_turnout_release_watch, oregon_turnout_history,
+    national_turnout_release_watch, new_jersey_periodic_counties, oregon_turnout_history,
     southeast_turnout, washington_participation,
 )
 from scripts.participation_intake.contract import pin
@@ -37,6 +37,8 @@ def families():
          (hawaii_turnout_history.CSV,), hawaii_turnout_history.exports),
         (routes(dakota_turnout_history, dakota_turnout_history.URLS), True,
          (dakota_turnout_history.CSV,), dakota_turnout_history.exports),
+        (routes(new_jersey_periodic_counties, new_jersey_periodic_counties.FEEDS), False,
+         (new_jersey_periodic_counties.CSV,), new_jersey_periodic_counties.exports),
     )
 
 
@@ -89,6 +91,13 @@ def original_reports(entries):
             report = entry["source"]
             yield (feed, report, dakota.EXTENSIONS[feed], dakota.MAX_BYTES, report["url"] == url,
                    partial(dakota.parse, feed=feed), entry["data"])
+    nj = new_jersey_periodic_counties
+    for feed, county in nj.FEEDS.items():
+        if (data := (entries.get(feed) or {}).get("data")) is not None:
+            report = data["report"]
+            facts = {key: value for key, value in data.items() if key != "report"}
+            yield (feed, report, ".pdf", nj.MAX_BYTES, bool(nj.report_identity(report["url"], county)),
+                   partial(nj.parse, county=county, url=report["url"]), facts)
     for feed, year in age.YEARS.items():
         entry = entries.get(feed) or {}
         if entry.get("data") is not None:

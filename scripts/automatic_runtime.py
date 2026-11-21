@@ -47,7 +47,7 @@ CODE_PATHS = (
     "washington_participation.py", "oregon_turnout_history.py", "retained_bulk_turnout.py", "southeast_turnout.py",
     "alabama_precinct_history.py", "alaska_precinct_history.py", "alaska_cards_history.py", "alaska_age_history.py",
     "connecticut_turnout_history.py", "bulk_participation_archives.py", "kansas_turnout_history.py",
-    "hawaii_turnout_history.py", "dakota_turnout_history.py",
+    "hawaii_turnout_history.py", "dakota_turnout_history.py", "new_jersey_periodic_counties.py",
     "wyoming_participation_statistics.py", "nebraska_canvass.py",
     "nebraska_county_reports.py",
     "colorado_voting_statistics.py", "maryland_precinct_history.py", "minnesota_precinct_history.py",
