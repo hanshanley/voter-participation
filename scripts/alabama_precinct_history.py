@@ -12,6 +12,7 @@ CURRENT_CONTROL = "AL-2026-general-county-ballot-control"
 CURRENT_CONTROL_ROUTE = (re.escape(ROOT) + r"20(?:26|27)-(?:0[1-9]|1[0-2])/"
                          r"(?=[^/]*2026)[A-Za-z0-9_%.-]+\.pdf")
 FILES = {
+    2016: ("2017-06/2016-General-PrecinctLevel.zip", None, "November 8, 2016"),
     2018: ("2018-11/2018-Official-General-Precinct-Results.zip",
            "2019-01/2018GeneralVoterTurnoutStats.xlsx", "November 6, 2018"),
     2020: ("2020-12/2020%20General%20Precinct%20Results.zip",
@@ -94,6 +95,8 @@ def parse_units(body, year):
             sheet = book.sheet_by_index(0)
             headings = [str(sheet.cell_value(i, 0)).strip() for i in range(4)]
             following = {"BALLOTS CAST - BLANK", "STRAIGHT PARTY"} if year <= 2020 else {"BALLOTS CAST - BLANK"}
+            if year == 2016 and county == "COLBERT":
+                following.add("PRESIDENT AND VICE PRESIDENT OF THE UNITED STATES")
             if (headings[:3] != ["Contest Title", "REGISTERED VOTERS - TOTAL", "BALLOTS CAST - TOTAL"]
                     or headings[3] not in following
                     or [str(v).strip() for v in sheet.row_values(0)[:3]] != ["Contest Title", "Party", "Candidate"]):
@@ -235,7 +238,7 @@ def exports(entries):
             archive_sums["TOTAL"] = sum(archive_sums.values())
         provenance = {"state_code": "AL", "year": year,
                       "archive_url": URLS[archive_feed],
-                      "control_url": control_source.get("url", URLS[control_feed]),
+                      "control_url": control_source.get("url", URLS.get(control_feed)),
                       "archive_status": archive.get("status"), "control_status": control.get("status"),
                       "archive_checked_week_utc": archive.get("archive_check_week_utc"),
                       "control_checked_week_utc": control.get("archive_check_week_utc"),

@@ -94,6 +94,22 @@ def original_reports(entries):
     from scripts import results_indiana_turnout as indiana, results_turnout_history as history
 
     age, ct = alaska_age_history, connecticut_turnout_history
+    al = alabama_precinct_history
+    for year, (archive_feed, control_feed) in al.FEEDS.items():
+        if (entry := entries.get(archive_feed)) and entry.get("data") is not None:
+            source = entry["source"]
+            yield (archive_feed, source, ".zip", 6_000_000, source["url"] == al.URLS[archive_feed],
+                   partial(al.parse, feed=archive_feed), entry["data"])
+        if (entry := entries.get(control_feed)) and entry.get("data") is not None:
+            data = entry["data"]
+            if control_feed == al.CURRENT_CONTROL:
+                source = data["control_report"]
+                valid_url = re.fullmatch(al.CURRENT_CONTROL_ROUTE, source["url"]) is not None
+            else:
+                source = entry["source"]
+                valid_url = source["url"] == al.URLS[control_feed]
+            yield (control_feed, source, ".xlsx" if year == 2018 else ".pdf", 6_000_000, valid_url,
+                   partial(al.parse, feed=control_feed), {key: value for key, value in data.items() if key != "control_report"})
     sc = south_carolina_voter_statistics
     if (data := (entries.get(sc.FEED) or {}).get("data")) is not None:
         catalog = {"url": sc.CATALOG, **data["catalog_pin"]}
