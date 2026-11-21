@@ -26,3 +26,11 @@ def test_closed_roster_blocks_county_with_missing_precinct_but_not_unassigned_cr
     assert {row[1]: row[4] for row in decisions} == {
         " ": "no_shape", "B": "reference_count_only", "A": "county_roster_differs", "A.1": "no_shape",
     }
+
+
+def test_bracketing_requires_the_same_polygon_on_both_sides():
+    a, b = ("WAKE", "A"), ("LEE", "B")
+    before = {a: box(0, 0, 10, 10), b: box(10, 0, 20, 10)}
+    decisions, accepted = audit({a: 200, b: 230}, before, {}, after={a: box(0, 0, 9, 10), b: before[b]})
+    assert set(accepted) == {b}
+    assert decisions[1][4] == "bracketing_geometry_differs_or_missing"

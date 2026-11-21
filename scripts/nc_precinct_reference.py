@@ -17,15 +17,18 @@ from shapely.strtree import STRtree
 COUNTS = "bda18079be6e2393436f1148af7f68d650c121372f93aa6199fee4f697a9c57d"
 ARCHIVES = {
     "20161004": "4739d58fe4681ec93d37771073b4b7c661bedc36180e57cd48f3f245972aeb63",
+    "20170519": "f61cc84c9d69757dd74e5b1ae3c269a322267e8f739ec3399f4250412013962b",
+    "20190507": "691f1bf6e3f3cb784f54463fcb72130eac39174e4e0d56b7c8712d5018986879",
     "20190827": "76de0fe26651529b6b34963864c9f25a24964b803636f2970ed7251c6fe2aeed",
     "20201018": "a31a68aab8761ce579ad853690eeef2845dccf8655d9638237ef3845e2405f5b",
     "20220831": "100e3171a14e0d8f6b5a827e8102101ff80abc554e24d7dd3be321fd204f982e",
     "20240723": "bd9d37ac1f59ca77c55ce94cb3fe10c7c42cf7fc00f4dece7c841afe2cfb03b9",
 }
 RESTORED = {("BUNCOMBE", "681"), ("HENDERSON", "CV"), ("WAKE", "01-07A"), ("WAKE", "07-07A")}
-EDITIONS = {"2016-11-08": "20161004", "2020-11-03": "20201018",
+EDITIONS = {"2016-11-08": "20161004", "2018-11-06": "20170519", "2020-11-03": "20201018",
             "2022-11-08": "20220831", "2024-11-05": "20240723"}
 CLOSED_ROSTERS = {"20220831", "20240723"}
+BRACKETS = {"20170519": "20190507"}
 COLORS = ("#d9e8ed", "#b3d2dc", "#79afbf", "#48879d", "#24586d")
 
 
@@ -72,7 +75,7 @@ def topology(geometries):
     return {key: sorted(rows) for key, rows in held.items()}
 
 
-def audit(counts, primary, supplement, *, closed_roster=False):
+def audit(counts, primary, supplement, *, closed_roster=False, after=None):
     if set(supplement) != (set(counts) - set(primary) if supplement else set()):
         raise ValueError("Supplement does not enumerate exactly the missing count-bearing keys")
     shapes = primary | supplement
@@ -81,6 +84,11 @@ def audit(counts, primary, supplement, *, closed_roster=False):
     overlaps = topology(valid)
     held_counties = ({county.upper() for county, code in set(counts) ^ set(shapes) if code.strip()}
                      if closed_roster else set())
+    if after is not None and counts.keys() != primary.keys():
+        raise ValueError("The pre-election roster does not match the credit archive")
+    unstable = ({key for key, geometry in valid.items()
+                 if key not in after or not after[key].is_valid
+                 or not geometry.equals_exact(after[key], 0, normalize=True)} if after is not None else set())
     records, accepted = [], {}
     for key in sorted(set(counts) | set(shapes)):
         if key not in counts:
@@ -91,6 +99,8 @@ def audit(counts, primary, supplement, *, closed_roster=False):
             status = "invalid_geometry"
         elif key in overlaps:
             status = "overlapping_geometry"
+        elif key in unstable:
+            status = "bracketing_geometry_differs_or_missing"
         elif key[0].upper() in held_counties:
             status = "county_roster_differs"
         else:
@@ -154,18 +164,25 @@ def build(inputs, output):
         primary = outline(inputs / f"precinct-{edition}.zip", edition)
         supplement = (outline(inputs / "precinct-20190827.zip", "20190827", RESTORED)
                       if edition == "20201018" else {})
-        records, accepted = audit(counts, primary, supplement, closed_roster=edition in CLOSED_ROSTERS)
+        comparison = BRACKETS.get(edition)
+        after = outline(inputs / f"precinct-{comparison}.zip", comparison) if comparison else None
+        records, accepted = audit(counts, primary, supplement, closed_roster=edition in CLOSED_ROSTERS, after=after)
+        if comparison:
+            records.extend([*key, None, "later_reference", "geometry_only", "[]"]
+                           for key in sorted(after.keys() - primary.keys()))
         with (output / (election + "-precinct-decisions.csv")).open("w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file, lineterminator="\n")
             writer.writerow(["native_county", "native_precinct", "voter_history_credits",
                              "reference_part", "status", "overlap_partners_and_square_feet"])
             writer.writerows(records)
         (output / (election + "-precinct-reference.svg")).write_text(
-            svg(election, edition, counts, accepted), encoding="utf-8")
+            svg(election, f"{edition} and {comparison}" if comparison else edition, counts, accepted), encoding="utf-8")
         summary[election] = {"reference_edition": edition, "count_records": len(counts),
                              "shown": len(accepted), "credits": sum(counts.values()),
                              "shown_credits": sum(counts[k] for k in accepted),
                              "not_election_effective_boundaries_or_rates": True}
+        if comparison:
+            summary[election]["comparison_edition"] = comparison
     (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     return summary
 
