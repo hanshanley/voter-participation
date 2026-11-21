@@ -4,7 +4,7 @@ from types import SimpleNamespace
 import pypdf
 import pytest
 
-from scripts import hawaii_precinct_turnout as hi, results_intake
+from scripts import bulk_participation_archives, hawaii_precinct_turnout as hi, results_intake
 
 
 @pytest.fixture
@@ -71,7 +71,7 @@ def test_automatic_capture_accepts_revisions_and_retains_last_good(reports, tmp_
     assert hi.collect(c, hi.FEED)["data"] == first["data"]
     for count in (12, 8):
         bodies[hi.URL] = reports(count)
-        revised = hi.collect(c, hi.FEED)
+        revised = bulk_participation_archives.collectors(reuse_checked_week=True)[hi.FEED](c)
         assert hi.exports({hi.FEED: revised})[0]["reported_in_person"] == count
         c.prior = {hi.FEED: revised}
     bodies[hi.URL] = reports(duplicate=True)

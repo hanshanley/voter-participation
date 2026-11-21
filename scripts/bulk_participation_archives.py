@@ -38,7 +38,7 @@ def families():
          (kansas_turnout_history.CSV,), kansas_turnout_history.exports),
         ({hawaii_turnout_history.FEED: hawaii_turnout_history.collect}, True,
          (hawaii_turnout_history.CSV,), hawaii_turnout_history.exports),
-        *((routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.feed_for(year),)), True,
+        *((routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.feed_for(year),)), year != 2026,
            (hawaii_precinct_turnout.csv_for(year),), partial(hawaii_precinct_turnout.exports, year=year))
           for year in hawaii_precinct_turnout.ELECTIONS),
         (routes(dakota_turnout_history, dakota_turnout_history.URLS), True,
