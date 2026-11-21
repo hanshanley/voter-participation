@@ -9,7 +9,7 @@ from scripts import (
     indiana_early_county_turnout, indiana_early_state_turnout, kansas_turnout_history, louisiana_group_history,
     national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     pa_audit_ballots,
-    south_carolina_voter_statistics, southeast_turnout, washington_participation,
+    south_carolina_voter_statistics, southeast_turnout, virginia_precinct_turnout, washington_participation,
 )
 from scripts.participation_intake.contract import pin
 
@@ -43,6 +43,8 @@ def families():
          True, (louisiana_group_history.CSV,), louisiana_group_history.exports),
         ({feed: partial(louisiana_group_history.collect_year, feed=feed) for feed in louisiana_group_history.PRECINCT_FEEDS},
          True, (louisiana_group_history.PRECINCT_CSV,), louisiana_group_history.precinct_exports),
+        ({virginia_precinct_turnout.FEED: virginia_precinct_turnout.collect}, True,
+         (virginia_precinct_turnout.CSV,), virginia_precinct_turnout.exports),
         ({kansas_turnout_history.FEED: kansas_turnout_history.collect}, True,
          (kansas_turnout_history.CSV,), kansas_turnout_history.exports),
         ({hawaii_turnout_history.FEED: hawaii_turnout_history.collect}, True,
@@ -101,6 +103,7 @@ def original_reports(entries):
     age, ct = alaska_age_history, connecticut_turnout_history
     se = southeast_turnout
     yield from louisiana_group_history.original_reports(entries)
+    yield from virginia_precinct_turnout.original_reports(entries)
     if (entry := entries.get(se.AL_HISTORY)) and entry.get("data") is not None:
         source = entry["source"]
         yield (se.AL_HISTORY, source, ".pdf", 2_000_000, source["url"] == se.AL_HISTORY_URL,
