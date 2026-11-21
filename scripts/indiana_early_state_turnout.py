@@ -35,7 +35,9 @@ def fraction(n, r, printed, *, estimated):
         return None, "source_estimate"
     if not 0 <= n <= r:
         return None, "invalid_denominator"
-    if abs(Decimal(n) * 1000 / r - Decimal(printed[:-1]) * 10) > Decimal(".5"):
+    native = Decimal(printed[:-1])
+    half_unit = Decimal(".5").scaleb(native.as_tuple().exponent)
+    if abs(Decimal(n) * 100 / r - native) > half_unit:
         return None, "printed_percentage_disagrees"
     return 100 * n / r, None
 

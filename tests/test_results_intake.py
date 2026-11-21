@@ -1767,6 +1767,29 @@ def test_indiana_early_statewide_summary_preserves_estimates_and_unknowns():
         early.query(lines)
 
 
+def test_indiana_early_county_archive_preserves_missing_modes_and_uses_printed_precision(monkeypatch):
+    from scripts import indiana_early_county_turnout as early
+
+    counties = [f"County {i:02}" for i in range(92)]
+    monkeypatch.setattr(early, "COUNTIES_SHA", early.digest(("\n".join(counties) + "\n").encode()))
+    facts = [[county, "101", "44", "43.6", "40", "4", "9.1"] for county in counties]
+    facts[0][4:] = [None, None, None]
+    facts.append(["", "9292", "4048", "43.6", "3640", "364", "9.0"])
+    rows = early.query(facts, 1994)
+    assert rows[0]["reported_in_person"] is None
+    assert rows[0]["mode_count_minus_reported_turnout"] is None
+    assert rows[1]["qualified_registered_fraction_pct"] == 4400 / 101
+    assert rows[-1]["mode_count_minus_reported_turnout"] == -44
+    assert rows[-1]["registration_fraction_hold"] == "mode_counts_do_not_sum_to_voters_voting"
+    facts[1][3] = "43.56"
+    assert early.query(facts, 1994)[1]["qualified_registered_fraction_pct"] == 4400 / 101
+    facts[1][3] = "43.60"
+    assert early.query(facts, 1994)[1]["registration_fraction_hold"] == "printed_percentage_disagrees"
+    facts[-1][2] = "4049"
+    with pytest.raises(ValueError, match="state control"):
+        early.query(facts, 1994)
+
+
 def test_indiana_archive_uses_only_declared_general_report_and_keeps_count_conflicts(monkeypatch):
     from scripts import results_indiana_turnout as indiana
 

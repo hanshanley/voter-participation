@@ -272,6 +272,14 @@ absentee counts without promoting them to accepted-mail counts. The 1992,
 1998 and 2000 workbook sums disagree with the separate statewide controls
 and are not part of this reconciled series.
 
+Indiana's early statewide summary and 1990–1998 county editions are separate
+downloads. The statewide source's estimate markers and missing values stay
+visible. The county editions keep their printed precision, missing voting-mode
+counts, and source labels; the two suspicious 1998 county identities are held.
+The 1990 statewide summary and county report disagree on turnout, without
+changing either source's published values. The linked scan-only 2000 county
+report is not read by this digital adapter.
+
 West Virginia's 2008-2016 general-election county reports use the same
 county-archive sweep. Each PDF must match the declared election, all 55
 counties, and the separately printed statewide counts. The 2008 and 2010
