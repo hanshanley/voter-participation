@@ -165,6 +165,28 @@ def test_alabama_mixed_csv_uses_native_measure_codes_not_column_name_or_candidat
         precinct.mixed_csv_units(body.replace("Chambers", "Winston", 1).encode(), "CHAMBERS")
 
 
+def test_alabama_2014_rechecks_pre_csv_results_even_in_same_week(tmp_path, monkeypatch):
+    feed = precinct.FEEDS[2014][0]
+    legacy = {"status": "reported", "data": {"complete_native_query": {}},
+              "archive_check_week_utc": "2026-11-16"}
+    collector = results_intake.Collector(
+        tmp_path, {feed: legacy}, {"urls": [], "prefixes": [], "hosts": []},
+        datetime(2026, 11, 21, tzinfo=timezone.utc))
+    calls = []
+
+    def acquire(url):
+        calls.append(url)
+        return b"fixture", {"origin": "fixture"}
+
+    monkeypatch.setattr(collector, "acquire", acquire)
+    monkeypatch.setattr(precinct, "parse", lambda *_: {"mixed_csv_participation_rows_qualified": True})
+    accepted = precinct.collect(collector, feed, reuse_checked_week=True)
+    assert accepted["status"] == "reported" and calls == [precinct.URLS[feed]]
+    collector.prior[feed] = accepted
+    assert precinct.collect(collector, feed, reuse_checked_week=True) == accepted
+    assert calls == [precinct.URLS[feed]]
+
+
 def test_current_alabama_control_is_collected_only_after_discovery(tmp_path, monkeypatch):
     feed = precinct.CURRENT_CONTROL
     path = "/sites/default/files/election-data/2026-12/2026%20General%20Total%20Ballots%20Cast.pdf"

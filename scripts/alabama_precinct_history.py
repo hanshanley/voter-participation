@@ -417,6 +417,10 @@ def parse(body, feed, *, include_mixed_csv=True):
 
 
 def collect(collector, feed, *, reuse_checked_week=False):
+    if feed == FEEDS[2014][0] and (
+            ((collector.prior.get(feed) or {}).get("data") or {}).get("mixed_csv_participation_rows_qualified")
+            is not True):
+        reuse_checked_week = False
     if feed == CURRENT_CONTROL:
         def discovery(index, _):
             from scripts.results_intake import IntakeError
