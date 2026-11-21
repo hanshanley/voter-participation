@@ -30,7 +30,10 @@ STATEMENTS = {
     2020: ("2020-11-03", "2020-sov.pdf", 6, 6),
     2022: ("2022-11-08", "sov_2022.pdf", 6, 9),
     2024: ("2024-11-05", "2024_statement_of_vote.pdf", 9, 6),
+    2026: ("2026-11-03", None, 9, None),
 }
+SDR_YEARS = (2024, 2026)
+SDR_HEADER_SHA256 = "1418b3380caae1fcd19b507505389f7d7a3317ad05d0add43e488fe4650fcf98"
 DATES.update({year: profile[0] for year, profile in STATEMENTS.items()})
 FEEDS = {f"CT-{year}-general-town-turnout-archive": year for year in DATES}
 CSV = "participation-ct-general-town-turnout-archive.csv"
@@ -68,20 +71,31 @@ class ReportLinks(HTMLParser):
 
 def valid_link(url, year):
     p = urlsplit(url)
+    if p.scheme != "https" or p.netloc != "portal.ct.gov" or p.fragment or (
+            p.query and not re.fullmatch(r"rev=[a-f0-9]{32}&hash=[A-Fa-f0-9]{32}", p.query)):
+        return False
+    if year == 2026:
+        return re.fullmatch(r"/-/media/sots/electionservices/statementofvote_pdfs/[^/]*2026[^/]*\.pdf",
+                            p.path.lower()) is not None
     if year == 2016:
         path = f"/-/media/sots/releases/2016/{STATEMENTS[year][1]}"
     elif year in STATEMENTS:
         path = f"/-/media/sots/electionservices/statementofvote_pdfs/{STATEMENTS[year][1]}"
     else:
         path = f"/-/media/sots/electionservices/elecdaystats_pdfs/regturnoutabsentee{year}pdf.pdf"
-    return (p.scheme == "https" and p.netloc == "portal.ct.gov" and not p.fragment
-            and p.path.lower() == path
-            and (not p.query or re.fullmatch(r"rev=[a-f0-9]{32}&hash=[A-Fa-f0-9]{32}", p.query)))
+    return p.path.lower() == path
 
 
 def discover(body, year):
     if not 0 < len(body) <= 1_000_000:
         raise ValueError("Connecticut archive index exceeds bounds")
+    if year == 2026:
+        from scripts import national_turnout_release_watch as watch
+
+        links = watch.discover(body, watch.CT)["complete_native_query"]["links"]
+        if not links:
+            raise IntakeError("report_not_linked", "Connecticut town turnout report not linked")
+        return links[0]["url"]
     parser = ReportLinks()
     parser.feed(body.decode("utf-8-sig"))
     parser.close()
@@ -157,10 +171,11 @@ def statement_rows(lines, year):
         if not (match := pattern.fullmatch(line)):
             raise ValueError("Unrecognized Connecticut Statement of Vote row")
         name, registered, voted, rate, rest = match.groups()
-        if name is None and year != 2024:
+        if name is None and year not in SDR_YEARS:
             raise ValueError("Unexpected unlabeled Connecticut row")
         if (name, year) in {("Statewide", 2010), ("Statewide", 2012), ("Statewide", 2014), ("Statewide", 2016),
-                            ("Statewide Total", 2020), ("Statewide Totals", 2022), (None, 2024)}:
+                            ("Statewide Total", 2020), ("Statewide Totals", 2022)} or (
+                                year in SDR_YEARS and name in (None, "Statewide Total", "Statewide Totals")):
             name = "Statewide Totals"
         elif name == "New Millford" and year <= 2016:
             name = "New Milford"
@@ -184,6 +199,8 @@ def statement_rows(lines, year):
             or any(count != 1 + (name in split) for name, count in counts.items())):
         raise ValueError("Connecticut Statement town or split-component roster changed")
     deltas = [sum(row[1][i] for row in rows[:-1]) - rows[-1][1][i] for i in range(2)]
+    if year == 2026 and deltas != [0, 0]:
+        raise ValueError("Connecticut 2026 town and statewide checklist controls disagree")
     return [(name, name in split, values, rate, literal) for name, values, rate, literal in rows], deltas
 
 
@@ -300,7 +317,7 @@ def statement_query(body, year):
 
     if not body.startswith(b"%PDF-") or len(body) > STATEMENT_LIMIT:
         raise ValueError("Connecticut Statement of Vote exceeds PDF bounds")
-    wanted = ("samedayregistrationsdrturnoutabsenteeearlyvotingballotstatistics" if year == 2024
+    wanted = ("samedayregistrationsdrturnoutabsenteeearlyvotingballotstatistics" if year in SDR_YEARS
               else "electiondayregistrationturnoutandabsenteeballotstatistics")
     compact = lambda value: re.sub(r"[^a-z0-9]", "", value.lower())
     with pymupdf.open(stream=body, filetype="pdf") as report:
@@ -331,7 +348,7 @@ def statement_query(body, year):
         pages = []
         expected = STATEMENTS[year][3]
         for i in range(max(0, len(report) - 48), len(report)):
-            if start is not None and i >= start + expected:
+            if start is not None and expected is not None and i >= start + expected:
                 break
             lines = physical_text(report[i], pymupdf)
             if start is None:
@@ -342,7 +359,7 @@ def statement_query(body, year):
                 start = i
                 if year <= 2014 and datetime.fromisoformat(DATES[year]).strftime("%m/%d/%Y") not in lines[0]:
                     raise ValueError("Connecticut turnout table election date disagrees")
-                if year in (2022, 2024):
+                if year in (2022, *SDR_YEARS):
                     cover_date = datetime.fromisoformat(DATES[year])
                     title = compact(report[0].get_text())
                     if ("stateofconnecticut" not in title or "statementofvotegeneralelection" not in title
@@ -350,11 +367,13 @@ def statement_query(body, year):
                         raise ValueError("Connecticut Statement cover election date disagrees")
                 if year == 2020 and "2020connecticutcandidatesforelectorsofpresident" not in compact(report[2].get_text()):
                     raise ValueError("Connecticut Statement table of contents does not identify this election")
+            if year == 2026 and hashlib.sha256(compact(" ".join(lines[:7])).encode()).hexdigest() != SDR_HEADER_SHA256:
+                break
             page_rows = [line for line in lines if re.search(r"\d\.\d{2}%", line)]
             if not page_rows:
                 raise ValueError("Missing Connecticut Statement table page")
             pages.append(page_rows)
-        if len(pages) != expected:
+        if not pages or (expected is not None and len(pages) != expected):
             raise ValueError("Incomplete Connecticut Statement turnout section")
     rows = [line for page in pages for line in page]
     statement_rows(rows, year)
@@ -464,6 +483,6 @@ def exports(entries):
                 "source_sha256": report["sha256"], "checked_week_utc": entry.get("archive_check_week_utc"),
                 **(dict(zip(
                     ("early_received", "early_rejected", "early_voted", "sdr_received", "sdr_rejected", "sdr_voted")
-                    if year == 2024 else ("edr_received", "edr_rejected", "edr_voted"), other_modes))
+                    if year in SDR_YEARS else ("edr_received", "edr_rejected", "edr_voted"), other_modes))
                    if other_modes else {}),
             }

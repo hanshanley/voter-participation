@@ -75,18 +75,13 @@ def discover(body, feed, *, year=2026):
             raise IntakeError("release_index_schema", "Expected Census detailed-table series not found")
     elif feed == CT:
         prior_link = False
-        path_pattern = r"/-/media/sots/electionservices/statementofvote_pdfs/[^/]+\.pdf"
         for tag, attrs, text in labels:
             if tag != "a":
                 continue
             target = urljoin(base, attrs.get("href") or "")
             if connecticut_turnout_history.valid_link(target, year - 2) and text == str(year - 2):
                 prior_link = True
-            url = urlsplit(target)
-            if (text == str(year) and url.scheme == "https" and url.netloc == "portal.ct.gov"
-                    and not url.fragment and re.fullmatch(path_pattern, url.path.lower())
-                    and str(year) in url.path.rsplit("/", 1)[-1]
-                    and (not url.query or re.fullmatch(r"rev=[a-f0-9]{32}&hash=[A-Fa-f0-9]{32}", url.query))):
+            if text == str(year) and connecticut_turnout_history.valid_link(target, year):
                 discovered.add((target, "statement_of_vote"))
         if not prior_link or len(discovered) > 1:
             raise IntakeError("release_index_schema", "Expected Connecticut general-election index or unique new link")

@@ -172,3 +172,70 @@ def test_2018_checkpoint_repairs_only_exact_source_edition(tmp_path, monkeypatch
     accepted = ct.collect(collector, feed)
     assert accepted["status"] == "reported" and "rejected_scan" not in accepted
     assert accepted["data"] == {"report": pin, **facts}
+
+
+def test_2026_collector_accepts_only_the_verified_table_layout(tmp_path, monkeypatch):
+    import re
+
+    import pymupdf
+
+    feed = "CT-2026-general-town-turnout-archive"
+    path = "/-/media/sots/electionservices/statementofvote_pdfs/"
+    prior = f'<a href="{path}2024_statement_of_vote.pdf">2024</a>'.encode()
+    link = f'<a href="{path}2026_statement_of_vote.pdf">2026</a>'.encode()
+    title = "State of Connecticut Statement of Vote General Election November 3, 2026"
+    header = ["Same-Day Registration (SDR), Turnout, Absentee & Early Voting Ballot Statistics",
+              "Official Active Checklist", "Town", "Having Voted", "Percentage",
+              "Absentee Ballots", "Early Voting and SDR"]
+    table = [f"Andover 20 12 60.00% {'0 ' * 8}0", f"20 12 60.00% {'0 ' * 8}0"]
+    index = prior
+    requested = []
+    historical = {}
+
+    class FixturePdf(list):
+        needs_pass = False
+        permissions = pymupdf.PDF_PERM_COPY
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_):
+            pass
+
+    class Cover:
+        def get_text(self):
+            return title
+
+    def open_pdf(**_):
+        return FixturePdf([Cover(), header + table])
+
+    def acquire(url):
+        requested.append(url)
+        return (index if url == ct.STATEMENT_INDEX else repr(table).encode().join((b"%PDF-", b"")),
+                {"origin": "synthetic_test"})
+
+    fingerprint = re.sub(r"[^a-z0-9]", "", " ".join(header).lower())
+    monkeypatch.setattr(pymupdf, "open", open_pdf)
+    monkeypatch.setattr(ct, "physical_text", lambda page, _: page if isinstance(page, list) else [])
+    monkeypatch.setattr(ct, "SDR_HEADER_SHA256", hashlib.sha256(fingerprint.encode()).hexdigest())
+    monkeypatch.setattr(ct, "ROSTER", hashlib.sha256(b"Andover").hexdigest())
+
+    def refresh():
+        collector = results_intake.Collector(tmp_path, historical, {"urls": [], "prefixes": [], "hosts": []},
+                                             datetime(2026, 11, 21, tzinfo=timezone.utc))
+        monkeypatch.setattr(collector, "acquire", acquire)
+        historical[feed] = ct.collect(collector, feed)
+        return historical[feed]
+
+    assert refresh()["status"] == "report_not_linked" and requested == [ct.STATEMENT_INDEX]
+    index += link
+    accepted = refresh()
+    assert accepted["status"] == "reported"
+    assert all(row["checked_as_voted_fraction"] == "0.60000000" for row in ct.exports(historical))
+    table[-1] = f"20 13 65.00% {'0 ' * 8}0"
+    assert refresh()["data"] == accepted["data"]
+    assert historical[feed]["status"] == "retained_after_failure"
+    table[-1] = f"20 12 60.00% {'0 ' * 8}1"
+    header[-1] = "Different mode fields"
+    assert refresh()["data"] == accepted["data"]
+    assert historical[feed]["status"] == "retained_after_failure"
