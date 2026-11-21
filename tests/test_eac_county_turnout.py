@@ -2,7 +2,9 @@ import csv
 import gzip
 import io
 
-from scripts.eac_county_turnout import CONTRACT, SOURCES, exports, reconcile
+import pytest
+
+from scripts.eac_county_turnout import CONTRACT, SOURCES, exports, locality_rows, reconcile
 from scripts.participation_intake.contract import encoded
 
 
@@ -48,3 +50,25 @@ def test_full_download_preserves_source_fields_and_is_platform_stable(monkeypatc
 
     monkeypatch.setattr(gzip, "compress", alternate_platform)
     assert (files, descriptor) == exports(data)
+
+
+def test_local_history_keeps_real_zero_and_withholds_proxy_and_county_only_data():
+    local = [
+        [2, "2302100100", "ME", "ABBOT", "2024", "20", "0", "0", "0", "1", "0", "0"],
+        [3, "2303100275", "ME", "ACTON", "2024", "20", "12", "1", "0", "1", "0", "0"],
+        [4, None, "ME", "YORK COUNTY", "2006", "300", "180", "0", "0", "1", "0", "0"],
+        [5, "2303100275", "ME", "ACTON", "2022", "0", "12", "0", "0", "1", "0", "0"],
+        [6, "2303100275", "ME", "ACTON", "2020", "20", "12", "0", "1", "0", "0", "0"],
+    ]
+    packet = {"localities": local, "jurisdiction": [r[:8] for r in local],
+              "sources": {"jurisdiction": {"url": SOURCES["jurisdiction"], "sha256": "a" * 64}}}
+    rows = locality_rows(packet)
+    assert [r["reported_counted_ballot_participants"] for r in rows] == [0, None, None, 12, None]
+    assert [r["same_report_registration_fraction_pct"] for r in rows] == [0, None, None, None, None]
+    assert all(not r["geographic_match_claimed"] for r in rows)
+    assert rows[1]["count_hold"] == "highest_office_source_reported"
+    assert rows[2]["count_hold"] == "no_county_subdivision_identifier"
+    assert rows[4]["count_hold"] == "ballot_count_source_not_confirmed"
+    local[0][6] = "1"
+    with pytest.raises(ValueError, match="differ from reviewed"):
+        locality_rows(packet)

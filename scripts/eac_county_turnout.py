@@ -19,6 +19,10 @@ COUNTY = {1: "State Abbreviation", 3: "County Name", 4: "FIPS County Code", 5: "
           465: "Source of Voter Participation Data, Votes Cast for Highest Office on Ballot"}
 JURISDICTION = {1: "FIPSCode", 3: "State_Abbr", 4: "Jurisdiction_Name", 5: "Year",
                 6: "regist_tot", 452: "turnout_tot", 465: "source_votescast"}
+LOCAL_SOURCE_FLAGS = {462: "source_pollbook", 463: "source_ballots", 464: "source_votehistory",
+                      467: "source_oth"}
+LOCAL_FIPS = {"CT": "09", "ME": "23", "MA": "25", "NH": "33", "RI": "44", "VT": "50", "WI": "55"}
+LOCAL_CSV = "participation-eac-locality-history.csv"
 FIELDS = ("state", "year", "county_fips", "county_name", "county_registered", "county_turnout",
           "county_highest_office_flag", "county_workbook_row", "direct_workbook_row",
           "direct_name", "direct_registered", "direct_turnout", "direct_highest_office_flag", "decision",
@@ -147,6 +151,51 @@ def compressed(body):
     return bytes(result)
 
 
+def locality_rows(packet):
+    """Keep local source flags and native records, without implying a polygon match."""
+    local = packet.get("localities")
+    if local is None:
+        return []
+    prior = {row[0]: row for row in packet["jurisdiction"] if row[2] in LOCAL_FIPS}
+    if len(local) != len(prior) or sorted(row[0] for row in local) != sorted(prior):
+        raise ValueError("Incomplete EAC local jurisdiction facts")
+    identities = Counter((state, year, fips) for _, fips, state, _, year, *_ in local)
+    source = packet["sources"]["jurisdiction"]
+    result = []
+    for row in local:
+        number, fips, state, name, year, registration, turnout, highest, pollbook, ballots, history, other = row
+        if row[:8] != prior[number] or any(value not in {None, "0", "1", "-66", "-77", "-88", "-99"}
+                                           for value in (highest, pollbook, ballots, history, other)):
+            raise ValueError("EAC local facts differ from reviewed jurisdiction source or flags")
+        n, d = integer(turnout), integer(registration)
+        if not (fips and re.fullmatch(LOCAL_FIPS[state] + r"\d{8}", fips)
+                and fips[2:5] != "000" and fips[5:] != "00000"):
+            hold = "no_county_subdivision_identifier"
+        elif identities[state, year, fips] != 1 or not name:
+            hold = "ambiguous_jurisdiction_identity"
+        elif n is None:
+            hold = "missing_count"
+        elif highest == "1":
+            hold = "highest_office_source_reported"
+        elif highest != "0" or ballots != "1":
+            hold = "ballot_count_source_not_confirmed"
+        else:
+            hold = None
+        rate_hold = "count_withheld" if hold else "invalid_same_report_registration" if (
+            not d or n > d) else None
+        result.append({
+            "state_code": state, "year": year, "native_name": name, "native_fips": fips,
+            "native_row": number, "reported_turnout_literal": turnout, "registered_literal": registration,
+            "source_votescast": highest, "source_pollbook": pollbook, "source_ballots": ballots,
+            "source_votehistory": history, "source_oth": other, "count_hold": hold, "rate_hold": rate_hold,
+            "reported_counted_ballot_participants": None if hold else n,
+            "same_report_registration_fraction_pct": None if rate_hold else 100 * n / d,
+            "source_url": source["url"], "source_sha256": source["sha256"],
+            "geographic_match_claimed": False,
+        })
+    return result
+
+
 def exports(body):
     packet = json.loads(gzip.decompress(body))
     if (packet.get("contract") != CONTRACT or set(packet["sources"]) != set(SOURCES)
@@ -181,8 +230,10 @@ def exports(body):
 
 
 def build(county, jurisdiction, output):
+    detailed = cells(jurisdiction, {**JURISDICTION, **LOCAL_SOURCE_FLAGS})
     packet = {"contract": CONTRACT, "county": cells(county, COUNTY),
-              "jurisdiction": cells(jurisdiction, JURISDICTION),
+              "jurisdiction": [row[:1 + len(JURISDICTION)] for row in detailed],
+              "localities": [row for row in detailed if row[2] in LOCAL_FIPS],
               "sources": {name: {"url": SOURCES[name], **pin(path.read_bytes())}
                           for name, path in (("county", county), ("jurisdiction", jurisdiction))}}
     body = compressed(encoded(packet))
