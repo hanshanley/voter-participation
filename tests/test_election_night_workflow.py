@@ -294,7 +294,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "VA-general-election-turnout", "VA-2022-general-election-locality-turnout",
         "VA-2024-general-election-locality-turnout", "WA-general-election-turnout",
         "MN-native-local", "MN-statewide-reporting",
-        "MN-2006-general-precinct-turnout-workbook",
+        *(f"MN-{year}-general-precinct-turnout-workbook" for year in (2006, 2008, 2010)),
         "US-2026-CPS-turnout-release-index", "US-2026-EAVS-turnout-release-index",
         "WV-2026-general-write-in-results-index",
         "CT-2026-general-statement-of-vote-index",

@@ -1197,6 +1197,37 @@ def test_minnesota_workbook_revisions_and_offline_original(tmp_path, monkeypatch
     assert rejected["status"] == "retained_after_failure" and rejected["data"] == revised["data"]
 
 
+def test_minnesota_2008_state_rows_reconcile_but_never_become_precincts(monkeypatch):
+    from scripts import minnesota_precinct_history as mn, results_turnout_history as history
+
+    date, feed = "2008-11-04", "MN-2008-general-precinct-turnout-workbook"
+    monkeypatch.setitem(mn.EDITIONS, date, (mn.EDITIONS[date][0], 87, 875, 89))
+    fields = [*mn.FIELDS, "PRESONLYAB"]
+    roster = {str(i): f"COUNTY {i}" for i in range(1, 88)}
+    voters = dict(zip(fields[6:], (9, 1, 7, 3, 0, 10, 0), strict=True))
+    rows = [{"VTDID": f"{27000 + 2 * i - 1}0001", "PCTNAME": "Precinct", "PCTCODE": "0001",
+             "MCDNAME": "Municipality", "COUNTYNAME": roster[str(i)], "COUNTYCODE": str(i), **voters}
+            for i in range(1, 88)]
+    central = [{"PCTCODE": code, "PCTNAME": label, **dict.fromkeys(voters, 0),
+                "TOTVOTING": count, "EDR": 1}
+               for (code, label), count in zip(mn.CENTRAL_2008.items(), (3, 2), strict=True)]
+    total = {field: 87 * n + sum(r[field] for r in central) for field, n in voters.items()}
+    query = mn.query(fields, rows, roster, total, date, statewide_unallocated=central)
+    pin = {"url": mn.route(date), **intake.pin(b"Workbook")}
+    entries = {feed: {"status": "reported", "source": pin, "data": {
+        "report": pin, "election_date": date, "complete_native_query": query,
+        "participation_observation_qualified": False}}}
+    native = history.county_archive_rows(entries, minnesota_precincts=True)
+    assert len(native) == 89
+    assert all(row["geography_level"] == "nongeographic" and "precinct_id" not in row for row in native[-2:])
+    statewide = history.county_archive_rows(entries)[-1]
+    assert statewide["reported_total_voters"] == 875
+    assert statewide["reported_statewide_unallocated_voters"] == 5
+    assert statewide["qualified_same_report_registration_fraction_pct"] is None
+    with pytest.raises(intake.IntakeError, match="statewide unallocated"):
+        mn.query(fields, rows, roster, total, date, statewide_unallocated=central[:1])
+
+
 def test_colorado_legacy_mixed_reporting_labels_do_not_become_precincts():
     from scripts import colorado_voting_statistics as co
 

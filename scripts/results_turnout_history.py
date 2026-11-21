@@ -1187,7 +1187,7 @@ def county_archive_originals(entries):
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError(f"Invalid original county report pin: {feed}")
         extension = (".json" if state == "VA" and election == VA_NATIVE_LOCALITY_DATE
-                     else ".xls" if state == "MN" and election == "2006-11-07"
+                     else ".xls" if state == "MN" and election in minnesota_precinct_history.LEGACY_NAMES
                      else {"CO": ".csv", "MD": ".csv", "MN": ".xlsx", "VA": ".html"}.get(state, ".pdf"))
         originals[feed] = {"filename": feed + extension,
                            **{key: report[key] for key in ("url", "bytes", "sha256")}}
@@ -1364,7 +1364,8 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             county_conflict = not count_only and any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
         elif state == "MN":
             if (query != minnesota_precinct_history.query(
-                    query["fields"], query["precincts"], query["county_roster"], query["printed_total"], election)
+                    query["fields"], query["precincts"], query["county_roster"], query["printed_total"], election,
+                    statewide_unallocated=query.get("statewide_unallocated"))
                     or any(source.get(field) != report[field] for field in ("bytes", "sha256"))):
                 raise ValueError("Minnesota turnout differs from its retained source rows")
             if minnesota_precincts:
@@ -1380,14 +1381,30 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                         "reported_roster_signatures": unit["SIGNATURES"],
                         "reported_accepted_absentee_mail": None if legacy_absentee else unit["AB_MB"],
                         **({"reported_accepted_regular_military_overseas_absentee": unit["AB_MB"]}
-                           if legacy_absentee == "REGMILOVAB" else {}),
+                           if legacy_absentee == "REGMILOVAB" or election == "2010-11-02" else {}),
                         **({"reported_submitted_regular_military_overseas_absentee": unit["AB_MB"],
                             "reported_submitted_federal_only_absentee": unit["FEDONLYAB"],
                             "precinct_id_basis": "composite_county_and_source_precinct_not_a_geometry_join"}
-                           if legacy_absentee == "RegMilAB" else {}),
-                        "reported_federal_only_absentee": None if legacy_absentee == "RegMilAB" else unit["FEDONLYAB"],
+                           if legacy_absentee == "RegMilAB" and election != "2010-11-02" else {}),
+                        "reported_federal_only_absentee": None if legacy_absentee == "RegMilAB"
+                        and election != "2010-11-02" else unit["FEDONLYAB"],
                         "reported_presidential_only_absentee": unit.get("PRESONLYAB"),
                         "registration_basis": query["registration_basis"],
+                        "rate_hold_reason": minnesota_precinct_history.RATE_HOLD,
+                        "source_id": feed, "source_status": entry["status"], "source_url": report["url"],
+                        "source_sha256": report["sha256"], "source_bytes": report["bytes"],
+                        **disposition(entry),
+                    })
+                for unit in query.get("statewide_unallocated", []):
+                    rows.append({
+                        "state_code": state, "election_date": election, "geography_level": "nongeographic",
+                        "precinct_name": unit["PCTNAME"], "statewide_native_reporting_code": unit["PCTCODE"],
+                        "reported_total_voters": unit["TOTVOTING"], "registered_at_7am": unit["REG7AM"],
+                        "same_day_registrations": unit["EDR"],
+                        "reported_roster_signatures": unit["SIGNATURES"],
+                        "reported_submitted_regular_military_overseas_absentee": unit["AB_MB"],
+                        "reported_submitted_federal_only_absentee": unit["FEDONLYAB"],
+                        "reported_presidential_only_absentee": unit["PRESONLYAB"],
                         "rate_hold_reason": minnesota_precinct_history.RATE_HOLD,
                         "source_id": feed, "source_status": entry["status"], "source_url": report["url"],
                         "source_sha256": report["sha256"], "source_bytes": report["bytes"],
@@ -1472,6 +1489,9 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 if statewide else county,
                 "reported_ballots_cast": ballots if measure == "ballots_cast" else None,
                 "reported_total_voters": ballots if measure == "total_voters" else None,
+                **({"reported_statewide_unallocated_voters": sum(
+                    unit["TOTVOTING"] for unit in query["statewide_unallocated"])}
+                   if state == "MN" and statewide and query.get("statewide_unallocated") else {}),
                 **({"reported_voter_history_credits": ballots} if measure == "voter_history_credits" else {}),
                 "participation_measure": measure,
                 "reported_registered_voters": registered,

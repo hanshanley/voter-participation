@@ -257,6 +257,15 @@ current-election reports and explicitly selected refreshes are not deferred.
 The source-status export records the week of the last attempt separately
 from the report's edition and first-observed timestamp.
 
+Minnesota's precinct workbook collector admits the 2008 and 2010 XLS
+layouts after checking native field definitions, unique precinct identities,
+the complete 87-county roster, publication totals and independent statewide
+voter and same-day registration totals. Two 2008 statewide records are
+exported without a county or precinct assignment and included only in the
+state total, not in county sums. The files distinguish submitted from
+accepted absentee counts and never use 7 a.m. registration as a turnout
+denominator. Composite precinct IDs do not qualify a boundary join.
+
 West Virginia's 2008-2016 general-election county reports use the same
 county-archive sweep. Each PDF must match the declared election, all 55
 counties, and the separately printed statewide counts. The 2008 and 2010
