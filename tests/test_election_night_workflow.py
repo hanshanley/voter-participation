@@ -252,6 +252,29 @@ def test_archive_recovery_is_scoped_or_refused(tmp_path, early, override):
             assert output.read_text() == "active=true\nlate_archives=true\n"
 
 
+@pytest.mark.parametrize("source_ids,accepted", [
+    ("LA-{1998..2024..2}-general-election-group-history", False),
+    ("LA-2024-general-election-group-history,LA-2024-general-election-group-history", False),
+    ("LA-2024-general-election-group-history, LA-2022-general-election-native-precinct-counts", False),
+    ("LA-2024-general-election-group-history,LA-2022-general-election-native-precinct-counts", True),
+])
+def test_dispatch_checks_source_id_shape_before_validation(tmp_path, source_ids, accepted):
+    gate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "window")
+    script = gate["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
+    output = tmp_path / "github-output"
+    env = {"EVENT_NAME": "workflow_dispatch", "SCHEDULE": "", "GITHUB_OUTPUT": str(output),
+           "ARCHIVE_ONLY": "", "REUSE_COLLECTION_RUN": "", "REFRESH_SOURCES": source_ids,
+           "CONGRESSIONAL_ONLY": "", "GITHUB_REF": "refs/heads/main"}
+    with patch.dict(os.environ, env):
+        if accepted:
+            exec(compile(script, str(WORKFLOW), "exec"), {})
+            assert output.read_text() == "active=true\nlate_archives=false\n"
+        else:
+            with pytest.raises(SystemExit, match="comma-separated exact source IDs"):
+                exec(compile(script, str(WORKFLOW), "exec"), {})
+            assert not output.exists()
+
+
 @pytest.mark.parametrize("late_archives", [False, True])
 def test_staged_publication_does_not_replace_the_weekly_check(tmp_path, late_archives):
     steps = workflow()["jobs"]["refresh"]["steps"]

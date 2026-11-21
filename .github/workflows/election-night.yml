@@ -56,6 +56,7 @@ jobs:
         run: |
           python - <<'PY'
           import os
+          import re
           from datetime import datetime, timezone
           now = datetime.now(timezone.utc)
           start = datetime(2026, 11, 3, tzinfo=timezone.utc)
@@ -69,6 +70,12 @@ jobs:
               or os.environ["CONGRESSIONAL_ONLY"] == "true"
           ):
               raise SystemExit("Archive recovery requires main, the late window, and no other collection mode")
+          if raw_sources := os.environ["REFRESH_SOURCES"]:
+              sources = raw_sources.split(",")
+              if len(set(sources)) != len(sources) or any(
+                  not re.fullmatch(r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+", source) for source in sources
+              ):
+                  raise SystemExit("refresh_sources must contain comma-separated exact source IDs with no spaces or duplicates")
           archive = manual_archive or (event == "schedule" and schedule == "19 10 * * 1" and now >= cutoff)
           full = event == "schedule" and schedule == "23 * * * *" and start <= now < cutoff
           active = event == "workflow_dispatch" or full or archive
@@ -407,7 +414,13 @@ jobs:
       - name: Publish valid results or preserve new access stops
         id: publication
         if: always() && (steps.saved.outcome == 'success' || steps.capture.outcome == 'failure' || steps.restore.outputs.status == 'restored')
+        env:
+          CAPTURE_OUTCOME: ${{ steps.capture.outcome }}
         run: |
+          if [ "$CAPTURE_OUTCOME" = "failure" ] && [ ! -f "$RUNNER_TEMP/election-intake/source-stops.json" ]; then
+            echo "Collection did not initialize a source-stop ledger; there is nothing to publish."
+            exit 0
+          fi
           python -m scripts.results_intake publish \
             --work-dir "$RUNNER_TEMP/election-intake" \
             > "$RUNNER_TEMP/election-intake/publication.json"
