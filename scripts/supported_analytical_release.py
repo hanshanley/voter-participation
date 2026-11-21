@@ -605,7 +605,7 @@ def house_model_guard_matrix(decisions):
 def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None):
     from scripts import cps_archived_state_tables as archived_cps
     from scripts import cps_published_state_tables as published_cps
-    from scripts import results_indiana_turnout, results_nc_vote_history, results_turnout_history
+    from scripts import results_indiana_turnout, results_native, results_nc_vote_history, results_turnout_history
 
     review = seed["supported_release_review"]
     require(review.get("contract") == REVIEW_CONTRACT, "unreviewed eligibility document")
@@ -655,6 +655,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     nc_history = results_nc_vote_history.rows(snapshot.get("granular_sources", {}))
     if nc_history:
         raw_files["participation-nc-vote-history-age.csv"] = csv_bytes(nc_history)
+    nm_turnout = results_native.new_mexico_turnout_rows(snapshot.get("granular_sources", {}))
+    if nm_turnout:
+        raw_files[results_native.NM_TURNOUT_CSV] = csv_bytes(nm_turnout)
     indiana_history = results_indiana_turnout.rows(snapshot.get("granular_sources", {}))
     if indiana_history:
         raw_files["participation-indiana-general-turnout-history.csv"] = csv_bytes(indiana_history)

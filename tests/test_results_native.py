@@ -577,6 +577,37 @@ def test_webforms_preserves_complete_statistical_queries_and_detects_missing_zer
         native.webforms_statistics(body, templates[:1])
 
 
+def test_new_mexico_full_turnout_export_is_not_limited_to_mappable_rows():
+    clock = {"source_clock": "11/20/2026 4:02 PM MT"}
+    facts = []
+    for i in range(33):
+        size = 67 if i < 26 else 66
+        location = {"county": f"County {i}", "county_id": str(i)}
+        counts = [{"unit": f"PRECINCT {j:03}", "geography_level": "reporting_unit",
+                   "count": j, "registered": 100, **location, **clock} for j in range(size)]
+        facts.append({"unit": "", "geography_level": "county", "count": sum(r["count"] for r in counts),
+                      "registered": size * 100, "total_units": size, "reported_units": size, **location, **clock})
+        facts.extend(counts)
+    units = [r for r in facts if r["geography_level"] == "reporting_unit"]
+    facts.append({"geography_level": "state", "count": sum(r["count"] for r in units),
+                  "registered": len(units) * 100, "total_units": len(units), "reported_units": len(units), **clock})
+    entry = {"source": {"url": native.NM_URL, "sha256": "a" * 64}, "status": "reported",
+             "data": {"native_measure_not_relabelled_as_ballots": True, "complete_native_query": facts}}
+    entries = {"NM-registered-e236d453f2e53e42": entry}
+    exported = native.new_mexico_turnout_rows(entries)
+    assert len(exported) == 2238
+    assert sum(r["count"] == 0 for r in exported) == 33
+    assert all(not r["geographic_match_claimed"] for r in exported)
+    entry["status"] = "retained_after_failure"
+    assert all(r["source_status"] == "retained_after_failure" for r in native.new_mexico_turnout_rows(entries))
+    facts[1]["count"] += 1
+    with pytest.raises(ValueError, match="totals differ from the county"):
+        native.new_mexico_turnout_rows(entries)
+    facts.pop(1)
+    with pytest.raises(ValueError, match="inventory"):
+        native.new_mexico_turnout_rows(entries)
+
+
 def test_real_pdf_text_layer_and_fraction_summary_never_use_contest_times_cast():
     fitz = pytest.importorskip("fitz")
     row = granular.selected_records(baseline(("NY",)), "NY")[0]
