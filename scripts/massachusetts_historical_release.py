@@ -112,7 +112,7 @@ def package(primary, geometry, work):
                for path in root.rglob("*") if path.is_file()}
     members.update({f"scripts/{name}": (ROOT / "scripts" / name).read_bytes() for name in MODULES})
     members["REPRODUCE.txt"] = (
-        "Install CPython 3.12 and pyshp==3.1.8 pyproj==3.8.0 shapely==2.2.0.\n"
+        "Install CPython 3.12 and requests==2.34.2 pyshp==3.1.8 pyproj==3.8.0 shapely==2.2.0.\n"
         "From the extracted archive: PROJ_NETWORK=OFF python3.12 -m scripts.massachusetts_historical_release"
         " --replay . --work reproduced\n"
         "All nine complete outputs reproduce offline. These are counts including blanks, not rates. "
