@@ -578,6 +578,8 @@ def test_webforms_preserves_complete_statistical_queries_and_detects_missing_zer
 
 
 def test_new_mexico_full_turnout_export_is_not_limited_to_mappable_rows():
+    from scripts import nm_turnout_export
+
     clock = {"source_clock": "11/20/2026 4:02 PM MT"}
     facts = []
     for i in range(33):
@@ -594,18 +596,18 @@ def test_new_mexico_full_turnout_export_is_not_limited_to_mappable_rows():
     entry = {"source": {"url": native.NM_URL, "sha256": "a" * 64}, "status": "reported",
              "data": {"native_measure_not_relabelled_as_ballots": True, "complete_native_query": facts}}
     entries = {"NM-registered-e236d453f2e53e42": entry}
-    exported = native.new_mexico_turnout_rows(entries)
+    exported = nm_turnout_export.rows(entries)
     assert len(exported) == 2238
     assert sum(r["count"] == 0 for r in exported) == 33
     assert all(not r["geographic_match_claimed"] for r in exported)
     entry["status"] = "retained_after_failure"
-    assert all(r["source_status"] == "retained_after_failure" for r in native.new_mexico_turnout_rows(entries))
+    assert all(r["source_status"] == "retained_after_failure" for r in nm_turnout_export.rows(entries))
     facts[1]["count"] += 1
     with pytest.raises(ValueError, match="totals differ from the county"):
-        native.new_mexico_turnout_rows(entries)
+        nm_turnout_export.rows(entries)
     facts.pop(1)
     with pytest.raises(ValueError, match="inventory"):
-        native.new_mexico_turnout_rows(entries)
+        nm_turnout_export.rows(entries)
 
 
 def test_real_pdf_text_layer_and_fraction_summary_never_use_contest_times_cast():
