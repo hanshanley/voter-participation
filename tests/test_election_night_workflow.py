@@ -293,6 +293,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
           for name in ("precinct-ballot-archive", "county-ballot-control")),
         "AL-2026-general-precinct-ballot-archive",
         "AL-2026-general-county-ballot-control",
+        "AK-2024-general-precinct-ballot-archive",
         *(f"MN-{year}-general-precinct-turnout-workbook" for year in range(2012, 2025, 2)),
         *(f"MD-{year}-general-precinct-affiliation-turnout" for year in range(2016, 2025, 2)),
         "NC-2026-general-vote-history", "NC-general-election-turnout-history", "UF-national-turnout",

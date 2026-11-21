@@ -2818,6 +2818,17 @@ Census detailed tables still require the appropriate denominator and survey
 checks, while EAVS releases require the data, codebook and jurisdiction
 reconciliation.
 
+### Alaska 2024 precinct and central ballot reporting
+
+The 2024 Alaska CSV repeats explicit ballot fields on candidate rows. The
+adapter checks that the two statewide federal contests have identical ballot
+fields per unit, retains one copy per reporting unit, and checks registration
+and ballots against the separate official statewide summary. It exports 402
+Election Day precinct rows and 121 central or overseas reporting rows. Both
+sets sum to 340,981 ballots. Four rows labeled Early Voting also contain
+Election Day ballots; the native components remain separate. No all-mode
+precinct rate, boundary equivalence, or allocation of central ballots is inferred.
+
 ### Alabama age participation and South Carolina statewide history
 
 The weekly bulk workflow collects the 2018 Alabama age workbook and 2020/2024
