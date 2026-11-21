@@ -18,6 +18,8 @@ import zipfile
 from .adapters import adapt, field
 from .contract import IntakeError, VERSION, digest, encoded, observation_id, pin, schema, validate_all
 
+CHALLENGE_REDIRECT_HOSTS = frozenset({"validate.perfdrive.com"})
+
 
 class AllowedRedirect(urllib.request.HTTPRedirectHandler):
     def __init__(self, hosts, access_guard=None):
@@ -26,6 +28,8 @@ class AllowedRedirect(urllib.request.HTTPRedirectHandler):
 
     def redirect_request(self, request, response, code, message, headers, url):
         target = urllib.parse.urlparse(url)
+        if target.hostname in CHALLENGE_REDIRECT_HOSTS:
+            raise IntakeError("source_stopped", "Security challenge redirect; original not replaced or retried")
         if target.scheme != "https" or target.hostname not in self.hosts:
             raise IntakeError("unapproved_redirect", "Source redirect left its registered public hosts")
         if self.access_guard is not None:
@@ -101,6 +105,12 @@ class Store:
                     # Redirect URLs may contain temporary signatures; never add them to public receipts.
                     trace_values = dict(final_url=response.geturl(), status=status,
                                         content_type=response.headers.get("Content-Type"))
+        except IntakeError as error:
+            if error.code == "source_stopped":
+                self.db.execute("INSERT OR REPLACE INTO inputs VALUES(?,?,?,?,?)",
+                    (url, existing[0] if existing else None, None, None, "stopped redirect"))
+                self.db.commit()
+            raise
         except urllib.error.HTTPError as error:
             if error.code == 304 and existing:
                 body = (self.root / "objects" / existing[0]).read_bytes()

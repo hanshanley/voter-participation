@@ -128,6 +128,34 @@ def test_redirect_target_is_checked_before_following_it(tmp_path):
                                  {}, "https://example.test/held")
 
 
+@pytest.mark.parametrize("target,expected", [
+    ("https://validate.perfdrive.com/?token=do-not-log", "source_stopped"),
+    ("https://new-official-host.test/data", "unapproved_redirect"),
+])
+def test_only_known_challenge_redirects_become_durable_stops(tmp_path, monkeypatch, target, expected):
+    source = "https://example.test/data"
+    calls = []
+
+    def opener(handler):
+        class Redirect:
+            def open(self, request, timeout):
+                calls.append(request.full_url)
+                handler.redirect_request(request, None, 302, "", {}, target)
+                pytest.fail("The redirect guard must reject before following the target")
+        return Redirect()
+
+    monkeypatch.setattr("urllib.request.build_opener", opener)
+    first = intake.Collector(tmp_path / "first", {}, EMPTY_STOPS, NOW)
+    result = first.capture("source", source, lambda body: {})
+    assert result["error"] == expected
+    assert "do-not-log" not in repr(result)
+    stopped = intake.read(tmp_path / "first/source-stops.json")
+    assert stopped["urls"] == ([source] if expected == "source_stopped" else [])
+    second = intake.Collector(tmp_path / "new-cache", {}, stopped, NOW)
+    second.capture("source", source, lambda body: {})
+    assert calls == ([source] if expected == "source_stopped" else [source, source])
+
+
 def test_source_failure_keeps_prior_counts_and_clocks(tmp_path, monkeypatch):
     prior = {"source": {"status": "reported", "data": {"total": 12, "date": "2026-11-12"},
                         "source": {"url": "https://example.test/data", "bytes": 1, "sha256": "a" * 64},
