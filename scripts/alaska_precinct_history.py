@@ -18,6 +18,8 @@ CURRENT_FEED = "AK-2026-general-precinct-ballot-archive"
 CURRENT_JSON = current.ROOT + "precincts.js"
 CURRENT_URL = current.ROOT + "GA_ENR_Precinct_State_of_Alaska.csv"
 CURRENT_CSV = "participation-ak-2026-precinct-ballot-archive.csv"
+GEOMETRY_URL = current.ROOT.removesuffix("results/") + "shapes/precincts.js"
+GEOMETRY_PIN = {"bytes": 5364144, "sha256": "1e9d6b95b88c4ebeea3a1ec5bcd3d0a6052d0436e82dfee0fb62fbc4c25381eb"}
 OFFICES = ("U.S. President / Vice President", "U.S. Representative")
 FIELDS = ("Reg_voters", "total_ballots", "Election Day_ballots", "Absentee_ballots",
           "Early Voting_ballots", "Question_ballots", "Remote_ballots")
@@ -208,13 +210,40 @@ def collect_current(collector):
         if (old.get("reconciliation", {}).get("source_status") == current.STATUS[1]
                 and control["source_status"] != current.STATUS[1]):
             raise ValueError("Alaska precinct certification regressed")
+        # A geometry failure must not discard an independently reconciled count edition.
+        geometry = collector.capture(CURRENT_FEED + "-display-geometry", GEOMETRY_URL, geometry_receipt)
         return {"date": control["date"], "complete_native_query": rows, "pdf_control": pdf,
                 "native_control": native, "physical_native_units": precincts, "reconciliation": control,
                 "control_report": {"url": current.REPORT, **pin(pdf_body)},
                 "native_report": {"url": CURRENT_JSON, **pin(native_body)},
+                "display_geometry_check": {"status": geometry["status"], "source": geometry["source"]},
                 "participation_observation_qualified": False}
 
     return collector.capture(CURRENT_FEED, CURRENT_URL, parse)
+
+
+def geometry_receipt(body):
+    if not 0 < len(body) <= 8_000_000 or not body.startswith(b"["):
+        raise ValueError("Alaska display geometry is not the expected bounded array")
+    return {"matches_reviewed_display_geometry": pin(body) == GEOMETRY_PIN}
+
+
+def geometry_export(data):
+    check = data.get("display_geometry_check")
+    if check is None:
+        return {}  # Preserve byte-exact replay of releases made before the geometry check.
+    receipt = check["source"]
+    if check["status"] == "reported":
+        if (receipt["url"] != GEOMETRY_URL or not re.fullmatch(r"[a-f0-9]{64}", receipt["sha256"])
+                or type(receipt["bytes"]) is not int or not 0 < receipt["bytes"] <= 8_000_000):
+            raise ValueError("Invalid Alaska geometry receipt")
+        decision = "verified_display_subset" if receipt == {"url": GEOMETRY_URL, **GEOMETRY_PIN} else "geometry_changed"
+    else:
+        if receipt is not None:
+            raise ValueError("Unaccepted Alaska geometry cannot supply a current receipt")
+        decision = check["status"]
+    return {"display_geometry_status": decision, "display_geometry_url": GEOMETRY_URL,
+            "display_geometry_sha256": receipt["sha256"] if receipt else None}
 
 
 def current_exports(entries):
@@ -233,6 +262,7 @@ def current_exports(entries):
     control = current_reconcile(rows, data["pdf_control"], data["native_control"], data["physical_native_units"])
     if control != data["reconciliation"] or control["date"] != data["date"]:
         raise ValueError("Alaska current precinct control changed")
+    geometry = geometry_export(data)
     return [
         {"state_code": "AK", "election_date": "2026-11-03", "reporting_unit": label,
          "source_unit_id": identity,
@@ -244,6 +274,6 @@ def current_exports(entries):
          "source_url": CURRENT_URL, "source_sha256": entry["source"]["sha256"],
          "official_control_url": current.REPORT, "official_control_sha256": data["control_report"]["sha256"],
          "official_control_edition_local": control["date"], "native_control_url": CURRENT_JSON,
-         "native_control_sha256": data["native_report"]["sha256"]}
+         "native_control_sha256": data["native_report"]["sha256"], **geometry}
         for label, identity, registered, ballots, day, absentee, early, question, remote in rows
     ]

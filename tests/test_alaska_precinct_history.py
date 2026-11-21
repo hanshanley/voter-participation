@@ -55,3 +55,16 @@ def test_current_unit_revisions_require_literal_json_and_pdf_controls(first, rat
     precincts[0][2] += 1
     with pytest.raises(ValueError, match="literal native roster"):
         ak.current_reconcile(rows, pdf, native, precincts)
+
+
+def test_geometry_gate_reports_changed_and_unavailable_without_changing_counts():
+    def fields(status, source):
+        return ak.geometry_export({"display_geometry_check": {"status": status, "source": source}})
+
+    receipt = {"url": ak.GEOMETRY_URL, **ak.GEOMETRY_PIN}
+    assert fields("reported", receipt)["display_geometry_status"] == "verified_display_subset"
+    assert fields("reported", {**receipt, "sha256": "a" * 64})["display_geometry_status"] == "geometry_changed"
+    stopped = fields("source_stopped", None)
+    assert stopped["display_geometry_status"] == "source_stopped" and stopped["display_geometry_sha256"] is None
+    with pytest.raises(ValueError, match="Invalid Alaska geometry"):
+        fields("reported", {**receipt, "url": ak.CURRENT_JSON})

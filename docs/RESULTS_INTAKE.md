@@ -2830,6 +2830,12 @@ completeness from the PDF's reporting count. The publication status is separate
 from the acquisition status; neither central nor overseas ballots are assigned
 back to precincts.
 
+The midterm intake also checks the election application's shape file separately.
+Unchanged, checksum-matched geometry permits the reviewed 81-precinct display
+subset to use the new Election Day counts. Changed or unavailable geometry
+holds the map, not the 523 reporting-unit counts; central counts are never
+joined to polygons.
+
 The Alaska statewide voter-history companion covers the seven 1996–2008
 federal general elections with one HTML table adapter and a text-PDF profile.
 It preserves the registered and credited counts, source-reported sex and age
