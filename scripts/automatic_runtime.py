@@ -681,7 +681,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         result["historical_eac_county_facts"] = seed["historical_eac_county_facts"]
     if "supported_release_review" in seed:
         from scripts.supported_analytical_release import build as build_release
-        congressional_races = None
+        congressional = {}
         if "congress" in snapshot:
             from scripts.results_congress import runtime as congressional_runtime
             congressional_files, declaration = congressional_runtime(
@@ -690,10 +690,10 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
                 estimates=estimates)
             artifacts.update(congressional_files)
             result["congressional"] = declaration
-            congressional_races = json.loads(gzip.decompress(
-                congressional_files["congressional/results.json.gz"]))["races"]
+            congressional = json.loads(gzip.decompress(congressional_files["congressional/results.json.gz"]))
         release = build_release(snapshot, updated, seed, estimates, changes,
-                                congressional_races=congressional_races)
+                                congressional_races=congressional.get("races"),
+                                congressional_states=congressional.get("house_states"))
         artifacts.update(release["files"])
         estimates["house_sources"]["supported_release"] = release["descriptor"]
         result["release_review"] = seed["supported_release_review"]

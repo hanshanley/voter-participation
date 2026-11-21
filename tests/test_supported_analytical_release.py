@@ -18,6 +18,24 @@ def modeled_row():
     return {"joint": joint, "point": model.accounting(joint)}
 
 
+def test_statewide_export_uses_congressional_hold_without_rewriting_legacy_accounting():
+    legacy = {"state_code": "AZ", "previous_year": 2024, "current_year": 2026,
+              "qualified_comparison": True, "qualified_margin_change_pp": 14.99,
+              "raw_recorded_margin_change_pp": 14.99, "hold_reason": None}
+    official = {"state_code": "AZ", "previous_year": 2024, "current_year": 2026, "office": "house",
+                "qualified_comparison": False, "qualified_margin_change_pp": None,
+                "comparison_holds": ["Major-party candidate coverage changed: AZ-03"],
+                "raw_recorded_margin_change_pp": 15.17, "comparison_scope": "statewide_complete_same_office"}
+    row = legacy.copy()
+    release.attach_state_comparison_decisions([row], [official])
+    assert row["qualified_comparison"] is False and row["qualified_margin_change_pp"] is None
+    assert row["hold_reason"] == official["comparison_holds"][0]
+    assert row["legacy_frame_qualified_comparison"] and row["legacy_frame_qualified_margin_change_pp"] == 14.99
+    assert row["raw_recorded_margin_change_pp"] == 14.99 and row["congressional_raw_recorded_margin_change_pp"] == 15.17
+    with pytest.raises(ValueError, match="inventories differ"):
+        release.attach_state_comparison_decisions([legacy], [])
+
+
 def test_explanation_accounts_keep_denominator_alternative_and_shared_state_group_scale():
     row = modeled_row()
     result = release.mechanisms(row, row)

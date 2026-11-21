@@ -286,6 +286,27 @@ def explanations(estimates):
     return states, groups
 
 
+def attach_state_comparison_decisions(recorded, congressional_states):
+    states = {row["state_code"]: row for row in congressional_states}
+    require(len(states) == len(congressional_states) == len(recorded)
+            and states.keys() == {row["state_code"] for row in recorded},
+            "Congressional and legacy statewide comparison inventories differ")
+    for row in recorded:
+        official = states[row["state_code"]]
+        require(all(official[key] == row[key] for key in ("previous_year", "current_year"))
+                and official["office"] == "house", "Congressional statewide office or election pair differs")
+        for field in ("qualified_comparison", "qualified_margin_change_pp", "hold_reason"):
+            row["legacy_frame_" + field] = row[field]
+        row.update(
+            qualified_comparison=official["qualified_comparison"],
+            qualified_margin_change_pp=official["qualified_margin_change_pp"],
+            hold_reason="; ".join(official["comparison_holds"]) or None,
+            comparison_scope=official["comparison_scope"],
+            congressional_raw_recorded_margin_change_pp=official["raw_recorded_margin_change_pp"],
+            recorded_counts_and_raw_accounting_scope="legacy_model_frame",
+        )
+
+
 def recorded_districts(review, estimates):
     previous = {row["district"]: row for row in review["previous_district_queries"]}
     candidates = estimates["artifacts"]["rolling/next-seed.json.gz"]["content"]["accepted_candidates"]
@@ -602,7 +623,8 @@ def house_model_guard_matrix(decisions):
         }
 
 
-def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None):
+def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None,
+          congressional_states=None):
     from scripts import cps_archived_state_tables as archived_cps
     from scripts import cps_published_state_tables as published_cps
     from scripts import eac_county_turnout, nm_turnout_export, results_indiana_turnout, results_nc_vote_history, results_turnout_history
@@ -624,6 +646,8 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
             "house/attenuated/accepted_ridge_multinomial/complete-result.json.gz"]["content"]["rows"]
     }
     recorded = recorded_states(estimates, model_rows)
+    if congressional_states is not None:
+        attach_state_comparison_decisions(recorded, congressional_states)
     districts = recorded_districts(review, estimates)
     if congressional_races is not None:
         attach_district_map_decisions(districts, congressional_races)
@@ -780,6 +804,10 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
                if congressional_races is not None else {}),
             "qualified_state_comparisons": sum(row["qualified_comparison"] for row in recorded),
             "held_states": [row["state_code"] for row in recorded if not row["qualified_comparison"]],
+            **({"state_qualification_frame": "congressional",
+                "legacy_frame_qualified_state_comparisons": sum(
+                    row["legacy_frame_qualified_comparison"] for row in recorded)}
+               if congressional_states is not None else {"state_qualification_frame": "legacy_model_frame"}),
             "raw_recorded_changes_separate_from_qualified_comparisons": True,
         },
         "modeled_explanations": {
