@@ -132,6 +132,18 @@ def test_legacy_alabama_unavailable_county_prevents_state_rollup():
     assert by_county["FRANKLIN"]["unit_sum_minus_workbook_printed"] == 15
 
 
+def test_jefferson_crosstab_keeps_aggregate_out_of_reporting_units():
+    rows = [
+        ("Contest Title", "Party Code", "Candidate Name", "Total Of Registered Voters", "Town hall", "ABSENTEE"),
+        ("REGISTERED VOTERS - TOTAL", "", "Registered Voters - Total", 35, 35, None),
+        ("BALLOTS CAST - TOTAL", "", "Ballots Cast - Total", 25, 20, 5),
+    ]
+    assert precinct.mixed_crosstab(iter(rows), jefferson=True) == (
+        [["Town hall", 20, 35], ["ABSENTEE", 5, None]], 25)
+    with pytest.raises(ValueError, match="Ambiguous"):
+        precinct.mixed_crosstab(iter([*rows, rows[-1]]), jefferson=True)
+
+
 def test_current_alabama_control_is_collected_only_after_discovery(tmp_path, monkeypatch):
     feed = precinct.CURRENT_CONTROL
     path = "/sites/default/files/election-data/2026-12/2026%20General%20Total%20Ballots%20Cast.pdf"

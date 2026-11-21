@@ -15,6 +15,7 @@ CURRENT_CONTROL_ROUTE = (re.escape(ROOT) + r"20(?:26|27)-(?:0[1-9]|1[0-2])/"
 FILES = {
     2010: ("2017-06/2010-general-precinctLevel.zip", None, "November 2, 2010"),
     2012: ("2017-06/2012General-PrecinctLevel.zip", None, "November 6, 2012"),
+    2014: ("2017-06/2014General-precinctLevel.zip", None, "November 4, 2014"),
     2016: ("2017-06/2016-General-PrecinctLevel.zip", None, "November 8, 2016"),
     2018: ("2018-11/2018-Official-General-Precinct-Results.zip",
            "2019-01/2018GeneralVoterTurnoutStats.xlsx", "November 6, 2018"),
@@ -37,6 +38,8 @@ WORKBOOK_AUDIT_CSV = "participation-al-legacy-workbook-controls.csv"
 COUNTY_KEYS = {county.replace("_", ""): county for county in COUNTIES}
 EARLY_MISSING = {"BULLOCK", "BUTLER", "HALE", "WILCOX"}
 EARLY_HEADER = ("Registered Voters", "Ballots Cast", "Voter Turnout")
+MIXED_HELD = set("BIBB BLOUNT BUTLER CALHOUN CHAMBERS CHILTON CLAY COOSA DALLAS DEKALB ELMORE ESCAMBIA "
+                 "GENEVA GREENE LAMAR MACON PICKENS WALKER WILCOX WINSTON".split())
 MODE_LABELS = {
     "ABSENTEE", "PROVISIONAL", "PROVISIONAL ABSENTEE", "ABSENTEE PROVISIONAL",
     "BESSEMER ABSENTEE", "BIRMINGHAM ABSENTEE", "PROVISIONAL OFFICIAL",
@@ -62,7 +65,7 @@ def validate_units(data, year=None):
     if set(data) != set(COUNTY_KEYS.values()):
         raise ValueError("Alabama precinct workbook county roster changed")
     for county, rows in data.items():
-        if (not rows and not (year == 2012 and county in EARLY_MISSING)) or len(rows) > 400:
+        if (not rows and county not in {2012: EARLY_MISSING, 2014: MIXED_HELD}.get(year, ())) or len(rows) > 400:
             raise ValueError(f"Alabama reporting-unit inventory out of bounds: {county}")
         seen = set()
         for label, ballots, register in rows:
@@ -119,13 +122,17 @@ def early_xml_sheet(body):
     return early_tall_sheet(rows)
 
 
-def early_xlsx_sheet(body, county, *, misspelled_randolph=False):
+def bounded_xlsx(body):
     from openpyxl import load_workbook
 
     with ZipFile(io.BytesIO(body)) as nested:
         if sum(item.file_size for item in nested.infolist()) > 10_000_000:
             raise ValueError("Alabama workbook exceeds expanded size limit")
-    book = load_workbook(io.BytesIO(body), read_only=True, data_only=True)
+    return load_workbook(io.BytesIO(body), read_only=True, data_only=True)
+
+
+def early_xlsx_sheet(body, county, *, misspelled_randolph=False):
+    book = bounded_xlsx(body)
     try:
         if misspelled_randolph and (
                 "Table of Contents" not in book.sheetnames or not any(
@@ -176,6 +183,74 @@ def parse_early_units(body, year):
                 raise ValueError("Early Alabama workbook format changed")
             units[county], printed[county] = rows, footer
     return validate_units(units, year), printed
+
+
+def mixed_crosstab(rows, *, jefferson=False):
+    head = next(rows)
+    schema = ("Contest Title", "Party Code", "Candidate Name") if jefferson else ("Contest Title", "Party", "Candidate")
+    if tuple(head[:3]) != schema:
+        raise ValueError("Alabama mixed workbook crosstab headers changed")
+    end = max(i for i, value in enumerate(head) if value not in (None, "")) + 1
+    labels = head[3:end]
+    wanted = {"REGISTERED VOTERS - TOTAL", "BALLOTS CAST - TOTAL"}
+    evidence = {}
+    for row in rows:
+        key = str(row[0]).strip()
+        if key not in wanted:
+            continue
+        if (key in evidence or len(row) < end or any(v not in ("", None) for v in row[end:])
+                or str(row[1] or "").strip() or str(row[2]).strip().upper() != key):
+            raise ValueError("Ambiguous Alabama mixed workbook crosstab count row")
+        evidence[key] = row[3:end]
+    if evidence.keys() != wanted or any(not isinstance(label, str) or not label.strip() for label in labels):
+        raise ValueError("Alabama mixed workbook crosstab lacks ballot and registration bindings")
+    counts = evidence["BALLOTS CAST - TOTAL"]
+    registers = evidence["REGISTERED VOTERS - TOTAL"]
+    footer = None
+    if jefferson:
+        if labels[0] != "Total Of Registered Voters":
+            raise ValueError("Jefferson mixed workbook aggregate column changed")
+        footer = early_integer(counts[0])
+        labels, counts, registers = labels[1:], counts[1:], registers[1:]
+    units = [[label.strip(), early_integer(ballots), None if registered in (None, "") else early_integer(registered)]
+             for label, ballots, registered in zip(labels, counts, registers, strict=True)]
+    return units, footer
+
+
+def parse_mixed_units(body):
+    import xlrd
+
+    units, printed = {}, {}
+    with ZipFile(io.BytesIO(body)) as archive:
+        members = archive.infolist()
+        if len(members) != 67 or sum(item.file_size for item in members) > 10_000_000:
+            raise ValueError("Alabama mixed archive inventory changed")
+        for item in members:
+            name = re.fullmatch(r"(?:2014-General-)?([A-Za-z ._'-]+?)(?: 2014 General Precinct)?\.(xlsx|xls|csv)",
+                                item.filename)
+            county = COUNTY_KEYS.get(county_key(name[1])) if name else None
+            if county is None or county in units or not 0 < item.file_size <= 1_000_000:
+                raise ValueError("Unknown, oversized or repeated Alabama mixed county workbook")
+            if county in MIXED_HELD:
+                rows, footer = [], None
+            elif name[2] == "xlsx":
+                book = bounded_xlsx(archive.read(item))
+                try:
+                    if book.sheetnames != ["Precinct Results"]:
+                        raise ValueError("Alabama mixed county worksheet changed")
+                    rows, footer = mixed_crosstab(iter(book.worksheets[0].values))
+                finally:
+                    book.close()
+            elif county == "JEFFERSON" and name[2] == "xls":
+                book = xlrd.open_workbook(file_contents=archive.read(item), logfile=io.StringIO())
+                if book.sheet_names() != ["Jefferson_Crosstab"]:
+                    raise ValueError("Jefferson crosstab worksheet changed")
+                sheet = book.sheet_by_index(0)
+                rows, footer = mixed_crosstab((sheet.row_values(i) for i in range(sheet.nrows)), jefferson=True)
+            else:
+                raise ValueError("Alabama mixed county format changed")
+            units[county], printed[county] = rows, footer
+    return validate_units(units, 2014), printed
 
 
 def parse_units(body, year):
@@ -267,8 +342,8 @@ def parse(body, feed):
     if not 0 < len(body) <= 6_000_000:
         raise ValueError("Alabama archive source exceeds reviewed bounds")
     year = next(year for year, pair in FEEDS.items() if feed in pair)
-    if year in (2010, 2012) and feed == FEEDS[year][0]:
-        data, footer = parse_early_units(body, year)
+    if year in (2010, 2012, 2014) and feed == FEEDS[year][0]:
+        data, footer = parse_mixed_units(body) if year == 2014 else parse_early_units(body, year)
         return {"complete_native_query": data, "native_lines": None, "workbook_printed_totals": footer,
                 "participation_observation_qualified": False}
     if feed == FEEDS[year][0]:
@@ -381,7 +456,7 @@ def exports(entries):
 def export_tables(entries):
     units, controls = exports(entries)
     audit = []
-    for year in (2010, 2012):
+    for year in (2010, 2012, 2014):
         feed = FEEDS[year][0]
         archive = entries.get(feed) or {}
         if archive.get("status") not in {"reported", "retained_after_failure"} or archive.get("data") is None:
@@ -400,7 +475,8 @@ def export_tables(entries):
                     raise ValueError("Early Alabama workbook total without reporting units")
             delta = computed - native if native is not None else None
             audit.append({**row, "workbook_printed_ballots": native, "unit_sum_minus_workbook_printed": delta,
-                          "workbook_decision": "reporting_units_unavailable" if computed is None else
+                          "workbook_decision": ("county_format_not_qualified" if year == 2014 else
+                                                "reporting_units_unavailable") if computed is None else
                           "workbook_total_not_printed" if delta is None else
                           "workbook_internal_agreement" if delta == 0 else "workbook_internal_discrepancy"})
     return units, controls, audit
