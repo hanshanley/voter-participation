@@ -344,7 +344,8 @@ def test_literal_extracted_runtime_replay_hydrates_before_actual_producer_call(
                         lambda body, declaration: {"seed": True})
     observed = {}
 
-    def compile_runtime(snapshot, counts, native, seed, packet):
+    def compile_runtime(snapshot, counts, native, seed, packet, *, boundary_source_root):
+        assert boundary_source_root is None
         observed.update(snapshot=snapshot, counts=counts, native=native, seed=seed, packet=packet)
         return {
             "counts": {"index.json": b"after-counts"},
@@ -838,7 +839,7 @@ def publication(monkeypatch, tmp_path):
     monkeypatch.setattr(runtime, "seed_files", lambda _: {"manifest.json": b"safe"})
     monkeypatch.setattr(runtime, "select_seed", lambda *args: ({}, {}))
 
-    def compile_snapshot(*args):
+    def compile_snapshot(*args, **kwargs):
         publisher.compilations += 1
         return {"counts": {"index.json": b'{"changed":true}\n'},
                 "native": {"index.json": b"{}\n"}, "estimates": {"house_sources": {}},

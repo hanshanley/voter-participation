@@ -3,6 +3,7 @@ import gzip
 import io
 import json
 from pathlib import Path
+import sqlite3
 import zipfile
 
 import pytest
@@ -51,6 +52,35 @@ def test_regional_copies_are_verified_not_added_or_assumed_consistent():
     assert result["01"]["03"]["blocks"] == 1
     with pytest.raises(ValueError, match="Regional Census BEF"):
         geography.archive_membership(archive("GEOID,CDFP\n010010201001000,04\n"), 119)
+
+
+def test_block_changes_preserve_transfers_unassigned_missing_and_equal_net_movement():
+    past = b"GEOID,CDFP\n010010201001002,01\n010010201001000,01\n010010201001001,02\n"
+    current = (b"GEOID,STATEFP,COUNTYFP,TRACTCE,BLOCKCE,CDFP\n"
+               b"010010201001003,01,001,020100,1003,01\n"
+               b"010010201001002,01,001,020100,1002,ZZ\n"
+               b"010010201001001,01,001,020100,1001,01\n")
+    districts = {f"AL-{code}": {"state_fips": "01", "district_code": code,
+                                "previous_membership": {"blocks": before},
+                                "current_membership": {"blocks": after},
+                                "whole_block_membership_equal": False,
+                                "affected_split_blocks": []}
+                 for code, before, after in (("01", 2, 2), ("02", 1, 0))}
+    with sqlite3.connect(":memory:") as database:
+        rows = list(geography.block_changes(io.BytesIO(past), io.BytesIO(current), database))
+    blocks, counties, summary = geography.CHANGE_FILES
+    result = geography.change_tables({"decisions": districts}, rows)
+    assert result[blocks][1] == [
+        ("010010201001000", "01001", "01", None),
+        ("010010201001001", "01001", "02", "01"),
+        ("010010201001002", "01001", "01", "ZZ"),
+        ("010010201001003", "01001", None, "01"),
+    ]
+    assert result[counties][1] == [("01001", "", "01", 1), ("01001", "01", "", 1),
+                                  ("01001", "01", "ZZ", 1), ("01001", "02", "01", 1)]
+    assert result[summary][1] == [("AL-01", 2, 2, 2, 2, 0, 0), ("AL-02", 1, 0, 0, 1, 0, 0)]
+    with pytest.raises(ValueError, match="inventory does not reconcile"):
+        geography.change_tables({"decisions": districts}, rows[:-1])
 
 
 def test_complete_review_reconciles_real_split_tables_and_corrected_missouri(reviewed):

@@ -542,7 +542,7 @@ def hydrate_granular_sources(snapshot, source_packet):
     return hydrated
 
 
-def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None):
+def compile_runtime(snapshot, count_files, native_files, seed, source_packet=None, *, boundary_source_root=None):
     from scripts import philadelphia_divisions, results_pa_vote_history, results_turnout_history as turnout_history
     from scripts.automatic_estimates import _artifact, build, render_artifacts
     from scripts.automatic_native_refresh import refresh
@@ -698,7 +698,8 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         release = build_release(snapshot, updated, seed, estimates, changes,
                                 congressional_races=congressional.get("races"),
                                 congressional_states=congressional.get("house_states"),
-                                congressional_comparisons=artifacts.get("congressional/congress-comparisons.csv"))
+                                congressional_comparisons=artifacts.get("congressional/congress-comparisons.csv"),
+                                boundary_source_root=boundary_source_root)
         artifacts.update(release["files"])
         estimates["house_sources"]["supported_release"] = release["descriptor"]
         result["release_review"] = seed["supported_release_review"]
@@ -849,6 +850,13 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
             f"PYTHONPATH=code python{python_version} -m scripts.cps_published_state_tables "
             f"inputs/{CPS_INPUT} reproduced-cps.csv\n"
         ).encode()
+    if "queries/model-queries/release/house-boundary-changed-blocks.csv.gz" in members:
+        members["REPRODUCE.txt"] += (
+            "\nThe House boundary CSVs describe block assignments, not populations or votes. "
+            "Blank district codes mean a block is missing from that edition; ZZ is a literal Census code. "
+            "Split-block counts are source flags, separate from reviewed geometry decisions. "
+            "The main replay regenerates all three tables from the included national Census files.\n"
+        ).encode()
     if "inputs/reviewed-congressional-sources/data/results-intake/district-splits/20261118-01/review.json" in members:
         members["REPRODUCE.txt"] += (
             "\nSeparate split-geometry evidence reproduction uses the project's existing\n"
@@ -930,9 +938,12 @@ def replay(package, output):
         seed["md_retained_history"] = (package / "inputs" / MD_ARCHIVE_MEMBER).read_bytes()
     if "inputs/" + retained_bulk_turnout.MEMBER in manifest:
         seed["retained_bulk_turnout"] = (package / "inputs" / retained_bulk_turnout.MEMBER).read_bytes()
+    boundary_source_root = None
     if "inputs/congressional-analytical-review.json" in manifest:
         seed["congressional_analytical_review"] = read(package / "inputs/congressional-analytical-review.json")
         boundaries = seed["congressional_analytical_review"].get("house_boundaries") or {}
+        if boundaries:
+            boundary_source_root = package / "inputs/reviewed-congressional-sources"
         if "split_geometry_review" in boundaries:
             from scripts.congressional_geography import load_review as load_boundaries
             if load_boundaries(package / "inputs/reviewed-congressional-sources") != boundaries:
@@ -967,7 +978,8 @@ def replay(package, output):
         read(package / "inputs/snapshot.json"), source_packet)
     with offline() as attempts:
         compiled = compile_runtime(
-            snapshot, files("before-counts"), files("before-native"), seed, source_packet)
+            snapshot, files("before-counts"), files("before-native"), seed, source_packet,
+            boundary_source_root=boundary_source_root)
     outputs = {}
     for role in ("counts", "native", "model_files"):
         label = {"counts": "after-counts", "native": "after-native",
@@ -1233,7 +1245,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         seed["protected_official_house_review"] = protected_review
     runtime_snapshot = hydrate_granular_sources(snapshot, source["complete-results.zip"])
     compiled = compile_runtime(
-        runtime_snapshot, counts, native, seed, source["complete-results.zip"])
+        runtime_snapshot, counts, native, seed, source["complete-results.zip"],
+        boundary_source_root=ROOT if (analytical_review or {}).get("house_boundaries") else None)
     packet = scientific_package(snapshot, source["complete-results.zip"], counts, native, seed_inputs, compiled)
     version = digest(encoded({"input_results_version": pointer["version"],
         "packet": pin(packet), "counts": {name: pin(body) for name, body in compiled["counts"].items()},

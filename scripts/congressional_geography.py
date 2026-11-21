@@ -1,6 +1,7 @@
 """Reproduce comparison-specific House boundary decisions from complete Census BEFs."""
 
 import argparse
+from collections import Counter
 import csv
 import gzip
 import hashlib
@@ -43,10 +44,33 @@ def source_url(congress, name):
             + str(year) + "/" + str(congress) + "-congressional-district-befs/" + name)
 
 
-def membership(stream, congress):
-    """Order-independent exact membership; duplicate blocks fail, including identical copies."""
+def block_rows(stream, congress):
     header = (["GEOID", "CDFP"] if congress == 119 else
               ["GEOID", "STATEFP", "COUNTYFP", "TRACTCE", "BLOCKCE", "CDFP"])
+    reader = csv.reader(io.TextIOWrapper(stream, encoding="ascii", newline=""))
+    require(next(reader, None) == header, "Census BEF schema differs")
+    for row in reader:
+        require(len(row) == len(header), "Incomplete Census BEF row")
+        geoid, district = row[0], row[-1]
+        require(re.fullmatch(r"[0-9]{15}", geoid) is not None
+                and re.fullmatch(r"(?:[0-9]{2}|ZZ)", district) is not None,
+                "Invalid literal Census block or district")
+        if congress == 120:
+            require("".join(row[1:5]) == geoid,
+                    "Census geographic components differ from GEOID")
+        yield int(geoid), district
+
+
+def insert_blocks(database, table, stream, congress):
+    database.execute(f"CREATE TABLE {table} (geoid INTEGER PRIMARY KEY, district TEXT NOT NULL)")
+    try:
+        database.executemany(f"INSERT INTO {table} VALUES (?,?)", block_rows(stream, congress))
+    except sqlite3.IntegrityError as error:
+        raise ValueError("Duplicate Census block identity") from error
+
+
+def membership(stream, congress):
+    """Order-independent exact membership; duplicate blocks fail, including identical copies."""
     result = {}
     with tempfile.TemporaryDirectory(prefix="congress-bef-") as scratch:
         database = sqlite3.connect(str(Path(scratch) / "blocks.sqlite3"))
@@ -54,24 +78,7 @@ def membership(stream, congress):
             database.execute("PRAGMA journal_mode=OFF")
             database.execute("PRAGMA synchronous=OFF")
             database.execute("PRAGMA cache_size=-8192")
-            database.execute("CREATE TABLE blocks (geoid INTEGER PRIMARY KEY, district TEXT NOT NULL)")
-            reader = csv.DictReader(io.TextIOWrapper(stream, encoding="ascii", newline=""))
-            require(reader.fieldnames == header, "Census BEF schema differs")
-            for row in reader:
-                geoid, district = row.get("GEOID", ""), row.get("CDFP", "")
-                require(set(row) == set(header) and all(value is not None for value in row.values()),
-                        "Incomplete Census BEF row")
-                require(re.fullmatch(r"[0-9]{15}", geoid) is not None
-                        and re.fullmatch(r"(?:[0-9]{2}|ZZ)", district) is not None,
-                        "Invalid literal Census block or district")
-                if congress == 120:
-                    require("".join(row[key] for key in
-                                    ("STATEFP", "COUNTYFP", "TRACTCE", "BLOCKCE")) == geoid,
-                            "Census geographic components differ from GEOID")
-                try:
-                    database.execute("INSERT INTO blocks VALUES (?,?)", (int(geoid), district))
-                except sqlite3.IntegrityError as error:
-                    raise ValueError("Duplicate Census block identity") from error
+            insert_blocks(database, "blocks", stream, congress)
             database.commit()
             for block, district in database.execute("SELECT geoid,district FROM blocks ORDER BY geoid"):
                 geoid = f"{block:015d}"
@@ -84,6 +91,90 @@ def membership(stream, congress):
     require(bool(result), "Empty Census BEF")
     return {state: {district: {"blocks": value["blocks"], "sha256": value["sha"].hexdigest()}
                     for district, value in districts.items()} for state, districts in result.items()}
+
+
+def block_changes(past, current, database):
+    insert_blocks(database, "past", past, 119)
+    insert_blocks(database, "current", current, 120)
+    return database.execute("""
+        SELECT p.geoid, p.district, c.district FROM past p
+        LEFT JOIN current c USING (geoid) WHERE p.district IS NOT c.district
+        UNION ALL
+        SELECT c.geoid, NULL, c.district FROM current c
+        LEFT JOIN past p USING (geoid) WHERE p.geoid IS NULL
+        ORDER BY 1
+    """)
+
+
+CHANGE_FILES = ("house-boundary-changed-blocks.csv", "house-boundary-county-exchanges.csv",
+                "house-boundary-district-changes.csv")
+
+
+def change_tables(review, differences):
+    """Geographic inventory only, not a population or vote crosswalk."""
+    blocks, county_counts, incoming, outgoing = [], Counter(), Counter(), Counter()
+    districts = {(row["state_fips"], row["district_code"]): key
+                 for key, row in review["decisions"].items()}
+    for block, past, current in differences:
+        geoid = f"{block:015d}"
+        state_fips, county = geoid[:2], geoid[:5]
+        before, after = districts.get((state_fips, past)), districts.get((state_fips, current))
+        if before is None and after is None:
+            continue
+        if before is not None:
+            outgoing[before] += 1
+        if after is not None:
+            incoming[after] += 1
+        blocks.append((geoid, county, past, current))
+        county_counts[(county, past or "", current or "")] += 1
+    district_rows = []
+    for key, decision in sorted(review["decisions"].items()):
+        before, after = (decision[field]["blocks"] for field in ("previous_membership", "current_membership"))
+        gained, lost = incoming[key], outgoing[key]
+        require(before + gained - lost == after and lost <= before and gained <= after
+                and (gained == lost == 0) == decision["whole_block_membership_equal"],
+                "Changed-block inventory does not reconcile for " + key)
+        district_rows.append((key, before, after, gained, lost, before - lost,
+                              len(decision["affected_split_blocks"])))
+    return {
+        CHANGE_FILES[0]: (("geoid_2020", "county_fips", "cd119_code", "cd120_code"), blocks),
+        CHANGE_FILES[1]: (("county_fips", "cd119_code", "cd120_code", "blocks"),
+                          [(*key, count) for key, count in sorted(county_counts.items())]),
+        CHANGE_FILES[2]: (("district", "cd119_blocks", "cd120_blocks", "blocks_gained", "blocks_lost",
+                           "blocks_unchanged", "affected_split_blocks"), district_rows),
+    }
+
+
+def export_changes(originals, review):
+    for congress in (119, 120):
+        name = f"cd{congress}.zip"
+        require({**pin(originals[name]), "url": source_url(congress, name)} == review["evidence"][name],
+                "Changed original Census evidence")
+    with (tempfile.TemporaryDirectory(prefix="congress-bef-diff-") as scratch,
+          zipfile.ZipFile(io.BytesIO(originals["cd119.zip"])) as a,
+          zipfile.ZipFile(io.BytesIO(originals["cd120.zip"])) as b,
+          a.open("NationalCD119.txt") as past, b.open("NationalCD120.txt") as current):
+        database = sqlite3.connect(str(Path(scratch) / "blocks.sqlite3"))
+        try:
+            database.execute("PRAGMA journal_mode=OFF")
+            database.execute("PRAGMA synchronous=OFF")
+            tables = change_tables(review, block_changes(past, current, database))
+        finally:
+            database.close()
+    outputs = {}
+    for name, (header, rows) in tables.items():
+        buffer = io.StringIO(newline="")
+        writer = csv.writer(buffer, lineterminator="\n")
+        writer.writerow(header)
+        writer.writerows(rows)
+        outputs[name] = buffer.getvalue().encode("ascii")
+    return outputs
+
+
+def load_changes(root, review):
+    source_dir = Path(root) / DIRECTORY
+    return export_changes({name: (source_dir / name).read_bytes() for name in ("cd119.zip", "cd120.zip")},
+                          review)
 
 
 def archive_membership(body, congress):
@@ -252,8 +343,21 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--originals", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--changes-only", action="store_true",
+                        help="Reconcile and export changes against the existing pinned review in --originals")
     args = parser.parse_args(argv)
     require(not args.output.exists(), "Use a new boundary review output directory")
+    if args.changes_only:
+        review = json.loads(gzip.decompress((args.originals / "review.json.gz").read_bytes()))
+        require(pin(encoded(review))["sha256"] == REVIEW_SHA256, "Changed reviewed House boundary policy")
+        validate_review(review)
+        originals = {name: (args.originals / name).read_bytes() for name in ("cd119.zip", "cd120.zip")}
+        changes = export_changes(originals, review)
+        args.output.mkdir(parents=True)
+        for name, body in changes.items():
+            (args.output / name).write_bytes(body)
+        print(json.dumps({name: body.count(b"\n") - 1 for name, body in changes.items()}))
+        return
     originals = {name: (args.originals / name).read_bytes() for name in NAMES}
     review = validate_review(compile_review(originals))
     args.output.mkdir(parents=True)

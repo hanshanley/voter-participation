@@ -629,7 +629,7 @@ def house_model_guard_matrix(decisions):
 
 
 def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None,
-          congressional_states=None, congressional_comparisons=None):
+          congressional_states=None, congressional_comparisons=None, boundary_source_root=None):
     from scripts import cps_archived_state_tables as archived_cps
     from scripts import cps_published_state_tables as published_cps
     from scripts import eac_county_turnout, nm_turnout_export, results_indiana_turnout, results_nc_vote_history, results_turnout_history
@@ -682,6 +682,11 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
               for row in estimates["participation"]["automatic_update"]["decisions"]),
         ]),
     }
+    if boundary_source_root is not None:
+        from scripts.congressional_geography import load_changes
+
+        raw_files.update(load_changes(boundary_source_root,
+                                      seed["congressional_analytical_review"]["house_boundaries"]))
     senate_support = []
     if congressional_comparisons and (archive := seed.get("senate_survey_archive")):
         from scripts.senate_survey_support import CSV, published_rows

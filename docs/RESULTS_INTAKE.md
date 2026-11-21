@@ -673,6 +673,27 @@ cmp reproduced-split-review.json \
   inputs/reviewed-congressional-sources/data/results-intake/district-splits/20261118-01/review.json
 ```
 
+  The automatic complete download also includes three numerical geography queries
+  under `queries/model-queries/release/`: `house-boundary-changed-blocks.csv.gz`,
+  `house-boundary-county-exchanges.csv.gz`, and `house-boundary-district-changes.csv.gz`.
+  They retain exact changed block assignments, summarize them by county and
+  old/new district pair, and reconcile every district's gains and losses against
+  both pinned Census files. A zero net change does not imply the same membership.
+  A blank district code indicates an absent block record rather than a literal
+  Census code. Counted blocks are not people or votes, and the split-block count
+  is a flag from the original split lists, not an additional assignment or a
+  qualification decision. No comparison or turnout observation is promoted by
+  these queries.
+
+  The normal complete-package replay regenerates all three tables offline. To
+  extract the tables alone from the repository's existing pins:
+
+  ```sh
+  python3 -m scripts.congressional_geography --changes-only \
+    --originals data/results-intake/district-boundaries/20261117-01 \
+    --output /tmp/house-boundary-queries
+  ```
+
 Recorded-results intake accepts newly advertised candidates or aggregate Other
 categories only with a newer native count version and every previously known
 candidate identity retained. Removed candidates, changed names/parties, lost
