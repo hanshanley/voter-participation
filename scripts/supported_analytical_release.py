@@ -411,17 +411,11 @@ def attach_district_map_decisions(districts, congressional_races):
 
 def change_effects(changes, records, selected_observation_ids=None):
     by_id = {row["observation_id"]: row for row in records}
-    result = []
-    for change in changes:
-        identity = change.get("id") or change.get("observation_id")
-        row = by_id.get(identity)
-        if row is None:
-            continue
+    result, represented = [], set()
+
+    def effect(identity, row, refreshed, count_changed):
         state_level = row["geography_level"] == "state"
-        refreshed = (selected_observation_ids is None or identity in selected_observation_ids
-                     ) and change.get("source_status", "reported") == "reported"
-        count_changed = change.get("previous") != change.get("current")
-        result.append({
+        return {
             "observation_id": identity, "state_code": row["state_code"],
             "source_capture_refreshed": refreshed,
             "numerical_count_changed": count_changed,
@@ -439,7 +433,19 @@ def change_effects(changes, records, selected_observation_ids=None):
                 "This is a local/reporting-unit count, not the statewide registered frame of R*p "
                 "and not a matched demographic/cohort joint choice-and-participation table."),
             "rate_basis": row["denominator_basis"], "source_count_clock": row["source_count_clock"],
-        })
+        }
+
+    for change in changes:
+        identity = change.get("id") or change.get("observation_id")
+        if (row := by_id.get(identity)) is None:
+            continue
+        refreshed = ((selected_observation_ids is None or identity in selected_observation_ids)
+                     and change.get("source_status", "reported") == "reported")
+        result.append(effect(identity, row, refreshed, change.get("previous") != change.get("current")))
+        represented.add(identity)
+    if selected_observation_ids is not None:
+        result.extend(effect(identity, by_id[identity], False, False)
+                      for identity in sorted(by_id.keys() - represented))
     return result
 
 

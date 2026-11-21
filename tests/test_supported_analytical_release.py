@@ -282,6 +282,31 @@ def test_statewide_only_refresh_does_not_refresh_reused_local_observations():
     assert release.selected_local_observation_ids(snapshot) is None
 
 
+def test_export_only_scope_preserves_observations_without_projected_changes():
+    from scripts.louisiana_group_history import FEEDS
+
+    feed = next(iter(FEEDS))
+    snapshot = {"collection_scope": {"mode": "selected_registered_source_refresh", "source_ids": [feed]},
+                "granular_sources": {feed: {"status": "reported"}}}
+    selected = release.selected_local_observation_ids(snapshot)
+    assert selected == set()
+    county = {"observation_id": "county", "state_code": "NJ", "geography_level": "county",
+              "compatible_source_fraction_pct": 55.19, "denominator_basis": "native_registered_voters",
+              "source_count_clock": "11/12/2026 03:34PM"}
+    state = {**county, "observation_id": "state", "geography_level": "state",
+             "compatible_source_fraction_pct": None}
+    rows = release.change_effects([], [state, county], selected)
+    assert [row["observation_id"] for row in rows] == ["county", "state"]
+    assert [row["compatible_participation_rate_available"] for row in rows] == [True, False]
+    assert rows[0]["source_count_clock"] == county["source_count_clock"]
+    assert all(not row[key] for row in rows for key in ("source_capture_refreshed", "numerical_count_changed",
+                                                       "compatible_participation_rate_updated"))
+    changed = release.change_effects([{"id": "county", "previous": 1, "current": 2}], [state, county], {"county"})
+    assert [row["observation_id"] for row in changed] == ["county", "state"]
+    assert changed[0]["source_capture_refreshed"] and changed[0]["numerical_count_changed"]
+    assert not changed[1]["source_capture_refreshed"]
+
+
 def test_official_candidate_refresh_is_not_mislabeled_as_local_participation():
     from scripts.results_official_congress import CONTRACT, IDENTITY
 
