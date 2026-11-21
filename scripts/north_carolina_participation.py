@@ -31,6 +31,15 @@ CONTROLS = {
     year: f"https://www.ncsbe.gov/results-data/voter-turnout/{year}-general-election-turnout"
     for year in (2022, 2024)
 }
+GROUP_LABELS = {
+    "race": ("A", "B", "I", "M", "O", "P", "U", "W"),
+    "ethnicity": ("HL", "NL", "UN"),
+}
+PUBLISHED_LABELS = {
+    "race": ("Asian", "Black or African American", "American Indian or Alaska Native", "Two or More Races",
+             "Other", "Native Hawaiian or Pacific Islander", "Undesignated", "White"),
+    "ethnicity": ("Hispanic or Latino", "Not Hispanic or Latino", "Undesignated"),
+}
 
 
 def extract(body, kind, election):
@@ -102,26 +111,49 @@ def extract(body, kind, election):
     }
 
 
-def age_control(body, year):
-    title = f"Table 3: North Carolina Voter Turnout by Age Group in the {year} General Election"
-    matches = [rows for caption, rows in html_tables(body, with_captions=True) if caption == title]
-    labels = ("Age 18\u201325", "Age 26\u201340", "Age 41\u201365", "Age 66+")
-    if (len(matches) != 1 or [row[0] for row in matches[0]] != ["Age Group", *labels]
-            or matches[0][0] != ("Age Group", "Voters Who Voted", "Turnout (%)")):
-        raise ValueError("NC published age control has changed schema")
+def _published_control(tables, year, number, dimension, labels, codes):
+    title = f"Table {number}: North Carolina Voter Turnout by {dimension} in the {year} General Election"
+    matches = [rows for caption, rows in tables if caption == title]
+    if (len(matches) != 1 or any(len(row) != 3 for row in matches[0])
+            or [row[0] for row in matches[0]] != [dimension, *labels]
+            or matches[0][0] != (dimension, "Voters Who Voted", "Turnout (%)")):
+        raise ValueError(f"NC published {dimension} control has changed schema")
     result = {}
-    for age, (_, n, percent) in zip(AGES, matches[0][1:], strict=True):
-        if not re.fullmatch(r"[0-9][0-9,]*", n) or not re.fullmatch(r"\d{1,3}\.\d%", percent):
-            raise ValueError("NC age control count or percentage changed format")
-        result[age] = [count(n.replace(",", "")), int(percent[:-1].replace(".", ""))]
+    for code, (_, n, percent) in zip(codes, matches[0][1:], strict=True):
+        if not re.fullmatch(r"[0-9][0-9,]*", n) or not re.fullmatch(r"\d{1,3}(?:\.\d)?%", percent):
+            raise ValueError(f"NC {dimension} control count or percentage changed format")
+        places = int("." in percent)
+        if dimension == "Age Group" and places != 1:
+            raise ValueError("NC age control is not printed to one decimal place")
+        result[code] = [count(n.replace(",", "")), int(percent[:-1].replace(".", ""))]
+        if dimension != "Age Group":
+            result[code].append(places)
     return result
+
+
+def age_control(body, year):
+    return _published_control(html_tables(body, with_captions=True), year, 3, "Age Group",
+                              ("Age 18\u201325", "Age 26\u201340", "Age 41\u201365", "Age 66+"), AGES)
+
+
+def demographic_control(body, year):
+    tables = html_tables(body, with_captions=True)
+    return {dimension: _published_control(tables, year, number, dimension.title(),
+                                           PUBLISHED_LABELS[dimension], GROUP_LABELS[dimension])
+            for number, dimension in ((4, "race"), (5, "ethnicity"))}
+
+
+def published_controls(body, year):
+    return {"facts": age_control(body, year), "group_facts": demographic_control(body, year)}
 
 
 def collect(collector, feed, *, reuse_checked_week=False):
     election = FEEDS[feed]
+    prior = (collector.prior.get(feed) or {}).get("data") or {}
+    if election.year in CONTROLS and "group_facts" not in (prior.get("age_control") or {}):
+        reuse_checked_week = False
 
     def parse(index, _):
-        prior = (collector.prior.get(feed) or {}).get("data") or {}
         pair = {}
         for kind, catalog in CATALOGS.items():
             path = report_url(kind, election)
@@ -142,8 +174,9 @@ def collect(collector, feed, *, reuse_checked_week=False):
         control = None
         if url := CONTROLS.get(election.year):
             body, _ = collector.acquire(url)
-            control = {"source": {"url": url, **pin(body)}, "facts": age_control(body, election.year)}
-            if (previous := prior.get("age_control")) and control["facts"] == previous["facts"]:
+            control = {"source": {"url": url, **pin(body)}, **published_controls(body, election.year)}
+            if (previous := prior.get("age_control")) and all(
+                    control[key] == previous.get(key) for key in ("facts", "group_facts")):
                 control = previous
         return {"election_date": election.isoformat(), "pair": pair, "age_control": control,
                 "participation_observation_qualified": False}
@@ -159,8 +192,9 @@ def reviewed_age_rate(voted, registered, published):
         return None, "published_history_count_differs"
     if not registered or not 0 < voted <= registered:
         return None, "incompatible_registration_count"
-    # Exact half-up rounding to the one decimal place displayed by NCSBE.
-    if (voted * 2000 + registered) // (2 * registered) != published[1]:
+    # Compare at the precision actually printed by NCSBE.
+    places = published[2] if len(published) == 3 else 1
+    if (voted * 200 * 10**places + registered) // (2 * registered) != published[1]:
         return None, "published_age_rate_differs"
     return 100 * voted / registered, None
 
@@ -197,14 +231,21 @@ def exports(entries):
         for dimension in FIELDS:
             h, v = (source["groups"][dimension] for source in (history, voter))
             for label in sorted(h.keys() | v.keys()):
-                published = control["facts"].get(label) if control and dimension == "age" else None
+                published = ((control["facts"] if dimension == "age"
+                              else control.get("group_facts", {}).get(dimension, {})).get(label)
+                             if control else None)
                 rate, hold = reviewed_age_rate(h.get(label), v.get(label), published)
+                if dimension != "age" and hold == "published_age_rate_differs":
+                    hold = "published_group_rate_differs"
+                places = (published[2] if len(published) == 3 else 1) if published else None
                 group_rows.append({
                     **context, "dimension": dimension, "native_group": label,
                     "voters_with_history": h.get(label), "registered_voter_statistics": v.get(label),
-                    "source_defined_rate_pct": rate, "rate_hold": hold if dimension == "age" else "no_group_rate_control",
+                    "source_defined_rate_pct": rate,
+                    "rate_hold": hold if dimension == "age" or published else "no_group_rate_control",
                     "published_control_count": published[0] if published else None,
-                    "published_control_rate_pct": published[1] / 10 if published else None,
+                    "published_control_rate_pct": published[1] / 10**places if published else None,
+                    "published_control_decimal_places": places,
                     "published_control_url": control["source"]["url"] if published else None,
                     "published_control_sha256": control["source"]["sha256"] if published else None,
                 })

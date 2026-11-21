@@ -9,6 +9,8 @@ def test_published_age_control_rejects_a_one_credit_difference_and_wrong_denomin
     assert nc.reviewed_age_rate(629299, 1841623, [629298, 342]) == (None, "published_history_count_differs")
     assert nc.reviewed_age_rate(233441, 900000, [233441, 241]) == (None, "published_age_rate_differs")
     assert nc.reviewed_age_rate(233441, 968290, [233441, 241]) == (23344100 / 968290, None)
+    assert nc.reviewed_age_rate(2796509, 4820870, [2796509, 58, 0]) == (279650900 / 4820870, None)
+    assert nc.reviewed_age_rate(45352, 116174, [45352, 391, 1]) == (None, "published_age_rate_differs")
 
 
 def test_paired_bulk_capture_accepts_both_revision_directions_and_retains_on_failure(tmp_path):

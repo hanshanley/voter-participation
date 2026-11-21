@@ -112,9 +112,15 @@ def original_reports(entries):
                        partial(nc.extract, kind=kind, election=election), report["facts"])
             if (control := data["age_control"]) is not None:
                 source = control["source"]
-                yield (f"{feed}-age-control", source, ".html", 2_000_000,
-                       source["url"] == nc.CONTROLS.get(election.year),
-                       partial(nc.age_control, year=election.year), control["facts"])
+                if "group_facts" in control:
+                    yield (f"{feed}-demographic-control", source, ".html", 2_000_000,
+                           source["url"] == nc.CONTROLS.get(election.year),
+                           partial(nc.published_controls, year=election.year),
+                           {field: control[field] for field in ("facts", "group_facts")})
+                else:
+                    yield (f"{feed}-age-control", source, ".html", 2_000_000,
+                           source["url"] == nc.CONTROLS.get(election.year),
+                           partial(nc.age_control, year=election.year), control["facts"])
     for feed, year in age.YEARS.items():
         entry = entries.get(feed) or {}
         if entry.get("data") is not None:

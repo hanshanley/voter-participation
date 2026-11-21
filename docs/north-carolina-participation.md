@@ -16,13 +16,15 @@ The exports are separate from physical ballot counts and congressional returns:
 | `participation-nc-general-state-groups.csv.gz` | Each election statewide by one dimension at a time: age, race, ethnicity or sex. Native categories, including blank codes, are preserved. Missing categories are not filled with zero. |
 | `participation-nc-general-native-precincts.csv.gz` | Union of the two native county/precinct rosters for each election; credits, registrations, VTD code inventories and hold reasons. No rates, polygon joins, or allocation of nongeographic records. |
 
-The displayed age fraction is `100 × voter-history credits / registrations in
-that source age group`. It is available only when the exact voter-history count
-and the computed one-decimal fraction both match the NCSBE [2022][age22] or
-[2024][age24] age table. The other age fractions and all other demographics'
-fractions are held. The 2022 age 26–40 archive count is 629,299, whereas the
-published age table has 629,298; the native count is retained and its fraction
-is withheld. The 2016 and 2018 registration archives do not print their
+The displayed group fraction is `100 × voter-history credits / registrations
+in that source group`. It is available only when the exact credit count and
+the rate at the printed precision both match the NCSBE [2022][age22] or
+[2024][age24] statewide age, race, or ethnicity table. The race and ethnicity
+labels follow the [official codebook][layout]; the CSV keeps the native codes.
+No sex, county, or precinct rate is calculated. For example, the 2022 age
+26–40 archive count is 629,299, whereas the published age table has 629,298;
+the archive count is retained and its rate is withheld. The 2016 and 2018
+registration archives do not print their
 native update date; that field stays blank. None of these statistics
 establishes eligibility-population turnout, certified ballots, or vote choice.
 The 2008 and 2010 registration layouts have no VTD field. The 2012 and 2014
@@ -51,3 +53,4 @@ from the extracted nested source ZIP. Neither replay command acquires sources.
 [registration]: https://www.ncsbe.gov/results-data/voter-registration-data
 [age22]: https://www.ncsbe.gov/results-data/voter-turnout/2022-general-election-turnout
 [age24]: https://www.ncsbe.gov/results-data/voter-turnout/2024-general-election-turnout
+[layout]: https://s3.amazonaws.com/dl.ncsbe.gov/ENRS/layout_history_stats.txt
