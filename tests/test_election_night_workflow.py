@@ -325,5 +325,6 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         *(f"CO-{year}-general-voting-statistics" for year in (1992, 1996, *range(2000, 2025, 2))),
         "CA-2026-general-election-turnout-pdf",
         "ME-bath-municipal-turnout", "ME-buxton-town-turnout", "NH-bedford-municipal-turnout",
-        "NH-hanover-municipal-turnout", "NH-hollis-municipal-turnout", town,
+        "NH-hanover-municipal-turnout", "NH-hollis-municipal-turnout", "NH-chesterfield-municipal-turnout",
+        "NH-hampton-municipal-turnout", "NH-winchester-municipal-turnout", town,
     }

@@ -169,12 +169,14 @@ class VotingWorksTown:
     document_slug: Optional[str]
     election_id: str
     timestamped_slug: bool = False
+    scanned: bool = False
 
     def permits_report(self, url):
         authority, candidate = urlsplit(self.index), urlsplit(url)
         path = r"/DocumentCenter/View/[1-9][0-9]*"
         if self.document_slug is None:
-            if self.timestamped_slug or self.link_label != f"November 3, {CURRENT_YEAR} General Election":
+            if self.timestamped_slug or self.link_label not in {
+                    f"November 3, {CURRENT_YEAR} General Election", f"{CURRENT_YEAR} NH General Election Results (PDF)"}:
                 return False
         else:
             path += "/" + re.escape(self.document_slug)
@@ -197,6 +199,18 @@ VOTINGWORKS_TOWNS = {
         "NH-hanover-municipal-turnout", "Hanover", "3333860",
         "https://hanovernh.org/359/Voting-Information", "November 3, 2026 General Election",
         None, "9b5c84a-d362699"),
+    "NH-chesterfield-municipal-turnout": VotingWorksTown(
+        "NH-chesterfield-municipal-turnout", "Chesterfield", "3312260",
+        "https://www.chesterfield.nh.gov/263/Elections-Voting", "2026 NH General Election Results (PDF)",
+        None, "49ce1b0-8872484", scanned=True),
+    "NH-hampton-municipal-turnout": VotingWorksTown(
+        "NH-hampton-municipal-turnout", "Hampton", "3333060",
+        "https://www.hamptonnh.gov/m/newsflash/Home/Detail/1453", "View Election Results",
+        "2026-General-Election-PDF", "080271d-8a2e8f5", scanned=True),
+    "NH-winchester-municipal-turnout": VotingWorksTown(
+        "NH-winchester-municipal-turnout", "Winchester", "3385540",
+        "https://winchester-nh.gov/", "Nov 3 2026 Election Results",
+        "Nov-3-2026-Election-Results", "6536cf8-4140841", scanned=True),
 }
 
 BATH_INDEX = "https://www.cityofbathmaine.gov/Departments/City-Clerk/Elections/Past-Election-Results"
@@ -1534,14 +1548,73 @@ def votingworks_controls(data, town, report_url):
     return tuple(values), generated
 
 
-def votingworks_report(body, town, report_url):
+VOTINGWORKS_ROLES = ("Ballot Count", "Scanned", "Manually Entered")
+VOTINGWORKS_COUNT = r"(?:0|[1-9]\d{0,2}(?:,\d{3})*|[1-9]\d{3,})"
+
+
+def votingworks_scan_evidence(view):
+    lines = view["text"].splitlines()
+    fields = []
+    for role in VOTINGWORKS_ROLES:
+        cells = [row[1] for row in view["role_cells"] if len(row) >= 2
+                 and row[0]["text"].replace(" ", "") == role.replace(" ", "")]
+        if len(cells) != 1 or not re.fullmatch(VOTINGWORKS_COUNT, cells[0]["text"], re.ASCII):
+            raise ValueError(f"Ambiguous VotingWorks scan role: {role}")
+        fields.append([cells[0]["text"], cells[0]["confidence"] >= .98])
+    return {"receipt": view["receipt"], "header": lines[:3], "fields": fields,
+            "controls": re.findall(rf"Ballots\s*Cast ({VOTINGWORKS_COUNT}) ({VOTINGWORKS_COUNT}) "
+                                   rf"({VOTINGWORKS_COUNT})(?![\d,])", view["text"], re.ASCII)}
+
+
+def votingworks_scan_query(evidence, town):
+    if len(evidence) != 2:
+        raise ValueError("VotingWorks scan requires two renders")
+    queries = []
+    for view, dpi in zip(evidence, (180, 240), strict=True):
+        title, election, meta = view["header"]
+        election = "".join(election.split())
+        meta = "".join(meta.split())
+        date = re.fullmatch(
+            r"ReportGenerated:(Nov3,2026,\d{1,2}:\d\d:\d\d[AP]M)1?ElectionID:([a-f0-9]{7}-[a-f0-9]{7})", meta)
+        if (view["receipt"]["dpi"] != dpi or view["receipt"]["page"] != 1 or not date
+                or not re.fullmatch(r"Official Tally Report [\W\d]*VotingWorks", title, re.IGNORECASE)
+                or election != f"GeneralElection,Nov3,2026,{town.replace(' ', '')},NH"):
+            raise ValueError("VotingWorks scan authority, election or render changed")
+        generated = datetime.strptime(date[1], "%b%d,%Y,%I:%M:%S%p").strftime("%b %d, %Y, %I:%M:%S %p")
+        fields = view["fields"]
+        if len(fields) != 3 or any(not re.fullmatch(VOTINGWORKS_COUNT, n, re.ASCII)
+                                   or type(clear) is not bool for n, clear in fields):
+            raise ValueError("Invalid VotingWorks scan count fields")
+        total, scanned, manual = (int(number.replace(",", "")) for number, _ in fields)
+        controls = [tuple(int(n.replace(",", "")) for n in row) for row in view["controls"]]
+        if total != scanned + manual or controls.count((scanned, manual, total)) < 2:
+            raise ValueError("VotingWorks scan ballot columns do not reconcile to repeated source controls")
+        queries.append({"title": "Official Tally Report", "election": f"General Election, Nov 3, 2026, {town}, NH",
+                        "generated": generated, "election_id": date[2],
+                        "statistics": [f"{role} {cell[0]}" for role, cell in zip(VOTINGWORKS_ROLES, fields, strict=True)]})
+    if queries[0] != queries[1] or any(not (a[1] or b[1]) for a, b in
+                                      zip(evidence[0]["fields"], evidence[1]["fields"], strict=True)):
+        raise ValueError("VotingWorks scan values disagree or lack a confident render")
+    return queries[0]
+
+
+def votingworks_report(body, town, report_url, *, scanned=False):
     from pypdf import PdfReader
 
+    if not body.startswith(b"%PDF-") or len(body) > 4_000_000:
+        raise ValueError("VotingWorks report is not a bounded PDF")
     pdf = PdfReader(io.BytesIO(body), strict=True)
     if not pdf.pages:
         raise ValueError("Missing VotingWorks title page")
     lines = [" ".join(line.split()) for line in
              unicodedata.normalize("NFKC", pdf.pages[0].extract_text()).splitlines() if line.strip()]
+    if scanned and not lines:
+        from scripts.results_pdf_ocr import page_views
+
+        evidence = [votingworks_scan_evidence(view) for view in page_views(
+            body, strict_role_alignment=True, text_angle_classifier=False)]
+        return {"report": {"url": report_url, **pin(body)}, "scan_evidence": evidence,
+                "complete_native_query": votingworks_scan_query(evidence, town)}
     if (len(lines) < 8 or not lines[3].startswith("Certification Signatures:")
             or any(re.search(r"\b(?:scanner|batch)\s+(?:id|number|report|tally)\b", line, re.I)
                    for line in lines[:7])
@@ -1572,6 +1645,9 @@ def votingworks_town_controls(data, profile):
     url = data["report"]["url"]
     if not profile.permits_report(url) or data["complete_native_query"]["election_id"] != profile.election_id:
         raise ValueError("VotingWorks town report route or reviewed election ID differs")
+    if "scan_evidence" in data and (not profile.scanned or
+            votingworks_scan_query(data["scan_evidence"], profile.town) != data["complete_native_query"]):
+        raise ValueError("VotingWorks scan evidence differs from its accepted query")
     return votingworks_controls(data, profile.town, url)
 
 
@@ -1610,7 +1686,10 @@ def collect_votingworks_town(collector, profile):
     def parse(body):
         report_url = votingworks_declared_report(body, profile)
         report, _ = collector.acquire(report_url)
-        data = votingworks_report(report, profile.town, report_url)
+        prior = (collector.prior.get(profile.feed) or {}).get("data") or {}
+        data = (prior if profile.scanned and "scan_evidence" in prior
+                and prior.get("report") == {"url": report_url, **pin(report)}
+                else votingworks_report(report, profile.town, report_url, scanned=profile.scanned))
         votingworks_town_controls(data, profile)
         return data
 

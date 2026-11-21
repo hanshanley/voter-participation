@@ -288,6 +288,25 @@ def test_bath_turnout_refreshes_revisions_and_rejects_ambiguous_editions(tmp_pat
         assert failed["data"] == before["data"]
 
 
+def test_votingworks_scan_counts_require_two_confident_and_reconciled_queries():
+    history = frame.history
+    header = ["Official Tally Report VotingWorks", "GeneralElection,Nov3,2026,Hampton,NH",
+              "ReportGenerated:Nov3,2026,11:25:36PM ElectionID:080271d-8a2e8f5"]
+    evidence = [{"receipt": {"page": 1, "dpi": dpi}, "header": header,
+                 "fields": [["9,012", True], ["8,903", True], ["109", True]],
+                 "controls": [["8,903", "109", "9,012"]] * 2} for dpi in (180, 240)]
+    query = history.votingworks_scan_query(evidence, "Hampton")
+    assert query["statistics"] == ["Ballot Count 9,012", "Scanned 8,903", "Manually Entered 109"]
+    for view in evidence:
+        view["fields"][0][1] = False
+    with pytest.raises(ValueError, match="lack a confident render"):
+        history.votingworks_scan_query(evidence, "Hampton")
+    evidence[0]["fields"][0][1] = True
+    evidence[1]["controls"].pop()
+    with pytest.raises(ValueError, match="repeated source controls"):
+        history.votingworks_scan_query(evidence, "Hampton")
+
+
 @pytest.mark.parametrize("locality", ["Hollis", "Fixture Town", "Bedford", "Hanover"])
 def test_votingworks_town_report_retains_last_good_across_revisions(tmp_path, monkeypatch, locality):
     from dataclasses import replace
