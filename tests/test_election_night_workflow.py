@@ -82,26 +82,41 @@ def test_hosted_validation_includes_registered_bulk_archive_regressions():
     assert required <= set(validate["run"].split())
 
 
-def test_validation_cache_changes_with_code_or_environment(tmp_path):
+def test_validation_cache_binds_sparse_inputs_and_environment(tmp_path):
     gate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "validation_env")
     script = gate["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
     output = tmp_path / "github-output"
 
-    def fingerprint(sha="a" * 40, image="1", installed="pytest==8.4\n"):
+    def fingerprint(sha="a" * 40, image="1", installed="pytest==8.4\n",
+                    source=b"a", outside=b"x", clean=True, untracked=b"", mismatch=False):
+        def check_output(command, **_):
+            if command[:2] == ["git", "rev-parse"]:
+                return ("z" * 40 if mismatch else sha) + "\n"
+            if "--others" in command:
+                return untracked
+            if "--stage" in command:
+                return (b"H 100644 " + source * 40 + b" 0\tscripts/intake.py\0"
+                        b"S 100644 " + outside * 40 + b" 0\tdata/other/geometry.gz\0")
+            return installed
+
         output.write_text("")
         with patch.dict(os.environ, {"GITHUB_SHA": sha, "ImageOS": "ubuntu24", "ImageVersion": image,
                                      "GITHUB_OUTPUT": str(output)}):
-            with patch("subprocess.check_output", return_value=installed):
+            with patch("subprocess.check_output", side_effect=check_output), \
+                    patch("subprocess.run") as run:
+                run.return_value.returncode = 0 if clean else 1
                 exec(compile(script, str(WORKFLOW), "exec"), {})
         return output.read_text()
 
     baseline = fingerprint()
     assert baseline.startswith("fingerprint=") and len(baseline.strip().split("=", 1)[1]) == 64
     assert fingerprint() == baseline
-    assert fingerprint(sha="b" * 40) != baseline
+    assert fingerprint(sha="b" * 40, outside=b"y") == baseline
+    assert fingerprint(source=b"b") != baseline
     assert fingerprint(image="2") != baseline
     assert fingerprint(installed="pytest==8.5\n") != baseline
     assert fingerprint(image="") == ""
+    assert fingerprint(clean=False) == fingerprint(untracked=b"new.py\0") == fingerprint(mismatch=True) == ""
 
 
 @pytest.mark.parametrize("event,title,conclusion,publication,recoverable", [

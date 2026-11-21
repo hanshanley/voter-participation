@@ -110,10 +110,18 @@ jobs:
           import sys
 
           image = [os.environ.get(name) for name in ("ImageOS", "ImageVersion")]
-          if all(image):
+          head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          clean = subprocess.run(["git", "diff", "--quiet", "HEAD", "--"]).returncode == 0
+          untracked = subprocess.check_output(["git", "ls-files", "--others", "-z"])
+          if all(image) and head == os.environ["GITHUB_SHA"] and clean and not untracked:
+              # The sparse checkout includes root and ancestor files, not just its named directories.
+              index = subprocess.check_output(["git", "ls-files", "-t", "--stage", "-z"]).split(b"\0")
+              inputs = [entry[2:] for entry in index if entry.startswith(b"H ")]
+              if not inputs or any(entry and not entry.startswith((b"H ", b"S ")) for entry in index):
+                  sys.exit(0)
               requirements = subprocess.check_output(
                   [sys.executable, "-m", "pip", "freeze", "--all"], text=True).splitlines()
-              facts = [os.environ["GITHUB_SHA"], sys.version, platform.machine(),
+              facts = [hashlib.sha256(b"\0".join(inputs)).hexdigest(), sys.version, platform.machine(),
                        *image, *sorted(requirements)]
               fingerprint = hashlib.sha256("\n".join(facts).encode()).hexdigest()
               with open(os.environ["GITHUB_OUTPUT"], "a") as output:
@@ -127,7 +135,7 @@ jobs:
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/election-validation-receipt
-          key: election-validation-v1-${{ steps.validation_env.outputs.fingerprint }}
+          key: election-validation-v2-${{ steps.validation_env.outputs.fingerprint }}
 
       - name: Check the prior validation receipt
         id: validation_receipt
@@ -198,7 +206,7 @@ jobs:
           tests/test_california_media.py tests/test_california_turnout_history.py tests/test_pa_audit_ballots.py
           tests/test_hawaii_precinct_turnout.py
 
-      - name: Record a passing validation for the exact environment
+      - name: Record a passing validation for the exact inputs and environment
         if: steps.validation_tests.outcome == 'success' && steps.validation_env.outputs.fingerprint != ''
         env:
           FINGERPRINT: ${{ steps.validation_env.outputs.fingerprint }}
@@ -210,7 +218,7 @@ jobs:
         continue-on-error: true
         with:
           path: ${{ runner.temp }}/election-validation-receipt
-          key: election-validation-v1-${{ steps.validation_env.outputs.fingerprint }}
+          key: election-validation-v2-${{ steps.validation_env.outputs.fingerprint }}
 
   refresh:
     needs: validate
