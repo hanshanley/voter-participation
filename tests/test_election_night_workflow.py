@@ -341,6 +341,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "ID-general-election-turnout-history", "ID-2020-general-county-turnout", "ID-2022-general-county-turnout",
         "ID-2026-early-and-absentee-age",
         *(f"MA-{year}-paired-canvass-ballot-counts" for year in (2020, 2022, 2024, 2026)),
+        "MA-2022-census-county-subdivisions",
         "CT-2026-general-statement-of-vote-index",
         "WA-general-election-age-sex-workbook",
         "OR-general-election-turnout-history", "OR-general-election-returned-ballot-controls",

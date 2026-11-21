@@ -67,6 +67,8 @@ def families():
         ({massachusetts_ballot_canvass.FEEDS[year]: partial(massachusetts_ballot_canvass.collect, year=year)
           for year in (2020, 2022, 2024)}, True,
          (massachusetts_ballot_canvass.HISTORY_CSV,), massachusetts_ballot_canvass.history_exports),
+        ({massachusetts_ballot_canvass.CROSSWALK_FEED: massachusetts_ballot_canvass.collect_crosswalk}, True,
+         (massachusetts_ballot_canvass.CROSSWALK_CSV,), massachusetts_ballot_canvass.rollup_exports),
         *((routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.feed_for(year),)), year != 2026,
            (hawaii_precinct_turnout.csv_for(year),), partial(hawaii_precinct_turnout.exports, year=year))
           for year in hawaii_precinct_turnout.ELECTIONS),

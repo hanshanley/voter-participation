@@ -732,6 +732,11 @@ cmp reproduced-split-review.json \
   control, so their rows carry a shortfall flag and are not a complete county
   frame. The full exports independently reconcile to the statewide ballot
   control. Municipality-only rows with no ward or precinct remain distinct.
+  The separate 2022 county rollup joins all 351 municipal counts to the pinned
+  2022 Census county-subdivision Gazetteer by exact names after expanding native
+  directional abbreviations. It retains the original county-page values and
+  their differences. Only Barnstable differs in the reviewed edition: 118,733
+  ballots in the rollup versus 115,570 on the county page.
 
   ### Candidate inventories and analytical eligibility
 

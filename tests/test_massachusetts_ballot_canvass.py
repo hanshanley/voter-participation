@@ -73,6 +73,29 @@ def test_2022_county_page_shortfall_retains_state_and_native_counts():
     assert all(row["county_ballot_shortfall"] == 3 for row in rows)
 
 
+def test_2022_rollup_preserves_original_county_and_requires_one_to_one_names(monkeypatch):
+    body = (b"USPS\tGEOID\tNAME\tALAND\nMA\t2500103690\tBarnstable Town city\t1\n"
+            b"MA\t2500100000\tCounty subdivisions not defined\t0\n")
+    monkeypatch.setattr(ma, "CROSSWALK_PIN", pin(body))
+    monkeypatch.setattr(ma, "COUNTY_FIPS", {"25001": "Barnstable"})
+    # Exercise the rollup with a single member of the roster; the real original
+    # is also replayed with all 351 municipalities.
+    reports = {contest: {"page": {"counties": {"Barnstable": 7}, "columns_total": [10]},
+                         "csv": {"units": [["Barnstable", "-", "1", 10]], "columns_total": [10]}}
+               for contest in ma.PAIRS[2022]}
+    entries = {
+        ma.FEEDS[2022]: {"status": "reported", "data": {"reports": reports}},
+        ma.CROSSWALK_FEED: {"status": "reported", "source": {"url": ma.CROSSWALK_URL, **pin(body)},
+                            "data": {"municipalities": {"barnstable": ["Barnstable Town city", "2500103690"]}}},
+    }
+    state, county, municipality = ma.rollup_exports(entries)
+    assert state["ballots_including_blanks"] == 10
+    assert county["original_county_page_ballots"] == 7 and county["difference_from_original_county_pages"] == 3
+    assert municipality["census_geoid"] == "2500103690"
+    entries[ma.CROSSWALK_FEED]["data"]["municipalities"]["not reported"] = ["Not reported town", "2500101234"]
+    assert list(ma.rollup_exports(entries)) == []
+
+
 def test_statewide_projection_is_count_only_and_retains_last_good():
     def snapshot(ballots):
         counties = dict.fromkeys(ma.COUNTIES, 0)

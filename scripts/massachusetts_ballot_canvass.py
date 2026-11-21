@@ -23,7 +23,14 @@ PAIRS = {
 }
 FEEDS = {year: f"MA-{year}-paired-canvass-ballot-counts" for year in PAIRS}
 HISTORY_CSV = "participation-ma-2020-2024-paired-canvass-ballot-counts.csv"
-COUNTIES = set("Barnstable Berkshire Bristol Dukes Essex Franklin Hampden Hampshire Middlesex Nantucket Norfolk Plymouth Suffolk Worcester".split())
+COUNTY_FIPS = {f"25{code:03d}": name for code, name in zip(range(1, 28, 2),
+    "Barnstable Berkshire Bristol Dukes Essex Franklin Hampden Hampshire Middlesex Nantucket Norfolk Plymouth Suffolk Worcester".split(),
+    strict=True)}
+COUNTIES = set(COUNTY_FIPS.values())
+CROSSWALK_FEED = "MA-2022-census-county-subdivisions"
+CROSSWALK_CSV = "participation-ma-2022-county-rollup.csv"
+CROSSWALK_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2022_Gazetteer/2022_gaz_cousubs_25.txt"
+CROSSWALK_PIN = {"bytes": 71948, "sha256": "db62cf01ebb90b6577eb99b0f40c357fe3d32fa75bec39ca0f324dc5ca41c135"}
 LIMIT = 2_000_000
 TAIL = ("All Others", "Blanks", "Total Votes Cast")
 
@@ -199,7 +206,78 @@ def history_exports(entries):
         yield from exports(entries, year=year)
 
 
+def parse_crosswalk(body):
+    if pin(body) != CROSSWALK_PIN:
+        raise ValueError("Massachusetts Census crosswalk differs from its reviewed edition")
+    reader = csv.DictReader(io.StringIO(body.decode("utf-8-sig")), delimiter="\t")
+    names, codes = {}, set()
+    for row in reader:
+        name, geoid = row["NAME"], row["GEOID"]
+        if name == "County subdivisions not defined" and geoid.endswith("00000") and row["ALAND"] == "0":
+            continue
+        match = re.fullmatch(r"(.+?) (?:Town city|town|city)", name)
+        if (row["USPS"] != "MA" or not re.fullmatch(r"25\d{8}", geoid) or geoid[:5] not in COUNTY_FIPS
+                or not match or match[1].casefold() in names or geoid in codes):
+            raise ValueError("Invalid Massachusetts municipality in Census crosswalk")
+        names[match[1].casefold()] = [name, geoid]
+        codes.add(geoid)
+    if len(names) != 351 or {code[:5] for code in codes} != COUNTY_FIPS.keys():
+        raise ValueError("Incomplete Massachusetts Census crosswalk")
+    return {"municipalities": names, "participation_observation_qualified": False}
+
+
+def collect_crosswalk(collector, *, reuse_checked_week=False):
+    return collect_report(collector, CROSSWALK_FEED, CROSSWALK_URL, lambda body, _: parse_crosswalk(body),
+                          reuse_checked_week=reuse_checked_week)
+
+
+def rollup_exports(entries):
+    crosswalk, election = (entries.get(feed) or {} for feed in (CROSSWALK_FEED, FEEDS[2022]))
+    if not crosswalk.get("data") or not election.get("data"):
+        return
+    expected = {"url": CROSSWALK_URL, **CROSSWALK_PIN}
+    if (crosswalk["source"] != expected or any(entry["status"] not in ("reported", "retained_after_failure")
+                                              for entry in (crosswalk, election))):
+        raise ValueError("Unreviewed Massachusetts county crosswalk receipt")
+    native = crosswalk["data"]["municipalities"]
+    counties, units = reconcile(election["data"]["reports"], year=2022)
+    towns = Counter()
+    for name, _, _, count in units:
+        towns[name] += count
+    directions = dict(N="North", S="South", E="East", W="West")
+    matched, county_counts, municipalities = set(), Counter(), []
+    for town, count in sorted(towns.items()):
+        key = re.sub(r"^([NSEW])\. ", lambda match: directions[match[1]] + " ", town).casefold()
+        if key in matched or key not in native:
+            return  # Keep the original county audit when a successor cannot be matched exactly.
+        matched.add(key)
+        name, geoid = native[key]
+        county_counts[geoid[:5]] += count
+        municipalities.append(("municipality", town, name, geoid, geoid[:5], count, None))
+    if matched != native.keys() or county_counts.keys() != COUNTY_FIPS.keys():
+        return
+    for scope, name, census_name, geoid, county_fips, ballots, reported in (
+            ("statewide", "Massachusetts", "", "", "", sum(county_counts.values()), sum(counties.values())),
+            *(("county", county, "", fips, fips, county_counts[fips], counties[county])
+              for fips, county in COUNTY_FIPS.items()),
+            *municipalities):
+        yield {"state_code": "MA", "election_date": "2022-11-08", "geography_level": scope, "name": name,
+               "census_name": census_name, "census_geoid": geoid, "county_fips": county_fips,
+               "ballots_including_blanks": ballots, "original_county_page_ballots": reported,
+               "difference_from_original_county_pages": ballots - reported if reported is not None else None,
+               "county_ballot_shortfall": 0,
+               "source_status": election["status"], "census_source_status": crosswalk["status"],
+               "census_source_url": CROSSWALK_URL, "census_source_sha256": CROSSWALK_PIN["sha256"],
+               "rate_hold_reason": "no_registration_denominator_in_paired_canvasses",
+               "precinct_geometry_verified": False}
+
+
 def original_reports(entries):
+    crosswalk = entries.get(CROSSWALK_FEED) or {}
+    if (data := crosswalk.get("data")) is not None:
+        source = crosswalk["source"]
+        yield (CROSSWALK_FEED, source, ".txt", CROSSWALK_PIN["bytes"], source == {"url": CROSSWALK_URL, **CROSSWALK_PIN},
+               parse_crosswalk, data)
     for year, feed in FEEDS.items():
         if (data := (entries.get(feed) or {}).get("data")) is None:
             continue
