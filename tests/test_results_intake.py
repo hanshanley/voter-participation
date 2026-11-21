@@ -974,6 +974,23 @@ def test_connecticut_release_watch_requires_official_index_and_unique_year_link(
         watch.discover(prior + candidate + candidate.replace(b"statement_of_vote", b"sov"), watch.CT)
 
 
+def test_west_virginia_write_in_watch_preserves_existing_turnout_query():
+    from scripts import national_turnout_release_watch as watch
+
+    prior = b'<a href="/media/462/download?inline">2024 General Write-In Results</a>'
+    assert watch.discover(prior, watch.WV)["complete_native_query"]["release_status"] == "not_yet_linked"
+    candidate = b'<a href="/media/525/download?inline=">2026 General Election Write-In Results</a>'
+    data = watch.discover(prior + candidate, watch.WV)
+    entries = {watch.WV: {"status": "reported", "data": data,
+                          "source": {"url": watch.INDEXES[watch.WV], "sha256": "a" * 64}}}
+    assert list(watch.exports(entries)) == []
+    [watched] = watch.federal_exports(entries)
+    assert watched["release_url"] == "https://sos.wv.gov/media/525/download?inline="
+    assert watched["participation_observation_qualified"] is False
+    with pytest.raises(IntakeError, match="Unexpected West Virginia"):
+        watch.discover(prior + candidate.replace(b"/media", b"https://example.test/media"), watch.WV)
+
+
 def test_national_release_discovery_distinguishes_links_from_participation(tmp_path, monkeypatch):
     from scripts import national_turnout_release_watch as watch
 

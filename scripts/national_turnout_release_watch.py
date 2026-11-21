@@ -12,12 +12,15 @@ from scripts.participation_intake.contract import IntakeError
 CENSUS = "US-2026-CPS-turnout-release-index"
 EAC = "US-2026-EAVS-turnout-release-index"
 CT = "CT-2026-general-statement-of-vote-index"
+WV = "WV-2026-general-write-in-results-index"
 INDEXES = {
     CENSUS: "https://www.census.gov/topics/public-sector/voting/data/tables.html",
     EAC: "https://www.eac.gov/research-and-data/studies-and-reports",
     CT: connecticut_turnout_history.STATEMENT_INDEX,
+    WV: "https://sos.wv.gov/elections/election-data/historical-election-results-and-turnout",
 }
 CSV = "participation-turnout-release-watch.csv"
+FEDERAL_CSV = "congressional-write-in-release-watch.csv"
 
 
 class Labels(HTMLParser):
@@ -85,6 +88,22 @@ def discover(body, feed, *, year=2026):
                 discovered.add((target, "statement_of_vote"))
         if not prior_link or len(discovered) > 1:
             raise IntakeError("release_index_schema", "Expected Connecticut general-election index or unique new link")
+    elif feed == WV:
+        archive_years = set()
+        for tag, attrs, text in labels:
+            match = re.fullmatch(r"(\d{4}) General(?: Election)? Write-In Results", text, re.I)
+            if tag != "a" or not match:
+                continue
+            target = urljoin(base, attrs.get("href") or "")
+            if not re.fullmatch(r"https://sos\.wv\.gov/media/[1-9]\d*/download(?:\?inline=?)?", target):
+                if int(match[1]) == year:
+                    raise IntakeError("release_index_schema", "Unexpected West Virginia write-in archive route")
+                continue
+            archive_years.add(int(match[1]))
+            if int(match[1]) == year:
+                discovered.add((target, "official_write_in_results"))
+        if year - 2 not in archive_years or len(discovered) > 1:
+            raise IntakeError("release_index_schema", "Expected West Virginia write-in archive or unique new link")
     elif feed == EAC:
         sections = [(i, text) for i, (tag, attrs, text) in enumerate(labels)
                     if tag == "button" and attrs.get("aria-controls") and re.fullmatch(r"\d{4}", text)]
@@ -108,7 +127,7 @@ def discover(body, feed, *, year=2026):
                 discovered.add((target, "administrative_dataset"))
             elif "codebook" in name and "policy" not in name and name.endswith((".pdf", ".docx", ".xlsx")):
                 discovered.add((target, "administrative_codebook"))
-    ready = any(kind in {"detailed_table_index", "administrative_dataset", "statement_of_vote"}
+    ready = any(kind in {"detailed_table_index", "administrative_dataset", "statement_of_vote", "official_write_in_results"}
                 for _, kind in discovered)
     if feed == EAC:
         ready = ready and any(kind == "administrative_codebook" for _, kind in discovered)
@@ -145,10 +164,11 @@ def collect(collector, feed, *, reuse_checked_week=False):
     return entry
 
 
-def exports(entries):
-    for feed, index in INDEXES.items():
+def _exports(entries, feeds):
+    for feed in feeds:
         if feed not in entries:
             continue
+        index = INDEXES[feed]
         entry = entries[feed]
         data = entry.get("data")
         query = data["complete_native_query"] if data is not None else {
@@ -170,3 +190,11 @@ def exports(entries):
                    "first_observed_at": entry.get("first_observed_at"),
                    "index_sha256": (entry.get("source") or {}).get("sha256"),
                    "error": entry.get("error"), "participation_observation_qualified": False}
+
+
+def exports(entries):
+    return _exports(entries, (CENSUS, EAC, CT))
+
+
+def federal_exports(entries):
+    return _exports(entries, (WV,))
