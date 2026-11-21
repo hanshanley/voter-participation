@@ -1,4 +1,5 @@
 import copy
+from datetime import datetime, timezone
 import gzip
 import io
 import json
@@ -831,6 +832,7 @@ def publication(monkeypatch, tmp_path):
 
     publisher = Publisher()
     monkeypatch.setattr(runtime, "GitPublisher", lambda *args, **kwargs: publisher)
+    monkeypatch.setattr(runtime, "utc_now", lambda: datetime(2026, 11, 21, tzinfo=timezone.utc))
     pointer = {"version": "f" * 64, "checked_at": "2026-11-14T16:00:00+00:00"}
     monkeypatch.setattr(runtime, "results_pointer", lambda _: pointer)
     monkeypatch.setattr(runtime, "result_bodies", lambda _: (
@@ -913,6 +915,21 @@ def test_runtime_rejects_stale_or_rebound_source_before_downloading(publication,
     with pytest.raises(ValueError, match=message):
         runtime.run("not-used", work)
     assert publisher.head == head
+
+
+@pytest.mark.parametrize(("observed", "message"), [
+    ("2026-11-02T18:59:59-05:00", "predates the general-election publication window"),
+    ("2026-11-21T00:00:01+00:00", "check time is in the future"),
+])
+def test_runtime_rejects_unpublishable_checkpoints_before_touching_remote(
+        publication, monkeypatch, observed, message):
+    _, work, _ = publication
+    pointer = {**runtime.results_pointer(runtime.RESULTS_POINTER), "checked_at": observed}
+    monkeypatch.setattr(runtime, "results_pointer", lambda _: pointer)
+    monkeypatch.setattr(runtime, "GitPublisher", lambda *a, **k: pytest.fail("Remote data writer used"))
+    monkeypatch.setattr(runtime, "result_bodies", lambda _: pytest.fail("Unpublishable source requested"))
+    with pytest.raises(ValueError, match=message):
+        runtime.run("not-used", work)
 
 
 @pytest.mark.parametrize("changed", ["catalog", "body", "parent"])

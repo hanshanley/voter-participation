@@ -3,6 +3,7 @@
 import argparse
 from contextlib import contextmanager
 import copy
+from datetime import datetime, timezone
 import gzip
 import io
 import json
@@ -186,14 +187,24 @@ def results_pointer(pointer_url):
 
 
 def result_time(value):
-    from datetime import datetime
-
     if not isinstance(value, str):
         raise ValueError("Missing source snapshot check time")
     observed = datetime.fromisoformat(value)
     if observed.utcoffset() is None:
         raise ValueError("Source snapshot check time has no offset")
     return observed
+
+
+def utc_now():
+    return datetime.now(timezone.utc)
+
+
+def require_publication_time(pointer):
+    observed = result_time(pointer.get("checked_at"))
+    if observed > utc_now():
+        raise ValueError("Source snapshot check time is in the future; refusing publication")
+    if observed < datetime(2026, 11, 3, tzinfo=timezone.utc):
+        raise ValueError("Source snapshot predates the general-election publication window")
 
 
 def result_bodies(pointer):
@@ -1105,11 +1116,13 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         github_repository=WEBSITE_REPOSITORY, publish=True, split_block_geometry=False):
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
+    pointer = results_pointer(pointer_url)
+    if publish:
+        require_publication_time(pointer)
     publisher = GitPublisher(repository, github_repository=github_repository)
     parent = publisher.remote_head()
     publisher.fetch_parent(parent)
     catalog = publisher.catalog(parent)
-    pointer = results_pointer(pointer_url)
     source_pin = pin(encoded(pointer))
     seed_dir = Path(seed_dir or ROOT / "data/results-intake/model-seed")
     review_path = ROOT / "data/results-intake/reviewed-eligibility.json"
