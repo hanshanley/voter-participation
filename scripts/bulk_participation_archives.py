@@ -111,7 +111,8 @@ def original_reports(entries):
             for kind, report in data["reports"].items():
                 source = report["source"]
                 yield (f"{feed}-{kind}", source, ".txt", ca.MAX_BYTES,
-                       source["url"] == ca.URLS[kind], partial(ca.parse, kind), report["facts"])
+                       source["url"] == ca.URLS[kind],
+                       partial(ca.parse, kind, turnout_only=feed == ca.TURNOUT), report["facts"])
     for feed, election in nc.FEEDS.items():
         if (data := (entries.get(feed) or {}).get("data")) is not None:
             for kind, report in data["pair"].items():

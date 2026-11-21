@@ -5,6 +5,7 @@ from unittest.mock import patch
 import pytest
 
 from scripts import california_media as ca, results_intake as intake
+from scripts.bulk_participation_archives import original_inventory, verify_original_reports
 
 
 def transmission(kind, rows, timestamp="0001000"):
@@ -57,6 +58,18 @@ def test_turnout_refresh_accepts_revisions_and_retains_last_good(tmp_path):
             retained = capture(down)
             assert retained["status"] == "retained_after_failure"
             assert retained["data"] == down["data"]
+        partial = vote_file(51, "0004000").rsplit(b"[E|CAS|", 1)[0]
+        bodies[ca.URLS["V"]] = partial
+        independent = capture(down)
+        assert independent["status"] == "reported"
+        assert ca.exports({ca.TURNOUT: independent})[0][-1]["reported_ballots_cast"] == 2958
+        assert independent["data"]["reports"]["V"]["facts"]["house"] == []
+        with pytest.raises(ValueError, match="Missing California transmission closing"):
+            ca.parse("V", partial)
+        entries = {ca.TURNOUT: independent}
+        for report in original_inventory(entries).values():
+            (tmp_path / report["filename"]).write_bytes(bodies[report["url"]])
+        assert verify_original_reports(entries, tmp_path) == 2
 
 
 def test_house_returns_do_not_impute_missing_candidates_or_unlock_model():

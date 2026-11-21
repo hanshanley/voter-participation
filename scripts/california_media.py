@@ -33,7 +33,7 @@ def clock(raw, pattern):
     return datetime.strptime(raw, pattern).isoformat()
 
 
-def frames(body, kinds):
+def frames(body, kinds, *, allow_trailing=False):
     if not 0 < len(body) <= MAX_BYTES:
         raise ValueError("Unexpected California media file size")
     lines = iter(body.decode("cp1252").splitlines())
@@ -71,12 +71,12 @@ def frames(body, kinds):
             records.append(fields[3:])
         else:
             raise ValueError("Missing California transmission closing")
-    if next(lines, None) is not None:
+    if not allow_trailing and next(lines, None) is not None:
         raise ValueError("Unexpected extra California transmission")
     return output
 
 
-def parse(kind, body):
+def parse(kind, body, *, turnout_only=False):
     if kind == "S":
         _, _, rows = frames(body, "S")[0]
         if rows != [[f"{i:02}", name] for i, name in enumerate([*CA_COUNTIES, "State of California"], 1)]:
@@ -109,9 +109,18 @@ def parse(kind, body):
         return dict(sorted(result.items()))
     if kind != "V":
         raise ValueError("Unknown California media file")
-    (start, _, a), (vote_start, end, v) = frames(body, "AV")
-    if start < ELECTION or vote_start != start:
-        raise ValueError("Incompatible California turnout and return transmission editions")
+    try:
+        (start, _, a), (vote_start, end, v) = frames(body, "AV")
+        if start < ELECTION or vote_start != start:
+            raise ValueError("Incompatible California turnout and return transmission editions")
+    except ValueError:
+        if not turnout_only:
+            raise
+        # A is a self-contained numbered transmission; V is not a ballot-count control.
+        (start, end, a), = frames(body, "A", allow_trailing=True)
+        if start < ELECTION:
+            raise ValueError("California turnout transmission predates the election")
+        v = []
     return {"edition": start, "end": end, "turnout": a,
             "house": [row for row in v if HOUSE_CODE.fullmatch(row[0])]}
 
@@ -209,7 +218,7 @@ def collect(collector, feed):
             source = {"url": url, **pin(body)}
             previous = prior.get("reports", {}).get(kind)
             reports[kind] = previous if previous and previous["source"] == source else {
-                "source": source, "facts": parse(kind, body)}
+                "source": source, "facts": parse(kind, body, turnout_only=feed == TURNOUT)}
         data = reports["V"]["facts"]
         end = datetime.fromisoformat(data["end"]).replace(tzinfo=ZoneInfo("America/Los_Angeles"))
         if end > collector.observation_time():
