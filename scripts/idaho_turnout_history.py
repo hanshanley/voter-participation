@@ -16,6 +16,10 @@ FEED = "ID-general-election-turnout-history"
 INDEX = "https://voteidaho.gov/election-results/"
 STATE_CSV = "participation-id-statewide-general-turnout.csv"
 LOCAL_CSV = "participation-id-2024-native-turnout-workbook.csv"
+COUNTY_CSV = "participation-id-2020-2022-county-turnout.csv"
+COUNTY_FEEDS = {f"ID-{year}-general-county-turnout": year for year in (2020, 2022)}
+COUNTY_URLS = {2020: INDEX + "2020-election-results/", 2022: INDEX + "2022-election-stats/"}
+COUNTY_HEADER = ("Counties", "Registered Voters at Cutoff")
 BOOK = "https://archive.sos.idaho.gov/elections/data/results/2024/raw_stats_general.xlsx"
 MAX_BYTES = 2_000_000
 HISTORY_HEADER = ("Year", "Voting Age Pop.", "Registered Voters", "Ballots Cast",
@@ -204,3 +208,75 @@ def original_reports(entries):
         source, report = entry["source"], data["report"]
         yield FEED + "-index", source, ".html", MAX_BYTES, source["url"] == INDEX, index, data["state"]
         yield FEED + "-workbook", report, ".xlsx", MAX_BYTES, report["url"] == BOOK, workbook, data["local"]
+    for feed, year in COUNTY_FEEDS.items():
+        entry = entries.get(feed) or {}
+        if (data := entry.get("data")) is not None:
+            source = entry["source"]
+            yield (feed + "-report", source, ".html", MAX_BYTES, source["url"] == COUNTY_URLS[year],
+                   partial(parse_county_report, year=year), data)
+
+
+def county_rows(literals, year):
+    seen = set()
+    sums = [0] * 4
+    expected_total = "TOTAL" if year == 2020 else "GRAND TOTAL"
+    if len(literals) != len(COUNTIES) + 1 or literals[-1][0] != expected_total:
+        raise ValueError("Incomplete Idaho county table")
+    for name, cutoff, day, registered, ballots, printed, *additional in literals:
+        parent = name == expected_total
+        if name in seen or name not in COUNTIES and not parent:
+            raise ValueError("Wrong or repeated Idaho county")
+        seen.add(name)
+        c, d, r, b = map(parse_number, (cutoff, day, registered, ballots))
+        if c + d != r or b > r or len(additional) != int(year == 2022):
+            raise ValueError("Invalid Idaho county registration or count")
+        if parent and (c, d, r, b) != tuple(sums):
+            raise ValueError("Idaho counties do not reconcile to the printed state control")
+        sums = [x + y for x, y in zip(sums, (c, d, r, b))]
+        fields = [printed, *additional]
+        if not all(re.fullmatch(r"[0-9]{1,3}\.[0-9]{1,2}%", text) for text in fields):
+            raise ValueError("Invalid Idaho county printed percentage")
+        actual = 100 * Decimal(b) / r
+        rate = abs(actual - Decimal(printed[:-1])) <= Decimal("0.05")
+        yield {"election_date": federal_general(year).isoformat(), "geography_level": "state" if parent else "county",
+               "county": "" if parent else name, "native_label": name, "registration_at_cutoff": c,
+               "election_day_registrations": d, "registered_voters": r, "ballots_cast": b,
+               "source_printed_pct": printed, "source_printed_election_day_registrations_pct": additional[0] if additional else "",
+               "reconciled_pct": float(actual) if rate else None,
+               "rate_hold": "" if rate else "printed_rate_disagrees"}
+
+
+def parse_county_report(body, *, year):
+    if not 0 < len(body) <= MAX_BYTES:
+        raise ValueError("Unexpected Idaho HTML report size")
+    basis = ("Election Day Registrants", "Registered Voters", "Ballots Cast", "% of Registered Voters Who Voted")
+    if year == 2022:
+        basis = ("Election Day Registrations", "Registered Voters", "Ballots Cast", "Voter Turnout",
+                 "Election Day Registration as % of Voters at Cutoff")
+    tables = [t for t in html_tables(body) if t and t[0] == COUNTY_HEADER + basis]
+    if len(tables) != 1 or any(len(row) != 2 + len(basis) for row in tables[0]):
+        raise ValueError("Unexpected Idaho county table schema")
+    literals = [list(row) for row in tables[0][1:]]
+    list(county_rows(literals, year))
+    return {"county_table": literals, "participation_observation_qualified": False}
+
+
+def collect_county(collector, feed, *, reuse_checked_week=False):
+    year = COUNTY_FEEDS[feed]
+    return collect_report(collector, feed, COUNTY_URLS[year],
+                          lambda body, _: parse_county_report(body, year=year), reuse_checked_week=reuse_checked_week)
+
+
+def county_exports(entries):
+    for feed, year in COUNTY_FEEDS.items():
+        entry = entries.get(feed) or {}
+        if (data := entry.get("data")) is None:
+            continue
+        source = entry["source"]
+        if (source["url"] != COUNTY_URLS[year]
+                or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"])
+                or entry["status"] not in ("reported", "retained_after_failure")):
+            raise ValueError("Changed Idaho county report provenance")
+        for row in county_rows(data["county_table"], year):
+            yield {"state_code": "ID", "source_status": entry["status"], "source_url": source["url"],
+                   "source_sha256": source["sha256"], **row}

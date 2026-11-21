@@ -53,3 +53,19 @@ def test_pinned_idaho_fallback_preserves_native_rows_and_yields_to_an_accepted_s
     assert all(row["reconciled_pct"] is None for row in pool) and sum(row["ballots_cast"] for row in pool) == 41_062
     accepted = {**entries[idaho.FEED], "status": "reported"}
     assert retained_bulk_turnout.historical_entries({idaho.FEED: accepted}, body)[idaho.FEED] is accepted
+
+
+@pytest.mark.parametrize("year,label,extra", [(2020, "TOTAL", []), (2022, "GRAND TOTAL", ["25.0%"])])
+def test_county_reports_retain_printed_rates_and_require_state_rollup(monkeypatch, year, label, extra):
+    monkeypatch.setattr(idaho, "COUNTIES", {"Ada", "Boise"})
+    literals = [["Ada", "80", "20", "100", "40", "40.0%", *extra],
+                ["Boise", "40", "10", "50", "30", "60.0%", *extra],
+                [label, "120", "30", "150", "70", "46.7%", *extra]]
+    rows = list(idaho.county_rows(literals, year))
+    assert rows[-1]["geography_level"] == "state" and rows[-1]["ballots_cast"] == 70
+    assert rows[0]["reconciled_pct"] == 40
+    literals[0][5] = "39.9%"
+    assert list(idaho.county_rows(literals, year))[0]["reconciled_pct"] is None
+    literals[-1][4] = "69"
+    with pytest.raises(ValueError, match="printed state control"):
+        list(idaho.county_rows(literals, year))

@@ -58,6 +58,8 @@ def families():
          (hawaii_turnout_history.CSV,), hawaii_turnout_history.exports),
         ({idaho_turnout_history.FEED: idaho_turnout_history.collect}, True,
          (idaho_turnout_history.STATE_CSV, idaho_turnout_history.LOCAL_CSV), idaho_turnout_history.exports),
+        ({feed: partial(idaho_turnout_history.collect_county, feed=feed) for feed in idaho_turnout_history.COUNTY_FEEDS},
+         True, (idaho_turnout_history.COUNTY_CSV,), idaho_turnout_history.county_exports),
         *((routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.feed_for(year),)), year != 2026,
            (hawaii_precinct_turnout.csv_for(year),), partial(hawaii_precinct_turnout.exports, year=year))
           for year in hawaii_precinct_turnout.ELECTIONS),

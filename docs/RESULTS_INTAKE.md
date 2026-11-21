@@ -707,6 +707,10 @@ cmp reproduced-split-review.json \
   The pinned historical fallback preserves the original aggregates and checksums
   when the collector's existing access stop applies; a compatible accepted
   snapshot takes precedence. The complete package replay regenerates both CSVs.
+  The separate `participation-id-2020-2022-county-turnout.csv.gz` keeps both
+  44-county reports, their source-printed percentages and statewide controls.
+  Their independent routes retain last-good reports separately; the county
+  map additionally checks each statewide control against the historical series.
 
   ### Candidate inventories and analytical eligibility
 
