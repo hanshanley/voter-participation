@@ -9,7 +9,7 @@ from scripts import (
     indiana_early_county_turnout, indiana_early_state_turnout, kansas_turnout_history,
     national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     pa_audit_ballots,
-    southeast_turnout, washington_participation,
+    south_carolina_voter_statistics, southeast_turnout, washington_participation,
 )
 from scripts.participation_intake.contract import pin
 
@@ -29,6 +29,9 @@ def families():
         ({wa.FEED: wa.collect}, True, (wa.CSV,), wa.exports),
         (routes(oregon, oregon.URLS), True, (oregon.CSV,), oregon.exports),
         (routes(se, se.URLS), True, (se.SC_CSV, se.AL_CSV), se.exports),
+        (routes(south_carolina_voter_statistics, (south_carolina_voter_statistics.FEED,)), True,
+         (south_carolina_voter_statistics.CSV, south_carolina_voter_statistics.AUDIT),
+         south_carolina_voter_statistics.exports),
         (routes(al, al.URLS), True, (al.CSV, al.CONTROL_CSV), al.exports),
         ({ak.FEED: ak.collect}, True, (ak.CSV,), ak.exports),
         ({ak.CURRENT_FEED: ak.collect_current}, False, (ak.CURRENT_CSV,), ak.current_exports),
@@ -91,6 +94,22 @@ def original_reports(entries):
     from scripts import results_indiana_turnout as indiana, results_turnout_history as history
 
     age, ct = alaska_age_history, connecticut_turnout_history
+    sc = south_carolina_voter_statistics
+    if (data := (entries.get(sc.FEED) or {}).get("data")) is not None:
+        catalog = {"url": sc.CATALOG, **data["catalog_pin"]}
+        yield sc.FEED + "-catalog", catalog, ".csv", sc.CATALOG_LIMIT, True, sc.catalog, data["candidates"]
+        control = data["control_pin"]
+
+        def reextract_sc_control(body):
+            return southeast_turnout.parse(body, southeast_turnout.SC)["complete_native_query"]
+
+        yield (sc.FEED + "-statewide-control", control, ".pdf", 5_000_000,
+               control["url"] == southeast_turnout.URLS[southeast_turnout.SC], reextract_sc_control, data["control"])
+        selected, _ = sc.decisions(data["candidates"], data["reports"])
+        for year, report in data["reports"].items():
+            source = report["source"]
+            yield (f"{sc.FEED}-{year}", source, ".csv", sc.TABLE_LIMIT,
+                   source["url"] == sc.table_url(selected[int(year)]["contest"]), sc.table, report["rows"])
     hi = hawaii_precinct_turnout
     for year in hi.ELECTIONS:
         feed = hi.feed_for(year)

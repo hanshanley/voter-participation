@@ -50,6 +50,7 @@ CODE_PATHS = (
     "hawaii_turnout_history.py", "hawaii_precinct_turnout.py", "dakota_turnout_history.py", "new_jersey_periodic_counties.py",
     "north_carolina_participation.py", "california_media.py", "california_turnout_history.py",
     "indiana_early_state_turnout.py", "indiana_early_county_turnout.py", "pa_audit_ballots.py",
+    "south_carolina_voter_statistics.py",
     "wyoming_participation_statistics.py", "nebraska_canvass.py",
     "nebraska_county_reports.py",
     "colorado_voting_statistics.py", "maryland_precinct_history.py", "minnesota_precinct_history.py",

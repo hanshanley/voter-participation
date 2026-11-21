@@ -301,6 +301,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "WA-general-election-age-sex-workbook",
         "OR-general-election-turnout-history", "OR-general-election-returned-ballot-controls",
         "SC-general-election-participation-history",
+        "SC-general-county-precinct-voting-statistics",
         *(f"AL-{year}-general-election-age-participation" for year in (2018, 2020, 2024)),
         *(f"AL-{year}-general-{name}" for year in (2018, 2020, 2022, 2024)
           for name in ("precinct-ballot-archive", "county-ballot-control")),

@@ -1,11 +1,11 @@
 """Batch intake for California's statewide general and special election history."""
 
-from datetime import date, datetime, timedelta
+from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 from io import BytesIO
 import re
 
-from scripts.participation_intake.contract import IntakeError, pin
+from scripts.participation_intake.contract import IntakeError, federal_general, pin
 from scripts.results_turnout_history import archive_link
 from scripts.southeast_turnout import collect_report
 
@@ -26,11 +26,6 @@ INTEGER = r"(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+|\*)"
 PERCENT = r"(?:[0-9]{1,3}\.[0-9]{2}%|\*)"
 ROW = re.compile(rf"([A-Z][a-z]{{2}}\.? \d{{1,2}}, \d{{4}})(?: ([PS]))? "
                  rf"((?:{INTEGER} ){{6}}{PERCENT} {PERCENT})")
-
-
-def federal_general(year):
-    nov = date(year, 11, 1)
-    return nov + timedelta(days=(7 - nov.weekday()) % 7 + 1)
 
 
 def percentage(voted, denominator, printed):

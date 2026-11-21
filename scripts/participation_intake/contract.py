@@ -3,7 +3,7 @@
 import hashlib
 import json
 import re
-from datetime import date
+from datetime import date, timedelta
 from urllib.parse import urlparse
 
 
@@ -16,6 +16,11 @@ MEASURES = {"ballots_cast", "voters_reported", "cards_cast", "returned", "early_
 MODES = {"all_methods", "in_person_early", "mail_returned", "source_defined"}
 STATUSES = {"reported", "unknown", "withheld"}
 SHA = re.compile(r"^[a-f0-9]{64}$")
+
+
+def federal_general(year):
+    nov = date(year, 11, 1)
+    return nov + timedelta(days=(7 - nov.weekday()) % 7 + 1)
 
 
 class IntakeError(ValueError):
