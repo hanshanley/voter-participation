@@ -192,7 +192,9 @@ jobs:
           tests/test_election_night_workflow.py tests/test_automatic_health.py
           tests/test_washington_participation.py tests/test_oregon_turnout_history.py tests/test_southeast_turnout.py
           tests/test_alaska_precinct_history.py tests/test_alaska_cards_history.py tests/test_alaska_age_history.py
-          tests/test_connecticut_turnout_history.py
+          tests/test_connecticut_turnout_history.py tests/test_dakota_turnout_history.py
+          tests/test_new_jersey_periodic_counties.py tests/test_north_carolina_participation.py
+          tests/test_california_media.py
 
       - name: Record a passing validation for the exact environment
         if: steps.validation_tests.outcome == 'success' && steps.validation_env.outputs.fingerprint != ''

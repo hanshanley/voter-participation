@@ -72,6 +72,16 @@ def test_repeat_validation_requires_an_exact_success_receipt(tmp_path, receipt, 
     assert output.read_text() == f"matched={str(matched).lower()}\n"
 
 
+def test_hosted_validation_includes_registered_bulk_archive_regressions():
+    from scripts.bulk_participation_archives import families
+
+    root = WORKFLOW.parents[2]
+    required = {f"tests/test_{query.__module__.rsplit('.', 1)[-1]}.py" for _, _, _, query in families()}
+    required = {name for name in required if (root / name).is_file()}
+    validate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "validation_tests")
+    assert required <= set(validate["run"].split())
+
+
 def test_validation_cache_changes_with_code_or_environment(tmp_path):
     gate = next(step for step in workflow()["jobs"]["validate"]["steps"] if step.get("id") == "validation_env")
     script = gate["run"].split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
