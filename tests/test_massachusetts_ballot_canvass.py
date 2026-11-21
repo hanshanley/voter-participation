@@ -1,5 +1,8 @@
 import gzip
 import json
+from pathlib import Path
+from threading import Lock
+from types import SimpleNamespace
 
 import pytest
 
@@ -94,6 +97,23 @@ def test_2022_rollup_preserves_original_county_and_requires_one_to_one_names(mon
     assert municipality["census_geoid"] == "2500103690"
     entries[ma.CROSSWALK_FEED]["data"]["municipalities"]["not reported"] = ["Not reported town", "2500101234"]
     assert list(ma.rollup_exports(entries)) == []
+
+
+def test_pinned_crosswalk_reproduces_without_transport():
+    collector = SimpleNamespace(lock=Lock(), attempts=[])
+    entry = ma.collect_crosswalk(collector, reuse_checked_week=True)
+    assert entry["status"] == ma.CROSSWALK_STATUS
+    assert entry["first_observed_at"] is None
+    assert len(entry["data"]["municipalities"]) == 351
+    assert ma.collect_crosswalk(collector) == entry
+    original = (Path(ma.__file__).resolve().parents[1] / ma.CROSSWALK_ORIGINAL).read_bytes()
+    entries = {ma.CROSSWALK_FEED: entry}
+    ma.verify_pinned_crosswalk(entries, original)
+    with pytest.raises(ValueError, match="reviewed edition"):
+        ma.verify_pinned_crosswalk(entries, original + b"\n")
+    entry["data"]["municipalities"]["barnstable"][1] = "2500100000"
+    with pytest.raises(ValueError, match="does not reproduce"):
+        ma.verify_pinned_crosswalk(entries, original)
 
 
 def test_statewide_projection_is_count_only_and_retains_last_good():

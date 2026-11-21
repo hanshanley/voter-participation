@@ -4,6 +4,7 @@ from collections import Counter
 import csv
 from functools import partial
 import io
+from pathlib import Path
 import re
 
 from scripts.participation_intake.contract import IntakeError, federal_general, pin
@@ -31,6 +32,9 @@ CROSSWALK_FEED = "MA-2022-census-county-subdivisions"
 CROSSWALK_CSV = "participation-ma-2022-county-rollup.csv"
 CROSSWALK_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2022_Gazetteer/2022_gaz_cousubs_25.txt"
 CROSSWALK_PIN = {"bytes": 71948, "sha256": "db62cf01ebb90b6577eb99b0f40c357fe3d32fa75bec39ca0f324dc5ca41c135"}
+CROSSWALK_ORIGINAL = "data/results-intake/massachusetts-historical-reference/2022_gaz_cousubs_25.txt"
+CROSSWALK_MEMBER = "inputs/massachusetts-reference/2022_gaz_cousubs_25.txt"
+CROSSWALK_STATUS = "reviewed_historical_reference"
 LIMIT = 2_000_000
 TAIL = ("All Others", "Blanks", "Total Votes Cast")
 
@@ -227,8 +231,20 @@ def parse_crosswalk(body):
 
 
 def collect_crosswalk(collector, *, reuse_checked_week=False):
-    return collect_report(collector, CROSSWALK_FEED, CROSSWALK_URL, lambda body, _: parse_crosswalk(body),
-                          reuse_checked_week=reuse_checked_week)
+    body = (Path(__file__).resolve().parents[1] / CROSSWALK_ORIGINAL).read_bytes()
+    data = parse_crosswalk(body)
+    source = {"url": CROSSWALK_URL, **CROSSWALK_PIN}
+    with collector.lock:
+        collector.attempts.append({"id": CROSSWALK_FEED, "status": CROSSWALK_STATUS, **source})
+    return {"status": CROSSWALK_STATUS, "source": source, "data": data, "error": None,
+            "first_observed_at": None}
+
+
+def verify_pinned_crosswalk(entries, body):
+    crosswalk = entries.get(CROSSWALK_FEED, {})
+    if (crosswalk["source"] != {"url": CROSSWALK_URL, **CROSSWALK_PIN}
+            or crosswalk["data"] != parse_crosswalk(body)):
+        raise ValueError("Massachusetts pinned reference does not reproduce the accepted crosswalk")
 
 
 def rollup_exports(entries):
@@ -236,8 +252,9 @@ def rollup_exports(entries):
     if not crosswalk.get("data") or not election.get("data"):
         return
     expected = {"url": CROSSWALK_URL, **CROSSWALK_PIN}
-    if (crosswalk["source"] != expected or any(entry["status"] not in ("reported", "retained_after_failure")
-                                              for entry in (crosswalk, election))):
+    if (crosswalk["source"] != expected
+            or crosswalk["status"] not in ("reported", "retained_after_failure", CROSSWALK_STATUS)
+            or election["status"] not in ("reported", "retained_after_failure")):
         raise ValueError("Unreviewed Massachusetts county crosswalk receipt")
     native = crosswalk["data"]["municipalities"]
     counties, units = reconcile(election["data"]["reports"], year=2022)

@@ -745,6 +745,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
 
 
 def export_collection(work, config, baseline, inputs, extras, now, source_attempts):
+    from scripts import massachusetts_ballot_canvass as ma
     from scripts.bulk_participation_archives import original_inventory
     from scripts.results_turnout_history import county_archive_originals
 
@@ -765,6 +766,10 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     bulk_originals = original_inventory(stored_inputs.get("granular", {}))
     if bulk_originals:
         package_members["inputs/bulk-report-originals.json"] = encoded(bulk_originals)
+    if inputs.get("granular", {}).get(ma.CROSSWALK_FEED, {}).get("status") == ma.CROSSWALK_STATUS:
+        original = (ROOT / ma.CROSSWALK_ORIGINAL).read_bytes()
+        ma.verify_pinned_crosswalk(inputs["granular"], original)
+        package_members[ma.CROSSWALK_MEMBER] = original
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
              "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
              "results_aspx_congress.py", "results_native_congress.py", "results_json_congress.py",
@@ -1176,6 +1181,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
 
 
 def replay(package, output, *, county_report_dir=None, bulk_report_dir=None):
+    from scripts import massachusetts_ballot_canvass as ma
     from scripts.bulk_participation_archives import original_inventory, verify_original_reports
     from scripts.results_turnout_history import county_archive_originals, verify_county_archive_originals
 
@@ -1190,6 +1196,10 @@ def replay(package, output, *, county_report_dir=None, bulk_report_dir=None):
     baseline = baseline_inputs(package / "inputs/accepted-counts", config["baseline"])
     state = hydrate_collector_state(read(package / "inputs/selected-source-facts.json"))
     entries = state.get("granular", {})
+    if entries.get(ma.CROSSWALK_FEED, {}).get("status") == ma.CROSSWALK_STATUS:
+        if ma.CROSSWALK_MEMBER not in manifest:
+            raise ValueError("Missing packaged Massachusetts crosswalk original")
+        ma.verify_pinned_crosswalk(entries, (package / ma.CROSSWALK_MEMBER).read_bytes())
     original_manifest = "inputs/county-report-originals.json"
     if original_manifest in manifest and read(package / original_manifest) != county_archive_originals(entries):
         raise ValueError("County report original inventory differs from the accepted checkpoint")
