@@ -1,7 +1,10 @@
+from datetime import datetime, timezone
+
 import pytest
 
 from scripts import alaska_age_history as ak
 from scripts import bulk_participation_archives as archives
+from scripts.results_intake import Collector
 from scripts.participation_intake.contract import pin
 
 
@@ -120,3 +123,29 @@ def test_bulk_original_replay_checks_exact_bytes_then_compares_parsed_query(tmp_
         archives.verify_original_reports(entries, tmp_path)
     monkeypatch.setattr(ak, "parse", lambda *_args, **_kwargs: facts)
     assert archives.verify_original_reports(entries, tmp_path) == 1
+
+
+def test_scan_family_reuses_failed_editions_independently(tmp_path, monkeypatch):
+    feeds = {feed for feed, year in ak.YEARS.items() if year in ak.SCANNED}
+    calls = []
+
+    def parse(body, year):
+        calls.append((body, year))
+        raise ValueError("Printed totals disagree")
+
+    monkeypatch.setattr(ak, "parse", parse)
+    monkeypatch.setattr(ak.scan, "scan_policy", lambda *args: "v1")
+
+    def refresh(prior):
+        collector = Collector(tmp_path, prior, {"urls": [], "prefixes": [], "hosts": []},
+                              datetime(2026, 11, 21, tzinfo=timezone.utc))
+        monkeypatch.setattr(collector, "acquire", lambda url: (url.encode(), {"origin": "test"}))
+        routes = archives.collectors(reuse_checked_week=True)
+        return {feed: routes[feed](collector) for feed in sorted(feeds)}
+
+    held = refresh({})
+    assert len(calls) == len(feeds)
+    assert all(entry["status"] == "scan_reconciliation_failed" and entry["data"] is None
+               for entry in held.values())
+    assert refresh(held) == held
+    assert len(calls) == len(feeds)

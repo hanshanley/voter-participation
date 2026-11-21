@@ -8,6 +8,7 @@ import io
 import re
 from urllib.parse import urljoin, urlsplit
 
+from scripts import results_pdf_archive_ocr as scan
 from scripts.participation_intake.contract import IntakeError, pin
 
 INDEX = ("https://portal.ct.gov/sots/election-services/election-day-voter-registration-turnout-and-absentee-ballot-"
@@ -265,7 +266,6 @@ def scanned_statement_rows(pages):
 
 def scanned_statement(body):
     import pymupdf
-    from scripts.results_pdf_archive_ocr import extract
 
     if not body.startswith(b"%PDF-") or len(body) > SCAN_LIMIT:
         raise ValueError("Connecticut scanned Statement exceeds PDF bounds")
@@ -274,8 +274,11 @@ def scanned_statement(body):
                 or not SCAN_FIRST + 9 <= len(report) <= 235):
             raise ValueError("Connecticut scanned Statement does not permit bounded extraction")
     views = [[scan_view(view) for view in pair]
-             for pair in extract(body, range(SCAN_FIRST - 1, SCAN_FIRST + 9)).values()]
-    scanned_statement_rows(views)
+             for pair in scan.extract(body, range(SCAN_FIRST - 1, SCAN_FIRST + 9), rotation=90).values()]
+    try:
+        scanned_statement_rows(views)
+    except ValueError as error:
+        scan.fail(str(error))
     return {"complete_native_query": views, "participation_observation_qualified": False}
 
 
@@ -373,15 +376,24 @@ def collect(collector, feed, *, reuse_checked_week=False):
     if (reuse_checked_week and not collector.offline and old.get("archive_check_week_utc") == week
             and old.get("status") == "reported" and old.get("data") is not None):
         return old
+    rejected_scan = scan.ScanRejection(old)
 
     def read_report(index):
         url = discover(index, year)
         body, _ = collector.acquire(url)
         receipt = {"url": url, **pin(body)}
         previous = old.get("data") or {}
-        return previous if previous.get("report") == receipt else {"report": receipt, **parse(body, year)}
+        if previous.get("report") == receipt:
+            rejected_scan.receipt = None
+            return previous
+        if year == 2018:
+            facts = rejected_scan.parse(receipt, scan.scan_policy(__file__, year), lambda: parse(body, year))
+        else:
+            facts = parse(body, year)
+        return {"report": receipt, **facts}
 
     entry = collector.capture(feed, archive_index(year), read_report, shared_acquisition=True, equivalent=lambda a, b: a == b)
+    rejected_scan.attach(entry)
     if not collector.offline:
         entry["archive_check_week_utc"] = week
     return entry

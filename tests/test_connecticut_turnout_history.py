@@ -1,8 +1,9 @@
 import hashlib
+from datetime import datetime, timezone
 
 import pytest
 
-from scripts import connecticut_turnout_history as ct
+from scripts import connecticut_turnout_history as ct, results_intake
 
 
 def test_archive_refuses_ambiguous_or_foreign_targets():
@@ -98,3 +99,48 @@ def test_2018_scan_accepts_matched_counts_without_guessing_a_mode_cell(monkeypat
     pages[0][1]["rows"][0][2] = "13"
     with pytest.raises(ValueError, match="counts or printed rate disagree"):
         ct.scanned_statement_rows(pages)
+
+
+def test_2018_scan_does_not_repeat_an_unchanged_rejection(tmp_path, monkeypatch):
+    feed = "CT-2018-general-town-turnout-archive"
+    url = "https://portal.ct.gov/-/media/sots/electionservices/statementofvote_pdfs/2018-sov.pdf"
+    index = f'<a href="{url}">2018 PDF</a>'.encode()
+    calls = []
+
+    def parse(body, year):
+        assert year == 2018
+        calls.append(body)
+        if body == b"bad edition":
+            ct.scan.fail("Town counts disagree")
+        if body == b"transient":
+            raise RuntimeError("OCR worker failed")
+        return {"complete_native_query": [body.decode()]}
+
+    monkeypatch.setattr(ct, "parse", parse)
+    monkeypatch.setattr(ct.scan, "scan_policy", lambda *args: "v1")
+    prior = {}
+
+    def refresh(body):
+        collector = results_intake.Collector(tmp_path, prior, {"urls": [], "prefixes": [], "hosts": []},
+                                             datetime(2026, 11, 21, tzinfo=timezone.utc))
+        monkeypatch.setattr(collector, "acquire", lambda target: (
+            index if target == ct.STATEMENT_INDEX else body, {"origin": "test"}))
+        prior[feed] = ct.collect(collector, feed)
+        return prior[feed]
+
+    accepted = refresh(b"original")
+    assert refresh(b"original") == accepted
+    held = refresh(b"bad edition")
+    assert held["status"] == "retained_after_failure"
+    assert held["error"] == "scan_reconciliation_failed" and held["error_detail"] == "Town counts disagree"
+    assert held["data"] == accepted["data"] and refresh(b"bad edition") == held
+    assert calls == [b"original", b"bad edition"]
+
+    monkeypatch.setattr(ct.scan, "scan_policy", lambda *args: "v2")
+    assert refresh(b"bad edition")["error"] == "scan_reconciliation_failed"
+    assert calls.count(b"bad edition") == 2
+    assert refresh(b"transient")["status"] == refresh(b"transient")["status"] == "retained_after_failure"
+    assert calls.count(b"transient") == 2
+    restored = refresh(b"revised")
+    assert restored["status"] == "reported" and "rejected_scan" not in restored
+    assert restored["data"]["complete_native_query"] == ["revised"]

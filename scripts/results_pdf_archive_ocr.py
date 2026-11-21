@@ -1,17 +1,59 @@
 """Batch validation of printed total columns in reviewed scanned tables."""
 
 import math
+from pathlib import Path
 import re
 
-from scripts.participation_intake.contract import IntakeError, count
+from scripts.participation_intake.contract import IntakeError, count, encoded, pin
 from scripts.results_pdf_ocr import page_views
 
 DPI = (180, 240)
 MINIMUM = 0.98
+RECONCILIATION_FAILED = "scan_reconciliation_failed"
 
 
 def fail(message):
-    raise IntakeError("scan_reconciliation_failed", message)
+    raise IntakeError(RECONCILIATION_FAILED, message)
+
+
+def scan_policy(adapter, profile):
+    from importlib.metadata import version
+    import platform
+
+    return pin(encoded({
+        "profile": profile,
+        "code": [pin(Path(file).read_bytes()) for file in (
+            adapter, __file__, Path(__file__).with_name("results_pdf_ocr.py"))],
+        "versions": {package: version(package) for package in (
+            "pypdf", "PyMuPDF", "rapidocr-onnxruntime", "onnxruntime", "numpy")},
+        "runtime": [platform.system(), platform.machine(), platform.python_version()],
+    }))["sha256"]
+
+
+class ScanRejection:
+    """Skip deterministic scan failures only for the same report and parser policy."""
+
+    def __init__(self, previous):
+        self.receipt = previous.get("rejected_scan")
+
+    def parse(self, report, policy, parser):
+        key = {"report": report, "policy": policy}
+        if self.receipt and self.receipt["key"] == key:
+            fail(self.receipt["detail"])
+        try:
+            result = parser()
+        except IntakeError as error:
+            if error.code == RECONCILIATION_FAILED:
+                self.receipt = {"key": key, "detail": str(error)}
+            raise
+        self.receipt = None
+        return result
+
+    def attach(self, entry):
+        if self.receipt is None:
+            entry.pop("rejected_scan", None)
+        else:
+            entry["rejected_scan"] = self.receipt
 
 
 def label(text):
@@ -22,10 +64,10 @@ def heading_key(text):
     return re.sub(r"[^a-z0-9]", "", text.lower())
 
 
-def extract(body, page_indices):
+def extract(body, page_indices, *, rotation=None):
     try:
         return {str(page): page_views(body, page_index=page, strict_role_alignment=True,
-                                      text_angle_classifier=False)
+                                      text_angle_classifier=False, rotation=rotation)
                 for page in sorted(set(page_indices))}
     except (ValueError, IndexError) as error:
         fail(f"Scanned table extraction failed: {error}")

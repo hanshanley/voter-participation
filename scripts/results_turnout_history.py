@@ -21,6 +21,7 @@ from scripts.participation_intake.contract import IntakeError, count, encoded, p
 from scripts import wyoming_participation_statistics as wy_profile
 from scripts import colorado_voting_statistics, maryland_precinct_history, minnesota_precinct_history
 from scripts import nebraska_canvass, nebraska_county_reports
+from scripts.results_pdf_archive_ocr import ScanRejection
 
 
 WA_FEED = "WA-general-election-turnout"
@@ -934,10 +935,9 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
         if (reuse_checked_week and old.get("archive_check_week_utc") == checked_week
                 and old.get("status") == "reported" and old.get("data") is not None):
             return old
-    rejected_scan = old.get("rejected_scan")
+    rejected_scan = ScanRejection(old)
 
     def parse(index):
-        nonlocal rejected_scan
         if state == "MD":
             _, control_url = maryland_precinct_history.routes(election)
             supporting, _ = collector.acquire(control_url)
@@ -984,7 +984,7 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
                 raise ValueError("Nebraska Blue Book exceeds reviewed size bound")
             supporting_report = {"url": nebraska_canvass.BLUE_BOOK, **pin(supporting)}
         if previous and previous.get("report") == report and previous.get("supporting_report") == supporting_report:
-            rejected_scan = None
+            rejected_scan.receipt = None
             return previous
         if state == "CO":
             query = colorado_voting_statistics.parse(body, election)
@@ -1000,17 +1000,12 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
         elif supporting_report:
             query = nebraska_canvass.parse_blue_book(supporting, body)
         elif state == "NE":
-            scan_key = ({"report": report, "policy": nebraska_canvass.scan_policy(election)}
-                        if election in nebraska_canvass.SCANS else None)
-            if scan_key and rejected_scan and rejected_scan["key"] == scan_key:
-                raise IntakeError("scan_reconciliation_failed", rejected_scan["detail"])
-            try:
+            if election in nebraska_canvass.SCANS:
+                query = rejected_scan.parse(report, nebraska_canvass.scan_policy(election),
+                                            lambda: nebraska_canvass.parse(body, election))
+            else:
                 query = nebraska_canvass.parse(body, election)
-            except IntakeError as error:
-                if scan_key and error.code == "scan_reconciliation_failed":
-                    rejected_scan = {"key": scan_key, "detail": str(error)}
-                raise
-            rejected_scan = None
+                rejected_scan.receipt = None
         else:
             query = new_jersey_report(body, election, allow_amended=True)
         data = {"election_date": election, "report": report, "complete_native_query": query,
@@ -1025,10 +1020,7 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
                                shared_acquisition=True)
     if checked_week is not None:
         result["archive_check_week_utc"] = checked_week
-    if rejected_scan is None:
-        result.pop("rejected_scan", None)
-    else:
-        result["rejected_scan"] = rejected_scan
+    rejected_scan.attach(result)
     return result
 
 

@@ -80,7 +80,7 @@ def physical_lines(items, strict_role_alignment=False):
 
 
 def page_views(body, strict_role_alignment=False, text_angle_classifier=True,
-               page_index=0, region=None):
+               page_index=0, region=None, rotation=None):
     import fitz
     import rapidocr_onnxruntime
     from rapidocr_onnxruntime import RapidOCR
@@ -91,6 +91,8 @@ def page_views(body, strict_role_alignment=False, text_angle_classifier=True,
             len(region) != 4 or not 0 <= region[0] < region[2] <= 1
             or not 0 <= region[1] < region[3] <= 1):
         raise ValueError("Native statistical PDF region must be a bounded normalized rectangle")
+    if rotation is not None and (not strict_role_alignment or rotation not in (0, 90)):
+        raise ValueError("Known PDF orientation requires a reviewed strict layout")
     if not hasattr(_local, "engine"):
         _local.engine = RapidOCR(intra_op_num_threads=1, inter_op_num_threads=1)
         root = Path(rapidocr_onnxruntime.__file__).parent
@@ -113,16 +115,22 @@ def page_views(body, strict_role_alignment=False, text_angle_classifier=True,
         for dpi in (180, 240):
             if rectangle.width * rectangle.height * (dpi / 72) ** 2 > 15_000_000:
                 raise ValueError("Native statistical PDF page exceeds the OCR pixel budget")
-            image = page.get_pixmap(dpi=dpi, alpha=False, **options_region).tobytes("png")
+            angle = rotation or 0
+            if angle:
+                matrix = fitz.Matrix(dpi / 72, dpi / 72).prerotate(angle)
+                image = page.get_pixmap(matrix=matrix, alpha=False, **options_region).tobytes("png")
+            else:
+                image = page.get_pixmap(dpi=dpi, alpha=False, **options_region).tobytes("png")
             items, _timings = _local.engine(image, **options)
             if not items:
                 raise ValueError("Native statistical PDF has no readable OCR statistics")
-            rotation = 0
             if strict_role_alignment and vertical_layout(items):
-                matrix = fitz.Matrix(dpi / 72, dpi / 72).prerotate(90)
+                if rotation is not None:
+                    raise ValueError("Native statistical PDF orientation requires review")
+                angle = 90
+                matrix = fitz.Matrix(dpi / 72, dpi / 72).prerotate(angle)
                 image = page.get_pixmap(matrix=matrix, alpha=False, **options_region).tobytes("png")
                 items, _timings = _local.engine(image, **options)
-                rotation = 90
                 if not items or vertical_layout(items):
                     raise ValueError("Native statistical PDF orientation requires review")
             view = physical_lines(items, strict_role_alignment=strict_role_alignment)
@@ -134,7 +142,7 @@ def page_views(body, strict_role_alignment=False, text_angle_classifier=True,
             if region is not None:
                 receipt["normalized_region"] = list(region)
             if strict_role_alignment:
-                receipt["rotation_degrees"] = rotation
+                receipt["rotation_degrees"] = angle
             if not text_angle_classifier:
                 receipt["text_angle_classifier_enabled"] = False
             view["receipt"] = receipt

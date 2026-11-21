@@ -5,6 +5,7 @@ from datetime import date, datetime, timedelta
 from decimal import Decimal
 from html.parser import HTMLParser
 
+from scripts import results_pdf_archive_ocr as scan
 from scripts.participation_intake.contract import pin
 from scripts.southeast_turnout import collect_report
 
@@ -359,16 +360,31 @@ def parse(body, year):
 def collect(collector, feed, *, reuse_checked_week=False):
     year = YEARS[feed]
     previous = collector.prior.get(feed) or {}
+    url = source(year)
+    if year not in SCANNED:
+        return collect_report(collector, feed, url, lambda body, _: parse(body, year),
+                              reuse_checked_week=reuse_checked_week)
+    rejected_scan = scan.ScanRejection(previous)
+
+    def checked(body):
+        try:
+            return parse(body, year)
+        except ValueError as error:
+            scan.fail(str(error))
 
     def query(body, _):
-        if (year in SCANNED and previous.get("source") == {"url": source(year), **pin(body)}
+        report = {"url": url, **pin(body)}
+        if (previous.get("source") == report
                 and (data := previous.get("data")) is not None):
             if data == scan_facts(data["scan_evidence"], year):
+                rejected_scan.receipt = None
                 return data
-        return parse(body, year)
+        return rejected_scan.parse(report, scan.scan_policy(__file__, year), lambda: checked(body))
 
-    return collect_report(collector, feed, source(year), query,
-                          reuse_checked_week=reuse_checked_week)
+    entry = collect_report(collector, feed, url, query, reuse_checked_week=reuse_checked_week)
+    if entry is not previous:
+        rejected_scan.attach(entry)
+    return entry
 
 
 def exports(entries):
