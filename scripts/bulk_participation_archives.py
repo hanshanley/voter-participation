@@ -6,7 +6,7 @@ from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history, california_media,
     california_turnout_history,
     connecticut_turnout_history, dakota_turnout_history, hawaii_precinct_turnout, hawaii_turnout_history,
-    indiana_early_county_turnout, indiana_early_state_turnout, kansas_turnout_history, louisiana_group_history,
+    indiana_early_county_turnout, indiana_early_state_turnout, kansas_house_canvass, kansas_turnout_history, louisiana_group_history,
     national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     pa_audit_ballots,
     south_carolina_voter_statistics, southeast_turnout, virginia_absentee_history, virginia_bulk_turnout,
@@ -27,6 +27,8 @@ def families():
     return (
         (routes(watch, (watch.CENSUS, watch.EAC, watch.CT)), True, (watch.CSV,), watch.exports),
         (routes(watch, (watch.WV,)), True, (watch.FEDERAL_CSV,), watch.federal_exports),
+        (routes(kansas_house_canvass, kansas_house_canvass.FEEDS), True,
+         (kansas_house_canvass.CSV,), kansas_house_canvass.exports),
         ({wa.FEED: wa.collect}, True, (wa.CSV,), wa.exports),
         (routes(oregon, oregon.URLS), True, (oregon.CSV,), oregon.exports),
         (routes(se, se.URLS), True, (se.SC_CSV, se.AL_CSV), se.exports),
@@ -113,6 +115,7 @@ def original_reports(entries):
     yield from virginia_precinct_turnout.original_reports(entries)
     yield from virginia_bulk_turnout.original_reports(entries)
     yield from virginia_absentee_history.original_reports(entries)
+    yield from kansas_house_canvass.original_reports(entries)
     if (entry := entries.get(se.AL_HISTORY)) and entry.get("data") is not None:
         source = entry["source"]
         yield (se.AL_HISTORY, source, ".pdf", 2_000_000, source["url"] == se.AL_HISTORY_URL,
