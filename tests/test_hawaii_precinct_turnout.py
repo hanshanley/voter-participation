@@ -13,7 +13,7 @@ def reports(monkeypatch):
     monkeypatch.setattr(pypdf, "PdfReader", lambda buf, **_: SimpleNamespace(
         is_encrypted=False, pages=[SimpleNamespace(extract_text=lambda txt=page: txt)
                                    for page in buf.getvalue().decode()[9:-6].split("\f")]))
-    monkeypatch.setattr(hi, "statewide_control", lambda body: {
+    monkeypatch.setattr(hi, "statewide_control", lambda body, **_: {
         "report_clock": "2026-11-10T20:00:08-10:00",
         "native_values": dict(zip(("TOTAL REGISTRATION", "TOTAL TURNOUT", "Mail TURNOUT", "In-Person TURNOUT"),
                                   (100, 40 + int(body), 40, int(body)))),
@@ -78,3 +78,16 @@ def test_automatic_capture_accepts_revisions_and_retains_last_good(reports, tmp_
     failed = hi.collect(c, hi.FEED)
     assert failed["status"] == "retained_after_failure"
     assert failed["data"] == revised["data"]
+
+
+def test_historical_detail_requires_its_own_date_and_profile(reports, monkeypatch):
+    monkeypatch.setattr(hi, "HISTORICAL_ROSTER", hi.ROSTER)
+    historical = (reports().replace(b"11/10/2026", b"11/13/2024")
+                  .replace(b"GENERAL ELECTION 2026 - State of Hawaii - Statewide Precinct",
+                           b"GENERAL ELECTION 2024 - State of Hawaii - Statewide Precinct Report")
+                  .replace(b"November 3, 2026", b"November 5, 2024")
+                  .replace(b"Mail ", b"MAIL ").replace(b"In-Person ", b"IN-PERSON ")
+                  .replace(b"FINAL", b"Final"))
+    assert hi.parse_detail(historical, year=2024)["mode_blocks"][0][:2] == ["01-01", "Mail"]
+    with pytest.raises(ValueError, match="election"):
+        hi.parse_detail(historical, year=2026)

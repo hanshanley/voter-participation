@@ -40,6 +40,8 @@ def families():
          (hawaii_turnout_history.CSV,), hawaii_turnout_history.exports),
         (routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.FEED,)), True,
          (hawaii_precinct_turnout.CSV,), hawaii_precinct_turnout.exports),
+        (routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.HISTORICAL_FEED,)), True,
+         (hawaii_precinct_turnout.HISTORICAL_CSV,), partial(hawaii_precinct_turnout.exports, year=2024)),
         (routes(dakota_turnout_history, dakota_turnout_history.URLS), True,
          (dakota_turnout_history.CSV,), dakota_turnout_history.exports),
         (routes(new_jersey_periodic_counties, new_jersey_periodic_counties.FEEDS), False,
@@ -86,11 +88,15 @@ def original_reports(entries):
 
     age, ct = alaska_age_history, connecticut_turnout_history
     hi = hawaii_precinct_turnout
-    if (data := (entries.get(hi.FEED) or {}).get("data")) is not None:
+    for feed, year in ((hi.FEED, 2026), (hi.HISTORICAL_FEED, 2024)):
+        if (data := (entries.get(feed) or {}).get("data")) is None:
+            continue
+        url, control_url = hi.sources(year)
         detail, control = data["report"], data["supporting_report"]
-        yield hi.FEED, detail, ".pdf", hi.MAX_BYTES, detail["url"] == hi.URL, hi.parse_detail, data["detail"]
-        yield (hi.FEED + "-statewide-control", control, ".pdf", hi.MAX_BYTES, control["url"] == hi.HI_URL,
-               hi.statewide_control, data["control"])
+        yield (feed, detail, ".pdf", hi.MAX_BYTES, detail["url"] == url,
+               partial(hi.parse_detail, year=year), data["detail"])
+        yield (feed + "-statewide-control", control, ".pdf", hi.MAX_BYTES, control["url"] == control_url,
+               partial(hi.statewide_control, year=year), data["control"])
     ca = california_turnout_history
     if (data := (entries.get(ca.FEED) or {}).get("data")) is not None:
         report = data["report"]
