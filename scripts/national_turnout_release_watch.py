@@ -17,6 +17,7 @@ INDEXES = {
     EAC: "https://www.eac.gov/research-and-data/studies-and-reports",
     CT: connecticut_turnout_history.STATEMENT_INDEX,
 }
+CSV = "participation-turnout-release-watch.csv"
 
 
 class Labels(HTMLParser):
@@ -147,3 +148,30 @@ def collect(collector, feed, *, reuse_checked_week=False):
     if not collector.offline:
         entry["archive_check_week_utc"] = week
     return entry
+
+
+def exports(entries):
+    for feed, index in INDEXES.items():
+        if feed not in entries:
+            continue
+        entry = entries[feed]
+        data = entry.get("data")
+        query = data["complete_native_query"] if data is not None else {
+            "release_status": "index_not_verified", "links": []}
+        if data is not None and (data["participation_observation_qualified"] is not False
+                                 or entry["source"]["url"] != index
+                                 or entry["status"] not in {"reported", "retained_after_failure"}):
+            raise ValueError("Turnout release watch is not bound to its checked index")
+        for link in query["links"] or [{}]:
+            url = link.get("url")
+            if url is not None:
+                target = urlsplit(url)
+                if target.scheme != "https" or target.netloc != urlsplit(index).netloc or target.fragment:
+                    raise ValueError("Turnout release link is not on its official index domain")
+            yield {"source_id": feed, "election_year": (data or {}).get("election_year", 2026),
+                   "index_url": index, "source_status": entry["status"],
+                   "release_status": query["release_status"], "release_url": url,
+                   "release_kind": link.get("kind"), "index_check_week_utc": entry.get("archive_check_week_utc"),
+                   "first_observed_at": entry.get("first_observed_at"),
+                   "index_sha256": (entry.get("source") or {}).get("sha256"),
+                   "error": entry.get("error"), "participation_observation_qualified": False}

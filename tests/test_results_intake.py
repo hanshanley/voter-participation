@@ -1018,6 +1018,10 @@ def test_national_release_discovery_distinguishes_links_from_participation(tmp_p
     linked = watch.collect(collector, watch.CENSUS)
     assert linked["data"]["participation_observation_qualified"] is False
     assert linked["data"]["complete_native_query"]["release_status"] == "candidate_links_require_admission"
+    [watched] = watch.exports({watch.CENSUS: linked})
+    assert watched["release_url"].endswith("next.html") and watched["participation_observation_qualified"] is False
+    [unavailable] = watch.exports({watch.EAC: {"status": "source_stopped", "error": "source_stopped"}})
+    assert unavailable["release_url"] is None and unavailable["release_status"] == "index_not_verified"
     from scripts import results_granular
     baseline = {"index.json": b'{"states": {}}'}
     assert results_granular.project(baseline, {watch.CENSUS: linked}) == (baseline, [])

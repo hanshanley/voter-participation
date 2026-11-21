@@ -21,7 +21,7 @@ def families():
     al, ak = alabama_precinct_history, alaska_precinct_history
     cards, age, ct = alaska_cards_history, alaska_age_history, connecticut_turnout_history
     return (
-        (routes(watch, watch.INDEXES), True, (), None),
+        (routes(watch, watch.INDEXES), True, (watch.CSV,), watch.exports),
         ({wa.FEED: wa.collect}, True, (wa.CSV,), wa.exports),
         (routes(oregon, oregon.URLS), True, (oregon.CSV,), oregon.exports),
         (routes(se, se.URLS), True, (se.SC_CSV, se.AL_CSV), se.exports),
