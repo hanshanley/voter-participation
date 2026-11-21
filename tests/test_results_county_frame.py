@@ -297,6 +297,13 @@ def test_votingworks_scan_counts_require_two_confident_and_reconciled_queries():
                  "controls": [["8,903", "109", "9,012"]] * 2} for dpi in (180, 240)]
     query = history.votingworks_scan_query(evidence, "Hampton")
     assert query["statistics"] == ["Ballot Count 9,012", "Scanned 8,903", "Manually Entered 109"]
+    amended = [{**view, "header": [*header[:2], header[2].replace("Nov3", "Dec1")]} for view in evidence]
+    assert history.votingworks_scan_query(amended, "Hampton")["generated"] == "Dec 01, 2026, 11:25:36 PM"
+    with pytest.raises(ValueError, match="disagree"):
+        history.votingworks_scan_query([evidence[0], amended[1]], "Hampton")
+    predating = [{**view, "header": [*header[:2], header[2].replace("Nov3", "Nov2")]} for view in evidence]
+    with pytest.raises(ValueError, match="predates"):
+        history.votingworks_scan_query(predating, "Hampton")
     for view in evidence:
         view["fields"][0][1] = False
     with pytest.raises(ValueError, match="lack a confident render"):

@@ -1662,12 +1662,15 @@ def votingworks_scan_query(evidence, town):
         election = "".join(election.split())
         meta = "".join(meta.split())
         date = re.fullmatch(
-            r"ReportGenerated:(Nov3,2026,\d{1,2}:\d\d:\d\d[AP]M)1?ElectionID:([a-f0-9]{7}-[a-f0-9]{7})", meta)
+            r"ReportGenerated:([A-Z][a-z]{2}\d{1,2},20\d{2},\d{1,2}:\d\d:\d\d[AP]M)"
+            r"1?ElectionID:([a-f0-9]{7}-[a-f0-9]{7})", meta)
         if (view["receipt"]["dpi"] != dpi or view["receipt"]["page"] != 1 or not date
                 or not re.fullmatch(r"Official Tally Report [\W\d]*VotingWorks", title, re.IGNORECASE)
                 or election != f"GeneralElection,Nov3,2026,{town.replace(' ', '')},NH"):
             raise ValueError("VotingWorks scan authority, election or render changed")
-        generated = datetime.strptime(date[1], "%b%d,%Y,%I:%M:%S%p").strftime("%b %d, %Y, %I:%M:%S %p")
+        generated = datetime.strptime(date[1], "%b%d,%Y,%I:%M:%S%p")
+        if generated.date() < datetime(2026, 11, 3).date():
+            raise ValueError("VotingWorks scan edition predates the election")
         fields = view["fields"]
         if len(fields) != 3 or any(not re.fullmatch(VOTINGWORKS_COUNT, n, re.ASCII)
                                    or type(clear) is not bool for n, clear in fields):
@@ -1677,7 +1680,7 @@ def votingworks_scan_query(evidence, town):
         if total != scanned + manual or controls.count((scanned, manual, total)) < 2:
             raise ValueError("VotingWorks scan ballot columns do not reconcile to repeated source controls")
         queries.append({"title": "Official Tally Report", "election": f"General Election, Nov 3, 2026, {town}, NH",
-                        "generated": generated, "election_id": date[2],
+                        "generated": generated.strftime("%b %d, %Y, %I:%M:%S %p"), "election_id": date[2],
                         "statistics": [f"{role} {cell[0]}" for role, cell in zip(VOTINGWORKS_ROLES, fields, strict=True)]})
     if queries[0] != queries[1] or any(not (a[1] or b[1]) for a, b in
                                       zip(evidence[0]["fields"], evidence[1]["fields"], strict=True)):
