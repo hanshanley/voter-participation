@@ -4,7 +4,7 @@ import re
 
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history,
-    connecticut_turnout_history, national_turnout_release_watch, oregon_turnout_history,
+    connecticut_turnout_history, kansas_turnout_history, national_turnout_release_watch, oregon_turnout_history,
     southeast_turnout, washington_participation,
 )
 from scripts.participation_intake.contract import pin
@@ -30,6 +30,8 @@ def families():
         (routes(cards, cards.ROUTES), True, (cards.CSV,), cards.exports),
         (routes(age, age.YEARS), True, (age.CSV,), age.exports),
         (routes(ct, ct.FEEDS), True, (ct.CSV,), ct.exports),
+        ({kansas_turnout_history.FEED: kansas_turnout_history.collect}, True,
+         (kansas_turnout_history.CSV,), kansas_turnout_history.exports),
     )
 
 
@@ -62,6 +64,10 @@ def original_reports(entries):
     from scripts import results_turnout_history as history
 
     age, ct = alaska_age_history, connecticut_turnout_history
+    ks = kansas_turnout_history
+    if (entry := entries.get(ks.FEED)) and entry.get("data") is not None:
+        report = entry["source"]
+        yield ks.FEED, report, ".pdf", ks.MAX_BYTES, report["url"] == ks.URL, ks.parse, entry["data"]
     for feed, year in age.YEARS.items():
         entry = entries.get(feed) or {}
         if entry.get("data") is not None:

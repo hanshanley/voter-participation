@@ -916,6 +916,20 @@ def test_virginia_locality_report_replays_and_keeps_curbside_out_of_the_sum(tmp_
     assert failure["status"] == "retained_after_failure" and failure["data"] == result["data"]
 
 
+def test_kansas_study_preserves_disputed_advance_share_without_holding_turnout():
+    from scripts import kansas_turnout_history as ks
+
+    lines = [f"{year} 1,000 750 75 250 33.3" for year in range(2008, 1994, -2)]
+    lines[-1] = "1996 1,000 750 75 250 33.2"
+    latest, *_, earliest = list(ks.rows(lines))
+    assert latest["election_date"] == "2008-11-04" and latest["advance_share_hold_reason"] == ""
+    assert earliest["election_type"] == "presidential"
+    assert earliest["advance_share_hold_reason"] == "printed_advance_share_disagrees"
+    assert earliest["turnout_per_reported_registration"] == "0.75000000"
+    with pytest.raises(ValueError, match="turnout percentage"):
+        list(ks.rows([*lines[:-1], lines[-1].replace("750 75", "750 76")]))
+
+
 def test_virginia_native_locality_counts_do_not_promote_incompatible_statewide_frame(monkeypatch):
     from scripts import results_turnout_history as history
 
