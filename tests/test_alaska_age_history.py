@@ -72,3 +72,31 @@ def test_modern_age_rejects_corrupted_details_or_incomplete_roster():
     rows[0][3][0] = "99"
     with pytest.raises(ValueError, match="printed controls"):
         ak.modern_facts(rows, 2018, "2019-09-13")
+
+
+def test_scan_accepts_matched_counts_and_rejects_disagreement_or_low_confidence():
+    groups = report(2008)
+    groups[-2][0] = "ABOVE 75"
+    rows = []
+    for band, records in groups:
+        for i, (role, n, _) in enumerate(records):
+            rows.append([band if i == 0 else role, n, ["", "40.0", "50.0", "60.0", "33.3", "50.0"][i], True])
+    pages = []
+    for page, page_rows in enumerate((rows[:42], rows[42:]), 1):
+        pages.append([
+            {"receipt": {"page": page, "dpi": dpi},
+             "header": ["STATE OF ALASKA DIVISION OF ELECTIONS DATE:12/04/2012",
+                        "VOTER HISTORY BY AGE REPORT FOR 12GENR", f"PAGE:{page}", "AGES TOTAL"],
+             "rows": [r.copy() for r in page_rows], "end": "END OF REPORT GVRR290P-R1"}
+            for dpi in (180, 240)])
+    checked = ak.scan_facts(pages, 2012)
+    assert checked["age_minus_control"] == [0] * 6
+    pages[0][0]["rows"][0][3] = False
+    assert ak.scan_facts(pages, 2012)["age_minus_control"] == [0] * 6
+    pages[0][1]["rows"][0][3] = False
+    with pytest.raises(ValueError, match="lack a confident render"):
+        ak.scan_facts(pages, 2012)
+    pages[0][1]["rows"][0][3] = True
+    pages[0][1]["rows"][0][1] = "99"
+    with pytest.raises(ValueError, match="totals disagree"):
+        ak.scan_facts(pages, 2012)

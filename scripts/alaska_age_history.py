@@ -5,11 +5,19 @@ from datetime import date, datetime, timedelta
 from decimal import Decimal
 from html.parser import HTMLParser
 
+from scripts.participation_intake.contract import pin
 from scripts.southeast_turnout import collect_report
 
 ELECTIONS = dict(zip(range(1996, 2010, 2), (
     "1996-11-05", "1998-11-03", "2000-11-07", "2002-11-05", "2004-11-02", "2006-11-07", "2008-11-04",
 )))
+SCANNED = {
+    2010: ("2010-11-02", "2010-11-22", 2),
+    2012: ("2012-11-06", "2012-12-04", 2),
+    2014: ("2014-11-04", "2014-11-25", 3),
+}
+SCAN_COLUMNS = {2010: (0, 0, .24, 1)}
+ELECTIONS.update({year: profile[0] for year, profile in SCANNED.items()})
 MODERN = {
     2016: ("2016-11-08", "2016/General", "A C D E G L N O P R T U"),
     2018: ("2018-11-06", "2018/General", "A C D E G H L N O P R T U V W"),
@@ -24,12 +32,15 @@ AGES = ("18-19", "20", "21", "22-24", "25-34", "35-44", "45-54", "55-59", "60-61
 ROLES = ("REGISTERED", "MALE", "FEMALE", "VOTED", "MALE", "FEMALE")
 GENDERS = ("MALE", "FEMALE", "UNKNOWN GENDER")
 NUMBER = r"(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)"
+SCAN_ROW = re.compile(
+    r"^(TOTALS|ABOVE\s*75|\d+\s*THRU\s*\d+|20|21|VOTED|MALE|FEMALE)"
+    r"\s+(\d+)(?:\s+(\d{1,3}\.\d))?(?:\s|$)")
 
 
 def source(year):
     if year in MODERN:
         return "https://www.elections.alaska.gov/election/" + MODERN[year][1] + "/VoterHistoryByAgeReport.pdf"
-    return BASE + f"vi_vrs_stats_history_{year}g." + ("pdf" if year == 2008 else "htm")
+    return BASE + f"vi_vrs_stats_history_{year}g." + ("pdf" if year >= 2008 else "htm")
 
 
 class Table(HTMLParser):
@@ -132,11 +143,12 @@ def pdf_query(body):
 
 
 def validate(groups, year, edition):
-    last = "ABOVE 75" if year == 2008 else "75+"
+    last = "ABOVE 75" if year >= 2008 else "75+"
     expected = (*AGES, last, *(("UNKNOWN",) if year == 1996 else ()), "TOTALS")
     if (tuple(group[0] for group in groups) != expected
             or (year == 2008 and (not edition or not ELECTIONS[year] <= edition <= "2008-12-31"))
-            or (year != 2008 and edition is not None)):
+            or (year in SCANNED and edition != SCANNED[year][1])
+            or (year < 2008 and edition is not None)):
         raise ValueError("Incomplete Alaska age history or inconsistent edition")
     for group, rows in groups:
         if tuple(row[0] for row in rows) != ROLES or any(not re.fullmatch(NUMBER, row[1])
@@ -158,6 +170,107 @@ def facts(groups, year, edition):
         raise ValueError("Alaska age bands do not sum to all six printed statewide controls")
     return {"date": edition, "complete_native_query": groups, "age_minus_control": residuals,
             "participation_observation_qualified": False}
+
+
+def scan_evidence(views, authority=None):
+    rows = []
+    lines = views["text"].splitlines()
+    scale = 72 / views["receipt"]["dpi"]
+    headers = [i for i, line in enumerate(lines) if line.startswith("AGES TOTAL")]
+    if len(headers) != 1:
+        raise ValueError("Missing or repeated Alaska scan total header")
+    header = headers[0]
+    cells = views["role_cells"][header]
+    if [cell["text"] for cell in cells[:2]] != ["AGES", "TOTAL"]:
+        raise ValueError("Missing Alaska scan total column")
+    right = cells[1]["right"]
+    for i, line in enumerate(lines[header + 1:], header + 1):
+        if not (match := SCAN_ROW.match(line)):
+            continue
+        label, number, pct = match.groups()
+        cells = [cell for cell in views["role_cells"][i] if cell["start"] <= match.start(2) < cell["end"]]
+        if (len(cells) != 1 or cells[0]["text"] != number
+                or not -10 <= (cells[0]["right"] - right) * scale <= 3):
+            raise ValueError("Ambiguous Alaska scan total cell")
+        role = re.sub(r"\s*THRU\s*", "-", label).replace("ABOVE75", "ABOVE 75")
+        rows.append([role, number, pct or "", cells[0]["confidence"] >= .98])
+    evidence = {"receipt": views["receipt"], "header": lines[:header + 1], "rows": rows,
+                "end": lines[-1]}
+    if authority is not None:
+        page = authority["text"].splitlines()
+        header = next(i for i, line in enumerate(page) if line.startswith("AGES TOTAL"))
+        evidence.update(header=page[:header + 1], end=page[-1], authority_receipt=authority["receipt"])
+    return evidence
+
+
+def scan_facts(pages, year):
+    from scripts.results_pdf_archive_ocr import DPI, heading_key
+
+    edition, expected_pages = SCANNED[year][1:]
+    if len(pages) != expected_pages:
+        raise ValueError("Unexpected Alaska scan page count")
+    printed_date = date.fromisoformat(edition).strftime("%m/%d/%Y")
+    rows = []
+    for index, pair in enumerate(pages, 1):
+        if len(pair) != len(DPI):
+            raise ValueError("Missing Alaska scan render")
+        for view, dpi in zip(pair, DPI, strict=True):
+            header = heading_key(" ".join(view["header"]))
+            if year == 2010:  # The 2010 typeface makes zero and O indistinguishable in the report code.
+                header = header.replace("reportfor1ogenr", "reportfor10genr")
+            region = SCAN_COLUMNS.get(year)
+            authority = view.get("authority_receipt", view["receipt"])
+            if (view["receipt"]["dpi"] != dpi or view["receipt"]["page"] != index
+                    or authority["dpi"] != dpi or authority["page"] != index
+                    or authority.get("normalized_region") is not None
+                    or view["receipt"].get("normalized_region") != (list(region) if region else None)
+                    or not all(heading_key(term) in header for term in (
+                        "STATE OF ALASKA", "DIVISION OF ELECTIONS", f"DATE:{printed_date}",
+                        f"VOTER HISTORY BY AGE REPORT FOR {year % 100}GENR", f"PAGE:{index}", "AGES TOTAL"))
+                    or (index == expected_pages and heading_key(view["end"]) != "endofreportgvrr290pr1")):
+                raise ValueError("Alaska scan edition, page or end marker differs")
+        for a, b in zip(pair[0]["rows"], pair[1]["rows"], strict=True):
+            if a[:3] != b[:3] or not (a[3] is True or b[3] is True):
+                raise ValueError("Alaska scan totals disagree or lack a confident render")
+            rows.append(a[:3])
+    groups = []
+    for start in range(0, len(rows), 6):
+        block = rows[start:start + 6]
+        label, count, pct = block[0]
+        groups.append([label, [["REGISTERED", count, pct], *block[1:]]])
+    result = facts(groups, year, edition)
+    for _, values, printed in validate(groups, year, edition):
+        if printed[0] or not all(printed[1:]):
+            raise ValueError("Incomplete Alaska scan printed percentages")
+        for index in range(1, 6):
+            base = values[3 if index > 3 else 0]
+            fraction = Decimal(values[index]) * 100 / base if base else Decimal(0)
+            # The legacy reports generally truncate to one decimal, but some cells round.
+            if abs(fraction - Decimal(printed[index])) >= Decimal(".1"):
+                raise ValueError("Alaska scan ratio disagrees with its printed percentage")
+    return {**result, "scan_evidence": pages}
+
+
+def scanned_report(body, year):
+    import pymupdf
+    from scripts.results_pdf_archive_ocr import extract
+    from scripts.results_pdf_ocr import page_views
+
+    expected_pages = SCANNED[year][2]
+    if not body.startswith(b"%PDF-"):
+        raise ValueError("Alaska scanned age history is not a PDF")
+    with pymupdf.open(stream=body, filetype="pdf") as report:
+        if report.needs_pass or len(report) != expected_pages:
+            raise ValueError("Unexpected Alaska scan page count")
+    pages = []
+    for index, pair in enumerate(extract(body, range(expected_pages)).values()):
+        if region := SCAN_COLUMNS.get(year):
+            cropped = page_views(body, page_index=index, strict_role_alignment=True,
+                                 text_angle_classifier=False, region=region)
+            pages.append([scan_evidence(view, authority) for view, authority in zip(cropped, pair, strict=True)])
+        else:
+            pages.append([scan_evidence(view) for view in pair])
+    return scan_facts(pages, year)
 
 
 def modern_query(body, year):
@@ -237,12 +350,24 @@ def parse(body, year):
     if year in MODERN:
         rows, date = modern_query(body, year)
         return modern_facts(rows, year, date)
+    if year in SCANNED:
+        return scanned_report(body, year)
     groups, date = pdf_query(body) if year == 2008 else (html_query(body, year), None)
     return facts(groups, year, date)
 
 
 def collect(collector, feed, *, reuse_checked_week=False):
-    return collect_report(collector, feed, source(YEARS[feed]), lambda body, _: parse(body, YEARS[feed]),
+    year = YEARS[feed]
+    previous = collector.prior.get(feed) or {}
+
+    def query(body, _):
+        if (year in SCANNED and previous.get("source") == {"url": source(year), **pin(body)}
+                and (data := previous.get("data")) is not None):
+            if data == scan_facts(data["scan_evidence"], year):
+                return data
+        return parse(body, year)
+
+    return collect_report(collector, feed, source(year), query,
                           reuse_checked_week=reuse_checked_week)
 
 
@@ -266,7 +391,8 @@ def exports(entries):
                                      group[4][2] if i == 0 else None, edition,
                                      int(group[3][1]) if i == 0 else None, int(group[7][1]) if i == 0 else None)
             continue
-        if entry["source"]["url"] != source(year) or data != facts(groups, year, edition):
+        checked = scan_facts(data["scan_evidence"], year) if year in SCANNED else facts(groups, year, edition)
+        if entry["source"]["url"] != source(year) or data != checked:
             raise ValueError("Alaska voter-history provenance or query changed")
         for age, counts, printed in validate(groups, year, edition):
             for i, gender in enumerate(("all", "male", "female")):
