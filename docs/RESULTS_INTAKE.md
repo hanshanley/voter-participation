@@ -121,6 +121,15 @@ general-election link and a reconciled report are required for a separate
 withheld if the registration timing is not verified. The export does not replace
 the current native turnout feed or claim certification.
 
+The separately scheduled `CA-statewide-general-special-turnout-history` reads
+California's statewide historical table in one native-text PDF. It requires the
+complete biennial general-election date roster and keeps statewide specials
+separate. `release/participation-ca-statewide-general-special-turnout-history.csv.gz`
+retains counts and both printed percentages, withholding rates whose same-row
+denominators or printed controls disagree. The source's `Eligible` column is not
+reclassified as VAP, CVAP, or a modern VEP estimate. This statewide table neither
+fills county gaps nor overwrites the separate historical county series.
+
 The same hourly collector also reads California's separately published `S26GG`
 and `V26GG` text files as `CA-2026-media-turnout`. The `A` section reports
 ballots cast and registration, with separate county report clocks and one

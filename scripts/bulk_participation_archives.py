@@ -4,6 +4,7 @@ import re
 
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history, california_media,
+    california_turnout_history,
     connecticut_turnout_history, dakota_turnout_history, hawaii_turnout_history, kansas_turnout_history,
     national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     pa_audit_ballots,
@@ -46,6 +47,8 @@ def families():
           north_carolina_participation.PRECINCTS), north_carolina_participation.exports),
         (routes(california_media, california_media.FEEDS), False,
          (california_media.TURNOUT_CSV, california_media.HOUSE_CSV), california_media.exports),
+        (routes(california_turnout_history, (california_turnout_history.FEED,)), True,
+         (california_turnout_history.CSV,), california_turnout_history.exports),
         (routes(pa_audit_ballots, (pa_audit_ballots.FEED,)), True,
          (pa_audit_ballots.CSV,), pa_audit_ballots.exports),
     )
@@ -80,6 +83,11 @@ def original_reports(entries):
     from scripts import results_indiana_turnout as indiana, results_turnout_history as history
 
     age, ct = alaska_age_history, connecticut_turnout_history
+    ca = california_turnout_history
+    if (data := (entries.get(ca.FEED) or {}).get("data")) is not None:
+        report = data["report"]
+        yield (ca.FEED, report, ".pdf", ca.MAX_BYTES, re.fullmatch(ca.ROUTE, report["url"]) is not None,
+               partial(ca.parse, url=report["url"]), {key: value for key, value in data.items() if key != "report"})
     if (data := (entries.get(pa_audit_ballots.FEED) or {}).get("data")) is not None:
         report = data["report"]
         yield (pa_audit_ballots.FEED, report, ".csv", pa_audit_ballots.MAX_BYTES,
