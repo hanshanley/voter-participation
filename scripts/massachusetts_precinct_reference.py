@@ -10,18 +10,25 @@ import io
 import json
 from pathlib import Path
 import re
+from urllib.parse import urlencode
 
 from pyproj import Transformer, network
 from shapely import transform
 from shapely.geometry import shape
 from shapely.strtree import STRtree
 
-from massachusetts_municipality_map import BINS, require
+if __package__:
+    from scripts.massachusetts_municipality_map import BINS, require
+else:
+    from massachusetts_municipality_map import BINS, require
 
 
 YEARS = {2022: "2022-11-08", 2024: "2024-11-05"}
 SOURCE = "https://www.mass.gov/info-details/massgis-data-2022-wards-and-precincts"
 SERIES = ("WardsPrecincts2022", "Subprecincts2022")
+SERVICE = "https://arcgisserver.digital.mass.gov/arcgisserver/rest/services/AGOL/"
+PARENT_FIELDS = "OBJECTID,TOWN,TOWN_ID,WARD,PRECINCT,WP_DISTRICT"
+SUB_FIELDS = "OBJECTID,TOWN,TOWN_ID,PARENT_PCT,SUBPRECINCT"
 
 
 def town(name):
@@ -137,7 +144,7 @@ This is a dated reference, not a reconstruction of every election-day boundary.<
 """
 
 
-def build(directory, history, output):
+def prepare(directory, history):
     parents, by_id = defaultdict(dict), {}
     for row in roster(directory, SERIES[0]):
         key, unit = town(row["TOWN"]), (row["WARD"] or "", row["PRECINCT"])
@@ -150,6 +157,53 @@ def build(directory, history, output):
     by_year = {year: candidates(rows, parents, sub_towns, date) for year, date in YEARS.items()}
     needed = {obj: by_id[obj] for _, _, status in by_year.values() for key, disposition in status.items()
               if disposition == "matched" for obj in parents[key].values()}
+    return parents, by_year, needed
+
+
+def collect(directory, history, acquire):
+    directory.mkdir()
+
+    def request(series, kind, **kwargs):
+        url = SERVICE + series + "/FeatureServer/0/query?" + urlencode(kwargs)
+        raw, _ = acquire(url)
+        data = json.loads(raw)
+        require("error" not in data, "MassGIS declined the bulk query")
+        (directory / f"{series}-{kind}.json").write_bytes(raw)
+        return data
+
+    for series, fields in zip(SERIES, (PARENT_FIELDS, SUB_FIELDS), strict=True):
+        data = request(series, "roster", where="1=1", outFields=fields,
+                       returnGeometry="false", f="json", orderByFields="OBJECTID")
+        offset = len(data["features"])
+        while data.get("exceededTransferLimit"):
+            require(0 < offset < 10_000, "Unbounded MassGIS roster pagination")
+            data = request(series, f"roster-offset-{offset}", where="1=1", f="json",
+                           outFields=fields, returnGeometry="false", orderByFields="OBJECTID",
+                           resultOffset=offset)
+            require(bool(data["features"]), "Empty MassGIS roster page")
+            offset += len(data["features"])
+        request(series, "ids", where="1=1", f="json", returnIdsOnly="true")
+
+    _, _, needed = prepare(directory, history)
+    receipts, ids = {}, sorted(needed)
+    for start in range(0, len(ids), 160):
+        batch, name = ids[start:start + 160], f"ward-parent-geometry-{start:04d}"
+        url = SERVICE + SERIES[0] + "/FeatureServer/0/query?" + urlencode(dict(
+            objectIds=",".join(map(str, batch)), outFields=PARENT_FIELDS,
+            returnGeometry="true", outSR="4326", f="geojson"))
+        raw, _ = acquire(url)
+        data = json.loads(raw)
+        require(data.get("type") == "FeatureCollection" and not data.get("exceededTransferLimit")
+                and sorted(f["properties"]["OBJECTID"] for f in data["features"]) == batch,
+                "Incomplete MassGIS candidate polygon batch")
+        filename = name + ".geojson"
+        (directory / filename).write_bytes(raw)
+        receipts[filename] = {"url": url, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+    (directory / "geometry-receipts.json").write_text(json.dumps(receipts, indent=2, sort_keys=True) + "\n")
+
+
+def build(directory, history, output):
+    parents, by_year, needed = prepare(directory, history)
     features, projected, holds = geometry(directory, needed)
     output.mkdir()
     with (output / "precinct-reference-coverage.csv").open("x", encoding="utf-8", newline="") as stream:
@@ -188,5 +242,16 @@ if __name__ == "__main__":
     parser.add_argument("originals", type=Path)
     parser.add_argument("historical_csv", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--collect-work", type=Path,
+                        help="Acquire a fresh originals directory using this persistent collector cache and stop ledger")
     args = parser.parse_args()
-    build(args.originals, args.historical_csv.read_bytes(), args.output)
+    history = args.historical_csv.read_bytes()
+    if args.collect_work:
+        from scripts.results_intake import Collector, read
+        from scripts.participation_intake.contract import utc_now
+        args.collect_work.mkdir(parents=True, exist_ok=True)
+        ledger = args.collect_work / "source-stops.json"
+        stopped = read(ledger) if ledger.exists() else {"urls": [], "prefixes": [], "hosts": []}
+        collector = Collector(args.collect_work, {}, stopped, utc_now())
+        collect(args.originals, history, collector.acquire)
+    build(args.originals, history, args.output)
