@@ -711,6 +711,10 @@ cmp reproduced-split-review.json \
   44-county reports, their source-printed percentages and statewide controls.
   Their independent routes retain last-good reports separately; the county
   map additionally checks each statewide control against the historical series.
+  The 2026 age query is separate from all-mode turnout. It checks the dashboard's
+  aggregate JSON and the exact declared chart CSV, reporting absentee returns and
+  early votes by age only when both mode totals reconcile. It keeps both source
+  clocks and never supplies an age-specific turnout denominator.
 
   ### Candidate inventories and analytical eligibility
 

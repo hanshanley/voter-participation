@@ -5,7 +5,8 @@ import re
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history, california_media,
     california_turnout_history,
-    connecticut_turnout_history, dakota_turnout_history, hawaii_precinct_turnout, hawaii_turnout_history, idaho_turnout_history,
+    connecticut_turnout_history, dakota_turnout_history, hawaii_precinct_turnout, hawaii_turnout_history,
+    idaho_absentee_age, idaho_turnout_history,
     indiana_early_county_turnout, indiana_early_state_turnout, kansas_house_canvass, kansas_turnout_history, louisiana_group_history,
     national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     pa_audit_ballots,
@@ -60,6 +61,7 @@ def families():
          (idaho_turnout_history.STATE_CSV, idaho_turnout_history.LOCAL_CSV), idaho_turnout_history.exports),
         ({feed: partial(idaho_turnout_history.collect_county, feed=feed) for feed in idaho_turnout_history.COUNTY_FEEDS},
          True, (idaho_turnout_history.COUNTY_CSV,), idaho_turnout_history.county_exports),
+        ({idaho_absentee_age.FEED: idaho_absentee_age.collect}, True, (idaho_absentee_age.CSV,), idaho_absentee_age.exports),
         *((routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.feed_for(year),)), year != 2026,
            (hawaii_precinct_turnout.csv_for(year),), partial(hawaii_precinct_turnout.exports, year=year))
           for year in hawaii_precinct_turnout.ELECTIONS),
@@ -121,6 +123,7 @@ def original_reports(entries):
     yield from virginia_absentee_history.original_reports(entries)
     yield from kansas_house_canvass.original_reports(entries)
     yield from idaho_turnout_history.original_reports(entries)
+    yield from idaho_absentee_age.original_reports(entries)
     if (entry := entries.get(se.AL_HISTORY)) and entry.get("data") is not None:
         source = entry["source"]
         yield (se.AL_HISTORY, source, ".pdf", 2_000_000, source["url"] == se.AL_HISTORY_URL,
