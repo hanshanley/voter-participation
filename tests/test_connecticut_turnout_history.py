@@ -64,3 +64,20 @@ def test_statement_does_not_promote_state_with_omitted_towns(monkeypatch):
         "Statewide Total 60 36 60.00% 6 0 6 3 0 3",
     ]
     assert list(ct.exports({"CT-2020-general-town-turnout-archive": entry}))[-1]["checked_as_voted_fraction"] == "0.60000000"
+
+
+def test_2016_retains_signed_absentee_entry_and_derives_only_the_checklist_fraction(monkeypatch):
+    monkeypatch.setattr(ct, "ROSTER", hashlib.sha256(b"Kent").hexdigest())
+    report = "https://portal.ct.gov/-/media/sots/releases/2016/turnout11082016novemberpresidentialelectionpdf.pdf"
+    entry = {
+        "status": "reported", "source": {"url": ct.PRESS_INDEX},
+        "data": {"report": {"url": report, "bytes": 1, "sha256": "a" * 64}, "complete_native_query": [
+            "Kent 20 12 60.00% 0 2 -2 1 0 1", "Statewide 20 12 2 2 0 1 0 1",
+        ]},
+    }
+    town, state = list(ct.exports({"CT-2016-general-town-turnout-archive": entry}))
+    assert town["absentee_voted"] == -2 and town["checked_as_voted_fraction"] == "0.60000000"
+    assert state["source_reported_percent"] is None and state["checked_as_voted_fraction"] == "0.60000000"
+    entry["data"]["complete_native_query"][0] = "Kent 20 12 60.00% 0 3 -3 1 0 1"
+    with pytest.raises(ValueError, match="negative ballot-mode cell"):
+        list(ct.exports({"CT-2016-general-town-turnout-archive": entry}))

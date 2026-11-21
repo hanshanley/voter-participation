@@ -14,6 +14,7 @@ INDEX = ("https://portal.ct.gov/sots/election-services/election-day-voter-regist
          "stats-pdfs/election-day-registration-turnout-and-absentee-ballot-statistics-1998--current?archived=true")
 STATEMENT_INDEX = ("https://portal.ct.gov/SOTS/Election-Services/Statement-Of-Vote-PDFs/"
                    "General-Elections-Statement-of-Vote-1922")
+PRESS_INDEX = "https://portal.ct.gov/SOTS/Press-Releases/Previous-Years/2016-Press-Releases"
 DATES = dict(zip(range(1998, 2010, 2), (
     "1998-11-03", "2000-11-07", "2002-11-05", "2004-11-02", "2006-11-07", "2008-11-04",
 )))
@@ -21,6 +22,7 @@ STATEMENTS = {
     2010: ("2010-11-02", "2010sovpdf.pdf", 3, 5),
     2012: ("2012-11-06", "2012statementofvotebookpdf.pdf", 3, 5),
     2014: ("2014-11-04", "2014sovpdf.pdf", 3, 5),
+    2016: ("2016-11-08", "turnout11082016novemberpresidentialelectionpdf.pdf", 6, 10),
     2020: ("2020-11-03", "2020-sov.pdf", 6, 6),
     2022: ("2022-11-08", "sov_2022.pdf", 6, 9),
     2024: ("2024-11-05", "2024_statement_of_vote.pdf", 9, 6),
@@ -53,8 +55,12 @@ class ReportLinks(HTMLParser):
 
 def valid_link(url, year):
     p = urlsplit(url)
-    path = (f"/-/media/sots/electionservices/statementofvote_pdfs/{STATEMENTS[year][1]}" if year in STATEMENTS
-            else f"/-/media/sots/electionservices/elecdaystats_pdfs/regturnoutabsentee{year}pdf.pdf")
+    if year == 2016:
+        path = f"/-/media/sots/releases/2016/{STATEMENTS[year][1]}"
+    elif year in STATEMENTS:
+        path = f"/-/media/sots/electionservices/statementofvote_pdfs/{STATEMENTS[year][1]}"
+    else:
+        path = f"/-/media/sots/electionservices/elecdaystats_pdfs/regturnoutabsentee{year}pdf.pdf"
     return (p.scheme == "https" and p.netloc == "portal.ct.gov" and not p.fragment
             and p.path.lower() == path
             and (not p.query or re.fullmatch(r"rev=[a-f0-9]{32}&hash=[A-Fa-f0-9]{32}", p.query)))
@@ -130,7 +136,9 @@ def qualified(lines, year):
 def statement_rows(lines, year):
     profile = STATEMENTS[year]
     columns = profile[2]
-    pattern = re.compile(rf"(?:(.+?) )?({NUMBER}) ({NUMBER}) (\d{{1,3}}\.\d{{2}}%)((?: {NUMBER}){{{columns}}})")
+    pct = r"(?: (\d{1,3}\.\d{2}%))?" if year == 2016 else r" (\d{1,3}\.\d{2}%)"
+    mode_cell = rf"-?{NUMBER}" if year == 2016 else NUMBER
+    pattern = re.compile(rf"(?:(.+?) )?({NUMBER}) ({NUMBER}){pct}((?: {mode_cell}){{{columns}}})")
     rows = []
     for line in lines:
         if not (match := pattern.fullmatch(line)):
@@ -138,15 +146,20 @@ def statement_rows(lines, year):
         name, registered, voted, rate, rest = match.groups()
         if name is None and year != 2024:
             raise ValueError("Unexpected unlabeled Connecticut row")
-        if (name, year) in {("Statewide", 2010), ("Statewide", 2012), ("Statewide", 2014),
+        if (name, year) in {("Statewide", 2010), ("Statewide", 2012), ("Statewide", 2014), ("Statewide", 2016),
                             ("Statewide Total", 2020), ("Statewide Totals", 2022), (None, 2024)}:
             name = "Statewide Totals"
-        elif name == "New Millford" and year <= 2014:
+        elif name == "New Millford" and year <= 2016:
             name = "New Milford"
         elif year in (2012, 2014):
             name = re.sub(r" (?:CD [1-5]|\([1-5](?:st|nd|rd|th) CD\))$", "", name)
         values = [int(value.replace(",", "")) for value in (registered, voted, *rest.split())]
-        if values[1] > values[0] or Decimal(rate.rstrip("%")) > 100:
+        negative = [(i, n) for i, n in enumerate(values) if n < 0]
+        if negative and (year != 2016 or name != "Kent" or negative != [(4, -2)]):
+            raise ValueError("Unexpected Connecticut negative ballot-mode cell")
+        if rate is None and (year != 2016 or name != "Statewide Totals"):
+            raise ValueError("Missing Connecticut printed turnout percentage")
+        if values[1] > values[0] or (rate is not None and Decimal(rate.rstrip("%")) > 100):
             raise ValueError("Connecticut Statement turnout exceeds checklist")
         rows.append((name, values, rate, line))
     if not rows or rows[-1][0] != "Statewide Totals" or any(row[0] in STATE for row in rows[:-1]):
@@ -193,6 +206,27 @@ def statement_query(body, year):
     with pymupdf.open(stream=body, filetype="pdf") as report:
         if report.needs_pass or not report.permissions & pymupdf.PDF_PERM_COPY or not 1 <= len(report) <= 300:
             raise ValueError("Connecticut Statement PDF does not permit bounded extraction")
+        if year == 2016:
+            cover = compact(report[0].get_text())
+            if len(report) < 11 or not all(name in cover for name in (
+                    "stateofconnecticut", "officeofthesecretaryofthestate", wanted)):
+                raise ValueError("Connecticut voter-statistics release authority differs")
+            first = physical_text(report[1], pymupdf)
+            town_start = next((i for i, line in enumerate(first) if line.startswith("Andover ")), None)
+            if (town_start is None
+                    or not all(term in compact(" ".join(first[:town_start])) for term in
+                               ("town", "official", "checklist", "havingvoted", "absenteeballots"))):
+                raise ValueError("Connecticut voter-statistics release town table differs")
+            region = first[town_start:] + [line for page in report[2:11] for line in physical_text(page, pymupdf)]
+            rows = [line for line in region if re.search(r"\d\.\d{2}%", line) or line.startswith("Statewide ")]
+            parsed, _ = statement_rows(rows, year)
+            county_totals = [re.fullmatch(rf"Totals ({NUMBER}) ({NUMBER}) \d{{1,3}}\.\d{{2}}%"
+                                         rf"((?: {NUMBER}){{6}})", line) for line in first[:town_start]]
+            controls = [[int(value.replace(",", "")) for value in (match[1], match[2], *match[3].split())]
+                        for match in county_totals if match]
+            if controls != [parsed[-1][2]]:
+                raise ValueError("Connecticut county and town statewide controls disagree")
+            return {"complete_native_query": rows, "participation_observation_qualified": False}
         start = None
         pages = []
         expected = STATEMENTS[year][3]
@@ -261,11 +295,14 @@ def collect(collector, feed, *, reuse_checked_week=False):
         previous = old.get("data") or {}
         return previous if previous.get("report") == receipt else {"report": receipt, **parse(body, year)}
 
-    index = STATEMENT_INDEX if year in STATEMENTS else INDEX
-    entry = collector.capture(feed, index, read_report, shared_acquisition=True, equivalent=lambda a, b: a == b)
+    entry = collector.capture(feed, archive_index(year), read_report, shared_acquisition=True, equivalent=lambda a, b: a == b)
     if not collector.offline:
         entry["archive_check_week_utc"] = week
     return entry
+
+
+def archive_index(year):
+    return PRESS_INDEX if year == 2016 else STATEMENT_INDEX if year in STATEMENTS else INDEX
 
 
 def exports(entries):
@@ -276,7 +313,7 @@ def exports(entries):
             continue
         report = data["report"]
         statement = year in STATEMENTS
-        if (entry["source"]["url"] != (STATEMENT_INDEX if statement else INDEX) or not valid_link(report["url"], year)
+        if (entry["source"]["url"] != archive_index(year) or not valid_link(report["url"], year)
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])
                 or not 0 < report["bytes"] <= (STATEMENT_LIMIT if statement else 2_000_000)):
             raise ValueError("Connecticut turnout source lineage changed")
@@ -291,7 +328,7 @@ def exports(entries):
             reason = ("malformed_count" if computed is None else
                       "incomplete_town_inventory" if state and missing_towns else
                       "town_counts_do_not_reconcile" if state and any(delta != 0 for delta in deltas[:2]) else
-                      "printed_percentage_differs" if Decimal(rate.rstrip("%")) !=
+                      "printed_percentage_differs" if rate is not None and Decimal(rate.rstrip("%")) !=
                       (computed * 100).quantize(Decimal(".01"), rounding=ROUND_HALF_UP) else None)
             yield {
                 "state_code": "CT", "election_date": DATES[year], "geography_level": (
