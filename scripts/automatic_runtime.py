@@ -37,7 +37,7 @@ CODE_PATHS = (
     "current_source_reconciliation.py",
     "results_granular.py", "results_native_louisiana.py",
     "results_native_louisiana_runtime.py", "louisiana_onboarding.py",
-    "louisiana_bootstrap.py", "participation_count_additions.py",
+    "louisiana_bootstrap.py", "louisiana_group_history.py", "participation_count_additions.py",
     "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "native_products.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",

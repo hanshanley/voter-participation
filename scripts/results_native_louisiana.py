@@ -107,17 +107,18 @@ def _percent(value, label):
     return value
 
 
-def _expected_percent(value, registered):
+def _expected_percent(value, registered, places=2):
+    precision = Decimal(1).scaleb(-places)
     if registered == 0:
-        return "0.00"
+        return str(Decimal(0).quantize(precision))
     return str(
         (Decimal(value) * Decimal(100) / Decimal(registered)).quantize(
-            Decimal("0.01"), rounding=ROUND_HALF_UP
+            precision, rounding=ROUND_HALF_UP
         )
     )
 
 
-def _validate_vector(vector, label):
+def _validate_vector(vector, label, *, percent_places=2):
     registered = vector["registered_voters"]
     voting = vector["voters_participating"]
     percentage = vector["percent_voting"]
@@ -140,7 +141,7 @@ def _validate_vector(vector, label):
     for field in FIELDS.values():
         if voting[field] > registered[field]:
             raise ValueError("Louisiana participation exceeds registration: " + label)
-        if percentage[field] != _expected_percent(voting[field], registered[field]):
+        if percentage[field] != _expected_percent(voting[field], registered[field], percent_places):
             raise ValueError("Louisiana printed percentage differs from counts: " + label)
 
 
