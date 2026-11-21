@@ -94,15 +94,34 @@ def membership(stream, congress):
 
 
 def block_changes(past, current, database):
-    insert_blocks(database, "past", past, 119)
-    insert_blocks(database, "current", current, 120)
+    database.execute("""
+        CREATE TABLE blocks (
+            geoid INTEGER PRIMARY KEY, past_district TEXT, current_district TEXT
+        )
+    """)
+    try:
+        database.executemany("INSERT INTO blocks (geoid, past_district) VALUES (?,?)",
+                             block_rows(past, 119))
+    except sqlite3.IntegrityError as error:
+        raise ValueError("Duplicate Census block identity in CD119") from error
+    seen = 0
+
+    def current_rows():
+        nonlocal seen
+        for row in block_rows(current, 120):
+            seen += 1
+            yield row
+
+    # Each current record must insert or fill a previously unset district exactly once.
+    written = database.executemany("""
+        INSERT INTO blocks (geoid, current_district) VALUES (?,?)
+        ON CONFLICT(geoid) DO UPDATE SET current_district = excluded.current_district
+        WHERE blocks.current_district IS NULL
+    """, current_rows()).rowcount
+    require(written == seen, "Duplicate Census block identity in CD120")
     return database.execute("""
-        SELECT p.geoid, p.district, c.district FROM past p
-        LEFT JOIN current c USING (geoid) WHERE p.district IS NOT c.district
-        UNION ALL
-        SELECT c.geoid, NULL, c.district FROM current c
-        LEFT JOIN past p USING (geoid) WHERE p.geoid IS NULL
-        ORDER BY 1
+        SELECT geoid, past_district, current_district FROM blocks
+        WHERE past_district IS NOT current_district ORDER BY geoid
     """)
 
 

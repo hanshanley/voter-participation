@@ -83,6 +83,20 @@ def test_block_changes_preserve_transfers_unassigned_missing_and_equal_net_movem
         geography.change_tables({"decisions": districts}, rows[:-1])
 
 
+@pytest.mark.parametrize("congress", [119, 120])
+def test_block_changes_reject_duplicate_blocks_in_either_edition(congress):
+    past = b"GEOID,CDFP\n010010201001000,01\n"
+    current = (b"GEOID,STATEFP,COUNTYFP,TRACTCE,BLOCKCE,CDFP\n"
+               b"010010201001000,01,001,020100,1000,01\n")
+    if congress == 119:
+        past += b"010010201001000,01\n"
+    else:
+        current += b"010010201001000,01,001,020100,1000,01\n"
+    with sqlite3.connect(":memory:") as database, pytest.raises(
+            ValueError, match=f"Duplicate Census block identity in CD{congress}"):
+        list(geography.block_changes(io.BytesIO(past), io.BytesIO(current), database))
+
+
 def test_complete_review_reconciles_real_split_tables_and_corrected_missouri(reviewed):
     assert reviewed is not None
     root = Path(__file__).resolve().parents[1] / geography.DIRECTORY
