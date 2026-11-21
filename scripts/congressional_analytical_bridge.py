@@ -264,6 +264,8 @@ def prepare_review(congress, seed, scientific_review, baselines):
 
 
 def evaluate(snapshot, seed):
+    from scripts import north_dakota_house_categories as nd
+
     review = seed["congressional_analytical_review"]
     require(review.get("contract") == CONTRACT
             and review.get("version") in (VERSION, IDENTITY_VERSION, DECLARATION_VERSION, CATEGORY_VERSION,
@@ -278,6 +280,7 @@ def evaluate(snapshot, seed):
     for key, reviewed in review["races"].items():
         entry = congress.get("races", {}).get(key, {})
         data, reasons = entry.get("data"), list(reviewed["initial_holds"])
+        category_proof = None
         if entry.get("status") != "reported" or entry.get("advertised", True) is not True:
             reasons.append("current_source_not_fresh_or_not_advertised")
         if data is None or identity(data) != reviewed["identity"]:
@@ -296,11 +299,17 @@ def evaluate(snapshot, seed):
                 category_hold = current_hold(congress, key, reviewed, data)
                 if category_hold:
                     reasons.append(category_hold)
+                if key == nd.RACE and nd.MASS_HOLD in reasons and nd.IDENTITY in congress.get(
+                        "official_candidate_evidence", {}):
+                    category_proof = nd.reconcile(congress, review, reviewed, data)
+                    reasons.remove(nd.MASS_HOLD)
             except (ValueError, TypeError, KeyError, OverflowError) as error:
                 reasons.append(str(error))
         races[key] = {"race_id": key, "state_code": reviewed["identity"]["state_code"],
                       "chamber": reviewed["identity"]["chamber"], "holds": sorted(set(reasons)),
                       "compatible": not reasons, "source_updated_at": (data or {}).get("source_updated_at")}
+        if category_proof is not None:
+            races[key]["official_category_reconciliation"] = category_proof
         if not reasons:
             checkpoints[key] = copy.deepcopy(data)
     for key in sorted(set(congress.get("races", {})) - set(review["races"])):
@@ -315,6 +324,12 @@ def evaluate(snapshot, seed):
     for state, reviewed in review["states"].items():
         reasons = list(reviewed["holds"])
         expected = reviewed["expected_race_ids"]
+        nd_hold = nd.RACE + ":" + nd.MASS_HOLD
+        if (state == "ND" and expected == [nd.RACE] and nd_hold in reasons
+                and reviewed["frozen_scientific_comparison_qualified"]
+                and reviewed["initial_recorded_comparison_qualified"]
+                and races[nd.RACE].get("official_category_reconciliation") is not None):
+            reasons.remove(nd_hold)
         actual = {key for key, entry in congress.get("races", {}).items()
                   if (entry.get("data") or {}).get("chamber") == "house"
                   and (entry.get("data") or {}).get("state_code") == state}
