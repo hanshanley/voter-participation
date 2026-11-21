@@ -33,3 +33,23 @@ use `python3.12 code/reproduce.py replay --package . --output reproduced-origina
 --bulk-report-dir "$ORIGINALS"` with the named original bytes to verify extraction
 in addition to reproducing the queries. The original-report command expects the
 complete bulk inventory in that checkpoint, not only the Virginia files.
+
+## Suffolk map preview
+
+The city GIS 2022 reference layer has 30 nonoverlapping precincts. The preview
+shades only the 29 unique direct names, representing 24,637 Election Day ballots.
+`P15 ELEPHANTS FORK` and `603 ELEPHANTS FORK/WESTHAVEN` (350 ballots) are
+retained separately; no alias is inferred. All 13,966 central ballots remain
+unmapped. This is not a qualified election-day boundary join or a rate map.
+Loudoun's 98 codes and names matched, but its source geometry overlaps and
+five count figures differ; Chesapeake's candidate layer also overlaps.
+
+From the map ZIP, with Shapely 2.2.0 and pyproj 3.8.0 installed, run:
+
+```bash
+PROJ_NETWORK=OFF python3.12 virginia_precinct_reference.py \
+  virginia-2022-native-precinct-counts.csv suffolk-public.geojson reproduced
+```
+
+The compiler emits an offline SVG, a numerical crosswalk including both
+unmatched sides, and the exact geometry query and checksums.
