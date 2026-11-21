@@ -3,7 +3,7 @@ from urllib.parse import urljoin
 
 import pytest
 
-from scripts import bulk_participation_archives as archives, virginia_precinct_turnout as va
+from scripts import bulk_participation_archives as archives, results_granular, virginia_precinct_turnout as va
 from scripts.participation_intake.contract import IntakeError
 
 
@@ -85,6 +85,8 @@ def test_weekly_retention_revisions_and_replay(monkeypatch, tmp_path):
     assert accepted["status"] == "reported"
     assert original.requests == [va.VA_LOCALITY_URL, URL]
     entries = {va.FEED: accepted}
+    baseline = {"index.json": b'{"states": {}}'}
+    assert results_granular.project(baseline, entries) == (baseline, [])
     inventory = archives.original_inventory(entries)
     for report in inventory.values():
         (tmp_path / report["filename"]).write_bytes(original.bodies[report["url"]])

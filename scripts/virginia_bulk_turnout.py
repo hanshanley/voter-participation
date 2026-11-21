@@ -111,11 +111,13 @@ def collect(collector, *, reuse_checked_week=False):
         state, _ = collector.acquire(VA_URL)
         rows = extract(turnout, locality_names={row[0] for row in listing["localities"]})
         return {"catalog": listing, "rows": rows, "certified_state": certified(state),
+                "participation_observation_qualified": False,
                 "report": {"url": listing["url"], **pin(turnout)}, "history": {"url": VA_URL, **pin(state)}}
 
     def equivalent(prior, new):
         # A change in the rest of the statewide history is not a new 2024 release.
-        return all(prior[key] == new[key] for key in ("catalog", "rows", "certified_state", "report"))
+        return all(prior.get(key) == new[key] for key in (
+            "catalog", "rows", "certified_state", "report", "participation_observation_qualified"))
 
     entry = collector.capture(FEED, VA_NATIVE_LOCALITY_URL, parse, equivalent=equivalent)
     if not collector.offline:

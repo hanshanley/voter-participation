@@ -132,7 +132,7 @@ def collect(collector, *, reuse_checked_week=False):
             stage = "detail_validation"
             details[name] = {"source": {"url": url, **pin(body)},
                              "rows": parse_detail(body, control=control, clock=report["native_clock"])}
-        data = {"index": index, "details": details}
+        data = {"index": index, "details": details, "participation_observation_qualified": False}
         if prior and report["edition"] == prior["index"]["report"]["edition"] and (
                 report != prior["index"]["report"]
                 or any(detail["rows"] != prior["details"][name]["rows"] for name, detail in details.items())):

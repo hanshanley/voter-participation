@@ -1,10 +1,12 @@
 import csv
+from datetime import datetime, timezone
 import io
 import json
 
 import pytest
 
-from scripts import virginia_bulk_turnout as va
+from scripts import results_granular, virginia_bulk_turnout as va
+from scripts.results_intake import Collector
 from scripts.results_native_virginia import DOCUMENT_FIELDS
 
 
@@ -56,6 +58,21 @@ def test_audit_preserves_blank_measures_and_emits_signed_discrepancies():
     assert controls[0]["difference_from_certified_state"] is None
     assert controls[1]["difference_from_certified_state"] == 1
     assert controls[1]["csv_printed_registration"] == controls[1]["certified_state_registration"]
+
+
+def test_collected_audit_is_export_only(tmp_path, monkeypatch):
+    listing_url = "https://official.test/turnout.csv"
+    monkeypatch.setattr(va, "catalog", lambda _: {
+        "edition": "2025-03-05", "url": listing_url, "localities": [[LOCALITY]],
+    })
+    monkeypatch.setattr(va, "certified", lambda _: {"total_voting": 8})
+    collector = Collector(tmp_path, {}, {"urls": [], "prefixes": [], "hosts": []},
+                          datetime(2026, 11, 21, tzinfo=timezone.utc), offline=True)
+    monkeypatch.setattr(collector, "acquire", lambda _: (report(ROWS), {"origin": "cached_offline"}))
+    entry = va.collect(collector)
+    assert entry["status"] == "reported"
+    baseline = {"index.json": b'{"states": {}}'}
+    assert results_granular.project(baseline, {va.FEED: entry}) == (baseline, [])
 
 
 @pytest.mark.parametrize("rows", [
