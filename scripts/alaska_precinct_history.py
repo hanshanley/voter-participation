@@ -1,10 +1,12 @@
 """Reconcile Alaska's reported ballot fields without using candidate votes."""
 import csv
 import io
+import json
 import re
 from decimal import Decimal, ROUND_HALF_UP
 
 from scripts.participation_intake.contract import pin
+from scripts import results_alaska_turnout as current
 from scripts.southeast_turnout import collect_report
 
 FEED = "AK-2024-general-precinct-ballot-archive"
@@ -12,6 +14,10 @@ ROOT = "https://www.elections.alaska.gov/results/24GENR/"
 URL = ROOT + "ENRbyPrecinct.csv"
 REPORT = ROOT + "ElectionSummaryReport.pdf"
 CSV = "participation-ak-2024-precinct-ballot-archive.csv"
+CURRENT_FEED = "AK-2026-general-precinct-ballot-archive"
+CURRENT_JSON = current.ROOT + "precincts.js"
+CURRENT_URL = current.ROOT + "GA_ENR_Precinct_State_of_Alaska.csv"
+CURRENT_CSV = "participation-ak-2026-precinct-ballot-archive.csv"
 OFFICES = ("U.S. President / Vice President", "U.S. Representative")
 FIELDS = ("Reg_voters", "total_ballots", "Election Day_ballots", "Absentee_ballots",
           "Early Voting_ballots", "Question_ballots", "Remote_ballots")
@@ -26,7 +32,7 @@ SOURCE_HEADER = re.compile(
 )
 
 
-def parse_units(body):
+def parse_units(body, offices_for_election=OFFICES):
     if not 0 < len(body) <= 8_000_000:
         raise ValueError("Alaska precinct CSV exceeds reviewed size limit")
     reader = csv.DictReader(io.StringIO(body.decode("utf-8-sig"), newline=""))
@@ -34,8 +40,8 @@ def parse_units(body):
     required = {"Pct_Id", "Precinct_name", "Aggregation_ID", "Contest_title", "Contest_Id", *FIELDS}
     if not required <= set(columns) or len(set(columns)) != len(columns):
         raise ValueError("Alaska precinct ballot fields changed")
-    offices = {name: {} for name in OFFICES}
-    identities = {name: set() for name in OFFICES}
+    offices = {name: {} for name in offices_for_election}
+    identities = {name: set() for name in offices_for_election}
     for row in reader:
         office = row["Contest_title"]
         if office not in offices:
@@ -48,7 +54,7 @@ def parse_units(body):
         if offices[office].setdefault(key, values) != values:
             raise ValueError("Duplicated Alaska ballot fields disagree within a contest")
         identities[office].add(row["Contest_Id"])
-    if any(len(ids) != 1 for ids in identities.values()) or identities[OFFICES[0]] == identities[OFFICES[1]]:
+    if any(len(ids) != 1 for ids in identities.values()) or len(set.union(*identities.values())) != len(offices):
         raise ValueError("Ambiguous Alaska federal contest identity")
     first, second = offices.values()
     if first != second:
@@ -84,6 +90,10 @@ def validate(rows, control):
         Decimal(voters * 100) / registered
     ).quantize(Decimal(".01"), rounding=ROUND_HALF_UP) != Decimal(control[4]):
         raise ValueError("Alaska statewide control does not reconcile")
+    validate_units(rows, total - 1, voters, registered)
+
+
+def validate_units(rows, expected_precincts, voters, registered):
     names, codes, central = set(), set(), set()
     overseas = 0
     state_ballots = state_register = 0
@@ -110,7 +120,7 @@ def validate(rows, control):
         else:
             raise ValueError("Unknown Alaska reporting-unit scope")
     if (central != {(i, mode) for i in range(1, 41) for mode in MODE_NAMES}
-            or overseas != 1 or len(codes) + overseas != total
+            or overseas != 1 or len(codes) != expected_precincts
             or (state_ballots, state_register) != (voters, registered)):
         raise ValueError("Alaska reporting units do not match the complete official statewide controls")
 
@@ -150,4 +160,90 @@ def exports(entries):
          "official_control_url": REPORT, "official_control_sha256": report["sha256"],
          "official_control_edition_local": data["control"][5]}
         for label, identity, registered, ballots, day, absentee, early, question, remote in data["complete_native_query"]
+    ]
+
+
+def current_native(body):
+    if not 0 < len(body) <= 8_000_000:
+        raise ValueError("Alaska precinct JSON exceeds reviewed size limit")
+    control = current.controls(body)
+    document = json.loads(body)
+    if document["precinctReportUrl"] != CURRENT_URL:
+        raise ValueError("Alaska bulk precinct CSV is not linked by the matching feed")
+    office_ids = [document["contestNames"].index(office) for office in current.OFFICES]
+    precincts = []
+    for precinct in document["precincts"]:
+        values = []
+        for office in office_ids:
+            row, = (r for r in precinct["contests"] if r["n"] == office)
+            values.append([row["b"], row["v"]])
+        if values[0] != values[1] or any(type(value) is not int or value < 0 for value in values[0]):
+            raise ValueError("Alaska native physical precinct ballot fields differ between offices")
+        precincts.append([precinct["number"], precinct["name"], *values[0]])
+    return control, sorted(precincts)
+
+
+def current_reconcile(rows, pdf, native, precincts):
+    control = current.reconcile(pdf, native)
+    validate_units(rows, 402, control["voters"], control["registered"])
+    declared = sorted([identity, label[len(identity) + 1:], ballots, registered]
+                      for label, identity, registered, ballots, *_ in rows if PRECINCT.fullmatch(label))
+    if declared != precincts or any(v != 403 for v in control["feed_total_precincts"].values()):
+        raise ValueError("Alaska CSV precinct counts differ from the literal native roster")
+    return control
+
+
+def collect_current(collector):
+    old = (collector.prior.get(CURRENT_FEED) or {}).get("data") or {}
+
+    def parse(body):
+        native_body, _ = collector.acquire(CURRENT_JSON)
+        pdf_body, _ = collector.acquire(current.REPORT)
+        if len(pdf_body) > 4_000_000:
+            raise ValueError("Alaska precinct control PDF exceeds reviewed size limit")
+        rows = parse_units(body, current.OFFICES)
+        pdf = current.parse_report(pdf_body)
+        native, precincts = current_native(native_body)
+        control = current_reconcile(rows, pdf, native, precincts)
+        if (old.get("reconciliation", {}).get("source_status") == current.STATUS[1]
+                and control["source_status"] != current.STATUS[1]):
+            raise ValueError("Alaska precinct certification regressed")
+        return {"date": control["date"], "complete_native_query": rows, "pdf_control": pdf,
+                "native_control": native, "physical_native_units": precincts, "reconciliation": control,
+                "control_report": {"url": current.REPORT, **pin(pdf_body)},
+                "native_report": {"url": CURRENT_JSON, **pin(native_body)},
+                "participation_observation_qualified": False}
+
+    return collector.capture(CURRENT_FEED, CURRENT_URL, parse)
+
+
+def current_exports(entries):
+    entry = entries.get(CURRENT_FEED, {})
+    data = entry.get("data")
+    if data is None or entry.get("status") not in {"reported", "retained_after_failure"}:
+        return []
+    if entry["source"]["url"] != CURRENT_URL or any(
+        p.get("url") != url or not re.fullmatch(r"[a-f0-9]{64}", p.get("sha256", ""))
+        or type(p.get("bytes")) is not int or not 0 < p["bytes"] <= limit
+        for p, url, limit in ((data["control_report"], current.REPORT, 4_000_000),
+                              (data["native_report"], CURRENT_JSON, 8_000_000))
+    ):
+        raise ValueError("Alaska current precinct data or control source binding differs")
+    rows = data["complete_native_query"]
+    control = current_reconcile(rows, data["pdf_control"], data["native_control"], data["physical_native_units"])
+    if control != data["reconciliation"] or control["date"] != data["date"]:
+        raise ValueError("Alaska current precinct control changed")
+    return [
+        {"state_code": "AK", "election_date": "2026-11-03", "reporting_unit": label,
+         "source_unit_id": identity,
+         "unit_scope": "precinct_election_day_only" if PRECINCT.fullmatch(label) else "central_unallocated_ballots",
+         "reported_registration_cell": registered, "reported_ballots": ballots,
+         "election_day_ballots": day, "absentee_ballots": absentee, "early_ballots": early,
+         "question_ballots": question, "remote_ballots": remote,
+         "source_status": entry["status"], "publication_status": control["source_status"],
+         "source_url": CURRENT_URL, "source_sha256": entry["source"]["sha256"],
+         "official_control_url": current.REPORT, "official_control_sha256": data["control_report"]["sha256"],
+         "official_control_edition_local": control["date"], "native_control_url": CURRENT_JSON,
+         "native_control_sha256": data["native_report"]["sha256"]}
+        for label, identity, registered, ballots, day, absentee, early, question, remote in rows
     ]

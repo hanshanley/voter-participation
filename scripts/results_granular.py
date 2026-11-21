@@ -525,6 +525,7 @@ def collect(collector, baseline):
     for feed in alabama_precinct_history.URLS:
         jobs[feed] = alabama_precinct_history.collect(collector, feed, reuse_checked_week=True)
     jobs[alaska_precinct_history.FEED] = alaska_precinct_history.collect(collector, reuse_checked_week=True)
+    jobs[alaska_precinct_history.CURRENT_FEED] = alaska_precinct_history.collect_current(collector)
     for feed in alaska_cards_history.ROUTES:
         jobs[feed] = alaska_cards_history.collect(collector, feed, reuse_checked_week=True)
     for feed in alaska_age_history.YEARS:
@@ -670,7 +671,7 @@ def project(baseline, granular):
     from scripts.alabama_precinct_history import URLS as ALABAMA_PRECINCT_SOURCES
     from scripts.alaska_age_history import YEARS as ALASKA_AGE_SOURCES
     from scripts.alaska_cards_history import ROUTES as ALASKA_CARDS_SOURCES
-    from scripts.alaska_precinct_history import FEED as ALASKA_PRECINCT_SOURCE
+    from scripts import alaska_precinct_history
     from scripts.national_turnout_release_watch import INDEXES as NATIONAL_RELEASE_INDEXES
     from scripts.oregon_turnout_history import URLS as OREGON_HISTORY_SOURCES
     from scripts.southeast_turnout import URLS as SOUTHEAST_HISTORY_SOURCES
@@ -678,7 +679,7 @@ def project(baseline, granular):
 
     export_only = {*NATIONAL_RELEASE_INDEXES, *OREGON_HISTORY_SOURCES, *SOUTHEAST_HISTORY_SOURCES,
                    *ALABAMA_PRECINCT_SOURCES, *ALASKA_CARDS_SOURCES, *ALASKA_AGE_SOURCES,
-                   ALASKA_PRECINCT_SOURCE, WA_AGGREGATE_WORKBOOK}
+                   alaska_precinct_history.FEED, alaska_precinct_history.CURRENT_FEED, WA_AGGREGATE_WORKBOOK}
     for key in granular.keys() & export_only:
         data = granular[key].get("data")
         if data is not None and (data.get("participation_observation_qualified") is not False

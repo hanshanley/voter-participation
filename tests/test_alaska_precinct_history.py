@@ -33,3 +33,25 @@ def test_complete_mode_roster_and_control_include_unallocated_ballots():
         ak.validate(rows[:-1], control)
     with pytest.raises(ValueError, match="complete official statewide"):
         ak.validate(rows, ["2", "2", "7", "12", "58.33", control[-1]])
+
+
+@pytest.mark.parametrize("first,rate", [(52, "50.05%"), (50, "50.00%"), (48, "49.95%")])
+def test_current_unit_revisions_require_literal_json_and_pdf_controls(first, rate):
+    rows = [[f"01-{i:03d} Name {i}", f"01-{i:03d}", 10, 5, 5, 0, 0, 0, 0] for i in range(402)]
+    rows[0][2:5] = [100, first, first]
+    precincts = sorted([identity, label[len(identity) + 1:], ballots, registered]
+                       for label, identity, registered, ballots, *_ in rows)
+    rows += [[ak.OVERSEAS, "99-999", 2, 1, 0, 1, 0, 0, 0]]
+    for district in range(1, 41):
+        for mode in ak.MODE_NAMES:
+            rows.append([f"District {district} - {mode}", "", 0, 0, 0, 0, 0, 0, 0])
+    total, registered = sum(row[3] for row in rows), sum(row[2] for row in rows)
+    pdf = {"page_clocks_and_ordinals": [["11/18/2026 5:25:35 PM", "1", "1"]],
+           "statewide_header": ["401", "401", "100.00%", str(total), str(registered), rate, ak.current.STATUS[0]]}
+    native = {"updated": "11/18/2026 5:56 PM", "certified": False,
+              "federal_controls": [{"office": office, "b": total, "v": registered, "p": 403, "r": 401}
+                                   for office in ak.current.OFFICES]}
+    assert ak.current_reconcile(rows, pdf, native, precincts)["voters"] == total
+    precincts[0][2] += 1
+    with pytest.raises(ValueError, match="literal native roster"):
+        ak.current_reconcile(rows, pdf, native, precincts)

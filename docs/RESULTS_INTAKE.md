@@ -2820,6 +2820,16 @@ reconciliation.
 
 ### Alaska 2024 precinct and central ballot reporting
 
+The 2026 midterm companion refreshes the explicitly linked statewide bulk CSV
+against the election's native precinct JSON and statewide Voters Cast PDF.
+House and Senate ballot controls must agree, the 402 CSV geographic rows must
+match the literal JSON counts and identities, and all reporting units must
+reconcile to the statewide registration and ballot controls. Current checks
+retain the last good edition on failure and do not infer precinct rates or
+completeness from the PDF's reporting count. The publication status is separate
+from the acquisition status; neither central nor overseas ballots are assigned
+back to precincts.
+
 The Alaska statewide voter-history companion covers the seven 1996–2008
 federal general elections with one HTML table adapter and a text-PDF profile.
 It preserves the registered and credited counts, source-reported sex and age

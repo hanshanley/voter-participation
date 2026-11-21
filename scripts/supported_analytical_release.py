@@ -477,7 +477,7 @@ def other_offices(review):
 def selected_local_observation_ids(snapshot, counts=None):
     from scripts.alaska_age_history import YEARS as ALASKA_AGE_SOURCES
     from scripts.alaska_cards_history import ROUTES as ALASKA_CARDS_SOURCES
-    from scripts.alaska_precinct_history import FEED as ALASKA_PRECINCT_SOURCE
+    from scripts import alaska_precinct_history
     from scripts import (
         philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_pa_vote_history, results_pdf_county_parent,
@@ -543,7 +543,7 @@ def selected_local_observation_ids(snapshot, counts=None):
                 or identity in alabama_precinct_history.URLS
                 or identity in ALASKA_CARDS_SOURCES
                 or identity in ALASKA_AGE_SOURCES
-                or identity == ALASKA_PRECINCT_SOURCE
+                or identity in {alaska_precinct_history.FEED, alaska_precinct_history.CURRENT_FEED}
                 or identity == washington_participation.FEED
                 or identity in results_turnout_history.COUNTY_ARCHIVES
                 or identity in results_pa_vote_history.FEEDS.values()):
@@ -691,6 +691,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     ak_rows = alaska_precinct_history.exports(historical_sources)
     if ak_rows:
         raw_files[alaska_precinct_history.CSV] = csv_bytes(ak_rows)
+    ak_current = alaska_precinct_history.current_exports(historical_sources)
+    if ak_current:
+        raw_files[alaska_precinct_history.CURRENT_CSV] = csv_bytes(ak_current)
     ak_cards = list(alaska_cards_history.exports(historical_sources))
     if ak_cards:
         raw_files[alaska_cards_history.CSV] = csv_bytes(ak_cards)

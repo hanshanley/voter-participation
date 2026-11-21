@@ -1015,6 +1015,7 @@ def late_archive_sources():
         *southeast_turnout.URLS,
         *alabama_precinct_history.URLS,
         alaska_precinct_history.FEED,
+        alaska_precinct_history.CURRENT_FEED,
         *alaska_cards_history.ROUTES,
         *alaska_age_history.YEARS,
         *sorted(history.municipal_feeds()),
@@ -1071,6 +1072,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
     administrative.update({feed: partial(alabama_precinct_history.collect, feed=feed)
                            for feed in alabama_precinct_history.URLS})
     administrative[alaska_precinct_history.FEED] = alaska_precinct_history.collect
+    administrative[alaska_precinct_history.CURRENT_FEED] = alaska_precinct_history.collect_current
     administrative.update({feed: partial(alaska_cards_history.collect, feed=feed)
                            for feed in alaska_cards_history.ROUTES})
     administrative.update({feed: partial(alaska_age_history.collect, feed=feed)

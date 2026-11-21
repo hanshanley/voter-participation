@@ -408,6 +408,7 @@ def test_selected_administrative_refresh_does_not_reacquire_congress(tmp_path, m
     monkeypatch.setattr(alabama_precinct_history, "collect",
                         lambda collector, feed: adapter(feed)(collector))
     monkeypatch.setattr(alaska_precinct_history, "collect", adapter(alaska_precinct_history.FEED))
+    monkeypatch.setattr(alaska_precinct_history, "collect_current", adapter(alaska_precinct_history.CURRENT_FEED))
     monkeypatch.setattr(alaska_cards_history, "collect",
                         lambda collector, feed: adapter(feed)(collector))
     monkeypatch.setattr(alaska_age_history, "collect",
