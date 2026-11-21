@@ -2820,6 +2820,17 @@ reconciliation.
 
 ### Alaska 2024 precinct and central ballot reporting
 
+The Alaska statewide voter-history companion covers the seven 1996–2008
+federal general elections with one HTML table adapter and a text-PDF profile.
+It preserves the registered and credited counts, source-reported sex and age
+labels, and differences between the all-gender totals and the two reported
+gender categories. Fractions use credited history divided by the same
+report's group registrations, not candidate votes, ballots or an eligible
+population denominator. All six columns sum to their separate printed
+controls except for 2004 male credits (three fewer across the age bands):
+retain that year's counts, and withhold the 13 affected fractions. No
+reported age band or statewide rate is allocated to precincts.
+
 The separate legacy Alaska **cards cast** export uses one text-layer parser
 for the 2014, 2016, and 2018 general-election reports. It requires the complete
 physical and central unit inventory, exact TS/OS sums, and agreement with
