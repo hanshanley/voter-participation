@@ -5,7 +5,7 @@ import re
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history,
     connecticut_turnout_history, dakota_turnout_history, hawaii_turnout_history, kansas_turnout_history,
-    national_turnout_release_watch, new_jersey_periodic_counties, oregon_turnout_history,
+    national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     southeast_turnout, washington_participation,
 )
 from scripts.participation_intake.contract import pin
@@ -39,6 +39,9 @@ def families():
          (dakota_turnout_history.CSV,), dakota_turnout_history.exports),
         (routes(new_jersey_periodic_counties, new_jersey_periodic_counties.FEEDS), False,
          (new_jersey_periodic_counties.CSV,), new_jersey_periodic_counties.exports),
+        (routes(north_carolina_participation, north_carolina_participation.FEEDS), True,
+         (north_carolina_participation.COUNTIES, north_carolina_participation.GROUPS,
+          north_carolina_participation.PRECINCTS), north_carolina_participation.exports),
     )
 
 
@@ -98,6 +101,19 @@ def original_reports(entries):
             facts = {key: value for key, value in data.items() if key != "report"}
             yield (feed, report, ".pdf", nj.MAX_BYTES, bool(nj.report_identity(report["url"], county)),
                    partial(nj.parse, county=county, url=report["url"]), facts)
+    nc = north_carolina_participation
+    for feed, election in nc.FEEDS.items():
+        if (data := (entries.get(feed) or {}).get("data")) is not None:
+            for kind, report in data["pair"].items():
+                source = report["source"]
+                yield (f"{feed}-{kind}", source, ".zip", nc.MAX_BYTES,
+                       source["url"] == nc.report_url(kind, election),
+                       partial(nc.extract, kind=kind, election=election), report["facts"])
+            if (control := data["age_control"]) is not None:
+                source = control["source"]
+                yield (f"{feed}-age-control", source, ".html", 2_000_000,
+                       source["url"] == nc.CONTROLS.get(election.year),
+                       partial(nc.age_control, year=election.year), control["facts"])
     for feed, year in age.YEARS.items():
         entry = entries.get(feed) or {}
         if entry.get("data") is not None:
