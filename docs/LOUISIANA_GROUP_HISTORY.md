@@ -73,3 +73,25 @@ control provenance travel with each record.
 The `LA-2024-general-election-native-precinct-counts` feed is independent of
 the group feed and uses the same catalog acquisitions. Add `--precincts` to
 the offline replay command to reproduce the count-only CSV.
+
+## Legislative precinct reference maps
+
+The [Legislature's archive](https://redist.legis.la.gov/default_ShapeFiles2020)
+contains ten tested shape editions for nine of these election years. These are
+legislative reference maps, not verified election-day boundaries. Even the
+December 2024 edition has no independently verified November-effective crosswalk
+for this product. Logical reporting splits and geographic splits are not assumed
+equivalent. A parish is plotted only if all precinct identifiers match uniquely,
+its reported counts reconcile to both controls, and the original polygons are
+valid and form a nonoverlapping coverage. Gray is unmapped, not zero. No
+candidate votes, precinct population, allocation, or precinct rate are used.
+
+The map download includes an offline `maps/index.html`, SVG previews, full
+geometry and join decisions, all native count rows, and exact reference archives.
+From the extracted package with Python 3.12 and the listed requirements:
+
+```sh
+PROJ_NETWORK=OFF python3.12 -m scripts.louisiana_historical_precinct_reference \
+  originals/geometry published-precinct-counts.csv originals/parish-reference.geojson.gz reproduced
+diff -qr maps reproduced
+```
