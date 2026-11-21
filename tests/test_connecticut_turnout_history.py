@@ -81,3 +81,20 @@ def test_2016_retains_signed_absentee_entry_and_derives_only_the_checklist_fract
     entry["data"]["complete_native_query"][0] = "Kent 20 12 60.00% 0 3 -3 1 0 1"
     with pytest.raises(ValueError, match="negative ballot-mode cell"):
         list(ct.exports({"CT-2016-general-town-turnout-archive": entry}))
+
+
+def test_2018_scan_accepts_matched_counts_without_guessing_a_mode_cell(monkeypatch):
+    monkeypatch.setitem(ct.STATEMENTS, 2018, (*ct.STATEMENTS[2018][:3], 1))
+    monkeypatch.setattr(ct, "ROSTER", hashlib.sha256(b"Andover\nEast Granby\nTorrington").hexdigest())
+    header = ["Election: 11/06/2018 - November 2018 State Election",
+              "Election Day Registration, Turnout and Absentee Ballot Statistics",
+              "Checklist Percentage EDR Received EDR Rejected EDR Voted Town"]
+    pages = [[{"receipt": {"page": 171, "dpi": dpi, "rotation_degrees": 90}, "header": header,
+               "rows": [[name, "20", "12", "60.00%", "2", rejected, "2", "1", "0", "1"]
+                        for name in ("Andover", "StatewideTotal")]}
+              for dpi, rejected in ((180, "0"), (240, "o"))]]
+    rows, deltas = ct.scanned_statement_rows(pages)
+    assert deltas == [0, 0] and rows[0][2] == [20, 12, 2, None, 2, 1, 0, 1]
+    pages[0][1]["rows"][0][2] = "13"
+    with pytest.raises(ValueError, match="counts or printed rate disagree"):
+        ct.scanned_statement_rows(pages)

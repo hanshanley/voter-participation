@@ -23,6 +23,7 @@ STATEMENTS = {
     2012: ("2012-11-06", "2012statementofvotebookpdf.pdf", 3, 5),
     2014: ("2014-11-04", "2014sovpdf.pdf", 3, 5),
     2016: ("2016-11-08", "turnout11082016novemberpresidentialelectionpdf.pdf", 6, 10),
+    2018: ("2018-11-06", "2018-sov.pdf", 6, 10),
     2020: ("2020-11-03", "2020-sov.pdf", 6, 6),
     2022: ("2022-11-08", "sov_2022.pdf", 6, 9),
     2024: ("2024-11-05", "2024_statement_of_vote.pdf", 9, 6),
@@ -38,8 +39,16 @@ STATE = {"Total", "Totals", "Statewide Totals"}
 SPLIT = {"Durham", "Glastonbury", "Middletown", "Torrington"}
 STATEMENT_SPLIT = {"Glastonbury", "Middletown", "Shelton", "Torrington", "Waterbury"}
 # The 2020 table does not list these two towns, even though its own subtotals reconcile.
-PARTIAL_TOWNS = {2020: {"New Canaan", "North Branford"}}
+PARTIAL_TOWNS = {2018: {"East Granby", "Torrington"}, 2020: {"New Canaan", "North Branford"}}
 STATEMENT_LIMIT = 12_000_000
+SCAN_LIMIT = 20_000_000
+SCAN_FIRST = 171
+SCAN_BANDS = ((80, 139), (140, 185), (185, 235), (235, 282), (285, 329),
+              (330, 379), (380, 425), (426, 468), (469, 504), (505, 560))
+SCAN_NAMES = {"Brookdyn": "Brooklyn", "Brookyn": "Brooklyn", "Burling ton": "Burlington",
+              "Frankin": "Franklin", "Harford": "Hartford", "Kilingly": "Killingly",
+              "Kilingworth": "Killingworth", "Kiling worth": "Killingworth", "Montille": "Montville",
+              "Stoning ton": "Stonington", "StatewideTotal": "Statewide Totals"}
 MALFORMED = {(1998, "Southbury", 1, "7,l90"), (2004, "Griswold", 0, "6.395")}
 
 
@@ -195,6 +204,81 @@ def physical_text(page, pymupdf):
     return [" ".join(word for _, word in sorted(cells)) for _, cells in lines]
 
 
+def scan_number(cell):
+    if not re.fullmatch(r"[0-9]+(?:(?:[.,] *| )[0-9]{3})*", cell):
+        return None
+    return int(re.sub(r"[,. ]", "", cell))
+
+
+def scan_view(view):
+    dpi = view["receipt"]["dpi"]
+    rows = []
+    for row in view["role_cells"]:
+        cells = [" ".join(c["text"] for c in row if left <=
+                          (c["left"] + c["right"]) * 36 / dpi < right) for left, right in SCAN_BANDS]
+        if "%" not in cells[3] and not all(re.fullmatch(r"[0-9,. ]+", s) for s in cells[1:3]):
+            continue
+        if rows and rows[-1] == cells and cells[0] == "StatewideTotal":
+            continue  # Both renders duplicate the same printed control line.
+        rows.append(cells)
+    return {"receipt": view["receipt"], "header": view["text"].splitlines()[:9], "rows": rows}
+
+
+def scanned_statement_rows(pages):
+    from scripts.results_pdf_archive_ocr import DPI, heading_key
+
+    if len(pages) != STATEMENTS[2018][3]:
+        raise ValueError("Incomplete Connecticut scanned town table")
+    rows = []
+    for page, pair in enumerate(pages, SCAN_FIRST):
+        for dpi, view in zip(DPI, pair, strict=True):
+            receipt = view["receipt"]
+            header = heading_key(" ".join(view["header"]))
+            if (receipt["page"] != page or receipt["dpi"] != dpi or receipt.get("rotation_degrees") != 90
+                    or not all(term in header for term in (
+                        "electiondayregistrationturnoutandabsenteeballotstatistics", "checklist", "percentage",
+                        "edrreceived", "edrrejected", "edrvoted", "town"))
+                    or page == SCAN_FIRST and "election11062018november2018stateelection" not in header):
+                raise ValueError("Connecticut scanned table page, headings or election changed")
+        for left, right in zip(pair[0]["rows"], pair[1]["rows"], strict=True):
+            a, b = [SCAN_NAMES.get(cells[0], cells[0]) for cells in (left, right)]
+            n, voted = [scan_number(cell) for cell in left[1:3]]
+            if (a != b or n is None or voted is None or not 0 <= voted <= n or n == 0
+                    or [n, voted] != [scan_number(cell) for cell in right[1:3]]
+                    or left[3] != right[3] or not re.fullmatch(r"\d{1,3}\.\d{2}%", left[3])
+                    or Decimal(left[3][:-1]) != (Decimal(voted) * 100 / n).quantize(
+                        Decimal(".01"), rounding=ROUND_HALF_UP)):
+                raise ValueError("Connecticut scanned town counts or printed rate disagree")
+            modes = [x if x == y else None for x, y in zip(map(scan_number, left[4:]),
+                                                          map(scan_number, right[4:]), strict=True)]
+            rows.append((a, False, [n, voted, *modes], left[3], [left, right]))
+    if not rows or rows[-1][0] != "Statewide Totals":
+        raise ValueError("Missing statewide Connecticut scan control")
+    names = [row[0] for row in rows[:-1]]
+    roster = set(names) | PARTIAL_TOWNS[2018]
+    deltas = [sum(row[2][i] for row in rows[:-1]) - rows[-1][2][i] for i in range(2)]
+    if (names != sorted(set(names)) or "Statewide Totals" in names or deltas != [0, 0]
+            or hashlib.sha256("\n".join(sorted(roster)).encode()).hexdigest() != ROSTER):
+        raise ValueError("Connecticut scanned town roster or statewide controls disagree")
+    return rows, deltas
+
+
+def scanned_statement(body):
+    import pymupdf
+    from scripts.results_pdf_archive_ocr import extract
+
+    if not body.startswith(b"%PDF-") or len(body) > SCAN_LIMIT:
+        raise ValueError("Connecticut scanned Statement exceeds PDF bounds")
+    with pymupdf.open(stream=body, filetype="pdf") as report:
+        if (report.needs_pass or not report.permissions & pymupdf.PDF_PERM_COPY
+                or not SCAN_FIRST + 9 <= len(report) <= 235):
+            raise ValueError("Connecticut scanned Statement does not permit bounded extraction")
+    views = [[scan_view(view) for view in pair]
+             for pair in extract(body, range(SCAN_FIRST - 1, SCAN_FIRST + 9)).values()]
+    scanned_statement_rows(views)
+    return {"complete_native_query": views, "participation_observation_qualified": False}
+
+
 def statement_query(body, year):
     import pymupdf
 
@@ -262,6 +346,8 @@ def statement_query(body, year):
 
 
 def parse(body, year):
+    if year == 2018:
+        return scanned_statement(body)
     if year in STATEMENTS:
         return statement_query(body, year)
     from pypdf import PdfReader
@@ -313,11 +399,15 @@ def exports(entries):
             continue
         report = data["report"]
         statement = year in STATEMENTS
+        limit = SCAN_LIMIT if year == 2018 else STATEMENT_LIMIT if statement else 2_000_000
         if (entry["source"]["url"] != archive_index(year) or not valid_link(report["url"], year)
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])
-                or not 0 < report["bytes"] <= (STATEMENT_LIMIT if statement else 2_000_000)):
+                or not 0 < report["bytes"] <= limit):
             raise ValueError("Connecticut turnout source lineage changed")
-        rows, deltas = (statement_rows if statement else qualified)(data["complete_native_query"], year)
+        if year == 2018:
+            rows, deltas = scanned_statement_rows(data["complete_native_query"])
+        else:
+            rows, deltas = (statement_rows if statement else qualified)(data["complete_native_query"], year)
         missing_towns = PARTIAL_TOWNS.get(year, set()) - {row[0] for row in rows}
         seen = Counter()
         for name, part, values, rate, literal in rows:
@@ -337,7 +427,8 @@ def exports(entries):
                 "active_checklist": n, "checked_as_voted": voted, "source_reported_percent": rate,
                 "checked_as_voted_fraction": f"{computed:.8f}" if reason is None else None,
                 "rate_hold_reason": reason, "absentee_received": received, "absentee_rejected": rejected,
-                "absentee_voted": cast, "absentee_accounting_difference": received - rejected - cast,
+                "absentee_voted": cast, "absentee_accounting_difference": (
+                    received - rejected - cast if None not in (received, rejected, cast) else None),
                 "town_minus_state_checklist": deltas[0] if state else None,
                 "town_minus_state_checked_as_voted": deltas[1] if state else None,
                 "native_row": literal, "source_status": entry["status"], "source_url": report["url"],

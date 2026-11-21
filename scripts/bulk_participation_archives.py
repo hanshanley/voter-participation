@@ -71,7 +71,7 @@ def original_reports(entries):
         entry = entries.get(feed) or {}
         if (data := entry.get("data")) is not None:
             report = data["report"]
-            limit = ct.STATEMENT_LIMIT if year in ct.STATEMENTS else 2_000_000
+            limit = ct.SCAN_LIMIT if year == 2018 else ct.STATEMENT_LIMIT if year in ct.STATEMENTS else 2_000_000
             facts = {key: value for key, value in data.items() if key != "report"}
             yield feed, report, ".pdf", limit, ct.valid_link(report["url"], year), partial(ct.parse, year=year), facts
 
