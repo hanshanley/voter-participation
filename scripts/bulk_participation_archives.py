@@ -3,7 +3,7 @@ from functools import partial
 import re
 
 from scripts import (
-    alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history,
+    alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history, california_media,
     connecticut_turnout_history, dakota_turnout_history, hawaii_turnout_history, kansas_turnout_history,
     national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     southeast_turnout, washington_participation,
@@ -43,6 +43,8 @@ def families():
         (routes(north_carolina_participation, north_carolina_participation.FEEDS), True,
          (north_carolina_participation.COUNTIES, north_carolina_participation.GROUPS,
           north_carolina_participation.PRECINCTS), north_carolina_participation.exports),
+        (routes(california_media, california_media.FEEDS), False,
+         (california_media.TURNOUT_CSV, california_media.HOUSE_CSV), california_media.exports),
     )
 
 
@@ -103,6 +105,13 @@ def original_reports(entries):
             yield (feed, report, ".pdf", nj.MAX_BYTES, bool(nj.report_identity(report["url"], county)),
                    partial(nj.parse, county=county, url=report["url"]), facts)
     nc = north_carolina_participation
+    ca = california_media
+    for feed in ca.FEEDS:
+        if (data := (entries.get(feed) or {}).get("data")) is not None:
+            for kind, report in data["reports"].items():
+                source = report["source"]
+                yield (f"{feed}-{kind}", source, ".txt", ca.MAX_BYTES,
+                       source["url"] == ca.URLS[kind], partial(ca.parse, kind), report["facts"])
     for feed, election in nc.FEEDS.items():
         if (data := (entries.get(feed) or {}).get("data")) is not None:
             for kind, report in data["pair"].items():
