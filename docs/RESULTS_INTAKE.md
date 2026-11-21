@@ -727,6 +727,12 @@ cmp reproduced-split-review.json \
   non-additive hierarchy of state, county, municipality and native reporting rows.
   Neither export supplies a registration denominator or precinct polygons.
 
+  The historical paired-canvass export uses the same controls for 2020, 2022,
+  and 2024. The 2022 county pages omit 3,163 ballots relative to the statewide
+  control, so their rows carry a shortfall flag and are not a complete county
+  frame. The full exports independently reconcile to the statewide ballot
+  control. Municipality-only rows with no ward or precinct remain distinct.
+
   ### Candidate inventories and analytical eligibility
 
 Recorded-results intake accepts newly advertised candidates or aggregate Other

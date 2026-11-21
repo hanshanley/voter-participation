@@ -64,6 +64,9 @@ def families():
         ({idaho_absentee_age.FEED: idaho_absentee_age.collect}, True, (idaho_absentee_age.CSV,), idaho_absentee_age.exports),
         ({massachusetts_ballot_canvass.FEED: massachusetts_ballot_canvass.collect}, True,
          (massachusetts_ballot_canvass.CSV,), massachusetts_ballot_canvass.exports),
+        ({massachusetts_ballot_canvass.FEEDS[year]: partial(massachusetts_ballot_canvass.collect, year=year)
+          for year in (2020, 2022, 2024)}, True,
+         (massachusetts_ballot_canvass.HISTORY_CSV,), massachusetts_ballot_canvass.history_exports),
         *((routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.feed_for(year),)), year != 2026,
            (hawaii_precinct_turnout.csv_for(year),), partial(hawaii_precinct_turnout.exports, year=year))
           for year in hawaii_precinct_turnout.ELECTIONS),

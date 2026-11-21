@@ -42,6 +42,37 @@ def test_reconciliation_checks_both_parent_totals_and_exact_unit_counts():
         ma.reconcile(reports)
 
 
+def test_2022_municipal_only_rows_cannot_overlap_detailed_rows():
+    original = precinct_csv().replace(b"Pct,A,B,All", b"Pct,A,B,C,All").replace(
+        b",,,Democratic,Republican\n", b",,,Democratic,Republican,Unenrolled\n")
+    lines = original.decode().splitlines()
+    lines[2:] = [",".join(row.split(",")[:5] + ["0"] + row.split(",")[5:]) for row in lines[2:]]
+    lines[2] = lines[2].replace("Lawrence,A,2A", "Lawrence,,")
+    data = ("\n".join(lines) + "\n").encode()
+    assert ma.precincts(data, contest="154341", year=2022)["units"][0] == ["Lawrence", "", "", 7]
+    data = data.replace(b"TOTALS", b"Lawrence,A,1,0,0,0,0,0,0\nTOTALS")
+    with pytest.raises(ValueError, match="export control"):
+        ma.precincts(data, contest="154341", year=2022)
+
+
+def test_2022_county_page_shortfall_retains_state_and_native_counts():
+    reports = {}
+    for contest in ma.PAIRS[2022]:
+        export = ma.BASE + f"download/{contest}/precincts_include:1/"
+        reports[contest] = {
+            "page": {"counties": {"Essex": 7}, "columns_total": [10]},
+            "csv": {"units": [["Lawrence", "", "", 10]], "columns_total": [10]},
+            "page_source": {"url": ma.BASE + f"view/{contest}/", **pin(b"page")},
+            "csv_source": {"url": export, **pin(b"csv")},
+        }
+    entry = {"status": "reported", "data": {"reports": reports}}
+    rows = list(ma.history_exports({ma.FEEDS[2022]: entry}))
+    assert [(row["geography_level"], row["ballots_including_blanks"]) for row in rows] == [
+        ("statewide", 10), ("county_page_with_statewide_shortfall", 7),
+        ("municipality", 10), ("municipality_only_source_row", 10)]
+    assert all(row["county_ballot_shortfall"] == 3 for row in rows)
+
+
 def test_statewide_projection_is_count_only_and_retains_last_good():
     def snapshot(ballots):
         counties = dict.fromkeys(ma.COUNTIES, 0)
