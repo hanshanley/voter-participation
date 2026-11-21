@@ -29,6 +29,7 @@ def families():
         ({wa.FEED: wa.collect}, True, (wa.CSV,), wa.exports),
         (routes(oregon, oregon.URLS), True, (oregon.CSV,), oregon.exports),
         (routes(se, se.URLS), True, (se.SC_CSV, se.AL_CSV), se.exports),
+        ({se.AL_HISTORY: se.collect_al_history}, True, (se.AL_HISTORY_CSV,), se.al_history_exports),
         (routes(south_carolina_voter_statistics, (south_carolina_voter_statistics.FEED,)), True,
          (south_carolina_voter_statistics.CSV, south_carolina_voter_statistics.AUDIT),
          south_carolina_voter_statistics.exports),
@@ -94,6 +95,11 @@ def original_reports(entries):
     from scripts import results_indiana_turnout as indiana, results_turnout_history as history
 
     age, ct = alaska_age_history, connecticut_turnout_history
+    se = southeast_turnout
+    if (entry := entries.get(se.AL_HISTORY)) and entry.get("data") is not None:
+        source = entry["source"]
+        yield (se.AL_HISTORY, source, ".pdf", 2_000_000, source["url"] == se.AL_HISTORY_URL,
+               se.parse_al_history, entry["data"])
     al = alabama_precinct_history
     for year, (archive_feed, control_feed) in al.FEEDS.items():
         if (entry := entries.get(archive_feed)) and entry.get("data") is not None:

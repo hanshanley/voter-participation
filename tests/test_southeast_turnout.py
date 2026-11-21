@@ -4,6 +4,7 @@ import pytest
 
 from scripts import alabama_precinct_history as precinct, results_intake, southeast_turnout as se
 from scripts.supported_analytical_release import selected_local_observation_ids
+from scripts.participation_intake.contract import federal_general
 
 
 def sc_lines():
@@ -28,6 +29,24 @@ def test_sc_keeps_both_rate_values_and_rejects_misdated_rows():
     assert rows[2018]["participation_per_reported_registration"] == .6
     with pytest.raises(ValueError, match="year label"):
         se.sc_query([line for line in lines if line != "2024 State Primaries"])
+
+
+def test_alabama_statewide_history_separates_vote_context_and_holds_date_or_rate_conflicts():
+    lines = [*se.AL_HISTORY_HEADER]
+    for year in range(1986, 2025, 2):
+        day = 3 if year == 2014 else federal_general(year).day
+        lines += [f"General Election November {day}, {year}",
+                  "1,000 600 (60% turnout)" if year < 2014 else
+                  f"1,000 Total Ballots Cast 600 ({'55' if year == 2020 else '60'}% turnout)"]
+    lines.append("Office of the Secretary of State Last Revised July 13, 2026 Page 1 of 1")
+    rows = {r["year"]: r for r in se.al_history_query(lines)}
+    assert rows[2012]["decision"] == "contest_vote_context_only"
+    assert rows[2012]["qualified_turnout_rate_pct"] is None
+    assert rows[2014]["decision"] == "source_election_date_disagrees"
+    assert rows[2020]["decision"] == "printed_rate_disagrees"
+    assert rows[2024]["qualified_turnout_rate_pct"] == 60
+    with pytest.raises(ValueError, match="page sequence"):
+        se.al_history_query(lines[:-1])
 
 
 def test_al_preserves_unreported_age_cells_and_checks_county_and_state_controls():

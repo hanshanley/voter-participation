@@ -1,11 +1,14 @@
 """Bulk source-defined historical participation counts for Alabama and South Carolina."""
 import io
 import re
-from datetime import timedelta, timezone
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal, ROUND_HALF_UP
 from zipfile import ZipFile
 
+from scripts.participation_intake.contract import federal_general
+
 SC = "SC-general-election-participation-history"
+AL_HISTORY = "AL-statewide-general-election-turnout-history"
 AL = {year: f"AL-{year}-general-election-age-participation" for year in (2018, 2020, 2024)}
 URLS = {
     SC: "https://scvotes.gov/wp-content/uploads/2026/11/Voter-Participation-History-1998-2026.pdf",
@@ -15,6 +18,9 @@ URLS = {
 }
 SC_CSV = "participation-sc-general-election-history.csv"
 AL_CSV = "participation-al-general-election-by-age.csv"
+AL_HISTORY_URL = ("https://www.sos.alabama.gov/sites/default/files/election-data/"
+                  "2026-07/Comprehensive%20Voter%20Turnout%201986-2024.pdf")
+AL_HISTORY_CSV = "participation-al-statewide-general-election-history.csv"
 AGES = ("18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99", "100+")
 COUNTIES = (
     "AUTAUGA BALDWIN BARBOUR BIBB BLOUNT BULLOCK BUTLER CALHOUN CHAMBERS CHEROKEE CHILTON CHOCTAW "
@@ -26,6 +32,107 @@ COUNTIES = (
 ).split()
 NUMBER = r"(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)"
 AGE_HEADER = ("County", "Total Ballots Cast", *(f"Age {age}" for age in AGES))
+AL_HISTORY_HEADER = ["PRIMARY/PRIMARY RUN-OFF/GENERAL ELECTION", "STATISTICS-STATE OF ALABAMA",
+                     "Voter", "Registration", "as of the", "Date of the", "Election"]
+
+
+def al_history_query(lines):
+    heading = re.compile(r"General Election(?:,| -)? November (?:(\d{1,2}), )?(\d{4})(?: - Presidential)?")
+    boundary = re.compile(r"^(?:Primary|General Election|Special U\.S\. Senate|Presidential Preference|Statewide/)")
+    if lines[:len(AL_HISTORY_HEADER)] != AL_HISTORY_HEADER:
+        raise ValueError("Alabama history no longer declares election-date registration")
+    revision = re.compile(r"Office of the Secretary of State Last Revised (.+) Page (\d+) of (\d+)")
+    footers = [m for line in lines if (m := revision.fullmatch(line))]
+    if (not footers or [int(m[2]) for m in footers] != list(range(1, len(footers) + 1))
+            or any(int(m[3]) != len(footers) or m[1] != footers[0][1] for m in footers)):
+        raise ValueError("Alabama history page sequence or revision differs")
+    revised = datetime.strptime(footers[0][1], "%B %d, %Y").date().isoformat()
+    rows = []
+    for i, label in enumerate(lines):
+        match = heading.fullmatch(label)
+        if not match:
+            continue
+        year = int(match[2])
+        date = federal_general(year)
+        day = int(match[1]) if match[1] else None
+        if day is None and year not in (1986, 1990):
+            raise ValueError("Alabama general election date missing")
+        tail = lines[i + 1:]
+        section = tail[:next((j for j, line in enumerate(tail) if boundary.match(line)), len(tail))]
+        candidates = []
+        for j, line in enumerate(section):
+            if j + 1 < len(section) and section[j + 1] == "Cast":
+                line = line.replace("Total Ballots ", "Total Ballots Cast ", 1)
+            if pair := re.fullmatch(
+                    rf"({NUMBER}) (Total Ballots Cast )?({NUMBER}) \((\d{{1,3}}(?:\.\d+)?%) turnout\)"
+                    r"(?: \(write-in votes included\))?", line, re.I):
+                candidates.append(pair)
+        if len(candidates) != 1:
+            raise ValueError("Alabama history has missing or ambiguous general-election totals")
+        register, ballot_label, count, printed = candidates[0].groups()
+        registered, numerator = (int(value.replace(",", "")) for value in (register, count))
+        date_matches = day == date.day
+        if not 0 < numerator <= registered or bool(ballot_label) != (year >= 2014):
+            raise ValueError("Alabama historical participation basis or counts changed")
+        published = Decimal(printed[:-1])
+        computed = 100 * Decimal(numerator) / registered
+        matches = computed.quantize(Decimal(1).scaleb(published.as_tuple().exponent),
+                                    rounding=ROUND_HALF_UP) == published
+        rows.append({"year": year, "election_date": date.isoformat(), "native_election_label": label,
+                     "measure": "ballots_cast" if ballot_label else "candidate_contest_votes_not_turnout",
+                     "reported_total": numerator, "reported_registered": registered,
+                     "printed_pct": printed, "printed_pct_matches_counts": matches,
+                     "qualified_turnout_rate_pct": float(computed) if ballot_label and date_matches and matches else None,
+                     "decision": "contest_vote_context_only" if not ballot_label else
+                     "source_election_date_disagrees" if not date_matches else
+                     "printed_rate_disagrees" if not matches else "qualified_ballots_per_reported_registration",
+                     "source_revision_date": revised})
+    if [row["year"] for row in rows] != list(range(1986, 2025, 2)):
+        raise ValueError("Alabama historical general-election roster changed")
+    return rows
+
+
+def parse_al_history(body):
+    from pypdf import PdfReader
+
+    if not body.startswith(b"%PDF-") or len(body) > 2_000_000:
+        raise ValueError("Unexpected Alabama statewide history document")
+    pages = PdfReader(io.BytesIO(body), strict=True).pages
+    if not 1 <= len(pages) <= 24:
+        raise ValueError("Alabama history page inventory is out of bounds")
+    lines = [" ".join(line.split()) for page in pages
+             for line in page.extract_text(extraction_mode="layout").splitlines() if line.strip()]
+    selected = []
+    in_general = False
+    for i, line in enumerate(lines):
+        if re.match(r"^(?:Primary|General Election|Special U\.S\. Senate|Presidential Preference|Statewide/)", line):
+            in_general = bool(re.match(r"^General Election(?:,| -)? November ", line))
+        if (i < len(AL_HISTORY_HEADER) or line.startswith("Office of the Secretary of State Last Revised ") or
+                in_general and (line.startswith("General Election") or "(write-in votes included)" in line
+                                or "turnout)" in line.casefold() or line == "Cast")):
+            selected.append(line)
+    rows = al_history_query(selected)
+    return {"date": rows[0]["source_revision_date"], "complete_native_query": rows, "native_lines": selected,
+            "participation_observation_qualified": False}
+
+
+def collect_al_history(collector, *, reuse_checked_week=False):
+    return collect_report(collector, AL_HISTORY, AL_HISTORY_URL, lambda body, _: parse_al_history(body),
+                          reuse_checked_week=reuse_checked_week)
+
+
+def al_history_exports(entries):
+    entry = entries.get(AL_HISTORY) or {}
+    if entry.get("status") not in {"reported", "retained_after_failure"} or entry.get("data") is None:
+        return []
+    facts = entry["data"]
+    rows = al_history_query(facts["native_lines"])
+    if (entry["source"]["url"] != AL_HISTORY_URL or facts["complete_native_query"] != rows
+            or facts["date"] != rows[0]["source_revision_date"]):
+        raise ValueError("Alabama statewide turnout differs from retained report")
+    return [{**row, "state_code": "AL", "source_status": entry["status"], "source_url": AL_HISTORY_URL,
+             "source_sha256": entry["source"]["sha256"], "checked_week_utc": entry.get("archive_check_week_utc")}
+            for row in rows]
 
 
 def sc_query(lines):
