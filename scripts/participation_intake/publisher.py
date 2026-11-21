@@ -1,11 +1,13 @@
 """Hash-addressed data publication; never touches a website worktree or build."""
 
-from concurrent.futures import ThreadPoolExecutor
+from email.utils import parsedate_to_datetime
 import json
 import os
 from pathlib import Path, PurePosixPath
 import subprocess
 import tempfile
+import time
+import urllib.error
 import urllib.request
 
 from .contract import IntakeError, encoded, pin, digest
@@ -123,15 +125,41 @@ class GitPublisher:
 
     def verify_files(self, commit, files):
         base = f"https://raw.githubusercontent.com/{self.github_repository}/{commit}/"
-        def verify(item):
-            name, expected = item
-            with urllib.request.urlopen(base + name, timeout=90) as response:
-                body = response.read()
+        verified = []
+        # Share the retry budget across the whole batch, not per file.
+        retries = 0
+        waited = 0
+        for name, expected in sorted(files.items()):
+            while True:
+                try:
+                    with urllib.request.urlopen(base + name, timeout=90) as response:
+                        body = response.read(expected["bytes"] + 1)
+                    break
+                except urllib.error.HTTPError as error:
+                    if error.code != 429 or retries == 2:
+                        raise
+                    headers = error.headers or {}
+                    retry_after = headers.get("Retry-After")
+                    try:
+                        delay = (int(retry_after) if retry_after and retry_after.isascii()
+                                 and retry_after.isdecimal() else
+                                 parsedate_to_datetime(retry_after).timestamp() - time.time()
+                                 if retry_after else 0)
+                        if headers.get("X-RateLimit-Remaining") == "0":
+                            delay = max(delay, int(headers["X-RateLimit-Reset"]) - time.time())
+                    except (ValueError, TypeError, OverflowError, KeyError):
+                        raise error from None
+                    delay = max(60 * 2**retries, delay)
+                    if waited + delay > 300:
+                        raise
+                    retries += 1
+                    waited += delay
+                    error.close()
+                    time.sleep(delay)
             if pin(body) != expected:
                 raise IntakeError("publication_integrity", "Anonymous immutable data verification failed: " + name)
-            return name
-        with ThreadPoolExecutor(max_workers=4) as pool:
-            return list(pool.map(verify, sorted(files.items())))
+            verified.append(name)
+        return verified
 
     def publish(self, root):
         root = Path(root)

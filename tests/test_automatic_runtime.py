@@ -10,6 +10,45 @@ import pytest
 
 from scripts import automatic_runtime as runtime
 from scripts.participation_intake.contract import encoded, pin
+from scripts.participation_intake import publisher
+
+
+def test_anonymous_verification_retries_only_throttled_file(monkeypatch, tmp_path):
+    seen, sleeps = [], []
+
+    def open_file(url, *, timeout):
+        seen.append(url.rsplit("/", 1)[-1])
+        if seen == ["a", "b"]:
+            raise publisher.urllib.error.HTTPError(url, 429, "throttled", {"Retry-After": "75"}, None)
+        return io.BytesIO(b"public")
+
+    monkeypatch.setattr(publisher.urllib.request, "urlopen", open_file)
+    monkeypatch.setattr(publisher.time, "sleep", sleeps.append)
+    git = publisher.GitPublisher(tmp_path)
+    assert git.verify_files("commit", dict.fromkeys(("a", "b", "c"), pin(b"public"))) == ["a", "b", "c"]
+    assert seen == ["a", "b", "b", "c"]
+    assert sleeps == [75]
+
+
+@pytest.mark.parametrize("code,headers,delays", [
+    (429, {}, [60, 120]),
+    (429, {"Retry-After": "301"}, []),
+    (429, {"X-RateLimit-Remaining": "0", "X-RateLimit-Reset": "2000"}, []),
+    (403, {}, []),
+])
+def test_anonymous_verification_preserves_hold_on_persistent_failure(monkeypatch, tmp_path, code, headers, delays):
+    sleeps = []
+
+    def reject(url, *, timeout):
+        raise publisher.urllib.error.HTTPError(url, code, "unavailable", headers, None)
+
+    monkeypatch.setattr(publisher.urllib.request, "urlopen", reject)
+    monkeypatch.setattr(publisher.time, "time", lambda: 1000)
+    monkeypatch.setattr(publisher.time, "sleep", sleeps.append)
+    with pytest.raises(publisher.urllib.error.HTTPError) as error:
+        publisher.GitPublisher(tmp_path).verify_files("commit", {"a": pin(b"public")})
+    assert error.value.code == code
+    assert sleeps == delays
 
 
 def test_current_only_updates_matching_fresh_native_measure_and_preserves_every_other_frame():
