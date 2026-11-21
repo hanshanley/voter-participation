@@ -4,6 +4,8 @@ import pytest
 
 from scripts import ces_senate_routing as routing
 from scripts import ces_2022_senate_routing as midterm
+from scripts.norc_senate_routing import TIMINGS
+from scripts.senate_survey_support import combine
 
 
 def race(stage="general", year=2020):
@@ -65,3 +67,35 @@ def test_2022_special_uses_only_the_special_slate_and_validated_voter_state():
     races["OK"]["previous_candidates"] = races["OK"]["previous_candidates"].replace("S-Unexpired Term", "S")
     with pytest.raises(ValueError, match="invalid reviewed candidate frame"):
         midterm.evaluate([sample], races, labels)
+
+
+def test_combined_senate_audit_withholds_changed_historical_stage_and_rejects_mismatched_current_seat():
+    current = {
+        **race(), "election_date": "2026-11-03", "election_kind": "regular",
+        "provider_race_id": "7168", "round": "not_ranked",
+    }
+    norc = [
+        {**current, "timing_cohort": timing, "respondents_with_senate_answer": "12",
+         "weight_only_effective_n": "8.00", "participation_rate_qualified": "False",
+         "senate_transition_model_qualified": "False"}
+        for timing in TIMINGS
+    ]
+    historical = [{
+        "state_code": "CO", "seat": "2", "historical_source_question": "CC20_411",
+        "matched_slate": "15", "reported_major_choice": "14", "answered": "20",
+        "transition_model_qualified": "False",
+    }]
+    midterm_placeholders = [{"state_code": state} for state in midterm.FRAMES]
+    def joined(audited):
+        return list(combine({"CO": current}, norc, historical, midterm_placeholders, {"CO": audited}, {}))[0]
+
+    row = joined(current)
+    assert row["prior_survey_reported_major_choice"] == 14
+    assert row["current_reported_plan"] == 12
+    assert not row["survey_cohorts_linked"] and not row["transition_model_qualified"]
+    held = joined(race(stage="general_runoff"))
+    assert held["prior_survey_status"] == "prior_scope_not_audited"
+    assert held["prior_survey_reported_major_choice"] == ""
+    norc[0]["seat"] = "3"
+    with pytest.raises(ValueError, match="Invalid current Senate survey cohort"):
+        joined(current)
