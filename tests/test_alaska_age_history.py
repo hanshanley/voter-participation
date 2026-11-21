@@ -1,6 +1,8 @@
 import pytest
 
 from scripts import alaska_age_history as ak
+from scripts import bulk_participation_archives as archives
+from scripts.participation_intake.contract import pin
 
 
 def report(year):
@@ -100,3 +102,21 @@ def test_scan_accepts_matched_counts_and_rejects_disagreement_or_low_confidence(
     pages[0][1]["rows"][0][1] = "99"
     with pytest.raises(ValueError, match="totals disagree"):
         ak.scan_facts(pages, 2012)
+
+
+def test_bulk_original_replay_checks_exact_bytes_then_compares_parsed_query(tmp_path, monkeypatch):
+    source = b"pinned publisher file"
+    facts = ak.facts(report(2006), 2006, None)
+    feed = "AK-2006-general-age-voter-history"
+    entries = {feed: {"source": {"url": ak.source(2006), **pin(source)}, "data": facts}}
+    path = tmp_path / (feed + ".htm")
+    path.write_bytes(source + b" changed")
+    monkeypatch.setattr(ak, "parse", lambda *_args, **_kwargs: pytest.fail("Parsed before checking pin"))
+    with pytest.raises(ValueError, match="Changed original"):
+        archives.verify_original_reports(entries, tmp_path)
+    path.write_bytes(source)
+    monkeypatch.setattr(ak, "parse", lambda *_args, **_kwargs: {**facts, "date": "2007-01-01"})
+    with pytest.raises(ValueError, match="extraction differs"):
+        archives.verify_original_reports(entries, tmp_path)
+    monkeypatch.setattr(ak, "parse", lambda *_args, **_kwargs: facts)
+    assert archives.verify_original_reports(entries, tmp_path) == 1

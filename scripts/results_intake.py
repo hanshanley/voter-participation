@@ -743,6 +743,7 @@ def collect(registry_path, work, previous=None, now=None, offline=False):
 
 
 def export_collection(work, config, baseline, inputs, extras, now, source_attempts):
+    from scripts.bulk_participation_archives import original_inventory
     from scripts.results_turnout_history import county_archive_originals
 
     work = Path(work)
@@ -759,6 +760,9 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     originals = county_archive_originals(stored_inputs.get("granular", {}))
     if originals:
         package_members["inputs/county-report-originals.json"] = encoded(originals)
+    bulk_originals = original_inventory(stored_inputs.get("granular", {}))
+    if bulk_originals:
+        package_members["inputs/bulk-report-originals.json"] = encoded(bulk_originals)
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",
              "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
              "results_aspx_congress.py", "results_native_congress.py", "results_json_congress.py",
@@ -920,6 +924,16 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
             "python3 code/reproduce.py replay --package . --output reproduced-from-originals"
             " --county-report-dir /path/to/originals\n"
             "This check makes no requests and never substitutes a newer edition for a missing original.\n"
+        ).encode()
+    if bulk_originals:
+        package_members["REPRODUCE.txt"] += (
+            "\nOptional: independently re-extract the Alaska age and Connecticut town reports.\n"
+            "Use CPython 3.12 with pypdf==6.16.0, PyMuPDF==1.26.5 and rapidocr-onnxruntime==1.4.4.\n"
+            "Place the exact publisher files in a local directory with the filenames and SHA-256\n"
+            "checksums listed in inputs/bulk-report-originals.json. Then run:\n"
+            "python3.12 code/reproduce.py replay --package . --output reproduced-from-bulk-originals"
+            " --bulk-report-dir /path/to/originals\n"
+            "The verification is offline; a newer edition does not replace a missing original.\n"
         ).encode()
     package_members["checksums.json"] = encoded({key: pin(body) for key, body in package_members.items()})
     buffer = io.BytesIO()
@@ -1141,7 +1155,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
     return export_collection(work, config, baseline, inputs, extras, now, collector.attempts)
 
 
-def replay(package, output, *, county_report_dir=None):
+def replay(package, output, *, county_report_dir=None, bulk_report_dir=None):
+    from scripts.bulk_participation_archives import original_inventory, verify_original_reports
     from scripts.results_turnout_history import county_archive_originals, verify_county_archive_originals
 
     package, output = Path(package), Path(output)
@@ -1160,6 +1175,11 @@ def replay(package, output, *, county_report_dir=None):
         raise ValueError("County report original inventory differs from the accepted checkpoint")
     original_count = (verify_county_archive_originals(entries, Path(county_report_dir))
                       if county_report_dir is not None else None)
+    bulk_manifest = "inputs/bulk-report-originals.json"
+    if bulk_manifest in manifest and read(package / bulk_manifest) != original_inventory(entries):
+        raise ValueError("Bulk report original inventory differs from the accepted checkpoint")
+    bulk_count = (verify_original_reports(entries, Path(bulk_report_dir))
+                  if bulk_report_dir is not None else None)
     outputs = project(state, baseline)
     for name in config.get("accepted_queries", {}):
         body = (package / "queries" / str(relative(name))).read_bytes()
@@ -1178,6 +1198,8 @@ def replay(package, output, *, county_report_dir=None):
     result = {"passed": True, "complete_outputs": len(outputs), "network_requests": 0}
     if original_count is not None:
         result["county_report_originals_verified"] = original_count
+    if bulk_count is not None:
+        result["bulk_report_originals_verified"] = bulk_count
     return result
 
 
@@ -1494,6 +1516,8 @@ def main():
     reproduce.add_argument("--output", type=Path, required=True)
     reproduce.add_argument("--county-report-dir", type=Path,
                            help="Also verify and re-extract the exact local Wyoming and West Virginia PDFs")
+    reproduce.add_argument("--bulk-report-dir", type=Path,
+                           help="Also verify and re-extract the exact local Alaska and Connecticut reports")
     recover = commands.add_parser("restore")
     recover.add_argument("--package", type=Path, required=True)
     recover.add_argument("--report", type=Path, required=True)
@@ -1535,7 +1559,8 @@ def main():
             result = restore(args.package, args.report, args.work_dir, previous, latest,
                              require_late_archive_scope=args.require_late_archive_scope)
     else:
-        result = replay(args.package, args.output, county_report_dir=args.county_report_dir)
+        result = replay(args.package, args.output, county_report_dir=args.county_report_dir,
+                        bulk_report_dir=args.bulk_report_dir)
     print(json.dumps(result, sort_keys=True))
 
 
