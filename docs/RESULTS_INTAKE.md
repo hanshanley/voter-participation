@@ -237,6 +237,15 @@ within each locality and across the state. Curbside is already included
 in the total. The report does not include a registration denominator,
 so no locality registration fractions are calculated.
 
+Virginia's 2024 official results API is a separate, count-only archive.
+One statewide JSON response provides all 95 counties and 38 independent
+cities. The 133 locality counts sum to 4,526,538 in the reviewed edition;
+the API's statewide ballot field is zero, while the separate certified
+summary lists 4,535,314 voters. The API registration fields are retained
+in the complete query but are not used to calculate rates. The locality
+CSV is separate from the statewide/county archive so their different
+coverage and denominators cannot be confused.
+
 For independent verification from publisher originals, extract the nested
 `inputs/complete-source-results.zip` from the analysis download. Its
 `inputs/county-report-originals.json` lists the exact URLs, checksums and
@@ -255,13 +264,13 @@ Run from the extracted source package:
 
 ```sh
 python3.12 code/reproduce.py replay --package . --output reproduced \
-  --county-report-dir /path/to/original-pdfs
+  --county-report-dir /path/to/original-reports
 ```
 
 The optional check requires every listed edition and re-extracts the complete
 query before numerical replay. It never uses the network or silently
 substitutes another edition. The default replay continues to work without
-the PDFs.
+the original reports.
 
 Nebraska's early canvasses use bounded scan profiles: one cover and three
 or four table pages, each rendered twice. The parser admits only the printed
