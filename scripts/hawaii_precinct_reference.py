@@ -1,4 +1,4 @@
-"""Draw a count-only Hawaii reference map without asserting 2026 boundaries."""
+"""Draw dated Hawaii precinct reference maps without asserting boundary equivalence."""
 
 import argparse
 import csv
@@ -10,13 +10,16 @@ from pyproj import Transformer
 from shapely import transform, union_all
 from shapely.geometry import shape
 
-from scripts.hawaii_precinct_turnout import FEED, exports
+from scripts.hawaii_precinct_turnout import FEED, HISTORICAL_FEED, exports
 from scripts.nc_precinct_reference import display_paths, topology
 from scripts.participation_intake.contract import pin
 
 
 GIS_PIN = {"bytes": 9150411, "sha256": "63951856278c3e522cbb38abeda710e15f0e133ae8c8db3ec8b473cf2e6437bb"}
-QUERY_PIN = "fd1d3c6193a26c5a5c90fb2088e41551cdcfcd905640f0270caef9849925dc20"
+QUERY_PINS = {
+    2024: "f25d32b87ea9d7419e73d4e8062adad8a391f58e7ac9423c84e2aad42e16bc6d",
+    2026: "fd1d3c6193a26c5a5c90fb2088e41551cdcfcd905640f0270caef9849925dc20",
+}
 COLORS = ("#d5e4e9", "#9ebfca", "#5d96a8", "#2c697d", "#174c60")
 
 
@@ -88,25 +91,65 @@ def draw(decisions, shapes):
     return "\n".join(lines) + "\n"
 
 
+def draw_historical(decisions, shapes, *, rate):
+    rows = {r["native_unit"]: r for r in decisions}
+    field = "qualified_registration_fraction_pct" if rate else "reported_mode_sum"
+    measure = "Percent of same-report registrations" if rate else "Native reported ballot counts"
+    cuts = (40, 50, 60, 70) if rate else (1, 500, 1500, 3000)
+    labels = ("Under 40%", "40–49%", "50–59%", "60–69%", "70% or more") if rate else (
+        "Zero", "1–499", "500–1,499", "1,500–2,999", "3,000 or more")
+    available = sum(r["reference_map_status"] == "reference_code_only" and r[field] is not None
+                    for r in decisions)
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 446" role="img" aria-labelledby="title description">',
+        '<title id="title">Hawaii November 2024 participation</title>',
+        f'<desc id="description">{measure}. {available} precincts are shaded on May 2024 reference outlines.</desc>',
+        '<rect width="960" height="446" fill="white"/>',
+        '<text x="20" y="27" font-size="21">Hawaii · November 2024 precinct participation</text>',
+        f'<text x="20" y="49" font-size="14">{measure} · {available} shaded · May 2024 reference outlines</text>',
+    ]
+    for (_, key), path in display_paths(shapes):
+        row = rows[key]
+        value = row[field] if row["reference_map_status"] == "reference_code_only" else None
+        fill = COLORS[sum(value >= cut for cut in cuts)] if value is not None else "#eceeef"
+        label = "not shaded" if value is None else f"{value:.2f}%" if rate else f"{value:,} ballots"
+        lines.append(f'<path d="{path}" fill="{fill}" fill-rule="evenodd" stroke="#68828a" '
+                     f'stroke-width=".18"><title>{key}: {label}</title></path>')
+    for i, label in enumerate(labels):
+        x = 20 + i * 139
+        lines.append(f'<rect x="{x}" y="391" width="17" height="12" fill="{COLORS[i]}"/>'
+                     f'<text x="{x+22}" y="402" font-size="13">{label}</text>')
+    lines.append('<text x="20" y="430" font-size="13">Gray: not shaded, not zero. See the complete decision table.</text></svg>')
+    return "\n".join(lines) + "\n"
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--year", type=int, choices=QUERY_PINS, default=2026)
     parser.add_argument("--geometry", type=Path, required=True)
     parser.add_argument("--query", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     original = args.geometry.read_bytes()
     query = args.query.read_bytes()
-    if pin(original) != GIS_PIN or pin(query)["sha256"] != QUERY_PIN:
+    if pin(original) != GIS_PIN or pin(query)["sha256"] != QUERY_PINS[args.year]:
         raise ValueError("Hawaii reference inputs differ from their reviewed editions")
     data = json.loads(query)
-    rows = exports({FEED: {"status": "reported", "data": data}})
+    feed = FEED if args.year == 2026 else HISTORICAL_FEED
+    rows = exports({feed: {"status": "reported", "data": data}}, year=args.year)
     decisions, shapes = bind(json.loads(original)["features"], rows)
     args.output.mkdir()
     with (args.output / "precinct-reference-decisions.csv").open("w", newline="") as stream:
         writer = csv.DictWriter(stream, fieldnames=decisions[0], lineterminator="\n")
         writer.writeheader()
         writer.writerows(decisions)
-    (args.output / "hawaii-2026-precinct-reference.svg").write_text(draw(decisions, shapes), encoding="utf-8")
+    if args.year == 2026:
+        (args.output / "hawaii-2026-precinct-reference.svg").write_text(draw(decisions, shapes), encoding="utf-8")
+    else:
+        for rate in (False, True):
+            name = "rate" if rate else "count"
+            (args.output / f"hawaii-2024-precinct-{name}.svg").write_text(
+                draw_historical(decisions, shapes, rate=rate), encoding="utf-8")
 
 
 if __name__ == "__main__":
