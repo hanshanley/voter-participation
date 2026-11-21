@@ -130,6 +130,16 @@ denominators or printed controls disagree. The source's `Eligible` column is not
 reclassified as VAP, CVAP, or a modern VEP estimate. This statewide table neither
 fills county gaps nor overwrites the separate historical county series.
 
+`HI-2026-general-election-precinct-turnout` reads one statewide precinct PDF
+and its separate statewide summary without OCR. It matches Mail and In-Person
+once per native unit, checks the complete roster and the printed registration
+and mode percentages, and does not sum registration twice. The CSV keeps
+reporting-only units and both report clocks, interpreted as Hawaii local time.
+The November 10 precinct edition sums seven ballots above the statewide
+summary; that edition publishes native counts only, not precinct rates.
+`FINAL` is a report label, not a certification finding. No geometry is asserted
+without independent vintage and reporting-unit evidence.
+
 The same hourly collector also reads California's separately published `S26GG`
 and `V26GG` text files as `CA-2026-media-turnout`. The `A` section reports
 ballots cast and registration, with separate county report clocks and one

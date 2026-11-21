@@ -5,7 +5,7 @@ import re
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history, california_media,
     california_turnout_history,
-    connecticut_turnout_history, dakota_turnout_history, hawaii_turnout_history, kansas_turnout_history,
+    connecticut_turnout_history, dakota_turnout_history, hawaii_precinct_turnout, hawaii_turnout_history, kansas_turnout_history,
     national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     pa_audit_ballots,
     southeast_turnout, washington_participation,
@@ -38,6 +38,8 @@ def families():
          (kansas_turnout_history.CSV,), kansas_turnout_history.exports),
         ({hawaii_turnout_history.FEED: hawaii_turnout_history.collect}, True,
          (hawaii_turnout_history.CSV,), hawaii_turnout_history.exports),
+        (routes(hawaii_precinct_turnout, (hawaii_precinct_turnout.FEED,)), True,
+         (hawaii_precinct_turnout.CSV,), hawaii_precinct_turnout.exports),
         (routes(dakota_turnout_history, dakota_turnout_history.URLS), True,
          (dakota_turnout_history.CSV,), dakota_turnout_history.exports),
         (routes(new_jersey_periodic_counties, new_jersey_periodic_counties.FEEDS), False,
@@ -83,6 +85,12 @@ def original_reports(entries):
     from scripts import results_indiana_turnout as indiana, results_turnout_history as history
 
     age, ct = alaska_age_history, connecticut_turnout_history
+    hi = hawaii_precinct_turnout
+    if (data := (entries.get(hi.FEED) or {}).get("data")) is not None:
+        detail, control = data["report"], data["supporting_report"]
+        yield hi.FEED, detail, ".pdf", hi.MAX_BYTES, detail["url"] == hi.URL, hi.parse_detail, data["detail"]
+        yield (hi.FEED + "-statewide-control", control, ".pdf", hi.MAX_BYTES, control["url"] == hi.HI_URL,
+               hi.statewide_control, data["control"])
     ca = california_turnout_history
     if (data := (entries.get(ca.FEED) or {}).get("data")) is not None:
         report = data["report"]
