@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from urllib.parse import parse_qs, urlsplit
+from urllib.error import HTTPError
 
 import pytest
 
@@ -50,6 +51,53 @@ def test_monitor_reports_rate_limit_without_retry_or_issue_edits(
 
 
 NOW = datetime(2026, 11, 18, 19, tzinfo=timezone.utc)
+
+
+def downloadable_runtime(active):
+    tag = "automatic-participation-" + active["version"]
+    url = f"https://github.com/{health.WEBSITE}/releases/download/{tag}/complete-analysis.zip"
+    active["complete_download"] = {
+        "url": url, "bytes": 234, "sha256": "a" * 64, "verified_anonymously": True,
+    }
+    return f"repos/{health.WEBSITE}/releases/tags/{tag}", {
+        "draft": False, "tag_name": tag, "assets": [{
+            "name": "complete-analysis.zip", "state": "uploaded", "browser_download_url": url,
+            "size": 234, "digest": "sha256:" + "a" * 64,
+        }],
+    }
+
+
+@pytest.mark.parametrize(("problem", "status"), [
+    ("missing_release", "release_not_public"),
+    ("draft", "release_not_public"),
+    ("missing_asset", "missing_or_duplicate_complete_zip"),
+    ("changed_digest", "complete_zip_differs_from_manifest"),
+    (None, "verified"),
+])
+def test_complete_download_checks_anonymous_release_and_exact_asset(problem, status):
+    active = {"version": "c" * 64}
+    endpoint, release = downloadable_runtime(active)
+    if problem == "draft":
+        release["draft"] = True
+    elif problem == "missing_asset":
+        release["assets"] = []
+    elif problem == "changed_digest":
+        release["assets"][0]["digest"] = "sha256:" + "d" * 64
+
+    def request(path):
+        assert path == endpoint
+        if problem == "missing_release":
+            raise HTTPError(path, 404, "Not found", {}, None)
+        return release
+
+    assert health.complete_download_status(active, request) == status
+
+
+def test_matching_future_dated_versions_are_not_healthy():
+    observed = (NOW + timedelta(seconds=1)).isoformat()
+    source = {"version": "a" * 64, "checked_at": observed}
+    active = {"version": "b" * 64, "input_results_version": source["version"], "checked_at": observed}
+    assert set(health.assess(NOW, {}, source, active)["persistent_problems"]) == {"clock"}
 
 
 def previous(hours):
@@ -129,6 +177,7 @@ def test_fresh_arrival_does_not_hide_unconsumed_predecessor_or_catalog_drift():
     old = {"version": "d" * 64, "checked_at": previous(2.5)}
     catalog = {"datasets": {"participation-counts-2026": active["counts"],
                             "participation-native-bindings-2026": {"version": "different"}}}
+    release_path, release = downloadable_runtime(active)
 
     def request(path, raw=False):
         source_root = f"repos/{health.SOURCE}"
@@ -143,6 +192,7 @@ def test_fresh_arrival_does_not_hide_unconsumed_predecessor_or_catalog_drift():
             f"{source_root}/contents/latest.json?ref={source_ref}": source,
             f"{website_root}/contents/automatic/latest.json?ref={runtime_ref}": active,
             f"{website_root}/contents/catalog.json?ref={runtime_ref}": catalog,
+            release_path: release,
             f"{source_root}/commits?sha={source_ref}&path=latest.json"
             "&until=2026-11-18T17:00:00Z&per_page=1": [{"sha": cutoff_ref}],
             f"{source_root}/contents/latest.json?ref={cutoff_ref}": old,
@@ -152,6 +202,8 @@ def test_fresh_arrival_does_not_hide_unconsumed_predecessor_or_catalog_drift():
     old.update(version=active["input_results_version"], checked_at=active["checked_at"])
     catalog["datasets"]["participation-native-bindings-2026"] = active["native"]
     assert not health.check(NOW, request)["persistent_problems"]
+    release["assets"] = []
+    assert set(health.check(NOW, request)["persistent_problems"]) == {"download"}
 
 
 @pytest.mark.parametrize("archive_event", [None, "schedule", "workflow_dispatch"])
@@ -162,6 +214,7 @@ def test_weekly_health_only_accepts_named_success_and_checks_handoff(archive_eve
               "checked_at": "2027-01-30T00:00:00Z", "counts": {}, "native": {}}
     source = {"version": "a" * 64, "checked_at": "2027-02-01T10:20:00Z"}
     catalog = {"datasets": {"participation-counts-2026": {}, "participation-native-bindings-2026": {}}}
+    release_path, release = downloadable_runtime(active)
     ordinary = {**run(1, 0), "created_at": "2027-02-01T12:23:00Z", "updated_at": "2027-02-01T12:24:00Z",
                 "head_branch": "main", "event": "schedule", "display_title": "Collect full election results"}
     archive = {**ordinary, "id": 101, "event": archive_event or "schedule",
@@ -184,6 +237,7 @@ def test_weekly_health_only_accepts_named_success_and_checks_handoff(archive_eve
             f"repos/{health.SOURCE}/contents/latest.json?ref={source_ref}": source,
             f"repos/{health.WEBSITE}/contents/automatic/latest.json?ref={runtime_ref}": active,
             f"repos/{health.WEBSITE}/contents/catalog.json?ref={runtime_ref}": catalog,
+            release_path: release,
         }[path]
 
     observed = health.check(now, request)

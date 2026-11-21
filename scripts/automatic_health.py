@@ -35,9 +35,10 @@ def clock(value):
 
 
 def api(path, method="GET", body=None, raw=False):
-    if path.startswith(f"repos/{SOURCE}/"):
+    public = path.startswith((f"repos/{SOURCE}/", f"repos/{WEBSITE}/releases/tags/automatic-participation-"))
+    if public:
         if method != "GET" or body is not None:
-            raise ValueError("The source repository is read-only for the monitor")
+            raise ValueError("Public evidence requests are read-only")
         # The website's Actions token is confined to the website repository.
         headers = {"Accept": "application/vnd.github.raw+json"} if raw else {}
         with urlopen(Request("https://api.github.com/" + path, headers=headers), timeout=30) as response:
@@ -61,6 +62,35 @@ def data_commit(repository, tag, request):
 
 def contents(repository, commit, name, request):
     return request(f"repos/{repository}/contents/{name}?ref={commit}", raw=True)
+
+
+def complete_download_status(active, request):
+    tag = "automatic-participation-" + active["version"]
+    url = f"https://github.com/{WEBSITE}/releases/download/{tag}/complete-analysis.zip"
+    pin = active.get("complete_download")
+    if (not isinstance(pin, dict) or pin.get("url") != url
+            or type(pin.get("bytes")) is not int or pin["bytes"] <= 0
+            or not isinstance(pin.get("sha256"), str) or not re.fullmatch(r"[a-f0-9]{64}", pin["sha256"])
+            or pin.get("verified_anonymously") is not True):
+        return "invalid_manifest_download"
+    # Query without credentials so a draft/private release can't pass this check.
+    path = f"repos/{WEBSITE}/releases/tags/{tag}"
+    try:
+        release = request(path)
+    except HTTPError as error:
+        if error.code == 404:
+            return "release_not_public"
+        raise
+    if release.get("draft") is not False or release.get("tag_name") != tag:
+        return "release_not_public"
+    assets = [asset for asset in release.get("assets", []) if asset.get("name") == "complete-analysis.zip"]
+    if len(assets) != 1:
+        return "missing_or_duplicate_complete_zip"
+    asset = assets[0]
+    if (asset.get("state") != "uploaded" or asset.get("browser_download_url") != url
+            or asset.get("size") != pin["bytes"] or asset.get("digest") != "sha256:" + pin["sha256"]):
+        return "complete_zip_differs_from_manifest"
+    return "verified"
 
 
 def assess(now, runs, source, active, *, source_at_cutoff=None, catalog=None):
@@ -96,6 +126,8 @@ def assess(now, runs, source, active, *, source_at_cutoff=None, catalog=None):
     caught_up = accepted_version == active_input
     sources_checked_at = clock(source["checked_at"])
     active_checked_at = clock(active["checked_at"])
+    if not (HOURLY_START <= sources_checked_at <= now and HOURLY_START <= active_checked_at <= now):
+        problems["clock"] = "publication: a checkpoint is future-dated or predates the general-election window."
     cutoff_overdue = (source_at_cutoff is not None
                       and source_at_cutoff["version"] != active_input
                       and clock(source_at_cutoff["checked_at"]) > active_checked_at)
@@ -223,6 +255,10 @@ def check(now, request=api, *, write_issue=False):
             source_at_cutoff = contents(SOURCE, previous, "latest.json", request)
     report = assess(now, runs, source, active, source_at_cutoff=source_at_cutoff,
                     catalog=catalog)
+    status = complete_download_status(active, request)
+    report["complete_download"] = status
+    if status != "verified":
+        report["persistent_problems"]["download"] = "publication: the public complete ZIP failed verification (" + status + ")."
     if not hourly and (weekly := weekly_archive_status(now, request)) is not None:
         report["scheduled_writers"]["weekly_archive"] = weekly
         if weekly["last_success_id"] is None:
