@@ -43,6 +43,9 @@ VA_LOCALITY_URL = ("https://results.elections.virginia.gov/vaelections/"
 VA_LOCALITY_HEADER = ("Locality Name", "Early Voting", "Election Day", "By Mail**",
                      "Provisional", "Totals", "", "Curbside***")
 VA_LOCALITY_ROSTER = "fdd899c080512865c463433dbba8b4de51a5e6344fd65337484267dabdc5f0bf"
+VA_NATIVE_LOCALITY_DATE = "2024-11-05"
+VA_NATIVE_LOCALITY_URL = ("https://enr.elections.virginia.gov/results/public/api/elections/"
+                          "virginia/2024NovemberGeneral/data")
 VA_URL = "https://www.elections.virginia.gov/resultsreports/registrationturnout-statistics/"
 VA_HEADER = ("Year", "Total Registered", "Percentage Change from Previous Year", "Total Voting",
              "Turnout (% Voting of Total Registered)", "Voting Absentee (Included in Total Voting)")
@@ -130,6 +133,7 @@ WY_COUNTIES = (
 ).split("|")
 COUNTY_ARCHIVES = {
     "VA-2022-general-election-locality-turnout": ("VA", VA_LOCALITY_DATE),
+    "VA-2024-general-election-locality-turnout": ("VA", VA_NATIVE_LOCALITY_DATE),
     **{f"MD-{election[:4]}-general-precinct-affiliation-turnout": ("MD", election)
        for election in maryland_precinct_history.EDITIONS},
     **{f"MN-{election[:4]}-general-precinct-turnout-workbook": ("MN", election)
@@ -149,6 +153,7 @@ COUNTY_ARCHIVES = {
        for election in nebraska_canvass.BOOKS},
 }
 COUNTY_ARCHIVE_CSV = "participation-state-county-turnout-archives.csv"
+VA_NATIVE_LOCALITY_CSV = "participation-va-2024-official-locality-ballots.csv"
 BUXTON_FEED = "ME-buxton-town-turnout"
 BUXTON_URL = "https://www.buxton.me.us/news/11-3-2026-election-results"
 BUXTON_TITLE = "Election Results for the Town of Buxton, Maine - November 3, 2026 State and Town Elections"
@@ -732,6 +737,8 @@ def county_archive_routes(state, election):
         return url, re.escape(url)
     if state == "VA" and election == VA_LOCALITY_DATE:
         return VA_LOCALITY_URL, re.escape(VA_LOCALITY_URL)
+    if state == "VA" and election == VA_NATIVE_LOCALITY_DATE:
+        return VA_NATIVE_LOCALITY_URL, re.escape(VA_NATIVE_LOCALITY_URL)
     if state == "CO":
         index, report = colorado_voting_statistics.routes(election)
         return index, re.escape(report)
@@ -910,6 +917,8 @@ def virginia_locality_query(rows, clock):
 
 
 def virginia_locality_report(body, election):
+    if election == VA_NATIVE_LOCALITY_DATE:
+        return virginia_native_locality_report(body)
     text = body.decode("utf-8-sig")
     clocks = re.findall(r'<p class="asOf">Page generated on ([^<]+)</p>', text)
     if (election != VA_LOCALITY_DATE or len(clocks) != 1
@@ -921,6 +930,77 @@ def virginia_locality_report(body, election):
     if len(tables) != 1:
         raise ValueError("Missing or repeated Virginia turnout table")
     return virginia_locality_query(tables[0], clocks[0])
+
+
+def virginia_native_locality_query(parent, rows):
+    from scripts.results_native_virginia import _integer, _uuid
+
+    def clock(value):
+        parsed = datetime.fromisoformat(value)
+        if not value.endswith("Z") or parsed.date().isoformat() < VA_NATIVE_LOCALITY_DATE:
+            raise ValueError("Invalid Virginia locality report clock")
+        return parsed
+
+    state_id, date, is_primary, official, registered, ballots, edition = parent
+    clock(edition)
+    if (state_id != "01000000-6280-aaec-5a67-08dcde4d96cd" or date != VA_NATIVE_LOCALITY_DATE
+            or is_primary is not False or official is not True):
+        raise ValueError("Virginia native statewide election identity or stage differs")
+    registered, ballots = _integer(registered), _integer(ballots)
+    names = [row[0] for row in rows]
+    if (len(rows) != 133 or names != sorted(set(names))
+            or pin(encoded(names))["sha256"] != VA_LOCALITY_ROSTER):
+        raise ValueError("Virginia native locality roster differs")
+    seen, counties = set(), []
+    statewide_registration = 0
+    edition_clock = clock(edition)
+    for (name, locality_id, local_date, primary, local_official, n, d, active, inactive,
+         reg_total, observed) in rows:
+        key = _uuid(locality_id)
+        if (key in seen or local_date != date or primary is not False or local_official is not True
+                or clock(observed) > edition_clock):
+            raise ValueError("Virginia native locality identity, clock or stage differs")
+        seen.add(key)
+        n, d, active, inactive, reg_total = map(_integer, (n, d, active, inactive, reg_total))
+        if not 0 < n <= d or d != reg_total or d != active + inactive:
+            raise ValueError("Virginia native locality counts do not reconcile")
+        statewide_registration += d
+        counties.append({"county": name, "ballots_cast": n, "registered": None,
+                         "rate_hold_reason": "native_registration_frame_not_certified_turnout_denominator"})
+    total = sum(row["ballots_cast"] for row in counties)
+    if statewide_registration != registered or ballots not in (0, total):
+        raise ValueError("Virginia native statewide and locality controls disagree")
+    return {"native_parent": parent, "native_rows": rows, "edition": edition,
+            "counties": counties, "locality_ballot_sum": total, "registration_basis": None,
+            "report_note": "Official results API locality ballot counts. The locality sum is not the separately "
+                           "published certified statewide turnout total. The native registration fields are retained "
+                           "in the complete query but are not used as the locality turnout denominator.",
+            "extraction_method": "statewide_locality_results_api"}
+
+
+def virginia_native_locality_report(body):
+    from scripts.results_native_virginia import _document, _english, _uuid
+
+    if not 0 < len(body) <= county_archive_limit("VA"):
+        raise ValueError("Virginia native locality report exceeds reviewed size bound")
+    payload = _document(body)
+    state, authority = payload["election"], payload["jurisdiction"]
+    if (_uuid(authority["id"]) != "d2c804ee-4ec2-46bb-91d7-5b41526eab03"
+            or authority["id"] != state["jurisdictionId"] or _english(state["name"]) != "2024 November General"):
+        raise ValueError("Virginia native locality publisher differs")
+    registration = {_uuid(row["id"]): row for row in payload["voterRegistration"]}
+    if len(registration) != len(payload["voterRegistration"]) or len(registration) != 133:
+        raise ValueError("Virginia native locality registration inventory differs")
+    rows = []
+    for locality in payload["localityElections"]:
+        r = registration[_uuid(locality["jurisdictionId"])]
+        rows.append([_english(r["localityName"]), locality["jurisdictionId"], locality["electionDate"],
+                     locality["isPrimary"], locality["isOfficialResults"], locality["ballotsCast"],
+                     locality["totalVoters"], r["activeVoters"], r["inactiveVoters"], r["total"],
+                     locality["lastUpdated"]])
+    parent = [state[k] for k in ("id", "electionDate", "isPrimary", "isOfficialResults",
+                                "totalVoters", "ballotsCast", "lastUpdated")]
+    return virginia_native_locality_query(parent, sorted(rows, key=lambda row: row[0]))
 
 
 def collect_county_archive(collector, feed, *, reuse_checked_week=False):
@@ -957,9 +1037,16 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
             return {"election_date": election, "report": report, "complete_native_query": query,
                     "participation_observation_qualified": False}
         if state == "VA":
+            report = {"url": index_url, **pin(index)}
+            previous = old.get("data") or {}
+            if previous.get("report") == report:
+                return previous
             query = virginia_locality_report(index, election)
+            if (election == VA_NATIVE_LOCALITY_DATE and previous.get("date") == query["edition"]
+                    and previous.get("complete_native_query") != query):
+                raise ValueError("Virginia native locality counts changed without a new edition")
             return {"election_date": election, "date": query["edition"],
-                    "report": {"url": index_url, **pin(index)},
+                    "report": report,
                     "complete_native_query": query, "participation_observation_qualified": False}
         if state == "CO":
             url = colorado_voting_statistics.discover(index, election)
@@ -1042,7 +1129,8 @@ def county_archive_originals(entries):
                 or type(report["bytes"]) is not int or not 0 < report["bytes"] <= county_archive_limit(state)
                 or not re.fullmatch(r"[a-f0-9]{64}", report["sha256"])):
             raise ValueError(f"Invalid original county report pin: {feed}")
-        extension = (".xls" if state == "MN" and election == "2006-11-07"
+        extension = (".json" if state == "VA" and election == VA_NATIVE_LOCALITY_DATE
+                     else ".xls" if state == "MN" and election == "2006-11-07"
                      else {"CO": ".csv", "MD": ".csv", "MN": ".xlsx", "VA": ".html"}.get(state, ".pdf"))
         originals[feed] = {"filename": feed + extension,
                            **{key: report[key] for key in ("url", "bytes", "sha256")}}
@@ -1147,7 +1235,7 @@ def verify_county_archive_originals(entries, directory):
 
 
 def county_archive_rows(entries, *, current_california=False, current_nebraska=False,
-                        colorado_precincts=False, minnesota_precincts=False):
+                        colorado_precincts=False, minnesota_precincts=False, virginia_native=False):
     from scripts.retained_bulk_turnout import disposition
 
     rows = []
@@ -1159,9 +1247,12 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
         declarations = {key: value for key, value in COUNTY_ARCHIVES.items() if value[0] == "CO"}
     elif minnesota_precincts:
         declarations = {key: value for key, value in COUNTY_ARCHIVES.items() if value[0] == "MN"}
+    elif virginia_native:
+        declarations = {"VA-2024-general-election-locality-turnout": ("VA", VA_NATIVE_LOCALITY_DATE)}
     else:
         declarations = {key: value for key, value in COUNTY_ARCHIVES.items()
-                        if key != nebraska_canvass.CURRENT_FEED and value[0] != "MD"}
+                        if key not in (nebraska_canvass.CURRENT_FEED, "VA-2024-general-election-locality-turnout")
+                        and value[0] != "MD"}
     for feed, (state, election) in sorted(declarations.items()):
         entry = entries.get(feed, {})
         data = entry.get("data")
@@ -1258,11 +1349,14 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             counties = [*query["counties"], query["total"]]
             county_conflict = False
         elif state == "VA":
-            if (query != virginia_locality_query(query["native_rows"], query["native_clock"])
+            replay = (virginia_native_locality_query(query["native_parent"], query["native_rows"])
+                      if election == VA_NATIVE_LOCALITY_DATE
+                      else virginia_locality_query(query["native_rows"], query["native_clock"]))
+            if (query != replay
                     or query["edition"] != data.get("date")
                     or any(source.get(field) != report[field] for field in ("bytes", "sha256"))):
                 raise ValueError("Virginia locality turnout differs from its retained source rows")
-            counties = [*query["counties"], query["total"]]
+            counties = query["counties"] if election == VA_NATIVE_LOCALITY_DATE else [*query["counties"], query["total"]]
             county_conflict = False
         elif state == "WV":
             if query != west_virginia_archive_query(query["native_lines"], election):
@@ -1328,7 +1422,7 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 "rate_hold_reason": hold,
                 **{field: native[field] for field in ("state_ballot_shortfall", "county_ballot_shortfall")
                    if field in native},
-                **{"reported_" + field: native[field] for field in
+                **{"reported_" + field: native.get(field) for field in
                    ("early_voting", "election_day", "by_mail", "provisional", "curbside") if state == "VA"},
                 **{field: native[field] for field in ("registered_at_7am", "same_day_registrations")
                    if field in native},

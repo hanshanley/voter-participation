@@ -669,6 +669,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     county_archives = results_turnout_history.county_archive_rows(historical_sources)
     if county_archives:
         raw_files[results_turnout_history.COUNTY_ARCHIVE_CSV] = csv_bytes(county_archives)
+    virginia_localities = results_turnout_history.county_archive_rows(historical_sources, virginia_native=True)
+    if virginia_localities:
+        raw_files[results_turnout_history.VA_NATIVE_LOCALITY_CSV] = csv_bytes(virginia_localities)
     colorado_units = results_turnout_history.county_archive_rows(
         snapshot.get("granular_sources", {}), colorado_precincts=True)
     if colorado_units:

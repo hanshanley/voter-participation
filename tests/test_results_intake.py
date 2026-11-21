@@ -916,6 +916,33 @@ def test_virginia_locality_report_replays_and_keeps_curbside_out_of_the_sum(tmp_
     assert failure["status"] == "retained_after_failure" and failure["data"] == result["data"]
 
 
+def test_virginia_native_locality_counts_do_not_promote_incompatible_statewide_frame(monkeypatch):
+    from scripts import results_turnout_history as history
+
+    date, edition = "2024-11-05", "2025-03-05T14:57:04Z"
+    names = sorted([f"TEST {i} COUNTY" for i in range(95)] + [f"TEST {i} CITY" for i in range(38)])
+    monkeypatch.setattr(history, "VA_LOCALITY_ROSTER", pin(encoded(names))["sha256"])
+    parent = ["01000000-6280-aaec-5a67-08dcde4d96cd", date, False, True, 1330, 0, edition]
+    rows = [[name, f"47c8333e-6fb3-4326-8e83-{i:012}", date, False, True, 6, 10, 9, 1, 10, edition]
+            for i, name in enumerate(names)]
+    query = history.virginia_native_locality_query(parent, rows)
+    feed = "VA-2024-general-election-locality-turnout"
+    report = {"url": history.VA_NATIVE_LOCALITY_URL, **pin(b"test")}
+    entries = {feed: {"status": "reported", "source": report, "data": {
+        "report": report, "date": edition, "election_date": date, "complete_native_query": query,
+        "participation_observation_qualified": False}}}
+    assert history.county_archive_rows(entries) == []
+    exported = history.county_archive_rows(entries, virginia_native=True)
+    assert len(exported) == 133 and sum(r["reported_ballots_cast"] for r in exported) == 798
+    assert all(r["geography_level"] != "state" and r["reported_registered_voters"] is None
+               and r["qualified_same_report_registration_fraction_pct"] is None for r in exported)
+    assert history.county_archive_originals(entries)[feed]["filename"] == f"{feed}.json"
+    with pytest.raises(ValueError, match="statewide and locality controls"):
+        history.virginia_native_locality_query([*parent[:5], 799, edition], rows)
+    with pytest.raises(ValueError, match="locality roster"):
+        history.virginia_native_locality_query(parent, rows[:-1])
+
+
 def test_national_release_discovery_distinguishes_links_from_participation(tmp_path, monkeypatch):
     from scripts import national_turnout_release_watch as watch
 
