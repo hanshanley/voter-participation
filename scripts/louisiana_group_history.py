@@ -25,7 +25,7 @@ from scripts.results_native_louisiana import (
 INDEXES = {"statewide": (STATE_INDEX_URL, "sta"), "parish": (PARISH_INDEX_URL, "par")}
 FEEDS = {f"LA-{year}-general-election-group-history": year for year in range(1998, 2025, 2)}
 CSV = "participation-la-historical-post-election-groups.csv"
-PRECINCT_FEEDS = {f"LA-{year}-general-election-native-precinct-counts": year for year in range(2006, 2025, 2)}
+PRECINCT_FEEDS = {f"LA-{year}-general-election-native-precinct-counts": year for year in range(1998, 2025, 2)}
 PRECINCT_CSV = "participation-la-historical-native-precinct-counts.csv"
 MAX_BYTES = 16_000_000
 
@@ -314,6 +314,7 @@ def precinct_rows(election, record, workbooks, sources):
         if not units or sum(unit[3] for unit in units) != printed:
             raise ValueError(f"Retained Louisiana native precinct counts differ from the parish: {parish}")
         for identity, literal, row, count in units:
+            text = sheet == "fixed_width_text"
             yield {
                 "election_date": str(election), "native_election_id": record["PKElectionID"],
                 "election_cycle": "presidential" if election.year % 4 == 0 else "midterm",
@@ -325,7 +326,8 @@ def precinct_rows(election, record, workbooks, sources):
                 "geometry_qualified": "false", "rate_qualified": "false",
                 "source_url": sources["parish"]["url"], "source_sha256": sources["parish"]["sha256"],
                 "control_url": sources["statewide"]["url"], "control_sha256": sources["statewide"]["sha256"],
-                "source_sheet": sheet, "voting_cell": f"D{row}", "parish_control_cell": f"D{parent_row + 1}",
+                "source_sheet": sheet, "voting_cell": f"line {row} field 1" if text else f"D{row}",
+                "parish_control_cell": f"line {parent_row + 1} field 1" if text else f"D{parent_row + 1}",
             }
 
 
@@ -350,7 +352,7 @@ def reconcile(statewide, parishes):
     return {"STATE": statewide["STATE"], **dict(sorted(parishes.items()))}
 
 
-def legacy_groups(body, scope, election):
+def legacy_groups(body, scope, election, *, precincts=False):
     lines = body.decode("ascii").splitlines()
     statewide = scope == "statewide"
     title = (f"STATE WIDE POST ELECTION STATISTICAL REPORT FOR ELECTION OF {election:%m/%d/%Y}"
@@ -374,6 +376,8 @@ def legacy_groups(body, scope, election):
                 or any(not re.fullmatch(r"[0-9]+(?:,[0-9]{3})*", n) for n in registered + voting)
                 or any(not re.fullmatch(r"[0-9]*\.[0-9]", n) for n in pct)):
             raise ValueError(f"Legacy Louisiana printed group fields differ: {identity}")
+        if precincts:
+            return {"voters_participating": {"total": int(voting[0].replace(",", ""))}}
         values = {
             "registered_voters": dict(zip(FIELDS.values(), [int(n.replace(",", "")) for n in registered])),
             "voters_participating": dict(zip(FIELDS.values(), [int(n.replace(",", "")) for n in voting])),
@@ -382,7 +386,7 @@ def legacy_groups(body, scope, election):
         _validate_vector(values, identity, percent_places=1)
         return _cross_cells(values, identity)
 
-    region = None
+    region, parish, seen = None, None, set()
     for i, line in enumerate(lines):
         line = line.strip()
         if line == title:
@@ -397,6 +401,7 @@ def legacy_groups(body, scope, election):
                     or lines[i + 4].split() != (["PARISH"] if statewide else []) + field_header):
                 raise ValueError("Legacy Louisiana field header differs")
             region = label[3:] if not statewide else "Louisiana"
+            parish = None
             continue
         pattern = r"^(STATE|\d{2})\s+(.+)$" if statewide else r"^PAR\s+(\d{2})\s+(.+)$"
         if region and (match := re.fullmatch(pattern, line)):
@@ -407,7 +412,25 @@ def legacy_groups(body, scope, election):
                 raise ValueError(f"Legacy Louisiana parish identity differs: {ident}")
             data[ident] = [region, "fixed_width_text", i + 1, vector(i, ident, values.split())]
             if not statewide:
+                if precincts:
+                    data[ident].append([])
+                    parish = ident
                 region = None
+            continue
+        if precincts and not statewide and line.startswith("# VOTING"):
+            previous = lines[i - 1].strip()
+            if re.fullmatch(r"PAR\s+[0-9]{2}\s+.+", previous) and parish is not None and data[parish][2] == i:
+                continue
+            unit = re.fullmatch(r"(W\s+([A-Z0-9-]+)\s+P\s+([A-Z0-9-]+))\s+(.+)", previous)
+            if parish is None or unit is None:
+                raise ValueError("Unknown legacy Louisiana historical precinct identity")
+            literal, ward, precinct, registered = unit.groups()
+            identity = f"{parish} W {ward} P {precinct}"
+            if identity in seen:
+                raise ValueError(f"Duplicate legacy Louisiana historical precinct identity: {identity}")
+            seen.add(identity)
+            count = vector(i - 1, identity, registered.split())["voters_participating"]["total"]
+            data[parish][4].append([identity, literal, i + 1, count])
     if set(data) != expected | ({"STATE"} if statewide else set()):
         raise ValueError("Legacy Louisiana parish inventory is incomplete")
     return data
@@ -453,9 +476,7 @@ def event_facts(body, year):
 
 def workbook_facts(body, scope, election, url, *, precincts=False):
     if Path(url).suffix == ".txt":
-        if precincts:
-            raise ValueError("Legacy precinct rows require separate layout validation")
-        return legacy_groups(body, scope, election)
+        return legacy_groups(body, scope, election, precincts=precincts)
     query = statewide_groups if scope == "statewide" else partial(parish_groups, precincts=precincts)
     return query(_book(body, Path(url).suffix), election)
 
@@ -628,7 +649,7 @@ def replay(directory, output, *, precincts=False):
         raise ValueError("Louisiana election inventory provenance differs")
     status = {}
     observations = []
-    for election, record, admitted in federal_events(events, 2006 if precincts else 1998, 9998):
+    for election, record, admitted in federal_events(events, 1998, 9998):
         entry = inventory["events"].get(str(election))
         if not entry:
             continue

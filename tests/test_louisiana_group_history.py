@@ -7,7 +7,7 @@ from unittest.mock import Mock, patch
 
 from scripts.louisiana_group_history import (
     ELECTION_DATES_URL, INDEXES, STATE_INDEX_URL, _Catalog, _group_vector, collect, collect_year, federal_events,
-    precinct_rows,
+    legacy_groups, precinct_rows,
 )
 from scripts.participation_intake.engine import IntakeError
 
@@ -125,3 +125,24 @@ class LouisianaGroupHistoryTest(unittest.TestCase):
         books["parish"][areas[0]][4][0][3] = 2
         with self.assertRaisesRegex(ValueError, "differ from the parish"):
             list(precinct_rows(election, {"PKElectionID": "284"}, books, sources))
+
+    def test_legacy_precinct_counts_do_not_promote_invalid_group_fields(self):
+        election = date(2004, 11, 2)
+        register = "9 " + "0 " * 15
+        voters = "3 " + "0 " * 15
+        percentage = "33.3 " + ".0 " * 15
+        unit = f"W  01 P 01 {register}\n# VOTING {voters}\n% VOTING {percentage}\n"
+        def parish(number):
+            return (f"POST ELECTION STATISTICS FOR ELECTION OF 11/02/04 * (ACTIVE & INACTIVE)\n"
+                    f"IN PARISH {number}\n"
+                    "* REGISTERED VOTERS * DEMOCRATS * REPUBLICANS * OTHER PARTIES *\n"
+                    "TOTAL\nREG WHITE BLACK OTHER TOTAL WHITE BLACK OTHER TOTAL WHITE BLACK OTHER TOTAL WHITE BLACK OTHER\n"
+                    f"PAR {number:02} {register}\n# VOTING {voters}\n% VOTING {percentage}\n{unit}")
+        report = "".join(map(parish, range(1, 65)))
+        data = legacy_groups(report.encode(), "parish", election, precincts=True)
+        self.assertEqual(data["PAR 01"][4], [["PAR 01 W 01 P 01", "W  01 P 01", 10, 3]])
+        self.assertEqual(data["PAR 01"][3], {"voters_participating": {"total": 3}})
+        with self.assertRaisesRegex(ValueError, "race subtotal differs"):
+            legacy_groups(report.encode(), "parish", election)
+        with self.assertRaisesRegex(ValueError, "Duplicate legacy"):
+            legacy_groups((report + unit).encode(), "parish", election, precincts=True)

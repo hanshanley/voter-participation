@@ -57,10 +57,13 @@ replay --package . --output reproduced` command reproduces the checkpoint;
 
 ## Separate native precinct counts
 
-The 2006–2024 spreadsheet years also support 39,428 native precinct count
-rows. Every parish's precinct vectors reconcile to that parish workbook's
-parent. A separate count-only check compares the parish parent with the
-statewide workbook. In 2016, precincts for `PAR 55` retain their reported
+The 2006–2024 spreadsheet years support 39,428 native precinct count rows.
+The 1998–2004 text reports supply 15,755 more: counts in all 64 parishes match
+both controls in each year, independently of the group subtotal holds, for a
+combined 55,183 rows across fourteen elections. Each spreadsheet parish's
+precinct vectors reconcile to that parish workbook's parent. A separate
+count-only check compares the parish parent with the statewide workbook.
+In 2016, precincts for `PAR 55` retain their reported
 counts but are tagged with the 44,296 versus 44,297 control difference.
 The 2006 disagreement in party-by-race categories does not change the total
 count. These records are not a physical-ballot count, a precinct rate,
