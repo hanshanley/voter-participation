@@ -1,6 +1,9 @@
 import json
 
+import pytest
+
 from scripts import ces_senate_routing as routing
+from scripts import ces_2022_senate_routing as midterm
 
 
 def race(stage="general", year=2020):
@@ -33,3 +36,32 @@ def test_historical_sample_requires_validated_state_and_same_candidate_slate():
 def test_runoff_preferences_and_wrong_election_year_cannot_supply_the_baseline():
     assert routing.frame(race(stage="general_runoff")) == ("historical_stage_or_seat_not_covered", None)
     assert routing.frame(race(year=2022)) == ("different_baseline_year", None)
+
+
+def test_2022_special_uses_only_the_special_slate_and_validated_voter_state():
+    races = {}
+    for state, (seat, kind, _, _, _) in midterm.FRAMES.items():
+        office = "S-Unexpired Term" if kind == "special" else "S"
+        baseline = dict(cycle_year=2022, seat=seat, stage="general", election_kind=kind)
+        candidates = [
+            dict(candidate=name, party_group=party, fec_candidate_id=f"S2{state}{i:05d}",
+                 state_code=state, native_office=office, seat=seat, stage="general",
+                 year=2022, election_kind=kind)
+            for i, (name, party) in enumerate([("Horn, Kendra", "D"), ("Mullin, Markwayne", "R")])
+        ]
+        races[state] = dict(seat=seat, qualified_comparison="True", baseline=json.dumps(baseline),
+                            previous_candidates=json.dumps(candidates))
+    labels = dict(routing.FIPS)
+    sample = dict(
+        inputstate_post="40", TS_state="40", TS_g2022="4", vvweight_post="1",
+        CC22_411="1", CC22_411b="2", SenCand1Name2_post="Kendra Horn",
+        SenCand1Party2_post="Democratic", SenCand2Name2_post="Markwayne Mullin",
+        SenCand2Party2_post="Republican")
+    _, _, ok = midterm.evaluate([sample, {**sample, "CC22_411b": ""},
+                                 {**sample, "TS_state": "39"},
+                                 {**sample, "CC22_411b": "8"}], races, labels)
+    assert (ok["answered"], ok["matched_slate"], ok["reported_major_choice"]) == (3, 2, 1)
+    assert not ok["transition_model_qualified"]
+    races["OK"]["previous_candidates"] = races["OK"]["previous_candidates"].replace("S-Unexpired Term", "S")
+    with pytest.raises(ValueError, match="invalid reviewed candidate frame"):
+        midterm.evaluate([sample], races, labels)
