@@ -439,6 +439,56 @@ def test_partial_outage_and_missing_advertisement_retention(tmp_path):
     assert congress.summary(updated)["senate"]["refreshed"] == 0
 
 
+def test_weekly_archive_refresh_applies_congress_revisions_and_retains_a_failed_chamber(tmp_path, monkeypatch):
+    from scripts import results_intake as intake, results_turnout_history as history
+    from test_results_intake import fixture
+
+    registry = fixture(tmp_path)
+    intake.write(registry.with_name("congress.json"), {
+        **CONFIG, "contract": "participation.congressional_provider.v1",
+        "election_date": "2026-11-03", "source_stops": STOPS})
+    bodies = sources()
+    previous = {
+        "feeds": {}, "granular": {}, "house": {str(index): {} for index in range(435)},
+        "districts": {str(index): {} for index in range(435)},
+        "directories": {state: {} for state in intake.STATES}, "source_stops": STOPS,
+        "congress": collect(tmp_path / "prior", bodies),
+    }
+    original = copy.deepcopy(previous)
+    annual_row = {"status": "reported", "data": {"total": 42}}
+    monkeypatch.setattr(history, "collect_washington", lambda _: annual_row)
+    monkeypatch.setattr(intake, "late_archive_sources", lambda: (history.WA_FEED,))
+    monkeypatch.setattr(intake, "export_collection", lambda *args: args[3])
+    calls = []
+
+    def acquire(self, url):
+        calls.append(url)
+        chamber = url.rsplit("/", 1)[-1]
+        if chamber == "senate":
+            raise OSError("Temporary provider outage")
+        return json.dumps({"results": bodies[chamber]}).encode(), {"origin": "new_source_response"}
+
+    monkeypatch.setattr(Collector, "acquire", acquire)
+    scoped = intake.refresh_selected(registry, tmp_path / "scoped", previous, [history.WA_FEED], NOW)
+    assert calls == [] and scoped["congress"] == original["congress"]
+    for revised_count in (105, 97):
+        bodies["house"][0]["updated"] += 1
+        bodies["house"][0]["candidates"][0]["votes"] = revised_count
+        weekly = intake.refresh_selected(registry, tmp_path / "weekly", previous,
+                                         [history.WA_FEED], NOW, late_archives=True)
+        assert weekly["collection_scope"]["congressional_provider_feeds_checked"] == ["house", "senate"]
+        assert weekly["house"] == original["house"]
+        assert weekly["granular"][history.WA_FEED] == annual_row
+        races = list(weekly["congress"]["races"].values())
+        fresh = next(row for row in races if row["data"]["chamber"] == "house")
+        retained = next(row for row in races if row["data"]["chamber"] == "senate")
+        assert fresh["status"] == "reported" and congress.totals(fresh["data"])["D"] == revised_count
+        assert retained["status"] == "retained_after_failure"
+        assert congress.totals(retained["data"])["D"] == 100
+        previous = weekly
+    assert len(calls) == 4 and set(calls) == {row["url"] for row in CONFIG["feeds"].values()}
+
+
 def test_unavailable_first_result_remains_a_hold_during_feed_outage(tmp_path):
     bodies = sources()
     bodies["senate"][0]["candidates"] = []

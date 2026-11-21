@@ -1034,6 +1034,15 @@ def late_archive_sources():
     )
 
 
+def selected_collection_scope(source_ids, *, congressional=False):
+    return {
+        "mode": "selected_registered_source_refresh",
+        "source_ids": sorted(source_ids),
+        "all_other_acquisitions_and_native_count_clocks_reused_not_retrieved_again": True,
+        **({"congressional_provider_feeds_checked": ["house", "senate"]} if congressional else {}),
+    }
+
+
 def refresh_selected(registry_path, work, previous, source_ids, now=None, *, late_archives=False):
     from scripts import bulk_participation_archives, nebraska_county_reports
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
@@ -1145,14 +1154,14 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
     from scripts.results_native_congress import PARENT_ID, derive as derive_native_congress
     if PARENT_ID in entries:
         inputs["feeds"] = derive_native_congress(inputs["feeds"])
+    congressional = late_archives and "congressional" in config
+    if congressional:
+        inputs["congress"] = results_congress.collect(
+            collector, previous.get("congress"), config["congressional"])
     if "congress" in inputs and "official_congress" in config:
         inputs["congress"] = results_official_congress.attach(inputs["congress"], inputs["feeds"])
     inputs["source_stops"] = collector.stopped
-    inputs["collection_scope"] = {
-        "mode": "selected_registered_source_refresh",
-        "source_ids": sorted(source_ids),
-        "all_other_acquisitions_and_native_count_clocks_reused_not_retrieved_again": True,
-    }
+    inputs["collection_scope"] = selected_collection_scope(source_ids, congressional=congressional)
     extras = {}
     for name, declaration in config.get("accepted_queries", {}).items():
         body = (registry_path.parent / str(relative(declaration["file"]))).read_bytes()
@@ -1278,15 +1287,13 @@ def restore(package, report_path, work, previous=None, latest=None, *, require_l
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(body)
         state = read(root / state_member)
+        config = read(root / "inputs/registry.json")
         if require_late_archive_scope:
             scope = state.get("collection_scope")
             if scope != report.get("collection_scope"):
                 raise ValueError("Completed archive checkpoint report disagrees with its packet scope")
-            if scope != {
-                "mode": "selected_registered_source_refresh",
-                "source_ids": sorted(late_archive_sources()),
-                "all_other_acquisitions_and_native_count_clocks_reused_not_retrieved_again": True,
-            }:
+            if scope != selected_collection_scope(
+                    late_archive_sources(), congressional="congressional" in config):
                 return {"status": "superseded"}
         result = replay(root, root / "reproduced")
         query_names = {name.removeprefix("queries/") for name in manifest if name.startswith("queries/")}
@@ -1295,7 +1302,6 @@ def restore(package, report_path, work, previous=None, latest=None, *, require_l
         for name in query_names:
             if pin((root / "queries" / name).read_bytes()) != report["files"][name]:
                 raise ValueError("Changed completed collection query")
-        config = read(root / "inputs/registry.json")
         version = digest(encoded({
             "inputs": hydrate_collector_state(state), "baseline": config["baseline"],
             "outputs": {name: report["files"][name] for name in query_names},

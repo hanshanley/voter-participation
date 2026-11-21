@@ -2513,6 +2513,11 @@ def test_completed_collection_restores_without_transport_and_rejects_lost_stops(
 
 def test_weekly_checkpoint_requires_the_full_current_registry(tmp_path, monkeypatch):
     registry = fixture(tmp_path)
+    intake.write(registry.with_name("congress.json"), {
+        "contract": "participation.congressional_provider.v1", "election_date": "2026-11-03",
+        "source_stops": EMPTY_STOPS,
+        "feeds": {chamber: {"url": "https://example.test/" + chamber} for chamber in ("house", "senate")},
+    })
     monkeypatch.setattr(intake.Collector, "acquire", unavailable)
     original = tmp_path / "original"
     intake.collect(registry, original, now=NOW)
@@ -2521,11 +2526,13 @@ def test_weekly_checkpoint_requires_the_full_current_registry(tmp_path, monkeypa
     inputs = intake.hydrate_collector_state(intake.read(original / "state.json"))
     feeds = intake.late_archive_sources()
     weekly = tmp_path / "weekly"
-    inputs["collection_scope"] = {
-        "mode": "selected_registered_source_refresh",
-        "source_ids": sorted(feeds),
-        "all_other_acquisitions_and_native_count_clocks_reused_not_retrieved_again": True,
-    }
+    inputs["collection_scope"] = intake.selected_collection_scope(feeds)
+    previous_weekly = tmp_path / "previous-weekly"
+    intake.export_collection(previous_weekly, config, baseline, inputs, {}, NOW, [])
+    assert intake.restore(previous_weekly / "complete-results.zip", previous_weekly / "report.json",
+                          tmp_path / "missing-congress-check", require_late_archive_scope=True) == {
+                              "status": "superseded"}
+    inputs["collection_scope"] = intake.selected_collection_scope(feeds, congressional=True)
     report = intake.export_collection(weekly, config, baseline, inputs, {}, NOW, [])
     monkeypatch.setattr(intake.Collector, "acquire", lambda *_: pytest.fail("Recovery attempted transport"))
     packet, report_path = weekly / "complete-results.zip", weekly / "report.json"

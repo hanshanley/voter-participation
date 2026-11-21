@@ -30,8 +30,9 @@ paired statistical TXT and statewide reporting table, Bath, Buxton and every tow
 VotingWorks registry. Hourly and weekly collection and scoped export attribution
 use the same municipal registrations. Newly reviewed VotingWorks registrations
 do not require a workflow change. The sweep runs `refresh-selected --late-archives`;
-it does not recollect congressional races or any other unselected feed. Manual dispatch
-retains its explicit override.
+it also checks both registered national congressional feeds in the same checkpoint.
+An outage in one chamber retains that chamber's last-good returns, and standalone
+`--sources` refreshes still leave national returns untouched.
 
 The Wyoming Secretary of State's statewide voter profile is a separate
 hourly and weekly source (`WY-primary-general-turnout-profile`). Its November
@@ -313,12 +314,12 @@ editions keep the source's `Ballots Cast` label. Rates use the registration
 denominator printed in the same report. The resulting query is separate
 from EAC and does not change modern count shards or certify any 2026 result.
 
-The post-hourly Monday sweep also checks the eight registered standalone
+The post-hourly Monday sweep also checks the registered standalone
 official congressional sources. An inaccessible or incompatible source can
 retain its last-good entry without holding unrelated weekly updates. A first
 failed check records its source status, not a numerical observation. National
-returns and their clocks are retained in this scoped lane; the existing
-compatibility guards still govern each official candidate frame.
+returns use the hourly revision and retention rules; the existing compatibility
+guards still govern each official candidate frame.
 
 The Wyoming bulk county archive follows the General Election results indexes
 for every federal general election from 2004 through 2024. It retains the explicitly printed
