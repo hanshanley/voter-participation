@@ -32,7 +32,7 @@ def read_workbook(data, status):
     return result
 
 
-def read_cards(data):
+def read_cards(data, *, title="Unofficial MIB 1, Early Voting, Election Day, and MIB2 Turnout"):
     with pdfplumber.open(io.BytesIO(data)) as reader:
         if len(reader.pages) != 1:
             raise ValueError("Changed native card-report page inventory")
@@ -45,7 +45,6 @@ def read_cards(data):
             lines[-1].append(word)
     text = "\n".join(" ".join(word["text"] for word in sorted(line, key=lambda value: value["x0"]))
                      for line in lines)
-    title = "Unofficial MIB 1, Early Voting, Election Day, and MIB2 Turnout"
     election = "Election: 2026 Gubernatorial General"
     if title not in text or election not in text or not all(
             label in text for label in ("Cards Cast", "Eligible Voters", "Percentage")):

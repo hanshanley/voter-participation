@@ -5,7 +5,8 @@ import re
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history,
     connecticut_turnout_history, dakota_turnout_history, hawaii_turnout_history, kansas_turnout_history,
-    national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
+    maryland_current_cards, national_turnout_release_watch, new_jersey_periodic_counties,
+    north_carolina_participation, oregon_turnout_history,
     southeast_turnout, washington_participation,
 )
 from scripts.participation_intake.contract import pin
@@ -43,6 +44,8 @@ def families():
         (routes(north_carolina_participation, north_carolina_participation.FEEDS), True,
          (north_carolina_participation.COUNTIES, north_carolina_participation.GROUPS,
           north_carolina_participation.PRECINCTS), north_carolina_participation.exports),
+        ({maryland_current_cards.FEED: maryland_current_cards.collect}, False,
+         (maryland_current_cards.CSV,), maryland_current_cards.exports),
     )
 
 
@@ -115,6 +118,10 @@ def original_reports(entries):
                 yield (f"{feed}-age-control", source, ".html", 2_000_000,
                        source["url"] == nc.CONTROLS.get(election.year),
                        partial(nc.age_control, year=election.year), control["facts"])
+    md = maryland_current_cards
+    if (entry := entries.get(md.FEED)) and entry.get("data") is not None:
+        report = entry["source"]
+        yield md.FEED, report, ".pdf", md.MAX_BYTES, report["url"] == md.URL, md.parse, entry["data"]
     for feed, year in age.YEARS.items():
         entry = entries.get(feed) or {}
         if entry.get("data") is not None:
