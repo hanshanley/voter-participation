@@ -240,8 +240,11 @@ def test_selected_retry_preserves_new_denial_before_publication(tmp_path, monkey
     monkeypatch.setattr(intake, "export_collection",
                         lambda *args: pytest.fail("A failed selected capture must not be published"))
     for _ in range(2):
-        with pytest.raises(ValueError, match="no replacement publication"):
+        with pytest.raises(ValueError, match="no replacement publication") as failure:
             intake.refresh_selected(registry, work, previous, [identity], NOW)
+        diagnostic = json.loads(str(failure.value).split("publication: ", 1)[1])
+        assert diagnostic == {"missing": [], "unexpected": [], "failed": {
+            identity: {"status": "source_stopped", "stage": "acquisition", "error": "source_stopped"}}}
         assert intake.read(work / "source-stops.json") == {
             "hosts": ["previously-stopped.test"], "prefixes": [], "urls": [url]}
     assert [entry["status"] for entry in captures] == ["source_stopped", "source_stopped"]

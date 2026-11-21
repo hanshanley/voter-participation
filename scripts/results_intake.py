@@ -1136,9 +1136,15 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
             collector, config["official_congress"], selected=official_ids))
     independent_holds = administrative_ids | (
         {results_uf_turnout.IDENTITY} | official_ids if late_archives else set())
-    if set(entries) != set(source_ids) or any(
-            entries[key]["status"] != "reported" for key in entries.keys() - independent_holds):
-        raise ValueError("Selected numerical refresh did not succeed; no replacement publication")
+    requested = set(source_ids)
+    failures = {key: {"status": entries[key]["status"], "stage": entries[key].get("error_stage"),
+                      "error": entries[key].get("error")}
+                for key in entries.keys() - independent_holds if entries[key]["status"] != "reported"}
+    if set(entries) != requested or failures:
+        detail = json.dumps({"missing": sorted(requested - entries.keys()),
+                             "unexpected": sorted(entries.keys() - requested), "failed": failures},
+                            sort_keys=True)
+        raise ValueError("Selected numerical refresh did not succeed; no replacement publication: " + detail)
     inputs = copy.deepcopy(previous)
     inputs["granular"].update({key: value for key, value in entries.items()
                                if key in native_ids or key in administrative_ids})
