@@ -59,6 +59,8 @@ def exports(entries):
 
 
 def original_reports(entries):
+    from scripts import results_turnout_history as history
+
     age, ct = alaska_age_history, connecticut_turnout_history
     for feed, year in age.YEARS.items():
         entry = entries.get(feed) or {}
@@ -74,6 +76,22 @@ def original_reports(entries):
             limit = ct.SCAN_LIMIT if year == 2018 else ct.STATEMENT_LIMIT if year in ct.STATEMENTS else 2_000_000
             facts = {key: value for key, value in data.items() if key != "report"}
             yield feed, report, ".pdf", limit, ct.valid_link(report["url"], year), partial(ct.parse, year=year), facts
+    for feed, profile in history.VOTINGWORKS_TOWNS.items():
+        entry = entries.get(feed) or {}
+        data = entry.get("data") or {}
+        if not profile.scanned or "scan_evidence" not in data:
+            continue
+        report = data["report"]
+        history.votingworks_town_controls(data, profile)
+
+        def reextract(body, *, profile, url):
+            candidate = history.votingworks_report(body, profile.town, url, scanned=True)
+            history.votingworks_town_controls(candidate, profile)
+            return candidate["complete_native_query"]
+
+        yield (feed, report, ".pdf", history.VOTINGWORKS_MAX_BYTES,
+               entry["source"]["url"] == profile.index and profile.permits_report(report["url"]),
+               partial(reextract, profile=profile, url=report["url"]), data["complete_native_query"])
 
 
 def original_inventory(entries):

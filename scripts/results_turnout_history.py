@@ -1636,6 +1636,7 @@ def votingworks_controls(data, town, report_url):
 
 VOTINGWORKS_ROLES = ("Ballot Count", "Scanned", "Manually Entered")
 VOTINGWORKS_COUNT = r"(?:0|[1-9]\d{0,2}(?:,\d{3})*|[1-9]\d{3,})"
+VOTINGWORKS_MAX_BYTES = 4_000_000
 
 
 def votingworks_scan_evidence(view):
@@ -1687,7 +1688,7 @@ def votingworks_scan_query(evidence, town):
 def votingworks_report(body, town, report_url, *, scanned=False):
     from pypdf import PdfReader
 
-    if not body.startswith(b"%PDF-") or len(body) > 4_000_000:
+    if not body.startswith(b"%PDF-") or len(body) > VOTINGWORKS_MAX_BYTES:
         raise ValueError("VotingWorks report is not a bounded PDF")
     pdf = PdfReader(io.BytesIO(body), strict=True)
     if not pdf.pages:

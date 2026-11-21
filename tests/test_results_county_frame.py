@@ -307,6 +307,33 @@ def test_votingworks_scan_counts_require_two_confident_and_reconciled_queries():
         history.votingworks_scan_query(evidence, "Hampton")
 
 
+def test_votingworks_source_replay_verifies_exact_pdf_and_scanned_query(tmp_path, monkeypatch):
+    from urllib.parse import urljoin
+
+    from scripts import bulk_participation_archives as archives
+
+    history = frame.history
+    profile = history.VOTINGWORKS_TOWNS["NH-hampton-municipal-turnout"]
+    url = urljoin(profile.index, f"/DocumentCenter/View/6048/{profile.document_slug}")
+    body = b"%PDF-1 fixture"
+    evidence = [{"receipt": {"page": 1, "dpi": dpi},
+                 "header": ["Official Tally Report VotingWorks", "GeneralElection,Nov3,2026,Hampton,NH",
+                            f"ReportGenerated:Nov3,2026,11:25:36PM ElectionID:{profile.election_id}"],
+                 "fields": [["9,012", True], ["8,903", True], ["109", True]],
+                 "controls": [["8,903", "109", "9,012"]] * 2} for dpi in (180, 240)]
+    data = {"report": {"url": url, **pin(body)}, "scan_evidence": evidence,
+            "complete_native_query": history.votingworks_scan_query(evidence, profile.town)}
+    entries = {profile.feed: {"source": {"url": profile.index}, "data": data}}
+    manifest = archives.original_inventory(entries)
+    original = tmp_path / manifest[profile.feed]["filename"]
+    monkeypatch.setattr(history, "votingworks_report", lambda *args, **kwargs: data)
+    original.write_bytes(body)
+    assert archives.verify_original_reports(entries, tmp_path) == 1
+    original.write_bytes(body + b" altered")
+    with pytest.raises(ValueError, match="Changed original"):
+        archives.verify_original_reports(entries, tmp_path)
+
+
 def test_votingworks_scanned_revision_reuses_rejection_and_preserves_last_good(tmp_path, monkeypatch):
     history = frame.history
     profile = history.VOTINGWORKS_TOWNS["NH-hampton-municipal-turnout"]
