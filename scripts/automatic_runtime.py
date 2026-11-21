@@ -3,7 +3,7 @@
 import argparse
 from contextlib import contextmanager
 import copy
-from datetime import datetime, timezone
+from datetime import datetime
 import gzip
 import io
 import json
@@ -18,7 +18,8 @@ from urllib.parse import urlsplit
 import urllib.request
 import zipfile
 
-from scripts.participation_intake.contract import digest, encoded, pin
+from scripts.participation_intake.contract import (
+    digest, encoded, pin, require_general_election_publication_time, utc_now)
 from scripts.participation_intake.publisher import GitPublisher
 from scripts import results_granular
 from scripts.maryland_precinct_history import ARCHIVE_INPUT as MD_ARCHIVE_INPUT, ARCHIVE_MEMBER as MD_ARCHIVE_MEMBER
@@ -193,18 +194,6 @@ def result_time(value):
     if observed.utcoffset() is None:
         raise ValueError("Source snapshot check time has no offset")
     return observed
-
-
-def utc_now():
-    return datetime.now(timezone.utc)
-
-
-def require_publication_time(pointer):
-    observed = result_time(pointer.get("checked_at"))
-    if observed > utc_now():
-        raise ValueError("Source snapshot check time is in the future; refusing publication")
-    if observed < datetime(2026, 11, 3, tzinfo=timezone.utc):
-        raise ValueError("Source snapshot predates the general-election publication window")
 
 
 def result_bodies(pointer):
@@ -1118,7 +1107,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     work.mkdir(parents=True, exist_ok=True)
     pointer = results_pointer(pointer_url)
     if publish:
-        require_publication_time(pointer)
+        require_general_election_publication_time(pointer["checked_at"], year=2026, now=utc_now())
     publisher = GitPublisher(repository, github_repository=github_repository)
     parent = publisher.remote_head()
     publisher.fetch_parent(parent)

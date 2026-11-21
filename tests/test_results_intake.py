@@ -2162,6 +2162,7 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(
         tmp_path, monkeypatch, interrupt_staging):
     registry = fixture(tmp_path)
     monkeypatch.setattr(intake.Collector, "acquire", unavailable)
+    monkeypatch.setattr(intake, "utc_now", lambda: NOW)
     work = tmp_path / "run"
     report = intake.collect(registry, work, now=NOW)
     collected = intake.read(work / "state.json")
@@ -2222,6 +2223,11 @@ def test_real_git_publication_keeps_main_and_persists_last_good_results(
         subprocess.run(["git", "init", "-b", "main", str(intake_checkout)], check=True, capture_output=True)
         subprocess.run(["git", "-C", str(intake_checkout), "remote", "add", "origin", str(remote)], check=True)
         monkeypatch.setattr(intake.Collector, "acquire", lambda *args: pytest.fail("Recollected after staging"))
+        with monkeypatch.context() as clock:
+            clock.setattr(intake, "utc_now", lambda: NOW - timedelta(seconds=1))
+            with pytest.raises(ValueError, match="in the future"):
+                intake.resume_publication(intake_checkout, "results-data", "fixture/results")
+            assert git.remote_head() == stage
         result = intake.resume_publication(intake_checkout, "results-data", "fixture/results")
         assert result["results_commit"] == stage
         assert intake.resume_publication(intake_checkout, "results-data", "fixture/results")["status"] == (

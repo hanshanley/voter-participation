@@ -3,7 +3,7 @@
 import hashlib
 import json
 import re
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from urllib.parse import urlparse
 
 
@@ -21,6 +21,21 @@ SHA = re.compile(r"^[a-f0-9]{64}$")
 def federal_general(year):
     nov = date(year, 11, 1)
     return nov + timedelta(days=(7 - nov.weekday()) % 7 + 1)
+
+
+def utc_now():
+    return datetime.now(timezone.utc)
+
+
+def require_general_election_publication_time(checked, *, year, now):
+    observed = datetime.fromisoformat(checked)
+    if observed.utcoffset() is None:
+        raise ValueError("Source snapshot check time has no offset")
+    if observed > now:
+        raise ValueError("Source snapshot check time is in the future; refusing publication")
+    if observed.astimezone(timezone.utc).date() < federal_general(year):
+        raise ValueError("Source snapshot predates the general-election publication window")
+    return observed
 
 
 class IntakeError(ValueError):

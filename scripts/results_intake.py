@@ -26,7 +26,8 @@ from scripts.nationwide import (
     parse_capabilities, parse_demographics, parse_mode, parse_official,
 )
 from scripts.current import reporting_counts
-from scripts.participation_intake.contract import IntakeError, digest, encoded, pin
+from scripts.participation_intake.contract import (
+    IntakeError, digest, encoded, pin, require_general_election_publication_time, utc_now)
 from scripts.participation_intake.engine import Store
 from scripts.participation_intake.publisher import GitPublisher
 from scripts.precinct_source_batch import discover_links, is_general_precinct_product
@@ -1351,6 +1352,7 @@ def pending_publication(publisher, head):
 
 
 def activate_staged_results(publisher, staged, pending):
+    checked_at = require_general_election_publication_time(pending["checked_at"], year=2026, now=utc_now())
     if publisher.remote_head() != staged or pending["parent"] != publisher.parent_of(staged):
         raise ValueError("Staged source receipt was superseded or does not belong to this commit")
     version = pending["version"]
@@ -1364,10 +1366,8 @@ def activate_staged_results(publisher, staged, pending):
     prior_body = publisher.git("show", staged + ":state.json", check=False)
     if pin(encoded(json.loads(prior_body) if prior_body else None)) != pending["previous_state"]:
         raise ValueError("Staged source snapshot does not match the previous collector state")
-    checked_at = datetime.fromisoformat(pending["checked_at"])
-    if (checked_at.utcoffset() is None or latest_before
-            and checked_at < datetime.fromisoformat(latest_before["checked_at"])):
-        raise ValueError("Staged source snapshot has an invalid or older check time")
+    if latest_before and checked_at < datetime.fromisoformat(latest_before["checked_at"]):
+        raise ValueError("Staged source snapshot has an older check time")
     files = pending["files"]
     if not {"snapshot.json.gz", "complete-results.zip"} <= files.keys():
         raise ValueError("Incomplete staged collection")
@@ -1471,12 +1471,13 @@ def publish(repository, ref, github_repository, work):
     report = read(report_path)
     if not report["passed"] or report["jurisdictions"] != 51:
         raise ValueError("Unvalidated current results")
+    check_time = require_general_election_publication_time(report["checked_at"], year=2026, now=utc_now())
     latest = None
     if parent:
         latest = json.loads(publisher.git("show", parent + ":latest.json", check=False) or "{}")
         if latest.get("version") == report["version"]:
             return {"status": "unchanged", "data_commit": parent}
-        if latest and datetime.fromisoformat(latest["checked_at"]) > datetime.fromisoformat(report["checked_at"]):
+        if latest and datetime.fromisoformat(latest["checked_at"]) > check_time:
             raise ValueError("Source snapshot predates the accepted collection; refusing rollback")
     bodies = {}
     prefix = "snapshots/" + report["version"] + "/"
