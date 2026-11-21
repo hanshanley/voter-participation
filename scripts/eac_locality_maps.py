@@ -1,4 +1,4 @@
-"""Reproduce the 2024 Maine and Vermont EAC locality reference maps."""
+"""Reproduce EAC locality maps on election-year Census reference boundaries."""
 
 import argparse
 import csv
@@ -18,15 +18,32 @@ from shapely.geometry import shape
 from scripts.nc_precinct_reference import display_paths, topology
 
 
-REFERENCES = {
-    "ME": ("Maine", "23", "74e835f154e6832709d69e1f20a020b1cd4ee804c64073ba61f4c6007bb50daa"),
-    "VT": ("Vermont", "50", "5c832fef2382399b04a2f26a5d308b6da4181f7795b650b15d2354058aac1671"),
+STATES = {
+    "MA": ("Massachusetts", "25"), "ME": ("Maine", "23"),
+    "NH": ("New Hampshire", "33"), "VT": ("Vermont", "50"),
 }
+REFERENCES = {
+    ("MA", 2018): "ea29c74bdfc053f5a7f33be05367ab7090ca67b9bb8fdbfad2351855d442e618",
+    ("ME", 2018): "6f45ea5425d1c2a96fbd0cfe234689d82b988b583255b0d449745e21d4b6d648",
+    ("NH", 2018): "b201e0f3820c4dab71285f51344b35a13a698827e1bdb96f8e21f9b556e748a8",
+    ("VT", 2018): "365d7e2ad766012928fb9fd26931415748de333457114121f278481ccba49c0e",
+    ("MA", 2020): "80d17a1f28862e50bbbc29b5475937bb1d4a9106f627453f80adbf204a74ccfd",
+    ("ME", 2020): "209be6f89629e4b10e5e677cb1418a277ca1577c443c07df090cf0efcd34732f",
+    ("NH", 2020): "7aaa81a1c7d2f0bdf187f007a4c27755e83825c4de49744d034822d0ae7b818b",
+    ("VT", 2020): "08864ceeedc2bf40fb10f9409cd42ee4603f65c7d1ca140dd0a97ac5b5fb71da",
+    ("ME", 2022): "04488c1b5d55ba1d183e73293a69559577481f74530049040cd013278b6f4d07",
+    ("NH", 2022): "fe041e6f7a30ae367a2b43a8f483cc09ce868b37c8934178bea9ca2fccb17167",
+    ("VT", 2022): "07ace4d8c2611775e9dc2bf472731f3de942fd60787121c12bf43eab2b478056",
+    ("ME", 2024): "74e835f154e6832709d69e1f20a020b1cd4ee804c64073ba61f4c6007bb50daa",
+    ("VT", 2024): "5c832fef2382399b04a2f26a5d308b6da4181f7795b650b15d2354058aac1671",
+}
+LEGACY_SUFFIX = {"25": " city", "31": " gore", "39": " plantation", "43": " town", "46": " UT"}
 COLORS = ("#e4eef0", "#c5dde1", "#8cbac4", "#55939f", "#306f80", "#17475c")
 
 
-def county_subdivisions(body, state):
-    _, fips, expected = REFERENCES[state]
+def county_subdivisions(body, state, year):
+    _, fips = STATES[state]
+    expected = REFERENCES[state, year]
     if sha256(body).hexdigest() != expected:
         raise ValueError("Unexpected Census subdivision edition")
     project = Transformer.from_crs(4269, 5070, always_xy=True).transform
@@ -44,7 +61,9 @@ def county_subdivisions(body, state):
                 geometry = shape(record.shape.__geo_interface__)
                 if not geometry.is_empty and geometry.is_valid:
                     geometry = transform(geometry, project, interleaved=False)
-                result[key] = (fields["NAME"], fields["NAMELSAD"], geometry)
+                name = fields["NAME"]
+                label = (name + LEGACY_SUFFIX.get(fields["LSAD"], "") if year == 2018 else fields["NAMELSAD"])
+                result[key] = (name, label, geometry)
             return result
 
 
@@ -55,7 +74,7 @@ def name_key(name):
     return re.sub(r"[^A-Z0-9]", "", value)
 
 
-def bind(state, rows, boundaries):
+def bind(state, rows, boundaries, *, year=2024):
     shapes = {(state, key): geometry for key, (_, _, geometry) in boundaries.items()
               if geometry.geom_type in {"Polygon", "MultiPolygon"} and geometry.is_valid and not geometry.is_empty}
     overlaps = topology(shapes) if shapes else {}
@@ -63,11 +82,13 @@ def bind(state, rows, boundaries):
     for row in rows:
         key = row["native_fips"]
         native_name, census_names = row["native_name"], boundaries.get(key, ("", "", None))[:2]
+        # NH marks undivided localities with a ward code of 00. Never strip a real ward number.
+        compare_name = re.sub(r" 00$", "", native_name) if state == "NH" else native_name
         if not row["reported_counted_ballot_participants"]:
             decision = "count_withheld"
         elif key not in boundaries:
             decision = "no_same_year_subdivision_code"
-        elif name_key(native_name) not in {name_key(n) for n in census_names}:
+        elif name_key(compare_name) not in {name_key(n) for n in census_names}:
             decision = "name_disagrees_with_subdivision_code"
         elif (state, key) not in shapes:
             decision = "invalid_geometry"
@@ -81,15 +102,15 @@ def bind(state, rows, boundaries):
         decisions.append({**row, "census_name": census_names[1], "reference_map_decision": decision})
     observed = {row["native_fips"] for row in rows}
     for key in sorted(boundaries.keys() - observed):
-        decisions.append({"state_code": state, "year": "2024", "native_fips": key,
+        decisions.append({"state_code": state, "year": str(year), "native_fips": key,
                           "census_name": boundaries[key][1],
                           "reference_map_decision": "geometry_only" if (state, key) in shapes
                           else "invalid_geometry_without_record"})
     return decisions, matched, shapes
 
 
-def draw(state, matched, shapes, rate):
-    name = REFERENCES[state][0]
+def draw(state, matched, shapes, rate, *, year=2024):
+    name = STATES[state][0]
     field = "same_report_registration_fraction_pct" if rate else "reported_counted_ballot_participants"
     measure = "Percent of same-report registrations" if rate else "Counted-ballot participants"
     cuts = (40, 50, 60, 70, 80) if rate else (100, 500, 1000, 2500, 10000)
@@ -98,11 +119,11 @@ def draw(state, matched, shapes, rate):
     available = sum(bool(row[field]) for row in matched.values())
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 446" role="img" aria-labelledby="title description">',
-        f'<title id="title">{name} reported participation, November 2024</title>',
+        f'<title id="title">{name} reported participation, November {year}</title>',
         f'<desc id="description">{measure}. {available} reporting units are shaded. Gray is not zero.</desc>',
         '<rect width="960" height="446" fill="white"/>',
-        f'<text x="20" y="27" font-size="21">{name} local participation · November 2024</text>',
-        f'<text x="20" y="49" font-size="13">{measure} · {available} shaded · 2024 Census reference</text>',
+        f'<text x="20" y="27" font-size="21">{name} local participation · November {year}</text>',
+        f'<text x="20" y="49" font-size="13">{measure} · {available} shaded · {year} Census reference</text>',
     ]
     for (_, key), path in display_paths(shapes):
         row = matched.get(key)
@@ -125,28 +146,35 @@ def draw(state, matched, shapes, rate):
     return "\n".join(lines) + "\n"
 
 
-def build(inputs, output):
+def build(inputs, output, *, historical=False):
     csv_body = gzip.decompress((inputs / "participation-eac-locality-history.csv.gz").read_bytes()).decode()
     rows = list(csv.DictReader(StringIO(csv_body)))
     output.mkdir(parents=True, exist_ok=True)
-    for state in REFERENCES:
-        native = [row for row in rows if row["state_code"] == state and row["year"] == "2024"]
-        boundaries = county_subdivisions((inputs / f"{state}-2024-cousub.zip").read_bytes(), state)
-        decisions, matched, shapes = bind(state, native, boundaries)
+    for state, year in REFERENCES:
+        if not historical and year != 2024:
+            continue
+        prefix = f"{state}-{year}"
+        native = [row for row in rows if row["state_code"] == state and row["year"] == str(year)]
+        boundaries = county_subdivisions((inputs / f"{prefix}-cousub.zip").read_bytes(), state, year)
+        decisions, matched, shapes = bind(state, native, boundaries, year=year)
+        if not matched:
+            raise ValueError(f"No qualified source records joined the {prefix} boundaries")
         fields = sorted({key for row in decisions for key in row})
-        with (output / f"{state}-2024-decisions.csv").open("w", newline="") as stream:
+        with (output / f"{prefix}-decisions.csv").open("w", newline="") as stream:
             writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
             writer.writeheader()
             writer.writerows(decisions)
         for rate in (False, True):
             suffix = "rate" if rate else "count"
-            (output / f"{state}-2024-{suffix}.svg").write_text(draw(state, matched, shapes, rate), encoding="utf-8")
-        print(state, len(matched), len(native), len(shapes))
+            (output / f"{prefix}-{suffix}.svg").write_text(
+                draw(state, matched, shapes, rate, year=year), encoding="utf-8")
+        print(prefix, len(matched), len(native), len(shapes))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--inputs", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--historical", action="store_true", help="Build all 13 reviewed editions")
     args = parser.parse_args()
-    build(args.inputs, args.output)
+    build(args.inputs, args.output, historical=args.historical)
