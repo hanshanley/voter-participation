@@ -628,7 +628,7 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     from scripts import cps_archived_state_tables as archived_cps
     from scripts import cps_published_state_tables as published_cps
     from scripts import eac_county_turnout, nm_turnout_export, results_indiana_turnout, results_nc_vote_history, results_turnout_history
-    from scripts import results_native_rhode_island
+    from scripts import louisiana_bootstrap, results_native_louisiana_runtime, results_native_rhode_island
 
     review = seed["supported_release_review"]
     require(review.get("contract") == REVIEW_CONTRACT, "unreviewed eligibility document")
@@ -686,6 +686,12 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     ri_turnout = results_native_rhode_island.turnout_rows(snapshot.get("granular_sources", {}))
     if ri_turnout:
         raw_files[results_native_rhode_island.CSV] = csv_bytes(ri_turnout)
+    if la_shard := decoded(count_files, "index.json").get("states", {}).get("LA"):
+        la_groups = results_native_louisiana_runtime.published_group_rows(
+            decoded(count_files, la_shard["file"]),
+            snapshot.get("granular_sources", {}).get(louisiana_bootstrap.IDENTITY, {}))
+        if la_groups:
+            raw_files[results_native_louisiana_runtime.GROUP_CSV] = csv_bytes(la_groups)
     if body := seed.get("historical_eac_county_facts"):
         eac_localities = eac_county_turnout.locality_rows(json.loads(gzip.decompress(body)))
         if eac_localities:

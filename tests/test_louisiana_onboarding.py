@@ -72,6 +72,25 @@ class LouisianaOnboardingTests(unittest.TestCase):
         self.assertTrue(all(row["denominator"] is None for row in rows))
         self.assertTrue(all(row["source_clock"]["literal"] is None for row in rows))
 
+    def test_group_export_preserves_freshness_and_canonical_denominator_hold(self):
+        rows = runtime.canonical_rows(bodies())
+        shard = {"records": rows}
+        pins = {row["view"]["native_record"]["source_input"]: row["view"]["native_record"]["source_original_pin"]
+                for row in rows}
+        entry = {"status": "retained_after_failure", "data": {"numerical_input_pins": pins}}
+        groups = runtime.published_group_rows(shard, entry)
+        self.assertEqual(len(groups), 1040)
+        black = next(row for row in groups if row["native_area_id"] == "STATE" and row["group"] == "black")
+        self.assertEqual(black["collection_status"], "retained_after_failure")
+        self.assertFalse(black["analytical_denominator_qualified"])
+        self.assertTrue(all(row["denominator"] is None for row in rows))
+        stock = black["reported_registration_stock"]
+        self.assertGreater(stock, 0)
+        self.assertEqual(sum(row["reported_registration_stock"] for row in groups
+                             if row["geography_level"] == "county_equivalent" and row["group"] == "black"), stock)
+        with self.assertRaisesRegex(ValueError, "inventory"):
+            runtime.published_group_rows({"records": rows[1:]}, entry)
+
     def test_reviewed_addition_preserves_full_registration_baseline(self):
         before = baseline_files()
         payload = louisiana_bootstrap.addition_payload(before, bodies())

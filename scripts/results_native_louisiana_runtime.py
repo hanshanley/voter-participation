@@ -23,6 +23,88 @@ MEASURE_ID = "native-voters-participating"
 CANONICAL_IDENTITY_PIN = "85a166f8cde8aa40bbfc6494ab40a1fe43722e72dbeecb53213604cf36fd2d0e"
 
 SAFE_DECLARATION_CONTRACT = "participation.safe_factual_source_declaration.v1"
+GROUP_CSV = "participation-la-post-election-groups.csv"
+GROUP_FIELDS = {
+    "overall": ("total",),
+    "race": ("white", "black", "other_race"),
+    "registration_party": ("democrat_total", "republican_total", "other_parties_total"),
+    "race_by_registration_party": tuple(
+        f"{party}_{race}" for party in ("democrat", "republican", "other_parties")
+        for race in ("white", "black", "other_race")
+    ),
+}
+
+
+def published_group_rows(shard, collection):
+    """Expose the report's own fractions without qualifying a canonical denominator."""
+    records = [row for row in shard["records"] if row["source"]["id"] == SOURCE_ID
+               and row["geography"]["level"] in {"state", "county_equivalent"}]
+    if not records:
+        return []
+    status = collection.get("status")
+    receipt = (collection.get("data") or {}).get("numerical_input_pins", {})
+    areas, editions = {}, {"state": set(), "county_equivalent": set()}
+    for row in records:
+        geo, view = row["geography"], row["view"]
+        native = view["native_record"]
+        state = geo["level"] == "state"
+        area = native["native_id"]
+        original = native["source_original_pin"]
+        url = source.STATE_XLSX_URL if state else source.PARISH_XLSX_URL
+        role = "state_workbook" if state else "parish_workbook"
+        vector = native["native_vectors"]
+        if (row["election"]["id"] != ELECTION_ID or row["election"]["date"] != "2026-11-03"
+                or geo["state_code"] != "LA" or row["measure"]["id"] != MEASURE_ID
+                or row["measure"]["literal"] != "# VOTING" or row["measure"]["mode"] != "all_methods"
+                or row["count"]["status"] != "reported" or row["denominator"] is not None
+                or area in areas or (area != "STATE" if state else not re.fullmatch(r"PAR \d{2}", area))
+                or native["native_level"] != ("state" if state else "parish") or native["source_input"] != role
+                or row["source"]["url"] != url or original["url"] != url
+                or not re.fullmatch(r"[a-f0-9]{64}", original["sha256"])
+                or original["sha256"] != row["source"]["input_sha256"]
+                or set(vector) != {"registered_voters", "voters_participating", "percent_voting"}
+                or any(set(values) != set(source.FIELDS.values()) for values in vector.values())
+                or any(type(n) is not int or n < 0 for key in ("registered_voters", "voters_participating")
+                       for n in vector[key].values())
+                or vector["voters_participating"]["total"] != row["count"]["value"]
+                or vector["registered_voters"]["total"] != native["registered_voters_stock"]):
+            raise ValueError("Louisiana group workbook identity or measure differs")
+        source._validate_vector(vector, area)
+        editions[geo["level"]].add(original["sha256"])
+        areas[area] = (geo, native, vector, status if status in {"reported", "retained_after_failure"}
+                       and receipt.get(role) == original else "stored_snapshot")
+    if (set(areas) != {"STATE", *(f"PAR {i:02}" for i in range(1, 65))}
+            or any(len(hashes) != 1 for hashes in editions.values())
+            or len({area[0]["name"] for area in areas.values()}) != len(areas)):
+        raise ValueError("Louisiana group parish or edition inventory differs")
+    for role in ("registered_voters", "voters_participating"):
+        for field in source.FIELDS.values():
+            if sum(vector[role][field] for area, (_, _, vector, _) in areas.items() if area != "STATE") != (
+                    areas["STATE"][2][role][field]):
+                raise ValueError("Louisiana group parish and state controls differ")
+    rows = []
+    columns = {field: column for column, field in source.FIELDS.items()}
+    for area in ("STATE", *sorted(set(areas) - {"STATE"})):
+        geo, native, vector, freshness = areas[area]
+        for dimension, fields in GROUP_FIELDS.items():
+            for field in fields:
+                n, d = (vector[key][field] for key in ("voters_participating", "registered_voters"))
+                rows.append({
+                    "state_code": "LA", "election_date": "2026-11-03", "native_area_id": area,
+                    "geography_level": geo["level"], "geography": geo["name"],
+                    "dimension": dimension, "group": field, "reported_voters_participating": n,
+                    "reported_registration_stock": d, "workbook_printed_pct": vector["percent_voting"][field],
+                    "workbook_participation_pct": vector["percent_voting"][field] if d else None,
+                    "registration_scope": "active_and_inactive_post_election",
+                    "analytical_denominator_qualified": False, "geography_allocation": False,
+                    "source_report_status": native["native_report_status_literal"], "collection_status": freshness,
+                    "source_url": native["source_original_pin"]["url"],
+                    "source_sha256": native["source_original_pin"]["sha256"],
+                    "workbook_column": columns[field], "workbook_sheet": native["physical_selector"]["sheet"],
+                    "workbook_voting_row": native["physical_selector"]["voting_row"],
+                    "workbook_registration_row": native["physical_selector"]["identity_row"],
+                })
+    return rows
 
 
 def _source_bodies(bodies):
