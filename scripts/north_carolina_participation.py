@@ -16,13 +16,17 @@ from scripts.southeast_turnout import collect_report
 
 FEEDS = {
     f"NC-{year}-general-participation-statistics": date(year, 11, day)
-    for year, day in ((2016, 8), (2018, 6), (2020, 3), (2022, 8), (2024, 5), (2026, 3))
+    for year, day in ((2008, 4), (2010, 2), (2012, 6), (2014, 4), (2016, 8),
+                      (2018, 6), (2020, 3), (2022, 8), (2024, 5), (2026, 3))
 }
 COUNTIES = "participation-nc-general-county-history.csv"
 GROUPS = "participation-nc-general-state-groups.csv"
 PRECINCTS = "participation-nc-general-native-precincts.csv"
 FIELDS = {"age": "age", "race": "race_code", "ethnicity": "ethnic_code", "sex": "sex_code"}
 MAX_BYTES = 35_000_000
+EARLY_VOTER_HEADER = ("county_desc precinct_abbrv {vtd}age party_cd race_code ethnic_code sex_code "
+                      "total_voters election_date stats_type update_date")
+TRUNCATED_VOTER_EDITIONS = {2012: "Nov  6 201", 2014: "Nov  5 201"}
 CONTROLS = {
     year: f"https://www.ncsbe.gov/results-data/voter-turnout/{year}-general-election-turnout"
     for year in (2022, 2024)
@@ -31,8 +35,12 @@ CONTROLS = {
 
 def extract(body, kind, election):
     fields = HEADERS[kind].split()
+    if kind == "voter" and election.year <= 2012:
+        fields = EARLY_VOTER_HEADER.format(vtd="vtd_abbrv " if election.year == 2012 else "").split()
+    padded = kind == "voter" and election.year <= 2014
     counties, units = Counter(), Counter()
     vtds = defaultdict(set)
+    native_codes = {}
     groups = {field: Counter() for field in FIELDS}
     editions = set()
     with ZipFile(io.BytesIO(body)) as archive:
@@ -46,18 +54,25 @@ def extract(body, kind, election):
                 raise ValueError("NC aggregate schema changed")
             indexes = [fields.index(name) for name in (
                 "county_desc", "election_date", "stats_type", "update_date", "total_voters",
-                "precinct_abbrv", "vtd_abbrv", *FIELDS.values())]
+                "precinct_abbrv", *FIELDS.values())]
+            vtd_index = fields.index("vtd_abbrv") if "vtd_abbrv" in fields else None
             expected_date = election.strftime("%m/%d/%Y")
             for row in reader:
                 if len(row) != len(fields):
                     raise ValueError("NC aggregate row width changed")
-                county, day, category, updated, raw, precinct, vtd, *labels = (row[i] for i in indexes)
+                county, day, category, updated, raw, precinct, *labels = (row[i] for i in indexes)
                 if day != expected_date or category != kind or not re.fullmatch(r"[0-9]+", raw):
                     raise ValueError("NC aggregate election, category or count changed")
                 value = count(raw)
+                if padded:
+                    native = precinct
+                    precinct = native.rstrip(" ")
+                    if native_codes.setdefault((county, precinct), native) != native:
+                        raise ValueError("NC registration precinct padding collapses distinct native keys")
                 counties[county] += value
                 units[county, precinct] += value
-                vtds[county, precinct].add(vtd)
+                if vtd_index is not None:
+                    vtds[county, precinct].add(row[vtd_index])
                 for field, label in zip(FIELDS, labels, strict=True):
                     groups[field][label] += value
                 editions.add(updated)
@@ -67,12 +82,13 @@ def extract(body, kind, election):
         raise ValueError("Incomplete or mixed-edition NC aggregate")
     (native_edition,) = editions
     edition = None
-    if native_edition:
+    truncated = kind == "voter" and native_edition == TRUNCATED_VOTER_EDITIONS.get(election.year)
+    if native_edition and not truncated:
         month, day, year = (int(value) for value in native_edition.split("/"))
         edition = date(year, month, day)
         if edition < election:
             raise ValueError("NC aggregate edition predates election")
-    elif kind != "voter" or election.year not in (2016, 2018):
+    elif not truncated and (kind != "voter" or election.year not in (2016, 2018)):
         raise ValueError("Missing NC native update edition")
     return {
         "edition": edition.isoformat() if edition else None,
@@ -80,6 +96,9 @@ def extract(body, kind, election):
         "units": [[county, precinct, value, sorted(vtds[county, precinct])]
                   for (county, precinct), value in sorted(units.items())],
         "groups": {field: dict(sorted(totals.items())) for field, totals in groups.items()},
+        **({"truncated_edition": native_edition} if truncated else {}),
+        **({"native_codes": [[c, p, native] for (c, p), native in sorted(native_codes.items()) if p != native]}
+           if padded else {}),
     }
 
 
@@ -166,6 +185,7 @@ def exports(entries):
             "checked_week_utc": entry.get("archive_check_week_utc"),
             **{f"{kind}_{field}": pair[kind]["source"][field] for kind in CATALOGS for field in ("url", "sha256")},
             **{f"{kind}_edition": pair[kind]["facts"]["edition"] for kind in CATALOGS},
+            "voter_unparsed_edition": voter.get("truncated_edition"),
         }
         for name in ["", *history["counties"]]:
             county_rows.append({
@@ -190,11 +210,14 @@ def exports(entries):
                 })
         h, v = ({(c, p): (value, districts) for c, p, value, districts in source["units"]}
                 for source in (history, voter))
+        raw_voter_code = {(c, p): raw for c, p, raw in voter.get("native_codes", [])}
         for county, precinct in sorted(h.keys() | v.keys()):
             counts, hvtd = h.get((county, precinct), (None, []))
             stock, vvtd = v.get((county, precinct), (None, []))
             precinct_rows.append({
                 **context, "native_county": county, "native_precinct_code": precinct,
+                "voter_precinct_code_as_printed": raw_voter_code.get((county, precinct), precinct)
+                if stock is not None else None,
                 "voters_with_history": counts, "registered_voter_statistics": stock,
                 "history_native_vtd_codes": json.dumps(hvtd), "voter_native_vtd_codes": json.dumps(vvtd),
                 "geometry_hold": "election_effective_precinct_identity_not_verified",

@@ -25,6 +25,11 @@ published age table has 629,298; the native count is retained and its fraction
 is withheld. The 2016 and 2018 registration archives do not print their
 native update date; that field stays blank. None of these statistics
 establishes eligibility-population turnout, certified ballots, or vote choice.
+The 2008 and 2010 registration layouts have no VTD field. The 2012 and 2014
+registration update labels truncate the year; the original label is exported,
+not inferred. In the 2008–2014 registration files, right-padding is removed
+from the join key only after checking that no distinct native codes collapse
+within a county. The printed code stays in the precinct download.
 
 Refresh just these sources from the research checkout:
 
