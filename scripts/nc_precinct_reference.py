@@ -19,9 +19,13 @@ ARCHIVES = {
     "20161004": "4739d58fe4681ec93d37771073b4b7c661bedc36180e57cd48f3f245972aeb63",
     "20190827": "76de0fe26651529b6b34963864c9f25a24964b803636f2970ed7251c6fe2aeed",
     "20201018": "a31a68aab8761ce579ad853690eeef2845dccf8655d9638237ef3845e2405f5b",
+    "20220831": "100e3171a14e0d8f6b5a827e8102101ff80abc554e24d7dd3be321fd204f982e",
+    "20240723": "bd9d37ac1f59ca77c55ce94cb3fe10c7c42cf7fc00f4dece7c841afe2cfb03b9",
 }
 RESTORED = {("BUNCOMBE", "681"), ("HENDERSON", "CV"), ("WAKE", "01-07A"), ("WAKE", "07-07A")}
-EDITIONS = {"2016-11-08": "20161004", "2020-11-03": "20201018"}
+EDITIONS = {"2016-11-08": "20161004", "2020-11-03": "20201018",
+            "2022-11-08": "20220831", "2024-11-05": "20240723"}
+CLOSED_ROSTERS = {"20220831", "20240723"}
 COLORS = ("#d9e8ed", "#b3d2dc", "#79afbf", "#48879d", "#24586d")
 
 
@@ -68,13 +72,15 @@ def topology(geometries):
     return {key: sorted(rows) for key, rows in held.items()}
 
 
-def audit(counts, primary, supplement):
+def audit(counts, primary, supplement, *, closed_roster=False):
     if set(supplement) != (set(counts) - set(primary) if supplement else set()):
         raise ValueError("Supplement does not enumerate exactly the missing count-bearing keys")
     shapes = primary | supplement
     valid = {key: g for key, g in shapes.items()
              if g.geom_type in ("Polygon", "MultiPolygon") and g.is_valid and not g.is_empty}
     overlaps = topology(valid)
+    held_counties = ({county.upper() for county, code in set(counts) ^ set(shapes) if code.strip()}
+                     if closed_roster else set())
     records, accepted = [], {}
     for key in sorted(set(counts) | set(shapes)):
         if key not in counts:
@@ -85,6 +91,8 @@ def audit(counts, primary, supplement):
             status = "invalid_geometry"
         elif key in overlaps:
             status = "overlapping_geometry"
+        elif key[0].upper() in held_counties:
+            status = "county_roster_differs"
         else:
             status = "reference_count_only"
             accepted[key] = valid[key]
@@ -146,7 +154,7 @@ def build(inputs, output):
         primary = outline(inputs / f"precinct-{edition}.zip", edition)
         supplement = (outline(inputs / "precinct-20190827.zip", "20190827", RESTORED)
                       if edition == "20201018" else {})
-        records, accepted = audit(counts, primary, supplement)
+        records, accepted = audit(counts, primary, supplement, closed_roster=edition in CLOSED_ROSTERS)
         with (output / (election + "-precinct-decisions.csv")).open("w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file, lineterminator="\n")
             writer.writerow(["native_county", "native_precinct", "voter_history_credits",

@@ -15,3 +15,14 @@ def test_reference_does_not_draw_contained_supplement_or_parent():
         "A": "overlapping_geometry", "A.1": "overlapping_geometry",
         "B": "reference_count_only", "C": "invalid_geometry",
     }
+
+
+def test_closed_roster_blocks_county_with_missing_precinct_but_not_unassigned_credit():
+    a, b = ("WAKE", "A"), ("LEE", "B")
+    counts = {a: 200, ("WAKE", "A.1"): 25, b: 230, ("LEE", " "): 3}
+    decisions, accepted = audit(counts, {a: box(0, 0, 10, 10), b: box(10, 0, 20, 10)}, {},
+                                closed_roster=True)
+    assert set(accepted) == {b}
+    assert {row[1]: row[4] for row in decisions} == {
+        " ": "no_shape", "B": "reference_count_only", "A": "county_roster_differs", "A.1": "no_shape",
+    }
