@@ -1,10 +1,12 @@
-"""Extract Connecticut's digital general-election town participation archive."""
+"""Extract Connecticut's general-election town participation archive."""
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal, ROUND_HALF_UP
 import hashlib
 from html.parser import HTMLParser
 import io
+import json
+from pathlib import Path
 import re
 from urllib.parse import urljoin, urlsplit
 
@@ -44,6 +46,7 @@ PARTIAL_TOWNS = {2018: {"East Granby", "Torrington"}, 2020: {"New Canaan", "Nort
 STATEMENT_LIMIT = 12_000_000
 SCAN_LIMIT = 20_000_000
 SCAN_FIRST = 171
+SCAN_CHECKPOINT = "connecticut_2018_verified_scan.json"
 SCAN_BANDS = ((80, 139), (140, 185), (185, 235), (235, 282), (285, 329),
               (330, 379), (380, 425), (426, 468), (469, 504), (505, 560))
 SCAN_NAMES = {"Brookdyn": "Brooklyn", "Brookyn": "Brooklyn", "Burling ton": "Burlington",
@@ -282,6 +285,16 @@ def scanned_statement(body):
     return {"complete_native_query": views, "participation_observation_qualified": False}
 
 
+def reviewed_scan_checkpoint(receipt):
+    checkpoint = json.loads(Path(__file__).with_name(SCAN_CHECKPOINT).read_bytes())
+    if not valid_link(receipt["url"], 2018) or checkpoint["source"] != {
+            key: receipt[key] for key in ("bytes", "sha256")}:
+        return None
+    views = checkpoint["views"]
+    scanned_statement_rows(views)
+    return {"complete_native_query": views, "participation_observation_qualified": False}
+
+
 def statement_query(body, year):
     import pymupdf
 
@@ -387,7 +400,11 @@ def collect(collector, feed, *, reuse_checked_week=False):
             rejected_scan.receipt = None
             return previous
         if year == 2018:
-            facts = rejected_scan.parse(receipt, scan.scan_policy(__file__, year), lambda: parse(body, year))
+            facts = reviewed_scan_checkpoint(receipt)
+            if facts is None:
+                facts = rejected_scan.parse(receipt, scan.scan_policy(__file__, year), lambda: parse(body, year))
+            else:
+                rejected_scan.receipt = None
         else:
             facts = parse(body, year)
         return {"report": receipt, **facts}

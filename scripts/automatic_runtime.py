@@ -53,6 +53,7 @@ CODE_PATHS = (
     "results_pdf_archive_ocr.py", "results_pdf_ocr.py",
     "results_indiana_turnout.py",
     "results_ca_county_scan_transcriptions.json",
+    "connecticut_2018_verified_scan.json",
     "results_nc_vote_history.py",
     "results_pa_vote_history.py", "results_alaska_turnout.py",
     "eac_county_turnout.py", "cps_published_state_tables.py", "cps_archived_state_tables.py", "philadelphia_divisions.py",

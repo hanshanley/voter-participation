@@ -144,3 +144,31 @@ def test_2018_scan_does_not_repeat_an_unchanged_rejection(tmp_path, monkeypatch)
     restored = refresh(b"revised")
     assert restored["status"] == "reported" and "rejected_scan" not in restored
     assert restored["data"]["complete_native_query"] == ["revised"]
+
+
+def test_2018_checkpoint_repairs_only_exact_source_edition(tmp_path, monkeypatch):
+    feed = "CT-2018-general-town-turnout-archive"
+    url = "https://portal.ct.gov/-/media/sots/electionservices/statementofvote_pdfs/2018-sov.pdf"
+    checksum = "f3c4f52f92c14b3403778a2b6cd5a1541c47def83a248da151a7dd53deea7de8"
+    pin = {"url": url, "bytes": 18_795_348, "sha256": checksum}
+    facts = ct.reviewed_scan_checkpoint(pin)
+    rows, deltas = ct.scanned_statement_rows(facts["complete_native_query"])
+    assert len(rows) == 168 and deltas == [0, 0]
+    assert ct.reviewed_scan_checkpoint({**pin, "sha256": "a" * 64}) is None
+    assert ct.reviewed_scan_checkpoint({**pin, "url": "https://example.test/2018-sov.pdf"}) is None
+
+    original = b"official file pinned by this fixture"
+    digest = ct.pin
+    monkeypatch.setattr(ct, "pin", lambda body: {"bytes": pin["bytes"], "sha256": checksum}
+                        if body == original else digest(body))
+    monkeypatch.setattr(ct, "parse", lambda *_: pytest.fail("A pinned edition must not invoke OCR"))
+    prior = {feed: {"status": "scan_reconciliation_failed", "data": None,
+                    "rejected_scan": {"key": {"report": pin, "policy": "old"}, "detail": "runner disagreement"}}}
+    collector = results_intake.Collector(tmp_path, prior, {"urls": [], "prefixes": [], "hosts": []},
+                                         datetime(2026, 11, 21, tzinfo=timezone.utc))
+    index = f'<a href="{url}">2018 PDF</a>'.encode()
+    monkeypatch.setattr(collector, "acquire", lambda target: (
+        index if target == ct.STATEMENT_INDEX else original, {"origin": "test"}))
+    accepted = ct.collect(collector, feed)
+    assert accepted["status"] == "reported" and "rejected_scan" not in accepted
+    assert accepted["data"] == {"report": pin, **facts}
