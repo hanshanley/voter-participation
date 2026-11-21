@@ -64,9 +64,15 @@ def exports(entries):
 
 
 def original_reports(entries):
-    from scripts import results_turnout_history as history
+    from scripts import results_indiana_turnout as indiana, results_turnout_history as history
 
     age, ct = alaska_age_history, connecticut_turnout_history
+    for year, feed in indiana.FEEDS.items():
+        if (data := (entries.get(feed) or {}).get("data")) is not None:
+            report = data["report"]
+            facts = {key: value for key, value in data.items() if key != "report"}
+            yield (feed, report, ".pdf", indiana.MAX_BYTES, indiana.report_route(report["url"]),
+                   partial(indiana.parse, year=year), facts)
     ks = kansas_turnout_history
     if (entry := entries.get(ks.FEED)) and entry.get("data") is not None:
         report = entry["source"]

@@ -140,14 +140,15 @@ def facts(native, feed):
             "participation_observation_qualified": False}
 
 
-def collect_report(collector, feed, url, parser, *, reuse_checked_week=False):
+def collect_report(collector, feed, url, parser, *, reuse_checked_week=False, shared_acquisition=False):
     day = collector.now.astimezone(timezone.utc).date()
     week = (day - timedelta(days=day.weekday())).isoformat()
     old = collector.prior.get(feed) or {}
     if (reuse_checked_week and not collector.offline and old.get("archive_check_week_utc") == week
             and old.get("status") == "reported" and old.get("data") is not None):
         return old
-    entry = collector.capture(feed, url, lambda body: parser(body, feed), equivalent=lambda a, b: a == b)
+    entry = collector.capture(feed, url, lambda body: parser(body, feed), equivalent=lambda a, b: a == b,
+                              **({"shared_acquisition": True} if shared_acquisition else {}))
     if not collector.offline:
         entry["archive_check_week_utc"] = week
     return entry

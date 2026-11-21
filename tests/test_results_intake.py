@@ -1612,6 +1612,8 @@ def test_indiana_archive_uses_only_declared_general_report_and_keeps_count_confl
                                2026) is None
     assert indiana.report_link(f'<a href="{url}"><strong>2026 General Election</strong> '
                                'Registration and Turnout Data</a>'.encode(), 2026) == url
+    assert indiana.report_link(f'<a href="{url}">2012 General Election Registration&nbsp;&amp; Turnout Data'
+                               '</a>'.encode(), 2012) == url
     with pytest.raises(ValueError, match="outside the reviewed archive"):
         indiana.report_link(b'<a href="https://outside.test/2026.pdf">'
                             b'2026 General Election Registration and Turnout Data</a>', 2026)
@@ -1631,6 +1633,32 @@ def test_indiana_archive_uses_only_declared_general_report_and_keeps_count_confl
     data["complete_native_query"][-1][1] += 1
     with pytest.raises(ValueError, match="column totals do not reconcile"):
         indiana.rows({indiana.FEEDS[2026]: {"status": "reported", "data": data}})
+
+
+def test_indiana_historical_formats_preserve_native_roles(monkeypatch):
+    from scripts import results_indiana_turnout as indiana
+
+    counties = ["County " + chr(65 + i // 26) + chr(65 + i % 26) for i in range(92)]
+    monkeypatch.setattr(indiana, "COUNTIES_SHA", indiana.digest(("\n".join(counties) + "\n").encode()))
+    heading = ["2014 General Election  General Election Turnout and Registration", "Tuesday, November 4, 2014",
+               indiana.HEADER.replace("Election Day Vote", "In Person")]
+    cells = [f"{county}  100  40  40 %  25  15  38 %" for county in counties]
+    pages = ["\n".join(heading + cells[:45]), "\n".join(heading + cells[45:]
+             + ["9,200 3,680 40 % 2,300 1,380 38 %"])]
+    parsed = indiana.parse_pages(pages, 2014)
+    report = {"url": "https://www.in.gov/dA/0123456789/turnout.pdf", "sha256": "a" * 64, "bytes": 42}
+    out = indiana.rows({indiana.FEEDS[2014]: {"status": "reported", "data": {**parsed, "report": report}}})
+    assert out[0]["election_day_vote"] is out[0]["report_edition"] is None
+    assert out[0]["in_person"] == 25 and out[0]["qualified_registered_fraction_pct"] == 40
+    with pytest.raises(ValueError, match="heading or columns"):
+        indiana.parse_pages([pages[0], pages[1].replace("November 4", "November 3")], 2014)
+
+    cells = [f"{county} 100 40 40% 25 15 38%" for county in counties]
+    sheets = ["\n".join([*indiana.WORKSHEET_HEADER, *cells[:45]]), "\n".join(cells[45:90]),
+              "\n".join([*cells[90:], "Totals 9200 3680 40% 2300 1380 38%"])]
+    assert indiana.query(indiana.parse_pages(sheets, 2018)) == indiana.query(parsed)
+    with pytest.raises(ValueError, match="headings"):
+        indiana.parse_pages([sheets[0].replace("Registered", "Eligible"), *sheets[1:]], 2018)
 
 
 def test_nc_age_archive_waits_for_both_links_and_preserves_last_good(tmp_path, monkeypatch):

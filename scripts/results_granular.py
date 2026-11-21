@@ -508,7 +508,7 @@ def collect(collector, baseline):
         jobs[feed] = results_pa_vote_history.collect(collector, year)
     jobs[results_nc_vote_history.FEED] = results_nc_vote_history.collect(collector)
     for year, feed in results_indiana_turnout.FEEDS.items():
-        jobs[feed] = results_indiana_turnout.collect(collector, year)
+        jobs[feed] = results_indiana_turnout.collect(collector, year, reuse_checked_week=True)
     for feed in (*results_turnout_history.COUNTY_ARCHIVES, results_turnout_history.CA_CURRENT_FEED):
         jobs[feed] = results_turnout_history.collect_county_archive(collector, feed, reuse_checked_week=True)
     from scripts import bulk_participation_archives, nebraska_county_reports
