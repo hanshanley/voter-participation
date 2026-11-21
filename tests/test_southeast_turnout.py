@@ -144,6 +144,27 @@ def test_jefferson_crosstab_keeps_aggregate_out_of_reporting_units():
         precinct.mixed_crosstab(iter([*rows, rows[-1]]), jefferson=True)
 
 
+def test_alabama_mixed_csv_uses_native_measure_codes_not_column_name_or_candidate_votes():
+    header = ",".join(precinct.MIXED_CSV_HEADER) + "\n"
+    register = "Chambers,,0002,001,000263,,REGISTERED VOTERS - TOTAL,Registered Voters - Total,STROUD,\n"
+    ballots = "Chambers,,0003,001,000132,,BALLOTS CAST - TOTAL,Ballots Cast - Total,STROUD,\n"
+    central = ballots.replace("STROUD", "ABSENTEE").replace("000132", "000012")
+    candidate = "Chambers,,0101,001,000100,DEM,GOVERNOR,Parker Griffith,STROUD,\n"
+    body = header + register + ballots + central + candidate
+    assert precinct.mixed_csv_units(body.encode(), "CHAMBERS") == [
+        ["STROUD", 132, 263], ["ABSENTEE", 12, None],
+    ]
+    for changed in (
+        body + ballots,
+        body.replace("0003,001", "0013,001", 1),
+        body.replace("Ballots Cast - Total", "Registered Voters - Total", 1),
+    ):
+        with pytest.raises(ValueError, match="Ambiguous"):
+            precinct.mixed_csv_units(changed.encode(), "CHAMBERS")
+    with pytest.raises(ValueError, match="county or election"):
+        precinct.mixed_csv_units(body.replace("Chambers", "Winston", 1).encode(), "CHAMBERS")
+
+
 def test_current_alabama_control_is_collected_only_after_discovery(tmp_path, monkeypatch):
     feed = precinct.CURRENT_CONTROL
     path = "/sites/default/files/election-data/2026-12/2026%20General%20Total%20Ballots%20Cast.pdf"

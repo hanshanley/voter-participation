@@ -1,4 +1,5 @@
 """Alabama's reporting-unit ballot counts and compatible county controls."""
+import csv
 import io
 import re
 from zipfile import ZipFile
@@ -40,6 +41,13 @@ EARLY_MISSING = {"BULLOCK", "BUTLER", "HALE", "WILCOX"}
 EARLY_HEADER = ("Registered Voters", "Ballots Cast", "Voter Turnout")
 MIXED_HELD = set("BIBB BLOUNT BUTLER CALHOUN CHAMBERS CHILTON CLAY COOSA DALLAS DEKALB ELMORE ESCAMBIA "
                  "GENEVA GREENE LAMAR MACON PICKENS WALKER WILCOX WINSTON".split())
+MIXED_CSV_COUNTIES = {"CHAMBERS", "WINSTON"}
+MIXED_CSV_HEADER = (
+    "County", "Election Date", "Contest Number", "Candidate Number", "Registered Voters",
+    "Party Code", "Contest Title", "Candidate Name", "Precinct Name", "District Name",
+)
+MIXED_CSV_MEASURES = {"0002": "Registered Voters - Total", "0003": "Ballots Cast - Total"}
+MIXED_CSV_TITLES = {label.upper() for label in MIXED_CSV_MEASURES.values()}
 MODE_LABELS = {
     "ABSENTEE", "PROVISIONAL", "PROVISIONAL ABSENTEE", "ABSENTEE PROVISIONAL",
     "BESSEMER ABSENTEE", "BIRMINGHAM ABSENTEE", "PROVISIONAL OFFICIAL",
@@ -217,7 +225,32 @@ def mixed_crosstab(rows, *, jefferson=False):
     return units, footer
 
 
-def parse_mixed_units(body):
+def mixed_csv_units(body, county):
+    rows = csv.reader(io.StringIO(body.decode("cp1252"), newline=""), strict=True)
+    if tuple(next(rows, ())) != MIXED_CSV_HEADER:
+        raise ValueError("Alabama mixed CSV header changed")
+    measures = {key: {} for key in MIXED_CSV_MEASURES}
+    for row in rows:
+        if len(row) != len(MIXED_CSV_HEADER):
+            raise ValueError("Alabama mixed CSV row width changed")
+        name, date, code, number, value, party, title, label, unit, district = (cell.strip() for cell in row)
+        if county_key(name) != county or date:
+            raise ValueError("Alabama mixed CSV county or election identity changed")
+        if code not in measures and title not in MIXED_CSV_TITLES:
+            continue
+        expected = MIXED_CSV_MEASURES.get(code)
+        if (expected is None or label != expected or title != expected.upper() or number != "001"
+                or party or district or not unit or unit in measures[code]
+                or not re.fullmatch(r"[0-9]{6}", value)):
+            raise ValueError("Ambiguous Alabama mixed CSV participation row")
+        measures[code][unit] = early_integer(value)
+    registrations, ballots = measures.values()
+    if not registrations or not registrations.keys() <= ballots.keys():
+        raise ValueError("Alabama mixed CSV registration and ballot unit rosters differ")
+    return [[unit, value, registrations.get(unit)] for unit, value in ballots.items()]
+
+
+def parse_mixed_units(body, *, include_csv):
     import xlrd
 
     units, printed = {}, {}
@@ -231,7 +264,11 @@ def parse_mixed_units(body):
             county = COUNTY_KEYS.get(county_key(name[1])) if name else None
             if county is None or county in units or not 0 < item.file_size <= 1_000_000:
                 raise ValueError("Unknown, oversized or repeated Alabama mixed county workbook")
-            if county in MIXED_HELD:
+            if county in MIXED_CSV_COUNTIES and include_csv:
+                if name[2] != "csv":
+                    raise ValueError("Alabama mixed CSV workbook format changed")
+                rows, footer = mixed_csv_units(archive.read(item), county), None
+            elif county in MIXED_HELD:
                 rows, footer = [], None
             elif name[2] == "xlsx":
                 book = bounded_xlsx(archive.read(item))
@@ -338,13 +375,15 @@ def validate_controls(rows):
     return values
 
 
-def parse(body, feed):
+def parse(body, feed, *, include_mixed_csv=True):
     if not 0 < len(body) <= 6_000_000:
         raise ValueError("Alabama archive source exceeds reviewed bounds")
     year = next(year for year, pair in FEEDS.items() if feed in pair)
     if year in (2010, 2012, 2014) and feed == FEEDS[year][0]:
-        data, footer = parse_mixed_units(body) if year == 2014 else parse_early_units(body, year)
+        data, footer = (parse_mixed_units(body, include_csv=include_mixed_csv)
+                        if year == 2014 else parse_early_units(body, year))
         return {"complete_native_query": data, "native_lines": None, "workbook_printed_totals": footer,
+                **({"mixed_csv_participation_rows_qualified": True} if year == 2014 and include_mixed_csv else {}),
                 "participation_observation_qualified": False}
     if feed == FEEDS[year][0]:
         data, lines = parse_units(body, year), None

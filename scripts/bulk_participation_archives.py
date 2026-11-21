@@ -98,8 +98,10 @@ def original_reports(entries):
     for year, (archive_feed, control_feed) in al.FEEDS.items():
         if (entry := entries.get(archive_feed)) and entry.get("data") is not None:
             source = entry["source"]
+            data = entry["data"]
+            include_csv = data.get("mixed_csv_participation_rows_qualified") is True
             yield (archive_feed, source, ".zip", 6_000_000, source["url"] == al.URLS[archive_feed],
-                   partial(al.parse, feed=archive_feed), entry["data"])
+                   partial(al.parse, feed=archive_feed, include_mixed_csv=include_csv), data)
         if (entry := entries.get(control_feed)) and entry.get("data") is not None:
             data = entry["data"]
             if control_feed == al.CURRENT_CONTROL:
