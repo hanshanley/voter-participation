@@ -302,7 +302,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         *(f"MD-{year}-general-precinct-affiliation-turnout" for year in range(2016, 2025, 2)),
         "NC-2026-general-vote-history", "NC-general-election-turnout-history", "UF-national-turnout",
         "WY-primary-general-turnout-profile", "WY-2026-precinct-ballot-canvass",
-        "HI-official-house-candidates", "IA-official-statewide-results", "NE-official-house-candidates",
+        "CT-official-house-candidates", "HI-official-house-candidates", "IA-official-statewide-results", "NE-official-house-candidates",
         "OR-official-house-candidates", "RI-official-house-candidates", "RI-official-senate-candidates",
         "UT-official-house-candidates", "WY-official-house-candidates",
         "IN-2022-general-turnout-and-registration", "IN-2024-general-turnout-and-registration",

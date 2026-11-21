@@ -42,7 +42,7 @@ CODE_PATHS = (
     "native_tabular.py", "native_products.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
     "results_aspx_congress.py", "results_json_congress.py",
-    "results_clarity_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
+    "results_clarity_congress.py", "results_connecticut_congress.py", "results_county_frame.py", "results_pdf_county_parent.py",
     "results_minnesota_turnout.py", "results_turnout_history.py", "national_turnout_release_watch.py",
     "washington_participation.py", "oregon_turnout_history.py", "retained_bulk_turnout.py", "southeast_turnout.py",
     "alabama_precinct_history.py", "alaska_precinct_history.py", "alaska_cards_history.py", "alaska_age_history.py",

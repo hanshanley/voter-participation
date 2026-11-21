@@ -7,6 +7,7 @@ from html import unescape
 from scripts.congressional_complete_categories import IDENTITY as COMPLETE_IDENTITY, URL as COMPLETE_URL
 from scripts.protected_official_house import IDENTITY as PROTECTED_IDENTITY, URL as PROTECTED_URL
 from scripts.protected_official_wyoming import IDENTITY as WY_IDENTITY, URL as WY_URL
+from scripts.results_connecticut_congress import IDENTITY as CT_IDENTITY, URL as CT_URL
 
 
 IDENTITY = "NE-official-house-candidates"
@@ -34,8 +35,10 @@ CLARITY_IDENTITY = "IA-official-statewide-results"
 CLARITY_URL = "https://electionresults.iowa.gov/IA/127077/current_ver.txt"
 CLARITY_CONFIG = {**JSON_CONFIG, "sources": {
     **JSON_CONFIG["sources"], CLARITY_IDENTITY: CLARITY_URL}}
+CONNECTICUT_CONFIG = {**CLARITY_CONFIG, "sources": {
+    **CLARITY_CONFIG["sources"], CT_IDENTITY: CT_URL}}
 IDENTITIES = (IDENTITY, COMPLETE_IDENTITY, SENATE_IDENTITY, PROTECTED_IDENTITY, WY_IDENTITY,
-              ASPX_IDENTITY, JSON_IDENTITY, CLARITY_IDENTITY, "VA-official-house-candidates")
+              ASPX_IDENTITY, JSON_IDENTITY, CLARITY_IDENTITY, CT_IDENTITY, "VA-official-house-candidates")
 INTEGER = r"(?:0|[1-9][0-9]*|[1-9][0-9]{0,2}(?:,[0-9]{3})+)"
 PARTIES = {"Democratic": "D", "Republican": "R", "Libertarian": "O",
            "America First": "O", "Legal Marijuana Now": "O",
@@ -154,7 +157,7 @@ def collect(collector, config):
 
 def source_ids(config):
     require(config in (CONFIG, COMPLETE_CONFIG, SENATE_CONFIG, PROTECTED_CONFIG, WY_CONFIG,
-                       ASPX_CONFIG, JSON_CONFIG, CLARITY_CONFIG),
+                       ASPX_CONFIG, JSON_CONFIG, CLARITY_CONFIG, CONNECTICUT_CONFIG),
             "Unreviewed official congressional source configuration")
     return tuple(config["sources"])
 
@@ -184,6 +187,9 @@ def collect_sources(collector, config, selected=None):
     if CLARITY_IDENTITY in identities:
         from scripts.results_clarity_congress import collect as collect_clarity
         result[CLARITY_IDENTITY] = collect_clarity(collector)
+    if CT_IDENTITY in identities:
+        from scripts.results_connecticut_congress import collect as collect_ct
+        result[CT_IDENTITY] = collect_ct(collector)
     for source_id, chamber in ((COMPLETE_IDENTITY, "house"), (SENATE_IDENTITY, "senate")):
         if source_id not in identities:
             continue
@@ -315,5 +321,8 @@ def rows(congress, comparisons=None):
                     **({"exhaustive_write_in_universe_qualified": False,
                         "source_scope_holds": copy.deepcopy(data["holds"])}
                        if identity in (JSON_IDENTITY, CLARITY_IDENTITY) else {}),
+                    **({"exhaustive_write_in_universe_qualified": False,
+                        "numerical_input_pins": copy.deepcopy(data["numerical_input_pins"])}
+                       if identity == CT_IDENTITY else {}),
                 })
     return result
