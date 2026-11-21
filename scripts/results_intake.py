@@ -1435,15 +1435,16 @@ def merge_saved_source_stops(repository, expected_head, ledgers):
 
 
 def require_idle_collector():
-    endpoint = "repos/hanshanley/voter-participation/actions/concurrency_groups/election-night-participation"
+    endpoint = "repos/hanshanley/voter-participation/actions/concurrency_groups?per_page=100"
     try:
-        group = json.loads(subprocess.check_output(["gh", "api", endpoint], timeout=30))
-        members = group["group_members"]
-        if not isinstance(members, list):
-            raise ValueError("Invalid group membership")
+        page = json.loads(subprocess.check_output(["gh", "api", endpoint], timeout=30))
+        groups, total = page["concurrency_groups"], page["total_count"]
+        if (not isinstance(groups, list) or type(total) is not int or len(groups) != total
+                or any(not isinstance(group["group_name"], str) or not group["group_name"] for group in groups)):
+            raise ValueError("Incomplete or invalid active concurrency inventory")
     except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as error:
         raise ValueError("Could not verify the hosted collector is idle; source stops not published") from error
-    if members:
+    if any(group["group_name"].casefold() == "election-night-participation" for group in groups):
         raise ValueError("Hosted collector is active or queued; keep the saved ledgers and merge when idle")
 
 

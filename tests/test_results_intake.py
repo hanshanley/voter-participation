@@ -2332,9 +2332,10 @@ def test_saved_source_stops_batch_keeps_latest_and_refuses_stale_or_pending_pare
 
 
 @pytest.mark.parametrize("reply, message", [
-    (b'{"group_members": []}', None),
-    (b'{"group_members": [{"run_id": 17, "status": "in_progress"}]}', "active or queued"),
-    (b'{"group_members": [{"run_id": 17, "status": "pending"}]}', "active or queued"),
+    (b'{"total_count":0,"concurrency_groups":[]}', None),
+    (b'{"total_count":1,"concurrency_groups":[{"group_name":"unrelated"}]}', None),
+    (b'{"total_count":1,"concurrency_groups":[{"group_name":"Election-Night-Participation"}]}', "active or queued"),
+    (b'{"total_count":101,"concurrency_groups":[{"group_name":"unrelated"}]}', "Could not verify"),
     (b'{"error": "failed"}', "Could not verify"),
 ])
 def test_direct_stop_merge_requires_verified_idle_collector(monkeypatch, reply, message):
