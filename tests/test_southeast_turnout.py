@@ -103,6 +103,35 @@ def test_current_alabama_control_discovery_requires_a_unique_general_report():
         precinct.discover_control((report + report.replace("2026-12", "2027-01")).encode())
 
 
+def test_legacy_alabama_tall_sheet_keeps_printed_control_separate():
+    rows = [
+        ("Precinct", "Registered Voters", "Ballots Cast", "Voter Turnout"),
+        ("Election day", 0, "25", "0.00 %"),
+        ("Total:", 0, 0, "0.00 %"),
+    ]
+    assert precinct.early_tall_sheet(rows) == ([["Election day", 25, 0]], 0)
+    with pytest.raises(ValueError, match="schema changed"):
+        precinct.early_tall_sheet([rows[0], (*rows[1], 100), rows[2]])
+    with pytest.raises(ValueError, match="Unexpected XML declarations"):
+        precinct.early_xml_sheet(b'<!DOCTYPE test [<!ENTITY x "test">]><test>&x;</test>')
+
+
+def test_legacy_alabama_unavailable_county_prevents_state_rollup():
+    feed = precinct.FEEDS[2012][0]
+    units = {name: [] if name == "HALE" else [["Town hall", 15, 0]] for name in se.COUNTIES}
+    footer = {name: None if name == "HALE" else 0 if name == "FRANKLIN" else 15 for name in units}
+    _, controls, audit = precinct.export_tables({feed: {
+        "status": "reported", "source": {"url": precinct.URLS[feed]},
+        "data": {"complete_native_query": units, "workbook_printed_totals": footer},
+    }})
+    assert controls[-1]["county"] == "TOTAL" and controls[-1]["county_archive_ballots"] is None
+    by_county = {row["county"]: row for row in audit}
+    assert by_county["HALE"]["workbook_decision"] == "reporting_units_unavailable"
+    assert by_county["FRANKLIN"]["workbook_printed_ballots"] == 0
+    assert by_county["FRANKLIN"]["workbook_decision"] == "workbook_internal_discrepancy"
+    assert by_county["FRANKLIN"]["unit_sum_minus_workbook_printed"] == 15
+
+
 def test_current_alabama_control_is_collected_only_after_discovery(tmp_path, monkeypatch):
     feed = precinct.CURRENT_CONTROL
     path = "/sites/default/files/election-data/2026-12/2026%20General%20Total%20Ballots%20Cast.pdf"

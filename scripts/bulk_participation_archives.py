@@ -32,7 +32,7 @@ def families():
         (routes(south_carolina_voter_statistics, (south_carolina_voter_statistics.FEED,)), True,
          (south_carolina_voter_statistics.CSV, south_carolina_voter_statistics.AUDIT),
          south_carolina_voter_statistics.exports),
-        (routes(al, al.URLS), True, (al.CSV, al.CONTROL_CSV), al.exports),
+        (routes(al, al.URLS), True, (al.CSV, al.CONTROL_CSV, al.WORKBOOK_AUDIT_CSV), al.export_tables),
         ({ak.FEED: ak.collect}, True, (ak.CSV,), ak.exports),
         ({ak.CURRENT_FEED: ak.collect_current}, False, (ak.CURRENT_CSV,), ak.current_exports),
         (routes(cards, cards.ROUTES), True, (cards.CSV,), cards.exports),

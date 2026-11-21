@@ -320,7 +320,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         *(f"AL-{year}-general-election-age-participation" for year in (2018, 2020, 2024)),
         *(f"AL-{year}-general-{name}" for year in (2018, 2020, 2022, 2024)
           for name in ("precinct-ballot-archive", "county-ballot-control")),
-        "AL-2016-general-precinct-ballot-archive",
+        *(f"AL-{year}-general-precinct-ballot-archive" for year in (2010, 2012, 2016)),
         "AL-2026-general-precinct-ballot-archive",
         "AL-2026-general-county-ballot-control",
         "AK-2024-general-precinct-ballot-archive",
