@@ -740,6 +740,7 @@ cmp reproduced-split-review.json \
 
   `massachusetts-historical-atlas.yml` refreshes the 2020, 2022 and 2024
   canvasses and the MassGIS precinct references every Tuesday at 11:43 UTC.
+  The Wednesday slot retries if no refresh succeeded in the prior 36 hours.
   The Census municipality crosswalk and TIGER archive are fixed 2022 reference
   inputs, not refreshed polygons. The separate `ma-historical-data:latest.json`
   pointer advances only after the complete nine-output ZIP replays offline and
