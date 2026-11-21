@@ -79,9 +79,10 @@ CA_CURRENT_ROUTE = (r"https://(?:admin\.cdn\.sos\.ca\.gov/elections|elections\.c
 CA_REGISTRATION_NOTE = "15-day Report of Registration; excludes later registrations"
 CA_SCAN_FILE = "results_ca_county_scan_transcriptions.json"
 CA_SCAN_DATES = ("1990-11-06", "1992-11-03", "1994-11-08")
+CA_LEGACY_DATES = (*CA_SCAN_DATES, "1996-11-05")
 CA_ARCHIVES = {
     **dict.fromkeys(CA_SCAN_DATES[:2], "voter-participation-statistics.pdf"),
-    "1994-11-08": "voter-participation-statistic.pdf",
+    **dict.fromkeys(CA_LEGACY_DATES[2:], "voter-participation-statistic.pdf"),
     "1998-11-03": "v.pdf",
     "2000-11-07": "reg.pdf",
     "2002-11-05": "reg.pdf",
@@ -516,6 +517,47 @@ def california_scan(report, election):
     return query
 
 
+def california_legacy_header(lines, election):
+    basis = "voting_age_population" if election == "1992-11-03" else "eligible_to_register"
+    expected = ("County Number of Precincts Voting Age Population Registered to Vote Precinct Voters "
+                "Absent Voters Total Voters Percent of Registered Percent of VAP"
+                if basis == "voting_age_population" else
+                "County Number of Precincts Eligible to Register Registered to Vote Precinct Voters "
+                "Absent Voters Total Voters Percent of Registered Percent of Eligible")
+    # Accept both the flattened heading and the two physical header lines of this series.
+    printed = ("Number of Voting Age Registered Precinct Absent Total Percent of Percent of "
+               "County Precincts Population to Vote Voters Voters Voters Registered VAP"
+               if basis == "voting_age_population" else
+               "Eligible to Registered Precinct Absent Total Percent of Percent of "
+               "County Precincts Register to Vote Voters Voters Voters Registered Eligible")
+    observed = scan.heading_key(" ".join(lines))
+    if observed not in {scan.heading_key(expected), scan.heading_key(printed)}:
+        raise ValueError("California legacy turnout column roles differ")
+    return basis
+
+
+def california_legacy_report(body, report, election):
+    from pypdf.errors import PdfReadError
+
+    if election in CA_SCAN_DATES:
+        try:
+            return california_scan(report, election)
+        except IntakeError as error:
+            if error.code != "unreviewed_report_revision":
+                raise
+    try:
+        return california_report(body, election)
+    except (PdfReadError, ValueError) as error:
+        scan.fail(f"California legacy edition does not qualify as native text: {error}")
+
+
+def california_legacy_policy(election):
+    from importlib.metadata import version
+
+    return pin(encoded({"election": election, "pypdf": version("pypdf"), "code": pin(Path(__file__).read_bytes()),
+                        "transcriptions": pin(Path(__file__).with_name(CA_SCAN_FILE).read_bytes())}))["sha256"]
+
+
 def california_report(body, election):
     from pypdf import PdfReader
 
@@ -525,6 +567,7 @@ def california_report(body, election):
     if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 6:
         raise ValueError("California turnout report page inventory changed")
     year = int(election[:4])
+    legacy = election in CA_LEGACY_DATES
     title = "VOTER PARTICIPATION STATISTICS BY COUNTY"
     extracted = []
     for page in pdf.pages:
@@ -534,14 +577,20 @@ def california_report(body, election):
             extracted.extend(lines)
     if not extracted:
         raise ValueError("California turnout table heading not found")
-    if year == 2004 or year >= 2020:
+    if legacy or year == 2004 or year >= 2020:
         day = int(election[-2:])
         if not any(re.fullmatch(rf"NOVEMBER {day}, {year},? GENERAL ELECTION", line.upper())
                    for line in extracted):
             raise ValueError("California turnout report election date differs")
+    if legacy:
+        start = next(i for i, line in enumerate(extracted) if line.upper().startswith(title))
+        end = next((i for i, line in enumerate(extracted) if line.startswith("Alameda ")), start)
+        header_lines = [line for line in extracted[start + 1:end] if not re.fullmatch(
+            rf"NOVEMBER {day}, {year},? GENERAL ELECTION|NUMBER AND PERCENT OF VOTES CAST", line.upper())]
+        secondary_basis = california_legacy_header(header_lines, election)
     header = " ".join(line for line in extracted if re.match(
         r"^(?:County |Number of Eligible|Precincts |Precinct Absentee)", line))
-    if ("Registered" not in header
+    if not legacy and ("Registered" not in header
             or ("Ballots Cast" if year == 2000 else "Voters") not in header):
         raise ValueError("California turnout table headers differ")
     if election == CA_CURRENT_ELECTION and not re.fullmatch(
@@ -595,7 +644,9 @@ def california_report(body, election):
             if len(percent_lines) != 1:
                 raise ValueError("Ambiguous California statewide rate line")
             rates = re.findall(pct, percent_lines[0])[-2:]
-        allowed_rates = (2,) if statewide else (3,) if election == CA_CURRENT_ELECTION else (2, 3)
+        if legacy:
+            rates = [rate if rate.endswith("%") else rate + "%" for rate in rates]
+        allowed_rates = (2,) if statewide or legacy else (3,) if election == CA_CURRENT_ELECTION else (2, 3)
         if (len(rates) not in allowed_rates
                 or not all(re.fullmatch(pct, token) for token in rates)):
             raise ValueError(f"California turnout table includes malformed rates at {name}")
@@ -623,6 +674,9 @@ def california_report(body, election):
              "native_numerator": "ballots_cast" if year == 2000 else "total_voters",
              "registration_basis": registration_basis,
              "table_notes": notes}
+    if legacy:
+        query.update(extraction_method="native_text_legacy_pdf",
+                     secondary_denominator=secondary_basis, native_header=header_lines)
     california_controls(query, election)
     return query
 
@@ -1076,8 +1130,11 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
         if state == "CO":
             query = colorado_voting_statistics.parse(body, election)
         elif state == "CA":
-            query = (california_scan(report, election) if election in CA_SCAN_DATES
-                     else california_report(body, election))
+            if election in CA_LEGACY_DATES:
+                policy = california_legacy_policy(election)
+                query = rejected_scan.parse(report, policy, lambda: california_legacy_report(body, report, election))
+            else:
+                query = california_report(body, election)
         elif state == "KS":
             query = kansas_workbook(body)
         elif state == "WV":
@@ -1121,7 +1178,7 @@ def county_archive_originals(entries):
     originals = {}
     for feed, (state, election) in sorted(COUNTY_ARCHIVES.items()):
         data = (entries.get(feed) or {}).get("data")
-        if state not in ("CO", "MD", "MN", "NE", "VA", "WV", "WY") or data is None:
+        if state not in ("CA", "CO", "MD", "MN", "NE", "VA", "WV", "WY") or data is None:
             continue
         report = data["report"]
         _, pattern = county_archive_routes(state, election)
@@ -1213,6 +1270,9 @@ def verify_county_archive_originals(entries, directory):
         state, election = COUNTY_ARCHIVES[feed]
         if state == "MD":
             query = maryland_precinct_history.parse(body, checked_original(feed + "-county-control"), election)
+        elif state == "CA":
+            query = (california_legacy_report(body, pin(body), election) if election in CA_LEGACY_DATES
+                     else california_report(body, election))
         elif state == "NE" and election == nebraska_canvass.PAIRED_ELECTION:
             query = nebraska_canvass.parse_blue_book(checked_original(feed + "-blue-book"), body)
         else:
@@ -1344,8 +1404,12 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
             county_conflict = any(row["ballots_cast"] > row["registered"] for row in counties[:-1])
         elif state == "CA":
             california_controls(query, election)
-            if election in CA_SCAN_DATES and query != california_scan(report, election):
-                raise ValueError("California scan query differs from its reviewed transcription")
+            if election in CA_LEGACY_DATES:
+                if query.get("extraction_method") == "native_text_legacy_pdf":
+                    if query["secondary_denominator"] != california_legacy_header(query["native_header"], election):
+                        raise ValueError("California legacy turnout denominator differs")
+                elif election not in CA_SCAN_DATES or query != california_scan(report, election):
+                    raise ValueError("California scan query differs from its reviewed transcription")
             counties = [*query["counties"], query["total"]]
             county_conflict = False
         elif state == "VA":

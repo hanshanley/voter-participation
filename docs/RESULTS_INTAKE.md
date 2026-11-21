@@ -105,11 +105,16 @@ acceptance. The export keeps the published `Total Voters` or `Ballots Cast`
 measure, the separate eligible-to-register series, and any printed registration
 fraction disagreement. The 2022 and 2024 registration bases exclude registrations
 after the 15-day report. The 1990, 1992 and 1994 scans use checked transcriptions
-of exact PDF bytes. Changed scans retain the last accepted edition until reviewed.
+of exact PDF bytes. An updated PDF is admitted without transcription when its
+native text identifies the exact election and columns and reconciles every county
+to the printed statewide controls. Otherwise, the collector caches the hold for
+the same report bytes and parser policy and retains the last accepted edition.
 The 1992 population column is voting-age population, not eligible to register.
 The 1994 county report and later statewide series disagree on Total Voters;
 the archive preserves the county report figure and documents the discrepancy.
-The 1996 scan still needs transcription checks. The hourly collector and weekly
+The 1996 scan is monitored by the same batch but contributes no county rows until
+an edition passes. The original-report manifest pins all accepted California
+historical PDFs for `--county-report-dir` replay. The hourly collector and weekly
 sweep also check for the November 3, 2026 report on the official index. A matching
 general-election link and a reconciled report are required for a separate
 `release/participation-ca-2026-county-turnout-report.csv.gz` export. Rates are

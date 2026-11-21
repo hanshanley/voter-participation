@@ -1527,6 +1527,75 @@ def test_california_checked_scan_keeps_denominators_and_source_conflicts_separat
             history.california_scan({**report, "sha256": "0" * 64}, date)
 
 
+@pytest.mark.parametrize("year,day,secondary", [(1992, 3, "Voting Age Population"),
+                                               (1996, 5, "Eligible to Register")])
+def test_california_legacy_text_admits_revisions_without_ocr(tmp_path, monkeypatch, year, day, secondary):
+    from types import SimpleNamespace
+
+    import pypdf
+
+    from scripts import results_turnout_history as history
+
+    election = f"{year}-11-{day:02d}"
+    feed = f"CA-{year}-general-election-turnout-pdf"
+    url = history.california_report_url(election)
+    landing = f"<a href='{url}'>November {day}, {year} - General Election (PDF)</a>".encode()
+    parsed = []
+
+    def reader(buf):
+        body = buf.read()
+        parsed.append(body)
+        return SimpleNamespace(is_encrypted=False, pages=[SimpleNamespace(extract_text=lambda **_: body.decode())])
+
+    def report(count, total=None):
+        total = count if total is None else total
+        return f"""%PDF-1.6
+November {day}, {year}, General Election
+Voter Participation Statistics by County
+Number and Percent of Votes Cast
+County Number of Precincts {secondary} Registered to Vote Precinct Voters Absent Voters Total Voters
+Percent of Registered Percent of {"VAP" if year == 1992 else "Eligible"}
+Alameda 1 200 100 0 {count} {count} {count:.2f} {count/2:.2f}
+State Total 1 200 100 0 {total} {total} {total:.2f} {total/2:.2f}
+""".encode()
+
+    monkeypatch.setattr(pypdf, "PdfReader", reader)
+    monkeypatch.setattr(history, "CA_COUNTIES", ["Alameda"])
+    bodies = {history.CA_URL: landing, url: b"%PDF-1.6\n"}
+    monkeypatch.setattr(intake.Collector, "acquire", lambda _, target: (bodies[target], {"origin": "fixture"}))
+    collector = intake.Collector(tmp_path, {}, EMPTY_STOPS, NOW)
+
+    def run(old=None):
+        collector.prior = {feed: old} if old else {}
+        return history.collect_county_archive(collector, feed)
+
+    rejected = run()
+    assert rejected["error"] == "scan_reconciliation_failed" and rejected["data"] is None
+    assert run(rejected)["rejected_scan"] == rejected["rejected_scan"]
+    assert len(parsed) == 1
+    bodies[url] = report(70)
+    first = run(rejected)
+    assert first["status"] == "reported" and "rejected_scan" not in first
+    assert run(first)["data"] == first["data"] and len(parsed) == 2
+    rows = history.county_archive_rows({feed: first})
+    assert [row["reported_total_voters"] for row in rows] == [70, 70]
+    assert rows[-1]["reported_voting_age_population"] == (200 if year == 1992 else None)
+    assert rows[-1]["reported_eligible_to_register"] == (None if year == 1992 else 200)
+
+    original = history.county_archive_originals({feed: first})[feed]
+    (tmp_path / original["filename"]).write_bytes(bodies[url])
+    assert history.verify_county_archive_originals({feed: first}, tmp_path) == 1
+    for bad in (report(72, 71), report(70).replace(b"Absent Voters", b"Registered Voters"),
+                report(70).replace(f"November {day}".encode(), b"November 30")):
+        bodies[url] = bad
+        failed = run(first)
+        assert failed["status"] == "retained_after_failure"
+        assert failed["data"] == first["data"]
+    bodies[url] = report(69)
+    revised = run(failed)
+    assert history.county_archive_rows({feed: revised})[-1]["reported_total_voters"] == 69
+
+
 @pytest.mark.parametrize("current", [False, True])
 def test_california_county_archive_uses_native_measure_and_rejects_bad_revision(tmp_path, monkeypatch, current):
     from types import SimpleNamespace
