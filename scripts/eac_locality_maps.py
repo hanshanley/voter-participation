@@ -23,6 +23,12 @@ STATES = {
     "NH": ("New Hampshire", "33"), "VT": ("Vermont", "50"),
 }
 REFERENCES = {
+    ("ME", 2008): "8ab52b9be6c2ff561e1cbdb181a58fa0fd2ca689a1e5841adcecc74e168ec84a",
+    ("MA", 2010): "8b8fe344b6b402cd7bec3102419228bea0ca7c3644dab365dc683a1917b4228b",
+    ("ME", 2010): "594a6ddfcaf102479ba8847ee67510f14251755bf570a4546e8dc64bf3ba6ebf",
+    ("VT", 2010): "82307b3eb0cc9f165ed921558428ab4fa563f6a3e9598689aeca0a1e37b90dc1",
+    ("ME", 2012): "e483faa48374d797b37161d2f0acd8b717e0939b809c6cea5004da443efb515a",
+    ("VT", 2012): "abb844b2a58efbfc3e5df7d22bb067d955d7cc97b22156d23287446fa69d372f",
     ("MA", 2018): "ea29c74bdfc053f5a7f33be05367ab7090ca67b9bb8fdbfad2351855d442e618",
     ("ME", 2018): "6f45ea5425d1c2a96fbd0cfe234689d82b988b583255b0d449745e21d4b6d648",
     ("NH", 2018): "b201e0f3820c4dab71285f51344b35a13a698827e1bdb96f8e21f9b556e748a8",
@@ -54,7 +60,9 @@ def county_subdivisions(body, state, year):
             result = {}
             for record in layer.iterShapeRecords():
                 fields = record.record.as_dict()
-                key = fields["GEOID"]
+                if year == 2010:
+                    fields = {k.removesuffix("10"): value for k, value in fields.items()}
+                key = fields["COSBIDFP" if year == 2008 else "GEOID"]
                 if key != fields["STATEFP"] + fields["COUNTYFP"] + fields["COUSUBFP"] \
                         or not re.fullmatch(fips + r"\d{8}", key) or key in result:
                     raise ValueError("Incompatible Census subdivision identity")
@@ -146,12 +154,12 @@ def draw(state, matched, shapes, rate, *, year=2024):
     return "\n".join(lines) + "\n"
 
 
-def build(inputs, output, *, historical=False):
+def build(inputs, output, *, years=(2024,)):
     csv_body = gzip.decompress((inputs / "participation-eac-locality-history.csv.gz").read_bytes()).decode()
     rows = list(csv.DictReader(StringIO(csv_body)))
     output.mkdir(parents=True, exist_ok=True)
     for state, year in REFERENCES:
-        if not historical and year != 2024:
+        if year not in years:
             continue
         prefix = f"{state}-{year}"
         native = [row for row in rows if row["state_code"] == state and row["year"] == str(year)]
@@ -175,6 +183,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--inputs", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--historical", action="store_true", help="Build all 13 reviewed editions")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--historical", action="store_true", help="Build the 2018–2024 map batch")
+    group.add_argument("--legacy", action="store_true", help="Build the 2008–2012 map batch")
     args = parser.parse_args()
-    build(args.inputs, args.output, historical=args.historical)
+    years = (2008, 2010, 2012) if args.legacy else (2018, 2020, 2022, 2024) if args.historical else (2024,)
+    build(args.inputs, args.output, years=years)
