@@ -286,6 +286,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "MN-native-local", "MN-statewide-reporting",
         "MN-2006-general-precinct-turnout-workbook",
         "US-2026-CPS-turnout-release-index", "US-2026-EAVS-turnout-release-index",
+        "CT-2026-general-statement-of-vote-index",
         "WA-general-election-age-sex-workbook",
         "OR-general-election-turnout-history", "OR-general-election-returned-ballot-controls",
         "SC-general-election-participation-history",

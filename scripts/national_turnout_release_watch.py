@@ -5,14 +5,17 @@ from html.parser import HTMLParser
 import re
 from urllib.parse import unquote, urljoin, urlsplit
 
+from scripts import connecticut_turnout_history
 from scripts.participation_intake.contract import IntakeError
 
 
 CENSUS = "US-2026-CPS-turnout-release-index"
 EAC = "US-2026-EAVS-turnout-release-index"
+CT = "CT-2026-general-statement-of-vote-index"
 INDEXES = {
     CENSUS: "https://www.census.gov/topics/public-sector/voting/data/tables.html",
     EAC: "https://www.eac.gov/research-and-data/studies-and-reports",
+    CT: connecticut_turnout_history.STATEMENT_INDEX,
 }
 
 
@@ -69,7 +72,24 @@ def discover(body, feed, *, year=2026):
                     discovered.add((target, "detailed_table_index"))
         if not (year in known or year - 2 in known):
             raise IntakeError("release_index_schema", "Expected Census detailed-table series not found")
-    else:
+    elif feed == CT:
+        prior_link = False
+        path_pattern = r"/-/media/sots/electionservices/statementofvote_pdfs/[^/]+\.pdf"
+        for tag, attrs, text in labels:
+            if tag != "a":
+                continue
+            target = urljoin(base, attrs.get("href") or "")
+            if connecticut_turnout_history.valid_link(target, year - 2) and text == str(year - 2):
+                prior_link = True
+            url = urlsplit(target)
+            if (text == str(year) and url.scheme == "https" and url.netloc == "portal.ct.gov"
+                    and not url.fragment and re.fullmatch(path_pattern, url.path.lower())
+                    and str(year) in url.path.rsplit("/", 1)[-1]
+                    and (not url.query or re.fullmatch(r"rev=[a-f0-9]{32}&hash=[A-Fa-f0-9]{32}", url.query))):
+                discovered.add((target, "statement_of_vote"))
+        if not prior_link or len(discovered) > 1:
+            raise IntakeError("release_index_schema", "Expected Connecticut general-election index or unique new link")
+    elif feed == EAC:
         sections = [(i, text) for i, (tag, attrs, text) in enumerate(labels)
                     if tag == "button" and attrs.get("aria-controls") and re.fullmatch(r"\d{4}", text)]
         keys = [i for i, (_, name) in enumerate(sections) if name == str(year)]
@@ -92,7 +112,8 @@ def discover(body, feed, *, year=2026):
                 discovered.add((target, "administrative_dataset"))
             elif "codebook" in name and "policy" not in name and name.endswith((".pdf", ".docx", ".xlsx")):
                 discovered.add((target, "administrative_codebook"))
-    ready = any(kind in {"detailed_table_index", "administrative_dataset"} for _, kind in discovered)
+    ready = any(kind in {"detailed_table_index", "administrative_dataset", "statement_of_vote"}
+                for _, kind in discovered)
     if feed == EAC:
         ready = ready and any(kind == "administrative_codebook" for _, kind in discovered)
     return {
@@ -121,7 +142,7 @@ def collect(collector, feed, *, reuse_checked_week=False):
             raise IntakeError("release_index_regressed", "Previously listed release links are no longer available")
         return data
 
-    entry = collector.capture(feed, INDEXES[feed], parse,
+    entry = collector.capture(feed, INDEXES[feed], parse, shared_acquisition=feed == CT,
                               equivalent=lambda previous, latest: previous == latest)
     if not collector.offline:
         entry["archive_check_week_utc"] = week

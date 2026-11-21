@@ -957,6 +957,21 @@ def test_virginia_native_locality_counts_do_not_promote_incompatible_statewide_f
         history.virginia_native_locality_query(parent, rows[:-1])
 
 
+def test_connecticut_release_watch_requires_official_index_and_unique_year_link():
+    from scripts import national_turnout_release_watch as watch
+
+    path = "/-/media/sots/electionservices/statementofvote_pdfs/"
+    prior = f'<a href="{path}2024_statement_of_vote.pdf"><strong>2024</strong></a>'.encode()
+    candidate = f'<a href="{path}2026_statement_of_vote.pdf">2026</a>'.encode()
+    foreign = f'<a href="https://example.test{path}2026_statement_of_vote.pdf">2026</a>'.encode()
+    assert watch.discover(prior + foreign, watch.CT)["complete_native_query"]["release_status"] == "not_yet_linked"
+    result = watch.discover(prior + candidate, watch.CT)
+    assert result["participation_observation_qualified"] is False
+    assert result["complete_native_query"]["release_status"] == "candidate_links_require_admission"
+    with pytest.raises(IntakeError, match="unique"):
+        watch.discover(prior + candidate + candidate.replace(b"statement_of_vote", b"sov"), watch.CT)
+
+
 def test_national_release_discovery_distinguishes_links_from_participation(tmp_path, monkeypatch):
     from scripts import national_turnout_release_watch as watch
 
