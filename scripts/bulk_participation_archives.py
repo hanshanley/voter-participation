@@ -39,6 +39,7 @@ def families():
          south_carolina_voter_statistics.exports),
         (routes(al, al.URLS), True, (al.CSV, al.CONTROL_CSV, al.WORKBOOK_AUDIT_CSV), al.export_tables),
         ({ak.FEED: ak.collect}, True, (ak.CSV,), ak.exports),
+        ({ak.MIDTERM_FEED: ak.collect_midterm}, True, (ak.MIDTERM_CSV,), ak.midterm_exports),
         ({ak.CURRENT_FEED: ak.collect_current}, False, (ak.CURRENT_CSV,), ak.current_exports),
         (routes(cards, cards.ROUTES), True, (cards.CSV,), cards.exports),
         (routes(age, age.YEARS), True, (age.CSV,), age.exports),
@@ -132,6 +133,7 @@ def original_reports(entries):
     yield from idaho_turnout_history.original_reports(entries)
     yield from idaho_absentee_age.original_reports(entries)
     yield from massachusetts_ballot_canvass.original_reports(entries)
+    yield from alaska_precinct_history.midterm_originals(entries)
     if (entry := entries.get(se.AL_HISTORY)) and entry.get("data") is not None:
         source = entry["source"]
         yield (se.AL_HISTORY, source, ".pdf", 2_000_000, source["url"] == se.AL_HISTORY_URL,

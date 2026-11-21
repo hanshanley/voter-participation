@@ -4,6 +4,7 @@ import io
 import json
 import re
 from decimal import Decimal, ROUND_HALF_UP
+from functools import partial
 
 from scripts.participation_intake.contract import pin
 from scripts import results_alaska_turnout as current
@@ -14,6 +15,11 @@ ROOT = "https://www.elections.alaska.gov/results/24GENR/"
 URL = ROOT + "ENRbyPrecinct.csv"
 REPORT = ROOT + "ElectionSummaryReport.pdf"
 CSV = "participation-ak-2024-precinct-ballot-archive.csv"
+MIDTERM_FEED = "AK-2022-general-precinct-ballot-archive"
+MIDTERM_ROOT = "https://elections.alaska.gov/results/22GENR/"
+MIDTERM_REPORT = MIDTERM_ROOT + "ElectionSummaryReportRPT.pdf"
+MIDTERM_CSV = "participation-ak-2022-precinct-ballot-archive.csv"
+MIDTERM_DISTRICTS = (*range(1, 41), 99)
 CURRENT_FEED = "AK-2026-general-precinct-ballot-archive"
 CURRENT_JSON = current.ROOT + "precincts.js"
 CURRENT_URL = current.ROOT + "GA_ENR_Precinct_State_of_Alaska.csv"
@@ -32,6 +38,172 @@ SOURCE_HEADER = re.compile(
     r"Voters Cast: ([\d,]+) of ([\d,]+) \( (\d+\.\d\d)% \) "
     r"State of Alaska 2024 GENERAL ELECTION Election Summary Report November 5 , 2024 OFFICIAL RESULTS$"
 )
+MIDTERM_IDENTITY = "State of Alaska 2022 GENERAL ELECTION"
+MIDTERM_TABLE = "Precinct Registered Voters Cards Cast Voters Cast % Turnout "
+MIDTERM_NUM = r"(?:[0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)"
+MIDTERM_VALUES = rf"({MIDTERM_NUM}) ({MIDTERM_NUM}) ({MIDTERM_NUM}) (\d+\.\d\d%|N/A)"
+MIDTERM_TOTAL = "State of Alaska - Total "
+
+
+def midterm_document(body):
+    from pypdf import PdfReader
+
+    if not 0 < len(body) <= 4_000_000 or not body.startswith(b"%PDF-"):
+        raise ValueError("Alaska midterm source is not a bounded PDF")
+    reader = PdfReader(io.BytesIO(body), strict=True)
+    if reader.is_encrypted or not 1 <= len(reader.pages) <= 100:
+        raise ValueError("Alaska midterm source page inventory changed")
+    return reader.pages
+
+
+def midterm_summary(body):
+    pages = midterm_document(body)
+    text = " ".join(pages[0].extract_text().split())
+    control = re.search(
+        rf"Precincts Reported: ({MIDTERM_NUM}) of ({MIDTERM_NUM}) \( 100\.00% \) "
+        rf"Registered Voters: ({MIDTERM_NUM}) of ({MIDTERM_NUM}) \( (\d+\.\d\d%) \) "
+        rf"Ballots Cast: ({MIDTERM_NUM}) {MIDTERM_IDENTITY} Election Summary Report "
+        rf"November 8 , 2022 OFFICIAL RESULTS (\d\d/\d\d/2022 \d{{1,2}}:\d\d:\d\d [AP]M) Page: 1 of {len(pages)}$", text)
+    if not control:
+        raise ValueError("Alaska official midterm statewide ballot control changed")
+    reported, total, voters, registered, printed, ballots, stamp = control.groups()
+    if reported != total or voters != ballots:
+        raise ValueError("Alaska official midterm statewide controls disagree")
+    values = midterm_values((registered, ballots, voters, printed))
+    return {"precincts_reported": int(total.replace(",", "")), "registered": values[0],
+            "ballots": values[1], "edition": stamp, "registered_turnout": printed}
+
+
+def midterm_values(fields):
+    register, cards, voters = (int(value.replace(",", "")) for value in fields[:3])
+    rate = ("N/A" if not register else
+            f'{(Decimal(voters * 100) / register).quantize(Decimal(".01"), rounding=ROUND_HALF_UP):.2f}%')
+    if min(register, cards, voters) < 0 or cards != voters or rate != fields[3] or (register and voters > register):
+        raise ValueError("Alaska midterm ballot fields do not reconcile")
+    return [register, cards, voters, fields[3]]
+
+
+def midterm_district(body, district):
+    pages = midterm_document(body)
+    text = " ".join(pages[0].extract_text().split())
+    footer = re.search(
+        rf" {MIDTERM_IDENTITY} Statement of Votes Cast November 8 , 2022 OFFICIAL RESULTS "
+        rf"(\d\d/\d\d/2022 \d{{1,2}}:\d\d:\d\d [AP]M) Page: 1 of {len(pages)}$", text)
+    header = MIDTERM_TABLE + "State State of Alaska "
+    if not text.startswith(header) or not footer:
+        raise ValueError("Alaska midterm district report has the wrong election or reporting stage")
+    table = text[len(header):footer.start()]
+    for number in range(2, min(len(pages), 5) + 1):
+        if MIDTERM_TOTAL in table:
+            break
+        text = " ".join(pages[number - 1].extract_text().split())
+        end = f" {footer[1]} Page: {number} of {len(pages)}"
+        if not text.startswith(MIDTERM_TABLE) or not text.endswith(end):
+            raise ValueError("Alaska midterm ballot table continuation differs")
+        table += " " + text[len(MIDTERM_TABLE):-len(end)]
+    controls = re.search(rf" {MIDTERM_TOTAL}{MIDTERM_VALUES} State - Total {MIDTERM_VALUES}$", table)
+    if not controls or controls.groups()[:4] != controls.groups()[4:]:
+        raise ValueError("Alaska midterm district totals disagree")
+    remaining = table[:controls.start()]
+    unit = re.compile(rf"((?:{district:02d}-\d{{3}} .+?|District {district} - (?:Absentee|Early Voting|Question)|"
+                      rf"HD99 Fed Overseas Absentee)) {MIDTERM_VALUES}(?: |$)")
+    rows = []
+    while remaining:
+        match = unit.match(remaining)
+        if not match:
+            raise ValueError("Unknown or incomplete Alaska midterm reporting row")
+        rows.append([match[1], *midterm_values(match.groups()[1:])])
+        remaining = remaining[match.end():]
+    return {"rows": rows, "total": midterm_values(controls.groups()[:4]), "edition": footer[1]}
+
+
+def reconcile_midterm(districts, control):
+    if set(districts) != {str(n) for n in MIDTERM_DISTRICTS}:
+        raise ValueError("Missing Alaska midterm district report")
+    units, codes, registered, ballots = set(), set(), 0, 0
+    for number, district in districts.items():
+        rows = district["rows"]
+        row_register, row_ballots, central = 0, 0, set()
+        for label, register, cards, voters, rate in rows:
+            if label in units or midterm_values((str(register), str(cards), str(voters), rate)) != [register, cards, voters, rate]:
+                raise ValueError("Duplicate or incompatible Alaska midterm row")
+            units.add(label)
+            row_register += register
+            row_ballots += cards
+            if (match := PRECINCT.fullmatch(label)) and match[1][:2] == f"{int(number):02d}" and number != "99":
+                if not register or match[1] in codes:
+                    raise ValueError("Missing registration or repeated Alaska midterm precinct ID")
+                codes.add(match[1])
+            elif (match := CENTRAL.fullmatch(label)) and number == match[1] and not register:
+                central.add(match[2])
+            elif not (number == "99" and label == OVERSEAS and register):
+                raise ValueError("Unrecognized Alaska midterm geography or mode")
+        if (number == "99" and len(rows) != 1
+                or number != "99" and central != set(MODE_NAMES)
+                or district["total"][:3] != [row_register, row_ballots, row_ballots]):
+            raise ValueError("Alaska midterm rows do not reconcile to the district control")
+        registered += row_register
+        ballots += row_ballots
+    if (len(codes) + 1, registered, ballots) != (control["precincts_reported"], control["registered"], control["ballots"]):
+        raise ValueError("Alaska midterm district reports do not match the official statewide control")
+
+
+def collect_midterm(collector, *, reuse_checked_week=False):
+    def parse(body, _):
+        control = midterm_summary(body)
+        districts = {}
+        for district in MIDTERM_DISTRICTS:
+            url = MIDTERM_ROOT + f"HD{district}.pdf"
+            original, _ = collector.acquire(url)
+            districts[str(district)] = {**midterm_district(original, district),
+                                        "source": {"url": url, **pin(original)}}
+        reconcile_midterm(districts, control)
+        return {"control": control, "districts": districts, "participation_observation_qualified": False}
+    return collect_report(collector, MIDTERM_FEED, MIDTERM_REPORT, parse, reuse_checked_week=reuse_checked_week)
+
+
+def midterm_exports(entries):
+    entry = entries.get(MIDTERM_FEED, {})
+    if not entry.get("data"):
+        return
+    data = entry["data"]
+    if entry["status"] not in ("reported", "retained_after_failure") or entry["source"]["url"] != MIDTERM_REPORT:
+        raise ValueError("Unreviewed Alaska midterm source binding")
+    reconcile_midterm(data["districts"], data["control"])
+    for district, report in sorted(data["districts"].items(), key=lambda item: int(item[0])):
+        source = report["source"]
+        if source["url"] != MIDTERM_ROOT + f"HD{district}.pdf" or not re.fullmatch(r"[a-f0-9]{64}", source["sha256"]):
+            raise ValueError("Unreviewed Alaska midterm district binding")
+        for label, register, cards, voters, rate in report["rows"]:
+            match = PRECINCT.fullmatch(label)
+            yield {"state_code": "AK", "election_date": "2022-11-08", "district": district,
+                   "source_unit_id": match[1] if match else "", "reporting_unit": label,
+                   "unit_scope": "precinct_election_day_only" if match else "central_unallocated_ballots",
+                   "reported_registration_cell": register, "reported_ballots": cards,
+                   "reported_voters_cast": voters, "printed_source_turnout": rate,
+                   "all_mode_precinct_rate_qualified": False, "precinct_geometry_verified": False,
+                   "official_state_ballot_control": data["control"]["ballots"],
+                   "official_state_registration_control": data["control"]["registered"],
+                   "source_status": entry["status"], "source_url": source["url"], "source_sha256": source["sha256"],
+                   "archive_status": entry.get("archive_status"),
+                   "latest_acquisition_status": entry.get("latest_acquisition_status"),
+                   "official_control_url": MIDTERM_REPORT, "official_control_sha256": entry["source"]["sha256"],
+                   "official_district_edition_local": report["edition"]}
+
+
+def midterm_originals(entries):
+    entry = entries.get(MIDTERM_FEED, {})
+    if not entry.get("data"):
+        return
+    data, source = entry["data"], entry["source"]
+    yield (MIDTERM_FEED + "-statewide", source, ".pdf", 4_000_000,
+           source["url"] == MIDTERM_REPORT, midterm_summary, data["control"])
+    for district, report in data["districts"].items():
+        source = report["source"]
+        yield (MIDTERM_FEED + "-" + district, source, ".pdf", 4_000_000,
+               source["url"] == MIDTERM_ROOT + f"HD{district}.pdf",
+               partial(midterm_district, district=int(district)),
+               {key: value for key, value in report.items() if key != "source"})
 
 
 def parse_units(body, offices_for_election=OFFICES):

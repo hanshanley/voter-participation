@@ -3109,6 +3109,14 @@ sets sum to 340,981 ballots. Four rows labeled Early Voting also contain
 Election Day ballots; the native components remain separate. No all-mode
 precinct rate, boundary equivalence, or allocation of central ballots is inferred.
 
+For the 2022 midterm, the weekly collector reads the ballot table from the
+40 official district reports and the federal overseas report. It checks page
+continuations and both district totals, then reconciles 401 Election Day
+precincts and 121 central or overseas units against the statewide summary.
+An unavailable source leaves the reviewed archive in place. The archive's
+complete table includes 267,047 ballots and 601,795 registrations; the precinct
+rows do not represent all voting modes or qualify as mapped boundaries.
+
 ### Alabama age participation and South Carolina statewide history
 
 The weekly bulk workflow collects the 2018 Alabama age workbook and 2020/2024

@@ -355,6 +355,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "AL-2026-general-precinct-ballot-archive",
         "AL-2026-general-county-ballot-control",
         "AK-2024-general-precinct-ballot-archive",
+        "AK-2022-general-precinct-ballot-archive",
         "AK-2026-general-precinct-ballot-archive",
         "AK-2014-general-cards-cast-archive", "AK-2016-general-cards-cast-archive",
         "AK-2018-general-cards-cast-archive",
