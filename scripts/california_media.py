@@ -110,9 +110,11 @@ def parse(kind, body, *, turnout_only=False):
     if kind != "V":
         raise ValueError("Unknown California media file")
     try:
-        (start, _, a), (vote_start, end, v) = frames(body, "AV")
-        if start < ELECTION or vote_start != start:
-            raise ValueError("Incompatible California turnout and return transmission editions")
+        (start, turnout_end, a), (vote_start, end, v) = frames(body, "AV")
+        if start < ELECTION:
+            raise ValueError("California media transmission predates the election")
+        if turnout_only and (vote_start, end) != (start, turnout_end):
+            return {"edition": start, "end": turnout_end, "turnout": a, "house": []}
     except ValueError:
         if not turnout_only:
             raise
@@ -120,8 +122,8 @@ def parse(kind, body, *, turnout_only=False):
         (start, end, a), = frames(body, "A", allow_trailing=True)
         if start < ELECTION:
             raise ValueError("California turnout transmission predates the election")
-        v = []
-    return {"edition": start, "end": end, "turnout": a,
+        vote_start, v = start, []
+    return {"edition": vote_start, "end": end, "turnout": a,
             "house": [row for row in v if HOUSE_CODE.fullmatch(row[0])]}
 
 

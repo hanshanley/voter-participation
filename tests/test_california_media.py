@@ -89,3 +89,16 @@ def test_house_returns_do_not_impute_missing_candidates_or_unlock_model():
     assert [r["votes"] for r in rows if r["county_code"] == 1 and r["candidate_id"] == "13"] == [None]
     with pytest.raises(ValueError, match="Unknown or duplicate"):
         list(ca.house_rows({"house": [data["house"][0] + ["14", "1", "100", "10"]]}, offices, candidates))
+
+
+def test_complete_transmissions_use_separate_clocks_without_turnout_reclassification():
+    a, v = vote_file(50).split(b"[B|CAS|1|", 2)[1:]
+    skewed = b"[B|CAS|1|" + a + b"[B|CAS|1|" + v.replace(b"|0001000]", b"|0001010]")
+    house = ca.parse("V", skewed)
+    turnout = ca.parse("V", skewed, turnout_only=True)
+    assert house["edition"] == house["end"] == "2026-11-21T00:01:01"
+    assert turnout["edition"] == turnout["end"] == "2026-11-21T00:01:00"
+    assert house["house"] and not turnout["house"]
+    assert ca.turnout_rows(turnout)[-1]["reported_ballots_cast"] == 2900
+    with pytest.raises(ValueError, match="Missing California transmission closing"):
+        ca.parse("V", skewed.rsplit(b"[E|CAS|", 1)[0])
