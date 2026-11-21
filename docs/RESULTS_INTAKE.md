@@ -265,6 +265,12 @@ exported without a county or precinct assignment and included only in the
 state total, not in county sums. The files distinguish submitted from
 accepted absentee counts and never use 7 a.m. registration as a turnout
 denominator. Composite precinct IDs do not qualify a boundary join.
+The same archive also supports 1994, 1996, 2002 and 2004. The early parser
+requires exact county and precinct identities and matching published voter
+and election-day registration controls. It preserves source-reported early
+absentee counts without promoting them to accepted-mail counts. The 1992,
+1998 and 2000 workbook sums disagree with the separate statewide controls
+and are not part of this reconciled series.
 
 West Virginia's 2008-2016 general-election county reports use the same
 county-archive sweep. Each PDF must match the declared election, all 55

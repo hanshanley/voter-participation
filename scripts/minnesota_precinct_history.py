@@ -9,8 +9,13 @@ from scripts.participation_intake.contract import IntakeError, count
 
 CONTROL_URL = ("https://www.sos.mn.gov/election-administration-campaigns/"
                "data-maps/historical-voter-turnout-statistics/")
+LEGACY_CONTROL = "https://www.sos.mn.gov/media/gevnwetp/minnesota-election-statistics-1950-to-2024.pdf"
 # Media path, precinct inventory, statewide voters and same-day registrations.
 EDITIONS = {
+    "1994-11-08": ("sos.mn.gov/media/1977", 4033, 1794618, 179360),
+    "1996-11-05": ("sos.mn.gov/media/1976", 4047, 2211161, 337297),
+    "2002-11-05": ("sos.mn.gov/media/1548", 4106, 2282860, 342978),
+    "2004-11-02": ("sos.mn.gov/media/1688", 4108, 2842912, 581904),
     "2006-11-07": ("sos.state.mn.us/media/1694", 4123, 2217818, 292168),
     "2008-11-04": ("sos.mn.gov/media/1695", 4130, 2921498, 542257),
     "2010-11-02": ("sos.mn.gov/media/1696", 4136, 2123369, 227857),
@@ -26,13 +31,28 @@ FIELDS = ("VTDID", "PCTNAME", "PCTCODE", "MCDNAME", "COUNTYNAME", "COUNTYCODE",
           "REG7AM", "EDR", "SIGNATURES", "AB_MB", "FEDONLYAB", "TOTVOTING")
 RATE_HOLD = "pre_registration_excludes_same_day_registrants"
 CSV = "participation-mn-historical-precinct-turnout.csv"
-MAX_BYTES = 4_000_000
+MAX_BYTES = 5_000_000
+EARLY_EDITIONS = {"1994-11-08", "1996-11-05", "2002-11-05", "2004-11-02"}
 LEGACY_NAMES = {
+    "1994-11-08": "1994_results.xls",
+    "1996-11-05": "1996_results.xls",
+    "2002-11-05": "2002_general_results.xls",
+    "2004-11-02": "2004_general_results.xls",
     "2006-11-07": "2006_general_results.xls",
     "2008-11-04": "2008_general_results.xls",
     "2010-11-02": "2010_general_results_final.xls",
 }
 CENTRAL_2008 = {"0005": "STATE ABSENTEE COUNT JAN 3RD", "0010": "STATE COURT CONTEST APR 7TH"}
+EARLY_COUNTIES = (
+    "AITKIN|ANOKA|BECKER|BELTRAMI|BENTON|BIG STONE|BLUE EARTH|BROWN|CARLTON|CARVER|CASS|CHIPPEWA|"
+    "CHISAGO|CLAY|CLEARWATER|COOK|COTTONWOOD|CROW WING|DAKOTA|DODGE|DOUGLAS|FARIBAULT|FILLMORE|"
+    "FREEBORN|GOODHUE|GRANT|HENNEPIN|HOUSTON|HUBBARD|ISANTI|ITASCA|JACKSON|KANABEC|KANDIYOHI|"
+    "KITTSON|KOOCHICHING|LAC QUI PARLE|LAKE|LAKE OF THE WOODS|LE SUEUR|LINCOLN|LYON|MCLEOD|"
+    "MAHNOMEN|MARSHALL|MARTIN|MEEKER|MILLE LACS|MORRISON|MOWER|MURRAY|NICOLLET|NOBLES|NORMAN|"
+    "OLMSTED|OTTER TAIL|PENNINGTON|PINE|PIPESTONE|POLK|POPE|RAMSEY|RED LAKE|REDWOOD|RENVILLE|RICE|"
+    "ROCK|ROSEAU|ST. LOUIS|SCOTT|SHERBURNE|SIBLEY|STEARNS|STEELE|STEVENS|SWIFT|TODD|TRAVERSE|"
+    "WABASHA|WADENA|WASECA|WASHINGTON|WATONWAN|WILKIN|WINONA|WRIGHT|YELLOW MEDICINE"
+).split("|")
 
 
 def route(election):
@@ -44,6 +64,18 @@ def route(election):
 
 
 def aliases(election):
+    if election in EARLY_EDITIONS:
+        year = election[:4]
+        if year in ("1994", "1996"):
+            labels = ("FIPS_VTD", "Precinct Name", "PRCT", "", "", "CC" if year == "1994" else "FIPS",
+                      "7am", "EDR", "Signatures", "AB-Reg", "AB-Fed", "Ballots", "AB-Pres")
+        elif year == "2002":
+            labels = ("FIPS", "PRECINCT NAME", "PRCT", "MCD NAME", "", "CC",
+                      "7am", "EDR", "Signatures", "AB-reg", "AB-fed", "Ballots")
+        else:
+            labels = ("", "PrecinctName", "PRCT", "McdName", "", "CC",
+                      "7AM", "EDR", "Sigs", "RegMilAb", "FedAb", "TotVoters", "PresAb")
+        return dict(zip(FIELDS + (("PRESONLYAB",) if len(labels) > len(FIELDS) else ()), labels, strict=True))
     if election == "2006-11-07":
         return dict(zip(FIELDS + ("PRESONLYAB",), (
             "", "Precinct\nName", "PRCT", "MCDName", "", "County_ID", "Registered\nat 7AM",
@@ -70,6 +102,10 @@ def query(fields, precincts, county_roster, printed_total, election, *, statewid
         raise IntakeError("mn_inventory", "Unexpected Minnesota workbook fields or precinct inventory")
     if set(county_roster) != {str(i) for i in range(1, 88)}:
         raise IntakeError("mn_inventory", "Minnesota county roster is incomplete")
+    if election in EARLY_EDITIONS and any(
+        county_roster[str(i)] != name for i, name in enumerate(EARLY_COUNTIES, 1)
+    ):
+        raise IntakeError("mn_inventory", "Early Minnesota county roster differs")
     if (any(not isinstance(n, str) or not n for n in county_roster.values())
             or len(set(county_roster.values())) != 87):
         raise IntakeError("mn_inventory", "Minnesota county names are not unique and complete")
@@ -110,7 +146,8 @@ def query(fields, precincts, county_roster, printed_total, election, *, statewid
                 sums[key] += row[key]
     elif statewide_unallocated is not None:
         raise IntakeError("mn_inventory", "No statewide unallocated row is expected for this workbook")
-    has_printed_total = election in LEGACY_NAMES or election[:4] in ("2012", "2016", "2018")
+    has_printed_total = (election in LEGACY_NAMES and election not in EARLY_EDITIONS
+                         or election[:4] in ("2012", "2016", "2018"))
     if (set(totals) != set(county_roster)
             or (sums["TOTVOTING"], sums["EDR"]) != (expected_voting, expected_edr)
             or printed_total != (sums if has_printed_total else None)):
@@ -123,13 +160,70 @@ def query(fields, precincts, county_roster, printed_total, election, *, statewid
 
     return {"fields": fields, "precincts": precincts, "county_roster": county_roster,
             **({"native_column_aliases": aliases(election)} if aliases(election) else {}),
-            "printed_total": printed_total, "election_date": election, "control_url": CONTROL_URL,
+            "printed_total": printed_total, "election_date": election,
+            "control_url": LEGACY_CONTROL if election[:4] in ("1994", "1996") else CONTROL_URL,
             "counties": [summary(county_roster[k].title(), *totals[k]) for k in sorted(totals, key=int)],
             "total": summary("TOTAL", sums["TOTVOTING"], sums["REG7AM"], sums["EDR"]),
             "native_numerator": "total_voters", "registration_basis": "Pre-registered at 7 a.m.",
             "extraction_method": "official_precinct_workbook",
             "report_note": "Total people voting. No comparable all-voter registration denominator.",
             **({"statewide_unallocated": statewide_unallocated} if statewide_unallocated else {})}
+
+
+def parse_early(book, election):
+    year = election[:4]
+    reference = {str(i): name for i, name in enumerate(EARLY_COUNTIES, 1)}
+    sheet = book.sheet_by_name(f"{year}_Vote_Stats" if int(year) < 2000 else "Results")
+    first = 3 if year == "2002" else 1
+    expected = EDITIONS[election][1]
+    if sheet.nrows != expected + first or not 1 <= sheet.ncols <= 160:
+        raise ValueError("Unexpected early Minnesota workbook dimensions")
+    names = aliases(election)
+    if first == 3:
+        descriptions = book.sheet_by_name("Fields")
+        report_roster = book.sheet_by_name("Counties")
+        label = "Number of ballots cast"
+        if (sheet.cell_value(0, 18) != "1 (County Statistics)"
+                or sheet.row_values(1)[18:24] != list(range(1, 7))
+                or descriptions.row_values(23)[:2] != ["Ballots", label]
+                or report_roster.nrows != 88
+                or any(report_roster.row_values(i) != [i, "", reference[str(i)], 27000 + 2 * i - 1]
+                       for i in range(1, 88))):
+            raise ValueError("Early Minnesota county roster or turnout definitions changed")
+    header = sheet.row_values(first - 1)
+    indices = {field: header.index(name) for field, name in names.items()
+               if name and header.count(name) == 1}
+    if set(indices) != {key for key, name in names.items() if name}:
+        raise ValueError("Early Minnesota workbook fields changed")
+
+    def integer(value):
+        if type(value) not in (int, float) or not 0 <= value <= 2**53 - 1 or int(value) != value:
+            raise ValueError("Invalid early Minnesota numeric count")
+        return int(value)
+
+    def code(value):
+        return int(value) if isinstance(value, str) and re.fullmatch(r"[0-9]+", value) else integer(value)
+
+    records = []
+    for i in range(first, sheet.nrows):
+        row = {field: sheet.cell_value(i, index) for field, index in indices.items()}
+        native = code(row["COUNTYCODE"])
+        if year == "1996":
+            if not 1 <= native <= 173 or native % 2 != 1:
+                raise ValueError("Invalid early Minnesota county FIPS")
+            native = (native + 1) // 2
+        county = str(native)
+        p = f"{code(row['PCTCODE']):04}"
+        vtd = f"27{2 * native - 1:03}{p}"
+        if "VTDID" in row and code(row["VTDID"]) != int(vtd if year == "2002" else vtd[2:]):
+            raise ValueError("Early Minnesota composite precinct code differs")
+        if county not in reference or not isinstance(row["PCTNAME"], str):
+            raise ValueError("Invalid early Minnesota precinct identity")
+        counts = {field: integer(row[field]) for field in list(names)[6:]}
+        records.append({"VTDID": vtd, "PCTNAME": row["PCTNAME"], "PCTCODE": p,
+                        "MCDNAME": row.get("MCDNAME", ""), "COUNTYNAME": reference[county],
+                        "COUNTYCODE": county, **counts})
+    return query(list(names), records, reference, None, election)
 
 
 def parse_2008_2010(book, election):
@@ -214,6 +308,8 @@ def parse_legacy(body, election):
             raise ValueError("Expected the legacy XLS container")
         book = xlrd.open_workbook(file_contents=body, on_demand=True)
         try:
+            if election in EARLY_EDITIONS:
+                return parse_early(book, election)
             if election != "2006-11-07":
                 return parse_2008_2010(book, election)
             results, reference, definitions = (book.sheet_by_name(name) for name in ("Results", "Counties", "Fields"))
@@ -268,7 +364,7 @@ def parse_legacy(body, election):
 def parse(body, election):
     from openpyxl import load_workbook
 
-    if not 0 < len(body) <= MAX_BYTES:
+    if not 0 < len(body) <= (MAX_BYTES if election == "2002-11-05" else 4_000_000):
         raise IntakeError("mn_workbook_size", "Minnesota workbook exceeds size bound")
     if election in LEGACY_NAMES:
         return parse_legacy(body, election)

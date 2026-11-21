@@ -1372,6 +1372,7 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                 for unit in query["precincts"]:
                     precinct = minnesota_precinct_history.precinct_key(unit, election)
                     legacy_absentee = query.get("native_column_aliases", {}).get("AB_MB")
+                    early = election in minnesota_precinct_history.EARLY_EDITIONS
                     rows.append({
                         "state_code": state, "election_date": election, "county": unit["COUNTYNAME"],
                         "county_geoid": precinct[:5], "precinct_id": precinct,
@@ -1386,8 +1387,12 @@ def county_archive_rows(entries, *, current_california=False, current_nebraska=F
                             "reported_submitted_federal_only_absentee": unit["FEDONLYAB"],
                             "precinct_id_basis": "composite_county_and_source_precinct_not_a_geometry_join"}
                            if legacy_absentee == "RegMilAB" and election != "2010-11-02" else {}),
-                        "reported_federal_only_absentee": None if legacy_absentee == "RegMilAB"
-                        and election != "2010-11-02" else unit["FEDONLYAB"],
+                        **({"reported_native_regular_absentee": unit["AB_MB"],
+                            "reported_native_federal_only_absentee": unit["FEDONLYAB"],
+                            "precinct_id_basis": "composite_county_and_source_precinct_not_a_geometry_join"}
+                           if early else {}),
+                        "reported_federal_only_absentee": None if early or (
+                            legacy_absentee == "RegMilAB" and election != "2010-11-02") else unit["FEDONLYAB"],
                         "reported_presidential_only_absentee": unit.get("PRESONLYAB"),
                         "registration_basis": query["registration_basis"],
                         "rate_hold_reason": minnesota_precinct_history.RATE_HOLD,
