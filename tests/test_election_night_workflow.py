@@ -313,6 +313,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "KS-2022-general-election-turnout-workbook",
         "KS-1996-2008-statewide-turnout-study",
         "HI-general-election-county-turnout-history",
+        "ND-statewide-general-turnout-history", "SD-statewide-general-turnout-history",
         "NJ-2020-general-election-turnout-pdf", "NJ-2022-general-election-turnout-pdf",
         "NJ-2023-general-election-turnout-pdf",
         "NJ-2024-general-election-turnout-pdf", "NJ-2025-general-election-turnout-pdf",

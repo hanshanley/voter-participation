@@ -4,7 +4,7 @@ import re
 
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history,
-    connecticut_turnout_history, hawaii_turnout_history, kansas_turnout_history,
+    connecticut_turnout_history, dakota_turnout_history, hawaii_turnout_history, kansas_turnout_history,
     national_turnout_release_watch, oregon_turnout_history,
     southeast_turnout, washington_participation,
 )
@@ -35,6 +35,8 @@ def families():
          (kansas_turnout_history.CSV,), kansas_turnout_history.exports),
         ({hawaii_turnout_history.FEED: hawaii_turnout_history.collect}, True,
          (hawaii_turnout_history.CSV,), hawaii_turnout_history.exports),
+        (routes(dakota_turnout_history, dakota_turnout_history.URLS), True,
+         (dakota_turnout_history.CSV,), dakota_turnout_history.exports),
     )
 
 
@@ -81,6 +83,12 @@ def original_reports(entries):
     if (entry := entries.get(hi.FEED)) and entry.get("data") is not None:
         report = entry["source"]
         yield hi.FEED, report, ".html", hi.MAX_BYTES, report["url"] == hi.URL, hi.parse, entry["data"]
+    dakota = dakota_turnout_history
+    for feed, url in dakota.URLS.items():
+        if (entry := entries.get(feed)) and entry.get("data") is not None:
+            report = entry["source"]
+            yield (feed, report, dakota.EXTENSIONS[feed], dakota.MAX_BYTES, report["url"] == url,
+                   partial(dakota.parse, feed=feed), entry["data"])
     for feed, year in age.YEARS.items():
         entry = entries.get(feed) or {}
         if entry.get("data") is not None:
