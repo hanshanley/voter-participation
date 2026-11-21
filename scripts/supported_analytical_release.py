@@ -606,6 +606,7 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     from scripts import cps_archived_state_tables as archived_cps
     from scripts import cps_published_state_tables as published_cps
     from scripts import nm_turnout_export, results_indiana_turnout, results_nc_vote_history, results_turnout_history
+    from scripts import results_native_rhode_island
 
     review = seed["supported_release_review"]
     require(review.get("contract") == REVIEW_CONTRACT, "unreviewed eligibility document")
@@ -658,6 +659,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     nm_turnout = nm_turnout_export.rows(snapshot.get("granular_sources", {}))
     if nm_turnout:
         raw_files[nm_turnout_export.CSV] = csv_bytes(nm_turnout)
+    ri_turnout = results_native_rhode_island.turnout_rows(snapshot.get("granular_sources", {}))
+    if ri_turnout:
+        raw_files[results_native_rhode_island.CSV] = csv_bytes(ri_turnout)
     indiana_history = results_indiana_turnout.rows(snapshot.get("granular_sources", {}))
     if indiana_history:
         raw_files["participation-indiana-general-turnout-history.csv"] = csv_bytes(indiana_history)

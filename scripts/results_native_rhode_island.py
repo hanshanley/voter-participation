@@ -31,6 +31,8 @@ STORED_VIEW_URL = (
 INITIAL_FULL_PIN = "28e757db89ca9ebeed192aa88bbc3fa3a5cd519740556c5d594517c7bfc6a526"
 IDENTITY_PIN = "2c5534e70df6580785e25cc9e3681d72b9e1f16d9d89658ae96df77917d623e2"
 EXPECTED_ROWS = 40
+CSV = "participation-ri-2026-native-turnout.csv"
+IDENTITY = "RI-registered-08f2d0e3e4254e2c"
 MEASURE = {
     "id": "previously-reviewed-participation-count",
     "kind": "participation_reported",
@@ -227,6 +229,46 @@ def validate_plan(plan):
 def _check_parent_ballots(parent_ballots, rows):
     if parent_ballots and parent_ballots != sum(row["ballots"] for row in rows):
         raise ValueError("Rhode Island reported parent ballots disagree with the complete locality sum")
+
+
+def turnout_rows(entries):
+    entry = entries.get(IDENTITY) or {}
+    if entry.get("data") is None:
+        return []
+    source, status = entry["source"], entry["status"]
+    query, = entry["data"]["complete_native_query"]
+    parent, localities = query["separate_source_parent"], query["source_locality_rows"]
+    if (source["url"] != API_URL or status not in {"reported", "retained_after_failure"}
+            or query["source_pin"] != {"sha256": source["sha256"], "bytes": source["bytes"]}
+            or parent["ballots_qualified_for_projection"] is not False
+            or type(parent["is_official_results"]) is not bool
+            or len(localities) != EXPECTED_ROWS
+            or len({_uuid(row["source_locality_id"]) for row in localities}) != EXPECTED_ROWS
+            or len({row["locality"] for row in localities}) != EXPECTED_ROWS
+            or sum(row["locality"] == "Federal" for row in localities) != 1):
+        raise ValueError("Incompatible Rhode Island turnout export evidence")
+    clock = _clock(parent["source_updated"])
+    if (parent["source_clock_timezone_literal"] != "UTC"
+            or any(row["source_clock_timezone_literal"] != "UTC" or _clock(row["source_updated"]) > clock
+                   or (_integer(row["ballots"]) > _integer(row["registered"]) and row["locality"] != "Federal")
+                   for row in localities)
+            or sum(row["registered"] for row in localities) != _integer(parent["registered"])):
+        raise ValueError("Incompatible Rhode Island turnout export controls")
+    _check_parent_ballots(_integer(parent["ballots"]), localities)
+    common = {"state_code": "RI", "election_date": "2026-11-03", "source_status": status,
+              "source_url": API_URL, "source_sha256": source["sha256"],
+              "is_official_results": parent["is_official_results"],
+              "native_count_field": "ballotsCast", "native_registration_field": "totalVoters",
+              "source_clock_timezone_literal": "UTC", "rate_qualified": False}
+    return [
+        {**common, "geography_level": "state", "locality": "Rhode Island",
+         "ballots": parent["ballots"], "registered": parent["registered"],
+         "source_updated": parent["source_updated"], "count_disposition": "native_parent_withheld"},
+        *({**common, **row,
+           "geography_level": "nongeographic" if row["locality"] == "Federal" else "municipality",
+           "count_disposition": "unallocated_federal" if row["locality"] == "Federal" else "native_locality_count"}
+          for row in sorted(localities, key=lambda row: row["locality"])),
+    ]
 
 
 def _prior_success(prior, templates):

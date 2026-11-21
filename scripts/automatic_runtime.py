@@ -70,7 +70,7 @@ CODE_PATHS = (
     "congressional_split_blocks.py", "house_district_map.py",
     "official_house_precedence.py", "native_official_house.py",
     "congressional_reference_identity.py",
-    "supported_analytical_release.py", "nm_turnout_export.py",
+    "supported_analytical_release.py", "nm_turnout_export.py", "results_native_rhode_island.py",
     "senate_legacy_bridge.py", "senate_complete_categories.py", "protected_official_house.py",
     "protected_official_wyoming.py", "statewide_ballot_totals.py", "calibrated_swing.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",

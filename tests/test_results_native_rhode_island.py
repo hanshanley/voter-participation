@@ -144,6 +144,29 @@ def test_complete_safe_facts_capture_project_all_slots_repeat_and_preserve_other
     assert repeated_changes == []
 
 
+def test_complete_native_export_preserves_withheld_parent_and_unallocated_federal(tmp_path):
+    baseline = full_baseline()
+    feeds, _ = collect(tmp_path, baseline)
+    entry = feeds[adapter.IDENTITY]
+    query = entry["data"]["complete_native_query"][0]
+    rows = adapter.turnout_rows(feeds)
+    assert len(rows) == 41
+    assert rows[0]["ballots"] == query["separate_source_parent"]["ballots"]
+    assert rows[0]["count_disposition"] == "native_parent_withheld"
+    assert all(not row["rate_qualified"] for row in rows)
+    municipal = [row for row in rows if row["geography_level"] == "municipality"]
+    assert len(municipal) == 39
+    assert sum(row["ballots"] for row in municipal) == query["reconciliation"]["municipal_ballots_literal_sum"]
+    federal, = (row for row in rows if row["geography_level"] == "nongeographic")
+    assert federal["count_disposition"] == "unallocated_federal"
+    assert federal["ballots"] == query["reconciliation"]["federal_ballots_unallocated"]
+    entry["status"] = "retained_after_failure"
+    assert all(row["source_status"] == "retained_after_failure" for row in adapter.turnout_rows(feeds))
+    query["source_locality_rows"].pop()
+    with pytest.raises(ValueError, match="turnout export evidence"):
+        adapter.turnout_rows(feeds)
+
+
 def test_revised_count_and_true_zero_preserve_literal_roles_and_separate_federal_scope(
         tmp_path):
     first_feeds, _ = collect(tmp_path, full_baseline(), name="first")
