@@ -475,6 +475,7 @@ def other_offices(review):
 
 
 def selected_local_observation_ids(snapshot, counts=None):
+    from scripts.alaska_cards_history import ROUTES as ALASKA_CARDS_SOURCES
     from scripts.alaska_precinct_history import FEED as ALASKA_PRECINCT_SOURCE
     from scripts import (
         philadelphia_divisions, results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
@@ -539,6 +540,7 @@ def selected_local_observation_ids(snapshot, counts=None):
                 or identity in oregon_turnout_history.URLS
                 or identity in southeast_turnout.URLS
                 or identity in alabama_precinct_history.URLS
+                or identity in ALASKA_CARDS_SOURCES
                 or identity == ALASKA_PRECINCT_SOURCE
                 or identity == washington_participation.FEED
                 or identity in results_turnout_history.COUNTY_ARCHIVES
@@ -666,7 +668,7 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     if indiana_history:
         raw_files["participation-indiana-general-turnout-history.csv"] = csv_bytes(indiana_history)
     from scripts import alabama_precinct_history, oregon_turnout_history, retained_bulk_turnout, southeast_turnout
-    from scripts import alaska_precinct_history, washington_participation
+    from scripts import alaska_cards_history, alaska_precinct_history, washington_participation
 
     historical_sources = retained_bulk_turnout.historical_entries(
         snapshot.get("granular_sources", {}), seed.get("retained_bulk_turnout"))
@@ -687,6 +689,9 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
     ak_rows = alaska_precinct_history.exports(historical_sources)
     if ak_rows:
         raw_files[alaska_precinct_history.CSV] = csv_bytes(ak_rows)
+    ak_cards = list(alaska_cards_history.exports(historical_sources))
+    if ak_cards:
+        raw_files[alaska_cards_history.CSV] = csv_bytes(ak_cards)
     county_archives = results_turnout_history.county_archive_rows(historical_sources)
     if county_archives:
         raw_files[results_turnout_history.COUNTY_ARCHIVE_CSV] = csv_bytes(county_archives)

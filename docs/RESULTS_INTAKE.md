@@ -2820,6 +2820,15 @@ reconciliation.
 
 ### Alaska 2024 precinct and central ballot reporting
 
+The separate legacy Alaska **cards cast** export uses one text-layer parser
+for the 2014, 2016, and 2018 general-election reports. It requires the complete
+physical and central unit inventory, exact TS/OS sums, and agreement with
+the election-dated official statewide HTML summary. The extra printed zero
+overseas line in 2016 and 2018 is explicitly identified. Cards cast are not
+unique voters or all-mode precinct turnout; central units are not assigned
+to precincts. Collection reuses unchanged source/control pairs and the
+export includes the numerical rows and both source pins for offline replay.
+
 The 2024 Alaska CSV repeats explicit ballot fields on candidate rows. The
 adapter checks that the two statewide federal contests have identical ballot
 fields per unit, retains one copy per reporting unit, and checks registration

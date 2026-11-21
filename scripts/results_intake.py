@@ -787,7 +787,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "philadelphia_divisions.py",
              "results_turnout_history.py", "national_turnout_release_watch.py", "washington_participation.py",
              "oregon_turnout_history.py", "retained_bulk_turnout.py", "southeast_turnout.py", "alabama_precinct_history.py",
-             "alaska_precinct_history.py",
+             "alaska_precinct_history.py", "alaska_cards_history.py",
              "wyoming_participation_statistics.py", "nebraska_canvass.py",
              "nebraska_county_reports.py",
              "colorado_voting_statistics.py", "maryland_precinct_history.py", "minnesota_precinct_history.py",
@@ -989,7 +989,7 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 
 def late_archive_sources():
-    from scripts import alaska_precinct_history
+    from scripts import alaska_cards_history, alaska_precinct_history
     from scripts import national_turnout_release_watch, nebraska_county_reports
     from scripts import alabama_precinct_history, oregon_turnout_history, southeast_turnout, washington_participation
     from scripts import (
@@ -1015,12 +1015,13 @@ def late_archive_sources():
         *southeast_turnout.URLS,
         *alabama_precinct_history.URLS,
         alaska_precinct_history.FEED,
+        *alaska_cards_history.ROUTES,
         *sorted(history.municipal_feeds()),
     )
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None, *, late_archives=False):
-    from scripts import alaska_precinct_history
+    from scripts import alaska_cards_history, alaska_precinct_history
     from scripts import national_turnout_release_watch, nebraska_county_reports
     from scripts import alabama_precinct_history, oregon_turnout_history, southeast_turnout, washington_participation
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
@@ -1069,6 +1070,8 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
     administrative.update({feed: partial(alabama_precinct_history.collect, feed=feed)
                            for feed in alabama_precinct_history.URLS})
     administrative[alaska_precinct_history.FEED] = alaska_precinct_history.collect
+    administrative.update({feed: partial(alaska_cards_history.collect, feed=feed)
+                           for feed in alaska_cards_history.ROUTES})
     administrative.update({feed: capture for feed, (_, capture)
                            in results_turnout_history.municipal_feeds().items()})
     registry_path, work = Path(registry_path), Path(work)
