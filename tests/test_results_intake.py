@@ -916,6 +916,24 @@ def test_virginia_locality_report_replays_and_keeps_curbside_out_of_the_sum(tmp_
     assert failure["status"] == "retained_after_failure" and failure["data"] == result["data"]
 
 
+def test_hawaii_historical_turnout_keeps_disputed_state_counts_separate():
+    from scripts import hawaii_turnout_history as hi
+
+    years = ["1959", *map(str, range(1960, 2025, 2))]
+    tables = {name: [[y, "1,000", "500", "50.0%"] for y in years] for name in hi.AREAS}
+    tables["Statewide"] = [[y, "4,000", "2,000", "50.0%"] for y in years]
+    tables["Statewide"][-1] = ["2024", "4,000", "2,002", "50.1%"]
+    table = list(hi.rows(tables, 2024))
+    assert len(table) == 170
+    state, *areas = table[-5:]
+    assert state["state_minus_county_turnout"] == 2 and state["reported_voter_turnout"] == 2002
+    assert state["qualified_turnout_percent"] is None
+    assert all(r["qualified_turnout_percent"] == "50.000000" for r in areas)
+    tables["County of Maui"].pop()
+    with pytest.raises(ValueError, match="area or year roster"):
+        list(hi.rows(tables, 2024))
+
+
 def test_kansas_study_preserves_disputed_advance_share_without_holding_turnout():
     from scripts import kansas_turnout_history as ks
 
