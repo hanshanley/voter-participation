@@ -86,8 +86,9 @@ def test_combined_senate_audit_withholds_changed_historical_stage_and_rejects_mi
         "transition_model_qualified": "False",
     }]
     midterm_placeholders = [{"state_code": state} for state in midterm.FRAMES]
-    def joined(audited):
-        return list(combine({"CO": current}, norc, historical, midterm_placeholders, {"CO": audited}, {}))[0]
+    def joined(audited, *, rolling=False):
+        return list(combine({"CO": current}, norc, historical, midterm_placeholders, {"CO": audited}, {},
+                            rolling=rolling))[0]
 
     row = joined(current)
     assert row["prior_survey_reported_major_choice"] == 14
@@ -96,6 +97,11 @@ def test_combined_senate_audit_withholds_changed_historical_stage_and_rejects_mi
     held = joined(race(stage="general_runoff"))
     assert held["prior_survey_status"] == "prior_scope_not_audited"
     assert held["prior_survey_reported_major_choice"] == ""
-    norc[0]["seat"] = "3"
+    for row in norc:
+        row["seat"] = "3"
     with pytest.raises(ValueError, match="Invalid current Senate survey cohort"):
         joined(current)
+    held = joined(current, rolling=True)
+    assert held["current_survey_status"] == "current_scope_not_audited"
+    assert held["current_reported_plan"] == ""
+    assert not held["transition_model_qualified"]

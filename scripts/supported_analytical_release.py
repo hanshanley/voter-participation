@@ -629,7 +629,7 @@ def house_model_guard_matrix(decisions):
 
 
 def build(snapshot, count_files, seed, estimates, changes, *, congressional_races=None,
-          congressional_states=None):
+          congressional_states=None, congressional_comparisons=None):
     from scripts import cps_archived_state_tables as archived_cps
     from scripts import cps_published_state_tables as published_cps
     from scripts import eac_county_turnout, nm_turnout_export, results_indiana_turnout, results_nc_vote_history, results_turnout_history
@@ -682,6 +682,13 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
               for row in estimates["participation"]["automatic_update"]["decisions"]),
         ]),
     }
+    senate_support = []
+    if congressional_comparisons and (archive := seed.get("senate_survey_archive")):
+        from scripts.senate_survey_support import CSV, published_rows
+
+        senate_support = published_rows(archive, congressional_comparisons)
+        if senate_support:
+            raw_files[CSV] = csv_bytes(senate_support)
     nc_history = results_nc_vote_history.rows(snapshot.get("granular_sources", {}))
     if nc_history:
         raw_files["participation-nc-vote-history-age.csv"] = csv_bytes(nc_history)
@@ -862,5 +869,13 @@ def build(snapshot, count_files, seed, estimates, changes, *, congressional_race
         "unchanged_scientific_downloads": review["unchanged_scientific_downloads"],
         "no_new_fit_or_geographic_allocation": True,
     }
+    if senate_support:
+        coverage["senate_survey_support"] = {
+            "advertised_contests": len(senate_support),
+            "prior_scope_status": dict(Counter(row["prior_survey_status"] for row in senate_support)),
+            "current_scope_status": dict(Counter(row["current_survey_status"] for row in senate_support)),
+            "transition_model_qualified": False,
+            "participation_rate_qualified": False,
+        }
     files["release/coverage-and-eligibility.json"] = encoded(descriptor)
     return {"files": files, "descriptor": descriptor}

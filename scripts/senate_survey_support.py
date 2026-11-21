@@ -2,9 +2,11 @@
 
 import argparse
 import csv
+import io
 import json
 import math
 from pathlib import Path
+from zipfile import ZipFile
 
 from scripts.ces_2022_senate_routing import FRAMES, historical_slate
 from scripts.ces_senate_routing import frame
@@ -15,6 +17,10 @@ FILES = (
     "active-comparisons.csv", "senate-survey-routing.csv", "ces-2020-senate-support.csv",
     "ces-2022-senate-support.csv", "ces-2020-comparisons.csv", "ces-2022-comparisons.csv",
 )
+ARCHIVE = "senate-cross-cycle-survey-support.zip"
+INPUT = "data/results-intake/" + ARCHIVE
+ARCHIVE_SHA256 = "4a578b935ec4aabd1fa2b73c2a642c7ed6a4548beb77a744e221379da912e8a7"
+CSV = "senate-cross-cycle-survey-support.csv"
 
 
 def read(path):
@@ -41,15 +47,17 @@ def candidate_frame(row):
     return baseline["cycle_year"], baseline["seat"], baseline["election_kind"], baseline["stage"], slate
 
 
-def combine(active, norc, ces20, ces22, audited20, audited22):
+def combine(active, norc, ces20, ces22, audited20, audited22, *, rolling=False):
     timing = key_by(norc, lambda row: (row["state_code"], row["timing_cohort"]))
     old20 = key_by(ces20, lambda row: row["state_code"])
     old22 = key_by(ces22, lambda row: row["state_code"])
-    if (set(timing) != {(state, cohort) for state in active for cohort in TIMINGS}
+    if (set(timing) != {(state, cohort) for state in audited20 for cohort in TIMINGS}
             or set(old20) != set(audited20) or set(old22) != set(FRAMES)):
         raise ValueError("Incomplete Senate aggregate audit inventory")
     keys = ("election_date", "seat", "election_kind", "stage", "provider_race_id")
-    for state, current in sorted(active.items()):
+    for current in sorted(active.values(), key=lambda row: (row["state_code"], row["seat"], row["provider_race_id"])):
+        state = current["state_code"]
+        supported_current = True
         record = {"state_code": state, **{key: current[key] for key in keys},
                   "return_round": current["round"], "qualified_return_comparison": current["qualified_comparison"],
                   "prior_year": "", "prior_stage": "", "prior_election_kind": "",
@@ -58,7 +66,12 @@ def combine(active, norc, ces20, ces22, audited20, audited22):
                   "survey_cohorts_linked": False, "transition_model_qualified": False,
                   "participation_rate_qualified": False}
         for cohort in TIMINGS:
-            sample = timing[state, cohort]
+            sample = timing.get((state, cohort))
+            if rolling and (sample is None or any(sample[key] != current[key] for key in keys)):
+                supported_current = False
+                record[f"current_{cohort}"] = ""
+                record[f"current_{cohort}_weight_only_effective_n"] = ""
+                continue
             count, ess = int(sample["respondents_with_senate_answer"]), sample["weight_only_effective_n"]
             if (any(sample[key] != current[key] for key in keys) or count < 0
                     or (count == 0) != (ess == "")
@@ -68,6 +81,9 @@ def combine(active, norc, ces20, ces22, audited20, audited22):
                 raise ValueError(f"Invalid current Senate survey cohort: {state}/{cohort}")
             record[f"current_{cohort}"] = count
             record[f"current_{cohort}_weight_only_effective_n"] = ess
+        if rolling:
+            record["current_survey_status"] = ("verified_audited_route" if supported_current
+                                               else "current_scope_not_audited")
         prior = json.loads(current["baseline"]) if current["baseline"] else {}
         record.update(prior_year=prior.get("cycle_year", ""), prior_stage=prior.get("stage", ""),
                       prior_election_kind=prior.get("election_kind", ""))
@@ -77,7 +93,8 @@ def combine(active, norc, ces20, ces22, audited20, audited22):
             audited, aggregates = (audited20, old20) if year == 2020 else (audited22, old22)
             sample = aggregates.get(state)
             record["prior_survey_status"] = "prior_scope_not_audited"
-            if sample and candidate_frame(audited[state]) == eligible:
+            if (sample and eligible[1] == current["seat"]
+                    and candidate_frame(audited[state]) == eligible):
                 status, slate = frame(current) if year == 2020 else (
                     "same_seat_general_question_available", historical_slate(current, state))
                 if slate:
@@ -95,6 +112,23 @@ def combine(active, norc, ces20, ces22, audited20, audited22):
         elif eligible:
             record["prior_survey_status"] = "prior_year_not_audited"
         yield record
+
+
+def published_rows(archive, comparisons):
+    if pin(archive)["sha256"] != ARCHIVE_SHA256:
+        raise ValueError("Changed public Senate survey audit archive")
+    with ZipFile(io.BytesIO(archive)) as package:
+        facts = {}
+        declarations = json.loads(package.read("inputs/sources.json"))
+        for name in FILES[1:]:
+            body = package.read("inputs/" + name)
+            if pin(body) != {key: declarations[name][key] for key in ("bytes", "sha256")}:
+                raise ValueError(f"Changed Senate aggregate input: {name}")
+            facts[name] = list(csv.DictReader(io.StringIO(body.decode("utf-8-sig"))))
+    active = key_by((row for row in csv.DictReader(io.StringIO(comparisons.decode("utf-8-sig")))
+                     if row["chamber"] == "senate" and row["advertised"] == "True"), lambda row: row["id"])
+    return list(combine(active, facts[FILES[1]], facts[FILES[2]], facts[FILES[3]],
+                        contests(facts[FILES[4]]), contests(facts[FILES[5]]), rolling=True))
 
 
 def reproduce(inputs, output):

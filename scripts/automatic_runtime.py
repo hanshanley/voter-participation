@@ -23,6 +23,7 @@ from scripts import results_granular
 from scripts.maryland_precinct_history import ARCHIVE_INPUT as MD_ARCHIVE_INPUT, ARCHIVE_MEMBER as MD_ARCHIVE_MEMBER
 from scripts import retained_bulk_turnout
 from scripts.cps_published_state_tables import INPUT as CPS_INPUT, INPUT_PATH as CPS_INPUT_PATH
+from scripts.senate_survey_support import ARCHIVE as SENATE_SURVEY_ARCHIVE, INPUT as SENATE_SURVEY_INPUT
 from scripts.nationwide import STATES
 
 
@@ -38,6 +39,7 @@ CODE_PATHS = (
     "results_granular.py", "results_native_louisiana.py",
     "results_native_louisiana_runtime.py", "louisiana_onboarding.py",
     "louisiana_bootstrap.py", "louisiana_group_history.py", "participation_count_additions.py",
+    "senate_survey_support.py", "norc_senate_routing.py", "ces_senate_routing.py", "ces_2022_senate_routing.py",
     "norc_house_model.py", "current.py", "download.py",
     "native_tabular.py", "native_products.py", "nationwide.py", "participation_intake/__init__.py",
     "results_state_statistics.py", "results_uf_turnout.py", "results_official_congress.py",
@@ -594,7 +596,7 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
                   if key not in {"historical_eac_county_facts", "nc_retained_original", "oh_retained_original",
                                  "ga_retained_original", "retained_county_canvasses",
                                  "tx_retained_history", "md_retained_history", "retained_bulk_turnout",
-                                 "cps_published_state_workbooks"}}
+                                 "cps_published_state_workbooks", "senate_survey_archive"}}
     estimates = build(snapshot, model_seed)
     history_exports = {}
     for code, feed, state_name in (("WA", turnout_history.WA_FEED, "washington"),
@@ -693,12 +695,15 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
             congressional = json.loads(gzip.decompress(congressional_files["congressional/results.json.gz"]))
         release = build_release(snapshot, updated, seed, estimates, changes,
                                 congressional_races=congressional.get("races"),
-                                congressional_states=congressional.get("house_states"))
+                                congressional_states=congressional.get("house_states"),
+                                congressional_comparisons=artifacts.get("congressional/congress-comparisons.csv"))
         artifacts.update(release["files"])
         estimates["house_sources"]["supported_release"] = release["descriptor"]
         result["release_review"] = seed["supported_release_review"]
         if "cps_published_state_workbooks" in seed:
             result["cps_published_state_workbooks"] = seed["cps_published_state_workbooks"]
+        if "senate_survey_archive" in seed:
+            result["senate_survey_archive"] = seed["senate_survey_archive"]
     if "congressional_analytical_review" in seed:
         result["congressional_analytical_review"] = seed["congressional_analytical_review"]
     if "senate_legacy_review" in seed:
@@ -747,6 +752,8 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         members["inputs/historical-eac-county-facts.json.gz"] = compiled["historical_eac_county_facts"]
     if "cps_published_state_workbooks" in compiled:
         members["inputs/" + CPS_INPUT] = compiled["cps_published_state_workbooks"]
+    if "senate_survey_archive" in compiled:
+        members["inputs/" + SENATE_SURVEY_ARCHIVE] = compiled["senate_survey_archive"]
     if "nc_retained_original" in compiled:
         members["inputs/nc-retained-original.json"] = compiled["nc_retained_original"]
     if "oh_retained_original" in compiled:
@@ -905,6 +912,8 @@ def replay(package, output):
         seed["historical_eac_county_facts"] = (package / "inputs/historical-eac-county-facts.json.gz").read_bytes()
     if "inputs/" + CPS_INPUT in manifest:
         seed["cps_published_state_workbooks"] = (package / "inputs" / CPS_INPUT).read_bytes()
+    if "inputs/" + SENATE_SURVEY_ARCHIVE in manifest:
+        seed["senate_survey_archive"] = (package / "inputs" / SENATE_SURVEY_ARCHIVE).read_bytes()
     if "inputs/nc-retained-original.json" in manifest:
         seed["nc_retained_original"] = (package / "inputs/nc-retained-original.json").read_bytes()
     if "inputs/oh-retained-original.json" in manifest:
@@ -1113,6 +1122,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     eac_facts = eac_path.read_bytes() if eac_path.exists() else None
     cps_path = ROOT / CPS_INPUT_PATH
     cps_workbooks = cps_path.read_bytes() if cps_path.exists() else None
+    senate_survey_path = ROOT / SENATE_SURVEY_INPUT
+    senate_survey_archive = senate_survey_path.read_bytes() if senate_survey_path.exists() else None
     nc_path = ROOT / NC_INPUT
     nc_original = nc_path.read_bytes() if nc_path.exists() else None
     oh_path = ROOT / OH_INPUT
@@ -1134,6 +1145,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "supported_release_review": pin(encoded(release_review)) if release_review else None,
         "historical_eac_counties": pin(eac_facts) if eac_facts is not None else None,
         "cps_published_state_workbooks": pin(cps_workbooks) if cps_workbooks is not None else None,
+        "senate_survey_archive": pin(senate_survey_archive) if senate_survey_archive is not None else None,
         "nc_retained_original": pin(nc_original) if nc_original is not None else None,
         "oh_retained_original": pin(oh_original) if oh_original is not None else None,
         "ga_retained_original": pin(ga_original) if ga_original is not None else None,
@@ -1193,6 +1205,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         seed["historical_eac_county_facts"] = eac_facts
     if cps_workbooks is not None:
         seed["cps_published_state_workbooks"] = cps_workbooks
+    if senate_survey_archive is not None:
+        seed["senate_survey_archive"] = senate_survey_archive
     if nc_original is not None:
         seed["nc_retained_original"] = nc_original
     if oh_original is not None:
