@@ -114,12 +114,23 @@ def audit(counts, primary, supplement, *, closed_roster=False, after=None):
     return records, accepted
 
 
-def svg(election, edition, counts, shapes):
+def display_paths(shapes):
     bounds = [g.bounds for g in shapes.values()]
     x0, y0 = (min(b[i] for b in bounds) for i in (0, 1))
     x1, y1 = (max(b[i] for b in bounds) for i in (2, 3))
     scale = min(920 / (x1 - x0), 318 / (y1 - y0))
     dx, dy = (960 - scale * (x1 - x0)) / 2, (318 - scale * (y1 - y0)) / 2 + 57
+    for key, geometry in sorted(shapes.items()):
+        paths = []
+        polygons = geometry.geoms if geometry.geom_type == "MultiPolygon" else [geometry]
+        for polygon in polygons:
+            for ring in [polygon.exterior, *polygon.interiors]:
+                points = [f"{dx+(x-x0)*scale:.1f},{dy+(y1-y)*scale:.1f}" for x, y in ring.coords]
+                paths.append(f"M{'L'.join(points)}Z")
+        yield key, "".join(paths)
+
+
+def svg(election, edition, counts, shapes, paths=None):
     total = sum(counts.values())
     covered = sum(counts[k] for k in shapes)
     rows = [
@@ -130,17 +141,11 @@ def svg(election, edition, counts, shapes):
         f'<text x="20" y="26" font-size="21">North Carolina voter-history credits · {election[:4]}</text>',
         f'<text x="20" y="48" font-size="13">Dated reference ({edition}); {len(shapes):,} of {len(counts):,} units shown. Not turnout rates.</text>',
     ]
-    for key, geometry in sorted(shapes.items()):
-        paths = []
-        polygons = geometry.geoms if geometry.geom_type == "MultiPolygon" else [geometry]
-        for polygon in polygons:
-            for ring in [polygon.exterior, *polygon.interiors]:
-                points = [f"{dx+(x-x0)*scale:.1f},{dy+(y1-y)*scale:.1f}" for x, y in ring.coords]
-                paths.append(f"M{'L'.join(points)}Z")
+    for key, path in paths if paths is not None else display_paths(shapes):
         n = counts[key]
         color = COLORS[sum(n >= threshold for threshold in (500, 1000, 2000, 3500))]
         title = f"{key[0]} · {key[1]}: {n:,} voter-history credits"
-        rows.append(f'<path d="{"".join(paths)}" fill="{color}" fill-rule="evenodd" '
+        rows.append(f'<path d="{path}" fill="{color}" fill-rule="evenodd" '
                     f'stroke="#596875" stroke-width=".08"><title>{escape(title)}</title></path>')
     for i, label in enumerate(("Under 500", "500–999", "1,000–1,999", "2,000–3,499", "3,500 or more")):
         x = 20 + i * 176
@@ -151,7 +156,7 @@ def svg(election, edition, counts, shapes):
     return "\n".join(rows) + "\n"
 
 
-def build(inputs, output):
+def build(inputs, output, *, display_layers=False):
     body = load(inputs / "participation-nc-general-native-precincts.csv.gz", COUNTS)
     raw = list(csv.DictReader(StringIO(gzip.decompress(body).decode())))
     output.mkdir(parents=True, exist_ok=True)
@@ -178,8 +183,17 @@ def build(inputs, output):
             writer.writerow(["native_county", "native_precinct", "voter_history_credits",
                              "reference_part", "status", "overlap_partners_and_square_feet"])
             writer.writerows(records)
+        edition_label = f"{edition} and {comparison}" if comparison else edition
+        paths = list(display_paths(accepted))
         (output / (election + "-precinct-reference.svg")).write_text(
-            svg(election, f"{edition} and {comparison}" if comparison else edition, counts, accepted), encoding="utf-8")
+            svg(election, edition_label, counts, accepted, paths), encoding="utf-8")
+        if display_layers:
+            layer = {"contract": "participation.nc_precinct_reference.v1", "election": election,
+                     "edition": edition_label, "roster": sorted(counts),
+                     "paths": [[*key, path] for key, path in paths]}
+            (output / (election + "-precinct-reference.json.gz")).write_bytes(
+                gzip.compress(json.dumps(layer, separators=(",", ":"), ensure_ascii=True).encode(),
+                              compresslevel=9, mtime=0))
         summary[election] = {"reference_edition": edition, "count_records": len(counts),
                              "shown": len(accepted), "credits": sum(counts.values()),
                              "shown_credits": sum(counts[k] for k in accepted),
@@ -194,5 +208,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--inputs", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--display-layers", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(build(args.inputs, args.output), indent=2))
+    print(json.dumps(build(args.inputs, args.output, display_layers=args.display_layers), indent=2))
