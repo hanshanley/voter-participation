@@ -167,6 +167,8 @@ def collect(collector, feed, *, reuse_checked_week=False):
 
 
 def exports(entries):
+    from scripts.retained_bulk_turnout import disposition
+
     for feed, url in URLS.items():
         entry = entries.get(feed) or {}
         if (data := entry.get("data")) is None:
@@ -181,4 +183,5 @@ def exports(entries):
             raise ValueError("Dakota statewide archive accepted year range differs")
         for row in rows:
             yield {**row, "geography_level": "state", "source_status": entry["status"], "source_url": url,
-                   "source_sha256": source["sha256"], "source_bytes": source["bytes"]}
+                   "source_sha256": source["sha256"], "source_bytes": source["bytes"], **disposition(entry),
+                   "archive_checked_at": entry.get("first_observed_at")}

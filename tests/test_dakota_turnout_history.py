@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 
 from scripts import dakota_turnout_history as dakota
@@ -35,3 +37,18 @@ def test_sd_keeps_registration_and_vap_separate():
     assert rest[0]["qualified_vap_turnout_pct"] == "40.000000"
     with pytest.raises(ValueError, match="labels differ"):
         dakota.sd_rows([row for row in columns if row[0] != "TURNOUT"])
+
+
+def test_hosted_access_stop_retains_verified_history_but_not_freshness():
+    from scripts import retained_bulk_turnout as retained
+
+    body = Path(retained.INPUT).read_bytes()
+    stopped = {feed: {"status": "source_stopped", "data": None} for feed in dakota.URLS}
+    entries = retained.historical_entries(stopped, body)
+    rows = list(dakota.exports(entries))
+    assert len(rows) == 42
+    assert all(row["source_status"] == "retained_after_failure"
+               and row["archive_status"] == "reviewed_historical_archive"
+               and row["latest_acquisition_status"] == "source_stopped" for row in rows)
+    fresh = {**entries[dakota.ND], "status": "reported"}
+    assert retained.historical_entries({dakota.ND: fresh}, body)[dakota.ND] is fresh
