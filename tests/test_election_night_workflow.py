@@ -321,6 +321,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "OR-official-house-candidates", "RI-official-house-candidates", "RI-official-senate-candidates",
         "UT-official-house-candidates", "WY-official-house-candidates",
         *(f"IN-{year}-general-turnout-and-registration" for year in range(2008, 2027, 2)),
+        "IN-early-statewide-turnout-history",
         "KS-2022-general-election-turnout-workbook",
         "KS-1996-2008-statewide-turnout-study",
         "HI-general-election-county-turnout-history",

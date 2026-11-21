@@ -5,7 +5,8 @@ import re
 from scripts import (
     alabama_precinct_history, alaska_age_history, alaska_cards_history, alaska_precinct_history, california_media,
     california_turnout_history,
-    connecticut_turnout_history, dakota_turnout_history, hawaii_precinct_turnout, hawaii_turnout_history, kansas_turnout_history,
+    connecticut_turnout_history, dakota_turnout_history, hawaii_precinct_turnout, hawaii_turnout_history,
+    indiana_early_state_turnout, kansas_turnout_history,
     national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
     pa_audit_ballots,
     southeast_turnout, washington_participation,
@@ -52,6 +53,8 @@ def families():
          (california_media.TURNOUT_CSV, california_media.HOUSE_CSV), california_media.exports),
         (routes(california_turnout_history, (california_turnout_history.FEED,)), True,
          (california_turnout_history.CSV,), california_turnout_history.exports),
+        (routes(indiana_early_state_turnout, (indiana_early_state_turnout.FEED,)), True,
+         (indiana_early_state_turnout.CSV,), indiana_early_state_turnout.exports),
         (routes(pa_audit_ballots, (pa_audit_ballots.FEED,)), True,
          (pa_audit_ballots.CSV,), pa_audit_ballots.exports),
     )
@@ -102,6 +105,11 @@ def original_reports(entries):
         report = data["report"]
         yield (ca.FEED, report, ".pdf", ca.MAX_BYTES, re.fullmatch(ca.ROUTE, report["url"]) is not None,
                partial(ca.parse, url=report["url"]), {key: value for key, value in data.items() if key != "report"})
+    early_in = indiana_early_state_turnout
+    if (data := (entries.get(early_in.FEED) or {}).get("data")) is not None:
+        report = data["report"]
+        yield (early_in.FEED, report, ".pdf", early_in.MAX_BYTES, report["url"] == early_in.URL,
+               early_in.parse, {key: value for key, value in data.items() if key != "report"})
     if (data := (entries.get(pa_audit_ballots.FEED) or {}).get("data")) is not None:
         report = data["report"]
         yield (pa_audit_ballots.FEED, report, ".csv", pa_audit_ballots.MAX_BYTES,

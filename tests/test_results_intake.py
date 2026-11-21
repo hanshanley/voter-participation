@@ -1749,6 +1749,24 @@ Percent 50.00% 0.00% 100.00% 100.00% {total:.2f}% {total / 2:.2f}%
         assert rows_for(next_report)[-1]["reported_total_voters"] == 67
 
 
+def test_indiana_early_statewide_summary_preserves_estimates_and_unknowns():
+    from scripts import indiana_early_state_turnout as early
+
+    lines = [early.PRESIDENTIAL, *(f"{year} 1,201 603 50.2% 2,000 30.2% 60.1%"
+                                  for year in range(1996, 1947, -4)), early.MIDTERM,
+             *(f"{year} 1,201 600 50.0% 2,000 30.0% 60.1%" for year in range(1994, 1953, -4))]
+    selected = early.query(lines)
+    assert len(selected) == 24
+    assert selected[-1]["qualified_registered_fraction_pct"] == 60300 / 1201
+    assert selected[-1]["vap_flagged_as_source_estimate"]
+    assert selected[-2]["registration_fraction_hold"] == "source_estimate"
+    lines[1] = "1996 unknown 603 unknown 2,000 30.2% unknown"
+    assert early.query(lines)[-1]["registration_fraction_hold"] == "not_reported"
+    lines[1] = lines[1].replace("1996", "1998")
+    with pytest.raises(ValueError, match="roster"):
+        early.query(lines)
+
+
 def test_indiana_archive_uses_only_declared_general_report_and_keeps_count_conflicts(monkeypatch):
     from scripts import results_indiana_turnout as indiana
 
