@@ -15,7 +15,7 @@ from scripts.results_turnout_history import (
 
 
 FEED = "VA-2022-native-precinct-counts"
-CSV = "virginia-2022-native-precinct-counts.csv.gz"
+CSV = "virginia-2022-native-precinct-counts.csv"
 MAX_BYTES = 500_000
 DETAIL = re.compile(r"Turnout/[A-Z0-9_&]+\.html")
 PRECINCT = re.compile(r"(\d{3})(?:\s*-\s*|\s+)\S.*")

@@ -94,6 +94,8 @@ def exports(entries):
         if len(files) == 1:
             tables = (tables,)
         for file, rows in zip(files, tables, strict=True):
+            if not file.endswith(".csv"):
+                raise ValueError(f"Bulk participation exports must declare an uncompressed CSV: {file}")
             if file in seen:
                 raise ValueError(f"Duplicate bulk participation export: {file}")
             seen.add(file)

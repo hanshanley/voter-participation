@@ -16,8 +16,8 @@ from scripts.virginia_precinct_turnout import PRECINCT
 
 
 FEED = "VA-2024-native-precinct-turnout-audit"
-CSV = "virginia-2024-native-precinct-turnout-audit.csv.gz"
-CONTROLS = "virginia-2024-native-precinct-turnout-controls.csv.gz"
+CSV = "virginia-2024-native-precinct-turnout-audit.csv"
+CONTROLS = "virginia-2024-native-precinct-turnout-controls.csv"
 LIMIT = 2_000_000
 API_LIMIT = 8_000_000
 HEADER = ("election", "election_date", "locality", "precinct", "Early Voting", "Election Day",
