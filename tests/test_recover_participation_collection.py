@@ -47,7 +47,7 @@ def test_does_not_duplicate_recent_active_or_cooling_collection(evidence, reason
 ])
 def test_single_dispatch_only_when_appropriate(now, schedule, runs, archive, reason):
     transport = request(runs)
-    assert recovery.recovery(now, schedule, transport, apply=True) == {
+    assert recovery.recovery(now, schedule, transport, apply=True, handoff=lambda _: None) == {
         "decision": "dispatched", "archive_only": archive, "reason": reason}
     assert transport.call_args_list[-2:] == [
         call(recovery.GROUPS), call(recovery.WORKFLOW + "/dispatches",
@@ -74,8 +74,27 @@ def test_incomplete_history_and_concurrency_guard_are_fail_closed():
 
 def test_non_schedule_preview_has_no_write_and_outside_window_uses_no_api():
     transport = request([])
-    assert recovery.recovery(HOURLY, recovery.HOURLY, transport)["decision"] == "would_dispatch"
+    assert recovery.recovery(HOURLY, recovery.HOURLY, transport, handoff=lambda _: None)["decision"] == "would_dispatch"
     assert transport.call_count == 2
     transport.reset_mock()
     assert recovery.recovery(WEEKLY, recovery.HOURLY, transport, apply=True)["decision"] == "outside_collection_window"
     transport.assert_not_called()
+
+
+@pytest.mark.parametrize(("handoff", "clock_offset", "expected"), [
+    (True, 0, "dispatched"), (False, 0, "awaiting_publication"),
+    (True, 60, "checkpoint_clock_unverified"), (True, -60, "checkpoint_clock_unverified"),
+])
+def test_recovery_requires_an_exact_publication_handoff(handoff, clock_offset, expected):
+    checked = HOURLY - timedelta(minutes=45)
+    source = {"contract": "participation.automatic_results_latest.v1",
+              "version": "a" * 64, "checked_at": checked.isoformat()}
+    runtime = {"contract": "participation.automatic_runtime.v1", "version": "c" * 64,
+               "input_results_version": ("a" if handoff else "b") * 64,
+               "checked_at": (checked + timedelta(minutes=clock_offset)).isoformat()}
+    read = Mock(side_effect=[source, runtime])
+    transport = request([])
+    result = recovery.recovery(HOURLY, recovery.HOURLY, transport, apply=True,
+                               handoff=lambda now: recovery.published_handoff(now, read))
+    assert result["decision"] == expected
+    assert transport.call_count == (3 if expected == "dispatched" else 2)

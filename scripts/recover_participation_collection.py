@@ -2,11 +2,13 @@
 
 import json
 import os
+import re
 import subprocess
 from datetime import datetime, timedelta, timezone
 from urllib.parse import urlencode
+from urllib.request import urlopen
 
-from scripts.automatic_health import ARCHIVE_START, ARCHIVE_TITLE, HOURLY_START, SOURCE, clock
+from scripts.automatic_health import ARCHIVE_START, ARCHIVE_TITLE, HOURLY_START, SOURCE, WEBSITE, clock, data_commit
 
 
 WORKFLOW = f"repos/{SOURCE}/actions/workflows/election-night.yml"
@@ -27,7 +29,36 @@ def api(path, body=None):
     return json.loads(result.stdout) if result.stdout else None
 
 
-def recovery(now, schedule, request=api, *, apply=False):
+def public_pointer(repository, tag, file):
+    def public_api(path):
+        with urlopen("https://api.github.com/" + path, timeout=15) as response:
+            return json.load(response)
+
+    commit = data_commit(repository, tag, public_api)
+    with urlopen(f"https://raw.githubusercontent.com/{repository}/{commit}/{file}", timeout=15) as response:
+        return json.load(response)
+
+
+def published_handoff(now, pointer=public_pointer):
+    source = pointer(SOURCE, "results-data", "latest.json")
+    runtime = pointer(WEBSITE, "participation-data", "automatic/latest.json")
+    if (source.get("contract") != "participation.automatic_results_latest.v1"
+            or runtime.get("contract") != "participation.automatic_runtime.v1"
+            or not all(isinstance(value, str) and re.fullmatch(r"[a-f0-9]{64}", value)
+                       for value in (source.get("version"), runtime.get("version"),
+                                     runtime.get("input_results_version")))):
+        raise ValueError("Invalid collection or publication pointer")
+    checked = clock(source["checked_at"]), clock(runtime["checked_at"])
+    if not all(HOURLY_START <= value <= now for value in checked):
+        return "checkpoint_clock_unverified"
+    if source["version"] != runtime["input_results_version"]:
+        return "awaiting_publication"
+    if checked[0] != checked[1]:
+        return "checkpoint_clock_unverified"
+    return None
+
+
+def recovery(now, schedule, request=api, *, apply=False, handoff=published_handoff):
     now = now.astimezone(timezone.utc)
     late = schedule == WEEKLY
     if (schedule not in {HOURLY, WEEKLY} or now < HOURLY_START
@@ -85,6 +116,8 @@ def recovery(now, schedule, request=api, *, apply=False):
         raise ValueError("Incomplete collector concurrency inventory")
     if WRITER in {name.casefold() for name in names}:
         return {"decision": "collector_active"}
+    if pending := handoff(now):
+        return {"decision": pending}
     report = {"decision": "would_dispatch", "reason": reason, "archive_only": late}
     if apply:
         request(f"{WORKFLOW}/dispatches", {"ref": "main", "inputs": {"archive_only": late}})
