@@ -280,6 +280,30 @@ The 1990 statewide summary and county report disagree on turnout, without
 changing either source's published values. The linked scan-only 2000 county
 report is not read by this digital adapter.
 
+South Carolina's voting-statistics collector discovers statewide general
+elections in the official bulk catalog, then requires a unique 46-county
+table with matching statewide ballot counts. It preserves the native detail
+rows, including central or provisional records, without assigning them to
+geographic precincts. Different registration totals in the detailed and
+statewide reports withhold rates. Missing editions remain in the audit.
+
+For dated Census county geometry, use a profiles JSON array with a state code,
+two-digit state FIPS, exact county name roster and requested years in each
+entry, for example `{"state":"SC","state_fips":"45","counties":[...],"years":[2020,2022,2024]}`.
+
+```bash
+python3.12 -m scripts.collect_census_county_reference \
+  --profiles "$PROFILES" --source-stops "$ACTIVE_STOPS" --work-dir "$WORK"
+```
+
+The batch command checks the service and layer vintage, matches the full
+county roster, and requires valid nonoverlapping coverage before and after
+display simplification. It preserves the last verified tile on a source
+failure and does not retry blocked routes. A dated display layer is not
+proof of election-day boundaries and does not allocate ballots. The map ZIP
+records all five South Carolina original responses, pins, figures, counts,
+and offline commands.
+
 West Virginia's 2008-2016 general-election county reports use the same
 county-archive sweep. Each PDF must match the declared election, all 55
 counties, and the separately printed statewide counts. The 2008 and 2010
