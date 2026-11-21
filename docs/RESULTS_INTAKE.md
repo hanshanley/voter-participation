@@ -2818,6 +2818,17 @@ Census detailed tables still require the appropriate denominator and survey
 checks, while EAVS releases require the data, codebook and jurisdiction
 reconciliation.
 
+### Connecticut digital town participation archive
+
+The weekly archive sweep discovers the six official town reports for
+1998–2008 from one state index. The reports define the numerator as people
+checked as having voted and the denominator as names on the active checklist.
+The export preserves the literal cells, printed percentages, separate 2008
+town parts, and absentee-accounting differences. Malformed counts are blank
+in numerical fields, not reconstructed from statewide residuals. The 2002
+and 2006 town counts reconcile to both statewide turnout fields; other
+editions keep their statewide counts but withhold the unreconciled rate.
+
 ### Alaska 2024 precinct and central ballot reporting
 
 The 2026 midterm companion refreshes the explicitly linked statewide bulk CSV

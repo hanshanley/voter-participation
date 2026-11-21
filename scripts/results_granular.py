@@ -514,6 +514,7 @@ def collect(collector, baseline):
     from scripts import national_turnout_release_watch, nebraska_county_reports
     from scripts import alabama_precinct_history, oregon_turnout_history, southeast_turnout, washington_participation
     from scripts import alaska_age_history, alaska_cards_history, alaska_precinct_history
+    from scripts import connecticut_turnout_history
 
     for feed in national_turnout_release_watch.INDEXES:
         jobs[feed] = national_turnout_release_watch.collect(collector, feed, reuse_checked_week=True)
@@ -530,6 +531,8 @@ def collect(collector, baseline):
         jobs[feed] = alaska_cards_history.collect(collector, feed, reuse_checked_week=True)
     for feed in alaska_age_history.YEARS:
         jobs[feed] = alaska_age_history.collect(collector, feed, reuse_checked_week=True)
+    for feed in connecticut_turnout_history.FEEDS:
+        jobs[feed] = connecticut_turnout_history.collect(collector, feed, reuse_checked_week=True)
     jobs[nebraska_county_reports.FEED] = nebraska_county_reports.collect(collector, check_unchanged=False)
     return jobs
 
@@ -672,6 +675,7 @@ def project(baseline, granular):
     from scripts.alaska_age_history import YEARS as ALASKA_AGE_SOURCES
     from scripts.alaska_cards_history import ROUTES as ALASKA_CARDS_SOURCES
     from scripts import alaska_precinct_history
+    from scripts.connecticut_turnout_history import FEEDS as CONNECTICUT_HISTORY_SOURCES
     from scripts.national_turnout_release_watch import INDEXES as NATIONAL_RELEASE_INDEXES
     from scripts.oregon_turnout_history import URLS as OREGON_HISTORY_SOURCES
     from scripts.southeast_turnout import URLS as SOUTHEAST_HISTORY_SOURCES
@@ -679,6 +683,7 @@ def project(baseline, granular):
 
     export_only = {*NATIONAL_RELEASE_INDEXES, *OREGON_HISTORY_SOURCES, *SOUTHEAST_HISTORY_SOURCES,
                    *ALABAMA_PRECINCT_SOURCES, *ALASKA_CARDS_SOURCES, *ALASKA_AGE_SOURCES,
+                   *CONNECTICUT_HISTORY_SOURCES,
                    alaska_precinct_history.FEED, alaska_precinct_history.CURRENT_FEED, WA_AGGREGATE_WORKBOOK}
     for key in granular.keys() & export_only:
         data = granular[key].get("data")
