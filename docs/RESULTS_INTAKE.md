@@ -240,6 +240,17 @@ numeric literals. Primary rows are excluded, missing years are never zero,
 and mismatched printed rates are withheld without replacing the counts.
 This series does not overwrite the current canonical statewide observation.
 
+The separate North Carolina paired aggregate series checks the official
+voter-history and registration archive catalogs. Its legacy parser admits
+the 2002 headerless TSV, 2004 quoted history CSV and 2006 titled TSV layouts
+only with the expected columns, election, archive category, a single native
+edition and the exact 100-county roster. Older precinct keys retain native
+spacing, including distinct spellings that differ only by a space. None is
+a verified geographic match. Voter-history counts are not certified ballot
+counts, and none of these three new periods gains a rate. The November 2000
+history ZIP is explicitly held because it contains only an unavailable notice;
+it remains on the scheduled catalog check instead of contributing zeros.
+
 Full collections reuse a historical county report after a successful check
 in the same UTC calendar week. Missing or failed reports are retried; the
 current-election reports and explicitly selected refreshes are not deferred.

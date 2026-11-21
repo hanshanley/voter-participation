@@ -2,8 +2,9 @@
 
 from collections import Counter, defaultdict
 import csv
-from datetime import date
+from datetime import date, time
 import io
+from itertools import chain
 import json
 import re
 from zipfile import ZipFile
@@ -16,7 +17,8 @@ from scripts.southeast_turnout import collect_report
 
 FEEDS = {
     f"NC-{year}-general-participation-statistics": date(year, 11, day)
-    for year, day in ((2008, 4), (2010, 2), (2012, 6), (2014, 4), (2016, 8),
+    for year, day in ((2000, 7), (2002, 5), (2004, 2), (2006, 7),
+                      (2008, 4), (2010, 2), (2012, 6), (2014, 4), (2016, 8),
                       (2018, 6), (2020, 3), (2022, 8), (2024, 5), (2026, 3))
 }
 COUNTIES = "participation-nc-general-county-history.csv"
@@ -26,6 +28,11 @@ FIELDS = {"age": "age", "race": "race_code", "ethnicity": "ethnic_code", "sex": 
 MAX_BYTES = 35_000_000
 EARLY_VOTER_HEADER = ("county_desc precinct_abbrv {vtd}age party_cd race_code ethnic_code sex_code "
                       "total_voters election_date stats_type update_date")
+LEGACY_HISTORY_TRAILERS = {
+    2002: "voting_method voted_party_cd",
+    2004: "voting_method voting_meth_desc voted_party_desc",
+    2006: "voting_method voted_party_cd",
+}
 TRUNCATED_VOTER_EDITIONS = {2012: "Nov  6 201", 2014: "Nov  5 201"}
 CONTROLS = {
     year: f"https://www.ncsbe.gov/results-data/voter-turnout/{year}-general-election-turnout"
@@ -43,10 +50,15 @@ PUBLISHED_LABELS = {
 
 
 def extract(body, kind, election):
+    legacy = election.year in LEGACY_HISTORY_TRAILERS
+    wide_csv = kind == "history" and election.year == 2004
     fields = HEADERS[kind].split()
     if kind == "voter" and election.year <= 2012:
         fields = EARLY_VOTER_HEADER.format(vtd="vtd_abbrv " if election.year == 2012 else "").split()
-    padded = kind == "voter" and election.year <= 2014
+    elif kind == "history" and legacy:
+        fields = (EARLY_VOTER_HEADER.format(vtd="") + " " + LEGACY_HISTORY_TRAILERS[election.year]).split()
+    # Older files can contain multiple spellings that differ only by padding.
+    padded = not legacy and kind == "voter" and election.year <= 2014
     counties, units = Counter(), Counter()
     vtds = defaultdict(set)
     native_codes = {}
@@ -54,12 +66,20 @@ def extract(body, kind, election):
     editions = set()
     with ZipFile(io.BytesIO(body)) as archive:
         members = archive.infolist()
+        if (kind == "history" and election.year == 2000 and len(members) == 1
+                and members[0].filename == "Readme.txt" and 0 < members[0].file_size <= 100
+                and archive.read(members[0]).strip() == b"Data Unavailable"):
+            raise IntakeError("report_data_unavailable", "NCSBE's 2000 archive contains no participation statistics")
         if (len(members) != 1 or members[0].filename != f"{kind}_stats_{election:%Y%m%d}.txt"
-                or not 0 < members[0].file_size <= 150_000_000):
+                or not 0 < members[0].file_size <= (220_000_000 if wide_csv else 150_000_000)):
             raise ValueError("Unexpected NC aggregate archive inventory")
         with archive.open(members[0]) as data:
-            reader = csv.reader(io.TextIOWrapper(data, encoding="utf-8-sig"), delimiter="\t", strict=True)
-            if next(reader, None) != fields:
+            reader = csv.reader(io.TextIOWrapper(data, encoding="utf-8-sig", newline=""),
+                                delimiter="," if wide_csv else "\t", skipinitialspace=wide_csv, strict=True)
+            first = next(reader, None)
+            if election.year == 2002 and first is not None and first != fields:
+                reader = chain((first,), reader)
+            elif first != fields:
                 raise ValueError("NC aggregate schema changed")
             indexes = [fields.index(name) for name in (
                 "county_desc", "election_date", "stats_type", "update_date", "total_voters",
@@ -70,20 +90,21 @@ def extract(body, kind, election):
                 if len(row) != len(fields):
                     raise ValueError("NC aggregate row width changed")
                 county, day, category, updated, raw, precinct, *labels = (row[i] for i in indexes)
-                if day != expected_date or category != kind or not re.fullmatch(r"[0-9]+", raw):
+                if (day != expected_date or category != (kind.title() if legacy else kind)
+                        or not re.fullmatch(r"[0-9]+", raw)):
                     raise ValueError("NC aggregate election, category or count changed")
                 value = count(raw)
                 if padded:
                     native = precinct
                     precinct = native.rstrip(" ")
                     if native_codes.setdefault((county, precinct), native) != native:
-                        raise ValueError("NC registration precinct padding collapses distinct native keys")
+                        raise ValueError("NC precinct padding collapses distinct native keys")
                 counties[county] += value
                 units[county, precinct] += value
                 if vtd_index is not None:
                     vtds[county, precinct].add(row[vtd_index])
                 for field, label in zip(FIELDS, labels, strict=True):
-                    groups[field][label] += value
+                    groups[field][label.rstrip(" ") if legacy else label] += value
                 editions.add(updated)
     if (len(counties) != 100 or min(counties.values()) <= 0
             or digest(("\n".join(sorted(counties)) + "\n").encode()) != COUNTY_PIN
@@ -92,9 +113,14 @@ def extract(body, kind, election):
     (native_edition,) = editions
     edition = None
     truncated = kind == "voter" and native_edition == TRUNCATED_VOTER_EDITIONS.get(election.year)
+    timestamp = legacy and re.fullmatch(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3,9}", native_edition)
     if native_edition and not truncated:
-        month, day, year = (int(value) for value in native_edition.split("/"))
-        edition = date(year, month, day)
+        if timestamp:
+            time.fromisoformat(native_edition[11:])
+            edition = date.fromisoformat(native_edition[:10])
+        else:
+            month, day, year = (int(value) for value in native_edition.split("/"))
+            edition = date(year, month, day)
         if edition < election:
             raise ValueError("NC aggregate edition predates election")
     elif not truncated and (kind != "voter" or election.year not in (2016, 2018)):
@@ -106,6 +132,7 @@ def extract(body, kind, election):
                   for (county, precinct), value in sorted(units.items())],
         "groups": {field: dict(sorted(totals.items())) for field, totals in groups.items()},
         **({"truncated_edition": native_edition} if truncated else {}),
+        **({"native_edition_timestamp": native_edition} if timestamp else {}),
         **({"native_codes": [[c, p, native] for (c, p), native in sorted(native_codes.items()) if p != native]}
            if padded else {}),
     }
@@ -220,6 +247,8 @@ def exports(entries):
             **{f"{kind}_{field}": pair[kind]["source"][field] for kind in CATALOGS for field in ("url", "sha256")},
             **{f"{kind}_edition": pair[kind]["facts"]["edition"] for kind in CATALOGS},
             "voter_unparsed_edition": voter.get("truncated_edition"),
+            **{f"{kind}_native_edition_timestamp": pair[kind]["facts"].get("native_edition_timestamp")
+               for kind in CATALOGS},
         }
         for name in ["", *history["counties"]]:
             county_rows.append({
