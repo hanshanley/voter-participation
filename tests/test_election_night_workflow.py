@@ -297,8 +297,9 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "AK-2026-general-precinct-ballot-archive",
         "AK-2014-general-cards-cast-archive", "AK-2016-general-cards-cast-archive",
         "AK-2018-general-cards-cast-archive",
-        *(f"AK-{year}-general-age-voter-history" for year in range(1996, 2010, 2)),
-        *(f"CT-{year}-general-town-turnout-archive" for year in range(1998, 2010, 2)),
+        *(f"AK-{year}-general-age-voter-history" for year in range(1996, 2024, 2)),
+        *(f"CT-{year}-general-town-turnout-archive" for year in (
+            1998, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2020, 2022, 2024)),
         *(f"MN-{year}-general-precinct-turnout-workbook" for year in range(2012, 2025, 2)),
         *(f"MD-{year}-general-precinct-affiliation-turnout" for year in range(2016, 2025, 2)),
         "NC-2026-general-vote-history", "NC-general-election-turnout-history", "UF-national-turnout",
