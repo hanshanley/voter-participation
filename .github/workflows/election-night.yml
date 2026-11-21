@@ -172,6 +172,7 @@ jobs:
           python -m pytest -q tests/test_results_intake.py tests/test_results_granular.py tests/test_results_native.py tests/test_results_state_statistics.py tests/test_results_native_state_family.py tests/test_results_native_oregon.py tests/test_results_native_north_carolina.py tests/test_results_native_idaho.py tests/test_results_native_rhode_island.py tests/test_results_native_utah.py tests/test_results_native_virginia.py tests/test_results_native_virginia_repair.py tests/test_results_native_north_dakota.py tests/test_results_native_north_dakota_repair.py tests/test_results_intake_north_dakota_package.py tests/test_louisiana_onboarding.py tests/test_results_native_workbooks.py tests/test_results_pdf_tables.py tests/test_results_json_statistics.py tests/test_results_pdf_boston.py tests/test_results_pdf_periodic.py tests/test_results_pdf_affiliations.py tests/test_results_pdf_jefferson.py tests/test_results_pdf_cass.py tests/test_results_native_cass.py tests/test_results_pdf_dunn.py tests/test_automatic_runtime.py tests/test_automatic_native_refresh.py tests/test_nationwide.py tests/test_current.py tests/test_results_native_delaware.py tests/test_results_native_dc.py
           tests/test_louisiana_group_history.py
           tests/test_virginia_precinct_turnout.py
+          tests/test_virginia_bulk_turnout.py
           tests/test_current_source_reconciliation.py tests/test_automatic_estimates.py
           tests/test_results_native_broome.py
           tests/test_results_native_kansas.py
