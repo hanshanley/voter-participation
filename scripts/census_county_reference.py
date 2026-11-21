@@ -3,6 +3,7 @@
 import argparse
 import gzip
 import json
+import math
 from pathlib import Path
 import re
 
@@ -10,7 +11,7 @@ from scripts.participation_intake.contract import encoded, pin
 
 
 def build(original, year, state, fips, roster, tolerance=0.002):
-    from shapely import coverage_is_valid, coverage_simplify
+    from shapely import coverage_is_valid, coverage_simplify, is_valid_reason, make_valid
     from shapely.geometry import mapping, shape
 
     raw = json.loads(original)
@@ -28,6 +29,18 @@ def build(original, year, state, fips, roster, tolerance=0.002):
         names.add(name)
     keys = sorted(items)
     geometry = [items[key][1] for key in keys]
+    normalized_rings = []
+    for index, polygon in enumerate(geometry):
+        if polygon.geom_type != "Polygon" or polygon.is_valid or not is_valid_reason(polygon).startswith(
+                "Ring Self-intersection["):
+            continue
+        # A touching hole encoded in the shell can be separated without moving any boundary.
+        fixed = make_valid(polygon)
+        if (fixed.geom_type == "Polygon" and fixed.is_valid and polygon.area > 0
+                and math.isclose(fixed.area, polygon.area, rel_tol=1e-12)
+                and fixed.boundary.equals(polygon.boundary)):
+            geometry[index] = fixed
+            normalized_rings.append(keys[index])
 
     def valid(geometries):
         return all(not g.is_empty and g.is_valid and g.area > 0
@@ -41,6 +54,7 @@ def build(original, year, state, fips, roster, tolerance=0.002):
     return gzip.compress(encoded({
         "type": "FeatureCollection", "reference_date": f"{year}-01-01",
         "source_sha256": pin(original)["sha256"], "display_only": True,
+        **({"equivalent_ring_normalizations": normalized_rings} if normalized_rings else {}),
         "features": [{
             "type": "Feature", "properties": {"state_code": state, "level": "county", "key": key,
                                               "name": items[key][0], "boundary_year": year},

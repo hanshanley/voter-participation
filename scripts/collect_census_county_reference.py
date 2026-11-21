@@ -117,6 +117,7 @@ def main():
     parser.add_argument("--profiles", type=Path, required=True, help="JSON array of reviewed state/year profiles")
     parser.add_argument("--source-stops", type=Path, required=True, help="Active guarded intake stop ledger")
     parser.add_argument("--work-dir", type=Path, required=True)
+    parser.add_argument("--offline", action="store_true", help="Replay permitted cached originals without transport")
     args = parser.parse_args()
     profiles = json.loads(args.profiles.read_bytes())
     requested(profiles)
@@ -126,7 +127,7 @@ def main():
     stopped = json.loads(args.source_stops.read_bytes())
     if existing.exists():
         stopped = merge_stops(stopped, json.loads(existing.read_bytes()))
-    collector = Collector(args.work_dir, prior, stopped, datetime.now(timezone.utc))
+    collector = Collector(args.work_dir, prior, stopped, datetime.now(timezone.utc), offline=args.offline)
     current = capture_batch(collector, profiles)
     successor = {**prior, **current}
     if successor != prior:

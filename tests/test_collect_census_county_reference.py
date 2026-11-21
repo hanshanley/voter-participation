@@ -1,9 +1,31 @@
 from datetime import datetime, timezone
+import gzip
 import json
 
 import pytest
 
 from scripts import collect_census_county_reference as census, results_intake as intake
+
+
+@pytest.mark.parametrize(("ring", "accepted"), [
+    ([[0, 0], [4, 0], [4, 4], [0, 4], [0, 2], [1, 3], [2, 2], [1, 1], [0, 2], [0, 0]], True),
+    ([[0, 0], [4, 4], [0, 4], [4, 0], [0, 0]], False),
+    ([[0, 0], [4, 0], [4, 4], [0, 4], [0, 2], [-1, 2], [0, 2], [0, 0]], False),
+])
+def test_only_equivalent_touching_ring_is_normalized(ring, accepted):
+    pytest.importorskip("shapely", minversion="2.1")
+    original = json.dumps({"type": "FeatureCollection", "features": [{
+        "type": "Feature", "properties": {"GEOID": "01095", "STATE": "01", "BASENAME": "Marshall"},
+        "geometry": {"type": "Polygon", "coordinates": [ring]},
+    }]}).encode()
+    if not accepted:
+        with pytest.raises(ValueError, match="original is not a valid polygon coverage"):
+            census.build(original, 2022, "AL", "01", {"Marshall"})
+        return
+    display = json.loads(gzip.decompress(census.build(original, 2022, "AL", "01", {"Marshall"})))
+    assert display["equivalent_ring_normalizations"] == ["01095"]
+    assert display["source_sha256"] == intake.pin(original)["sha256"]
+    assert len(display["features"][0]["geometry"]["coordinates"]) == 2
 
 
 def test_batch_keeps_last_good_on_wrong_vintage_and_access_hold(tmp_path, monkeypatch):
