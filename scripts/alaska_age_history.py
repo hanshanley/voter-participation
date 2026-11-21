@@ -1,7 +1,7 @@
 """Replay Alaska's statewide age and reported gender voter-history tables."""
 import io
 import re
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from decimal import Decimal
 from html.parser import HTMLParser
 
@@ -10,15 +10,25 @@ from scripts.southeast_turnout import collect_report
 ELECTIONS = dict(zip(range(1996, 2010, 2), (
     "1996-11-05", "1998-11-03", "2000-11-07", "2002-11-05", "2004-11-02", "2006-11-07", "2008-11-04",
 )))
+MODERN = {
+    2016: ("2016-11-08", "2016/General", "A C D E G L N O P R T U"),
+    2018: ("2018-11-06", "2018/General", "A C D E G H L N O P R T U V W"),
+    2020: ("2020-11-03", "2020/General", "A C D E G H K L N O P R U V W"),
+    2022: ("2022-11-08", "2022/genr", "A C D E F G H K L N O P R U V W"),
+}
+ELECTIONS.update({year: profile[0] for year, profile in MODERN.items()})
 YEARS = {f"AK-{year}-general-age-voter-history": year for year in ELECTIONS}
 BASE = "https://www.elections.alaska.gov/statistics/"
 CSV = "participation-ak-general-age-voter-history.csv"
 AGES = ("18-19", "20", "21", "22-24", "25-34", "35-44", "45-54", "55-59", "60-61", "62-64", "65-74")
 ROLES = ("REGISTERED", "MALE", "FEMALE", "VOTED", "MALE", "FEMALE")
+GENDERS = ("MALE", "FEMALE", "UNKNOWN GENDER")
 NUMBER = r"(?:[0-9]+|[0-9]{1,3}(?:,[0-9]{3})+)"
 
 
 def source(year):
+    if year in MODERN:
+        return "https://www.elections.alaska.gov/election/" + MODERN[year][1] + "/VoterHistoryByAgeReport.pdf"
     return BASE + f"vi_vrs_stats_history_{year}g." + ("pdf" if year == 2008 else "htm")
 
 
@@ -150,9 +160,83 @@ def facts(groups, year, edition):
             "participation_observation_qualified": False}
 
 
+def modern_query(body, year):
+    import pymupdf
+
+    if not body.startswith(b"%PDF-"):
+        raise ValueError("Alaska age history is not a PDF")
+    columns = MODERN[year][2].split()
+    rows, stamp = [], None
+    with pymupdf.open(stream=body, filetype="pdf") as report:
+        if report.needs_pass or len(report) != 3:
+            raise ValueError("Alaska age history page inventory changed")
+        for index, page in enumerate(report, 1):
+            lines = [" ".join(line.split()) for line in page.get_text(sort=True).splitlines() if line.strip()]
+            if (len(lines) < 6 or lines[0] != "STATE OF ALASKA - DIVISION OF ELECTIONS"
+                    or lines[2:5] != ["VOTERS HISTORY BY AGE REPORT", f"{year % 100}GENR-{year} GENERAL ELECTION",
+                                       "AGE TOTAL % " + " ".join(columns)]):
+                raise ValueError("Alaska age history edition or columns changed")
+            page_stamp = re.fullmatch(rf"(\d{{2}}/\d{{2}}/\d{{4}} \d{{1,2}}:\d{{2}}:\d{{2}}[AP]M) Page {index} of 3", lines[1])
+            if not page_stamp or (stamp is not None and stamp != page_stamp[1]):
+                raise ValueError("Inconsistent Alaska age history page stamp")
+            stamp = page_stamp[1]
+            for line in lines[5:]:
+                fields = line.split()
+                tail = fields[-len(columns):]
+                main = fields[:-len(columns)]
+                pct = main.pop() if main and re.fullmatch(r"\d{1,3}\.\d{2}", main[-1]) else ""
+                if len(main) < 2:
+                    raise ValueError("Short Alaska age history record")
+                count = main.pop()
+                rows.append([" ".join(main), count, pct, tail])
+    return rows, datetime.strptime(stamp, "%m/%d/%Y %I:%M:%S%p").date().isoformat()
+
+
+def modern_facts(rows, year, edition):
+    election = date.fromisoformat(ELECTIONS[year])
+    if not election <= date.fromisoformat(edition) <= election + timedelta(days=366):
+        raise ValueError("Alaska age history edition date outside the reviewed interval")
+    ages = ("UNKNOWN DOB", *(age.replace("-", " THRU ") for age in AGES), "ABOVE 75", "TOTALS")
+    if len(rows) != len(ages) * 8:
+        raise ValueError("Incomplete Alaska age and reported-gender inventory")
+    groups, holds = [], {}
+    for offset, age in enumerate(ages):
+        group = rows[offset * 8:(offset + 1) * 8]
+        if tuple(row[0] for row in group) != (age, *GENDERS, "VOTED", *GENDERS):
+            raise ValueError("Alaska age or reported-gender order changed")
+        counts = []
+        for index, (_, count, pct, components) in enumerate(group):
+            if (len(components) != len(MODERN[year][2].split())
+                    or not all(re.fullmatch(r"\d+", cell) for cell in (count, *components))
+                    or sum(map(int, components)) != int(count)
+                    or (pct != "" if index == 0 else
+                        not re.fullmatch(r"\d{1,3}\.\d{2}", pct) or Decimal(pct) > 100)):
+                raise ValueError("Alaska age table row fails its printed controls")
+            counts.append(int(count))
+        if (sum(counts[1:4]) != counts[0] or sum(counts[5:8]) != counts[4]
+                or any(credited > registered for registered, credited in zip(counts[:4], counts[4:]))):
+            raise ValueError("Alaska reported-gender rows do not reconcile")
+        for index, count in enumerate(counts[1:], 1):
+            denominator = counts[4 if index > 4 else 0]
+            expected = Decimal(count) * 100 / denominator if denominator else Decimal(0)
+            if abs(expected - Decimal(group[index][2])) > Decimal(".005"):
+                if index == 4:
+                    holds[age] = "printed_percent_disagrees_with_counts"
+                else:
+                    raise ValueError("Alaska age source category share fails its printed control")
+        groups.append(counts)
+    if [sum(group[i] for group in groups[:-1]) for i in range(8)] != groups[-1]:
+        raise ValueError("Alaska age bands do not sum to all eight printed statewide controls")
+    return {"date": edition, "complete_native_query": rows, "rate_holds": holds,
+            "participation_observation_qualified": False}
+
+
 def parse(body, year):
     if not 0 < len(body) <= 1_000_000:
         raise ValueError("Alaska age-history source exceeds bounds")
+    if year in MODERN:
+        rows, date = modern_query(body, year)
+        return modern_facts(rows, year, date)
     groups, date = pdf_query(body) if year == 2008 else (html_query(body, year), None)
     return facts(groups, year, date)
 
@@ -169,22 +253,40 @@ def exports(entries):
         if data is None or entry.get("status") not in {"reported", "retained_after_failure"}:
             continue
         groups, edition = data["complete_native_query"], data["date"]
+        if year in MODERN:
+            if entry["source"]["url"] != source(year) or data != modern_facts(groups, year, edition):
+                raise ValueError("Alaska digital age-history provenance or query changed")
+            for offset in range(0, len(groups), 8):
+                group = groups[offset:offset + 8]
+                source_age = group[0][0]
+                age = source_age.replace(" THRU ", "-")
+                for i, gender in enumerate(("all", "male", "female", "unknown")):
+                    yield export_row(entry, year, age, gender, int(group[i][1]), int(group[i + 4][1]),
+                                     data["rate_holds"].get(source_age, "") if i == 0 else "",
+                                     group[4][2] if i == 0 else None, edition,
+                                     int(group[3][1]) if i == 0 else None, int(group[7][1]) if i == 0 else None)
+            continue
         if entry["source"]["url"] != source(year) or data != facts(groups, year, edition):
             raise ValueError("Alaska voter-history provenance or query changed")
         for age, counts, printed in validate(groups, year, edition):
             for i, gender in enumerate(("all", "male", "female")):
                 registered, credited = counts[i], counts[i + 3]
                 hold = "age_band_credits_differ_from_state_control" if data["age_minus_control"][i + 3] else ""
-                yield {
-                    "state_code": "AK", "election_date": ELECTIONS[year], "age_group": age, "reported_gender": gender,
-                    "registered_in_report": registered, "voter_history_credits": credited,
-                    "history_per_registered": str((Decimal(credited) / registered).quantize(Decimal(".00000001")))
-                    if registered and not hold else None,
-                    "rate_hold_reason": hold,
-                    "source_reported_percent": printed[i + 3] if i == 0 else None,
-                    "unclassified_registration_residual": counts[0] - counts[1] - counts[2] if i == 0 else None,
-                    "unclassified_credit_residual": counts[3] - counts[4] - counts[5] if i == 0 else None,
-                    "report_edition_date": edition, "source_status": entry["status"],
-                    "checked_week_utc": entry.get("archive_check_week_utc"), "source_url": source(year),
-                    "source_sha256": entry["source"]["sha256"],
-                }
+                yield export_row(entry, year, age, gender, registered, credited, hold,
+                                 printed[i + 3] if i == 0 else None, edition,
+                                 counts[0] - counts[1] - counts[2] if i == 0 else None,
+                                 counts[3] - counts[4] - counts[5] if i == 0 else None)
+
+
+def export_row(entry, year, age, gender, registered, credited, hold, printed, edition, unclassified, credits):
+    return {
+        "state_code": "AK", "election_date": ELECTIONS[year], "age_group": age, "reported_gender": gender,
+        "registered_in_report": registered, "voter_history_credits": credited,
+        "history_per_registered": str((Decimal(credited) / registered).quantize(Decimal(".00000001")))
+        if registered and not hold else None,
+        "rate_hold_reason": hold, "source_reported_percent": printed,
+        "unclassified_registration_residual": unclassified, "unclassified_credit_residual": credits,
+        "report_edition_date": edition, "source_status": entry["status"],
+        "checked_week_utc": entry.get("archive_check_week_utc"), "source_url": source(year),
+        "source_sha256": entry["source"]["sha256"],
+    }

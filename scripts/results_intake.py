@@ -788,6 +788,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "results_turnout_history.py", "national_turnout_release_watch.py", "washington_participation.py",
              "oregon_turnout_history.py", "retained_bulk_turnout.py", "southeast_turnout.py", "alabama_precinct_history.py",
              "alaska_precinct_history.py", "alaska_cards_history.py", "alaska_age_history.py", "connecticut_turnout_history.py",
+             "bulk_participation_archives.py",
              "wyoming_participation_statistics.py", "nebraska_canvass.py",
              "nebraska_county_reports.py",
              "colorado_voting_statistics.py", "maryland_precinct_history.py", "minnesota_precinct_history.py",
@@ -989,10 +990,7 @@ def refresh_congress(registry_path, work, previous, now=None, offline=False):
 
 
 def late_archive_sources():
-    from scripts import alaska_age_history, alaska_cards_history, alaska_precinct_history
-    from scripts import connecticut_turnout_history
-    from scripts import national_turnout_release_watch, nebraska_county_reports
-    from scripts import alabama_precinct_history, oregon_turnout_history, southeast_turnout, washington_participation
+    from scripts import bulk_participation_archives, nebraska_county_reports
     from scripts import (
         results_indiana_turnout, results_minnesota_turnout, results_nc_vote_history,
         results_official_congress, results_pa_vote_history, results_uf_turnout,
@@ -1010,25 +1008,13 @@ def late_archive_sources():
         history.CA_CURRENT_FEED,
         nebraska_county_reports.FEED,
         *history.COUNTY_ARCHIVES,
-        *national_turnout_release_watch.INDEXES,
-        washington_participation.FEED,
-        *oregon_turnout_history.URLS,
-        *southeast_turnout.URLS,
-        *alabama_precinct_history.URLS,
-        alaska_precinct_history.FEED,
-        alaska_precinct_history.CURRENT_FEED,
-        *alaska_cards_history.ROUTES,
-        *alaska_age_history.YEARS,
-        *connecticut_turnout_history.FEEDS,
+        *bulk_participation_archives.collectors(),
         *sorted(history.municipal_feeds()),
     )
 
 
 def refresh_selected(registry_path, work, previous, source_ids, now=None, *, late_archives=False):
-    from scripts import alaska_age_history, alaska_cards_history, alaska_precinct_history
-    from scripts import connecticut_turnout_history
-    from scripts import national_turnout_release_watch, nebraska_county_reports
-    from scripts import alabama_precinct_history, oregon_turnout_history, southeast_turnout, washington_participation
+    from scripts import bulk_participation_archives, nebraska_county_reports
     from scripts import philadelphia_divisions, results_pa_vote_history, results_pdf_county_parent, results_turnout_history
     from scripts import results_indiana_turnout, results_minnesota_turnout, results_native, results_nc_vote_history
     from scripts import results_uf_turnout
@@ -1045,7 +1031,6 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
         results_turnout_history.TX_FEED: results_turnout_history.collect_texas,
         results_turnout_history.VA_FEED: results_turnout_history.collect_virginia,
         results_turnout_history.WA_FEED: results_turnout_history.collect_washington,
-        washington_participation.FEED: washington_participation.collect,
         results_turnout_history.NC_HISTORY_FEED: results_turnout_history.collect_north_carolina_history,
         results_turnout_history.WY_HISTORY_FEED: results_turnout_history.collect_wyoming_history,
         results_turnout_history.WY_CANVASS_FEED: results_turnout_history.collect_wyoming_precinct_canvass,
@@ -1066,22 +1051,7 @@ def refresh_selected(registry_path, work, previous, source_ids, now=None, *, lat
     administrative.update({feed: partial(results_turnout_history.collect_county_archive, feed=feed)
                            for feed in (*results_turnout_history.COUNTY_ARCHIVES, results_turnout_history.CA_CURRENT_FEED)})
     administrative[nebraska_county_reports.FEED] = nebraska_county_reports.collect
-    administrative.update({feed: partial(national_turnout_release_watch.collect, feed=feed)
-                           for feed in national_turnout_release_watch.INDEXES})
-    administrative.update({feed: partial(oregon_turnout_history.collect, feed=feed)
-                           for feed in oregon_turnout_history.URLS})
-    administrative.update({feed: partial(southeast_turnout.collect, feed=feed)
-                           for feed in southeast_turnout.URLS})
-    administrative.update({feed: partial(alabama_precinct_history.collect, feed=feed)
-                           for feed in alabama_precinct_history.URLS})
-    administrative[alaska_precinct_history.FEED] = alaska_precinct_history.collect
-    administrative[alaska_precinct_history.CURRENT_FEED] = alaska_precinct_history.collect_current
-    administrative.update({feed: partial(alaska_cards_history.collect, feed=feed)
-                           for feed in alaska_cards_history.ROUTES})
-    administrative.update({feed: partial(alaska_age_history.collect, feed=feed)
-                           for feed in alaska_age_history.YEARS})
-    administrative.update({feed: partial(connecticut_turnout_history.collect, feed=feed)
-                           for feed in connecticut_turnout_history.FEEDS})
+    administrative.update(bulk_participation_archives.collectors())
     administrative.update({feed: capture for feed, (_, capture)
                            in results_turnout_history.municipal_feeds().items()})
     registry_path, work = Path(registry_path), Path(work)

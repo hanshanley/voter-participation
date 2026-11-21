@@ -511,28 +511,10 @@ def collect(collector, baseline):
         jobs[feed] = results_indiana_turnout.collect(collector, year)
     for feed in (*results_turnout_history.COUNTY_ARCHIVES, results_turnout_history.CA_CURRENT_FEED):
         jobs[feed] = results_turnout_history.collect_county_archive(collector, feed, reuse_checked_week=True)
-    from scripts import national_turnout_release_watch, nebraska_county_reports
-    from scripts import alabama_precinct_history, oregon_turnout_history, southeast_turnout, washington_participation
-    from scripts import alaska_age_history, alaska_cards_history, alaska_precinct_history
-    from scripts import connecticut_turnout_history
+    from scripts import bulk_participation_archives, nebraska_county_reports
 
-    for feed in national_turnout_release_watch.INDEXES:
-        jobs[feed] = national_turnout_release_watch.collect(collector, feed, reuse_checked_week=True)
-    jobs[washington_participation.FEED] = washington_participation.collect(collector, reuse_checked_week=True)
-    for feed in oregon_turnout_history.URLS:
-        jobs[feed] = oregon_turnout_history.collect(collector, feed, reuse_checked_week=True)
-    for feed in southeast_turnout.URLS:
-        jobs[feed] = southeast_turnout.collect(collector, feed, reuse_checked_week=True)
-    for feed in alabama_precinct_history.URLS:
-        jobs[feed] = alabama_precinct_history.collect(collector, feed, reuse_checked_week=True)
-    jobs[alaska_precinct_history.FEED] = alaska_precinct_history.collect(collector, reuse_checked_week=True)
-    jobs[alaska_precinct_history.CURRENT_FEED] = alaska_precinct_history.collect_current(collector)
-    for feed in alaska_cards_history.ROUTES:
-        jobs[feed] = alaska_cards_history.collect(collector, feed, reuse_checked_week=True)
-    for feed in alaska_age_history.YEARS:
-        jobs[feed] = alaska_age_history.collect(collector, feed, reuse_checked_week=True)
-    for feed in connecticut_turnout_history.FEEDS:
-        jobs[feed] = connecticut_turnout_history.collect(collector, feed, reuse_checked_week=True)
+    for feed, capture in bulk_participation_archives.collectors(reuse_checked_week=True).items():
+        jobs[feed] = capture(collector)
     jobs[nebraska_county_reports.FEED] = nebraska_county_reports.collect(collector, check_unchanged=False)
     return jobs
 
@@ -671,20 +653,9 @@ def reviewed_source_bridge(entry, rows):
 
 def project(baseline, granular):
     """Create successor bodies, preserving old versions, IDs, views and join decisions."""
-    from scripts.alabama_precinct_history import URLS as ALABAMA_PRECINCT_SOURCES
-    from scripts.alaska_age_history import YEARS as ALASKA_AGE_SOURCES
-    from scripts.alaska_cards_history import ROUTES as ALASKA_CARDS_SOURCES
-    from scripts import alaska_precinct_history
-    from scripts.connecticut_turnout_history import FEEDS as CONNECTICUT_HISTORY_SOURCES
-    from scripts.national_turnout_release_watch import INDEXES as NATIONAL_RELEASE_INDEXES
-    from scripts.oregon_turnout_history import URLS as OREGON_HISTORY_SOURCES
-    from scripts.southeast_turnout import URLS as SOUTHEAST_HISTORY_SOURCES
-    from scripts.washington_participation import FEED as WA_AGGREGATE_WORKBOOK
+    from scripts import bulk_participation_archives
 
-    export_only = {*NATIONAL_RELEASE_INDEXES, *OREGON_HISTORY_SOURCES, *SOUTHEAST_HISTORY_SOURCES,
-                   *ALABAMA_PRECINCT_SOURCES, *ALASKA_CARDS_SOURCES, *ALASKA_AGE_SOURCES,
-                   *CONNECTICUT_HISTORY_SOURCES,
-                   alaska_precinct_history.FEED, alaska_precinct_history.CURRENT_FEED, WA_AGGREGATE_WORKBOOK}
+    export_only = bulk_participation_archives.collectors().keys()
     for key in granular.keys() & export_only:
         data = granular[key].get("data")
         if data is not None and (data.get("participation_observation_qualified") is not False
