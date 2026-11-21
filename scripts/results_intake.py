@@ -796,6 +796,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "bulk_participation_archives.py", "connecticut_2018_verified_scan.json", "kansas_turnout_history.py",
              "virginia_precinct_turnout.py", "virginia_bulk_turnout.py", "virginia_absentee_history.py",
              "kansas_house_canvass.py", "idaho_turnout_history.py", "idaho_absentee_age.py",
+             "massachusetts_ballot_canvass.py",
              "hawaii_turnout_history.py", "hawaii_precinct_turnout.py", "dakota_turnout_history.py",
              "new_jersey_periodic_counties.py",
              "north_carolina_participation.py", "california_media.py", "california_turnout_history.py",

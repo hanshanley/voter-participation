@@ -9,6 +9,7 @@ import re
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 
+from scripts import massachusetts_ballot_canvass as ma
 from scripts import protected_official_wyoming, results_minnesota_turnout as mn
 from scripts import results_alaska_turnout as alaska
 from scripts import results_indiana_turnout as indiana
@@ -108,6 +109,8 @@ PROFILES = {
            "feed": indiana.FEEDS[2026], "url": indiana.INDEX},
     "KS": {"state": "Kansas", "source_id": history.KS_FEED,
            "feed": history.KS_FEED, "url": history.KS_URL},
+    "MA": {"state": "Massachusetts", "source_id": ma.FEED, "feed": ma.FEED,
+           "url": ma.BASE + "view/173530/"},
     "MN": {"state": "Minnesota", "source_id": "mn-sos-reconciled-statewide-turnout-20261103",
            "feed": mn.IDENTITY, "url": mn.URL},
     "NJ": {"state": "New Jersey", "source_id": history.NJ_FEED,
@@ -240,6 +243,8 @@ def observation(code, summary, retained=False):
         return indiana_observation(summary, retained)
     if code == "KS":
         return kansas_observation(summary, retained)
+    if code == "MA":
+        return massachusetts_observation(summary, retained)
     if code == "NJ":
         return new_jersey_observation(summary, retained)
     if code == "OH":
@@ -1161,6 +1166,39 @@ def oregon_observation(summary, retained):
                                source_clock=header["source_update_label"], source_timezone="PT")
 
 
+def massachusetts_summary(snapshot):
+    entry = snapshot.get("granular_sources", {}).get(ma.FEED, {})
+    if entry.get("status") != "reported":
+        return None
+    data = entry["data"]
+    counties, units = ma.reconcile(data["reports"])
+    reports = {key: {role: value[role] for role in ("page_source", "csv_source")}
+               for key, value in data["reports"].items()}
+    return {"contract": CONTRACT, "source": reports["173530"]["page_source"], "reports": reports,
+            "county_counts": counties, "ballots": sum(row[-1] for row in units)}
+
+
+def massachusetts_observation(summary, retained):
+    reports = summary["reports"]
+    require(summary["contract"] == CONTRACT and summary["source"] == reports["173530"]["page_source"]
+            and reports.keys() == ma.CONTESTS.keys(), "Massachusetts paired canvass receipt changed")
+    for contest, report in reports.items():
+        for role, route in (("page_source", f"view/{contest}/"), ("csv_source", f"download/{contest}/precincts_include:1/")):
+            source = report[role]
+            require(source["url"] == ma.BASE + route and type(source["bytes"]) is int
+                    and 0 < source["bytes"] <= ma.LIMIT and re.fullmatch(r"[a-f0-9]{64}", source["sha256"]),
+                    "Invalid Massachusetts canvass source pin")
+    counties = summary["county_counts"]
+    require(counties.keys() == ma.COUNTIES and all(type(n) is int and n >= 0 for n in counties.values())
+            and sum(counties.values()) == summary["ballots"] > 0, "Massachusetts ballot controls differ")
+    return archive_observation(
+        "MA", summary, retained, summary["ballots"], None, "Total Votes Cast, including blanks", None,
+        "registration_not_in_report", "Paired statewide canvass exports",
+        ["The two statewide offices agree on every reporting unit's all-ballot total, including blanks.",
+         "No registration denominator or precinct boundary is established by these exports."],
+        None, None, "Total Votes Cast")
+
+
 def montana_observation(summary, retained):
     source = summary["source"]
     require(summary["contract"] == CONTRACT and summary["index"] == source and source["url"] == history.MT_URL
@@ -1460,7 +1498,7 @@ def project(files, snapshot, nc_retained_original=None, ohio_retained_original=N
             "Wrong statewide ballot count input contract")
     changes = []
     feeds = snapshot.get("congress", {}).get("official_candidate_evidence", {})
-    statewide_sources = {"AK": alaska_summary, "AZ": arizona_summary, "HI": hawaii_summary,
+    statewide_sources = {"AK": alaska_summary, "AZ": arizona_summary, "HI": hawaii_summary, "MA": massachusetts_summary,
                          "IN": indiana_summary, "MN": minnesota_summary,
                          "VT": vermont_summary}
     for code, profile in PROFILES.items():
@@ -1518,6 +1556,7 @@ def project(files, snapshot, nc_retained_original=None, ohio_retained_original=N
                         or code == "AK" and before["statewide_feed"] != after["statewide_feed"]
                         or code == "HI" and before["reports"]["histatewide"] == after["reports"]["histatewide"]
                         or code in {"KS", "NJ"} and before["query"] == after["query"]
+                        or code == "MA" and before["reports"] != after["reports"]
                         or code == "OH" and {key: value for key, value in before["query"].items() if key != "election"}
                         == {key: value for key, value in after["query"].items() if key != "election"}
                         or code == "OR" and before["query"]["independent_official_header"]

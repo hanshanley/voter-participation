@@ -716,6 +716,17 @@ cmp reproduced-split-review.json \
   early votes by age only when both mode totals reconcile. It keeps both source
   clocks and never supplies an age-specific turnout denominator.
 
+  ### Massachusetts 2026 paired canvass
+
+  The Governor and Secretary of the Commonwealth canvass pages each link a
+  statewide reporting-unit CSV. The adapter checks the county and statewide
+  controls, then requires every municipality/ward/precinct key and all-ballot
+  total to agree between the two exports. `Total Votes Cast` includes the explicit
+  blank-ballot column. The statewide count enters the participation series;
+  `participation-ma-2026-paired-canvass-ballot-counts.csv.gz` retains the full
+  non-additive hierarchy of state, county, municipality and native reporting rows.
+  Neither export supplies a registration denominator or precinct polygons.
+
   ### Candidate inventories and analytical eligibility
 
 Recorded-results intake accepts newly advertised candidates or aggregate Other

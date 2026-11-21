@@ -554,6 +554,10 @@ def selected_local_observation_ids(snapshot, counts=None):
             if statewide_ballot_totals.indiana_summary(snapshot) is not None:
                 selected.add(statewide_ballot_totals.identity("IN"))
             continue
+        if identity == statewide_ballot_totals.PROFILES["MA"]["feed"]:
+            if statewide_ballot_totals.massachusetts_summary(snapshot) is not None:
+                selected.add(statewide_ballot_totals.identity("MA"))
+            continue
         if (identity in (philadelphia_divisions.FEED, results_nc_vote_history.FEED,
                          results_turnout_history.CA_CURRENT_FEED, results_turnout_history.NC_HISTORY_FEED,
                          results_turnout_history.nebraska_county_reports.FEED,
