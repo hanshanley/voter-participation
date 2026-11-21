@@ -694,6 +694,22 @@ cmp reproduced-split-review.json \
     --output /tmp/house-boundary-queries
   ```
 
+  ### Idaho general-election turnout
+
+  The official history and linked 2024 workbook produce
+  `participation-id-statewide-general-turnout.csv.gz` and
+  `participation-id-2024-native-turnout-workbook.csv.gz`. Registered-voter and
+  source-reported voting-age-population denominators are separate. The workbook
+  includes county parents and native reporting units; never add both levels.
+  Counties with separately pooled absentee ballots retain those ballots and
+  withhold their sub-county rates. No native unit is bound to an election-day
+  polygon. Neither archive supplies 2026 counts or a demographic rate.
+  The pinned historical fallback preserves the original aggregates and checksums
+  when the collector's existing access stop applies; a compatible accepted
+  snapshot takes precedence. The complete package replay regenerates both CSVs.
+
+  ### Candidate inventories and analytical eligibility
+
 Recorded-results intake accepts newly advertised candidates or aggregate Other
 categories only with a newer native count version and every previously known
 candidate identity retained. Removed candidates, changed names/parties, lost
