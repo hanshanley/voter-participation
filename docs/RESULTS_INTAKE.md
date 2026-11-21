@@ -136,6 +136,19 @@ its own checks fail. The complete package includes
 `release/congressional-ca-2026-media-house.csv.gz`. Exact-original extraction
 uses the `--bulk-report-dir` option in the nested source package.
 
+The Rhode Island native turnout export retains 39 municipality rows, the
+unallocated federal row, and the separate withheld statewide field. It
+does not interpret the zero parent field as a true statewide zero or turn
+the locality sum into a statewide result. No rates are qualified.
+
+`PA-2026-general-ballot-audit` follows the Department of State audit index
+and checks the exact general-election CSV, edition clock, and sampled-batch
+totals. The weekly sweep rechecks this source after hourly collection ends.
+The complete query keeps the audit's `Total Ballots Cast`, `Pending Ballots`,
+and sample counts separate. None is substituted for certified statewide or
+county turnout; no rate is computed. The original report is referenced by
+its URL and hash, with no staff fields included in the exported query.
+
 The historical survey release replays the Census CPS Table 4b/4c workbooks
 for 2008–2024 and the 2006 Table 4b workbook, plus separate Table 4a controls
 for 2006 and 2008. The 2006 totals match between tables for all 50 states,

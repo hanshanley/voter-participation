@@ -290,7 +290,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
     assert len(sources) == len(set(sources))
     assert set(sources) == {
         "KS-general-election-turnout-workbook", "NJ-general-election-turnout-pdf",
-        "PA-2026-general-vote-history", "TX-general-election-turnout",
+        "PA-2026-general-vote-history", "PA-2026-general-ballot-audit", "TX-general-election-turnout",
         "VA-general-election-turnout", "VA-2022-general-election-locality-turnout",
         "VA-2024-general-election-locality-turnout", "WA-general-election-turnout",
         "MN-native-local", "MN-statewide-reporting",
