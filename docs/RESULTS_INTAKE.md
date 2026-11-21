@@ -738,6 +738,23 @@ cmp reproduced-split-review.json \
   their differences. Only Barnstable differs in the reviewed edition: 118,733
   ballots in the rollup versus 115,570 on the county page.
 
+  `massachusetts-historical-atlas.yml` refreshes the 2020, 2022 and 2024
+  canvasses and the MassGIS precinct references every Tuesday at 11:43 UTC.
+  The Census municipality crosswalk and TIGER archive are fixed 2022 reference
+  inputs, not refreshed polygons. The separate `ma-historical-data:latest.json`
+  pointer advances only after the complete nine-output ZIP replays offline and
+  verifies anonymously at its exact Git commit. Unchanged numerical editions
+  leave the pointer alone; collection or validation failure keeps the last
+  successful pointer. A staged upload can be resumed on the next run.
+
+  ```bash
+  PROJ_NETWORK=OFF python3.12 -m scripts.massachusetts_historical_release \
+    --refresh --work /path/to/new-work
+  # In the extracted complete ZIP, with the pinned geometry dependencies:
+  PROJ_NETWORK=OFF python3.12 -m scripts.massachusetts_historical_release \
+    --replay . --work reproduced
+  ```
+
   ### Candidate inventories and analytical eligibility
 
 Recorded-results intake accepts newly advertised candidates or aggregate Other
