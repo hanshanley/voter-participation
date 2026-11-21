@@ -307,6 +307,52 @@ def test_votingworks_scan_counts_require_two_confident_and_reconciled_queries():
         history.votingworks_scan_query(evidence, "Hampton")
 
 
+def test_votingworks_scanned_revision_reuses_rejection_and_preserves_last_good(tmp_path, monkeypatch):
+    history = frame.history
+    profile = history.VOTINGWORKS_TOWNS["NH-hampton-municipal-turnout"]
+    from urllib.parse import urljoin
+
+    url = urljoin(profile.index, f"/DocumentCenter/View/6048/{profile.document_slug}")
+    assert profile.permits_report(url)
+    index = f'<a href="{url}">{profile.link_label}</a>'.encode()
+    calls = []
+
+    def report(body, town, report_url, *, scanned):
+        assert scanned
+        calls.append(body)
+        if body == b"bad revision":
+            history.scan.fail("VotingWorks scan ballot columns do not reconcile")
+        time = "11:25:36" if body == b"original" else "11:26:00"
+        count = "9,012" if body == b"original" else "9,013"
+        manually = "109" if body == b"original" else "110"
+        return {"report": {"url": report_url, **pin(body)}, "complete_native_query": {
+            "title": "Official Tally Report", "election": f"General Election, Nov 3, 2026, {town}, NH",
+            "generated": f"Nov 3, 2026, {time} PM", "election_id": profile.election_id,
+            "statistics": [f"Ballot Count {count}", "Scanned 8,903", f"Manually Entered {manually}"]}}
+
+    monkeypatch.setattr(history, "votingworks_report", report)
+    monkeypatch.setattr(history.scan, "scan_policy", lambda *args: "test-policy")
+    prior = {}
+
+    def refresh(body):
+        collector = results_intake.Collector(tmp_path, prior, {"urls": [], "prefixes": [], "hosts": []},
+                                             datetime(2026, 11, 21, tzinfo=timezone.utc))
+        monkeypatch.setattr(collector, "acquire", lambda target: (
+            index if target == profile.index else body, {"origin": "test"}))
+        prior[profile.feed] = history.collect_votingworks_town(collector, profile)
+        return prior[profile.feed]
+
+    first = refresh(b"original")
+    assert first["status"] == "reported" and refresh(b"original") == first
+    held = refresh(b"bad revision")
+    assert held["status"] == "retained_after_failure" and held["data"] == first["data"]
+    assert held["error"] == "scan_reconciliation_failed" and refresh(b"bad revision") == held
+    assert calls == [b"original", b"bad revision"]
+    revised = refresh(b"corrected revision")
+    assert revised["status"] == "reported" and "rejected_scan" not in revised
+    assert history.votingworks_town_controls(revised["data"], profile)[0][0] == 9013
+
+
 @pytest.mark.parametrize("locality", ["Hollis", "Fixture Town", "Bedford", "Hanover"])
 def test_votingworks_town_report_retains_last_good_across_revisions(tmp_path, monkeypatch, locality):
     from dataclasses import replace

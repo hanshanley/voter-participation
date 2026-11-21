@@ -21,7 +21,7 @@ from scripts.participation_intake.contract import IntakeError, count, encoded, p
 from scripts import wyoming_participation_statistics as wy_profile
 from scripts import colorado_voting_statistics, maryland_precinct_history, minnesota_precinct_history
 from scripts import nebraska_canvass, nebraska_county_reports
-from scripts.results_pdf_archive_ocr import ScanRejection
+from scripts import results_pdf_archive_ocr as scan
 
 
 WA_FEED = "WA-general-election-turnout"
@@ -935,7 +935,7 @@ def collect_county_archive(collector, feed, *, reuse_checked_week=False):
         if (reuse_checked_week and old.get("archive_check_week_utc") == checked_week
                 and old.get("status") == "reported" and old.get("data") is not None):
             return old
-    rejected_scan = ScanRejection(old)
+    rejected_scan = scan.ScanRejection(old)
 
     def parse(index):
         if state == "MD":
@@ -1601,12 +1601,13 @@ def votingworks_report(body, town, report_url, *, scanned=False):
     lines = [" ".join(line.split()) for line in
              unicodedata.normalize("NFKC", pdf.pages[0].extract_text()).splitlines() if line.strip()]
     if scanned and not lines:
-        from scripts.results_pdf_ocr import page_views
-
-        evidence = [votingworks_scan_evidence(view) for view in page_views(
-            body, strict_role_alignment=True, text_angle_classifier=False)]
+        try:
+            evidence = [votingworks_scan_evidence(view) for view in scan.extract(body, (0,))["0"]]
+            query = votingworks_scan_query(evidence, town)
+        except ValueError as error:
+            scan.fail(str(error))
         return {"report": {"url": report_url, **pin(body)}, "scan_evidence": evidence,
-                "complete_native_query": votingworks_scan_query(evidence, town)}
+                "complete_native_query": query}
     if (len(lines) < 8 or not lines[3].startswith("Certification Signatures:")
             or any(re.search(r"\b(?:scanner|batch)\s+(?:id|number|report|tally)\b", line, re.I)
                    for line in lines[:7])
@@ -1675,13 +1676,26 @@ def votingworks_declared_report(body, profile):
 
 
 def collect_votingworks_town(collector, profile):
+    previous = collector.prior.get(profile.feed) or {}
+    rejected_scan = scan.ScanRejection(previous)
+
     def parse(body):
         report_url = votingworks_declared_report(body, profile)
         report, _ = collector.acquire(report_url)
-        prior = (collector.prior.get(profile.feed) or {}).get("data") or {}
-        data = (prior if profile.scanned and "scan_evidence" in prior
-                and prior.get("report") == {"url": report_url, **pin(report)}
-                else votingworks_report(report, profile.town, report_url, scanned=profile.scanned))
+        receipt = {"url": report_url, **pin(report)}
+        prior = previous.get("data") or {}
+
+        def extract():
+            return votingworks_report(report, profile.town, report_url, scanned=profile.scanned)
+
+        if profile.scanned and prior.get("report") == receipt:
+            data = prior
+            rejected_scan.receipt = None
+        elif profile.scanned:
+            policy = scan.scan_policy(__file__, [profile.feed, profile.town, profile.election_id])
+            data = rejected_scan.parse(receipt, policy, extract)
+        else:
+            data = extract()
         votingworks_town_controls(data, profile)
         return data
 
@@ -1689,7 +1703,9 @@ def collect_votingworks_town(collector, profile):
         votingworks_town_controls(old, profile)
         return votingworks_successor(old, new, profile.town, new["report"]["url"])
 
-    return collector.capture(profile.feed, profile.index, parse, equivalent=equivalent)
+    entry = collector.capture(profile.feed, profile.index, parse, equivalent=equivalent)
+    rejected_scan.attach(entry)
+    return entry
 
 
 def municipal_feeds():
