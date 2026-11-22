@@ -381,7 +381,44 @@ def exports(congress):
     return result
 
 
-def comparisons(congress, review, historical_senate=None, boundary_review=None):
+MAINE_FINAL_ROUND = {
+    "contract": "participation.house_rcv_final_pair.v1",
+    "district": "ME-02",
+    "scope": "continuing_candidate_votes_at_final_central_tabulation",
+    "previous": {"date": "2024-11-05", "D": 197151, "R": 194445,
+                 "source": "https://www1.maine.gov/sos/sites/maine.gov.sos/files/content/assets/Nov24-20RCV-20CG2-20Summary-20Report.pdf"},
+    "current": {"date": "2026-11-03", "D": 165432, "R": 170890,
+                "source": "https://www3.maine.gov/sos/news/ranked-choice-voting-tabulation-results-announced-maine-congressional-district-2",
+                "certification": "not_asserted_by_tabulation_announcement"},
+}
+
+
+def reviewed_final_round(race, current, previous, previous_candidates, boundary):
+    pair = MAINE_FINAL_ROUND
+    if not (race["id"] == "npr:house:ME:2:regular:general:rcv-final"
+            and race["election_date"] == pair["current"]["date"]
+            and race["ranked_choice"] and race["native_rcv_result"] == "final"
+            and not race["native_runoff"] and race["advertised"] and race["status"] == "reported"
+            and race["count_coverage_complete"]
+            and boundary.get("district") == pair["district"] and boundary.get("boundary_compatible") is True
+            and all(race[k] == pair["current"][k] and previous[k] == pair["previous"][k] for k in "DR")
+            and race["O"] == race["U"] == previous["O"] == 0):
+        return None
+    current_named = {(c["party_group"], c["first"], c["last"], c["votes"])
+                     for c in current if c["role"] == "named_candidate"}
+    historical_named = {(c["group"], c["name"], c["votes"])
+                        for c in previous_candidates if c["named"]}
+    if (current_named != {("D", "Matthew", "Dunlap", 165432), ("R", "Paul", "LePage", 170890)}
+            or any(c["role"] != "named_candidate"
+                   and (c["role"], c["party_group"], c["votes"]) != ("provider_aggregate_other", "O", 0)
+                   for c in current)
+            or len(previous_candidates) != 2 or historical_named != {
+                ("D", "Jared F. Golden", 197151), ("R", "Austin Theriault", 194445)}):
+        return None
+    return copy.deepcopy(pair)
+
+
+def comparisons(congress, review, historical_senate=None, boundary_review=None, *, final_rounds=False):
     if boundary_review is not None:
         from scripts.congressional_geography import validate_review
         validate_review(boundary_review)
@@ -464,7 +501,12 @@ def comparisons(congress, review, historical_senate=None, boundary_review=None):
             reasons.append("Current source retained, not refreshed: " + str(entry.get("error")))
         if race["stage"] != "general":
             reasons.append("Current stage is not a qualified general-election comparison")
-        if race["ranked_choice"]:
+        if final_rounds and race["chamber"] == "house" and previous is not None:
+            pair = reviewed_final_round(race, data["candidates"], previous, previous_candidates,
+                                        baseline.get("boundary_eligibility", {}))
+            if pair:
+                baseline["final_round_pair"] = pair
+        if race["ranked_choice"] and "final_round_pair" not in baseline:
             reasons.append("A matching previous/current RCV round has not been qualified")
         if race["native_runoff"]:
             reasons.append("Native source flags a runoff; this stage is not a final-stage comparison")
@@ -505,9 +547,11 @@ def comparisons(congress, review, historical_senate=None, boundary_review=None):
     return result
 
 
-def house_state_comparisons(congress, review):
+def house_state_comparisons(congress, review, compared=()):
     races, candidates, _ = tables(congress)
     queries = {}
+    final_pairs = {row["id"]: row["baseline"]["final_round_pair"] for row in compared
+                   if row["qualified_comparison"] and "final_round_pair" in row["baseline"]}
     for row in review["previous_district_queries"]:
         queries.setdefault(row["district"][:2], []).append(row)
     result = []
@@ -548,7 +592,8 @@ def house_state_comparisons(congress, review):
                 reasons.append("Candidate counts missing: " + query["district"])
             if any(row["party_group"] == "U" for row in current_candidates):
                 reasons.append("Native party unknown: " + query["district"])
-            if race["stage"] != "general" or race["ranked_choice"] or race["native_runoff"]:
+            if (race["stage"] != "general" or race["native_runoff"]
+                    or (race["ranked_choice"] and race["id"] not in final_pairs)):
                 reasons.append("Stage or RCV round not qualified: " + query["district"])
             if race["status"] != "reported":
                 reasons.append("Source retained, not refreshed: " + query["district"])
@@ -563,6 +608,7 @@ def house_state_comparisons(congress, review):
             reasons.append("Statewide D/R counts unknown or nonpositive")
         raw = (after["D_minus_R_margin_pp"] - before["D_minus_R_margin_pp"]
                if before["D_minus_R_margin_pp"] is not None and after["D_minus_R_margin_pp"] is not None else None)
+        selected_pairs = {row["id"]: final_pairs[row["id"]] for row in selected if row["id"] in final_pairs}
         result.append({
             "state_code": state, "office": "house", "previous_year": 2024, "current_year": 2026,
             "previous": before, "current": after, "expected_voting_seats": len(expected),
@@ -573,6 +619,7 @@ def house_state_comparisons(congress, review):
             "qualified_comparison": not reasons, "qualified_margin_change_pp": raw if not reasons else None,
             "comparison_holds": sorted(set(reasons)),
             "comparison_scope": "statewide_complete_same_office_not_cross_year_district_or_individual_identity",
+            **({"final_round_pairs": selected_pairs} if selected_pairs else {}),
             "behavioral_estimate_updated": False,
         })
     return result
@@ -602,8 +649,9 @@ def legacy_comparison_view(rows):
 def runtime(congress, review, analytical_review=None, estimates=None):
     history = analytical_review["historical_senate"] if analytical_review else None
     boundaries = analytical_review.get("house_boundaries") if analytical_review else None
-    compared = comparisons(congress, review, history, boundaries)
-    states = house_state_comparisons(congress, review)
+    compared = comparisons(congress, review, history, boundaries,
+                           final_rounds=bool(analytical_review and analytical_review.get("house_final_rounds")))
+    states = house_state_comparisons(congress, review, compared)
     races, candidates, coverage = tables(congress)
     payload = {"contract": CONTRACT, "election_date": ELECTION, "races": compared,
                "candidates": candidates, "coverage": coverage, "summary": summary(congress),
