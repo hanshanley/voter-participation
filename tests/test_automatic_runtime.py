@@ -917,6 +917,19 @@ def test_runtime_rejects_stale_or_rebound_source_before_downloading(publication,
     assert publisher.head == head
 
 
+def test_reader_mismatch_keeps_active_house_comparison_extensions(publication, monkeypatch):
+    publisher, work, _ = publication
+    runtime.run("not-used", work)
+    head = publisher.head
+    current = json.loads(publisher.objects[head]["automatic/latest.json"])
+    current["reviewed_house_comparison_extensions"] = ["final_rounds", "water_only"]
+    publisher.objects[head]["automatic/latest.json"] = encoded(current)
+    monkeypatch.setattr(runtime, "result_bodies", lambda _: pytest.fail("Unsafe downgrade fetched input"))
+    with pytest.raises(ValueError, match="refusing to remove active qualifications"):
+        runtime.run("not-used", work)
+    assert publisher.head == head and publisher.promotions == 2
+
+
 @pytest.mark.parametrize(("observed", "message"), [
     ("2026-11-02T18:59:59-05:00", "predates the general-election publication window"),
     ("2026-11-21T00:00:01+00:00", "check time is in the future"),

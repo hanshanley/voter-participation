@@ -637,3 +637,30 @@ def test_unopposed_previous_race_keeps_defined_raw_arithmetic(tmp_path):
                if row["chamber"] == "house")
     assert not row["qualified_comparison"]
     assert row["previous"]["D"] == 0 and row["raw_recorded_margin_change_pp"] is not None
+
+
+@pytest.mark.parametrize("state,seat,name,party,status", [
+    ("FL", "20", "Sheila Cherfilus-McCormick", "D", "elected_unopposed_no_reported_general_vote"),
+    ("OK", "3", "Frank D. Lucas", "R", "decided_in_primary_no_general_contest"),
+])
+def test_official_no_general_vote_explains_hold_without_inventing_counts(tmp_path, state, seat, name, party, status):
+    bodies = sources()
+    bodies["house"] = [race(state=state, seat=seat), race(state=state, seat="1", identity="102")]
+    source = collect(tmp_path, bodies)
+    reviewed = review()
+    district = f"{state}-{seat.zfill(2)}"
+    template = reviewed["previous_district_queries"][0]
+    previous = {**template["previous"], "reported_counts": dict.fromkeys("DRO", 0),
+                "missing_major_party_counts": [name],
+                "source_candidate_rows": [{"name": name, "group": party, "named": True, "votes": None}]}
+    reviewed["previous_district_queries"] = [
+        {**template, "district": f"{state}-01"}, {**template, "district": district, "previous": previous}]
+    row = next(r for r in congress.comparisons(source, reviewed) if r["baseline"].get("district") == district)
+    assert row["baseline"]["previous_no_general_vote"]["status"] == status
+    assert row["previous"] is row["qualified_margin_change_pp"] is None
+    assert not row["qualified_comparison"]
+    state_row, = congress.house_state_comparisons(source, reviewed)
+    assert not state_row["qualified_comparison"]
+    assert any("no general" in hold for hold in state_row["comparison_holds"])
+    previous["source_candidate_rows"][0]["name"] = "Different nominee"
+    assert congress.historical_house_no_vote(district, previous) is None

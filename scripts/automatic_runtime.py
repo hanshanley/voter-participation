@@ -1196,8 +1196,12 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
             name: pin((ROOT / name).read_bytes()) for name in PROTECTED_PATHS
         } if protected_review else None}))
     previous = publisher.git("show", parent + ":automatic/latest.json", check=False) if parent else ""
+    comparison_extensions = [name for name, enabled in (
+        ("final_rounds", house_final_rounds), ("water_only", water_only)) if enabled]
     if previous:
         previous = json.loads(previous)
+        if publish and not set(previous.get("reviewed_house_comparison_extensions", ())) <= set(comparison_extensions):
+            raise ValueError("Reviewed comparison reader unavailable; refusing to remove active qualifications")
         same_input = previous.get("input_results_version") == pointer["version"]
         prior_source_pin = previous.get("input_results_pointer")
         if same_input and prior_source_pin is not None and prior_source_pin != source_pin:
@@ -1323,6 +1327,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "all_states_certified_or_precinct_complete": False}
     if "congressional" in compiled:
         manifest["congressional"] = compiled["congressional"]
+    if comparison_extensions:
+        manifest["reviewed_house_comparison_extensions"] = comparison_extensions
     pending = {"manifest": manifest, "catalog": pin(encoded(catalog)), "parent": parent,
                "previous": pin(encoded(previous or None)), "datasets": descriptions,
                "files": {name: pin(body) for name, body in bodies.items()},

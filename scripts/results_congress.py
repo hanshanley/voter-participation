@@ -418,6 +418,29 @@ def reviewed_final_round(race, current, previous, previous_candidates, boundary)
     return copy.deepcopy(pair)
 
 
+def historical_house_no_vote(district, previous):
+    declarations = {
+        "FL-20": ("Sheila Cherfilus-McCormick", "D", "elected_unopposed_no_reported_general_vote",
+                  "2024 Florida elected the sole nominee unopposed; no general-election vote total was reported",
+                  "https://dos.elections.myflorida.com/candidates/CanList.asp?elecid=20241105-GEN"),
+        "OK-03": ("Frank D. Lucas", "R", "decided_in_primary_no_general_contest",
+                  "2024 Oklahoma decided the seat in its June 18 primary; no general-election contest was held",
+                  "https://oklahoma.gov/content/dam/ok/en/elections/notices/uocava-notices/2024-general-election-notice.pdf"),
+    }
+    if district not in declarations:
+        return None
+    name, party, status, reason, url = declarations[district]
+    candidates = previous["source_candidate_rows"]
+    if (previous["missing_major_party_counts"] != [name] or len(candidates) != 1
+            or any(previous["reported_counts"].get(key) != 0 for key in "DRO")):
+        return None
+    candidate, = candidates
+    if (candidate.get("name"), candidate.get("group"), candidate.get("named"), candidate.get("votes")) != (
+            name, party, True, None):
+        return None
+    return {"status": status, "reason": reason, "source_url": url}
+
+
 def comparisons(congress, review, historical_senate=None, boundary_review=None, *, final_rounds=False):
     if boundary_review is not None:
         from scripts.congressional_geography import validate_review
@@ -445,7 +468,11 @@ def comparisons(congress, review, historical_senate=None, boundary_review=None, 
                 if query["previous"]["multiple_same_party_nominees"]:
                     reasons.append("Previous multiple same-party nominees or fusion ambiguity")
                 if query["previous"]["missing_major_party_counts"]:
-                    reasons.append("Previous native candidate counts missing")
+                    if no_vote := historical_house_no_vote(key, query["previous"]):
+                        baseline["previous_no_general_vote"] = no_vote
+                        reasons.append(no_vote["reason"])
+                    else:
+                        reasons.append("Previous native candidate counts missing")
                 present = {party: any(c["party_group"] == party and c["role"] == "named_candidate"
                                       for c in data["candidates"]) for party in "DR"}
                 if present != query["previous"]["major_party_presence"]:
@@ -588,7 +615,10 @@ def house_state_comparisons(congress, review, compared=()):
                     sum(row["party_group"] == party and row["role"] == "named_candidate"
                         for row in current_candidates) > 1 for party in "DR"):
                 reasons.append("Multiple same-party nominees: " + query["district"])
-            if previous["missing_major_party_counts"] or not race["count_coverage_complete"]:
+            no_vote = historical_house_no_vote(query["district"], previous)
+            if no_vote:
+                reasons.append(no_vote["reason"] + ": " + query["district"])
+            if (previous["missing_major_party_counts"] and not no_vote) or not race["count_coverage_complete"]:
                 reasons.append("Candidate counts missing: " + query["district"])
             if any(row["party_group"] == "U" for row in current_candidates):
                 reasons.append("Native party unknown: " + query["district"])
