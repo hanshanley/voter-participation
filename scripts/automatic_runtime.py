@@ -940,20 +940,23 @@ def replay(package, output):
         seed["retained_bulk_turnout"] = (package / "inputs" / retained_bulk_turnout.MEMBER).read_bytes()
     boundary_source_root = None
     if "inputs/congressional-analytical-review.json" in manifest:
-        seed["congressional_analytical_review"] = read(package / "inputs/congressional-analytical-review.json")
-        boundaries = seed["congressional_analytical_review"].get("house_boundaries") or {}
+        review = read(package / "inputs/congressional-analytical-review.json")
+        seed["congressional_analytical_review"] = review
+        boundaries = review.get("house_boundaries") or {}
+        if "house_final_rounds" in review and (review["house_final_rounds"] is not True or not boundaries):
+            raise ValueError("Invalid packaged final-round comparison policy")
         if boundaries:
             boundary_source_root = package / "inputs/reviewed-congressional-sources"
         if "split_geometry_review" in boundaries:
             from scripts.congressional_geography import load_review as load_boundaries
             if load_boundaries(package / "inputs/reviewed-congressional-sources") != boundaries:
                 raise ValueError("Packaged House boundary review differs from its original evidence")
-        if any(seed["congressional_analytical_review"].get(key) is not None
+        if any(review.get(key) is not None
                for key in ("official_house_precedence", "native_official_house", "explicit_reference_names")):
             from scripts.congressional_analytical_bridge import load_review as load_analytical
             if load_analytical(package / "inputs/reviewed-congressional-sources",
-                               include_split_geometry="split_geometry_review" in boundaries) != seed[
-                    "congressional_analytical_review"]:
+                               include_split_geometry="split_geometry_review" in boundaries) != {
+                                   key: value for key, value in review.items() if key != "house_final_rounds"}:
                 raise ValueError("Packaged analytical extensions differ from their complete reviewed evidence")
     if "inputs/senate-legacy-review.json" in manifest:
         from scripts.senate_legacy_bridge import load_review as load_senate_review
@@ -1054,10 +1057,15 @@ def complete_release(repository, version, path, journal, checkpoint=lambda: None
             "immutable": True, "verified_anonymously": True}
 
 
-def analytical_policy(root, *, split_block_geometry=False):
+def analytical_policy(root, *, split_block_geometry=False, house_final_rounds=False):
     from scripts.congressional_analytical_bridge import REVIEW_PATH, load_review
-    return (load_review(root, include_split_geometry=split_block_geometry)
-            if (Path(root) / REVIEW_PATH).exists() else None)
+    review = (load_review(root, include_split_geometry=split_block_geometry)
+              if (Path(root) / REVIEW_PATH).exists() else None)
+    if house_final_rounds:
+        if not review or not review.get("house_boundaries"):
+            raise ValueError("Final-round House comparisons require the reviewed district boundary evidence")
+        review["house_final_rounds"] = True
+    return review
 
 
 PENDING_RUNTIME = "automatic/pending-publication.json"
@@ -1102,7 +1110,7 @@ def activate_staged_runtime(publisher, staged, catalog, pending, repository):
 
 
 def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
-        github_repository=WEBSITE_REPOSITORY, publish=True, split_block_geometry=False):
+        github_repository=WEBSITE_REPOSITORY, publish=True, split_block_geometry=False, house_final_rounds=False):
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
     pointer = results_pointer(pointer_url)
@@ -1117,7 +1125,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     review_path = ROOT / "data/results-intake/reviewed-eligibility.json"
     release_review = read(review_path) if review_path.exists() else None
     from scripts.congressional_analytical_bridge import data_paths
-    analytical_review = analytical_policy(ROOT, split_block_geometry=split_block_geometry)
+    analytical_review = analytical_policy(ROOT, split_block_geometry=split_block_geometry,
+                                          house_final_rounds=house_final_rounds)
     from scripts.senate_legacy_bridge import (
         REVIEW_PATH as SENATE_REVIEW_PATH, DATA_PATHS as SENATE_PATHS, load_review as load_senate_review)
     senate_review = load_senate_review(ROOT) if (ROOT / SENATE_REVIEW_PATH).exists() else None
@@ -1172,6 +1181,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "congressional_analytical_review": {
             name: pin((ROOT / name).read_bytes()) for name in data_paths(analytical_review)
         } if analytical_review else None,
+        **({"reviewed_house_final_rounds": True} if house_final_rounds else {}),
         "senate_legacy_review": {
             name: pin((ROOT / name).read_bytes()) for name in SENATE_PATHS
         } if senate_review else None,
@@ -1335,6 +1345,8 @@ def main():
     parser.add_argument("--no-publish", action="store_true")
     parser.add_argument("--accept-reviewed-house-split-geometry", action="store_true",
                         help="Enable only after delivery of the compatible district reader")
+    parser.add_argument("--accept-reviewed-house-final-rounds", action="store_true",
+                        help="Enable only after delivery of the compatible ranked-choice reader")
     parser.add_argument("--replay-package", type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
@@ -1347,7 +1359,8 @@ def main():
             parser.error("--repository and --work-dir are required for automatic delivery")
         result = run(args.repository, args.work_dir, args.results_pointer, args.model_seed,
                      args.github_repository, publish=not args.no_publish,
-                     split_block_geometry=args.accept_reviewed_house_split_geometry)
+                     split_block_geometry=args.accept_reviewed_house_split_geometry,
+                     house_final_rounds=args.accept_reviewed_house_final_rounds)
     print(json.dumps(result, sort_keys=True))
 
 

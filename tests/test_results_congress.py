@@ -235,6 +235,50 @@ def test_reviewed_boundary_gate_is_district_specific_and_keeps_other_holds(tmp_p
     assert retained["raw_recorded_margin_change_pp"] == row["raw_recorded_margin_change_pp"]
 
 
+def test_reviewed_maine_final_pair_qualifies_district_and_state_without_waiving_revision_guards(tmp_path):
+    from pathlib import Path
+
+    from scripts.congressional_geography import load_review
+
+    sources_by_chamber = sources()
+    one = race(state="ME", seat="1")
+    two = race(state="ME", seat="2", identity="102")
+    two.update(rankedChoice=True, rcvResult="final")
+    two["candidates"][0].update(first="Matthew", last="Dunlap", votes=165432, id="dd")
+    two["candidates"][1].update(first="Paul", last="LePage", votes=170890, id="rr")
+    sources_by_chamber["house"] = [one, two]
+    source = collect(tmp_path, sources_by_chamber)
+    review_data = review()
+    template = review_data["previous_district_queries"][0]
+    first = {**copy.deepcopy(template), "district": "ME-01"}
+    final = {**copy.deepcopy(template), "district": "ME-02"}
+    final["previous"].update(
+        reported_counts={"D": 197151, "R": 194445, "O": 0},
+        source_candidate_rows=[
+            {"group": "D", "name": "Jared F. Golden", "votes": 197151, "named": True},
+            {"group": "R", "name": "Austin Theriault", "votes": 194445, "named": True},
+        ])
+    review_data["previous_district_queries"] = [first, final]
+    geography = load_review(Path(__file__).resolve().parents[1])
+
+    def decisions(enabled):
+        races = congress.comparisons(source, review_data, boundary_review=geography, final_rounds=enabled)
+        district = next(r for r in races if r["id"] == "npr:house:ME:2:regular:general:rcv-final")
+        state = congress.house_state_comparisons(source, review_data, races)[0]
+        return district, state
+
+    assert all(not row["qualified_comparison"] for row in decisions(False))
+    district, state = decisions(True)
+    assert district["qualified_margin_change_pp"] == pytest.approx(-2.313867230207)
+    assert state["qualified_comparison"] and district["id"] in state["final_round_pairs"]
+    frame = source["races"][district["id"]]
+    frame["data"]["candidates"][0]["votes"] -= 1
+    assert all(not row["qualified_comparison"] for row in decisions(True))
+    frame["data"]["candidates"][0]["votes"] += 1
+    frame.update(status="retained_after_failure", freshness="retained_last_good")
+    assert all(not row["qualified_comparison"] for row in decisions(True))
+
+
 def test_default_sidecar_and_bounded_refresh_preserve_other_sources(tmp_path, monkeypatch):
     from scripts import results_intake as intake
     from test_results_intake import fixture
