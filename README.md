@@ -26,3 +26,27 @@ are not observed individual behavior.
 
 Complete downloads include all permitted inputs, code, queries, and results.
 The [website repository](https://github.com/hanshanley/margin_of_error) hosts the explorer.
+
+### New Mexico historical precinct identifier audit
+
+The weekly research audit reads the five official 2016–2024 turnout editions
+from an immutable accepted checkpoint and checks their identifiers against
+the retained, checksum-pinned rows from three dated GIS references. It preserves turnout-only and reference-only
+records, including source denominator holds. A matching identifier, even
+with a valid polygon, does not establish an election-day boundary.
+
+Each changed audit is also published as a content-addressed release; unchanged
+output does not create another release. The complete download contains every
+turnout row, all match decisions, the source
+receipts, and the inputs and code needed to reproduce the tables offline.
+From the extracted artifact, run:
+
+```sh
+python3.12 -m scripts.new_mexico_precinct_reference_audit \
+  --turnout-facts inputs/turnout-facts.json \
+  --reference-rows inputs/reference-rows.json --output reproduced
+```
+
+The source receipts also identify the original archives and hashes for
+independently re-extracting the GIS inputs with `pyshp==3.1.8` and
+`shapely==2.2.0`.
