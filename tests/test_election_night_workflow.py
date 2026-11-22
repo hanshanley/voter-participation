@@ -378,7 +378,7 @@ def test_late_archive_cli_uses_all_reviewed_sources_without_full_collection(tmp_
         "KS-1996-2008-statewide-turnout-study",
         "HI-general-election-county-turnout-history",
         *(f"HI-{year}-general-election-precinct-turnout" for year in (2020, 2022, 2024, 2026)),
-        *(f"NM-{year}-general-native-turnout-archive" for year in (2020, 2022, 2024)),
+        *(f"NM-{year}-general-native-turnout-archive" for year in (2016, 2018, 2020, 2022, 2024)),
         "ND-statewide-general-turnout-history", "SD-statewide-general-turnout-history",
         *(f"NC-{year}-general-participation-statistics" for year in range(2000, 2027, 2)),
         "CA-2026-media-turnout", "CA-2026-media-house", "CA-statewide-general-special-turnout-history",
