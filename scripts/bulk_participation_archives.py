@@ -8,7 +8,8 @@ from scripts import (
     connecticut_turnout_history, dakota_turnout_history, hawaii_precinct_turnout, hawaii_turnout_history,
     idaho_absentee_age, idaho_turnout_history, massachusetts_ballot_canvass,
     indiana_early_county_turnout, indiana_early_state_turnout, kansas_house_canvass, kansas_turnout_history, louisiana_group_history,
-    national_turnout_release_watch, new_jersey_periodic_counties, north_carolina_participation, oregon_turnout_history,
+    national_turnout_release_watch, new_jersey_periodic_counties, new_mexico_turnout_history,
+    north_carolina_participation, oregon_turnout_history,
     pa_audit_ballots,
     south_carolina_voter_statistics, southeast_turnout, virginia_absentee_history, virginia_bulk_turnout,
     virginia_precinct_turnout, washington_participation,
@@ -77,6 +78,8 @@ def families():
          (dakota_turnout_history.CSV,), dakota_turnout_history.exports),
         (routes(new_jersey_periodic_counties, new_jersey_periodic_counties.FEEDS), False,
          (new_jersey_periodic_counties.CSV,), new_jersey_periodic_counties.exports),
+        (routes(new_mexico_turnout_history, new_mexico_turnout_history.FEEDS), True,
+         (new_mexico_turnout_history.CSV,), new_mexico_turnout_history.exports),
         (routes(north_carolina_participation, north_carolina_participation.FEEDS), True,
          (north_carolina_participation.COUNTIES, north_carolina_participation.GROUPS,
           north_carolina_participation.PRECINCTS), north_carolina_participation.exports),
@@ -133,6 +136,7 @@ def original_reports(entries):
     yield from idaho_turnout_history.original_reports(entries)
     yield from idaho_absentee_age.original_reports(entries)
     yield from massachusetts_ballot_canvass.original_reports(entries)
+    yield from new_mexico_turnout_history.original_reports(entries)
     yield from alaska_precinct_history.midterm_originals(entries)
     if (entry := entries.get(se.AL_HISTORY)) and entry.get("data") is not None:
         source = entry["source"]
