@@ -18,10 +18,10 @@ from scripts.new_mexico_turnout_history_replay import build as turnout
 from scripts.participation_intake.contract import pin
 
 
-YEARS = ("2020", "2022", "2024")
+YEARS = ("2016", "2018", "2020", "2022", "2024")
 COLORS = ("#e0e9ec", "#b9d1da", "#87acbb", "#54889e", "#305e78")
 THRESHOLDS = (45, 55, 65, 75)
-LABELS = ("Below 45%", "45–54.9%", "55–64.9%", "65–74.9%", "75% and above")
+LABELS = ("Below 45%", "45–<55%", "55–<65%", "65–<75%", "75% and above")
 ALIAS = {"Dona Ana": "Doña Ana"}
 
 
@@ -32,7 +32,9 @@ def build(inputs):
     sources = json.loads((inputs / "county-sources.json").read_bytes())
     if set(sources) != set(YEARS):
         raise ValueError("Incomplete New Mexico county vintages")
-    project = Transformer.from_crs(4326, 5070, always_xy=True).transform
+    project = Transformer.from_crs(
+        4326, "+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-106 "
+        "+datum=NAD83 +units=m +no_defs +type=crs", always_xy=True).transform
     decisions, outputs, figures = [], {}, []
     for year in YEARS:
         selected = {ALIAS.get(r["county"], r["county"]): r for r in facts
@@ -73,7 +75,7 @@ def build(inputs):
                          f'<td>{int(row["source_eligible_voters"]):,}</td><td>{status}</td></tr>')
         held = sum(not r["source_eligible_rate_pct"] for r in map_rows.values())
         legend = "".join(f'<rect x="{40 + 175*i}" y="397" width="18" height="14" fill="{color}"/>'
-                         f'<text x="{64 + 175*i}" y="409">{label}</text>'
+                         f'<text x="{64 + 175*i}" y="409">{html.escape(label)}</text>'
                          for i, (color, label) in enumerate(zip(COLORS, LABELS)))
         svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 453" role="img"
 aria-labelledby="title-{year} desc-{year}"><title id="title-{year}">New Mexico county turnout, {year}</title>
@@ -101,8 +103,8 @@ aria-labelledby="title-{year} desc-{year}"><title id="title-{year}">New Mexico c
 <style>body{max-width:60rem;margin:auto;padding:1rem;font:1rem/1.5 system-ui,sans-serif;color:#1a1a1a;background:#F2EFE7}
 svg{width:100%;height:auto}.table{overflow:auto}td,th{padding:.35rem;text-align:left;border-bottom:1px solid #ccc}
 table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}summary{cursor:pointer}</style>
-<main><h1>New Mexico county turnout, 2020–2024</h1>
-<p>Same-report rates from three official elections, shown on dated Census county outlines.
+<main><h1>New Mexico county turnout, 2016–2024</h1>
+<p>Same-report rates from five official elections, shown on dated Census county outlines.
 Gray means the report contains an unusable denominator, not zero turnout.
 Reporting-unit counts are not given precinct locations.</p>
 <p><a href="new-mexico-county-map-values.csv">Download the exact map values and holds (CSV)</a></p>
