@@ -767,7 +767,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
     if bulk_originals:
         package_members["inputs/bulk-report-originals.json"] = encoded(bulk_originals)
     if inputs.get("granular", {}).get(ma.CROSSWALK_FEED, {}).get("status") == ma.CROSSWALK_STATUS:
-        original = (ROOT / ma.CROSSWALK_ORIGINAL).read_bytes()
+        original = ma.crosswalk_original(ROOT)
         ma.verify_pinned_crosswalk(inputs["granular"], original)
         package_members[ma.CROSSWALK_MEMBER] = original
     code = ("results_intake.py", "results_house.py", "results_congress.py", "results_granular.py", "results_native.py",

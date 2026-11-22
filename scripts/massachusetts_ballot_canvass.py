@@ -230,8 +230,16 @@ def parse_crosswalk(body):
     return {"municipalities": names, "participation_observation_qualified": False}
 
 
+def crosswalk_original(root):
+    root = Path(root)
+    original = root / CROSSWALK_ORIGINAL
+    if not original.exists() and root.name == "code":
+        original = root.parent / CROSSWALK_MEMBER
+    return original.read_bytes()
+
+
 def collect_crosswalk(collector, *, reuse_checked_week=False):
-    body = (Path(__file__).resolve().parents[1] / CROSSWALK_ORIGINAL).read_bytes()
+    body = crosswalk_original(Path(__file__).resolve().parents[1])
     data = parse_crosswalk(body)
     source = {"url": CROSSWALK_URL, **CROSSWALK_PIN}
     with collector.lock:
