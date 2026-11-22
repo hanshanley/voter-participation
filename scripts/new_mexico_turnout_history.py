@@ -5,9 +5,6 @@ from functools import partial
 import html
 import re
 
-from scripts.southeast_turnout import collect_report
-
-
 ELECTIONS = {
     2020: ("2782", "November 3, 2020", 1925),
     2022: ("2838", "November 8, 2022", 2163),
@@ -84,6 +81,8 @@ def parse(body, feed):
 
 
 def collect(collector, feed, *, reuse_checked_week=False):
+    from scripts.southeast_turnout import collect_report
+
     def checked(body, identity):
         data = parse(body, identity)
         if datetime.fromisoformat(data["date"]).date() > collector.observation_time().date():
