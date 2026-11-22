@@ -947,15 +947,18 @@ def replay(package, output):
             raise ValueError("Invalid packaged final-round comparison policy")
         if boundaries:
             boundary_source_root = package / "inputs/reviewed-congressional-sources"
-        if "split_geometry_review" in boundaries:
+        split_geometry = "split_geometry_review" in boundaries
+        water_only = "water_only_review" in boundaries
+        if split_geometry or water_only:
             from scripts.congressional_geography import load_review as load_boundaries
-            if load_boundaries(package / "inputs/reviewed-congressional-sources") != boundaries:
+            if load_boundaries(boundary_source_root, include_split_geometry=split_geometry,
+                               include_water_only=water_only) != boundaries:
                 raise ValueError("Packaged House boundary review differs from its original evidence")
         if any(review.get(key) is not None
                for key in ("official_house_precedence", "native_official_house", "explicit_reference_names")):
             from scripts.congressional_analytical_bridge import load_review as load_analytical
             if load_analytical(package / "inputs/reviewed-congressional-sources",
-                               include_split_geometry="split_geometry_review" in boundaries) != {
+                               include_split_geometry=split_geometry, include_water_only=water_only) != {
                                    key: value for key, value in review.items() if key != "house_final_rounds"}:
                 raise ValueError("Packaged analytical extensions differ from their complete reviewed evidence")
     if "inputs/senate-legacy-review.json" in manifest:
@@ -1057,9 +1060,9 @@ def complete_release(repository, version, path, journal, checkpoint=lambda: None
             "immutable": True, "verified_anonymously": True}
 
 
-def analytical_policy(root, *, split_block_geometry=False, house_final_rounds=False):
+def analytical_policy(root, *, split_block_geometry=False, water_only=False, house_final_rounds=False):
     from scripts.congressional_analytical_bridge import REVIEW_PATH, load_review
-    review = (load_review(root, include_split_geometry=split_block_geometry)
+    review = (load_review(root, include_split_geometry=split_block_geometry, include_water_only=water_only)
               if (Path(root) / REVIEW_PATH).exists() else None)
     if house_final_rounds:
         if not review or not review.get("house_boundaries"):
@@ -1110,7 +1113,8 @@ def activate_staged_runtime(publisher, staged, catalog, pending, repository):
 
 
 def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
-        github_repository=WEBSITE_REPOSITORY, publish=True, split_block_geometry=False, house_final_rounds=False):
+        github_repository=WEBSITE_REPOSITORY, publish=True, split_block_geometry=False, house_final_rounds=False,
+        water_only=False):
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
     pointer = results_pointer(pointer_url)
@@ -1126,7 +1130,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     release_review = read(review_path) if review_path.exists() else None
     from scripts.congressional_analytical_bridge import data_paths
     analytical_review = analytical_policy(ROOT, split_block_geometry=split_block_geometry,
-                                          house_final_rounds=house_final_rounds)
+                                          house_final_rounds=house_final_rounds, water_only=water_only)
     from scripts.senate_legacy_bridge import (
         REVIEW_PATH as SENATE_REVIEW_PATH, DATA_PATHS as SENATE_PATHS, load_review as load_senate_review)
     senate_review = load_senate_review(ROOT) if (ROOT / SENATE_REVIEW_PATH).exists() else None
@@ -1347,6 +1351,8 @@ def main():
                         help="Enable only after delivery of the compatible district reader")
     parser.add_argument("--accept-reviewed-house-final-rounds", action="store_true",
                         help="Enable only after delivery of the compatible ranked-choice reader")
+    parser.add_argument("--accept-reviewed-house-water-only", action="store_true",
+                        help="Enable only after delivery of the compatible water-transfer reader")
     parser.add_argument("--replay-package", type=Path)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
@@ -1360,7 +1366,8 @@ def main():
         result = run(args.repository, args.work_dir, args.results_pointer, args.model_seed,
                      args.github_repository, publish=not args.no_publish,
                      split_block_geometry=args.accept_reviewed_house_split_geometry,
-                     house_final_rounds=args.accept_reviewed_house_final_rounds)
+                     house_final_rounds=args.accept_reviewed_house_final_rounds,
+                     water_only=args.accept_reviewed_house_water_only)
     print(json.dumps(result, sort_keys=True))
 
 

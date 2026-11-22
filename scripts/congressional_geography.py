@@ -1,6 +1,7 @@
 """Reproduce comparison-specific House boundary decisions from complete Census BEFs."""
 
 import argparse
+import copy
 from collections import Counter
 import csv
 import gzip
@@ -24,6 +25,22 @@ DIRECTORY = "data/results-intake/district-boundaries/" + VERSION
 REVIEW_PATH = DIRECTORY + "/review.json.gz"
 NAMES = ("cd119.zip", "cd120.zip", "CD119_BlockSplits.pdf", "CD120_BlockSplits.pdf")
 DATA_PATHS = (REVIEW_PATH,) + tuple(DIRECTORY + "/" + name for name in NAMES)
+WATER_DIR = "data/results-intake/district-water-only/20261122-01"
+WATER_METHOD = "complete_enacted_plans_differ_only_in_reviewed_water_blocks"
+WATER_SOURCES = {
+    "fl-cd119.txt.gz": ("https://edr.state.fl.us/Content/redistricting/2020redistricting/P000C0109.txt",
+                       "588482ba862266702f7439c8804f5e0dad02444ae563ffb78e54e69e073a5188"),
+    "fl-cd120.txt.gz": ("https://edr.state.fl.us/Content/redistricting/2026redistricting/EOGPCRP2026.txt",
+                       "ae520c0ace210f87af6bfc11016fbfc7d3a90174441020deaa52c0c20e0fdc40"),
+    "fl-census-water-blocks.json": (
+        "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/10/query"
+        "?where=GEOID%20IN%20%28%27120830010031087%27%2C%27120690303052039%27%29"
+        "&outFields=GEOID%2CSTATE%2CCOUNTY%2CAREALAND%2CAREAWATER%2CHU100%2CPOP100%2CLWBLKTYP%2CVINTAGE"
+        "&returnGeometry=false&f=json",
+        "08d5900617652563ba6d6de043cf58c02393b3769614f1aceba0800e3657da15"),
+}
+WATER_PATHS = tuple(f"{WATER_DIR}/{name}" for name in WATER_SOURCES)
+WATER_BLOCKS = {"FL-03": "120830010031087", "FL-06": "120690303052039"}
 FIPS = dict(item.split(":") for item in (
     "AL:01 AK:02 AZ:04 AR:05 CA:06 CO:08 CT:09 DE:10 FL:12 GA:13 HI:15 "
     "ID:16 IL:17 IN:18 IA:19 KS:20 KY:21 LA:22 ME:23 MD:24 MA:25 MI:26 "
@@ -297,9 +314,85 @@ def compile_review(originals):
             "split_blocks": splits, "decisions": decisions(inventories, splits)}
 
 
+def florida_assignments(body):
+    rows = {}
+    for geoid, district in csv.reader(io.StringIO(body.decode("ascii"))):
+        require(re.fullmatch(r"12[0-9]{13}", geoid) and geoid not in rows
+                and re.fullmatch(r"[1-9]|1[0-9]|2[0-8]", district),
+                "Unexpected Florida block assignment")
+        rows[geoid] = district.zfill(2)
+    require(len(rows) == 390066, "Incomplete enacted Florida block inventory")
+    return rows
+
+
+def water_evidence(root, base):
+    bodies, sources = {}, {}
+    for name, (url, sha) in WATER_SOURCES.items():
+        body = (Path(root) / WATER_DIR / name).read_bytes()
+        if name.endswith(".gz"):
+            body = gzip.decompress(body)
+        require(pin(body)["sha256"] == sha, "Changed water-only original: " + name)
+        bodies[name] = body
+        sources[name] = {"url": url, **pin(body)}
+    before, after = (florida_assignments(bodies[f"fl-cd{congress}.txt.gz"]) for congress in (119, 120))
+    require(before.keys() == after.keys(), "Florida block inventories do not match")
+    source = json.loads(bodies["fl-census-water-blocks.json"])
+    facts = {f["attributes"]["GEOID"]: f["attributes"] for f in source["features"]}
+    require(not source.get("error") and not source.get("exceededTransferLimit")
+            and len(source["features"]) == len(facts) == len(WATER_BLOCKS)
+            and facts.keys() == set(WATER_BLOCKS.values()), "Incomplete Census water-block inventory")
+    districts = {}
+    for district, block in WATER_BLOCKS.items():
+        decision = base["decisions"][district]
+        code = decision["district_code"]
+        memberships = [{g for g, seat in edition.items() if seat == code} for edition in (before, after)]
+        for field, geoid_set in zip(("previous_membership", "current_membership"), memberships):
+            fingerprint = {"blocks": len(geoid_set),
+                           "sha256": hashlib.sha256("".join(g + "\n" for g in sorted(geoid_set)).encode()).hexdigest()}
+            require(fingerprint == decision[field], "Enacted district differs from reviewed Census membership")
+        require(memberships[0] ^ memberships[1] == {block}, "Additional affected Florida blocks")
+        attributes = facts[block]
+        require(attributes["STATE"] == "12" and attributes["COUNTY"] == block[2:5]
+                and attributes["LWBLKTYP"] == "W" and attributes["VINTAGE"] == "70"
+                and attributes["AREALAND"] == attributes["HU100"] == attributes["POP100"] == 0
+                and attributes["AREAWATER"] > 0, "Transferred Florida block is not water-only")
+        districts[district] = {"block": block, "from": before[block], "to": after[block],
+                               "water_m2": attributes["AREAWATER"]}
+    return {"method": WATER_METHOD, "sources": sources, "districts": districts}
+
+
+def apply_water_evidence(base, evidence):
+    require(evidence["method"] == WATER_METHOD
+            and evidence["districts"].keys() == WATER_BLOCKS.keys()
+            and evidence["sources"].keys() == WATER_SOURCES.keys()
+            and all(evidence["sources"][name]["url"] == url and evidence["sources"][name]["sha256"] == sha
+                    for name, (url, sha) in WATER_SOURCES.items()), "Water-only review identity differs")
+    result = copy.deepcopy(base)
+    result["water_only_review"] = evidence
+    for district, block in WATER_BLOCKS.items():
+        decision, transfer = result["decisions"][district], evidence["districts"][district]
+        require(decision["holds"] == ["changed_2020_block_membership"]
+                and not decision["affected_split_blocks"] and transfer["block"] == block
+                and transfer["to"] == decision["district_code"]
+                and transfer["from"] == {"FL-03": "12", "FL-06": "11"}[district]
+                and decision["current_membership"]["blocks"] == decision["previous_membership"]["blocks"] + 1
+                and transfer["water_m2"] == {"FL-03": 208825, "FL-06": 46759}[district],
+                "Unresolved land, split block or unreviewed water transfer")
+        decision.update(boundary_compatible=True, holds=[], method=WATER_METHOD, water_only_transfer=transfer)
+    return result
+
+
 def validate_review(review):
+    if "water_only_review" in review:
+        original = copy.deepcopy(review)
+        extension = original.pop("water_only_review")
+        restored = decisions(original["national_memberships"], original["split_blocks"])
+        for district in WATER_BLOCKS:
+            original["decisions"][district] = restored[district]
+        validate_review(original)
+        require(review == apply_water_evidence(original, extension), "Water-only review differs")
+        return review
     if "split_geometry_review" in review:
-        import copy
         from scripts.congressional_split_blocks import apply_review
         original = copy.deepcopy(review)
         extension = original.pop("split_geometry_review")
@@ -331,7 +424,7 @@ def validate_review(review):
     return review
 
 
-def load_review(root, *, include_split_geometry=True):
+def load_review(root, *, include_split_geometry=True, include_water_only=False):
     path = Path(root) / REVIEW_PATH
     if not path.exists():
         return None
@@ -344,7 +437,9 @@ def load_review(root, *, include_split_geometry=True):
             key: expected[key] for key in ("bytes", "sha256")}, "Changed original Census evidence")
     if include_split_geometry:
         from scripts import congressional_split_blocks as split
-        return split.apply_review(review, split.load_review(root))
+        review = split.apply_review(review, split.load_review(root))
+    if include_water_only:
+        review = apply_water_evidence(review, water_evidence(root, review))
     return review
 
 
