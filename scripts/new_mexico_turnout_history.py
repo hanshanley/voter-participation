@@ -89,9 +89,14 @@ def collect(collector, feed, *, reuse_checked_week=False):
         data = parse(body, identity)
         if datetime.fromisoformat(data["date"]).date() > collector.observation_time().date():
             raise ValueError("NM historical edition is future-dated")
-        return data
+        # Older publishers require an explicit no-op for a scoped source they do not recognize.
+        return {**data, "updates": []}
 
-    return collect_report(collector, feed, URLS[feed], checked, reuse_checked_week=reuse_checked_week)
+    entry = collect_report(collector, feed, URLS[feed], checked, reuse_checked_week=reuse_checked_week)
+    if (data := entry.get("data")) is not None:
+        require(data.get("updates", []) == [], "NM historical archive cannot project observations")
+        entry = {**entry, "data": {**data, "updates": []}}
+    return entry
 
 
 def valid_rate(count, eligible):
@@ -138,4 +143,5 @@ def original_reports(entries):
     for feed, url in URLS.items():
         entry = entries.get(feed) or {}
         if (data := entry.get("data")) is not None:
-            yield feed, entry["source"], ".html", MAX_BYTES, entry["source"]["url"] == url, partial(parse, feed=feed), data
+            yield (feed, entry["source"], ".html", MAX_BYTES, entry["source"]["url"] == url,
+                   partial(parse, feed=feed), {k: v for k, v in data.items() if k != "updates"})
