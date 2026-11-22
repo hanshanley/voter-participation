@@ -235,6 +235,50 @@ def test_reviewed_boundary_gate_is_district_specific_and_keeps_other_holds(tmp_p
     assert retained["raw_recorded_margin_change_pp"] == row["raw_recorded_margin_change_pp"]
 
 
+def test_reviewed_maine_final_pair_qualifies_district_and_state_without_waiving_revision_guards(tmp_path):
+    from pathlib import Path
+
+    from scripts.congressional_geography import load_review
+
+    sources_by_chamber = sources()
+    one = race(state="ME", seat="1")
+    two = race(state="ME", seat="2", identity="102")
+    two.update(rankedChoice=True, rcvResult="final")
+    two["candidates"][0].update(first="Matthew", last="Dunlap", votes=165432, id="dd")
+    two["candidates"][1].update(first="Paul", last="LePage", votes=170890, id="rr")
+    sources_by_chamber["house"] = [one, two]
+    source = collect(tmp_path, sources_by_chamber)
+    review_data = review()
+    template = review_data["previous_district_queries"][0]
+    first = {**copy.deepcopy(template), "district": "ME-01"}
+    final = {**copy.deepcopy(template), "district": "ME-02"}
+    final["previous"].update(
+        reported_counts={"D": 197151, "R": 194445, "O": 0},
+        source_candidate_rows=[
+            {"group": "D", "name": "Jared F. Golden", "votes": 197151, "named": True},
+            {"group": "R", "name": "Austin Theriault", "votes": 194445, "named": True},
+        ])
+    review_data["previous_district_queries"] = [first, final]
+    geography = load_review(Path(__file__).resolve().parents[1])
+
+    def decisions(enabled):
+        races = congress.comparisons(source, review_data, boundary_review=geography, final_rounds=enabled)
+        district = next(r for r in races if r["id"] == "npr:house:ME:2:regular:general:rcv-final")
+        state = congress.house_state_comparisons(source, review_data, races)[0]
+        return district, state
+
+    assert all(not row["qualified_comparison"] for row in decisions(False))
+    district, state = decisions(True)
+    assert district["qualified_margin_change_pp"] == pytest.approx(-2.313867230207)
+    assert state["qualified_comparison"] and district["id"] in state["final_round_pairs"]
+    frame = source["races"][district["id"]]
+    frame["data"]["candidates"][0]["votes"] -= 1
+    assert all(not row["qualified_comparison"] for row in decisions(True))
+    frame["data"]["candidates"][0]["votes"] += 1
+    frame.update(status="retained_after_failure", freshness="retained_last_good")
+    assert all(not row["qualified_comparison"] for row in decisions(True))
+
+
 def test_default_sidecar_and_bounded_refresh_preserve_other_sources(tmp_path, monkeypatch):
     from scripts import results_intake as intake
     from test_results_intake import fixture
@@ -593,3 +637,50 @@ def test_unopposed_previous_race_keeps_defined_raw_arithmetic(tmp_path):
                if row["chamber"] == "house")
     assert not row["qualified_comparison"]
     assert row["previous"]["D"] == 0 and row["raw_recorded_margin_change_pp"] is not None
+
+
+def test_matched_district_subtotal_pools_votes_and_excludes_held_or_unverified_rows():
+    def row(seat, previous, current, qualified=True, boundary=True):
+        return {"id": f"race-{seat}", "seat": seat, "advertised": True,
+                "qualified_comparison": qualified, "previous": dict(zip("DR", previous)),
+                **dict(zip("DR", current)),
+                "baseline": {"boundary_eligibility": {"boundary_compatible": boundary}}}
+
+    races = [row("2", (60, 40), (50, 50)), row("1", (450, 450), (540, 360)),
+             row("3", (800, 200), (200, 800), qualified=False),
+             row("4", (200, 800), (800, 200), boundary=False)]
+    selected = {race["id"] for race in races}
+    subtotal = congress.matched_district_subset(races, selected, 4)
+    assert subtotal["race_ids"] == ["race-1", "race-2"]
+    assert subtotal["previous"] == {"D": 510, "R": 490}
+    assert subtotal["current"] == {"D": 590, "R": 410}
+    assert subtotal["margin_change_pp"] == 16
+    assert subtotal["D_two_party_share_change_pp"] == 8
+    assert congress.matched_district_subset(races, {"race-3", "race-4"}, 4) is None
+
+
+@pytest.mark.parametrize("state,seat,name,party,status", [
+    ("FL", "20", "Sheila Cherfilus-McCormick", "D", "elected_unopposed_no_reported_general_vote"),
+    ("OK", "3", "Frank D. Lucas", "R", "decided_in_primary_no_general_contest"),
+])
+def test_official_no_general_vote_explains_hold_without_inventing_counts(tmp_path, state, seat, name, party, status):
+    bodies = sources()
+    bodies["house"] = [race(state=state, seat=seat), race(state=state, seat="1", identity="102")]
+    source = collect(tmp_path, bodies)
+    reviewed = review()
+    district = f"{state}-{seat.zfill(2)}"
+    template = reviewed["previous_district_queries"][0]
+    previous = {**template["previous"], "reported_counts": dict.fromkeys("DRO", 0),
+                "missing_major_party_counts": [name],
+                "source_candidate_rows": [{"name": name, "group": party, "named": True, "votes": None}]}
+    reviewed["previous_district_queries"] = [
+        {**template, "district": f"{state}-01"}, {**template, "district": district, "previous": previous}]
+    row = next(r for r in congress.comparisons(source, reviewed) if r["baseline"].get("district") == district)
+    assert row["baseline"]["previous_no_general_vote"]["status"] == status
+    assert row["previous"] is row["qualified_margin_change_pp"] is None
+    assert not row["qualified_comparison"]
+    state_row, = congress.house_state_comparisons(source, reviewed)
+    assert not state_row["qualified_comparison"]
+    assert any("no general" in hold for hold in state_row["comparison_holds"])
+    previous["source_candidate_rows"][0]["name"] = "Different nominee"
+    assert congress.historical_house_no_vote(district, previous) is None

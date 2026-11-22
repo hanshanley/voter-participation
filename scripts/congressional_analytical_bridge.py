@@ -34,12 +34,18 @@ DATA_PATHS = (REVIEW_PATH,) + tuple(
 def data_paths(review):
     result = tuple(name for name in DATA_PATHS
                  if name not in GEOGRAPHY_PATHS or review.get("house_boundaries") is not None)
+    if "senate_long_baseline" in review:
+        from scripts.senate_long_baseline import PATH as LONG_BASELINE_PATH
+        result += (LONG_BASELINE_PATH,)
     if review.get("explicit_reference_names") is not None:
         from scripts.congressional_reference_identity import DATA_PATHS as REFERENCE_PATHS
         result += REFERENCE_PATHS
     if (review.get("house_boundaries") or {}).get("split_geometry_review") is not None:
         from scripts.congressional_split_blocks import DATA_PATHS as SPLIT_PATHS
         result += SPLIT_PATHS
+    if "water_only_review" in (review.get("house_boundaries") or {}):
+        from scripts.congressional_geography import WATER_PATHS
+        result += WATER_PATHS
     if review.get("official_house_precedence") is not None:
         from scripts.official_house_precedence import DATA_PATHS as PRECEDENCE_PATHS
         result += PRECEDENCE_PATHS
@@ -74,7 +80,7 @@ def compressed(value):
     return body[:9] + bytes([3]) + body[10:]
 
 
-def load_review(root, *, include_split_geometry=True):
+def load_review(root, *, include_split_geometry=True, include_water_only=False):
     root = Path(root)
     review = json.loads(gzip.decompress((root / REVIEW_PATH).read_bytes()))
     require(review.get("contract") == CONTRACT
@@ -107,7 +113,8 @@ def load_review(root, *, include_split_geometry=True):
     from scripts.congressional_reference_identity import load_optional as load_reference_names
     review = load_reference_names(root, review)
     from scripts.congressional_geography import load_review as load_geography
-    geography = load_geography(root, include_split_geometry=include_split_geometry)
+    geography = load_geography(root, include_split_geometry=include_split_geometry,
+                               include_water_only=include_water_only)
     if geography is not None:
         review["house_boundaries"] = geography
     from scripts.official_house_precedence import REVIEW_PATH as PRECEDENCE_PATH, load_review as load_precedence
@@ -116,6 +123,9 @@ def load_review(root, *, include_split_geometry=True):
     from scripts.native_official_house import REVIEW_PATH as NATIVE_PATH, load_review as load_native
     if (root / NATIVE_PATH).exists():
         review["native_official_house"] = load_native(root, review)
+    from scripts import senate_long_baseline
+    if (root / senate_long_baseline.PATH).is_file():
+        review["senate_long_baseline"] = senate_long_baseline.load_review(root)
     return review
 
 

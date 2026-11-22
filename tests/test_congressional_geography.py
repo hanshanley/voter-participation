@@ -115,6 +115,27 @@ def test_complete_review_reconciles_real_split_tables_and_corrected_missouri(rev
     assert decisions["AL-01"]["holds"] == ["changed_2020_block_membership"]
 
 
+def test_florida_water_proof_preserves_donor_and_all_other_decisions(reviewed):
+    root = Path(__file__).resolve().parents[1]
+    verified = geography.water_evidence(root, reviewed)
+    candidate = geography.apply_water_evidence(reviewed, verified)
+    assert geography.validate_review(candidate) is candidate
+    changed = {district for district, decision in candidate["decisions"].items()
+               if reviewed["decisions"][district] != decision}
+    assert changed == {"FL-03", "FL-06"}
+    assert all(candidate["decisions"][district]["boundary_compatible"] for district in changed)
+    assert all(not candidate["decisions"][district]["boundary_compatible"]
+               for district in ("FL-11", "FL-12"))
+    altered = copy.deepcopy(candidate)
+    altered["decisions"]["FL-03"]["affected_split_blocks"] = ["120830010031087"]
+    with pytest.raises(ValueError, match="Water-only review differs"):
+        geography.validate_review(altered)
+    altered = copy.deepcopy(verified)
+    altered["districts"]["FL-03"]["block"] = "120830010031088"
+    with pytest.raises(ValueError, match="Unresolved land"):
+        geography.apply_water_evidence(reviewed, altered)
+
+
 @pytest.mark.parametrize("change", ["promotion", "fingerprint", "split", "inventory", "version", "source"])
 def test_review_changes_cannot_silently_grant_comparison_eligibility(reviewed, change):
     value = copy.deepcopy(reviewed)
