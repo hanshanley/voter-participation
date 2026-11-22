@@ -34,33 +34,104 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install audit and source reader dependencies
-        run: python -m pip install 'pyshp==3.1.8' 'shapely==2.2.0' 'pytest>=8' 'requests>=2.31'
+        run: python -m pip install 'pytest>=8' 'requests>=2.31'
       - name: Test audit rules and retained turnout sources
         run: python -m pytest -q tests/test_new_mexico_precinct_reference_audit.py tests/test_new_mexico_turnout_history.py
       - name: Audit the exact accepted source and reproduce every output offline
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         shell: bash
         env:
-          PROJ_NETWORK: "OFF"
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          source="$(git ls-remote --exit-code origin refs/tags/results-data | cut -f1)"
-          [[ "$source" =~ ^[a-f0-9]{40}$ ]]
           audit="$RUNNER_TEMP/nm-precinct-audit"
+          curl --fail --silent --show-error --location --max-time 60 --max-filesize 500000 \
+            "https://github.com/hanshanley/voter-participation/releases/download/new-mexico-precinct-identifier-audit-2016-2024/complete-analysis.zip" \
+            -o "$RUNNER_TEMP/nm-reference.zip"
+          printf '%s  %s\n' b0c24504ea37c516fcf0fab19abe65a0eb7562aafe0d106ec5e773384b75a3b0 "$RUNNER_TEMP/nm-reference.zip" | sha256sum --check
+          unzip -p "$RUNNER_TEMP/nm-reference.zip" inputs/reference-rows.json > "$RUNNER_TEMP/nm-reference-rows.json"
+          if [[ "$EVENT_NAME" == 'pull_request' ]]; then
+            unzip -p "$RUNNER_TEMP/nm-reference.zip" inputs/turnout-facts.json > "$RUNNER_TEMP/nm-turnout-fixture.json"
+            input=(--turnout-facts "$RUNNER_TEMP/nm-turnout-fixture.json")
+          else
+            source="$(git ls-remote --exit-code origin refs/tags/results-data | cut -f1)"
+            [[ "$source" =~ ^[a-f0-9]{40}$ ]]
+            input=(--results-pointer "https://raw.githubusercontent.com/hanshanley/voter-participation/$source/latest.json")
+          fi
           python -m scripts.new_mexico_precinct_reference_audit \
-            --results-pointer "https://raw.githubusercontent.com/hanshanley/voter-participation/$source/latest.json" \
-            --fetch-references --output "$audit"
+            "${input[@]}" --reference-rows "$RUNNER_TEMP/nm-reference-rows.json" --output "$audit"
           python -m scripts.new_mexico_precinct_reference_audit \
             --turnout-facts "$audit/inputs/turnout-facts.json" \
             --reference-rows "$audit/inputs/reference-rows.json" --output "$RUNNER_TEMP/nm-precinct-replay"
           diff -qr --exclude=accepted-checkpoint.json "$audit" "$RUNNER_TEMP/nm-precinct-replay"
+          if [[ "$EVENT_NAME" == 'pull_request' ]]; then
+            jq -e 'map(.matched_keys) == [1481,1481,1925,2163,2169] and all(.[]; .election_day_geometry_verified == false)' "$audit/summary.json"
+            unzip -p "$RUNNER_TEMP/nm-reference.zip" participation-nm-historical-native-turnout.csv | cmp - "$audit/participation-nm-historical-native-turnout.csv"
+          fi
           mkdir "$audit/scripts"
           cp scripts/new_mexico_precinct_reference_audit.py scripts/new_mexico_turnout_history{,_replay}.py "$audit/scripts/"
           jq -c '.[]' "$audit/summary.json" >> "$GITHUB_STEP_SUMMARY"
       - name: Retain every numerical row and replay input
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v6
         with:
           name: new-mexico-precinct-reference-audit
           retention-days: 30
           path: ${{ runner.temp }}/nm-precinct-audit/
           if-no-files-found: error
+  publish:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: new-mexico-precinct-reference-audit
+          path: audit
+      - name: Publish new complete bytes without replacing previous releases
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import zipfile
+          from pathlib import Path
+
+          root = Path("audit")
+          files = {path.relative_to(root).as_posix(): path.read_bytes()
+                   for path in root.rglob("*") if path.is_file()
+                   and path.name != "accepted-checkpoint.json"}
+          required = {"precinct-reference-dispositions.csv", "summary.json", "source-receipts.json",
+                      "participation-nm-historical-native-turnout.csv", "REPRODUCE.txt",
+                      "inputs/turnout-facts.json", "inputs/reference-rows.json",
+                      "scripts/new_mexico_precinct_reference_audit.py",
+                      "scripts/new_mexico_turnout_history.py", "scripts/new_mexico_turnout_history_replay.py"}
+          if set(files) != required:
+              raise SystemExit("Incomplete replay download")
+          files["checksums.json"] = json.dumps({name: {"sha256": hashlib.sha256(body).hexdigest(),
+                                                       "bytes": len(body)}
+                                                for name, body in files.items()}, sort_keys=True).encode()
+          with zipfile.ZipFile("complete-analysis.zip", "w") as archive:
+              for name, body in sorted(files.items()):
+                  archive.writestr(zipfile.ZipInfo(name, (1980, 1, 1, 0, 0, 0)), body)
+          PY
+          sha="$(sha256sum complete-analysis.zip | cut -d' ' -f1)"
+          tag="nm-precinct-identifier-audit-$sha"
+          api="repos/$GITHUB_REPOSITORY/releases/tags/$tag"
+          if gh api "$api" > release.json 2> error.log; then
+            jq -e --arg digest "sha256:$sha" '[.assets[] | select(.name == "complete-analysis.zip" and .digest == $digest)] | length == 1' release.json
+          elif grep -Fq 'HTTP 404' error.log; then
+            gh release create "$tag" complete-analysis.zip --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" --latest=false --title "New Mexico precinct identifier audit ${sha:0:12}" \
+              --notes 'Complete offline turnout and identifier audit. These are reference matches, not verified election-day boundaries.'
+          else
+            cat error.log >&2
+            exit 1
+          fi
+          url="https://github.com/$GITHUB_REPOSITORY/releases/download/$tag/complete-analysis.zip"
+          curl --fail --silent --show-error --location --max-time 60 --max-filesize 5000000 "$url" -o verified.zip
+          cmp complete-analysis.zip verified.zip
+          printf 'Complete verified audit: %s\n' "$url" >> "$GITHUB_STEP_SUMMARY"
