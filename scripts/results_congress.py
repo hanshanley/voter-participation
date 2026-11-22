@@ -787,6 +787,14 @@ def runtime(congress, review, analytical_review=None, estimates=None):
         }
         payload["reviewed_races"] = compared
         payload["races"] = legacy_comparison_view(compared)
+        if "senate_long_baseline" in analytical_review:
+            from scripts import senate_long_baseline
+
+            older = senate_long_baseline.comparisons(compared, candidates, analytical_review["senate_long_baseline"])
+            payload["senate_older_baselines"] = older
+            files["congressional/senate-older-baselines.csv"] = csv_bytes(older)
+            query["senate_older_baselines"] = older
+            files["congressional/queries.json.gz"] = compressed(query)
         payload["scientific_comparison_coverage"] = {
             "reviewed_qualified_senate": sum(
                 row["chamber"] == "senate" and row["qualified_comparison"] for row in compared),

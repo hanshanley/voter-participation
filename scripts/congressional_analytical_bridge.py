@@ -34,6 +34,9 @@ DATA_PATHS = (REVIEW_PATH,) + tuple(
 def data_paths(review):
     result = tuple(name for name in DATA_PATHS
                  if name not in GEOGRAPHY_PATHS or review.get("house_boundaries") is not None)
+    if "senate_long_baseline" in review:
+        from scripts.senate_long_baseline import PATH as LONG_BASELINE_PATH
+        result += (LONG_BASELINE_PATH,)
     if review.get("explicit_reference_names") is not None:
         from scripts.congressional_reference_identity import DATA_PATHS as REFERENCE_PATHS
         result += REFERENCE_PATHS
@@ -120,6 +123,9 @@ def load_review(root, *, include_split_geometry=True, include_water_only=False):
     from scripts.native_official_house import REVIEW_PATH as NATIVE_PATH, load_review as load_native
     if (root / NATIVE_PATH).exists():
         review["native_official_house"] = load_native(root, review)
+    from scripts import senate_long_baseline
+    if (root / senate_long_baseline.PATH).is_file():
+        review["senate_long_baseline"] = senate_long_baseline.load_review(root)
     return review
 
 

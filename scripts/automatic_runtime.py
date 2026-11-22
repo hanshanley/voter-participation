@@ -79,7 +79,7 @@ CODE_PATHS = (
     "official_house_precedence.py", "native_official_house.py",
     "congressional_reference_identity.py",
     "supported_analytical_release.py", "nm_turnout_export.py", "results_native_rhode_island.py",
-    "senate_legacy_bridge.py", "senate_complete_categories.py", "protected_official_house.py",
+    "senate_legacy_bridge.py", "senate_complete_categories.py", "senate_long_baseline.py", "protected_official_house.py",
     "protected_official_wyoming.py", "statewide_ballot_totals.py", "calibrated_swing.py",
     "participation_intake/contract.py", "participation_intake/publisher.py",
 )
@@ -824,7 +824,8 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
                  "test_congressional_split_blocks.py",
                  "test_official_house_precedence.py", "test_native_official_house.py",
                  "test_congressional_reference_identity.py",
-                 "test_senate_legacy_bridge.py", "test_senate_complete_categories.py", "test_protected_official_house.py",
+                 "test_senate_legacy_bridge.py", "test_senate_complete_categories.py", "test_senate_long_baseline.py",
+                 "test_protected_official_house.py",
                  "test_protected_official_wyoming.py", "test_statewide_ballot_totals.py",
                  "test_results_congress.py", "test_ohio_retained_turnout.py", "test_retained_turnout.py"):
         path = ROOT / "tests" / name
@@ -955,7 +956,8 @@ def replay(package, output):
                                include_water_only=water_only) != boundaries:
                 raise ValueError("Packaged House boundary review differs from its original evidence")
         if any(review.get(key) is not None
-               for key in ("official_house_precedence", "native_official_house", "explicit_reference_names")):
+               for key in ("official_house_precedence", "native_official_house", "explicit_reference_names",
+                           "senate_long_baseline")):
             from scripts.congressional_analytical_bridge import load_review as load_analytical
             if load_analytical(package / "inputs/reviewed-congressional-sources",
                                include_split_geometry=split_geometry, include_water_only=water_only) != {
