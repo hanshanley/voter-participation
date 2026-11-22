@@ -804,7 +804,7 @@ def export_collection(work, config, baseline, inputs, extras, now, source_attemp
              "kansas_house_canvass.py", "idaho_turnout_history.py", "idaho_absentee_age.py",
              "massachusetts_ballot_canvass.py",
              "hawaii_turnout_history.py", "hawaii_precinct_turnout.py", "dakota_turnout_history.py",
-             "new_jersey_periodic_counties.py",
+             "new_jersey_periodic_counties.py", "new_mexico_turnout_history.py",
              "north_carolina_participation.py", "california_media.py", "california_turnout_history.py",
              "indiana_early_state_turnout.py", "indiana_early_county_turnout.py", "pa_audit_ballots.py",
              "south_carolina_voter_statistics.py",
