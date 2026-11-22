@@ -51,3 +51,18 @@ def test_reference_inventory_fails_closed(tmp_path):
 def test_symbolic_checkpoint_pointer_is_rejected_without_fetch():
     with pytest.raises(ValueError, match="commit-pinned"):
         audit.accepted_entries("https://raw.githubusercontent.com/hanshanley/voter-participation/results-data/latest.json")
+
+
+def test_replay_preserves_source_status_but_not_polling_metadata():
+    source = {"url": "official", "sha256": "a" * 64, "bytes": 1}
+    facts = {"participation_observation_qualified": False, "state": [11, 12]}
+    entries = {key: {"data": facts, "source": source, "status": "reported"} for key in audit.history.FEEDS}
+    feed = next(iter(entries))
+    polled = {**entries, feed: {**entries[feed], "attempted_source_pin": {"bytes": 7},
+                                "archive_check_week_utc": "2026-11-23", "data": {**facts, "updates": []}}}
+    assert audit.replay_entries(polled) == audit.replay_entries(entries) == entries
+    polled[feed]["status"] = "retained_after_failure"
+    assert audit.replay_entries(polled)[feed]["status"] == "retained_after_failure"
+    polled[feed]["data"]["updates"] = [{"id": "not-an-archive"}]
+    with pytest.raises(ValueError, match="Unexpected participation projection"):
+        audit.replay_entries(polled)

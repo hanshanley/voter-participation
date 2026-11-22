@@ -235,6 +235,20 @@ def accepted_entries(pointer_url):
     return {key: entries[key] for key in history.FEEDS if key in entries}, pointer["version"]
 
 
+def replay_entries(entries):
+    if set(entries) != set(history.FEEDS) or any(not entry.get("data") for entry in entries.values()):
+        raise ValueError("Accepted inputs lack one or more complete New Mexico turnout editions")
+    result = {}
+    for key, entry in entries.items():
+        data = dict(entry["data"])
+        if data.pop("updates", []) != [] or data.get("participation_observation_qualified") is not False:
+            raise ValueError(f"Unexpected participation projection in historical turnout: {key}")
+        source = entry["source"]
+        result[key] = {"data": data, "source": {k: source[k] for k in ("url", "sha256", "bytes")},
+                       "status": entry["status"]}
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     source = parser.add_mutually_exclusive_group(required=True)
@@ -250,8 +264,7 @@ def main():
         entries, results_version = accepted_entries(args.results_pointer)
     else:
         entries, results_version = json.loads(args.turnout_facts.read_bytes()), None
-    if set(entries) != set(history.FEEDS) or any(not entry.get("data") for entry in entries.values()):
-        raise ValueError("Accepted inputs lack one or more complete New Mexico turnout editions")
+    entries = replay_entries(entries)
     if args.reference_rows:
         refs = json.loads(args.reference_rows.read_bytes())
     else:
