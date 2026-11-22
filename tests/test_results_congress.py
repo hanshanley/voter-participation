@@ -639,6 +639,26 @@ def test_unopposed_previous_race_keeps_defined_raw_arithmetic(tmp_path):
     assert row["previous"]["D"] == 0 and row["raw_recorded_margin_change_pp"] is not None
 
 
+def test_matched_district_subtotal_pools_votes_and_excludes_held_or_unverified_rows():
+    def row(seat, previous, current, qualified=True, boundary=True):
+        return {"id": f"race-{seat}", "seat": seat, "advertised": True,
+                "qualified_comparison": qualified, "previous": dict(zip("DR", previous)),
+                **dict(zip("DR", current)),
+                "baseline": {"boundary_eligibility": {"boundary_compatible": boundary}}}
+
+    races = [row("2", (60, 40), (50, 50)), row("1", (450, 450), (540, 360)),
+             row("3", (800, 200), (200, 800), qualified=False),
+             row("4", (200, 800), (800, 200), boundary=False)]
+    selected = {race["id"] for race in races}
+    subtotal = congress.matched_district_subset(races, selected, 4)
+    assert subtotal["race_ids"] == ["race-1", "race-2"]
+    assert subtotal["previous"] == {"D": 510, "R": 490}
+    assert subtotal["current"] == {"D": 590, "R": 410}
+    assert subtotal["margin_change_pp"] == 16
+    assert subtotal["D_two_party_share_change_pp"] == 8
+    assert congress.matched_district_subset(races, {"race-3", "race-4"}, 4) is None
+
+
 @pytest.mark.parametrize("state,seat,name,party,status", [
     ("FL", "20", "Sheila Cherfilus-McCormick", "D", "elected_unopposed_no_reported_general_vote"),
     ("OK", "3", "Frank D. Lucas", "R", "decided_in_primary_no_general_contest"),

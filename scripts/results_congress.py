@@ -574,11 +574,34 @@ def comparisons(congress, review, historical_senate=None, boundary_review=None, 
     return result
 
 
+def matched_district_subset(rows, selected, expected):
+    eligible = sorted((row for row in rows
+                       if row["id"] in selected and row["advertised"] and row["qualified_comparison"]
+                       and row["baseline"].get("boundary_eligibility", {}).get("boundary_compatible") is True),
+                      key=lambda row: row["id"])
+    if not eligible or len(eligible) >= expected:
+        return None
+    require(len({row["seat"] for row in eligible}) == len(eligible), "Duplicate matched district")
+    previous = {party: sum(row["previous"][party] for row in eligible) for party in "DR"}
+    current = {party: sum(row[party] for row in eligible) for party in "DR"}
+    def margin(counts):
+        return 100 * (counts["D"] - counts["R"]) / (counts["D"] + counts["R"])
+    change = margin(current) - margin(previous)
+    return {"scope": "qualified_matched_districts_not_statewide",
+            "race_ids": [row["id"] for row in eligible], "districts": len(eligible),
+            "state_districts": expected, "previous": previous, "current": current,
+            "margin_change_pp": change, "D_two_party_share_change_pp": change / 2}
+
+
 def house_state_comparisons(congress, review, compared=()):
     races, candidates, _ = tables(congress)
     queries = {}
     final_pairs = {row["id"]: row["baseline"]["final_round_pair"] for row in compared
                    if row["qualified_comparison"] and "final_round_pair" in row["baseline"]}
+    reviewed_districts = {}
+    for row in compared:
+        if row["chamber"] == "house":
+            reviewed_districts.setdefault(row["state_code"], []).append(row)
     for row in review["previous_district_queries"]:
         queries.setdefault(row["district"][:2], []).append(row)
     result = []
@@ -639,6 +662,8 @@ def house_state_comparisons(congress, review, compared=()):
         raw = (after["D_minus_R_margin_pp"] - before["D_minus_R_margin_pp"]
                if before["D_minus_R_margin_pp"] is not None and after["D_minus_R_margin_pp"] is not None else None)
         selected_pairs = {row["id"]: final_pairs[row["id"]] for row in selected if row["id"] in final_pairs}
+        subset = matched_district_subset(reviewed_districts.get(state, ()),
+                                         {row["id"] for row in selected}, len(expected)) if complete and reasons else None
         result.append({
             "state_code": state, "office": "house", "previous_year": 2024, "current_year": 2026,
             "previous": before, "current": after, "expected_voting_seats": len(expected),
@@ -650,6 +675,7 @@ def house_state_comparisons(congress, review, compared=()):
             "comparison_holds": sorted(set(reasons)),
             "comparison_scope": "statewide_complete_same_office_not_cross_year_district_or_individual_identity",
             **({"final_round_pairs": selected_pairs} if selected_pairs else {}),
+            **({"matched_district_subset": subset} if subset else {}),
             "behavioral_estimate_updated": False,
         })
     return result
