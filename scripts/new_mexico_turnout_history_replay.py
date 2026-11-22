@@ -12,8 +12,9 @@ from scripts import new_mexico_turnout_history as history
 
 
 def build(entries, originals=None):
-    if set(entries) != set(history.FEEDS):
-        raise ValueError("Incomplete New Mexico archive")
+    if not entries or not entries.keys() <= history.FEEDS.keys() or any(
+            not entry.get("data") for entry in entries.values()):
+        raise ValueError("Incomplete or unrecognized New Mexico archive")
     if originals:
         for feed, source, suffix, limit, valid_url, parse, retained in history.original_reports(entries):
             with (originals / (feed + suffix)).open("rb") as stream:

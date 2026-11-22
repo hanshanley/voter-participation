@@ -6,6 +6,8 @@ import html
 import re
 
 ELECTIONS = {
+    2016: ("84", "November 8, 2016", 1492),
+    2018: ("2698", "November 6, 2018", 1492),
     2020: ("2782", "November 3, 2020", 1925),
     2022: ("2838", "November 8, 2022", 2163),
     2024: ("2882", "November 5, 2024", 2169),
