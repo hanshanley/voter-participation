@@ -659,7 +659,7 @@ def project(baseline, granular):
     for key in granular.keys() & export_only:
         data = granular[key].get("data")
         if data is not None and (data.get("participation_observation_qualified") is not False
-                                 or "updates" in data or "reviewed_count_addition" in data):
+                                 or data.get("updates", []) != [] or "reviewed_count_addition" in data):
             raise ValueError("A historical workbook or national release index cannot project participation")
     granular = {key: entry for key, entry in granular.items() if key not in export_only}
     addition_changes = []

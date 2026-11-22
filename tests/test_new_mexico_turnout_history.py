@@ -46,6 +46,7 @@ def test_revision_noop_weekly_and_last_good(page, tmp_path, monkeypatch):
     monkeypatch.setattr(collector, "acquire", lambda _: (page, {"origin": "fixture"}))
     before = nm.collect(collector, FEED)
     assert before["status"] == "reported" and FEED in late_archive_sources()
+    assert before["data"]["updates"] == []
     collector.prior[FEED] = before
     monkeypatch.setattr(collector, "acquire", lambda _: pytest.fail("Weekly reuse should not fetch"))
     assert nm.collect(collector, FEED, reuse_checked_week=True) == before
@@ -54,6 +55,18 @@ def test_revision_noop_weekly_and_last_good(page, tmp_path, monkeypatch):
     monkeypatch.setattr(collector, "acquire", lambda _: (page.replace(b"Official Results", b"Unofficial Results"), {"origin": "fixture"}))
     after = nm.collect(collector, FEED)
     assert after["status"] == "retained_after_failure" and after["data"] == before["data"]
+
+
+def test_archive_noop_cannot_project_counts(page):
+    from scripts import results_granular
+
+    baseline = {"index.json": b'{"states": {}}'}
+    data = {**nm.parse(page, FEED), "updates": []}
+    entry = {"data": data, "status": "reported"}
+    assert results_granular.project(baseline, {FEED: entry}) == (baseline, [])
+    for bad in (None, {}, [{"id": "unreviewed"}]):
+        with pytest.raises(ValueError, match="cannot project participation"):
+            results_granular.project(baseline, {FEED: {**entry, "data": {**data, "updates": bad}}})
 
 
 @pytest.mark.parametrize("delta", [-1, 1])
