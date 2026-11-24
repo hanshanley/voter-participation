@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "runtime": "cd5df8455ace299295d8144af084228beb6f994faceccc1eb7244844ea3347f4",
+  "complete_archive": {
+    "bytes": 358627314,
+    "immutable": true,
+    "media_type": "application/zip",
+    "sha256": "889e70fac7026d4a1209ea8250a08dd63659b3f2fce12cf2988e2b70ea348a1a",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-cd5df8455ace299295d8144af084228beb6f994faceccc1eb7244844ea3347f4/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "complete_outputs": 265,
+  "literal_downloaded_package_replay": true,
+  "network_requests": 0,
+  "external_operations_blocked": true,
+  "source_outputs_identical_to_standalone_release": 5,
+  "successful_log_sha256": "b08c94ddc6fce26cea3e4c08a509a7826292b59abb548ebc505da9ac343f0596"
+}

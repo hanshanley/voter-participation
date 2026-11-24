@@ -64,3 +64,21 @@ artifacts, their source-input version or their unknown field dates. Complete
 queries stay in the GitHub downloads; the consumer website receives only the
 map code, immutable receipts and compact saved table. A separate immutable
 fitted-input snapshot is the fallback if optional automatic source data fail.
+
+## Verified publication
+
+The all-state source layer is the live default in Results. Desktop and phone
+checks compare all nine variants, eight source metrics, both change units and
+supported demographic masks against the public data. All 50 state selections,
+no-JavaScript saved tables and seven failure/race cases pass. The separate
+return-constrained 33/17 mask remains unchanged.
+
+The existing hourly runtime carries the same source outputs. Its actual
+unchanged-input check kept the numerical manifest byte-identical and started
+no website build. The complete downloaded runtime reproduces all 265 outputs
+offline without new source requests or respondent fitting.
+
+[Complete publication evidence](../data/participation-access/20261124-statewide-source-01/acceptance.json)
+records the exact commits, workflows, native artifact limits, full downloads
+and independent checks. These are source-frame estimates, not newly qualified
+population turnout or observed individual switching.

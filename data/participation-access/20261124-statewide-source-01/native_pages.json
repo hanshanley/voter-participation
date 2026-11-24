@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "commit": "39414f3a2bccd373b1c8333f137cfe441fff5be4",
+  "pages_run": 45308810830,
+  "credential_run": 45308810922,
+  "artifact_id": 14882456513,
+  "artifact_digest": "sha256:06e5b8980ba60cc030ea887b1efbc994d95292211ab798d2a2057545fc873742",
+  "payload_bytes": 976412130,
+  "tar_bytes": 978964480,
+  "files": 2916,
+  "served_pins": {
+    "voter-participation/index.html": {
+      "bytes": 6069469,
+      "sha256": "cee5af679acb0d0f025a5734fac120a7b1513754f3c7eb223177597de7ce221f"
+    },
+    "scripts/participation-statewide-source.js": {
+      "bytes": 27093,
+      "sha256": "33b7fc3e66389ad21d3e2d1d66917c3a8b2e3fa6db74643aef79a1163f90ef27"
+    },
+    "scripts/participation-return-drivers.js": {
+      "bytes": 57994,
+      "sha256": "9c679981d6d736dacebe5d3ed9da6ed9a8678c97029e294da4e9c09d100dae84"
+    },
+    "scripts/participation-automatic-runtime.js": {
+      "bytes": 28241,
+      "sha256": "bea9f208175fa7c843344041cdb0ee60c6d241d485e32b798e227e354aa1a473"
+    },
+    "scripts/participation-explorer.js": {
+      "bytes": 289127,
+      "sha256": "d3408cbb5721c9b84074c142a417e9994d75f29ef67ada4f0c507c43dc6ecd5c"
+    },
+    "scripts/participation-native-bindings.js": {
+      "bytes": 19667,
+      "sha256": "32e3f1e0211201186c085dc1ec9aa230510cf6f41021b56ae8bf50b56397c323"
+    },
+    "scripts/participation-publication-ui.js": {
+      "bytes": 3080,
+      "sha256": "95cb154cd97268776bc1d980b06bba5a26ff1ababd2a5790ffa73f54e0d903e1"
+    }
+  },
+  "preserved_complete_download_pins": 437,
+  "consumer_archive_status": {
+    "/participation-downloads.json": 404,
+    "/participation-swing/20261106-02/complete-analysis.zip": 404,
+    "/voter-participation/data/complete-analysis.zip": 404
+  }
+}

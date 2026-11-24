@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "bounded_statewide_source_request_complete": true,
+  "broader_project_scientifically_complete": false,
+  "states": 50,
+  "dc": "no_CHEP_sample",
+  "research_engine": "a30f5a3c84079907694d74da09289ab8224a4647",
+  "website_commit": "39414f3a2bccd373b1c8333f137cfe441fff5be4",
+  "pages_run": 45308810830,
+  "credential_run": 45308810922,
+  "runtime_run": 45306100280,
+  "runtime_version": "cd5df8455ace299295d8144af084228beb6f994faceccc1eb7244844ea3347f4",
+  "source_model_version": "dddb5b0002c3c207bc92a86fe5b9db73648b8e34de39dc433f30d0a9fcca75ac",
+  "families": 3,
+  "profiles": 3,
+  "sensitivity_cases": 27,
+  "complete_scientific_download": {
+    "id": 785233372,
+    "name": "complete-analysis.zip",
+    "bytes": 18381954,
+    "sha256": "2329c9a50dfc604f895c42fd4170befae6f66807b9138e2763d9b05d36863a64",
+    "authenticated_draft_verified": true,
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "runtime_outputs_replayed": 265,
+  "preexisting_estimate_artifacts_preserved": 25,
+  "live_exact_map_values": 20604,
+  "live_reader_failure_checks": 7,
+  "native_payload_bytes": 976412130,
+  "native_tar_bytes": 978964480,
+  "consumer_archives_removed": true,
+  "only_remote_branches": [
+    "main"
+  ],
+  "images": [
+    {
+      "path": "statewide-source-production-1280.png",
+      "sha256": "438d98e8d30b0f292719ab2d00143977b27b745d21e7592b0e3e0ab87869dcdc",
+      "width": 1280
+    },
+    {
+      "path": "statewide-source-production-390.png",
+      "sha256": "738058e2decbcbb40c3651287becb260b23cd388581240dde97a8d514d4f7429",
+      "width": 390
+    }
+  ],
+  "population_calibrated": false,
+  "respondent_models_refitted": false,
+  "observed_individual_histories": false,
+  "interview_dates": null,
+  "fit_date": null,
+  "input_vintages": {
+    "AP": 2024,
+    "CHEP": 2026
+  },
+  "remaining_scientific_qualification": "Population calibration, source-weight targets and independent behavioral validation remain separate; demographic disclosure holds are preserved."
+}

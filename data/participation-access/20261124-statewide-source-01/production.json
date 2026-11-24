@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "base": "https://www.themarginoferror.com",
+  "production": true,
+  "normal_cases_use_source_or_script_overrides": false,
+  "normal": [
+    {
+      "width": 1280,
+      "cases": 202,
+      "exact_map_values": 10302,
+      "state_selections": 50,
+      "physical_state_clicks": 3,
+      "legacy_hold_mask_preserved": true,
+      "nojs_saved_rows": 50,
+      "screenshot": "statewide-source-production-1280.png",
+      "screenshot_sha256": "438d98e8d30b0f292719ab2d00143977b27b745d21e7592b0e3e0ab87869dcdc"
+    },
+    {
+      "width": 390,
+      "cases": 202,
+      "exact_map_values": 10302,
+      "state_selections": 50,
+      "physical_state_clicks": 3,
+      "legacy_hold_mask_preserved": true,
+      "nojs_saved_rows": 50,
+      "screenshot": "statewide-source-production-390.png",
+      "screenshot_sha256": "738058e2decbcbb40c3651287becb260b23cd388581240dde97a8d514d4f7429"
+    }
+  ],
+  "injected_faults": {
+    "source_outage_clears_map": true,
+    "saved_table_retained": true,
+    "retry_recovers_50_states": true,
+    "late_source_cannot_overwrite_office": true,
+    "early_state_selection_retained": true,
+    "invalid_optional_source_does_not_poison_comparisons": true,
+    "wrong_hash_uses_whole_saved_bundle": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "old_artifacts_preserved_byte_for_byte": 25,
+  "new_artifacts": [
+    "house/statewide-source/attenuated.json.gz",
+    "house/statewide-source/complete-queries.json.gz",
+    "house/statewide-source/full.json.gz",
+    "house/statewide-source/index.json.gz",
+    "house/statewide-source/original.json.gz"
+  ],
+  "return_revision_changes_source_outputs": false,
+  "unchanged_input_identical": true,
+  "model_version": "dddb5b0002c3c207bc92a86fe5b9db73648b8e34de39dc433f30d0a9fcca75ac",
+  "artifact_pins": {
+    "house/statewide-source/attenuated.json.gz": {
+      "bytes": 1727250,
+      "sha256": "1f760f9d87660e42cf2c4fb1f9eb32234d466ceeea38121d73cceac2501a4308"
+    },
+    "house/statewide-source/complete-queries.json.gz": {
+      "bytes": 10152446,
+      "sha256": "2b0060c7d62e374abc7eb5980f5f0f828b54e29836d1343364d8b84d1dddbf34"
+    },
+    "house/statewide-source/full.json.gz": {
+      "bytes": 1729416,
+      "sha256": "5aa71c87d708821e45e3657c39a403e00aa503cc1afcfdceabd20263f613680b"
+    },
+    "house/statewide-source/index.json.gz": {
+      "bytes": 2231,
+      "sha256": "8a09693afbfe697427fc51ad1bd642771552a673138a4ae01b58263c5da40216"
+    },
+    "house/statewide-source/original.json.gz": {
+      "bytes": 1725720,
+      "sha256": "88083b329ed9081ff7102aa712bdf94862111cc30066940bad87c680ec040afc"
+    }
+  }
+}
