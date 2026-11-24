@@ -1,0 +1,109 @@
+{
+  "contract": "participation.statewide_source_download.v1",
+  "release_id": 456195599,
+  "immutable": true,
+  "complete_download": {
+    "id": 785233372,
+    "name": "complete-analysis.zip",
+    "bytes": 18381954,
+    "sha256": "2329c9a50dfc604f895c42fd4170befae6f66807b9138e2763d9b05d36863a64",
+    "authenticated_draft_verified": true,
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "assets": {
+    "complete-demographic-contributions.csv": {
+      "id": 785233288,
+      "name": "complete-demographic-contributions.csv",
+      "bytes": 2603620,
+      "sha256": "cef4aad10b0c850e3a7e5a2ddae51737f0fe517e80e3691c4a4af8cf03c40e67",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/complete-demographic-contributions.csv",
+      "verified_anonymously": true
+    },
+    "complete-state-estimates.csv": {
+      "id": 785233343,
+      "name": "complete-state-estimates.csv",
+      "bytes": 122892,
+      "sha256": "8459348b76142c44271319895aee9470245c143426d56a2aaa473130bc905cc7",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/complete-state-estimates.csv",
+      "verified_anonymously": true
+    },
+    "complete-analysis.zip": {
+      "id": 785233372,
+      "name": "complete-analysis.zip",
+      "bytes": 18381954,
+      "sha256": "2329c9a50dfc604f895c42fd4170befae6f66807b9138e2763d9b05d36863a64",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/complete-analysis.zip",
+      "verified_anonymously": true
+    },
+    "display-summary.json": {
+      "id": 785233448,
+      "name": "display-summary.json",
+      "bytes": 53346,
+      "sha256": "de81ad5e67fcaec8a213a98bd5d0dfecb63e4d57f340bfb4872829d154250063",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/display-summary.json",
+      "verified_anonymously": true
+    },
+    "complete-assumption-estimates.csv": {
+      "id": 785233491,
+      "name": "complete-assumption-estimates.csv",
+      "bytes": 264951,
+      "sha256": "705fcadb1a1b6263a3a8f3c3efd428d22269f4883d7f49abba9aca837f81294a",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/complete-assumption-estimates.csv",
+      "verified_anonymously": true
+    },
+    "house/statewide-source/index.json.gz": {
+      "id": 785233526,
+      "name": "index.json.gz",
+      "bytes": 2231,
+      "sha256": "8a09693afbfe697427fc51ad1bd642771552a673138a4ae01b58263c5da40216",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/index.json.gz",
+      "verified_anonymously": true
+    },
+    "house/statewide-source/full.json.gz": {
+      "id": 785233570,
+      "name": "full.json.gz",
+      "bytes": 1729416,
+      "sha256": "5aa71c87d708821e45e3657c39a403e00aa503cc1afcfdceabd20263f613680b",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/full.json.gz",
+      "verified_anonymously": true
+    },
+    "house/statewide-source/complete-queries.json.gz": {
+      "id": 785233601,
+      "name": "complete-queries.json.gz",
+      "bytes": 10152446,
+      "sha256": "2b0060c7d62e374abc7eb5980f5f0f828b54e29836d1343364d8b84d1dddbf34",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/complete-queries.json.gz",
+      "verified_anonymously": true
+    },
+    "house/statewide-source/attenuated.json.gz": {
+      "id": 785233688,
+      "name": "attenuated.json.gz",
+      "bytes": 1727250,
+      "sha256": "1f760f9d87660e42cf2c4fb1f9eb32234d466ceeea38121d73cceac2501a4308",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/attenuated.json.gz",
+      "verified_anonymously": true
+    },
+    "house/statewide-source/original.json.gz": {
+      "id": 785233735,
+      "name": "original.json.gz",
+      "bytes": 1725720,
+      "sha256": "88083b329ed9081ff7102aa712bdf94862111cc30066940bad87c680ec040afc",
+      "authenticated_draft_verified": true,
+      "url": "https://github.com/hanshanley/margin_of_error/releases/download/participation-statewide-source-20261124-01/original.json.gz",
+      "verified_anonymously": true
+    }
+  },
+  "source_models_refitted": false,
+  "population_calibrated": false,
+  "website_integration_verified_live": false
+}

@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "original_archive": {
+    "bytes": 18381954,
+    "sha256": "2329c9a50dfc604f895c42fd4170befae6f66807b9138e2763d9b05d36863a64"
+  },
+  "fresh_extractions": [
+    {
+      "hash_seed": 19,
+      "status": "passed",
+      "states": 50,
+      "outputs": 9,
+      "complete_archive": {
+        "bytes": 18381954,
+        "sha256": "2329c9a50dfc604f895c42fd4170befae6f66807b9138e2763d9b05d36863a64"
+      },
+      "source_models_refitted": false,
+      "probes": 3,
+      "unexpected_attempts": 0
+    },
+    {
+      "hash_seed": 73,
+      "status": "passed",
+      "states": 50,
+      "outputs": 9,
+      "complete_archive": {
+        "bytes": 18381954,
+        "sha256": "2329c9a50dfc604f895c42fd4170befae6f66807b9138e2763d9b05d36863a64"
+      },
+      "source_models_refitted": false,
+      "probes": 3,
+      "unexpected_attempts": 0
+    }
+  ],
+  "respondent_fitting_reproduced": false,
+  "public_fitted_inputs_reproduced": true
+}

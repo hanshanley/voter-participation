@@ -22,6 +22,7 @@ are not observed individual behavior.
 
 - [Coverage and limitations](docs/AUDIT.md)
 - [Automatic results intake](docs/RESULTS_INTAKE.md)
+- [Uniform 50-state House source model](docs/STATEWIDE_SOURCE_MODEL.md)
 - [Source ledger](SOURCES.md) and [research gaps](REMAINING.md)
 
 Complete downloads include all permitted inputs, code, queries, and results.

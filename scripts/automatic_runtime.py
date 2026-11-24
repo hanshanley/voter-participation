@@ -37,6 +37,7 @@ RESULTS_POINTER = ("https://raw.githubusercontent.com/" + RESULTS_REPOSITORY
                    + "/results-data/latest.json")
 CODE_PATHS = (
     "automatic_runtime.py", "automatic_estimates.py", "automatic_native_refresh.py",
+    "statewide_source_model.py", "package_statewide_source_model.py",
     "current_source_reconciliation.py",
     "results_granular.py", "results_native_louisiana.py",
     "results_native_louisiana_runtime.py", "louisiana_onboarding.py",
@@ -814,6 +815,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         members["code/scripts/" + name] = (ROOT / "scripts" / name).read_bytes()
     for name in ("test_automatic_runtime.py", "test_results_granular.py",
                  "test_automatic_estimates.py", "test_automatic_native_refresh.py",
+                 "test_statewide_source_model.py",
                  "test_current_source_reconciliation.py", "test_supported_analytical_release.py",
                  "test_cps_published_state_tables.py",
                  "test_congressional_analytical_bridge.py", "test_congressional_baselines.py",

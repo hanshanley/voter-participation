@@ -1052,6 +1052,8 @@ def bind_publication(result, base_url, complete_download):
     bind(sources["sensitivity"])
     bind(sources["participation_state_projections"])
     bind(sources["next_seed"])
+    if sources.get("statewide_source_models"):
+        bind(sources["statewide_source_models"])
     if sources.get("senate_partial_scenarios"):
         bind(sources["senate_partial_scenarios"])
     if sources.get("senate_complete_scenarios"):
@@ -1425,6 +1427,17 @@ def build(snapshot, seed):
         },
         recorded,
     )
+    from scripts import statewide_source_model
+    statewide = statewide_source_model.from_seed(seed)
+    statewide_values = {
+        statewide_source_model.PREFIX + "index.json.gz": statewide["index"],
+        statewide_source_model.PREFIX + "complete-queries.json.gz": statewide["queries"],
+        **{statewide_source_model.PREFIX + profile + ".json.gz": value
+           for profile, value in statewide["profiles"].items()},
+    }
+    for path, value in statewide_values.items():
+        artifacts[path] = _artifact(value)
+    statewide_index = artifacts[statewide_source_model.PREFIX + "index.json.gz"]
     decision_summary = {
         "states": 50,
         "changed_behavioral": len(changed_states),
@@ -1501,6 +1514,13 @@ def build(snapshot, seed):
                 "compression", "media_type", "bytes", "sha256",
                 "decoded_bytes", "decoded_sha256",
             )},
+        },
+        "statewide_source_models": {
+            "contract": statewide_source_model.INDEX_CONTRACT,
+            "version": statewide["index"]["metadata"]["version"],
+            "path": statewide_source_model.PREFIX + "index.json.gz",
+            **{name: statewide_index[name] for name in (
+                "compression", "media_type", "bytes", "sha256", "decoded_bytes", "decoded_sha256")},
         },
         "shared_max_abs_margin": shared_max_abs_margin,
         "participation_state_projections": {

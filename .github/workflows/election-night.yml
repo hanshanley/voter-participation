@@ -179,7 +179,7 @@ jobs:
           tests/test_idaho_absentee_age.py
           tests/test_massachusetts_ballot_canvass.py
           tests/test_new_mexico_turnout_history.py
-          tests/test_current_source_reconciliation.py tests/test_automatic_estimates.py
+          tests/test_current_source_reconciliation.py tests/test_automatic_estimates.py tests/test_statewide_source_model.py
           tests/test_results_native_broome.py
           tests/test_results_native_kansas.py
           tests/test_results_pdf_cole.py
