@@ -7,6 +7,8 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import sys
+import time
 from urllib.error import HTTPError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -25,6 +27,8 @@ ARCHIVE_START = datetime(2027, 2, 1, tzinfo=timezone.utc)
 ARCHIVE_TITLE = "Check late participation archives"
 TITLE = "Automatic voter-participation updates need attention"
 MARKER = "<!-- voter-participation-automatic-health:v1 -->"
+RATE_LIMIT_WAIT_BUDGET = 120
+RATE_LIMIT_RETRIES = 2
 
 
 def clock(value):
@@ -51,6 +55,53 @@ def api(path, method="GET", body=None, raw=False):
     return json.loads(subprocess.run(
         args, input=json.dumps(body) if body is not None else None,
         text=True, stdout=subprocess.PIPE, check=True, timeout=60).stdout)
+
+
+def is_rate_limited(error):
+    headers = {key.lower(): value for key, value in (error.headers or {}).items()}
+    return error.code == 429 or (error.code == 403 and (
+        headers.get("x-ratelimit-remaining") == "0"
+        or "retry-after" in headers or "rate limit" in str(error.reason).lower()))
+
+
+def retry_delay(error, attempt):
+    if not is_rate_limited(error):
+        return None
+    headers = {key.lower(): value for key, value in (error.headers or {}).items()}
+    delays = []
+    if "retry-after" in headers:
+        if not str(headers["retry-after"]).isdigit():
+            return None
+        delays.append(int(headers["retry-after"]))
+    if headers.get("x-ratelimit-remaining") == "0":
+        reset = str(headers.get("x-ratelimit-reset", ""))
+        if not reset.isdigit():
+            return None
+        delays.append(int(reset) - time.time() + 1)
+    return max(1, *delays) if delays else 60 * 2 ** attempt
+
+
+def recovering_requests(request):
+    waited = 0
+
+    def recover(path, method="GET", body=None, raw=False):
+        nonlocal waited
+        for attempt in range(RATE_LIMIT_RETRIES + 1):
+            try:
+                return request(path, method, body, raw=raw)
+            except HTTPError as error:
+                delay = retry_delay(error, attempt)
+                if (method != "GET" or body is not None or delay is None
+                        or attempt == RATE_LIMIT_RETRIES
+                        or waited + delay > RATE_LIMIT_WAIT_BUDGET):
+                    error.monitoring_request = path
+                    error.monitoring_waited_seconds = waited
+                    raise
+                print(f"GitHub evidence throttled; retrying read in {delay:.0f}s: {path}", file=sys.stderr)
+                error.close()
+                time.sleep(delay)
+                waited += delay
+    return recover
 
 
 def data_commit(repository, tag, request):
@@ -226,7 +277,7 @@ def weekly_archive_status(now, request):
             "last_success_at": success["updated_at"] if success else None}
 
 
-def check(now, request=api, *, write_issue=False):
+def check(now, request=api, *, write_issue=False, clock_now=None):
     if now < HOURLY_START:
         return {"status": "outside_collection_window"}
     hourly = now < ARCHIVE_START
@@ -240,6 +291,8 @@ def check(now, request=api, *, write_issue=False):
     source = contents(SOURCE, source_commit, "latest.json", request)
     active = contents(WEBSITE, runtime_commit, "automatic/latest.json", request)
     catalog = contents(WEBSITE, runtime_commit, "catalog.json", request)
+    if clock_now is not None:
+        now = clock_now()
     source_at_cutoff = None
     cutoff = now - HANDOFF_LIMIT
     if (source["version"] != active["input_results_version"]
@@ -274,16 +327,17 @@ def main():
     args = parser.parse_args()
     rate_limited = False
     try:
-        report = check(datetime.now(timezone.utc), write_issue=args.update_issue)
+        report = check(datetime.now(timezone.utc), recovering_requests(api), write_issue=args.update_issue,
+                       clock_now=lambda: datetime.now(timezone.utc))
     except HTTPError as exc:
-        headers = exc.headers or {}
-        if not (exc.code == 429 or (exc.code == 403 and (
-                headers.get("X-RateLimit-Remaining") == "0"
-                or headers.get("Retry-After") or "rate limit" in str(exc.reason).lower()))):
+        if not is_rate_limited(exc):
             raise
         rate_limited = True
         report = {"status": "monitoring_unavailable", "reason": "github_api_rate_limited",
-                  "issue_action": "unchanged"}
+                  "issue_action": "unchanged", "request": getattr(exc, "monitoring_request", None),
+                  "waited_seconds": getattr(exc, "monitoring_waited_seconds", 0),
+                  "rate_limit_reset": {key.lower(): value for key, value in (exc.headers or {}).items()}
+                      .get("x-ratelimit-reset")}
     body = json.dumps(report, indent=2)
     print(body)
     if filename := os.environ.get("GITHUB_STEP_SUMMARY"):

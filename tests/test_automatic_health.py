@@ -12,7 +12,7 @@ from scripts import automatic_health as health
     (429, "Too Many Requests", {"Retry-After": "120"}, 75),
     (403, "Forbidden", {}, None),
 ])
-def test_monitor_reports_rate_limit_without_retry_or_issue_edits(
+def test_monitor_reports_exhausted_rate_limit_without_issue_edits(
         tmp_path, monkeypatch, capsys, http_status, reason, headers, exit_code):
     import json
     import sys
@@ -32,6 +32,7 @@ def test_monitor_reports_rate_limit_without_retry_or_issue_edits(
     summary = tmp_path / "summary"
     monkeypatch.setattr(health, "urlopen", unavailable)
     monkeypatch.setattr(health, "datetime", FixedClock)
+    monkeypatch.setattr(health.time, "sleep", lambda seconds: None)
     monkeypatch.setattr(sys, "argv", ["automatic_health", "--update-issue"])
     monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(summary))
     if exit_code:
@@ -40,14 +41,65 @@ def test_monitor_reports_rate_limit_without_retry_or_issue_edits(
         assert exc.value.code == exit_code
         assert json.loads(capsys.readouterr().out) == {
             "status": "monitoring_unavailable", "reason": "github_api_rate_limited",
-            "issue_action": "unchanged",
+            "issue_action": "unchanged", "request": calls[0].removeprefix("https://api.github.com/"),
+            "waited_seconds": 60 if http_status == 403 else 120, "rate_limit_reset": None,
         }
         assert "monitoring_unavailable" in summary.read_text()
     else:
         with pytest.raises(HTTPError):
             health.main()
         assert not summary.exists()
+    assert len(calls) == (2 if exit_code else 1)
+
+
+def test_rate_limit_recovery_retries_only_the_failed_public_read(monkeypatch):
+    calls, sleeps = [], []
+    monkeypatch.setattr(health.time, "time", lambda: 1000)
+    monkeypatch.setattr(health.time, "sleep", sleeps.append)
+
+    def request(path, method="GET", body=None, raw=False):
+        calls.append((path, raw))
+        if path == "later" and calls.count((path, raw)) == 1:
+            raise HTTPError(path, 403, "Forbidden", {"x-ratelimit-remaining": "0", "x-ratelimit-reset": "1009", "retry-after": "3"}, None)
+        return {"current": path}
+
+    recover = health.recovering_requests(request)
+    assert recover("first") == {"current": "first"}
+    assert recover("later", raw=True) == {"current": "later"}
+    assert calls == [("first", False), ("later", True), ("later", True)]
+    assert sleeps == [10]
+
+
+@pytest.mark.parametrize("status,headers", [
+    (403, {}), (403, {"X-RateLimit-Remaining": "0"}),
+    (429, {"Retry-After": "invalid"}), (429, {"Retry-After": "121"}),
+    (404, {}), (500, {}),
+])
+def test_denials_bad_headers_and_long_resets_are_not_retried(monkeypatch, status, headers):
+    calls = []
+    monkeypatch.setattr(health.time, "sleep", lambda seconds: pytest.fail("Unexpected retry"))
+    def request(*args, **kwargs):
+        calls.append(args)
+        raise HTTPError("https://api.github.com/test", status, "Unavailable", headers, None)
+    with pytest.raises(HTTPError):
+        health.recovering_requests(request)("test")
     assert len(calls) == 1
+
+
+def test_retry_budget_is_shared_across_reads_and_never_replays_writes(monkeypatch):
+    calls, sleeps = [], []
+    monkeypatch.setattr(health.time, "sleep", sleeps.append)
+    def request(path, method="GET", body=None, raw=False):
+        calls.append((path, method))
+        if calls.count((path, method)) == 1 or method != "GET":
+            raise HTTPError(path, 429, "Throttled", {"Retry-After": "70"}, None)
+        return {"ok": True}
+    recover = health.recovering_requests(request)
+    assert recover("first") == {"ok": True}
+    with pytest.raises(HTTPError): recover("second")
+    with pytest.raises(HTTPError): recover("issue", "POST", {"title": "do not duplicate"})
+    assert sleeps == [70]
+    assert calls == [("first", "GET"), ("first", "GET"), ("second", "GET"), ("issue", "POST")]
 
 
 NOW = datetime(2026, 11, 18, 19, tzinfo=timezone.utc)
@@ -98,6 +150,30 @@ def test_matching_future_dated_versions_are_not_healthy():
     source = {"version": "a" * 64, "checked_at": observed}
     active = {"version": "b" * 64, "input_results_version": source["version"], "checked_at": observed}
     assert set(health.assess(NOW, {}, source, active)["persistent_problems"]) == {"clock"}
+
+
+def test_snapshot_published_during_retry_uses_the_current_observation_clock():
+    source_ref, runtime_ref = "1" * 40, "2" * 40
+    observed = (NOW + timedelta(minutes=1)).isoformat()
+    source = {"version": "a" * 64, "checked_at": observed}
+    active = {"version": "b" * 64, "input_results_version": source["version"],
+              "checked_at": observed, "counts": {}, "native": {}}
+    release_path, release = downloadable_runtime(active)
+    def request(path, raw=False):
+        if "/actions/" in path:
+            return {"workflow_runs": [run(1, .25)]}
+        return {
+            f"repos/{health.SOURCE}/git/ref/tags/results-data":
+                {"object": {"type": "commit", "sha": source_ref}},
+            f"repos/{health.WEBSITE}/git/ref/tags/participation-data":
+                {"object": {"type": "commit", "sha": runtime_ref}},
+            f"repos/{health.SOURCE}/contents/latest.json?ref={source_ref}": source,
+            f"repos/{health.WEBSITE}/contents/automatic/latest.json?ref={runtime_ref}": active,
+            f"repos/{health.WEBSITE}/contents/catalog.json?ref={runtime_ref}":
+                {"datasets": {"participation-counts-2026": {}, "participation-native-bindings-2026": {}}},
+            release_path: release,
+        }[path]
+    assert not health.check(NOW, request, clock_now=lambda: NOW + timedelta(minutes=2))["persistent_problems"]
 
 
 def previous(hours):
