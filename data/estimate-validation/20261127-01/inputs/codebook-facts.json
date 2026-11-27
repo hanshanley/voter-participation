@@ -1,0 +1,18 @@
+{
+  "original_source": "user-supplied civichealth_codebook.zip",
+  "fields": {
+    "CHEP_WEIGHT": "Overall population weight; calibration targets and field period not independently qualified here.",
+    "LIKELYVOTER": {
+      "1": "Likely voter",
+      "2": "Nonvoter",
+      "target": "Native model classification, not a completed-voting history"
+    },
+    "SEX": {
+      "1": "Male",
+      "2": "Female",
+      "definition": "Sex assigned at birth"
+    }
+  },
+  "coding_reversal_detected": false,
+  "native_vote_history_replacement_inferred": false
+}

@@ -1,5 +1,15 @@
 # Remaining work: participation and election-transition estimates
 
+## November 27: outcome validation limits the estimates' interpretation
+
+The [all-state outcome check](data/estimate-validation/20261127-01/) finds material source-model
+baseline and change errors: 2.68 Democratic-share points mean absolute difference across
+33 comparable House states. Those source-frame changes are not recorded election swings,
+and matching conditioned totals is not behavioral validation. The 864 released demographic
+fractions below are correctly computed source classifications, **not validated 2026 population
+turnout rates**. Matched completed-turnout numerators, population denominators, survey timing
+and calibration evidence remain necessary. No scaling to current outcomes is claimed as a fix.
+
 ## November 27: broad-group model coverage expanded
 
 The [rounded-rate product](data/civic-group-rates/20261127-01/) now supports **864 of 1,530 queries**,

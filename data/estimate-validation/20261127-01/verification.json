@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "all_state_outcome_checks": 50,
+  "all_native_contest_checks": 435,
+  "all_state_turnout_target_checks": 50,
+  "complete_offline_replay_byte_identical": true,
+  "raw_private_respondents_included": false
+}

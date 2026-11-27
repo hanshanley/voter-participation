@@ -1,0 +1,74 @@
+{
+  "README.txt": {
+    "bytes": 422,
+    "sha256": "84f06785e8a784d5c64261def46059a9c867601ca764ac98f95fd13227c49e9e"
+  },
+  "all-native-contest-count-checks.csv": {
+    "bytes": 24860,
+    "sha256": "37fa8aa1c7fdfa97dda9f22b10ce610df4409803f2ce6370ed599713a55ad0c7"
+  },
+  "all-state-house-model-check.csv": {
+    "bytes": 15701,
+    "sha256": "3a0536e4571c8850b7b30f65d88c0f52135d0deee6fbe5162ad71a4fcd00dea3"
+  },
+  "all-state-turnout-target-checks.csv": {
+    "bytes": 8932,
+    "sha256": "cf25823d30c0fa92f8a321b441682e34f5c867f3c53a2e26ece8375ae1267c08"
+  },
+  "inputs/codebook-facts.json": {
+    "bytes": 554,
+    "sha256": "cc5069e2f71fe80013385da25ab64cb4b14e4c538a954bc56b0ba728f271055d"
+  },
+  "inputs/congressional.json.gz": {
+    "bytes": 702454,
+    "sha256": "7d74e94af2f97cdefc01f19f1f14f24317229d461a390139504e0c60dc8c10b2"
+  },
+  "inputs/current-counts.json.gz": {
+    "bytes": 180643,
+    "sha256": "46764e1d83d576ef6c8b2db0a20c7f4bde60ff0d46290fd40d68eb343d2abf2a"
+  },
+  "inputs/group-classifications.json": {
+    "bytes": 1026778,
+    "sha256": "102d580b05c9c048a404df31b667fcd6b38e5196ea4be71ab31523dd47efd335"
+  },
+  "inputs/input-pins.json": {
+    "bytes": 1224,
+    "sha256": "9b0c1fec56aeb758a913b46557cb9afa5baaee7b16af9e6783b9b95ff14abdd0"
+  },
+  "inputs/native-npr-house.json.gz": {
+    "bytes": 53874,
+    "sha256": "5340d7b65aa83b639da56ff4e24cd645c2b126699d3d702c5cf350c88654e010"
+  },
+  "inputs/native-npr-receipt.json": {
+    "bytes": 248,
+    "sha256": "03710739b302c6d9ca548a193136e389f66a28a51765165745ff30741eeb60e9"
+  },
+  "inputs/recorded-states.json.gz": {
+    "bytes": 6513,
+    "sha256": "e32935abb4ccbccab6243f1afc10c443cd244e9a5ac4dcdceb8c5381e0684407"
+  },
+  "inputs/runtime.json": {
+    "bytes": 212194,
+    "sha256": "c03ff3b675b902445215f2adbb5f7cb10114b6129d0a3cda8028b635865b6cfd"
+  },
+  "inputs/source-original.json.gz": {
+    "bytes": 1725720,
+    "sha256": "88083b329ed9081ff7102aa712bdf94862111cc30066940bad87c680ec040afc"
+  },
+  "scripts/audit_source_estimates.py": {
+    "bytes": 11026,
+    "sha256": "81510fb21e0aff1e1a0138e32da2677b722e9ceaa5c671c5814ee2b9166a9952"
+  },
+  "state-checks.json": {
+    "bytes": 43407,
+    "sha256": "e92e04872889b67ff665525d02c49c4c19bbccabfb769aa146028afde13393dc"
+  },
+  "summary.json": {
+    "bytes": 2233,
+    "sha256": "90b718b511594b395674a8fb515932f05bd9be624cfa3f4192a28b84d254033f"
+  },
+  "tests/test_audit_source_estimates.py": {
+    "bytes": 2408,
+    "sha256": "bf42aecee1504e4690dac5e38a07efdd17210c6020f6ba660027ec232a87c9a3"
+  }
+}

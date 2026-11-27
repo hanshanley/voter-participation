@@ -1,5 +1,17 @@
 # Voter-participation source ledger
 
+## November 27: source estimates checked against reported outcomes
+
+The [complete outcome audit](data/estimate-validation/20261127-01/) checks all 50 states and
+435 selected House contests against a fresh native NPR capture. For 33 comparable states,
+the source-model Democratic-share change has **2.68 pp mean absolute difference** from recorded
+change; 19 differ by more than 2 pp. The estimated 2024 baseline is a major source of error.
+The main recorded-results path also used older model-endpoint counts in 38 states while the
+separate congressional table was fresher. These must be kept separate. The audit includes
+every query, frozen public inputs, code and byte-identical offline replay, not an outcome refit.
+Survey likely-voter classifications remain source statistics, not validated completed-turnout
+rates; party returns cannot establish demographic turnout or individual switching/staying home.
+
 ## November 27: more broad-group participation model rates
 
 The percentage-only export supports **864 of 1,530 queries**, including **193 broad groups**
