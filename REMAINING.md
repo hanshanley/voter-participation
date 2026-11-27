@@ -1,5 +1,16 @@
 # Remaining work: participation and election-transition estimates
 
+## November 27: broad-group model coverage expanded
+
+The [rounded-rate product](data/civic-group-rates/20261127-01/) now supports **864 of 1,530 queries**,
+recovering **193 broad groups** that the earlier exact-count/weight format withheld. The complete
+query, source-reduction code and independently verified replay are published; the source itself
+has not changed. **666 decisions remain unavailable** because of absent source coverage,
+small-category/support rules or withheld demographic definitions. These are survey-model
+likely-voter shares, not new administrative participation observations. Matching demographic
+participation numerators and population denominators, actual completed-turnout validation and
+qualified source timing remain unresolved. Earlier dated coverage counts below are historical.
+
 ## November 18: Virginia automatic models and Oregon evidence verified live
 
 Thirteen House states now update all nine variants: 117 frames, up from 12/108; 20 formerly qualified states remain frozen. Oregon's six contests/20 candidates refresh automatically but retain their explicit write-in/model hold. Virginia supplies 11 reconciled contests/47 candidates. Actual hosted revision delivery, 22+171 public/offline outputs, unchanged no-op and 288 production model values pass. Participation coverage does not increase; 259 district comparisons and Senate reader/export agreement 28/28 remain. [Complete numerical handoff, sources, downloads and commands](data/participation-access/20261118-or-va-automatic-models-01/REPORT.md). Two additional CO comparisons remain prepared, not deployed. Earlier coverage snapshots below are historical.
