@@ -1,0 +1,1531 @@
+year,state_code,dimension,group,label,disposition,modeled_voter_pct,modeled_nonvoter_pct,n,source_weight_concentration_effective_n,population_representativeness_qualified,administratively_observed_turnout,design_confidence_interval,eligible_or_registered_group_population,estimated_group_participants,measured_staying_home,local_allocation
+2026,AL,overall,all,All respondents,selected_broad_source_model,46.2,53.8,,,False,False,,,,,False
+2026,AL,AGE6,18_29,18–29,selected_broad_source_model,15.4,84.6,,,False,False,,,,,False
+2026,AL,AGE6,30_49,30–49,selected_broad_source_model,32.6,67.4,,,False,False,,,,,False
+2026,AL,AGE6,50_64,50–64,selected_broad_source_model,74.0,26.0,,,False,False,,,,,False
+2026,AL,AGE6,65_plus,65+,selected_broad_source_model,99.4,0.6,,,False,False,,,,,False
+2026,AL,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AL,EDUC,high_school_or_less,High school or less,selected_broad_source_model,32.2,67.8,,,False,False,,,,,False
+2026,AL,EDUC,some_college,Some college / associate degree,selected_broad_source_model,51.6,48.4,,,False,False,,,,,False
+2026,AL,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,63.1,36.9,,,False,False,,,,,False
+2026,AL,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AL,SEX,male,Male,selected_broad_source_model,44.8,55.2,,,False,False,,,,,False
+2026,AL,SEX,female,Female,selected_broad_source_model,47.7,52.3,,,False,False,,,,,False
+2026,AL,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AL,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AL,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AL,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AL,RACETH5,white,White,selected_broad_source_model,52.6,47.4,,,False,False,,,,,False
+2026,AL,RACETH5,black,African American or Black,selected_broad_source_model,41.3,58.7,,,False,False,,,,,False
+2026,AL,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AL,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AL,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,17.5,82.5,,,False,False,,,,,False
+2026,AL,INCOME,under_25000,"Under $25,000",selected_broad_source_model,29.1,70.9,,,False,False,,,,,False
+2026,AL,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,42.7,57.3,,,False,False,,,,,False
+2026,AL,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,56.8,43.2,,,False,False,,,,,False
+2026,AL,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,62.3,37.7,,,False,False,,,,,False
+2026,AL,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,54.2,45.8,,,False,False,,,,,False
+2026,AL,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AL,RUCC,urban_county,Urban county,selected_broad_source_model,43.1,56.9,,,False,False,,,,,False
+2026,AL,RUCC,suburban_county,Suburban county,selected_broad_source_model,47.2,52.8,,,False,False,,,,,False
+2026,AL,RUCC,rural_county,Rural county,selected_broad_source_model,47.5,52.5,,,False,False,,,,,False
+2026,AK,overall,all,All respondents,selected_broad_source_model,48.1,51.9,,,False,False,,,,,False
+2026,AK,AGE6,18_29,18–29,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,AGE6,30_49,30–49,selected_broad_source_model,32.3,67.7,,,False,False,,,,,False
+2026,AK,AGE6,50_64,50–64,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,EDUC,high_school_or_less,High school or less,selected_broad_source_model,30.1,69.9,,,False,False,,,,,False
+2026,AK,EDUC,some_college,Some college / associate degree,selected_broad_source_model,52.6,47.4,,,False,False,,,,,False
+2026,AK,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,SEX,male,Male,selected_broad_source_model,46.5,53.5,,,False,False,,,,,False
+2026,AK,SEX,female,Female,selected_broad_source_model,51.6,48.4,,,False,False,,,,,False
+2026,AK,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AK,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AK,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AK,RACETH5,white,White,selected_broad_source_model,69.7,30.3,,,False,False,,,,,False
+2026,AK,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,15.0,85.0,,,False,False,,,,,False
+2026,AK,INCOME,under_25000,"Under $25,000",selected_broad_source_model,31.7,68.3,,,False,False,,,,,False
+2026,AK,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,36.6,63.4,,,False,False,,,,,False
+2026,AK,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AK,RUCC,suburban_county,Suburban county,selected_broad_source_model,46.4,53.6,,,False,False,,,,,False
+2026,AK,RUCC,rural_county,Rural county,selected_broad_source_model,51.9,48.1,,,False,False,,,,,False
+2026,AZ,overall,all,All respondents,selected_broad_source_model,50.2,49.8,,,False,False,,,,,False
+2026,AZ,AGE6,18_29,18–29,selected_broad_source_model,33.3,66.7,,,False,False,,,,,False
+2026,AZ,AGE6,30_49,30–49,selected_broad_source_model,32.5,67.5,,,False,False,,,,,False
+2026,AZ,AGE6,50_64,50–64,selected_broad_source_model,61.5,38.5,,,False,False,,,,,False
+2026,AZ,AGE6,65_plus,65+,selected_broad_source_model,94.5,5.5,,,False,False,,,,,False
+2026,AZ,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AZ,EDUC,high_school_or_less,High school or less,selected_broad_source_model,27.1,72.9,,,False,False,,,,,False
+2026,AZ,EDUC,some_college,Some college / associate degree,selected_broad_source_model,55.5,44.5,,,False,False,,,,,False
+2026,AZ,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,74.2,25.8,,,False,False,,,,,False
+2026,AZ,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AZ,SEX,male,Male,selected_broad_source_model,46.1,53.9,,,False,False,,,,,False
+2026,AZ,SEX,female,Female,selected_broad_source_model,54.2,45.8,,,False,False,,,,,False
+2026,AZ,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AZ,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AZ,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AZ,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AZ,RACETH5,white,White,selected_broad_source_model,78.8,21.2,,,False,False,,,,,False
+2026,AZ,RACETH5,black,African American or Black,selected_broad_source_model,28.4,71.6,,,False,False,,,,,False
+2026,AZ,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,23.1,76.9,,,False,False,,,,,False
+2026,AZ,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AZ,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,18.0,82.0,,,False,False,,,,,False
+2026,AZ,INCOME,under_25000,"Under $25,000",selected_broad_source_model,24.2,75.8,,,False,False,,,,,False
+2026,AZ,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,45.1,54.9,,,False,False,,,,,False
+2026,AZ,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,54.5,45.5,,,False,False,,,,,False
+2026,AZ,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,54.0,46.0,,,False,False,,,,,False
+2026,AZ,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,78.5,21.5,,,False,False,,,,,False
+2026,AZ,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AZ,RUCC,urban_county,Urban county,selected_broad_source_model,51.6,48.4,,,False,False,,,,,False
+2026,AZ,RUCC,suburban_county,Suburban county,selected_broad_source_model,51.5,48.5,,,False,False,,,,,False
+2026,AZ,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,overall,all,All respondents,selected_broad_source_model,50.9,49.1,,,False,False,,,,,False
+2026,AR,AGE6,18_29,18–29,selected_broad_source_model,23.1,76.9,,,False,False,,,,,False
+2026,AR,AGE6,30_49,30–49,selected_broad_source_model,39.5,60.5,,,False,False,,,,,False
+2026,AR,AGE6,50_64,50–64,selected_broad_source_model,64.7,35.3,,,False,False,,,,,False
+2026,AR,AGE6,65_plus,65+,selected_broad_source_model,90.1,9.9,,,False,False,,,,,False
+2026,AR,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,EDUC,high_school_or_less,High school or less,selected_broad_source_model,36.1,63.9,,,False,False,,,,,False
+2026,AR,EDUC,some_college,Some college / associate degree,selected_broad_source_model,53.6,46.4,,,False,False,,,,,False
+2026,AR,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,73.9,26.1,,,False,False,,,,,False
+2026,AR,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,SEX,male,Male,selected_broad_source_model,49.1,50.9,,,False,False,,,,,False
+2026,AR,SEX,female,Female,selected_broad_source_model,52.8,47.2,,,False,False,,,,,False
+2026,AR,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AR,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AR,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,AR,RACETH5,white,White,selected_broad_source_model,61.6,38.4,,,False,False,,,,,False
+2026,AR,RACETH5,black,African American or Black,selected_broad_source_model,34.2,65.8,,,False,False,,,,,False
+2026,AR,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,INCOME,under_25000,"Under $25,000",selected_broad_source_model,37.1,62.9,,,False,False,,,,,False
+2026,AR,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,46.3,53.7,,,False,False,,,,,False
+2026,AR,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,53.8,46.2,,,False,False,,,,,False
+2026,AR,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,59.7,40.3,,,False,False,,,,,False
+2026,AR,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,AR,RUCC,suburban_county,Suburban county,selected_broad_source_model,53.2,46.8,,,False,False,,,,,False
+2026,AR,RUCC,rural_county,Rural county,selected_broad_source_model,48.1,51.9,,,False,False,,,,,False
+2026,CA,overall,all,All respondents,selected_broad_source_model,59.6,40.4,,,False,False,,,,,False
+2026,CA,AGE6,18_29,18–29,selected_broad_source_model,26.2,73.8,,,False,False,,,,,False
+2026,CA,AGE6,30_49,30–49,selected_broad_source_model,48.5,51.5,,,False,False,,,,,False
+2026,CA,AGE6,50_64,50–64,selected_broad_source_model,81.9,18.1,,,False,False,,,,,False
+2026,CA,AGE6,65_plus,65+,selected_broad_source_model,99.9,0.1,,,False,False,,,,,False
+2026,CA,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CA,EDUC,high_school_or_less,High school or less,selected_broad_source_model,39.9,60.1,,,False,False,,,,,False
+2026,CA,EDUC,some_college,Some college / associate degree,selected_broad_source_model,57.0,43.0,,,False,False,,,,,False
+2026,CA,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,77.8,22.2,,,False,False,,,,,False
+2026,CA,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CA,SEX,male,Male,selected_broad_source_model,58.2,41.8,,,False,False,,,,,False
+2026,CA,SEX,female,Female,selected_broad_source_model,60.9,39.1,,,False,False,,,,,False
+2026,CA,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CA,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CA,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CA,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CA,RACETH5,white,White,selected_broad_source_model,99.5,0.5,,,False,False,,,,,False
+2026,CA,RACETH5,black,African American or Black,selected_broad_source_model,61.9,38.1,,,False,False,,,,,False
+2026,CA,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,34.5,65.5,,,False,False,,,,,False
+2026,CA,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,selected_broad_source_model,29.7,70.3,,,False,False,,,,,False
+2026,CA,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,40.4,59.6,,,False,False,,,,,False
+2026,CA,INCOME,under_25000,"Under $25,000",selected_broad_source_model,39.0,61.0,,,False,False,,,,,False
+2026,CA,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,52.8,47.2,,,False,False,,,,,False
+2026,CA,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,62.3,37.7,,,False,False,,,,,False
+2026,CA,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,65.9,34.1,,,False,False,,,,,False
+2026,CA,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,72.4,27.6,,,False,False,,,,,False
+2026,CA,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CA,RUCC,urban_county,Urban county,selected_broad_source_model,59.4,40.6,,,False,False,,,,,False
+2026,CA,RUCC,suburban_county,Suburban county,selected_broad_source_model,57.7,42.3,,,False,False,,,,,False
+2026,CA,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,overall,all,All respondents,selected_broad_source_model,60.9,39.1,,,False,False,,,,,False
+2026,CO,AGE6,18_29,18–29,selected_broad_source_model,25.0,75.0,,,False,False,,,,,False
+2026,CO,AGE6,30_49,30–49,selected_broad_source_model,57.9,42.1,,,False,False,,,,,False
+2026,CO,AGE6,50_64,50–64,selected_broad_source_model,91.7,8.3,,,False,False,,,,,False
+2026,CO,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,EDUC,high_school_or_less,High school or less,selected_broad_source_model,38.3,61.7,,,False,False,,,,,False
+2026,CO,EDUC,some_college,Some college / associate degree,selected_broad_source_model,61.5,38.5,,,False,False,,,,,False
+2026,CO,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,75.1,24.9,,,False,False,,,,,False
+2026,CO,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,SEX,male,Male,selected_broad_source_model,56.4,43.6,,,False,False,,,,,False
+2026,CO,SEX,female,Female,selected_broad_source_model,65.7,34.3,,,False,False,,,,,False
+2026,CO,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CO,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CO,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CO,RACETH5,white,White,selected_broad_source_model,81.8,18.2,,,False,False,,,,,False
+2026,CO,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,24.2,75.8,,,False,False,,,,,False
+2026,CO,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,INCOME,under_25000,"Under $25,000",selected_broad_source_model,39.2,60.8,,,False,False,,,,,False
+2026,CO,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,43.3,56.7,,,False,False,,,,,False
+2026,CO,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,67.2,32.8,,,False,False,,,,,False
+2026,CO,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CO,RUCC,urban_county,Urban county,selected_broad_source_model,57.6,42.4,,,False,False,,,,,False
+2026,CO,RUCC,suburban_county,Suburban county,selected_broad_source_model,69.9,30.1,,,False,False,,,,,False
+2026,CO,RUCC,rural_county,Rural county,selected_broad_source_model,51.7,48.3,,,False,False,,,,,False
+2026,CT,overall,all,All respondents,selected_broad_source_model,54.5,45.5,,,False,False,,,,,False
+2026,CT,AGE6,18_29,18–29,selected_broad_source_model,20.2,79.8,,,False,False,,,,,False
+2026,CT,AGE6,30_49,30–49,selected_broad_source_model,41.8,58.2,,,False,False,,,,,False
+2026,CT,AGE6,50_64,50–64,selected_broad_source_model,78.5,21.5,,,False,False,,,,,False
+2026,CT,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CT,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CT,EDUC,high_school_or_less,High school or less,selected_broad_source_model,36.3,63.7,,,False,False,,,,,False
+2026,CT,EDUC,some_college,Some college / associate degree,selected_broad_source_model,48.2,51.8,,,False,False,,,,,False
+2026,CT,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,76.9,23.1,,,False,False,,,,,False
+2026,CT,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CT,SEX,male,Male,selected_broad_source_model,54.0,46.0,,,False,False,,,,,False
+2026,CT,SEX,female,Female,selected_broad_source_model,54.6,45.4,,,False,False,,,,,False
+2026,CT,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CT,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CT,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CT,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,CT,RACETH5,white,White,selected_broad_source_model,83.7,16.3,,,False,False,,,,,False
+2026,CT,RACETH5,black,African American or Black,selected_broad_source_model,26.4,73.6,,,False,False,,,,,False
+2026,CT,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,14.3,85.7,,,False,False,,,,,False
+2026,CT,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CT,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CT,INCOME,under_25000,"Under $25,000",selected_broad_source_model,26.5,73.5,,,False,False,,,,,False
+2026,CT,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,43.0,57.0,,,False,False,,,,,False
+2026,CT,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,55.4,44.6,,,False,False,,,,,False
+2026,CT,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,59.4,40.6,,,False,False,,,,,False
+2026,CT,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,71.6,28.4,,,False,False,,,,,False
+2026,CT,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,CT,RUCC,urban_county,Urban county,selected_broad_source_model,52.1,47.9,,,False,False,,,,,False
+2026,CT,RUCC,suburban_county,Suburban county,selected_broad_source_model,54.7,45.3,,,False,False,,,,,False
+2026,CT,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,overall,all,All respondents,selected_broad_source_model,49.1,50.9,,,False,False,,,,,False
+2026,DE,AGE6,18_29,18–29,selected_broad_source_model,17.7,82.3,,,False,False,,,,,False
+2026,DE,AGE6,30_49,30–49,selected_broad_source_model,31.7,68.3,,,False,False,,,,,False
+2026,DE,AGE6,50_64,50–64,selected_broad_source_model,68.1,31.9,,,False,False,,,,,False
+2026,DE,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,EDUC,high_school_or_less,High school or less,selected_broad_source_model,31.2,68.8,,,False,False,,,,,False
+2026,DE,EDUC,some_college,Some college / associate degree,selected_broad_source_model,52.7,47.3,,,False,False,,,,,False
+2026,DE,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,68.1,31.9,,,False,False,,,,,False
+2026,DE,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,SEX,male,Male,selected_broad_source_model,46.3,53.7,,,False,False,,,,,False
+2026,DE,SEX,female,Female,selected_broad_source_model,51.3,48.7,,,False,False,,,,,False
+2026,DE,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,DE,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,DE,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,DE,RACETH5,white,White,selected_broad_source_model,71.9,28.1,,,False,False,,,,,False
+2026,DE,RACETH5,black,African American or Black,selected_broad_source_model,27.7,72.3,,,False,False,,,,,False
+2026,DE,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,INCOME,under_25000,"Under $25,000",selected_broad_source_model,24.0,76.0,,,False,False,,,,,False
+2026,DE,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,42.1,57.9,,,False,False,,,,,False
+2026,DE,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,52.9,47.1,,,False,False,,,,,False
+2026,DE,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,DE,RUCC,urban_county,Urban county,selected_broad_source_model,48.4,51.6,,,False,False,,,,,False
+2026,DE,RUCC,suburban_county,Suburban county,selected_broad_source_model,33.2,66.8,,,False,False,,,,,False
+2026,DE,RUCC,rural_county,Rural county,selected_broad_source_model,68.7,31.3,,,False,False,,,,,False
+2026,DC,overall,all,All respondents,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,AGE6,18_29,18–29,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,AGE6,30_49,30–49,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,AGE6,50_64,50–64,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,AGE6,65_plus,65+,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,AGE6,unknown,Unknown age,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,EDUC,high_school_or_less,High school or less,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,EDUC,some_college,Some college / associate degree,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,EDUC,college_postgraduate,College graduate / postgraduate study,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,EDUC,unknown,Unknown education,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,SEX,male,Male,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,SEX,female,Female,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,SEX,unknown,Unknown source sex,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,GENDER3,male,Male (source gender),no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,GENDER3,female,Female (source gender),no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,GENDER3,other_unknown,Other / unknown source gender,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,RACETH5,white,White,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,RACETH5,black,African American or Black,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,RACETH5,hispanic,Latino or Hispanic,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,RACETH5,other_unknown,Other / unknown race or Hispanic origin,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,INCOME,under_25000,"Under $25,000",no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,INCOME,25000_49999,"$25,000–$49,999",no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,INCOME,50000_74999,"$50,000–$74,999",no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,INCOME,75000_99999,"$75,000–$99,999",no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,INCOME,100000_plus,"$100,000 or more",no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,INCOME,unknown,Unknown income,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,RUCC,urban_county,Urban county,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,RUCC,suburban_county,Suburban county,no_dc_source_sample,,,,,False,False,,,,,False
+2026,DC,RUCC,rural_county,Rural county,no_dc_source_sample,,,,,False,False,,,,,False
+2026,FL,overall,all,All respondents,selected_broad_source_model,54.5,45.5,,,False,False,,,,,False
+2026,FL,AGE6,18_29,18–29,selected_broad_source_model,23.4,76.6,,,False,False,,,,,False
+2026,FL,AGE6,30_49,30–49,selected_broad_source_model,37.7,62.3,,,False,False,,,,,False
+2026,FL,AGE6,50_64,50–64,selected_broad_source_model,71.9,28.1,,,False,False,,,,,False
+2026,FL,AGE6,65_plus,65+,selected_broad_source_model,99.4,0.6,,,False,False,,,,,False
+2026,FL,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,FL,EDUC,high_school_or_less,High school or less,selected_broad_source_model,37.2,62.8,,,False,False,,,,,False
+2026,FL,EDUC,some_college,Some college / associate degree,selected_broad_source_model,60.7,39.3,,,False,False,,,,,False
+2026,FL,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,68.1,31.9,,,False,False,,,,,False
+2026,FL,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,FL,SEX,male,Male,selected_broad_source_model,51.6,48.4,,,False,False,,,,,False
+2026,FL,SEX,female,Female,selected_broad_source_model,56.9,43.1,,,False,False,,,,,False
+2026,FL,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,FL,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,FL,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,FL,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,FL,RACETH5,white,White,selected_broad_source_model,81.6,18.4,,,False,False,,,,,False
+2026,FL,RACETH5,black,African American or Black,selected_broad_source_model,39.4,60.6,,,False,False,,,,,False
+2026,FL,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,27.6,72.4,,,False,False,,,,,False
+2026,FL,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,FL,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,28.8,71.2,,,False,False,,,,,False
+2026,FL,INCOME,under_25000,"Under $25,000",selected_broad_source_model,35.2,64.8,,,False,False,,,,,False
+2026,FL,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,46.1,53.9,,,False,False,,,,,False
+2026,FL,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,56.9,43.1,,,False,False,,,,,False
+2026,FL,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,59.4,40.6,,,False,False,,,,,False
+2026,FL,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,73.9,26.1,,,False,False,,,,,False
+2026,FL,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,FL,RUCC,urban_county,Urban county,selected_broad_source_model,51.9,48.1,,,False,False,,,,,False
+2026,FL,RUCC,suburban_county,Suburban county,selected_broad_source_model,60.2,39.8,,,False,False,,,,,False
+2026,FL,RUCC,rural_county,Rural county,selected_broad_source_model,47.3,52.7,,,False,False,,,,,False
+2026,GA,overall,all,All respondents,selected_broad_source_model,53.5,46.5,,,False,False,,,,,False
+2026,GA,AGE6,18_29,18–29,selected_broad_source_model,21.5,78.5,,,False,False,,,,,False
+2026,GA,AGE6,30_49,30–49,selected_broad_source_model,44.5,55.5,,,False,False,,,,,False
+2026,GA,AGE6,50_64,50–64,selected_broad_source_model,88.5,11.5,,,False,False,,,,,False
+2026,GA,AGE6,65_plus,65+,selected_broad_source_model,98.8,1.2,,,False,False,,,,,False
+2026,GA,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,GA,EDUC,high_school_or_less,High school or less,selected_broad_source_model,37.0,63.0,,,False,False,,,,,False
+2026,GA,EDUC,some_college,Some college / associate degree,selected_broad_source_model,53.3,46.7,,,False,False,,,,,False
+2026,GA,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,73.4,26.6,,,False,False,,,,,False
+2026,GA,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,GA,SEX,male,Male,selected_broad_source_model,47.4,52.6,,,False,False,,,,,False
+2026,GA,SEX,female,Female,selected_broad_source_model,59.1,40.9,,,False,False,,,,,False
+2026,GA,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,GA,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,GA,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,GA,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,GA,RACETH5,white,White,selected_broad_source_model,68.8,31.2,,,False,False,,,,,False
+2026,GA,RACETH5,black,African American or Black,selected_broad_source_model,48.2,51.8,,,False,False,,,,,False
+2026,GA,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,25.9,74.1,,,False,False,,,,,False
+2026,GA,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,GA,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,28.6,71.4,,,False,False,,,,,False
+2026,GA,INCOME,under_25000,"Under $25,000",selected_broad_source_model,36.2,63.8,,,False,False,,,,,False
+2026,GA,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,48.1,51.9,,,False,False,,,,,False
+2026,GA,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,53.8,46.2,,,False,False,,,,,False
+2026,GA,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,59.1,40.9,,,False,False,,,,,False
+2026,GA,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,70.9,29.1,,,False,False,,,,,False
+2026,GA,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,GA,RUCC,urban_county,Urban county,selected_broad_source_model,56.2,43.8,,,False,False,,,,,False
+2026,GA,RUCC,suburban_county,Suburban county,selected_broad_source_model,52.1,47.9,,,False,False,,,,,False
+2026,GA,RUCC,rural_county,Rural county,selected_broad_source_model,47.2,52.8,,,False,False,,,,,False
+2026,HI,overall,all,All respondents,selected_broad_source_model,48.2,51.8,,,False,False,,,,,False
+2026,HI,AGE6,18_29,18–29,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,AGE6,30_49,30–49,selected_broad_source_model,25.4,74.6,,,False,False,,,,,False
+2026,HI,AGE6,50_64,50–64,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,EDUC,high_school_or_less,High school or less,selected_broad_source_model,31.0,69.0,,,False,False,,,,,False
+2026,HI,EDUC,some_college,Some college / associate degree,selected_broad_source_model,40.7,59.3,,,False,False,,,,,False
+2026,HI,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,SEX,male,Male,selected_broad_source_model,43.4,56.6,,,False,False,,,,,False
+2026,HI,SEX,female,Female,selected_broad_source_model,52.3,47.7,,,False,False,,,,,False
+2026,HI,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,HI,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,HI,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,HI,RACETH5,white,White,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,selected_broad_source_model,45.6,54.4,,,False,False,,,,,False
+2026,HI,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,44.1,55.9,,,False,False,,,,,False
+2026,HI,INCOME,under_25000,"Under $25,000",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,INCOME,25000_49999,"$25,000–$49,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,RUCC,urban_county,Urban county,selected_broad_source_model,44.4,55.6,,,False,False,,,,,False
+2026,HI,RUCC,suburban_county,Suburban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,HI,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,overall,all,All respondents,selected_broad_source_model,71.6,28.4,,,False,False,,,,,False
+2026,ID,AGE6,18_29,18–29,selected_broad_source_model,44.4,55.6,,,False,False,,,,,False
+2026,ID,AGE6,30_49,30–49,selected_broad_source_model,54.5,45.5,,,False,False,,,,,False
+2026,ID,AGE6,50_64,50–64,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,EDUC,high_school_or_less,High school or less,selected_broad_source_model,51.3,48.7,,,False,False,,,,,False
+2026,ID,EDUC,some_college,Some college / associate degree,selected_broad_source_model,72.1,27.9,,,False,False,,,,,False
+2026,ID,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,SEX,male,Male,selected_broad_source_model,66.8,33.2,,,False,False,,,,,False
+2026,ID,SEX,female,Female,selected_broad_source_model,77.4,22.6,,,False,False,,,,,False
+2026,ID,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ID,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ID,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ID,RACETH5,white,White,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,71.6,28.4,,,False,False,,,,,False
+2026,ID,INCOME,under_25000,"Under $25,000",selected_broad_source_model,48.8,51.2,,,False,False,,,,,False
+2026,ID,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,65.8,34.2,,,False,False,,,,,False
+2026,ID,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ID,RUCC,suburban_county,Suburban county,selected_broad_source_model,68.3,31.7,,,False,False,,,,,False
+2026,ID,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IL,overall,all,All respondents,selected_broad_source_model,47.8,52.2,,,False,False,,,,,False
+2026,IL,AGE6,18_29,18–29,selected_broad_source_model,19.7,80.3,,,False,False,,,,,False
+2026,IL,AGE6,30_49,30–49,selected_broad_source_model,34.6,65.4,,,False,False,,,,,False
+2026,IL,AGE6,50_64,50–64,selected_broad_source_model,70.9,29.1,,,False,False,,,,,False
+2026,IL,AGE6,65_plus,65+,selected_broad_source_model,97.2,2.8,,,False,False,,,,,False
+2026,IL,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IL,EDUC,high_school_or_less,High school or less,selected_broad_source_model,31.9,68.1,,,False,False,,,,,False
+2026,IL,EDUC,some_college,Some college / associate degree,selected_broad_source_model,51.0,49.0,,,False,False,,,,,False
+2026,IL,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,60.1,39.9,,,False,False,,,,,False
+2026,IL,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IL,SEX,male,Male,selected_broad_source_model,45.8,54.2,,,False,False,,,,,False
+2026,IL,SEX,female,Female,selected_broad_source_model,49.4,50.6,,,False,False,,,,,False
+2026,IL,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IL,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IL,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IL,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IL,RACETH5,white,White,selected_broad_source_model,74.5,25.5,,,False,False,,,,,False
+2026,IL,RACETH5,black,African American or Black,selected_broad_source_model,29.1,70.9,,,False,False,,,,,False
+2026,IL,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,15.8,84.2,,,False,False,,,,,False
+2026,IL,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IL,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,16.5,83.5,,,False,False,,,,,False
+2026,IL,INCOME,under_25000,"Under $25,000",selected_broad_source_model,25.5,74.5,,,False,False,,,,,False
+2026,IL,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,45.0,55.0,,,False,False,,,,,False
+2026,IL,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,50.7,49.3,,,False,False,,,,,False
+2026,IL,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,54.4,45.6,,,False,False,,,,,False
+2026,IL,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,64.9,35.1,,,False,False,,,,,False
+2026,IL,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IL,RUCC,urban_county,Urban county,selected_broad_source_model,46.2,53.8,,,False,False,,,,,False
+2026,IL,RUCC,suburban_county,Suburban county,selected_broad_source_model,49.5,50.5,,,False,False,,,,,False
+2026,IL,RUCC,rural_county,Rural county,selected_broad_source_model,54.9,45.1,,,False,False,,,,,False
+2026,IN,overall,all,All respondents,selected_broad_source_model,43.7,56.3,,,False,False,,,,,False
+2026,IN,AGE6,18_29,18–29,selected_broad_source_model,17.5,82.5,,,False,False,,,,,False
+2026,IN,AGE6,30_49,30–49,selected_broad_source_model,29.2,70.8,,,False,False,,,,,False
+2026,IN,AGE6,50_64,50–64,selected_broad_source_model,59.8,40.2,,,False,False,,,,,False
+2026,IN,AGE6,65_plus,65+,selected_broad_source_model,97.5,2.5,,,False,False,,,,,False
+2026,IN,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,EDUC,high_school_or_less,High school or less,selected_broad_source_model,34.3,65.7,,,False,False,,,,,False
+2026,IN,EDUC,some_college,Some college / associate degree,selected_broad_source_model,42.8,57.2,,,False,False,,,,,False
+2026,IN,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,58.5,41.5,,,False,False,,,,,False
+2026,IN,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,SEX,male,Male,selected_broad_source_model,40.4,59.6,,,False,False,,,,,False
+2026,IN,SEX,female,Female,selected_broad_source_model,46.8,53.2,,,False,False,,,,,False
+2026,IN,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IN,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IN,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IN,RACETH5,white,White,selected_broad_source_model,50.2,49.8,,,False,False,,,,,False
+2026,IN,RACETH5,black,African American or Black,selected_broad_source_model,28.6,71.4,,,False,False,,,,,False
+2026,IN,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,INCOME,under_25000,"Under $25,000",selected_broad_source_model,23.0,77.0,,,False,False,,,,,False
+2026,IN,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,44.5,55.5,,,False,False,,,,,False
+2026,IN,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,40.9,59.1,,,False,False,,,,,False
+2026,IN,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IN,RUCC,urban_county,Urban county,selected_broad_source_model,44.1,55.9,,,False,False,,,,,False
+2026,IN,RUCC,suburban_county,Suburban county,selected_broad_source_model,39.8,60.2,,,False,False,,,,,False
+2026,IN,RUCC,rural_county,Rural county,selected_broad_source_model,49.6,50.4,,,False,False,,,,,False
+2026,IA,overall,all,All respondents,selected_broad_source_model,64.4,35.6,,,False,False,,,,,False
+2026,IA,AGE6,18_29,18–29,selected_broad_source_model,28.1,71.9,,,False,False,,,,,False
+2026,IA,AGE6,30_49,30–49,selected_broad_source_model,58.1,41.9,,,False,False,,,,,False
+2026,IA,AGE6,50_64,50–64,selected_broad_source_model,85.0,15.0,,,False,False,,,,,False
+2026,IA,AGE6,65_plus,65+,selected_broad_source_model,99.5,0.5,,,False,False,,,,,False
+2026,IA,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,EDUC,high_school_or_less,High school or less,selected_broad_source_model,47.2,52.8,,,False,False,,,,,False
+2026,IA,EDUC,some_college,Some college / associate degree,selected_broad_source_model,65.9,34.1,,,False,False,,,,,False
+2026,IA,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,83.0,17.0,,,False,False,,,,,False
+2026,IA,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,SEX,male,Male,selected_broad_source_model,62.9,37.1,,,False,False,,,,,False
+2026,IA,SEX,female,Female,selected_broad_source_model,65.8,34.2,,,False,False,,,,,False
+2026,IA,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IA,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IA,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,IA,RACETH5,white,White,selected_broad_source_model,68.9,31.1,,,False,False,,,,,False
+2026,IA,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,27.0,73.0,,,False,False,,,,,False
+2026,IA,INCOME,under_25000,"Under $25,000",selected_broad_source_model,44.8,55.2,,,False,False,,,,,False
+2026,IA,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,55.9,44.1,,,False,False,,,,,False
+2026,IA,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,63.7,36.3,,,False,False,,,,,False
+2026,IA,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,78.1,21.9,,,False,False,,,,,False
+2026,IA,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,IA,RUCC,suburban_county,Suburban county,selected_broad_source_model,67.9,32.1,,,False,False,,,,,False
+2026,IA,RUCC,rural_county,Rural county,selected_broad_source_model,58.9,41.1,,,False,False,,,,,False
+2026,KS,overall,all,All respondents,selected_broad_source_model,56.2,43.8,,,False,False,,,,,False
+2026,KS,AGE6,18_29,18–29,selected_broad_source_model,26.2,73.8,,,False,False,,,,,False
+2026,KS,AGE6,30_49,30–49,selected_broad_source_model,44.3,55.7,,,False,False,,,,,False
+2026,KS,AGE6,50_64,50–64,selected_broad_source_model,75.8,24.2,,,False,False,,,,,False
+2026,KS,AGE6,65_plus,65+,selected_broad_source_model,98.7,1.3,,,False,False,,,,,False
+2026,KS,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KS,EDUC,high_school_or_less,High school or less,selected_broad_source_model,32.8,67.2,,,False,False,,,,,False
+2026,KS,EDUC,some_college,Some college / associate degree,selected_broad_source_model,59.4,40.6,,,False,False,,,,,False
+2026,KS,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,77.5,22.5,,,False,False,,,,,False
+2026,KS,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KS,SEX,male,Male,selected_broad_source_model,52.8,47.2,,,False,False,,,,,False
+2026,KS,SEX,female,Female,selected_broad_source_model,59.8,40.2,,,False,False,,,,,False
+2026,KS,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KS,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,KS,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,KS,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,KS,RACETH5,white,White,selected_broad_source_model,68.6,31.4,,,False,False,,,,,False
+2026,KS,RACETH5,black,African American or Black,selected_broad_source_model,27.7,72.3,,,False,False,,,,,False
+2026,KS,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,17.1,82.9,,,False,False,,,,,False
+2026,KS,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KS,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,19.3,80.7,,,False,False,,,,,False
+2026,KS,INCOME,under_25000,"Under $25,000",selected_broad_source_model,27.4,72.6,,,False,False,,,,,False
+2026,KS,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,51.2,48.8,,,False,False,,,,,False
+2026,KS,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,58.2,41.8,,,False,False,,,,,False
+2026,KS,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,61.8,38.2,,,False,False,,,,,False
+2026,KS,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,79.8,20.2,,,False,False,,,,,False
+2026,KS,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KS,RUCC,urban_county,Urban county,selected_broad_source_model,67.8,32.2,,,False,False,,,,,False
+2026,KS,RUCC,suburban_county,Suburban county,selected_broad_source_model,53.0,47.0,,,False,False,,,,,False
+2026,KS,RUCC,rural_county,Rural county,selected_broad_source_model,49.3,50.7,,,False,False,,,,,False
+2026,KY,overall,all,All respondents,selected_broad_source_model,44.2,55.8,,,False,False,,,,,False
+2026,KY,AGE6,18_29,18–29,selected_broad_source_model,20.9,79.1,,,False,False,,,,,False
+2026,KY,AGE6,30_49,30–49,selected_broad_source_model,32.6,67.4,,,False,False,,,,,False
+2026,KY,AGE6,50_64,50–64,selected_broad_source_model,53.4,46.6,,,False,False,,,,,False
+2026,KY,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,EDUC,high_school_or_less,High school or less,selected_broad_source_model,31.8,68.2,,,False,False,,,,,False
+2026,KY,EDUC,some_college,Some college / associate degree,selected_broad_source_model,40.7,59.3,,,False,False,,,,,False
+2026,KY,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,73.9,26.1,,,False,False,,,,,False
+2026,KY,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,SEX,male,Male,selected_broad_source_model,43.1,56.9,,,False,False,,,,,False
+2026,KY,SEX,female,Female,selected_broad_source_model,44.9,55.1,,,False,False,,,,,False
+2026,KY,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,KY,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,KY,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,KY,RACETH5,white,White,selected_broad_source_model,49.4,50.6,,,False,False,,,,,False
+2026,KY,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,INCOME,under_25000,"Under $25,000",selected_broad_source_model,25.9,74.1,,,False,False,,,,,False
+2026,KY,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,38.6,61.4,,,False,False,,,,,False
+2026,KY,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,42.2,57.8,,,False,False,,,,,False
+2026,KY,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,KY,RUCC,urban_county,Urban county,selected_broad_source_model,49.0,51.0,,,False,False,,,,,False
+2026,KY,RUCC,suburban_county,Suburban county,selected_broad_source_model,41.7,58.3,,,False,False,,,,,False
+2026,KY,RUCC,rural_county,Rural county,selected_broad_source_model,41.8,58.2,,,False,False,,,,,False
+2026,LA,overall,all,All respondents,selected_broad_source_model,52.1,47.9,,,False,False,,,,,False
+2026,LA,AGE6,18_29,18–29,selected_broad_source_model,20.4,79.6,,,False,False,,,,,False
+2026,LA,AGE6,30_49,30–49,selected_broad_source_model,35.8,64.2,,,False,False,,,,,False
+2026,LA,AGE6,50_64,50–64,selected_broad_source_model,82.8,17.2,,,False,False,,,,,False
+2026,LA,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,EDUC,high_school_or_less,High school or less,selected_broad_source_model,41.0,59.0,,,False,False,,,,,False
+2026,LA,EDUC,some_college,Some college / associate degree,selected_broad_source_model,52.7,47.3,,,False,False,,,,,False
+2026,LA,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,76.7,23.3,,,False,False,,,,,False
+2026,LA,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,SEX,male,Male,selected_broad_source_model,50.9,49.1,,,False,False,,,,,False
+2026,LA,SEX,female,Female,selected_broad_source_model,54.6,45.4,,,False,False,,,,,False
+2026,LA,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,LA,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,LA,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,LA,RACETH5,white,White,selected_broad_source_model,68.8,31.2,,,False,False,,,,,False
+2026,LA,RACETH5,black,African American or Black,selected_broad_source_model,43.1,56.9,,,False,False,,,,,False
+2026,LA,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,INCOME,under_25000,"Under $25,000",selected_broad_source_model,40.5,59.5,,,False,False,,,,,False
+2026,LA,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,45.9,54.1,,,False,False,,,,,False
+2026,LA,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,59.5,40.5,,,False,False,,,,,False
+2026,LA,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,LA,RUCC,urban_county,Urban county,selected_broad_source_model,53.3,46.7,,,False,False,,,,,False
+2026,LA,RUCC,suburban_county,Suburban county,selected_broad_source_model,53.5,46.5,,,False,False,,,,,False
+2026,LA,RUCC,rural_county,Rural county,selected_broad_source_model,45.7,54.3,,,False,False,,,,,False
+2026,ME,overall,all,All respondents,selected_broad_source_model,69.9,30.1,,,False,False,,,,,False
+2026,ME,AGE6,18_29,18–29,selected_broad_source_model,52.5,47.5,,,False,False,,,,,False
+2026,ME,AGE6,30_49,30–49,selected_broad_source_model,55.5,44.5,,,False,False,,,,,False
+2026,ME,AGE6,50_64,50–64,selected_broad_source_model,73.2,26.8,,,False,False,,,,,False
+2026,ME,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,EDUC,high_school_or_less,High school or less,selected_broad_source_model,56.5,43.5,,,False,False,,,,,False
+2026,ME,EDUC,some_college,Some college / associate degree,selected_broad_source_model,70.7,29.3,,,False,False,,,,,False
+2026,ME,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,80.7,19.3,,,False,False,,,,,False
+2026,ME,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,SEX,male,Male,selected_broad_source_model,68.8,31.2,,,False,False,,,,,False
+2026,ME,SEX,female,Female,selected_broad_source_model,70.8,29.2,,,False,False,,,,,False
+2026,ME,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ME,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ME,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ME,RACETH5,white,White,selected_broad_source_model,74.5,25.5,,,False,False,,,,,False
+2026,ME,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,INCOME,under_25000,"Under $25,000",selected_broad_source_model,44.4,55.6,,,False,False,,,,,False
+2026,ME,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,72.7,27.3,,,False,False,,,,,False
+2026,ME,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,66.1,33.9,,,False,False,,,,,False
+2026,ME,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,69.5,30.5,,,False,False,,,,,False
+2026,ME,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ME,RUCC,suburban_county,Suburban county,selected_broad_source_model,74.9,25.1,,,False,False,,,,,False
+2026,ME,RUCC,rural_county,Rural county,selected_broad_source_model,63.4,36.6,,,False,False,,,,,False
+2026,MD,overall,all,All respondents,selected_broad_source_model,53.9,46.1,,,False,False,,,,,False
+2026,MD,AGE6,18_29,18–29,selected_broad_source_model,22.7,77.3,,,False,False,,,,,False
+2026,MD,AGE6,30_49,30–49,selected_broad_source_model,43.2,56.8,,,False,False,,,,,False
+2026,MD,AGE6,50_64,50–64,selected_broad_source_model,74.4,25.6,,,False,False,,,,,False
+2026,MD,AGE6,65_plus,65+,selected_broad_source_model,99.0,1.0,,,False,False,,,,,False
+2026,MD,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,EDUC,high_school_or_less,High school or less,selected_broad_source_model,32.0,68.0,,,False,False,,,,,False
+2026,MD,EDUC,some_college,Some college / associate degree,selected_broad_source_model,55.5,44.5,,,False,False,,,,,False
+2026,MD,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,73.2,26.8,,,False,False,,,,,False
+2026,MD,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,SEX,male,Male,selected_broad_source_model,51.3,48.7,,,False,False,,,,,False
+2026,MD,SEX,female,Female,selected_broad_source_model,56.4,43.6,,,False,False,,,,,False
+2026,MD,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MD,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MD,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MD,RACETH5,white,White,selected_broad_source_model,82.1,17.9,,,False,False,,,,,False
+2026,MD,RACETH5,black,African American or Black,selected_broad_source_model,42.1,57.9,,,False,False,,,,,False
+2026,MD,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,INCOME,under_25000,"Under $25,000",selected_broad_source_model,30.7,69.3,,,False,False,,,,,False
+2026,MD,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,41.6,58.4,,,False,False,,,,,False
+2026,MD,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,46.0,54.0,,,False,False,,,,,False
+2026,MD,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,74.4,25.6,,,False,False,,,,,False
+2026,MD,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,RUCC,urban_county,Urban county,selected_broad_source_model,54.0,46.0,,,False,False,,,,,False
+2026,MD,RUCC,suburban_county,Suburban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MD,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,overall,all,All respondents,selected_broad_source_model,54.0,46.0,,,False,False,,,,,False
+2026,MA,AGE6,18_29,18–29,selected_broad_source_model,27.1,72.9,,,False,False,,,,,False
+2026,MA,AGE6,30_49,30–49,selected_broad_source_model,38.6,61.4,,,False,False,,,,,False
+2026,MA,AGE6,50_64,50–64,selected_broad_source_model,70.8,29.2,,,False,False,,,,,False
+2026,MA,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,EDUC,high_school_or_less,High school or less,selected_broad_source_model,31.8,68.2,,,False,False,,,,,False
+2026,MA,EDUC,some_college,Some college / associate degree,selected_broad_source_model,52.8,47.2,,,False,False,,,,,False
+2026,MA,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,73.7,26.3,,,False,False,,,,,False
+2026,MA,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,SEX,male,Male,selected_broad_source_model,51.2,48.8,,,False,False,,,,,False
+2026,MA,SEX,female,Female,selected_broad_source_model,56.7,43.3,,,False,False,,,,,False
+2026,MA,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MA,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MA,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MA,RACETH5,white,White,selected_broad_source_model,71.6,28.4,,,False,False,,,,,False
+2026,MA,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,17.8,82.2,,,False,False,,,,,False
+2026,MA,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,INCOME,under_25000,"Under $25,000",selected_broad_source_model,25.2,74.8,,,False,False,,,,,False
+2026,MA,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,46.1,53.9,,,False,False,,,,,False
+2026,MA,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,51.6,48.4,,,False,False,,,,,False
+2026,MA,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,61.4,38.6,,,False,False,,,,,False
+2026,MA,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,78.4,21.6,,,False,False,,,,,False
+2026,MA,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MA,RUCC,urban_county,Urban county,selected_broad_source_model,54.1,45.9,,,False,False,,,,,False
+2026,MA,RUCC,suburban_county,Suburban county,selected_broad_source_model,53.4,46.6,,,False,False,,,,,False
+2026,MA,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MI,overall,all,All respondents,selected_broad_source_model,60.5,39.5,,,False,False,,,,,False
+2026,MI,AGE6,18_29,18–29,selected_broad_source_model,35.4,64.6,,,False,False,,,,,False
+2026,MI,AGE6,30_49,30–49,selected_broad_source_model,49.9,50.1,,,False,False,,,,,False
+2026,MI,AGE6,50_64,50–64,selected_broad_source_model,71.3,28.7,,,False,False,,,,,False
+2026,MI,AGE6,65_plus,65+,selected_broad_source_model,95.6,4.4,,,False,False,,,,,False
+2026,MI,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MI,EDUC,high_school_or_less,High school or less,selected_broad_source_model,40.4,59.6,,,False,False,,,,,False
+2026,MI,EDUC,some_college,Some college / associate degree,selected_broad_source_model,68.6,31.4,,,False,False,,,,,False
+2026,MI,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,79.8,20.2,,,False,False,,,,,False
+2026,MI,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MI,SEX,male,Male,selected_broad_source_model,56.3,43.7,,,False,False,,,,,False
+2026,MI,SEX,female,Female,selected_broad_source_model,64.8,35.2,,,False,False,,,,,False
+2026,MI,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MI,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MI,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MI,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MI,RACETH5,white,White,selected_broad_source_model,72.6,27.4,,,False,False,,,,,False
+2026,MI,RACETH5,black,African American or Black,selected_broad_source_model,34.9,65.1,,,False,False,,,,,False
+2026,MI,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,32.5,67.5,,,False,False,,,,,False
+2026,MI,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MI,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,24.6,75.4,,,False,False,,,,,False
+2026,MI,INCOME,under_25000,"Under $25,000",selected_broad_source_model,32.7,67.3,,,False,False,,,,,False
+2026,MI,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,60.4,39.6,,,False,False,,,,,False
+2026,MI,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,65.1,34.9,,,False,False,,,,,False
+2026,MI,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,77.2,22.8,,,False,False,,,,,False
+2026,MI,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,78.2,21.8,,,False,False,,,,,False
+2026,MI,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MI,RUCC,urban_county,Urban county,selected_broad_source_model,60.6,39.4,,,False,False,,,,,False
+2026,MI,RUCC,suburban_county,Suburban county,selected_broad_source_model,59.3,40.7,,,False,False,,,,,False
+2026,MI,RUCC,rural_county,Rural county,selected_broad_source_model,62.0,38.0,,,False,False,,,,,False
+2026,MN,overall,all,All respondents,selected_broad_source_model,74.8,25.2,,,False,False,,,,,False
+2026,MN,AGE6,18_29,18–29,selected_broad_source_model,39.6,60.4,,,False,False,,,,,False
+2026,MN,AGE6,30_49,30–49,selected_broad_source_model,71.4,28.6,,,False,False,,,,,False
+2026,MN,AGE6,50_64,50–64,selected_broad_source_model,90.6,9.4,,,False,False,,,,,False
+2026,MN,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MN,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MN,EDUC,high_school_or_less,High school or less,selected_broad_source_model,57.6,42.4,,,False,False,,,,,False
+2026,MN,EDUC,some_college,Some college / associate degree,selected_broad_source_model,76.4,23.6,,,False,False,,,,,False
+2026,MN,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,87.0,13.0,,,False,False,,,,,False
+2026,MN,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MN,SEX,male,Male,selected_broad_source_model,71.5,28.5,,,False,False,,,,,False
+2026,MN,SEX,female,Female,selected_broad_source_model,78.3,21.7,,,False,False,,,,,False
+2026,MN,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MN,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MN,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MN,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MN,RACETH5,white,White,selected_broad_source_model,88.6,11.4,,,False,False,,,,,False
+2026,MN,RACETH5,black,African American or Black,selected_broad_source_model,31.1,68.9,,,False,False,,,,,False
+2026,MN,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MN,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MN,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,23.2,76.8,,,False,False,,,,,False
+2026,MN,INCOME,under_25000,"Under $25,000",selected_broad_source_model,52.7,47.3,,,False,False,,,,,False
+2026,MN,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,63.4,36.6,,,False,False,,,,,False
+2026,MN,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,73.6,26.4,,,False,False,,,,,False
+2026,MN,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,79.7,20.3,,,False,False,,,,,False
+2026,MN,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,90.0,10.0,,,False,False,,,,,False
+2026,MN,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MN,RUCC,urban_county,Urban county,selected_broad_source_model,76.2,23.8,,,False,False,,,,,False
+2026,MN,RUCC,suburban_county,Suburban county,selected_broad_source_model,75.7,24.3,,,False,False,,,,,False
+2026,MN,RUCC,rural_county,Rural county,selected_broad_source_model,70.1,29.9,,,False,False,,,,,False
+2026,MS,overall,all,All respondents,selected_broad_source_model,49.2,50.8,,,False,False,,,,,False
+2026,MS,AGE6,18_29,18–29,selected_broad_source_model,16.7,83.3,,,False,False,,,,,False
+2026,MS,AGE6,30_49,30–49,selected_broad_source_model,28.1,71.9,,,False,False,,,,,False
+2026,MS,AGE6,50_64,50–64,selected_broad_source_model,92.1,7.9,,,False,False,,,,,False
+2026,MS,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,EDUC,high_school_or_less,High school or less,selected_broad_source_model,32.8,67.2,,,False,False,,,,,False
+2026,MS,EDUC,some_college,Some college / associate degree,selected_broad_source_model,54.7,45.3,,,False,False,,,,,False
+2026,MS,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,74.5,25.5,,,False,False,,,,,False
+2026,MS,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,SEX,male,Male,selected_broad_source_model,48.5,51.5,,,False,False,,,,,False
+2026,MS,SEX,female,Female,selected_broad_source_model,49.4,50.6,,,False,False,,,,,False
+2026,MS,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MS,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MS,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MS,RACETH5,white,White,selected_broad_source_model,62.2,37.8,,,False,False,,,,,False
+2026,MS,RACETH5,black,African American or Black,selected_broad_source_model,38.3,61.7,,,False,False,,,,,False
+2026,MS,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,INCOME,under_25000,"Under $25,000",selected_broad_source_model,28.8,71.2,,,False,False,,,,,False
+2026,MS,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,54.5,45.5,,,False,False,,,,,False
+2026,MS,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,54.7,45.3,,,False,False,,,,,False
+2026,MS,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MS,RUCC,suburban_county,Suburban county,selected_broad_source_model,45.7,54.3,,,False,False,,,,,False
+2026,MS,RUCC,rural_county,Rural county,selected_broad_source_model,52.4,47.6,,,False,False,,,,,False
+2026,MO,overall,all,All respondents,selected_broad_source_model,51.2,48.8,,,False,False,,,,,False
+2026,MO,AGE6,18_29,18–29,selected_broad_source_model,20.2,79.8,,,False,False,,,,,False
+2026,MO,AGE6,30_49,30–49,selected_broad_source_model,37.1,62.9,,,False,False,,,,,False
+2026,MO,AGE6,50_64,50–64,selected_broad_source_model,74.8,25.2,,,False,False,,,,,False
+2026,MO,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,EDUC,high_school_or_less,High school or less,selected_broad_source_model,34.4,65.6,,,False,False,,,,,False
+2026,MO,EDUC,some_college,Some college / associate degree,selected_broad_source_model,48.5,51.5,,,False,False,,,,,False
+2026,MO,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,79.9,20.1,,,False,False,,,,,False
+2026,MO,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,SEX,male,Male,selected_broad_source_model,53.3,46.7,,,False,False,,,,,False
+2026,MO,SEX,female,Female,selected_broad_source_model,49.1,50.9,,,False,False,,,,,False
+2026,MO,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MO,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MO,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MO,RACETH5,white,White,selected_broad_source_model,62.8,37.2,,,False,False,,,,,False
+2026,MO,RACETH5,black,African American or Black,selected_broad_source_model,20.6,79.4,,,False,False,,,,,False
+2026,MO,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,INCOME,under_25000,"Under $25,000",selected_broad_source_model,25.1,74.9,,,False,False,,,,,False
+2026,MO,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,46.7,53.3,,,False,False,,,,,False
+2026,MO,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,47.3,52.7,,,False,False,,,,,False
+2026,MO,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MO,RUCC,urban_county,Urban county,selected_broad_source_model,54.6,45.4,,,False,False,,,,,False
+2026,MO,RUCC,suburban_county,Suburban county,selected_broad_source_model,48.5,51.5,,,False,False,,,,,False
+2026,MO,RUCC,rural_county,Rural county,selected_broad_source_model,46.0,54.0,,,False,False,,,,,False
+2026,MT,overall,all,All respondents,selected_broad_source_model,62.2,37.8,,,False,False,,,,,False
+2026,MT,AGE6,18_29,18–29,selected_broad_source_model,29.3,70.7,,,False,False,,,,,False
+2026,MT,AGE6,30_49,30–49,selected_broad_source_model,46.9,53.1,,,False,False,,,,,False
+2026,MT,AGE6,50_64,50–64,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,EDUC,high_school_or_less,High school or less,selected_broad_source_model,43.9,56.1,,,False,False,,,,,False
+2026,MT,EDUC,some_college,Some college / associate degree,selected_broad_source_model,65.0,35.0,,,False,False,,,,,False
+2026,MT,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,SEX,male,Male,selected_broad_source_model,56.0,44.0,,,False,False,,,,,False
+2026,MT,SEX,female,Female,selected_broad_source_model,69.5,30.5,,,False,False,,,,,False
+2026,MT,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MT,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MT,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,MT,RACETH5,white,White,selected_broad_source_model,72.3,27.7,,,False,False,,,,,False
+2026,MT,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,INCOME,under_25000,"Under $25,000",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,53.3,46.7,,,False,False,,,,,False
+2026,MT,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,MT,RUCC,suburban_county,Suburban county,selected_broad_source_model,61.4,38.6,,,False,False,,,,,False
+2026,MT,RUCC,rural_county,Rural county,selected_broad_source_model,63.0,37.0,,,False,False,,,,,False
+2026,NE,overall,all,All respondents,selected_broad_source_model,61.6,38.4,,,False,False,,,,,False
+2026,NE,AGE6,18_29,18–29,selected_broad_source_model,29.6,70.4,,,False,False,,,,,False
+2026,NE,AGE6,30_49,30–49,selected_broad_source_model,47.5,52.5,,,False,False,,,,,False
+2026,NE,AGE6,50_64,50–64,selected_broad_source_model,78.2,21.8,,,False,False,,,,,False
+2026,NE,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,EDUC,high_school_or_less,High school or less,selected_broad_source_model,50.9,49.1,,,False,False,,,,,False
+2026,NE,EDUC,some_college,Some college / associate degree,selected_broad_source_model,56.8,43.2,,,False,False,,,,,False
+2026,NE,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,76.2,23.8,,,False,False,,,,,False
+2026,NE,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,SEX,male,Male,selected_broad_source_model,61.0,39.0,,,False,False,,,,,False
+2026,NE,SEX,female,Female,selected_broad_source_model,62.3,37.7,,,False,False,,,,,False
+2026,NE,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NE,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NE,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NE,RACETH5,white,White,selected_broad_source_model,72.7,27.3,,,False,False,,,,,False
+2026,NE,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,17.4,82.6,,,False,False,,,,,False
+2026,NE,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,INCOME,under_25000,"Under $25,000",selected_broad_source_model,36.9,63.1,,,False,False,,,,,False
+2026,NE,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,52.7,47.3,,,False,False,,,,,False
+2026,NE,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,72.2,27.8,,,False,False,,,,,False
+2026,NE,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,75.9,24.1,,,False,False,,,,,False
+2026,NE,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NE,RUCC,suburban_county,Suburban county,selected_broad_source_model,61.1,38.9,,,False,False,,,,,False
+2026,NE,RUCC,rural_county,Rural county,selected_broad_source_model,62.4,37.6,,,False,False,,,,,False
+2026,NV,overall,all,All respondents,selected_broad_source_model,45.7,54.3,,,False,False,,,,,False
+2026,NV,AGE6,18_29,18–29,selected_broad_source_model,36.7,63.3,,,False,False,,,,,False
+2026,NV,AGE6,30_49,30–49,selected_broad_source_model,27.3,72.7,,,False,False,,,,,False
+2026,NV,AGE6,50_64,50–64,selected_broad_source_model,57.5,42.5,,,False,False,,,,,False
+2026,NV,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NV,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NV,EDUC,high_school_or_less,High school or less,selected_broad_source_model,31.5,68.5,,,False,False,,,,,False
+2026,NV,EDUC,some_college,Some college / associate degree,selected_broad_source_model,48.2,51.8,,,False,False,,,,,False
+2026,NV,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,64.8,35.2,,,False,False,,,,,False
+2026,NV,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NV,SEX,male,Male,selected_broad_source_model,43.1,56.9,,,False,False,,,,,False
+2026,NV,SEX,female,Female,selected_broad_source_model,48.2,51.8,,,False,False,,,,,False
+2026,NV,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NV,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NV,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NV,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NV,RACETH5,white,White,selected_broad_source_model,86.5,13.5,,,False,False,,,,,False
+2026,NV,RACETH5,black,African American or Black,selected_broad_source_model,30.3,69.7,,,False,False,,,,,False
+2026,NV,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,20.7,79.3,,,False,False,,,,,False
+2026,NV,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,selected_broad_source_model,11.4,88.6,,,False,False,,,,,False
+2026,NV,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,20.2,79.8,,,False,False,,,,,False
+2026,NV,INCOME,under_25000,"Under $25,000",selected_broad_source_model,30.3,69.7,,,False,False,,,,,False
+2026,NV,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,35.6,64.4,,,False,False,,,,,False
+2026,NV,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,50.3,49.7,,,False,False,,,,,False
+2026,NV,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,49.2,50.8,,,False,False,,,,,False
+2026,NV,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,68.8,31.2,,,False,False,,,,,False
+2026,NV,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NV,RUCC,urban_county,Urban county,selected_broad_source_model,42.3,57.7,,,False,False,,,,,False
+2026,NV,RUCC,suburban_county,Suburban county,selected_broad_source_model,54.1,45.9,,,False,False,,,,,False
+2026,NV,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,overall,all,All respondents,selected_broad_source_model,75.4,24.6,,,False,False,,,,,False
+2026,NH,AGE6,18_29,18–29,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,AGE6,30_49,30–49,selected_broad_source_model,65.2,34.8,,,False,False,,,,,False
+2026,NH,AGE6,50_64,50–64,selected_broad_source_model,92.6,7.4,,,False,False,,,,,False
+2026,NH,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,EDUC,high_school_or_less,High school or less,selected_broad_source_model,57.9,42.1,,,False,False,,,,,False
+2026,NH,EDUC,some_college,Some college / associate degree,selected_broad_source_model,76.8,23.2,,,False,False,,,,,False
+2026,NH,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,88.6,11.4,,,False,False,,,,,False
+2026,NH,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,SEX,male,Male,selected_broad_source_model,69.6,30.4,,,False,False,,,,,False
+2026,NH,SEX,female,Female,selected_broad_source_model,81.1,18.9,,,False,False,,,,,False
+2026,NH,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NH,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NH,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NH,RACETH5,white,White,selected_broad_source_model,84.6,15.4,,,False,False,,,,,False
+2026,NH,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,INCOME,under_25000,"Under $25,000",selected_broad_source_model,44.4,55.6,,,False,False,,,,,False
+2026,NH,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,63.7,36.3,,,False,False,,,,,False
+2026,NH,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,67.6,32.4,,,False,False,,,,,False
+2026,NH,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,87.6,12.4,,,False,False,,,,,False
+2026,NH,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NH,RUCC,urban_county,Urban county,selected_broad_source_model,81.0,19.0,,,False,False,,,,,False
+2026,NH,RUCC,suburban_county,Suburban county,selected_broad_source_model,68.3,31.7,,,False,False,,,,,False
+2026,NH,RUCC,rural_county,Rural county,selected_broad_source_model,77.6,22.4,,,False,False,,,,,False
+2026,NJ,overall,all,All respondents,selected_broad_source_model,46.7,53.3,,,False,False,,,,,False
+2026,NJ,AGE6,18_29,18–29,selected_broad_source_model,21.6,78.4,,,False,False,,,,,False
+2026,NJ,AGE6,30_49,30–49,selected_broad_source_model,31.1,68.9,,,False,False,,,,,False
+2026,NJ,AGE6,50_64,50–64,selected_broad_source_model,67.2,32.8,,,False,False,,,,,False
+2026,NJ,AGE6,65_plus,65+,selected_broad_source_model,99.0,1.0,,,False,False,,,,,False
+2026,NJ,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NJ,EDUC,high_school_or_less,High school or less,selected_broad_source_model,31.7,68.3,,,False,False,,,,,False
+2026,NJ,EDUC,some_college,Some college / associate degree,selected_broad_source_model,43.5,56.5,,,False,False,,,,,False
+2026,NJ,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,62.5,37.5,,,False,False,,,,,False
+2026,NJ,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NJ,SEX,male,Male,selected_broad_source_model,43.6,56.4,,,False,False,,,,,False
+2026,NJ,SEX,female,Female,selected_broad_source_model,49.6,50.4,,,False,False,,,,,False
+2026,NJ,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NJ,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NJ,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NJ,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NJ,RACETH5,white,White,selected_broad_source_model,83.8,16.2,,,False,False,,,,,False
+2026,NJ,RACETH5,black,African American or Black,selected_broad_source_model,29.1,70.9,,,False,False,,,,,False
+2026,NJ,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,15.5,84.5,,,False,False,,,,,False
+2026,NJ,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NJ,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NJ,INCOME,under_25000,"Under $25,000",selected_broad_source_model,23.6,76.4,,,False,False,,,,,False
+2026,NJ,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,37.8,62.2,,,False,False,,,,,False
+2026,NJ,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,43.9,56.1,,,False,False,,,,,False
+2026,NJ,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,59.2,40.8,,,False,False,,,,,False
+2026,NJ,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,63.1,36.9,,,False,False,,,,,False
+2026,NJ,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NJ,RUCC,urban_county,Urban county,selected_broad_source_model,46.3,53.7,,,False,False,,,,,False
+2026,NJ,RUCC,suburban_county,Suburban county,selected_broad_source_model,50.2,49.8,,,False,False,,,,,False
+2026,NJ,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,overall,all,All respondents,selected_broad_source_model,52.1,47.9,,,False,False,,,,,False
+2026,NM,AGE6,18_29,18–29,selected_broad_source_model,21.3,78.7,,,False,False,,,,,False
+2026,NM,AGE6,30_49,30–49,selected_broad_source_model,39.5,60.5,,,False,False,,,,,False
+2026,NM,AGE6,50_64,50–64,selected_broad_source_model,72.0,28.0,,,False,False,,,,,False
+2026,NM,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,EDUC,high_school_or_less,High school or less,selected_broad_source_model,32.7,67.3,,,False,False,,,,,False
+2026,NM,EDUC,some_college,Some college / associate degree,selected_broad_source_model,51.0,49.0,,,False,False,,,,,False
+2026,NM,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,84.0,16.0,,,False,False,,,,,False
+2026,NM,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,SEX,male,Male,selected_broad_source_model,46.2,53.8,,,False,False,,,,,False
+2026,NM,SEX,female,Female,selected_broad_source_model,58.2,41.8,,,False,False,,,,,False
+2026,NM,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NM,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NM,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NM,RACETH5,white,White,selected_broad_source_model,89.1,10.9,,,False,False,,,,,False
+2026,NM,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,37.0,63.0,,,False,False,,,,,False
+2026,NM,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,26.2,73.8,,,False,False,,,,,False
+2026,NM,INCOME,under_25000,"Under $25,000",selected_broad_source_model,29.2,70.8,,,False,False,,,,,False
+2026,NM,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,52.7,47.3,,,False,False,,,,,False
+2026,NM,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,56.4,43.6,,,False,False,,,,,False
+2026,NM,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NM,RUCC,suburban_county,Suburban county,selected_broad_source_model,55.0,45.0,,,False,False,,,,,False
+2026,NM,RUCC,rural_county,Rural county,selected_broad_source_model,46.3,53.7,,,False,False,,,,,False
+2026,NY,overall,all,All respondents,selected_broad_source_model,51.2,48.8,,,False,False,,,,,False
+2026,NY,AGE6,18_29,18–29,selected_broad_source_model,23.2,76.8,,,False,False,,,,,False
+2026,NY,AGE6,30_49,30–49,selected_broad_source_model,38.6,61.4,,,False,False,,,,,False
+2026,NY,AGE6,50_64,50–64,selected_broad_source_model,69.0,31.0,,,False,False,,,,,False
+2026,NY,AGE6,65_plus,65+,selected_broad_source_model,94.2,5.8,,,False,False,,,,,False
+2026,NY,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NY,EDUC,high_school_or_less,High school or less,selected_broad_source_model,34.3,65.7,,,False,False,,,,,False
+2026,NY,EDUC,some_college,Some college / associate degree,selected_broad_source_model,52.3,47.7,,,False,False,,,,,False
+2026,NY,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,65.9,34.1,,,False,False,,,,,False
+2026,NY,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NY,SEX,male,Male,selected_broad_source_model,50.7,49.3,,,False,False,,,,,False
+2026,NY,SEX,female,Female,selected_broad_source_model,52.0,48.0,,,False,False,,,,,False
+2026,NY,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NY,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NY,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NY,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NY,RACETH5,white,White,selected_broad_source_model,84.0,16.0,,,False,False,,,,,False
+2026,NY,RACETH5,black,African American or Black,selected_broad_source_model,31.2,68.8,,,False,False,,,,,False
+2026,NY,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,19.9,80.1,,,False,False,,,,,False
+2026,NY,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,selected_broad_source_model,16.4,83.6,,,False,False,,,,,False
+2026,NY,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,17.1,82.9,,,False,False,,,,,False
+2026,NY,INCOME,under_25000,"Under $25,000",selected_broad_source_model,23.9,76.1,,,False,False,,,,,False
+2026,NY,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,46.7,53.3,,,False,False,,,,,False
+2026,NY,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,56.7,43.3,,,False,False,,,,,False
+2026,NY,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,58.5,41.5,,,False,False,,,,,False
+2026,NY,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,75.6,24.4,,,False,False,,,,,False
+2026,NY,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NY,RUCC,urban_county,Urban county,selected_broad_source_model,48.6,51.4,,,False,False,,,,,False
+2026,NY,RUCC,suburban_county,Suburban county,selected_broad_source_model,60.5,39.5,,,False,False,,,,,False
+2026,NY,RUCC,rural_county,Rural county,selected_broad_source_model,57.0,43.0,,,False,False,,,,,False
+2026,NC,overall,all,All respondents,selected_broad_source_model,56.2,43.8,,,False,False,,,,,False
+2026,NC,AGE6,18_29,18–29,selected_broad_source_model,19.4,80.6,,,False,False,,,,,False
+2026,NC,AGE6,30_49,30–49,selected_broad_source_model,47.8,52.2,,,False,False,,,,,False
+2026,NC,AGE6,50_64,50–64,selected_broad_source_model,94.2,5.8,,,False,False,,,,,False
+2026,NC,AGE6,65_plus,65+,selected_broad_source_model,100.0,0.0,,,False,False,,,,,False
+2026,NC,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NC,EDUC,high_school_or_less,High school or less,selected_broad_source_model,35.6,64.4,,,False,False,,,,,False
+2026,NC,EDUC,some_college,Some college / associate degree,selected_broad_source_model,58.4,41.6,,,False,False,,,,,False
+2026,NC,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,79.9,20.1,,,False,False,,,,,False
+2026,NC,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NC,SEX,male,Male,selected_broad_source_model,54.4,45.6,,,False,False,,,,,False
+2026,NC,SEX,female,Female,selected_broad_source_model,57.6,42.4,,,False,False,,,,,False
+2026,NC,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NC,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NC,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NC,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,NC,RACETH5,white,White,selected_broad_source_model,76.1,23.9,,,False,False,,,,,False
+2026,NC,RACETH5,black,African American or Black,selected_broad_source_model,40.7,59.3,,,False,False,,,,,False
+2026,NC,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,19.4,80.6,,,False,False,,,,,False
+2026,NC,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NC,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,25.6,74.4,,,False,False,,,,,False
+2026,NC,INCOME,under_25000,"Under $25,000",selected_broad_source_model,34.3,65.7,,,False,False,,,,,False
+2026,NC,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,50.0,50.0,,,False,False,,,,,False
+2026,NC,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,58.6,41.4,,,False,False,,,,,False
+2026,NC,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,74.3,25.7,,,False,False,,,,,False
+2026,NC,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,75.3,24.7,,,False,False,,,,,False
+2026,NC,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,NC,RUCC,urban_county,Urban county,selected_broad_source_model,57.4,42.6,,,False,False,,,,,False
+2026,NC,RUCC,suburban_county,Suburban county,selected_broad_source_model,56.1,43.9,,,False,False,,,,,False
+2026,NC,RUCC,rural_county,Rural county,selected_broad_source_model,53.9,46.1,,,False,False,,,,,False
+2026,ND,overall,all,All respondents,selected_broad_source_model,60.9,39.1,,,False,False,,,,,False
+2026,ND,AGE6,18_29,18–29,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,AGE6,30_49,30–49,selected_broad_source_model,56.9,43.1,,,False,False,,,,,False
+2026,ND,AGE6,50_64,50–64,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,EDUC,high_school_or_less,High school or less,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,EDUC,some_college,Some college / associate degree,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,SEX,male,Male,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,SEX,female,Female,selected_broad_source_model,63.3,36.7,,,False,False,,,,,False
+2026,ND,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ND,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ND,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,ND,RACETH5,white,White,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,60.9,39.1,,,False,False,,,,,False
+2026,ND,INCOME,under_25000,"Under $25,000",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,INCOME,25000_49999,"$25,000–$49,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,ND,RUCC,suburban_county,Suburban county,selected_broad_source_model,69.6,30.4,,,False,False,,,,,False
+2026,ND,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OH,overall,all,All respondents,selected_broad_source_model,60.2,39.8,,,False,False,,,,,False
+2026,OH,AGE6,18_29,18–29,selected_broad_source_model,27.4,72.6,,,False,False,,,,,False
+2026,OH,AGE6,30_49,30–49,selected_broad_source_model,45.4,54.6,,,False,False,,,,,False
+2026,OH,AGE6,50_64,50–64,selected_broad_source_model,79.0,21.0,,,False,False,,,,,False
+2026,OH,AGE6,65_plus,65+,selected_broad_source_model,99.6,0.4,,,False,False,,,,,False
+2026,OH,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OH,EDUC,high_school_or_less,High school or less,selected_broad_source_model,44.2,55.8,,,False,False,,,,,False
+2026,OH,EDUC,some_college,Some college / associate degree,selected_broad_source_model,61.8,38.2,,,False,False,,,,,False
+2026,OH,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,80.4,19.6,,,False,False,,,,,False
+2026,OH,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OH,SEX,male,Male,selected_broad_source_model,59.1,40.9,,,False,False,,,,,False
+2026,OH,SEX,female,Female,selected_broad_source_model,61.0,39.0,,,False,False,,,,,False
+2026,OH,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OH,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OH,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OH,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OH,RACETH5,white,White,selected_broad_source_model,71.8,28.2,,,False,False,,,,,False
+2026,OH,RACETH5,black,African American or Black,selected_broad_source_model,31.0,69.0,,,False,False,,,,,False
+2026,OH,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,20.7,79.3,,,False,False,,,,,False
+2026,OH,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OH,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,22.5,77.5,,,False,False,,,,,False
+2026,OH,INCOME,under_25000,"Under $25,000",selected_broad_source_model,38.4,61.6,,,False,False,,,,,False
+2026,OH,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,62.2,37.8,,,False,False,,,,,False
+2026,OH,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,53.4,46.6,,,False,False,,,,,False
+2026,OH,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,70.6,29.4,,,False,False,,,,,False
+2026,OH,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,83.1,16.9,,,False,False,,,,,False
+2026,OH,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OH,RUCC,urban_county,Urban county,selected_broad_source_model,60.3,39.7,,,False,False,,,,,False
+2026,OH,RUCC,suburban_county,Suburban county,selected_broad_source_model,60.8,39.2,,,False,False,,,,,False
+2026,OH,RUCC,rural_county,Rural county,selected_broad_source_model,58.6,41.4,,,False,False,,,,,False
+2026,OK,overall,all,All respondents,selected_broad_source_model,47.9,52.1,,,False,False,,,,,False
+2026,OK,AGE6,18_29,18–29,selected_broad_source_model,22.2,77.8,,,False,False,,,,,False
+2026,OK,AGE6,30_49,30–49,selected_broad_source_model,32.5,67.5,,,False,False,,,,,False
+2026,OK,AGE6,50_64,50–64,selected_broad_source_model,66.9,33.1,,,False,False,,,,,False
+2026,OK,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,EDUC,high_school_or_less,High school or less,selected_broad_source_model,27.0,73.0,,,False,False,,,,,False
+2026,OK,EDUC,some_college,Some college / associate degree,selected_broad_source_model,55.1,44.9,,,False,False,,,,,False
+2026,OK,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,75.2,24.8,,,False,False,,,,,False
+2026,OK,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,SEX,male,Male,selected_broad_source_model,46.2,53.8,,,False,False,,,,,False
+2026,OK,SEX,female,Female,selected_broad_source_model,49.8,50.2,,,False,False,,,,,False
+2026,OK,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OK,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OK,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OK,RACETH5,white,White,selected_broad_source_model,67.3,32.7,,,False,False,,,,,False
+2026,OK,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,13.8,86.2,,,False,False,,,,,False
+2026,OK,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,9.3,90.7,,,False,False,,,,,False
+2026,OK,INCOME,under_25000,"Under $25,000",selected_broad_source_model,21.0,79.0,,,False,False,,,,,False
+2026,OK,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,52.0,48.0,,,False,False,,,,,False
+2026,OK,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,56.6,43.4,,,False,False,,,,,False
+2026,OK,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,RUCC,urban_county,Urban county,selected_broad_source_model,47.9,52.1,,,False,False,,,,,False
+2026,OK,RUCC,suburban_county,Suburban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OK,RUCC,rural_county,Rural county,selected_broad_source_model,49.8,50.2,,,False,False,,,,,False
+2026,OR,overall,all,All respondents,selected_broad_source_model,67.0,33.0,,,False,False,,,,,False
+2026,OR,AGE6,18_29,18–29,selected_broad_source_model,42.0,58.0,,,False,False,,,,,False
+2026,OR,AGE6,30_49,30–49,selected_broad_source_model,55.2,44.8,,,False,False,,,,,False
+2026,OR,AGE6,50_64,50–64,selected_broad_source_model,82.3,17.7,,,False,False,,,,,False
+2026,OR,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,EDUC,high_school_or_less,High school or less,selected_broad_source_model,48.9,51.1,,,False,False,,,,,False
+2026,OR,EDUC,some_college,Some college / associate degree,selected_broad_source_model,64.0,36.0,,,False,False,,,,,False
+2026,OR,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,85.1,14.9,,,False,False,,,,,False
+2026,OR,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,SEX,male,Male,selected_broad_source_model,64.2,35.8,,,False,False,,,,,False
+2026,OR,SEX,female,Female,selected_broad_source_model,69.5,30.5,,,False,False,,,,,False
+2026,OR,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OR,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OR,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,OR,RACETH5,white,White,selected_broad_source_model,81.0,19.0,,,False,False,,,,,False
+2026,OR,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,INCOME,under_25000,"Under $25,000",selected_broad_source_model,50.5,49.5,,,False,False,,,,,False
+2026,OR,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,56.9,43.1,,,False,False,,,,,False
+2026,OR,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,64.0,36.0,,,False,False,,,,,False
+2026,OR,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,OR,RUCC,urban_county,Urban county,selected_broad_source_model,68.5,31.5,,,False,False,,,,,False
+2026,OR,RUCC,suburban_county,Suburban county,selected_broad_source_model,64.9,35.1,,,False,False,,,,,False
+2026,OR,RUCC,rural_county,Rural county,selected_broad_source_model,67.9,32.1,,,False,False,,,,,False
+2026,PA,overall,all,All respondents,selected_broad_source_model,58.2,41.8,,,False,False,,,,,False
+2026,PA,AGE6,18_29,18–29,selected_broad_source_model,33.4,66.6,,,False,False,,,,,False
+2026,PA,AGE6,30_49,30–49,selected_broad_source_model,44.2,55.8,,,False,False,,,,,False
+2026,PA,AGE6,50_64,50–64,selected_broad_source_model,71.0,29.0,,,False,False,,,,,False
+2026,PA,AGE6,65_plus,65+,selected_broad_source_model,95.8,4.2,,,False,False,,,,,False
+2026,PA,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,PA,EDUC,high_school_or_less,High school or less,selected_broad_source_model,45.0,55.0,,,False,False,,,,,False
+2026,PA,EDUC,some_college,Some college / associate degree,selected_broad_source_model,55.5,44.5,,,False,False,,,,,False
+2026,PA,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,76.8,23.2,,,False,False,,,,,False
+2026,PA,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,PA,SEX,male,Male,selected_broad_source_model,55.4,44.6,,,False,False,,,,,False
+2026,PA,SEX,female,Female,selected_broad_source_model,60.5,39.5,,,False,False,,,,,False
+2026,PA,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,PA,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,PA,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,PA,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,PA,RACETH5,white,White,selected_broad_source_model,71.4,28.6,,,False,False,,,,,False
+2026,PA,RACETH5,black,African American or Black,selected_broad_source_model,37.1,62.9,,,False,False,,,,,False
+2026,PA,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,19.5,80.5,,,False,False,,,,,False
+2026,PA,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,PA,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,19.3,80.7,,,False,False,,,,,False
+2026,PA,INCOME,under_25000,"Under $25,000",selected_broad_source_model,38.6,61.4,,,False,False,,,,,False
+2026,PA,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,54.4,45.6,,,False,False,,,,,False
+2026,PA,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,58.2,41.8,,,False,False,,,,,False
+2026,PA,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,63.5,36.5,,,False,False,,,,,False
+2026,PA,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,74.4,25.6,,,False,False,,,,,False
+2026,PA,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,PA,RUCC,urban_county,Urban county,selected_broad_source_model,58.3,41.7,,,False,False,,,,,False
+2026,PA,RUCC,suburban_county,Suburban county,selected_broad_source_model,58.5,41.5,,,False,False,,,,,False
+2026,PA,RUCC,rural_county,Rural county,selected_broad_source_model,57.1,42.9,,,False,False,,,,,False
+2026,RI,overall,all,All respondents,selected_broad_source_model,47.7,52.3,,,False,False,,,,,False
+2026,RI,AGE6,18_29,18–29,selected_broad_source_model,20.7,79.3,,,False,False,,,,,False
+2026,RI,AGE6,30_49,30–49,selected_broad_source_model,31.2,68.8,,,False,False,,,,,False
+2026,RI,AGE6,50_64,50–64,selected_broad_source_model,73.8,26.2,,,False,False,,,,,False
+2026,RI,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,EDUC,high_school_or_less,High school or less,selected_broad_source_model,28.6,71.4,,,False,False,,,,,False
+2026,RI,EDUC,some_college,Some college / associate degree,selected_broad_source_model,44.5,55.5,,,False,False,,,,,False
+2026,RI,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,SEX,male,Male,selected_broad_source_model,45.1,54.9,,,False,False,,,,,False
+2026,RI,SEX,female,Female,selected_broad_source_model,50.2,49.8,,,False,False,,,,,False
+2026,RI,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,RI,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,RI,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,RI,RACETH5,white,White,selected_broad_source_model,68.5,31.5,,,False,False,,,,,False
+2026,RI,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,INCOME,under_25000,"Under $25,000",selected_broad_source_model,26.0,74.0,,,False,False,,,,,False
+2026,RI,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,36.6,63.4,,,False,False,,,,,False
+2026,RI,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,RUCC,urban_county,Urban county,selected_broad_source_model,47.7,52.3,,,False,False,,,,,False
+2026,RI,RUCC,suburban_county,Suburban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,RI,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SC,overall,all,All respondents,selected_broad_source_model,55.9,44.1,,,False,False,,,,,False
+2026,SC,AGE6,18_29,18–29,selected_broad_source_model,30.3,69.7,,,False,False,,,,,False
+2026,SC,AGE6,30_49,30–49,selected_broad_source_model,36.2,63.8,,,False,False,,,,,False
+2026,SC,AGE6,50_64,50–64,selected_broad_source_model,67.1,32.9,,,False,False,,,,,False
+2026,SC,AGE6,65_plus,65+,selected_broad_source_model,98.4,1.6,,,False,False,,,,,False
+2026,SC,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SC,EDUC,high_school_or_less,High school or less,selected_broad_source_model,41.1,58.9,,,False,False,,,,,False
+2026,SC,EDUC,some_college,Some college / associate degree,selected_broad_source_model,58.8,41.2,,,False,False,,,,,False
+2026,SC,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,70.4,29.6,,,False,False,,,,,False
+2026,SC,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SC,SEX,male,Male,selected_broad_source_model,54.0,46.0,,,False,False,,,,,False
+2026,SC,SEX,female,Female,selected_broad_source_model,57.1,42.9,,,False,False,,,,,False
+2026,SC,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SC,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,SC,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,SC,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,SC,RACETH5,white,White,selected_broad_source_model,70.0,30.0,,,False,False,,,,,False
+2026,SC,RACETH5,black,African American or Black,selected_broad_source_model,41.3,58.7,,,False,False,,,,,False
+2026,SC,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SC,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SC,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SC,INCOME,under_25000,"Under $25,000",selected_broad_source_model,36.0,64.0,,,False,False,,,,,False
+2026,SC,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,55.8,44.2,,,False,False,,,,,False
+2026,SC,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,53.3,46.7,,,False,False,,,,,False
+2026,SC,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,68.4,31.6,,,False,False,,,,,False
+2026,SC,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,69.5,30.5,,,False,False,,,,,False
+2026,SC,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SC,RUCC,urban_county,Urban county,selected_broad_source_model,41.6,58.4,,,False,False,,,,,False
+2026,SC,RUCC,suburban_county,Suburban county,selected_broad_source_model,59.0,41.0,,,False,False,,,,,False
+2026,SC,RUCC,rural_county,Rural county,selected_broad_source_model,49.7,50.3,,,False,False,,,,,False
+2026,SD,overall,all,All respondents,selected_broad_source_model,47.2,52.8,,,False,False,,,,,False
+2026,SD,AGE6,18_29,18–29,selected_broad_source_model,30.3,69.7,,,False,False,,,,,False
+2026,SD,AGE6,30_49,30–49,selected_broad_source_model,35.0,65.0,,,False,False,,,,,False
+2026,SD,AGE6,50_64,50–64,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,EDUC,high_school_or_less,High school or less,selected_broad_source_model,39.3,60.7,,,False,False,,,,,False
+2026,SD,EDUC,some_college,Some college / associate degree,selected_broad_source_model,46.0,54.0,,,False,False,,,,,False
+2026,SD,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,55.4,44.6,,,False,False,,,,,False
+2026,SD,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,SEX,male,Male,selected_broad_source_model,45.9,54.1,,,False,False,,,,,False
+2026,SD,SEX,female,Female,selected_broad_source_model,47.5,52.5,,,False,False,,,,,False
+2026,SD,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,SD,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,SD,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,SD,RACETH5,white,White,selected_broad_source_model,52.8,47.2,,,False,False,,,,,False
+2026,SD,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,INCOME,under_25000,"Under $25,000",selected_broad_source_model,21.2,78.8,,,False,False,,,,,False
+2026,SD,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,41.0,59.0,,,False,False,,,,,False
+2026,SD,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,SD,RUCC,suburban_county,Suburban county,selected_broad_source_model,44.7,55.3,,,False,False,,,,,False
+2026,SD,RUCC,rural_county,Rural county,selected_broad_source_model,50.4,49.6,,,False,False,,,,,False
+2026,TN,overall,all,All respondents,selected_broad_source_model,45.8,54.2,,,False,False,,,,,False
+2026,TN,AGE6,18_29,18–29,selected_broad_source_model,18.3,81.7,,,False,False,,,,,False
+2026,TN,AGE6,30_49,30–49,selected_broad_source_model,31.2,68.8,,,False,False,,,,,False
+2026,TN,AGE6,50_64,50–64,selected_broad_source_model,63.7,36.3,,,False,False,,,,,False
+2026,TN,AGE6,65_plus,65+,selected_broad_source_model,99.5,0.5,,,False,False,,,,,False
+2026,TN,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TN,EDUC,high_school_or_less,High school or less,selected_broad_source_model,31.1,68.9,,,False,False,,,,,False
+2026,TN,EDUC,some_college,Some college / associate degree,selected_broad_source_model,44.5,55.5,,,False,False,,,,,False
+2026,TN,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,69.2,30.8,,,False,False,,,,,False
+2026,TN,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TN,SEX,male,Male,selected_broad_source_model,45.5,54.5,,,False,False,,,,,False
+2026,TN,SEX,female,Female,selected_broad_source_model,45.8,54.2,,,False,False,,,,,False
+2026,TN,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TN,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,TN,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,TN,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,TN,RACETH5,white,White,selected_broad_source_model,53.9,46.1,,,False,False,,,,,False
+2026,TN,RACETH5,black,African American or Black,selected_broad_source_model,30.6,69.4,,,False,False,,,,,False
+2026,TN,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TN,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TN,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TN,INCOME,under_25000,"Under $25,000",selected_broad_source_model,29.5,70.5,,,False,False,,,,,False
+2026,TN,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,42.4,57.6,,,False,False,,,,,False
+2026,TN,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,47.4,52.6,,,False,False,,,,,False
+2026,TN,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,54.2,45.8,,,False,False,,,,,False
+2026,TN,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TN,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TN,RUCC,urban_county,Urban county,selected_broad_source_model,45.0,55.0,,,False,False,,,,,False
+2026,TN,RUCC,suburban_county,Suburban county,selected_broad_source_model,48.9,51.1,,,False,False,,,,,False
+2026,TN,RUCC,rural_county,Rural county,selected_broad_source_model,42.2,57.8,,,False,False,,,,,False
+2026,TX,overall,all,All respondents,selected_broad_source_model,56.3,43.7,,,False,False,,,,,False
+2026,TX,AGE6,18_29,18–29,selected_broad_source_model,25.9,74.1,,,False,False,,,,,False
+2026,TX,AGE6,30_49,30–49,selected_broad_source_model,48.0,52.0,,,False,False,,,,,False
+2026,TX,AGE6,50_64,50–64,selected_broad_source_model,78.4,21.6,,,False,False,,,,,False
+2026,TX,AGE6,65_plus,65+,selected_broad_source_model,99.0,1.0,,,False,False,,,,,False
+2026,TX,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TX,EDUC,high_school_or_less,High school or less,selected_broad_source_model,38.8,61.2,,,False,False,,,,,False
+2026,TX,EDUC,some_college,Some college / associate degree,selected_broad_source_model,57.2,42.8,,,False,False,,,,,False
+2026,TX,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,73.3,26.7,,,False,False,,,,,False
+2026,TX,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TX,SEX,male,Male,selected_broad_source_model,50.8,49.2,,,False,False,,,,,False
+2026,TX,SEX,female,Female,selected_broad_source_model,61.4,38.6,,,False,False,,,,,False
+2026,TX,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TX,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,TX,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,TX,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,TX,RACETH5,white,White,selected_broad_source_model,90.3,9.7,,,False,False,,,,,False
+2026,TX,RACETH5,black,African American or Black,selected_broad_source_model,41.8,58.2,,,False,False,,,,,False
+2026,TX,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,32.8,67.2,,,False,False,,,,,False
+2026,TX,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,selected_broad_source_model,20.7,79.3,,,False,False,,,,,False
+2026,TX,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,33.8,66.2,,,False,False,,,,,False
+2026,TX,INCOME,under_25000,"Under $25,000",selected_broad_source_model,39.3,60.7,,,False,False,,,,,False
+2026,TX,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,52.3,47.7,,,False,False,,,,,False
+2026,TX,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,54.0,46.0,,,False,False,,,,,False
+2026,TX,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,62.0,38.0,,,False,False,,,,,False
+2026,TX,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,72.1,27.9,,,False,False,,,,,False
+2026,TX,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,TX,RUCC,urban_county,Urban county,selected_broad_source_model,56.6,43.4,,,False,False,,,,,False
+2026,TX,RUCC,suburban_county,Suburban county,selected_broad_source_model,53.3,46.7,,,False,False,,,,,False
+2026,TX,RUCC,rural_county,Rural county,selected_broad_source_model,61.0,39.0,,,False,False,,,,,False
+2026,UT,overall,all,All respondents,selected_broad_source_model,63.5,36.5,,,False,False,,,,,False
+2026,UT,AGE6,18_29,18–29,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,AGE6,30_49,30–49,selected_broad_source_model,60.1,39.9,,,False,False,,,,,False
+2026,UT,AGE6,50_64,50–64,selected_broad_source_model,83.6,16.4,,,False,False,,,,,False
+2026,UT,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,EDUC,high_school_or_less,High school or less,selected_broad_source_model,43.1,56.9,,,False,False,,,,,False
+2026,UT,EDUC,some_college,Some college / associate degree,selected_broad_source_model,67.2,32.8,,,False,False,,,,,False
+2026,UT,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,SEX,male,Male,selected_broad_source_model,62.5,37.5,,,False,False,,,,,False
+2026,UT,SEX,female,Female,selected_broad_source_model,64.5,35.5,,,False,False,,,,,False
+2026,UT,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,UT,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,UT,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,UT,RACETH5,white,White,selected_broad_source_model,73.3,26.7,,,False,False,,,,,False
+2026,UT,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,INCOME,under_25000,"Under $25,000",selected_broad_source_model,45.7,54.3,,,False,False,,,,,False
+2026,UT,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,57.8,42.2,,,False,False,,,,,False
+2026,UT,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,UT,RUCC,urban_county,Urban county,selected_broad_source_model,65.9,34.1,,,False,False,,,,,False
+2026,UT,RUCC,suburban_county,Suburban county,selected_broad_source_model,62.8,37.2,,,False,False,,,,,False
+2026,UT,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,overall,all,All respondents,selected_broad_source_model,64.6,35.4,,,False,False,,,,,False
+2026,VT,AGE6,18_29,18–29,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,AGE6,30_49,30–49,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,AGE6,50_64,50–64,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,EDUC,high_school_or_less,High school or less,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,EDUC,some_college,Some college / associate degree,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,SEX,male,Male,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,SEX,female,Female,selected_broad_source_model,68.1,31.9,,,False,False,,,,,False
+2026,VT,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,VT,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,VT,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,VT,RACETH5,white,White,selected_broad_source_model,70.3,29.7,,,False,False,,,,,False
+2026,VT,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,INCOME,under_25000,"Under $25,000",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,INCOME,25000_49999,"$25,000–$49,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,RUCC,suburban_county,Suburban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VT,RUCC,rural_county,Rural county,selected_broad_source_model,64.5,35.5,,,False,False,,,,,False
+2026,VA,overall,all,All respondents,selected_broad_source_model,57.9,42.1,,,False,False,,,,,False
+2026,VA,AGE6,18_29,18–29,selected_broad_source_model,24.3,75.7,,,False,False,,,,,False
+2026,VA,AGE6,30_49,30–49,selected_broad_source_model,48.1,51.9,,,False,False,,,,,False
+2026,VA,AGE6,50_64,50–64,selected_broad_source_model,88.1,11.9,,,False,False,,,,,False
+2026,VA,AGE6,65_plus,65+,selected_broad_source_model,99.6,0.4,,,False,False,,,,,False
+2026,VA,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VA,EDUC,high_school_or_less,High school or less,selected_broad_source_model,38.5,61.5,,,False,False,,,,,False
+2026,VA,EDUC,some_college,Some college / associate degree,selected_broad_source_model,55.1,44.9,,,False,False,,,,,False
+2026,VA,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,78.3,21.7,,,False,False,,,,,False
+2026,VA,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VA,SEX,male,Male,selected_broad_source_model,56.9,43.1,,,False,False,,,,,False
+2026,VA,SEX,female,Female,selected_broad_source_model,59.7,40.3,,,False,False,,,,,False
+2026,VA,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VA,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,VA,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,VA,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,VA,RACETH5,white,White,selected_broad_source_model,79.8,20.2,,,False,False,,,,,False
+2026,VA,RACETH5,black,African American or Black,selected_broad_source_model,35.4,64.6,,,False,False,,,,,False
+2026,VA,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,24.7,75.3,,,False,False,,,,,False
+2026,VA,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,selected_broad_source_model,17.6,82.4,,,False,False,,,,,False
+2026,VA,RACETH5,other_unknown,Other / unknown race or Hispanic origin,selected_broad_source_model,27.8,72.2,,,False,False,,,,,False
+2026,VA,INCOME,under_25000,"Under $25,000",selected_broad_source_model,34.6,65.4,,,False,False,,,,,False
+2026,VA,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,50.1,49.9,,,False,False,,,,,False
+2026,VA,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,57.7,42.3,,,False,False,,,,,False
+2026,VA,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,63.3,36.7,,,False,False,,,,,False
+2026,VA,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,77.1,22.9,,,False,False,,,,,False
+2026,VA,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,VA,RUCC,urban_county,Urban county,selected_broad_source_model,59.3,40.7,,,False,False,,,,,False
+2026,VA,RUCC,suburban_county,Suburban county,selected_broad_source_model,57.5,42.5,,,False,False,,,,,False
+2026,VA,RUCC,rural_county,Rural county,selected_broad_source_model,52.4,47.6,,,False,False,,,,,False
+2026,WA,overall,all,All respondents,selected_broad_source_model,66.4,33.6,,,False,False,,,,,False
+2026,WA,AGE6,18_29,18–29,selected_broad_source_model,26.7,73.3,,,False,False,,,,,False
+2026,WA,AGE6,30_49,30–49,selected_broad_source_model,58.5,41.5,,,False,False,,,,,False
+2026,WA,AGE6,50_64,50–64,selected_broad_source_model,89.8,10.2,,,False,False,,,,,False
+2026,WA,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,EDUC,high_school_or_less,High school or less,selected_broad_source_model,45.9,54.1,,,False,False,,,,,False
+2026,WA,EDUC,some_college,Some college / associate degree,selected_broad_source_model,68.9,31.1,,,False,False,,,,,False
+2026,WA,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,79.1,20.9,,,False,False,,,,,False
+2026,WA,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,SEX,male,Male,selected_broad_source_model,63.8,36.2,,,False,False,,,,,False
+2026,WA,SEX,female,Female,selected_broad_source_model,68.9,31.1,,,False,False,,,,,False
+2026,WA,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WA,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WA,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WA,RACETH5,white,White,selected_broad_source_model,85.2,14.8,,,False,False,,,,,False
+2026,WA,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,RACETH5,hispanic,Latino or Hispanic,selected_broad_source_model,26.9,73.1,,,False,False,,,,,False
+2026,WA,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,INCOME,under_25000,"Under $25,000",selected_broad_source_model,47.9,52.1,,,False,False,,,,,False
+2026,WA,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,53.0,47.0,,,False,False,,,,,False
+2026,WA,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,65.3,34.7,,,False,False,,,,,False
+2026,WA,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WA,RUCC,urban_county,Urban county,selected_broad_source_model,65.0,35.0,,,False,False,,,,,False
+2026,WA,RUCC,suburban_county,Suburban county,selected_broad_source_model,69.3,30.7,,,False,False,,,,,False
+2026,WA,RUCC,rural_county,Rural county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,overall,all,All respondents,selected_broad_source_model,39.3,60.7,,,False,False,,,,,False
+2026,WV,AGE6,18_29,18–29,selected_broad_source_model,13.3,86.7,,,False,False,,,,,False
+2026,WV,AGE6,30_49,30–49,selected_broad_source_model,28.3,71.7,,,False,False,,,,,False
+2026,WV,AGE6,50_64,50–64,selected_broad_source_model,49.3,50.7,,,False,False,,,,,False
+2026,WV,AGE6,65_plus,65+,selected_broad_source_model,97.4,2.6,,,False,False,,,,,False
+2026,WV,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,EDUC,high_school_or_less,High school or less,selected_broad_source_model,26.6,73.4,,,False,False,,,,,False
+2026,WV,EDUC,some_college,Some college / associate degree,selected_broad_source_model,45.5,54.5,,,False,False,,,,,False
+2026,WV,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,67.2,32.8,,,False,False,,,,,False
+2026,WV,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,SEX,male,Male,selected_broad_source_model,39.7,60.3,,,False,False,,,,,False
+2026,WV,SEX,female,Female,selected_broad_source_model,39.2,60.8,,,False,False,,,,,False
+2026,WV,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WV,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WV,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WV,RACETH5,white,White,selected_broad_source_model,41.8,58.2,,,False,False,,,,,False
+2026,WV,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,INCOME,under_25000,"Under $25,000",selected_broad_source_model,23.0,77.0,,,False,False,,,,,False
+2026,WV,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,39.2,60.8,,,False,False,,,,,False
+2026,WV,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,37.2,62.8,,,False,False,,,,,False
+2026,WV,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WV,RUCC,suburban_county,Suburban county,selected_broad_source_model,40.1,59.9,,,False,False,,,,,False
+2026,WV,RUCC,rural_county,Rural county,selected_broad_source_model,35.1,64.9,,,False,False,,,,,False
+2026,WI,overall,all,All respondents,selected_broad_source_model,77.2,22.8,,,False,False,,,,,False
+2026,WI,AGE6,18_29,18–29,selected_broad_source_model,34.4,65.6,,,False,False,,,,,False
+2026,WI,AGE6,30_49,30–49,selected_broad_source_model,80.5,19.5,,,False,False,,,,,False
+2026,WI,AGE6,50_64,50–64,selected_broad_source_model,95.8,4.2,,,False,False,,,,,False
+2026,WI,AGE6,65_plus,65+,selected_broad_source_model,99.7,0.3,,,False,False,,,,,False
+2026,WI,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WI,EDUC,high_school_or_less,High school or less,selected_broad_source_model,61.0,39.0,,,False,False,,,,,False
+2026,WI,EDUC,some_college,Some college / associate degree,selected_broad_source_model,82.4,17.6,,,False,False,,,,,False
+2026,WI,EDUC,college_postgraduate,College graduate / postgraduate study,selected_broad_source_model,88.9,11.1,,,False,False,,,,,False
+2026,WI,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WI,SEX,male,Male,selected_broad_source_model,74.1,25.9,,,False,False,,,,,False
+2026,WI,SEX,female,Female,selected_broad_source_model,79.9,20.1,,,False,False,,,,,False
+2026,WI,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WI,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WI,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WI,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WI,RACETH5,white,White,selected_broad_source_model,89.5,10.5,,,False,False,,,,,False
+2026,WI,RACETH5,black,African American or Black,selected_broad_source_model,45.7,54.3,,,False,False,,,,,False
+2026,WI,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WI,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WI,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WI,INCOME,under_25000,"Under $25,000",selected_broad_source_model,56.6,43.4,,,False,False,,,,,False
+2026,WI,INCOME,25000_49999,"$25,000–$49,999",selected_broad_source_model,75.3,24.7,,,False,False,,,,,False
+2026,WI,INCOME,50000_74999,"$50,000–$74,999",selected_broad_source_model,78.1,21.9,,,False,False,,,,,False
+2026,WI,INCOME,75000_99999,"$75,000–$99,999",selected_broad_source_model,81.5,18.5,,,False,False,,,,,False
+2026,WI,INCOME,100000_plus,"$100,000 or more",selected_broad_source_model,85.6,14.4,,,False,False,,,,,False
+2026,WI,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WI,RUCC,urban_county,Urban county,selected_broad_source_model,72.9,27.1,,,False,False,,,,,False
+2026,WI,RUCC,suburban_county,Suburban county,selected_broad_source_model,77.3,22.7,,,False,False,,,,,False
+2026,WI,RUCC,rural_county,Rural county,selected_broad_source_model,82.8,17.2,,,False,False,,,,,False
+2026,WY,overall,all,All respondents,selected_broad_source_model,69.4,30.6,,,False,False,,,,,False
+2026,WY,AGE6,18_29,18–29,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,AGE6,30_49,30–49,selected_broad_source_model,57.1,42.9,,,False,False,,,,,False
+2026,WY,AGE6,50_64,50–64,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,AGE6,65_plus,65+,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,AGE6,unknown,Unknown age,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,EDUC,high_school_or_less,High school or less,selected_broad_source_model,54.0,46.0,,,False,False,,,,,False
+2026,WY,EDUC,some_college,Some college / associate degree,selected_broad_source_model,76.9,23.1,,,False,False,,,,,False
+2026,WY,EDUC,college_postgraduate,College graduate / postgraduate study,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,EDUC,unknown,Unknown education,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,SEX,male,Male,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,SEX,female,Female,selected_broad_source_model,71.2,28.8,,,False,False,,,,,False
+2026,WY,SEX,unknown,Unknown source sex,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,GENDER3,male,Male (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WY,GENDER3,female,Female (source gender),held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WY,GENDER3,other_unknown,Other / unknown source gender,held_cross_dimension_disclosure,,,,,False,False,,,,,False
+2026,WY,RACETH5,white,White,selected_broad_source_model,78.9,21.1,,,False,False,,,,,False
+2026,WY,RACETH5,black,African American or Black,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,RACETH5,hispanic,Latino or Hispanic,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,RACETH5,asian_pacific,Asian / Native Hawaiian / Other Pacific Islander,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,RACETH5,other_unknown,Other / unknown race or Hispanic origin,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,INCOME,under_25000,"Under $25,000",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,INCOME,25000_49999,"$25,000–$49,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,INCOME,50000_74999,"$50,000–$74,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,INCOME,75000_99999,"$75,000–$99,999",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,INCOME,100000_plus,"$100,000 or more",held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,INCOME,unknown,Unknown income,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,RUCC,urban_county,Urban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,RUCC,suburban_county,Suburban county,held_source_support_or_complementary_disclosure,,,,,False,False,,,,,False
+2026,WY,RUCC,rural_county,Rural county,selected_broad_source_model,66.1,33.9,,,False,False,,,,,False

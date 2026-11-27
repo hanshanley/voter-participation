@@ -1,5 +1,16 @@
 # Voter-participation source ledger
 
+## November 27: more broad-group participation model rates
+
+The percentage-only export supports **864 of 1,530 queries**, including **193 broad groups**
+previously held by the exact-count/weight publication format. Missouri's male group is one
+recovered example. The exact supplied 113,020-case CHEP source is unchanged; this is not a new
+survey or new observed turnout. Rates are rounded to 0.1 percentage point; no new subgroup
+counts or weights are exported. The 100-case/30-per-model-class screen remains, as do missing
+D.C., standalone unknown, small-category and GENDER3 estimates. The older exact public export
+is retained unchanged. [Complete queries, code, tests, source pins and ZIP](data/civic-group-rates/20261127-01/).
+The public packet excludes private respondent records and documents source-based reproduction.
+
 ## November 18: Virginia automatic models and Oregon evidence verified live
 
 Thirteen House states now update all nine variants: 117 frames, up from 12/108; 20 formerly qualified states remain frozen. Oregon's six contests/20 candidates refresh automatically but retain their explicit write-in/model hold. Virginia supplies 11 reconciled contests/47 candidates. Actual hosted revision delivery, 22+171 public/offline outputs, unchanged no-op and 288 production model values pass. Participation coverage does not increase; 259 district comparisons and Senate reader/export agreement 28/28 remain. [Complete numerical handoff, sources, downloads and commands](data/participation-access/20261118-or-va-automatic-models-01/REPORT.md). Two additional CO comparisons remain prepared, not deployed. Earlier coverage snapshots below are historical.

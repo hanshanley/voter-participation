@@ -1,0 +1,38 @@
+{
+  "README.txt": {
+    "bytes": 760,
+    "sha256": "d3a9938d7f1be722b31717833bdd235e79ec326e11fd4b3245e9b9c5121e1f11"
+  },
+  "complete-state-demographic-query.csv": {
+    "bytes": 165813,
+    "sha256": "48d8d156b52c70f4eb004e2da95f44376f595c03f5f0ee3df74781ec77af6b1d"
+  },
+  "inputs/previous-public-query.json": {
+    "bytes": 1186389,
+    "sha256": "a7273836c258127b444eff52f3aa8e5fcf06c69d7e3cd89ff3ef4beed83071bf"
+  },
+  "scripts/civic_group_rates.py": {
+    "bytes": 8838,
+    "sha256": "b0c87d8f69582209c31adb5644c84fd9daf44da392949610a5fdd66248c619ea"
+  },
+  "scripts/fit_norc_house_model.py": {
+    "bytes": 12485,
+    "sha256": "f36bdbe8bc2083e80f209571591e6fa4000a5625aac9504af5df09383998582d"
+  },
+  "scripts/verify_civic_group_rates.py": {
+    "bytes": 5057,
+    "sha256": "0c89cb66c2de2942f08afb5f9e92c75720ba97428536413f2bd97feccbff880d"
+  },
+  "summary.json": {
+    "bytes": 343,
+    "sha256": "4fd13b58f3789b68b79d0236e29dc9c0a70a0b5d61fa8fe38102bba84a3a50ab"
+  },
+  "tests/test_civic_group_rates.py": {
+    "bytes": 3179,
+    "sha256": "8d7e27d7fe2d674c7f452597bdad17fb02fd146b533445d2aa3cb144013a196c"
+  },
+  "viewer-data.json": {
+    "bytes": 1026778,
+    "sha256": "102d580b05c9c048a404df31b667fcd6b38e5196ea4be71ab31523dd47efd335"
+  }
+}

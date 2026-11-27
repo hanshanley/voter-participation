@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "independently_checked_queries": 1530,
+  "supported_rates": 864,
+  "additional_broad_group_rates": 193,
+  "previous_public_rates_preserved_at_display_precision": true,
+  "no_new_subgroup_counts_or_weight_primitives": true,
+  "actual_turnout_not_claimed": true,
+  "complete_archive_members_verified": 10,
+  "archive_extracted_replay_byte_identical": [
+    "viewer-data.json",
+    "summary.json",
+    "complete-state-demographic-query.csv",
+    "complete-analysis.zip"
+  ],
+  "private_source_redistributed": false
+}
