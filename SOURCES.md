@@ -16,6 +16,24 @@ audit below concerns the separate, unconditioned source model and is not superse
 new margins. The optional automatic updater binds each new model to the accepted House and
 turnout inputs without changing legacy model gates or refitting source coefficients.
 
+Actual [automatic publication 46089846614](https://github.com/hanshanley/margin_of_error/actions/runs/46089846614)
+delivers all 50 states and 54 complete model files. The
+[full automatic packet](https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-8c67e31da181c1b3a403dfc0d6b24435fd3b8f240c39c5c9ca37c6170c82f71b/complete-analysis.zip)
+is 393,379,982 bytes; all 643 checksummed members and all 54 new public outputs were checked.
+A literal extracted CPython 3.12 replay reproduces all 320 numerical outputs byte-for-byte
+with networking blocked. Actual unchanged-input run
+[46091355864](https://github.com/hanshanley/margin_of_error/actions/runs/46091355864)
+preserves the manifest byte-for-byte and starts zero website builds. These operational and
+mathematical checks do not independently validate latent voter behavior.
+
+The [live reader](https://www.themarginoferror.com/voter-participation/?view=effects) is
+verified at website `d6e812be3989c4c7e73f25c5c42dd4cb9d71284b`, Pages 46094192362.
+All 50 state comparisons, both units and both terms/ranges pass at four screen widths,
+including live automatic-model use, matching current full-query links, no-JavaScript and
+explicit outage/rejected-input fallback. Actual native payload is 976,855,050 bytes and tar
+979,415,040 bytes, both below the unchanged cap; all 437 prior download pins remain.
+[Delivery evidence and complete download references](data/participation-access/20261128-all-state-house-model-01/acceptance.json).
+
 ## November 27: source estimates checked against reported outcomes
 
 The [complete outcome audit](data/estimate-validation/20261127-01/) checks all 50 states and

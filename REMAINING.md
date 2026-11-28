@@ -8,8 +8,17 @@ benchmarks. Complete state queries, all sensitivity decisions, matrices, public 
 replay code are included. Mathematical/source-constraint checks are not independent validation
 of latent histories. Linked participation/choice evidence, source transport, changing candidate
 menus and population overlap remain substantive uncertainties; no precinct allocation or
-observed first-ever-voting claim is introduced. Website and hosted automatic activation require
-their own delivery checks; this source entry alone does not establish a live reader.
+observed first-ever-voting claim is introduced. The all-50-state reader and automatic activation
+are now [verified live](data/participation-access/20261128-all-state-house-model-01/acceptance.json),
+including actual phone/desktop, exact native artifact, complete downloads and failure checks.
+
+The existing hourly updater is activated for this product: hosted run 46089846614 supplies
+the complete all-state model, and unchanged run 46091355864 preserves the active runtime
+without another site build. The publicly downloaded complete packet replays all 320 numerical
+outputs exactly offline. Remaining uncertainty is substantive: source associations and population
+overlap are assumptions, and returned totals cannot identify which individuals switched or did
+not cast a counted ballot. These checks do not close independent behavioral-validation or
+demographic/local participation-data gaps.
 
 ## November 27: outcome validation limits the estimates' interpretation
 

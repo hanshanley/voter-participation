@@ -1,0 +1,115 @@
+{
+  "contract": "participation.statewide_house_transition_delivery.v1",
+  "status": "verified_live_conditional_estimates",
+  "states": 50,
+  "website": "https://www.themarginoferror.com/voter-participation/?view=effects",
+  "source_commit": "d41dbd8a987474c6ca50b055968539b1f5e3d5b7",
+  "website_commit": "d6e812be3989c4c7e73f25c5c42dd4cb9d71284b",
+  "model_version": "1547f9a4d5645ed7f56592e67360d122e1ca6edd61de0ff73383af834c25b925",
+  "automatic_runtime_version": "8c67e31da181c1b3a403dfc0d6b24435fd3b8f240c39c5c9ca37c6170c82f71b",
+  "complete_current_analysis": {
+    "bytes": 393379982,
+    "immutable": true,
+    "media_type": "application/zip",
+    "sha256": "107dd6dad6a7fa599053d7135d18e4ee6cb0b6cebf4de7d979856c2612c8b067",
+    "url": "https://github.com/hanshanley/margin_of_error/releases/download/automatic-participation-8c67e31da181c1b3a403dfc0d6b24435fd3b8f240c39c5c9ca37c6170c82f71b/complete-analysis.zip",
+    "verified_anonymously": true
+  },
+  "complete_saved_analysis": {
+    "url": "https://raw.githubusercontent.com/hanshanley/voter-participation/d41dbd8a987474c6ca50b055968539b1f5e3d5b7/data/statewide-house-transitions/20261127-01/complete-analysis.zip",
+    "bytes": 40474128,
+    "sha256": "5a0f628a2613b96bfb4e14be78780993c65686c8f1a6677ae0b39e800109ebef"
+  },
+  "native": {
+    "status": "passed",
+    "commit": "d6e812be3989c4c7e73f25c5c42dd4cb9d71284b",
+    "pages_run": 46094192362,
+    "credential_run": 46094192490,
+    "artifact_id": 15243270630,
+    "artifact_digest": "sha256:eba063fdf3bd3b9e95c650dd7c35a7b4514c736c9130a75e5f749b619376deee",
+    "payload_bytes": 976855050,
+    "tar_bytes": 979415040,
+    "files": 2921,
+    "preserved_complete_download_pins": 437,
+    "demographic_classification_source_commit": "83c072e58680e74ce57a34748c813549d99ef5da",
+    "house_transition_source_commit": "d41dbd8a987474c6ca50b055968539b1f5e3d5b7",
+    "saved_house_transition_model_version": "bde74e69fbf095a113cfd5bd689f0c3c17eda66eb60923c5902e095f4ead76ba"
+  },
+  "browser": {
+    "status": "passed",
+    "base": "https://www.themarginoferror.com",
+    "results": [
+      {
+        "width": 320,
+        "state_selections": 200,
+        "exact_map_values": 200,
+        "both_contributions_and_ranges": true,
+        "legacy_restoration": true,
+        "automatic": "true",
+        "version": "1547f9a4d5645ed7f56592e67360d122e1ca6edd61de0ff73383af834c25b925"
+      },
+      {
+        "width": 390,
+        "state_selections": 200,
+        "exact_map_values": 200,
+        "both_contributions_and_ranges": true,
+        "legacy_restoration": true,
+        "automatic": "true",
+        "version": "1547f9a4d5645ed7f56592e67360d122e1ca6edd61de0ff73383af834c25b925"
+      },
+      {
+        "width": 768,
+        "state_selections": 200,
+        "exact_map_values": 200,
+        "both_contributions_and_ranges": true,
+        "legacy_restoration": true,
+        "automatic": "true",
+        "version": "1547f9a4d5645ed7f56592e67360d122e1ca6edd61de0ff73383af834c25b925"
+      },
+      {
+        "width": 1280,
+        "state_selections": 200,
+        "exact_map_values": 200,
+        "both_contributions_and_ranges": true,
+        "legacy_restoration": true,
+        "automatic": "true",
+        "version": "1547f9a4d5645ed7f56592e67360d122e1ca6edd61de0ff73383af834c25b925"
+      }
+    ],
+    "nojs_all_50_states": true,
+    "unavailable_models_not_zero_filled": true,
+    "rejected_input_frame_not_retained_as_current": true
+  },
+  "verification": {
+    "producer_publisher_tests": 85,
+    "reader_tests": 79,
+    "build_tests": 7,
+    "complete_public_packet_members": 643,
+    "complete_offline_outputs": 320,
+    "public_new_model_outputs": 54,
+    "extracted_replay_network_requests": 0,
+    "all_sensitivity_decisions": 109350,
+    "feasible_matrices": 81162,
+    "rejected_hypothetical_cases": 28188
+  },
+  "hosted_automatic_run": 46089846614,
+  "hosted_noop": {
+    "status": "passed",
+    "run": 46091355864,
+    "reported_unchanged": true,
+    "manifest_preserved_byte_for_byte": true,
+    "runtime_version": "8c67e31da181c1b3a403dfc0d6b24435fd3b8f240c39c5c9ca37c6170c82f71b",
+    "manifest_sha256": "c19da9d46d79a6bef558027780d2f38db050eb9f126bf39028cf006742c08d09",
+    "result": {
+      "data_commit": "b23ec56aab92b0f72707bbdf63ee5e7e1b8f1f23",
+      "status": "unchanged",
+      "version": "8c67e31da181c1b3a403dfc0d6b24435fd3b8f240c39c5c9ca37c6170c82f71b",
+      "website_builds_started": 0
+    }
+  },
+  "source_models_refitted": false,
+  "legacy_behavioral_gates_changed": false,
+  "individual_histories_identified": false,
+  "confidence_intervals": null,
+  "limitations": "Conditional recorded-category transitions, not observed staying home or causal persuasion. Candidate availability, population overlap, source transport and recording uncertainty remain. No district or precinct allocation."
+}
