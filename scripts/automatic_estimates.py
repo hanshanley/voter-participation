@@ -1054,6 +1054,8 @@ def bind_publication(result, base_url, complete_download):
     bind(sources["next_seed"])
     if sources.get("statewide_source_models"):
         bind(sources["statewide_source_models"])
+    if sources.get("statewide_house_transitions"):
+        bind(sources["statewide_house_transitions"])
     if sources.get("senate_partial_scenarios"):
         bind(sources["senate_partial_scenarios"])
     if sources.get("senate_complete_scenarios"):

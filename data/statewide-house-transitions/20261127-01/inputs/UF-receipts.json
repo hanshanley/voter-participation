@@ -1,0 +1,54 @@
+[
+  {
+    "file": "UF-2024.csv",
+    "url": "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_2024G_v0.4.csv",
+    "bytes": 8378,
+    "sha256": "9796cf57eda46924c7e5a4b26c2503dcafc8662d5d14a066dfe25a0fce7e85d9",
+    "retrieved_at": "2026-11-27T23:30:11.038954+00:00",
+    "headers": {
+      "Date": "Fri, 27 Nov 2026 23:30:11 GMT",
+      "Last-Modified": "Mon, 02 Mar 2026 21:37:37 GMT",
+      "ETag": "\"20ba-64c1165493041\"",
+      "Content-Type": "text/csv"
+    }
+  },
+  {
+    "file": "UF-2024_doc.txt",
+    "url": "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_2024G_v0.4_doc.txt",
+    "bytes": 5319,
+    "sha256": "5cf934d73fcf0f16da90b50ae788b78476d43e40ff1045cad878e85e10c920f5",
+    "retrieved_at": "2026-11-27T23:30:11.244399+00:00",
+    "headers": {
+      "Date": "Fri, 27 Nov 2026 23:30:11 GMT",
+      "Last-Modified": "Mon, 02 Mar 2026 21:37:37 GMT",
+      "ETag": "\"14c7-64c1165479a3c\"",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  },
+  {
+    "file": "UF-2026.csv",
+    "url": "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_2026G_v0.3.csv",
+    "bytes": 8318,
+    "sha256": "b4af2c14149b3b0fd0cc267aa0dc7d93937f74fe0b69fb44ce252df5256ab4b4",
+    "retrieved_at": "2026-11-27T23:30:11.450078+00:00",
+    "headers": {
+      "Date": "Fri, 27 Nov 2026 23:30:11 GMT",
+      "Last-Modified": "Wed, 25 Nov 2026 20:06:57 GMT",
+      "ETag": "\"207e-6611f5e76fa40\"",
+      "Content-Type": "text/csv"
+    }
+  },
+  {
+    "file": "UF-2026_doc.txt",
+    "url": "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_2026G_v0.3_doc.txt",
+    "bytes": 7858,
+    "sha256": "a8494983b0799d0d9779fdc4efbac867656c6143038434080a266582c2899e5e",
+    "retrieved_at": "2026-11-27T23:30:11.654746+00:00",
+    "headers": {
+      "Date": "Fri, 27 Nov 2026 23:30:11 GMT",
+      "Last-Modified": "Sat, 14 Nov 2026 16:48:57 GMT",
+      "ETag": "\"1eb2-6603f521b7040\"",
+      "Content-Type": "text/plain; charset=UTF-8"
+    }
+  }
+]

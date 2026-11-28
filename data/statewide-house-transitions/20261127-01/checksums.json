@@ -1,0 +1,98 @@
+{
+  "README.txt": {
+    "bytes": 1410,
+    "sha256": "83093f54976fbb8fdf7752039bfd142d23633eac31fcbb05afc77113d4bb3bd5"
+  },
+  "complete-sensitivity.csv.gz": {
+    "bytes": 34400356,
+    "sha256": "c26c969542c7bfd2c37273372d21a796730dfbd062d2aef371a2389506584b37"
+  },
+  "complete-state-comparisons.csv": {
+    "bytes": 15929,
+    "sha256": "f11803f05c770f76c3752a633070699754a2e49c3ecb768824f69745e1a7e305"
+  },
+  "inputs/UF-2024.csv": {
+    "bytes": 8378,
+    "sha256": "9796cf57eda46924c7e5a4b26c2503dcafc8662d5d14a066dfe25a0fce7e85d9"
+  },
+  "inputs/UF-2024_doc.txt": {
+    "bytes": 5319,
+    "sha256": "5cf934d73fcf0f16da90b50ae788b78476d43e40ff1045cad878e85e10c920f5"
+  },
+  "inputs/UF-2026.csv": {
+    "bytes": 8318,
+    "sha256": "b4af2c14149b3b0fd0cc267aa0dc7d93937f74fe0b69fb44ce252df5256ab4b4"
+  },
+  "inputs/UF-2026_doc.txt": {
+    "bytes": 7858,
+    "sha256": "a8494983b0799d0d9779fdc4efbac867656c6143038434080a266582c2899e5e"
+  },
+  "inputs/UF-receipts.json": {
+    "bytes": 1993,
+    "sha256": "8e4911000eb2a7667ed1c683dca81e200c9657a7dfdad194857ac3277693ae16"
+  },
+  "inputs/congressional.json.gz": {
+    "bytes": 702633,
+    "sha256": "3f521d00fba493d64331e7e9158ddd237fbc6f1bf4e02c9f0492e169387d9bd4"
+  },
+  "inputs/runtime.json": {
+    "bytes": 212318,
+    "sha256": "3e8f363a21ea818a7f3b0a94638447e9c028c250be4484dc5be87a0e22676b12"
+  },
+  "inputs/source-attenuated.json.gz": {
+    "bytes": 1727250,
+    "sha256": "1f760f9d87660e42cf2c4fb1f9eb32234d466ceeea38121d73cceac2501a4308"
+  },
+  "inputs/source-full.json.gz": {
+    "bytes": 1729416,
+    "sha256": "5aa71c87d708821e45e3657c39a403e00aa503cc1afcfdceabd20263f613680b"
+  },
+  "inputs/source-index.json.gz": {
+    "bytes": 2231,
+    "sha256": "8a09693afbfe697427fc51ad1bd642771552a673138a4ae01b58263c5da40216"
+  },
+  "inputs/source-original.json.gz": {
+    "bytes": 1725720,
+    "sha256": "88083b329ed9081ff7102aa712bdf94862111cc30066940bad87c680ec040afc"
+  },
+  "review.json": {
+    "bytes": 9592,
+    "sha256": "3f8f0605d21b7b07c8c1a890bcc998e8e5daeb60f539a8250df7cbe89b7d5466"
+  },
+  "scripts/automatic_house_transitions.py": {
+    "bytes": 4962,
+    "sha256": "076111ae5a46536441b9fd7accd79d3d5964a233d05c9b246d48e2c3cc395713"
+  },
+  "scripts/package_statewide_house_transitions.py": {
+    "bytes": 4605,
+    "sha256": "088f2f02f8df97b911c2dd416464cecaecb295ad158d3576ee885b62cc05abda"
+  },
+  "scripts/statewide_house_transitions.py": {
+    "bytes": 16549,
+    "sha256": "9af8c3e5ea6cc616eb0739e0c6c081e898304dfa583419169e759ded481fdc83"
+  },
+  "scripts/verify_statewide_house_transitions.py": {
+    "bytes": 8667,
+    "sha256": "3278acbe24db4095c82aa12e8c5847bd9856765daf9c0e8e7e97046da62fe548"
+  },
+  "summary.json": {
+    "bytes": 2853,
+    "sha256": "d404e0743fa34276c9dc65bb2f8364786d201ad00f161bba90574871090e1c7b"
+  },
+  "tests/test_automatic_house_transitions.py": {
+    "bytes": 3866,
+    "sha256": "9757c29af4efe88bb12074e13a3b6691530ec0af9397777f32daa01cf948e740"
+  },
+  "tests/test_statewide_house_transitions.py": {
+    "bytes": 2989,
+    "sha256": "10b6770b93d30b2c1d3a101cdcca6a6627b5280e47cf0dc6e0a1b1512300a8a5"
+  },
+  "viewer-data.json": {
+    "bytes": 161704,
+    "sha256": "94c663a9047d2599eb20b022014eddfb4d4f7e271e4055649bb4a2a1e6ed3798"
+  },
+  "viewer-data.json.gz": {
+    "bytes": 52072,
+    "sha256": "f156c881a6274739c0fb774226940bed7e62b4fc93371437587cae7429d2dd48"
+  }
+}

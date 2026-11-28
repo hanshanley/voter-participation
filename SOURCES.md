@@ -1,5 +1,21 @@
 # Voter-participation source ledger
 
+## November 27: whole-state House transition estimates for all 50 states
+
+The [complete all-state model](data/statewide-house-transitions/20261127-01/) conditions
+existing source associations on both years' recorded statewide House counts and UF Election
+Lab ballot/VEP benchmarks. Every state has a switching/no-counted-ballot comparison; no
+common-district subset substitutes for a state. Six categories keep unreported House choices,
+nonvoting and eligibility/frame changes separate. Candidate-menu and round cautions remain.
+The complete 109,350-decision sensitivity grid includes 81,162 feasible matrices and 28,188
+explicitly rejected hypothetical cases. All feasible matrices pass an independent accounting
+and projection check; the extracted complete analysis reproduces byte-for-byte on Python 3.12.
+These are conditional estimates, not identified histories, causal persuasion or independently
+validated staying home. Sensitivity ranges are not confidence intervals. The earlier outcome
+audit below concerns the separate, unconditioned source model and is not superseded by fitting
+new margins. The optional automatic updater binds each new model to the accepted House and
+turnout inputs without changing legacy model gates or refitting source coefficients.
+
 ## November 27: source estimates checked against reported outcomes
 
 The [complete outcome audit](data/estimate-validation/20261127-01/) checks all 50 states and

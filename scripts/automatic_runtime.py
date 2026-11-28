@@ -38,6 +38,7 @@ RESULTS_POINTER = ("https://raw.githubusercontent.com/" + RESULTS_REPOSITORY
 CODE_PATHS = (
     "automatic_runtime.py", "automatic_estimates.py", "automatic_native_refresh.py",
     "statewide_source_model.py", "package_statewide_source_model.py",
+    "statewide_house_transitions.py", "verify_statewide_house_transitions.py", "automatic_house_transitions.py",
     "current_source_reconciliation.py",
     "results_granular.py", "results_native_louisiana.py",
     "results_native_louisiana_runtime.py", "louisiana_onboarding.py",
@@ -720,6 +721,19 @@ def compile_runtime(snapshot, count_files, native_files, seed, source_packet=Non
         result["senate_complete_review"] = seed["senate_complete_review"]
     if "protected_official_house_review" in seed:
         result["protected_official_house_review"] = seed["protected_official_house_review"]
+    if "statewide_house_transition_review" in seed:
+        from scripts.automatic_house_transitions import refresh as refresh_transitions
+        result["statewide_house_transition_review"] = seed["statewide_house_transition_review"]
+        try:
+            transition_files, transition_descriptor = refresh_transitions(
+                seed["statewide_house_transition_review"], snapshot,
+                artifacts["congressional/results.json.gz"], artifacts, updated["current.json.gz"])
+            artifacts.update(transition_files)
+            estimates["house_sources"]["statewide_house_transitions"] = transition_descriptor
+        except (ValueError, AssertionError, KeyError) as error:
+            artifacts["house/statewide-transitions/update-hold.json"] = encoded({
+                "status":"held_incompatible_model_inputs", "reason":str(error),
+                "source_models_refitted":False, "legacy_counts_and_models_changed":False})
     return result
 
 
@@ -774,6 +788,8 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
         members["inputs/" + retained_bulk_turnout.MEMBER] = compiled["retained_bulk_turnout"]
     if "release_review" in compiled:
         members["inputs/supported-release-review.json"] = encoded(compiled["release_review"])
+    if "statewide_house_transition_review" in compiled:
+        members["inputs/statewide-house-transition-review.json"] = encoded(compiled["statewide_house_transition_review"])
     if "congressional_analytical_review" in compiled:
         from scripts.congressional_analytical_bridge import data_paths
         members["inputs/congressional-analytical-review.json"] = encoded(
@@ -816,6 +832,7 @@ def scientific_package(snapshot, source_packet, count_files, native_files, seed_
     for name in ("test_automatic_runtime.py", "test_results_granular.py",
                  "test_automatic_estimates.py", "test_automatic_native_refresh.py",
                  "test_statewide_source_model.py",
+                 "test_statewide_house_transitions.py", "test_automatic_house_transitions.py",
                  "test_current_source_reconciliation.py", "test_supported_analytical_release.py",
                  "test_cps_published_state_tables.py",
                  "test_congressional_analytical_bridge.py", "test_congressional_baselines.py",
@@ -921,6 +938,8 @@ def replay(package, output):
         raise ValueError("Incomplete rolling last-good seed in scientific packet")
     if "inputs/supported-release-review.json" in manifest:
         seed["supported_release_review"] = read(package / "inputs/supported-release-review.json")
+    if "inputs/statewide-house-transition-review.json" in manifest:
+        seed["statewide_house_transition_review"] = read(package / "inputs/statewide-house-transition-review.json")
     if "inputs/historical-eac-county-facts.json.gz" in manifest:
         seed["historical_eac_county_facts"] = (package / "inputs/historical-eac-county-facts.json.gz").read_bytes()
     if "inputs/" + CPS_INPUT in manifest:
@@ -1147,6 +1166,9 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         REVIEW_PATH as PROTECTED_REVIEW_PATH, DATA_PATHS as PROTECTED_PATHS,
         load_review as load_protected_review)
     protected_review = load_protected_review(ROOT) if (ROOT / PROTECTED_REVIEW_PATH).exists() else None
+    from scripts.automatic_house_transitions import REVIEW_PATH as TRANSITION_REVIEW_PATH, validate_review as validate_transition_review
+    transition_path = ROOT / TRANSITION_REVIEW_PATH
+    transition_review = validate_transition_review(read(transition_path)) if transition_path.exists() else None
     from scripts.eac_county_turnout import INPUT as EAC_INPUT
     from scripts.statewide_ballot_totals import GA_INPUT, NC_INPUT, OH_INPUT
     from scripts.results_county_frame import RETAINED_CANVASSES_INPUT
@@ -1176,6 +1198,7 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
         "code": {name: pin((ROOT / "scripts" / name).read_bytes()) for name in CODE_PATHS},
         "seed": {name: pin(body) for name, body in seed_files(seed_dir).items()},
         "supported_release_review": pin(encoded(release_review)) if release_review else None,
+        "statewide_house_transition_review": pin(encoded(transition_review)) if transition_review else None,
         "historical_eac_counties": pin(eac_facts) if eac_facts is not None else None,
         "cps_published_state_workbooks": pin(cps_workbooks) if cps_workbooks is not None else None,
         "senate_survey_archive": pin(senate_survey_archive) if senate_survey_archive is not None else None,
@@ -1239,6 +1262,8 @@ def run(repository, work, pointer_url=RESULTS_POINTER, seed_dir=None,
     seed, seed_inputs = select_seed(previous or None, seed_dir)
     if release_review is not None:
         seed["supported_release_review"] = release_review
+    if transition_review is not None:
+        seed["statewide_house_transition_review"] = transition_review
     if eac_facts is not None:
         seed["historical_eac_county_facts"] = eac_facts
     if cps_workbooks is not None:

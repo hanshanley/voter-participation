@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "states": 50,
+  "point_matrices": 50,
+  "queried_scenarios": 109350,
+  "independently_verified_scenario_matrices": 81162,
+  "rejected_incompatible_benchmark_scenarios": 28188,
+  "six_category_margins_and_all_accounting_checked": true,
+  "source_projection_odds_checked": true,
+  "old_comparison_holds_do_not_suppress_state_estimates": true,
+  "individual_histories_claimed": false,
+  "complete_extracted_replay_byte_identical": true,
+  "archive_members_verified": 25
+}

@@ -1,5 +1,16 @@
 # Remaining work: participation and election-transition estimates
 
+## November 27: all-state conditional House comparisons
+
+A [separate six-category model](data/statewide-house-transitions/20261127-01/) now provides
+switching and no-counted-ballot estimates for every state from whole-state House and turnout
+benchmarks. Complete state queries, all sensitivity decisions, matrices, public inputs and
+replay code are included. Mathematical/source-constraint checks are not independent validation
+of latent histories. Linked participation/choice evidence, source transport, changing candidate
+menus and population overlap remain substantive uncertainties; no precinct allocation or
+observed first-ever-voting claim is introduced. Website and hosted automatic activation require
+their own delivery checks; this source entry alone does not establish a live reader.
+
 ## November 27: outcome validation limits the estimates' interpretation
 
 The [all-state outcome check](data/estimate-validation/20261127-01/) finds material source-model
